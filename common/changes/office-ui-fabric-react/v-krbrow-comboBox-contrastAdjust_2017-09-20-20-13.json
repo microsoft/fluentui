@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix comments and example code for onRenderCaretDown prop of Dropdown component",
+      "comment": "ComboBox: Changing high-contrast styles to use msHighContrastAdjust",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chrismo@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }
