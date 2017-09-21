@@ -52,18 +52,24 @@
   font-size: $ms-font-size-m;
   line-height: 1.5;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: $contentMargin-vertical;
+  margin-top: 5px;
 }
 
 .reachOut {
-  margin-bottom: 40px;
-
   a, a:visited {
-    color: $color-resources-darker
+    color: $color-resources-darker;
+  }
+
+  h2 {
+    margin-bottom: 60px;
   }
 }
 
 .related {
+  margin-bottom: 60px;
+  @include ms-padding-left($contentInGrid);
+
   h2 {
     color: $ms-color-neutralPrimary;
     font-size: $font-size-bigger;
@@ -82,7 +88,7 @@
       height: 6px;
       @include ms-left(0);
       position: absolute;
-      width: 80%;
+      width: 95%;
     }
   }
 

@@ -20,6 +20,10 @@ export class GetStartedPage extends React.Component<any, any> {
                 'location': 'design'
               },
               {
+                'text': 'Design Toolkit',
+                'location': 'toolkit'
+              },
+              {
                 'text': 'Structure',
                 'location': 'structure'
               },
@@ -41,9 +45,9 @@ export class GetStartedPage extends React.Component<any, any> {
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
-                <div className={ styles.title }>Styles</div>
-                <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
+                <img className={ styles.contentInGrid } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
+                <div className={ css(styles.title, styles.contentInGrid) }>Styles</div>
+                <div className={ css(styles.description, styles.contentInGrid) }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
@@ -57,6 +61,11 @@ export class GetStartedPage extends React.Component<any, any> {
               </div>
             </div>
           </div>
+          <div id='toolkit'>
+            <span className={ styles.title }>Design Toolkit</span>
+            <span className={ styles.descriptionLarge }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <a className={ styles.getStartedLink } href='#/resources'>Learn more</a>
+          </div>
         </div>
 
         <div className={ styles.structureSection } id='structure'>
@@ -67,7 +76,7 @@ export class GetStartedPage extends React.Component<any, any> {
               <div className={ diagramStyles.text }>
                 <span className={ diagramStyles.headline }>Fabric Core Styles</span>
                 <span className={ diagramStyles.description }>Core elements of the design language, including icons, colors, type, and grid</span>
-                <a href='#/styles'>See styles</a>
+                <a className={ styles.getStartedLink } href='#/styles'>See styles</a>
               </div>
             </div>
             <div className={ diagramStyles.or }>or</div>
@@ -80,7 +89,7 @@ export class GetStartedPage extends React.Component<any, any> {
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>Fabric React</span>
                   <span className={ diagramStyles.description }>Robust, up-to-date components built with the React framework</span>
-                  <a href='#/components'>See components</a>
+                  <a className={ styles.getStartedLink } href='#/components'>See components</a>
                 </div>
               </li>
               <li className={ diagramStyles.component }>
@@ -91,7 +100,7 @@ export class GetStartedPage extends React.Component<any, any> {
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>AngularJS</span>
                   <span className={ diagramStyles.description }>Community-driven project to build components for Angular-based apps</span>
-                  <a href='#/angular-js'>Learn more</a>
+                  <a className={ styles.getStartedLink } href='#/angular-js'>Learn more</a>
                 </div>
               </li>
             </ul>
@@ -100,7 +109,7 @@ export class GetStartedPage extends React.Component<any, any> {
 
         <div className={ styles.instructionsSection }>
           <h2 id='react'>Get started with Fabric React</h2>
-          <p>Use NPM to get Fabric components and core styling. All you need is <a href='https://nodejs.org/en/'>node.js</a> and <a href='http://gulpjs.com/'>gulp</a>.</p>
+          <p>Use NPM to get Fabric components and core styling. All you need is <a className={ styles.getStartedLink } href='https://nodejs.org/en/'>node.js</a> and <a className={ styles.getStartedLink } href='http://gulpjs.com/'>gulp</a>.</p>
 
           <ol className={ styles.steps }>
             <li>
@@ -125,7 +134,7 @@ const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fab
 ReactDOM.render(<MyPage />, document.body.firstChild);`
                 }
               </CodeBlock>
-              <p>For more information about using components, check out the <a href='#/components/'>components page</a>.</p>
+              <p>For more information about using components, check out the <a className={ styles.getStartedLink } href='#/components/'>components page</a>.</p>
             </li>
             <li>
               <p>You can also reference type styles for any text element:</p>
@@ -142,15 +151,15 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
                   `<i class="ms-Icon ms-Icon--Mail" aria-hidden="true"></i>`
                 }
               </CodeBlock>
-              <p>Components, type, and icons are just a small part of what Fabric has to offer. To reference other assets, including colors, product symbols, and more, see the <a href='#/styles'>styles page</a>.</p>
+              <p>Components, type, and icons are just a small part of what Fabric has to offer. To reference other assets, including colors, product symbols, and more, see the <a className={ styles.getStartedLink } href='#/styles'>styles page</a>.</p>
             </li>
           </ol>
 
           <h3>Other ways to get Fabric React</h3>
-          <p>For advanced scenarios or alternatives to NPM see the <a href='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md'>advanced documentation in the Fabric React repository</a>.</p>
+          <p>For advanced scenarios or alternatives to NPM see the <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md'>advanced documentation in the Fabric React repository</a>.</p>
 
           <h3>Need a component Fabric React doesn&rsquo;t have?</h3>
-          <p>First, check the <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
+          <p>First, check the <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
 
           <h2 id='core'>Get started with Fabric Core</h2>
           <p>With one reference to our CDN, you can access Fabric&rsquo;s fonts, icons, type styles, colors, grid, and more.</p>
@@ -171,18 +180,18 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
                   `<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
                 }
               </CodeBlock>
-              <p>To reference all the assets available in Fabric Core, see the <a href='#/styles'>styles page</a>. To use components, see <a href='#/get-started#react'>Fabric React</a> or <a href='#/angular-js'>ngOfficeUIFabric</a>.</p>
+              <p>To reference all the assets available in Fabric Core, see the <a className={ styles.getStartedLink } href='#/styles'>styles page</a>. To use components, see <a className={ styles.getStartedLink } href='#/get-started#react'>Fabric React</a> or <a className={ styles.getStartedLink } href='#/angular-js'>ngOfficeUIFabric</a>.</p>
             </li>
           </ol>
 
           <h3>Other ways to get Fabric Core</h3>
-          <p>You can <a href='https://github.com/OfficeDev/office-ui-fabric-core/releases'>download a copy of Fabric for your project</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md'>add it through a package manager</a>. You can also <a href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md'>build your own copy from the source code</a>.</p>
+          <p>You can <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-core/releases'>download a copy of Fabric for your project</a> or <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md'>add it through a package manager</a>. You can also <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md'>build your own copy from the source code</a>.</p>
 
           <h3>Need an icon or feature Fabric Core doesn&rsquo;t have?</h3>
-          <p>First, check the <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
-        </div>
+          <p>First, check the <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
 
-        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement</a>.</p>
+          <p className={ styles.trademark }>Usage of Fabric assets, such as fonts and icons, is subject to the <a className={ styles.getStartedLink } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf'>assets license agreement</a>.</p>
+        </div>
 
       </div>
     );
