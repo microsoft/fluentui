@@ -56,8 +56,8 @@
   display: block;
   font-size: $font-size-big;
   font-weight: $ms-font-weight-semilight;
-  margin-bottom: 8px;
-  margin-top: 24px;
+  margin-bottom: $contentMargin-vertical;
+  margin-top: $titleMargin-vertical;
 }
 
 .description {
@@ -65,6 +65,13 @@
   font-size: $ms-font-size-m;
   line-height: 1.5;
   margin-bottom: 12px;
+}
+
+.descriptionLarge {
+  display: block;
+  font-size: $ms-font-size-m;
+  width: 70%;
+  margin-bottom: $contentMargin-vertical;
 }
 
 .secondary {
