@@ -68,6 +68,7 @@
 
 .related {
   margin-bottom: 60px;
+  @include ms-padding-left($contentInGrid);
 
   h2 {
     color: $ms-color-neutralPrimary;
