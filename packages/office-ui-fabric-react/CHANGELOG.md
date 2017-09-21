@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 19 Sep 2017 10:08:55 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Sep 2017 06:23:58 GMT and should not be manually modified.
+
+## 4.49.1
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Patches
+
+- Brand icons page clean up.
+- Implement hover and focus trigger behavior for Check component
+- Add the ability for compoundButtons to have icons
+- [ComboBox] Fix slight rendering bug in browser zoom (around sub-pixel rounding)
+- Stop delete from happening using delete or backspace when component is in disabled  mode
+- fix comments and example code for onRenderCaretDown prop of Dropdown component
+
+## 4.49.0
+Wed, 20 Sep 2017 10:19:01 GMT
+
+### Minor changes
+
+- allow 'chevron down' icon on Dropdown to be customized
+- ContextualMenu: Update the type of the title property on a menu section to be of type string
+- SearchBox: Added onEscape prop
+
+### Patches
+
+- Button: Add the ability to dismiss any open menus from the button interface
+- Modal: Updated padding in example to fix RTL support
+- Changing high-contrast colors to system colors
 
 ## 4.48.1
 Tue, 19 Sep 2017 10:08:55 GMT

@@ -78,7 +78,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         />
         <div
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
-          onClick={ this._onClearClick }
+          onClick={ this._onClear }
         >
           <Icon iconName='Clear' />
         </div>
@@ -96,16 +96,20 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onClearClick(ev?: any) {
-    this._latestValue = '';
-    this.setState({
-      value: ''
-    });
-    this._callOnChange('');
-    ev.stopPropagation();
-    ev.preventDefault();
+  private _onClear(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
+    this.props.onClear && this.props.onClear(ev);
+    if (!ev.defaultPrevented) {
+      this._latestValue = '';
+      this.setState({
+        value: ''
+      });
+      this._callOnChange('');
+      ev.stopPropagation();
+      ev.preventDefault();
 
-    this._inputElement.focus();
+      this._inputElement.focus();
+    }
+
   }
 
   @autobind
@@ -123,10 +127,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
+
     switch (ev.which) {
 
       case KeyCodes.escape:
-        this._onClearClick(ev);
+        this.props.onEscape && this.props.onEscape(ev);
+        if (!ev.defaultPrevented) {
+          this._onClear(ev);
+        }
         break;
 
       case KeyCodes.enter:

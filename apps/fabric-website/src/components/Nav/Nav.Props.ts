@@ -53,4 +53,10 @@ export interface INavPage {
    * @default false
    */
   isHomePage?: boolean;
+
+  /**
+   * Whether this link appears in the UHF header nav.
+   * @default false
+   */
+  isUhfLink?: boolean;
 }
