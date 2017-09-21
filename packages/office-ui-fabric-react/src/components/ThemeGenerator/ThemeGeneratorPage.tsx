@@ -16,7 +16,6 @@ import {
   themeRulesStandardCreator,
   BaseSlots,
   FabricSlots,
-  SemanticColorSlots,
   IThemeSlotRule,
   IThemeRules
 } from 'office-ui-fabric-react/lib/ThemeGenerator';
@@ -87,16 +86,10 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
       this._fabricSlotWidget(FabricSlots.white)];
 
-    let semanticSlots =
-      [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
-      this._semanticSlotWidget(SemanticColorSlots.bodyText),
-      this._semanticSlotWidget(SemanticColorSlots.disabledBackground),
-      this._semanticSlotWidget(SemanticColorSlots.disabledText)];
-
     return (
       <div className='ms-themer'>
         <p>
-          This is the Theme Generator tool, which helps you easily create all the shades and slots for a custom theme.
+          This tool helps you easily create all the shades and slots for a custom theme.
           The theme can be used by Fabric React's styling package, see the <a href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
           <br />
           As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.
@@ -161,11 +154,6 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         </div>
         <br />
 
-        <h2>Semantic Slots</h2>
-        <p>These slots inherit by default from the Fabric palette, and have an intended use as defined by their name. They exist so classes of controls can be easily customized at once. See the <a href='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/interfaces/ISemanticColors.ts'>documentation</a> for more details.</p>
-        <div>{ semanticSlots }</div>
-        <br />
-
         <h3>Samples</h3>
         { <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'>
@@ -213,11 +201,16 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
         <h3>Accessibility</h3>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5.</p>
-        <table className='ms-themer-accessibilityTable'><tbody>
-          { [this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground),
-          this._accessibilityRow(SemanticColorSlots.disabledText, SemanticColorSlots.bodyBackground),
-          this._accessibilityRow(SemanticColorSlots.disabledText, SemanticColorSlots.disabledBackground)] }
-        </tbody></table>
+        <table className='ms-themer-accessibilityTable'>
+          <thead>
+            <td>Sample text</td>
+            <td>Contrast ratio</td>
+            <td>Slot pair</td>
+          </thead>
+          <tbody>
+            { [this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.white)] }
+          </tbody>
+        </table>
       </div>
     );
   }
@@ -367,11 +360,6 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   }
 
   @autobind
-  private _semanticSlotWidget(semanticSlot: SemanticColorSlots) {
-    return this._slotWidget(this.state.themeRules[SemanticColorSlots[semanticSlot]]);
-  }
-
-  @autobind
   private _fabricSlotWidget(fabricSlot: FabricSlots) {
     return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
@@ -388,10 +376,10 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   }
 
   @autobind
-  private _accessibilityRow(foreground: SemanticColorSlots, background: SemanticColorSlots) {
+  private _accessibilityRow(foreground: FabricSlots, background: FabricSlots) {
     let themeRules = this.state.themeRules;
-    let bgc: IColor = themeRules[SemanticColorSlots[background]].color!;
-    let fgc: IColor = themeRules[SemanticColorSlots[foreground]].color!;
+    let bgc: IColor = themeRules[FabricSlots[background]].color!;
+    let fgc: IColor = themeRules[FabricSlots[foreground]].color!;
 
     let contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
@@ -404,7 +392,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       <tr key={ String(foreground) + String(background) }>
         <td style={ { backgroundColor: bgc.str, color: fgc.str } }>The quick brown fox jumps over the lazy dog.</td>
         <td>{ contrastRatioString }</td>
-        <td>{ SemanticColorSlots[foreground] + ' + ' + SemanticColorSlots[background] }</td>
+        <td>{ FabricSlots[foreground] + ' + ' + FabricSlots[background] }</td>
       </tr>
     );
   }
@@ -487,7 +475,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     return (
       <div className='ms-themer-paletteSlot' key={ baseSlot }>
         <h3>{ title }</h3>
-        <div style={ { display: 'inline-block' } }>
+        <div>
           <ColorPicker
             key={ 'baseslotcolorpicker' + baseSlot }
             color={ this.state.themeRules[BaseSlots[baseSlot]].color!.str }

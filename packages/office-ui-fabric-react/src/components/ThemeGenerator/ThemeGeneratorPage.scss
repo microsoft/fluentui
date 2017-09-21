@@ -10,7 +10,7 @@
 
 .ms-themer-paletteSlot {
   text-align: center;
-  flex-basis: 410px;
+  padding: 16px;
 }
 
 .ms-themer-swatch {
@@ -23,7 +23,6 @@
 
 .ms-themer-swatchBg {
   padding: 4px;
-  display: inline-block;
   font-size: 0;
   .ms-themer-swatch {
     height: 28px;
@@ -46,7 +45,7 @@
 
 .ms-themer-accessibilityTable td {
   padding: 4px;
-  text-align: right;
+  text-align: center;
 }
 
 .ms-themer-slot {
@@ -59,7 +58,8 @@
   display: flex;
   textarea {
     height: 400px;
-    width: 300px;
+    width: 280px;
+    margin-right: 28px;
     background-color: white;
     color: #333;
   }
