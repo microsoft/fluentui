@@ -85,3 +85,16 @@ export function getId(prefix?: string): string {
 
   return (prefix || '') + index;
 }
+
+/* Takes an enum and iterates over each value of the enum (as a string), running the callback on each, returning a mapped array.
+ * The callback takes as a first parameter the string that represents the name of the entry, and the second parameter is the
+ * value of that entry, which is the value you'd normally use when using the enum (usually a number).
+ * */
+export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: any) => T | undefined): T[] | undefined {
+  // map<any> to satisfy compiler since it doesn't realize we strip out undefineds in the .filter() call
+  return Object.keys(theEnum).map<any>((p: string) => { // map on each property name as a string
+    if (String(Number(p)) !== p) { // if the property is not just a number (because enums in TypeScript will map both ways)
+      return callback(p, theEnum[p]);
+    }
+  }).filter((v: any) => !!v); // only return elements with values
+}
