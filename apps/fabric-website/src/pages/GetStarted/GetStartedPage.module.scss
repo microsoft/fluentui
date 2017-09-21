@@ -48,12 +48,12 @@
   color: $ms-color-neutralLighter;
 
   a, a:visited,
-  .uhfLinkOverride {
+  .getStartedLink {
     border-bottom: 1px solid $ms-color-neutralLight;
   }
 
   a, a:hover, a:active,
-  .uhfLinkOverride {
+  .getStartedLink {
     color: $ms-color-neutralLight;
   }
 }
@@ -133,7 +133,7 @@
   }
 
   a,
-  .uhfLinkOverride {
+  .getStartedLink {
     color: $color-getStarted-medium;
   }
 
