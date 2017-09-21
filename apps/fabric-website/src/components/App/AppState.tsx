@@ -385,6 +385,7 @@ export const AppState: IAppState = {
             {
               title: 'Themes',
               url: '#/components/themes',
+              isHiddenFromMainNav: true,
               component: () => <LoadingComponent title='Themes' />,
               getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ThemesUtilityPage').ThemesUtilityPage))
             }
