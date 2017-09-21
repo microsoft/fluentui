@@ -99,6 +99,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       <div
         { ...divProps }
         className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence as PersonaPresenceEnum], this.props.showSecondaryText ? styles.showSecondaryText : '') }
+        style={ coinSize ? { height: coinSize } : undefined }
       >
         { size !== PersonaSize.tiny && (
           <div
