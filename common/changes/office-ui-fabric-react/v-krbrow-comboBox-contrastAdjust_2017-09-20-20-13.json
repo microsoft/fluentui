@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Modal: Updated padding in example to fix RTL support",
+      "comment": "ComboBox: Changing high-contrast styles to use msHighContrastAdjust",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }

@@ -2,6 +2,86 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.49.1",
+      "tag": "office-ui-fabric-react_v4.49.1",
+      "date": "Thu, 21 Sep 2017 06:23:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Brand icons page clean up."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "ee4a6d9178952be0f2e94f500738ef22fec48074",
+            "comment": "Implement hover and focus trigger behavior for Check component"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "88967a31ae2225810c19f0b22471aa9b0c742d12",
+            "comment": "Add the ability for compoundButtons to have icons"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "1a9ecf882c70d48ea9cb71deae3cee62d2569045",
+            "comment": "[ComboBox] Fix slight rendering bug in browser zoom (around sub-pixel rounding)"
+          },
+          {
+            "author": "Atul Bagga <bagga.atul@outlook.com>",
+            "commit": "19d48d6decc07b78a96d37e5f0381d7fe31be892",
+            "comment": "Stop delete from happening using delete or backspace when component is in disabled  mode"
+          },
+          {
+            "author": "Chris Mohr <chrismohr@users.noreply.github.com>",
+            "commit": "f1181d7ce3abf9a899e677ac1ffd60b19062c2f1",
+            "comment": "fix comments and example code for onRenderCaretDown prop of Dropdown component"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.49.0",
+      "tag": "office-ui-fabric-react_v4.49.0",
+      "date": "Wed, 20 Sep 2017 10:19:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "d9d7806fc211a326161c407b28f908e1bc7ee3df",
+            "comment": "Button: Add the ability to dismiss any open menus from the button interface"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d760d81856ba4acf60b52eadc299dfa8210bc1f2",
+            "comment": "Modal: Updated padding in example to fix RTL support"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "7fadf0b0aa27ce0a245280e7867881cef1add967",
+            "comment": "Changing high-contrast colors to system colors"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Chris Mohr <chrismohr@users.noreply.github.com>",
+            "commit": "5177563534e111a3c09c22ce8421ec1619a6ec2c",
+            "comment": "allow 'chevron down' icon on Dropdown to be customized"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bc44b9542dcf9df07dfcc2c3dadee0cae6c16a1a",
+            "comment": "ContextualMenu: Update the type of the title property on a menu section to be of type string"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2ff3cc2d838c9c21ffe47808121bf0062e62c762",
+            "comment": "SearchBox: Added onEscape prop"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.48.1",
       "tag": "office-ui-fabric-react_v4.48.1",
       "date": "Tue, 19 Sep 2017 10:08:55 GMT",

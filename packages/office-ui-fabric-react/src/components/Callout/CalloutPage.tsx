@@ -11,6 +11,8 @@ import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { CalloutStatus } from './Callout.checklist';
 
 const CalloutBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Basic.Example.tsx') as string;
 const CalloutNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx') as string;
@@ -23,7 +25,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
 
     return (
       <ComponentPage
-        title='Callout'
+        title={ 'Callout' }
         componentName='CalloutExample'
         exampleCards={
           <div>
@@ -90,6 +92,11 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...CalloutStatus}
+          />
+        }
       />
     );
   }
