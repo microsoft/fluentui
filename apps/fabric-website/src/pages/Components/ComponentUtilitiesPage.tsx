@@ -6,7 +6,7 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class ComponentUtilitiesPage extends React.Component<IComponentPageProps, any> {
   public render() {
     return (
-      <div ref='pageElement' className={ pageStyles.pageTypography }>
+      <div ref='pageElement' className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='Utilities' backgroundColor='#038387' />
           <h2 className='ComponentPage-subHeading'>Overview</h2>

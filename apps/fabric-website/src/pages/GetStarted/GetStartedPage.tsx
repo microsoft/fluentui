@@ -11,7 +11,7 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class GetStartedPage extends React.Component<any, any> {
   public render() {
     return (
-      <div id='design' className={ pageStyles.pageTypography }>
+      <div id='design' className={ pageStyles.basePage }>
         <PageHeader
           pageTitle='Get started'
           links={
@@ -64,7 +64,7 @@ export class GetStartedPage extends React.Component<any, any> {
           </div>
           <div id='toolkit'>
             <span className={ styles.title }>Design Toolkit</span>
-            <span className={ styles.descriptionLarge }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <span className={ styles.descriptionLarge }>The Fabric toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
             <a className={ styles.getStartedLink } href='#/resources'>Learn more</a>
           </div>
         </div>

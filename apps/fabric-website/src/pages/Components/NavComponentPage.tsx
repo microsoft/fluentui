@@ -7,7 +7,7 @@ const pageStyles: any = require('../PageStyles.module.scss');
 export class NavComponentPage extends React.Component<any, any> {
   public render() {
     return (
-      <div ref='pageElement' className={ pageStyles.pageTypography }>
+      <div ref='pageElement' className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='Nav' backgroundColor='#038387'
             links={

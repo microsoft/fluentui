@@ -19,7 +19,7 @@ export class BrandIconsPage extends React.Component<any, any> {
     let documentIcons = documentIconsData;
 
     return (
-      <div className={ pageStyles.pageTypography }>
+      <div className={ pageStyles.basePage }>
         <PageHeader
           pageTitle='Office brand icons'
           links={

@@ -14,7 +14,7 @@ const themeColorsData = require('../../../data/colors-theme.json');
 export class ColorsPage extends React.Component<any, any> {
   public render() {
     return (
-      <div className={ pageStyles.pageTypography }>
+      <div className={ pageStyles.basePage }>
         <PageHeader
           pageTitle='Colors'
           links={
