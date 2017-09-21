@@ -27,6 +27,10 @@ const ITEMS: { name: string; activity: string; }[] = [
   {
     name: lorem(2),
     activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
   }
 ];
 
@@ -164,6 +168,23 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           }
           showBackground={ imagesLoaded }
         />
+        <h3>Small Image</h3>
+        <ImageTile
+          tileSize={
+            {
+              width: 200,
+              height: 200
+            }
+          }
+          item={ ITEMS[2] }
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          showBackground={ imagesLoaded }
+        />
         <h3>No preview</h3>
         <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
@@ -173,7 +194,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
                   <NewSignal />
                 }
               >
-                { ITEMS[2].name }
+                { ITEMS[3].name }
               </SignalField>
             }
             itemActivity={
@@ -186,7 +207,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
                     ]
                   }
                 >
-                  { ITEMS[2].name }
+                  { ITEMS[3].name }
                 </SignalField>
               )
             }
