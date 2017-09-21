@@ -71,7 +71,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' }
+    buttonIconProps: { iconName: 'ChevronDown' },
+    calloutFixedWidth: true
   };
 
   public refs: {
@@ -753,8 +754,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
-      calloutProps
+      calloutProps,
+      calloutFixedWidth,
+      calloutSetMaxHeight
     } = props;
+
+    let setWidth = calloutFixedWidth ? this._comboBoxWrapper.clientWidth - 2 : 'auto';
 
     return (
       <Callout
@@ -764,12 +769,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
+        calloutSetMaxHeight={ this.props.calloutSetMaxHeight }
         className={ this._classNames.callout }
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
+        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: setWidth } }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>

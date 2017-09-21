@@ -88,6 +88,20 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * in case an option does not come with user-defined custom styles
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * Callout width is based on parent width
+   * When set to false the callout will be sized based on the width of the callout's content
+   * @default true;
+   */
+  calloutFixedWidth?: boolean;
+
+  /**
+   * Set max height of callout
+   * When not set the callout will expand with contents up to the bottom of the screen
+   */
+  calloutSetMaxHeight?: number;
+
 }
 
 export interface IComboBoxStyles {
