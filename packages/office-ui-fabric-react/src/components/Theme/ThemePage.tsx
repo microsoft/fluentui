@@ -38,7 +38,7 @@ export class ThemePage extends React.Component<any, any> {
     return (
       <div className='Themes'>
         <h1 className={ FontClassNames.xxLarge }>Themes</h1>
-        <p>The entire color palette of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
+        <p>The entire color pallete of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
         <p>To override the themes, you need to call <span className='code'>loadTheme()</span> with the appropriate set of overrides:</p>
 
         <Highlight className='typescript'>

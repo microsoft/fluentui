@@ -74,11 +74,6 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
-          title: 'Beta Theme Generator',
-          url: '#/styles/themeGenerator',
-          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
-        },
-        {
           title: 'Typography',
           url: '#/styles/typography',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/TypographyPage/TypographyPage').TypographyPage))

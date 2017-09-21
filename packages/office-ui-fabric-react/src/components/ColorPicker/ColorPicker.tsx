@@ -70,10 +70,10 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
               value={ color.a }
               onChanged={ this._onAChanged }
             />) }
-          <table className={ css('ms-ColorPicker-table', styles.table) } cellPadding='0' cellSpacing='0'>
+          <table className='ms-ColorPicker-table' cellPadding='0' cellSpacing='0'>
             <thead>
               <tr className={ FontClassNames.small }>
-                <td className={ styles.tableHexCell }>Hex</td>
+                <td>Hex</td>
                 <td>Red</td>
                 <td>Green</td>
                 <td>Blue</td>
