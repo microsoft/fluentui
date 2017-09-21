@@ -27,19 +27,19 @@ export class HomePage extends React.Component<any, any> {
           <div className={ styles.flavor }>
             <span className={ styles.flavorTitle }>AngularJS</span>
             <span className={ styles.flavorDescription }>Community-driven project for Angular apps</span>
-            <a className={ styles.uhfLinkOverride } href='#/angular-js'>Learn more</a>
+            <a className={ styles.homePageLink } href='#/angular-js'>Learn more</a>
           </div>
           <div className={ styles.flavor }>
             <span className={ styles.flavorTitle }>Fabric iOS</span>
             <span className={ styles.flavorDescription }>Native iOS styling and components written in Swift</span>
-            <a className={ styles.uhfLinkOverride } href='#/fabric-ios'>Learn more</a>
+            <a className={ styles.homePageLink } href='#/fabric-ios'>Learn more</a>
           </div>
         </div>
 
         <div className={ css(styles.product, styles.productSharepoint) }>
           <div>
             <span className={ styles.productTitle }>SharePoint</span>
-            <span className={ styles.productDescription }>New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to make things simple. <a className={ styles.uhfLinkOverride } href='https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components'>Learn more</a></span>
+            <span className={ styles.productDescription }>New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to make things simple. <a className={ styles.homePageLink } href='https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components'>Learn more</a></span>
           </div>
           <img className={ styles.productImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-sharepoint.svg' } width='496' height='300' alt='Illustrated representation of the sharepoint page.' />
         </div>
@@ -47,7 +47,7 @@ export class HomePage extends React.Component<any, any> {
         <div className={ css(styles.product, styles.productAddins) }>
           <div>
             <span className={ styles.productTitle }>Office Add-ins</span>
-            <span className={ styles.productDescription }>Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with Word, Excel, PowerPoint, and Outlook. <a className={ styles.uhfLinkOverride } href='http://dev.office.com/docs/add-ins/design/add-in-design'>Learn more</a></span>
+            <span className={ styles.productDescription }>Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with Word, Excel, PowerPoint, and Outlook. <a className={ styles.homePageLink } href='http://dev.office.com/docs/add-ins/design/add-in-design'>Learn more</a></span>
           </div>
           <img className={ styles.productImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-addins.svg' } width='496' height='300' alt='Illustrated representation of an office add-in.' />
         </div>
@@ -81,9 +81,9 @@ export class HomePage extends React.Component<any, any> {
               </a>
             </li>
           </ul>
-          <span className={ styles.trademark }>All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons, is subject to the <a className={ styles.uhfLinkOverride } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf'>assets license agreement</a>.</span>
+          <span className={ styles.trademark }>All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons, is subject to the <a className={ styles.homePageLink } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf'>assets license agreement</a>.</span>
           <span className={ styles.featuredTitle }>Design Toolkit</span>
-          <span className={ styles.featuredDescription } id={ styles.toolkitDescription }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences. <a className={ styles.uhfLinkOverride } href='#/resources'>Learn more</a></span>
+          <span className={ styles.featuredDescription } id={ styles.toolkitDescription }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences. <a className={ styles.homePageLink } href='#/resources'>Learn more</a></span>
         </div>
       </div>
     );

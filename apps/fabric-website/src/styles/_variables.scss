@@ -96,4 +96,8 @@ $uhf-screen-min-mobile: 768px;
 $uhf-screen-max-mobile: ($uhf-screen-min-mobile - 1);
 $uhf-screen-max-lg: 1083px;
 
+// These variables assist with overriding UHF styles
+$uhf-h3-margin: 40px 0 8px 0;
+$uhf-h2-margin: 48px 0 4px 0;
+
 $baseURL: ' https://static2.sharepointonline.com/files/fabric/';
