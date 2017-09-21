@@ -10,9 +10,6 @@ import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
-import { initializeIcons } from '@uifabric/icons/lib/index';
-
-initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
