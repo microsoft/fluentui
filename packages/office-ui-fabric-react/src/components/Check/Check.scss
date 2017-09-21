@@ -34,6 +34,20 @@ $checkBoxHeight: 18px;
     background: $ms-color-themePrimary;
     opacity: 1;
   }
+
+  .check {
+    opacity: 0;
+  }
+
+  .checkHost:hover &,
+  .checkHost:focus &,
+  &:hover,
+  &:focus,
+  &.rootIsChecked {
+    .check {
+      opacity: 1;
+    }
+  }
 }
 
 .circle,
@@ -51,7 +65,7 @@ $checkBoxHeight: 18px;
 .circle {
   color: $ms-color-neutralTertiaryAlt;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     display: none;
   }
 }
@@ -70,8 +84,10 @@ $checkBoxHeight: 18px;
   color: $ms-color-white;
   font-weight: 900;
 
-  @media screen and (-ms-high-contrast: active) {
-    border-radius: 9px;
-    border: 1px solid WindowText;
+  @include high-contrast {
+    border-radius: 10px;
+    border: none;
+    background: Window;
+    color: WindowText;
   }
 }

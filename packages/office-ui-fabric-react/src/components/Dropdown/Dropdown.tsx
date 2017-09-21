@@ -132,7 +132,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderPlaceHolder = this._onRenderPlaceHolder
+      onRenderPlaceHolder = this._onRenderPlaceHolder,
+      onRenderCaretDown = this._onRenderCaretDown
     } = this.props;
     let { isOpen, selectedIndex, selectedIndexes } = this.state;
     let selectedOption = this.props.multiSelect ? selectedIndexes && this._getAllSelectedOptions(options, selectedIndexes)
@@ -195,7 +196,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
+          { onRenderCaretDown(this.props, this._onRenderCaretDown) }
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -380,6 +381,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
+  // Render Caret Down Icon
+  @autobind
+  private _onRenderCaretDown(props: IDropdownProps): JSX.Element {
+    return (
+      <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
+    );
+  }
+
   // Render List of items
   @autobind
   private _onRenderList(props: IDropdownProps): JSX.Element {
@@ -560,7 +569,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
     // tslint:disable-next-line:triple-equals
-    return findIndex(options, (option => ((option.isSelected || option.selected || (selectedKey != null)) && option.key === selectedKey)));
+    return findIndex(options, (option => ((option.isSelected || option.selected) || (selectedKey != null) && option.key === selectedKey)));
   }
 
   @autobind

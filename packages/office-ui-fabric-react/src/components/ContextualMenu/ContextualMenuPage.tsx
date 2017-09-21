@@ -11,6 +11,8 @@ import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Check
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
@@ -27,22 +29,22 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         componentName='ContextualMenuExample'
         exampleCards={
           <div>
-            <ExampleCard title='ContextualMenu' code={ ContextualMenuBasicExampleCode }>
+            <ExampleCard title='Default ContextualMenu' code={ ContextualMenuBasicExampleCode }>
               <ContextualMenuBasicExample />
             </ExampleCard>
             <ExampleCard title='ContextualMenu section example' code={ ContextualMenuSectionExampleCode }>
               <ContextualMenuSectionExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu checked menus example' code={ ContextualMenuCheckmarksExampleCode }>
+            <ExampleCard title='ContextualMenu with checked menus' code={ ContextualMenuCheckmarksExampleCode }>
               <ContextualMenuCheckmarksExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
+            <ExampleCard title='ContextualMenu with beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
               <ContextualMenuDirectionalExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
+            <ExampleCard title='ContextualMenu with customization' code={ ContextualMenuCustomizationExampleCode }>
               <ContextualMenuCustomizationExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu header example' code={ ContextualMenuHeaderExampleCode }>
+            <ExampleCard title='ContextualMenu with header' code={ ContextualMenuHeaderExampleCode }>
               <ContextualMenuHeaderExample />
             </ExampleCard>
           </div>
@@ -91,10 +93,12 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ContextualMenu/ContextualMenu.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ContextualMenuStatus}
+          />
+        }
       />
     );
   }

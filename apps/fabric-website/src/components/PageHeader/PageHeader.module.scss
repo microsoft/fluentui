@@ -13,11 +13,7 @@
   margin-bottom: 2px;
 
   @include high-contrast {
-    border-bottom: 1px solid $ms-color-white;
-  }
-
-  @include high-contrast-black-on-white  {
-    border-bottom: 1px solid $ms-color-black;
+    border-bottom: 1px solid WindowText;
   }
 }
 
@@ -36,13 +32,13 @@
   display: none;
 }
 
-@media screen and (max-width: $ms-screen-max-md) {
+@media screen and (max-width: $uhf-screen-max-mobile) {
   .pageHeader {
     margin-bottom: -2px;
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .pageHeader {
     height: $PageHeader-fullHeight;
 
@@ -51,17 +47,13 @@
         box-shadow: 0 10px 30px -10px rgba(0,0,0,.2);
         max-width: $App-maximumWidth - $Nav-width;
         position: fixed;
-        top: $Header-height + $App-mobileNavBarHeight;
-        width: 100%;
+        top: 0;
+        width: calc(100% - #{$Nav-width} - #{$App-padding-left-lg} - #{$App-padding-right-lg});
         z-index: $ms-zIndex-1;
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
 
         @include high-contrast {
-          @include ms-border-right(1px, solid, $ms-color-white);
-        }
-
-        @include high-contrast-black-on-white  {
-          @include ms-border-right(1px, solid, $ms-color-black);
+          @include ms-border-right(1px, solid, WindowText);
         }
       }
 
@@ -129,7 +121,17 @@
   // The mobile nav is no longer present, so the attached page header is higher up
   .pageHeader.isAttached {
     .content {
-      top: $Header-height;
+      top: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .pageHeader {
+    &.isAttached {
+      .content {
+        width: calc(100% - #{$Nav-width} - #{$App-padding-right-sm} - #{$App-padding-left-sm} - 13px);
+      }
     }
   }
 }

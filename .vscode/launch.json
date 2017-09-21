@@ -22,7 +22,7 @@
       "sourceMaps": true
     },
     {
-      "name": "Debug build",
+      "name": "Debug build Production",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
@@ -31,6 +31,28 @@
         "webpack",
         "--",
         "--production"
+      ],
+      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "name": "Debug build Dogfood",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/build.js",
+      "stopOnEntry": false,
+      "args": [
+        "webpack",
+        "--",
+        "--production",
+        "--dogfood"
       ],
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,

@@ -8,6 +8,8 @@ import {
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DocumentCardStatus } from './DocumentCard.checklist';
 
 const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
 const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
@@ -21,19 +23,19 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
         componentName='DocumentCardExample'
         exampleCards={
           <div>
-            <ExampleCard title='DocumentCard Basic' code={ DocumentCardBasicExampleCode }>
+            <ExampleCard title='Default DocumentCard' code={ DocumentCardBasicExampleCode }>
               <p>
                 The default configuration for a card represents a single file, with space to denote the last significant event and the person involved.
               </p>
               <DocumentCardBasicExample />
             </ExampleCard>
-            <ExampleCard title='DocumentCard Complete' code={ DocumentCardCompleteExampleCode }>
+            <ExampleCard title='DocumentCard with multiple items, commands, and views' code={ DocumentCardCompleteExampleCode }>
               <p>
                 This example shows a couple of optional abilities, including being able to have a card represent multiple items, being able to expose up to three relevant commands, and showing the number of views in the bottom right corner.
               </p>
               <DocumentCardCompleteExample />
             </ExampleCard>
-            <ExampleCard title='DocumentCard Compact Layout' code={ DocumentCardCompactExampleCode }>
+            <ExampleCard title='DocumentCard with compact layout ' code={ DocumentCardCompactExampleCode }>
               <p>
                 When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout which helps the filename remain scannable while giving roomy space for a preview thumbnail.
               </p>
@@ -76,6 +78,11 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...DocumentCardStatus}
+          />
+        }
       />
     );
   }
