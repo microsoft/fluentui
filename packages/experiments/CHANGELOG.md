@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 19 Sep 2017 10:08:55 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Sep 2017 06:23:58 GMT and should not be manually modified.
+
+## 0.10.0
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Minor changes
+
+- Adjust Tile and FolderCover alignments and behaviors
+
+### Patches
+
+- Consume Check hover behavior in Tile
 
 ## 0.9.0
 Tue, 19 Sep 2017 10:08:55 GMT
