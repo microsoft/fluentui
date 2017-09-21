@@ -64,10 +64,4 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @memberOf IIconProps
    */
   imageProps?: IImageProps;
-
-  /**
-   * Deprecated. Use native onClick instead
-   * * @deprecated
-   */
-  onClicked?: (ev: React.MouseEvent<HTMLElement>) => void;
 }

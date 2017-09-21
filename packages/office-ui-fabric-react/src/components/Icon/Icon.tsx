@@ -16,7 +16,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
-    onClicked,
     styles: customStyles,
     iconName
    } = props;
@@ -54,7 +53,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
           'aria-hidden': true,
           'data-icon-name': iconName,
         }) }
-        onClick={ onClicked }
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
