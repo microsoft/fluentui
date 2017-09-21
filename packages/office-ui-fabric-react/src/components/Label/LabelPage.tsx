@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { LabelBasicExample } from './examples/Label.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { LabelStatus } from './Label.checklist';
 
 const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string;
 
@@ -55,6 +57,11 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...LabelStatus}
+          />
+        }
       />
     );
   }
