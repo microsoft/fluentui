@@ -212,7 +212,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
         !this._isSplitButton && (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
-        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
+        // If button is disabled, do not render its menu.
+        this.state.menuProps && !this.props.disabled && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
 
