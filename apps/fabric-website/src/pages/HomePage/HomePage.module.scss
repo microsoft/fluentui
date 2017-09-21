@@ -113,7 +113,7 @@
   }
 
   a,
-  .uhfLinkOverride {
+  .homePageLink {
     color: $color-home-lighter;
     font-size: $ms-font-size-m;
     transition: color $ms-animation-duration-2 $ms-animation-ease-1;
@@ -205,7 +205,7 @@
 .productDescription {
   font-size: $ms-font-size-l;
 
-  a, a:visited, .uhfLinkOverride {
+  a, a:visited, .homePageLink {
     color: $color-home-medium;
     transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
@@ -328,7 +328,7 @@
 
   a,
   a:visited,
-  .uhfLinkOverride {
+  .homePageLink {
     color: $color-home-lighter;
   }
 }
