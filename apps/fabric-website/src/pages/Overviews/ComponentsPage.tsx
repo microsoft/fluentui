@@ -26,7 +26,7 @@ export class ComponentsPage extends React.Component<any, any> {
           <p>Fabric comes in many flavors so you can choose the one that works for you. Check out <a href='#/angular-js'>ngOfficeUIFabric</a> and <a href='#/fabric-ios'>Fabric iOS</a> to learn more about each option.</p>
           <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/components-header.svg' } width='284' height='388' alt='Illustrated representation of a DatePicker and Persona list control.' />
           <span className={ styles.title }>Design Toolkit</span>
-          <span className={ styles.descriptionLarge }>The Fabric toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+          <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
           <a href='#/resources'>Learn more</a>
         </div>
       </div>

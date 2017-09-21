@@ -42,7 +42,7 @@ export class ResourcesPage extends React.Component<any, any> {
                 <p>To ensure a consistent look and feel for your project, here's where you can leverage essential elements. This section covers design and UI-related downloads for apps designed and built with Fabric.</p>
 
                 <h3>Design Toolkit</h3>
-                <p>The Fabric toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</p>
+                <p>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</p>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/officeuifabric.xd'>Adobe XD Toolkit</a></li>
                   <li><a className={ styles.relatedLink } href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97'>Adobe XD Toolkit (Microsoft employees)</a></li>
