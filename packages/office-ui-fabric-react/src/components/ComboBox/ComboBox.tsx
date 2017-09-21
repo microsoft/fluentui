@@ -769,7 +769,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
-        calloutSetMaxHeight={ this.props.calloutSetMaxHeight }
+        calloutSetMaxHeight={ calloutSetMaxHeight }
         className={ this._classNames.callout }
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }

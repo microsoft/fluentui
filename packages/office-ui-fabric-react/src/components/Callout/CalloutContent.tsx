@@ -141,8 +141,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
 
-    let getMaxHeight = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = calloutSetMaxHeight! && calloutSetMaxHeight! > getMaxHeight ? this._getMaxHeight() + this.state.heightOffset! : calloutSetMaxHeight!;
+    let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    let contentMaxHeight: number = calloutSetMaxHeight! && calloutSetMaxHeight! > getContentMaxHeight ? this._getMaxHeight() + this.state.heightOffset! : calloutSetMaxHeight!;
 
     let beakVisible = isBeakVisible && (!!targetElement || !!target);
 
