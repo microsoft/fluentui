@@ -34,6 +34,20 @@ $checkBoxHeight: 18px;
     background: $ms-color-themePrimary;
     opacity: 1;
   }
+
+  .check {
+    opacity: 0;
+  }
+
+  .checkHost:hover &,
+  .checkHost:focus &,
+  &:hover,
+  &:focus,
+  &.rootIsChecked {
+    .check {
+      opacity: 1;
+    }
+  }
 }
 
 .circle,
