@@ -20,6 +20,10 @@ export class GetStartedPage extends React.Component<any, any> {
                 'location': 'design'
               },
               {
+                'text': 'Design Toolkit',
+                'location': 'toolkit'
+              },
+              {
                 'text': 'Structure',
                 'location': 'structure'
               },
@@ -41,9 +45,9 @@ export class GetStartedPage extends React.Component<any, any> {
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
-                <div className={ styles.title }>Styles</div>
-                <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
+                <img className={ styles.contentInGrid } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
+                <div className={ css(styles.title, styles.contentInGrid) }>Styles</div>
+                <div className={ css(styles.description, styles.contentInGrid) }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
@@ -56,6 +60,11 @@ export class GetStartedPage extends React.Component<any, any> {
                 <div className={ styles.description }>Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands, containers, and content.</div>
               </div>
             </div>
+          </div>
+          <div id='toolkit'>
+            <span className={ styles.title }>Design Toolkit</span>
+            <span className={ styles.descriptionLarge }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <a href='#/resources'>Learn more</a>
           </div>
         </div>
 
@@ -160,7 +169,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>Add the following line to the &lt;head&gt; of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.2.0/css/fabric.min.css">`
+                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.3.0/css/fabric.min.css">`
                 }
               </CodeBlock>
             </li>
@@ -179,10 +188,10 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
           <p>You can <a href='https://github.com/OfficeDev/office-ui-fabric-core/releases'>download a copy of Fabric for your project</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md'>add it through a package manager</a>. You can also <a href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md'>build your own copy from the source code</a>.</p>
 
           <h3>Need an icon or feature Fabric Core doesn&rsquo;t have?</h3>
-          <p>Check the <a href='https://trello.com/b/sPTXiMzG/office-ui-fabric-core-requests'>Fabric Core Trello board</a> and vote up the request so we can track it. If you don&rsquo;t see an existing card, please <a href='https://github.com/OfficeDev/office-ui-fabric-core/issues'>file an issue in the repository</a> and we&rsquo;ll add the card for you.</p>
+          <p>First, check the <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
         </div>
 
-        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement</a>.</p>
+        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf'>assets license agreement</a>.</p>
 
       </div>
     );
