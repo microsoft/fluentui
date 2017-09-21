@@ -76,6 +76,7 @@ export const AppState: IAppState = {
         {
           title: 'Beta Theme Generator',
           url: '#/styles/themeGenerator',
+          isHiddenFromMainNav: true,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
         },
         {
@@ -385,7 +386,6 @@ export const AppState: IAppState = {
             {
               title: 'Themes',
               url: '#/components/themes',
-              isHiddenFromMainNav: true,
               component: () => <LoadingComponent title='Themes' />,
               getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ThemesUtilityPage').ThemesUtilityPage))
             }
