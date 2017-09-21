@@ -47,11 +47,13 @@
   background-color:$color-getStarted-darker;
   color: $ms-color-neutralLighter;
 
-  a, a:visited {
+  a, a:visited,
+  .uhfLinkOverride {
     border-bottom: 1px solid $ms-color-neutralLight;
   }
 
-  a, a:hover, a:active {
+  a, a:hover, a:active,
+  .uhfLinkOverride {
     color: $ms-color-neutralLight;
   }
 }
@@ -130,8 +132,17 @@
     font-size: $ms-font-size-l;
   }
 
-  a {
+  a,
+  .uhfLinkOverride {
     color: $color-getStarted-medium;
+  }
+
+  h3 {
+    margin: $uhf-h3-margin;
+  }
+
+  .trademark {
+    margin-top: 80px;
   }
 }
 
