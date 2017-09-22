@@ -94,18 +94,6 @@ export function getId(prefix?: string): string {
  * The callback takes as a first parameter the string that represents the name of the entry, and the second parameter is the
  * value of that entry, which is the value you'd normally use when using the enum (usually a number).
  * */
-<<<<<<< HEAD
-// tslint:disable-next-line:no-any
-export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: any) => T | undefined): T[] | undefined {
-  // map<any> to satisfy compiler since it doesn't realize we strip out undefineds in the .filter() call
-  // tslint:disable-next-line:no-any
-  return Object.keys(theEnum).map<any>((p: string) => { // map on each property name as a string
-    if (String(Number(p)) !== p) { // if the property is not just a number (because enums in TypeScript will map both ways)
-      return callback(p, theEnum[p]);
-    }
-    // tslint:disable-next-line:no-any
-  }).filter((v: any) => !!v); // only return elements with values
-=======
 export function mapEnumByName<T>(
   // tslint:disable-next-line:no-any
   theEnum: any,
@@ -118,5 +106,4 @@ export function mapEnumByName<T>(
         return callback(p as string, theEnum[p]);
       }
     }).filter((v: T | undefined) => !!v); // only return elements with values
->>>>>>> 30ebd44134e943d7b49d8f809a306de6213013ca
 }
