@@ -271,7 +271,7 @@ export const imageProperties = divProperties;
  * @param allowedPropsNames-  The array of allowed propnames.
  * @returns The filtered props
  */
-export function getNativeProps<T>(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T {
+export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T {
   return filteredAssign((propName: string) => {
     return (
       (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) && (

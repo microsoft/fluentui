@@ -1,3 +1,4 @@
+// tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;

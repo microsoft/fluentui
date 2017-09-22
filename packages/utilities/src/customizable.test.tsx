@@ -6,9 +6,10 @@ import { GlobalSettings } from './GlobalSettings';
 
 @customizable(['name', 'name2'])
 class Foo extends React.Component<{ field: string; }, {}> {
-  public name: any;
+  public name: string;
 
   public render(): JSX.Element {
+    // tslint:disable-next-line:no-any
     return <div>{ (this.props as any)[this.props.field] }</div>;
   }
 }

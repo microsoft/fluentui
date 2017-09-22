@@ -2,9 +2,11 @@
  * Autobind is a utility for binding methods in a class. This simplifies tagging methods as being "bound" to the this pointer
  * so that they can be used in scenarios that simply require a function callback.
  */
+// tslint:disable-next-line:no-any
 export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
   configurable: boolean;
   get(): T;
+  // tslint:disable-next-line:no-any
   set(newValue: any): void;
 } | void {
   let fn = descriptor.value;
@@ -34,6 +36,7 @@ export function autobind<T extends Function>(target: any, key: string, descripto
       return fnBound;
     },
 
+    // tslint:disable-next-line:no-any
     set(newValue: any): void {
       Object.defineProperty(this, key, {
         configurable: true,

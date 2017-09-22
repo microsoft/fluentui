@@ -10,7 +10,7 @@ import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps
  * @public
  */
 export interface IBaseProps {
-  componentRef?: any;
+  componentRef?: (ref: React.ReactNode | null) => (void | React.ReactNode);
 }
 
 /**
@@ -23,6 +23,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
    */
+  // tslint:disable-next-line:no-any
   public static onError: ((errorMessage?: string, ex?: any) => void);
 
   /**
@@ -36,7 +37,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[] | null;
-  private __resolves: { [name: string]: (ref: any) => any };
+  private __resolves: { [name: string]: (ref: React.ReactNode) => React.ReactNode };
   private __className: string;
   // tslint:enable:variable-name
 
@@ -45,6 +46,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param props - The props for the component.
    * @param context - The context for the component.
    */
+  // tslint:disable-next-line:no-any
   constructor(props?: P, context?: any) {
     super(props, context);
 
@@ -65,6 +67,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
   /**
    * When the component will receive props, make sure the componentRef is updated.
    */
+  // tslint:disable-next-line:no-any
   public componentWillReceiveProps(newProps?: P, newContext?: any): void {
     this._updateComponentRef(this.props, newProps);
   }
@@ -151,12 +154,14 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param refName - Name of the member to assign the ref to.
    * @returns A function instance keyed from the given refname.
    */
-  protected _resolveRef(refName: string): (ref: any) => any {
+  protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode {
     if (!this.__resolves) {
       this.__resolves = {};
     }
     if (!this.__resolves[refName]) {
-      this.__resolves[refName] = (ref: any) => {
+      // tslint:disable-next-line:no-any
+      this.__resolves[refName] = (ref: React.ReactNode) => {
+        // tslint:disable-next-line:no-any
         return (this as any)[refName] = ref;
       };
     }
@@ -218,17 +223,20 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
-function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNames: string[]): void {
+function _makeAllSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodNames: string[]): void {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
-function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: string): void {
+function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: string): void {
+  // tslint:disable:no-any
   let classMethod = (obj as any)[methodName];
   let prototypeMethod = (prototype as any)[methodName];
+  // tslint:enable:no-any
 
   if (classMethod || prototypeMethod) {
+    // tslint:disable-next-line:no-any
     (obj as any)[methodName] = function (): any {
       let retVal;
 

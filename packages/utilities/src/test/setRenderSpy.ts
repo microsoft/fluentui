@@ -6,7 +6,7 @@ import * as sinon from 'sinon';
  * times the render function was called in a test.
  * @param wrapper - The wrapper around the component instance for which you want to spy upon
  */
-export function setRenderSpy(wrapper: ReactWrapper<any, any>): sinon.SinonSpy {
+export function setRenderSpy(wrapper: ReactWrapper<{}, {}>): sinon.SinonSpy {
   let spy = sinon.spy(wrapper.instance().render);
   wrapper.instance().render = spy;
   return spy;
