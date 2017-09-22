@@ -179,6 +179,10 @@ export interface IBasePickerSuggestionsProps {
    * Screen reader message to read when there are suggestions available.
    */
   suggestionsAvailableAlertText?: string;
+  /**
+   * An ARIA label for the container that is the parent of the suggestions.
+   */
+  suggestionsContainerAriaLabel?: string;
 }
 
 export enum ValidationState {
