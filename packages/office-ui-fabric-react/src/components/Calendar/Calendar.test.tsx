@@ -147,6 +147,12 @@ describe('Calendar', () => {
 
     before(() => {
       defaultDate = new Date(2017, 2, 16);
+      let onSelectDate = (): (date: Date, dateRangeArray: Date[]) => void => {
+        return (date: Date, dateRangeArray: Date[]): void => {
+          lastSelectedDateRange = dateRangeArray;
+        };
+      };
+
       renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={ dayPickerStrings }
@@ -155,7 +161,7 @@ describe('Calendar', () => {
           firstDayOfWeek={ DayOfWeek.Tuesday }
           dateRangeType={ DateRangeType.Week }
           autoNavigateOnSelection={ true }
-          onSelectDate={ (date: Date, dateRangeArray: Date[]) => lastSelectedDateRange = dateRangeArray }
+          onSelectDate={ onSelectDate() }
         />) as Calendar;
     });
 

@@ -189,7 +189,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               { ...getNativeProps(item, buttonProperties) }
               id={ this._id + item.key }
               className={ className }
-              onClick={ (ev) => this._onItemClick(ev, item) }
+              onClick={ this._onItemClick(item) }
               data-command-key={ itemKey }
               aria-haspopup={ hasSubmenuItems(item) }
               aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
@@ -351,20 +351,22 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     });
   }
 
-  private _onItemClick(ev: React.MouseEvent<HTMLButtonElement>, item: IContextualMenuItem) {
-    if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
-      this._onContextMenuDismiss();
-    } else {
-      this.setState({
-        expandedMenuId: ev.currentTarget.id,
-        expandedMenuItemKey: item.key,
-        contextualMenuProps: this._getContextualMenuPropsFromItem(item),
-        contextualMenuTarget: ev.currentTarget
-      });
-    }
-    if (item.onClick) {
-      item.onClick(ev, item);
-    }
+  private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
+    return (ev: React.MouseEvent<HTMLButtonElement>): void => {
+      if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
+        this._onContextMenuDismiss();
+      } else {
+        this.setState({
+          expandedMenuId: ev.currentTarget.id,
+          expandedMenuItemKey: item.key,
+          contextualMenuProps: this._getContextualMenuPropsFromItem(item),
+          contextualMenuTarget: ev.currentTarget
+        });
+      }
+      if (item.onClick) {
+        item.onClick(ev, item);
+      }
+    };
   }
 
   @autobind

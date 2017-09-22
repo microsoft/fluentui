@@ -235,8 +235,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           }) }
                         role='gridcell'
                         onClick={ day.onSelected }
-                        onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
-                          this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
+                        onKeyDown={ this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) }
                         aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         aria-selected={ day.isSelected }
@@ -379,6 +378,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
+  }
+
+  @autobind
+  private _onDayKeyDown(originalDate: Date, weekIndex: number, dayIndex: number)
+    : (ev: React.KeyboardEvent<HTMLElement>) => void {
+    return (ev: React.KeyboardEvent<HTMLElement>): void => {
+      this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
+    };
   }
 
   @autobind
