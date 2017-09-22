@@ -40,8 +40,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     beakWidth: 16,
     gapSpace: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge,
-    calloutSetMaxHeight: false
+    directionalHint: DirectionalHint.bottomAutoEdge
   };
 
   private _didSetInitialFocus: boolean;
@@ -119,7 +118,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       calloutWidth,
       finalHeight,
       backgroundColor,
-      calloutSetMaxHeight } = this.props;
+      calloutMaxHeight } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -142,7 +141,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       : '';
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = calloutSetMaxHeight! && calloutSetMaxHeight! > getContentMaxHeight ? this._getMaxHeight() + this.state.heightOffset! : calloutSetMaxHeight!;
+    let contentMaxHeight: number = calloutMaxHeight! && calloutMaxHeight! > getContentMaxHeight ? this._getMaxHeight() + this.state.heightOffset! : calloutMaxHeight!;
 
     let beakVisible = isBeakVisible && (!!targetElement || !!target);
 

@@ -755,8 +755,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       onRenderList = this._onRenderList,
       calloutProps,
-      calloutFixedWidth,
-      calloutSetMaxHeight
+      calloutFixedWidth
     } = props;
 
     let setWidth = calloutFixedWidth ? this._comboBoxWrapper.clientWidth - 2 : 'auto';
@@ -769,7 +768,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
-        calloutSetMaxHeight={ calloutSetMaxHeight }
         className={ this._classNames.callout }
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
