@@ -181,6 +181,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
     &::after {
       background-color: $radioButton-dot-disabled-color;
+      border-color: $radioButton-dot-disabled-color;
     }
   }
 }

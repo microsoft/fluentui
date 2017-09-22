@@ -15,7 +15,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
-    onClicked,
     styles,
     iconName
    } = props;
@@ -67,7 +66,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
             classNames.root,
             props.className
           ) }
-        onClick={ onClicked }
       >
         { iconDefinition.code }
       </i>

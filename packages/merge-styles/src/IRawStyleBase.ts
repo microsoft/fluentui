@@ -161,7 +161,7 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * (Ms specific) constrast adjust rule.
    */
-  MsHighConstrastAdjust?: ICSSRule | string;
+  MsHighContrastAdjust?: ICSSRule | string;
 
   /**
    * (Moz specific) font smoothing directive.

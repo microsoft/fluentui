@@ -42,7 +42,7 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawSty
         backgroundColor: 'Highlight',
         borderColor: 'Highlight',
         color: 'HighlightText',
-        MsHighConstrastAdjust: 'none'
+        MsHighContrastAdjust: 'none'
       }
     },
   };
@@ -162,7 +162,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
         backgroundColor: 'ButtonFace',
         borderColor: 'ButtonText',
         color: 'ButtonText',
-        '-ms-high-contrast-adjust': 'none'
+        msHighContrastAdjust: 'none'
       }
     },
     rootHovered: {
@@ -232,13 +232,12 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       borderColor: ComboBoxRootBorderColorHovered,
-
       selectors: {
         [MS_HIGHCONTRAST_ACTIVE]: {
           color: 'HighlightText',
           borderColor: 'Highlight',
           MsHighContrastAdjust: 'none'
-        } as IRawStyle
+        }
       },
     },
 
@@ -248,9 +247,9 @@ export const getStyles = memoizeFunction((
         [MS_HIGHCONTRAST_ACTIVE]: {
           color: 'HighlightText',
           borderColor: 'Highlight',
-          MsHighConstrastAdjust: 'none'
-        } as IRawStyle
-      }
+          MsHighContrastAdjust: 'none'
+        }
+      },
     },
 
     rootDisabled: getDisabledStyles(theme),

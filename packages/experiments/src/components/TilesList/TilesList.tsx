@@ -11,6 +11,8 @@ const TilesListStyles: any = TilesListStylesModule;
 
 const MAX_TILE_STRETCH = 1.5;
 const CELLS_PER_PAGE = 100;
+const MIN_ASPECT_RATIO = 0.5;
+const MAX_ASPECT_RATIO = 3;
 
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
@@ -467,7 +469,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           spacing = 0,
           maxScaleFactor = MAX_TILE_STRETCH,
           marginBottom = 0,
-          marginTop = 0
+          marginTop = 0,
+          minAspectRatio = MIN_ASPECT_RATIO,
+          maxAspectRatio = MAX_ASPECT_RATIO
         } = item;
 
         const grid: ITileGrid = {
@@ -485,8 +489,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             desiredSize
           } = gridItem;
 
+          const aspectRatio = Math.min(
+            maxAspectRatio,
+            Math.max(
+              minAspectRatio,
+              desiredSize && (desiredSize.width / desiredSize.height) || 1));
+
           cells.push({
-            aspectRatio: desiredSize && (desiredSize.width / desiredSize.height) || 1,
+            aspectRatio: aspectRatio,
             content: gridItem.content,
             onRender: gridItem.onRender,
             grid: grid,

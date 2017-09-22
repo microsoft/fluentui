@@ -32,6 +32,10 @@ const ITEMS: { name: string; activity: string; }[] = [
   {
     name: lorem(2),
     activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
   }
 ];
 
@@ -158,6 +162,16 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
           }
           showForeground={ imagesLoaded }
           item={ ITEMS[2] }
+        />
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[3] }
         />
         <h3>Document icon</h3>
         <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>

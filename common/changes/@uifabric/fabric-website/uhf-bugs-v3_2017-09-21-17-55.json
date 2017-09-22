@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Removed trello reference from the Get Stated page.",
+      "comment": "Reinforced header tag styles across website pages to manage UHF counter-styles.",
       "type": "patch"
     }
   ],

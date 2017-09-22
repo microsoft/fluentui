@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[ComboBox] Fix slight rendering bug in browser zoom (around sub-pixel rounding)",
+      "comment": "SplitButton: Fix menu rendering when splitbutton is disabled",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "malozano@microsoft.com"
 }

@@ -41,6 +41,7 @@ export const getStyles = memoizeFunction((
     },
 
     splitButtonMenuButtonDisabled: {
+      pointerEvents: 'none',
       selectors: {
         ':hover': {
           cursor: 'default'

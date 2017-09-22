@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix comments and example code for onRenderCaretDown prop of Dropdown component",
+      "comment": "Adds ARIA label prop for Suggestions component",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chrismo@microsoft.com"
+  "email": "joem@microsoft.com"
 }
