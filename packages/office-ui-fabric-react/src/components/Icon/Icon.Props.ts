@@ -71,8 +71,4 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    */
   hasPlaceHolder?: boolean;
 
-  /**
-   * Callback for the onClick event.
-   */
-  onClicked?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
