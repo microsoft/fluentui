@@ -93,7 +93,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    let properties = this._sortProps(props.properties as IInterfaceProperty[]);
+    let properties = this._sortProps(props.properties as IInterfaceProperty[], props.title!);
 
     let groups: IGroup[] | undefined = undefined;
 
@@ -110,8 +110,10 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
 
   @autobind
   public componentWillReceiveProps(nextProps: IPropertiesTableProps): void {
+    let sortedProps: IInterfaceProperty[] = this._sortProps(nextProps.properties as IInterfaceProperty[], nextProps.title!);
     this.setState(() => ({
-      properties: this._sortProps(nextProps.properties as IInterfaceProperty[])
+      properties: sortedProps,
+      groups: this._getGroups(sortedProps)
     }));
 
   }
@@ -150,7 +152,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   }
 
   @autobind
-  private _sortProps(props: IInterfaceProperty[]): IInterfaceProperty[] {
+  private _sortProps(props: IInterfaceProperty[], title: string): IInterfaceProperty[] {
     return (props as IInterfaceProperty[])
       .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
         a.interfacePropertyType < b.interfacePropertyType ? -1 :
@@ -159,7 +161,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
               a.name > b.name ? 1 :
                 0
       ))
-      .map((prop: IInterfaceProperty, index: number) => (assign({}, prop, { key: index }) as IInterfaceProperty));
+      .map((prop: IInterfaceProperty, index: number) => (assign({}, prop, { key: `${prop.name}-${title}` }) as IInterfaceProperty));
   }
 
   private _tryAddGroup(

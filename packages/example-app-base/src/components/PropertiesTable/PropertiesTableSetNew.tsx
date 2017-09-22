@@ -6,9 +6,7 @@ import { PropertiesTable } from './PropertiesTable';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IPropertiesTableSetProps } from './PropertiesTableSet.Props';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-// import { parse } from '../../utilities/parser/index';
 
-// tslint:disable-next-line:no-unused-variable
 const DOCS = require('../../../docs.json') as JSON;
 const DEBOUNCE_DELAY = 200;
 
@@ -72,7 +70,7 @@ export class PropertiesTableSetNew extends BaseComponent<IPropertiesTableSetProp
           placeholder='Search'
         />
         <ChoiceGroup
-          defaultSelectedKey={ PropsFormat.Grouped }
+          // defaultSelectedKey={ PropsFormat.Grouped }
           selectedKey={ this.state.propsFormat }
           options={ [
             {
@@ -90,24 +88,39 @@ export class PropertiesTableSetNew extends BaseComponent<IPropertiesTableSetProp
         {
           this.state.propsFormat === PropsFormat.Alphabetical ?
             this._renderAlphabetical() :
-            this._renderGrouped()
+            this._renderGrouped(this._filterProps())
         }
       </div>
     );
   }
 
-  private _containsFilterText(prop: IInterfaceProperty | IEnumProperty): boolean {
-    let filter = this.state.propsFilter ? this.state.propsFilter : '';
+  @autobind
+  private _filterProps(): IProperty[] {
+    let filteredProps: IProperty[] = [];
 
-    return prop.name.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
-      prop.description.toLowerCase().indexOf(filter.toLowerCase()) > -1;
+    filteredProps = this.state.properties.map((item: IProperty): IProperty => {
+      let property = (item.property as (IInterfaceProperty | IEnumProperty)[]).filter((prop: (IInterfaceProperty | IEnumProperty)) => {
+        let filter = this.state.propsFilter ? this.state.propsFilter : '';
+
+        if (!filter) {
+          return true;
+        }
+        return prop.name.toLowerCase().indexOf(filter.toLowerCase()) > -1 ||
+          prop.description.toLowerCase().indexOf(filter.toLowerCase()) > -1;
+      });
+
+      return {
+        ...item,
+        property
+      } as IProperty;
+    });
+
+    return filteredProps;
   }
 
   @autobind
   private _onChangePropsFormat(ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void {
-    this.setState(() => ({
-      propsFormat: option.key
-    }));
+    this.setState(() => ({ propsFormat: option.key }));
   }
 
   @autobind
@@ -116,54 +129,38 @@ export class PropertiesTableSetNew extends BaseComponent<IPropertiesTableSetProp
   }
 
   @autobind
-  private _renderAlphabetical(): JSX.Element {
-    let { propsFilter } = this.state;
-    let combinedProps: (IInterfaceProperty | IEnumProperty)[] = [];
+  private _renderAlphabetical(): (JSX.Element | null)[] {
+    let combinedInterfaceProps: IInterfaceProperty[] = [];
+    let combinedEnumProps: IProperty[] = [];
 
-    // Flatten into single array (not grouped by interface)
-    this.state.properties.forEach((item: IProperty) => {
-      combinedProps = combinedProps.concat(item.property);
+    let filteredProps: IProperty[] = this._filterProps();
+
+    filteredProps.forEach((item: IProperty) => {
+      if (item.propertyType === PropertyType.interface) {
+        combinedInterfaceProps = combinedInterfaceProps.concat(item.property as IInterfaceProperty[]);
+      } else {
+        combinedEnumProps = combinedEnumProps.concat(item);
+      }
     });
 
-    let filteredProps: (IInterfaceProperty | IEnumProperty)[] = combinedProps;
-
-    // Filter by search text
-    if (propsFilter) {
-      filteredProps = combinedProps.filter((prop: IInterfaceProperty | IEnumProperty) => {
-        return this._containsFilterText(prop);
-      });
-    }
-
-    return (
-      <PropertiesTable
-        // key={ Math.random().toString() } // Why does this need a unique key to re-render?
-        title={ this.props.componentName }
-        properties={ filteredProps }
-        renderAsEnum={ false } // TODO: Handle Enum
-      />
-    );
+    return [
+      (
+        <PropertiesTable
+          // key={ Math.random().toString() } // Why does this need a unique key to re-render?
+          title={ this.props.componentName }
+          properties={ combinedInterfaceProps }
+          renderAsEnum={ false }
+        />
+      )
+    ].concat(this._renderGrouped(combinedEnumProps)); // Enums should always render grouped
   }
 
   @autobind
-  private _renderGrouped(): JSX.Element[] {
-    let { propsFilter } = this.state;
-    let filteredProps: IProperty[] = this.state.properties;
-
-    if (propsFilter) {
-      filteredProps = this.state.properties.map((item: IProperty): IProperty => {
-        let property = (item.property as (IInterfaceProperty | IEnumProperty)[]).filter((prop: (IInterfaceProperty | IEnumProperty)) => {
-          return this._containsFilterText(prop);
-        });
-        return {
-          ...item,
-          property
-        } as IProperty;
-      });
-    }
-
-    return filteredProps.map((item: IProperty): JSX.Element => (
+  private _renderGrouped(props: IProperty[]): JSX.Element[] {
+    return props.map((item: IProperty): JSX.Element => (
       <PropertiesTable
-        key={ Math.random().toString() } // Why does this need a unique key to re-render?
+        // key={ Math.random().toString() } // Why does this need a unique key to re-render?
+        key={ item.name }
         title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
         properties={ item.property }
         renderAsEnum={ item.propertyType === PropertyType.enum }
