@@ -6,7 +6,8 @@ export {
   IIconRecord,
   IIconSubset,
   getIcon,
-  registerIcons
+  registerIcons,
+  registerIconAlias
 } from './icons';
 
 export {

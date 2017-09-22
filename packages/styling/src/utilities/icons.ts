@@ -30,11 +30,14 @@ export interface IIconRecord {
 }
 
 export interface IIconRecords {
-  [key: string]: IIconRecord;
+  __remapped: { [key: string]: string };
+  [key: string]: IIconRecord | {};
 }
 
 const ICON_SETTING_NAME = 'icons';
-const _icons: IIconRecords = GlobalSettings.getValue(ICON_SETTING_NAME, {});
+const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
+  __remapped: {}
+});
 
 /**
  * Registers a given subset of icons.
@@ -67,6 +70,13 @@ export function registerIcons(iconSubset: IIconSubset): void {
 }
 
 /**
+ * Remaps one icon name to another.
+ */
+export function registerIconAlias(iconName: string, mappedToName: string): void {
+  _icons.__remapped[iconName.toLowerCase()] = mappedToName.toLowerCase();
+}
+
+/**
  * Gets an icon definition. If an icon is requested but the subset has yet to be registered,
  * it will get registered immediately.
  *
@@ -77,9 +87,10 @@ export function getIcon(name?: string): IIconRecord | undefined {
   let icon: IIconRecord | undefined = undefined;
 
   name = name ? name.toLowerCase() : '';
+  name = _icons.__remapped[name] || name;
 
   if (name) {
-    icon = _icons[name!];
+    icon = _icons[name!] as IIconRecord;
 
     if (icon) {
       let { subset } = icon;
