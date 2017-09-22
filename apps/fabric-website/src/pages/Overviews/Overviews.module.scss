@@ -56,8 +56,8 @@
   display: block;
   font-size: $font-size-big;
   font-weight: $ms-font-weight-semilight;
-  margin-bottom: 8px;
-  margin-top: 24px;
+  margin-bottom: $contentMargin-vertical;
+  margin-top: $titleMargin-vertical;
 }
 
 .description {
@@ -67,12 +67,19 @@
   margin-bottom: 12px;
 }
 
+.descriptionLarge {
+  display: block;
+  font-size: $ms-font-size-m;
+  width: 70%;
+  margin-bottom: $contentMargin-vertical;
+}
+
 .secondary {
   padding-top: 80px;
   width: 50%;
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .features {
     flex-direction: row;
 

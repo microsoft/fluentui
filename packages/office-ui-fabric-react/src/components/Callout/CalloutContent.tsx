@@ -70,7 +70,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public componentDidUpdate() {
     this._setInitialFocus();
-    this._updatePosition();
+    this._updateAsyncPosition();
   }
 
   public componentWillMount() {
@@ -246,10 +246,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this.props.onLayerMounted();
     }
 
-    this._updatePosition();
+    this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
   }
-
+  private _updateAsyncPosition() {
+    this._async.requestAnimationFrame(() => this._updatePosition());
+  }
   private _updatePosition() {
     let { positions } = this.state;
     let hostElement: HTMLElement = this._hostElement;

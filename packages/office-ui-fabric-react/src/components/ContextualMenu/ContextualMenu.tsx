@@ -309,7 +309,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    let headerItem = section.title && this._renderHeaderMenuItem(section.title, index, hasCheckmarks, hasIcons);
+    let headerItem;
+    if (section.title) {
+      const headerContextualMenuItem: IContextualMenuItem = {
+        key: `section-${section.title}-title`,
+        itemType: ContextualMenuItemType.Header,
+        name: section.title
+      };
+      headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, index, hasCheckmarks, hasIcons);
+    }
 
     if (section.items && section.items.length > 0) {
       return (
@@ -592,7 +600,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         shouldFocusOnMount: true,
         directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className: this.props.className,
-        gapSpace: 0
+        gapSpace: 0,
+        isBeakVisible: false
       };
 
       if (item.subMenuProps) {

@@ -2,6 +2,275 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.49.1",
+      "tag": "office-ui-fabric-react_v4.49.1",
+      "date": "Thu, 21 Sep 2017 06:23:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Brand icons page clean up."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "ee4a6d9178952be0f2e94f500738ef22fec48074",
+            "comment": "Implement hover and focus trigger behavior for Check component"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "88967a31ae2225810c19f0b22471aa9b0c742d12",
+            "comment": "Add the ability for compoundButtons to have icons"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "1a9ecf882c70d48ea9cb71deae3cee62d2569045",
+            "comment": "[ComboBox] Fix slight rendering bug in browser zoom (around sub-pixel rounding)"
+          },
+          {
+            "author": "Atul Bagga <bagga.atul@outlook.com>",
+            "commit": "19d48d6decc07b78a96d37e5f0381d7fe31be892",
+            "comment": "Stop delete from happening using delete or backspace when component is in disabled  mode"
+          },
+          {
+            "author": "Chris Mohr <chrismohr@users.noreply.github.com>",
+            "commit": "f1181d7ce3abf9a899e677ac1ffd60b19062c2f1",
+            "comment": "fix comments and example code for onRenderCaretDown prop of Dropdown component"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.49.0",
+      "tag": "office-ui-fabric-react_v4.49.0",
+      "date": "Wed, 20 Sep 2017 10:19:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "d9d7806fc211a326161c407b28f908e1bc7ee3df",
+            "comment": "Button: Add the ability to dismiss any open menus from the button interface"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d760d81856ba4acf60b52eadc299dfa8210bc1f2",
+            "comment": "Modal: Updated padding in example to fix RTL support"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "7fadf0b0aa27ce0a245280e7867881cef1add967",
+            "comment": "Changing high-contrast colors to system colors"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Chris Mohr <chrismohr@users.noreply.github.com>",
+            "commit": "5177563534e111a3c09c22ce8421ec1619a6ec2c",
+            "comment": "allow 'chevron down' icon on Dropdown to be customized"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bc44b9542dcf9df07dfcc2c3dadee0cae6c16a1a",
+            "comment": "ContextualMenu: Update the type of the title property on a menu section to be of type string"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2ff3cc2d838c9c21ffe47808121bf0062e62c762",
+            "comment": "SearchBox: Added onEscape prop"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.48.1",
+      "tag": "office-ui-fabric-react_v4.48.1",
+      "date": "Tue, 19 Sep 2017 10:08:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "3bb193abf39423d1e9a6701789b16aad5363ce0c",
+            "comment": "Added label to Persona example components."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "284b96aef2e2665bc135b64b63699056e45070c6",
+            "comment": "Added an optional alt text prop for the Image component and example on the website."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "5c586f0d68efe83ed9eb7fa95e2f8926c566122d",
+            "comment": "Revised alt text best practices for Image Component in website, removed alt prop."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "adc11d66a038207b537d2e65eefebe9c639bdbcb",
+            "comment": "Updated dropdown state styles to match the XD specs."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "219d6cb38f1c2af59d5d463ceabe576ecfe682e8",
+            "comment": "Cleaned up Default Dialogue to more cleanly represent the default state. Reformated exampleStyles imports to work towards more modularity. Typo and language fixes."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "f1a3c0a0653ca6b335077a95f8791ed42c610230",
+            "comment": "Dropdown: Fixed logic to support selected options in single select scenario"
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "726a015a94fb23c229784649926901665c3d9d8f",
+            "comment": "Added shared styling to accommodate shared spacing between common elements in example components on the website. Also began to add consistency in the language."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "c6c23967f279d9fad26005800628a2e98f3eb8f9",
+            "comment": "SplitButton: Properly cascade container styles to the disabled state"
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "055dd03c8ad9d74843f2bc3445d529a3c1fd8cb5",
+            "comment": "Visual bug fixes for UHF adoption for website"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.48.0",
+      "tag": "office-ui-fabric-react_v4.48.0",
+      "date": "Mon, 18 Sep 2017 10:18:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "38bbc24a0e3f1b97bbc646e4783372a9657f3dee",
+            "comment": "DatePicker-Adding new props from Calendar component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "77bf0179913877383f87dbe5eb4c200f3cf67dcd",
+            "comment": "DatePicker-fixing vertical scrollbar bug"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "93fd9214ba07ff85220a1800e80597b1d957318d",
+            "comment": "Force Check to use the page background color"
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "ed78bd102529ecb5dc0500aaadd720a3b95e2a71",
+            "comment": "Allow onItemContextMenu a way to cancel preventDefault() call."
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "411c448da81f6aafa586e9ca835afc2f93c96356",
+            "comment": "ActivityItem: Descreasing icon font size."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.47.0",
+      "tag": "office-ui-fabric-react_v4.47.0",
+      "date": "Fri, 15 Sep 2017 10:19:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "acdbb9021ae55b63c7a72189892e62347b410090",
+            "comment": "Calendar:  Adding week numbers to calendar"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "14202292db345d3c736f805186de469a016b7675",
+            "comment": "DatePicker: Hovering over calendar icon in text input does not change cursor to pointer."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "72545f3da76a593c6787e7cb1d55a99008005991",
+            "comment": "SplitButton: Fixed primary theme, updated documentation"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "7f6604ebb63d8b420c6d92de4f70c60872a62c5f",
+            "comment": "Prevent touch events from triggering marquee selection"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.46.1",
+      "tag": "office-ui-fabric-react_v4.46.1",
+      "date": "Thu, 14 Sep 2017 10:17:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e438cfa78495bab7de5653ae661b1d50555d5861",
+            "comment": "Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "bd33f70885615750558e10dfb9aca8eabe12ca1b",
+            "comment": "Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.46.0",
+      "tag": "office-ui-fabric-react_v4.46.0",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cf7593444b8d873daa760caddb21f1665342b716",
+            "comment": "Check: better alignment of the check mark."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c5904b5a36fd58694f4d59d634610068b98a87b9",
+            "comment": "[SwatchColorPicker] Fix uncaught exception when colorCells is empty"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "561e832554ebdbbfc44e219370b56f019571bf38",
+            "comment": "Calendar: Month-picker-only selection bug fixed"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a9c9fe6749234556ffd31598c7547bdf4560423d",
+            "comment": "DetailsList: Update DetailsRow Check target size to be larger"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "f49723ef1425284a918fc79cf8e6db8f9ed3964e",
+            "comment": "Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b691aa97525304884029629d2f40f14dc663f0bb",
+            "comment": "Adding `MoreVertical` icon."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.13.0 <5.0.0` to `>=4.13.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.23.1 <1.0.0` to `>=0.24.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.45.1",
       "tag": "office-ui-fabric-react_v4.45.1",
       "date": "Tue, 12 Sep 2017 17:41:25 GMT",

@@ -1,4 +1,4 @@
-import { assign, filteredAssign } from './object';
+import { assign, filteredAssign, mapEnumByName } from './object';
 
 describe('assign', () => {
   it('can copy an object', () => {
@@ -29,5 +29,27 @@ describe('filteredAssign', () => {
 
     expect(result.a).toEqual(1);
     expect(result.b).toBeUndefined();
+  });
+});
+
+describe('mapEnumByName', () => {
+  it('iterates over all the strings of an enum', () => {
+    enum foo {
+      first,
+      second,
+      third,
+      fourth
+    }
+
+    let result: string[] = [];
+    mapEnumByName(foo, (name: string) => {
+      if (name) {
+        result.push(name);
+      } else {
+        expect(name).not.toBeFalsy;
+      }
+    });
+
+    expect(result).toEqual(['first', 'second', 'third', 'fourth']);
   });
 });

@@ -1,6 +1,98 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Sep 2017 06:23:58 GMT and should not be manually modified.
+
+## 4.49.1
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Patches
+
+- Brand icons page clean up.
+- Implement hover and focus trigger behavior for Check component
+- Add the ability for compoundButtons to have icons
+- [ComboBox] Fix slight rendering bug in browser zoom (around sub-pixel rounding)
+- Stop delete from happening using delete or backspace when component is in disabled  mode
+- fix comments and example code for onRenderCaretDown prop of Dropdown component
+
+## 4.49.0
+Wed, 20 Sep 2017 10:19:01 GMT
+
+### Minor changes
+
+- allow 'chevron down' icon on Dropdown to be customized
+- ContextualMenu: Update the type of the title property on a menu section to be of type string
+- SearchBox: Added onEscape prop
+
+### Patches
+
+- Button: Add the ability to dismiss any open menus from the button interface
+- Modal: Updated padding in example to fix RTL support
+- Changing high-contrast colors to system colors
+
+## 4.48.1
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Patches
+
+- Added label to Persona example components.
+- Added an optional alt text prop for the Image component and example on the website.
+- Revised alt text best practices for Image Component in website, removed alt prop.
+- Updated dropdown state styles to match the XD specs.
+- Cleaned up Default Dialogue to more cleanly represent the default state. Reformated exampleStyles imports to work towards more modularity. Typo and language fixes.
+- Dropdown: Fixed logic to support selected options in single select scenario
+- Added shared styling to accommodate shared spacing between common elements in example components on the website. Also began to add consistency in the language.
+- SplitButton: Properly cascade container styles to the disabled state
+- Visual bug fixes for UHF adoption for website
+
+## 4.48.0
+Mon, 18 Sep 2017 10:18:23 GMT
+
+### Minor changes
+
+- DatePicker-Adding new props from Calendar component
+
+### Patches
+
+- DatePicker-fixing vertical scrollbar bug
+- Force Check to use the page background color
+- Allow onItemContextMenu a way to cancel preventDefault() call.
+- ActivityItem: Descreasing icon font size.
+
+## 4.47.0
+Fri, 15 Sep 2017 10:19:50 GMT
+
+### Minor changes
+
+- Calendar:  Adding week numbers to calendar
+- DatePicker: Hovering over calendar icon in text input does not change cursor to pointer.
+
+### Patches
+
+- SplitButton: Fixed primary theme, updated documentation
+- Prevent touch events from triggering marquee selection
+
+## 4.46.1
+Thu, 14 Sep 2017 10:17:39 GMT
+
+### Patches
+
+- Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak.
+- Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports
+
+## 4.46.0
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Minor changes
+
+- Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker.
+- Adding `MoreVertical` icon.
+
+### Patches
+
+- Check: better alignment of the check mark.
+- [SwatchColorPicker] Fix uncaught exception when colorCells is empty
+- Calendar: Month-picker-only selection bug fixed
+- DetailsList: Update DetailsRow Check target size to be larger
 
 ## 4.45.1
 Tue, 12 Sep 2017 17:41:25 GMT

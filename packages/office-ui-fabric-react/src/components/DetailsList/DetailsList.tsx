@@ -49,7 +49,7 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 36;
+const CHECKBOX_WIDTH = 40;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;
@@ -345,7 +345,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       ref={ this._resolveRef('_list') }
                       role='presentation'
                       items={ items }
-                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
+                      onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
                       { ...additionalListProps }
@@ -373,6 +373,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   @autobind
   private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
     return <DetailsHeader { ...detailsHeaderProps } />;
+  }
+
+  @autobind
+  private _onRenderListCell(nestingDepth: number)
+    : (item: any, itemIndex: number) => React.ReactNode {
+    return (item: any, itemIndex: number): React.ReactNode => {
+      return this._onRenderCell(nestingDepth, item, itemIndex as number);
+    };
   }
 
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {

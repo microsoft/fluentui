@@ -6,7 +6,6 @@ $nav-group-header-height: 40px;
   padding-top: 20px;
   @include ms-padding-right(12px);
   padding-bottom: 60px;
-  @include ms-padding-left(36px);
 }
 
 .link {
@@ -29,40 +28,6 @@ $nav-group-header-height: 40px;
   &.hasActiveChild {
     color: $ms-color-white;
     position: relative;
-
-    &::before {
-      content: '';
-      width: 2px;
-      height: 20px;
-      background: $ms-color-neutralTertiary;
-      position: absolute;
-      top: 3px;
-      @include ms-left(-16px);
-    }
-
-    &.fabricPage::before {
-      background-color: $color-home-medium;
-    }
-
-    &.getStartedPage::before {
-      background-color: $color-getStarted-medium;
-    }
-
-    &.stylesPage::before {
-      background-color: $color-styles-medium;
-    }
-
-    &.componentsPage::before {
-      background-color: $color-components-darker;
-    }
-
-    &.resourcesPage::before {
-      background-color: $color-resources-medium;
-    }
-
-    &.resourcesPage::before {
-      background-color: $color-blog-medium;
-    }
   }
 
 
@@ -95,8 +60,6 @@ $nav-group-header-height: 40px;
 
 // Second-level links
 .isSubMenu {
-  @include ms-margin-left(8px);
-
   .link {
     a {
       color: $ms-color-neutralTertiary;

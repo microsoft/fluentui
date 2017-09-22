@@ -199,3 +199,47 @@ function getDatePartHashValue(date: Date) {
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
   /* tslint:enable:no-bitwise */
 }
+
+/**
+ * Returns the week number for a date.
+ * Week numbers are 1 - 52 (53) in a year
+ * @param {Date} date - A date to find the week number for.
+ * @param {DayOfWeek} firstDayOfWeek - The first day of the week (0-6, Sunday = 0)
+ * @return {Number} The week's number in the year.
+ */
+export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek) {
+  let num = getDayOfYear(date) - 1;
+  let num2 = date.getDay() - (num % 7);
+  let num3 = ((num2 - firstDayOfWeek) + 14) % 7;
+  return Math.floor(((num + num3) / 7) + 1);
+}
+
+/**
+ * Returns the day number for a date in a year
+ * The number of days since January 1st in the particular year.
+ * @param {Date} date - A date to find the day number for.
+ * @return {Number} The day's number in the year.
+ */
+function getDayOfYear(date: Date) {
+  let month = date.getMonth();
+  let year = date.getFullYear();
+  let daysUntilDate = 0;
+
+  for (let i = 0; i < month; i++) {
+    daysUntilDate += daysInMonth((i + 1), year);
+  }
+
+  daysUntilDate += date.getDate();
+
+  return daysUntilDate;
+}
+
+/**
+ * Returns the number of days in the month
+ * @param {number} month - The month number to target (months 1-12).
+ * @param {number} year - The year to target.
+ * @return {Number} The number of days in the month.
+ */
+function daysInMonth(month: number, year: number) {
+  return new Date(year, month, 0).getDate();
+}

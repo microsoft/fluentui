@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[SwatchColorPicker] Fix uncaught exception when colorCells is empty",
+      "comment": "ComboBox: Changing high-contrast styles to use msHighContrastAdjust",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }

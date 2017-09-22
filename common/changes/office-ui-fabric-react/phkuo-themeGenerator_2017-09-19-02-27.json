@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Calendar: Month-picker-only selection bug fixed",
-      "type": "patch"
+      "comment": "Create Theme Generator page",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }

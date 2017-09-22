@@ -12,6 +12,8 @@ import { ImageContainExample } from './examples/Image.Contain.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ImageStatus } from './Image.checklist';
 
 const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Default.Example.tsx') as string;
 const ImageCenterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Center.Example.tsx') as string;
@@ -60,7 +62,36 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
             Images render an image. The borders have been added to these examples in order to help visualize empty space in the image frame.
           </div>
         }
+        bestPractices={
+          <div />
+        }
+        dos={
+          <div>
+            <ul>
+              <li>
+                Provide descriptive values for the alt text attribute for all images.
+                If alt text isn't provided for images, the image information is inaccessible, for example, to people who cannot see and use a screen reader that reads aloud the information on a page.
+                <ul>
+                  <li>Consider context. If the image represents a function, be sure to indicate that. If it is to be consumed with other objects on the page, consider that as well.</li>
+                  <li>Make the description brief but accurate. Use one sentence, two at the most.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        }
+        donts={
+          <div>
+            <ul>
+              <li>Repeat information in your alt text that is already on the page. Don't use "image of" or "graphic of" to describe it, as that is already apparent to the reader.</li>
+            </ul>
+          </div>
+        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ImageStatus}
+          />
+        }
       />
     );
   }
