@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 21 Sep 2017 06:23:58 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Sep 2017 19:08:51 GMT and should not be manually modified.
+
+## 5.0.3
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Patches
+
+- Reinforced header tag styles across website pages to manage UHF counter-styles.
+- Visual bug fixes.
 
 ## 5.0.2
 Thu, 21 Sep 2017 06:23:58 GMT
