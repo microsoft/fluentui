@@ -6,17 +6,34 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 // Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Text describing the activity that occurred and naming the people involved in it.
+   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or onRenderActivityDescription are included, no description of the activity is shown.
+   */
+  activityDescription?: React.ReactNode[] | React.ReactNode;
+
+  /**
+   * Text describing the activity that occurred and naming the people involved in it. Deprecated, use activityDescription instead.
+   * @deprecated
    */
   activityDescriptionText?: string;
 
   /**
-   * If onRenderIcon is not, then the persona props in this array will be used as the icon for the this activity item.
+   * An element containing an icon shown next to the activity item.
+   */
+  activityIcon?: React.ReactNode;
+
+  /**
+   * If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.
    */
   activityPersonas?: Array<IPersonaProps>;
 
   /**
-   * Text of comments or @mention messages.
+   * An element containing the text of comments or @mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.
+   */
+  comments?: React.ReactNode[] | React.ReactNode;
+
+  /**
+   * Text of comments or @mention messages. Deprecated, use comments instead.
+   * @deprecated
    */
   commentText?: string;
 
@@ -56,9 +73,9 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   styles?: IActivityItemStyles;
 
   /**
-   * Text shown as a timestamp on this activity. If not included, no timestamp is shown.
+   * Element shown as a timestamp on this activity. If not included, no timestamp is shown.
    */
-  timeStamp?: string;
+  timeStamp?: string | React.ReactNode[] | React.ReactNode;
 }
 
 export interface IActivityItemStyles {
