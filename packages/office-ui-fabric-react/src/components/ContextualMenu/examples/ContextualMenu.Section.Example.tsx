@@ -156,10 +156,16 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
         { showCallout && (
           <Callout
             setInitialFocus={ true }
-            onDismiss={ this._setShowCalloutFalse }
+            // tslint:disable-next-line:jsx-no-lambda
+            onDismiss={ (): void => {
+              this.setState({ showCallout: false });
+            } }
           >
             <DefaultButton
-              onClick={ this._setShowCalloutFalse }
+              // tslint:disable-next-line:jsx-no-lambda
+              onClick={ (): void => {
+                this.setState({ showCallout: false });
+              } }
               text='Hello world'
             />
           </Callout>
