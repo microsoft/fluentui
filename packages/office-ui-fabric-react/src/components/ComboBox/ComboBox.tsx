@@ -850,7 +850,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className={ 'ms-ComboBox-option' }
         styles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
-        onClick={ () => this._onItemClick(item.index) }
+        onClick={ this._onItemClick(item.index) }
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
         ariaLabel={ item.text }
@@ -908,11 +908,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index: number | undefined) {
-    this._setSelectedIndex(index as number);
-    this.setState({
-      isOpen: false
-    });
+  private _onItemClick(index: number | undefined): () => void {
+    return (): void => {
+      this._setSelectedIndex(index as number);
+      this.setState({
+        isOpen: false
+      });
+    };
   }
 
   /**
