@@ -89,8 +89,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _onRenderComments(props: IActivityItemProps): JSX.Element | null {
     const comments = props.comments || props.commentText;
 
-    if (!props.isCompact && props.comments) {
-      return (<div className={ this._classNames.commentText }>{ props.comments }</div>);
+    if (!props.isCompact && comments) {
+      return (<div className={ this._classNames.commentText }>{ comments }</div>);
     }
 
     return null;

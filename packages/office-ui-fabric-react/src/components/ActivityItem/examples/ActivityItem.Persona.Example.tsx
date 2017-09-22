@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { ActivityItem } from '../ActivityItem';
 import { TestImages } from '../../../common/TestImages';
-import { Icon } from '../../../Icon';
 import { Link } from '../../../Link';
 
 const activityItemExamples = [
