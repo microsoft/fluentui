@@ -16,7 +16,8 @@ import {
   PersonaSize
 } from './Persona.Props';
 import {
-  PERSONA_INITIALS_COLOR
+  PERSONA_INITIALS_COLOR,
+  PERSONA_SIZE
 } from './PersonaConsts';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
@@ -93,7 +94,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona-coin') }
+        className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
