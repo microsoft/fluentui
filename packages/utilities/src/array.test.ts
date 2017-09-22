@@ -82,21 +82,30 @@ describe('array utils tests', () => {
   });
 
   describe('replaceElement tests', () => {
+    it('should return a new array instead of mutating the existing array', () => {
+      const array = [1, 2, 3];
+      const result = replaceElement(array, 3, 1)
+      expect(result).toEqual([1, 3, 3]);
+      expect(result).not.toBe(array);
+    });
+
     it('should return a new array with the replaced element in the center', () => {
-      let array = replaceElement<string>(['Zero', 'One', 'Two', 'Three', 'Four'], 'owT', 2);
-      expect(array).toEqual(['Zero', 'One', 'owT', 'Three', 'Four']);
+      const array = ['Zero', 'One', 'Two', 'Three', 'Four'];
+      const result = replaceElement(array, 'owT', 2);
+      expect(result).toEqual(['Zero', 'One', 'owT', 'Three', 'Four']);
     });
 
     it('should return a new array with the first element replaced', () => {
-      let array = replaceElement<string>(['Zero', 'One', 'Two', 'Three', 'Four'], 'oreZ', 0);
-      expect(array).toEqual(['oreZ', 'One', 'Two', 'Three', 'Four']);
+      const array = ['Zero', 'One', 'Two', 'Three', 'Four'];
+      const result = replaceElement(array, 'oreZ', 0);
+      expect(result).toEqual(['oreZ', 'One', 'Two', 'Three', 'Four']);
     });
 
     it('should return a new array with the last element replaced', () => {
-      let array = replaceElement<string>(['Zero', 'One', 'Two', 'Three', 'Four'], 'ruoF', 4);
-      expect(array).toEqual(['Zero', 'One', 'Two', 'Three', 'ruoF']);
+      const array = ['Zero', 'One', 'Two', 'Three', 'Four']
+      const result = replaceElement(array, 'ruoF', 4);
+      expect(result).toEqual(['Zero', 'One', 'Two', 'Three', 'ruoF']);
     });
-
   });
 
   describe('addElementAddIndex tests', () => {
