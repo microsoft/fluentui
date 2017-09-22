@@ -84,7 +84,7 @@ describe('array utils tests', () => {
   describe('replaceElement tests', () => {
     it('should return a new array instead of mutating the existing array', () => {
       const array = [1, 2, 3];
-      const result = replaceElement(array, 3, 1)
+      const result = replaceElement(array, 3, 1);
       expect(result).toEqual([1, 3, 3]);
       expect(result).not.toBe(array);
     });
@@ -102,7 +102,7 @@ describe('array utils tests', () => {
     });
 
     it('should return a new array with the last element replaced', () => {
-      const array = ['Zero', 'One', 'Two', 'Three', 'Four']
+      const array = ['Zero', 'One', 'Two', 'Three', 'Four'];
       const result = replaceElement(array, 'ruoF', 4);
       expect(result).toEqual(['Zero', 'One', 'Two', 'Three', 'ruoF']);
     });

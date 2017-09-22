@@ -86,7 +86,7 @@ export function removeIndex<T>(array: T[], index: number): T[] {
  * @param array - Array to me manipulated
  * @param mutateFunction - The function that will mutate the copied array
  */
-function copyAndMutateArray<T>(array: T[], mutateFunction: (array: T[]) => void) {
+function copyAndMutateArray<T>(array: T[], mutateFunction: (array: T[]) => void): T[] {
   const copy = array.slice();
   mutateFunction(copy);
   return copy;
@@ -99,7 +99,7 @@ function copyAndMutateArray<T>(array: T[], mutateFunction: (array: T[]) => void)
  * @param index - The index of the element that should be replaced
  */
 export function replaceElement<T>(array: T[], newElement: T, index: number): T[] {
-  return copyAndMutateArray(array, (array: T[]): void => { array[index] = newElement });
+  return copyAndMutateArray(array, (arr: T[]): void => { arr[index] = newElement; });
 }
 
 /**
@@ -109,7 +109,7 @@ export function replaceElement<T>(array: T[], newElement: T, index: number): T[]
  * @param itemToAdd - The element to insert
  */
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[] {
-  return copyAndMutateArray(array, (array: T[]): void => { array.splice(index, 0, itemToAdd) });
+  return copyAndMutateArray(array, (arr: T[]): void => { arr.splice(index, 0, itemToAdd); });
 }
 
 /**
