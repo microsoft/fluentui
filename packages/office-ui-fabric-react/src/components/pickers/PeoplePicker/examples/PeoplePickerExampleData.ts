@@ -1,4 +1,4 @@
-import { IPersonaProps, PersonaPresence, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { TestImages } from '../../../../common/TestImages';
 
 export const people: (IPersonaProps & { key: string | number })[] = [
@@ -10,8 +10,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online,
-    size: PersonaSize.small
+    presence: PersonaPresence.online
   },
   {
     key: 2,
