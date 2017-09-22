@@ -1,5 +1,9 @@
 @import '../../../styles/variables';
 
+.paragraphInGrid {
+    padding-left: $contentInGrid;
+}
+
 .exampleIcons {
   align-items: center;
   display: flex;

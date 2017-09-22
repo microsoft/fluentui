@@ -2,20 +2,12 @@
 @import '../../styles/mixins';
 
 :global {
-  .App {
-    background-color: $ms-color-neutralDark;
-    justify-content: center;
-    padding-left: 5%; // % matches UHF breakpoint sizes
-    padding-right: 5%; // % matches UHF breakpoint sizes
-  }
-
   // Element that wraps everything except for the header
   .App-wrapper {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
-    padding-top: $Header-height; // Keep content from being covered by the header
   }
 
   // Nav is hidden off screen by default
@@ -74,6 +66,13 @@
 
   // Show the nav at all times, to the left of the content
   @media screen and (min-width: $uhf-screen-min-mobile) {
+    .App {
+      background-color: $ms-color-neutralDark;
+      justify-content: center;
+      @include ms-padding-right($App-padding-right-lg);
+      @include ms-padding-left($App-padding-left-lg);
+    }
+
     .App-wrapper {
       flex-direction: row;
     }
@@ -105,8 +104,8 @@
 
   @media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
     .App {
-      @include ms-padding-right(24px);
-      @include ms-padding-left(6px);
+      @include ms-padding-right($App-padding-right-sm);
+      @include ms-padding-left($App-padding-left-sm);
     }
 
     .App-nav {

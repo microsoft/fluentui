@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox: Added onEscape prop",
+      "comment": "ActivityItem: Adding ReactNodes in the interface in addition to the IRenderFunction props.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "v-krbrow@microsoft.com"
 }

@@ -53,6 +53,10 @@ $BlogItem-dateColumnWidth: 120px;
     max-width: 50em;
     width: 100%;
     padding-top: 60px;
+
+    h2 {
+      margin: $uhf-h2-margin;
+    }
   }
 
   .BlogItem-title {

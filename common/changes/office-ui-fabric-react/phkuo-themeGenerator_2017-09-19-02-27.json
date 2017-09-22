@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changing high-contrast colors to system colors",
-      "type": "patch"
+      "comment": "Create Theme Generator page",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-krbrow@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }
