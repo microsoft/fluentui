@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Fixed 'any' types for tslint",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "lynam.emily@gmail.com"
+}
