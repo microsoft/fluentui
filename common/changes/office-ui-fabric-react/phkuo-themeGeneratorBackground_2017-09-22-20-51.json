@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Create Theme Generator page",
-      "type": "minor"
+      "comment": "Theme Generator: have the bg change with the theme",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
