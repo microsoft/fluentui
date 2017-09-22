@@ -1,4 +1,4 @@
-import { findIndex, find, createArray, removeIndex } from './array';
+import { findIndex, find, createArray, removeIndex, flatten } from './array';
 
 describe('array utils tests', () => {
   describe('findIndex tests', () => {
@@ -78,6 +78,38 @@ describe('array utils tests', () => {
       const array = [0, 1, 2];
       const result = removeIndex(array, 1);
       expect(result).toEqual([0, 2]);
+    });
+  });
+
+  describe('flatten tests', () => {
+    it('does nothing for an empty array', () => {
+      const array: number[] = [];
+      const result = flatten(array);
+      expect(result).toEqual(array);
+    });
+
+    it('does nothing an array with a single element', () => {
+      const array = [1];
+      const result = flatten(array);
+      expect(result).toEqual(array);
+    });
+
+    it('does nothing for an array of numbers', () => {
+      const array = [1, 2, 3];
+      const result = flatten(array);
+      expect(result).toEqual(array);
+    });
+
+    it('flattens an array of arrays', () => {
+      const array = [[1, 2, 3], [4, 6, 8], [20]];
+      const result = flatten(array);
+      expect(result).toEqual([1, 2, 3, 4, 6, 8, 20]);
+    });
+
+    it('flattens an array with numbers and arrays of numbers', () => {
+      const array = [[1, 2, 3], [4, 6, 8], 20, 22, [25, 26, 28]];
+      const result = flatten(array);
+      expect(result).toEqual([1, 2, 3, 4, 6, 8, 20, 22, 25, 26, 28]);
     });
   });
 });

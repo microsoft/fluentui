@@ -79,3 +79,13 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
 export function removeIndex<T>(array: T[], index: number): T[] {
   return array.filter((_: T, i: number) => index !== i);
 }
+
+/**
+ * Given an array where each element is of type T or T[], flatten it into an array of T
+ * @param array - The array where each element can optionally also be an array
+ */
+export function flatten<T>(array: (T | T[])[]): T[] {
+  let result: T[] = [];
+  array.forEach(item => (result = result.concat(item)));
+  return result;
+}
