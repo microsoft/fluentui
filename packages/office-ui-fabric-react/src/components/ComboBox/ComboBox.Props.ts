@@ -96,12 +96,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    */
   calloutFixedWidth?: boolean;
 
-  /**
-   * Set max height of callout
-   * When not set the callout will expand with contents up to the bottom of the screen
-   */
-  calloutMaxHeight?: number;
-
 }
 
 export interface IComboBoxStyles {
