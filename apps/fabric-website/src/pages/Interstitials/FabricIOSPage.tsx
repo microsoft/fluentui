@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as stylesImport from './Interstitials.module.scss';
 const styles: any = stylesImport;
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class FabricIOSPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.basePage }>
         <div className={ styles.header }>
           <h1>Office UI Fabric iOS</h1>
           <span>The Office design language for iOS</span>
