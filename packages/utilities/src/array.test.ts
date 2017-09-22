@@ -1,4 +1,4 @@
-import { findIndex, find, createArray, removeIndex, flatten } from './array';
+import { findIndex, find, createArray, removeIndex, flatten, replaceElement, addElementAtIndex } from './array';
 
 describe('array utils tests', () => {
   describe('findIndex tests', () => {
@@ -78,6 +78,44 @@ describe('array utils tests', () => {
       const array = [0, 1, 2];
       const result = removeIndex(array, 1);
       expect(result).toEqual([0, 2]);
+    });
+  });
+
+  describe('replaceElement tests', () => {
+    it('should return a new array with the replaced element in the center', () => {
+      let array = replaceElement<string>(['Zero', 'One', 'Two', 'Three', 'Four'], 'owT', 2);
+      expect(array).toEqual(['Zero', 'One', 'owT', 'Three', 'Four']);
+    });
+
+    it('should return a new array with the first element replaced', () => {
+      let array = replaceElement<string>(['Zero', 'One', 'Two', 'Three', 'Four'], 'oreZ', 0);
+      expect(array).toEqual(['oreZ', 'One', 'Two', 'Three', 'Four']);
+    });
+
+    it('should return a new array with the last element replaced', () => {
+      let array = replaceElement<string>(['Zero', 'One', 'Two', 'Three', 'Four'], 'ruoF', 4);
+      expect(array).toEqual(['Zero', 'One', 'Two', 'Three', 'ruoF']);
+    });
+
+  });
+
+  describe('addElementAddIndex tests', () => {
+    it('should add an element at the start of the array', () => {
+      const array = [2, 3, 4];
+      const result = addElementAtIndex(array, 0, 1);
+      expect(result).toEqual([1, 2, 3, 4]);
+    });
+
+    it('should add an element at the end of the array', () => {
+      const array = [2, 3, 4];
+      const result = addElementAtIndex(array, 3, 5);
+      expect(result).toEqual([2, 3, 4, 5]);
+    });
+
+    it('should add the element in the middle of the array', () => {
+      const array = [2, 3, 4];
+      const result = addElementAtIndex(array, 2, 3.5);
+      expect(result).toEqual([2, 3, 3.5, 4]);
     });
   });
 

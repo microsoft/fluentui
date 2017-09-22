@@ -81,6 +81,26 @@ export function removeIndex<T>(array: T[], index: number): T[] {
 }
 
 /**
+ * Given an array, this function returns a new array where the element at a given index has been replaced.
+ * @param array - The array to operate on
+ * @param newElement - The element that will be placed in the new array
+ * @param index - The index of the element that should be replaced
+ */
+export function replaceElement<T>(array: T[], newElement: T, index: number): T[] {
+  return [...array.slice(0, index), newElement, ...array.slice(index + 1)];
+}
+
+/**
+ * Given an array, this function returns a new array where an element has been inserted at the given index.
+ * @param array - The array to operate on
+ * @param index - The index where an element should be inserted
+ * @param itemToAdd - The element to insert
+ */
+export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[] {
+  return [...array.slice(0, index), itemToAdd, ...array.slice(index)];
+}
+
+/**
  * Given an array where each element is of type T or T[], flatten it into an array of T
  * @param array - The array where each element can optionally also be an array
  */
