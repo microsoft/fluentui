@@ -1,0 +1,80 @@
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .loading {
+    align-items: center;
+    background-color: #212121;
+    border-top: 50px solid #000;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+  }
+</style>
+
+<div id="main">
+  <div class="loading">
+    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading"
+      width="32" height="32" />
+  </div>
+</div>
+
+<script type="text/javascript">
+  var isProduction = false;
+  var isDogfood = false;
+  var now = Date.now();
+  var today = new Date();
+  var todaysDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var entryPointFilename = 'fabric-sitev5';
+  var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
+
+  // Query params
+  var devUrlParam = getParameterByName('devUrl');
+  var dogfoodParam = getParameterByName('isDogfood');
+  var productionParam = getParameterByName('isProduction');
+
+  if (location.hostname == 'developer.microsoft.com' || productionParam) {
+    isProduction = true;
+  } else if (location.hostname.indexOf('devx') > -1 || dogfoodParam) {
+    isDogfood = true;
+    entryPointFilename = 'fabric-sitev5-df';
+  }
+
+  var scripts = [];
+
+  if (devUrlParam) {
+    scripts.push(devUrlParam);
+  } else if (isDogfood) {
+    scripts.push(baseDogfoodUrl + entryPointFilename + '.js?date=' + now);
+  } else {
+    scripts.push(baseProductionUrl + entryPointFilename + '.min.js?date=' + todaysDate);
+  }
+
+  loadScript(scripts);
+
+  function loadScript(n) {
+    for (var i = 0; i < n.length; i++) {
+      var s = document.createElement('script');
+      s.src = n[i];
+      s.async = false;
+      document.body.appendChild(s);
+    }
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+</script>

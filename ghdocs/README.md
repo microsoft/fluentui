@@ -124,7 +124,7 @@ You can specify the default direction in your `index.html`. Add the `dir` attrib
 Load Office UI Fabric styles by linking to the Office UI Fabric CDN. Add the following to the `<head`> element:
 
 ```html
-<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/5.0.1/css/fabric.min.css">
+<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.3.0/css/fabric.min.css">
 ```
 
 Save the file.

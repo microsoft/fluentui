@@ -24,6 +24,7 @@ export interface IBreadCrumbData {
 }
 
 const OVERFLOW_KEY = 'overflow';
+const nullFunction = (): null => null;
 
 export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
@@ -95,7 +96,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  onRenderMenuIcon={ () => null }
+                  onRenderMenuIcon={ nullFunction }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
