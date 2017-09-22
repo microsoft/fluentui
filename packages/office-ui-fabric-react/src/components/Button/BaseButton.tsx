@@ -386,8 +386,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
-    // If button is already opened or disabled, do not set menuProps
-    this.setState({ menuProps: (currentMenuProps || this.props.disabled) ? null : menuProps });
+    this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
