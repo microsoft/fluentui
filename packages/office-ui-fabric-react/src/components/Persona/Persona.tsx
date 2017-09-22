@@ -62,7 +62,6 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       imageAlt,
       imageInitials,
       initialsColor,
-      presence,
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
@@ -101,7 +100,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
             className,
             PERSONA_SIZE[size],
             PERSONA_PRESENCE[presence as PersonaPresenceEnum],
-            this.props.showSecondaryText ? styles.showSecondaryText : ''
+            showSecondaryText && styles.showSecondaryText
           )
         }
       >

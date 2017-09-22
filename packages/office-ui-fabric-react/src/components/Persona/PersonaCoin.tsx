@@ -75,11 +75,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   public render(): JSX.Element | null {
     let {
-      className,
       imageUrl,
       imageAlt,
       initialsColor,
-      presence,
       primaryText,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
