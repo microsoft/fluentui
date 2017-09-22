@@ -114,6 +114,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * A function that resets focus to the expected item in the suggestion list
    */
   refocusSuggestions?: (keyCode: KeyCodes) => void;
+  /**
+   * An ARIA label for the container that is the parent of the suggestions.
+   */
+  suggestionsContainerAriaLabel?: string;
 }
 
 export interface ISuggestionItemProps<T> {

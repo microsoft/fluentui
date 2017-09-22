@@ -11,7 +11,7 @@ describe('overflow', () => {
       clientHeight: 10,
       scrollWidth: 10,
       scrollHeight: 10
-    } as any)).toEqual(false);
+    } as HTMLElement)).toEqual(false);
   });
 
   it('detects horizontal overflow', () => {
@@ -22,8 +22,8 @@ describe('overflow', () => {
       scrollHeight: 10
     };
 
-    expect(hasOverflow(elementWithOverflow as any)).toEqual(true);
-    expect(hasHorizontalOverflow(elementWithOverflow as any)).toEqual(true);
+    expect(hasOverflow(elementWithOverflow as HTMLElement)).toEqual(true);
+    expect(hasHorizontalOverflow(elementWithOverflow as HTMLElement)).toEqual(true);
   });
 
   it('detects vertical overflow', () => {
@@ -34,8 +34,8 @@ describe('overflow', () => {
       scrollHeight: 20
     };
 
-    expect(hasOverflow(elementWithOverflow as any)).toEqual(true);
-    expect(hasVerticalOverflow(elementWithOverflow as any)).toEqual(true);
+    expect(hasOverflow(elementWithOverflow as HTMLElement)).toEqual(true);
+    expect(hasVerticalOverflow(elementWithOverflow as HTMLElement)).toEqual(true);
   });
 
 });
