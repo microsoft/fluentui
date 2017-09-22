@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Sep 2017 06:23:58 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Sep 2017 19:08:51 GMT and should not be manually modified.
+
+## 4.50.0
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Minor changes
+
+- Icon: Removed a recently added prop `onClicked` as it is redundant with `onClick`. Updated DatePicker to use `onClick`.
+- Create Theme Generator page
+- ActivityItem: Adding ReactNodes in the interface in addition to the IRenderFunction props.
+
+### Patches
+
+- Adds ARIA label prop for Suggestions component
+- SplitButton: Fix menu rendering when splitbutton is disabled
+- ComboBox: Changing high-contrast styles to use msHighContrastAdjust
 
 ## 4.49.1
 Thu, 21 Sep 2017 06:23:58 GMT
