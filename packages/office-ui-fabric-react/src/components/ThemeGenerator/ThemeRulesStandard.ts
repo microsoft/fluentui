@@ -71,7 +71,7 @@ export function themeRulesStandardCreator() {
     };
 
     // then make a rule for each shade of this base color, but skip unshaded
-    mapEnumByName(Shade, (shadeName: string, shadeValue) => {
+    mapEnumByName(Shade, (shadeName: string, shadeValue: Shade) => {
       if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }

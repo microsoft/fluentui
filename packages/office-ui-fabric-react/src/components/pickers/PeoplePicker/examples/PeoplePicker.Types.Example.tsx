@@ -38,7 +38,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   noResultsFoundText: 'No results found',
   loadingText: 'Loading',
   showRemoveButtons: true,
-  suggestionsAvailableAlertText: 'People Picker Suggestions available'
+  suggestionsAvailableAlertText: 'People Picker Suggestions available',
+  suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
