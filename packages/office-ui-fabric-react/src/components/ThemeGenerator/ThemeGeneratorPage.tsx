@@ -57,6 +57,22 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     };
   }
 
+  public componentWillUnmount(): void {
+    // remove temp styles
+    let root = document.querySelector('.App-content') as HTMLElement;
+    if (root) {
+      root.style.backgroundColor = '';
+      root.style.color = '';
+    }
+    document.body.style.backgroundColor = '';
+    document.body.style.color = '';
+
+    // and apply the default theme to overwrite any existing custom theme
+    let themeRules = themeRulesStandardCreator();
+    ThemeGenerator.insureSlots(themeRules, false);
+    loadTheme({ palette: themeRules });
+  }
+
   public render() {
     let { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
@@ -448,6 +464,12 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   private _makeNewTheme() {
     let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
+
+    let root = document.querySelector('.App-content') as HTMLElement;
+    if (root) {
+      root.style.backgroundColor = themeAsJson.backgroundColor;
+      root.style.color = themeAsJson.bodyText;
+    }
     document.body.style.backgroundColor = themeAsJson.backgroundColor;
     document.body.style.color = themeAsJson.bodyText;
     loadTheme({ palette: themeAsJson });
