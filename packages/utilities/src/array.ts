@@ -81,7 +81,7 @@ export function removeIndex<T>(array: T[], index: number): T[] {
 }
 
 /**
- * Takes an array, creates a copy, and applies a mutation function on the copy, returning the modified copy.
+ * Takes an array, creates a copy, applies a mutation function on the copy, and returns the modified copy.
  * This can be used to transform a function that mutates an array into one that returns a modified copy instead.
  * @param array - Array to me manipulated
  * @param mutateFunction - The function that will mutate the copied array
