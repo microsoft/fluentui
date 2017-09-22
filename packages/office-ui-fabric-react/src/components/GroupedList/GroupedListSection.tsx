@@ -219,7 +219,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                     ref='list'
                     items={ group!.children }
                     onRenderCell={ this._renderSubGroup }
-                    getItemCountForPage={ () => 1 }
+                    getItemCountForPage={ this._returnOne }
                   />
                 ) :
                 this._onRenderGroup(renderCount)
@@ -290,6 +290,13 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
+  private _onRenderGroupCell(onRenderCell: any, groupNestingDepth: number | undefined)
+    : (item: any, itemIndex: number | undefined) => React.ReactNode {
+    return (item: any, itemIndex: number | undefined): React.ReactNode => {
+      return onRenderCell(groupNestingDepth, item, itemIndex);
+    };
+  }
+
   private _onRenderGroup(renderCount: number) {
     let {
       group,
@@ -304,7 +311,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (
       <List
         items={ items }
-        onRenderCell={ (item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
+        onRenderCell={ this._onRenderGroupCell(onRenderCell, groupNestingDepth) }
         ref={ 'list' }
         renderCount={ Math.min(count, renderCount) }
         startIndex={ startIndex }
@@ -360,6 +367,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;
+  }
+
+  private _returnOne(): number {
+    return 1;
   }
 
   private _getGroupKey(group: any, index: number) {
