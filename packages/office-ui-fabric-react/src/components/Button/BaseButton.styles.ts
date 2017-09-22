@@ -13,7 +13,6 @@ const noOutline = {
 const iconStyle = {
   fontSize: FontSizes.icon,
   margin: '0 4px',
-  minWidth: '1em',
   height: '16px',
   lineHeight: '16px',
   textAlign: 'center',

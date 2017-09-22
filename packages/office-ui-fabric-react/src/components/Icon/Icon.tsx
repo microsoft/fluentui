@@ -17,6 +17,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
     ariaLabel,
     className,
     onClicked,
+    hasPlaceHolder,
     styles: customStyles,
     iconName
    } = props;
@@ -42,6 +43,24 @@ export const Icon = (props: IIconProps): JSX.Element => {
       >
         <Image { ...props.imageProps as any } />
       </div>
+    );
+  } else if (hasPlaceHolder && !(typeof iconName === 'string' && iconName.length > 0)) {
+    return (
+      <i
+        aria-label={ ariaLabel }
+        { ...(ariaLabel ? {} : {
+          role: 'presentation',
+          'aria-hidden': true
+        }) }
+        { ...getNativeProps(props, htmlElementProperties) }
+        className={
+          css(
+            'ms-Icon ms-Icon-placeHolder',
+            styles.root,
+            styles.rootHasPlaceHolder,
+            props.className
+          ) }
+      />
     );
   } else {
     let iconMemberName = iconName ? iconName.charAt(0).toLowerCase() + iconName.substr(1) : '';

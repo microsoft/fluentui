@@ -22,6 +22,12 @@ export const getStyles = memoizeFunction((
       }
     ]),
 
+    rootHasPlaceHolder: mergeStyles([
+      {
+        width: '1em',
+      }
+    ]),
+
     imageContainer: mergeStyles({
       overflow: 'hidden'
     })

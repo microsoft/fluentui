@@ -30,6 +30,7 @@ export enum IconType {
 
 export interface IIconStyles {
   root?: IStyle;
+  rootHasPlaceHolder?: IStyle;
   imageContainer?: IStyle;
 }
 
@@ -64,6 +65,11 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @memberOf IIconProps
    */
   imageProps?: IImageProps;
+
+  /**
+   * If iconName is undefined or an empty string, a placeholder will be rendered the same size as an icon
+   */
+  hasPlaceHolder?: boolean;
 
   /**
    * Callback for the onClick event.
