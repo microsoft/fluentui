@@ -81,25 +81,15 @@ export function removeIndex<T>(array: T[], index: number): T[] {
 }
 
 /**
- * Takes an array, creates a copy, applies a mutation function on the copy, and returns the modified copy.
- * This can be used to transform a function that mutates an array into one that returns a modified copy instead.
- * @param array - Array to me manipulated
- * @param mutateFunction - The function that will mutate the copied array
- */
-function copyAndMutateArray<T>(array: T[], mutateFunction: (arr: T[]) => void): T[] {
-  const copy = array.slice();
-  mutateFunction(copy);
-  return copy;
-}
-
-/**
  * Given an array, this function returns a new array where the element at a given index has been replaced.
  * @param array - The array to operate on
  * @param newElement - The element that will be placed in the new array
  * @param index - The index of the element that should be replaced
  */
 export function replaceElement<T>(array: T[], newElement: T, index: number): T[] {
-  return copyAndMutateArray(array, (arr: T[]): void => { arr[index] = newElement; });
+  const copy = array.slice();
+  copy[index] = newElement;
+  return copy;
 }
 
 /**
@@ -109,7 +99,9 @@ export function replaceElement<T>(array: T[], newElement: T, index: number): T[]
  * @param itemToAdd - The element to insert
  */
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[] {
-  return copyAndMutateArray(array, (arr: T[]): void => { arr.splice(index, 0, itemToAdd); });
+  const copy = array.slice();
+  copy.splice(index, 0, itemToAdd);
+  return copy;
 }
 
 /**
