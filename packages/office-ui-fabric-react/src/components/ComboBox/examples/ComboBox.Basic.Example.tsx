@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxOption
+  IComboBoxOption,
+  IPersistentOption
 } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
 import {
@@ -45,6 +46,11 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
   public render() {
     let { options, selectedOptionKey, value } = this.state;
+
+    let persistentOptionDetails: IPersistentOption = {
+      text: 'Test Option',
+      onSelect: () => console.log('onSelect called')
+    }
 
     return (
       <div className='ms-ComboBoxBasicExample'>
@@ -129,6 +135,21 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           disabled={ true }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+        />
+
+        <ComboBox
+          label='Example with persistent option'
+          id='Basicdrop6'
+          ariaLabel='Basic ComboBox example'
+          allowFreeform={ false }
+          autoComplete='on'
+          options={ options }
+          onChanged={ this._onChanged }
+          onResolveOptions={ this._getOptions }
+          onRenderOption={ this._onRenderFontOption }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          persistentOption={ persistentOptionDetails }
         />
 
         { value ?

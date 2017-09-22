@@ -88,6 +88,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * in case an option does not come with user-defined custom styles
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * One option is fixed below the options in the callout
+   */
+  persistentOption?: IPersistentOption;
 }
 
 export interface IComboBoxStyles {
@@ -181,4 +186,9 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
    * in the comboBox options.
    */
   optionText: IStyle;
+}
+
+export interface IPersistentOption {
+  text: string;
+  onSelect: () => void;
 }
