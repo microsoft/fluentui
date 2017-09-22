@@ -46,6 +46,7 @@ $nav-group-header-height: 40px;
 
     > .links {
       display: block;
+      @include ms-margin-left(8px);
     }
   }
 }

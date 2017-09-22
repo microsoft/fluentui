@@ -2,11 +2,12 @@ import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './Interstitials.module.scss';
 const styles: any = stylesImport;
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class AngularJSPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.basePage }>
         <div className={ styles.header }>
           <h1>ngOfficeUIFabric</h1>
           <span>A community-driven project that simplifies implementing Fabric in Angular-based apps</span>

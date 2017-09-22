@@ -25,6 +25,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
           href='http://bing.com'
           target='_blank'
           title='Let us bing!'
+          style={ { color: '#ffffff' } }
         >
           Bing
         </PrimaryButton>
