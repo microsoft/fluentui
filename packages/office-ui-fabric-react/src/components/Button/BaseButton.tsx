@@ -386,7 +386,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
-
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
