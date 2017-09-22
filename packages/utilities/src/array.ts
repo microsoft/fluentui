@@ -86,7 +86,7 @@ export function removeIndex<T>(array: T[], index: number): T[] {
  * @param array - Array to me manipulated
  * @param mutateFunction - The function that will mutate the copied array
  */
-function copyAndMutateArray<T>(array: T[], mutateFunction: (array: T[]) => void): T[] {
+function copyAndMutateArray<T>(array: T[], mutateFunction: (arr: T[]) => void): T[] {
   const copy = array.slice();
   mutateFunction(copy);
   return copy;
