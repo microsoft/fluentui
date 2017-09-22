@@ -121,10 +121,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
       >
-        <div
-          className='asdfsd'
-          onClick={ () => { console.log('asdf') } }
-        />
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>
             <Icon iconName='CheckMark' className={ this._classNames.checkmark } />
