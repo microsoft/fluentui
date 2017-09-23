@@ -7,6 +7,7 @@
     "build": "",
     "clean": "",
     "screener": "screener-storybook --conf screener.config.js --debug",
+    "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "storybook": "start-storybook --port 5555"
   },
   "devDependencies": {
@@ -22,7 +23,7 @@
     "style-loader": "=0.16.1",
     "awesome-typescript-loader": "^3.2.3",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
-    "screener-storybook": "^0.9.0",
+    "screener-storybook": "^0.9.1",
     "screener-runner": "^0.6.19",
     "storybook-readme": "=3.0.6"
   },
