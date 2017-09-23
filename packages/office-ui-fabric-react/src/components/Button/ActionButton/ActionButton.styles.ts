@@ -13,14 +13,11 @@ const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IButtonStyles,
-  focusInset?: string,
-  focusColor?: string
+  customStyles?: IButtonStyles
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
     root: {
-      borderWidth: '0',
       padding: DEFAULT_PADDING,
       height: DEFAULT_BUTTON_HEIGHT,
       color: theme.palette.neutralPrimary,
