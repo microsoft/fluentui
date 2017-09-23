@@ -196,7 +196,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+          <span className={ css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper) }>
+            { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+          </span>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
