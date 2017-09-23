@@ -23,24 +23,10 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
             [
               {
                 key: 'newItem',
-                icon: 'Add',
-                subMenuProps: {
-                  items: [
-                    {
-                      key: 'emailMessage',
-                      name: 'Email message',
-                    },
-                    {
-                      key: 'calendarEvent',
-                      name: 'Calendar event',
-                    }
-                  ],
-                },
                 name: 'New'
               },
               {
                 key: 'upload',
-                icon: 'Upload',
                 name: 'Upload'
               },
               {

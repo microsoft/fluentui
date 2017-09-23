@@ -22,7 +22,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ () => alert('Clicked') }
             split={ true }
-            style={ { height: '32px' } }
+            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -49,6 +49,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ () => alert('Clicked') }
             split={ true }
+            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {

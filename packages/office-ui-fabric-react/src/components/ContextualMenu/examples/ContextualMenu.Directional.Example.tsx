@@ -3,7 +3,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { autobind, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
@@ -53,7 +52,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
       directionalHintForRTL: DirectionalHint.bottomLeftEdge,
       useDirectionalHintForRtl: false,
       gapSpace: 0,
-      beakWidth: 10,
+      beakWidth: 20,
       edgeFixed: false
     };
   }
@@ -78,27 +77,6 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             checked={ isBeakVisible }
             onChange={ this._onShowBeakChange }
           />
-          <Checkbox
-            className={ exampleStyles.exampleCheckbox }
-            label='Fix Edge'
-            checked={ edgeFixed }
-            onChange={ this._onFixEdgeChange }
-          />
-          <Slider
-            max={ 20 }
-            label='Gap Space'
-            min={ 0 }
-            defaultValue={ 0 }
-            onChange={ this._onGapSlider }
-          />
-          { isBeakVisible &&
-            (<Slider
-              max={ 50 }
-              label='Beak Width'
-              min={ 10 }
-              defaultValue={ 10 }
-              onChange={ this._onBeakWidthSlider }
-            />) }
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint!] }
@@ -128,72 +106,32 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               gapSpace: gapSpace,
               beakWidth: beakWidth,
               directionalHintFixed: edgeFixed,
-              items:
-              [
+              items: [
                 {
                   key: 'newItem',
-                  name: 'New',
-                  icon: 'Add',
-                  subMenuProps: {
-                    items: [
-                      {
-                        key: 'emailMessage',
-                        name: 'Email message',
-                      },
-                      {
-                        key: 'calendarEvent',
-                        name: 'Calendar event',
-                      }
-                    ]
-                  },
+                  name: 'New'
                 },
                 {
-                  key: 'upload',
-                  name: 'Upload',
-                  icon: 'Upload'
-                },
-                {
-                  key: 'rename',
-                  name: 'Rename',
-                },
-                {
-                  key: '-',
+                  key: 'divider_1',
                   itemType: ContextualMenuItemType.Divider
                 },
                 {
-                  key: 'share',
-                  name: 'Share',
-                  icon: 'Share',
-                  items: [
-                    {
-                      key: 'sharetoemail',
-                      name: 'Share to Email',
-                      icon: 'Mail'
-                    },
-                    {
-                      key: 'sharetofacebook',
-                      name: 'Share to Facebook',
-                    },
-                    {
-                      key: 'sharetotwitter',
-                      name: 'Share to Twitter',
-                      icon: 'Share'
-                    },
-                  ]
+                  key: 'rename',
+                  name: 'Rename'
                 },
                 {
-                  key: 'print',
-                  name: 'Print',
-                  icon: 'Print'
-                },
-                {
-                  key: 'display',
-                  name: 'display'
+                  key: 'edit',
+                  name: 'Edit'
                 },
                 {
                   key: 'properties',
                   name: 'Properties'
                 },
+                {
+                  key: 'disabled',
+                  name: 'Disabled item',
+                  disabled: true
+                }
               ]
             }
             }
@@ -207,13 +145,6 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible
-    });
-  }
-
-  @autobind
-  private _onFixEdgeChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
-    this.setState({
-      edgeFixed: isVisible
     });
   }
 
@@ -235,20 +166,6 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   private _onDirectionalRtlChanged(option: IDropdownOption) {
     this.setState({
       directionalHintForRTL: (DirectionalHint as any)[option.key]
-    });
-  }
-
-  @autobind
-  private _onGapSlider(value: number) {
-    this.setState({
-      gapSpace: value
-    });
-  }
-
-  @autobind
-  private _onBeakWidthSlider(value: number) {
-    this.setState({
-      beakWidth: value
     });
   }
 
