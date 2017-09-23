@@ -3,6 +3,9 @@
 
 .ms-themer {
   padding: 12px;
+  h2, h3, h4 {
+    color: $ms-color-black;
+  }
 }
 .ms-themer h3 {
   margin: 0;
