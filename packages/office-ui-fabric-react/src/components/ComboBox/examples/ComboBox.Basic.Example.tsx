@@ -58,8 +58,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ this._log('onFocus called') }
-          onBlur={ this._log('onBlur called') }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -71,8 +73,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ this._log('onFocus called') }
-          onBlur={ this._log('onBlur called') }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -84,8 +88,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ this._log('onFocus called') }
-          onBlur={ this._log('onBlur called') }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -97,8 +103,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ this._log('onFocus called') }
-          onBlur={ this._log('onBlur called') }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -108,8 +116,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           errorMessage='Error! Here is some text!'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ this._log('onFocus called') }
-          onBlur={ this._log('onBlur called') }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -127,8 +137,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             ]
           }
           disabled={ true }
-          onFocus={ this._log('onFocus called') }
-          onBlur={ this._log('onBlur called') }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         { value ?
@@ -143,8 +155,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onResolveOptions={ this._getOptions }
             value={ value && value }
             onRenderOption={ this._onRenderFontOption }
-            onFocus={ this._log('onFocus called') }
-            onBlur={ this._log('onBlur called') }
+            // tslint:disable:jsx-no-lambda
+            onFocus={ () => console.log('onFocus called') }
+            onBlur={ () => console.log('onBlur called') }
+          // tslint:enable:jsx-no-lambda
           />
           :
           <ComboBox
@@ -158,19 +172,15 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
             onRenderOption={ this._onRenderFontOption }
-            onFocus={ this._log('onFocus called') }
-            onBlur={ this._log('onBlur called') }
+            // tslint:disable:jsx-no-lambda
+            onFocus={ () => console.log('onFocus called') }
+            onBlur={ () => console.log('onBlur called') }
+          // tslint:enable:jsx-no-lambda
           />
         }
       </div>
 
     );
-  }
-
-  private _log(str: string): () => void {
-    return (): void => {
-      console.log(str);
-    };
   }
 
   // Render content of item
