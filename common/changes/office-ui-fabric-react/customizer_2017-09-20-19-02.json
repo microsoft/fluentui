@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Changing high-contrast styles to use msHighContrastAdjust",
+      "comment": "Updating components to support scoped customizations.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-krbrow@microsoft.com"
+  "email": "dzearing@hotmail.com"
 }

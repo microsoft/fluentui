@@ -26,6 +26,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
+            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -52,6 +53,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
+            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -84,7 +86,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
 
     return (
       <div>
-        <Label>Custom Split button</Label>
+        <Label>Split button with icon and custom styles</Label>
         <IconButton
           data-automation-id='test'
           disabled={ disabled }
