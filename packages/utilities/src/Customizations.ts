@@ -6,7 +6,9 @@ import {
 } from './EventGroup';
 
 export interface ICustomizations {
+  // tslint:disable-next-line:no-any
   settings: { [key: string]: any };
+  // tslint:disable-next-line:no-any
   scopedSettings: { [key: string]: { [key: string]: any } };
 }
 
@@ -26,11 +28,13 @@ export class Customizations {
     _allSettings.scopedSettings = {};
   }
 
+  // tslint:disable-next-line:no-any
   public static applySettings(settings: { [key: string]: any }): void {
     _allSettings.settings = { ..._allSettings.settings, ...settings };
     Customizations._raiseChange();
   }
 
+  // tslint:disable-next-line:no-any
   public static applyScopedSettings(scopeName: string, settings: { [key: string]: any }): void {
     _allSettings.scopedSettings[scopeName] = { ..._allSettings.scopedSettings[scopeName], ...settings };
     Customizations._raiseChange();
@@ -40,7 +44,9 @@ export class Customizations {
     properties: string[],
     scopeName?: string,
     localSettings: ICustomizations = NO_CUSTOMIZATIONS
+    // tslint:disable-next-line:no-any
   ): any {
+    // tslint:disable-next-line:no-any
     const settings: { [key: string]: any } = {};
     const localScopedSettings = (scopeName && localSettings.scopedSettings[scopeName]) || {};
     const globalScopedSettings = (scopeName && _allSettings.scopedSettings[scopeName]) || {};

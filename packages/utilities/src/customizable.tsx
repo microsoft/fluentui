@@ -15,6 +15,8 @@ export function customizable(
     // tslint:disable-next-line:no-any
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
+      public static displayName: string = 'Customized' + scope;
+
       public static contextTypes: {
         customizations: PropTypes.Requireable<{}>;
       } = {
