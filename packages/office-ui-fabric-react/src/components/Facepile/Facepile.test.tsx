@@ -149,7 +149,7 @@ describe('Facepile', () => {
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona.ms-Persona--xs');
+      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--xs');
       expect(addButton).to.have.length(1, 'Add button should render');
       let faces = facepile.querySelectorAll('.ms-Facepile-person');
       expect(faces).to.have.length(facepilePersonas.length, 'personas should render');
