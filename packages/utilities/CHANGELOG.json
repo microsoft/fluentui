@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.14.1",
+      "tag": "@uifabric/utilities_v4.14.1",
+      "date": "Mon, 25 Sep 2017 10:19:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "96722a134676c400b7a92461174f5e8a93f7d083",
+            "comment": "Array: Add utility functions for updating arrays immutably"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.14.0",
       "tag": "@uifabric/utilities_v4.14.0",
       "date": "Fri, 22 Sep 2017 19:08:51 GMT",
