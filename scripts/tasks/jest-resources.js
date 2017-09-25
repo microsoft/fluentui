@@ -39,8 +39,7 @@ const styleMockPath =
         ],
 
         'snapshotSerializers': [
-          path.resolve(__dirname, 'jest-serializer-merge-styles'),
-          path.resolve(__dirname, '../node_modules/jest-serializer-enzyme')
+          path.resolve(__dirname, 'jest-serializer-merge-styles')
         ]
 
       })
