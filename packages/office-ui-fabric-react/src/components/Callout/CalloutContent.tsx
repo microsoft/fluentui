@@ -19,8 +19,7 @@ import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
 import {
-  CommandButton,
-  IButtonStyles
+  CommandButton
 } from '../../Button';
 
 const styles: any = stylesImport;

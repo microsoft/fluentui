@@ -7,7 +7,6 @@ import {
   IRectangle
 } from '../../Utilities';
 import { IButtonStyles } from '../Button';
-import { IStyle } from '../../Styling';
 
 export interface ICallout {
 
