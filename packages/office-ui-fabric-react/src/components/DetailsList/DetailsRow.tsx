@@ -232,7 +232,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             role='gridcell'
             aria-colindex={ 0 }
             data-selection-toggle={ true }
-            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell) }
+            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell, verticallyCenterCells && styles.isVerticallyCentered) }
           >
             { onRenderCheck({
               isSelected,
