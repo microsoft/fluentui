@@ -60,7 +60,8 @@ export class PanelSmallRightExample extends React.Component<any, any> {
     );
   }
 
-  private _onClosePanel = () => {
+  @autobind
+  private _onClosePanel(): void {
     this.setState({ showPanel: false });
   }
 

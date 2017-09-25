@@ -150,7 +150,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ this._setRef }
+        componentRef={ this._resolveRef('_picker') }
       />
     );
   }
@@ -172,7 +172,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ this._setRef }
+        componentRef={ this._resolveRef('_picker') }
       />
     );
   }
@@ -192,7 +192,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ this._setRef }
+        componentRef={ this._resolveRef('_picker') }
       />
     );
   }
@@ -214,7 +214,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ this._setRef }
+        componentRef={ this._resolveRef('_picker') }
       />
     );
   }
@@ -236,7 +236,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ this._setRef }
+        componentRef={ this._resolveRef('_picker') }
       />
     );
   }
@@ -258,7 +258,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ this._setRef }
+        componentRef={ this._resolveRef('_picker') }
       />
     );
   }
@@ -285,28 +285,24 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
           } }
-          componentRef={ this._setRef }
+          componentRef={ this._resolveRef('_picker') }
         />
         <label> Click to Add a person </label>
         { controlledItems.map(item => <div>
           <DefaultButton
             className='controlledPickerButton'
-            onClick={ this._onClickControlledPicker(item) }
+            // tslint:disable-next-line:jsx-no-lambda
+            onClick={ () => {
+              this.setState({
+                currentSelectedItems: this.state.currentSelectedItems!.concat([item])
+              });
+            } }
           >
             <Persona { ...item} />
           </DefaultButton>
         </div>) }
       </div>
     );
-  }
-
-  @autobind
-  private _onClickControlledPicker(item: IPersonaProps): () => void {
-    return (): void => {
-      this.setState({
-        currentSelectedItems: this.state.currentSelectedItems!.concat([item])
-      });
-    };
   }
 
   @autobind
@@ -378,10 +374,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     mostRecentlyUsed = mostRecentlyUsed.splice(0, 3);
     return this._filterPromise(mostRecentlyUsed);
-  }
-
-  private _setRef(component: IBasePicker<IPersonaProps>): void {
-    this._picker = component;
   }
 
   @autobind
