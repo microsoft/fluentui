@@ -67,7 +67,7 @@ export const getClassNames = memoizeFunction((
 
     pill: [
       'ms-Toggle-background',
-      getFocusStyle(theme, '-1px'),
+      getFocusStyle(theme, -3),
       {
         fontSize: '20px',
         lineHeight: '1em',

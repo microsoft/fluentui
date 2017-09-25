@@ -4,7 +4,8 @@ import {
   ITheme,
   IRawStyle,
   getFocusStyle,
-  FontSizes
+  FontSizes,
+  hiddenContentStyle
 } from '../../Styling';
 
 const noOutline: IRawStyle = {
@@ -26,14 +27,12 @@ const iconStyle = {
  * mixing class names together.
  */
 export const getStyles = memoizeFunction((
-  theme: ITheme,
-  focusInset: string = '0',
-  focusColor: string = theme.palette.neutralSecondary
+  theme: ITheme
 ): IButtonStyles => {
 
   return {
     root: [
-      getFocusStyle(theme, focusInset, focusColor),
+      getFocusStyle(theme, -1),
       theme.fonts.medium,
       {
         // this transparent border converts to the correct colors in HC mode
@@ -93,5 +92,7 @@ export const getStyles = memoizeFunction((
       margin: '0 4px',
       lineHeight: '100%'
     },
+
+    screenReaderText: hiddenContentStyle
   };
 });

@@ -319,14 +319,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderAriaDescription() {
     const {
-      ariaDescription,
-      styles
+      ariaDescription
     } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ styles!.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ this._classNames.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
