@@ -4,16 +4,9 @@ import { prefixRules } from './transforms/prefixRules';
 import { kebabRules } from './transforms/kebabRules';
 import { Stylesheet } from './Stylesheet';
 import { IStyle, IRawStyle } from './IStyle';
+import { IDictionary, IRuleSet } from './IRuleSet';
 
 const DISPLAY_NAME = 'displayName';
-
-// tslint:disable-next-line:no-any
-type IDictionary = { [key: string]: any };
-
-interface IRuleSet {
-  __order: string[];
-  [key: string]: IDictionary;
-}
 
 function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefined {
   const rootStyle: IStyle = rules && rules['&'];
@@ -153,16 +146,19 @@ export function styleToClassName(...args: IStyle[]): string {
 
     if (!className) {
       className = stylesheet.getClassName(getDisplayName(rules));
-      stylesheet.cacheClassName(className, key, args);
+      const registeredRules: string[] = [];
 
       for (let selector of rules.__order) {
         const rulesToInsert: string = serializeRuleEntries(rules[selector]);
 
         if (rulesToInsert) {
+          registeredRules.push(selector, rulesToInsert);
           selector = selector.replace(/\&/g, `.${className}`);
           stylesheet.insertRule(`${selector}{${rulesToInsert}}`);
         }
       }
+
+      stylesheet.cacheClassName(className, key, args, registeredRules);
     }
   }
 

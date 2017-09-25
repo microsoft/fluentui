@@ -29,13 +29,21 @@ export interface IIconRecord {
   subset: IIconSubsetRecord;
 }
 
+export interface IIconOptions {
+  warnOnMissingIcons: boolean;
+}
+
 export interface IIconRecords {
+  __options: IIconOptions;
   __remapped: { [key: string]: string };
   [key: string]: IIconRecord | {};
 }
 
 const ICON_SETTING_NAME = 'icons';
 const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
+  __options: {
+    warnOnMissingIcons: true
+  },
   __remapped: {}
 });
 
@@ -111,9 +119,23 @@ export function getIcon(name?: string): IIconRecord | undefined {
         subset.isRegistered = true;
       }
     } else {
-      warn(`The icon "${name}" was referenced but not registered.`);
+      if (_icons.__options.warnOnMissingIcons) {
+        warn(`The icon "${name}" was referenced but not registered.`);
+      }
     }
   }
 
   return icon;
+}
+
+/**
+ * Sets the icon options.
+ *
+ * @public
+ */
+export function setIconOptions(options: IIconOptions): void {
+  _icons.__options = {
+    ..._icons.__options,
+    ...options
+  };
 }

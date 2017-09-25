@@ -20,19 +20,7 @@
     "karma"
   ],
   "devDependencies": {
-    "@types/jest": "^20.0.8",
-    "@types/es6-promise": "^0.0.32",
-    "@types/es6-weak-map": "1.2.0",
-    "@types/mocha": "2.2.39",
-    "@types/prop-types": "15.5.1",
-    "@types/react": "15.0.38",
-    "@types/react-addons-test-utils": "0.14.18",
-    "@types/react-dom": "15.5.1",
-    "@types/sinon": "2.2.2",
-    "@types/webpack-env": "1.13.0",
-    "enzyme": "^2.7.0",
-    "es6-map": "^0.1.5",
-    "es6-weak-map": "^2.0.2",
+    "@types/jest": "^21.1.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
