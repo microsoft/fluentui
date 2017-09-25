@@ -13,10 +13,12 @@
   // Nav is hidden off screen by default
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
+    left: 0;
+    right: 0;
     bottom: 0;
     @include ms-left(-$Nav-width);
     overflow-y: auto;
-    position: fixed;
+    position: absolute;
     top: $Header-height;
     transition: $ms-animation-duration-2 $ms-animation-ease-1;
     @include ms-transition-property(left);
@@ -78,16 +80,31 @@
     }
 
     .App-nav {
-      @include ms-left(auto);
-      top: auto; // Mobile nav bar is no longer there
-      position: relative;
-      overflow-y: visible
+      @include ms-left($App-padding-left-lg);
+      // top: auto; // Mobile nav bar is no longer there
+      // overflow-y: visible;
+      top: $Header-height;
+      bottom: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: absolute;
+      @include ms-right(0);
+      box-sizing: border-box;
     }
 
     .App-content {
-      margin-top: 0;
-      flex-grow: unset;
-      width: calc(100% - #{$Nav-width});
+      // margin-top: 0;
+      // flex-grow: unset;
+      // width: calc(100% - #{$Nav-width});
+      position: absolute;
+      overflow-x: auto;
+      overflow-y: auto;
+      @include ms-left(calc(#{$Nav-width} + #{$App-padding-left-lg}));
+      @include ms-right($App-padding-right-lg);
+      bottom: 0;
+      top: $Header-height;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     // Reset values for the nav and content if opened on larger screens
