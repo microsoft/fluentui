@@ -8,6 +8,8 @@ import {
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DatePickerStatus } from './DatePicker.checklist';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
@@ -21,10 +23,10 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         componentName='DatePickerExample'
         exampleCards={
           <div>
-            <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
+            <ExampleCard title='Default DatePicker' code={ DatePickerBasicExampleCode }>
               <DatePickerBasicExample />
             </ExampleCard>
-            <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
+            <ExampleCard title='DatePicker with required field' code={ DatePickerRequiredExampleCode }>
               <DatePickerRequiredExample />
             </ExampleCard>
             <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
@@ -70,12 +72,13 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/DatePicker/DatePicker.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...DatePickerStatus}
+          />
+        }
       />
     );
   }
-
 }
