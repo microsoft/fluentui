@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { customizable } from './customizable';
-// import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
 
 @customizable('Foo', ['field'])

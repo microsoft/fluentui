@@ -196,7 +196,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+          <span className={ css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper) }>
+            { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+          </span>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -481,7 +483,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
               }
             ) }
-            onClick={ () => this._onItemClick(item.index!) }
+            onClick={ this._onItemClick(item.index!) }
             role='option'
             aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
             ariaLabel={ item.ariaLabel || item.text }
@@ -489,16 +491,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           >
             { onRenderOption(item, this._onRenderOption) }
           </CommandButton>
-        )
-        :
-        (
+        ) : (
           <Checkbox
             id={ id + '-list' + item.index }
             ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ true }
-            onChange={ () => this._onItemClick(item.index!) }
+            onChange={ this._onItemClick(item.index!) }
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
@@ -527,14 +527,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
-  private _onItemClick(index: number) {
-    this.setSelectedIndex(index);
-    if (!this.props.multiSelect) {
-      // only close the callout when it's in single-select mode
-      this.setState({
-        isOpen: false
-      });
-    }
+  private _onItemClick(index: number): () => void {
+    return (): void => {
+      this.setSelectedIndex(index);
+      if (!this.props.multiSelect) {
+        // only close the callout when it's in single-select mode
+        this.setState({
+          isOpen: false
+        });
+      }
+    };
   }
 
   @autobind

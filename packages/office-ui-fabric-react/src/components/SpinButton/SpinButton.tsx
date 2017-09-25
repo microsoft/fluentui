@@ -197,7 +197,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               aria-hidden='true'
-              onMouseDown={ () => this._onIncrementMouseDown() }
+              onMouseDown={ this._onIncrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
@@ -209,7 +209,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               aria-hidden='true'
-              onMouseDown={ () => this._onDecrementMouseDown() }
+              onMouseDown={ this._onDecrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }

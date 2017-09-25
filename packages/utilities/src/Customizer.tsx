@@ -23,30 +23,32 @@ export type ICustomizerProps = Partial<ICustomizations> & IBaseProps;
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerContext> {
   public static contextTypes: {
-    customizations: PropTypes.Requireable<any>;
+    customizations: PropTypes.Requireable<{}>;
   } = {
     customizations: PropTypes.object
   };
 
   public static childContextTypes: {
-    customizations: PropTypes.Requireable<any>;
+    customizations: PropTypes.Requireable<{}>;
   } = Customizer.contextTypes;
 
-  constructor(props: any, context: any) {
+  // tslint:disable-next-line:no-any
+  constructor(props: ICustomizerProps, context: any) {
     super(props);
 
     this.state = this._getCustomizations(props, context);
   }
 
-  public getChildContext(): any {
+  public getChildContext(): ICustomizerContext {
     return this.state;
   }
 
+  // tslint:disable-next-line:no-any
   public componentWillReceiveProps(newProps: any, newContext: any): void {
     this.setState(this._getCustomizations(newProps, newContext));
   }
 
-  public render(): React.ReactElement<any> {
+  public render(): React.ReactElement<{}> {
     return React.Children.only(this.props.children);
   }
 

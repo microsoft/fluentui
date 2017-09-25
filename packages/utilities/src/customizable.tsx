@@ -5,19 +5,23 @@ import { Customizations } from './Customizations';
 export function customizable(
   scope: string,
   fields: string[]
+  // tslint:disable-next-line:no-any
 ): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
 
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
+    // tslint:disable-next-line:no-any
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
+    // tslint:disable-next-line:no-any
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static contextTypes: {
-        customizations: PropTypes.Requireable<any>;
+        customizations: PropTypes.Requireable<{}>;
       } = {
         customizations: PropTypes.object
       };
 
+      // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
         super(props, context);
 
@@ -33,9 +37,10 @@ export function customizable(
       }
 
       public render(): JSX.Element {
-        let defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
+        const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
 
         return (
+          // tslint:disable-next-line:no-any
           <ComposedComponent { ...defaultProps } { ...this.props as any } />
         );
       }
