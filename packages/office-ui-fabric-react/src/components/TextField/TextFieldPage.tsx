@@ -21,10 +21,16 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='TextFieldExample'
         exampleCards={
           <div>
-            <ExampleCard title='TextField variations' code={ TextFieldBasicExampleCode }>
+            <ExampleCard
+              title='TextField variations'
+              code={ TextFieldBasicExampleCode }
+            >
               <TextFieldBasicExample />
             </ExampleCard>
-            <ExampleCard title='TextField error message variations' code={ TextFieldErrorMessageExampleCode }>
+            <ExampleCard
+              title='TextField error message variations'
+              code={ TextFieldErrorMessageExampleCode }
+            >
               <TextFieldErrorMessageExample />
             </ExampleCard>
           </div>
