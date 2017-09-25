@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Theme Generator: have the bg change with the theme",
+      "comment": "Persona: Fixed regression in secondary text not showing",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }
