@@ -149,7 +149,12 @@ export class EventGroup {
   }
 
   private static _isElement(target: HTMLElement): boolean {
-    return !!target && (!!target.addEventListener || target instanceof HTMLElement);
+    return (
+      !!target && (
+        !!target.addEventListener ||
+        (typeof HTMLElement !== 'undefined' && target instanceof HTMLElement)
+      )
+    );
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
