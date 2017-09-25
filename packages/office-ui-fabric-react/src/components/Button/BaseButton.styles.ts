@@ -11,7 +11,7 @@ const noOutline = {
 };
 
 const iconStyle = {
-  fontSize: FontSizes.icon,
+  fontSize: '24px',
   margin: '0 4px',
   height: '16px',
   lineHeight: '16px',
