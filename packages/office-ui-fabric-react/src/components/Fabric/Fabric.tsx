@@ -40,7 +40,7 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
   document.documentElement.setAttribute('dir', 'ltr');
 }
 
-@customizable(['theme'])
+@customizable('Fabric', ['theme'])
 export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
   // tslint:disable-next-line:no-unused-variable
   private _root: HTMLElement;

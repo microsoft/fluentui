@@ -14,10 +14,8 @@ export const getStyles = memoizeFunction((
       position: 'relative',
       display: 'inline-block',
       border: '1px solid transparent',
+
       selectors: {
-        ':hover': {
-          border: '1px solid'
-        },
         ':focus': {
           outline: 'none!important',
           border: '1px solid'
