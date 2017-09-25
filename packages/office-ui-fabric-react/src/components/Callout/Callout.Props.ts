@@ -4,8 +4,10 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle,
+  IRectangle
 } from '../../Utilities';
+import { IButtonStyles } from '../Button';
+import { IStyle } from '../../Styling';
 
 export interface ICallout {
 
@@ -181,4 +183,15 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @deprecated
    */
   targetElement?: HTMLElement;
+
+  /**
+   * One option is fixed below the options in the callout
+   */
+  calloutButton?: ICalloutButton;
+}
+
+export interface ICalloutButton {
+  text: string;
+  onSelected: () => void;
+  styles?: IButtonStyles;
 }
