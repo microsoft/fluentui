@@ -15,6 +15,7 @@ export interface IDetailsRowFieldsProps {
   columns: IColumn[];
   compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  verticallyCenterCells?: boolean;
 }
 
 export interface IDetailsRowFieldsState {
@@ -33,7 +34,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render() {
-    let { columns, columnStartIndex } = this.props;
+    let { columns, columnStartIndex, verticallyCenterCells } = this.props;
     let { cellContent } = this.state;
 
     return (
@@ -52,6 +53,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               column.isRowHeader && styles.isRowHeader,
               column.isPadded && styles.isPadded,
               column.isMultiline && styles.isMultiline,
+              verticallyCenterCells && styles.isVerticallyCentered,
             ) }
             style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'

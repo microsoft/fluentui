@@ -202,10 +202,17 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     font-size: $ms-font-size-m;
   }
 
+  &.isVerticallyCentered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   [data-is-focusable=true] {
     @include focus-border(0, $ms-color-neutralSecondary);
   }
 }
+
 
 .isPadded {
   @include ms-padding-right($isPaddedMargin + $rowHorizontalPadding);

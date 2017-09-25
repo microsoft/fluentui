@@ -201,6 +201,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * Boolean value to indicate if the cells should be vertically centered rather than top-aligned
+   */
+  verticallyCenterCells?: boolean;
 }
 
 export interface IColumn {
