@@ -14,6 +14,10 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
 } from './Persona.Props';
+import {
+  PERSONA_PRESENCE,
+  PERSONA_SIZE
+} from './PersonaConsts';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
@@ -49,16 +53,15 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       presence,
       primaryText,
       imageShouldFadeIn,
-      imageShouldStartVisible
+      imageShouldStartVisible,
+      showSecondaryText
      } = this.props;
 
     let personaCoinProps = {
-      className,
       imageUrl,
       imageAlt,
       imageInitials,
       initialsColor,
-      presence,
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
@@ -89,10 +92,20 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
     );
 
     return (
-      <div { ...divProps }>
-        <PersonaCoin { ...personaCoinProps }>
-          { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
-        </PersonaCoin>
+      <div
+        { ...divProps }
+        className={
+          css('ms-Persona',
+            styles.root,
+            className,
+            PERSONA_SIZE[size],
+            PERSONA_PRESENCE[presence as PersonaPresenceEnum],
+            showSecondaryText && styles.showSecondaryText
+          )
+        }
+      >
+        <PersonaCoin { ...personaCoinProps } />
+        { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
       </div>
     );
   }
