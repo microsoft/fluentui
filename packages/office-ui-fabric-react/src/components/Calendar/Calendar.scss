@@ -154,7 +154,11 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .day.dayIsHighlighted.dayIsFocused {
-  @include focus-border(1px, WindowText);
+  @include focus-border(1px, $ms-color-white);
+
+  @include high-contrast {
+    @include focus-border(1px, WindowText);
+  }
 }
 
 // Highlighted and hovered/focused dates.
