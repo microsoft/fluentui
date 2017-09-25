@@ -14,7 +14,7 @@ export class ChoiceGroupIconExample extends React.Component<any, any> {
           },
           {
             key: 'week',
-            // iconProps: { iconName: 'CalendarWeek' },
+            iconProps: { iconName: 'CalendarWeek' },
             text: 'Week'
           },
           {
