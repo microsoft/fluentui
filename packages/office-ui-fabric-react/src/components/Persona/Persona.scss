@@ -263,7 +263,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsTiny {
   height: $ms-Persona-sizeTiny;
   min-width: $ms-Persona-sizeTiny;
+}
 
+.rootIsTiny{
   .imageArea {
     overflow: visible;
     background: transparent;
@@ -317,7 +319,9 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-size16;
   min-width: $ms-Persona-size16;
   overflow: hidden;
+}
 
+.rootIs16 {
   .imageArea {
     box-shadow: 0 0 0 2px $ms-color-white;
   }
@@ -367,7 +371,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsExtraExtraSmall {
   height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
+}
 
+.rootIsExtraExtraSmall {
   .imageArea,
   .image {
     flex: 0 0 $ms-Persona-sizeXxs;
@@ -434,7 +440,9 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-size28;
   min-width: $ms-Persona-size28;
   overflow: hidden;
+}
 
+.rootIs28 {
   .imageArea,
   .image {
     flex: 0 0 $ms-Persona-size28;
@@ -500,7 +508,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsExtraSmall {
   height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
+}
 
+.rootIsExtraSmall {
   .imageArea,
   .image {
     flex: 0 0 $ms-Persona-sizeXs;
@@ -552,7 +562,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsSmall {
   height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
+}
 
+.rootIsSmall {
   .imageArea,
   .image {
     flex: 0 0 $ms-Persona-sizeSm;
@@ -586,7 +598,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsLarge {
   height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
+}
 
+.rootIsLarge {
   .imageArea,
   .image {
     flex: 0 0 $ms-Persona-sizeLg;
@@ -628,7 +642,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsExtraLarge {
   height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
+}
 
+.rootIsExtraLarge {
   .imageArea,
   .image {
     flex: 0 0 $ms-Persona-sizeXl;

@@ -11,11 +11,11 @@ export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IB
   return (
     <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
       <Persona
-        { ...personaProps }
         presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
         size={ PersonaSize.extraExtraSmall }
         className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
         showSecondaryText={ true }
+        { ...personaProps }
       />
     </div>
   );
@@ -25,10 +25,10 @@ export const SuggestionItemSmall: (persona: IPersonaProps, suggestionProps?: IBa
   return (
     <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
       <Persona
-        { ...personaProps }
         presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
         size={ PersonaSize.extraExtraSmall }
         className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
+        { ...personaProps }
       />
     </div>
   );
