@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 22 Sep 2017 19:08:51 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Sep 2017 10:19:18 GMT and should not be manually modified.
+
+## 4.14.1
+Mon, 25 Sep 2017 10:19:18 GMT
+
+### Patches
+
+- Array: Add utility functions for updating arrays immutably
 
 ## 4.14.0
 Fri, 22 Sep 2017 19:08:51 GMT

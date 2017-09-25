@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Sep 2017 19:08:51 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Sep 2017 10:19:18 GMT and should not be manually modified.
+
+## 4.50.1
+Mon, 25 Sep 2017 10:19:18 GMT
+
+### Patches
+
+- Reordered Buttons on ButtonPage and made some small style changes to match toolkit for website.
+- Updated ContextualMenu examples and page to better reflect the XD Toolkit.
+- Dropdown: Adds a positioning wrapper around the caretDown icon
+- Theme Generator: have the bg change with the theme
+- make headings on theme generator page theme
 
 ## 4.50.0
 Fri, 22 Sep 2017 19:08:51 GMT
