@@ -4,7 +4,8 @@ import {
   ITheme,
   IRawStyle,
   getFocusStyle,
-  FontSizes
+  FontSizes,
+  hiddenContentStyle
 } from '../../Styling';
 
 const noOutline: IRawStyle = {
@@ -92,6 +93,7 @@ export const getStyles = memoizeFunction((
       lineHeight: '100%'
     },
 
+<<<<<<< HEAD
     screenReaderText: {
       position: 'absolute',
       width: 1,
@@ -99,5 +101,8 @@ export const getStyles = memoizeFunction((
       margin: -1,
       overflow: 'hidden'
     }
+=======
+    screenReaderText: hiddenContentStyle
+>>>>>>> 2e1c642e9c691eb80e102e8f03182b8794a06c2d
   };
 });
