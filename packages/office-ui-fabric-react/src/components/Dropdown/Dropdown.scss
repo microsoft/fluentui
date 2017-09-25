@@ -101,15 +101,18 @@ $DropDown-item-height: 32px;
   }
 }
 
-.caretDown {
-  color: $ms-color-neutralDark;
-  font-size: $ms-icon-size-s;
+.caretDownWrapper {
   position: absolute;
   top: 1px; // border
   @include ms-right(12px);
-  pointer-events: none;
   height: $DropDown-height;
   line-height: $DropDown-height - 2px; // height minus the border
+}
+
+.caretDown {
+  color: $ms-color-neutralDark;
+  font-size: $ms-icon-size-s;
+  pointer-events: none;
 }
 
 // Style the new, replacement component

@@ -31,9 +31,6 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     // Split button styles
     splitButtonContainer: {
       selectors: {
-        ':hover': {
-          borderColor: theme.palette.neutralLight
-        },
         ':focus': {
           borderColor: theme.palette.neutralDark
         }
@@ -112,9 +109,6 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     // Split button styles
     splitButtonContainer: {
       selectors: {
-        ':hover': {
-          borderColor: theme.palette.neutralLight
-        },
         ':focus': {
           borderColor: theme.palette.neutralDark
         }

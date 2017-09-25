@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adds ARIA label prop for Suggestions component",
+      "comment": "Updating components to support scoped customizations.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joem@microsoft.com"
+  "email": "dzearing@hotmail.com"
 }

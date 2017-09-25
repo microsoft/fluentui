@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SplitButton: Fix menu rendering when splitbutton is disabled",
+      "comment": "Persona: Fixed regression in secondary text not showing",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "malozano@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }
