@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2017 20:42:17 GMT and should not be manually modified.
+
+## 4.51.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+### Patches
+
+- Use aria-label for slider, even when label is not set
+- PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions.
+- TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator.
+- Removed old visual testing system to make way for new Screener based system
 
 ## 4.50.2
 Tue, 26 Sep 2017 10:09:04 GMT

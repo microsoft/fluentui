@@ -1,13 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { Customizations } from './Customizations';
+import { GlobalSettings, IChangeDescription } from './GlobalSettings';
 
-export function customizable(
-  scope: string,
-  fields: string[]
-  // tslint:disable-next-line:no-any
-): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
-
+// tslint:disable-next-line:no-any
+export function customizable(fields: string[]): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
     // tslint:disable-next-line:no-any
@@ -15,12 +11,10 @@ export function customizable(
     // tslint:disable-next-line:no-any
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
-      public static displayName: string = 'Customized' + scope;
-
       public static contextTypes: {
-        customizations: PropTypes.Requireable<{}>;
+        injectedProps: PropTypes.Requireable<{}>;
       } = {
-        customizations: PropTypes.object
+        injectedProps: PropTypes.object
       };
 
       // tslint:disable-next-line:no-any
@@ -31,15 +25,22 @@ export function customizable(
       }
 
       public componentDidMount(): void {
-        Customizations.observe(this._onSettingChanged);
+        GlobalSettings.addChangeListener(this._onSettingChanged);
       }
 
       public componentWillUnmount(): void {
-        Customizations.unobserve(this._onSettingChanged);
+        GlobalSettings.removeChangeListener(this._onSettingChanged);
       }
 
       public render(): JSX.Element {
-        const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
+        let defaultProps = {};
+
+        for (let propName of fields) {
+          // tslint:disable-next-line:no-any
+          (defaultProps as any)[propName] = (this.context.injectedProps) ?
+            this.context.injectedProps[propName] :
+            GlobalSettings.getValue(propName);
+        }
 
         return (
           // tslint:disable-next-line:no-any
@@ -47,8 +48,10 @@ export function customizable(
         );
       }
 
-      private _onSettingChanged(): void {
-        this.forceUpdate();
+      private _onSettingChanged(change: IChangeDescription): void {
+        if (fields.indexOf(change.key) >= 0) {
+          this.forceUpdate();
+        }
       }
 
     };
