@@ -881,9 +881,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Scroll the selected element into view
    */
   private _scrollIntoView() {
+
+    let { scrollSelectedToTop } = this.props;
+
     if (this._selectedElement) {
       let alignToTop = true;
-      if (this._comboBoxMenu.offsetParent) {
+
+      if (this._comboBoxMenu.offsetParent && !scrollSelectedToTop) {
         let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
         let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
 
