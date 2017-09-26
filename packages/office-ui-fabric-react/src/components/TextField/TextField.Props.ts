@@ -200,4 +200,9 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    */
   iconClass?: string;
 
+  /**
+ * Internal ID passed to render functions.
+ */
+  componentId?: string;
+
 }
