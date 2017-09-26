@@ -4,7 +4,6 @@
 
 Fabric Icons includes a collection of 1100+ icons which you can use in your application.
 
-The library is rather large; downloading the entire font is more than 80k gzipped, so it is important to your application performance that you download the icons you need, rather than the entire set.
 
 # Getting started
 
@@ -13,24 +12,14 @@ If you are using Fabric React components, you can make all icons available by ca
 ```tsx
 import { initializeIcons } from '@uifabric/icons';
 
+// Register icons and pull the fonts from the default SharePoint cdn.
 initializeIcons();
+
+// ...or, register icons and pull the fonts from your own cdn:
+initializeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-This will make ALL icons in the collection available, but will download them on demand when used.
-
-# Reducing the download size
-
-If you are simply using Fabric React components, you can further reduce your download size by referencing only the core icons:
-
-```tsx
-import { initializeIcons } from '@uifabric/icons/lib/core';
-
-initializeIcons();
-```
-
-# Creating your own subsets
-
-TODO
+This will make ALL icons in the collection available, but will download them on demand when referenced using the `@uifabric/styling` APIs `getIcon` or `getIconClassName`.
 
 # Usage in code
 
@@ -39,10 +28,12 @@ TODO
 If you are using Fabric React, you can use the `Icon` component and pass in the corresponding iconName property to render a given icon.
 
 ```tsx
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
 <Icon iconName='Snow' />
 ```
 
-The styling package includes a `getIcon` api which returns information about a given icon, including subset className and the icon code. This can be used to render icons in other frameworks.
+The styling package includes a `getIconClassName` api which can provide a css class to use for rendering the icon manually using the `:before` pseudoselector:
 
 ```ts
 import { getIconClassName } from '@uifabric/styling';
