@@ -433,7 +433,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
       checkButtonAriaLabel: checkButtonAriaLabel,
-      checkboxClassName
+      checkboxClassName: checkboxClassName,
     }, this._onRenderRow);
   }
 
