@@ -81,7 +81,6 @@ exports[`CommandBar renders commands correctly 1`] = `
             data-is-focusable={true}
             disabled={undefined}
             name="asdf"
-            tabIndex={0}
             type="button"
           >
             <div
@@ -182,7 +181,6 @@ exports[`CommandBar renders commands correctly 1`] = `
             data-is-focusable={true}
             disabled={undefined}
             name="asdf"
-            tabIndex={0}
             type="button"
           >
             <div
