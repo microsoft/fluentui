@@ -8,6 +8,8 @@ import {
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DialogStatus } from './Dialog.checklist';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
@@ -21,16 +23,16 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='DialogExample'
         exampleCards={
           <div>
-            <ExampleCard title='Dialog' code={ DialogBasicExampleCode }>
+            <ExampleCard title='Default Dialog' code={ DialogBasicExampleCode }>
               <DialogBasicExample />
             </ExampleCard>
-            <ExampleCard title='Dialog Large Header' code={ DialogLargeHeaderExampleCode }>
+            <ExampleCard title='Dialog with large header and ChoiceGroup' code={ DialogLargeHeaderExampleCode }>
               <p>
                 Use this Dialog sparingly, when calling extra attention to the content. It can be used in situations where you want to teach the user something or notify them of an important change.
               </p>
               <DialogLargeHeaderExample />
             </ExampleCard>
-            <ExampleCard title='Dialog Blocking' code={ DialogBlockingExampleCode }>
+            <ExampleCard title='Blocking Dialog' code={ DialogBlockingExampleCode }>
               <p>
                 A blocking Dialog disables all other actions and commands on the page behind it. They should be used very sparingly, only when it is critical that the user makes a choice or provides information before they can proceed. Blocking Dialogs are generally used for irreversible or potentially destructive tasks.
               </p>
@@ -79,10 +81,12 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Dialog/Dialog.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...DialogStatus}
+          />
+        }
       />
     );
   }

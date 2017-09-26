@@ -12,30 +12,60 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
     let { disabled, checked } = this.props;
 
     return (
-      <div>
-        <Label>Split button</Label>
-        <DefaultButton
-          data-automation-id='test'
-          disabled={ disabled }
-          checked={ checked }
-          text='Create account'
-          onClick={ () => alert('Clicked') }
-          split={ true }
-          menuProps={ {
-            items: [
-              {
-                key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
-              },
-              {
-                key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
-              }
-            ]
-          } }
-        />
+      <div className='ms-BasicButtonsTwoUp'>
+        <div>
+          <Label>Standard</Label>
+          <DefaultButton
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            text='Create account'
+            onClick={ () => alert('Clicked') }
+            split={ true }
+            style={ { height: '35px' } }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
+        <div>
+          <Label>Primary</Label>
+          <DefaultButton
+            primary
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            text='Create account'
+            onClick={ () => alert('Clicked') }
+            split={ true }
+            style={ { height: '35px' } }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
       </div>
     );
   }
@@ -52,7 +82,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
 
     return (
       <div>
-        <Label>Custom Split button</Label>
+        <Label>Split button with icon and custom styles</Label>
         <IconButton
           data-automation-id='test'
           disabled={ disabled }

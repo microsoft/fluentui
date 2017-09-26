@@ -19,6 +19,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
     styles: customStyles,
     iconName
    } = props;
+
   let styles = getStyles(undefined, customStyles);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {

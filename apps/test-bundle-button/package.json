@@ -26,7 +26,7 @@
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=4.46.1 <5.0.0",
+    "office-ui-fabric-react": ">=4.50.1 <5.0.0",
     "tslib": "^1.7.1"
   }
 }

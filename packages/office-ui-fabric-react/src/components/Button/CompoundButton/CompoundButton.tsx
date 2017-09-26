@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent, customizable, nullRender } from '../../../Utilities';
-import { ThemeSettingName } from '../../../Styling';
+import { BaseComponent, customizable } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './CompoundButton.styles';
 
-@customizable([ThemeSettingName])
+@customizable('CompoundButton', ['theme'])
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -19,7 +18,6 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
         { ...this.props }
         variantClassName={ primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
         styles={ getStyles(theme!, styles, primary) }
-        onRenderIcon={ nullRender }
       />
     );
   }
