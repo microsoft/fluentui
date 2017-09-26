@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Sep 2017 10:19:18 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+
+## 4.50.2
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Patches
+
+- Updating components to support scoped customizations.
+- Dropdown: add titleIsPlaceHolder class to dropdown title so styles can be overridden
+- Persona: Fixed regression in secondary text not showing
 
 ## 4.50.1
 Mon, 25 Sep 2017 10:19:18 GMT

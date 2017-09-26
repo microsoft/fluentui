@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.24.1",
+      "tag": "@uifabric/styling_v0.24.1",
+      "date": "Tue, 26 Sep 2017 10:09:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "724a69333e9c1b0833ef6f48c0fd6b49a2bf3a3a",
+            "comment": "Updating default theme registration to use the new `Customizations` helper."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.14.1 <5.0.0` to `>=4.15.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.24.0",
       "tag": "@uifabric/styling_v0.24.0",
       "date": "Thu, 14 Sep 2017 00:34:57 GMT",

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.15.0",
+      "tag": "@uifabric/utilities_v4.15.0",
+      "date": "Tue, 26 Sep 2017 10:09:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "724a69333e9c1b0833ef6f48c0fd6b49a2bf3a3a",
+            "comment": "Updating Customizer to support `scopedSettings` prop. Adding a `Customizations` object for applying global and scoped customizations in non-React environments."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.14.1",
       "tag": "@uifabric/utilities_v4.14.1",
       "date": "Mon, 25 Sep 2017 10:19:18 GMT",
