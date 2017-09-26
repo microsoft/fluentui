@@ -1,0 +1,412 @@
+{
+	"fontName": "fabric-icons-6",
+	"fontFamilyName": "FabricMDL2Icons-6",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"hashFontFileName": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "CalendarAgenda",
+			"unicode": "EE9A"
+		},
+		{
+			"name": "AddEvent",
+			"unicode": "EEB5"
+		},
+		{
+			"name": "AssetLibrary",
+			"unicode": "EEB6"
+		},
+		{
+			"name": "DataConnectionLibrary",
+			"unicode": "EEB7"
+		},
+		{
+			"name": "DocLibrary",
+			"unicode": "EEB8"
+		},
+		{
+			"name": "FormLibrary",
+			"unicode": "EEB9"
+		},
+		{
+			"name": "FormLibraryMirrored",
+			"unicode": "EEBA"
+		},
+		{
+			"name": "ReportLibrary",
+			"unicode": "EEBB"
+		},
+		{
+			"name": "ReportLibraryMirrored",
+			"unicode": "EEBC"
+		},
+		{
+			"name": "ContactCard",
+			"unicode": "EEBD"
+		},
+		{
+			"name": "CustomList",
+			"unicode": "EEBE"
+		},
+		{
+			"name": "CustomListMirrored",
+			"unicode": "EEBF"
+		},
+		{
+			"name": "IssueTracking",
+			"unicode": "EEC0"
+		},
+		{
+			"name": "IssueTrackingMirrored",
+			"unicode": "EEC1"
+		},
+		{
+			"name": "PictureLibrary",
+			"unicode": "EEC2"
+		},
+		{
+			"name": "OfficeAddinsLogo",
+			"unicode": "EEC7"
+		},
+		{
+			"name": "OfflineOneDriveParachute",
+			"unicode": "EEC8"
+		},
+		{
+			"name": "OfflineOneDriveParachuteDisabled",
+			"unicode": "EEC9"
+		},
+		{
+			"name": "TriangleSolidUp12",
+			"unicode": "EECC"
+		},
+		{
+			"name": "TriangleSolidDown12",
+			"unicode": "EECD"
+		},
+		{
+			"name": "TriangleSolidLeft12",
+			"unicode": "EECE"
+		},
+		{
+			"name": "TriangleSolidRight12",
+			"unicode": "EECF"
+		},
+		{
+			"name": "TriangleUp12",
+			"unicode": "EED0"
+		},
+		{
+			"name": "TriangleDown12",
+			"unicode": "EED1"
+		},
+		{
+			"name": "TriangleLeft12",
+			"unicode": "EED2"
+		},
+		{
+			"name": "TriangleRight12",
+			"unicode": "EED3"
+		},
+		{
+			"name": "ArrowUpRight8",
+			"unicode": "EED4"
+		},
+		{
+			"name": "ArrowDownRight8",
+			"unicode": "EED5"
+		},
+		{
+			"name": "DocumentSet",
+			"unicode": "EED6"
+		},
+		{
+			"name": "DelveAnalytics",
+			"unicode": "EEEE"
+		},
+		{
+			"name": "ArrowUpRightMirrored8",
+			"unicode": "EEEF"
+		},
+		{
+			"name": "ArrowDownRightMirrored8",
+			"unicode": "EEF0"
+		},
+		{
+			"name": "OneDriveAdd",
+			"unicode": "EF32"
+		},
+		{
+			"name": "Header2",
+			"unicode": "EF36"
+		},
+		{
+			"name": "Header3",
+			"unicode": "EF37"
+		},
+		{
+			"name": "Header4",
+			"unicode": "EF38"
+		},
+		{
+			"name": "MarketDown",
+			"unicode": "EF42"
+		},
+		{
+			"name": "CalendarWorkWeek",
+			"unicode": "EF51"
+		},
+		{
+			"name": "SidePanel",
+			"unicode": "EF52"
+		},
+		{
+			"name": "GlobeFavorite",
+			"unicode": "EF53"
+		},
+		{
+			"name": "CaretTopLeftSolid8",
+			"unicode": "EF54"
+		},
+		{
+			"name": "CaretTopRightSolid8",
+			"unicode": "EF55"
+		},
+		{
+			"name": "ViewAll2",
+			"unicode": "EF56"
+		},
+		{
+			"name": "DocumentReply",
+			"unicode": "EF57"
+		},
+		{
+			"name": "PlayerSettings",
+			"unicode": "EF58"
+		},
+		{
+			"name": "ReceiptForward",
+			"unicode": "EF59"
+		},
+		{
+			"name": "ReceiptReply",
+			"unicode": "EF5A"
+		},
+		{
+			"name": "ReceiptCheck",
+			"unicode": "EF5B"
+		},
+		{
+			"name": "Fax",
+			"unicode": "EF5C"
+		},
+		{
+			"name": "RecurringEvent",
+			"unicode": "EF5D"
+		},
+		{
+			"name": "ReplyAlt",
+			"unicode": "EF5E"
+		},
+		{
+			"name": "ReplyAllAlt",
+			"unicode": "EF5F"
+		},
+		{
+			"name": "EditStyle",
+			"unicode": "EF60"
+		},
+		{
+			"name": "EditMail",
+			"unicode": "EF61"
+		},
+		{
+			"name": "Lifesaver",
+			"unicode": "EF62"
+		},
+		{
+			"name": "LifesaverLock",
+			"unicode": "EF63"
+		},
+		{
+			"name": "InboxCheck",
+			"unicode": "EF64"
+		},
+		{
+			"name": "FolderSearch",
+			"unicode": "EF65"
+		},
+		{
+			"name": "CollapseMenu",
+			"unicode": "EF66"
+		},
+		{
+			"name": "ExpandMenu",
+			"unicode": "EF67"
+		},
+		{
+			"name": "Boards",
+			"unicode": "EF68"
+		},
+		{
+			"name": "SunAdd",
+			"unicode": "EF69"
+		},
+		{
+			"name": "SunQuestionMark",
+			"unicode": "EF6A"
+		},
+		{
+			"name": "LandscapeOrientation",
+			"unicode": "EF6B"
+		},
+		{
+			"name": "DocumentSearch",
+			"unicode": "EF6C"
+		},
+		{
+			"name": "PublicCalendar",
+			"unicode": "EF6D"
+		},
+		{
+			"name": "PublicContactCard",
+			"unicode": "EF6E"
+		},
+		{
+			"name": "PublicEmail",
+			"unicode": "EF6F"
+		},
+		{
+			"name": "PublicFolder",
+			"unicode": "EF70"
+		},
+		{
+			"name": "WordDocument",
+			"unicode": "EF71"
+		},
+		{
+			"name": "PowerPointDocument",
+			"unicode": "EF72"
+		},
+		{
+			"name": "ExcelDocument",
+			"unicode": "EF73"
+		},
+		{
+			"name": "GroupedList",
+			"unicode": "EF74"
+		},
+		{
+			"name": "ClassroomLogo",
+			"unicode": "EF75"
+		},
+		{
+			"name": "Sections",
+			"unicode": "EF76"
+		},
+		{
+			"name": "EditPhoto",
+			"unicode": "EF77"
+		},
+		{
+			"name": "Starburst",
+			"unicode": "EF78"
+		},
+		{
+			"name": "ShareiOS",
+			"unicode": "EF79"
+		},
+		{
+			"name": "AirTickets",
+			"unicode": "EF7A"
+		},
+		{
+			"name": "PencilReply",
+			"unicode": "EF7B"
+		},
+		{
+			"name": "Tiles2",
+			"unicode": "EF7C"
+		},
+		{
+			"name": "SkypeCircleCheck",
+			"unicode": "EF7D"
+		},
+		{
+			"name": "SkypeCircleClock",
+			"unicode": "EF7E"
+		},
+		{
+			"name": "SkypeCircleMinus",
+			"unicode": "EF7F"
+		},
+		{
+			"name": "SkypeMessage",
+			"unicode": "EF83"
+		},
+		{
+			"name": "ClosedCaption",
+			"unicode": "EF84"
+		},
+		{
+			"name": "ATPLogo",
+			"unicode": "EF85"
+		},
+		{
+			"name": "OfficeFormsLogoInverse",
+			"unicode": "EF86"
+		},
+		{
+			"name": "RecycleBin",
+			"unicode": "EF87"
+		},
+		{
+			"name": "EmptyRecycleBin",
+			"unicode": "EF88"
+		},
+		{
+			"name": "Hide2",
+			"unicode": "EF89"
+		},
+		{
+			"name": "iOSAppStoreLogo",
+			"unicode": "EF8A"
+		},
+		{
+			"name": "AndroidLogo",
+			"unicode": "EF8B"
+		},
+		{
+			"name": "Breadcrumb",
+			"unicode": "EF8C"
+		},
+		{
+			"name": "PageEdit",
+			"unicode": "EFB6"
+		},
+		{
+			"name": "Database",
+			"unicode": "EFC7"
+		},
+		{
+			"name": "DocumentManagement",
+			"unicode": "EFFC"
+		},
+		{
+			"name": "CRMReport",
+			"unicode": "EFFE"
+		},
+		{
+			"name": "ZipFolder",
+			"unicode": "F012"
+		},
+		{
+			"name": "TextDocument",
+			"unicode": "F029"
+		}
+	]
+}
