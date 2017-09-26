@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@types/chai": "3.4.35",
-    "@types/enzyme": "2.8.0",
+    "@types/enzyme": "2.8.8",
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
     "es6-map": "^0.1.5",

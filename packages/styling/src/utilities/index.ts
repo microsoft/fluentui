@@ -5,9 +5,11 @@ export {
 export {
   IIconRecord,
   IIconSubset,
+  IIconOptions,
   getIcon,
   registerIcons,
-  registerIconAlias
+  registerIconAlias,
+  setIconOptions
 } from './icons';
 
 export {

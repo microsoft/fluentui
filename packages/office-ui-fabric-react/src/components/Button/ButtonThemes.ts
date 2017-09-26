@@ -28,6 +28,11 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       color: theme.palette.neutralDark
     },
 
+    rootCheckedHovered: {
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.black
+    },
+
     // Split button styles
     splitButtonContainer: {
       selectors: {
@@ -102,8 +107,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.black
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white
     },
 
     // Split button styles

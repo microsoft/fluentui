@@ -153,16 +153,19 @@ export function styleToClassName(...args: IStyle[]): string {
 
     if (!className) {
       className = stylesheet.getClassName(getDisplayName(rules));
-      stylesheet.cacheClassName(className, key, args);
+      const registeredRules: string[] = [];
 
       for (let selector of rules.__order) {
         const rulesToInsert: string = serializeRuleEntries(rules[selector]);
 
         if (rulesToInsert) {
+          registeredRules.push(selector, rulesToInsert);
           selector = selector.replace(/\&/g, `.${className}`);
           stylesheet.insertRule(`${selector}{${rulesToInsert}}`);
         }
       }
+
+      stylesheet.cacheClassName(className, key, args, registeredRules);
     }
   }
 
