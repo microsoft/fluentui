@@ -38,6 +38,7 @@ export * from './Overlay';
 export * from './Panel';
 export * from './Pickers';
 export * from './Persona';
+export * from './PersonaCoin';
 export * from './Pivot';
 export * from './ProgressIndicator';
 export * from './Rating';
