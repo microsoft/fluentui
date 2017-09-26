@@ -1218,6 +1218,9 @@
         }
       }
     },
+    "@rush-temp/icons": {
+      "version": "file:projects/icons"
+    },
     "@rush-temp/merge-styles": {
       "version": "file:projects/merge-styles",
       "dependencies": {

@@ -1,0 +1,412 @@
+{
+	"fontName": "fabric-icons-8",
+	"fontFamilyName": "FabricMDL2Icons-8",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"hashFontFileName": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "ViewListTree",
+			"unicode": "F249"
+		},
+		{
+			"name": "TriggerAuto",
+			"unicode": "F24A"
+		},
+		{
+			"name": "TriggerUser",
+			"unicode": "F24B"
+		},
+		{
+			"name": "PivotChart",
+			"unicode": "F24C"
+		},
+		{
+			"name": "StackedBarChart",
+			"unicode": "F24D"
+		},
+		{
+			"name": "StackedLineChart",
+			"unicode": "F24E"
+		},
+		{
+			"name": "BuildQueue",
+			"unicode": "F24F"
+		},
+		{
+			"name": "BuildQueueNew",
+			"unicode": "F250"
+		},
+		{
+			"name": "UserFollowed",
+			"unicode": "F25C"
+		},
+		{
+			"name": "VennDiagram",
+			"unicode": "F273"
+		},
+		{
+			"name": "FiveTileGrid",
+			"unicode": "F274"
+		},
+		{
+			"name": "FocalPoint",
+			"unicode": "F277"
+		},
+		{
+			"name": "TeamsLogoInverse",
+			"unicode": "F27A"
+		},
+		{
+			"name": "TeamsLogo",
+			"unicode": "F27B"
+		},
+		{
+			"name": "TeamsLogoFill",
+			"unicode": "F27C"
+		},
+		{
+			"name": "SkypeForBusinessLogoFill",
+			"unicode": "F27D"
+		},
+		{
+			"name": "SharepointLogo",
+			"unicode": "F27E"
+		},
+		{
+			"name": "SharepointLogoFill",
+			"unicode": "F27F"
+		},
+		{
+			"name": "DelveLogo",
+			"unicode": "F280"
+		},
+		{
+			"name": "DelveLogoFill",
+			"unicode": "F281"
+		},
+		{
+			"name": "OfficeVideoLogo",
+			"unicode": "F282"
+		},
+		{
+			"name": "OfficeVideoLogoFill",
+			"unicode": "F283"
+		},
+		{
+			"name": "ExchangeLogo",
+			"unicode": "F284"
+		},
+		{
+			"name": "ExchangeLogoFill",
+			"unicode": "F285"
+		},
+		{
+			"name": "DocumentApproval",
+			"unicode": "F28B"
+		},
+		{
+			"name": "CloneToDesktop",
+			"unicode": "F28C"
+		},
+		{
+			"name": "InstallToDrive",
+			"unicode": "F28D"
+		},
+		{
+			"name": "Blur",
+			"unicode": "F28E"
+		},
+		{
+			"name": "Build",
+			"unicode": "F28F"
+		},
+		{
+			"name": "ProcessMetaTask",
+			"unicode": "F290"
+		},
+		{
+			"name": "BranchFork2",
+			"unicode": "F291"
+		},
+		{
+			"name": "BranchLocked",
+			"unicode": "F292"
+		},
+		{
+			"name": "BranchCommit",
+			"unicode": "F293"
+		},
+		{
+			"name": "BranchCompare",
+			"unicode": "F294"
+		},
+		{
+			"name": "BranchMerge",
+			"unicode": "F295"
+		},
+		{
+			"name": "BranchPullRequest",
+			"unicode": "F296"
+		},
+		{
+			"name": "BranchSearch",
+			"unicode": "F297"
+		},
+		{
+			"name": "BranchShelveset",
+			"unicode": "F298"
+		},
+		{
+			"name": "RawSource",
+			"unicode": "F299"
+		},
+		{
+			"name": "MergeDuplicate",
+			"unicode": "F29A"
+		},
+		{
+			"name": "RowsGroup",
+			"unicode": "F29B"
+		},
+		{
+			"name": "RowsChild",
+			"unicode": "F29C"
+		},
+		{
+			"name": "Deploy",
+			"unicode": "F29D"
+		},
+		{
+			"name": "Redeploy",
+			"unicode": "F29E"
+		},
+		{
+			"name": "ServerEnviroment",
+			"unicode": "F29F"
+		},
+		{
+			"name": "Plug",
+			"unicode": "F300"
+		},
+		{
+			"name": "PlugSolid",
+			"unicode": "F301"
+		},
+		{
+			"name": "PlugConnected",
+			"unicode": "F302"
+		},
+		{
+			"name": "PlugDisconnected",
+			"unicode": "F303"
+		},
+		{
+			"name": "UnlockSolid",
+			"unicode": "F304"
+		},
+		{
+			"name": "Variable",
+			"unicode": "F305"
+		},
+		{
+			"name": "Parameter",
+			"unicode": "F306"
+		},
+		{
+			"name": "CommentUrgent",
+			"unicode": "F307"
+		},
+		{
+			"name": "Storyboard",
+			"unicode": "F308"
+		},
+		{
+			"name": "DiffInline",
+			"unicode": "F309"
+		},
+		{
+			"name": "DiffSideBySide",
+			"unicode": "F30A"
+		},
+		{
+			"name": "ImageDiff",
+			"unicode": "F30B"
+		},
+		{
+			"name": "ImagePixel",
+			"unicode": "F30C"
+		},
+		{
+			"name": "FileBug",
+			"unicode": "F30D"
+		},
+		{
+			"name": "FileCode",
+			"unicode": "F30E"
+		},
+		{
+			"name": "FileComment",
+			"unicode": "F30F"
+		},
+		{
+			"name": "FileImage",
+			"unicode": "F311"
+		},
+		{
+			"name": "FileSymlink",
+			"unicode": "F312"
+		},
+		{
+			"name": "AutoFillTemplate",
+			"unicode": "F313"
+		},
+		{
+			"name": "WorkItem",
+			"unicode": "F314"
+		},
+		{
+			"name": "WorkItemBug",
+			"unicode": "F315"
+		},
+		{
+			"name": "LogRemove",
+			"unicode": "F316"
+		},
+		{
+			"name": "ColumnOptions",
+			"unicode": "F317"
+		},
+		{
+			"name": "Packages",
+			"unicode": "F318"
+		},
+		{
+			"name": "BuildIssue",
+			"unicode": "F319"
+		},
+		{
+			"name": "AssessmentGroup",
+			"unicode": "F31A"
+		},
+		{
+			"name": "VariableGroup",
+			"unicode": "F31B"
+		},
+		{
+			"name": "FullHistory",
+			"unicode": "F31C"
+		},
+		{
+			"name": "BusinessHoursSign",
+			"unicode": "F310"
+		},
+		{
+			"name": "VisioDiagram",
+			"unicode": "F2A0"
+		},
+		{
+			"name": "HighlightMappedShapes",
+			"unicode": "F2A1"
+		},
+		{
+			"name": "TextCallout",
+			"unicode": "F2A2"
+		},
+		{
+			"name": "IconSetsFlag",
+			"unicode": "F2A4"
+		},
+		{
+			"name": "VisioLogo",
+			"unicode": "F2A7"
+		},
+		{
+			"name": "VisioLogoFill",
+			"unicode": "F2A8"
+		},
+		{
+			"name": "VisioDocument",
+			"unicode": "F2A9"
+		},
+		{
+			"name": "TimelineProgress",
+			"unicode": "F2AA"
+		},
+		{
+			"name": "TimelineDelivery",
+			"unicode": "F2AB"
+		},
+		{
+			"name": "Backlog",
+			"unicode": "F2AC"
+		},
+		{
+			"name": "TeamFavorite",
+			"unicode": "F2AD"
+		},
+		{
+			"name": "TaskGroup",
+			"unicode": "F2AE"
+		},
+		{
+			"name": "TaskGroupMirrored",
+			"unicode": "F2AF"
+		},
+		{
+			"name": "ScopeTemplate",
+			"unicode": "F2B0"
+		},
+		{
+			"name": "AssessmentGroupTemplate",
+			"unicode": "F2B1"
+		},
+		{
+			"name": "NewTeamProject",
+			"unicode": "F2B2"
+		},
+		{
+			"name": "CommentAdd",
+			"unicode": "F2B3"
+		},
+		{
+			"name": "CommentNext",
+			"unicode": "F2B4"
+		},
+		{
+			"name": "CommentPrevious",
+			"unicode": "F2B5"
+		},
+		{
+			"name": "ShopServer",
+			"unicode": "F2B6"
+		},
+		{
+			"name": "LocaleLanguage",
+			"unicode": "F2B7"
+		},
+		{
+			"name": "QueryList",
+			"unicode": "F2B8"
+		},
+		{
+			"name": "UserSync",
+			"unicode": "F2B9"
+		},
+		{
+			"name": "UserPause",
+			"unicode": "F2BA"
+		},
+		{
+			"name": "StreamingOff",
+			"unicode": "F2BB"
+		},
+		{
+			"name": "ArrowTallUpLeft",
+			"unicode": "F2BD"
+		}
+	]
+}

@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'FabricMDL2Icons-11';
+  src: url('../fonts/fabric-icons-11-c0dbf638.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2Icons-11';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.ms-Icon--IRMReplyMirrored:before { content: "\F41E"; }
+.ms-Icon--IRMForward:before { content: "\F41F"; }
+.ms-Icon--IRMForwardMirrored:before { content: "\F420"; }
+.ms-Icon--VoicemailIRM:before { content: "\F421"; }
+.ms-Icon--EventAccepted:before { content: "\F422"; }
+.ms-Icon--EventTentative:before { content: "\F423"; }
+.ms-Icon--EventTentativeMirrored:before { content: "\F424"; }
+.ms-Icon--EventDeclined:before { content: "\F425"; }
+.ms-Icon--IDBadge:before { content: "\F427"; }
+.ms-Icon--OfficeFormsLogoInverse16:before { content: "\F433"; }
+.ms-Icon--OfficeFormsLogo:before { content: "\F434"; }
+.ms-Icon--OfficeFormsLogoFill:before { content: "\F435"; }
+.ms-Icon--OfficeFormsLogo16:before { content: "\F436"; }
+.ms-Icon--OfficeFormsLogoFill16:before { content: "\F437"; }
+.ms-Icon--OfficeFormsLogoInverse24:before { content: "\F43A"; }
+.ms-Icon--OfficeFormsLogo24:before { content: "\F43B"; }
+.ms-Icon--OfficeFormsLogoFill24:before { content: "\F43C"; }
+.ms-Icon--PageLock:before { content: "\F43F"; }
+.ms-Icon--NotExecuted:before { content: "\F440"; }
+.ms-Icon--NotImpactedSolid:before { content: "\F441"; }
+.ms-Icon--FieldReadOnly:before { content: "\F442"; }
+.ms-Icon--FieldRequired:before { content: "\F443"; }
+.ms-Icon--BacklogBoard:before { content: "\F444"; }
+.ms-Icon--ExternalBuild:before { content: "\F445"; }
+.ms-Icon--ExternalTFVC:before { content: "\F446"; }
+.ms-Icon--ExternalXAML:before { content: "\F447"; }
+.ms-Icon--IssueSolid:before { content: "\F448"; }
+.ms-Icon--DefectSolid:before { content: "\F449"; }
+.ms-Icon--LadybugSolid:before { content: "\F44A"; }
+.ms-Icon--MTMLogo:before { content: "\F44B"; }
+.ms-Icon--NugetLogo:before { content: "\F44C"; }
+.ms-Icon--TFVCLogo:before { content: "\F44D"; }
+.ms-Icon--ProjectLogo32:before { content: "\F47E"; }
+.ms-Icon--ProjectLogoFill32:before { content: "\F47F"; }
+.ms-Icon--ProjectLogo16:before { content: "\F480"; }
+.ms-Icon--ProjectLogoFill16:before { content: "\F481"; }
+.ms-Icon--SwayLogo32:before { content: "\F482"; }
+.ms-Icon--SwayLogoFill32:before { content: "\F483"; }
+.ms-Icon--SwayLogo16:before { content: "\F484"; }
+.ms-Icon--SwayLogoFill16:before { content: "\F485"; }
+.ms-Icon--ClassNotebookLogo32:before { content: "\F486"; }
+.ms-Icon--ClassNotebookLogoFill32:before { content: "\F487"; }
+.ms-Icon--ClassNotebookLogo16:before { content: "\F488"; }
+.ms-Icon--ClassNotebookLogoFill16:before { content: "\F489"; }
+.ms-Icon--ClassNotebookLogoInverse32:before { content: "\F48A"; }
+.ms-Icon--ClassNotebookLogoInverse16:before { content: "\F48B"; }
+.ms-Icon--StaffNotebookLogo32:before { content: "\F48C"; }
+.ms-Icon--StaffNotebookLogoFill32:before { content: "\F48D"; }
+.ms-Icon--StaffNotebookLogo16:before { content: "\F48E"; }
+.ms-Icon--StaffNotebookLogoFill16:before { content: "\F48F"; }
+.ms-Icon--StaffNotebookLogoInverted32:before { content: "\F490"; }
+.ms-Icon--StaffNotebookLogoInverted16:before { content: "\F491"; }
+.ms-Icon--KaizalaLogo:before { content: "\F492"; }
+.ms-Icon--TaskLogo:before { content: "\F493"; }
+.ms-Icon--ProtectionCenterLogo32:before { content: "\F494"; }
+.ms-Icon--NonprofitLogo32:before { content: "\F495"; }
+.ms-Icon--GallatinLogo:before { content: "\F496"; }
+.ms-Icon--Globe2:before { content: "\F49A"; }
+.ms-Icon--Guitar:before { content: "\F49B"; }
+.ms-Icon--Breakfast:before { content: "\F49C"; }
+.ms-Icon--Brunch:before { content: "\F49D"; }
+.ms-Icon--BeerMug:before { content: "\F49E"; }
+.ms-Icon--Vacation:before { content: "\F49F"; }
+.ms-Icon--Teeth:before { content: "\F4A0"; }
+.ms-Icon--Taxi:before { content: "\F4A1"; }
+.ms-Icon--Chopsticks:before { content: "\F4A2"; }
+.ms-Icon--SyncOccurence:before { content: "\F4A3"; }
+.ms-Icon--UnsyncOccurence:before { content: "\F4A4"; }
+.ms-Icon--PrimaryCalendar:before { content: "\F4AE"; }
+.ms-Icon--SearchCalendar:before { content: "\F4AF"; }
+.ms-Icon--VideoOff:before { content: "\F4B0"; }
+.ms-Icon--MicrosoftFlowLogo:before { content: "\F4B1"; }
+.ms-Icon--BusinessCenterLogo:before { content: "\F4B2"; }
+.ms-Icon--ToDoLogoBottom:before { content: "\F4B3"; }
+.ms-Icon--ToDoLogoTop:before { content: "\F4B4"; }
+.ms-Icon--EditSolid12:before { content: "\F4B5"; }
+.ms-Icon--EditSolidMirrored12:before { content: "\F4B6"; }
+.ms-Icon--UneditableSolid12:before { content: "\F4B7"; }
+.ms-Icon--UneditableSolidMirrored12:before { content: "\F4B8"; }
+.ms-Icon--UneditableMirrored:before { content: "\F4B9"; }
+.ms-Icon--AdminALogo32:before { content: "\F4BA"; }
+.ms-Icon--AdminALogoFill32:before { content: "\F4BB"; }
+.ms-Icon--ToDoLogoInverse:before { content: "\F4BC"; }
+.ms-Icon--Snooze:before { content: "\F4BD"; }
