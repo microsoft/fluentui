@@ -7,7 +7,7 @@ import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/Choi
 import { IPropertiesTableSetProps } from './PropertiesTableSet.Props';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
-const DOCS = require('../../../docs.json') as JSON;
+// const DOCS = require('../../../docs.json') as JSON;
 const DEBOUNCE_DELAY = 200;
 
 export interface IPropertiesTableSetStateNew {
@@ -25,32 +25,41 @@ export class PropertiesTableSetNew extends BaseComponent<IPropertiesTableSetProp
   constructor(props: IPropertiesTableSetProps) {
     super(props);
     let {
-      sources
+      json
     } = props;
 
     this._onChangeFilter = this._async.debounce(this._onChangeFilter, DEBOUNCE_DELAY);
 
     let properties: IProperty[] = [];
 
-    if (sources) {
-      sources.forEach((source: string) => {
-        getProperties(source);
-      });
-    }
+    // let regex2 = new RegExp('\\S*!(\\S*)\'', 'g');
+    // let sourceFile = regex2.exec(sources![0]); // sourceFile, i.e. *.Props.ts
+    // let lastSlashIndex = sourceFile![1].lastIndexOf('/');
+    // let path = sourceFile![1].substring(0, lastSlashIndex);
 
-    function getProperties(src: string): void {
-      if (DOCS[src] && !isAlreadyInProperties(src)) {
-        properties.push(DOCS[src]);
+    // properties = require('../../../../office-ui-fabric-react/src/components/Checkbox/docs.json');
 
-        if (DOCS[src].extends.length > 0) {
-          DOCS[src].extends.forEach((prop: string) => getProperties(prop));
-        }
-      }
-    }
+    json!.forEach((source: IProperty) => properties = properties.concat(source));
+    // properties = sources![0];
+    // if (sources) {
+    //   sources.forEach((source: string) => {
+    //     getProperties(source);
+    //   });
+    // }
 
-    function isAlreadyInProperties(source: string): boolean {
-      return properties.filter((prop: IProperty) => prop.name === source).length > 0;
-    }
+    // function getProperties(src: string): void {
+    //   if (DOCS[src] && !isAlreadyInProperties(src)) {
+    //     properties.push(DOCS[src]);
+
+    //     if (DOCS[src].extends.length > 0) {
+    //       DOCS[src].extends.forEach((prop: string) => getProperties(prop));
+    //     }
+    //   }
+    // }
+
+    // function isAlreadyInProperties(source: string): boolean {
+    //   return properties.filter((prop: IProperty) => prop.name === source).length > 0;
+    // }
 
     this.state = {
       properties: properties,
@@ -147,6 +156,7 @@ export class PropertiesTableSetNew extends BaseComponent<IPropertiesTableSetProp
       (
         <PropertiesTable
           // key={ Math.random().toString() } // Why does this need a unique key to re-render?
+          key='Alphabetical'
           title={ this.props.componentName }
           properties={ combinedInterfaceProps }
           renderAsEnum={ false }

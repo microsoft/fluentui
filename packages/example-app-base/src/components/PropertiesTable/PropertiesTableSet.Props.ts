@@ -1,4 +1,5 @@
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IProperty } from '../../utilities/parser/index';
 
 export interface IPropertiesTableSetProps extends IBaseProps {
   /**
@@ -22,4 +23,9 @@ export interface IPropertiesTableSetProps extends IBaseProps {
    * A set of pre-resolved source code.
    */
   sources?: string[];
+
+  /**
+   * A set of pre-resolved json docs.
+   */
+  json?: IProperty[];
 }
