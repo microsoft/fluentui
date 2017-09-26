@@ -25,10 +25,14 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             disabled={ disabled }
             checked={ checked }
             text='Butjon'
-            onClick={ () => alert('Clicked') }
+            onClick={ this._alertClicked }
           />
         </div>
       </div>
     );
+  }
+
+  private _alertClicked(): void {
+    alert('Clicked');
   }
 }
