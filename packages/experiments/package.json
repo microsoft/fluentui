@@ -41,9 +41,9 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
-    "@uifabric/styling": ">=0.24.1 <1.0.0",
-    "@uifabric/utilities": ">=4.15.0 <5.0.0",
-    "office-ui-fabric-react": ">=4.50.2 <5.0.0",
+    "@uifabric/styling": ">=0.24.2 <1.0.0",
+    "@uifabric/utilities": ">=4.16.0 <5.0.0",
+    "office-ui-fabric-react": ">=4.51.0 <5.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
