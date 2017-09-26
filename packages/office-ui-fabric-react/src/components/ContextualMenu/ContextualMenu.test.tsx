@@ -402,18 +402,21 @@ describe('ContextualMenu', () => {
         key: 'TestKey2'
       },
     ];
+
+    const onMenuOpened = (): void => {
+      if (layerMounted) {
+        layerMountedFirst = true;
+      }
+      menuMounted = true;
+    };
+
     ReactTestUtils.renderIntoDocument<HTMLDivElement>(
       <div>
         <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
         <ContextualMenu
           target='#target'
           items={ items }
-          onMenuOpened={ () => {
-            if (layerMounted) {
-              layerMountedFirst = true;
-            }
-            menuMounted = true;
-          } }
+          onMenuOpened={ onMenuOpened }
         />
       </div>
     );
