@@ -71,6 +71,10 @@ export const getStyles = memoizeFunction((
 
     menuIcon: {
       color: theme.palette.neutralSecondary
+    },
+
+    textContainer: {
+      flexGrow: 0
     }
 
   };
