@@ -11,7 +11,7 @@ let docs = {};
 glob("**/*.Props.ts", globConfig, (err, files) => {
   if (files) {
     parseFiles(files);
-    // writeJsonTofile();
+    // writeMasterJson();
     writeJsonFilesForComponents();
   }
   if (err) {
@@ -39,7 +39,7 @@ function parseFiles(files) {
 /**
  * Save `docs` to json file. This is the master docs file that has all interfaces.
  */
-// function writeJsonTofile() {
+// function writeMasterJson() {
 //   fs.writeFile('packages/example-app-base/docs.json', JSON.stringify(docs), err => {
 //     if (!err)
 //       console.log('Successfully saved docs.json.');
@@ -47,6 +47,7 @@ function parseFiles(files) {
 //       console.error(err);
 //   });
 // }
+
 
 
 /**
@@ -57,7 +58,7 @@ function writeJsonFilesForComponents() {
   glob("packages/office-ui-fabric-react/**/*Page.tsx", globConfig, (err, files) => {
     if (files) {
       files.forEach((file) => {
-        // Extract the `sources` that are passed into PropertiesTableSet - these are a .Props.ts files
+        // Extract the `sources` that are passed into PropertiesTableSet - these are .Props.ts files
         let regex = new RegExp('sources={\\s*\\[\\s*([\\s\\S]*)\\s*\\]\\s*}', 'g');
         let result = regex.exec(fs.readFileSync(file, encoding));
 
@@ -79,43 +80,18 @@ function writeJsonFilesForComponents() {
                 if (interfaces) {
                   interfaces.forEach(int => {
                     if (int) {
-                      getProperties(int.name);
+                      getProperties(int.name, currentDoc);
                     }
-
                   });
-                }
-
-                function getProperties(int) {
-                  if (int && docs[int]) {
-                    // console.log('int', int);
-
-                    if (!currentDoc[int]) {
-                      currentDoc.push(docs[int]);
-                      // console.log('docs int', docs[int]);
-
-                    }
-
-
-                    //console.log('currentDoc', currentDoc);
-                    if (docs[int].extends.length > 0) {
-                      // console.log('greater');
-                      docs[int].extends.forEach((prop) => getProperties(prop));
-                    }
-                  }
                 }
 
                 let lastSlashIndex = sourceFile[1].lastIndexOf('/');
                 let path = 'packages/' + sourceFile[1].substring(0, lastSlashIndex);
 
-
                 fs.writeFile(`${path}/docs.json`, JSON.stringify(currentDoc), err => {
-                  if (!err)
-                    console.log('Successfully saved file');
-                  else
-                    console.error(err);
+                  if (err)
+                    console.error('ERROR saving docs.json file: ', err);
                 });
-
-
 
               }
             }
@@ -126,11 +102,23 @@ function writeJsonFilesForComponents() {
     if (err) {
       console.error('ERROR: Couldn\'t parse *Page.tsx files: ', err);
     }
-
-
-
   });
+}
 
+/**
+ * Checks if interface already exists in `currentDoc`. If not, add it from master `docs`
+ * @param {string} interfaceName
+ */
+function getProperties(interfaceName, currentDoc) {
+  if (interfaceName && docs[interfaceName]) {
 
+    if (!currentDoc[interfaceName]) {
+      currentDoc.push(docs[interfaceName]);
+    }
+
+    if (docs[interfaceName].extends.length > 0) {
+      docs[interfaceName].extends.forEach((prop) => getProperties(prop, currentDoc));
+    }
+  }
 }
 
