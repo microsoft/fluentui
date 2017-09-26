@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes Narrator reading of people picker suggestions",
+      "comment": "PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions.",
       "type": "patch"
     }
   ],
