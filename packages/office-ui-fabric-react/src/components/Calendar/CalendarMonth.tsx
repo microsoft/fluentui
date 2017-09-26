@@ -156,7 +156,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectPrevYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    this._onKeyDown(this._onSelectNextYear, ev);
+    this._onKeyDown(this._onSelectPrevYear, ev);
   }
 
   @autobind
