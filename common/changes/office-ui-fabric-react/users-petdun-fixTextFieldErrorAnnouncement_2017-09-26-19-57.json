@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator",
+      "comment": "TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator.",
       "type": "patch"
     }
   ],
