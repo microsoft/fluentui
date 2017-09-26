@@ -20,7 +20,7 @@ export interface IExpandingCardState {
   needsScroll: boolean;
 }
 
-@customizable(['theme'])
+@customizable('ExpandingCard', ['theme'])
 export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,

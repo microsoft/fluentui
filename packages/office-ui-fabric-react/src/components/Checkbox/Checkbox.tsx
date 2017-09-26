@@ -28,7 +28,7 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
-@customizable(['theme'])
+@customizable('Checkbox', ['theme'])
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'
