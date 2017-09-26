@@ -141,15 +141,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
     }
 
-    const tabIndex = (this.props.tabIndex === undefined) ? (this._isSplitButton ? -1 : 0) : this.props.tabIndex;
-
     const buttonProps = assign(
       nativeProps,
       {
         className: this._classNames.root,
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
-        tabIndex: tabIndex,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
@@ -388,8 +385,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
         className={ classNames && classNames.splitButtonContainer }
-        tabIndex={ 0 }
-        onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
+        onKeyDown={ this._onSplitButtonKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }
       >
         <span
@@ -398,8 +394,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           style={ { 'display': 'flex' } }
         >
           { this._onRenderContent(tag, buttonProps) }
-          { this._onRenderSplitButtonDivider(classNames) }
           { this._onRenderSplitButtonMenuButton(classNames) }
+          { this._onRenderSplitButtonDivider(classNames) }
         </span>
       </div>
     );
@@ -424,7 +420,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
     return (
       <BaseButton
-        tabIndex={ -1 }
         styles={ classNames }
         checked={ this.props.checked }
         disabled={ this.props.disabled }
@@ -437,19 +432,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onSplitButtonKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
-      case KeyCodes.enter:
-      case KeyCodes.space:
-        (this.props.onClick as any)(null);
-        return;
+    if (ev.which === KeyCodes.down) {
+      this._onToggleMenu();
+      ev.preventDefault();
+      ev.stopPropagation();
     }
 
-    if (ev.altKey) {
-      switch (ev.which) {
-        case KeyCodes.down:
-          this._onToggleMenu();
-          return;
-      }
-    }
   }
 }

@@ -34,13 +34,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {
-      selectors: {
-        ':focus': {
-          borderColor: theme.palette.neutralDark
-        }
-      }
-    },
+    splitButtonContainer: {},
 
     splitButtonMenuButton: {
       color: theme.palette.white,
@@ -59,6 +53,10 @@ export function standardStyles(theme: ITheme): IButtonStyles {
           backgroundColor: theme.palette.neutralLighter,
         }
       }
+    },
+
+    splitButtonDivider: {
+      backgroundColor: theme.palette.neutralTertiaryAlt
     },
 
     splitButtonMenuButtonChecked: {
@@ -112,12 +110,10 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     // Split button styles
-    splitButtonContainer: {
-      selectors: {
-        ':focus': {
-          borderColor: theme.palette.neutralDark
-        }
-      }
+    splitButtonContainer: {},
+
+    splitButtonDivider: {
+      backgroundColor: theme.palette.themeLighter
     },
 
     splitButtonMenuButton: {
