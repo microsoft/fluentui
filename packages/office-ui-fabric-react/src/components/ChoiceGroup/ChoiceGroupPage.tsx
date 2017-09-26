@@ -3,7 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSetNew
 } from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
@@ -40,9 +40,12 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
+          <PropertiesTableSetNew
             sources={ [
               require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.Props.ts')
+            ] }
+            json={ [
+              require('office-ui-fabric-react/src/components/ChoiceGroup/docs.json')
             ] }
           />
         }

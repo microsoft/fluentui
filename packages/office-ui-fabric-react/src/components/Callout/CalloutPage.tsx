@@ -3,7 +3,7 @@ import {
   ComponentPage,
   ExampleCard,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSetNew
 } from '@uifabric/example-app-base';
 import { items } from '../CommandBar/examples/data';
 
@@ -45,9 +45,12 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         }
         propertiesTables={
           <div>
-            <PropertiesTableSet
+            <PropertiesTableSetNew
               sources={ [
                 require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.Props.ts')
+              ] }
+              json={ [
+                require('office-ui-fabric-react/src/components/Callout/docs.json')
               ] }
             />
             <p>Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>

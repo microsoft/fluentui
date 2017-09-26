@@ -25,7 +25,10 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         propertiesTables={
           <PropertiesTableSetNew
             sources={ [
-              'ICheckbox', 'ICheckboxProps', 'ICheckboxStyles'
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.Props.ts')
+            ] }
+            json={ [
+              require('office-ui-fabric-react/src/components/Checkbox/docs.json')
             ] }
           />
         }
