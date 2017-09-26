@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Reverting Customizer changes, as the",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com"
+}

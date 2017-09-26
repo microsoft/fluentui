@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Reverting Customizer changes, as the",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com"
+}
