@@ -217,6 +217,20 @@ export const getClassNames = (
 };
 ```
 
+## RTL support
+
+By default, nearly all of the major rtl-sensitive CSS properties will be auto flipped when the dir="rtl" flag is present on the `HTML` tag of the page.
+
+There are some rare scenarios (linear-gradients, etc) which are not flipped, for the sake of keeping the bundle size to a minimum. If there are missing edge cases, please submit a PR to address.
+
+In rare condition where you want to avoid auto flipping, you can annotate the rule with the `@noflip` directive:
+
+```tsx
+mergeStyles({
+  left: '42px @noflip'
+});
+```
+
 ## Optimizing for performance
 
 Resolving the class names on every render can be an unwanted expense especially in hot spots where things are rendered frequently. To optimize, we recommend 2 guidelines:
