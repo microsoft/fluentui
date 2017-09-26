@@ -1,10 +1,14 @@
-# Migration guide from Fabric 4.x to Fabric 5.x
-
 The changes from 4.x to 5.x are focused around bundle size, icon management, and css performance. Major list of changes:
 
 * Icons have been moved to a separate `@uifabric/icons` package.
 * Glamor has been replaced with `@uifabric/merge-styles` package.
 * Deprecated `Button` component and `ButtonTypes` enum have been removed.
+
+To give an idea of the bundle size impact of these change, bundling all dependencies (minus react) up to the Fabric component (one of the simplest components) has been reduced from Fabric 4 size of 34.229 KB to Fabric 5's 20.339 KB bytes gzipped. This includes all utilities, styling, and merge-styles logic, which is the foundation required for rendering Fabric components.
+
+This 40% reduction in foundation code is a good start, but we still can do better and will continue to slice and dice the contents to reduce further in future updates.
+
+# Migration guide from Fabric 4.x to Fabric 5.x
 
 # Before updating to 5
 
@@ -16,9 +20,9 @@ It would be a good idea to update some deprecated things in your application cod
 
 ## Notes on Icons
 
-One common struggle we have in Fabric is bundle size. There are many efforts going on to reduce this. In inspecting bundle sizes, 5k gzipped is dedicated to the `IconCodes` code map. Most partners do not need these. And also, the icons maps to the Fabric Icon font, which adds a whopping 80k font download. This is a bad practice that no partner should be using. But this has been an awkward issue to address, since we also want icons to just work out of the box.
+Icons definitions have been a part of the bundle size problem. 5k gzipped is dedicated to the `IconCodes` code map. Most partners do not need these. Additionally, using the icons downloads the Fabric Icon font, which adds a whopping 80k font download. This is a bad practice that no partner should be burdened with. But this has been an awkward issue to address, since we also want icons to just work out of the box.
 
-Another problem customers have faced is that the hardcoded SharePoint CDN urls to those icon fonts are not always ideal. In on-prem solutions, those urls can't be accessed and partners tend to have to redefine those rules. We want it to be easy to solve the on-prem scenario as well.
+Another problem customers have faced is that the hardcoded SharePoint CDN urls to those icon fonts are not always ideal. In on-premise solutions, those urls can't be accessed and partners tend to have to redefine those rules. We want it to be easy to solve the on-premise scenario as well.
 
 In Fabric 5, we did this:
 
