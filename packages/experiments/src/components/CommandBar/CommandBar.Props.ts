@@ -1,7 +1,7 @@
+
 import * as React from 'react';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ISearchBoxProps } from 'office-ui-fabric-react/lib/SearchBox';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar';
 
@@ -55,12 +55,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   onRenderButton?: (item: ICommandBarItemProps) => JSX.Element;
 
   /**
-   * Custom function to reduce data if items do not fit in given space. Return `undefined` if no more steps can be taken to avoid infinate loop.
+   * Custom function to reduce data if items do not fit in given space. Return `undefined`
+   * if no more steps can be taken to avoid infinate loop.
    */
   onReduceData?: (data: ICommandBarData) => ICommandBarData;
 
   /**
-   * Custom function to grow data if items are too small for the given space. Return `undefined` if no more steps can be taken to avoid infinate loop.
+   * Custom function to grow data if items are too small for the given space.
+   * Return `undefined` if no more steps can be taken to avoid infinate loop.
    */
   onGrowData?: (data: ICommandBarData) => ICommandBarData;
 

@@ -1,142 +1,181 @@
 
 import * as React from 'react';
-import { Tile } from '../Tile';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
+import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   SignalField,
-  Signal,
   NewSignal,
   CommentsSignal,
   TrendingSignal,
-  SharedSignal,
-  MentionSignal
+  SharedSignal
 } from '../../signals/Signals';
 import { lorem } from '@uifabric/example-app-base';
+import { ISize, fitContentToBounds } from '@uifabric/utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
+// tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
-export class TileDocumentExample extends React.Component<any, any> {
-  public render() {
+const ITEMS: { name: string; activity: string; }[] = [
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  }
+];
+
+interface IDocumentTileWithThumbnailProps {
+  originalImageSize: ISize;
+  showForeground: boolean;
+  item: typeof ITEMS[0];
+}
+
+const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> =
+  (props: IDocumentTileWithThumbnailProps): JSX.Element => {
+    const tile = (
+      <Tile
+        contentSize={
+          {
+            width: 176,
+            height: 171
+          }
+        }
+        itemName={
+          <SignalField
+            before={
+              <TrendingSignal />
+            }
+          >
+            { props.item.name }
+          </SignalField>
+        }
+        itemActivity={
+          <SignalField
+            before={
+              <CommentsSignal>{ '12' }</CommentsSignal>
+            }
+          >
+            { props.item.activity }
+          </SignalField>
+        }
+        foreground={
+          <span />
+        }
+        hideForeground={ !props.showForeground }
+        showForegroundFrame={ true }
+      />
+    );
+
+    const {
+      foregroundSize = { width: 0, height: 0 }
+    } = getTileLayout(tile);
+
+    const imageSize = fitContentToBounds({
+      contentSize: props.originalImageSize,
+      boundsSize: foregroundSize,
+      mode: 'contain'
+    });
+
+    return (
+      <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
+        {
+          renderTileWithLayout(tile, {
+            foreground: (
+              <img
+                src={ `//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}` }
+                className={ css(TileExampleStyles.tileImage) }
+              />
+            )
+          })
+        }
+      </div>
+    );
+  };
+
+export interface ITileDocumentExampleState {
+  imagesLoaded: boolean;
+}
+
+export class TileDocumentExample extends React.Component<{}, ITileDocumentExampleState> {
+  constructor() {
+    super();
+
+    this.state = {
+      imagesLoaded: true
+    };
+  }
+
+  public render(): JSX.Element {
+    const {
+      imagesLoaded
+    } = this.state;
+
     return (
       <div>
-        <h3>Tiny document thumbnail</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
-          <Tile
-            itemName={
-              <SignalField
-                before={
-                  <TrendingSignal />
-                }
-              >
-                { lorem(2) }
-              </SignalField>
+        <Checkbox
+          label='Show images as loaded'
+          checked={ imagesLoaded }
+          onChange={ this._onImagesLoadedChanged }
+        />
+        <h3>Document thumbnail</h3>
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 40,
+              height: 40
             }
-            itemActivity={
-              <SignalField
-                before={
-                  <CommentsSignal>{ '12' }</CommentsSignal>
-                }
-              >
-                { lorem(2) }
-              </SignalField>
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[0] }
+        />
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 200,
+              height: 150
             }
-            foreground={
-              <img src={ `//placehold.it/40x40` } style={
-                {
-                  display: 'block'
-                }
-              } />
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[1] }
+        />
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 150,
+              height: 200
             }
-            showForegroundFrame={ true }
-          />
-        </div>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
-          <Tile
-            itemName={
-              <SignalField
-                before={
-                  <TrendingSignal />
-                }
-              >
-                { lorem(2) }
-              </SignalField>
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[2] }
+        />
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
             }
-            itemActivity={
-              <SignalField
-                before={
-                  <CommentsSignal>{ '12' }</CommentsSignal>
-                }
-              >
-                { lorem(2) }
-              </SignalField>
-            }
-            foreground={
-              <img src={ `//placehold.it/80x120` } style={
-                {
-                  display: 'block'
-                }
-              } />
-            }
-            showForegroundFrame={ true }
-          />
-        </div>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
-          <Tile
-            itemName={
-              <SignalField
-                before={
-                  <TrendingSignal />
-                }
-              >
-                { lorem(2) }
-              </SignalField>
-            }
-            itemActivity={
-              <SignalField
-                before={
-                  <CommentsSignal>{ '12' }</CommentsSignal>
-                }
-              >
-                { lorem(2) }
-              </SignalField>
-            }
-            foreground={
-              <img src={ `//placehold.it/168x96` } style={
-                {
-                  display: 'block'
-                }
-              } />
-            }
-            showForegroundFrame={ true }
-          />
-        </div>
-        <h3>Maximum-sized document thumbnail</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
-          <Tile
-            itemName={
-              <SignalField
-                before={
-                  <NewSignal />
-                }
-              >
-                { lorem(10) }
-              </SignalField>
-            }
-            foreground={
-              <img src={ `//placehold.it/168x120` } style={
-                {
-                  display: 'block'
-                }
-
-              } />
-            }
-            showForegroundFrame={ true }
-          />
-        </div>
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[3] }
+        />
         <h3>Document icon</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+        <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
             itemName={
               <SignalField
@@ -144,7 +183,7 @@ export class TileDocumentExample extends React.Component<any, any> {
                   <NewSignal />
                 }
               >
-                { lorem(1) }
+                { ITEMS[3].name }
               </SignalField>
             }
             itemActivity={
@@ -154,7 +193,7 @@ export class TileDocumentExample extends React.Component<any, any> {
                     <SharedSignal />
                   }
                 >
-                  { lorem(3) }
+                  { ITEMS[3].activity }
                 </SignalField>
               )
             }
@@ -178,5 +217,12 @@ export class TileDocumentExample extends React.Component<any, any> {
         </div>
       </div>
     );
+  }
+
+  @autobind
+  private _onImagesLoadedChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+    this.setState({
+      imagesLoaded: checked
+    });
   }
 }

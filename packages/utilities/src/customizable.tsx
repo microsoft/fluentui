@@ -1,49 +1,54 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { GlobalSettings, IChangeDescription } from './GlobalSettings';
+import { Customizations } from './Customizations';
 
-export function customizable<P>(fields: string[]) {
+export function customizable(
+  scope: string,
+  fields: string[]
+  // tslint:disable-next-line:no-any
+): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
+
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
+    // tslint:disable-next-line:no-any
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
+    // tslint:disable-next-line:no-any
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
-      public static contextTypes = {
-        injectedProps: PropTypes.object
+      public static displayName: string = 'Customized' + scope;
+
+      public static contextTypes: {
+        customizations: PropTypes.Requireable<{}>;
+      } = {
+        customizations: PropTypes.object
       };
 
+      // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
         super(props, context);
 
         this._onSettingChanged = this._onSettingChanged.bind(this);
       }
 
-      public componentDidMount() {
-        GlobalSettings.addChangeListener(this._onSettingChanged);
+      public componentDidMount(): void {
+        Customizations.observe(this._onSettingChanged);
       }
 
-      public componentWillUnmount() {
-        GlobalSettings.removeChangeListener(this._onSettingChanged);
+      public componentWillUnmount(): void {
+        Customizations.unobserve(this._onSettingChanged);
       }
 
-      public render() {
-        let defaultProps = {};
-
-        for (let propName of fields) {
-          (defaultProps as any)[propName] = (this.context.injectedProps) ?
-            this.context.injectedProps[propName] :
-            GlobalSettings.getValue(propName);
-        }
+      public render(): JSX.Element {
+        const defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
 
         return (
+          // tslint:disable-next-line:no-any
           <ComposedComponent { ...defaultProps } { ...this.props as any } />
         );
       }
 
-      private _onSettingChanged(change: IChangeDescription): void {
-        if (fields.indexOf(change.key) >= 0) {
-          this.forceUpdate();
-        }
+      private _onSettingChanged(): void {
+        this.forceUpdate();
       }
 
     };

@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { CheckboxStatus } from './Checkbox.checklist';
 
 const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 
@@ -13,7 +15,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
   public render() {
     return (
       <ComponentPage
-        title='Checkbox'
+        title={ 'Checkbox' }
         componentName='CheckboxExample'
         exampleCards={
           <ExampleCard title='Checkboxes' code={ CheckboxBasicExampleCode }>
@@ -51,7 +53,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -69,11 +71,13 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/CheckBox/CheckBox.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...CheckboxStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

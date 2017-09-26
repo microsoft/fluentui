@@ -5,6 +5,7 @@ import { IButtonStyles } from './Button.Props';
 export interface IButtonClassNames {
   root?: string;
   flexContainer?: string;
+  textContainer?: string;
   icon?: string;
   label?: string;
   menuIcon?: string;
@@ -33,7 +34,11 @@ export const getClassNames = memoizeFunction((
       ],
       expanded && [
         'is-expanded',
-        styles.rootExpanded
+        styles.rootExpanded,
+        {
+          ':hover .ms-Button-icon': styles.iconExpandedHovered,
+          ':hover': styles.rootExpandedHovered
+        }
       ],
       disabled && [
         'is-disabled',
@@ -59,6 +64,11 @@ export const getClassNames = memoizeFunction((
     flexContainer: mergeStyles(
       'ms-Button-flexContainer',
       styles.flexContainer
+    ) as string,
+
+    textContainer: mergeStyles(
+      'ms-Button-textContainer',
+      styles.textContainer
     ) as string,
 
     icon: mergeStyles(

@@ -26,4 +26,8 @@
   &.rootIsDark {
     background-color: $ms-color-blackTranslucent40;
   }
+
+  @include high-contrast {
+    border: 1px solid WindowText;
+  }
 }

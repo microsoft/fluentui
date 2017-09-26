@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBar } from '../CommandBar';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { ICommandBarProps } from './../CommandBar.Props';
+export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
 
-export class CommandBarBasicExample extends React.Component<any, any> {
-
-  constructor(props: any) {
+  constructor(props: ICommandBarProps) {
     super(props);
     this.state = {
       areNamesVisible: true,
@@ -13,7 +11,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { items, overflowItems, farItems } = this.props;
 
     return (

@@ -8,6 +8,8 @@ import {
   Persona,
   PersonaSize
 } from 'office-ui-fabric-react/lib/Persona';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
 }
@@ -42,7 +44,9 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
           } }
           styles={ styles }
+          ariaDescribedBy={ 'descriptionID' }
         />
+        <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
@@ -68,9 +72,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
-          onChange={ (ev, checked) => {
-            this.setState({ isChecked: checked! });
-          } }
+          onChange={ this._onControlledCheckboxChange }
           styles={ styles }
         />
 
@@ -91,6 +93,11 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
 
   private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
     console.log(`The option has been changed to ${isChecked}.`);
+  }
+
+  @autobind
+  private _onControlledCheckboxChange(ev: React.FormEvent<HTMLElement>, checked: boolean): void {
+    this.setState({ isChecked: checked! });
   }
 
   private _renderPersonaLabel(props: ICheckboxProps) {

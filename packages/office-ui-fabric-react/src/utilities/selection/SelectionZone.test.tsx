@@ -35,7 +35,8 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
     <SelectionZone
       selection={ _selection }
       selectionMode={ selectionMode }
-      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }>
+      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
+    >
 
       <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
 
@@ -53,7 +54,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
         <button id='toggle2' data-selection-toggle={ true }>Toggle</button>
       </div>
 
-      <div id='surface3' data-selection-index='3'></div>
+      <div id='surface3' data-selection-index='3' />
 
     </SelectionZone>
   );

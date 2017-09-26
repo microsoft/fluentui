@@ -1,9 +1,10 @@
 
-@import '../../../../office-ui-fabric-react/src/common/common';
+@import '~office-ui-fabric-react/src/common/common';
 
 .signal {
   display: inline-block;
   margin: 0 4px;
+  position: relative;
 
   &:first-child {
     @include margin-left(0);
@@ -14,7 +15,7 @@
   }
 }
 
-.new {
+.newItem {
   width: 0;
   height: 1em;
   position: relative;
@@ -68,6 +69,7 @@
 
 .shared {
   color: $ms-color-neutralSecondary;
+  top: 0.1em;
 }
 
 .missingMetadata {
@@ -83,6 +85,8 @@
 }
 
 .signal {
+  transition: color 0.2s linear;
+
   .dark &,
   .dark.selected {
     color: $ms-color-white;

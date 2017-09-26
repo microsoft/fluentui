@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
     "lib": [
       "es2017",
@@ -15,16 +16,10 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": [
-      "chai",
-      "mocha"
+      "jest"
     ]
   },
-  "exclude": [
-    "api",
-    "temp",
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

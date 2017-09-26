@@ -2,14 +2,11 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
-import { IDetailsRowProps, DetailsRow, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import {
-  IDragDropHelper,
   IDragDropEvents,
-  IDragDropOptions,
   IDragDropContext
 } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { createListItems } from '@uifabric/example-app-base';
@@ -45,7 +42,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
             items={ items }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => { alert(`Item invoked: ${item.name}`); } }
+            onItemInvoked={ this._onItemInvoked }
             onRenderItemColumn={ this._onRenderItemColumn }
             dragDropEvents={ this._getDragDropEvents() }
           />
@@ -74,6 +71,10 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
         _draggedIndex = -1;
       },
     };
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
   }
 
   private _onRenderItemColumn(item: any, index: number, column: IColumn) {

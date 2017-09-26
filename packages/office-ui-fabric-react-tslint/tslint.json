@@ -1,8 +1,39 @@
 {
   "extends": [
-    "@microsoft/gulp-core-build-typescript/lib/defaultTslint.json"
+    "tslint-react"
   ],
   "rules": {
+    "function-name": [
+      true,
+      {
+        "method-regex": "^[a-z][\\w\\d]+$",
+        "private-method-regex": "^_[a-z][\\w\\d]+$",
+        "protected-method-regex": "^[_]?[a-z][\\w\\d]+$",
+        "static-method-regex": "^[a-z][\\w\\d]+$",
+        "function-regex": "^[_]?[a-z][\\w\\d]+$"
+      }
+    ],
+    "jsx-curly-spacing": {
+      "when": "always"
+    },
+    "jsx-no-bind": true,
+    "jsx-boolean-value": [
+      "never"
+    ],
+    "jsx-equals-spacing": "never",
+    "jsx-key": true,
+    "jsx-no-lambda": true,
+    "jsx-self-close": true,
+    "jsx-wrap-multiline": true,
+    "jsx-no-multiline-js": false,
+    "jsx-no-string-ref": true,
+    "jsx-ban-props": [
+      true,
+      [
+        "style",
+        "Use className and provide css rules instead of using inline styles."
+      ]
+    ],
     "no-duplicate-variable": true,
     "use-isnan": true,
     "triple-equals": [
@@ -22,9 +53,6 @@
       "property-declaration",
       "member-variable-declaration"
     ],
-    "no-unused-expression": [
-      false
-    ],
     "prefer-const": false,
     "quotemark": [
       true,
@@ -43,7 +71,6 @@
     "whitespace": [
       false
     ],
-    "no-trailing-whitespace": false,
     "no-switch-case-fall-through": false,
     "variable-name": [
       true,
@@ -51,6 +78,101 @@
       "allow-leading-underscore",
       "allow-pascal-case",
       "ban-keywords"
-    ]
+    ],
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": true,
+    "eofline": false,
+    "forin": true,
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "interface-name": [
+      true,
+      "always-prefix"
+    ],
+    "label-position": true,
+    "member-access": true,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "protected-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "protected-instance-field",
+          "private-instance-field",
+          "public-static-method",
+          "protected-static-method",
+          "private-static-method",
+          "public-constructor",
+          "public-instance-method",
+          "protected-constructor",
+          "protected-instance-method",
+          "private-constructor",
+          "private-instance-method"
+        ]
+      }
+    ],
+    "missing-optional-annotation": true,
+    "no-any": true,
+    "no-bitwise": true,
+    "no-consecutive-blank-lines": true,
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-constant-condition": true,
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-case": true,
+    "no-duplicate-parameter-names": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-function-expression": true,
+    "no-internal-module": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": true,
+    "no-trailing-whitespace": true,
+    "no-unnecessary-semicolons": true,
+    "no-unused-expression": false,
+    "no-unused-variable": true,
+    "no-use-before-declare": true,
+    "no-with-statement": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "use-named-parameter": true,
+    "valid-typeof": true
   }
 }

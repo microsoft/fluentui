@@ -5,13 +5,13 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 /* tslint:enable:no-unused-variable */
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
-import * as chai from 'chai';
-let { expect } = chai;
-
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
-import { Persona, PersonaSize } from '../Persona';
+import { PersonaSize } from '../Persona';
+import { PersonaCoin } from '../../PersonaCoin';
 import { TestImages } from '../../common/TestImages';
+
+const { expect } = chai;
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
@@ -83,7 +83,8 @@ describe('Facepile', () => {
 
     it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
       const wrapper = ReactTestUtils.renderIntoDocument(
-        <Facepile personas={ [] }
+        <Facepile
+          personas={ [] }
           overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.descriptive }
         />);
@@ -148,7 +149,7 @@ describe('Facepile', () => {
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona.ms-Persona--xs');
+      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--xs');
       expect(addButton).to.have.length(1, 'Add button should render');
       let faces = facepile.querySelectorAll('.ms-Facepile-person');
       expect(faces).to.have.length(facepilePersonas.length, 'personas should render');
@@ -166,9 +167,9 @@ describe('Facepile', () => {
           personas={ facepilePersonas }
           personaSize={ PersonaSize.extraExtraSmall }
         />);
-      let faces = wrapper.find(Persona);
+      let faces = wrapper.find(PersonaCoin);
       expect(faces).to.have.length(facepilePersonas.length, 'XXSmall personas should render');
-      wrapper.find(Persona).forEach((node) => {
+      wrapper.find(PersonaCoin).forEach((node) => {
         expect(node.html()).to.contain('ms-Persona--xxs');
       });
 
@@ -178,9 +179,9 @@ describe('Facepile', () => {
           personas={ facepilePersonas }
           personaSize={ PersonaSize.small }
         />);
-      faces = wrapper.find(Persona);
+      faces = wrapper.find(PersonaCoin);
       expect(faces).to.have.length(facepilePersonas.length, 'Small personas should render');
-      wrapper.find(Persona).forEach((node) => {
+      wrapper.find(PersonaCoin).forEach((node) => {
         expect(node.html()).to.contain('ms-Persona--sm');
       });
     });

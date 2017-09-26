@@ -1,4 +1,8 @@
-// Please keep alphabetized
+/**
+ * This is being removed from the styling package in Fabric 5 and moved into a dedicated
+ * icons package.
+ * @deprecated
+ */
 export type IconName =
   // These icons are not in the font.
   'CustomIcon' |
@@ -391,6 +395,7 @@ export type IconName =
   'FullCircleMask' |
   'FullHistory' |
   'FullScreen' |
+  'FullWidth' |
   'Generate' |
   'Giftbox' |
   'GiftboxOpen' |
@@ -463,6 +468,7 @@ export type IconName =
   'Lightbulb' |
   'LightningBolt' |
   'Like' |
+  'LikeSolid' |
   'LineChart' |
   'Link' |
   'List' |
@@ -506,6 +512,7 @@ export type IconName =
   'Money' |
   'More' |
   'MoreSports' |
+  'MoreVertical' |
   'Move' |
   'MoveToFolder' |
   'MSNLogo' |

@@ -1,3 +1,9 @@
+/**
+ * This is being removed in Fabric 5 due to the need to support arbitrary icon names
+ * for variable subsetting. Please use getIconClassName if you need the icon code, or
+ * render an <Icon /> component which will abstract how the icon is rendered.
+ * @deprecated
+ */
 export const IconCodes = {
   /**
    * Icon code with the value '\uED68'.
@@ -684,6 +690,10 @@ export const IconCodes = {
    */
   combine: '\uEDBB',
   /**
+   * Icon code with value '\uE90A'.
+   */
+  comment: '\uE90A',
+  /**
    * Icon code with the value '\uE942'.
    */
   compassNW: '\uE942',
@@ -1272,6 +1282,10 @@ export const IconCodes = {
    */
   fullScreen: '\uE740',
   /**
+   * Icon code with the value '\uF2FE'.
+   */
+  fullWidth: '\uF2FE',
+  /**
    * Icon code with the value '\uE9DA'.
    */
   generate: '\uE9DA',
@@ -1516,6 +1530,10 @@ export const IconCodes = {
    */
   like: '\uE8E1',
   /**
+   * Icon code with the value '\uF3BF'
+   */
+  likeSolid: '\uF3BF',
+  /**
    * Icon code with the value '\uE71B'.
    */
   link: '\uE71B',
@@ -1671,6 +1689,10 @@ export const IconCodes = {
    * Icon code with the value '\uEB22'.
    */
   moreSports: '\uEB22',
+  /**
+   * Icon code with the value '\uF2BC'.
+   */
+  moreVertical: '\uF2BC',
   /**
    * Icon code with the value '\uE7C2'.
    */
@@ -2587,6 +2609,10 @@ export const IconCodes = {
    * Icon code with the value '\uEDC3'.
    */
   textField: '\uEDC3',
+  /**
+   * Icon code with the value '\uF029'.
+   */
+  textDocument: '\uF029',
   /**
    * Icon code with the value '\uE7B6'.
    */

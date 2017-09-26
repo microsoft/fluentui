@@ -4,8 +4,6 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
 
-import { items } from '../../CommandBar/examples/data';
-
 export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;
 }
@@ -42,7 +40,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               className='ms-CalloutExample-callout'
               gapSpace={ 0 }
               targetElement={ this._menuButtonElement }
-              onDismiss={ (ev: any) => { this._onDismiss(ev); } }
+              onDismiss={ this._onDismiss }
               setInitialFocus={ true }
             >
               <div className='ms-CalloutExample-header'>

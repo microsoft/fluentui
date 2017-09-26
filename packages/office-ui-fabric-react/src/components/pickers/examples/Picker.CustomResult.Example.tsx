@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { SelectionZone } from 'office-ui-fabric-react/lib/DetailsList';
+import { autobind } from '../../../Utilities';
 import {
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
@@ -20,14 +19,15 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   IBasePickerProps,
   BasePickerListBelow,
-  BaseAutoFill,
   IPickerItemProps,
-  ISuggestionsProps,
   ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
-import './Picker.CustomResult.Example.scss';
+
 import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import './Picker.CustomResult.Example.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -274,14 +274,13 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
-  let {
-    onClick
-  } = itemProps;
+
   return (
     <Persona
       imageUrl={ documentPreviewProps && documentPreviewProps.previewImages[0].previewImageSrc }
       primaryText={ documentTitleProps && documentTitleProps.title }
-      size={ PersonaSize.small } />
+      size={ PersonaSize.small }
+    />
   );
 };
 
@@ -331,7 +330,12 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   public render() {
     return (
       <div>
-        <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
+        <Checkbox
+          className={ exampleStyles.exampleCheckbox }
+          label='Disable Document Picker'
+          checked={ this.state.isPickerDisabled }
+          onChange={ this._onDisabledButtonClick }
+        />
         <DocumentPicker
           onRenderSuggestionsItem={ SuggestedBigItem as any }
           onResolveSuggestions={ this._onFilterChanged }
@@ -350,10 +354,11 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
             onBlur: () => console.log('onBlur called')
           } }
         />
-      </div>
+      </div >
     );
   }
 
+  @autobind
   private _onDisabledButtonClick(): void {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled

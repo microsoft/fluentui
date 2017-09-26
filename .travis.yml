@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - '7'
-before_script:
-  - npm install -g gulp
 script:
   - npm run buildfast
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run vrtest; fi'

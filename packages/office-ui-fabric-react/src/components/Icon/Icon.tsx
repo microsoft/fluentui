@@ -12,13 +12,14 @@ import {
 import { IconCodes } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
-export function Icon(props: IIconProps): JSX.Element {
+export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
     styles: customStyles,
     iconName
    } = props;
+
   let styles = getStyles(undefined, customStyles);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
@@ -31,11 +32,12 @@ export function Icon(props: IIconProps): JSX.Element {
     );
 
     return (
-      <div className={
-        css(
-          containerClassName,
-          styles.root
-        ) }
+      <div
+        className={
+          css(
+            containerClassName,
+            styles.root
+          ) }
       >
         <Image { ...props.imageProps as any } />
       </div>
@@ -63,4 +65,4 @@ export function Icon(props: IIconProps): JSX.Element {
       </i>
     );
   }
-}
+};

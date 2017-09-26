@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
@@ -8,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { OverflowSetStatus } from './OverflowSet.checklist';
 
 const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
 const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
@@ -41,6 +42,11 @@ export class OverflowSetPage extends React.Component<any, any> {
             sources={ [
               require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.Props.ts')
             ] }
+          />
+        }
+        componentStatus={
+          <ComponentStatus
+            {...OverflowSetStatus}
           />
         }
       />

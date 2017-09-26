@@ -70,7 +70,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public componentDidUpdate() {
     this._setInitialFocus();
-    this._updatePosition();
+    this._updateAsyncPosition();
   }
 
   public componentWillMount() {
@@ -87,6 +87,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
     if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
       this._maxHeight = undefined;
+    }
+
+    if (newProps.finalHeight !== this.props.finalHeight) {
+      this._setHeightOffsetEveryFrame();
     }
   }
 
@@ -172,11 +176,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
             className={ css('ms-Callout-main', styles.main, {
-              [styles.overFlowYHidden]: finalHeight
+              [styles.overFlowYHidden]: !!finalHeight
             }) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
+            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
+          >
             { children }
           </Popup>
         </div>
@@ -241,10 +246,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this.props.onLayerMounted();
     }
 
-    this._updatePosition();
+    this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
   }
-
+  private _updateAsyncPosition() {
+    this._async.requestAnimationFrame(() => this._updatePosition());
+  }
   private _updatePosition() {
     let { positions } = this.state;
     let hostElement: HTMLElement = this._hostElement;
@@ -354,7 +361,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _setHeightOffsetEveryFrame(): void {
     if (this._calloutElement && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._calloutElement.firstChild as HTMLElement;
+        const calloutMainElem = this._calloutElement.lastChild as HTMLElement;
         const cardScrollHeight: number = calloutMainElem.scrollHeight;
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;

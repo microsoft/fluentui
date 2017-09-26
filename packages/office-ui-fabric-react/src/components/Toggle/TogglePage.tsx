@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 
@@ -17,7 +19,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         title='Toggle'
         componentName='ToggleExample'
         exampleCards={
-          <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
+          <ExampleCard title='Default Toggles' code={ ToggleBasicExampleCode }>
             <ToggleBasicExample />
           </ExampleCard>
         }
@@ -48,7 +50,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -66,11 +68,13 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Toggle/Toggle.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ToggleStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

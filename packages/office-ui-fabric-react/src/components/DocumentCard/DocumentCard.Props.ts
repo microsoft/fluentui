@@ -8,6 +8,7 @@ import { DocumentCardActions } from './DocumentCardActions';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
+import { IIconProps } from '../../Icon';
 
 export interface IDocumentCard {
 
@@ -110,6 +111,7 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * Path to the icon associated with this document type.
+   *
    */
   iconSrc?: string;
 
@@ -136,6 +138,12 @@ export interface IDocumentCardPreviewImage {
    * @deprecated
    */
   accentColor?: string;
+
+  /**
+   * The props for the preview icon.
+   * If provided, icon will be rendered instead of image.
+   */
+  previewIconProps?: IIconProps;
 }
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {

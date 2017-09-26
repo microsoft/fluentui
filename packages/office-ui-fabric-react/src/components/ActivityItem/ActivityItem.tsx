@@ -6,7 +6,8 @@ import { autobind, BaseComponent, memoize } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
 import { getStyles } from './ActivityItem.styles';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaCoin } from 'office-ui-fabric-react/lib/PersonaCoin';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IActivityItemClassNames {
@@ -30,12 +31,11 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   public render() {
     let {
-      className,
       onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
-      styles: customStyles,
+      styles: customStyles
     } = this.props;
 
     this._styles = getStyles(undefined, customStyles);
@@ -49,9 +49,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        { (this.props.onRenderIcon || this.props.activityPersonas) &&
+        { (this.props.activityPersonas || this.props.activityIcon || this.props.onRenderIcon) &&
           <div className={ this._classNames.activityTypeIcon }>
-            { onRenderIcon(this.props, this._onRenderIcon) }
+            { onRenderIcon(this.props) }
           </div>
         }
 
@@ -66,18 +66,20 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   }
 
   @autobind
-  private _onRenderIcon(props: IActivityItemProps): JSX.Element | null {
+  private _onRenderIcon(props: IActivityItemProps): JSX.Element | React.ReactNode | null {
     if (props.activityPersonas) {
       return this._onRenderPersonaArray(props);
+    } else {
+      return this.props.activityIcon;
     }
-
-    return null;
   }
 
   @autobind
   private _onRenderActivityDescription(props: IActivityItemProps): JSX.Element | null {
-    if (props.activityDescriptionText) {
-      return (<span className={ this._classNames.activityText }>{ props.activityDescriptionText }</span>);
+    const activityDescription = props.activityDescription || props.activityDescriptionText;
+
+    if (activityDescription) {
+      return (<span className={ this._classNames.activityText }>{ activityDescription }</span>);
     }
 
     return null;
@@ -85,8 +87,10 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   @autobind
   private _onRenderComments(props: IActivityItemProps): JSX.Element | null {
-    if (!props.isCompact && props.commentText) {
-      return (<div className={ this._classNames.commentText }>{ props.commentText }</div>);
+    const comments = props.comments || props.commentText;
+
+    if (!props.isCompact && comments) {
+      return (<div className={ this._classNames.commentText }>{ comments }</div>);
     }
 
     return null;
@@ -121,14 +125,14 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       }
       activityPersonas.filter((person, index) => index < personaLimit).forEach((person, index) => {
         personaList.push(
-          <Persona
+          <PersonaCoin
             {...person}
             // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
             size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
-            hidePersonaDetails={ true }
-            style={ style } />
+            style={ style }
+          />
         );
       });
       personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;

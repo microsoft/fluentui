@@ -8,8 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IPersonaProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
 import {
   CompactPeoplePicker,
   IBasePickerSuggestionsProps,
@@ -39,7 +38,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   noResultsFoundText: 'No results found',
   loadingText: 'Loading',
   showRemoveButtons: true,
-  suggestionsAvailableAlertText: 'People Picker Suggestions available'
+  suggestionsAvailableAlertText: 'People Picker Suggestions available',
+  suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
@@ -103,7 +103,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <div>
         { currentPicker }
         <div className={ 'dropdown-div' }>
-          <Dropdown label='Select People Picker Type'
+          <Dropdown
+            label='Select People Picker Type'
             options={ [
               { key: 1, text: 'Normal' },
               { key: 2, text: 'Compact' },
@@ -119,16 +120,18 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           <Toggle
             label='Delay Suggestion Results'
             defaultChecked={ false }
-            onChanged={ this._toggleDelayResultsChange } />
+            onChanged={ this._toggleDelayResultsChange }
+          />
         </div>
         <PrimaryButton
           text='Set focus'
-          onClick={ this._onSetFocusButtonClicked } />
+          onClick={ this._onSetFocusButtonClicked }
+        />
       </div>
     );
   }
 
-  public _renderListPicker() {
+  private _renderListPicker() {
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -149,7 +152,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderNormalPicker() {
+  private _renderNormalPicker() {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -171,7 +174,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderCompactPicker() {
+  private _renderCompactPicker() {
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -191,7 +194,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderPreselectedItemsPicker() {
+  private _renderPreselectedItemsPicker() {
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -213,7 +216,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderLimitedSearch() {
+  private _renderLimitedSearch() {
     limitedSearchSuggestionProps.resultsFooter = this._renderFooterText;
 
     return (
@@ -235,7 +238,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderProcessSelectionPicker() {
+  private _renderProcessSelectionPicker() {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -257,7 +260,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderControlledPicker() {
+  private _renderControlledPicker() {
     let controlledItems = [];
     for (let i = 0; i < 5; i++) {
       let item = this.state.peopleList[i];
@@ -274,7 +277,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           className={ 'ms-PeoplePicker' }
           key={ 'controlled' }
           selectedItems={ this.state.currentSelectedItems }
-          onChange={ this.onItemsChange.bind(this) }
+          onChange={ this._onItemsChange }
           inputProps={ {
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
@@ -283,12 +286,14 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         />
         <label> Click to Add a person </label>
         { controlledItems.map(item => <div>
-          <DefaultButton className='controlledPickerButton'
+          <DefaultButton
+            className='controlledPickerButton'
             onClick={ () => {
               this.setState({
                 currentSelectedItems: this.state.currentSelectedItems!.concat([item])
               });
-            } }>
+            } }
+          >
             <Persona { ...item} />
           </DefaultButton>
         </div>) }
@@ -296,7 +301,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public onItemsChange(items: any[]) {
+  @autobind
+  private _onItemsChange(items: any[]) {
     this.setState({
       currentSelectedItems: items
     });

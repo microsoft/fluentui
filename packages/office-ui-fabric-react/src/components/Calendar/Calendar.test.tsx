@@ -101,12 +101,9 @@ describe('Calendar', () => {
       let today = new Date();
       let monthName = dayPickerStrings.months[today.getMonth()];
       let year = today.getFullYear();
-      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-month');
+      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
       expect(dayPickerMonth).to.not.be.undefined;
-      expect(dayPickerMonth.textContent).to.equal(monthName);
-      let dayPickerYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-year');
-      expect(dayPickerYear).to.not.be.undefined;
-      expect(dayPickerYear.textContent).to.equal(year.toString());
+      expect(dayPickerMonth.textContent).to.equal(monthName + ' ' + year.toString());
     });
 
     it('Verify first day of week', () => {
@@ -150,6 +147,12 @@ describe('Calendar', () => {
 
     before(() => {
       defaultDate = new Date(2017, 2, 16);
+      let onSelectDate = (): (date: Date, dateRangeArray: Date[]) => void => {
+        return (date: Date, dateRangeArray: Date[]): void => {
+          lastSelectedDateRange = dateRangeArray;
+        };
+      };
+
       renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={ dayPickerStrings }
@@ -158,18 +161,15 @@ describe('Calendar', () => {
           firstDayOfWeek={ DayOfWeek.Tuesday }
           dateRangeType={ DateRangeType.Week }
           autoNavigateOnSelection={ true }
-          onSelectDate={ (date: Date, dateRangeArray: Date[]) => lastSelectedDateRange = dateRangeArray }
+          onSelectDate={ onSelectDate() }
         />) as Calendar;
     });
 
     it('Verify day picker header', () => {
       let monthName = dayPickerStrings.months[defaultDate.getMonth()];
-      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-month');
+      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
       expect(dayPickerMonth).to.not.be.undefined;
-      expect(dayPickerMonth.textContent).to.equal(monthName);
-      let dayPickerYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-year');
-      expect(dayPickerYear).to.not.be.undefined;
-      expect(dayPickerYear.textContent).to.equal(defaultDate.getFullYear().toString());
+      expect(dayPickerMonth.textContent).to.equal(monthName + ' ' + defaultDate.getFullYear().toString());
     });
 
     it('Verify first day of week', () => {

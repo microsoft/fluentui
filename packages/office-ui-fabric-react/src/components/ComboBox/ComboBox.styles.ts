@@ -21,7 +21,7 @@ const ComboxBoxCaretDownWidth = '32px';
 const ComboBoxOptionHeight = '36px';
 
 const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
-  const { semanticColors, palette } = theme;
+  const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.disabledBackground,
     borderColor: semanticColors.disabledBackground,
@@ -35,12 +35,12 @@ const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
 });
 
 const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IStyle => {
-  const { semanticColors, palette } = theme;
   return {
     [MS_HIGHCONTRAST_ACTIVE]: {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
+      msHighContrastAdjust: 'none'
     },
   };
 });
@@ -51,7 +51,7 @@ export const getOptionStyles = memoizeFunction((
   customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
 ): IComboBoxOptionStyles => {
 
-  const { semanticColors, fonts, palette } = theme;
+  const { semanticColors, palette } = theme;
 
   const ComboBoxOptionBackgroundSelected = semanticColors.menuItemBackgroundChecked;
   const ComboBoxOptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
@@ -145,7 +145,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
-  const { semanticColors, fonts, palette } = theme;
+  const { palette } = theme;
 
   const caretButtonTextColor = palette.neutralDark;
   const caretButtonBackgroundHovered = palette.neutralQuaternaryAlt;
@@ -165,6 +165,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
         backgroundColor: 'ButtonFace',
         borderColor: 'ButtonText',
         color: 'ButtonText',
+        msHighContrastAdjust: 'none'
       }
     },
     rootHovered: {
@@ -211,11 +212,11 @@ export const getStyles = memoizeFunction((
         marginBottom: '10px',
         marginLeft: '0',
 
-        // padding: '0',
+        // padding: '0 32px 0 12px',
         paddingTop: '0',
         paddingRight: ComboxBoxCaretDownWidth,
         paddingBottom: '0',
-        paddingLeft: '0',
+        paddingLeft: '12px',
 
         color: ComboBoxRootTextColor,
         position: 'relative',
@@ -243,14 +244,16 @@ export const getStyles = memoizeFunction((
       borderColor: ComboBoxRootBorderColorHovered,
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
-        borderColor: 'Highlight'
+        borderColor: 'Highlight',
+        msHighContrastAdjust: 'none'
       },
     },
     rootFocused: {
       borderColor: ComboBoxRootBorderColorHovered,
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
-        borderColor: 'Highlight'
+        borderColor: 'Highlight',
+        msHighContrastAdjust: 'none'
       },
     },
     rootDisabled: getDisabledStyles(theme),
@@ -263,12 +266,23 @@ export const getStyles = memoizeFunction((
     input: {
       boxSizing: 'border-box',
       width: '100%',
-      height: '100%',
+      height: '30px',
       borderStyle: 'none',
       outline: 'none',
       font: 'inherit',
       textOverflow: 'ellipsis',
-      paddingLeft: '12px'
+
+      // padding: '0',
+      paddingTop: '0',
+      paddingRight: '0',
+      paddingBottom: '0',
+      paddingLeft: '0',
+
+      // margin: '1px 0px',
+      marginTop: '1px',
+      marginRight: '0px',
+      marginBottom: '1px',
+      marginLeft: '0px',
     },
     inputDisabled: getDisabledStyles(theme),
     errorMessage: {

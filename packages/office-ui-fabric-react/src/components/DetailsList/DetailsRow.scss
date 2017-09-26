@@ -97,6 +97,16 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     // Selected State Header cell
     &.isRowHeader {
       color: $detailsList-item-selected-text-color;
+
+      @include high-contrast {
+        color: HighlightText;
+      }
+    }
+
+    @include high-contrast {
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
     }
   }
 
@@ -120,9 +130,17 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     .cell {
       color: $detailsList-item-selected-hover-meta-text-color;
 
+      @include high-contrast {
+        color: HighlightText;
+      }
+
       // Selected State hover Header cell
       &.isRowHeader {
         color: $detailsList-item-selected-hover-text-color;
+
+        @include high-contrast {
+          color: HighlightText;
+        }
       }
     }
   }
@@ -135,9 +153,17 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     .cell {
       color: $detailsList-item-focus-meta-text-color;
 
+      @include high-contrast {
+        color: HighlightText;
+      }
+
       // Row header cell
       &.isRowHeader {
         color: $detailsList-item-focus-header-text-color;
+
+        @include high-contrast {
+          color: HighlightText;
+        }
       }
     }
   }
@@ -161,6 +187,10 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &.checkCell {
+    padding: 0;
+  }
 
   & > button {
     max-width: 100%;

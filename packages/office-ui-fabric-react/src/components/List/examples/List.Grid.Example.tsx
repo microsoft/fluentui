@@ -34,23 +34,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
           getItemCountForPage={ this._getItemCountForPage }
           getPageHeight={ this._getPageHeight }
           renderedWindowsAhead={ 4 }
-          onRenderCell={ (item, index) => (
-            <div
-              className='ms-ListGridExample-tile'
-              data-is-focusable={ true }
-              style={ {
-                width: (100 / this._columnCount) + '%'
-              } }>
-              <div className='ms-ListGridExample-sizer'>
-                <div className='msListGridExample-padder'>
-                  <img src={ item.thumbnail } className='ms-ListGridExample-image' />
-                  <span className='ms-ListGridExample-label'>
-                    { `item ${index}` }
-                  </span>
-                </div>
-              </div>
-            </div>
-          ) }
+          onRenderCell={ this._onRenderCell }
         />
       </FocusZone>
     );
@@ -68,5 +52,26 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
 
   private _getPageHeight(itemIndex: number, surfaceRect: IRectangle) {
     return this._rowHeight * ROWS_PER_PAGE;
+  }
+
+  private _onRenderCell(item: any, index: number | undefined): JSX.Element {
+    return (
+      <div
+        className='ms-ListGridExample-tile'
+        data-is-focusable={ true }
+        style={ {
+          width: (100 / this._columnCount) + '%'
+        } }
+      >
+        <div className='ms-ListGridExample-sizer'>
+          <div className='msListGridExample-padder'>
+            <img src={ item.thumbnail } className='ms-ListGridExample-image' />
+            <span className='ms-ListGridExample-label'>
+              { `item ${index}` }
+            </span>
+          </div>
+        </div>
+      </div>
+    );
   }
 }

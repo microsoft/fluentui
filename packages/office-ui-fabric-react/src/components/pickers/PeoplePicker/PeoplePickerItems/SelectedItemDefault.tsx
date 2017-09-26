@@ -19,6 +19,13 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
   } = peoplePickerItemProps;
 
   const itemId = getId();
+  const onClickIconButton = (removeItem: (() => void) | undefined): () => void => {
+    return (): void => {
+      if (removeItem) {
+        removeItem();
+      }
+    };
+  };
 
   return (
     <div
@@ -32,10 +39,12 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       data-is-sub-focuszone={ true }
       data-selection-index={ index }
       role={ 'listitem' }
-      aria-labelledby={ 'selectedItemPersona-' + itemId } >
+      aria-labelledby={ 'selectedItemPersona-' + itemId }
+    >
       <div
         className={ css('ms-PickerItem-content', styles.itemContent) }
-        id={ 'selectedItemPersona-' + itemId } >
+        id={ 'selectedItemPersona-' + itemId }
+      >
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
@@ -43,7 +52,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         />
       </div>
       <IconButton
-        onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
+        onClick={ onClickIconButton(onRemoveItem) }
         iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
         className={ css('ms-PickerItem-removeButton', styles.removeButton) }
         ariaLabel={ removeButtonAriaLabel }

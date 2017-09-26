@@ -13,8 +13,6 @@ export class DropdownCustomExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { selectedItem } = this.state;
-
     return (
       <div className='dropdownExample'>
 
@@ -26,6 +24,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
           onRenderPlaceHolder={ this._onRenderPlaceHolder }
           onRenderTitle={ this._onRenderOption }
           onRenderOption={ this._onRenderOption }
+          onRenderCaretDown={ this._onRenderCaretDown }
           options={
             [
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
@@ -76,6 +75,12 @@ export class DropdownCustomExample extends React.Component<any, any> {
         />
         <span>{ props.placeHolder }</span>
       </div>
+    );
+  }
+
+  private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
+    return (
+      <Icon iconName='CirclePlus' />
     );
   }
 

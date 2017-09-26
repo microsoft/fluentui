@@ -9,19 +9,15 @@ export interface IPropertiesTableSetState {
 }
 
 export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetState> {
-  public static defaultProps = {
-    title: 'Properties'
-  };
-
   constructor(props: IPropertiesTableSetProps) {
     super(props);
     let { componentName, componentPath, sources } = props;
-    let src: any;
+    let src: string;
     let properties: IProperty[] = [];
 
     if (sources) {
       src = '';
-      sources.forEach(source => src += source);
+      sources.forEach((source: string) => src += source);
     } else if (componentPath && componentName) {
       src = require(componentPath + componentName + '.Props.ts');
     } else {
@@ -41,16 +37,18 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
     };
   }
 
-  public renderEach() {
-    return this.state.properties.map((item: IProperty) =>
-      (<PropertiesTable
+  public renderEach(): JSX.Element[] {
+    return this.state.properties.map((item: IProperty) => (
+      <PropertiesTable
         key={ item.propertyName }
         title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
         properties={ item.property }
-        renderAsEnum={ item.propertyType === PropertyType.enum } />));
+        renderAsEnum={ item.propertyType === PropertyType.enum }
+      />
+    ));
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         { this.renderEach() }

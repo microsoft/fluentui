@@ -77,8 +77,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
             { ...getNativeProps(this.props, divProperties) }
             { ...tooltipProps }
-          >
-          </Tooltip>
+          />
         ) }
       </div>
     );
@@ -114,22 +113,22 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       }
     }
 
-    this.toggleTooltip(true);
+    this._toggleTooltip(true);
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipMouseLeave(ev: any) {
-    this.toggleTooltip(false);
+    this._toggleTooltip(false);
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipCallOutDismiss() {
-    this.toggleTooltip(false);
+    this._toggleTooltip(false);
   }
 
-  private toggleTooltip(isTooltipVisible: boolean) {
+  private _toggleTooltip(isTooltipVisible: boolean) {
     this.setState(
       { isTooltipVisible },
       () => this.props.onTooltipToggle &&

@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ModalStatus } from './Modal.checklist';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 
@@ -41,7 +43,7 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -58,8 +60,13 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ModalStatus}
+          />
+        }
+      />
     );
   }
 }

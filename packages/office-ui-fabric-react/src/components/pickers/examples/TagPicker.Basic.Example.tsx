@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { autobind } from '../../../Utilities';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 let _testTags = [
   'black',
@@ -32,9 +35,15 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
   public render() {
     return (
       <div>
-        <Checkbox label='Disable Tag Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
-        <TagPicker ref='tagPicker'
-          onResolveSuggestions={ this._onFilterChanged.bind(this) }
+        <Checkbox
+          className={ exampleStyles.exampleCheckbox }
+          label='Disable Tag Picker'
+          checked={ this.state.isPickerDisabled }
+          onChange={ this._onDisabledButtonClick }
+        />
+        <TagPicker
+          ref='tagPicker'
+          onResolveSuggestions={ this._onFilterChanged }
           getTextFromItem={ (item: any) => { return item.name; } }
           pickerSuggestionsProps={
             {
@@ -42,6 +51,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
               noResultsFoundText: 'No Color Tags Found'
             }
           }
+          itemLimit={ 2 }
           disabled={ this.state.isPickerDisabled }
           inputProps={ {
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
@@ -53,12 +63,14 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
     );
   }
 
+  @autobind
   private _onDisabledButtonClick(): void {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled
     });
   }
 
+  @autobind
   private _onFilterChanged(filterText: string, tagList: { key: string, name: string }[]) {
     return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, tagList)) : [];
   }

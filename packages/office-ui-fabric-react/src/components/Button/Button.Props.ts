@@ -11,6 +11,11 @@ export interface IButton {
    * Sets focus to the button.
    */
   focus: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will dismiss the menu
+   */
+  dismissMenu: () => void;
 }
 
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
@@ -25,6 +30,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * @default ElementType.anchor
    */
   href?: string;
+
+  /**
+   * Changes the visual presentation of the button to be emphasized (if defined)
+   * @default false
+   */
+  primary?: boolean;
 
   /**
    * Unique id to identify the item. Typically a duplicate of key value.
@@ -243,9 +254,19 @@ export interface IButtonStyles {
   rootCheckedDisabled?: IStyle;
 
   /**
+* Style override applied to the root on hover in a expanded state on hover
+*/
+  rootExpandedHovered?: IStyle;
+
+  /**
    * Style for the flexbox container within the root element.
    */
   flexContainer?: IStyle;
+
+  /**
+   * Style for the text container within the flexbox container element (and contains the text and description).
+   */
+  textContainer?: IStyle;
 
   /**
    * Style for the icon on the near side of the label.
@@ -266,6 +287,11 @@ export interface IButtonStyles {
    * Style for the icon on the near side of the label when expanded.
    */
   iconExpanded?: IStyle;
+
+  /**
+ * Style for the icon on the near side of the label when expanded and hovered.
+ */
+  iconExpandedHovered?: IStyle;
 
   /**
    * Style override for the icon when the button is disabled.
@@ -346,6 +372,12 @@ export interface IButtonStyles {
    * Style override for the container div around a SplitButton element in a disabled state
    */
   splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the divider element that appears between the button and menu button
+   * for a split button.
+   */
+  splitButtonDivider?: IStyle;
 
   /**
    * Style override for the SplitButton menu button

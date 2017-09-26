@@ -1,10 +1,15 @@
 {
   "npmVersion": "5.0.3",
-  "rushMinimumVersion": "3.0.11",
+  "rushMinimumVersion": "3.0.12",
   "nodeSupportedVersionRange": ">=6.9.0 <9.0.0",
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 999,
   "projects": [
+    {
+      "packageName": "@uifabric/build",
+      "projectFolder": "scripts",
+      "shouldPublish": false
+    },
     {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
@@ -45,6 +50,11 @@
     {
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "vr-tests",
+      "projectFolder": "apps/vr-tests",
       "shouldPublish": false
     },
     {
