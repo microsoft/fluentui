@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+
+## 0.24.1
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Patches
+
+- Updating default theme registration to use the new `Customizations` helper.
 
 ## 0.24.0
 Thu, 14 Sep 2017 00:34:57 GMT

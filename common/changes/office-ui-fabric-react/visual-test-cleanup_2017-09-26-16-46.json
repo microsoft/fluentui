@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Persona: Fixed regression in secondary text not showing",
+      "comment": "Removed old visual testing system to make way for new Screener based system",
       "type": "patch"
     }
   ],

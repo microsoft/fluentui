@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "joem@microsoft.com"
+}
