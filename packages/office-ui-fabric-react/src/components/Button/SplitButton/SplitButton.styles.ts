@@ -38,14 +38,15 @@ export const getStyles = memoizeFunction((
         textAlign: 'center',
         cursor: 'pointer',
         verticalAlign: 'top',
-        width: 32
+        width: 32,
+        marginLeft: -1
       }
     ],
 
     splitButtonDivider: {
       position: 'absolute',
       width: 1,
-      right: 32,
+      right: 31,
       top: 8,
       bottom: 8
     },

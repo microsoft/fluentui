@@ -394,8 +394,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           style={ { 'display': 'flex' } }
         >
           { this._onRenderContent(tag, buttonProps) }
-          { this._onRenderSplitButtonDivider(classNames) }
           { this._onRenderSplitButtonMenuButton(classNames) }
+          { this._onRenderSplitButtonDivider(classNames) }
         </span>
       </div>
     );
