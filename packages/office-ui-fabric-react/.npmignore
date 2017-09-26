@@ -27,4 +27,3 @@ tslint.json
 typings
 webpack.config.js
 fabric-test*
-visualtests
