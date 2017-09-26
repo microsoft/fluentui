@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ITextField, ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
+import { IRenderFunction } from '../../Utilities';
 import {
   DelayedRender,
   BaseComponent,
@@ -132,6 +133,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       iconClass,
       iconProps,
       label,
+      onRenderLabel,
       multiline,
       required,
       underlined,
@@ -155,7 +157,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
-          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+          { onRenderLabel ?
+            (<Label htmlFor={ this._id }>{ onRenderLabel() }</Label>) :
+            (label && <Label htmlFor={ this._id }>{ label }</Label>) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css(styles.fieldAddon) }>

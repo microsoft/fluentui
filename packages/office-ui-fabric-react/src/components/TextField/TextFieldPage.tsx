@@ -6,6 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
+import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldStatus } from './TextField.checklist';
@@ -23,6 +24,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
           <div>
             <ExampleCard title='TextField variations' code={ TextFieldBasicExampleCode }>
               <TextFieldBasicExample />
+              <TextFieldCustomRenderExample />
             </ExampleCard>
             <ExampleCard title='TextField error message variations' code={ TextFieldErrorMessageExampleCode }>
               <TextFieldErrorMessageExample />

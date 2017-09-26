@@ -78,6 +78,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   label?: string;
 
   /**
+   * Optional custom renderer for the label
+   */
+  onRenderLabel?: IRenderFunction<ITextFieldProps>;
+
+  /**
    * The textfield input description
    */
   description?: string;
