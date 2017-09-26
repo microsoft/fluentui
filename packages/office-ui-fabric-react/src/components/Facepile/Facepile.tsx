@@ -179,11 +179,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         <PersonaCoin
           title={ personaNames }
           size={ personaSize }
-          onRenderInitials={ () => {
-            return (
-              <span>{ '+' + numPersonasNotPictured }</span>
-            );
-          } }
+          onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
         />
       </BaseButton>
     );
@@ -199,9 +195,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       >
         <PersonaCoin
           size={ personaSize }
-          onRenderInitials={ () => (
-            <Icon iconName={ icon } />
-          ) }
+          onRenderInitials={ this._renderInitials(icon) }
         />
       </BaseButton>
     );
@@ -209,6 +203,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
   private _getAddNewElement(): JSX.Element {
     let { addButtonProps, personaSize } = this.props;
+
     return (
       <BaseButton
         {...addButtonProps}
@@ -216,9 +211,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       >
         <PersonaCoin
           size={ personaSize }
-          onRenderInitials={ () => (
-            <Icon iconName='AddFriend' />
-          ) }
+          onRenderInitials={ this._renderInitials('AddFriend') }
         />
       </BaseButton>
     );
@@ -240,5 +233,21 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     if (!!persona.onMouseOut) {
       persona.onMouseOut(ev, persona);
     }
+  }
+
+  private _renderInitials(iconName: string): () => JSX.Element {
+    return (): JSX.Element => {
+      return (
+        <Icon iconName={ iconName } />
+      );
+    };
+  }
+
+  private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
+    return (): JSX.Element => {
+      return (
+        <span>{ '+' + numPersonasNotPictured }</span>
+      );
+    };
   }
 }
