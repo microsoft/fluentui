@@ -170,7 +170,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
             { errorMessage &&
-              <div >
+              <div>
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
