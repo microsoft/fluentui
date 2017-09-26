@@ -2,6 +2,7 @@ export * from './Async';
 export * from './AutoScroll';
 export * from './BaseComponent';
 export * from './Customizer';
+export * from './Customizations';
 export * from './DelayedRender';
 export * from './EventGroup';
 export * from './FabricPerformance';
