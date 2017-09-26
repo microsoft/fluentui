@@ -2,6 +2,82 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.51.0",
+      "tag": "office-ui-fabric-react_v4.51.0",
+      "date": "Tue, 26 Sep 2017 20:42:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Åsmund Grammeltvedt <asmundg@big-oil.org>",
+            "commit": "ea5937cc1e6528bbe82962b879654e131ff33c7a",
+            "comment": "Use aria-label for slider, even when label is not set"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "13c14c4be9191e29a5cb9e3aafa3aa101442abbd",
+            "comment": "PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions."
+          },
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "446359f9402335458c80521d93fb6f5506cdb199",
+            "comment": "TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "6ee1b94057544f44118d1a2e1846cfdf6df2e014",
+            "comment": "Removed old visual testing system to make way for new Screener based system"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c85736b0d854f1ecac15fee119106aeba61f1750",
+            "comment": "Reverting Customizer changes, as they are breaking. Will include in 5.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.15.0 <5.0.0` to `>=4.16.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.24.1 <1.0.0` to `>=0.24.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.50.2",
+      "tag": "office-ui-fabric-react_v4.50.2",
+      "date": "Tue, 26 Sep 2017 10:09:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "724a69333e9c1b0833ef6f48c0fd6b49a2bf3a3a",
+            "comment": "Updating components to support scoped customizations."
+          },
+          {
+            "author": "Bryan J. R. Gislason <bryan-gislason@users.noreply.github.com>",
+            "commit": "691af2e7fe0f43d59a1e3c75ec48d53ad229983f",
+            "comment": "Dropdown: add titleIsPlaceHolder class to dropdown title so styles can be overridden"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4a4c87ad9bd382d245aefaa0d9063f584901b5d9",
+            "comment": "Persona: Fixed regression in secondary text not showing"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.14.1 <5.0.0` to `>=4.15.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.24.0 <1.0.0` to `>=0.24.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.50.1",
       "tag": "office-ui-fabric-react_v4.50.1",
       "date": "Mon, 25 Sep 2017 10:19:18 GMT",

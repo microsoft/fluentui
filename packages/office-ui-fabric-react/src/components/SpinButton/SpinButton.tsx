@@ -9,6 +9,7 @@ import {
   autobind,
   customizable
 } from '../../Utilities';
+import { ThemeSettingName } from '../../Styling';
 import {
   ISpinButton,
   ISpinButtonProps,
@@ -42,7 +43,7 @@ export interface ISpinButtonState {
   keyboardSpinDirection: KeyboardSpinDirection;
 }
 
-@customizable('SpinButton', ['theme'])
+@customizable([ThemeSettingName])
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
 
   public static defaultProps: ISpinButtonProps = {
