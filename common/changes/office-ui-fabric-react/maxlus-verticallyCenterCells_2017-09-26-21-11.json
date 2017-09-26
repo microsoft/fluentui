@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add option for vertically centering cells in a details list",
+      "comment": "Added ability to add css class to checkbox cell",
       "type": "minor"
     }
   ],
