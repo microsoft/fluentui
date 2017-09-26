@@ -6,7 +6,8 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 
 export class TextFieldCustomRenderExample extends React.Component<any, any> {
 
-  private _menuButtonElement: HTMLElement;
+  private _iconButtonElement: HTMLElement;
+
   public constructor() {
     super();
 
@@ -18,8 +19,7 @@ export class TextFieldCustomRenderExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <TextField onRenderLabel={ this._onRenderLabel }
-        />
+        <TextField onRenderLabel={ this._onRenderLabel } />
       </div>
     );
   }
@@ -29,9 +29,9 @@ export class TextFieldCustomRenderExample extends React.Component<any, any> {
 
     let { isCalloutVisible } = this.state;
     return (
-      <div className='ms-CustomRenderExample' style={ { display: "flex", alignItems: "center" } }>
+      <div className='ms-CustomRenderExample' style={ { display: 'flex', alignItems: 'center' } }>
         <span>TextField with custom label render</span>
-        <span className='ms-CustomRenderExamle-labelArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+        <span className='ms-CustomRenderExample-labelIconArea' ref={ (menuButton) => this._iconButtonElement = menuButton! }>
           <IconButton
             iconProps={ { iconName: 'Info' } }
             title='Info'
@@ -41,20 +41,15 @@ export class TextFieldCustomRenderExample extends React.Component<any, any> {
         </span>
         { isCalloutVisible && (
           <Callout
-            className='ms-CalloutExample-callout'
-            ariaLabelledBy={ 'callout-label-1' }
-            ariaDescribedBy={ 'callout-description-1' }
-            role={ 'alertdialog' }
-            gapSpace={ 0 }
-            targetElement={ this._menuButtonElement }
+            className='ms-CustomRenderExample-callout'
+            targetElement={ this._iconButtonElement }
             onDismiss={ this._onDismiss }
-            setInitialFocus={ true }
           >
-            <text> In additon to the labeltext, this label includes an iconbutton which pops out this information </text>
+            <text> In additon to the label itself, this label includes an iconbutton which pops out more information in a callout</text>
           </Callout>
         ) }
       </div>
-    )
+    );
 
   }
 
