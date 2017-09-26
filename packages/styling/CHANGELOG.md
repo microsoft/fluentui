@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2017 20:42:17 GMT and should not be manually modified.
+
+## 0.24.2
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Patches
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
 
 ## 0.24.1
 Tue, 26 Sep 2017 10:09:04 GMT

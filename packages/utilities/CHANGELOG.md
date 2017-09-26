@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2017 20:42:17 GMT and should not be manually modified.
+
+## 4.16.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
 
 ## 4.15.0
 Tue, 26 Sep 2017 10:09:04 GMT
