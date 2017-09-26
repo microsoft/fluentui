@@ -49,7 +49,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
-  verticallyCenterCells?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -185,8 +184,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
-      selection,
-      verticallyCenterCells
+      selection
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected, anySelected } = this.state.selectionState as IDetailsRowSelectionState;
@@ -232,7 +230,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             role='gridcell'
             aria-colindex={ 0 }
             data-selection-toggle={ true }
-            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell, verticallyCenterCells && styles.isVerticallyCentered) }
+            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell) }
           >
             { onRenderCheck({
               isSelected,
@@ -252,7 +250,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             itemIndex={ itemIndex }
             columnStartIndex={ showCheckbox ? 1 : 0 }
             onRenderItemColumn={ onRenderItemColumn }
-            verticallyCenterCells={ verticallyCenterCells }
           />
         ) }
 
@@ -268,7 +265,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
               itemIndex={ itemIndex }
               columnStartIndex={ (showCheckbox ? 1 : 0) + columns.length }
               onRenderItemColumn={ onRenderItemColumn }
-              verticallyCenterCells={ verticallyCenterCells }
             />
           </span>
         ) }
