@@ -2,17 +2,13 @@
 import * as React from 'react';
 import { Fabric } from 'office-ui-fabric-react';
 
-
 // Wrap all stories in a Fabric component for proper styling
+
+// tslint:disable:jsx-ban-props
 export const FabricDecorator = (story) => (
-  <Fabric>
-    <p>
+  <Fabric style={ { display: 'flex' } }>
+    <div className='testWrapper' style={ { padding: '10px' } }>
       { story() }
-    </p>
+    </div>
   </Fabric>
 );
-
-// Import component stories
-
-import './Button.stories';
-import './Breadcrumb.stories';
