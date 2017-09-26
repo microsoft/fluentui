@@ -4,7 +4,7 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './ActionButton.styles';
 
-@customizable('ActionButton', ['theme'])
+@customizable(['theme'])
 export class ActionButton extends BaseComponent<IButtonProps, {}> {
 
   /**

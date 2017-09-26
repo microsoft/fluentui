@@ -1,4 +1,4 @@
-import { Customizations } from '@uifabric/utilities/lib/Customizations';
+import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 import {
   IPalette,
   ISemanticColors,
@@ -22,7 +22,7 @@ let _theme: ITheme = {
 
 export const ThemeSettingName = 'theme';
 
-if (!Customizations.getSettings([ThemeSettingName]).theme) {
+if (!GlobalSettings.getValue(ThemeSettingName)) {
   let win = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable:no-string-literal no-any
@@ -32,7 +32,7 @@ if (!Customizations.getSettings([ThemeSettingName]).theme) {
   // tslint:enable:no-string-literal no-any
 
   // Set the default theme.
-  Customizations.applySettings({ [ThemeSettingName]: _theme });
+  GlobalSettings.setValue(ThemeSettingName, _theme);
 }
 
 /**
@@ -51,7 +51,7 @@ export function loadTheme(theme: IPartialTheme): ITheme {
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
 
-  Customizations.applySettings({ [ThemeSettingName]: _theme });
+  GlobalSettings.setValue(ThemeSettingName, _theme);
 
   return _theme;
 }

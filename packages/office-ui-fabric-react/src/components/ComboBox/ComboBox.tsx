@@ -64,7 +64,7 @@ enum SearchDirection {
   forward = 1
 }
 
-@customizable('ComboBox', ['theme'])
+@customizable(['theme'])
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public static defaultProps: IComboBoxProps = {

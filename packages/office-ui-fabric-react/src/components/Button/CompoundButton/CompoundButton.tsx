@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent, customizable } from '../../../Utilities';
+import { ThemeSettingName } from '../../../Styling';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './CompoundButton.styles';
 
-@customizable('CompoundButton', ['theme'])
+@customizable([ThemeSettingName])
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
