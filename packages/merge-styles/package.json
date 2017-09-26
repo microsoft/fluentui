@@ -20,8 +20,8 @@
     "karma"
   ],
   "devDependencies": {
-    "@types/jest": "^21.1.0",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
+    "@types/jest": "21.1.0",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "tslib": "^1.7.1"
