@@ -157,7 +157,12 @@ export interface IFontFace extends IRawFontStyle {
  *
  * @public
  */
-export interface IRawStyle extends IRawFontStyle {
+export interface IRawStyleBase extends IRawFontStyle {
+  /**
+   * (Ms specific) constrast adjust rule.
+   */
+  MsHighContrastAdjust?: ICSSRule | string;
+
   /**
    * (Moz specific) font smoothing directive.
    */
@@ -578,12 +583,6 @@ export interface IRawStyle extends IRawFontStyle {
   clear?: ICSSRule | string;
 
   /**
-   * This feature has been removed from the Web standards. Though some
-   * browsers may still support it, it is in the process of being dropped.
-   */
-  clip?: void;
-
-  /**
    * Clipping crops an graphic, so that only a portion of the graphic is rendered, or
    * filled. This clip-rule property, when used with the clip-path property, defines
    * which clip rule, or algorithm, to use when filling the different parts of a graphics.
@@ -737,14 +736,14 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * Shorthand for `flex-grow`, `flex-shrink`, and `flex-basis`.
    */
-  flex?: ICSSRule | ICSSPixelUnitRule;
+  flex?: ICSSRule | string | number;
 
   /**
    * The flex-basis CSS property describes the initial main size of the flex item before
    * any free space is distributed according to the flex factors described in the flex
    * property (flex-grow and flex-shrink).
    */
-  flexBasis?: ICSSRule | string;
+  flexBasis?: ICSSRule | string | number;
 
   /**
    * The flex-direction CSS property describes how flex items are placed in the flex
@@ -762,19 +761,13 @@ export interface IRawStyle extends IRawFontStyle {
    * Specifies the flex grow factor of a flex item.
    * See CSS flex-grow property https://drafts.csswg.org/css-flexbox-1/#flex-grow-property
    */
-  flexGrow?: ICSSRule | number;
-
-  /**
-   * Gets or sets a value that specifies the ordinal group that a flexbox element
-   *  belongs to. This ordinal value identifies the display order for the group.
-   */
-  flexOrder?: ICSSRule | string;
+  flexGrow?: ICSSRule | number | string;
 
   /**
    * Specifies the flex shrink factor of a flex item.
    * See CSS flex-shrink property https://drafts.csswg.org/css-flexbox-1/#flex-shrink-property
    */
-  flexShrink?: ICSSRule | number;
+  flexShrink?: ICSSRule | number | string;
 
   /**
    * Specifies whether flex items are forced into a single line or can be wrapped onto
@@ -931,7 +924,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Specifies the height of an inline block level element.
    * See CSS 2.1 line-height property https://www.w3.org/TR/CSS21/visudet.html#propdef-line-height
    */
-  lineHeight?: ICSSRule | 'normal' | number | ICSSPixelUnitRule | ICSSPercentageRule;
+  lineHeight?: ICSSRule | 'normal' | ICSSPixelUnitRule | ICSSPercentageRule;
 
   /**
    * Shorthand property that sets the list-style-type, list-style-position and

@@ -1,5 +1,5 @@
 import { Stylesheet } from './Stylesheet';
-import { IFontFace } from './IRawStyle';
+import { IFontFace } from './IRawStyleBase';
 import { serializeRuleEntries } from './styleToClassName';
 
 /**

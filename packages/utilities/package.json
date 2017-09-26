@@ -20,7 +20,7 @@
     "webpack"
   ],
   "devDependencies": {
-    "@types/jest": "20.0.8",
+    "@types/jest": "21.1.0",
     "@types/enzyme": "2.8.0",
     "@types/prop-types": "15.5.1",
     "@types/react": "15.0.38",

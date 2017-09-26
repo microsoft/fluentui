@@ -1,5 +1,4 @@
 import { IStyle } from './IStyle';
-
 /**
  * Injection mode for the stylesheet.
  *
@@ -50,7 +49,7 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string };
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs: { [key: string]: any };
+  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } };
 
   /**
    * Gets the singleton instance.
@@ -102,9 +101,17 @@ export class Stylesheet {
    * Used internally to cache information about a class which was
    * registered with the stylesheet.
    */
-  public cacheClassName(className: string, key: string, args: IStyle[]): void {
+  public cacheClassName(
+    className: string,
+    key: string,
+    args: IStyle[],
+    rules: string[]
+  ): void {
     this._keyToClassName[key] = className;
-    this._classNameToArgs[className] = args;
+    this._classNameToArgs[className] = {
+      args,
+      rules
+    };
   }
 
   /**
@@ -120,7 +127,19 @@ export class Stylesheet {
    * previously registered using cacheClassName.
    */
   public argsFromClassName(className: string): IStyle[] | undefined {
-    return this._classNameToArgs[className];
+    const entry = this._classNameToArgs[className];
+
+    return (entry && entry.args);
+  }
+
+  /**
+ * Gets the arguments associated with a given classname which was
+ * previously registered using cacheClassName.
+ */
+  public insertedRulesFromClassName(className: string): string[] | undefined {
+    const entry = this._classNameToArgs[className];
+
+    return (entry && entry.rules);
   }
 
   /**

@@ -32,7 +32,9 @@ describe('rtlifyRules', () => {
       [['cursor', 'w-resize'], ['cursor', 'e-resize']],
       [['cursor', 'sw-resize'], ['cursor', 'se-resize']],
       [['cursor', 'nw-resize'], ['cursor', 'ne-resize']],
-      [['left', '42px /*noflip*/'], ['left', '42px /*noflip*/']],
+      [['left', '42px /* @noflip */'], ['left', '42px']],
+      [['left', '42px @noflip'], ['left', '42px']],
+      [['left', '42px /*@noflip*/'], ['left', '42px']],
       [['box-shadow', '42px 0 red'], ['box-shadow', '-42px 0 red']],
       [['box-shadow', '-42px 0 red'], ['box-shadow', '42px 0 red']]
     ].forEach((test: string[][]) => {

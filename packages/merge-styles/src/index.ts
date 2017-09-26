@@ -1,5 +1,5 @@
 export {
-  IExtendedRawStyle,
+  IRawStyle,
   IStyle
 } from './IStyle';
 
@@ -8,10 +8,9 @@ export {
 } from './IStyleSet';
 
 export {
-  IRawStyle,
   IFontFace,
   IFontWeight
-} from './IRawStyle';
+} from './IRawStyleBase';
 
 export {
   mergeStyles
