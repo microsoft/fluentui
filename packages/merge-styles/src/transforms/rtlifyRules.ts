@@ -9,7 +9,7 @@ const _valueReplacements: { [key: string]: string } = {
   'nw-resize': 'ne-resize'
 };
 
-const NO_FLIP = 'noflip';
+const NO_FLIP = '@noflip';
 
 let _rtl = getRTL();
 
@@ -36,7 +36,7 @@ export function rtlifyRules(
     const value = rulePairs[index + 1] as string;
 
     if (value.indexOf(NO_FLIP) >= 0) {
-      return;
+      rulePairs[index + 1] = value.replace(/\s*(?:\/\*\s*)?\@noflip\b(?:\s*\*\/)?\s*?/g, '');
     } else if (name.indexOf('left') >= 0) {
       rulePairs[index] = name.replace('left', 'right');
     } else if (name.indexOf('right') >= 0) {
