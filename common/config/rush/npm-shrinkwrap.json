@@ -1218,9 +1218,6 @@
         }
       }
     },
-    "@rush-temp/icons": {
-      "version": "file:projects/icons"
-    },
     "@rush-temp/merge-styles": {
       "version": "file:projects/merge-styles",
       "dependencies": {
@@ -10217,16 +10214,9 @@
       }
     },
     "serve-favicon": {
-      "version": "2.4.4",
-      "resolved": "https://registry.npmjs.org/serve-favicon/-/serve-favicon-2.4.4.tgz",
-      "integrity": "sha1-QS3ddJZRUcn3TAgo811QxSUCEN4=",
-      "dependencies": {
-        "fresh": {
-          "version": "0.5.1",
-          "resolved": "https://registry.npmjs.org/fresh/-/fresh-0.5.1.tgz",
-          "integrity": "sha1-w6CLzsD83MIj7fOyPrMn8fn8v1w="
-        }
-      }
+      "version": "2.4.5",
+      "resolved": "https://registry.npmjs.org/serve-favicon/-/serve-favicon-2.4.5.tgz",
+      "integrity": "sha512-s7F8h2NrslMkG50KxvlGdj+ApSwaLex0vexuJ9iFf3GLTIp1ph/l1qZvRe9T9TJEYZgmq72ZwJ2VYiAEtChknw=="
     },
     "serve-index": {
       "version": "1.9.0",

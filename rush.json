@@ -48,11 +48,6 @@
       ]
     },
     {
-      "packageName": "@uifabric/icons",
-      "projectFolder": "packages/icons",
-      "shouldPublish": false
-    },
-    {
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
       "shouldPublish": false
