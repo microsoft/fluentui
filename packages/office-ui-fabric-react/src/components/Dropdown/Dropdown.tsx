@@ -181,6 +181,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             id={ id + '-option' }
             className={ css(
               'ms-Dropdown-title', styles.title,
+              !selectedOption && 'ms-Dropdown-titleIsPlaceHolder',
               !selectedOption && styles.titleIsPlaceHolder,
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
