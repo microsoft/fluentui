@@ -6,12 +6,22 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
+import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
+import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
+import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
+import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
+import { TextFieldImplementationExamples } from './examples/TextField.ImplementationExamples';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldStatus } from './TextField.checklist';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
+const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
+const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
+const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
+const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
+const TextFieldImplementationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ImplementationExamples.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -22,16 +32,46 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         exampleCards={
           <div>
             <ExampleCard
-              title='TextField variations'
+              title='Default TextField with Label'
               code={ TextFieldBasicExampleCode }
             >
               <TextFieldBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with Placeholder'
+              code={ TextFieldPlaceholderExampleCode }
+            >
+              <TextFieldPlaceholderExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Multiline TextField'
+              code={ TextFieldMultilineExampleCode }
+            >
+              <TextFieldMultilineExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Underlined TextField'
+              code={ TextFieldUnderlinedExampleCode }
+            >
+              <TextFieldUnderlinedExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Borderless TextField'
+              code={ TextFieldBorderlessExampleCode }
+            >
+              <TextFieldBorderlessExample />
             </ExampleCard>
             <ExampleCard
               title='TextField error message variations'
               code={ TextFieldErrorMessageExampleCode }
             >
               <TextFieldErrorMessageExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Implementation Examples'
+              code={ TextFieldImplementationExampleCode }
+            >
+              <TextFieldImplementationExamples />
             </ExampleCard>
           </div>
         }
