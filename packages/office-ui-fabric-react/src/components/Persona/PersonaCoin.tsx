@@ -134,9 +134,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
               shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange }
             />
+            <PersonaPresence { ...this.props } />
           </div>
         ) }
-        <PersonaPresence { ...this.props } />
         { this.props.children }
       </div>
     );
