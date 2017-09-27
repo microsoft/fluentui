@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  css,
   getNativeProps,
   divProperties,
   customizable,
@@ -12,7 +11,7 @@ import {
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { AnimationStyles, mergeStyles } from '../../Styling';
 
 import { getStyles } from './ExpandingCard.styles';
 
@@ -21,7 +20,7 @@ export interface IExpandingCardState {
   needsScroll: boolean;
 }
 
-@customizable(['theme'])
+@customizable('ExpandingCard', ['theme'])
 export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
@@ -70,8 +69,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <Callout
         { ...getNativeProps(this.props, divProperties) }
         componentRef={ this._resolveRef('_callout') }
-        className={ css(
-          AnimationClassNames.scaleUpIn100,
+        className={ mergeStyles(
+          AnimationStyles.scaleUpIn100,
           this._styles.root
         ) }
         targetElement={ targetElement }
@@ -119,8 +118,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         className={ mergeStyles(
           this._styles.expandedCard,
           this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
-          this.state.needsScroll && { 'overflow-y': 'auto' }
-        ) as string }
+          this.state.needsScroll && { overflowY: 'auto' }
+        ) }
         ref={ this._resolveRef('_expandedElem') }
       >
         <div className={ this._styles.expandedCardScroll as string }>

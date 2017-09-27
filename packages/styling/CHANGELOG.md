@@ -358,7 +358,7 @@ Wed, 21 Jun 2017 00:45:41 GMT
 
 ### Minor changes
 
-- Consume latest version of createApp 
+- Consume latest version of createApp
 
 ### Patches
 

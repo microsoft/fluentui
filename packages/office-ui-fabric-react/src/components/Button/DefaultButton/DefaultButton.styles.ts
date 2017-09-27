@@ -1,7 +1,7 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -23,11 +23,9 @@ const DEFAULT_BUTTON_MINWIDTH = '80px';
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles,
-  primary?: boolean,
-  focusInset?: string,
-  focusColor?: string,
+  primary?: boolean
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
+  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let defaultButtonStyles: IButtonStyles = {
     root: {
@@ -39,7 +37,7 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(
+  return concatStyleSets(
     baseButtonStyles,
     defaultButtonStyles,
     primary ? primaryStyles(theme) : standardStyles(theme),

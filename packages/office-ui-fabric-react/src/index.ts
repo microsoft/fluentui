@@ -56,3 +56,11 @@ export * from './TextField';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
+
+// Using the default import, include all icon definitions. Products that care
+// about bundle size should not be using the main entry, until tree shaking
+// is perfected. (Use the top level imports instead.)
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+// TODO: remove the @beta tag once they're publised to the CDN.
+initializeIcons('//unpkg.com/office-ui-fabric-react@beta/dist/');

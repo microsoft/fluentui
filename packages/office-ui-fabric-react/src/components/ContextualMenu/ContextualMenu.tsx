@@ -3,7 +3,6 @@ import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } fro
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { getClassNames } from './ContextualMenu.classNames';
-import { ThemeSettingName } from '../../Styling';
 import {
   BaseComponent,
   anchorProperties,
@@ -70,7 +69,7 @@ function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
   return null;
 }
 
-@customizable([ThemeSettingName])
+@customizable('ContextualMenu', ['theme'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.

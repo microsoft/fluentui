@@ -12,6 +12,10 @@ import { ComponentPage } from '@uifabric/example-app-base';
 import './index.scss';
 import './ColorStyles.scss';
 
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+initializeIcons('dist/');
+
 setBaseUrl('./dist/');
 ComponentPage.defaultProps.areBadgesVisible = true;
 

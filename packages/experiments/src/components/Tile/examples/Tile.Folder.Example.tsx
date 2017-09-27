@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import { Tile } from '../Tile';
-import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   SignalField,
@@ -12,7 +11,7 @@ import {
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../../FolderCover/FolderCover';
 import { FolderCoverType } from '../../FolderCover/FolderCover.Props';
 import { lorem } from '@uifabric/example-app-base';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any

@@ -48,7 +48,9 @@ export const getClassNames = memoizeFunction((
       hasErrorMessage && styles.rootError,
       !disabled && focused && styles.rootFocused,
       !disabled && {
-        ':hover': styles.rootHovered
+        selectors: {
+          ':hover': styles.rootHovered
+        }
       },
       disabled && [
         'is-disabled', styles.rootDisabled

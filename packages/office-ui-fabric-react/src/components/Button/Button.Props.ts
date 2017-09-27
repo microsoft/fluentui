@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps, IconName } from '../../Icon';
+import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
@@ -162,20 +162,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
-   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
-   * @deprecated
-   */
-  icon?: string;
-
-  /**
-   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } }.
-   * @deprecated
-   */
-  menuIconName?: IconName | string | null;
-
-  /**
-   * Deprecated on 5/26/2016, use checked.
-   * @deprecated
+   * Any custom data the developer wishes to associate with the menu item.
    */
   toggled?: boolean;
 

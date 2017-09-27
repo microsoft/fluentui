@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../FolderCover';
 import { IFolderCoverProps } from '../FolderCover.Props';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { ISize, fitContentToBounds } from '../../../Utilities';
 import { SharedSignal } from '../../signals/Signals';
 import { lorem } from '@uifabric/example-app-base';
 

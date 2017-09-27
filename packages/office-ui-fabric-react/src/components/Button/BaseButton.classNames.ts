@@ -18,6 +18,7 @@ export const getClassNames = memoizeFunction((
   className: string,
   variantClassName: string,
   iconClassName: string | undefined,
+  menuIconClassName: string | undefined,
   disabled: boolean,
   checked: boolean,
   expanded: boolean
@@ -36,28 +37,35 @@ export const getClassNames = memoizeFunction((
         'is-expanded',
         styles.rootExpanded,
         {
-          ':hover .ms-Button-icon': styles.iconExpandedHovered,
-          ':hover': styles.rootExpandedHovered
+          selectors: {
+            ':hover .ms-Button-icon': styles.iconExpandedHovered,
+            ':hover': styles.rootExpandedHovered
+          }
         }
       ],
       disabled && [
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && {
-        ':hover': styles.rootHovered,
-        ':hover .ms-Button-icon': styles.iconHovered,
-        ':hover .ms-Button-description': styles.descriptionHovered,
-        ':focus': styles.rootFocused,
-        ':active': styles.rootPressed,
-        ':active .ms-Button-description': styles.descriptionPressed
+      !disabled && !expanded && !checked && {
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':hover .ms-Button-icon': styles.iconHovered,
+          ':hover .ms-Button-description': styles.descriptionHovered,
+          ':focus': styles.rootFocused,
+          ':active': styles.rootPressed,
+          ':active .ms-Button-icon': styles.iconPressed,
+          ':active .ms-Button-description': styles.descriptionPressed
+        }
       },
       disabled && checked && [
         styles.rootCheckedDisabled
       ],
       !disabled && checked && {
-        ':hover': styles.rootCheckedHovered,
-        ':active': styles.rootCheckedPressed
+        selectors: {
+          ':hover': styles.rootCheckedHovered,
+          ':active': styles.rootCheckedPressed
+        }
       }
     ) as string,
 
@@ -89,6 +97,7 @@ export const getClassNames = memoizeFunction((
 
     menuIcon: mergeStyles(
       'ms-Button-menuIcon',
+      menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
       disabled && styles.menuIconDisabled

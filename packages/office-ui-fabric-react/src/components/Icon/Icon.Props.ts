@@ -37,7 +37,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
    */
-  iconName?: string | null;
+  iconName?: string;
 
   /**
    * Optional styling for the elements within the Icon.

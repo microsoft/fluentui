@@ -9,7 +9,6 @@ import {
   IDragDropEvents,
   IDragDropContext,
 } from './../../utilities/dragdrop/index';
-import { IconName } from '../../Icon';
 import {
   IGroup,
   IGroupRenderProps
@@ -256,7 +255,7 @@ export interface IColumn {
   /**
    * Optional iconName to use for the column header.
    */
-  iconName?: IconName;
+  iconName?: string;
 
   /**
    * Whether or not only the icon is used in the column header.

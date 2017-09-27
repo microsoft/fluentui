@@ -65,27 +65,30 @@ const data: IFullDocumentCardProps[] = [
       actions:
       [
         {
-          icon: 'Share', onClick: (ev: any) => {
+          iconProps: { iconName: 'Share' },
+          onClick: (ev: any) => {
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Pin', onClick: (ev: any) => {
+          iconProps: { iconName: 'Pin' },
+          onClick: (ev: any) => {
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Ringer', onClick: (ev: any) => {
+          iconProps: { iconName: 'Ringer' },
+          onClick: (ev: any) => {
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
-      ]
+      ] as IButtonProps[]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
@@ -119,21 +122,24 @@ const data: IFullDocumentCardProps[] = [
       actions:
       [
         {
-          icon: 'Share', onClick: (ev: any) => {
+          iconProps: { iconName: 'Share' },
+          onClick: (ev: any) => {
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Pin', onClick: (ev: any) => {
+          iconProps: { iconName: 'Pin' },
+          onClick: (ev: any) => {
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Ringer', onClick: (ev: any) => {
+          iconProps: { iconName: 'Ringer' },
+          onClick: (ev: any) => {
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
@@ -173,21 +179,24 @@ const data: IFullDocumentCardProps[] = [
       actions:
       [
         {
-          icon: 'Share', onClick: (ev: any) => {
+          iconProps: { iconName: 'Share' },
+          onClick: (ev: any) => {
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Pin', onClick: (ev: any) => {
+          iconProps: { iconName: 'Pin' },
+          onClick: (ev: any) => {
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Ringer', onClick: (ev: any) => {
+          iconProps: { iconName: 'Ringer' },
+          onClick: (ev: any) => {
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
@@ -227,21 +236,24 @@ const data: IFullDocumentCardProps[] = [
       actions:
       [
         {
-          icon: 'Share', onClick: (ev: any) => {
+          iconProps: { iconName: 'Share' },
+          onClick: (ev: any) => {
             console.log('You clicked the share action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Pin', onClick: (ev: any) => {
+          iconProps: { iconName: 'Pin' },
+          onClick: (ev: any) => {
             console.log('You clicked the pin action.');
             ev.preventDefault();
             ev.stopPropagation();
           }
         },
         {
-          icon: 'Ringer', onClick: (ev: any) => {
+          iconProps: { iconName: 'Ringer' },
+          onClick: (ev: any) => {
             console.log('You clicked the Ringer action.');
             ev.preventDefault();
             ev.stopPropagation();
@@ -295,7 +307,8 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   if (documentActionsProps) {
     documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
     actions.push({
-      icon: 'Cancel', onClick: (ev: any) => {
+      iconProps: { iconName: 'Cancel' },
+      onClick: (ev: any) => {
         if (documentProps.onRemoveItem) {
           documentProps.onRemoveItem();
         }

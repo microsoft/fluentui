@@ -20,7 +20,7 @@ export interface IToggleState {
   isChecked: boolean;
 }
 
-@customizable(['theme'])
+@customizable('Toggle', ['theme'])
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;

@@ -1,14 +1,9 @@
 import * as React from 'react';
-import {
-  Checkbox,
-  Dropdown,
-  Facepile,
-  IDropdownOption,
-  IFacepilePersona,
-  IFacepileProps,
-  PersonaSize,
-  Slider
-} from 'office-ui-fabric-react/lib/index';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
+import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';

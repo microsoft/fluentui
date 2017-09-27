@@ -68,7 +68,6 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             </button>
           ) }
           <div className={ 'Header-title ' + FontClassNames.large }>
-            <Icon iconName='Org' />
             { title }
           </div>
           <div className='Header-buttons'>

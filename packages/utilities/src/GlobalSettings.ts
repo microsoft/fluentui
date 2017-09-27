@@ -64,7 +64,7 @@ export class GlobalSettings {
     return _globalSettings[key];
   }
 
-  public static setValue<T>(key: string, value: T): void {
+  public static setValue<T>(key: string, value: T): T {
     let oldValue = _globalSettings[key];
 
     if (value !== oldValue) {
@@ -82,6 +82,8 @@ export class GlobalSettings {
         }
       }
     }
+
+    return value;
   }
 
   public static addChangeListener(cb: IChangeEventCallback): void {

@@ -40,12 +40,16 @@ export const getClassNames = memoizeFunction((
       _getStyleForRootBasedOnPosition(labelPosition, styles),
       !disabled && [
         {
-          ':hover': styles.spinButtonWrapperHovered
+          selectors: {
+            ':hover': styles.spinButtonWrapperHovered
+          }
         },
         isFocused && {
           // This is to increase the specifity of the focus styles
           // and make it equal to that of the hover styles.
-          '&&': styles.spinButtonWrapperFocused
+          selectors: {
+            '&&': styles.spinButtonWrapperFocused
+          }
         }
       ],
       disabled && styles.spinButtonWrapperDisabled
@@ -54,7 +58,9 @@ export const getClassNames = memoizeFunction((
       'ms-spinButton-input',
       styles.input,
       !disabled && {
-        '::selection': styles.inputTextSelected
+        selectors: {
+          '::selection': styles.inputTextSelected
+        }
       },
       disabled && styles.inputDisabled,
     ) as string,
