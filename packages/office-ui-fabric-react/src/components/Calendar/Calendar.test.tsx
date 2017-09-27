@@ -4,8 +4,6 @@ import * as React from 'react';
 
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-let { expect } = chai;
-
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.Props';
 import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
@@ -80,7 +78,7 @@ describe('Calendar', () => {
 
       let today = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-day--today') as HTMLElement;
 
-      expect(+today.innerText).to.be.equal(new Date().getDate());
+      expect(+today.innerText).toEqual(new Date().getDate());
     } catch (err) {
       expect.fail(err, null, 'Encountered error trying to render a Calendar with an invalid date');
     }
@@ -89,7 +87,7 @@ describe('Calendar', () => {
   describe('Test rendering simplest calendar', () => {
     let renderedComponent: Calendar;
 
-    before(() => {
+    beforeAll(() => {
       renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={ dayPickerStrings }
@@ -102,20 +100,20 @@ describe('Calendar', () => {
       let monthName = dayPickerStrings.months[today.getMonth()];
       let year = today.getFullYear();
       let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
-      expect(dayPickerMonth).to.not.be.undefined;
-      expect(dayPickerMonth.textContent).to.equal(monthName + ' ' + year.toString());
+      expect(dayPickerMonth).toBeDefined();
+      expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + year.toString());
     });
 
     it('Verify first day of week', () => {
       let dayHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-weekday');
-      expect(dayHeaders.length).to.equal(7);
-      expect(dayHeaders[0].textContent).to.equal(dayPickerStrings.shortDays[0]);
-      expect(dayHeaders[1].textContent).to.equal(dayPickerStrings.shortDays[1]);
-      expect(dayHeaders[2].textContent).to.equal(dayPickerStrings.shortDays[2]);
-      expect(dayHeaders[3].textContent).to.equal(dayPickerStrings.shortDays[3]);
-      expect(dayHeaders[4].textContent).to.equal(dayPickerStrings.shortDays[4]);
-      expect(dayHeaders[5].textContent).to.equal(dayPickerStrings.shortDays[5]);
-      expect(dayHeaders[6].textContent).to.equal(dayPickerStrings.shortDays[6]);
+      expect(dayHeaders.length).toEqual(7);
+      expect(dayHeaders[0].textContent).toEqual(dayPickerStrings.shortDays[0]);
+      expect(dayHeaders[1].textContent).toEqual(dayPickerStrings.shortDays[1]);
+      expect(dayHeaders[2].textContent).toEqual(dayPickerStrings.shortDays[2]);
+      expect(dayHeaders[3].textContent).toEqual(dayPickerStrings.shortDays[3]);
+      expect(dayHeaders[4].textContent).toEqual(dayPickerStrings.shortDays[4]);
+      expect(dayHeaders[5].textContent).toEqual(dayPickerStrings.shortDays[5]);
+      expect(dayHeaders[6].textContent).toEqual(dayPickerStrings.shortDays[6]);
     });
 
     it('Verify day picker selected date & navigated date', () => {
@@ -123,20 +121,20 @@ describe('Calendar', () => {
       // These dates will be ms different, so just compare their day, month, and year
       // This test will likely fail around midnight.
       let today = new Date();
-      expect(renderedComponent.state.selectedDate).to.not.be.null;
-      expect(renderedComponent.state.selectedDate!.getDate()).to.equal(today.getDate());
-      expect(renderedComponent.state.selectedDate!.getMonth()).to.equal(today.getMonth());
-      expect(renderedComponent.state.selectedDate!.getFullYear()).to.equal(today.getFullYear());
-      expect(renderedComponent.state.navigatedDate).to.not.be.null;
-      expect(renderedComponent.state.navigatedDate!.getDate()).to.equal(today.getDate());
-      expect(renderedComponent.state.navigatedDate!.getMonth()).to.equal(today.getMonth());
-      expect(renderedComponent.state.navigatedDate!.getFullYear()).to.equal(today.getFullYear());
+      expect(renderedComponent.state.selectedDate).not.toBeNull();
+      expect(renderedComponent.state.selectedDate!.getDate()).toEqual(today.getDate());
+      expect(renderedComponent.state.selectedDate!.getMonth()).toEqual(today.getMonth());
+      expect(renderedComponent.state.selectedDate!.getFullYear()).toEqual(today.getFullYear());
+      expect(renderedComponent.state.navigatedDate).not.toBeNull();
+      expect(renderedComponent.state.navigatedDate!.getDate()).toEqual(today.getDate());
+      expect(renderedComponent.state.navigatedDate!.getMonth()).toEqual(today.getMonth());
+      expect(renderedComponent.state.navigatedDate!.getFullYear()).toEqual(today.getFullYear());
     });
 
     it('Verify go to today', () => {
       let goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
-      expect(goToToday).to.not.be.undefined;
-      expect(goToToday.textContent).to.equal(dayPickerStrings.goToToday);
+      expect(goToToday).toBeDefined();
+      expect(goToToday.textContent).toEqual(dayPickerStrings.goToToday);
     });
   });
 
@@ -145,7 +143,7 @@ describe('Calendar', () => {
     let defaultDate: Date;
     let lastSelectedDateRange: Date[] | null = null;
 
-    before(() => {
+    beforeAll(() => {
       defaultDate = new Date(2017, 2, 16);
       let onSelectDate = (): (date: Date, dateRangeArray: Date[]) => void => {
         return (date: Date, dateRangeArray: Date[]): void => {
@@ -168,51 +166,51 @@ describe('Calendar', () => {
     it('Verify day picker header', () => {
       let monthName = dayPickerStrings.months[defaultDate.getMonth()];
       let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
-      expect(dayPickerMonth).to.not.be.undefined;
-      expect(dayPickerMonth.textContent).to.equal(monthName + ' ' + defaultDate.getFullYear().toString());
+      expect(dayPickerMonth).toBeDefined();
+      expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + defaultDate.getFullYear().toString());
     });
 
     it('Verify first day of week', () => {
       let dayHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-weekday');
-      expect(dayHeaders.length).to.equal(7);
-      expect(dayHeaders[0].textContent).to.equal(dayPickerStrings.shortDays[2]);
-      expect(dayHeaders[1].textContent).to.equal(dayPickerStrings.shortDays[3]);
-      expect(dayHeaders[2].textContent).to.equal(dayPickerStrings.shortDays[4]);
-      expect(dayHeaders[3].textContent).to.equal(dayPickerStrings.shortDays[5]);
-      expect(dayHeaders[4].textContent).to.equal(dayPickerStrings.shortDays[6]);
-      expect(dayHeaders[5].textContent).to.equal(dayPickerStrings.shortDays[0]);
-      expect(dayHeaders[6].textContent).to.equal(dayPickerStrings.shortDays[1]);
+      expect(dayHeaders.length).toEqual(7);
+      expect(dayHeaders[0].textContent).toEqual(dayPickerStrings.shortDays[2]);
+      expect(dayHeaders[1].textContent).toEqual(dayPickerStrings.shortDays[3]);
+      expect(dayHeaders[2].textContent).toEqual(dayPickerStrings.shortDays[4]);
+      expect(dayHeaders[3].textContent).toEqual(dayPickerStrings.shortDays[5]);
+      expect(dayHeaders[4].textContent).toEqual(dayPickerStrings.shortDays[6]);
+      expect(dayHeaders[5].textContent).toEqual(dayPickerStrings.shortDays[0]);
+      expect(dayHeaders[6].textContent).toEqual(dayPickerStrings.shortDays[1]);
     });
 
     it('Verify day picker selected date & navigated date', () => {
-      expect(renderedComponent.state.selectedDate).to.equal(defaultDate);
-      expect(renderedComponent.state.navigatedDate).to.equal(defaultDate);
+      expect(renderedComponent.state.selectedDate).toEqual(defaultDate);
+      expect(renderedComponent.state.navigatedDate).toEqual(defaultDate);
     });
 
     it('Verify month picker seen', () => {
       let monthPicker = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthPicker') as HTMLElement;
-      expect(monthPicker).to.not.be.undefined;
-      expect(monthPicker.style.display).to.not.equal('none');
+      expect(monthPicker).toBeDefined();
+      expect(monthPicker.style.display).not.toEqual('none');
     });
 
     it('Verify month picker header', () => {
       let currentYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
-      expect(currentYear).to.not.be.undefined;
-      expect(currentYear.textContent).to.equal(defaultDate.getFullYear().toString());
+      expect(currentYear).toBeDefined();
+      expect(currentYear.textContent).toEqual(defaultDate.getFullYear().toString());
     });
 
     it('Verify month picker months', () => {
       let months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
-      expect(months.length).to.equal(12);
+      expect(months.length).toEqual(12);
       for (let i = 0; i < 12; i++) {
-        expect(months[i].textContent).to.equal(dayPickerStrings.shortMonths[i]);
+        expect(months[i].textContent).toEqual(dayPickerStrings.shortMonths[i]);
       }
     });
 
     it('Verify go to today', () => {
       let goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
-      expect(goToToday).to.not.be.undefined;
-      expect(goToToday.textContent).to.equal(dayPickerStrings.goToToday);
+      expect(goToToday).toBeDefined();
+      expect(goToToday.textContent).toEqual(dayPickerStrings.goToToday);
     });
 
     it('Verify navigate to different week in same month', () => {
@@ -220,9 +218,9 @@ describe('Calendar', () => {
       let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
       let day = days[8]; // 03/08/2017
       ReactTestUtils.Simulate.click(day);
-      expect(lastSelectedDateRange).to.not.be.null;
-      expect(lastSelectedDateRange!.length).to.equal(7);
-      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, new Date(2017, 2, 7 + i))).is.true);
+      expect(lastSelectedDateRange).not.toBeNull();
+      expect(lastSelectedDateRange!.length).toEqual(7);
+      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, new Date(2017, 2, 7 + i))).toEqual(true));
     });
 
     it('Verify navigate to day in different month', () => {
@@ -231,9 +229,9 @@ describe('Calendar', () => {
       let day = days[34]; // 04/03/2017
       let firstDate = new Date(2017, 2, 28);
       ReactTestUtils.Simulate.click(day);
-      expect(lastSelectedDateRange).to.not.be.null;
-      expect(lastSelectedDateRange!.length).to.equal(7);
-      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).is.true);
+      expect(lastSelectedDateRange).not.toBeNull();
+      expect(lastSelectedDateRange!.length).toEqual(7);
+      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
     });
   });
 });

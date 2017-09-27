@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-let { expect } = chai;
-
 import { Breadcrumb } from './Breadcrumb';
 import { IBreadcrumbItem } from './Breadcrumb.Props';
 
@@ -32,7 +30,7 @@ describe('Breadcrumb', () => {
     let itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
 
     ReactTestUtils.Simulate.click(itemLink!);
-    expect(callbackValue).to.equal('TestKey');
+    expect(callbackValue).toEqual('TestKey');
   });
 
   it('moves items to overflow in the correct order', () => {
@@ -54,7 +52,7 @@ describe('Breadcrumb', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
 
-    expect(itemLink[0].textContent).to.equal('TestText3');
+    expect(itemLink[0].textContent).toEqual('TestText3');
   });
 
 });
