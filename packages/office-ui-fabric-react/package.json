@@ -18,6 +18,7 @@
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.8",
     "@types/es6-promise": "^0.0.32",
+    "@types/jest": "21.1.0",
     "@types/mocha": "2.2.39",
     "@types/prop-types": "15.5.1",
     "@types/react": "15.0.38",
