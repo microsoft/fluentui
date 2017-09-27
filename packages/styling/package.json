@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "0.24.2",
+  "version": "5.0.0",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -11,26 +11,17 @@
   },
   "devDependencies": {
     "@types/chai": "3.4.35",
-    "@types/enzyme": "2.8.0",
+    "@types/enzyme": "2.8.8",
     "@types/mocha": "2.2.39",
-    "@types/react": "15.0.38",
-    "@types/react-addons-test-utils": "0.14.18",
-    "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=4.1.1 <5.0.0",
-    "enzyme": "^2.7.0",
-    "es6-promise": "^4.1.0",
-    "es6-weak-map": "^2.0.2",
     "es6-map": "^0.1.5",
-    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "es6-weak-map": "^2.0.2",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
-    "@uifabric/utilities": ">=4.16.0 <5.0.0",
-    "tslib": "^1.7.1",
-    "rtl-css-js": "^1.1.3",
-    "glamor": "^2.20.40"
+    "@microsoft/load-themed-styles": "^1.7.2",
+    "@uifabric/utilities": ">=5.0.0 <6.0.0",
+    "@uifabric/merge-styles": ">=5.0.0 <6.0.0",
+    "tslib": "^1.7.1"
   }
 }
