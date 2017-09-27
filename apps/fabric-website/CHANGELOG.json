@@ -2,6 +2,171 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.4",
+      "tag": "@uifabric/fabric-website_v5.0.4",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Updated for Fabric 5.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.3",
+      "tag": "@uifabric/fabric-website_v5.0.3",
+      "date": "Fri, 22 Sep 2017 19:08:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6812dbed7f05c698eb687bf7cf3d3481b4fe642b",
+            "comment": "Reinforced header tag styles across website pages to manage UHF counter-styles."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8f3882c08165627ec4b0ddea1116ab00fd2e1f2f",
+            "comment": "Visual bug fixes."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.49.1 <5.0.0` to `>=4.50.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.2",
+      "tag": "@uifabric/fabric-website_v5.0.2",
+      "date": "Thu, 21 Sep 2017 06:23:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Brand icons page clean up."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4482809c3554c0147d37cffe8e4fa1e696be0f23",
+            "comment": "Updated reference to Fabric Core to the newly released 7.3.0 version."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Added a test case for dogfood check"
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Initial loading spinner gif changed to mimic our spinner component."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Switched some font colors on theme and neutral color swatches from white to black to achieve minimum contrast requirement of 4.5:1 for accessibility."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "726494444365d178707d5605e9f6b63e099a0ff2",
+            "comment": "Removed trello reference from the Get Stated page."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "98ac26378c4aa6493d419a720cc759590f5ea37d",
+            "comment": "Styling to fix UHF header overriding our styles."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "40e1ef1d6ac5ee498888e7200fd15af754d7b665",
+            "comment": "Changed where Fabric Core and Fabric React versions were drawing from so that they would appear as a number instead of a range."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "df65d1d5a44b0058256079c99cb7783233cdfedc",
+            "comment": "Visual bug fixes to accommodate UHF"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "faef37358c373a6848b8eab6ef4e3df05b5e9697",
+            "comment": "Added section in ResourcePage for XD Toolkits and other assets, includes references on other pages, too."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.49.0 <5.0.0` to `>=4.49.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/fabric-website_v5.0.1",
+      "date": "Wed, 20 Sep 2017 10:19:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "7fadf0b0aa27ce0a245280e7867881cef1add967",
+            "comment": "Changing high-contrast colors to system colors"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.48.1 <5.0.0` to `>=4.49.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.0",
+      "tag": "@uifabric/fabric-website_v5.0.0",
+      "date": "Tue, 19 Sep 2017 10:08:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "5c586f0d68efe83ed9eb7fa95e2f8926c566122d",
+            "comment": "Revised alt text best practes for ImageComponent."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "c258bfc71bb9d3a9aca60d75553d1db57410a343",
+            "comment": "Removed references to FabricJS from the website."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "055dd03c8ad9d74843f2bc3445d529a3c1fd8cb5",
+            "comment": "Visual bug fixes for UHF adoption for website"
+          }
+        ],
+        "major": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "055dd03c8ad9d74843f2bc3445d529a3c1fd8cb5",
+            "comment": "Major site revisions, component updates, removal of dev office header and footer, infrastructure updates and improvements, webpack config updates."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.48.0 <5.0.0` to `>=4.48.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.6",
       "tag": "@uifabric/fabric-website_v4.7.6",
       "date": "Fri, 01 Sep 2017 16:51:57 GMT",

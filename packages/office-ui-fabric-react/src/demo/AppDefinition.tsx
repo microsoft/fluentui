@@ -17,6 +17,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/ActivityItem/ActivityItemPage').ActivityItemPage,
+          key: 'ActivityItem',
+          name: 'ActivityItem',
+          url: '#/examples/activityitem'
+        },
+        {
           component: require<any>('../components/Breadcrumb/BreadcrumbPage').BreadcrumbPage,
           key: 'Breadcrumb',
           name: 'Breadcrumb',
@@ -337,6 +343,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
+        },
+        {
+          component: require<any>('../components/ThemeGenerator/ThemeGeneratorPage').ThemeGeneratorPage,
+          key: 'Theme Generator',
+          name: 'Beta Theme Generator',
+          url: '#examples/themeGenerator'
+        },
+        {
+          component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,
+          key: 'Components Status',
+          name: 'Components Checklist',
+          url: '#/components-status'
         }
       ],
       name: 'Utilities'
@@ -347,6 +365,10 @@ export const AppDefinition: IAppDefinition = {
     {
       name: 'Getting started',
       url: '#/'
+    },
+    {
+      name: 'Components Checklist',
+      url: '#/components-status'
     },
     {
       name: 'Fabric',

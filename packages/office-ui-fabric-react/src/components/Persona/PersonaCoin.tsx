@@ -17,7 +17,6 @@ import {
 } from './Persona.Props';
 import {
   PERSONA_INITIALS_COLOR,
-  PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
 import * as stylesImport from './Persona.scss';
@@ -76,13 +75,15 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   public render(): JSX.Element | null {
     let {
+<<<<<<< HEAD
       className,
       coinProps,
       coinSize,
+=======
+>>>>>>> master
       imageUrl,
       imageAlt,
       initialsColor,
-      presence,
       primaryText,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
@@ -98,7 +99,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence as PersonaPresenceEnum], this.props.showSecondaryText ? styles.showSecondaryText : '') }
+        className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
         style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
       >
         { size !== PersonaSize.tiny && (

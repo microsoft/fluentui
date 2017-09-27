@@ -7,11 +7,17 @@ import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index
 import { GettingStartedPage } from './GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { ComponentPage } from '@uifabric/example-app-base';
 
 import './index.scss';
 import './ColorStyles.scss';
 
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+initializeIcons('dist/');
+
 setBaseUrl('./dist/');
+ComponentPage.defaultProps.areBadgesVisible = true;
 
 let rootElement: HTMLElement | null;
 

@@ -37,7 +37,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
    */
-  iconName?: string | null;
+  iconName?: string;
 
   /**
    * Optional styling for the elements within the Icon.
@@ -64,9 +64,4 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @memberOf IIconProps
    */
   imageProps?: IImageProps;
-
-  /**
-   * Callback for the onClick event.
-   */
-  onClicked?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
