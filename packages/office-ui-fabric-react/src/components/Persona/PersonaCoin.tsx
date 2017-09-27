@@ -75,12 +75,8 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   public render(): JSX.Element | null {
     let {
-<<<<<<< HEAD
-      className,
       coinProps,
       coinSize,
-=======
->>>>>>> master
       imageUrl,
       imageAlt,
       initialsColor,
@@ -100,7 +96,6 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       <div
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
-        style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
       >
         { size !== PersonaSize.tiny && (
           <div

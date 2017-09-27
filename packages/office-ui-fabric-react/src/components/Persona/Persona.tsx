@@ -107,6 +107,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
             showSecondaryText && styles.showSecondaryText
           )
         }
+        style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
       >
         <PersonaCoin { ...personaCoinProps } />
         { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
