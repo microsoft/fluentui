@@ -27,8 +27,15 @@ describe('ColorPicker', () => {
 
   it('onColorChange is called', () => {
     let color = '#FFFFFF';
+    const onColorChanged = (str: string): void => {
+      color = str;
+    };
+
     let component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color={ color } onColorChanged={ str => color = str } />
+      <ColorPicker
+        color={ color }
+        onColorChanged={ onColorChanged }
+      />
     ) as ColorPicker;
 
     const newColor = '#AEAEAE';
