@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CommandBar } from '../CommandBar';
 import { ICommandBarProps } from './../CommandBar.Props';
+
 export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
 
   constructor(props: ICommandBarProps) {
