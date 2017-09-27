@@ -68,6 +68,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
 
   /**
    * If iconName is undefined or an empty string, a placeholder will be rendered the same size as an icon
+   * @default false
    */
   hasPlaceHolder?: boolean;
 }

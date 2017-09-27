@@ -16,7 +16,11 @@ export const Icon = (props: IIconProps): JSX.Element => {
     ariaLabel,
     className,
     hasPlaceHolder,
+<<<<<<< HEAD
     styles,
+=======
+    styles: customStyles,
+>>>>>>> 880bfb7f75248b795ac641fc86aa43cd8f8f3e44
     iconName
    } = props;
   let classNames = getClassNames(
