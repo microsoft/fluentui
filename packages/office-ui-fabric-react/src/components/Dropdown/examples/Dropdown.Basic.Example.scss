@@ -1,18 +1,8 @@
 :global {
-  .dropdownExample {
+  .DropdownBasicExample {
     max-width: 300px;
   }
-  .dropdownExample-option {
-    display: flex;
-  }
-  .dropdownExample-placeholder {
-    display: flex;
-  }
-  .dropdownExample-caretDownIcon {
-    right: 12px;
-    position: absolute;
-    top: 1px;
-    height: 32px;
-    line-height: 30px;
+  .Dropdown-example {
+    margin-bottom: 10px;
   }
 }

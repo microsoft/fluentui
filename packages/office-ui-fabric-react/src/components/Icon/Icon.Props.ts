@@ -38,7 +38,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
    */
-  iconName?: string | null;
+  iconName?: string;
 
   /**
    * Optional styling for the elements within the Icon.
@@ -70,9 +70,4 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * If iconName is undefined or an empty string, a placeholder will be rendered the same size as an icon
    */
   hasPlaceHolder?: boolean;
-
-  /**
-   * Callback for the onClick event.
-   */
-  onClicked?: (ev: React.MouseEvent<HTMLElement>) => void;
 }

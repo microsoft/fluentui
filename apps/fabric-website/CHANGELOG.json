@@ -2,6 +2,52 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.4",
+      "tag": "@uifabric/fabric-website_v5.0.4",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Updated for Fabric 5.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.3",
+      "tag": "@uifabric/fabric-website_v5.0.3",
+      "date": "Fri, 22 Sep 2017 19:08:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6812dbed7f05c698eb687bf7cf3d3481b4fe642b",
+            "comment": "Reinforced header tag styles across website pages to manage UHF counter-styles."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8f3882c08165627ec4b0ddea1116ab00fd2e1f2f",
+            "comment": "Visual bug fixes."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.49.1 <5.0.0` to `>=4.50.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.2",
       "tag": "@uifabric/fabric-website_v5.0.2",
       "date": "Thu, 21 Sep 2017 06:23:58 GMT",

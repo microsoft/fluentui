@@ -2,24 +2,14 @@
 import * as React from 'react';
 /* tslint:enable */
 
-import { autobind, BaseComponent, memoize } from '../../Utilities';
+import { autobind, BaseComponent } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
+import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
 import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { PersonaCoin } from 'office-ui-fabric-react/lib/PersonaCoin';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-
-export interface IActivityItemClassNames {
-  root?: string;
-  activityContent?: string;
-  activityText?: string;
-  personaContainer?: string;
-  activityPersona?: string;
-  activityTypeIcon?: string;
-  commentText?: string;
-  timeStamp?: string;
-}
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _classNames: IActivityItemClassNames;
@@ -35,11 +25,11 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
-      styles: customStyles,
+      styles: customStyles
     } = this.props;
 
     this._styles = getStyles(undefined, customStyles);
-    this._classNames = this._getClassNames(
+    this._classNames = getClassNames(
       this._styles,
       this.props.className!,
       this.props.activityPersonas!,
@@ -49,9 +39,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        { (this.props.onRenderIcon || this.props.activityPersonas) &&
+        { (this.props.activityPersonas || this.props.activityIcon || this.props.onRenderIcon) &&
           <div className={ this._classNames.activityTypeIcon }>
-            { onRenderIcon(this.props, this._onRenderIcon) }
+            { onRenderIcon(this.props) }
           </div>
         }
 
@@ -66,18 +56,20 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   }
 
   @autobind
-  private _onRenderIcon(props: IActivityItemProps): JSX.Element | null {
+  private _onRenderIcon(props: IActivityItemProps): JSX.Element | React.ReactNode | null {
     if (props.activityPersonas) {
       return this._onRenderPersonaArray(props);
+    } else {
+      return this.props.activityIcon;
     }
-
-    return null;
   }
 
   @autobind
   private _onRenderActivityDescription(props: IActivityItemProps): JSX.Element | null {
-    if (props.activityDescriptionText) {
-      return (<span className={ this._classNames.activityText }>{ props.activityDescriptionText }</span>);
+    const activityDescription = props.activityDescription || props.activityDescriptionText;
+
+    if (activityDescription) {
+      return (<span className={ this._classNames.activityText }>{ activityDescription }</span>);
     }
 
     return null;
@@ -85,8 +77,10 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   @autobind
   private _onRenderComments(props: IActivityItemProps): JSX.Element | null {
-    if (!props.isCompact && props.commentText) {
-      return (<div className={ this._classNames.commentText }>{ props.commentText }</div>);
+    const comments = props.comments || props.commentText;
+
+    if (!props.isCompact && comments) {
+      return (<div className={ this._classNames.commentText }>{ comments }</div>);
     }
 
     return null;
@@ -136,45 +130,4 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return personaElement;
   }
 
-  // Determine what classNames each element needs
-  @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean): IActivityItemClassNames {
-    return {
-      root: mergeStyles(
-        'ms-ActivityItem',
-        styles.root,
-        className,
-        isCompact && styles.isCompactRoot
-      ) as string,
-
-      personaContainer: mergeStyles(
-        'ms-ActivityItem-personaContainer',
-        styles.personaContainer,
-        isCompact && styles.isCompactPersonaContainer
-      ) as string,
-
-      activityPersona: mergeStyles(
-        'ms-ActivityItem-activityPersona',
-        styles.activityPersona,
-        isCompact && styles.isCompactPersona,
-        !isCompact && activityPersonas && activityPersonas.length === 2 && styles.doublePersona
-      ) as string,
-
-      activityTypeIcon: mergeStyles(
-        'ms-ActivityItem-activityTypeIcon',
-        styles.activityTypeIcon,
-        isCompact && styles.isCompactIcon
-      ) as string,
-
-      activityContent: mergeStyles(
-        'ms-ActivityItem-activityContent',
-        styles.activityContent,
-        isCompact && styles.isCompactContent
-      ) as string,
-
-      activityText: mergeStyles('ms-ActivityItem-activityText', styles.activityText) as string,
-      commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText) as string,
-      timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp) as string
-    };
-  }
 }

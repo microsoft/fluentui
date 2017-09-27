@@ -1,7 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-
 import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
@@ -9,27 +8,27 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { IconCodes } from '../../Styling';
-import { getStyles } from './Icon.styles';
+import { getIcon, IIconRecord } from '../../Styling';
+import { getClassNames } from './Icon.classNames';
 
 export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
-    onClicked,
     hasPlaceHolder,
-    styles: customStyles,
+    styles,
     iconName
    } = props;
-
-  let styles = getStyles(undefined, customStyles);
+  let classNames = getClassNames(
+    styles
+  );
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
       'ms-Icon',
       'ms-Icon-imageContainer',
-      styles.root,
-      styles.imageContainer,
+      classNames.root,
+      classNames.imageContainer,
       className
     );
 
@@ -38,7 +37,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
         className={
           css(
             containerClassName,
-            styles.root
+            classNames.root
           ) }
       >
         <Image { ...props.imageProps as any } />
@@ -63,7 +62,12 @@ export const Icon = (props: IIconProps): JSX.Element => {
       />
     );
   } else {
-    let iconMemberName = iconName ? iconName.charAt(0).toLowerCase() + iconName.substr(1) : '';
+    let iconDefinition = getIcon(iconName) || {
+      subset: {
+        className: undefined
+      },
+      code: undefined
+    };
 
     return (
       <i
@@ -76,13 +80,13 @@ export const Icon = (props: IIconProps): JSX.Element => {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon',
-            styles.root,
+            'ms-Icon', // dangerous?
+            iconDefinition.subset.className,
+            classNames.root,
             props.className
           ) }
-        onClick={ onClicked }
       >
-        { (IconCodes as any)[iconMemberName] }
+        { iconDefinition.code }
       </i>
     );
   }

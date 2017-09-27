@@ -77,10 +77,6 @@
     color: $ms-color-neutralLight;
     max-width: 100%;
   }
-
-  .contentInGrid {
-    padding-left: $contentInGrid;
-  }
 }
 
 .descriptionLarge {
@@ -107,6 +103,10 @@
 @media screen and (min-width: $uhf-screen-min-mobile) {
   img {
     margin-bottom: 20px;
+  }
+
+  .contentInGrid {
+    padding-left: $contentInGrid;
   }
 }
 
@@ -135,10 +135,6 @@
   a,
   .getStartedLink {
     color: $color-getStarted-medium;
-  }
-
-  h3 {
-    margin: $uhf-h3-margin;
   }
 
   .trademark {

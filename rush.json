@@ -23,7 +23,7 @@
     {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/utilities",
@@ -46,6 +46,11 @@
         "office-ui-fabric-react",
         "@uifabric/example-app-base"
       ]
+    },
+    {
+      "packageName": "@uifabric/icons",
+      "projectFolder": "packages/icons",
+      "shouldPublish": true
     },
     {
       "packageName": "ssr-tests",
