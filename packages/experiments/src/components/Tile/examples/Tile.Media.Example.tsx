@@ -2,9 +2,8 @@
 import * as React from 'react';
 import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import {
   SignalField,
   Signal,

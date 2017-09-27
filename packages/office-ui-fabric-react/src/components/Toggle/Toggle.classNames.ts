@@ -67,7 +67,7 @@ export const getClassNames = memoizeFunction((
 
     pill: [
       'ms-Toggle-background',
-      getFocusStyle(theme, '-1px'),
+      getFocusStyle(theme, -3),
       {
         fontSize: '20px',
         lineHeight: '1em',
@@ -86,13 +86,15 @@ export const getClassNames = memoizeFunction((
       styles.pill,
       !disabled && [
         !checked && {
-          ':hover': [
-            {
-              borderColor: pillBorderHoveredColor
-            },
-            styles.pillHovered
-          ],
-          ':hover .ms-Toggle-thumb': styles.thumbHovered
+          selectors: {
+            ':hover': [
+              {
+                borderColor: pillBorderHoveredColor
+              },
+              styles.pillHovered
+            ],
+            ':hover .ms-Toggle-thumb': styles.thumbHovered
+          }
         },
         checked && [
           {
@@ -101,16 +103,18 @@ export const getClassNames = memoizeFunction((
           },
           styles.pillChecked,
           {
-            ':hover': [
-              {
-                backgroundColor: pillCheckedHoveredBackground,
-                borderColor: 'transparent'
-              },
-              styles.pillCheckedHovered
-            ],
-            ':hover .ms-Toggle-thumb': [
-              styles.thumbCheckedHovered
-            ]
+            selectors: {
+              ':hover': [
+                {
+                  backgroundColor: pillCheckedHoveredBackground,
+                  borderColor: 'transparent'
+                },
+                styles.pillCheckedHovered
+              ],
+              ':hover .ms-Toggle-thumb': [
+                styles.thumbCheckedHovered
+              ]
+            }
           }
         ]
       ],
@@ -180,15 +184,20 @@ export const getClassNames = memoizeFunction((
     text: [
       'ms-Toggle-stateText',
       {
-        '.ms-Toggle-stateText': {
-          padding: '0',
-          margin: '0 10px',
-          userSelect: 'none'
+        selectors: {
+          // Workaround: make rules more sepecific than Label rules.
+          '&&': {
+            padding: '0',
+            margin: '0 10px',
+            userSelect: 'none'
+          }
         }
       },
       disabled && {
-        '.ms-Toggle-stateText': {
-          color: textDisabledColor
+        selectors: {
+          '&&': {
+            color: textDisabledColor
+          }
         }
       },
       styles.text
