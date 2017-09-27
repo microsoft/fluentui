@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.0.1",
+      "tag": "@uifabric/experiments_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Updated for Fabric 5.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.0",
       "tag": "@uifabric/experiments_v0.10.0",
       "date": "Thu, 21 Sep 2017 06:23:58 GMT",
