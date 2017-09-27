@@ -37,7 +37,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
               <BreadcrumbBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='Breadcrumb Sizes'
+              title='Breadcrumb sizes'
               code={ BreadcrumbSizesExampleCode }
             >
               <BreadcrumbSizesExample />
