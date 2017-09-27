@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added ability to add css class to checkbox cell",
+      "comment": "DetailsList: Added ability to add css class to checkbox cell",
       "type": "minor"
     }
   ],
