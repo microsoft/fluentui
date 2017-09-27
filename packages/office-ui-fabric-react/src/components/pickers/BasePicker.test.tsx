@@ -4,8 +4,6 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 /* tslint:enable:no-unused-variable */
 
-let { expect } = chai;
-
 import { TagPicker, ITag } from './TagPicker/TagPicker';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BasePicker } from './BasePicker';
@@ -68,14 +66,14 @@ describe('Pickers', () => {
 
       let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
-      expect(suggestions).to.exist;
+      expect(suggestions).toBeDefined();
       let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
-      expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
+      expect(suggestionOptions.length).toEqual(2);
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
 
-      expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
-      expect(picker.items[0].name).to.be.equal('black', 'The selected item did not have the correct text');
+      expect(picker.items.length).toEqual(1);
+      expect(picker.items[0].name).toEqual('black');
 
       ReactDOM.unmountComponentAtNode(root);
 
@@ -100,9 +98,9 @@ describe('Pickers', () => {
 
       let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
-      expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
+      expect(picker.items.length).toEqual(1);
       input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-      expect(input).to.be.null;
+      expect(input).toBeNull();
 
       ReactDOM.unmountComponentAtNode(root);
     });
@@ -121,7 +119,7 @@ describe('Pickers', () => {
       ) as TypedBasePicker;
 
       let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-      expect(input).to.be.null;
+      expect(input).toBeNull();
 
       ReactDOM.unmountComponentAtNode(root);
     });
@@ -141,8 +139,8 @@ describe('Pickers', () => {
       ) as TypedBasePicker;
 
       let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-      expect(input).to.be.null;
-      expect(picker.items.length).to.equal(2);
+      expect(input).toBeNull();
+      expect(picker.items.length).toEqual(2);
 
       ReactDOM.unmountComponentAtNode(root);
     });
@@ -168,14 +166,14 @@ describe('Pickers', () => {
 
       let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
-      expect(suggestions).to.exist;
+      expect(suggestions).toBeDefined();
       let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
-      expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
+      expect(suggestionOptions.length).toEqual(2);
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
 
-      expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
-      expect(picker.items[0].name).to.be.equal('black', 'The selected item did not have the correct text');
+      expect(picker.items.length).toEqual(1);
+      expect(picker.items[0].name).toEqual('black');
       ReactDOM.unmountComponentAtNode(root);
 
     });
@@ -200,7 +198,7 @@ describe('Pickers', () => {
 
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
 
-      expect(picker.items.length).to.be.equal(0, 'The picker incorrectly added an item');
+      expect(picker.items.length).toEqual(0);
 
       picker = ReactDOM.render(
         <TagPicker
@@ -210,8 +208,8 @@ describe('Pickers', () => {
         root
       ) as TagPicker;
 
-      expect(picker.items.length).to.be.equal(1, 'The picker rendered with an item.');
-      expect(picker.items[0].name).to.be.equal('testColor', 'The selected item did not have the correct text');
+      expect(picker.items.length).toEqual(1);
+      expect(picker.items[0].name).toEqual('testColor');
       ReactDOM.unmountComponentAtNode(root);
     });
     it('fires change events correctly for controlled components', (done) => {
@@ -222,8 +220,8 @@ describe('Pickers', () => {
           onResolveSuggestions={ onResolveSuggestions }
           selectedItems={ [] }
           onChange={ (items) => {
-            expect(items!.length).to.be.equal(1, 'The picker incorrectly added an item');
-            expect(items![0].name).to.be.equal('black', 'The picker incorrectly added an item');
+            expect(items!.length).toEqual(1);
+            expect(items![0].name).toEqual('black');
             done();
           } }
         />,
