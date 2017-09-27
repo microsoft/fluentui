@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-let { expect } = chai;
-
 import { Image } from './Image';
 import { ImageFit, ImageLoadState } from './Image.Props';
 
@@ -36,7 +34,7 @@ describe('Image', () => {
       if (loadState === ImageLoadState.loaded) {
         let image = document.querySelector('.ms-Image.is-portraitFrame .ms-Image-image') as Element;
         try {
-          expect(image.className).to.contain('ms-Image-image--landscape');
+          expect(image.className).toEqual(expect.stringMatching('ms-Image-image--landscape'));
         } catch (e) { done(e); }
         done();
       }
@@ -60,7 +58,7 @@ describe('Image', () => {
       if (loadState === ImageLoadState.loaded) {
         let image = document.querySelector('.ms-Image.is-landscapeFrame .ms-Image-image') as Element;
         try {
-          expect(image.className).to.contain('ms-Image-image--portrait');
+          expect(image.className).toEqual(expect.stringMatching('ms-Image-image--portrait'));
         } catch (e) { done(e); }
         done();
       }
@@ -84,7 +82,7 @@ describe('Image', () => {
       if (loadState === ImageLoadState.loaded) {
         let image = document.querySelector('.ms-Image.is-frameMaximizedPortrait .ms-Image-image') as Element;
         try {
-          expect(image.className).to.contain('ms-Image-image--portrait');
+          expect(image.className).toEqual(expect.stringMatching('ms-Image-image--portrait'));
         } catch (e) { done(e); }
         done();
       }
@@ -109,7 +107,7 @@ describe('Image', () => {
       if (loadState === ImageLoadState.loaded) {
         let image = document.querySelector('.ms-Image.is-frameMaximizedLandscape .ms-Image-image') as Element;
         try {
-          expect(image.className).to.contain('ms-Image-image--landscape');
+          expect(image.className).toEqual(expect.stringMatching('ms-Image-image--landscape'));
         } catch (e) { done(e); }
         done();
       }

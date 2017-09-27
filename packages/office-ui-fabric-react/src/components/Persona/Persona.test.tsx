@@ -9,8 +9,6 @@ const styles: any = stylesImport;
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
-const { expect } = chai;
-
 describe('Persona', () => {
   beforeEach(() => {
     setRTL(false);
@@ -20,47 +18,47 @@ describe('Persona', () => {
     it('renders with expected initialsColor if none was provided', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find('.' + styles.initialsIsRed);
-      expect(result).to.have.length(1);
+      expect(result).toHaveLength(1);
 
       const wrapper2 = mount(<Persona primaryText='Annie Lindqvist' />);
       result = wrapper2.find('.' + styles.initialsIsDarkRed);
-      expect(result).to.have.length(1);
+      expect(result).toHaveLength(1);
     });
 
     it('uses provided initialsColor if one was specified', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.lightBlue } />);
       let result = wrapper.find('.' + styles.initialsIsLightBlue);
-      expect(result).to.have.length(1);
+      expect(result).toHaveLength(1);
     });
 
     it('calculates an expected initials in LTR if one was not specified', () => {
       let wrapper = mount(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find('.' + styles.initials);
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('KL');
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('KL');
 
       wrapper = mount(<Persona primaryText='David Zearing-Goff' />);
       result = wrapper.find('.' + styles.initials);
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('DZ');
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('DZ');
 
       wrapper = mount(<Persona primaryText='4lex 4loo' />);
       result = wrapper.find('.' + styles.initials);
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('44');
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('44');
 
       wrapper = mount(<Persona primaryText='David (The man) Goff' />);
       result = wrapper.find('.' + styles.initials);
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('DG');
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('DG');
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {
       setRTL(true);
       const wrapper = mount(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find('.' + styles.initials);
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('LK');
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('LK');
 
       setRTL(false);
     });
@@ -69,8 +67,8 @@ describe('Persona', () => {
       setRTL(true);
       const wrapper = mount(<Persona primaryText='Kat Larrson' imageInitials='AT' />);
       let result = wrapper.find('.' + styles.initials);
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('AT');
+      expect(result).toHaveLength(1);
+      expect(result.text()).toEqual('AT');
 
       setRTL(false);
     });
@@ -81,14 +79,14 @@ describe('Persona', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
       const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
 
-      expect(image.props().alt).to.equal('');
+      expect(image.props().alt).toEqual('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } imageAlt='ALT TEXT' />);
       const image: ReactWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
 
-      expect(image.props().alt).to.equal('ALT TEXT');
+      expect(image.props().alt).toEqual('ALT TEXT');
     });
   });
 });
