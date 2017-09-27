@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "List: Fix documentation examples. Adds autobind to onRenderCell of List Grid Example",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-edwliu@microsoft.com"
+}
