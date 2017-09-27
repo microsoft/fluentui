@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from './index';
+import { FabricDecorator } from '../utilities';
 import { Link, ILinkProps } from 'office-ui-fabric-react';
 
 storiesOf('Link', module)
@@ -10,11 +10,12 @@ storiesOf('Link', module)
   .addDecorator(story => (
     <Screener
       steps={ new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Link')
-        .snapshot('hover')
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Link')
         .hover('.ms-Link')
-        .snapshot('click')
+        .snapshot('click', { cropTo: '.testWrapper' })
         .end()
       }
     >

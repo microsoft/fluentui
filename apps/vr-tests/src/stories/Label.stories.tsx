@@ -2,13 +2,17 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from './index';
+import { FabricDecorator } from '../utilities';
 import { Label, ILabelProps } from 'office-ui-fabric-react';
 
 storiesOf('Label', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener>
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+      }
+    >
       { story() }
     </Screener>
   ))
