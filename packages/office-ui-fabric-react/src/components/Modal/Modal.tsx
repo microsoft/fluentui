@@ -122,7 +122,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
             <div className={ modalClassName }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? undefined : (onDismiss as any) } />
               <FocusTrapZone
-                componentRef={ ref => this._focusTrapZone = ref }
+                componentRef={this._resolveRef('_focusTrapZone')}
                 className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
                 isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
