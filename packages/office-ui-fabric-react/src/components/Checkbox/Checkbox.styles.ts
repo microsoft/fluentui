@@ -1,7 +1,7 @@
 import { ICheckboxStyles } from './Checkbox.Props';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   getFocusStyle,
   FontSizes
 } from '../../Styling';
@@ -29,7 +29,7 @@ export const getStyles = memoizeFunction((
 
   const styles: ICheckboxStyles = {
     root: [
-      getFocusStyle(theme),
+      getFocusStyle(theme, -2),
       {
         padding: '0',
         border: 'none',
@@ -58,7 +58,7 @@ export const getStyles = memoizeFunction((
     },
     checkbox: {
       display: 'flex',
-      flexShrink: '0',
+      flexShrink: 0,
       alignItems: 'center',
       justifyContent: 'center',
       height: MS_CHECKBOX_LABEL_SIZE,
@@ -73,7 +73,7 @@ export const getStyles = memoizeFunction((
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
       /* incase the icon is bigger than the box */
-      overflow: 'hidden',
+      overflow: 'hidden'
     },
     checkboxHovered: {
       borderColor: checkboxBorderHoveredColor,
@@ -118,5 +118,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(styles, customStyles)!;
+  return concatStyleSets(styles, customStyles)!;
 });

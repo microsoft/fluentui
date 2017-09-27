@@ -101,22 +101,24 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 })
                 }
               >
-                <input
-                  ref={ this._resolveRef('_inputElement') }
-                  id={ option.id }
-                  className={ css('ms-ChoiceField-input', styles.input) }
-                  type='radio'
-                  name={ this.props.name || this._id }
-                  disabled={ option.disabled || this.props.disabled }
-                  checked={ option.key === keyChecked }
-                  required={ required }
-                  onChange={ this._onChange.bind(this, option) }
-                  onFocus={ this._onFocus.bind(this, option) }
-                  onBlur={ this._onBlur.bind(this, option) }
-                  aria-labelledby={ option.id }
-                  { ...getNativeProps(option, inputProperties) }
-                />
-                { onRenderField(option, this._onRenderField) }
+                <div className={ css('ms-ChoiceField-wrapper', styles.choiceFieldWrapper) }>
+                  <input
+                    ref={ this._resolveRef('_inputElement') }
+                    id={ option.id }
+                    className={ css('ms-ChoiceField-input', styles.input) }
+                    type='radio'
+                    name={ this.props.name || this._id }
+                    disabled={ option.disabled || this.props.disabled }
+                    checked={ option.key === keyChecked }
+                    required={ required }
+                    onChange={ this._onChange.bind(this, option) }
+                    onFocus={ this._onFocus.bind(this, option) }
+                    onBlur={ this._onBlur.bind(this, option) }
+                    aria-labelledby={ option.id }
+                    { ...getNativeProps(option, inputProperties) }
+                  />
+                  { onRenderField(option, this._onRenderField) }
+                </div>
               </div>
             );
           }) }

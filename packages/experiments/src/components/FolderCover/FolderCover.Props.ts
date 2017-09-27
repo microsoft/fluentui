@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps } from '../../Utilities';
 import { FolderCover } from './FolderCover';
 
 export type FolderCoverSize =

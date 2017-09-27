@@ -30,7 +30,6 @@ $field-error-color: $errorTextColor;
 // the box containing the label and input field
 .root {
   @include ms-normalize;
-  margin-bottom: 8px;
   position: relative; /* Needed to position icon */
 }
 
