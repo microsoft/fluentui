@@ -8,19 +8,22 @@ import { Breadcrumb } from 'office-ui-fabric-react';
 storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={ new Screener.Steps()
-      .hover('.ms-Breadcrumb-overflowButton')
-      .snapshot('hover')
-      .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
-      .hover('.ms-Breadcrumb-overflowButton') // moving the mouse a bit to let dropdown open.
-      .snapshot('click')
-      .click('.ms-Breadcrumb-overflowButton') // closing the dropdown
-      .hover('.ms-Breadcrumb-list li:nth-child(2)')
-      .snapshot('longTitleHover')
-      .hover('.ms-Breadcrumb-list li:nth-child(3)')
-      .snapshot('shortTitleHover')
-      .end()
-    }>
+    <Screener
+      steps={
+        new Screener.Steps()
+          .hover('.ms-Breadcrumb-overflowButton')
+          .snapshot('hover')
+          .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
+          .hover('.ms-Breadcrumb-overflowButton') // moving the mouse a bit to let dropdown open.
+          .snapshot('click')
+          .click('.ms-Breadcrumb-overflowButton') // closing the dropdown
+          .hover('.ms-Breadcrumb-list li:nth-child(2)')
+          .snapshot('longTitleHover')
+          .hover('.ms-Breadcrumb-list li:nth-child(3)')
+          .snapshot('shortTitleHover')
+          .end()
+      }
+    >
       { story() }
     </Screener>
   ))
