@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-let { expect } = chai;
-
 import { Rating } from './Rating';
 
 describe('Rating', () => {
@@ -24,16 +22,14 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
 
     let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
 
     const checkState = (ratingToCheck: number, state: boolean) => {
-      expect((ratingInputs[ratingToCheck - 1] as HTMLInputElement).checked).to.be.eq(
-        state,
-        `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
+      expect((ratingInputs[ratingToCheck - 1] as HTMLInputElement).checked).toEqual(state);
     };
 
     checkState(1, false);
@@ -65,17 +61,17 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
 
     let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
 
-    expect((ratingInputs[0] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[1] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[2] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[3] as HTMLInputElement).checked).to.be.eq(false);
-    expect((ratingInputs[4] as HTMLInputElement).checked).to.be.eq(true);
+    expect((ratingInputs[0] as HTMLInputElement).checked).toEqual(false);
+    expect((ratingInputs[1] as HTMLInputElement).checked).toEqual(false);
+    expect((ratingInputs[2] as HTMLInputElement).checked).toEqual(false);
+    expect((ratingInputs[3] as HTMLInputElement).checked).toEqual(false);
+    expect((ratingInputs[4] as HTMLInputElement).checked).toEqual(true);
   });
 
   it('When rating is disabled cannot change rating', () => {
@@ -92,13 +88,13 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
     let choiceOptions = renderedDOM.querySelectorAll('.ms-Rating-input');
 
     for (let i = 0; i < 5; ++i) {
-      expect((choiceOptions[i] as HTMLInputElement).disabled).to.be.eq(true, `Rating ${i + 1} is not disabled`);
+      expect((choiceOptions[i] as HTMLInputElement).disabled).toEqual(true);
     }
   });
 

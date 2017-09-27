@@ -5,8 +5,6 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 
 import { TextField } from './TextField';
 
-const expect: Chai.ExpectStatic = chai.expect;
-
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
@@ -38,11 +36,11 @@ describe('TextField', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    expect(inputDOM.value).to.equal(exampleValue);
+    expect(inputDOM.value).toEqual(exampleValue);
 
     // Assert on the label element.
     const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];
-    expect(labelDOM.textContent).to.equal(exampleLabel);
+    expect(labelDOM.textContent).toEqual(exampleLabel);
   });
 
   it('should render multiline as text area element', () => {
@@ -52,7 +50,7 @@ describe('TextField', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLTextAreaElement = renderedDOM.getElementsByTagName('textarea')[0];
-    expect(inputDOM.value).not.be.be.empty;
+    expect(inputDOM.value).toBeDefined();
   });
 
   it('should associate the label and input box', () => {
@@ -67,8 +65,8 @@ describe('TextField', () => {
     const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];
 
     // Assert the input ID and label FOR attribute are the same.
-    expect(inputDOM.id).to.not.be.empty;
-    expect(inputDOM.id).to.equal(labelDOM.htmlFor);
+    expect(inputDOM.id).toBeDefined();
+    expect(inputDOM.id).toEqual(labelDOM.htmlFor);
   });
 
   it('should render a disabled input element', () => {
@@ -78,7 +76,7 @@ describe('TextField', () => {
 
     // Assert the input box is disabled.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    expect(inputDOM.disabled).to.equal(true);
+    expect(inputDOM.disabled).toEqual(true);
   });
 
   describe('error message', () => {
@@ -89,9 +87,9 @@ describe('TextField', () => {
         renderedDOM.querySelector('[data-automation-id=error-message]') as HTMLElement;
 
       if (expectedErrorMessage === false) {
-        expect(errorMessageDOM).to.be.null; // element not exists
+        expect(errorMessageDOM).toBeNull(); // element not exists
       } else {
-        expect(errorMessageDOM.textContent).to.equal(expectedErrorMessage);
+        expect(errorMessageDOM.textContent).toEqual(expectedErrorMessage);
       }
     }
 
@@ -183,7 +181,7 @@ describe('TextField', () => {
       );
 
       delay(20).then(() => assertErrorMessage(renderedDOM,  /* exist */ false));
-      expect(actualValue).to.equal('');
+      expect(actualValue).toEqual('');
     });
 
     it('should update error message when receive new value from props', () => {
@@ -228,10 +226,10 @@ describe('TextField', () => {
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
-      expect(validationCallCount).to.equal(1);
+      expect(validationCallCount).toEqual(1);
 
       ReactTestUtils.Simulate.focus(inputDOM);
-      expect(validationCallCount).to.equal(2);
+      expect(validationCallCount).toEqual(2);
     });
 
     it('should trigger validation only on blur', () => {
@@ -252,10 +250,10 @@ describe('TextField', () => {
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
       ReactTestUtils.Simulate.focus(inputDOM);
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
-      expect(validationCallCount).to.equal(1);
+      expect(validationCallCount).toEqual(1);
 
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(validationCallCount).to.equal(2);
+      expect(validationCallCount).toEqual(2);
     });
 
     it('should trigger validation on both blur and focus', () => {
@@ -276,13 +274,13 @@ describe('TextField', () => {
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before focus'));
-      expect(validationCallCount).to.equal(1);
+      expect(validationCallCount).toEqual(1);
 
       ReactTestUtils.Simulate.focus(inputDOM);
-      expect(validationCallCount).to.equal(2);
+      expect(validationCallCount).toEqual(2);
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(validationCallCount).to.equal(3);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should not trigger validation on component mount', () => {
@@ -299,7 +297,7 @@ describe('TextField', () => {
           validateOnLoad={ false }
         />
       );
-      expect(validationCallCount).to.equal(0);
+      expect(validationCallCount).toEqual(0);
     });
   });
 
@@ -310,7 +308,7 @@ describe('TextField', () => {
       />
     );
 
-    expect(renderedDOM.querySelector('input')!.value).equals('initial value');
+    expect(renderedDOM.querySelector('input')!.value).toEqual('initial value');
   });
 
   it('can render a default value as a textarea', () => {
@@ -321,7 +319,7 @@ describe('TextField', () => {
       />
     );
 
-    expect(renderedDOM.querySelector('textarea')!.value).equals('initial value');
+    expect(renderedDOM.querySelector('textarea')!.value).toEqual('initial value');
   });
 
   it('should call onChanged handler for input change', () => {
@@ -336,16 +334,16 @@ describe('TextField', () => {
       />
     );
 
-    expect(callCount).to.equal(0);
+    expect(callCount).toEqual(0);
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent('value change'));
-    expect(callCount).to.equal(1);
+    expect(callCount).toEqual(1);
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
-    expect(callCount).to.equal(2);
+    expect(callCount).toEqual(2);
   });
 
   it('should select a range of text', () => {
@@ -354,7 +352,7 @@ describe('TextField', () => {
 
     const onSelect = () => {
       const selectedText = window.getSelection().toString();
-      expect(selectedText).to.equal(initialValue);
+      expect(selectedText).toEqual(initialValue);
     };
 
     renderIntoDocument(
