@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorTall } from '../utilities';
 import { DefaultButton, ActionButton, CompoundButton, IButtonProps, CommandBarButton } from 'office-ui-fabric-react';
 
 const baseProps: IButtonProps = {
@@ -41,6 +41,8 @@ storiesOf('Button Default', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()
       }
     >
@@ -62,6 +64,8 @@ storiesOf('Button Action', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()
       }
     >
@@ -80,6 +84,8 @@ storiesOf('Button Compound', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()
       }
     >
@@ -96,13 +102,15 @@ storiesOf('Button Compound', module)
 storiesOf('Button Command', module)
   // tslint:disable-next-line:jsx-ban-props
   .addDecorator(story => <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>{ story() }</div>)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={ new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Button')
         .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .click('.ms-Button')
         .hover('.ms-Button')
         .snapshot('open', { cropTo: '.testWrapper' })
@@ -117,7 +125,7 @@ storiesOf('Button Command', module)
   .add('Checked', () => (<CommandBarButton {...commandProps} checked={ true } />));
 
 storiesOf('Button Split', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={ new Steps()
@@ -126,8 +134,13 @@ storiesOf('Button Split', module)
         .snapshot('hover main', { cropTo: '.testWrapper' })
         .hover('.ms-Button:nth-child(2)')
         .snapshot('hover split', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Button:nth-child(1)')
+        .snapshot('pressed main', { cropTo: '.testWrapper' })
+        .hover('.ms-Button') // reset mouseDown
+        .mouseDown('.ms-Button:nth-child(2)')
+        .snapshot('pressed split', { cropTo: '.testWrapper' })
         .click('.ms-Button:nth-child(2)')
-        .hover('.ms-Button')
+        .hover('.ms-Button') // move mouse to make click work
         .snapshot('open', { cropTo: '.testWrapper' })
         .end()
       }

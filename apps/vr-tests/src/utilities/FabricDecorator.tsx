@@ -12,3 +12,11 @@ export const FabricDecorator = (story) => (
     </div>
   </Fabric>
 );
+
+export const FabricDecoratorTall = (story) => (
+  <Fabric style={ { display: 'flex' } }>
+    <div className='testWrapper' style={ { padding: '10px 10px 120px' } }>
+      { story() }
+    </div>
+  </Fabric>
+);
