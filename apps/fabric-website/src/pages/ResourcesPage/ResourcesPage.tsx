@@ -81,9 +81,10 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h3>SharePoint</h3>
                 <p>SharePoint uses Fabric, so if you&rsquo;re building on top of or within a SharePoint experience, you can be sure that your UI will blend in. Check out these resources to learn more.</p>
                 <ul>
-                  <li><a className={ styles.relatedLink } href='http://dev.office.com/sharepoint/docs/spfx/sharepoint-framework-overview'>SharePoint Framework overview</a></li>
-                  <li><a className={ styles.relatedLink } href='https://github.com/SharePoint/sp-dev-docs/wiki/Design-Great-Webparts'>Design guidance for web parts</a></li>                 <li><a className={ styles.relatedLink } href='http://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components'>How to use Fabric React in a web part</a></li>
-                  <li><a className={ styles.relatedLink } href='https://github.com/SharePoint/sp-dev-docs/wiki'>Get started with the SharePoint Framework and build a HelloWorld web part</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/spfx'>SharePoint Framework overview</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/spfx-design-guidance'>Design guidance for building SharePoint experiences</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/spfx-fabric-react'>Use Fabric React components in web parts</a></li>
+                  <li><a className={ styles.relatedLink } href='https://aka.ms/spfx-tutorials'>Get started with building client-side web parts</a></li>
                 </ul>
               </div>
             </div>
