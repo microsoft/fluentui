@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "date picker control would always increase year for keydown. now it increments decrements coorectly",
+      "comment": "DatePicker: call correct callback when previous year button is clicked",
       "type": "patch"
     }
   ],
