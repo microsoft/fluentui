@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Initial release of the icons package.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "dzearing@microsoft.com"
+}
