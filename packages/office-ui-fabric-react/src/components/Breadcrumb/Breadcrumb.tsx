@@ -9,7 +9,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbProps, IBreadcrumbItem, BreadcrumbSize } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
@@ -29,7 +29,8 @@ const nullFunction = (): null => null;
 export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
-    maxDisplayedItems: 999
+    maxDisplayedItems: 999,
+    size: BreadcrumbSize.xxlarge
   };
 
   constructor(props: IBreadcrumbProps) {
@@ -80,9 +81,17 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       })
     );
 
+    const size = this.props.size as BreadcrumbSize;
+
+    const BREADCRUMB_SIZE = {
+      [BreadcrumbSize.small]: 'ms-Breadcrumb--sm ' + styles.rootIsSmall,
+      [BreadcrumbSize.large]: 'ms-Breadcrumb--lg ' + styles.rootIsLarge,
+      [BreadcrumbSize.xxlarge]: 'ms-Breadcrumb--xxl ' + styles.rootIsXXLarge
+    };
+
     return (
       <div
-        className={ css('ms-Breadcrumb', className, styles.root) }
+        className={ css('ms-Breadcrumb', className, styles.root, BREADCRUMB_SIZE[size]) }
         ref='renderingArea'
         role='navigation'
         aria-label={ ariaLabel }

@@ -44,6 +44,12 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Aria label to place on the navigation landmark for breadcrumb
    */
   ariaLabel?: string;
+
+  /**
+   * Decides the size of the control.
+   * @defaultvalue BreadcrumbSize.xxlarge
+   */
+  size?: BreadcrumbSize;
 }
 
 export interface IBreadcrumbItem {
@@ -72,4 +78,10 @@ export interface IBreadcrumbItem {
    * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
    */
   isCurrentItem?: boolean;
+}
+
+export enum BreadcrumbSize {
+  small = 0,
+  large = 1,
+  xxlarge = 2
 }

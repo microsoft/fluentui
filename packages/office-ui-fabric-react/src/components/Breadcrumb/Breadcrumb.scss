@@ -14,8 +14,51 @@ $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
 $Breadcrumb-chevron-sm: 8px;
 
+// Breadcrumb size mixins
+@mixin Breadcumb-small {
+  .listItem .itemLink {
+    font-size: $ms-font-size-m;
+  }
+
+  .chevron {
+    font-size: $Breadcrumb-chevron-sm;
+  }
+}
+
+@mixin Breadcumb-large {
+  .listItem .itemLink {
+    font-size: $ms-font-size-l;
+  }
+
+  .chevron {
+    font-size: $Breadcrumb-chevron-sm;
+  }
+}
+
+@mixin Breadcumb-xxlarge {
+  .listItem .itemLink {
+    font-size: $ms-font-size-xl;
+  }
+
+  .chevron {
+    font-size: $ms-font-size-s;
+  }
+}
+
 .root {
   margin: 23px 0 1px;
+}
+
+.root.rootIsSmall {
+  @include Breadcumb-small;
+}
+
+.root.rootIsLarge {
+  @include Breadcumb-large;
+}
+
+.root.rootIsXXLarge {
+  @include Breadcumb-xxlarge;
 }
 
 .list {
@@ -27,7 +70,6 @@ $Breadcrumb-chevron-sm: 8px;
 }
 
 .chevron {
-  font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
 }
 
@@ -65,9 +107,19 @@ $Breadcrumb-chevron-sm: 8px;
 .overflowButton {
   font-size: $Breadcrumb-overflowButtonSize;
   height: 100%; // override button height
+
   &:hover {
     cursor: pointer;
     background-color: $ms-color-neutralLighter;
+  }
+
+  &:active {
+    background-color: $selectedActiveBackgroundColor;
+    color: $selectedActiveForegroundColor;
+  }
+
+  &:active:hover {
+    background-color: $ms-color-neutralQuaternary;
   }
 }
 
@@ -104,31 +156,19 @@ $Breadcrumb-chevron-sm: 8px;
 @media screen and (max-width: $uhf-screen-max-mobile) {
   // margin: 11px 0 1px;
 
-  .listItem .itemLink {
-    font-size: $ms-font-size-l;
-  }
-
-  .chevron {
-    font-size: $ms-font-size-mi;
-  }
-
   .overflowButton {
     font-size: $ms-font-size-m-plus;
   }
 }
 
 @media screen and (max-width: $ms-screen-max-sm) {
-  .listItem .itemLink {
-    font-size: $ms-font-size-m;
-    max-width: $Breadcrumb-itemMaxWidth-sm;
-  }
+  @include Breadcumb-small;
 
-  .chevron {
-    font-size: $Breadcrumb-chevron-sm;
+  .listItem .itemLink {
+    max-width: $Breadcrumb-itemMaxWidth-sm;
   }
 
   .overflowButton {
     padding: 4px 6px;
   }
 }
-
