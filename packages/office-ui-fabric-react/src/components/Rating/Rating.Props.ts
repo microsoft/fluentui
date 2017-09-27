@@ -60,7 +60,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   readOnly?: boolean;
 
   /**
-   * Optional flag  enable half star. Displays half star if the value for any decimal value of the star
+   * Optional flag to enable half star support.
    */
   enableHalfStar?: boolean;
 }

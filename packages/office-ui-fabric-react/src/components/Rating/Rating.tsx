@@ -6,8 +6,8 @@ import {
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IRatingProps, RatingSize } from './Rating.Props';
-import * as stylesImport from './Rating.scss';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import * as stylesImport from './Rating.scss';
 const styles: any = stylesImport;
 
 interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -19,7 +19,7 @@ export interface IRatingState {
   rating: number | null | undefined;
 }
 
-const RatingStar = (props: any) => (
+const RatingStar = (props: IRatingStarProps) => (
   <div
     className={ css('ms-RatingStar-container', styles.ratingStar) }
     key={ props.id }
@@ -68,7 +68,6 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   public render() {
-
     let stars = [];
 
     for (let i = this.props.min as number; i <= (this.props.max as number); i++) {
@@ -81,7 +80,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         <button
           className={ css('ms-Rating-button', styles.ratingButton, {
             ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large,
-            ['ms-Rating--small ' + styles.rootIsSmall]: this.props.size !== RatingSize.Small
+            ['ms-Rating--small ' + styles.rootIsSmall]: this.props.size !== RatingSize.Large
           }) }
           key={ i }
           { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
@@ -154,8 +153,8 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
 
     return Math.min(Math.max(rating, this.props.min as number), this.props.max as number);
   }
-  private _getRatingComponentAriaLabel() {
 
+  private _getRatingComponentAriaLabel() {
     let rating: number = this.state.rating ? this.state.rating : 0;
 
     return 'Rating value is ' + rating + ' of ' + this.props.max;
