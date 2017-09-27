@@ -6,8 +6,6 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 
-let { expect } = chai;
-
 describe('TeachingBubble', () => {
 
   // <Layer> components will lead ReactDOM.findDOMNode(test_component) return null, so the test is based on the teaching bubble content.
@@ -20,7 +18,7 @@ describe('TeachingBubble', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let titleElement = renderedDOM.querySelector('.ms-TeachingBubble-headline');
 
-    expect(titleElement!.textContent).to.equal('Title');
+    expect(titleElement!.textContent).toEqual('Title');
   });
 
 });
