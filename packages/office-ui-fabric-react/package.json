@@ -12,7 +12,8 @@
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
-    "start": "node ../../scripts/start.js"
+    "start": "node ../../scripts/start.js",
+    "start-test": "node ../../scripts/start-test.js"
   },
   "devDependencies": {
     "@types/chai": "3.4.35",
