@@ -3,6 +3,10 @@ import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
+const alertClicked = (): void => {
+  alert('Clicked');
+};
+
 export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   public constructor() {
     super();
@@ -20,9 +24,9 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             disabled={ disabled }
             checked={ checked }
             text='Create account'
-            onClick={ () => alert('Clicked') }
+            onClick={ alertClicked }
             split={ true }
-            style={ { height: '32px' } }
+            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -47,8 +51,9 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             disabled={ disabled }
             checked={ checked }
             text='Create account'
-            onClick={ () => alert('Clicked') }
+            onClick={ alertClicked }
             split={ true }
+            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -86,9 +91,9 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           data-automation-id='test'
           disabled={ disabled }
           checked={ checked }
-          iconProps={ { iconName: 'Emoji2' } }
+          iconProps={ { iconName: 'Upload' } }
           text='Create account'
-          onClick={ () => alert('Clicked') }
+          onClick={ alertClicked }
           split={ true }
           styles={ customSplitButtonStyles }
           menuProps={ {

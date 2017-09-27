@@ -8,7 +8,7 @@ import { KeyCodes } from '../../Utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
-import { IComboBoxOption } from './ComboBox.Props';
+import { IComboBox, IComboBoxOption } from './ComboBox.Props';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -91,13 +91,20 @@ describe('ComboBox', () => {
     let comboBoxRoot;
     let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
     let comboBoxComponent: any;
+    const returnUndefined = (): undefined => {
+      return;
+    };
+    const setRef = (ref: IComboBox): void => {
+      comboBoxComponent = ref;
+    };
+
     let wrapper = mount(
       <ComboBox
         label='testgroup'
         options={ DEFAULT_OPTIONS }
         allowFreeform={ true }
-        onChanged={ () => { return; } }
-        componentRef={ ref => comboBoxComponent = ref }
+        onChanged={ returnUndefined }
+        componentRef={ setRef }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
@@ -110,12 +117,16 @@ describe('ComboBox', () => {
     let comboBoxRoot;
     let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
     let comboBoxComponent: any;
+    const setRef = (ref: IComboBox): void => {
+      comboBoxComponent = ref;
+    };
+
     let wrapper = mount(
       <ComboBox
         label='testgroup'
         options={ DEFAULT_OPTIONS }
         allowFreeform={ true }
-        componentRef={ ref => comboBoxComponent = ref }
+        componentRef={ setRef }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
