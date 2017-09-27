@@ -23,7 +23,7 @@
     {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/utilities",
