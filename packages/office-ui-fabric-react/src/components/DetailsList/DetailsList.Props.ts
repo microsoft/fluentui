@@ -205,7 +205,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /**
    * Optional class name to add to the cell of a checkbox
    */
-  checkboxClassName?: string;
+  checkboxCellClassName?: string;
 }
 
 export interface IColumn {
