@@ -174,7 +174,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       onRenderSuggestion,
       suggestionsItemClassName,
       resultsMaximumNumber,
-      showRemoveButtons } = this.props;
+      showRemoveButtons,
+      suggestionsContainerAriaLabel } = this.props;
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
@@ -185,7 +186,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       <div
         className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
         id='suggestion-list'
-        role='menu'
+        role='list'
+        aria-label={ suggestionsContainerAriaLabel }
       >
         { suggestions.map((suggestion, index) =>
           <div
@@ -193,21 +195,17 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
-            role='menuitem'
+            role='listitem'
+            aria-label={ suggestion.ariaLabel }
           >
             <TypedSuggestionsItem
               id={ 'sug-item' + index }
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion as any }
-              onClick={ (ev: React.MouseEvent<HTMLElement>) => { this.props.onSuggestionClick(ev, suggestion.item, index); } }
+              onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
-              onRemoveItem={ (ev: React.MouseEvent<HTMLElement>) => {
-                let onSuggestionRemove = this.props.onSuggestionRemove!;
-                onSuggestionRemove(ev, suggestion.item, index);
-                ev.stopPropagation();
-              }
-              }
+              onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
             />
           </div>) }
       </div>);
@@ -221,9 +219,25 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   @autobind
+  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+    return (ev: React.MouseEvent<HTMLElement>): void => {
+      this.props.onSuggestionClick(ev, item, index);
+    };
+  }
+
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
     if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
       this.props.refocusSuggestions(ev.keyCode);
     }
+  }
+
+  @autobind
+  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+    return (ev: React.MouseEvent<HTMLElement>): void => {
+      let onSuggestionRemove = this.props.onSuggestionRemove!;
+      onSuggestionRemove(ev, item, index);
+      ev.stopPropagation();
+    };
   }
 }

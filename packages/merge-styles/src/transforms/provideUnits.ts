@@ -1,3 +1,16 @@
+const NON_PIXEL_NUMBER_PROPS = [
+  'column-count',
+  'font-weight',
+  'flex-basis',
+  'flex',
+  'flex-grow',
+  'flex-shrink',
+  'opacity',
+  'order',
+  'z-index',
+  'zoom'
+];
+
 export function provideUnits(
   rulePairs: (string | number)[],
   index: number
@@ -6,8 +19,8 @@ export function provideUnits(
   const value = rulePairs[index + 1];
 
   if (
-    name !== 'opacity' &&
-    typeof value === 'number'
+    typeof value === 'number' &&
+    NON_PIXEL_NUMBER_PROPS.indexOf(name as string) === -1
   ) {
     rulePairs[index + 1] = `${value}px`;
   }

@@ -114,6 +114,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
+            aria-label={ ariaLabel || label }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
             { ...onKeyDownProp }
@@ -137,7 +138,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
               <span
                 ref='thumb'
                 className={ css('ms-Slider-thumb', styles.thumb) }
-                { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
                 style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
               <span

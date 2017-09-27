@@ -3,3 +3,4 @@ node_js:
   - '7'
 script:
   - npm run buildfast
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run vrtest; fi'

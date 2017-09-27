@@ -23,8 +23,16 @@
 
 .stickyAbove {
   top: 0;
+
+  @include high-contrast {
+    border-bottom: 1px solid WindowText;
+  }
 }
 
 .stickyBelow {
   bottom: 0;
+
+  @include high-contrast {
+    border-top: 1px solid WindowText;
+  }
 }

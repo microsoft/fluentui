@@ -1,4 +1,3 @@
-import 'es6-map/implement';
 import { setRTL } from './transforms/rtlifyRules';
 import { styleToClassName } from './styleToClassName';
 import {
@@ -11,6 +10,7 @@ const _stylesheet: Stylesheet = Stylesheet.getInstance();
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
 describe('styleToClassName', () => {
+
   beforeEach(() => {
     _stylesheet.reset();
   });

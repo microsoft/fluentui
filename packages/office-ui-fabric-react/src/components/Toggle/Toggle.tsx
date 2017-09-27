@@ -20,7 +20,7 @@ export interface IToggleState {
   isChecked: boolean;
 }
 
-@customizable(['theme'])
+@customizable('Toggle', ['theme'])
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
@@ -103,7 +103,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             aria-pressed={ isChecked }
             aria-label={ ariaLabel }
             data-is-focusable={ true }
-            onChange={ () => { /* no-op */ } }
+            onChange={ this._noop }
             onClick={ this._onClick }
           >
             <div className={ classNames.thumb } />
@@ -143,6 +143,10 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         onClick(ev);
       }
     }
+  }
+
+  private _noop(): void {
+    /* no-op */
   }
 
 }

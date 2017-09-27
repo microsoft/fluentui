@@ -9,6 +9,8 @@ import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { FacepileStatus } from './Facepile.checklist';
 
 const FacepileAddFaceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
 const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Basic.Example.tsx') as string;
@@ -96,10 +98,12 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/FacePile/FacePile.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...FacepileStatus}
+          />
+        }
       />
     );
   }

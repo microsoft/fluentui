@@ -15,6 +15,8 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { PivotStatus } from './Pivot.checklist';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
@@ -35,7 +37,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='PivotExample'
         exampleCards={
           <div>
-            <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
+            <ExampleCard title='Default Pivot' code={ PivotBasicExampleCode }>
               <PivotBasicExample />
             </ExampleCard>
             <ExampleCard title='Count and Icon' code={ PivotIconCountExampleCode }>
@@ -113,10 +115,12 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...PivotStatus}
+          />
+        }
       />
     );
   }

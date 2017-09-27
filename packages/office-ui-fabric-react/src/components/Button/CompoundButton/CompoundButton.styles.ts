@@ -1,7 +1,7 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -19,11 +19,9 @@ import {
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles,
-  primary?: boolean,
-  focusInset?: string,
-  focusColor?: string
+  primary?: boolean
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
+  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let compoundButtonStyles: IButtonStyles = {
     root: {
@@ -34,10 +32,23 @@ export const getStyles = memoizeFunction((
     },
 
     flexContainer: {
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'flex-start',
       minWidth: '100%',
       margin: ''
+    },
+
+    textContainer: {
+      textAlign: 'left'
+    },
+
+    icon: {
+      fontSize: '2em',
+      lineHeight: '1em',
+      height: '1em',
+      margin: '0px 8px 0px 0px',
+      flexBasis: '1em',
+      flexShrink: '0'
     },
 
     label: {
@@ -100,7 +111,7 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(
+  return concatStyleSets(
     baseButtonStyles,
     compoundButtonStyles,
     primary ? primaryStyles(theme) : standardStyles(theme),
@@ -108,4 +119,5 @@ export const getStyles = memoizeFunction((
     splitButtonStyles,
     customStyles
   )!;
+
 });
