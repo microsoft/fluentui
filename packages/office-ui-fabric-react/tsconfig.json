@@ -18,8 +18,9 @@
       "dom"
     ],
     "types": [
-      "chai",
-      "mocha",
+      // "chai",
+      "jest",
+      // "mocha",
       "webpack-env"
     ],
     "paths": {
