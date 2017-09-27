@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kegorr@microsoft.com"
+}
