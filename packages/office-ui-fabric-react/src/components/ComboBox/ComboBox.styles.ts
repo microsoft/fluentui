@@ -274,15 +274,7 @@ export const getStyles = memoizeFunction((
 
     inputDisabled: getDisabledStyles(theme),
     errorMessage: {
-      color: ComboBoxRootColorErrored,
-<<<<<<< HEAD
-=======
-      selectors: {
-        ':before': {
-          content: '* ',
-        }
-      }
->>>>>>> 2ff5d7aa5a9724f74047908471244894500a4c05
+      color: ComboBoxRootColorErrored
     },
 
     callout: {
