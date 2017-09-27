@@ -16,11 +16,12 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
+  css
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
 import {
-  customizable,
+  customizable
 } from '../../Utilities';
 import {
   getStyles,
@@ -30,6 +31,7 @@ import {
 import {
   IComboBoxClassNames,
   getClassNames,
+  getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -71,8 +73,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' },
-    calloutFixedWidth: true
+    buttonIconProps: { iconName: 'ChevronDown' }
   };
 
   public refs: {
@@ -755,10 +756,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       onRenderList = this._onRenderList,
       calloutProps,
-      calloutFixedWidth
+      comboBoxOptionStyles: customStylesForAllOptions,
+      styles: customStylesForCurrentOption
     } = props;
 
-    let setWidth = calloutFixedWidth ? this._comboBoxWrapper.clientWidth - 2 : 'auto';
+    let id = this._id;
+    let setWidth = this._comboBoxWrapper.clientWidth - 2;
+    let otherStyles = getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
 
     return (
       <Callout
@@ -773,7 +777,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: setWidth } }>
+        <div className={ css('ms-ComboBox-optionsContainerWrapper', otherStyles.optionsContainerWrapper as string) } ref={ this._resolveRef('_comboBoxMenu') } style={ { width: setWidth } }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>

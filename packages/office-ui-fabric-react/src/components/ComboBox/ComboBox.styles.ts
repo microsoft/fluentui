@@ -133,6 +133,8 @@ export const getOptionStyles = memoizeFunction((
       overflowWrap: 'break-word',
       margin: '1px',
     },
+    optionsContainerWrapper: {
+    },
   };
 
   return mergeStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption) as IComboBoxOptionStyles;
