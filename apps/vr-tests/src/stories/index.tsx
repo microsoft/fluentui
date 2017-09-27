@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Fabric } from 'office-ui-fabric-react';
 
-
 // Wrap all stories in a Fabric component for proper styling
 export const FabricDecorator = (story) => (
   <Fabric>

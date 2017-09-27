@@ -3,14 +3,13 @@ import {
   BaseComponent,
   KeyCodes,
   customizable,
-  css,
   getNativeProps,
   divProperties
 } from '../../Utilities';
 import {
   ITheme
 } from '../../Styling';
-import { getStyles } from './Fabric.styles';
+import { getClassNames } from './Fabric.classNames';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -61,20 +60,19 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
 
   public render() {
     const { isFocusVisible } = this.state;
-    const styles = getStyles(this.props.theme!);
+    const { className } = this.props;
 
-    const rootClass = css(
-      'ms-Fabric',
-      styles.root,
-      this.props.className,
-      isFocusVisible && 'is-focusVisible'
-    ) as string;
+    const classNames = getClassNames(
+      this.props.theme!,
+      className!,
+      isFocusVisible!
+    );
 
     let divProps = getNativeProps(this.props, divProperties);
     return (
       <div
         { ...divProps }
-        className={ rootClass }
+        className={ classNames.root }
         ref={ this._resolveRef('_root') }
       />
     );
