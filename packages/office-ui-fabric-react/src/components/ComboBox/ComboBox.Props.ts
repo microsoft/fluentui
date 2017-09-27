@@ -88,6 +88,16 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * in case an option does not come with user-defined custom styles
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * The index of the option to select (use selectedKey to match option's key)
+   */
+  selectedIndex?: number;
+
+  /**
+   * Set input field text
+   */
+  inputFieldText?: string;
 }
 
 export interface IComboBoxStyles {

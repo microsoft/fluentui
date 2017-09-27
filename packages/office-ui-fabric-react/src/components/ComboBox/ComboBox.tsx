@@ -125,7 +125,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
     this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
 
-    let index: number = this._getSelectedIndex(props.options, selectedKey);
+    let index: number = props.selectedIndex ? props.selectedIndex : this._getSelectedIndex(props.options, selectedKey);
 
     this.state = {
       isOpen: false,
@@ -149,7 +149,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (newProps.selectedKey !== this.props.selectedKey ||
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
-      let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
+      let index: number = newProps.selectedIndex ? newProps.selectedIndex : this._getSelectedIndex(newProps.options, newProps.selectedKey);
+
       this.setState({
         selectedIndex: index,
         currentOptions: newProps.options
@@ -360,7 +361,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       value,
       allowFreeform,
-      autoComplete
+      autoComplete,
+      inputFieldText
     } = this.props;
     let {
       selectedIndex,
@@ -392,8 +394,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Since we are allowing freeform, if there is currently a nonempty pending value, use that
       // otherwise use the index determined above (falling back to '' if we did not get a valid index)
+
+      let text = inputFieldText ? inputFieldText : currentOptions[index].text;
       return currentPendingValue !== '' ? currentPendingValue :
-        (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : '');
+        (this._indexWithinBounds(currentOptions, index) ? text : '');
     } else {
 
       // If we are not allowing freeform and have a
