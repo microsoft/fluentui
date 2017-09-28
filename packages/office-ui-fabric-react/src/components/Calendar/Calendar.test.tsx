@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.Props';
@@ -68,20 +69,16 @@ describe('Calendar', () => {
     let defaultDate = new Date('invalid');
 
     // Act
-    try {
-      let renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar
-          strings={ dayPickerStrings }
-          isMonthPickerVisible={ true }
-          value={ defaultDate }
-        />) as Calendar;
 
-      let today = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-day--today') as HTMLElement;
+    let renderedComponent = mount(
+      <Calendar
+        strings={ dayPickerStrings }
+        isMonthPickerVisible={ true }
+        value={ defaultDate }
+      />);
 
-      expect(+today.innerText).toEqual(new Date().getDate());
-    } catch (err) {
-      expect.fail(err, null, 'Encountered error trying to render a Calendar with an invalid date');
-    }
+    let today = renderedComponent.find('.ms-DatePicker-day--today');
+    expect(+today.text()).toEqual(new Date().getDate());
   });
 
   describe('Test rendering simplest calendar', () => {

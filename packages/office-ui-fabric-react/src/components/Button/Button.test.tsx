@@ -330,7 +330,7 @@ describe('DefaultButton', () => {
         {
           which: KeyCodes.down
         });
-      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('false');
+      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
     it('A disabled SplitButton does not respond to clicks', () => {

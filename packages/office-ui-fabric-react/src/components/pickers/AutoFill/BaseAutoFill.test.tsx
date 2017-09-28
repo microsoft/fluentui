@@ -4,10 +4,10 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
+
 import { KeyCodes } from '../../../Utilities';
 import { BaseAutoFill } from './BaseAutoFill';
 
-let { assert } = chai;
 describe('BaseAutoFill', () => {
   let autoFill: BaseAutoFill;
   let autoFillInput: HTMLInputElement;
@@ -31,8 +31,8 @@ describe('BaseAutoFill', () => {
         ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
-            assert(text === 'hel', 'text was ' + text);
-            assert(autoFill.value === 'hel', 'autoFill value was ' + autoFill.value);
+            expect(text).toBe('hel');
+            expect(autoFill.value).toBe('hel');
             done();
           }
         }
@@ -47,14 +47,14 @@ describe('BaseAutoFill', () => {
         ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
-            assert(text === 'hel', 'text was ' + text);
-            assert(autoFill.value === 'hel', 'autoFill value was ' + autoFill.value);
+            expect(text).toBe('hel');
+            expect(autoFill.value).toBe('hel');
             done();
           }
         }
         suggestedDisplayValue='hello'
       />, baseNode);
-    assert(autoFill.inputElement.value === 'hello');
+    expect(autoFill.inputElement.value).toBe('hello');
 
   });
 
@@ -66,9 +66,9 @@ describe('BaseAutoFill', () => {
         ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
-            assert(autoFill.value === 'hep', 'text was ' + autoFill.value);
-            assert(text === 'hep', 'text was ' + text);
-            assert(autoFill.inputElement.value === 'hep');
+            expect(text).toBe('hep');
+            expect(autoFill.value).toBe('hep');
+            expect(autoFill.inputElement.value).toBe('hep');
             done();
           }
         }
@@ -99,8 +99,8 @@ describe('BaseAutoFill', () => {
 
     ReactTestUtils.Simulate.change(autoFillInput);
 
-    assert(autoFill.value === 'hel', 'text was ' + autoFill.value);
-    assert(autoFill.inputElement.value === 'hel');
+    expect(autoFill.value).toBe('hel');
+    expect(autoFill.inputElement.value).toBe('hel');
   });
 
   it('will autofill if keyCode up or down is pressed', () => {
@@ -115,8 +115,8 @@ describe('BaseAutoFill', () => {
       baseNode
     );
 
-    assert(autoFill.value === 'hel', 'text was ' + autoFill.value);
-    assert(autoFill.inputElement.value === 'hel');
+    expect(autoFill.value).toBe('hel');
+    expect(autoFill.inputElement.value).toBe('hel');
 
     ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.left, which: KeyCodes.left });
 
@@ -134,7 +134,7 @@ describe('BaseAutoFill', () => {
       baseNode
     );
 
-    assert(autoFill.value === 'hel');
-    assert(autoFill.inputElement.value === 'hello');
+    expect(autoFill.value).toBe('hel');
+    expect(autoFill.inputElement.value).toBe('hello');
   });
 });
