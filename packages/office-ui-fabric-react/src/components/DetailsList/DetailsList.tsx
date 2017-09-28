@@ -582,17 +582,23 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         fixedColumns.forEach(column =>
           column.calculatedWidth = this._getColumnOverride(column.key).currentWidth);
 
-        const fixedWidth = fixedColumns.reduce((total, column) => total + column.calculatedWidth!, 0);
+        const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0), 0);
 
         const remainingColumns = newColumns.slice(resizingColumnIndex + 1);
         const remainingWidth = viewportWidth - fixedWidth;
 
         adjustedColumns = [
           ...fixedColumns,
-          ...this._getJustifiedColumns(remainingColumns, remainingWidth, newProps)
+          ...this._getJustifiedColumns(remainingColumns, remainingWidth, newProps, resizingColumnIndex + 1),
         ];
       } else {
-        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
+        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
+
+        // Last column is not resizable as there's no column behind.
+        // But if it's dropped, new last column is resizable so we can bring back the dropped columns.
+        if (adjustedColumns.length) {
+          adjustedColumns[adjustedColumns.length - 1].isResizable = false;
+        }
       }
 
       adjustedColumns.forEach(column => {
@@ -617,7 +623,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps) {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, firstIndex: number) {
     let {
       selectionMode,
       checkboxVisibility,
@@ -637,7 +643,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         },
         this._columnOverrides[column.key]);
 
-      totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
+      const isFirst = i + firstIndex === 0;
+      totalWidth += getPaddedWidth(newColumn, isFirst);
 
       return newColumn;
     });
@@ -649,7 +656,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       let column = adjustedColumns[lastIndex];
 
       if (column.isCollapsable) {
-        totalWidth -= column.calculatedWidth! + DEFAULT_INNER_PADDING;
+        totalWidth -= getPaddedWidth(column, false);
         adjustedColumns.splice(lastIndex, 1);
       }
       lastIndex--;
@@ -675,11 +682,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
       column.calculatedWidth = (column.calculatedWidth as number) + increment;
       totalWidth += increment;
-    }
-
-    // Mark the last column as not resizable to avoid extra scrolling issues.
-    if (adjustedColumns.length) {
-      adjustedColumns[adjustedColumns.length - 1].isResizable = false;
     }
 
     return adjustedColumns;
@@ -819,4 +821,8 @@ export function buildColumns(
 
 function isRightArrow(event: React.KeyboardEvent<HTMLElement>) {
   return event.which === getRTLSafeKeyCode(KeyCodes.right);
+}
+
+function getPaddedWidth(column: IColumn, isFirst: boolean): number {
+  return column.calculatedWidth! + (isFirst ? 0 : DEFAULT_INNER_PADDING) + (column.isPadded ? ISPADDED_WIDTH : 0)
 }
