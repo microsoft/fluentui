@@ -572,7 +572,6 @@ export module positioningFunctions {
   export function _positionBeak(beakWidth: number,
     callout: ICallout,
     target: Rectangle,
-    borderWidth: number,
     alignmentEdge?: RectangleEdge) {
 
     const { firstEdge, secondEdge } = _getFlankingEdges(callout.targetEdge);
@@ -678,7 +677,6 @@ export module positioningFunctions {
     hostElement: HTMLElement,
     calloutElement: HTMLElement): IPositionInfo {
     const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
-    const borderWidth = 2;
     const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
     const boundingRect: Rectangle = props.bounds ?
       _getRectangleFromIRect(props.bounds) :
@@ -701,7 +699,6 @@ export module positioningFunctions {
       beakWidth,
       positionedCallout,
       targetRect,
-      borderWidth,
       positionedCallout.alignmentEdge);
     const finalizedCallout: IPartialIRectangle = _finalizeCalloutPosition(
       positionedCallout.calloutRectangle,
