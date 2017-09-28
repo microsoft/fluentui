@@ -2,7 +2,7 @@
 import 'es6-weak-map/implement';
 import 'es6-map/implement';
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@uifabric/icons';
 console.log('initializing icons');
 initializeIcons('dist/');
 

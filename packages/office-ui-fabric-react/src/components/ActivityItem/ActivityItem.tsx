@@ -7,9 +7,7 @@ import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
-import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { PersonaCoin } from 'office-ui-fabric-react/lib/PersonaCoin';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaSize, PersonaCoin, IPersona, IPersonaProps } from '../../PersonaCoin';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _classNames: IActivityItemClassNames;

@@ -1,6 +1,6 @@
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import { registerIcons } from '@uifabric/styling';
 
 export function initializeIcons(baseUrl: string = ''): void {
   registerIcons({
@@ -13,7 +13,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-8a1666a2.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-0-8a1666a2.woff') format('woff')`,
     },
     icons: {
       'DecreaseIndentLegacy': '\uE290',

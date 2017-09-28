@@ -10,6 +10,6 @@ module.exports = function (options) {
 
   if (options.isProduction) {
     execSync(typescriptPath + ' -outDir lib-amd -t es5 -m amd ' + extraParams);
-    // execSync(typescriptPath + ' -outDir lib-es6 -t es6 -m es6 ' + extraParams, 'typescript es6');
+    execSync(typescriptPath + ' -outDir lib-es6 -t es5 -m es6 ' + extraParams);
   }
 };

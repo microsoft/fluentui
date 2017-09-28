@@ -1,6 +1,6 @@
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import { registerIcons } from '@uifabric/styling';
 
 export function initializeIcons(baseUrl: string = ''): void {
   registerIcons({
@@ -13,7 +13,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-4ac62dd2.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-4ac62dd2.woff') format('woff')`,
     },
     icons: {
       'GlobalNavButton': '\uE700',

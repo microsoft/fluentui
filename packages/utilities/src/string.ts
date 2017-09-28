@@ -15,9 +15,8 @@ const FORMAT_REGEX = /\{\d+\}/g;
  */
 // tslint:disable-next-line:no-any
 export function format(s: string, ...values: any[]): string {
-  'use strict';
-
   let args = values;
+
   // Callback match function
   function replace_func(match: string): string {
     // looks up in the args
