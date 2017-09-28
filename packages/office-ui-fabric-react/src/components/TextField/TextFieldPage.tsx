@@ -6,6 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
+import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
 import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
 import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
@@ -16,6 +17,7 @@ import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldStatus } from './TextField.checklist';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
+const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
 const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
 const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
@@ -36,6 +38,12 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               code={ TextFieldBasicExampleCode }
             >
               <TextFieldBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with custom Label'
+              code={ TextFieldCustomRenderExampleCode }
+            >
+              <TextFieldCustomRenderExample />
             </ExampleCard>
             <ExampleCard
               title='TextField with Placeholder'
