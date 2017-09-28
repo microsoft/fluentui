@@ -49,7 +49,7 @@ export class ResourcesPage extends React.Component<any, any> {
                 </ul>
 
                 <h3>SharePoint Design Toolkit</h3>
-                <p>The SharePoint design toolkit provides everything you need to design your web parts. The toolkit contains page grids for Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web part.</p>
+                <p>Use the resources on this page to ensure a consistent look and feel for your project. This section includes page grids for Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web part.</p>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/sharepoint_toolkit.zip'>SharePoint Toolkit</a></li>
                 </ul>
