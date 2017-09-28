@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Sep 2017 00:20:59 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Sep 2017 10:19:12 GMT and should not be manually modified.
+
+## 5.1.0
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Minor changes
+
+- DetailsList: Added ability to add css class to checkbox cell
+
+### Patches
+
+- List: Fix documentation examples. Adds autobind to onRenderCell of List Grid Example
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT
