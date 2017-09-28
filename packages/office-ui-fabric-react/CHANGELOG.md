@@ -1,6 +1,62 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Sep 2017 06:23:58 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Sep 2017 00:20:59 GMT and should not be manually modified.
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.51.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+### Patches
+
+- Use aria-label for slider, even when label is not set
+- PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions.
+- TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator.
+- Removed old visual testing system to make way for new Screener based system
+
+## 4.50.2
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Patches
+
+- Updating components to support scoped customizations.
+- Dropdown: add titleIsPlaceHolder class to dropdown title so styles can be overridden
+- Persona: Fixed regression in secondary text not showing
+
+## 4.50.1
+Mon, 25 Sep 2017 10:19:18 GMT
+
+### Patches
+
+- Reordered Buttons on ButtonPage and made some small style changes to match toolkit for website.
+- Updated ContextualMenu examples and page to better reflect the XD Toolkit.
+- Dropdown: Adds a positioning wrapper around the caretDown icon
+- Theme Generator: have the bg change with the theme
+- make headings on theme generator page theme
+
+## 4.50.0
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Minor changes
+
+- Icon: Removed a recently added prop `onClicked` as it is redundant with `onClick`. Updated DatePicker to use `onClick`.
+- Create Theme Generator page
+- ActivityItem: Adding ReactNodes in the interface in addition to the IRenderFunction props.
+
+### Patches
+
+- Adds ARIA label prop for Suggestions component
+- SplitButton: Fix menu rendering when splitbutton is disabled
+- ComboBox: Changing high-contrast styles to use msHighContrastAdjust
 
 ## 4.49.1
 Thu, 21 Sep 2017 06:23:58 GMT
