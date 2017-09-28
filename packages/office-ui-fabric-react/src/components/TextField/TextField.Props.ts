@@ -78,6 +78,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   label?: string;
 
   /**
+   * Optional custom renderer for the label
+   */
+  onRenderLabel?: IRenderFunction<ITextFieldProps>;
+
+  /**
    * The textfield input description
    */
   description?: string;
@@ -194,5 +199,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Deprecated; use iconProps instead.
    */
   iconClass?: string;
+
+  /**
+ * Internal ID passed to render functions.
+ */
+  componentId?: string;
 
 }
