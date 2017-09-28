@@ -666,8 +666,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
-    const minWidth = Math.min(resizingColumn.minWidth || MIN_COLUMN_WIDTH, MIN_COLUMN_WIDTH);
-    let newCalculatedWidth = Math.max(minWidth, newWidth);
+    let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
     if (this.props.onColumnResize) {
       this.props.onColumnResize(resizingColumn, newCalculatedWidth);
     }
