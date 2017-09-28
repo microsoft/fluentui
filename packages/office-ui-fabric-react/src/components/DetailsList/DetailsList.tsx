@@ -533,8 +533,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean) {
-    let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate);
+  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number) {
+    let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     let { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
@@ -546,7 +546,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
-  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean): IColumn[] | undefined {
+  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): IColumn[] | undefined {
     let { columns: newColumns, items: newItems, layoutMode, selectionMode } = newProps;
     let { width: viewportWidth } = newProps.viewport!;
 
@@ -577,7 +577,27 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
-      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
+      if (resizingColumnIndex !== undefined) {
+        const fixedColumns = newColumns.slice(0, resizingColumnIndex + 1);
+        fixedColumns.forEach(column =>
+          column.calculatedWidth = this._getColumnOverride(column.key).currentWidth);
+
+        const fixedWidth = fixedColumns.reduce((total, column) => total + column.calculatedWidth!, 0);
+
+        const remainingColumns = newColumns.slice(resizingColumnIndex + 1);
+        const remainingWidth = viewportWidth - fixedWidth;
+
+        adjustedColumns = [
+          ...fixedColumns,
+          ...this._getJustifiedColumns(remainingColumns, remainingWidth, newProps)
+        ];
+      } else {
+        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
+      }
+
+      adjustedColumns.forEach(column => {
+        this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
+      });
     }
 
     return adjustedColumns;
@@ -665,21 +685,26 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return adjustedColumns;
   }
 
-  private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
+  private _onColumnResized(resizingColumn: IColumn, newWidth: number, resizingColumnIndex: number) {
     let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
     if (this.props.onColumnResize) {
-      this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+      this.props.onColumnResize(resizingColumn, newCalculatedWidth, resizingColumnIndex);
     }
 
     this._rememberCalculatedWidth(resizingColumn, newCalculatedWidth);
 
-    this._adjustColumns(this.props, true);
+    this._adjustColumns(this.props, true, resizingColumnIndex);
     this._forceListUpdates();
   }
 
   private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number) {
-    let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
+    let overrides = this._getColumnOverride(column.key);
     overrides.calculatedWidth = newCalculatedWidth;
+    overrides.currentWidth = newCalculatedWidth;
+  }
+
+  private _getColumnOverride(key: string): IColumn {
+    return this._columnOverrides[key] = this._columnOverrides[key] || {} as IColumn;
   }
 
   /**
@@ -704,7 +729,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           max = Math.max(max, width);
           count++;
           if (count === totalCount) {
-            this._onColumnResized(column, max);
+            this._onColumnResized(column, max, columnIndex);
           }
         });
       }

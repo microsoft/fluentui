@@ -112,7 +112,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /** Callback fired on column resize */
-  onColumnResize?: (column?: IColumn, newWidth?: number) => void;
+  onColumnResize?: (column?: IColumn, newWidth?: number, columnIndex?: number) => void;
 
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
@@ -332,6 +332,11 @@ export interface IColumn {
    * Internal only value.
    */
   calculatedWidth?: number;
+
+  /**
+   * Internal only value.
+   */
+  currentWidth?: number;
 
   /**
    * An optional class name to stick on the column cell within each header.
