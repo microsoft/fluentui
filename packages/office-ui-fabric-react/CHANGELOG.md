@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Sep 2017 10:09:04 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Sep 2017 10:19:12 GMT and should not be manually modified.
+
+## 5.1.0
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Minor changes
+
+- DetailsList: Added ability to add css class to checkbox cell
+
+### Patches
+
+- List: Fix documentation examples. Adds autobind to onRenderCell of List Grid Example
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.51.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+### Patches
+
+- Use aria-label for slider, even when label is not set
+- PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions.
+- TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator.
+- Removed old visual testing system to make way for new Screener based system
 
 ## 4.50.2
 Tue, 26 Sep 2017 10:09:04 GMT

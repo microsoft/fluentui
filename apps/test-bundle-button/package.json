@@ -1,6 +1,6 @@
 {
   "name": "test-bundle-button",
-  "version": "0.0.2",
+  "version": "5.0.0",
   "description": "Testing the button for bundling.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -21,12 +21,12 @@
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
     "@types/prop-types": "15.5.1",
-    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0"
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=4.50.1 <5.0.0",
+    "office-ui-fabric-react": ">=5.1.0 <6.0.0",
     "tslib": "^1.7.1"
   }
 }

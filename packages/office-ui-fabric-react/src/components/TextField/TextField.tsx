@@ -145,7 +145,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const renderProps: ITextFieldProps = { ...this.props, componentId: this._id };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
-      ['is-required ' + styles.rootIsRequired]: required,
+      ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
+      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required,
       ['is-disabled ' + styles.rootIsDisabled]: disabled,
       ['is-active ' + styles.rootIsActive]: isFocused,
       ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
@@ -155,7 +156,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <div className={ textFieldClassName }>
-        <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
+        <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
           { onRenderLabel(renderProps, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
@@ -171,13 +172,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
             { errorMessage &&
-              <div aria-live='assertive'>
+              <div>
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
                   >
-                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
-                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
+                    <span aria-live='assertive' className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>

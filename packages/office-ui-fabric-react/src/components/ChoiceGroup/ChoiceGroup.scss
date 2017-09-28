@@ -38,7 +38,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 //
 
 .root {
-  margin-bottom: 4px;
+  display: block;
 }
 
 .choiceField {
@@ -52,7 +52,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   border: none;
   position: relative;
   margin-top: 8px;
-  @include ms-padding-left(8px);
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
@@ -78,7 +77,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   height: $ms-choiceField-field-size;
   font-weight: normal;
   position: absolute;
-  top: -1px;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
   transition-property: border-color;
   transition-duration: $ms-choiceField-transition-duration;
@@ -108,6 +108,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   position: relative;
   vertical-align: top;
   user-select: none;
+  min-height: 20px;
 
   &:hover,
   &:focus {
@@ -124,7 +125,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   //
   &.fieldIsChecked {
     &::before { // the circle
-      border: 2px solid $radioButton-border-selected-color;
+      border: 1px solid $radioButton-border-selected-color;
 
       @include high-contrast {
         border-color: Highlight;
@@ -133,8 +134,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     &::after { // the dot
       border: 5px solid $radioButton-dot-color;
-      top: 4px;
       @include ms-left(5px);
+      top: 5px;
       width: 10px;
       height: 10px;
 
@@ -187,7 +188,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 .choiceFieldIsImage, .choiceFieldIsIcon {
-  $fieldPadding: 4px;
   display: inline-flex;
   font-size: 0;
   @include ms-margin(0, 4px, 4px, 0);
@@ -202,7 +202,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     box-sizing: border-box;
     min-width: $ms-choiceField-iconField-size;
     cursor: pointer;
-    padding: $fieldPadding;
     padding-top: 22px;
     margin: 0;
     text-align: center;
@@ -323,17 +322,18 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
-  @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus .choiceFieldWrapper {
+  @include focus-border(-2px, $ms-color-neutralPrimary, 1px, false);
 
   @include high-contrast {
-     @include focus-border(1px, WindowText, 2px, false);
+     @include focus-border(-2px, WindowText, 2px, false);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus{
-  &.choiceFieldIsImage, &.choiceFieldIsIcon {
-    @include focus-border(0, $ms-color-neutralPrimary, 1px, false);
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
+  &.choiceFieldIsImage .choiceFieldWrapper,
+  &.choiceFieldIsIcon .choiceFieldWrapper {
+    @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
 
     @include high-contrast {
       @include focus-border(1px, WindowText, 2px, false);
