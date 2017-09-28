@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Updated links in the SharePoint section of the ResourcesPage.",
+      "comment": "Added initializeIcons() call to make all icons in examples on the website available.",
       "type": "patch"
     }
   ],
