@@ -16,7 +16,6 @@ export interface ICalloutDirectionalExampleState {
   isBeakVisible?: boolean;
   gapSpace?: number;
   beakWidth?: number;
-  shrunk?: boolean;
 }
 
 const DIRECTION_OPTIONS = [
@@ -36,37 +35,6 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint[DirectionalHint.rightBottomEdge], text: 'Right Bottom Edge' },
 ];
 
-export class Thing extends React.Component<any, any> {
-  public constructor() {
-    super();
-    this.state = { shrunk: false };
-  }
-  public render() {
-    return (
-      <div
-        className='ms-CalloutExample-header'
-        style={ {
-          width: this.state.shrunk ? '200px' : '300px',
-          height: this.state.shrunk ? '100px' : '300px'
-        } }
-      >
-        <p className='ms-CalloutExample-title'>
-          All of your favorite people
-      </p>
-        <div className='ms-CalloutExample-inner'>
-          <div className='ms-CalloutExample-content'>
-            <p className='ms-CalloutExample-subText'>
-              Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
-          </p>
-          </div>
-          <button onClick={ () => this.setState({ shrunk: !this.state.shrunk }) }> I am a great button </button>
-        </div>
-      </div>
-    );
-
-  }
-}
-
 export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement;
   public constructor() {
@@ -75,8 +43,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     this.state = {
       isCalloutVisible: false,
       isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge,
-      shrunk: false
+      directionalHint: DirectionalHint.bottomLeftEdge
     };
   }
 
@@ -130,7 +97,18 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             onDismiss={ this._onCalloutDismiss }
             directionalHint={ directionalHint }
           >
-            <Thing />
+            <div className='ms-CalloutExample-header'>
+              <p className='ms-CalloutExample-title'>
+                All of your favorite people
+               </p>
+            </div>
+            <div className='ms-CalloutExample-inner'>
+              <div className='ms-CalloutExample-content'>
+                <p className='ms-CalloutExample-subText'>
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                 </p>
+              </div>
+            </div>
           </Callout>
         ) : (null) }
       </div>
