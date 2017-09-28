@@ -578,18 +578,18 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       });
     } else {
       if (resizingColumnIndex !== undefined) {
-        const fixedColumns = newColumns.slice(0, resizingColumnIndex + 1);
+        const fixedColumns = newColumns.slice(0, resizingColumnIndex);
         fixedColumns.forEach(column =>
           column.calculatedWidth = this._getColumnOverride(column.key).currentWidth);
 
         const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0), 0);
 
-        const remainingColumns = newColumns.slice(resizingColumnIndex + 1);
+        const remainingColumns = newColumns.slice(resizingColumnIndex);
         const remainingWidth = viewportWidth - fixedWidth;
 
         adjustedColumns = [
           ...fixedColumns,
-          ...this._getJustifiedColumns(remainingColumns, remainingWidth, newProps, resizingColumnIndex + 1),
+          ...this._getJustifiedColumns(remainingColumns, remainingWidth, newProps, resizingColumnIndex),
         ];
       } else {
         adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
@@ -665,19 +665,20 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     // Then expand columns starting at the beginning, until we've filled the width.
     for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       let column = adjustedColumns[i];
+      const isLast = i === (adjustedColumns.length - 1);
       const overrides = this._columnOverrides[column.key];
-      if (overrides && overrides.calculatedWidth) {
+      if (overrides && overrides.calculatedWidth && !isLast) {
         continue;
       }
 
-      let maxWidth = column.maxWidth;
-      let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
-      let increment = maxWidth ? Math.min(spaceLeft, maxWidth - minWidth) : spaceLeft;
-
-      // Add remaining space to the last column.
-      if (i === (adjustedColumns.length - 1)) {
+      let increment: number;
+      if (isLast) {
         increment = spaceLeft;
+      } else {
+        let maxWidth = column.maxWidth;
+        let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
+        increment = maxWidth ? Math.min(spaceLeft, maxWidth - minWidth) : spaceLeft;
       }
 
       column.calculatedWidth = (column.calculatedWidth as number) + increment;
