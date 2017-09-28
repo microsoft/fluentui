@@ -48,6 +48,12 @@ export class ResourcesPage extends React.Component<any, any> {
                   <li><a className={ styles.relatedLink } href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97'>Adobe XD Toolkit (Microsoft employees)</a></li>
                 </ul>
 
+                <h3>SharePoint Toolkit</h3>
+                <p>The SharePoint toolkit provides everything you need to design your web parts. The toolkit contains page grids for Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web part.</p>
+                <ul>
+                  <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/sharepoint_toolkit.zip'>SharePoint Toolkit</a></li>
+                </ul>
+
                 <h3>Fonts</h3>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/segoeui_fabricmdl2_icon_fonts.zip'>Segoe UI and Fabric MDL2 icon font</a></li>
