@@ -62,5 +62,4 @@ export * from './Utilities';
 // is perfected. (Use the top level imports instead.)
 import { initializeIcons } from '@uifabric/icons';
 
-// TODO: remove the @beta tag once they're publised to the CDN.
 initializeIcons('//unpkg.com/office-ui-fabric-react/dist/');
