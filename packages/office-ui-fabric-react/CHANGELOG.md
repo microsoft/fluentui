@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Sep 2017 20:42:17 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Sep 2017 17:02:29 GMT and should not be manually modified.
+
+## 4.51.1
+Thu, 28 Sep 2017 17:02:29 GMT
+
+### Patches
+
+- DetailsList: Allow resizing columns wider than maxWidth in justified layout
 
 ## 4.51.0
 Tue, 26 Sep 2017 20:42:17 GMT
