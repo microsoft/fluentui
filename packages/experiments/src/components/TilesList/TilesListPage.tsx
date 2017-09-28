@@ -9,14 +9,20 @@ import {
 
 /* tslint:disable:max-line-length */
 import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
-const TilesListBasicExampleCode = require('!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx') as string;
+const TilesListBasicExampleCode = require(
+  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
+) as string;
 
 import { TilesListDocumentExample } from './examples/TilesList.Document.Example';
-const TilesListDocumentExampleCode = require('!raw-loader!experiments/src/components/TilesList/examples/TilesList.Document.Example.tsx') as string;
+const TilesListDocumentExampleCode = require(
+  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Document.Example.tsx'
+) as string;
 
 import { TilesListMediaExample } from './examples/TilesList.Media.Example';
-const TilesListMediaExampleCode = require('!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx') as string;
-/* tslint:enable:max-line-length */
+
+const TilesListMediaExampleCode = require(
+  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
+) as string;
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

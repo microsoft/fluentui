@@ -80,7 +80,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
 
   private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
     return (
-      <Icon className='dropdownExample-caretDownIcon' iconName='CirclePlus' />
+      <Icon iconName='CirclePlus' />
     );
   }
 

@@ -1,0 +1,24 @@
+{
+  "name": "@uifabric/icons",
+  "entries": [
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/icons_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Initial release of the icons package."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

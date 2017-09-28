@@ -181,6 +181,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             id={ id + '-option' }
             className={ css(
               'ms-Dropdown-title', styles.title,
+              !selectedOption && 'ms-Dropdown-titleIsPlaceHolder',
               !selectedOption && styles.titleIsPlaceHolder,
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
@@ -196,7 +197,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+          <span className={ css('ms-Dropdown-caretDownWrapper', styles.caretDownWrapper) }>
+            { onRenderCaretDown(this.props, this._onRenderCaretDown) }
+          </span>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)

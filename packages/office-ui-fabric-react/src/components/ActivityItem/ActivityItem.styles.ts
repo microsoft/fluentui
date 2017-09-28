@@ -1,5 +1,5 @@
 import {
-  mergeStyleSets,
+  concatStyleSets,
   ITheme,
   getTheme
 } from '../../Styling';
@@ -15,9 +15,9 @@ const COMPACT_ICON_SIZE = '13px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IActivityItemStyles | undefined = undefined
+  customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
-  let ActivityItemStyles = {
+  let ActivityItemStyles: IActivityItemStyles = {
 
     root: [
       theme.fonts.small,
@@ -73,8 +73,10 @@ export const getStyles = memoizeFunction((
     },
 
     doublePersona: {
-      '&:first-child': {
-        alignSelf: 'flex-end'
+      selectors: {
+        ':first-child': {
+          alignSelf: 'flex-end'
+        }
       }
     },
 
@@ -108,11 +110,11 @@ export const getStyles = memoizeFunction((
     timeStamp: [
       theme.fonts.tiny,
       {
-        fontWeight: '400',
+        fontWeight: 400,
         color: theme.palette.neutralSecondary
       }
     ]
   };
 
-  return mergeStyleSets(ActivityItemStyles, customStyles)!;
+  return concatStyleSets(ActivityItemStyles, customStyles);
 });

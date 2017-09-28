@@ -142,6 +142,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       inputProps,
       disabled
     } = this.props;
+
+    const currentIndex = this.suggestionStore.currentIndex;
+    const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
+    const selectedSuggestionAlert = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+
     return (
       <div
         ref={ this._resolveRef('root') }
@@ -155,6 +160,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
+          <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
@@ -173,6 +179,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 autoComplete='off'
                 role='combobox'
                 disabled={ disabled }
+                aria-controls='selected-suggestion-alert'
               />) }
             </div>
           </SelectionZone>

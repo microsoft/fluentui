@@ -2,29 +2,32 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from './index';
+import { FabricDecoratorTall } from '../utilities';
 import { Breadcrumb } from 'office-ui-fabric-react';
 
 storiesOf('Breadcrumb', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener steps={ new Screener.Steps()
-      .hover('.ms-Breadcrumb-overflowButton')
-      .snapshot('hover')
-      .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
-      .hover('.ms-Breadcrumb-overflowButton') // moving the mouse a bit to let dropdown open.
-      .snapshot('click')
-      .click('.ms-Breadcrumb-overflowButton') // closing the dropdown
-      .hover('.ms-Breadcrumb-list li:nth-child(2)')
-      .snapshot('longTitleHover')
-      .hover('.ms-Breadcrumb-list li:nth-child(3)')
-      .snapshot('shortTitleHover')
-      .end()
-    }>
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Breadcrumb-overflowButton')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
+        .hover('.ms-Breadcrumb-overflowButton') // moving the mouse a bit to let dropdown open.
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .click('.ms-Breadcrumb-overflowButton') // closing the dropdown
+        .hover('.ms-Breadcrumb-list li:nth-child(2)')
+        .snapshot('longTitleHover', { cropTo: '.testWrapper' })
+        .hover('.ms-Breadcrumb-list li:nth-child(3)')
+        .snapshot('shortTitleHover', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
       { story() }
     </Screener>
   ))
-  .add('default', () => (
+  .add('Root', () => (
     <Breadcrumb
       items={ [
         { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb' },
@@ -37,4 +40,4 @@ storiesOf('Breadcrumb', module)
       maxDisplayedItems={ 3 }
       ariaLabel={ 'Website breadcrumb' }
     />
-  ))
+  ));

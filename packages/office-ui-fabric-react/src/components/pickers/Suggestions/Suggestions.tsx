@@ -186,7 +186,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       <div
         className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
         id='suggestion-list'
-        role='menu'
+        role='list'
         aria-label={ suggestionsContainerAriaLabel }
       >
         { suggestions.map((suggestion, index) =>
@@ -195,7 +195,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
-            role='menuitem'
+            role='listitem'
+            aria-label={ suggestion.ariaLabel }
           >
             <TypedSuggestionsItem
               id={ 'sug-item' + index }

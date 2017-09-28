@@ -10,7 +10,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 
 let { expect } = chai;
 
-import { ContextualMenu } from './ContextualMenu';
+import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 import { Layer } from '../Layer/Layer';
 
@@ -402,23 +402,73 @@ describe('ContextualMenu', () => {
         key: 'TestKey2'
       },
     ];
+
+    const onMenuOpened = (): void => {
+      if (layerMounted) {
+        layerMountedFirst = true;
+      }
+      menuMounted = true;
+    };
+
     ReactTestUtils.renderIntoDocument<HTMLDivElement>(
       <div>
         <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
         <ContextualMenu
           target='#target'
           items={ items }
-          onMenuOpened={ () => {
-            if (layerMounted) {
-              layerMountedFirst = true;
-            }
-            menuMounted = true;
-          } }
+          onMenuOpened={ onMenuOpened }
         />
       </div>
     );
     expect(menuMounted).to.be.equal(true, 'Menu opened callback was not properly called');
     expect(layerMountedFirst).to.be.equal(true, 'Menu Mounted First');
     expect(menuMountedFirst).to.be.equal(false, 'Layer Mounted first');
+  });
+
+  describe('canAnyMenuItemsCheck', () => {
+    it('returns false when there are no checkable menu items', () => {
+      const items: IContextualMenuItem[] = [
+        { name: 'Item 1', key: 'Item 1' },
+        { name: 'Item 2', key: 'Item 2' },
+        { name: 'Item 3', key: 'Item 3' }
+      ];
+
+      expect(canAnyMenuItemsCheck(items)).to.equal(false);
+    });
+
+    it('returns true when there is at least one checkable menu item', () => {
+      const items: IContextualMenuItem[] = [
+        { name: 'Item 1', key: 'Item 1' },
+        { name: 'Item 2', key: 'Item 2', canCheck: true },
+        { name: 'Item 3', key: 'Item 3' }
+      ];
+
+      expect(canAnyMenuItemsCheck(items)).to.equal(true);
+    });
+
+    it('returns true when there is a menu section with an item that can check', () => {
+      const items: IContextualMenuItem[] = [
+        {
+          name: 'Item 1',
+          key: 'Item 1'
+        },
+        {
+          name: 'Item 2',
+          key: 'Item 2'
+        },
+        {
+          name: 'Item 3',
+          key: 'Item 3',
+          sectionProps: {
+            items: [
+              { name: 'Item 1', key: 'Item 1' },
+              { name: 'Item 2', key: 'Item 2', canCheck: true },
+              { name: 'Item 3', key: 'Item 3' }
+            ]
+          }
+        }];
+
+      expect(canAnyMenuItemsCheck(items)).to.equal(true);
+    });
   });
 });

@@ -9,7 +9,6 @@ import {
   IDragDropEvents,
   IDragDropContext,
 } from './../../utilities/dragdrop/index';
-import { IconName } from '../../Icon';
 import {
   IGroup,
   IGroupRenderProps
@@ -201,6 +200,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * Optional class name to add to the cell of a checkbox
+   */
+  checkboxCellClassName?: string;
 }
 
 export interface IColumn {
@@ -256,7 +260,7 @@ export interface IColumn {
   /**
    * Optional iconName to use for the column header.
    */
-  iconName?: IconName;
+  iconName?: string;
 
   /**
    * Whether or not only the icon is used in the column header.
