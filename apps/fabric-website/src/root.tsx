@@ -11,6 +11,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
 
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+initializeIcons('./dist/');
+
 let isProduction = process.argv.indexOf('--production') > -1;
 
 if (!isProduction) {
