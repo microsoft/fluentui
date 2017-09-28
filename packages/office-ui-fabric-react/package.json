@@ -15,6 +15,9 @@
     "start": "node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js"
   },
+  "disabledTasks": [
+    "karma"
+  ],
   "devDependencies": {
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.8",
