@@ -64,7 +64,7 @@ export class GetStartedPage extends React.Component<any, any> {
           </div>
           <div id='toolkit'>
             <span className={ styles.title }>Design Toolkit</span>
-            <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</span>
             <a className={ styles.getStartedLink } href='#/resources'>Learn more</a>
           </div>
         </div>
