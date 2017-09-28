@@ -73,9 +73,7 @@ function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
  * Returns true if a list of menu items can contain a checkbox
  */
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
-  for (let i = 0; i < items.length; i += 1) {
-    const item = items[i];
-
+  return items.some(item => {
     if (item.canCheck) {
       return true;
     }
@@ -84,9 +82,9 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
     if (item.sectionProps && item.sectionProps.items.some(submenuItem => submenuItem.canCheck === true)) {
       return true;
     }
-  }
 
-  return false;
+    return false;
+  });
 }
 
 @customizable('ContextualMenu', ['theme'])
