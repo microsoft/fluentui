@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "4.2.7",
+  "version": "5.0.2",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/chai": "3.4.35",
-    "@types/enzyme": "2.8.0",
+    "@types/enzyme": "2.8.8",
     "@types/es6-promise": "0.0.32",
     "@types/highlight.js": "9.1.9",
     "@types/mocha": "2.2.39",
@@ -24,18 +24,22 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
-    "enzyme": "^2.7.0",
+    "enzyme": "^2.9.1",
+    "es6-weak-map": "^2.0.2",
+    "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
-    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
-    "react": "^15.4.2",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "react": "^15.6.1",
     "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.6.1"
   },
   "peerDependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0"
   },
   "dependencies": {
+    "@uifabric/styling": ">=5.0.1 <6.0.0",
+    "@uifabric/utilities": ">=5.0.1 <6.0.0",
     "highlight.js": "^9.9.0",
     "office-ui-fabric-react": ">=4.39.0 <5.0.0",
     "tslib": "^1.7.1"

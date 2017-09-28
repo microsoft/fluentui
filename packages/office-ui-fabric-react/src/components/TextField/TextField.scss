@@ -30,7 +30,6 @@ $field-error-color: $errorTextColor;
 // the box containing the label and input field
 .root {
   @include ms-normalize;
-  margin-bottom: 8px;
   position: relative; /* Needed to position icon */
 }
 
@@ -130,20 +129,21 @@ $field-error-color: $errorTextColor;
 }
 
 //= State: A required textfield
-.root.rootIsRequired {
+.root.rootIsRequiredLabel {
   :global(.ms-Label) {
-    @include ms-Label-is-required
+    @include ms-Label-is-required;
+  }
+}
+
+.root.rootIsRequiredPlaceholderOnly {
+  :global(.ms-TextField-fieldGroup) {
+    @include ms-TextField-fieldGroup-is-required;
   }
 }
 
 //= State: An active textfield
 .root.rootIsActive {
   border-color: $field-border-focus-color;
-}
-
-.errorIcon {
-  font-size: $ms-font-size-m;
-  @include margin-right(5px);
 }
 
 .icon {
@@ -180,6 +180,12 @@ $field-error-color: $errorTextColor;
     display: flex;
     border-bottom: 1px solid $field-border-color;
     width: 100%;
+
+    &.invalid,
+    &.invalid:focus,
+    &.invalid:hover {
+      border-bottom: 1px solid $field-border-error-color;
+    }
   }
 
   :global(.ms-Label) {
@@ -207,6 +213,10 @@ $field-error-color: $errorTextColor;
     .field {
       background-color: transparent;
       color: $field-text-disabled-color;
+    }
+
+    .fieldGroup {
+      background-color: transparent;
     }
   }
 

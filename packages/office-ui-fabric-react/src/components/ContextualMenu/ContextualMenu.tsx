@@ -3,7 +3,6 @@ import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } fro
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { getClassNames } from './ContextualMenu.classNames';
-import { ThemeSettingName } from '../../Styling';
 import {
   BaseComponent,
   anchorProperties,
@@ -70,7 +69,25 @@ function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
   return null;
 }
 
-@customizable([ThemeSettingName])
+/**
+ * Returns true if a list of menu items can contain a checkbox
+ */
+export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
+  return items.some(item => {
+    if (item.canCheck) {
+      return true;
+    }
+
+    // If the item is a section, check if any of the items in the section can check.
+    if (item.sectionProps && item.sectionProps.items.some(submenuItem => submenuItem.canCheck === true)) {
+      return true;
+    }
+
+    return false;
+  });
+}
+
+@customizable('ContextualMenu', ['theme'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
@@ -192,7 +209,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return false;
     }
 
-    let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
+    let hasCheckmarks = canAnyMenuItemsCheck(items);
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
     isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
