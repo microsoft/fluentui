@@ -1,7 +1,7 @@
 import {
   IColor,
   getColorFromString
-} from '../../utilities/color/colors';
+} from '@uifabric/utilities/lib/Colors';
 import {
   isValidShade,
   getShade,

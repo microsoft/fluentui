@@ -13,6 +13,8 @@ import {
 } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
+import { getColorFromString, updateA, IColor } from '@uifabric/utilities/lib/Colors';
+
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false),
@@ -60,11 +62,12 @@ export function loadTheme(theme: IPartialTheme): ITheme {
  * Creates a custom theme definition which can be used with the Customizer.
  */
 export function createTheme(theme: IPartialTheme): ITheme {
-  let newPalette = { ...DefaultPalette, ...theme.palette };
 
-  if (!theme.palette || !theme.palette.accent) {
-    newPalette.accent = newPalette.themePrimary;
-  }
+  let newPalette = { ...DefaultPalette };
+  newPalette.accent = newPalette.themePrimary;
+  newPalette.themePrimaryTransparent = _makeTransparentColor(newPalette.themePrimary, 0.1);
+
+  newPalette = { ...newPalette, ...theme.palette };
 
   return {
     palette: newPalette,
@@ -97,6 +100,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
     warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
+    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralPrimary,
@@ -116,4 +120,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
+}
+
+function _makeTransparentColor(colorString: string, transparency: number): string {
+  let color: IColor = getColorFromString(colorString);
+  return updateA(color, transparency).str;
 }

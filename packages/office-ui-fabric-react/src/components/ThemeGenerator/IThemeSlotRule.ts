@@ -1,4 +1,4 @@
-import { IColor } from '../../utilities/color/colors';
+import { IColor } from '@uifabric/utilities/lib/Colors';
 import { Shade } from '../../utilities/color/shades';
 
 export interface IThemeSlotRule {
