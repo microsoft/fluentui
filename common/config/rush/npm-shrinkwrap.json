@@ -1257,6 +1257,10 @@
     "@rush-temp/office-ui-fabric-react": {
       "version": "file:projects\\office-ui-fabric-react",
       "dependencies": {
+        "@types/jest": {
+          "version": "21.1.0",
+          "bundled": true
+        },
         "acorn": {
           "version": "5.1.1",
           "bundled": true
