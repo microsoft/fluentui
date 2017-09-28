@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Now publishing es6 modules under lib-es6. Adding appropriate `module` and `side-effects` props into package.json for webpack 4 to use for tree shaking support. Changing import statements that pull in other libraries to be package based rather than path based. This gives the webpack module resolution the ability to use the es6 modules (in lib-es6) rather than the commonjs modules (in lib) resulting in improved tree-shaking savings.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com"
+}
