@@ -2,6 +2,12 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.0.2",
+      "tag": "@uifabric/example-app-base_v5.0.2",
+      "date": "Thu, 28 Sep 2017 10:19:12 GMT",
+      "comments": {}
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/example-app-base_v5.0.1",
       "date": "Wed, 27 Sep 2017 00:20:58 GMT",
