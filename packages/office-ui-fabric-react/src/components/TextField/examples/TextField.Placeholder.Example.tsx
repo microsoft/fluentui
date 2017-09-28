@@ -1,24 +1,25 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
-export class TextFieldBasicExample extends React.Component<any, any> {
+export class TextFieldPlaceholderExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
         <TextField
-          label='Standard'
+          placeholder='I am a placeholder.'
+          ariaLabel='Please enter text here'
         />
         <TextField
-          label='Disabled'
           disabled={ true }
+          placeholder='I am disabled. '
         />
         <TextField
-          label='Required '
           required={ true }
+          placeholder='I am required.'
         />
         <TextField
-          label='With error message'
           errorMessage='Error message'
+          placeholder='I have an error message.'
         />
       </div>
     );
