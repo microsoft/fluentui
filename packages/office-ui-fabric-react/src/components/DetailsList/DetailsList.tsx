@@ -617,10 +617,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         },
         this._columnOverrides[column.key]);
 
-      if (newColumn.maxWidth && newColumn.calculatedWidth > newColumn.maxWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth;
-      }
-
       totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
 
       return newColumn;
