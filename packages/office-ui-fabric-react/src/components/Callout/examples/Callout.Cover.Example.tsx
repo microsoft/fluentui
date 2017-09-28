@@ -65,7 +65,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
           <Callout
             className='ms-CalloutExample-callout'
             onDismiss={ this._onDismiss }
-            targetElement={ this._menuButtonElement }
+            target={ this._menuButtonElement }
             directionalHint={ directionalHint }
             coverTarget={ true }
             isBeakVisible={ false }

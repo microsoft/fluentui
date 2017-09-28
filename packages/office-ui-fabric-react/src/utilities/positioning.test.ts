@@ -1,5 +1,5 @@
 import { Rectangle } from '../Utilities';
-import { positioningFunctions, RectangleEdge } from './positioning';
+import { positioningFunctions } from './positioning';
 import { DirectionalHint } from '../common/DirectionalHint';
 interface ITestValidation {
   callout: Rectangle;
@@ -22,69 +22,30 @@ function stringifyResults(expected: any, actual: any) {
 function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let { callout, target, bounds, beakWidth } = testValues;
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;
-  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment, target, bounds), gap);
+  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), gap);
 
-  let beak: Rectangle = positioningFunctions._positionBeak(beakWidth, result, target, 0);
+  let beak = positioningFunctions._positionBeak(beakWidth, result, target, 0);
 
   assert(result.calloutRectangle.equals(validate.callout), 'Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
 
-  assert(beak.equals(validate.beak as Rectangle), 'Beak is improperly positioned. ' + stringifyResults(validate.beak, beak));
+  for (const key in beak) {
+    if (beak[key]) {
+      const beakValue = beak[key];
+      const validateBeakValue = (validate.beak as any)[key];
+      const beakGood = beakValue && validateBeakValue && beak[key] === beakValue;
+      assert(beakGood, 'Beak is improperly Positioned ' + stringifyResults(validate.beak, beak));
+    }
+  }
 }
 
 function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let { callout, target, bounds, beakWidth } = testValues;
-  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment, target, bounds), beakWidth);
+  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), beakWidth);
 
   assert(result.calloutRectangle.equals(validate.callout), 'No Beak: Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
 }
 
 describe('Callout Positioning', () => {
-
-  it('Gets correct percent along line', () => {
-
-    let result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 100, y: 0 }, 50);
-    assert(result.x === 50 && result.y === 0, 'point is not 50% from edge ' + stringifyResults(50, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 100, y: 0 }, 75);
-    assert(result.x === 75 && result.y === 0, 'point is not 75% from edge ' + stringifyResults(75, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 0, y: 100 }, 99);
-    assert(result.x === 0 && result.y === 99, 'point is not 99% from edge ' + stringifyResults(99, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 3, y: 0 }, 50);
-    assert(result.x === 1.5 && result.y === 0, 'point is not 50% from edge ' + stringifyResults(1.5, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 3, y: 0 }, 75);
-    assert(result.x === 2.25 && result.y === 0, 'point is not 75% from edge ' + stringifyResults(2.25, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 4, y: 0 }, 50);
-    assert(result.x === 2 && result.y === 0, 'point is not 50% from edge ' + stringifyResults(2, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 4, y: 0 }, 75);
-    assert(result.x === 3 && result.y === 0, 'point is not 75% from edge ' + stringifyResults(3, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 4, y: 0 }, 60);
-    assert(result.x === 2.4 && result.y === 0, 'point is not 60% from edge ' + stringifyResults(2.4, result.x));
-
-    result = positioningFunctions._calculatePointPercentAlongLine({ x: 0, y: 0 }, { x: 5, y: 0 }, 99);
-    assert(result.x === 4.95 && result.y === 0, 'point is not 99% from edge ' + stringifyResults(4.95, result.x));
-  });
-
-  it('Correctly recalculates percents', () => {
-    let targetRectangle = new Rectangle(200, 300, 200, 300);
-
-    let result = positioningFunctions._recalculateMatchingPercents(new Rectangle(0, 100, 300, 400), RectangleEdge.top, targetRectangle, RectangleEdge.bottom, 50);
-    assert(result === 100, stringifyResults(100, result));
-
-    result = positioningFunctions._recalculateMatchingPercents(new Rectangle(200, 300, 300, 400), RectangleEdge.top, targetRectangle, RectangleEdge.bottom, 50);
-    assert(result === 50, stringifyResults(50, result));
-
-    result = positioningFunctions._recalculateMatchingPercents(new Rectangle(200, 250, 300, 400), RectangleEdge.top, targetRectangle, RectangleEdge.bottom, 25);
-    assert(result === 50, stringifyResults(50, result));
-
-    result = positioningFunctions._recalculateMatchingPercents(new Rectangle(600, 900, 300, 400), RectangleEdge.top, targetRectangle, RectangleEdge.bottom, 50);
-    assert(result === 0, stringifyResults(0, result));
-  });
 
   it('Correctly positions the callout without beak', () => {
 

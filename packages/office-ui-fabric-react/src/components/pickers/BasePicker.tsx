@@ -194,7 +194,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       <Callout
         isBeakVisible={ false }
         gapSpace={ 5 }
-        targetElement={ this.input.inputElement }
+        target={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
       >
@@ -421,22 +421,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.backspace:
         if (!this.props.disabled) {
-            this.onBackspace(ev);
+          this.onBackspace(ev);
         }
         ev.stopPropagation();
         break;
 
       case KeyCodes.del:
         if (!this.props.disabled) {
-            if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
-                if (this.props.onRemoveSuggestion) {
-                    (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
-                }
-                this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
-                this.forceUpdate();
-            } else {
-                this.onBackspace(ev);
+          if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+            if (this.props.onRemoveSuggestion) {
+              (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
             }
+            this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
+            this.forceUpdate();
+          } else {
+            this.onBackspace(ev);
+          }
         }
         ev.stopPropagation();
         break;

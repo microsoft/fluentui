@@ -14,7 +14,7 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
@@ -74,14 +74,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   public componentWillMount() {
-    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    let target = this.props.target;
     this._setTargetWindowAndElement(target!);
   }
 
   public componentWillUpdate(newProps: ICalloutProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
-    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target || typeof (newProps.target) === 'string' || newProps.target instanceof String) {
-      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+    if (newProps.target !== this.props.target || typeof (newProps.target) === 'string' || newProps.target instanceof String) {
+      let newTarget = newProps.target;
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -110,7 +110,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ariaLabelledBy,
       className,
       target,
-      targetElement,
       isBeakVisible,
       beakStyle,
       children,
@@ -128,19 +127,21 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     let beakReactStyle: React.CSSProperties = {
-      top: positions && positions.beakPosition ? positions.beakPosition.top : BEAK_ORIGIN_POSITION.top,
-      left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
-      height: beakStyleWidth,
-      width: beakStyleWidth,
-      backgroundColor: backgroundColor,
+      ...(positions && positions.beakPosition ? positions.beakPosition.position : null),
     };
-
+    beakReactStyle.height = beakStyleWidth;
+    beakReactStyle.width = beakStyleWidth;
+    beakReactStyle.backgroundColor = backgroundColor;
+    if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
+      beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
+      beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
+    }
     let directionalClassName = (positions && positions.directionalClassName)
       ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
 
     let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let beakVisible = isBeakVisible && (!!targetElement || !!target);
+    let beakVisible = isBeakVisible && (!!target);
 
     let content = (
       <div
@@ -261,12 +262,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
-      // Temporary to be removed when targetElement is removed. Currently deprecated.
-      if (this.props.targetElement) {
-        currentProps!.targetElement = this._target as HTMLElement;
-      } else {
-        currentProps!.target = this._target!;
-      }
+      currentProps!.target = this._target!;
       let newPositions: IPositionInfo = getRelativePositions(currentProps!, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
@@ -315,28 +311,30 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
         this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, beakWidth! + gapSpace, this._getBounds());
       } else {
-        this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
+        this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }
     }
-    return this._maxHeight;
+    return this._maxHeight!;
   }
 
   private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo) {
-    if (positions.calloutPosition.top.toFixed(2) !== newPosition.calloutPosition.top.toFixed(2)) {
-      return false;
-    }
-    if (positions.calloutPosition.left.toFixed(2) !== newPosition.calloutPosition.left.toFixed(2)) {
-      return false;
-    }
-    if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
-      return false;
-    }
-    if (positions.beakPosition.left.toFixed(2) !== newPosition.beakPosition.left.toFixed(2)) {
-      return false;
-    }
+    return this._comparePositions(positions.calloutPosition, newPosition.calloutPosition) &&
+      this._comparePositions(positions.beakPosition.position, newPosition.beakPosition.position);
+  }
 
+  private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon) {
+    for (const key in newPositions) {
+      if (key && newPositions[key]) {
+        const oldPositionEdge = oldPositions[key];
+        const newPositionEdge = newPositions[key];
+        if (oldPositionEdge && newPositionEdge) {
+          if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
+            return false;
+          }
+        }
+      }
+    }
     return true;
-
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {

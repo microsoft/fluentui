@@ -370,7 +370,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-            targetElement={ this._dropDown }
+            target={ this._dropDown }
             onDismiss={ this._onDismiss }
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
