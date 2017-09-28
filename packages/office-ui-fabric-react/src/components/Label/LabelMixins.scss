@@ -8,3 +8,11 @@
     color: $ms-color-error;
   }
 }
+
+@mixin ms-TextField-fieldGroup-is-required {
+  &::after {
+    content: ' *';
+    color: $ms-color-error;
+    @include ms-padding-right(12px);
+  }
+}
