@@ -48,6 +48,11 @@ export interface IPalette {
   themeLighterAlt: string;
 
   /**
+   * Color code for themePrimaryTransparent
+   */
+  themePrimaryTransparent: string;
+
+  /**
    * Color code for the strongest color, which is black in the default theme. This is a very light color in inverted themes.
    */
   black: string;

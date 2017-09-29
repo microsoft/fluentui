@@ -10,6 +10,7 @@ export const DefaultPalette: IPalette = {
   themeLight: '#c7e0f4',
   themeLighter: '#deecf9',
   themeLighterAlt: '#eff6fc',
+  themePrimaryTransparent: 'rgba(0, 120, 215, 0.1)',
   black: '#000000',
   blackTranslucent40: 'rgba(0,0,0,.4)',
   neutralDark: '#212121',

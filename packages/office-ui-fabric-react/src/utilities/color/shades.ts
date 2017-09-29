@@ -5,8 +5,8 @@
 import {
   IColor,
   MAX_COLOR_RGBA
-} from './colors';
-import * as Colors from './colors';
+} from '@uifabric/utilities/lib/Colors';
+import * as Colors from '@uifabric/utilities/lib/Colors';
 import { assign } from '../../Utilities';
 
 // Soften: to get closer to the background color's luminance (softening with a white background would be lightening, with black it'd be darkening)

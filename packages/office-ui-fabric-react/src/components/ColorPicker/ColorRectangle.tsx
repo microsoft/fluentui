@@ -11,7 +11,7 @@ import {
   MAX_COLOR_VALUE,
   getFullColorString,
   hsv2hex
-} from '../../utilities/color/colors';
+} from '@uifabric/utilities/lib/Colors';
 import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 

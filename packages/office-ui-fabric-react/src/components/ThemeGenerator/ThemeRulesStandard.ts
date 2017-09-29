@@ -1,5 +1,5 @@
 import { Shade } from '../../utilities/color/shades';
-import { getColorFromString } from '../../utilities/color/colors';
+import { getColorFromString } from '@uifabric/utilities/lib/Colors';
 import { mapEnumByName } from '../../Utilities';
 
 import { IThemeRules } from './IThemeRules';

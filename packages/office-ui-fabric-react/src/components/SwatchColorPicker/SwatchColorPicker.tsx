@@ -11,7 +11,7 @@ import {
   ISwatchColorPickerProps,
   IColorCellProps
 } from './SwatchColorPicker.Props';
-import { getColorFromString } from '../../utilities/color/colors';
+import { getColorFromString } from '@uifabric/utilities/lib/Colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
