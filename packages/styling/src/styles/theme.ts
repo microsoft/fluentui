@@ -97,6 +97,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
     warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
+    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralPrimary,
