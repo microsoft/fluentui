@@ -85,7 +85,7 @@ export class PanelSmallRightExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onShowPanel = () => {
+  private _onShowPanel(): void {
     this.setState({ showPanel: true });
   }
 }
