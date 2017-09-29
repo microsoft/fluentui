@@ -49,13 +49,19 @@ export type TypedBasePicker = BasePicker<ISimple, IBasePickerProps<ISimple>>;
 describe('Pickers', () => {
   describe('BasePicker', () => {
     const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
+    const onRenderItem = (props: IPickerItemProps<{ key: string, name: string }>): JSX.Element =>
+      (
+        <div key={ props.item.name }>
+          { basicRenderer(props) }
+        </div>
+      );
     it('can provide custom renderers', () => {
       let root = document.createElement('div');
       document.body.appendChild(root);
       let picker: TypedBasePicker = ReactDOM.render(
         <BasePickerWithType
           onResolveSuggestions={ onResolveSuggestions }
-          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
+          onRenderItem={ onRenderItem }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
         />,
         root
@@ -87,7 +93,7 @@ describe('Pickers', () => {
       let picker: TypedBasePicker = ReactDOM.render(
         <BasePickerWithType
           onResolveSuggestions={ onResolveSuggestions }
-          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
+          onRenderItem={ onRenderItem }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
           itemLimit={ 1 }
         />,
@@ -113,7 +119,7 @@ describe('Pickers', () => {
       ReactDOM.render(
         <BasePickerWithType
           onResolveSuggestions={ onResolveSuggestions }
-          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
+          onRenderItem={ onRenderItem }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
           itemLimit={ 0 }
         />,
@@ -133,7 +139,7 @@ describe('Pickers', () => {
         <BasePickerWithType
           selectedItems={ [{ key: '1', name: 'blue' }, { key: '2', name: 'black' }] }
           onResolveSuggestions={ onResolveSuggestions }
-          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
+          onRenderItem={ onRenderItem }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
           itemLimit={ 0 }
         />,
@@ -217,15 +223,17 @@ describe('Pickers', () => {
     it('fires change events correctly for controlled components', (done) => {
       let root = document.createElement('div');
       document.body.appendChild(root);
+      const onChange = (items: ITag[] | undefined): void => {
+        expect(items!.length).to.be.equal(1, 'The picker incorrectly added an item');
+        expect(items![0].name).to.be.equal('black', 'The picker incorrectly added an item');
+        done();
+      };
+
       ReactDOM.render(
         <TagPicker
           onResolveSuggestions={ onResolveSuggestions }
           selectedItems={ [] }
-          onChange={ (items) => {
-            expect(items!.length).to.be.equal(1, 'The picker incorrectly added an item');
-            expect(items![0].name).to.be.equal('black', 'The picker incorrectly added an item');
-            done();
-          } }
+          onChange={ onChange }
         />,
         root
       ) as TagPicker;

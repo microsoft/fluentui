@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   Persona,
   PersonaSize,
@@ -37,7 +38,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           <Checkbox
             label='Include persona details'
             checked={ renderPersonaDetails }
-            onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); } }
+            onChange={ this._onChange }
           />
         </div>
 
@@ -100,5 +101,10 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
         />
       </div >
     );
+  }
+
+  @autobind
+  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked: boolean | undefined): void {
+    this.setState({ renderPersonaDetails: checked });
   }
 }

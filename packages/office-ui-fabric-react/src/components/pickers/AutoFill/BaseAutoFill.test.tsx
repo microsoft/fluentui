@@ -26,16 +26,16 @@ describe('BaseAutoFill', () => {
   });
 
   it('correctly autofills', (done) => {
+    const onInputValueChange = (text: string | undefined): void => {
+      assert(text === 'hel', 'text was ' + text);
+      assert(autoFill.value === 'hel', 'autoFill value was ' + autoFill.value);
+      done();
+    };
+
     ReactDOM.render(
       <BaseAutoFill
         ref={ (c) => autoFill = c! }
-        onInputValueChange={
-          (text) => {
-            assert(text === 'hel', 'text was ' + text);
-            assert(autoFill.value === 'hel', 'autoFill value was ' + autoFill.value);
-            done();
-          }
-        }
+        onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
       />,
       baseNode
@@ -45,13 +45,7 @@ describe('BaseAutoFill', () => {
     ReactDOM.render(
       <BaseAutoFill
         ref={ (c) => autoFill = c! }
-        onInputValueChange={
-          (text) => {
-            assert(text === 'hel', 'text was ' + text);
-            assert(autoFill.value === 'hel', 'autoFill value was ' + autoFill.value);
-            done();
-          }
-        }
+        onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
       />, baseNode);
     assert(autoFill.inputElement.value === 'hello');
@@ -59,19 +53,19 @@ describe('BaseAutoFill', () => {
   });
 
   it('does not autofill if suggestedDisplayValue does not match input', (done) => {
+    const onInputValueChange = (text: string | undefined): void => {
+      assert(autoFill.value === 'hep', 'text was ' + autoFill.value);
+      assert(text === 'hep', 'text was ' + text);
+      assert(autoFill.inputElement.value === 'hep');
+      done();
+    };
+
     autoFillInput.value = 'hep';
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
       <BaseAutoFill
         ref={ (c) => autoFill = c! }
-        onInputValueChange={
-          (text) => {
-            assert(autoFill.value === 'hep', 'text was ' + autoFill.value);
-            assert(text === 'hep', 'text was ' + text);
-            assert(autoFill.inputElement.value === 'hep');
-            done();
-          }
-        }
+        onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
       />,
       baseNode
