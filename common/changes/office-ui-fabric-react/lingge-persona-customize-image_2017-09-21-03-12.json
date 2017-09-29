@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "try to custom PersonaCoin and expose it.",
+      "comment": "PersonaCoin: now has a `coinSize` to allow for customized sizes.",
       "type": "minor"
     }
   ],
