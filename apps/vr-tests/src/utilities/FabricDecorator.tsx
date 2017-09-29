@@ -7,7 +7,7 @@ import { Fabric } from 'office-ui-fabric-react';
 // tslint:disable:jsx-ban-props
 export const FabricDecorator = (story) => (
   <Fabric style={ { display: 'flex' } }>
-    <div className='testWrapper' style={ { padding: '10px' } }>
+    <div className='testWrapper' style={ { padding: '10px', overflow: 'hidden' } }>
       { story() }
     </div>
   </Fabric>
