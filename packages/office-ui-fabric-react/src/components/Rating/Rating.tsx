@@ -97,7 +97,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     return (
       <div
         className={ css('ms-Rating-star') }
-        aria-label={ this.props.disabled ? '' : this._getRatingComponentAriaLabel() }
+        aria-labelledby={ this.props.ariaLabelId ? this.props.ariaLabelId : '' }
       >
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
@@ -154,14 +154,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     return Math.min(Math.max(rating, this.props.min as number), this.props.max as number);
   }
 
-  private _getRatingComponentAriaLabel() {
-    let rating: number = this.state.rating ? this.state.rating : 0;
-
-    return 'Rating value is ' + rating + ' of ' + this.props.max;
-
-  }
-
-  private _getFillingPercentage(starPosition: number) {
+  private _getFillingPercentage(starPosition: number): number {
     let ceilValue = Math.ceil((this.state.rating as number));
     let fillPercentage = 100;
 
