@@ -61,4 +61,10 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * @defaultvalue labelText
    */
   ariaLabel?: string;
+
+  /**
+   * Whether or not the SearchBox is inline.
+   * @default false
+   */
+  inline?: boolean;
 }

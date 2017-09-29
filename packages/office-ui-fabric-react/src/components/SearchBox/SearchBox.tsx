@@ -47,7 +47,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className, disabled } = this.props;
+    let { labelText, className, disabled, inline } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
@@ -56,6 +56,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           ['is-active ' + styles.rootIsActive]: hasFocus,
           ['is-disabled ' + styles.rootIsDisabled]: disabled,
           ['can-clear ' + styles.rootCanClear]: value!.length > 0,
+          ['is-inline ' + styles.rootIsInline]: inline,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
