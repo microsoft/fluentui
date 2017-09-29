@@ -3,9 +3,9 @@
   "version": "5.0.1",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "module": "lib-es6/index.js",
   "side-effects": false,
-  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
