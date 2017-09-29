@@ -594,9 +594,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       } else {
         adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
 
-        // Last column is not resizable as there's no column behind.
-        // But if it's dropped, new last column is resizable so we can bring back the dropped columns.
-        if (adjustedColumns.length) {
+        // Last column is not resizable if there's no column behind.
+        // Otherwise, it can be resized to bring back any dropped column.
+        if (adjustedColumns.length && adjustedColumns.length === newColumns.length) {
           adjustedColumns[adjustedColumns.length - 1].isResizable = false;
         }
       }
