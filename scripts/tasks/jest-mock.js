@@ -1,4 +1,4 @@
-module.exports.KeyCodes = {
+const KeyCodes = {
   a: 65,
   backspace: 8,
   comma: 188,
@@ -16,4 +16,8 @@ module.exports.KeyCodes = {
   space: 32,
   tab: 9,
   up: 38,
+};
+
+module.exports = {
+  KeyCodes
 };
