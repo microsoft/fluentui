@@ -21,7 +21,7 @@ export interface IComboBoxOptionClassNames {
 }
 
 export const getClassNames = memoizeFunction((
-  styles: IComboBoxStyles,
+  styles: Partial<IComboBoxStyles>,
   className: string,
   isOpen: boolean,
   disabled: boolean,
