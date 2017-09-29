@@ -13,7 +13,7 @@ const styleMockPath =
         moduleNameMapper: {
           'ts-jest': path.resolve(__dirname, '../node_modules/ts-jest'),
           '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
-          'KeyCodes': path.resolve(__dirname, 'jest-keycodes-mock.js')
+          'KeyCodes': path.resolve(__dirname, 'jest-mock.js')
         },
 
         'transform': {
