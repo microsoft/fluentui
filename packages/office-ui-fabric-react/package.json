@@ -43,6 +43,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.6.1",
     "react-highlight": "0.9.0",
+    "react-test-renderer": "^15.6.1",
     "resemblejs": "~2.2.3",
     "sinon": "^2.3.2"
   },
