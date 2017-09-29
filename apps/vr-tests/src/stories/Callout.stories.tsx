@@ -28,6 +28,7 @@ storiesOf('Callout', module)
   .add('Root', () => (
     <Callout
       gapSpace={ 10 }
+      doNotLayer
       targetElement={ targetElement }
     >
       <p className='ms-CalloutExample-subText' id={ 'callout-description-1' }>
