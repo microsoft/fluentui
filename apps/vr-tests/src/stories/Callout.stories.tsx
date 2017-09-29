@@ -5,8 +5,6 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Callout, Link, DirectionalHint } from 'office-ui-fabric-react';
 
-let targetElement = document.getElementById('button') as HTMLElement;
-
 storiesOf('Callout', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
@@ -29,7 +27,7 @@ storiesOf('Callout', module)
   .add('Root', () => (
     <Callout
       gapSpace={ 20 }
-      targetElement={ targetElement }
+      target='#button'
     >
       <p className='ms-CalloutExample-subText' id={ 'callout-description-1' }>
         Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
