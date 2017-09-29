@@ -1,7 +1,7 @@
 import { IExpandingCardStyles } from './ExpandingCard.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
-  mergeStyleSets,
+  concatStyleSets,
   ITheme
 } from '../../Styling';
 
@@ -59,5 +59,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(styles, customStyles)!;
+  return concatStyleSets(styles, customStyles)!;
 });

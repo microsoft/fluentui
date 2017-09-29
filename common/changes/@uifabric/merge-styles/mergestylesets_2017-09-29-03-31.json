@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com"
+}

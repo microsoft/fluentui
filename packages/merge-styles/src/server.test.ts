@@ -7,7 +7,7 @@ describe('staticRender', () => {
   it('can render content', () => {
 
     const { html, css } = renderStatic(() => {
-      const classNames = mergeStyleSets({
+      const classNames: { root: string } = mergeStyleSets({
         root: {
           background: 'red'
         }
