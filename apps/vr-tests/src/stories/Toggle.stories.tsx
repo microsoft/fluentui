@@ -17,6 +17,7 @@ storiesOf('Toggle', module)
     <Screener
       steps={ new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
       }
     >
       { story() }

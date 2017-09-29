@@ -11,6 +11,7 @@ storiesOf('Label', module)
     <Screener
       steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
       }
     >
       { story() }

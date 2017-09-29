@@ -20,6 +20,7 @@ storiesOf('Callout', module)
     <Screener
       steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
+        .end()
       }
     >
       { story() }
