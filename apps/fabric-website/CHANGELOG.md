@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 28 Sep 2017 10:19:12 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+
+## 5.0.6
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Added initializeIcons() call to make all icons in examples on the website available.
+- Added SharePoint Toolkit link and text to ResourcesPage.
 
 ## 5.0.5
 Thu, 28 Sep 2017 10:19:12 GMT

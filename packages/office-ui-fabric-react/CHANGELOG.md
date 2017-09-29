@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Sep 2017 10:19:12 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+
+## 5.2.0
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Minor changes
+
+- Adding custom render to TextField label
+
+### Patches
+
+- Simplified checkbox examples and fixed spacing issue.
+- DetailsList: Allow resizing columns wider than maxWidth in justified layout
+- ContextualMenu: Make sure to check items within a menu section for the 'canCheck' property
+- Updating mergeStyleSets usage in various components to adhere to correct typing.
+- Split out and cleaned up TextField examples to better reflect the toolkit. 
+- DatePicker: call correct callback when previous year button is clicked
 
 ## 5.1.0
 Thu, 28 Sep 2017 10:19:12 GMT

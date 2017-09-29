@@ -1,0 +1,19 @@
+{
+  "name": "@uifabric/merge-styles",
+  "entries": [
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/merge-styles_v5.1.0",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "88b06cfda2262661375f90f3bde2d6a16af749a9",
+            "comment": "The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety."
+          }
+        ]
+      }
+    }
+  ]
+}

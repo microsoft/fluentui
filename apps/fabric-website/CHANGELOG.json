@@ -2,6 +2,30 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.6",
+      "tag": "@uifabric/fabric-website_v5.0.6",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "47af278daa76bc638871139ce6b0294edb8c9edb",
+            "comment": "Added initializeIcons() call to make all icons in examples on the website available."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "af886149a115cc6ac2dc697caa3b2f535c8d6147",
+            "comment": "Added SharePoint Toolkit link and text to ResourcesPage."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.5",
       "tag": "@uifabric/fabric-website_v5.0.5",
       "date": "Thu, 28 Sep 2017 10:19:12 GMT",
