@@ -14,18 +14,17 @@ export interface IIconClassNames {
 export const getClassNames = memoizeFunction((
   customStyles?: IIconStyles
 ): IIconClassNames => {
-  let iconStyles: IIconStyles = {
-    root: {
-      display: 'inline-block'
-    },
-
-    imageContainer: {
-      overflow: 'hidden'
-    }
-  };
 
   return mergeStyleSets(
-    iconStyles,
+    {
+      root: {
+        display: 'inline-block'
+      },
+
+      imageContainer: {
+        overflow: 'hidden'
+      }
+    },
     customStyles
   );
 });

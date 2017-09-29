@@ -5,7 +5,7 @@ import {
 import {
   ITheme,
   IRawStyle,
-  mergeStyleSets,
+  concatStyleSets,
   FontSizes,
   FontWeights,
   getFocusStyle
@@ -135,7 +135,7 @@ export const getOptionStyles = memoizeFunction((
     },
   };
 
-  return mergeStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption) as IComboBoxOptionStyles;
+  return concatStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption) as IComboBoxOptionStyles;
 });
 
 export const getCaretDownButtonStyles = memoizeFunction((
@@ -173,7 +173,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
     },
     rootDisabled: getDisabledStyles(theme),
   };
-  return mergeStyleSets(styles, customStyles) as IButtonStyles;
+  return concatStyleSets(styles, customStyles) as IButtonStyles;
 });
 
 export const getStyles = memoizeFunction((
@@ -312,5 +312,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(styles, customStyles) as IComboBoxStyles;
+  return concatStyleSets(styles, customStyles) as IComboBoxStyles;
 });
