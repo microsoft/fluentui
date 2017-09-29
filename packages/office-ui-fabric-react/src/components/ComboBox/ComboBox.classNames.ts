@@ -92,6 +92,6 @@ export const getComboBoxOptionClassNames = memoizeFunction((
     optionText: mergeStyles(
       'ms-ComboBox-optionText',
       styles.optionText
-    ) as string,
+    ),
   };
 });
