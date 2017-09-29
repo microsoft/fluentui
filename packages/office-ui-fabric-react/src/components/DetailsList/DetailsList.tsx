@@ -651,17 +651,17 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     let lastIndex = adjustedColumns.length - 1;
 
-    // Remove collapsable columns.
+    // Shrink or remove collapsable columns.
     while (lastIndex > -1 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      if (column.calculatedWidth! - minWidth > overflowWidth) {
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
         column.calculatedWidth = column.calculatedWidth! - overflowWidth;
         totalWidth = availableWidth;
-      } else if (column.isCollapsable) {
+      } else {
         totalWidth -= getPaddedWidth(column, false);
         adjustedColumns.splice(lastIndex, 1);
       }
