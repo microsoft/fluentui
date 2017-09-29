@@ -35,10 +35,10 @@ export const getClassNames = memoizeFunction((
       'ms-ComboBox-container',
       className,
       styles.container,
-    ) as string,
+    ),
     label: mergeStyles(
       styles.label
-    ) as string,
+    ),
     root: mergeStyles(
       'ms-ComboBox',
       isOpen && 'is-open',
@@ -55,31 +55,31 @@ export const getClassNames = memoizeFunction((
       disabled && [
         'is-disabled', styles.rootDisabled
       ],
-    ) as string,
+    ),
     input: mergeStyles(
       'ms-ComboBox-Input',
       styles.input,
       disabled && styles.inputDisabled
-    ) as string,
+    ),
     errorMessage: mergeStyles(
       styles.errorMessage
-    ) as string,
+    ),
     callout: mergeStyles(
       'ms-ComboBox-callout',
       styles.callout
-    ) as string,
+    ),
     optionsContainer: mergeStyles(
       'ms-ComboBox-optionsContainer',
       styles.optionsContainer
-    ) as string,
+    ),
     header: mergeStyles(
       'ms-ComboBox-header',
       styles.header
-    ) as string,
+    ),
     divider: mergeStyles(
       'ms-ComboBox-divider',
       styles.divider
-    ) as string,
+    ),
   };
 });
 
