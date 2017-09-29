@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 import { shallow, mount } from 'enzyme';
 
 import { Image } from './Image';
-import { ImageFit, ImageLoadState, ImageCoverStyle } from './Image.Props';
+import { ImageFit, ImageLoadState } from './Image.Props';
 
 /* tslint:disable:no-unused-variable */
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -31,7 +31,7 @@ describe('Image', () => {
 
   });
 
-  it.only('can cover a portrait (tall) frame with a square image', (done) => {
+  it('can cover a portrait (tall) frame with a square image', (done) => {
     // let root = document.createElement('div');
     // let onLoadingStateChange = (loadState: ImageLoadState) => {
     //   if (loadState === ImageLoadState.loaded) {
@@ -63,14 +63,13 @@ describe('Image', () => {
           imageFit={ ImageFit.cover }
           className='is-portraitFrame'
           onLoadingStateChange={ () => {
-            // console.log('ONLOADCHANGE', component.find('img').getNode());
+            console.log('*\n*\n*\n*\n*\n*\n*\n');
             expect(component.find('.ms-Image-image--landscape')).toHaveLength(1);
             done();
           } }
         />
       </div>
     );
-   // console.log('AFTER MOUNT', component.find('img').getNode());
 
     component.find('img').simulate('load');
   });
