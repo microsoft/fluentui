@@ -15,12 +15,14 @@ export class PanelLargeExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           description='Opens the Sample Panel'
-          onClick={ this._setShowPanel(true) }
+          // tslint:disable-next-line:jsx-no-lambda
+          onClick={ () => this.setState({ showPanel: true }) }
           text='Open Panel'
         />
         <Panel
           isOpen={ this.state.showPanel }
-          onDismiss={ this._setShowPanel(false) }
+          // tslint:disable-next-line:jsx-no-lambda
+          onDismiss={ () => this.setState({ showPanel: false })  }
           type={ PanelType.large }
           headerText='Large Panel'
         >
@@ -28,12 +30,5 @@ export class PanelLargeExample extends React.Component<any, any> {
         </Panel>
       </div>
     );
-  }
-
-  @autobind
-  private _setShowPanel(showPanel: boolean): () => void {
-    return (): void => {
-      this.setState({ showPanel });
-    };
   }
 }
