@@ -87,12 +87,10 @@ $ms-Persona-presenceSizeXl: 28px;
 
 .imageArea {
   position: relative;
-  overflow: hidden;
   text-align: center;
-  flex: 0 0 $ms-Persona-sizeMd;
+  flex: 0 0 auto;
   height: $ms-Persona-sizeMd;
   width: $ms-Persona-sizeMd;
-  border-radius: 50%;
 
   @include high-contrast {
     border: 1px solid WindowText;
@@ -117,6 +115,7 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .initials {
+  border-radius: 50%;
   color: $ms-color-white;
   font-size: $ms-font-size-l;
   font-weight: $ms-font-weight-regular;
@@ -192,7 +191,7 @@ $ms-Persona-presenceSizeXl: 28px;
   width: $ms-Persona-presenceSizeMd;
   border-radius: 50%;
   top: auto;
-  @include ms-left(34px);
+  @include ms-right(0px);
   bottom: -1px;
   border: 2px solid $ms-color-white;
   text-align: center;
@@ -328,7 +327,6 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-size16;
     height: $ms-Persona-size16;
     width: $ms-Persona-size16;
   }
@@ -348,7 +346,6 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(20px);
   }
 
   .presenceIcon {
@@ -376,7 +373,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .rootIsExtraExtraSmall {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeXxs;
     height: $ms-Persona-sizeXxs;
     width: $ms-Persona-sizeXxs;
   }
@@ -396,7 +392,6 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(14px);
     top: 18px;
 
     &:after {
@@ -445,7 +440,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .rootIs28 {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-size28;
     height: $ms-Persona-size28;
     width: $ms-Persona-size28;
   }
@@ -465,7 +459,6 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(20px);
     top: 18px;
 
     &:after {
@@ -513,7 +506,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .rootIsExtraSmall {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeXs;
     height: $ms-Persona-sizeXs;
     width: $ms-Persona-sizeXs;
   }
@@ -527,10 +519,6 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
     height: $ms-Persona-sizeXs;
     line-height: $ms-Persona-sizeXs;
-  }
-
-  .presence {
-    @include ms-left(19px);
   }
 
   .details {
@@ -567,7 +555,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .rootIsSmall {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeSm;
     height: $ms-Persona-sizeSm;
     width: $ms-Persona-sizeSm;
   }
@@ -581,10 +568,6 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
     height: $ms-Persona-sizeSm;
     line-height: $ms-Persona-sizeSm;
-  }
-
-  .presence {
-    @include ms-left(27px);
   }
 
   .primaryText {
@@ -603,7 +586,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .rootIsLarge {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeLg;
     height: $ms-Persona-sizeLg;
     width: $ms-Persona-sizeLg;
   }
@@ -620,7 +602,6 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    @include ms-left(49px);
     height: $ms-Persona-presenceSizeLg;
     width: $ms-Persona-presenceSizeLg;
     border-width: 3px;
@@ -647,7 +628,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .rootIsExtraLarge {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeXl;
     height: $ms-Persona-sizeXl;
     width: $ms-Persona-sizeXl;
   }
@@ -666,7 +646,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXl;
     width: $ms-Persona-presenceSizeXl;
-    @include ms-left(71px);
     border-width: 4px;
   }
 
