@@ -9,7 +9,7 @@ import { IStyle } from './IStyle';
  * @public
  */
 export function mergeStyleSets<T>(
-  ...cssSets: ({[P in keyof T]?: IStyle } | false | null | undefined)[]
+  ...cssSets: ({[P in keyof T]?: IStyle } | null | undefined)[]
 ): T {
   const classNameSet: Partial<T> = {};
   let cssSet = cssSets[0];
