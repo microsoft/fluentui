@@ -25,11 +25,14 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,tsx,json}": ["npm run _prettier", "git add"]
+    "*.{js,ts,tsx}": [
+      "npm run _prettier",
+      "git add"
+    ]
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.18",
+    "@microsoft/rush": "3.0.12",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3"
   }
