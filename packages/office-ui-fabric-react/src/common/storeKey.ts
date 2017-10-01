@@ -28,4 +28,4 @@ export interface IStoreKey {
  * to the selectionKey reference, and you will get TypeScript errors by referring to selection
  * member that aren't in that interface.
  */
-export const storeKey = (name: string) => ({ name, id: getId(name) }) as IStoreKey;
+export const storeKey = (name: string) => ({ name, id: getId(name) } as IStoreKey);

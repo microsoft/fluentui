@@ -49,7 +49,7 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string };
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } };
+  private _classNameToArgs: { [key: string]: { args: any; rules: string[] } };
 
   /**
    * Gets the singleton instance.
@@ -101,12 +101,7 @@ export class Stylesheet {
    * Used internally to cache information about a class which was
    * registered with the stylesheet.
    */
-  public cacheClassName(
-    className: string,
-    key: string,
-    args: IStyle[],
-    rules: string[]
-  ): void {
+  public cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = {
       args,
@@ -129,7 +124,7 @@ export class Stylesheet {
   public argsFromClassName(className: string): IStyle[] | undefined {
     const entry = this._classNameToArgs[className];
 
-    return (entry && entry.args);
+    return entry && entry.args;
   }
 
   /**
@@ -139,15 +134,13 @@ export class Stylesheet {
   public insertedRulesFromClassName(className: string): string[] | undefined {
     const entry = this._classNameToArgs[className];
 
-    return (entry && entry.rules);
+    return entry && entry.rules;
   }
 
   /**
    * Inserts a css rule into the stylesheet.
    */
-  public insertRule(
-    rule: string
-  ): void {
+  public insertRule(rule: string): void {
     const element = this._getElement();
     const injectionMode = element ? this._config.injectionMode : InjectionMode.none;
 

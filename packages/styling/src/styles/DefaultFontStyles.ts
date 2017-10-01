@@ -1,11 +1,5 @@
-import {
-  fontFace,
-  IRawStyle,
-  IFontWeight
-} from '@uifabric/merge-styles/lib/index';
-import {
-  IFontStyles
-} from '../interfaces/index';
+import { fontFace, IRawStyle, IFontWeight } from '@uifabric/merge-styles/lib/index';
+import { IFontStyles } from '../interfaces/index';
 
 import { getLanguage } from '@uifabric/utilities/lib/language';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
@@ -45,30 +39,30 @@ const FontFamilyWestEuropean = `'${FontNameWestEuropean}'`;
 
 // Mapping of language prefix to to font family.
 const LanguageToFontMap = {
-  'ar': FontFamilyArabic,
-  'bg': FontFamilyCyrillic,
-  'cs': FontFamilyEastEuropean,
-  'el': FontFamilyGreek,
-  'et': FontFamilyEastEuropean,
-  'he': FontFamilyHebrew,
-  'hi': FontFamilyHindi,
-  'hr': FontFamilyEastEuropean,
-  'hu': FontFamilyEastEuropean,
-  'ja': FontFamilyJapanese,
-  'kk': FontFamilyEastEuropean,
-  'ko': FontFamilyKorean,
-  'lt': FontFamilyEastEuropean,
-  'lv': FontFamilyEastEuropean,
-  'pl': FontFamilyEastEuropean,
-  'ru': FontFamilyCyrillic,
-  'sk': FontFamilyEastEuropean,
+  ar: FontFamilyArabic,
+  bg: FontFamilyCyrillic,
+  cs: FontFamilyEastEuropean,
+  el: FontFamilyGreek,
+  et: FontFamilyEastEuropean,
+  he: FontFamilyHebrew,
+  hi: FontFamilyHindi,
+  hr: FontFamilyEastEuropean,
+  hu: FontFamilyEastEuropean,
+  ja: FontFamilyJapanese,
+  kk: FontFamilyEastEuropean,
+  ko: FontFamilyKorean,
+  lt: FontFamilyEastEuropean,
+  lv: FontFamilyEastEuropean,
+  pl: FontFamilyEastEuropean,
+  ru: FontFamilyCyrillic,
+  sk: FontFamilyEastEuropean,
   'sr-latn': FontFamilyEastEuropean,
-  'th': FontFamilyThai,
-  'tr': FontFamilyEastEuropean,
-  'uk': FontFamilyCyrillic,
-  'vi': FontFamilyVietnamese,
+  th: FontFamilyThai,
+  tr: FontFamilyEastEuropean,
+  uk: FontFamilyCyrillic,
+  vi: FontFamilyVietnamese,
   'zh-hans': FontFamilyChineseSimplified,
-  'zh-hant': FontFamilyChineseTraditional,
+  'zh-hant': FontFamilyChineseTraditional
 };
 
 // Standard font sizes.
@@ -136,18 +130,12 @@ function _createFont(size: string, weight: IFontWeight): IRawStyle {
   };
 }
 
-function _registerFontFace(
-  fontFamily: string,
-  url: string,
-  fontWeight?: IFontWeight
-): void {
+function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWeight): void {
   fontFamily = `'${fontFamily}'`;
 
   fontFace({
     fontFamily,
-    src:
-    `url('${url}.woff2') format('woff2'),` +
-    `url('${url}.woff') format('woff')`,
+    src: `url('${url}.woff2') format('woff2'),` + `url('${url}.woff') format('woff')`,
     fontWeight,
     fontStyle: 'normal'
   });
@@ -203,7 +191,7 @@ function _getFontBaseUrl(): string {
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
 
-  return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
+  return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }
 
 /**

@@ -1,16 +1,12 @@
 import { setRTL } from './transforms/rtlifyRules';
 import { styleToClassName } from './styleToClassName';
-import {
-  InjectionMode,
-  Stylesheet
-} from './Stylesheet';
+import { InjectionMode, Stylesheet } from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
 describe('styleToClassName', () => {
-
   beforeEach(() => {
     _stylesheet.reset();
   });
@@ -103,10 +99,7 @@ describe('styleToClassName', () => {
   });
 
   it('can expand an array of rules', () => {
-    styleToClassName([
-      { background: 'red' },
-      { background: 'white' }
-    ]);
+    styleToClassName([{ background: 'red' }, { background: 'white' }]);
     expect(_stylesheet.getRules()).toEqual('.css-0{background:white;}');
   });
 

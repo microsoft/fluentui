@@ -1,6 +1,4 @@
-import {
-  mergeStyles
-} from '@uifabric/merge-styles/lib/index';
+import { mergeStyles } from '@uifabric/merge-styles/lib/index';
 import { getIcon } from './icons';
 
 /**
@@ -14,15 +12,13 @@ export function getIconClassName(name: string): string {
   const icon = getIcon(name);
 
   if (icon) {
-    className = mergeStyles(
-      icon.subset.className,
-      {
-        selectors: {
-          '::before': {
-            content: `"${icon.code}"`
-          }
+    className = mergeStyles(icon.subset.className, {
+      selectors: {
+        '::before': {
+          content: `"${icon.code}"`
         }
-      });
+      }
+    });
   }
 
   return className;

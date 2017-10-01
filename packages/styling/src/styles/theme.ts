@@ -1,16 +1,7 @@
 import { Customizations } from '@uifabric/utilities/lib/Customizations';
-import {
-  IPalette,
-  ISemanticColors,
-  ITheme,
-  IPartialTheme
-} from '../interfaces/index';
-import {
-  DefaultFontStyles
-} from './DefaultFontStyles';
-import {
-  DefaultPalette
-} from './DefaultPalette';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme } from '../interfaces/index';
+import { DefaultFontStyles } from './DefaultFontStyles';
+import { DefaultPalette } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {

@@ -1,6 +1,6 @@
 const _nameReplacements: { [key: string]: string } = {
-  'left': 'right',
-  'right': 'left'
+  left: 'right',
+  right: 'left'
 };
 
 const _valueReplacements: { [key: string]: string } = {
@@ -18,19 +18,15 @@ export function setRTL(isRTL: boolean): void {
 }
 export function getRTL(): boolean {
   if (_rtl === undefined) {
-    _rtl = (
+    _rtl =
       typeof document !== 'undefined' &&
       !!document.documentElement &&
-      document.documentElement.getAttribute('dir') === 'rtl'
-    );
+      document.documentElement.getAttribute('dir') === 'rtl';
   }
   return _rtl;
 }
 
-export function rtlifyRules(
-  rulePairs: (string | number)[],
-  index: number
-): void {
+export function rtlifyRules(rulePairs: (string | number)[], index: number): void {
   if (getRTL()) {
     const name = rulePairs[index] as string;
     const value = rulePairs[index + 1] as string;

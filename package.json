@@ -13,6 +13,7 @@
     "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react --verbose",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
     "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose",
+    "_prettier": "node scripts/prettier.js --write \"packages/*/src/**/*.{ts,tsx}\"",
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
@@ -20,10 +21,16 @@
     "build": "npm run _rushRebuild",
     "buildfast": "npm run _rushBuild",
     "change": "node node_modules/@microsoft/rush/bin/rush change",
-    "generate": "node node_modules/@microsoft/rush/bin/rush generate"
+    "generate": "node node_modules/@microsoft/rush/bin/rush generate",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,json}": ["npm run _prettier", "git add"]
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.12"
+    "@microsoft/rush": "3.0.12",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3"
   }
 }

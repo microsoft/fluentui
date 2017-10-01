@@ -1,8 +1,5 @@
 import { mergeStyles } from './mergeStyles';
-import {
-  Stylesheet,
-  InjectionMode
-} from './Stylesheet';
+import { Stylesheet, InjectionMode } from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -27,14 +24,15 @@ describe('mergeStyles', () => {
   });
 
   it('can remerge styles', () => {
-    const className: string = mergeStyles({ background: 'red', color: 'black' });
+    const className: string = mergeStyles({
+      background: 'red',
+      color: 'black'
+    });
     const newClassName = mergeStyles(className, { color: 'white' });
 
     expect(className).toEqual('css-0');
     expect(newClassName).toEqual('css-1');
-    expect(_stylesheet.getRules()).toEqual(
-      '.css-0{background:red;color:black;}.css-1{background:red;color:white;}'
-    );
+    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;color:black;}.css-1{background:red;color:white;}');
   });
 
   it('can normalize margins', () => {
@@ -43,5 +41,4 @@ describe('mergeStyles', () => {
       '.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}'
     );
   });
-
 });

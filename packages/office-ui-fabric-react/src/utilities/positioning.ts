@@ -1,11 +1,5 @@
 import { DirectionalHint } from '../common/DirectionalHint';
-import {
-  IRectangle,
-  assign,
-  getScrollbarWidth,
-  Rectangle,
-  getRTL,
-} from '../Utilities';
+import { IRectangle, assign, getScrollbarWidth, Rectangle, getRTL } from '../Utilities';
 
 export enum RectangleEdge {
   top = 0,
@@ -21,7 +15,7 @@ export enum Position {
   end = 3
 }
 
-let SLIDE_ANIMATIONS: { [key: number]: string; } = {
+let SLIDE_ANIMATIONS: { [key: number]: string } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
@@ -29,7 +23,6 @@ let SLIDE_ANIMATIONS: { [key: number]: string; } = {
 };
 
 export interface IPositionProps {
-
   target?: HTMLElement | MouseEvent;
 
   /** Deprecated at v1.0.0, use 'target' instead.
@@ -94,8 +87,8 @@ export interface IPositionProps {
 }
 
 export interface IPositionInfo {
-  calloutPosition: { top: number, left: number };
-  beakPosition: { top: number, left: number, display: string };
+  calloutPosition: { top: number; left: number };
+  beakPosition: { top: number; left: number; display: string };
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }
@@ -113,7 +106,14 @@ export class PositionData {
   public beakPercent: number;
   public isAuto: boolean;
 
-  constructor(calloutDirection: RectangleEdge, targetDirection: RectangleEdge, calloutPercent: number, targetPercent: number, beakPercent: number, isAuto: boolean) {
+  constructor(
+    calloutDirection: RectangleEdge,
+    targetDirection: RectangleEdge,
+    calloutPercent: number,
+    targetPercent: number,
+    beakPercent: number,
+    isAuto: boolean
+  ) {
     this.calloutDirection = calloutDirection;
     this.targetDirection = targetDirection;
     this.calloutPercent = calloutPercent;
@@ -137,7 +137,7 @@ let MirrorDirectionalHintDictionary: { [key: number]: DirectionalHint } = {
   [DirectionalHint.leftBottomEdge]: DirectionalHint.rightBottomEdge,
   [DirectionalHint.rightTopEdge]: DirectionalHint.leftTopEdge,
   [DirectionalHint.rightCenter]: DirectionalHint.leftCenter,
-  [DirectionalHint.rightBottomEdge]: DirectionalHint.leftBottomEdge,
+  [DirectionalHint.rightBottomEdge]: DirectionalHint.leftBottomEdge
 };
 
 // Currently the beakPercent is set to 50 for all positions meaning that it should tend to the center of the target
@@ -179,11 +179,10 @@ let OppositeEdgeDictionary: { [key: number]: number } = {
   [RectangleEdge.top]: RectangleEdge.bottom,
   [RectangleEdge.bottom]: RectangleEdge.top,
   [RectangleEdge.right]: RectangleEdge.left,
-  [RectangleEdge.left]: RectangleEdge.right,
+  [RectangleEdge.left]: RectangleEdge.right
 };
 
-export module positioningFunctions {
-
+export namespace positioningFunctions {
   export interface ICallout {
     calloutRectangle: Rectangle;
     calloutEdge: RectangleEdge;
@@ -195,7 +194,12 @@ export module positioningFunctions {
   /**
    * If max height is less than zero it returns the bounds height instead.
    */
-  export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle) {
+  export function _getMaxHeightFromTargetRectangle(
+    targetRectangle: Rectangle,
+    targetEdge: DirectionalHint,
+    gapSpace: number,
+    bounds: Rectangle
+  ) {
     let maxHeight = 0;
 
     switch (targetEdge) {
@@ -240,7 +244,13 @@ export module positioningFunctions {
     return targetRectangle;
   }
 
-  export function _getTargetRectDEPRECATED(bounds: Rectangle, targetElement?: HTMLElement, ev?: MouseEvent, targetPoint?: IPoint, isTargetPoint?: boolean): Rectangle {
+  export function _getTargetRectDEPRECATED(
+    bounds: Rectangle,
+    targetElement?: HTMLElement,
+    ev?: MouseEvent,
+    targetPoint?: IPoint,
+    isTargetPoint?: boolean
+  ): Rectangle {
     let targetRectangle: Rectangle;
 
     if (isTargetPoint) {
@@ -286,17 +296,26 @@ export module positioningFunctions {
     directionalInfo: PositionData,
     gap: number = 0,
     coverTarget?: boolean,
-    directionalHintFixed?: boolean): ICallout {
-    let estimatedRectangle: Rectangle = _moveRectangleToAnchorRectangle(calloutRectangle,
+    directionalHintFixed?: boolean
+  ): ICallout {
+    let estimatedRectangle: Rectangle = _moveRectangleToAnchorRectangle(
+      calloutRectangle,
       directionalInfo.calloutDirection,
       directionalInfo.calloutPercent,
       targetRectangle,
       directionalInfo.targetDirection,
       directionalInfo.targetPercent,
-      gap);
+      gap
+    );
 
     if (_isRectangleWithinBounds(estimatedRectangle, boundingRectangle)) {
-      return { calloutRectangle: estimatedRectangle, calloutEdge: directionalInfo.calloutDirection, targetEdge: directionalInfo.targetDirection, alignPercent: directionalInfo.calloutPercent, beakPercent: directionalInfo.beakPercent };
+      return {
+        calloutRectangle: estimatedRectangle,
+        calloutEdge: directionalInfo.calloutDirection,
+        targetEdge: directionalInfo.targetDirection,
+        alignPercent: directionalInfo.calloutPercent,
+        beakPercent: directionalInfo.beakPercent
+      };
     } else {
       return _getBestRectangleFitWithinBounds(
         estimatedRectangle,
@@ -305,7 +324,8 @@ export module positioningFunctions {
         directionalInfo,
         gap,
         coverTarget,
-        directionalHintFixed);
+        directionalHintFixed
+      );
     }
   }
 
@@ -316,7 +336,8 @@ export module positioningFunctions {
     directionalInfo: PositionData,
     gap: number,
     coverTarget?: boolean,
-    directionalHintFixed?: boolean): ICallout {
+    directionalHintFixed?: boolean
+  ): ICallout {
     let callout: ICallout = {
       calloutRectangle: estimatedPosition,
       calloutEdge: directionalInfo.calloutDirection,
@@ -331,12 +352,7 @@ export module positioningFunctions {
     }
 
     if (!coverTarget && !directionalHintFixed) {
-      callout = _flipRectangleToFit(
-        callout,
-        targetRectangle,
-        directionalInfo.targetPercent,
-        boundingRectangle,
-        gap);
+      callout = _flipRectangleToFit(callout, targetRectangle, directionalInfo.targetPercent, boundingRectangle, gap);
     }
 
     let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(callout.calloutRectangle, boundingRectangle);
@@ -345,13 +361,15 @@ export module positioningFunctions {
       callout.calloutRectangle = _alignEdgeToCoordinate(
         callout.calloutRectangle,
         (boundingRectangle as any)[RectangleEdge[direction]],
-        direction);
+        direction
+      );
       let adjustedPercent: number = _recalculateMatchingPercents(
         callout.calloutRectangle,
         callout.targetEdge,
         targetRectangle,
         callout.targetEdge,
-        directionalInfo.targetPercent);
+        directionalInfo.targetPercent
+      );
 
       callout.alignPercent = adjustedPercent;
     }
@@ -359,33 +377,59 @@ export module positioningFunctions {
     return callout;
   }
 
-  export function _positionBeak(beakWidth: number, callout: ICallout, targetRectangle: Rectangle, border: number): Rectangle {
+  export function _positionBeak(
+    beakWidth: number,
+    callout: ICallout,
+    targetRectangle: Rectangle,
+    border: number
+  ): Rectangle {
     let calloutRect: Rectangle = new Rectangle(
       0,
       callout.calloutRectangle.width - border * 2,
       0,
-      callout.calloutRectangle.height - border * 2);
+      callout.calloutRectangle.height - border * 2
+    );
     let beakRectangle: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
     let recalculatedPercent: number = _recalculateMatchingPercents(
       callout.calloutRectangle,
       callout.calloutEdge,
       targetRectangle,
       callout.targetEdge,
-      callout.beakPercent);
-    let estimatedTargetPoint: IPoint = _getPointOnEdgeFromPercent(calloutRect, callout.calloutEdge, recalculatedPercent);
+      callout.beakPercent
+    );
+    let estimatedTargetPoint: IPoint = _getPointOnEdgeFromPercent(
+      calloutRect,
+      callout.calloutEdge,
+      recalculatedPercent
+    );
 
     return _finalizeBeakPosition(beakRectangle, callout, estimatedTargetPoint, border);
   }
 
-  export function _finalizeBeakPosition(beakRectangle: Rectangle, callout: ICallout, estimatedTargetPoint: IPoint, border: number): Rectangle {
+  export function _finalizeBeakPosition(
+    beakRectangle: Rectangle,
+    callout: ICallout,
+    estimatedTargetPoint: IPoint,
+    border: number
+  ): Rectangle {
     let beakPixelSize: number = _calculateActualBeakWidthInPixels(beakRectangle.width) / 2;
     let innerRect: Rectangle | null = null;
     let beakPoint: IPoint = { x: beakRectangle.width / 2, y: beakRectangle.width / 2 };
 
     if (callout.calloutEdge === RectangleEdge.bottom || callout.calloutEdge === RectangleEdge.top) {
-      innerRect = new Rectangle(beakPixelSize, callout.calloutRectangle.width - beakPixelSize - border * 2, 0, callout.calloutRectangle.height - border * 2);
+      innerRect = new Rectangle(
+        beakPixelSize,
+        callout.calloutRectangle.width - beakPixelSize - border * 2,
+        0,
+        callout.calloutRectangle.height - border * 2
+      );
     } else {
-      innerRect = new Rectangle(0, callout.calloutRectangle.width - border * 2, beakPixelSize, callout.calloutRectangle.height - beakPixelSize - border * 2);
+      innerRect = new Rectangle(
+        0,
+        callout.calloutRectangle.width - border * 2,
+        beakPixelSize,
+        callout.calloutRectangle.height - beakPixelSize - border * 2
+      );
     }
 
     let finalPoint: IPoint = _getClosestPointOnEdgeToPoint(innerRect, callout.calloutEdge, estimatedTargetPoint);
@@ -402,13 +446,24 @@ export module positioningFunctions {
     let topPosition = calloutRectangle.top - hostRect.top;
     let leftPosition = calloutRectangle.left - hostRect.left;
 
-    return new Rectangle(leftPosition, leftPosition + calloutRectangle.width, topPosition, topPosition + calloutRectangle.height);
+    return new Rectangle(
+      leftPosition,
+      leftPosition + calloutRectangle.width,
+      topPosition,
+      topPosition + calloutRectangle.height
+    );
   }
 
   /**
    * Finds the percent on the recalculateRect that matches the percent on the target rect based on position.
    */
-  export function _recalculateMatchingPercents(recalculateRect: Rectangle, rectangleEdge: RectangleEdge, targetRect: Rectangle, targetEdge: RectangleEdge, targetPercent: number): number {
+  export function _recalculateMatchingPercents(
+    recalculateRect: Rectangle,
+    rectangleEdge: RectangleEdge,
+    targetRect: Rectangle,
+    targetEdge: RectangleEdge,
+    targetPercent: number
+  ): number {
     let targetPoint: IPoint = _getPointOnEdgeFromPercent(targetRect, targetEdge, targetPercent);
     let adjustedPoint: IPoint = _getClosestPointOnEdgeToPoint(recalculateRect, rectangleEdge, targetPoint);
     let adjustedPercent: number = _getPercentOfEdgeFromPoint(recalculateRect, rectangleEdge, adjustedPoint);
@@ -510,11 +565,9 @@ export module positioningFunctions {
     switch (direction) {
       case RectangleEdge.top:
       case RectangleEdge.bottom:
-
         return rect.width !== 0 ? (valueOnEdge.x - rect.left) / rect.width * 100 : 100;
       case RectangleEdge.left:
       case RectangleEdge.right:
-
         return rect.height !== 0 ? (valueOnEdge.y - rect.top) / rect.height * 100 : 100;
     }
   }
@@ -523,17 +576,14 @@ export module positioningFunctions {
    * Percent is based on distance from left to right or up to down. 0% would be left most, 100% would be right most.
    */
   export function _calculatePointPercentAlongLine(startPoint: IPoint, endPoint: IPoint, percent: number): IPoint {
-    let x: number = startPoint.x + ((endPoint.x - startPoint.x) * percent / 100);
-    let y: number = startPoint.y + ((endPoint.y - startPoint.y) * percent / 100);
+    let x: number = startPoint.x + (endPoint.x - startPoint.x) * percent / 100;
+    let y: number = startPoint.y + (endPoint.y - startPoint.y) * percent / 100;
 
     return { x: x, y: y };
   }
 
   export function _moveTopLeftOfRectangleToPoint(rect: Rectangle, destination: IPoint): Rectangle {
-    return new Rectangle(destination.x,
-      destination.x + rect.width,
-      destination.y,
-      destination.y + rect.height);
+    return new Rectangle(destination.x, destination.x + rect.width, destination.y, destination.y + rect.height);
   }
 
   /**
@@ -542,16 +592,12 @@ export module positioningFunctions {
   export function _alignEdgeToCoordinate(rect: Rectangle, coordinate: number, direction: RectangleEdge): Rectangle {
     switch (direction) {
       case RectangleEdge.top:
-
         return _moveTopLeftOfRectangleToPoint(rect, { x: rect.left, y: coordinate });
       case RectangleEdge.bottom:
-
         return _moveTopLeftOfRectangleToPoint(rect, { x: rect.left, y: coordinate - rect.height });
       case RectangleEdge.left:
-
         return _moveTopLeftOfRectangleToPoint(rect, { x: coordinate, y: rect.top });
       case RectangleEdge.right:
-
         return _moveTopLeftOfRectangleToPoint(rect, { x: coordinate - rect.width, y: rect.top });
     }
 
@@ -565,13 +611,20 @@ export module positioningFunctions {
     let leftCornerXDifference = rectanglePoint.x - rect.left;
     let leftCornerYDifference = rectanglePoint.y - rect.top;
 
-    return _moveTopLeftOfRectangleToPoint(rect, { x: targetPoint.x - leftCornerXDifference, y: targetPoint.y - leftCornerYDifference });
+    return _moveTopLeftOfRectangleToPoint(rect, {
+      x: targetPoint.x - leftCornerXDifference,
+      y: targetPoint.y - leftCornerYDifference
+    });
   }
 
   /**
    * Moves the given rectangle a certain number of pixels in the given direction;
    */
-  export function _moveRectangleInDirection(rect: Rectangle, moveDistance: number, direction: RectangleEdge): Rectangle {
+  export function _moveRectangleInDirection(
+    rect: Rectangle,
+    moveDistance: number,
+    direction: RectangleEdge
+  ): Rectangle {
     let xModifier: number = 0;
     let yModifier: number = 0;
 
@@ -603,7 +656,8 @@ export module positioningFunctions {
     anchorRect: Rectangle,
     anchorSide: RectangleEdge,
     anchorPercent: number,
-    gap: number = 0): Rectangle {
+    gap: number = 0
+  ): Rectangle {
     let rectTargetPoint: IPoint = _getPointOnEdgeFromPercent(rect, rectSide, rectPercent);
     let anchorTargetPoint: IPoint = _getPointOnEdgeFromPercent(anchorRect, anchorSide, anchorPercent);
     let positionedRect = _movePointOnRectangleToPoint(rect, rectTargetPoint, anchorTargetPoint);
@@ -671,7 +725,12 @@ export module positioningFunctions {
     return 0;
   }
 
-  export function _getPositionData(direction: DirectionalHint, target: Rectangle, boundingRect: Rectangle, coverTarget?: boolean): PositionData {
+  export function _getPositionData(
+    direction: DirectionalHint,
+    target: Rectangle,
+    boundingRect: Rectangle,
+    coverTarget?: boolean
+  ): PositionData {
     let directionalInfo: PositionData = coverTarget ? CoverDictionary[direction] : DirectionalDictionary[direction];
 
     if (directionalInfo.isAuto) {
@@ -689,8 +748,19 @@ export module positioningFunctions {
     return directionalInfo;
   }
 
-  export function _flipRectangleToFit(callout: ICallout, targetRect: Rectangle, targetPercent: number, boundingRect: Rectangle, gap: number): ICallout {
-    let directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.top, RectangleEdge.bottom];
+  export function _flipRectangleToFit(
+    callout: ICallout,
+    targetRect: Rectangle,
+    targetPercent: number,
+    boundingRect: Rectangle,
+    gap: number
+  ): ICallout {
+    let directions: RectangleEdge[] = [
+      RectangleEdge.left,
+      RectangleEdge.right,
+      RectangleEdge.top,
+      RectangleEdge.bottom
+    ];
     let currentEdge: RectangleEdge = callout.targetEdge;
     // Make a copy to presever the original positioning.
     let positionedCallout: ICallout = assign({}, callout);
@@ -706,13 +776,15 @@ export module positioningFunctions {
         currentEdge = directions.indexOf(oppositeEdge) > -1 ? oppositeEdge : directions.slice(-1)[0];
         positionedCallout.calloutEdge = OppositeEdgeDictionary[currentEdge];
         positionedCallout.targetEdge = currentEdge;
-        positionedCallout.calloutRectangle = _moveRectangleToAnchorRectangle(positionedCallout.calloutRectangle,
+        positionedCallout.calloutRectangle = _moveRectangleToAnchorRectangle(
+          positionedCallout.calloutRectangle,
           positionedCallout.calloutEdge,
           positionedCallout.alignPercent,
           targetRect,
           positionedCallout.targetEdge,
           targetPercent,
-          gap);
+          gap
+        );
       } else {
         return positionedCallout;
       }
@@ -724,9 +796,9 @@ export module positioningFunctions {
 
 function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint | undefined {
   if (getRTL()) {
-    return props.directionalHintForRTL !== undefined ?
-      props.directionalHintForRTL :
-      MirrorDirectionalHintDictionary[props.directionalHint!];
+    return props.directionalHintForRTL !== undefined
+      ? props.directionalHintForRTL
+      : MirrorDirectionalHintDictionary[props.directionalHint!];
   } else {
     return props.directionalHint;
   }
@@ -735,24 +807,30 @@ function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint | u
 export function getRelativePositions(
   props: IPositionProps,
   hostElement: HTMLElement,
-  calloutElement: HTMLElement): IPositionInfo {
-  let beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
+  calloutElement: HTMLElement
+): IPositionInfo {
+  let beakWidth: number = !props.isBeakVisible ? 0 : props.beakWidth || 0;
   let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
-  let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
-  let boundingRect: Rectangle = props.bounds ?
-    positioningFunctions._getRectangleFromIRect(props.bounds) :
-    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
-  let targetRect: Rectangle = props.target ? positioningFunctions._getTargetRect(boundingRect, props.target) : positioningFunctions._getTargetRectDEPRECATED(
-    boundingRect,
-    props.targetElement,
-    props.creationEvent,
-    props.targetPoint,
-    props.useTargetPoint);
+  let gap: number =
+    positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+  let boundingRect: Rectangle = props.bounds
+    ? positioningFunctions._getRectangleFromIRect(props.bounds)
+    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  let targetRect: Rectangle = props.target
+    ? positioningFunctions._getTargetRect(boundingRect, props.target)
+    : positioningFunctions._getTargetRectDEPRECATED(
+        boundingRect,
+        props.targetElement,
+        props.creationEvent,
+        props.targetPoint,
+        props.useTargetPoint
+      );
   let positionData: PositionData = positioningFunctions._getPositionData(
     getDirectionalHintForLayout(props)!,
     targetRect,
     boundingRect,
-    props.coverTarget);
+    props.coverTarget
+  );
   let positionedCallout: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(
     positioningFunctions._getRectangleFromHTMLElement(calloutElement),
     targetRect,
@@ -760,15 +838,27 @@ export function getRelativePositions(
     positionData,
     gap,
     props.coverTarget,
-    props.directionalHintFixed);
-  let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
-  let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
+    props.directionalHintFixed
+  );
+  let beakPositioned: Rectangle = positioningFunctions._positionBeak(
+    beakWidth,
+    positionedCallout,
+    targetRect,
+    borderWidth
+  );
+  let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(
+    positionedCallout.calloutRectangle,
+    hostElement
+  );
 
   return {
     calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
     beakPosition: { top: beakPositioned.top, left: beakPositioned.left, display: 'block' },
     directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
-    submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
+    submenuDirection:
+      positionedCallout.calloutEdge === RectangleEdge.right
+        ? DirectionalHint.leftBottomEdge
+        : DirectionalHint.rightBottomEdge
   };
 }
 
@@ -778,13 +868,18 @@ export function getRelativePositions(
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: HTMLElement | MouseEvent, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+export function getMaxHeight(
+  target: HTMLElement | MouseEvent,
+  targetEdge: DirectionalHint,
+  gapSpace: number = 0,
+  bounds?: IRectangle
+) {
   let mouseTarget: MouseEvent = target as MouseEvent;
   let elementTarget: HTMLElement = target as HTMLElement;
   let targetRect: Rectangle;
-  let boundingRectangle = bounds ?
-    positioningFunctions._getRectangleFromIRect(bounds) :
-    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  let boundingRectangle = bounds
+    ? positioningFunctions._getRectangleFromIRect(bounds)
+    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
   if (mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);

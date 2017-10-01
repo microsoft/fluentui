@@ -53,7 +53,7 @@ const SCALE_UP100: string = keyframes({
 
 const SCALE_DOWN98: string = keyframes({
   from: { transform: 'scale3d(1,1,1)' },
-  'top': { transform: 'scale3d(.98,.98,1)' },
+  top: { transform: 'scale3d(.98,.98,1)' }
 });
 
 const SCALE_DOWN100: string = keyframes({

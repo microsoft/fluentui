@@ -21,7 +21,6 @@ export function getFocusStyle(
     position,
 
     selectors: {
-
       '::-moz-focus-inner': {
         border: '0'
       },
@@ -37,7 +36,6 @@ export function getFocusStyle(
         outline: '1px solid ' + theme.palette.neutralSecondary,
         zIndex: 1
       }
-
     }
   };
 }

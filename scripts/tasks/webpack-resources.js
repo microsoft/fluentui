@@ -5,12 +5,8 @@ module.exports = {
   webpack,
 
   createConfig(packageName, isProduction, customConfig, onlyProduction) {
-
     const resolveLoader = {
-      modules: [
-        path.resolve(__dirname, '../node_modules'),
-        path.resolve(process.cwd(), 'node_modules')
-      ]
+      modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
     };
 
     const module = {
@@ -33,34 +29,41 @@ module.exports = {
     const configs = [];
 
     if (!onlyProduction) {
-      configs.push(merge(
-        {
-          output: {
-            filename: `[name].js`,
-            path: path.resolve(process.cwd(), 'dist')
+      configs.push(
+        merge(
+          {
+            output: {
+              filename: `[name].js`,
+              path: path.resolve(process.cwd(), 'dist')
+            },
+            resolveLoader,
+            module,
+            stats,
+            devtool,
+            plugins: getPlugins(packageName, false)
           },
-          resolveLoader,
-          module,
-          stats,
-          devtool,
-          plugins: getPlugins(packageName, false)
-        },
-        customConfig
-      ));
+          customConfig
+        )
+      );
     }
 
     if (isProduction) {
-      configs.push(merge({
-        output: {
-          filename: `[name].min.js`,
-          path: path.resolve(process.cwd(), 'dist')
-        },
-        resolveLoader,
-        module,
-        stats,
-        devtool,
-        plugins: getPlugins(packageName, true)
-      }, customConfig));
+      configs.push(
+        merge(
+          {
+            output: {
+              filename: `[name].min.js`,
+              path: path.resolve(process.cwd(), 'dist')
+            },
+            resolveLoader,
+            module,
+            stats,
+            devtool,
+            plugins: getPlugins(packageName, true)
+          },
+          customConfig
+        )
+      );
     }
 
     return configs;
@@ -73,14 +76,11 @@ module.exports = {
       {
         devServer: {
           inline: true,
-          port: 4322,
+          port: 4322
         },
 
         resolveLoader: {
-          modules: [
-            path.resolve(__dirname, '../node_modules'),
-            path.resolve(process.cwd(), 'node_modules')
-          ]
+          modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
         },
 
         resolve: {
@@ -95,30 +95,23 @@ module.exports = {
               test: [/\.json$/],
               enforce: 'pre',
               loader: 'json-loader',
-              exclude: [
-                /node_modules/
-              ]
+              exclude: [/node_modules/]
             },
             {
               test: [/\.tsx?$/],
               loader: 'awesome-typescript-loader',
-              exclude: [
-                /node_modules/,
-                /\.scss.ts$/
-              ]
+              exclude: [/node_modules/, /\.scss.ts$/]
             },
             {
               test: /\.scss$/,
               enforce: 'pre',
-              exclude: [
-                /node_modules/
-              ],
+              exclude: [/node_modules/],
               use: [
                 {
-                  loader: "@microsoft/loader-load-themed-styles", // creates style nodes from JS strings
+                  loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
                 },
                 {
-                  loader: "css-loader", // translates CSS into CommonJS
+                  loader: 'css-loader', // translates CSS into CommonJS
                   options: {
                     modules: true,
                     importLoaders: 2,
@@ -130,29 +123,24 @@ module.exports = {
                   loader: 'postcss-loader',
 
                   options: {
-                    plugins: function () {
-                      return [
-                        require('autoprefixer')
-                      ];
+                    plugins: function() {
+                      return [require('autoprefixer')];
                     }
                   }
                 },
                 {
-                  loader: 'sass-loader',
+                  loader: 'sass-loader'
                 }
               ]
             }
           ]
         },
 
-        plugins: [
-          new WebpackNotifierPlugin()
-        ]
+        plugins: [new WebpackNotifierPlugin()]
       },
       customConfig
     );
   }
-
 };
 
 function merge(obj1, obj2) {
@@ -174,13 +162,16 @@ function merge(obj1, obj2) {
   return merged;
 }
 
-function getPlugins(
-  bundleName,
-  isProduction
-) {
+function getPlugins(bundleName, isProduction) {
   const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-  const plugins = [];
+  const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+  const plugins = [
+    new DuplicatePackageCheckerPlugin({
+      verbose: true,
+      emitError: true
+    })
+  ];
 
   if (isProduction) {
     plugins.push(

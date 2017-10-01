@@ -13,12 +13,10 @@ import { ISubscribable } from './ISubscribable';
 
 let { expect } = chai;
 
-interface ITestComponentProps extends React.HTMLAttributes<HTMLDivElement> { }
+interface ITestComponentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 // Dumb component.
-const TestComponent = (props: ITestComponentProps) => (
-  <div { ...props } />
-);
+const TestComponent = (props: ITestComponentProps) => <div {...props} />;
 
 // Dumb store.
 interface IHelloStore extends ISubscribable {
@@ -37,12 +35,10 @@ class HelloStore extends BaseStore implements IHelloStore {
 }
 
 describe('connect', () => {
-  it('can observe store changes', (done) => {
+  it('can observe store changes', done => {
     let hello1 = storeKey('hello1');
     let hello2 = storeKey('hello2');
-    let localStores = new StoreSet()
-      .add(hello1, new HelloStore())
-      .add(hello2, new HelloStore());
+    let localStores = new StoreSet().add(hello1, new HelloStore()).add(hello2, new HelloStore());
 
     let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
@@ -53,7 +49,7 @@ describe('connect', () => {
     );
     let root = ReactTestUtils.renderIntoDocument(
       <div>
-        <StoreHost stores={ localStores }>
+        <StoreHost stores={localStores}>
           <Connected />
         </StoreHost>
       </div>
@@ -72,21 +68,21 @@ describe('connect', () => {
           try {
             expect(rootElement.textContent).equals('hello world');
             done();
-          } catch (e) { done(e); }
+          } catch (e) {
+            done(e);
+          }
         }, 10);
-
-      } catch (e) { done(e); }
+      } catch (e) {
+        done(e);
+      }
     }, 10);
-
   });
 
   it('can throw when requiring a store in an environment without any stores hosted', () => {
     let hello = storeKey('hello');
-    let Connected = connect<ITestComponentProps, {}>(
-      TestComponent,
-      [hello],
-      () => ({ /* empty */ })
-    );
+    let Connected = connect<ITestComponentProps, {}>(TestComponent, [hello], () => ({
+      /* empty */
+    }));
     let threwException = false;
 
     try {
@@ -95,34 +91,36 @@ describe('connect', () => {
           <Connected />
         </div>
       );
-    } catch (e) { threwException = true; }
+    } catch (e) {
+      threwException = true;
+    }
 
     expect(threwException).equals(true);
   });
 
   it('can throw in an environment that does not contain the required store', () => {
     let hello = storeKey('hello');
-    let Connected = connect<ITestComponentProps, {}>(
-      TestComponent,
-      [hello],
-      () => ({ /* empty */ })
-    );
+    let Connected = connect<ITestComponentProps, {}>(TestComponent, [hello], () => ({
+      /* empty */
+    }));
     let threwException = false;
 
     try {
       ReactTestUtils.renderIntoDocument(
-        <StoreHost stores={ new StoreSet() }>
+        <StoreHost stores={new StoreSet()}>
           <div>
             <Connected />
           </div>
         </StoreHost>
       );
-    } catch (e) { threwException = true; }
+    } catch (e) {
+      threwException = true;
+    }
 
     expect(threwException).equals(true);
   });
 
-  it('renders a connected component 1 time when multiple stores fire changes', (done) => {
+  it('renders a connected component 1 time when multiple stores fire changes', done => {
     let resolves = 0;
     let renders = 0;
 
@@ -133,20 +131,15 @@ describe('connect', () => {
 
     let hello1 = storeKey('hello1');
     let hello2 = storeKey('hello2');
-    let localStores = new StoreSet()
-      .add(hello1, new HelloStore())
-      .add(hello2, new HelloStore());
-    let Connected = connect(
-      Dumb,
-      [hello1, hello2],
-      () => {
-        resolves++;
-        return {};
-      });
+    let localStores = new StoreSet().add(hello1, new HelloStore()).add(hello2, new HelloStore());
+    let Connected = connect(Dumb, [hello1, hello2], () => {
+      resolves++;
+      return {};
+    });
 
     ReactTestUtils.renderIntoDocument(
       <div>
-        <StoreHost stores={ localStores }>
+        <StoreHost stores={localStores}>
           <Connected />
         </StoreHost>
       </div>
@@ -164,7 +157,9 @@ describe('connect', () => {
         expect(resolves).to.equal(2, 'resolve was not 2');
         expect(renders).to.equal(1, 'render was not 1');
         done();
-      } catch (e) { done(e); }
+      } catch (e) {
+        done(e);
+      }
     }, 10);
   });
 });
