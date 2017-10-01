@@ -4,12 +4,13 @@ const LOREM_IPSUM = ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
   'labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +
   'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
   'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt ' +
-  'mollit anim id est laborum').split(' ');
+  'mollit anim id est laborum'
+).split(' ');
 
 const DATA = {
-  'color': ['red', 'blue', 'green', 'yellow'],
-  'shape': ['circle', 'square', 'triangle'],
-  'location': ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
+  color: ['red', 'blue', 'green', 'yellow'],
+  shape: ['circle', 'square', 'triangle'],
+  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
 };
 
 // tslint:disable-next-line:no-any
@@ -37,7 +38,8 @@ export function createGroups(
   startIndex: number,
   itemsPerGroup: number,
   level: number = 0,
-  key: string = ''): IGroup[] {
+  key: string = ''
+): IGroup[] {
   if (key !== '') {
     key = key + '-';
   }
@@ -49,9 +51,10 @@ export function createGroups(
       name: 'group ' + key + index,
       startIndex: index * count + startIndex,
       level: level,
-      children: groupDepth > 1 ?
-        createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) :
-        []
+      children:
+        groupDepth > 1
+          ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index)
+          : []
     };
   });
 }
@@ -63,9 +66,7 @@ export function lorem(wordCount: number): string {
 }
 
 export function isGroupable(key: string): boolean {
-  return key === 'color' ||
-    key === 'shape' ||
-    key === 'location';
+  return key === 'color' || key === 'shape' || key === 'location';
 }
 
 function _randWord(array: string[]): string {

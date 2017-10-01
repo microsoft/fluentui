@@ -1,7 +1,6 @@
 import { setRTL, rtlifyRules } from './rtlifyRules';
 
 describe('rtlifyRules', () => {
-
   beforeAll(() => {
     setRTL(true);
   });
@@ -50,5 +49,4 @@ describe('rtlifyRules', () => {
 
     expect(rules).toEqual(['cursor', 'hand']);
   });
-
 });

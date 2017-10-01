@@ -21,11 +21,7 @@ function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefine
   return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
-function extractRules(
-  args: IStyle[],
-  rules: IRuleSet = { __order: [] },
-  currentSelector: string = '&'
-): IRuleSet {
+function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
@@ -48,7 +44,7 @@ function extractRules(
       extractRules(arg, rules, currentSelector);
     } else {
       // tslint:disable-next-line:no-any
-      for (const prop in (arg as any)) {
+      for (const prop in arg as any) {
         if (prop === 'selectors') {
           // tslint:disable-next-line:no-any
           const selectors: { [key: string]: IStyle } = (arg as any).selectors;
@@ -80,12 +76,8 @@ function extractRules(
   return rules;
 }
 
-function expandQuads(
-  currentRules: IDictionary,
-  name: string,
-  value: string
-): void {
-  const parts = (typeof value === 'string') ? value.split(' ') : [value];
+function expandQuads(currentRules: IDictionary, name: string, value: string): void {
+  const parts = typeof value === 'string' ? value.split(' ') : [value];
 
   currentRules[name + 'Top'] = parts[0];
   currentRules[name + 'Right'] = parts[1] || parts[0];

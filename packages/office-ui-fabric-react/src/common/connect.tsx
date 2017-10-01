@@ -7,13 +7,12 @@ export function connect<ORIGINAL_PROPS, NEW_PROPS>(
   storesToSubscribe: IStoreKey[],
   getProps: (props: ORIGINAL_PROPS, ...stores: any[]) => NEW_PROPS
 ): React.StatelessComponent<NEW_PROPS> {
-
   return (props: NEW_PROPS) => (
     <ConnectedHost
-      component={ component }
-      componentProps={ props }
-      getProps={ getProps }
-      storesToSubscribe={ storesToSubscribe }
+      component={component}
+      componentProps={props}
+      getProps={getProps}
+      storesToSubscribe={storesToSubscribe}
     />
   );
 }

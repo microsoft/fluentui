@@ -1,8 +1,5 @@
 import { mergeStyleSets } from './mergeStyleSets';
-import {
-  Stylesheet,
-  InjectionMode
-} from './Stylesheet';
+import { Stylesheet, InjectionMode } from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -14,7 +11,7 @@ describe('mergeStyleSets', () => {
   });
 
   it('can merge style sets', () => {
-    const result: { root: string, a: string, b: string } = mergeStyleSets(
+    const result: { root: string; a: string; b: string } = mergeStyleSets(
       {},
       {
         root: { background: 'red' },
@@ -41,8 +38,8 @@ describe('mergeStyleSets', () => {
 
     expect(_stylesheet.getRules()).toEqual(
       '.css-0{background:red;}.css-0:hover{background:yellow;}' +
-      '.css-1{background:white;}' +
-      '.css-2{background:blue;}'
+        '.css-1{background:white;}' +
+        '.css-2{background:blue;}'
     );
   });
 });

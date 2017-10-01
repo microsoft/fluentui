@@ -20,8 +20,9 @@ import { ExampleGroup, IExample } from './examplesOf';
  */
 export function createApp(
   examples: ExampleGroup | ExampleGroup[],
-  defaultRouteComponent: () => (JSX.Element | null) = () => null,
-  appTitle?: string, headerLinks?: IAppLink[]
+  defaultRouteComponent: () => JSX.Element | null = () => null,
+  appTitle?: string,
+  headerLinks?: IAppLink[]
 ): void {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
@@ -32,19 +33,14 @@ export function createApp(
 
     setBaseUrl('./dist/');
 
-    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group: ExampleGroup, groupIndex: number) => group.examples.map(
-      (example: IExample, index: number) => (
-        <Route
-          key={ example.key }
-          path={ '#component=' + example.key }
-          component={ example.onRender }
-        />
-      )));
+    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group: ExampleGroup, groupIndex: number) =>
+      group.examples.map((example: IExample, index: number) => (
+        <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />
+      ))
+    );
 
     // Add the default route
-    routes.push(
-      <Route key='default' component={ defaultRouteComponent } />
-    );
+    routes.push(<Route key="default" component={defaultRouteComponent} />);
 
     let appDefinition = _getDefinition(groups);
 
@@ -59,16 +55,16 @@ export function createApp(
     ReactDOM.render(
       <Fabric>
         <Router>
-          <Route key='minimal' path='?minimal' component={ _getComponent }>
-            { routes }
+          <Route key="minimal" path="?minimal" component={_getComponent}>
+            {routes}
           </Route>
-          <Route key={ 'app' } component={ (props: {}) => <App appDefinition={ appDefinition } { ...props } /> }>
-            { routes }
+          <Route key={'app'} component={(props: {}) => <App appDefinition={appDefinition} {...props} />}>
+            {routes}
           </Route>
         </Router>
-      </Fabric>
-      ,
-      rootElement);
+      </Fabric>,
+      rootElement
+    );
   }
 
   function _onUnload(): void {
@@ -90,28 +86,22 @@ export function createApp(
 }
 
 function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
-  return (
-    <div { ...props } />
-  );
+  return <div {...props} />;
 }
 
 function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
   return {
     appTitle: 'Fabric Examples',
     testPages: [],
-    examplePages: groups.map((group: ExampleGroup, groupIndex: number) => (
-      {
-        name: group.title,
-        links: group.examples.map((example: IExample, exampleIndex: number) => (
-          {
-            component: example.onRender,
-            key: example.key,
-            name: example.title,
-            url: '#component=' + example.key
-          }
-        ))
-      }
-    )),
+    examplePages: groups.map((group: ExampleGroup, groupIndex: number) => ({
+      name: group.title,
+      links: group.examples.map((example: IExample, exampleIndex: number) => ({
+        component: example.onRender,
+        key: example.key,
+        name: example.title,
+        url: '#component=' + example.key
+      }))
+    })),
     headerLinks: [
       {
         name: 'Getting started',

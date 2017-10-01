@@ -90,7 +90,7 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
     let { component: Component } = this.props;
     let { props } = this.state;
 
-    return props ? <Component { ...props } /> : null;
+    return props ? <Component {...props} /> : null;
   }
 
   @autobind
@@ -120,10 +120,7 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
   }
 
   private _getComponentProps(props: any) {
-    let newProps = assign(
-      {},
-      props.componentProps,
-      props.getProps(props.componentProps, ...this._stores));
+    let newProps = assign({}, props.componentProps, props.getProps(props.componentProps, ...this._stores));
 
     return newProps;
   }
