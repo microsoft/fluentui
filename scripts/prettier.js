@@ -2,7 +2,7 @@ const execSync = require('./exec-sync');
 const { resolve } = require('path');
 
 const prettierPath = 'node ' + resolve(__dirname, './node_modules/prettier/bin/prettier.js');
-const configPath = resolve(__dirname, '../.prettierrc');
+const configPath = resolve(__dirname, '../prettier.config.json');
 let args = '';
 
 if (process.argv.length > 2) {
