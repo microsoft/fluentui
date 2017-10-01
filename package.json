@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.12",
+    "@microsoft/rush": "3.0.18",
     "husky": "^0.14.3",
     "lint-staged": "^4.2.3"
   }
