@@ -578,27 +578,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       });
     } else {
       if (resizingColumnIndex !== undefined) {
-        const fixedColumns = newColumns.slice(0, resizingColumnIndex);
-        fixedColumns.forEach(column =>
-          column.calculatedWidth = this._getColumnOverride(column.key).currentWidth);
-
-        const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0), 0);
-
-        const remainingColumns = newColumns.slice(resizingColumnIndex);
-        const remainingWidth = viewportWidth - fixedWidth;
-
-        adjustedColumns = [
-          ...fixedColumns,
-          ...this._getJustifiedColumns(remainingColumns, remainingWidth, newProps, resizingColumnIndex),
-        ];
+        adjustedColumns = this._getJustifiedColumnsAfterResize(newColumns, viewportWidth, newProps, resizingColumnIndex);
       } else {
         adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
+      }
 
-        // Last column is not resizable if there's no column behind.
-        // Otherwise, it can be resized to bring back any dropped column.
-        if (adjustedColumns.length && adjustedColumns.length === newColumns.length) {
-          adjustedColumns[adjustedColumns.length - 1].isResizable = false;
-        }
+      // Last column is not resizable if there's no column behind.
+      // Otherwise, it can be resized to bring back any dropped column.
+      if (adjustedColumns.length && adjustedColumns.length === newColumns.length) {
+        adjustedColumns[adjustedColumns.length - 1].isResizable = false;
       }
 
       adjustedColumns.forEach(column => {
@@ -620,6 +608,22 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
       return newColumn;
     });
+  }
+
+  private _getJustifiedColumnsAfterResize(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, resizingColumnIndex: number): IColumn[] {
+    const fixedColumns = newColumns.slice(0, resizingColumnIndex);
+    fixedColumns.forEach(column =>
+      column.calculatedWidth = this._getColumnOverride(column.key).currentWidth);
+
+    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0), 0);
+
+    const remainingColumns = newColumns.slice(resizingColumnIndex);
+    const remainingWidth = viewportWidth - fixedWidth;
+
+    return [
+      ...fixedColumns,
+      ...this._getJustifiedColumns(remainingColumns, remainingWidth, props, resizingColumnIndex),
+    ];
   }
 
   /** Builds a set of columns to fix within the viewport width. */

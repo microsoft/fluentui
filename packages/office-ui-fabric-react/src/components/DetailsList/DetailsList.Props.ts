@@ -335,6 +335,8 @@ export interface IColumn {
 
   /**
    * Internal only value.
+   * Remembers the actual witdh of the column on any case.
+   * On the other hand, calculatedWidth is only saved when it's defined by user, not for justified calculations.
    */
   currentWidth?: number;
 
