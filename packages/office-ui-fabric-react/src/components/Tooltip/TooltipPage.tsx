@@ -4,6 +4,7 @@ import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
@@ -18,7 +19,7 @@ const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
 
-export class TooltipPage extends React.Component<any, any> {
+export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -52,6 +53,7 @@ export class TooltipPage extends React.Component<any, any> {
             <span> supplement content associated with a specific UI component.</span>
           </div>
         }
+        isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
             {...TooltipStatus}
