@@ -371,15 +371,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       styles = {},
       disabled,
+      splitDisabled,
       checked
     } = this.props;
 
-    const classNames = styles && getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
+    const classNames = styles && getSplitButtonClassNames(styles!, !!splitDisabled, !!this.state.menuProps, !!checked);
 
     return (
       <div
         aria-labelledby={ buttonProps.ariaLabel }
-        aria-disabled={ disabled }
+        aria-disabled={ disabled && splitDisabled }
         aria-haspopup={ true }
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
@@ -422,7 +423,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <BaseButton
         styles={ classNames }
         checked={ this.props.checked }
-        disabled={ this.props.disabled }
+        disabled={ this.props.splitDisabled }
         onClick={ this._onToggleMenu }
         menuProps={ undefined }
         iconProps={ menuIconProps }

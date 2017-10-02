@@ -101,6 +101,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   split?: boolean;
 
   /**
+   * If set to true and if this is a splitButton (split == true) then the split menu part of the button is disabled. Defaults to false.
+   */
+  splitDisabled?: boolean;
+
+  /**
    * The props for the icon shown when providing a menu dropdown.
    */
   menuIconProps?: IIconProps;
