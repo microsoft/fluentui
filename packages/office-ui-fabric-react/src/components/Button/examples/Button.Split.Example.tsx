@@ -70,34 +70,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             } }
           />
         </div>
-        <div>
-          <Label>Split Disabled</Label>
-          <DefaultButton
-            primary
-            data-automation-id='test'
-            disabled={ disabled }
-            checked={ checked }
-            text='Create account'
-            onClick={ alertClicked }
-            split={ true }
-            splitDisabled={ false }
-            style={ { height: '35px' } }
-            menuProps={ {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            } }
-          />
-        </div>
       </div>
     );
   }
