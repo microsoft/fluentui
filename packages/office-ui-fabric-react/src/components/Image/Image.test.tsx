@@ -3,8 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-import { ComponentClass, StatelessComponent, EnzymePropSelector, shallow, mount, ReactWrapper } from 'enzyme';
+import * as ReactTestUtils from 'react-dom/test-utils';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
 import { ImageFit, ImageLoadState } from './Image.Props';

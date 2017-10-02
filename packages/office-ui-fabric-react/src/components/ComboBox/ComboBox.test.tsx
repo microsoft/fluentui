@@ -2,7 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeyCodes } from '../../Utilities';
 
@@ -170,6 +170,12 @@ describe('ComboBox', () => {
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS }
       />);
+
+    // Manually assign `offsetParent` and `scrollIntoView` since it doesn't exist without DOM
+    let el = document.createElement('div') as Element;
+    el.scrollIntoView = () => null;
+    Object.defineProperty(HTMLElement.prototype, 'offsetParent', { get: () => el });
+
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     let buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
