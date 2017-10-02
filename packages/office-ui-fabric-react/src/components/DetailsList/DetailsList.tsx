@@ -831,5 +831,5 @@ function isRightArrow(event: React.KeyboardEvent<HTMLElement>) {
 }
 
 function getPaddedWidth(column: IColumn, isFirst: boolean): number {
-  return column.calculatedWidth! + (isFirst ? 0 : DEFAULT_INNER_PADDING) + (column.isPadded ? ISPADDED_WIDTH : 0)
+  return column.calculatedWidth! + (isFirst ? 0 : DEFAULT_INNER_PADDING) + (column.isPadded ? ISPADDED_WIDTH : 0);
 }
