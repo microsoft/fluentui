@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
@@ -24,7 +24,6 @@ describe('DefaultButton', () => {
       <DefaultButton>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
     expect(renderedDOM.tagName).toEqual('BUTTON');
   });
 
@@ -35,7 +34,6 @@ describe('DefaultButton', () => {
       <DefaultButton onClick={ onClick }>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
     expect(renderedDOM.tagName).toEqual('BUTTON');
   });
 
@@ -44,7 +42,6 @@ describe('DefaultButton', () => {
       <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
     expect(renderedDOM.tagName).toEqual('A');
   });
 

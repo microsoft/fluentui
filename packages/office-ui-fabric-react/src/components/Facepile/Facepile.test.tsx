@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 /* tslint:enable:no-unused-variable */
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
