@@ -310,11 +310,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       iconName: item.icon
     };
 
-    const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    const menuClassNames = getMenuItemClassNames(
+    let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
+    let menuClassNames = getMenuItemClassNames(
       getMenuItemStyles(this.props.theme!, item.style),
-      (item.isDisabled! || item.disabled!),
+      !!item.disabled,
       (this.state.expandedMenuItemKey === item.key),
+      !!getIsChecked(item),
       !!item.href,
       (iconProps.iconName !== 'None'),
       item.className!,

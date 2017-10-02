@@ -2,9 +2,7 @@ import { memoizeFunction } from '../../Utilities';
 import { IContextualMenuStyles, IMenuItemStyle } from './ContextualMenu.Props';
 import {
   ITheme,
-  //  IStyle,
-  mergeStyleSets,
-  //  IFontStyles,
+  concatStyleSets,
   FontWeights,
   getFocusStyle
 } from '../../Styling';
@@ -33,10 +31,11 @@ export const getMenuItemStyles = memoizeFunction((
         boxSizing: 'border-box',
       }],
     root: [
+      getFocusStyle(theme),
       {
         font: 'inherit',
         color: 'inherit',
-        background: 'none',
+        backgroundColor: 'transparent',
         border: 'none',
         width: '100%',
         height: ContextualMenuItemHeight,
@@ -46,7 +45,6 @@ export const getMenuItemStyles = memoizeFunction((
         padding: '0px 6px',
         textAlign: 'left',
       },
-      getFocusStyle(theme),
     ],
     rootDisabled: {
       color: ContextualMenuTextDisabledColor,
@@ -54,13 +52,19 @@ export const getMenuItemStyles = memoizeFunction((
       pointerEvents: 'none',
     },
     rootHovered: {
-      background: ContextualMenuItemBackgroundHoverColor,
+      backgroundColor: ContextualMenuItemBackgroundHoverColor,
     },
     rootFocused: {
-      background: ContextualMenuItemBackgroundHoverColor,
+      backgroundColor: ContextualMenuItemBackgroundHoverColor,
+    },
+    rootChecked: {
+      backgroundColor: ContextualMenuItemBackgroundSelectedColor,
+    },
+    rootPressed: {
+      backgroundColor: ContextualMenuItemBackgroundSelectedColor,
     },
     rootExpanded: {
-      background: ContextualMenuItemBackgroundSelectedColor,
+      backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       color: ContextualMenuTextSelectedColor,
       fontWeight: FontWeights.semibold,
     },
@@ -104,18 +108,19 @@ export const getMenuItemStyles = memoizeFunction((
     iconColor: {
       color: ContextualMenuIconColor
     },
-    subMenuIcon: {
-      height: ContextualMenuItemHeight,
-      lineHeight: ContextualMenuItemHeight,
-      textAlign: 'center',
-      fontSize: fonts.xSmall,
-      display: 'inline-block',
-      verticalAlign: 'middle',
-      flexShrink: '0'
-    }
+    subMenuIcon: [
+      fonts.xSmall,
+      {
+        height: ContextualMenuItemHeight,
+        lineHeight: ContextualMenuItemHeight,
+        textAlign: 'center',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        flexShrink: '0'
+      }]
   };
 
-  return mergeStyleSets(menuItemStyles, customMenuItemStyles) as IMenuItemStyle;
+  return concatStyleSets(menuItemStyles, customMenuItemStyles) as IMenuItemStyle;
 });
 
 export const getStyles = memoizeFunction((
@@ -151,7 +156,6 @@ export const getStyles = memoizeFunction((
       backgroundColor: theme.palette.neutralLight
     },
     header: [
-      // @include focus-border();
       fonts.small,
       {
         fontWeight: FontWeights.semibold,
@@ -173,5 +177,5 @@ export const getStyles = memoizeFunction((
       position: 'relative'
     },
   };
-  return mergeStyleSets(styles, customStyles) as IContextualMenuStyles;
+  return concatStyleSets(styles, customStyles) as IContextualMenuStyles;
 });

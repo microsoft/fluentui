@@ -391,6 +391,7 @@ export interface IMenuItemStyle extends IButtonStyles {
 }
 
 export interface IContextualMenuStyles {
+
   /**
    * Style override for the contextual menu title.
    */

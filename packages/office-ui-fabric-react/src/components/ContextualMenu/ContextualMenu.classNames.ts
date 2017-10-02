@@ -56,8 +56,9 @@ export const getClassNames = memoizeFunction((
 
 export const getMenuItemClassNames = memoizeFunction((
   styles: IMenuItemStyle,
-  isDisabled: boolean,
-  isExpanded: boolean,
+  disabled: boolean,
+  expanded: boolean,
+  checked: boolean,
   isAnchorLink: boolean,
   knownIcon: boolean,
   itemClassName: string,
@@ -73,37 +74,45 @@ export const getMenuItemClassNames = memoizeFunction((
     root: mergeStyles(
       'ms-ContextualMenu-link',
       styles.root,
-      !isDisabled && !isExpanded && {
-        ':hover': styles.rootHovered,
-        ':focus': styles.rootFocused,
-      },
-      isDisabled && [
-        'is-disabled', styles.rootDisabled
+      checked && [
+        'is-checked',
+        styles.rootChecked
       ],
       isAnchorLink && styles.anchorLink,
-      isExpanded && [
+      expanded && [
         'is-expanded',
         styles.rootExpanded
-      ]
-    ) as string,
+      ],
+      disabled && [
+        'is-disabled',
+        styles.rootDisabled
+      ],
+      !disabled && !expanded && !checked && [{
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':focus': styles.rootFocused,
+          ':active': styles.rootPressed,
+        }
+      }],
+    ),
     linkContent: mergeStyles(
       'ms-ContextualMenu-linkContent',
       styles.linkContent
-    ) as string,
+    ),
     icon: mergeStyles(
       'ms-ContextualMenu-icon',
       knownIcon && ('ms-ContextualMenu-iconColor ' + styles.iconColor),
       iconClassName,
       styles.icon,
-    ) as string,
+    ),
     subMenuIcon: mergeStyles(
       'ms-ContextualMenu-submenuIcon',
       subMenuClassname,
       styles.subMenuIcon
-    ) as string,
+    ),
     label: mergeStyles(
       'ms-ContextualMenu-itemText',
       styles.label
-    ) as string,
+    ),
   };
 });
