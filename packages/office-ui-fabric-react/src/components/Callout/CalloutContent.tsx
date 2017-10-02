@@ -324,15 +324,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon) {
     for (const key in newPositions) {
-      if (key && newPositions[key]) {
-        const oldPositionEdge = oldPositions[key];
-        const newPositionEdge = newPositions[key];
-        if (oldPositionEdge && newPositionEdge) {
-          if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
-            return false;
-          }
+      const oldPositionEdge = oldPositions[key];
+      const newPositionEdge = newPositions[key];
+
+      if (oldPositionEdge && newPositionEdge) {
+        if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
+          return false;
         }
       }
+
     }
     return true;
   }

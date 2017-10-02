@@ -309,7 +309,7 @@ export module positioningFunctions {
    * @returns {ICallout}
    */
   function _flipToFit(rect: Rectangle, target: Rectangle, bounding: Rectangle, positionData: IPositionData, gap: number = 0, ): ICallout {
-    let directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.top, RectangleEdge.bottom];
+    let directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
     let currentEstimate = rect;
     let currentEdge = positionData.targetEdge;
     let currentAlignment = positionData.alignmentEdge;
