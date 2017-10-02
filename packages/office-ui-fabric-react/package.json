@@ -15,9 +15,6 @@
     "start": "node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js"
   },
-  "disabledTasks": [
-    "karma"
-  ],
   "devDependencies": {
     "@types/enzyme": "2.8.8",
     "@types/es6-promise": "^0.0.32",
