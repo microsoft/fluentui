@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 30 Sep 2017 01:26:37 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2017 10:19:43 GMT and should not be manually modified.
+
+## 5.3.0
+Mon, 02 Oct 2017 10:19:43 GMT
+
+### Minor changes
+
+- PersonaCoin: added `coinSize` prop to allow for customized sizes.
 
 ## 5.2.1
 Sat, 30 Sep 2017 01:26:37 GMT
