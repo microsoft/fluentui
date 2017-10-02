@@ -170,6 +170,12 @@ describe('ComboBox', () => {
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS }
       />);
+
+    // Manually assign `offsetParent` and `scrollIntoView` since it doesn't exist without DOM
+    let el = document.createElement('div') as Element;
+    el.scrollIntoView = () => null;
+    Object.defineProperty(HTMLElement.prototype, 'offsetParent', { get: () => el });
+
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     let buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
