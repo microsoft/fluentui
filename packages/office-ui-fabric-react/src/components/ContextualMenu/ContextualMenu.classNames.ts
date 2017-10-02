@@ -61,15 +61,14 @@ export const getMenuItemClassNames = memoizeFunction((
   isAnchorLink: boolean,
   knownIcon: boolean,
   itemClassName: string,
-  expandedClassname: string,
   iconClassName: string,
   subMenuClassname: string,
 ): IMenuItemClassNames => {
   return {
     item: mergeStyles(
+      itemClassName,
       'ms-ContextualMenu-item',
       styles.item,
-      itemClassName
     ) as string,
     root: mergeStyles(
       'ms-ContextualMenu-link',
@@ -83,7 +82,6 @@ export const getMenuItemClassNames = memoizeFunction((
       isAnchorLink && styles.anchorLink,
       isExpanded && [
         'is-expanded',
-        expandedClassname,
         styles.rootExpanded
       ]
     ) as string,
@@ -99,8 +97,8 @@ export const getMenuItemClassNames = memoizeFunction((
     ) as string,
     subMenuIcon: mergeStyles(
       'ms-ContextualMenu-submenuIcon',
-      styles.subMenuIcon,
-      subMenuClassname
+      subMenuClassname,
+      styles.subMenuIcon
     ) as string,
     label: mergeStyles(
       'ms-ContextualMenu-itemText',
