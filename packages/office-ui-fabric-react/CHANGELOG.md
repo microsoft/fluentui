@@ -1,6 +1,108 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Sep 2017 10:19:01 GMT and should not be manually modified.
+This log was last generated on Sat, 30 Sep 2017 01:26:37 GMT and should not be manually modified.
+
+## 5.2.1
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Patches
+
+- ComboBox: Fix broken styles as part of the move to MergeStyles
+
+## 5.2.0
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Minor changes
+
+- Adding custom render to TextField label
+
+### Patches
+
+- Simplified checkbox examples and fixed spacing issue.
+- DetailsList: Allow resizing columns wider than maxWidth in justified layout
+- ContextualMenu: Make sure to check items within a menu section for the 'canCheck' property
+- Updating mergeStyleSets usage in various components to adhere to correct typing.
+- Split out and cleaned up TextField examples to better reflect the toolkit. 
+- DatePicker: call correct callback when previous year button is clicked
+
+## 5.1.0
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Minor changes
+
+- DetailsList: Added ability to add css class to checkbox cell
+
+### Patches
+
+- List: Fix documentation examples. Adds autobind to onRenderCell of List Grid Example
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.51.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+### Patches
+
+- Use aria-label for slider, even when label is not set
+- PeoplePicker: adjusting aria/role attributes to improve the Narrator experience when reading out suggestions.
+- TextField: Moved aria live attribute onto the actual text of an error message for text field component so that it is read aloud by narrator.
+- Removed old visual testing system to make way for new Screener based system
+
+## 4.50.2
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Patches
+
+- Updating components to support scoped customizations.
+- Dropdown: add titleIsPlaceHolder class to dropdown title so styles can be overridden
+- Persona: Fixed regression in secondary text not showing
+
+## 4.50.1
+Mon, 25 Sep 2017 10:19:18 GMT
+
+### Patches
+
+- Reordered Buttons on ButtonPage and made some small style changes to match toolkit for website.
+- Updated ContextualMenu examples and page to better reflect the XD Toolkit.
+- Dropdown: Adds a positioning wrapper around the caretDown icon
+- Theme Generator: have the bg change with the theme
+- make headings on theme generator page theme
+
+## 4.50.0
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Minor changes
+
+- Icon: Removed a recently added prop `onClicked` as it is redundant with `onClick`. Updated DatePicker to use `onClick`.
+- Create Theme Generator page
+- ActivityItem: Adding ReactNodes in the interface in addition to the IRenderFunction props.
+
+### Patches
+
+- Adds ARIA label prop for Suggestions component
+- SplitButton: Fix menu rendering when splitbutton is disabled
+- ComboBox: Changing high-contrast styles to use msHighContrastAdjust
+
+## 4.49.1
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Patches
+
+- Brand icons page clean up.
+- Implement hover and focus trigger behavior for Check component
+- Add the ability for compoundButtons to have icons
+- [ComboBox] Fix slight rendering bug in browser zoom (around sub-pixel rounding)
+- Stop delete from happening using delete or backspace when component is in disabled  mode
+- fix comments and example code for onRenderCaretDown prop of Dropdown component
 
 ## 4.49.0
 Wed, 20 Sep 2017 10:19:01 GMT

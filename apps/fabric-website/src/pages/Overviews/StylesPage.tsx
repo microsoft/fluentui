@@ -24,6 +24,9 @@ export class StylesPage extends React.Component<any, any> {
           <p>You can get the core styling with <a href='#/get-started#react'>Fabric React</a> or just <a href='#/get-started#core'>Fabric Core</a> on its own.</p>
           <p>Fabric&rsquo;s components use the core styling. To learn more about the fully-styled controls, check out the <a href='#/components'>components</a> page.</p>
           <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/styles-header.svg' } width='225' height='388' alt='Graphic showing elements of color and type' />
+          <span className={ styles.title }>Design Toolkit</span>
+          <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</span>
+          <a href='#/resources'>Learn more</a>
         </div>
       </div>
     );

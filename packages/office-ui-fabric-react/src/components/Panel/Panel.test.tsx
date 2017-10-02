@@ -22,11 +22,18 @@ describe('Panel', () => {
   it('fires the correct events when closing', (done) => {
     let dismissedCalled = false;
     let dismissCalled = false;
+    const setDismissTrue = (): void => {
+      dismissCalled = true;
+    };
+    const setDismissedTrue = (): void => {
+      dismissedCalled = true;
+    };
+
     let panel: Panel = ReactDOM.render(
       <Panel
         isOpen={ true }
-        onDismiss={ () => { dismissCalled = true; } }
-        onDismissed={ () => dismissedCalled = true }
+        onDismiss={ setDismissTrue }
+        onDismissed={ setDismissedTrue }
       />,
       div) as any;
 

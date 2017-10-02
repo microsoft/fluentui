@@ -1,8 +1,7 @@
 import { IExpandingCardStyles } from './ExpandingCard.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
-  mergeStyleSets,
-  before,
+  concatStyleSets,
   ITheme
 } from '../../Styling';
 
@@ -16,43 +15,49 @@ export const getStyles = memoizeFunction((
   const styles: IExpandingCardStyles = {
     root: {
       width: '340px',
-      'pointer-events': 'none',
-      '.ms-Callout': {
-        'box-shadow': '0 0 20px rgba(0, 0, 0, .2)',
-        border: 'none',
-        [MS_HIGHCONTRAST_ACTIVE]: {
-          border: '1px solid WindowText',
+      pointerEvents: 'none',
+      selectors: {
+        '.ms-Callout': {
+          boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
+          border: 'none',
+          selectors: {
+            [MS_HIGHCONTRAST_ACTIVE]: {
+              border: '1px solid WindowText',
+            }
+          }
         }
       }
     },
     compactCard: {
-      'pointer-events': 'auto',
+      pointerEvents: 'auto',
       position: 'relative'
     },
     expandedCard: [
       {
         height: '1px',
-        'overflow-y': 'hidden',
-        'pointer-events': 'auto',
-        transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)'
-      },
-      before({
-        content: '""',
-        position: 'relative',
-        display: 'block',
-        top: '0',
-        left: '24px',
-        width: '292px',
-        height: '1px',
-        'background-color': theme.palette.neutralLighter
-      })
+        overflowY: 'hidden',
+        pointerEvents: 'auto',
+        transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)',
+        selectors: {
+          ':before': {
+            content: '""',
+            position: 'relative',
+            display: 'block',
+            top: '0',
+            left: '24px',
+            width: '292px',
+            height: '1px',
+            backgroundColor: theme.palette.neutralLighter
+          }
+        }
+      }
     ],
     expandedCardScroll: {
       height: '100%',
-      'box-sizing': 'border-box',
-      'overflow-y': 'auto'
+      boxSizing: 'border-box',
+      overflowY: 'auto'
     }
   };
 
-  return mergeStyleSets(styles, customStyles)!;
+  return concatStyleSets(styles, customStyles)!;
 });

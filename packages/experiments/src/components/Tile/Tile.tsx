@@ -3,14 +3,15 @@ import * as React from 'react';
 import { ITileProps, TileSize } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { ISize } from '@uifabric/utilities';
+import { ISize, css, BaseComponent, autobind, getId } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
+import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
 
 // tslint:disable:no-any
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
+const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
 const enum TileLayoutValues {
@@ -332,7 +333,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     return (
       <button
         aria-label={ this.props.toggleSelectionAriaLabel }
-        className={ css('ms-Tile-check', TileStyles.check) }
+        className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost) }
         data-selection-toggle={ true }
         role='checkbox'
         aria-checked={ isSelected }

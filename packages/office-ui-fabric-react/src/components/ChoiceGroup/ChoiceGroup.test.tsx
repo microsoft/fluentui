@@ -150,11 +150,15 @@ describe('ChoiceGroup', () => {
 
   it('can render as a controlled component', () => {
     let _selectedItem;
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
+      _selectedItem = item;
+    };
+
     let choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
       <ChoiceGroup
         selectedKey='1'
         options={ TEST_OPTIONS }
-        onChange={ (ev, item) => _selectedItem = item }
+        onChange={ onChange }
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
@@ -172,10 +176,14 @@ describe('ChoiceGroup', () => {
 
   it('extra <input> attributes appear in dom if specified', () => {
     let _selectedItem;
+    const onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, item: IChoiceGroupOption | undefined): void => {
+      _selectedItem = item;
+    };
+
     const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
       <ChoiceGroup
         options={ TEST_OPTIONS }
-        onChange={ (ev, item) => _selectedItem = item }
+        onChange={ onChange }
       />
     );
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);

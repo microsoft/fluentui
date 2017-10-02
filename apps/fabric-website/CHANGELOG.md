@@ -1,6 +1,52 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 20 Sep 2017 10:19:01 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+
+## 5.0.6
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Added initializeIcons() call to make all icons in examples on the website available.
+- Added SharePoint Toolkit link and text to ResourcesPage.
+
+## 5.0.5
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Patches
+
+- Updated links in the SharePoint section of the ResourcesPage.
+
+## 5.0.4
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 5.0.3
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Patches
+
+- Reinforced header tag styles across website pages to manage UHF counter-styles.
+- Visual bug fixes.
+
+## 5.0.2
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Patches
+
+- Brand icons page clean up.
+- Updated reference to Fabric Core to the newly released 7.3.0 version.
+- Added a test case for dogfood check
+- Initial loading spinner gif changed to mimic our spinner component.
+- Switched some font colors on theme and neutral color swatches from white to black to achieve minimum contrast requirement of 4.5:1 for accessibility.
+- Removed trello reference from the Get Stated page.
+- Styling to fix UHF header overriding our styles.
+- Changed where Fabric Core and Fabric React versions were drawing from so that they would appear as a number instead of a range.
+- Visual bug fixes to accommodate UHF
+- Added section in ResourcePage for XD Toolkits and other assets, includes references on other pages, too.
 
 ## 5.0.1
 Wed, 20 Sep 2017 10:19:01 GMT

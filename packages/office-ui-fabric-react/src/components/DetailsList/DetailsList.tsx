@@ -345,7 +345,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       ref={ this._resolveRef('_list') }
                       role='presentation'
                       items={ items }
-                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
+                      onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
                       { ...additionalListProps }
@@ -375,6 +375,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
+  @autobind
+  private _onRenderListCell(nestingDepth: number)
+    : (item: any, itemIndex: number) => React.ReactNode {
+    return (item: any, itemIndex: number): React.ReactNode => {
+      return this._onRenderCell(nestingDepth, item, itemIndex as number);
+    };
+  }
+
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
       compact,
@@ -388,6 +396,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
+      checkboxCellClassName,
       groupProps
     } = this.props;
     let collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
@@ -423,7 +432,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
-      checkButtonAriaLabel: checkButtonAriaLabel
+      checkButtonAriaLabel: checkButtonAriaLabel,
+      checkboxCellClassName: checkboxCellClassName,
     }, this._onRenderRow);
   }
 
@@ -606,10 +616,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
         },
         this._columnOverrides[column.key]);
-
-      if (newColumn.maxWidth && newColumn.calculatedWidth > newColumn.maxWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth;
-      }
 
       totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
 
