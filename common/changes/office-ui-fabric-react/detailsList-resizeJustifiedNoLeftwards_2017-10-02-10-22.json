@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: Resizing columns in justified mode doesn't affect columns on the left.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-panu@microsoft.com"
+}
