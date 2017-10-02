@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { ComponentClass, StatelessComponent, EnzymePropSelector, shallow, mount, ReactWrapper } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
 import { ImageFit, ImageLoadState } from './Image.Props';
