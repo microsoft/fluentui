@@ -19,15 +19,13 @@
     "karma"
   ],
   "devDependencies": {
-    "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.8",
     "@types/es6-promise": "^0.0.32",
     "@types/jest": "21.1.0",
-    "@types/mocha": "2.2.39",
     "@types/prop-types": "15.5.1",
     "@types/react": "15.0.38",
     "@types/react-addons-test-utils": "0.14.18",
-    "@types/react-dom": "15.5.1",
+    "@types/react-dom": "15.5.5",
     "@types/resemblejs": "~1.3.28",
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.0",
