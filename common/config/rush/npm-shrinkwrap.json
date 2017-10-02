@@ -2502,19 +2502,19 @@
       "integrity": "sha512-oND+ez0D1jmOK8svzMFGtwkRMR0n3IdFcAb4RAflR7A0n+t6U0R+s3YOnoNuT8jAkmyBEgkqEj9rScE+p7749Q=="
     },
     "@uifabric/merge-styles": {
-      "version": "5.0.0",
-      "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-5.0.0.tgz",
-      "integrity": "sha512-LJi1PaVIi0x/+yfU1usLpranG04UnJaGEZoAXq7hbaULsImXjF1EofltXYWgaBTVOCXQJldQgApLdNQSfV74Ig=="
+      "version": "5.2.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-5.2.0.tgz",
+      "integrity": "sha512-5UNjp2VcxrNHR5JpY5xy6gEQMB5ZanVJUX3fTVsdz3vOKnh6u/LL1FhDAP7dHFSrCRwohT5jPHzbMCXcs3UJlA=="
     },
     "@uifabric/styling": {
-      "version": "0.24.2",
-      "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-0.24.2.tgz",
-      "integrity": "sha512-DSxYDRalPTvfsZVWCkcAdKctR1lI7BcT1wFjKnccSbodMW8Ic8o8aS2U0KDUx/PcJNeBvqGfmr25n5176VeU9w=="
+      "version": "5.1.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-5.1.0.tgz",
+      "integrity": "sha512-M4dUt0RoRvnqVFIplxcNZ9xCoOyXdOvnEt4lEOnpzipw0/gFvILYqcc34WmVX8KVL6FB8CJW2hKj8EUciwlDBQ=="
     },
     "@uifabric/utilities": {
-      "version": "4.16.0",
-      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-4.16.0.tgz",
-      "integrity": "sha512-VKYqGYQf6x0xa3C/of+DiflOu4KjMu/OfRXzU0DUvLuZErFkr/SmddqJePwFh2npqlACSv54KwUMVP5Qd1Hsig=="
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-5.0.1.tgz",
+      "integrity": "sha512-HUhh3EKUiZshpbNxcgkwQ6WcTKT3+rlhfX/pSeLElRTGbORYxdoWFDwVfFZT71xP2hFnUQI/Z5qb9BLdKeJpRA=="
     },
     "abab": {
       "version": "1.0.4",
@@ -8311,9 +8311,9 @@
       "integrity": "sha1-43rwTiOwkfZTYNsknbi7DzEpH2A="
     },
     "office-ui-fabric-react": {
-      "version": "4.51.1",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.51.1.tgz",
-      "integrity": "sha512-WKZHjg6ouz4vrLn2Z3FPxKrSJbSa/6NZNrF8EyB3BkidjINauvlZvONVak/6+hcWLmWcEROAo/v7qS3eEujIKw=="
+      "version": "5.3.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.3.0.tgz",
+      "integrity": "sha512-qelOQ/Hd9QDyM3xyKdjbkrGqB3Vdz8ZbSXU5ud9xYDqnDDe5ofAvRD3xqbylLLugD702WM2a8I6SztxuSRohCw=="
     },
     "on-finished": {
       "version": "2.3.0",
@@ -10265,11 +10265,6 @@
       "version": "2.0.1",
       "resolved": "https://registry.npmjs.org/ripemd160/-/ripemd160-2.0.1.tgz",
       "integrity": "sha1-D0WEKVxTo2KK9+bXmsohzlfRxuc="
-    },
-    "rtl-css-js": {
-      "version": "1.6.0",
-      "resolved": "https://registry.npmjs.org/rtl-css-js/-/rtl-css-js-1.6.0.tgz",
-      "integrity": "sha512-QRl0FZWJdhCWICBNnLAY4rj1Jx22ebH4RquLqtGh72qZwHmtcfv94VprTRPlr0Gmv9ehvYNk4R8HWsvUnwfQUA=="
     },
     "safe-buffer": {
       "version": "5.1.1",
