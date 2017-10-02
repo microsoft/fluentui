@@ -324,15 +324,17 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon) {
     for (const key in newPositions) {
-      const oldPositionEdge = oldPositions[key];
-      const newPositionEdge = newPositions[key];
+      // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
+      if (newPositions.hasOwnProperty(key)) {
+        const oldPositionEdge = oldPositions[key];
+        const newPositionEdge = newPositions[key];
 
-      if (oldPositionEdge && newPositionEdge) {
-        if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
-          return false;
+        if (oldPositionEdge && newPositionEdge) {
+          if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
+            return false;
+          }
         }
       }
-
     }
     return true;
   }
