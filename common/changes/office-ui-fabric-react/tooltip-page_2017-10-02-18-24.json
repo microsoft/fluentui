@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Split out and cleaned up TextField examples to better reflect the toolkit. ",
+      "comment": "Fixed duplicate header on Tooltip page.",
       "type": "patch"
     }
   ],
