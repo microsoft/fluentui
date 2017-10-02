@@ -6,7 +6,7 @@ import {
   mergeStyleSets,
   //  IFontStyles,
   FontWeights,
-  //  getFocusStyle
+  getFocusStyle
 } from '../../Styling';
 
 const ContextualMenuItemHeight = '32px';
@@ -32,25 +32,31 @@ export const getMenuItemStyles = memoizeFunction((
         position: 'relative',
         boxSizing: 'border-box',
       }],
-    root: {
-      font: 'inherit',
-      color: 'inherit',
-      background: 'none',
-      border: 'none',
-      width: '100%',
-      height: ContextualMenuItemHeight,
-      lineHeight: ContextualMenuItemHeight,
-      display: 'block',
-      cursor: 'pointer',
-      padding: '0px 6px',
-      textAlign: 'left',
-    },
+    root: [
+      {
+        font: 'inherit',
+        color: 'inherit',
+        background: 'none',
+        border: 'none',
+        width: '100%',
+        height: ContextualMenuItemHeight,
+        lineHeight: ContextualMenuItemHeight,
+        display: 'block',
+        cursor: 'pointer',
+        padding: '0px 6px',
+        textAlign: 'left',
+      },
+      getFocusStyle(theme),
+    ],
     rootDisabled: {
       color: ContextualMenuTextDisabledColor,
       cursor: 'default',
       pointerEvents: 'none',
     },
     rootHovered: {
+      background: ContextualMenuItemBackgroundHoverColor,
+    },
+    rootFocused: {
       background: ContextualMenuItemBackgroundHoverColor,
     },
     rootExpanded: {

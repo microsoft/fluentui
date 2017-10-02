@@ -74,7 +74,8 @@ export const getMenuItemClassNames = memoizeFunction((
       'ms-ContextualMenu-link',
       styles.root,
       !isDisabled && !isExpanded && {
-        ':hover': styles.rootHovered
+        ':hover': styles.rootHovered,
+        ':focus': styles.rootFocused,
       },
       isDisabled && [
         'is-disabled', styles.rootDisabled
