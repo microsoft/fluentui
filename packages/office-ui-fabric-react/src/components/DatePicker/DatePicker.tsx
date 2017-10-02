@@ -256,11 +256,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       selectedDate: date,
       isDatePickerShown: false,
       formattedDate: formatDate && date ? formatDate(date) : '',
+    }, () => {
+      if (onSelectDate) {
+        onSelectDate(date);
+      }
     });
-
-    if (onSelectDate) {
-      onSelectDate(date);
-    }
   }
 
   @autobind
