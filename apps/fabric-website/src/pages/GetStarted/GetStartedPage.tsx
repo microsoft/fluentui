@@ -135,7 +135,7 @@ const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fab
 ReactDOM.render(<MyPage />, document.body.firstChild);`
                 }
               </CodeBlock>
-              <p>For more information about using components, check out the <a className={ styles.getStartedLink } href='#/components/'>components page</a>.</p>
+              <p>For more information about using components, check out the <a className={ styles.getStartedLink } href='#/components'>components page</a>.</p>
             </li>
             <li>
               <p>You can also reference type styles for any text element:</p>
