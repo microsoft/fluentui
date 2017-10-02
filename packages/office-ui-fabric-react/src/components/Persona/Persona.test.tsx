@@ -4,8 +4,6 @@ import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
 import { mount, ReactWrapper } from 'enzyme';
-// import * as stylesImport from './Persona.scss';
-// const styles: any = stylesImport;
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
