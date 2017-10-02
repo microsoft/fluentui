@@ -14,9 +14,8 @@ describe('mergeStyleSets', () => {
   });
 
   it('can merge style sets', () => {
-
-    // tslint:disable-next-line:no-any
-    const result = mergeStyleSets<any>(
+    const result: { root: string, a: string, b: string } = mergeStyleSets(
+      {},
       {
         root: { background: 'red' },
         a: { background: 'green' }
