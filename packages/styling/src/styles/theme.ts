@@ -107,6 +107,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
 
     menuItemBackgroundHovered: p.neutralLighter,
     menuItemBackgroundChecked: p.neutralQuaternaryAlt,
+    menuSelectedText: p.black,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 

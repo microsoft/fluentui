@@ -5,6 +5,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 import {
   IPoint,
   IRectangle,
@@ -318,7 +319,7 @@ export interface IContextualMenuItem {
    * Additional styles to apply to the menu item
    * @defaultvalue undefined
    */
-  style?: React.CSSProperties;
+  style?: IMenuItemStyle;
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
@@ -381,9 +382,22 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
   bottomDivider?: boolean;
 }
 
+export interface IMenuItemStyle extends IButtonStyles {
+  item: IStyle;
+  linkContent: IStyle;
+  anchorLink: IStyle;
+  iconColor: IStyle;
+  subMenuIcon: IStyle;
+}
+
 export interface IContextualMenuStyles {
   /**
    * Style override for the contextual menu title.
    */
   title: IStyle;
+  container: IStyle;
+  root: IStyle;
+  header: IStyle;
+  divider: IStyle;
+  list: IStyle;
 }
