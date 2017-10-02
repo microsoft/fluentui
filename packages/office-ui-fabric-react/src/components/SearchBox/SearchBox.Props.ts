@@ -63,8 +63,8 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   ariaLabel?: string;
 
   /**
-   * Whether or not the SearchBox is inline.
+   * Whether or not the SearchBox is underlined.
    * @default false
    */
-  inline?: boolean;
+  underlined?: boolean;
 }

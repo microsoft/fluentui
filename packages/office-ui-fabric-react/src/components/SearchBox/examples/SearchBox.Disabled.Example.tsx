@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import './SearchBox.Examples.scss';
 
 export class SearchBoxDisabledExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <div>
+      <div className='ms-SearchBoxExample'>
         <SearchBox
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
@@ -15,7 +16,7 @@ export class SearchBoxDisabledExample extends React.Component<any, any> {
         <SearchBox
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          inline={ true }
+          underlined={ true }
           disabled
         />
       </div>
