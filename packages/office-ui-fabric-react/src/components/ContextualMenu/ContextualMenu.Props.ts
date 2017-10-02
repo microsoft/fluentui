@@ -383,10 +383,29 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
 }
 
 export interface IMenuItemStyle extends IButtonStyles {
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
   item: IStyle;
+
+  /**
+   * Styles for the content inside the button/link of the menuItem.
+   */
   linkContent: IStyle;
+
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
   anchorLink: IStyle;
+
+  /**
+   * Icon color of the menu item.
+   */
   iconColor: IStyle;
+
+  /**
+   * Styles for the submenu icon of a menu item.
+   */
   subMenuIcon: IStyle;
 }
 
@@ -396,9 +415,29 @@ export interface IContextualMenuStyles {
    * Style override for the contextual menu title.
    */
   title: IStyle;
+
+  /**
+   * Style for the container which parents all menu items.
+   */
   container: IStyle;
+
+  /**
+   * Base styles for the root element of all ContextualMenus.
+   */
   root: IStyle;
+
+  /**
+   * Styles for the header item of a ContextualMenu
+   */
   header: IStyle;
+
+  /**
+   * Styles for a divider item of a ConextualMenu.
+   */
   divider: IStyle;
+
+  /**
+   * Styles for the list that contains all menuItems.
+   */
   list: IStyle;
 }
