@@ -1,8 +1,10 @@
-import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
-import { assertNever } from '../../Utilities';
-
-const DAYS_IN_WEEK = 7;
-const MONTHS_IN_YEAR = 12;
+import {
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType
+} from "../dateValues/DateValues";
+import TimeConstants from "../dateValues/TimeConstants";
+import { assertNever } from "../../Utilities";
 
 /**
  * Returns a date offset from the given date by the specified number of days.
@@ -23,7 +25,7 @@ export function addDays(date: Date, days: number): Date {
  * @return {Date} A new Date object offset from the origin date by the given number of weeks
  */
 export function addWeeks(date: Date, weeks: number): Date {
-  return addDays(date, weeks * DAYS_IN_WEEK);
+  return addDays(date, weeks * TimeConstants.DaysInOneWeek);
 }
 
 /**
@@ -42,7 +44,11 @@ export function addMonths(date: Date, months: number): Date {
   // We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
   // Loop until we back up to a day the new month has.
   // (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-  if (result.getMonth() !== ((newMonth % MONTHS_IN_YEAR) + MONTHS_IN_YEAR) % MONTHS_IN_YEAR) {
+  if (
+    result.getMonth() !==
+    (newMonth % TimeConstants.MonthInOneYear + TimeConstants.MonthInOneYear) %
+      TimeConstants.MonthInOneYear
+  ) {
     result = addDays(result, -result.getDate());
   }
   return result;
@@ -63,7 +69,12 @@ export function addYears(date: Date, years: number): Date {
   // We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
   // Loop until we back up to a day the new month has.
   // (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-  if (result.getMonth() !== ((date.getMonth() % MONTHS_IN_YEAR) + MONTHS_IN_YEAR) % MONTHS_IN_YEAR) {
+  if (
+    result.getMonth() !==
+    (date.getMonth() % TimeConstants.MonthInOneYear +
+      TimeConstants.MonthInOneYear) %
+      TimeConstants.MonthInOneYear
+  ) {
     result = addDays(result, -result.getDate());
   }
   return result;
@@ -91,9 +102,11 @@ export function compareDates(date1: Date, date2: Date): boolean {
   } else if (!date1 || !date2) {
     return false;
   } else {
-    return (date1.getFullYear() === date2.getFullYear()
-      && date1.getMonth() === date2.getMonth()
-      && date1.getDate() === date2.getDate());
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
   }
 }
 
@@ -116,7 +129,11 @@ export function compareDatePart(date1: Date, date2: Date): Number {
  * @param {DayOfWeek} dayOfWeek - The first day of the week.
  * @returns {Date[]} An array of dates representing the date range containing the specified date.
  */
-export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek): Date[] {
+export function getDateRangeArray(
+  date: Date,
+  dateRangeType: DateRangeType,
+  firstDayOfWeek: DayOfWeek
+): Date[] {
   let datesArray = new Array<Date>();
   let startDate: Date;
   let endDate = null;
@@ -129,7 +146,7 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
 
     case DateRangeType.Week:
       startDate = getStartDateOfWeek(getDatePart(date), firstDayOfWeek);
-      endDate = addDays(startDate, DAYS_IN_WEEK);
+      endDate = addDays(startDate, TimeConstants.DaysInOneWeek);
       break;
 
     case DateRangeType.Month:
@@ -185,7 +202,7 @@ function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
   let daysOffset = firstDayOfWeek - date.getDay();
   if (daysOffset > 0) {
     // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
-    daysOffset -= DAYS_IN_WEEK;
+    daysOffset -= TimeConstants.DaysInOneWeek;
   }
   return addDays(date, daysOffset);
 }
@@ -207,12 +224,87 @@ function getDatePartHashValue(date: Date) {
  * @param {DayOfWeek} firstDayOfWeek - The first day of the week (0-6, Sunday = 0)
  * @return {Number} The week's number in the year.
  */
-export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek) {
-  let num = getDayOfYear(date) - 1;
-  let num2 = date.getDay() - (num % 7);
-  let num3 = ((num2 - firstDayOfWeek) + 14) % 7;
-  return Math.floor(((num + num3) / 7) + 1);
+export function getWeekNumber(
+  date: Date,
+  firstDayOfWeek: DayOfWeek,
+  firstWeekOfYear: FirstWeekOfYear
+) {
+  //First four-day week of the year - minumum days count
+  const fourDayWeek = 4;
+  let dayOfYear = getDayOfYear(date) - 1;
+  let firstWeekDayOfYear =
+    date.getDay() - dayOfYear % TimeConstants.DaysInOneWeek;
+
+  switch (firstWeekOfYear) {
+    case FirstWeekOfYear.FirstFullWeek:
+      if (firstWeekDayOfYear !== firstDayOfWeek) {
+        if (getDayOfYear(date) < TimeConstants.DaysInOneWeek) {
+          return TimeConstants.WeeksInOneYear;
+        }
+        return getDefaultWeekNumber(
+          dayOfYear,
+          firstWeekDayOfYear,
+          firstDayOfWeek,
+          true
+        );
+      }
+      return getDefaultWeekNumber(
+        dayOfYear,
+        firstWeekDayOfYear,
+        firstDayOfWeek
+      );
+    case FirstWeekOfYear.FirstFourDayWeek:
+      let adjustFirstWeekDayOfYear =
+        firstWeekDayOfYear == 0
+          ? firstWeekDayOfYear + TimeConstants.DaysInOneWeek
+          : firstWeekDayOfYear;
+
+      if (adjustFirstWeekDayOfYear >= fourDayWeek + firstDayOfWeek) {
+        if (getDayOfYear(date) < fourDayWeek) {
+          return TimeConstants.WeeksInOneYear;
+        }
+        return getDefaultWeekNumber(
+          dayOfYear,
+          firstWeekDayOfYear,
+          firstDayOfWeek,
+          true
+        );
+      }
+      return getDefaultWeekNumber(
+        dayOfYear,
+        firstWeekDayOfYear,
+        firstDayOfWeek
+      );
+    default:
+      return getDefaultWeekNumber(
+        dayOfYear,
+        firstWeekDayOfYear,
+        firstDayOfWeek
+      );
+  }
 }
+
+// Helper function for getWeekNumber.
+// Returns week number starting from January 1st
+function getDefaultWeekNumber(
+  dayOfYear: number,
+  firstWeekDayOfYear: number,
+  firstDayOfWeek: DayOfWeek,
+  shiftForward?: boolean
+) {
+  let daysUntilEndOfCurrentWeek =
+    (firstWeekDayOfYear - firstDayOfWeek + TimeConstants.DaysInOneWeek * 2) %
+    TimeConstants.DaysInOneWeek;
+  let adjustment = !shiftForward ? 1 : 0;
+  return Math.floor(
+    (dayOfYear + daysUntilEndOfCurrentWeek) / TimeConstants.DaysInOneWeek +
+      adjustment
+  );
+}
+
+// Helper function for getWeekNumber.
+// Returns week number starting from next week after January 1st
+function startCountWithNextWeek() {}
 
 /**
  * Returns the day number for a date in a year
@@ -226,7 +318,7 @@ function getDayOfYear(date: Date) {
   let daysUntilDate = 0;
 
   for (let i = 0; i < month; i++) {
-    daysUntilDate += daysInMonth((i + 1), year);
+    daysUntilDate += daysInMonth(i + 1, year);
   }
 
   daysUntilDate += date.getDate();

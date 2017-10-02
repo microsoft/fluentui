@@ -1,6 +1,10 @@
-import * as React from 'react';
-import { Calendar } from './Calendar';
-import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
+import * as React from "react";
+import { Calendar } from "./Calendar";
+import {
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType
+} from "../../utilities/dateValues/DateValues";
 
 export { DayOfWeek, DateRangeType };
 
@@ -112,6 +116,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showWeekNumbers?: boolean;
 
   /**
+  * Defines when the first week of the year should start, 0, 1 or 2 are the possible values
+  * @defaultvalue 0
+  */
+  firstWeekOfYear?: FirstWeekOfYear;
+
+  /**
   * Apply additional formating to dates, for example localized date formatting.
   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
@@ -166,7 +176,6 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
-
 }
 
 export interface ICalendarIconStrings {
@@ -181,7 +190,6 @@ export interface ICalendarIconStrings {
   * @defaultvalue  'Down'
   */
   rightNavigation?: string;
-
 }
 
 export interface ICalendarFormatDateCallbacks {
@@ -204,5 +212,4 @@ export interface ICalendarFormatDateCallbacks {
   * Callback to apply formatting to the year in the Month Picker header
   */
   formatYear: (date: Date) => string;
-
 }

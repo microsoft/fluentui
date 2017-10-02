@@ -12,6 +12,15 @@ export enum DayOfWeek {
 }
 
 /**
+ * First week of the year settings types
+ */
+export enum FirstWeekOfYear {
+  FirstDay = 0,
+  FirstFullWeek = 1,
+  FirstFourDayWeek = 2
+}
+
+/**
  * The supported date range types
  */
 export enum DateRangeType {

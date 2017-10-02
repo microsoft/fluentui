@@ -1,28 +1,42 @@
-import * as React from 'react';
-import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
-import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { CalendarDay } from './CalendarDay';
-import { CalendarMonth } from './CalendarMonth';
-import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
+import * as React from "react";
 import {
-  autobind,
-  css,
-  BaseComponent,
-  KeyCodes
-} from '../../Utilities';
-import * as stylesImport from './Calendar.scss';
+  ICalendar,
+  ICalendarProps,
+  ICalendarStrings,
+  ICalendarIconStrings,
+  ICalendarFormatDateCallbacks
+} from "./Calendar.Props";
+import {
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType
+} from "../../utilities/dateValues/DateValues";
+import { CalendarDay } from "./CalendarDay";
+import { CalendarMonth } from "./CalendarMonth";
+import {
+  compareDates,
+  getDateRangeArray
+} from "../../utilities/dateMath/DateMath";
+import { autobind, css, BaseComponent, KeyCodes } from "../../Utilities";
+import * as stylesImport from "./Calendar.scss";
 const styles: any = stylesImport;
 
-const leftArrow: string = 'Up';
-const rightArrow: string = 'Down';
+const leftArrow: string = "Up";
+const rightArrow: string = "Down";
 let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
 };
 
 let dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
-  formatMonthDayYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()),
-  formatMonthYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getFullYear()),
+  formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
+    strings.months[date.getMonth()] +
+    " " +
+    date.getDate() +
+    ", " +
+    date.getFullYear(),
+  formatMonthYear: (date: Date, strings: ICalendarStrings) =>
+    strings.months[date.getMonth()] + " " + date.getFullYear(),
   formatDay: (date: Date) => date.getDate().toString(),
   formatYear: (date: Date) => date.getFullYear().toString()
 };
@@ -41,7 +55,8 @@ export interface ICalendarState {
   isDayPickerVisible?: boolean;
 }
 
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
+export class Calendar extends BaseComponent<ICalendarProps, ICalendarState>
+  implements ICalendar {
   public static defaultProps: ICalendarProps = {
     onSelectDate: undefined,
     onDismiss: undefined,
@@ -58,6 +73,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
     showWeekNumbers: false,
+    firstWeekOfYear: 0,
     dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
@@ -72,15 +88,22 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   constructor(props: ICalendarProps) {
     super(props);
-    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
+    let currentDate =
+      props.value && !isNaN(props.value.getTime())
+        ? props.value
+        : props.today || new Date();
 
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate,
 
       /** When showMonthPickerAsOverlay is active it overrides isMonthPickerVisible/isDayPickerVisible props (These props permanently set the visibility of their respective calendars). */
-      isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
-      isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible
+      isMonthPickerVisible: this.props.showMonthPickerAsOverlay
+        ? false
+        : this.props.isMonthPickerVisible,
+      isDayPickerVisible: this.props.showMonthPickerAsOverlay
+        ? true
+        : this.props.isDayPickerVisible
     };
 
     this._focusOnUpdate = false;
@@ -91,7 +114,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
     // if selected date is updated via props, we may need to modify the navigated date
-    let overrideNavigatedDate = (autoNavigateOnSelection && !compareDates(value!, this.props.value!));
+    let overrideNavigatedDate =
+      autoNavigateOnSelection && !compareDates(value!, this.props.value!);
     if (overrideNavigatedDate) {
       this.setState({
         navigatedDate: value
@@ -116,71 +140,116 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public render() {
-    let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
-    let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
-    let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
+    let rootClass = "ms-DatePicker";
+    let {
+      firstDayOfWeek,
+      dateRangeType,
+      strings,
+      showMonthPickerAsOverlay,
+      autoNavigateOnSelection,
+      showGoToToday,
+      highlightCurrentMonth,
+      navigationIcons
+    } = this.props;
+    let {
+      selectedDate,
+      navigatedDate,
+      isMonthPickerVisible,
+      isDayPickerVisible
+    } = this.state;
+    let onHeaderSelect = showMonthPickerAsOverlay
+      ? this._onHeaderSelect
+      : undefined;
     let monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref='root' role='application'>
+      <div
+        className={css(rootClass, styles.root)}
+        ref="root"
+        role="application"
+      >
         <div
-          className={ css(
-            'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
+          className={css(
+            "ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused",
             styles.picker,
             styles.pickerIsOpened,
             styles.pickerIsFocused,
-            isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
-            isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
-            monthPickerOnly && ('ms-DatePicker-monthPickerOnly ' + styles.monthPickerOnly),
-            showMonthPickerAsOverlay && ('ms-DatePicker-monthPickerAsOverlay ' + styles.monthPickerAsOverlay),
-          ) }
+            isMonthPickerVisible &&
+              "ms-DatePicker-monthPickerVisible " + styles.monthPickerVisible,
+            isMonthPickerVisible &&
+              isDayPickerVisible &&
+              "ms-DatePicker-calendarsInline " + styles.calendarsInline,
+            monthPickerOnly &&
+              "ms-DatePicker-monthPickerOnly " + styles.monthPickerOnly,
+            showMonthPickerAsOverlay &&
+              "ms-DatePicker-monthPickerAsOverlay " +
+                styles.monthPickerAsOverlay
+          )}
         >
-          <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
-            <div className={ css('ms-DatePicker-frame', styles.frame) }>
-              <div className={ css('ms-DatePicker-wrap', styles.wrap, showGoToToday && styles.goTodaySpacing) }>
-                { isDayPickerVisible && <CalendarDay
-                  selectedDate={ selectedDate! }
-                  navigatedDate={ navigatedDate! }
-                  today={ this.props.today }
-                  onSelectDate={ this._onSelectDate }
-                  onNavigateDate={ this._onNavigateDate }
-                  onDismiss={ this.props.onDismiss }
-                  firstDayOfWeek={ firstDayOfWeek! }
-                  dateRangeType={ dateRangeType! }
-                  autoNavigateOnSelection={ autoNavigateOnSelection! }
-                  strings={ strings! }
-                  onHeaderSelect={ onHeaderSelect }
-                  navigationIcons={ navigationIcons! }
-                  showWeekNumbers={ this.props.showWeekNumbers }
-                  dateTimeFormatter={ this.props.dateTimeFormatter! }
-                  ref='dayPicker'
-                />
-                }
+          <div
+            className={css(
+              "ms-DatePicker-holder ms-slideDownIn10",
+              styles.holder
+            )}
+            onKeyDown={this._onDatePickerPopupKeyDown}
+          >
+            <div className={css("ms-DatePicker-frame", styles.frame)}>
+              <div
+                className={css(
+                  "ms-DatePicker-wrap",
+                  styles.wrap,
+                  showGoToToday && styles.goTodaySpacing
+                )}
+              >
+                {isDayPickerVisible && (
+                  <CalendarDay
+                    selectedDate={selectedDate!}
+                    navigatedDate={navigatedDate!}
+                    today={this.props.today}
+                    onSelectDate={this._onSelectDate}
+                    onNavigateDate={this._onNavigateDate}
+                    onDismiss={this.props.onDismiss}
+                    firstDayOfWeek={firstDayOfWeek!}
+                    dateRangeType={dateRangeType!}
+                    autoNavigateOnSelection={autoNavigateOnSelection!}
+                    strings={strings!}
+                    onHeaderSelect={onHeaderSelect}
+                    navigationIcons={navigationIcons!}
+                    showWeekNumbers={this.props.showWeekNumbers}
+                    firstWeekOfYear={this.props.firstWeekOfYear!}
+                    dateTimeFormatter={this.props.dateTimeFormatter!}
+                    ref="dayPicker"
+                  />
+                )}
 
-                { isMonthPickerVisible && <CalendarMonth
-                  navigatedDate={ navigatedDate! }
-                  strings={ strings! }
-                  onNavigateDate={ this._onNavigateDate }
-                  today={ this.props.today }
-                  highlightCurrentMonth={ highlightCurrentMonth! }
-                  onHeaderSelect={ onHeaderSelect }
-                  navigationIcons={ navigationIcons! }
-                  dateTimeFormatter={ this.props.dateTimeFormatter! }
-                  ref='monthPicker'
-                /> }
+                {isMonthPickerVisible && (
+                  <CalendarMonth
+                    navigatedDate={navigatedDate!}
+                    strings={strings!}
+                    onNavigateDate={this._onNavigateDate}
+                    today={this.props.today}
+                    highlightCurrentMonth={highlightCurrentMonth!}
+                    onHeaderSelect={onHeaderSelect}
+                    navigationIcons={navigationIcons!}
+                    dateTimeFormatter={this.props.dateTimeFormatter!}
+                    ref="monthPicker"
+                  />
+                )}
 
-                { showGoToToday &&
+                {showGoToToday && (
                   <span
-                    role='button'
-                    className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
-                    onClick={ this._onGotoToday }
-                    onKeyDown={ this._onGotoTodayKeyDown }
-                    tabIndex={ 0 }
+                    role="button"
+                    className={css(
+                      "ms-DatePicker-goToday js-goToday",
+                      styles.goToday
+                    )}
+                    onClick={this._onGotoToday}
+                    onKeyDown={this._onGotoTodayKeyDown}
+                    tabIndex={0}
                   >
-                    { strings!.goToToday }
+                    {strings!.goToToday}
                   </span>
-                }
+                )}
               </div>
             </div>
           </div>
@@ -204,8 +273,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-
-    if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
+    if (
+      this.props.isDayPickerVisible ||
+      (!this.props.isDayPickerVisible && !focusOnNavigatedDay)
+    ) {
       this._navigateDay(date);
       this._focusOnUpdate = focusOnNavigatedDay;
     } else {
@@ -241,13 +312,11 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onGotoToday() {
-
     let { dateRangeType, firstDayOfWeek, today } = this.props;
 
     let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!);
 
     this._onSelectDate(today!, dates);
-
   }
 
   @autobind
