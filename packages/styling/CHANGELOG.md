@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 27 Sep 2017 00:20:58 GMT and should not be manually modified.
+This log was last generated on Sat, 30 Sep 2017 01:26:37 GMT and should not be manually modified.
+
+## 5.1.0
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Minor changes
+
+- Add a new success background color
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT

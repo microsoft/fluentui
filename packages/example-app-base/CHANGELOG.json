@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.0.3",
+      "tag": "@uifabric/example-app-base_v5.0.3",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "782705c98981f7114864f06472e0411af2d7a9aa",
+            "comment": "Update fabric version for example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.2",
       "tag": "@uifabric/example-app-base_v5.0.2",
       "date": "Thu, 28 Sep 2017 10:19:12 GMT",
