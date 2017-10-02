@@ -55,8 +55,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
         className={
           css(
             'ms-Icon ms-Icon-placeHolder',
-            styles.root,
-            styles.rootHasPlaceHolder,
             props.className
           ) }
       />
