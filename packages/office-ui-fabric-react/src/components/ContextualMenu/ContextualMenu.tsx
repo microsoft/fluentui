@@ -306,10 +306,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
-    let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: item.icon
-    };
 
+    let iconProps = this._getIconProps(item);
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
     let menuClassNames = getMenuItemClassNames(
       getMenuItemStyles(this.props.theme!, item.style),
@@ -521,11 +519,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderIcon(item: IContextualMenuItem, classNames: IMenuItemClassNames) {
-    // Only present to allow continued use of item.icon which is deprecated.
+  private _getIconProps(item: IContextualMenuItem): IIconProps {
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: item.icon
     };
+    return iconProps;
+  }
+
+  private _renderIcon(item: IContextualMenuItem, classNames: IMenuItemClassNames) {
+    // Only present to allow continued use of item.icon which is deprecated.
+    let iconProps = this._getIconProps(item);
 
     return <Icon { ...iconProps } className={ classNames.icon } />;
   }
