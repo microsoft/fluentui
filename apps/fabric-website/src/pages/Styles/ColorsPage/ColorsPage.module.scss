@@ -1,5 +1,9 @@
 @import '../../../styles/variables';
 
+.contentInGrid {
+  @include ms-padding-left($contentInGrid);
+}
+
 // XL and up
 @media screen and (min-width: $ms-screen-min-xl) {
   .accentGroup {

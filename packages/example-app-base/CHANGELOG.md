@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 28 Sep 2017 10:19:12 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+
+## 5.0.3
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Update fabric version for example-app-base
 
 ## 5.0.2
 Thu, 28 Sep 2017 10:19:12 GMT

@@ -39,13 +39,19 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h2>Design Toolkit &amp; Assets</h2>
               </div>
               <div className={ css('ms-Grid-col ms-sm12 ms-lg8', styles.description) }>
-                <p>To ensure a consistent look and feel for your project, here's where you can leverage essential elements. This section covers design and UI-related downloads for apps designed and built with Fabric.</p>
+                <p>Use the resources on this page to ensure a consistent look and feel fore your project. This section includes design and UI-related downloads for apps designed and built with Fabric.</p>
 
-                <h3>Design Toolkit</h3>
-                <p>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</p>
+                <h3>Fabric Design Toolkit</h3>
+                <p>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</p>
                 <ul>
                   <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/officeuifabric.zip'>Adobe XD Toolkit</a></li>
                   <li><a className={ styles.relatedLink } href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97'>Adobe XD Toolkit (Microsoft employees)</a></li>
+                </ul>
+
+                <h3>SharePoint Design Toolkit</h3>
+                <p>The SharePoint design toolkit provides everything you need to design your web parts. The toolkit contains page grids for Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web part.</p>
+                <ul>
+                  <li><a className={ styles.relatedLink } href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/sharepoint_toolkit.zip'>SharePoint XD Toolkit</a></li>
                 </ul>
 
                 <h3>Fonts</h3>

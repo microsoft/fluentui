@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Added initializeIcons() call to make all icons in examples on the website available.",
+      "comment": "Updated ResourcePage text and made padding more rtl friendly.",
       "type": "patch"
     }
   ],

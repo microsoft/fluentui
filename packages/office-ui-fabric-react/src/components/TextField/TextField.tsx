@@ -131,17 +131,18 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       disabled,
       iconClass,
       iconProps,
-      label,
       multiline,
       required,
       underlined,
       borderless,
       addonString,
-      onRenderAddon = this._onRenderAddon
+      onRenderAddon = this._onRenderAddon,
+      onRenderLabel = this._onRenderLabel
     } = this.props;
     let { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
+    const renderProps: ITextFieldProps = { ...this.props, componentId: this._id };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
@@ -156,7 +157,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
-          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+          { onRenderLabel(renderProps, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css(styles.fieldAddon) }>
@@ -268,6 +269,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     if (this.props.validateOnFocusOut) {
       this._validate(this.state.value);
     }
+  }
+
+  private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
+    const {
+      label,
+      componentId
+     } = props;
+    if (label) {
+      return (<Label htmlFor={ componentId }>{ label }</Label>);
+    }
+    return null;
   }
 
   private _onRenderAddon(props: ITextFieldProps): JSX.Element {
