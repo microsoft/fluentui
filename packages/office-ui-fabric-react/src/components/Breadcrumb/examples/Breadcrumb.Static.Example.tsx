@@ -9,8 +9,6 @@ import {
   autobind
 } from '../../../Utilities';
 
-import { Link } from 'office-ui-fabric-react/lib/Link';
-
 export class BreadcrumbStaticExample extends React.Component<any, any> {
   constructor() {
     super();
@@ -29,9 +27,10 @@ export class BreadcrumbStaticExample extends React.Component<any, any> {
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true },
           ] }
           // Returning undefined to OnReduceData tells the breadcrumb not to shrink
-          onReduceData={ (data) => undefined }
+          onReduceData={ this._returnUndefined }
           maxDisplayedItems={ 3 }
-          ariaLabel={ 'Website breadcrumb' } />
+          ariaLabel={ 'Website breadcrumb' }
+        />
       </div>
     );
   }
@@ -39,6 +38,10 @@ export class BreadcrumbStaticExample extends React.Component<any, any> {
   @autobind
   private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
+  }
+
+  private _returnUndefined(): undefined {
+    return undefined;
   }
 
 }

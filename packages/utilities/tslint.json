@@ -2,10 +2,5 @@
   "extends": [
     "office-ui-fabric-react-tslint"
   ],
-  "rules": {
-    "no-any": false,
-    "typedef": [
-      false
-    ]
-  }
+  "rules": {}
 }

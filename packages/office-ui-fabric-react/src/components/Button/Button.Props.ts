@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps, IconName } from '../../Icon';
+import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
@@ -11,6 +11,11 @@ export interface IButton {
    * Sets focus to the button.
    */
   focus: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will dismiss the menu
+   */
+  dismissMenu: () => void;
 }
 
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
@@ -27,6 +32,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   href?: string;
 
   /**
+   * Changes the visual presentation of the button to be emphasized (if defined)
+   * @default false
+   */
+  primary?: boolean;
+
+  /**
    * Unique id to identify the item. Typically a duplicate of key value.
    */
   uniqueId?: string | number;
@@ -35,6 +46,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Whether the button is disabled
    */
   disabled?: boolean;
+
+  /**
+   * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
+   */
+  primaryDisabled?: boolean;
 
   /**
    * Custom styling for individual elements within the button DOM.
@@ -151,20 +167,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
-   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
-   * @deprecated
-   */
-  icon?: string;
-
-  /**
-   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } }.
-   * @deprecated
-   */
-  menuIconName?: IconName | string | null;
-
-  /**
-   * Deprecated on 5/26/2016, use checked.
-   * @deprecated
+   * Any custom data the developer wishes to associate with the menu item.
    */
   toggled?: boolean;
 
@@ -243,9 +246,19 @@ export interface IButtonStyles {
   rootCheckedDisabled?: IStyle;
 
   /**
+* Style override applied to the root on hover in a expanded state on hover
+*/
+  rootExpandedHovered?: IStyle;
+
+  /**
    * Style for the flexbox container within the root element.
    */
   flexContainer?: IStyle;
+
+  /**
+   * Style for the text container within the flexbox container element (and contains the text and description).
+   */
+  textContainer?: IStyle;
 
   /**
    * Style for the icon on the near side of the label.
@@ -266,6 +279,11 @@ export interface IButtonStyles {
    * Style for the icon on the near side of the label when expanded.
    */
   iconExpanded?: IStyle;
+
+  /**
+ * Style for the icon on the near side of the label when expanded and hovered.
+ */
+  iconExpandedHovered?: IStyle;
 
   /**
    * Style override for the icon when the button is disabled.
@@ -346,6 +364,12 @@ export interface IButtonStyles {
    * Style override for the container div around a SplitButton element in a disabled state
    */
   splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the divider element that appears between the button and menu button
+   * for a split button.
+   */
+  splitButtonDivider?: IStyle;
 
   /**
    * Style override for the SplitButton menu button

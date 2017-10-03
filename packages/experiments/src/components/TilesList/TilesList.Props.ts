@@ -1,7 +1,8 @@
 
 import * as React from 'react';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
+import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
 export interface ITilesGridItem<TItem> {
   /**
@@ -22,7 +23,7 @@ export interface ITilesGridItem<TItem> {
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
-  onRender: (content: TItem, finalSize?: ITileSize) => (React.ReactNode | React.ReactNode[]);
+  onRender: (content: TItem, finalSize?: ISize) => (React.ReactNode | React.ReactNode[]);
 }
 
 export const enum TilesGridMode {
@@ -75,14 +76,19 @@ export interface ITilesGridSegment<TItem> {
    * The bottom margin for the grid.
    */
   marginBottom?: number;
+  /**
+   * The minimum aspect ratio for an item in the grid.
+   */
+  minAspectRatio?: number;
+  /**
+   * The maximum aspect ratio for an item in the grid.
+   */
+  maxAspectRatio?: number;
 }
 
-export interface ITileSize {
-  width: number;
-  height: number;
-}
+export { ISize as ITileSize };
 
-export interface ITilesListProps<TItem> extends IBaseProps, React.HTMLAttributes<TilesList<TItem>> {
+export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.
@@ -94,4 +100,12 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.HTMLAttributes
    * The desired number of content cells to render per page.
    */
   cellsPerPage?: number;
+  /**
+   * Component ref for the focus zone within the list. Use this to control auto-focus.
+   */
+  focusZoneComponentRef?: (focusZone: IFocusZone) => void;
+  /**
+   * Callback for when the active element within the list's FocusZone changes.
+   */
+  onActiveElementChanged?: (element: HTMLElement) => void;
 }

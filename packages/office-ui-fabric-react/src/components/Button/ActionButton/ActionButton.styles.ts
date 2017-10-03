@@ -1,30 +1,23 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets
+  concatStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IButtonStyles,
-  focusInset?: string,
-  focusColor?: string
+  customStyles?: IButtonStyles
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
     root: {
-      borderWidth: '0',
       padding: DEFAULT_PADDING,
       height: DEFAULT_BUTTON_HEIGHT,
       color: theme.palette.neutralPrimary,
@@ -33,9 +26,6 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       color: theme.palette.themePrimary,
-      icon: {
-        color: theme.palette.themePrimary
-      }
     },
 
     iconHovered: {
@@ -81,9 +71,13 @@ export const getStyles = memoizeFunction((
 
     menuIcon: {
       color: theme.palette.neutralSecondary
+    },
+
+    textContainer: {
+      flexGrow: 0
     }
 
   };
 
-  return mergeStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
+  return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
 });

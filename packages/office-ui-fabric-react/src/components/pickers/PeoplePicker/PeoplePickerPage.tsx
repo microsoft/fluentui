@@ -7,6 +7,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
+import { ComponentStatus } from '../../../demo/ComponentStatus/ComponentStatus';
+import { PeoplePickerStatus } from './PeoplePicker.checklist';
 
 const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
@@ -37,9 +39,6 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/PeoplePicker/PeoplePicker.html'>Fabric JS</a>
-        }
         bestPractices={
           <div>The PeoplePicker is used to select one or more entities, such as people or groups. Entry points for PeoplePickers are typically specialized TextField-like input fields known as a "well", which are used to search for recipients from a list. When a recipient is selected from the list, it is added to the well as a specialized Persona that can be interacted with or removed. Clicking on a Persona from the well should invoke a PersonaCard or open a profile pane for that recipient.</div>
         }
@@ -61,8 +60,13 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
               <li>Use the PeoplePicker without sufficient space</li>
             </ul>
           </div>
-        }>
-      </ComponentPage>
+        }
+        componentStatus={
+          <ComponentStatus
+            {...PeoplePickerStatus}
+          />
+        }
+      />
     );
   }
 

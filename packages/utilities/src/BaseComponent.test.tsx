@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { BaseComponent } from './BaseComponent';
 
-let { assert, expect } = chai;
-
 let _originalOnError = BaseComponent.onError;
 
 class TestComponent extends BaseComponent<{}, {}> {
@@ -46,7 +44,8 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  private _createNullRef() {
+  private _createNullRef(): void {
+    // tslint:disable-next-line:no-any
     let foo: any = null;
 
     // Calling a null
@@ -72,29 +71,31 @@ describe('BaseComponent', () => {
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
 
-      public render() {
+      public render(): JSX.Element {
         return <div ref={ this._resolveRef('root') } />;
       }
     }
 
     let component = ReactTestUtils.renderIntoDocument(
       <Foo />
+      // tslint:disable-next-line:no-any
     ) as any;
 
-    expect(component.root).to.exist;
+    expect(component.root).toBeDefined();
   });
 });
 
-function _buildTestFor(methodName: string) {
+function _buildTestFor(methodName: string): void {
   it(`calls the error logger on ${methodName} exception`, () => {
-    let lastErrorMessage = null;
+    let lastErrorMessage;
 
-    BaseComponent.onError = (errorMessage, ex) => lastErrorMessage = errorMessage;
+    BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
 
     let c = new TestComponent();
 
+    // tslint:disable-next-line:no-any
     (c as any)[methodName]();
 
-    assert(lastErrorMessage !== null, 'Error callback not called');
+    expect(lastErrorMessage).toBeDefined();
   });
 }

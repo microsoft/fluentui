@@ -1,45 +1,28 @@
-'use strict';
-
-/** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
-let build = require('@microsoft/web-library-build');
-let webpackTaskResources = build.webpack.resources;
-let webpack = webpackTaskResources.webpack;
 let path = require('path');
-let buildConfig = build.getConfig();
-let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const resources = require('../../scripts/tasks/webpack-resources');
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
-const BUNDLE_TEST = 'fabric-test';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
-// Create an array of configs, prepopulated with a debug (non-minified) build.
-let configs = [
-  createConfig(false)
-];
+let entry = {
+  [BUNDLE_NAME]: './lib/index.js'
+};
 
-// Create a production config if applicable.
+// In production builds, produce the demo-app bundle.
 if (IS_PRODUCTION) {
-  configs.push(createConfig(true));
+  entry['demo-app'] = './lib/demo/index.js';
 }
 
-// Helper to create the config.
-function createConfig(isProduction) {
-  let webpackConfig = {
-
-    entry: {
-      [BUNDLE_TEST]: './lib/VisualTestRoot.js',
-      [BUNDLE_NAME]: './lib/index.js'
-    },
+module.exports = resources.createConfig(
+  BUNDLE_NAME,
+  IS_PRODUCTION,
+  {
+    entry,
 
     output: {
       libraryTarget: 'var',
-      library: 'Fabric',
-      path: path.join(__dirname, buildConfig.distFolder),
-      publicPath: '/dist/',
-      filename: `[name]${isProduction ? '.min' : ''}.js`
+      library: 'Fabric'
     },
-
-    devtool: 'source-map',
 
     externals: [
       {
@@ -50,29 +33,14 @@ function createConfig(isProduction) {
       }
     ],
 
-    plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: BUNDLE_NAME + '.stats.html',
-        openAnalyzer: false
-      })
-    ]
-  };
+    resolve: {
+      alias: {
+        'office-ui-fabric-react/src': path.join(__dirname, 'src'),
+        'office-ui-fabric-react/lib': path.join(__dirname, 'lib'),
+        'Props.ts.js': 'Props',
+        'Example.tsx.js': 'Example'
+      }
+    }
 
-  if (isProduction) {
-    webpackConfig.plugins.push(
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        minimize: true,
-        compress: {
-          warnings: false
-        }
-      }));
   }
-
-  return webpackConfig;
-}
-
-module.exports = configs;
+);

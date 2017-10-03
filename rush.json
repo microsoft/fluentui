@@ -23,7 +23,7 @@
     {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/utilities",
@@ -48,8 +48,18 @@
       ]
     },
     {
+      "packageName": "@uifabric/icons",
+      "projectFolder": "packages/icons",
+      "shouldPublish": true
+    },
+    {
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "vr-tests",
+      "projectFolder": "apps/vr-tests",
       "shouldPublish": false
     },
     {

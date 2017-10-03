@@ -11,6 +11,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
 
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+initializeIcons('./dist/');
+
 let isProduction = process.argv.indexOf('--production') > -1;
 
 if (!isProduction) {
@@ -84,7 +88,6 @@ function _onLoad(): void {
 
 function _createRoutes(pages: {}[]): {}[] {
   let routes = [];
-  let pageRoutes = [];
 
   // tslint:disable-next-line:no-any
   pages.forEach((page: any, pageIndex: number) => {
@@ -141,4 +144,4 @@ function addCSSToHeader(fileName: string) {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.1.0/css/fabric.min.css');
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.3.0/css/fabric.min.css');

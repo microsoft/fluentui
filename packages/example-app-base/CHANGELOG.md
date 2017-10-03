@@ -1,6 +1,53 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+
+## 5.0.3
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Update fabric version for example-app-base
+
+## 5.0.2
+Thu, 28 Sep 2017 10:19:12 GMT
+
+*Changes not tracked*
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.2.7
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Update fabric-dependency version
+
+## 4.2.6
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Patches
+
+- Persist RTL setting between page refreshes
+
+## 4.2.5
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Patches
+
+- Refresh the page when swtiching languages to make sure that memoized styles are recomputed
+
+## 4.2.4
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 4.2.3
 Fri, 25 Aug 2017 20:31:51 GMT

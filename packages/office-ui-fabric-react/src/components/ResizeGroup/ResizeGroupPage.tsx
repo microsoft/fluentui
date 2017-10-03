@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
@@ -8,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ResizeGroupStatus } from './ResizeGroup.checklist';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
@@ -91,6 +92,11 @@ export class ResizeGroupPage extends React.Component<any, any> {
               <li>Provide too many different return values for onReduce, it will degrade performance</li>
             </ul>
           </div>
+        }
+        componentStatus={
+          <ComponentStatus
+            {...ResizeGroupStatus}
+          />
         }
       />
     );

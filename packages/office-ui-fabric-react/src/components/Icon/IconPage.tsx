@@ -8,6 +8,8 @@ import {
 import { IconBasicExample } from './examples/Icon.Basic.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { IconStatus } from './Icon.checklist';
 
 const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
 const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
@@ -47,7 +49,7 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -65,8 +67,13 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...IconStatus}
+          />
+        }
+      />
     );
   }
 }

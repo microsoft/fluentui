@@ -2,11 +2,13 @@ import { IButtonStyles } from './Button.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,
+  IRawStyle,
   getFocusStyle,
-  FontSizes
+  FontSizes,
+  hiddenContentStyle
 } from '../../Styling';
 
-const noOutline = {
+const noOutline: IRawStyle = {
   outline: 0
 };
 
@@ -25,14 +27,12 @@ const iconStyle = {
  * mixing class names together.
  */
 export const getStyles = memoizeFunction((
-  theme: ITheme,
-  focusInset: string = '0',
-  focusColor: string = theme.palette.neutralSecondary
+  theme: ITheme
 ): IButtonStyles => {
 
   return {
     root: [
-      getFocusStyle(theme, focusInset, focusColor),
+      getFocusStyle(theme, -1),
       theme.fonts.medium,
       {
         // this transparent border converts to the correct colors in HC mode
@@ -53,8 +53,18 @@ export const getStyles = memoizeFunction((
       color: theme.palette.neutralTertiary,
       cursor: 'default',
       pointerEvents: 'none',
-      ':hover': noOutline,
-      ':focus': noOutline
+      selectors: {
+        ':hover': noOutline,
+        ':focus': noOutline
+      }
+    },
+
+    iconDisabled: {
+      color: theme.palette.neutralTertiary
+    },
+
+    menuIconDisabled: {
+      color: theme.palette.neutralTertiary
     },
 
     flexContainer: {
@@ -63,6 +73,10 @@ export const getStyles = memoizeFunction((
       flexWrap: 'nowrap',
       justifyContent: 'center',
       alignItems: 'center'
+    },
+
+    textContainer: {
+      flexGrow: 1
     },
 
     icon: iconStyle,
@@ -79,5 +93,6 @@ export const getStyles = memoizeFunction((
       lineHeight: '100%'
     },
 
+    screenReaderText: hiddenContentStyle
   };
 });

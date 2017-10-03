@@ -1,231 +1,210 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { DefaultButton, IconButton, IButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
-export interface IContextualMenuMultiselectExampleState {
-  selection?: { [key: string]: boolean };
-  isContextMenuVisible?: boolean;
-}
-
-export class ContextualMenuCustomizationExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
-
-  constructor() {
-    super();
-    this._onClick = this._onClick.bind(this);
-    this._onDismiss = this._onDismiss.bind(this);
-    this.state = {
-      selection: {},
-      isContextMenuVisible: false
-    };
-  }
+export class ContextualMenuCustomizationExample extends React.Component<{}, {}> {
+  private _button: IButton | undefined;
 
   public render() {
     return (
-      <div>
-        <DefaultButton
-          onClick={ this._onClick }
-          className='ContextualMenuButton3'
-          text='Click for ContextualMenu'
-        />
-        { this.state.isContextMenuVisible ? (
-          <ContextualMenu
-            target='.ContextualMenuButton3'
-            shouldFocusOnMount={ false }
-            onDismiss={ this._onDismiss }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            className='ms-ContextualMenu-customizationExample'
-            items={
-              [
-                {
-                  key: 'newItem',
-                  icon: 'Add',
-                  subMenuProps: {
-                    items: [
-                      {
-                        key: 'emailMessage',
-                        name: 'Email message',
-                      },
-                      {
-                        key: 'calendarEvent',
-                        name: 'Calendar event',
-                      }
-                    ],
-                  },
-                  name: 'New'
+      <DefaultButton
+        componentRef={ (button) => this._button = button }
+        className='ContextualMenuButton3'
+        text='Click for ContextualMenu'
+        menuProps={
+          {
+            shouldFocusOnMount: false,
+            directionalHint: DirectionalHint.bottomLeftEdge,
+            className: 'ms-ContextualMenu-customizationExample',
+            items:
+            [
+              {
+                key: 'newItem',
+                name: 'New'
+              },
+              {
+                key: 'upload',
+                name: 'Upload'
+              },
+              {
+                key: 'divider_1',
+                itemType: ContextualMenuItemType.Divider
+              },
+              {
+                key: 'charm',
+                name: 'Charm',
+                className: 'Charm-List',
+                subMenuProps: {
+                  arrowDirection: FocusZoneDirection.bidirectional,
+                  items: [
+                    {
+                      key: 'none',
+                      name: 'None'
+                    },
+                    {
+                      key: 'bulb',
+                      name: 'Lightbulb',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'run',
+                      name: 'Running',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'plane',
+                      name: 'Airplane',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'page',
+                      name: 'Page',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'cake',
+                      name: 'Cake',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'soccer',
+                      name: 'Soccer',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'home',
+                      name: 'Home',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'emoji',
+                      name: 'Emoji2',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'work',
+                      name: 'Work',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'coffee',
+                      name: 'Coffee',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'people',
+                      name: 'People',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'stopwatch',
+                      name: 'Stopwatch',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'music',
+                      name: 'MusicInCollectionFill',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    },
+                    {
+                      key: 'lock',
+                      name: 'Lock',
+                      onRender: this._renderCharmMenuItem,
+                      className: 'ms-ContextualMenu-customizationExample-item'
+                    }
+                  ]
                 },
-                {
-                  key: 'upload',
-                  icon: 'Upload',
-                  name: 'Upload'
+              },
+              {
+                key: 'categories',
+                name: 'Categorize',
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'categories',
+                      name: 'categories',
+                      categoryList: [
+                        {
+                          name: 'Personal',
+                          color: 'yellow'
+                        },
+                        {
+                          name: 'Work',
+                          color: 'green'
+                        },
+                        {
+                          name: 'Birthday',
+                          color: 'blue'
+                        },
+                        {
+                          name: 'Spam',
+                          color: 'grey'
+                        },
+                        {
+                          name: 'Urgent',
+                          color: 'red'
+                        },
+                        {
+                          name: 'Hobbies',
+                          color: 'black'
+                        },
+                      ],
+                      onRender: this._renderCategoriesList
+                    },
+                    {
+                      key: 'divider_1',
+                      itemType: ContextualMenuItemType.Divider
+                    },
+                    {
+                      key: 'clear',
+                      name: 'Clear categories'
+                    },
+                    {
+                      key: 'manage',
+                      name: 'Manage categories'
+                    }
+                  ]
                 },
-                {
-                  key: 'divider_1',
-                  itemType: ContextualMenuItemType.Divider
-                },
-                {
-                  key: 'charm',
-                  name: 'Charm',
-                  className: 'Charm-List',
-                  subMenuProps: {
-                    arrowDirection: FocusZoneDirection.bidirectional,
-                    items: [
-                      {
-                        key: 'none',
-                        name: 'None'
-                      },
-                      {
-                        key: 'bulb',
-                        name: 'Lightbulb',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'run',
-                        name: 'Running',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'plane',
-                        name: 'Airplane',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'page',
-                        name: 'Page',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'cake',
-                        name: 'Cake',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'soccer',
-                        name: 'Soccer',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'home',
-                        name: 'Home',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'emoji',
-                        name: 'Emoji2',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'work',
-                        name: 'Work',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'coffee',
-                        name: 'Coffee',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'people',
-                        name: 'People',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'stopwatch',
-                        name: 'Stopwatch',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'music',
-                        name: 'MusicInCollectionFill',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      },
-                      {
-                        key: 'lock',
-                        name: 'Lock',
-                        onRender: this._renderCharmMenuItem,
-                        className: 'ms-ContextualMenu-customizationExample-item'
-                      }
-                    ]
-                  },
-                },
-                {
-                  key: 'categories',
-                  name: 'Categorize',
-                  subMenuProps: {
-                    items: [
-                      {
-                        key: 'categories',
-                        name: 'categories',
-                        categoryList: [
-                          {
-                            name: 'Personal',
-                            color: 'yellow'
-                          },
-                          {
-                            name: 'Work',
-                            color: 'green'
-                          },
-                          {
-                            name: 'Birthday',
-                            color: 'blue'
-                          },
-                          {
-                            name: 'Spam',
-                            color: 'grey'
-                          },
-                          {
-                            name: 'Urgent',
-                            color: 'red'
-                          },
-                          {
-                            name: 'Hobbies',
-                            color: 'black'
-                          },
-                        ],
-                        onRender: this._renderCategoriesList
-                      },
-                      {
-                        key: 'divider_1',
-                        itemType: ContextualMenuItemType.Divider
-                      },
-                      {
-                        key: 'clear',
-                        name: 'Clear categories'
-                      },
-                      {
-                        key: 'manage',
-                        name: 'Manage categories'
-                      }
-                    ]
-                  },
-                }
-              ]
-            }
-          />) : null }
-      </div>
+              }
+            ]
+          }
+        }
+
+      />
     );
   }
 
+  @autobind
+  private _dismissMenu() {
+    if (this._button) {
+      this._button.dismissMenu();
+    }
+  }
+
+  @autobind
   private _renderCharmMenuItem(item: any) {
     return (
       <IconButton
         iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
+        onClick={ this._dismissMenu }
       />
     );
   }
@@ -239,7 +218,8 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
-                  style={ { backgroundColor: category.color } } />
+                  style={ { backgroundColor: category.color } }
+                />
                 <span className='ms-ContextualMenu-itemText'>
                   { category.name }
                 </span>
@@ -250,13 +230,4 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
       </ul>
     );
   }
-
-  private _onClick(event: any) {
-    this.setState({ isContextMenuVisible: true });
-  }
-
-  private _onDismiss(event: any) {
-    this.setState({ isContextMenuVisible: false });
-  }
-
 }

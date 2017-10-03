@@ -18,8 +18,17 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass the main value as the children.
  */
 export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
+  const {
+    before,
+    after,
+    className,
+    ...spanProps
+  } = props;
   return (
-    <span className={ SignalStyles.signalField }>
+    <span
+      { ...spanProps }
+      className={ css(SignalStyles.signalField, className) }
+    >
       { props.before }
       <span className={ SignalStyles.signalFieldValue }>
         { props.children }
@@ -36,50 +45,89 @@ export interface ISignalProps extends React.HTMLAttributes<HTMLSpanElement> {
 export type Signal = React.StatelessComponent<ISignalProps>;
 
 export const Signal: Signal = (props: ISignalProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ...spanProps
+  } = props;
+
   return (
-    <span className={ css(SignalStyles.signal) }>{ props.children }</span>
+    <span
+      aria-label={ props.ariaLabel }
+      { ...spanProps }
+      className={ css(SignalStyles.signal) }
+    >
+      { props.children }
+    </span>
   );
 };
 
 export const YouCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.youCheckedOutl) } iconName='' /> // TODO get correct icon
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.youCheckedOutl) }
+      iconName=''
+    /> // TODO get correct icon
   );
 };
 
 export const BlockedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.blocked) } iconName='blocked2' />
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.blocked) }
+      iconName='blocked2'
+    />
   );
 };
 
 export const MissingMetadataSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.missingMetadata) } iconName='info' />
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.missingMetadata) }
+      iconName='info'
+    />
   );
 };
 
 export const WarningSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.warning) } iconName='warning' />
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.warning) }
+      iconName='warning'
+    />
   );
 };
 
 export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.awaitingApproval) } iconName='documentmanagement' /> // TODO get correct icon
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.awaitingApproval) }
+      iconName='documentmanagement'
+    /> // TODO get correct icon
   );
 };
 
 export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.trending) } iconName='market' />
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.trending) }
+      iconName='market'
+    />
   );
 };
 
 export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.someoneCheckedOut) } iconName='navigateforward' /> // TODO get correct icon
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.someoneCheckedOut) }
+      iconName='navigateforward'
+    /> // TODO get correct icon
   );
 };
 
@@ -87,9 +135,21 @@ export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Elemen
  * Renders a signal marking the proceeding content as new.
  */
 export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ...spanProps
+  } = props;
+
   return (
-    <span className={ css(SignalStyles.signal, SignalStyles.newItem) }>
-      <Icon className={ css(SignalStyles.newIcon) } iconName='glimmer' />
+    <span
+      { ...spanProps }
+      className={ css(SignalStyles.signal, SignalStyles.newItem) }
+    >
+      <Icon
+        ariaLabel={ props.ariaLabel }
+        className={ css(SignalStyles.newIcon) }
+        iconName='glimmer'
+      />
     </span>
   );
 };
@@ -98,8 +158,17 @@ export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
  * Renders a signal for a live-edit scenario.
  */
 export const LiveEditSignal: Signal = (props: ISignalProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ...spanProps
+  } = props;
+
   return (
-    <span className={ css(SignalStyles.signal, SignalStyles.liveEdit) }>
+    <span
+      aria-label={ ariaLabel }
+      { ...spanProps }
+      className={ css(SignalStyles.signal, SignalStyles.liveEdit) }
+    >
       { props.children }
     </span>
   );
@@ -107,7 +176,11 @@ export const LiveEditSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const MentionSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.mention) } iconName='accounts' />
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.mention) }
+      iconName='accounts'
+    />
   );
 };
 
@@ -115,9 +188,21 @@ export const MentionSignal: Signal = (props: ISignalProps): JSX.Element => {
  * Renders a signal for a number of comments.
  */
 export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ...spanProps
+  } = props;
+
   return (
-    <span className={ css(SignalStyles.signal, SignalStyles.comments) }>
-      <Icon className={ css(SignalStyles.commentsIcon) } iconName='MessageFill' />
+    <span
+      { ...spanProps }
+      className={ css(SignalStyles.signal, SignalStyles.comments) }
+    >
+      <Icon
+        ariaLabel={ props.ariaLabel }
+        className={ css(SignalStyles.commentsIcon) }
+        iconName='MessageFill'
+      />
       {
         props.children ? (
           <span className={ css(SignalStyles.commentsCount) }>
@@ -131,18 +216,30 @@ export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
 
 export const UnseenEditSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.unseenEdit) } iconName='edit' /> // TODO get correct icon
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.unseenEdit) }
+      iconName='edit'
+    /> // TODO get correct icon
   );
 };
 
 export const ReadOnlySignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.readOnly) } iconName='' /> // TODO get correct icon
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.readOnly) }
+      iconName=''
+    /> // TODO get correct icon
   );
 };
 
 export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon className={ css(SignalStyles.signal, SignalStyles.shared) } iconName='people' />
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.shared) }
+      iconName='people'
+    />
   );
 };

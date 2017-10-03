@@ -2,6 +2,10 @@
 import 'es6-weak-map/implement';
 import 'es6-map/implement';
 
+import { initializeIcons } from '@uifabric/icons/lib/index';
+console.log('initializing icons');
+initializeIcons('dist/');
+
 /**
  * This is a test entry point to help karma-webpack find all tests in the project.
  **/

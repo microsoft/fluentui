@@ -87,7 +87,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
     return (
       <div>
         <DocumentCard
-          onClick={ () => { console.log('You clicked the card.'); } }
+          onClick={ this._onClick }
         >
           <DocumentCardPreview { ...previewProps } />
           <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
@@ -143,7 +143,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='View and share files'
-              shouldTruncate={ true } />
+              shouldTruncate={ true }
+            />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={
@@ -156,6 +157,10 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         </DocumentCard>
       </div>
     );
+  }
+
+  private _onClick(): void {
+    console.log('You clicked the card.');
   }
 
 }

@@ -5,14 +5,11 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
-  IDetailsHeaderProps,
   Selection,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
-import {
-  IRenderFunction
-} from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 let _items: any[] = [];
 
@@ -72,7 +69,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+          onChanged={ this._onChanged }
         />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
@@ -84,7 +81,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
             selectionPreservedOnEmptyClick={ true }
             ariaLabelForSelectionColumn='Toggle selection'
             ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onItemInvoked={ this._onItemInvoked }
           />
         </MarqueeSelection>
       </div>
@@ -103,4 +100,14 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         return `${selectionCount} items selected`;
     }
   }
+
+  @autobind
+  private _onChanged(text: any): void {
+    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
+  }
+
 }

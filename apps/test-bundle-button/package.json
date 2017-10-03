@@ -1,6 +1,6 @@
 {
   "name": "test-bundle-button",
-  "version": "0.0.2",
+  "version": "5.0.0",
   "description": "Testing the button for bundling.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -11,31 +11,22 @@
   },
   "license": "MIT",
   "scripts": {
-    "_checksize": "node check-size.js",
-    "_bundle": "node node_modules/webpack/bin/webpack --config webpack.config.js && echo Done",
-    "build": "npm run _bundle && npm run _checksize",
-    "clean": "",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": "^3.2.1",
     "@types/react": "15.0.38",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
     "@types/prop-types": "15.5.1",
-    "gzip-size": "^3.0.0",
-    "source-map-loader": "^0.2.1",
-    "ts-loader": "^2.0.1",
-    "typescript": "2.4.2",
-    "webpack": "^3.4.1",
-    "webpack-bundle-analyzer": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=4.37.5 <5.0.0",
-    "tslib": "^1.6.0"
+    "office-ui-fabric-react": ">=5.3.0 <6.0.0",
+    "tslib": "^1.7.1"
   }
 }

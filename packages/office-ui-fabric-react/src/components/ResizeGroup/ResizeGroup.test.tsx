@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+
 import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
 import { IResizeGroupProps } from './ResizeGroup.Props';
 import * as sinon from 'sinon';
@@ -38,7 +37,7 @@ describe('ResizeGroup', () => {
       />
     );
 
-    expect(wrapper.containsMatchingElement(onRenderData(initialData))).to.equal(true);
+    expect(wrapper.containsMatchingElement(onRenderData(initialData))).toEqual(true);
   });
 
   describe('getNextResizeGroupStateProvider', () => {
@@ -52,8 +51,8 @@ describe('ResizeGroup', () => {
         resizeGroupState,
         getMeasuredElementWidthStub);
 
-      expect(result).to.equal(undefined);
-      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+      expect(result).toEqual(undefined);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('sets the renderedData when the contents fit', () => {
@@ -69,13 +68,13 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         50);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
         resizeDirection: undefined
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
     it('calls onReduceData and sets the next measuredData when contents do not fit', () => {
@@ -92,12 +91,12 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         10);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: { index: 4 },
         resizeDirection: 'shrink'
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
     it('does not call getMeasuredElementBounds when the data has already been cached', () => {
@@ -116,13 +115,13 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         100);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
         resizeDirection: undefined
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('calls onReduceData multiple times when everything is in the cache', () => {
@@ -148,13 +147,13 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         10);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: dataArray[2],
         measureContainer: false,
         dataToMeasure: undefined,
         resizeDirection: undefined
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('sets dataToMeasure when the current data is in the cache but the onReduceData result is not in the cache', () => {
@@ -176,12 +175,12 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         10);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         dataToMeasure: dataArray[1],
         measureContainer: false,
         resizeDirection: 'shrink'
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('renders the last measured data if onReduceData returns undefined', () => {
@@ -201,13 +200,13 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         10);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         dataToMeasure: undefined,
         renderedData: dataToMeasure,
         measureContainer: false,
         resizeDirection: undefined
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
     it('renders the last measured data in the cache if onReduceData returns undefined', () => {
@@ -231,19 +230,17 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         10);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         dataToMeasure: undefined,
         renderedData: dataArray[1],
         measureContainer: false,
         resizeDirection: undefined,
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('does not crash when the container size is set and there is no dataToMeasure', () => {
-      const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
-      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink', };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
@@ -252,10 +249,10 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         50);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('makes sure the contents still fit when the container width decreases', () => {
@@ -284,13 +281,13 @@ describe('ResizeGroup', () => {
 
       // Important to note that we do not start scaling from the initial data,
       // we continue from the last rendered data.
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: renderedData,
         dataToMeasure: renderedData,
         measureContainer: false,
         resizeDirection: 'shrink'
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('starts from the beginning when the container width increases and there is no onGrowData', () => {
@@ -317,13 +314,13 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         increasedWidth);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: renderedData,
         dataToMeasure: resizeGroupProps.data,
         resizeDirection: 'shrink',
         measureContainer: false
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('renders contents when the resizeDirection is grow, there is no onGrowData, and the contents fit', () => {
@@ -339,13 +336,13 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         50);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
         resizeDirection: undefined
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
     it('sets the resize direction to shrink when the resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
@@ -362,13 +359,13 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         72);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: { index: 7 },
         resizeDirection: 'shrink'
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
-      expect(resizeGroupProps.onReduceData.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(resizeGroupProps.onReduceData.callCount).toEqual(1);
     });
 
     it('measures the next state when the resizeDirection is grow and the dataToMeasure fits', () => {
@@ -386,13 +383,13 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         50);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: { index: 2 },
         resizeDirection: 'grow'
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
-      expect(onGrowData.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(onGrowData.callCount).toEqual(1);
     });
 
     it('sets the resizeDirection to shrink after determining contents do not fit when the resize direction is grow', () => {
@@ -409,14 +406,14 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         40);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
         dataToMeasure,
         resizeDirection: 'shrink'
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
-      expect(onGrowData.callCount).to.equal(0);
-      expect(resizeGroupProps.onReduceData.callCount).to.equal(0);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(onGrowData.callCount).toEqual(0);
+      expect(resizeGroupProps.onReduceData.callCount).toEqual(0);
     });
 
     it('renders the last measured contents when onGrowData returns undefined', () => {
@@ -434,15 +431,15 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         40);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: undefined,
         renderedData: dataToMeasure,
         resizeDirection: undefined
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
-      expect(onGrowData.callCount).to.equal(1);
-      expect(resizeGroupProps.onReduceData.callCount).to.equal(0);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(onGrowData.callCount).toEqual(1);
+      expect(resizeGroupProps.onReduceData.callCount).toEqual(0);
     });
 
     it('calls onGrowData when the container width increases and onGrowData is provided', () => {
@@ -471,14 +468,14 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         increasedWidth);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: renderedData,
         dataToMeasure: { index: 4 },
         resizeDirection: 'grow',
         measureContainer: false
       });
-      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
-      expect(onGrowData.callCount).to.equal(1);
+      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
+      expect(onGrowData.callCount).toEqual(1);
     });
 
     it('does not call getMeasuredElementBounds when the data has already been cached in the grow resizeDirection', () => {
@@ -498,13 +495,13 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         100);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
         resizeDirection: undefined
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('calls onGrowData multiple times when everything is in the cache in the grow resizeDirection', () => {
@@ -531,12 +528,12 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         100);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: dataArray[2],
         resizeDirection: 'shrink'
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
     it('sets dataToMeasure when the current data is in the cache but the onGrowData result is not in the cache in the grow resizeDirection', () => {
@@ -559,12 +556,12 @@ describe('ResizeGroup', () => {
         measuredElementWidthStub,
         100);
 
-      expect(result).to.deep.equal({
+      expect(result).toEqual({
         dataToMeasure: dataArray[1],
         measureContainer: false,
         resizeDirection: 'grow'
       });
-      expect(measuredElementWidthStub.callCount).to.equal(0);
+      expect(measuredElementWidthStub.callCount).toEqual(0);
     });
   });
 
@@ -598,14 +595,14 @@ describe('ResizeGroup', () => {
 
     // Important to note that we do not start scaling from the initial data,
     // we continue from the last rendered data.
-    expect(result).to.deep.equal({
+    expect(result).toEqual({
       renderedData: renderedData,
       dataToMeasure: { index: 7 },
       measureContainer: false,
       resizeDirection: 'shrink'
     });
-    expect(getMeasuredElementWidthStub.callCount).to.equal(1);
-    expect(resizeGroupProps.onReduceData.callCount).to.equal(1);
+    expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+    expect(resizeGroupProps.onReduceData.callCount).toEqual(1);
   });
 
   it('does not render to the hidden div when there is no dataToMeasure', () => {
@@ -613,7 +610,7 @@ describe('ResizeGroup', () => {
 
     let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
 
-    expect(result).to.equal(false);
+    expect(result).toEqual(false);
   });
 
   it('does render to the hidden div when there is dataToMeasure', () => {
@@ -621,7 +618,7 @@ describe('ResizeGroup', () => {
 
     let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
 
-    expect(result).to.equal(true);
+    expect(result).toEqual(true);
   });
 
   it('does not render to the hidden div when there is dataToMeasure that is in the cache', () => {
@@ -632,6 +629,6 @@ describe('ResizeGroup', () => {
 
     let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
 
-    expect(result).to.equal(false);
+    expect(result).toEqual(false);
   });
 });

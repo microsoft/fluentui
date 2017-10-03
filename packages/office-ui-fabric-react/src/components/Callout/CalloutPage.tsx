@@ -5,12 +5,14 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { textOnlyItems } from '../CommandBar/examples/data';
+import { items } from '../CommandBar/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { CalloutStatus } from './Callout.checklist';
 
 const CalloutBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Basic.Example.tsx') as string;
 const CalloutNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx') as string;
@@ -19,24 +21,24 @@ const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 
 export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
-    let cmdBarParamsTextAndIcons: any = { items: textOnlyItems, farItems: null };
+    let cmdBarParamsTextAndIcons: any = { items: items, farItems: null };
 
     return (
       <ComponentPage
-        title='Callout'
+        title={ 'Callout' }
         componentName='CalloutExample'
         exampleCards={
           <div>
-            <ExampleCard title='Simple callout' code={ CalloutBasicExampleCode }>
+            <ExampleCard title='Default Callout' code={ CalloutBasicExampleCode }>
               <CalloutBasicExample />
             </ExampleCard>
-            <ExampleCard title='Nested callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
+            <ExampleCard title='Nested Callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
               <CalloutNestedExample { ...cmdBarParamsTextAndIcons } />
             </ExampleCard>
-            <ExampleCard title='Callout directional example' code={ CalloutDirectionalExampleCode }>
+            <ExampleCard title='Callout with directional hint' code={ CalloutDirectionalExampleCode }>
               <CalloutDirectionalExample />
             </ExampleCard>
-            <ExampleCard title='Callout cover example' code={ CalloutCoverExampleCode }>
+            <ExampleCard title='Callout with cover' code={ CalloutCoverExampleCode }>
               <CalloutCoverExample />
             </ExampleCard>
           </div>
@@ -60,11 +62,8 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
             <p>Real-world examples of this implementation can be seen in administrative interfaces where a particularly difficult-to-understand concept is paired with the iconClassNames.info "i" icon. In this example, Callout - with its tip text - is opened when the user clicks on or hovers over the icon.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Callout/Callout.html'>Fabric JS</a>
-        }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -92,8 +91,13 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...CalloutStatus}
+          />
+        }
+      />
     );
   }
 }

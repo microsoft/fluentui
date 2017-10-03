@@ -29,7 +29,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     super(props);
     this._value = '';
     this.state = {
-      displayValue: props.defaultVisibleValue === null ? '' : props.defaultVisibleValue
+      displayValue: props.defaultVisibleValue || ''
     };
   }
 
@@ -85,7 +85,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   public componentDidUpdate() {
     let value = this._value;
     let {
-      defaultVisibleValue,
       suggestedDisplayValue,
       shouldSelectFullInputValueInComponentDidUpdate
     } = this.props;
@@ -117,15 +116,18 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     } = this.state;
 
     const nativeProps = getNativeProps(this.props, inputProperties);
-    return <input { ...nativeProps}
-      ref={ this._resolveRef('_inputElement') }
-      value={ displayValue }
-      autoCapitalize={ 'off' }
-      autoComplete={ 'off' }
-      onChange={ this._onChange }
-      onKeyDown={ this._onKeyDown }
-      onClick={ this.props.onClick ? this.props.onClick : this._onClick }
-    />;
+    return (
+      <input
+        { ...nativeProps}
+        ref={ this._resolveRef('_inputElement') }
+        value={ displayValue }
+        autoCapitalize={ 'off' }
+        autoComplete={ 'off' }
+        onChange={ this._onChange }
+        onKeyDown={ this._onKeyDown }
+        onClick={ this.props.onClick ? this.props.onClick : this._onClick }
+      />
+    );
   }
 
   public focus() {

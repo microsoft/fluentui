@@ -9,7 +9,6 @@ import {
   IDragDropEvents,
   IDragDropContext,
 } from './../../utilities/dragdrop/index';
-import { IconName } from '../../Icon';
 import {
   IGroup,
   IGroupRenderProps
@@ -17,11 +16,11 @@ import {
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import { IListProps } from '../List/index';
+import { IList, IListProps } from '../List/index';
 
 export { IDetailsHeaderProps };
 
-export interface IDetailsList {
+export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
    * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
@@ -118,8 +117,8 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 
-  /** Callback for when the context menu of an item has been accessed. */
-  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
+  /** Callback for when the context menu of an item has been accessed. If undefined or false are returned, ev.preventDefault() will be called.*/
+  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 
   /**
    *  If provided, will allow the caller to override the default row rendering.
@@ -188,12 +187,12 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   compact?: boolean;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization 
+  * Boolean value to enable render page caching. This is an experimental performance optimization
   * that is off by default.
   * @defaultValue false
   */
   usePageCache?: boolean;
-  
+
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
@@ -201,6 +200,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * Optional class name to add to the cell of a checkbox
+   */
+  checkboxCellClassName?: string;
 }
 
 export interface IColumn {
@@ -256,7 +260,7 @@ export interface IColumn {
   /**
    * Optional iconName to use for the column header.
    */
-  iconName?: IconName;
+  iconName?: string;
 
   /**
    * Whether or not only the icon is used in the column header.

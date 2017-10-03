@@ -4,9 +4,11 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
 import { ICalloutProps } from '../../Callout';
+import { ITheme, IStyle } from '../../Styling';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
+  IRenderFunction
 } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -14,7 +16,8 @@ export { DirectionalHint } from '../../common/DirectionalHint';
 export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
-  Header = 2
+  Header = 2,
+  Section = 3
 }
 
 export interface IContextualMenu {
@@ -34,12 +37,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
   target?: HTMLElement | string | MouseEvent;
-
-  /**
-   * Deprecated at version 0.72.1 and will no longer exist after 1.0 use 'target' instead.
-   * @deprecated
-   */
-  targetElement?: HTMLElement;
 
   /**
    * How the element should be positioned
@@ -181,6 +178,24 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Pass in custom callout props
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Optional title to be displayed on top of the menu.
+   */
+  title?: string;
+
+  /**
+   * Custom styling for the contextual menu.
+   */
+  styles?: IContextualMenuStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /** Method to call when trying to render a submenu. */
+  onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 }
 
 export interface IContextualMenuItem {
@@ -282,6 +297,12 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
+   *  Properties to apply to render this item as a section.
+   *  This prop is mutually exclusive with subMenuProps.
+   */
+  sectionProps?: IContextualMenuSection;
+
+  /**
    * Additional css class to apply to the menu item
    * @defaultvalue undefined
    */
@@ -329,4 +350,34 @@ export interface IContextualMenuItem {
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
+}
+
+export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+
+  /**
+   * The items to include inside the section.
+   */
+  items: IContextualMenuItem[];
+
+  /**
+   * The optional section title.
+   */
+  title?: string;
+
+  /**
+   * If set to true, the section will display a divider at the top of the section.
+   */
+  topDivider?: boolean;
+
+  /**
+   * If set to true, the section will display a divider at the bottom of the section.
+   */
+  bottomDivider?: boolean;
+}
+
+export interface IContextualMenuStyles {
+  /**
+   * Style override for the contextual menu title.
+   */
+  title: IStyle;
 }
