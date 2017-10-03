@@ -244,7 +244,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                       >
-                        <span aria-hidden='true'> { dateTimeFormatter.formatDay(day.originalDate) }</span>
+                        <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
                     </td>
                   ) }

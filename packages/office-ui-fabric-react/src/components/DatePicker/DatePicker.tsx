@@ -148,7 +148,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
     let { formatDate, isRequired, strings, value } = nextProps;
-    const errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || '*' : undefined;
+    const errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
 
     // Set error message
     this.setState({
@@ -163,7 +163,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
         selectedDate: value || new Date(),
-        formattedDate: (formatDate && value) ? formatDate(value) : ''
+        formattedDate: (formatDate && value) ? formatDate(value) : '',
       });
     }
   }
@@ -186,7 +186,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     return (
       <div className={ css('ms-DatePicker', styles.root, className) } ref='root'>
-        <div ref={ (c): HTMLElement => (this._datepicker = c!) }>
+        <div ref={ (c): HTMLElement => this._datepicker = c! }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
@@ -301,7 +301,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       let { isRequired, value, strings } = this.props;
 
       this.setState({
-        errorMessage: isRequired && !value ? strings!.isRequiredErrorMessage || '*' : undefined,
+        errorMessage: (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined,
         formattedDate: newValue
       });
     }
