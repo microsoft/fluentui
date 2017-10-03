@@ -3,6 +3,7 @@ import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
+import { IRenderFunction } from '../../Utilities';
 
 export interface ISpinButton {
   /**
@@ -155,6 +156,11 @@ export interface ISpinButtonProps {
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+ * Custom render function for the icon
+ */
+  onRenderIcon?: IRenderFunction<ISpinButtonProps>;
 }
 
 export interface ISpinButtonStyles {

@@ -132,7 +132,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
-      theme
+      theme,
+      onRenderIcon
     } = this.props;
 
     const {
@@ -152,7 +153,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return (
       <div className={ classNames.root }>
         { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
-          { this._defaultOnRenderIcon(classNames) }
+          { onRenderIcon ? onRenderIcon(this.props) : this._defaultOnRenderIcon(classNames) }
           { label &&
             <Label
               id={ this._labelId }
@@ -217,7 +218,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           </span>
         </div>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
-          { this._defaultOnRenderIcon(classNames) }
+          { onRenderIcon ? onRenderIcon(this.props) : this._defaultOnRenderIcon(classNames) }
           { label &&
             <Label
               id={ this._labelId }
