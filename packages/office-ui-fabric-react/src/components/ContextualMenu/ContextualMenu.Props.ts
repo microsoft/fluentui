@@ -319,7 +319,7 @@ export interface IContextualMenuItem {
    * Additional styles to apply to the menu item
    * @defaultvalue undefined
    */
-  style?: IMenuItemStyle;
+  style?: IMenuItemStyles;
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
@@ -382,7 +382,7 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
   bottomDivider?: boolean;
 }
 
-export interface IMenuItemStyle extends IButtonStyles {
+export interface IMenuItemStyles extends IButtonStyles {
   /**
    * Styles for a menu item that is an anchor link.
    */

@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyle } from './ContextualMenu.Props';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 
 export interface IContextualMenuClassNames {
   container: string;
@@ -32,30 +32,32 @@ export const getClassNames = memoizeFunction((
       'ms-ContextualMenu-container',
       className,
       styles.container
-    ) as string,
+    ),
     root: mergeStyles(
       'ms-ContextualMenu is-open',
       styles.root
-    ) as string,
+    ),
     list: mergeStyles(
       'ms-ContextualMenu-list is-open',
       styles.list
-    ) as string,
+    ),
     divider: mergeStyles(
       'ms-ContextualMenu-divider',
       className,
       styles.divider
-    ) as string,
+    ),
     header: mergeStyles(
       'ms-ContextualMenu-header',
       styles.header
-    ) as string,
-    title: styles.title as string,
+    ),
+    title: mergeStyles(
+      styles.title
+    ),
   };
 });
 
 export const getMenuItemClassNames = memoizeFunction((
-  styles: IMenuItemStyle,
+  styles: IMenuItemStyles,
   disabled: boolean,
   expanded: boolean,
   checked: boolean,
@@ -70,7 +72,7 @@ export const getMenuItemClassNames = memoizeFunction((
       itemClassName,
       'ms-ContextualMenu-item',
       styles.item,
-    ) as string,
+    ),
     root: mergeStyles(
       'ms-ContextualMenu-link',
       styles.root,

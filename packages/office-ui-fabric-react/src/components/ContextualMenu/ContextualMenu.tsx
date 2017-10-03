@@ -319,7 +319,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       item.className!,
       iconProps.className!,
       subMenuIconClassName!
-    ) as IMenuItemClassNames;
+    );
 
     if (item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;

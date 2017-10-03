@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { IContextualMenuStyles, IMenuItemStyle } from './ContextualMenu.Props';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import {
   ITheme,
   concatStyleSets,
@@ -12,8 +12,8 @@ const ContextualMenuIconWidth = '14px';
 
 export const getMenuItemStyles = memoizeFunction((
   theme: ITheme,
-  customMenuItemStyles?: Partial<IMenuItemStyle>
-): IMenuItemStyle => {
+  customMenuItemStyles?: Partial<IMenuItemStyles>
+): IMenuItemStyles => {
   const { semanticColors, fonts } = theme;
   const ContextualMenuIconColor = semanticColors.menuIcon;
   const ContextualMenuTextColor = semanticColors.bodyText;
@@ -22,7 +22,7 @@ export const getMenuItemStyles = memoizeFunction((
   const ContextualMenuTextSelectedColor = semanticColors.menuSelectedText;
   const ContextualMenuTextDisabledColor = semanticColors.disabledText;
 
-  const menuItemStyles: IMenuItemStyle = {
+  const menuItemStyles: IMenuItemStyles = {
     item: [
       fonts.medium,
       {
@@ -120,7 +120,7 @@ export const getMenuItemStyles = memoizeFunction((
       }]
   };
 
-  return concatStyleSets(menuItemStyles, customMenuItemStyles) as IMenuItemStyle;
+  return concatStyleSets(menuItemStyles, customMenuItemStyles) as IMenuItemStyles;
 });
 
 export const getStyles = memoizeFunction((
