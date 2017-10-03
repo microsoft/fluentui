@@ -1,10 +1,6 @@
-import * as React from "react";
-import { Calendar } from "./Calendar";
-import {
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType
-} from "../../utilities/dateValues/DateValues";
+import * as React from 'react';
+import { Calendar } from './Calendar';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 
 export { DayOfWeek, DateRangeType };
 
@@ -83,7 +79,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   autoNavigateOnSelection?: boolean;
 
   /**
-   * Whether the "Go to today" link should be shown or not
+   * Whether the 'Go to today' link should be shown or not
    */
   showGoToToday?: boolean;
 
@@ -158,24 +154,25 @@ export interface ICalendarStrings {
   goToToday: string;
 
   /**
-   * Aria-label for the "previous month" button.
+   * Aria-label for the 'previous month' button.
    */
   prevMonthAriaLabel?: string;
 
   /**
-   * Aria-label for the "next month" button.
+   * Aria-label for the 'next month' button.
    */
   nextMonthAriaLabel?: string;
 
   /**
-   * Aria-label for the "previous year" button.
+   * Aria-label for the 'previous year' button.
    */
   prevYearAriaLabel?: string;
 
   /**
-   * Aria-label for the "next year" button.
+   * Aria-label for the 'next year' button.
    */
   nextYearAriaLabel?: string;
+
 }
 
 export interface ICalendarIconStrings {
@@ -190,6 +187,7 @@ export interface ICalendarIconStrings {
   * @defaultvalue  'Down'
   */
   rightNavigation?: string;
+
 }
 
 export interface ICalendarFormatDateCallbacks {
@@ -212,4 +210,5 @@ export interface ICalendarFormatDateCallbacks {
   * Callback to apply formatting to the year in the Month Picker header
   */
   formatYear: (date: Date) => string;
+
 }

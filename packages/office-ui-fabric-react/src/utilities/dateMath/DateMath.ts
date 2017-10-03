@@ -2,9 +2,9 @@ import {
   DayOfWeek,
   FirstWeekOfYear,
   DateRangeType
-} from "../dateValues/DateValues";
-import TimeConstants from "../dateValues/TimeConstants";
-import { assertNever } from "../../Utilities";
+} from '../dateValues/DateValues';
+import TimeConstants from '../dateValues/TimeConstants';
+import { assertNever } from '../../Utilities';
 
 /**
  * Returns a date offset from the given date by the specified number of days.
@@ -47,7 +47,7 @@ export function addMonths(date: Date, months: number): Date {
   if (
     result.getMonth() !==
     (newMonth % TimeConstants.MonthInOneYear + TimeConstants.MonthInOneYear) %
-      TimeConstants.MonthInOneYear
+    TimeConstants.MonthInOneYear
   ) {
     result = addDays(result, -result.getDate());
   }
@@ -73,7 +73,7 @@ export function addYears(date: Date, years: number): Date {
     result.getMonth() !==
     (date.getMonth() % TimeConstants.MonthInOneYear +
       TimeConstants.MonthInOneYear) %
-      TimeConstants.MonthInOneYear
+    TimeConstants.MonthInOneYear
   ) {
     result = addDays(result, -result.getDate());
   }
@@ -298,13 +298,13 @@ function getDefaultWeekNumber(
   let adjustment = !shiftForward ? 1 : 0;
   return Math.floor(
     (dayOfYear + daysUntilEndOfCurrentWeek) / TimeConstants.DaysInOneWeek +
-      adjustment
+    adjustment
   );
 }
 
 // Helper function for getWeekNumber.
 // Returns week number starting from next week after January 1st
-function startCountWithNextWeek() {}
+function startCountWithNextWeek() { }
 
 /**
  * Returns the day number for a date in a year

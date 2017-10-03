@@ -1,10 +1,10 @@
-import * as React from "react";
-import { DatePicker } from "./DatePicker";
-import { DayOfWeek } from "../../Calendar";
-import { FirstWeekOfYear } from "../../utilities/dateValues/DateValues";
-import { ICalendarFormatDateCallbacks } from "../Calendar/Calendar.Props";
+import * as React from 'react';
+import { DatePicker } from './DatePicker';
+import { DayOfWeek } from '../../Calendar';
+import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
+import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.Props';
 
-export interface IDatePicker {}
+export interface IDatePicker { }
 
 export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
@@ -122,7 +122,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
-   * Whether the "Go to today" link should be shown or not
+   * Whether the 'Go to today' link should be shown or not
    */
   showGoToToday?: boolean;
 
@@ -184,22 +184,22 @@ export interface IDatePickerStrings {
   invalidInputErrorMessage?: string;
 
   /**
-   * Aria-label for the "previous month" button.
+   * Aria-label for the 'previous month' button.
    */
   prevMonthAriaLabel?: string;
 
   /**
-   * Aria-label for the "next month" button.
+   * Aria-label for the 'next month' button.
    */
   nextMonthAriaLabel?: string;
 
   /**
-   * Aria-label for the "previous year" button.
+   * Aria-label for the 'previous year' button.
    */
   prevYearAriaLabel?: string;
 
   /**
-   * Aria-label for the "next year" button.
+   * Aria-label for the 'next year' button.
    */
   nextYearAriaLabel?: string;
 }
