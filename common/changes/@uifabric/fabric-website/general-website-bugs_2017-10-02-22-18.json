@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Updated links in the SharePoint section of the ResourcesPage.",
+      "comment": "Updated ResourcePage text and made padding more rtl friendly.",
       "type": "patch"
     }
   ],

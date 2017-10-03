@@ -3,11 +3,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { Callout } from './Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-
-let { expect } = chai;
 
 describe('Callout', () => {
 
@@ -34,7 +32,7 @@ describe('Callout', () => {
       threwException = true;
     }
 
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
   });
 
   it('target MouseEvents does not throw exception', () => {
@@ -60,7 +58,7 @@ describe('Callout', () => {
       threwException = true;
     }
 
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
   });
 
   it('target HTMLElements does not throw exception', () => {
@@ -85,7 +83,7 @@ describe('Callout', () => {
       threwException = true;
     }
 
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
   });
 
   // Once this has been deprecated completely in v1.0 this is no longer needed.
@@ -110,7 +108,7 @@ describe('Callout', () => {
       threwException = true;
     }
 
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
   });
 
   it('without target does not throw exception', () => {
@@ -130,7 +128,7 @@ describe('Callout', () => {
     } catch (e) {
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
   });
 
   it('passes event to onDismiss prop', (done) => {
@@ -165,7 +163,7 @@ describe('Callout', () => {
     } catch (e) {
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
@@ -173,7 +171,7 @@ describe('Callout', () => {
     setTimeout(() => {
       try {
         focusTarget.focus();
-        expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
+        expect(gotEvent).toEqual(true);
       } catch (e) {
         done(e);
       }

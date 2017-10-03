@@ -90,6 +90,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
 
   /**
+   * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).
+   * @default false;
+   */
+  scrollSelectedToTop?: boolean;
+
+
+  /**
    * The index of the option to select (use selectedKey to match option's key)
    */
   selectedIndex?: number;
