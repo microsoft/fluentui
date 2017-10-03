@@ -217,6 +217,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
+      alwaysDisplaySuggestions,
       allowFreeform,
       autoComplete,
       buttonIconProps,
@@ -292,7 +293,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           />
         </div>
 
-        { isOpen && (
+        { isOpen || (alwaysDisplaySuggestions && focused) && (
           (onRenderContainer as any)({ ...this.props as any }, this._onRenderContainer)
         ) }
         {

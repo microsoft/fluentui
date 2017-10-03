@@ -59,6 +59,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   autoComplete?: string;
 
   /**
+   * Whether the ComboBox suggestions should always be displayed if the textbox is focused
+   */
+  alwaysDisplaySuggestions?: boolean;
+
+  /**
    * Value to show in the input, does not have to map to a combobox option
    */
   value?: string;
