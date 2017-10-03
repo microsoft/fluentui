@@ -131,20 +131,22 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       disabled,
       iconClass,
       iconProps,
-      label,
       multiline,
       required,
       underlined,
       borderless,
       addonString,
-      onRenderAddon = this._onRenderAddon
+      onRenderAddon = this._onRenderAddon,
+      onRenderLabel = this._onRenderLabel
     } = this.props;
     let { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
+    const renderProps: ITextFieldProps = { ...this.props, componentId: this._id };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
-      ['is-required ' + styles.rootIsRequired]: required,
+      ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
+      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required,
       ['is-disabled ' + styles.rootIsDisabled]: disabled,
       ['is-active ' + styles.rootIsActive]: isFocused,
       ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
@@ -154,8 +156,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <div className={ textFieldClassName }>
-        <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
-          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+        <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
+          { onRenderLabel(renderProps, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css(styles.fieldAddon) }>
@@ -175,7 +177,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
                   >
-                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
                     <span aria-live='assertive' className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
@@ -268,6 +269,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     if (this.props.validateOnFocusOut) {
       this._validate(this.state.value);
     }
+  }
+
+  private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
+    const {
+      label,
+      componentId
+     } = props;
+    if (label) {
+      return (<Label htmlFor={ componentId }>{ label }</Label>);
+    }
+    return null;
   }
 
   private _onRenderAddon(props: ITextFieldProps): JSX.Element {

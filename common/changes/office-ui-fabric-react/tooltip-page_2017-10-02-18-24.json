@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Allow resizing columns wider than maxWidth in justified layout",
+      "comment": "Fixed duplicate header on Tooltip page.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jaspadie@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

@@ -571,8 +571,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
-    // tslint:disable-next-line:triple-equals
-    return findIndex(options, (option => ((option.isSelected || option.selected) || (selectedKey != null) && option.key === selectedKey)));
+    return findIndex(options, (option => {
+      // tslint:disable-next-line:triple-equals
+      if (selectedKey != null) {
+        return option.key === selectedKey;
+      } else {
+        return !!option.isSelected || !!option.selected;
+      }
+    }));
   }
 
   @autobind

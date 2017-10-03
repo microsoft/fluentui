@@ -8,10 +8,10 @@ import { IStyle } from './IStyle';
  *
  * @public
  */
-export function mergeStyleSets<T extends object>(
-  ...cssSets: (T | false | null | undefined)[]
-): {[P in keyof T]?: string } {
-  const classNameSet: {[P in keyof T]?: string } = {};
+export function mergeStyleSets<T>(
+  ...cssSets: ({[P in keyof T]?: IStyle } | null | undefined)[]
+): T {
+  const classNameSet: Partial<T> = {};
   let cssSet = cssSets[0];
 
   if (cssSet) {
@@ -20,10 +20,11 @@ export function mergeStyleSets<T extends object>(
     }
     for (const prop in cssSet) {
       if (cssSet.hasOwnProperty(prop)) {
-        classNameSet[prop] = mergeStyles(cssSet[prop] as IStyle);
+        // tslint:disable-next-line:no-any
+        (classNameSet as any)[prop] = mergeStyles(cssSet[prop] as IStyle);
       }
     }
   }
 
-  return classNameSet;
+  return classNameSet as T;
 }
