@@ -40,12 +40,6 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               <TextFieldBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='TextField with custom Label'
-              code={ TextFieldCustomRenderExampleCode }
-            >
-              <TextFieldCustomRenderExample />
-            </ExampleCard>
-            <ExampleCard
               title='TextField with Placeholder'
               code={ TextFieldPlaceholderExampleCode }
             >
@@ -74,6 +68,12 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               code={ TextFieldErrorMessageExampleCode }
             >
               <TextFieldErrorMessageExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with custom Label'
+              code={ TextFieldCustomRenderExampleCode }
+            >
+              <TextFieldCustomRenderExample />
             </ExampleCard>
             <ExampleCard
               title='Implementation Examples'

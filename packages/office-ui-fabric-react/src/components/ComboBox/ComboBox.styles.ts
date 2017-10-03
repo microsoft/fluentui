@@ -255,7 +255,8 @@ export const getStyles = memoizeFunction((
     rootDisabled: getDisabledStyles(theme),
 
     rootError: {
-      borderColor: ComboBoxRootColorErrored
+      borderColor: ComboBoxRootColorErrored,
+      marginBottom: '5px'
     },
 
     rootDisallowFreeForm: {},

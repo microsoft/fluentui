@@ -1,5 +1,9 @@
 :global {
   .ms-ComboBoxBasicExample {
     max-width: 300px;
+
+    .ms-ComboBox-container {
+      margin: 0 0 10px 0;
+    }
   }
 }

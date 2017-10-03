@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 
 .paragraphInGrid {
-    padding-left: $contentInGrid;
+  @include ms-padding-left($contentInGrid);
 }
 
 .exampleIcons {

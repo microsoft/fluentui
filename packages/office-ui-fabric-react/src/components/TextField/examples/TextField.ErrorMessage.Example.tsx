@@ -2,6 +2,7 @@ import { Promise } from 'es6-promise';
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { NumberTextField } from './NumberTextField';
+import './TextField.Examples.scss';
 
 export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
   public constructor(props: any) {
@@ -13,7 +14,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <div>
+      <div className='ms-TextFieldExample'>
         <TextField
           label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
           onGetErrorMessage={ this._getErrorMessage }
