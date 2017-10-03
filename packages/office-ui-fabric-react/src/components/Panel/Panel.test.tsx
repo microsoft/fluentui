@@ -4,8 +4,6 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 
-let { expect } = chai;
-
 import { Panel } from './Panel';
 
 let div: HTMLElement;
@@ -39,12 +37,12 @@ describe('Panel', () => {
 
     panel.dismiss();
 
-    expect(dismissCalled).equals(true, 'onDismiss was not called');
-    expect(dismissedCalled).equals(false, 'onDismissed was called prematurely');
+    expect(dismissCalled).toEqual(true);
+    expect(dismissedCalled).toEqual(false);
 
     setTimeout(() => {
       try {
-        expect(dismissedCalled).equals(true, 'onDismissed not called');
+        expect(dismissedCalled).toEqual(true);
         done();
       } catch (e) {
         done(e);

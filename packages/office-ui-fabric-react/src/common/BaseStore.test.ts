@@ -1,7 +1,5 @@
 import { BaseStore } from './BaseStore';
 
-let { expect } = chai;
-
 class TestStore extends BaseStore {
   public doThings() {
     this.emitChange();
@@ -16,7 +14,7 @@ describe('BaseStore', () => {
     test.subscribe(() => hasChanged = true);
     test.doThings();
 
-    expect(hasChanged).to.be.true;
+    expect(hasChanged).toBe(true);
   });
 
   it('can unsubscribe', () => {
@@ -27,7 +25,7 @@ describe('BaseStore', () => {
     disposable.dispose();
     test.doThings();
 
-    expect(hasChanged).to.be.false;
+    expect(hasChanged).toBe(false);
   });
 
 });

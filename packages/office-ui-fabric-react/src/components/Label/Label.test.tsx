@@ -3,9 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { Label } from './Label';
 
@@ -17,7 +15,7 @@ describe('Label', () => {
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
 
-    expect(renderedDOM.textContent).to.equal('test');
+    expect(renderedDOM.textContent).toEqual('test');
   });
 
 });
