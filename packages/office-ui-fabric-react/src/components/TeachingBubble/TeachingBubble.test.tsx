@@ -3,10 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-
-let { expect } = chai;
 
 describe('TeachingBubble', () => {
 
@@ -20,7 +18,7 @@ describe('TeachingBubble', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let titleElement = renderedDOM.querySelector('.ms-TeachingBubble-headline');
 
-    expect(titleElement!.textContent).to.equal('Title');
+    expect(titleElement!.textContent).toEqual('Title');
   });
 
 });

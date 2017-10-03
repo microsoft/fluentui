@@ -765,7 +765,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHintFixed={ true }
         { ...calloutProps }
         className={ this._classNames.callout }
-        targetElement={ this._comboBoxWrapper }
+        target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
@@ -881,8 +881,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Scroll the selected element into view
    */
   private _scrollIntoView() {
-    if (this._selectedElement) {
+
+    let { scrollSelectedToTop } = this.props;
+    if (this._selectedElement && scrollSelectedToTop) {
+      this._selectedElement.offsetParent.scrollIntoView(true);
+    } else if (this._selectedElement) {
       let alignToTop = true;
+
       if (this._comboBoxMenu.offsetParent) {
         let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
         let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();

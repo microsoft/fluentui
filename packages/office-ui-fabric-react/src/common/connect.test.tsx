@@ -3,15 +3,13 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { connect } from './connect';
 import { BaseStore } from './BaseStore';
 import { StoreHost } from './StoreHost';
 import { StoreSet } from './StoreSet';
 import { storeKey } from './storeKey';
 import { ISubscribable } from './ISubscribable';
-
-let { expect } = chai;
 
 interface ITestComponentProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -60,17 +58,17 @@ describe('connect', () => {
     );
     let rootElement = ReactDOM.findDOMNode(root as React.ReactInstance);
 
-    expect(rootElement.textContent).equals('');
+    expect(rootElement.textContent).toEqual('');
 
     localStores.getStore<IHelloStore>(hello1).say('hello');
     setTimeout(() => {
       try {
-        expect(rootElement.textContent).equals('hello');
+        expect(rootElement.textContent).toEqual('hello');
         localStores.getStore<IHelloStore>(hello2).say(' world');
 
         setTimeout(() => {
           try {
-            expect(rootElement.textContent).equals('hello world');
+            expect(rootElement.textContent).toEqual('hello world');
             done();
           } catch (e) { done(e); }
         }, 10);
@@ -97,7 +95,7 @@ describe('connect', () => {
       );
     } catch (e) { threwException = true; }
 
-    expect(threwException).equals(true);
+    expect(threwException).toEqual(true);
   });
 
   it('can throw in an environment that does not contain the required store', () => {
@@ -119,7 +117,7 @@ describe('connect', () => {
       );
     } catch (e) { threwException = true; }
 
-    expect(threwException).equals(true);
+    expect(threwException).toEqual(true);
   });
 
   it('renders a connected component 1 time when multiple stores fire changes', (done) => {
@@ -152,8 +150,8 @@ describe('connect', () => {
       </div>
     );
 
-    expect(resolves).to.equal(1, 'resolve was not 1');
-    expect(renders).to.equal(1, 'render was not 1');
+    expect(resolves).toEqual(1);
+    expect(renders).toEqual(1);
 
     // Cause 2 store changes. This should setImmediate and cause 1 resolve.
     localStores.getStore<IHelloStore>(hello1).say('hello');
@@ -161,8 +159,8 @@ describe('connect', () => {
 
     setTimeout(() => {
       try {
-        expect(resolves).to.equal(2, 'resolve was not 2');
-        expect(renders).to.equal(1, 'render was not 1');
+        expect(resolves).toEqual(2);
+        expect(renders).toEqual(1);
         done();
       } catch (e) { done(e); }
     }, 10);

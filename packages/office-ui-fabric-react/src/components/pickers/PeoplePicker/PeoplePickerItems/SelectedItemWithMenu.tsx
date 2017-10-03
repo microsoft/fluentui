@@ -57,7 +57,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
             <ContextualMenu
               items={ item.menuItems! }
               shouldFocusOnMount={ true }
-              targetElement={ this.refs.ellipsisRef }
+              target={ this.refs.ellipsisRef }
               onDismiss={ this._onCloseContextualMenu }
               directionalHint={ DirectionalHint.bottomAutoEdge }
             />)
