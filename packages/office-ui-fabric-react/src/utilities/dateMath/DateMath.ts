@@ -1,8 +1,4 @@
-import {
-  DayOfWeek,
-  FirstWeekOfYear,
-  DateRangeType
-} from '../dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../dateValues/DateValues';
 import TimeConstants from '../dateValues/TimeConstants';
 import { assertNever } from '../../Utilities';
 
@@ -44,11 +40,7 @@ export function addMonths(date: Date, months: number): Date {
   // We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
   // Loop until we back up to a day the new month has.
   // (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-  if (
-    result.getMonth() !==
-    (newMonth % TimeConstants.MonthInOneYear + TimeConstants.MonthInOneYear) %
-    TimeConstants.MonthInOneYear
-  ) {
+  if (result.getMonth() !== (newMonth % TimeConstants.MonthInOneYear + TimeConstants.MonthInOneYear) % TimeConstants.MonthInOneYear) {
     result = addDays(result, -result.getDate());
   }
   return result;
@@ -69,12 +61,7 @@ export function addYears(date: Date, years: number): Date {
   // We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
   // Loop until we back up to a day the new month has.
   // (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-  if (
-    result.getMonth() !==
-    (date.getMonth() % TimeConstants.MonthInOneYear +
-      TimeConstants.MonthInOneYear) %
-    TimeConstants.MonthInOneYear
-  ) {
+  if (result.getMonth() !== (date.getMonth() % TimeConstants.MonthInOneYear + TimeConstants.MonthInOneYear) % TimeConstants.MonthInOneYear) {
     result = addDays(result, -result.getDate());
   }
   return result;
@@ -102,10 +89,9 @@ export function compareDates(date1: Date, date2: Date): boolean {
   } else if (!date1 || !date2) {
     return false;
   } else {
-    return (
-      date1.getFullYear() === date2.getFullYear() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getDate() === date2.getDate()
+    return (date1.getFullYear() === date2.getFullYear()
+      && date1.getMonth() === date2.getMonth()
+      && date1.getDate() === date2.getDate()
     );
   }
 }
@@ -129,11 +115,7 @@ export function compareDatePart(date1: Date, date2: Date): Number {
  * @param {DayOfWeek} dayOfWeek - The first day of the week.
  * @returns {Date[]} An array of dates representing the date range containing the specified date.
  */
-export function getDateRangeArray(
-  date: Date,
-  dateRangeType: DateRangeType,
-  firstDayOfWeek: DayOfWeek
-): Date[] {
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek): Date[] {
   let datesArray = new Array<Date>();
   let startDate: Date;
   let endDate = null;
@@ -224,11 +206,7 @@ function getDatePartHashValue(date: Date) {
  * @param {DayOfWeek} firstDayOfWeek - The first day of the week (0-6, Sunday = 0)
  * @return {Number} The week's number in the year.
  */
-export function getWeekNumber(
-  date: Date,
-  firstDayOfWeek: DayOfWeek,
-  firstWeekOfYear: FirstWeekOfYear
-) {
+export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear) {
   //First four-day week of the year - minumum days count
   const fourDayWeek = 4;
   let dayOfYear = getDayOfYear(date) - 1;
@@ -318,7 +296,7 @@ function getDayOfYear(date: Date) {
   let daysUntilDate = 0;
 
   for (let i = 0; i < month; i++) {
-    daysUntilDate += daysInMonth(i + 1, year);
+    daysUntilDate += daysInMonth((i + 1), year);
   }
 
   daysUntilDate += date.getDate();

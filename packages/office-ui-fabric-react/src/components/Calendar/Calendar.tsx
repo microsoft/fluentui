@@ -92,7 +92,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
     // if selected date is updated via props, we may need to modify the navigated date
-    let overrideNavigatedDate = autoNavigateOnSelection && !compareDates(value!, this.props.value!);
+    let overrideNavigatedDate = (autoNavigateOnSelection && !compareDates(value!, this.props.value!));
     if (overrideNavigatedDate) {
       this.setState({
         navigatedDate: value
@@ -132,7 +132,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
             styles.pickerIsOpened,
             styles.pickerIsFocused,
             isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
-            isMonthPickerVisible && (isDayPickerVisible && 'ms-DatePicker-calendarsInline ' + styles.calendarsInline),
+            isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
             monthPickerOnly && ('ms-DatePicker-monthPickerOnly ' + styles.monthPickerOnly),
             showMonthPickerAsOverlay && ('ms-DatePicker-monthPickerAsOverlay ' + styles.monthPickerAsOverlay),
           ) }
