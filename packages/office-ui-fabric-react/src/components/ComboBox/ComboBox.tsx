@@ -773,7 +773,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHintFixed={ true }
         { ...calloutProps }
         className={ this._classNames.callout }
-        targetElement={ this._comboBoxWrapper }
+        target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
