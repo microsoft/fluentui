@@ -85,7 +85,7 @@ describe('Callout', () => {
 
     expect(threwException).toEqual(false);
   });
- 
+
   it('without target does not throw exception', () => {
     let threwException: boolean = false;
     try {
