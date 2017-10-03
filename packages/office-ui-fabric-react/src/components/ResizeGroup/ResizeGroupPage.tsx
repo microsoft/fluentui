@@ -2,6 +2,7 @@ import * as React from 'react';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -14,7 +15,7 @@ const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/
 
 const ResizeGroupFlexBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
 
-export class ResizeGroupPage extends React.Component<any, any> {
+export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -93,6 +94,7 @@ export class ResizeGroupPage extends React.Component<any, any> {
             </ul>
           </div>
         }
+        isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
             {...ResizeGroupStatus}
