@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Positioning: Refactored positioning and removed deprecated properties",
+      "type": "major"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "joschect@microsoft.com"
+}

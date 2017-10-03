@@ -148,7 +148,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             className={ css('ms-CommandBar-menuHost') }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             { ...contextualMenuProps }
-            targetElement={ contextualMenuTarget }
+            target={ contextualMenuTarget }
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
           />

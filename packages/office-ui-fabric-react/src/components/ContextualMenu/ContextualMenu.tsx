@@ -129,15 +129,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   public componentWillUpdate(newProps: IContextualMenuProps) {
-    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
-      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+    if (newProps.target !== this.props.target) {
+      let newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
-    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    let target = this.props.target;
     this._setTargetWindowAndElement(target!);
     this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
@@ -169,7 +169,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       items,
       isBeakVisible,
       labelElementId,
-      targetElement,
       id,
       targetPoint,
       useTargetPoint,
@@ -240,7 +239,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         <Callout
           {...calloutProps}
           target={ target }
-          targetElement={ targetElement }
           targetPoint={ targetPoint }
           useTargetPoint={ useTargetPoint }
           isBeakVisible={ isBeakVisible }
