@@ -167,7 +167,7 @@ initializeIcons();
 initializeIcons('https://my.cdn.com/path/to/icons/');`
                 }
               </CodeBlock>
-              <p>This will make ALL icons in the collection available, but will download them on demand when referenced using the `@uifabric/styling` APIs `getIcon` or `getIconClassName`.</p>
+              <p>This will make ALL icons in the collection available, but will download them on demand when referenced using the <a href='#/components/Icon'>Icon component</a>.</p>
             </li>
           </ol>
 
