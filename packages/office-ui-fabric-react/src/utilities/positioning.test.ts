@@ -13,8 +13,6 @@ interface ITestValues {
   beakWidth: number;
 }
 
-let { assert } = chai;
-
 function stringifyResults(expected: any, actual: any) {
   return 'expected was: ' + JSON.stringify(expected) + ' actual was: ' + JSON.stringify(actual);
 }
@@ -26,7 +24,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
 
   let beak = positioningFunctions._positionBeak(beakWidth, result, target, 0);
 
-  assert(result.calloutRectangle.equals(validate.callout), 'Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
+  expect(result.calloutRectangle).toEqual(validate.callout);
 
   for (const key in beak) {
     if (beak[key]) {
@@ -42,11 +40,10 @@ function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint,
   let { callout, target, bounds, beakWidth } = testValues;
   let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), beakWidth);
 
-  assert(result.calloutRectangle.equals(validate.callout), 'No Beak: Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
+  expect(result.calloutRectangle).toEqual(validate.callout);
 }
 
 describe('Callout Positioning', () => {
-
   it('Correctly positions the callout without beak', () => {
 
     let noBeakTestCase: ITestValues = {
@@ -119,16 +116,16 @@ describe('Callout Positioning', () => {
     let bounds = new Rectangle(0, 1000, 0, 1000);
 
     let testMax = getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, 0, bounds);
-    assert(testMax === 1000 - targetBot,
-      `Test for maxHeight from bottom of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetBot}`);
+    // Test for maxHeight from bottom of target to bottom of bounds
+    expect(testMax).toBe(1000 - targetBot);
 
     testMax = getMaxHeight(targetRectangle, DirectionalHint.topCenter, 0, bounds);
-    assert(testMax === targetTop,
-      `Test for maxHeight from top of target to top of bounds: maxHeight was ${testMax} and it should have been ${targetTop}`);
+    // Test for maxHeight from top of target to top of bounds
+    expect(testMax).toBe(targetTop);
 
     testMax = getMaxHeight(targetRectangle, DirectionalHint.rightCenter, 0, bounds);
-    assert(testMax === 1000 - targetTop,
-      `Test for maxHeight from top of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetTop}`);
+    // Test for maxHeight from top of target to bottom of bounds
+    expect(testMax).toBe(1000 - targetTop);
   });
 
   it('Correctly determines max height with a gapSpace included', () => {
@@ -143,16 +140,16 @@ describe('Callout Positioning', () => {
 
     let testMax = getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, gapSpace, bounds);
 
-    assert(testMax === 1000 - targetBot - gapSpace,
-      `Test for maxHeight from bottom of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetBot - gapSpace}`);
+    // Test for maxHeight from bottom of target to bottom of bounds
+    expect(testMax).toBe(1000 - targetBot - gapSpace);
 
     testMax = getMaxHeight(targetRectangle, DirectionalHint.topCenter, gapSpace, bounds);
-    assert(testMax === targetTop - gapSpace,
-      `Test for maxHeight from top of target to top of bounds: maxHeight was ${testMax} and it should have been ${targetTop - gapSpace}`);
+    // Test for maxHeight from top of target to top of bounds
+    expect(testMax).toBe(targetTop - gapSpace);
 
     testMax = getMaxHeight(targetRectangle, DirectionalHint.rightCenter, gapSpace, bounds);
-    assert(testMax === 1000 - targetTop - gapSpace,
-      `Test for maxHeight from top of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetTop - gapSpace}`);
+    // Test for maxHeight from top of target to bottom of bounds
+    expect(testMax).toBe(1000 - targetTop - gapSpace);
   });
 
 });
