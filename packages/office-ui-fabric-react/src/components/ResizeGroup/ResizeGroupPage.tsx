@@ -66,6 +66,9 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
             </span>
           </div>
         }
+        bestPractices={
+          <div />
+        }
         dos={
           <div>
             <ul>
