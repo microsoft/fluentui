@@ -18,7 +18,7 @@ $spacingAroundItemButton: 2px;
 .members {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   overflow: hidden;
   margin: -1 * $spacingAroundItemButton;
 

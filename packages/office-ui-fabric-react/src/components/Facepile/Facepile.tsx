@@ -149,8 +149,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
     let primary = currentData.primary.slice(0, -1);
 
-    let cacheKey = undefined;
-    // cacheKey = this._computeCacheKey(primary);
+    let cacheKey: string = this._computeCacheKey(primary);
 
     return { primary, overflow, cacheKey };
   }
@@ -164,8 +163,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     let overflow = currentData.overflow.slice(1);
     let primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
 
-    let cacheKey = undefined;
-    // cacheKey = this._computeCacheKey(primary);
+    let cacheKey: string = this._computeCacheKey(primary);
+
     return { primary, overflow, cacheKey };
   }
 
