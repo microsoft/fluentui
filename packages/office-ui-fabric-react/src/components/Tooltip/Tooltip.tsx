@@ -50,8 +50,8 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
           styles.root,
           (delay === TooltipDelay.medium) && styles.hasMediumDelay,
           (maxWidth !== null) && { maxWidth: maxWidth }
-        ) }
-        targetElement={ targetElement }
+        )}
+        target={ targetElement }
         directionalHint={ directionalHint }
         directionalHintForRTL={ directionalHintForRTL }
         {...calloutProps}
