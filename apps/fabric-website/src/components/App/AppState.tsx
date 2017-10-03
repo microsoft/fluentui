@@ -203,6 +203,12 @@ export const AppState: IAppState = {
 
         },
         {
+          title: 'Icon',
+          url: '#/components/Icon',
+          component: () => <LoadingComponent title='Icon' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/IconComponentPage').IconComponentPage))
+        },
+        {
           title: 'Image',
           url: '#/components/image',
           component: () => <LoadingComponent title='Image' />,
