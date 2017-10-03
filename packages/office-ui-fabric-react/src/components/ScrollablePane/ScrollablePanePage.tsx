@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ScrollablePaneStatus } from './ScrollablePane.checklist';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 
@@ -38,17 +40,17 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         overview={
           <div>
             <p>
-              ScrollablePane is a helper component designed to use in conjunction with a Sticky component.  ScrollablePane will find the nearest scrollable parent element, and designate that as the container for Sticky components.  Sticky components will "stick" to the top or bottom of a ScrollablePane's scrollable region and remain visible.
+              ScrollablePane is a helper component designed to use in conjunction with a Sticky component.  Sticky components will "stick" to the top or bottom of a ScrollablePane's scrollable region and remain visible.  ScrollablePane requires a height or max-height set either on the component itself, or on the immediate parent element.
             </p>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
             <ul>
-              <li>Designate the nearest scrollable parent with the attribute data-is-scrollable=true</li>
+              <li>Ensure that a parent component has a CSS height, or max-height attribute set (and any intermediary containers have an inherit, or explicit height/max-height set).</li>
               <li>Use Sticky component on block level elements</li>
               <li>Sticky component are ideally section headers and/or footers</li>
             </ul>
@@ -61,8 +63,13 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ScrollablePaneStatus}
+          />
+        }
+      />
     );
   }
 

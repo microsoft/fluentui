@@ -20,7 +20,7 @@
   &.isSelected {
     background: $ms-color-neutralQuaternary;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       border: 1px solid WindowFrame;
     }
 
@@ -29,7 +29,7 @@
     }
   }
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid WindowText;
   }
 }

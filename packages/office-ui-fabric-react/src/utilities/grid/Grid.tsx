@@ -6,7 +6,6 @@ import {
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGridProps } from './Grid.Props';
-import { GridCell } from './GridCell';
 
 export class Grid extends BaseComponent<IGridProps, {}> {
 
@@ -23,10 +22,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
       columnCount,
       onRenderItem,
       positionInSet,
-      setSize,
-      shouldFocusCircularNavigate,
-      containerClassName,
-      onBlur
+      setSize
     } = this.props;
 
     // Array to store the cells in the correct row index
@@ -44,21 +40,24 @@ export class Grid extends BaseComponent<IGridProps, {}> {
           role={ 'grid' }
           aria-posinset={ positionInSet }
           aria-setsize={ setSize }
-          style={ { padding: '2px', outline: 'none' } }>
+          style={ { padding: '2px', outline: 'none' } }
+        >
           <tbody>
             {
               rowsOfItems.map((rows: any[], rowIndex) => {
                 return (
                   <tr
                     role={ 'row' }
-                    key={ this._id + '-' + rowIndex + '-row' }>
-                    { rows.map((cell) => {
+                    key={ this._id + '-' + rowIndex + '-row' }
+                  >
+                    { rows.map((cell, cellIndex) => {
                       return (
                         <td
                           role={ 'presentation' }
-                          key={ this._id + '-' + cell.index + '-cell' }
-                          style={ { padding: '0px' } }>
-                          { onRenderItem(cell, cell.index) }
+                          key={ this._id + '-' + cellIndex + '-cell' }
+                          style={ { padding: '0px' } }
+                        >
+                          { onRenderItem(cell, cellIndex) }
                         </td>
                       );
                     }) }

@@ -9,6 +9,8 @@ import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { NavStatus } from './Nav.checklist';
 
 const NavBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Basic.Example.tsx') as string;
 const NavFabricDemoAppExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.FabricDemoApp.Example.tsx') as string;
@@ -52,7 +54,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -73,8 +75,13 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...NavStatus}
+          />
+        }
+      />
     );
   }
 

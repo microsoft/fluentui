@@ -37,8 +37,11 @@ build.karma.isEnabled = () => false;
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
 
-//Disable tslint
+// Disable tslint
 build.tslint.isEnabled = () => false;
+
+// Only run bundling in production builds; this speeds up normal ci builds.
+build.webpack.isEnabled = () => isProduction;
 
 // Copy fabric-core to dist to be published with fabric-react.
 build.postCopy.setConfig({

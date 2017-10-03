@@ -2,9 +2,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 import {
   KeyCodes,
@@ -37,8 +35,8 @@ describe('Dropdown', () => {
       container);
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
-    expect(dropdownRoot.className).not.contains('is-disabled', `shouldn't be disabled`);
-    expect(dropdownRoot.getAttribute('data-is-focusable')).equals('true', 'data-is-focusable');
+    expect(dropdownRoot.className).not.toEqual(expect.stringMatching('is-disabled'));
+    expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('true');
 
     ReactDOM.render(
       <Dropdown
@@ -48,8 +46,8 @@ describe('Dropdown', () => {
       />,
       container);
 
-    expect(dropdownRoot.className).contains('is-disabled', `should be disabled`);
-    expect(dropdownRoot.getAttribute('data-is-focusable')).equals('false', 'data-is-focusable');
+    expect(dropdownRoot.className).toEqual(expect.stringMatching('is-disabled'));
+    expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('Renders no selected item in default case', () => {
@@ -64,7 +62,22 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-    expect(titleElement.textContent).equals('');
+    expect(titleElement.textContent).toEqual('');
+  });
+
+  it('Renders a selected item if option specifies selected', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2' },] }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+    expect(titleElement.textContent).toEqual('1');
   });
 
   it('Renders a selected item in uncontrolled case', () => {
@@ -80,7 +93,7 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-    expect(titleElement.textContent).equals('1');
+    expect(titleElement.textContent).toEqual('1');
   });
 
   it('Renders a selected item in controlled case', () => {
@@ -96,7 +109,7 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-    expect(titleElement.textContent).equals('1');
+    expect(titleElement.textContent).toEqual('1');
   });
 
   it('Can change items in uncontrolled case', () => {
@@ -121,7 +134,7 @@ describe('Dropdown', () => {
       ReactTestUtils.Simulate.click(secondItemElement);
     }
     finally {
-      expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).equals('2');
+      expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('2');
     }
   });
 
@@ -138,7 +151,7 @@ describe('Dropdown', () => {
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
 
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).equals('1');
+    expect(titleElement.textContent).toEqual('1');
   });
 
   it('Will select the first valid item on Home keypress', () => {
@@ -154,7 +167,7 @@ describe('Dropdown', () => {
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
 
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).equals('1');
+    expect(titleElement.textContent).toEqual('1');
   });
 
   it('Will select the last valid item on End keypress', () => {
@@ -170,7 +183,7 @@ describe('Dropdown', () => {
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
 
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).equals('6');
+    expect(titleElement.textContent).toEqual('6');
   });
 
   it('Will skip over headers and separators on keypress', () => {
@@ -189,12 +202,12 @@ describe('Dropdown', () => {
 
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
     titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).equals('1');
+    expect(titleElement.textContent).toEqual('1');
 
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
     titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).equals('4');
+    expect(titleElement.textContent).toEqual('4');
   });
 });

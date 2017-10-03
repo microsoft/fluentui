@@ -7,6 +7,9 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
 
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
+
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
   directionalHint?: DirectionalHint;
@@ -50,25 +53,33 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
-          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
+          <Checkbox
+            className={ exampleStyles.exampleCheckbox }
+            label='Show beak'
+            checked={ isBeakVisible }
+            onChange={ this._onShowBeakChange }
+          />
           <Slider
             max={ 30 }
             label='Gap Space'
             min={ 0 }
             defaultValue={ 0 }
-            onChange={ this._onGapSlider } />
+            onChange={ this._onGapSlider }
+          />
           { isBeakVisible &&
             (<Slider
               max={ 50 }
               label='Beak Width'
               min={ 10 }
               defaultValue={ 16 }
-              onChange={ this._onBeakWidthSlider } />) }
+              onChange={ this._onBeakWidthSlider }
+            />) }
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged } />
+            onChanged={ this._onDirectionalChanged }
+          />
         </div>
         <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
           <DefaultButton

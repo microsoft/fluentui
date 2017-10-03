@@ -208,6 +208,7 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
   // Fallback to other methods of determining actual visibility.
   return (element.offsetHeight !== 0 ||
     element.offsetParent !== null ||
+    // tslint:disable-next-line:no-any
     (element as any).isVisible === true); // used as a workaround for testing.
 }
 
@@ -273,7 +274,7 @@ export function isElementFocusSubZone(element?: HTMLElement): boolean {
  *
  * @public
  */
-export function doesElementContainFocus(element: HTMLElement) {
+export function doesElementContainFocus(element: HTMLElement): boolean {
   let document = getDocument(element);
   let currentActiveElement: HTMLElement | undefined = document && document.activeElement as HTMLElement;
   if (currentActiveElement && elementContains(element, currentActiveElement)) {

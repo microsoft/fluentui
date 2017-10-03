@@ -1,6 +1,5 @@
-import { mergeStyles } from '../utilities/index';
-import { IProcessedStyle, ITheme } from '../interfaces/index';
-import { parent } from '../glamorExports';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
+import { ITheme } from '../interfaces/index';
 
 /**
  * Generates a focus style which can be used to define an :after focus border.
@@ -14,26 +13,31 @@ import { parent } from '../glamorExports';
  */
 export function getFocusStyle(
   theme: ITheme,
-  inset: string = '0',
-  color: string | undefined = theme.palette.neutralSecondary,
+  inset: number = 0,
   position: 'relative' | 'absolute' = 'relative'
-): IProcessedStyle {
-  return mergeStyles(
-    {
-      outline: 'transparent',
-      '::-moz-focus-inner': { border: 0 },
-      position
-    },
-    parent('.ms-Fabric.is-focusVisible', {
-      ':focus:after': {
+): IRawStyle {
+  return {
+    outline: 'transparent',
+    position,
+
+    selectors: {
+
+      '::-moz-focus-inner': {
+        border: '0'
+      },
+
+      '.ms-Fabric.is-focusVisible &:focus:after': {
         content: '""',
         position: 'absolute',
-        left: inset,
-        top: inset,
-        bottom: inset,
-        right: inset,
-        border: '1px solid ' + color
+        left: inset + 1,
+        top: inset + 1,
+        bottom: inset + 1,
+        right: inset + 1,
+        border: '1px solid ' + theme.palette.white,
+        outline: '1px solid ' + theme.palette.neutralSecondary,
+        zIndex: 1
       }
-    })
-  );
+
+    }
+  };
 }

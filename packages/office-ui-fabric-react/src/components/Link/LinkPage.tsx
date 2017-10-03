@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { LinkStatus } from './Link.checklist';
 
 let LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
@@ -39,7 +41,7 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -60,11 +62,13 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Link/Link.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...LinkStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 

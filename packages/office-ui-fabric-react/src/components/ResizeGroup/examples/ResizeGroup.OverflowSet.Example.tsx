@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -76,8 +76,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
       <div className={ short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
           data={ dataToRender }
-          onReduceData={ this.onReduceData }
-          onGrowData={ onGrowDataEnabled ? this.onGrowData : undefined }
+          onReduceData={ this._onReduceData }
+          onGrowData={ onGrowDataEnabled ? this._onGrowData : undefined }
           onRenderData={ (data) => {
             return (
               <OverflowSet
@@ -105,14 +105,14 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           } }
         />
         <div className={ styles.settingsGroup }>
-          <Checkbox label='Enable caching' onChange={ this.onCachingEnabledChanged } checked={ cachingEnabled } />
-          <Checkbox label='Set onGrowData' onChange={ this.onGrowDataEnabledChanged } checked={ onGrowDataEnabled } />
-          <Checkbox label='Buttons checked' onChange={ this.onButtonsCheckedChanged } checked={ buttonsChecked } />
+          <Checkbox label='Enable caching' onChange={ this._onCachingEnabledChanged } checked={ cachingEnabled } />
+          <Checkbox label='Set onGrowData' onChange={ this._onGrowDataEnabledChanged } checked={ onGrowDataEnabled } />
+          <Checkbox label='Buttons checked' onChange={ this._onButtonsCheckedChanged } checked={ buttonsChecked } />
           <div className={ styles.itemCountDropdown } >
             <Dropdown
               label='Number of items to render'
               selectedKey={ numberOfItems.toString() }
-              onChanged={ this.onNumberOfItemsChanged }
+              onChanged={ this._onNumberOfItemsChanged }
               options={
                 [{ key: '20', text: '20' },
                 { key: '30', text: '30' },
@@ -120,7 +120,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 { key: '50', text: '50' },
                 { key: '75', text: '75' },
                 { key: '100', text: '100' },
-                { key: '200', text: '200' }] } />
+                { key: '200', text: '200' }] }
+            />
           </div>
         </div>
       </div>
@@ -128,7 +129,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
   }
 
   @autobind
-  private onReduceData(currentData: any): any {
+  private _onReduceData(currentData: any): any {
     if (currentData.primary.length === 0) {
       return undefined;
     }
@@ -144,7 +145,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
   }
 
   @autobind
-  private onGrowData(currentData: any): any {
+  private _onGrowData(currentData: any): any {
     if (currentData.overflow.length === 0) {
       return undefined;
     }
@@ -160,22 +161,22 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
   }
 
   @autobind
-  private onCachingEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+  private _onCachingEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
     this.setState({ cachingEnabled: checked });
   }
 
   @autobind
-  private onGrowDataEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+  private _onGrowDataEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
     this.setState({ onGrowDataEnabled: checked });
   }
 
   @autobind
-  private onButtonsCheckedChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+  private _onButtonsCheckedChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
     this.setState({ buttonsChecked: checked });
   }
 
   @autobind
-  private onNumberOfItemsChanged(option: IDropdownOption) {
+  private _onNumberOfItemsChanged(option: IDropdownOption) {
     this.setState({ numberOfItems: parseInt(option.text, 10) });
   }
 }

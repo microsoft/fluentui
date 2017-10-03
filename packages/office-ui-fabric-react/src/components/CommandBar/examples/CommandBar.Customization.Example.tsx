@@ -69,35 +69,40 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
 
     return (
       <div>
-        <div className={ css(
-          styles.customButtonContainer,
-          darkerBG
-        ) } ref={ ref => this.container = ref! }>
+        <div
+          className={ css(
+            styles.customButtonContainer,
+            darkerBG
+          ) }
+          ref={ ref => this.container = ref! }
+        >
           <CommandButton
             className={ mainBtnClassName }
             iconProps={ { iconName: 'Add' } }
-            text='New' />
+            text='New'
+          />
           <span className={ styles.splitter }>|</span>
           <CommandButton
-            onClick={ this.onClickChevron }
+            onClick={ this._onClickChevron }
             className={ dropDownButtonClass }
             menuProps={ {
               className: css('ms-CommandBar-menuHost'),
               items: item.subMenuProps!.items
-            } } />
+            } }
+          />
         </div>
       </div >
     );
   }
 
   @autobind
-  private onClickChevron(ev: any) {
+  private _onClickChevron(ev: any) {
     ev.stopPropagation();
-    this.toggleDropDownMenuShown(ev);
+    this._toggleDropDownMenuShown(ev);
   }
 
   @autobind
-  private toggleDropDownMenuShown(ev: any) {
+  private _toggleDropDownMenuShown(ev: any) {
     this.setState({
       isContextMenuShown: !this.state.isContextMenuShown
     });

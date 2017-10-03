@@ -6,8 +6,9 @@ import {
   OverflowButtonType,
 } from 'office-ui-fabric-react/lib/Facepile';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 
@@ -62,10 +63,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
             step={ 1 }
             showValue={ true }
             value={ displayedPersonas }
-            onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-              prevState.displayedPersonas = value;
-              return prevState;
-            }) }
+            onChange={ this._onChangePersonaNumber }
           />
         </div>
         <Checkbox
@@ -101,12 +99,26 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
               { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] }
             ]
           }
-          onChanged={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-            prevState.overflowButtonType = value.key as OverflowButtonType;
-            return prevState;
-          }) }
+          onChanged={ this._onChangeType
+          }
         />
       </div>
     );
+  }
+
+  @autobind
+  private _onChangePersonaNumber(value: number): void {
+    this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
+      prevState.displayedPersonas = value;
+      return prevState;
+    });
+  }
+
+  @autobind
+  private _onChangeType(value: IDropdownOption): void {
+    this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
+      prevState.overflowButtonType = value.key as OverflowButtonType;
+      return prevState;
+    });
   }
 }

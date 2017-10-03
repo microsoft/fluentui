@@ -1,6 +1,6 @@
-/**
- * WARNING: This entry should NOT be imported for production purposes. This entry forces every control to be
- * parsed and available at load time, which is not necessary for most cases.
- */
-
-export * from './Link';
+export { CommandBar } from './CommandBar';
+export { LayoutGroup } from './LayoutGroup';
+export { FolderCover } from './FolderCover';
+export { Tile } from './Tile';
+export { TilesList } from './TilesList';
+export { CommandBar as ExperimentCommandBar } from './CommandBar';

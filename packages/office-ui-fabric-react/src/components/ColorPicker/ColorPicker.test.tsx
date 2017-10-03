@@ -2,10 +2,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { ColorPicker } from './ColorPicker';
-
-let { expect } = chai;
 
 describe('ColorPicker', () => {
   it('Props are correctly parsed', () => {
@@ -13,7 +11,7 @@ describe('ColorPicker', () => {
       <ColorPicker color='#FFFFFF' />
     ) as ColorPicker;
 
-    expect(component.state.color.hex).to.equal('ffffff');
+    expect(component.state.color.hex).toEqual('ffffff');
   });
 
   it('Reacts to props changes', () => {
@@ -22,20 +20,27 @@ describe('ColorPicker', () => {
     ) as ColorPicker;
 
     component.componentWillReceiveProps({ color: '#AEAEAE' });
-    expect(component.state.color.hex).to.equal('aeaeae');
+    expect(component.state.color.hex).toEqual('aeaeae');
   });
 
   it('onColorChange is called', () => {
     let color = '#FFFFFF';
+    const onColorChanged = (str: string): void => {
+      color = str;
+    };
+
     let component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color={ color } onColorChanged={ str => color = str } />
+      <ColorPicker
+        color={ color }
+        onColorChanged={ onColorChanged }
+      />
     ) as ColorPicker;
 
     const newColor = '#AEAEAE';
     component.componentWillReceiveProps({ color: newColor });
 
-    expect(component.state.color.hex).to.equal('aeaeae');
-    expect(color).to.equal(newColor);
+    expect(component.state.color.hex).toEqual('aeaeae');
+    expect(color).toEqual(newColor);
   });
 
   it('Hides alpha control slider', () => {
@@ -48,8 +53,8 @@ describe('ColorPicker', () => {
     let alphaTableHeader = renderedDOM.querySelector('.ms-ColorPicker-table > thead > tr > td:nth-child(5)');
     let alphaTableInput = renderedDOM.querySelector('.ms-ColorPicker-table > tbody> tr > td:nth-child(5)');
 
-    expect(alphaSlider).to.be.eq(null);
-    expect(alphaTableHeader).to.be.eq(null);
-    expect(alphaTableInput).to.be.eq(null);
+    expect(alphaSlider).toBeNull();
+    expect(alphaTableHeader).toBeNull();
+    expect(alphaTableInput).toBeNull();
   });
 });

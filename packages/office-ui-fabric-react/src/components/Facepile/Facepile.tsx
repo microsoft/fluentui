@@ -25,15 +25,12 @@ import {
   Icon
 } from '../../Icon';
 import {
-  Persona,
+  PersonaCoin,
   PersonaSize
-} from '../../Persona';
+} from '../../PersonaCoin';
 import {
   ResizeGroup
 } from '../../ResizeGroup';
-import {
-  OverflowSet
-} from '../../OverflowSet';
 import * as stylesImport from './Facepile.scss';
 const styles: any = stylesImport;
 
@@ -67,6 +64,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       maxDisplayablePersonas,
       overflowButtonProps,
       overflowButtonType,
+      className,
       personas,
       showAddButton,
       useOnlyAvailableWidth,
@@ -97,10 +95,21 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           <ResizeGroup
             data={ facepileData }
             onReduceData={ this._showLess }
+            onGrowData={ this._showMore }
             onRenderData={ this._renderFacepile }
           /> :
           this._renderFacepile(facepileData) }
       </div>
+    );
+  }
+
+  protected onRenderAriaDescription() {
+    const { ariaDescription } = this.props;
+
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
+    // otherwise it will be assigned to descriptionSpan.
+    return ariaDescription && (
+      <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     );
   }
 
@@ -115,8 +124,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <div className={ css('ms-Facepile', styles.root, className) }>
         <div className={ css('ms-Facepile-itemContainer', styles.itemContainer) }>
-          { this._onRenderAriaDescription() }
           { showAddButton ? this._getAddNewElement() : null }
+          { this._onRenderAriaDescription() }
           <FocusZone
             ariaDescribedBy={ this._ariaDescriptionId }
             role='listbox'
@@ -176,15 +185,16 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     let { getPersonaProps, personaSize } = this.props;
-    return <Persona
-      imageInitials={ persona.imageInitials }
-      imageUrl={ persona.imageUrl }
-      initialsColor={ persona.initialsColor }
-      primaryText={ persona.personaName }
-      size={ personaSize }
-      hidePersonaDetails={ true }
-      {...(getPersonaProps ? getPersonaProps(persona) : null) }
-    />;
+    return (
+      <PersonaCoin
+        imageInitials={ persona.imageInitials }
+        imageUrl={ persona.imageUrl }
+        initialsColor={ persona.initialsColor }
+        primaryText={ persona.personaName }
+        size={ personaSize }
+        {...(getPersonaProps ? getPersonaProps(persona) : null) }
+      />
+    );
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
@@ -218,10 +228,10 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     };
   }
 
-  private _getOverflowElement(overflowPersonas: IFacepilePersona[]): JSX.Element | null {
+  private _getOverflowElement(numPersonasToShow: number): JSX.Element | null {
     switch (this.props.overflowButtonType) {
       case OverflowButtonType.descriptive:
-        return this._getDescriptiveOverflowElement(overflowPersonas);
+        return this._getDescriptiveOverflowElement(numPersonasToShow);
       case OverflowButtonType.downArrow:
         return this._getIconElement('ChevronDown');
       case OverflowButtonType.more:
@@ -231,13 +241,13 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     }
   }
 
-  private _getDescriptiveOverflowElement(overflowPersonas: IFacepilePersona[]): JSX.Element | null {
-    let { overflowButtonProps, personaSize } = this.props;
-    let numPersonasNotPictured: number = overflowPersonas.length;
+  private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element | null {
+    let { overflowButtonProps, personas, personaSize } = this.props;
+    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
 
-    let personaNames: string = overflowPersonas.map((p: IFacepilePersona) => p.personaName).join(', ');
+    if (!overflowButtonProps || numPersonasNotPictured < 1) { return null; }
 
-    if (numPersonasNotPictured <= 0) { return null; }
+    let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return (
       <BaseButton
@@ -245,51 +255,45 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       >
-        <Persona
+        <PersonaCoin
           title={ personaNames }
           size={ personaSize }
-          hidePersonaDetails={ true }
-          onRenderInitials={ () => {
-            return (
-              <span>{ '+' + numPersonasNotPictured }</span>
-            );
-          } }
+          onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
         />
-      </BaseButton>
+      </BaseButton >
     );
   }
 
   private _getIconElement(icon: string): JSX.Element {
     let { overflowButtonProps, personaSize } = this.props;
 
-    return <BaseButton
-      {...overflowButtonProps}
-      className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
-    >
-      <Persona
-        size={ personaSize }
-        hidePersonaDetails={ true }
-        onRenderInitials={ () => (
-          <Icon iconName={ icon } />
-        ) }
-      />
-    </BaseButton>;
+    return (
+      <BaseButton
+        {...overflowButtonProps}
+        className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
+      >
+        <PersonaCoin
+          size={ personaSize }
+          onRenderInitials={ this._renderInitials(icon) }
+        />
+      </BaseButton>
+    );
   }
 
   private _getAddNewElement(): JSX.Element {
     let { addButtonProps, personaSize } = this.props;
-    return <BaseButton
-      {...addButtonProps}
-      className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
-    >
-      <Persona
-        size={ personaSize }
-        hidePersonaDetails={ true }
-        onRenderInitials={ () => (
-          <Icon iconName='AddFriend' />
-        ) }
-      />
-    </BaseButton>;
+
+    return (
+      <BaseButton
+        {...addButtonProps}
+        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
+      >
+        <PersonaCoin
+          size={ personaSize }
+          onRenderInitials={ this._renderInitials('AddFriend') }
+        />
+      </BaseButton>
+    );
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
@@ -310,13 +314,19 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     }
   }
 
-  private _onRenderAriaDescription() {
-    const { ariaDescription } = this.props;
+  private _renderInitials(iconName: string): () => JSX.Element {
+    return (): JSX.Element => {
+      return (
+        <Icon iconName={ iconName } />
+      );
+    };
+  }
 
-    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
-    // otherwise it will be assigned to descriptionSpan.
-    return ariaDescription && (
-      <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
-    );
+  private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
+    return (): JSX.Element => {
+      return (
+        <span>{ '+' + numPersonasNotPictured }</span>
+      );
+    };
   }
 }

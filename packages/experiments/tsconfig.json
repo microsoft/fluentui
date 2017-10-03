@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -8,6 +9,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
@@ -17,8 +19,7 @@
       "dom"
     ],
     "types": [
-      "chai",
-      "mocha",
+      "jest",
       "webpack-env"
     ],
     "paths": {
@@ -27,10 +28,7 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

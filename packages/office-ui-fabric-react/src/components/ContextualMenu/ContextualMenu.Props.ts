@@ -4,9 +4,11 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
 import { ICalloutProps } from '../../Callout';
+import { ITheme, IStyle } from '../../Styling';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
+  IRenderFunction
 } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -14,7 +16,8 @@ export { DirectionalHint } from '../../common/DirectionalHint';
 export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
-  Header = 2
+  Header = 2,
+  Section = 3
 }
 
 export interface IContextualMenu {
@@ -181,6 +184,24 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Pass in custom callout props
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Optional title to be displayed on top of the menu.
+   */
+  title?: string;
+
+  /**
+   * Custom styling for the contextual menu.
+   */
+  styles?: IContextualMenuStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /** Method to call when trying to render a submenu. */
+  onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 }
 
 export interface IContextualMenuItem {
@@ -282,6 +303,12 @@ export interface IContextualMenuItem {
   subMenuProps?: IContextualMenuProps;
 
   /**
+   *  Properties to apply to render this item as a section.
+   *  This prop is mutually exclusive with subMenuProps.
+   */
+  sectionProps?: IContextualMenuSection;
+
+  /**
    * Additional css class to apply to the menu item
    * @defaultvalue undefined
    */
@@ -295,7 +322,7 @@ export interface IContextualMenuItem {
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
-   * If none is specified, the arai-label attribute will contain the item name
+   * If none is specified, the aria-label attribute will contain the item name
    */
   ariaLabel?: string;
 
@@ -320,7 +347,43 @@ export interface IContextualMenuItem {
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
 
   /**
+   * Optional override for the role attribute on the menu button. If one is not provided, it will
+   * have a value of menuitem or menuitemcheckbox.
+   */
+  role?: string;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
+}
+
+export interface IContextualMenuSection extends React.Props<ContextualMenu> {
+
+  /**
+   * The items to include inside the section.
+   */
+  items: IContextualMenuItem[];
+
+  /**
+   * The optional section title.
+   */
+  title?: string;
+
+  /**
+   * If set to true, the section will display a divider at the top of the section.
+   */
+  topDivider?: boolean;
+
+  /**
+   * If set to true, the section will display a divider at the bottom of the section.
+   */
+  bottomDivider?: boolean;
+}
+
+export interface IContextualMenuStyles {
+  /**
+   * Style override for the contextual menu title.
+   */
+  title: IStyle;
 }

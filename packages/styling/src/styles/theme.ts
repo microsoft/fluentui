@@ -1,4 +1,4 @@
-import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
+import { Customizations } from '@uifabric/utilities/lib/Customizations';
 import {
   IPalette,
   ISemanticColors,
@@ -22,7 +22,7 @@ let _theme: ITheme = {
 
 export const ThemeSettingName = 'theme';
 
-if (!GlobalSettings.getValue(ThemeSettingName)) {
+if (!Customizations.getSettings([ThemeSettingName]).theme) {
   let win = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable:no-string-literal no-any
@@ -32,7 +32,7 @@ if (!GlobalSettings.getValue(ThemeSettingName)) {
   // tslint:enable:no-string-literal no-any
 
   // Set the default theme.
-  GlobalSettings.setValue(ThemeSettingName, _theme);
+  Customizations.applySettings({ [ThemeSettingName]: _theme });
 }
 
 /**
@@ -51,7 +51,7 @@ export function loadTheme(theme: IPartialTheme): ITheme {
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
 
-  GlobalSettings.setValue(ThemeSettingName, _theme);
+  Customizations.applySettings({ [ThemeSettingName]: _theme });
 
   return _theme;
 }
@@ -61,6 +61,10 @@ export function loadTheme(theme: IPartialTheme): ITheme {
  */
 export function createTheme(theme: IPartialTheme): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };
+
+  if (!theme.palette || !theme.palette.accent) {
+    newPalette.accent = newPalette.themePrimary;
+  }
 
   return {
     palette: newPalette,
@@ -92,6 +96,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
     warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
+    warningHighlight: !isInverted ? '#ffb900' : '#fff100',
+    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralPrimary,

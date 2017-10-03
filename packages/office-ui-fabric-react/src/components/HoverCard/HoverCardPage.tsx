@@ -8,6 +8,8 @@ import {
 } from '@uifabric/example-app-base';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { HoverCardStatus } from './HoverCard.checklist';
 
 import './HoverCardPage.scss';
 
@@ -25,7 +27,7 @@ export class HoverCardPage extends React.Component<any, any> {
             <ExampleCard title='HoverCard' code={ HoverCardBasicExampleCode }>
               <HoverCardBasicExample />
             </ExampleCard>
-            <ExampleCard title='HoverCard using Target' code={ HoverCardTargetExampleCode }>
+            <ExampleCard title='HoverCard using Target and at right center' code={ HoverCardTargetExampleCode }>
               <HoverCardTargetExample />
             </ExampleCard>
           </LayerHost>
@@ -43,6 +45,11 @@ export class HoverCardPage extends React.Component<any, any> {
             <Link target='_blank' href='http://dev.office.com/fabric/components/HoverCard'>HoverCards</Link>
             <span> supplement content associated with a specific data element.</span>
           </div>
+        }
+        componentStatus={
+          <ComponentStatus
+            {...HoverCardStatus}
+          />
         }
       />
     );

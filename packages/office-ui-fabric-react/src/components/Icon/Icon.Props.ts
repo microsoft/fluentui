@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IconName } from './IconName';
 import { IImageProps } from '../Image/Image.Props';
 import { IStyle } from '../../Styling';
 
@@ -37,11 +36,8 @@ export interface IIconStyles {
 export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
-   *
-   * @type {(IconName | string | null)}
-   * @memberOf IIconProps
    */
-  iconName?: IconName | string | null;
+  iconName?: string;
 
   /**
    * Optional styling for the elements within the Icon.

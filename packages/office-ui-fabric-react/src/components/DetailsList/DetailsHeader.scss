@@ -11,6 +11,7 @@ $isPaddedMargin: 24px;
 
 .root {
   display: inline-block;
+  background: $headerBackgroundColor;
   position: relative;
   min-width: 100%;
   vertical-align: top;
@@ -35,7 +36,6 @@ $isPaddedMargin: 24px;
 
 .cell {
   @include ms-font-s;
-  background: $headerBackgroundColor;
   color: $headerForegroundColor;
   @include focus-border();
   position: relative;
@@ -45,7 +45,6 @@ $isPaddedMargin: 24px;
   border: none;
   line-height: inherit;
   margin: 0;
-  @include ms-text-align(left);
   height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
@@ -54,7 +53,7 @@ $isPaddedMargin: 24px;
 
   &.cellIsCheck {
     position: relative;
-    padding: 6px 8px;
+    padding: 0;
     margin: 0;
   }
 
@@ -136,6 +135,12 @@ $isPaddedMargin: 24px;
   color: $iconForegroundColor;
   opacity: 1;
   @include ms-padding-left(8px);
+
+  &.sortIcon {
+    @include ms-padding-left(4px);
+    position: relative;
+    top: 1px;
+  }
 }
 
 .cell .filterChevron {
@@ -176,8 +181,17 @@ $isPaddedMargin: 24px;
   bottom: 0;
   cursor: ew-resize;
   background: rgba(255, 255, 255, 0);
+
+  @include high-contrast {
+    background: transparent;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .cell .collapseButton {
   @include ms-padding-right(0);
+}
+
+.accessibleLabel {
+  @include ms-screenReaderOnly;
 }

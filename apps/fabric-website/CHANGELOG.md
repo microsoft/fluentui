@@ -1,6 +1,116 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 11 Aug 2017 19:38:35 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+
+## 5.0.6
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Added initializeIcons() call to make all icons in examples on the website available.
+- Added SharePoint Toolkit link and text to ResourcesPage.
+
+## 5.0.5
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Patches
+
+- Updated links in the SharePoint section of the ResourcesPage.
+
+## 5.0.4
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 5.0.3
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Patches
+
+- Reinforced header tag styles across website pages to manage UHF counter-styles.
+- Visual bug fixes.
+
+## 5.0.2
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Patches
+
+- Brand icons page clean up.
+- Updated reference to Fabric Core to the newly released 7.3.0 version.
+- Added a test case for dogfood check
+- Initial loading spinner gif changed to mimic our spinner component.
+- Switched some font colors on theme and neutral color swatches from white to black to achieve minimum contrast requirement of 4.5:1 for accessibility.
+- Removed trello reference from the Get Stated page.
+- Styling to fix UHF header overriding our styles.
+- Changed where Fabric Core and Fabric React versions were drawing from so that they would appear as a number instead of a range.
+- Visual bug fixes to accommodate UHF
+- Added section in ResourcePage for XD Toolkits and other assets, includes references on other pages, too.
+
+## 5.0.1
+Wed, 20 Sep 2017 10:19:01 GMT
+
+### Patches
+
+- Changing high-contrast colors to system colors
+
+## 5.0.0
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Breaking changes
+
+- Major site revisions, component updates, removal of dev office header and footer, infrastructure updates and improvements, webpack config updates.
+
+### Patches
+
+- Revised alt text best practes for ImageComponent.
+- Removed references to FabricJS from the website.
+- Visual bug fixes for UHF adoption for website
+
+## 4.7.6
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Patches
+
+- Publish resize group on fabric-website
+
+## 4.7.5
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Patches
+
+- Add @types/node dependency
+
+## 4.7.4
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.7.3
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- Removed Trello reference
+- Updated branding guidance pdf from the cdn.
+- Updated the CDN link on the "Get Started" page and section to an updated version of Fabric Core, 7.2.0
+
+## 4.7.2
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+
+## 4.7.1
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Patches
+
+- Minor css usage cleanup.
 
 ## 4.7.0
 Fri, 11 Aug 2017 19:38:35 GMT

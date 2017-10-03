@@ -1,6 +1,108 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 14 Aug 2017 10:20:31 GMT and should not be manually modified.
+This log was last generated on Sat, 30 Sep 2017 01:26:37 GMT and should not be manually modified.
+
+## 5.1.0
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Minor changes
+
+- Add a new success background color
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits.
+
+## 0.24.2
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Patches
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+## 0.24.1
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Patches
+
+- Updating default theme registration to use the new `Customizations` helper.
+
+## 0.24.0
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Minor changes
+
+- Adding `MoreVertical` icon.
+
+## 0.23.1
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Patches
+
+- Fixing circular dependency issue.
+
+## 0.23.0
+Mon, 11 Sep 2017 10:08:07 GMT
+
+### Minor changes
+
+- Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5.
+
+## 0.22.1
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Icons: Added textDocument back into the icon list
+
+## 0.22.0
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Minor changes
+
+- Add a new semantic slot for the warning foreground color
+
+### Patches
+
+- Add FullWidth icon.
+
+## 0.21.1
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 0.21.0
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Minor changes
+
+- Theming: added an accent color slot
+
+## 0.20.2
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 0.20.1
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- add Comment icon
+
+## 0.20.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- mergeStyleSets: tweaked the return type to be less restrictive.
 
 ## 0.19.2
 Mon, 14 Aug 2017 10:20:31 GMT

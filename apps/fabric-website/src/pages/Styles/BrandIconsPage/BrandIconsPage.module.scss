@@ -1,5 +1,9 @@
 @import '../../../styles/variables';
 
+.paragraphInGrid {
+  @include ms-padding-left($contentInGrid);
+}
+
 .exampleIcons {
   align-items: center;
   display: flex;
@@ -48,7 +52,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .iconList {
     li {
       width: 50%;

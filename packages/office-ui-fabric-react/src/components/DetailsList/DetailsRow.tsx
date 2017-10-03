@@ -49,6 +49,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
+  checkboxCellClassName?: string;
 }
 
 export interface IDetailsRowSelectionState {
@@ -184,6 +185,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
+      checkboxCellClassName,
       selection
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
@@ -230,7 +232,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             role='gridcell'
             aria-colindex={ 0 }
             data-selection-toggle={ true }
-            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell) }
+            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell, checkboxCellClassName) }
           >
             { onRenderCheck({
               isSelected,
@@ -249,7 +251,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             item={ item }
             itemIndex={ itemIndex }
             columnStartIndex={ showCheckbox ? 1 : 0 }
-            onRenderItemColumn={ onRenderItemColumn } />
+            onRenderItemColumn={ onRenderItemColumn }
+          />
         ) }
 
         { columnMeasureInfo && (
@@ -263,7 +266,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
               item={ item }
               itemIndex={ itemIndex }
               columnStartIndex={ (showCheckbox ? 1 : 0) + columns.length }
-              onRenderItemColumn={ onRenderItemColumn } />
+              onRenderItemColumn={ onRenderItemColumn }
+            />
           </span>
         ) }
       </FocusZone>
