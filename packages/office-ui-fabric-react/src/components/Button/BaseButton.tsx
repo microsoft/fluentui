@@ -77,6 +77,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       className,
       description,
       disabled,
+      primaryDisabled,
       href,
       iconProps,
       menuIconProps,
@@ -87,6 +88,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
          } = this.props;
 
     let { menuProps } = this.state;
+    // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
+    let isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
     this._classNames = getClassNames(
       styles!,
@@ -94,7 +97,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName!,
       iconProps && iconProps.className,
       menuIconProps && menuIconProps.className,
-      disabled!,
+      isPrimaryButtonDisabled!,
       checked!,
       !!this.state.menuProps && !this.props.split
     );
@@ -102,7 +105,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
     // anchor button as normal button
-    const renderAsAnchor: boolean = !disabled && !!href;
+    const renderAsAnchor: boolean = !isPrimaryButtonDisabled && !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
       assign(
@@ -146,7 +149,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       {
         className: this._classNames.root,
         ref: this._resolveRef('_buttonElement'),
-        'disabled': disabled,
+        'disabled': isPrimaryButtonDisabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
@@ -371,16 +374,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       styles = {},
       disabled,
-      splitDisabled,
       checked
     } = this.props;
 
-    const classNames = styles && getSplitButtonClassNames(styles!, !!splitDisabled, !!this.state.menuProps, !!checked);
+    const classNames = styles && getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
 
     return (
       <div
         aria-labelledby={ buttonProps.ariaLabel }
-        aria-disabled={ disabled && splitDisabled }
+        aria-disabled={ disabled }
         aria-haspopup={ true }
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
@@ -423,7 +425,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <BaseButton
         styles={ classNames }
         checked={ this.props.checked }
-        disabled={ this.props.splitDisabled }
+        disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
         menuProps={ undefined }
         iconProps={ menuIconProps }

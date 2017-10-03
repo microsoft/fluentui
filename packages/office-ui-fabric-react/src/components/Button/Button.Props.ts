@@ -48,6 +48,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   disabled?: boolean;
 
   /**
+   * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
+   */
+  primaryDisabled?: boolean;
+
+  /**
    * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
@@ -99,11 +104,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
    */
   split?: boolean;
-
-  /**
-   * If set to true and if this is a splitButton (split == true) then the split menu part of the button is disabled. Defaults to false.
-   */
-  splitDisabled?: boolean;
 
   /**
    * The props for the icon shown when providing a menu dropdown.
