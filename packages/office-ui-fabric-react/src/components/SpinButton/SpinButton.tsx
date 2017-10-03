@@ -452,6 +452,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   @autobind
   private _defaultOnRenderIcon(classNames: ISpinButtonClassNames): JSX.Element | undefined {
     let { iconProps } = this.props;
-    return iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' />
+    return iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' />;
   }
 }
