@@ -48,6 +48,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   disabled?: boolean;
 
   /**
+   * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
+   */
+  primaryDisabled?: boolean;
+
+  /**
    * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
