@@ -113,6 +113,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _classNames: IComboBoxClassNames;
 
+  private _comboBoxOptionWidth: string;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
@@ -761,8 +763,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = props;
 
     let id = this._id;
-    let setWidth = this._comboBoxWrapper.clientWidth - 2;
-    let otherStyles = getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+    this._comboBoxOptionWidth = (this._comboBoxWrapper.clientWidth - 2) + 'px';
+    let otherStyles = getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._comboBoxOptionWidth);
+
+    console.log('otherStyles.optionsContainerWrapper--- ', otherStyles.optionsContainerWrapper as string);
 
     return (
       <Callout
@@ -777,7 +781,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div className={ css('ms-ComboBox-optionsContainerWrapper', otherStyles.optionsContainerWrapper as string) } ref={ this._resolveRef('_comboBoxMenu') } style={ { width: setWidth } }>
+        <div className={ otherStyles.optionsContainerWrapper as string } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>
@@ -913,6 +917,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
     const optionStyles = this._getCurrentOptionStyles(item);
+    console.log('optionStyles.optionText as string', optionStyles.optionText as string)
+
     return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
   }
 
@@ -1291,6 +1297,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._comboBoxOptionWidth);
   }
 }

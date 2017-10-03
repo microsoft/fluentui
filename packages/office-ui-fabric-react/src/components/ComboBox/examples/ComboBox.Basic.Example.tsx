@@ -143,6 +143,21 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         // tslint:enable:jsx-no-lambda
         />
 
+        <ComboBox
+          defaultSelectedKey='C'
+          label='Basic uncontrolled example with styles (allowFreeform: F, AutoComplete: F):'
+          id='Basicdrop6'
+          ariaLabel='Basic ComboBox example'
+          allowFreeform={ false }
+          autoComplete='off'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
+        />
+
         { value ?
           <ComboBox
             label='Basic controlled example:'

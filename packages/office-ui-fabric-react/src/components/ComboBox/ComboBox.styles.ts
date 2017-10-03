@@ -52,7 +52,10 @@ export const getOptionStyles = memoizeFunction((
   theme: ITheme,
   customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
   customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
+  comboBoxOptionWidth?: string,
 ): Partial<IComboBoxOptionStyles> => {
+
+  console.log('comboBoxOptionWidth--- ', comboBoxOptionWidth);
 
   const { semanticColors, palette } = theme;
 
@@ -134,6 +137,7 @@ export const getOptionStyles = memoizeFunction((
       margin: '1px',
     },
     optionsContainerWrapper: {
+      width: comboBoxOptionWidth,
     },
   };
 
