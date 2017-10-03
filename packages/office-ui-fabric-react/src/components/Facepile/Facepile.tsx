@@ -91,6 +91,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
     return (
       <div style={ { ...facepileWrapperProps } }>
+        { this.onRenderAriaDescription() }
         { useOnlyAvailableWidth ?
           <ResizeGroup
             data={ facepileData }
@@ -125,7 +126,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       <div className={ css('ms-Facepile', styles.root, className) }>
         <div className={ css('ms-Facepile-itemContainer', styles.itemContainer) }>
           { showAddButton ? this._getAddNewElement() : null }
-          { this._onRenderAriaDescription() }
           <FocusZone
             ariaDescribedBy={ this._ariaDescriptionId }
             role='listbox'
@@ -134,7 +134,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           >
             { this._onRenderVisiblePersonas(data.primary) }
           </FocusZone>
-          { overflowButtonProps ? this._getOverflowElement(data.overflow) : null }
+          { overflowButtonProps ? this._getOverflowElement(data.overflow.length) : null }
         </div>
       </div>
     );
@@ -198,22 +198,26 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <BaseButton
-      { ...getNativeProps(persona, buttonProperties) }
-      {...this._getElementProps(persona, index) }
-      onClick={ this._onPersonaClick.bind(this, persona) }
-    >
-      { personaControl }
-    </BaseButton>;
+    return (
+      <BaseButton
+        { ...getNativeProps(persona, buttonProperties) }
+        {...this._getElementProps(persona, index) }
+        onClick={ this._onPersonaClick.bind(this, persona) }
+      >
+        { personaControl }
+      </BaseButton>
+    );
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <div
-      { ...getNativeProps(persona, buttonProperties) }
-      {...this._getElementProps(persona, index) }
-    >
-      { personaControl }
-    </div>;
+    return (
+      <div
+        { ...getNativeProps(persona, buttonProperties) }
+        {...this._getElementProps(persona, index) }
+      >
+        { personaControl }
+      </div>
+    );
   }
 
   private _getElementProps(persona: IFacepilePersona, index: number) {
@@ -252,7 +256,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <BaseButton
         { ...overflowButtonProps}
-        ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       >
         <PersonaCoin
