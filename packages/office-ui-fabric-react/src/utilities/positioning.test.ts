@@ -31,7 +31,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
       const beakValue = beak[key];
       const validateBeakValue = (validate.beak as any)[key];
       const beakGood = beakValue && validateBeakValue && beak[key] === beakValue;
-      assert(beakGood, 'Beak is improperly Positioned ' + stringifyResults(validate.beak, beak));
+      expect(beakGood).toBe(true);
     }
   }
 }
