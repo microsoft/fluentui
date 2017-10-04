@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends React.Component<any, any> {
@@ -164,6 +165,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
     return list;
   }
 
+  @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
