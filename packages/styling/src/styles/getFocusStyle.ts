@@ -1,4 +1,4 @@
-import { IRawStyle } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle } from '@uifabric/merge-styles';
 import { ITheme } from '../interfaces/index';
 
 /**

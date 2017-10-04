@@ -12,7 +12,7 @@ import { ComponentPage } from '@uifabric/example-app-base';
 import './index.scss';
 import './ColorStyles.scss';
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@uifabric/icons';
 
 initializeIcons('dist/');
 

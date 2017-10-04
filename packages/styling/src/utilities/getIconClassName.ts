@@ -1,6 +1,6 @@
 import {
   mergeStyles
-} from '@uifabric/merge-styles/lib/index';
+} from '@uifabric/merge-styles';
 import { getIcon } from './icons';
 
 /**

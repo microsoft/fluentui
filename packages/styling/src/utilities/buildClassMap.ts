@@ -1,4 +1,4 @@
-import { mergeStyles } from '@uifabric/merge-styles/lib/index';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 /**
  * Builds a class names object from a given map.

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Now publishing es6 modules under lib-es6. Adding appropriate `module` and `side-effects` props into package.json for webpack 4 to use for tree shaking support.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "dzearing@microsoft.com"
+}

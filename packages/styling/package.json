@@ -4,6 +4,8 @@
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "module": "lib-es6/index.js",
+  "side-effects": false,
   "scripts": {
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",

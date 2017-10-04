@@ -6,7 +6,7 @@ import 'es6-map/implement';
  * This is a test entry point to help karma-webpack find all tests in the project.
  **/
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@uifabric/icons';
 
 console.log('initializing icons');
 initializeIcons('dist/');

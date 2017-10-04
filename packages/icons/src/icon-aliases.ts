@@ -1,3 +1,3 @@
-import { registerIconAlias } from '@uifabric/styling/lib/index';
+import { registerIconAlias } from '@uifabric/styling';
 
 registerIconAlias('trash', 'delete');
