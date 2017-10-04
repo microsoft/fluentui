@@ -108,16 +108,16 @@ export const getClassNames = memoizeFunction((
       !expanded &&
       !checked && {
         selectors: {
-          ':hover': styles.rootHovered,
-          ':active': styles.rootPressed,
+          ':hover': styles.menuIconHovered,
+          ':active': styles.menuIconPressed,
         },
       },
       expanded && [
         'is-expanded',
-        styles.rootExpanded,
+        styles.menuIconExpanded,
         {
           selectors: {
-            ':hover': styles.rootExpandedHovered,
+            ':hover': styles.menuIconExpandedHovered,
           },
         },
       ]
