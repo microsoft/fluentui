@@ -24,7 +24,7 @@ module.exports = function (options) {
       options.args
     ].filter(arg => !!arg).join(' ');
 
-    const command = `node ${jestPath} ${customArgs}`;
+    const command = `node ${jestPath} ${args} ${customArgs}`;
 
     execSync(command, undefined, path.dirname(jestConfigPath));
   }
