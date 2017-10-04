@@ -119,6 +119,7 @@ describe('Dropdown', () => {
       <Dropdown
         label='testgroup'
         selectedKeys={ ['1', '3'] }
+        multiSelect
         options={ DEFAULT_OPTIONS }
       />,
       container);
