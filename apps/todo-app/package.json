@@ -16,7 +16,7 @@
     "@types/react": "15.0.38",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
