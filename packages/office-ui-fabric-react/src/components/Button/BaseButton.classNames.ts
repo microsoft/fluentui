@@ -53,12 +53,12 @@ export const getClassNames = memoizeFunction((
           ':hover': styles.rootHovered,
           ':hover .ms-Button-icon': styles.iconHovered,
           ':hover .ms-Button-description': styles.descriptionHovered,
-          ':hover .ms-Button-menuIcon': styles.rootHovered,
+          ':hover .ms-Button-menuIcon': styles.menuIconHovered,
           ':focus': styles.rootFocused,
           ':active': styles.rootPressed,
           ':active .ms-Button-icon': styles.iconPressed,
           ':active .ms-Button-description': styles.descriptionPressed,
-          ':active .ms-Button-menuIcon': styles.rootPressed
+          ':active .ms-Button-menuIcon': styles.menuIconPressed
         }
       },
       disabled && checked && [
