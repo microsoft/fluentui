@@ -130,6 +130,8 @@ export const MyComponent = () => {
 
 ## Selectors
 
+### Basic pseudo-selectors (:hover, :active, etc)
+
 Custom selectors can be defined within `IStyle` definitions under the `selectors` section:
 
 ```tsx
@@ -149,6 +151,8 @@ By default, the rule will be appended to the current selector scope. That is, in
 .css-0 { background: red; }
 .css-0:hover { background: green; }
 ```
+
+### Parent/child selectors
 
 In some cases, you may need to use parent or child selectors. To do so, you can define a selector from scratch and use the `&` character to represent the generated class name. When using the `&`, the current scope is ignored. Example:
 
@@ -173,12 +177,39 @@ This would register the rules:
 .ms-Fabric.is-focusVisible .css-0 { background: red; }
 .css-0 .child { background: green; }
 ```
+### Referencing child elements within the mergeStyleSets scope
+
+One important concept about `mergeStyleSets` is that it produces a map of class names for the given elements:
+
+```tsx
+mergeStyleSets({
+  root: { background: 'red' }
+  thumb: { background: 'green' }
+});
+```
+
+In some cases, you may need to alter one child area by interacting with the parent. For example, when the parent focus is set, change the child background. You can reference the areas defined in the style set using $ tokens:
+
+```tsx
+mergeStyleSets({
+  root: {
+    selectors: {
+      ':hover $thumb': { background: 'lightgreen' }
+    }
+   }
+  thumb: { background: 'green' }
+});
+```
+
+The `$thumb` reference in the selector on root will be replaced with the class name generated for thumb.
 
 ## Custom class names
 
-By default class names that are generated will use the prefix `css-` followed by a number, creating unique rules where needed.
+By default when using `mergeStyles`, class names that are generated will use the prefix `css-` followed by a number, creating unique rules where needed.
 
-While this prefix is fine, sometimes a more readable prefix is desired. You can pass in a `displayName` to resolve this:
+When using `mergeStyleSets`, class names automatically use the area name as the prefix.
+
+If you'd like to override the default prefx in either case, you can pass in a `displayName` to resolve this:
 
 ```tsx
 {
