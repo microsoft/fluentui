@@ -112,6 +112,22 @@ describe('Dropdown', () => {
     expect(titleElement.textContent).toEqual('1');
   });
 
+  it('Renders a selected item in controlled multi-select case', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        selectedKeys={ ['1', '3'] }
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+    expect(titleElement.textContent).toEqual('1, 3');
+  });
+
   it('Can change items in uncontrolled case', () => {
     let container = document.createElement('div');
     let dropdownRoot: HTMLElement | undefined;

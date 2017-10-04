@@ -84,7 +84,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (this.props.multiSelect) {
       let selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       this.state = {
-        selectedIndexes: this._getSelectedIndexes(props.options, selectedKeys!)
+        selectedIndexes: this._getSelectedIndexes(props.options, selectedKeys)
       };
     } else {
       let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
@@ -98,17 +98,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public componentWillReceiveProps(newProps: IDropdownProps) {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
-    if (newProps.selectedKey !== undefined &&
+    if (this.props.multiSelect &&
+      newProps.selectedKeys !== undefined &&
+      (newProps.selectedKeys !== this.props.selectedKeys || newProps.options !== this.props.options)) {
+      this.setState({
+        selectedIndexes: this._getSelectedIndexes(newProps.options, newProps.selectedKeys)
+      });
+    } else if (!this.props.multiSelect &&
+      newProps.selectedKey !== undefined &&
       (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
-      if (this.props.multiSelect) {
-        this.setState({
-          selectedIndexes: this._getSelectedIndexes(newProps.options, newProps.selectedKeys)
-        });
-      } else {
-        this.setState({
-          selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
-        });
-      }
+      this.setState({
+        selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      });
     }
   }
 
@@ -223,46 +224,45 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options, selectedKey, multiSelect } = this.props;
+    let { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
     let { selectedIndex, selectedIndexes } = this.state;
     let checked: boolean = selectedIndexes ? selectedIndexes.indexOf(index) > -1 : false;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
-    if (index !== selectedIndex) {
-      if (selectedKey === undefined) {
-        // Set the selected option if this is an uncontrolled component
-        if (multiSelect) {
-          let newIndexes = selectedIndexes ? this._copyArray(selectedIndexes) : [];
-          if (checked) {
-            let position = newIndexes.indexOf(index);
-            if (position > -1) {
-              // unchecked the current one
-              newIndexes.splice(position, 1);
-            }
-          } else {
-            // add the new selected index into the existing one
-            newIndexes.push(index);
-          }
-          this.setState({
-            selectedIndexes: newIndexes
-          });
-        } else {
-          this.setState({
-            selectedIndex: index
-          });
+    if (!multiSelect && index === selectedIndex) {
+      return;
+    } else if (!multiSelect && selectedKey === undefined) {
+      // Set the selected option if this is an uncontrolled component
+      this.setState({
+        selectedIndex: index
+      });
+    } else if (multiSelect && selectedKeys === undefined) {
+      let newIndexes = selectedIndexes ? this._copyArray(selectedIndexes) : [];
+      if (checked) {
+        let position = newIndexes.indexOf(index);
+        if (position > -1) {
+          // unchecked the current one
+          newIndexes.splice(position, 1);
         }
+      } else {
+        // add the new selected index into the existing one
+        newIndexes.push(index);
       }
-      if (onChanged) {
-        // for single-select, option passed in will always be selected.
-        if (!multiSelect) {
-          options.map((option: any) => option.selected === true ? option.selected = false : null);
-        }
-        // for multi-select, flip the checked value
-        let changedOpt = options[index];
-        changedOpt.selected = multiSelect ? !checked : true;
-        onChanged(changedOpt, index);
+      this.setState({
+        selectedIndexes: newIndexes
+      });
+    }
+
+    if (onChanged) {
+      // for single-select, option passed in will always be selected.
+      if (!multiSelect) {
+        options.map((option: any) => option.selected === true ? option.selected = false : null);
       }
+      // for multi-select, flip the checked value
+      let changedOpt = options[index];
+      changedOpt.selected = multiSelect ? !checked : true;
+      onChanged(changedOpt, index);
     }
   }
 
@@ -528,6 +528,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
+  @autobind
   private _onItemClick(index: number): () => void {
     return (): void => {
       this.setSelectedIndex(index);
@@ -547,7 +548,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Get all selected indexes for multi-select mode
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: any): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string[] | number[] | undefined): number[] {
     let selectedIndex: number[] = [];
     if (!selectedKey) {
       return selectedIndex;
