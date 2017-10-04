@@ -7,8 +7,11 @@ import {
 } from '@uifabric/example-app-base';
 import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
 import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ComboBoxStatus } from './ComboBox.checklist';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
+const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 
 export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -17,10 +20,14 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
         title='ComboBox'
         componentName='ComboBoxExample'
         exampleCards={
-          <ExampleCard title='ComboBox' code={ ComboBoxBasicExampleCode }>
-            <ComboBoxBasicExample />
-            <ComboBoxCustomStyledExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='ComboBox' code={ ComboBoxBasicExampleCode }>
+              <ComboBoxBasicExample />
+            </ExampleCard>
+            <ExampleCard title='ComboBoxCustomStyled' code={ ComboBoxCustomStyledExampleCode }>
+              <ComboBoxCustomStyledExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
@@ -37,7 +44,7 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -49,13 +56,15 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         donts={
-          <div></div>
+          <div />
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ComboBox/ComboBox.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComboBoxStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

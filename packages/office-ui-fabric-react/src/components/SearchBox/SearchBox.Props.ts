@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SearchBox } from './SearchBox';
 
 export interface ISearchBox {
   /**
@@ -32,6 +31,16 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onSearch?: (newValue: any) => void;
 
   /**
+   * Callback executed when the user clears the search box by either clicking 'X' or hitting escape.
+   */
+  onClear?: (ev?: any) => void;
+
+  /**
+   * Callback executed when the user presses escape in the search box.
+   */
+  onEscape?: (ev?: any) => void;
+
+  /**
    * Deprecated at v0.52.2, use 'onChange' instead.
    * @deprecated
    */
@@ -52,4 +61,10 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * @defaultvalue labelText
    */
   ariaLabel?: string;
+
+  /**
+   * Whether or not the SearchBox is underlined.
+   * @default false
+   */
+  underlined?: boolean;
 }

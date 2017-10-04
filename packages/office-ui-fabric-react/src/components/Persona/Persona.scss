@@ -87,19 +87,13 @@ $ms-Persona-presenceSizeXl: 28px;
 
 .imageArea {
   position: relative;
-  overflow: hidden;
   text-align: center;
-  flex: 0 0 $ms-Persona-sizeMd;
+  flex: 0 0 auto;
   height: $ms-Persona-sizeMd;
   width: $ms-Persona-sizeMd;
-  border-radius: 50%;
 
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: 1px solid $ms-color-black;
+  @include high-contrast {
+    border: 1px solid WindowText;
   }
 
   .image {
@@ -121,9 +115,10 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .initials {
+  border-radius: 50%;
   color: $ms-color-white;
   font-size: $ms-font-size-l;
-  font-weight: $ms-font-weight-light;
+  font-weight: $ms-font-weight-regular;
   line-height: 46px;
   height: $ms-Persona-sizeMd;
 
@@ -196,7 +191,7 @@ $ms-Persona-presenceSizeXl: 28px;
   width: $ms-Persona-presenceSizeMd;
   border-radius: 50%;
   top: auto;
-  @include ms-left(34px);
+  @include ms-right(0px);
   bottom: -1px;
   border: 2px solid $ms-color-white;
   text-align: center;
@@ -205,16 +200,10 @@ $ms-Persona-presenceSizeXl: 28px;
   -ms-high-contrast-adjust: none;
   // This is a temporary local fix and should be removed once Fabric Core 6.0 is released.
 
-  @media screen and (-ms-high-contrast: active) {
-    border-color: $ms-color-black;
-    color: $ms-color-black;
-    background-color: $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border-color: $ms-color-white;
-    color: $ms-color-white;
-    background-color: $ms-color-black;
+  @include high-contrast {
+    border-color: Window;
+    color: Window;
+    background-color: WindowText;
   }
 
   .presenceIcon {
@@ -223,12 +212,8 @@ $ms-Persona-presenceSizeXl: 28px;
     line-height: $ms-Persona-presenceSizeMd;
     vertical-align: top;
 
-    @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-black;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-white;
+    @include high-contrast {
+      color: Window;
     }
   }
 }
@@ -277,7 +262,9 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsTiny {
   height: $ms-Persona-sizeTiny;
   min-width: $ms-Persona-sizeTiny;
+}
 
+.rootIsTiny{
   .imageArea {
     overflow: visible;
     background: transparent;
@@ -291,13 +278,9 @@ $ms-Persona-presenceSizeXl: 28px;
     @include ms-left(0);
     border: 0;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       top: 9px;
-      border: 1px solid $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border: 1px solid $ms-color-black;
+      border: 1px solid WindowText;
     }
   }
 
@@ -335,14 +318,15 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-size16;
   min-width: $ms-Persona-size16;
   overflow: hidden;
+}
 
+.rootIs16 {
   .imageArea {
     box-shadow: 0 0 0 2px $ms-color-white;
   }
 
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-size16;
     height: $ms-Persona-size16;
     width: $ms-Persona-size16;
   }
@@ -362,7 +346,6 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(20px);
   }
 
   .presenceIcon {
@@ -385,10 +368,11 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsExtraExtraSmall {
   height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
+}
 
+.rootIsExtraExtraSmall {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeXxs;
     height: $ms-Persona-sizeXxs;
     width: $ms-Persona-sizeXxs;
   }
@@ -408,7 +392,6 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(14px);
     top: 18px;
 
     &:after {
@@ -452,10 +435,11 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-size28;
   min-width: $ms-Persona-size28;
   overflow: hidden;
+}
 
+.rootIs28 {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-size28;
     height: $ms-Persona-size28;
     width: $ms-Persona-size28;
   }
@@ -475,7 +459,6 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(20px);
     top: 18px;
 
     &:after {
@@ -518,10 +501,11 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsExtraSmall {
   height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
+}
 
+.rootIsExtraSmall {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeXs;
     height: $ms-Persona-sizeXs;
     width: $ms-Persona-sizeXs;
   }
@@ -535,10 +519,6 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
     height: $ms-Persona-sizeXs;
     line-height: $ms-Persona-sizeXs;
-  }
-
-  .presence {
-    @include ms-left(19px);
   }
 
   .details {
@@ -570,10 +550,11 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsSmall {
   height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
+}
 
+.rootIsSmall {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeSm;
     height: $ms-Persona-sizeSm;
     width: $ms-Persona-sizeSm;
   }
@@ -589,10 +570,6 @@ $ms-Persona-presenceSizeXl: 28px;
     line-height: $ms-Persona-sizeSm;
   }
 
-  .presence {
-    @include ms-left(27px);
-  }
-
   .primaryText {
     font-size: $ms-font-size-m;
   }
@@ -604,10 +581,11 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsLarge {
   height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
+}
 
+.rootIsLarge {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeLg;
     height: $ms-Persona-sizeLg;
     width: $ms-Persona-sizeLg;
   }
@@ -624,7 +602,6 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    @include ms-left(49px);
     height: $ms-Persona-presenceSizeLg;
     width: $ms-Persona-presenceSizeLg;
     border-width: 3px;
@@ -646,10 +623,11 @@ $ms-Persona-presenceSizeXl: 28px;
 .root.rootIsExtraLarge {
   height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
+}
 
+.rootIsExtraLarge {
   .imageArea,
   .image {
-    flex: 0 0 $ms-Persona-sizeXl;
     height: $ms-Persona-sizeXl;
     width: $ms-Persona-sizeXl;
   }
@@ -668,7 +646,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXl;
     width: $ms-Persona-presenceSizeXl;
-    @include ms-left(71px);
     border-width: 4px;
   }
 
@@ -731,8 +708,8 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-available;
 
-    @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-white;
+    @include high-contrast {
+      background-color: WindowText;
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
@@ -748,12 +725,8 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-away;
 
-    @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-black;
+    @include high-contrast {
+      background-color: WindowText;
     }
   }
 
@@ -793,11 +766,9 @@ $ms-Persona-presenceSizeXl: 28px;
       @include ms-left(0);
     }
 
-
-
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       color: $ms-color-contrastBlackDisabled;
-      background-color: $ms-color-black;
+      background-color: Window;
 
       &::before {
         box-shadow: 0 0 0 2px $ms-color-contrastBlackDisabled inset;
@@ -810,7 +781,6 @@ $ms-Persona-presenceSizeXl: 28px;
 
     @media screen and (-ms-high-contrast: black-on-white) {
       color: $ms-color-contrastWhiteDisabled;
-      background-color: $ms-color-white;
 
       &::before {
         box-shadow: 0 0 0 2px $ms-color-contrastWhiteDisabled inset;
@@ -846,7 +816,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-busy-average;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: $ms-color-contrastBlackDisabled;
     }
 
@@ -863,7 +833,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-dnd-background;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       color: $ms-color-black;
       background-color: $ms-color-contrastBlackDisabled;
 
@@ -889,7 +859,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-offline;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: $ms-color-contrastBlackDisabled;
       box-shadow: 0 0 0 1px $ms-color-white inset;
     }

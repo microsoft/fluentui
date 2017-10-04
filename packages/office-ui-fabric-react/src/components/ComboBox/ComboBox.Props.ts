@@ -13,6 +13,11 @@ export interface IComboBox {
 }
 
 export interface IComboBoxOption extends ISelectableOption {
+  /**
+   * Specific styles for each comboBox option. If you intend to give
+   * common styles to all comboBox option please use
+   * the prop comboBoxOptionStyles
+   */
   styles?: Partial<IComboBoxOptionStyles>;
 }
 
@@ -72,6 +77,24 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Custom styles for this component
    */
   styles?: Partial<IComboBoxStyles>;
+
+  /**
+   * Styles for the caret down button.
+   */
+  caretDownButtonStyles?: Partial<IButtonStyles>;
+
+  /**
+   * Default styles that should be applied to ComboBox options,
+   * in case an option does not come with user-defined custom styles
+   */
+  comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).
+   * @default false;
+   */
+  scrollSelectedToTop?: boolean;
+
 }
 
 export interface IComboBoxStyles {
@@ -130,11 +153,6 @@ export interface IComboBoxStyles {
   inputDisabled: IStyle;
 
   /**
-   * Styles for the caret down button.
-   */
-  caretDownButtonStyles: Partial<IComboBoxCaretDownButtonStyles> | null;
-
-  /**
    * Styles for the error Message text of the comboBox.
    */
   errorMessage: IStyle;
@@ -159,17 +177,15 @@ export interface IComboBoxStyles {
    * Styles for a divider in the options.
    */
   divider: IStyle;
-
-  /**
-   * Default styles that should be applied to ComboBox options,
-   * incase an option does not come with user-defined custom styles
-   */
-  optionDefaultStyles: Partial<IComboBoxOptionStyles> | null;
 }
 
 export interface IComboBoxOptionStyles extends IButtonStyles {
-  optionText: IStyle;
-}
 
-export interface IComboBoxCaretDownButtonStyles extends IButtonStyles {
+  /**
+   * Styles for the text inside the comboBox option.
+   * This should be used instead of the description
+   * inside IButtonStyles because we custom render the text
+   * in the comboBox options.
+   */
+  optionText: IStyle;
 }

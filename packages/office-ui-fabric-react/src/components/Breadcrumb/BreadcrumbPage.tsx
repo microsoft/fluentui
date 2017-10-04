@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { BreadcrumbStatus } from './Breadcrumb.checklist';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 
@@ -25,13 +27,15 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         exampleCards={
           <div>
             <ExampleCard
-              title='Simple breadcrumb'
-              code={ BreadcrumbBasicExampleCode }>
+              title='Default Breadcrumb'
+              code={ BreadcrumbBasicExampleCode }
+            >
               <BreadcrumbBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='Static width'
-              code={ BreadcrumbStaticExampleCode }>
+              title='Breadcrumb with static width '
+              code={ BreadcrumbStaticExampleCode }
+            >
               <BreadcrumbStaticExample />
             </ExampleCard>
           </div>
@@ -49,11 +53,8 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             <p>Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
-        }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -69,8 +70,13 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...BreadcrumbStatus}
+          />
+        }
+      />
     );
   }
 }

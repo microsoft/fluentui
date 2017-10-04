@@ -29,7 +29,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     super(props);
     this._value = '';
     this.state = {
-      displayValue: props.defaultVisibleValue === null ? '' : props.defaultVisibleValue
+      displayValue: props.defaultVisibleValue || ''
     };
   }
 
@@ -67,22 +67,24 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
-    if (this.props.updateValueInWillReceiveProps) {
-      let newValue = this.props.updateValueInWillReceiveProps();
+    let newValue;
 
-      if (newValue !== null) {
-        this._value = newValue;
-      }
+    if (this.props.updateValueInWillReceiveProps) {
+      newValue = this.props.updateValueInWillReceiveProps();
     }
-    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue!, this._value)) {
-      this.setState({ displayValue: nextProps.suggestedDisplayValue });
+
+    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue!, newValue ? newValue : this._value)) {
+      newValue = nextProps.suggestedDisplayValue;
+    }
+
+    if (typeof newValue === 'string') {
+      this.setState({ displayValue: newValue });
     }
   }
 
   public componentDidUpdate() {
     let value = this._value;
     let {
-      defaultVisibleValue,
       suggestedDisplayValue,
       shouldSelectFullInputValueInComponentDidUpdate
     } = this.props;
@@ -114,15 +116,18 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     } = this.state;
 
     const nativeProps = getNativeProps(this.props, inputProperties);
-    return <input { ...nativeProps}
-      ref={ this._resolveRef('_inputElement') }
-      value={ displayValue }
-      autoCapitalize={ 'off' }
-      autoComplete={ 'off' }
-      onChange={ this._onChange }
-      onKeyDown={ this._onKeyDown }
-      onClick={ this.props.onClick ? this.props.onClick : this._onClick }
-    />;
+    return (
+      <input
+        { ...nativeProps}
+        ref={ this._resolveRef('_inputElement') }
+        value={ displayValue }
+        autoCapitalize={ 'off' }
+        autoComplete={ 'off' }
+        onChange={ this._onChange }
+        onKeyDown={ this._onKeyDown }
+        onClick={ this.props.onClick ? this.props.onClick : this._onClick }
+      />
+    );
   }
 
   public focus() {

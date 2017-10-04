@@ -31,6 +31,14 @@
   position: fixed;
 }
 
+.table {
+  table-layout: fixed; // fix IE
+  width: 100%;
+}
+.tableHexCell {
+  width: 25%;
+}
+
 .thumb {
   position: absolute;
   width: 20px;
@@ -99,9 +107,10 @@
     padding-right: 2px;
   }
 
-  .input &:global(.ms-TextField-field) {
+  :global(.ms-TextField-field) {
     min-width: auto;
     padding: 5px;
+    text-overflow: clip;
   }
 }
 

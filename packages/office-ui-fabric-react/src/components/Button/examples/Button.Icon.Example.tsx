@@ -12,13 +12,13 @@ export class ButtonIconExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Icon button</Label>
         <IconButton
           disabled={ disabled }
           checked={ checked }
           iconProps={ { iconName: 'Emoji2' } }
           title='Emoji'
-          ariaLabel='Emoji' />
+          ariaLabel='Emoji'
+        />
       </div>
     );
   }

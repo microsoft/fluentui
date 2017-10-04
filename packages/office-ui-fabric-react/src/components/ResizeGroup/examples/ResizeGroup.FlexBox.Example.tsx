@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 
 const leftRightBoxClassName =
@@ -41,10 +41,13 @@ const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
 function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
   let result: JSX.Element[] = [];
   for (let i = 1; i <= count; i += 1) {
-    result.push(<BoxWithLabel
-      label={ `${i}` }
-      backgroundColor={ backgroundColor }
-      key={ `${backgroundColor}-${i}` } />);
+    result.push(
+      <BoxWithLabel
+        label={ `${i}` }
+        backgroundColor={ backgroundColor }
+        key={ `${backgroundColor}-${i}` }
+      />
+    );
   }
   return result;
 }

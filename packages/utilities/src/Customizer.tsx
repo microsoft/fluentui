@@ -1,35 +1,13 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent } from './BaseComponent';
+import { BaseComponent, IBaseProps } from './BaseComponent';
+import { ICustomizations } from './Customizations';
 
-/**
- * Settings interface.
- *
- * @internal
- */
-export interface ISettings {
-  [key: string]: any;
+export interface ICustomizerContext {
+  customizations: ICustomizations;
 }
 
-/**
- * Customizer component props.
- *
- * @public
- */
-export interface ICustomizerProps {
-  componentRef?: () => void;
-
-  settings: ISettings;
-}
-
-/**
- * Customizer component state.
- *
- * @internal
- */
-export interface ICustomizerState {
-  injectedProps?: ISettings;
-}
+export type ICustomizerProps = Partial<ICustomizations> & IBaseProps;
 
 /**
  * The Customizer component allows for default props to be mixed into components which
@@ -43,39 +21,64 @@ export interface ICustomizerState {
  *
  * @public
  */
-export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
-  public static contextTypes = {
-    injectedProps: PropTypes.object
+export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerContext> {
+  public static contextTypes: {
+    customizations: PropTypes.Requireable<{}>;
+  } = {
+    customizations: PropTypes.object
   };
 
-  public static childContextTypes = Customizer.contextTypes;
+  public static childContextTypes: {
+    customizations: PropTypes.Requireable<{}>;
+  } = Customizer.contextTypes;
 
-  constructor(props: any, context: any) {
+  // tslint:disable-next-line:no-any
+  constructor(props: ICustomizerProps, context: any) {
     super(props);
 
-    this.state = this._getInjectedProps(props, context);
+    this.state = this._getCustomizations(props, context);
   }
 
-  public getChildContext(): any {
+  public getChildContext(): ICustomizerContext {
     return this.state;
   }
 
-  public componentWillReceiveProps(newProps: any, newContext: any) {
-    this.setState(this._getInjectedProps(newProps, newContext));
+  // tslint:disable-next-line:no-any
+  public componentWillReceiveProps(newProps: any, newContext: any): void {
+    this.setState(this._getCustomizations(newProps, newContext));
   }
 
-  public render() {
+  public render(): React.ReactElement<{}> {
     return React.Children.only(this.props.children);
   }
 
-  private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState) {
-    let { settings: injectedPropsFromSettings = {} as ISettings } = props;
-    let { injectedProps: injectedPropsFromContext = {} as ISettings } = context;
+  private _getCustomizations(
+    props: ICustomizerProps,
+    context: ICustomizerContext
+  ): ICustomizerContext {
+    let {
+      settings = {},
+      scopedSettings = {}
+    } = props;
+    let {
+      customizations = { settings: {}, scopedSettings: {} }
+    } = context;
+
+    let newScopedSettings = { ...scopedSettings };
+
+    for (let name in customizations.scopedSettings) {
+      if (customizations.scopedSettings.hasOwnProperty(name)) {
+        newScopedSettings[name] = { ...scopedSettings[name], ...customizations.scopedSettings[name] };
+      }
+    }
 
     return {
-      injectedProps: {
-        ...injectedPropsFromContext,
-        ...injectedPropsFromSettings
+      customizations: {
+        settings: {
+          ...settings,
+          ...customizations.settings
+        },
+        scopedSettings: newScopedSettings
       }
     };
   }

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -17,8 +18,6 @@
       "dom"
     ],
     "types": [
-      "chai",
-      "mocha",
       "webpack-env"
     ],
     "paths": {
@@ -27,12 +26,7 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd",
-    "api",
-    "temp"
+  "include": [
+    "src"
   ]
 }

@@ -17,7 +17,10 @@ import {
 import {
   mergeStyles
 } from '../../Styling';
-
+import {
+  ICheckboxClassNames,
+  getClassNames
+} from './Checkbox.classNames';
 import { getStyles } from './Checkbox.styles';
 
 export interface ICheckboxState {
@@ -25,15 +28,7 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
-interface ICheckboxClassNames {
-  root: string;
-  label: string;
-  checkbox: string;
-  checkmark: string;
-  text: string;
-}
-
-@customizable(['theme'])
+@customizable('Checkbox', ['theme'])
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'
@@ -41,6 +36,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   private _checkBox: HTMLInputElement;
   private _id: string;
+  private _classNames: ICheckboxClassNames;
 
   /**
    * Initialize a new instance of the TopHeaderV2
@@ -78,17 +74,20 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       defaultChecked,
       disabled,
       inputProps,
-      label,
       name,
       boxSide,
       theme,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
       styles: customStyles,
-        } = this.props;
+      onRenderLabel = this._onRenderLabel
+    } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    const classNames = this._getClassNames(
+    this._classNames = getClassNames(
       getStyles(theme!, customStyles),
       className!,
       disabled!,
@@ -107,18 +106,21 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         id={ this._id }
         role='checkbox'
         type='button'
-        className={ classNames.root }
+        className={ this._classNames.root }
         onClick={ this._onClick }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         aria-checked={ isChecked }
         aria-disabled={ disabled }
+        aria-label={ ariaLabel }
+        aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
       >
-        <label className={ classNames.label } htmlFor={ this._id } >
-          <div className={ classNames.checkbox }>
-            <Icon iconName='CheckMark' className={ classNames.checkmark } />
+        <label className={ this._classNames.label } htmlFor={ this._id } >
+          <div className={ this._classNames.checkbox }>
+            <Icon iconName='CheckMark' className={ this._classNames.checkmark } />
           </div>
-          { label && <span className={ classNames.text }>{ label }</span> }
+          { onRenderLabel(this.props, this._onRenderLabel) }
         </label>
       </button>
     );
@@ -157,6 +159,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();
+    ev.stopPropagation();
 
     if (!disabled) {
       if (onChange) {
@@ -169,63 +172,14 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-  @memoize
-  private _getClassNames(
-    styles: ICheckboxStyles,
-    className: string,
-    disabled: boolean,
-    isChecked: boolean,
-    isReversed: boolean
-    ): ICheckboxClassNames {
-    return {
-      root: mergeStyles(
-        'ms-Checkbox',
-        isReversed && 'reversed',
-        isChecked && 'is-checked',
-        !disabled && 'is-enabled',
-        disabled && 'is-disabled',
-        className,
-        styles.root,
-        !disabled && [
-          !isChecked && {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered
-          },
-          isChecked && {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered
-          },
-          {
-            ':hover .ms-Checkbox-text': styles.textHovered
-          }
-        ]
-      ) as string,
+  @autobind
+  private _onRenderLabel(props: ICheckboxProps) {
+    const { label } = props;
 
-      label: mergeStyles(
-        'ms-Checkbox-label',
-        styles.label,
-        isReversed && styles.labelReversed,
-        disabled && styles.labelDisabled
-      ) as string,
-
-      checkbox: mergeStyles(
-        'ms-Checkbox-checkbox',
-        styles.checkbox,
-        !disabled && isChecked && styles.checkboxChecked,
-        disabled && !isChecked && styles.checkboxDisabled,
-        disabled && isChecked && styles.checkboxCheckedDisabled,
-      ) as string,
-
-      checkmark: mergeStyles(
-        styles.checkmark,
-        !disabled && isChecked && styles.checkmarkChecked,
-        disabled && !isChecked && styles.checkmarkDisabled,
-        disabled && isChecked && styles.checkmarkCheckedDisabled,
-      ) as string,
-
-      text: mergeStyles(
-        'ms-Checkbox-text',
-        styles.text,
-        disabled && styles.textDisabled
-      ) as string,
-    };
+    return label ? (
+      <span className={ this._classNames.text }>{ label }</span>
+    ) : (
+        null
+      );
   }
 }

@@ -24,14 +24,13 @@ export interface IBreadCrumbData {
 }
 
 const OVERFLOW_KEY = 'overflow';
+const nullFunction = (): null => null;
 
 export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
     maxDisplayedItems: 999
   };
-
-  private _id: string;
 
   constructor(props: IBreadcrumbProps) {
     super(props);
@@ -69,7 +68,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    let { className, ariaLabel, items, onRenderItem = this._onRenderItem } = data.props;
+    let { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
     let { renderedOverflowItems, renderedItems } = data;
 
     let contextualItems = renderedOverflowItems.map(
@@ -97,7 +96,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  menuIconProps={ undefined }
+                  onRenderMenuIcon={ nullFunction }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
@@ -115,7 +114,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   { onRenderItem(item, this._onRenderItem) }
                   <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+                  />
                 </li>
               )) }
           </ol>
@@ -132,7 +132,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
           aria-current={ item.isCurrentItem ? 'page' : null }
-          onClick={ this._onBreadcrumbClicked.bind(this, item) }>
+          onClick={ this._onBreadcrumbClicked.bind(this, item) }
+        >
           <TooltipHost
             content={ item.text }
             overflowMode={ TooltipOverflowMode.Parent }

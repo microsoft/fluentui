@@ -13,195 +13,16 @@ import {
 } from './SwatchColorPicker.Props';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
-import { CommandButton } from '../../Button';
-import { FocusZone } from '../../FocusZone';
+import { GridCell } from '../../utilities/grid/GridCell';
+import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
-interface ISwatchColorPickerOptionProps {
-
-  /**
-   * The option that will be made available to the user
-   */
-  item: IColorCellProps;
-
-  /**
-   * Arbitrary unique string associated with this option
-   */
-  id: string;
-
-  /**
-   * Optional, if the this option should be diabled
-   */
-  disabled?: boolean;
-
-  /**
-   * Optional, the currently selectedIndex in the set of options
-   */
-  selectedIndex?: number;
-
-  /**
-   * The on click handler
-   */
-  onClick: (item: IColorCellProps) => void;
-
-  /**
-   * Optional, the onHover handler
-   */
-  onHover?: (id?: string, color?: string) => void;
-
-  /**
-   * Optional, the onFocus handler
-   */
-  onFocus?: (id?: string, color?: string) => void;
-
-  /**
-   * The accessible role for this option
-   */
-  role?: string;
-
-  /**
-   * Optional, className(s) to apply
-   */
-  className?: string;
-
-  /**
-   * The shape for the option. Defaults to circle
-   */
-  cellShape?: 'circle' | 'square';
-}
-
-class SwatchColorPickerOption extends React.Component<ISwatchColorPickerOptionProps, {}> {
-
-  public static defaultProps = {
-    cellShape: 'circle',
-    disabled: false
-  };
-
-  private _id: string;
-
-  constructor(props: ISwatchColorPickerOptionProps) {
-    super(props);
-
-    this._id = props.id || getId('colorCell');
-  }
-
-  public render() {
-    let {
-      item,
-      id,
-      className,
-      role,
-      selectedIndex,
-      disabled,
-      cellShape,
-      onClick,
-      onHover,
-      onFocus
-    } = this.props;
-    return (
-      <CommandButton
-        id={ id + '-item' + item.index }
-        data-index={ item.index }
-        data-is-focusable={ true }
-        disabled={ disabled }
-        className={ css(className,
-          {
-            ['is-selected ' + styles.cellIsSelected]: (selectedIndex !== undefined && selectedIndex === item.index),
-            ['is-disabled ' + styles.disabled]: disabled
-          }
-        ) }
-        onClick={ this._onClick }
-        onMouseEnter={ this._onMouseEnter }
-        onMouseLeave={ this._onMouseLeave }
-        onFocus={ this._onFocus }
-        role={ role }
-        aria-selected={ selectedIndex !== undefined && (selectedIndex === item.index).toString() }
-        ariaLabel={ item.label && item.label }
-        title={ item.label && item.label }
-      >
-        { this._onRenderOption() }
-      </CommandButton>
-    );
-  }
-
-  @autobind
-  private _onClick() {
-    let {
-        onClick,
-      disabled,
-      item
-      } = this.props;
-
-    if (onClick && !disabled) {
-      onClick(item);
-    }
-  }
-
-  @autobind
-  private _onMouseEnter() {
-    let {
-        onHover,
-      disabled,
-      item
-      } = this.props;
-
-    if (onHover && !disabled) {
-      onHover(item.id, item.color);
-    }
-  }
-
-  @autobind
-  private _onMouseLeave() {
-    let {
-        onHover,
-      disabled
-      } = this.props;
-
-    if (onHover && !disabled) {
-      onHover();
-    }
-  }
-
-  @autobind
-  private _onFocus() {
-    let {
-        onFocus,
-      disabled,
-      item
-      } = this.props;
-
-    if (onFocus && !disabled) {
-      onFocus(item.id, item.color);
-    }
-  }
-
-  /**
-   * Render the core of a color cell
-   * @returns {JSX.Element} - Element representing the core of the item
-   */
-  @autobind
-  private _onRenderOption(): JSX.Element {
-    let {
-        cellShape,
-      item
-      } = this.props;
-
-    // Build an SVG for the cell with the given shape and color properties
-    return (
-      <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color as string).str } >
-        {
-          cellShape === 'circle' ?
-            <circle cx='50%' cy='50%' r='50%' /> :
-            <rect width='100%' height='100%' />
-        }
-      </svg>
-    );
-  }
-}
-
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
+}
+
+class ColorPickerGridCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
 }
 
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
@@ -236,8 +57,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       newSelectedIndex = this._getSelectedIndex(newProps.colorCells, newProps.selectedId);
     }
 
-    if (newSelectedIndex !== undefined &&
-      newSelectedIndex !== this.state.selectedIndex) {
+    if (newSelectedIndex !== this.state.selectedIndex) {
       this.setState({
         selectedIndex: newSelectedIndex
       });
@@ -246,30 +66,29 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
   public render() {
     let {
-      disabled,
       colorCells,
       columnCount,
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
-      className,
-      onCellFocused
+      className
     } = this.props;
 
-    return (<FocusZone
-      isCircularNavigation={ shouldFocusCircularNavigate }
-      className={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer, className) }
-      onBlur={ this.onSwatchColorPickerBlur }
-    >
+    if (colorCells.length < 1 || columnCount < 1) {
+      return null;
+    }
+
+    return (
       <Grid
-        key={ this._id + colorCells[0].id + '-grid' }
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }
-        columnCount={ this.props.columnCount }
+        columnCount={ columnCount }
         onRenderItem={ this._renderOption }
         positionInSet={ positionInSet && positionInSet }
         setSize={ setSize && setSize }
-      />
-    </FocusZone>);
+        shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
+        onBlur={ this._onSwatchColorPickerBlur }
+        containerClassName={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer, className) }
+      />);
   }
 
   /**
@@ -277,7 +96,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * make sure to clear the pending focused stated
    */
   @autobind
-  private onSwatchColorPickerBlur() {
+  private _onSwatchColorPickerBlur() {
     if (this.props.onCellFocused) {
       this.props.onCellFocused();
     }
@@ -304,19 +123,68 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let id = this._id;
 
     return (
-      <SwatchColorPickerOption
+      <ColorPickerGridCell
         item={ item }
         id={ id }
         key={ id + item.id }
         disabled={ this.props.disabled }
-        cellShape={ this.props.cellShape }
         className={ styles.cell }
         onClick={ this._onCellClick }
-        onHover={ this.props.onCellHovered }
-        onFocus={ this.props.onCellFocused }
+        onHover={ this._onGridCellHovered }
+        onFocus={ this._onGridCellFocused }
+        onRenderItem={ this._onRenderColorOption }
         role={ 'gridcell' }
-        selectedIndex={ this.state.selectedIndex }
+        selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
+        cellIsSelectedStyle={ ['is-selected ' + styles.cellIsSelected] }
+        cellDisabledStyle={ ['is-disabled ' + styles.disabled] }
+        label={ item.label }
       />
+    );
+  }
+
+  /**
+   * Callback passed to the GridCell class that will trigger the onCellHovered callback of the SwatchColorPicker
+   */
+  @autobind
+  private _onGridCellHovered(item?: IColorCellProps): void {
+    if (this.props && this.props.onCellHovered) {
+      if (item) {
+        this.props.onCellHovered(item.id, item.color);
+      } else {
+        this.props.onCellHovered();
+      }
+    }
+  }
+
+  /**
+   * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
+   */
+  @autobind
+  private _onGridCellFocused(item?: IColorCellProps): void {
+    if (this.props && this.props.onCellFocused) {
+      if (item) {
+        this.props.onCellFocused(item.id, item.color);
+      } else {
+        this.props.onCellFocused();
+      }
+    }
+  }
+
+  /**
+   * Render the core of a color cell
+   * @returns {JSX.Element} - Element representing the core of the item
+   */
+  @autobind
+  private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
+    // Build an SVG for the cell with the given shape and color properties
+    return (
+      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string).str } >
+        {
+          this.props.cellShape === 'circle' ?
+            <circle cx='50%' cy='50%' r='50%' /> :
+            <rect width='100%' height='100%' />
+        }
+      </svg>
     );
   }
 
@@ -343,17 +211,5 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         selectedIndex: index
       });
     }
-  }
-
-  /**
-   * Clear the colors by calling the given callbacks
-   * @param callbacks - The callbacks to handle the clear operation
-   */
-  private _clearColors(callbacks: ((id?: string, color?: string) => void)[]) {
-    callbacks.forEach((callback) => {
-      if (callback) {
-        callback();
-      }
-    });
   }
 }

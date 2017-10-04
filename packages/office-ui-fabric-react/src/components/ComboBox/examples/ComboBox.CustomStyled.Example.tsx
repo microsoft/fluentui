@@ -1,14 +1,8 @@
 import * as React from 'react';
 import {
-  ComboBox,
-  IComboBoxOption
+  ComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
-import {
-  assign,
-  autobind
-} from 'office-ui-fabric-react/lib/Utilities';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export class ComboBoxCustomStyledExample extends React.Component<any, any> {
 
@@ -71,11 +65,13 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
               container: {
                 maxWidth: '300px'
               },
-              optionDefaultStyles: {
-                optionText: {
-                  fontFamily: 'initial', // this should be overriden by custom styles for each option
-                },
-              }
+            }
+          }
+          comboBoxOptionStyles={
+            {
+              optionText: {
+                fontFamily: 'initial', // this should be overriden by custom styles for each option
+              },
             }
           }
         />

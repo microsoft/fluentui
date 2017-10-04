@@ -1,16 +1,14 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
-import * as ReactTestUtils from 'react-addons-test-utils';
+import { Promise } from 'es6-promise';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import {
   KeyCodes,
 } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
-let { expect } = chai;
-
-import { ContextualMenu } from './ContextualMenu';
+import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 import { Layer } from '../Layer/Layer';
 
@@ -41,7 +39,7 @@ describe('ContextualMenu', () => {
 
     let menuList = document.querySelector('.ms-ContextualMenu-list') as HTMLUListElement;
 
-    expect(menuList.scrollHeight).to.be.lte(menuList.offsetHeight, 'ContextualMenu is showing a scrollbar due to checkmark');
+    expect(menuList.scrollHeight).toBeLessThanOrEqual(menuList.offsetHeight);
   });
 
   it('closes on left arrow if it is a submenu', () => {
@@ -66,7 +64,7 @@ describe('ContextualMenu', () => {
     let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
-    expect(spyCalled).to.be.true;
+    expect(spyCalled).toEqual(true);
   });
 
   it('does not close on left arrow if it is a submenu with horizontal arrowDirection', () => {
@@ -92,7 +90,7 @@ describe('ContextualMenu', () => {
     let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
-    expect(spyCalled).to.be.false;
+    expect(spyCalled).toEqual(false);
   });
 
   it('does not close on left arrow if it is a submenu with bidirectional arrowDirection', () => {
@@ -118,7 +116,7 @@ describe('ContextualMenu', () => {
     let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
-    expect(spyCalled).to.be.false;
+    expect(spyCalled).toEqual(false);
   });
 
   it('opens a submenu item on right arrow', () => {
@@ -147,7 +145,7 @@ describe('ContextualMenu', () => {
 
     ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
 
-    expect(document.querySelector('.SubMenuClass')).to.exist;
+    expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
   it('opens a submenu item on click', () => {
@@ -177,7 +175,7 @@ describe('ContextualMenu', () => {
 
     ReactTestUtils.Simulate.click(menuItem);
 
-    expect(document.querySelector('.SubMenuClass')).to.exist;
+    expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
   it('still works with deprecated IContextualMenuItem.items property', () => {
@@ -204,7 +202,7 @@ describe('ContextualMenu', () => {
     let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
 
-    expect(document.querySelector('.SubMenuClass')).to.exist;
+    expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
   it('renders headers properly', () => {
@@ -233,15 +231,64 @@ describe('ContextualMenu', () => {
 
     let menuItems = document.querySelectorAll('li');
 
-    expect(menuItems.length).to.be.eq(4, 'This menu has an incorrect number of items');
+    expect(menuItems.length).toEqual(4);
     let headerOne = menuItems[0];
     let dividerOne = menuItems[2];
     let headerTwo = menuItems[3];
 
-    expect(headerOne.className).to.not.contain('divider', 'The first item is a divider and it should be a header');
-    expect(headerOne.firstElementChild!.className).to.contain('header', 'The first item was not a header');
-    expect(dividerOne.className).to.contain('divider', 'The third item in the contextualmenu was not a divider');
-    expect(headerTwo.firstElementChild!.className).to.contain('header', 'The final item was not a header');
+    expect(headerOne.className).not.toEqual(expect.stringMatching('divider'));
+    expect(headerOne.firstElementChild!.className).toEqual(expect.stringMatching('header'));
+    expect(dividerOne.className).toEqual(expect.stringMatching('divider'));
+    expect(headerTwo.firstElementChild!.className).toEqual(expect.stringMatching('header'));
+  });
+
+  it('renders sections properly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          topDivider: true,
+          bottomDivider: true,
+          items: [
+            {
+              name: 'TestText 2',
+              key: 'TestKey3'
+            },
+            {
+              name: 'TestText 3',
+              key: 'TestKey3',
+            }
+          ]
+        }
+      }, {
+        name: 'TestText 4',
+        key: 'TestKey4',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          items: [
+            {
+              name: 'TestText 5',
+              key: 'TestKey5'
+            },
+            {
+              name: 'TestText 6',
+              key: 'TestKey6',
+            }
+          ]
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    let menuItems = document.querySelectorAll('li');
+    expect(menuItems.length).toEqual(8);
   });
 
   it('does not return a value if no items are given', () => {
@@ -252,11 +299,11 @@ describe('ContextualMenu', () => {
     );
     let menuList = document.querySelector('.ms-ContextualMenu-list');
 
-    expect(menuList).to.be.eq(null, 'ContextualMenu is not return null even though no items are provided');
+    expect(menuList).toBeNull();
 
   });
 
-  it('correctly focuses the first element', () => {
+  it('correctly focuses the first element', (done) => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -275,11 +322,21 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1')!.firstChild;
-    expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
+    new Promise<any>(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey1')!.firstChild;
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).toEqual(focusedItem);
+      done();
+      resolve();
+    }).catch(done());
   });
 
-  it('will not focus the first element when shouldFocusOnMount is false', () => {
+  it('will not focus the first element when shouldFocusOnMount is false', (done) => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -295,12 +352,22 @@ describe('ContextualMenu', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
-        shouldFocusOnMount={ false }
+        shouldFocusOnMount={ true }
       />
     );
+    new Promise(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey1')!.firstChild;
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).not.toEqual(focusedItem);
+      done();
+      resolve();
+    }).catch(done);
 
-    let focusedItem = document.querySelector('.testkey1')!.firstChild;
-    expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
   });
 
   it('ContextualMenu menuOpened callback is called only when menu is available', () => {
@@ -333,24 +400,73 @@ describe('ContextualMenu', () => {
         key: 'TestKey2'
       },
     ];
+
+    const onMenuOpened = (): void => {
+      if (layerMounted) {
+        layerMountedFirst = true;
+      }
+      menuMounted = true;
+    };
+
     ReactTestUtils.renderIntoDocument<HTMLDivElement>(
       <div>
         <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
         <ContextualMenu
           target='#target'
           items={ items }
-          onMenuOpened={ () => {
-            if (layerMounted) {
-              layerMountedFirst = true;
-            }
-            menuMounted = true;
-          } }
-        >
-        </ContextualMenu>
+          onMenuOpened={ onMenuOpened }
+        />
       </div>
     );
-    expect(menuMounted).to.be.equal(true, 'Menu opened callback was not properly called');
-    expect(layerMountedFirst).to.be.equal(true, 'Menu Mounted First');
-    expect(menuMountedFirst).to.be.equal(false, 'Layer Mounted first');
+    expect(menuMounted).toEqual(true);
+    expect(layerMountedFirst).toEqual(true);
+    expect(menuMountedFirst).toEqual(false);
+  });
+
+  describe('canAnyMenuItemsCheck', () => {
+    it('returns false when there are no checkable menu items', () => {
+      const items: IContextualMenuItem[] = [
+        { name: 'Item 1', key: 'Item 1' },
+        { name: 'Item 2', key: 'Item 2' },
+        { name: 'Item 3', key: 'Item 3' }
+      ];
+
+      expect(canAnyMenuItemsCheck(items)).toEqual(false);
+    });
+
+    it('returns true when there is at least one checkable menu item', () => {
+      const items: IContextualMenuItem[] = [
+        { name: 'Item 1', key: 'Item 1' },
+        { name: 'Item 2', key: 'Item 2', canCheck: true },
+        { name: 'Item 3', key: 'Item 3' }
+      ];
+
+      expect(canAnyMenuItemsCheck(items)).toEqual(true);
+    });
+
+    it('returns true when there is a menu section with an item that can check', () => {
+      const items: IContextualMenuItem[] = [
+        {
+          name: 'Item 1',
+          key: 'Item 1'
+        },
+        {
+          name: 'Item 2',
+          key: 'Item 2'
+        },
+        {
+          name: 'Item 3',
+          key: 'Item 3',
+          sectionProps: {
+            items: [
+              { name: 'Item 1', key: 'Item 1' },
+              { name: 'Item 2', key: 'Item 2', canCheck: true },
+              { name: 'Item 3', key: 'Item 3' }
+            ]
+          }
+        }];
+
+      expect(canAnyMenuItemsCheck(items)).toEqual(true);
+    });
   });
 });

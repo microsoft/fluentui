@@ -17,18 +17,27 @@ const PHOTOS = createArray(25, () => {
   };
 });
 
+const log = (): void => {
+  console.log('clicked');
+};
+
 export const FocusZonePhotosExample = () => (
-  <FocusZone>
-    <ul className='ms-FocusZoneExamples-photoList'>
-      { PHOTOS.map((photo, index) => (
-        <div
-          key={ index }
-          className='ms-FocusZoneExamples-photoCell'
-          data-is-focusable={ true }
-          onClick={ () => console.log('clicked') }>
-          <Image src={ photo.url } width={ photo.width } height={ photo.height } />
-        </div>
-      )) }
-    </ul>
+  <FocusZone
+    elementType='ul'
+    className='ms-FocusZoneExamples-photoList'
+  >
+    { PHOTOS.map((photo, index) => (
+      <li
+        key={ index }
+        className='ms-FocusZoneExamples-photoCell'
+        aria-posinset={ index + 1 }
+        aria-setsize={ PHOTOS.length }
+        aria-label='Photo'
+        data-is-focusable={ true }
+        onClick={ log }
+      >
+        <Image src={ photo.url } width={ photo.width } height={ photo.height } />
+      </li>
+    )) }
   </FocusZone>
 );

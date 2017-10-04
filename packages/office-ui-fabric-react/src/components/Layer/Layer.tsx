@@ -88,9 +88,11 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       // Using this 'unstable' method allows us to retain the React context across the layer projection.
       ReactDOM.unstable_renderSubtreeIntoContainer(
         this,
-        <Fabric className={ css('ms-Layer-content', styles.content) }>
-          { this.props.children }
-        </Fabric>,
+        (
+          <Fabric className={ css('ms-Layer-content', styles.content) }>
+            { this.props.children }
+          </Fabric>
+        ),
         this._layerElement,
         () => {
           if (!this._hasMounted) {

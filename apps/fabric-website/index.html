@@ -19,7 +19,6 @@
     .loading {
       align-items: center;
       background-color: #212121;
-      border-top: 50px solid #000;
       display: flex;
       height: 100vh;
       justify-content: center;
@@ -30,31 +29,12 @@
 <body>
   <div id="main">
     <div class="loading">
-      <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading"
+      <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif" alt="Loading"
         width="32" height="32" />
     </div>
   </div>
 
   <script type="text/javascript">
-    var isProduction = false;
-    var isDogfood = false;
-    var isLocal = false;
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    switch (true) {
-      case location.hostname === 'dev.office.com':
-        isProduction = true;
-        break;
-      case location.hostname === 'officedevcentersite-devx.azurewebsites.net':
-        isDogfood = true;
-        break;
-      case location.hostname === 'officedevcentersite-release.azurewebsites.net':
-        isProduction = true;
-        break;
-      case location.hostname === 'localhost':
-        isLocal = true;
-    }
-
     function loadScript(n) {
       for (var i = 0; i < n.length; i++) {
         var s = document.createElement('script');
@@ -64,107 +44,14 @@
       }
     }
 
-    function getParameterByName(name, url) {
-      if (!url) {
-        url = window.location.href;
-      }
-      name = name.replace(/[\[\]]/g, "\\$&");
-      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    var reactProduction = [
-      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js'
-    ];
-
-    var reactDevelopment = [
+    var scripts = [
       '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js'
+      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js',
+      '/fabric-sitev5.js'
     ];
-
-    var baseProductionUrl = "https://static2.sharepointonline.com/files/fabric/fabric-website/dist/";
-    var baseDogfoodUrl = "https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/";
-
-    var scripts = [];
-    var noCompress = getParameterByName('noCompress') === 'true';
-
-    if (isLocal) {
-      scripts.push.apply(scripts, reactDevelopment);
-      scripts.push('/dist/fabric-site.js');
-    } else if (isDogfood) {
-      if (noCompress) {
-        scripts.push.apply(scripts, reactDevelopment);
-        scripts.push(baseDogfoodUrl + 'fabric-site.min.js?date=' + Date.now());
-      } else {
-        scripts.push.apply(scripts, reactProduction);
-        scripts.push(baseDogfoodUrl + 'fabric-site.js?date=' + Date.now());
-      }
-    } else {
-      if (noCompress) {
-        scripts.push.apply(scripts, reactDevelopment);
-        scripts.push(baseProductionUrl + 'fabric-site.js?date=' + date);
-      } else {
-        scripts.push.apply(scripts, reactProduction);
-        scripts.push(baseProductionUrl + 'fabric-site.min.js?date=' + date);
-      }
-    }
 
     loadScript(scripts);
   </script>
-  <script>
-    // DesignDev Google Analytics
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-84911004-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script type="text/javascript">
-    var varSegmentation = 0; var varClickTracking = 1; var varCustomerTracking = 1; var varAutoFirePV = 1; var Route = "50000";
-    var Ctrl = "SD300"; var script = document.createElement('script'); script.setAttribute('type', 'text/javascript'); script.src
-      = (window.location.protocol) + "//c.microsoft.com/ms.js"; document.getElementsByTagName('head')[0].appendChild(script);
-  </script>
-  <noscript><img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" /></noscript>
-  <script>
-      // OfficeDev Google Analytics
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-      if (window.location.host.indexOf('localhost') != -1 || window.location.host.indexOf('azurewebsites') != -1) {
-        ga('create', 'UA-65962112-1', 'auto'); //staging and Dev GA
-      } else {
-        ga('create', 'UA-54271502-1', 'auto'); //prod GA
-      }
-      ga('require', 'displayfeatures');
-      ga('require', 'linkid', 'linkid.js');
-      ga('send', 'pageview');
-  </script>
-  <script>
-      // OfficeDev App Insights Telemetry
-      var appInsightInstrumentationKey = "26fb3bba-0fdf-4493-b54e-e974c37cc5bc"; //prod Key
-      if (window.location.host.toLowerCase().indexOf('localhost') != -1 || window.location.host.toLowerCase().indexOf('azurewebsites') != -1) {
-        appInsightInstrumentationKey = "49bc8c7a-c997-4078-819c-f5d51d975aeb"; //staging key
-      }
-      var appInsights = window.appInsights || function (config) {
-        function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
-      }({
-        instrumentationKey: appInsightInstrumentationKey
-      });
-      window.appInsights = appInsights;
-      appInsights.trackPageView();
-  </script>
-
 </body>
 
 </html>

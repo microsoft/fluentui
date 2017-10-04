@@ -14,20 +14,10 @@ $DropDown-item-height: 32px;
 
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
-  @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-contrastBlackSelected;
-    border-color: $ms-color-contrastBlackSelected;
-    color: $ms-color-black;
-
-    &:focus {
-      border-color: $ms-color-black;
-    }
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-contrastWhiteSelected;
-    border-color: $ms-color-contrastWhiteSelected;
-    color: $ms-color-white;
+  @include high-contrast {
+    background-color: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
   }
 
   @include highContrastAdjust();
@@ -38,7 +28,6 @@ $DropDown-item-height: 32px;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
-  margin-bottom: 10px;
   position: relative;
   outline: 0;
   user-select: none;
@@ -50,45 +39,32 @@ $DropDown-item-height: 32px;
     .caretDown {
       color: $ms-color-black;
 
-      @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteSelected;
+      @include high-contrast {
+        // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
+        color: Highlight;
       }
     }
+
     .titleIsPlaceHolder {
-      color: $ms-color-neutralTertiary;
+      color: $ms-color-neutralSecondary;
     }
   }
 
-  &:hover,
+  &:hover {
+    .title {
+      border-color: $ms-color-neutralDark;
+    }
+  }
+
   &:active {
     .title {
-      border-color: $ms-color-themePrimary;
-
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
-      }
+      border-color: $ms-color-themeDark;
     }
   }
 
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
-
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
-      }
     }
   }
 
@@ -102,19 +78,15 @@ $DropDown-item-height: 32px;
 .root.rootIsDisabled {
   .title {
     background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    border: none;
     color: $ms-color-neutralTertiary;
     cursor: default;
 
-    @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackDisabled;
-      color: $ms-color-contrastBlackDisabled;
+    @include high-contrast {
+      border-color: GrayText;
+      color: GrayText;
     }
 
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteDisabled;
-      color: $ms-color-contrastWhiteDisabled;
-    }
     &.titleIsError {
         border-color: $ms-color-error;
     }
@@ -123,32 +95,31 @@ $DropDown-item-height: 32px;
   .caretDown {
     color: $ms-color-neutralTertiary;
 
-    @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-contrastBlackDisabled;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-contrastWhiteDisabled;
+    @include high-contrast {
+      color: GrayText;
     }
   }
+}
+
+.caretDownWrapper {
+  position: absolute;
+  top: 1px; // border
+  @include ms-right(12px);
+  height: $DropDown-height;
+  line-height: $DropDown-height - 2px; // height minus the border
 }
 
 .caretDown {
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
-  position: absolute;
-  top: 1px; // border
-  @include ms-right(12px);
   pointer-events: none;
-  height: $DropDown-height;
-  line-height: $DropDown-height - 2px; // height minus the border
 }
 
 // Style the new, replacement component
 .title {
   @include ms-normalize;
   background: $ms-color-white;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
+  border: 1px solid $ms-color-neutralTertiary;
   cursor: pointer;
   display: block;
   height: $DropDown-height;
@@ -162,7 +133,7 @@ $DropDown-item-height: 32px;
         border-color: $ms-color-error;
     }
   &.titleIsPlaceHolder {
-    color: $ms-color-neutralTertiary;
+    color: $ms-color-neutralSecondary;
   }
 }
 
@@ -178,7 +149,7 @@ $DropDown-item-height: 32px;
   }
 
 .callout {
-  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
 }
 
@@ -210,12 +181,8 @@ $DropDown-item-height: 32px;
   overflow-wrap: break-word;
   text-align: left;
 
-  @media screen and (-ms-high-contrast: active) {
-    border-color: $ms-color-black;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border-color: $ms-color-white;
+  @include high-contrast {
+    border-color: Window;
   }
 
   &:hover {

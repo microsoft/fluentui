@@ -38,8 +38,8 @@ export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProp
             </p>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 

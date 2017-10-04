@@ -11,8 +11,7 @@
   user-select: none;
   display: flex;
   flex-wrap: nowrap;
-  min-width: 100px;
-  max-width: 100%;
+  max-width: 300px;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -20,9 +19,18 @@
 
   &.isSelected {
     background: $ms-color-neutralQuaternary;
+
+    @include high-contrast {
+      border: 1px solid WindowFrame;
+    }
+
     &:hover {
       background: $ms-color-neutralQuaternaryAlt;
     }
+  }
+
+  @include high-contrast {
+    border: 1px solid WindowText;
   }
 }
 
@@ -30,7 +38,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  min-width: 100px;
+  min-width: 30px;
   margin: 0 8px;
 }
 

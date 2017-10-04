@@ -8,10 +8,15 @@ import {
 } from 'office-ui-fabric-react/lib/Link';
 import './ComponentPage.scss';
 
+export interface IComponentPageSection {
+  title: string;
+  section: JSX.Element;
+}
+
 export interface IComponentPageProps {
   title: string;
   componentName: string;
-  exampleCards: JSX.Element;
+  exampleCards?: JSX.Element;
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
@@ -19,12 +24,16 @@ export interface IComponentPageProps {
   overview: JSX.Element;
   related?: JSX.Element;
   isHeaderVisible?: boolean;
+  areBadgesVisible?: boolean;
   className?: string;
+  componentStatus?: JSX.Element;
+  otherSections?: [IComponentPageSection];
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
-  public static defaultProps = {
-    isHeaderVisible: true
+  public static defaultProps: Partial<IComponentPageProps> = {
+    isHeaderVisible: true,
+    areBadgesVisible: false
   };
 
   private _baseUrl: string;
@@ -36,10 +45,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     this._baseUrl = doc ? document.location.href : '';
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       componentName,
-      exampleCards,
       overview,
       className
     } = this.props;
@@ -49,6 +57,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className={ componentName }>
           { this._pageHeader() }
           <div className='ComponentPage-body'>
+            { this._getComponentStatusBadges() }
             <div className='ComponentPage-overviewSection'>
               <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
               <div className='ComponentPage-overviewSectionContent'>
@@ -59,14 +68,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               </div>
             </div>
             { this._getDosAndDonts() }
-            <div className='ComponentPage-variantsSection'>
-              <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
-              { exampleCards }
-            </div>
+            { this._getVariants() }
             { this._getPropertiesTable() }
+            { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
+              return this._getSection(componentPageSection);
+            }) }
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     );
   }
 
@@ -103,13 +112,23 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <Link { ...{ href: this._baseUrl + '#Overview' } }>Overview</Link>
         </div>
         { links }
-        <div className='ComponentPage-navLink'>
+        { this.props.exampleCards && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
-        </div>
-        <div className='ComponentPage-navLink'>
+        </div> }
+        { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
-        </div>
-      </div>
+        </div> }
+        { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
+          return <div key={ index + 'class' } className='ComponentPage-navLink'>
+            <Link
+              key={ index + componentPageSection.title }
+              { ...{ href: this._baseUrl + '#' + componentPageSection.title } }
+            >
+              { componentPageSection.title }
+            </Link>
+          </div>;
+        }) }
+      </div >
     );
   }
 
@@ -169,5 +188,50 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         </div>
       );
     }
+  }
+
+  private _getVariants(): JSX.Element | undefined {
+    if (this.props.exampleCards) {
+      return (
+        <div className='ComponentPage-variantsSection'>
+          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
+          { this.props.exampleCards }
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getComponentStatusBadges(): JSX.Element | undefined {
+    if (this.props.componentStatus && this.props.areBadgesVisible) {
+      return (
+        <div className='ComponentPage-componentStatusSection'>
+          { this.props.componentStatus }
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getSection(componentPageSection: IComponentPageSection): JSX.Element | undefined {
+    if (this.props.otherSections) {
+      return (
+        <div key={ componentPageSection.title + '-key' }>
+          <div className='ComponentPage-variantsSection'>
+            <h2
+              className='ComponentPage-subHeading ComponentPage-variantsTitle'
+              id={ componentPageSection.title }
+            >
+              { componentPageSection.title }
+            </h2>
+            { componentPageSection.section }
+          </div>
+        </div>
+      );
+    }
+
+    return undefined;
   }
 }

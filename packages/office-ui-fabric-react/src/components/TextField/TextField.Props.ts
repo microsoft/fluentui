@@ -12,10 +12,10 @@ export interface ITextField {
   /** Select the value of the text field. */
   select: () => void;
 
-  /** Sets the selection start of the text field to a specified value */
+  /** Sets the selection start of the text field to a specified value. */
   setSelectionStart: (value: number) => void;
 
-  /** Sets the selection end of the text field to a specified value */
+  /** Sets the selection end of the text field to a specified value. */
   setSelectionEnd: (value: number) => void;
 
   /**
@@ -24,6 +24,12 @@ export interface ITextField {
    * @param end Index of the end of the selection.
    */
   setSelectionRange: (start: number, end: number) => void;
+
+  /** Gets the selection start of the text field. Returns -1 if there is no selection. */
+  selectionStart: number;
+
+  /** Gets the selection end of the text field. Returns -1 if there is no selection. */
+  selectionEnd: number;
 }
 
 /**
@@ -70,6 +76,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Label for the textfield.
    */
   label?: string;
+
+  /**
+   * Optional custom renderer for the label
+   */
+  onRenderLabel?: IRenderFunction<ITextFieldProps>;
 
   /**
    * The textfield input description
@@ -188,5 +199,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * Deprecated; use iconProps instead.
    */
   iconClass?: string;
+
+  /**
+ * Internal ID passed to render functions.
+ */
+  componentId?: string;
 
 }

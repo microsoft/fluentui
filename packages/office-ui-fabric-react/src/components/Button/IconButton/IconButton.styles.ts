@@ -1,7 +1,7 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets
+  concatStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -10,9 +10,6 @@ import {
 import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
-
-const DEFAULT_BUTTON_HEIGHT = '32px';
-const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -53,5 +50,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
+  return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
 });

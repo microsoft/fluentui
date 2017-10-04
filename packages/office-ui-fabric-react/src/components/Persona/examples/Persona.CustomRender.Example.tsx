@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  autobind,
-  css
-} from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IPersonaProps,
   Persona,
@@ -33,6 +30,14 @@ export class PersonaCustomRenderExample extends React.Component<React.Props<Pers
         <Persona
           { ...examplePersona }
           size={ PersonaSize.large }
+          presence={ PersonaPresence.offline }
+          onRenderSecondaryText={ this._onRenderSecondaryText }
+        />
+        <div>custom coin size = 150, Persona size is extraLarge.</div>
+        <Persona
+          { ...examplePersona }
+          size={ PersonaSize.extraLarge }
+          coinSize={ 150 }
           presence={ PersonaPresence.offline }
           onRenderSecondaryText={ this._onRenderSecondaryText }
         />

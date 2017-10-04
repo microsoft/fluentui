@@ -6,6 +6,9 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ProgressIndicatorStatus } from './ProgressIndicator.checklist';
+
 const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -15,7 +18,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         title='ProgressIndicator'
         componentName='ProgressIndicatorExample'
         exampleCards={
-          <ExampleCard title='ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
+          <ExampleCard title='Default ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
             <ProgressIndicatorBasicExample />
           </ExampleCard>
         }
@@ -55,7 +58,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -77,11 +80,13 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ProgressIndicatorStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

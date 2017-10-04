@@ -108,9 +108,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
     isMonthPickerVisible: true,
+    showMonthPickerAsOverlay: false,
     strings: DEFAULT_STRINGS,
+    highlightCurrentMonth: false,
     borderless: false,
     pickerAriaLabel: 'Calender',
+    showWeekNumbers: false,
+    showGoToToday: true,
+    dateTimeFormatter: undefined
   };
 
   public refs: {
@@ -148,11 +153,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       errorMessage: errorMessage
     });
 
-    // Issue# 1274: Check if the date value changed from old props value, i.e., if indeed a new date is being
+    // Issue# 1274: Check if the date value changed from old value, i.e., if indeed a new date is being
     // passed in or if the formatting function was modified. We only update the selected date if either of these
     // had a legit change. Note tha the bug will still repro when only the formatDate was passed in props and this
     // is the result of the onSelectDate callback, but this should be a rare scenario.
-    let oldValue = this.props.value;
+    let oldValue = this.state.selectedDate;
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
         selectedDate: value || new Date(),
@@ -198,6 +203,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             borderless={ borderless }
             iconProps={ {
               iconName: 'Calendar',
+              onClick: this._onIconClick,
               className: css(
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel
@@ -205,7 +211,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref='textField' />
+            ref='textField'
+            role={ allowTextInput ? 'combobox' : 'menu' }
+          />
         </div>
         { isDatePickerShown && (
           <Callout
@@ -215,7 +223,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
-            targetElement={ this._datepicker }
+            target={ this._datepicker }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
@@ -224,12 +232,16 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
+              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
+              highlightCurrentMonth={ this.props.highlightCurrentMonth }
+              showWeekNumbers={ this.props.showWeekNumbers }
+              showGoToToday={ this.props.showGoToToday }
+              dateTimeFormatter={ this.props.dateTimeFormatter }
               ref={ this._resolveRef('_calendar') }
-            >
-            </Calendar>
+            />
           </Callout>
         ) }
       </div>
@@ -244,11 +256,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       selectedDate: date,
       isDatePickerShown: false,
       formattedDate: formatDate && date ? formatDate(date) : '',
+    }, () => {
+      if (onSelectDate) {
+        onSelectDate(date);
+      }
     });
-
-    if (onSelectDate) {
-      onSelectDate(date);
-    }
   }
 
   @autobind
@@ -331,6 +343,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
+  @autobind
+  private _onIconClick(ev: React.MouseEvent<HTMLElement>) {
+    ev.stopPropagation();
+    this._onTextFieldClick(ev);
+  }
+
   private _showDatePickerPopup() {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
@@ -374,7 +392,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _validateTextInput() {
-    let { isRequired, allowTextInput, strings, formatDate, parseDateFromString, onSelectDate } = this.props;
+    let { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate } = this.props;
     const inputValue = this.state.formattedDate;
 
     // Do validation only if DatePicker's popup is dismissed

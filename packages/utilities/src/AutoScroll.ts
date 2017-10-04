@@ -31,6 +31,7 @@ export class AutoScroll {
     this._incrementScroll = this._incrementScroll.bind(this);
     this._scrollRect = getRect(this._scrollableParent);
 
+    // tslint:disable-next-line:no-any
     if (this._scrollableParent === window as any) {
       this._scrollableParent = document.body;
     }
@@ -41,22 +42,22 @@ export class AutoScroll {
     }
   }
 
-  public dispose() {
+  public dispose(): void {
     this._events.dispose();
     this._stopScroll();
   }
 
-  private _onMouseMove(ev: MouseEvent) {
+  private _onMouseMove(ev: MouseEvent): void {
     this._computeScrollVelocity(ev.clientY);
   }
 
-  private _onTouchMove(ev: TouchEvent) {
+  private _onTouchMove(ev: TouchEvent): void {
     if (ev.touches.length > 0) {
       this._computeScrollVelocity(ev.touches[0].clientY);
     }
   }
 
-  private _computeScrollVelocity(clientY: number) {
+  private _computeScrollVelocity(clientY: number): void {
     if (!this._scrollRect) {
       return;
     }
@@ -85,13 +86,13 @@ export class AutoScroll {
     }
   }
 
-  private _startScroll() {
+  private _startScroll(): void {
     if (!this._timeoutId) {
       this._incrementScroll();
     }
   }
 
-  private _incrementScroll() {
+  private _incrementScroll(): void {
     if (this._scrollableParent) {
       this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
     }
@@ -99,7 +100,7 @@ export class AutoScroll {
     this._timeoutId = setTimeout(this._incrementScroll, SCROLL_ITERATION_DELAY);
   }
 
-  private _stopScroll() {
+  private _stopScroll(): void {
     if (this._timeoutId) {
       clearTimeout(this._timeoutId);
       delete this._timeoutId;

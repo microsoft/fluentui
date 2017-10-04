@@ -6,10 +6,24 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
+import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
+import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
+import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
+import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
+import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
+import { TextFieldImplementationExamples } from './examples/TextField.ImplementationExamples';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { TextFieldStatus } from './TextField.checklist';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
+const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
+const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
+const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
+const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
+const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
+const TextFieldImplementationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ImplementationExamples.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -19,11 +33,53 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='TextFieldExample'
         exampleCards={
           <div>
-            <ExampleCard title='TextField variations' code={ TextFieldBasicExampleCode }>
+            <ExampleCard
+              title='Default TextField with Label'
+              code={ TextFieldBasicExampleCode }
+            >
               <TextFieldBasicExample />
             </ExampleCard>
-            <ExampleCard title='TextField error message variations' code={ TextFieldErrorMessageExampleCode }>
+            <ExampleCard
+              title='TextField with Placeholder'
+              code={ TextFieldPlaceholderExampleCode }
+            >
+              <TextFieldPlaceholderExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Multiline TextField'
+              code={ TextFieldMultilineExampleCode }
+            >
+              <TextFieldMultilineExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Underlined TextField'
+              code={ TextFieldUnderlinedExampleCode }
+            >
+              <TextFieldUnderlinedExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Borderless TextField'
+              code={ TextFieldBorderlessExampleCode }
+            >
+              <TextFieldBorderlessExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField error message variations'
+              code={ TextFieldErrorMessageExampleCode }
+            >
               <TextFieldErrorMessageExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with custom Label'
+              code={ TextFieldCustomRenderExampleCode }
+            >
+              <TextFieldCustomRenderExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Implementation Examples'
+              code={ TextFieldImplementationExampleCode }
+            >
+              <TextFieldImplementationExamples />
             </ExampleCard>
           </div>
         }
@@ -42,7 +98,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -73,11 +129,13 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/TextField/TextField.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...TextFieldStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

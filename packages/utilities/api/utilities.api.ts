@@ -43,7 +43,7 @@ class AutoScroll {
 // WARNING: _warnDeprecations has incomplete type information
 // WARNING: _warnMutuallyExclusive has incomplete type information
 // @public
-class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
+class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
   constructor(props?: P, context?: any);
   protected readonly _async: Async;
   protected readonly _disposables: IDisposable[];
@@ -55,7 +55,7 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 }
 
 // @public
-export function createArray(size: number, getItem?: (index?: number) => any): any[];
+export function createArray < T >(size: number, getItem: (index: number) => T): T[];
 
 // WARNING: contextTypes has incomplete type information
 // WARNING: childContextTypes has incomplete type information
@@ -105,8 +105,10 @@ class FabricPerformance {
   public static summary: IPerfSummary;
 }
 
+export function find < T >(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
+
 // @public
-export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number;
+export function findIndex < T >(array: T[], cb: (item: T, index: number) => boolean): number;
 
 // @public
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
@@ -183,7 +185,7 @@ class GlobalSettings {
   // (undocumented)
   public static addChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
-  public static getValue < T >(key: string): T;
+  public static getValue < T >(key: string, defaultValue?: T | (() => T)): T;
   // (undocumented)
   public static removeChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
@@ -450,6 +452,8 @@ class Rectangle {
   public top: number;
   readonly width: number;
 }
+
+export function removeElement < T >(array: T[], index: number): T[];
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal

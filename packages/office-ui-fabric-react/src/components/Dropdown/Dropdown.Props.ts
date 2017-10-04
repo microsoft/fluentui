@@ -30,6 +30,17 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
    */
   onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
 
+  /**
+   * Optional custom renderer for chevron icon
+   */
+  onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+
+  /**
+   * Custom width for dropdown. If value is 0, width of the input field is used.
+   * @default 0
+   */
+  dropdownWidth?: number;
+
   responsiveMode?: ResponsiveMode;
 
   /**
@@ -47,6 +58,14 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   * state by observing onChange events and passing a new value in when changed.
   */
   selectedKeys?: string[] | number[];
+
+  /**
+   * When multiple items are selected, this still will be used to separate values in
+   * the dropdown title.
+   *
+   * @defaultValue ", "
+   */
+  multiSelectDelimiter?: string;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.

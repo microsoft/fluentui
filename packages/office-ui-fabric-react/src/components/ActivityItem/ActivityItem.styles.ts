@@ -1,5 +1,5 @@
 import {
-  mergeStyleSets,
+  concatStyleSets,
   ITheme,
   getTheme
 } from '../../Styling';
@@ -10,14 +10,14 @@ import { IActivityItemStyles } from './ActivityItem.Props';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
-const DEFAULT_ICON_SIZE = '24px';
+const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IActivityItemStyles | undefined = undefined
+  customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
-  let ActivityItemStyles = {
+  let ActivityItemStyles: IActivityItemStyles = {
 
     root: [
       theme.fonts.small,
@@ -57,13 +57,15 @@ export const getStyles = memoizeFunction((
       height: DEFAULT_PERSONA_SIZE,
       fontSize: DEFAULT_ICON_SIZE,
       lineHeight: DEFAULT_ICON_SIZE,
+      marginTop: '3px'
     },
 
     isCompactIcon: {
       height: COMPACT_PERSONA_SIZE,
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,
-      color: theme.palette.themePrimary
+      color: theme.palette.themePrimary,
+      marginTop: '1px'
     },
 
     activityPersona: {
@@ -71,8 +73,10 @@ export const getStyles = memoizeFunction((
     },
 
     doublePersona: {
-      '&:first-child': {
-        alignSelf: 'flex-end'
+      selectors: {
+        ':first-child': {
+          alignSelf: 'flex-end'
+        }
       }
     },
 
@@ -106,11 +110,11 @@ export const getStyles = memoizeFunction((
     timeStamp: [
       theme.fonts.tiny,
       {
-        fontWeight: '400',
+        fontWeight: 400,
         color: theme.palette.neutralSecondary
       }
     ]
   };
 
-  return mergeStyleSets(ActivityItemStyles, customStyles)!;
+  return concatStyleSets(ActivityItemStyles, customStyles);
 });

@@ -4,12 +4,12 @@ import { IconGrid } from '../../../components/IconGrid/IconGrid';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const iconData = require('json!../../../../node_modules/office-ui-fabric-core/src/data/icons.json');
+const iconData = require('../../../../node_modules/office-ui-fabric-core/src/data/icons.json');
 
 export class IconsPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.basePage }>
         <PageHeader
           pageTitle='Icons'
           links={

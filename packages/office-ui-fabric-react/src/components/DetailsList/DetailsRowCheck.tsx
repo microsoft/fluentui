@@ -3,7 +3,12 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
-import * as styles from './DetailsRowCheck.scss';
+import * as DetailsRowCheckStyles from './DetailsRowCheck.scss';
+import * as CheckStylesModule from '../Check/Check.scss';
+
+// tslint:disable:no-any
+const CheckStyles: any = CheckStylesModule;
+// tslint:enable:no-any
 
 export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
   selected?: boolean;
@@ -31,15 +36,20 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     <button
       { ...buttonProps }
       role='checkbox'
-      className={ css('ms-DetailsRow-check', styles.check, {
-        [styles.isDisabled]: !props.canSelect,
-        'ms-DetailsRow-check--isDisabled': !props.canSelect
-      }) }
+      className={ css(
+        'ms-DetailsRow-check',
+        DetailsRowCheckStyles.check,
+        CheckStyles.checkHost,
+        !props.canSelect && DetailsRowCheckStyles.isDisabled,
+        !props.canSelect && 'ms-DetailsRow-check--isDisabled'
+      ) }
       aria-checked={ isPressed }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
     >
-      <Check checked={ isPressed } />
+      <Check
+        checked={ isPressed }
+      />
     </button>
   );
 };

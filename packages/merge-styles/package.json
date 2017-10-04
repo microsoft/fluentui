@@ -1,0 +1,29 @@
+{
+  "name": "@uifabric/merge-styles",
+  "version": "5.2.0",
+  "description": "Office UI Fabric style loading utilities.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start-test": "node ../../scripts/start-test.js"
+  },
+  "disabledTasks": [
+    "copy",
+    "sass",
+    "karma"
+  ],
+  "devDependencies": {
+    "@types/jest": "21.1.0",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  }
+}

@@ -15,15 +15,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: stretch;
-  margin-bottom: 10px;
   @include padding(0, 0, 0, 8px);
   border: 1px solid $ms-color-neutralTertiary;
   height: 32px;
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-white;
-  }
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: 1px solid $ms-color-black;
+  @include high-contrast {
+    border: 1px solid WindowText;
   }
 }
 
@@ -32,12 +28,11 @@
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
-  color: $ms-color-neutralSecondaryAlt;
   font-size: 16px;
   width: 32px;
   text-align: center;
   transition: width $ms-animation-duration-1;
-  color: $ms-color-themeDarkAlt;
+  color: $ms-color-themePrimary;
 }
 
 .icon {
@@ -78,6 +73,15 @@
   color: $ms-color-themePrimary;
 }
 
+// Modifier: Inline searchbox
+.root.rootIsUnderlined {
+  border-width: 0px 0px 1px 0px;
+
+  &.rootIsDisabled {
+    background-color: transparent;
+  }
+}
+
 // State: Active searchbox
 .root.rootIsActive {
   border-color: $ms-color-themePrimary;
@@ -101,10 +105,10 @@
   pointer-events: none;
   cursor: default;
   .iconContainer {
-    color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralTertiary;
   }
   .field {
-    color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralTertiary;
   }
 }
 

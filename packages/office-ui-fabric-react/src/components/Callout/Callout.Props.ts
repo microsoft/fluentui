@@ -50,6 +50,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   beakWidth?: number;
 
   /**
+   * Custom width for callout including borders. If value is 0, no width is applied.
+   * @default 0
+   */
+  calloutWidth?: number;
+
+  /**
    * The background color of the Callout in hex format ie. #ffffff.
    * @default $ms-color-white
    */
@@ -169,10 +175,4 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
     * @deprecated
     */
   beakStyle?: string;
-
-  /**
-   * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
-   * @deprecated
-   */
-  targetElement?: HTMLElement;
 }

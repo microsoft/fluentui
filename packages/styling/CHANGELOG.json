@@ -2,6 +2,315 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "@uifabric/styling_v5.1.0",
+      "date": "Sat, 30 Sep 2017 01:26:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "93a77f83352b357bae5d6b509a40eeec28d56a32",
+            "comment": "Add a new success background color"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/styling_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.2",
+      "tag": "@uifabric/styling_v0.24.2",
+      "date": "Tue, 26 Sep 2017 20:42:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c85736b0d854f1ecac15fee119106aeba61f1750",
+            "comment": "Reverting Customizer changes, as they are breaking. Will include in 5.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.15.0 <5.0.0` to `>=4.16.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.1",
+      "tag": "@uifabric/styling_v0.24.1",
+      "date": "Tue, 26 Sep 2017 10:09:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "724a69333e9c1b0833ef6f48c0fd6b49a2bf3a3a",
+            "comment": "Updating default theme registration to use the new `Customizations` helper."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.14.1 <5.0.0` to `>=4.15.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.0",
+      "tag": "@uifabric/styling_v0.24.0",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b691aa97525304884029629d2f40f14dc663f0bb",
+            "comment": "Adding `MoreVertical` icon."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.13.0 <5.0.0` to `>=4.13.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.1",
+      "tag": "@uifabric/styling_v0.23.1",
+      "date": "Tue, 12 Sep 2017 17:41:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "d07499a8a812bc8467f152ea1aee325e02e6ab6c",
+            "comment": "Fixing circular dependency issue."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.0",
+      "tag": "@uifabric/styling_v0.23.0",
+      "date": "Mon, 11 Sep 2017 10:08:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "eca3d17992576760e7b6b55d74f2d7a2b85e3a21",
+            "comment": "Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.1",
+      "tag": "@uifabric/styling_v0.22.1",
+      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "b4eee571f31db3c0950938e40aafea9313f73003",
+            "comment": "Icons: Added textDocument back into the icon list"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.12.1 <5.0.0` to `>=4.13.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.0",
+      "tag": "@uifabric/styling_v0.22.0",
+      "date": "Fri, 01 Sep 2017 16:51:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marena Richardson <marena.richardson@gmail.com>",
+            "commit": "698632d5cc6e2564f3b745e3c1919ff020fb6004",
+            "comment": "Add a new semantic slot for the warning foreground color"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "02d0358d39021ab96b27eb1ad78f595e3891d9a5",
+            "comment": "Add FullWidth icon."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.1",
+      "tag": "@uifabric/styling_v0.21.1",
+      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
+            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.11.0 <5.0.0` to `>=4.11.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.0",
+      "tag": "@uifabric/styling_v0.21.0",
+      "date": "Tue, 29 Aug 2017 10:20:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e9a99a34b2950f779b13b4299e2d495265872b52",
+            "comment": "Theming: added an accent color slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.3 <5.0.0` to `>=4.11.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.2",
+      "tag": "@uifabric/styling_v0.20.2",
+      "date": "Fri, 25 Aug 2017 20:31:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
+            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.1 <5.0.0` to `>=4.10.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.1",
+      "tag": "@uifabric/styling_v0.20.1",
+      "date": "Wed, 23 Aug 2017 19:04:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "042e2133b475a37340c4f05ae9eeb0abd22ec49d",
+            "comment": "add Comment icon"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.0",
+      "tag": "@uifabric/styling_v0.20.0",
+      "date": "Fri, 18 Aug 2017 16:32:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e35e5e23555797dae09d6f3aac98fd932c245f1d",
+            "comment": "mergeStyleSets: tweaked the return type to be less restrictive."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.2",
+      "tag": "@uifabric/styling_v0.19.2",
+      "date": "Mon, 14 Aug 2017 10:20:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "aed8e8abf6e9e97c6228d66e012e79da08fb63ea",
+            "comment": "getFocusStyle: Add -moz-focus-inner to fix outline bug"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.1",
+      "tag": "@uifabric/styling_v0.19.1",
+      "date": "Fri, 11 Aug 2017 19:38:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Qianqian Li <lqq201194@163.com>",
+            "commit": "c66fa123e9533644a1e1401005c8dc8a425aa448",
+            "comment": "add StreamLogo and PowerBILogo icons"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.0",
+      "tag": "@uifabric/styling_v0.19.0",
+      "date": "Tue, 08 Aug 2017 15:28:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a92eb2a9a79dcab033bdbe78ca7a18b2d6607e99",
+            "comment": "Styling: added a screenReaderText utility style"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a7bc11ddacabfcfbf4fbc56e99e6d13ea296b787",
+            "comment": "Adding a color to the palette"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.18.0",
+      "tag": "@uifabric/styling_v0.18.0",
+      "date": "Mon, 07 Aug 2017 10:22:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2c4a1740d6e9495c9eca4c27f8c8fb6c70b2c61a",
+            "comment": "Adding 4 icons that were missing in the codes map."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.0",
       "tag": "@uifabric/styling_v0.17.0",
       "date": "Fri, 04 Aug 2017 10:11:48 GMT",

@@ -1,66 +1,73 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets
+  concatStyleSets,
+  getFocusStyle
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-
-const DEFAULT_BUTTON_HEIGHT = '32px';
-const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
-  let iconButtonStyles: IButtonStyles = {
+  let splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
       display: 'inline-block',
       border: '1px solid transparent',
-      ':hover': {
-        border: '1px solid',
-        borderColor: theme.palette.neutralLight
-      },
-      ':focus': {
-        outline: 'none!important',
-        border: '1px solid',
-        borderColor: theme.palette.neutralDark
+
+      selectors: {
+        ':focus': {
+          outline: 'none!important',
+          border: '1px solid'
+        }
       }
     },
 
-    splitButtonContainerDisabled: {
-      position: 'absolute',
-    },
+    splitButtonMenuButton: [
+      getFocusStyle(theme, -1),
+      {
+        padding: 6,
+        height: 'auto',
+        boxSizing: 'border-box',
+        border: '1px solid transparent',
+        outline: 'transparent',
+        userSelect: 'none',
+        display: 'inline-block',
+        textDecoration: 'none',
+        textAlign: 'center',
+        cursor: 'pointer',
+        verticalAlign: 'top',
+        width: 32,
+        marginLeft: -1
+      }
+    ],
 
-    splitButtonMenuButton: {
-      backgroundColor: theme.palette.neutralLighter,
-      padding: '6px',
-      height: 'auto',
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight
-      },
+    splitButtonDivider: {
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8
     },
 
     splitButtonMenuButtonDisabled: {
-      backgroundColor: theme.palette.neutralLighter,
+      pointerEvents: 'none',
+      selectors: {
+        ':hover': {
+          cursor: 'default'
+        }
+      }
     },
 
-    splitButtonMenuIcon: {
-      color: theme.palette.neutralPrimary
-    },
-
-    splitButtonMenuIconDisabled: {
-      color: theme.palette.neutralTertiary
-    },
-
-    splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themePrimary,
-    },
-
-    splitButtonMenuButtonExpanded: {
-      backgroundColor: theme.palette.neutralLight,
+    splitButtonFlexContainer: {
+      display: 'flex',
+      height: '100%',
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center'
     },
   };
 
-  return mergeStyleSets(iconButtonStyles, customStyles)!;
+  return concatStyleSets(splitButtonStyles, customStyles)!;
 });

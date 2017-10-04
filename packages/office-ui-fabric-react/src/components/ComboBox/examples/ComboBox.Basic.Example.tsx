@@ -58,6 +58,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -69,6 +73,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -80,6 +88,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -91,6 +103,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -100,6 +116,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           errorMessage='Error! Here is some text!'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         <ComboBox
@@ -117,6 +137,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             ]
           }
           disabled={ true }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
         />
 
         { value ?
@@ -131,6 +155,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onResolveOptions={ this._getOptions }
             value={ value && value }
             onRenderOption={ this._onRenderFontOption }
+            // tslint:disable:jsx-no-lambda
+            onFocus={ () => console.log('onFocus called') }
+            onBlur={ () => console.log('onBlur called') }
+          // tslint:enable:jsx-no-lambda
           />
           :
           <ComboBox
@@ -144,6 +172,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
             onRenderOption={ this._onRenderFontOption }
+            // tslint:disable:jsx-no-lambda
+            onFocus={ () => console.log('onFocus called') }
+            onBlur={ () => console.log('onBlur called') }
+          // tslint:enable:jsx-no-lambda
           />
         }
       </div>
@@ -213,17 +245,17 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
   @autobind
   private _onChanged(option: IComboBoxOption, index: number, value: string) {
-    if (option !== null) {
+    if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
         value: null
       });
-    } else if (index !== null && index >= 0 && index < this.state.options.length) {
+    } else if (index !== undefined && index >= 0 && index < this.state.options.length) {
       this.setState({
         selectedOptionKey: this.state.options[index].key,
         value: null
       });
-    } else if (value !== null) {
+    } else if (value !== undefined) {
       let newOption: IComboBoxOption = { key: value, text: value };
 
       this.setState({

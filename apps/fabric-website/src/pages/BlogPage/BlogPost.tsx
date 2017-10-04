@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './BlogPost.scss';
 
-const blogData = require('json!../../data/blog-posts.json');
+const blogData = require('../../data/blog-posts.json');
 
 export class BlogPost extends React.Component<{}, {}> {
   private _postId: string;
@@ -21,31 +21,31 @@ export class BlogPost extends React.Component<{}, {}> {
           { blogData[this._postId].title }
         </h1>
         <p className='BlogPost-meta'>
-         { blogData[this._postId].fullPublishedDate } | Posted by { blogData[this._postId].author }
+          { blogData[this._postId].fullPublishedDate } | Posted by { blogData[this._postId].author }
         </p>
         <div
           className='BlogPost-content'
-          dangerouslySetInnerHTML={ {__html: blogData[this._postId].content } }>
-        </div>
+          dangerouslySetInnerHTML={ { __html: blogData[this._postId].content } }
+        />
       </div>
     );
   }
 
   private _getParameterByName(name: string, url?: string) {
-      if (!url) {
-         url = window.location.href;
-      }
+    if (!url) {
+      url = window.location.href;
+    }
 
-      name = name.replace(/[\[\]]/g, '\\$&');
-      let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-          results = regex.exec(url);
-      if (!results) {
-         return null;
-      }
+    name = name.replace(/[\[\]]/g, '\\$&');
+    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) {
+      return null;
+    }
 
-      if (!results[2]) {
-        return '';
-      }
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    if (!results[2]) {
+      return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 }

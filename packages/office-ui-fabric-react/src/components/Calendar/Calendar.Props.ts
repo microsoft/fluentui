@@ -41,6 +41,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isDayPickerVisible?: boolean;
 
   /**
+  * Show month picker on top of date picker when visible.
+  * @defaultvalue false
+  */
+  showMonthPickerAsOverlay?: boolean;
+
+  /**
     * Value of today. If null, current time in client machine will be used.
     */
   today?: Date;
@@ -93,6 +99,22 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * @defaultvalue false
   */
   highlightCurrentMonth?: boolean;
+
+  /**
+  * Customize navigation icons using ICalendarIconStrings
+  */
+  navigationIcons?: ICalendarIconStrings;
+
+  /**
+  * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+  * @defaultvalue false
+  */
+  showWeekNumbers?: boolean;
+
+  /**
+  * Apply additional formating to dates, for example localized date formatting.
+  */
+  dateTimeFormatter?: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarStrings {
@@ -144,4 +166,43 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+}
+
+export interface ICalendarIconStrings {
+  /**
+  * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
+  * @defaultvalue  'Up'
+  */
+  leftNavigation?: string;
+
+  /**
+  * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
+  * @defaultvalue  'Down'
+  */
+  rightNavigation?: string;
+
+}
+
+export interface ICalendarFormatDateCallbacks {
+  /**
+ * Callback to apply formatting to mmmm d, yyyy formated dates
+ */
+  formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+
+  /**
+  * Callback to apply formatting to the month and year in the Day Picker header
+  */
+  formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+
+  /**
+  * Callback to apply formatting to the days in the Day Picker calendar
+  */
+  formatDay: (date: Date) => string;
+
+  /**
+  * Callback to apply formatting to the year in the Month Picker header
+  */
+  formatYear: (date: Date) => string;
+
 }
