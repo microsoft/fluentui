@@ -15,7 +15,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
-    hasPlaceHolder,
     styles,
     iconName
    } = props;
@@ -43,7 +42,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
         <Image { ...props.imageProps as any } />
       </div>
     );
-  } else if (hasPlaceHolder && !(typeof iconName === 'string' && iconName.length > 0)) {
+  } else if (typeof iconName === 'string' && iconName.length === 0) {
     return (
       <i
         aria-label={ ariaLabel }

@@ -60,9 +60,9 @@ storiesOf('Button with placeholder', module)
   .addDecorator(FabricDecorator)
   .add('primary with placeholder', () => (
     <div>
-      <DefaultButton {...baseProps} iconProps={ { iconName: '', hasPlaceHolder: true } } primary={ true } />
+      <DefaultButton {...baseProps} iconProps={ { iconName: '' } } primary={ true } />
       <br />
-      <DefaultButton {...baseProps} iconProps={ { iconName: 'Add', hasPlaceHolder: true } } primary={ true } />
+      <DefaultButton {...baseProps} iconProps={ { iconName: 'Add' } } primary={ true } />
     </div>
   ));
 

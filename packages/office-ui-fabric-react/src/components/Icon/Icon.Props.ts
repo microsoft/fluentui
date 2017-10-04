@@ -36,7 +36,7 @@ export interface IIconStyles {
 
 export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * The name of the icon to use from the icon font.
+   * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
    */
   iconName?: string;
 
@@ -65,10 +65,4 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @memberOf IIconProps
    */
   imageProps?: IImageProps;
-
-  /**
-   * If iconName is undefined or an empty string, a placeholder will be rendered the same size as an icon
-   * @default false
-   */
-  hasPlaceHolder?: boolean;
 }
