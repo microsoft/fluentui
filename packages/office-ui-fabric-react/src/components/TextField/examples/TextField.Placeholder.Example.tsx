@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import './TextField.Examples.scss';
 
 export class TextFieldPlaceholderExample extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className='ms-TextFieldExample'>
         <TextField
           placeholder='I am a placeholder.'
           ariaLabel='Please enter text here'
