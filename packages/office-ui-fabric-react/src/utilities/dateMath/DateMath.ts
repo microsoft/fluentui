@@ -206,7 +206,7 @@ function getDatePartHashValue(date: Date) {
  * @return {Number} The week's number in the year.
  */
 export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear) {
-  //First four-day week of the year - minumum days count
+  // First four-day week of the year - minumum days count
   const fourDayWeek = 4;
   let dayOfYear = getDayOfYear(date) - 1;
   let firstWeekDayOfYear =
@@ -232,7 +232,7 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
       );
     case FirstWeekOfYear.FirstFourDayWeek:
       let adjustFirstWeekDayOfYear =
-        firstWeekDayOfYear == 0
+        firstWeekDayOfYear === 0
           ? firstWeekDayOfYear + TimeConstants.DaysInOneWeek
           : firstWeekDayOfYear;
 
@@ -278,10 +278,6 @@ function getDefaultWeekNumber(
     adjustment
   );
 }
-
-// Helper function for getWeekNumber.
-// Returns week number starting from next week after January 1st
-function startCountWithNextWeek() { }
 
 /**
  * Returns the day number for a date in a year
