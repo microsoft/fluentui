@@ -18,14 +18,18 @@ describe('CommandBar', () => {
   });
 
   it('renders commands correctly', () => {
-    expect(renderer.create(
-      <CommandBar
-        items={ [
-          { key: '1', name: 'asdf' },
-          { key: '2', name: 'asdf' }
-        ] }
-      />
-    ).toJSON()).toMatchSnapshot();
+    if (
+      !expect(renderer.create(
+        <CommandBar
+          items={ [
+            { key: '1', name: 'asdf' },
+            { key: '2', name: 'asdf' }
+          ] }
+        />
+      ).toJSON()).toMatchSnapshot()
+    ) {
+      console.error('Run to regen snapshots: npm run build jest -- -u');
+    }
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
