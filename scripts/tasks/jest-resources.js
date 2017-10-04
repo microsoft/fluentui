@@ -1,4 +1,5 @@
 const path = require('path');
+const merge = require('./merge');
 
 const styleMockPath =
   module.exports = {
@@ -8,7 +9,7 @@ const styleMockPath =
         'testRegex': '(/__tests__/.*|\\.(test|spec))\\.js$',
       }
     ),
-    createConfig: () => (
+    createConfig: (customConfig) => merge(
       {
         moduleNameMapper: {
           'ts-jest': path.resolve(__dirname, '../node_modules/ts-jest'),
@@ -33,6 +34,10 @@ const styleMockPath =
           'json'
         ],
 
+        'setupFiles': [
+          path.resolve(__dirname, './jest-disable-warnings.js')
+        ],
+
         'moduleDirectories': [
           'node_modules',
           path.resolve(process.cwd(), 'node_modules'),
@@ -43,5 +48,5 @@ const styleMockPath =
           path.resolve(__dirname, 'jest-serializer-merge-styles')
         ]
 
-      })
+      }, customConfig)
   };

@@ -36,11 +36,9 @@ describe('FocusZone', () => {
       width: clientRect.right - clientRect.left,
       height: clientRect.bottom - clientRect.top
     });
-    if (isVisible) {
-      (element as any).isVisible = isVisible;
-    } else {
-      (element as any).hidden = !isVisible;
-    }
+
+    element.setAttribute('data-is-visible', String(isVisible));
+
     element.focus = () => ReactTestUtils.Simulate.focus(element);
   }
 

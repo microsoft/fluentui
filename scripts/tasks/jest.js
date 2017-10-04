@@ -8,6 +8,7 @@ module.exports = function (options) {
 
   if (fs.existsSync(jestConfigPath)) {
     const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
+    const customArgs = options.argv.slice(3).join(' ');
 
     const args = [
       // Specify the config file.
@@ -23,7 +24,7 @@ module.exports = function (options) {
       options.args
     ].filter(arg => !!arg).join(' ');
 
-    const command = `node ${jestPath} ${args}`;
+    const command = `node ${jestPath} ${args} ${customArgs}`;
 
     execSync(command, undefined, path.dirname(jestConfigPath));
   }
