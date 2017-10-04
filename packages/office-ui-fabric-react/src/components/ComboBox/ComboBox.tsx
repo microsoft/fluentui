@@ -30,8 +30,7 @@ import {
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
-  getClassNames,
-  getComboBoxOptionClassNames
+  getClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -112,8 +111,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _currentVisibleValue: string | undefined;
 
   private _classNames: IComboBoxClassNames;
-
-  private _comboBoxOptionWidth: string;
 
   constructor(props: IComboBoxProps) {
     super(props);
@@ -234,8 +231,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
+    let setWidth = isOpen ? (this._comboBoxWrapper.clientWidth - 2) + 'px' : undefined;
+
     this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
+      getStyles(theme!, customStyles, setWidth),
       className!,
       !!isOpen,
       !!disabled,
@@ -763,10 +762,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = props;
 
     let id = this._id;
-    this._comboBoxOptionWidth = (this._comboBoxWrapper.clientWidth - 2) + 'px';
-    let otherStyles = getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._comboBoxOptionWidth);
-
-    console.log('otherStyles.optionsContainerWrapper--- ', otherStyles.optionsContainerWrapper as string);
 
     return (
       <Callout
@@ -781,7 +776,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div className={ otherStyles.optionsContainerWrapper as string } ref={ this._resolveRef('_comboBoxMenu') }>
+        <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>
@@ -917,7 +912,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
     const optionStyles = this._getCurrentOptionStyles(item);
-    console.log('optionStyles.optionText as string', optionStyles.optionText as string)
 
     return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
   }
@@ -1297,6 +1291,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._comboBoxOptionWidth);
+    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
   }
 }

@@ -51,11 +51,8 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawSty
 export const getOptionStyles = memoizeFunction((
   theme: ITheme,
   customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
-  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
-  comboBoxOptionWidth?: string,
+  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>
 ): Partial<IComboBoxOptionStyles> => {
-
-  console.log('comboBoxOptionWidth--- ', comboBoxOptionWidth);
 
   const { semanticColors, palette } = theme;
 
@@ -135,10 +132,7 @@ export const getOptionStyles = memoizeFunction((
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
       margin: '1px',
-    },
-    optionsContainerWrapper: {
-      width: comboBoxOptionWidth,
-    },
+    }
   };
 
   return concatStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption);
@@ -185,6 +179,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<IComboBoxStyles>,
+  comboBoxOptionWidth?: string,
 ): Partial<IComboBoxStyles> => {
 
   const { semanticColors, fonts, palette } = theme;
@@ -289,6 +284,10 @@ export const getStyles = memoizeFunction((
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: ComboBoxCalloutBorderColor,
+    },
+
+    optionsContainerWrapper: {
+      width: comboBoxOptionWidth
     },
 
     optionsContainer: {
