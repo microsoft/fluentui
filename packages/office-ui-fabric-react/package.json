@@ -13,7 +13,8 @@
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
-    "start-test": "node ../../scripts/start-test.js"
+    "start-test": "node ../../scripts/start-test.js",
+    "update-snapshots": "node ../../scripts/build.js jest -u"
   },
   "devDependencies": {
     "@types/enzyme": "2.8.8",
