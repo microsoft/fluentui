@@ -15,7 +15,7 @@ storiesOf('Panel', module)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.ms-Layer' })
+        .snapshot('default')
         .end()
       }
     >
