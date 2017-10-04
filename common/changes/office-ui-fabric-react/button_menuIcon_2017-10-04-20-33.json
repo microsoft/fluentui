@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "maxvay@microsoft.com"
+}
