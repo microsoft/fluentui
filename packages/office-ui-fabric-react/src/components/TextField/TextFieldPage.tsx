@@ -5,6 +5,7 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
+import { TextFieldAddonExample } from './examples/TextField.Addon.Example';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
 import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
@@ -12,10 +13,11 @@ import { TextFieldMultilineExample } from './examples/TextField.Multiline.Exampl
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
-import { TextFieldImplementationExamples } from './examples/TextField.ImplementationExamples';
+import { TextFieldIconExample } from './examples/TextField.Icon.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldStatus } from './TextField.checklist';
 
+const TextFieldAddonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Addon.Example.tsx') as string;
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
 const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
@@ -23,7 +25,7 @@ const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-reac
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
-const TextFieldImplementationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ImplementationExamples.tsx') as string;
+const TextFieldIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Icon.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -64,6 +66,12 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               <TextFieldBorderlessExample />
             </ExampleCard>
             <ExampleCard
+              title='Textfield with an addon'
+              code={ TextFieldAddonExampleCode }
+            >
+              <TextFieldAddonExample />
+            </ExampleCard>
+            <ExampleCard
               title='TextField error message variations'
               code={ TextFieldErrorMessageExampleCode }
             >
@@ -76,10 +84,10 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               <TextFieldCustomRenderExample />
             </ExampleCard>
             <ExampleCard
-              title='Implementation Examples'
-              code={ TextFieldImplementationExampleCode }
+              title='TextField with an icon'
+              code={ TextFieldIconExampleCode }
             >
-              <TextFieldImplementationExamples />
+              <TextFieldIconExample />
             </ExampleCard>
           </div>
         }
