@@ -657,7 +657,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       const overflowWidth = totalWidth - availableWidth;
 
       if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
-        column.calculatedWidth = column.calculatedWidth! - overflowWidth;
+        column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth = availableWidth;
       } else {
         totalWidth -= getPaddedWidth(column, false);
