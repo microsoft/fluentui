@@ -583,12 +583,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
       }
 
-      // Last column is not resizable if there's no column behind.
-      // Otherwise, it can be resized to bring back any dropped column.
-      if (adjustedColumns.length && adjustedColumns.length === newColumns.length) {
-        adjustedColumns[adjustedColumns.length - 1].isResizable = false;
-      }
-
       adjustedColumns.forEach(column => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
       });
@@ -656,7 +650,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let lastIndex = adjustedColumns.length - 1;
 
     // Shrink or remove collapsable columns.
-    while (lastIndex > -1 && totalWidth > availableWidth) {
+    while (lastIndex > 0 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
