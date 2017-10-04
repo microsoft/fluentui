@@ -29,6 +29,11 @@ $Breadcrumb-chevron-sm: 8px;
 .chevron {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
+
+  @include high-contrast {
+    color: WindowText;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .listItem {

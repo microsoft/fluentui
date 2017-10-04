@@ -88,6 +88,9 @@
   &:hover {
     border-color: $ms-color-themePrimary;
   }
+  @include high-contrast {
+    border-color: Highlight;
+  }
   .iconContainer {
     width: 4px;
     transition: width $ms-animation-duration-1;
