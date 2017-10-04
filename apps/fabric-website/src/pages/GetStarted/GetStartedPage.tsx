@@ -154,6 +154,21 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               </CodeBlock>
               <p>Components, type, and icons are just a small part of what Fabric has to offer. To reference other assets, including colors, product symbols, and more, see the <a className={ styles.getStartedLink } href='#/styles'>styles page</a>.</p>
             </li>
+            <li>
+              <p>If you are using Fabric React components that have icons, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:</p>
+              <CodeBlock language='javascript' isLightTheme={ true }>
+                {
+                  `import { initializeIcons } from '@uifabric/icons';
+
+// Register icons and pull the fonts from the default SharePoint cdn:
+initializeIcons();
+
+// ...or, register icons and pull the fonts from your own cdn:
+initializeIcons('https://my.cdn.com/path/to/icons/');`
+                }
+              </CodeBlock>
+              <p>This will make ALL icons in the collection available, but will download them on demand when referenced using the <a href='#/components/Icon'>Icon component</a>.</p>
+            </li>
           </ol>
 
           <h3>Other ways to get Fabric React</h3>
