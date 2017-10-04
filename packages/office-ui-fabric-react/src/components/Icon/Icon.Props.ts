@@ -30,12 +30,13 @@ export enum IconType {
 
 export interface IIconStyles {
   root?: IStyle;
+  rootHasPlaceHolder?: IStyle;
   imageContainer?: IStyle;
 }
 
 export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * The name of the icon to use from the icon font.
+   * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
    */
   iconName?: string;
 

@@ -476,7 +476,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
           <Icon
-            iconName={ isItemChecked === true ? 'CheckMark' : 'CustomIcon' }
+            iconName={ isItemChecked === true ? 'CheckMark' : '' }
             className={ css('ms-ContextualMenu-icon', styles.icon) }
             onClick={ this._onItemClick.bind(this, item) }
           />
