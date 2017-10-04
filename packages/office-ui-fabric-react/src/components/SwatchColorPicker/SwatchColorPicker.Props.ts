@@ -76,6 +76,9 @@ export interface ISwatchColorPickerProps {
   shouldFocusCircularNavigate?: boolean;
 }
 
+/**
+ * Represents theme colors
+ */
 export enum SwatchThemeColor {
   ThemeDarker = 'themeDarker',
   ThemeDark = 'themeDark',

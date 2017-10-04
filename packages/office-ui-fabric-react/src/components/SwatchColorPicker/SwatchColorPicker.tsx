@@ -202,6 +202,10 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     );
   }
 
+  /**
+   * Returns the css class associated with color
+   * @param color
+   */
   private _getSwatchThemeColor(color: string) {
     switch (color) {
       case SwatchThemeColor.NeutralDark:
@@ -214,12 +218,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         return styles.neutralLighterAlt;
       case SwatchThemeColor.NeutralPrimary:
         return styles.neutralPrimary;
+      case SwatchThemeColor.NeutralPrimaryAlt:
+        return styles.neutralPrimaryAlt;
       case SwatchThemeColor.NeutralQuaternary:
         return styles.neutralQuaternary;
       case SwatchThemeColor.NeutralQuaternaryAlt:
         return styles.neutralQuaternaryAlt;
-      case SwatchThemeColor.NeutralPrimaryAlt:
-        return styles.neutralPrimaryAlt;
       case SwatchThemeColor.NeutralSecondary:
         return styles.neutralSecondary;
       case SwatchThemeColor.NeutralTertiary:
@@ -234,6 +238,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         return styles.themeDarker;
       case SwatchThemeColor.ThemeLight:
         return styles.themeLight;
+      case SwatchThemeColor.ThemeLighter:
+        return styles.ThemeLighter;
       case SwatchThemeColor.ThemeLighterAlt:
         return styles.themeLighterAlt;
       case SwatchThemeColor.ThemePrimary:
