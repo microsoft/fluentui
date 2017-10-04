@@ -1,7 +1,7 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
+import { ITheme, mergeStyles } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
-
+import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
   container: string;
   root: string;
@@ -20,12 +20,12 @@ export interface IMenuItemClassNames {
   label: string;
 }
 
-export const getClassNames = memoizeFunction((
-  styles: IContextualMenuStyles,
+export const getContextualMenuClassNames = memoizeFunction((
+  theme: ITheme,
   className: string
 ): IContextualMenuClassNames => {
 
-  styles = styles || {};
+  const styles = getContextualMenuStyles(theme);
 
   return {
     container: mergeStyles(
@@ -56,8 +56,8 @@ export const getClassNames = memoizeFunction((
   };
 });
 
-export const getMenuItemClassNames = memoizeFunction((
-  styles: IMenuItemStyles,
+export const getItemClassNames = memoizeFunction((
+  theme: ITheme,
   disabled: boolean,
   expanded: boolean,
   checked: boolean,
@@ -67,6 +67,9 @@ export const getMenuItemClassNames = memoizeFunction((
   iconClassName: string,
   subMenuClassname: string,
 ): IMenuItemClassNames => {
+
+  const styles = getMenuItemStyles(theme);
+
   return {
     item: mergeStyles(
       itemClassName,

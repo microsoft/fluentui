@@ -9,8 +9,8 @@ import {
 import {
   IMenuItemClassNames,
   IContextualMenuClassNames,
-  getClassNames,
-  getMenuItemClassNames
+  getContextualMenuClassNames,
+  getItemClassNames
 } from './ContextualMenu.classNames';
 import {
   BaseComponent,
@@ -104,6 +104,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16,
     arrowDirection: FocusZoneDirection.vertical,
+    getMenuClassNames: getContextualMenuClassNames,
+    getItemClassNames: getItemClassNames,
   };
 
   private _host: HTMLElement;
@@ -194,15 +196,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       directionalHintFixed,
       shouldFocusOnMount,
       title,
-      styles: customStyles,
+      style: customStyles,
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu
     } = this.props;
 
-    this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      className!);
+    let menuClassNames = this.props.getMenuClassNames ? this.props.getMenuClassNames : getContextualMenuClassNames;
+    this._classNames = menuClassNames(theme!, className!);
 
     let hasIcons = itemsHaveIcons(items);
 
@@ -306,11 +307,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
-
     let iconProps = this._getIconProps(item);
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    let menuClassNames = getMenuItemClassNames(
-      getMenuItemStyles(this.props.theme!, item.style),
+    let getClassNames = this.props.getItemClassNames ? this.props.getItemClassNames : getItemClassNames;
+    let itemClassNames = getClassNames(
+      this.props.theme!,
       !!item.disabled,
       (this.state.expandedMenuItemKey === item.key),
       !!getIsChecked(item),
@@ -330,15 +331,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         break;
       case ContextualMenuItemType.Header:
         renderedItems.push(this._renderSeparator(index));
-        let headerItem = this._renderHeaderMenuItem(item, menuClassNames, index, hasCheckmarks, hasIcons);
-        renderedItems.push(this._renderListItem(headerItem, item.key || index, menuClassNames, item.title));
+        let headerItem = this._renderHeaderMenuItem(item, itemClassNames, index, hasCheckmarks, hasIcons);
+        renderedItems.push(this._renderListItem(headerItem, item.key || index, itemClassNames, item.title));
         break;
       case ContextualMenuItemType.Section:
-        renderedItems.push(this._renderSectionItem(item, menuClassNames, index, hasCheckmarks, hasIcons));
+        renderedItems.push(this._renderSectionItem(item, itemClassNames, index, hasCheckmarks, hasIcons));
         break;
       default:
-        let menuItem = this._renderNormalItem(item, menuClassNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
-        renderedItems.push(this._renderListItem(menuItem, item.key || index, menuClassNames, item.title));
+        let menuItem = this._renderNormalItem(item, itemClassNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+        renderedItems.push(this._renderListItem(menuItem, item.key || index, itemClassNames, item.title));
         break;
     }
 
@@ -356,7 +357,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${section.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        name: section.title
+        name: section.title,
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }

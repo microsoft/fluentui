@@ -12,7 +12,6 @@ const ContextualMenuIconWidth = '14px';
 
 export const getMenuItemStyles = memoizeFunction((
   theme: ITheme,
-  customMenuItemStyles?: Partial<IMenuItemStyles>
 ): IMenuItemStyles => {
   const { semanticColors, fonts } = theme;
   const ContextualMenuIconColor = semanticColors.menuIcon;
@@ -120,12 +119,11 @@ export const getMenuItemStyles = memoizeFunction((
       }]
   };
 
-  return concatStyleSets(menuItemStyles, customMenuItemStyles) as IMenuItemStyles;
+  return concatStyleSets(menuItemStyles);
 });
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: Partial<IContextualMenuStyles>,
 ): IContextualMenuStyles => {
   const { semanticColors, fonts } = theme;
 
@@ -177,5 +175,5 @@ export const getStyles = memoizeFunction((
       position: 'relative'
     },
   };
-  return concatStyleSets(styles, customStyles) as IContextualMenuStyles;
+  return concatStyleSets(styles);
 });

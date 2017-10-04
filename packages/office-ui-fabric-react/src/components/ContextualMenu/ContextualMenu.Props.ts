@@ -12,6 +12,7 @@ import {
   IRenderFunction
 } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export enum ContextualMenuItemType {
@@ -194,12 +195,26 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   /**
    * Custom styling for the contextual menu.
    */
-  styles?: IContextualMenuStyles;
+  style?: IContextualMenuStyles;
 
   /**
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+   * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
+   * defined in ContextualMenu.classnames.
+   * @default getContextualMenuClassNames
+   */
+  getMenuClassNames?: (theme: ITheme, className: string) => IContextualMenuClassNames;
+
+  /**
+  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
+  * defined in ContextualMenu.classnames.
+  * @default getItemClassNames
+  */
+  getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassname: string, iconClassname: string, subMenuClassname: string) => IMenuItemClassNames;
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
@@ -319,7 +334,7 @@ export interface IContextualMenuItem {
    * Additional styles to apply to the menu item
    * @defaultvalue undefined
    */
-  style?: IMenuItemStyles;
+  style?: React.CSSProperties;
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
