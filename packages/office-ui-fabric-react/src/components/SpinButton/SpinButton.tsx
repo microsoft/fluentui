@@ -15,7 +15,7 @@ import {
 } from './SpinButton.Props';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
-import { getClassNames } from './SpinButton.classNames';
+import { getClassNames, ISpinButtonClassNames } from './SpinButton.classNames';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -132,7 +132,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
-      theme
+      theme,
+      onRenderIcon
     } = this.props;
 
     const {
@@ -152,7 +153,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return (
       <div className={ classNames.root }>
         { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
+          { onRenderIcon ? onRenderIcon(this.props) : this._defaultOnRenderIcon(classNames) }
           { label &&
             <Label
               id={ this._labelId }
@@ -217,7 +218,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           </span>
         </div>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
+          { onRenderIcon ? onRenderIcon(this.props) : this._defaultOnRenderIcon(classNames) }
           { label &&
             <Label
               id={ this._labelId }
@@ -446,5 +447,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   @autobind
   private _onDecrementMouseDown() {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+  }
+
+  @autobind
+  private _defaultOnRenderIcon(classNames: ISpinButtonClassNames): JSX.Element | undefined {
+    let { iconProps } = this.props;
+    return iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' />;
   }
 }
