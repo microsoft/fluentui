@@ -9,7 +9,8 @@ import {
 import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
-  IColorCellProps
+  IColorCellProps,
+  SwatchThemeColor
 } from './SwatchColorPicker.Props';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
@@ -176,9 +177,22 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    */
   @autobind
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
+    const themedClass: string = this._getSwatchThemeColor(colorOption.color as string);
+    const svgClassName: string =
+      css(
+        styles.svg,
+        this.props.cellShape,
+        this.props.cellShape === 'circle' ? styles.circle : '',
+        themedClass
+      );
+
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string).str } >
+      <svg
+        className={ svgClassName }
+        viewBox='0 0 20 20'
+        fill={ themedClass === '' ? getColorFromString(colorOption.color as string).str : undefined }
+      >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
@@ -186,6 +200,51 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         }
       </svg>
     );
+  }
+
+  private _getSwatchThemeColor(color: string) {
+    switch (color) {
+      case SwatchThemeColor.NeutralDark:
+        return styles.neutralDark;
+      case SwatchThemeColor.NeutralLight:
+        return styles.neutralLight;
+      case SwatchThemeColor.NeutralLighter:
+        return styles.neutralLighter;
+      case SwatchThemeColor.NeutralLighterAlt:
+        return styles.neutralLighterAlt;
+      case SwatchThemeColor.NeutralPrimary:
+        return styles.neutralPrimary;
+      case SwatchThemeColor.NeutralQuaternary:
+        return styles.neutralQuaternary;
+      case SwatchThemeColor.NeutralQuaternaryAlt:
+        return styles.neutralQuaternaryAlt;
+      case SwatchThemeColor.NeutralPrimaryAlt:
+        return styles.neutralPrimaryAlt;
+      case SwatchThemeColor.NeutralSecondary:
+        return styles.neutralSecondary;
+      case SwatchThemeColor.NeutralTertiary:
+        return styles.neutralTertiary;
+      case SwatchThemeColor.NeutralTertiaryAlt:
+        return styles.neutralTertiaryAlt;
+      case SwatchThemeColor.ThemeDark:
+        return styles.themeDark;
+      case SwatchThemeColor.ThemeDarkAlt:
+        return styles.themeDarkAlt;
+      case SwatchThemeColor.ThemeDarker:
+        return styles.themeDarker;
+      case SwatchThemeColor.ThemeLight:
+        return styles.themeLight;
+      case SwatchThemeColor.ThemeLighterAlt:
+        return styles.themeLighterAlt;
+      case SwatchThemeColor.ThemePrimary:
+        return styles.themePrimary;
+      case SwatchThemeColor.ThemeSecondary:
+        return styles.themeSecondary;
+      case SwatchThemeColor.ThemeTertiary:
+        return styles.themeTertiary;
+      default:
+        return '';
+    }
   }
 
   /**

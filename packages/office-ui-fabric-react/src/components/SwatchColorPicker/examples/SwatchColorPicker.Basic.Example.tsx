@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SwatchColorPicker } from 'office-ui-fabric-react/lib/SwatchColorPicker';
+import { SwatchColorPicker, SwatchThemeColor } from 'office-ui-fabric-react/lib/SwatchColorPicker';
 
 export interface IBasicSwatchColorPickerExampleState {
   color: string | undefined;
@@ -42,6 +42,19 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'b', label: 'orange', color: '#ffa500' },
               { id: 'c', label: 'blue', color: '#0000ff' },
               { id: 'd', label: 'red', color: '#ff0000' }
+            ]
+          }
+        />
+        <div>Simple square swatch color picker with theme colors:</div>
+        <SwatchColorPicker
+          columnCount={ 4 }
+          cellShape={ 'square' }
+          colorCells={
+            [
+              { id: 'a', label: 'green', color: SwatchThemeColor.ThemePrimary },
+              { id: 'b', label: 'orange', color: SwatchThemeColor.ThemeSecondary },
+              { id: 'c', label: 'blue', color: SwatchThemeColor.ThemeTertiary },
+              { id: 'd', label: 'red', color: SwatchThemeColor.ThemeDark }
             ]
           }
         />
