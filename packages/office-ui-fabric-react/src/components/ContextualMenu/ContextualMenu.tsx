@@ -196,7 +196,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       directionalHintFixed,
       shouldFocusOnMount,
       title,
-      style: customStyles,
+      styles: customStyles,
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu

@@ -195,7 +195,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   /**
    * Custom styling for the contextual menu.
    */
-  style?: IContextualMenuStyles;
+  styles?: IContextualMenuStyles;
 
   /**
    * Theme provided by HOC.
