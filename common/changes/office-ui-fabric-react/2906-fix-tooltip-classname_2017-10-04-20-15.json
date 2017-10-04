@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "miclo@microsoft.com"
+}
