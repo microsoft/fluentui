@@ -316,6 +316,26 @@ export interface IButtonStyles {
   menuIcon?: IStyle;
 
   /**
+   * Style for the menu chevron on hover.
+   */
+  menuIconHovered?: IStyle;
+
+  /**
+   * Style for the menu chevron when pressed.
+   */
+  menuIconPressed?: IStyle;
+
+  /**
+   * Style for the menu chevron when expanded.
+   */
+  menuIconExpanded?: IStyle;
+
+  /**
+ * Style for the menu chevron when expanded and hovered.
+ */
+  menuIconExpandedHovered?: IStyle;
+
+  /**
    * Style override for the menu chevron when the button is disabled.
    */
   menuIconDisabled?: IStyle;
