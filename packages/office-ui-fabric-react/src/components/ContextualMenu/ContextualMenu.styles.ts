@@ -2,13 +2,28 @@ import { memoizeFunction } from '../../Utilities';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import {
   ITheme,
+  IRawStyle,
   concatStyleSets,
   FontWeights,
   getFocusStyle
 } from '../../Styling';
 
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &';
+
 const ContextualMenuItemHeight = '32px';
 const ContextualMenuIconWidth = '14px';
+
+const getItemHighContrastStyles = memoizeFunction((theme: ITheme): IRawStyle => {
+  return {
+    selectors: {
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
+        MsHighContrastAdjust: 'none'
+      }
+    },
+  };
+});
 
 export const getMenuItemStyles = memoizeFunction((
   theme: ITheme,
@@ -52,20 +67,25 @@ export const getMenuItemStyles = memoizeFunction((
     },
     rootHovered: {
       backgroundColor: ContextualMenuItemBackgroundHoverColor,
+      ...getItemHighContrastStyles(theme)
     },
     rootFocused: {
       backgroundColor: ContextualMenuItemBackgroundHoverColor,
+      ...getItemHighContrastStyles(theme)
     },
     rootChecked: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
+      ...getItemHighContrastStyles(theme)
     },
     rootPressed: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
+      ...getItemHighContrastStyles(theme)
     },
     rootExpanded: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       color: ContextualMenuTextSelectedColor,
       fontWeight: FontWeights.semibold,
+      ...getItemHighContrastStyles(theme)
     },
     linkContent: {
       whiteSpace: 'nowrap',
@@ -105,7 +125,10 @@ export const getMenuItemStyles = memoizeFunction((
       flexShrink: '0',
     },
     iconColor: {
-      color: ContextualMenuIconColor
+      color: ContextualMenuIconColor,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: 'HighlightText',
+      }
     },
     subMenuIcon: [
       fonts.xSmall,
