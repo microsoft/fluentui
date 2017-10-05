@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@uifabric/styling": ">=5.1.1 <6.0.0",
-    "@uifabric/utilities": ">=5.0.1 <6.0.0",
+    "@uifabric/utilities": ">=5.1.0 <6.0.0",
     "highlight.js": "^9.9.0",
     "office-ui-fabric-react": ">=5.1.0 <6.0.0",
     "tslib": "^1.7.1"
