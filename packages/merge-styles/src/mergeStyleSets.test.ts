@@ -54,33 +54,30 @@ describe('mergeStyleSets', () => {
             ':hover $b': {
               background: 'green'
             },
-            ':focus $c': {
+            ':focus $c-foo': {
               background: 'red'
             },
-            ':focus .d': {
+            ':active .d': {
               background: 'pink'
             }
           }
         },
         b: {
-          displayName: 'b',
           background: 'blue'
         },
-        c: {
-          displayName: 'c'
-        }
+        'c-foo': {}
       });
 
     expect(result).toEqual({
       a: 'a-0',
       b: 'b-1',
-      c: 'c-2'
+      'c-foo': 'c-foo-2'
     });
 
     expect(_stylesheet.getRules()).toEqual(
       '.a-0:hover .b-1{background:green;}' +
-      '.a-0:focus .c-2{background:red;}' +
-      '.a-0:focus .d{background:pink;}' +
+      '.a-0:focus .c-foo-2{background:red;}' +
+      '.a-0:active .d{background:pink;}' +
       '.b-1{background:blue;}'
     );
   });

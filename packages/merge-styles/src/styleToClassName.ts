@@ -192,7 +192,7 @@ export function applyRegistration(
         let selector = rulesToInsert[i];
 
         // Fix selector using map.
-        selector = selector.replace(/(&)|\$(\w+)\b/g, (match: string, amp: string, cn: string): string => {
+        selector = selector.replace(/(&)|\$([\w-]+)\b/g, (match: string, amp: string, cn: string): string => {
           if (amp) {
             return '.' + registration.className;
           } else if (cn) {
