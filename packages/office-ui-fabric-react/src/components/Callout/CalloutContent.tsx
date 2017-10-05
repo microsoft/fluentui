@@ -18,9 +18,6 @@ import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICal
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
-import {
-  CommandButton
-} from '../../Button';
 
 const styles: any = stylesImport;
 
