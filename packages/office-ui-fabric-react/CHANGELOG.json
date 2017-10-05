@@ -2,6 +2,31 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "office-ui-fabric-react_v6.0.1",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a5c8a8d29987e03cf87f704b74e38d181516afca",
+            "comment": "Added min-width for button icons so that its easy to create buttons with space for an icon"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.3.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.0.4 <6.0.0` to `>=5.0.5 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.0",
       "tag": "office-ui-fabric-react_v6.0.0",
       "date": "Wed, 04 Oct 2017 22:40:22 GMT",
