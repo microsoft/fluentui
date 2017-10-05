@@ -1,3 +1,4 @@
+import { extractStyleParts } from './extractStyleParts';
 import { concatStyleSets } from './concatStyleSets';
 import { IStyle } from './IStyle';
 import { styleToRegistration, applyRegistration } from './styleToClassName';
@@ -24,10 +25,16 @@ export function mergeStyleSets<T>(
 
     for (const prop in cssSet) {
       if (cssSet.hasOwnProperty(prop)) {
-        const registration = styleToRegistration({ displayName: prop }, cssSet[prop]);
+        const args: IStyle = cssSet[prop];
+
+        // tslint:disable-next-line:no-any
+        const { classes, objects } = extractStyleParts(args as any);
+        const registration = styleToRegistration({ displayName: prop }, objects);
+
         registrations.push(registration);
+
         if (registration) {
-          classNameSet[prop] = registration.className;
+          classNameSet[prop] = classes.concat([registration.className]).join(' ');
         }
       }
     }

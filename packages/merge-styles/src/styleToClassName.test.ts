@@ -128,4 +128,15 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0.css-0.css-0{background:red;}');
   });
 
+  it('can avoid registering classnames', () => {
+    expect(styleToClassName({
+      background: 'red',
+      selectors: {
+        '& .ms-Foo': {}
+      }
+    })).toEqual('css-0');
+    debugger;
+
+    expect(_stylesheet.getRules()).toEqual('');
+  });
 });

@@ -82,4 +82,10 @@ describe('mergeStyleSets', () => {
     );
   });
 
+  it('can merge class names', () => {
+    expect(mergeStyleSets({ root: ['a', 'b', { background: 'red' }] })).toEqual({
+      root: 'a b root-0'
+    });
+  });
+
 });
