@@ -179,6 +179,10 @@ $linkRightPadding: 20px;
   overflow: hidden;
 }
 
+.buttonEntry {
+  color: $ms-color-themePrimary;
+}
+
 .groupHeaderFontSize {
   @include ms-font-l;
 }
@@ -193,12 +197,5 @@ $linkRightPadding: 20px;
 .root .link {
   :global(.ms-Button-label) {
     @include ms-font-m;
-    color: $ms-color-themePrimary;
-  }
-}
-
-.root .commandButtonNoIcon {
-  & span {
-    margin: 0;
   }
 }

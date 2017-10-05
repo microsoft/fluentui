@@ -9,7 +9,7 @@ import {
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandButton, IButtonStyles } from '../../Button';
+import { ActionButton, IButtonStyles } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
@@ -24,12 +24,12 @@ import {
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
 // The number of pixels of left margin when there is expand/collapse button
-const _indentWithExpandButton: number = 28;
+const _indentWithExpandButton: number = 0;
 // The number of pixels of left margin when there is expand/collapse button
-const _indentNoExpandButton: number = 20;
+const _indentNoExpandButton: number = 0;
 
 // The number of pixels of padding to add to the far side of the button (allows ellipsis to happen)
-const _farSidePadding: number = 20;
+const _farSidePadding: number = 0;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -176,33 +176,40 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  private _renderButtonLink(link: INavLink, linkIndex: number, nestingLevel: number) {
+  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel +
       (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
     const buttonStyles: IButtonStyles = {
       root: {
         [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
-        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding
+        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
       }
     };
 
+    // Prevent hijacking of the parent window if link.target is defined
+    const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
+
     return (
-      <CommandButton
+      <ActionButton
         className={ mergeStyles(
-          'ms-Nav-link ms-Nav-linkButton',
+          'ms-Nav-link' + link.onClick && 'ms-Nav-linkButton',
           styles.link,
-          this._hasExpandButton && 'isOnExpanded',
-          !link.icon && styles.commandButtonNoIcon) as string
+          link.onClick && styles.buttonEntry,
+          this._hasExpandButton && 'isOnExpanded') as string
         }
         styles={ buttonStyles }
         href={ link.url }
-        iconProps={ link.icon ? { iconName: link.icon } : undefined }
+        iconProps={ { iconName: link.icon || '' } }
         description={ link.title || link.name }
-        onClick={ this._onNavButtonLinkClicked.bind(this, link) }
+        onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
+        title={ link.title || link.name }
+        target={ link.target }
+        rel={ rel }
+        aria-label={ link.ariaLabel }
       >
         { link.name }
-      </CommandButton>);
+      </ActionButton>);
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
@@ -246,9 +253,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             />
           </button> : null
         ) }
-        { link.onClick && !link.forceAnchor
-          ? this._renderButtonLink(link, linkIndex, nestingLevel)
-          : this._renderAnchorLink(link, linkIndex, nestingLevel) }
+        { this._renderNavLink(link, linkIndex, nestingLevel)}
       </div>
     );
   }
