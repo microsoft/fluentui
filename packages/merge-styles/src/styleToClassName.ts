@@ -185,6 +185,7 @@ export function applyRegistration(
   const { className, key, args, rulesToInsert } = registration;
 
   if (rulesToInsert) {
+    // rulesToInsert is an ordered array of selector/rule pairs.
     for (let i = 0; i < rulesToInsert.length; i += 2) {
       const rules = rulesToInsert[i + 1];
       if (rules) {

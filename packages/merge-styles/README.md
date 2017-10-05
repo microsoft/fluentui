@@ -4,7 +4,25 @@ The `merge-styles` library provides utilities for loading styles through javascr
 
 The library was built for speed and size; the entire package is 2.62k gzipped. It has no dependencies other than `tslib`.
 
-The basic idea is to provide a method which can take in one or more style objects css styling javascript objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
+Simple usage:
+```
+import { mergeStyles, mergeStyleSet } from '@uifabric/merge-styles';
+
+// Produces 'css-0' class name which can be used anywhere
+mergeStyles({ background: 'red' });
+
+// Produces a class map for a bunch of rules all at once
+mergeStyleSet({
+  root: { background: 'red' },
+  child: { background: 'green' }
+});
+
+// Returns { root: 'root-0', child: 'child-1' }
+```
+
+Both utilities behave similar to a deep Object.assign; you can collapse may objects down into one class name or class map.
+
+The basic idea is to provide tools which can take in one or more css styling objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
 
 ## Motivation
 
@@ -145,7 +163,7 @@ Custom selectors can be defined within `IStyle` definitions under the `selectors
 }
 ```
 
-By default, the rule will be appended to the current selector scope. That is, in the above scenario, there will be 2 rules inserted when using `mergeRules`:
+By default, the rule will be appended to the current selector scope. That is, in the above scenario, there will be 2 rules inserted when using `mergeStyles`:
 
 ```css
 .css-0 { background: red; }
@@ -188,7 +206,14 @@ mergeStyleSets({
 });
 ```
 
-In some cases, you may need to alter one child area by interacting with the parent. For example, when the parent focus is set, change the child background. You can reference the areas defined in the style set using $ tokens:
+Produces:
+
+```css
+.root-0 { background: red; }
+.thumb-1 { background: green; }
+```
+
+In some cases, you may need to alter a child area by interacting with the parent. For example, when the parent is hovered, change the child background. You can reference the areas defined in the style set using $ tokens:
 
 ```tsx
 mergeStyleSets({
@@ -205,11 +230,23 @@ The `$thumb` reference in the selector on root will be replaced with the class n
 
 ## Custom class names
 
-By default when using `mergeStyles`, class names that are generated will use the prefix `css-` followed by a number, creating unique rules where needed.
+By default when using `mergeStyles`, class names that are generated will use the prefix `css-` followed by a number, creating unique rules where needed. For example, the first class name produced will be 'css-0'.
 
 When using `mergeStyleSets`, class names automatically use the area name as the prefix.
 
-If you'd like to override the default prefx in either case, you can pass in a `displayName` to resolve this:
+Merging rules like:
+
+```ts
+mergeStyleSets({ a: { ... }, b: { ... } })
+```
+
+Will produce the class name map:
+
+```ts
+{ a: 'a-0', b: 'b-1' }
+```
+
+If you'd like to override the default prefix in either case, you can pass in a `displayName` to resolve this:
 
 ```tsx
 {
