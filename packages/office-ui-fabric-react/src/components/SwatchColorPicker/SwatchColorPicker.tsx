@@ -21,6 +21,10 @@ import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
 import * as stylesImport from './SwatchColorPicker.scss';
+import {
+  customizable
+} from '../../Utilities';
+
 const styles: any = stylesImport;
 
 export interface ISwatchColorPickerState {
@@ -30,6 +34,7 @@ export interface ISwatchColorPickerState {
 class ColorPickerGridCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
 }
 
+@customizable('Toggle', ['theme'])
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
 
   public static defaultProps = {
