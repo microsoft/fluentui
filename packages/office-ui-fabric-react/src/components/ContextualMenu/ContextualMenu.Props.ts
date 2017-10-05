@@ -263,6 +263,12 @@ export interface IContextualMenuItem {
   isChecked?: boolean;
 
   /**
+   * Whether or not this menu item is a splitButton.
+   * @defaultvalue false
+   */
+  split?: boolean;
+
+  /**
    * Any custom data the developer wishes to associate with the menu item.
    */
   data?: any;
