@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
-    "office-ui-fabric-react": ">=6.0.1 <7.0.0",
+    "office-ui-fabric-react": ">=5.3.0 <6.0.0",
     "@uifabric/icons": ">=5.1.0 <6.0.0",
     "tslib": "^1.7.1"
   },
