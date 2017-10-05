@@ -948,6 +948,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return -1;
     }
 
+    if (typeof selectedKey == 'number') {
+      return selectedKey;
+    }
+
     return findIndex(options, (option => (option.selected || option.key === selectedKey)));
   }
 

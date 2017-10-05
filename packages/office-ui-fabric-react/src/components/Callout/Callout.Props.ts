@@ -176,10 +176,9 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
     * @deprecated
     */
   beakStyle?: string;
-}
 
-export interface ICalloutButton {
-  text: string;
-  onSelected: () => void;
-  styles?: IButtonStyles;
+  /**
+   * Add additional content below the callout list.
+   */
+  lowerCalloutContent?: () => void;
 }

@@ -120,7 +120,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       calloutWidth,
       finalHeight,
       backgroundColor,
-      calloutButton } = this.props;
+      lowerCalloutContent } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -189,19 +189,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           >
             { children }
           </Popup>
-          { calloutButton && (
-            <CommandButton
-              className={ css('ms-Callout-button', styles.calloutButton) }
-              styles={ calloutButton.styles }
-              onClick={ calloutButton.onSelected }
-              role='button'
-              ariaLabel={ calloutButton.text }
-            >
-              {
-                <span> { calloutButton.text }</span>
-              }
-            </CommandButton>
-          ) }
+          { lowerCalloutContent && lowerCalloutContent() }
         </div>
       </div>
     );
