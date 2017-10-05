@@ -28,7 +28,7 @@
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
-    "office-ui-fabric-react": ">=6.0.0 <7.0.0",
+    "office-ui-fabric-react": ">=5.3.0 <6.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "typescript": "2.4.2",
