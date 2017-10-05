@@ -8,12 +8,10 @@ Our tests are built with [Mocha](https://mochajs.org/), [Chai](http://chaijs.com
 To run tests:
 
 1. In command prompt navigate to the appropriate package, for example git/office-ui-fabric-react/packages/office-ui-fabric-react
-2. Run `gulp test` to run all of the tests
-  * To run only one test add `--match <Testname>`. Example: `gulp test --match Button`
-  * To debug your test add `--debug`. Example: `gulp test --debug`.
-    1. After running this, you will need to open the localhost url found in your command prompt.
-    2. A page will open with a "Debug" button. Pressing that will open a page that loads the tests.
-    3. Press f12 in the new page. Tests will be in a tests.js bundle, and you'll need to find your code in there.
+2. Run `npm run start-test` to start jest and run the tests
+  * By default, jest will run tests affected by your uncommitted changes
+  * To run all tests, press 'a' at the prompt
+  * To filter the tests run, press `p` or `t` to filter by filename or test name regex pattern, respectively
 
 ## Examples
 

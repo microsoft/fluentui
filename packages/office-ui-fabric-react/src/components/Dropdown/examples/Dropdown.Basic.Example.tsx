@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      selectedItem: null
+      selectedItem: null,
+      selectedItems: [],
     };
   }
 
   public render() {
-    let { selectedItem } = this.state;
+    let { selectedItem, selectedItems } = this.state;
 
     return (
       <div className='DropdownBasicExample'>
@@ -88,7 +90,6 @@ export class DropdownBasicExample extends React.Component<any, any> {
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
           defaultSelectedKeys={ ['Apple', 'Banana'] }
-          onChanged={ this.changeState }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
           multiSelect
@@ -111,7 +112,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select controlled example:'
-          selectedKeys={ selectedItem && selectedItem.key }
+          selectedKeys={ selectedItems }
           onChanged={ this.onChangeMultiSelect }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
@@ -164,25 +165,27 @@ export class DropdownBasicExample extends React.Component<any, any> {
     return list;
   }
 
+  @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
-    this.setState({ selectedItem: item });
+    this.setState({ selectedItems: item });
   }
 
+  @autobind
   public onChangeMultiSelect(item: IDropdownOption) {
-    let updatedSelectedItem = this.state.selectedItem ? this.copyArray(this.state.selectedItem) : [];
+    let updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked
-      updatedSelectedItem.push(item);
+      updatedSelectedItem.push(item.key);
     } else {
       // remove the option if it's unchecked
-      let currIndex = updatedSelectedItem.indexOf(item.index);
+      let currIndex = updatedSelectedItem.indexOf(item.key);
       if (currIndex > -1) {
         updatedSelectedItem.splice(currIndex, 1);
       }
     }
     this.setState({
-      selectedItem: updatedSelectedItem
+      selectedItems: updatedSelectedItem
     });
   }
 
