@@ -9,7 +9,6 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
   return {
     root: mergeStyles(
       'ms-Label',
-      className,
       {
         color: theme.semanticColors.bodyText,
         boxSizing: 'border-box',
@@ -31,7 +30,8 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
             paddingRight: 12
           }
         }
-      }
+      },
+      className
     )
   }
 });
