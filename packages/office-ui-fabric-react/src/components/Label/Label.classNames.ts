@@ -1,14 +1,13 @@
 import { memoizeFunction } from '../../Utilities';
-import { ITheme, mergeStyles, FontSizes } from '../../Styling';
+import { ITheme, FontSizes, mergeStyleSets } from '../../Styling';
 
 export interface ILabelClassNames {
   root: string;
 }
 
 export const getLabelClassNames = memoizeFunction((theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
-  return {
-    root: mergeStyles(
-      'ms-Label',
+  return mergeStyleSets({
+    root: ['ms-Label',
       {
         color: theme.semanticColors.bodyText,
         boxSizing: 'border-box',
@@ -31,7 +30,6 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
           }
         }
       },
-      className
-    )
-  }
+      className]
+  });
 });
