@@ -191,7 +191,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       <svg
         className={ svgClassName }
         viewBox='0 0 20 20'
-        fill={ themedClass === '' ? getColorFromString(colorOption.color as string).str : undefined }
+        fill={ themedClass ? getColorFromString(colorOption.color as string).str : undefined }
       >
         {
           this.props.cellShape === 'circle' ?
@@ -249,7 +249,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       case SwatchThemeColor.ThemeTertiary:
         return styles.themeTertiary;
       default:
-        return '';
+        return undefined;
     }
   }
 

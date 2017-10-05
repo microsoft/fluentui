@@ -79,7 +79,7 @@ export interface ISwatchColorPickerProps {
 /**
  * Represents theme colors
  */
-export enum SwatchThemeColor {
+export const enum SwatchThemeColor {
   ThemeDarker = 'themeDarker',
   ThemeDark = 'themeDark',
   ThemeDarkAlt = 'themeDarkAlt',

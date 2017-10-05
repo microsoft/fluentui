@@ -51,10 +51,10 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           cellShape={ 'square' }
           colorCells={
             [
-              { id: 'a', label: 'green', color: SwatchThemeColor.ThemePrimary },
-              { id: 'b', label: 'orange', color: SwatchThemeColor.ThemeSecondary },
-              { id: 'c', label: 'blue', color: SwatchThemeColor.ThemeTertiary },
-              { id: 'd', label: 'red', color: SwatchThemeColor.ThemeDark }
+              { id: 'a', label: 'themePrimary', color: SwatchThemeColor.ThemePrimary },
+              { id: 'b', label: 'themeSecondary', color: SwatchThemeColor.ThemeSecondary },
+              { id: 'c', label: 'themeTertiary', color: SwatchThemeColor.ThemeTertiary },
+              { id: 'd', label: 'themeDark', color: SwatchThemeColor.ThemeDark }
             ]
           }
         />
