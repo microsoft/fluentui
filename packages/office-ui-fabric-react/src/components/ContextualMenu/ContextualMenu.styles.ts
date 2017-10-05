@@ -18,6 +18,7 @@ const getItemHighContrastStyles = memoizeFunction((theme: ITheme): IRawStyle => 
     selectors: {
       [MS_HIGHCONTRAST_ACTIVE]: {
         backgroundColor: 'Highlight',
+        borderColor: 'Highlight',
         color: 'HighlightText',
         MsHighContrastAdjust: 'none'
       }
