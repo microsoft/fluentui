@@ -39,6 +39,7 @@ export const getClassNames = memoizeFunction((
         {
           selectors: {
             ':hover .ms-Button-icon': styles.iconExpandedHovered,
+            ':hover .ms-Button-menuIcon': styles.rootExpandedHovered,
             ':hover': styles.rootExpandedHovered
           }
         }
@@ -52,10 +53,12 @@ export const getClassNames = memoizeFunction((
           ':hover': styles.rootHovered,
           ':hover .ms-Button-icon': styles.iconHovered,
           ':hover .ms-Button-description': styles.descriptionHovered,
+          ':hover .ms-Button-menuIcon': styles.menuIconHovered,
           ':focus': styles.rootFocused,
           ':active': styles.rootPressed,
           ':active .ms-Button-icon': styles.iconPressed,
-          ':active .ms-Button-description': styles.descriptionPressed
+          ':active .ms-Button-description': styles.descriptionPressed,
+          ':active .ms-Button-menuIcon': styles.menuIconPressed
         }
       },
       disabled && checked && [
@@ -100,7 +103,24 @@ export const getClassNames = memoizeFunction((
       menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
-      disabled && styles.menuIconDisabled
+      disabled && styles.menuIconDisabled,
+      !disabled &&
+      !expanded &&
+      !checked && {
+        selectors: {
+          ':hover': styles.menuIconHovered,
+          ':active': styles.menuIconPressed,
+        },
+      },
+      expanded && [
+        'is-expanded',
+        styles.menuIconExpanded,
+        {
+          selectors: {
+            ':hover': styles.menuIconExpandedHovered,
+          },
+        },
+      ]
     ),
 
     description: mergeStyles(
