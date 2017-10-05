@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { SwatchColorPicker, SwatchThemeColor } from 'office-ui-fabric-react/lib/SwatchColorPicker';
+import { SwatchColorPicker } from 'office-ui-fabric-react/lib/SwatchColorPicker';
+import {
+  ITheme,
+  IPalette,
+  getTheme
+} from '../../../Styling';
 
 export interface IBasicSwatchColorPickerExampleState {
   color: string | undefined;
@@ -16,7 +21,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
     };
   }
   public render() {
-
+    const theme: ITheme = getTheme();
+    const palette: IPalette = theme.palette;
     return (
       <div>
         <div>Simple circle swatch color picker:</div>
@@ -51,10 +57,10 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           cellShape={ 'square' }
           colorCells={
             [
-              { id: 'a', label: 'themePrimary', color: SwatchThemeColor.ThemePrimary },
-              { id: 'b', label: 'themeSecondary', color: SwatchThemeColor.ThemeSecondary },
-              { id: 'c', label: 'themeTertiary', color: SwatchThemeColor.ThemeTertiary },
-              { id: 'd', label: 'themeDark', color: SwatchThemeColor.ThemeDark }
+              { id: 'a', label: 'themePrimary', color: palette.themePrimary },
+              { id: 'b', label: 'themeSecondary', color: palette.themeSecondary },
+              { id: 'c', label: 'themeTertiary', color: palette.themeTertiary },
+              { id: 'd', label: 'themeDark', color: palette.themeDark }
             ]
           }
         />

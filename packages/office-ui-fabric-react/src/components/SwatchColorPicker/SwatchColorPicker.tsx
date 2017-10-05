@@ -7,10 +7,14 @@ import {
   getId
 } from '../../Utilities';
 import {
+  ITheme,
+  IPalette,
+  getTheme
+} from '../../Styling';
+import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
-  IColorCellProps,
-  SwatchThemeColor
+  IColorCellProps
 } from './SwatchColorPicker.Props';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
@@ -183,7 +187,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         styles.svg,
         this.props.cellShape,
         this.props.cellShape === 'circle' ? styles.circle : '',
-        themedClass
+        themedClass ? themedClass : ''
       );
 
     // Build an SVG for the cell with the given shape and color properties
@@ -191,7 +195,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       <svg
         className={ svgClassName }
         viewBox='0 0 20 20'
-        fill={ themedClass ? getColorFromString(colorOption.color as string).str : undefined }
+        fill={ !themedClass ? getColorFromString(colorOption.color as string).str : undefined }
       >
         {
           this.props.cellShape === 'circle' ?
@@ -207,46 +211,48 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param color
    */
   private _getSwatchThemeColor(color: string) {
+    const theme: ITheme = getTheme();
+    const palette: IPalette = theme.palette;
     switch (color) {
-      case SwatchThemeColor.NeutralDark:
+      case palette.neutralDark:
         return styles.neutralDark;
-      case SwatchThemeColor.NeutralLight:
+      case palette.neutralLight:
         return styles.neutralLight;
-      case SwatchThemeColor.NeutralLighter:
+      case palette.neutralLighter:
         return styles.neutralLighter;
-      case SwatchThemeColor.NeutralLighterAlt:
+      case palette.neutralLighterAlt:
         return styles.neutralLighterAlt;
-      case SwatchThemeColor.NeutralPrimary:
+      case palette.neutralPrimary:
         return styles.neutralPrimary;
-      case SwatchThemeColor.NeutralPrimaryAlt:
+      case palette.neutralPrimaryAlt:
         return styles.neutralPrimaryAlt;
-      case SwatchThemeColor.NeutralQuaternary:
+      case palette.neutralQuaternary:
         return styles.neutralQuaternary;
-      case SwatchThemeColor.NeutralQuaternaryAlt:
+      case palette.neutralQuaternaryAlt:
         return styles.neutralQuaternaryAlt;
-      case SwatchThemeColor.NeutralSecondary:
+      case palette.neutralSecondary:
         return styles.neutralSecondary;
-      case SwatchThemeColor.NeutralTertiary:
+      case palette.neutralTertiary:
         return styles.neutralTertiary;
-      case SwatchThemeColor.NeutralTertiaryAlt:
+      case palette.neutralTertiaryAlt:
         return styles.neutralTertiaryAlt;
-      case SwatchThemeColor.ThemeDark:
+      case palette.themeDark:
         return styles.themeDark;
-      case SwatchThemeColor.ThemeDarkAlt:
+      case palette.themeDarkAlt:
         return styles.themeDarkAlt;
-      case SwatchThemeColor.ThemeDarker:
+      case palette.themeDarker:
         return styles.themeDarker;
-      case SwatchThemeColor.ThemeLight:
+      case palette.themeLight:
         return styles.themeLight;
-      case SwatchThemeColor.ThemeLighter:
+      case palette.themeLighter:
         return styles.ThemeLighter;
-      case SwatchThemeColor.ThemeLighterAlt:
+      case palette.themeLighterAlt:
         return styles.themeLighterAlt;
-      case SwatchThemeColor.ThemePrimary:
+      case palette.themePrimary:
         return styles.themePrimary;
-      case SwatchThemeColor.ThemeSecondary:
+      case palette.themeSecondary:
         return styles.themeSecondary;
-      case SwatchThemeColor.ThemeTertiary:
+      case palette.themeTertiary:
         return styles.themeTertiary;
       default:
         return undefined;

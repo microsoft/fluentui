@@ -76,32 +76,6 @@ export interface ISwatchColorPickerProps {
   shouldFocusCircularNavigate?: boolean;
 }
 
-/**
- * Represents theme colors
- */
-export const enum SwatchThemeColor {
-  ThemeDarker = 'themeDarker',
-  ThemeDark = 'themeDark',
-  ThemeDarkAlt = 'themeDarkAlt',
-  ThemePrimary = 'themePrimary',
-  ThemeSecondary = 'themeSecondary',
-  ThemeTertiary = 'themeTertiary',
-  ThemeLight = 'themeLight',
-  ThemeLighter = 'themeLighter',
-  ThemeLighterAlt = 'themeLighterAlt',
-  NeutralDark = 'neutralDark',
-  NeutralPrimary = 'neutralPrimary',
-  NeutralPrimaryAlt = 'neutralPrimaryAlt',
-  NeutralSecondary = 'neutralSecondary',
-  NeutralTertiary = 'neutralTertiary',
-  NeutralTertiaryAlt = 'neutralTertiaryAlt',
-  NeutralQuaternary = 'neutralQuaternary',
-  NeutralQuaternaryAlt = 'neutralQuaternaryAlt',
-  NeutralLight = 'neutralLight',
-  NeutralLighter = 'neutralLighter',
-  NeutralLighterAlt = 'neutralLighterAlt'
-}
-
 export interface IColorCellProps {
 
   /**
@@ -119,7 +93,7 @@ export interface IColorCellProps {
   /**
    * The CSS-compatible string to describe the color
    */
-  color?: string | SwatchThemeColor;
+  color?: string;
 
   /**
    * Index for this option
