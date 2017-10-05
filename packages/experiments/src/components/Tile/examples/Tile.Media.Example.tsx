@@ -2,9 +2,8 @@
 import * as React from 'react';
 import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import {
   SignalField,
   Signal,
@@ -16,6 +15,10 @@ import { lorem } from '@uifabric/example-app-base';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 const ITEMS: { name: string; activity: string; }[] = [
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
   {
     name: lorem(2),
     activity: lorem(6),
@@ -164,6 +167,23 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           }
           showBackground={ imagesLoaded }
         />
+        <h3>Small Image</h3>
+        <ImageTile
+          tileSize={
+            {
+              width: 200,
+              height: 200
+            }
+          }
+          item={ ITEMS[2] }
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          showBackground={ imagesLoaded }
+        />
         <h3>No preview</h3>
         <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
@@ -173,7 +193,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
                   <NewSignal />
                 }
               >
-                { ITEMS[2].name }
+                { ITEMS[3].name }
               </SignalField>
             }
             itemActivity={
@@ -186,7 +206,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
                     ]
                   }
                 >
-                  { ITEMS[2].name }
+                  { ITEMS[3].name }
                 </SignalField>
               )
             }

@@ -23,7 +23,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .designSection,
   .structureSection,
   .instructionsSection {
@@ -46,6 +46,16 @@
   @include headerAngles($ms-color-neutralPrimary);
   background-color:$color-getStarted-darker;
   color: $ms-color-neutralLighter;
+
+  a, a:visited,
+  .getStartedLink {
+    border-bottom: 1px solid $ms-color-neutralLight;
+  }
+
+  a, a:hover, a:active,
+  .getStartedLink {
+    color: $ms-color-neutralLight;
+  }
 }
 
 .feature {
@@ -60,13 +70,6 @@
     width: 80%;
   }
 
-  .title {
-    font-size: $font-size-big;
-    font-weight: $ms-font-weight-semilight;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-
   .description {
     font-weight: $ms-font-weight-semilight;
     font-size: $ms-font-size-l;
@@ -76,18 +79,36 @@
   }
 }
 
-@media screen and (max-width: $ms-screen-max-md) {
+.descriptionLarge {
+  display: block;
+  font-size: $ms-font-size-l;
+  margin-top: $contentMargin-vertical;
+  margin-bottom: $contentMargin-vertical;
+  width: 70%;
+}
+
+.title {
+  font-size: $font-size-big;
+  font-weight: $ms-font-weight-semilight;
+  margin-bottom: $contentMargin-vertical;
+  width: 100%;
+}
+
+@media screen and (max-width: $uhf-screen-max-mobile) {
   .designSection .feature {
     float: none;
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   img {
     margin-bottom: 20px;
   }
-}
 
+  .contentInGrid {
+    @include ms-padding-left($contentInGrid);
+  }
+}
 
 //== Structure section (diagram)
 
@@ -111,8 +132,13 @@
     font-size: $ms-font-size-l;
   }
 
-  a {
+  a,
+  .getStartedLink {
     color: $color-getStarted-medium;
+  }
+
+  .trademark {
+    margin-top: 80px;
   }
 }
 
@@ -150,7 +176,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .steps {
     li {
       @include ms-padding-left(56px);

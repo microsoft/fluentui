@@ -1,6 +1,50 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 15 Sep 2017 10:19:50 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+
+## 5.0.3
+Wed, 04 Oct 2017 22:40:22 GMT
+
+*Changes not tracked*
+
+## 5.0.2
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Patches
+
+- Code cleanup after move to MergeStyles
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 0.10.0
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Minor changes
+
+- Adjust Tile and FolderCover alignments and behaviors
+
+### Patches
+
+- Consume Check hover behavior in Tile
+
+## 0.9.0
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Minor changes
+
+- LayoutGroup: Changed gap to layoutGap and updated docs
+
+## 0.8.0
+Mon, 18 Sep 2017 10:18:23 GMT
+
+### Minor changes
+
+- Add accessibility hooks for Tile, TilesList, and FolderCover
 
 ## 0.7.1
 Fri, 15 Sep 2017 10:19:50 GMT

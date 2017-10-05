@@ -5,12 +5,18 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
+import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
+import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
+import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { SearchBoxStatus } from './SearchBox.checklist';
 
-const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
+const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
+const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 
 export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -20,11 +26,29 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='SearchBoxExample'
         exampleCards={
           <div>
-            <ExampleCard title='SearchBox' code={ SearchBoxSmallExampleCode }>
-              <SearchBoxSmallExample />
-            </ExampleCard>
-            <ExampleCard title='SearchBox - No Parent Container' code={ SearchBoxFullSizeExampleCode }>
+            <ExampleCard
+              title='Default SearchBox'
+              code={ SearchBoxFullSizeExampleCode }
+            >
               <SearchBoxFullSizeExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Underlined SearchBox'
+              code={ SearchBoxUnderlinedExampleCode }
+            >
+              <SearchBoxUnderlinedExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Disabled SearchBoxes'
+              code={ SearchBoxDisabledExampleCode }
+            >
+              <SearchBoxDisabledExample />
+            </ExampleCard>
+            <ExampleCard
+              title='SearchBox with fixed width and custom event handling'
+              code={ SearchBoxSmallExampleCode }
+            >
+              <SearchBoxSmallExample />
             </ExampleCard>
           </div>
         }
@@ -100,6 +124,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
               <li>Provide autocomplete suggestions where there are strong matches to the user's query that the user may want to view immediately.</li>
               <li>Use a visual separator to define a group of a similar or conceptually aligned autocomplete suggestions.</li>
               <li>If possible, provide a preview (e.g. image, title, etc.) for autocomplete suggestions to help the user quickly determine if the suggested result is what they were searching for.</li>
+              <li>Use the Underlined SearchBox for CommandBars.</li>
             </ul>
           </div>
         }
@@ -117,12 +142,13 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/SearchBox/SearchBox.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...SearchBoxStatus}
+          />
+        }
       />
     );
   }
-
 }

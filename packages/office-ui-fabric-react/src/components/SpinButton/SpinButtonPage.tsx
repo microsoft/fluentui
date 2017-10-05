@@ -11,6 +11,8 @@ import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Exampl
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { SpinButtonStatus } from './SpinButton.checklist';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
@@ -80,7 +82,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div/>
+          <div />
         }
         dos={
           <div>
@@ -100,10 +102,12 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/SpinButton/SpinButton.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...SpinButtonStatus}
+          />
+        }
       />
     );
   }

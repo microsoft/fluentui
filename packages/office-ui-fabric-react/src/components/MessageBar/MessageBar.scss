@@ -122,13 +122,8 @@
     left: 0;
     top: 0;
     margin: 0;
-    @media screen and (-ms-high-contrast: active) {
-        border: 1px solid $ms-color-white;
-        content: ' ';
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-        border: 1px solid $ms-color-black;
+    @include high-contrast {
+        border: 1px solid WindowText;
         content: ' ';
     }
   }

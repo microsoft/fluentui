@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps, IconName } from '../../Icon';
+import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
@@ -11,6 +11,11 @@ export interface IButton {
    * Sets focus to the button.
    */
   focus: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will dismiss the menu
+   */
+  dismissMenu: () => void;
 }
 
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
@@ -41,6 +46,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Whether the button is disabled
    */
   disabled?: boolean;
+
+  /**
+   * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
+   */
+  primaryDisabled?: boolean;
 
   /**
    * Custom styling for individual elements within the button DOM.
@@ -157,20 +167,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
-   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
-   * @deprecated
-   */
-  icon?: string;
-
-  /**
-   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } }.
-   * @deprecated
-   */
-  menuIconName?: IconName | string | null;
-
-  /**
-   * Deprecated on 5/26/2016, use checked.
-   * @deprecated
+   * Any custom data the developer wishes to associate with the menu item.
    */
   toggled?: boolean;
 
@@ -257,6 +254,11 @@ export interface IButtonStyles {
    * Style for the flexbox container within the root element.
    */
   flexContainer?: IStyle;
+
+  /**
+   * Style for the text container within the flexbox container element (and contains the text and description).
+   */
+  textContainer?: IStyle;
 
   /**
    * Style for the icon on the near side of the label.

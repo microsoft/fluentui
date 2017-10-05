@@ -29,7 +29,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     super(props);
     this._value = '';
     this.state = {
-      displayValue: props.defaultVisibleValue === null ? '' : props.defaultVisibleValue
+      displayValue: props.defaultVisibleValue || ''
     };
   }
 

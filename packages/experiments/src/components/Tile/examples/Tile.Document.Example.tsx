@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
-import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   SignalField,
@@ -11,13 +10,17 @@ import {
   SharedSignal
 } from '../../signals/Signals';
 import { lorem } from '@uifabric/example-app-base';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
 const ITEMS: { name: string; activity: string; }[] = [
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
   {
     name: lorem(2),
     activity: lorem(6),
@@ -159,6 +162,16 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
           }
           showForeground={ imagesLoaded }
           item={ ITEMS[2] }
+        />
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[3] }
         />
         <h3>Document icon</h3>
         <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>

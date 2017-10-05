@@ -1,4 +1,3 @@
-import 'es6-map/implement';
 import { setRTL } from './transforms/rtlifyRules';
 import { styleToClassName } from './styleToClassName';
 import {
@@ -11,6 +10,7 @@ const _stylesheet: Stylesheet = Stylesheet.getInstance();
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
 describe('styleToClassName', () => {
+
   beforeEach(() => {
     _stylesheet.reset();
   });
@@ -75,6 +75,12 @@ describe('styleToClassName', () => {
     expect(styleToClassName()).toEqual('');
   });
 
+  it('returns the same class name for a rule that only has a displayName', () => {
+    expect(styleToClassName({ displayName: 'foo' })).toEqual('foo-0');
+    expect(styleToClassName({ displayName: 'foo' })).toEqual('foo-0');
+    expect(_stylesheet.getRules()).toEqual('');
+  });
+
   it('can preserve displayName in names', () => {
     expect(styleToClassName({ displayName: 'DisplayName', background: 'red' })).toEqual('DisplayName-0');
     expect(_stylesheet.getRules()).toEqual('.DisplayName-0{background:red;}');
@@ -121,4 +127,5 @@ describe('styleToClassName', () => {
 
     expect(_stylesheet.getRules()).toEqual('.css-0.css-0.css-0{background:red;}');
   });
+
 });

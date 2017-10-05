@@ -24,44 +24,50 @@ export const getClassNames = memoizeFunction((
   return {
     root: mergeStyles(
       styles.root
-    ) as string,
+    ),
     labelWrapper: mergeStyles(
       styles.labelWrapper,
       _getStyleForLabelBasedOnPosition(labelPosition, styles)
-    ) as string,
+    ),
     icon: mergeStyles(
       styles.icon,
-    ) as string,
+    ),
     label: mergeStyles(
       styles.label
-    ) as string,
+    ),
     spinButtonWrapper: mergeStyles(
       styles.spinButtonWrapper,
       _getStyleForRootBasedOnPosition(labelPosition, styles),
       !disabled && [
         {
-          ':hover': styles.spinButtonWrapperHovered
+          selectors: {
+            ':hover': styles.spinButtonWrapperHovered
+          }
         },
         isFocused && {
           // This is to increase the specifity of the focus styles
           // and make it equal to that of the hover styles.
-          '&&': styles.spinButtonWrapperFocused
+          selectors: {
+            '&&': styles.spinButtonWrapperFocused
+          }
         }
       ],
       disabled && styles.spinButtonWrapperDisabled
-    ) as string,
+    ),
     input: mergeStyles(
       'ms-spinButton-input',
       styles.input,
       !disabled && {
-        '::selection': styles.inputTextSelected
+        selectors: {
+          '::selection': styles.inputTextSelected
+        }
       },
       disabled && styles.inputDisabled,
-    ) as string,
+    ),
     arrowBox: mergeStyles(
       styles.arrowButtonsContainer,
       disabled && styles.arrowButtonsContainerDisabled
-    ) as string,
+    ),
   };
 });
 

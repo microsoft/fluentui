@@ -3,27 +3,36 @@ import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
 import { kebabRules } from './transforms/kebabRules';
 import { Stylesheet } from './Stylesheet';
-import { IStyle, IExtendedRawStyle } from './IStyle';
+import { IStyle, IRawStyle } from './IStyle';
 
 const DISPLAY_NAME = 'displayName';
 
-function getDisplayName(rules?: Map<string, IStyle>): string | undefined {
-  const rootStyle: IStyle = rules && rules.get('&');
+// tslint:disable-next-line:no-any
+type IDictionary = { [key: string]: any };
 
-  return rootStyle ? (rootStyle as IExtendedRawStyle).displayName : undefined;
+interface IRuleSet {
+  __order: string[];
+  [key: string]: IDictionary;
+}
+
+function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefined {
+  const rootStyle: IStyle = rules && rules['&'];
+
+  return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
 function extractRules(
   args: IStyle[],
-  rules: Map<string, {}> = new Map<string, {}>(),
+  rules: IRuleSet = { __order: [] },
   currentSelector: string = '&'
-): Map<string, {}> {
+): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
-  let currentRules: {} | undefined = rules.get(currentSelector);
+  let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
   if (!currentRules) {
     currentRules = {};
-    rules.set(currentSelector, currentRules);
+    rules[currentSelector] = currentRules;
+    rules.__order.push(currentSelector);
   }
 
   for (const arg of args) {
@@ -72,31 +81,33 @@ function extractRules(
 }
 
 function expandQuads(
-  currentRules: { [key: string]: string },
+  currentRules: IDictionary,
   name: string,
   value: string
 ): void {
-  const parts = value.split(' ');
+  const parts = (typeof value === 'string') ? value.split(' ') : [value];
+
   currentRules[name + 'Top'] = parts[0];
   currentRules[name + 'Right'] = parts[1] || parts[0];
   currentRules[name + 'Bottom'] = parts[2] || parts[0];
   currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
 }
 
-function getKeyForRules(rules: Map<string, IStyle>): string | undefined {
+function getKeyForRules(rules: IRuleSet): string | undefined {
   const serialized: string[] = [];
   let hasProps = false;
 
-  rules.forEach((ruleEntries: { [key: string]: string }, selector: string): void => {
+  for (const selector of rules.__order) {
     serialized.push(selector);
+    const rulesForSelector = rules[selector];
 
-    for (const propName in ruleEntries) {
-      if (ruleEntries.hasOwnProperty(propName)) {
+    for (const propName in rulesForSelector) {
+      if (rulesForSelector.hasOwnProperty(propName)) {
         hasProps = true;
-        serialized.push(propName, ruleEntries[propName]);
+        serialized.push(propName, rulesForSelector[propName]);
       }
     }
-  });
+  }
 
   return hasProps ? serialized.join('') : undefined;
 }
@@ -130,34 +141,87 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
   return allEntries.join('');
 }
 
-export function styleToClassName(...args: IStyle[]): string {
-  const rules: Map<string, IStyle> = extractRules(args);
+export interface IRegistration {
+  className: string;
+  key: string;
+  args: IStyle[];
+  rulesToInsert: string[];
+}
+
+export function styleToRegistration(...args: IStyle[]): IRegistration | undefined {
+  const rules: IRuleSet = extractRules(args);
   const key = getKeyForRules(rules);
-  let className = '';
 
   if (key) {
     const stylesheet = Stylesheet.getInstance();
+    const registration: Partial<IRegistration> = {
+      className: stylesheet.classNameFromKey(key),
+      key,
+      args
+    };
 
-    className = stylesheet.classNameFromKey(key)!;
+    if (!registration.className) {
+      registration.className = stylesheet.getClassName(getDisplayName(rules));
+      const rulesToInsert: string[] = [];
 
-    if (!className) {
-      className = stylesheet.getClassName(getDisplayName(rules));
-      stylesheet.cacheClassName(className, key, args);
+      for (const selector of rules.__order) {
+        rulesToInsert.push(
+          selector,
+          serializeRuleEntries(rules[selector])
+        );
+      }
+      registration.rulesToInsert = rulesToInsert;
+    }
 
-      const ruleSelectors = rules.keys();
-      let selector = ruleSelectors.next().value;
+    return registration as IRegistration;
+  }
+}
 
-      while (selector) {
-        const rulesToInsert: string = serializeRuleEntries(rules.get(selector) as {});
+export function applyRegistration(
+  registration: IRegistration,
+  classMap?: { [key: string]: string }
+): void {
+  const stylesheet = Stylesheet.getInstance();
+  const { className, key, args, rulesToInsert } = registration;
 
-        if (rulesToInsert) {
-          selector = selector.replace(/\&/g, `.${className}`);
-          stylesheet.insertRule(`${selector}{${rulesToInsert}}`);
-        }
-        selector = ruleSelectors.next().value;
+  if (rulesToInsert) {
+    // rulesToInsert is an ordered array of selector/rule pairs.
+    for (let i = 0; i < rulesToInsert.length; i += 2) {
+      const rules = rulesToInsert[i + 1];
+      if (rules) {
+        let selector = rulesToInsert[i];
+
+        // Fix selector using map.
+        selector = selector.replace(/(&)|\$([\w-]+)\b/g, (match: string, amp: string, cn: string): string => {
+          if (amp) {
+            return '.' + registration.className;
+          } else if (cn) {
+            return '.' + ((classMap && classMap[cn]) || cn);
+          }
+          return '';
+        });
+
+        // Insert.
+        stylesheet.insertRule(`${selector}{${rules}}`);
       }
     }
+    stylesheet.cacheClassName(
+      className!,
+      key!,
+      args!,
+      rulesToInsert
+    );
+
+  }
+}
+
+export function styleToClassName(...args: IStyle[]): string {
+  const registration = styleToRegistration(...args);
+  if (registration) {
+    applyRegistration(registration);
+
+    return registration.className;
   }
 
-  return className;
+  return '';
 }

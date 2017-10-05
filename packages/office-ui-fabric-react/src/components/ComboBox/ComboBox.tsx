@@ -64,7 +64,7 @@ enum SearchDirection {
   forward = 1
 }
 
-@customizable(['theme'])
+@customizable('ComboBox', ['theme'])
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public static defaultProps: IComboBoxProps = {
@@ -765,7 +765,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHintFixed={ true }
         { ...calloutProps }
         className={ this._classNames.callout }
-        targetElement={ this._comboBoxWrapper }
+        target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
@@ -850,7 +850,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className={ 'ms-ComboBox-option' }
         styles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
-        onClick={ () => this._onItemClick(item.index) }
+        onClick={ this._onItemClick(item.index) }
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
         ariaLabel={ item.text }
@@ -881,8 +881,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Scroll the selected element into view
    */
   private _scrollIntoView() {
-    if (this._selectedElement) {
+
+    let { scrollSelectedToTop } = this.props;
+    if (this._selectedElement && scrollSelectedToTop) {
+      this._selectedElement.offsetParent.scrollIntoView(true);
+    } else if (this._selectedElement) {
       let alignToTop = true;
+
       if (this._comboBoxMenu.offsetParent) {
         let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
         let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
@@ -908,11 +913,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index: number | undefined) {
-    this._setSelectedIndex(index as number);
-    this.setState({
-      isOpen: false
-    });
+  private _onItemClick(index: number | undefined): () => void {
+    return (): void => {
+      this._setSelectedIndex(index as number);
+      this.setState({
+        isOpen: false
+      });
+    };
   }
 
   /**

@@ -9,6 +9,8 @@ import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ChoiceGroupStatus } from './ChoiceGroup.checklist';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
@@ -19,20 +21,20 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
   public render() {
     return (
       <ComponentPage
-        title='ChoiceGroup'
+        title={ 'ChoiceGroup' }
         componentName='ChoiceGroupExample'
         exampleCards={
           <div>
-            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
+            <ExampleCard title='Default ChoiceGroup' code={ ChoiceGroupBasicExampleCode }>
               <ChoiceGroupBasicExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupCustomExampleCode }>
+            <ExampleCard title='ChoiceGroup with dropdown' code={ ChoiceGroupCustomExampleCode }>
               <ChoiceGroupCustomExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups using Images' code={ ChoiceGroupImageExampleCode }>
+            <ExampleCard title='ChoiceGroups with images' code={ ChoiceGroupImageExampleCode }>
               <ChoiceGroupImageExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups using Icons' code={ ChoiceGroupIconExampleCode }>
+            <ExampleCard title='ChoiceGroup with icons' code={ ChoiceGroupIconExampleCode }>
               <ChoiceGroupIconExample />
             </ExampleCard>
           </div>
@@ -83,10 +85,12 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ChoiceFieldGroup/ChoiceFieldGroup.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ChoiceGroupStatus}
+          />
+        }
       />
     );
   }

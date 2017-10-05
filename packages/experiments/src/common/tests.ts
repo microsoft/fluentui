@@ -1,17 +1,8 @@
-// Polyfills
-import 'es6-weak-map/implement';
-import 'es6-map/implement';
+/** Jest test setup file. */
 
-/**
- * This is a test entry point to help karma-webpack find all tests in the project.
- **/
+import { setIconOptions } from 'office-ui-fabric-react/lib/Styling';
 
-// Before loading modules, treat errors and warnings as test failures.
-console.error = console.warn = (warning: string) => {
-  throw new Error(warning);
-};
-
-const testContext = require.context('..', true, /.+\.test\.js?$/);
-
-testContext.keys().forEach(testContext);
-module.exports = testContext;
+// Suppress icon warnings.
+setIconOptions({
+  warnOnMissingIcons: false
+});

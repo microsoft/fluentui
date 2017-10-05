@@ -16,7 +16,6 @@ let tasks = [
   'sass',
   'tslint',
   'ts',
-  'karma',
   'jest',
   'webpack'
 ];
@@ -51,7 +50,7 @@ function runTask(task) {
   return Promise.resolve()
     .then(() => !hasFailures && Promise.resolve()
       .then(() => logStartTask(packageName, task))
-      .then(() => require('./tasks/' + task)({ isProduction }))
+      .then(() => require('./tasks/' + task)({ isProduction, argv: process.argv }))
       .then(() => logEndTask(packageName, task, taskStartTime))
       .catch((e) => {
         hasFailures = true;
