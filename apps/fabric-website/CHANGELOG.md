@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+
+## 5.0.7
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Patches
+
+- Updated ResourcePage text and made padding more rtl friendly.
+- Added section in Get Started page to document how to use icons in components.
+- Added Icon component to website
 
 ## 5.0.6
 Fri, 29 Sep 2017 10:20:24 GMT

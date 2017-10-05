@@ -2,6 +2,120 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "office-ui-fabric-react_v6.0.1",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a5c8a8d29987e03cf87f704b74e38d181516afca",
+            "comment": "Added min-width for button icons so that its easy to create buttons with space for an icon"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.2.0 <6.0.0` to `>=5.3.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.0.4 <6.0.0` to `>=5.0.5 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "office-ui-fabric-react_v6.0.0",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "36e1182f5f4f9a268d93377d3bea12c493fb4e17",
+            "comment": "TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied"
+          },
+          {
+            "author": "Andres Camargo <andrescb@microsoft.com>",
+            "commit": "7f7200ea84ca73ef5dfd370ae1ac5986a8f24c56",
+            "comment": "DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a245be8240b07346d4eba30c622c22e202463724",
+            "comment": "Dropdown: fixed logic in getSelectedIndex to support controlled uses"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ca3473a1d65c8124901173ee0aeb7c7af5b220ef",
+            "comment": "General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4267f5f8555395b1b080a3a21445cdf5faf6c373",
+            "comment": "Removed duplicate header in ResizeGroup."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d8a8001fd24c3e2ae2ea1e0754acac98f80d4492",
+            "comment": "Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6e4d8f5e07328bad7c50e0671d85c1fb8a9db79a",
+            "comment": "Fixed duplicate header on Tooltip page."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e951967ea0961a2945d6648b6f913ba662f67c56",
+            "comment": "List: Fix Grid example to read right to left in RTL mode"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "da8de4f924f3ad6381a53b734925858abdaed604",
+            "comment": "High contrast fixes for breadcrumb, contextualMenu, overlay, pivot, calendar, and searchbox"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "72c218322ac10247c6f2693d68abc2e3df9ba7af",
+            "comment": "BaseButton: Added borderRadius:0 to fix new default styles in webkit"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "de1162806fc4d1ff50c2d6d82e453d1fb1bc0b25",
+            "comment": "ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened."
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "75ce32c363d1415c4d5bf28ac29c38df9dddea1f",
+            "comment": "\"Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled.\""
+          }
+        ],
+        "major": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "1bad538220cc18885e7e6efd7c4cc0e7846c25d4",
+            "comment": "Positioning: Refactored positioning and removed deprecated properties"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.0.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.0.3 <6.0.0` to `>=5.0.4 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "office-ui-fabric-react_v5.3.0",
       "date": "Mon, 02 Oct 2017 10:19:43 GMT",
