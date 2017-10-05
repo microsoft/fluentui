@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
-    "@uifabric/utilities": ">=6.0.0 <7.0.0",
+    "@uifabric/utilities": ">=5.0.1 <6.0.0",
     "@uifabric/merge-styles": ">=5.3.0 <6.0.0",
     "tslib": "^1.7.1"
   }
