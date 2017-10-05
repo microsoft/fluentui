@@ -948,7 +948,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return -1;
     }
 
-    if (typeof selectedKey == 'number') {
+    if (typeof selectedKey === 'number') {
       return selectedKey;
     }
 
