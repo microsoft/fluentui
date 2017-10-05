@@ -125,7 +125,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
     this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
 
-    let index: number = typeof selectedKey == 'number' ? selectedKey : this._getSelectedIndex(props.options, selectedKey);
+    let index: number = this._getSelectedIndex(props.options, selectedKey);
 
     this.state = {
       isOpen: false,
@@ -151,7 +151,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       newProps.options !== this.props.options) {
 
       console.log('typeof newProps.selectedKey', typeof newProps.selectedKey, newProps.selectedKey);
-      let index: number = typeof newProps.selectedKey == 'number' ? newProps.selectedKey : this._getSelectedIndex(newProps.options, newProps.selectedKey);
+      let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
 
       this.setState({
         selectedIndex: index,
@@ -958,6 +958,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _getSelectedIndex(options: IComboBoxOption[] | undefined, selectedKey: string | number | undefined): number {
     if (options === undefined || selectedKey === undefined) {
       return -1;
+    }
+
+    if (typeof selectedKey === 'number') {
+      return selectedKey;
     }
 
     return findIndex(options, (option => (option.selected || option.key === selectedKey)));
