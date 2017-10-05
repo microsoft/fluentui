@@ -88,4 +88,14 @@ describe('mergeStyleSets', () => {
     });
   });
 
+  it('can autoexpand a previously registered style', () => {
+    let styles: { root: string } = mergeStyleSets({ root: { background: 'red' } });
+    let styles2: { root: string } = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
+
+    expect(styles.root).toEqual(styles2.root);
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.root-0{background:red;}'
+    );
+  })
 });
