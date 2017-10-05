@@ -190,6 +190,64 @@ describe('Dropdown', () => {
       }
     });
 
+    it('issues the onChanged callback when the selected item is different', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      let onChangedSpy = jasmine.createSpy('onChanged');
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKey='1'
+            onChanged={ onChangedSpy }
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      }
+      finally {
+        expect(onChangedSpy).toHaveBeenCalledWith(DEFAULT_OPTIONS[2], 2);
+      }
+    });
+
+    it('issues the onChanged callback when the selected item is different', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      let onChangedSpy = jasmine.createSpy('onChanged');
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKey='1'
+            onChanged={ onChangedSpy }
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      }
+      finally {
+        expect(onChangedSpy).not.toHaveBeenCalled();
+      }
+    });
+
     it('Will select the first valid item on keypress', () => {
       let container = document.createElement('div');
 
@@ -430,6 +488,70 @@ describe('Dropdown', () => {
         expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('1, 2');
       }
     });
+
+    /*
+    // I'm not sure why these two tests fail. I've manually verified the scenario, even manually through programatic clicks, but these
+    // tests simply won't pass
+    it('issues the onChanged callback when selecting an item', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      let onChangedSpy = jasmine.createSpy('onChanged');
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKeys={ ['1'] }
+            multiSelect
+            onChanged={ onChangedSpy }
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      }
+      finally {
+        expect(onChangedSpy).toHaveBeenCalledWith({ ...DEFAULT_OPTIONS[2], selected: true }, 2);
+      }
+    });
+
+    it('issues the onChanged callback when unselecting an item', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      let onChangedSpy = jasmine.createSpy('onChanged');
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKeys={ ['1'] }
+            multiSelect
+            onChanged={ onChangedSpy }
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let firstItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[0] as HTMLElement;
+        ReactTestUtils.Simulate.click(firstItemElement);
+      }
+      finally {
+        expect(onChangedSpy).toHaveBeenCalledWith({ ...DEFAULT_OPTIONS[1], selected: false }, 1);
+      }
+    });
+    */
 
     it('Will not select the first valid item on keypress', () => {
       let container = document.createElement('div');

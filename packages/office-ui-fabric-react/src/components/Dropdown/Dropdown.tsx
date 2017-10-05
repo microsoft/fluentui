@@ -247,12 +247,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     if (onChanged) {
       // for single-select, option passed in will always be selected.
-      if (!multiSelect) {
-        options.map((option: any) => option.selected === true ? option.selected = false : null);
-      }
       // for multi-select, flip the checked value
-      let changedOpt = options[index];
-      changedOpt.selected = multiSelect ? !checked : true;
+      let changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
       onChanged(changedOpt, index);
     }
   }
