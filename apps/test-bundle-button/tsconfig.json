@@ -11,6 +11,7 @@
     "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
     "types": [
       "webpack-env"
     ],

@@ -11,6 +11,7 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
     "outDir": "lib",
     "lib": [
       "es2017",

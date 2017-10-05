@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "joschect@microsoft.com"
+}
