@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 05 Oct 2017 16:29:11 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2017 17:03:43 GMT and should not be manually modified.
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+- Fixing version dependencies.
 
 ## 5.1.0
 Thu, 05 Oct 2017 16:29:11 GMT
