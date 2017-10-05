@@ -1,12 +1,12 @@
 /* tslint:disable */
 import * as React from 'react';
+import { IPickerItemProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
 import { BaseWellPicker } from '../BaseWellPicker';
 import { IBaseWellPickerProps } from '../BaseWellPicker.Props';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import './PeoplePicker.scss';
-import { IPickerItemProps, ValidationState, } from 'office-ui-fabric-react/lib/Pickers';
 import { FloatingPeoplePicker, BaseFloatingPeoplePicker } from './FloatingPeoplePicker';
 import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.Props';
 
@@ -20,7 +20,7 @@ export class BaseWellPeoplePicker extends BaseWellPicker<IPersonaProps, IPeopleW
 }
 
 export class WellPeoplePicker extends BaseWellPeoplePicker {
-  public static defaultProps = {
+  public static defaultProps: IPeopleWellPickerProps = {
     onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
     floatingPickerType: FloatingPeoplePicker as new (props: IBaseFloatingPickerProps<IPersonaProps>) => BaseFloatingPeoplePicker,
   };

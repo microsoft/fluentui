@@ -40,11 +40,6 @@ export interface IBaseWellPickerProps<T> {
   onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
 
   /**
-   * A callback to get text from an item. Used to autofill text in the pickers.
-   */
-  getTextFromItem?: (item: T, currentValue?: string) => string;
-
-  /**
    * ClassName for the picker.
    */
   className?: string;
@@ -88,7 +83,8 @@ export interface IBaseWellPickerProps<T> {
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled
+   * component.
    */
   selectedItems?: T[];
 }

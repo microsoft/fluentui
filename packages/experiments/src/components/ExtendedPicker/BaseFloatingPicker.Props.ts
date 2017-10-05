@@ -22,6 +22,7 @@ export interface IBaseFloatingPicker {
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
+// tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   componentRef?: (component?: IBaseFloatingPicker) => void;
 
@@ -38,6 +39,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
+  // tslint:disable-next-line:no-any
   onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
@@ -48,7 +50,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * A callback for when a suggestion is clicked
    */
-  onChange?: (items: T) => void;
+  onChange?: (item: T) => void;
 
   /**
    * A callback that gets the rest of the results when a user clicks get more results.
@@ -84,7 +86,8 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   ) => ISuggestionModel<T>;
 
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled
+   * component.
    */
   selectedItems?: T[];
 

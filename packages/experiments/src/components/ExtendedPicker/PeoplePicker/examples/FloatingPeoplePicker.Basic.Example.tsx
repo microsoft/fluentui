@@ -33,6 +33,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
+// tslint:disable-next-line:no-any
 export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _picker: IBaseFloatingPicker;
   private _inputElement: HTMLDivElement;
@@ -55,46 +56,53 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeople
     };
   }
 
-  public render() {
-    return (<div>
-      <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
-        <SearchBox
-          labelText={ 'Search a person' }
-          onChange={ this._onSearchChange }
-          value={ this.state.searchValue }
-        />
+  public render(): JSX.Element {
+    return (
+      <div>
+        <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
+          <SearchBox
+            labelText={ 'Search a person' }
+            onChange={ this._onSearchChange }
+            value={ this.state.searchValue }
+          />
+        </div>
+        { this._renderFloatingPicker() }
       </div>
-      { this._renderFloatingPicker() }
-    </div>)
+    );
   }
 
-  @autobind
-  private _onSearchChange(newValue: string) {
-    if (newValue !== this.state.searchValue) {
-      this.setState({ searchValue: newValue });
-      this._picker.onQueryStringChanged(newValue);
-    }
-  }
-
-  private _renderFloatingPicker() {
+  private _renderFloatingPicker(): JSX.Element {
     return (
       <FloatingPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }
         key={ 'normal' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
-        componentRef={ (component: IBaseFloatingPicker) => { this._picker = component; } }
-        onChange={ this._onChange }
+        componentRef={ this._setComponentRef }
+        onChange={ this._onPickerChange }
         inputElement={ this._inputElement }
       />
     );
   }
 
   @autobind
-  private _onChange(selectedSuggestion: IPersonaProps) {
-    this.setState({ searchValue: selectedSuggestion.primaryText as any });
+  private _setComponentRef(component: IBaseFloatingPicker): void {
+    this._picker = component;
+  }
+
+  @autobind
+  private _onSearchChange(newValue: string): void {
+    if (newValue !== this.state.searchValue) {
+      this.setState({ searchValue: newValue });
+      this._picker.onQueryStringChanged(newValue);
+    }
+  }
+
+  @autobind
+  private _onPickerChange(selectedSuggestion: IPersonaProps): void {
+    this.setState({ searchValue: selectedSuggestion.primaryText ? selectedSuggestion.primaryText : '' });
     this._picker.hidePicker();
   }
 
@@ -116,7 +124,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeople
   }
 
   @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
+  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -128,27 +136,31 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeople
     }
   }
 
-  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
+  private _getTextFromItem(persona: IPersonaProps): string {
+    return persona.primaryText as string;
+  }
+
+  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
     if (!personas || !personas.length || personas.length === 0) {
       return false;
     }
-    return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
+    return personas.filter((item: IPersonaProps) => item.primaryText === persona.primaryText).length > 0;
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter(item => this._doesTextStartWith(item.primaryText as string, filterText));
+    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.primaryText as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
-  private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
-    return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
+  private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]): IPersonaProps[] {
+    return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
   }
 
   @autobind
-  private _validateInput(input: string) {
+  private _validateInput(input: string): ValidationState {
     if (input.indexOf('@') !== -1) {
       return ValidationState.valid;
     } else if (input.length > 1) {

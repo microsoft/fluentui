@@ -8,7 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseWellPicker } from '../../BaseWellPicker.Props';
+import { IBaseWellPicker, IBaseWellPickerProps } from '../../BaseWellPicker.Props';
 import { WellPeoplePicker } from '../WellPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
@@ -32,7 +32,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-export class WellPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+export class WellPeoplePickerTypesExample extends BaseComponent<IBaseWellPickerProps<IPersonaProps>, IPeoplePickerExampleState> {
   private _picker: IBaseWellPicker<IPersonaProps>;
 
   constructor() {
@@ -52,17 +52,19 @@ export class WellPeoplePickerTypesExample extends BaseComponent<any, IPeoplePick
     };
   }
 
-  public render() {
-    return (<div>
-      { this._renderExtendedPicker() }
-      <PrimaryButton
-        text='Set focus'
-        onClick={ this._onSetFocusButtonClicked }
-      />
-    </div>)
+  public render(): JSX.Element {
+    return (
+      <div>
+        { this._renderExtendedPicker() }
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
+      </div>
+    );
   }
 
-  private _renderExtendedPicker() {
+  private _renderExtendedPicker(): JSX.Element {
     return (
       <WellPeoplePicker
         floatingPickerProps={ {
@@ -75,7 +77,6 @@ export class WellPeoplePickerTypesExample extends BaseComponent<any, IPeoplePick
           onRemoveSuggestion: this._onRemoveSuggestion,
           onValidateInput: this._validateInput,
         } }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
         removeButtonAriaLabel={ 'Remove' }
@@ -84,13 +85,18 @@ export class WellPeoplePickerTypesExample extends BaseComponent<any, IPeoplePick
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         } }
-        componentRef={ (component: IBaseWellPicker<IPersonaProps>) => this._picker = component }
+        componentRef={ this._setComponentRef }
       />
     );
   }
 
   @autobind
-  private _onSetFocusButtonClicked() {
+  private _setComponentRef(component: IBaseWellPicker<IPersonaProps>): void {
+    this._picker = component;
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked(): void {
     if (this._picker) {
       this._picker.focus();
     }
@@ -114,7 +120,7 @@ export class WellPeoplePickerTypesExample extends BaseComponent<any, IPeoplePick
   }
 
   @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
+  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
@@ -133,27 +139,27 @@ export class WellPeoplePickerTypesExample extends BaseComponent<any, IPeoplePick
     return mostRecentlyUsed;
   }
 
-  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
+  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {
     if (!personas || !personas.length || personas.length === 0) {
       return false;
     }
-    return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
+    return personas.filter((item: IPersonaProps) => item.primaryText === persona.primaryText).length > 0;
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter(item => this._doesTextStartWith(item.primaryText as string, filterText));
+    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.primaryText as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
   }
 
-  private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
-    return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
+  private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]): IPersonaProps[] {
+    return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
   }
 
   @autobind
-  private _validateInput(input: string) {
+  private _validateInput(input: string): ValidationState {
     if (input.indexOf('@') !== -1) {
       return ValidationState.valid;
     } else if (input.length > 1) {

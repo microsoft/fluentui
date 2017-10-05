@@ -6,20 +6,23 @@ import {
   css
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { Selection, SelectionZone, SelectionMode } from 'office-ui-fabric-react/src/utilities/selection/index';
+import { Selection, SelectionZone, SelectionMode, IObjectWithKey } from 'office-ui-fabric-react/src/utilities/selection/index';
 import { IBaseWellPicker, IBaseWellPickerProps } from './BaseWellPicker.Props';
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.Props';
-import { IPickerItemProps, BaseAutoFill } from 'office-ui-fabric-react/lib/Pickers';
+import { IPickerItemProps, BaseAutoFill, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
 import * as stylesImport from '../../../../office-ui-fabric-react/src/components/pickers/BasePicker.scss';
+// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface IBaseWellPickerState {
-  items?: any;
+  // tslint:disable-next-line:no-any
+  items: any;
   suggestedDisplayValue?: string;
 }
 
-export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseComponent<P, IBaseWellPickerState> implements IBaseWellPicker<T> {
+export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseComponent<P, IBaseWellPickerState>
+  implements IBaseWellPicker<T> {
 
   protected selection: Selection;
 
@@ -36,31 +39,33 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
     this.selection.setItems(items);
     this.state = {
-      items: items,
+      items: items ? items : [],
       suggestedDisplayValue: '',
     };
   }
 
-  public get items(): T[] {
+  // tslint:disable-next-line:no-any
+  public get items(): any {
     return this.state.items;
   }
 
-  public forceResolve() {
+  public forceResolve(): void {
+    return;
   }
 
-  public componentWillUpdate(newProps: P, newState: IBaseWellPickerState) {
+  public componentWillUpdate(newProps: P, newState: IBaseWellPickerState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
   }
 
-  public componentDidMount() {
-    this.selection.setItems(this.state.items);
+  public componentDidMount(): void {
+    this.selection.setItems(this.state.items as IObjectWithKey[]);
     this.forceUpdate();
   }
 
-  public componentWillReceiveProps(newProps: P) {
-    let newItems = newProps.selectedItems;
+  public componentWillReceiveProps(newProps: P): void {
+    let newItems: T[] = newProps.selectedItems ? newProps.selectedItems : [];
 
     if (newItems) {
       let focusIndex: number;
@@ -68,7 +73,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
       // If there are less new items than old items then something was removed and we
       // should try to keep focus consistent
       if (newItems.length < this.state.items.length) {
-        focusIndex = this.state.items.indexOf(this.selection.getSelection()[0]);
+        focusIndex = this.state.items.indexOf(this.selection.getSelection()[0] as T);
       }
 
       this.setState({
@@ -81,11 +86,11 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
     }
   }
 
-  public focus() {
+  public focus(): void {
     this.focusZone.focus();
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { suggestedDisplayValue } = this.state;
     let {
         className,
@@ -108,12 +113,13 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
           onKeyDown={ this.onBackspace }
         >
-          { <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div> }
+          { <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>
+            { selectedSuggestionAlert } </div> }
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
               { this.canAddItems() && (<BaseAutoFill
-                { ...inputProps as any }
+                { ...inputProps as IInputProps }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
@@ -144,16 +150,18 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    let TypedFloatingPicker = this.props.floatingPickerType as any;
+    let TypedFloatingPicker = this.props.floatingPickerType as (new (props: IBaseFloatingPickerProps<T>) =>
+      BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>);
     return (
       <TypedFloatingPicker
-        { ...this.props.floatingPickerProps as any}
+        // tslint:disable-next-line:no-any
+        { ...this.props.floatingPickerProps as any }
         ref={ this._resolveRef('floatingPicker') }
         onChange={ this.addItem }
         inputElement={ this.input ? this.input.inputElement : null }
         selectedItems={ this.state.items }
       />
-    )
+    );
   }
 
   protected renderItems(): JSX.Element[] {
@@ -161,6 +169,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
     let onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
     let { items } = this.state;
+    // tslint:disable-next-line:no-any
     return items.map((item: any, index: number) => onRenderItem({
       item,
       index,
@@ -173,7 +182,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
     }));
   }
 
-  protected resetFocus(index?: number) {
+  protected resetFocus(index?: number): void {
     let { items } = this.state;
 
     if (items.length && index! >= 0) {
@@ -189,23 +198,23 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
     }
   }
 
-  protected onSelectionChange() {
+  protected onSelectionChange(): void {
     this.forceUpdate();
   }
 
-  protected onChange(items?: T[]) {
+  protected onChange(items?: T[]): void {
     if (this.props.onChange) {
-      (this.props.onChange as any)(items);
+      (this.props.onChange as ((items?: T[]) => void))(items);
     }
   }
 
   @autobind
-  protected onInputChange(value: string) {
+  protected onInputChange(value: string): void {
     this.floatingPicker.onQueryStringChanged(value);
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>): void {
     this.selection.setAllSelected(false);
     this.floatingPicker.showPicker();
 
@@ -215,7 +224,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   }
 
   @autobind
-  protected onItemChange(changedItem: T, index: number) {
+  protected onItemChange(changedItem: T, index: number): void {
     let { items } = this.state;
 
     if (index >= 0) {
@@ -227,8 +236,10 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   }
 
   @autobind
-  protected addItem(item: T) {
-    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+  protected addItem(item: T): void {
+    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ?
+      (this.props.onItemSelected as ((selectedItem?: T) => T | PromiseLike<T>))(item) :
+      item;
 
     let processedItemObject: T = processedItem as T;
     let processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
@@ -247,7 +258,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   }
 
   @autobind
-  protected removeItem(item: IPickerItemProps<T>) {
+  protected removeItem(item: IPickerItemProps<T>): void {
     let { items } = this.state;
     let index: number = items.indexOf(item);
 
@@ -258,9 +269,10 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   }
 
   @autobind
-  protected removeItems(itemsToRemove: any[]) {
+  // tslint:disable-next-line:no-any
+  protected removeItems(itemsToRemove: any[]): void {
     let { items } = this.state;
-    let newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
+    let newItems: T[] = items.filter((item: T) => itemsToRemove.indexOf(item) === -1);
     let firstItemToRemove = itemsToRemove[0];
     let index: number = items.indexOf(firstItemToRemove);
 
@@ -270,8 +282,8 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   @autobind
-  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which != KeyCodes.backspace) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
+    if (ev.which !== KeyCodes.backspace) {
       return;
     }
     if (this.state.items.length && !this.input || !this.input.isValueSelected) {
@@ -307,7 +319,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
   */
-  private _updateSelectedItems(items: T[], focusIndex?: number) {
+  private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
       this.onChange(items);
@@ -318,7 +330,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
     }
   }
 
-  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number) {
+  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.resetFocus(focusIndex);
     this.onChange(items);
   }

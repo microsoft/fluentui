@@ -7,6 +7,7 @@ import { IPeoplePickerItemProps } from '../WellPeoplePicker';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import * as stylesImport from './PickerItemsDefault.scss';
+// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
