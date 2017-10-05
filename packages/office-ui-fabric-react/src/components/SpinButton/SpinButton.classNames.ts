@@ -24,17 +24,17 @@ export const getClassNames = memoizeFunction((
   return {
     root: mergeStyles(
       styles.root
-    ) as string,
+    ),
     labelWrapper: mergeStyles(
       styles.labelWrapper,
       _getStyleForLabelBasedOnPosition(labelPosition, styles)
-    ) as string,
+    ),
     icon: mergeStyles(
       styles.icon,
-    ) as string,
+    ),
     label: mergeStyles(
       styles.label
-    ) as string,
+    ),
     spinButtonWrapper: mergeStyles(
       styles.spinButtonWrapper,
       _getStyleForRootBasedOnPosition(labelPosition, styles),
@@ -53,7 +53,7 @@ export const getClassNames = memoizeFunction((
         }
       ],
       disabled && styles.spinButtonWrapperDisabled
-    ) as string,
+    ),
     input: mergeStyles(
       'ms-spinButton-input',
       styles.input,
@@ -63,11 +63,11 @@ export const getClassNames = memoizeFunction((
         }
       },
       disabled && styles.inputDisabled,
-    ) as string,
+    ),
     arrowBox: mergeStyles(
       styles.arrowButtonsContainer,
       disabled && styles.arrowButtonsContainerDisabled
-    ) as string,
+    ),
   };
 });
 

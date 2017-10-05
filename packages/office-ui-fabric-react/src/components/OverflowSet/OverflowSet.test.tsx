@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-const { expect } = chai;
+
 import { OverflowSet } from './OverflowSet';
 import * as sinon from 'sinon';
 
@@ -10,7 +10,7 @@ describe('OverflowSet', () => {
     const onRenderOverflowButton = sinon.spy();
     shallow(<OverflowSet onRenderItem={ onRenderItem } onRenderOverflowButton={ onRenderOverflowButton } />);
 
-    expect(onRenderOverflowButton.called).to.equal(false);
+    expect(onRenderOverflowButton.called).toEqual(false);
   });
 
   it('does not render overflow when overflow items is an empty array', () => {
@@ -18,6 +18,6 @@ describe('OverflowSet', () => {
     const onRenderOverflowButton = sinon.spy();
     shallow(<OverflowSet onRenderItem={ onRenderItem } onRenderOverflowButton={ onRenderOverflowButton } overflowItems={ [] } />);
 
-    expect(onRenderOverflowButton.called).to.equal(false);
+    expect(onRenderOverflowButton.called).toEqual(false);
   });
 });

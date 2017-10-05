@@ -5,7 +5,7 @@ import {
 import {
   ITheme,
   IRawStyle,
-  mergeStyleSets,
+  concatStyleSets,
   FontSizes,
   FontWeights,
   getFocusStyle
@@ -52,7 +52,7 @@ export const getOptionStyles = memoizeFunction((
   theme: ITheme,
   customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
   customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
-): IComboBoxOptionStyles => {
+): Partial<IComboBoxOptionStyles> => {
 
   const { semanticColors, palette } = theme;
 
@@ -135,7 +135,7 @@ export const getOptionStyles = memoizeFunction((
     },
   };
 
-  return mergeStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption) as IComboBoxOptionStyles;
+  return concatStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption);
 });
 
 export const getCaretDownButtonStyles = memoizeFunction((
@@ -173,13 +173,13 @@ export const getCaretDownButtonStyles = memoizeFunction((
     },
     rootDisabled: getDisabledStyles(theme),
   };
-  return mergeStyleSets(styles, customStyles) as IButtonStyles;
+  return concatStyleSets(styles, customStyles);
 });
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<IComboBoxStyles>,
-): IComboBoxStyles => {
+): Partial<IComboBoxStyles> => {
 
   const { semanticColors, fonts, palette } = theme;
 
@@ -255,7 +255,8 @@ export const getStyles = memoizeFunction((
     rootDisabled: getDisabledStyles(theme),
 
     rootError: {
-      borderColor: ComboBoxRootColorErrored
+      borderColor: ComboBoxRootColorErrored,
+      marginBottom: '5px'
     },
 
     rootDisallowFreeForm: {},
@@ -274,12 +275,7 @@ export const getStyles = memoizeFunction((
 
     inputDisabled: getDisabledStyles(theme),
     errorMessage: {
-      color: ComboBoxRootColorErrored,
-      selectors: {
-        ':before': {
-          content: '* ',
-        }
-      }
+      color: ComboBoxRootColorErrored
     },
 
     callout: {
@@ -317,5 +313,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(styles, customStyles) as IComboBoxStyles;
+  return concatStyleSets(styles, customStyles);
 });

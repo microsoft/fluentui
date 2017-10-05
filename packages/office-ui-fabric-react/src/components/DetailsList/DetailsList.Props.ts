@@ -200,6 +200,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * Optional class name to add to the cell of a checkbox
+   */
+  checkboxCellClassName?: string;
 }
 
 export interface IColumn {

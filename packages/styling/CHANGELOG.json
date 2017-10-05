@@ -2,6 +2,37 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.1.1",
+      "tag": "@uifabric/styling_v5.1.1",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.0.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/styling_v5.1.0",
+      "date": "Sat, 30 Sep 2017 01:26:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "93a77f83352b357bae5d6b509a40eeec28d56a32",
+            "comment": "Add a new success background color"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/styling_v5.0.1",
       "date": "Wed, 27 Sep 2017 00:20:58 GMT",

@@ -46,6 +46,8 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
     let {
       className,
+      coinProps,
+      coinSize,
       imageUrl,
       imageAlt,
       imageInitials,
@@ -58,10 +60,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
      } = this.props;
 
     let personaCoinProps = {
+      coinProps,
+      coinSize,
       imageUrl,
       imageAlt,
       imageInitials,
       initialsColor,
+      presence,
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
@@ -103,6 +108,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
             showSecondaryText && styles.showSecondaryText
           )
         }
+        style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
       >
         <PersonaCoin { ...personaCoinProps } />
         { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }

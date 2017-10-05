@@ -1,6 +1,79 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Sep 2017 00:20:59 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2017 10:17:42 GMT and should not be manually modified.
+
+## 6.0.1
+Thu, 05 Oct 2017 10:17:42 GMT
+
+### Patches
+
+- Added min-width for button icons so that its easy to create buttons with space for an icon
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
+
+### Minor changes
+
+- ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened.
+- "Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled."
+
+### Patches
+
+- TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied
+- DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order
+- Dropdown: fixed logic in getSelectedIndex to support controlled uses
+- General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs.
+- Removed duplicate header in ResizeGroup.
+- Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation.
+- Fixed duplicate header on Tooltip page.
+- List: Fix Grid example to read right to left in RTL mode
+- High contrast fixes for breadcrumb, contextualMenu, overlay, pivot, calendar, and searchbox
+- BaseButton: Added borderRadius:0 to fix new default styles in webkit
+
+## 5.3.0
+Mon, 02 Oct 2017 10:19:43 GMT
+
+### Minor changes
+
+- PersonaCoin: added `coinSize` prop to allow for customized sizes.
+
+## 5.2.1
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Patches
+
+- ComboBox: Fix broken styles as part of the move to MergeStyles
+
+## 5.2.0
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Minor changes
+
+- Adding custom render to TextField label
+
+### Patches
+
+- Simplified checkbox examples and fixed spacing issue.
+- DetailsList: Allow resizing columns wider than maxWidth in justified layout
+- ContextualMenu: Make sure to check items within a menu section for the 'canCheck' property
+- Updating mergeStyleSets usage in various components to adhere to correct typing.
+- Split out and cleaned up TextField examples to better reflect the toolkit. 
+- DatePicker: call correct callback when previous year button is clicked
+
+## 5.1.0
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Minor changes
+
+- DetailsList: Added ability to add css class to checkbox cell
+
+### Patches
+
+- List: Fix documentation examples. Adds autobind to onRenderCell of List Grid Example
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT
