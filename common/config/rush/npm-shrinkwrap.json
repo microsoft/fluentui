@@ -2533,12 +2533,19 @@
     "@uifabric/styling": {
       "version": "5.1.1",
       "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-5.1.1.tgz",
-      "integrity": "sha512-+fHaKc8S2rHGnf/qJgKItxKkv+7jREKQ+nDoBlwLaE8nXKtWZUcgESUrlmwgvMNEpN1a3YFoZxM28Z0Nkd20ZQ=="
+      "integrity": "sha512-+fHaKc8S2rHGnf/qJgKItxKkv+7jREKQ+nDoBlwLaE8nXKtWZUcgESUrlmwgvMNEpN1a3YFoZxM28Z0Nkd20ZQ==",
+      "dependencies": {
+        "@uifabric/utilities": {
+          "version": "6.0.0",
+          "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-6.0.0.tgz",
+          "integrity": "sha512-F3P+eBgqC+KmMiF3H6rBg/Vnyxavx1hgkjUIdSln/vfSD+MT1KjTeQys7y0774+N1HXlVEi7F2O381m2JDRrgw=="
+        }
+      }
     },
     "@uifabric/utilities": {
-      "version": "6.0.0",
-      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-6.0.0.tgz",
-      "integrity": "sha512-F3P+eBgqC+KmMiF3H6rBg/Vnyxavx1hgkjUIdSln/vfSD+MT1KjTeQys7y0774+N1HXlVEi7F2O381m2JDRrgw=="
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-5.0.1.tgz",
+      "integrity": "sha512-HUhh3EKUiZshpbNxcgkwQ6WcTKT3+rlhfX/pSeLElRTGbORYxdoWFDwVfFZT71xP2hFnUQI/Z5qb9BLdKeJpRA=="
     },
     "abab": {
       "version": "1.0.4",
@@ -7396,14 +7403,7 @@
     "office-ui-fabric-react": {
       "version": "5.3.0",
       "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.3.0.tgz",
-      "integrity": "sha512-qelOQ/Hd9QDyM3xyKdjbkrGqB3Vdz8ZbSXU5ud9xYDqnDDe5ofAvRD3xqbylLLugD702WM2a8I6SztxuSRohCw==",
-      "dependencies": {
-        "@uifabric/utilities": {
-          "version": "5.0.1",
-          "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-5.0.1.tgz",
-          "integrity": "sha512-HUhh3EKUiZshpbNxcgkwQ6WcTKT3+rlhfX/pSeLElRTGbORYxdoWFDwVfFZT71xP2hFnUQI/Z5qb9BLdKeJpRA=="
-        }
-      }
+      "integrity": "sha512-qelOQ/Hd9QDyM3xyKdjbkrGqB3Vdz8ZbSXU5ud9xYDqnDDe5ofAvRD3xqbylLLugD702WM2a8I6SztxuSRohCw=="
     },
     "on-finished": {
       "version": "2.3.0",
