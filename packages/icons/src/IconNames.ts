@@ -1,4 +1,4 @@
-export const enum IconName {
+export const enum IconNames {
   DecreaseIndentLegacy = 'DecreaseIndentLegacy',
   IncreaseIndentLegacy = 'IncreaseIndentLegacy',
   GlobalNavButton = 'GlobalNavButton',
