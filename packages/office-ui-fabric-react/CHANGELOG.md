@@ -1,6 +1,45 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 30 Sep 2017 01:26:37 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2017 10:17:42 GMT and should not be manually modified.
+
+## 6.0.1
+Thu, 05 Oct 2017 10:17:42 GMT
+
+### Patches
+
+- Added min-width for button icons so that its easy to create buttons with space for an icon
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
+
+### Minor changes
+
+- ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened.
+- "Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled."
+
+### Patches
+
+- TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied
+- DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order
+- Dropdown: fixed logic in getSelectedIndex to support controlled uses
+- General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs.
+- Removed duplicate header in ResizeGroup.
+- Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation.
+- Fixed duplicate header on Tooltip page.
+- List: Fix Grid example to read right to left in RTL mode
+- High contrast fixes for breadcrumb, contextualMenu, overlay, pivot, calendar, and searchbox
+- BaseButton: Added borderRadius:0 to fix new default styles in webkit
+
+## 5.3.0
+Mon, 02 Oct 2017 10:19:43 GMT
+
+### Minor changes
+
+- PersonaCoin: added `coinSize` prop to allow for customized sizes.
 
 ## 5.2.1
 Sat, 30 Sep 2017 01:26:37 GMT

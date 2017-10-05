@@ -66,6 +66,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       imageAlt,
       imageInitials,
       initialsColor,
+      presence,
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,

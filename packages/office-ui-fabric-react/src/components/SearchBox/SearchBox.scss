@@ -28,12 +28,11 @@
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
-  color: $ms-color-neutralSecondaryAlt;
   font-size: 16px;
   width: 32px;
   text-align: center;
   transition: width $ms-animation-duration-1;
-  color: $ms-color-themeDarkAlt;
+  color: $ms-color-themePrimary;
 }
 
 .icon {
@@ -74,11 +73,23 @@
   color: $ms-color-themePrimary;
 }
 
+// Modifier: Inline searchbox
+.root.rootIsUnderlined {
+  border-width: 0px 0px 1px 0px;
+
+  &.rootIsDisabled {
+    background-color: transparent;
+  }
+}
+
 // State: Active searchbox
 .root.rootIsActive {
   border-color: $ms-color-themePrimary;
   &:hover {
     border-color: $ms-color-themePrimary;
+  }
+  @include high-contrast {
+    border-color: Highlight;
   }
   .iconContainer {
     width: 4px;
@@ -97,10 +108,10 @@
   pointer-events: none;
   cursor: default;
   .iconContainer {
-    color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralTertiary;
   }
   .field {
-    color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralTertiary;
   }
 }
 

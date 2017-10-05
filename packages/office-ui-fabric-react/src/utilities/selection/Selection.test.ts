@@ -1,5 +1,3 @@
-let { expect } = chai;
-
 import { Selection } from './Selection';
 import { IObjectWithKey } from './interfaces';
 
@@ -13,44 +11,44 @@ describe('Selection', () => {
     let selection = new Selection({ onSelectionChanged: () => changeCount++ });
 
     selection.setItems(setA, false);
-    expect(changeCount).equals(0, 'after setting set a');
+    expect(changeCount).toEqual(0);
 
     selection.setKeySelected('a', true, true);
     selection.setKeySelected('a', true, true);
     selection.setIndexSelected(0, true, true);
-    expect(changeCount).equals(1, 'after selecting item a');
+    expect(changeCount).toEqual(1);
 
     // Switch to set b, which also contains item a, in the same position. No change event should occur.
     selection.setItems(setB, false);
-    expect(changeCount).equals(1, 'after switching to set b');
+    expect(changeCount).toEqual(1);
 
     // Select b
     selection.setKeySelected('b', true, true);
-    expect(changeCount).equals(2, 'after selecting b');
+    expect(changeCount).toEqual(2);
 
     // Change back to set a, which has item b in a different index.
     selection.setItems(setA, false);
-    expect(changeCount).equals(3, 'after changing back to set a');
+    expect(changeCount).toEqual(3);
 
     // Change to set b, but clear it.
     selection.setItems(setB, true);
-    expect(changeCount).equals(4, 'after switching to set b and clearing');
+    expect(changeCount).toEqual(4);
 
     // Select an item in set b that doesn't exist in set a, then switch to set a.
     selection.setKeySelected('d', true, true);
     selection.setItems(setA, false);
-    expect(changeCount).equals(6, 'after selecting c and switching to set a');
+    expect(changeCount).toEqual(6);
 
     // Select an item, clear, clear again.
     selection.setAllSelected(true);
     selection.setAllSelected(true);
     selection.setAllSelected(false);
     selection.setAllSelected(false);
-    expect(changeCount).equals(8, 'after selecting all 2 times and clearing 2 times');
+    expect(changeCount).toEqual(8);
 
     selection.setIndexSelected(0, true, true);
     selection.selectToIndex(2, true);
-    expect(changeCount).equals(10, 'after range selecting from 0 to 2');
+    expect(changeCount).toEqual(10);
   });
 
   it('returns false on isAllSelected when no items are selectable', () => {
@@ -62,13 +60,13 @@ describe('Selection', () => {
 
     selection.setItems(setA);
 
-    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after initialization');
+    expect(selection.isAllSelected()).toEqual(false);
 
     selection.setAllSelected(true);
 
-    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after trying to select all the unselectables');
+    expect(selection.isAllSelected()).toEqual(false);
 
-    expect(changeEvents).to.equal(0, 'changeEvents were not 0');
+    expect(changeEvents).toEqual(0);
   });
 
   it('resets unselectable count on setting new items', () => {
@@ -78,14 +76,14 @@ describe('Selection', () => {
     });
 
     selection.setItems(setA);
-    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after initialization');
+    expect(selection.isAllSelected()).toEqual(false);
     selection.setAllSelected(true);
-    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after trying to select all the unselectables');
+    expect(selection.isAllSelected()).toEqual(false);
 
     canSelect = true;
     selection.setItems(setA);
     selection.setAllSelected(true);
-    expect(selection.isAllSelected()).to.equal(true, 'isAllSelected was not false after trying to select all the unselectables');
+    expect(selection.isAllSelected()).toEqual(true);
   });
 
 });

@@ -133,7 +133,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           <Callout
             key={ colorPickerSlotRule.name }
             gapSpace={ 10 }
-            targetElement={ colorPickerElement }
+            target={ colorPickerElement }
             setInitialFocus={ true }
             onDismiss={ this._colorPickerOnDismiss }
           >

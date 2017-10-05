@@ -50,14 +50,14 @@ export class Grid extends BaseComponent<IGridProps, {}> {
                     role={ 'row' }
                     key={ this._id + '-' + rowIndex + '-row' }
                   >
-                    { rows.map((cell) => {
+                    { rows.map((cell, cellIndex) => {
                       return (
                         <td
                           role={ 'presentation' }
-                          key={ this._id + '-' + cell.index + '-cell' }
+                          key={ this._id + '-' + cellIndex + '-cell' }
                           style={ { padding: '0px' } }
                         >
-                          { onRenderItem(cell, cell.index) }
+                          { onRenderItem(cell, cellIndex) }
                         </td>
                       );
                     }) }

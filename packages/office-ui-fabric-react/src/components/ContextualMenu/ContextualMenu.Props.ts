@@ -41,12 +41,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   target?: HTMLElement | string | MouseEvent;
 
   /**
-   * Deprecated at version 0.72.1 and will no longer exist after 1.0 use 'target' instead.
-   * @deprecated
-   */
-  targetElement?: HTMLElement;
-
-  /**
    * How the element should be positioned
    * @default DirectionalHint.bottomAutoEdge
    */

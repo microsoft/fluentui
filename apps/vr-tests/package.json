@@ -1,7 +1,7 @@
 {
   "name": "vr-tests",
   "description": "Visual Regression Tests for Office UI Fabric React",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "private": true,
   "scripts": {
     "build": "",
@@ -28,7 +28,7 @@
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
-    "office-ui-fabric-react": ">=5.2.1 <6.0.0",
+    "office-ui-fabric-react": ">=6.0.0 <7.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "typescript": "2.4.2",

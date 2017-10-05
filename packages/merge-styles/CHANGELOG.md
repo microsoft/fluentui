@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Sat, 30 Sep 2017 01:26:37 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2017 10:17:42 GMT and should not be manually modified.
+
+## 5.3.0
+Thu, 05 Oct 2017 10:17:42 GMT
+
+### Minor changes
+
+- Adding selector support to target child class names that were generated in the same mergeStyleSets set.
 
 ## 5.2.0
 Sat, 30 Sep 2017 01:26:37 GMT
