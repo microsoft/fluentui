@@ -3,6 +3,10 @@ import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
+const alertClicked = (): void => {
+  alert('Clicked');
+};
+
 export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   public constructor() {
     super();
@@ -20,7 +24,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             disabled={ disabled }
             checked={ checked }
             text='Create account'
-            onClick={ () => alert('Clicked') }
+            onClick={ alertClicked }
             split={ true }
             style={ { height: '35px' } }
             menuProps={ {
@@ -47,7 +51,35 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             disabled={ disabled }
             checked={ checked }
             text='Create account'
-            onClick={ () => alert('Clicked') }
+            onClick={ alertClicked }
+            split={ true }
+            style={ { height: '35px' } }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
+        <div>
+          <Label>Primary Action Disabled</Label>
+          <DefaultButton
+            primary
+            data-automation-id='test'
+            disabled={ disabled }
+            primaryDisabled={ true }
+            checked={ checked }
+            text='Create account'
+            onClick={ alertClicked }
             split={ true }
             style={ { height: '35px' } }
             menuProps={ {
@@ -87,9 +119,9 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           data-automation-id='test'
           disabled={ disabled }
           checked={ checked }
-          iconProps={ { iconName: 'Emoji2' } }
+          iconProps={ { iconName: 'Upload' } }
           text='Create account'
-          onClick={ () => alert('Clicked') }
+          onClick={ alertClicked }
           split={ true }
           styles={ customSplitButtonStyles }
           menuProps={ {

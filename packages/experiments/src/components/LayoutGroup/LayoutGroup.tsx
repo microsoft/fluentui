@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.props';
-import { mergeStyles } from '@uifabric/styling';
+import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   autobind,
   getNativeProps,
@@ -44,11 +44,11 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
                 marginBottom: layoutGap + 'px'
               },
               justify === 'fill' && {
-                flexBasis: 0,
+                flexBasis: '0',
                 flexGrow: 1
               }
 
-            ) as string
+            )
           }
         >
           { child }
@@ -67,8 +67,8 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
               display: 'flex',
               flexDirection: direction === 'horizontal' ? 'row' : 'column',
               justifyContent: this._getJustify(justify)
-            }
-          ) as string
+            } as IRawStyle
+          )
         }
       >
         { group }

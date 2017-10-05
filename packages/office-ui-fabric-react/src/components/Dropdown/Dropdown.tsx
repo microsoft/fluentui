@@ -181,6 +181,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             id={ id + '-option' }
             className={ css(
               'ms-Dropdown-title', styles.title,
+              !selectedOption && 'ms-Dropdown-titleIsPlaceHolder',
               !selectedOption && styles.titleIsPlaceHolder,
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
@@ -372,7 +373,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-            targetElement={ this._dropDown }
+            target={ this._dropDown }
             onDismiss={ this._onDismiss }
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
@@ -570,8 +571,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
-    // tslint:disable-next-line:triple-equals
-    return findIndex(options, (option => ((option.isSelected || option.selected) || (selectedKey != null) && option.key === selectedKey)));
+    return findIndex(options, (option => {
+      // tslint:disable-next-line:triple-equals
+      if (selectedKey != null) {
+        return option.key === selectedKey;
+      } else {
+        return !!option.isSelected || !!option.selected;
+      }
+    }));
   }
 
   @autobind

@@ -396,6 +396,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
+      checkboxCellClassName,
       groupProps
     } = this.props;
     let collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
@@ -431,7 +432,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
-      checkButtonAriaLabel: checkButtonAriaLabel
+      checkButtonAriaLabel: checkButtonAriaLabel,
+      checkboxCellClassName: checkboxCellClassName,
     }, this._onRenderRow);
   }
 
@@ -614,10 +616,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
         },
         this._columnOverrides[column.key]);
-
-      if (newColumn.maxWidth && newColumn.calculatedWidth > newColumn.maxWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth;
-      }
 
       totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
 

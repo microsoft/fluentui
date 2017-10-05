@@ -142,6 +142,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       inputProps,
       disabled
     } = this.props;
+
+    const currentIndex = this.suggestionStore.currentIndex;
+    const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
+    const selectedSuggestionAlert = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+
     return (
       <div
         ref={ this._resolveRef('root') }
@@ -155,6 +160,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
         >
+          <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
@@ -173,6 +179,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 autoComplete='off'
                 role='combobox'
                 disabled={ disabled }
+                aria-controls='selected-suggestion-alert'
               />) }
             </div>
           </SelectionZone>
@@ -194,7 +201,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       <Callout
         isBeakVisible={ false }
         gapSpace={ 5 }
-        targetElement={ this.input.inputElement }
+        target={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
       >
@@ -421,22 +428,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.backspace:
         if (!this.props.disabled) {
-            this.onBackspace(ev);
+          this.onBackspace(ev);
         }
         ev.stopPropagation();
         break;
 
       case KeyCodes.del:
         if (!this.props.disabled) {
-            if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
-                if (this.props.onRemoveSuggestion) {
-                    (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
-                }
-                this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
-                this.forceUpdate();
-            } else {
-                this.onBackspace(ev);
+          if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+            if (this.props.onRemoveSuggestion) {
+              (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
             }
+            this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
+            this.forceUpdate();
+          } else {
+            this.onBackspace(ev);
+          }
         }
         ev.stopPropagation();
         break;

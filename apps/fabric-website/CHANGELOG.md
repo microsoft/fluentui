@@ -1,6 +1,37 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 22 Sep 2017 19:08:51 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+
+## 5.0.7
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Patches
+
+- Updated ResourcePage text and made padding more rtl friendly.
+- Added section in Get Started page to document how to use icons in components.
+- Added Icon component to website
+
+## 5.0.6
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Added initializeIcons() call to make all icons in examples on the website available.
+- Added SharePoint Toolkit link and text to ResourcesPage.
+
+## 5.0.5
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Patches
+
+- Updated links in the SharePoint section of the ResourcesPage.
+
+## 5.0.4
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
 
 ## 5.0.3
 Fri, 22 Sep 2017 19:08:51 GMT

@@ -1,6 +1,39 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+
+## 5.1.1
+Wed, 04 Oct 2017 22:40:22 GMT
+
+*Changes not tracked*
+
+## 5.1.0
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Minor changes
+
+- Add a new success background color
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits.
+
+## 0.24.2
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Patches
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+## 0.24.1
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Patches
+
+- Updating default theme registration to use the new `Customizations` helper.
 
 ## 0.24.0
 Thu, 14 Sep 2017 00:34:57 GMT

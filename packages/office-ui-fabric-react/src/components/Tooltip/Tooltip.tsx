@@ -44,18 +44,19 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
     return (
       <Callout
+        target={ targetElement }
+        directionalHint={ directionalHint }
+        directionalHintForRTL={ directionalHintForRTL }
+        {...calloutProps}
+        { ...getNativeProps(this.props, divProperties) }
         className={ mergeStyles(
           'ms-Tooltip',
           AnimationClassNames.fadeIn200,
           styles.root,
           (delay === TooltipDelay.medium) && styles.hasMediumDelay,
-          (maxWidth !== null) && { maxWidth: maxWidth }
-        ) as string }
-        targetElement={ targetElement }
-        directionalHint={ directionalHint }
-        directionalHintForRTL={ directionalHintForRTL }
-        {...calloutProps}
-        { ...getNativeProps(this.props, divProperties) }
+          (maxWidth !== null) && { maxWidth: maxWidth },
+          this.props.className
+        ) }
       >
         <div className={ css('ms-Tooltip-content', styles.content) } id={ id } role='tooltip'>
           { onRenderContent(this.props, this._onRenderContent) }

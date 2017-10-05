@@ -3,7 +3,6 @@ import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } fro
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { getClassNames } from './ContextualMenu.classNames';
-import { ThemeSettingName } from '../../Styling';
 import {
   BaseComponent,
   anchorProperties,
@@ -70,7 +69,25 @@ function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
   return null;
 }
 
-@customizable([ThemeSettingName])
+/**
+ * Returns true if a list of menu items can contain a checkbox
+ */
+export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
+  return items.some(item => {
+    if (item.canCheck) {
+      return true;
+    }
+
+    // If the item is a section, check if any of the items in the section can check.
+    if (item.sectionProps && item.sectionProps.items.some(submenuItem => submenuItem.canCheck === true)) {
+      return true;
+    }
+
+    return false;
+  });
+}
+
+@customizable('ContextualMenu', ['theme'])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
@@ -112,15 +129,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   public componentWillUpdate(newProps: IContextualMenuProps) {
-    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
-      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+    if (newProps.target !== this.props.target) {
+      let newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
     }
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
-    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    let target = this.props.target;
     this._setTargetWindowAndElement(target!);
     this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
@@ -152,7 +169,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       items,
       isBeakVisible,
       labelElementId,
-      targetElement,
       id,
       targetPoint,
       useTargetPoint,
@@ -193,7 +209,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return false;
     }
 
-    let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
+    let hasCheckmarks = canAnyMenuItemsCheck(items);
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
     isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
@@ -223,7 +239,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         <Callout
           {...calloutProps}
           target={ target }
-          targetElement={ targetElement }
           targetPoint={ targetPoint }
           useTargetPoint={ useTargetPoint }
           isBeakVisible={ isBeakVisible }
@@ -461,7 +476,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
           <Icon
-            iconName={ isItemChecked === true ? 'CheckMark' : 'CustomIcon' }
+            iconName={ isItemChecked === true ? 'CheckMark' : '' }
             className={ css('ms-ContextualMenu-icon', styles.icon) }
             onClick={ this._onItemClick.bind(this, item) }
           />

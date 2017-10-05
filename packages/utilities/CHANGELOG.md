@@ -1,6 +1,34 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 25 Sep 2017 10:19:18 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.16.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+## 4.15.0
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Minor changes
+
+- Updating Customizer to support `scopedSettings` prop. Adding a `Customizations` object for applying global and scoped customizations in non-React environments.
 
 ## 4.14.1
 Mon, 25 Sep 2017 10:19:18 GMT
