@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { IPeoplePickerItemProps } from '../PeoplePicker';
+import { IPeoplePickerItemProps } from '../WellPeoplePicker';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import * as stylesImport from './PickerItemsDefault.scss';

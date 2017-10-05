@@ -41,10 +41,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
-          component: require<any>('../components/ExtendedPicker/PeoplePicker/WellPeoplePickerPage').BaseWellPickerPage,
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/WellPeoplePickerPage').WellPeoplePickerPage,
           key: 'WellPeoplePicker',
           name: 'WellPeoplePicker',
           url: '#/examples/wellpeoplepicker'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
+          url: '#/examples/floatingpeoplepicker'
         }
       ]
     }

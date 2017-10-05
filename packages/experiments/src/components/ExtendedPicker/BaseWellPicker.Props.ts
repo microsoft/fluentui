@@ -1,6 +1,7 @@
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.Props';
 import * as React from 'react';
 import { IPickerItemProps, BaseAutoFill, IBasePicker, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
+import { BaseFloatingPicker } from './BaseFloatingPicker';
 
 export interface IBaseWellPicker<T> extends IBasePicker<T> {
   /** Forces the picker to resolve */
@@ -47,6 +48,11 @@ export interface IBaseWellPickerProps<T> {
    * ClassName for the picker.
    */
   className?: string;
+
+  /**
+   * The floating picker type
+   */
+  floatingPickerType?: new (props: IBaseFloatingPickerProps<T>) => BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
 
   /**
    * The properties that will get passed to the floating picker component.

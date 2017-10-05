@@ -28,8 +28,6 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   protected focusZone: FocusZone;
   protected floatingPicker: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
 
-  protected FloatingPickerOfPropertyType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<T>) => BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
-
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
@@ -146,7 +144,7 @@ export class BaseWellPicker<T, P extends IBaseWellPickerProps<T>> extends BaseCo
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    let TypedFloatingPicker = this.FloatingPickerOfPropertyType
+    let TypedFloatingPicker = this.props.floatingPickerType as any;
     return (
       <TypedFloatingPicker
         { ...this.props.floatingPickerProps as any}

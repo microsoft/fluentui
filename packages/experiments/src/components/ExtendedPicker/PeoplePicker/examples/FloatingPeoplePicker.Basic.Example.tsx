@@ -7,19 +7,20 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, IBasePicker, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { ExtendedPeoplePicker } from '../PeoplePicker';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { IBaseFloatingPicker } from '../../BaseFloatingPicker.Props';
+import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mru } from './PeoplePickerExampleData';
-import './ExtendedPeoplePicker.Basic.Example.scss';
-import { SuggestionItemNormal } from '../PeoplePickerItems/SuggestionItemDefault';
+import './WellPeoplePicker.Basic.Example.scss';
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
   currentSelectedItems?: IPersonaProps[];
+  searchValue: string;
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -32,8 +33,9 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
-  private _picker: IBasePicker<IPersonaProps>;
+export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+  private _picker: IBaseFloatingPicker;
+  private _inputElement: HTMLDivElement;
 
   constructor() {
     super();
@@ -48,53 +50,52 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
     this.state = {
       peopleList: peopleList,
       mostRecentlyUsed: mru,
-      currentSelectedItems: []
+      currentSelectedItems: [],
+      searchValue: ''
     };
   }
 
   public render() {
     return (<div>
-      { this._renderExtendedPicker() }
-      <PrimaryButton
-        text='Set focus'
-        onClick={ this._onSetFocusButtonClicked }
-      />
+      <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
+        <SearchBox
+          labelText={ 'Search a person' }
+          onChange={ this._onSearchChange }
+          value={ this.state.searchValue }
+        />
+      </div>
+      { this._renderFloatingPicker() }
     </div>)
   }
 
-  private _renderExtendedPicker() {
+  @autobind
+  private _onSearchChange(newValue: string) {
+    if (newValue !== this.state.searchValue) {
+      this.setState({ searchValue: newValue });
+      this._picker.onQueryStringChanged(newValue);
+    }
+  }
+
+  private _renderFloatingPicker() {
     return (
-      <ExtendedPeoplePicker
-        floatingPickerProps={ {
-          onResolveSuggestions: this._onFilterChanged,
-          onZeroQuerySuggestion: this._returnMostRecentlyUsed,
-          getTextFromItem: (persona: IPersonaProps) => persona.primaryText as string,
-          pickerSuggestionsProps: suggestionProps,
-          className: 'ms-PeoplePicker',
-          key: 'normal',
-          onRemoveSuggestion: this._onRemoveSuggestion,
-          onValidateInput: this._validateInput,
-          onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) => SuggestionItemNormal({ ...props }, { ...itemProps }),
-        } }
+      <FloatingPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
-        className={ 'ms-PeoplePicker' }
+        pickerSuggestionsProps={ suggestionProps }
         key={ 'normal' }
-        removeButtonAriaLabel={ 'Remove' }
-        inputProps={ {
-          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-          'aria-label': 'People Picker'
-        } }
-        componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
+        componentRef={ (component: IBaseFloatingPicker) => { this._picker = component; } }
+        onChange={ this._onChange }
+        inputElement={ this._inputElement }
       />
     );
   }
 
   @autobind
-  private _onSetFocusButtonClicked() {
-    if (this._picker) {
-      this._picker.focus();
-    }
+  private _onChange(selectedSuggestion: IPersonaProps) {
+    this.setState({ searchValue: selectedSuggestion.primaryText as any });
+    this._picker.hidePicker();
   }
 
   @autobind
@@ -121,21 +122,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-      return this._filterPromise(filteredPersonas);
+      return filteredPersonas;
     } else {
       return [];
     }
-  }
-
-  @autobind
-  private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
-    let { mostRecentlyUsed } = this.state;
-    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
-    return this._filterPromise(mostRecentlyUsed);
-  }
-
-  private _filterPromise(personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
-    return personasToReturn;
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
