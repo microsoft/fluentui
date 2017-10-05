@@ -135,7 +135,6 @@ describe('styleToClassName', () => {
         '& .ms-Foo': {}
       }
     })).toEqual('css-0');
-    debugger;
 
     expect(_stylesheet.getRules()).toEqual('');
   });
