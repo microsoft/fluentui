@@ -93,9 +93,15 @@ function _match(currentPath: string, child: any): boolean {
     path = path || '';
     currentPath = currentPath || '';
 
+    // Use regex to search for a query in the currentPath, then slice out the query to find the correct page to render
+    let regex = new RegExp(path + '(\\?.*)'),
+      result = regex.exec(currentPath),
+      questionMarkIndex = result ? result[0].indexOf('?') : 0,
+      newPath = result ? result[0].slice(0, questionMarkIndex) : '';
+
     return (
       (!path) ||
-      (path.toLowerCase() === currentPath.toLowerCase())
+      (path.toLowerCase() === currentPath.toLowerCase()) || (path.toLowerCase() === newPath.toLowerCase())
     );
   }
 
