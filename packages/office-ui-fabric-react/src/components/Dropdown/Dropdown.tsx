@@ -538,7 +538,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
     if (!selectedKey) {
       if (this.props.multiSelect) {
-        return [];
+        return this._getAllSelectedIndices(options);
       }
       let selectedIndex = this._getSelectedIndex(options, null);
       return selectedIndex !== -1 ? [selectedIndex] : [];
@@ -563,6 +563,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       return [];
     }
     return selectedOptions;
+  }
+
+  private _getAllSelectedIndices(options: IDropdownOption[]): number[] {
+    return options
+      .map((option: IDropdownOption, index: number) => option.selected ? index : -1)
+      .filter(index => index !== -1);
+
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number | null): number {
@@ -632,11 +639,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.home:
-        newIndex = this._moveIndex(1, 0, selectedIndex);
+        if (!this.props.multiSelect) {
+          newIndex = this._moveIndex(1, 0, selectedIndex);
+        }
         break;
 
       case KeyCodes.end:
-        newIndex = this._moveIndex(-1, this.props.options.length - 1, selectedIndex);
+        if (!this.props.multiSelect) {
+          newIndex = this._moveIndex(-1, this.props.options.length - 1, selectedIndex);
+        }
         break;
 
       case KeyCodes.space:

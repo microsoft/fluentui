@@ -90,7 +90,6 @@ export class DropdownBasicExample extends React.Component<any, any> {
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
           defaultSelectedKeys={ ['Apple', 'Banana'] }
-          onChanged={ this.changeState }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
           multiSelect

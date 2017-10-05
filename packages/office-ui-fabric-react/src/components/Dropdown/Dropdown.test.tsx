@@ -24,118 +24,67 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 
 describe('Dropdown', () => {
 
-  it('Can flip between enabled and disabled.', () => {
+  describe('single-select', () => {
 
-    let container = document.createElement('div');
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    it('Can flip between enabled and disabled.', () => {
 
-    expect(dropdownRoot.className).not.toEqual(expect.stringMatching('is-disabled'));
-    expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('true');
+      let container = document.createElement('div');
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
-    ReactDOM.render(
-      <Dropdown
-        disabled={ true }
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
+      expect(dropdownRoot.className).not.toEqual(expect.stringMatching('is-disabled'));
+      expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('true');
 
-    expect(dropdownRoot.className).toEqual(expect.stringMatching('is-disabled'));
-    expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('false');
-  });
+      ReactDOM.render(
+        <Dropdown
+          disabled={ true }
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
 
-  it('Renders no selected item in default case', () => {
-    let container = document.createElement('div');
+      expect(dropdownRoot.className).toEqual(expect.stringMatching('is-disabled'));
+      expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('false');
+    });
 
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+    it('Renders no selected item in default case', () => {
+      let container = document.createElement('div');
 
-    expect(titleElement.textContent).toEqual('');
-  });
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-  it('Renders a selected item if option specifies selected', () => {
-    let container = document.createElement('div');
+      expect(titleElement.textContent).toEqual('');
+    });
 
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2' },] }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+    it('Renders a selected item if option specifies selected', () => {
+      let container = document.createElement('div');
 
-    expect(titleElement.textContent).toEqual('1');
-  });
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2' },] }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-  it('Renders a selected item in uncontrolled case', () => {
-    let container = document.createElement('div');
+      expect(titleElement.textContent).toEqual('1');
+    });
 
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        defaultSelectedKey='1'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+    it('Renders a selected item in uncontrolled case', () => {
+      let container = document.createElement('div');
 
-    expect(titleElement.textContent).toEqual('1');
-  });
-
-  it('Renders a selected item in controlled case', () => {
-    let container = document.createElement('div');
-
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        selectedKey='1'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-
-    expect(titleElement.textContent).toEqual('1');
-  });
-
-  it('Renders a selected item in controlled multi-select case', () => {
-    let container = document.createElement('div');
-
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        selectedKeys={ ['1', '3'] }
-        multiSelect
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-
-    expect(titleElement.textContent).toEqual('1, 3');
-  });
-
-  it('Can change items in uncontrolled case', () => {
-    let container = document.createElement('div');
-    let dropdownRoot: HTMLElement | undefined;
-
-    document.body.appendChild(container);
-
-    try {
       ReactDOM.render(
         <Dropdown
           label='testgroup'
@@ -143,88 +92,395 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1');
+    });
+
+    it('does not change the selected item in when defaultKey changes', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          defaultSelectedKey='1'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          defaultSelectedKey='2'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      expect(titleElement.textContent).toEqual('1');
+    });
+
+    it('Renders a selected item in controlled case', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          selectedKey='1'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1');
+    });
+
+    it('does change the selected item in when selectedKey changes', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          selectedKey='1'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          selectedKey='2'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      expect(titleElement.textContent).toEqual('2');
+    });
+
+    it('Can change items in uncontrolled case', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKey='1'
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      }
+      finally {
+        expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('2');
+      }
+    });
+
+    it('Will select the first valid item on keypress', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('1');
+    });
+
+    it('Will select the first valid item on Home keypress', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
+
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('1');
+    });
+
+    it('Will select the last valid item on End keypress', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
+
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('6');
+    });
+
+    it('Will skip over headers and separators on keypress', () => {
+      let container = document.createElement('div');
+      let dropdownRoot;
+      let titleElement;
+
+      document.body.appendChild(container);
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
       dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
-      ReactTestUtils.Simulate.click(dropdownRoot);
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('1');
 
-      let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
-      ReactTestUtils.Simulate.click(secondItemElement);
-    }
-    finally {
-      expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('2');
-    }
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+      titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('4');
+    });
   });
 
-  it('Will select the first valid item on keypress', () => {
-    let container = document.createElement('div');
+  describe('multi-select', () => {
 
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+    it('Renders no selected item in default case', () => {
+      let container = document.createElement('div');
 
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).toEqual('1');
-  });
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+          multiSelect
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-  it('Will select the first valid item on Home keypress', () => {
-    let container = document.createElement('div');
+      expect(titleElement.textContent).toEqual('');
+    });
 
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
+    it('Renders a selected item if option specifies selected', () => {
+      let container = document.createElement('div');
 
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).toEqual('1');
-  });
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2' },] }
+          multiSelect
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-  it('Will select the last valid item on End keypress', () => {
-    let container = document.createElement('div');
+      expect(titleElement.textContent).toEqual('1');
+    });
 
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
+    it('Renders multiple selected items if multiple options specify selected', () => {
+      let container = document.createElement('div');
 
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).toEqual('6');
-  });
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2', selected: true },] }
+          multiSelect
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-  it('Will skip over headers and separators on keypress', () => {
-    let container = document.createElement('div');
-    let dropdownRoot;
-    let titleElement;
+      expect(titleElement.textContent).toEqual('1, 2');
+    });
 
-    document.body.appendChild(container);
-    ReactDOM.render(
-      <Dropdown
-        label='testgroup'
-        options={ DEFAULT_OPTIONS }
-      />,
-      container);
-    dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    it('Renders a selected item in uncontrolled case', () => {
+      let container = document.createElement('div');
 
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
-    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).toEqual('1');
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          defaultSelectedKeys={ ['1', '2'] }
+          multiSelect
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
-    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
-    expect(titleElement.textContent).toEqual('4');
+      expect(titleElement.textContent).toEqual('1, 2');
+    });
+
+    it('does not change the selected items when defaultSelectedKeys changes', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          defaultSelectedKeys={ ['1', '2'] }
+          multiSelect
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1, 2');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          defaultSelectedKeys={ ['3', '4'] }
+          multiSelect
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+
+      expect(titleElement.textContent).toEqual('1, 2');
+    });
+
+    it('Renders selected items in controlled case', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          selectedKeys={ ['1', '3'] }
+          multiSelect
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1, 3');
+    });
+
+    it('changes selected items in controlled case', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          selectedKeys={ ['1', '3'] }
+          multiSelect
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1, 3');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          selectedKeys={ ['2', '4'] }
+          multiSelect
+          options={ DEFAULT_OPTIONS }
+        />,
+        container);
+      expect(titleElement.textContent).toEqual('2, 4');
+    });
+
+    it('Can change items in uncontrolled case', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKeys={ ['1'] }
+            multiSelect
+            id='test'
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      }
+      finally {
+        expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('1, 2');
+      }
+    });
+
+    it('Will not select the first valid item on keypress', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+          multiSelect
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('');
+    });
+
+    it('Will not select the first valid item on Home keypress', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+          multiSelect
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
+
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('');
+    });
+
+    it('Will not select the last valid item on End keypress', () => {
+      let container = document.createElement('div');
+
+      ReactDOM.render(
+        <Dropdown
+          label='testgroup'
+          options={ DEFAULT_OPTIONS }
+          multiSelect
+        />,
+        container);
+      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
+
+      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      expect(titleElement.textContent).toEqual('');
+    });
+
   });
 });
