@@ -34,7 +34,7 @@ export interface ISwatchColorPickerState {
 class ColorPickerGridCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
 }
 
-@customizable('Toggle', ['theme'])
+@customizable('SwatchColorPicker', ['theme'])
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
 
   public static defaultProps = {
