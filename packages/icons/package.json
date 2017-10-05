@@ -23,7 +23,7 @@
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.1.1 <6.0.0",
+    "@uifabric/styling": ">=5.2.0 <6.0.0",
     "tslib": "^1.6.0"
   }
 }
