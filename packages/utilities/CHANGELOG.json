@@ -2,6 +2,34 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "@uifabric/utilities_v5.1.0",
+      "date": "Thu, 05 Oct 2017 16:29:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b07513cf96f054685766b3ffbf9896b1d10332f9",
+            "comment": "Undoing 6.0 bump which was made by automation inadvertently."
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.0",
+      "tag": "@uifabric/utilities_v6.0.0",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "1bad538220cc18885e7e6efd7c4cc0e7846c25d4",
+            "comment": "Positioning: Refactored positioning and removed deprecated properties"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/utilities_v5.0.1",
       "date": "Wed, 27 Sep 2017 00:20:58 GMT",
