@@ -35,30 +35,8 @@ $Breadcrumb-chevron-sm: 8px;
   }
 }
 
-@mixin Breadcumb-xxlarge {
-  .listItem .itemLink {
-    font-size: $ms-font-size-xl;
-  }
-
-  .chevron {
-    font-size: $ms-font-size-s;
-  }
-}
-
 .root {
   margin: 23px 0 1px;
-}
-
-.root.rootIsSmall {
-  @include Breadcumb-small;
-}
-
-.root.rootIsLarge {
-  @include Breadcumb-large;
-}
-
-.root.rootIsXXLarge {
-  @include Breadcumb-xxlarge;
 }
 
 .list {
@@ -70,6 +48,7 @@ $Breadcrumb-chevron-sm: 8px;
 }
 
 .chevron {
+  font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
 
   @include high-contrast {
@@ -160,6 +139,7 @@ $Breadcrumb-chevron-sm: 8px;
 
 @media screen and (max-width: $uhf-screen-max-mobile) {
   // margin: 11px 0 1px;
+  @include Breadcumb-large;
 
   .overflowButton {
     font-size: $ms-font-size-m-plus;

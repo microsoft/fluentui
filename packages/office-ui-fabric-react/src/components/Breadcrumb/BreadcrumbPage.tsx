@@ -9,14 +9,10 @@ import {
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { BreadcrumbStatus } from './Breadcrumb.checklist';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-import { BreadcrumbSizesExample } from './examples/Breadcrumb.Sizes.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 
 const BreadcrumbBasicExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
-) as string;
-const BreadcrumbSizesExampleCode = require(
-  '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Sizes.Example.tsx'
 ) as string;
 const BreadcrumbStaticExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx'
@@ -35,12 +31,6 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
               code={ BreadcrumbBasicExampleCode }
             >
               <BreadcrumbBasicExample />
-            </ExampleCard>
-            <ExampleCard
-              title='Breadcrumb sizes'
-              code={ BreadcrumbSizesExampleCode }
-            >
-              <BreadcrumbSizesExample />
             </ExampleCard>
             <ExampleCard
               title='Breadcrumb with static width '
