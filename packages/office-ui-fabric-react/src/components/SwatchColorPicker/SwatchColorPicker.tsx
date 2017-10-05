@@ -24,6 +24,7 @@ import * as stylesImport from './SwatchColorPicker.scss';
 import {
   customizable
 } from '../../Utilities';
+import { getClassNames } from './SwatchColorPicker.classNames';
 
 const styles: any = stylesImport;
 
@@ -186,7 +187,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    */
   @autobind
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
-    const themedClass: string = this._getSwatchThemeColor(colorOption.color as string);
+    let { theme } = this.props;
+    const classNames = getClassNames(
+      theme!,
+      colorOption.color as string
+    );
+    const themedClass: string | undefined = classNames.themeClass;
     const svgClassName: string =
       css(
         styles.svg,
@@ -211,58 +217,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     );
   }
 
-  /**
-   * Returns the css class associated with color
-   * @param color
-   */
-  private _getSwatchThemeColor(color: string) {
-    const theme: ITheme = getTheme();
-    const palette: IPalette = theme.palette;
-    switch (color) {
-      case palette.neutralDark:
-        return styles.neutralDark;
-      case palette.neutralLight:
-        return styles.neutralLight;
-      case palette.neutralLighter:
-        return styles.neutralLighter;
-      case palette.neutralLighterAlt:
-        return styles.neutralLighterAlt;
-      case palette.neutralPrimary:
-        return styles.neutralPrimary;
-      case palette.neutralPrimaryAlt:
-        return styles.neutralPrimaryAlt;
-      case palette.neutralQuaternary:
-        return styles.neutralQuaternary;
-      case palette.neutralQuaternaryAlt:
-        return styles.neutralQuaternaryAlt;
-      case palette.neutralSecondary:
-        return styles.neutralSecondary;
-      case palette.neutralTertiary:
-        return styles.neutralTertiary;
-      case palette.neutralTertiaryAlt:
-        return styles.neutralTertiaryAlt;
-      case palette.themeDark:
-        return styles.themeDark;
-      case palette.themeDarkAlt:
-        return styles.themeDarkAlt;
-      case palette.themeDarker:
-        return styles.themeDarker;
-      case palette.themeLight:
-        return styles.themeLight;
-      case palette.themeLighter:
-        return styles.ThemeLighter;
-      case palette.themeLighterAlt:
-        return styles.themeLighterAlt;
-      case palette.themePrimary:
-        return styles.themePrimary;
-      case palette.themeSecondary:
-        return styles.themeSecondary;
-      case palette.themeTertiary:
-        return styles.themeTertiary;
-      default:
-        return undefined;
-    }
-  }
 
   /**
    * Handle the click on a cell

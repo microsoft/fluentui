@@ -1,3 +1,4 @@
+import { ITheme } from '../../Styling';
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -74,6 +75,11 @@ export interface ISwatchColorPickerProps {
    * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa). Defaults to true
    */
   shouldFocusCircularNavigate?: boolean;
+
+  /**
+ * Theme provided by HOC.
+ */
+  theme?: ITheme;
 }
 
 export interface IColorCellProps {
