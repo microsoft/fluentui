@@ -1,6 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 27 Sep 2017 00:20:58 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+
+## 5.0.3
+Wed, 04 Oct 2017 22:40:22 GMT
+
+*Changes not tracked*
+
+## 5.0.2
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Patches
+
+- Code cleanup after move to MergeStyles
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT

@@ -77,6 +77,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       className,
       description,
       disabled,
+      primaryDisabled,
       href,
       iconProps,
       menuIconProps,
@@ -87,6 +88,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
          } = this.props;
 
     let { menuProps } = this.state;
+    // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
+    let isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
     this._classNames = getClassNames(
       styles!,
@@ -94,7 +97,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName!,
       iconProps && iconProps.className,
       menuIconProps && menuIconProps.className,
-      disabled!,
+      isPrimaryButtonDisabled!,
       checked!,
       !!this.state.menuProps && !this.props.split
     );
@@ -102,7 +105,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
     // anchor button as normal button
-    const renderAsAnchor: boolean = !disabled && !!href;
+    const renderAsAnchor: boolean = !isPrimaryButtonDisabled && !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
       assign(
@@ -146,7 +149,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       {
         className: this._classNames.root,
         ref: this._resolveRef('_buttonElement'),
-        'disabled': disabled,
+        'disabled': isPrimaryButtonDisabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
@@ -322,7 +325,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ this._classNames.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ this._classNames.screenReaderText } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );

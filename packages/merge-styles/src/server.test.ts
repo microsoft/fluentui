@@ -7,7 +7,7 @@ describe('staticRender', () => {
   it('can render content', () => {
 
     const { html, css } = renderStatic(() => {
-      const classNames = mergeStyleSets({
+      const classNames: { root: string } = mergeStyleSets({
         root: {
           background: 'red'
         }
@@ -16,7 +16,7 @@ describe('staticRender', () => {
       return `<div class="${classNames.root}">Hello!</div>`;
     });
 
-    expect(html).toEqual(`<div class="css-0">Hello!</div>`);
-    expect(css).toEqual(`.css-0{background:red;}`);
+    expect(html).toEqual(`<div class="root-0">Hello!</div>`);
+    expect(css).toEqual(`.root-0{background:red;}`);
   });
 });

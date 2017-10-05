@@ -67,17 +67,17 @@ export const getClassNames = memoizeFunction((
           ':active': styles.rootCheckedPressed
         }
       }
-    ) as string,
+    ),
 
     flexContainer: mergeStyles(
       'ms-Button-flexContainer',
       styles.flexContainer
-    ) as string,
+    ),
 
     textContainer: mergeStyles(
       'ms-Button-textContainer',
       styles.textContainer
-    ) as string,
+    ),
 
     icon: mergeStyles(
       'ms-Button-icon',
@@ -86,14 +86,14 @@ export const getClassNames = memoizeFunction((
       expanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
-    ) as string,
+    ),
 
     label: mergeStyles(
       'ms-Button-label',
       styles.label,
       checked && styles.labelChecked,
       disabled && styles.labelDisabled,
-    ) as string,
+    ),
 
     menuIcon: mergeStyles(
       'ms-Button-menuIcon',
@@ -101,18 +101,18 @@ export const getClassNames = memoizeFunction((
       styles.menuIcon,
       checked && styles.menuIconChecked,
       disabled && styles.menuIconDisabled
-    ) as string,
+    ),
 
     description: mergeStyles(
       'ms-Button-description',
       styles.description,
       checked && styles.descriptionChecked,
       disabled && styles.descriptionDisabled
-    ) as string,
+    ),
 
     screenReaderText: mergeStyles(
       'ms-Button-screenReaderText',
       styles.screenReaderText
-    ) as string
+    )
   };
 });

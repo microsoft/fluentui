@@ -10,20 +10,20 @@ export interface ICalloutCoverExampleState {
 }
 
 const DIRECTION_OPTIONS = [
-  { key: DirectionalHint[DirectionalHint.topLeftEdge], text: 'Top Left Edge' },
-  { key: DirectionalHint[DirectionalHint.topCenter], text: 'Top Center' },
-  { key: DirectionalHint[DirectionalHint.topRightEdge], text: 'Top Right Edge' },
-  { key: DirectionalHint[DirectionalHint.topAutoEdge], text: 'Top Auto Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomLeftEdge], text: 'Bottom Left Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomCenter], text: 'Bottom Center' },
-  { key: DirectionalHint[DirectionalHint.bottomRightEdge], text: 'Bottom Right Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomAutoEdge], text: 'Bottom Auto Edge' },
-  { key: DirectionalHint[DirectionalHint.leftTopEdge], text: 'Left Top Edge' },
-  { key: DirectionalHint[DirectionalHint.leftCenter], text: 'Left Center' },
-  { key: DirectionalHint[DirectionalHint.leftBottomEdge], text: 'Left Bottom Edge' },
-  { key: DirectionalHint[DirectionalHint.rightTopEdge], text: 'Right Top Edge' },
-  { key: DirectionalHint[DirectionalHint.rightCenter], text: 'Right Center' },
-  { key: DirectionalHint[DirectionalHint.rightBottomEdge], text: 'Right Bottom Edge' },
+  { key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
+  { key: DirectionalHint.topCenter, text: 'Top Center' },
+  { key: DirectionalHint.topRightEdge, text: 'Top Right Edge' },
+  { key: DirectionalHint.topAutoEdge, text: 'Top Auto Edge' },
+  { key: DirectionalHint.bottomLeftEdge, text: 'Bottom Left Edge' },
+  { key: DirectionalHint.bottomCenter, text: 'Bottom Center' },
+  { key: DirectionalHint.bottomRightEdge, text: 'Bottom Right Edge' },
+  { key: DirectionalHint.bottomAutoEdge, text: 'Bottom Auto Edge' },
+  { key: DirectionalHint.leftTopEdge, text: 'Left Top Edge' },
+  { key: DirectionalHint.leftCenter, text: 'Left Center' },
+  { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
+  { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
+  { key: DirectionalHint.rightCenter, text: 'Right Center' },
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
 export class CalloutCoverExample extends React.Component<any, ICalloutCoverExampleState> {
@@ -50,7 +50,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
         <div className='ms-CalloutExample-configArea'>
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint!] }
+            selectedKey={ directionalHint! }
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged }
           />
@@ -65,7 +65,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
           <Callout
             className='ms-CalloutExample-callout'
             onDismiss={ this._onDismiss }
-            targetElement={ this._menuButtonElement }
+            target={ this._menuButtonElement }
             directionalHint={ directionalHint }
             coverTarget={ true }
             isBeakVisible={ false }
@@ -102,7 +102,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
 
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: (DirectionalHint as any)[option.key]
+      directionalHint: option.key as number
     });
   }
 }

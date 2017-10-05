@@ -22,6 +22,26 @@
       "sourceMaps": true
     },
     {
+      "name": "Debug test in experiments",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/build.js",
+      "cwd": "${workspaceRoot}/packages/experiments",
+      "stopOnEntry": false,
+      "args": [
+        "jest",
+      ],
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
       "name": "Debug build Production",
       "type": "node",
       "request": "launch",
