@@ -116,8 +116,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakWidth,
       calloutWidth,
       finalHeight,
-      backgroundColor,
-      lowerCalloutContent } = this.props;
+      backgroundColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
