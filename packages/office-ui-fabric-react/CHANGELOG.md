@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2017 10:17:42 GMT and should not be manually modified.
+
+## 6.0.1
+Thu, 05 Oct 2017 10:17:42 GMT
+
+### Patches
+
+- Added min-width for button icons so that its easy to create buttons with space for an icon
 
 ## 6.0.0
 Wed, 04 Oct 2017 22:40:22 GMT
