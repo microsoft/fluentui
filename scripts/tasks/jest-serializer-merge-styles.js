@@ -40,15 +40,20 @@ function serializeRules(rules, indent) {
   let ruleStrings = [];
 
   for (let i = 0; i < rules.length; i += 2) {
-    ruleStrings.push(indent((i === 0 ? '' : rules[i] + ' ') + `{`));
+    const selector = rules[i];
+    const insertedRules = rules[i + 1];
 
-    rules[i + 1].split(';').sort().forEach(rule => {
-      if (rule) {
-        ruleStrings.push(indent('  ' + rule.replace(':', ': ') + ';'));
-      }
-    });
+    if (insertedRules) {
+      ruleStrings.push(indent((i === 0 ? '' : selector + ' ') + `{`));
 
-    ruleStrings.push(indent('}'));
+      insertedRules.split(';').sort().forEach(rule => {
+        if (rule) {
+          ruleStrings.push(indent('  ' + rule.replace(':', ': ') + ';'));
+        }
+      });
+
+      ruleStrings.push(indent('}'));
+    }
   }
 
   return ruleStrings.join('\n');

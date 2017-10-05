@@ -1,6 +1,7 @@
-import { mergeStyles } from './mergeStyles';
+import { extractStyleParts } from './extractStyleParts';
 import { concatStyleSets } from './concatStyleSets';
 import { IStyle } from './IStyle';
+import { styleToRegistration, applyRegistration } from './styleToClassName';
 
 /**
  * Allows you to pass in 1 or more sets of areas which will return a merged
@@ -11,17 +12,36 @@ import { IStyle } from './IStyle';
 export function mergeStyleSets<T>(
   ...cssSets: ({[P in keyof T]?: IStyle } | null | undefined)[]
 ): T {
-  const classNameSet: Partial<T> = {};
+  // tslint:disable-next-line:no-any
+  const classNameSet: any = {};
   let cssSet = cssSets[0];
 
   if (cssSet) {
     if (cssSets.length > 1) {
       cssSet = concatStyleSets(...cssSets);
     }
+
+    const registrations = [];
+
     for (const prop in cssSet) {
       if (cssSet.hasOwnProperty(prop)) {
+        const args: IStyle = cssSet[prop];
+
         // tslint:disable-next-line:no-any
-        (classNameSet as any)[prop] = mergeStyles(cssSet[prop] as IStyle);
+        const { classes, objects } = extractStyleParts(args as any);
+        const registration = styleToRegistration({ displayName: prop }, objects);
+
+        registrations.push(registration);
+
+        if (registration) {
+          classNameSet[prop] = classes.concat([registration.className]).join(' ');
+        }
+      }
+    }
+
+    for (const registration of registrations) {
+      if (registration) {
+        applyRegistration(registration, classNameSet);
       }
     }
   }

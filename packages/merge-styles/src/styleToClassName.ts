@@ -141,33 +141,87 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
   return allEntries.join('');
 }
 
-export function styleToClassName(...args: IStyle[]): string {
+export interface IRegistration {
+  className: string;
+  key: string;
+  args: IStyle[];
+  rulesToInsert: string[];
+}
+
+export function styleToRegistration(...args: IStyle[]): IRegistration | undefined {
   const rules: IRuleSet = extractRules(args);
   const key = getKeyForRules(rules);
-  let className = '';
 
   if (key) {
     const stylesheet = Stylesheet.getInstance();
+    const registration: Partial<IRegistration> = {
+      className: stylesheet.classNameFromKey(key),
+      key,
+      args
+    };
 
-    className = stylesheet.classNameFromKey(key)!;
+    if (!registration.className) {
+      registration.className = stylesheet.getClassName(getDisplayName(rules));
+      const rulesToInsert: string[] = [];
 
-    if (!className) {
-      className = stylesheet.getClassName(getDisplayName(rules));
-      const registeredRules: string[] = [];
-
-      for (let selector of rules.__order) {
-        const rulesToInsert: string = serializeRuleEntries(rules[selector]);
-
-        if (rulesToInsert) {
-          registeredRules.push(selector, rulesToInsert);
-          selector = selector.replace(/\&/g, `.${className}`);
-          stylesheet.insertRule(`${selector}{${rulesToInsert}}`);
-        }
+      for (const selector of rules.__order) {
+        rulesToInsert.push(
+          selector,
+          serializeRuleEntries(rules[selector])
+        );
       }
-
-      stylesheet.cacheClassName(className, key, args, registeredRules);
+      registration.rulesToInsert = rulesToInsert;
     }
+
+    return registration as IRegistration;
+  }
+}
+
+export function applyRegistration(
+  registration: IRegistration,
+  classMap?: { [key: string]: string }
+): void {
+  const stylesheet = Stylesheet.getInstance();
+  const { className, key, args, rulesToInsert } = registration;
+
+  if (rulesToInsert) {
+    // rulesToInsert is an ordered array of selector/rule pairs.
+    for (let i = 0; i < rulesToInsert.length; i += 2) {
+      const rules = rulesToInsert[i + 1];
+      if (rules) {
+        let selector = rulesToInsert[i];
+
+        // Fix selector using map.
+        selector = selector.replace(/(&)|\$([\w-]+)\b/g, (match: string, amp: string, cn: string): string => {
+          if (amp) {
+            return '.' + registration.className;
+          } else if (cn) {
+            return '.' + ((classMap && classMap[cn]) || cn);
+          }
+          return '';
+        });
+
+        // Insert.
+        stylesheet.insertRule(`${selector}{${rules}}`);
+      }
+    }
+    stylesheet.cacheClassName(
+      className!,
+      key!,
+      args!,
+      rulesToInsert
+    );
+
+  }
+}
+
+export function styleToClassName(...args: IStyle[]): string {
+  const registration = styleToRegistration(...args);
+  if (registration) {
+    applyRegistration(registration);
+
+    return registration.className;
   }
 
-  return className;
+  return '';
 }
