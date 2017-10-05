@@ -176,9 +176,4 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
     * @deprecated
     */
   beakStyle?: string;
-
-  /**
-   * Add additional content below the callout list.
-   */
-  lowerCalloutContent?: () => void;
 }

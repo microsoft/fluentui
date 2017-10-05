@@ -753,7 +753,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
-      calloutProps
+      calloutProps,
+      lowerCalloutContent
     } = props;
 
     return (
@@ -772,6 +773,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
+        {
+          lowerCalloutContent && lowerCalloutContent()
+        }
       </Callout>
     );
   }

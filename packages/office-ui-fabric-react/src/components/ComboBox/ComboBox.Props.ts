@@ -95,6 +95,10 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    */
   scrollSelectedToTop?: boolean;
 
+  /**
+   * Add additional content below the callout list.
+   */
+  lowerCalloutContent?: () => void;
 }
 
 export interface IComboBoxStyles {

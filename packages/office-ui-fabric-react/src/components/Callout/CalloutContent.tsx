@@ -186,7 +186,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           >
             { children }
           </Popup>
-          { lowerCalloutContent && lowerCalloutContent() }
         </div>
       </div>
     );
