@@ -4,9 +4,8 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
 } from '../../Utilities';
-import { IButtonStyles } from '../Button';
 
 export interface ICallout {
 
