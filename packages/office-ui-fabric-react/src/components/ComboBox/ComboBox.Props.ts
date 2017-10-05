@@ -96,11 +96,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   scrollSelectedToTop?: boolean;
 
   /**
-   * The index of the option to select (use selectedKey to match option's key)
-   */
-  selectedIndex?: number;
-
-  /**
    * Set input field text
    */
   inputFieldText?: string;

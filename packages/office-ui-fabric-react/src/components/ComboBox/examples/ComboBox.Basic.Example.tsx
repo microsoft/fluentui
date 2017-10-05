@@ -9,6 +9,7 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
+import { BaseAutoFill } from '../../pickers/AutoFill/BaseAutoFill';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
@@ -38,14 +39,19 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     super();
     this.state = {
       options: [],
-      selectedOptionKey: null,
-      value: 'Calibri'
+      selectedOptionKey: 0,
+      value: 'Calibri',
+      timeValue: '1:00 AM',
+      enteredTime: null
     };
   }
 
   public render() {
-    let { options, selectedOptionKey, value } = this.state;
+    let { options, selectedOptionKey, value, timeValue } = this.state;
 
+
+    console.log('timeValue ', timeValue);
+    console.log('options ', options);
     return (
       <div className='ms-ComboBoxBasicExample'>
 
@@ -178,6 +184,45 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:enable:jsx-no-lambda
           />
         }
+
+
+        { timeValue ?
+          <ComboBox
+            label='ComboBox example with overridden selection:'
+            id='Basicdrop6'
+            ariaLabel='ComboBox example with overridden selection'
+            allowFreeform={ true }
+            autoComplete='on'
+            options={ options }
+            onChanged={ this._onTimeChanged }
+            onResolveOptions={ this._onResolveTimeOptions }
+            onRenderOption={ this._onRenderTimeOption }
+            value={ timeValue && timeValue }
+            title={ 'test' }
+            // tslint:disable:jsx-no-lambda
+            onFocus={ () => console.log('onFocus called') }
+            onBlur={ () => console.log('onBlur called') }
+          // tslint:enable:jsx-no-lambda
+          />
+          :
+          <ComboBox
+            selectedKey={ selectedOptionKey && selectedOptionKey }
+            label='ComboBox example with overridden selection:'
+            id='Basicdrop6'
+            ariaLabel='ComboBox example with overridden selection'
+            allowFreeform={ true }
+            autoComplete='on'
+            options={ options }
+            onChanged={ this._onTimeChanged }
+            onResolveOptions={ this._onResolveTimeOptions }
+            onRenderOption={ this._onRenderTimeOption }
+            title={ 'test' }
+            // tslint:disable:jsx-no-lambda
+            onFocus={ () => console.log('onFocus called') }
+            onBlur={ () => console.log('onBlur called') }
+          // tslint:enable:jsx-no-lambda
+          />
+        }
       </div>
 
     );
@@ -264,5 +309,68 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         value: null
       });
     }
+  }
+
+  @autobind
+  private _onResolveTimeOptions(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
+    console.log("ON RESOLVE OPTIONS");
+    if (this.state.options.length > 0) {
+      return this.state.options;
+    }
+
+    let newOptions =
+      [
+        { key: 'A', text: '1:00 AM' },
+        { key: 'B', text: '2:00 AM' },
+        { key: 'C', text: '3:00 AM' },
+        { key: 'D', text: '4:00 AM' },
+        { key: 'E', text: '5:00 AM' },
+        { key: 'F', text: '6:00 AM' },
+        { key: 'G', text: '7:00 AM' },
+      ];
+
+    let value = this.state.enteredTime ? this.state.enteredTime : null;
+
+    console.log('value--- ', value);
+    this.setState({
+      options: newOptions,
+      selectedOptionKey: 0,
+      timeValue: value
+    });
+
+    return newOptions;
+  }
+
+  @autobind
+  private _onTimeChanged(option: IComboBoxOption, index: number, value: string) {
+
+    console.log("ON TIME CHANGED", value);
+    if (option !== undefined) {
+      this.setState({
+        selectedOptionKey: option.key,
+        timeValue: null
+      });
+    } else if (index !== undefined && index >= 0 && index < this.state.options.length) {
+      this.setState({
+        selectedOptionKey: this.state.options[index].key,
+        timeValue: null
+      });
+    } else if (value !== undefined) {
+
+      this.setState({
+        selectedOptionKey: 1,
+        timeValue: null,
+        enteredTime: value
+      });
+    }
+
+
+  }
+
+  @autobind
+  private _onRenderTimeOption(item: IComboBoxOption) {
+    console.log("ON RENDER TIME OPTION");
+
+    return <span className={ 'ms-ComboBox-optionText' }>{ item.text }</span>;
   }
 }
