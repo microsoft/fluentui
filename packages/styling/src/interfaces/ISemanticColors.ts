@@ -58,6 +58,11 @@ export interface ISemanticColors {
   bodyText: string;
 
   /**
+   * The default text color for a selected menu item title.
+   */
+  bodySelectedText: string;
+
+  /**
    * De-emphasized text; e.g. metadata, captions, placeholder text.
    */
   bodySubtext: string;
@@ -157,11 +162,6 @@ export interface ISemanticColors {
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;
-
-  /**
-   * The default text color for a selected menu item title.
-   */
-  menuSelectedText: string;
 
   /**
    * The default colors of icons in menus.

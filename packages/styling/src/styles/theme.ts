@@ -83,6 +83,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
   return {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
+    bodySelectedText: p.black,
     bodySubtext: p.neutralSecondary,
     bodyDivider: p.neutralLight,
 
@@ -108,7 +109,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
 
     menuItemBackgroundHovered: p.neutralLighter,
     menuItemBackgroundChecked: p.neutralQuaternaryAlt,
-    menuSelectedText: p.black,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 

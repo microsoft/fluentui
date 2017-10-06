@@ -34,7 +34,7 @@ export const getMenuItemStyles = memoizeFunction((
   const ContextualMenuTextColor = semanticColors.bodyText;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
-  const ContextualMenuTextSelectedColor = semanticColors.menuSelectedText;
+  const ContextualMenuTextSelectedColor = semanticColors.bodySelectedText;
   const ContextualMenuTextDisabledColor = semanticColors.disabledText;
 
   const menuItemStyles: IMenuItemStyles = {

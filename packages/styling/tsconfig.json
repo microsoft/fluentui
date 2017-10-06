@@ -13,6 +13,7 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
     "lib": [
       "es2017",
       "dom"
