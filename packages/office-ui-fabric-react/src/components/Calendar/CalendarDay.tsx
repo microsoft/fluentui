@@ -9,7 +9,7 @@ import {
   getRTLSafeKeyCode
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import {
@@ -20,7 +20,8 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekNumber
+  getWeekNumber,
+  adjustWeekDay
 } from '../../utilities/dateMath/DateMath';
 import TimeConstants from '../../utilities/dateValues/TimeConstants';
 
@@ -498,22 +499,23 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   private _getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date) {
     let selectedYear = navigatedDate.getFullYear();
     let selectedMonth = navigatedDate.getMonth();
-    let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
-
-    let firstWeekNumber = getWeekNumber(firstDayOfMonth, firstDayOfWeek, firstWeekOfYear);
+    let dayOfMonth = 1;
+    let beginningOfWeekRange = new Date(selectedYear, selectedMonth, dayOfMonth);
 
     let weeksArray = [];
-    if (firstWeekNumber < TimeConstants.WeeksInOneYear) {
-      for (let i = 0; i < weeksInMonth; i++) {
-        weeksArray.push(firstWeekNumber + i);
-      }
-    } else {
-      weeksArray.push(firstWeekNumber);
-      for (let i = 1; i < weeksInMonth; i++) {
-        weeksArray.push(0 + i);
-      }
-    }
+    for (let i = 0; i < weeksInMonth; i++) {
 
+      weeksArray.push(getWeekNumber(beginningOfWeekRange, firstDayOfWeek, firstWeekOfYear));
+      let weekRangeWeekDay = adjustWeekDay(firstDayOfWeek, beginningOfWeekRange.getDay());
+      if (weekRangeWeekDay > firstDayOfWeek && i === 0) {
+        let delta = weekRangeWeekDay < firstDayOfWeek ? Math.abs(weekRangeWeekDay - firstDayOfWeek) - (TimeConstants.DaysInOneWeek - 1) : (TimeConstants.DaysInOneWeek - weekRangeWeekDay + firstDayOfWeek);
+        dayOfMonth += delta;
+      } else {
+        dayOfMonth += TimeConstants.DaysInOneWeek;
+      }
+      beginningOfWeekRange = new Date(selectedYear, selectedMonth, dayOfMonth);
+    }
+    console.log(weeksArray)
     return weeksArray;
   }
 }

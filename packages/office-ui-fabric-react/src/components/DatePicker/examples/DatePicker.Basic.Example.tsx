@@ -79,7 +79,7 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
 
     return (
       <div>
-        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } showWeekNumbers={ true } firstWeekOfYear={ 2 } placeholder='Select a date...' />
         <Dropdown
           label='Select the first day of the week'
           options={ [
