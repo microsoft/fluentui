@@ -615,7 +615,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    let { onChanged } = this.props;
+    let { onChanged, overrideOptionInput } = this.props;
     let { selectedIndex, currentOptions } = this.state;
 
     // Find the next selectable index, if searchDirection is none
@@ -624,7 +624,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
-    if (index !== selectedIndex) {
+    if (index !== selectedIndex || overrideOptionInput) {
       let option: IComboBoxOption = currentOptions[index];
 
       // Set the selected option

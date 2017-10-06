@@ -187,7 +187,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             label='ComboBox example with overridden selection:'
             id='Basicdrop6'
             ariaLabel='ComboBox example with overridden selection'
-            selectedKey={ selectedOptionKey && selectedOptionKey }
             allowFreeform={ true }
             autoComplete='on'
             options={ options }
