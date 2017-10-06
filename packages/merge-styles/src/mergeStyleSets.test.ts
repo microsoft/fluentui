@@ -97,5 +97,5 @@ describe('mergeStyleSets', () => {
     expect(_stylesheet.getRules()).toEqual(
       '.root-0{background:red;}'
     );
-  })
+  });
 });
