@@ -793,22 +793,38 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderList(props: IComboBoxProps): JSX.Element {
     let {
-      onRenderItem = this._onRenderItem
+      onRenderItem = this._onRenderItem,
+      virtualized
     } = this.props;
 
     let id = this._id;
 
-    return (
-      <List
-        id={ id + '-list' }
-        className={ this._classNames.optionsContainer }
-        componentRef={ this._resolveRef("_list") }
-        aria-labelledby={ id + '-label' }
-        role='listbox'
-        items={ props.options }
-        onRenderCell={ (item: ISelectableOption) => onRenderItem(item, this._onRenderItem) }
-      />
-    );
+    if (virtualized) {
+      // Render virtualized list
+      return (
+        <List
+          id={ id + '-list' }
+          className={ this._classNames.optionsContainer }
+          componentRef={ this._resolveRef("_list") }
+          aria-labelledby={ id + '-label' }
+          role='listbox'
+          items={ props.options }
+          onRenderCell={ (item: ISelectableOption) => onRenderItem(item, this._onRenderItem) }
+        />
+      );
+    } else {
+      // Render using regular mapping
+      return (
+        <div
+          id={ id + '-list' }
+          className={ this._classNames.optionsContainer }
+          aria-labelledby={ id + '-label' }
+          role='listbox'
+        >
+          { props.options.map((item) => onRenderItem(item, this._onRenderItem)) }
+        </div>
+      );
+    }
   }
 
   // Render items
@@ -895,26 +911,41 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Scroll the selected element into view
    */
   private _scrollIntoView() {
-    let { scrollSelectedToTop } = this.props;
-    let { currentPendingValueValidIndex } = this.state;
-    // if (this._selectedElement && scrollSelectedToTop) {
-    //   this._selectedElement.offsetParent.scrollIntoView(true);
-    // } else if (this._selectedElement) {
-    //   let alignToTop = true;
+    let {
+      scrollSelectedToTop,
+      virtualized
+    } = this.props;
 
-    //   if (this._comboBoxMenu.offsetParent) {
-    //     let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
-    //     let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
+    let {
+      currentPendingValueValidIndex,
+      currentPendingValue,
+      selectedIndex
+    } = this.state;
 
-    //     if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
-    //       alignToTop = false;
-    //     }
-    //   }
+    if (virtualized) {
+      // We are using the List component, call scrollToIndex
+      this._list.scrollToIndex(
+        (currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex
+      );
+    } else {
+      // We are using refs, scroll the ref into view
+      if (this._selectedElement && scrollSelectedToTop) {
+        this._selectedElement.offsetParent.scrollIntoView(true);
+      } else if (this._selectedElement) {
+        let alignToTop = true;
 
-    //   this._selectedElement.offsetParent.scrollIntoView(alignToTop);
-    // }
+        if (this._comboBoxMenu.offsetParent) {
+          let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
+          let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
 
-    this._list.scrollToIndex(currentPendingValueValidIndex);
+          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
+            alignToTop = false;
+          }
+        }
+
+        this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+      }
+    }
   }
 
   // Render content of item

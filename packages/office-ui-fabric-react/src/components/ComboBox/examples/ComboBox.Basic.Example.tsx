@@ -72,6 +72,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          virtualized={ true }
         // tslint:enable:jsx-no-lambda
         />
 
