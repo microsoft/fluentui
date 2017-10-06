@@ -160,7 +160,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.bestPractices) {
       dosAndDonts.push(
         <div className='ComponentPage-usage' id='Best Practices' key='best-practices'>
-          <h2 className='ComponentPage-subHeading'>Best practices</h2>
+          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
           { this.props.bestPractices }
         </div>
       );
