@@ -47,7 +47,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       value: 'Calibri'
     };
 
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 1000; i++) {
       this.scaleOptions.push({
         key: `${i}`,
         text: `Option ${i}`
@@ -60,21 +60,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
     return (
       <div className='ms-ComboBoxBasicExample'>
-
-        <ComboBox
-          defaultSelectedKey='C'
-          label='Basic uncontrolled example (allowFreeform: T, AutoComplete: T):'
-          id='Basicdrop1'
-          ariaLabel='Basic ComboBox example'
-          allowFreeform={ true }
-          autoComplete='on'
-          options={ this.scaleOptions }
-          // tslint:disable:jsx-no-lambda
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          virtualized={ true }
-        // tslint:enable:jsx-no-lambda
-        />
 
         <ComboBox
           defaultSelectedKey='C'
@@ -132,6 +117,21 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+        // tslint:enable:jsx-no-lambda
+        />
+
+        <ComboBox
+          defaultSelectedKey='C'
+          label='Scaled example with 1000 items (allowFreeform: T, AutoComplete: T):'
+          id='Basicdrop1'
+          ariaLabel='Basic ComboBox example'
+          allowFreeform={ true }
+          autoComplete='on'
+          options={ this.scaleOptions }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          virtualized={ true }
         // tslint:enable:jsx-no-lambda
         />
 
