@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { ITheme, mergeStyles } from '../../Styling';
+import { ITheme, mergeStyles, mergeStyleSets } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
@@ -27,33 +27,33 @@ export const getContextualMenuClassNames = memoizeFunction((
 
   const styles = getContextualMenuStyles(theme);
 
-  return {
-    container: mergeStyles(
+  return mergeStyleSets({
+    container: [
       'ms-ContextualMenu-container',
       className,
       styles.container
-    ),
-    root: mergeStyles(
+    ],
+    root: [
       'ms-ContextualMenu is-open',
       styles.root
-    ),
-    list: mergeStyles(
+    ],
+    list: [
       'ms-ContextualMenu-list is-open',
       styles.list
-    ),
-    divider: mergeStyles(
+    ],
+    divider: [
       'ms-ContextualMenu-divider',
       className,
       styles.divider
-    ),
-    header: mergeStyles(
+    ],
+    header: [
       'ms-ContextualMenu-header',
       styles.header
-    ),
-    title: mergeStyles(
+    ],
+    title: [
       styles.title
-    ),
-  };
+    ],
+  });
 });
 
 export const getItemClassNames = memoizeFunction((
@@ -70,13 +70,13 @@ export const getItemClassNames = memoizeFunction((
 
   const styles = getMenuItemStyles(theme);
 
-  return {
-    item: mergeStyles(
+  return mergeStyleSets({
+    item: [
       itemClassName,
       'ms-ContextualMenu-item',
       styles.item,
-    ),
-    root: mergeStyles(
+    ],
+    root: [
       'ms-ContextualMenu-link',
       styles.root,
       checked && [
@@ -99,25 +99,25 @@ export const getItemClassNames = memoizeFunction((
           ':active': styles.rootPressed,
         }
       }],
-    ),
-    linkContent: mergeStyles(
+    ],
+    linkContent: [
       'ms-ContextualMenu-linkContent',
       styles.linkContent
-    ),
-    icon: mergeStyles(
+    ],
+    icon: [
       'ms-ContextualMenu-icon',
       knownIcon && ('ms-ContextualMenu-iconColor ' + styles.iconColor),
       iconClassName,
       styles.icon,
-    ),
-    subMenuIcon: mergeStyles(
+    ],
+    subMenuIcon: [
       'ms-ContextualMenu-submenuIcon',
       subMenuClassname,
       styles.subMenuIcon
-    ),
-    label: mergeStyles(
+    ],
+    label: [
       'ms-ContextualMenu-itemText',
       styles.label
-    ),
-  };
+    ],
+  });
 });
