@@ -208,7 +208,15 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   * defined in ContextualMenu.classnames.
   * @default getItemClassNames
   */
-  getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassname: string, iconClassname: string, subMenuClassname: string) => IMenuItemClassNames;
+  getItemClassNames?: (theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    isAnchorLink: boolean,
+    knownIcon: boolean,
+    itemClassname: string,
+    iconClassname: string,
+    subMenuClassname: string) => IMenuItemClassNames;
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
