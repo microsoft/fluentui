@@ -95,12 +95,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    */
   scrollSelectedToTop?: boolean;
 
-  /**
-   * Should the combo box list be virtualized? Useful for combo boxes that contain a large number of items
-   * @default false
-   */
-  virtualized?: boolean;
-
 }
 
 export interface IComboBoxStyles {

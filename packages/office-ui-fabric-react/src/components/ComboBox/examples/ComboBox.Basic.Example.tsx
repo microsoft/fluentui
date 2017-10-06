@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxProps,
   IComboBoxOption
 } from 'office-ui-fabric-react/lib/ComboBox';
-import { List } from "office-ui-fabric-react/lib/List";
 import './ComboBox.Basic.Example.scss';
 import {
   assign,
@@ -36,9 +34,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif'
   };
 
-
-  private scaleOptions: IComboBoxOption[] = [];
-
   constructor() {
     super();
     this.state = {
@@ -46,13 +41,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       selectedOptionKey: null,
       value: 'Calibri'
     };
-
-    for (let i = 0; i < 10000; i++) {
-      this.scaleOptions.push({
-        key: `${i}`,
-        text: `Option ${i}`
-      });
-    }
   }
 
   public render() {
@@ -61,35 +49,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     return (
       <div className='ms-ComboBoxBasicExample'>
 
-        <ComboBox
-          defaultSelectedKey='C'
-          label='Basic uncontrolled example (allowFreeform: T, AutoComplete: T):'
-          id='Basicdrop1'
-          ariaLabel='Basic ComboBox example'
-          allowFreeform={ true }
-          autoComplete='on'
-          options={ this.scaleOptions }
-          // tslint:disable:jsx-no-lambda
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          virtualized={ true }
-        // tslint:enable:jsx-no-lambda
-        />
-
-        <ComboBox
-          defaultSelectedKey='C'
-          label='Basic uncontrolled example (allowFreeform: T, AutoComplete: T):'
-          id='Basicdrop1'
-          ariaLabel='Basic ComboBox example'
-          allowFreeform={ true }
-          autoComplete='on'
-          options={ this._testOptions }
-          onRenderOption={ this._onRenderFontOption }
-          // tslint:disable:jsx-no-lambda
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-        // tslint:enable:jsx-no-lambda
-        />
         <ComboBox
           defaultSelectedKey='C'
           label='Basic uncontrolled example (allowFreeform: T, AutoComplete: T):'
