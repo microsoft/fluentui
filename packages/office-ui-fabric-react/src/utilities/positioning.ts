@@ -581,10 +581,10 @@ export module positioningFunctions {
     const actualCallout = new Rectangle(0, callout.calloutRectangle.width, 0, callout.calloutRectangle.height);
 
     const calloutBounds = new Rectangle(
-      actualBeakWidth / 2,
-      callout.calloutRectangle.width - actualBeakWidth / 2,
-      actualBeakWidth / 2,
-      callout.calloutRectangle.height - actualBeakWidth / 2
+      beakWidth / 2,
+      callout.calloutRectangle.width - beakWidth / 2,
+      beakWidth / 2,
+      callout.calloutRectangle.height - beakWidth / 2
     );
 
     let beakPositon: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
