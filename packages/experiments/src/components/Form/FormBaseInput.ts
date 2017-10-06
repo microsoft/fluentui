@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import { IFormContext, IFormValidationResult } from "./Form";
+import { IFormBaseInputProps } from "./FormBaseInput.Props";
+export { IFormBaseInputProps };
 
 // Components
 import {
@@ -9,30 +11,6 @@ import {
 } from "office-ui-fabric-react/lib/Utilities";
 
 export const DEFAULT_DEBOUNCE: number = 250;
-/**
- * The base props for any simple form input
- */
-export interface IFormBaseInputProps<T> {
-  componentRef: (component: any) => void;
-
-  /** The key of this input. This value will be used to key form results */
-  inputKey: string;
-
-  /** The initial value of this input */
-  value?: T;
-
-  /** Is this field required? */
-  required?: boolean;
-
-  /** Any validator functions to run when the input is updated */
-  validators?: ((val: T) => string)[];
-
-  /** The interval when validation and update callbacks should be fired */
-  debounceInterval?: number;
-
-  /** Optional error message input will use if required gets hit */
-  requiredErrorMessage?: string;
-}
 
 /**
  * The base state for any simple form input
@@ -135,7 +113,7 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
       return validationResult;
     }
 
-    for (let validator of validators) {
+    for (let validator of (validators as any)) {
       let error: string = validator(this.state.currentValue);
       if (error) {
         validationResult.isValid = false;
@@ -150,7 +128,7 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
   /**
    * Set the error state of this input
    */
-  public setError(errorMessage: string): void {
+  public setError(errorMessage?: string): void {
     this.setState((prevState: S) => {
       prevState.isValid = false;
       prevState.currentError = errorMessage;

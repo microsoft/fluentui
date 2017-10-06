@@ -301,7 +301,6 @@ export class Async {
     return resultFunction;
   }
 
-
   /**
    * Creates a function that will delay the execution of func until after wait milliseconds have
    * elapsed since the last time it was invoked. Provide an options object to indicate that func
@@ -324,13 +323,17 @@ export class Async {
   }): ICancelable<T> & (() => void) {
 
     if (this._isDisposed) {
-      let resultFunction: ICancelable<T> & (() => T) = (() => {
+      let noOpFunction: ICancelable<T> & (() => T) = (() => {
         /** Do nothing */
       }) as ICancelable<T> & (() => T);
 
-      resultFunction.cancel = () => { return; };
-      resultFunction.flush = (() => null) as any;
-      resultFunction.pending = () => false;;
+      noOpFunction.cancel = () => { return; };
+      /* tslint:disable:no-any */
+      noOpFunction.flush = (() => null) as any;
+      /* tslint:enable:no-any */
+      noOpFunction.pending = () => false;
+
+      return noOpFunction;
     }
 
     let waitMS = wait || 0;
@@ -401,7 +404,7 @@ export class Async {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
       }
-    }
+    };
 
     let flush = (): T => {
       if (timeoutId) {
@@ -410,11 +413,11 @@ export class Async {
       }
 
       return lastResult;
-    }
+    };
 
     let pending = (): boolean => {
       return !!timeoutId;
-    }
+    };
 
     // tslint:disable-next-line:no-any
     let resultFunction: ICancelable<T> & (() => T) = ((...args: any[]) => {
@@ -484,4 +487,3 @@ export type ICancelable<T> = {
   cancel: () => void;
   pending: () => boolean;
 };
-

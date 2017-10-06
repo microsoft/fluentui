@@ -23,6 +23,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
+          component: require<any>('../components/form/Form').FormPage,
+          key: 'Form',
+          name: 'Form',
+          url: '#/examples/form'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
