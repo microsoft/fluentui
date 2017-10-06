@@ -40,7 +40,7 @@ export class VirtualizedListBasicExample2 extends React.Component {
   public render() {
     return (
       <div>
-        <ScrollContainer>
+        <ScrollContainer scrollDebounceDelay={ 200 }>
           <ExampleList
             items={ items }
             itemHeight={ 30 }

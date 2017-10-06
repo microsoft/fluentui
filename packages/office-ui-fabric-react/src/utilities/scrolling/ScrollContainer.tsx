@@ -126,6 +126,9 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
         this._pendingElements = [];
       }
     } else {
+      const { scrollDebounceDelay } = this.props;
+      this._onScroll = this._async.debounce(this._onScroll, scrollDebounceDelay);
+
       // No intersection observer, rely on scroll event. Note: not all browsers support options, but since
       // we don't need capture, we can pass it and have it ignored if not supported
       this._root.addEventListener('scroll', this._onScroll, {
