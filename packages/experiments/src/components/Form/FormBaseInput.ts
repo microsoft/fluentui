@@ -5,6 +5,7 @@ import { IFormContext, IFormValidationResult } from "./Form";
 // Components
 import {
   BaseComponent,
+  ICancelable
 } from "office-ui-fabric-react/lib/Utilities";
 
 export const DEFAULT_DEBOUNCE: number = 250;
@@ -64,12 +65,10 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
    */
   private formContext: IFormContext;
 
-  private async: Async;
-
   /**
    * The debounced version of formContext.submitValue
    */
-  protected readonly debouncedSubmitValue: ((input: GenericFormInput) => void);
+  protected readonly debouncedSubmitValue: ICancelable<void> & ((input: GenericFormInput) => void);
 
   /**
    * Constructor for any Simple Form input
