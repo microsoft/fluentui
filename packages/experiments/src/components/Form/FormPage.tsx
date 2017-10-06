@@ -11,7 +11,6 @@ import { FormTextInput } from "./inputs/FormTextInput";
 
 export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
-
     return (
       <ComponentPage
         title='CommandBar'

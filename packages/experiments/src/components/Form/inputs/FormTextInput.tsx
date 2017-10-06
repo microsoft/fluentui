@@ -47,7 +47,7 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
   /**
    * Render a Fabric TextBox
    */
-  public renderComponent() {
+  public render() {
     return (
       <TextField
         {...this.props.textFieldProps}

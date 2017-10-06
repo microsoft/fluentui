@@ -23,7 +23,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
-          component: require<any>('../components/form/Form').FormPage,
+          component: require<any>('../components/Form/FormPage').FormPage,
           key: 'Form',
           name: 'Form',
           url: '#/examples/form'

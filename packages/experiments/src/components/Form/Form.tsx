@@ -105,7 +105,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   /**
    * Renders a form component and all child inputs
    */
-  public renderComponent(): JSX.Element {
+  public render(): JSX.Element {
     let nativeProps = getNativeProps(this.props, divProperties);
     return (
       <form
