@@ -515,7 +515,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       }
       beginningOfWeekRange = new Date(selectedYear, selectedMonth, dayOfMonth);
     }
-    console.log(weeksArray)
     return weeksArray;
   }
 }
