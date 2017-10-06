@@ -51,6 +51,13 @@ storiesOf('Persona', module)
       size={ PersonaSize.extraSmall }
       presence={ PersonaPresence.online }
     />
+  )).add('Extra small with details', () => (
+    <Persona
+      { ...examplePersona }
+      size={ PersonaSize.extraSmall }
+      presence={ PersonaPresence.none }
+      showSecondaryText
+    />
   )).add('Small', () => (
     <Persona
       { ...examplePersona }
@@ -79,5 +86,10 @@ storiesOf('Persona', module)
       { ...examplePersona }
       size={ PersonaSize.extraLarge }
       presence={ PersonaPresence.blocked }
+    />
+  )).add('Initials', () => (
+    <Persona
+      { ...examplePersona }
+      imageUrl={ undefined }
     />
   ));
