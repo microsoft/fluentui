@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pass default render functions to ComboBox custom render functions",
+      "comment": "ComboBox: Pass default render functions to ComboBox custom render functions",
       "type": "patch"
     }
   ],
