@@ -347,9 +347,9 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     } else if (value !== undefined) {
 
       this.setState({
-        selectedOptionKey: 1, //select selected option (2:00 AM)
+        selectedOptionKey: 1, // select selected option (2:00 AM)
         timeValue: null,
-        overrideOptionInput: value //set input field override (prevents input from being overridden by option text)
+        overrideOptionInput: value // set input field override (prevents input from being overridden by option text)
       });
     }
 
