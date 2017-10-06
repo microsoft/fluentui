@@ -19,7 +19,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Label className={ exampleStyles.exampleLabel }>With maxDisplayedItems set to six</Label>
+        <Label className={ exampleStyles.exampleLabel }>With no maxDisplayedItems</Label>
         <Breadcrumb
           items={ [
             { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
@@ -29,11 +29,10 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ] }
-          maxDisplayedItems={ 6 }
           ariaLabel={ 'Website breadcrumb' }
         />
 
-        <Label className={ exampleStyles.exampleLabel }>With maxDisplayedItems set to three</Label>
+        <Label className={ exampleStyles.exampleLabel } style={ { marginTop: '24px' } }>With maxDisplayedItems set to three</Label>
         <Breadcrumb
           items={ [
             { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },

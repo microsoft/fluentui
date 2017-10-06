@@ -14,6 +14,27 @@ $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
 $Breadcrumb-chevron-sm: 8px;
 
+// Breadcrumb size mixins
+@mixin Breadcumb-small {
+  .listItem .itemLink {
+    font-size: $ms-font-size-m;
+  }
+
+  .chevron {
+    font-size: $Breadcrumb-chevron-sm;
+  }
+}
+
+@mixin Breadcumb-large {
+  .listItem .itemLink {
+    font-size: $ms-font-size-l;
+  }
+
+  .chevron {
+    font-size: $Breadcrumb-chevron-sm;
+  }
+}
+
 .root {
   margin: 23px 0 1px;
 }
@@ -70,9 +91,19 @@ $Breadcrumb-chevron-sm: 8px;
 .overflowButton {
   font-size: $Breadcrumb-overflowButtonSize;
   height: 100%; // override button height
+
   &:hover {
     cursor: pointer;
     background-color: $ms-color-neutralLighter;
+  }
+
+  &:active {
+    background-color: $selectedActiveBackgroundColor;
+    color: $selectedActiveForegroundColor;
+  }
+
+  &:active:hover {
+    background-color: $ms-color-neutralQuaternary;
   }
 }
 
@@ -106,16 +137,9 @@ $Breadcrumb-chevron-sm: 8px;
   outline: transparent;
 }
 
-@media screen and (max-width: $uhf-screen-max-mobile) {
+@media screen and (max-width: $ms-screen-max-md) {
   // margin: 11px 0 1px;
-
-  .listItem .itemLink {
-    font-size: $ms-font-size-l;
-  }
-
-  .chevron {
-    font-size: $ms-font-size-mi;
-  }
+  @include Breadcumb-large;
 
   .overflowButton {
     font-size: $ms-font-size-m-plus;
@@ -123,17 +147,13 @@ $Breadcrumb-chevron-sm: 8px;
 }
 
 @media screen and (max-width: $ms-screen-max-sm) {
-  .listItem .itemLink {
-    font-size: $ms-font-size-m;
-    max-width: $Breadcrumb-itemMaxWidth-sm;
-  }
+  @include Breadcumb-small;
 
-  .chevron {
-    font-size: $Breadcrumb-chevron-sm;
+  .listItem .itemLink {
+    max-width: $Breadcrumb-itemMaxWidth-sm;
   }
 
   .overflowButton {
     padding: 4px 6px;
   }
 }
-

@@ -5,7 +5,7 @@ $focusedBorderColor: $ms-color-neutralSecondary;
 $bodyBackgroundColor: $ms-color-white;
 $bodyForegroundColor: $ms-color-neutralPrimary;
 
-/* Primary item colors, used for Nav, DetailsList headers, Pivots */
+/* Primary item colors, used for Nav, DetailsList headers, Pivots, Breadcrumb */
 $unselectedBackgroundColor: $bodyBackgroundColor;
 $unselectedForegroundColor: $bodyForegroundColor;
 
@@ -24,7 +24,7 @@ $selectedForegroundColor: $ms-color-neutralPrimary;
 $selectedHoverBackgroundColor: $ms-color-neutralLighter;
 $selectedHoverForegroundColor: $ms-color-neutralDark;
 
-$selectedActiveBackgroundColor: $ms-color-neutralTertiaryAlt;
-$selectedActiveForegroundColor: $ms-color-neutralPrimary;
+$selectedActiveBackgroundColor: $ms-color-neutralQuaternaryAlt;
+$selectedActiveForegroundColor: $ms-color-neutralDark;
 
 $dividerColor: $ms-color-neutralLight;
