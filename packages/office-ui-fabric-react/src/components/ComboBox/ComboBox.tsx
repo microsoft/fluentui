@@ -150,7 +150,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
 
-      console.log('typeof newProps.selectedKey', typeof newProps.selectedKey, newProps.selectedKey);
       let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
 
       this.setState({
@@ -363,7 +362,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       value,
       allowFreeform,
-      autoComplete
+      autoComplete,
+      overrideOptionInput
     } = this.props;
     let {
       selectedIndex,
@@ -385,7 +385,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let index = selectedIndex;
 
     if (allowFreeform) {
-      let { inputFieldText } = this.props;
       // If we are allowing freeform and autocomplete is also true
       // and we've got a pending value that matches an option, remember
       // the matched option's index
@@ -398,8 +397,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       if (currentPendingValue !== '') {
         return currentPendingValue;
-      } else if (inputFieldText) {
-        return inputFieldText;
+      } else if (overrideOptionInput) {
+        return overrideOptionInput;
       } else if (this._indexWithinBounds(currentOptions, index)) {
         return currentOptions[index].text;
       } else {
