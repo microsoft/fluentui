@@ -27,8 +27,15 @@ let getTextFromItem = (item) => item.name;
 
 let getList = () => testTags;
 
+// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
+  .add('TagPicker disabled', () => (
+    <TagPicker
+      onResolveSuggestions={ getList }
+      disabled
+    />
+  ))
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
@@ -68,10 +75,5 @@ storiesOf('TagPicker', module)
         }
       }
       itemLimit={ 2 }
-    />
-  )).add('TagPicker disabled', () => (
-    <TagPicker
-      onResolveSuggestions={ getList }
-      disabled
     />
   ));
