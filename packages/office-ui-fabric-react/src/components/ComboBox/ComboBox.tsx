@@ -796,7 +796,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         <List
           id={ id + '-list' }
           className={ this._classNames.optionsContainer }
-          componentRef={ this._resolveRef("_list") }
+          componentRef={ this._resolveRef('_list') }
           aria-labelledby={ id + '-label' }
           role='listbox'
           items={ props.options }
