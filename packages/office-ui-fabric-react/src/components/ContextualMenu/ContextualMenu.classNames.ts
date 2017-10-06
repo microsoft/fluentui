@@ -1,31 +1,9 @@
 import { memoizeFunction } from '../../Utilities';
-<<<<<<< HEAD
-import { ITheme, mergeStyles, mergeStyleSets } from '../../Styling';
-=======
 import { ITheme, mergeStyleSets } from '../../Styling';
->>>>>>> 6afb02d1bd8df56ee61966308148678741ee1ee9
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
   container?: string;
-<<<<<<< HEAD
-  root?: string;
-  list?: string;
-  divider?: string;
-  header?: string;
-  title?: string;
-}
-
-export interface IMenuItemClassNames {
-  item?: string;
-  root?: string;
-  linkContent?: string;
-  icon?: string;
-  subMenuIcon?: string;
-  label?: string;
-}
-
-=======
   root: string;
   list: string;
   divider: string;
@@ -42,7 +20,6 @@ export interface IMenuItemClassNames {
   label: string;
 }
 
->>>>>>> 6afb02d1bd8df56ee61966308148678741ee1ee9
 export const getContextualMenuClassNames = memoizeFunction((
   theme: ITheme,
   className: string
@@ -73,13 +50,7 @@ export const getContextualMenuClassNames = memoizeFunction((
       'ms-ContextualMenu-header',
       styles.header
     ],
-<<<<<<< HEAD
-    title: [
-      styles.title
-    ],
-=======
     title: styles.title
->>>>>>> 6afb02d1bd8df56ee61966308148678741ee1ee9
   });
 });
 
@@ -122,8 +93,8 @@ export const getItemClassNames = memoizeFunction((
       !disabled && !expanded && !checked && [{
         selectors: {
           ':hover': styles.rootHovered,
-          ':focus': styles.rootFocused,
           ':active': styles.rootPressed,
+          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
         }
       }],
     ],
@@ -145,10 +116,6 @@ export const getItemClassNames = memoizeFunction((
     label: [
       'ms-ContextualMenu-itemText',
       styles.label
-<<<<<<< HEAD
-    ],
-=======
     ]
->>>>>>> 6afb02d1bd8df56ee61966308148678741ee1ee9
   });
 });
