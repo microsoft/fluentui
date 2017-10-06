@@ -3,7 +3,6 @@ import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
-import { List } from '../../List';
 import {
   CommandButton,
   IconButton
@@ -88,9 +87,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // The callout element
   private _comboBoxMenu: HTMLElement;
-
-  // The list element, if the combobox is virtualized
-  private _list: List;
 
   // The menu item element that is currently selected
   private _selectedElement: HTMLElement;
@@ -788,7 +784,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
 
     let id = this._id;
-    // Render using regular mapping
     return (
       <div
         id={ id + '-list' }
@@ -796,7 +791,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         aria-labelledby={ id + '-label' }
         role='listbox'
       >
-        { props.options.map((item) => onRenderItem(item, this._onRenderItem)) }
+        { this.state.currentOptions.map((item, index) => onRenderItem({ ...item, index } as ISelectableOption, this._onRenderItem)) }
       </div>
     );
   }

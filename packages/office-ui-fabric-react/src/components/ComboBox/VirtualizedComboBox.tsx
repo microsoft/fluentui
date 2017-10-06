@@ -6,7 +6,8 @@ import { List } from "../../List";
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> {
-  // The list element, if the combobox is virtualized
+
+  // The virtualized list element
   private _list: List;
 
   public render(): JSX.Element {
