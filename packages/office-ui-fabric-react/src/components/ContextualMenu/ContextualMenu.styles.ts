@@ -5,6 +5,7 @@ import {
   IRawStyle,
   concatStyleSets,
   FontWeights,
+  FontSizes,
   getFocusStyle
 } from '../../Styling';
 
@@ -131,16 +132,15 @@ export const getMenuItemStyles = memoizeFunction((
         color: 'HighlightText',
       }
     },
-    subMenuIcon: [
-      fonts.xSmall,
-      {
-        height: ContextualMenuItemHeight,
-        lineHeight: ContextualMenuItemHeight,
-        textAlign: 'center',
-        display: 'inline-block',
-        verticalAlign: 'middle',
-        flexShrink: '0'
-      }]
+    subMenuIcon: {
+      height: ContextualMenuItemHeight,
+      lineHeight: ContextualMenuItemHeight,
+      textAlign: 'center',
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      flexShrink: '0',
+      fontSize: FontSizes.mini
+    }
   };
 
   return concatStyleSets(menuItemStyles);
