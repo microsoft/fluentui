@@ -210,72 +210,73 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
   // First four-day week of the year - minumum days count
   const fourDayWeek = 4;
 
-  let dayOfYear = getDayOfYear(date) - 1;
-  let dateWeekDay = date.getDay();
-  let firstWeekDayOfYear = dateWeekDay - dayOfYear % TimeConstants.DaysInOneWeek;
-
   switch (firstWeekOfYear) {
 
     case FirstWeekOfYear.FirstFullWeek:
-      if (firstWeekDayOfYear !== firstDayOfWeek) {
-        // When first week of January is less than 7 days
-        if (dayOfYear + 1 < TimeConstants.DaysInOneWeek && dateWeekDay !== firstDayOfWeek) {
-          let lastYearDate = addDays(date, -1);
-          let result: number = getWeekNumber(lastYearDate, firstDayOfWeek, firstWeekOfYear);
-          return result;
-        }
-        return getDefaultWeekNumber(dayOfYear, firstWeekDayOfYear, firstDayOfWeek, true);
-      }
-      return getDefaultWeekNumber(dayOfYear, firstWeekDayOfYear, firstDayOfWeek);
+      return getWeekOfYearFullDays(date, firstDayOfWeek, TimeConstants.DaysInOneWeek);
 
     case FirstWeekOfYear.FirstFourDayWeek:
-      let adjustFirstWeekDayOfYear = adjustWeekDay(firstDayOfWeek, firstWeekDayOfYear);
-      let adjustDateWeekDay = adjustWeekDay(firstDayOfWeek, dateWeekDay);
-
-      let lastDayOfYear = new Date(date.getFullYear(), MonthOfYear.December, 31);
-      let daysInYear = getDayOfYear(lastDayOfYear);
-
-      let firstWeekOfNextYear = (daysInYear - dayOfYear) < fourDayWeek;
-      let lastWeekOfLastYear = adjustDateWeekDay > fourDayWeek && dayOfYear + 1 < fourDayWeek;
-
-      // When first week of January is less than 4 days - all weeks
-      if (adjustFirstWeekDayOfYear >= fourDayWeek + firstDayOfWeek && !firstWeekOfNextYear && !lastWeekOfLastYear) {
-        return getDefaultWeekNumber(dayOfYear, firstWeekDayOfYear, firstDayOfWeek, true);
-      }
-      // When first week of January is less than 4 days - first week only
-      if (lastWeekOfLastYear) {
-        let firstDayOfThisYear = new Date(date.getFullYear(), MonthOfYear.January, 1);
-        let delta = adjustDateWeekDay - firstDayOfWeek;
-        let lastWeekOfLastYear = addDays(firstDayOfThisYear, -delta);
-        let result: number = getWeekNumber(lastWeekOfLastYear, firstDayOfWeek, firstWeekOfYear);
-        return result;
-      }
-      // When last week of December is less than 4 days
-      if (firstWeekOfNextYear) {
-        let firstNextyearDate = addDays(lastDayOfYear, 1);
-        let result: number = getWeekNumber(firstNextyearDate, firstDayOfWeek, firstWeekOfYear);
-        return result;
-      }
-      return getDefaultWeekNumber(dayOfYear, firstWeekDayOfYear, firstDayOfWeek);
+      return getWeekOfYearFullDays(date, firstDayOfWeek, fourDayWeek);
 
     default:
-      return getDefaultWeekNumber(dayOfYear, firstWeekDayOfYear, firstDayOfWeek);
+      return getFirstDayWeekOfYear(date, firstDayOfWeek);
   }
 }
 
 /**
-*  Helper function for getWeekNumber.
+* Helper function for getWeekNumber.
 * Returns week number for a date
-* @param {dayOfYear} number - number of day in a year: starts with 0.
-* @param {firstWeekDayOfYear} number - The first day of the year (0-6, Sunday = 0)
+* @param {date} Date - current selected date.
 * @param {firstDayOfWeek} DayOfWeek - The first day of week (0-6, Sunday = 0)
-* @param {shiftForward} boolean - shifts number forward to 1 week in case passed as true
+* @param {numberOfFullDays} number - week settings.
 * @return {Number} The week's number in the year.
 */
-function getDefaultWeekNumber(dayOfYear: number, firstWeekDayOfYear: number, firstDayOfWeek: DayOfWeek, shiftForward?: boolean) {
-  let daysUntilEndOfCurrentWeek = (firstWeekDayOfYear - firstDayOfWeek + TimeConstants.DaysInOneWeek * 2) % TimeConstants.DaysInOneWeek;
-  let adjustment = !shiftForward ? 1 : 0;
-  return Math.floor((dayOfYear + daysUntilEndOfCurrentWeek) / TimeConstants.DaysInOneWeek + adjustment);
+function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFullDays: number) {
+  let dayOfYear = getDayOfYear(date) - 1;
+  let dateWeekDay = date.getDay();
+  let num = (date.getDay()) - (dayOfYear % TimeConstants.DaysInOneWeek);
+
+  let lastDayOfyear = new Date(date.getFullYear(), MonthOfYear.December, 31);
+  let daysInYear = getDayOfYear(lastDayOfyear) - 1;
+
+  let adjustedWeekDay = adjustWeekDay(firstDayOfWeek, dateWeekDay);
+
+  if (dayOfYear > getDayOfYear(lastDayOfyear) - numberOfFullDays) {
+    return getFirstDayWeekOfYear(addDays(lastDayOfyear, 1), firstDayOfWeek);
+  }
+
+  let num2 = ((firstDayOfWeek - num) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
+  if ((num2 != 0) && (num2 >= numberOfFullDays)) {
+    num2 -= TimeConstants.DaysInOneWeek;
+  }
+
+  let num3 = dayOfYear - num2;
+  if (num3 < 0) {
+    num -= daysInYear % TimeConstants.DaysInOneWeek;
+    num2 = ((firstDayOfWeek - num) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
+    if ((num2 != 0) && (num2 >= numberOfFullDays)) {
+      num2 -= TimeConstants.DaysInOneWeek;
+    }
+
+    num3 = daysInYear - num2;
+  }
+
+  return Math.floor((num3 / TimeConstants.DaysInOneWeek) + 1);
+}
+
+/**
+* Helper function for getWeekNumber.
+* Returns week number for a date
+* @param {date} Date - current selected date.
+* @param {firstDayOfWeek} DayOfWeek - The first day of week (0-6, Sunday = 0)
+* @return {Number} The week's number in the year.
+*/
+function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number) {
+  let num = getDayOfYear(date) - 1;
+  let num2 = (date.getDay()) - (num % TimeConstants.DaysInOneWeek);
+  let num3 = ((num2 - firstDayOfWeek) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
+
+  return Math.floor(((num + num3) / TimeConstants.DaysInOneWeek) + 1);
 }
 
 /**
