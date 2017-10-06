@@ -754,7 +754,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render Callout container and pass in list
   @autobind
-  protected _onRenderContainer(props: IComboBoxProps): JSX.Element {
+  private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
       calloutProps
@@ -782,7 +782,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render List of items
   @autobind
-  protected _onRenderList(props: IComboBoxProps): JSX.Element {
+  private _onRenderList(props: IComboBoxProps): JSX.Element {
     let {
       onRenderItem = this._onRenderItem
     } = this.props;
@@ -803,7 +803,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render items
   @autobind
-  protected _onRenderItem(item: IComboBoxOption): JSX.Element | null {
+  private _onRenderItem(item: IComboBoxOption): JSX.Element | null {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -815,7 +815,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   // Render separator
-  protected _renderSeparator(item: IComboBoxOption): JSX.Element | null {
+  private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
     let { index, key } = item;
 
     if (index && index > 0) {
@@ -830,7 +830,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return null;
   }
 
-  protected _renderHeader(item: IComboBoxOption): JSX.Element {
+  private _renderHeader(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
 
     return (
@@ -841,7 +841,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render menu item
   @autobind
-  protected _renderOption(item: IComboBoxOption): JSX.Element {
+  private _renderOption(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
