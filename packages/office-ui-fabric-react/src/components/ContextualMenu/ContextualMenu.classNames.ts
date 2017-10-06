@@ -4,20 +4,20 @@ import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
   container?: string;
-  root?: string;
-  list?: string;
-  divider?: string;
-  header?: string;
-  title?: string;
+  root: string;
+  list: string;
+  divider: string;
+  header: string;
+  title: string;
 }
 
 export interface IMenuItemClassNames {
-  item?: string;
-  root?: string;
-  linkContent?: string;
-  icon?: string;
-  subMenuIcon?: string;
-  label?: string;
+  item: string;
+  root: string;
+  linkContent: string;
+  icon: string;
+  subMenuIcon: string;
+  label: string;
 }
 
 export const getContextualMenuClassNames = memoizeFunction((
