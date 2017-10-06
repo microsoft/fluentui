@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add virtualization to the combobox control",
+      "comment": "ComboBox: Add virtualization to the combobox control",
       "type": "minor"
     }
   ],
