@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { ITheme } from '../../Styling';
 
 export interface ILabel {
 
@@ -23,4 +24,9 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
    * Renders the label as disabled.
    */
   disabled?: boolean;
+
+  /**
+ * Theme provided by HOC.
+ */
+  theme?: ITheme;
 }
