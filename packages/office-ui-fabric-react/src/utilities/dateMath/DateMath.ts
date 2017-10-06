@@ -291,7 +291,6 @@ export function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek)
   return (firstDayOfWeek !== DayOfWeek.Sunday && dateWeekDay < firstDayOfWeek) ? dateWeekDay + TimeConstants.DaysInOneWeek : dateWeekDay;
 }
 
-
 /**
  * Returns the day number for a date in a year
  * The number of days since January 1st in the particular year.
