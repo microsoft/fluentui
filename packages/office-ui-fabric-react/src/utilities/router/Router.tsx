@@ -26,11 +26,17 @@ export class Router extends BaseComponent<IRouterProps, {}> {
   }
 
   private _getPath() {
-    let path = location.hash;
-    let index = path.lastIndexOf('#');
+    let path = location.hash,
+      hashIndex = path.lastIndexOf('#'),
+      questionMarkIndex = path.indexOf('?');
 
-    if (index > 0) {
-      path = path.substr(0, index);
+    // Look for the start of a query in the currentPath, then strip out the query to find the correct page to render
+    if (questionMarkIndex > -1) {
+      path = path.substr(0, questionMarkIndex);
+    }
+
+    if (hashIndex > 0) {
+      path = path.substr(0, hashIndex);
     }
 
     return path;
@@ -93,15 +99,9 @@ function _match(currentPath: string, child: any): boolean {
     path = path || '';
     currentPath = currentPath || '';
 
-    // Use regex to search for a query in the currentPath, then slice out the query to find the correct page to render
-    let regex = new RegExp(path + '(\\?.*)'),
-      result = regex.exec(currentPath),
-      questionMarkIndex = result ? result[0].indexOf('?') : 0,
-      slicedPath = result ? result[0].slice(0, questionMarkIndex) : '';
-
     return (
       (!path) ||
-      (path.toLowerCase() === currentPath.toLowerCase()) || (path.toLowerCase() === slicedPath.toLowerCase())
+      (path.toLowerCase() === currentPath.toLowerCase())
     );
   }
 
