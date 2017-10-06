@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   ComboBox,
   IComboBoxProps,
-  IComboBoxOption
+  IComboBoxOption,
+  VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
 import {
@@ -104,7 +105,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         // tslint:enable:jsx-no-lambda
         />
 
-        <ComboBox
+        <VirtualizedComboBox
           defaultSelectedKey='C'
           label='Scaled example with 1000 items (allowFreeform: T, AutoComplete: T):'
           id='Basicdrop1'
@@ -115,7 +116,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          virtualized={ true }
         // tslint:enable:jsx-no-lambda
         />
 

@@ -48,6 +48,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
+   * Callback issued when the ComboBox requests the list to scroll to a specific element
+   */
+  onScrollToItem?: (itemIndex: number) => void;
+
+  /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
    */
   allowFreeform?: boolean;
@@ -94,13 +99,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default false;
    */
   scrollSelectedToTop?: boolean;
-
-  /**
-   * Should the combo box list be virtualized? Useful for combo boxes that contain a large number of items
-   * @default false
-   */
-  virtualized?: boolean;
-
 }
 
 export interface IComboBoxStyles {

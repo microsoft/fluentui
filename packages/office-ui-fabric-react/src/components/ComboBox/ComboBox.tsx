@@ -754,7 +754,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render Callout container and pass in list
   @autobind
-  private _onRenderContainer(props: IComboBoxProps): JSX.Element {
+  protected _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
       calloutProps
@@ -782,46 +782,28 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render List of items
   @autobind
-  private _onRenderList(props: IComboBoxProps): JSX.Element {
+  protected _onRenderList(props: IComboBoxProps): JSX.Element {
     let {
-      onRenderItem = this._onRenderItem,
-      virtualized
+      onRenderItem = this._onRenderItem
     } = this.props;
 
     let id = this._id;
-
-    if (virtualized) {
-      // Render virtualized list
-      return (
-        <List
-          id={ id + '-list' }
-          className={ this._classNames.optionsContainer }
-          componentRef={ this._resolveRef('_list') }
-          aria-labelledby={ id + '-label' }
-          role='listbox'
-          items={ props.options }
-          onRenderCell={ (item: ISelectableOption) => onRenderItem(item, this._onRenderItem) }
-        />
-      );
-    } else {
-      // Render using regular mapping
-      return (
-        <div
-          id={ id + '-list' }
-          className={ this._classNames.optionsContainer }
-          aria-labelledby={ id + '-label' }
-          role='listbox'
-        >
-          { props.options.map((item) => onRenderItem(item, this._onRenderItem)) }
-        </div>
-      );
-    }
+    // Render using regular mapping
+    return (
+      <div
+        id={ id + '-list' }
+        className={ this._classNames.optionsContainer }
+        aria-labelledby={ id + '-label' }
+        role='listbox'
+      >
+        { props.options.map((item) => onRenderItem(item, this._onRenderItem)) }
+      </div>
+    );
   }
 
   // Render items
   @autobind
-  private _onRenderItem(item: IComboBoxOption): JSX.Element | null {
-
+  protected _onRenderItem(item: IComboBoxOption): JSX.Element | null {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -833,7 +815,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   // Render separator
-  private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
+  protected _renderSeparator(item: IComboBoxOption): JSX.Element | null {
     let { index, key } = item;
 
     if (index && index > 0) {
@@ -848,7 +830,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return null;
   }
 
-  private _renderHeader(item: IComboBoxOption): JSX.Element {
+  protected _renderHeader(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
 
     return (
@@ -859,7 +841,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render menu item
   @autobind
-  private _renderOption(item: IComboBoxOption): JSX.Element {
+  protected _renderOption(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
@@ -903,8 +885,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _scrollIntoView() {
     let {
-      scrollSelectedToTop,
-      virtualized
+      onScrollToItem,
+      scrollSelectedToTop
     } = this.props;
 
     let {
@@ -913,11 +895,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       selectedIndex
     } = this.state;
 
-    if (virtualized) {
-      // We are using the List component, call scrollToIndex
-      this._list.scrollToIndex(
-        (currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex
-      );
+    if (onScrollToItem) {
+      // Use the custom scroll handler
+      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
     } else {
       // We are using refs, scroll the ref into view
       if (this._selectedElement && scrollSelectedToTop) {
