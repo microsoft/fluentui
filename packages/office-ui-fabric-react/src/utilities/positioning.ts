@@ -573,10 +573,9 @@ export module positioningFunctions {
     callout: ICallout,
     target: Rectangle,
     alignmentEdge?: RectangleEdge) {
-
+    /** Note about beak positioning: The actual beak width only matters for getting the gap between the callout and target, it does not impact the beak placement within the callout. For example example, if the beakWidth is 8, then the actual beakWidth is sqrroot(8^2 + 8^2) = 11.31x11.31. So the callout will need to be an extra 3 pixels away from its target. While the beak is being positioned in the callout it still acts as though it were 8x8.*/
     const { firstEdge, secondEdge } = _getFlankingEdges(callout.targetEdge);
     const beakTargetPoint = _getCenterValue(target, callout.targetEdge);
-    const actualBeakWidth = _calculateActualBeakWidthInPixels(beakWidth);
     // The "host" callout that we will use to help position the beak.
     const actualCallout = new Rectangle(0, callout.calloutRectangle.width, 0, callout.calloutRectangle.height);
 
