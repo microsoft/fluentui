@@ -7,6 +7,11 @@ import {
   getId
 } from '../../Utilities';
 import {
+  ITheme,
+  IPalette,
+  getTheme
+} from '../../Styling';
+import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
   IColorCellProps
@@ -16,6 +21,11 @@ import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
 import * as stylesImport from './SwatchColorPicker.scss';
+import {
+  customizable
+} from '../../Utilities';
+import { getClassNames } from './SwatchColorPicker.classNames';
+
 const styles: any = stylesImport;
 
 export interface ISwatchColorPickerState {
@@ -25,6 +35,7 @@ export interface ISwatchColorPickerState {
 class ColorPickerGridCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
 }
 
+@customizable('SwatchColorPicker', ['theme'])
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
 
   public static defaultProps = {
@@ -176,9 +187,27 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    */
   @autobind
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
+    let { theme } = this.props;
+    const classNames = getClassNames(
+      theme!,
+      colorOption.color as string
+    );
+    const themedClass: string | undefined = classNames.themeClass;
+    const svgClassName: string =
+      css(
+        styles.svg,
+        this.props.cellShape,
+        this.props.cellShape === 'circle' ? styles.circle : '',
+        themedClass ? themedClass : ''
+      );
+
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string).str } >
+      <svg
+        className={ svgClassName }
+        viewBox='0 0 20 20'
+        fill={ !themedClass ? getColorFromString(colorOption.color as string).str : undefined }
+      >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
@@ -187,6 +216,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       </svg>
     );
   }
+
 
   /**
    * Handle the click on a cell
