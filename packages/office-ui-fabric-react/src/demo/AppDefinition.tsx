@@ -273,7 +273,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'Tooltip',
           name: 'Tooltip',
           url: '#/examples/Tooltip'
-        }
+        },
+        {
+          component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
+          key: 'VirtualizedList',
+          name: 'VirtualizedList',
+          url: '#/examples/virtualizedlist'
+        },
       ],
       name: 'Basic components'
     },
