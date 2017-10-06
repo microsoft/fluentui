@@ -5,12 +5,14 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 import {
   IPoint,
   IRectangle,
   IRenderFunction
 } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export enum ContextualMenuItemType {
@@ -194,6 +196,20 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    */
   theme?: ITheme;
 
+  /**
+   * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
+   * defined in ContextualMenu.classnames.
+   * @default getContextualMenuClassNames
+   */
+  getMenuClassNames?: (theme: ITheme, className: string) => IContextualMenuClassNames;
+
+  /**
+  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
+  * defined in ContextualMenu.classnames.
+  * @default getItemClassNames
+  */
+  getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassname: string, iconClassname: string, subMenuClassname: string) => IMenuItemClassNames;
+
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 }
@@ -375,9 +391,62 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
   bottomDivider?: boolean;
 }
 
+export interface IMenuItemStyles extends IButtonStyles {
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
+  item: IStyle;
+
+  /**
+   * Styles for the content inside the button/link of the menuItem.
+   */
+  linkContent: IStyle;
+
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
+  anchorLink: IStyle;
+
+  /**
+   * Icon color of the menu item.
+   */
+  iconColor: IStyle;
+
+  /**
+   * Styles for the submenu icon of a menu item.
+   */
+  subMenuIcon: IStyle;
+}
+
 export interface IContextualMenuStyles {
+
   /**
    * Style override for the contextual menu title.
    */
   title: IStyle;
+
+  /**
+   * Style for the container which parents all menu items.
+   */
+  container: IStyle;
+
+  /**
+   * Base styles for the root element of all ContextualMenus.
+   */
+  root: IStyle;
+
+  /**
+   * Styles for the header item of a ContextualMenu
+   */
+  header: IStyle;
+
+  /**
+   * Styles for a divider item of a ConextualMenu.
+   */
+  divider: IStyle;
+
+  /**
+   * Styles for the list that contains all menuItems.
+   */
+  list: IStyle;
 }

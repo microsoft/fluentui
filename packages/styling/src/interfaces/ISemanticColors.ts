@@ -159,6 +159,11 @@ export interface ISemanticColors {
   menuItemBackgroundChecked: string;
 
   /**
+   * The default text color for a selected menu item title.
+   */
+  menuSelectedText: string;
+
+  /**
    * The default colors of icons in menus.
    */
   menuIcon: string;
