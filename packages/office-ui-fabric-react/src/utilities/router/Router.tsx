@@ -26,11 +26,17 @@ export class Router extends BaseComponent<IRouterProps, {}> {
   }
 
   private _getPath() {
-    let path = location.hash;
-    let index = path.lastIndexOf('#');
+    let path = location.hash,
+      hashIndex = path.lastIndexOf('#'),
+      questionMarkIndex = path.indexOf('?');
 
-    if (index > 0) {
-      path = path.substr(0, index);
+    // Look for the start of a query in the currentPath, then strip out the query to find the correct page to render
+    if (questionMarkIndex > -1) {
+      path = path.substr(0, questionMarkIndex);
+    }
+
+    if (hashIndex > 0) {
+      path = path.substr(0, hashIndex);
     }
 
     return path;
