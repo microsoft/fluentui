@@ -7,7 +7,8 @@ export interface ILabelClassNames {
 
 export const getLabelClassNames = memoizeFunction((theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
   return mergeStyleSets({
-    root: ['ms-Label',
+    root:
+    ['ms-Label',
       {
         color: theme.semanticColors.bodyText,
         boxSizing: 'border-box',
