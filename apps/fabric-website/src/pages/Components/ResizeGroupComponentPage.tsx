@@ -14,7 +14,7 @@ export class ResizeGroupComponentPage extends React.Component<any, any> {
               [
                 {
                   'text': 'Overview',
-                  'location': 'Overview',
+                  'location': 'Overview'
                 },
                 {
                   'text': 'Best Practices',
