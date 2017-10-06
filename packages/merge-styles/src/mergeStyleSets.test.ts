@@ -89,8 +89,8 @@ describe('mergeStyleSets', () => {
   });
 
   it('can auto expand a previously registered style', () => {
-    let styles: { root: string } = mergeStyleSets({ root: { background: 'red' } });
-    let styles2: { root: string } = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
+    const styles: { root: string } = mergeStyleSets({ root: { background: 'red' } });
+    const styles2: { root: string } = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
 
     expect(styles.root).toEqual(styles2.root);
 
