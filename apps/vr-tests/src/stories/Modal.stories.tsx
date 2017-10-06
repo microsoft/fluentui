@@ -11,7 +11,7 @@ storiesOf('Modal', module)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
+        .snapshot('default', { cropTo: '.ms-Modal' })
         .end()
       }
     >
