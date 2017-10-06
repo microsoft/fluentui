@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.2.1",
+      "tag": "@uifabric/utilities_v5.2.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.0",
       "tag": "@uifabric/utilities_v5.2.0",
       "date": "Thu, 05 Oct 2017 17:03:43 GMT",

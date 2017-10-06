@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.8",
+      "tag": "@uifabric/fabric-website_v5.0.8",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.3.0 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.7",
       "tag": "@uifabric/fabric-website_v5.0.7",
       "date": "Wed, 04 Oct 2017 22:40:22 GMT",
