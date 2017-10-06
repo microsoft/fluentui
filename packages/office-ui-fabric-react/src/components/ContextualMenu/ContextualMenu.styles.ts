@@ -13,7 +13,7 @@ const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &'
 const ContextualMenuItemHeight = '32px';
 const ContextualMenuIconWidth = '14px';
 
-const getItemHighContrastStyles = memoizeFunction((theme: ITheme): IRawStyle => {
+const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
   return {
     selectors: {
       [MS_HIGHCONTRAST_ACTIVE]: {
@@ -68,25 +68,25 @@ export const getMenuItemStyles = memoizeFunction((
     },
     rootHovered: {
       backgroundColor: ContextualMenuItemBackgroundHoverColor,
-      ...getItemHighContrastStyles(theme)
+      ...getItemHighContrastStyles()
     },
     rootFocused: {
       backgroundColor: ContextualMenuItemBackgroundHoverColor,
-      ...getItemHighContrastStyles(theme)
+      ...getItemHighContrastStyles()
     },
     rootChecked: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
-      ...getItemHighContrastStyles(theme)
+      ...getItemHighContrastStyles()
     },
     rootPressed: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
-      ...getItemHighContrastStyles(theme)
+      ...getItemHighContrastStyles()
     },
     rootExpanded: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       color: ContextualMenuTextSelectedColor,
       fontWeight: FontWeights.semibold,
-      ...getItemHighContrastStyles(theme)
+      ...getItemHighContrastStyles()
     },
     linkContent: {
       whiteSpace: 'nowrap',
