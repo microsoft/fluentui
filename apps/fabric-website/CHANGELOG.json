@@ -2,6 +2,100 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.8",
+      "tag": "@uifabric/fabric-website_v5.0.8",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.3.0 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.7",
+      "tag": "@uifabric/fabric-website_v5.0.7",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ca3473a1d65c8124901173ee0aeb7c7af5b220ef",
+            "comment": "Updated ResourcePage text and made padding more rtl friendly."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f9ff40b02ab05a1a3542b90a9f4e2fe51a6d42ed",
+            "comment": "Added section in Get Started page to document how to use icons in components."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "289ee6ee52372491ac35cebb577554be9ac39c9a",
+            "comment": "Added Icon component to website"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.3.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.6",
+      "tag": "@uifabric/fabric-website_v5.0.6",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "47af278daa76bc638871139ce6b0294edb8c9edb",
+            "comment": "Added initializeIcons() call to make all icons in examples on the website available."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "af886149a115cc6ac2dc697caa3b2f535c8d6147",
+            "comment": "Added SharePoint Toolkit link and text to ResourcesPage."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.5",
+      "tag": "@uifabric/fabric-website_v5.0.5",
+      "date": "Thu, 28 Sep 2017 10:19:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "edc17d6c0d626a21fb995e6cd15db97405449863",
+            "comment": "Updated links in the SharePoint section of the ResourcesPage."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.4",
       "tag": "@uifabric/fabric-website_v5.0.4",
       "date": "Wed, 27 Sep 2017 00:20:58 GMT",

@@ -3,9 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { Rating } from './Rating';
 
@@ -24,8 +22,7 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
-
+    expect(threwException).toEqual(false);
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
 
     let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
@@ -35,6 +32,7 @@ describe('Rating', () => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
       expect(width).to.be.eq(state, 'Rating star width should be ${state}');
+
     };
 
     checkState(1, '100%');
@@ -66,7 +64,7 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
 
@@ -150,6 +148,7 @@ describe('Rating', () => {
     checkState(3, '50%');
     checkState(4, '0%');
     checkState(5, '0%');
+
   });
 
   it('When rating is disabled cannot change rating', () => {
@@ -166,7 +165,7 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
     let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
@@ -192,6 +191,7 @@ describe('Rating', () => {
     } catch (e) {
       exception = e;
       threwException = true;
+
     }
     expect(threwException).to.be.false;
 

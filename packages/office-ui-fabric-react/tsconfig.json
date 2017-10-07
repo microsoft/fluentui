@@ -13,13 +13,13 @@
     "strictNullChecks": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
     "lib": [
       "es2017",
       "dom"
     ],
     "types": [
-      "chai",
-      "mocha",
+      "jest",
       "webpack-env"
     ],
     "paths": {

@@ -39,6 +39,7 @@ export const getClassNames = memoizeFunction((
         {
           selectors: {
             ':hover .ms-Button-icon': styles.iconExpandedHovered,
+            ':hover .ms-Button-menuIcon': styles.rootExpandedHovered,
             ':hover': styles.rootExpandedHovered
           }
         }
@@ -52,10 +53,12 @@ export const getClassNames = memoizeFunction((
           ':hover': styles.rootHovered,
           ':hover .ms-Button-icon': styles.iconHovered,
           ':hover .ms-Button-description': styles.descriptionHovered,
+          ':hover .ms-Button-menuIcon': styles.menuIconHovered,
           ':focus': styles.rootFocused,
           ':active': styles.rootPressed,
           ':active .ms-Button-icon': styles.iconPressed,
-          ':active .ms-Button-description': styles.descriptionPressed
+          ':active .ms-Button-description': styles.descriptionPressed,
+          ':active .ms-Button-menuIcon': styles.menuIconPressed
         }
       },
       disabled && checked && [
@@ -67,17 +70,17 @@ export const getClassNames = memoizeFunction((
           ':active': styles.rootCheckedPressed
         }
       }
-    ) as string,
+    ),
 
     flexContainer: mergeStyles(
       'ms-Button-flexContainer',
       styles.flexContainer
-    ) as string,
+    ),
 
     textContainer: mergeStyles(
       'ms-Button-textContainer',
       styles.textContainer
-    ) as string,
+    ),
 
     icon: mergeStyles(
       'ms-Button-icon',
@@ -86,33 +89,50 @@ export const getClassNames = memoizeFunction((
       expanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
-    ) as string,
+    ),
 
     label: mergeStyles(
       'ms-Button-label',
       styles.label,
       checked && styles.labelChecked,
       disabled && styles.labelDisabled,
-    ) as string,
+    ),
 
     menuIcon: mergeStyles(
       'ms-Button-menuIcon',
       menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
-      disabled && styles.menuIconDisabled
-    ) as string,
+      disabled && styles.menuIconDisabled,
+      !disabled &&
+      !expanded &&
+      !checked && {
+        selectors: {
+          ':hover': styles.menuIconHovered,
+          ':active': styles.menuIconPressed,
+        },
+      },
+      expanded && [
+        'is-expanded',
+        styles.menuIconExpanded,
+        {
+          selectors: {
+            ':hover': styles.menuIconExpandedHovered,
+          },
+        },
+      ]
+    ),
 
     description: mergeStyles(
       'ms-Button-description',
       styles.description,
       checked && styles.descriptionChecked,
       disabled && styles.descriptionDisabled
-    ) as string,
+    ),
 
     screenReaderText: mergeStyles(
       'ms-Button-screenReaderText',
       styles.screenReaderText
-    ) as string
+    )
   };
 });

@@ -6,4 +6,11 @@ setOptions({
   name: 'Fabric'
 });
 
-storybook.configure(() => require('../src/stories/index'), module);
+const req = require.context('../src/stories', true, /\.stories\.tsx$/)
+
+function loadStories() {
+  req.keys().forEach((filename) => req(filename))
+}
+
+storybook.configure(loadStories, module);
+

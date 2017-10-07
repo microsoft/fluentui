@@ -1,0 +1,61 @@
+{
+  "name": "@uifabric/merge-styles",
+  "entries": [
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/merge-styles_v5.3.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/merge-styles_v5.3.0",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f95fa74185b6faaf278fdc0a78e72635bcc3ec48",
+            "comment": "Adding selector support to target child class names that were generated in the same mergeStyleSets set."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/merge-styles_v5.2.0",
+      "date": "Sat, 30 Sep 2017 01:26:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4ef41283e7667631964dd6cf973534fab4cbb1fa",
+            "comment": "Found that adding `false` to the list of accepted typings in `mergeStyleSets` was breaking type safety. Removed it."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/merge-styles_v5.1.0",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "88b06cfda2262661375f90f3bde2d6a16af749a9",
+            "comment": "The `mergeStyleSets` method's type safety was not correct. Now with significantly better type safety."
+          }
+        ]
+      }
+    }
+  ]
+}

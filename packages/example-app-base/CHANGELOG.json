@@ -2,6 +2,91 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.1.1",
+      "tag": "@uifabric/example-app-base_v5.1.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/example-app-base_v5.1.0",
+      "date": "Thu, 05 Oct 2017 17:03:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41cef49e56908d5a9a794617aad64e626ab5b315",
+            "comment": "Fixing version dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.1.1 <6.0.0` to `>=5.2.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.5",
+      "tag": "@uifabric/example-app-base_v5.0.5",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {}
+    },
+    {
+      "version": "5.0.4",
+      "tag": "@uifabric/example-app-base_v5.0.4",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.0.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.3",
+      "tag": "@uifabric/example-app-base_v5.0.3",
+      "date": "Fri, 29 Sep 2017 10:20:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "782705c98981f7114864f06472e0411af2d7a9aa",
+            "comment": "Update fabric version for example-app-base"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.2",
+      "tag": "@uifabric/example-app-base_v5.0.2",
+      "date": "Thu, 28 Sep 2017 10:19:12 GMT",
+      "comments": {}
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/example-app-base_v5.0.1",
       "date": "Wed, 27 Sep 2017 00:20:58 GMT",

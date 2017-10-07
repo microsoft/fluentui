@@ -44,11 +44,11 @@ export class GetStartedPage extends React.Component<any, any> {
         <div className={ styles.designSection }>
           <h2>Use our design language in your own experience</h2>
           <div className='ms-Grid ms-Grid--wide'>
-            <div className='ms-Grid-row'>
+            <div className={ css('ms-Grid-row', styles.contentInGrid) }>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img className={ styles.contentInGrid } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
-                <div className={ css(styles.title, styles.contentInGrid) }>Styles</div>
-                <div className={ css(styles.description, styles.contentInGrid) }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
+                <div className={ styles.title }>Styles</div>
+                <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
@@ -64,7 +64,7 @@ export class GetStartedPage extends React.Component<any, any> {
           </div>
           <div id='toolkit'>
             <span className={ styles.title }>Design Toolkit</span>
-            <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Office experiences.</span>
             <a className={ styles.getStartedLink } href='#/resources'>Learn more</a>
           </div>
         </div>
@@ -135,7 +135,7 @@ const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fab
 ReactDOM.render(<MyPage />, document.body.firstChild);`
                 }
               </CodeBlock>
-              <p>For more information about using components, check out the <a className={ styles.getStartedLink } href='#/components/'>components page</a>.</p>
+              <p>For more information about using components, check out the <a className={ styles.getStartedLink } href='#/components'>components page</a>.</p>
             </li>
             <li>
               <p>You can also reference type styles for any text element:</p>
@@ -153,6 +153,21 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
                 }
               </CodeBlock>
               <p>Components, type, and icons are just a small part of what Fabric has to offer. To reference other assets, including colors, product symbols, and more, see the <a className={ styles.getStartedLink } href='#/styles'>styles page</a>.</p>
+            </li>
+            <li>
+              <p>If you are using Fabric React components that have icons, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:</p>
+              <CodeBlock language='javascript' isLightTheme={ true }>
+                {
+                  `import { initializeIcons } from '@uifabric/icons';
+
+// Register icons and pull the fonts from the default SharePoint cdn:
+initializeIcons();
+
+// ...or, register icons and pull the fonts from your own cdn:
+initializeIcons('https://my.cdn.com/path/to/icons/');`
+                }
+              </CodeBlock>
+              <p>This will make ALL icons in the collection available, but will download them on demand when referenced using the <a href='#/components/Icon'>Icon component</a>.</p>
             </li>
           </ol>
 

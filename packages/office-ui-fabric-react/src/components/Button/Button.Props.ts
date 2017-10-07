@@ -48,6 +48,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   disabled?: boolean;
 
   /**
+   * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
+   */
+  primaryDisabled?: boolean;
+
+  /**
    * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
@@ -309,6 +314,26 @@ export interface IButtonStyles {
    * Style for the menu chevron.
    */
   menuIcon?: IStyle;
+
+  /**
+   * Style for the menu chevron on hover.
+   */
+  menuIconHovered?: IStyle;
+
+  /**
+   * Style for the menu chevron when pressed.
+   */
+  menuIconPressed?: IStyle;
+
+  /**
+   * Style for the menu chevron when expanded.
+   */
+  menuIconExpanded?: IStyle;
+
+  /**
+ * Style for the menu chevron when expanded and hovered.
+ */
+  menuIconExpandedHovered?: IStyle;
 
   /**
    * Style override for the menu chevron when the button is disabled.

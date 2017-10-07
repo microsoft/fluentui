@@ -43,14 +43,14 @@ export const getClassNames = memoizeFunction((
           }
         }
       ]
-    ) as string,
+    ),
 
     label: mergeStyles(
       'ms-Checkbox-label',
       styles.label,
       isReversed && styles.labelReversed,
       disabled && styles.labelDisabled
-    ) as string,
+    ),
 
     checkbox: mergeStyles(
       'ms-Checkbox-checkbox',
@@ -58,19 +58,19 @@ export const getClassNames = memoizeFunction((
       !disabled && isChecked && styles.checkboxChecked,
       disabled && !isChecked && styles.checkboxDisabled,
       disabled && isChecked && styles.checkboxCheckedDisabled,
-    ) as string,
+    ),
 
     checkmark: mergeStyles(
       styles.checkmark,
       !disabled && isChecked && styles.checkmarkChecked,
       disabled && !isChecked && styles.checkmarkDisabled,
       disabled && isChecked && styles.checkmarkCheckedDisabled,
-    ) as string,
+    ),
 
     text: mergeStyles(
       'ms-Checkbox-text',
       styles.text,
       disabled && styles.textDisabled
-    ) as string,
+    ),
   };
 });
