@@ -19,8 +19,8 @@ $Rating-largeIconSize: 20px;
 
   &.ratingStarDisabled {
     color: $Rating-disabledColor;
-     @media screen and (-ms-high-contrast: active) {
-      color: $Rating-disabledColor;
+    @include high-contrast {
+      color: GrayText;
     }
   }
 }
@@ -34,9 +34,9 @@ $Rating-largeIconSize: 20px;
   vertical-align: middle;
   overflow: hidden;
   color: $Rating-selectedColor;
-   @media screen and (-ms-high-contrast: active) {
-      color: rgb(255, 255, 0);
-   }
+  @include high-contrast {
+    color: Highlight;
+  }
 }
 
 .ratingButton {

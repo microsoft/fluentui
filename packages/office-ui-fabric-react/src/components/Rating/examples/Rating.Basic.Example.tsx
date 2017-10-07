@@ -28,7 +28,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           max={ 5 }
           size={ RatingSize.Large }
           rating={ this.state.largeStarRating }
-          ariaLabelId={ this._getRatingComponentAriaLabel(this.state.largeStarRating, 5) }
+          getAriaLabel={ this._getRatingComponentAriaLabel }
           onChanged={ this._onLargeStarChanged }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
@@ -41,7 +41,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           max={ 5 }
           rating={ this.state.smallStarRating }
           onChanged={ this._onSmallStarChanged }
-          ariaLabelId={ this._getRatingComponentAriaLabel(this.state.smallStarRating, 5) }
+          getAriaLabel={ this._getRatingComponentAriaLabel }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
         />
@@ -53,7 +53,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           max={ 10 }
           rating={ this.state.tenStarRating }
           onChanged={ this._onTenStarChanged }
-          ariaLabelId={ this._getRatingComponentAriaLabel(this.state._onTenStarChanged, 5) }
+          getAriaLabel={ this._getRatingComponentAriaLabel }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
         />
@@ -74,7 +74,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           min={ 1 }
           max={ 5 }
           rating={ 2.5 }
-          ariaLabelId={ this._getRatingComponentAriaLabel(2.5, 5) }
+          getAriaLabel={ this._getRatingComponentAriaLabel }
           enableHalfStar={ true }
           readOnly={ true }
         />

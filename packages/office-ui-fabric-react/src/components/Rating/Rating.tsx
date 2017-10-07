@@ -97,7 +97,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     return (
       <div
         className={ css('ms-Rating-star') }
-        aria-labelledby={ this.props.ariaLabelId ? this.props.ariaLabelId : '' }
+        aria-label={ this.props.getAriaLabel ? this.props.getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
       >
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
