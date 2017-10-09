@@ -23,13 +23,12 @@ import {
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
-// The number of pixels of left margin when there is expand/collapse button
-const _indentWithExpandButton: number = 0;
-// The number of pixels of left margin when there is expand/collapse button
-const _indentNoExpandButton: number = 0;
+
+// The number of pixels of left margin
+const _baseIndent: number = 3;
 
 // The number of pixels of padding to add to the far side of the button (allows ellipsis to happen)
-const _farSidePadding: number = 0;
+const _farSidePadding: number = 20;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -133,57 +132,22 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     return this.state.selectedKey;
   }
 
-  private _renderAnchorLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    // Determine the appropriate padding to add before this link.
-    // In RTL, the "before" padding will go on the right instead of the left.
-    const isRtl: boolean = getRTL();
-    const paddingBefore = _indentationSize * nestingLevel +
-      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
-    const paddingBeforeString = paddingBefore + 'px';
-    const paddingAfterString = _farSidePadding + 'px';
-    // Prevent hijacking of the parent window if link.target is defined
-    const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
-
-    return (
-      <a
-        className={ mergeStyles(
-          'ms-Nav-link',
-          styles.link,
-          isRtl && {
-            paddingRight: paddingBeforeString,
-            paddingLeft: paddingAfterString
-          },
-          !isRtl && {
-            paddingLeft: paddingBeforeString,
-            paddingRight: paddingAfterString
-          }) as string
-        }
-        href={ link.url || 'javascript:' }
-        onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
-        aria-label={ link.ariaLabel }
-        title={ link.title || link.name }
-        target={ link.target }
-        rel={ rel }
-      >
-        { link.iconClassName && (
-          <Icon
-            className={ css(link.iconClassName, styles.iconLink) }
-            iconName='IconLink'
-          />
-        ) }
-        { this.props.onRenderLink!(link) }
-      </a>
-    );
-  }
-
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
     const isRtl: boolean = getRTL();
-    const paddingBefore = _indentationSize * nestingLevel +
-      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
+    const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
     const buttonStyles: IButtonStyles = {
       root: {
         [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
         [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
+      },
+      textContainer: {
+        overflow: "hidden",
+      },
+      label: {
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+        overflow: "hidden",
+        lineHeight: "36px"
       }
     };
 
