@@ -20,6 +20,7 @@ import {
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
+import { DefaultButton } from '../Button/DefaultButton/DefaultButton';
 import {
   Icon,
   IIconProps
@@ -388,6 +389,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.href) {
       return this._renderAnchorMenuItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
+
+    if (item.split) {
+      return this._renderSplitButton(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+    }
     return this._renderButtonItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
   }
 
@@ -469,6 +474,38 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
       this._renderMenuItemChildren(item, index, hasCheckmarks!, hasIcons!));
   }
+
+  private _renderSplitButton(
+    item: IContextualMenuItem,
+    index: number,
+    focusableElementIndex: number,
+    totalItemCount: number,
+    hasCheckmarks?: boolean,
+    hasIcons?: boolean): JSX.Element {
+
+    return (
+      <DefaultButton
+        text={ item.name }
+        disabled={ item.disabled }
+        split={ item.split }
+        menuProps={
+          { items: item.items! }
+        }
+      />
+    );
+  }
+
+  private _renderPrimaryButton(item: IContextualMenuItem) {
+
+    return React.createElement('button', );
+  }
+
+  // private _renderSplitMenuContent() {
+  //   return React.createElement(
+  //     'button',
+  //     assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
+  //     this._renderMenuItemChildren(item, index, hasCheckmarks!, hasIcons!));
+  // }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     const isItemChecked: boolean | null | undefined = getIsChecked(item);

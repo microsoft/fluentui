@@ -93,7 +93,8 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                     }
                   ],
                 },
-                name: 'New'
+                name: 'Split Button',
+                split: true,
               },
             ]
           }
