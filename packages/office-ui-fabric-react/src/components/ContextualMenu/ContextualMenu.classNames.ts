@@ -3,7 +3,7 @@ import { ITheme, mergeStyleSets } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
-  container?: string;
+  container: string;
   root: string;
   list: string;
   divider: string;
