@@ -102,6 +102,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /** Allow focus to move to root */
   allowFocusRoot?: boolean;
+
+  /**
+   * Should this FocusZone include elements that are inside of child FocusZones?
+   * @default false
+   */
+  includeElementsInFocusZones?: boolean;
 }
 
 export enum FocusZoneDirection {

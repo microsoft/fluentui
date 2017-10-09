@@ -44,7 +44,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
-    direction: FocusZoneDirection.bidirectional
+    direction: FocusZoneDirection.bidirectional,
+    includeElementsInFocusZones: false
   };
 
   private _root: HTMLElement;
@@ -155,7 +156,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       } else {
         const firstChild = this._root.firstChild as HTMLElement;
 
-        return this.focusElement(getNextElement(this._root, firstChild, true) as HTMLElement);
+        return this.focusElement(
+          getNextElement(
+            this._root,
+            firstChild,
+            true /* checkNode */,
+            undefined /* suppressParentTraversal */,
+            undefined /* suppressChildTraversal */,
+            this.props.includeElementsInFocusZones
+          ) as HTMLElement
+        );
       }
     }
     return false;
@@ -274,7 +284,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    const { direction, disabled, isInnerZoneKeystroke } = this.props;
+    const { direction, disabled, isInnerZoneKeystroke, includeElementsInFocusZones } = this.props;
 
     if (disabled) {
       return;
@@ -307,7 +317,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
         }
       } else if (isElementFocusSubZone(ev.target as HTMLElement)) {
-        if (!this.focusElement(getNextElement(ev.target as HTMLElement, (ev.target as HTMLElement).firstChild as HTMLElement, true) as HTMLElement)) {
+        if (!this.focusElement(
+          getNextElement(
+            ev.target as HTMLElement,
+            (ev.target as HTMLElement).firstChild as HTMLElement,
+            true /* checkNode */,
+            undefined /* suppressParentTraversal */,
+            undefined /* suppressChildTraversal */,
+            includeElementsInFocusZones
+          ) as HTMLElement
+        )) {
           return;
         }
       } else {
@@ -354,7 +373,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
             return false;
           }
           const firstChild = this._root.firstChild as HTMLElement;
-          if (this.focusElement(getNextElement(this._root, firstChild, true) as HTMLElement)) {
+          if (this.focusElement(
+            getNextElement(
+              this._root,
+              firstChild,
+              true /* checkNode */,
+              undefined /* suppressParentTraversal */,
+              undefined /* suppressChildTraversal */,
+              includeElementsInFocusZones
+            ) as HTMLElement
+          )) {
             break;
           }
           return;
@@ -453,6 +481,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let candidateElement: HTMLElement | undefined = undefined;
     let changedFocus = false;
     let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
+    let {
+      includeElementsInFocusZones
+    } = this.props;
 
     if (!element) {
       return false;
@@ -468,8 +499,23 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     do {
       element = (isForward ?
-        getNextElement(this._root, element) :
-        getPreviousElement(this._root, element)) as HTMLElement;
+        getNextElement(
+          this._root,
+          element,
+          undefined /* checkNode */,
+          undefined /* suppressParentTraversal */,
+          undefined /* suppressChildTraversal */,
+          includeElementsInFocusZones
+        ) :
+        getPreviousElement(
+          this._root,
+          element,
+          undefined /* checkNode */,
+          undefined /* suppressParentTraversal */,
+          undefined /* suppressChildTraversal */,
+          includeElementsInFocusZones
+        )
+      ) as HTMLElement;
 
       if (isBidirectional) {
         if (element) {
@@ -503,7 +549,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       this.focusElement(candidateElement);
     } else if (this.props.isCircularNavigation) {
       if (isForward) {
-        return this.focusElement(getNextElement(this._root, this._root.firstElementChild as HTMLElement, true) as HTMLElement);
+        return this.focusElement(
+          getNextElement(
+            this._root,
+            this._root.firstElementChild as HTMLElement,
+            true /* checkNode */,
+            undefined /* suppressParentTraversal */,
+            undefined /* suppressChildTraversal */,
+            includeElementsInFocusZones
+          ) as HTMLElement
+        );
       } else {
         return this.focusElement(getPreviousElement(this._root, this._root.lastElementChild as HTMLElement, true, true, true) as HTMLElement);
       }
