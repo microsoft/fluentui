@@ -142,7 +142,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       : '';
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = calloutMaxHeight! && calloutMaxHeight! > getContentMaxHeight ? this._getMaxHeight() + this.state.heightOffset! : calloutMaxHeight!;
+    let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : calloutMaxHeight!;
 
     let beakVisible = isBeakVisible && (!!target);
 
