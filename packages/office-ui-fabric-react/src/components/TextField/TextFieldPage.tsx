@@ -65,35 +65,31 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
             >
               <TextFieldBorderlessExample />
             </ExampleCard>
+            <ExampleCard
+              title='Textfield with an addon'
+              code={ TextFieldAddonExampleCode }
+            >
+              <TextFieldAddonExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField error message variations'
+              code={ TextFieldErrorMessageExampleCode }
+            >
+              <TextFieldErrorMessageExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with custom Label'
+              code={ TextFieldCustomRenderExampleCode }
+            >
+              <TextFieldCustomRenderExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with an icon'
+              code={ TextFieldIconExampleCode }
+            >
+              <TextFieldIconExample />
+            </ExampleCard>
           </div>
-        }
-        implementationExampleCards {
-          <div>
-          <ExampleCard
-            title='Textfield with an addon'
-            code={ TextFieldAddonExampleCode }
-          >
-            <TextFieldAddonExample />
-          </ExampleCard>
-          <ExampleCard
-            title='TextField with custom Label'
-            code={ TextFieldCustomRenderExampleCode }
-          >
-            <TextFieldCustomRenderExample />
-          </ExampleCard>
-          <ExampleCard
-            title='TextField with an icon'
-            code={ TextFieldIconExampleCode }
-          >
-            <TextFieldIconExample />
-          </ExampleCard>
-          <ExampleCard
-            title='TextField error message variations'
-            code={ TextFieldErrorMessageExampleCode }
-          >
-            <TextFieldErrorMessageExample />
-          </ExampleCard>
-        </div>
         }
         propertiesTables={
           <PropertiesTableSet
