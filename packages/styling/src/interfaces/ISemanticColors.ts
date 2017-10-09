@@ -58,6 +58,11 @@ export interface ISemanticColors {
   bodyText: string;
 
   /**
+   * The default text color for a selected menu item title.
+   */
+  bodySelectedText: string;
+
+  /**
    * De-emphasized text; e.g. metadata, captions, placeholder text.
    */
   bodySubtext: string;
