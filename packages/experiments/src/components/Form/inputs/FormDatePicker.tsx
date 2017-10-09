@@ -1,12 +1,18 @@
-import * as DatePickerStylesModule from "./FormDatePicker.scss";
+import * as DatePickerStylesModule from './FormDatePicker.scss';
+/*tslint:disable:no-any */
 const DatePickerStyles = DatePickerStylesModule as any;
+/*tslint:enable:no-any */
 
-import * as React from "react";
+import * as React from 'react';
 
 // Components
-import { DatePicker, IDatePickerProps } from "office-ui-fabric-react/lib/DatePicker";
-import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from "../FormBaseInput";
+import { DatePicker, IDatePickerProps } from 'office-ui-fabric-react/lib/DatePicker';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { IFormContext } from '../Form';
+
+// Utilities
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export { IDatePickerProps };
 
@@ -29,7 +35,7 @@ export interface IFormDatePickerState extends IFormBaseInputState<Date> {
  */
 export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IFormDatePickerState> {
 
-  constructor(props: IFormDatePickerProps, context: any) {
+  constructor(props: IFormDatePickerProps, context: IFormContext) {
     super(props, context);
     this.state = {
       isValid: true,
@@ -37,13 +43,13 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
       currentError: undefined
     };
 
-    this.validateDatePickerProps(this.props.datePickerProps);
+    this._validateDatePickerProps(this.props.datePickerProps);
   }
 
   /**
    * Render a Fabric DatePicker
    */
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className={ DatePickerStyles['form-date-picker'] }>
         <DatePicker
@@ -51,38 +57,43 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
           // These props cannot be overridden
           key={ this.props.inputKey }
           value={ this.state.currentValue }
-          onSelectDate={ (date: Date) => { this.setValue(date); } }
+          onSelectDate={ this._onDateChanged }
         />
-        { this.state.currentError && this.renderError() }
+        { this.state.currentError && this._renderError() }
       </div>
     );
   }
 
-  private renderError(): JSX.Element {
+  private _renderError(): JSX.Element {
     return (
-      <div className="input-error">
-        <Icon iconName="Error" />
+      <div className='input-error'>
+        <Icon iconName='Error' />
         { this.state.currentError }
       </div>
     );
   }
 
-  private validateDatePickerProps(props?: IDatePickerProps): void {
+  @autobind
+  private _onDateChanged(date: Date): void {
+    this.setValue(date);
+  }
+
+  private _validateDatePickerProps(props?: IDatePickerProps): void {
     if (props) {
-      if (props.key != null) {
-        console.warn("FormDatePicker: 'key' prop was specified and will be ignored");
+      if (props.key) {
+        console.warn(`FormDatePicker: 'key' prop was specified and will be ignored`);
       }
 
-      if (props.ref != null) {
-        console.warn("FormDatePicker: 'ref' prop was specified and will be ignored");
+      if (props.ref) {
+        console.warn(`FormDatePicker: 'ref' prop was specified and will be ignored`);
       }
 
-      if (props.onSelectDate != null) {
-        console.warn("FormDatePicker: 'onSelectDate' prop was specified and will be ignored");
+      if (props.onSelectDate) {
+        console.warn(`FormDatePicker: 'onSelectDate' prop was specified and will be ignored`);
       }
 
-      if (props.strings != null) {
-        console.warn("FormDatePicker: 'strings' prop was specified and will be ignored");
+      if (props.strings) {
+        console.warn(`FormDatePicker: 'strings' prop was specified and will be ignored`);
       }
     }
   }

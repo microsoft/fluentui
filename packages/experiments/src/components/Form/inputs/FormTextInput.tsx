@@ -1,11 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
 // Components
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from "../FormBaseInput";
-import { TextField, ITextFieldProps } from "office-ui-fabric-react/lib/TextField";
+import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { IFormContext } from '../Form';
+import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 
 // Utilities
-import { autobind } from "office-ui-fabric-react/lib/Utilities";
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export { ITextFieldProps };
 
@@ -28,11 +29,11 @@ export interface IFormTextInputState extends IFormBaseInputState<string> {
  */
 export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IFormTextInputState> {
 
-  constructor(props: IFormTextInputProps, context: any) {
+  constructor(props: IFormTextInputProps, context: IFormContext) {
     super(props, context, false /* Leading edge debounce */);
     this.state = {
       isValid: true,
-      currentValue: this.props.value || "",
+      currentValue: this.props.value || '',
       currentError: undefined
     };
 
@@ -43,7 +44,7 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
    * Name of this component
    */
   public name(): string {
-    return "FormTextBox";
+    return 'FormTextBox';
   }
 
   /**
@@ -62,22 +63,22 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
   }
 
   @autobind
-  private _onChange(value: string) {
+  private _onChange(value: string): void {
     this.setValue(value);
   }
 
   private _validateTextFieldProps(props?: ITextFieldProps): void {
     if (props) {
       if (props.errorMessage) {
-        console.warn("FormTextBox: 'errorMessage' prop was specified and will be ignored");
+        console.warn(`FormTextBox: 'errorMessage' prop was specified and will be ignored`);
       }
 
       if (props.value) {
-        console.warn("FormTextBox: 'value' prop was specified and will be ignored");
+        console.warn(`FormTextBox: 'value' prop was specified and will be ignored`);
       }
 
       if (props.onBeforeChange) {
-        console.warn("FormTextBox: 'onBeforeChange' prop was specified and will be ignored");
+        console.warn(`FormTextBox: 'onBeforeChange' prop was specified and will be ignored`);
       }
     }
   }

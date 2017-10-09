@@ -1,8 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
 // Components
-import { Dropdown, IDropdownOption, IDropdownProps } from "office-ui-fabric-react/lib/Dropdown";
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from "../FormBaseInput";
+import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
+import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { IFormContext } from '../Form';
+
+// Utilities
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export { IDropdownProps };
 
@@ -33,40 +37,50 @@ export interface IFormDropdownState extends IFormBaseInputState<number | string>
  */
 export class FormDropdown extends FormBaseInput<number | string, IFormDropdownProps, IFormDropdownState> {
 
-  constructor(props: IFormDropdownProps, context: any) {
+  constructor(props: IFormDropdownProps, context: IFormContext) {
     super(props, context);
     this.state = {
       isValid: true,
-      currentValue: this.props.value != null ? this.props.value : ((this.props.dropdownProps && this.props.dropdownProps.options && this.props.dropdownProps.options.length > 0) ? this.props.dropdownProps.options[0].key : undefined),
+      currentValue: this.props.value !== null && this.props.value !== undefined ?
+        this.props.value :
+        (
+          (this.props.dropdownProps && this.props.dropdownProps.options && this.props.dropdownProps.options.length > 0) ?
+            this.props.dropdownProps.options[0].key : undefined
+        ),
       currentError: undefined
     };
-    this.validateDropdownProps(this.props.dropdownProps);
+    this._validateDropdownProps(this.props.dropdownProps);
   }
 
   /**
    * Render a Fabric Dropdown
    */
-  public render() {
+  public render(): JSX.Element {
     return (
       <Dropdown
         {...this.props.dropdownProps}
 
         // These props cannot be overridden
         key={ this.props.inputKey }
-        onChanged={ (option: IDropdownOption) => this.setValue(option.key) }
+        onChanged={ this._onChanged }
         selectedKey={ this.state.currentValue }
       />
     );
   }
 
-  private validateDropdownProps(props?: IDropdownProps): void {
+  @autobind
+  private _onChanged(option: IDropdownOption): void {
+    this.setValue(option.key);
+  }
+
+  private _validateDropdownProps(props?: IDropdownProps): void {
     if (props) {
-      if (props.selectedKey != null) {
-        console.warn("FormDropdown: 'selectedKey' prop was specified and will be ignored");
+      if (props.selectedKey !== null && props.selectedKey !== undefined) {
+        console.warn(`FormDropdown: 'selectedKey' prop was specified and will be ignored`);
       }
 
-      if (props.onChanged != null) {
-        console.warn("FormDropdown: 'onChanged' prop was specified and will be ignored");
+      if (props.onChanged) {
+        console.warn(`FormDropdown: 'onChanged' prop was specified and will be ignored`);
       }
     }
   }

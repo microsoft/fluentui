@@ -1,9 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 
 // Components
-import { BaseComponent, IBaseProps } from "office-ui-fabric-react/lib/Utilities";
-import { PrimaryButton, IButtonProps } from "office-ui-fabric-react/lib/Button";
-import { IFormContext } from "../Form";
+import { BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IFormContext } from '../Form';
 
 export { IButtonProps };
 
@@ -26,7 +26,7 @@ export interface IFormConditionalSubmitButtonState {
  */
 export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalSubmitButtonProps, IFormConditionalSubmitButtonState> {
 
-  protected static contextTypes: React.ValidationMap<any> = {
+  protected static contextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: React.PropTypes.func.isRequired,
     mountInput: React.PropTypes.func.isRequired,
     unmountInput: React.PropTypes.func.isRequired,
@@ -46,14 +46,14 @@ export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalS
   /**
    * Render a Fabric Dropdown
    */
-  public render() {
+  public render(): JSX.Element {
     const {
         children
     } = this.props;
 
     return (
       <PrimaryButton
-        type="submit"
+        type='submit'
         disabled={ !this.formContext.isFormValid() }
         {...this.props.buttonProps}
       >

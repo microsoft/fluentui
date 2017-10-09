@@ -63,7 +63,10 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
     this.formContext = context;
     this.debouncedSubmitValue = this._async.debounce(
       this.formContext.submitValue,
-      ((this.props.debounceInterval !== null && this.props.debounceInterval !== undefined) ? this.props.debounceInterval : DEFAULT_DEBOUNCE),
+      (
+        (this.props.debounceInterval !== null && this.props.debounceInterval !== undefined) ?
+          this.props.debounceInterval : DEFAULT_DEBOUNCE
+      ),
       {
         leading: (leadingDebounce === null || leadingDebounce === undefined ? true : leadingDebounce)
       });

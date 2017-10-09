@@ -1,4 +1,4 @@
-import { IBaseProps } from "office-ui-fabric-react/lib/Utilities";
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IValidator } from './validators/Validators';
 
 /**

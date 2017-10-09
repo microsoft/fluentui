@@ -1,8 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
 // Components
-import { Checkbox, ICheckboxProps } from "office-ui-fabric-react/lib/Checkbox";
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from "../FormBaseInput";
+import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
+import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { IFormContext } from '../Form';
+
+// Utilities
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export { ICheckboxProps };
 
@@ -25,7 +29,7 @@ export interface IFormCheckBoxState extends IFormBaseInputState<boolean> {
  */
 export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFormCheckBoxState> {
 
-  constructor(props: IFormCheckBoxProps, context: any) {
+  constructor(props: IFormCheckBoxProps, context: IFormContext) {
     super(props, context);
     this.state = {
       isValid: true,
@@ -33,31 +37,36 @@ export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFo
       currentError: undefined
     };
 
-    this.validateCheckboxProps(props.checkboxProps);
+    this._validateCheckboxProps(props.checkboxProps);
   }
 
   /**
    * Render a checkbox
    */
-  public render() {
+  public render(): JSX.Element {
     return (
       <Checkbox
         {...this.props.checkboxProps}
         key={ this.props.inputKey }
-        onChange={ (ev: React.FormEvent<HTMLElement>, isChecked: boolean) => this.setValue(isChecked) }
+        onChange={ this._onChange }
         checked={ this.state.currentValue }
       />
     );
   }
 
-  private validateCheckboxProps(props?: ICheckboxProps): void {
+  @autobind
+  private _onChange(event: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+    this.setValue(isChecked);
+  }
+
+  private _validateCheckboxProps(props?: ICheckboxProps): void {
     if (props) {
-      if (props.checked != null) {
-        console.warn("FormCheckBox: 'checked' prop was specified and will be ignored");
+      if (props.checked !== null && props.checked !== undefined) {
+        console.warn(`FormCheckBox: 'checked' prop was specified and will be ignored`);
       }
 
-      if (props.onChange != null) {
-        console.warn("FormCheckBox: 'onChange' prop was specified and will be ignored");
+      if (props.onChange) {
+        console.warn(`FormCheckBox: 'onChange' prop was specified and will be ignored`);
       }
     }
   }
