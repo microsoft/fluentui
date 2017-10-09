@@ -245,7 +245,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
   @autobind
   private _onChanged(option: IComboBoxOption, index: number, value: string) {
-
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
