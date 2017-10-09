@@ -133,6 +133,12 @@ export const getMenuItemStyles = memoizeFunction((
       verticalAlign: 'middle',
       flexShrink: '0',
     },
+    iconColor: {
+      color: ContextualMenuIconColor,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: 'HighlightText',
+      }
+    },
     subMenuIcon: {
       height: ContextualMenuItemHeight,
       lineHeight: ContextualMenuItemHeight,

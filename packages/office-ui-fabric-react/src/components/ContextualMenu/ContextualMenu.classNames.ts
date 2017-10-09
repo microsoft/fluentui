@@ -107,9 +107,7 @@ export const getItemClassNames = memoizeFunction((
     ],
     icon: [
       'ms-ContextualMenu-icon',
-      knownIcon && 'ms-ContextualMenu-iconColor ' && {
-        color: ContextualMenuIconColor
-      },
+      knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
       styles.icon,
       iconClassName,
     ],
