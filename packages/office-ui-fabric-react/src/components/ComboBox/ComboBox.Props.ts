@@ -93,8 +93,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).
    * @default false;
    */
-  scrollSelectedToTop?: boolean;
-  
+  scrollSelectedToTop?: boolean;  
 }
 
 export interface IComboBoxStyles {
