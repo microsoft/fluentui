@@ -9,7 +9,6 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
-import { BaseAutoFill } from '../../pickers/AutoFill/BaseAutoFill';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
@@ -39,7 +38,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     super();
     this.state = {
       options: [],
-      selectedOptionKey: 0,
+      selectedOptionKey: null,
       value: 'Calibri'
     };
   }
