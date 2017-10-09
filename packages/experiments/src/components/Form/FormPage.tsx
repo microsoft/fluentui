@@ -7,9 +7,11 @@ import {
 } from '@uifabric/example-app-base';
 
 const FormBasicExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Basic.Example.tsx') as string;
+const FormValidationExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Validation.Example.tsx') as string;
 
 
-import { FormBasicExample } from "./examples/Form.Basic.Example";
+import { FormBasicExample } from './examples/Form.Basic.Example';
+import { FormValidationExample } from './examples/Form.Validation.Example';
 
 export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -21,6 +23,9 @@ export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title='Basic Form with one input and a submit button' code={ FormBasicExampleCode }>
               <FormBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Form with validation and conditional submit button' code={ FormValidationExampleCode }>
+              <FormValidationExample />
             </ExampleCard>
           </div>
         }

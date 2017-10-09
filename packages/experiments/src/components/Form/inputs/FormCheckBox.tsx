@@ -37,16 +37,9 @@ export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFo
   }
 
   /**
-   * The name of this component
-   */
-  public name(): string {
-    return "FormCheckbox";
-  }
-
-  /**
    * Render a checkbox
    */
-  public renderComponent() {
+  public render() {
     return (
       <Checkbox
         {...this.props.checkboxProps}

@@ -1,4 +1,5 @@
-import "./FormDatePicker.scss";
+import * as DatePickerStylesModule from "./FormDatePicker.scss";
+const DatePickerStyles = DatePickerStylesModule as any;
 
 import * as React from "react";
 
@@ -14,9 +15,6 @@ export { IDatePickerProps };
  */
 export interface IFormDatePickerProps extends IFormBaseInputProps<Date> {
   datePickerProps?: IDatePickerProps;
-
-  // The localized label for "Today" to be used for the DatePicker
-  todayLabel: string;
 }
 
 /**
@@ -43,18 +41,11 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
   }
 
   /**
-   * Name of this component
-   */
-  public name(): string {
-    return "FormDatePicker";
-  }
-
-  /**
    * Render a Fabric DatePicker
    */
-  public renderComponent() {
+  public render() {
     return (
-      <div className="simple-form-date-picker">
+      <div className={ DatePickerStyles['form-date-picker'] }>
         <DatePicker
           {...this.props.datePickerProps}
           // These props cannot be overridden

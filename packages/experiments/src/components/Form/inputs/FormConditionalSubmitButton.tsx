@@ -46,7 +46,7 @@ export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalS
   /**
    * Render a Fabric Dropdown
    */
-  protected renderComponent() {
+  public render() {
     const {
         children
     } = this.props;

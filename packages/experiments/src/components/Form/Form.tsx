@@ -1,8 +1,10 @@
-import * as React from "react";
+/* tslint:disable:no-any */
+
+import * as React from 'react';
 
 // Components
-import { IFormProps } from "./Form.Props";
-import { GenericFormInput } from "./FormBaseInput";
+import { IFormProps } from './Form.Props';
+import { GenericFormInput } from './FormBaseInput';
 
 // Utilities
 import {
@@ -10,7 +12,7 @@ import {
   BaseComponent,
   getNativeProps,
   divProperties
-} from "office-ui-fabric-react/lib/Utilities";
+} from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Validation result for a simple form input. All calls to validate return this type
@@ -22,11 +24,6 @@ export type IFormValidationResult = {
   isValid: boolean;
 
   /**
-   * Did the field fail validation because it was required?
-   */
-  wasRequired: boolean;
-
-  /**
    * Optional error message
    */
   errorMessage?: string;
@@ -36,7 +33,6 @@ export type IFormValidationResult = {
    */
   component: GenericFormInput;
 };
-
 
 /**
  * The child context for form inputs to use
@@ -78,7 +74,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   /**
    * This is needed because React 15's context does not work well with typescript
    */
-  protected static childContextTypes: React.ValidationMap<any> = {
+  protected static childContextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: React.PropTypes.func.isRequired,
     mountInput: React.PropTypes.func.isRequired,
     unmountInput: React.PropTypes.func.isRequired,
@@ -93,8 +89,8 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   /** Flag which marks whether or not the form has attempted to have been submitted */
   private pristine: boolean;
 
-  constructor(props: IFormProps, context: any) {
-    super(props, context);
+  constructor(props: IFormProps) {
+    super(props);
     this.mountedInputs = [];
     this.pristine = true;
     this.state = {
@@ -110,7 +106,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
     return (
       <form
         {...nativeProps}
-        onSubmit={ this.onSubmit.bind(this) }
+        onSubmit={ this._onSubmit }
       >
         { this.props.children }
       </form>
@@ -122,10 +118,10 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    */
   public getChildContext(): IFormContext {
     return {
-      isFormValid: this.isFormValid,
-      mountInput: this.mountInput,
-      unmountInput: this.unmountInput,
-      submitValue: this.submitValue
+      isFormValid: this._isFormValid,
+      mountInput: this._mountInput,
+      unmountInput: this._unmountInput,
+      submitValue: this._submitValue
     };
   }
 
@@ -133,7 +129,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Get all the values from the inputs that have registered with the form
    * Returns a dictionary keyed by the input names
    */
-  private getFormValues(): { [key: string]: any } {
+  private _getFormValues(): { [key: string]: any } {
     let formValues: { [key: string]: any } = {};
     this.mountedInputs.forEach((input: GenericFormInput) => {
       formValues[input.props.inputKey] = input.state.currentValue;
@@ -147,14 +143,10 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Returns the validation result
    * @param input The input to validate
    */
-  private validateComponent(input: GenericFormInput): IFormValidationResult {
+  private _validateComponent(input: GenericFormInput): IFormValidationResult {
     let validationResult = input.doValidate();
     if (!validationResult.isValid && (this.props.showErrorsWhenPristine || !this.pristine)) {
-      if (validationResult.wasRequired) {
-        input.setError(input.props.requiredErrorMessage || this.props.validatorRequiredMessage);
-      } else {
-        input.setError(validationResult.errorMessage);
-      }
+      input.setError(validationResult.errorMessage);
     } else {
       input.clearError();
     }
@@ -166,10 +158,10 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * Validate all the individual inputs and set their error state
    * Returns a list of the validation results
    */
-  private validateForm(): { [key: string]: IFormValidationResult } {
+  private _validateForm(): { [key: string]: IFormValidationResult } {
     let validationResults: { [key: string]: IFormValidationResult } = {};
     this.mountedInputs.forEach((input: GenericFormInput) => {
-      validationResults[input.props.inputKey] = this.validateComponent(input);
+      validationResults[input.props.inputKey] = this._validateComponent(input);
     });
 
     this.setState((prevState: IFormState) => {
@@ -184,16 +176,17 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * When the form is submitted. This will validate the form and call the appropriate submit callback
    * @param event The form event
    */
-  private onSubmit(event: React.FormEvent<HTMLElement>): void {
+  @autobind
+  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
     event.preventDefault();
     if (this.pristine) {
       this.pristine = false;
     }
 
     if (this.props.onSubmit) {
-      let validationResults = this.validateForm();
-      let formIsValid: boolean = this.isFormValid(validationResults);
-      let formValues: { [key: string]: any } = this.getFormValues();
+      let validationResults = this._validateForm();
+      let formIsValid: boolean = this._isFormValid(validationResults);
+      let formValues: { [key: string]: any } = this._getFormValues();
 
       if (formIsValid) {
         this.props.onSubmit(formValues);
@@ -208,19 +201,19 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * @param input The input to register
    */
   @autobind
-  private mountInput(input: GenericFormInput) {
+  private _mountInput(input: GenericFormInput): void {
     if (this.mountedInputs.indexOf(input) === -1) {
       this.mountedInputs.push(input);
       this.setState((prevState: IFormState) => {
-        prevState.validationResults[input.props.inputKey] = this.validateComponent(input);
+        prevState.validationResults[input.props.inputKey] = this._validateComponent(input);
         return prevState;
       });
     }
   }
 
   @autobind
-  private submitValue(input: GenericFormInput): void {
-    let validationResult: IFormValidationResult = this.validateComponent(input);
+  private _submitValue(input: GenericFormInput): void {
+    let validationResult: IFormValidationResult = this._validateComponent(input);
     this.setState((prevState: IFormState) => {
       prevState.validationResults[input.props.inputKey] = validationResult;
       return prevState;
@@ -238,7 +231,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * @param input The input to unregister
    */
   @autobind
-  private unmountInput(input: GenericFormInput) {
+  private _unmountInput(input: GenericFormInput): void {
     let currentIndex: number = this.mountedInputs.indexOf(input);
     if (currentIndex > -1) {
       this.mountedInputs.splice(currentIndex, 1);
@@ -250,7 +243,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   }
 
   @autobind
-  private isFormValid(validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean {
+  private _isFormValid(validationResults: { [key: string]: IFormValidationResult } = this.state.validationResults): boolean {
     for (let key in validationResults) {
       if (!validationResults[key].isValid) {
         return false;

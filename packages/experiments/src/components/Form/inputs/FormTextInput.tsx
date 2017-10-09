@@ -1,9 +1,11 @@
 import * as React from "react";
 
 // Components
-import { IFormValidationResult } from "../Form";
 import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from "../FormBaseInput";
 import { TextField, ITextFieldProps } from "office-ui-fabric-react/lib/TextField";
+
+// Utilities
+import { autobind } from "office-ui-fabric-react/lib/Utilities";
 
 export { ITextFieldProps };
 
@@ -34,7 +36,7 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
       currentError: undefined
     };
 
-    this.validateTextFieldProps(this.props.textFieldProps);
+    this._validateTextFieldProps(this.props.textFieldProps);
   }
 
   /**
@@ -47,49 +49,34 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
   /**
    * Render a Fabric TextBox
    */
-  public render() {
+  public render(): JSX.Element {
     return (
       <TextField
         {...this.props.textFieldProps}
         key={ this.props.inputKey }
         value={ this.state.currentValue }
-        onBeforeChange={ (value: string) => { this.setValue(value); } }
+        onBeforeChange={ this._onChange }
         errorMessage={ this.state.currentError }
       />
     );
   }
 
-  /**
-   * Additionally, validate whitespace
-   */
-  public doValidate(): IFormValidationResult {
-    let validationResult: IFormValidationResult = {
-      isValid: true,
-      wasRequired: false,
-      errorMessage: "",
-      component: this
-    };
-
-    if (this.props.required && this.state.currentValue && !(this.state.currentValue.trim())) {
-      validationResult.isValid = false;
-      validationResult.wasRequired = true;
-      return validationResult;
-    }
-
-    return super.doValidate();
+  @autobind
+  private _onChange(value: string) {
+    this.setValue(value);
   }
 
-  private validateTextFieldProps(props?: ITextFieldProps): void {
+  private _validateTextFieldProps(props?: ITextFieldProps): void {
     if (props) {
-      if (props.errorMessage != null) {
+      if (props.errorMessage) {
         console.warn("FormTextBox: 'errorMessage' prop was specified and will be ignored");
       }
 
-      if (props.value != null) {
+      if (props.value) {
         console.warn("FormTextBox: 'value' prop was specified and will be ignored");
       }
 
-      if (props.onBeforeChange != null) {
+      if (props.onBeforeChange) {
         console.warn("FormTextBox: 'onBeforeChange' prop was specified and will be ignored");
       }
     }

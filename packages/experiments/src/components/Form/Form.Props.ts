@@ -1,4 +1,5 @@
-import * as React from "react";
+/* tslint:disable:no-any */
+import * as React from 'react';
 
 /**
  * The props for Form
@@ -14,9 +15,6 @@ export interface IFormProps extends React.AllHTMLAttributes<HTMLFormElement> {
 
   /** The update handler. Passes back the valid, updated value of form inputs */
   onUpdated?: (key: string, value: any) => void;
-
-  /** This required field validation message */
-  validatorRequiredMessage: string;
 
   /** Should the form show errors when it is pristine? */
   showErrorsWhenPristine?: boolean;

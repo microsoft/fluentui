@@ -14,7 +14,7 @@ export class FormBasicExample extends React.Component<{}, IFormBasicExampleState
   public render(): JSX.Element {
     return (
       <div>
-        <Form onSubmit={ (results) => { this.setState({ formResults: results }) } } validatorRequiredMessage="" >
+        <Form onSubmit={ (results) => { this.setState({ formResults: results }) } }>
           <FormTextInput textFieldProps={ { label: "Name" } } inputKey="name" />
           <PrimaryButton>Submit</PrimaryButton>
         </Form>

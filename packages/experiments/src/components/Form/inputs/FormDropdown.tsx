@@ -44,16 +44,9 @@ export class FormDropdown extends FormBaseInput<number | string, IFormDropdownPr
   }
 
   /**
-   * Name of this component
-   */
-  public name(): string {
-    return "FormDropdown";
-  }
-
-  /**
    * Render a Fabric Dropdown
    */
-  public renderComponent() {
+  public render() {
     return (
       <Dropdown
         {...this.props.dropdownProps}

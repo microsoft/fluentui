@@ -1,16 +1,18 @@
-import * as React from "react";
+/* tslint:disable:no-any */
 
-import { IFormContext, IFormValidationResult } from "./Form";
-import { IFormBaseInputProps } from "./FormBaseInput.Props";
+import * as React from 'react';
+
+import { IFormContext, IFormValidationResult } from './Form';
+import { IFormBaseInputProps } from './FormBaseInput.Props';
 export { IFormBaseInputProps };
 
 // Components
 import {
   BaseComponent,
   ICancelable
-} from "office-ui-fabric-react/lib/Utilities";
+} from 'office-ui-fabric-react/lib/Utilities';
 
-export const DEFAULT_DEBOUNCE: number = 250;
+export const DEFAULT_DEBOUNCE = 250;
 
 /**
  * The base state for any simple form input
@@ -31,7 +33,7 @@ export type GenericFormInput = FormBaseInput<any, IFormBaseInputProps<any>, IFor
  * The T generic should be the type of value this input accepts. For example, a TextBox would probably define T as string
  */
 export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S extends IFormBaseInputState<T>> extends BaseComponent<P, S> {
-  public static contextTypes: React.ValidationMap<any> = {
+  public static contextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: React.PropTypes.func.isRequired,
     mountInput: React.PropTypes.func.isRequired,
     unmountInput: React.PropTypes.func.isRequired,
@@ -39,14 +41,14 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
   };
 
   /**
-   * Form context passed by the parent form
-   */
-  private formContext: IFormContext;
-
-  /**
    * The debounced version of formContext.submitValue
    */
   protected readonly debouncedSubmitValue: ICancelable<void> & ((input: GenericFormInput) => void);
+
+  /**
+   * Form context passed by the parent form
+   */
+  private formContext: IFormContext;
 
   /**
    * Constructor for any Simple Form input
@@ -61,11 +63,11 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
     this.formContext = context;
     this.debouncedSubmitValue = this._async.debounce(
       this.formContext.submitValue,
-      (this.props.debounceInterval != null ? this.props.debounceInterval : DEFAULT_DEBOUNCE),
+      ((this.props.debounceInterval !== null && this.props.debounceInterval !== undefined) ? this.props.debounceInterval : DEFAULT_DEBOUNCE),
       {
-        leading: (leadingDebounce == null ? true : leadingDebounce)
+        leading: (leadingDebounce === null || leadingDebounce === undefined ? true : leadingDebounce)
       });
-    this.validateProps(props);
+    this._validateProps(props);
   }
 
   /**
@@ -74,7 +76,7 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
    * @param nextProps The props that the component is receiving
    */
   public componentWillReceiveProps(nextProps: P): void {
-    this.validateProps(nextProps);
+    this._validateProps(nextProps);
     if (nextProps.value !== this.props.value && this.props.value === this.state.currentValue) {
       // If the props have changed and the previous props are equal to the current value, then we want to update the internal state value
       this.setState((prevState: S) => {
@@ -103,15 +105,8 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
 
     let validationResult: IFormValidationResult = {
       isValid: true,
-      wasRequired: false,
       component: this
     };
-
-    if (this.props.required && this.state.currentValue == null) {
-      validationResult.isValid = false;
-      validationResult.wasRequired = true;
-      return validationResult;
-    }
 
     for (let validator of (validators as any)) {
       let error: string = validator(this.state.currentValue);
@@ -166,9 +161,9 @@ export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S exten
    * Validate incoming props
    * @param props Props to validate
    */
-  private validateProps(props: P): void {
+  private _validateProps(props: P): void {
     if (!props.inputKey) {
-      throw new Error("FormBaseInput: name must defined on all form inputs");
+      throw new Error('FormBaseInput: name must defined on all form inputs');
     }
   }
 }
