@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+
+## 5.5.1
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added sizing prop for Breadcrumb per design toolkit.
+- Vertically center checkbox in DetailsList header
+- Label: Convert sass to mergeStyles
+- Positioning: Fix an issue where beak would appear misaligned if an event was passed in
 
 ## 5.5.0
 Fri, 06 Oct 2017 10:18:41 GMT

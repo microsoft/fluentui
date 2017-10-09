@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+
+## 5.3.2
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Add test for autoexpand
 
 ## 5.3.1
 Fri, 06 Oct 2017 10:18:41 GMT
