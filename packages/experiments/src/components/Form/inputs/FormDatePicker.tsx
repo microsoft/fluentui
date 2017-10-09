@@ -51,7 +51,7 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
    */
   public render(): JSX.Element {
     return (
-      <div className={ css("form-date-picker", DatePickerStyles.formDatePicker) }>
+      <div className={ css('form-date-picker', DatePickerStyles.formDatePicker) }>
         <DatePicker
           {...this.props.datePickerProps}
           // These props cannot be overridden
@@ -66,7 +66,7 @@ export class FormDatePicker extends FormBaseInput<Date, IFormDatePickerProps, IF
 
   private _renderError(): JSX.Element {
     return (
-      <div className={ css("input-error", DatePickerStyles.inputError) }>
+      <div className={ css('input-error', DatePickerStyles.inputError) }>
         <Icon iconName='Error' />
         { this.state.currentError }
       </div>

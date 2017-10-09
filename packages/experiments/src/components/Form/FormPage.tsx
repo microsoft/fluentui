@@ -1,5 +1,5 @@
 import * as React from 'react';
-import "./FormPage.scss";
+import './FormPage.scss';
 
 import {
   ExampleCard,

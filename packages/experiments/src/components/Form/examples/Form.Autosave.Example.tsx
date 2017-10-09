@@ -59,7 +59,7 @@ export class FormAutosaveExample extends React.Component<{}, IFormAutosaveExampl
   @autobind
   private _onUpdate(key: string, value: any): void {
     let newFormResults = this.state && this.state.formResults ? { ...this.state.formResults } : {};
-    newFormResults[key] = value
+    newFormResults[key] = value;
     this.setState({ formResults: newFormResults });
   }
 }
