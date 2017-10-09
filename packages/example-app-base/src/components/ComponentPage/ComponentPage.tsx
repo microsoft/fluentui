@@ -17,7 +17,6 @@ export interface IComponentPageProps {
   title: string;
   componentName: string;
   exampleCards?: JSX.Element;
-  implementationExampleCards?: JSX.Element;
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
@@ -70,7 +69,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             </div>
             { this._getDosAndDonts() }
             { this._getVariants() }
-            { this._getImplementationExamples() }
             { this._getPropertiesTable() }
             { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
               return this._getSection(componentPageSection);
@@ -116,9 +114,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { links }
         { this.props.exampleCards && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
-        </div> }
-        { this.props.implementationExampleCards && <div className='ComponentPage-navLink'>
-          <Link { ...{ href: this._baseUrl + '#Implementation Examples' } }>Implementation Examples</Link>
         </div> }
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
@@ -201,19 +196,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className='ComponentPage-variantsSection'>
           <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
           { this.props.exampleCards }
-        </div>
-      );
-    }
-
-    return undefined;
-  }
-
-  private _getImplementationExamples(): JSX.Element | undefined {
-    if (this.props.implementationExampleCards) {
-      return (
-        <div className='ComponentPage-variantsSection'>
-          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Implementation Examples'>Implementation Examples</h2>
-          { this.props.implementationExampleCards }
         </div>
       );
     }
