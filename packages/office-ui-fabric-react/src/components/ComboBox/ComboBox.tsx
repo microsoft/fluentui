@@ -795,7 +795,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = props;
 
     let id = this._id;
-
     return (
       <div
         id={ id + '-list' }
@@ -811,7 +810,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render items
   @autobind
   private _onRenderItem(item: IComboBoxOption): JSX.Element | null {
-
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -892,23 +890,38 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Scroll the selected element into view
    */
   private _scrollIntoView() {
+    let {
+      onScrollToItem,
+      scrollSelectedToTop
+    } = this.props;
 
-    let { scrollSelectedToTop } = this.props;
-    if (this._selectedElement && scrollSelectedToTop) {
-      this._selectedElement.offsetParent.scrollIntoView(true);
-    } else if (this._selectedElement) {
-      let alignToTop = true;
+    let {
+      currentPendingValueValidIndex,
+      currentPendingValue,
+      selectedIndex
+    } = this.state;
 
-      if (this._comboBoxMenu.offsetParent) {
-        let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
-        let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
+    if (onScrollToItem) {
+      // Use the custom scroll handler
+      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
+    } else {
+      // We are using refs, scroll the ref into view
+      if (this._selectedElement && scrollSelectedToTop) {
+        this._selectedElement.offsetParent.scrollIntoView(true);
+      } else if (this._selectedElement) {
+        let alignToTop = true;
 
-        if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
-          alignToTop = false;
+        if (this._comboBoxMenu.offsetParent) {
+          let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
+          let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
+
+          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
+            alignToTop = false;
+          }
         }
-      }
 
-      this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+        this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+      }
     }
   }
 
