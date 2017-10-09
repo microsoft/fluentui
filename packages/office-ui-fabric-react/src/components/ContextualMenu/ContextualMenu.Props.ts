@@ -448,10 +448,7 @@ export interface IContextualMenuStyles {
    * Styles for the header item of a ContextualMenu
    */
   header: IStyle;
-  /**
-   * Styles for a divider item of a ConextualMenu.
-   */
-  divider: IStyle;
+
   /**
    * Styles for the list that contains all menuItems.
    */

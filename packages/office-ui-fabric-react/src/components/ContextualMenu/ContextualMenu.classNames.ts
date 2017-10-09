@@ -4,7 +4,6 @@ import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
   container: string;
-  divider: string;
   root: string;
   list: string;
   header: string;
@@ -41,11 +40,6 @@ export const getContextualMenuClassNames = memoizeFunction((
     list: [
       'ms-ContextualMenu-list is-open',
       styles.list
-    ],
-    divider: [
-      'ms-ContextualMenu-divider',
-      styles.divider,
-      className,
     ],
     header: [
       'ms-ContextualMenu-header',
