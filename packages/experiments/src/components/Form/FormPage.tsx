@@ -6,21 +6,21 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
-import { Form } from "./Form";
-import { FormTextInput } from "./inputs/FormTextInput";
+const FormBasicExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Basic.Example.tsx') as string;
+
+
+import { FormBasicExample } from "./examples/Form.Basic.Example";
 
 export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='CommandBar'
-        componentName='CommandBarExample'
+        title='Form'
+        componentName='FormExample'
         exampleCards={
           <div>
-            <ExampleCard title='CommandBar with search box and overflowing menu items' code={ "" }>
-              <Form onSubmit={ (results) => { console.log(results); } } validatorRequiredMessage="" >
-                <FormTextInput inputKey="name" />
-              </Form>
+            <ExampleCard title='Basic Form with one input and a submit button' code={ FormBasicExampleCode }>
+              <FormBasicExample />
             </ExampleCard>
           </div>
         }
