@@ -63,7 +63,7 @@ export const getItemClassNames = memoizeFunction((
   knownIcon: boolean,
   itemClassName: string,
   iconClassName: string,
-  subMenuClassname: string,
+  subMenuClassName: string,
 ): IMenuItemClassNames => {
 
   const styles = getMenuItemStyles(theme);
@@ -110,7 +110,7 @@ export const getItemClassNames = memoizeFunction((
     ],
     subMenuIcon: [
       'ms-ContextualMenu-submenuIcon',
-      subMenuClassname,
+      subMenuClassName,
       styles.subMenuIcon
     ],
     label: [
