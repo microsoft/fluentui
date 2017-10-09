@@ -752,12 +752,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
-      calloutProps,
-      comboBoxOptionStyles: customStylesForAllOptions,
-      styles: customStylesForCurrentOption
+      calloutProps
     } = props;
-
-    let id = this._id;
 
     return (
       <Callout
