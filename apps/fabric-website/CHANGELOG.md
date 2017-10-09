@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+
+## 5.0.9
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added/removed Best Practices links for component pages that had/didn't have a Best Practices section.
+- Updated themeLight color - typo
 
 ## 5.0.8
 Fri, 06 Oct 2017 10:18:41 GMT
