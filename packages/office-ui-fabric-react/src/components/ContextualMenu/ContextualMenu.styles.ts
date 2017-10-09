@@ -154,7 +154,6 @@ export const getStyles = memoizeFunction((
 
   const ContextualMenuBackground = semanticColors.bodyBackground;
   const ContextualMenuHeaderColor = semanticColors.menuHeader;
-  const ContextualMenuDividerColor = semanticColors.bodyDivider;
 
   const styles: IContextualMenuStyles = {
     root: {
@@ -177,12 +176,6 @@ export const getStyles = memoizeFunction((
       paddingBottom: '5px',
       paddingTop: '5px',
       backgroundColor: theme.palette.neutralLight
-    },
-    divider: {
-      display: 'block',
-      height: '1px',
-      backgroundColor: ContextualMenuDividerColor,
-      position: 'relative'
     },
     header: [
       fonts.small,
