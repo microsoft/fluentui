@@ -362,8 +362,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       value,
       allowFreeform,
-      autoComplete,
-      overrideOptionInput
+      autoComplete
     } = this.props;
     let {
       selectedIndex,
@@ -378,7 +377,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If the user passed is a value prop, use that
     // unless we are open and have a valid current pending index
-    if (!(isOpen && currentPendingIndexValid) && value) {
+    if (!(isOpen && currentPendingIndexValid) && (value && !currentPendingValue)) {
       return value;
     }
 
@@ -394,16 +393,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Since we are allowing freeform, if there is currently a nonempty pending value, use that
       // otherwise use the index determined above (falling back to '' if we did not get a valid index)
-
-      if (currentPendingValue !== '') {
-        return currentPendingValue;
-      } else if (overrideOptionInput) {
-        return overrideOptionInput;
-      } else if (this._indexWithinBounds(currentOptions, index)) {
-        return currentOptions[index].text;
-      } else {
-        return '';
-      }
+      return currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : '');
 
     } else {
 
@@ -615,7 +605,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    let { onChanged, overrideOptionInput } = this.props;
+    let { onChanged } = this.props;
     let { selectedIndex, currentOptions } = this.state;
 
     // Find the next selectable index, if searchDirection is none
@@ -624,7 +614,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
-    if (index !== selectedIndex || overrideOptionInput) {
+    if (index !== selectedIndex) {
       let option: IComboBoxOption = currentOptions[index];
 
       // Set the selected option

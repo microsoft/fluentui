@@ -94,11 +94,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default false;
    */
   scrollSelectedToTop?: boolean;
-
-  /**
-   * When selected option text is added to input field, use this text instead.
-   */
-  overrideOptionInput?: string;
 }
 
 export interface IComboBoxStyles {
