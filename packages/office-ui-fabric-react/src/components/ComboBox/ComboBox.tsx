@@ -16,13 +16,9 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  css
-} from '../../Utilities';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
-
-import {
   customizable
 } from '../../Utilities';
+import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import {
   getStyles,
   getOptionStyles,
@@ -912,7 +908,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
     const optionStyles = this._getCurrentOptionStyles(item);
-
     return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
   }
 

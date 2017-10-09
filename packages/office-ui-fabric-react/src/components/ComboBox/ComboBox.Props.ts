@@ -182,7 +182,6 @@ export interface IComboBoxStyles {
    * Styles for a divider in the options.
    */
   divider: IStyle;
-
 }
 
 export interface IComboBoxOptionStyles extends IButtonStyles {
