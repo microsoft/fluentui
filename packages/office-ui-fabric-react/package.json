@@ -60,6 +60,10 @@
     {
       "path": "./dist/office-ui-fabric-react.js",
       "maxSize": "280 kB"
+    },
+    {
+      "path": "../../apps/test-bundle-button/dist/main.min",
+      "maxSize": "150 kB"
     }
   ]
 }
