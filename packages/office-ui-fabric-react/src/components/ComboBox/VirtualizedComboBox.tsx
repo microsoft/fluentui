@@ -2,7 +2,7 @@ import * as React from 'react';
 import { autobind, BaseComponent, customizable } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import { IComboBoxProps } from './ComboBox.Props';
-import { List } from "../../List";
+import { List } from '../../List';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> {
@@ -32,7 +32,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> {
         componentRef={ this._resolveRef('_list') }
         role='listbox'
         items={ props.options }
-        onRenderCell={ onRenderItem != null ? (item: ISelectableOption) => onRenderItem(item) : () => null }
+        onRenderCell={ onRenderItem ? (item: ISelectableOption) => onRenderItem(item) : () => null }
       />
     );
   }
