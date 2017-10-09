@@ -9,7 +9,7 @@
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
     "@microsoft/loader-load-themed-styles": "^1.4.2",
-    "@uifabric/merge-styles": ">=5.3.0 <6.0.0",
+    "@uifabric/merge-styles": ">=5.3.2 <6.0.0",
     "autoprefixer": "^7.1.2",
     "awesome-typescript-loader": "^3.2.3",
     "chalk": "^2.1.0",

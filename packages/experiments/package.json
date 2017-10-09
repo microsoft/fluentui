@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -28,8 +28,8 @@
     "@types/jest": "^21.1.0",
     "@types/enzyme": "^2.8.8",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=5.0.5 <6.0.0",
-    "@uifabric/icons": ">=5.1.0 <6.0.0",
+    "@uifabric/example-app-base": ">=5.1.1 <6.0.0",
+    "@uifabric/icons": ">=5.1.1 <6.0.0",
     "es6-weak-map": "^2.0.2",
     "enzyme": "^2.9.1",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
@@ -42,8 +42,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
-    "office-ui-fabric-react": ">=6.0.1 <7.0.0",
-    "@uifabric/icons": ">=5.1.0 <6.0.0",
+    "office-ui-fabric-react": ">=5.5.0 <6.0.0",
+    "@uifabric/icons": ">=5.1.1 <6.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

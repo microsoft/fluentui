@@ -2,6 +2,113 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.5.1",
+      "tag": "office-ui-fabric-react_v5.5.1",
+      "date": "Mon, 09 Oct 2017 10:08:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "253d08091c117b867ad67be2d165e31920705bdc",
+            "comment": "Added sizing prop for Breadcrumb per design toolkit."
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "a7011bdfc7608455c8403d38c1cfc7639e1a55d6",
+            "comment": "Vertically center checkbox in DetailsList header"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "71ff33573d03e3cdefc2ba2c5410711be6e2ee09",
+            "comment": "Label: Convert sass to mergeStyles"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "275c55a1aacbed4ba70b6c84330c731194ecb49e",
+            "comment": "Positioning: Fix an issue where beak would appear misaligned if an event was passed in"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.3.1 <6.0.0` to `>=5.3.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "office-ui-fabric-react_v5.5.0",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "6373316a067e101fb196e3fc4364d45d08f7e62e",
+            "comment": "Dropdown: fix broken implementation of controlled multi-select dropdowns"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds systems don't break when importing const enums"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "93a105ccb4710ab902113e0c4adec9bb4a786bbe",
+            "comment": "Router: regex to be able to render the correct page when it encounters queries."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Max Vaysburd <max@angrykitten.com>",
+            "commit": "25b9997aad2db7ca530283fb1bfb0b72e96955f7",
+            "comment": "Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.3.0 <6.0.0` to `>=5.3.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "office-ui-fabric-react_v5.4.0",
+      "date": "Thu, 05 Oct 2017 17:03:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41cef49e56908d5a9a794617aad64e626ab5b315",
+            "comment": "Fixing version dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.1.1 <6.0.0` to `>=5.2.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.0.5 <6.0.0` to `>=5.1.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.1",
       "tag": "office-ui-fabric-react_v6.0.1",
       "date": "Thu, 05 Oct 2017 10:17:42 GMT",
