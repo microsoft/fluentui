@@ -57,6 +57,12 @@ $ContextualMenu-text-disabled: $menuTextDisabledColor;
 
   &:hover:not([disabled]) {
     background: $ContextualMenu-background-hover-color;
+
+    @include high-contrast {
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
+    }
   }
   &.isDisabled,
   &[disabled] {
@@ -77,6 +83,12 @@ $ContextualMenu-text-disabled: $menuTextDisabledColor;
     background: $ContextualMenu-background-selected-color;
     color: $ContextualMenu-text-selected-color;
     font-weight: $ms-font-weight-semibold;
+
+    @include high-contrast {
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
+    }
   }
 }
 
@@ -135,6 +147,10 @@ a.link {
 
 .iconColor {
   color: $ContextualMenu-icon-color;
+
+  @include high-contrast {
+    color: HighlightText;
+  }
 }
 
 .itemText {

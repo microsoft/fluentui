@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
     "types": [
       "chai",
       "mocha",

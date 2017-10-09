@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed duplicate header on Tooltip page.",
+      "comment": "New MessageBarButton component to allow for the unique state styles need in MessageBar.",
       "type": "patch"
     }
   ],

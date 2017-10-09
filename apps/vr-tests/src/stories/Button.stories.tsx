@@ -56,6 +56,16 @@ storiesOf('Button Default', module)
   .add('Primary Disabled', () => (<DefaultButton {...baseProps} primary={ true } disabled={ true } />))
   .add('Primary Checked', () => (<DefaultButton {...baseProps} primary={ true } checked={ true } />));
 
+storiesOf('Button with placeholder', module)
+  .addDecorator(FabricDecorator)
+  .add('primary with placeholder', () => (
+    <div>
+      <DefaultButton {...baseProps} iconProps={ { iconName: '' } } primary={ true } />
+      <br />
+      <DefaultButton {...baseProps} iconProps={ { iconName: 'Add' } } primary={ true } />
+    </div>
+  ));
+
 storiesOf('Button Action', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (

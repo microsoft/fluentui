@@ -2,6 +2,81 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.9",
+      "tag": "@uifabric/fabric-website_v5.0.9",
+      "date": "Mon, 09 Oct 2017 10:08:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "9a399cc9187ec81611acec92655e3393878e28e1",
+            "comment": "Added/removed Best Practices links for component pages that had/didn't have a Best Practices section."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "de4c2b13ef50e485209deff44890cc23d8a3db86",
+            "comment": "Updated themeLight color - typo"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.5.0 <6.0.0` to `>=5.5.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.8",
+      "tag": "@uifabric/fabric-website_v5.0.8",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.1.0 <6.0.0` to `>=5.1.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.3.0 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.7",
+      "tag": "@uifabric/fabric-website_v5.0.7",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ca3473a1d65c8124901173ee0aeb7c7af5b220ef",
+            "comment": "Updated ResourcePage text and made padding more rtl friendly."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f9ff40b02ab05a1a3542b90a9f4e2fe51a6d42ed",
+            "comment": "Added section in Get Started page to document how to use icons in components."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "289ee6ee52372491ac35cebb577554be9ac39c9a",
+            "comment": "Added Icon component to website"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.3.0 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.6",
       "tag": "@uifabric/fabric-website_v5.0.6",
       "date": "Fri, 29 Sep 2017 10:20:24 GMT",
