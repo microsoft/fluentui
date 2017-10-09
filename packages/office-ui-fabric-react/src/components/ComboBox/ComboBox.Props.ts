@@ -94,6 +94,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default false;
    */
   scrollSelectedToTop?: boolean;
+  
 }
 
 export interface IComboBoxStyles {
