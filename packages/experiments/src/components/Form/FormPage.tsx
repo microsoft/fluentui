@@ -64,20 +64,16 @@ export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
         dos={
           <div>
             <ul>
-              <li>Sort commands in order of importance from left to right or right to left depending on the culture.</li>
-              <li>Organize commands into logical groupings.</li>
-              <li>Display no more than 5-7 commands.</li>
-              <li>Use overflow to house less frequently-used commands.</li>
-              <li>In small breakpoints, only have the most recognizable commands render as icon only.</li>
+              <li>Wrap multiple form inputs under one Form component</li>
+              <li>Use any layout you want within the Form component. The inputs do not have to be direct children</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>Fill the command bar completely from left to right.</li>
-              <li>Use icons only for commands in larger widths.</li>
-              <li>Display more than 2-3 items on the right side of the bar (or left side in left to right experiences).</li>
+              <li>Store the Form values in the parent component. The Form component will take care of all the state</li>
+              <li>Control the form inputs using value. Their values are managed by the Form compoennt</li>
             </ul>
           </div>
         }
