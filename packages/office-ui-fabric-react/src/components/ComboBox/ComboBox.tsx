@@ -217,6 +217,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
+      onRenderList = this._onRenderList,
+      onRenderItem = this._onRenderItem,
+      onRenderOption = this._onRenderOption,
       allowFreeform,
       autoComplete,
       buttonIconProps,
@@ -293,7 +296,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </div>
 
         { isOpen && (
-          (onRenderContainer as any)({ ...this.props as any }, this._onRenderContainer)
+          (onRenderContainer as any)({
+            ...this.props,
+            onRenderList,
+            onRenderItem,
+            onRenderOption,
+            options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
+          },
+            this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -752,7 +762,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
-      onRenderList = this._onRenderList,
+      onRenderList,
       calloutProps
     } = props;
 
@@ -780,8 +790,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderList(props: IComboBoxProps): JSX.Element {
     let {
-      onRenderItem = this._onRenderItem
-    } = this.props;
+      onRenderItem,
+      options
+    } = props;
 
     let id = this._id;
 
@@ -792,7 +803,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         aria-labelledby={ id + '-label' }
         role='listbox'
       >
-        { this.state.currentOptions.map((item, index) => onRenderItem({ ...item, index } as ISelectableOption, this._onRenderItem)) }
+        { options.map((item) => (onRenderItem as any)(item, this._onRenderItem)) }
       </div>
     );
   }
