@@ -306,6 +306,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
     let iconProps = this._getIconProps(item);
+    // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     let dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
     let getClassNames = this.props.getItemClassNames ? this.props.getItemClassNames : getItemClassNames;
