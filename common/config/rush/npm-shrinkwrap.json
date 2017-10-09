@@ -11234,9 +11234,9 @@
       "integrity": "sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM="
     },
     "ts-jest": {
-      "version": "21.1.1",
-      "resolved": "https://registry.npmjs.org/ts-jest/-/ts-jest-21.1.1.tgz",
-      "integrity": "sha512-fWy+s7COsDD7rzVu0wCyvkvoHXuaVHuWvHAxvCod4INUOclioneGnEB3xBbwYUeD/ZHAYBzCOQXw4Fehh0S3NA==",
+      "version": "21.1.0",
+      "resolved": "https://registry.npmjs.org/ts-jest/-/ts-jest-21.1.0.tgz",
+      "integrity": "sha512-P4NGaX8Hqy0vAdXd2K1y1PEgAbTHqJtUdwAeBaHAUbZpKQmfqKSRgNEHsyf9hdxsqtkUyj/Msep0BatNxhZQug==",
       "dependencies": {
         "camelcase": {
           "version": "4.1.0",
