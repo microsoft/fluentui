@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Update documentation for `autoComplete` prop of `ComboBox` now that it is a string, not a boolean.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "ian.vanschooten@gmail.com"
+}

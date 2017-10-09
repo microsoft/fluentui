@@ -54,9 +54,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
-   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style. Defaults to false.
+   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.
+   *
+   * @default "on"
    */
-  autoComplete?: string;
+  autoComplete?: 'on' | 'off';
 
   /**
    * Value to show in the input, does not have to map to a combobox option
