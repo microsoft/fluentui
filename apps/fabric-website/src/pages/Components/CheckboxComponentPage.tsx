@@ -17,6 +17,10 @@ export class CheckboxComponentPage extends React.Component<any, any> {
                   'location': 'Overview'
                 },
                 {
+                  'text': 'Best Practices',
+                  'location': 'Best Practices'
+                },
+                {
                   'text': 'Variants',
                   'location': 'Variants'
                 },

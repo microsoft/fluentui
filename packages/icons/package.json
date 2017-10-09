@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/icons",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Office UI Fabric icon set.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,7 +23,7 @@
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.1.1 <6.0.0",
+    "@uifabric/styling": ">=5.2.1 <6.0.0",
     "tslib": "^1.6.0"
   }
 }

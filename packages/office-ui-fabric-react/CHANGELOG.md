@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Oct 2017 10:17:42 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+
+## 5.5.1
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added sizing prop for Breadcrumb per design toolkit.
+- Vertically center checkbox in DetailsList header
+- Label: Convert sass to mergeStyles
+- Positioning: Fix an issue where beak would appear misaligned if an event was passed in
+
+## 5.5.0
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Minor changes
+
+- Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered.
+
+### Patches
+
+- Dropdown: fix broken implementation of controlled multi-select dropdowns
+- TSConfig: update to use preserveConstEnums so that certain builds systems don't break when importing const enums
+- Router: regex to be able to render the correct page when it encounters queries.
+
+## 5.4.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Fixing version dependencies.
 
 ## 6.0.1
 Thu, 05 Oct 2017 10:17:42 GMT
