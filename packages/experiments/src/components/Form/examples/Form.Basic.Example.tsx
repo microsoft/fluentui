@@ -1,5 +1,4 @@
 /* tslint:disable:no-any */
-import './Form.Basic.Example.scss';
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';

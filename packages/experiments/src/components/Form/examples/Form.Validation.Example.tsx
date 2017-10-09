@@ -1,5 +1,4 @@
 /* tslint:disable:no-any */
-import './Form.Validation.Example.scss';
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Form } from '../Form';
@@ -34,13 +33,15 @@ export class FormValidationExample extends React.Component<{}, IFormValidationEx
             validators={ [Validators.required('Field is required')] }
           />
           <FormDatePicker
-            datePickerProps={ { label: 'Date Picker with date no less than ye' } }
+            datePickerProps={ { label: 'Date Picker with date no less than yesterday' } }
             inputKey='date'
             validators={ [(value: Date) => {
-              let date = new Date();
-              date.setDate(date.getDate() - 1);
-              if (value.getTime() < date.getTime()) {
-                return 'Date must be today or later';
+              if (value) {
+                let date = new Date();
+                date.setDate(date.getDate() - 1);
+                if (value.getTime() < date.getTime()) {
+                  return 'Date must be today or later';
+                }
               }
             }] }
           />

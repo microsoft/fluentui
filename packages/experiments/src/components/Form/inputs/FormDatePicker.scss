@@ -1,8 +1,8 @@
 @import '~office-ui-fabric-react/src/common/common';
 
-.form-date-picker {
+.formDatePicker {
 
-    .input-error {
+    .inputError {
         @include ms-font-s;
         color: $ms-color-redDark;
         display: flex;

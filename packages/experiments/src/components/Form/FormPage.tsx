@@ -1,4 +1,6 @@
 import * as React from 'react';
+import "./FormPage.scss";
+
 import {
   ExampleCard,
   IComponentDemoPageProps,
@@ -6,9 +8,11 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+const FormAutosaveExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Autosave.Example.tsx') as string;
 const FormBasicExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Basic.Example.tsx') as string;
 const FormValidationExampleCode = require('!raw-loader!experiments/src/components/Form/examples/Form.Validation.Example.tsx') as string;
 
+import { FormAutosaveExample } from './examples/Form.Autosave.Example';
 import { FormBasicExample } from './examples/Form.Basic.Example';
 import { FormValidationExample } from './examples/Form.Validation.Example';
 
@@ -25,6 +29,9 @@ export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Form with validation and conditional submit button' code={ FormValidationExampleCode }>
               <FormValidationExample />
+            </ExampleCard>
+            <ExampleCard title='Form with validation and autosave' code={ FormAutosaveExampleCode }>
+              <FormAutosaveExample />
             </ExampleCard>
           </div>
         }
