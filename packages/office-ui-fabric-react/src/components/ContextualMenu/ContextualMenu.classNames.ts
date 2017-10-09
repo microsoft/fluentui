@@ -66,6 +66,8 @@ export const getItemClassNames = memoizeFunction((
   subMenuClassName: string,
 ): IMenuItemClassNames => {
 
+  const { semanticColors } = theme;
+  const ContextualMenuIconColor = semanticColors.menuIcon;
   const styles = getMenuItemStyles(theme);
 
   return mergeStyleSets({
@@ -104,7 +106,9 @@ export const getItemClassNames = memoizeFunction((
     ],
     icon: [
       'ms-ContextualMenu-icon',
-      knownIcon && ('ms-ContextualMenu-iconColor ' + styles.iconColor),
+      knownIcon && 'ms-ContextualMenu-iconColor ' && {
+        color: ContextualMenuIconColor
+      },
       iconClassName,
       styles.icon,
     ],

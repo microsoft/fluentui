@@ -416,11 +416,6 @@ export interface IMenuItemStyles extends IButtonStyles {
   anchorLink: IStyle;
 
   /**
-   * Icon color of the menu item.
-   */
-  iconColor: IStyle;
-
-  /**
    * Styles for the submenu icon of a menu item.
    */
   subMenuIcon: IStyle;
