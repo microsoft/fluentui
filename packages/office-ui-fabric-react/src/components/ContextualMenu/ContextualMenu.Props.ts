@@ -215,6 +215,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
     isAnchorLink: boolean,
     knownIcon: boolean,
     itemClassname: string,
+    dividerClassName: string,
     iconClassname: string,
     subMenuClassname: string) => IMenuItemClassNames;
 
@@ -419,6 +420,11 @@ export interface IMenuItemStyles extends IButtonStyles {
    * Styles for the submenu icon of a menu item.
    */
   subMenuIcon: IStyle;
+
+  /**
+  * Styles for a divider item of a ConextualMenu.
+  */
+  divider: IStyle;
 }
 
 export interface IContextualMenuStyles {
@@ -442,12 +448,10 @@ export interface IContextualMenuStyles {
    * Styles for the header item of a ContextualMenu
    */
   header: IStyle;
-
   /**
    * Styles for a divider item of a ConextualMenu.
    */
   divider: IStyle;
-
   /**
    * Styles for the list that contains all menuItems.
    */

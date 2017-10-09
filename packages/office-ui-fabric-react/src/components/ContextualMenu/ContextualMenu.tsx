@@ -306,6 +306,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
     let iconProps = this._getIconProps(item);
+    let dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
     let getClassNames = this.props.getItemClassNames ? this.props.getItemClassNames : getItemClassNames;
     let itemClassNames = getClassNames(
@@ -316,6 +317,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       !!item.href,
       (iconProps.iconName !== 'None'),
       item.className!,
+      dividerClassName!,
       iconProps.className!,
       subMenuIconClassName!
     );
@@ -325,10 +327,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
     switch (item.itemType) {
       case ContextualMenuItemType.Divider:
-        renderedItems.push(this._renderSeparator(index, item.className));
+        renderedItems.push(this._renderSeparator(index, itemClassNames));
         break;
       case ContextualMenuItemType.Header:
-        renderedItems.push(this._renderSeparator(index));
+        renderedItems.push(this._renderSeparator(index, itemClassNames));
         let headerItem = this._renderHeaderMenuItem(item, itemClassNames, index, hasCheckmarks, hasIcons);
         renderedItems.push(this._renderListItem(headerItem, item.key || index, itemClassNames, item.title));
         break;
@@ -368,12 +370,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         >
           <div role='group'>
             <ul className={ this._classNames.list }>
-              { section.topDivider && this._renderSeparator(index, undefined, true, true) }
+              { section.topDivider && this._renderSeparator(index, menuClassNames, true, true) }
               { headerItem && this._renderListItem(headerItem, item.key || index, menuClassNames, item.title) }
               { section.items.map((contextualMenuItem, itemsIndex) => (
                 this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
               )) }
-              { section.bottomDivider && this._renderSeparator(index, undefined, false, true) }
+              { section.bottomDivider && this._renderSeparator(index, menuClassNames, false, true) }
             </ul>
           </div>
         </li>
@@ -394,13 +396,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderSeparator(index: number, className?: string, top?: boolean, fromSection?: boolean): React.ReactNode {
+  private _renderSeparator(index: number, classNames: IMenuItemClassNames, top?: boolean, fromSection?: boolean): React.ReactNode {
     if (fromSection || index > 0) {
       return (
         <li
           role='separator'
           key={ 'separator-' + index + (top === undefined ? '' : (top ? '-top' : '-bottom')) }
-          className={ this._classNames.divider }
+          className={ classNames.divider }
         />
       );
     }

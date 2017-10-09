@@ -37,6 +37,7 @@ export const getMenuItemStyles = memoizeFunction((
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
   const ContextualMenuTextSelectedColor = semanticColors.bodySelectedText;
   const ContextualMenuTextDisabledColor = semanticColors.disabledText;
+  const ContextualMenuDividerColor = semanticColors.bodyDivider;
 
   const menuItemStyles: IMenuItemStyles = {
     item: [
@@ -46,6 +47,12 @@ export const getMenuItemStyles = memoizeFunction((
         position: 'relative',
         boxSizing: 'border-box',
       }],
+    divider: {
+      display: 'block',
+      height: '1px',
+      backgroundColor: ContextualMenuDividerColor,
+      position: 'relative'
+    },
     root: [
       getFocusStyle(theme),
       {
@@ -171,6 +178,12 @@ export const getStyles = memoizeFunction((
       paddingTop: '5px',
       backgroundColor: theme.palette.neutralLight
     },
+    divider: {
+      display: 'block',
+      height: '1px',
+      backgroundColor: ContextualMenuDividerColor,
+      position: 'relative'
+    },
     header: [
       fonts.small,
       {
@@ -186,12 +199,6 @@ export const getStyles = memoizeFunction((
         textAlign: 'left',
       }
     ],
-    divider: {
-      display: 'block',
-      height: '1px',
-      backgroundColor: ContextualMenuDividerColor,
-      position: 'relative'
-    },
   };
   return concatStyleSets(styles);
 });

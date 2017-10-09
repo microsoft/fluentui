@@ -4,15 +4,16 @@ import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
 export interface IContextualMenuClassNames {
   container: string;
+  divider: string;
   root: string;
   list: string;
-  divider: string;
   header: string;
   title: string;
 }
 
 export interface IMenuItemClassNames {
   item: string;
+  divider: string;
   root: string;
   linkContent: string;
   icon: string;
@@ -30,8 +31,8 @@ export const getContextualMenuClassNames = memoizeFunction((
   return mergeStyleSets({
     container: [
       'ms-ContextualMenu-container',
+      styles.container,
       className,
-      styles.container
     ],
     root: [
       'ms-ContextualMenu is-open',
@@ -43,8 +44,8 @@ export const getContextualMenuClassNames = memoizeFunction((
     ],
     divider: [
       'ms-ContextualMenu-divider',
+      styles.divider,
       className,
-      styles.divider
     ],
     header: [
       'ms-ContextualMenu-header',
@@ -62,6 +63,7 @@ export const getItemClassNames = memoizeFunction((
   isAnchorLink: boolean,
   knownIcon: boolean,
   itemClassName: string,
+  dividerClassName: string,
   iconClassName: string,
   subMenuClassName: string,
 ): IMenuItemClassNames => {
@@ -72,9 +74,14 @@ export const getItemClassNames = memoizeFunction((
 
   return mergeStyleSets({
     item: [
-      itemClassName,
       'ms-ContextualMenu-item',
       styles.item,
+      itemClassName,
+    ],
+    divider: [
+      'ms-ContextualMenu-divider',
+      styles.divider,
+      dividerClassName,
     ],
     root: [
       'ms-ContextualMenu-link',
@@ -109,13 +116,13 @@ export const getItemClassNames = memoizeFunction((
       knownIcon && 'ms-ContextualMenu-iconColor ' && {
         color: ContextualMenuIconColor
       },
-      iconClassName,
       styles.icon,
+      iconClassName,
     ],
     subMenuIcon: [
       'ms-ContextualMenu-submenuIcon',
+      styles.subMenuIcon,
       subMenuClassName,
-      styles.subMenuIcon
     ],
     label: [
       'ms-ContextualMenu-itemText',
