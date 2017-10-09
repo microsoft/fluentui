@@ -298,9 +298,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         { isOpen && (
           (onRenderContainer as any)({
             ...this.props,
-            onRenderList: onRenderList,
-            onRenderItem: onRenderItem,
-            onRenderOption: onRenderOption,
+            onRenderList,
+            onRenderItem,
+            onRenderOption,
             options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
           },
             this._onRenderContainer)
