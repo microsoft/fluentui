@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Separated current BasePicker into two experimental components: BaseWellPicker for WellPeoplePicker and BaseFloatingPicker for FloatingPeoplePicker, to experiment with adding new functionality and support @mention like scenarios, respectively",
+      "comment": "Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively",
       "type": "minor"
     }
   ],

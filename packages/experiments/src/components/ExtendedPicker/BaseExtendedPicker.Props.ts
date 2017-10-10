@@ -7,5 +7,5 @@ export interface IBaseExtendedPickerProps<T> extends IBasePickerProps<T> {
   /**
  * The floating picker type
  */
-  floatingPickerType?: new (props: IBaseFloatingPickerProps<T>) => BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
+  floatingPickerType: new (props: IBaseFloatingPickerProps<T>) => BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
 }

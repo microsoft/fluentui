@@ -12,6 +12,8 @@ import { ExtendedPeoplePicker } from '../ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mru } from './PeoplePickerExampleData';
+import { FloatingPeoplePicker, BaseFloatingPeoplePicker } from '../FloatingPeoplePicker';
+import { IBaseFloatingPickerProps } from '../../BaseFloatingPicker.Props';
 import './ExtendedPeoplePicker.Basic.Example.scss';
 
 export interface IPeoplePickerExampleState {
@@ -67,6 +69,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
   private _renderExtendedPicker(): JSX.Element {
     return (
       <ExtendedPeoplePicker
+        floatingPickerType={ FloatingPeoplePicker as new (props: IBaseFloatingPickerProps<IPersonaProps>) => BaseFloatingPeoplePicker }
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ this._getTextFromItem }
