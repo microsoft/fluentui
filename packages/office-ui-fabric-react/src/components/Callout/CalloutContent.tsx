@@ -116,7 +116,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakWidth,
       calloutWidth,
       finalHeight,
-      backgroundColor } = this.props;
+      backgroundColor,
+      calloutMaxHeight } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -140,7 +141,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
 
-    let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : calloutMaxHeight!;
+
     let beakVisible = isBeakVisible && (!!target);
 
     let content = (
