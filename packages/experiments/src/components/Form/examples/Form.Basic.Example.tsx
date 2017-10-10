@@ -2,8 +2,7 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Form } from '../Form';
-import { FormTextInput } from '../inputs/FormTextInput';
+import { Form, FormTextInput } from '../../Form';
 
 export interface IFormBasicExampleState {
   formResults: any;

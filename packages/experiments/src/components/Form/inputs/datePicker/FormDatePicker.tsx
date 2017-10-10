@@ -9,8 +9,8 @@ import * as React from 'react';
 import { IFormDatePickerProps } from "./FormDatePicker.Props";
 import { DatePicker, IDatePickerProps } from 'office-ui-fabric-react/lib/DatePicker';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { FormBaseInput, IFormBaseInputState } from '../FormBaseInput';
-import { IFormContext } from '../Form';
+import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
+import { IFormContext } from '../../Form';
 
 // Utilities
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';

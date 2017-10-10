@@ -4,7 +4,7 @@ import * as React from 'react';
 import { IFormConditionalSubmitButtonProps } from "./FormConditionalSubmitButton.Props";
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IFormContext } from '../Form';
+import { IFormContext } from '../../Form';
 
 /**
  * Submit button for the form which is disabled when the form is invalid

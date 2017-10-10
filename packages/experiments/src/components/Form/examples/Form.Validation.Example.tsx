@@ -1,11 +1,7 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Form } from '../Form';
-import { Validators } from '../validators/Validators';
-import { FormConditionalSubmitButton } from '../inputs/FormConditionalSubmitButton';
-import { FormTextInput } from '../inputs/FormTextInput';
-import { FormDatePicker } from '../inputs/FormDatePicker';
+import { Form, FormConditionalSubmitButton, FormDatePicker, FormTextInput, Validators } from '../../Form';
 
 export interface IFormValidationExampleState {
   formResults: any;

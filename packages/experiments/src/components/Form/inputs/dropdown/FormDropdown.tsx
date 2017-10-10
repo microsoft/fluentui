@@ -3,8 +3,8 @@ import * as React from 'react';
 // Components
 import { IFormDropdownProps } from "./FormDropdown.Props"
 import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { FormBaseInput, IFormBaseInputState } from '../FormBaseInput';
-import { IFormContext } from '../Form';
+import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
+import { IFormContext } from '../../Form';
 
 // Utilities
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';

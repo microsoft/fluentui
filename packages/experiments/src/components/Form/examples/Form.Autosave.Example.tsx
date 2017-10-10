@@ -1,10 +1,7 @@
 /* tslint:disable:no-any */
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Form } from '../Form';
-import { Validators } from '../validators/Validators';
-import { FormTextInput } from '../inputs/FormTextInput';
-import { FormDatePicker } from '../inputs/FormDatePicker';
+import { Form, FormDatePicker, FormTextInput, Validators } from '../../Form';
 
 export interface IFormAutosaveExampleState {
   formResults: any;

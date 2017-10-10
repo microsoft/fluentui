@@ -2,9 +2,9 @@ import * as React from 'react';
 
 // Components
 import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
-import { IFormCheckBoxProps } from "./FormCheckbox.Props";
-import { FormBaseInput, IFormBaseInputState } from '../FormBaseInput';
-import { IFormContext } from '../Form';
+import { IFormCheckBoxProps } from "./FormCheckBox.Props";
+import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
+import { IFormContext } from '../../Form';
 
 // Utilities
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';

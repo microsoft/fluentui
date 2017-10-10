@@ -1,4 +1,4 @@
-import { IFormBaseInputProps } from '../FormBaseInput';
+import { IFormBaseInputProps } from '../../FormBaseInput';
 import { ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
 export { ICheckboxProps };
 
