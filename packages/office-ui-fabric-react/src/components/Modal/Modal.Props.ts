@@ -4,7 +4,10 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
 export interface IModal {
-
+  /**
+   * Sets focus on the first focusable, or configured, child in focus trap zone
+   */
+  focus: () => void;
 }
 
 export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeState, IAccessiblePopupProps {
