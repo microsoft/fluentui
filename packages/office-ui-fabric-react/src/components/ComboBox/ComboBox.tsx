@@ -824,9 +824,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Default _onRenderLowerContent function returns nothing
   @autobind
   private _onRenderLowerContent(): null {
-    return null
+    return null;
   }
-
 
   // Render separator
   private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
