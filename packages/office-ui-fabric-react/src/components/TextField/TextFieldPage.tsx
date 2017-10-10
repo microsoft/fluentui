@@ -65,6 +65,10 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
             >
               <TextFieldBorderlessExample />
             </ExampleCard>
+          </div>
+        }
+        implementationExampleCards={
+          <div>
             <ExampleCard
               title='Textfield with an addon'
               code={ TextFieldAddonExampleCode }
@@ -72,10 +76,10 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               <TextFieldAddonExample />
             </ExampleCard>
             <ExampleCard
-              title='TextField error message variations'
-              code={ TextFieldErrorMessageExampleCode }
+              title='TextField with an icon'
+              code={ TextFieldIconExampleCode }
             >
-              <TextFieldErrorMessageExample />
+              <TextFieldIconExample />
             </ExampleCard>
             <ExampleCard
               title='TextField with custom Label'
@@ -84,10 +88,10 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               <TextFieldCustomRenderExample />
             </ExampleCard>
             <ExampleCard
-              title='TextField with an icon'
-              code={ TextFieldIconExampleCode }
+              title='TextField error message variations'
+              code={ TextFieldErrorMessageExampleCode }
             >
-              <TextFieldIconExample />
+              <TextFieldErrorMessageExample />
             </ExampleCard>
           </div>
         }
