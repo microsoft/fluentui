@@ -393,6 +393,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.split) {
       return this._renderSplitButton(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
+
     return this._renderButtonItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
   }
 
@@ -484,20 +485,35 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasIcons?: boolean): JSX.Element {
 
     return (
-      <DefaultButton
-        text={ item.name }
-        disabled={ item.disabled }
-        split={ item.split }
-        menuProps={
-          { items: item.items! }
-        }
-      />
+      <div
+        aria-labelledby={ item.ariaLabel }
+        aria-disabled={ item.isDisabled || item.disabled }
+        aria-haspopup={ true }
+        aria-pressed={ item.isChecked }
+        aria-describedby={ item.ariaDescription }
+        className={ css('ms-ContextualMenu-link') }
+      >
+        <span
+          aria-hidden={ true }
+          // TODO: THIS SHOULD BE REMOVED!
+          style={ { 'display': 'flex' } }
+        >
+          { this._renderPrimaryButton(item, index, hasCheckmarks!, hasIcons!) }
+        </span>
+      </div>
     );
   }
 
-  private _renderPrimaryButton(item: IContextualMenuItem) {
+  private _renderPrimaryButton(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
 
-    return React.createElement('button', );
+    const itemProps = {
+      onClick: this._onItemClick.bind(this, item),
+      disabled: item.disabled,
+      name: item.name,
+    } as IContextualMenuItem;
+    return React.createElement('button',
+      getNativeProps(itemProps, buttonProperties),
+      this._renderMenuItemChildren(itemProps, index, hasCheckmarks, hasIcons));
   }
 
   // private _renderSplitMenuContent() {
