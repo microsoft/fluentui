@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { DefaultButton, Link, MessageBar, IMessageBarProps, MessageBarType } from 'office-ui-fabric-react';
+import { MessageBarButton, Link, MessageBar, IMessageBarProps, MessageBarType } from 'office-ui-fabric-react';
 
 let noop = (): void => { /**/ };
 // tslint:disable-next-line:max-line-length
@@ -29,8 +29,8 @@ storiesOf('MessageBar', module)
     <MessageBar
       actions={
         <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
         </div>
       }
     >Info/default message bar. { link }
