@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Vertically center checkbox in DetailsList header",
-      "type": "patch"
+      "comment": "\" Move ContextualMenu component to Glamor\"",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "maxlus@microsoft.com"
+  "email": "malozano@microsoft.com"
 }

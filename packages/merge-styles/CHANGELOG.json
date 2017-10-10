@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.3.2",
+      "tag": "@uifabric/merge-styles_v5.3.2",
+      "date": "Mon, 09 Oct 2017 10:08:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "71ff33573d03e3cdefc2ba2c5410711be6e2ee09",
+            "comment": "Add test for autoexpand"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.1",
       "tag": "@uifabric/merge-styles_v5.3.1",
       "date": "Fri, 06 Oct 2017 10:18:41 GMT",

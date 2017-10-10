@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Positioning: Fix an issue where beak would appear misaligned if an event was passed in",
+      "comment": "ComboBox: Pass default render functions to ComboBox custom render functions",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "alebet@microsoft.com"
 }
