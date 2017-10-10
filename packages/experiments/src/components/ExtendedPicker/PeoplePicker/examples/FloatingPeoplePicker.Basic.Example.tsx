@@ -7,7 +7,7 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPicker } from '../../BaseFloatingPicker.Props';
 import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
@@ -74,6 +74,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeople
   private _renderFloatingPicker(): JSX.Element {
     return (
       <FloatingPeoplePicker
+        suggestionsController={ new SuggestionsController<IPersonaProps>() }
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }

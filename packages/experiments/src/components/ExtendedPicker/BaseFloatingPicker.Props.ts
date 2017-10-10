@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { ISuggestionModel, ValidationState, IBasePickerSuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel, ValidationState, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
   isSuggestionsShown: boolean;
-
-  /** The selected suggestion alert */
-  selectedSuggestionAlert: string | undefined;
 
   /** On queryString changed */
   onQueryStringChanged: (input: string) => void;
@@ -25,6 +22,9 @@ export interface IBaseFloatingPicker {
 // tslint:disable-next-line:no-any
 export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   componentRef?: (component?: IBaseFloatingPicker) => void;
+
+  /** The suggestions controller */
+  suggestionsController: SuggestionsController<T>;
 
   /**
    * The suggestions to show on zero query

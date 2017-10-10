@@ -41,7 +41,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
-    this.suggestionStore = new SuggestionsController<T>();
+    this.suggestionStore = basePickerProps.suggestionsController;
     this.state = {
       queryString: '',
       suggestedDisplayValue: '',
@@ -54,14 +54,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   public get isSuggestionsShown(): boolean {
     return this.state.suggestionsVisible ? false : this.state.suggestionsVisible as boolean;
-  }
-
-  public get selectedSuggestionAlert(): string | undefined {
-    const currentIndex = this.suggestionStore.currentIndex;
-    const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
-    const selectedSuggestionAlert = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
-
-    return selectedSuggestionAlert;
   }
 
   public onQueryStringChanged(queryString: string): void {

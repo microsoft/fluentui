@@ -31,6 +31,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
+// tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _picker: IBasePicker<IPersonaProps>;
 
@@ -68,7 +69,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
       <ExtendedPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        getTextFromItem={ this._getTextFromItem }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
@@ -151,6 +152,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
 
   private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]): IPersonaProps[] {
     return personas.filter((persona: IPersonaProps) => !this._listContainsPersona(persona, possibleDupes));
+  }
+
+  private _getTextFromItem(persona: IPersonaProps): string {
+    return persona.primaryText as string;
   }
 
   @autobind

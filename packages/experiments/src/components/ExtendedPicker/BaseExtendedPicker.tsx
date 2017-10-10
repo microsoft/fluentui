@@ -1,17 +1,13 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BasePicker, BaseAutoFill, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
-import { autobind, css, KeyCodes } from '../../Utilities';
+import { BasePicker, BaseAutoFill } from 'office-ui-fabric-react/lib/Pickers';
+import { autobind, KeyCodes } from '../../Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { SelectionZone, SelectionMode, IObjectWithKey } from 'office-ui-fabric-react/src/utilities/selection/index';
+import { IObjectWithKey } from 'office-ui-fabric-react/src/utilities/selection/index';
 import { IBaseFloatingPickerProps } from './BaseFloatingPicker.Props';
 import { IBaseExtendedPickerProps } from './BaseExtendedPicker.Props';
 import { BaseFloatingPicker } from './BaseFloatingPicker';
-import * as stylesImport from '../../../../office-ui-fabric-react/src/components/pickers/BasePicker.scss';
-// tslint:disable-next-line:no-any
-const styles: any = stylesImport;
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BasePicker<T, P> {
 
@@ -22,64 +18,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.forceUpdate();
   }
 
-  public render(): JSX.Element {
-    let { suggestedDisplayValue } = this.state;
-    let {
-        className,
-      inputProps,
-      disabled
-      } = this.props;
-
-    const selectedSuggestionAlert = this.floatingPicker ? this.floatingPicker.selectedSuggestionAlert : undefined;
-
-    return (
-      <div
-        ref={ this._resolveRef('root') }
-        className={ css(
-          'ms-BasePicker',
-          className ? className : '') }
-      >
-        <FocusZone
-          ref={ this._resolveRef('focusZone') }
-          direction={ FocusZoneDirection.bidirectional }
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
-          onKeyDown={ this.onBackspace }
-        >
-          { <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>
-            { selectedSuggestionAlert } </div> }
-          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
-              { this.renderItems() }
-              { this.canAddItems() && (<BaseAutoFill
-                { ...inputProps as IInputProps }
-                className={ css('ms-BasePicker-input', styles.pickerInput) }
-                ref={ this._resolveRef('input') }
-                onFocus={ this.onInputFocus }
-                onInputValueChange={ this.onInputChange }
-                suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ 'sug-' + this.items.length }
-                aria-owns='suggestion-list'
-                aria-expanded='true'
-                aria-haspopup='true'
-                autoCapitalize='off'
-                autoComplete='off'
-                role='combobox'
-                disabled={ disabled }
-                aria-controls='selected-suggestion-alert'
-              />) }
-            </div>
-          </SelectionZone>
-        </FocusZone>
-        { this.renderSuggestions() }
-      </div>
-    );
-  }
-
   protected renderSuggestions(): JSX.Element | null {
     let TypedFloatingPicker = this.props.floatingPickerType as (new (props: IBaseFloatingPickerProps<IPersonaProps>) =>
       BaseFloatingPicker<IPersonaProps, IBaseFloatingPickerProps<IPersonaProps>>);
     return (
       <TypedFloatingPicker
+        suggestionsController={ this.suggestionStore }
         onZeroQuerySuggestion={ this.props.onEmptyInputFocus }
         onRenderSuggestionsItem={ this.props.onRenderSuggestionsItem }
         onResolveSuggestions={ this.props.onResolveSuggestions }
