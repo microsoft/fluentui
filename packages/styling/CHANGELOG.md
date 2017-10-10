@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Oct 2017 10:24:47 GMT and should not be manually modified.
+
+## 5.3.0
+Tue, 10 Oct 2017 10:24:47 GMT
+
+### Minor changes
+
+- "Add menuSelectedText to theme and semanticColors"
 
 ## 5.2.1
 Fri, 06 Oct 2017 10:18:41 GMT
