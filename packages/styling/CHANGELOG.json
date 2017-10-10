@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.3.0",
+      "tag": "@uifabric/styling_v5.3.0",
+      "date": "Tue, 10 Oct 2017 10:24:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "5ed121b0063871101decc50baf9e1c920e041155",
+            "comment": "\"Add menuSelectedText to theme and semanticColors\""
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.1",
       "tag": "@uifabric/styling_v5.2.1",
       "date": "Fri, 06 Oct 2017 10:18:41 GMT",
