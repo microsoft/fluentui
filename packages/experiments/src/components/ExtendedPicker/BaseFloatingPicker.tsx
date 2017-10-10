@@ -142,7 +142,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       <Callout
         isBeakVisible={ false }
         gapSpace={ 5 }
-        targetElement={ this.props.inputElement }
+        target={ this.props.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={
           getRTL() ? (
