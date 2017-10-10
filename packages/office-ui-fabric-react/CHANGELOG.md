@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Oct 2017 10:24:47 GMT and should not be manually modified.
+
+## 5.6.0
+Tue, 10 Oct 2017 10:24:47 GMT
+
+### Minor changes
+
+- " Move ContextualMenu component to Glamor"
+- ComboBox: Add virtualization to the combobox control
+
+### Patches
+
+- ComboBox: Pass default render functions to ComboBox custom render functions
+- New MessageBarButton component to allow for the unique state styles need in MessageBar.
 
 ## 5.5.1
 Mon, 09 Oct 2017 10:08:09 GMT
