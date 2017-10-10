@@ -62,7 +62,7 @@
       "maxSize": "280 kB"
     },
     {
-      "path": "../../apps/test-bundle-button/dist/main.min",
+      "path": "../../apps/test-bundle-button/dist/main.min.js",
       "maxSize": "150 kB"
     }
   ]
