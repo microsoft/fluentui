@@ -7,13 +7,12 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseWellPicker, IBaseWellPickerProps } from '../../BaseWellPicker.Props';
-import { WellPeoplePicker } from '../WellPeoplePicker';
+import { IBasePicker, IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { ExtendedPeoplePicker } from '../ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mru } from './PeoplePickerExampleData';
-import './WellPeoplePicker.Basic.Example.scss';
+import './ExtendedPeoplePicker.Basic.Example.scss';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
@@ -32,8 +31,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-export class WellPeoplePickerTypesExample extends BaseComponent<IBaseWellPickerProps<IPersonaProps>, IPeoplePickerExampleState> {
-  private _picker: IBaseWellPicker<IPersonaProps>;
+export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+  private _picker: IBasePicker<IPersonaProps>;
 
   constructor() {
     super();
@@ -66,19 +65,15 @@ export class WellPeoplePickerTypesExample extends BaseComponent<IBaseWellPickerP
 
   private _renderExtendedPicker(): JSX.Element {
     return (
-      <WellPeoplePicker
-        floatingPickerProps={ {
-          onResolveSuggestions: this._onFilterChanged,
-          onZeroQuerySuggestion: this._returnMostRecentlyUsed,
-          getTextFromItem: (persona: IPersonaProps) => persona.primaryText as string,
-          pickerSuggestionsProps: suggestionProps,
-          className: 'ms-PeoplePicker',
-          key: 'normal',
-          onRemoveSuggestion: this._onRemoveSuggestion,
-          onValidateInput: this._validateInput,
-        } }
+      <ExtendedPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        onEmptyInputFocus={ this._returnMostRecentlyUsed }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
         removeButtonAriaLabel={ 'Remove' }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
@@ -91,7 +86,7 @@ export class WellPeoplePickerTypesExample extends BaseComponent<IBaseWellPickerP
   }
 
   @autobind
-  private _setComponentRef(component: IBaseWellPicker<IPersonaProps>): void {
+  private _setComponentRef(component: IBasePicker<IPersonaProps>): void {
     this._picker = component;
   }
 

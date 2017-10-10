@@ -1,9 +1,8 @@
 /* tslint:disable */
 import * as React from 'react';
-import { IPickerItemProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { IPickerItemProps, ValidationState, IBasePickerProps } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
-import { BaseWellPicker } from '../BaseWellPicker';
-import { IBaseWellPickerProps } from '../BaseWellPicker.Props';
+import { BaseExtendedPicker } from '../BaseExtendedPicker';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import './PeoplePicker.scss';
@@ -13,14 +12,14 @@ import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.Props';
 export interface IPeoplePickerItemProps extends IPickerItemProps<IPersonaProps & { ValidationState: ValidationState }> {
 }
 
-export interface IPeopleWellPickerProps extends IBaseWellPickerProps<IPersonaProps> {
+export interface IPeopleWellPickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
-export class BaseWellPeoplePicker extends BaseWellPicker<IPersonaProps, IPeopleWellPickerProps> {
+export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IPeopleWellPickerProps> {
 }
 
-export class WellPeoplePicker extends BaseWellPeoplePicker {
-  public static defaultProps: IPeopleWellPickerProps = {
+export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
+  public static defaultProps: any = {
     onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
     floatingPickerType: FloatingPeoplePicker as new (props: IBaseFloatingPickerProps<IPersonaProps>) => BaseFloatingPeoplePicker,
   };
