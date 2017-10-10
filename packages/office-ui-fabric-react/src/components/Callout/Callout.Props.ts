@@ -175,4 +175,10 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
     * @deprecated
     */
   beakStyle?: string;
+
+  /**
+   * Set max height of callout
+   * When not set the callout will expand with contents up to the bottom of the screen
+   */
+  calloutMaxHeight?: number;
 }

@@ -167,6 +167,11 @@ export interface IComboBoxStyles {
   callout: IStyle;
 
   /**
+  * Styles for the optionsContainerWrapper.
+  */
+  optionsContainerWrapper: IStyle;
+
+  /**
    * Styles for the container of all the Combobox options
    * Includes the headers and dividers.
    */

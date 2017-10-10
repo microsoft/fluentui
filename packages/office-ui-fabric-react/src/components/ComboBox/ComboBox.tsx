@@ -16,12 +16,9 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
+  customizable
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
-
-import {
-  customizable,
-} from '../../Utilities';
 import {
   getStyles,
   getOptionStyles,
@@ -29,7 +26,7 @@ import {
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
-  getClassNames,
+  getClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -233,8 +230,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
+    let setWidth = isOpen ? (this._comboBoxWrapper.clientWidth - 2) + 'px' : undefined;
+
     this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
+      getStyles(theme!, customStyles, setWidth),
       className!,
       !!isOpen,
       !!disabled,
@@ -779,7 +778,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
+        <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>
