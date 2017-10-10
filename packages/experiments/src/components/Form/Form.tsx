@@ -1,6 +1,7 @@
 /* tslint:disable:no-any */
 
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 // Components
 import { IFormProps } from './Form.Props';
@@ -75,10 +76,10 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    * This is needed because React 15's context does not work well with typescript
    */
   protected static childContextTypes: React.ValidationMap<IFormContext> = {
-    isFormValid: React.PropTypes.func.isRequired,
-    mountInput: React.PropTypes.func.isRequired,
-    unmountInput: React.PropTypes.func.isRequired,
-    submitValue: React.PropTypes.func.isRequired
+    isFormValid: PropTypes.func.isRequired,
+    mountInput: PropTypes.func.isRequired,
+    unmountInput: PropTypes.func.isRequired,
+    submitValue: PropTypes.func.isRequired
   };
 
   /**

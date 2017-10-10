@@ -1,7 +1,8 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 // Components
-import { IFormConditionalSubmitButtonProps } from "./FormConditionalSubmitButton.Props";
+import { IFormConditionalSubmitButtonProps } from './FormConditionalSubmitButton.Props';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IFormContext } from '../../Form';
@@ -12,10 +13,10 @@ import { IFormContext } from '../../Form';
 export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalSubmitButtonProps> {
 
   protected static contextTypes: React.ValidationMap<IFormContext> = {
-    isFormValid: React.PropTypes.func.isRequired,
-    mountInput: React.PropTypes.func.isRequired,
-    unmountInput: React.PropTypes.func.isRequired,
-    submitValue: React.PropTypes.func.isRequired
+    isFormValid: PropTypes.func.isRequired,
+    mountInput: PropTypes.func.isRequired,
+    unmountInput: PropTypes.func.isRequired,
+    submitValue: PropTypes.func.isRequired
   };
 
   /**

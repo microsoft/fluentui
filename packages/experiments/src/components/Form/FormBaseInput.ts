@@ -1,6 +1,7 @@
 /* tslint:disable:no-any */
 
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 import { IFormContext, IFormValidationResult } from './Form';
 import { IFormBaseInputProps } from './FormBaseInput.Props';
@@ -34,10 +35,10 @@ export type GenericFormInput = FormBaseInput<any, IFormBaseInputProps<any>, IFor
  */
 export abstract class FormBaseInput<T, P extends IFormBaseInputProps<T>, S extends IFormBaseInputState<T>> extends BaseComponent<P, S> {
   public static contextTypes: React.ValidationMap<IFormContext> = {
-    isFormValid: React.PropTypes.func.isRequired,
-    mountInput: React.PropTypes.func.isRequired,
-    unmountInput: React.PropTypes.func.isRequired,
-    submitValue: React.PropTypes.func.isRequired
+    isFormValid: PropTypes.func.isRequired,
+    mountInput: PropTypes.func.isRequired,
+    unmountInput: PropTypes.func.isRequired,
+    submitValue: PropTypes.func.isRequired
   };
 
   /**
