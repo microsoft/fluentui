@@ -2,6 +2,48 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.3.2",
+      "tag": "@uifabric/merge-styles_v5.3.2",
+      "date": "Mon, 09 Oct 2017 10:08:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "71ff33573d03e3cdefc2ba2c5410711be6e2ee09",
+            "comment": "Add test for autoexpand"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/merge-styles_v5.3.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/merge-styles_v5.3.0",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f95fa74185b6faaf278fdc0a78e72635bcc3ec48",
+            "comment": "Adding selector support to target child class names that were generated in the same mergeStyleSets set."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.0",
       "tag": "@uifabric/merge-styles_v5.2.0",
       "date": "Sat, 30 Sep 2017 01:26:37 GMT",

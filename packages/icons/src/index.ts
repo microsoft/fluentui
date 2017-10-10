@@ -20,3 +20,5 @@ export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL): void {
     (initialize: (url: string) => void) => initialize(baseUrl)
   );
 }
+
+export { IconNames } from './IconNames';

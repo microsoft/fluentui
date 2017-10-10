@@ -1,6 +1,21 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+
+## 5.0.9
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added/removed Best Practices links for component pages that had/didn't have a Best Practices section.
+- Updated themeLight color - typo
+
+## 5.0.8
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
 
 ## 5.0.7
 Wed, 04 Oct 2017 22:40:22 GMT
