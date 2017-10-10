@@ -168,7 +168,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
   @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
-    this.setState({ selectedItems: item });
+    this.setState({ selectedItem: item });
   }
 
   @autobind

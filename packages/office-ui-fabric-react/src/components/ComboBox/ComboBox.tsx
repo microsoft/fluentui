@@ -16,12 +16,9 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
+  customizable
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
-
-import {
-  customizable,
-} from '../../Utilities';
 import {
   getStyles,
   getOptionStyles,
@@ -29,7 +26,7 @@ import {
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
-  getClassNames,
+  getClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -217,6 +214,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
+      onRenderList = this._onRenderList,
+      onRenderItem = this._onRenderItem,
+      onRenderOption = this._onRenderOption,
       allowFreeform,
       autoComplete,
       buttonIconProps,
@@ -230,8 +230,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
+    let setWidth = isOpen ? (this._comboBoxWrapper.clientWidth - 2) + 'px' : undefined;
+
     this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
+      getStyles(theme!, customStyles, setWidth),
       className!,
       !!isOpen,
       !!disabled,
@@ -293,7 +295,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </div>
 
         { isOpen && (
-          (onRenderContainer as any)({ ...this.props as any }, this._onRenderContainer)
+          (onRenderContainer as any)({
+            ...this.props,
+            onRenderList,
+            onRenderItem,
+            onRenderOption,
+            options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
+          },
+            this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -752,7 +761,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
-      onRenderList = this._onRenderList,
+      onRenderList,
       calloutProps
     } = props;
 
@@ -769,7 +778,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
+        <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>
@@ -780,11 +789,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderList(props: IComboBoxProps): JSX.Element {
     let {
-      onRenderItem = this._onRenderItem
-    } = this.props;
+      onRenderItem,
+      options
+    } = props;
 
     let id = this._id;
-
     return (
       <div
         id={ id + '-list' }
@@ -792,7 +801,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         aria-labelledby={ id + '-label' }
         role='listbox'
       >
-        { this.state.currentOptions.map((item, index) => onRenderItem({ ...item, index } as ISelectableOption, this._onRenderItem)) }
+        { options.map((item) => (onRenderItem as any)(item, this._onRenderItem)) }
       </div>
     );
   }
@@ -800,7 +809,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render items
   @autobind
   private _onRenderItem(item: IComboBoxOption): JSX.Element | null {
-
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -881,23 +889,38 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Scroll the selected element into view
    */
   private _scrollIntoView() {
+    let {
+      onScrollToItem,
+      scrollSelectedToTop
+    } = this.props;
 
-    let { scrollSelectedToTop } = this.props;
-    if (this._selectedElement && scrollSelectedToTop) {
-      this._selectedElement.offsetParent.scrollIntoView(true);
-    } else if (this._selectedElement) {
-      let alignToTop = true;
+    let {
+      currentPendingValueValidIndex,
+      currentPendingValue,
+      selectedIndex
+    } = this.state;
 
-      if (this._comboBoxMenu.offsetParent) {
-        let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
-        let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
+    if (onScrollToItem) {
+      // Use the custom scroll handler
+      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
+    } else {
+      // We are using refs, scroll the ref into view
+      if (this._selectedElement && scrollSelectedToTop) {
+        this._selectedElement.offsetParent.scrollIntoView(true);
+      } else if (this._selectedElement) {
+        let alignToTop = true;
 
-        if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
-          alignToTop = false;
+        if (this._comboBoxMenu.offsetParent) {
+          let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
+          let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
+
+          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
+            alignToTop = false;
+          }
         }
-      }
 
-      this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+        this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+      }
     }
   }
 
