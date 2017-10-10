@@ -118,14 +118,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     dateTimeFormatter: undefined
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-    textField: TextField;
-  };
-
+  private _root: HTMLElement;
   private _calendar: Calendar;
   private _datepicker: HTMLDivElement;
+  private _textField: TextField;
   private _preventFocusOpeningPicker: boolean;
   private _focusOnSelectedDateOnUpdate: boolean;
 
@@ -183,8 +179,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root, className) } ref='root'>
-        <div ref={ (c): HTMLElement => this._datepicker = c! }>
+      <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
+        <div ref={ this._resolveRef('_datepicker') }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
@@ -211,7 +207,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref='textField'
+            ref={ this._resolveRef('_textField') }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />
         </div>
@@ -380,8 +376,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
-    if (this.refs.textField) {
-      this.refs.textField.focus();
+    if (this._textField) {
+      this._textField.focus();
     }
   }
 
