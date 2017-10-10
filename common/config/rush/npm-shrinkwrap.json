@@ -2533,19 +2533,12 @@
     "@uifabric/styling": {
       "version": "5.1.1",
       "resolved": "https://registry.npmjs.org/@uifabric/styling/-/styling-5.1.1.tgz",
-      "integrity": "sha512-+fHaKc8S2rHGnf/qJgKItxKkv+7jREKQ+nDoBlwLaE8nXKtWZUcgESUrlmwgvMNEpN1a3YFoZxM28Z0Nkd20ZQ==",
-      "dependencies": {
-        "@uifabric/utilities": {
-          "version": "6.0.0",
-          "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-6.0.0.tgz",
-          "integrity": "sha512-F3P+eBgqC+KmMiF3H6rBg/Vnyxavx1hgkjUIdSln/vfSD+MT1KjTeQys7y0774+N1HXlVEi7F2O381m2JDRrgw=="
-        }
-      }
+      "integrity": "sha512-+fHaKc8S2rHGnf/qJgKItxKkv+7jREKQ+nDoBlwLaE8nXKtWZUcgESUrlmwgvMNEpN1a3YFoZxM28Z0Nkd20ZQ=="
     },
     "@uifabric/utilities": {
-      "version": "5.0.1",
-      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-5.0.1.tgz",
-      "integrity": "sha512-HUhh3EKUiZshpbNxcgkwQ6WcTKT3+rlhfX/pSeLElRTGbORYxdoWFDwVfFZT71xP2hFnUQI/Z5qb9BLdKeJpRA=="
+      "version": "5.1.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-5.1.0.tgz",
+      "integrity": "sha512-qvOWJUgsTlH3h6b5dofKsnnnVJHsuX19jz8umJZdr0E4pYKgDC14WD8jfwP4bjF9MS2raZww1AImGWNd+gCI8A=="
     },
     "abab": {
       "version": "1.0.4",
@@ -10472,9 +10465,9 @@
       "integrity": "sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM="
     },
     "ts-jest": {
-      "version": "21.0.1",
-      "resolved": "https://registry.npmjs.org/ts-jest/-/ts-jest-21.0.1.tgz",
-      "integrity": "sha512-MIX8uMMr7FSRT56GASXUxeorEs3x2iO+JwkVzUHwxjzld4+UtPMZ9EEUpX7JU7eFKDkXaD1aAIVnuNrg15Xnuw==",
+      "version": "21.1.0",
+      "resolved": "https://registry.npmjs.org/ts-jest/-/ts-jest-21.1.0.tgz",
+      "integrity": "sha512-P4NGaX8Hqy0vAdXd2K1y1PEgAbTHqJtUdwAeBaHAUbZpKQmfqKSRgNEHsyf9hdxsqtkUyj/Msep0BatNxhZQug==",
       "dependencies": {
         "camelcase": {
           "version": "4.1.0",
@@ -10518,15 +10511,20 @@
           "resolved": "https://registry.npmjs.org/read-pkg-up/-/read-pkg-up-2.0.0.tgz",
           "integrity": "sha1-a3KoBImE4MQeeVEP1en6mbO1Sb4="
         },
+        "source-map-support": {
+          "version": "0.5.0",
+          "resolved": "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.0.tgz",
+          "integrity": "sha512-vUoN3I7fHQe0R/SJLKRdKYuEdRGogsviXFkHHo17AWaTGv17VLnxw+CFXvqy+y4ORZ3doWLQcxRYfwKrsd/H7Q=="
+        },
         "strip-bom": {
           "version": "3.0.0",
           "resolved": "https://registry.npmjs.org/strip-bom/-/strip-bom-3.0.0.tgz",
           "integrity": "sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM="
         },
         "yargs": {
-          "version": "8.0.2",
-          "resolved": "https://registry.npmjs.org/yargs/-/yargs-8.0.2.tgz",
-          "integrity": "sha1-YpmpBVsc78lp/355wdkY3Osiw2A="
+          "version": "9.0.1",
+          "resolved": "https://registry.npmjs.org/yargs/-/yargs-9.0.1.tgz",
+          "integrity": "sha1-UqzCP+7Kw0BCB47njAwAf1CF20w="
         }
       }
     },

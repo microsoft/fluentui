@@ -1,6 +1,27 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Oct 2017 10:24:47 GMT and should not be manually modified.
+
+## 5.3.0
+Tue, 10 Oct 2017 10:24:47 GMT
+
+### Minor changes
+
+- "Add menuSelectedText to theme and semanticColors"
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Fixing version dependencies.
 
 ## 5.1.1
 Wed, 04 Oct 2017 22:40:22 GMT
