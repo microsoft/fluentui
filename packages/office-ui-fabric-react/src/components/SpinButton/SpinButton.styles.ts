@@ -125,7 +125,7 @@ export const getStyles = memoizeFunction((
   const defaultStyles: ISpinButtonStyles = {
     root: {
       outline: 'none',
-      fontSize: '12px',
+      fontSize: FontSizes.medium,
       width: '100%',
       minWidth: '86px',
       paddingTop: '2px',
