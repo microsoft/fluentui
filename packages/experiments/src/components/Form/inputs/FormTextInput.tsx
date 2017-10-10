@@ -1,33 +1,18 @@
 import * as React from 'react';
 
 // Components
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { IFormTextInputProps } from "./FormTextInput.Props";
+import { FormBaseInput, IFormBaseInputState } from '../FormBaseInput';
 import { IFormContext } from '../Form';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 
 // Utilities
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-export { ITextFieldProps };
-
-/**
- * Additional props for the TextBox input
- */
-export interface IFormTextInputProps extends IFormBaseInputProps<string> {
-  textFieldProps?: ITextFieldProps;
-}
-
-/**
- * Any additional state for the TextBox input. Currently none.
- */
-export interface IFormTextInputState extends IFormBaseInputState<string> {
-
-}
-
 /**
  * TextBox input for the Form.
  */
-export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IFormTextInputState> {
+export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IFormBaseInputState<string>> {
 
   constructor(props: IFormTextInputProps, context: IFormContext) {
     super(props, context, false /* Leading edge debounce */);

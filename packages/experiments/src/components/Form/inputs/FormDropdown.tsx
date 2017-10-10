@@ -1,41 +1,18 @@
 import * as React from 'react';
 
 // Components
+import { IFormDropdownProps } from "./FormDropdown.Props"
 import { Dropdown, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { FormBaseInput, IFormBaseInputState } from '../FormBaseInput';
 import { IFormContext } from '../Form';
 
 // Utilities
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-export { IDropdownProps };
-
-/**
- * The type that consumers should use to populate this input
- */
-export type IFormDropdownOption = {
-  state: number | string;
-  description: string;
-};
-
-/**
- * Additional props for the Dropdown input
- */
-export interface IFormDropdownProps extends IFormBaseInputProps<number | string> {
-  dropdownProps?: IDropdownProps;
-}
-
-/**
- * Any additional state for the Dropdown input. Currently none
- */
-export interface IFormDropdownState extends IFormBaseInputState<number | string> {
-
-}
-
 /**
  * Dropdown input for Form
  */
-export class FormDropdown extends FormBaseInput<number | string, IFormDropdownProps, IFormDropdownState> {
+export class FormDropdown extends FormBaseInput<number | string, IFormDropdownProps, IFormBaseInputState<number | string>> {
 
   constructor(props: IFormDropdownProps, context: IFormContext) {
     super(props, context);

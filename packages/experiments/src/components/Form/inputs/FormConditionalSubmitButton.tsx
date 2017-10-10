@@ -1,30 +1,15 @@
 import * as React from 'react';
 
 // Components
-import { BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IFormConditionalSubmitButtonProps } from "./FormConditionalSubmitButton.Props";
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IFormContext } from '../Form';
-
-export { IButtonProps };
-
-/**
- * Additional props for the Dropdown input
- */
-export interface IFormConditionalSubmitButtonProps extends IBaseProps {
-  buttonProps?: IButtonProps;
-}
-
-/**
- * Any additional state for the Dropdown input. Currently none
- */
-export interface IFormConditionalSubmitButtonState {
-
-}
 
 /**
  * Submit button for the form which is disabled when the form is invalid
  */
-export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalSubmitButtonProps, IFormConditionalSubmitButtonState> {
+export class FormConditionalSubmitButton extends BaseComponent<IFormConditionalSubmitButtonProps> {
 
   protected static contextTypes: React.ValidationMap<IFormContext> = {
     isFormValid: React.PropTypes.func.isRequired,

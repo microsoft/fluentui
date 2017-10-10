@@ -2,32 +2,17 @@ import * as React from 'react';
 
 // Components
 import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
-import { FormBaseInput, IFormBaseInputProps, IFormBaseInputState } from '../FormBaseInput';
+import { IFormCheckBoxProps } from "./FormCheckbox.Props";
+import { FormBaseInput, IFormBaseInputState } from '../FormBaseInput';
 import { IFormContext } from '../Form';
 
 // Utilities
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-export { ICheckboxProps };
-
-/**
- * Any additional props for the Checkbox input. Currently none
- */
-export interface IFormCheckBoxProps extends IFormBaseInputProps<boolean> {
-  checkboxProps?: ICheckboxProps;
-}
-
-/**
- * Any additional state for the Checkbox input. Currently none
- */
-export interface IFormCheckBoxState extends IFormBaseInputState<boolean> {
-
-}
-
 /**
  * Checkbox input for the Form. Displays a boolean value as a checkbox
  */
-export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFormCheckBoxState> {
+export class FormCheckBox extends FormBaseInput<boolean, IFormCheckBoxProps, IFormBaseInputState<boolean>> {
 
   constructor(props: IFormCheckBoxProps, context: IFormContext) {
     super(props, context);
