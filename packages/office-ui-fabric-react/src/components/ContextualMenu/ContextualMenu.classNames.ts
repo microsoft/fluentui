@@ -18,6 +18,10 @@ export interface IMenuItemClassNames {
   icon: string;
   subMenuIcon: string;
   label: string;
+  splitDivider: string;
+  splitContainer: string;
+  splitPrimary: string;
+  splitMenu: string;
 }
 
 export const getContextualMenuClassNames = memoizeFunction((
@@ -101,6 +105,49 @@ export const getItemClassNames = memoizeFunction((
         }
       }],
     ],
+    splitPrimary: [
+      styles.root,
+      checked && [
+        'is-checked',
+        styles.rootChecked
+      ],
+      disabled && [
+        'is-disabled',
+        styles.rootDisabled
+      ],
+      !disabled && !checked && [{
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':active': styles.rootPressed,
+          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+        }
+      }]
+    ],
+    splitMenu: [
+      styles.root,
+      {
+        width: 32
+      },
+      checked && [
+        'is-checked',
+        styles.rootChecked
+      ],
+      expanded && [
+        'is-expanded',
+        styles.rootExpanded
+      ],
+      disabled && [
+        'is-disabled',
+        styles.rootDisabled
+      ],
+      !disabled && !expanded && !checked && [{
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':active': styles.rootPressed,
+          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+        }
+      }]
+    ],
     linkContent: [
       'ms-ContextualMenu-linkContent',
       styles.linkContent
@@ -119,6 +166,8 @@ export const getItemClassNames = memoizeFunction((
     label: [
       'ms-ContextualMenu-itemText',
       styles.label
-    ]
+    ],
+    splitDivider: styles.splitDivider,
+    splitContainer: [styles.splitButtonFlexContainer],
   });
 });

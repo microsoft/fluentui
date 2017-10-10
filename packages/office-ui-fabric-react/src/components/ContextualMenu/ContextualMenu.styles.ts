@@ -147,6 +147,21 @@ export const getMenuItemStyles = memoizeFunction((
       verticalAlign: 'middle',
       flexShrink: '0',
       fontSize: FontSizes.mini
+    },
+    splitDivider: {
+      backgroundColor: ContextualMenuDividerColor,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8
+    },
+    splitButtonFlexContainer: {
+      display: 'flex',
+      height: '100%',
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   };
 
