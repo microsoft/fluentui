@@ -1,59 +1,106 @@
 # Testing
 
-## Basics
+## Overview
 
-Our tests are built with [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/), and
-[ReactTestUtils](https://facebook.github.io/react/docs/test-utils.html).
+Our tests are built using [Jest](https://facebook.github.io/jest/). This allows us to run tests in a node environment, and simulates the browser using jsdom.
+
+For snapshot testing, we use `react-test-renderer` and Jest apis.
+
+For creating React functional tests, we use [Enzyme](http://airbnb.io/enzyme/) to automate rendering. This gives us helpers for mounting a component, accessing elements rendered by it, and simulating clicks and keypresses.
+
+## Running tests
 
 To run tests:
 
-1. In command prompt navigate to the appropriate package, for example git/office-ui-fabric-react/packages/office-ui-fabric-react
-2. Run `npm run start-test` to start jest and run the tests
-  * By default, jest will run tests affected by your uncommitted changes
-  * To run all tests, press 'a' at the prompt
-  * To filter the tests run, press `p` or `t` to filter by filename or test name regex pattern, respectively
+In command prompt navigate to the appropriate package, for example `packages/office-ui-fabric-react`
 
-## Examples
+To just validate everything works, run `npm run build`, which will build the project including running tslint and jest for tests.
 
-### Basic ReactTestUtils Example
+To actively develop tests, you can use Jest watch mode by running `npm run start-test`.
+
+To debug tests, you can us Visual Studio Code. Inside of a `*.test.ts` file, add a `debugger` statement where you want to break, and hit F5 to start debugging.
+
+## Writing tests
+
+### Simple unit testing
+
+Tests in Jest are written similar to mocha tests, though Jest includes a number of assertions that work similar to chai. A basic test example:
+
+```ts
+describe('thing', () => {
+  it('does something', () => {
+    expect(thing.something()).toEqual(aValue);
+  });
+});
+```
+
+Note that you do not need to import the assertions or the Jest APIs; they should be available automatically through the included typings.
+
+### Snapshot testing
+
+Jest enables you to create snapshot tests. Snapshots simply compare a JSON object with an expected output. The assertion `toMatchSnapshot` api will abstract loading a .snap file for the test to compare, or will create one if none exists.
+
 ```typescript
-describe('ComponentName', () => {
+import * as React from 'react';
+import { CommandBar } from './CommandBar';
+import * as renderer from 'react-test-renderer';
 
-  it('does foo', () => {
-    let component = ReactTestUtils.renderIntoDocument(
-      <ComponentName
-        componentProps={props}}
-        />
+describe('CommandBar', () => {
+  it('renders commands correctly', () => {
+    expect(renderer.create(
+      <CommandBar
+        items={ [
+          { key: '1', name: 'name 1' },
+          { key: '2', name: 'name 2' }
+        ] }
+      />
+    ).toJSON()).toMatchSnapshot();
+  });
+});
+```
+
+If you ever break a snapshot, you can update all baselines either manually, or using the `npm run update-snapshots` command within a given package folder. Currently the `office-ui-fabric-react` and `experiments` packages both have snapshot testing enabled.
+
+### Functional testing
+
+In cases where you need to automate a component and validate it performs correctly, you can use [Enzyme](http://airbnb.io/enzyme/) apis to mount components, evaluate dom structure, and simulate events.
+
+```
+  it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
+    const commandBar = mount<CommandBar>(
+      <CommandBar
+        items={ [
+          {
+            name: 'TestText 1',
+            key: 'TestKey1',
+            className: 'MenuItem',
+            subMenuProps: {
+              items: [
+                {
+                  name: 'SubmenuText 1',
+                  key: 'SubmenuKey1',
+                  className: 'SubMenuClass'
+                }
+              ]
+            }
+          },
+        ] }
+      />
     );
-      let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-      let componentName = renderedDOM.querySelector('<unique selector>');
-      expect(componentName).to.be.eq('foo', 'componentName was not foo');
+
+    const menuItem = commandBar.find('.MenuItem button');
+    expect(menuItem.length).toEqual(1);
+    menuItem.simulate('click');
+    expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
-});
 ```
 
-### Basic Example Without ReactTestUtils
+## FAQ
 
-```typescript
-describe('ComponentName', () => {
+*Q. Browser methods aren't working.*
 
-  it('can render item in dom', () => {
-    let root = document.createElement('div');
-    document.body.appendChild(root);
-    ReactDOM.render<HTMLDivElement>(
-      <ComponentName
-        componentProps={props}}
-        />, root
-      );
-    let componentName = document.querySelector('<unique selector>');
-    // Write assertions.
-  });
-});
-```
+A. Using browser methods like getBoundingClientRect won't work when using enzyme to render a document fragment. It's possible to mock this method out if you need, see the `FocusZone` unit tests as an example. You can also render the objects inside the actual dom, see [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
 
-## Some Common Problems
+*Q. My event isn't being triggered.*
 
-* Browser methods aren't working.
-  * Using browser methods like getBoundingClientRect won't work when using ReactTestUtils to render a document fragment. It's possible to mock this method out if you need, see the FocusZone unit tests as an example. You can also render the objects inside the actual dom, see [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
-* My event isn't being triggered.
-  * React uses synthetic events, so you should will need to use the synthetic events. For example ReactTestUtils.Simulate.change(<yourelement>)
+A. Make sure to use Enzyme `simulate` api to simulate React events. For example: `menuItem.simulate('click');`
