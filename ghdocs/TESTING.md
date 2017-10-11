@@ -99,7 +99,7 @@ In cases where you need to automate a component and validate it performs correct
 
 *Q. Browser methods aren't working.*
 
-A. Using browser methods like getBoundingClientRect won't work when using enzyme to render a document fragment. It's possible to mock this method out if you need, see the `FocusZone` unit tests as an example. You can also render the objects inside the actual dom, see [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
+A. Using browser methods like getBoundingClientRect won't work when using enzyme to render a document fragment. It's possible to mock this method out if you need, see the `FocusZone` unit tests as an example.
 
 *Q. My event isn't being triggered.*
 
