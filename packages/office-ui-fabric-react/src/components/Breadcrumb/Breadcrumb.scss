@@ -16,22 +16,28 @@ $Breadcrumb-chevron-sm: 8px;
 
 // Breadcrumb size mixins
 @mixin Breadcumb-small {
-  .listItem .itemLink {
+  .listItem .itemLink,
+  .overflow .overflowButton {
     font-size: $ms-font-size-m;
+    line-height: $ms-font-size-m;
   }
 
   .chevron {
     font-size: $Breadcrumb-chevron-sm;
+    line-height: $ms-font-size-m;
   }
 }
 
 @mixin Breadcumb-large {
-  .listItem .itemLink {
+  .listItem .itemLink,
+  .overflow .overflowButton {
     font-size: $ms-font-size-l;
+    line-height: $ms-font-size-l;
   }
 
   .chevron {
     font-size: $Breadcrumb-chevron-sm;
+    line-height: $ms-font-size-l;
   }
 }
 
@@ -49,7 +55,9 @@ $Breadcrumb-chevron-sm: 8px;
 
 .chevron {
   font-size: $ms-font-size-s;
+  line-height: $ms-font-size-xl;
   color: $ms-color-neutralSecondary;
+  align-self: flex-end;
 
   @include high-contrast {
     color: WindowText;
@@ -63,7 +71,7 @@ $Breadcrumb-chevron-sm: 8px;
   padding: 0;
   display: flex;
   position: relative;
-  align-items: center;
+  align-items: baseline;
   &:last-of-type {
     .chevron {
       display: none;
@@ -75,7 +83,7 @@ $Breadcrumb-chevron-sm: 8px;
     @include ms-font-xl;
     color: $ms-color-neutralPrimary;
     padding: 0 8px;
-    max-width: $Breadcrumb-itemMaxWidth;
+    // max-width: $Breadcrumb-itemMaxWidth;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -138,9 +146,7 @@ $Breadcrumb-chevron-sm: 8px;
 }
 
 @media screen and (max-width: $ms-screen-max-md) {
-  // margin: 11px 0 1px;
   @include Breadcumb-large;
-
   .overflowButton {
     font-size: $ms-font-size-m-plus;
   }
@@ -156,4 +162,5 @@ $Breadcrumb-chevron-sm: 8px;
   .overflowButton {
     padding: 4px 6px;
   }
+
 }
