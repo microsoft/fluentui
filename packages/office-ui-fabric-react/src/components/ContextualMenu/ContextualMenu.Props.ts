@@ -201,7 +201,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * defined in ContextualMenu.classnames.
    * @default getContextualMenuClassNames
    */
-  getMenuClassNames?: (theme: ITheme, className: string) => IContextualMenuClassNames;
+  getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /**
   * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func

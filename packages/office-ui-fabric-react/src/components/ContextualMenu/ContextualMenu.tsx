@@ -202,7 +202,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } = this.props;
 
     let menuClassNames = this.props.getMenuClassNames ? this.props.getMenuClassNames : getContextualMenuClassNames;
-    this._classNames = menuClassNames(theme!, className!);
+    this._classNames = menuClassNames(theme!, className);
 
     let hasIcons = itemsHaveIcons(items);
 
