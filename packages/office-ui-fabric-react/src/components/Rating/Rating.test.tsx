@@ -31,7 +31,7 @@ describe('Rating', () => {
     const checkState = (ratingToCheck: number, state: string) => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
-      expect(width).to.be.eq(state, 'Rating star width should be ${state}');
+      expect(width).toEqual(state);
 
     };
 
@@ -73,10 +73,10 @@ describe('Rating', () => {
     const checkState = (ratingToCheck: number, state: string) => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
-      expect(width).to.be.eq(state, 'Rating star width should be ${state}');
+      expect(width).toEqual(state);
     };
 
-    expect(ratingFrontStars.length).to.be.eq(5, 'Number of rating stars are clamped to 5');
+    expect(ratingFrontStars.length).toEqual(5);
     checkState(1, '100%');
     checkState(2, '100%');
     checkState(3, '100%');
@@ -99,7 +99,7 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
     let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
@@ -107,7 +107,7 @@ describe('Rating', () => {
     const checkState = (ratingToCheck: number, state: string) => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
-      expect(width).to.be.eq(state, 'Rating star width should be ${state}');
+      expect(width).toEqual(state);
     };
 
     checkState(1, '100%');
@@ -132,7 +132,7 @@ describe('Rating', () => {
       exception = e;
       threwException = true;
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
     let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
@@ -140,7 +140,7 @@ describe('Rating', () => {
     const checkState = (ratingToCheck: number, state: string) => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
-      expect(width).to.be.eq(state, 'Rating star width should be ${state}');
+      expect(width).toEqual(state);
     };
 
     checkState(1, '100%');
@@ -169,11 +169,11 @@ describe('Rating', () => {
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
     let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
-    expect((ratingButtons[0] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[1] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[2] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[3] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[4] as HTMLButtonElement).disabled).to.be.eq(true);
+    expect((ratingButtons[0] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[1] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[2] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[3] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[4] as HTMLButtonElement).disabled).toEqual(true);
 
   });
 
@@ -193,21 +193,21 @@ describe('Rating', () => {
       threwException = true;
 
     }
-    expect(threwException).to.be.false;
+    expect(threwException).toEqual(false);
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
     let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
-    expect((ratingButtons[0] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[1] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[2] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[3] as HTMLButtonElement).disabled).to.be.eq(true);
-    expect((ratingButtons[4] as HTMLButtonElement).disabled).to.be.eq(true);
+    expect((ratingButtons[0] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[1] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[2] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[3] as HTMLButtonElement).disabled).toEqual(true);
+    expect((ratingButtons[4] as HTMLButtonElement).disabled).toEqual(true);
 
     let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
     const checkState = (ratingToCheck: number, state: string) => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
-      expect(width).to.be.eq(state, 'Rating star width should be ${state}');
+      expect(width).toEqual(state);
     };
 
     checkState(1, '100%');
