@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.7.0",
+      "tag": "office-ui-fabric-react_v5.7.0",
+      "date": "Wed, 11 Oct 2017 10:11:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "eaf09a9911bf60cddc9e9efeb75ab5aa994ce31e",
+            "comment": "ContextualMenu: Update the typing for getMenuClassNames"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "a5d4c61fb6825f3e1fa5fa84bf230bb7af827c57",
+            "comment": "SpinButton: Fix the code reference for the stateful spinButton Example (#3023)"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "675c5045199e3d972e1c21a022138452b1c5e297",
+            "comment": "MessageBar: replaced DefaultButton with MessageBarButton."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "ca0cb8001b1f5eb564b218921b15e9906e096fc0",
+            "comment": "ComboBox: Adding props to control height and width of Callout "
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "01b176d8a4cc84627f69211a432931479ec416a2",
+            "comment": "\"Move getItemClassnNames forontextualMenuProps to IContextualMenuItem\""
+          },
+          {
+            "author": "Åsmund Grammeltvedt <asmundg@big-oil.org>",
+            "commit": "f9e4082480124499ecb92efcbb3967fd1ae07d6e",
+            "comment": "Make Modal's FocusTrapZone controllable"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.0",
       "tag": "office-ui-fabric-react_v5.6.0",
       "date": "Tue, 10 Oct 2017 10:24:47 GMT",

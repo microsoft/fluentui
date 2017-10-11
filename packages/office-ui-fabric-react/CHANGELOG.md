@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Oct 2017 10:24:47 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2017 10:11:04 GMT and should not be manually modified.
+
+## 5.7.0
+Wed, 11 Oct 2017 10:11:04 GMT
+
+### Minor changes
+
+- ComboBox: Adding props to control height and width of Callout 
+- "Move getItemClassnNames forontextualMenuProps to IContextualMenuItem"
+- Make Modal's FocusTrapZone controllable
+
+### Patches
+
+- ContextualMenu: Update the typing for getMenuClassNames
+- SpinButton: Fix the code reference for the stateful spinButton Example (#3023)
+- MessageBar: replaced DefaultButton with MessageBarButton.
 
 ## 5.6.0
 Tue, 10 Oct 2017 10:24:47 GMT
