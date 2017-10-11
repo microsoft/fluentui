@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "clean": "",
-    "build": "node -v"
+    "build": "node -v",
+    "bundlesize": "bundlesize --debug"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
@@ -12,6 +13,7 @@
     "@uifabric/merge-styles": ">=5.3.2 <6.0.0",
     "autoprefixer": "^7.1.2",
     "awesome-typescript-loader": "^3.2.3",
+    "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
     "command-line-args": "^4.0.7",
     "cpx": "^1.5.0",
@@ -41,5 +43,11 @@
     "webpack-dev-server": "^2.7.1",
     "webpack-notifier": "^1.5.0",
     "yargs": "^6.5.0"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "../packages/office-ui-fabric-react/dist/office-ui-fabric-react.js",
+      "maxSize": "280 kB"
+    }
+  ]
 }
