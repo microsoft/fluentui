@@ -78,9 +78,10 @@ export const getArrowButtonStyles = memoizeFunction((
       }
     },
     rootDisabled: {
-      opacity: 0,
+      opacity: 0.5,
       [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'GrayText'
+        color: 'GrayText',
+        opacity: 1,
       }
     },
     icon: {
@@ -118,6 +119,7 @@ export const getStyles = memoizeFunction((
   const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
   const SpinButtonRootBorderColorFocused = palette.themePrimary;
 
+  const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
   const SpinButtonInputTextColor = palette.neutralPrimary;
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
@@ -125,7 +127,7 @@ export const getStyles = memoizeFunction((
   const defaultStyles: ISpinButtonStyles = {
     root: {
       outline: 'none',
-      fontSize: '12px',
+      fontSize: FontSizes.medium,
       width: '100%',
       minWidth: '86px',
       paddingTop: '2px',
@@ -164,6 +166,13 @@ export const getStyles = memoizeFunction((
       paddingRight: '0',
       paddingBottom: '2px',
       paddingLeft: '0',
+    },
+    labelDisabled: {
+      cursor: 'default',
+      color: SpinButtonTextColorDisabled,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: 'GrayText'
+      }
     },
     spinButtonWrapper: {
       display: 'flex',
