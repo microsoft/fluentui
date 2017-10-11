@@ -198,7 +198,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           </span>
         </div>
         { isOpen && (
-          onRenderContainer(this.props, this._onRenderContainer, this._onRenderList)
+          onRenderContainer(this.props, this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -349,7 +349,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             onDismissed={ this._onDismiss }
             hasCloseButton={ false }
           >
-            { onRenderList(props, this._onRenderList, this._onRenderItem) }
+            { onRenderList(props, this._onRenderList) }
           </Panel>
         )
         :
@@ -367,7 +367,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
           >
-            { onRenderList(props, this._onRenderList, this._onRenderItem) }
+            { onRenderList(props, this._onRenderList) }
           </Callout>
         )
     );
