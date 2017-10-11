@@ -22,7 +22,7 @@ export interface IMenuItemClassNames {
 
 export const getContextualMenuClassNames = memoizeFunction((
   theme: ITheme,
-  className: string
+  className?: string
 ): IContextualMenuClassNames => {
 
   const styles = getContextualMenuStyles(theme);
