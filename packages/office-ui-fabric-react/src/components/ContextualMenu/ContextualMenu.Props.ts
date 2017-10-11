@@ -316,10 +316,10 @@ export interface IContextualMenuItem {
     checked: boolean,
     isAnchorLink: boolean,
     knownIcon: boolean,
-    itemClassname: string,
+    itemClassName: string,
     dividerClassName: string,
-    iconClassname: string,
-    subMenuClassname: string) => IMenuItemClassNames;
+    iconClassName: string,
+    subMenuClassName: string) => IMenuItemClassNames;
 
   /**
    *  Properties to apply to render this item as a section.
