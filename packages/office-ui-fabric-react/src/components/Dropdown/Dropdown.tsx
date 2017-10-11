@@ -109,6 +109,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._dropDown.focus();
+
+      if (this.props.onDismiss) {
+        this.props.onDismiss();
+      }
     }
   }
 
@@ -194,7 +198,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           </span>
         </div>
         { isOpen && (
-          onRenderContainer(this.props, this._onRenderContainer)
+          onRenderContainer(this.props, this._onRenderContainer, this._onRenderList)
         ) }
         {
           errorMessage &&
@@ -345,7 +349,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             onDismissed={ this._onDismiss }
             hasCloseButton={ false }
           >
-            { onRenderList(props, this._onRenderList) }
+            { onRenderList(props, this._onRenderList, this._onRenderItem) }
           </Panel>
         )
         :
@@ -363,7 +367,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
           >
-            { onRenderList(props, this._onRenderList) }
+            { onRenderList(props, this._onRenderList, this._onRenderItem) }
           </Callout>
         )
     );
