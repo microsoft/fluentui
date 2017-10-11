@@ -80,7 +80,8 @@ export const getArrowButtonStyles = memoizeFunction((
     rootDisabled: {
       opacity: 0.5,
       [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'GrayText'
+        color: 'GrayText',
+        opacity: 1,
       }
     },
     icon: {
