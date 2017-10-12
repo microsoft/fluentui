@@ -5,6 +5,8 @@ import './ContextualMenuExample.scss';
 export class ContextualMenuSubmenuExample extends React.Component<any, any> {
 
   public render() {
+    const alertShown = (): void => { alert('Hello'); };
+
     return (
       <div>
         <DefaultButton
@@ -30,6 +32,24 @@ export class ContextualMenuSubmenuExample extends React.Component<any, any> {
                   ],
                 },
                 name: 'New'
+              },
+              {
+                key: 'newSub',
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'email',
+                      name: 'Email message',
+                    },
+                    {
+                      key: 'calendar',
+                      name: 'Calendar event',
+                    }
+                  ],
+                },
+                name: 'Split Button',
+                split: true,
+                onClick: alertShown,
               },
               {
                 key: 'share',

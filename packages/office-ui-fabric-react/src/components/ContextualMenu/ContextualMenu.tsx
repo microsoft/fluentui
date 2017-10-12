@@ -510,16 +510,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean): JSX.Element {
 
-    // return (
-    //   <DefaultButton
-    //     disabled={ item.disabled }
-    //     split={ true }
-    //     checked={ item.isChecked }
-    //     text={ item.name }
-    //     menuProps={ item.subMenuProps }
-    //     className={ classNames.root }
-    //   />
-    // );
     return (
       <div
         aria-labelledby={ item.ariaLabel }
