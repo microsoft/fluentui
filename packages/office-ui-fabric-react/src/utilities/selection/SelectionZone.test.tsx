@@ -35,6 +35,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
     <SelectionZone
       selection={ _selection }
       selectionMode={ selectionMode }
+      // tslint:disable-next-line:jsx-no-lambda
       onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
     >
 
