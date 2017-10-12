@@ -359,7 +359,7 @@ export interface IContextualMenuItem {
    *  This can be used to make sure that a custom menu item click dismisses the menu.
    * @defaultvalue undefined
    */
-  onRender?: (item: any, onDismiss: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+  onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
    * A function to be executed onMouseDown. This is executed before an onClick event and can
