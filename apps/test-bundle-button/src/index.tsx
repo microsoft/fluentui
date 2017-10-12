@@ -45,6 +45,756 @@ export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean
       break;
     }
   }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+  for (let i = 0; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
 
   return index;
 }
