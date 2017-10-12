@@ -1,15 +1,18 @@
+import './Header.scss';
+
 import * as React from 'react';
-import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
+
 import {
   ContextualMenu,
   DirectionalHint,
   IContextualMenuItem
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import './Header.scss';
+import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
+
 import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface IHeaderProps {
   title: string;
@@ -89,7 +92,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
           <ContextualMenu
             items={ contextMenu.items }
             isBeakVisible={ true }
-            targetElement={ contextMenu.target }
+            target={ contextMenu.target }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             gapSpace={ 5 }
             onDismiss={ this._onDismiss }

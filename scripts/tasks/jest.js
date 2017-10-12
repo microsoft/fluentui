@@ -20,11 +20,14 @@ module.exports = function (options) {
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
 
+      // If the -u flag is passed, pass it through.
+      (options.argv && options.argv.indexOf('-u') >= 0) ? '-u' : '',
+
       // Pass in custom arguments.
       options.args
     ].filter(arg => !!arg).join(' ');
 
-    const command = `node ${jestPath} ${args} ${customArgs}`;
+    const command = `node ${jestPath} ${args}`;
 
     execSync(command, undefined, path.dirname(jestConfigPath));
   }

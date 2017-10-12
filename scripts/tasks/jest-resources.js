@@ -46,7 +46,13 @@ const styleMockPath =
 
         'snapshotSerializers': [
           path.resolve(__dirname, 'jest-serializer-merge-styles')
-        ]
+        ],
+
+        globals: {
+          'ts-jest': {
+            tsConfigFile: path.resolve(process.cwd(), 'tsconfig.json')
+          }
+        }
 
       }, customConfig)
   };
