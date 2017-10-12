@@ -37,5 +37,7 @@ module.exports = {
       '.md',
     ],
   },
-  stats: 'none'
+  stats: {
+    maxModules: 3
+  }
 };
