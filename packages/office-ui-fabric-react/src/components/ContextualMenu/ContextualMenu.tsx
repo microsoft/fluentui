@@ -316,10 +316,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       !!getIsChecked(item),
       !!item.href,
       (iconProps.iconName !== 'None'),
-      item.className!,
-      dividerClassName!,
-      iconProps.className!,
-      subMenuIconClassName!
+      item.className,
+      dividerClassName,
+      iconProps.className,
+      subMenuIconClassName
     );
 
     if (item.name === '-') {
