@@ -3,6 +3,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
@@ -101,6 +102,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default false;
    */
   scrollSelectedToTop?: boolean;
+
+  /**
+   * Add additional content below the callout list.
+   */
+  onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 }
 
 export interface IComboBoxStyles {

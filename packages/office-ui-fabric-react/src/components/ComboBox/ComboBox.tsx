@@ -763,7 +763,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList,
-      calloutProps
+      calloutProps,
+      onRenderLowerContent = this._onRenderLowerContent
     } = props;
 
     return (
@@ -782,6 +783,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
+        { onRenderLowerContent(this.props, this._onRenderLowerContent) }
       </Callout>
     );
   }
@@ -818,6 +820,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       default:
         return this._renderOption(item);
     }
+  }
+
+  // Default _onRenderLowerContent function returns nothing
+  @autobind
+  private _onRenderLowerContent(): null {
+    return null;
   }
 
   // Render separator
