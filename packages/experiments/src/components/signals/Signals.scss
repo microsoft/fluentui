@@ -77,6 +77,10 @@
 }
 
 .mention {
+  position: relative;
+
+  top: 0.2em;
+
   color: $ms-color-themePrimary;
 
   .selected & {

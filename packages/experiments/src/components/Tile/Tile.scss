@@ -253,54 +253,73 @@ button.check {
   }
 }
 
-@mixin preserveExtenders($topMargin: 0px) {
-  padding-top: 8px;
-  margin-top: $topMargin - 8px;
-  @include margin-left(-8px);
-  @include padding-left(8px);
-}
-
 .name {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-weight: $ms-font-weight-regular;
   color: $ms-color-neutralPrimary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
+  @include margin-left(-8px);
+  @include padding-left(8px);
+
   &,
   .isLarge & {
     font-size: $ms-font-size-m;
-    height: 17px;
-    line-height: 17px;
+
+    // Simulate a 15px line-height by using negative margins.
+    // This allows extenders and descenders to fit while still enforcing bounds
+    // for overflow: ellipsis.
+    height: 30px;
+    margin-top: -7px;
+    margin-bottom: -8px;
   }
 
   .isSmall & {
     font-size: $ms-font-size-s;
-    height: 14px;
-    line-height: 14px;
-  }
 
-  @include preserveExtenders();
+    // Simulate a 12px line-height by using negative margins.
+    // This allows extenders and descenders to fit while still enforcing bounds
+    // for overflow: ellipsis.
+    height: 24px;
+    margin-top: -5px;
+    margin-bottom: -7px;
+  }
 }
 
 .activity {
-  margin-top: 4px;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
   color: #767676;
-  height: 14px;
-  line-height: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  @include preserveExtenders(4px);
+
+  // Simulate a 20px line-height by using negative margins.
+  // This allows extenders and descenders to fit while still enforcing bounds
+  // for overflow: ellipsis.
+  height: 24px;
+  margin-bottom: -4px;
+
+  @include margin-left(-8px);
+  @include padding-left(8px);
 }
 
 .hasBackgroundFrame {
-  .nameplate {
-    @include text-align(left);
+  .name {
+    justify-content: flex-start;
+  }
+
+  .activity {
+    justify-content: flex-start;
   }
 }
 
