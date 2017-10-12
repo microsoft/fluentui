@@ -20,7 +20,7 @@ mergeStyleSet({
 // Returns { root: 'root-0', child: 'child-1' }
 ```
 
-Both utilities behave similar to a deep Object.assign; you can collapse may objects down into one class name or class map.
+Both utilities behave similar to a deep Object.assign; you can collapse many objects down into one class name or class map.
 
 The basic idea is to provide tools which can take in one or more css styling objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
 
