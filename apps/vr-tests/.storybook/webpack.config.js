@@ -38,6 +38,8 @@ module.exports = {
     ],
   },
   stats: {
-    maxModules: 3
+    chunks: false,
+    chunkModules: false,
+    maxModules: 0
   }
 };
