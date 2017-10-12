@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Update documentation for `autoComplete` prop of `ComboBox` now that it is a string, not a boolean.",
+      "comment": "ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean.",
       "type": "patch"
     }
   ],
