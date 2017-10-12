@@ -25,6 +25,10 @@ export class TextFieldComponentPage extends React.Component<any, any> {
                   'location': 'Variants'
                 },
                 {
+                  'text': 'Implementation Examples',
+                  'location': 'Implementation Examples'
+                },
+                {
                   'text': 'Implementation',
                   'location': 'Implementation'
                 }
