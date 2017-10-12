@@ -37,4 +37,5 @@ module.exports = {
       '.md',
     ],
   },
+  stats: 'none'
 };
