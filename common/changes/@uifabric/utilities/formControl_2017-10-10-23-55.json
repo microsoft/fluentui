@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Add cancel/flush to debounch",
+      "comment": "Add cancel/flush to debounce",
       "type": "minor"
     }
   ],
