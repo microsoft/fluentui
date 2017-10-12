@@ -241,11 +241,7 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
 
   let adjustedWeekDay = adjustWeekDay(firstDayOfWeek, dateWeekDay);
 
-  if (dayOfYear > getDayOfYear(lastDayOfyear) - numberOfFullDays) {
-    return getFirstDayWeekOfYear(addDays(lastDayOfyear, 1), firstDayOfWeek);
-  }
-
-  let num2 = ((firstDayOfWeek - num) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
+  let num2 = ((firstDayOfWeek - num) + (2 * TimeConstants.DaysInOneWeek)) % TimeConstants.DaysInOneWeek;
   if ((num2 !== 0) && (num2 >= numberOfFullDays)) {
     num2 -= TimeConstants.DaysInOneWeek;
   }
@@ -253,8 +249,8 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
   let num3 = dayOfYear - num2;
   if (num3 < 0) {
     num -= daysInYear % TimeConstants.DaysInOneWeek;
-    num2 = ((firstDayOfWeek - num) + 2 * TimeConstants.DaysInOneWeek) % TimeConstants.DaysInOneWeek;
-    if ((num2 !== 0) && (num2 >= numberOfFullDays)) {
+    num2 = ((firstDayOfWeek - num) + (2 * TimeConstants.DaysInOneWeek)) % TimeConstants.DaysInOneWeek;
+    if ((num2 !== 0) && (num2 + 1 >= numberOfFullDays)) {
       num2 -= TimeConstants.DaysInOneWeek;
     }
 
