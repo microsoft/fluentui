@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "\"Make label text gray when combobox is disabled\" ",
+      "comment": "ComboBox: the label now appears disabled when the ComboBox is disabled.",
       "type": "minor"
     }
   ],
