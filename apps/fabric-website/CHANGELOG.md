@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2017 10:20:49 GMT and should not be manually modified.
+
+## 5.0.10
+Thu, 12 Oct 2017 10:20:49 GMT
+
+### Patches
+
+- Added Implementation Examples section to ComponentPage
+- Add promise polyfill
 
 ## 5.0.9
 Mon, 09 Oct 2017 10:08:09 GMT
