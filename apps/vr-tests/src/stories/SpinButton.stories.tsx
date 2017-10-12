@@ -10,7 +10,7 @@ let props = {
   defaultValue: '0',
   label: 'Basic SpinButton:',
   min: 0,
-  max: 100,
+  max: 0,
   step: 1
 };
 
