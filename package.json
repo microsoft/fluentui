@@ -20,7 +20,8 @@
     "build": "npm run _rushRebuild",
     "buildfast": "npm run _rushBuild",
     "change": "node node_modules/@microsoft/rush/bin/rush change",
-    "generate": "node node_modules/@microsoft/rush/bin/rush generate"
+    "generate": "node node_modules/@microsoft/rush/bin/rush generate",
+    "bundlesize": "cd scripts && npm run bundlesize"
   },
   "license": "MIT",
   "devDependencies": {

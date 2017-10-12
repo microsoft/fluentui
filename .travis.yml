@@ -3,4 +3,5 @@ node_js:
   - '7'
 script:
   - npm run buildfast
+  - npm run bundlesize
   - npm run vrtest
