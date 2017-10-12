@@ -782,7 +782,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
-        { onRenderLowerContent(this.props) }
+        { onRenderLowerContent(this.props, this._onRenderLowerContent) }
       </Callout>
     );
   }
