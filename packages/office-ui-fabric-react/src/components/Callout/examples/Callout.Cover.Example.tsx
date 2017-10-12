@@ -27,7 +27,7 @@ const DIRECTION_OPTIONS = [
 ];
 
 export class CalloutCoverExample extends React.Component<any, ICalloutCoverExampleState> {
-  private _menuButtonElement: HTMLElement;
+  private _menuButtonElement: HTMLElement | null;
 
   public constructor() {
     super();
@@ -55,7 +55,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
             onChanged={ this._onDirectionalChanged }
           />
         </div>
-        <div className='ms-CalloutCoverExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+        <div className='ms-CalloutCoverExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <DefaultButton
             text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
             onClick={ this._onShowMenuClicked }
