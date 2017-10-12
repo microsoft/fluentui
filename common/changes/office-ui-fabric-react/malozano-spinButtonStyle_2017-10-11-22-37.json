@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "\" Move ContextualMenu component to Glamor\"",
+      "comment": "\"Update spinButton styling to have the right font size and disabled visuals\"",
       "type": "minor"
     }
   ],

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "New MessageBarButton component to allow for the unique state styles need in MessageBar.",
+      "comment": "ContextualMenu: Update the typings on getMenuItemClassNames",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

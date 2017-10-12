@@ -48,6 +48,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
+   * Callback issued when the ComboBox requests the list to scroll to a specific element
+   */
+  onScrollToItem?: (itemIndex: number) => void;
+
+  /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
    */
   allowFreeform?: boolean;
@@ -94,7 +99,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default false;
    */
   scrollSelectedToTop?: boolean;
-
 }
 
 export interface IComboBoxStyles {
@@ -161,6 +165,11 @@ export interface IComboBoxStyles {
    * Styles for the callout.
    */
   callout: IStyle;
+
+  /**
+  * Styles for the optionsContainerWrapper.
+  */
+  optionsContainerWrapper: IStyle;
 
   /**
    * Styles for the container of all the Combobox options
