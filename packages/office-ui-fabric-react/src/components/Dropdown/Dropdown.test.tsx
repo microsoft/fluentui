@@ -219,6 +219,35 @@ describe('Dropdown', () => {
       }
     });
 
+    it('issues the onDismiss callback when dismissing options callout', () => {
+      let container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      let onDismissSpy = jasmine.createSpy('onDismiss');
+
+      try {
+        ReactDOM.render(
+          <Dropdown
+            label='testgroup'
+            defaultSelectedKey='1'
+            onDismiss={ onDismissSpy }
+            options={ DEFAULT_OPTIONS }
+          />,
+          container);
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      }
+      finally {
+        expect(onDismissSpy).toHaveBeenCalledTimes(1);
+      }
+    });
+
     it('issues the onChanged callback when the selected item is different', () => {
       let container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;

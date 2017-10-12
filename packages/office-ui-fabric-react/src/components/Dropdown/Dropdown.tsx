@@ -109,6 +109,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._dropDown.focus();
+
+      if (this.props.onDismiss) {
+        this.props.onDismiss();
+      }
     }
   }
 
