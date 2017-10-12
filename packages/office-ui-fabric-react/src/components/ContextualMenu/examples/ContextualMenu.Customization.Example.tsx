@@ -188,13 +188,13 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
   }
 
   @autobind
-  private _renderCharmMenuItem(item: any, onDismiss: () => void) {
+  private _renderCharmMenuItem(item: any, dismissMenu: () => void) {
     return (
       <IconButton
         iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
-        onClick={ onDismiss }
+        onClick={ dismissMenu }
       />
     );
   }
