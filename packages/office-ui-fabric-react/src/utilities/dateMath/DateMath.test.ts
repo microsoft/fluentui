@@ -295,49 +295,49 @@ describe('DateMath', () => {
 
   it('can calculate week numbers - option 0', () => {
     let date1 = new Date(2018, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 0, 0)).to.be.equal(1);
+    expect(DateMath.getWeekNumber(date1, 0, 0) === 1).to.be.true;
 
     date1 = new Date(2010, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 0, 0)).to.be.equal(1);
+    expect(DateMath.getWeekNumber(date1, 0, 0) === 1).to.be.true;
 
     date1 = new Date(2019, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 0, 0)).to.be.equal(1);
+    expect(DateMath.getWeekNumber(date1, 0, 0) === 1).to.be.true;
 
     date1 = new Date(2010, 11, 31);
-    expect(DateMath.getWeekNumber(date1, 1, 0)).to.be.equal(53);
+    expect(DateMath.getWeekNumber(date1, 1, 0) === 53).to.be.true;
   });
 
   it('can calculate week numbers - option 1', () => {
     let date1 = new Date(2018, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 0, 1)).to.be.equal(53);
+    expect(DateMath.getWeekNumber(date1, 0, 1) === 53).to.be.true;
 
     date1 = new Date(2017, 11, 31);
-    expect(DateMath.getWeekNumber(date1, 0, 1)).to.be.equal(53);
+    expect(DateMath.getWeekNumber(date1, 0, 1) === 53).to.be.true;
 
     date1 = new Date(2010, 11, 31);
-    expect(DateMath.getWeekNumber(date1, 0, 1)).to.be.equal(52);
+    expect(DateMath.getWeekNumber(date1, 0, 1) === 52).to.be.true;
 
     date1 = new Date(2011, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 1, 1)).to.be.equal(52);
+    expect(DateMath.getWeekNumber(date1, 1, 1) === 52).to.be.true;
   });
 
   it('can calculate week numbers - option 2', () => {
     let date1 = new Date(2019, 0, 5);
-    expect(DateMath.getWeekNumber(date1, 0, 2)).to.be.equal(1);
+    expect(DateMath.getWeekNumber(date1, 0, 2) === 1).to.be.true;
 
     date1 = new Date(2018, 0, 6);
-    expect(DateMath.getWeekNumber(date1, 0, 2)).to.be.equal(1);
+    expect(DateMath.getWeekNumber(date1, 0, 2) === 1).to.be.true;
 
     date1 = new Date(2014, 11, 31);
-    expect(DateMath.getWeekNumber(date1, 0, 2)).to.be.equal(53);
+    expect(DateMath.getWeekNumber(date1, 0, 2) === 53).to.be.true;
 
     date1 = new Date(2015, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 0, 2)).to.be.equal(53);
+    expect(DateMath.getWeekNumber(date1, 0, 2) === 53).to.be.true;
 
     date1 = new Date(2010, 11, 31);
-    expect(DateMath.getWeekNumber(date1, 0, 2)).to.be.equal(52);
+    expect(DateMath.getWeekNumber(date1, 0, 2) === 52).to.be.true;
 
     date1 = new Date(2011, 0, 1);
-    expect(DateMath.getWeekNumber(date1, 1, 2)).to.be.equal(52);
+    expect(DateMath.getWeekNumber(date1, 1, 2) === 52).to.be.true;
   });
 });
