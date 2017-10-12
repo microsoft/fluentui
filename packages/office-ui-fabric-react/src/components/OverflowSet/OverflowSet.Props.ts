@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
+import { IFocusZoneProps } from '../../FocusZone';
 
 export interface IOverflowSet {
   /**
@@ -40,6 +41,17 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
    * the overflowItems passed in as props to this function.
   */
   onRenderOverflowButton: IRenderFunction<any[]>;
+
+  /**
+   * Custom properties for OverflowSet's FocusZone.
+   */
+  focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * The role for the OverflowSet.
+   * @default 'menubar'
+   */
+  role?: string;
 }
 
 export interface IOverflowSetItemProps {

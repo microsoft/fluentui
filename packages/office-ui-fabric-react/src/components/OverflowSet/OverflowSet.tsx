@@ -19,15 +19,18 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       items,
       overflowItems,
       onRenderOverflowButton,
-      className
+      className,
+      focusZoneProps,
+      role = 'menubar'
     } = this.props;
 
     return (
       <FocusZone
+        { ...focusZoneProps }
         componentRef={ this._resolveRef('_focusZone') }
         className={ css('ms-OverflowSet', styles.root, className) }
         direction={ FocusZoneDirection.horizontal }
-        role='menubar'
+        role={ role }
       >
         { items && this._onRenderItems(items) }
         { overflowItems && overflowItems.length > 0 && onRenderOverflowButton(overflowItems) }
