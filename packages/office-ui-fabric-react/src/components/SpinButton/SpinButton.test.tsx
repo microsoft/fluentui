@@ -396,6 +396,7 @@ describe('SpinButton', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
+        // tslint:disable-next-line:jsx-no-lambda
         onValidate={ (newValue: string): string => {
           let numberValue: number = +newValue;
           return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
@@ -428,6 +429,7 @@ describe('SpinButton', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         value={ exampleDefaultValue }
+        // tslint:disable-next-line:jsx-no-lambda
         onValidate={ (newValue: string): string => {
           let numberValue: number = Number(newValue);
           return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;

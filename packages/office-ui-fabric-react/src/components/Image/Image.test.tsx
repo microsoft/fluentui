@@ -26,6 +26,7 @@ describe('Image', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Image
         src={ testImage1x1 }
+        // tslint:disable-next-line:jsx-no-lambda
         onLoad={ () => done() }
       />
     );
@@ -112,6 +113,7 @@ describe('Image', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Image
         src={ brokenImage }
+        // tslint:disable-next-line:jsx-no-lambda
         onError={ () => done() }
       />
     );

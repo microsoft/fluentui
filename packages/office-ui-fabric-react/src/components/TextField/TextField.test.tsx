@@ -138,6 +138,7 @@ describe('TextField', () => {
         <TextField
           label='text-field-label'
           value='whatever value'
+          // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ () => errorMessage }
         />
       );
@@ -150,6 +151,7 @@ describe('TextField', () => {
         <TextField
           label='text-field-label'
           value='whatever value'
+          // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ () => Promise.resolve(errorMessage) }
         />
       );
@@ -163,6 +165,7 @@ describe('TextField', () => {
         <TextField
           label='text-field-label'
           value='whatever value'
+          // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ () => '' }
         />
       );
@@ -176,6 +179,7 @@ describe('TextField', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
+          // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ (value: string) => actualValue = value }
         />
       );
@@ -330,6 +334,7 @@ describe('TextField', () => {
       <TextField
         defaultValue='initial value'
         onChanged={ onChangedSpy }
+        // tslint:disable-next-line:jsx-no-lambda
         onGetErrorMessage={ value => value.length > 0 ? '' : 'error' }
       />
     );

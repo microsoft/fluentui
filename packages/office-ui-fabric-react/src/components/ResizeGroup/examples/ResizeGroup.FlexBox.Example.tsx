@@ -86,6 +86,7 @@ export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
     return (
       <ResizeGroup
         data={ data }
+        // tslint:disable-next-line:jsx-no-lambda
         onRenderData={ (scaledData: ILeftRightBoxSetProps) => <LeftRightBoxSet {...scaledData} /> }
         onReduceData={ onReduceData }
       />);

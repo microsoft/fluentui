@@ -17,6 +17,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
           disabled={ disabled }
           checked={ checked }
           text='Create account'
+          // tslint:disable-next-line:jsx-no-lambda
           onClick={ () => alert('Clicked') }
         />
       </div>

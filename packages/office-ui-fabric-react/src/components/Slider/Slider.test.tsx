@@ -82,6 +82,7 @@ describe('Slider', () => {
     let slider: ISlider | undefined;
 
     ReactTestUtils.renderIntoDocument(
+      // tslint:disable-next-line:jsx-no-lambda
       <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
     expect(slider!.value).toEqual(12);

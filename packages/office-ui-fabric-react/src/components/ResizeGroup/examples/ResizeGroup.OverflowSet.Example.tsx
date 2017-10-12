@@ -78,6 +78,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           data={ dataToRender }
           onReduceData={ this._onReduceData }
           onGrowData={ onGrowDataEnabled ? this._onGrowData : undefined }
+          // tslint:disable-next-line:jsx-no-lambda
           onRenderData={ (data) => {
             return (
               <OverflowSet

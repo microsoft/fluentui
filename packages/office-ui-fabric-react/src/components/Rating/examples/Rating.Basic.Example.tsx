@@ -16,6 +16,7 @@ export class RatingBasicExample extends React.Component<any, any> {
     };
   }
 
+  // tslint:disable:jsx-no-lambda
   public render() {
     return (
       <div className='ms-RatingBasicExample'>

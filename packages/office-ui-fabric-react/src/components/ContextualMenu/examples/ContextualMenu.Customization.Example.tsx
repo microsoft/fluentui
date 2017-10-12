@@ -11,6 +11,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
   public render() {
     return (
       <DefaultButton
+        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ (button) => this._button = button }
         className='ContextualMenuButton3'
         text='Click for ContextualMenu'

@@ -95,6 +95,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
         <MarqueeSelection selection={ selection } isEnabled={ selection.mode === SelectionMode.multiple } >
           <SelectionZone
             selection={ selection }
+            // tslint:disable-next-line:jsx-no-lambda
             onItemInvoked={ (item) => alert('item invoked: ' + item.name) }
           >
             { items.map((item, index) => (

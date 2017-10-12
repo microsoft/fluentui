@@ -5,6 +5,7 @@ import { ActivityItem } from '../ActivityItem';
 import { Icon } from '../../../Icon';
 import { Link } from '../../../Link';
 
+// tslint:disable:jsx-no-lambda
 const activityItemExamples = [
   {
     key: 1,

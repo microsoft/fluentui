@@ -86,6 +86,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
         <Sticky>{ selectionDetails }</Sticky>
         <TextField
           label='Filter by name:'
+          // tslint:disable-next-line:jsx-no-lambda
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
         />
         <Sticky>
@@ -98,6 +99,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
             setKey='set'
             layoutMode={ DetailsListLayoutMode.fixedColumns }
             onRenderDetailsHeader={
+              // tslint:disable-next-line:jsx-no-lambda
               (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => (
                 <Sticky>
                   { defaultRender({
@@ -110,6 +112,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
             selectionPreservedOnEmptyClick={ true }
             ariaLabelForSelectionColumn='Toggle selection'
             ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+            // tslint:disable-next-line:jsx-no-lambda
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
           />
         </MarqueeSelection>

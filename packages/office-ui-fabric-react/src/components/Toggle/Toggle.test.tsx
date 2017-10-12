@@ -44,6 +44,7 @@ describe('Toggle', () => {
 
     ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Toggle
+        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         label='Label'
         onChanged={ callback }
@@ -62,6 +63,7 @@ describe('Toggle', () => {
 
     ReactTestUtils.renderIntoDocument(
       <Toggle
+        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         label='Label'
         checked={ false }
@@ -95,12 +97,14 @@ describe('Toggle', () => {
     const wrapper = mount(
       <form
         action='#'
+        // tslint:disable-next-line:jsx-no-lambda
         onSubmit={ (e) => {
           onSubmit();
           e.preventDefault();
         } }
       >
         <Toggle
+          // tslint:disable-next-line:jsx-no-lambda
           componentRef={ ref => component = ref }
           label='Label'
         />

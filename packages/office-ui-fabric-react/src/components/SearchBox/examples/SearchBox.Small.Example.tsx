@@ -4,6 +4,7 @@ import {
 } from 'office-ui-fabric-react/lib/SearchBox';
 import './SearchBox.Small.Example.scss';
 
+// tslint:disable:jsx-no-lambda
 export class SearchBoxSmallExample extends React.Component<any, any> {
   public render() {
     return (

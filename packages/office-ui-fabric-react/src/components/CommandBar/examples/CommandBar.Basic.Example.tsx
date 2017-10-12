@@ -38,6 +38,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
         <Toggle
           label='Show search box'
           checked={ searchBoxVisible }
+          // tslint:disable-next-line:jsx-no-lambda
           onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
           onText='Visible'
           offText='Hidden'
@@ -45,6 +46,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
         <Toggle
           label='Show names'
           checked={ namesVisible }
+          // tslint:disable-next-line:jsx-no-lambda
           onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
           onText='Visible'
           offText='Hidden'
@@ -52,6 +54,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
         <Toggle
           label='Show icons'
           checked={ iconsVisible }
+          // tslint:disable-next-line:jsx-no-lambda
           onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
           onText='Visible'
           offText='Hidden'
