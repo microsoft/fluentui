@@ -85,15 +85,15 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   /**
    * All registered inputs the form is aware of
    */
-  private mountedInputs: GenericFormInput[];
+  private _mountedInputs: GenericFormInput[];
 
   /** Flag which marks whether or not the form has attempted to have been submitted */
-  private pristine: boolean;
+  private _pristine: boolean;
 
   constructor(props: IFormProps) {
     super(props);
-    this.mountedInputs = [];
-    this.pristine = true;
+    this._mountedInputs = [];
+    this._pristine = true;
     this.state = {
       validationResults: {}
     };
@@ -132,7 +132,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    */
   private _getFormValues(): { [key: string]: any } {
     let formValues: { [key: string]: any } = {};
-    this.mountedInputs.forEach((input: GenericFormInput) => {
+    this._mountedInputs.forEach((input: GenericFormInput) => {
       formValues[input.props.inputKey] = input.state.currentValue;
     });
 
@@ -146,7 +146,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    */
   private _validateComponent(input: GenericFormInput): IFormValidationResult {
     let validationResult = input.doValidate();
-    if (!validationResult.isValid && (this.props.showErrorsWhenPristine || !this.pristine)) {
+    if (!validationResult.isValid && (this.props.showErrorsWhenPristine || !this._pristine)) {
       input.setError(validationResult.errorMessage);
     } else {
       input.clearError();
@@ -161,7 +161,7 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    */
   private _validateForm(): { [key: string]: IFormValidationResult } {
     let validationResults: { [key: string]: IFormValidationResult } = {};
-    this.mountedInputs.forEach((input: GenericFormInput) => {
+    this._mountedInputs.forEach((input: GenericFormInput) => {
       validationResults[input.props.inputKey] = this._validateComponent(input);
     });
 
@@ -180,8 +180,8 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
   @autobind
   private _onSubmit(event: React.FormEvent<HTMLElement>): void {
     event.preventDefault();
-    if (this.pristine) {
-      this.pristine = false;
+    if (this._pristine) {
+      this._pristine = false;
     }
 
     if (this.props.onSubmit) {
@@ -203,8 +203,8 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    */
   @autobind
   private _mountInput(input: GenericFormInput): void {
-    if (this.mountedInputs.indexOf(input) === -1) {
-      this.mountedInputs.push(input);
+    if (this._mountedInputs.indexOf(input) === -1) {
+      this._mountedInputs.push(input);
       this.setState((prevState: IFormState) => {
         prevState.validationResults[input.props.inputKey] = this._validateComponent(input);
         return prevState;
@@ -233,9 +233,9 @@ export class Form extends BaseComponent<IFormProps, IFormState> {
    */
   @autobind
   private _unmountInput(input: GenericFormInput): void {
-    let currentIndex: number = this.mountedInputs.indexOf(input);
+    let currentIndex: number = this._mountedInputs.indexOf(input);
     if (currentIndex > -1) {
-      this.mountedInputs.splice(currentIndex, 1);
+      this._mountedInputs.splice(currentIndex, 1);
       this.setState((prevState: IFormState) => {
         delete prevState.validationResults[input.props.inputKey];
         return prevState;
