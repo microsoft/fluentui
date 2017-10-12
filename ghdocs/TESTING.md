@@ -14,6 +14,8 @@ In command prompt navigate to the appropriate package, for example `packages/off
 
 To just validate everything works, run `npm run build`, which will build the project including running tslint and jest for tests.
 
+If you *only* want to run jest, you can also run only the `jest` task by running `npm run build jest`.
+
 ## Running tests in watch mode
 
 When you are developing tests, use the watch mode to run the tests as you write them!
