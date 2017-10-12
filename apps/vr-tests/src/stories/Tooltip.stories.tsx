@@ -3,26 +3,23 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Modal } from 'office-ui-fabric-react/lib/Modal';
+import { TooltipHost } from 'office-ui-fabric-react';
 
-// tslint:disable:max-line-length
-storiesOf('Modal', module)
+storiesOf('Tooltip', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.ms-Modal' })
+        .hover('.ms-TooltipHost')
+        .wait(200)
+        .snapshot('default')
         .end()
       }
     >
       { story() }
     </Screener>
-  ))
-  .add('Root', () => (
-    <Modal
-      isOpen
-      isBlocking={ false }
-    >
-      Modal content
-    </Modal >
+  )).add('Default', () => (
+    <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 0 } }>
+      Hover over me
+    </TooltipHost>
   ));
