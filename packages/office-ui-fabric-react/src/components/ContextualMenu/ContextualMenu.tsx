@@ -543,7 +543,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
 
     const itemProps = {
-      onClick: this._onItemClick.bind(this, item, true),
+      onClick: this._executeItemClick.bind(this, item),
       disabled: item.disabled || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
@@ -651,10 +651,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>, primaryAction?: boolean) {
+  private _onItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     let items = getSubmenuItems(item);
 
-    if (!items || !items.length || primaryAction) { // This is an item without a menu. Click it.
+    if (!items || !items.length) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
