@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "office-ui-fabric-react_v5.8.0",
+      "date": "Thu, 12 Oct 2017 10:20:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ian VanSchooten <ian.vanschooten@gmail.com>",
+            "commit": "f0362588a14a3df75b94f2fe21ceb114ce07c7e1",
+            "comment": "ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "c3b2b6d5feb39a8534584c7306a5621d56549d8e",
+            "comment": "ContextualMenu: Update the typings on getMenuItemClassNames"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "95f1a37bad9be2a5ab0d56ec6ea5e23dc7192230",
+            "comment": "Adding Implementation Examples section to ComponentPage. Implemented in TextField."
+          }
+        ],
+        "minor": [
+          {
+            "author": "joeuy <jchiarino@gmail.com>",
+            "commit": "bc54e30967bd66cdad34df2aad81df031ba3bccb",
+            "comment": "Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. "
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "ace1eeb589350f79200706112cdef4b4a4505b09",
+            "comment": "OverflowSet: Add FocusZoneProps and the ability to set the role"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "297e24651f58c43cedcc6bcdff22f8863c769353",
+            "comment": "Callout: Added optional button at the bottom of the callout container"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "379611dd5fe516ab5230b1447c6a1d325cf6a625",
+            "comment": "ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior"
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "5dc33511fdf44fbce652b590d807cef47bb82404",
+            "comment": "\"Update spinButton styling to have the right font size and disabled visuals\""
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "office-ui-fabric-react_v5.7.0",
       "date": "Wed, 11 Oct 2017 10:11:04 GMT",

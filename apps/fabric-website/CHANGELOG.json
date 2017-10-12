@@ -2,6 +2,30 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.10",
+      "tag": "@uifabric/fabric-website_v5.0.10",
+      "date": "Thu, 12 Oct 2017 10:20:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "95f1a37bad9be2a5ab0d56ec6ea5e23dc7192230",
+            "comment": "Added Implementation Examples section to ComponentPage"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "952448bde2b85671c84c1c074a18eedfeb90c615",
+            "comment": "Add promise polyfill"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.7.0 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.9",
       "tag": "@uifabric/fabric-website_v5.0.9",
       "date": "Mon, 09 Oct 2017 10:08:09 GMT",

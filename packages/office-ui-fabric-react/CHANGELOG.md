@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 11 Oct 2017 10:11:04 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2017 10:20:49 GMT and should not be manually modified.
+
+## 5.8.0
+Thu, 12 Oct 2017 10:20:49 GMT
+
+### Minor changes
+
+- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. 
+- OverflowSet: Add FocusZoneProps and the ability to set the role
+- Callout: Added optional button at the bottom of the callout container
+- ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior
+- "Update spinButton styling to have the right font size and disabled visuals"
+
+### Patches
+
+- ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean.
+- ContextualMenu: Update the typings on getMenuItemClassNames
+- Adding Implementation Examples section to ComponentPage. Implemented in TextField.
 
 ## 5.7.0
 Wed, 11 Oct 2017 10:11:04 GMT
