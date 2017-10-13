@@ -58,9 +58,11 @@ export const getClassNames = memoizeFunction((
       styles.label,
       disabled && {
         color: textDisabledColor,
-        [MS_HIGHCONTRAST_ACTIVE]: {
-          color: 'GrayText'
-        },
+        selectors: {
+          [MS_HIGHCONTRAST_ACTIVE]: {
+            color: 'GrayText'
+          },
+        }
       }
     ],
 

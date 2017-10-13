@@ -23,8 +23,10 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
       },
       disabled && {
         color: theme.semanticColors.disabledText,
-        [MS_HIGHCONTRAST_ACTIVE]: {
-          color: 'GrayText'
+        selectors: {
+          [MS_HIGHCONTRAST_ACTIVE]: {
+            color: 'GrayText'
+          }
         }
       },
       required && {
