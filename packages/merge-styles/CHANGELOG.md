@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Oct 2017 01:36:02 GMT and should not be manually modified.
+
+## 5.3.3
+Fri, 13 Oct 2017 01:36:02 GMT
+
+### Patches
+
+- Adding data-merge-styles attribute to the style element so that it can be uniquely identified.
 
 ## 5.3.2
 Mon, 09 Oct 2017 10:08:09 GMT
