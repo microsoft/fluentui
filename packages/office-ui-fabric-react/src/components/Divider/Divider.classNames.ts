@@ -6,13 +6,18 @@ export interface IDividerClassNames {
   divider: string;
 }
 
-export const getDividerClassNames = memoizeFunction((): IDividerClassNames => {
+export const getDividerClassNames = memoizeFunction((dividerHeight: number, dividerColor: string, dividerHorizontalMargin: number): IDividerClassNames => {
   return mergeStyleSets({
     wrapper: {
+      display: 'inline-flex',
+      height: '100%',
+      alignItems: 'center',
+      margin: `0 ${dividerHorizontalMargin}px`
     },
     divider: {
       width: 1,
-      height: 20
+      height: dividerHeight,
+      backgroundColor: dividerColor
     }
   });
 });
