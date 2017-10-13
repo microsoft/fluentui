@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Calendar } from './Calendar';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 
-export { DayOfWeek, DateRangeType };
+export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
