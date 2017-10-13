@@ -1,4 +1,15 @@
+export interface IDivider {
+
+}
+
 export interface IDividerProps {
+
+  /**
+   * Optional callback to access the IDivider interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDivider) => void;
+
   /**
    * The height of the divider.
    */

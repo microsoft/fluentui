@@ -5,10 +5,11 @@ import {
 import { getDividerClassNames } from './Divider.classNames';
 import { IDividerProps } from './Divider.Props';
 
-export class Divider extends React.PureComponent<IDividerProps, {}> {
+export class Divider extends BaseComponent<IDividerProps, {}> {
   public render() {
     const { dividerHeight, dividerColor, dividerHorizontalMargin } = this.props;
     const classNames = getDividerClassNames(dividerHeight, dividerColor, dividerHorizontalMargin || 0);
+
     return (
       <span className={ classNames.wrapper }>
         <span className={ classNames.divider } />
