@@ -197,6 +197,7 @@ export class Stylesheet {
   private _getElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = document.createElement('style');
+      this._styleElement.setAttribute('data-merge-styles', 'true');
       document.head.appendChild(this._styleElement);
     }
 
