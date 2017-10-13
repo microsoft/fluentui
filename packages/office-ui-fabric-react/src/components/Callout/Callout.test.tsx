@@ -4,10 +4,26 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import { Callout } from './Callout';
+import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 describe('Callout', () => {
+
+  it('renders Callout correctly', () => {
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <CalloutContent>Content</CalloutContent>,
+      { createNodeMock }
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('target id strings does not throw exception', () => {
 

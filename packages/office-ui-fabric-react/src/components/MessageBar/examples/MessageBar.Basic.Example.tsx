@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -38,8 +38,8 @@ export const MessageBarBasicExample = () => (
       messageBarType={ MessageBarType.severeWarning }
       actions={
         <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
         </div>
       }
     >
@@ -51,8 +51,8 @@ export const MessageBarBasicExample = () => (
     <MessageBar
       actions={
         <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
         </div>
       }
       messageBarType={ MessageBarType.success }
@@ -68,8 +68,8 @@ export const MessageBarBasicExample = () => (
       ariaLabel='Aria help text here'
       actions={
         <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
         </div>
       }
     >

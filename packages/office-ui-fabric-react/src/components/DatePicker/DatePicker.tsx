@@ -7,6 +7,7 @@ import {
   Calendar,
   DayOfWeek
 } from '../../Calendar';
+import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField } from '../../TextField';
@@ -114,6 +115,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     borderless: false,
     pickerAriaLabel: 'Calender',
     showWeekNumbers: false,
+    firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
     dateTimeFormatter: undefined
   };
@@ -153,11 +155,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       errorMessage: errorMessage
     });
 
-    // Issue# 1274: Check if the date value changed from old props value, i.e., if indeed a new date is being
+    // Issue# 1274: Check if the date value changed from old value, i.e., if indeed a new date is being
     // passed in or if the formatting function was modified. We only update the selected date if either of these
     // had a legit change. Note tha the bug will still repro when only the formatDate was passed in props and this
     // is the result of the onSelectDate callback, but this should be a rare scenario.
-    let oldValue = this.props.value;
+    let oldValue = this.state.selectedDate;
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
         selectedDate: value || new Date(),
@@ -238,6 +240,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
               showWeekNumbers={ this.props.showWeekNumbers }
+              firstWeekOfYear={ this.props.firstWeekOfYear }
               showGoToToday={ this.props.showGoToToday }
               dateTimeFormatter={ this.props.dateTimeFormatter }
               ref={ this._resolveRef('_calendar') }
@@ -256,11 +259,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       selectedDate: date,
       isDatePickerShown: false,
       formattedDate: formatDate && date ? formatDate(date) : '',
+    }, () => {
+      if (onSelectDate) {
+        onSelectDate(date);
+      }
     });
-
-    if (onSelectDate) {
-      onSelectDate(date);
-    }
   }
 
   @autobind

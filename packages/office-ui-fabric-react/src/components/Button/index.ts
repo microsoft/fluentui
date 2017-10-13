@@ -7,5 +7,6 @@ export * from './CommandButton/CommandButton';
 export * from './CompoundButton/CompoundButton';
 export * from './DefaultButton/DefaultButton';
 export * from './CommandButton/CommandButton';
+export * from './MessageBarButton/MessageBarButton';
 export * from './PrimaryButton/PrimaryButton';
 export * from './IconButton/IconButton';

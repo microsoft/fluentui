@@ -14,6 +14,7 @@ export interface IComboBoxClassNames {
   optionsContainer: string;
   header: string;
   divider: string;
+  optionsContainerWrapper: string;
 }
 
 export interface IComboBoxOptionClassNames {
@@ -67,6 +68,10 @@ export const getClassNames = memoizeFunction((
     callout: mergeStyles(
       'ms-ComboBox-callout',
       styles.callout
+    ),
+    optionsContainerWrapper: mergeStyles(
+      'ms-ComboBox-optionsContainerWrapper',
+      styles.optionsContainerWrapper
     ),
     optionsContainer: mergeStyles(
       'ms-ComboBox-optionsContainer',

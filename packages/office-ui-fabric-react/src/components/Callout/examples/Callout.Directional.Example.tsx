@@ -36,7 +36,7 @@ const DIRECTION_OPTIONS = [
 ];
 
 export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
-  private _menuButtonElement: HTMLElement;
+  private _menuButtonElement: HTMLElement | null;
   public constructor() {
     super();
 
@@ -81,7 +81,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             onChanged={ this._onDirectionalChanged }
           />
         </div>
-        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <DefaultButton
             className={ 'calloutExampleButton' }
             onClick={ this._onShowMenuClicked }

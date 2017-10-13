@@ -3,6 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
+
 import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
@@ -90,6 +92,20 @@ describe('Calendar', () => {
           strings={ dayPickerStrings }
           isMonthPickerVisible={ false }
         />) as Calendar;
+    });
+
+    it('Renders simple calendar correctly', () => {
+      const date = new Date(2000, 1, 1);
+      const component = renderer.create(
+        <Calendar
+          strings={ dayPickerStrings }
+          isMonthPickerVisible
+          value={ date }
+        />
+      );
+
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
     });
 
     it('Verify day picker header', () => {

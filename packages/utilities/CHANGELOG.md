@@ -1,6 +1,35 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 27 Sep 2017 00:20:58 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+- Fixing version dependencies.
+
+## 5.1.0
+Thu, 05 Oct 2017 16:29:11 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT

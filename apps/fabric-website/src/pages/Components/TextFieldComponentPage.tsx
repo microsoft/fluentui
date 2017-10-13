@@ -17,8 +17,16 @@ export class TextFieldComponentPage extends React.Component<any, any> {
                   'location': 'Overview'
                 },
                 {
+                  'text': 'Best Practices',
+                  'location': 'Best Practices'
+                },
+                {
                   'text': 'Variants',
                   'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation Examples',
+                  'location': 'Implementation Examples'
                 },
                 {
                   'text': 'Implementation',
