@@ -2,6 +2,27 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.4.0",
+      "tag": "@uifabric/merge-styles_v5.4.0",
+      "date": "Fri, 13 Oct 2017 04:00:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2b318265a85acf7d858bcd5b161641e6c2d7c07a",
+            "comment": "Adding data-merge-styles attribute to the style element so that it can be uniquely identified."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2b318265a85acf7d858bcd5b161641e6c2d7c07a",
+            "comment": "Fixes to support media queries."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.3",
       "tag": "@uifabric/merge-styles_v5.3.3",
       "date": "Fri, 13 Oct 2017 01:36:02 GMT",

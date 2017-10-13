@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Oct 2017 01:36:02 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Oct 2017 04:00:17 GMT and should not be manually modified.
+
+## 5.8.2
+Fri, 13 Oct 2017 04:00:17 GMT
+
+### Patches
+
+- Colors Utility: add error checking if an invalid string is given
 
 ## 5.8.1
 Fri, 13 Oct 2017 01:36:02 GMT
