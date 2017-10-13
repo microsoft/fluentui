@@ -5,7 +5,7 @@ export interface ILabelClassNames {
   root: string;
 }
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &';
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getLabelClassNames = memoizeFunction((theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
   return mergeStyleSets({

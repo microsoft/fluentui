@@ -15,7 +15,7 @@ export interface IToggleClassNames {
   text?: string;
 }
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &';
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getClassNames = memoizeFunction((
   theme: ITheme,
@@ -199,7 +199,12 @@ export const getClassNames = memoizeFunction((
           '&&': {
             padding: '0',
             margin: '0 10px',
-            userSelect: 'none'
+            userSelect: 'none',
+            selectors: {
+              [MS_HIGHCONTRAST_ACTIVE]: {
+                color: 'GrayText'
+              },
+            }
           }
         }
       },
