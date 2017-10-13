@@ -165,40 +165,13 @@ export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean {
 }
 
 /**
- * Gets a new date with the time portion zeroed out, i.e., set to midnight
- * @param {Date} date - The origin date
- * @returns {Date} A new date with the time set to midnight
+ * Returns the week number for a date.
+ * Week numbers are 1 - 52 (53) in a year
+ * @param {navigatedDate} Date - A date to find the week number for.
+ * @param {firstDayOfWeek} DayOfWeek - The first day of the week (0-6, Sunday = 0)
+ * @param {firstWeekOfYear} FirstWeekOfYear - The first week of the year (1-2)
+ * @return {weeksArray} The weeks number array for the current month.
  */
-function getDatePart(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-}
-
-/**
- * Gets the date for the first day of the week based on the given date assuming
- * the specified first day of the week.
- * @param {Date} date - The date to find the beginning of the week date for.
- * @return {Date} A new date object representing the first day of the week containing the input date.
- */
-function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
-  let daysOffset = firstDayOfWeek - date.getDay();
-  if (daysOffset > 0) {
-    // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
-    daysOffset -= TimeConstants.DaysInOneWeek;
-  }
-  return addDays(date, daysOffset);
-}
-
-/**
- * Helper function to assist in date comparisons
- */
-function getDatePartHashValue(date: Date) {
-  // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
-  /* tslint:disable:no-bitwise */
-  return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
-  /* tslint:enable:no-bitwise */
-}
-
-// Returns the week numbers for each week in a month.  Week numbers are 1 - 52 (53) in a year
 export function getWeekNumbersInMonth(
   weeksInMonth: number,
   firstDayOfWeek: DayOfWeek,
@@ -247,6 +220,40 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
     default:
       return getFirstDayWeekOfYear(date, firstDayOfWeek);
   }
+}
+
+/**
+ * Gets a new date with the time portion zeroed out, i.e., set to midnight
+ * @param {Date} date - The origin date
+ * @returns {Date} A new date with the time set to midnight
+ */
+function getDatePart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+/**
+ * Gets the date for the first day of the week based on the given date assuming
+ * the specified first day of the week.
+ * @param {Date} date - The date to find the beginning of the week date for.
+ * @return {Date} A new date object representing the first day of the week containing the input date.
+ */
+function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
+  let daysOffset = firstDayOfWeek - date.getDay();
+  if (daysOffset > 0) {
+    // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
+    daysOffset -= TimeConstants.DaysInOneWeek;
+  }
+  return addDays(date, daysOffset);
+}
+
+/**
+ * Helper function to assist in date comparisons
+ */
+function getDatePartHashValue(date: Date) {
+  // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
+  /* tslint:disable:no-bitwise */
+  return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
+  /* tslint:enable:no-bitwise */
 }
 
 /**
@@ -309,7 +316,7 @@ function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number) {
 * @param {dateWeekDay} DayOfWeek - shifts number forward to 1 week in case passed as true
 * @return {DayOfWeek} The day of week adjusted to firstDayOfWeek. E.g. when FirstDyOfWeek is Monday (1), Sunday becomes = 7 (7 > 1).
 */
-export function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek) {
+function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek) {
   return (firstDayOfWeek !== DayOfWeek.Sunday && dateWeekDay < firstDayOfWeek) ? dateWeekDay + TimeConstants.DaysInOneWeek : dateWeekDay;
 }
 
