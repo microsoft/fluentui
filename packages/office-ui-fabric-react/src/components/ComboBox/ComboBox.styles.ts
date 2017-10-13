@@ -166,7 +166,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
           backgroundColor: 'ButtonFace',
           borderColor: 'ButtonText',
           color: 'ButtonText',
-          msHighContrastAdjust: 'none'
+          MsHighContrastAdjust: 'none'
         }
       }
     },
