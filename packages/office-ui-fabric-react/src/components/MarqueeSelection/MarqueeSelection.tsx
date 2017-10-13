@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as stylesImport from './MarqueeSelection.scss';
+
 import {
   AutoScroll,
   BaseComponent,
@@ -10,8 +12,8 @@ import {
   getDistanceBetweenPoints,
   getRTL
 } from '../../Utilities';
+
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import * as stylesImport from './MarqueeSelection.scss';
 const styles: any = stylesImport;
 
 export interface IMarqueeSelectionState {
@@ -62,7 +64,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
   public componentDidMount() {
     this._scrollableParent = findScrollableParent(this.refs.root) as HTMLElement;
-    this._scrollableSurface = this._scrollableParent === window as any ? document.body : this._scrollableParent;
+    this._scrollableSurface = (this._scrollableParent === window as any) ? document.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
 
     const hitTarget = this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableSurface;

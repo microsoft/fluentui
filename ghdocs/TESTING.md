@@ -10,15 +10,25 @@ For creating React functional tests, we use [Enzyme](http://airbnb.io/enzyme/) t
 
 ## Running tests
 
-To run tests:
-
 In command prompt navigate to the appropriate package, for example `packages/office-ui-fabric-react`
 
 To just validate everything works, run `npm run build`, which will build the project including running tslint and jest for tests.
 
-To actively develop tests, you can use Jest watch mode by running `npm run start-test`.
+If you *only* want to run jest, you can also run only the `jest` task by running `npm run build jest`.
 
-To debug tests, you can us Visual Studio Code. Inside of a `*.test.ts` file, add a `debugger` statement where you want to break, and hit F5 to start debugging.
+## Running tests in watch mode
+
+When you are developing tests, use the watch mode to run the tests as you write them!
+
+1. Go to the package folder where you want to run the tests.
+2. Type `npm run start-test`.
+3. Edit and saving tests should now cause the console to re-run the tests you have added/modified.
+
+### Debugging
+
+To debug tests, you can use Visual Studio Code. Inside of a `*.test.ts` file, add a `debugger` statement where you want to break, and hit F5 to start debugging.
+
+Note: Because of limitations with the current Node LTS version, breakpoints in VSCode will not hit until you're actively in the debugger using `debugger` statement. The latest Node version however has fixes that will enable breakpoints to resolve, so this workaround is temporary.
 
 ## Writing tests
 
