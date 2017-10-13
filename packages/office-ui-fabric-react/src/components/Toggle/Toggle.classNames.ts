@@ -200,18 +200,18 @@ export const getClassNames = memoizeFunction((
             padding: '0',
             margin: '0 10px',
             userSelect: 'none',
-            selectors: {
-              [MS_HIGHCONTRAST_ACTIVE]: {
-                color: 'GrayText'
-              },
-            }
           }
         }
       },
       disabled && {
         selectors: {
           '&&': {
-            color: textDisabledColor
+            color: textDisabledColor,
+            selectors: {
+              [MS_HIGHCONTRAST_ACTIVE]: {
+                color: 'GrayText'
+              },
+            }
           }
         }
       },
