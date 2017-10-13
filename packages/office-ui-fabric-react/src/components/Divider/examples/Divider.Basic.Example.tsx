@@ -17,7 +17,11 @@ const getClassNames = memoizeFunction((theme: ITheme): IBasicDividerExampleClass
     },
     text: {
       display: 'inline-block',
-      padding: '0 10px'
+      padding: '0 10px',
+      height: exampleHeight,
+      lineHeight: exampleHeight,
+      verticalAlign: 'top',
+      margin: 'auto'
     }
   });
 });
