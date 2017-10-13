@@ -58,7 +58,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
     showWeekNumbers: false,
-    firstWeekOfYear: 0,
+    firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
