@@ -2,7 +2,7 @@
 	"fontName": "fabric-icons-6",
 	"fontFamilyName": "FabricMDL2Icons-6",
 	"excludeGlyphs": false,
-	"chunkSubsets": true,
+	"chunkSubsets": false,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
@@ -317,10 +317,6 @@
 			"unicode": "EF78"
 		},
 		{
-			"name": "ShareiOS",
-			"unicode": "EF79"
-		},
-		{
 			"name": "AirTickets",
 			"unicode": "EF7A"
 		},
@@ -371,14 +367,6 @@
 		{
 			"name": "Hide2",
 			"unicode": "EF89"
-		},
-		{
-			"name": "iOSAppStoreLogo",
-			"unicode": "EF8A"
-		},
-		{
-			"name": "AndroidLogo",
-			"unicode": "EF8B"
 		},
 		{
 			"name": "Breadcrumb",
