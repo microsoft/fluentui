@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.0.5",
+      "tag": "@uifabric/experiments_v5.0.5",
+      "date": "Fri, 13 Oct 2017 01:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "dfad19877e14ed0523c4f965188fb8e0955b7636",
+            "comment": "Fix visibility of Tile descenders"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.8.0 <6.0.0` to `>=5.8.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.4",
       "tag": "@uifabric/experiments_v5.0.4",
       "date": "Fri, 06 Oct 2017 10:18:41 GMT",

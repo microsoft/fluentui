@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.8.1",
+      "tag": "office-ui-fabric-react_v5.8.1",
+      "date": "Fri, 13 Oct 2017 01:36:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8b32db0594db904c7624a4944a2dcb5336c605fc",
+            "comment": "Callout: Update the typings on the target prop to make it compatible with React refs"
+          },
+          {
+            "author": "长天之云 <ambar.lee@gmail.com>",
+            "commit": "8d82a62718188ffda3a70dee24b0c77cb62156db",
+            "comment": "Tooltip: pass calloutProps.className to Callout"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f12f63d3f67177322a388ee9969f9819ee835f3a",
+            "comment": "Theme Generator: insure color update when bg inverts"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.3.2 <6.0.0` to `>=5.3.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.0",
       "tag": "office-ui-fabric-react_v5.8.0",
       "date": "Thu, 12 Oct 2017 10:20:49 GMT",
