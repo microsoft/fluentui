@@ -106,7 +106,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     beakWidth: 16,
     arrowDirection: FocusZoneDirection.vertical,
     getMenuClassNames: getContextualMenuClassNames,
-    getItemClassNames: getItemClassNames,
   };
 
   private _host: HTMLElement;
@@ -203,7 +202,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } = this.props;
 
     let menuClassNames = this.props.getMenuClassNames ? this.props.getMenuClassNames : getContextualMenuClassNames;
-    this._classNames = menuClassNames(theme!, className!);
+    this._classNames = menuClassNames(theme!, className);
 
     let hasIcons = itemsHaveIcons(items);
 
@@ -310,7 +309,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     let dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    let getClassNames = this.props.getItemClassNames ? this.props.getItemClassNames : getItemClassNames;
+    let getClassNames = item.getItemClassNames ? item.getItemClassNames : getItemClassNames;
     let itemClassNames = getClassNames(
       this.props.theme!,
       !!item.disabled,
@@ -318,10 +317,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       !!getIsChecked(item),
       !!item.href,
       (iconProps.iconName !== 'None'),
-      item.className!,
-      dividerClassName!,
-      iconProps.className!,
-      subMenuIconClassName!
+      item.className,
+      dividerClassName,
+      iconProps.className,
+      subMenuIconClassName
     );
 
     if (item.name === '-') {

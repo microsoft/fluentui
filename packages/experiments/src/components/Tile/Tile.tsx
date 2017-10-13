@@ -16,11 +16,11 @@ const CheckStyles: any = CheckStylesModule;
 
 const enum TileLayoutValues {
   nameplatePadding = 12,
-  largeNameplateNameHeight = 17,
-  smallNameplateNameHeight = 14,
-  nameplateMargin = 4,
-  largeNameplateActivityHeight = 14,
-  smallNameplateActivityHeight = 14,
+  largeNameplateNameHeight = 15,
+  smallNameplateNameHeight = 12,
+  nameplateMargin = 0,
+  largeNameplateActivityHeight = 20,
+  smallNameplateActivityHeight = 20,
   foregroundMargin = 16
 }
 

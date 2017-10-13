@@ -26,7 +26,7 @@ export interface IMenuItemClassNames {
 
 export const getContextualMenuClassNames = memoizeFunction((
   theme: ITheme,
-  className: string
+  className?: string
 ): IContextualMenuClassNames => {
 
   const styles = getContextualMenuStyles(theme);
@@ -60,10 +60,10 @@ export const getItemClassNames = memoizeFunction((
   checked: boolean,
   isAnchorLink: boolean,
   knownIcon: boolean,
-  itemClassName: string,
-  dividerClassName: string,
-  iconClassName: string,
-  subMenuClassName: string,
+  itemClassName?: string,
+  dividerClassName?: string,
+  iconClassName?: string,
+  subMenuClassName?: string,
 ): IMenuItemClassNames => {
 
   const { semanticColors } = theme;

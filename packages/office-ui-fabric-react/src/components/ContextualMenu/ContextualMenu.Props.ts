@@ -38,7 +38,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent;
+  target?: HTMLElement | string | MouseEvent | null;
 
   /**
    * How the element should be positioned
@@ -201,23 +201,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * defined in ContextualMenu.classnames.
    * @default getContextualMenuClassNames
    */
-  getMenuClassNames?: (theme: ITheme, className: string) => IContextualMenuClassNames;
-
-  /**
-  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
-  * defined in ContextualMenu.classnames.
-  * @default getItemClassNames
-  */
-  getItemClassNames?: (theme: ITheme,
-    disabled: boolean,
-    expanded: boolean,
-    checked: boolean,
-    isAnchorLink: boolean,
-    knownIcon: boolean,
-    itemClassname: string,
-    dividerClassName: string,
-    iconClassname: string,
-    subMenuClassname: string) => IMenuItemClassNames;
+  getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
@@ -332,6 +316,22 @@ export interface IContextualMenuItem {
    *  can be overridden.
    */
   subMenuProps?: IContextualMenuProps;
+
+  /**
+  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
+  * defined in ContextualMenu.classnames.
+  * @default getItemClassNames
+  */
+  getItemClassNames?: (theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    isAnchorLink: boolean,
+    knownIcon: boolean,
+    itemClassName?: string,
+    dividerClassName?: string,
+    iconClassName?: string,
+    subMenuClassName?: string) => IMenuItemClassNames;
 
   /**
    *  Properties to apply to render this item as a section.

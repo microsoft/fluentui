@@ -33,7 +33,8 @@ export const getClassNames = memoizeFunction((
       styles.icon,
     ),
     label: mergeStyles(
-      styles.label
+      styles.label,
+      disabled && styles.labelDisabled
     ),
     spinButtonWrapper: mergeStyles(
       styles.spinButtonWrapper,

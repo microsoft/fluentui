@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
@@ -22,10 +23,17 @@ describe('Image', () => {
     Object.defineProperty(HTMLImageElement.prototype, 'naturalWidth', { get: () => 1 });
   });
 
+  it('renders Image correctly', () => {
+    const component = renderer.create(<Image src={ testImage1x1 } />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders an image', (done) => {
     let component = ReactTestUtils.renderIntoDocument(
       <Image
         src={ testImage1x1 }
+        // tslint:disable-next-line:jsx-no-lambda
         onLoad={ () => done() }
       />
     );
@@ -112,6 +120,7 @@ describe('Image', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Image
         src={ brokenImage }
+        // tslint:disable-next-line:jsx-no-lambda
         onError={ () => done() }
       />
     );
