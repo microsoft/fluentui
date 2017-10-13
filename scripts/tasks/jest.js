@@ -8,6 +8,7 @@ module.exports = function (options) {
 
   if (fs.existsSync(jestConfigPath)) {
     const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
+    const customArgs = options && options.argv ? options.argv.slice(3).join(' ') : '';
 
     const args = [
       // Specify the config file.
@@ -18,6 +19,9 @@ module.exports = function (options) {
 
       // In production builds, produce coverage information.
       options.isProduction && '--coverage',
+
+      // If the -u flag is passed, pass it through.
+      (options.argv && options.argv.indexOf('-u') >= 0) ? '-u' : '',
 
       // Pass in custom arguments.
       options.args

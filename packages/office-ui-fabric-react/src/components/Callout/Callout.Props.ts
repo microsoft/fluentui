@@ -23,7 +23,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent;
+  target?: HTMLElement | string | MouseEvent | null;
 
   /**
    * How the element should be positioned
@@ -177,8 +177,8 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   beakStyle?: string;
 
   /**
-   * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
-   * @deprecated
+   * Set max height of callout
+   * When not set the callout will expand with contents up to the bottom of the screen
    */
-  targetElement?: HTMLElement;
+  calloutMaxHeight?: number;
 }

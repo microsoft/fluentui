@@ -5,10 +5,6 @@ import * as React from 'react';
 import { CommandBar } from './CommandBar';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { setIconOptions } from 'office-ui-fabric-react/lib/Styling';
-
-// Disable icon warnings.
-setIconOptions({ warnOnMissingIcons: false });
 
 describe('CommandBar', () => {
 

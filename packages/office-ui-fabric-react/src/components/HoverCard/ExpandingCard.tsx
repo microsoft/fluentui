@@ -73,7 +73,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
           AnimationStyles.scaleUpIn100,
           this._styles.root
         ) }
-        targetElement={ targetElement }
+        target={ targetElement }
         isBeakVisible={ false }
         directionalHint={ this.props.directionalHint }
         directionalHintFixed={ true }

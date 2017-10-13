@@ -3,6 +3,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
@@ -48,15 +49,22 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
+   * Callback issued when the ComboBox requests the list to scroll to a specific element
+   */
+  onScrollToItem?: (itemIndex: number) => void;
+
+  /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
    */
   allowFreeform?: boolean;
 
   /**
    * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
-   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style. Defaults to false.
+   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.
+   *
+   * @default "on"
    */
-  autoComplete?: string;
+  autoComplete?: 'on' | 'off';
 
   /**
    * Value to show in the input, does not have to map to a combobox option
@@ -88,6 +96,17 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * in case an option does not come with user-defined custom styles
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).
+   * @default false;
+   */
+  scrollSelectedToTop?: boolean;
+
+  /**
+   * Add additional content below the callout list.
+   */
+  onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 }
 
 export interface IComboBoxStyles {
@@ -154,6 +173,11 @@ export interface IComboBoxStyles {
    * Styles for the callout.
    */
   callout: IStyle;
+
+  /**
+  * Styles for the optionsContainerWrapper.
+  */
+  optionsContainerWrapper: IStyle;
 
   /**
    * Styles for the container of all the Combobox options

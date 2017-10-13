@@ -1,6 +1,143 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Oct 2017 04:00:17 GMT and should not be manually modified.
+
+## 5.8.2
+Fri, 13 Oct 2017 04:00:17 GMT
+
+### Patches
+
+- Colors Utility: add error checking if an invalid string is given
+
+## 5.8.1
+Fri, 13 Oct 2017 01:36:02 GMT
+
+### Patches
+
+- Callout: Update the typings on the target prop to make it compatible with React refs
+- Tooltip: pass calloutProps.className to Callout
+- Theme Generator: insure color update when bg inverts
+
+## 5.8.0
+Thu, 12 Oct 2017 10:20:49 GMT
+
+### Minor changes
+
+- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. 
+- OverflowSet: Add FocusZoneProps and the ability to set the role
+- Callout: Added optional button at the bottom of the callout container
+- ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior
+- "Update spinButton styling to have the right font size and disabled visuals"
+
+### Patches
+
+- ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean.
+- ContextualMenu: Update the typings on getMenuItemClassNames
+- Adding Implementation Examples section to ComponentPage. Implemented in TextField.
+
+## 5.7.0
+Wed, 11 Oct 2017 10:11:04 GMT
+
+### Minor changes
+
+- ComboBox: Adding props to control height and width of Callout 
+- "Move getItemClassnNames forontextualMenuProps to IContextualMenuItem"
+- Make Modal's FocusTrapZone controllable
+
+### Patches
+
+- ContextualMenu: Update the typing for getMenuClassNames
+- SpinButton: Fix the code reference for the stateful spinButton Example (#3023)
+- MessageBar: replaced DefaultButton with MessageBarButton.
+
+## 5.6.0
+Tue, 10 Oct 2017 10:24:47 GMT
+
+### Minor changes
+
+- " Move ContextualMenu component to Glamor"
+- ComboBox: Add virtualization to the combobox control
+
+### Patches
+
+- ComboBox: Pass default render functions to ComboBox custom render functions
+- New MessageBarButton component to allow for the unique state styles need in MessageBar.
+
+## 5.5.1
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added sizing prop for Breadcrumb per design toolkit.
+- Vertically center checkbox in DetailsList header
+- Label: Convert sass to mergeStyles
+- Positioning: Fix an issue where beak would appear misaligned if an event was passed in
+
+## 5.5.0
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Minor changes
+
+- Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered.
+
+### Patches
+
+- Dropdown: fix broken implementation of controlled multi-select dropdowns
+- TSConfig: update to use preserveConstEnums so that certain builds systems don't break when importing const enums
+- Router: regex to be able to render the correct page when it encounters queries.
+
+## 5.4.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Fixing version dependencies.
+
+## 6.0.1
+Thu, 05 Oct 2017 10:17:42 GMT
+
+### Patches
+
+- Added min-width for button icons so that its easy to create buttons with space for an icon
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
+
+### Minor changes
+
+- ComboBox: when options are scrollable, added prop to scroll selected item to top when callout is opened.
+- "Buttons: adding `primaryDisabled` flag for disabling only the primary action of the split button, leaving the menu enabled."
+
+### Patches
+
+- TooltipHost: Specifying a className will no longer prevent innate Tooltip classes from being properly applied
+- DatePicker - make onSelectDate callback execute as part of SetState instead of after it. This ensures that selected date changes occur in the expected order
+- Dropdown: fixed logic in getSelectedIndex to support controlled uses
+- General bug fixes: Updated ResourcePage text, Reordered TextField page to give priority to design guidance examples, improved padding and spacing for TextField and ComboBox examples, and various website pages. Synced ComboBox error message spacing to be like TextField and per design specs.
+- Removed duplicate header in ResizeGroup.
+- Added new inline prop for SearchBox and corresonding new example. Adjested the SearchBoxPage to better reflect the current toolkit documentation.
+- Fixed duplicate header on Tooltip page.
+- List: Fix Grid example to read right to left in RTL mode
+- High contrast fixes for breadcrumb, contextualMenu, overlay, pivot, calendar, and searchbox
+- BaseButton: Added borderRadius:0 to fix new default styles in webkit
+
+## 5.3.0
+Mon, 02 Oct 2017 10:19:43 GMT
+
+### Minor changes
+
+- PersonaCoin: added `coinSize` prop to allow for customized sizes.
+
+## 5.2.1
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Patches
+
+- ComboBox: Fix broken styles as part of the move to MergeStyles
 
 ## 5.2.0
 Fri, 29 Sep 2017 10:20:24 GMT

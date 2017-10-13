@@ -3,14 +3,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
 // import { IconButton } from "src";
-
-let { expect } = chai;
 
 const alertClicked = (): void => { /*noop*/ };
 
@@ -26,8 +24,7 @@ describe('DefaultButton', () => {
       <DefaultButton>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
-    expect(renderedDOM.tagName).equals('BUTTON', 'A Button with no onClick renders as a span');
+    expect(renderedDOM.tagName).toEqual('BUTTON');
   });
 
   it('can render with an onClick.', () => {
@@ -37,8 +34,7 @@ describe('DefaultButton', () => {
       <DefaultButton onClick={ onClick }>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
-    expect(renderedDOM.tagName).equals('BUTTON', 'A Button with onClick renders as a button');
+    expect(renderedDOM.tagName).toEqual('BUTTON');
   });
 
   it('can render with an href', () => {
@@ -46,8 +42,7 @@ describe('DefaultButton', () => {
       <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
-    expect(renderedDOM.tagName).equals('A', 'A Button with an href renders as an anchor');
+    expect(renderedDOM.tagName).toEqual('A');
   });
 
   it('applies the correct aria attributes', () => {
@@ -139,7 +134,7 @@ describe('DefaultButton', () => {
   describe('with menuProps', () => {
     let button: Element;
 
-    before(() => {
+    beforeAll(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</DefaultButton>
       ) as DefaultButton;
@@ -147,14 +142,14 @@ describe('DefaultButton', () => {
     });
 
     it('contains aria-haspopup=true', () => {
-      expect(button.getAttribute('aria-haspopup')).to.equal('true');
+      expect(button.getAttribute('aria-haspopup')).toEqual('true');
     });
   });
 
   describe('without menuProps', () => {
     let button: Element;
 
-    before(() => {
+    beforeAll(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton>Hello</DefaultButton>
       ) as DefaultButton;
@@ -162,14 +157,14 @@ describe('DefaultButton', () => {
     });
 
     it('does not contain aria-haspopup', () => {
-      expect(button.getAttribute('aria-haspopup')).to.equal(null);
+      expect(button.getAttribute('aria-haspopup')).toEqual(null);
     });
   });
 
   describe('with menuIconProps', () => {
     let button: Element;
 
-    before(() => {
+    beforeAll(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton menuIconProps={ { iconName: 'fontColor' } }>Hello</DefaultButton>
       ) as DefaultButton;
@@ -177,7 +172,7 @@ describe('DefaultButton', () => {
     });
 
     it('Contains the expected icon via menuIconProps', () => {
-      expect(button.querySelectorAll('[data-icon-name="fontColor"]').length).to.equal(1);
+      expect(button.querySelectorAll('[data-icon-name="fontColor"]').length).toEqual(1);
     });
   });
 
@@ -204,7 +199,7 @@ describe('DefaultButton', () => {
       />
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    expect(renderedDOM.tagName).not.equal('DIV', 'A Button with a menuProps and an onClick renders as a SplitButton');
+    expect(renderedDOM.tagName).not.toEqual('DIV');
   });
 
   it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
@@ -231,7 +226,7 @@ describe('DefaultButton', () => {
       />
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    expect(renderedDOM.tagName).equal('DIV', 'A Button with a menuProps and an onClick renders as a SplitButton');
+    expect(renderedDOM.tagName).toEqual('DIV');
   });
 
   it('Tapping menu button of SplitButton expands menu', () => {
@@ -260,7 +255,7 @@ describe('DefaultButton', () => {
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuButtonDOM);
-    expect(renderedDOM.getAttribute('aria-expanded')).to.equal('true');
+    expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
   });
 
   describe('Response to click event', () => {
@@ -299,7 +294,7 @@ describe('DefaultButton', () => {
       const menuButtonDOM: HTMLButtonElement = renderedDOM.querySelectorAll('button')[0];
 
       ReactTestUtils.Simulate.click(menuButtonDOM);
-      expect(didClick).to.equal(true);
+      expect(didClick).toEqual(true);
     });
 
     it('Pressing down on SplitButton triggers menu', () => {
@@ -332,7 +327,7 @@ describe('DefaultButton', () => {
         {
           which: KeyCodes.down
         });
-      expect(renderedDOM.getAttribute('aria-expanded')).to.equal('true');
+      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
     it('A disabled SplitButton does not respond to clicks', () => {
@@ -362,7 +357,7 @@ describe('DefaultButton', () => {
       const buttonElement = renderedDOM.querySelectorAll('button')[0];
 
       ReactTestUtils.Simulate.click(buttonElement);
-      expect(didClick).to.equal(false);
+      expect(didClick).toEqual(false);
     });
   });
 });

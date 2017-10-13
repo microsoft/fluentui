@@ -3,9 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
 import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.Props';
@@ -19,6 +18,29 @@ describe('CommandBar', () => {
         i--;
       }
     }
+  });
+
+  it('renders CommandBar correctly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+    const component = renderer.create(
+      <CommandBar items={ items } />
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('opens a menu with deprecated IContextualMenuItem.items property', () => {
@@ -46,7 +68,7 @@ describe('CommandBar', () => {
     let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
-    expect(document.querySelector('.SubMenuClass')).to.exist;
+    expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
@@ -76,7 +98,7 @@ describe('CommandBar', () => {
     let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
-    expect(document.querySelector('.SubMenuClass')).to.exist;
+    expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
   it('keeps menu open after update if item is still present', () => {
@@ -111,7 +133,7 @@ describe('CommandBar', () => {
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
-      expect(document.querySelector('.SubMenuClass')).to.exist;
+      expect(document.querySelector('.SubMenuClass')).toBeDefined();
 
       // Update the props, and re-render
       items.push({
@@ -127,7 +149,7 @@ describe('CommandBar', () => {
       ) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
-      expect(document.querySelector('.SubMenuClass')).to.exist;
+      expect(document.querySelector('.SubMenuClass')).toBeDefined();
     } finally {
       ReactDOM.unmountComponentAtNode(renderContainer);
       document.body.removeChild(renderContainer);
@@ -166,7 +188,7 @@ describe('CommandBar', () => {
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
-      expect(document.querySelector('.SubMenuClass')).to.exist;
+      expect(document.querySelector('.SubMenuClass')).toBeDefined();
 
       // Update the props, and re-render
       items = [{
@@ -182,7 +204,7 @@ describe('CommandBar', () => {
       ) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
-      expect(document.querySelector('.SubMenuClass')).not.to.exist;
+      expect(document.querySelector('.SubMenuClass')).toBeNull();
     } finally {
       ReactDOM.unmountComponentAtNode(renderContainer);
       document.body.removeChild(renderContainer);
@@ -221,7 +243,7 @@ describe('CommandBar', () => {
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
-      expect(document.querySelector('.SubMenuClass')).to.exist;
+      expect(document.querySelector('.SubMenuClass')).toBeDefined();
 
       // Update the props, and re-render
       items[0].subMenuProps!.items[0].className = 'SubMenuClassUpdate';
@@ -234,8 +256,8 @@ describe('CommandBar', () => {
       ) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
-      expect(document.querySelector('.SubMenuClass')).not.to.exist;
-      expect(document.querySelector('.SubMenuClassUpdate')).to.exist;
+      expect(document.querySelector('.SubMenuClass')).toBeNull();
+      expect(document.querySelector('.SubMenuClassUpdate')).toBeDefined();
     } finally {
       ReactDOM.unmountComponentAtNode(renderContainer);
       document.body.removeChild(renderContainer);
