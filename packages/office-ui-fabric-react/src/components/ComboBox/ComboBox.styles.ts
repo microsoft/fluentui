@@ -1,19 +1,20 @@
 import {
-  IComboBoxStyles,
-  IComboBoxOptionStyles,
-} from './ComboBox.Props';
-import {
-  ITheme,
-  IRawStyle,
-  concatStyleSets,
   FontSizes,
   FontWeights,
+  IRawStyle,
+  ITheme,
+  concatStyleSets,
   getFocusStyle
 } from '../../Styling';
+import {
+  IComboBoxOptionStyles,
+  IComboBoxStyles,
+} from './ComboBox.Props';
+
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &';
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const ComboBoxHeight = '32px';
 const ComboBoxLineHeight = '30px';
@@ -28,9 +29,11 @@ const getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
     borderColor: semanticColors.disabledBackground,
     color: semanticColors.disabledText,
     cursor: 'default',
-    [MS_HIGHCONTRAST_ACTIVE]: {
-      borderColor: 'GrayText',
-      color: 'GrayText'
+    selectors: {
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: 'GrayText',
+        color: 'GrayText'
+      }
     },
   };
 });
@@ -158,11 +161,13 @@ export const getCaretDownButtonStyles = memoizeFunction((
       width: ComboxBoxCaretDownWidth,
       textAlign: 'center',
       cursor: 'default',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        backgroundColor: 'ButtonFace',
-        borderColor: 'ButtonText',
-        color: 'ButtonText',
-        msHighContrastAdjust: 'none'
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          backgroundColor: 'ButtonFace',
+          borderColor: 'ButtonText',
+          color: 'ButtonText',
+          MsHighContrastAdjust: 'none'
+        }
       }
     },
     rootHovered: {
