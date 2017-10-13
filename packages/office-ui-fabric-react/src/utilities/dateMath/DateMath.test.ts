@@ -292,6 +292,33 @@ describe('DateMath', () => {
     Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
   });
 
+  // Generating week numbers array per month
+  it('can calculate week numbers from selected date', () => {
+    // firstDayOfWeek is Monday, firstWeekOfYear is firstFullWeek
+    let date = new Date(2017, 0, 4);
+    let result = DateMath.getWeekNumbersInMonth(6, 1, 1, date);
+    let expected = 52;
+    expect(result[0]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
+    date = new Date(2000, 11, 31);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 1, date);
+    expected = 53;
+    expect(result[5]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
+    date = new Date(2010, 0, 1);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 1, date);
+    expected = 52;
+    expect(result[0]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFourDayWeek
+    date = new Date(2018, 11, 31);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 2, date);
+    expected = 1;
+    expect(result[5]).toEqual(expected);
+  });
+
   // First week of year set to FirstWeekOfYear.FirstDay
   it('can calculate week numbers - option 0', () => {
     // firstDayOfWeek is Sunday
