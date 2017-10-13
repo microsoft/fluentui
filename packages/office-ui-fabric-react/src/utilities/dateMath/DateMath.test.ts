@@ -291,4 +291,124 @@ describe('DateMath', () => {
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday);
     Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
   });
+
+  // Generating week numbers array per month
+  it('can calculate week numbers from selected date', () => {
+    // firstDayOfWeek is Monday, firstWeekOfYear is firstFullWeek
+    let date = new Date(2017, 0, 4);
+    let result = DateMath.getWeekNumbersInMonth(6, 1, 1, date);
+    let expected = 52;
+    expect(result[0]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
+    date = new Date(2000, 11, 31);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 1, date);
+    expected = 53;
+    expect(result[5]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFullWeek
+    date = new Date(2010, 0, 1);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 1, date);
+    expected = 52;
+    expect(result[0]).toEqual(expected);
+
+    // firstDayOfWeek is Sunday, firstWeekOfYear is firstFourDayWeek
+    date = new Date(2018, 11, 31);
+    result = DateMath.getWeekNumbersInMonth(6, 0, 2, date);
+    expected = 1;
+    expect(result[5]).toEqual(expected);
+  });
+
+  // First week of year set to FirstWeekOfYear.FirstDay
+  it('can calculate week numbers - option 0', () => {
+    // firstDayOfWeek is Sunday
+    let date1 = new Date(2018, 0, 1);
+    let result = DateMath.getWeekNumber(date1, 0, 0);
+    let expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2010, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 0);
+    expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2019, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 0);
+    expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2010, 11, 31);
+    result = DateMath.getWeekNumber(date1, 1, 0);
+    expected = 53;
+    expect(result).toEqual(expected);
+  });
+
+  // First week of year set to FirstWeekOfYear.FirstFullWeek
+  it('can calculate week numbers - option 1', () => {
+    // firstDayOfWeek is Sunday
+    let date1 = new Date(2018, 0, 1);
+    let result = DateMath.getWeekNumber(date1, 0, 1);
+    let expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2017, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2010, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2011, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+  });
+
+  // First week of year set to FirstWeekOfYear.FirstFourDayWeek
+  it('can calculate week numbers - option 2', () => {
+    // firstDayOfWeek is Sunday
+    let date1 = new Date(2019, 0, 5);
+    let result = DateMath.getWeekNumber(date1, 0, 2);
+    let expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2018, 0, 6);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 1;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2014, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2015, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2010, 11, 31);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2011, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 2);
+    expected = 52;
+    expect(result).toEqual(expected);
+  });
 });
