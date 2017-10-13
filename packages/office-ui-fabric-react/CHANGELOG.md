@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Oct 2017 10:20:49 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Oct 2017 01:36:02 GMT and should not be manually modified.
+
+## 5.8.1
+Fri, 13 Oct 2017 01:36:02 GMT
+
+### Patches
+
+- Callout: Update the typings on the target prop to make it compatible with React refs
+- Tooltip: pass calloutProps.className to Callout
+- Theme Generator: insure color update when bg inverts
 
 ## 5.8.0
 Thu, 12 Oct 2017 10:20:49 GMT
