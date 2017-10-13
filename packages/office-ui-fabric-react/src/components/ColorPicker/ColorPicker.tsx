@@ -163,7 +163,11 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     }));
   }
 
-  private _updateColor(newColor: IColor) {
+  private _updateColor(newColor?: IColor) {
+    if (!newColor) {
+      return;
+    }
+
     let { onColorChanged } = this.props;
 
     if (newColor.str !== this.state.color.str) {

@@ -36,7 +36,10 @@ export class ThemeGenerator {
     if (overwriteCustomColor) {
       let colorAsIColor: IColor;
       if (typeof color === 'string') {
-        colorAsIColor = getColorFromString(color);
+        colorAsIColor = getColorFromString(color)!; // the ! is a lie here but we'll verify it in the next line
+        if (!colorAsIColor) {
+          throw 'color is invalid in setSlot(): ' + color;
+        }
       } else {
         colorAsIColor = color;
       }
