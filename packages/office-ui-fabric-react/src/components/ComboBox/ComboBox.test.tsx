@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
 
 import { ComboBox } from './ComboBox';
@@ -22,6 +23,19 @@ const DEFAULT_OPTIONS2: IComboBoxOption[] = [
 ];
 
 describe('ComboBox', () => {
+  it('Renders ComboBox correctly', () => {
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <ComboBox options={ DEFAULT_OPTIONS } />,
+      { createNodeMock }
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('Can flip between enabled and disabled.', () => {
     let wrapper = mount(
