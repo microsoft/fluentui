@@ -240,10 +240,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number) {
-    let valueChanged = value !== this.state.value;
+    let interval: number = 1.0 / this.props.step!;
+    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
+    let roundedValue: number = Math.round(value * interval) / interval;
+
+    let valueChanged = roundedValue !== this.state.value;
 
     this.setState({
-      value,
+      value: roundedValue,
       renderedValue
     }, () => {
       if (valueChanged && this.props.onChange) {
