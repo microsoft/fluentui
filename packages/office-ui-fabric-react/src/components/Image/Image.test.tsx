@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
@@ -20,6 +21,12 @@ describe('Image', () => {
     // Manually set image height and width since there is no DOM
     Object.defineProperty(HTMLImageElement.prototype, 'naturalHeight', { get: () => 1 });
     Object.defineProperty(HTMLImageElement.prototype, 'naturalWidth', { get: () => 1 });
+  });
+
+  it('renders Image correctly', () => {
+    const component = renderer.create(<Image src={ testImage1x1 } />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders an image', (done) => {

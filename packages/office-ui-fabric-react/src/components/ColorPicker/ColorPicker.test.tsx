@@ -3,9 +3,19 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
+
 import { ColorPicker } from './ColorPicker';
 
 describe('ColorPicker', () => {
+  it('renders ColorPicker correctly', () => {
+    const component = renderer.create(
+      <ColorPicker color='#FFFFFF' />
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Props are correctly parsed', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <ColorPicker color='#FFFFFF' />

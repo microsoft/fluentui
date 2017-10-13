@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
@@ -34,6 +35,12 @@ describe('Facepile', () => {
   describe('Render personas and buttons', () => {
     beforeEach(() => {
       setRTL(false);
+    });
+
+    it('renders Facepile correctly', () => {
+      const component = renderer.create(<Facepile personas={ facepilePersonas } />);
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
     });
 
     it('renders with only add button if no personas found and addButtonProps are not null', () => {
