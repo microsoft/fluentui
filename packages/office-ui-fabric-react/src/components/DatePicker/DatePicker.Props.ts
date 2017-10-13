@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DatePicker } from './DatePicker';
 import { DayOfWeek } from '../../Calendar';
+import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.Props';
 
 export interface IDatePicker {
@@ -115,6 +116,13 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   * @defaultvalue false
   */
   showWeekNumbers?: boolean;
+
+  /**
+  * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+  * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+  * @defaultvalue FirstWeekOfYear.FirstFullWeek
+  */
+  firstWeekOfYear?: FirstWeekOfYear;
 
   /**
    * Whether the "Go to today" link should be shown or not
