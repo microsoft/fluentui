@@ -33,6 +33,26 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:green;}');
   });
 
+  it('can have child selectors', () => {
+    styleToClassName({
+      selectors: {
+        '.foo': { background: 'red' }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
+  });
+
+  it('can have same element class selectors', () => {
+    styleToClassName({
+      selectors: {
+        '&.foo': [{ background: 'red' }]
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.foo{background:red;}');
+  });
+
   it('can register pseudo selectors', () => {
     const className = styleToClassName({
       selectors: {

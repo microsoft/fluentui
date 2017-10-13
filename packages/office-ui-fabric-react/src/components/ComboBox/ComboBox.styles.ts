@@ -228,7 +228,7 @@ export const getStyles = memoizeFunction((
         textOverflow: 'ellipsis',
         boxSizing: 'content-box',
         selectors: {
-          ' .ms-Label': {
+          '.ms-Label': {
             display: 'inline-block',
             marginBottom: '8px',
           }

@@ -21,6 +21,10 @@ describe('mergeStyles', () => {
     expect(mergeStyles(['a', 'b', 'c'], false, null, undefined)).toEqual('a b c');
   });
 
+  it('can join an object and style', () => {
+    expect(mergeStyles('foo', { color: 'white' })).toEqual('foo css-0');
+  });
+
   it('can mix styles and classnames together', () => {
     expect(mergeStyles('foo', { background: 'red' })).toEqual('foo css-0');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}');

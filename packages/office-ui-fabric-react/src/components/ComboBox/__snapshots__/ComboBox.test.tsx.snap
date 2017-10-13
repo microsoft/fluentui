@@ -45,7 +45,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
         &:hover {
           border-color: #0078d7;
         }
-        @media screen and (-ms-high-contrast: active) & {
+        @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
           border-color: Highlight;
           color: HighlightText;
@@ -110,7 +110,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            @media screen and (-ms-high-contrast:  active) &:[object Object];
             background-color: transparent;
             border-radius: 0px;
             border: 1px solid transparent;
@@ -148,6 +147,12 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             right: 0px;
             top: 0px;
             z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: ButtonFace;
+            border-color: ButtonText;
+            color: ButtonText;
           }
           &:hover {
             background-color: #dadada;
