@@ -206,7 +206,6 @@ export function getWeekNumbersInMonth(
   navigatedDate: Date) {
   let selectedYear = navigatedDate.getFullYear();
   let selectedMonth = navigatedDate.getMonth();
-  let daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
   let dayOfMonth = 1;
   let fistDayOfMonth = new Date(selectedYear, selectedMonth, dayOfMonth);
   let endOfFirstWeek = dayOfMonth
