@@ -1,9 +1,10 @@
-import { rtlifyRules } from './transforms/rtlifyRules';
-import { provideUnits } from './transforms/provideUnits';
-import { prefixRules } from './transforms/prefixRules';
-import { kebabRules } from './transforms/kebabRules';
+import { IRawStyle, IStyle } from './IStyle';
+
 import { Stylesheet } from './Stylesheet';
-import { IStyle, IRawStyle } from './IStyle';
+import { kebabRules } from './transforms/kebabRules';
+import { prefixRules } from './transforms/prefixRules';
+import { provideUnits } from './transforms/provideUnits';
+import { rtlifyRules } from './transforms/rtlifyRules';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -57,9 +58,14 @@ function extractRules(
             if (selectors.hasOwnProperty(newSelector)) {
               const selectorValue = selectors[newSelector];
 
-              if (newSelector.indexOf('&') < 0) {
+              if (newSelector.indexOf('@media') === 0) {
+                newSelector = newSelector + '{' + currentSelector;
+              } else if (newSelector.indexOf(':') === 0) {
                 newSelector = currentSelector + newSelector;
+              } else if (newSelector.indexOf('&') < 0) {
+                newSelector = currentSelector + ' ' + newSelector;
               }
+
               extractRules([selectorValue], rules, newSelector);
             }
           }
@@ -201,8 +207,10 @@ export function applyRegistration(
           return '';
         });
 
-        // Insert.
-        stylesheet.insertRule(`${selector}{${rules}}`);
+        // Insert. Note if a media query, we must close the query with a final bracket.
+        const processedRule = `${selector}{${rules}}${(selector.indexOf('@media') === 0) ? '}' : ''}`;
+
+        stylesheet.insertRule(processedRule);
       }
     }
     stylesheet.cacheClassName(

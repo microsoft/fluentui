@@ -169,7 +169,6 @@ By default, the rule will be appended to the current selector scope. That is, in
 .css-0 { background: red; }
 .css-0:hover { background: green; }
 ```
-
 ### Parent/child selectors
 
 In some cases, you may need to use parent or child selectors. To do so, you can define a selector from scratch and use the `&` character to represent the generated class name. When using the `&`, the current scope is ignored. Example:
@@ -195,6 +194,32 @@ This would register the rules:
 .ms-Fabric.is-focusVisible .css-0 { background: red; }
 .css-0 .child { background: green; }
 ```
+
+### Media queries
+
+Media queries can be applied via selectors. For example, this style will produce a class which has a red background when above 600px, and green when at or below 600px:
+
+```tsx
+mergeStyles({
+  background: 'red',
+  selectors: {
+    '@media(max-width: 600px)': {
+      background: 'green'
+    }
+  }
+});
+```
+
+Produces:
+
+```css
+.css-0 { background: red; }
+
+@media(max-width: 600px) {
+  .css-0 { background: green; }
+}
+```
+
 ### Referencing child elements within the mergeStyleSets scope
 
 One important concept about `mergeStyleSets` is that it produces a map of class names for the given elements:

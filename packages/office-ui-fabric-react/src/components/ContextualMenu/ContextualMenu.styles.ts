@@ -1,15 +1,16 @@
-import { memoizeFunction } from '../../Utilities';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import {
-  ITheme,
-  IRawStyle,
-  concatStyleSets,
-  FontWeights,
   FontSizes,
+  FontWeights,
+  IRawStyle,
+  ITheme,
+  concatStyleSets,
   getFocusStyle
 } from '../../Styling';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &';
+import { memoizeFunction } from '../../Utilities';
+
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const ContextualMenuItemHeight = '32px';
 const ContextualMenuIconWidth = '14px';
@@ -135,8 +136,10 @@ export const getMenuItemStyles = memoizeFunction((
     },
     iconColor: {
       color: ContextualMenuIconColor,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'HighlightText',
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'HighlightText',
+        }
       }
     },
     subMenuIcon: {
