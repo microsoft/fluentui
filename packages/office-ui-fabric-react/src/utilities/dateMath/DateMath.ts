@@ -198,6 +198,33 @@ function getDatePartHashValue(date: Date) {
   /* tslint:enable:no-bitwise */
 }
 
+// Returns the week numbers for each week in a month.  Week numbers are 1 - 52 (53) in a year
+export function getWeekNumbersInMonth(
+  weeksInMonth: number,
+  firstDayOfWeek: DayOfWeek,
+  firstWeekOfYear: FirstWeekOfYear,
+  navigatedDate: Date) {
+  let selectedYear = navigatedDate.getFullYear();
+  let selectedMonth = navigatedDate.getMonth();
+  let daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+  let dayOfMonth = 1;
+  let fistDayOfMonth = new Date(selectedYear, selectedMonth, dayOfMonth);
+  let endOfFirstWeek = dayOfMonth
+    + (firstDayOfWeek + TimeConstants.DaysInOneWeek - 1)
+    - adjustWeekDay(firstDayOfWeek, fistDayOfMonth.getDay());
+  let endOfWeekRange = new Date(selectedYear, selectedMonth, endOfFirstWeek);
+  dayOfMonth = endOfWeekRange.getDate();
+
+  let weeksArray = [];
+  for (let i = 0; i < weeksInMonth; i++) {
+    // Get week number for end of week
+    weeksArray.push(getWeekNumber(endOfWeekRange, firstDayOfWeek, firstWeekOfYear));
+    dayOfMonth += TimeConstants.DaysInOneWeek;
+    endOfWeekRange = new Date(selectedYear, selectedMonth, dayOfMonth);
+  }
+  return weeksArray;
+}
+
 /**
  * Returns the week number for a date.
  * Week numbers are 1 - 52 (53) in a year

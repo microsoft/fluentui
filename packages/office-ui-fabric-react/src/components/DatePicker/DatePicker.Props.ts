@@ -118,8 +118,9 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   showWeekNumbers?: boolean;
 
   /**
-  * Defines when the first week of the year should start, 0, 1 or 2 are the possible values
-  * @defaultvalue 0
+  * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+  * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+  * @defaultvalue FirstWeekOfYear.FirstFullWeek
   */
   firstWeekOfYear?: FirstWeekOfYear;
 

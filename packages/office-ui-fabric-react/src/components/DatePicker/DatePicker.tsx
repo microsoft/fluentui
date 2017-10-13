@@ -115,7 +115,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     borderless: false,
     pickerAriaLabel: 'Calender',
     showWeekNumbers: false,
-    firstWeekOfYear: 0,
+    firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
     dateTimeFormatter: undefined
   };

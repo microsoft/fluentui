@@ -21,7 +21,7 @@ import {
   getDateRangeArray,
   isInDateRangeArray,
   getWeekNumber,
-  adjustWeekDay
+  getWeekNumbersInMonth
 } from '../../utilities/dateMath/DateMath';
 import TimeConstants from '../../utilities/dateValues/TimeConstants';
 
@@ -99,7 +99,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
-    let weekNumbers = showWeekNumbers ? this._getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
+    let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
     let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
@@ -493,28 +493,5 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return weeks;
-  }
-
-  // Returns the week numbers for each week in a month.  Week numbers are 1 - 52 (53) in a year
-  private _getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date) {
-    let selectedYear = navigatedDate.getFullYear();
-    let selectedMonth = navigatedDate.getMonth();
-    let daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
-    let dayOfMonth = 1;
-    let fistDayOfMonth = new Date(selectedYear, selectedMonth, dayOfMonth);
-    let endOfFirstWeek = dayOfMonth
-      + (firstDayOfWeek + TimeConstants.DaysInOneWeek - 1)
-      - adjustWeekDay(firstDayOfWeek, fistDayOfMonth.getDay());
-    let endOfWeekRange = new Date(selectedYear, selectedMonth, endOfFirstWeek);
-    dayOfMonth = endOfWeekRange.getDate();
-
-    let weeksArray = [];
-    for (let i = 0; i < weeksInMonth; i++) {
-      // Get week number for end of week
-      weeksArray.push(getWeekNumber(endOfWeekRange, firstDayOfWeek, firstWeekOfYear));
-      dayOfMonth += TimeConstants.DaysInOneWeek;
-      endOfWeekRange = new Date(selectedYear, selectedMonth, dayOfMonth);
-    }
-    return weeksArray;
   }
 }
