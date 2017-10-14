@@ -417,7 +417,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return this._renderAnchorMenuItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
 
-    if (item.split) {
+    if (item.split && hasSubmenuItems(item)) {
       return this._renderSplitButton(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
 
