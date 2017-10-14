@@ -5,8 +5,6 @@ import './ContextualMenuExample.scss';
 export class ContextualMenuSubmenuExample extends React.Component<any, any> {
 
   public render() {
-    const alertShown = (): void => { alert('Hello'); };
-
     return (
       <div>
         <DefaultButton

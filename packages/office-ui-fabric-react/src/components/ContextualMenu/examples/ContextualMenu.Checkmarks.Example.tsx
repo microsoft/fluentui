@@ -24,8 +24,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
   public render() {
     let { selection } = this.state;
 
-    const alertShown = (): void => { alert('Hello'); };
-
     return (
       <DefaultButton
         id='ContextualMenuButton2'
