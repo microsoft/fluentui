@@ -28,7 +28,6 @@ import {
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
-import { DefaultButton } from '../Button/DefaultButton/DefaultButton';
 import {
   Icon,
   IIconProps
