@@ -515,6 +515,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-disabled={ item.isDisabled || item.disabled }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
+        aria-checked={ item.isChecked || item.checked }
       >
         <span
           aria-hidden={ true }
