@@ -128,10 +128,6 @@ export const getItemClassNames = memoizeFunction((
       {
         width: 32
       },
-      checked && [
-        'is-checked',
-        styles.rootChecked
-      ],
       expanded && [
         'is-expanded',
         styles.rootExpanded
@@ -140,7 +136,7 @@ export const getItemClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && !checked && [{
+      !disabled && !expanded && [{
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
@@ -168,6 +164,6 @@ export const getItemClassNames = memoizeFunction((
       styles.label
     ],
     splitDivider: styles.splitDivider,
-    splitContainer: [styles.splitButtonFlexContainer],
+    splitContainer: styles.splitButtonFlexContainer,
   });
 });

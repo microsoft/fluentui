@@ -514,7 +514,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-labelledby={ item.ariaLabel }
         aria-disabled={ item.isDisabled || item.disabled }
         aria-haspopup={ true }
-        aria-pressed={ item.isChecked }
         aria-describedby={ item.ariaDescription }
       >
         <span
@@ -531,11 +530,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
 
+    const isChecked: boolean | null | undefined = getIsChecked(item);
+    const canCheck: boolean = isChecked !== null;
+    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
+
     const itemProps = {
       onClick: this._executeItemClick.bind(this, item),
       disabled: item.disabled || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
+      role: item.role || defaultRole,
+      canCheck: item.canCheck,
+      isChecked: item.isChecked,
+      checked: item.checked,
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
