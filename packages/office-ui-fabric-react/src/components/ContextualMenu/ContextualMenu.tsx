@@ -563,10 +563,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderSplitDivider(classNames: IMenuItemClassNames) {
-    if (classNames && classNames.divider) {
-      return <span className={ classNames.splitDivider } />;
-    }
-    return null;
+    return <span className={ classNames.splitDivider } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
