@@ -12,7 +12,7 @@ export * from './IPoint';
 export * from './IRectangle';
 export * from './IRenderFunction';
 export * from './ISize';
-export * from './KeyCodes';
+export { KeyCodes } from './KeyCodes';
 export * from './Rectangle';
 export * from './array';
 export * from './assertNever';

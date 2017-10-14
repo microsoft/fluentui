@@ -1,10 +1,8 @@
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
 
-declare const process: {};
-
 // tslint:disable-next-line:no-any
-let _global: any = (typeof window !== 'undefined' && window) || process;
+let _global: any = (typeof window !== 'undefined' && window) || {};
 
 if (_global[CURRENT_ID_PROPERTY] === undefined) {
   _global[CURRENT_ID_PROPERTY] = 0;
