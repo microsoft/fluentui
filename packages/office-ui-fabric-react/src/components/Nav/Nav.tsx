@@ -169,7 +169,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           this._hasExpandButton && 'isOnExpanded ' + styles.linkIsOnExpanded
         ) }
         href={ link.url }
-        iconProps={ { iconName: link.icon } }
+        { ...(link.icon ? { iconProps: { iconName: link.icon } } : {}) }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }
       >
@@ -209,9 +209,10 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             />
           </button> : null
         ) }
-        { link.onClick && !link.forceAnchor
-          ? this._renderButtonLink(link, linkIndex)
-          : this._renderAnchorLink(link, linkIndex, nestingLevel) }
+        { link.forceAnchor
+          ? this._renderAnchorLink(link, linkIndex, nestingLevel)
+          : this._renderButtonLink(link, linkIndex)
+        }
       </div>
     );
   }

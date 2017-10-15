@@ -3818,9 +3818,9 @@
       "integrity": "sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug="
     },
     "bundlesize": {
-      "version": "0.15.2",
-      "resolved": "https://registry.npmjs.org/bundlesize/-/bundlesize-0.15.2.tgz",
-      "integrity": "sha512-qtn2xv9yd02nTSEzW/qWAEgzjrZhoqxb7v3uE0l0LyuCE3VbVjfxJ+ZmIiAN/Gxv4ystlFFSkOjNGTQDf+pCJA==",
+      "version": "0.15.3",
+      "resolved": "https://registry.npmjs.org/bundlesize/-/bundlesize-0.15.3.tgz",
+      "integrity": "sha512-CqLtaDKQFZVh9l53Py67lJOLOT//aNrmF9xT1v5cS080bbqyhOdTX5+LuoVI8LOKa351fUikGcxsQDYWQXfizg==",
       "dependencies": {
         "gzip-size": {
           "version": "4.0.0",
