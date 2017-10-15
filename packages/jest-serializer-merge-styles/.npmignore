@@ -20,3 +20,4 @@ tsd.json
 tslint.json
 typings
 webpack.config.js
+jest.config.js
