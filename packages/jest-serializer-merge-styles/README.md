@@ -4,15 +4,15 @@ Provides a Jest serializizer for `@uifabric/merge-styles` which expands class na
 
 ## Overview
 
-When using Jest snapshot testing with components that user `@uifabric/merge-styles`, class names may be rendered as such in the snapshot:
+When using Jest snapshot testing with components that use `@uifabric/merge-styles`, class names may be rendered as such in the snapshot (Note the `css-2342` generated class name):
 
 ```
-<div className='ms-Foo css-0'>
+<div className='ms-Foo css-2432'>
   Hello world
 </div>
 ```
 
-Using this serializer, the generated `css-0` class name will be auto expanded to the rules resolved by merge-styles!
+Using this serializer, the generated `css-2342` class name will be auto expanded to the rules resolved by merge-styles:
 
 ```
 <div
@@ -32,7 +32,7 @@ Using this serializer, the generated `css-0` class name will be auto expanded to
 </div>
 ```
 
-This means that your tests can pass reliably (no incrementing class names) and your rules get included in the snapshot.
+This means that your tests can pass reliably (no generated class names) and your rules get included in the snapshot. (Snapshots need updates when css is moved around.)
 
 ## Usage
 
