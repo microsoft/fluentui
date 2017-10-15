@@ -6,7 +6,7 @@ const config = createConfig({
     path.resolve(__dirname, 'lib/common/tests.js')
   ],
   snapshotSerializers: [
-    path.resolve(__dirname, '../node_modules/@uifabric/jest-serializer-merge-styles')
+    path.resolve(__dirname, './node_modules/@uifabric/jest-serializer-merge-styles')
   ]
 });
 
