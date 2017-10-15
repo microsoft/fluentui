@@ -28,6 +28,7 @@
     "@types/jest": "^21.1.0",
     "@types/enzyme": "^2.8.8",
     "@types/webpack-env": "1.13.0",
+    "@uifabric/build": ">=5.0.0 <6.0.0",
     "@uifabric/example-app-base": ">=5.1.1 <6.0.0",
     "@uifabric/icons": ">=5.2.0 <6.0.0",
     "es6-weak-map": "^2.0.2",
