@@ -18,34 +18,43 @@ describe('test', () => {
 });
 
 describe('print', () => {
-  const indent = (val: string): string => '    ' + val;
-  const classNames = mergeStyles(
-    'ms-GlobalClassName',
-    {
-      background: 'red',
-      selectors: {
-        ':hover': {
-          background: 'green'
+  beforeEach(() => {
+    _stylesheet.reset();
+  });
+
+  it('can format, sort, and indent the class names', () => {
+
+    const indent = (val: string): string => '    ' + val;
+    const classNames = mergeStyles(
+      'ms-GlobalClassName',
+      {
+        color: 'white',
+        background: 'red',
+        selectors: {
+          ':hover': {
+            background: 'green'
+          }
         }
       }
-    }
-  );
+    );
 
-  expect(
-    print(
-      classNames,
-      () => '',
-      indent
-    )
-  ).toEqual([
-    '',
-    indent('ms-GlobalClassName'),
-    indent('{'),
-    indent('  background: red;'),
-    indent('}'),
-    indent('&:hover {'),
-    indent('  background: green;'),
-    indent('}'),
-  ].join('\n'));
+    expect(
+      print(
+        classNames,
+        () => '',
+        indent
+      )
+    ).toEqual([
+      '',
+      indent('ms-GlobalClassName'),
+      indent('{'),
+      indent('  background: red;'),
+      indent('  color: white;'),
+      indent('}'),
+      indent('&:hover {'),
+      indent('  background: green;'),
+      indent('}'),
+    ].join('\n'));
+  });
 
 });
