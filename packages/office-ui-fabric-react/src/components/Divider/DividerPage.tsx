@@ -39,6 +39,37 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
+        bestPractices={
+          <div>
+            <p>
+              Use a divider component to show a sectional or continuity change in the content between two blocks of information. The spacing around the divider is generally determined by the content surrounding it.
+            </p>
+            <p>
+              There are two recommended divider color combinations:
+              <ol>
+                <li>#C8C8C8/neutralTertiaryAlt divider when used within an #F4F4F4/neutralLighter layout</li>
+                <li> #EAEAEA/neutralLight divider when used within an #FFFFFF/white layout</li>
+              </ol>
+            </p>
+          </div>
+        }
+        dos={
+          <div>
+            <ul>
+              <li>Use a divider to separate sections that may not otherwise have a clear beginning or end.</li>
+              <li>Use a divider to separate information blocks where the context or continuity changes between the blocks.</li>
+              <li>When the divider is used to change the look of the page but does not have all the functional, interactive, or structural relevance implied by the element type, or may be used to provide for an accessible fallback in older browsers that do not support WAI-ARIA use role="presentation".</li>
+            </ul>
+          </div>
+        }
+        donts={
+          <div>
+            <ul>
+              <li>Do not use dividers for graphic decoration.</li>
+            </ul>
+          </div>
+
+        }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
