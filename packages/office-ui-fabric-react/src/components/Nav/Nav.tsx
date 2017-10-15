@@ -141,13 +141,13 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
       },
       textContainer: {
-        overflow: "hidden",
+        overflow: 'hidden',
       },
       label: {
-        whiteSpace: "nowrap",
-        textOverflow: "ellipsis",
-        overflow: "hidden",
-        lineHeight: "36px"
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        lineHeight: '36px'
       }
     };
 
@@ -166,7 +166,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         href={ link.url }
         iconProps={ { iconName: link.icon || '' } }
         description={ link.title || link.name }
-        onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
+        onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
         target={ link.target }
         rel={ rel }
@@ -217,7 +217,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             />
           </button> : null
         ) }
-        { this._renderNavLink(link, linkIndex, nestingLevel)}
+        { this._renderNavLink(link, linkIndex, nestingLevel) }
       </div>
     );
   }
