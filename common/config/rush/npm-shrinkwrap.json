@@ -1410,6 +1410,10 @@
           "version": "2.0.0",
           "bundled": true
         },
+        "office-ui-fabric-core": {
+          "version": "7.3.0",
+          "bundled": true
+        },
         "os-browserify": {
           "version": "0.2.1",
           "bundled": true
@@ -7454,14 +7458,14 @@
       "integrity": "sha1-EEEktsYCxnlogaBCVB0220OlJk4="
     },
     "office-ui-fabric-core": {
-      "version": "7.3.0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-7.3.0.tgz",
-      "integrity": "sha1-43rwTiOwkfZTYNsknbi7DzEpH2A="
+      "version": "9.0.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-9.0.0.tgz",
+      "integrity": "sha512-ufX0JB8kePhv4DZNeOzJmkG4J5JMDUnEx22xlYc7yEpByaqTsVl9CWixrKvOlN27+LsnUoU0GqwgspFZd5OaJw=="
     },
     "office-ui-fabric-react": {
-      "version": "5.8.2",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.8.2.tgz",
-      "integrity": "sha512-Cu3vdwv6FDQJgaMEpH621TOC8UKDJdWKZLC45yUonX9SZx6DRlFKipceFMhko+FJ58lCLztv9aOcYGOrN5HvMg=="
+      "version": "5.9.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.9.0.tgz",
+      "integrity": "sha512-+WuNSZEaCREhcJrDJXgpwCkWVWhZ24dOC4mbt7TgFMaXQTFeFrYOG7viRtad8E8yUBNIJ4SSHFDjPTcvfh+RHw=="
     },
     "on-finished": {
       "version": "2.3.0",
@@ -11111,9 +11115,9 @@
       }
     },
     "webpack-hot-middleware": {
-      "version": "2.19.1",
-      "resolved": "https://registry.npmjs.org/webpack-hot-middleware/-/webpack-hot-middleware-2.19.1.tgz",
-      "integrity": "sha512-2x60xmz7XBCNN/Drol+7i85E/5RrNrf+ivOPCgrxhP1F3q3WxpVjjvj8n8fOS1bS9oTRKEDfBYVAtkxqsG7LwQ=="
+      "version": "2.20.0",
+      "resolved": "https://registry.npmjs.org/webpack-hot-middleware/-/webpack-hot-middleware-2.20.0.tgz",
+      "integrity": "sha512-AYwVG9DCvMoXbwx8eK16CbJY3Ltwap44lW3T7hFsE0U3zRwtViHMw1DFpY5hMwXNqKsUk3HtNcf3PoV+gIxJeg=="
     },
     "webpack-notifier": {
       "version": "1.5.0",
