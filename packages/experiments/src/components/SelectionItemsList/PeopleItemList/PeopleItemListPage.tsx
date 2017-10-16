@@ -39,14 +39,14 @@ export class PeopleItemListPage extends React.Component<IComponentDemoPageProps,
         dos={
           <div>
             <ul>
-              <li>Use them to represent a folder which may contain visual content.</li>
+              <li>Use them to represent list of selected people.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>To represent the concept of a folder as opposed to an actual folder item.</li>
+              <li>Use for other items besides selected people</li>
             </ul>
           </div>
         }
