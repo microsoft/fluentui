@@ -1068,11 +1068,11 @@
         },
         "react": {
           "version": "15.6.1",
-              "bundled": true
+          "bundled": true
         },
         "react-dom": {
           "version": "15.6.1",
-              "bundled": true
+          "bundled": true
         },
         "react-highlight": {
           "version": "0.9.0",
