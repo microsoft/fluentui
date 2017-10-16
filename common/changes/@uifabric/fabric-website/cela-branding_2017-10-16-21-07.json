@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Removed branding guidance pdf and fixed link colors",
+      "comment": "Removed branding guidance pdf, updated fabric asset license pdf, and fixed link colors",
       "type": "patch"
     }
   ],
