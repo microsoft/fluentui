@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.9.1",
+      "tag": "office-ui-fabric-react_v5.9.1",
+      "date": "Mon, 16 Oct 2017 20:00:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b21ddc7fb0efd0ca2b7fb6e990e0db7eeaee6ebc",
+            "comment": "Dropdown: Fixing nullref when nothing is selected in multi select rendering."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "bbccb7d7ef5562bc6ed7a7c8c9e68bd7c4786496",
+            "comment": "Updating shrinkwrap for Fabric Core package update"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.0",
       "tag": "office-ui-fabric-react_v5.9.0",
       "date": "Mon, 16 Oct 2017 10:20:41 GMT",
