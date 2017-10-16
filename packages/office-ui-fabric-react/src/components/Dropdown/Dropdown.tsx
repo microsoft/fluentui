@@ -563,9 +563,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         selectedOptions.push(option);
       }
     }
-    if (selectedOptions.length < 1) {
-      return [];
-    }
+
     return selectedOptions;
   }
 
