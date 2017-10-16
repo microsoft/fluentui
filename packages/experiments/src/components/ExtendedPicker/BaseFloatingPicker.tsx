@@ -10,7 +10,6 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ValidationState, Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
   from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.Props';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IBaseFloatingPickerState {
   queryString: string;
@@ -309,11 +308,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   @autobind
   protected onSuggestionRemove(
     ev: React.MouseEvent<HTMLElement>,
-    item: IPersonaProps,
+    item: T,
     index: number
     ): void {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as ((item: IPersonaProps) => void))(item);
+      (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
     this.suggestionStore.removeSuggestion(index);
   }
@@ -348,7 +347,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       case KeyCodes.del:
         if (this.suggestionStore.currentIndex !== -1) {
           if (this.props.onRemoveSuggestion) {
-            (this.props.onRemoveSuggestion as ((item: IPersonaProps) => void))(
+            (this.props.onRemoveSuggestion as ((item: T) => void))(
               this.suggestionStore.currentSuggestion!.item
             );
           }
