@@ -3,52 +3,26 @@ import * as React from 'react';
 /* tslint:enable */
 import {
   BaseComponent,
-  assign,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { PeopleItemSelectionList } from '../PeopleItemList/PeopleItemList';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people, mru } from './PeopleExampleData';
+import { people, groupOne, groupTwo } from './PeopleExampleData';
 import '../../../../../office-ui-fabric-react/src/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IBaseSelectionItemsList, IBaseSelectionItemsListProps } from '../BaseSelectionItemsList.Props';
+import { IBaseSelectionItemsListProps } from '../BaseSelectionItemsList.Props';
+import { IExtendedPersonaProps, IPeopleSelectionItemProps } from '../PeopleItemList/PeopleItemList';
 
-export interface IPeoplePickerExampleState {
-  currentPicker?: number | string;
-  peopleList: IPersonaProps[];
-  mostRecentlyUsed: IPersonaProps[];
-  currentSelectedItems?: IPersonaProps[];
-}
-
-export class PeopleSelectionItemsListExample extends BaseComponent<IBaseSelectionItemsListProps<IPersonaProps>, IPeoplePickerExampleState> {
-  private _selectionList: IBaseSelectionItemsList<IPersonaProps>;
-  private index: number = 5;
-
-  constructor() {
-    super();
-    let peopleList: IPersonaWithMenu[] = [];
-    people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
-
-      assign(target, persona);
-      peopleList.push(target);
-    });
-
-    this.state = {
-      peopleList: peopleList,
-      mostRecentlyUsed: mru,
-      currentSelectedItems: []
-    };
-  }
+export class PeopleSelectionItemsListExample extends BaseComponent<IBaseSelectionItemsListProps<IExtendedPersonaProps>, {}> {
+  private _selectionList: PeopleItemSelectionList;
+  private index: number;
 
   public render(): JSX.Element {
     return (
       <div>
         { this._renderExtendedPicker() }
         <PrimaryButton
-          text='Add random item'
-          onClick={ this._onSetFocusButtonClicked }
+          text='Add another item'
+          onClick={ this._onAddItemButtonClicked }
         />
       </div>
     );
@@ -60,22 +34,58 @@ export class PeopleSelectionItemsListExample extends BaseComponent<IBaseSelectio
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
         removeButtonAriaLabel={ 'Remove' }
-        defaultSelectedItems={ mru }
+        defaultSelectedItems={ [people[40]] }
         componentRef={ this._setComponentRef }
+        onCopyItems={ this._onCopyItems }
+        onExpandGroup={ this._onExpandItem }
+        copyMenuItemText={ 'Copy' }
+        removeMenuItemText={ 'Remove' }
       />
     );
   }
 
   @autobind
-  private _setComponentRef(component: IBaseSelectionItemsList<IPersonaProps>): void {
+  private _setComponentRef(component: PeopleItemSelectionList): void {
     this._selectionList = component;
   }
 
   @autobind
-  private _onSetFocusButtonClicked(): void {
+  private _onAddItemButtonClicked(): void {
     if (this._selectionList) {
+      if (!this.index) {
+        this.index = 0;
+      }
       this._selectionList.addItem(people[this.index]);
       this.index++;
+    }
+  }
+
+  @autobind
+  private _onExpandItem(item: IPeopleSelectionItemProps): void {
+    this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
+  }
+
+  private _onCopyItems(items: IExtendedPersonaProps[]): string {
+    let copyText = '';
+    items.forEach((item: IExtendedPersonaProps, index: number) => {
+      copyText += item.primaryText;
+
+      if (index < items.length - 1) {
+        copyText += ', ';
+      }
+    });
+
+    return copyText;
+  }
+
+  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
+    switch (item.primaryText) {
+      case 'Group One':
+        return groupOne;
+      case 'Group Two':
+        return groupTwo;
+      default:
+        return [];
     }
   }
 }

@@ -8,17 +8,23 @@ export interface IBaseSelectionItemsList<T> {
   addItem: (item: T) => void;
 }
 
+export interface ISelectionItemProps<T> extends IPickerItemProps<T> {
+  onCopyItem: (item: T) => void;
+}
+
 // Type T is the type of the item that is displayed
-// For example, if the picker is
-// displaying persona's than type T could either be of Persona or Ipersona props
+// For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
+// tslint:disable-next-line:no-any
 export interface IBaseSelectionItemsListProps<T> extends React.Props<any> {
   componentRef?: (component?: IBaseSelectionItemsList<T>) => void;
-
+  /**
+   * A callback for when items are copied
+   */
+  onCopyItems?: (items: T[]) => string;
   /**
    * Function that specifies how the selected item will appear.
    */
-  onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
-
+  onRenderItem?: (props: ISelectionItemProps<T>) => JSX.Element;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -45,7 +51,8 @@ export interface IBaseSelectionItemsListProps<T> extends React.Props<any> {
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a
+   * controlled component.
    */
   selectedItems?: T[];
 }
