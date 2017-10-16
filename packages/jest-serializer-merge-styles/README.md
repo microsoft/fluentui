@@ -1,6 +1,6 @@
 # [jest-serializer-merge-styles](http://dev.office.com/fabric)
 
-Provides a Jest serializizer for `@uifabric/merge-styles` which expands class names into css rules.
+Provides a Jest serializer for `@uifabric/merge-styles` which expands class names into css rules.
 
 ## Overview
 
@@ -32,7 +32,7 @@ Using this serializer, the generated `css-2342` class name will be auto expanded
 </div>
 ```
 
-This means that your tests can pass reliably (no generated class names) and your rules get included in the snapshot. (Snapshots need updates when css is moved around.)
+This means that your tests can pass reliably (no generated class names) and your rules get included in the snapshot. (Snapshots need updates when css is altered.)
 
 ## Usage
 
