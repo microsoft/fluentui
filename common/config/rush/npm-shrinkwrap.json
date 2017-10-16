@@ -1068,11 +1068,11 @@
         },
         "react": {
           "version": "15.6.1",
-          "bundled": true
+              "bundled": true
         },
         "react-dom": {
           "version": "15.6.1",
-          "bundled": true
+              "bundled": true
         },
         "react-highlight": {
           "version": "0.9.0",
@@ -1411,7 +1411,7 @@
           "bundled": true
         },
         "office-ui-fabric-core": {
-          "version": "7.3.0",
+          "version": "9.0.0",
           "bundled": true
         },
         "os-browserify": {
