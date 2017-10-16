@@ -2,17 +2,12 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecoratorTall } from '../utilities';
 import { Slider } from 'office-ui-fabric-react';
 
+// tslint:disable:jsx-ban-props
 storiesOf('Slider', module)
-  .addDecorator(story => (
-    // tslint:disable:jsx-ban-props
-    <div style={ { width: '300px', height: '200px', display: 'flex' } }>
-      { story() }
-    </div>
-  ))
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
@@ -25,33 +20,39 @@ storiesOf('Slider', module)
       { story() }
     </Screener>
   )).add('Root', () => (
-    <Slider
-      label='Basic example:'
-      min={ 1 }
-      max={ 3 }
-      step={ 1 }
-      defaultValue={ 2 }
-      showValue={ true }
-    />
+    <div style={ { flexDirection: 'column', width: '300px', display: 'flex' } }>
+      <Slider
+        label='Basic example:'
+        min={ 1 }
+        max={ 3 }
+        step={ 1 }
+        defaultValue={ 2 }
+        showValue={ true }
+      />
+    </div>
   ))
   .add('Disabled', () => (
-    <Slider
-      label='Basic example:'
-      min={ 1 }
-      max={ 3 }
-      step={ 1 }
-      defaultValue={ 2 }
-      showValue={ true }
-      disabled
-    />
+    <div style={ { flexDirection: 'column', width: '300px', display: 'flex' } }>
+      <Slider
+        label='Basic example:'
+        min={ 1 }
+        max={ 3 }
+        step={ 1 }
+        defaultValue={ 2 }
+        showValue={ true }
+        disabled
+      />
+    </div>
   )).add('Vertical', () => (
-    <Slider
-      label='Basic example:'
-      min={ 1 }
-      max={ 3 }
-      step={ 1 }
-      defaultValue={ 2 }
-      showValue={ true }
-      vertical={ true }
-    />
+    <div style={ { flexDirection: 'row', height: '200px', display: 'flex' } }>
+      <Slider
+        label='Basic example:'
+        min={ 1 }
+        max={ 3 }
+        step={ 1 }
+        defaultValue={ 2 }
+        showValue={ true }
+        vertical={ true }
+      />
+    </div>
   ));
