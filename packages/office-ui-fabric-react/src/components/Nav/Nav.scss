@@ -188,12 +188,8 @@ $linkRightPadding: 20px;
 
 .root .link {
   @include ms-padding-left($noExpandButtonLinkLeftPadding);
-  :global(.ms-Button-label) {
-    @include ms-font-m;
-    color: $ms-color-themePrimary;
-  }
 
   &.linkIsOnExpanded {
-  @include ms-padding-left($hasExpandButtonLinkLeftPadding);
+    @include ms-padding-left($hasExpandButtonLinkLeftPadding);
   }
 }
