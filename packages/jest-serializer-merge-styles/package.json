@@ -1,7 +1,7 @@
 {
-  "name": "@uifabric/icons",
-  "version": "5.2.0",
-  "description": "Office UI Fabric icon set.",
+  "name": "@uifabric/jest-serializer-merge-styles",
+  "version": "5.0.0",
+  "description": "Jest serializer for merge-styles.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
@@ -11,19 +11,19 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "start-test": "node ../../scripts/start-test.js"
   },
   "disabledTasks": [
+    "copy",
     "sass",
-    "karma",
-    "tslint",
-    "jest"
+    "karma"
   ],
   "devDependencies": {
+    "@types/jest": "21.1.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.3.0 <6.0.0",
-    "tslib": "^1.6.0"
+    "@uifabric/merge-styles": ">=5.4.0 <6.0.0"
   }
 }
