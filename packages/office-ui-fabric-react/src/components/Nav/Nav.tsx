@@ -7,13 +7,12 @@ import {
   getNativeProps,
   getRTL
 } from '../../Utilities';
-import { mergeStyles } from '@uifabric/styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ActionButton, IButtonStyles } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../Styling';
 import {
   INav,
   INavProps,
