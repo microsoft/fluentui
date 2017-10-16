@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Oct 2017 20:00:51 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Oct 2017 22:49:01 GMT and should not be manually modified.
+
+## 5.9.2
+Mon, 16 Oct 2017 22:49:01 GMT
+
+### Patches
+
+- Nav: fixing amd-incompatible import.
 
 ## 5.9.1
 Mon, 16 Oct 2017 20:00:51 GMT
