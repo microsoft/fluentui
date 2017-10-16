@@ -109,7 +109,6 @@ $linkRightPadding: 20px;
     height: $navnode-height - 2;
     position: absolute;
     top: 1px;
-    @include ms-left(1px);
     z-index: 1;
     padding: 0;
     margin: 0;
@@ -119,15 +118,12 @@ $linkRightPadding: 20px;
     }
   }
 
-  & a {
-  color: $unselectedForegroundColor;
-  }
   color: $unselectedForegroundColor;
   background: $unselectedBackgroundColor;
 
   &:hover {
 
-    & a,
+    & .link,
     & .chevronButton {
       background: $unselectedHoverBackgroundColor;
       color: $unselectedHoverForegroundColor;
@@ -141,7 +137,7 @@ $linkRightPadding: 20px;
   }
 
   &.compositeLinkIsSelected {
-    & a,
+    & .link,
     & .chevronButton {
 
       color: $ms-color-themePrimary;
@@ -165,14 +161,18 @@ $linkRightPadding: 20px;
   display: block;
   position: relative;
   height: $navnode-height;
+  width: 100%;
   line-height: $navnode-height;
   text-decoration: none;
-  padding: 0 20px;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.buttonEntry {
+  color: $ms-color-themePrimary;
 }
 
 .groupHeaderFontSize {
@@ -187,13 +187,7 @@ $linkRightPadding: 20px;
 }
 
 .root .link {
-  @include ms-padding-left($noExpandButtonLinkLeftPadding);
   :global(.ms-Button-label) {
     @include ms-font-m;
-    color: $ms-color-themePrimary;
-  }
-
-  &.linkIsOnExpanded {
-  @include ms-padding-left($hasExpandButtonLinkLeftPadding);
   }
 }
