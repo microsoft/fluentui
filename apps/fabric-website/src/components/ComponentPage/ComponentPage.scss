@@ -16,4 +16,8 @@
     @include contentPadding(50px, 50px);  // Override padding to match this website
   }
 
+  #Variants, #Implementation\ Examples, #Implementation {
+    margin-top: 0;
+  }
+
 }
