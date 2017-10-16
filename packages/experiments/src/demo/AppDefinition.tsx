@@ -29,6 +29,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/SelectionItemsList/PeopleItemList/PeopleItemListPage').PeopleItemListPage,
+          key: 'PeopleItemList',
+          name: 'PeopleItemList',
+          url: '#/examples/peopleitemlist'
+        },
+        {
           component: require<any>('../components/Tile/TilePage').TilePage,
           key: 'Tile',
           name: 'Tile',
