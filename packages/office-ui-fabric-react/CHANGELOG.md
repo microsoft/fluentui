@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Oct 2017 10:20:41 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Oct 2017 20:00:51 GMT and should not be manually modified.
+
+## 5.9.1
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Dropdown: Fixing nullref when nothing is selected in multi select rendering.
+- Updating shrinkwrap for Fabric Core package update
 
 ## 5.9.0
 Mon, 16 Oct 2017 10:20:41 GMT
