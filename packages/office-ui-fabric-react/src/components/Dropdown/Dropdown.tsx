@@ -559,8 +559,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     for (let index of selectedIndices) {
       const option = options[index];
 
-      if (options) {
-        selectedOptions.push(options[index]);
+      if (option) {
+        selectedOptions.push(option);
       }
     }
     if (selectedOptions.length < 1) {
