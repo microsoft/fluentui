@@ -107,7 +107,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
             className='ms-DatePicker-callout'
             gapSpace={ 0 }
             doNotLayer={ false }
-            targetElement={ this._calendarButtonElement }
+            target={ this._calendarButtonElement }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             setInitialFocus={ false }

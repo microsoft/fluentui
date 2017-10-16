@@ -9,7 +9,7 @@ import {
   getRTLSafeKeyCode
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
-import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import {
@@ -20,8 +20,10 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekNumber
+  getWeekNumber,
+  getWeekNumbersInMonth
 } from '../../utilities/dateMath/DateMath';
+import TimeConstants from '../../utilities/dateValues/TimeConstants';
 
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
@@ -53,6 +55,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
   showWeekNumbers?: boolean;
+  firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
@@ -91,13 +94,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, dateTimeFormatter } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
-    let weekNumbers = showWeekNumbers ? this._getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, navigatedDate) : null;
-    let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek) : undefined;
+    let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
+    let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -105,7 +108,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       // navigatedDate is on the current month and current year
       weekCorners = this._getWeekCornerStyles(weeks!);
     }
-
     return (
       <div
         className={ css('ms-DatePicker-dayPicker',
@@ -318,7 +320,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         if (cornerIndexes[cornersLength - 1] !== lastDayIndex) {
           weekCornersStyled[(weekIndex - 1) + '_' + lastDayIndex] = rightCornerStyle;
         }
-
       }
     }
   }
@@ -492,21 +493,5 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return weeks;
-  }
-
-  // Returns the week numbers for each week in a month.  Week numbers are 1 - 52 (53) in a year
-  private _getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
-    let selectedYear = navigatedDate.getFullYear();
-    let selectedMonth = navigatedDate.getMonth();
-    let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
-
-    let firstWeekNumber = getWeekNumber(firstDayOfMonth, firstDayOfWeek);
-
-    let weeksArray = [];
-    for (let i = 0; i < weeksInMonth; i++) {
-      weeksArray.push(firstWeekNumber + i);
-    }
-
-    return weeksArray;
   }
 }

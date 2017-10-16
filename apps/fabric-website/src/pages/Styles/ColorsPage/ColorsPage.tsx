@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ColorTable } from '../../../components/ColorTable/ColorTable';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 import * as stylesImport from './ColorsPage.module.scss';
@@ -46,7 +47,7 @@ export class ColorsPage extends React.Component<any, any> {
         <h2 id='palettes'>Color palettes</h2>
 
         <div className='ms-Grid ms-Grid--wide'>
-          <div className='ms-Grid-row'>
+          <div className={ css('ms-Grid-row', styles.contentInGrid) }>
             <div className='ms-Grid-col ms-sm12 ms-xl6'>
               <h3>Theme colors</h3>
               <ColorTable content={ themeColorsData } />
@@ -60,7 +61,7 @@ export class ColorsPage extends React.Component<any, any> {
 
         <h3>Accent colors</h3>
         <div className='ms-Grid ms-Grid--wide'>
-          <div className='ms-Grid-row'>
+          <div className={ css('ms-Grid-row', styles.contentInGrid) }>
             { accentColorsData.map((group, groupIndex) => (
               <div className='ms-Grid-col ms-sm12 ms-xl4 ms-xxl3'
                 key={ groupIndex }>

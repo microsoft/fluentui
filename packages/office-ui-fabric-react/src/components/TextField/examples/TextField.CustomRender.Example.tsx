@@ -42,7 +42,7 @@ export class TextFieldCustomRenderExample extends React.Component<any, any> {
         { isCalloutVisible && (
           <Callout
             className='ms-CustomRenderExample-callout'
-            targetElement={ this._iconButtonElement }
+            target={ this._iconButtonElement }
             onDismiss={ this._onDismiss }
           >
             <text> In additon to the label itself, this label includes an iconbutton which pops out more information in a callout</text>
