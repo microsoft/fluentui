@@ -145,7 +145,11 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         break;
 
       default:
-        return;
+        if (this.props.onKeyDown) {
+          this.props.onKeyDown(ev);
+        } else {
+          return;
+        }
     }
 
     // We only get here if the keypress has been handled.
