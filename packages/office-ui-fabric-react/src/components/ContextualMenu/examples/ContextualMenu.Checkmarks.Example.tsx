@@ -93,7 +93,11 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                     }
                   ],
                 },
-                name: 'New'
+                name: 'Split Button',
+                canCheck: true,
+                isChecked: selection![keys[5]],
+                split: true,
+                onClick: this._onToggleSelect,
               },
             ]
           }

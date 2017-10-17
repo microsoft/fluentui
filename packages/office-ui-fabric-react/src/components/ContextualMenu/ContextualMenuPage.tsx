@@ -56,7 +56,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuSectionExample />
             </ExampleCard>
             <ExampleCard
-              title='ContextualMenu with checkable menu items'
+              title='ContextualMenu with checkable menu items and toggable split button'
               code={ ContextualMenuCheckmarksExampleCode }
             >
               <ContextualMenuCheckmarksExample />

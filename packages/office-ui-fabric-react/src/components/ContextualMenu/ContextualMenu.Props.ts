@@ -243,6 +243,12 @@ export interface IContextualMenuItem {
   disabled?: boolean;
 
   /**
+   * If the menu item is a split button, this prop disables purely the primary action of the button.
+   * @defaultvalue false
+   */
+  primaryDisabled?: boolean;
+
+  /**
    * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'disabled' instead.
    * @deprecated
    */
@@ -270,6 +276,12 @@ export interface IContextualMenuItem {
    * @deprecated
    */
   isChecked?: boolean;
+
+  /**
+   * Whether or not this menu item is a splitButton.
+   * @defaultvalue false
+   */
+  split?: boolean;
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
@@ -433,6 +445,11 @@ export interface IMenuItemStyles extends IButtonStyles {
   * Styles for a divider item of a ConextualMenu.
   */
   divider: IStyle;
+
+  /**
+   * Styles for a split button divider in a menu item
+   */
+  splitButtonSeparator: IStyle;
 }
 
 export interface IContextualMenuStyles {
