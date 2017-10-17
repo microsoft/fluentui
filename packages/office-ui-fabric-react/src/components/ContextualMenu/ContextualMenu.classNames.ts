@@ -18,7 +18,7 @@ export interface IMenuItemClassNames {
   icon: string;
   subMenuIcon: string;
   label: string;
-  splitDivider: string;
+  splitButtonSeparator: string;
   splitContainer: string;
   splitPrimary: string;
   splitMenu: string;
@@ -163,7 +163,7 @@ export const getItemClassNames = memoizeFunction((
       'ms-ContextualMenu-itemText',
       styles.label
     ],
-    splitDivider: styles.splitDivider,
+    splitButtonSeparator: styles.splitButtonSeparator,
     splitContainer: styles.splitButtonFlexContainer,
   });
 });

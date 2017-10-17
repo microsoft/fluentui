@@ -152,7 +152,7 @@ export const getMenuItemStyles = memoizeFunction((
       flexShrink: '0',
       fontSize: FontSizes.mini
     },
-    splitDivider: {
+    splitButtonSeparator: {
       backgroundColor: ContextualMenuDividerColor,
       position: 'absolute',
       width: 1,
