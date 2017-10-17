@@ -7,6 +7,7 @@ import {
   Calendar,
   DayOfWeek
 } from '../../Calendar';
+import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField } from '../../TextField';
@@ -114,6 +115,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     borderless: false,
     pickerAriaLabel: 'Calender',
     showWeekNumbers: false,
+    firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
     dateTimeFormatter: undefined
   };
@@ -238,6 +240,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
               showWeekNumbers={ this.props.showWeekNumbers }
+              firstWeekOfYear={ this.props.firstWeekOfYear }
               showGoToToday={ this.props.showGoToToday }
               dateTimeFormatter={ this.props.dateTimeFormatter }
               ref={ this._resolveRef('_calendar') }

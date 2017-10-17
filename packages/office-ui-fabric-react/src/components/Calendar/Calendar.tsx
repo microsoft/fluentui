@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
-import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
@@ -58,6 +58,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
     showWeekNumbers: false,
+    firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
@@ -153,6 +154,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   showWeekNumbers={ this.props.showWeekNumbers }
+                  firstWeekOfYear={ this.props.firstWeekOfYear! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='dayPicker'
                 />
