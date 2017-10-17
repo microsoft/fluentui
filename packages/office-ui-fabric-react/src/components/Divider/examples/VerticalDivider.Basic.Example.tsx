@@ -8,7 +8,7 @@ interface IBasicDividerExampleClassNames {
   text: string;
 }
 
-const getClassNames = memoizeFunction((): IBasicDividerExampleClassNames => {
+const getExampleClassNames = memoizeFunction((): IBasicDividerExampleClassNames => {
   const exampleHeight = 40;
   return mergeStyleSets({
     wrapper: {
@@ -29,7 +29,7 @@ const getClassNames = memoizeFunction((): IBasicDividerExampleClassNames => {
 
 export class VerticalDividerBasicExample extends React.Component<any, any> {
   public render() {
-    const classNames = getClassNames();
+    const classNames = getExampleClassNames();
     return (
       <div className={ classNames.wrapper }>
         <p className={ classNames.text }> Some text before the divider. </p>

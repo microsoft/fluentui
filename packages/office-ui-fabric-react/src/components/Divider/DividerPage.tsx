@@ -6,10 +6,13 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { VerticalDividerBasicExample } from './examples/VerticalDivider.Basic.Example';
+import { VerticalDividerCustomExample } from './examples/VerticalDivider.Custom.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DividerStatus } from './Divider.checklist';
 
 const VerticalDividerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Basic.Example.tsx') as string;
+
+const VerticalDividerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Custom.Example.tsx') as string;
 
 export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -21,6 +24,9 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title='Vertical Divider' code={ VerticalDividerBasicExampleCode }>
               <VerticalDividerBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Custom Vertical Divider' code={ VerticalDividerCustomExampleCode }>
+              <VerticalDividerCustomExample />
             </ExampleCard>
           </div>
         }
