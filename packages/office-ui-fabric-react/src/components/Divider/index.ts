@@ -1,2 +1,2 @@
-export * from './Divider';
-export * from './Divider.Props';
+export * from './VerticalDivider';
+export * from './VerticalDivider.Props';

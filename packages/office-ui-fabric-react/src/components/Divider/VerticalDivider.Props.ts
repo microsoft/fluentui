@@ -2,7 +2,7 @@ export interface IDivider {
 
 }
 
-export interface IDividerProps {
+export interface IVerticalDividerProps {
 
   /**
    * Optional callback to access the IDivider interface. Use this instead of ref for accessing

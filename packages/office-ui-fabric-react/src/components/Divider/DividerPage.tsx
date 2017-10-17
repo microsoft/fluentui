@@ -5,11 +5,11 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { DividerBasicExample } from './examples/Divider.Basic.Example';
+import { VerticalDividerBasicExample } from './examples/VerticalDivider.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DividerStatus } from './Divider.checklist';
 
-const DividerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/Divider.Basic.Example.tsx') as string;
+const VerticalDividerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Basic.Example.tsx') as string;
 
 export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -19,16 +19,15 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='DividerExample'
         exampleCards={
           <div>
-            <ExampleCard title='Divider' code={ DividerBasicExampleCode }>
-              <DividerBasicExample />
+            <ExampleCard title='Vertical Divider' code={ VerticalDividerBasicExampleCode }>
+              <VerticalDividerBasicExample />
             </ExampleCard>
           </div>
-
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/Divider.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.Props.ts')
             ] }
           />
         }

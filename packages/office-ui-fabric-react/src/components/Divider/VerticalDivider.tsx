@@ -2,10 +2,10 @@ import * as React from 'react';
 import {
   BaseComponent
 } from '../../Utilities';
-import { getDividerClassNames } from './Divider.classNames';
-import { IDividerProps } from './Divider.Props';
+import { getDividerClassNames } from './VerticalDivider.classNames';
+import { IVerticalDividerProps } from './VerticalDivider.Props';
 
-export class Divider extends BaseComponent<IDividerProps, {}> {
+export class VerticalDivider extends BaseComponent<IVerticalDividerProps, {}> {
   public render() {
     const { dividerHeight, dividerColor, dividerHorizontalMargin } = this.props;
     const classNames = getDividerClassNames(dividerHeight, dividerColor, dividerHorizontalMargin || 0);

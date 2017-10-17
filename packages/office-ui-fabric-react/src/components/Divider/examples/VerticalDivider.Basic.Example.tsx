@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider } from 'office-ui-fabric-react/lib/Divider';
+import { VerticalDivider } from 'office-ui-fabric-react/lib/Divider';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -27,13 +27,13 @@ const getClassNames = memoizeFunction((): IBasicDividerExampleClassNames => {
   });
 });
 
-export class DividerBasicExample extends React.Component<any, any> {
+export class VerticalDividerBasicExample extends React.Component<any, any> {
   public render() {
     const classNames = getClassNames();
     return (
       <div className={ classNames.wrapper }>
         <p className={ classNames.text }> Some text before the divider. </p>
-        <Divider
+        <VerticalDivider
           dividerHeight={ 30 }
           dividerColor='#C8C8C8'
           dividerHorizontalMargin={ 10 }
