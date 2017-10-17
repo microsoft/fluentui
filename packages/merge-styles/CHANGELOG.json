@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.4.1",
+      "tag": "@uifabric/merge-styles_v5.4.1",
+      "date": "Tue, 17 Oct 2017 17:17:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ab9e5db6f06d9f52c648281cd97bbbce4cf9fa77",
+            "comment": "mergeStyles: in RTL we were seeing exceptions with registering opacity: 0 in keyframes. This has been addressed and a test has been added to cover the case."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "@uifabric/merge-styles_v5.4.0",
       "date": "Fri, 13 Oct 2017 04:00:17 GMT",

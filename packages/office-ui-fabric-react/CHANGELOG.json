@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.9.3",
+      "tag": "office-ui-fabric-react_v5.9.3",
+      "date": "Tue, 17 Oct 2017 17:17:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "cicciodm <f.dimauro92@gmail.com>",
+            "commit": "807f6afe2fc8019f6c068f909a4be8ceeb9c8e9a",
+            "comment": "SearchBox: expose onKeyDown event by invoking external prop"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "44391e1f9fc8724a690e74ea9ea2ea34ab1c0047",
+            "comment": "ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.2",
       "tag": "office-ui-fabric-react_v5.9.2",
       "date": "Mon, 16 Oct 2017 22:49:01 GMT",
