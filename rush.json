@@ -26,6 +26,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "projectFolder": "packages/jest-serializer-merge-styles",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/utilities",
       "projectFolder": "packages/utilities",
       "shouldPublish": true

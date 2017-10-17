@@ -4,11 +4,40 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { Breadcrumb } from './Breadcrumb';
 import { IBreadcrumbItem } from './Breadcrumb.Props';
 
 describe('Breadcrumb', () => {
+  it('renders breadcumb correctly', () => {
+    const items: IBreadcrumbItem[] = [
+      { text: 'TestText1', key: 'TestKey1' },
+      { text: 'TestText2', key: 'TestKey2' },
+      { text: 'TestText3', key: 'TestKey3' },
+      { text: 'TestText4', key: 'TestKey4' }
+    ];
+
+    let component = renderer.create(
+      <Breadcrumb
+        items={ items }
+      />
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    // With overflow
+    component = renderer.create(
+      <Breadcrumb
+        items={ items }
+        maxDisplayedItems={ 2 }
+      />
+    );
+
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('can call the callback when an item is clicked', () => {
     let callbackValue;

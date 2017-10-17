@@ -24,6 +24,7 @@ describe('Grid', () => {
       <Grid
         items={ DEFAULT_ITEMS }
         columnCount={ 4 }
+        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
     );
@@ -38,6 +39,7 @@ describe('Grid', () => {
       <Grid
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
+        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
     );
@@ -52,6 +54,7 @@ describe('Grid', () => {
       <Grid
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
+        // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
         positionInSet={ 1 }
         setSize={ 2 }
