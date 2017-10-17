@@ -109,7 +109,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-   * Close callout when input is in use
+   * Close callout when user is typing in input (relies on AllowFreeform: true)
    * @default false;
    */
   inputWithoutCallout?: boolean;
