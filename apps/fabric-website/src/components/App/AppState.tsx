@@ -176,12 +176,6 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DialogComponentPage').DialogComponentPage))
         },
         {
-          title: 'Divider',
-          url: '#/components/divider',
-          component: () => <LoadingComponent title='Divider' />,
-          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DividerComponentPage').DividerComponentPage))
-        },
-        {
           title: 'DocumentCard',
           url: '#/components/documentcard',
           component: () => <LoadingComponent title='DocumentCard' />,
