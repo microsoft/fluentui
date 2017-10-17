@@ -7,8 +7,7 @@ import { IVerticalDividerProps } from './VerticalDivider.Props';
 
 export class VerticalDivider extends BaseComponent<IVerticalDividerProps, {}> {
   public render() {
-    const { dividerHeight, dividerColor, dividerHorizontalMargin } = this.props;
-    const classNames = getDividerClassNames(dividerHeight, dividerColor, dividerHorizontalMargin || 0);
+    const classNames = getDividerClassNames();
 
     return (
       <span className={ classNames.wrapper }>

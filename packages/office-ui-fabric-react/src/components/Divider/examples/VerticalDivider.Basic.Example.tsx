@@ -18,7 +18,7 @@ const getClassNames = memoizeFunction((): IBasicDividerExampleClassNames => {
     },
     text: {
       display: 'inline-block',
-      padding: '0',
+      padding: '0 8px',
       height: exampleHeight,
       lineHeight: exampleHeight,
       verticalAlign: 'top',
@@ -33,11 +33,7 @@ export class VerticalDividerBasicExample extends React.Component<any, any> {
     return (
       <div className={ classNames.wrapper }>
         <p className={ classNames.text }> Some text before the divider. </p>
-        <VerticalDivider
-          dividerHeight={ 30 }
-          dividerColor='#C8C8C8'
-          dividerHorizontalMargin={ 10 }
-        />
+        <VerticalDivider />
         <p className={ classNames.text }>Some text after the divider. </p>
       </div>);
   }
