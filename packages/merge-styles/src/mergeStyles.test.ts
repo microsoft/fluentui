@@ -3,6 +3,7 @@ import {
   Stylesheet,
   InjectionMode
 } from './Stylesheet';
+import { setRTL } from './transforms/rtlifyRules';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -11,6 +12,21 @@ _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 describe('mergeStyles', () => {
   beforeEach(() => {
     _stylesheet.reset();
+  });
+
+  afterEach(() => {
+    setRTL(false);
+  });
+
+  it('can register left', () => {
+    mergeStyles({ left: 10 });
+    expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}');
+  });
+
+  it('can register left in rtl', () => {
+    setRTL(true);
+    mergeStyles({ left: 10 });
+    expect(_stylesheet.getRules()).toEqual('.css-0{right:10px;}');
   });
 
   it('can join strings', () => {
