@@ -107,6 +107,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Add additional content below the callout list.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+
+  /**
+   * Close callout when input is in use
+   * @default false;
+   */
+  inputWithoutCallout?: boolean;
 }
 
 export interface IComboBoxStyles {

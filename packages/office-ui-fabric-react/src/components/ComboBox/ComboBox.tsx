@@ -68,7 +68,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' }
+    buttonIconProps: { iconName: 'ChevronDown' },
+    inputWithoutCallout: false
   };
 
   public refs: {
@@ -265,7 +266,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ allowFreeform ? this.focus : this._onComboBoxClick }
+            onClick={ this._onComboBoxInputClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ (!disabled && autoComplete === 'on') }
@@ -290,7 +291,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
-            onClick={ this._onComboBoxClick }
+            onClick={ this._onComboBoxIconClick }
             iconProps={ buttonIconProps }
             disabled={ disabled }
           />
@@ -1287,14 +1288,35 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * toggles the expand/collapse state of the comboBox (if enbled)
    */
   @autobind
-  private _onComboBoxClick() {
+  private _onComboBoxIconClick() {
     let { disabled } = this.props;
     let { isOpen } = this.state;
-
     if (!disabled) {
       this.setState({
         isOpen: !isOpen
       });
+    }
+  }
+
+  @autobind
+  private _onComboBoxInputClick() {
+    let { allowFreeform, inputWithoutCallout } = this.props;
+    let { isOpen } = this.state;
+
+    if (allowFreeform) {
+      if (!inputWithoutCallout) {
+        this.focus;
+      }
+      else {
+        // When inputWithoutCallout is true, close callout if it is open
+        if (isOpen) {
+          this.setState({
+            isOpen: false
+          });
+        }
+      }
+    } else {
+      this._onComboBoxIconClick();
     }
   }
 
