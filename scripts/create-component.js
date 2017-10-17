@@ -2,7 +2,6 @@ const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newComponentName = argv.name;
 const fs = require('fs');
-const folderCreationError = "Folder creation error";
 const componentFolderPath = 'packages/src/office-ui-fabric-react/' + newComponentName;
 const componentPropsFileName = newComponentName + '.Props.ts';
 const componentFileName = newComponentName + '.tsx';
@@ -10,27 +9,15 @@ const templateFolderPath = 'templates';
 
 function handleError(error, errorPrependMessage) {
   if (error) {
-    console.error(errorPrepend, errorPrependMessage);
+    console.error(errorPrependMessage, error);
     return false;
   } else {
     return true;
   }
 }
 
-function folderExists(error, stats) {
-  if (!handleError(error, folderCreationError)) {
-    return;
-  }
-
-  if (stats.isDirectory()) {
-    console.error('Component directory for ' + newComponentName + ' already exsits');
-  } else {
-    fs.mkdir(componentFolderPath, makeComponentDirectory);
-  }
-}
-
 function makeComponentDirectory(error) {
-  if (!handleError(error, folderCreationError)) {
+  if (!handleError(error, 'Error creating directory, it might already exist')) {
     return;
   }
 
@@ -76,7 +63,9 @@ function writeComponentFile(error) {
 
 if (newComponentName) {
   // Create new folder in packages/src/office-ui-fabric-react
-  fs.stat(componentFolderPath, folderExists);
+
+  fs.mkdir(componentFolderPath, makeComponentDirectory);
+
 } else {
   console.error('Please pass in the component name using --name ExcitingNewComponentName');
 }
