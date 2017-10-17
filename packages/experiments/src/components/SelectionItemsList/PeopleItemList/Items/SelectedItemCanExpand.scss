@@ -33,7 +33,7 @@
       }
     }
 
-    .removeButton {
+    .actionButton {
       :global(.ms-Button-icon) {
         color: $ms-color-white;
 
@@ -120,7 +120,9 @@
   }
 
   .personaWrapper {
-    left: -7px;
+    &.canExpand {
+      left: -8px;
+    }
     position: relative;
     display: inherit;
   }

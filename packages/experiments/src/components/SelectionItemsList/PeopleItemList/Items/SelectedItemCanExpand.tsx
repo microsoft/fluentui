@@ -72,11 +72,11 @@ export class SelectedItemCanExpand extends BaseComponent<IPeopleSelectionItemPro
           <IconButton
             onClick={ this.onClickIconButton(onExpandItem) }
             iconProps={ { iconName: 'Add', style: { fontSize: '12px' } } }
-            className={ css('ms-PickerItem-removeButton', styles.expandButton) }
+            className={ css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />
         </div>
-        <div className={ styles.personaWrapper }>
+        <div className={ css(styles.personaWrapper, { [styles.canExpand]: item.canExpand }) }>
           <div
             className={ css('ms-PickerItem-content', styles.itemContent) }
             id={ 'selectedItemPersona-' + itemId }
@@ -90,7 +90,7 @@ export class SelectedItemCanExpand extends BaseComponent<IPeopleSelectionItemPro
           <IconButton
             onClick={ this.onClickIconButton(onRemoveItem) }
             iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
-            className={ css('ms-PickerItem-removeButton', styles.removeButton) }
+            className={ css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />
         </div >
