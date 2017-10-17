@@ -11,5 +11,9 @@ export interface IVerticalDividerProps {
    */
   componentRef?: (component: IDivider) => void;
 
+  /**
+   * Optional classnames to apply on the elements of the divider. This can be used to apply
+   * custom styles to the divider.
+   */
   classNames?: Partial<IVerticalDividerClassNames>;
 }
