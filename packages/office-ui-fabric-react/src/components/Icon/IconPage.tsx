@@ -8,12 +8,14 @@ import {
 import { IconBasicExample } from './examples/Icon.Basic.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
+import { IconRegisterIconRendererExample } from './examples/Icon.RegisterIconRenderer.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { IconStatus } from './Icon.checklist';
 
 const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
 const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
+const IconRegisterIconRendererExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.RegisterIconRenderer.Example.tsx') as string;
 
 export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -31,6 +33,9 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Icon using image sheet' code={ IconImageSheetExampleCode }>
               <IconImageSheetExample />
+            </ExampleCard>
+            <ExampleCard title='Icon using RegisterIconRenderer function' code={ IconRegisterIconRendererExampleCode }>
+              <IconRegisterIconRendererExample />
             </ExampleCard>
           </div>
         }
