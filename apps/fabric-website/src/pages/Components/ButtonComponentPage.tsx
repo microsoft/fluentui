@@ -19,7 +19,7 @@ export class ButtonComponentPage extends React.Component<any, any> {
                 },
                 {
                   'text': 'Best Practices',
-                  'location': 'Best Practices'
+                  'location': 'BestPractices'
                 },
                 {
                   'text': 'Variants',
@@ -27,7 +27,7 @@ export class ButtonComponentPage extends React.Component<any, any> {
                 },
                 {
                   'text': 'Implementation Examples',
-                  'location': 'Implementation Examples'
+                  'location': 'ImplementationExamples'
                 },
                 {
                   'text': 'Implementation',
