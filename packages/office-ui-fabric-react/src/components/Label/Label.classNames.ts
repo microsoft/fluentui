@@ -5,6 +5,8 @@ export interface ILabelClassNames {
   root: string;
 }
 
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+
 export const getLabelClassNames = memoizeFunction((theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
   return mergeStyleSets({
     root:
@@ -20,7 +22,12 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
         overflowWrap: 'break-word',
       },
       disabled && {
-        color: theme.semanticColors.disabledText
+        color: theme.semanticColors.disabledText,
+        selectors: {
+          [MS_HIGHCONTRAST_ACTIVE]: {
+            color: 'GrayText'
+          }
+        }
       },
       required && {
         selectors: {
