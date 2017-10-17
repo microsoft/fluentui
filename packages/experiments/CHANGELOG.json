@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "@uifabric/experiments_v5.1.0",
+      "date": "Tue, 17 Oct 2017 17:17:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "ddecb07ddeb35964ee17705d2ebccabd6c44f8dd",
+            "comment": "Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.9.2 <6.0.0` to `>=5.9.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.5",
       "tag": "@uifabric/experiments_v5.0.5",
       "date": "Fri, 13 Oct 2017 01:36:01 GMT",

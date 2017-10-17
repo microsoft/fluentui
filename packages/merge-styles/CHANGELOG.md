@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 13 Oct 2017 04:00:17 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Oct 2017 17:17:41 GMT and should not be manually modified.
+
+## 5.4.1
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Patches
+
+- mergeStyles: in RTL we were seeing exceptions with registering opacity: 0 in keyframes. This has been addressed and a test has been added to cover the case.
 
 ## 5.4.0
 Fri, 13 Oct 2017 04:00:17 GMT

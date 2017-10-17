@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 13 Oct 2017 01:36:01 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Oct 2017 17:17:41 GMT and should not be manually modified.
+
+## 5.1.0
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Minor changes
+
+- Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively
 
 ## 5.0.5
 Fri, 13 Oct 2017 01:36:01 GMT
