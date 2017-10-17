@@ -26,7 +26,7 @@ const enum TileLayoutValues {
 
 export interface ITileState {
   isSelected?: boolean;
-  anySelected?: boolean;
+  isModal?: boolean;
 }
 
 const SIZES: {
@@ -82,11 +82,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     } = props;
 
     const isSelected = !!selection && selectionIndex > -1 && selection.isIndexSelected(selectionIndex);
-    const anySelected = !!selection && selection.getSelectedCount() > 0;
+    const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.state = {
       isSelected: isSelected,
-      anySelected: anySelected
+      isModal: isModal
     };
   }
 
@@ -103,11 +103,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     if (selection !== nextSelection || selectionIndex !== nextSelectionIndex) {
       const isSelected = !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
-      const anySelected = !!nextSelection && nextSelection.getSelectedCount() > 0;
+      const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
         isSelected: isSelected,
-        anySelected: anySelected
+        isModal: isModal
       });
     }
   }
@@ -162,7 +162,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       contentSize,
       ariaLabel,
       descriptionAriaLabel,
-      disableInvokeIfAnySelected = false,
       href,
       onClick,
       ...divProps
@@ -170,11 +169,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     const {
       isSelected = false,
-      anySelected = false
+      isModal = false
     } = this.state;
 
     const isSelectable = !!selection && selectionIndex > -1;
-    const isInvokable = (!!href || !!onClick || !!invokeSelection) && (!disableInvokeIfAnySelected || !anySelected);
+    const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
     return (
       <div
@@ -195,7 +194,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--invokable ${TileStyles.invokable}`]: isInvokable,
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
           [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
-          [`ms-Tile--showCheck ${TileStyles.showCheck}`]: anySelected && disableInvokeIfAnySelected
+          [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal
         }) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
@@ -348,7 +347,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         role='checkbox'
         aria-label={ this.props.toggleSelectionAriaLabel }
         className={ css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
-          [CheckStyles.hostShowCheck]: this.state.anySelected
+          [CheckStyles.hostShowCheck]: this.state.isModal
         }) }
         data-selection-toggle={ true }
         aria-checked={ isSelected }
@@ -368,11 +367,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     } = this.props;
 
     const isSelected = selectionIndex > -1 && !!selection && selection.isIndexSelected(selectionIndex);
-    const anySelected = !!selection && selection.getSelectedCount() > 0;
+    const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.setState({
       isSelected: isSelected,
-      anySelected: anySelected
+      isModal: isModal
     });
   }
 }
