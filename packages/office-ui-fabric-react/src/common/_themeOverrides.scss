@@ -1,4 +1,3 @@
-/* themed tokens */
 $ms-color-themeDarker: "[theme:themeDarker, default: #004578]";
 $ms-color-themeDark: "[theme:themeDark, default: #005a9e]";
 $ms-color-themeDarkAlt: "[theme:themeDarkAlt, default: #106ebe]";
@@ -8,6 +7,7 @@ $ms-color-themeTertiary: "[theme:themeTertiary, default: #71afe5]";
 $ms-color-themeLight: "[theme:themeLight, default: #c7e0f4]";
 $ms-color-themeLighter: "[theme:themeLighter, default: #deecf9]";
 $ms-color-themeLighterAlt: "[theme:themeLighterAlt, default: #eff6fc]";
+
 $ms-color-black: "[theme:black, default: #000000]";
 $ms-color-neutralDark: "[theme:neutralDark, default: #212121]";
 $ms-color-neutralPrimary: "[theme:neutralPrimary, default: #333333]";
@@ -22,8 +22,10 @@ $ms-color-neutralLight: "[theme:neutralLight, default: #eaeaea]";
 $ms-color-neutralLighter: "[theme:neutralLighter, default: #f4f4f4]";
 $ms-color-neutralLighterAlt: "[theme:neutralLighterAlt, default: #f8f8f8]";
 $ms-color-white: "[theme:white, default: #ffffff]";
+
 $ms-color-blackTranslucent40: "[theme:blackTranslucent40, default: rgba(0,0,0,.4)]";
 $ms-color-whiteTranslucent40: "[theme:whiteTranslucent40, default: rgba(255,255,255,.4)]";
+
 $ms-color-yellow: "[theme:yellow, default: #ffb900]";
 $ms-color-yellowLight: "[theme:yellowLight, default: #fff100]";
 $ms-color-orange: "[theme:orange, default: #d83b01]";
