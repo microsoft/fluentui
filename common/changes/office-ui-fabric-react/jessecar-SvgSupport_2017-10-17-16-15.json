@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add a mechanism to provide a Fabric-wide icon renderer function (as opposed to the control-specific onRenderIcon fn",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "jessecar@microsoft.com"
+}
