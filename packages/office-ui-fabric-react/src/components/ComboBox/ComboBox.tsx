@@ -248,7 +248,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
-          <Label id={ id + '-label' } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
+          <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }
