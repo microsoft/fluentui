@@ -48,7 +48,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
     let iconFromCustomRendererFn: JSX.Element | undefined;
     for (let i = 0; i < _iconRendererFns.length; i++) {
       let icon = _iconRendererFns[i](props);
-      if (icon !== null) {
+      if (icon) {
         iconFromCustomRendererFn = icon;
         break;
       }
