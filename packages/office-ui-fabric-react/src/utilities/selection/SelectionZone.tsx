@@ -116,6 +116,23 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _onMouseDownCapture(ev: any) {
     if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
       this.ignoreNextFocus();
+      return;
+    }
+
+    if (!elementContains(ev.target, this.refs.root)) {
+      return;
+    }
+
+    let target = ev.target as HTMLElement;
+    let itemRoot = this._findItemRoot(target);
+
+    while (target !== this.refs.root) {
+      if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        this.ignoreNextFocus();
+        break;
+      }
+
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -167,9 +184,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           break;
         } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
-          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
-        } else if (target === itemRoot) {
+        } else if (target === itemRoot && !this._isShiftPressed && !this._isCtrlPressed) {
+          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
         }
       }
