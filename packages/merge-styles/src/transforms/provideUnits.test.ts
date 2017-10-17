@@ -55,7 +55,7 @@ describe('provideUnits', () => {
 
     provideUnits(testSet, 0);
 
-    expect(testSet).toEqual(['opacity', 0]);
+    expect(testSet).toEqual(['opacity', '0']);
   });
 
 });

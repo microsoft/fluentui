@@ -39,6 +39,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
+          key: 'ExtendedPeoplePicker',
+          name: 'ExtendedPeoplePicker',
+          url: '#/examples/extendedpeoplepicker'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
+          url: '#/examples/floatingpeoplepicker'
         }
       ]
     }

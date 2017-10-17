@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Adding props to control height and width of Callout ",
+      "comment": "ComboBox: the label now appears disabled when the ComboBox is disabled.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "malozano@microsoft.com"
 }

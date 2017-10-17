@@ -109,6 +109,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
       this._dropDown.focus();
+
+      if (this.props.onDismiss) {
+        this.props.onDismiss();
+      }
     }
   }
 
@@ -553,11 +557,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]) {
     let selectedOptions: IDropdownOption[] = [];
     for (let index of selectedIndices) {
-      selectedOptions.push(options[index]);
+      const option = options[index];
+
+      if (option) {
+        selectedOptions.push(option);
+      }
     }
-    if (selectedOptions.length < 1) {
-      return [];
-    }
+
     return selectedOptions;
   }
 

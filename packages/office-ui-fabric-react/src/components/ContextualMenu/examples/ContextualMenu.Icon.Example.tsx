@@ -77,9 +77,11 @@ export class ContextualMenuIconExample extends React.Component<any, any> {
         { showCallout && (
           <Callout
             setInitialFocus={ true }
+            // tslint:disable-next-line:jsx-no-lambda
             onDismiss={ () => this.setState({ showCallout: false }) }
           >
             <DefaultButton
+              // tslint:disable-next-line:jsx-no-lambda
               onClick={ () => this.setState({ showCallout: false }) }
               text='Hello Popup'
             />
