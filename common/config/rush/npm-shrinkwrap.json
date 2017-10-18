@@ -1411,7 +1411,7 @@
           "bundled": true
         },
         "office-ui-fabric-core": {
-          "version": "7.3.0",
+          "version": "9.0.0",
           "bundled": true
         },
         "os-browserify": {
