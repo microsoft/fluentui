@@ -3,9 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as renderer from 'react-test-renderer';
-import { Persona } from '../Persona/Persona';
-
 import {
   KeyCodes,
 } from '../../Utilities';

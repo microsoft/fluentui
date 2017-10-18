@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as renderer from 'react-test-renderer';
 
 import { Panel } from './Panel';
 
