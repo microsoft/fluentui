@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
 import { TagPicker, ITag } from './TagPicker/TagPicker';
 import { IBasePickerProps } from './BasePicker.Props';
@@ -53,6 +54,19 @@ describe('Pickers', () => {
           { basicRenderer(props) }
         </div>
       );
+
+    it('renders BasePicker correctly', () => {
+      const component = renderer.create(
+        <BasePickerWithType
+          onResolveSuggestions={ onResolveSuggestions }
+          onRenderItem={ onRenderItem }
+          onRenderSuggestionsItem={ basicSuggestionRenderer }
+        />
+      );
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
     it('can provide custom renderers', () => {
       let root = document.createElement('div');
       document.body.appendChild(root);
@@ -154,6 +168,15 @@ describe('Pickers', () => {
   });
 
   describe('TagPicker', () => {
+    it('renders TagPicker correctly', () => {
+      const component = renderer.create(
+        <TagPicker
+          onResolveSuggestions={ onResolveSuggestions }
+        />
+      );
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
     it('can search for and select tags', () => {
       let root = document.createElement('div');
