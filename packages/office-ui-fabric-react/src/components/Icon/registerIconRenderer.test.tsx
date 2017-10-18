@@ -40,7 +40,7 @@ describe('Test registerIconRenderer', () => {
 
   it('renderer function overrides Icon render behavior', () => {
     // Rendering the OneNote icon does not result in svg elements
-    const oneNoteIcon = <Icon iconName='One' iconType={ IconType.image } imageProps={ { src: TestImages.iconOne } } />
+    const oneNoteIcon = <Icon iconName='One' iconType={ IconType.image } imageProps={ { src: TestImages.iconOne } } />;
     let wrapper = shallow(oneNoteIcon);
     expect(wrapper.find('svg').length).toEqual(0);
 
