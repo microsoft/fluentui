@@ -2,10 +2,10 @@ const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newComponentName = argv.name;
 const fs = require('fs');
-const componentFolderPath = 'packages/src/office-ui-fabric-react/' + newComponentName;
+const componentFolderPath = './packages/office-ui-fabric-react/src/components/' + newComponentName;
 const componentPropsFileName = newComponentName + '.Props.ts';
 const componentFileName = newComponentName + '.tsx';
-const templateFolderPath = 'templates';
+const templateFolderPath = './scripts/templates';
 
 function handleError(error, errorPrependMessage) {
   if (error) {
@@ -17,7 +17,7 @@ function handleError(error, errorPrependMessage) {
 }
 
 function makeComponentDirectory(error) {
-  if (!handleError(error, 'Error creating directory, it might already exist')) {
+  if (!handleError(error, 'Error creating component directory')) {
     return;
   }
 
@@ -29,7 +29,7 @@ function openMustachePropsTemplate(error, data) {
     return;
   }
 
-  const propsFileData = Mustache.render(data, { componentName: newComponentName });
+  const propsFileData = mustache.render(data, { componentName: newComponentName });
 
   // After the we render the template let's try to write the result to the new component file
   fs.writeFile(componentFolderPath + '/' + componentPropsFileName, propsFileData, writePropsFile);
@@ -48,7 +48,7 @@ function openMustacheComponentTemplate(error, data) {
     return;
   }
 
-  const componentFileData = Mustache.render(data, { componentName });
+  const componentFileData = mustache.render(data, { componentName: newComponentName });
   fs.writeFile(componentFolderPath + '/' + componentFileName, componentFileData, writeComponentFile);
 }
 
@@ -63,9 +63,7 @@ function writeComponentFile(error) {
 
 if (newComponentName) {
   // Create new folder in packages/src/office-ui-fabric-react
-
   fs.mkdir(componentFolderPath, makeComponentDirectory);
-
 } else {
   console.error('Please pass in the component name using --name ExcitingNewComponentName');
 }
