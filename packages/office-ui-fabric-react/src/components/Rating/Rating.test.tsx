@@ -39,7 +39,6 @@ describe('Rating', () => {
       let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
       let width = iconElement.style.width;
       expect(width).toEqual(state);
-
     };
 
     checkState(1, '100%');
