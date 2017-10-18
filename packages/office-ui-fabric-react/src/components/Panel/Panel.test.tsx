@@ -18,12 +18,6 @@ describe('Panel', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('renders Panel correctly', () => {
-    const component = renderer.create(<Panel isOpen={ true }>Content</Panel>);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('fires the correct events when closing', (done) => {
     let dismissedCalled = false;
     let dismissCalled = false;

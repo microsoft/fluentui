@@ -26,24 +26,6 @@ describe('ContextualMenu', () => {
     }
   });
 
-  it('renders ContextualMenu correctly', () => {
-    const items: IContextualMenuItem[] = [
-      { name: 'TestText 1', key: 'TestKey1' },
-      { name: 'TestText 2', key: 'TestKey2' },
-      { name: 'TestText 3', key: 'TestKey3' },
-      { name: 'TestText 4', key: 'TestKey4' }
-    ];
-    const component = renderer.create(<ContextualMenu items={ items } />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders Persona correctly', () => {
-    const component = renderer.create(<Persona primaryText='Kat Larrson' />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('does not have a scrollbar due to an overflowing icon', () => {
     const items: IContextualMenuItem[] = [
       { name: 'TestText 1', key: 'TestKey1', canCheck: true, isChecked: true },
