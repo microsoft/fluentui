@@ -1,0 +1,34 @@
+# Contributing to Office UI Fabric
+
+## Creating New Components
+
+### Creating a component via the command line
+1. Open a command prompt in the root directory of your project directory.
+2. Run `npm run createcomponent -- --name YourAwesomeNewComponentName`
+  * Our components use the Pascal Case naming convention.
+
+### Creating a component manually.
+1. From the root of the project, travel to `packages/office-ui-fabric-react/src/components/`
+2. Create a new folder here with your component name
+  * Our components use the Pascal Case naming convention.
+  * In this example the component will be called `ExcitingNewComponent`.
+3. Create a `ExcitingNewComponent.Props.ts` file that will contain an interface for your props
+  * Import React
+    * `import * as React from 'react'`;
+  * Import ExcitingNewComponent
+    * `import { ExcitingNewComponent } from './ExcitingNewComponent'`;
+    * Note: This class and file don't exist yet but they will during step 4 of this small tutorial.
+  * Create an empty interface `IExcitingNewComponent`
+    * `export interface IExcitingNewComponent {}`
+  * Add your props interface to this file.
+    * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
+4. Create a react file, `ExcitingNewComponent.tsx`.
+  * Import React
+    * `import * as React from 'react';`
+  * Import BaseComponent
+    * `import { BaseComponent } from '../../Utilities';`
+  * Import IExcitingNewComponentProps
+    * `import { IExcitingNewComponentProps } from './ExcitingNewComponent.Props';`
+  * Add your class to this file.
+    * Add the following example class
+    * `export class ExcitingNewComponent extends BaseComponent<IExcitingNewComponentProps, {}> { };`
