@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalDivider } from 'office-ui-fabric-react/lib/components/Divider';
-import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.classNames';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IVerticalDividerClassNames, getDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.classNames';
+import { mergeStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 interface ICustomDividerExampleClassNames {
@@ -28,8 +28,8 @@ const getExampleClassNames = memoizeFunction((): ICustomDividerExampleClassNames
   });
 });
 
-const getVerticalDividerClassNames = memoizeFunction((): IVerticalDividerClassNames => {
-  return mergeStyleSets({
+const getVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
+  return mergeStyleSets(getDividerClassNames(theme), {
     divider: {
       height: 28
     }
@@ -39,11 +39,10 @@ const getVerticalDividerClassNames = memoizeFunction((): IVerticalDividerClassNa
 export class VerticalDividerCustomExample extends React.Component<any, any> {
   public render() {
     const exampleClassNames = getExampleClassNames();
-    const dividerClassNames = getVerticalDividerClassNames();
     return (
       <div className={ exampleClassNames.wrapper }>
         <p className={ exampleClassNames.text }> Some text before the divider. </p>
-        <VerticalDivider classNames={ dividerClassNames } />
+        <VerticalDivider getClassNames={ getVerticalDividerClassNames } />
         <p className={ exampleClassNames.text }>Some text after the divider. </p>
       </div>);
   }

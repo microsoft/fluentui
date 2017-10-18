@@ -1,12 +1,12 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets } from '../../Styling';
+import { mergeStyleSets, ITheme } from '../../Styling';
 
 export interface IVerticalDividerClassNames {
   wrapper: string;
   divider: string;
 }
 
-export const getDividerClassNames = memoizeFunction((): IVerticalDividerClassNames => {
+export const getDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
   return mergeStyleSets({
     wrapper: {
       display: 'inline-flex',
@@ -16,7 +16,7 @@ export const getDividerClassNames = memoizeFunction((): IVerticalDividerClassNam
     divider: {
       width: 1,
       height: '100%',
-      backgroundColor: '#C8C8C8'
+      backgroundColor: theme.palette.neutralTertiaryAlt
     }
   });
 });

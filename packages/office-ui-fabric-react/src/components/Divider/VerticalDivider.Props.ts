@@ -1,4 +1,5 @@
 import { IVerticalDividerClassNames } from './VerticalDivider.classNames';
+import { ITheme } from '../../Styling';
 
 export interface IDivider {
 
@@ -12,8 +13,7 @@ export interface IVerticalDividerProps {
   componentRef?: (component: IDivider) => void;
 
   /**
-   * Optional classnames to apply on the elements of the divider. This can be used to apply
-   * custom styles to the divider.
+   * Optional function to generate the class names for the divider for custom styling
    */
-  classNames?: Partial<IVerticalDividerClassNames>;
+  getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 }

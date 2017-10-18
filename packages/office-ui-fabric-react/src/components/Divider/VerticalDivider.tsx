@@ -4,11 +4,12 @@ import {
 } from '../../Utilities';
 import { getDividerClassNames, IVerticalDividerClassNames } from './VerticalDivider.classNames';
 import { IVerticalDividerProps } from './VerticalDivider.Props';
-import { mergeStyleSets } from '../../Styling';
+import { mergeStyleSets, getTheme } from '../../Styling';
 
 export class VerticalDivider extends BaseComponent<IVerticalDividerProps, {}> {
   public render() {
-    const classNames: IVerticalDividerClassNames = mergeStyleSets(getDividerClassNames(), this.props.classNames);
+    const theme = getTheme();
+    const classNames = this.props.getClassNames ? this.props.getClassNames(theme) : getDividerClassNames(theme);
 
     return (
       <span className={ classNames.wrapper }>
