@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
 
 import { Panel } from './Panel';
 
@@ -15,6 +16,12 @@ describe('Panel', () => {
 
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('renders Panel correctly', () => {
+    const component = renderer.create(<Panel isOpen={ true }>Content</Panel>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('fires the correct events when closing', (done) => {
