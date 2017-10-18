@@ -4,10 +4,17 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { Rating } from './Rating';
 
 describe('Rating', () => {
+  it('Renders Rating correctly', () => {
+    const component = renderer.create(<Rating />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Can change rating.', () => {
     let exception;
     let threwException = false;

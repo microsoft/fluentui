@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { MessageBar } from './MessageBar';
 
@@ -16,6 +17,12 @@ describe('MessageBar', () => {
     const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
     return renderedDOM as HTMLElement;
   }
+
+  it('renders MessageBar correctly', () => {
+    const component = renderer.create(<MessageBar>Message</MessageBar>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   describe('dismiss', () => {
     describe('single-line', () => {

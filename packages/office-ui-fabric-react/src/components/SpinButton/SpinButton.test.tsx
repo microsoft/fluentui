@@ -2,6 +2,7 @@ import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import { SpinButton } from './SpinButton';
 import { KeyCodes } from '../../Utilities';
 
@@ -17,6 +18,12 @@ describe('SpinButton', () => {
     const event: ReactTestUtils.SyntheticEventData = { target };
     return event;
   }
+
+  it('renders SpinButton correctly', () => {
+    const component = renderer.create(<SpinButton label='label' />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('should render a spinner with the default value on the input element', () => {
     const exampleLabelValue: string = 'SpinButton';

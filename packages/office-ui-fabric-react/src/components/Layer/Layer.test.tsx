@@ -3,11 +3,17 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 
 describe('Layer', () => {
+  it('renders Layer correctly', () => {
+    const component = renderer.create(<Layer>Content</Layer>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('can render in a targeted LayerHost and pass context through', () => {
 
