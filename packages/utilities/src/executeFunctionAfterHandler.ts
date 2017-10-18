@@ -1,5 +1,4 @@
 // tslint:disable:no-any
-import { memoizeFunction } from './memoize';
 
 /**
  * Given a function that is used as an event handler, execute the given function after the handler has been executed.
