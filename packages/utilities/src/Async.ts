@@ -320,10 +320,20 @@ export class Async {
     leading?: boolean;
     maxWait?: number;
     trailing?: boolean;
-  }): T | (() => void) {
+  }): ICancelable<T> & (() => void) {
 
     if (this._isDisposed) {
-      return this._noop;
+      let noOpFunction: ICancelable<T> & (() => T) = (() => {
+        /** Do nothing */
+      }) as ICancelable<T> & (() => T);
+
+      noOpFunction.cancel = () => { return; };
+      /* tslint:disable:no-any */
+      noOpFunction.flush = (() => null) as any;
+      /* tslint:enable:no-any */
+      noOpFunction.pending = () => false;
+
+      return noOpFunction;
     }
 
     let waitMS = wait || 0;
@@ -349,6 +359,15 @@ export class Async {
       maxWait = options.maxWait;
     }
 
+    let invokeFunction = (time: number) => {
+      if (timeoutId) {
+        this.clearTimeout(timeoutId);
+        timeoutId = null;
+      }
+      lastExecuteTime = time;
+      lastResult = func.apply(this._parent, lastArgs);
+    };
+
     let callback = (userCall?: boolean) => {
       let now = (new Date).getTime();
       let executeImmediately = false;
@@ -373,12 +392,7 @@ export class Async {
       }
 
       if (delta >= waitMS || maxWaitExpired || executeImmediately) {
-        if (timeoutId) {
-          this.clearTimeout(timeoutId);
-          timeoutId = null;
-        }
-        lastExecuteTime = now;
-        lastResult = func.apply(this._parent, lastArgs);
+        invokeFunction(now);
       } else if ((timeoutId === null || !userCall) && trailing) {
         timeoutId = this.setTimeout(callback, waitLength);
       }
@@ -386,11 +400,34 @@ export class Async {
       return lastResult;
     };
 
+    let cancel = (): void => {
+      if (timeoutId) {
+        this.clearTimeout(timeoutId);
+      }
+    };
+
+    let flush = (): T => {
+      if (timeoutId) {
+        this.clearTimeout(timeoutId);
+        invokeFunction(new Date().getTime());
+      }
+
+      return lastResult;
+    };
+
+    let pending = (): boolean => {
+      return !!timeoutId;
+    };
+
     // tslint:disable-next-line:no-any
-    let resultFunction: () => T = (...args: any[]) => {
+    let resultFunction: ICancelable<T> & (() => T) = ((...args: any[]) => {
       lastArgs = args;
       return callback(true);
-    };
+    }) as ICancelable<T> & (() => T);
+
+    resultFunction.cancel = cancel;
+    resultFunction.flush = flush;
+    resultFunction.pending = pending;
 
     return resultFunction;
   }
@@ -444,3 +481,9 @@ export class Async {
     }
   }
 }
+
+export type ICancelable<T> = {
+  flush: () => T;
+  cancel: () => void;
+  pending: () => boolean;
+};
