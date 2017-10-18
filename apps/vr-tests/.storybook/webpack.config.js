@@ -41,15 +41,8 @@ module.exports = (storybookBaseConfig, configType) => {
   rules.forEach(rule => storybookBaseConfig.module.rules.push(rule));
   extensions.forEach(ext => storybookBaseConfig.resolve.extensions.push(ext));
 
-  /**
-   * This removes ProgressPlugin in Storybook's webpack config found here:
-   * ~\vr-tests\node_modules\@storybook\react\dist\server\config\webpack.config.js
-   * This plugin is what causes the logging spam in Travis.
-   * Note this workaround may not be safe if Storybook changes their config in the future.
-   * https://github.com/storybooks/storybook/issues/2029
-   */
-  storybookBaseConfig.plugins.pop();
-  console.warn('Warning: Storybook webpack config plugins are being manually changed. If there are any issues with Storybook\'s build, \'~/vr-tests/.storybook/webpack.config.js\' may need to be updated.');
+  // Remove this plugin because it spams Travis log
+  storybookBaseConfig.plugins = storybookBaseConfig.plugins.filter(plugin => plugin.constructor.name !== 'ProgressPlugin');
 
   // Return the altered config
   return storybookBaseConfig;
