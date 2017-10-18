@@ -52,6 +52,10 @@
   }
 }
 
+.brandIconsPage .brandIconsPageLink {
+  color: $ms-color-themePrimary;
+}
+
 @media screen and (min-width: $uhf-screen-min-mobile) {
   .iconList {
     li {
