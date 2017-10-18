@@ -34,14 +34,4 @@ describe('executeFunctionAfterHandler tests', () => {
     expect(handler.mock.calls[0][1]).toEqual(16);
     expect(functionToExecute.mock.calls.length).toEqual(1);
   });
-
-  it('does not return a new function when called twice with the same parameters', () => {
-    const handler = jest.fn((x: number, y: number) => undefined);
-    const functionToExecute = jest.fn();
-
-    const wrappedFunction1 = executeFunctionAfterHandler(handler, functionToExecute);
-    const wrappedFunction2 = executeFunctionAfterHandler(handler, functionToExecute);
-
-    expect(wrappedFunction1).toBe(wrappedFunction2);
-  });
 });
