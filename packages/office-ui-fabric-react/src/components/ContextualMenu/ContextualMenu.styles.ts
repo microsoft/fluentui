@@ -1,15 +1,16 @@
-import { memoizeFunction } from '../../Utilities';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import {
-  ITheme,
-  IRawStyle,
-  concatStyleSets,
-  FontWeights,
   FontSizes,
+  FontWeights,
+  IRawStyle,
+  ITheme,
+  concatStyleSets,
   getFocusStyle
 } from '../../Styling';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active) &';
+import { memoizeFunction } from '../../Utilities';
+
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const ContextualMenuItemHeight = '32px';
 const ContextualMenuIconWidth = '14px';
@@ -38,6 +39,7 @@ export const getMenuItemStyles = memoizeFunction((
   const ContextualMenuTextSelectedColor = semanticColors.bodySelectedText;
   const ContextualMenuTextDisabledColor = semanticColors.disabledText;
   const ContextualMenuDividerColor = semanticColors.bodyDivider;
+  const SplitButtonDividerHeight = 16;
 
   const menuItemStyles: IMenuItemStyles = {
     item: [
@@ -135,8 +137,10 @@ export const getMenuItemStyles = memoizeFunction((
     },
     iconColor: {
       color: ContextualMenuIconColor,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'HighlightText',
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'HighlightText',
+        }
       }
     },
     subMenuIcon: {
@@ -147,6 +151,20 @@ export const getMenuItemStyles = memoizeFunction((
       verticalAlign: 'middle',
       flexShrink: '0',
       fontSize: FontSizes.mini
+    },
+    splitButtonSeparator: {
+      backgroundColor: ContextualMenuDividerColor,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      height: SplitButtonDividerHeight,
+    },
+    splitButtonFlexContainer: {
+      display: 'flex',
+      height: '100%',
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center'
     }
   };
 

@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
@@ -16,6 +17,17 @@ const TEST_OPTIONS: IChoiceGroupOption[] = [
 const QUERY_SELECTOR: string = '.ms-ChoiceField-input';
 
 describe('ChoiceGroup', () => {
+
+  it('renders ChoiceGroup correctly', () => {
+    const component = renderer.create(
+      <ChoiceGroup
+        options={ TEST_OPTIONS }
+        required
+      />
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('can change options', () => {
     const options: IChoiceGroupOption[] = [
