@@ -18,7 +18,7 @@ export class LinkComponentPage extends React.Component<any, any> {
                 },
                 {
                   'text': 'Best Practices',
-                  'location': 'Best Practices'
+                  'location': 'BestPractices'
                 },
                 {
                   'text': 'Variants',

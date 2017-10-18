@@ -7,14 +7,14 @@ export class TextFieldBorderlessExample extends React.Component<any, any> {
     return (
       <div className='ms-TextFieldExample'>
         <TextField
-          label='Borderless Standard TextField'
+          label='Borderless Multiline TextField'
+          multiline
+          rows={ 4 }
           borderless
           placeholder='No borders here, folks.'
         />
         <TextField
-          label='Borderless Multiline TextField'
-          multiline
-          rows={ 4 }
+          label='Borderless Standard TextField'
           borderless
           placeholder='No borders here, folks.'
         />

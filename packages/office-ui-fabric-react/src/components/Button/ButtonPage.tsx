@@ -109,6 +109,10 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <ExampleCard title='Action Button' code={ ButtonActionExampleCode }>
               <ButtonActionExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
+          </div>
+        }
+        implementationExampleCards={
+          <div>
             <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
               <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
