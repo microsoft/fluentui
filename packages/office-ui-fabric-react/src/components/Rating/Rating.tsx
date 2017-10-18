@@ -147,10 +147,6 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
-    if (!this.props.enableHalfStar) {
-      rating = Math.floor(rating);
-    }
-
     return Math.min(Math.max(rating, this.props.min as number), this.props.max as number);
   }
 

@@ -75,7 +75,6 @@ export class RatingBasicExample extends React.Component<any, any> {
           max={ 5 }
           rating={ 2.5 }
           getAriaLabel={ this._getRatingComponentAriaLabel }
-          enableHalfStar={ true }
           readOnly={ true }
         />
       </div>

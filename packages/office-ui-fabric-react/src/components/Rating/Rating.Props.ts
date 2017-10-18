@@ -60,11 +60,6 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
    */
   readOnly?: boolean;
 
-  /**
-   * Optional flag to enable half star support.
-   */
-  enableHalfStar?: boolean;
-
   /*
   * Optional callback to set the arialabel for rating control.
   */

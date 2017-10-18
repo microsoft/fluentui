@@ -85,7 +85,7 @@ describe('Rating', () => {
 
   });
 
-  it('Clamps input rating to nearest number when halfstar is not enabled.', () => {
+  it('Half star is displayed when 2.5 value is passed.', () => {
     let exception;
     let threwException = false;
     let rating;
@@ -93,39 +93,6 @@ describe('Rating', () => {
       rating = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           rating={ 2.5 }
-        />
-      );
-    } catch (e) {
-      exception = e;
-      threwException = true;
-    }
-    expect(threwException).toEqual(false);
-
-    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
-    let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
-
-    const checkState = (ratingToCheck: number, state: string) => {
-      let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
-      let width = iconElement.style.width;
-      expect(width).toEqual(state);
-    };
-
-    checkState(1, '100%');
-    checkState(2, '100%');
-    checkState(3, '0%');
-    checkState(4, '0%');
-    checkState(5, '0%');
-  });
-
-  it('Half star is displayed when it is enabled.', () => {
-    let exception;
-    let threwException = false;
-    let rating;
-    try {
-      rating = ReactTestUtils.renderIntoDocument<Rating>(
-        <Rating
-          rating={ 2.5 }
-          enableHalfStar={ true }
         />
       );
     } catch (e) {
