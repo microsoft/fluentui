@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+
+## 5.3.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add cancel/flush to debounce
 
 ## 5.2.1
 Fri, 06 Oct 2017 10:18:41 GMT

@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.10.0",
+      "tag": "office-ui-fabric-react_v5.10.0",
+      "date": "Wed, 18 Oct 2017 10:21:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5c408b0984d9d83323a2b3b22aa50b3768c2d711",
+            "comment": "Added implementation examples section to Button Page. Rearranged TextField borderless example."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5ee04de940661f1d3b32197aa6b8b11a158e6a72",
+            "comment": "Updated the Fabric Core package version"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "13e4d1734abd87adb983b1cfc57171033ef88bc3",
+            "comment": "Fix Image css so it doesn't fade in if shouldStartVisible is true"
+          },
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "68a345d9e55491298d70cee431bd1f418a67fd44",
+            "comment": "Fix refs in Dropdown and Datepicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "385db1890e957ed7410f615b0ae6b452ef53488c",
+            "comment": "ComboBox: the label now appears disabled when the ComboBox is disabled."
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "046c4698dd69553e32193c1e2cdd973dc6ee27f9",
+            "comment": "\"ContextualMenu: SplitButtons can now appear inside menus\""
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "608f8d4811dd799cfb20210332d3672ee229dada",
+            "comment": "Theming: add SASS variables for semantic theming to support legacy scenarios\""
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.2.1 <6.0.0` to `>=5.3.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.3",
       "tag": "office-ui-fabric-react_v5.9.3",
       "date": "Tue, 17 Oct 2017 17:17:41 GMT",
