@@ -6,6 +6,10 @@ import {
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
+interface ITestClasses {
+  root: string;
+}
+
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
 describe('mergeStyleSets', () => {
@@ -89,8 +93,8 @@ describe('mergeStyleSets', () => {
   });
 
   it('can auto expand a previously registered style', () => {
-    const styles: { root: string } = mergeStyleSets({ root: { background: 'red' } });
-    const styles2: { root: string } = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
+    const styles: ITestClasses = mergeStyleSets({ root: { background: 'red' } });
+    const styles2: ITestClasses = mergeStyleSets({ root: [{ background: 'purple' }, styles.root] });
 
     expect(styles.root).toEqual(styles2.root);
 
@@ -98,4 +102,29 @@ describe('mergeStyleSets', () => {
       '.root-0{background:red;}'
     );
   });
+
+  it('can merge two sets with class names', () => {
+    const styleSet1: ITestClasses = mergeStyleSets({
+      root: [
+        'ms-Foo',
+        { background: 'red' }
+      ]
+    });
+    const styleSet2: ITestClasses = mergeStyleSets(
+      styleSet1,
+      {
+        root: [
+          'ms-Bar',
+          { background: 'green' }
+        ]
+      }
+    );
+
+    expect(styleSet2).toEqual({ root: 'ms-Foo ms-Bar root-1' });
+    expect(_stylesheet.getRules()).toEqual(
+      '.root-0{background:red;}' +
+      '.root-1{background:green;}'
+    );
+  });
+
 });

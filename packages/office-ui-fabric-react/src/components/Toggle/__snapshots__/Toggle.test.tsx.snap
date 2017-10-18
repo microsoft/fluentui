@@ -13,7 +13,6 @@ exports[`Toggle renders toggle correctly 1`] = `
     className=
         ms-Label
         ms-Toggle-label
-
         {
           box-shadow: none;
           box-sizing: border-box;
