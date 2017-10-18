@@ -102,14 +102,6 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].color = getColorFromString('#106ebe');
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].color = getColorFromString('#005a9e');
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].color = getColorFromString('#004578');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade4]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade5]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].isCustomized = true;
 
   // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].color = getColorFromString('#eaeaea');
@@ -120,14 +112,6 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].color = getColorFromString('#3c3c3c');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].isCustomized = true;
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].isCustomized = true;
 
   function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false) {
     slotRules[slotName] = {

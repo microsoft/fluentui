@@ -4,11 +4,18 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { Slider } from './Slider';
 import { ISlider } from './Slider.Props';
 
 describe('Slider', () => {
+
+  it('renders Slider correctly', () => {
+    const component = renderer.create(<Slider />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('renders a slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
@@ -82,6 +89,7 @@ describe('Slider', () => {
     let slider: ISlider | undefined;
 
     ReactTestUtils.renderIntoDocument(
+      // tslint:disable-next-line:jsx-no-lambda
       <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
     expect(slider!.value).toEqual(12);

@@ -1,9 +1,10 @@
-import { setRTL } from './transforms/rtlifyRules';
-import { styleToClassName } from './styleToClassName';
 import {
   InjectionMode,
   Stylesheet
 } from './Stylesheet';
+
+import { setRTL } from './transforms/rtlifyRules';
+import { styleToClassName } from './styleToClassName';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -30,6 +31,26 @@ describe('styleToClassName', () => {
 
     expect(className).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:green;}');
+  });
+
+  it('can have child selectors', () => {
+    styleToClassName({
+      selectors: {
+        '.foo': { background: 'red' }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
+  });
+
+  it('can have same element class selectors', () => {
+    styleToClassName({
+      selectors: {
+        '&.foo': [{ background: 'red' }]
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.foo{background:red;}');
   });
 
   it('can register pseudo selectors', () => {
@@ -126,6 +147,32 @@ describe('styleToClassName', () => {
     });
 
     expect(_stylesheet.getRules()).toEqual('.css-0.css-0.css-0{background:red;}');
+  });
+
+  it('can apply media queries', () => {
+    styleToClassName({
+      background: 'blue',
+      selectors: {
+        '@media(min-width: 300px)': {
+          background: 'red',
+          selectors: {
+            ':hover': {
+              background: 'green'
+            }
+          }
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:blue;}' +
+      '@media(min-width: 300px){' +
+      '.css-0{background:red;}' +
+      '}' +
+      '@media(min-width: 300px){' +
+      '.css-0:hover{background:green;}' +
+      '}'
+    );
   });
 
 });

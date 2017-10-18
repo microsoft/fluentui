@@ -23,6 +23,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
+          component: require<any>('../components/Form/FormPage').FormPage,
+          key: 'Form',
+          name: 'Form',
+          url: '#/examples/form'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
@@ -39,6 +45,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
+          key: 'ExtendedPeoplePicker',
+          name: 'ExtendedPeoplePicker',
+          url: '#/examples/extendedpeoplepicker'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
+          url: '#/examples/floatingpeoplepicker'
         }
       ]
     }

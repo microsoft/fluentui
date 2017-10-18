@@ -297,7 +297,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
       let { themeRules } = this.state;
       const bgColor = getHexFromColor(response.color.dominantColorBackground, true);
-      const bgColorIsDark = isDark(getColorFromString(bgColor));
+      const bgColorIsDark = isDark(getColorFromString(bgColor)!);
       ThemeGenerator.setSlot(
         themeRules[BaseSlots[BaseSlots.backgroundColor]],
         bgColor,

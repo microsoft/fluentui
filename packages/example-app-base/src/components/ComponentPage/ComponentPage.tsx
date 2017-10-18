@@ -17,6 +17,7 @@ export interface IComponentPageProps {
   title: string;
   componentName: string;
   exampleCards?: JSX.Element;
+  implementationExampleCards?: JSX.Element;
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
@@ -69,6 +70,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             </div>
             { this._getDosAndDonts() }
             { this._getVariants() }
+            { this._getImplementationExamples() }
             { this._getPropertiesTable() }
             { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
               return this._getSection(componentPageSection);
@@ -101,7 +103,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink' key='nav-link'>
-          <Link { ...{ href: this._baseUrl + '#Best Practices' } }>Best Practices</Link>
+          <Link { ...{ href: this._baseUrl + '#BestPractices' } }>Best Practices</Link>
         </div>
       );
     }
@@ -114,6 +116,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { links }
         { this.props.exampleCards && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
+        </div> }
+        { this.props.implementationExampleCards && <div className='ComponentPage-navLink'>
+          <Link { ...{ href: this._baseUrl + '#ImplementationExamples' } }>Implementation Examples</Link>
         </div> }
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
@@ -159,7 +164,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.bestPractices) {
       dosAndDonts.push(
-        <div className='ComponentPage-usage' id='Best Practices' key='best-practices'>
+        <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
           <h2 className='ComponentPage-subHeading'>Best Practices</h2>
           { this.props.bestPractices }
         </div>
@@ -196,6 +201,19 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className='ComponentPage-variantsSection'>
           <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
           { this.props.exampleCards }
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getImplementationExamples(): JSX.Element | undefined {
+    if (this.props.implementationExampleCards) {
+      return (
+        <div className='ComponentPage-implementationExamplesSection'>
+          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='ImplementationExamples'>Implementation Examples</h2>
+          { this.props.implementationExampleCards }
         </div>
       );
     }

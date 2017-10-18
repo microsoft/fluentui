@@ -105,7 +105,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     beakWidth: 16,
     arrowDirection: FocusZoneDirection.vertical,
     getMenuClassNames: getContextualMenuClassNames,
-    getItemClassNames: getItemClassNames,
   };
 
   private _host: HTMLElement;
@@ -202,7 +201,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } = this.props;
 
     let menuClassNames = this.props.getMenuClassNames ? this.props.getMenuClassNames : getContextualMenuClassNames;
-    this._classNames = menuClassNames(theme!, className!);
+    this._classNames = menuClassNames(theme!, className);
 
     let hasIcons = itemsHaveIcons(items);
 
@@ -309,7 +308,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     let dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    let getClassNames = this.props.getItemClassNames ? this.props.getItemClassNames : getItemClassNames;
+    let getClassNames = item.getItemClassNames ? item.getItemClassNames : getItemClassNames;
     let itemClassNames = getClassNames(
       this.props.theme!,
       !!item.disabled,
@@ -317,10 +316,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       !!getIsChecked(item),
       !!item.href,
       (iconProps.iconName !== 'None'),
-      item.className!,
-      dividerClassName!,
-      iconProps.className!,
-      subMenuIconClassName!
+      item.className,
+      dividerClassName,
+      iconProps.className,
+      subMenuIconClassName
     );
 
     if (item.name === '-') {
@@ -412,11 +411,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderNormalItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
-      return [item.onRender(item)];
+      return [item.onRender(item, this.dismiss)];
     }
     if (item.href) {
       return this._renderAnchorMenuItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
+
+    if (item.split && hasSubmenuItems(item)) {
+      return this._renderSplitButton(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+    }
+
     return this._renderButtonItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
   }
 
@@ -493,6 +497,73 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'button',
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
       this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!));
+  }
+
+  private _renderSplitButton(
+    item: IContextualMenuItem,
+    classNames: IMenuItemClassNames,
+    index: number,
+    focusableElementIndex: number,
+    totalItemCount: number,
+    hasCheckmarks?: boolean,
+    hasIcons?: boolean): JSX.Element {
+
+    return (
+      <div
+        aria-labelledby={ item.ariaLabel }
+        aria-disabled={ item.isDisabled || item.disabled }
+        aria-haspopup={ true }
+        aria-describedby={ item.ariaDescription }
+        aria-checked={ item.isChecked || item.checked }
+      >
+        <span
+          aria-hidden={ true }
+          className={ classNames.splitContainer }
+        >
+          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+          { this._renderSplitIconButton(item, classNames, index) }
+          { this._renderSplitDivider(classNames) }
+        </span>
+      </div>
+    );
+  }
+
+  private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+
+    const isChecked: boolean | null | undefined = getIsChecked(item);
+    const canCheck: boolean = isChecked !== null;
+    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
+
+    const itemProps = {
+      onClick: this._executeItemClick.bind(this, item),
+      disabled: item.disabled || item.primaryDisabled,
+      name: item.name,
+      className: classNames.splitPrimary,
+      role: item.role || defaultRole,
+      canCheck: item.canCheck,
+      isChecked: item.isChecked,
+      checked: item.checked,
+    } as IContextualMenuItem;
+    return React.createElement('button',
+      getNativeProps(itemProps, buttonProperties),
+      this._renderMenuItemChildren(itemProps, classNames, index, hasCheckmarks, hasIcons));
+  }
+
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+    const itemProps = {
+      onClick: this._onItemClick.bind(this, item),
+      disabled: item.disabled,
+      className: classNames.splitMenu,
+      subMenuProps: item.subMenuProps,
+      submenuIconProps: item.submenuIconProps
+    } as IContextualMenuItem;
+    return React.createElement('button',
+      getNativeProps(itemProps, buttonProperties),
+      this._renderMenuItemChildren(itemProps, classNames, index, false, false));
+  }
+
+  private _renderSplitDivider(classNames: IMenuItemClassNames) {
+    return <span className={ classNames.splitButtonSeparator } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
