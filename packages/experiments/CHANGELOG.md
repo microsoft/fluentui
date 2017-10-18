@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 17 Oct 2017 17:17:41 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+
+## 5.2.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add Form control
 
 ## 5.1.0
 Tue, 17 Oct 2017 17:17:41 GMT

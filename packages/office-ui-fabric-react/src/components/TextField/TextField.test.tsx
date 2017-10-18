@@ -2,6 +2,7 @@ import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { TextField } from './TextField';
 
@@ -22,6 +23,12 @@ describe('TextField', () => {
   function delay(millisecond: number): Promise<void> {
     return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
   }
+
+  it('renders TextField correctly', () => {
+    const component = renderer.create(<TextField label='Label' />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('should render label and value to input element', () => {
     const exampleLabel: string = 'this is label';

@@ -4,6 +4,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
@@ -20,6 +21,16 @@ describe('Toggle', () => {
     let labelElement = renderedDOM.querySelector('.ms-Toggle-label') as Element;
 
     expect(labelElement.textContent).toEqual('Label');
+  });
+
+  it('renders toggle correctly', () => {
+    const component = renderer.create(
+      <Toggle
+        label='Label'
+      />
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders aria-label', () => {

@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 17 Oct 2017 17:17:41 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+
+## 5.10.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- ComboBox: the label now appears disabled when the ComboBox is disabled.
+- "ContextualMenu: SplitButtons can now appear inside menus"
+- Theming: add SASS variables for semantic theming to support legacy scenarios"
+
+### Patches
+
+- Added implementation examples section to Button Page. Rearranged TextField borderless example.
+- Updated the Fabric Core package version
+- Fix Image css so it doesn't fade in if shouldStartVisible is true
+- Fix refs in Dropdown and Datepicker
 
 ## 5.9.3
 Tue, 17 Oct 2017 17:17:41 GMT
