@@ -23,7 +23,6 @@ describe('extractStyleParts', () => {
 
   it('can expand previously registered rules', () => {
     const className = mergeStyles({ left: 1 });
-    debugger;
     const { classes, objects } = extractStyleParts(className, { left: 2 });
 
     expect(classes).toEqual([]);
