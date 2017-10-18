@@ -245,7 +245,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     } else {
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
         if (!this.state.dragRect) {
-          this._preservedIndicies = this._getPreservedIndices(this.props);
+          const {
+            selection
+          } = this.props;
+
+          this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
         }
         // We need to constrain the current point to the rootRect boundaries.
         let constrainedPoint = this.props.isDraggingConstrainedToRoot ? {
@@ -406,21 +410,5 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
 
     selection.setChangeEvents(true);
-  }
-
-  private _getPreservedIndices(props: IMarqueeSelectionProps): number[] {
-    const {
-      selection
-    } = props;
-
-    const selectedIndices: number[] = [];
-
-    for (let i = 0, length = selection.getItems().length; i < length; i++) {
-      if (selection.isIndexSelected(i)) {
-        selectedIndices.push(i);
-      }
-    }
-
-    return selectedIndices;
   }
 }
