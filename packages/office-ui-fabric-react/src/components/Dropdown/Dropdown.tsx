@@ -43,12 +43,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private static Option: string = 'option';
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement,
-    focusZone: FocusZone
-  };
-
+  private _root: HTMLElement;
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
   // tslint:disable-next-line:no-unused-variable
@@ -143,7 +138,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
 
     return (
-      <div ref='root' className={ css('ms-Dropdown-container') }>
+      <div ref={ this._resolveRef('_root') } className={ css('ms-Dropdown-container') }>
         { label && (
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
