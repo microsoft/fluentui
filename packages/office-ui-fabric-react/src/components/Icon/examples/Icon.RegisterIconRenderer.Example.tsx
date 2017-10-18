@@ -10,15 +10,19 @@ export class IconRegisterIconRendererExample extends React.Component<any, any> {
   public componentWillMount() {
     this._unsubscribeRendererFn = registerIconRenderer((iconProps: IIconProps) => {
       // This function can return any valid JSX.Element icon (e.g. an svg, an svg use reference, an img that points to a png/bmp, a sprite w/ appropriate css styling applied, etc.)
-      if (iconProps.iconName === 'Dot') {
-        return (
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-            <circle cx='50' cy='50' r='40' fill='orange' />
-          </svg>);
+      switch (iconProps.iconName) {
+        case 'Dot':
+          return (
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+              <circle cx='50' cy='50' r='40' fill='orange' />
+            </svg>);
+        case 'OneDrive':
+          return oneDriveIcon();
+        case 'Yammer':
+          return yammerIcon();
       }
-      return iconProps.iconName === 'OneDrive' ? oneDriveIcon() :
-        iconProps.iconName === 'Yammer' ? yammerIcon() :
-          null;
+
+      return null;
     });
   }
 
