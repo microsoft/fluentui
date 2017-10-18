@@ -3,9 +3,22 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Breadcrumb, IBreadCrumbData } from './Breadcrumb';
 import { IRenderFunction } from '../../Utilities';
+import { ITheme } from '../../Styling';
 
 export interface IBreadcrumb {
 
+}
+
+export interface IBreadcrumbClassNames {
+  root: string;
+  list: string;
+  overflow: string;
+  overflowButton: string;
+  chevron: string;
+  listItem: string;
+  itemLink: string;
+  item: string;
+  crumbText: string;
 }
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
@@ -14,6 +27,16 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * the public methods and properties of the component.
    */
   componentRef?: (component: IBreadcrumb) => void;
+
+  /**
+   * Provided theme.
+   */
+  theme?: ITheme;
+
+  /**
+   * Overridable function to derive the classNames.
+   */
+  getClassNames?: (theme?: ITheme, className?: string) => IBreadcrumbClassNames;
 
   /**
    * Collection of breadcrumbs to render
