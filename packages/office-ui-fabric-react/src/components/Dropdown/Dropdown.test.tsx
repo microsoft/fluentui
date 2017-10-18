@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import {
   KeyCodes,
@@ -25,6 +26,12 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 describe('Dropdown', () => {
 
   describe('single-select', () => {
+
+    it('Renders single-select Dropdown correctly', () => {
+      const component = renderer.create(<Dropdown options={ DEFAULT_OPTIONS } />);
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
     it('Can flip between enabled and disabled.', () => {
 
@@ -352,6 +359,15 @@ describe('Dropdown', () => {
   });
 
   describe('multi-select', () => {
+    it('Renders multiselect Dropdown correctly', () => {
+      const component = renderer.create(
+        <Dropdown
+          options={ DEFAULT_OPTIONS }
+          multiSelect
+        />);
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
     it('Renders no selected item in default case', () => {
       let container = document.createElement('div');

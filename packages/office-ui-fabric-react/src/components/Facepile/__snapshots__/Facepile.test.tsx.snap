@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
+<div
+  className="ms-Facepile"
+>
+  <div
+    className="ms-Facepile-itemContainer"
+  >
+    <div
+      aria-describedby="0"
+      aria-labelledby={undefined}
+      className="ms-FocusZone ms-Facepile-members"
+      data-focuszone-id="FocusZone1"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="listbox"
+    >
+      <div
+        className="ms-Facepile-itemButton ms-Facepile-person"
+        data="50%"
+        data-is-focusable={true}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        role="option"
+        title="Annie Lindqvist"
+      >
+        <div
+          className="ms-Persona-coin ms-Persona--xs undefined"
+          size={2}
+        >
+          <div
+            className="ms-Persona-imageArea"
+            style={undefined}
+          >
+            <div
+              aria-hidden="true"
+              className="ms-Persona-initials ms-Persona-initials--darkRed undefined"
+              style={undefined}
+            >
+              <span>
+                AL
+              </span>
+            </div>
+            <div
+              className="ms-Image ms-Persona-image"
+              style={
+                Object {
+                  "height": 32,
+                  "width": 32,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="ms-Facepile-itemButton ms-Facepile-person"
+        data="$1,000"
+        data-is-focusable={true}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        role="option"
+        title="Aaron Reid"
+      >
+        <div
+          className="ms-Persona-coin ms-Persona--xs undefined"
+          size={2}
+        >
+          <div
+            className="ms-Persona-imageArea"
+            style={undefined}
+          >
+            <div
+              aria-hidden="true"
+              className="ms-Persona-initials ms-Persona-initials--lightPink undefined"
+              style={undefined}
+            >
+              <span>
+                AR
+              </span>
+            </div>
+            <div
+              className="ms-Image ms-Persona-image"
+              style={
+                Object {
+                  "height": 32,
+                  "width": 32,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        aria-describedby={null}
+        aria-label={undefined}
+        aria-labelledby={null}
+        aria-pressed={undefined}
+        className="ms-Facepile-itemButton ms-Facepile-person ms-Button "
+        data="75%"
+        data-is-focusable={true}
+        disabled={undefined}
+        onClick={[Function]}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        role="option"
+        title="Alex Lundberg"
+        type="button"
+      >
+        <div
+          className="ms-Button-flexContainer"
+        >
+          <div
+            className="ms-Persona-coin ms-Persona--xs undefined"
+            size={2}
+          >
+            <div
+              className="ms-Persona-imageArea"
+              style={undefined}
+            >
+              <div
+                aria-hidden="true"
+                className="ms-Persona-initials ms-Persona-initials--black undefined"
+                style={undefined}
+              >
+                <span>
+                  AL
+                </span>
+              </div>
+              <div
+                className="ms-Image ms-Persona-image"
+                style={
+                  Object {
+                    "height": 32,
+                    "width": 32,
+                  }
+                }
+              >
+                <img
+                  alt=""
+                  className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                  onError={[Function]}
+                  onLoad={[Function]}
+                  role={undefined}
+                  src={undefined}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

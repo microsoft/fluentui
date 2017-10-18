@@ -8,6 +8,8 @@ For snapshot testing, we use `react-test-renderer` and Jest apis.
 
 For creating React functional tests, we use [Enzyme](http://airbnb.io/enzyme/) to automate rendering. This gives us helpers for mounting a component, accessing elements rendered by it, and simulating clicks and keypresses.
 
+Visual regression testing uses [Storybook](https://storybook.js.org/basics/introduction/) to document various UI states of components.
+
 ## Running tests
 
 In command prompt navigate to the appropriate package, for example `packages/office-ui-fabric-react`
@@ -75,7 +77,7 @@ If you ever break a snapshot, you can update all baselines either manually, or u
 
 In cases where you need to automate a component and validate it performs correctly, you can use [Enzyme](http://airbnb.io/enzyme/) apis to mount components, evaluate dom structure, and simulate events.
 
-```
+```jsx
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
     const commandBar = mount<CommandBar>(
       <CommandBar
@@ -103,6 +105,76 @@ In cases where you need to automate a component and validate it performs correct
     menuItem.simulate('click');
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
+```
+
+### Visual regression testing
+
+[Storybook](https://storybook.js.org/basics/introduction/) is a dev environment for UI components. We write 'stories' to capture different states of components. With every pull request, the stories are rendered by Screener to check for any visual changes. Screener posts a status to Github PRs where you can view the visual test report. If changes are found, the status will fail on Github until the regressions are fixed or an admin approves the changes.
+
+Stories are found at `./apps/vr-tests/src/stories`. Most stories are written with a `FabricDecorator` that wraps the components with consistent padding. [Screener](https://github.com/screener-io/screener-storybook) steps are added to crop to a specific CSS class (most stories should crop to the `.testWrapper` class of the `FabricDecorator`) and to simulate different events, such as `hover` and `click`.
+
+```jsx
+import * as React from 'react';
+import Screener, { Steps } from 'screener-storybook/src/screener';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
+import { Link, ILinkProps } from 'office-ui-fabric-react';
+
+storiesOf('Link', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={ new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Link')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Link')
+        .hover('.ms-Link') // Always add a 'hover' step after 'click'
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end() // Every set of Screener steps should finish with 'end()'
+      }
+    >
+      { story() }
+    </Screener>
+  ))
+  .add('Root', () => (<Link href='#'>I'm a link</Link>))
+  .add('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
+  .add('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>));
+```
+
+Certain components may be written with a custom decorator/wrapper, and you may crop to a different CSS class or omit the `cropTo` option altogether. Components that render outside its container, require specific styles on its parent, or render on a different layer, such as Callout, are cases where you would customize the decorators.
+
+```jsx
+storiesOf('Slider', module)
+  .addDecorator(story => (
+    // Vertical slider requires its parent to have a height specified
+    <div style={ { width: '300px', height: '200px', display: 'flex' } }>
+      { story() } // Render story (component) inside this container
+    </div>
+  ))
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Slider-line')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      { story() }
+    </Screener>
+  )).add('Vertical', () => (
+    <Slider
+      label='Basic example:'
+      min={ 1 }
+      max={ 3 }
+      step={ 1 }
+      defaultValue={ 2 }
+      showValue={ true }
+      vertical={ true }
+    />
+  ));
 ```
 
 ## FAQ
