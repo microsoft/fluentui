@@ -22,6 +22,15 @@
     * `export interface IExcitingNewComponent {}`
   * Add your props interface to this file.
     * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
+  * Create and export and interface for ExcitingNewComponent styles.
+```
+    export interface I{{componentName}}Styles {
+      /**
+      * Style for the root element
+      */
+      root?: IStyle;
+    }
+```
 4. Create a react file, `ExcitingNewComponent.tsx`.
   * Import React
     * `import * as React from 'react';`
@@ -32,7 +41,7 @@
   * Add your class to this file.
     * Add the following example class
     * `export class ExcitingNewComponent extends BaseComponent<IExcitingNewComponentProps, {}> { };`
-5. Create a class names file `ExcitingNewComponent.Props.tsx`
+5. Create a class names file `ExcitingNewComponent.classNames.ts`
   * Import memoizeFunction.
     * `import { memoizeFunction } from '../../Utilities';`
   * Import mergeStyles.
