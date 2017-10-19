@@ -27,6 +27,14 @@ export interface IColorPickerState {
 }
 
 export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerState> {
+  public static defaultProps = {
+    hexLabel: 'Hex',
+    redLabel: 'Red',
+    greenLabel: 'Green',
+    blueLabel: 'Blue',
+    alphaLabel: 'Alpha'
+  };
+
   private hexText: TextField;
   private rText: TextField;
   private gText: TextField;
@@ -73,12 +81,12 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
           <table className={ css('ms-ColorPicker-table', styles.table) } cellPadding='0' cellSpacing='0'>
             <thead>
               <tr className={ FontClassNames.small }>
-                <td className={ styles.tableHexCell }>{ this.props.hexLabel || 'Hex' }</td>
-                <td>{ this.props.redLabel || 'Red' }</td>
-                <td>{ this.props.greenLabel || 'Green' }</td>
-                <td>{ this.props.blueLabel || 'Blue' }</td>
+                <td className={ styles.tableHexCell }>{ this.props.hexLabel }</td>
+                <td>{ this.props.redLabel }</td>
+                <td>{ this.props.greenLabel }</td>
+                <td>{ this.props.blueLabel }</td>
                 { !this.props.alphaSliderHidden && (
-                  <td>{ this.props.alphaLabel || 'Alpha' }</td>) }
+                  <td>{ this.props.alphaLabel }</td>) }
               </tr>
             </thead>
             <tbody>
