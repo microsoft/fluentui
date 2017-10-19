@@ -2,7 +2,7 @@
 	"fontName": "fabric-icons-10",
 	"fontFamilyName": "FabricMDL2Icons-10",
 	"excludeGlyphs": false,
-	"chunkSubsets": true,
+	"chunkSubsets": false,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
@@ -151,22 +151,6 @@
 		{
 			"name": "ChevronRightEnd6",
 			"unicode": "F372"
-		},
-		{
-			"name": "EgnyteLogo",
-			"unicode": "F373"
-		},
-		{
-			"name": "GoogleDriveLogoLeftGreen",
-			"unicode": "F374"
-		},
-		{
-			"name": "GoogleDriveLogoBottomBlue",
-			"unicode": "F375"
-		},
-		{
-			"name": "GoogleDriveLogoRightYellow",
-			"unicode": "F376"
 		},
 		{
 			"name": "AzureAPIManagement",

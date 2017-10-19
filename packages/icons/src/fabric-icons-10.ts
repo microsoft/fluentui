@@ -13,7 +13,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-10"`,
-      src: `url('${baseUrl}fabric-icons-10-795d6e25.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-10-a9486bb8.woff') format('woff')`, 
     },
     icons: {
       'BankSolid': '\uF34F',
@@ -52,10 +52,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ChevronUpEnd6': '\uF370',
       'ChevronLeftEnd6': '\uF371',
       'ChevronRightEnd6': '\uF372',
-      'EgnyteLogo': '\uF373',
-      'GoogleDriveLogoLeftGreen': '\uF374',
-      'GoogleDriveLogoBottomBlue': '\uF375',
-      'GoogleDriveLogoRightYellow': '\uF376',
       'AzureAPIManagement': '\uF37F',
       'AzureServiceEndpoint': '\uF380',
       'VSTSLogo': '\uF381',

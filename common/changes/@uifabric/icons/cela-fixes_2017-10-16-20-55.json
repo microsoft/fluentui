@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Updated icon sets to remove certain logos.",
+      "packageName": "@uifabric/icons",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "lynam.emily@gmail.com"
+}

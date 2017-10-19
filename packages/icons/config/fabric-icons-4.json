@@ -2,7 +2,7 @@
 	"fontName": "fabric-icons-4",
 	"fontFamilyName": "FabricMDL2Icons-4",
 	"excludeGlyphs": false,
-	"chunkSubsets": true,
+	"chunkSubsets": false,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
@@ -193,10 +193,6 @@
 			"unicode": "ECAF"
 		},
 		{
-			"name": "FacebookLogo",
-			"unicode": "ECB3"
-		},
-		{
 			"name": "AddTo",
 			"unicode": "ECC8"
 		},
@@ -381,16 +377,8 @@
 			"unicode": "ED73"
 		},
 		{
-			"name": "BoxLogo",
-			"unicode": "ED75"
-		},
-		{
 			"name": "DelveLogoInverse",
 			"unicode": "ED76"
-		},
-		{
-			"name": "DropboxLogo",
-			"unicode": "ED77"
 		},
 		{
 			"name": "ExchangeLogoInverse",
@@ -403,10 +391,6 @@
 		{
 			"name": "OfficeVideoLogoInverse",
 			"unicode": "ED7A"
-		},
-		{
-			"name": "ParatureLogo",
-			"unicode": "ED7B"
 		}
 	]
 }
