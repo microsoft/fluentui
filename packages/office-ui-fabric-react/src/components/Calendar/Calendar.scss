@@ -28,7 +28,6 @@ $Calendar-dayPicker-margin: 10px;
   display: none;
 }
 
-
 // When the picker opens, reveal the content.
 .picker.pickerIsOpened .holder {
   @include ms-borderBox;
@@ -39,7 +38,6 @@ $Calendar-dayPicker-margin: 10px;
 .pickerIsOpened {
   position: relative;
 }
-
 
 // The frame and wrap work together to ensure that
 // clicks within the picker don’t reach the holder.
@@ -54,12 +52,10 @@ $Calendar-dayPicker-margin: 10px;
   display: flex;
 }
 
-
 // Wrapper containing the calendar view to pick a specific date.
 .dayPicker {
   display: block;
 }
-
 
 // The header containing the month and year.
 .header {
@@ -68,7 +64,6 @@ $Calendar-dayPicker-margin: 10px;
   height: $Calendar-day;
   line-height: 44px;
 }
-
 
 // The month and year labels.
 .monthAndYear,
@@ -88,7 +83,6 @@ $Calendar-dayPicker-margin: 10px;
 .year {
   @include margin-left(5px);
 }
-
 
 // The calendar table of dates.
 .table {
@@ -120,7 +114,6 @@ $Calendar-dayPicker-margin: 10px;
   // border-radius: 2px;
 }
 
-
 // Today.
 .dayIsToday {
   position: relative;
@@ -131,25 +124,23 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-
 // Disabled day.
 .dayIsDisabled:before {
   border-top-color: $ms-color-neutralTertiary;
 }
 
-
 // Out of focus days.
-.dayIsUnfocused {
+.dayIsUnfocused{
   color: $ms-color-neutralTertiary;
   font-weight: $ms-font-weight-regular;
 }
-
 
 // Hovered date picker items.
 .dayIsFocused:hover,
 .dayIsUnfocused:hover {
   cursor: pointer;
   background: $ms-color-neutralTertiaryAlt;
+  color: $ms-color-black;
 }
 
 .day.dayIsHighlighted.dayIsFocused {
@@ -189,21 +180,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // Highlighted date squares
 .dayBackground, .weekBackground, .monthBackground{
-    background: $ms-color-neutralLight;
-}
-
-.dayBackground{
-  // border-radius: 2px;
-}
-
-.weekBackground{
-    &:first-child{
-      // border-radius: 2px 0px 0px 2px;
-    }
-
-    &:last-child{
-      // border-radius: 0px 2px 2px 0px;
-    }
+  background: $ms-color-neutralLighter;
 }
 
 .showWeekNumbers{
@@ -321,7 +298,6 @@ $Calendar-dayPicker-margin: 10px;
 
 }
 
-
 // Button to navigate to the current date.
 .goToday {
   bottom: 9px;
@@ -397,7 +373,6 @@ $Calendar-dayPicker-margin: 10px;
     line-height: $Calendar-day;
     font-size: $ms-font-size-s;
   }
-
 
   // Reduce the size of arrows to change month/year.
   .prevMonth,
@@ -611,13 +586,11 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-
 // Custom CSS for fabric-React
-
 
 .wrap span:focus,
 .wrap div:focus {
-  @include focus-border(1px, $ms-color-neutralSecondary);
+  @include focus-border(1px, $ms-color-neutralPrimaryAlt);
 }
 
 .goToday {
@@ -629,7 +602,6 @@ $Calendar-dayPicker-margin: 10px;
 .nextYear,
 .prevYear {
   display: inline-block;
-
   &:hover{
     background-color: $ms-color-neutralTertiaryAlt;
   }
@@ -642,7 +614,6 @@ $Calendar-dayPicker-margin: 10px;
 
 .monthIsHighlighted{
   background-color: $ms-color-themeLight;
-
   &.monthOption:hover{
     background-color: $ms-color-themeLight;
   }
@@ -652,7 +623,6 @@ $Calendar-dayPicker-margin: 10px;
   font-weight: 600;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
-
   &.monthOption:hover{
     font-weight: 600;
     color: $ms-color-white;
@@ -663,7 +633,6 @@ $Calendar-dayPicker-margin: 10px;
 .monthOption:active{
   background-color: $ms-color-themeLight;
 }
-
 
 // Highlighted Month date styling.
 // Border-radius to be updated once rolled out across fabric
