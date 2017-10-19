@@ -22,7 +22,7 @@
     * `export interface IExcitingNewComponent {}`
   * Add your props interface to this file.
     * `export interface IExcitingNewComponentProps extends React.Props<ExcitingNewComponent> { … Props }`
-  * Create and export and interface for ExcitingNewComponent styles.
+  * Create and export an interface for ExcitingNewComponent styles.
 ```
     export interface I{{componentName}}Styles {
       /**
