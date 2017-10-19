@@ -1,15 +1,37 @@
 
 import * as React from 'react';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { ICommandBarData } from './CommandBar';
+import { IContextualMenuItem } from '../ContextualMenu';
+import { IButtonStyles } from '../Button';
+import { IIconProps } from '../Icon';
 
 export interface ICommandBar {
   /**
    * Sets focus to the active command in the list.
    */
   focus(): void;
+}
+
+export interface ICommandBarData {
+  /**
+   * Items being rendered in the primary region
+   */
+  primaryItems: ICommandBarItemProps[];
+  /**
+   * Items being rendered in the overflow
+   */
+  overflowItems: ICommandBarItemProps[];
+  /**
+   * Items being rendered on the far side
+   */
+  farItems: ICommandBarItemProps[] | undefined;
+  /**
+   * Length of original overflowItems to ensure that they are not moved into primary region on resize
+   */
+  minimumOverflowItems: number;
+  /**
+   * Unique string used to cache the width of the command bar
+   */
+  cacheKey: string;
 }
 
 export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {

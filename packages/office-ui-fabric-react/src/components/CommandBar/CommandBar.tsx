@@ -3,40 +3,18 @@ import {
   BaseComponent,
   css,
   getId,
-  autobind
-} from 'office-ui-fabric-react/lib/Utilities';
-import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
-import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+  autobind,
+  nullRender
+} from '../../Utilities';
+import { ICommandBar, ICommandBarProps, ICommandBarItemProps, ICommandBarData } from './CommandBar.Props';
+import { CommandBarButton } from '../../Button';
+import { OverflowSet, IOverflowSet } from '../../OverflowSet';
+import { ResizeGroup } from '../../ResizeGroup';
+import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
-
-export interface ICommandBarData {
-  /**
-   * Items being rendered in the primary region
-   */
-  primaryItems: ICommandBarItemProps[];
-  /**
-   * Items being rendered in the overflow
-   */
-  overflowItems: ICommandBarItemProps[];
-  /**
-   * Items being rendered on the far side
-   */
-  farItems: ICommandBarItemProps[] | undefined;
-  /**
-   * Length of original overflowItems to ensure that they are not moved into primary region on resize
-   */
-  minimumOverflowItems: number;
-  /**
-   * Unique string used to cache the width of the command bar
-   */
-  cacheKey: string;
-}
 
 const COMMANDBAR_HEIGHT = '40px';
 
@@ -63,10 +41,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
       items,
       overflowItems,
       farItems,
-      elipisisAriaLabel,
-      elipisisIconProps,
-      buttonStyles,
-      onRenderButton = this._onRenderButton,
       onReduceData = this._onReduceData,
       onGrowData = this._onGrowData,
     } = this.props;
@@ -85,48 +59,60 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
         data={ commandBardata }
         onReduceData={ onReduceData }
         onGrowData={ onGrowData }
-        // tslint:disable-next-line:jsx-no-lambda
-        onRenderData={ (data: ICommandBarData) => {
-          return (
-            <div className={ css('ms-CommandBar', styles.root) }>
-
-              {/*Primary Items*/ }
-              <OverflowSet
-                componentRef={ this._resolveRef('_overflowSet') }
-                className={ css(styles.primarySet) }
-                items={ data.primaryItems }
-                overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
-                onRenderItem={ this._onRenderItems }
-                onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
-                  return (
-                    onRenderButton({
-                      key: 'oveflowButton',
-                      styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
-                      ariaLabel: elipisisAriaLabel,
-                      className: css(styles.overflowButton),
-                      menuProps: { items: renderedOverflowItems },
-                      menuIconProps: elipisisIconProps,
-                    })
-                  );
-                } }
-              />
-
-              {/*Secondary Items*/ }
-              <OverflowSet
-                className={ css(styles.secondarySet) }
-                items={ data.farItems }
-                onRenderItem={ this._onRenderItems }
-                onRenderOverflowButton={ () => null }
-              />
-            </div>
-          );
-        } }
+        onRenderData={ this._onRenderData }
       />
     );
   }
 
   public focus(): void {
     this._overflowSet.focus();
+  }
+
+  @autobind
+  private _onRenderData(data: ICommandBarData): JSX.Element {
+    return (
+      <div className={ css('ms-CommandBar', styles.root) }>
+
+        {/*Primary Items*/ }
+        <OverflowSet
+          componentRef={ this._resolveRef('_overflowSet') }
+          className={ css(styles.primarySet) }
+          items={ data.primaryItems }
+          overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
+          onRenderItem={ this._onRenderItems }
+          onRenderOverflowButton={ this._onRenderOverflowButton }
+        />
+
+        {/*Secondary Items*/ }
+        <OverflowSet
+          className={ css(styles.secondarySet) }
+          items={ data.farItems }
+          onRenderItem={ this._onRenderItems }
+          onRenderOverflowButton={ nullRender }
+        />
+      </div>
+    );
+  }
+
+  @autobind
+  private _onRenderOverflowButton(renderedOverflowItems: ICommandBarItemProps[]): JSX.Element {
+    let {
+      onRenderButton = this._onRenderButton,
+      buttonStyles,
+      elipisisAriaLabel,
+      elipisisIconProps
+     } = this.props;
+
+    return (
+      onRenderButton({
+        key: 'oveflowButton',
+        styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
+        ariaLabel: elipisisAriaLabel,
+        className: css(styles.overflowButton),
+        menuProps: { items: renderedOverflowItems },
+        menuIconProps: elipisisIconProps,
+      })
+    );
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
