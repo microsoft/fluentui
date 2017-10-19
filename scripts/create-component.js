@@ -18,6 +18,7 @@ const errorUnableToWritePropsFile = 'Unable to write props file';
 const errorUnableToOpenTemplate = 'Unable to open mustache template for component';
 const errorUnableToWriteComponentFile = 'Unable to write component file';
 const errorUnableToWriteComponentClassFile = 'Unable to write component class name file';
+const errorUnableToOpenClassNamesTemplate = 'Unable to open component class files template';
 const errorComponentName = 'Please pass in the component name using --name ExcitingNewComponentName';
 
 //Success strings
@@ -32,7 +33,7 @@ function handleError(error, errorPrependMessage) {
   }
 }
 
-function renderMustache() {
+function renderMustache(data) {
   return mustache.render(data, { componentName: newComponentName });
 }
 
@@ -49,7 +50,7 @@ function openMustachePropsTemplate(error, data) {
     return;
   }
 
-  const propsFileData = renderMustache();
+  const propsFileData = renderMustache(data);
 
   // After the we render the template let's try to write the result to the new component file
   fs.writeFile(componentFolderPath + '/' + componentPropsFileName, propsFileData, writePropsFile);
@@ -68,7 +69,7 @@ function openMustacheComponentTemplate(error, data) {
     return;
   }
 
-  const componentFileData = renderMustache();
+  const componentFileData = renderMustache(data);
   fs.writeFile(componentFolderPath + '/' + componentFileName, componentFileData, writeComponentFile);
 }
 
@@ -77,11 +78,19 @@ function writeComponentFile(error) {
     return;
   }
 
-  const componentFileData = renderMustache();
+  fs.readFile(templateFolderPath + '/EmptyClassNames.mustache', 'utf8', openMustacheClassNamesTemplate);
+}
+
+function openMustacheClassNamesTemplate(error, data) {
+  if (!handleError(error, errorUnableToWriteComponentClassFile)) {
+    return;
+  }
+
+  const componentFileData = renderMustache(data);
   fs.writeFile(componentFolderPath + '/' + componentFileClassNamesName, componentFileData, writeClassNamesFile);
 }
 
-function writeClassNamesFile() {
+function writeClassNamesFile(error) {
   if (!handleError(error, errorUnableToWriteComponentClassFile)) {
     return;
   }
