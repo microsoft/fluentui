@@ -17,7 +17,6 @@ const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/compo
 const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
 
-
 export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
