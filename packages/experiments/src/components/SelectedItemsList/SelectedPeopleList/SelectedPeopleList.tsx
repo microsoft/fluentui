@@ -1,48 +1,48 @@
 /* tslint:disable */
 import * as React from 'react';
-import { IPickerItemProps, ValidationState } from 'office-ui-fabric-react/lib/pickers';
+import { IPickerItemProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
-import { BaseSelectionItemsList } from '../BaseSelectionItemsList';
-import { IBaseSelectionItemsListProps } from '../BaseSelectionItemsList.Props';
+import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
+import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.Props';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import '../../../../../office-ui-fabric-react/src/components/Pickers/PeoplePicker/PeoplePicker.scss';
-import { SelectedItemCanExpand } from './Items/SelectedItemCanExpand';
+import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { autobind } from '../../../Utilities';
 
 export interface IExtendedPersonaProps extends IPersonaProps {
   canExpand?: boolean;
 }
 
-export interface IPeopleSelectionItemProps extends IPickerItemProps<IExtendedPersonaProps & { ValidationState: ValidationState }> {
+export interface ISelectedPeopleItemProps extends IPickerItemProps<IExtendedPersonaProps & { ValidationState: ValidationState }> {
   onExpandItem?: () => void;
   onCopyItem?: (item: IExtendedPersonaProps) => void;
   removeMenuItemText?: string;
   copyMenuItemText?: string;
 }
 
-export interface IPeopleSelectionProps extends IBaseSelectionItemsListProps<IPersonaProps> {
-  onExpandGroup?: (item: IPeopleSelectionItemProps) => void;
+export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IPersonaProps> {
+  onExpandGroup?: (item: ISelectedPeopleItemProps) => void;
   removeMenuItemText?: string;
   copyMenuItemText?: string;
 }
 
-export class BasePeopleSelectionItemsList extends BaseSelectionItemsList<IPersonaProps, IPeopleSelectionProps> {
+export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IPersonaProps, ISelectedPeopleProps> {
 }
 
 /**
  * Standard People Picker.
  */
-export class PeopleItemSelectionList extends BasePeopleSelectionItemsList {
+export class SelectedPeopleList extends BasePeopleSelectedItemsList {
   // tslint:disable-next-line:no-any
   public static defaultProps: any = {
-    onRenderItem: (props: IPeopleSelectionItemProps) => <SelectedItemCanExpand {...props} />,
+    onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
-  public onExpandItem(itemToExpand: IPeopleSelectionItemProps, expandedItems: IExtendedPersonaProps[]): void {
+  public onExpandItem(itemToExpand: ISelectedPeopleItemProps, expandedItems: IExtendedPersonaProps[]): void {
     let { items } = this.state;
     let index: number = items.indexOf(itemToExpand);
     // tslint:disable-next-line:no-any
-    let filteredExpandedItems = expandedItems.filter((item: any) => items.indexOf(item) === -1)
+    let filteredExpandedItems = expandedItems.filter((item: any) => items.indexOf(item) === -1);
     if (index > -1) {
       let newItems = items.slice(0, index).concat(filteredExpandedItems).concat(items.slice(index + 1));
       this.updateSelectedItems(newItems);
@@ -52,7 +52,7 @@ export class PeopleItemSelectionList extends BasePeopleSelectionItemsList {
   @autobind
   protected renderItems(): JSX.Element[] {
     let { removeButtonAriaLabel } = this.props;
-    let onRenderItem = this.props.onRenderItem as (props: IPeopleSelectionItemProps) => JSX.Element;
+    let onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
 
     let { items } = this.state;
     // tslint:disable-next-line:no-any

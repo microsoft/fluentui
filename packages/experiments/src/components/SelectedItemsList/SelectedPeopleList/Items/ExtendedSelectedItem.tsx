@@ -3,11 +3,11 @@ import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { ValidationState } from 'office-ui-fabric-react/lib/pickers';
-import { IExtendedPersonaProps, IPeopleSelectionItemProps } from '../PeopleItemList';
+import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { IExtendedPersonaProps, ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import * as stylesImport from './SelectedItemCanExpand.scss';
+import * as stylesImport from './ExtendedSelectedItem.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
@@ -15,12 +15,12 @@ export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class SelectedItemCanExpand extends BaseComponent<IPeopleSelectionItemProps, IPeoplePickerItemState> {
+export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   protected persona: HTMLElement;
 
   private menuItems: IContextualMenuItem[];
 
-  constructor(props: IPeopleSelectionItemProps) {
+  constructor(props: ISelectedPeopleItemProps) {
     super(props);
     this.state = { contextualMenuVisible: false };
     let { onCopyItem, onRemoveItem, copyMenuItemText, removeMenuItemText } = this.props;

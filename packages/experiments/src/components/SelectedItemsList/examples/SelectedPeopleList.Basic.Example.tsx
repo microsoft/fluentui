@@ -5,32 +5,31 @@ import {
   BaseComponent,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { PeopleItemSelectionList } from '../PeopleItemList/PeopleItemList';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from './PeopleExampleData';
+import { people, groupOne, groupTwo } from 'experiments/lib/ExtendedPicker';
 import '../../../../../office-ui-fabric-react/src/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IBaseSelectionItemsListProps } from '../BaseSelectionItemsList.Props';
-import { IExtendedPersonaProps, IPeopleSelectionItemProps } from '../PeopleItemList/PeopleItemList';
+import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.Props';
+import { IExtendedPersonaProps, ISelectedPeopleItemProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
 
-export class PeopleSelectionItemsListExample extends BaseComponent<IBaseSelectionItemsListProps<IExtendedPersonaProps>, {}> {
-  private _selectionList: PeopleItemSelectionList;
+export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedItemsListProps<IExtendedPersonaProps>, {}> {
+  private _selectionList: SelectedPeopleList;
   private index: number;
 
   public render(): JSX.Element {
     return (
-      <div>
-        { this._renderExtendedPicker() }
+      <div className={ 'ms-BasePicker-text' }>
         <PrimaryButton
           text='Add another item'
           onClick={ this._onAddItemButtonClicked }
         />
+        { this._renderExtendedPicker() }
       </div>
     );
   }
 
   private _renderExtendedPicker(): JSX.Element {
     return (
-      <PeopleItemSelectionList
+      <SelectedPeopleList
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
         removeButtonAriaLabel={ 'Remove' }
@@ -45,7 +44,7 @@ export class PeopleSelectionItemsListExample extends BaseComponent<IBaseSelectio
   }
 
   @autobind
-  private _setComponentRef(component: PeopleItemSelectionList): void {
+  private _setComponentRef(component: SelectedPeopleList): void {
     this._selectionList = component;
   }
 
@@ -55,13 +54,14 @@ export class PeopleSelectionItemsListExample extends BaseComponent<IBaseSelectio
       if (!this.index) {
         this.index = 0;
       }
-      this._selectionList.addItem(people[this.index]);
+      this._selectionList.addItems([people[this.index]]);
       this.index++;
     }
   }
 
   @autobind
-  private _onExpandItem(item: IPeopleSelectionItemProps): void {
+  private _onExpandItem(item: ISelectedPeopleItemProps): void {
+    // tslint:disable-next-line:no-any
     this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
 

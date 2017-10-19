@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/pickers';
+import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 
-export interface IBaseSelectionItemsList<T> {
+export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */
   items: T[] | undefined;
 
-  addItem: (item: T) => void;
+  addItems: (items: T[]) => void;
 }
 
-export interface ISelectionItemProps<T> extends IPickerItemProps<T> {
+export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
   onCopyItem: (item: T) => void;
 }
 
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseSelectionItemsListProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseSelectionItemsList<T>) => void;
+export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
+  componentRef?: (component?: IBaseSelectedItemsList<T>) => void;
   /**
    * A callback for when items are copied
    */
@@ -24,7 +24,7 @@ export interface IBaseSelectionItemsListProps<T> extends React.Props<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
-  onRenderItem?: (props: ISelectionItemProps<T>) => JSX.Element;
+  onRenderItem?: (props: ISelectedItemProps<T>) => JSX.Element;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -42,11 +42,6 @@ export interface IBaseSelectionItemsListProps<T> extends React.Props<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
   /**
-   * Aria label for the "X" button in the selected item component.
-   * @default ''
-   */
-  removeButtonAriaLabel?: string;
-  /**
    * A callback to process a selection after the user selects something from the picker.
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
@@ -55,4 +50,10 @@ export interface IBaseSelectionItemsListProps<T> extends React.Props<any> {
    * controlled component.
    */
   selectedItems?: T[];
+
+  /**
+  * Aria label for the 'X' button in the selected item component.
+  * @default ''
+  */
+  removeButtonAriaLabel?: string;
 }

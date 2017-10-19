@@ -7,20 +7,18 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePicker, IBasePickerSuggestionsProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { ExtendedPeoplePicker } from '../ExtendedPeoplePicker';
+import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people, mru } from './PeoplePickerExampleData';
-import { FloatingPeoplePicker, BaseFloatingPeoplePicker } from '../FloatingPeoplePicker';
-import { IBaseFloatingPickerProps } from '../../BaseFloatingPicker.Props';
+import { people, mru } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
+import { FloatingPeoplePicker, IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';
+import { IBaseSelectedItemsListProps, IExtendedPersonaProps, SelectedPeopleList } from 'experiments/lib/SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
-  currentPicker?: number | string;
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
-  currentSelectedItems?: IPersonaProps[];
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -35,7 +33,9 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 
 // tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
-  private _picker: IBasePicker<IPersonaProps>;
+  private _picker: ExtendedPeoplePicker;
+  private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  private selectedItemsListProps: IBaseSelectedItemsListProps<IExtendedPersonaProps>;
 
   constructor() {
     super();
@@ -50,7 +50,21 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
     this.state = {
       peopleList: peopleList,
       mostRecentlyUsed: mru,
-      currentSelectedItems: []
+    };
+
+    this.floatingPickerProps = {
+      suggestionsController: new SuggestionsController<IExtendedPersonaProps>(),
+      onResolveSuggestions: this._onFilterChanged,
+      getTextFromItem: this._getTextFromItem,
+      pickerSuggestionsProps: suggestionProps,
+      key: 'normal',
+      onRemoveSuggestion: this._onRemoveSuggestion,
+      onValidateInput: this._validateInput,
+      onZeroQuerySuggestion: this._returnMostRecentlyUsed,
+    };
+
+    this.selectedItemsListProps = {
+      onCopyItems: this._onCopyItems,
     };
   }
 
@@ -69,16 +83,12 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
   private _renderExtendedPicker(): JSX.Element {
     return (
       <ExtendedPeoplePicker
-        floatingPickerType={ FloatingPeoplePicker as new (props: IBaseFloatingPickerProps<IPersonaProps>) => BaseFloatingPeoplePicker }
-        onResolveSuggestions={ this._onFilterChanged }
-        onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ this._getTextFromItem }
-        pickerSuggestionsProps={ suggestionProps }
+        floatingPickerProps={ this.floatingPickerProps }
+        selectedItemsListProps={ this.selectedItemsListProps }
+        onRenderFloatingPicker={ this._onRenderFloatingPicker }
+        onRenderSelectedItems={ this._onRenderSelectedItems }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
-        onRemoveSuggestion={ this._onRemoveSuggestion }
-        onValidateInput={ this._validateInput }
-        removeButtonAriaLabel={ 'Remove' }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
@@ -89,8 +99,16 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
     );
   }
 
+  private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IExtendedPersonaProps>): JSX.Element {
+    return (<FloatingPeoplePicker {...props} />);
+  }
+
+  private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
+    return (<SelectedPeopleList {...props} />);
+  }
+
   @autobind
-  private _setComponentRef(component: IBasePicker<IPersonaProps>): void {
+  private _setComponentRef(component: ExtendedPeoplePicker): void {
     this._picker = component;
   }
 
@@ -134,8 +152,21 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
   @autobind
   private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
     let { mostRecentlyUsed } = this.state;
-    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
+    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
     return mostRecentlyUsed;
+  }
+
+  private _onCopyItems(items: IExtendedPersonaProps[]): string {
+    let copyText = '';
+    items.forEach((item: IExtendedPersonaProps, index: number) => {
+      copyText += item.primaryText;
+
+      if (index < items.length - 1) {
+        copyText += ', ';
+      }
+    });
+
+    return copyText;
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {

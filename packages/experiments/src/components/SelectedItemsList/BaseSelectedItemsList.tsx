@@ -7,12 +7,9 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { IBaseSelectionItemsList, IBaseSelectionItemsListProps, ISelectionItemProps } from './BaseSelectionItemsList.Props';
-import * as stylesImport from '../../../../office-ui-fabric-react/src/components/Pickers/BasePicker.scss';
-// tslint:disable-next-line:no-any
-const styles: any = stylesImport;
+import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.Props';
 
-export interface IBaseSelectionItemsListState {
+export interface IBaseSelectedItemsListState {
   // tslint:disable-next-line:no-any
   items?: any;
   suggestedDisplayValue?: string;
@@ -24,8 +21,8 @@ export interface IBaseSelectionItemsListState {
   isResultsFooterVisible?: boolean;
 }
 
-export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>>
-  extends BaseComponent<P, IBaseSelectionItemsListState> implements IBaseSelectionItemsList<T> {
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
+  extends BaseComponent<P, IBaseSelectedItemsListState> implements IBaseSelectedItemsList<T> {
 
   protected selection: Selection;
 
@@ -49,26 +46,48 @@ export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>
   }
 
   @autobind
-  public addItem(item: T): void {
+  public addItems(items: T[]): void {
     // tslint:disable-next-line:no-any
-    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+    let processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected ? (this.props.onItemSelected as any)(items) : items;
 
-    let processedItemObject: T = processedItem as T;
-    let processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
+    let processedItemObjects: T[] = processedItems as T[];
+    let processedItemPromiseLikes: PromiseLike<T[]> = processedItems as PromiseLike<T[]>;
 
-    if (processedItemPromiseLike && processedItemPromiseLike.then) {
-      processedItemPromiseLike.then((resolvedProcessedItem: T) => {
-        let newItems: T[] = this.state.items.concat([resolvedProcessedItem]);
+    if (processedItemPromiseLikes && processedItemPromiseLikes.then) {
+      processedItemPromiseLikes.then((resolvedProcessedItems: T[]) => {
+        let newItems: T[] = this.state.items.concat(resolvedProcessedItems);
         this.updateSelectedItems(newItems);
       });
     } else {
-      let newItems: T[] = this.state.items.concat([processedItemObject]);
+      let newItems: T[] = this.state.items.concat(processedItemObjects);
       this.updateSelectedItems(newItems);
     }
     this.setState({ suggestedDisplayValue: '' });
   }
 
-  public componentWillUpdate(newProps: P, newState: IBaseSelectionItemsListState): void {
+  @autobind
+  public removeItemAt(index: number): void {
+    let { items } = this.state;
+    // tslint:disable-next-line:no-any
+    if (index > -1) {
+      let newItems = items.slice(0, index).concat(items.slice(index + 1));
+      this.updateSelectedItems(newItems);
+    }
+  }
+
+  @autobind
+  public onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
+    if (this.props.onCopyItems && this.selection.getSelectedCount() > 0) {
+      let selectedItems: T[] = this.selection.getSelection() as T[];
+      this.copyItems(selectedItems);
+    }
+  }
+
+  public unselectAll(): void {
+    this.selection.setAllSelected(false);
+  }
+
+  public componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
@@ -110,10 +129,9 @@ export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>
           ref={ this._resolveRef('focusZone') }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
-          onCopy={ this.onCopy }
         >
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple } >
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' } onCopy={ this.onCopy }>
+            <div role={ 'list' }>
               { this.renderItems() }
             </div>
           </SelectionZone>
@@ -125,7 +143,7 @@ export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>
   @autobind
   protected renderItems(): JSX.Element[] {
     let { removeButtonAriaLabel } = this.props;
-    let onRenderItem = this.props.onRenderItem as (props: ISelectionItemProps<T>) => JSX.Element;
+    let onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
     let { items } = this.state;
     // tslint:disable-next-line:no-any
@@ -166,14 +184,6 @@ export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>
   }
 
   @autobind
-  protected onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
-    if (this.props.onCopyItems && this.selection.getSelectedCount() > 0) {
-      let selectedItems: T[] = this.selection.getSelection() as T[];
-      this.copyItems(selectedItems);
-    }
-  }
-
-  @autobind
   protected onItemChange(changedItem: T, index: number): void {
     let { items } = this.state;
 
@@ -186,7 +196,7 @@ export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>
   }
 
   @autobind
-  protected removeItem(item: ISelectionItemProps<T>): void {
+  protected removeItem(item: ISelectedItemProps<T>): void {
     let { items } = this.state;
     let index: number = items.indexOf(item);
 
@@ -224,12 +234,12 @@ export class BaseSelectionItemsList<T, P extends IBaseSelectionItemsListProps<T>
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
   */
-  protected updateSelectedItems(items: T[], focusIndex?: number): void {
+  protected async updateSelectedItems(items: T[], focusIndex?: number): Promise<void> {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
       this.onChange(items);
     } else {
-      this.setState({ items: items }, () => {
+      await this.setState({ items: items }, () => {
         this._onSelectedItemsUpdated(items, focusIndex);
       });
     }
