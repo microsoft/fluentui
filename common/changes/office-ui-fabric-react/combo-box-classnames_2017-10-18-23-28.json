@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu",
+      "comment": "ComboBox: Fix custom styling on menu options",
       "type": "patch"
     }
   ],

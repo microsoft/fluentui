@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox: expose onKeyDown event by invoking external prop",
+      "comment": "Fix minor state update bug with Sticky",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "f.dimauro92@gmail.com"
+  "email": "brwatt@microsoft.com"
 }

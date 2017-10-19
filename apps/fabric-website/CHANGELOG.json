@@ -2,6 +2,35 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.12",
+      "tag": "@uifabric/fabric-website_v5.0.12",
+      "date": "Wed, 18 Oct 2017 10:21:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5c408b0984d9d83323a2b3b22aa50b3768c2d711",
+            "comment": "TextField documentation style updates"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "745cec67c600088d6d0423ed4daed8e1c8ed2909",
+            "comment": "Removed branding guidance pdf, updated fabric asset license pdf, and fixed link colors"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ffd057952717cffcf356f308699f2ed88139a00b",
+            "comment": "Fixed in page navigation for Chrome and Firefox."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.9.2 <6.0.0` to `>=5.10.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.11",
       "tag": "@uifabric/fabric-website_v5.0.11",
       "date": "Mon, 16 Oct 2017 20:00:51 GMT",
