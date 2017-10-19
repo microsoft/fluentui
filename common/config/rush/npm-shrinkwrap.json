@@ -2490,9 +2490,9 @@
       "integrity": "sha1-7WM2lV6vIzt163kjubHzc9BF7wE="
     },
     "@types/jest": {
-      "version": "21.1.4",
-      "resolved": "https://registry.npmjs.org/@types/jest/-/jest-21.1.4.tgz",
-      "integrity": "sha512-CItNfCz6osAOxdhWMbUYbSz0iMGKuxDHu/0iaqnsGKQd98OY2J8EBtVQvozc3gXvPh2Y3uAjTGgqYv8rEj6qzA=="
+      "version": "21.1.2",
+      "resolved": "https://registry.npmjs.org/@types/jest/-/jest-21.1.2.tgz",
+      "integrity": "sha512-mZ0zVDNxpz44GzPHtKCFOUDEdcRUk2c1fDzWCpiGuyeJLLMOLuLlzuqOQk5fufVUJarwm4aZcQHLdYH22h25zg=="
     },
     "@types/mocha": {
       "version": "2.2.39",
@@ -3511,9 +3511,9 @@
       "integrity": "sha1-g2TKYt+Or7gwSZ9pkXdGbDsDSZ0="
     },
     "babel-preset-env": {
-      "version": "1.6.1",
-      "resolved": "https://registry.npmjs.org/babel-preset-env/-/babel-preset-env-1.6.1.tgz",
-      "integrity": "sha512-W6VIyA6Ch9ePMI7VptNn2wBM6dbG0eSz25HEiL40nQXCsXGTGZSTZu1Iap+cj3Q0S5a7T9+529l/5Bkvd+afNA==",
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/babel-preset-env/-/babel-preset-env-1.6.0.tgz",
+      "integrity": "sha512-OVgtQRuOZKckrILgMA5rvctvFZPv72Gua9Rt006AiPoB0DJKGN07UmaQA+qRrYgK71MVct8fFhT0EyNWYorVew==",
       "dependencies": {
         "browserslist": {
           "version": "2.5.1",
@@ -4800,9 +4800,9 @@
       "integrity": "sha1-Kh4rnlg/9f7Qwgo+4svz91IwpcA="
     },
     "es6-iterator": {
-      "version": "2.0.3",
-      "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-2.0.3.tgz",
-      "integrity": "sha1-p96IkUGgWpSwhUQDstCg+/qY87c="
+      "version": "2.0.1",
+      "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-2.0.1.tgz",
+      "integrity": "sha1-jjGcnwRTv1ddN0lAplWSDlnKVRI="
     },
     "es6-map": {
       "version": "0.1.5",
@@ -5425,9 +5425,9 @@
       "integrity": "sha1-/Xqtcmvxpf0W38KbL3pmAdJxOcQ="
     },
     "handlebars": {
-      "version": "4.0.11",
-      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.0.11.tgz",
-      "integrity": "sha1-Ywo13+ApS8KB7a5v/F0yn8eYLcw=",
+      "version": "4.0.10",
+      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.0.10.tgz",
+      "integrity": "sha1-PTDHGLCaPZbyPqTMH0A8TTup/08=",
       "dependencies": {
         "async": {
           "version": "1.5.2",
@@ -7179,11 +7179,6 @@
       "version": "1.1.0",
       "resolved": "https://registry.npmjs.org/multicast-dns-service-types/-/multicast-dns-service-types-1.1.0.tgz",
       "integrity": "sha1-iZ8R2WhuXgXLkbNdXw5jt3PPyQE="
-    },
-    "mustache": {
-      "version": "2.3.0",
-      "resolved": "https://registry.npmjs.org/mustache/-/mustache-2.3.0.tgz",
-      "integrity": "sha1-QCj3d4sXcIpImTCm5SrDvKDaQdA="
     },
     "mute-stream": {
       "version": "0.0.7",
@@ -10630,9 +10625,9 @@
       "integrity": "sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM="
     },
     "ts-jest": {
-      "version": "21.1.3",
-      "resolved": "https://registry.npmjs.org/ts-jest/-/ts-jest-21.1.3.tgz",
-      "integrity": "sha512-hTRIvxOjykHeuaNC9XkdNk+dbrt1NYzV3C6/CN4Ty9mCtBWrDLNCUtny9gKoIJS0UtwteuSmEdoLgr2biL+bDw==",
+      "version": "21.1.2",
+      "resolved": "https://registry.npmjs.org/ts-jest/-/ts-jest-21.1.2.tgz",
+      "integrity": "sha512-bcYDSvjxL1ralSBxAnM1fY6D3suWDMe73feNIEDKSuM30AsRag2ktv+9YcfM+ctXVUKFFJDyxZDNsHiFTz98lQ==",
       "dependencies": {
         "camelcase": {
           "version": "4.1.0",
@@ -11027,9 +11022,9 @@
       "integrity": "sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg=="
     },
     "webpack": {
-      "version": "3.8.1",
-      "resolved": "https://registry.npmjs.org/webpack/-/webpack-3.8.1.tgz",
-      "integrity": "sha512-5ZXLWWsMqHKFr5y0N3Eo5IIisxeEeRAajNq4mELb/WELOR7srdbQk2N5XiyNy2A/AgvlR3AmeBCZJW8lHrolbw==",
+      "version": "3.7.1",
+      "resolved": "https://registry.npmjs.org/webpack/-/webpack-3.7.1.tgz",
+      "integrity": "sha512-8MR+gVfxsvtx4J1UlbRGkUJEpDQUBFmisRmpPO5cVLgF21R8UMChX39OOjDz63a+m/iswGoqATszdZB2VCsYuA==",
       "dependencies": {
         "acorn": {
           "version": "5.1.2",
