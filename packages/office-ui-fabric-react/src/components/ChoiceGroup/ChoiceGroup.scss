@@ -213,6 +213,11 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
       .innerField {
         opacity: 0.25;
+
+        @include high-contrast {
+          color: GrayText;
+          opacity: 1;
+        }
       }
     }
 

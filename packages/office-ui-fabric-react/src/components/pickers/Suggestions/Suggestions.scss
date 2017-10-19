@@ -27,7 +27,8 @@
     }
 
     @include high-contrast {
-      border: 1px solid WindowText;
+      background: Highlight;
+      color: HighlightText;
     }
 
     .closeButton {
@@ -125,12 +126,20 @@
   height: 100%;
   width: 100%;
   padding: 7px 12px;
+
+  @include high-contrast {
+    color: WindowText;
+  }
 }
 
 .closeButton {
   padding: 0 4px;
   height: auto;
   width: 32px;
+
+  @include high-contrast {
+    color: WindowText;
+  }
 
   &:hover {
     background: $ms-color-neutralTertiaryAlt;

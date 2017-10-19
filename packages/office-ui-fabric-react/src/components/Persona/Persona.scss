@@ -92,10 +92,6 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-sizeMd;
   width: $ms-Persona-sizeMd;
 
-  @include high-contrast {
-    border: 1px solid WindowText;
-  }
-
   .image {
     border: 0px;
   }
@@ -121,6 +117,10 @@ $ms-Persona-presenceSizeXl: 28px;
   font-weight: $ms-font-weight-regular;
   line-height: 46px;
   height: $ms-Persona-sizeMd;
+
+  @include high-contrast {
+    border: 1px solid WindowText;
+  }
 
   &.initialsIsLightBlue {
     background-color: $ms-color-initials-lightBlue;
