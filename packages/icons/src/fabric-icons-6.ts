@@ -13,7 +13,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-4dfe7a38.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-6-328cd253.woff') format('woff')`, 
     },
     icons: {
       'CalendarAgenda': '\uEE9A',
