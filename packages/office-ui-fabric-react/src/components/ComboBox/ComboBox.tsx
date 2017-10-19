@@ -26,7 +26,8 @@ import {
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
-  getClassNames
+  getClassNames,
+  getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -936,8 +937,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    const optionStyles = this._getCurrentOptionStyles(item);
-    return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
   }
 
   /**
