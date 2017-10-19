@@ -20,13 +20,13 @@ export interface ISelectedPeopleItemProps extends IPickerItemProps<IExtendedPers
   copyMenuItemText?: string;
 }
 
-export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IPersonaProps> {
-  onExpandGroup?: (item: ISelectedPeopleItemProps) => void;
+export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPersonaProps> {
+  onExpandGroup?: (item: IExtendedPersonaProps) => void;
   removeMenuItemText?: string;
   copyMenuItemText?: string;
 }
 
-export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IPersonaProps, ISelectedPeopleProps> {
+export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {
 }
 
 /**
@@ -38,7 +38,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
-  public onExpandItem(itemToExpand: ISelectedPeopleItemProps, expandedItems: IExtendedPersonaProps[]): void {
+  public onExpandItem(itemToExpand: IExtendedPersonaProps, expandedItems: IExtendedPersonaProps[]): void {
     let { items } = this.state;
     let index: number = items.indexOf(itemToExpand);
     // tslint:disable-next-line:no-any
@@ -66,7 +66,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
       // tslint:disable-next-line:no-any
-      onExpandItem: () => (this.props.onExpandGroup as any)(item),
+      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as any)(item) : undefined,
       removeMenuItemText: this.props.removeMenuItemText,
       copyMenuItemText: this.props.copyMenuItemText,
     }));

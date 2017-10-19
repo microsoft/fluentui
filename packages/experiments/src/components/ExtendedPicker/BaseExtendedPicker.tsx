@@ -32,14 +32,14 @@ export interface IBaseExtendedPickerState {
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState>
   implements IBaseExtendedPicker<T> {
+  public floatingPicker: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
+  public selectedItemsList: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>;
 
   protected root: HTMLElement;
   protected input: BaseAutoFill;
   protected focusZone: FocusZone;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
-  protected floatingPicker: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
-  protected selectedItemsList: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);

@@ -11,10 +11,11 @@ import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } f
 import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people, mru } from './PeopleExampleData';
+import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';
-import { IBaseSelectedItemsListProps, IExtendedPersonaProps, SelectedPeopleList } from 'experiments/lib/SelectedItemsList';
+import { IBaseSelectedItemsListProps, IExtendedPersonaProps, ISelectedPeopleProps, SelectedPeopleList }
+  from 'experiments/lib/SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -35,7 +36,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
   private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
-  private selectedItemsListProps: IBaseSelectedItemsListProps<IExtendedPersonaProps>;
+  private selectedItemsListProps: ISelectedPeopleProps;
 
   constructor() {
     super();
@@ -65,6 +66,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
 
     this.selectedItemsListProps = {
       onCopyItems: this._onCopyItems,
+      onExpandGroup: this._onExpandItem,
+      removeMenuItemText: 'Remove',
+      copyMenuItemText: 'Copy name',
     };
   }
 
@@ -117,6 +121,12 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
     if (this._picker) {
       this._picker.focus();
     }
+  }
+
+  @autobind
+  private _onExpandItem(item: IExtendedPersonaProps): void {
+    // tslint:disable-next-line:no-any
+    (this._picker.selectedItemsList as SelectedPeopleList).onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
 
   @autobind
@@ -200,6 +210,17 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
       return ValidationState.warning;
     } else {
       return ValidationState.invalid;
+    }
+  }
+
+  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
+    switch (item.primaryText) {
+      case 'Group One':
+        return groupOne;
+      case 'Group Two':
+        return groupTwo;
+      default:
+        return [];
     }
   }
 }

@@ -112,6 +112,7 @@
     flex-basis: 28px;
     padding-right: 12px;
     position: inherit;
+    margin-right: -8px;
 
     &:hover {
       background: $ms-color-neutralTertiaryAlt;
@@ -120,9 +121,6 @@
   }
 
   .personaWrapper {
-    &.canExpand {
-      left: -8px;
-    }
     position: relative;
     display: inherit;
   }

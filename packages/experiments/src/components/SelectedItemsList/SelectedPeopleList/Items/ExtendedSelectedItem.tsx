@@ -68,7 +68,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
         aria-labelledby={ 'selectedItemPersona-' + itemId }
         onContextMenu={ this._onClick }
       >
-        <div hidden={ !item.canExpand }>
+        <div hidden={ !item.canExpand || onExpandItem === undefined }>
           <IconButton
             onClick={ this.onClickIconButton(onExpandItem) }
             iconProps={ { iconName: 'Add', style: { fontSize: '12px' } } }
@@ -76,7 +76,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
             ariaLabel={ removeButtonAriaLabel }
           />
         </div>
-        <div className={ css(styles.personaWrapper, { [styles.canExpand]: item.canExpand }) }>
+        <div className={ css(styles.personaWrapper) }>
           <div
             className={ css('ms-PickerItem-content', styles.itemContent) }
             id={ 'selectedItemPersona-' + itemId }

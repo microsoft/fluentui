@@ -9,7 +9,7 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from 'experiments/lib/ExtendedPicker';
 import '../../../../../office-ui-fabric-react/src/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
 import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.Props';
-import { IExtendedPersonaProps, ISelectedPeopleItemProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
 
 export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedItemsListProps<IExtendedPersonaProps>, {}> {
   private _selectionList: SelectedPeopleList;
@@ -60,7 +60,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedI
   }
 
   @autobind
-  private _onExpandItem(item: ISelectedPeopleItemProps): void {
+  private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
     this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
