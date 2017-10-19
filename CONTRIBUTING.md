@@ -32,3 +32,27 @@
   * Add your class to this file.
     * Add the following example class
     * `export class ExcitingNewComponent extends BaseComponent<IExcitingNewComponentProps, {}> { };`
+5. Create a class names file `ExcitingNewComponent.Props.tsx`
+  * Import memoizeFunction.
+    * `import { memoizeFunction } from '../../Utilities';`
+  * Import mergeStyles.
+    * `import { mergeStyleSets } from '../../Styling';`
+  * Import ExcitingNewComponent.
+    * `import { IExcitingNewComponentStyles } from './ExcitingNewComponent.Props';`
+  * Create and export an interface for your class names.
+```
+    export interface IExcitingNewComponentClassNames {
+      /**
+      * Root html container for this component.
+      */
+      root?: string;
+    }
+```
+  * Create and export getClassNames
+```
+    export const getClassNames = memoizeFunction((): IExcitingNewComponentClassNames => {
+      return mergeStyleSets({
+        root: []
+      });
+    });
+```
