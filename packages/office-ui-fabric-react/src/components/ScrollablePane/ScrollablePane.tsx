@@ -8,7 +8,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import { IScrollablePaneProps } from './ScrollablePane.Props';
+import { IScrollablePane, IScrollablePaneProps } from './ScrollablePane.Props';
 import { Sticky } from '../../Sticky';
 import * as stylesImport from './ScrollablePane.scss';
 const styles: any = stylesImport;
@@ -17,7 +17,7 @@ export interface IScrollablePaneContext {
   scrollablePane: PropTypes.Requireable<object>;
 }
 
-export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
+export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> implements IScrollablePane {
   public static childContextTypes: IScrollablePaneContext = {
     scrollablePane: PropTypes.object
   };
@@ -94,6 +94,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
         { this.props.children }
       </div>
     );
+  }
+
+  public forceLayoutUpdate() {
+    this._onWindowResize();
   }
 
   @autobind
