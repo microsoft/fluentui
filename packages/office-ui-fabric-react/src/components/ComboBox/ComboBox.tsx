@@ -69,13 +69,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     allowFreeform: false,
     autoComplete: 'on',
     buttonIconProps: { iconName: 'ChevronDown' },
-    inputWithoutCallout: false
+    dismissMenu: undefined
   };
 
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement
   };
+
+  public dismissMenu(): void {
+    this.setState({ isOpen: false });
+  }
 
   // The input aspect of the comboBox
   private _comboBox: BaseAutoFill;
@@ -225,6 +229,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       buttonIconProps,
       styles: customStyles,
       theme,
+      dismissMenu
     } = this.props;
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -246,6 +251,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       !!hasErrorMessage
     );
 
+
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
@@ -266,7 +272,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ this._onComboBoxInputClick }
+            onClick={ dismissMenu ? dismissMenu : this._onComboBoxInputClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ (!disabled && autoComplete === 'on') }
@@ -1300,21 +1306,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   @autobind
   private _onComboBoxInputClick() {
-    let { allowFreeform, inputWithoutCallout } = this.props;
+    let { allowFreeform } = this.props;
     let { isOpen } = this.state;
 
     if (allowFreeform) {
-      if (!inputWithoutCallout) {
-        this.focus;
-      }
-      else {
-        // When inputWithoutCallout is true, close callout if it is open
-        if (isOpen) {
-          this.setState({
-            isOpen: false
-          });
-        }
-      }
+      this.focus;
     } else {
       this._onComboBoxIconClick();
     }

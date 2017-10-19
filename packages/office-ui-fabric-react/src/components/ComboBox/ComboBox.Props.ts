@@ -30,6 +30,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   componentRef?: (component: IComboBox) => void;
 
   /**
+   * If there is a menu open this will dismiss the menu
+   */
+  dismissMenu?: () => void;
+
+  /**
    * Collection of options for this ComboBox
    */
   options: IComboBoxOption[];
@@ -107,12 +112,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Add additional content below the callout list.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
-
-  /**
-   * Close callout when user is typing in input (relies on AllowFreeform: true)
-   * @default false;
-   */
-  inputWithoutCallout?: boolean;
 }
 
 export interface IComboBoxStyles {
