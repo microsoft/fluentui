@@ -89,9 +89,7 @@ export const getClassNames = memoizeFunction((
 });
 
 export const getComboBoxOptionClassNames = memoizeFunction((
-  styles: IComboBoxOptionStyles,
-  optionIsSelected: boolean,
-  disabled: boolean,
+  styles: Partial<IComboBoxOptionStyles>,
 ): IComboBoxOptionClassNames => {
   return {
     optionText: mergeStyles(
