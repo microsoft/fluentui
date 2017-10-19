@@ -416,6 +416,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.href) {
       return this._renderAnchorMenuItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
+
+    if (item.split && hasSubmenuItems(item)) {
+      return this._renderSplitButton(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
+    }
+
     return this._renderButtonItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
   }
 
@@ -492,6 +497,73 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'button',
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
       this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!));
+  }
+
+  private _renderSplitButton(
+    item: IContextualMenuItem,
+    classNames: IMenuItemClassNames,
+    index: number,
+    focusableElementIndex: number,
+    totalItemCount: number,
+    hasCheckmarks?: boolean,
+    hasIcons?: boolean): JSX.Element {
+
+    return (
+      <div
+        aria-labelledby={ item.ariaLabel }
+        aria-disabled={ item.isDisabled || item.disabled }
+        aria-haspopup={ true }
+        aria-describedby={ item.ariaDescription }
+        aria-checked={ item.isChecked || item.checked }
+      >
+        <span
+          aria-hidden={ true }
+          className={ classNames.splitContainer }
+        >
+          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+          { this._renderSplitIconButton(item, classNames, index) }
+          { this._renderSplitDivider(classNames) }
+        </span>
+      </div>
+    );
+  }
+
+  private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+
+    const isChecked: boolean | null | undefined = getIsChecked(item);
+    const canCheck: boolean = isChecked !== null;
+    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
+
+    const itemProps = {
+      onClick: this._executeItemClick.bind(this, item),
+      disabled: item.disabled || item.primaryDisabled,
+      name: item.name,
+      className: classNames.splitPrimary,
+      role: item.role || defaultRole,
+      canCheck: item.canCheck,
+      isChecked: item.isChecked,
+      checked: item.checked,
+    } as IContextualMenuItem;
+    return React.createElement('button',
+      getNativeProps(itemProps, buttonProperties),
+      this._renderMenuItemChildren(itemProps, classNames, index, hasCheckmarks, hasIcons));
+  }
+
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+    const itemProps = {
+      onClick: this._onItemClick.bind(this, item),
+      disabled: item.disabled,
+      className: classNames.splitMenu,
+      subMenuProps: item.subMenuProps,
+      submenuIconProps: item.submenuIconProps
+    } as IContextualMenuItem;
+    return React.createElement('button',
+      getNativeProps(itemProps, buttonProperties),
+      this._renderMenuItemChildren(itemProps, classNames, index, false, false));
+  }
+
+  private _renderSplitDivider(classNames: IMenuItemClassNames) {
+    return <span className={ classNames.splitButtonSeparator } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBar renders MessageBar correctly 1`] = `
+<div
+  aria-live="polite"
+  className="ms-MessageBar ms-MessageBar undefined ms-MessageBar-multiline"
+  role="status"
+>
+  <div
+    className="ms-MessageBar-content"
+  >
+    <div
+      className="ms-MessageBar-icon"
+    >
+      <i
+        aria-hidden={true}
+        aria-label={undefined}
+        className=
+            ms-Icon
+            {
+              display: inline-block;
+            }
+        data-icon-name="Info"
+        role="presentation"
+      />
+    </div>
+    <div
+      className="ms-MessageBar-text"
+      id="MessageBar0"
+    >
+      <span
+        aria-live="polite"
+        className="ms-MessageBar-innerText undefined"
+        role="status"
+      />
+    </div>
+  </div>
+</div>
+`;

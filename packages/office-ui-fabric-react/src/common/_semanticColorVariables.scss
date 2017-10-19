@@ -1,5 +1,7 @@
 @import './themeOverrides';
 
+/* Don't use the variables in this file anymore! Instead use the ones from ./_semanticSlots.scss */
+
 $focusedBorderColor: $ms-color-neutralSecondary;
 
 $bodyBackgroundColor: $ms-color-white;
