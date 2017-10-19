@@ -12,10 +12,11 @@ import {
 } from '@uifabric/merge-styles/lib/index';
 
 export interface IIconSubset {
-  fontFace: IFontFace;
+  fontFace?: IFontFace;
   icons: {
-    [key: string]: string;
+    [key: string]: string | JSX.Element;
   };
+
   style?: IRawStyle;
 }
 
@@ -25,7 +26,7 @@ export interface IIconSubsetRecord extends IIconSubset {
 }
 
 export interface IIconRecord {
-  code: string;
+  code: string | undefined;
   subset: IIconSubsetRecord;
 }
 
@@ -103,7 +104,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
     if (icon) {
       let { subset } = icon;
 
-      if (!subset.isRegistered) {
+      if (subset.fontFace && !subset.isRegistered) {
         // Register font face for given icons.
         fontFace(subset.fontFace);
 
