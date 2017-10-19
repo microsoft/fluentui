@@ -167,5 +167,6 @@ export enum PersonaInitialsColor {
   black = 11,
   orange = 12,
   red = 13,
-  darkRed = 14
+  darkRed = 14,
+  overflowButton = 15
 }
