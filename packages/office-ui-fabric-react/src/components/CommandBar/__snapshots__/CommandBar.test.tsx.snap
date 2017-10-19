@@ -29,6 +29,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-labelledby={null}
             aria-pressed={undefined}
             className=
+                ms-commandBarItem-link
                 ms-Button
                 ms-Button--commandBar
                 {
@@ -130,6 +131,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-labelledby={null}
             aria-pressed={undefined}
             className=
+                ms-commandBarItem-link
                 ms-Button
                 ms-Button--commandBar
                 {
