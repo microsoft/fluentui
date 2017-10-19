@@ -27,7 +27,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Facepile with Extras' code={ FacepileBasicExampleCode }>
               <FacepileBasicExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Overflow' code={ FacepileOverflowExampleCode }>
+            <ExampleCard title='Responsive Facepile with Overflow' code={ FacepileOverflowExampleCode }>
               <FacepileOverflowExample />
             </ExampleCard>
             <ExampleCard title='Facepile with Add Face' code={ FacepileAddFaceExampleCode }>

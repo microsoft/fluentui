@@ -28,22 +28,11 @@ import {
   PersonaCoin,
   PersonaSize
 } from '../../PersonaCoin';
-import {
-  ResizeGroup
-} from '../../ResizeGroup';
 import * as stylesImport from './Facepile.scss';
 const styles: any = stylesImport;
 
-interface IOverflowData {
-  props: IFacepileProps;
-  primary: IFacepilePersona[];
-  overflow: IFacepilePersona[];
-  cacheKey?: string;
-}
-
 export class Facepile extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
-    useOnlyAvailableWidth: false,
     maxDisplayablePersonas: 5,
     personas: [],
     personaSize: PersonaSize.extraSmall
@@ -66,12 +55,10 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType,
       className,
       personas,
-      showAddButton,
-      useOnlyAvailableWidth,
-      width
+      showAddButton
     } = this.props;
 
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
+    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas || personas.length);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -79,27 +66,24 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType = OverflowButtonType.downArrow;
     }
 
-    let facepileData: IOverflowData = {
-      props: this.props,
-      primary: personas.slice(0, numPersonasToShow),
-      overflow: personas.slice(numPersonasToShow)
-    };
-
-    let facepileWrapperProps = {
-      width: useOnlyAvailableWidth ? `${width}px` : 'auto'
-    };
+    let primaryPersonas: IFacepilePersona[] = personas.slice(0, numPersonasToShow);
+    let overflowPersonas: IFacepilePersona[] = personas.slice(numPersonasToShow);
 
     return (
-      <div style={ { ...facepileWrapperProps } }>
+      <div className={ css('ms-Facepile', styles.root, className) } >
         { this.onRenderAriaDescription() }
-        { useOnlyAvailableWidth ?
-          <ResizeGroup
-            data={ facepileData }
-            onReduceData={ this._showLess }
-            onGrowData={ this._showMore }
-            onRenderData={ this._renderFacepile }
-          /> :
-          this._renderFacepile(facepileData) }
+        <div className={ css('ms-Facepile-itemContainer', styles.itemContainer) } >
+          { showAddButton ? this._getAddNewElement() : null }
+          <FocusZone
+            ariaDescribedBy={ this._ariaDescriptionId }
+            role='listbox'
+            className={ css('ms-Facepile-members', styles.members) }
+            direction={ FocusZoneDirection.horizontal }
+          >
+            { this._onRenderVisiblePersonas(primaryPersonas) }
+          </FocusZone>
+          { overflowButtonProps ? this._getOverflowElement(overflowPersonas.length) : null }
+        </div>
       </div>
     );
   }
@@ -114,32 +98,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  @autobind
-  private _renderFacepile(data: IOverflowData): JSX.Element {
-    let {
-      className,
-      overflowButtonProps,
-      showAddButton
-    } = this.props;
-
-    return (
-      <div className={ css('ms-Facepile', styles.root, className) }>
-        <div className={ css('ms-Facepile-itemContainer', styles.itemContainer) }>
-          { showAddButton ? this._getAddNewElement() : null }
-          <FocusZone
-            ariaDescribedBy={ this._ariaDescriptionId }
-            role='listbox'
-            className={ css('ms-Facepile-members', styles.members) }
-            direction={ FocusZoneDirection.horizontal }
-          >
-            { this._onRenderVisiblePersonas(data.primary) }
-          </FocusZone>
-          { overflowButtonProps ? this._getOverflowElement(data.overflow.length) : null }
-        </div>
-      </div>
-    );
-  }
-
   private _onRenderVisiblePersonas(personas: IFacepilePersona[]) {
     return personas.map((persona: IFacepilePersona, index: number) => {
       const personaControl: JSX.Element = this._getPersonaControl(persona);
@@ -147,40 +105,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         this._getElementWithOnClickEvent(personaControl, persona, index) :
         this._getElementWithoutOnClickEvent(personaControl, persona, index);
     });
-  }
-
-  @autobind
-  private _showLess(currentData: any): any {
-    if (currentData.primary.length === 0) {
-      return undefined;
-    }
-
-    let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
-    let primary = currentData.primary.slice(0, -1);
-
-    let cacheKey: string = this._computeCacheKey(primary);
-
-    return { primary, overflow, cacheKey };
-  }
-
-  @autobind
-  private _showMore(currentData: any): any {
-    if (currentData.overflow.length === 0) {
-      return undefined;
-    }
-
-    let overflow = currentData.overflow.slice(1);
-    let primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
-
-    let cacheKey: string = this._computeCacheKey(primary);
-
-    return { primary, overflow, cacheKey };
-  }
-
-  private _computeCacheKey(primaryControls: IFacepilePersona[]): string {
-    return primaryControls
-      .reduce((acc, current) => acc + current.personaName, '|')
-      + `|${this.props.overflowButtonType}`;
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {

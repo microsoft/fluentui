@@ -11,7 +11,7 @@ export interface IFacepile {
 
 }
 
-export interface IFacepileProps extends React.Props<Facepile> {
+export interface IFacepileProps { // extends React.Props<Facepile> {
   /**
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -23,17 +23,6 @@ export interface IFacepileProps extends React.Props<Facepile> {
    * is fixed at PersonaSize.extraSmall regardless of what is specified.
    */
   personas: IFacepilePersona[];
-
-  /** Render control to fit parent element
-  * @defaultvalue false
-  */
-  useOnlyAvailableWidth?: boolean;
-
-  /**
-   * Set number of pixel to use for width instead of calculating it internally.
-   * NOTE: This is ignored when useOnlyAvailableWidth is set to false.
-   */
-  width?: number;
 
   /** Maximum number of personas to show */
   maxDisplayablePersonas?: number;

@@ -5,6 +5,10 @@ import {
   Facepile,
   OverflowButtonType,
 } from 'office-ui-fabric-react/lib/Facepile';
+import {
+  FacepileResponsive,
+  IFacepileResponsiveProps
+} from 'office-ui-fabric-react/lib/Facepile';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
@@ -12,7 +16,7 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 
-const facepileProps: IFacepileProps = {
+const facepileProps: IFacepileResponsiveProps = {
   personas: facepilePersonas,
   getPersonaProps: (persona: IFacepilePersona) => {
     return {
@@ -27,8 +31,6 @@ const facepileProps: IFacepileProps = {
 };
 
 export interface IFacepileOverflowExampleState {
-  useOnlyAvailableWidth: boolean;
-  displayedPersonas: any;
   overflowButtonType: OverflowButtonType;
   widthAvailable: number;
 }
@@ -38,56 +40,36 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     super();
 
     this.state = {
-      useOnlyAvailableWidth: false,
-      displayedPersonas: 5,
       overflowButtonType: OverflowButtonType.none,
       widthAvailable: 300
     };
   }
 
   public render() {
-    let { useOnlyAvailableWidth, displayedPersonas, overflowButtonType, widthAvailable } = this.state;
-    facepileProps.maxDisplayablePersonas = displayedPersonas;
-    facepileProps.overflowButtonType = overflowButtonType;
-    facepileProps.useOnlyAvailableWidth = true;
-    useOnlyAvailableWidth && (facepileProps.width = widthAvailable);
+    let { overflowButtonType, widthAvailable } = this.state;
+    let updatedFacepileProps: IFacepileResponsiveProps = {
+      ...facepileProps,
+      overflowButtonType: overflowButtonType,
+      width: widthAvailable
+    };
 
     return (
       <div className={ 'ms-FacepileExample' }>
-        <Facepile {...facepileProps} />
+        <FacepileResponsive {...updatedFacepileProps} />
         <div className={ 'control' }>
           <Slider
-            label='Maximum number of Personas Shown:'
-            min={ 1 }
-            max={ 16 }
-            step={ 1 }
+            label='Width available:'
+            min={ 10 }
+            max={ 300 }
+            step={ 10 }
             showValue={ true }
-            value={ displayedPersonas }
-            onChange={ this._onChangePersonaNumber }
+            value={ widthAvailable }
+            onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
+              prevState.widthAvailable = value;
+              return prevState;
+            }) }
           />
         </div>
-        <Checkbox
-          label='Use only width available'
-          checked={ useOnlyAvailableWidth }
-          onChange={ (ev, checked) => {
-            this.setState((prevState: IFacepileOverflowExampleState) => {
-              { prevState.useOnlyAvailableWidth = !!checked; }
-              return prevState;
-            });
-          } }
-        />
-        <Slider
-          label='Width available:'
-          min={ 10 }
-          max={ 300 }
-          step={ 10 }
-          showValue={ true }
-          value={ widthAvailable }
-          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-            prevState.widthAvailable = value;
-            return prevState;
-          }) }
-        />
         <Dropdown
           label='Overflow Type:'
           selectedKey={ overflowButtonType }
@@ -104,14 +86,6 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
         />
       </div>
     );
-  }
-
-  @autobind
-  private _onChangePersonaNumber(value: number): void {
-    this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
-      prevState.displayedPersonas = value;
-      return prevState;
-    });
   }
 
   @autobind
