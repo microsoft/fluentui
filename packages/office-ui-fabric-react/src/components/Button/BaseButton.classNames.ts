@@ -25,7 +25,6 @@ export const getClassNames = memoizeFunction((
 ): IButtonClassNames => {
   return {
     root: mergeStyles(
-      className,
       'ms-Button',
       variantClassName,
       styles.root,
@@ -69,7 +68,8 @@ export const getClassNames = memoizeFunction((
           ':hover': styles.rootCheckedHovered,
           ':active': styles.rootCheckedPressed
         }
-      }
+      },
+      className
     ),
 
     flexContainer: mergeStyles(

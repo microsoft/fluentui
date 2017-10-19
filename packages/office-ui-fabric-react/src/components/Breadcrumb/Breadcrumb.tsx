@@ -13,7 +13,7 @@ import { IBreadcrumbProps, IBreadcrumbItem, IBreadcrumbClassNames } from './Brea
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-
+import { Crumb } from './Crumb';
 import { getClassNames as _getClassNames } from './Breadcrumb.classNames';
 // import * as stylesImport from './Breadcrumb.scss';
 // const styles: any = stylesImport;
@@ -128,66 +128,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
             />
           )) }
       </FocusZone >
-    );
-  }
-}
-
-interface ICrumbProps {
-  classNames: IBreadcrumbClassNames;
-  withChevron: boolean;
-  item?: IBreadcrumbItem;
-  menuProps?: any;
-  iconProps?: any;
-}
-
-class Crumb extends React.Component<ICrumbProps, {}> {
-  public render() {
-    let {
-      item = { text: '', onClick: undefined, href: undefined, isCurrentItem: false },
-      menuProps,
-      classNames,
-      withChevron,
-      iconProps
-    } = this.props;
-
-    return (
-      <div className={ classNames.listItem }>
-        { (item.onClick || item.href || menuProps) ? (
-          <CommandButton
-            className={ classNames.itemLink }
-            href={ item.href }
-            aria-current={ item.isCurrentItem ? 'page' : null }
-            // onClick={ item.onClick }
-            menuProps={ menuProps }
-            iconProps={ iconProps }
-            onRenderMenuIcon={ nullFunction }
-          >
-            <TooltipHost
-              className={ classNames.crumbText }
-              content={ item.text }
-              overflowMode={ TooltipOverflowMode.Parent }
-            >
-              { item.text }
-            </TooltipHost>
-          </CommandButton>
-        ) : (
-            <span className={ classNames.item }>
-              <TooltipHost
-                className={ classNames.crumbText }
-                content={ item.text }
-                overflowMode={ TooltipOverflowMode.Parent }
-              >
-                { item.text }
-              </TooltipHost>
-            </span>
-          ) }
-        { withChevron && (
-          <Icon
-            className={ classNames.chevron }
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-          />
-        ) }
-      </div>
     );
   }
 }

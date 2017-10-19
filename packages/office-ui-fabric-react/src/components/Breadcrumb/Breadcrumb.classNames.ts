@@ -1,5 +1,4 @@
 import {
-  DefaultFontStyles,
   FontSizes,
   HighContrastSelector,
   IStyle,
@@ -15,7 +14,7 @@ export const getClassNames = memoizeFunction((
   theme: ITheme,
   className: string
 ): IBreadcrumbClassNames => {
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   // Sizing values.
   const overflowButtonColor = palette.themePrimary;
@@ -30,35 +29,21 @@ export const getClassNames = memoizeFunction((
   const crumbActiveBackground = palette.neutralTertiaryAlt;
   const crumbActiveForeground = palette.neutralPrimary;
 
-  const MediumMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxMedium}`;
-  const SmallMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxSmall}`;
+  const MediumMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxMedium}px)`;
+  const SmallMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxSmall}px)`;
 
   const itemStyles: IStyle[] = [
-    DefaultFontStyles.xLarge,
     {
       color: palette.neutralPrimary,
       // padding: '0 8px',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
       //  overflow: 'hidden',
-      maxWidth: 100
+      // maxWidth: 100
     }
   ];
 
   const largeItemStyles = {
-    selectors: {
-      [`@media screen and (max-width: ${ScreenWidthMaxMedium}`]: {
-        fontSize: FontSizes.large
-      }
-    }
-  };
-
-  const smallItemStyles = {
-    selectors: {
-      [`@media screen and (max-width: ${ScreenWidthMaxSmall}`]: {
-        fontSize: FontSizes.medium
-      }
-    }
   };
 
   return mergeStyleSets({
@@ -67,7 +52,11 @@ export const getClassNames = memoizeFunction((
       'ms-Breadcrumb',
       {
         // TODO: DELETE THIS!!!!
-        margin: '23px 0 1px',
+        // margin: '23px 0 1px',
+        margin: '0 -4px',
+        display: 'flex',
+        alignItems: 'stretch',
+
         selectors: {
           '$itemLink:hover': {
             backgroundColor: palette.neutralLighter,
@@ -79,58 +68,62 @@ export const getClassNames = memoizeFunction((
       className
     ],
 
-    list: [
-      'ms-Breadcrumb-list',
-      {
-        whiteSpace: 'nowrap',
-        padding: 0,
-        margin: 0,
-        display: 'flex',
-        alignItems: 'stretch'
-      }
-    ],
+    // list: [
+    //   'ms-Breadcrumb-list',
+    //   {
+    //     whiteSpace: 'nowrap',
+    //     padding: 0,
+    //     margin: 0,
+    //     display: 'flex',
+    //     alignItems: 'stretch'
+    //   }
+    // ],
 
     overflow: [
       'ms-Breadcrumb-overflow',
-      {
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center'
-      }
+      // {
+      //   position: 'relative',
+      //   display: 'flex',
+      //   alignItems: 'center'
+      // }
     ],
 
     overflowButton: [
       'ms-Breadcrumb-overflowButton',
-      {
-        fontSize: overflowButtonSize,
-        height: '100%',
+      // {
+      //   fontSize: overflowButtonSize,
+      //   height: '100%',
 
-        selectors: {
-          ':hover': {
-            cursor: 'pointer',
-            backgroundColor: crumbHoverBackground
-          },
-          ':active': {
-            backgroundColor: crumbActiveBackground,
-            color: crumbActiveForeground
-          }
-        }
-      },
+      //   selectors: {
+      //     ':hover': {
+      //       cursor: 'pointer',
+      //       backgroundColor: crumbHoverBackground
+      //     },
+      //     ':active': {
+      //       backgroundColor: crumbActiveBackground,
+      //       color: crumbActiveForeground
+      //     }
+      //   }
+      // },
 
     ],
 
     chevron: [
       'ms-Breadcrumb-chevron',
+
       {
-        fontSize: FontSizes.small,
         color: palette.neutralSecondary,
-        lineHeight: 45,
+        lineHeight: 44,
         verticalAlign: 'baseline',
+        fontSize: FontSizes.medium,
 
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
             MsHighContrastAdjust: 'none'
+          },
+          [MediumMediaQuery]: {
+            fontSize: FontSizes.xSmall,
           }
         }
       }
@@ -140,7 +133,7 @@ export const getClassNames = memoizeFunction((
       'ms-Breadcrumb-listItem',
       {
         margin: 0,
-        padding: '0 4px',
+        //       padding: '0 4px',
         display: 'flex'
       }
     ],
@@ -148,7 +141,14 @@ export const getClassNames = memoizeFunction((
     crumbText: {
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
+      ...fonts.xLarge,
+
+      selectors: {
+        [MediumMediaQuery]: {
+          ...fonts.large,
+        }
+      }
     },
 
     itemLink: [
@@ -160,7 +160,8 @@ export const getClassNames = memoizeFunction((
           ':hover': {
             backgroundColor: crumbHoverBackground,
             color: crumbHoverForeground,
-            cursor: 'pointer'
+            cursor: 'pointer',
+
           },
           ':focus': {
             // TODO: Remove!
