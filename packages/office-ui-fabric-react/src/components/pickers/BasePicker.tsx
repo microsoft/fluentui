@@ -361,7 +361,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onInputChange(value: string) {
-    this.updateValue(value);
+    const newInput = this.props.onInputChanged ? this.props.onInputChanged(value) : value;
+
+    this.updateValue(newInput);
     this.setState({
       moreSuggestionsAvailable: true,
       isMostRecentlyUsedVisible: false
