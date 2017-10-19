@@ -1,15 +1,23 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
 
 import { Dialog } from './Dialog';
+import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.Props';
 
 /* tslint:disable:no-unused-expression */// for express fluent assertions
 
 describe('Dialog', () => {
+  it('renders Dialog correctly', () => {
+    const component = renderer.create(<DialogContent />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Fires dismissed after closing', (done) => {
     let dismissedCalled = false;
 

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog renders Dialog correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className="ms-Dialog-header"
+  >
+    <p
+      className="ms-Dialog-title"
+      id={undefined}
+      role="heading"
+    />
+    <div
+      className="ms-Dialog-topButton"
+    />
+  </div>
+  <div
+    className="ms-Dialog-inner"
+  >
+    <div
+      className="ms-Dialog-content"
+    />
+  </div>
+</div>
+`;

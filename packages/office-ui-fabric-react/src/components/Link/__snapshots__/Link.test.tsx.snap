@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link renders Link correctly 1`] = `
+<a
+  className="ms-Link"
+  href="#"
+  onClick={[Function]}
+  target={undefined}
+>
+  I'm a link
+</a>
+`;
