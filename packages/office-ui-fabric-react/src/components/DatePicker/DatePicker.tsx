@@ -415,12 +415,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         // Don't parse if the selected date has the same formatted string as what we're about to parse.
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
-        if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) == inputValue)
-        {
+        if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
           date = this.state.selectedDate;
-        }
-        else
-        {
+        } else {
           date = parseDateFromString!(inputValue);
           if (!date) {
             this.setState({

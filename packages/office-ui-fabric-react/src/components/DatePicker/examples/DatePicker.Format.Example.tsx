@@ -1,64 +1,64 @@
-import * as React from "react";
-import { DefaultButton } from "office-ui-fabric-react/lib/Button";
+import * as React from 'react';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   DatePicker,
   DayOfWeek,
   IDatePickerStrings
-} from "office-ui-fabric-react/lib/DatePicker";
-import { autobind } from "office-ui-fabric-react/lib/Utilities";
+} from 'office-ui-fabric-react/lib/DatePicker';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
   ],
 
   shortMonths: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
   ],
 
   days: [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
   ],
 
-  shortDays: ["S", "M", "T", "W", "T", "F", "S"],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
-  goToToday: "Go to today",
-  prevMonthAriaLabel: "Go to previous month",
-  nextMonthAriaLabel: "Go to next month",
-  prevYearAriaLabel: "Go to previous year",
-  nextYearAriaLabel: "Go to next year",
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
 
-  isRequiredErrorMessage: "Start date is required.",
+  isRequiredErrorMessage: 'Start date is required.',
 
-  invalidInputErrorMessage: "Invalid date format."
+  invalidInputErrorMessage: 'Invalid date format.'
 };
 
 export interface IDatePickerFormatExampleState {
@@ -82,17 +82,18 @@ export class DatePickerFormatExample extends React.Component<
   public render() {
     let { firstDayOfWeek, value } = this.state;
     const desc =
-      "This field is required. One of the support input formats is year dash month dash day.";
+      'This field is required. One of the support input formats is year dash month dash day.';
     return (
       <div>
         <p>
-          Applications can customize how dates are formatted and parsed. Formatted dates
-          can be ambiguous, so the control will avoid parsing the formatted
-          strings of dates selected using the UI when text input is allowed. In
-          this example, we are formatting and parsing dates as dd/MM/yy.
+          Applications can customize how dates are formatted and parsed.
+          Formatted dates can be ambiguous, so the control will avoid parsing
+          the formatted strings of dates selected using the UI when text input
+          is allowed. In this example, we are formatting and parsing dates as
+          dd/MM/yy.
         </p>
         <DatePicker
-          label="Start date"
+          label='Start date'
           isRequired={false}
           allowTextInput={true}
           ariaLabel={desc}
@@ -103,8 +104,8 @@ export class DatePickerFormatExample extends React.Component<
           formatDate={this._onFormatDate}
           parseDateFromString={this._onParseDateFromString}
         />
-        <DefaultButton onClick={this._onClick} text="Clear" />
-        <div>{(this.state.value || "").toString()}</div>
+        <DefaultButton onClick={this._onClick} text='Clear' />
+        <div>{(this.state.value || '').toString()}</div>
       </div>
     );
   }
@@ -123,22 +124,28 @@ export class DatePickerFormatExample extends React.Component<
   private _onFormatDate(date: Date): string {
     return (
       date.getDate() +
-      "/" +
+      '/' +
       (date.getMonth() + 1) +
-      "/" +
+      '/' +
       date.getFullYear() % 100
     );
   }
 
   @autobind
-  private _onParseDateFromString(value:string): Date {
+  private _onParseDateFromString(value: string): Date {
     let date = this.state.value || new Date();
     let values = (value || '').trim().split('/');
-    let day = values.length > 0 ? Math.max(1, Math.min(31, parseInt(values[0]))) : date.getDate();
-    let month = values.length > 1 ? Math.max(1, Math.min(12, parseInt(values[1]))) - 1 : date.getMonth();
-    let year = values.length > 2 ? parseInt(values[2]) : date.getFullYear();
+    let day =
+      values.length > 0
+        ? Math.max(1, Math.min(31, parseInt(values[0], 10)))
+        : date.getDate();
+    let month =
+      values.length > 1
+        ? Math.max(1, Math.min(12, parseInt(values[1], 10))) - 1
+        : date.getMonth();
+    let year = values.length > 2 ? parseInt(values[2], 10) : date.getFullYear();
     if (year < 100) {
-      year += date.getFullYear() - (date.getFullYear() % 100);
+      year += date.getFullYear() - date.getFullYear() % 100;
     }
     return new Date(year, month, day);
   }
