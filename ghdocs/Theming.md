@@ -6,7 +6,6 @@ This document describes theming at a high level. For low level technical details
 ## What is theming?
 
 Theming is a mechanism by which a consistent look and feel can be applied to all the components on a page. For now, this means sharing a color scheme across the entire page.
-o match this color scheme.
 
 
 ## What's in a theme?
@@ -26,7 +25,7 @@ Customizing Fabric palette slots allows broad-stroke changes to the overall colo
 Semantic slots are documented in [ISemanticColors.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/interfaces/ISemanticColors.ts).
 These, on the other hand, are prescriptive slots, each slot having an intended use.
 This allows more targeted customizations.
-For example, you could change the color of light gray disabled controls without affecting the light gray used by list item hover/selection state.
+For example, you could change the light gray color of a disabled checkbox without affecting the light gray used by list item hover/selection state.
 We highly recommend using semantic slots wherever possible.
 
 
