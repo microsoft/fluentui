@@ -77,10 +77,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     root: HTMLElement
   };
 
-  public dismissMenu(): void {
-    this.setState({ isOpen: false });
-  }
-
   // The input aspect of the comboBox
   private _comboBox: BaseAutoFill;
 
@@ -251,7 +247,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       !!hasErrorMessage
     );
 
-
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
@@ -333,6 +328,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._comboBox) {
       this._comboBox.focus();
     }
+  }
+
+  @autobind
+  public dismissMenu(): void {
+    this.setState({ isOpen: false });
   }
 
   /**
