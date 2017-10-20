@@ -6,12 +6,14 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { IconBasicExample } from './examples/Icon.Basic.Example';
+import { IconSvgExample } from './examples/Icon.Svg.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { IconStatus } from './Icon.checklist';
 
 const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
+const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Svg.Example.tsx') as string;
 const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
 
@@ -28,6 +30,9 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Icon with custom color' code={ IconColorExampleCode }>
               <IconColorExample />
+            </ExampleCard>
+            <ExampleCard title='Icon using custom svg' code={ IconSvgExampleCode }>
+              <IconSvgExample />
             </ExampleCard>
             <ExampleCard title='Icon using image sheet' code={ IconImageSheetExampleCode }>
               <IconImageSheetExample />

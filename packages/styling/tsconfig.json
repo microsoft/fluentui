@@ -19,7 +19,8 @@
       "dom"
     ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "react"
     ],
     "paths": {
       "@uifabric/styling": [
