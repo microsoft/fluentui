@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders Icon correctly 1`] = `
+<i
+  aria-hidden={true}
+  aria-label={undefined}
+  className=
+      ms-Icon
+      {
+        display: inline-block;
+      }
+  data-icon-name="CompassNW"
+  role="presentation"
+/>
+`;

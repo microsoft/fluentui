@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onKeyDown={[Function]}
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone0"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      aria-live="assertive"
+      className={undefined}
+      id="selected-suggestion-alert"
+      role="alert"
+    >
+       
+    </div>
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      onTouchEndCapture={[Function]}
+      onTouchStartCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+        role="list"
+      >
+        <input
+          aria-activedescendant="sug--1"
+          aria-controls="selected-suggestion-alert"
+          aria-expanded="true"
+          aria-haspopup="true"
+          aria-owns="suggestion-list"
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          disabled={undefined}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
+<div
+  className="ms-BasePicker"
+  onKeyDown={[Function]}
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone17"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      aria-live="assertive"
+      className={undefined}
+      id="selected-suggestion-alert"
+      role="alert"
+    >
+       
+    </div>
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      onTouchEndCapture={[Function]}
+      onTouchStartCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-BasePicker-text"
+        role="list"
+      >
+        <input
+          aria-activedescendant="sug--1"
+          aria-controls="selected-suggestion-alert"
+          aria-expanded="true"
+          aria-haspopup="true"
+          aria-owns="suggestion-list"
+          autoCapitalize="off"
+          autoComplete="off"
+          className="ms-BasePicker-input"
+          data-lpignore={true}
+          disabled={undefined}
+          onChange={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="combobox"
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

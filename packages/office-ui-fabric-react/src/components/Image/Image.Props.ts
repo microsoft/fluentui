@@ -13,7 +13,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
   /**
    * If true, fades the image in when loaded.
-   * @defaultvalue false;
+   * @defaultvalue true
    */
   shouldFadeIn?: boolean;
 
