@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+
+## 5.3.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Add modal selection behavior to TilesList
 
 ## 5.2.0
 Wed, 18 Oct 2017 10:21:25 GMT

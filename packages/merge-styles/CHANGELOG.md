@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 17 Oct 2017 17:17:41 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+
+## 5.4.2
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Patches
+
+- Calling `mergeStyles` with strings containing space delimited class names was not expanding merge-styles generated class names in the final merge. Fixed so that it does.
 
 ## 5.4.1
 Tue, 17 Oct 2017 17:17:41 GMT

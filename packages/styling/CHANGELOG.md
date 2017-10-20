@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 10 Oct 2017 10:24:47 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+
+## 5.4.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings.
 
 ## 5.3.0
 Tue, 10 Oct 2017 10:24:47 GMT
