@@ -5,11 +5,14 @@ const newComponentName = argv.name;
 const fs = require('fs');
 
 // Paths/File Names
-const componentFolderPath = './packages/experiments/src/components/' + newComponentName;
+const rootComponentFolderPath = './packages/experiments/src';
+const componentFolderPath = rootComponentFolderPath + '/components/' + newComponentName;
 const componentPropsFileName = newComponentName + '.Props.ts';
 const componentFileName = newComponentName + '.tsx';
 const componentFileClassNamesName = newComponentName + '.classNames.ts';
+const globalIndexFileName = newComponentName + '.ts';
 const templateFolderPath = './scripts/templates';
+const indexFileName = 'index.ts';
 
 // Error strings
 const errorCreatingComponentDir = 'Error creating component directory';
@@ -20,6 +23,8 @@ const errorUnableToWriteComponentFile = 'Unable to write component file';
 const errorUnableToWriteComponentClassFile = 'Unable to write component class name file';
 const errorUnableToOpenClassNamesTemplate = 'Unable to open component class files template';
 const errorComponentName = 'Please pass in the component name using --name ExcitingNewComponentName';
+const errorUnableToWriteComponentIndexFile = 'Unable to write component class index file';
+const errorUnableToOpenIndexTemplate = "Unable to open the component index template"
 
 //Success strings
 const successComponentCreated = 'New component ' + newComponentName + ' succesfully created';
@@ -33,67 +38,96 @@ function handleError(error, errorPrependMessage) {
   }
 }
 
-function renderMustache(data) {
-  return mustache.render(data, { componentName: newComponentName });
+function createComponentFiles(mustacheTemplateName, fileName, createFileError, openMustacheTemplateError, cb, customPath) {
+  fs.readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8', (error, data) => {
+    readFileCallback(error, data, fileName, cb, openMustacheTemplateError, createFileError, customPath);
+  });
+}
+
+function readFileCallback(error, data, fileName, cb, openMustacheTemplateError, createFileError, customPath) {
+  if (!handleError(error, openMustacheTemplateError)) {
+    return;
+  }
+  let path = componentFolderPath + '/' + fileName;
+  if (customPath) {
+    path = customPath + '/' + fileName;
+  }
+
+  const fileData = mustache.render(data, { componentName: newComponentName });
+  fs.writeFile(path, fileData, (error) => { writeFileCallback(error, createFileError, cb); });
+}
+
+function writeFileCallback(error, createFileError, cb) {
+  if (!handleError(error, createFileError)) {
+    return;
+  }
+
+  if (cb) {
+    cb();
+  }
 }
 
 function makeComponentDirectory(error) {
   if (!handleError(error, errorCreatingComponentDir)) {
     return;
   }
-
-  fs.readFile(templateFolderPath + '/EmptyProps.mustache', 'utf8', openMustachePropsTemplate);
+  createPropsFile();
 }
 
-function openMustachePropsTemplate(error, data) {
-  if (!handleError(error, errorOpenMustacheTemplateForProps)) {
-    return;
-  }
-
-  const propsFileData = renderMustache(data);
-
-  // After the we render the template let's try to write the result to the new component file
-  fs.writeFile(componentFolderPath + '/' + componentPropsFileName, propsFileData, writePropsFile);
+function createPropsFile() {
+  // Create props file
+  createComponentFiles(
+    'EmptyProps.mustache',
+    componentPropsFileName,
+    errorUnableToWritePropsFile,
+    errorOpenMustacheTemplateForProps,
+    createComponentFile // Create component file
+  );
 }
 
-function writePropsFile(error) {
-  if (!handleError(error, errorUnableToWritePropsFile)) {
-    return;
-  }
-
-  fs.readFile(templateFolderPath + '/EmptyComponent.mustache', 'utf8', openMustacheComponentTemplate);
+function createComponentFile() {
+  // Create component file
+  createComponentFiles(
+    'EmptyComponent.mustache',
+    componentFileName,
+    errorUnableToWriteComponentFile,
+    errorUnableToOpenTemplate,
+    createClassNamesFile // Create class names file
+  );
 }
 
-function openMustacheComponentTemplate(error, data) {
-  if (!handleError(error, errorUnableToOpenTemplate)) {
-    return;
-  }
-
-  const componentFileData = renderMustache(data);
-  fs.writeFile(componentFolderPath + '/' + componentFileName, componentFileData, writeComponentFile);
+function createClassNamesFile() {
+  // Create class names file
+  createComponentFiles(
+    'EmptyClassNames.mustache',
+    componentFileClassNamesName,
+    errorUnableToWriteComponentClassFile,
+    errorUnableToOpenClassNamesTemplate,
+    createLocalIndexFile // Create local index file
+  );
 }
 
-function writeComponentFile(error) {
-  if (!handleError(error, errorUnableToWriteComponentFile)) {
-    return;
-  }
-
-  fs.readFile(templateFolderPath + '/EmptyClassNames.mustache', 'utf8', openMustacheClassNamesTemplate);
+function createLocalIndexFile() {
+  // Create local index import file
+  createComponentFiles(
+    'EmptyComponentIndex.mustache',
+    indexFileName,
+    errorUnableToWriteComponentIndexFile,
+    errorUnableToOpenIndexTemplate,
+    createGlobalIndexFile // Create global index file
+  );
 }
 
-function openMustacheClassNamesTemplate(error, data) {
-  if (!handleError(error, errorUnableToWriteComponentClassFile)) {
-    return;
-  }
-
-  const componentFileData = renderMustache(data);
-  fs.writeFile(componentFolderPath + '/' + componentFileClassNamesName, componentFileData, writeClassNamesFile);
-}
-
-function writeClassNamesFile(error) {
-  if (!handleError(error, errorUnableToWriteComponentClassFile)) {
-    return;
-  }
+function createGlobalIndexFile() {
+  // Create global index import file
+  createComponentFiles(
+    'EmptyGlobalComponentIndex.mustache',
+    globalIndexFileName,
+    errorUnableToWriteComponentIndexFile,
+    errorUnableToOpenIndexTemplate,
+    null,
+    rootComponentFolderPath
+  );
 
   // Success! The component has been created.
   console.log(successComponentCreated);
