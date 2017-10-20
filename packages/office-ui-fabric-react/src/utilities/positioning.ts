@@ -32,7 +32,7 @@ export class Rectangle extends FullRectangle {
 }
 
 export interface IPositionProps {
-  target?: HTMLElement | MouseEvent;
+  target?: HTMLElement | MouseEvent | IPoint;
   /** how the element should be positioned */
   directionalHint?: DirectionalHint;
 
@@ -620,12 +620,15 @@ export module positioningFunctions {
     return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
   }
 
-  export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent | undefined) {
+  export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent | IPoint | undefined) {
     let targetRectangle: Rectangle;
     if (target) {
       if ((target as MouseEvent).preventDefault) {
         let ev: MouseEvent = target as MouseEvent;
         targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+      } else if ((target as IPoint).x !== undefined) {
+        let point: IPoint = target as IPoint;
+        targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
       } else {
         targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
       }
@@ -725,9 +728,10 @@ export function getRelativePositions(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: HTMLElement | MouseEvent, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+export function getMaxHeight(target: HTMLElement | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
   let mouseTarget: MouseEvent = target as MouseEvent;
   let elementTarget: HTMLElement = target as HTMLElement;
+  let pointTarget: IPoint = target as IPoint;
   let targetRect: Rectangle;
   let boundingRectangle = bounds ?
     positioningFunctions._getRectangleFromIRect(bounds) :
@@ -735,6 +739,8 @@ export function getMaxHeight(target: HTMLElement | MouseEvent, targetEdge: Direc
 
   if (mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
+  } else if (pointTarget.x !== undefined && pointTarget.y !== undefined) {
+    targetRect = new Rectangle(pointTarget.x, pointTarget.x, pointTarget.y, pointTarget.y);
   } else {
     targetRect = positioningFunctions._getRectangleFromHTMLElement(elementTarget);
   }

@@ -11,6 +11,11 @@ export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
 
   constructor(props: ICalloutProps) {
     super(props);
+
+    this._warnDeprecations({
+      'targetPoint': 'target',
+      'useTargetPoint': 'target',
+    });
   }
 
   public render() {

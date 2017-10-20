@@ -23,7 +23,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | null;
+  target?: HTMLElement | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -75,11 +75,13 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   /**
    * If true use a point rather than rectangle to position the Callout.
    * For example it can be used to position based on a click.
+   * @deprecated Use 'target' instead
    */
   useTargetPoint?: boolean;
 
   /**
    * Point used to position the Callout
+   * @deprecated Use 'target' instead
    */
   targetPoint?: IPoint;
 
