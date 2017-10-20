@@ -188,6 +188,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             readOnly={ disabled }
             disabled={ disabled }
             aria-disabled={ disabled }
+            data-lpignore={ true }
           />
           <span className={ classNames.arrowBox }>
             <IconButton

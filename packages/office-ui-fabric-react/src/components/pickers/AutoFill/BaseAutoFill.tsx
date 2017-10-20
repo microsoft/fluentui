@@ -126,6 +126,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
         onChange={ this._onChange }
         onKeyDown={ this._onKeyDown }
         onClick={ this.props.onClick ? this.props.onClick : this._onClick }
+        data-lpignore={ true }
       />
     );
   }
