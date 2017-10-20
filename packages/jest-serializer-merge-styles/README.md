@@ -52,7 +52,7 @@ You can type
 ```js
 debugger
 ```
-in a test and press f5 and vscode and it hits
+in a test and press f5 and vscode and it hits!
 
 ## Updating Snapshots
 If you make an intended change that breaks a snapshot, you can go into the package folder and run `npm run update-snapshots` to regenerate them.
