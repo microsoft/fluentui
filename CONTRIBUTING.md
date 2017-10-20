@@ -4,11 +4,11 @@
 
 ### Creating a component via the command line
 1. Open a command prompt in the root directory of your project directory.
-2. Run `npm run createcomponent -- --name YourAwesomeNewComponentName`
+2. Run `npm run create-component -- --name YourAwesomeNewComponentName`
   * Our components use the Pascal Case naming convention.
 
 ### Creating a component manually.
-1. From the root of the project, travel to `packages/office-ui-fabric-react/src/components/`
+1. From the root of the project, travel to `packages/experiments/src/components/`
 2. Create a new folder here with your component name
   * Our components use the Pascal Case naming convention.
   * In this example the component will be called `ExcitingNewComponent`.
