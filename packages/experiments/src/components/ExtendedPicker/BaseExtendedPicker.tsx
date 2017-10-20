@@ -11,7 +11,7 @@ import {
 } from 'office-ui-fabric-react/lib/FocusZone';
 import { BaseAutoFill } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill';
 import { IPickerItemProps, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
-import * as stylesImport from '../../../../office-ui-fabric-react/src/components/Pickers/BasePicker.scss';
+import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.Props';
 import { IBaseFloatingPickerProps, BaseFloatingPicker } from 'experiments/lib/FloatingPicker';
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from 'experiments/lib/SelectedItemsList';
