@@ -30,7 +30,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
         text='Click for ContextualMenu'
         menuProps={
           {
-            shouldFocusOnMount: false,
+            shouldFocusOnMount: true,
             items:
             [
               {

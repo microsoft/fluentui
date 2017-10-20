@@ -14,6 +14,7 @@
     "@types/enzyme": "2.8.8",
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
+    "@types/react": "15.0.38",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"

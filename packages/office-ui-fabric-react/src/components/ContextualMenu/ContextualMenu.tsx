@@ -557,8 +557,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps
     } as IContextualMenuItem;
+
     return React.createElement('button',
-      getNativeProps(itemProps, buttonProperties),
+      assign({}, getNativeProps(itemProps, buttonProperties), {
+        onKeyDown: this._onItemKeyDown.bind(this, item)
+      }),
       this._renderMenuItemChildren(itemProps, classNames, index, false, false));
   }
 
