@@ -5,7 +5,7 @@ const newComponentName = argv.name;
 const fs = require('fs');
 
 // Paths/File Names
-const componentFolderPath = './packages/office-ui-fabric-react/src/components/' + newComponentName;
+const componentFolderPath = './packages/experiments/src/components/' + newComponentName;
 const componentPropsFileName = newComponentName + '.Props.ts';
 const componentFileName = newComponentName + '.tsx';
 const componentFileClassNamesName = newComponentName + '.classNames.ts';
