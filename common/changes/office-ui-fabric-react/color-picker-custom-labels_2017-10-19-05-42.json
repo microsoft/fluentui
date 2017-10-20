@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields.",
+      "comment": "ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields.",
       "type": "minor"
     }
   ],
