@@ -131,6 +131,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
+                    spellCheck={false}
                     type="text"
                     value="ffffff"
                   />
@@ -164,6 +165,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
+                    spellCheck={false}
                     type="text"
                     value="255"
                   />
@@ -197,6 +199,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
+                    spellCheck={false}
                     type="text"
                     value="255"
                   />
@@ -230,6 +233,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
+                    spellCheck={false}
                     type="text"
                     value="255"
                   />
@@ -263,6 +267,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
+                    spellCheck={false}
                     type="text"
                     value="100"
                   />
