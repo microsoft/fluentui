@@ -224,7 +224,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autoComplete,
       buttonIconProps,
       styles: customStyles,
-      theme
+      theme,
     } = this.props;
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -1292,10 +1292,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-  * Click handler for the button of the comboBox
-  * and the input when not allowing freeform. This
-  * toggles the expand/collapse state of the comboBox (if enbled)
-  */
+   * Click handler for the button of the comboBox
+   * and the input when not allowing freeform. This
+   * toggles the expand/collapse state of the comboBox (if enbled)
+   */
   @autobind
   private _onComboBoxClick() {
     let { disabled } = this.props;
