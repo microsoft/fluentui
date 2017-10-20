@@ -10,6 +10,7 @@ import {
 } from '../../Utilities';
 import { getIcon, IIconRecord } from '../../Styling';
 import { getClassNames } from './Icon.classNames';
+import { getIconFromRendererFunctions } from './registerIconRenderer';
 
 export const Icon = (props: IIconProps): JSX.Element => {
   let {
@@ -31,6 +32,8 @@ export const Icon = (props: IIconProps): JSX.Element => {
       className
     );
 
+    let iconFromRendererFns = getIconFromRendererFunctions(props);
+
     return (
       <div
         className={
@@ -39,7 +42,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
             classNames.root
           ) }
       >
-        <Image { ...props.imageProps as any } />
+        { iconFromRendererFns ? iconFromRendererFns : <Image { ...props.imageProps as any } /> }
       </div>
     );
   } else if (typeof iconName === 'string' && iconName.length === 0) {
