@@ -15,15 +15,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
       style={undefined}
     >
       <div
-        aria-hidden="true"
-        className="ms-Persona-initials ms-Persona-initials--red undefined"
-        style={undefined}
-      >
-        <span>
-          KL
-        </span>
-      </div>
-      <div
         className="ms-Image ms-Persona-image"
         style={
           Object {
