@@ -1,6 +1,12 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets, IStyle } from '../../Styling';
-import { I{{componentName}}Styles } from './{{componentName}}.Props';
+import { mergeStyleSets} from '../../Styling';
+
+export interface I{{componentName}}Styles {
+   /**
+   * Style for the root element in the default enabled/unchecked state.
+   */
+  root?: IStyle;
+}
 
 export interface I{{componentName}}Names {
 	/**
@@ -9,14 +15,7 @@ export interface I{{componentName}}Names {
 	root?: string;
 }
 
-export interface I{{componentName}}Styles {
-  /**
-   * Style for the root element
-   */
-  root?: IStyle;
-}
-
-export const getClassNames = memoizeFunction((): I{{componentName}}ClassNames => {
+export const getClassNames = memoizeFunction((): I{{componentName}}Names => {
 	return mergeStyleSets({
 		root: []
 	});
