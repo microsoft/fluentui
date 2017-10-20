@@ -69,8 +69,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' },
-    dismissMenu: undefined
+    buttonIconProps: { iconName: 'ChevronDown' }
   };
 
   public refs: {
@@ -225,8 +224,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autoComplete,
       buttonIconProps,
       styles: customStyles,
-      theme,
-      dismissMenu
+      theme
     } = this.props;
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -268,7 +266,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ dismissMenu ? dismissMenu : this._onComboBoxInputClick }
+            onClick={ allowFreeform ? this.focus : this._onComboBoxClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ (!disabled && autoComplete === 'on') }
@@ -293,7 +291,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
-            onClick={ this._onComboBoxIconClick }
+            onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
             disabled={ disabled }
           />
@@ -331,9 +329,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
+  /**
+   * Close menu callout if it is open
+   */
   @autobind
   public dismissMenu(): void {
-    this.setState({ isOpen: false });
+    let { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
   }
 
   /**
@@ -1290,30 +1292,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Click handler for the button of the comboBox
-   * and the input when not allowing freeform. This
-   * toggles the expand/collapse state of the comboBox (if enbled)
-   */
+  * Click handler for the button of the comboBox
+  * and the input when not allowing freeform. This
+  * toggles the expand/collapse state of the comboBox (if enbled)
+  */
   @autobind
-  private _onComboBoxIconClick() {
+  private _onComboBoxClick() {
     let { disabled } = this.props;
     let { isOpen } = this.state;
+
     if (!disabled) {
       this.setState({
         isOpen: !isOpen
       });
-    }
-  }
-
-  @autobind
-  private _onComboBoxInputClick() {
-    let { allowFreeform } = this.props;
-    let { isOpen } = this.state;
-
-    if (allowFreeform) {
-      this.focus;
-    } else {
-      this._onComboBoxIconClick();
     }
   }
 

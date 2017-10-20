@@ -11,6 +11,11 @@ export interface IComboBox {
    * @returns True if focus could be set, false if no operation was taken.
    */
   focus(): boolean;
+
+  /**
+   * If there is a menu open this will dismiss the menu
+   */
+  dismissMenu: () => void;
 }
 
 export interface IComboBoxOption extends ISelectableOption {
@@ -28,11 +33,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * the public methods and properties of the component.
    */
   componentRef?: (component: IComboBox) => void;
-
-  /**
-   * If there is a menu open this will dismiss the menu
-   */
-  dismissMenu?: () => void;
 
   /**
    * Collection of options for this ComboBox
