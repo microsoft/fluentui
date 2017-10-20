@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 16 Oct 2017 20:00:51 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+
+## 5.0.12
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Patches
+
+- TextField documentation style updates
+- Removed branding guidance pdf, updated fabric asset license pdf, and fixed link colors
+- Fixed in page navigation for Chrome and Firefox.
 
 ## 5.0.11
 Mon, 16 Oct 2017 20:00:51 GMT
