@@ -341,4 +341,25 @@ describe('ComboBox', () => {
     buttonElement.simulate('click');
     expect(comboBoxRoot.find('.is-opened').length).toEqual(0);
   });
+
+  it('Call onMenuOpened when clicking on the button', () => {
+    let comboBoxRoot;
+    let buttonElement;
+
+    const returnUndefined = (): undefined => {
+      return;
+    };
+
+    let wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+        onMenuOpened={ returnUndefined }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    buttonElement = comboBoxRoot.find('button');
+    buttonElement.simulate('click');
+    expect(wrapper.instance().props.onMenuOpened).toBeCalled;
+  });
 });
