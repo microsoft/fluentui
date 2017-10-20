@@ -15,7 +15,9 @@
   transition: transform 0.1s linear;
   color: $ms-color-neutralPrimary;
 
-  &:hover {
+  user-select: none;
+
+  &.selectable:hover {
     background-color: $ms-color-neutralLighter;
 
     &.selected {
@@ -46,7 +48,7 @@
   &.hasBackgroundFrame {
     box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
 
-    &:hover {
+    &.selectable:hover {
       outline: 1px solid $ms-color-neutralTertiaryAlt;
     }
 
@@ -71,7 +73,7 @@
     }
   }
 
-  &:active {
+  &.invokable:active {
     transform: scale(0.95);
   }
 }
@@ -100,6 +102,8 @@
   align-items: stretch;
   align-content: stretch;
   text-decoration: none;
+
+  pointer-events: none;
 }
 
 .foreground {
@@ -113,6 +117,11 @@
   justify-content: center;
   opacity: 1;
   transition: opacity 0.2s linear;
+
+  .tile.invokable & {
+    pointer-events: auto;
+    cursor: pointer;
+  }
 
   &.foregroundHide {
     opacity: 0;
@@ -141,18 +150,29 @@
 .check {
   @include focus-border($position: absolute);
   display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
   top: 0;
   @include right(0);
   border: none;
   background: none;
   opacity: 0;
+  box-sizing: border-box;
+  padding: 6px;
+
+  .tile.uninvokable & {
+    width: 100%;
+    height: 100%;
+  }
 
   .tile.selectable & {
-    display: block;
+    display: flex;
   }
 
   .tile.selected &,
-  .tile:hover & {
+  .tile:hover &,
+  .tile.showCheck & {
     opacity: 1;
   }
 
@@ -169,10 +189,6 @@
   }
 }
 
-button.check {
-  padding: 6px;
-}
-
 .background {
   position: absolute;
   top: 0;
@@ -184,6 +200,11 @@ button.check {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .tile.invokable & {
+    cursor: pointer;
+    pointer-events: auto;
+  }
 
   opacity: 1;
 
@@ -217,7 +238,10 @@ button.check {
 }
 
 .nameplate {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   position: relative;
   margin: auto 0 0 0;
   padding: 12px 8px;
@@ -225,7 +249,16 @@ button.check {
   z-index: 0;
 
   .name {
+    .tile.invokable & {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
     transition: color 0.2s linear;
+
+    .link:hover & {
+      text-decoration: underline;
+    }
   }
 
   .activity {
@@ -233,6 +266,7 @@ button.check {
   }
 
   .tile.hasBackgroundFrame & {
+    align-items: flex-start;
     padding: 12px 10px;
   }
 }
@@ -263,6 +297,7 @@ button.check {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 
   @include margin-left(-8px);
   @include padding-left(8px);
@@ -302,6 +337,7 @@ button.check {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 
   // Simulate a 20px line-height by using negative margins.
   // This allows extenders and descenders to fit while still enforcing bounds

@@ -45,6 +45,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   layout?: ISelectionLayout;
   selectionMode?: SelectionMode;
   selectionPreservedOnEmptyClick?: boolean;
+  enterModalOnTouch?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
@@ -68,6 +69,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isMetaPressed: boolean;
   private _shouldHandleFocus: boolean;
   private _shouldHandleFocusTimeoutId: number | undefined;
+  private _isTouch: boolean;
+  private _isTouchTimeoutId: number | undefined;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
@@ -86,6 +89,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onKeyDownCapture={ this._onKeyDownCapture }
+        onTouchStartCapture={ this._onTouchStartCapture }
+        onTouchEndCapture={ this._onTouchStartCapture }
         onClick={ this._onClick }
         role='presentation'
 
@@ -116,6 +121,22 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _onMouseDownCapture(ev: any) {
     if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
       this.ignoreNextFocus();
+      return;
+    }
+
+    if (!elementContains(ev.target, this.refs.root)) {
+      return;
+    }
+
+    let target = ev.target as HTMLElement;
+
+    while (target !== this.refs.root) {
+      if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+        this.ignoreNextFocus();
+        break;
+      }
+
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -142,6 +163,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         if (isToggleModifierPressed) {
           // set anchor only.
           selection.setIndexSelected(index, selection.isIndexSelected(index), true);
+          if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
+            selection.setModal(true);
+            this._setIsTouch(false);
+          }
         } else {
           if (this.props.isSelectedOnFocus) {
             this._onItemSurfaceClick(ev, index);
@@ -167,15 +192,20 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           break;
         } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
-          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
-        } else if (target === itemRoot) {
+        } else if (target === itemRoot && !this._isShiftPressed && !this._isCtrlPressed) {
+          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
         }
       }
 
       target = getParent(target) as HTMLElement;
     }
+  }
+
+  @autobind
+  private _onTouchStartCapture(ev: React.TouchEvent<HTMLElement>) {
+    this._setIsTouch(true);
   }
 
   @autobind
@@ -381,17 +411,25 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     const selectionMode = this._getSelectionMode();
 
+    selection.setChangeEvents(false);
+
+    if (this.props.enterModalOnTouch && this._isTouch && !selection.isIndexSelected(index) && selection.setModal) {
+      selection.setModal(true);
+      this._setIsTouch(false);
+    }
+
     if (selectionMode === SelectionMode.multiple) {
       selection.toggleIndexSelected(index);
     } else if (selectionMode === SelectionMode.single) {
       let isSelected = selection.isIndexSelected(index);
-      selection.setChangeEvents(false);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, !isSelected, true);
-      selection.setChangeEvents(true);
     } else {
+      selection.setChangeEvents(true);
       return;
     }
+
+    selection.setChangeEvents(true);
 
     ev.stopPropagation();
 
@@ -456,6 +494,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, true, true);
+      if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
+        selection.setModal(true);
+        this._setIsTouch(false);
+      }
       selection.setChangeEvents(true);
     }
   }
@@ -538,6 +580,21 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       this._async.setTimeout(() => {
         this._shouldHandleFocus = false;
       }, 100);
+    }
+  }
+
+  private _setIsTouch(isTouch: boolean) {
+    if (this._isTouchTimeoutId) {
+      this._async.clearTimeout(this._isTouchTimeoutId);
+      this._isTouchTimeoutId = undefined;
+    }
+
+    this._isTouch = true;
+
+    if (isTouch) {
+      this._async.setTimeout(() => {
+        this._isTouch = false;
+      }, 300);
     }
   }
 
