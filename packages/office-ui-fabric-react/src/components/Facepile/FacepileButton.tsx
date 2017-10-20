@@ -17,4 +17,4 @@ export class FacepileButton extends BaseComponent<IButtonProps, {}> {
     );
   }
 
-};
+}
