@@ -27,7 +27,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
+            { text: 'Non clickable folder 5', 'key': 'f5', isCurrentItem: true }
           ] }
           ariaLabel={ 'Website breadcrumb' }
         />

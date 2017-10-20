@@ -35,10 +35,10 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
     } = this.props;
 
     return (
-      <div className={ classNames.listItem }>
+      <li className={ classNames.crumb }>
         { (item.onClick || item.href || menuProps) ? (
           <CommandButton
-            className={ classNames.itemLink }
+            className={ classNames.crumbButton }
             href={ item.href }
             aria-current={ item.isCurrentItem ? 'page' : null }
             // onClick={ item.onClick }
@@ -50,7 +50,7 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
             ) }
             { item.text && (
               <TooltipHost
-                className={ classNames.crumbText }
+                className={ classNames.crumbTextContent }
                 content={ item.text }
                 overflowMode={ TooltipOverflowMode.Parent }
               >
@@ -59,9 +59,9 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
             ) }
           </CommandButton>
         ) : (
-            <span className={ classNames.item }>
+            <span className={ classNames.crumbLabel }>
               <TooltipHost
-                className={ classNames.crumbText }
+                className={ classNames.crumbTextContent }
                 content={ item.text }
                 overflowMode={ TooltipOverflowMode.Parent }
               >
@@ -75,7 +75,7 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
           />
         ) }
-      </div>
+      </li>
     );
   }
 }

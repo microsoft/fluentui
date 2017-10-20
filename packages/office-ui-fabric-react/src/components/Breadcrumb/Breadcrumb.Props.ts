@@ -10,15 +10,35 @@ export interface IBreadcrumb {
 }
 
 export interface IBreadcrumbClassNames {
+  /**
+   * The root element class name.
+   */
   root: string;
-  list: string;
-  overflow: string;
-  overflowButton: string;
+
+  /**
+   * The chevron in between crumbs.
+   */
   chevron: string;
-  listItem: string;
-  itemLink: string;
-  item: string;
-  crumbText: string;
+
+  /**
+   * The crumb container.
+   */
+  crumb: string;
+
+  /**
+   * The button inside of a crumb with an onClick or href.
+   */
+  crumbButton: string;
+
+  /**
+   * The span inside of the crumb for read-only crumbs.
+   */
+  crumbLabel: string;
+
+  /**
+   * The textual content rendered in either the crumbButton or crumbLabel.
+   */
+  crumbTextContent: string;
 }
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
@@ -29,7 +49,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   componentRef?: (component: IBreadcrumb) => void;
 
   /**
-   * Provided theme.
+   * Theme (provided through customization.)
    */
   theme?: ITheme;
 

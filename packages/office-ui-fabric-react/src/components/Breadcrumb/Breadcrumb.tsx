@@ -102,6 +102,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       <FocusZone
         className={ classNames.root }
         direction={ FocusZoneDirection.horizontal }
+        elementType='ol'
         ref='renderingArea'
         role='navigation'
         aria-label={ ariaLabel }
@@ -127,7 +128,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               withChevron={ index !== (renderedItems.length - 1) }
             />
           )) }
-      </FocusZone >
+      </FocusZone>
     );
   }
 }
