@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add ISelectableDroppableText to Dropdown docs.",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "a.erich@gmail.com"
+}
