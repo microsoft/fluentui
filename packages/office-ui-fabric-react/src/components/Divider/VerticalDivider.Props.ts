@@ -6,6 +6,7 @@ export interface IVerticalDividerProps {
    */
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 }
+
 export interface IVerticalDividerClassNames {
   wrapper: string;
   divider: string;
