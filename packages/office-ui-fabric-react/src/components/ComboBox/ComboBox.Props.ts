@@ -45,7 +45,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Function that gets invoked when the ComboBox menu is launched
    */
-  onMenuOpened?: () => void;
+  onMenuOpen?: () => void;
 
   /**
    * Callback issued when the options should be resolved, if they have been updated or

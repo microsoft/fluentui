@@ -355,7 +355,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        onMenuOpened={ returnUndefined }
+        onMenuOpen={ returnUndefined }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     buttonElement = comboBoxRoot.find('button');

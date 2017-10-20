@@ -72,7 +72,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -88,7 +88,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -104,7 +104,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -119,7 +119,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -135,7 +135,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -149,7 +149,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -171,7 +171,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          onMenuOpened={ () => console.log('ComboBox menu opened') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -190,7 +190,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             // tslint:disable:jsx-no-lambda
             onFocus={ () => console.log('onFocus called') }
             onBlur={ () => console.log('onBlur called') }
-            onMenuOpened={ () => console.log('ComboBox menu opened') }
+            onMenuOpen={ () => console.log('ComboBox menu opened') }
           // tslint:enable:jsx-no-lambda
           />
           :
@@ -208,7 +208,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             // tslint:disable:jsx-no-lambda
             onFocus={ () => console.log('onFocus called') }
             onBlur={ () => console.log('onBlur called') }
-            onMenuOpened={ () => console.log('ComboBox menu opened') }
+            onMenuOpen={ () => console.log('ComboBox menu opened') }
           // tslint:enable:jsx-no-lambda
           />
         }
