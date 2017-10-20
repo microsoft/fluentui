@@ -17,32 +17,30 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * @deprecated
    */
   isSelected?: boolean;
-  anySelected: boolean;
+  anySelected?: boolean;
   canSelect: boolean;
 }
 
 export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
   const {
-    canSelect,
-    isSelected,
-    anySelected,
-    selected,
+    canSelect = false,
+    isSelected = false,
+    anySelected = false,
+    selected = false,
     ...buttonProps
   } = props;
 
   let isPressed = props.isSelected || props.selected;
 
   return (
-    <button
+    <div
       { ...buttonProps }
       role='checkbox'
-      className={ css(
-        'ms-DetailsRow-check',
-        DetailsRowCheckStyles.check,
-        CheckStyles.checkHost,
-        !props.canSelect && DetailsRowCheckStyles.isDisabled,
-        !props.canSelect && 'ms-DetailsRow-check--isDisabled'
-      ) }
+      className={
+        css('ms-DetailsRow-check', DetailsRowCheckStyles.check, CheckStyles.checkHost, {
+          [`ms-DetailsRow-check--isDisabled ${DetailsRowCheckStyles.isDisabled}`]: !props.canSelect
+        })
+      }
       aria-checked={ isPressed }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
@@ -50,6 +48,6 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
       <Check
         checked={ isPressed }
       />
-    </button>
+    </div>
   );
 };

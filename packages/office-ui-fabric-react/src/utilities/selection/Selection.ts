@@ -19,6 +19,7 @@ export class Selection implements ISelection {
   private _changeEventSuppressionCount: number;
   private _items: IObjectWithKey[];
   private _selectedItems: IObjectWithKey[] | null;
+  private _selectedIndices: number[] | undefined;
   private _isAllSelected: boolean;
   private _exemptedIndices: { [index: string]: boolean };
   private _exemptedCount: number;
@@ -28,6 +29,7 @@ export class Selection implements ISelection {
   private _hasChanged: boolean;
   private _unselectableIndices: { [index: string]: boolean };
   private _unselectableCount: number;
+  private _isModal: boolean;
 
   constructor(options: ISelectionOptions = {}) {
     const {
@@ -48,6 +50,8 @@ export class Selection implements ISelection {
 
     this._onSelectionChanged = onSelectionChanged;
     this._canSelectItem = canSelectItem;
+
+    this._isModal = false;
 
     this.setItems([], true);
   }
@@ -73,6 +77,26 @@ export class Selection implements ISelection {
       if (!suppressChange) {
         this._change();
       }
+    }
+  }
+
+  public isModal(): boolean {
+    return this._isModal;
+  }
+
+  public setModal(isModal: boolean): void {
+    if (this._isModal !== isModal) {
+      this.setChangeEvents(true);
+
+      this._isModal = isModal;
+
+      if (!isModal) {
+        this.setAllSelected(false);
+      }
+
+      this._change();
+
+      this.setChangeEvents(false);
     }
   }
 
@@ -157,9 +181,13 @@ export class Selection implements ISelection {
     if (!this._selectedItems) {
       this._selectedItems = [];
 
-      for (let i = 0; i < this._items.length; i++) {
-        if (this.isIndexSelected(i)) {
-          this._selectedItems.push(this._items[i]);
+      const items = this._items;
+
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          if (this.isIndexSelected(i)) {
+            this._selectedItems.push(items[i]);
+          }
         }
       }
     }
@@ -169,6 +197,24 @@ export class Selection implements ISelection {
 
   public getSelectedCount(): number {
     return this._isAllSelected ? (this._items.length - this._exemptedCount - this._unselectableCount) : (this._exemptedCount);
+  }
+
+  public getSelectedIndices(): number[] {
+    if (!this._selectedIndices) {
+      this._selectedIndices = [];
+
+      const items = this._items;
+
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          if (this.isIndexSelected(i)) {
+            this._selectedIndices.push(i);
+          }
+        }
+      }
+    }
+
+    return this._selectedIndices;
   }
 
   public isRangeSelected(fromIndex: number, count: number): boolean {
@@ -221,12 +267,21 @@ export class Selection implements ISelection {
 
     let selectableCount = this._items ? (this._items.length - this._unselectableCount) : 0;
 
+    this.setChangeEvents(false);
+
     if (selectableCount > 0 && (this._exemptedCount > 0 || isAllSelected !== this._isAllSelected)) {
       this._exemptedIndices = {};
-      this._exemptedCount = 0;
-      this._isAllSelected = isAllSelected;
+
+      if (isAllSelected !== this._isAllSelected || this._exemptedCount > 0) {
+        this._exemptedCount = 0;
+        this._isAllSelected = isAllSelected;
+        this._change();
+      }
+
       this._updateCount();
     }
+
+    this.setChangeEvents(true);
   }
 
   public setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void {
@@ -287,9 +342,7 @@ export class Selection implements ISelection {
       }
     }
 
-    if (hasChanged) {
-      this._updateCount();
-    }
+    this._updateCount();
 
     this.setChangeEvents(true);
   }
@@ -357,13 +410,22 @@ export class Selection implements ISelection {
   }
 
   private _updateCount(): void {
-    this.count = this.getSelectedCount();
-    this._change();
+    const count = this.getSelectedCount();
+
+    if (count !== this.count) {
+      this.count = count;
+      this._change();
+    }
+
+    if (!this.count) {
+      this.setModal(false);
+    }
   }
 
   private _change(): void {
     if (this._changeEventSuppressionCount === 0) {
       this._selectedItems = null;
+      this._selectedIndices = undefined;
 
       EventGroup.raise(this, SELECTION_CHANGE);
 

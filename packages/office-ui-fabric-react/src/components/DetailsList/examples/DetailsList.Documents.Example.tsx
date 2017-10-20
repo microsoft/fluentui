@@ -46,6 +46,7 @@ export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
   items: IDocument[];
   selectionDetails: string;
+  isModalSelection: boolean;
   isCompactMode: boolean;
 }
 
@@ -137,9 +138,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         data: 'number',
         onRender: (item: IDocument) => {
           return (
-            <span
-              data-is-focusable={ true }
-            >
+            <span>
               { item.dateModified }
             </span>
           );
@@ -157,9 +156,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
-            <span
-              data-is-focusable={ true }
-            >
+            <span>
               { item.modifiedBy }
             </span>
           );
@@ -177,9 +174,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
-            <span
-              data-is-focusable={ true }
-            >
+            <span>
               { item.fileSize }
             </span>
           );
@@ -188,13 +183,19 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     ];
 
     this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+      onSelectionChanged: () => {
+        this.setState({
+          selectionDetails: this._getSelectionDetails(),
+          isModalSelection: this._selection.isModal()
+        });
+      }
     });
 
     this.state = {
       items: _items,
       columns: _columns,
       selectionDetails: this._getSelectionDetails(),
+      isModalSelection: this._selection.isModal(),
       isCompactMode: false
     };
   }
@@ -207,8 +208,15 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <Toggle
           label='Enable Compact Mode'
           checked={ isCompactMode }
-          onChanged={ this._onChangeToggle }
+          onChanged={ this._onChangeCompactMode }
           onText='Compact'
+          offText='Normal'
+        />
+        <Toggle
+          label='Enable Modal Selection'
+          checked={ this.state.isModalSelection }
+          onChanged={ this._onChangeModalSelection }
+          onText='Modal'
           offText='Normal'
         />
         <div>{ selectionDetails }</div>
@@ -227,15 +235,27 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ this._onItemInvoked }
+            enterModalSelectionOnTouch={ true }
           />
         </MarqueeSelection>
       </div>
     );
   }
 
+  public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
+    if (previousState.isModalSelection !== this.state.isModalSelection) {
+      this._selection.setModal(this.state.isModalSelection);
+    }
+  }
+
   @autobind
-  private _onChangeToggle(checked: boolean): void {
+  private _onChangeCompactMode(checked: boolean): void {
     this.setState({ isCompactMode: checked });
+  }
+
+  @autobind
+  private _onChangeModalSelection(checked: boolean): void {
+    this.setState({ isModalSelection: checked });
   }
 
   @autobind
