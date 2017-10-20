@@ -6,34 +6,25 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { items, overflowItems, farItems } from './examples/data';
+import { ICommandBarProps } from './CommandBar.Props';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
-import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
-import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { CommandBarStatus } from './CommandBar.checklist';
 
-const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
-const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.NonFocusable.Example.tsx') as string;
-const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Customization.Example.tsx') as string;
+const CommandBarBasicExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx'
+) as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
-    let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
+  public render(): JSX.Element {
+    let cmdBarParamsTextAndIcons: ICommandBarProps = { items, overflowItems, farItems };
 
     return (
       <ComponentPage
-        title={ 'CommandBar' }
+        title='CommandBar'
         componentName='CommandBarExample'
         exampleCards={
           <div>
             <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
               <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
-            </ExampleCard>
-            <ExampleCard title='CommandBar with non-focusable items' code={ CommandBarNoFocusableItemsExampleCode }>
-              <CommandBarNonFocusableItemsExample />
-            </ExampleCard>
-            <ExampleCard title='CommandBar with customized renderred items' code={ CommandBarCustomizationExampleCode }>
-              <CommandBarCustomizationExample />
             </ExampleCard>
           </div>
         }
@@ -45,19 +36,34 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             ] }
           />
         }
+        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>
-              CommandBar is a surface that houses commands that operate on the content of the window, panel, or parent region it resides above. They are one of the most visible and recognizable ways to surface commands, and can be an intuitive method for interacting with content on the page. However, if overloaded or poorly organized, they can be difficult to use and hide valuable commands from your user. CommandBars can also display a search box for finding content; hold simple commands as well as menus; and display the status of ongoing actions.
+              CommandBar is a surface that houses commands that operate on the content of the window, panel, or
+              parent region it resides above. They are one of the most visible and recognizable ways to surface
+              commands, and can be an intuitive method for interacting with content on the page. However, if
+              overloaded or poorly organized, they can be difficult to use and hide valuable commands from your
+              user. CommandBars can also display a search box for finding content; hold simple commands as well
+              as menus; and display the status of ongoing actions.
             </p>
             <p>
-              Commands should be sorted in order of importance, from left to right or right to left depending on the culture. Secondarily, organize commands in logical groupings for easier recall. CommandBars work best when they display no more than 5-7 commands. This helps users quickly find your most valuable features. If you need to show more commands, consider using the overflow menu. If you need to render status, or viewing controls, these go on the right side of the CommandBar (or left side if in a left to right experience). Do not display more than 2-3 items on the right side as it will make the overall CommandBar difficult to parse.
+              Commands should be sorted in order of importance, from left to right or right to left depending on
+              the culture. Secondarily, organize commands in logical groupings for easier recall. CommandBars work
+              best when they display no more than 5-7 commands. This helps users quickly find your most valuable
+              features. If you need to show more commands, consider using the overflow menu. If you need to
+              render status, or viewing controls, these go on the right side of the CommandBar (or left side if
+              in a left to right experience). Do not display more than 2-3 items on the right side as it will
+              make the overall CommandBar difficult to parse.
             </p>
             <p>
-              All command items should have an icon and a label. Commands can render as labels only as well. In smaller widths, commands can just use icon only, but only for the most recognizable and frequently used commands. All other commands should go into an overflow where text labels can be shown.
+              All command items should have an icon and a label. Commands can render as labels only as well. In
+              smaller widths, commands can just use icon only, but only for the most recognizable and frequently
+              used commands. All other commands should go into an overflow where text labels can be shown.
             </p>
           </div>
         }
+        /* tslint:enable:max-line-length */
         bestPractices={
           <div />
         }
@@ -81,12 +87,10 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            {...CommandBarStatus}
-          />
+        related={
+          <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
+        isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }
