@@ -20,9 +20,9 @@ export const getClassNames = memoizeFunction((
   const { palette, fonts } = theme;
 
   // Sizing values.
-  const overflowButtonSize = 16;
-  const itemMaxWidthSmall = 116;
-  const chevronSmall = 8;
+
+  const chevronNormalSize = 12;
+  const chevronSmallSize = 8;
 
   // Colors used by the crumb.
   const crumbHoverBackground = palette.neutralLighter;

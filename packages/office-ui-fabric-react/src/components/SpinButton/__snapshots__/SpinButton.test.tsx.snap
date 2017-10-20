@@ -151,9 +151,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         aria-pressed={false}
         checked={false}
         className=
-            ms-UpButton
             ms-Button
             ms-Button--icon
+            ms-UpButton
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -258,9 +258,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         aria-pressed={false}
         checked={false}
         className=
-            ms-DownButton
             ms-Button
             ms-Button--icon
+            ms-DownButton
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

@@ -41,7 +41,7 @@ describe('Breadcrumb', () => {
 
   it('can call the callback when an item is clicked', () => {
     let callbackValue;
-    const clickCallback = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+    const clickCallback = (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, item: IBreadcrumbItem) => {
       callbackValue = item.key;
     };
 
@@ -56,9 +56,9 @@ describe('Breadcrumb', () => {
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
+    let crumbButton = renderedDOM.querySelector('.ms-Breadcrumb-crumbButton');
 
-    ReactTestUtils.Simulate.click(itemLink!);
+    ReactTestUtils.Simulate.click(crumbButton!);
     expect(callbackValue).toEqual('TestKey');
   });
 
@@ -79,9 +79,9 @@ describe('Breadcrumb', () => {
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
+    let crumb = renderedDOM.querySelectorAll('.ms-Breadcrumb-crumb');
 
-    expect(itemLink[0].textContent).toEqual('TestText3');
+    expect(crumb[1].textContent).toEqual('TestText3');
   });
 
 });

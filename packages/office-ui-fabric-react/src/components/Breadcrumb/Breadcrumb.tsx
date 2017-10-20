@@ -55,7 +55,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       renderedOverflowItems: items.slice(0, -maxDisplayedItems!)
     };
 
-    this._classNames = getClassNames(theme, className);
+    this._classNames = getClassNames(theme!, className);
 
     return (
       <ResizeGroup

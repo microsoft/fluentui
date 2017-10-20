@@ -41,9 +41,9 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
             className={ classNames.crumbButton }
             href={ item.href }
             aria-current={ item.isCurrentItem ? 'page' : null }
-            // onClick={ item.onClick }
             menuProps={ menuProps }
             onRenderMenuIcon={ nullFunction }
+            onClick={ this._onClick }
           >
             { iconProps && (
               <Icon { ...iconProps } />
@@ -77,5 +77,14 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
         ) }
       </li>
     );
+  }
+
+  @autobind
+  private _onClick(ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) {
+    const { item } = this.props;
+
+    if (item && item.onClick) {
+      item.onClick(ev, item);
+    }
   }
 }
