@@ -117,9 +117,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   selectedItems?: T[];
   /**
-   * A callback used to sanitize the input string.
+   * A callback used to modify the input string.
    */
-  onInputChanged?: (input: string) => string;
+  onInputChange?: (input: string) => string;
 }
 
 export interface IBasePickerSuggestionsProps {

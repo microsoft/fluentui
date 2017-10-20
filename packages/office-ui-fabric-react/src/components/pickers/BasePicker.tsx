@@ -180,6 +180,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 role='combobox'
                 disabled={ disabled }
                 aria-controls='selected-suggestion-alert'
+                onInputChange={ this.props.onInputChange }
               />) }
             </div>
           </SelectionZone>
@@ -361,9 +362,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onInputChange(value: string) {
-    const newInput = this.props.onInputChanged ? this.props.onInputChanged(value) : value;
-
-    this.updateValue(newInput);
+    this.updateValue(value);
     this.setState({
       moreSuggestionsAvailable: true,
       isMostRecentlyUsedVisible: false

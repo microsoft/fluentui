@@ -173,7 +173,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
-        onInputChanged={ this._onInputChanged }
+        onInputChange={ this._onInputChange }
       />
     );
   }
@@ -441,7 +441,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
    *
    * @param input The text entered into the picker.
    */
-  private _onInputChanged(input: string): string {
+  private _onInputChange(input: string): string {
     const outlookRegEx = /<.*>/g;
     const emailAddress = outlookRegEx.exec(input);
 
