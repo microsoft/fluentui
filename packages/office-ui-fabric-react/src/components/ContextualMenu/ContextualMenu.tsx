@@ -129,7 +129,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'useTargetPoint': 'target',
     });
 
-
     this._isFocusingPreviousElement = false;
     this._enterTimerId = 0;
   }
@@ -255,9 +254,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return (
         <Callout
           {...calloutProps}
-          target={ target }
-          targetPoint={ targetPoint }
-          useTargetPoint={ useTargetPoint }
+          target={ useTargetPoint ? targetPoint : target }
           isBeakVisible={ isBeakVisible }
           beakWidth={ beakWidth }
           directionalHint={ directionalHint }
