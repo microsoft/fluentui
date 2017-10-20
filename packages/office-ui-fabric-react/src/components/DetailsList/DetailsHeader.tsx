@@ -177,6 +177,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       id={ `${this._id}-check` }
                       aria-label={ ariaLabelForSelectionColumn }
                       aria-describedby={ `${this._id}-checkTooltip` }
+                      data-is-focusable={ true }
                       selected={ isAllSelected }
                       anySelected={ false }
                       canSelect={ true }
