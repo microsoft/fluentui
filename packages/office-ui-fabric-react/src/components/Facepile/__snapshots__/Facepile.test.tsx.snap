@@ -35,15 +35,6 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
             style={undefined}
           >
             <div
-              aria-hidden="true"
-              className="ms-Persona-initials ms-Persona-initials--darkRed undefined"
-              style={undefined}
-            >
-              <span>
-                AL
-              </span>
-            </div>
-            <div
               className="ms-Image ms-Persona-image"
               style={
                 Object {
@@ -81,15 +72,6 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
             className="ms-Persona-imageArea"
             style={undefined}
           >
-            <div
-              aria-hidden="true"
-              className="ms-Persona-initials ms-Persona-initials--lightPink undefined"
-              style={undefined}
-            >
-              <span>
-                AR
-              </span>
-            </div>
             <div
               className="ms-Image ms-Persona-image"
               style={

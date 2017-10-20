@@ -55,6 +55,7 @@ const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
+  isImageError?: boolean;
 }
 
 export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
@@ -70,6 +71,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
     this.state = {
       isImageLoaded: false,
+      isImageError: false
     };
   }
 
@@ -105,6 +107,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
           >
             {
               !this.state.isImageLoaded &&
+              (!imageUrl || this.state.isImageError) &&
               (
                 <div
                   className={ css(
@@ -176,7 +179,8 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   @autobind
   private _onPhotoLoadingStateChange(loadState: ImageLoadState) {
     this.setState({
-      isImageLoaded: loadState === ImageLoadState.loaded
+      isImageLoaded: loadState === ImageLoadState.loaded,
+      isImageError: loadState === ImageLoadState.error
     });
   }
 }
