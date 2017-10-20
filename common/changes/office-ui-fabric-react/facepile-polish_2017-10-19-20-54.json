@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Facepile style debugging",
+      "comment": "Facepile style debugging, includes new FacepileButton",
       "type": "patch"
     }
   ],
