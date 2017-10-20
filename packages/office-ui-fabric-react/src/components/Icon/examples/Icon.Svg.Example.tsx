@@ -12,7 +12,7 @@ import { mergeStyles, registerIcons } from 'office-ui-fabric-react/lib/Styling';
  */
 registerIcons({
   icons: {
-    'onedrive':
+    'onedrive-svg':
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0,0,2048,2048'>
       <g fill='#1B559B'>
         <path
@@ -21,7 +21,7 @@ registerIcons({
       </g>
     </svg>,
 
-    'yammer':
+    'yammer-svg':
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0,0,2048,2048'>
       <g className='thing'>
         <path
@@ -29,7 +29,7 @@ registerIcons({
         />
       </g>
     </svg>,
-    'borderblinds':
+    'borderblinds-svg':
     <svg viewBox='0 0 40 40' style={ { marginLeft: 'calc(50% - 0.5em)' } }>
       <g transform='scale(0.03125 0.03125)'>
         <path className='borderblinds-part1' d='M0 192l320-128v768l-320 128z' />
@@ -49,7 +49,7 @@ const BorderBlindsIcon = (props: { col1?: string, col2?: string, col3?: string }
 
   return (
     <Icon
-      iconName='borderblinds'
+      iconName='borderblinds-svg'
       className={
         mergeStyles(
           'ms-IconExample',
@@ -78,9 +78,9 @@ export class IconSvgExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Icon iconName='onedrive' className='ms-IconExample' />
+        <Icon iconName='onedrive-svg' className='ms-IconExample' />
         <Icon
-          iconName='yammer'
+          iconName='yammer-svg'
           className={
             mergeStyles(
               'ms-IconExample',
