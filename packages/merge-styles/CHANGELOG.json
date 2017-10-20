@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.4.2",
+      "tag": "@uifabric/merge-styles_v5.4.2",
+      "date": "Fri, 20 Oct 2017 18:42:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74e329e01e32d23b5669c469fe7e4c4a2b4eee89",
+            "comment": "Calling `mergeStyles` with strings containing space delimited class names was not expanding merge-styles generated class names in the final merge. Fixed so that it does."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.1",
       "tag": "@uifabric/merge-styles_v5.4.1",
       "date": "Tue, 17 Oct 2017 17:17:41 GMT",
