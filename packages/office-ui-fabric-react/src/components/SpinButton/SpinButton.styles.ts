@@ -12,15 +12,14 @@ import { memoizeFunction } from '../../Utilities';
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
-  const { palette } = theme;
+  const { semanticColors } = theme;
 
-  const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
-  const SpinButtonBackgroundColorDisabled = palette.neutralLighter;
-  const SpinButtonBorderColorDisabled = palette.neutralLighter;
+  const SpinButtonTextColorDisabled = semanticColors.disabledText;
+  const SpinButtonBackgroundColorDisabled = semanticColors.disabledBackground;
 
   return {
     backgroundColor: SpinButtonBackgroundColorDisabled,
-    borderColor: SpinButtonBorderColorDisabled,
+    borderColor: 'transparent',
     pointerEvents: 'none',
     cursor: 'default',
     color: SpinButtonTextColorDisabled,
@@ -38,7 +37,7 @@ export const getArrowButtonStyles = memoizeFunction((
   customSpecificArrowStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
 
-  const { palette } = theme;
+  const { semanticColors, palette } = theme;
 
   const ArrowButtonTextColor = palette.neutralPrimary;
   const ArrowButtonTextColorPressed = palette.white;

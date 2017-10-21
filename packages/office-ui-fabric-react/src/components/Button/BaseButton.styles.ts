@@ -35,8 +35,8 @@ export const getStyles = memoizeFunction((
       getFocusStyle(theme, -1),
       theme.fonts.medium,
       {
-        // this transparent border converts to the correct colors in HC mode
         boxSizing: 'border-box',
+        // this transparent border converts to the correct colors in HC mode
         border: '1px solid transparent',
         userSelect: 'none',
         display: 'inline-block',

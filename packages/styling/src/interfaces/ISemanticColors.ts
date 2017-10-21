@@ -32,6 +32,10 @@
  * This category contains input components commonly used to denote state, including radio buttons,
  * check boxes, toggle switches, sliders, progress bars, and more.
  *
+ * ## Buttons
+ *
+ * Buttons! And all the flavors thereof.
+ *
  * ## Menus
  *
  * Any kind of popup menus uses this category.
@@ -150,6 +154,35 @@ export interface ISemanticColors {
    * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
    */
   inputFocusBorderAlt: string;
+
+  //// Buttons
+
+  /**
+   * Background of a button
+   */
+  buttonBackground: string;
+  /**
+   * Background of a checked button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundChecked: string;
+  /**
+   * Background of a hovered button
+   */
+  buttonBackgroundHovered: string;
+  /**
+   * Background of a checked and hovered button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundCheckedHovered: string;
+
+  /**
+   * Border of a button
+   */
+  buttonBorder: string;
+
+  /**
+   * Color of text in a button
+   */
+  buttonText: string;
 
   //// Menus, popups, etc
 
