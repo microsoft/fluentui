@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding OnMenuOpened callback",
+      "comment": "ComboBox: Adding onMenuOpen callback",
       "type": "patch"
     }
   ],

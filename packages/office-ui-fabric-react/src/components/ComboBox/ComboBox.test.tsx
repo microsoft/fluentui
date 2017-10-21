@@ -345,10 +345,7 @@ describe('ComboBox', () => {
   it('Call onMenuOpened when clicking on the button', () => {
     let comboBoxRoot;
     let buttonElement;
-
-    const returnUndefined = (): undefined => {
-      return;
-    };
+    const returnUndefined = jest.fn();
 
     let wrapper = mount(
       <ComboBox
@@ -360,6 +357,6 @@ describe('ComboBox', () => {
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
-    expect(wrapper.instance().props.onMenuOpened).toBeCalled;
+    expect(returnUndefined.mock.calls.length).toBe(1);
   });
 });
