@@ -22,6 +22,14 @@
   @include focus(true) {
     opacity: 1;
   }
+
+  :global(.ms-DetailsList--Compact) & {
+    height: 32px;
+  }
+
+  .header & {
+    height: 32px;
+  }
 }
 
 .owner {
