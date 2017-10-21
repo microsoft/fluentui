@@ -102,6 +102,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralPrimary,
+    inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
@@ -118,4 +119,121 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
+}
+
+/* Variants
+ * Variants are variations of the base theme. These are currently in development.
+ */
+
+// a variant where the background is a light tint of the theme color
+function _getTintVariant(theme?: IPartialTheme) {
+  let fullTheme: ITheme; // only exists for typesafety
+  if (theme) {
+    fullTheme = createTheme(theme);
+  } else {
+    fullTheme = _theme;
+  }
+
+  // commented lines are unchanged, but left in for tracking purposes
+  let basePalette: Partial<IPalette> = {
+    // theme
+    // themeDarker: '#004578',
+    // themeDark: '#005a9e',
+    // themeDarkAlt: '#106ebe',
+    // themePrimary: '#0078d7',
+    // themeSecondary: '#2b88d8',
+    // themeTertiary: '#71afe5',
+    // themeLight: '#c7e0f4',
+    // themeLighter: '#deecf9',
+    // themeLighterAlt: '#eff6fc',
+
+    // foregrounds
+    // black: '#000000',
+    // neutralDark: '#212121',
+    // neutralPrimary: '#333333',
+    // neutralPrimaryAlt: '#3c3c3c',
+    // neutralSecondary: '#666666',
+    // neutralTertiary: '#a6a6a6',
+
+    // backgrounds
+    // neutralTertiaryAlt: '#c8c8c8',
+    // neutralQuaternary: '#d0d0d0',
+    // neutralQuaternaryAlt: '#dadada',
+    // neutralLight: '#eaeaea',
+    // neutralLighter: '#f4f4f4',
+    // neutralLighterAlt: '#f8f8f8',
+    white: fullTheme.palette.themeLighterAlt
+  };
+
+  let palette: IPalette = { ...fullTheme.palette, ...basePalette };
+
+  let partialSemantic: Partial<ISemanticColors> = {
+    bodyBackground: fullTheme.palette.themeLighterAlt,
+
+    inputBorder: fullTheme.palette.themeLighter, // should this be transparent?
+    // inputBorderHovered: p.neutralPrimary,
+    inputBackground: fullTheme.palette.themeLighter,
+    inputBackgroundCheckedHovered: p.themeDarkAlt,
+    inputForegroundChecked: p.white,
+    inputFocusBorderAlt: p.themePrimary,
+
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundChecked: p.neutralQuaternaryAlt,
+    menuIcon: p.themePrimary,
+    menuHeader: p.themePrimary,
+
+    listBackground: p.white,
+    listTextColor: p.neutralPrimary,
+    listItemBackgroundHovered: p.neutralLighter,
+    listItemBackgroundChecked: p.neutralLight,
+    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
+  }
+
+  let semantic: ISemanticColors = _makeSemanticColorsFromPalette(palette, _theme.isInverted);
+}
+
+// a variant where the background is a strong shade of the theme color, and inverted
+function _getStrongVariant(theme?: IPartialTheme) {
+  if (theme) {
+    theme = createTheme(theme);
+  } else {
+    theme = _theme;
+  }
+
+  let fullTheme: ITheme = theme as ITheme; // only exists for typesafety
+
+  // commented lines are unchanged, but left in for tracking purposes
+  let basePalette: Partial<IPalette> = {
+    // theme
+    // themeDarker: '#004578',
+    // themeDark: '#005a9e',
+    // themeDarkAlt: '#106ebe',
+    // themePrimary: '#0078d7',
+    // themeSecondary: '#2b88d8',
+    // themeTertiary: '#71afe5',
+    // themeLight: '#c7e0f4',
+    // themeLighter: '#deecf9',
+    // themeLighterAlt: '#eff6fc',
+
+    // foregrounds
+    // black: '#000000',
+    // neutralDark: '#212121',
+    // neutralPrimary: '#333333',
+    // neutralPrimaryAlt: '#3c3c3c',
+    // neutralSecondary: '#666666',
+    // neutralTertiary: '#a6a6a6',
+
+    // backgrounds
+    // neutralTertiaryAlt: '#c8c8c8',
+    // neutralQuaternary: '#d0d0d0',
+    // neutralQuaternaryAlt: '#dadada',
+    // neutralLight: '#eaeaea',
+    // neutralLighter: '#f4f4f4',
+    // neutralLighterAlt: '#f8f8f8',
+    white: fullTheme.palette.themeLighterAlt
+  };
+
+  let palette: IPalette = { ...fullTheme.palette, ...basePalette };
+
+  let semantic: ISemanticColors = _makeSemanticColorsFromPalette(palette, !_theme.isInverted);
 }

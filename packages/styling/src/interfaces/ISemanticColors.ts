@@ -131,6 +131,11 @@ export interface ISemanticColors {
   inputBorderHovered: string;
 
   /**
+   * The background color of an input, e.g. textbox background.
+   */
+  inputBackground: string;
+
+  /**
    * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.
    */
   inputBackgroundChecked: string;
