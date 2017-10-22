@@ -95,6 +95,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/dialog'
         },
         {
+          component: require<any>('../components/Divider/DividerPage').DividerPage,
+          key: 'Divider',
+          name: 'Divider',
+          url: '#/examples/Divider'
+        },
+        {
           component: require<any>('../components/DocumentCard/DocumentCardPage').DocumentCardPage,
           key: 'DocumentCard',
           name: 'DocumentCard',
