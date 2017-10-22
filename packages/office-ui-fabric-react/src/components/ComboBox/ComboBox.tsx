@@ -920,7 +920,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
     } else {
       // We are using refs, scroll the ref into view
-      if (this._selectedElement && scrollSelectedToTop) {
+      if (this._selectedElement && this._selectedElement.offsetParent && scrollSelectedToTop) {
         this._selectedElement.offsetParent.scrollIntoView(true);
       } else if (this._selectedElement) {
         let alignToTop = true;
@@ -934,7 +934,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         }
 
-        this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+        if (this._selectedElement.offsetParent) {
+          this._selectedElement.offsetParent.scrollIntoView(alignToTop);
+        }
       }
     }
   }
