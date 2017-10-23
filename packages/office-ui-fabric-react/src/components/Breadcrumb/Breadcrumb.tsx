@@ -92,7 +92,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       (item, index) => ({
         name: item.text,
         key: item.key,
-        // onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
+        onClick: item.onClick && ((ev: React.MouseEvent<any>) => item.onClick!(ev, item)),
         href: item.href
       })
     );

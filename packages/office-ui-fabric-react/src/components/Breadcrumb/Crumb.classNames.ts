@@ -57,6 +57,7 @@ export const getClassNames = memoizeFunction((
         lineHeight: height + 6,
         overflow: 'hidden',
         fontSize: chevronNormalSize,
+        userSelect: 'none',
 
         selectors: {
           [HighContrastSelector]: {
