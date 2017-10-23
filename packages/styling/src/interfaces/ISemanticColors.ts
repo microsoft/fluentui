@@ -62,9 +62,9 @@ export interface ISemanticColors {
   bodyText: string;
 
   /**
-   * Selected text color, e.g. selected menu item text.
+   * Checked text color, e.g. selected menu item text.
    */
-  bodySelectedText: string;
+  bodyTextChecked: string;
 
   /**
    * De-emphasized text; e.g. metadata, captions, placeholder text.

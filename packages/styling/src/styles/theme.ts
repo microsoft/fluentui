@@ -83,7 +83,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
   return {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
-    bodySelectedText: p.black,
+    bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
     bodyDivider: p.neutralLight,
 
