@@ -56,7 +56,7 @@ describe('Breadcrumb', () => {
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let crumbButton = renderedDOM.querySelector('.ms-Breadcrumb-crumbButton');
+    let crumbButton = renderedDOM.querySelector('.ms-Crumb-crumbButton');
 
     ReactTestUtils.Simulate.click(crumbButton!);
     expect(callbackValue).toEqual('TestKey');
@@ -79,9 +79,9 @@ describe('Breadcrumb', () => {
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let crumb = renderedDOM.querySelectorAll('.ms-Breadcrumb-crumb');
+    let crumb = renderedDOM.querySelectorAll('.ms-Crumb-textContent');
 
-    expect(crumb[1].textContent).toEqual('TestText3');
+    expect(crumb[0].textContent).toEqual('TestText3');
   });
 
 });

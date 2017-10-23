@@ -9,38 +9,6 @@ export interface IBreadcrumb {
 
 }
 
-export interface IBreadcrumbClassNames {
-  /**
-   * The root element class name.
-   */
-  root: string;
-
-  /**
-   * The chevron in between crumbs.
-   */
-  chevron: string;
-
-  /**
-   * The crumb container.
-   */
-  crumb: string;
-
-  /**
-   * The button inside of a crumb with an onClick or href.
-   */
-  crumbButton: string;
-
-  /**
-   * The span inside of the crumb for read-only crumbs.
-   */
-  crumbLabel: string;
-
-  /**
-   * The textual content rendered in either the crumbButton or crumbLabel.
-   */
-  crumbTextContent: string;
-}
-
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
@@ -52,11 +20,6 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Theme (provided through customization.)
    */
   theme?: ITheme;
-
-  /**
-   * Overridable function to derive the classNames.
-   */
-  getClassNames?: (theme?: ITheme, className?: string) => IBreadcrumbClassNames;
 
   /**
    * Collection of breadcrumbs to render

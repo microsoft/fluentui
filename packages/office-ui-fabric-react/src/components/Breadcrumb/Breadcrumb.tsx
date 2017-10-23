@@ -9,12 +9,12 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { CommandButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem, IBreadcrumbClassNames } from './Breadcrumb.Props';
+import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { Crumb } from './Crumb';
-import { getClassNames as _getClassNames } from './Breadcrumb.classNames';
+import { IBreadcrumbClassNames, getClassNames } from './Breadcrumb.classNames';
 // import * as stylesImport from './Breadcrumb.scss';
 // const styles: any = stylesImport;
 
@@ -42,7 +42,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   public render() {
     const {
       onReduceData = this._onReduceData,
-      getClassNames = _getClassNames,
       maxDisplayedItems,
       className,
       theme,
@@ -111,7 +110,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           <Crumb
             key='overflow'
             iconProps={ { iconName: 'More' } }
-            classNames={ this._classNames }
             menuProps={ {
               items: contextualItems,
               directionalHint: DirectionalHint.bottomLeftEdge
@@ -124,7 +122,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
             <Crumb
               key={ item.key }
               item={ item }
-              classNames={ this._classNames }
               withChevron={ index !== (renderedItems.length - 1) }
             />
           )) }
