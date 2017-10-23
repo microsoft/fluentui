@@ -114,6 +114,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                 height: 40px;
                 line-height: 46px;
                 overflow: hidden;
+                user-select: none;
                 vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
@@ -212,6 +213,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                 height: 40px;
                 line-height: 46px;
                 overflow: hidden;
+                user-select: none;
                 vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
@@ -310,6 +312,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                 height: 40px;
                 line-height: 46px;
                 overflow: hidden;
+                user-select: none;
                 vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
@@ -559,6 +562,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                 height: 40px;
                 line-height: 46px;
                 overflow: hidden;
+                user-select: none;
                 vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
@@ -657,6 +661,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                 height: 40px;
                 line-height: 46px;
                 overflow: hidden;
+                user-select: none;
                 vertical-align: top;
               }
               @media screen and (-ms-high-contrast: active){& {
