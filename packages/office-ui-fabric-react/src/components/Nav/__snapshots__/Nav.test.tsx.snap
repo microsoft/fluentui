@@ -144,14 +144,11 @@ exports[`Nav renders Nav correctly 1`] = `
                         }
                     role="presentation"
                   />
-                  <div
-                    className=
-                        ms-Button-textContainer
-                        {
-                          flex-grow: 0;
-                          overflow: hidden;
-                        }
-                  />
+                  <span
+                    className="ms-Nav-linkText"
+                  >
+                    
+                  </span>
                 </div>
               </button>
             </div>
