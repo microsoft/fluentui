@@ -8,11 +8,11 @@ import {
   customizable,
   autobind
 } from '../../Utilities';
-import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
+import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandingCard } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
-
+import { FocusTrapZone, IFocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
 export interface IExpandingCardState {
@@ -21,12 +21,16 @@ export interface IExpandingCardState {
 }
 
 @customizable('ExpandingCard', ['theme'])
-export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> implements IExpandingCard {
   public static defaultProps = {
     compactCardHeight: 156,
     expandedCardHeight: 384,
     directionalHint: DirectionalHint.bottomLeftEdge,
     gapSpace: 0
+  };
+
+  public refs: {
+    expandingCard: HTMLElement;
   };
 
   private _styles: IExpandingCardStyles;
@@ -49,6 +53,10 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         needsScroll: true
       });
     }
+    this._events.on(this.refs.expandingCard, 'keydown', this._onDismiss);
+    if (this.props.trapFocus) {
+      this.refs.expandingCard.focus();
+    }
   }
 
   public componentWillUnmount() {
@@ -64,6 +72,19 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       expandedCardHeight
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
+
+    const content = <div
+      data-is-focusable={ true }
+      tabIndex={ 0 }
+      ref='expandingCard'
+      onFocusCapture={ this.props.onEnter }
+      onBlurCapture={ this.props.onLeave }
+      onMouseEnter={ this.props.onEnter }
+      onMouseLeave={ this.props.onLeave }
+    >
+      { this._onRenderCompactCard() }
+      { this._onRenderExpandedCard() }
+    </div>;
 
     return (
       <Callout
@@ -81,17 +102,19 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         minPagePadding={ 24 }
         gapSpace={ this.props.gapSpace }
       >
-        <div
-          onFocusCapture={ this.props.onEnter }
-          onBlurCapture={ this.props.onLeave }
-          onMouseEnter={ this.props.onEnter }
-          onMouseLeave={ this.props.onLeave }
-        >
-          { this._onRenderCompactCard() }
-          { this._onRenderExpandedCard() }
-        </div>
+        { this.props.trapFocus ?
+          <FocusTrapZone>
+            { content }
+          </FocusTrapZone> :
+          content
+        }
       </Callout >
     );
+  }
+
+  @autobind
+  private _onDismiss(ev: Event): void {
+    this.props.onLeave && this.props.onLeave(ev);
   }
 
   @autobind

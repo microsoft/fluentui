@@ -11,6 +11,7 @@ import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/D
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
+import { List, IListProps } from '../../List';
 import './HoverCard.Example.scss';
 
 let _items: any[];
@@ -41,7 +42,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
 
   public render() {
     return (
-      <div ref={ (c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c }) } >
+      <div ref={ (c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c }) } data-is-focusable={ true }>
         { this.props.content }
         {
           this.state.contentRendered &&
@@ -51,6 +52,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
             cardDismissDelay={ 300 }
             onCardVisible={ this._log('onCardVisible') }
             onCardHide={ this._log('onCardHide') }
+            trapFocus={ true }
           />
         }
       </div>
@@ -88,6 +90,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
           items={ items! }
           columns={ columns }
           onRenderItemColumn={ this._onRenderItemColumn }
+          ariaLabel={ 'Hover card DetailsList test' }
         />
       </div>
     );
@@ -134,13 +137,23 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
     return (
       <div className='hoverCardExample-expandedCard'>
         { item.description }
-        <DetailsList
-          setKey='expandedCardSet'
-          items={ items! }
-          columns={ columns }
+        <List
+          componentRef={ this._resolveRef('_list') }
+          role='listbox'
+          items={ items }
+          onRenderCell={ (item: any) => this._onRenderItem(item) }
         />
       </div>
     );
+  }
+
+  @autobind
+  private _onRenderItem(item: any): JSX.Element {
+    return (
+      <div className='ItemCell'>
+        { item.key }
+      </div>
+    )
   }
 }
 
