@@ -41,7 +41,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
               let iconRefElement = this.refs[icon.name] as HTMLElement;
 
               if (iconRefElement && iconRefElement.offsetWidth > 80) {
-                iconJsxElement = <i className={ `ms-Icon ms-Icon--${icon.name} hoverIcon` } title={ `${icon.name}` } aria-hidden='true' />;
+                iconJsxElement = <i ref={ (`${icon.name}`) } className={ `ms-Icon ms-Icon--${icon.name} hoverIcon` } title={ `${icon.name}` } aria-hidden='true' />;
               }
 
               return (
