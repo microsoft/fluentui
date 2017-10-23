@@ -160,7 +160,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 styles.cell,
                 styles.cellIsCheck,
                 checkStyles.owner,
-                checkStyles.header,
                 isAllSelected && checkStyles.isSelected
               ) }
               aria-labelledby={ `${this._id}-check` }
@@ -180,6 +179,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       aria-label={ ariaLabelForSelectionColumn }
                       aria-describedby={ `${this._id}-checkTooltip` }
                       data-is-focusable={ true }
+                      isHeader={ true }
                       selected={ isAllSelected }
                       anySelected={ false }
                       canSelect={ true }
