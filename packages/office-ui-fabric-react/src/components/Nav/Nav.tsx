@@ -131,7 +131,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _onRenderLink(link: INavLink) {
-    return (<span className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</span>);
+    return (<div className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</div>);
   }
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {

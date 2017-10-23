@@ -144,11 +144,11 @@ exports[`Nav renders Nav correctly 1`] = `
                         }
                     role="presentation"
                   />
-                  <span
+                  <div
                     className="ms-Nav-linkText"
                   >
                     
-                  </span>
+                  </div>
                 </div>
               </button>
             </div>
