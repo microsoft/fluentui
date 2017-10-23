@@ -1,3 +1,5 @@
+@import '../../dist/sass/variables/_Color.variables.scss';
+
 /* Base slots */
 $bodyBackgroundColor: "[theme:bodyBackground, default: #ffffff]";
 $bodyTextColor: "[theme:bodyText, default: #333333]";
@@ -24,6 +26,29 @@ $inputBackgroundCheckedColor: "[theme:inputBackgroundChecked, default: #0078d7]"
 $inputBackgroundCheckedHoveredColor: "[theme:inputBackgroundCheckedHovered, default: #106ebe]";
 $inputForegroundCheckedColor: "[theme:inputForegroundChecked, default: #ffffff]";
 $inputFocusBorderAltColor: "[theme:inputFocusBorderAlt, default: #0078d7]";
+
+
+$buttonBackgroundColor: "[theme:buttonBackground, default: #]";
+$buttonBackgroundCheckedColor: "[theme:buttonBackgroundChecked, default: #]";
+$buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #]";
+$buttonBackgroundCheckedHoveredColor: "[theme:buttonBackgroundCheckedHovered, default: #]";
+$buttonBorderColor: "[theme:buttonBorder, default: #]";
+$buttonTextColor: "[theme:buttonText, default: #]";
+$buttonTextHoveredColor: "[theme:buttonTextHovered, default: #]";
+$buttonTextCheckedColor: "[theme:buttonTextChecked, default: #]";
+$buttonTextCheckedHoveredColor: "[theme:buttonTextCheckedHovered, default: #]";
+
+/*
+$buttonBackground: p.neutralLighter,
+$buttonBackgroundChecked: p.neutralTertiaryAlt,
+$buttonBackgroundHovered: p.neutralLight,
+$buttonBackgroundCheckedHovered: p.neutralLight,
+$buttonBorder: 'transparent',
+$buttonText: p.neutralPrimary,
+$buttonTextHovered: p.black,
+$buttonTextChecked: p.neutralDark,
+$buttonTextCheckedHovered: p.black,
+*/
 
 /* Menus */
 $menuItemBackgroundHoveredColor: "[theme:menuItemBackgroundHovered, default: #f8f8f8]";

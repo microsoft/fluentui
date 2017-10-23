@@ -158,31 +158,43 @@ export interface ISemanticColors {
   //// Buttons
 
   /**
-   * Background of a button
+   * Background of a standard button
    */
   buttonBackground: string;
   /**
-   * Background of a checked button; e.g. bold/italicize/underline text button in toolbar
-   */
-  buttonBackgroundChecked: string;
-  /**
-   * Background of a hovered button
+   * Background of a hovered standard button
    */
   buttonBackgroundHovered: string;
   /**
-   * Background of a checked and hovered button; e.g. bold/italicize/underline text button in toolbar
+   * Background of a checked standard button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundChecked: string;
+  /**
+   * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
    */
   buttonBackgroundCheckedHovered: string;
 
   /**
-   * Border of a button
+   * Border of a standard button
    */
   buttonBorder: string;
 
   /**
-   * Color of text in a button
+   * Color of text in a standard button
    */
   buttonText: string;
+  /**
+   * Color of text in a hovered standard button
+   */
+  buttonTextHovered: string;
+  /**
+   * Color of text in a checked standard button
+   */
+  buttonTextChecked: string;
+  /**
+   * Color of text in a checked and hovered standard button
+   */
+  buttonTextCheckedHovered: string;
 
   //// Menus, popups, etc
 

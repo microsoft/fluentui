@@ -29,6 +29,14 @@ const iconStyle = {
 export const getStyles = memoizeFunction((
   theme: ITheme
 ): IButtonStyles => {
+  let { semanticColors } = theme;
+
+  let border = semanticColors.buttonBorder;
+  let background = semanticColors.buttonBackground;
+  let text = semanticColors.buttonText;
+
+  let disabledBackground = semanticColors.disabledBackground;
+  let disabledText = semanticColors.disabledText;
 
   return {
     root: [
@@ -36,8 +44,8 @@ export const getStyles = memoizeFunction((
       theme.fonts.medium,
       {
         boxSizing: 'border-box',
-        // this transparent border converts to the correct colors in HC mode
-        border: '1px solid transparent',
+        border: '1px solid ' + border,
+        color: text,
         userSelect: 'none',
         display: 'inline-block',
         textDecoration: 'none',
