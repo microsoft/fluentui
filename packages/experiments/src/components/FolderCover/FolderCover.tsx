@@ -40,7 +40,6 @@ const SIZES: {
 const ASSETS: {
   [P in FolderCoverSize]: {
     [T in FolderCoverType]: {
-      shadow: string;
       back: string;
       front: string;
     };
@@ -48,26 +47,22 @@ const ASSETS: {
 } = {
     small: {
       default: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultfront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_frontplate_thumbnail.svg` // Yes, it's mis-named.
       },
       media: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotoback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotosfront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons//folder-small_frontplate_nopreview.svg` // Yes, it's mis-named
       }
     },
     large: {
       default: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultfront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_frontplate_nopreview.svg`
       },
       media: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotoback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotofront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons//folder-large_frontplate_thumbnail.svg`
       }
     }
   };
@@ -95,11 +90,6 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent
         }) }
       >
-        <img
-          aria-hidden={ true }
-          className={ css('ms-FolderCover-shadow', FolderCoverStyles.shadow) }
-          src={ assets.shadow }
-        />
         <img
           aria-hidden={ true }
           className={ css('ms-FolderCover-back', FolderCoverStyles.back) }
