@@ -28,6 +28,9 @@
 
   ### Fabric
   # packages/office-ui-fabric-react/src/common/*
+  packages/office-ui-fabric-react/src/common/_semanticSlots.scss  @phkuo
+  packages/office-ui-fabric-react/src/common/_themeOverrides.scss @phkuo
+  packages/office-ui-fabric-react/src/common/_common.scss @phkuo
 
     ## Components
     # packages/office-ui-fabric-react/src/components/ActivityItem/*
@@ -89,6 +92,7 @@
   # packages/office-ui-fabric-react/src/visualtest/*
 
 # packages/office-ui-fabric-react-tslint/*
-packages/styling/*  @dzearing @phkuo
+packages/styling/*  @dzearing
+packages/styling/src/interfaces/* @phkuo
+packages/styling/src/styles/* @phkuo
 # packages/utilities/*
-
