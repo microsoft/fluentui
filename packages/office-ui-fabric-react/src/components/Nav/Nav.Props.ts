@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 
 export interface INav {
   /**
@@ -31,7 +32,7 @@ export interface INavProps {
    * Used to customize how content inside the link tag is rendered
    * @defaultvalue Default link rendering
    */
-  onRenderLink?: Function;
+  onRenderLink?: IRenderFunction<INavLink>;
 
   /**
    * Function callback invoked when a link in the navigation is clicked
