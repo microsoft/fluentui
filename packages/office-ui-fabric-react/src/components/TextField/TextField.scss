@@ -9,19 +9,19 @@
 @import '../Label/LabelMixins.scss';
 
 // component slots
-$field-background-color: $fieldBackgroundColor;
+$field-background-color: $bodyBackgroundColor;
 $field-background-disabled-color: $disabledBackgroundColor;
 
-$field-border-color: $fieldBorderColor;
+$field-border-color: $inputBorderColor;
 $field-border-disabled-color: $disabledBackgroundColor;
-$field-border-hover-color: $fieldBorderHoverColor;
-$field-border-focus-color: $fieldBorderFocusColor;
+$field-border-hover-color: $inputBorderHoveredColor;
+$field-border-focus-color: $inputFocusBorderAltColor;
 $field-border-error-color: $errorTextColor;
 
-$field-text-color: $fieldTextColor;
+$field-text-color: $bodyTextColor;
 $field-text-disabled-color: $disabledTextColor;
 
-$field-placeholder-color: $fieldPlaceholderColor;
+$field-placeholder-color: $bodySubtextColor;
 $field-placeholder-disabled-color: $disabledSubtextColor;
 
 $field-description-color: $bodySubtextColor;

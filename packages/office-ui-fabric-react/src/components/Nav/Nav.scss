@@ -35,8 +35,8 @@ $linkRightPadding: 20px;
 
 .icon {
   padding: 0px;
-  color: $selectedForegroundColor;
-  background: $selectedBackgroundColor;
+  color: $ms-color-neutralPrimary;
+  background: $ms-color-neutralLighter;
   transition: transform .1s linear;
 }
 
@@ -63,22 +63,22 @@ $linkRightPadding: 20px;
 
   cursor: pointer;
 
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
+  color: $bodyTextColor;
+  background: $bodyBackgroundColor;
 
   &:visited {
     color: inherit;
   }
 
   &:hover {
-    color: $unselectedHoverForegroundColor;
-    background: $unselectedHoverBackgroundColor;
+    color: $bodyTextColor;
+    background: $ms-color-neutralLighterAlt;
   }
 
   &.chevronButtonIsGroup {
     width: 100%;
     height: $navnode-height;
-    border-bottom: 1px solid $dividerColor;
+    border-bottom: 1px solid $bodyDividerColor;
   }
 }
 
@@ -121,15 +121,15 @@ $linkRightPadding: 20px;
     }
   }
 
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
+  color: $bodyTextColor;
+  background: $bodyBackgroundColor;
 
   &:hover {
 
     & .link,
     & .chevronButton {
-      background: $unselectedHoverBackgroundColor;
-      color: $unselectedHoverForegroundColor;
+      background: $ms-color-neutralLighterAlt;
+      color: $bodyTextColor;
     }
   }
 
@@ -144,7 +144,7 @@ $linkRightPadding: 20px;
     & .chevronButton {
 
       color: $ms-color-themePrimary;
-      background: $selectedBackgroundColor;
+      background: $ms-color-neutralLighter;
 
       &:after {
         @include border-left(2px, solid, $ms-color-themePrimary);

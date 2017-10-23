@@ -114,5 +114,5 @@ $Rating-largeIconSize: 20px;
 
 // Highlight focused star
 :global(.ms-Fabric.is-focusVisible) .starIsInFocus .label {
-  border: 1px solid $focusedBorderColor;
+  border: 1px solid $focusBorderColor;
 }

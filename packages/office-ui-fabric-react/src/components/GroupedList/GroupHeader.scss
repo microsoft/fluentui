@@ -3,9 +3,9 @@
 $rowHeight: 40px;
 
 // component slots
-$detailsList-item-hover-color: $listItemHoverColor;
-$detailsList-item-selected-color: $listItemSelectedColor;
-$detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
+$detailsList-item-hover-color: $listItemBackgroundHoveredColor;
+$detailsList-item-selected-color: $listItemBackgroundCheckedColor;
+$detailsList-item-selected-hover-color: $listItemBackgroundCheckedHoveredColor;
 
 $groupHeader-ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
 $groupHeader-ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
