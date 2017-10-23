@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu/Callout: Fix (and deprecate) broken 'targetPoint' API",
+      "comment": "ComboBox: Add support for custom styling of the label in the disabled state",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miclo@microsoft.com"
+  "email": "<christianjordangonzalez@gmail.com>"
 }

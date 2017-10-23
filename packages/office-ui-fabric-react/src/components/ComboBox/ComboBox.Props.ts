@@ -43,6 +43,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
+   * Function that gets invoked when the ComboBox menu is launched
+   */
+  onMenuOpen?: () => void;
+
+  /**
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
@@ -119,6 +124,11 @@ export interface IComboBoxStyles {
    * Style for the label element of the ComboBox.
    */
   label: IStyle;
+
+  /**
+   * Style for the label element of the ComboBox in the disabled state.
+   */
+  labelDisabled: IStyle;
 
   /**
    * Base styles for the root element of all ComboBoxes.
