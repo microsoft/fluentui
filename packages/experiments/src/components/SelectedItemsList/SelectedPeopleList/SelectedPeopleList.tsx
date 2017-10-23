@@ -5,7 +5,6 @@ import { IPickerItemProps, ValidationState } from 'office-ui-fabric-react/lib/Pi
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.Props';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import '../../../../../office-ui-fabric-react/src/components/Pickers/PeoplePicker/PeoplePicker.scss';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { autobind } from '../../../Utilities';
 
