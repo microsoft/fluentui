@@ -29,7 +29,7 @@
       "cwd": "${workspaceRoot}/packages/experiments",
       "stopOnEntry": false,
       "args": [
-        "jest",
+        "jest"
       ],
       "runtimeExecutable": null,
       "runtimeArgs": [
@@ -104,6 +104,27 @@
         "NODE_ENV": "development"
       },
       "sourceMaps": false
+    },
+    {
+      "name": "Debug add new component",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/create-component.js",
+      "cwd": "${workspaceRoot}",
+      "stopOnEntry": false,
+      "args": [
+        "--name",
+        "TestComponentName"
+      ],
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
     }
   ]
 }

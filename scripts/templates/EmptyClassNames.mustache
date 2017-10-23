@@ -1,0 +1,22 @@
+import { memoizeFunction } from '../../Utilities';
+import { mergeStyleSets} from '../../Styling';
+
+export interface I{{componentName}}Styles {
+   /**
+   * Style for the root element in the default enabled/unchecked state.
+   */
+  root?: IStyle;
+}
+
+export interface I{{componentName}}Names {
+	/**
+	* Root html container for this component.
+	*/
+	root?: string;
+}
+
+export const getClassNames = memoizeFunction((): I{{componentName}}Names => {
+	return mergeStyleSets({
+		root: []
+	});
+});

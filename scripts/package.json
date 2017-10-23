@@ -24,6 +24,7 @@
     "json-loader": "^0.5.7",
     "jest": "^21.2.0",
     "ts-jest": "^21.1.2",
+    "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
     "open": "^0.0.5",
     "postcss": "^6.0.9",
