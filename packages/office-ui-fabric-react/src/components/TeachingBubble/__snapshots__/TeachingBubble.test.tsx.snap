@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
+<span
+  className="ms-Layer"
+/>
+`;
+
+exports[`TeachingBubble renders TeachingBubble correctly 2`] = `
+<div
+  className="ms-TeachingBubble-content"
+>
+  <div
+    className="ms-TeachingBubble-bodycontent"
+  >
+    <div
+      className="ms-TeachingBubble-header ms-TeachingBubble-header--large undefined"
+    >
+      <p
+        className="ms-TeachingBubble-headline"
+      >
+        Title
+      </p>
+    </div>
+    <div
+      className="ms-TeachingBubble-body"
+    >
+      <p
+        className="ms-TeachingBubble-subText"
+      >
+        Content
+      </p>
+    </div>
+  </div>
+</div>
+`;

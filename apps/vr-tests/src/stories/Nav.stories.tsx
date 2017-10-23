@@ -4,6 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Nav } from 'office-ui-fabric-react';
+import { IconNames } from '@uifabric/icons';
 
 // tslint:disable:max-line-length
 storiesOf('Nav', module)
@@ -37,6 +38,7 @@ storiesOf('Nav', module)
                   url: 'http://example.com',
                   links: [{
                     name: 'Activity',
+                    icon: IconNames.Upload,
                     url: 'http://msn.com',
                     key: 'key1'
                   },
@@ -47,14 +49,14 @@ storiesOf('Nav', module)
                   }],
                   isExpanded: true
                 },
-                { name: 'Documents', url: 'http://example.com', key: 'key3' },
+                { name: 'Documents', icon: IconNames.Accept, url: 'http://example.com', key: 'key3' },
                 { name: 'Pages', url: 'http://msn.com', key: 'key4' },
                 { name: 'Notebook', url: 'http://msn.com', key: 'key5' },
                 { name: 'Long Name Test for elipse', url: 'http://msn.com', key: 'key6' },
                 {
                   name: 'Edit',
                   url: 'http://cnn.com',
-                  icon: 'Edit',
+                  icon: IconNames.Edit,
                   key: 'key8'
                 }
               ]

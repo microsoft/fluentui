@@ -1,24 +1,5 @@
 @import '../../../styles/variables';
 
-.iconGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  li {
-    align-items: center;
-    display: flex;
-    font-size: $font-size-bigger;
-    height: 48px;
-    justify-content: center;
-    padding: 30px;
-    width: 48px;
-  }
-
-  // Add a flexible element that fills the available space
-  // remaining in a row, preventing icons from being far apart
-  &:after {
-    content: "";
-    flex: auto;
-  }
+.iconsPage .iconsPageLink {
+  color: $ms-color-themePrimary;
 }

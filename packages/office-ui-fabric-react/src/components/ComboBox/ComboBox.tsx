@@ -26,7 +26,8 @@ import {
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
-  getClassNames
+  getClassNames,
+  getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -159,7 +160,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     let {
       allowFreeform,
-      value
+      value,
+      onMenuOpen
     } = this.props;
     let {
       isOpen,
@@ -195,6 +197,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           value !== prevProps.value)
       )) {
       this._select();
+    }
+
+    if (isOpen && !prevState.isOpen && onMenuOpen) {
+      onMenuOpen();
     }
   }
 
@@ -248,7 +254,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
-          <Label id={ id + '-label' } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
+          <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }
@@ -936,8 +942,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    const optionStyles = this._getCurrentOptionStyles(item);
-    return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
   }
 
   /**

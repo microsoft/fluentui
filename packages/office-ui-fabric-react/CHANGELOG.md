@@ -1,6 +1,90 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Oct 2017 04:00:17 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2017 10:24:13 GMT and should not be manually modified.
+
+## 5.12.0
+Mon, 23 Oct 2017 10:24:13 GMT
+
+### Minor changes
+
+- ComboBox: Adding onMenuOpen callback
+
+### Patches
+
+- Added a new divider component
+- ContextualMenu/Callout: Fix (and deprecate) broken 'targetPoint' API
+- DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed.
+
+## 5.11.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adding an Icons export in lib folder, as well as adding Check to the root index exports.
+- Add a way to force a layout update for ScrollablePane
+- ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields.
+- Add opt-in modal selection behavior on touch
+
+### Patches
+
+- Fix minor state update bug with Sticky
+- ComboBox: Fix custom styling on menu options
+- Updated example to render some custom icons.
+- SpinButton: Disable last pass autofill
+- Menu Split Button: Launch split button menu with right arrow key
+- PersonaCoin - display initials only if no imageUrl is provided or if error loading image
+
+## 5.10.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- ComboBox: the label now appears disabled when the ComboBox is disabled.
+- "ContextualMenu: SplitButtons can now appear inside menus"
+- Theming: add SASS variables for semantic theming to support legacy scenarios"
+
+### Patches
+
+- Added implementation examples section to Button Page. Rearranged TextField borderless example.
+- Updated the Fabric Core package version
+- Fix Image css so it doesn't fade in if shouldStartVisible is true
+- Fix refs in Dropdown and Datepicker
+
+## 5.9.3
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Patches
+
+- SearchBox: expose onKeyDown event by invoking external prop
+- ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu
+
+## 5.9.2
+Mon, 16 Oct 2017 22:49:01 GMT
+
+### Patches
+
+- Nav: fixing amd-incompatible import.
+
+## 5.9.1
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Dropdown: Fixing nullref when nothing is selected in multi select rendering.
+- Updating shrinkwrap for Fabric Core package update
+
+## 5.9.0
+Mon, 16 Oct 2017 10:20:41 GMT
+
+### Minor changes
+
+- DatePicker getWeekNumbers function accepts firstWeekOfYear settings
+
+### Patches
+
+- Fix Slider css so label does not break lines if value is long
+- Fix rounding issue in Slider when step is less than 1
+- Fix CommandButton styles for Nav entries
 
 ## 5.8.2
 Fri, 13 Oct 2017 04:00:17 GMT
