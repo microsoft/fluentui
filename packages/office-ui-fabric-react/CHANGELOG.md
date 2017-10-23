@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2017 10:24:13 GMT and should not be manually modified.
+
+## 5.12.0
+Mon, 23 Oct 2017 10:24:13 GMT
+
+### Minor changes
+
+- ComboBox: Adding onMenuOpen callback
+
+### Patches
+
+- Added a new divider component
+- ContextualMenu/Callout: Fix (and deprecate) broken 'targetPoint' API
+- DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed.
 
 ## 5.11.0
 Fri, 20 Oct 2017 18:42:08 GMT
