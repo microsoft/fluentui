@@ -350,6 +350,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+    const { onDismiss = this._onToggleMenu } = menuProps;
+
     return (
       <ContextualMenu
         id={ this._labelId + '-menu' }
@@ -358,7 +360,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
         labelElementId={ this._labelId }
-        onDismiss={ this._onToggleMenu }
+        onDismiss={ onDismiss }
       />
     );
   }
