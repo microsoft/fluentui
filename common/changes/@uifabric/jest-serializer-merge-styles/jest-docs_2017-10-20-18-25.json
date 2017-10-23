@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "comment": "Updated jest docs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "email": "lynam.emily@gmail.com"
+}

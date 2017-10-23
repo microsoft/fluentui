@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.4.0",
+      "tag": "@uifabric/styling_v5.4.0",
+      "date": "Fri, 20 Oct 2017 18:42:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a360af7a689c30f406ff7cb2346fafb3a972ab1a",
+            "comment": "Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.1 <6.0.0` to `>=5.4.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "@uifabric/styling_v5.3.0",
       "date": "Tue, 10 Oct 2017 10:24:47 GMT",

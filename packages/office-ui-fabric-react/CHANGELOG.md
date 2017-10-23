@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2017 10:24:13 GMT and should not be manually modified.
+
+## 5.12.0
+Mon, 23 Oct 2017 10:24:13 GMT
+
+### Minor changes
+
+- ComboBox: Adding onMenuOpen callback
+
+### Patches
+
+- Added a new divider component
+- ContextualMenu/Callout: Fix (and deprecate) broken 'targetPoint' API
+- DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed.
+
+## 5.11.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adding an Icons export in lib folder, as well as adding Check to the root index exports.
+- Add a way to force a layout update for ScrollablePane
+- ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields.
+- Add opt-in modal selection behavior on touch
+
+### Patches
+
+- Fix minor state update bug with Sticky
+- ComboBox: Fix custom styling on menu options
+- Updated example to render some custom icons.
+- SpinButton: Disable last pass autofill
+- Menu Split Button: Launch split button menu with right arrow key
+- PersonaCoin - display initials only if no imageUrl is provided or if error loading image
 
 ## 5.10.0
 Wed, 18 Oct 2017 10:21:25 GMT

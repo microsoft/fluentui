@@ -33,6 +33,8 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
       onKeyDownCapture={[Function]}
       onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
+      onTouchEndCapture={[Function]}
+      onTouchStartCapture={[Function]}
       role="presentation"
     >
       <div
@@ -48,6 +50,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
+          data-lpignore={true}
           disabled={undefined}
           onChange={[Function]}
           onClick={[Function]}
@@ -95,6 +98,8 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
       onKeyDownCapture={[Function]}
       onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
+      onTouchEndCapture={[Function]}
+      onTouchStartCapture={[Function]}
       role="presentation"
     >
       <div
@@ -110,6 +115,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
+          data-lpignore={true}
           disabled={undefined}
           onChange={[Function]}
           onClick={[Function]}

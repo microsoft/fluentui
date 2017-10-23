@@ -14,6 +14,7 @@ import {
 } from './ContextualMenu.classNames';
 import {
   BaseComponent,
+  IPoint,
   anchorProperties,
   buttonProperties,
   getNativeProps,
@@ -112,7 +113,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number;
   private _targetWindow: Window;
-  private _target: HTMLElement | MouseEvent | null;
+  private _target: HTMLElement | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
 
   constructor(props: IContextualMenuProps) {
@@ -122,6 +123,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       contextualMenuItems: undefined,
       subMenuId: getId('ContextualMenu')
     };
+
+    this._warnDeprecations({
+      'targetPoint': 'target',
+      'useTargetPoint': 'target',
+    });
 
     this._isFocusingPreviousElement = false;
     this._enterTimerId = 0;
@@ -248,9 +254,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return (
         <Callout
           {...calloutProps}
-          target={ target }
-          targetPoint={ targetPoint }
-          useTargetPoint={ useTargetPoint }
+          target={ useTargetPoint ? targetPoint : target }
           isBeakVisible={ isBeakVisible }
           beakWidth={ beakWidth }
           directionalHint={ directionalHint }
@@ -763,19 +767,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint): void {
     if (target) {
       if (typeof target === 'string') {
         let currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
-        this._target = target;
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+        this._target = target;
+      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
+        this._targetWindow = getWindow()!;
+        this._target = target;
       } else {
         let targetElement: HTMLElement = target as HTMLElement;
-        this._target = target;
         this._targetWindow = getWindow(targetElement)!;
+        this._target = target;
       }
     } else {
       this._targetWindow = getWindow()!;

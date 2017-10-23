@@ -205,6 +205,11 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Optional class name to add to the cell of a checkbox
    */
   checkboxCellClassName?: string;
+
+  /**
+   * Whether or not the selection zone should enter modal state on touch.
+   */
+  enterModalSelectionOnTouch?: boolean;
 }
 
 export interface IColumn {

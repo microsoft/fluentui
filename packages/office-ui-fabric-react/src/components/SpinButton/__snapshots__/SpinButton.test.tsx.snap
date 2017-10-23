@@ -113,6 +113,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-lpignore={true}
       disabled={false}
       id="input1"
       onBlur={[Function]}
