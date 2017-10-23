@@ -171,7 +171,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         rel={ rel }
         aria-label={ link.ariaLabel }
       >
-        { link.name }
+        { this.props.onRenderLink!(link) }
       </ActionButton>);
   }
 
