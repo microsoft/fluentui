@@ -46,13 +46,4 @@ module.exports = {
 }
 ```
 
-You can run `npm run start-test` to have a test watch mode.
-
-You can type
-```js
-debugger
-```
-in a test and press f5 and vscode and it hits!
-
-## Updating Snapshots
-If you make an intended change that breaks a snapshot, you can go into the package folder and run `npm run update-snapshots` to regenerate them.
+See [Testing](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md) for more detailed usage.
