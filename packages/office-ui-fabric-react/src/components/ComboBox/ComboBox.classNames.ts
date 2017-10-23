@@ -38,7 +38,8 @@ export const getClassNames = memoizeFunction((
       styles.container,
     ),
     label: mergeStyles(
-      styles.label
+      styles.label,
+      disabled && styles.labelDisabled
     ),
     root: mergeStyles(
       'ms-ComboBox',
