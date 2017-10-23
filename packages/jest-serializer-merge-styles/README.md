@@ -45,3 +45,5 @@ module.exports = {
   ]
 }
 ```
+
+See [Testing](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md) for more detailed usage.
