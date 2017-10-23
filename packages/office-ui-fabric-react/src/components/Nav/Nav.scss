@@ -96,7 +96,10 @@ $linkRightPadding: 20px;
 }
 
 .linkText {
+  margin: 0 4px;
+  overflow: hidden;
   vertical-align: middle;
+  text-overflow: ellipsis;
 }
 
 .compositeLink {
