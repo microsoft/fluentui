@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.13",
+      "tag": "@uifabric/fabric-website_v5.0.13",
+      "date": "Tue, 24 Oct 2017 10:21:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6431ff07746eee3c7a919fd7b701ba88c55a2928",
+            "comment": "Removed Header component - it was replaced with UHF"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.12.0 <6.0.0` to `>=5.13.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.12",
       "tag": "@uifabric/fabric-website_v5.0.12",
       "date": "Wed, 18 Oct 2017 10:21:25 GMT",

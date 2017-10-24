@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+
+## 5.5.0
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Minor changes
+
+- Adding `stroke` css property to typings.
 
 ## 5.4.2
 Fri, 20 Oct 2017 18:42:08 GMT

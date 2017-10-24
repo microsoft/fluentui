@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.13.0",
+      "tag": "office-ui-fabric-react_v5.13.0",
+      "date": "Tue, 24 Oct 2017 10:21:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "e15ecddc2d8813903725ce7b29c39aeeb98f513a",
+            "comment": "ComboBox: Add support for custom styling of the label in the disabled state"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f1e3474219410a1640ed9c920813987297be2bba",
+            "comment": "Dialog: Don't add empty spans to footer for falsy children of DialogFooter"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "33e7f8222a9f8631fd78fcb485debcda2fa49b81",
+            "comment": "Nav: Add onRenderLink back to JSX to allow custom rendering of links"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "1004504eb5cdba55db7f17c6b8af90ef5471010e",
+            "comment": "remove outdated semantic slots"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "3ad7fdc47a3b38813821e680770f188b01cff085",
+            "comment": "Ensure that Select All checkbox can still be focused"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "751fcb25bb51bac1dcd44249a764a666570102a1",
+            "comment": "Adds \"onInputChanged\" prop to BasePicker"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6fc8b90efd2d0edc978167c1bfd1d6d3c2e7f64c",
+            "comment": "Layer: exposing `setDefaultTarget(selector)` static method to set a default target element where layered content should render by default."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.0",
       "tag": "office-ui-fabric-react_v5.12.0",
       "date": "Mon, 23 Oct 2017 10:24:13 GMT",
