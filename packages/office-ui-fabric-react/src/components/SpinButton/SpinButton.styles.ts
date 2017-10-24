@@ -37,7 +37,7 @@ export const getArrowButtonStyles = memoizeFunction((
   customSpecificArrowStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
 
-  const { semanticColors, palette } = theme;
+  const { palette } = theme;
 
   const ArrowButtonTextColor = palette.neutralPrimary;
   const ArrowButtonTextColorPressed = palette.white;
