@@ -80,6 +80,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       layerProps,
       type,
       customWidth,
+      onLightDismissClick = this._onPanelClick,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
@@ -107,7 +108,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             !isOpen && isAnimating && AnimationClassNames.fadeOut200
           ) }
           isDarkThemed={ false }
-          onClick={ isLightDismiss ? this._onPanelClick : undefined }
+          onClick={ isLightDismiss ? onLightDismissClick : undefined }
         />
       );
     }
