@@ -55,7 +55,14 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
         >
           <div
             aria-describedby={undefined}
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  max-width: 180px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -73,11 +80,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                     font-weight: 100;
                     height: 40px;
                     line-height: 40px;
-                    max-width: 180px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     vertical-align: top;
-                    white-space: nowrap;
                   }
                   @media screen and (max-width: 639px){& {
                     -moz-osx-font-smoothing: grayscale;
@@ -154,7 +157,14 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
         >
           <div
             aria-describedby={undefined}
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  max-width: 180px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -172,11 +182,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                     font-weight: 100;
                     height: 40px;
                     line-height: 40px;
-                    max-width: 180px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     vertical-align: top;
-                    white-space: nowrap;
                   }
                   @media screen and (max-width: 639px){& {
                     -moz-osx-font-smoothing: grayscale;
@@ -253,7 +259,14 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
         >
           <div
             aria-describedby={undefined}
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  max-width: 180px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -271,11 +284,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                     font-weight: 100;
                     height: 40px;
                     line-height: 40px;
-                    max-width: 180px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     vertical-align: top;
-                    white-space: nowrap;
                   }
                   @media screen and (max-width: 639px){& {
                     -moz-osx-font-smoothing: grayscale;
@@ -352,7 +361,14 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
         >
           <div
             aria-describedby={undefined}
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  max-width: 180px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -370,11 +386,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
                     font-weight: 100;
                     height: 40px;
                     line-height: 40px;
-                    max-width: 180px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     vertical-align: top;
-                    white-space: nowrap;
                   }
                   @media screen and (max-width: 639px){& {
                     -moz-osx-font-smoothing: grayscale;
@@ -478,7 +490,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                 padding-right: 4px;
                 padding-top: 0;
                 position: relative;
-                text-align: center;
+                text-align: left;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
@@ -602,7 +614,14 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
         >
           <div
             aria-describedby={undefined}
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  max-width: 180px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -620,11 +639,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     font-weight: 100;
                     height: 40px;
                     line-height: 40px;
-                    max-width: 180px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     vertical-align: top;
-                    white-space: nowrap;
                   }
                   @media screen and (max-width: 639px){& {
                     -moz-osx-font-smoothing: grayscale;
@@ -701,7 +716,14 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
         >
           <div
             aria-describedby={undefined}
-            className="ms-TooltipHost"
+            className=
+                ms-TooltipHost
+                {
+                  max-width: 180px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
@@ -719,11 +741,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                     font-weight: 100;
                     height: 40px;
                     line-height: 40px;
-                    max-width: 180px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     vertical-align: top;
-                    white-space: nowrap;
                   }
                   @media screen and (max-width: 639px){& {
                     -moz-osx-font-smoothing: grayscale;
