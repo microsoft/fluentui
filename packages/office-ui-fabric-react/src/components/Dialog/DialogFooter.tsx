@@ -16,7 +16,7 @@ export class DialogFooter extends BaseComponent<any, any> {
 
   private _renderChildrenAsActions() {
     return React.Children.map(this.props.children, child =>
-      <span className={ css('ms-Dialog-action', styles.action) }>{ child }</span>
+      child && <span className={ css('ms-Dialog-action', styles.action) }>{ child }</span>
     );
   }
 }

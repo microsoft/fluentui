@@ -126,6 +126,11 @@ export interface IComboBoxStyles {
   label: IStyle;
 
   /**
+   * Style for the label element of the ComboBox in the disabled state.
+   */
+  labelDisabled: IStyle;
+
+  /**
    * Base styles for the root element of all ComboBoxes.
    */
   root: IStyle;

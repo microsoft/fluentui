@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+
+## 5.0.13
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Removed Header component - it was replaced with UHF
 
 ## 5.0.12
 Wed, 18 Oct 2017 10:21:25 GMT
