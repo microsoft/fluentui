@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Add support for custom styling of the label in the disabled state",
+      "comment": "Fix Dropdown's falsey check in selection to strict check for undefined in case key is 0",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "<christianjordangonzalez@gmail.com>"
+  "email": "a.erich@gmail.com"
 }

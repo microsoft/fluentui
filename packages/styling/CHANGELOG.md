@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+
+## 5.4.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- remove outdated semantic slots
 
 ## 5.4.0
 Fri, 20 Oct 2017 18:42:08 GMT

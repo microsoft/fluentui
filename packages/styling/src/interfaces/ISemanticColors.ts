@@ -43,7 +43,7 @@
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
  */
 export interface ISemanticColors {
-  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette() */
+  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
   //// Base slots
 
@@ -58,7 +58,7 @@ export interface ISemanticColors {
   bodyText: string;
 
   /**
-   * The default text color for a selected menu item title.
+   * Selected text color, e.g. selected menu item text.
    */
   bodySelectedText: string;
 
