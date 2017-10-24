@@ -18,6 +18,7 @@ export interface ICrumbClassNames {
   crumbButton: string;
   crumbLabel: string;
   overflowIcon: string;
+  textContentWrapper: string;
   textContent: string;
 }
 export const getClassNames = memoizeFunction((
@@ -77,6 +78,7 @@ export const getClassNames = memoizeFunction((
     crumbButton: [
       'ms-Crumb-crumbButton',
       {
+        textAlign: 'left',
         selectors: {
           ':hover': {
             backgroundColor: crumbHoverBackground,
@@ -88,7 +90,7 @@ export const getClassNames = memoizeFunction((
             color: crumbActiveColor
           }
         }
-      }
+      },
     ],
 
     crumbLabel: [
@@ -103,15 +105,23 @@ export const getClassNames = memoizeFunction((
       lineHeight: height + 4
     },
 
+    textContentWrapper: [
+      {
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis'
+      },
+      !isCurrentItem && {
+        maxWidth: 180
+      }
+    ],
+
     textContent: [
       'ms-Crumb-textContent',
       fonts.xLarge,
       {
         verticalAlign: 'top',
         display: 'inline-block',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
         height,
         lineHeight: height,
 
@@ -119,9 +129,6 @@ export const getClassNames = memoizeFunction((
           [MediumMediaQuery]: fonts.large,
           [SmallMediaQuery]: fonts.medium
         }
-      },
-      !isCurrentItem && {
-        maxWidth: 180
       }
     ]
 
