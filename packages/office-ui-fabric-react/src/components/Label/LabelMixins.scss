@@ -23,7 +23,7 @@
     color: $ms-color-error;
     position: absolute;
     top: -7px;
-    @include ms-right(12px);
+    @include ms-right(8px);
     @include ms-padding-right(12px);
   }
 }
