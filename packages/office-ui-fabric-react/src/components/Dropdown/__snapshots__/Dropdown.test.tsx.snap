@@ -6,7 +6,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={null}
-    aria-describedby="Dropdown92-option"
+    aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
@@ -14,7 +14,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     aria-owns={null}
     className="ms-Dropdown"
     data-is-focusable={true}
-    id="Dropdown92"
+    id="Dropdown94"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
@@ -26,7 +26,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
       aria-atomic={true}
       aria-readonly="true"
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
-      id="Dropdown92-option"
+      id="Dropdown94-option"
       role="textbox"
     />
     <span
