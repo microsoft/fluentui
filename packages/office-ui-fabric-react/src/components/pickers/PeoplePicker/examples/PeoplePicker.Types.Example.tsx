@@ -173,6 +173,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        onInputChange={ this._onInputChange }
       />
     );
   }
@@ -433,4 +434,21 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
+  /**
+   * Takes in the picker input and modifies it in whichever way
+   * the caller wants, i.e. parsing entries copied from Outlook (sample
+   * input: "Aaron Reid <aaron>").
+   *
+   * @param input The text entered into the picker.
+   */
+  private _onInputChange(input: string): string {
+    const outlookRegEx = /<.*>/g;
+    const emailAddress = outlookRegEx.exec(input);
+
+    if (emailAddress && emailAddress[0]) {
+      return emailAddress[0].substring(1, emailAddress[0].length - 1);
+    }
+
+    return input;
+  }
 }

@@ -51,6 +51,7 @@ export interface IBaseAutoFillProps extends
    * The suggested autofill value that will display.
    */
   suggestedDisplayValue?: string;
+
   /**
    * A callback for when the current input value changes.
    */
@@ -88,4 +89,8 @@ export interface IBaseAutoFillProps extends
    */
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
 
+  /**
+   * A callback used to modify the input string.
+   */
+  onInputChange?: (value: string) => string;
 }
