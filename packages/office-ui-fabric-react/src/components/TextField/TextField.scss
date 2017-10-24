@@ -155,9 +155,11 @@ $field-error-color: $errorTextColor;
 .icon {
   pointer-events: none;
   position: absolute;
-  bottom: 8px;
+  bottom: 5px;
   @include right(8px);
   top: auto;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .description {
