@@ -73,7 +73,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
 
-    const content = <div
+    const content = (<div
       data-is-focusable={ true }
       tabIndex={ 0 }
       ref='expandingCard'
@@ -84,7 +84,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     >
       { this._onRenderCompactCard() }
       { this._onRenderExpandedCard() }
-    </div>;
+    </div>);
 
     return (
       <Callout

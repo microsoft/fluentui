@@ -142,7 +142,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Show HoverCard
   @autobind
   private _cardOpen(ev: MouseEvent): void {
-    if (ev.type === "keydown" && !(ev.shiftKey && ev.which === KeyCodes.space)) {
+    if (ev.type === 'keydown' && !(ev.shiftKey && ev.which === KeyCodes.space)) {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);
@@ -161,7 +161,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Hide HoverCard
   @autobind
   private _cardDismiss(ev: MouseEvent) {
-    if (ev.type === "keydown" && !(ev.which === KeyCodes.escape)) {
+    if (ev.type === 'keydown' && !(ev.which === KeyCodes.escape)) {
       return;
     }
     this._async.clearTimeout(this._openTimerId);

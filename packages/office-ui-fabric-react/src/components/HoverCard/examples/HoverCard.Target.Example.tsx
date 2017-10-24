@@ -141,19 +141,19 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
           componentRef={ this._resolveRef('_list') }
           role='listbox'
           items={ items }
-          onRenderCell={ (item: any) => this._onRenderItem(item) }
+          onRenderCell={ this._onRenderCell }
         />
       </div>
     );
   }
 
   @autobind
-  private _onRenderItem(item: any): JSX.Element {
+  private _onRenderCell(item: any): JSX.Element {
     return (
       <div className='ItemCell'>
         { item.key }
       </div>
-    )
+    );
   }
 }
 
