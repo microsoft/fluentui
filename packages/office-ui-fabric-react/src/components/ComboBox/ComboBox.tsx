@@ -335,6 +335,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * Close menu callout if it is open
+   */
+  @autobind
+  public dismissMenu(): void {
+    let { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
+  }
+
+  /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
    * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
