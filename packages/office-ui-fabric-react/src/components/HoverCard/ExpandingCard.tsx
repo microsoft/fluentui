@@ -73,18 +73,20 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
 
-    const content = (<div
-      data-is-focusable={ true }
-      tabIndex={ 0 }
-      ref='expandingCard'
-      onFocusCapture={ this.props.onEnter }
-      onBlurCapture={ this.props.onLeave }
-      onMouseEnter={ this.props.onEnter }
-      onMouseLeave={ this.props.onLeave }
-    >
-      { this._onRenderCompactCard() }
-      { this._onRenderExpandedCard() }
-    </div>);
+    const content = (
+      <div
+        data-is-focusable={ true }
+        tabIndex={ 0 }
+        ref='expandingCard'
+        onFocusCapture={ this.props.onEnter }
+        onBlurCapture={ this.props.onLeave }
+        onMouseEnter={ this.props.onEnter }
+        onMouseLeave={ this.props.onLeave }
+      >
+        { this._onRenderCompactCard() }
+        { this._onRenderExpandedCard() }
+      </div>
+    );
 
     return (
       <Callout
