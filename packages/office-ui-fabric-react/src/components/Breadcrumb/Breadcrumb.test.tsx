@@ -84,4 +84,48 @@ describe('Breadcrumb', () => {
     expect(itemLink[0].textContent).toEqual('TestText3');
   });
 
+  it('sets the correct value of data-is-focusable', () => {
+
+    const items: IBreadcrumbItem[] = [
+      { text: 'TestText1', key: 'TestKey1', onClick: (e) => void 0 },
+      { text: 'TestText2', key: 'TestKey2', onClick: (e) => void 0 },
+      { text: 'TestText3', key: 'TestKey3', onClick: (e) => void 0 },
+      { text: 'TestText4', key: 'TestKey4', onClick: (e) => void 0 }
+    ];
+
+    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+      <Breadcrumb
+        items={ items }
+        maxDisplayedItems={ 2 }
+      />
+    );
+
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let overFlowButton = renderedDOM.querySelectorAll('.ms-Breadcrumb-overflowButton');
+    let linkButton = renderedDOM.querySelectorAll('.ms-Breadcrumb-itemLink');
+
+    let focusable = (element: Element): string => {
+      return element && element.getAttribute('data-is-focusable') || '';
+    };
+
+    expect(focusable(overFlowButton[0])).toEqual('true');
+    expect(focusable(linkButton[0])).toEqual('true');
+
+    items.forEach(item => item.dataIsFocusable = false);
+
+    component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+      <Breadcrumb
+        items={ items }
+        maxDisplayedItems={ 2 }
+      />
+
+    );
+
+    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    overFlowButton = renderedDOM.querySelectorAll('.ms-Breadcrumb-overflowButton');
+    linkButton = renderedDOM.querySelectorAll('.ms-Breadcrumb-itemLink');
+
+    expect(focusable(overFlowButton[0])).toEqual('false');
+    expect(focusable(linkButton[0])).toEqual('false');
+  });
 });
