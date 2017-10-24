@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "New styling for required textfield with an icon but no label.",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "lynam.emily@gmail.com"
+}
