@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix minor state update bug with Sticky",
+      "comment": "Fix Dropdown's falsey check in selection to strict check for undefined in case key is 0",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "brwatt@microsoft.com"
+  "email": "a.erich@gmail.com"
 }

@@ -10,6 +10,7 @@ import * as stylesImport from './Layer.scss';
 const styles: any = stylesImport;
 
 let _layersByHostId: { [hostId: string]: Layer[] } = {};
+let _defaultHostSelector: string | undefined;
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
 
@@ -30,6 +31,18 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
     if (_layersByHostId[id]) {
       _layersByHostId[id].forEach(layer => layer.forceUpdate());
     }
+  }
+
+  /**
+   * Sets the default target selector to use when determining the host in which
+   * Layered content will be injected into. If not provided, an element will be
+   * created at the end of the document body.
+   *
+   * Passing in a falsey value will clear the default target and reset back to
+   * using a created element at the end of document body.
+   */
+  public static setDefaultTarget(selector?: string) {
+    _defaultHostSelector = selector;
   }
 
   constructor(props: ILayerProps) {
@@ -139,7 +152,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
     if (hostId) {
       return doc.getElementById(hostId) as Node;
     } else {
-      return doc.body;
+      return _defaultHostSelector ? doc.querySelector(_defaultHostSelector) as Node : doc.body;
     }
   }
 

@@ -156,15 +156,6 @@ export class DropdownBasicExample extends React.Component<any, any> {
     );
   }
 
-  public makeList(items: any) {
-    let list = [];
-    for (let i = 0; i < items; i++) {
-      list.push({ key: i, text: 'Option ' + i });
-    }
-
-    return list;
-  }
-
   @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);

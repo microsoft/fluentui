@@ -201,6 +201,7 @@ export const getStyles = memoizeFunction((
   const styles: IComboBoxStyles = {
     container: {},
     label: {},
+    labelDisabled: {},
     root: [
       fonts.medium,
       {

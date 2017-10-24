@@ -84,6 +84,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             width: 100%;
           }
       data-is-interactable={true}
+      data-lpignore={true}
       id="ComboBox0-input"
       onBlur={[Function]}
       onChange={[Function]}
