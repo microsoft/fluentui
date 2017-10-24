@@ -32,9 +32,6 @@ export const getStyles = memoizeFunction((
   let { semanticColors } = theme;
 
   let border = semanticColors.buttonBorder;
-  let background = semanticColors.buttonBackground;
-  let text = semanticColors.buttonText;
-
   let disabledBackground = semanticColors.disabledBackground;
   let disabledText = semanticColors.disabledText;
 
@@ -45,7 +42,6 @@ export const getStyles = memoizeFunction((
       {
         boxSizing: 'border-box',
         border: '1px solid ' + border,
-        color: text,
         userSelect: 'none',
         display: 'inline-block',
         textDecoration: 'none',
@@ -58,8 +54,8 @@ export const getStyles = memoizeFunction((
     ],
 
     rootDisabled: {
-      backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralTertiary,
+      backgroundColor: disabledBackground,
+      color: disabledText,
       cursor: 'default',
       pointerEvents: 'none',
       selectors: {
@@ -69,11 +65,11 @@ export const getStyles = memoizeFunction((
     },
 
     iconDisabled: {
-      color: theme.palette.neutralTertiary
+      color: disabledText
     },
 
     menuIconDisabled: {
-      color: theme.palette.neutralTertiary
+      color: disabledText
     },
 
     flexContainer: {

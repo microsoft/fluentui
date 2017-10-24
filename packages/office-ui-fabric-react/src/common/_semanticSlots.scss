@@ -1,5 +1,3 @@
-@import '../../dist/sass/variables/_Color.variables.scss';
-
 /* Base slots */
 $bodyBackgroundColor: "[theme:bodyBackground, default: #ffffff]";
 $bodyTextColor: "[theme:bodyText, default: #333333]";
@@ -29,27 +27,15 @@ $inputForegroundCheckedColor: "[theme:inputForegroundChecked, default: #ffffff]"
 $inputFocusBorderAltColor: "[theme:inputFocusBorderAlt, default: #0078d7]";
 
 
-$buttonBackgroundColor: "[theme:buttonBackground, default: #]";
-$buttonBackgroundCheckedColor: "[theme:buttonBackgroundChecked, default: #]";
-$buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #]";
-$buttonBackgroundCheckedHoveredColor: "[theme:buttonBackgroundCheckedHovered, default: #]";
-$buttonBorderColor: "[theme:buttonBorder, default: #]";
-$buttonTextColor: "[theme:buttonText, default: #]";
-$buttonTextHoveredColor: "[theme:buttonTextHovered, default: #]";
-$buttonTextCheckedColor: "[theme:buttonTextChecked, default: #]";
-$buttonTextCheckedHoveredColor: "[theme:buttonTextCheckedHovered, default: #]";
-
-/*
-$buttonBackground: p.neutralLighter,
-$buttonBackgroundChecked: p.neutralTertiaryAlt,
-$buttonBackgroundHovered: p.neutralLight,
-$buttonBackgroundCheckedHovered: p.neutralLight,
-$buttonBorder: 'transparent',
-$buttonText: p.neutralPrimary,
-$buttonTextHovered: p.black,
-$buttonTextChecked: p.neutralDark,
-$buttonTextCheckedHovered: p.black,
-*/
+$buttonBackgroundColor: "[theme:buttonBackground, default: #f4f4f4]";
+$buttonBackgroundCheckedColor: "[theme:buttonBackgroundChecked, default: #c8c8c8]";
+$buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #eaeaea]";
+$buttonBackgroundCheckedHoveredColor: "[theme:buttonBackgroundCheckedHovered, default: #eaeaea]";
+$buttonBorderColor: "[theme:buttonBorder, default: transparent]";
+$buttonTextColor: "[theme:buttonText, default: #333333]";
+$buttonTextHoveredColor: "[theme:buttonTextHovered, default: #000000]";
+$buttonTextCheckedColor: "[theme:buttonTextChecked, default: #212121]";
+$buttonTextCheckedHoveredColor: "[theme:buttonTextCheckedHovered, default: #000000]";
 
 /* Menus */
 $menuItemBackgroundHoveredColor: "[theme:menuItemBackgroundHovered, default: #f8f8f8]";
