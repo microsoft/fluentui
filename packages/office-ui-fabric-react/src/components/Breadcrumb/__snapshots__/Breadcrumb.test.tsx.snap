@@ -57,46 +57,41 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             aria-describedby={undefined}
             className=
                 ms-TooltipHost
+                ms-Crumb-textContent
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 21px;
+                  font-weight: 100;
+                  height: 40px;
+                  line-height: 40px;
                   max-width: 180px;
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  vertical-align: top;
                   white-space: nowrap;
+                }
+                @media screen and (max-width: 639px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+                @media screen and (max-width: 479px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <span
-              className=
-                  ms-Crumb-textContent
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 21px;
-                    font-weight: 100;
-                    height: 40px;
-                    line-height: 40px;
-                    vertical-align: top;
-                  }
-                  @media screen and (max-width: 639px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 17px;
-                    font-weight: 300;
-                  }
-                  @media screen and (max-width: 479px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-            >
+            <span>
               TestText1
             </span>
           </div>
@@ -159,46 +154,41 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             aria-describedby={undefined}
             className=
                 ms-TooltipHost
+                ms-Crumb-textContent
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 21px;
+                  font-weight: 100;
+                  height: 40px;
+                  line-height: 40px;
                   max-width: 180px;
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  vertical-align: top;
                   white-space: nowrap;
+                }
+                @media screen and (max-width: 639px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+                @media screen and (max-width: 479px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <span
-              className=
-                  ms-Crumb-textContent
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 21px;
-                    font-weight: 100;
-                    height: 40px;
-                    line-height: 40px;
-                    vertical-align: top;
-                  }
-                  @media screen and (max-width: 639px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 17px;
-                    font-weight: 300;
-                  }
-                  @media screen and (max-width: 479px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-            >
+            <span>
               TestText2
             </span>
           </div>
@@ -261,46 +251,41 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             aria-describedby={undefined}
             className=
                 ms-TooltipHost
+                ms-Crumb-textContent
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 21px;
+                  font-weight: 100;
+                  height: 40px;
+                  line-height: 40px;
                   max-width: 180px;
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  vertical-align: top;
                   white-space: nowrap;
+                }
+                @media screen and (max-width: 639px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+                @media screen and (max-width: 479px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <span
-              className=
-                  ms-Crumb-textContent
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 21px;
-                    font-weight: 100;
-                    height: 40px;
-                    line-height: 40px;
-                    vertical-align: top;
-                  }
-                  @media screen and (max-width: 639px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 17px;
-                    font-weight: 300;
-                  }
-                  @media screen and (max-width: 479px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-            >
+            <span>
               TestText3
             </span>
           </div>
@@ -363,46 +348,41 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             aria-describedby={undefined}
             className=
                 ms-TooltipHost
+                ms-Crumb-textContent
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 21px;
+                  font-weight: 100;
+                  height: 40px;
+                  line-height: 40px;
                   max-width: 180px;
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  vertical-align: top;
                   white-space: nowrap;
+                }
+                @media screen and (max-width: 639px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+                @media screen and (max-width: 479px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <span
-              className=
-                  ms-Crumb-textContent
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 21px;
-                    font-weight: 100;
-                    height: 40px;
-                    line-height: 40px;
-                    vertical-align: top;
-                  }
-                  @media screen and (max-width: 639px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 17px;
-                    font-weight: 300;
-                  }
-                  @media screen and (max-width: 479px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-            >
+            <span>
               TestText4
             </span>
           </div>
@@ -616,46 +596,41 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             aria-describedby={undefined}
             className=
                 ms-TooltipHost
+                ms-Crumb-textContent
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 21px;
+                  font-weight: 100;
+                  height: 40px;
+                  line-height: 40px;
                   max-width: 180px;
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  vertical-align: top;
                   white-space: nowrap;
+                }
+                @media screen and (max-width: 639px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+                @media screen and (max-width: 479px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <span
-              className=
-                  ms-Crumb-textContent
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 21px;
-                    font-weight: 100;
-                    height: 40px;
-                    line-height: 40px;
-                    vertical-align: top;
-                  }
-                  @media screen and (max-width: 639px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 17px;
-                    font-weight: 300;
-                  }
-                  @media screen and (max-width: 479px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-            >
+            <span>
               TestText3
             </span>
           </div>
@@ -718,46 +693,41 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             aria-describedby={undefined}
             className=
                 ms-TooltipHost
+                ms-Crumb-textContent
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 21px;
+                  font-weight: 100;
+                  height: 40px;
+                  line-height: 40px;
                   max-width: 180px;
                   overflow: hidden;
                   text-overflow: ellipsis;
+                  vertical-align: top;
                   white-space: nowrap;
+                }
+                @media screen and (max-width: 639px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 17px;
+                  font-weight: 300;
+                }
+                @media screen and (max-width: 479px){& {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <span
-              className=
-                  ms-Crumb-textContent
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 21px;
-                    font-weight: 100;
-                    height: 40px;
-                    line-height: 40px;
-                    vertical-align: top;
-                  }
-                  @media screen and (max-width: 639px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 17px;
-                    font-weight: 300;
-                  }
-                  @media screen and (max-width: 479px){& {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                  }
-            >
+            <span>
               TestText4
             </span>
           </div>

@@ -54,22 +54,22 @@ export class Crumb extends React.Component<ICrumbProps, {}> {
             ) }
             { item.text && (
               <TooltipHost
-                className={ classNames.textContentWrapper }
+                className={ classNames.textContent }
                 content={ item.text }
                 overflowMode={ TooltipOverflowMode.Self }
               >
-                <span className={ classNames.textContent }>{ item.text }</span>
+                <span>{ item.text }</span>
               </TooltipHost>
             ) }
           </ActionButton>
         ) : (
             <span className={ classNames.crumbLabel }>
               <TooltipHost
-                className={ classNames.textContentWrapper }
+                className={ classNames.textContent }
                 content={ item.text }
                 overflowMode={ TooltipOverflowMode.Self }
               >
-                <span className={ classNames.textContent }>{ item.text }</span>
+                <span>{ item.text }</span>
               </TooltipHost>
             </span>
           ) }
