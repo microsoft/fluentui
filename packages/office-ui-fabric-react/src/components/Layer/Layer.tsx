@@ -33,7 +33,15 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
     }
   }
 
-  public static setDefaultTarget(selector: string) {
+  /**
+   * Sets the default target selector to use when determining the host in which
+   * Layered content will be injected into. If not provided, an element will be
+   * created at the end of the document body.
+   *
+   * Passing in a falsey value will clear the default target and reset back to
+   * using a created element at the end of document body.
+   */
+  public static setDefaultTarget(selector?: string) {
     _defaultHostSelector = selector;
   }
 
