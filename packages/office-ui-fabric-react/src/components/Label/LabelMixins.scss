@@ -16,3 +16,14 @@
     @include ms-padding-right(12px);
   }
 }
+
+@mixin ms-Icon-is-required {
+  &::before {
+    content: ' *';
+    color: $ms-color-error;
+    position: absolute;
+    top: -7px;
+    @include ms-right(12px);
+    @include ms-padding-right(12px);
+  }
+}

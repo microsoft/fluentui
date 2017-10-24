@@ -141,6 +141,12 @@ $field-error-color: $errorTextColor;
   }
 }
 
+.root.rootIsRequiredPlaceholderIcon {
+  :global(.ms-Icon) {
+    @include ms-Icon-is-required;
+  }
+}
+
 //= State: An active textfield
 .root.rootIsActive {
   border-color: $field-border-focus-color;
