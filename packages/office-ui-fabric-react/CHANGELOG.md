@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Oct 2017 02:03:33 GMT and should not be manually modified.
+
+## 5.14.0
+Wed, 25 Oct 2017 02:03:33 GMT
+
+### Minor changes
+
+- Panel: Added possibility of using a custom function to handle clicks outside the panel when using isLightDismiss=true
+- ComboBox: Adding prop that keeps calout closed when using test input
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- Buttons: split button has `borderRadius` set to 0 to override defaults on Mac chrome/safari.
+- CalloutContent: Fix calculation of max size if calloutMaxHeight is not provided
+- Fix Dropdown's falsey check in selection to strict check for undefined in case key is 0
 
 ## 5.13.0
 Tue, 24 Oct 2017 10:21:08 GMT
