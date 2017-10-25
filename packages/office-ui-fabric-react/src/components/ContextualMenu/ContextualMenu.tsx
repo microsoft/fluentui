@@ -63,13 +63,17 @@ export function getSubmenuItems(item: IContextualMenuItem) {
  * @returns {false} if the item is unchecked.
  * @returns {null} if the item is not checkable.
  */
-function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
+function getIsChecked(item: IContextualMenuItem): boolean | null {
   if (item.canCheck) {
-    return item.isChecked || item.checked;
+    return !!(item.isChecked || item.checked);
   }
 
   if (typeof item.isChecked === 'boolean') {
     return item.isChecked;
+  }
+
+  if (typeof item.checked === 'boolean') {
+    return item.checked;
   }
 
   // Item is not checkable.
