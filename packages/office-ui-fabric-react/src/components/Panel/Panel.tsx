@@ -15,9 +15,10 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import { AnimationClassNames, ColorClassNames, FontSizes, IconFontSizes } from '../../Styling';
+import { AnimationClassNames, getTheme, FontSizes, IconFontSizes } from '../../Styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
+const theme = getTheme();
 
 export interface IPanelState {
   isFooterSticky?: boolean;
@@ -215,10 +216,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 root: {
                   height: 'auto',
                   width: '44px',
-                  color: ColorClassNames.neutralSecondary,
+                  color: theme.palette.neutralSecondary,
                   fontSize: IconFontSizes.large,
                   selectors: {
-                    ':hover': ColorClassNames.neutralPrimary,
+                    ':hover': theme.palette.neutralPrimary,
                   }
                 }
               }
