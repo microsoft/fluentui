@@ -46,8 +46,7 @@ export interface INavState {
 export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
-    groups: null,
-    onRenderLink: (link: INavLink) => (<span className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</span>)
+    groups: null
   };
 
   private _hasExpandButton: boolean;
@@ -131,6 +130,10 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     return this.state.selectedKey;
   }
 
+  private _onRenderLink(link: INavLink) {
+    return (<div className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</div>);
+  }
+
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
@@ -149,6 +152,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         lineHeight: '36px'
       }
     };
+    let {
+      onRenderLink = this._onRenderLink
+    } = this.props;
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
@@ -171,7 +177,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         rel={ rel }
         aria-label={ link.ariaLabel }
       >
-        { link.name }
+        { onRenderLink(link, this._onRenderLink) }
       </ActionButton>);
   }
 

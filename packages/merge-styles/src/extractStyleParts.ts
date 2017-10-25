@@ -16,11 +16,16 @@ export function extractStyleParts(
     for (const arg of argsList) {
       if (arg) {
         if (typeof arg === 'string') {
-          const translatedArgs = stylesheet.argsFromClassName(arg);
-          if (translatedArgs) {
-            objects.push(translatedArgs);
+          if (arg.indexOf(' ') >= 0) {
+            _processArgs(arg.split(' '));
           } else {
-            classes.push(arg);
+            const translatedArgs = stylesheet.argsFromClassName(arg);
+
+            if (translatedArgs) {
+              _processArgs(translatedArgs);
+            } else {
+              classes.push(arg);
+            }
           }
         } else if (Array.isArray(arg)) {
           _processArgs(arg);

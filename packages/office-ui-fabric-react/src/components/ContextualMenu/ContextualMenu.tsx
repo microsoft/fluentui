@@ -15,6 +15,7 @@ import {
 } from "./ContextualMenu.classNames";
 import {
   BaseComponent,
+  IPoint,
   anchorProperties,
   buttonProperties,
   getNativeProps,
@@ -119,7 +120,7 @@ export class ContextualMenu extends BaseComponent<
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number;
   private _targetWindow: Window;
-  private _target: HTMLElement | MouseEvent | null;
+  private _target: HTMLElement | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
 
   constructor(props: IContextualMenuProps) {
@@ -129,6 +130,11 @@ export class ContextualMenu extends BaseComponent<
       contextualMenuItems: undefined,
       subMenuId: getId("ContextualMenu")
     };
+
+    this._warnDeprecations({
+      'targetPoint': 'target',
+      'useTargetPoint': 'target',
+    });
 
     this._isFocusingPreviousElement = false;
     this._enterTimerId = 0;
@@ -276,6 +282,7 @@ export class ContextualMenu extends BaseComponent<
       return (
         <Callout
           {...calloutProps}
+<<<<<<< HEAD
           target={target}
           targetPoint={targetPoint}
           useTargetPoint={useTargetPoint}
@@ -291,6 +298,21 @@ export class ContextualMenu extends BaseComponent<
           onDismiss={this.props.onDismiss}
           bounds={bounds}
           directionalHintFixed={directionalHintFixed}
+=======
+          target={ useTargetPoint ? targetPoint : target }
+          isBeakVisible={ isBeakVisible }
+          beakWidth={ beakWidth }
+          directionalHint={ directionalHint }
+          directionalHintForRTL={ directionalHintForRTL }
+          gapSpace={ gapSpace }
+          coverTarget={ coverTarget }
+          doNotLayer={ doNotLayer }
+          className='ms-ContextualMenu-Callout'
+          setInitialFocus={ shouldFocusOnMount }
+          onDismiss={ this.props.onDismiss }
+          bounds={ bounds }
+          directionalHintFixed={ directionalHintFixed }
+>>>>>>> upstream/master
         >
           <div
             style={contextMenuStyle}
@@ -794,11 +816,20 @@ export class ContextualMenu extends BaseComponent<
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps
     } as IContextualMenuItem;
+<<<<<<< HEAD
     return React.createElement(
       "button",
       getNativeProps(itemProps, buttonProperties),
       this._renderMenuItemChildren(itemProps, classNames, index, false, false)
     );
+=======
+
+    return React.createElement('button',
+      assign({}, getNativeProps(itemProps, buttonProperties), {
+        onKeyDown: this._onItemKeyDown.bind(this, item)
+      }),
+      this._renderMenuItemChildren(itemProps, classNames, index, false, false));
+>>>>>>> upstream/master
   }
 
   private _renderSplitDivider(classNames: IMenuItemClassNames) {
@@ -1043,9 +1074,13 @@ export class ContextualMenu extends BaseComponent<
     }
   }
 
+<<<<<<< HEAD
   private _setTargetWindowAndElement(
     target: HTMLElement | string | MouseEvent
   ): void {
+=======
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint): void {
+>>>>>>> upstream/master
     if (target) {
       if (typeof target === "string") {
         let currentDoc: Document = getDocument()!;
@@ -1054,13 +1089,21 @@ export class ContextualMenu extends BaseComponent<
           : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
+<<<<<<< HEAD
         this._target = target;
         this._targetWindow = getWindow((target as MouseEvent)
           .toElement as HTMLElement)!;
+=======
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+        this._target = target;
+      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
+        this._targetWindow = getWindow()!;
+        this._target = target;
+>>>>>>> upstream/master
       } else {
         let targetElement: HTMLElement = target as HTMLElement;
-        this._target = target;
         this._targetWindow = getWindow(targetElement)!;
+        this._target = target;
       }
     } else {
       this._targetWindow = getWindow()!;

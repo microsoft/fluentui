@@ -22,7 +22,7 @@
   @include ms-font-m;
   @include focus-border();
   @include text-align(left);
-  color: $menuTextColor;
+  color: $bodyTextColor;
   position: relative;
   box-sizing: border-box;
   border: none;
@@ -38,17 +38,17 @@
   white-space: nowrap;
 
   &:hover:not([disabled]) {
-    background: $menuBackgroundHoverColor;
+    background: $menuItemBackgroundHoveredColor;
   }
   &.disabled,
   &[disabled] {
-    color: $menuTextDisabledColor;
+    color: $disabledTextColor;
     cursor: default;
     pointer-events: none;
   }
 
   :global(.is-focusVisible) &:focus {
-    background: $menuBackgroundHoverColor;
+    background: $menuItemBackgroundHoveredColor;
   }
 }
 
@@ -112,7 +112,7 @@
 
     &.disabled,
   &[disabled] {
-    color: $menuTextDisabledColor;
+    color: $disabledTextColor;
     cursor: default;
     pointer-events: none;
     opacity: .3;

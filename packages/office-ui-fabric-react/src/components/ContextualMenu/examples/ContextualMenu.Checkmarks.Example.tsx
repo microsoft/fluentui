@@ -40,6 +40,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<
 
     return (
       <DefaultButton
+<<<<<<< HEAD
         id="ContextualMenuButton2"
         text="Click for ContextualMenu"
         menuProps={{
@@ -70,6 +71,40 @@ export class ContextualMenuCheckmarksExample extends React.Component<
               key: "divider_1",
               itemType: ContextualMenuItemType.Divider
             },
+=======
+        id='ContextualMenuButton2'
+        text='Click for ContextualMenu'
+        menuProps={
+          {
+            shouldFocusOnMount: true,
+            items:
+            [
+              {
+                key: keys[0],
+                name: 'New',
+                canCheck: true,
+                isChecked: selection![keys[0]],
+                onClick: this._onToggleSelect
+              },
+              {
+                key: keys[1],
+                name: 'Share',
+                canCheck: true,
+                isChecked: selection![keys[1]],
+                onClick: this._onToggleSelect
+              },
+              {
+                key: keys[2],
+                name: 'Mobile',
+                canCheck: true,
+                isChecked: selection![keys[2]],
+                onClick: this._onToggleSelect
+              },
+              {
+                key: 'divider_1',
+                itemType: ContextualMenuItemType.Divider
+              },
+>>>>>>> upstream/master
 
             {
               key: keys[3],
