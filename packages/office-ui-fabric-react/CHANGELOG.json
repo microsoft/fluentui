@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.14.0",
+      "tag": "office-ui-fabric-react_v5.14.0",
+      "date": "Wed, 25 Oct 2017 02:03:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Amund Kronen Johansen <32198837+amkronen@users.noreply.github.com>",
+            "commit": "a3760c014672dd40b073fb6dd8eec4bdda7471ea",
+            "comment": "Panel: Added possibility of using a custom function to handle clicks outside the panel when using isLightDismiss=true"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "e032a48e4b6bac5f6462a90f166b779d186760b1",
+            "comment": "ComboBox: Adding prop that keeps calout closed when using test input"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "393f02679e40f6957fcb291b64a434d5b3f53d1a",
+            "comment": "Button: Pass specified onDismiss callback to contextual menu"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9748bded80b07b1bdb9c8f994fec39deb22fc787",
+            "comment": "Buttons: split button has `borderRadius` set to 0 to override defaults on Mac chrome/safari."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "cd7317ef23a46a4a8406395fea0c423130446bed",
+            "comment": "CalloutContent: Fix calculation of max size if calloutMaxHeight is not provided"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "1a655521ee68a4e7ecaf3df43a1b41b6abd16411",
+            "comment": "Fix Dropdown's falsey check in selection to strict check for undefined in case key is 0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.1.1 <6.0.0` to `>=5.1.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.13.0",
       "tag": "office-ui-fabric-react_v5.13.0",
       "date": "Tue, 24 Oct 2017 10:21:08 GMT",
