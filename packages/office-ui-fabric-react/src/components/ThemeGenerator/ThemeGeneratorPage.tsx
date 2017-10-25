@@ -139,7 +139,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           >
             <ColorPicker
               color={ colorPickerSlotRule.color!.str }
-              onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) }
+              onColorChanged={ this._getOnSemanticSlotRuleChanged(colorPickerSlotRule) }
             />
           </Callout>
         }
@@ -342,11 +342,14 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   }
 
   @autobind
-  private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
-    let { themeRules } = this.state;
+  private _getOnSemanticSlotRuleChanged(slotRule: IThemeSlotRule) {
+    // create a function suitable for passing to ColorPicker's onColorChanged
+    return (color: string) => {
+      let { themeRules } = this.state;
 
-    ThemeGenerator.setSlot(slotRule, color, themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
-    this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      ThemeGenerator.setSlot(slotRule, color, themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+    };
   }
 
   @autobind
@@ -474,10 +477,10 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     document.body.style.color = themeAsJson.bodyText;
     loadTheme({ palette: themeAsJson });
   }
-
   @autobind
-  private _baseColorSlotPicker(baseSlot: BaseSlots, title: string) {
-    function _onColorChanged(newColor: string) {
+  private _getOnBaseSlotColorChanged(baseSlot: BaseSlots) {
+    // create a function suitable for passing to ColorPicker's onColorChanged
+    return (newColor: string) => {
       let themeRules = this.state.themeRules;
       const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
       ThemeGenerator.setSlot(
@@ -492,8 +495,11 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         ThemeGenerator.insureSlots(themeRules, !currentIsDark);
       }
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
-    }
+    };
+  }
 
+  @autobind
+  private _baseColorSlotPicker(baseSlot: BaseSlots, title: string) {
     return (
       <div className='ms-themer-paletteSlot' key={ baseSlot }>
         <h3>{ title }</h3>
@@ -501,9 +507,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           <ColorPicker
             key={ 'baseslotcolorpicker' + baseSlot }
             color={ this.state.themeRules[BaseSlots[baseSlot]].color!.str }
-            /* tslint:disable:jsx-no-bind */
-            onColorChanged={ _onColorChanged.bind(this) }
-          /* tslint:enable:jsx-no-bind */
+            onColorChanged={ this._getOnBaseSlotColorChanged(baseSlot) }
           />
         </div>
         <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str } }>
