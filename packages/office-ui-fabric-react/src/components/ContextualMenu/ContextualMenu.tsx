@@ -593,7 +593,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { (hasIcons) ? (
           this._renderIcon(item, classNames)
         ) : (null) }
-        <span className={ classNames.label }>{ item.name }</span>
+        { item.name ? (
+          <span className={ classNames.label }>{ item.name }</span>
+        ) : null
+        }
         { hasSubmenuItems(item) ? (
           <Icon
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
