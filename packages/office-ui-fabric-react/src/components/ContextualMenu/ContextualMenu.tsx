@@ -551,6 +551,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
+      icon: item.icon,
+      iconProps: item.iconProps
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
@@ -591,7 +593,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { (hasIcons) ? (
           this._renderIcon(item, classNames)
         ) : (null) }
-        <span className={ classNames.label }>{ item.name }</span>
+        { item.name ? (
+          <span className={ classNames.label }>{ item.name }</span>
+        ) : null
+        }
         { hasSubmenuItems(item) ? (
           <Icon
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
