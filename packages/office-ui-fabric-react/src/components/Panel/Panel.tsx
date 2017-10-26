@@ -218,9 +218,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                   width: '44px',
                   color: theme.palette.neutralSecondary,
                   fontSize: IconFontSizes.large,
-                  selectors: {
-                    ':hover': theme.palette.neutralPrimary,
-                  }
+                },
+                rootHovered: {
+                  color: theme.palette.neutralPrimary
                 }
               }
             }
