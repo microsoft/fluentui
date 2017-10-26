@@ -14,7 +14,7 @@ import './styles/styles.scss';
 
 import { initializeIcons } from '@uifabric/icons/lib/index';
 
-initializeIcons('./dist/');
+initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
