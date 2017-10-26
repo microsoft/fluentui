@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/fabric-website",
-      "comment": "Removed Header component - it was replaced with UHF",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "lynam.emily@gmail.com"
+  "email": "phkuo@microsoft.com"
 }

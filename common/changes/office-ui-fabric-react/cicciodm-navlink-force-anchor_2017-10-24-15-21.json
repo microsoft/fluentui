@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Nav: Add onRenderLink back to JSX to allow custom rendering of links",
+      "comment": "Restore forceAnchor prop for INavLink elements",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "a.erich@gmail.com"
+  "email": "frdim@microsoft.com"
 }

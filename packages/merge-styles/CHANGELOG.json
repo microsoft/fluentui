@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.5.0",
+      "tag": "@uifabric/merge-styles_v5.5.0",
+      "date": "Tue, 24 Oct 2017 10:21:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ea31239988130fe5750af706893dc3676b0cce06",
+            "comment": "Adding `stroke` css property to typings."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.2",
       "tag": "@uifabric/merge-styles_v5.4.2",
       "date": "Fri, 20 Oct 2017 18:42:08 GMT",

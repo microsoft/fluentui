@@ -7,6 +7,11 @@ import { IRenderFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
+  * If there is a menu open this will dismiss the menu
+  */
+  dismissMenu: () => void;
+
+  /**
    * Sets focus to the input in the comboBox
    * @returns True if focus could be set, false if no operation was taken.
    */

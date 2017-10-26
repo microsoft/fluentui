@@ -67,7 +67,8 @@ export function themeRulesStandardCreator() {
     // first make the SlotRule for the unshaded base Color
     slotRules[baseSlot] = {
       name: baseSlot,
-      isCustomized: true
+      isCustomized: true,
+      dependentRules: []
     };
 
     // then make a rule for each shade of this base color, but skip unshaded
@@ -75,13 +76,18 @@ export function themeRulesStandardCreator() {
       if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }
-      slotRules[baseSlot + shadeName] = {
+      let inherits = slotRules[baseSlot];
+      let thisSlotRule = {
         name: baseSlot + shadeName,
         inherits: slotRules[baseSlot],
         asShade: shadeValue,
         isCustomized: false,
-        isBackgroundShade: baseSlot === BaseSlots[BaseSlots.backgroundColor] ? true : false
+        isBackgroundShade: baseSlot === BaseSlots[BaseSlots.backgroundColor] ? true : false,
+        dependentRules: []
       };
+      slotRules[baseSlot + shadeName] = thisSlotRule;
+      inherits.dependentRules.push(thisSlotRule);
+
       return void 0;
     });
 
@@ -114,13 +120,17 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
   function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false) {
-    slotRules[slotName] = {
+    let inherits = slotRules[BaseSlots[inheritedBase]];
+    let thisSlotRule = {
       name: slotName,
-      inherits: slotRules[BaseSlots[inheritedBase]],
+      inherits: inherits,
       asShade: inheritedShade,
       isCustomized: false,
-      isBackgroundShade: isBackgroundShade
+      isBackgroundShade: isBackgroundShade,
+      dependentRules: []
     };
+    slotRules[slotName] = thisSlotRule;
+    inherits.dependentRules.push(thisSlotRule);
   }
   _makeFabricSlotRule(FabricSlots[FabricSlots.themePrimary], BaseSlots.primaryColor, Shade.Unshaded);
   _makeFabricSlotRule(FabricSlots[FabricSlots.themeLighterAlt], BaseSlots.primaryColor, Shade.Shade1);
@@ -170,23 +180,32 @@ export function themeRulesStandardCreator() {
   slotRules[primaryBackground] = {
     name: primaryBackground,
     inherits: slotRules[FabricSlots[FabricSlots.white]],
-    isCustomized: false
+    isCustomized: false,
+    dependentRules: []
   };
+  slotRules[FabricSlots[FabricSlots.white]].dependentRules.push(slotRules[primaryBackground]);
+
   let primaryText = 'primaryText';
   slotRules[primaryText] = {
     name: primaryText,
     inherits: slotRules[FabricSlots[FabricSlots.neutralPrimary]],
-    isCustomized: false
+    isCustomized: false,
+    dependentRules: []
   };
+  slotRules[FabricSlots[FabricSlots.neutralPrimary]].dependentRules.push(slotRules[primaryText]);
 
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot
   function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots) {
-    slotRules[SemanticColorSlots[semanticSlot]] = {
+    let inherits = slotRules[FabricSlots[inheritedFabricSlot]];
+    let thisSlotRule = {
       name: SemanticColorSlots[semanticSlot],
       inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-      isCustomized: false
+      isCustomized: false,
+      dependentRules: []
     };
+    slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
+    inherits.dependentRules.push(thisSlotRule);
   }
 
   // Basics simple content slots

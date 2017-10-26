@@ -75,6 +75,9 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
               },
               {
                 key: keys[5],
+                iconProps: {
+                  iconName: 'MusicInCollectionFill'
+                },
                 subMenuProps: {
                   items: [
                     {
