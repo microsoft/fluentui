@@ -37,7 +37,7 @@ export const getMenuItemStyles = memoizeFunction((
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
   const ContextualMenuTextSelectedColor = semanticColors.bodyTextChecked;
-  const ContextualMenuTextDisabledColor = semanticColors.disabledText;
+  const ContextualMenuTextDisabledColor = semanticColors.disabledBodyText;
   const ContextualMenuDividerColor = semanticColors.bodyDivider;
   const SplitButtonDividerHeight = 16;
 

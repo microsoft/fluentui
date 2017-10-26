@@ -82,12 +82,17 @@ export interface ISemanticColors {
   disabledBackground: string;
 
   /**
-   * The default color for disabled text; e.g. user input inside a disabled text field.
+   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
    */
   disabledText: string;
 
   /**
-   * Disabled de-emphasized text; e.g. placeholder text inside disabled input field.
+   * The default color for disabled text on the default background (bodyBackground).
+   */
+  disabledBodyText: string;
+
+  /**
+   * Disabled de-emphasized text, for use on disabledBackground.
    */
   disabledSubtext: string;
 
@@ -99,13 +104,17 @@ export interface ISemanticColors {
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
   /**
+   * The default color of error text, used on bodyBackground.
+   */
+  errorText: string;
+  /**
+   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   */
+  warningText: string;
+  /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
   errorBackground: string;
-  /**
-   * The default color of error text.
-   */
-  errorText: string;
   /**
    * Background for blocking issues, which is more severe than a warning, but not as bad as an error.
    */
