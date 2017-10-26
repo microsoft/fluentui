@@ -23,7 +23,6 @@ export class ThemeGenerator {
   public static setSlot(
     rule: IThemeSlotRule,
     color: string | IColor,
-    slotRules: IThemeRules,
     isInverted = false,
     isCustomization = false,
     overwriteCustomColor = true
@@ -43,9 +42,9 @@ export class ThemeGenerator {
       } else {
         colorAsIColor = color;
       }
-      ThemeGenerator._setSlot(rule, colorAsIColor, slotRules, isInverted, isCustomization, overwriteCustomColor);
+      ThemeGenerator._setSlot(rule, colorAsIColor, isInverted, isCustomization, overwriteCustomColor);
     } else if (rule.color) {
-      ThemeGenerator._setSlot(rule, rule.color, slotRules, isInverted, isCustomization, overwriteCustomColor);
+      ThemeGenerator._setSlot(rule, rule.color, isInverted, isCustomization, overwriteCustomColor);
     }
   }
 
@@ -63,7 +62,7 @@ export class ThemeGenerator {
           if (!rule.color) {
             throw 'A color slot rule that does not inherit must provide its own color.';
           }
-          ThemeGenerator._setSlot(rule, rule.color, slotRules, isInverted, false, false);
+          ThemeGenerator._setSlot(rule, rule.color, isInverted, false, false);
         }
       }
     }
@@ -147,7 +146,6 @@ export class ThemeGenerator {
   private static _setSlot(
     rule: IThemeSlotRule,
     color: IColor,
-    slotRules: IThemeRules,
     isInverted: boolean,
     isCustomization: boolean,
     overwriteCustomColor = true
@@ -171,14 +169,9 @@ export class ThemeGenerator {
         rule.isCustomized = true;
       }
 
-      // then run through the rest of the rules and update dependent colors
-      for (let ruleName in slotRules) {
-        if (slotRules.hasOwnProperty(ruleName)) {
-          let ruleToUpdate: IThemeSlotRule = slotRules[ruleName];
-          if (ruleToUpdate.inherits === rule) {
-            ThemeGenerator._setSlot(ruleToUpdate, rule.color, slotRules, isInverted, false, overwriteCustomColor);
-          }
-        }
+      // then update dependent colors
+      for (let ruleToUpdate of rule.dependentRules) {
+        ThemeGenerator._setSlot(ruleToUpdate, rule.color, isInverted, false, overwriteCustomColor);
       }
     }
   }
