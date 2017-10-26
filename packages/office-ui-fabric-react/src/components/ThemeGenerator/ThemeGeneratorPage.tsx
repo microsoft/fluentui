@@ -1,6 +1,9 @@
 import * as React from 'react';
 import './ThemeGeneratorPage.scss';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  BaseComponent,
+  autobind
+} from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import {
@@ -39,7 +42,7 @@ export interface IThemeGeneratorPageState {
 const BackgroundImageUriKey = 'backgroundImageUri';
 const BackgroundOverlayKey = 'backgroundOverlay';
 
-export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPageState> {
+export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageState> {
   private _semanticSlotColorChangeTimeout: number;
   private _imgUrl: string;
 
@@ -345,7 +348,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     if (this._semanticSlotColorChangeTimeout) {
       clearTimeout(this._semanticSlotColorChangeTimeout);
     }
-    this._semanticSlotColorChangeTimeout = setTimeout(() => {
+    this._semanticSlotColorChangeTimeout = this._async.setTimeout(() => {
       let { themeRules } = this.state;
 
       ThemeGenerator.setSlot(slotRule, color, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
@@ -489,7 +492,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       if (colorChangeTimeout) {
         clearTimeout(colorChangeTimeout);
       }
-      colorChangeTimeout = setTimeout(() => {
+      colorChangeTimeout = this._async.setTimeout(() => {
         let themeRules = this.state.themeRules;
         const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
         ThemeGenerator.setSlot(
