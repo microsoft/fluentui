@@ -146,7 +146,9 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);
-    this._currentMouseTarget = ev.currentTarget;
+    if (ev.type === 'mouseenter') {
+      this._currentMouseTarget = ev.currentTarget;
+    }
 
     this._openTimerId = this._async.setTimeout(() => {
       if (!this.state.isHoverCardVisible) {
@@ -167,7 +169,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     this._async.clearTimeout(this._openTimerId);
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
-    if (!this.props.sticky && (ev.type === "mouseleave" || (ev.which === KeyCodes.escape))) {
+    if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || (ev.which === KeyCodes.escape))) {
       this._dismissTimerId = this._async.setTimeout(() => {
         this.setState({
           isHoverCardVisible: false,

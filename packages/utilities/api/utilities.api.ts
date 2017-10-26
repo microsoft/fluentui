@@ -13,20 +13,20 @@ export function assign(target: any, ...args: any[]): any;
 class Async {
   constructor(parent?: any, onError?: (e: any) => void);
   public clearTimeout(id: number): void;
-  public debounce < T extends Function >(func: T, wait?: number, options?: {
-      leading?: boolean;
-      maxWait?: number;
-      trailing?: boolean;
-    }): T;
+  public debounce<T extends Function>(func: T, wait?: number, options?: {
+    leading?: boolean;
+    maxWait?: number;
+    trailing?: boolean;
+  }): T;
   // (undocumented)
   public requestAnimationFrame(callback: () => void): number;
   public setImmediate(callback: () => void): number;
   public setInterval(callback: () => void, duration: number): number;
   public setTimeout(callback: () => void, duration: number): number;
-  public throttle < T extends Function >(func: T, wait?: number, options?: {
-      leading?: boolean;
-      trailing?: boolean;
-    }): T;
+  public throttle<T extends Function>(func: T, wait?: number, options?: {
+    leading?: boolean;
+    trailing?: boolean;
+  }): T;
 }
 
 // WARNING: dispose has incomplete type information
@@ -55,7 +55,7 @@ class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> 
 }
 
 // @public
-export function createArray < T >(size: number, getItem: (index: number) => T): T[];
+export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
 // WARNING: contextTypes has incomplete type information
 // WARNING: childContextTypes has incomplete type information
@@ -105,10 +105,10 @@ class FabricPerformance {
   public static summary: IPerfSummary;
 }
 
-export function find < T >(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
 
 // @public
-export function findIndex < T >(array: T[], cb: (item: T, index: number) => boolean): number;
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number;
 
 // @public
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
@@ -142,7 +142,12 @@ export function getLastFocusable(rootElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getNativeProps < T >(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T;
+export function getLastTabbable(rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
+
+// @public
+export function getNativeProps<T>(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 // @public
 export function getNextElement(rootElement: HTMLElement,
@@ -185,11 +190,11 @@ class GlobalSettings {
   // (undocumented)
   public static addChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
-  public static getValue < T >(key: string, defaultValue?: T | (() => T)): T;
+  public static getValue<T>(key: string, defaultValue?: T | (() => T)): T;
   // (undocumented)
   public static removeChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
-  public static setValue < T >(key: string, value: T): void;
+  public static setValue<T>(key: string, value: T): void;
 }
 
 // @public
@@ -247,7 +252,7 @@ interface ICustomizerState {
 // @internal
 interface IDeclaredEventsByName {
   // (undocumented)
-  [ eventName: string ]: boolean;
+  [eventName: string]: boolean;
 }
 
 // @public
@@ -265,7 +270,7 @@ interface IDelayedRenderState {
 // @internal
 interface IDictionary {
   // (undocumented)
-  [ className: string ]: boolean;
+  [className: string]: boolean;
 }
 
 // @public
@@ -297,7 +302,7 @@ interface IEventRecord {
 // @internal
 interface IEventRecordList {
   // (undocumented)
-  [ id: string ]: IEventRecord[] | number;
+  [id: string]: IEventRecord[] | number;
   // (undocumented)
   count: number;
 }
@@ -306,7 +311,7 @@ interface IEventRecordList {
 // @internal
 interface IEventRecordsByName {
   // (undocumented)
-  [ eventName: string ]: IEventRecordList;
+  [eventName: string]: IEventRecordList;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -333,7 +338,7 @@ interface IPerfMeasurement {
 // @internal
 interface IPerfSummary {
   // (undocumented)
-  [ key: string ]: IPerfMeasurement;
+  [key: string]: IPerfMeasurement;
 }
 
 // @public
@@ -389,7 +394,7 @@ interface ISerializableObject {
 // @internal
 interface ISettings {
   // (undocumented)
-  [ key: string ]: any;
+  [key: string]: any;
 }
 
 // @public
@@ -431,7 +436,7 @@ enum KeyCodes {
 }
 
 // @public
-export function memoizeFunction < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T,
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T,
   maxCacheSize: number = 100): T;
 
 // @public
@@ -453,7 +458,7 @@ class Rectangle {
   readonly width: number;
 }
 
-export function removeElement < T >(array: T[], index: number): T[];
+export function removeElement<T>(array: T[], index: number): T[];
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
@@ -463,7 +468,7 @@ export function setMemoizeWeakMap(weakMap: any): void;
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-export function toMatrix < T >(items: T[], columnCount: number): T[][];
+export function toMatrix<T>(items: T[], columnCount: number): T[][];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
@@ -472,19 +477,19 @@ export function unhoistMethods(source: any, methodNames: string[]): void;
 export function warn(message: string): void;
 
 // @public
-export function warnConditionallyRequiredProps < P >(componentName: string,
+export function warnConditionallyRequiredProps<P>(componentName: string,
   props: P,
   requiredProps: string[],
   conditionalPropName: string,
   condition: boolean): void;
 
 // @public
-export function warnDeprecations < P >(componentName: string,
+export function warnDeprecations<P>(componentName: string,
   props: P,
   deprecationMap: ISettingsMap<P>): void;
 
 // @public
-export function warnMutuallyExclusive < P >(componentName: string,
+export function warnMutuallyExclusive<P>(componentName: string,
   props: P,
   exclusiveMap: ISettingsMap<P>): void;
 
