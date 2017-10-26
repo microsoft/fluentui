@@ -10,7 +10,7 @@ const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYA
 const STYLES = {
   darkRed: '.ms-Persona-initials--darkRed',
   initials: '.ms-Persona-initials',
-  lightBlue: '.ms-Persona-initials--lightBlue',
+  black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red',
 
 };
@@ -35,7 +35,7 @@ describe('Persona', () => {
   describe('initials and colors', () => {
     it('renders with expected initialsColor if none was provided', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' />);
-      let result = wrapper.find(STYLES.red);
+      let result = wrapper.find(STYLES.black);
       expect(result).toHaveLength(1);
 
       const wrapper2 = mount(<Persona primaryText='Annie Lindqvist' />);
@@ -44,8 +44,8 @@ describe('Persona', () => {
     });
 
     it('uses provided initialsColor if one was specified', () => {
-      const wrapper = mount(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.lightBlue } />);
-      let result = wrapper.find(STYLES.lightBlue);
+      const wrapper = mount(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.red } />);
+      let result = wrapper.find(STYLES.red);
       expect(result).toHaveLength(1);
     });
 
