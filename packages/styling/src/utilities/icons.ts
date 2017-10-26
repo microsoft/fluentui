@@ -121,7 +121,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
       }
     } else {
       if (_icons.__options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was referenced but not registered.`);
+        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
       }
     }
   }
