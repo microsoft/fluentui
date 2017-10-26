@@ -12,7 +12,7 @@ import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandin
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
-import { FocusTrapZone, IFocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
 export interface IExpandingCardState {
