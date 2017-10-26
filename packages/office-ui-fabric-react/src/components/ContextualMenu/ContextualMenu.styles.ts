@@ -154,14 +154,11 @@ export const getMenuItemStyles = memoizeFunction((
     },
     splitButtonSeparator: {
       backgroundColor: ContextualMenuDividerColor,
-      position: 'absolute',
       width: 1,
-      right: 31,
-      height: SplitButtonDividerHeight,
     },
     splitButtonFlexContainer: {
       display: 'flex',
-      height: '100%',
+      height: ContextualMenuItemHeight,
       flexWrap: 'nowrap',
       justifyContent: 'center',
       alignItems: 'center'

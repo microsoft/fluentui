@@ -33,6 +33,9 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
+import {
+  VerticalDivider
+} from '../../Divider';
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
   dismissedMenuItemKey?: string;
@@ -529,8 +532,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           className={ classNames.splitContainer }
         >
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-          { this._renderSplitIconButton(item, classNames, index) }
           { this._renderSplitDivider(classNames) }
+          { this._renderSplitIconButton(item, classNames, index) }
         </span>
       </div>
     );
@@ -576,7 +579,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderSplitDivider(classNames: IMenuItemClassNames) {
-    return <span className={ classNames.splitButtonSeparator } />;
+    return <VerticalDivider />;
+    // return <span className={ classNames.splitButtonSeparator } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
