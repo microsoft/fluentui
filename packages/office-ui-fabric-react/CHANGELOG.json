@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.15.0",
+      "tag": "office-ui-fabric-react_v5.15.0",
+      "date": "Thu, 26 Oct 2017 10:21:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "ddfe27b00b3daff96359616d77f6bc3a3a53b5ab",
+            "comment": "Callout: Add check for undefined when comparing old and new position"
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "79160fa76ec89691451507c643803ad9b052174e",
+            "comment": "SplitButtonInMenu: render icon in primary action button"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "264fc2f0a83197ec7041c929cb343951479229aa",
+            "comment": "ContextualMenu: Make the behavior of getIsChecked consistent for isChecked and checked props"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b6ba83e0c27830b87824a8062d97ded3540a7ba7",
+            "comment": "Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.4.1 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.14.0",
       "tag": "office-ui-fabric-react_v5.14.0",
       "date": "Wed, 25 Oct 2017 02:03:33 GMT",

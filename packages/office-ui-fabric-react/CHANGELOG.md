@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Oct 2017 02:03:33 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Oct 2017 10:21:37 GMT and should not be manually modified.
+
+## 5.15.0
+Thu, 26 Oct 2017 10:21:37 GMT
+
+### Minor changes
+
+- Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons.
+
+### Patches
+
+- Callout: Add check for undefined when comparing old and new position
+- SplitButtonInMenu: render icon in primary action button
+- ContextualMenu: Make the behavior of getIsChecked consistent for isChecked and checked props
 
 ## 5.14.0
 Wed, 25 Oct 2017 02:03:33 GMT
