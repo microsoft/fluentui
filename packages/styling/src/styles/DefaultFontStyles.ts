@@ -96,6 +96,14 @@ export namespace FontWeights {
   export const bold = 700;
 }
 
+// Standard Icon Sizes.
+export namespace IconFontSizes {
+  export const xSmall = '10px';
+  export const small = '12px';
+  export const medium = '16px';
+  export const large = '20px';
+}
+
 // Standard font styling.
 export const DefaultFontStyles: IFontStyles = {
   tiny: _createFont(FontSizes.mini, FontWeights.semibold),

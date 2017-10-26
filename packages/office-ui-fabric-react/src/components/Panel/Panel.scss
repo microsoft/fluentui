@@ -184,24 +184,11 @@ $CommandBarHeight: 44px;
   }
 }
 
-// The button in the top right (x)
-.closeButton {
-  background: none;
-  border: 0;
-  cursor: pointer;
-  position: absolute;
-  @include ms-right(4px);
-  top: 0;
+.navigation {
+  padding: 0 5px;
   height: $CommandBarHeight;
-  width: $CommandBarHeight;
-  line-height: $CommandBarHeight;
-  padding: 0;
-  color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-l;
-
-  &:hover {
-    color: $ms-color-neutralPrimary;
-  }
+  display: flex;
+  justify-content: flex-end;
 }
 
 // Scrollable content area
