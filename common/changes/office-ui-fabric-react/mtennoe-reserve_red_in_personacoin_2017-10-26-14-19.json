@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": " Make red a reserved color for the PersonaCoin, so it can only be used if you override the personacoint color",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mariust@outlook.com"
+}
