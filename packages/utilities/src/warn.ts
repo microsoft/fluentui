@@ -1,4 +1,4 @@
-let _warningCallback: (message: string) => void = warn;
+let _warningCallback: ((message: string) => void) | undefined = undefined;
 
 export type ISettingsMap<T> = {
   [P in keyof T]?: string;
@@ -26,7 +26,7 @@ export function warnDeprecations<P>(
       if (replacementPropName) {
         deprecationMessage += ` Use '${replacementPropName}' instead.`;
       }
-      _warningCallback(deprecationMessage);
+      warn(deprecationMessage);
     }
   }
 }
@@ -48,7 +48,7 @@ export function warnMutuallyExclusive<P>(
     if (props && propName in props) {
       let propInExclusiveMapValue = exclusiveMap[propName];
       if (propInExclusiveMapValue && propInExclusiveMapValue in props) {
-        _warningCallback(
+        warn(
           `${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`
         );
       }
@@ -76,7 +76,7 @@ export function warnConditionallyRequiredProps<P>(
   if (condition === true) {
     for (const requiredPropName of requiredProps) {
       if (!(requiredPropName in props)) {
-        _warningCallback(
+        warn(
           `${componentName} property '${requiredPropName}' is required when '${conditionalPropName}' is used.'`
         );
       }
@@ -91,7 +91,9 @@ export function warnConditionallyRequiredProps<P>(
  * @param message - Warning message.
  */
 export function warn(message: string): void {
-  if (console && console.warn) {
+  if (_warningCallback) {
+    _warningCallback(message);
+  } else if (console && console.warn) {
     console.warn(message);
   }
 }
@@ -104,5 +106,5 @@ export function warn(message: string): void {
  * @param warningCallback - Callback to override the generated warnings.
  */
 export function setWarningCallback(warningCallback?: (message: string) => void): void {
-  _warningCallback = warningCallback === undefined ? warn : warningCallback;
+  _warningCallback = warningCallback;
 }

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Updating the icon warning to link to documentation for assistance.",
+      "packageName": "@uifabric/styling",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com"
+}

@@ -5,7 +5,7 @@ const BUNDLE_NAME = 'office-ui-fabric-react';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 let entry = {
-  [BUNDLE_NAME]: './lib/index.js'
+  [BUNDLE_NAME]: './lib/index.bundle.js'
 };
 
 // In production builds, produce the demo-app bundle.
