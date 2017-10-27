@@ -33,6 +33,9 @@ const SIZE_TO_PIXELS = {
   [PersonaSize.extraLarge]: 100
 };
 
+/**
+ * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+ */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightGreen,
   PersonaInitialsColor.lightBlue,
@@ -47,8 +50,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.blue,
   PersonaInitialsColor.darkBlue,
   PersonaInitialsColor.orange,
-  PersonaInitialsColor.darkRed,
-  PersonaInitialsColor.red
+  PersonaInitialsColor.darkRed
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
