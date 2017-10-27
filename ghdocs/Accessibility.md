@@ -2,6 +2,10 @@
 
 This document describes our policies and methods for supporting accessibility.
 
+## Colors
+
+Default color choices should conform to contrast requirements as laid out in [WCAG 2.0](https://www.w3.org/TR/WCAG20/) level AA recommendations as laid out in section 1.4.3.
+
 ## High Contrast
 
 We best support high contrast in Internet Explorer 11 and Microsoft Edge. Mozilla FireFox is also supported to the extent possible barring technical constraints. Read on for more details.
@@ -26,7 +30,7 @@ Note that background images can disappear in high contrast mode. Any icons or im
 Follow recommended guidelines using [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) to insure the best support for screen readers.
 Where necessary, add in extra text only visible to the screen reader for descriptions and directions, by positioning it off screen.
 
-Our primary support scenario is Microsoft Edge with Windows Narrator. We also support Windows Narrator and JAWS with other browsers.
+Our primary support scenario is Microsoft Edge with Windows Narrator.
 
 ## Keyboard and Focus
 
