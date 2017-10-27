@@ -24,6 +24,7 @@ export interface IMenuItemClassNames {
   splitContainer: string;
   splitPrimary: string;
   splitMenu: string;
+  linkContentMenu: string;
 }
 
 export const getVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
@@ -161,6 +162,13 @@ export const getItemClassNames = memoizeFunction((
     linkContent: [
       'ms-ContextualMenu-linkContent',
       styles.linkContent
+    ],
+    linkContentMenu: [
+      'ms-ContextualMenu-linkContent',
+      styles.linkContent,
+      {
+        justifyContent: 'center',
+      }
     ],
     icon: [
       'ms-ContextualMenu-icon',

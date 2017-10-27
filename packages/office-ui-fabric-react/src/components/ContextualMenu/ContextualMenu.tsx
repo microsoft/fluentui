@@ -570,7 +570,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       disabled: item.disabled,
       className: classNames.splitMenu,
       subMenuProps: item.subMenuProps,
-      submenuIconProps: item.submenuIconProps
+      submenuIconProps: item.submenuIconProps,
+      split: true,
     } as IContextualMenuItem;
 
     return React.createElement('button',
@@ -588,7 +589,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     const isItemChecked: boolean | null | undefined = getIsChecked(item);
     return (
-      <div className={ classNames.linkContent }>
+      <div className={ item.split ? classNames.linkContentMenu : classNames.linkContent }>
         { (hasCheckmarks) ? (
           <Icon
             iconName={ isItemChecked === true ? 'CheckMark' : '' }
