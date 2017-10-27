@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add button semantic slots",
+      "comment": "Adjustments made to the disabled text color for Toggle and Checkbox.",
       "type": "patch"
     }
   ],
