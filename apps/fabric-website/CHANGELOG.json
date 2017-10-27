@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.14",
+      "tag": "@uifabric/fabric-website_v5.0.14",
+      "date": "Fri, 27 Oct 2017 10:25:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "64214cc2b97c1ed45968e44e9361ec06fe33af26",
+            "comment": "Fixed initializeIcons call to pull from cdn instead of dist."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.15.0 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.13",
       "tag": "@uifabric/fabric-website_v5.0.13",
       "date": "Tue, 24 Oct 2017 10:21:08 GMT",
