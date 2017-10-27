@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.16.0",
+      "tag": "office-ui-fabric-react_v5.16.0",
+      "date": "Fri, 27 Oct 2017 10:25:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "81a0fdc4a00eec06237189754ed6b45244a408dd",
+            "comment": "Add ariaHidden prop to buttons"
+          }
+        ],
+        "patch": [
+          {
+            "author": "cicciodm <f.dimauro92@gmail.com>",
+            "commit": "f0cf2e1a6ffb194a670e9faf6316f304b9677671",
+            "comment": "Restore forceAnchor prop for INavLink elements"
+          },
+          {
+            "author": "cicciodm <f.dimauro92@gmail.com>",
+            "commit": "a2893c4b4372a2b752b2c58273e8380a8806e69d",
+            "comment": "SearchBox onKeyDown: prevent default events only when specified by the user"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "02f5ef74858d988b0e5f48a32a688ea65c93b7d2",
+            "comment": "Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "86fe40e75d27d61869a4cc005f21257104fa7bf8",
+            "comment": "Theme Generator: improve perf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.0",
       "tag": "office-ui-fabric-react_v5.15.0",
       "date": "Thu, 26 Oct 2017 10:21:37 GMT",

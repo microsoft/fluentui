@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.6.0",
+      "tag": "@uifabric/styling_v5.6.0",
+      "date": "Fri, 27 Oct 2017 10:25:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "02f5ef74858d988b0e5f48a32a688ea65c93b7d2",
+            "comment": "Added IconFontSizes"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/styling_v5.5.0",
       "date": "Thu, 26 Oct 2017 10:21:37 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 26 Oct 2017 10:21:37 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Oct 2017 10:25:09 GMT and should not be manually modified.
+
+## 5.6.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Added IconFontSizes
 
 ## 5.5.0
 Thu, 26 Oct 2017 10:21:37 GMT

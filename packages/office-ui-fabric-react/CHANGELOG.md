@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Oct 2017 10:21:37 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Oct 2017 10:25:09 GMT and should not be manually modified.
+
+## 5.16.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Add ariaHidden prop to buttons
+
+### Patches
+
+- Restore forceAnchor prop for INavLink elements
+- SearchBox onKeyDown: prevent default events only when specified by the user
+- Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues
+- Theme Generator: improve perf
 
 ## 5.15.0
 Thu, 26 Oct 2017 10:21:37 GMT
