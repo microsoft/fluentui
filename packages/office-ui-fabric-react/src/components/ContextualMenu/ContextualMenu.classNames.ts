@@ -2,8 +2,8 @@ import { memoizeFunction } from '../../Utilities';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
-import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider';
-import { getDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.classNames';
+import { IVerticalDividerClassNames } from '../Divider';
+import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 
 export interface IContextualMenuClassNames {
   container: string;
