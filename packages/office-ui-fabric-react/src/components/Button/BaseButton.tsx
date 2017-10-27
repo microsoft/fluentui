@@ -74,6 +74,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       ariaDescription,
       ariaLabel,
+      ariaHidden,
       className,
       description,
       disabled,
@@ -157,6 +158,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-pressed': checked
       }
     );
+
+    if (ariaHidden) {
+      buttonProps['aria-hidden'] = true;
+    }
 
     if (this._isSplitButton) {
       return (
