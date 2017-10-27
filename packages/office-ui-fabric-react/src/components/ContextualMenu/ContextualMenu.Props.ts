@@ -14,7 +14,7 @@ import {
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
-import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
 
 export enum ContextualMenuItemType {
   Normal = 0,

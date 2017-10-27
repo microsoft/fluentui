@@ -2,7 +2,7 @@ import { memoizeFunction } from '../../Utilities';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
-import { IVerticalDividerClassNames } from '../Divider';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 
 export interface IContextualMenuClassNames {
