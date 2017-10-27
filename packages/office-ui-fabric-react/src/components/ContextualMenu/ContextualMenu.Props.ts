@@ -454,6 +454,12 @@ export interface IMenuItemStyles extends IButtonStyles {
   * Styles for a divider item of a ConextualMenu.
   */
   divider: IStyle;
+
+  /**
+   *  Styles for a split button divider in a menu item
+   * @deprecated
+   */
+  splitButtonSeparator: IStyle;
 }
 
 export interface IContextualMenuStyles {
