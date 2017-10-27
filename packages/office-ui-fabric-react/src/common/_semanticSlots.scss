@@ -1,12 +1,13 @@
 /* Base slots */
 $bodyBackgroundColor: "[theme:bodyBackground, default: #ffffff]";
 $bodyTextColor: "[theme:bodyText, default: #333333]";
-$bodySelectedTextColor: "[theme:bodySelectedText, default: #000000]";
+$bodyTextCheckedColor: "[theme:bodyTextChecked, default: #000000]";
 $bodySubtextColor: "[theme:bodySubtext, default: #666666]";
 $bodyDividerColor: "[theme:bodyDivider, default: #eaeaea]";
 
 $disabledBackgroundColor: "[theme:disabledBackground, default: #f4f4f4]";
-$disabledTextColor: "[theme:disabledText, default: #c8c8c8]";
+$disabledTextColor: "[theme:disabledText, default: #a6a6a6]";
+$disabledBodyTextColor: "[theme:disabledText, default: #c8c8c8]";
 $disabledSubtextColor: "[theme:disabledSubtext, default: #dadada]";
 
 $focusBorderColor: "[theme:focusBorder, default: #000000]";
@@ -25,6 +26,17 @@ $inputBackgroundCheckedColor: "[theme:inputBackgroundChecked, default: #0078d7]"
 $inputBackgroundCheckedHoveredColor: "[theme:inputBackgroundCheckedHovered, default: #106ebe]";
 $inputForegroundCheckedColor: "[theme:inputForegroundChecked, default: #ffffff]";
 $inputFocusBorderAltColor: "[theme:inputFocusBorderAlt, default: #0078d7]";
+
+/* Buttons */
+$buttonBackgroundColor: "[theme:buttonBackground, default: #f4f4f4]";
+$buttonBackgroundCheckedColor: "[theme:buttonBackgroundChecked, default: #c8c8c8]";
+$buttonBackgroundHoveredColor: "[theme:buttonBackgroundHovered, default: #eaeaea]";
+$buttonBackgroundCheckedHoveredColor: "[theme:buttonBackgroundCheckedHovered, default: #eaeaea]";
+$buttonBorderColor: "[theme:buttonBorder, default: transparent]";
+$buttonTextColor: "[theme:buttonText, default: #333333]";
+$buttonTextHoveredColor: "[theme:buttonTextHovered, default: #000000]";
+$buttonTextCheckedColor: "[theme:buttonTextChecked, default: #212121]";
+$buttonTextCheckedHoveredColor: "[theme:buttonTextCheckedHovered, default: #000000]";
 
 /* Menus */
 $menuItemBackgroundHoveredColor: "[theme:menuItemBackgroundHovered, default: #f8f8f8]";

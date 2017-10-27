@@ -42,7 +42,7 @@
   }
   &.disabled,
   &[disabled] {
-    color: $disabledTextColor;
+    color: $disabledBodyTextColor;
     cursor: default;
     pointer-events: none;
   }
@@ -112,7 +112,7 @@
 
     &.disabled,
   &[disabled] {
-    color: $disabledTextColor;
+    color: $disabledBodyTextColor;
     cursor: default;
     pointer-events: none;
     opacity: .3;
