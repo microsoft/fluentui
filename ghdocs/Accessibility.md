@@ -25,6 +25,9 @@ We use this only where necessary, for complex scenarios such as multiselect.
 
 Note that background images can disappear in high contrast mode. Any icons or images that are required for functionality must not be background images.
 
+In high contrast mode, color should not be the only means of conveying feedback.
+A transparent border or outline will appear in high contrast mode, a useful way of denoting focus without affecting non-high contrast visual design.
+
 ## Screen Reader
 
 Follow recommended guidelines using [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) to insure the best support for screen readers.
