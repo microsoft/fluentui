@@ -39,7 +39,6 @@ export const getMenuItemStyles = memoizeFunction((
   const ContextualMenuTextSelectedColor = semanticColors.bodySelectedText;
   const ContextualMenuTextDisabledColor = semanticColors.disabledText;
   const ContextualMenuDividerColor = semanticColors.bodyDivider;
-  const SplitButtonDividerHeight = 16;
 
   const menuItemStyles: IMenuItemStyles = {
     item: [
@@ -151,10 +150,6 @@ export const getMenuItemStyles = memoizeFunction((
       verticalAlign: 'middle',
       flexShrink: '0',
       fontSize: FontSizes.mini
-    },
-    splitButtonSeparator: {
-      backgroundColor: ContextualMenuDividerColor,
-      width: 1,
     },
     splitButtonFlexContainer: {
       display: 'flex',

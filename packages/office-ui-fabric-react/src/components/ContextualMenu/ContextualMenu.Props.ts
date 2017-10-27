@@ -14,6 +14,7 @@ import {
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
+import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -336,6 +337,12 @@ export interface IContextualMenuItem {
     subMenuClassName?: string) => IMenuItemClassNames;
 
   /**
+  * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+  * @default getVerticalDividerClassnames
+  */
+  getVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+
+  /**
    *  Properties to apply to render this item as a section.
    *  This prop is mutually exclusive with subMenuProps.
    */
@@ -447,11 +454,6 @@ export interface IMenuItemStyles extends IButtonStyles {
   * Styles for a divider item of a ConextualMenu.
   */
   divider: IStyle;
-
-  /**
-   * Styles for a split button divider in a menu item
-   */
-  splitButtonSeparator: IStyle;
 }
 
 export interface IContextualMenuStyles {

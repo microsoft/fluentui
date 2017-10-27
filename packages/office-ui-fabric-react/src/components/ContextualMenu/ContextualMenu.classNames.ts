@@ -2,6 +2,9 @@ import { memoizeFunction } from '../../Utilities';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
+import { IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider';
+import { getDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.classNames';
+
 export interface IContextualMenuClassNames {
   container: string;
   root: string;
@@ -18,11 +21,22 @@ export interface IMenuItemClassNames {
   icon: string;
   subMenuIcon: string;
   label: string;
-  splitButtonSeparator: string;
   splitContainer: string;
   splitPrimary: string;
   splitMenu: string;
 }
+
+export const getVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
+  const { semanticColors } = theme;
+  const SplitButtonDividerHeight = 16;
+  const ContextualMenuDividerColor = semanticColors.bodyDivider;
+  return mergeStyleSets(getDividerClassNames(theme), {
+    divider: {
+      height: SplitButtonDividerHeight,
+      width: 1,
+    }
+  });
+});
 
 export const getContextualMenuClassNames = memoizeFunction((
   theme: ITheme,
@@ -163,7 +177,6 @@ export const getItemClassNames = memoizeFunction((
       'ms-ContextualMenu-itemText',
       styles.label
     ],
-    splitButtonSeparator: styles.splitButtonSeparator,
     splitContainer: styles.splitButtonFlexContainer,
   });
 });

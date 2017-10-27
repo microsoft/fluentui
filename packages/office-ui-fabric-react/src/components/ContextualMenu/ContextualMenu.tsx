@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memoizeFunction } from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -10,7 +11,8 @@ import {
   IMenuItemClassNames,
   IContextualMenuClassNames,
   getContextualMenuClassNames,
-  getItemClassNames
+  getItemClassNames,
+  getVerticalDividerClassNames
 } from './ContextualMenu.classNames';
 import {
   BaseComponent,
@@ -532,7 +534,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           className={ classNames.splitContainer }
         >
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-          { this._renderSplitDivider(classNames) }
+          { this._renderSplitDivider(item) }
           { this._renderSplitIconButton(item, classNames, index) }
         </span>
       </div>
@@ -578,9 +580,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._renderMenuItemChildren(itemProps, classNames, index, false, false));
   }
 
-  private _renderSplitDivider(classNames: IMenuItemClassNames) {
-    return <VerticalDivider />;
-    // return <span className={ classNames.splitButtonSeparator } />;
+  private _renderSplitDivider(item: IContextualMenuItem) {
+    let getDividerClassnames = item.getVerticalDividerClassNames ? item.getVerticalDividerClassNames : getVerticalDividerClassNames;
+    return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
