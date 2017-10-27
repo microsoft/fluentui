@@ -1,22 +1,21 @@
 /* tslint:disable */
 import * as React from 'react';
-import { IPickerItemProps, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
-import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.Props';
+import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.Props';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { autobind } from '../../../Utilities';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export interface IExtendedPersonaProps extends IPersonaProps {
   canExpand?: boolean;
 }
 
-export interface ISelectedPeopleItemProps extends IPickerItemProps<IExtendedPersonaProps & { ValidationState: ValidationState }> {
+export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps & { ValidationState: ValidationState }> {
   onExpandItem?: () => void;
-  onCopyItem?: (item: IExtendedPersonaProps) => void;
-  removeMenuItemText?: string;
-  copyMenuItemText?: string;
+  menuItems: IContextualMenuItem[];
 }
 
 export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPersonaProps> {
@@ -32,6 +31,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
  * Standard People Picker.
  */
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
+
   // tslint:disable-next-line:no-any
   public static defaultProps: any = {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
@@ -64,10 +64,32 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
-      // tslint:disable-next-line:no-any
-      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as any)(item) : undefined,
-      removeMenuItemText: this.props.removeMenuItemText,
-      copyMenuItemText: this.props.copyMenuItemText,
+      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as (item: IExtendedPersonaProps) => void)(item) : undefined,
+      menuItems: this._createMenuItems(item),
     }));
+  }
+
+  // tslint:disable-next-line:no-any
+  private _createMenuItems(item: any): IContextualMenuItem[] {
+    return [
+      {
+        key: 'Copy',
+        name: this.props.copyMenuItemText ? this.props.copyMenuItemText : 'Copy',
+        onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
+          if (this.props.onCopyItems) {
+            (this.copyItems as (items: IExtendedPersonaProps[]) => void)([menuItem.data] as IExtendedPersonaProps[]);
+          }
+        },
+        data: item,
+      },
+      {
+        key: 'Remove',
+        name: this.props.removeMenuItemText ? this.props.removeMenuItemText : 'Remove',
+        onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
+          this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
+        },
+        data: item,
+      },
+    ];
   }
 }

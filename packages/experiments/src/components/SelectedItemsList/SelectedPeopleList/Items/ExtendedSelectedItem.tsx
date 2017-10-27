@@ -4,9 +4,9 @@ import * as React from 'react';
 import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { IExtendedPersonaProps, ISelectedPeopleItemProps } from '../SelectedPeopleList';
+import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import * as stylesImport from './ExtendedSelectedItem.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -18,28 +18,9 @@ export interface IPeoplePickerItemState {
 export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   protected persona: HTMLElement;
 
-  private menuItems: IContextualMenuItem[];
-
   constructor(props: ISelectedPeopleItemProps) {
     super(props);
     this.state = { contextualMenuVisible: false };
-    let { onCopyItem, onRemoveItem, copyMenuItemText, removeMenuItemText } = this.props;
-    this.menuItems = [
-      {
-        key: 'Copy',
-        name: copyMenuItemText ? copyMenuItemText : 'Copy',
-        onClick: () => {
-          if (onCopyItem) {
-            onCopyItem(this.props.item as IExtendedPersonaProps);
-          }
-        },
-      },
-      {
-        key: 'Remove',
-        name: removeMenuItemText ? removeMenuItemText : 'Remove',
-        onClick: this.onClickIconButton(onRemoveItem),
-      },
-    ];
   }
 
   public render(): JSX.Element {
@@ -96,7 +77,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
         </div >
         { this.state.contextualMenuVisible ? (
           <ContextualMenu
-            items={ this.menuItems }
+            items={ this.props.menuItems }
             shouldFocusOnMount={ true }
             target={ this.persona }
             onDismiss={ this._onCloseContextualMenu }
