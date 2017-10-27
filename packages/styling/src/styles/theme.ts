@@ -44,7 +44,9 @@ export function getTheme(): ITheme {
 }
 
 /**
- * Registers a callback whenever the. This should only be used
+ * Registers a callback that gets called whenever the theme changes.
+ * This should only be used when the component cannot automatically get theme changes through its state.
+ * This will not register duplicate callbacks.
  */
 export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
   if (_onThemeChangeCallbacks.indexOf(callback) === -1) {
@@ -53,7 +55,8 @@ export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void)
 }
 
 /**
- * Registers a callback whenever the. This should only be used
+ * See registerOnThemeChangeCallback().
+ * Removes previously registered callbacks. True if the callback was found.
  */
 export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): boolean {
   let i = _onThemeChangeCallbacks.indexOf(callback);
