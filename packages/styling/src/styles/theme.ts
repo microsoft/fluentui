@@ -19,6 +19,7 @@ let _theme: ITheme = {
   fonts: DefaultFontStyles,
   isInverted: false
 };
+let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
@@ -43,6 +44,29 @@ export function getTheme(): ITheme {
 }
 
 /**
+ * Registers a callback whenever the. This should only be used
+ */
+export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+  if (_onThemeChangeCallbacks.indexOf(callback) === -1) {
+    _onThemeChangeCallbacks.push(callback);
+  }
+}
+
+/**
+ * Registers a callback whenever the. This should only be used
+ */
+export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): boolean {
+  let i = _onThemeChangeCallbacks.indexOf(callback);
+  if (i === -1) {
+    return false;
+  }
+
+  _onThemeChangeCallbacks.splice(i, 1);
+
+  return true;
+}
+
+/**
  * Applies the theme, while filling in missing slots.
  */
 export function loadTheme(theme: IPartialTheme): ITheme {
@@ -52,6 +76,14 @@ export function loadTheme(theme: IPartialTheme): ITheme {
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
+
+  for (let callback of _onThemeChangeCallbacks) {
+    try {
+      callback(_theme);
+    } catch {
+      // do nothing
+    }
+  }
 
   return _theme;
 }
