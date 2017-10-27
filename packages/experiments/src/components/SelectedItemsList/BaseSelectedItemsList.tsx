@@ -165,8 +165,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   protected onChange(items?: T[]): void {
     if (this.props.onChange) {
-      // tslint:disable-next-line:no-any
-      (this.props.onChange as any)(items);
+      (this.props.onChange as (items?: T[]) => void)(items);
     }
   }
 
@@ -234,12 +233,12 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
   */
-  protected async updateSelectedItems(items: T[], focusIndex?: number): Promise<void> {
+  protected updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
       this.onChange(items);
     } else {
-      await this.setState({ items: items }, () => {
+      this.setState({ items: items }, () => {
         this._onSelectedItemsUpdated(items, focusIndex);
       });
     }
