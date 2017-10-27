@@ -59,7 +59,7 @@ export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void)
  * Removes previously registered callbacks. True if the callback was found.
  */
 export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): boolean {
-  let i = _onThemeChangeCallbacks.indexOf(callback);
+  const i = _onThemeChangeCallbacks.indexOf(callback);
   if (i === -1) {
     return false;
   }
@@ -84,7 +84,7 @@ export function loadTheme(theme: IPartialTheme): ITheme {
     try {
       callback(_theme);
     } catch {
-      // do nothing
+      // don't let a bad callback break everything else
     }
   }
 
