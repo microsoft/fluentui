@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { memoizeFunction } from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
