@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Oct 2017 10:25:09 GMT and should not be manually modified.
+
+## 5.0.14
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Patches
+
+- Fixed initializeIcons call to pull from cdn instead of dist.
 
 ## 5.0.13
 Tue, 24 Oct 2017 10:21:08 GMT
