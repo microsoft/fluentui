@@ -85,6 +85,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   ariaDescription?: string;
 
   /**
+   * If provided and is true it adds an 'aria-hidden' attribute instructing screen readers to ignore the element.
+   */
+  ariaHidden?: boolean;
+
+  /**
   * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
   */
   text?: string;
