@@ -8,7 +8,7 @@ import { mount, ReactWrapper } from 'enzyme';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
-  darkRed: '.ms-Persona-initials--darkRed',
+  green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
   black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red',
@@ -39,7 +39,7 @@ describe('Persona', () => {
       expect(result).toHaveLength(1);
 
       const wrapper2 = mount(<Persona primaryText='Annie Lindqvist' />);
-      result = wrapper2.find(STYLES.darkRed);
+      result = wrapper2.find(STYLES.green);
       expect(result).toHaveLength(1);
     });
 
