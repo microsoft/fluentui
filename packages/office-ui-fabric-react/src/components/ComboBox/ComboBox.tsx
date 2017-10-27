@@ -160,7 +160,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     let {
       allowFreeform,
-      value
+      value,
+      onMenuOpen
     } = this.props;
     let {
       isOpen,
@@ -196,6 +197,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           value !== prevProps.value)
       )) {
       this._select();
+    }
+
+    if (isOpen && !prevState.isOpen && onMenuOpen) {
+      onMenuOpen();
     }
   }
 
@@ -327,6 +332,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._comboBox) {
       this._comboBox.focus();
     }
+  }
+
+  /**
+   * Close menu callout if it is open
+   */
+  @autobind
+  public dismissMenu(): void {
+    let { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
   }
 
   /**
@@ -913,11 +927,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (onScrollToItem) {
       // Use the custom scroll handler
       onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
-    } else {
+    } else if (this._selectedElement && this._selectedElement.offsetParent) {
       // We are using refs, scroll the ref into view
-      if (this._selectedElement && scrollSelectedToTop) {
+      if (scrollSelectedToTop) {
         this._selectedElement.offsetParent.scrollIntoView(true);
-      } else if (this._selectedElement) {
+      } else {
         let alignToTop = true;
 
         if (this._comboBoxMenu.offsetParent) {

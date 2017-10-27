@@ -74,6 +74,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       ariaDescription,
       ariaLabel,
+      ariaHidden,
       className,
       description,
       disabled,
@@ -157,6 +158,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-pressed': checked
       }
     );
+
+    if (ariaHidden) {
+      buttonProps['aria-hidden'] = true;
+    }
 
     if (this._isSplitButton) {
       return (
@@ -350,6 +355,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+    const { onDismiss = this._onToggleMenu } = menuProps;
+
     return (
       <ContextualMenu
         id={ this._labelId + '-menu' }
@@ -358,7 +365,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
         labelElementId={ this._labelId }
-        onDismiss={ this._onToggleMenu }
+        onDismiss={ onDismiss }
       />
     );
   }

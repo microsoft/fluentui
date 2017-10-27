@@ -1,0 +1,13 @@
+import * as React from 'react';
+import { {{componentName}} } from './{{componentName}}';
+import { IStyle } from '../../Styling';
+
+export interface I{{componentName}} {
+}
+
+export interface I{{componentName}}Props extends React.Props<{{componentName}}> {
+  /**
+  * All props for your component are to be defined here.
+  */
+  componentRef?: (component: I{{componentName}}) => void;
+}
