@@ -159,6 +159,7 @@ export interface ISemanticColors {
   menuItemBackgroundHovered: string;
 
   /**
+   * @deprecated
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;
@@ -167,11 +168,6 @@ export interface ISemanticColors {
    * The default colors of icons in menus.
    */
   menuIcon: string;
-
-  /**
-   * The default colors of checkmark icons in menus.
-   */
-  menuCheckmarkIcon: string;
 
   /**
    * The headers in menus that denote title of a section.

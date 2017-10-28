@@ -33,7 +33,7 @@ export const getMenuItemStyles = memoizeFunction((
 ): IMenuItemStyles => {
   const { semanticColors, fonts } = theme;
   const ContextualMenuIconColor = semanticColors.menuIcon;
-  const ContextualMenuCheckColor = semanticColors.menuCheckmarkIcon;
+  const ContextualMenuCheckColor = semanticColors.bodySubtext;
   const ContextualMenuTextColor = semanticColors.bodyText;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
@@ -143,7 +143,7 @@ export const getMenuItemStyles = memoizeFunction((
         }
       }
     },
-    checkmarkIconColor: {
+    checkmarkIcon: {
       color: ContextualMenuCheckColor,
       selectors: {
         [MS_HIGHCONTRAST_ACTIVE]: {
