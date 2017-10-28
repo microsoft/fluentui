@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.1.2",
+      "tag": "@uifabric/example-app-base_v5.1.2",
+      "date": "Wed, 25 Oct 2017 02:03:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "95a2a2813d2f0f487a2b451b6c4b85f0c0796621",
+            "comment": "Minor css improvements to example header."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.1.1",
       "tag": "@uifabric/example-app-base_v5.1.1",
       "date": "Fri, 06 Oct 2017 10:18:41 GMT",

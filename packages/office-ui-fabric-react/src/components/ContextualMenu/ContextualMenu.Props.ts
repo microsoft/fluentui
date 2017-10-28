@@ -38,7 +38,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | null;
+  target?: HTMLElement | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -78,11 +78,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   /**
    * If true use a point rather than rectangle to position the ContextualMenu.
    * For example it can be used to position based on a click.
+   * @deprecated Use 'target' instead
    */
   useTargetPoint?: boolean;
 
   /**
    * Point used to position the ContextualMenu
+   * @deprecated Use 'target' instead
    */
   targetPoint?: IPoint;
 

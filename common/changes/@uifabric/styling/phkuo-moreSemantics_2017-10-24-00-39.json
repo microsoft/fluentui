@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/styling",
-      "type": "none"
+      "comment": "Adding Button related semantic slots.",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/styling",

@@ -22,7 +22,7 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
         overflowWrap: 'break-word',
       },
       disabled && {
-        color: theme.semanticColors.disabledText,
+        color: theme.semanticColors.disabledBodyText,
         selectors: {
           [MS_HIGHCONTRAST_ACTIVE]: {
             color: 'GrayText'

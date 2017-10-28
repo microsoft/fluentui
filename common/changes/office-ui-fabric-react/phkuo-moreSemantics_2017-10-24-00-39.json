@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updated example to render some custom icons.",
+      "comment": "Adjustments made to the disabled text color for Toggle and Checkbox.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "phkuo@microsoft.com"
 }

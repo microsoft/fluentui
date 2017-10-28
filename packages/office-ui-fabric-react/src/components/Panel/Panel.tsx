@@ -15,9 +15,10 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames, getTheme, FontSizes, IconFontSizes } from '../../Styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
+const theme = getTheme();
 
 export interface IPanelState {
   isFooterSticky?: boolean;
@@ -80,6 +81,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       layerProps,
       type,
       customWidth,
+      onLightDismissClick = this._onPanelClick,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
@@ -107,7 +109,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             !isOpen && isAnimating && AnimationClassNames.fadeOut200
           ) }
           isDarkThemed={ false }
-          onClick={ isLightDismiss ? this._onPanelClick : undefined }
+          onClick={ isLightDismiss ? onLightDismissClick : undefined }
         />
       );
     }
@@ -207,13 +209,28 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     } = props;
     if (hasCloseButton) {
       return (
-        <IconButton
-          className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
-          onClick={ this._onPanelClick }
-          ariaLabel={ closeButtonAriaLabel }
-          data-is-visible={ true }
-          iconProps={ { iconName: 'Cancel' } }
-        />
+        <div className={ css('ms-Panel-navigation', styles.navigation) } >
+          <IconButton
+            styles={
+              {
+                root: {
+                  height: 'auto',
+                  width: '44px',
+                  color: theme.palette.neutralSecondary,
+                  fontSize: IconFontSizes.large,
+                },
+                rootHovered: {
+                  color: theme.palette.neutralPrimary
+                }
+              }
+            }
+            className={ css('ms-Panel-closeButton ms-PanelAction-close') }
+            onClick={ this._onPanelClick }
+            ariaLabel={ closeButtonAriaLabel }
+            data-is-visible={ true }
+            iconProps={ { iconName: 'Cancel' } }
+          />
+        </div>
       );
     }
     return null;

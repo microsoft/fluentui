@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix minor state update bug with Sticky",
+      "comment": "Fixed an issue where ComboBox would throw an exception under shallow rendering tests",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "brwatt@microsoft.com"
+  "email": "alexbettadapur@gmail.com"
 }
