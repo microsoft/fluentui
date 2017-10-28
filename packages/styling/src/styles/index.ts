@@ -7,5 +7,7 @@ export {
   ThemeSettingName,
   getTheme,
   loadTheme,
-  createTheme
+  createTheme,
+  getTintVariant,
+  getStrongVariant
 } from './theme';

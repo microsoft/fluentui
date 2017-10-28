@@ -93,6 +93,7 @@ export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageSt
       [this._fabricSlotWidget(FabricSlots.black),
       this._fabricSlotWidget(FabricSlots.neutralDark),
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
+      this._fabricSlotWidget(FabricSlots.neutralPrimaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
       this._fabricSlotWidget(FabricSlots.neutralTertiary)
       ];
@@ -479,9 +480,12 @@ export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageSt
       root.style.backgroundColor = themeAsJson.backgroundColor;
       root.style.color = themeAsJson.bodyText;
     }
-    document.body.style.backgroundColor = themeAsJson.backgroundColor;
-    document.body.style.color = themeAsJson.bodyText;
-    loadTheme({ palette: themeAsJson });
+    let finalTheme = loadTheme({
+      palette: themeAsJson,
+      isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+    });
+    document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
+    document.body.style.color = finalTheme.semanticColors.bodyText;
   }
 
   @autobind
