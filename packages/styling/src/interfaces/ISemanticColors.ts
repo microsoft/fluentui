@@ -169,6 +169,11 @@ export interface ISemanticColors {
   menuIcon: string;
 
   /**
+   * The default colors of checkmark icons in menus.
+   */
+  menuCheckmarkIcon: string;
+
+  /**
    * The headers in menus that denote title of a section.
    */
   menuHeader: string;
