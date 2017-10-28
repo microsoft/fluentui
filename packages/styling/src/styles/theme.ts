@@ -206,6 +206,7 @@ export function getStrongVariant(theme?: IPartialTheme): ITheme {
   let p = fullTheme.palette;
 
   // dirty algorithm:
+  // in a tricolor theme, foreground doesn't get used?
   // theme colors -> background shades
   // foregrounds -> background shades
   // backgrounds -> theme colors
