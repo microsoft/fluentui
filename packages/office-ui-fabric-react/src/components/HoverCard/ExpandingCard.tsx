@@ -75,8 +75,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
     const content = (
       <div
-        data-is-focusable={ true }
-        tabIndex={ 0 }
         ref={ this._resolveRef('_expandingCard') }
         onFocusCapture={ this.props.onEnter }
         onBlurCapture={ this.props.onLeave }
