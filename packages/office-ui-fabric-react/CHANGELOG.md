@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Oct 2017 10:25:09 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Oct 2017 10:23:09 GMT and should not be manually modified.
+
+## 5.17.0
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Minor changes
+
+- Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color
+
+### Patches
+
+- Fixed an issue where ComboBox would throw an exception under shallow rendering tests
+- Adjustments made to the disabled text color for Toggle and Checkbox.
 
 ## 5.16.0
 Fri, 27 Oct 2017 10:25:09 GMT

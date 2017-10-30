@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 27 Oct 2017 10:25:09 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Oct 2017 10:23:09 GMT and should not be manually modified.
+
+## 5.6.1
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Patches
+
+- Adding Button related semantic slots.
 
 ## 5.6.0
 Fri, 27 Oct 2017 10:25:09 GMT
