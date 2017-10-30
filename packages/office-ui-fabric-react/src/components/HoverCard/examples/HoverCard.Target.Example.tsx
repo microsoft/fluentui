@@ -11,7 +11,6 @@ import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/D
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
-import { List, IListProps } from '../../List';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './HoverCard.Example.scss';
 
@@ -163,21 +162,11 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
     return (
       <div className='hoverCardExample-expandedCard'>
         { item.description }
-        <List
-          componentRef={ this._resolveRef('_list') }
-          role='listbox'
-          items={ items }
-          onRenderCell={ this._onRenderCell }
+        <DetailsList
+          setKey='expandedCardSet'
+          items={ items! }
+          columns={ columns }
         />
-      </div>
-    );
-  }
-
-  @autobind
-  private _onRenderCell(item: any): JSX.Element {
-    return (
-      <div className='ItemCell'>
-        { item.key }
       </div>
     );
   }

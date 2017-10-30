@@ -5,9 +5,9 @@ import {
   BaseComponent,
   getNativeProps,
   divProperties,
+  KeyCodes,
   customizable,
-  autobind,
-  KeyCodes
+  autobind
 } from '../../Utilities';
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandingCard } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
@@ -30,9 +30,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     gapSpace: 0
   };
 
-  public refs: {
-    expandingCard: HTMLElement;
-  };
+  private _expandingCard: HTMLElement;
 
   private _styles: IExpandingCardStyles;
   // tslint:disable-next-line:no-unused-variable
@@ -54,9 +52,10 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         needsScroll: true
       });
     }
-    this._events.on(this.refs.expandingCard, 'keydown', this._onDismiss);
+
     if (this.props.trapFocus) {
-      this.refs.expandingCard.focus();
+      this._expandingCard.focus();
+      this._events.on(this._expandingCard, 'keydown', this._onDismiss);
     }
   }
 
@@ -78,7 +77,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <div
         data-is-focusable={ true }
         tabIndex={ 0 }
-        ref='expandingCard'
+        ref={ this._resolveRef('_expandingCard') }
         onFocusCapture={ this.props.onEnter }
         onBlurCapture={ this.props.onLeave }
         onMouseEnter={ this.props.onEnter }

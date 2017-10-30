@@ -59,7 +59,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this._events.on(target, 'mouseenter', this._cardOpen);
     this._events.on(target, 'mouseleave', this._cardDismiss);
-    this._events.on(target, 'keydown', this._cardOpen);
+    if (this.props.trapFocus) {
+      this._events.on(target, 'keydown', this._cardOpen);
+    } else {
+      this._events.on(target, 'focus', this._cardOpen);
+      this._events.on(target, 'blur', this._cardDismiss);
+    }
     if (this.props.instantOpenOnClick) {
       this._events.on(target, 'click', this._instantOpenExpanded);
     } else {
@@ -163,7 +168,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Hide HoverCard
   @autobind
   private _cardDismiss(ev: MouseEvent) {
-    if (ev.type === 'keydown') {
+    if (ev.type === 'keydown' && (ev.which !== KeyCodes.escape)) {
       return;
     }
     this._async.clearTimeout(this._openTimerId);
