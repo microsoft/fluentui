@@ -9,7 +9,7 @@
 
 
 //= Colors used in the initials color block
-$ms-color-initials-overflowButton:   #EAEAEA;
+$ms-color-initials-lightGrey:        #EAEAEA;
 $ms-color-initials-lightBlue:        #6BA5E7;
 $ms-color-initials-blue:             #2D89EF;
 $ms-color-initials-darkBlue:         #2B5797;
@@ -167,6 +167,9 @@ $ms-Persona-presenceSizeXl: 28px;
   }
   &.initialsIsDarkRed {
     background-color: $ms-color-initials-darkRed;
+  }
+  &.initialsIsLightGrey {
+    background-color: $ms-color-initials-lightGrey;
   }
 }
 
