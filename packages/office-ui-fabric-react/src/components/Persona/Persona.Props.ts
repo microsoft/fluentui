@@ -172,8 +172,8 @@ export enum PersonaInitialsColor {
   red = 13,
   darkRed = 14,
   /**
-   * LightGrey is not intended to be used with typical initials due to accessibility issues.
+   * Tranparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
-  lightGrey = 15,
+  transparent = 15,
 }

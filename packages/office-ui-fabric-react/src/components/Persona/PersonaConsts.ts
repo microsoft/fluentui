@@ -43,5 +43,5 @@ export const PERSONA_INITIALS_COLOR = {
   [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsOrange,
   [PersonaInitialsColor.red]: 'ms-Persona-initials--red ' + styles.initialsIsRed,
   [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed ' + styles.initialsIsDarkRed,
-  [PersonaInitialsColor.lightGrey]: 'ms-Persona-initials--lightGrey ' + styles.initialsIsLightGrey
+  [PersonaInitialsColor.transparent]: 'ms-Persona-initials--transparent ' + styles.initialsIsTransparent
 };

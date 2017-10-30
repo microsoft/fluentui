@@ -181,7 +181,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           title={ personaNames }
           size={ personaSize }
           onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
-          initialsColor={ PersonaInitialsColor.lightGrey }
+          initialsColor={ PersonaInitialsColor.transparent }
         />
       </FacepileButton>
     );
@@ -199,7 +199,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         <PersonaCoin
           size={ personaSize }
           onRenderInitials={ this._renderInitials(icon, overflowInitialsIcon) }
-          initialsColor={ PersonaInitialsColor.lightGrey }
+          initialsColor={ PersonaInitialsColor.transparent }
         />
       </FacepileButton>
     );
