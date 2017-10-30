@@ -18,7 +18,8 @@ const iconStyle = {
   height: '16px',
   lineHeight: '16px',
   textAlign: 'center',
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  flexShrink: 0
 };
 
 /**

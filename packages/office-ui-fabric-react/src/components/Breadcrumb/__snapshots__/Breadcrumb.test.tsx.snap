@@ -264,6 +264,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                         display: inline-block;
                       }
                       {
+                        flex-shrink: 0;
                         font-size: 16px;
                         height: 16px;
                         line-height: 16px;
