@@ -40,7 +40,7 @@ interface IPoint {
 }
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
-const ALLOW_VIRTUAL_ELEMENTS = true;
+const ALLOW_VIRTUAL_ELEMENTS = false;
 
 export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
 

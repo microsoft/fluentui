@@ -125,27 +125,29 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
   private _onRenderCompactCard(item: any): JSX.Element {
     return (
       <div className='hoverCardExample-compactCard'>
-        <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
-          { item.location }
-        </a>
-        <CommandBar
-          className={ 'ms-AnalyticsActionBar--bar' }
-          items={
-            [{
-              key: 'share',
-              icon: 'share',
-              onClick: this._onShare
-            }]
-          }
-          farItems={
-            [{
-              key: 'details',
-              title: 'details',
-              name: 'see details',
-              onClick: this._onShare
-            }]
-          }
-        />
+        <div className='hoverCardExample-tabbableZone'>
+          <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
+            { item.location }
+          </a>
+          <CommandBar
+            className={ 'ms-AnalyticsActionBar--bar' }
+            items={
+              [{
+                key: 'share',
+                icon: 'share',
+                onClick: this._onShare
+              }]
+            }
+            farItems={
+              [{
+                key: 'details',
+                title: 'details',
+                name: 'see details',
+                onClick: this._onShare
+              }]
+            }
+          />
+        </div>
       </div>
     );
   }

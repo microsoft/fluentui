@@ -6,7 +6,8 @@ import {
   getNativeProps,
   divProperties,
   customizable,
-  autobind
+  autobind,
+  KeyCodes
 } from '../../Utilities';
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandingCard } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
@@ -115,8 +116,10 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   @autobind
-  private _onDismiss(ev: Event): void {
-    this.props.onLeave && this.props.onLeave(ev);
+  private _onDismiss(ev: MouseEvent): void {
+    if ((ev.type === 'keydown') && (ev.which === KeyCodes.escape)) {
+      this.props.onLeave && this.props.onLeave(ev);
+    }
   }
 
   @autobind
