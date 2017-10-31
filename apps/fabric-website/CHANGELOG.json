@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.15",
+      "tag": "@uifabric/fabric-website_v5.0.15",
+      "date": "Tue, 31 Oct 2017 10:22:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e637a59d2e79a7d390b03cc574c95a4473ab19d2",
+            "comment": "Added support to IconGrid for icons wider than the grid."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.16.0 <6.0.0` to `>=5.17.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.14",
       "tag": "@uifabric/fabric-website_v5.0.14",
       "date": "Fri, 27 Oct 2017 10:25:09 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 27 Oct 2017 10:25:09 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+
+## 5.0.15
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Added support to IconGrid for icons wider than the grid.
 
 ## 5.0.14
 Fri, 27 Oct 2017 10:25:09 GMT
