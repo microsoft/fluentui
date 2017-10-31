@@ -146,7 +146,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
-      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required,
+      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required && !iconProps,
+      ['is-required ' + styles.rootIsRequiredPlaceholderIcon]: !this.props.label && required && iconProps,
       ['is-disabled ' + styles.rootIsDisabled]: disabled,
       ['is-active ' + styles.rootIsActive]: isFocused,
       ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
