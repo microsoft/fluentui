@@ -240,6 +240,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               data-is-focusable={true}
               disabled={undefined}
               onClick={[Function]}
+              onKeyDown={[Function]}
               role="button"
               type="button"
             >
