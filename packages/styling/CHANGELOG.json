@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.6.1",
+      "tag": "@uifabric/styling_v5.6.1",
+      "date": "Mon, 30 Oct 2017 10:23:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "1fa2b61ec7db61acd4a12c8d623f99954f8d8252",
+            "comment": "Adding Button related semantic slots."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.0",
       "tag": "@uifabric/styling_v5.6.0",
       "date": "Fri, 27 Oct 2017 10:25:09 GMT",

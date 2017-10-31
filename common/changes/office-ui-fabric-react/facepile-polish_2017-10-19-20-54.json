@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adjustments made to the disabled text color for Toggle and Checkbox.",
+      "comment": "Facepile style debugging, includes new FacepileButton",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }
