@@ -1,7 +1,7 @@
 {
   "changes": [
     {
-      "comment": "New styling for required textfield with an icon but no label.",
+      "comment": "TextField/DatePicker: The required astrisk is now more correctly positioned.",
       "packageName": "office-ui-fabric-react",
       "type": "patch"
     }
