@@ -15,7 +15,14 @@ export const PERSONA_SIZE = {
   [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
   [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
   [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28,
-  [PersonaSize.size16]: 'ms-Persona--16 ' + styles.rootIs16
+  [PersonaSize.size16]: 'ms-Persona--16 ' + styles.rootIs16,
+  [PersonaSize.size12]: 'ms-Persona--12 ' + styles.rootIs12,
+  [PersonaSize.size24]: 'ms-Persona--24 ' + styles.rootIs24,
+  [PersonaSize.size32]: 'ms-Persona--32 ' + styles.rootIs32,
+  [PersonaSize.size40]: 'ms-Persona--40 ' + styles.rootIs40,
+  [PersonaSize.size48]: 'ms-Persona--48 ' + styles.rootIs48,
+  [PersonaSize.size72]: 'ms-Persona--72 ' + styles.rootIs72,
+  [PersonaSize.size100]: 'ms-Persona--100 ' + styles.rootIs100
 };
 
 export const PERSONA_PRESENCE = {

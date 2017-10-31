@@ -42,14 +42,21 @@ $ms-color-presence-busy-stripe-dark:   #D00E0D;
 $ms-color-presence-busy-average:       #D93B3B;
 
 // Persona Sizes
-$ms-Persona-sizeTiny: 30px;
+$ms-Persona-size12: 12px;
+$ms-Persona-sizeTiny: $ms-Persona-size12;
 $ms-Persona-size16:  16px;
-$ms-Persona-sizeXxs:  24px;
+$ms-Persona-size24:  24px;
+$ms-Persona-sizeXxs:  $ms-Persona-size24;
 $ms-Persona-size28:  28px;
-$ms-Persona-sizeXs:   32px;
-$ms-Persona-sizeSm:   40px;
+$ms-Persona-size32:   32px;
+$ms-Persona-sizeXs:   $ms-Persona-size32;
+$ms-Persona-size40:   40px;
+$ms-Persona-sizeSm:   $ms-Persona-size40;
+$ms-Persona-size48:   48px;
 $ms-Persona-sizeMd:   48px;
+$ms-Persona-size72:   72px;
 $ms-Persona-sizeLg:   72px;
+$ms-Persona-size100:   100px;
 $ms-Persona-sizeXl:   100px;
 
 // Details Spacing
@@ -62,6 +69,9 @@ $ms-Persona-presenceSizeXxs: 8px;
 $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
+
+// Mapping deprecated persona size-based classes
+.rootIsTiny
 
 .root {
   @include ms-normalize;
@@ -259,12 +269,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Tiny Persona
 //
-.root.rootIsTiny {
+.root.rootIs12 {
   height: $ms-Persona-sizeTiny;
   min-width: $ms-Persona-sizeTiny;
 }
 
-.rootIsTiny{
+.rootIs12{
   .imageArea {
     overflow: visible;
     background: transparent;
@@ -303,7 +313,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 // This variant includes a semicolon, and is
 // most often presented within a People Picker.
-.root.rootIsTiny.rootIsReadonly {
+.root.rootIs12.rootIsReadonly {
   padding: 0;
   background-color: transparent;
 
@@ -365,12 +375,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
-.root.rootIsExtraExtraSmall {
+.root.rootIs24 {
   height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
 }
 
-.rootIsExtraExtraSmall {
+.rootIs24 {
   .imageArea,
   .image {
     height: $ms-Persona-sizeXxs;
@@ -498,12 +508,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
-.root.rootIsExtraSmall {
+.root.rootIs32 {
   height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
 }
 
-.rootIsExtraSmall {
+.rootIs32 {
   .imageArea,
   .image {
     height: $ms-Persona-sizeXs;
@@ -547,12 +557,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Small Persona
 //
-.root.rootIsSmall {
+.root.rootIs40 {
   height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
 }
 
-.rootIsSmall {
+.rootIs40 {
   .imageArea,
   .image {
     height: $ms-Persona-sizeSm;
@@ -578,12 +588,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Large Persona
 //
-.root.rootIsLarge {
+.root.rootIs72 {
   height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
 }
 
-.rootIsLarge {
+.rootIs72 {
   .imageArea,
   .image {
     height: $ms-Persona-sizeLg;
@@ -620,12 +630,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Large Persona
 //
-.root.rootIsExtraLarge {
+.root.rootIs100 {
   height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
 }
 
-.rootIsExtraLarge {
+.rootIs100 {
   .imageArea,
   .image {
     height: $ms-Persona-sizeXl;
@@ -792,7 +802,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  &.rootIsLarge {
+  &.rootIs72 {
     .presence {
       &::after {
         top: 9px;
@@ -800,7 +810,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  &.rootIsExtraLarge {
+  &.rootIs100 {
     .presence {
       &::after {
         top: 13px;
