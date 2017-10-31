@@ -123,11 +123,9 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
   private _onRenderCompactCard(item: any): JSX.Element {
     return (
       <div className='hoverCardExample-compactCard'>
-        <div className='hoverCardExample-tabbableZone'>
-          <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
-            { item.location }
-          </a>
-        </div>
+        <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
+          { item.location }
+        </a>
       </div>
     );
   }
