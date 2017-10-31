@@ -929,9 +929,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * */
   private _isOptionSelected(index: number | undefined): boolean {
     let {
-      currentPendingValueValidIndex,
-      currentPendingValue,
-      selectedIndex,
       currentPendingValueValidIndexOnHover
     } = this.state;
 
@@ -941,14 +938,29 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return false;
     }
 
-    let selectedOptionIndex =
+    return this._getPendingSelectedIndex(true /* includePendingValue */) === index;
+  }
+
+  /**
+   * Gets the pending selected index taking into account hover, valueValidIndex, and selectedIndex
+   * @param includeCurrentPendingValue - Should we include the currentPendingValue when
+   * finding the index
+   */
+  private _getPendingSelectedIndex(includeCurrentPendingValue: boolean): number {
+    let {
+      currentPendingValueValidIndexOnHover,
+      currentPendingValueValidIndex,
+      currentPendingValue,
+      selectedIndex
+    } = this.state;
+
+    return (
       currentPendingValueValidIndexOnHover >= 0 ?
         currentPendingValueValidIndexOnHover :
-        (currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ?
+        (currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')) ?
           currentPendingValueValidIndex :
-          selectedIndex;
-
-    return selectedOptionIndex === index;
+          selectedIndex
+    );
   }
 
   /**
@@ -1140,7 +1152,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       isOpen,
       currentPendingValueValidIndex,
-      selectedIndex,
       currentOptions,
       currentPendingValueValidIndexOnHover
     } = this.state;
@@ -1150,11 +1161,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    let index = currentPendingValueValidIndexOnHover >= 0 ?
-      currentPendingValueValidIndexOnHover :
-      currentPendingValueValidIndex >= 0 ?
-        currentPendingValueValidIndex :
-        selectedIndex;
+    let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
     switch (ev.which) {
       case KeyCodes.enter:
