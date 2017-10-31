@@ -78,10 +78,16 @@ export const getStyles = memoizeFunction((
     checkboxHovered: {
       borderColor: checkboxBorderHoveredColor,
     },
+    checkboxFocused: {
+      borderColor: checkboxBorderHoveredColor,
+    },
     checkboxChecked: {
       background: checkboxBackgroundChecked,
     },
     checkboxCheckedHovered: {
+      background: checkboxBackgroundCheckedHovered,
+    },
+    checkboxCheckedFocused: {
       background: checkboxBackgroundCheckedHovered,
     },
     checkboxDisabled: {
@@ -111,6 +117,9 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.medium
     },
     textHovered: {
+      color: palette.black,
+    },
+    textFocused: {
       color: palette.black,
     },
     textDisabled: {

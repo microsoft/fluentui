@@ -107,7 +107,7 @@ export const getItemClassNames = memoizeFunction((
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' },
+          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
         }
       }],
     ],
@@ -126,7 +126,7 @@ export const getItemClassNames = memoizeFunction((
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' },
+          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
@@ -148,7 +148,7 @@ export const getItemClassNames = memoizeFunction((
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
-          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' },
+          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
