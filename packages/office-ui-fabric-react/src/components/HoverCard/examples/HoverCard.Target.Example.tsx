@@ -11,7 +11,6 @@ import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/D
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './HoverCard.Example.scss';
 
 let _items: any[];
@@ -128,32 +127,9 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
           <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
             { item.location }
           </a>
-          <CommandBar
-            className={ 'ms-AnalyticsActionBar--bar' }
-            items={
-              [{
-                key: 'share',
-                icon: 'share',
-                onClick: this._onShare
-              }]
-            }
-            farItems={
-              [{
-                key: 'details',
-                title: 'details',
-                name: 'see details',
-                onClick: this._onShare
-              }]
-            }
-          />
         </div>
       </div>
     );
-  }
-
-  @autobind
-  private _onShare(): void {
-    console.log('share');
   }
 
   @autobind

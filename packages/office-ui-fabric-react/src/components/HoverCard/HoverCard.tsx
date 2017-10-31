@@ -17,7 +17,6 @@ import {
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode } from './ExpandingCard.Props';
-import * as ReactDOM from 'react-dom';
 import { getStyles } from './HoverCard.styles';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
@@ -146,7 +145,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Show HoverCard
   @autobind
-  private _cardOpen(ev: MouseEvent): void {
+  private _cardOpen(ev: MouseEvent) {
     if (ev.type === 'keydown' && !(ev.shiftKey && ev.which === KeyCodes.space)) {
       return;
     }
