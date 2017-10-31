@@ -559,15 +559,15 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Small Persona
 //
 .root.rootIs40 {
-  height: $ms-Persona-size28;
-  min-width: $ms-Persona-size28;
+  height: $ms-Persona-size40;
+  min-width: $ms-Persona-size40;
 }
 
 .rootIs40 {
   .imageArea,
   .image {
-    height: $ms-Persona-size28;
-    width: $ms-Persona-size28;
+    height: $ms-Persona-size40;
+    width: $ms-Persona-size40;
   }
 
   .placeholder {
@@ -577,8 +577,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .initials {
     font-size: $ms-font-size-m;
-    height: $ms-Persona-size28;
-    line-height: $ms-Persona-size28;
+    height: $ms-Persona-size40;
+    line-height: $ms-Persona-size40;
   }
 
   .primaryText {
