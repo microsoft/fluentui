@@ -25,7 +25,7 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
 
   /**
    * Decides the size of the control.
-   * @defaultvalue PersonaSize.regular
+   * @defaultvalue PersonaSize.size48
    */
   size?: PersonaSize;
 

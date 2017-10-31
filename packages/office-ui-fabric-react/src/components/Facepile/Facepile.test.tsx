@@ -170,7 +170,7 @@ describe('Facepile', () => {
       let wrapper = shallow(
         <Facepile
           personas={ facepilePersonas }
-          personaSize={ PersonaSize.extraExtraSmall }
+          personaSize={ PersonaSize.size24 }
         />);
       let faces = wrapper.find(PersonaCoin);
       expect(faces).toHaveLength(facepilePersonas.length);
@@ -182,7 +182,7 @@ describe('Facepile', () => {
       wrapper = shallow(
         <Facepile
           personas={ facepilePersonas }
-          personaSize={ PersonaSize.small }
+          personaSize={ PersonaSize.size40 }
         />);
       faces = wrapper.find(PersonaCoin);
       expect(faces).toHaveLength(facepilePersonas.length);
