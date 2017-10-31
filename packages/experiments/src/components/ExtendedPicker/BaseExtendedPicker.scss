@@ -12,10 +12,6 @@
   &:hover {
     border-color: $ms-color-themeLight;
   }
-
-  &.inputFocused {
-    border-color: $ms-color-themePrimary;
-  }
 }
 
 .pickerInput {
@@ -25,8 +21,4 @@
   outline: none;
   padding: 0 6px 0px;
   margin: 1px;
-}
-
-.screenReaderOnly {
-  @include ms-screenReaderOnly;
 }

@@ -9,21 +9,22 @@
 
 
 //= Colors used in the initials color block
-$ms-color-initials-lightBlue:   #6BA5E7;
-$ms-color-initials-blue:        #2D89EF;
-$ms-color-initials-darkBlue:    #2B5797;
-$ms-color-initials-teal:        #00ABA9;
-$ms-color-initials-lightGreen:  #99B433;
-$ms-color-initials-green:       #00A300;
-$ms-color-initials-darkGreen:   #1E7145;
-$ms-color-initials-lightPink:   #E773BD;
-$ms-color-initials-pink:        #FF0097;
-$ms-color-initials-magenta:     #7E3878;
-$ms-color-initials-purple:      #603CBA;
-$ms-color-initials-black:       #1D1D1D;
-$ms-color-initials-orange:      #DA532C;
-$ms-color-initials-red:         #EE1111;
-$ms-color-initials-darkRed:     #B91D47;
+$ms-color-initials-transparent:      transparent;
+$ms-color-initials-lightBlue:        #6BA5E7;
+$ms-color-initials-blue:             #2D89EF;
+$ms-color-initials-darkBlue:         #2B5797;
+$ms-color-initials-teal:             #00ABA9;
+$ms-color-initials-lightGreen:       #99B433;
+$ms-color-initials-green:            #00A300;
+$ms-color-initials-darkGreen:        #1E7145;
+$ms-color-initials-lightPink:        #E773BD;
+$ms-color-initials-pink:             #FF0097;
+$ms-color-initials-magenta:          #7E3878;
+$ms-color-initials-purple:           #603CBA;
+$ms-color-initials-black:            #1D1D1D;
+$ms-color-initials-orange:           #DA532C;
+$ms-color-initials-red:              #EE1111;
+$ms-color-initials-darkRed:          #B91D47;
 
 // Skype presence colors
 $ms-color-presence-available:          #7FBA00;
@@ -166,6 +167,9 @@ $ms-Persona-presenceSizeXl: 28px;
   }
   &.initialsIsDarkRed {
     background-color: $ms-color-initials-darkRed;
+  }
+  &.initialsIsTransparent {
+    background-color: $ms-color-initials-transparent;
   }
 }
 
