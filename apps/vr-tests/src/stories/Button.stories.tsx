@@ -56,16 +56,6 @@ storiesOf('Button Default', module)
   .add('Primary Disabled', () => (<DefaultButton {...baseProps} primary={ true } disabled={ true } />))
   .add('Primary Checked', () => (<DefaultButton {...baseProps} primary={ true } checked={ true } />));
 
-storiesOf('Button with placeholder', module)
-  .addDecorator(FabricDecorator)
-  .add('primary with placeholder', () => (
-    <div>
-      <DefaultButton {...baseProps} iconProps={ { iconName: '' } } primary={ true } />
-      <br />
-      <DefaultButton {...baseProps} iconProps={ { iconName: 'Add' } } primary={ true } />
-    </div>
-  ));
-
 storiesOf('Button Action', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
@@ -164,3 +154,41 @@ storiesOf('Button Split', module)
   .add('Primary', () => (<DefaultButton {...commandProps} primary={ true } split={ true } />))
   .add('Primary Disabled', () => (<DefaultButton {...commandProps} primary={ true } disabled={ true } split={ true } />))
   .add('Primary Checked', () => (<DefaultButton {...commandProps} primary={ true } checked={ true } split={ true } />));
+
+storiesOf('Button Special Scenarios', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={ new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      { story() }
+    </Screener>
+  ))
+
+  .add('primary with placeholder', () => (
+    <div>
+      <DefaultButton {...baseProps} iconProps={ { iconName: '' } } primary={ true } />
+      <br />
+      <DefaultButton {...baseProps} iconProps={ { iconName: 'Add' } } primary={ true } />
+    </div>
+  ))
+  .add('no flex shrink', () => (
+    <div style={ { width: '300px' } }>
+      <DefaultButton
+        {...baseProps }
+        iconProps={ { iconName: 'Add' } }
+        menuIconProps={ {} }
+        styles={ { root: { width: '100%' } } }
+      />
+      <DefaultButton
+        {...baseProps }
+        text='This is a much longer string of text in a constrained space'
+        iconProps={ { iconName: 'Add' } }
+        menuIconProps={ {} }
+        styles={ { root: { width: '100%' } } }
+      />
+    </div>
+  ));
