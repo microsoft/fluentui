@@ -10,15 +10,9 @@ import './Facepile.Examples.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export enum ExtraDataType {
-  none = 0,
-  name = 1
-}
-
 export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
-  extraDataType: ExtraDataType;
   personaSize: PersonaSize;
 }
 
@@ -29,23 +23,16 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      extraDataType: ExtraDataType.none,
       personaSize: PersonaSize.extraSmall
     };
   }
 
   public render() {
-    let { extraDataType, numberOfFaces, personaSize } = this.state;
+    let { numberOfFaces, personaSize } = this.state;
     let facepileProps: IFacepileProps = {
       personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
-        if (extraDataType === ExtraDataType.name) {
-          return {
-            imageShouldFadeIn: this.state.imagesFadeIn,
-            hidePersonaDetails: false
-          };
-        }
         return {
           imageShouldFadeIn: this.state.imagesFadeIn
         };
@@ -66,45 +53,29 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             value={ numberOfFaces }
             onChange={ this._onChangePersonaNumber }
           />
+          <Dropdown
+            label='Persona Size:'
+            selectedKey={ this.state.personaSize }
+            options={
+              [
+                { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
+                { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] },
+                { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
+                { key: PersonaSize.extraSmall, text: PersonaSize[PersonaSize.extraSmall] },
+                { key: PersonaSize.small, text: PersonaSize[PersonaSize.small] }
+              ]
+            }
+            onChanged={ this._onChangePersonaSize }
+          />
+          <Checkbox
+            className={ exampleStyles.exampleCheckbox }
+            label='Fade In'
+            checked={ this.state.imagesFadeIn }
+            onChange={ this._onChangeFadeIn }
+          />
         </div>
-        <Checkbox
-          className={ exampleStyles.exampleCheckbox }
-          label='Fade In'
-          checked={ this.state.imagesFadeIn }
-          onChange={ this._onChangeFadeIn }
-        />
-        <Dropdown
-          label='Persona Size:'
-          selectedKey={ this.state.personaSize }
-          options={
-            [
-              { key: PersonaSize.extraSmall, text: PersonaSize[PersonaSize.extraSmall] },
-              { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] }
-            ]
-          }
-          onChanged={ this._onChangePersonaSize }
-        />
-        <Dropdown
-          label='Additional Data:'
-          selectedKey={ this.state.extraDataType }
-          options={
-            [
-              { key: ExtraDataType.none, text: ExtraDataType[ExtraDataType.none] },
-              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] }
-            ]
-          }
-          onChanged={ this._onChangeAddtlData }
-        />
       </div>
     );
-  }
-
-  @autobind
-  private _onChangeAddtlData(value: IDropdownOption): void {
-    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
-      prevState.extraDataType = value.key as ExtraDataType;
-      return prevState;
-    });
   }
 
   @autobind

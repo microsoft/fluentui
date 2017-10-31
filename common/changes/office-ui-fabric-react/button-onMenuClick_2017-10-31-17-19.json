@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues",
-      "type": "patch"
+      "comment": "BaseButton: onMenuClick to support other actions for menu and split buttons",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",

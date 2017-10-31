@@ -15,6 +15,7 @@
     justify-content: space-around;
     padding: 8px;
     width: 80px;
+    overflow: hidden;
 
     span {
       color: $ms-color-neutralPrimary;
@@ -24,8 +25,21 @@
     }
 
     &:hover {
+      overflow: visible;
+
       span {
         opacity: 1;
+      }
+    }
+  }
+
+  i {
+    &:hover {
+      z-index: 1;
+
+      &:global(.hoverIcon) {
+        background-color: $ms-color-neutralLight;
+        padding: 0 8px;
       }
     }
   }

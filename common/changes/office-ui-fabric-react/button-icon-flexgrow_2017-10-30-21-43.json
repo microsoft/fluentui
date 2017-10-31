@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Theme Generator: improve perf",
+      "comment": "Button: Added flexShrink: 0 to icons in button so long text won't make them shrink",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }

@@ -689,7 +689,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this.props.onItemClick(ev, item);
     }
 
-    this.dismiss(ev, true);
+    !ev.defaultPrevented && this.dismiss(ev, true);
   }
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {

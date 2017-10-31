@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox onKeyDown: prevent default events only when specified by the user",
+      "comment": "Facepile style debugging, includes new FacepileButton",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "frdim@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }
