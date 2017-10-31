@@ -7,13 +7,15 @@ import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {
-  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,
-  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall,
-  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall,
-  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall,
+  // All non-numerically named sizes are deprecated
+  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny + styles.rootIs12,
+  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall + styles.rootIs24,
+  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall + styles.rootIs28,
+  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall + styles.rootIs40,
   [PersonaSize.regular]: '',
-  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
-  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
+  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge + styles.rootIs72,
+  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge + styles.rootIs100,
+
   [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28,
   [PersonaSize.size16]: 'ms-Persona--16 ' + styles.rootIs16,
   [PersonaSize.size12]: 'ms-Persona--12 ' + styles.rootIs12,
