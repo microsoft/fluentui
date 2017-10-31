@@ -496,9 +496,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             data-index={ item.index }
             data-is-focusable={ true }
             onChange={ this._onItemClick(item.index!) }
-            onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-            onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
-            onMouseMove={ this._onItemMouseMove.bind(this, item) }
+            inputProps={ {
+              onMouseEnter: this._onItemMouseEnter.bind(this, item),
+              onMouseLeave: this._onMouseItemLeave.bind(this, item),
+              onMouseMove: this._onItemMouseMove.bind(this, item)
+            } }
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',

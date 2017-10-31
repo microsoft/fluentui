@@ -42,6 +42,14 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
+        &:hover {
+          border-color: #0078d7;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          -ms-high-contrast-adjust: none;
+          border-color: Highlight;
+          color: HighlightText;
+        }
     id="ComboBox0wrapper"
   >
     <input
