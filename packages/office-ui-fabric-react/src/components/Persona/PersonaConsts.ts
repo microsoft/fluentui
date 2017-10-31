@@ -7,7 +7,7 @@ import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {
-  // All non-numerically named sizes are deprecated
+  // All non-numerically named sizes are deprecated, use the numerically named classes below
   [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny + styles.rootIs12,
   [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall + styles.rootIs24,
   [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall + styles.rootIs28,
