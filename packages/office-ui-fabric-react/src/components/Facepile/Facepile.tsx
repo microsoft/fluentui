@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  autobind,
   BaseComponent,
   buttonProperties,
   css,
@@ -17,7 +18,8 @@ import {
   FocusZoneDirection
 } from '../../FocusZone';
 import {
-  BaseButton
+  BaseButton,
+  DefaultButton
 } from '../../Button';
 import {
   Icon
@@ -42,10 +44,11 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     super(props);
 
     this._ariaDescriptionId = getId();
-
   }
+
   public render(): JSX.Element {
     let {
+      ariaDescription,
       chevronButtonProps,
       maxDisplayablePersonas,
       overflowButtonProps,
@@ -54,7 +57,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       personas,
       showAddButton
     } = this.props;
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
+
+    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas || personas.length);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -62,29 +66,23 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType = OverflowButtonType.downArrow;
     }
 
+    let primaryPersonas: IFacepilePersona[] = personas.slice(0, numPersonasToShow);
+    let overflowPersonas: IFacepilePersona[] = personas.slice(numPersonasToShow);
+
     return (
-      <div className={ css('ms-Facepile', styles.root, className) }>
-        <div
-          className={ css('ms-Facepile-itemContainer', styles.itemContainer) }
-        >
+      <div className={ css('ms-Facepile', styles.root, className) } >
+        { this.onRenderAriaDescription() }
+        <div className={ css('ms-Facepile-itemContainer', styles.itemContainer) } >
           { showAddButton ? this._getAddNewElement() : null }
-          { this.onRenderAriaDescription() }
           <FocusZone
             ariaDescribedBy={ this._ariaDescriptionId }
             role='listbox'
             className={ css('ms-Facepile-members', styles.members) }
             direction={ FocusZoneDirection.horizontal }
           >
-            {
-              personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
-                const personaControl: JSX.Element = this._getPersonaControl(persona);
-                return persona.onClick ?
-                  this._getElementWithOnClickEvent(personaControl, persona, index) :
-                  this._getElementWithoutOnClickEvent(personaControl, persona, index);
-              })
-            }
+            { this._onRenderVisiblePersonas(primaryPersonas) }
           </FocusZone>
-          { overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null }
+          { overflowButtonProps ? this._getOverflowElement(overflowPersonas.length) : null }
         </div>
       </div>
     );
@@ -98,6 +96,15 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return ariaDescription && (
       <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     );
+  }
+
+  private _onRenderVisiblePersonas(personas: IFacepilePersona[]) {
+    return personas.map((persona: IFacepilePersona, index: number) => {
+      const personaControl: JSX.Element = this._getPersonaControl(persona);
+      return persona.onClick ?
+        this._getElementWithOnClickEvent(personaControl, persona, index) :
+        this._getElementWithoutOnClickEvent(personaControl, persona, index);
+    });
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
@@ -118,14 +125,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <BaseButton
         { ...getNativeProps(persona, buttonProperties) }
-        key={ (!!persona.imageUrl ? 'i' : '') + index }
-        data-is-focusable={ true }
-        role='option'
-        className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
-        title={ persona.personaName }
+        {...this._getElementProps(persona, index) }
         onClick={ this._onPersonaClick.bind(this, persona) }
-        onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-        onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
       >
         { personaControl }
       </BaseButton>
@@ -135,18 +136,24 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return (
       <div
-        { ...getNativeProps(persona, divProperties) }
-        key={ (!!persona.imageUrl ? 'i' : '') + index }
-        data-is-focusable={ true }
-        role='option'
-        className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
-        title={ persona.personaName }
-        onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-        onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+        { ...getNativeProps(persona, buttonProperties) }
+        {...this._getElementProps(persona, index) }
       >
         { personaControl }
       </div>
     );
+  }
+
+  private _getElementProps(persona: IFacepilePersona, index: number) {
+    return {
+      key: (!!persona.imageUrl ? 'i' : '') + index,
+      'data-is-focusable': true,
+      role: 'option',
+      className: css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton),
+      title: persona.personaName,
+      onMouseMove: this._onPersonaMouseMove.bind(this, persona),
+      onMouseOut: this._onPersonaMouseOut.bind(this, persona)
+    };
   }
 
   private _getOverflowElement(numPersonasToShow: number): JSX.Element | null {
@@ -173,7 +180,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <BaseButton
         { ...overflowButtonProps}
-        ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       >
         <PersonaCoin
@@ -181,7 +187,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           size={ personaSize }
           onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
         />
-      </BaseButton>
+      </BaseButton >
     );
   }
 
