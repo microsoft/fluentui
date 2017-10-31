@@ -7,7 +7,7 @@ import { getStyles } from '../Button/BaseButton.styles';
 export class FacepileButton extends BaseComponent<IButtonProps, {}> {
 
   public render() {
-    let baseButtonStyles = getStyles(getTheme());
+    const baseButtonStyles = getStyles(getTheme());
 
     return (
       <BaseButton
