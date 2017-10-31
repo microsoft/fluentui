@@ -190,6 +190,11 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
   &.checkCell {
     padding: 0;
+    // Ensure that the check cell covers the top border of the cell.
+    // This ensures the click target does not leave a spot which would
+    // cause other items to be deselected.
+    padding-top: 1px;
+    margin-top: -1px;
   }
 
   & > button {
@@ -212,8 +217,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   @include ms-padding-right($isPaddedMargin + $rowHorizontalPadding);
 
   &.checkCell {
-    padding: 0;
-    margin: 0;
+    @include ms-padding-right(0);
   }
 }
 
@@ -231,4 +235,17 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 .cellMeasurer .cell {
   overflow: visible;
   white-space: nowrap;
+}
+
+.checkCover {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+
+  .anySelected & {
+    display: block;
+  }
 }

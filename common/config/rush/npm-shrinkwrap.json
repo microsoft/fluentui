@@ -7661,6 +7661,11 @@
       "resolved": "https://registry.npmjs.org/mobx/-/mobx-2.7.0.tgz",
       "integrity": "sha1-zz2C0YwMp/RY2PKiQIF7PcflSgE="
     },
+    "mustache": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/mustache/-/mustache-2.3.0.tgz",
+      "integrity": "sha1-QCj3d4sXcIpImTCm5SrDvKDaQdA="
+    },
     "mocha": {
       "version": "3.3.0",
       "resolved": "https://registry.npmjs.org/mocha/-/mocha-3.3.0.tgz",

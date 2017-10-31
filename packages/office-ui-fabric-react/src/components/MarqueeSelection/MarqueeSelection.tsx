@@ -48,6 +48,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _lastMouseEvent: MouseEvent | undefined;
   private _autoScroll: AutoScroll | undefined;
   private _selectedIndicies: { [key: string]: boolean } | undefined;
+  private _preservedIndicies: number[] | undefined;
   private _itemRectCache: { [key: string]: IRectangle } | undefined;
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
@@ -164,9 +165,14 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       return;
     }
 
+    if (this._isInSelectionToggle(ev)) {
+      return;
+    }
+
     if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0) {
         this._selectedIndicies = {};
+        this._preservedIndicies = undefined;
         this._events.on(window, 'mousemove', this._onAsyncMouseMove);
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(window, 'click', this._onMouseUp, true);
@@ -238,6 +244,13 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       this._onMouseUp(ev);
     } else {
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
+        if (!this.state.dragRect) {
+          const {
+            selection
+          } = this.props;
+
+          this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
+        }
         // We need to constrain the current point to the rootRect boundaries.
         let constrainedPoint = this.props.isDraggingConstrainedToRoot ? {
           x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
@@ -316,6 +329,20 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return false;
   }
 
+  private _isInSelectionToggle(ev: MouseEvent): boolean {
+    let element: HTMLElement | null = ev.target as HTMLElement;
+
+    while (element && element !== this.refs.root) {
+      if (element.getAttribute('data-selection-toggle') === 'true') {
+        return true;
+      }
+
+      element = element.parentElement;
+    }
+
+    return false;
+  }
+
   private _evaluateSelection(dragRect: IRectangle, rootRect: IRectangle) {
     // Break early if we don't need to evaluate.
     if (!dragRect) {
@@ -373,6 +400,12 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     for (let index in this._selectedIndicies!) {
       if (this._selectedIndicies!.hasOwnProperty(index)) {
         selection.setIndexSelected(Number(index), true, false);
+      }
+    }
+
+    if (this._preservedIndicies) {
+      for (const index of this._preservedIndicies) {
+        selection.setIndexSelected(index, true, false);
       }
     }
 

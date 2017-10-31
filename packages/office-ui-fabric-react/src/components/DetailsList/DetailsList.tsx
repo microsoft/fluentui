@@ -322,6 +322,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                 selectionMode={ selectionMode }
                 onItemInvoked={ onItemInvoked }
                 onItemContextMenu={ onItemContextMenu }
+                enterModalOnTouch={ this.props.enterModalSelectionOnTouch }
               >
                 { groups ? (
                   <GroupedList

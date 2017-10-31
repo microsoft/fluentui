@@ -17,10 +17,11 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import * as checkStyles from './DetailsRowCheck.scss';
+import * as checkStylesModule from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 const styles: any = stylesImport;
+const checkStyles: any = checkStylesModule;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -177,6 +178,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       id={ `${this._id}-check` }
                       aria-label={ ariaLabelForSelectionColumn }
                       aria-describedby={ `${this._id}-checkTooltip` }
+                      data-is-focusable={ true }
+                      isHeader={ true }
                       selected={ isAllSelected }
                       anySelected={ false }
                       canSelect={ true }

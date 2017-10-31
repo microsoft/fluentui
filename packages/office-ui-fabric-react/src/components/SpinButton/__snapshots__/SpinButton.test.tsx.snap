@@ -113,6 +113,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             border-color: Highlight;
             color: HighlightText;
           }
+      data-lpignore={true}
       disabled={false}
       id="input1"
       onBlur={[Function]}
@@ -235,6 +236,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                   display: inline-block;
                 }
                 {
+                  flex-shrink: 0;
                   font-size: 6px;
                   height: 16px;
                   line-height: 16px;
@@ -342,6 +344,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                   display: inline-block;
                 }
                 {
+                  flex-shrink: 0;
                   font-size: 6px;
                   height: 16px;
                   line-height: 16px;

@@ -1,5 +1,6 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
@@ -7,9 +8,9 @@ import { mount, ReactWrapper } from 'enzyme';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
-  darkRed: '.ms-Persona-initials--darkRed',
+  green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
-  lightBlue: '.ms-Persona-initials--lightBlue',
+  black: '.ms-Persona-initials--black',
   red: '.ms-Persona-initials--red',
 
 };
@@ -19,24 +20,36 @@ describe('Persona', () => {
     setRTL(false);
   });
 
+  it('renders Persona correctly with initials', () => {
+    const component = renderer.create(<Persona primaryText='Kat Larrson' />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Persona correctly with image', () => {
+    const component = renderer.create(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   describe('initials and colors', () => {
     it('renders with expected initialsColor if none was provided', () => {
       const wrapper = mount(<Persona primaryText='Kat Larrson' />);
-      let result = wrapper.find(STYLES.red);
+      let result = wrapper.find(STYLES.black);
       expect(result).toHaveLength(1);
 
       const wrapper2 = mount(<Persona primaryText='Annie Lindqvist' />);
-      result = wrapper2.find(STYLES.darkRed);
+      result = wrapper2.find(STYLES.green);
       expect(result).toHaveLength(1);
     });
 
     it('uses provided initialsColor if one was specified', () => {
-      const wrapper = mount(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.lightBlue } />);
-      let result = wrapper.find(STYLES.lightBlue);
+      const wrapper = mount(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.red } />);
+      let result = wrapper.find(STYLES.red);
       expect(result).toHaveLength(1);
     });
 
-    it.only('calculates an expected initials in LTR if one was not specified', () => {
+    it('calculates an expected initials in LTR if one was not specified', () => {
       let wrapper = mount(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);

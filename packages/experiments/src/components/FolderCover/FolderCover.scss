@@ -20,7 +20,7 @@
   }
 }
 
-.shadow {
+.front {
   display: block;
   position: absolute;
   left: -3px;
@@ -28,20 +28,12 @@
   bottom: -4px;
 }
 
-.front {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 .back {
   display: block;
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: -3px;
+  right: -3px;
+  bottom: -4px;
 }
 
 .content {

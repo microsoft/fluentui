@@ -13,13 +13,15 @@ export class NavFabricDemoAppExample extends React.Component<any, any> {
     );
   }
 
-  private _onRenderLink(link: any): (JSX.Element | null)[] {
-    return ([
-      <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-      (link.status !== undefined ?
-        <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-        null)
-    ]);
+  private _onRenderLink(link: any): (JSX.Element | null) {
+    return (
+      <span>
+        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>
+        { link.status !== undefined ?
+          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+          null }
+      </span>
+    );
   }
 
 }
