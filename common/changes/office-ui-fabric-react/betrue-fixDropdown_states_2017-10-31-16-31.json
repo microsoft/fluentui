@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updated caret dropdown colors",
+      "comment": "Dropdown: Updated caret dropdown colors.",
       "type": "patch"
     }
   ],
