@@ -17,14 +17,15 @@ import {
   FocusZoneDirection
 } from '../../FocusZone';
 import {
-  BaseButton
-} from '../../Button';
+  FacepileButton
+} from './FacepileButton';
 import {
   Icon
 } from '../../Icon';
 import {
   PersonaCoin,
-  PersonaSize
+  PersonaSize,
+  PersonaInitialsColor
 } from '../../PersonaCoin';
 import * as stylesImport from './Facepile.scss';
 const styles: any = stylesImport;
@@ -116,7 +117,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return (
-      <BaseButton
+      <FacepileButton
         { ...getNativeProps(persona, buttonProperties) }
         key={ (!!persona.imageUrl ? 'i' : '') + index }
         data-is-focusable={ true }
@@ -128,7 +129,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
       >
         { personaControl }
-      </BaseButton>
+      </FacepileButton>
     );
   }
 
@@ -171,7 +172,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return (
-      <BaseButton
+      <FacepileButton
         { ...overflowButtonProps}
         ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
@@ -180,24 +181,27 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           title={ personaNames }
           size={ personaSize }
           onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
+          initialsColor={ PersonaInitialsColor.transparent }
         />
-      </BaseButton>
+      </FacepileButton>
     );
   }
 
   private _getIconElement(icon: string): JSX.Element {
     let { overflowButtonProps, personaSize } = this.props;
+    let overflowInitialsIcon = true;
 
     return (
-      <BaseButton
+      <FacepileButton
         {...overflowButtonProps}
         className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
       >
         <PersonaCoin
           size={ personaSize }
-          onRenderInitials={ this._renderInitials(icon) }
+          onRenderInitials={ this._renderInitials(icon, overflowInitialsIcon) }
+          initialsColor={ PersonaInitialsColor.transparent }
         />
-      </BaseButton>
+      </FacepileButton>
     );
   }
 
@@ -205,7 +209,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     let { addButtonProps, personaSize } = this.props;
 
     return (
-      <BaseButton
+      <FacepileButton
         {...addButtonProps}
         className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
       >
@@ -213,7 +217,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           size={ personaSize }
           onRenderInitials={ this._renderInitials('AddFriend') }
         />
-      </BaseButton>
+      </FacepileButton>
     );
   }
 
@@ -235,10 +239,13 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     }
   }
 
-  private _renderInitials(iconName: string): () => JSX.Element {
+  private _renderInitials(iconName: string, overflowButton?: boolean): () => JSX.Element {
     return (): JSX.Element => {
       return (
-        <Icon iconName={ iconName } />
+        <Icon
+          iconName={ iconName }
+          className={ overflowButton ? styles.overflowInitialsIcon : '' }
+        />
       );
     };
   }
@@ -246,7 +253,11 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
     return (): JSX.Element => {
       return (
-        <span>{ '+' + numPersonasNotPictured }</span>
+        <span
+          className={ styles.overflowInitialsIcon }
+        >
+          { '+' + numPersonasNotPictured }
+        </span>
       );
     };
   }
