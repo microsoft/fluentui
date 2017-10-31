@@ -15,6 +15,9 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
             iconProps={ { iconName: 'Add' } }
             text='New'
             menuProps={ {
+              onMenuClick: (ev) => {
+                console.log(ev);
+              },
               items: [
                 {
                   key: 'emailMessage',

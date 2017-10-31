@@ -103,7 +103,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
    * how the default icon looks. Providing this in addition of onClick and setting the split property to true will render a SplitButton.
    */
-  menuProps?: IContextualMenuProps;
+  menuProps?: IButtonMenuProps;
 
   /**
    * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
@@ -180,6 +180,13 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
  * Any custom data the developer wishes to associate with the menu item.
  */
   data?: any;
+}
+
+export interface IButtonMenuProps extends IContextualMenuProps {
+  /**
+   * Optional callback when menu is clicked.
+   */
+  onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
 }
 
 export enum ElementType {
