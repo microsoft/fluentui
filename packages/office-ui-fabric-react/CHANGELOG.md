@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Oct 2017 10:23:09 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+
+## 5.17.1
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- ContextualMenu: Support suppressing dismiss on ItemClick via preventDefault
 
 ## 5.17.0
 Mon, 30 Oct 2017 10:23:09 GMT
