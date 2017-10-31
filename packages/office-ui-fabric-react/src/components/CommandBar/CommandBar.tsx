@@ -18,6 +18,7 @@ import {
   IIconProps
 } from '../../Icon';
 import { FontClassNames } from '../../Styling';
+import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
@@ -182,75 +183,90 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const isNameVisible = !!item.name && !item.iconOnly;
     const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : '');
 
+    let command: React.ReactNode;
+    if (isLink) {
+      command = (
+        <button
+          { ...getNativeProps(item, buttonProperties) }
+          id={ this._id + item.key }
+          className={ className }
+          onClick={ this._onItemClick(item) }
+          data-command-key={ itemKey }
+          aria-haspopup={ hasSubmenuItems(item) }
+          aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
+          role='menuitem'
+          aria-label={ ariaLabel }
+        >
+          { (hasIcon) ? this._renderIcon(item) : (null) }
+          { isNameVisible && (
+            <span
+              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+            >
+              { item.name }
+            </span>
+          ) }
+          { hasSubmenuItems(item) ? (
+            <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
+          ) : (null) }
+        </button>
+      );
+    } else if (item.href) {
+      command = (
+        <a
+          { ...getNativeProps(item, anchorProperties) }
+          id={ this._id + item.key }
+          className={ className }
+          href={ item.href }
+          data-command-key={ itemKey }
+          aria-haspopup={ hasSubmenuItems(item) }
+          role='menuitem'
+          aria-label={ ariaLabel }
+        >
+          { (hasIcon) ? this._renderIcon(item) : (null) }
+          { isNameVisible && (
+            <span
+              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+            >
+              { item.name }
+            </span>
+          ) }
+        </a>
+      );
+    } else {
+      command = (
+        <div
+          { ...getNativeProps(item, divProperties) }
+          id={ this._id + item.key }
+          className={ className }
+          data-command-key={ itemKey }
+          aria-haspopup={ hasSubmenuItems(item) }
+          aria-label={ ariaLabel }
+        >
+          { (hasIcon) ? this._renderIcon(item) : (null) }
+          { (isNameVisible) && (
+            <span
+              className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+              aria-hidden='true'
+              role='presentation'
+            >
+              { item.name }
+            </span>
+          ) }
+        </div>
+      );
+    }
+
+    if (item.iconOnly && item.name) {
+      command = (
+        <TooltipHost content={ item.name }>
+          { command }
+        </TooltipHost>
+      );
+    }
+
     return (
       <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ itemKey }>
-        { (() => {
-          if (isLink) {
-            return <button
-              { ...getNativeProps(item, buttonProperties) }
-              id={ this._id + item.key }
-              className={ className }
-              onClick={ this._onItemClick(item) }
-              data-command-key={ itemKey }
-              aria-haspopup={ hasSubmenuItems(item) }
-              aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
-              role='menuitem'
-              aria-label={ ariaLabel }
-            >
-              { (hasIcon) ? this._renderIcon(item) : (null) }
-              { isNameVisible && (
-                <span
-                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
-                >
-                  { item.name }
-                </span>
-              ) }
-              { hasSubmenuItems(item) ? (
-                <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
-              ) : (null) }
-            </button>;
-          } else if (item.href) {
-            return <a
-              { ...getNativeProps(item, anchorProperties) }
-              id={ this._id + item.key }
-              className={ className }
-              href={ item.href }
-              data-command-key={ itemKey }
-              aria-haspopup={ hasSubmenuItems(item) }
-              role='menuitem'
-              aria-label={ ariaLabel }
-            >
-              { (hasIcon) ? this._renderIcon(item) : (null) }
-              { isNameVisible && (
-                <span
-                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
-                >
-                  { item.name }
-                </span>
-              ) }
-            </a>;
-          } else {
-            return <div
-              { ...getNativeProps(item, divProperties) }
-              id={ this._id + item.key }
-              className={ className }
-              data-command-key={ itemKey }
-              aria-haspopup={ hasSubmenuItems(item) }
-              aria-label={ ariaLabel }
-            >
-              { (hasIcon) ? this._renderIcon(item) : (null) }
-              { (isNameVisible) && (
-                <span
-                  className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
-                  aria-hidden='true'
-                  role='presentation'
-                >
-                  { item.name }
-                </span>
-              ) }
-            </div>;
-          }
-        })() }
+        { command }
       </div>
     );
   }
