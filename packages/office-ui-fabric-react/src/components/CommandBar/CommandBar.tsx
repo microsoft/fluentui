@@ -181,7 +181,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     );
     let hasIcon = !!item.icon || !!item.iconProps;
     const isNameVisible = !!item.name && !item.iconOnly;
-    const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : '');
+    const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : undefined);
 
     let command: React.ReactNode;
     if (isLink) {
