@@ -12,7 +12,7 @@ import { memoizeFunction } from '../../Utilities';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
-const ContextualMenuItemHeight = '36px';
+const ContextualMenuItemHeight = '32px';
 const ContextualMenuIconWidth = '14px';
 
 const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
