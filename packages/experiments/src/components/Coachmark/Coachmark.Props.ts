@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Coachmark } from './Coachmark';
-import { IStyle } from '../../Styling';
 
 export interface ICoachmark {
 }
