@@ -18,7 +18,9 @@ import {
   findIndex,
   getId,
   getNativeProps,
-  divProperties
+  divProperties,
+  getFirstFocusable,
+  getLastFocusable
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
@@ -44,6 +46,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private static Option: string = 'option';
 
   private _root: HTMLElement;
+  private _host: HTMLDivElement;
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
   // tslint:disable-next-line:no-unused-variable
@@ -387,7 +390,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndices = [] } = this.state;
 
     return (
-      <div onKeyDown={ this._onZoneKeyDown }>
+      <div
+        className={ styles.listWrapper }
+        onKeyDown={ this._onZoneKeyDown }
+        ref={ this._resolveRef('_host') }
+        tabIndex={ 0 }
+      >
         <FocusZone
           ref={ this._resolveRef('_focusZone') }
           direction={ FocusZoneDirection.vertical }
@@ -467,6 +475,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               }
             ) }
             onClick={ this._onItemClick(item.index!) }
+            onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+            onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+            onMouseMove={ this._onItemMouseMove.bind(this, item) }
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             ariaLabel={ item.ariaLabel || item.text }
@@ -482,6 +493,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             data-index={ item.index }
             data-is-focusable={ true }
             onChange={ this._onItemClick(item.index!) }
+            onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+            onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+            onMouseMove={ this._onItemMouseMove.bind(this, item) }
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
@@ -521,6 +535,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         });
       }
     };
+  }
+
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+    let targetElement = ev.currentTarget as HTMLElement;
+    targetElement.focus();
+  }
+
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+    let targetElement = ev.currentTarget as HTMLElement;
+    targetElement.focus();
+  }
+
+  @autobind
+  private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
+    this._host.focus();
   }
 
   @autobind
@@ -686,11 +715,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onZoneKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let elementToFocus;
+
     switch (ev.which) {
 
       case KeyCodes.up:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
+        } else {
+          elementToFocus = getLastFocusable(this._host, (this._host.lastChild as HTMLElement), true);
         }
         break;
 
@@ -700,7 +733,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.end:
       case KeyCodes.pageUp:
       case KeyCodes.pageDown:
+        break;
+
       case KeyCodes.down:
+        elementToFocus = getFirstFocusable(this._host, (this._host.firstChild as HTMLElement), true);
         break;
 
       case KeyCodes.escape:
@@ -713,6 +749,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       default:
         return;
+    }
+
+    if (elementToFocus) {
+      elementToFocus.focus();
     }
 
     ev.stopPropagation();

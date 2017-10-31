@@ -40,10 +40,10 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         top: -1px;
         z-index: 1;
       }
-      &:hover .ms-Checkbox-checkbox {
+      &:focus .ms-Checkbox-checkbox {
         border-color: #333333;
       }
-      &:hover .ms-Checkbox-text {
+      &:focus .ms-Checkbox-text {
         color: #000000;
       }
   disabled={undefined}

@@ -12,7 +12,9 @@ import {
   ICheckboxStyles
 } from './Checkbox.Props';
 import {
-  customizable
+  customizable,
+  getNativeProps,
+  buttonProperties
 } from '../../Utilities';
 import {
   mergeStyles
@@ -95,9 +97,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       isReversed!
     );
 
+    const nativeProps = getNativeProps(this.props, buttonProperties);
+
     return (
       <button
         { ...inputProps }
+        { ...nativeProps }
         { ...(checked !== undefined && { checked }) }
         { ...(defaultChecked !== undefined && { defaultChecked }) }
         disabled={ disabled }
