@@ -116,6 +116,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuIconProps?: IIconProps;
 
   /**
+   * Optional callback when menu is clicked.
+   */
+  onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
+
+  /**
    * Custom render function for the icon
    */
   onRenderIcon?: IRenderFunction<IButtonProps>;
