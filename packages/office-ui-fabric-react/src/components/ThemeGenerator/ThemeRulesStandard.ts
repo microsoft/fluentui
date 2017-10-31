@@ -208,7 +208,7 @@ export function themeRulesStandardCreator() {
     inherits.dependentRules.push(thisSlotRule);
   }
 
-  // Basics simple content slots
+  // Basic simple slots
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
   _makeSemanticSlotRule(SemanticColorSlots.disabledBackground, FabricSlots.neutralLighter);
