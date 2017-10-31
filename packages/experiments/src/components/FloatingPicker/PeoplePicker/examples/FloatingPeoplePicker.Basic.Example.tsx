@@ -11,8 +11,8 @@ import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } f
 import { IBaseFloatingPicker } from '../../BaseFloatingPicker.Props';
 import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people, mru } from './PeoplePickerExampleData';
-import './ExtendedPeoplePicker.Basic.Example.scss';
+import { people, mru } from 'experiments/lib/ExtendedPicker';
+import './FloatingPeoplePicker.Basic.Example.scss';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
 export interface IPeoplePickerExampleState {

@@ -5,10 +5,10 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { ExtendedPeoplePickerTypesExample } from './examples/ExtendedPeoplePicker.Basic.Example';
+import { ExtendedPeoplePickerTypesExample } from '../examples/ExtendedPeoplePicker.Basic.Example';
 
 const ExtendedPeoplePickerBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/ExtendedPicker/PeoplePicker/examples/ExtendedPeoplePicker.Basic.Example.tsx'
+  '!raw-loader!experiments/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx'
 ) as string;
 
 export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -35,7 +35,6 @@ export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPage
           <div>
             <span>ExtendedPeoplePicker are used to pick recipients. The difference between this and the current PeoplePicker are:</span>
             <ul>
-              <li>Will show suggestions on empty query</li>
               <li>Will remove selected items on backspace even if there is text in the input area</li>
             </ul>
           </div>
