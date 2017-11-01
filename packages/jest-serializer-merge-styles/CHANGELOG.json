@@ -1,0 +1,36 @@
+{
+  "name": "@uifabric/jest-serializer-merge-styles",
+  "entries": [
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.0.1",
+      "date": "Tue, 24 Oct 2017 10:21:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6b86c95a9f1e52ed5488360608ea83792bad385d",
+            "comment": "Updated jest docs"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.0",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.0.0",
+      "date": "Tue, 17 Oct 2017 17:17:41 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

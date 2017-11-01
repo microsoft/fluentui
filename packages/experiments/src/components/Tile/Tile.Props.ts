@@ -39,6 +39,13 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   selection?: ISelection;
   /**
+   * Whether or not the item should be invoked if clicked.
+   *
+   * @type {boolean}
+   * @memberof ITileProps
+   */
+  invokeSelection?: boolean;
+  /**
    * Name to use on the nameplate for the tile.
    *
    * @type {(React.ReactNode | React.ReactNode[])}

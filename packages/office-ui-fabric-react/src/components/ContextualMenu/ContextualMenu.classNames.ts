@@ -16,8 +16,13 @@ export interface IMenuItemClassNames {
   root: string;
   linkContent: string;
   icon: string;
+  checkmarkIcon: string;
   subMenuIcon: string;
   label: string;
+  splitButtonSeparator: string;
+  splitContainer: string;
+  splitPrimary: string;
+  splitMenu: string;
 }
 
 export const getContextualMenuClassNames = memoizeFunction((
@@ -93,13 +98,52 @@ export const getItemClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && !checked && [{
+      !disabled && !expanded && [{
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
           '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
         }
       }],
+    ],
+    splitPrimary: [
+      styles.root,
+      checked && [
+        'is-checked',
+        styles.rootChecked
+      ],
+      disabled && [
+        'is-disabled',
+        styles.rootDisabled
+      ],
+      !disabled && !checked && [{
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':active': styles.rootPressed,
+          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+        }
+      }]
+    ],
+    splitMenu: [
+      styles.root,
+      {
+        width: 32
+      },
+      expanded && [
+        'is-expanded',
+        styles.rootExpanded
+      ],
+      disabled && [
+        'is-disabled',
+        styles.rootDisabled
+      ],
+      !disabled && !expanded && [{
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':active': styles.rootPressed,
+          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+        }
+      }]
     ],
     linkContent: [
       'ms-ContextualMenu-linkContent',
@@ -111,6 +155,12 @@ export const getItemClassNames = memoizeFunction((
       styles.icon,
       iconClassName,
     ],
+    checkmarkIcon: [
+      'ms-ContextualMenu-checkmarkIcon',
+      knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
+      styles.icon,
+      iconClassName,
+    ],
     subMenuIcon: [
       'ms-ContextualMenu-submenuIcon',
       styles.subMenuIcon,
@@ -119,6 +169,8 @@ export const getItemClassNames = memoizeFunction((
     label: [
       'ms-ContextualMenu-itemText',
       styles.label
-    ]
+    ],
+    splitButtonSeparator: styles.splitButtonSeparator,
+    splitContainer: styles.splitButtonFlexContainer,
   });
 });

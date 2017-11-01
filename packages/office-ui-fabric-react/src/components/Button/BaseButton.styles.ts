@@ -18,7 +18,8 @@ const iconStyle = {
   height: '16px',
   lineHeight: '16px',
   textAlign: 'center',
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  flexShrink: 0
 };
 
 /**
@@ -29,15 +30,19 @@ const iconStyle = {
 export const getStyles = memoizeFunction((
   theme: ITheme
 ): IButtonStyles => {
+  let { semanticColors } = theme;
+
+  let border = semanticColors.buttonBorder;
+  let disabledBackground = semanticColors.disabledBackground;
+  let disabledText = semanticColors.disabledText;
 
   return {
     root: [
       getFocusStyle(theme, -1),
       theme.fonts.medium,
       {
-        // this transparent border converts to the correct colors in HC mode
         boxSizing: 'border-box',
-        border: '1px solid transparent',
+        border: '1px solid ' + border,
         userSelect: 'none',
         display: 'inline-block',
         textDecoration: 'none',
@@ -50,8 +55,8 @@ export const getStyles = memoizeFunction((
     ],
 
     rootDisabled: {
-      backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralTertiary,
+      backgroundColor: disabledBackground,
+      color: disabledText,
       cursor: 'default',
       pointerEvents: 'none',
       selectors: {
@@ -61,11 +66,11 @@ export const getStyles = memoizeFunction((
     },
 
     iconDisabled: {
-      color: theme.palette.neutralTertiary
+      color: disabledText
     },
 
     menuIconDisabled: {
-      color: theme.palette.neutralTertiary
+      color: disabledText
     },
 
     flexContainer: {

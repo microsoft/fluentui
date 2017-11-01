@@ -1,6 +1,155 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Oct 2017 10:20:41 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+
+## 5.17.1
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- ContextualMenu: Support suppressing dismiss on ItemClick via preventDefault
+
+## 5.17.0
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Minor changes
+
+- Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color
+
+### Patches
+
+- Fixed an issue where ComboBox would throw an exception under shallow rendering tests
+- Adjustments made to the disabled text color for Toggle and Checkbox.
+
+## 5.16.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Add ariaHidden prop to buttons
+
+### Patches
+
+- Restore forceAnchor prop for INavLink elements
+- SearchBox onKeyDown: prevent default events only when specified by the user
+- Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues
+- Theme Generator: improve perf
+
+## 5.15.0
+Thu, 26 Oct 2017 10:21:37 GMT
+
+### Minor changes
+
+- Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons.
+
+### Patches
+
+- Callout: Add check for undefined when comparing old and new position
+- SplitButtonInMenu: render icon in primary action button
+- ContextualMenu: Make the behavior of getIsChecked consistent for isChecked and checked props
+
+## 5.14.0
+Wed, 25 Oct 2017 02:03:33 GMT
+
+### Minor changes
+
+- Panel: Added possibility of using a custom function to handle clicks outside the panel when using isLightDismiss=true
+- ComboBox: Adding prop that keeps calout closed when using test input
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- Buttons: split button has `borderRadius` set to 0 to override defaults on Mac chrome/safari.
+- CalloutContent: Fix calculation of max size if calloutMaxHeight is not provided
+- Fix Dropdown's falsey check in selection to strict check for undefined in case key is 0
+
+## 5.13.0
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Minor changes
+
+- Adds "onInputChanged" prop to BasePicker
+- Layer: exposing `setDefaultTarget(selector)` static method to set a default target element where layered content should render by default.
+
+### Patches
+
+- ComboBox: Add support for custom styling of the label in the disabled state
+- Dialog: Don't add empty spans to footer for falsy children of DialogFooter
+- Nav: Add onRenderLink back to JSX to allow custom rendering of links
+- remove outdated semantic slots
+- Ensure that Select All checkbox can still be focused
+
+## 5.12.0
+Mon, 23 Oct 2017 10:24:13 GMT
+
+### Minor changes
+
+- ComboBox: Adding onMenuOpen callback
+
+### Patches
+
+- Added a new divider component
+- ContextualMenu/Callout: Fix (and deprecate) broken 'targetPoint' API
+- DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed.
+
+## 5.11.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adding an Icons export in lib folder, as well as adding Check to the root index exports.
+- Add a way to force a layout update for ScrollablePane
+- ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields.
+- Add opt-in modal selection behavior on touch
+
+### Patches
+
+- Fix minor state update bug with Sticky
+- ComboBox: Fix custom styling on menu options
+- Updated example to render some custom icons.
+- SpinButton: Disable last pass autofill
+- Menu Split Button: Launch split button menu with right arrow key
+- PersonaCoin - display initials only if no imageUrl is provided or if error loading image
+
+## 5.10.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- ComboBox: the label now appears disabled when the ComboBox is disabled.
+- "ContextualMenu: SplitButtons can now appear inside menus"
+- Theming: add SASS variables for semantic theming to support legacy scenarios"
+
+### Patches
+
+- Added implementation examples section to Button Page. Rearranged TextField borderless example.
+- Updated the Fabric Core package version
+- Fix Image css so it doesn't fade in if shouldStartVisible is true
+- Fix refs in Dropdown and Datepicker
+
+## 5.9.3
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Patches
+
+- SearchBox: expose onKeyDown event by invoking external prop
+- ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu
+
+## 5.9.2
+Mon, 16 Oct 2017 22:49:01 GMT
+
+### Patches
+
+- Nav: fixing amd-incompatible import.
+
+## 5.9.1
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Dropdown: Fixing nullref when nothing is selected in multi select rendering.
+- Updating shrinkwrap for Fabric Core package update
 
 ## 5.9.0
 Mon, 16 Oct 2017 10:20:41 GMT

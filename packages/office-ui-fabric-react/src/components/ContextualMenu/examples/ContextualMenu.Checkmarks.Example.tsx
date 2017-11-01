@@ -30,7 +30,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
         text='Click for ContextualMenu'
         menuProps={
           {
-            shouldFocusOnMount: false,
+            shouldFocusOnMount: true,
             items:
             [
               {
@@ -75,6 +75,9 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
               },
               {
                 key: keys[5],
+                iconProps: {
+                  iconName: 'MusicInCollectionFill'
+                },
                 subMenuProps: {
                   items: [
                     {
@@ -93,7 +96,11 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                     }
                   ],
                 },
-                name: 'New'
+                name: 'Split Button',
+                canCheck: true,
+                isChecked: selection![keys[5]],
+                split: true,
+                onClick: this._onToggleSelect,
               },
             ]
           }
@@ -104,7 +111,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
 
   private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem) {
     let { selection } = this.state;
-
+    ev!.preventDefault();
     selection![item!.key] = !selection![item!.key];
 
     this.setState({

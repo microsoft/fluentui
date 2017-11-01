@@ -38,7 +38,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | null;
+  target?: HTMLElement | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -78,11 +78,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   /**
    * If true use a point rather than rectangle to position the ContextualMenu.
    * For example it can be used to position based on a click.
+   * @deprecated Use 'target' instead
    */
   useTargetPoint?: boolean;
 
   /**
    * Point used to position the ContextualMenu
+   * @deprecated Use 'target' instead
    */
   targetPoint?: IPoint;
 
@@ -243,6 +245,12 @@ export interface IContextualMenuItem {
   disabled?: boolean;
 
   /**
+   * If the menu item is a split button, this prop disables purely the primary action of the button.
+   * @defaultvalue false
+   */
+  primaryDisabled?: boolean;
+
+  /**
    * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'disabled' instead.
    * @deprecated
    */
@@ -272,12 +280,18 @@ export interface IContextualMenuItem {
   isChecked?: boolean;
 
   /**
+   * Whether or not this menu item is a splitButton.
+   * @defaultvalue false
+   */
+  split?: boolean;
+
+  /**
    * Any custom data the developer wishes to associate with the menu item.
    */
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked
+   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
@@ -354,9 +368,12 @@ export interface IContextualMenuItem {
    * Method to custom render this menu item.
    * For keyboard accessibility, the top-level rendered item should be a focusable element
    * (like an anchor or a button) or have the `data-is-focusable` property set to true.
+   *
+   * The function receives a function that can be called to dismiss the menu as a second argument.
+   *  This can be used to make sure that a custom menu item click dismisses the menu.
    * @defaultvalue undefined
    */
-  onRender?: (item: any) => React.ReactNode;
+  onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
    * A function to be executed onMouseDown. This is executed before an onClick event and can
@@ -422,6 +439,11 @@ export interface IMenuItemStyles extends IButtonStyles {
   iconColor: IStyle;
 
   /**
+   * Default style for checkmark icons.
+   */
+  checkmarkIcon: IStyle;
+
+  /**
    * Styles for the submenu icon of a menu item.
    */
   subMenuIcon: IStyle;
@@ -430,6 +452,11 @@ export interface IMenuItemStyles extends IButtonStyles {
   * Styles for a divider item of a ConextualMenu.
   */
   divider: IStyle;
+
+  /**
+   * Styles for a split button divider in a menu item
+   */
+  splitButtonSeparator: IStyle;
 }
 
 export interface IContextualMenuStyles {

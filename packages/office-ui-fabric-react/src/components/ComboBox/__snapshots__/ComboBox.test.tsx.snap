@@ -84,6 +84,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             width: 100%;
           }
       data-is-interactable={true}
+      data-lpignore={true}
       id="ComboBox0-input"
       onBlur={[Function]}
       onChange={[Function]}
@@ -190,6 +191,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
                 display: inline-block;
               }
               {
+                flex-shrink: 0;
                 font-size: 16px;
                 height: 16px;
                 line-height: 16px;

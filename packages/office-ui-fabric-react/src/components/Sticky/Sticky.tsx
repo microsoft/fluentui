@@ -93,6 +93,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (this.props.children !== prevProps.children) {
       ReactDOM.render(<div>{ this.props.children }</div>, this.content);
     }
+
     if (isStickyTop && !prevState.isStickyTop) {
       this._setSticky(() => {
         scrollablePane.addStickyHeader(this);
@@ -101,7 +102,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this._resetSticky(() => {
         scrollablePane.removeStickyHeader(this);
       });
-    } else if (isStickyBottom && !prevState.isStickyBottom) {
+    }
+
+    if (isStickyBottom && !prevState.isStickyBottom) {
       this._setSticky(() => {
         scrollablePane.addStickyFooter(this);
       });
