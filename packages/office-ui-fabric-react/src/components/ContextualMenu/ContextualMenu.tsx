@@ -586,7 +586,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { (hasCheckmarks) ? (
           <Icon
             iconName={ isItemChecked === true ? 'CheckMark' : '' }
-            className={ classNames.icon }
+            className={ classNames.checkmarkIcon }
             onClick={ this._onItemClick.bind(this, item) }
           />
         ) : (null) }
