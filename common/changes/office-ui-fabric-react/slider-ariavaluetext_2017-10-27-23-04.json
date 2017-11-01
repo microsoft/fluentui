@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add `ariaValueText` property to Slider",
+      "comment": "Slider: added `ariaValueText` property for better screen-reader support.",
       "type": "minor"
     }
   ],
