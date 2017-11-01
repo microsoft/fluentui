@@ -19,6 +19,9 @@ import {
   PERSONA_INITIALS_COLOR,
   PERSONA_SIZE
 } from './PersonaConsts';
+import {
+  Icon
+} from '../Icon';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
@@ -104,7 +107,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
-        { size !== PersonaSize.tiny && (
+        { size !== PersonaSize.tiny ? (
           <div
             { ...coinProps }
             className={ css('ms-Persona-imageArea', styles.imageArea) }
@@ -140,7 +143,17 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
             />
             <PersonaPresence { ...this.props } />
           </div>
-        ) }
+        ) :
+          (this.props.presence ?
+            <PersonaPresence
+              { ...this.props }
+            /> :
+            <Icon
+              iconName='Contact'
+              style={ { fontSize: '12px' } }
+            />
+          )
+        }
         { this.props.children }
       </div>
     );
