@@ -631,12 +631,10 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .secondaryText {
     font-size: $ms-font-size-m;
-    padding-top: 2px;
   }
 
   .tertiaryText {
     display: block;
-    padding-top: 8px;
   }
 }
 
@@ -686,16 +684,11 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .secondaryText {
     font-size: $ms-font-size-m;
-    padding-top: 2px;
   }
 
   .tertiaryText,
   .optionalText {
     display: block; // Show tertiary and optional text
-  }
-
-  .tertiaryText {
-    padding-top: 8px;
   }
 }
 
