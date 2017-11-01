@@ -166,6 +166,14 @@ export enum PersonaInitialsColor {
   purple = 10,
   black = 11,
   orange = 12,
+  /**
+   * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   */
   red = 13,
-  darkRed = 14
+  darkRed = 14,
+  /**
+   * Tranparent is not intended to be used with typical initials due to accessibility issues.
+   * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
+   */
+  transparent = 15,
 }

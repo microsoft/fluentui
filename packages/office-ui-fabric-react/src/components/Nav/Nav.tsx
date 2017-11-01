@@ -164,11 +164,11 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         className={ mergeStyles(
           'ms-Nav-link' + link.onClick && 'ms-Nav-linkButton',
           styles.link,
-          link.onClick && styles.buttonEntry,
+          link.onClick && !link.forceAnchor && styles.buttonEntry,
           this._hasExpandButton && 'isOnExpanded') as string
         }
         styles={ buttonStyles }
-        href={ link.url }
+        href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
         iconProps={ { iconName: link.icon || '' } }
         description={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }

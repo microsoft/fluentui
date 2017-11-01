@@ -70,6 +70,7 @@
     # packages/office-ui-fabric-react/src/components/Overlay/*
     # packages/office-ui-fabric-react/src/components/Panel/*
     # packages/office-ui-fabric-react/src/components/Persona/*
+    packages/office-ui-fabric-react/src/components/Persona/PersonaCo* @mtennoe @jakob101
     # packages/office-ui-fabric-react/src/components/pickers/*
     # packages/office-ui-fabric-react/src/components/Pivot/*
     # packages/office-ui-fabric-react/src/components/Popup/*

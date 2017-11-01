@@ -36,7 +36,7 @@ export const getClassNames = memoizeFunction((
   const pillBorderColor = semanticColors.inputBorder;
   const pillBorderHoveredColor = semanticColors.inputBorderHovered;
   const pillBorderDisabledColor = semanticColors.disabledText;
-  const textDisabledColor = semanticColors.disabledText;
+  const textDisabledColor = semanticColors.disabledBodyText;
 
   styles = styles || {};
 

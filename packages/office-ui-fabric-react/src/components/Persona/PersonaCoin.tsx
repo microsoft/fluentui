@@ -33,6 +33,12 @@ const SIZE_TO_PIXELS = {
   [PersonaSize.extraLarge]: 100
 };
 
+/**
+ * These colors are considered reserved colors and can only be set with overrides:
+ * - Red is a color that often has a special meaning.
+ * - Transparent is not intended to be used with typical initials due to accessibility issues,
+ *   its primary use is for Facepile overflow buttons.
+ */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightGreen,
   PersonaInitialsColor.lightBlue,
@@ -47,8 +53,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.blue,
   PersonaInitialsColor.darkBlue,
   PersonaInitialsColor.orange,
-  PersonaInitialsColor.darkRed,
-  PersonaInitialsColor.red
+  PersonaInitialsColor.darkRed
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
