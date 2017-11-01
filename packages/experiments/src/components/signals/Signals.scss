@@ -15,6 +15,12 @@
   }
 }
 
+.centeredSignal {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .newItem {
   width: 0;
   height: 1em;
@@ -57,7 +63,6 @@
 
 .trending {
   color: #006257;
-  padding-top: 0.2em;
 }
 
 .blocked {
