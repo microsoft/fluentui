@@ -26,8 +26,6 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       role = 'menubar'
     } = this.props;
 
-    console.log(itemDirection);
-
     return (
       <FocusZone
         { ...focusZoneProps }
