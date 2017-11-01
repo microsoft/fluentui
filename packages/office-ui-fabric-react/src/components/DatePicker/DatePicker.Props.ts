@@ -78,6 +78,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   placeholder?: string;
 
   /**
+    * Value of today. If null, current time in client machine will be used.
+    */
+    today?: Date;
+
+  /**
    * Default value of the DatePicker, if any
    */
   value?: Date;

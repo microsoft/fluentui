@@ -231,6 +231,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
               showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
+              today={ this.props.today }
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
