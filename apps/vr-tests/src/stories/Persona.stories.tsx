@@ -30,7 +30,7 @@ storiesOf('Persona', module)
   .add('Tiny', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.size12 }
+      size={ PersonaSize.size10 }
       presence={ PersonaPresence.offline }
     />
   )).add('Extra extra small', () => (

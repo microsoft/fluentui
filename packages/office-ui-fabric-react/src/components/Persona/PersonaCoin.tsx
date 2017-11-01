@@ -28,7 +28,7 @@ const styles: any = stylesImport;
 const SIZE_TO_PIXELS = {
   [PersonaSize.size24]: 24,
   [PersonaSize.size28]: 28,
-  [PersonaSize.size12]: 30,
+  [PersonaSize.size10]: 30,
   [PersonaSize.size32]: 32,
   [PersonaSize.size40]: 40,
   [PersonaSize.size48]: 48,
@@ -107,7 +107,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
-        { size !== PersonaSize.size12 ? (
+        { size !== PersonaSize.size10 ? (
           <div
             { ...coinProps }
             className={ css('ms-Persona-imageArea', styles.imageArea) }
@@ -150,7 +150,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
             /> :
             <Icon
               iconName='Contact'
-              style={ { fontSize: '12px' } }
+              className={ styles.size10NoPresenceIcon }
             />
           )
         }

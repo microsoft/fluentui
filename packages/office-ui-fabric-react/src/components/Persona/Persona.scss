@@ -43,7 +43,7 @@ $ms-color-presence-busy-stripe-dark:   #D00E0D;
 $ms-color-presence-busy-average:       #D93B3B;
 
 // Persona Sizes
-$ms-Persona-size12:  30px;
+$ms-Persona-size10:  30px;
 $ms-Persona-size16:  16px;
 $ms-Persona-size24:  24px;
 $ms-Persona-size28:  28px;
@@ -261,14 +261,14 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: Tiny Persona
+//== Modifier: Size 10 Persona
 //
-.root.rootIsSize12 {
-  height: $ms-Persona-size12;
-  min-width: $ms-Persona-size12;
+.root.rootIsSize10 {
+  height: $ms-Persona-size10;
+  min-width: $ms-Persona-size10;
 }
 
-.rootIsSize12{
+.rootIsSize10{
   .imageArea {
     overflow: visible;
     background: transparent;
@@ -293,8 +293,8 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .primaryText {
-    font-size: $ms-font-size-m;
-    line-height: $ms-Persona-size12;
+    font-size: $ms-font-size-s;
+    line-height: $ms-Persona-size10;
   }
 
   .secondaryText {
@@ -302,12 +302,19 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+.size10NoPresenceIcon {
+  font-size: 10px;
+  position: absolute;
+  top: 10px;
+  @include ms-right(auto);
+  @include ms-left(0);
+}
 
-//== Modifier: Tiny Persona with read only state
+//== Modifier: Size 10 Persona with read only state
 //
 // This variant includes a semicolon, and is
 // most often presented within a People Picker.
-.root.rootIsSize12.rootIsReadonly {
+.root.rootIsSize10.rootIsReadonly {
   padding: 0;
   background-color: transparent;
 
@@ -316,7 +323,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-//== Modifier: 16px Persona
+//== Modifier: Size 16 Persona
 //
 .root.rootIsSize16 {
   height: $ms-Persona-size16;
@@ -367,11 +374,11 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-//== Modifier: Extra Small Persona
+//== Modifier: Size 24 Persona
 //
 .root.rootIsSize24 {
-  height: $ms-Persona-size32;
-  min-width: $ms-Persona-size32;
+  height: $ms-Persona-size24;
+  min-width: $ms-Persona-size24;
 }
 
 .rootIsSize24 {
@@ -433,7 +440,7 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: 28px Persona
+//== Modifier: Size 28 Persona
 //
 .root.rootIsSize28 {
   height: $ms-Persona-size28;
@@ -500,7 +507,7 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: Extra Small Persona
+//== Modifier: Size 32 Persona
 //
 .root.rootIsSize32 {
   height: $ms-Persona-size32;
@@ -549,7 +556,7 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: Small Persona
+//== Modifier: Size 40 Persona
 //
 .root.rootIsSize40 {
   height: $ms-Persona-size40;
@@ -580,7 +587,7 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: Large Persona
+//== Modifier: Size 72 Persona
 //
 .root.rootIsSize72 {
   height: $ms-Persona-size72;
@@ -626,11 +633,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .tertiaryText {
     display: block;
+    padding-top: 8px;
   }
 }
 
 
-//== Modifier: Extra Large Persona
+//== Modifier: Size 100 Persona
 //
 .root.rootIsSize100 {
   height: $ms-Persona-size100;
@@ -680,6 +688,10 @@ $ms-Persona-presenceSizeXl: 28px;
   .tertiaryText,
   .optionalText {
     display: block; // Show tertiary and optional text
+  }
+
+  .tertiaryText {
+    padding-top: 8px;
   }
 }
 
