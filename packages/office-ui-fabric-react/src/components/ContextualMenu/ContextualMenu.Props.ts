@@ -439,6 +439,11 @@ export interface IMenuItemStyles extends IButtonStyles {
   iconColor: IStyle;
 
   /**
+   * Default style for checkmark icons.
+   */
+  checkmarkIcon: IStyle;
+
+  /**
    * Styles for the submenu icon of a menu item.
    */
   subMenuIcon: IStyle;
