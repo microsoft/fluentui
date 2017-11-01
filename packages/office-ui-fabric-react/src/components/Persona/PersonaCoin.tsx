@@ -28,7 +28,7 @@ const styles: any = stylesImport;
 const SIZE_TO_PIXELS = {
   [PersonaSize.size24]: 24,
   [PersonaSize.size28]: 28,
-  [PersonaSize.size10]: 30,
+  [PersonaSize.size10]: 20,
   [PersonaSize.size32]: 32,
   [PersonaSize.size40]: 40,
   [PersonaSize.size48]: 48,

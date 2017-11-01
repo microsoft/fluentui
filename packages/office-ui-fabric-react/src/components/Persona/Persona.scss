@@ -43,7 +43,7 @@ $ms-color-presence-busy-stripe-dark:   #D00E0D;
 $ms-color-presence-busy-average:       #D93B3B;
 
 // Persona Sizes
-$ms-Persona-size10:  30px;
+$ms-Persona-size10:  20px;
 $ms-Persona-size16:  16px;
 $ms-Persona-size24:  24px;
 $ms-Persona-size28:  28px;
@@ -278,9 +278,11 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .presence {
     @include ms-right(auto);
-    top: 10px;
+    top: 7px;
     @include ms-left(0);
     border: 0;
+    height: $ms-Persona-presenceSizeXxs;
+    width: $ms-Persona-presenceSizeXxs;
 
     @include high-contrast {
       top: 9px;
@@ -289,7 +291,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .details {
-    @include ms-padding-left(20px);
+    @include ms-padding-left(17px);
   }
 
   .primaryText {
@@ -305,7 +307,7 @@ $ms-Persona-presenceSizeXl: 28px;
 .size10NoPresenceIcon {
   font-size: 10px;
   position: absolute;
-  top: 10px;
+  top: 5px;
   @include ms-right(auto);
   @include ms-left(0);
 }
@@ -628,7 +630,8 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .secondaryText {
-    font-size: $ms-font-size-m
+    font-size: $ms-font-size-m;
+    padding-top: 2px;
   }
 
   .tertiaryText {
@@ -682,7 +685,8 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .secondaryText {
-    font-size: $ms-font-size-m
+    font-size: $ms-font-size-m;
+    padding-top: 2px;
   }
 
   .tertiaryText,
