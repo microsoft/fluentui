@@ -27,6 +27,12 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   items?: IOverflowSetItemProps[];
 
   /**
+   * Direction that the items are layed out
+   * @default horizontal
+  */
+  itemDirection?: 'horizontal' | 'vertical';
+
+  /**
    * An array of items to be passed to overflow contextual menu
   */
   overflowItems?: IOverflowSetItemProps[];

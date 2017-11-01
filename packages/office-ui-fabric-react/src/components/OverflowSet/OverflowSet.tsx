@@ -4,6 +4,7 @@ import {
   autobind,
   BaseComponent
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps } from './OverflowSet.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
@@ -21,15 +22,23 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       onRenderOverflowButton,
       className,
       focusZoneProps,
+      itemDirection,
       role = 'menubar'
     } = this.props;
+
+    console.log(itemDirection);
 
     return (
       <FocusZone
         { ...focusZoneProps }
         componentRef={ this._resolveRef('_focusZone') }
-        className={ css('ms-OverflowSet', styles.root, className) }
-        direction={ FocusZoneDirection.horizontal }
+        className={ mergeStyles(
+          'ms-OverflowSet',
+          styles.root,
+          itemDirection === 'vertical' && styles.rootVertical,
+          className
+        ) }
+        direction={ itemDirection === 'vertical' ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
         role={ role }
       >
         { items && this._onRenderItems(items) }

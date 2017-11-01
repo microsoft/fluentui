@@ -69,7 +69,7 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
       <IconButton
         className={ css(styles.overflowButton) }
         iconProps={ { iconName: 'More' } }
-        menuIconProps={ undefined }
+        menuIconProps={ { iconName: null } }
         menuProps={ { items: overflowItems! } }
       />
     );
