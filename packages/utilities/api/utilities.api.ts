@@ -142,6 +142,11 @@ export function getLastFocusable(rootElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
+export function getLastTabbable(rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
+
+// @public
 export function getNativeProps < T >(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 // @public
