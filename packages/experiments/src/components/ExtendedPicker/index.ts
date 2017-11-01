@@ -1,5 +1,4 @@
-export * from './BaseFloatingPicker';
-export * from './BaseFloatingPicker.Props';
 export * from './BaseExtendedPicker';
+export * from './BaseExtendedPicker.Props';
 export * from './PeoplePicker/ExtendedPeoplePicker';
-export * from './PeoplePicker/FloatingPeoplePicker';
+export * from './examples/PeopleExampleData';
