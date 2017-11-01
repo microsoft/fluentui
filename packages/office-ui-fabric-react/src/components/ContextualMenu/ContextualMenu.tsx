@@ -7,7 +7,7 @@ import {
   IContextualMenuClassNames,
   getContextualMenuClassNames,
   getItemClassNames,
-  getVerticalDividerClassNames
+  getSplitButtonVerticalDividerClassNames
 } from './ContextualMenu.classNames';
 import {
   BaseComponent,
@@ -577,7 +577,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderSplitDivider(item: IContextualMenuItem) {
-    let getDividerClassnames = item.getVerticalDividerClassNames || getVerticalDividerClassNames;
+    let getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }
 

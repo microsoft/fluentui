@@ -28,13 +28,12 @@ export interface IMenuItemClassNames {
   linkContentMenu: string;
 }
 
-export const getVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
+export const getSplitButtonVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
   const { semanticColors } = theme;
-  const SplitButtonDividerHeight = 16;
   const ContextualMenuDividerColor = semanticColors.bodyDivider;
   return mergeStyleSets(getDividerClassNames(theme), {
     divider: {
-      height: SplitButtonDividerHeight,
+      height: 16,
       width: 1,
     }
   });
