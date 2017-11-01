@@ -76,6 +76,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({
       suggestionsVisible: false,
     });
+    console.log('hidepicker');
   }
 
   public showPicker(): void {
@@ -135,6 +136,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       </div>
     );
   }
+
   protected renderSuggestions(): JSX.Element | null {
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
@@ -187,7 +189,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected updateSuggestions(suggestions: T[]): void {
     this.suggestionStore.updateSuggestions(suggestions, 0);
-    this.forceUpdate();
   }
 
   protected updateValue(updatedValue: string): void {

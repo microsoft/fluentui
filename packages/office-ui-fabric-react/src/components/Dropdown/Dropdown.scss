@@ -37,7 +37,7 @@ $DropDown-item-height: 32px;
   &:active {
     .title,
     .caretDown {
-      color: $ms-color-black;
+      color: $ms-color-neutralDark;
 
       @include high-contrast {
         // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
@@ -110,7 +110,7 @@ $DropDown-item-height: 32px;
 }
 
 .caretDown {
-  color: $ms-color-neutralDark;
+  color: $ms-color-neutralSecondary;
   font-size: $ms-icon-size-s;
   pointer-events: none;
 }
@@ -130,8 +130,8 @@ $DropDown-item-height: 32px;
   white-space: nowrap;
   text-overflow: ellipsis;
   &.titleIsError {
-        border-color: $ms-color-error;
-    }
+    border-color: $ms-color-error;
+  }
   &.titleIsPlaceHolder {
     color: $ms-color-neutralSecondary;
   }
