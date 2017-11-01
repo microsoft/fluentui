@@ -29,7 +29,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         className="ms-DocumentCardActivity-avatar"
       >
         <div
-          className="ms-Persona-coin ms-Persona--32 undefined"
+          className="ms-Persona-coin ms-Persona--size32 undefined"
           role="persentation"
           size={11}
         >

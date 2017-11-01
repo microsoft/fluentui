@@ -154,14 +154,14 @@ describe('Facepile', () => {
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--32');
+      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--size32');
       expect(addButton).toHaveLength(1);
       let faces = facepile.querySelectorAll('.ms-Facepile-person');
       expect(faces).toHaveLength(facepilePersonas.length);
       for (let i = 0; i < faces.length; ++i) {
-        expect(faces[i].innerHTML).toEqual(expect.stringMatching('ms-Persona--32'));
+        expect(faces[i].innerHTML).toEqual(expect.stringMatching('ms-Persona--size32'));
       }
-      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton .ms-Persona--32');
+      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton .ms-Persona--size32');
       expect(overflowButton).toHaveLength(1);
     });
 
@@ -175,7 +175,7 @@ describe('Facepile', () => {
       let faces = wrapper.find(PersonaCoin);
       expect(faces).toHaveLength(facepilePersonas.length);
       wrapper.find(PersonaCoin).forEach((node) => {
-        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--24'));
+        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--size24'));
       });
 
       // Test small size renders
@@ -187,7 +187,7 @@ describe('Facepile', () => {
       faces = wrapper.find(PersonaCoin);
       expect(faces).toHaveLength(facepilePersonas.length);
       wrapper.find(PersonaCoin).forEach((node) => {
-        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--40'));
+        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--size40'));
       });
     });
   });
