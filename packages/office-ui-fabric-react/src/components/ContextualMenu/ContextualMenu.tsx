@@ -588,7 +588,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { (hasCheckmarks) ? (
           <Icon
             iconName={ isItemChecked === true ? 'CheckMark' : '' }
-            className={ classNames.icon }
+            className={ classNames.checkmarkIcon }
             onClick={ this._onItemClick.bind(this, item) }
           />
         ) : (null) }
@@ -691,7 +691,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this.props.onItemClick(ev, item);
     }
 
-    this.dismiss(ev, true);
+    !ev.defaultPrevented && this.dismiss(ev, true);
   }
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {

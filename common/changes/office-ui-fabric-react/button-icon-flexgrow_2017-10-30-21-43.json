@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues",
+      "comment": "Button: Added flexShrink: 0 to icons in button so long text won't make them shrink",
       "type": "patch"
     }
   ],

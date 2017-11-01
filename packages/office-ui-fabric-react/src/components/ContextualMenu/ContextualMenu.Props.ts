@@ -292,7 +292,7 @@ export interface IContextualMenuItem {
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked
+   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
@@ -444,6 +444,11 @@ export interface IMenuItemStyles extends IButtonStyles {
    * Default icon color style for known icons.
    */
   iconColor: IStyle;
+
+  /**
+   * Default style for checkmark icons.
+   */
+  checkmarkIcon: IStyle;
 
   /**
    * Styles for the submenu icon of a menu item.

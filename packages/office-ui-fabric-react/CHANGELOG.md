@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Oct 2017 10:21:37 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+
+## 5.17.1
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- ContextualMenu: Support suppressing dismiss on ItemClick via preventDefault
+
+## 5.17.0
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Minor changes
+
+- Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color
+
+### Patches
+
+- Fixed an issue where ComboBox would throw an exception under shallow rendering tests
+- Adjustments made to the disabled text color for Toggle and Checkbox.
+
+## 5.16.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Add ariaHidden prop to buttons
+
+### Patches
+
+- Restore forceAnchor prop for INavLink elements
+- SearchBox onKeyDown: prevent default events only when specified by the user
+- Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues
+- Theme Generator: improve perf
 
 ## 5.15.0
 Thu, 26 Oct 2017 10:21:37 GMT
