@@ -81,6 +81,29 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
 }
 
 /**
+ * Gets the elements which are child elements of the given element.
+ * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
+ * after the original children.
+ * @param parent
+ * @param allowVirtualChildren
+ */
+export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean = true): HTMLElement[] {
+  const children: HTMLElement[] = [];
+
+  if (parent) {
+    for (let i = 0; i < parent.children.length; i++) {
+      children.push(parent.children.item(i) as HTMLElement);
+    }
+
+    if (allowVirtualChildren && isVirtualElement(parent)) {
+      children.push(...parent._virtual.children);
+    }
+  }
+
+  return children;
+}
+
+/**
  * Determines whether or not a parent element contains a given child element.
  * If `allowVirtualParents` is true, this method may return `true` if the child
  * has the parent in its virtual element hierarchy.

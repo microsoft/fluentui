@@ -7,7 +7,7 @@ import {
   getNativeProps,
   divProperties,
   getFirstFocusable,
-  getLastFocusable,
+  getLastTabbable,
   getNextElement
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
@@ -131,7 +131,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     let { root } = this.refs;
 
     const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
+    const _lastFocusableChild = getLastTabbable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
       _lastFocusableChild!.focus();

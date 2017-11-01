@@ -87,6 +87,11 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Custom styles for this component
    */
   styles?: IExpandingCardStyles;
+
+  /**
+   * Trap focus or not
+   */
+  trapFocus?: boolean;
 }
 
 export enum ExpandingCardMode {

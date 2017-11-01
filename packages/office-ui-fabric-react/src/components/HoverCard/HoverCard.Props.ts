@@ -77,6 +77,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * Callback when card hides
    */
   onCardHide?: () => void;
+
+  /**
+   * Trap focus or not
+   */
+  trapFocus?: boolean;
 }
 
 export interface IHoverCardStyles {

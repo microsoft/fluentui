@@ -12,7 +12,7 @@ import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
-
+import { FocusTrapZone } from '../FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
 export interface IExpandingCardState {
@@ -28,6 +28,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     directionalHint: DirectionalHint.bottomLeftEdge,
     gapSpace: 0
   };
+
+  private _expandingCard: HTMLElement;
 
   private _styles: IExpandingCardStyles;
   // tslint:disable-next-line:no-unused-variable
@@ -49,6 +51,11 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         needsScroll: true
       });
     }
+
+    if (this.props.trapFocus) {
+      this._expandingCard.focus();
+      this._events.on(this._expandingCard, 'keydown', this._onDismiss);
+    }
   }
 
   public componentWillUnmount() {
@@ -64,6 +71,19 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       expandedCardHeight
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
+
+    const content = (
+      <div
+        ref={ this._resolveRef('_expandingCard') }
+        onFocusCapture={ this.props.onEnter }
+        onBlurCapture={ this.props.onLeave }
+        onMouseEnter={ this.props.onEnter }
+        onMouseLeave={ this.props.onLeave }
+      >
+        { this._onRenderCompactCard() }
+        { this._onRenderExpandedCard() }
+      </div>
+    );
 
     return (
       <Callout
@@ -81,17 +101,21 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         minPagePadding={ 24 }
         gapSpace={ this.props.gapSpace }
       >
-        <div
-          onFocusCapture={ this.props.onEnter }
-          onBlurCapture={ this.props.onLeave }
-          onMouseEnter={ this.props.onEnter }
-          onMouseLeave={ this.props.onLeave }
-        >
-          { this._onRenderCompactCard() }
-          { this._onRenderExpandedCard() }
-        </div>
+        { this.props.trapFocus ?
+          <FocusTrapZone>
+            { content }
+          </FocusTrapZone> :
+          content
+        }
       </Callout >
     );
+  }
+
+  @autobind
+  private _onDismiss(ev: MouseEvent): void {
+    if (ev.type === 'keydown') {
+      this.props.onLeave && this.props.onLeave(ev);
+    }
   }
 
   @autobind
