@@ -19,17 +19,17 @@ export class CommandBarBasicExample extends React.Component<any, any> {
     let { isSearchBoxVisible: searchBoxVisible, areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
 
     let filteredItems = items.map((item: any) => assign({}, item, {
-      name: namesVisible ? item.name : '',
+      iconOnly: !namesVisible,
       icon: iconsVisible ? item.icon : ''
     }));
 
     let filteredOverflowItems = overflowItems.map((item: any) => assign({}, item, {
-      name: namesVisible ? item.name : '',
+      iconOnly: !namesVisible,
       icon: iconsVisible ? item.icon : ''
     }));
 
     let filteredFarItems = farItems.map((item: any) => assign({}, item, {
-      name: namesVisible ? item.name : '',
+      iconOnly: !namesVisible,
       icon: iconsVisible ? item.icon : ''
     }));
 
