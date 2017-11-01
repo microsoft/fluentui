@@ -27,8 +27,8 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
         title="Annie Lindqvist"
       >
         <div
-          className="ms-Persona-coin ms-Persona--xs undefined"
-          size={2}
+          className="ms-Persona-coin ms-Persona--size32 undefined"
+          size={11}
         >
           <div
             className="ms-Persona-imageArea"
@@ -65,8 +65,8 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
         title="Aaron Reid"
       >
         <div
-          className="ms-Persona-coin ms-Persona--xs undefined"
-          size={2}
+          className="ms-Persona-coin ms-Persona--size32 undefined"
+          size={11}
         >
           <div
             className="ms-Persona-imageArea"
@@ -160,8 +160,8 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
               }
         >
           <div
-            className="ms-Persona-coin ms-Persona--xs undefined"
-            size={2}
+            className="ms-Persona-coin ms-Persona--size32 undefined"
+            size={11}
           >
             <div
               className="ms-Persona-imageArea"

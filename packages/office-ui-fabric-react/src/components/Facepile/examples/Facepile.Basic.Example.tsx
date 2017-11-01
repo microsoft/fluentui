@@ -23,7 +23,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      personaSize: PersonaSize.extraSmall
+      personaSize: PersonaSize.size32
     };
   }
 
@@ -59,10 +59,10 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             options={
               [
                 { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
-                { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] },
+                { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
                 { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
-                { key: PersonaSize.extraSmall, text: PersonaSize[PersonaSize.extraSmall] },
-                { key: PersonaSize.small, text: PersonaSize[PersonaSize.small] }
+                { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
+                { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
               ]
             }
             onChanged={ this._onChangePersonaSize }

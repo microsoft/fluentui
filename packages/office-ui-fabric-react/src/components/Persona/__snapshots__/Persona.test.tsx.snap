@@ -2,13 +2,13 @@
 
 exports[`Persona renders Persona correctly with image 1`] = `
 <div
-  className="ms-Persona"
-  size={4}
+  className="ms-Persona ms-Persona--size48 undefined"
+  size={13}
   style={undefined}
 >
   <div
-    className="ms-Persona-coin"
-    size={4}
+    className="ms-Persona-coin ms-Persona--size48 undefined"
+    size={13}
   >
     <div
       className="ms-Persona-imageArea"
@@ -93,13 +93,13 @@ exports[`Persona renders Persona correctly with image 1`] = `
 
 exports[`Persona renders Persona correctly with initials 1`] = `
 <div
-  className="ms-Persona"
-  size={4}
+  className="ms-Persona ms-Persona--size48 undefined"
+  size={13}
   style={undefined}
 >
   <div
-    className="ms-Persona-coin"
-    size={4}
+    className="ms-Persona-coin ms-Persona--size48 undefined"
+    size={13}
   >
     <div
       className="ms-Persona-imageArea"

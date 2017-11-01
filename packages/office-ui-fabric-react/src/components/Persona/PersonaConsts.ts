@@ -7,15 +7,24 @@ import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {
-  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,
-  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall,
-  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall,
-  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall,
+  // All non-numerically named sizes are deprecated, use the numerically named classes below
+  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny + styles.rootIsSize12,
+  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall + styles.rootIsSize24,
+  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall + styles.rootIsSize28,
+  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall + styles.rootIsSize40,
   [PersonaSize.regular]: '',
-  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
-  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
-  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28,
-  [PersonaSize.size16]: 'ms-Persona--16 ' + styles.rootIs16
+  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge + styles.rootIsSize72,
+  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge + styles.rootIsSize100,
+
+  [PersonaSize.size28]: 'ms-Persona--size28 ' + styles.rootIsSize28,
+  [PersonaSize.size16]: 'ms-Persona--size16 ' + styles.rootIsSize16,
+  [PersonaSize.size12]: 'ms-Persona--size12 ' + styles.rootIsSize12,
+  [PersonaSize.size24]: 'ms-Persona--size24 ' + styles.rootIsSize24,
+  [PersonaSize.size32]: 'ms-Persona--size32 ' + styles.rootIsSize32,
+  [PersonaSize.size40]: 'ms-Persona--size40 ' + styles.rootIsSize40,
+  [PersonaSize.size48]: 'ms-Persona--size48 ' + styles.rootIsSize48,
+  [PersonaSize.size72]: 'ms-Persona--size72 ' + styles.rootIsSize72,
+  [PersonaSize.size100]: 'ms-Persona--size100 ' + styles.rootIsSize100
 };
 
 export const PERSONA_PRESENCE = {

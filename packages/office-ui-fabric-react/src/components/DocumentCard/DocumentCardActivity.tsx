@@ -47,7 +47,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
           imageUrl={ person.profileImageSrc }
           initialsColor={ person.initialsColor }
           role='persentation'
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.size32 }
         />
 
       </div>

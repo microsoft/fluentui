@@ -120,7 +120,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
-            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
+            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.size32 }
             style={ style }
           />
         );
