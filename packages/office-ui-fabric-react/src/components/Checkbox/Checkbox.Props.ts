@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
+import { ICheckboxTest } from './CheckboxTest.Props';
 
 /**
  * Checkbox class interface.
  */
-export interface ICheckbox {
+export interface ICheckbox extends ICheckboxTest {
   /** Gets the current checked state. */
   checked: boolean;
 

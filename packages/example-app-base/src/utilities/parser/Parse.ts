@@ -28,28 +28,30 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
   let propertyType = (type: string) => type === 'interface' ? PropertyType.interface : PropertyType.enum;
 
   if (propsInterfaceOrEnumName) {
-    regex = new RegExp(`export (interface|enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`);
+    regex = new RegExp(`export (interface|enum) ${propsInterfaceOrEnumName} (?:extends )?(.*?)\\s?(?:<|\\{)(.*[\\r\\n]*)*?\\}`);
     let regexResult = regex.exec(source);
     if (regexResult && regexResult.length > 0) {
       parseInfo = _parseEnumOrInterface(regexResult);
       return [<IProperty>{
-        name: propsInterfaceOrEnumName,
+        name: _stripBracketText(propsInterfaceOrEnumName),
         propertyName: propsInterfaceOrEnumName + propertyNameSuffix(regexResult[1]),
         propertyType: propertyType(regexResult[1]),
-        property: parseInfo
+        property: parseInfo,
+        extends: _parseExtendedInterfaces(regexResult[2])
       }];
     }
   } else {
-    regex = new RegExp(`export (interface|enum) (\\S*?)(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`, 'g');
+    regex = new RegExp(`export (interface|enum) (\\S*?) (?:extends )?(.*?)\\s?(?:\\{)(.*[\\r\\n]*)*?\\}`, 'g');
     let regexResult: RegExpExecArray | null;
     let results: Array<IProperty> = [];
     while ((regexResult = regex.exec(source)) !== null) {
       parseInfo = _parseEnumOrInterface(regexResult);
       results.push(<IProperty>{
-        name: regexResult[2],
+        name: _stripBracketText(regexResult[2]),
         propertyName: regexResult[2] + propertyNameSuffix(regexResult[1]),
         propertyType: propertyType(regexResult[1]),
-        property: parseInfo
+        property: parseInfo,
+        extends: _parseExtendedInterfaces(regexResult[3])
       });
     }
 
@@ -69,4 +71,23 @@ function _parseEnumOrInterface(regexResult: RegExpExecArray): IInterfaceProperty
     parseInfo = parser.parse();
   }
   return parseInfo;
+}
+
+/**
+ * Split string by commas and strip out text in angle brackets. Returns array of interfaces being extended.
+ * @param orignalString String of all interfaces being extended from.
+ */
+function _parseExtendedInterfaces(orignalString: string): string[] {
+  return orignalString.split(', ').map((str: string) => {
+    return _stripBracketText(str);
+  });
+}
+
+/**
+ * Returns string stripped of text in angle brackets (generics), or returns original string if it contains no angle brackets
+ * @param str String to be stripped of text in brackets
+ */
+function _stripBracketText(str: string): string {
+  let indexOfBracket = str.indexOf('<');
+  return indexOfBracket === -1 ? str : str.substring(0, indexOfBracket);
 }
