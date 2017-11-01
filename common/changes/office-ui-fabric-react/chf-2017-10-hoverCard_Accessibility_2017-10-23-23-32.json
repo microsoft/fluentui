@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "remove outdated semantic slots",
-      "type": "patch"
+      "comment": "add accessibility behavior of hover card",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "chf@microsoft.com"
 }

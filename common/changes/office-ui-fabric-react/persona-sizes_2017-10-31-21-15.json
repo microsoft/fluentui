@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Ensure that Select All checkbox can still be focused",
+      "comment": "Persona: Changed PersonaSize names from descriptive to numerical. ",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

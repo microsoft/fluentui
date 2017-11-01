@@ -25,7 +25,7 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
 
   /**
    * Decides the size of the control.
-   * @defaultvalue PersonaSize.regular
+   * @defaultvalue PersonaSize.size48
    */
   size?: PersonaSize;
 
@@ -131,15 +131,51 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
 }
 
 export enum PersonaSize {
+  /**
+   * tiny size has been deprecated in favor of standardized numeric sizing. Use size12 instead.
+   * @deprecated
+   */
   tiny = 0,
+  /**
+   *
+   * extraExtraSmall size has been deprecated in favor of standardized numeric sizing. Use size24 instead.
+   * @deprecated
+   */
   extraExtraSmall = 1,
+  /**
+   * extraSmall size has been deprecated in favor of standardized numeric sizing. Use size32 instead.
+   * @deprecated
+   */
   extraSmall = 2,
+  /**
+   * small size has been deprecated in favor of standardized numeric sizing. Use size40 instead.
+   * @deprecated
+   */
   small = 3,
+  /**
+   * regular size has been deprecated in favor of standardized numeric sizing. Use size48 instead.
+   * @deprecated
+   */
   regular = 4,
+  /**
+   * large size has been deprecated in favor of standardized numeric sizing. Use size72 instead.
+   * @deprecated
+   */
   large = 5,
+  /**
+   * extraLarge size has been deprecated in favor of standardized numeric sizing. Use size100 instead.
+   * @deprecated
+   */
   extraLarge = 6,
   size28 = 7,
-  size16 = 8
+  size16 = 8,
+  size12 = 9,
+  size24 = 10,
+  size32 = 11,
+  size40 = 12,
+  size48 = 13,
+  size72 = 14,
+  size100 = 15
 }
 
 export enum PersonaPresence {
@@ -166,6 +202,14 @@ export enum PersonaInitialsColor {
   purple = 10,
   black = 11,
   orange = 12,
+  /**
+   * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   */
   red = 13,
-  darkRed = 14
+  darkRed = 14,
+  /**
+   * Tranparent is not intended to be used with typical initials due to accessibility issues.
+   * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
+   */
+  transparent = 15,
 }

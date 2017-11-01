@@ -92,6 +92,11 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Make callout content fixed on the set side
    */
   directionalHintFixed?: boolean;
+  
+  /**
+   * Trap focus or not
+   */
+  trapFocus?: boolean;
 }
 
 export enum ExpandingCardMode {

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 06 Oct 2017 10:18:41 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Oct 2017 02:03:33 GMT and should not be manually modified.
+
+## 5.1.2
+Wed, 25 Oct 2017 02:03:33 GMT
+
+### Patches
+
+- Minor css improvements to example header.
 
 ## 5.1.1
 Fri, 06 Oct 2017 10:18:41 GMT

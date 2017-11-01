@@ -1366,6 +1366,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   speakAs?: ICSSRule | string;
 
   /**
+   * The stroke property in CSS is for adding a border to SVG shapes.
+   * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#Stroke
+   */
+  stroke?: ICSSRule | string;
+
+  /**
    * SVG: Specifies the opacity of the outline on the current object.
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#StrokeOpacityProperty
    */

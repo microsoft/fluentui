@@ -335,6 +335,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * Close menu callout if it is open
+   */
+  @autobind
+  public dismissMenu(): void {
+    let { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
+  }
+
+  /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
    * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
@@ -918,11 +927,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (onScrollToItem) {
       // Use the custom scroll handler
       onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
-    } else {
+    } else if (this._selectedElement && this._selectedElement.offsetParent) {
       // We are using refs, scroll the ref into view
-      if (this._selectedElement && scrollSelectedToTop) {
+      if (scrollSelectedToTop) {
         this._selectedElement.offsetParent.scrollIntoView(true);
-      } else if (this._selectedElement) {
+      } else {
         let alignToTop = true;
 
         if (this._comboBoxMenu.offsetParent) {

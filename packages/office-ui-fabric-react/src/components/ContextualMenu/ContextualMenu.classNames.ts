@@ -16,6 +16,7 @@ export interface IMenuItemClassNames {
   root: string;
   linkContent: string;
   icon: string;
+  checkmarkIcon: string;
   subMenuIcon: string;
   label: string;
   splitButtonSeparator: string;
@@ -97,7 +98,7 @@ export const getItemClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && !checked && [{
+      !disabled && !expanded && [{
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
@@ -151,6 +152,12 @@ export const getItemClassNames = memoizeFunction((
     icon: [
       'ms-ContextualMenu-icon',
       knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
+      styles.icon,
+      iconClassName,
+    ],
+    checkmarkIcon: [
+      'ms-ContextualMenu-checkmarkIcon',
+      knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
       styles.icon,
       iconClassName,
     ],

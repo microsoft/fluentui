@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 20 Oct 2017 18:42:08 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+
+## 5.3.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Switch to .svg files for FolderCover images
 
 ## 5.3.0
 Fri, 20 Oct 2017 18:42:08 GMT

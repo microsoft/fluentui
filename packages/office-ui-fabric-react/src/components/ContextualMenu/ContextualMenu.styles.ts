@@ -33,11 +33,12 @@ export const getMenuItemStyles = memoizeFunction((
 ): IMenuItemStyles => {
   const { semanticColors, fonts } = theme;
   const ContextualMenuIconColor = semanticColors.menuIcon;
+  const ContextualMenuCheckColor = semanticColors.bodySubtext;
   const ContextualMenuTextColor = semanticColors.bodyText;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
-  const ContextualMenuTextSelectedColor = semanticColors.bodySelectedText;
-  const ContextualMenuTextDisabledColor = semanticColors.disabledText;
+  const ContextualMenuTextSelectedColor = semanticColors.bodyTextChecked;
+  const ContextualMenuTextDisabledColor = semanticColors.disabledBodyText;
   const ContextualMenuDividerColor = semanticColors.bodyDivider;
   const SplitButtonDividerHeight = 16;
 
@@ -85,7 +86,6 @@ export const getMenuItemStyles = memoizeFunction((
       ...getItemHighContrastStyles()
     },
     rootChecked: {
-      backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       ...getItemHighContrastStyles()
     },
     rootPressed: {
@@ -137,6 +137,14 @@ export const getMenuItemStyles = memoizeFunction((
     },
     iconColor: {
       color: ContextualMenuIconColor,
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'HighlightText',
+        }
+      }
+    },
+    checkmarkIcon: {
+      color: ContextualMenuCheckColor,
       selectors: {
         [MS_HIGHCONTRAST_ACTIVE]: {
           color: 'HighlightText',

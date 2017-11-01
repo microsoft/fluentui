@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Switch to .svg files for FolderCover images",
+      "comment": "Fix import that was causing build error",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "a.erich@gmail.com"
 }
