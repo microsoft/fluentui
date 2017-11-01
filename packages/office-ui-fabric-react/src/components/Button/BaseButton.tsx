@@ -171,7 +171,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       assign(
         buttonProps,
         {
-          'onClick': this._onToggleMenu,
+          'onKeyDown': this._onMenuKeyDown,
+          'onClick': this._onMenuClick,
           'aria-expanded': this._isExpanded,
           'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
           'aria-haspopup': true
@@ -395,7 +396,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
         className={ classNames && classNames.splitButtonContainer }
-        onKeyDown={ this._onSplitButtonKeyDown }
+        onKeyDown={ this._onMenuKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }
       >
         <span
@@ -428,25 +429,36 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         iconName: 'ChevronDown'
       };
     }
-    return (
-      <BaseButton
-        styles={ classNames }
-        checked={ this.props.checked }
-        disabled={ this.props.disabled }
-        onClick={ this._onToggleMenu }
-        menuProps={ undefined }
-        iconProps={ menuIconProps }
-      />
-    );
+
+    let splitButtonProps = {
+      'styles': classNames,
+      'checked': this.props.checked,
+      'disabled': this.props.disabled,
+      'onClick': this._onMenuClick,
+      'menuProps': undefined,
+      'iconProps': menuIconProps
+    };
+
+    return <BaseButton {...splitButtonProps} />;
   }
 
   @autobind
-  private _onSplitButtonKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.down) {
-      this._onToggleMenu();
+      let { onMenuClick } = this.props;
+      onMenuClick && onMenuClick(ev, this);
+      !ev.defaultPrevented && this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
     }
+  }
 
+  @autobind
+  private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
+    let { onMenuClick } = this.props;
+    onMenuClick && onMenuClick(ev, this);
+    !ev.defaultPrevented && this._onToggleMenu();
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 }

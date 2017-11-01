@@ -84,6 +84,10 @@ button.descriptiveOverflowButton {
   @include margin-left($spacingAroundItemButton * 2);
 }
 
+.overflowInitialsIcon {
+  color: $ms-color-neutralPrimary;
+}
+
 .screenReaderOnly {
   @include ms-screenReaderOnly;
 }

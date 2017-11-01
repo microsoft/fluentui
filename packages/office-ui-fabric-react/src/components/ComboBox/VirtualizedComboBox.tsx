@@ -37,6 +37,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> {
     );
   }
 
+  @autobind
   protected _onScrollToItem(itemIndex: number): void {
     // We are using the List component, call scrollToIndex
     this._list.scrollToIndex(itemIndex);

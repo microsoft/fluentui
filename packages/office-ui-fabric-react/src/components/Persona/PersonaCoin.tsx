@@ -23,16 +23,22 @@ import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS = {
-  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.size24]: 24,
   [PersonaSize.size28]: 28,
-  [PersonaSize.tiny]: 30,
-  [PersonaSize.extraSmall]: 32,
-  [PersonaSize.small]: 40,
-  [PersonaSize.regular]: 48,
-  [PersonaSize.large]: 72,
-  [PersonaSize.extraLarge]: 100
+  [PersonaSize.size12]: 30,
+  [PersonaSize.size32]: 32,
+  [PersonaSize.size40]: 40,
+  [PersonaSize.size48]: 48,
+  [PersonaSize.size72]: 72,
+  [PersonaSize.size100]: 100
 };
 
+/**
+ * These colors are considered reserved colors and can only be set with overrides:
+ * - Red is a color that often has a special meaning.
+ * - Transparent is not intended to be used with typical initials due to accessibility issues,
+ *   its primary use is for Facepile overflow buttons.
+ */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightGreen,
   PersonaInitialsColor.lightBlue,
@@ -47,8 +53,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.blue,
   PersonaInitialsColor.darkBlue,
   PersonaInitialsColor.orange,
-  PersonaInitialsColor.darkRed,
-  PersonaInitialsColor.red
+  PersonaInitialsColor.darkRed
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
@@ -61,7 +66,7 @@ export interface IPersonaState {
 export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
-    size: PersonaSize.regular,
+    size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: ''
   };
@@ -99,7 +104,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
-        { size !== PersonaSize.tiny && (
+        { size !== PersonaSize.size12 && (
           <div
             { ...coinProps }
             className={ css('ms-Persona-imageArea', styles.imageArea) }
