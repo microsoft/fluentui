@@ -87,6 +87,11 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Custom styles for this component
    */
   styles?: IExpandingCardStyles;
+
+  /**
+   * Make callout content fixed on the set side
+   */
+  directionalHintFixed?: boolean;
 }
 
 export enum ExpandingCardMode {

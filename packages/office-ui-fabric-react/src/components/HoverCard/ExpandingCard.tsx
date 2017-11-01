@@ -61,6 +61,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       theme,
       styles: customStyles,
       compactCardHeight,
+      directionalHintFixed = true,
       expandedCardHeight
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
@@ -76,7 +77,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         target={ targetElement }
         isBeakVisible={ false }
         directionalHint={ this.props.directionalHint }
-        directionalHintFixed={ true }
+        directionalHintFixed={ directionalHintFixed }
         finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }
         gapSpace={ this.props.gapSpace }
