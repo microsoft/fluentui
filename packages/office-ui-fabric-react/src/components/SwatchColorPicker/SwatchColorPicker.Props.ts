@@ -74,6 +74,12 @@ export interface ISwatchColorPickerProps {
    * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa). Defaults to true
    */
   shouldFocusCircularNavigate?: boolean;
+
+  /**
+   * If true do not contain the grid inside of a FocusZone.
+   * If false contain the grid inside of a FocusZone.
+   */
+  doNotContainWithinFocusZone?: boolean;
 }
 
 export interface IColorCellProps {

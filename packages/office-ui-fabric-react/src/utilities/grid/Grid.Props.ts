@@ -31,7 +31,6 @@ export interface IGridProps {
    */
   doNotContainWithinFocusZone?: boolean;
 
-
   /**
    * Optional, class name for the FocusZone container for the grid
    */
