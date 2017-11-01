@@ -129,6 +129,18 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:red;color:white;}');
   });
 
+  it('can expand previously defined rules in selectors', () => {
+    const className = styleToClassName({ background: 'red' });
+    const newClassName = styleToClassName({
+      selectors: {
+        '& > *': className
+      },
+    });
+
+    expect(newClassName).toEqual('css-1');
+    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1 > *{background:red;}');
+  });
+
   it('can expand an array of rules', () => {
     styleToClassName([
       { background: 'red' },
