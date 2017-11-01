@@ -8,7 +8,7 @@ import {
   customizable,
   autobind
 } from '../../Utilities';
-import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode, IExpandingCard } from './ExpandingCard.Props';
+import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
@@ -21,7 +21,7 @@ export interface IExpandingCardState {
 }
 
 @customizable('ExpandingCard', ['theme'])
-export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> implements IExpandingCard {
+export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
     expandedCardHeight: 384,
