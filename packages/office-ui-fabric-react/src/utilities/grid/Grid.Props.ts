@@ -21,7 +21,7 @@ export interface IGridProps {
 
   /**
    * Boolean indicating if the focus should support circular navigation.
-   * This prop is only relevant if containWithinFocusZone is true
+   * This prop is only relevant if doNotcontainWithinFocusZone is not true
    */
   shouldFocusCircularNavigate?: boolean;
 
