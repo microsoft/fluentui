@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/CalloutContainer/CalloutContainerPage').CalloutContainerPage,
+          key: 'CalloutContainer',
+          name: 'CalloutContainer',
+          url: '#/examples/calloutcontainer'
+        },
+        {
           component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
           key: 'Coachmark',
           name: 'Coachmark',
