@@ -51,6 +51,11 @@ export const getContextualMenuClassNames = memoizeFunction((
       'ms-ContextualMenu-container',
       styles.container,
       className,
+      [{
+        selectors: {
+          ':focus': { outline: 0 }
+        }
+      }]
     ],
     root: [
       'ms-ContextualMenu is-open',
@@ -116,7 +121,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
         }
       }],
     ],
@@ -134,7 +140,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],
@@ -155,7 +162,8 @@ export const getItemClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          '.ms-Fabric.is-focusVisible &:focus': styles.rootFocused
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus:hover': styles.rootFocused,
+          '.ms-Fabric.is-focusVisible &:hover': { background: 'inherit;' }
         }
       }]
     ],

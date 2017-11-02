@@ -101,6 +101,12 @@ $DropDown-item-height: 32px;
   }
 }
 
+.listWrapper {
+  &:focus {
+    outline: 0
+  }
+}
+
 .caretDownWrapper {
   position: absolute;
   top: 1px; // border
@@ -186,16 +192,14 @@ $DropDown-item-height: 32px;
   }
 
   &:hover {
-    background-color: $Dropdown-selectedItem-hover-bg;
-    color: $ms-color-black;
-
-    @include highContrastListItemState;
+    color: inherit;
   }
 
   @include focus-border();
 
   &:focus {
     background-color: $ms-color-neutralLighter;
+    @include highContrastListItemState;
   }
 
   &:active {
@@ -217,10 +221,6 @@ $DropDown-item-height: 32px;
 .item.itemIsSelected {
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
-
-  &:hover {
-    background-color: $Dropdown-selectedItem-bg;
-  }
 
   @include focus-border();
 

@@ -132,6 +132,11 @@ export interface ICheckboxStyles {
   checkboxHovered?: IStyle;
 
   /**
+   * Style override for checkbox when enabled/unchecked/focused.
+   */
+  checkboxFocused?: IStyle;
+
+  /**
    * Style override for checkbox when enabled/checked.
    */
   checkboxChecked?: IStyle;
@@ -140,6 +145,11 @@ export interface ICheckboxStyles {
    * Style override for checkbox when enabled/checked/hovered.
    */
   checkboxCheckedHovered?: IStyle;
+
+  /**
+   * Style override for checkbox when enabled/checked/focused.
+   */
+  checkboxCheckedFocused?: IStyle;
 
   /**
    * Style override for checkbox when disabled/unchecked.
@@ -180,6 +190,11 @@ export interface ICheckboxStyles {
    * Style override for text appearing with the checkbox when enabled/hovered.
    */
   textHovered?: IStyle;
+
+  /**
+   * Style override for text appearing with the checkbox when enabled/focused.
+   */
+  textFocused?: IStyle;
 
   /**
    * Style override for text appearing with the checkbox when disabled.

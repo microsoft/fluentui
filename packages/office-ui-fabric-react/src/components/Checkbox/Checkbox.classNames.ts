@@ -29,17 +29,20 @@ export const getClassNames = memoizeFunction((
       !disabled && [
         !isChecked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered
+            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered,
+            ':focus .ms-Checkbox-checkbox': styles.checkboxFocused
           }
         },
         isChecked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered
+            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered,
+            ':focus .ms-Checkbox-checkbox': styles.checkboxCheckedFocused
           }
         },
         {
           selectors: {
-            ':hover .ms-Checkbox-text': styles.textHovered
+            ':hover .ms-Checkbox-text': styles.textHovered,
+            ':focus .ms-Checkbox-text': styles.textFocused
           }
         }
       ]
