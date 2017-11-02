@@ -11,11 +11,18 @@
   box-sizing: content-box;
 }
 
-:global(.ms-Fabric.is-focusVisible) .cell {
+:global(.ms-Fabric.is-focusVisible) .cell, :global(.ms-Fabric.is-focusVisible) .circleCell {
   &:focus,
   &:focus::after {
     border: none;
     outline-color: transparent;
+  }
+}
+
+:global(.ms-Fabric.is-focusVisible) .circleCell {
+  &:focus,
+  &:focus::after {
+    border-radius: 100%;
   }
 }
 
@@ -53,9 +60,13 @@
   }
 }
 
-.cell {
+.cell, .circleCell {
   padding: 0px;
   overflow: visible;
+
+  &:focus {
+    width: 40px;
+  }
 
   &:hover .svg,
   &:focus .svg {
@@ -70,11 +81,6 @@
       border: 4px solid $ms-color-themeLight;
     }
 
-    &:hover .svg,
-    &:active .svg {
-      box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
-    }
-
     &:focus .svg,
     & .svg {
       &.circle {
@@ -86,9 +92,21 @@
     }
   }
 
-   &:focus .svg {
-      box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
-   }
+  &:focus::after {
+    box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
+    width: 38px;
+    height: 38px;
+    margin-top: 1px;
+
+    &.circle {
+      border-radius: 100%;
+    }
+  }
+
+  &:active .svg,
+  &:hover .svg {
+    box-shadow: none;
+  }
 
   &:hover .svg,
   &:focus .svg,
