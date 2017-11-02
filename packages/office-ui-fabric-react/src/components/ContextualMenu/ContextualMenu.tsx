@@ -3,14 +3,11 @@ import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } fro
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
-  getStyles,
-  getMenuItemStyles
-} from './ContextualMenu.styles';
-import {
   IMenuItemClassNames,
   IContextualMenuClassNames,
   getContextualMenuClassNames,
-  getItemClassNames
+  getItemClassNames,
+  getSplitButtonVerticalDividerClassNames
 } from './ContextualMenu.classNames';
 import {
   BaseComponent,
@@ -33,6 +30,9 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
+import {
+  VerticalDivider
+} from '../../Divider';
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
   dismissedMenuItemKey?: string;
@@ -210,7 +210,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onRenderSubMenu = this._onRenderSubMenu
     } = this.props;
 
-    let menuClassNames = this.props.getMenuClassNames ? this.props.getMenuClassNames : getContextualMenuClassNames;
+    let menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
     this._classNames = menuClassNames(theme!, className);
 
     let hasIcons = itemsHaveIcons(items);
@@ -316,7 +316,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
     let dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     let subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
-    let getClassNames = item.getItemClassNames ? item.getItemClassNames : getItemClassNames;
+    let getClassNames = item.getItemClassNames || getItemClassNames;
     let itemClassNames = getClassNames(
       this.props.theme!,
       !!item.disabled,
@@ -529,8 +529,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           className={ classNames.splitContainer }
         >
           { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+          { this._renderSplitDivider(item) }
           { this._renderSplitIconButton(item, classNames, index) }
-          { this._renderSplitDivider(classNames) }
         </span>
       </div>
     );
@@ -565,7 +565,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       disabled: item.disabled,
       className: classNames.splitMenu,
       subMenuProps: item.subMenuProps,
-      submenuIconProps: item.submenuIconProps
+      submenuIconProps: item.submenuIconProps,
+      split: true,
     } as IContextualMenuItem;
 
     return React.createElement('button',
@@ -575,14 +576,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._renderMenuItemChildren(itemProps, classNames, index, false, false));
   }
 
-  private _renderSplitDivider(classNames: IMenuItemClassNames) {
-    return <span className={ classNames.splitButtonSeparator } />;
+  private _renderSplitDivider(item: IContextualMenuItem) {
+    let getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
+    return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     const isItemChecked: boolean | null | undefined = getIsChecked(item);
     return (
-      <div className={ classNames.linkContent }>
+      <div className={ item.split ? classNames.linkContentMenu : classNames.linkContent }>
         { (hasCheckmarks) ? (
           <Icon
             iconName={ isItemChecked === true ? 'CheckMark' : '' }
