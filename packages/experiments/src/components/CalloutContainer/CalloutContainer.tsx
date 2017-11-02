@@ -24,7 +24,6 @@ import {
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
 
-const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 
@@ -109,33 +108,14 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
     let {
       className,
       target,
-      beakStyle,
-      beakWidth,
       calloutWidth,
-      backgroundColor,
-      calloutMaxHeight } = this.props;
+      calloutMaxHeight,
+      children } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
-    let beakStyleWidth = beakWidth;
 
     const styles: any = getClassNames();
 
-    // This is here to support the old way of setting the beak size until version 1.0.0.
-    // beakStyle is now deprecated and will be be removed at version 1.0.0
-    if (beakStyle === 'ms-Callout-smallbeak') {
-      beakStyleWidth = 16;
-    }
-
-    let beakReactStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.position : null),
-    };
-    beakReactStyle.height = beakStyleWidth;
-    beakReactStyle.width = beakStyleWidth;
-    beakReactStyle.backgroundColor = backgroundColor;
-    if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
-      beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
-      beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
-    }
     let directionalClassName = (positions && positions.directionalClassName)
       ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
@@ -162,6 +142,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
         >
+          { children }
           { // PUT THE CONTEXTUAL SURFACES HERE MAX HEIGHT MIGHT STILL NEEDED
             contentMaxHeight
           }
