@@ -109,7 +109,7 @@ export const getClassNames = memoizeFunction((
         checked && [
           {
             background: pillCheckedBackground,
-            borderColor: 'transparent',
+            borderColor: 'transparent'
           },
           styles.pillChecked,
           {
@@ -123,7 +123,10 @@ export const getClassNames = memoizeFunction((
               ],
               ':hover .ms-Toggle-thumb': [
                 styles.thumbCheckedHovered
-              ]
+              ],
+              [MS_HIGHCONTRAST_ACTIVE]: {
+                backgroundColor: 'WindowText'
+              }
             }
           }
         ]
@@ -155,12 +158,12 @@ export const getClassNames = memoizeFunction((
         height: '.5em',
         borderRadius: '.5em',
         position: 'absolute',
-        top: '.2em',
+        top: '.18em',
         transition: 'all 0.1s ease',
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
-        borderWidth: '.27em',
+        borderWidth: '.28em',
         borderStyle: 'solid',
         boxSizing: 'border-box',
         left: '.2em'
@@ -169,9 +172,15 @@ export const getClassNames = memoizeFunction((
       !disabled && checked && [
         {
           backgroundColor: thumbCheckedBackground,
-          left: '1.4em'
+          left: '1.4em',
+          selectors: {
+            [MS_HIGHCONTRAST_ACTIVE]: {
+              backgroundColor: 'Window',
+              borderColor: 'Window'
+            }
+          }
         },
-        styles.thumbChecked
+        styles.thumbChecked,
       ],
       disabled && [
         !checked && [
