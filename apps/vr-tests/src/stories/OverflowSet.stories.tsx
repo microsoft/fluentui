@@ -9,7 +9,6 @@ const onRenderItem = (item) => item.name;
 const onRenderOverflowButton = (overflowItems) => {
   return (
     <IconButton
-      iconProps={ { iconName: 'More' } }
       menuProps={ { items: overflowItems! } }
     />
   );
@@ -74,7 +73,7 @@ storiesOf('OverflowSet varient', module)
     </Screener>
   )).add('Vertical Direction', () => (
     <OverflowSet
-      itemDirection='vertical'
+      vertical
       items={ [
         {
           key: 'item1',
