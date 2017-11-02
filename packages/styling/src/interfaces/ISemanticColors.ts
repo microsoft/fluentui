@@ -213,6 +213,7 @@ export interface ISemanticColors {
   menuItemBackgroundHovered: string;
 
   /**
+   * @deprecated
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;

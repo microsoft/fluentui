@@ -2,6 +2,9 @@ import { memoizeFunction } from '../../Utilities';
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
+import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
+
 export interface IContextualMenuClassNames {
   container: string;
   root: string;
@@ -16,13 +19,25 @@ export interface IMenuItemClassNames {
   root: string;
   linkContent: string;
   icon: string;
+  checkmarkIcon: string;
   subMenuIcon: string;
   label: string;
-  splitButtonSeparator: string;
   splitContainer: string;
   splitPrimary: string;
   splitMenu: string;
+  linkContentMenu: string;
 }
+
+export const getSplitButtonVerticalDividerClassNames = memoizeFunction((theme: ITheme): IVerticalDividerClassNames => {
+  const { semanticColors } = theme;
+  const ContextualMenuDividerColor = semanticColors.bodyDivider;
+  return mergeStyleSets(getDividerClassNames(theme), {
+    divider: {
+      height: 16,
+      width: 1,
+    }
+  });
+});
 
 export const getContextualMenuClassNames = memoizeFunction((
   theme: ITheme,
@@ -97,7 +112,7 @@ export const getItemClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && !checked && [{
+      !disabled && !expanded && [{
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
@@ -148,9 +163,22 @@ export const getItemClassNames = memoizeFunction((
       'ms-ContextualMenu-linkContent',
       styles.linkContent
     ],
+    linkContentMenu: [
+      'ms-ContextualMenu-linkContent',
+      styles.linkContent,
+      {
+        justifyContent: 'center',
+      }
+    ],
     icon: [
       'ms-ContextualMenu-icon',
       knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
+      styles.icon,
+      iconClassName,
+    ],
+    checkmarkIcon: [
+      'ms-ContextualMenu-checkmarkIcon',
+      knownIcon && 'ms-ContextualMenu-checkmarkIcon ' && styles.checkmarkIcon,
       styles.icon,
       iconClassName,
     ],
@@ -163,7 +191,6 @@ export const getItemClassNames = memoizeFunction((
       'ms-ContextualMenu-itemText',
       styles.label
     ],
-    splitButtonSeparator: styles.splitButtonSeparator,
     splitContainer: styles.splitButtonFlexContainer,
   });
 });
