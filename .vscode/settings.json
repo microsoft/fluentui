@@ -20,7 +20,7 @@
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
-    "/**lib-es6": true,
+    "/**lib-es2015": true,
     "**/temp": true,
     "**/dist": true,
     "**/*.scss.ts": true,
@@ -32,7 +32,7 @@
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
-    "**/lib-es6": true,
+    "**/lib-es2015": true,
     "**/dist": true,
     "**/*.scss.ts": true
   },
