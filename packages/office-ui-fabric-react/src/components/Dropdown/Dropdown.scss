@@ -83,7 +83,7 @@ $DropDown-item-height: 32px;
     cursor: default;
 
     @include high-contrast {
-      border-color: GrayText;
+      border: 1px solid GrayText;
       color: GrayText;
     }
 

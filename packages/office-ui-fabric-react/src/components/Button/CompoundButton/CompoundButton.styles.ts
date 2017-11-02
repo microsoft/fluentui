@@ -16,6 +16,8 @@ import {
   standardStyles
 } from '../ButtonThemes';
 
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles,
@@ -92,10 +94,25 @@ export const getStyles = memoizeFunction((
 
     description: {
       color: theme.palette.white,
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
+
     },
 
     descriptionHovered: {
-      color: theme.palette.white
+      color: theme.palette.white,
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
     },
 
     descriptionPressed: {

@@ -1,6 +1,8 @@
 import { IButtonStyles } from './Button.Props';
 import { ITheme } from '../../Styling';
 
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+
 export function standardStyles(theme: ITheme): IButtonStyles {
   let s = theme.semanticColors;
 
@@ -13,6 +15,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
   let buttonTextHovered = s.buttonTextHovered;
   let buttonTextChecked = s.buttonTextChecked;
   let buttonTextCheckedHovered = s.buttonTextCheckedHovered;
+
 
   return {
     root: {
@@ -93,17 +96,38 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
   return {
     root: {
       backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
+      color: theme.palette.white,
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
     },
 
     rootHovered: {
       backgroundColor: theme.palette.themeDark,
-      color: theme.palette.white
+      color: theme.palette.white,
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
     },
 
     rootPressed: {
       backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
+      color: theme.palette.white,
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
     },
 
     rootExpanded: {
@@ -119,6 +143,16 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     rootCheckedHovered: {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white
+    },
+
+    rootDisabled: {
+      selectors: {
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window'
+        }
+      },
     },
 
     // Split button styles
@@ -161,7 +195,6 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     splitButtonMenuIconDisabled: {
       color: theme.palette.neutralTertiary
-    },
-
+    }
   };
 }
