@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.4.0",
+      "tag": "@uifabric/experiments_v5.4.0",
+      "date": "Thu, 02 Nov 2017 18:20:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "d38e848fb2564059b1227df92b3e7916b85a6d74",
+            "comment": "Fix import that was causing build error"
+          }
+        ],
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "5f56a5cb0576b0e9fa5f5a95ca23be6e13a8a530",
+            "comment": "Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.17.1 <6.0.0` to `>=5.18.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.1",
       "tag": "@uifabric/experiments_v5.3.1",
       "date": "Tue, 24 Oct 2017 10:21:08 GMT",
