@@ -1,4 +1,4 @@
-import update = require('immutability-helper');
+import * as update from 'immutability-helper';
 import { Promise } from 'es6-promise';
 import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, IDataProvider } from './types/index';

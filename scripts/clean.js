@@ -6,7 +6,7 @@ const path = require('path');
   'temp',
   'dist',
   'lib-amd',
-  'lib-es6',
+  'lib-es2015',
   'coverage'
 ].forEach(folder => {
   rimraf(path.resolve(process.cwd(), folder));
