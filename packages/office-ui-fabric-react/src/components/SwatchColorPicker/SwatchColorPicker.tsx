@@ -71,7 +71,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
-      className
+      className,
+      doNotContainWithinFocusZone
     } = this.props;
 
     if (colorCells.length < 1 || columnCount < 1) {
@@ -86,6 +87,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         positionInSet={ positionInSet && positionInSet }
         setSize={ setSize && setSize }
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
+        doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
         containerClassName={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer, className) }
       />);

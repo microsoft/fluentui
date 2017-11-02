@@ -24,7 +24,7 @@ const styles: any = stylesImport;
 export class Persona extends BaseComponent<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
-    size: PersonaSize.regular,
+    size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: ''
   };
@@ -111,7 +111,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
         style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
       >
         <PersonaCoin { ...personaCoinProps } />
-        { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
+        { (!hidePersonaDetails || (size === PersonaSize.size12)) && personaDetails }
       </div>
     );
   }
