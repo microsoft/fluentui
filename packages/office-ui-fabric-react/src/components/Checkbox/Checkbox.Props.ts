@@ -103,7 +103,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   /**
    * Custom icon props for the check mark rendered by the checkbox
    */
-  checkmarkIconProps: IIconProps;
+  checkmarkIconProps?: IIconProps;
 }
 
 export interface ICheckboxStyles {
