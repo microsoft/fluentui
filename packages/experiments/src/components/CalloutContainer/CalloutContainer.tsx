@@ -1,30 +1,61 @@
 // @TODO Rename to ContextualSurface
 import * as React from 'react';
+
+// Callout
+import { ICalloutContainerProps } from './CalloutContainer.Props';
+import { getClassNames } from './CalloutContainer.classNames';
+
+// import * as CalloutContainerStyles from './';
+
+// Utilites
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import {
   BaseComponent,
   IPoint,
+  IRectangle,
+  assign,
+  autobind,
+  css,
+  elementContains,
   focusFirstChild,
   getWindow,
   getDocument
 } from '../../Utilities';
-import { ICalloutContainerProps } from './CalloutContainer.Props';
+import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
-import * as stylesImport from './CalloutContainer.scss';
-import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from '../../utilities/positioning';
 
-const styles: any = stylesImport;
+const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
+const BORDER_WIDTH: number = 1;
 
-export interface ICalloutState {
+export interface ICalloutContainerState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
   heightOffset?: number;
 }
 
-export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> {
+export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICalloutContainerState> {
+  public static defaultProps = {
+    preventDismissOnScroll: false,
+    isBeakVisible: true,
+    beakWidth: 16,
+    gapSpace: 0,
+    minPagePadding: 8,
+    directionalHint: DirectionalHint.bottomAutoEdge
+  };
 
-  constructor(props: ICalloutProps) {
+  private _didSetInitialFocus: boolean;
+  private _hostElement: HTMLDivElement;
+  private _calloutElement: HTMLDivElement;
+  private _targetWindow: Window;
+  private _bounds: IRectangle;
+  private _maxHeight: number | undefined;
+  private _positionAttempts: number;
+  private _target: HTMLElement | MouseEvent | IPoint | null;
+  private _setHeightOffsetTimer: number;
+
+  constructor(props: ICalloutContainerProps) {
     super(props);
 
     this._warnDeprecations({ 'beakStyle': 'beakWidth' });
@@ -48,7 +79,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> 
     this._setTargetWindowAndElement(this._getTarget());
   }
 
-  public componentWillUpdate(newProps: ICalloutProps) {
+  public componentWillUpdate(newProps: ICalloutContainerProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
     let newTarget = this._getTarget(newProps);
     let oldTarget = this._getTarget();
@@ -56,6 +87,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> 
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
+
     if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
       this._maxHeight = undefined;
     }
@@ -75,23 +107,18 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> 
       return null;
     }
     let {
-      role,
-      ariaLabel,
-      ariaDescribedBy,
-      ariaLabelledBy,
       className,
       target,
-      isBeakVisible,
       beakStyle,
-      children,
       beakWidth,
       calloutWidth,
-      finalHeight,
       backgroundColor,
       calloutMaxHeight } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
+
+    const styles: any = getClassNames();
 
     // This is here to support the old way of setting the beak size until version 1.0.0.
     // beakStyle is now deprecated and will be be removed at version 1.0.0
@@ -116,8 +143,6 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : calloutMaxHeight!;
 
-    let beakVisible = isBeakVisible && (!!target);
-
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -137,29 +162,9 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> 
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
         >
-
-          { beakVisible && (
-            <div
-              className={ css('ms-Callout-beak', styles.beak) }
-              style={ beakReactStyle }
-            />) }
-
-          { beakVisible &&
-            (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
-          <Popup
-            role={ role }
-            ariaLabel={ ariaLabel }
-            ariaDescribedBy={ ariaDescribedBy }
-            ariaLabelledBy={ ariaLabelledBy }
-            className={ css('ms-Callout-main', styles.main, {
-              [styles.overFlowYHidden]: !!finalHeight
-            }) }
-            onDismiss={ this.dismiss }
-            shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
-          >
-            { children }
-          </Popup>
+          { // PUT THE CONTEXTUAL SURFACES HERE MAX HEIGHT MIGHT STILL NEEDED
+            contentMaxHeight
+          }
         </div>
       </div>
     );
@@ -357,7 +362,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, {}> 
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: ICalloutContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
     let { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }
