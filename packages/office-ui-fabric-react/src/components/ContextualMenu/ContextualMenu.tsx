@@ -22,7 +22,9 @@ import {
   KeyCodes,
   getDocument,
   getWindow,
-  customizable
+  customizable,
+  getFirstFocusable,
+  getLastFocusable
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
@@ -272,7 +274,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }
         >
-          <div style={ contextMenuStyle } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ this._classNames.container }>
+          <div
+            role='menu'
+            style={ contextMenuStyle }
+            ref={ (host: HTMLDivElement) => this._host = host }
+            id={ id }
+            className={ this._classNames.container }
+            tabIndex={ 0 }
+            onKeyDown={ this._onMenuKeyDown }
+          >
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
             { (items && items.length) ? (
               <FocusZone
@@ -281,7 +291,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 isCircularNavigation={ true }
               >
                 <ul
-                  role='menu'
                   aria-label={ ariaLabel }
                   aria-labelledby={ labelElementId }
                   className={ this._classNames.list }
@@ -485,8 +494,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onClick: this._onItemClick.bind(this, item),
       onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
-      onMouseLeave: this._onMouseLeave,
+      onMouseLeave: this._onMouseItemLeave.bind(this, item),
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+      onMouseMove: this._onItemMouseMove.bind(this, item),
       disabled: item.isDisabled || item.disabled,
       href: item.href,
       title: item.title,
@@ -639,6 +649,31 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  @autobind
+  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    if (ev.which === KeyCodes.escape) {
+      this._isFocusingPreviousElement = true;
+      ev.preventDefault();
+      ev.stopPropagation();
+      this.dismiss(ev);
+      return;
+    }
+
+    if (!this._host) {
+      return;
+    }
+
+    let elementToFocus = ev.which === KeyCodes.up ?
+      getLastFocusable(this._host, (this._host.lastChild as HTMLElement), true) :
+      ev.which === KeyCodes.down ?
+        getFirstFocusable(this._host, (this._host.firstChild as HTMLElement), true) :
+        null;
+
+    if (elementToFocus) {
+      elementToFocus.focus();
+    }
+  }
+
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
 
@@ -649,11 +684,37 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
       }
     }
+
+    targetElement.focus();
+  }
+
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+    let targetElement = ev.currentTarget as HTMLElement;
+
+    if (targetElement === this._targetWindow.document.activeElement as HTMLElement) {
+      return;
+    }
+
+    if (item.key !== this.state.expandedMenuItemKey) {
+      if (hasSubmenuItems(item)) {
+        this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
+      } else {
+        this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
+      }
+    }
+
+    targetElement.focus();
   }
 
   @autobind
-  private _onMouseLeave(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
     this._async.clearTimeout(this._enterTimerId);
+
+    if (item.key === this.state.expandedMenuItemKey && hasSubmenuItems(item)) {
+      return;
+    }
+
+    this._host.focus();
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
