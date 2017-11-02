@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Button: Added flexShrink: 0 to icons in button so long text won't make them shrink",
-      "type": "patch"
+      "comment": "OverflowSet: Support vertical orientation",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",

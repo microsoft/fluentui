@@ -31,7 +31,7 @@ export class PersonaAlternateExample extends React.Component<React.Props<Persona
       <div>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraExtraSmall }
+          size={ PersonaSize.size24 }
           presence={ PersonaPresence.none }
           hidePersonaDetails={ !renderPersonaDetails }
         />
@@ -43,7 +43,7 @@ export class PersonaAlternateExample extends React.Component<React.Props<Persona
         />
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.size32 }
           presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />

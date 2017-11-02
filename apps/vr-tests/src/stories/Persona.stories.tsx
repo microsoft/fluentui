@@ -30,13 +30,13 @@ storiesOf('Persona', module)
   .add('Tiny', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.tiny }
+      size={ PersonaSize.size12 }
       presence={ PersonaPresence.offline }
     />
   )).add('Extra extra small', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.extraExtraSmall }
+      size={ PersonaSize.size24 }
       presence={ PersonaPresence.none }
     />
   )).add('Size 28', () => (
@@ -48,20 +48,20 @@ storiesOf('Persona', module)
   )).add('Extra small', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.extraSmall }
+      size={ PersonaSize.size32 }
       presence={ PersonaPresence.online }
     />
   )).add('Extra small with details', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.extraSmall }
+      size={ PersonaSize.size32 }
       presence={ PersonaPresence.none }
       showSecondaryText
     />
   )).add('Small', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.small }
+      size={ PersonaSize.size40 }
       presence={ PersonaPresence.away }
     />
   )).add('Medium', () => (
@@ -78,13 +78,13 @@ storiesOf('Persona', module)
   )).add('Large', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.large }
+      size={ PersonaSize.size72 }
       presence={ PersonaPresence.dnd }
     />
   )).add('Extra large', () => (
     <Persona
       { ...examplePersona }
-      size={ PersonaSize.extraLarge }
+      size={ PersonaSize.size100 }
       presence={ PersonaPresence.blocked }
     />
   )).add('Initials', () => (

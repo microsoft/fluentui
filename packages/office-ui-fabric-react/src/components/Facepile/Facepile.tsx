@@ -34,7 +34,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
-    personaSize: PersonaSize.extraSmall
+    personaSize: PersonaSize.size32
   };
 
   private _ariaDescriptionId: string;
