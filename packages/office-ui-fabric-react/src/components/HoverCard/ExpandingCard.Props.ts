@@ -90,6 +90,7 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Make callout content fixed on the set side
+   * @default true
    */
   directionalHintFixed?: boolean;
 
