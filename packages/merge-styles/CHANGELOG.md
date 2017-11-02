@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2017 18:20:18 GMT and should not be manually modified.
+
+## 5.5.1
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Patches
+
+- When selectors use previously registered class names as values, they are now correctly auto expanded.
 
 ## 5.5.0
 Tue, 24 Oct 2017 10:21:08 GMT

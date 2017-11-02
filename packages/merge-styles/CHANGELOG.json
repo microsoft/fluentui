@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.5.1",
+      "tag": "@uifabric/merge-styles_v5.5.1",
+      "date": "Thu, 02 Nov 2017 18:20:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "stephenzsy <stephen.zsy@gmail.com>",
+            "commit": "5e58d5a68692b2fcef119444fb52361b51118b1f",
+            "comment": "When selectors use previously registered class names as values, they are now correctly auto expanded."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/merge-styles_v5.5.0",
       "date": "Tue, 24 Oct 2017 10:21:08 GMT",
