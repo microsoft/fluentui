@@ -9,7 +9,6 @@ const onRenderItem = (item) => item.name;
 const onRenderOverflowButton = (overflowItems) => {
   return (
     <IconButton
-      iconProps={ { iconName: 'More' } }
       menuProps={ { items: overflowItems! } }
     />
   );
@@ -31,6 +30,50 @@ storiesOf('OverflowSet', module)
     </Screener>
   )).add('Root', () => (
     <OverflowSet
+      items={ [
+        {
+          key: 'item1',
+          name: 'Link 1'
+        },
+        {
+          key: 'item2',
+          name: 'Link 2'
+        },
+        {
+          key: 'item3',
+          name: 'Link 3'
+        }
+      ] }
+      overflowItems={ [
+        {
+          key: 'item4',
+          name: 'Overflow Link 1'
+        },
+        {
+          key: 'item5',
+          name: 'Overflow Link 2'
+        }
+      ]
+      }
+      onRenderOverflowButton={ onRenderOverflowButton }
+      onRenderItem={ onRenderItem }
+    />
+  ));
+
+storiesOf('OverflowSet varient', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={ new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      { story() }
+    </Screener>
+  )).add('Vertical Direction', () => (
+    <OverflowSet
+      vertical
       items={ [
         {
           key: 'item1',
