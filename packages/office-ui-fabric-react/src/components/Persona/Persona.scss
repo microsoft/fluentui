@@ -288,6 +288,10 @@ $ms-Persona-presenceSizeXl: 28px;
       top: 9px;
       border: 1px solid WindowText;
     }
+
+    .presenceIcon {
+      display: none;
+    }
   }
 
   .details {
@@ -582,6 +586,10 @@ $ms-Persona-presenceSizeXl: 28px;
   .primaryText {
     font-size: $ms-font-size-l;
   }
+
+  .presenceIcon {
+    font-size: 6px;
+  }
 }
 
 
@@ -617,7 +625,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .presenceIcon {
     line-height: $ms-Persona-presenceSizeLg;
-    font-size: $ms-font-size-m;
+    font-size: $ms-font-size-s;
   }
 
   .primaryText {
@@ -666,7 +674,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .presenceIcon {
     line-height: $ms-Persona-presenceSizeXl;
-    font-size: $ms-font-size-xl;
+    font-size: $ms-font-size-m;
     position: relative;
     top: 1px;
   }
