@@ -63,6 +63,7 @@ $ms-Persona-presenceSizeXxs: 8px;
 $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
+$ms-Persona-presenceBorder: 2px;
 
 .root {
   @include ms-normalize;
@@ -195,9 +196,9 @@ $ms-Persona-presenceSizeXl: 28px;
   width: $ms-Persona-presenceSizeMd;
   border-radius: 50%;
   top: auto;
-  @include ms-right(0px);
-  bottom: -1px;
-  border: 2px solid $ms-color-white;
+  @include ms-right(-$ms-Persona-presenceBorder);
+  bottom: -$ms-Persona-presenceBorder;
+  border: $ms-Persona-presenceBorder solid $ms-color-white;
   text-align: center;
   box-sizing: content-box;
   // Setting -ms-high-contrast-adjust to none Overrides the default behaviors of high contrast more in the Edge browser.
@@ -212,7 +213,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .presenceIcon {
     color: $ms-color-white;
-    font-size: 8px;
+    font-size: 6px;
     line-height: $ms-Persona-presenceSizeMd;
     vertical-align: top;
 
@@ -332,8 +333,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Size 16 Persona
 //
 .root.rootIsSize16 {
-  height: $ms-Persona-size16;
-  min-width: $ms-Persona-size16;
+  height: $ms-Persona-size16 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size16  + $ms-Persona-presenceBorder;
   overflow: hidden;
 }
 
@@ -360,14 +361,13 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    height: $ms-Persona-presenceSizeXxs;
-    width: $ms-Persona-presenceSizeXxs;
-    border: 2px solid $ms-color-white;
+    height: $ms-Persona-presenceSizeXxs - 2px;
+    width: $ms-Persona-presenceSizeXxs - 2px;
+    border-width: 1px;
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
   }
 
   .primaryText {
@@ -383,8 +383,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Size 24 Persona
 //
 .root.rootIsSize24 {
-  height: $ms-Persona-size32;
-  min-width: $ms-Persona-size32;
+  height: $ms-Persona-size24 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size24 + $ms-Persona-presenceBorder;
 }
 
 .rootIsSize24 {
@@ -408,8 +408,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
-    border: 2px solid $ms-color-white;
-    top: 18px;
 
     &:after {
       display: none;
@@ -449,8 +447,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Size 28 Persona
 //
 .root.rootIsSize28 {
-  height: $ms-Persona-size28;
-  min-width: $ms-Persona-size28;
+  height: $ms-Persona-size28 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size28 + $ms-Persona-presenceBorder;
   overflow: hidden;
 }
 
@@ -475,8 +473,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
-    border: 2px solid $ms-color-white;
-    top: 18px;
 
     &:after {
       display: none;
@@ -516,8 +512,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Size 32 Persona
 //
 .root.rootIsSize32 {
-  height: $ms-Persona-size32;
-  min-width: $ms-Persona-size32;
+  height: $ms-Persona-size32 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size32 + $ms-Persona-presenceBorder;
 }
 
 .rootIsSize32 {
@@ -536,6 +532,15 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
     height: $ms-Persona-size32;
     line-height: $ms-Persona-size32;
+  }
+
+  .presence {
+    height: $ms-Persona-presenceSizeXxs;
+    width: $ms-Persona-presenceSizeXxs;
+  }
+
+  .presenceIcon {
+    display: none;
   }
 
   .primaryText {
@@ -561,8 +566,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Size 40 Persona
 //
 .root.rootIsSize40 {
-  height: $ms-Persona-size40;
-  min-width: $ms-Persona-size40;
+  height: $ms-Persona-size40 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size40 + $ms-Persona-presenceBorder;
 }
 
 .rootIsSize40 {
@@ -586,18 +591,14 @@ $ms-Persona-presenceSizeXl: 28px;
   .primaryText {
     font-size: $ms-font-size-l;
   }
-
-  .presenceIcon {
-    font-size: 6px;
-  }
 }
 
 
 //== Modifier: Size 72 Persona
 //
 .root.rootIsSize72 {
-  height: $ms-Persona-size72;
-  min-width: $ms-Persona-size72;
+  height: $ms-Persona-size72 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size72 + $ms-Persona-presenceBorder;
 }
 
 .rootIsSize72 {
@@ -645,8 +646,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Size 100 Persona
 //
 .root.rootIsSize100 {
-  height: $ms-Persona-size100;
-  min-width: $ms-Persona-size100;
+  height: $ms-Persona-size100 + $ms-Persona-presenceBorder;
+  min-width: $ms-Persona-size100 + $ms-Persona-presenceBorder;
 }
 
 .rootIsSize100 {
@@ -675,8 +676,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .presenceIcon {
     line-height: $ms-Persona-presenceSizeXl;
     font-size: $ms-font-size-m;
-    position: relative;
-    top: 1px;
   }
 
   .primaryText {
