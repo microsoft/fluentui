@@ -72,7 +72,7 @@
 
     &:hover .svg,
     &:active .svg {
-      box-shadow: 0 0 0 1px $ms-color-black;
+      box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
     }
 
     &:focus .svg,
@@ -87,7 +87,7 @@
   }
 
    &:focus .svg {
-      box-shadow: 0 0 0 1px $ms-color-black;
+      box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
    }
 
   &:hover .svg,
