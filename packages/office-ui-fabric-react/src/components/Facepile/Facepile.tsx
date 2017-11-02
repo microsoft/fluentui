@@ -181,7 +181,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           title={ personaNames }
           size={ personaSize }
           onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
-          initialsColor={ PersonaInitialsColor.transparent }
+          initialsColor={ PersonaInitialsColor.darkGreen }
         />
       </FacepileButton>
     );

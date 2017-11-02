@@ -79,7 +79,7 @@ $DropDown-item-height: 32px;
   .title {
     background-color: $ms-color-neutralLighter;
     border: none;
-    color: $ms-color-neutralTertiary;
+    color: $ms-color-neutralPrimary;
     cursor: default;
 
     @include high-contrast {
