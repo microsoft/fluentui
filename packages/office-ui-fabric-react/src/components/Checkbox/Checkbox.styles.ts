@@ -24,6 +24,7 @@ export const getStyles = memoizeFunction((
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+  const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBackgroundDisabled = semanticColors.disabledText;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
@@ -88,9 +89,11 @@ export const getStyles = memoizeFunction((
     },
     checkboxCheckedHovered: {
       background: checkboxBackgroundCheckedHovered,
+      borderColor: checkboxBorderColorCheckedHovered
     },
     checkboxCheckedFocused: {
       background: checkboxBackgroundCheckedHovered,
+      borderColor: checkboxBorderColorCheckedHovered
     },
     checkboxDisabled: {
       background: checkboxBackgroundDisabled,
