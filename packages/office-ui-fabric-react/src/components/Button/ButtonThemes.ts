@@ -16,7 +16,6 @@ export function standardStyles(theme: ITheme): IButtonStyles {
   let buttonTextChecked = s.buttonTextChecked;
   let buttonTextCheckedHovered = s.buttonTextCheckedHovered;
 
-
   return {
     root: {
       backgroundColor: buttonBackground,
