@@ -65,6 +65,10 @@ export interface ISliderProps {
   ariaLabel?: string;
 
   /**
+   * A text description of the Slider number value for the benefit of screen readers. This should be used when the Slider number value is not accurately represented by a number.
+   */
+  ariaValueText?: (value: number) => string;
+  /**
    * Optional flag to render the slider vertically. Defaults to rendering horizontal.
    */
   vertical?: boolean;
