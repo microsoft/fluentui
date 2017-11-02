@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CalloutContainer } from './CalloutContainer';
-import { DirectionalHint } from 'office-ui-fabric-react/common/DirectionalHint';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import {
   IPoint,
   IRectangle,
