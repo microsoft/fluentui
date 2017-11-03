@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 02 Nov 2017 18:20:18 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Nov 2017 14:09:56 GMT and should not be manually modified.
+
+## 5.19.0
+Fri, 03 Nov 2017 14:09:56 GMT
+
+### Minor changes
+
+- OverflowSet: Support vertical orientation
+
+### Patches
+
+- SpinButton: Allow for styling of the icon when the component is disabled
 
 ## 5.18.0
 Thu, 02 Nov 2017 18:20:18 GMT

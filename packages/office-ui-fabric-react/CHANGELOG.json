@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.19.0",
+      "tag": "office-ui-fabric-react_v5.19.0",
+      "date": "Fri, 03 Nov 2017 14:09:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "e97a8c36e74abd3d487f2ae8b2faafde009b2d67",
+            "comment": "OverflowSet: Support vertical orientation"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "f20fb3eca8d4f9e369e9f93e587c2912bbb11ac8",
+            "comment": "SpinButton: Allow for styling of the icon when the component is disabled"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.0",
       "tag": "office-ui-fabric-react_v5.18.0",
       "date": "Thu, 02 Nov 2017 18:20:18 GMT",
