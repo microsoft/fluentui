@@ -91,7 +91,7 @@ export default class Focus {
   public static getFocusableChildren(element: HTMLElement, ignoreTabIndex: boolean = false): HTMLElement[] {
     const children: HTMLElement[] = [];
     const nodes: NodeList = Focus._queryFocusableSelector(element);
-    for (let i: number = 0; i < nodes.length; i++) {
+    for (let i = 0; i < nodes.length; i++) {
       const node: HTMLElement = nodes[i] as HTMLElement;
       if (Focus.isElementFocusable(node, ignoreTabIndex) && Focus.getFocusableParent(node, element) === element) {
         children.push(node);
@@ -100,11 +100,11 @@ export default class Focus {
 
     // Sort list to bring up the elements with non-zero tabindex
     // Using insertion sort to ensure stabe sorting
-    for (let i: number = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       const iTabIndex: number = parseInt(children[i].getAttribute('tabindex') || '0', 10);
       if (iTabIndex > 0) {
         const e: HTMLElement = children.splice(i, 1)[0];
-        for (let j: number = 0; j < i; j++) {
+        for (let j = 0; j < i; j++) {
           const jTabIndex: number = parseInt(children[j].getAttribute('tabindex') || '0', 10);
           if (jTabIndex === 0 || iTabIndex < jTabIndex) {
             children.splice(j, 0, e);
@@ -137,7 +137,7 @@ export default class Focus {
    */
   public static getFirstFocusableChild(elem: HTMLElement, ignoreTabIndex: boolean = false): HTMLElement | undefined {
     const nodes: NodeList = Focus._queryFocusableSelector(elem);
-    for (let i: number = 0; i < nodes.length; i++) {
+    for (let i = 0; i < nodes.length; i++) {
       const node: HTMLElement = nodes[i] as HTMLElement;
       if (Focus.isElementFocusable(node, ignoreTabIndex)) {
         return node;
@@ -157,19 +157,6 @@ export default class Focus {
     return Focus._getFocusableDescendants(element, ignoreTabIndex, []);
   }
 
-  private static _getFocusableDescendants(
-    element: HTMLElement,
-    ignoreTabIndex: boolean = false,
-    descendants: HTMLElement[]
-  ): HTMLElement[] {
-    descendants.push(element);
-    const children: HTMLElement[] = Focus.getFocusableChildren(element, ignoreTabIndex);
-    for (const child of children) {
-      descendants.concat(Focus._getFocusableDescendants(child, ignoreTabIndex, descendants));
-    }
-    return descendants;
-  }
-
   /**
    * Gets all the siblings of the given element inside the given root's Focusable Sub-Tree. The order is the
    * same as the default tab order of the elements. The root defaults to document body.
@@ -182,11 +169,11 @@ export default class Focus {
     const parent: HTMLElement = Focus.getFocusableParent(element, root);
     if (parent) {
       const children: HTMLElement[] = Focus.getFocusableChildren(parent);
-      // Remove input element and start the list from its next sibling
+      // Remove input element and its children and start the list from its next sibling
       const siblings: HTMLElement[] = [];
-      let insertPointer: number = 0;
+      let insertPointer = 0;
       for (const child of children) {
-        if (child !== element) {
+        if (child !== element && !DomTraversal.contains(element, child)) {
           siblings.splice(insertPointer++, 0, child);
         } else {
           insertPointer = 0;
@@ -284,8 +271,21 @@ export default class Focus {
     return false;
   }
 
+  private static _getFocusableDescendants(
+    element: HTMLElement,
+    ignoreTabIndex: boolean = false,
+    descendants: HTMLElement[] = []
+  ): HTMLElement[] {
+    descendants.push(element);
+    const children: HTMLElement[] = Focus.getFocusableChildren(element, ignoreTabIndex);
+    for (const child of children) {
+      descendants.concat(Focus._getFocusableDescendants(child, ignoreTabIndex, descendants));
+    }
+    return descendants;
+  }
+
   private static _queryFocusableSelector(element: HTMLElement): NodeList {
-    const selector: string =
+    const selector =
       'button,input,textarea,select,a[href]:not([href=\'\']),\
     [tabindex],[contenteditable=\'true\'], [data-is-focusable=\'true\']';
     return element.querySelectorAll(selector);

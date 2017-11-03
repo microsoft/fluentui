@@ -4,6 +4,7 @@
  * @public
  */
 export default class ScreenReader {
+  // tslint:disable-next-line:no-inferrable-types
   private static _cssHidden: string = `position:absolute;text-indent:-9999px;
     width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;border:0;`;
 

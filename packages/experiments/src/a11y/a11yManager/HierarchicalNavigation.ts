@@ -13,7 +13,7 @@ export default class HierarchicalNavigation extends BaseNavigationMode {
     return ['next', 'prev', 'inside', 'outside'];
   }
 
-  protected _navigate(event: IKeyboardEvent, modeRoot: HTMLElement, currentElement: HTMLElement): HTMLElement | undefined {
+  protected _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement): HTMLElement | undefined {
     let elementToGo: HTMLElement | undefined;
 
     if (Keyboard.isTab(event)) {
@@ -47,7 +47,7 @@ export default class HierarchicalNavigation extends BaseNavigationMode {
     return elementToGo;
   }
 
-  protected _select(selector: string, element: HTMLElement): HTMLElement | undefined {
+  protected _select(modeRoot: HTMLElement, selector: string, element: HTMLElement): HTMLElement | undefined {
     switch (selector) {
       case 'next':
         return this._getNextElement(element);
@@ -68,7 +68,7 @@ export default class HierarchicalNavigation extends BaseNavigationMode {
    *  - is the manager's root element
    */
   private _getParent(element: HTMLElement): HTMLElement {
-    const result: HTMLElement = DomTraversal.getFirstMatchingParent(element, (it: HTMLElement) => {
+    const result: HTMLElement | undefined = DomTraversal.getFirstMatchingParent(element, (it: HTMLElement) => {
       const hierAttr: A11yAttribute =
         A11yAttribute.getFromElementByType(this.manager.prefix, it, A11yAttributeType.NavigateByHierarchy)[0];
 
@@ -83,7 +83,7 @@ export default class HierarchicalNavigation extends BaseNavigationMode {
    * marked up with NavigateByHierarchy attribute.
    */
   private _getHierarchyRoot(element: HTMLElement): HTMLElement {
-    const result: HTMLElement = DomTraversal.getFirstMatchingParent(element, (it: HTMLElement) => {
+    const result: HTMLElement | undefined = DomTraversal.getFirstMatchingParent(element, (it: HTMLElement) => {
       const hierAttr: A11yAttribute =
         A11yAttribute.getFromElementByType(this.manager.prefix, it, A11yAttributeType.NavigateByHierarchy)[0];
       return !!hierAttr;
@@ -95,36 +95,36 @@ export default class HierarchicalNavigation extends BaseNavigationMode {
   private _getSiblings(element: HTMLElement): HTMLElement[] {
     const parent: HTMLElement = this._getParent(element);
     const siblings: HTMLElement[] = Focus.getFocusableSiblings(element, parent);
-    return siblings.filter((sib) => {
+    return siblings.filter((sib: HTMLElement) => {
       return parent === this._getParent(sib);
     });
   }
 
   private _getChildren(element: HTMLElement): HTMLElement[] {
     const children: HTMLElement[] = Focus.getFocusableChildren(element);
-    return children.filter((child) => {
+    return children.filter((child: HTMLElement) => {
       return element === this._getParent(child);
     });
   }
 
   private _getDescendants(element: HTMLElement): HTMLElement[] {
     const children: HTMLElement[] = Focus.getFocusableDescendants(element);
-    return children.filter((descendent) => {
+    return children.filter((descendent: HTMLElement) => {
       return element === this._getHierarchyRoot(descendent);
     });
   }
 
   private _getNextElement(element: HTMLElement): HTMLElement {
     const siblings: HTMLElement[] = this._getSiblings(element);
-    return siblings.length > 0 ? siblings[0] : undefined;
+    return siblings.length > 0 ? siblings[0] : element;
   }
 
   private _getPreviousElement(element: HTMLElement): HTMLElement {
     const siblings: HTMLElement[] = this._getSiblings(element);
-    return siblings.length > 0 ? siblings[siblings.length - 1] : undefined;
+    return siblings.length > 0 ? siblings[siblings.length - 1] : element;
   }
 
-  private _getInsideElement(element: HTMLElement): HTMLElement {
+  private _getInsideElement(element: HTMLElement): HTMLElement | undefined {
     return Focus.getFirstFocusableChild(element);
   }
 

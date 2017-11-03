@@ -58,7 +58,7 @@ export default class DomTraversal {
     const path2: HTMLElement[] | undefined = DomTraversal.getElementPath(root, element2);
 
     if (path1 && path2 && path1[0] === path2[0]) {
-      for (let i: number = 1; i < path1.length; i++) {
+      for (let i = 1; i < path1.length; i++) {
         if (path1[i] !== path2[i]) {
           return path1[i - 1];
         }

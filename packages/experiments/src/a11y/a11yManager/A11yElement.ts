@@ -1,121 +1,9 @@
 import A11yAttribute, { A11yAttributeType } from './A11yAttribute';
+import A11yAttributeProvider from './A11yAttributeProvider';
 import A11yManager from './A11yManager';
 import DomTraversal from '../dom/DomTraversal';
-import Focus from '../focus/Focus';
 import FocusTransition from '../focus/FocusTransition';
-
-export interface INavigateOnKeyAttribute {
-  keyCode: number;
-  target: string;
-  alt?: boolean;
-  ctrl?: boolean;
-  shift?: boolean;
-}
-
-export class FocusTreeProvider {
-  private _element: HTMLElement;
-  private _manager: A11yManager;
-  private _root: HTMLElement;
-
-  constructor(element: HTMLElement, manager: A11yManager, root?: HTMLElement) {
-    this._element = element;
-    this._manager = manager;
-    this._root = root || this._manager.root;
-  }
-
-  public get children(): A11yElement[] {
-    return Focus.getFocusableChildren(this._element)
-      .map((e: HTMLElement) => new A11yElement(e, this._manager));
-  }
-
-  public get descendents(): A11yElement[] {
-    return Focus.getFocusableDescendants(this._element)
-      .map((e: HTMLElement) => new A11yElement(e, this._manager));
-  }
-
-  public get siblings(): A11yElement[] {
-    return Focus.getFocusableSiblings(this._element, this._root)
-      .map((e: HTMLElement) => new A11yElement(e, this._manager));
-  }
-
-  public get nextSibling(): A11yElement {
-    return new A11yElement(Focus.getNextFocusableSibling(this._element, this._root), this._manager);
-  }
-
-  public get prevSibling(): A11yElement {
-    return new A11yElement(Focus.getPrevFocusableSibling(this._element, this._root), this._manager);
-  }
-
-  public get parent(): A11yElement {
-    return new A11yElement(Focus.getFocusableParent(this._element, this._root), this._manager);
-  }
-
-  public scopeTo(subRoot: HTMLElement): FocusTreeProvider {
-    if (!this._manager.manages(subRoot)) {
-      throw new Error('The provided root is not managed by this A11yManager');
-    }
-
-    return new FocusTreeProvider(this._element, this._manager, subRoot);
-  }
-}
-
-export class A11yAttributeProvider {
-  private _element: HTMLElement;
-  private _managerPrefix: string;
-
-  constructor(element: HTMLElement, managerPrefix: string) {
-    this._element = element;
-    this._managerPrefix = managerPrefix;
-  }
-
-  public get id(): string | undefined {
-    const attr: A11yAttribute = A11yAttribute.getFromElementByType(this._managerPrefix, this._element, A11yAttributeType.Id)[0];
-    return attr ? attr.value : undefined;
-  }
-
-  public get classList(): string[] {
-    const attrs: A11yAttribute[] = A11yAttribute.getFromElementByType(this._managerPrefix, this._element, A11yAttributeType.Class);
-    return attrs.map((a: A11yAttribute) => a.value!).filter((s: string) => !!s);
-  }
-
-  public get skipKeys(): number[] | 'all' {
-    const attr: A11yAttribute = A11yAttribute.getFromElementByType(this._managerPrefix, this._element, A11yAttributeType.SkipKeys)[0];
-    if (attr && attr.value) {
-      return attr.value === 'all' ? 'all' :
-        attr.value.split(',').map((keyCodeStr: string) => parseInt(keyCodeStr, 10));
-    } else {
-      return [];
-    }
-  }
-
-  public get stopKeys(): number[] | 'all' {
-    const attr: A11yAttribute = A11yAttribute.getFromElementByType(this._managerPrefix, this._element, A11yAttributeType.StopKeys)[0];
-    if (attr && attr.value) {
-      return attr.value === 'all' ? 'all' :
-        attr.value.split(',').map((keyCodeStr: string) => parseInt(keyCodeStr, 10));
-    } else {
-      return [];
-    }
-  }
-
-  public get navigateOnKeyList(): INavigateOnKeyAttribute[] {
-    const attrs: A11yAttribute[] = A11yAttribute.getFromElementByType(this._managerPrefix, this._element, A11yAttributeType.NavigateOnKey);
-    return attrs.map((navAttr: A11yAttribute) => {
-      return {
-        keyCode: parseInt(navAttr.params[0], 10),
-        target: navAttr.value ? navAttr.value.trim() : '',
-        alt: navAttr.params.indexOf('a') > 0,
-        ctrl: navAttr.params.indexOf('c') > 0,
-        shift: navAttr.params.indexOf('s') > 0
-      }
-    });
-  }
-
-  public get navigationMode(): string | undefined {
-    const attr: A11yAttribute = A11yAttribute.getFromElementByType(this._managerPrefix, this._element, A11yAttributeType.NavigationMode)[0];
-    return attr ? attr.value : undefined;
-  }
-}
+import FocusTreeProvider from './FocusTreeProvider';
 
 export default class A11yElement {
   private _element: HTMLElement;
@@ -176,6 +64,10 @@ export default class A11yElement {
     return this._manager.addFocusListener(this._element, direction, handler);
   }
 
+  public focus(): boolean {
+    return this._manager.focusTo(this._element);
+  }
+
   private _descendentsByClass(className: string): A11yElement[] {
     const classAttribute: string = A11yAttribute.getPrefix(this._manager.prefix, A11yAttributeType.Class);
     const nodeList: NodeList = this._element.querySelectorAll(`[${classAttribute}='${className}']`);
@@ -193,7 +85,8 @@ export default class A11yElement {
   private _ancestorById(id: string, checkSelf: boolean = false): A11yElement | undefined {
     const parent: HTMLElement | undefined = DomTraversal.getFirstMatchingParent(
       this._element,
-      (e: HTMLElement) => A11yAttribute.getFromElementByType(this._manager.prefix, e, A11yAttributeType.Id).filter(a => a.value === id).length > 0,
+      (e: HTMLElement) => A11yAttribute.getFromElementByType(this._manager.prefix, e, A11yAttributeType.Id)
+        .filter((a: A11yAttribute) => a.value === id).length > 0,
       this._manager.root,
       checkSelf
     );
@@ -204,7 +97,8 @@ export default class A11yElement {
   private _ancestorByClass(className: string, checkSelf: boolean = false): A11yElement | undefined {
     const parent: HTMLElement | undefined = DomTraversal.getFirstMatchingParent(
       this._element,
-      (e: HTMLElement) => A11yAttribute.getFromElementByType(this._manager.prefix, e, A11yAttributeType.Class).filter(a => a.value === className).length > 0,
+      (e: HTMLElement) => A11yAttribute.getFromElementByType(this._manager.prefix, e, A11yAttributeType.Class)
+        .filter((a: A11yAttribute) => a.value === className).length > 0,
       this._manager.root,
       checkSelf
     );

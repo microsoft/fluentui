@@ -1,10 +1,11 @@
 import A11yManager from './A11yManager';
 import { IKeyboardEvent } from '../keyboard/Keyboard';
+import FocusTransition from '../focus/FocusTransition';
 
 abstract class BaseNavigationMode {
   private _manager: A11yManager;
 
-  constructor (manager: A11yManager) {
+  constructor(manager: A11yManager) {
     this._manager = manager;
   }
 
@@ -32,9 +33,9 @@ abstract class BaseNavigationMode {
    * @param event - the keyboard event to navigate
    * @param currentElement - the currently focused element. Can be used for testing. Defaults to document.activeElement
    */
-  public navigate(event: IKeyboardEvent, modeRoot: HTMLElement, currentElement?: HTMLElement): HTMLElement | undefined {
+  public navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement?: HTMLElement): HTMLElement | undefined {
     currentElement = currentElement || document.activeElement as HTMLElement;
-    return this._navigate(event, modeRoot ? modeRoot : this.manager.root, currentElement);
+    return this._navigate(modeRoot ? modeRoot : this.manager.root, event, currentElement);
   }
 
   /**
@@ -56,21 +57,39 @@ abstract class BaseNavigationMode {
    * @param selector - the selector string e.g. 'prev', 'next'
    * @param element - the source element i.e. the marked up element
    */
-  public select(selector: string, element: HTMLElement): HTMLElement | undefined {
+  public select(modeRoot: HTMLElement, selector: string, element: HTMLElement): HTMLElement | undefined {
     if (!this.supports(selector)) {
       throw new Error(`Selector '${selector}' is not supported by navigation mode '${this.name}'`);
     }
 
-    return this._select(selector, element);
+    return this._select(modeRoot, selector, element);
   }
 
   public supports(selector: string): boolean {
     return this.supportedSelectors.indexOf(selector) >= 0;
   }
 
-  protected abstract _navigate(event: IKeyboardEvent, modeRoot: HTMLElement, currentElement: HTMLElement): HTMLElement | undefined;
+  public onInwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
+    this._onInwardFocus(modeRoot, focusTransition);
+  }
 
-  protected abstract _select(selector: string, element: HTMLElement): HTMLElement | undefined;
+  public onOutwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
+    this._onOutwardFocus(modeRoot, focusTransition);
+  }
+
+  protected abstract _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement): HTMLElement | undefined;
+
+  protected _select(modeRoot: HTMLElement, selector: string, currentElement: HTMLElement): HTMLElement | undefined {
+    return undefined;
+  };
+
+  protected _onInwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
+    // Do nothing
+  }
+
+  protected _onOutwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
+    // Do nothing
+  }
 
   protected get supportedSelectors(): string[] {
     return [];

@@ -5,7 +5,17 @@ import {
   ComponentPage,
 } from '@uifabric/example-app-base';
 
+import A11yManager from './a11yManager/A11yManager';
+import ArrowNavigation from './a11yManager/ArrowNavigation';
+
 export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
+  public componentDidMount(): void {
+    const a11yManager: A11yManager = A11yManager.create(document.body, {
+      prefix: 'a11y'  // only reads attributes starting with data-a11y-...
+    });
+    a11yManager.registerNavigationMode(ArrowNavigation);
+  }
+
   public render(): JSX.Element {
     return (
       <ComponentPage
@@ -13,8 +23,14 @@ export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='CommandBarExample'
         exampleCards={
           <div>
-            <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
-              <div>This is an example</div>
+            <ExampleCard title='Arrow Navigation Example'>
+              <div>
+                <button>Element Before</button>
+                <div data-a11y-navigationmode='Arrow'>
+                  <button>Item 1</button><button>Item 2</button><button>Item 3</button><button>Item 4</button>
+                </div>
+                <button>Element After</button>
+              </div>
             </ExampleCard>
           </div>
         }

@@ -174,11 +174,11 @@ export default class A11yAttribute {
     // This gets all the A11yAttributeType enum values
     const types: A11yAttributeType[] =
       Object.keys(A11yAttributeType)
-        .map(k => (A11yAttributeType as any)[k])  // tslint:disable:no-any
-        .filter(v => typeof v === 'number');
+        .map((k: string) => (A11yAttributeType as any)[k])  // tslint:disable-line:no-any
+        .filter((v: string | number) => typeof v === 'number');
 
     for (const type of types) {
-      for (let i: number = 0; i < element.attributes.length; i++) {
+      for (let i = 0; i < element.attributes.length; i++) {
         const attrName: string = element.attributes[i].name;
         // If the prefix for this type matched, get the params and value
         const prefix: string = A11yAttribute.getPrefix(appPrefix, type);
@@ -201,7 +201,7 @@ export default class A11yAttribute {
     element: HTMLElement,
     type: A11yAttributeType
   ): A11yAttribute[] {
-    return A11yAttribute.getAllFromElement(appPrefix, element).filter(a => a.type === type);
+    return A11yAttribute.getAllFromElement(appPrefix, element).filter((a: A11yAttribute) => a.type === type);
   }
 
   /**
@@ -214,8 +214,8 @@ export default class A11yAttribute {
     type: A11yAttributeType
   ): A11yAttribute | undefined {
     let attr: A11yAttribute | undefined;
-    DOM.getFirstMatchingParent(element, (p) => {
-      attr = A11yAttribute.getAllFromElement(appPrefix, p).filter(a => a.type === type)[0];
+    DOM.getFirstMatchingParent(element, (p: HTMLElement) => {
+      attr = A11yAttribute.getAllFromElement(appPrefix, p).filter((a: A11yAttribute) => a.type === type)[0];
       return !!attr;
     }, root, true);
     return attr || undefined;

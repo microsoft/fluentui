@@ -19,6 +19,7 @@ interface IFocusListener {
  * @public
  */
 export interface IA11yManagerConfig {
+  prefix?: string;
   debug?: boolean;
   useHierarchicalNavigation?: boolean;
 }
@@ -70,8 +71,8 @@ export default class A11yManager {
    * @internalremarks If there is any need to change this value or make it environment-dependent, document the reason
    * and testing methodology.
    */
-  private static readonly _focusDetectionDelay: number = 50;
-  private static _focusListenerIdCounter: number = 0;
+  private static readonly _focusDetectionDelay: number = 50; // tslint:disable-line:no-inferrable-types
+  private static _focusListenerIdCounter: number = 0;  // tslint:disable-line:no-inferrable-types
   private static _instances: Map<string, A11yManager> = new Map<string, A11yManager>();
 
   private _activeElement: HTMLElement;
@@ -169,7 +170,8 @@ export default class A11yManager {
    * The prefix used by all data attributes managed by this manager
    */
   public get prefix(): string {
-    return 'data-sp-a11y-';
+    const prefixToken: string = this.config.prefix && typeof this.config.prefix === 'string' ? this.config.prefix : 'a11y';
+    return `data-${prefixToken}-`;
   }
 
   public a11yElement(htmlElement: HTMLElement): A11yElement {
@@ -378,7 +380,7 @@ export default class A11yManager {
   public registerNavigationMode(navigationModeClass: new (manager: A11yManager) => BaseNavigationMode): void {
     const mode: BaseNavigationMode = new navigationModeClass(this);
     if (!mode.name || typeof mode.name !== 'string') {
-      throw Error(`Navigation modes should have non-empty string names`);
+      throw Error(`Navigation modes should have non- empty string names`);
     } else {
       this._navigationModes.set(mode.name.toLowerCase(), mode);
     }
@@ -395,7 +397,7 @@ export default class A11yManager {
     }
 
     const count: number = A11yManager._instances.size;
-    const id: string = `A11yManager${count}`;
+    const id = `A11yManager${count} `;
 
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this._handleFocusIn = this._handleFocusIn.bind(this);
@@ -582,7 +584,7 @@ export default class A11yManager {
         if (modeAttrs && modeAttrs.length > 0 && modeAttrs[0].value) {
           const mode: BaseNavigationMode | undefined = this._getNavigationMode(modeAttrs[0].value!);
           if (mode) {
-            return mode.navigate(evt, elem);
+            return mode.navigate(elem, evt, evt.target as HTMLElement);
           }
         }
       }
@@ -591,7 +593,7 @@ export default class A11yManager {
     return undefined;
   }
 
-  private _selectByNavigationMode(selector: string, element: HTMLElement) {
+  private _selectByNavigationMode(selector: string, element: HTMLElement): HTMLElement | undefined {
     let path: HTMLElement[] | undefined = this._getElementPath(this.root, element);
     if (path) {
       path = path.reverse();
@@ -605,7 +607,7 @@ export default class A11yManager {
         if (modeAttrs && modeAttrs.length > 0 && modeAttrs[0].value) {
           const mode: BaseNavigationMode | undefined = this._getNavigationMode(modeAttrs[0].value!);
           if (mode && mode.supports(selector)) {
-            return mode.select(selector, element);
+            return mode.select(ancestor, selector, element);
           }
         }
       }
@@ -677,7 +679,7 @@ export default class A11yManager {
     const transition: FocusTransition = new FocusTransition(src, dest, this.root);
 
     if (this.config.debug) {
-      console.log(`${this.id} A11y Log: Focus transition:`);
+      console.log(`${this.id} A11y Log: Focus transition: `);
       console.log({
         from: transition.src || 'external element',
         to: transition.dest || 'external element'
@@ -697,6 +699,25 @@ export default class A11yManager {
           messages.push(attr.value);
         }
 
+        // Check for navigation mode
+        const modeAttrs: A11yAttribute[] = A11yAttribute.getFromElementByType(
+          this.prefix,
+          element,
+          A11yAttributeType.NavigationMode
+        );
+
+        if (modeAttrs && modeAttrs.length > 0 && modeAttrs[0].value) {
+          const mode: BaseNavigationMode | undefined = this._getNavigationMode(modeAttrs[0].value!);
+          if (mode) {
+            if (isOutward) {
+              mode.onOutwardFocus(element, transition);
+            } else {
+              mode.onInwardFocus(element, transition);
+            }
+          }
+        }
+
+        // Check if there are listeners for that element
         const elementFocusListeners: IFocusListener[] = this._getElementFocusListeners(element);
         for (const listener of elementFocusListeners) {
           if (
