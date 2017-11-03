@@ -2,10 +2,9 @@
 import * as React from 'react';
 
 // Callout
-import { ICalloutContainerProps } from './CalloutContainer.Props';
-import { getClassNames } from './CalloutContainer.classNames';
-
-// import * as CalloutContainerStyles from './';
+import { IContextualSurfaceProps } from './ContextualSurface.Props';
+import { getClassNames } from './ContextualSurface.classNames';
+import { Layer } from 'office-ui-fabric-react/lib/Layer';
 
 // Utilites
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
@@ -27,14 +26,14 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 
-export interface ICalloutContainerState {
+export interface IContextualSurfaceState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
   heightOffset?: number;
 }
 
-export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICalloutContainerState> {
+export class ContextualSurface extends BaseComponent<IContextualSurfaceProps, IContextualSurfaceState> {
   public static defaultProps = {
     preventDismissOnScroll: false,
     isBeakVisible: true,
@@ -54,7 +53,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
-  constructor(props: ICalloutContainerProps) {
+  constructor(props: IContextualSurfaceProps) {
     super(props);
 
     this._warnDeprecations({ 'beakStyle': 'beakWidth' });
@@ -78,7 +77,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
     this._setTargetWindowAndElement(this._getTarget());
   }
 
-  public componentWillUpdate(newProps: ICalloutContainerProps) {
+  public componentWillUpdate(newProps: IContextualSurfaceProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
     let newTarget = this._getTarget(newProps);
     let oldTarget = this._getTarget();
@@ -124,6 +123,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : calloutMaxHeight!;
 
     let content = (
+
       <div
         ref={ this._resolveRef('_hostElement') }
         className={ css('ms-Callout-container', styles.container) }
@@ -143,14 +143,18 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
           ref={ this._resolveRef('_calloutElement') }
         >
           { children }
-          { // PUT THE CONTEXTUAL SURFACES HERE MAX HEIGHT MIGHT STILL NEEDED
+          { // @TODO
             contentMaxHeight
           }
         </div>
       </div>
     );
 
-    return content;
+    return this.props.doNotLayer ? content : (
+      <Layer>
+        { content }
+      </Layer>
+    );
   }
 
   @autobind
@@ -343,7 +347,7 @@ export class CalloutContainer extends BaseComponent<ICalloutContainerProps, ICal
     }
   }
 
-  private _getTarget(props: ICalloutContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IContextualSurfaceProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
     let { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }

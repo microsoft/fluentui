@@ -2,14 +2,14 @@ import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets } from '../../Styling';
 import { IStyle } from '../../Styling';
 
-export interface ICalloutContainerStyles {
+export interface IContextualSurfaceStyles {
   /**
   * Style for the root element in the default enabled/unchecked state.
   */
   root?: IStyle;
 }
 
-export interface ICalloutContainerNames {
+export interface IContextualSurfaceNames {
 	/**
 	* Root html container for this component.
 	*/
@@ -38,7 +38,7 @@ export function focusClear() {
   }
 }
 
-export const getClassNames = memoizeFunction((): ICalloutContainerNames => {
+export const getClassNames = memoizeFunction((): IContextualSurfaceNames => {
   return mergeStyleSets({
     root: {
       position: 'absolute',

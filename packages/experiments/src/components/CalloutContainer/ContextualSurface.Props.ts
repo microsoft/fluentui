@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { CalloutContainer } from './CalloutContainer';
+import { ContextualSurface } from './ContextualSurface';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import {
   IPoint,
   IRectangle,
 } from '../../Utilities';
 
-export interface ICalloutContainer {
+export interface IContextualSurface {
 }
 
-export interface ICalloutContainerProps extends React.Props<CalloutContainer> {
+export interface IContextualSurfaceProps extends React.Props<ContextualSurface> {
   /**
   * All props for your component are to be defined here.
   */
-  componentRef?: (component: ICalloutContainer) => void;
+  componentRef?: (component: IContextualSurface) => void;
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement

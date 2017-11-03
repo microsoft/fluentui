@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { CalloutContainer } from '../CalloutContainer';
+import { ContextualSurface } from '../ContextualSurface';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-export interface ICalloutContainerBasicExampleState {
+export interface IContextualSurfaceBasicExampleState {
   isContextualSurfaceVisible?: boolean;
 }
 
-export class CalloutContainerBasicExample extends React.Component<{}, ICalloutContainerBasicExampleState> {
+export class ContextualSurfaceBasicExample extends React.Component<{}, IContextualSurfaceBasicExampleState> {
   public constructor() {
     super();
 
@@ -21,23 +21,23 @@ export class CalloutContainerBasicExample extends React.Component<{}, ICalloutCo
     let { isContextualSurfaceVisible } = this.state;
     return (
       <div>
-        <div className='ms-CalloutContainerBasicExample-buttonArea'>
+        <div className='ms-ContextualSurfaceBasicExample-buttonArea'>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isContextualSurfaceVisible ? 'Hide callout' : 'Show callout' }
-            className={ 'ms-CalloutContainer-basicExampleButton' }
+            className={ 'ms-ContextualSurface-basicExampleButton' }
           />
         </div>
         { isContextualSurfaceVisible && (
-          <CalloutContainer
-            className='ms-CalloutContainer'
+          <ContextualSurface
+            className='ms-ContextualSurface'
             role={ 'alertdialog' }
-            target={ '.ms-CalloutContainer-basicExampleButton' }
+            target={ '.ms-ContextualSurface-basicExampleButton' }
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
           >
             Ayyy test content
-          </CalloutContainer>
+          </ContextualSurface>
         ) }
       </div>
     );

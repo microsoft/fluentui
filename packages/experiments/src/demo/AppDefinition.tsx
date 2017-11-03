@@ -11,10 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/CalloutContainer/CalloutContainerPage').CalloutContainerPage,
-          key: 'CalloutContainer',
-          name: 'CalloutContainer',
-          url: '#/examples/calloutcontainer'
+          component: require<any>('../components/ContextualSurface/ContextualSurfacePage').ContextualSurfacePage,
+          key: 'ContextualSurface',
+          name: 'ContextualSurface',
+          url: '#/examples/ContextualSurface'
         },
         {
           component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
