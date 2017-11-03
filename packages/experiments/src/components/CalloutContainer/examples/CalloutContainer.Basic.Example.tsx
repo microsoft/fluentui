@@ -7,7 +7,6 @@ export interface ICalloutContainerBasicExampleState {
 }
 
 export class CalloutContainerBasicExample extends React.Component<{}, ICalloutContainerBasicExampleState> {
-  private _menuButtonElement: HTMLElement | null;
   public constructor() {
     super();
 
@@ -22,17 +21,18 @@ export class CalloutContainerBasicExample extends React.Component<{}, ICalloutCo
     let { isContextualSurfaceVisible } = this.state;
     return (
       <div>
-        <div className='ms-CalloutContainerBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <div className='ms-CalloutContainerBasicExample-buttonArea'>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isContextualSurfaceVisible ? 'Hide callout' : 'Show callout' }
+            className={ 'ms-CalloutContainer-basicExampleButton' }
           />
         </div>
         { isContextualSurfaceVisible && (
           <CalloutContainer
             className='ms-CalloutContainer'
             role={ 'alertdialog' }
-            target={ this._menuButtonElement }
+            target={ '.ms-CalloutContainer-basicExampleButton' }
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
           >
