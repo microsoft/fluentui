@@ -132,7 +132,7 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
 
 export enum PersonaSize {
   /**
-   * tiny size has been deprecated in favor of standardized numeric sizing. Use size12 instead.
+   * tiny size has been deprecated in favor of standardized numeric sizing. Use size10 instead.
    * @deprecated
    */
   tiny = 0,
@@ -169,7 +169,7 @@ export enum PersonaSize {
   extraLarge = 6,
   size28 = 7,
   size16 = 8,
-  size12 = 9,
+  size10 = 9,
   size24 = 10,
   size32 = 11,
   size40 = 12,
