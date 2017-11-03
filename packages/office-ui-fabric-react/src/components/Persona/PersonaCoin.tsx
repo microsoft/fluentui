@@ -190,7 +190,11 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     imageInitials = imageInitials || getInitials(primaryText, isRTL);
 
     return (
-      <span>{ imageInitials }</span>
+      imageInitials !== '' ?
+        <span>{ imageInitials }</span> :
+        <Icon
+          iconName='Contact'
+        />
     );
   }
 
