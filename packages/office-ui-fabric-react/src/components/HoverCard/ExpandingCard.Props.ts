@@ -89,6 +89,12 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   styles?: IExpandingCardStyles;
 
   /**
+   * Make callout content show on the set side
+   * @default true
+   */
+  directionalHintFixed?: boolean;
+
+  /**
    * Trap focus or not
    */
   trapFocus?: boolean;
