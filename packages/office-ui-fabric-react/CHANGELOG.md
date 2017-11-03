@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Nov 2017 14:09:56 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Nov 2017 15:06:54 GMT and should not be manually modified.
+
+## 5.19.1
+Fri, 03 Nov 2017 15:06:54 GMT
+
+### Patches
+
+- HoverCard: fixing an import to be AMD compliant.
 
 ## 5.19.0
 Fri, 03 Nov 2017 14:09:56 GMT

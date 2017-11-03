@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.19.1",
+      "tag": "office-ui-fabric-react_v5.19.1",
+      "date": "Fri, 03 Nov 2017 15:06:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fbc91124227072ddeda35020e0c3f9e442ad5e12",
+            "comment": "HoverCard: fixing an import to be AMD compliant."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.19.0",
       "tag": "office-ui-fabric-react_v5.19.0",
       "date": "Fri, 03 Nov 2017 14:09:56 GMT",
