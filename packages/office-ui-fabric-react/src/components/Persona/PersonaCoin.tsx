@@ -116,14 +116,15 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
               (
                 <div
                   className={ css(
-                    'ms-Persona-initials',
                     styles.initials,
                     PERSONA_INITIALS_COLOR[initialsColor]
                   ) }
                   style={ coinSizeStyle }
                   aria-hidden='true'
                 >
-                  { onRenderInitials(this.props, this._onRenderInitials) }
+                  <span>
+                    { onRenderInitials(this.props, this._onRenderInitials) }
+                  </span>
                 </div>
               )
             }
