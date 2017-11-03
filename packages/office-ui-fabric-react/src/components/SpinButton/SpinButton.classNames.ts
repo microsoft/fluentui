@@ -31,6 +31,7 @@ export const getClassNames = memoizeFunction((
     ),
     icon: mergeStyles(
       styles.icon,
+      disabled && styles.iconDisabled
     ),
     label: mergeStyles(
       styles.label,

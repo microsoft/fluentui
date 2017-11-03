@@ -120,7 +120,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<ISpinButtonStyles>
 ): ISpinButtonStyles => {
-  const { fonts, palette } = theme;
+  const { fonts, palette, semanticColors } = theme;
 
   const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
   const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
@@ -130,6 +130,8 @@ export const getStyles = memoizeFunction((
   const SpinButtonInputTextColor = palette.neutralPrimary;
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
+
+  const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
   const defaultStyles: ISpinButtonStyles = {
     root: {
@@ -166,6 +168,9 @@ export const getStyles = memoizeFunction((
       paddingLeft: '5px',
 
       fontSize: '20px'
+    },
+    iconDisabled: {
+      color: SpinButtonIconDisabledColor
     },
     label: {
       pointerEvents: 'none',
