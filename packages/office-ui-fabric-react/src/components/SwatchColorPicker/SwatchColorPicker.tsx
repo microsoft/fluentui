@@ -130,7 +130,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         id={ id }
         key={ id + item.id }
         disabled={ this.props.disabled }
-        className={ this.props.cellShape == 'circle' ? styles.circleCell : styles.cell }
+        className={ this.props.cellShape === 'circle' ? styles.circleCell : styles.cell }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }
         onFocus={ this._onGridCellFocused }
