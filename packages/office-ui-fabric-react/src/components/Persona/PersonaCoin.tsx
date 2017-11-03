@@ -200,9 +200,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     return (
       imageInitials !== '' ?
         <span>{ imageInitials }</span> :
-        <Icon
-          iconName='Contact'
-        />
+        <Icon iconName='Contact' />
     );
   }
 
