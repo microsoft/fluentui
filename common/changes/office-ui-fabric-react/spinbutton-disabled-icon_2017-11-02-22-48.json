@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Add support for custom styling of the label in the disabled state",
+      "comment": "SpinButton: Allow for styling of the icon when the component is disabled",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "<christianjordangonzalez@gmail.com>"
+  "email": "christianjordangonzalez@gmail.com"
 }

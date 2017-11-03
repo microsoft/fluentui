@@ -164,6 +164,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
   data-is-focusable={true}
   disabled={undefined}
   onClick={[Function]}
+  onKeyDown={[Function]}
   type="button"
 >
   <div
@@ -188,6 +189,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           }
           {
             color: #106ebe;
+            flex-shrink: 0;
             font-size: 16px;
             height: 16px;
             line-height: 16px;
@@ -235,6 +237,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           }
           {
             color: #666666;
+            flex-shrink: 0;
             font-size: 12px;
             height: 16px;
             line-height: 16px;
@@ -560,6 +563,7 @@ exports[`Button renders IconButton correctly 1`] = `
             display: inline-block;
           }
           {
+            flex-shrink: 0;
             font-size: 16px;
             height: 16px;
             line-height: 16px;

@@ -37,7 +37,7 @@ $DropDown-item-height: 32px;
   &:active {
     .title,
     .caretDown {
-      color: $ms-color-black;
+      color: $ms-color-neutralDark;
 
       @include high-contrast {
         // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
@@ -101,6 +101,12 @@ $DropDown-item-height: 32px;
   }
 }
 
+.listWrapper {
+  &:focus {
+    outline: 0
+  }
+}
+
 .caretDownWrapper {
   position: absolute;
   top: 1px; // border
@@ -110,7 +116,7 @@ $DropDown-item-height: 32px;
 }
 
 .caretDown {
-  color: $ms-color-neutralDark;
+  color: $ms-color-neutralSecondary;
   font-size: $ms-icon-size-s;
   pointer-events: none;
 }
@@ -130,8 +136,8 @@ $DropDown-item-height: 32px;
   white-space: nowrap;
   text-overflow: ellipsis;
   &.titleIsError {
-        border-color: $ms-color-error;
-    }
+    border-color: $ms-color-error;
+  }
   &.titleIsPlaceHolder {
     color: $ms-color-neutralSecondary;
   }
@@ -186,16 +192,14 @@ $DropDown-item-height: 32px;
   }
 
   &:hover {
-    background-color: $Dropdown-selectedItem-hover-bg;
-    color: $ms-color-black;
-
-    @include highContrastListItemState;
+    color: inherit;
   }
 
   @include focus-border();
 
   &:focus {
     background-color: $ms-color-neutralLighter;
+    @include highContrastListItemState;
   }
 
   &:active {
@@ -218,10 +222,6 @@ $DropDown-item-height: 32px;
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 
-  &:hover {
-    background-color: $Dropdown-selectedItem-bg;
-  }
-
   @include focus-border();
 
   @include highContrastListItemState;
@@ -243,7 +243,7 @@ $DropDown-item-height: 32px;
 
 .divider {
   height: 1px;
-  background-color: $dividerColor;
+  background-color: $bodyDividerColor;
 }
 
 .optionText {
