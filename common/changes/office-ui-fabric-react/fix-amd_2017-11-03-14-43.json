@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed contextual menu state colors.",
+      "comment": "HoverCard: fixing an import to be AMD compliant.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "dzearing@microsoft.com"
 }
