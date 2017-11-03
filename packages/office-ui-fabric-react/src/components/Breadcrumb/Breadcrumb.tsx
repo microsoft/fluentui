@@ -1,131 +1,21 @@
 import * as React from 'react';
+
 import {
-  BaseComponent,
-  autobind,
-  customizable,
-  getRTL
-} from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Link } from '../../Link';
-import { Icon } from '../../Icon';
-import { CommandButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { ResizeGroup } from '../../ResizeGroup';
-import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { Crumb } from './Crumb';
-import { IBreadcrumbClassNames, getClassNames } from './Breadcrumb.classNames';
-// import * as stylesImport from './Breadcrumb.scss';
-// const styles: any = stylesImport;
+  IBreadcrumbProps,
+  IBreadcrumbStyles,
+  IBreadcrumbStyleProps
+} from './Breadcrumb.props';
+import { BreadcrumbBase } from './Breadcrumb.base';
+import { styled } from './utils/index';
+import { ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
+import { getStyles } from './Breadcrumb.styles';
+import { getStyles as getCrumbStyles } from './Crumb.styles';
 
-export interface IBreadCrumbData {
-  props: IBreadcrumbProps;
-  renderedItems: IBreadcrumbItem[];
-  renderedOverflowItems: IBreadcrumbItem[];
-}
-
-const OVERFLOW_KEY = 'overflow';
-const nullFunction = (): null => null;
-
-@customizable('Breadcrumb', ['theme'])
-export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
-  public static defaultProps: IBreadcrumbProps = {
-    items: [],
-    maxDisplayedItems: 999
-  };
-
-  private _classNames: IBreadcrumbClassNames;
-  constructor(props: IBreadcrumbProps) {
-    super(props);
+// Create a Breadcrumb variant which uses these default styles.
+export const Breadcrumb = styled(
+  BreadcrumbBase,
+  {
+    getStyles,
+    getCrumbStyles
   }
-
-  public render() {
-    const {
-      onReduceData = this._onReduceData,
-      maxDisplayedItems,
-      className,
-      theme,
-      items
-    } = this.props;
-
-    const breadCrumbData: IBreadCrumbData = {
-      props: this.props,
-      renderedItems: items.slice(-maxDisplayedItems!),
-      renderedOverflowItems: items.slice(0, -maxDisplayedItems!)
-    };
-
-    this._classNames = getClassNames(theme!, className);
-
-    return (
-      <ResizeGroup
-        className={ this._classNames.root }
-        onRenderData={ this._onRenderBreadcrumb }
-        onReduceData={ onReduceData }
-        data={ breadCrumbData }
-      />
-    );
-  }
-
-  @autobind
-  private _onReduceData(data: IBreadCrumbData): IBreadCrumbData | undefined {
-    let { renderedItems, renderedOverflowItems } = data;
-    let movedItem = renderedItems[0];
-    renderedItems = renderedItems.slice(1);
-
-    renderedOverflowItems = [...renderedOverflowItems, movedItem];
-
-    if (movedItem !== undefined) {
-      return { ...data, renderedItems, renderedOverflowItems };
-    }
-  }
-
-  @autobind
-  private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    let {
-      ariaLabel
-      // onRenderItem = this._onRenderItem
-    } = data.props;
-    let classNames = this._classNames;
-    let { renderedOverflowItems, renderedItems } = data;
-
-    let contextualItems = renderedOverflowItems.map(
-      (item, index) => ({
-        name: item.text,
-        key: item.key,
-        onClick: item.onClick && ((ev: React.MouseEvent<any>) => item.onClick!(ev, item)),
-        href: item.href
-      })
-    );
-
-    return (
-      <FocusZone
-        className={ classNames.root }
-        direction={ FocusZoneDirection.horizontal }
-        elementType='ol'
-        ref='renderingArea'
-        role='navigation'
-        aria-label={ ariaLabel }
-      >
-        { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
-          <Crumb
-            key='overflow'
-            iconProps={ { iconName: 'More' } }
-            menuProps={ {
-              items: contextualItems,
-              directionalHint: DirectionalHint.bottomLeftEdge
-            } }
-            withChevron={ renderedItems.length > 0 }
-          />
-        ) }
-        { renderedItems.map(
-          (item, index) => (
-            <Crumb
-              key={ item.key }
-              item={ item }
-              withChevron={ index !== (renderedItems.length - 1) }
-            />
-          )) }
-      </FocusZone>
-    );
-  }
-}
+);

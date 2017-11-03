@@ -5,38 +5,34 @@ import {
   customizable,
   getRTL
 } from '../../Utilities';
-import { ITheme } from '../../Styling';
+import { ITheme, IStyle } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { ActionButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { getClassNames } from './Crumb.classNames';
+import { IStyleFunction, classNamesFunction } from './utils/index';
+import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
 
+const getClassNames = classNamesFunction<ICrumbStyleProps, ICrumbStyles>();
 const nullFunction = () => null;
 
-export interface ICrumbProps {
-  theme?: ITheme;
-  withChevron: boolean;
-  item?: IBreadcrumbItem;
-  menuProps?: any;
-  iconProps?: any;
-}
-
-@customizable('Crumb', ['theme'])
-export class Crumb extends React.Component<ICrumbProps, {}> {
+@customizable('CrumbBase', ['theme'])
+export class CrumbBase extends React.Component<ICrumbProps, {}> {
   public render() {
     let {
       item = { text: '', onClick: undefined, href: undefined, isCurrentItem: false },
       menuProps,
       theme,
       withChevron,
-      iconProps
+      iconProps,
+      getStyles
     } = this.props;
-    const classNames = getClassNames(theme!, item.isCurrentItem);
+
+    const classNames = getClassNames(getStyles!, { theme: theme!, isCurrentItem: !!item.isCurrentItem });
 
     return (
       <li className={ classNames.root }>

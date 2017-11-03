@@ -1,30 +1,18 @@
 import {
   FontSizes,
   HighContrastSelector,
-  IStyle,
-  ITheme,
   ScreenWidthMaxMedium,
   ScreenWidthMaxSmall,
-  mergeStyleSets
 } from '../../Styling';
-import { memoizeFunction } from '../../Utilities';
+import { CrumbBase } from './Crumb.base';
+import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
+import { styled } from './utils/index';
 
 const MediumMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxMedium}px)`;
 const SmallMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxSmall}px)`;
 
-export interface ICrumbClassNames {
-  root: string;
-  chevron: string;
-  crumbButton: string;
-  crumbLabel: string;
-  overflowIcon: string;
-  textContent: string;
-}
-
-export const getClassNames = memoizeFunction((
-  theme: ITheme,
-  isCurrentItem?: boolean
-): ICrumbClassNames => {
+export function getStyles(props: ICrumbStyleProps): ICrumbStyles {
+  const { theme, isCurrentItem } = props;
   const { palette, fonts } = theme;
 
   // Sizing values.
@@ -39,7 +27,7 @@ export const getClassNames = memoizeFunction((
   const crumbActiveColor = palette.neutralPrimary;
   const chevronColor = palette.neutralSecondary;
 
-  return mergeStyleSets({
+  return {
     root: [
       'ms-Crumb',
       {
@@ -125,6 +113,5 @@ export const getClassNames = memoizeFunction((
         maxWidth: 180
       }
     ]
-
-  });
-});
+  };
+}

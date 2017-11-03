@@ -31,6 +31,7 @@ export interface IIconRecord {
 }
 
 export interface IIconOptions {
+  disableWarnings: boolean;
   warnOnMissingIcons: boolean;
 }
 
@@ -43,6 +44,7 @@ export interface IIconRecords {
 const ICON_SETTING_NAME = 'icons';
 const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
   __options: {
+    disableWarnings: false,
     warnOnMissingIcons: true
   },
   __remapped: {}
@@ -66,7 +68,7 @@ export function registerIcons(iconSubset: IIconSubset): void {
       const code = icons[iconName];
       const normalizedIconName = iconName.toLowerCase();
 
-      if (_icons[normalizedIconName]) {
+      if (_icons[normalizedIconName] && !_icons.__options.disableWarnings) {
         warn(`Icon '${iconName} being re-registered`);
       }
 
@@ -121,7 +123,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
       }
     } else {
       if (_icons.__options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was referenced but not registered.`);
+        warn(`The icon "${name}" was referenced but not registered. See http://aka.ms/fabric-icon-help`);
       }
     }
   }

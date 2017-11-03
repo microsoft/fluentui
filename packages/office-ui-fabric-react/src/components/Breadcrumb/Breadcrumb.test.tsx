@@ -7,7 +7,13 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { Breadcrumb } from './Breadcrumb';
-import { IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbItem, IBreadcrumbProps } from './Breadcrumb.props';
+
+class BreadcrumbWrapper extends React.Component<IBreadcrumbProps, {}> {
+  public render(): JSX.Element {
+    return <Breadcrumb { ...this.props } />;
+  }
+}
 
 describe('Breadcrumb', () => {
   it('renders breadcumb correctly', () => {
@@ -49,8 +55,8 @@ describe('Breadcrumb', () => {
       { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
-      <Breadcrumb
+    let component = ReactTestUtils.renderIntoDocument(
+      <BreadcrumbWrapper
         items={ items }
       />
     );
@@ -71,8 +77,8 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
-      <Breadcrumb
+    let component = ReactTestUtils.renderIntoDocument(
+      <BreadcrumbWrapper
         items={ items }
         maxDisplayedItems={ 2 }
       />
