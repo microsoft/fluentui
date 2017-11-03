@@ -15,7 +15,7 @@
   &:focus,
   &:focus::after {
     border: none;
-    outline-color: transparent;
+    outline-color: transparent!important;
   }
 }
 
