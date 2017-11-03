@@ -7,7 +7,7 @@ import {
   getNativeProps,
   IRenderFunction
 } from '../../Utilities';
-import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
+import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin';
 import {
   IPersonaProps,
@@ -105,7 +105,8 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
             className,
             PERSONA_SIZE[size],
             PERSONA_PRESENCE[presence as PersonaPresenceEnum],
-            showSecondaryText && styles.showSecondaryText
+            showSecondaryText && styles.showSecondaryText,
+            coinSize && styles.coinSizeWithPresence
           )
         }
         style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
@@ -122,7 +123,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       <div className={ className }>
         { render
           ? render(this.props)
-          : <TooltipHost content={ text } overflowMode={ TooltipOverflowMode.Parent }>{ text }</TooltipHost>
+          : <TooltipHost
+            content={ text }
+            overflowMode={ TooltipOverflowMode.Parent }
+            directionalHint={ DirectionalHint.topLeftEdge }
+          >
+            { text }
+          </TooltipHost>
         }
       </div>
     );
