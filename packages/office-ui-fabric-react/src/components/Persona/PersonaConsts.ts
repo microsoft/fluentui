@@ -8,7 +8,7 @@ const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {
   // All non-numerically named sizes are deprecated, use the numerically named classes below
-  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny + styles.rootIsSize12,
+  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny + styles.rootIssize10,
   [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall + styles.rootIsSize24,
   [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall + styles.rootIsSize28,
   [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall + styles.rootIsSize40,
@@ -18,7 +18,7 @@ export const PERSONA_SIZE = {
 
   [PersonaSize.size28]: 'ms-Persona--size28 ' + styles.rootIsSize28,
   [PersonaSize.size16]: 'ms-Persona--size16 ' + styles.rootIsSize16,
-  [PersonaSize.size12]: 'ms-Persona--size12 ' + styles.rootIsSize12,
+  [PersonaSize.size10]: 'ms-Persona--size10 ' + styles.rootIsSize10,
   [PersonaSize.size24]: 'ms-Persona--size24 ' + styles.rootIsSize24,
   [PersonaSize.size32]: 'ms-Persona--size32 ' + styles.rootIsSize32,
   [PersonaSize.size40]: 'ms-Persona--size40 ' + styles.rootIsSize40,
