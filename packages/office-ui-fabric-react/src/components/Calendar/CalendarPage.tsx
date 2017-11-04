@@ -10,7 +10,7 @@ import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { CalendarStatus } from './Calendar.checklist';
-import { addMonths, addYears } from '../../utilities/dateMath/DateMath'
+import { addMonths, addYears } from '../../utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
