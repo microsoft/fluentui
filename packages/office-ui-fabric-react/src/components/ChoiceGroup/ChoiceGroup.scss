@@ -10,7 +10,7 @@
 $radioButton-background-color: $bodyBackgroundColor;
 
 $radioButton-text-color: $bodyTextColor;
-$radioButton-text-hover-color: $bodySelectedTextColor;
+$radioButton-text-hover-color: $bodyTextCheckedColor;
 
 $radioButton-dot-color: $inputBackgroundCheckedColor;
 
@@ -19,7 +19,7 @@ $radioButton-border-hover-color: $inputBorderHoveredColor;
 $radioButton-border-selected-color: $radioButton-dot-color;
 $radioButton-border-selected-hover-color: $inputBackgroundCheckedHoveredColor;
 
-$radioButton-text-disabled-color: $disabledTextColor;
+$radioButton-text-disabled-color: $disabledBodyTextColor;
 $radioButton-background-unselected-disabled-color: $disabledTextColor;
 $radioButton-dot-disabled-color: $radioButton-background-unselected-disabled-color;
 $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-color;

@@ -132,6 +132,7 @@ exports[`Nav renders Nav correctly 1`] = `
                         }
                         {
                           color: #106ebe;
+                          flex-shrink: 0;
                           font-size: 16px;
                           height: 16px;
                           line-height: 16px;

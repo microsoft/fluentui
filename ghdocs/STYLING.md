@@ -142,12 +142,23 @@ In the style interface, always refer to the root element using the name `root`, 
 2. It should be decorated with the `customizable` decorator using `{ComponentName}Base` as the target name.
 3. It should use the `classNameFunction` helper to create a className generation function.
 
-Exmample:
+Example:
 
 ```tsx
 import { IComponentNameProps } from ='./ComponentName.props';
 
-export class ComponentName
+const getClassNames = classNameFunction<IComponentNameStyleProps, IComponentNameStyles>();
+
+export class ComponentName extends React.Component<...> {
+  public render() {
+    const { getStyles, theme } = this.props;
+    const classNames = getClassNames(getStyles, { theme: theme! });
+
+    return (
+      <div className={ classNames.root }>Hello</div>;
+    );
+  }
+}
 ```
 
 ### ComponentName.styles.ts
@@ -171,6 +182,10 @@ export function getStyles(props: IComponentNameStyleProps): IComponentNameStyles
 Tying the component to the style is made easy using the `styled` HOC wrapper, whch as input takes the base component and an object of 1 or more style function props.
 
 ```tsx
+import { styled } from 'office-ui-fabric-react/lb/Styling';
+import { CompoenentNameBase } from './ComponentName.base';
+import { getStyles } from './ComponentName.styles';
+
 // Create a Breadcrumb variant which uses these default styles.
 export const ComponentName = styled(
   ComponentNameBase,
@@ -252,21 +267,26 @@ list: [
 
 Some scss special cases:
 
-### mixins
+### mixins and includes
 
-### includes
+Sass mixins are simply an informal way of using functions. Translating them into actual javascript, where you can reuse and import/export them, is really easy.
+
+If you find some fabric-core mixins are missing, consider adding them to the `@uifabric/styling` package if they are highly reusable. However keep in mind that the PLT1 bundle size WILL be affected, so do this sparingly only for very common things.
 
 ## font-size-x variables
 
 Use typesafe enums instead of the sass variables:
 
 ```ts
-import {  FontSizes } from '../../Styling';
+import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
 
 fontSize: FontSizes.small
 ```
 
 ### Focus rectangles
+
+The `styling` package has a helper to provide consistent focus rectangles.
+
 
 # Footnotes: Motivations for moving away from SCSS
 

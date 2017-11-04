@@ -6,9 +6,6 @@ import {
   getRTL
 } from '../../Utilities';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Link } from '../../Link';
-import { Icon } from '../../Icon';
-import { CommandButton } from '../../Button';
 import {
   IBreadcrumb,
   IBreadcrumbProps,
@@ -34,7 +31,7 @@ const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
-@customizable('BreadcrumbBase', ['theme'])
+@customizable('Breadcrumb', ['theme'])
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> implements IBreadcrumb {
   public static defaultProps: IBreadcrumbProps = {
     items: [],

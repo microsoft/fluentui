@@ -2,35 +2,47 @@ import { IButtonStyles } from './Button.Props';
 import { ITheme } from '../../Styling';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
+  let s = theme.semanticColors;
+
+  let buttonBackground = s.buttonBackground;
+  let buttonBackgroundChecked = s.buttonBackgroundChecked;
+  let buttonBackgroundHovered = s.buttonBackgroundHovered;
+  let buttonBackgroundCheckedHovered = s.buttonBackgroundCheckedHovered;
+
+  let buttonText = s.buttonText;
+  let buttonTextHovered = s.buttonTextHovered;
+  let buttonTextChecked = s.buttonTextChecked;
+  let buttonTextCheckedHovered = s.buttonTextCheckedHovered;
+
   return {
     root: {
-      backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralPrimary
+      backgroundColor: buttonBackground,
+      color: buttonText
     },
 
     rootHovered: {
-      backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.black
+      backgroundColor: buttonBackgroundHovered,
+      color: buttonTextHovered
     },
 
     rootPressed: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
+      backgroundColor: buttonBackgroundChecked,
+      color: buttonTextChecked
     },
 
     rootExpanded: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
+      backgroundColor: buttonBackgroundChecked,
+      color: buttonTextChecked
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
+      backgroundColor: buttonBackgroundChecked,
+      color: buttonTextChecked
     },
 
     rootCheckedHovered: {
       backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.black
+      color: buttonTextCheckedHovered
     },
 
     // Split button styles

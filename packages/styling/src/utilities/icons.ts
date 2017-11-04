@@ -122,8 +122,8 @@ export function getIcon(name?: string): IIconRecord | undefined {
         subset.isRegistered = true;
       }
     } else {
-      if (_icons.__options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was referenced but not registered. See http://aka.ms/fabric-icon-help`);
+      if (_icons.__options.warnOnMissingIcons && !_icons.__options.disableWarnings) {
+        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
       }
     }
   }
@@ -136,7 +136,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
  *
  * @public
  */
-export function setIconOptions(options: IIconOptions): void {
+export function setIconOptions(options: Partial<IIconOptions>): void {
   _icons.__options = {
     ..._icons.__options,
     ...options
