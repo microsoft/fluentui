@@ -122,6 +122,16 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * Apply additional formating to dates, for example localized date formatting.
   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
+
+  /**
+  * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
+  */
+  minDate?: Date;
+
+  /**
+  * If set the Calendar will not allow navigation to or selection of a date later than this value.
+  */
+  maxDate?: Date;
 }
 
 export interface ICalendarStrings {

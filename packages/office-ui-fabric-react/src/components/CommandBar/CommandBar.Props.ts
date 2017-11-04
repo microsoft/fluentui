@@ -96,7 +96,6 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
-
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false

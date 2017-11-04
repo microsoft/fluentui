@@ -94,4 +94,31 @@ describe('Slider', () => {
     );
     expect(slider!.value).toEqual(12);
   });
+
+  it('renders correct aria-valuetext', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <Slider />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    let ariaValueText = button.getAttribute('aria-valuetext');
+
+    expect(ariaValueText).toBeNull();
+
+    const values = ['small', 'medium', 'large'];
+    const selected = 1;
+    const getTextValue = (value: number) => values[value];
+
+    component = ReactTestUtils.renderIntoDocument(
+      <Slider
+        value={ selected }
+        ariaValueText={ getTextValue }
+      />
+    );
+    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    ariaValueText = button.getAttribute('aria-valuetext');
+
+    expect(ariaValueText).toEqual(values[selected]);
+  });
 });

@@ -20,7 +20,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /**
    * Array of IPersonaProps that define each Persona. Note that the size
-   * is fixed at PersonaSize.extraSmall regardless of what is specified.
+   * is fixed at PersonaSize.size32 regardless of what is specified.
    */
   personas: IFacepilePersona[];
 

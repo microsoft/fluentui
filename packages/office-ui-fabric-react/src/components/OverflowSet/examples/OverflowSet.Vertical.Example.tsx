@@ -3,7 +3,9 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import {
   IOverflowSetItemProps,
   OverflowSet
@@ -12,25 +14,29 @@ import {
 import * as stylesImport from './OverflowSet.Example.scss';
 const styles: any = stylesImport;
 
-export class OverflowSetBasicExample extends BaseComponent<any, any> {
+export class OverflowSetVerticalExample extends BaseComponent<any, any> {
 
   public render() {
     return (
       <OverflowSet
+        vertical
         items={ [
           {
             key: 'item1',
+            icon: 'Add',
             name: 'Link 1',
             ariaLabel: 'New. Use left and right arrow keys to navigate',
             onClick: () => { return; },
           },
           {
             key: 'item2',
+            icon: 'Upload',
             name: 'Link 2',
             onClick: () => { return; },
           },
           {
             key: 'item3',
+            icon: 'Share',
             name: 'Link 3',
             onClick: () => { return; }
           }
@@ -38,11 +44,13 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
         overflowItems={ [
           {
             key: 'item4',
+            icon: 'Mail',
             name: 'Overflow Link 1',
             onClick: () => { return; }
           },
           {
             key: 'item5',
+            icon: 'Calendar',
             name: 'Overflow Link 2',
             onClick: () => { return; }
           }
@@ -56,18 +64,24 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
 
   private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
     return (
-      <Link
-        className={ css(styles.overflowLinks) }
-        onClick={ item.onClick }
-      >{ item.name }
-      </Link>
+
+      <TooltipHost
+        content={ item.name }
+        calloutProps={ { directionalHint: DirectionalHint.rightCenter, beakWidth: 12 } }
+      >
+        <CommandBarButton
+          styles={ { root: { padding: '10px' } } }
+          iconProps={ { iconName: item.icon } }
+          onClick={ item.onClick }
+        />
+      </TooltipHost>
     );
   }
 
   private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
     return (
-      <IconButton
-        className={ css(styles.overflowButton) }
+      <CommandBarButton
+        styles={ { root: { padding: '10px' }, menuIcon: { fontSize: '16px' } } }
         menuIconProps={ { iconName: 'More' } }
         menuProps={ { items: overflowItems! } }
       />
