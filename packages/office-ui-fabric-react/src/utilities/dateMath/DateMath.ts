@@ -68,6 +68,42 @@ export function addYears(date: Date, years: number): Date {
 }
 
 /**
+ * Returns a date that is the first day of the month of the provided date.
+ * @param {Date} date - The origin date
+ * @return {Date} A new Date object with the day set to the first day of the month.
+ */
+export function getMonthStart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0, 0);
+}
+
+/**
+ * Returns a date that is the last day of the month of the provided date.
+ * @param {Date} date - The origin date
+ * @return {Date} A new Date object with the day set to the last day of the month.
+ */
+export function getMonthEnd(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0, 0, 0, 0, 0);
+}
+
+/**
+ * Returns a date that is the first day of the year of the provided date.
+ * @param {Date} date - The origin date
+ * @return {Date} A new Date object with the day set to the first day of the year.
+ */
+export function getYearStart(date: Date): Date {
+  return new Date(date.getFullYear(), 0, 1, 0, 0, 0, 0);
+}
+
+/**
+ * Returns a date that is the last day of the year of the provided date.
+ * @param {Date} date - The origin date
+ * @return {Date} A new Date object with the day set to the last day of the year.
+ */
+export function getYearEnd(date: Date): Date {
+  return new Date(date.getFullYear() + 1, 0, 0, 0, 0, 0, 0);
+}
+
+/**
  * Returns a date that is a copy of the given date, aside from the month changing to the given month.
  *  The method tries to preserve the day-of-month; however, if the new month does not have enough days
  * to contain the original day-of-month, we'll use the last day of the new month.

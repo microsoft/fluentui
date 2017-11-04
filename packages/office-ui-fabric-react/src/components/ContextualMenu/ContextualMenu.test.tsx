@@ -370,6 +370,47 @@ describe('ContextualMenu', () => {
 
   });
 
+  it('Hover correctly focuses the second element', (done) => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        className: 'testkey1'
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+        className: 'testkey2'
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    new Promise<any>(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey2')!.firstChild;
+
+        if (focusedItem) {
+          let focusedItemElement = focusedItem as HTMLElement;
+          let eventObject = document.createEvent('Events');
+          eventObject.initEvent('mouseenter', true, false);
+          focusedItemElement.dispatchEvent(eventObject);
+        }
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).toEqual(focusedItem);
+      done();
+      resolve();
+    }).catch(done());
+  });
+
   it('ContextualMenu menuOpened callback is called only when menu is available', () => {
     let layerMounted = false;
     let menuMounted = false;

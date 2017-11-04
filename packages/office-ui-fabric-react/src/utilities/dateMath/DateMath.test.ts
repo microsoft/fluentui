@@ -411,4 +411,24 @@ describe('DateMath', () => {
     expected = 52;
     expect(result).toEqual(expected);
   });
+
+  it('can get the month start and end', () => {
+    let date = new Date('Dec 15 2017');
+
+    // First day of month
+    expect(DateMath.compareDates(new Date('Dec 1 2017'), DateMath.getMonthStart(date))).toBe(true);
+
+    // Last day of month
+    expect(DateMath.compareDates(new Date('Dec 31 2017'), DateMath.getMonthEnd(date))).toBe(true);
+  });
+
+  it('can get the year start and end', () => {
+    let date = new Date('Dec 15 2017');
+
+    // First day of year
+    expect(DateMath.compareDates(new Date('Jan 1 2017'), DateMath.getYearStart(date))).toBe(true);
+
+    // Last day of year
+    expect(DateMath.compareDates(new Date('Dec 31 2017'), DateMath.getYearEnd(date))).toBe(true);
+  });
 });

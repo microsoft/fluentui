@@ -125,6 +125,32 @@
         "NODE_ENV": "development"
       },
       "sourceMaps": true
+    },
+    {
+      "name": "Build oufr typescript",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/common/temp/node_modules/typescript/lib/tsc.js",
+      "stopOnEntry": true,
+      "args": [
+        "-outDir",
+        "lib",
+        "-t",
+        "es5",
+        "-m",
+        "commonjs",
+        "--pretty"
+      ],
+      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": false
     }
   ]
 }
