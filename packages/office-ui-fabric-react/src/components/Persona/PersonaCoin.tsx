@@ -26,6 +26,14 @@ import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS = {
+  [PersonaSize.tiny]: 20,
+  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.extraSmall]: 28,
+  [PersonaSize.small]: 40,
+  [PersonaSize.regular]: 48,
+  [PersonaSize.large]: 72,
+  [PersonaSize.extraLarge]: 100,
+
   [PersonaSize.size24]: 24,
   [PersonaSize.size28]: 28,
   [PersonaSize.size10]: 20,
@@ -107,7 +115,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
-        { size !== PersonaSize.size10 ? (
+        { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
           <div
             { ...coinProps }
             className={ css('ms-Persona-imageArea', styles.imageArea) }
