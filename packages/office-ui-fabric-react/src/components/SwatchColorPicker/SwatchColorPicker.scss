@@ -55,6 +55,7 @@
 .cell {
   padding: 0px;
   overflow: visible;
+  height: 24px;
 
   &.cellIsSelected {
     &:hover .svg,
