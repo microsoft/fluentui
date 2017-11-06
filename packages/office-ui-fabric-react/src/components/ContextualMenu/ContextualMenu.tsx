@@ -503,6 +503,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-label': ariaLabel,
       'aria-haspopup': hasSubmenuItems(item) || null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
+      'aria-expanded': hasSubmenuItems(item) ? item.key === expandedMenuItemKey : null,
       'aria-checked': isChecked,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,

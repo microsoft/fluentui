@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "leji@microsoft.com"
+}
