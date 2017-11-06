@@ -1,6 +1,41 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 10 Oct 2017 10:24:47 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Oct 2017 10:23:09 GMT and should not be manually modified.
+
+## 5.6.1
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Patches
+
+- Adding Button related semantic slots.
+
+## 5.6.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Added IconFontSizes
+
+## 5.5.0
+Thu, 26 Oct 2017 10:21:37 GMT
+
+### Minor changes
+
+- Updating the icon warning to link to documentation for assistance.
+
+## 5.4.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- remove outdated semantic slots
+
+## 5.4.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings.
 
 ## 5.3.0
 Tue, 10 Oct 2017 10:24:47 GMT

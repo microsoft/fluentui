@@ -53,7 +53,8 @@ describe('mergeStyles', () => {
     expect(className).toEqual('css-0');
     expect(newClassName).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual(
-      '.css-0{background:red;color:black;}.css-1{background:red;color:white;}'
+      '.css-0{background:red;color:black;}' +
+      '.css-1{background:red;color:white;}'
     );
   });
 
@@ -61,6 +62,17 @@ describe('mergeStyles', () => {
     mergeStyles({ margin: '4px' }, { marginRight: '8px' });
     expect(_stylesheet.getRules()).toEqual(
       '.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}'
+    );
+  });
+
+  it('can expand className lists', () => {
+    const classes1 = mergeStyles('ms-Foo', { background: 'red' });
+    const classes2 = mergeStyles(classes1, { background: 'green' });
+
+    expect(classes2).toEqual('ms-Foo css-1');
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;}' +
+      '.css-1{background:green;}'
     );
   });
 

@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Persona renders Persona correctly with image 1`] = `
+<div
+  className="ms-Persona ms-Persona--size48 undefined"
+  size={13}
+  style={undefined}
+>
+  <div
+    className="ms-Persona-coin ms-Persona--size48 undefined"
+    size={13}
+  >
+    <div
+      className="ms-Persona-imageArea"
+      style={undefined}
+    >
+      <div
+        className="ms-Image ms-Persona-image"
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      >
+        <img
+          alt=""
+          className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona-details"
+  >
+    <div
+      className="ms-Persona-primaryText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Kat Larrson
+      </div>
+    </div>
+    <div
+      className="ms-Persona-secondaryText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+    <div
+      className="ms-Persona-tertiaryText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+    <div
+      className="ms-Persona-optionalText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Persona renders Persona correctly with initials 1`] = `
+<div
+  className="ms-Persona ms-Persona--size48 undefined"
+  size={13}
+  style={undefined}
+>
+  <div
+    className="ms-Persona-coin ms-Persona--size48 undefined"
+    size={13}
+  >
+    <div
+      className="ms-Persona-imageArea"
+      style={undefined}
+    >
+      <div
+        aria-hidden="true"
+        className="ms-Persona-initials ms-Persona-initials--black undefined"
+        style={undefined}
+      >
+        <span>
+          KL
+        </span>
+      </div>
+      <div
+        className="ms-Image ms-Persona-image"
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }
+      >
+        <img
+          alt=""
+          className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+          onError={[Function]}
+          onLoad={[Function]}
+          role={undefined}
+          src={undefined}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ms-Persona-details"
+  >
+    <div
+      className="ms-Persona-primaryText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Kat Larrson
+      </div>
+    </div>
+    <div
+      className="ms-Persona-secondaryText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+    <div
+      className="ms-Persona-tertiaryText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+    <div
+      className="ms-Persona-optionalText"
+    >
+      <div
+        aria-describedby={undefined}
+        className="ms-TooltipHost"
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;

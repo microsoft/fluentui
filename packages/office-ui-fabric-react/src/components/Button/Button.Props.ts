@@ -85,6 +85,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   ariaDescription?: string;
 
   /**
+   * If provided and is true it adds an 'aria-hidden' attribute instructing screen readers to ignore the element.
+   */
+  ariaHidden?: boolean;
+
+  /**
   * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
   */
   text?: string;
@@ -109,6 +114,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * The props for the icon shown when providing a menu dropdown.
    */
   menuIconProps?: IIconProps;
+
+  /**
+   * Optional callback when menu is clicked.
+   */
+  onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
 
   /**
    * Custom render function for the icon

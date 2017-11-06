@@ -116,6 +116,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
+  /**
+   * A callback used to modify the input string.
+   */
+  onInputChange?: (input: string) => string;
 }
 
 export interface IBasePickerSuggestionsProps {

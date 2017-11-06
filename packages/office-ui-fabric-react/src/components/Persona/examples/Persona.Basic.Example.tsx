@@ -42,60 +42,66 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           />
         </div>
 
-        <Label className={ exampleStyles.exampleLabel }>Tiny Persona (12px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 10 Persona, with no presence</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.tiny }
+          size={ PersonaSize.size10 }
+          hidePersonaDetails={ !renderPersonaDetails }
+        />
+        <Label className={ exampleStyles.exampleLabel }>Size 10 Persona, with presence</Label>
+        <Persona
+          { ...examplePersona }
+          size={ PersonaSize.size10 }
           presence={ PersonaPresence.offline }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Extra Extra Small Persona (24px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 24 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraExtraSmall }
-          presence={ PersonaPresence.none }
+          size={ PersonaSize.size24 }
+          presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Size 28 Persona (28px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 28 Persona</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size28 }
-          presence={ PersonaPresence.none }
+          presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Extra Small Persona (32px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 32 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.size32 }
           presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className={ exampleStyles.exampleLabel }>Small Persona (40px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 40 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.small }
+          size={ PersonaSize.size40 }
           presence={ PersonaPresence.away }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Medium Persona (48px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 48 Persona (default) </Label>
         <Persona
           { ...examplePersona }
           hidePersonaDetails={ !renderPersonaDetails }
           presence={ PersonaPresence.busy }
         />
 
-        <Label className={ exampleStyles.exampleLabel }>Large Persona (72px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 72 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.large }
+          size={ PersonaSize.size72 }
           presence={ PersonaPresence.dnd }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-        <Label className={ exampleStyles.exampleLabel }>Extra Large Persona (100px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 100 Persona</Label>
         <Persona
           { ...examplePersona }
-          size={ PersonaSize.extraLarge }
+          size={ PersonaSize.size100 }
           presence={ PersonaPresence.blocked }
           hidePersonaDetails={ !renderPersonaDetails }
         />

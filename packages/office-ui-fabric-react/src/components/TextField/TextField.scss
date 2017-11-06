@@ -9,20 +9,20 @@
 @import '../Label/LabelMixins.scss';
 
 // component slots
-$field-background-color: $fieldBackgroundColor;
+$field-background-color: $bodyBackgroundColor;
 $field-background-disabled-color: $disabledBackgroundColor;
 
-$field-border-color: $fieldBorderColor;
+$field-border-color: $inputBorderColor;
 $field-border-disabled-color: $disabledBackgroundColor;
-$field-border-hover-color: $fieldBorderHoverColor;
-$field-border-focus-color: $fieldBorderFocusColor;
+$field-border-hover-color: $inputBorderHoveredColor;
+$field-border-focus-color: $inputFocusBorderAltColor;
 $field-border-error-color: $errorTextColor;
 
-$field-text-color: $fieldTextColor;
+$field-text-color: $bodyTextColor;
 $field-text-disabled-color: $disabledTextColor;
 
-$field-placeholder-color: $fieldPlaceholderColor;
-$field-placeholder-disabled-color: $disabledSubtextColor;
+$field-placeholder-color: $bodySubtextColor;
+$field-placeholder-disabled-color: $disabledTextColor;
 
 $field-description-color: $bodySubtextColor;
 $field-error-color: $errorTextColor;
@@ -137,7 +137,24 @@ $field-error-color: $errorTextColor;
 
 .root.rootIsRequiredPlaceholderOnly {
   :global(.ms-TextField-fieldGroup) {
-    @include ms-TextField-fieldGroup-is-required;
+    &::after {
+      content: ' *';
+      color: $ms-color-error;
+      @include ms-padding-right(12px);
+    }
+  }
+}
+
+.root.rootIsRequiredPlaceholderIcon {
+  :global(.ms-Icon) {
+    &::before {
+      content: ' *';
+      color: $ms-color-error;
+      position: absolute;
+      top: -4px;
+      @include ms-right(8px);
+      @include ms-padding-right(12px);
+    }
   }
 }
 
@@ -149,9 +166,11 @@ $field-error-color: $errorTextColor;
 .icon {
   pointer-events: none;
   position: absolute;
-  bottom: 8px;
+  bottom: 5px;
   @include right(8px);
   top: auto;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .description {
