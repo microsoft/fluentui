@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 05 Nov 2017 23:27:32 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2017 18:44:43 GMT and should not be manually modified.
+
+## 5.20.1
+Mon, 06 Nov 2017 18:44:43 GMT
+
+### Patches
+
+- Fixing Icon amd import.
 
 ## 5.20.0
 Sun, 05 Nov 2017 23:27:32 GMT
