@@ -20,13 +20,14 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
         <div>
           <Label>Standard</Label>
           <DefaultButton
+            primary
             data-automation-id='test'
             disabled={ disabled }
-            checked={ checked }
             text='Create account'
             onClick={ alertClicked }
             split={ true }
             style={ { height: '35px' } }
+            splitButtonFullActiveButtonStyling={ true }
             menuProps={ {
               items: [
                 {
