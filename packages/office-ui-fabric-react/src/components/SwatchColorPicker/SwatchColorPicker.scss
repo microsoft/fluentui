@@ -11,21 +11,6 @@
   box-sizing: content-box;
 }
 
-:global(.ms-Fabric.is-focusVisible) .cell, :global(.ms-Fabric.is-focusVisible) .circleCell {
-  &:focus,
-  &:focus::after {
-    border: none;
-    outline-color: transparent!important;
-  }
-}
-
-:global(.ms-Fabric.is-focusVisible) .circleCell {
-  &:focus,
-  &:focus::after {
-    border-radius: 100%;
-  }
-}
-
 .item {
   @include ms-font-m;
   @include focus-border();
@@ -92,14 +77,13 @@
     }
   }
 
-  &:focus::after {
-    box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
-    width: 38px;
-    height: 38px;
-    margin-top: 1px;
-
-    &.circle {
-      border-radius: 100%;
+  @include focus(true) {
+    &:focus::after {
+      width: 38px;
+      height: 38px;
+      outline-color: transparent!important;
+      box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
+      border: none;
     }
   }
 
@@ -137,6 +121,13 @@
     cursor: default;
     pointer-events: none;
     opacity: .3;
+  }
+}
+
+.circleCell {
+  &:focus,
+  &:focus::after {
+    border-radius: 100%;
   }
 }
 
