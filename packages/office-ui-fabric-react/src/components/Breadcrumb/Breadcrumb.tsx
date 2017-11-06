@@ -6,7 +6,7 @@ import {
   IBreadcrumbStyleProps
 } from './Breadcrumb.props';
 import { BreadcrumbBase } from './Breadcrumb.base';
-import { styled } from './utils/index';
+import { styled } from '../../Styling';
 import { ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
 import { getStyles } from './Breadcrumb.styles';
 import { getStyles as getCrumbStyles } from './Crumb.styles';

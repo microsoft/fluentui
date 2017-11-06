@@ -9,14 +9,14 @@
       "integrity": "sha1-6pn2EhtKjwZbTHH4VZXbJxRJiAc="
     },
     "@microsoft/load-themed-styles": {
-      "version": "1.7.7",
-      "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.7.7.tgz",
-      "integrity": "sha1-op5c9BTUp/dNC805NF6hHfvZTsI="
+      "version": "1.7.8",
+      "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.7.8.tgz",
+      "integrity": "sha1-W42m+k7d2pkYgU5+qYkyRYo6Xtw="
     },
     "@microsoft/loader-load-themed-styles": {
-      "version": "1.6.2",
-      "resolved": "https://registry.npmjs.org/@microsoft/loader-load-themed-styles/-/loader-load-themed-styles-1.6.2.tgz",
-      "integrity": "sha1-wDj+egIFuMkir9M6bW0QzWPBt6E="
+      "version": "1.6.3",
+      "resolved": "https://registry.npmjs.org/@microsoft/loader-load-themed-styles/-/loader-load-themed-styles-1.6.3.tgz",
+      "integrity": "sha1-U9zUwqMA1jms14PxFr9wR3fpVjs="
     },
     "@rush-temp/build": {
       "version": "file:projects/build",
@@ -8036,9 +8036,9 @@
       "integrity": "sha512-VwGbHIT89e+9XdGcb2gdPgKgYQGjRG5peyPNO982znlCSB/UIM9g7gF6JmHpaMHb8xvEScY7UGJ8GRz6GQVBRg=="
     },
     "office-ui-fabric-react": {
-      "version": "5.19.1",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.19.1.tgz",
-      "integrity": "sha512-BoimIuEasXDWcuKBtKf309i5rkdaGOIo/6lp+971il0v7zHy26zUQGPgjCINcIqPuwRgC3D+rDBUikPsb7cLpg=="
+      "version": "5.20.1",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-5.20.1.tgz",
+      "integrity": "sha512-takUz1NLYGjCdB1wnHjO+cdZjypHStCWN0kqDgY8jc3ianOsMP3O4DZA+paWLa+17CJxcieRZMp32hlltxdpzQ=="
     },
     "on-finished": {
       "version": "2.3.0",

@@ -19,7 +19,7 @@ import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { CrumbBase } from './Crumb.base';
 import {
   classNamesFunction
-} from './utils/index';
+} from '../../Styling';
 
 export interface IBreadCrumbData {
   props: IBreadcrumbProps;

@@ -5,7 +5,12 @@ import {
   customizable,
   getRTL
 } from '../../Utilities';
-import { ITheme, IStyle } from '../../Styling';
+import {
+  IStyle,
+  IStyleFunction,
+  ITheme,
+  classNamesFunction
+} from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
@@ -14,7 +19,6 @@ import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { IStyleFunction, classNamesFunction } from './utils/index';
 import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
 
 const getClassNames = classNamesFunction<ICrumbStyleProps, ICrumbStyles>();

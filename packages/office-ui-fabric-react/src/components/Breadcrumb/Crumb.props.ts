@@ -1,10 +1,11 @@
-import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import {
+  IStyle,
+  IStyleFunction,
+  ITheme
+} from '../../Styling';
 import {
   IBreadcrumbItem
 } from './Breadcrumb.props';
-import {
-  IStyleFunction
-} from './utils/index';
 
 export interface ICrumbProps {
   theme?: ITheme;

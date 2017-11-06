@@ -2,11 +2,10 @@ import {
   FontSizes,
   HighContrastSelector,
   ScreenWidthMaxMedium,
-  ScreenWidthMaxSmall,
+  ScreenWidthMaxSmall
 } from '../../Styling';
 import { CrumbBase } from './Crumb.base';
 import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
-import { styled } from './utils/index';
 
 const MediumMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxMedium}px)`;
 const SmallMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxSmall}px)`;
