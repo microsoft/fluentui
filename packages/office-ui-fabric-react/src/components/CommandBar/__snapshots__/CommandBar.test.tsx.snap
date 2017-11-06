@@ -57,6 +57,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  white-space: nowrap;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -159,6 +160,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  white-space: nowrap;
                 }
                 &::-moz-focus-inner {
                   border: 0;
