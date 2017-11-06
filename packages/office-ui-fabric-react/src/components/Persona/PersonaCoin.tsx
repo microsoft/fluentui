@@ -21,7 +21,7 @@ import {
 } from './PersonaConsts';
 import {
   Icon
-} from '../Icon';
+} from '../../Icon';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
