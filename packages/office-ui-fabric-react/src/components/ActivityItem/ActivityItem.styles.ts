@@ -12,6 +12,7 @@ const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
@@ -65,7 +66,20 @@ export const getStyles = memoizeFunction((
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,
       color: theme.palette.themePrimary,
-      marginTop: '1px'
+      marginTop: '1px',
+      selectors: {
+        '.ms-Persona-imageArea': {
+          marginTop: '-2px',
+          border: '2px solid #fff',
+          borderRadius: '50%',
+          selectors: {
+            [MS_HIGHCONTRAST_ACTIVE]: {
+              border: 'none',
+              marginTop: '0'
+            }
+          }
+        }
+      }
     },
 
     activityPersona: {

@@ -121,6 +121,9 @@ $ms-Persona-presenceSizeXl: 28px;
 
   @include high-contrast {
     border: 1px solid WindowText;
+    -ms-high-contrast-adjust: none;
+    // Using important to override all of the more specific initialsIsColor rules
+    background-color: Window !important;
   }
 
   &.initialsIsLightBlue {
@@ -325,10 +328,6 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .rootIsSize16 {
-  .imageArea {
-    box-shadow: 0 0 0 2px $ms-color-white;
-  }
-
   .imageArea,
   .image {
     height: $ms-Persona-size16;
