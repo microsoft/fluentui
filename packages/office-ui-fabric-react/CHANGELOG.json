@@ -2,6 +2,67 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.20.0",
+      "tag": "office-ui-fabric-react_v5.20.0",
+      "date": "Sun, 05 Nov 2017 23:27:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Evan Levy <33076550+evlevy@users.noreply.github.com>",
+            "commit": "f8fee750ee10805a19b4dfad0b6e3093199d92b8",
+            "comment": "Allow optional minimum and maximum date boundaries on Calendar component. "
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5346d5adda7957fceffdf7381620780ce9efda81",
+            "comment": "Persona: respecting the deprecated PersonaSize enum values to avoid breaking changes."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "5d816416e75063a88919e4d7fbdd01f3a6fa7020",
+            "comment": "Persona: Renamed Persona size12 to Persona size10. Polished style to reflect the toolkit."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.1",
+      "tag": "office-ui-fabric-react_v5.19.1",
+      "date": "Fri, 03 Nov 2017 15:06:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fbc91124227072ddeda35020e0c3f9e442ad5e12",
+            "comment": "HoverCard: fixing an import to be AMD compliant."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.19.0",
+      "tag": "office-ui-fabric-react_v5.19.0",
+      "date": "Fri, 03 Nov 2017 14:09:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "e97a8c36e74abd3d487f2ae8b2faafde009b2d67",
+            "comment": "OverflowSet: Support vertical orientation"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "f20fb3eca8d4f9e369e9f93e587c2912bbb11ac8",
+            "comment": "SpinButton: Allow for styling of the icon when the component is disabled"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.0",
       "tag": "office-ui-fabric-react_v5.18.0",
       "date": "Thu, 02 Nov 2017 18:20:18 GMT",

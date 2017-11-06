@@ -12,7 +12,7 @@ import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
-import { FocusTrapZone } from '../FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
 export interface IExpandingCardState {
@@ -26,6 +26,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     compactCardHeight: 156,
     expandedCardHeight: 384,
     directionalHint: DirectionalHint.bottomLeftEdge,
+    directionalHintFixed: true,
     gapSpace: 0
   };
 
@@ -68,6 +69,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       theme,
       styles: customStyles,
       compactCardHeight,
+      directionalHintFixed,
       expandedCardHeight
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
@@ -96,7 +98,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         target={ targetElement }
         isBeakVisible={ false }
         directionalHint={ this.props.directionalHint }
-        directionalHintFixed={ true }
+        directionalHintFixed={ directionalHintFixed }
         finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }
         gapSpace={ this.props.gapSpace }

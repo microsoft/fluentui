@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 02 Nov 2017 18:20:18 GMT and should not be manually modified.
+This log was last generated on Sun, 05 Nov 2017 23:27:32 GMT and should not be manually modified.
+
+## 5.20.0
+Sun, 05 Nov 2017 23:27:32 GMT
+
+### Minor changes
+
+- Allow optional minimum and maximum date boundaries on Calendar component. 
+
+### Patches
+
+- Persona: respecting the deprecated PersonaSize enum values to avoid breaking changes.
+- Persona: Renamed Persona size12 to Persona size10. Polished style to reflect the toolkit.
+
+## 5.19.1
+Fri, 03 Nov 2017 15:06:54 GMT
+
+### Patches
+
+- HoverCard: fixing an import to be AMD compliant.
+
+## 5.19.0
+Fri, 03 Nov 2017 14:09:56 GMT
+
+### Minor changes
+
+- OverflowSet: Support vertical orientation
+
+### Patches
+
+- SpinButton: Allow for styling of the icon when the component is disabled
 
 ## 5.18.0
 Thu, 02 Nov 2017 18:20:18 GMT
