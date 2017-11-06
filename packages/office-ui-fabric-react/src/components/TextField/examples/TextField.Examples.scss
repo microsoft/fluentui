@@ -1,5 +1,22 @@
+@import '../../../common/_variables';
+
 :global {
-  .ms-TextFieldExample .ms-TextField {
-    margin: 0 0 15px 0;
+  .ms-TextFieldExample {
+    .ms-TextField {
+      margin: 0 0 15px 0;
+      max-width: $minFieldWidth;
+    }
+  }
+
+  .ms-TextFieldErrorExample {
+    .ms-TextField,
+    .NumberTextField {
+      margin: 0 0 15px 0;
+      max-width: $minFieldWidth*2;
+    }
+
+    .NumberTextField .ms-TextField {
+      margin: 0 0 5px 0;
+    }
   }
 }
