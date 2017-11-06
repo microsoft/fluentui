@@ -59,6 +59,7 @@ $ms-Persona-presenceSize8: 8px;
 $ms-Persona-presenceSize12: 12px;
 $ms-Persona-presenceSize20: 20px;
 $ms-Persona-presenceSize28: 28px;
+$ms-Persona-presenceSizeFlex: 28%;
 $ms-Persona-presenceBorder: 2px;
 
 .root {
@@ -215,6 +216,17 @@ $ms-Persona-presenceBorder: 2px;
 
     @include high-contrast {
       color: Window;
+    }
+  }
+}
+
+.root.coinSizeWithPresence {
+  .presence {
+    height: $ms-Persona-presenceSizeFlex;
+    width: $ms-Persona-presenceSizeFlex;
+
+    .presenceIcon {
+      display: none;
     }
   }
 }
