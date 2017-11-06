@@ -196,9 +196,19 @@ export interface ISpinButtonStyles {
   icon: IStyle;
 
   /**
+ * Style for the icon.
+ */
+  iconDisabled: IStyle;
+
+  /**
    * Style for the label text
    */
   label: IStyle;
+
+  /**
+   * Style for the label text
+   */
+  labelDisabled: IStyle;
 
   /**
    * Style for spinButtonWrapper when enabled.

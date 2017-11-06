@@ -1,6 +1,28 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 05 Oct 2017 16:29:11 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+
+## 5.3.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add cancel/flush to debounce
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+- Fixing version dependencies.
 
 ## 5.1.0
 Thu, 05 Oct 2017 16:29:11 GMT

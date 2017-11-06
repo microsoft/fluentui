@@ -114,6 +114,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
+            aria-valuetext={ this._getAriaValueText(value) }
             aria-label={ ariaLabel || label }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
@@ -163,6 +164,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   public get value(): number | undefined {
     return this.state.value;
+  }
+
+  @autobind
+  private _getAriaValueText(value: number | undefined): string | void {
+    if (this.props.ariaValueText && value !== undefined) {
+      return this.props.ariaValueText(value);
+    }
   }
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
@@ -240,10 +248,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number) {
-    let valueChanged = value !== this.state.value;
+    let interval: number = 1.0 / this.props.step!;
+    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
+    let roundedValue: number = Math.round(value * interval) / interval;
+
+    let valueChanged = roundedValue !== this.state.value;
 
     this.setState({
-      value,
+      value: roundedValue,
       renderedValue
     }, () => {
       if (valueChanged && this.props.onChange) {

@@ -5,13 +5,16 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 import {
   IPoint,
   IRectangle,
   IRenderFunction
 } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -36,7 +39,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent;
+  target?: HTMLElement | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -76,11 +79,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   /**
    * If true use a point rather than rectangle to position the ContextualMenu.
    * For example it can be used to position based on a click.
+   * @deprecated Use 'target' instead
    */
   useTargetPoint?: boolean;
 
   /**
    * Point used to position the ContextualMenu
+   * @deprecated Use 'target' instead
    */
   targetPoint?: IPoint;
 
@@ -194,6 +199,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    */
   theme?: ITheme;
 
+  /**
+   * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
+   * defined in ContextualMenu.classnames.
+   * @default getContextualMenuClassNames
+   */
+  getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
+
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 }
@@ -234,6 +246,12 @@ export interface IContextualMenuItem {
   disabled?: boolean;
 
   /**
+   * If the menu item is a split button, this prop disables purely the primary action of the button.
+   * @defaultvalue false
+   */
+  primaryDisabled?: boolean;
+
+  /**
    * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'disabled' instead.
    * @deprecated
    */
@@ -263,12 +281,18 @@ export interface IContextualMenuItem {
   isChecked?: boolean;
 
   /**
+   * Whether or not this menu item is a splitButton.
+   * @defaultvalue false
+   */
+  split?: boolean;
+
+  /**
    * Any custom data the developer wishes to associate with the menu item.
    */
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked
+   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
@@ -295,6 +319,28 @@ export interface IContextualMenuItem {
    *  can be overridden.
    */
   subMenuProps?: IContextualMenuProps;
+
+  /**
+  * Method to provide the classnames to style the individual items inside a menu. Default value is the getItemClassnames func
+  * defined in ContextualMenu.classnames.
+  * @default getItemClassNames
+  */
+  getItemClassNames?: (theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    isAnchorLink: boolean,
+    knownIcon: boolean,
+    itemClassName?: string,
+    dividerClassName?: string,
+    iconClassName?: string,
+    subMenuClassName?: string) => IMenuItemClassNames;
+
+  /**
+  * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+  * @default getSplitButtonVerticalDividerClassNames
+  */
+  getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
    *  Properties to apply to render this item as a section.
@@ -329,9 +375,12 @@ export interface IContextualMenuItem {
    * Method to custom render this menu item.
    * For keyboard accessibility, the top-level rendered item should be a focusable element
    * (like an anchor or a button) or have the `data-is-focusable` property set to true.
+   *
+   * The function receives a function that can be called to dismiss the menu as a second argument.
+   *  This can be used to make sure that a custom menu item click dismisses the menu.
    * @defaultvalue undefined
    */
-  onRender?: (item: any) => React.ReactNode;
+  onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
    * A function to be executed onMouseDown. This is executed before an onClick event and can
@@ -375,9 +424,73 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
   bottomDivider?: boolean;
 }
 
+export interface IMenuItemStyles extends IButtonStyles {
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
+  item: IStyle;
+
+  /**
+   * Styles for the content inside the button/link of the menuItem.
+   */
+  linkContent: IStyle;
+
+  /**
+   * Styles for a menu item that is an anchor link.
+   */
+  anchorLink: IStyle;
+
+  /**
+   * Default icon color style for known icons.
+   */
+  iconColor: IStyle;
+
+  /**
+   * Default style for checkmark icons.
+   */
+  checkmarkIcon: IStyle;
+
+  /**
+   * Styles for the submenu icon of a menu item.
+   */
+  subMenuIcon: IStyle;
+
+  /**
+  * Styles for a divider item of a ConextualMenu.
+  */
+  divider: IStyle;
+
+  /**
+   *  Styles for a split button divider in a menu item
+   * @deprecated
+   */
+  splitButtonSeparator: IStyle;
+}
+
 export interface IContextualMenuStyles {
+
   /**
    * Style override for the contextual menu title.
    */
   title: IStyle;
+
+  /**
+   * Style for the container which parents all menu items.
+   */
+  container: IStyle;
+
+  /**
+   * Base styles for the root element of all ContextualMenus.
+   */
+  root: IStyle;
+
+  /**
+   * Styles for the header item of a ContextualMenu
+   */
+  header: IStyle;
+
+  /**
+   * Styles for the list that contains all menuItems.
+   */
+  list: IStyle;
 }

@@ -17,6 +17,10 @@ export class ModalComponentPage extends React.Component<any, any> {
                   'location': 'Overview'
                 },
                 {
+                  'text': 'Best Practices',
+                  'location': 'BestPractices'
+                },
+                {
                   'text': 'Variants',
                   'location': 'Variants'
                 },

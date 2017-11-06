@@ -7,6 +7,7 @@ import {
   Calendar,
   DayOfWeek
 } from '../../Calendar';
+import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField } from '../../TextField';
@@ -114,18 +115,15 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     borderless: false,
     pickerAriaLabel: 'Calender',
     showWeekNumbers: false,
+    firstWeekOfYear: FirstWeekOfYear.FirstDay,
     showGoToToday: true,
     dateTimeFormatter: undefined
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-    textField: TextField;
-  };
-
+  private _root: HTMLElement;
   private _calendar: Calendar;
   private _datepicker: HTMLDivElement;
+  private _textField: TextField;
   private _preventFocusOpeningPicker: boolean;
   private _focusOnSelectedDateOnUpdate: boolean;
 
@@ -183,8 +181,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root, className) } ref='root'>
-        <div ref={ (c): HTMLElement => this._datepicker = c! }>
+      <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
+        <div ref={ this._resolveRef('_datepicker') }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
@@ -211,7 +209,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref='textField'
+            ref={ this._resolveRef('_textField') }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />
         </div>
@@ -233,11 +231,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
               showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
+              today={ this.props.today }
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
               showWeekNumbers={ this.props.showWeekNumbers }
+              firstWeekOfYear={ this.props.firstWeekOfYear }
               showGoToToday={ this.props.showGoToToday }
               dateTimeFormatter={ this.props.dateTimeFormatter }
               ref={ this._resolveRef('_calendar') }
@@ -380,8 +380,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
-    if (this.refs.textField) {
-      this.refs.textField.focus();
+    if (this._textField) {
+      this._textField.focus();
     }
   }
 
@@ -392,7 +392,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _validateTextInput() {
-    let { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate } = this.props;
+    let { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate } = this.props;
     const inputValue = this.state.formattedDate;
 
     // Do validation only if DatePicker's popup is dismissed
@@ -413,16 +413,23 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (allowTextInput) {
       let date = null;
       if (inputValue) {
-        date = parseDateFromString!(inputValue);
-        if (!date) {
-          this.setState({
-            errorMessage: strings!.invalidInputErrorMessage || '*'
-          });
+        // Don't parse if the selected date has the same formatted string as what we're about to parse.
+        // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
+        // not be able to come up with the exact same date.
+        if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
+          date = this.state.selectedDate;
         } else {
-          this.setState({
-            selectedDate: date,
-            errorMessage: ''
-          });
+          date = parseDateFromString!(inputValue);
+          if (!date) {
+            this.setState({
+              errorMessage: strings!.invalidInputErrorMessage || '*'
+            });
+          } else {
+            this.setState({
+              selectedDate: date,
+              errorMessage: ''
+            });
+          }
         }
       } else {
         // No input date string shouldn't be an error if field is not required

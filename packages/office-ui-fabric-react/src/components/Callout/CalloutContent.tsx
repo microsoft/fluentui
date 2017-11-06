@@ -5,6 +5,7 @@ import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   BaseComponent,
+  IPoint,
   IRectangle,
   assign,
   autobind,
@@ -50,7 +51,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _bounds: IRectangle;
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | null;
+  private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
   constructor(props: ICalloutProps) {
@@ -74,14 +75,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   public componentWillMount() {
-    let target = this.props.target;
-    this._setTargetWindowAndElement(target!);
+    this._setTargetWindowAndElement(this._getTarget());
   }
 
   public componentWillUpdate(newProps: ICalloutProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
-    if (newProps.target !== this.props.target || typeof (newProps.target) === 'string' || newProps.target instanceof String) {
-      let newTarget = newProps.target;
+    let newTarget = this._getTarget(newProps);
+    let oldTarget = this._getTarget();
+    if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -116,7 +117,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakWidth,
       calloutWidth,
       finalHeight,
-      backgroundColor } = this.props;
+      backgroundColor,
+      calloutMaxHeight } = this.props;
+    target = this._getTarget();
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -140,7 +143,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
 
-    let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+
     let beakVisible = isBeakVisible && (!!target);
 
     let content = (
@@ -329,29 +334,34 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         const oldPositionEdge = oldPositions[key];
         const newPositionEdge = newPositions[key];
 
-        if (oldPositionEdge && newPositionEdge) {
+        if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
           if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
             return false;
           }
+        } else {
+          return false;
         }
       }
     }
     return true;
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
     if (target) {
       if (typeof target === 'string') {
         let currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
-        this._target = target;
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
+        this._target = target;
+      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
+        this._targetWindow = getWindow()!;
+        this._target = target;
       } else {
         let targetElement: HTMLElement = target as HTMLElement;
-        this._target = target;
         this._targetWindow = getWindow(targetElement)!;
+        this._target = target;
       }
     } else {
       this._targetWindow = getWindow()!;
@@ -377,5 +387,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         }
       });
     }
+  }
+
+  private _getTarget(props: ICalloutProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+    let { useTargetPoint, targetPoint, target } = props;
+    return useTargetPoint ? targetPoint! : target!;
   }
 }

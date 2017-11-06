@@ -16,4 +16,8 @@
     @include contentPadding(50px, 50px);  // Override padding to match this website
   }
 
+  #BestPractices, #Variants, #ImplementationExamples, #Implementation {
+    margin-top: 0;
+  }
+
 }

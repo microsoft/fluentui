@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "5.0.7",
+  "version": "5.0.15",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -33,7 +33,7 @@
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.6.0",
-    "office-ui-fabric-core": ">=7.1.2 <8.0.0",
+    "office-ui-fabric-core": ">=9.0.0 <10.0.0",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -42,10 +42,10 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
-    "@uifabric/icons": ">=5.1.0 <6.0.0",
+    "@uifabric/icons": ">=5.2.0 <6.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
-    "office-ui-fabric-react": ">=6.0.1 <7.0.0",
+    "office-ui-fabric-react": ">=5.20.1 <6.0.0",
     "tslib": "^1.7.1"
   }
 }

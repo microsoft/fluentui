@@ -14,6 +14,7 @@ export interface IComboBoxClassNames {
   optionsContainer: string;
   header: string;
   divider: string;
+  optionsContainerWrapper: string;
 }
 
 export interface IComboBoxOptionClassNames {
@@ -37,7 +38,8 @@ export const getClassNames = memoizeFunction((
       styles.container,
     ),
     label: mergeStyles(
-      styles.label
+      styles.label,
+      disabled && styles.labelDisabled
     ),
     root: mergeStyles(
       'ms-ComboBox',
@@ -68,6 +70,10 @@ export const getClassNames = memoizeFunction((
       'ms-ComboBox-callout',
       styles.callout
     ),
+    optionsContainerWrapper: mergeStyles(
+      'ms-ComboBox-optionsContainerWrapper',
+      styles.optionsContainerWrapper
+    ),
     optionsContainer: mergeStyles(
       'ms-ComboBox-optionsContainer',
       styles.optionsContainer
@@ -84,9 +90,7 @@ export const getClassNames = memoizeFunction((
 });
 
 export const getComboBoxOptionClassNames = memoizeFunction((
-  styles: IComboBoxOptionStyles,
-  optionIsSelected: boolean,
-  disabled: boolean,
+  styles: Partial<IComboBoxOptionStyles>,
 ): IComboBoxOptionClassNames => {
   return {
     optionText: mergeStyles(

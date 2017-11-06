@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider renders Slider correctly 1`] = `
+<div
+  className="ms-Slider ms-Slider-enabled undefined ms-Slider-row undefined"
+>
+  <div
+    className="ms-Slider-container"
+  >
+    <button
+      aria-label={undefined}
+      aria-valuemax={10}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      aria-valuetext={undefined}
+      className="ms-Slider-slideBox ms-Slider-showValue ms-Slider-showTransitions undefined"
+      disabled={false}
+      id="Slider0"
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      role="slider"
+      type="button"
+    >
+      <div
+        className="ms-Slider-line"
+      >
+        <span
+          className="ms-Slider-thumb"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        />
+        <span
+          className="ms-Slider-active"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+        <span
+          className="ms-Slider-inactive"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        />
+      </div>
+    </button>
+    <label
+      className=
+          ms-Label
+          ms-Slider-value
+          {
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+    >
+      0
+    </label>
+  </div>
+</div>
+`;

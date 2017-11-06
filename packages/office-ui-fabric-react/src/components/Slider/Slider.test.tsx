@@ -4,11 +4,18 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { Slider } from './Slider';
 import { ISlider } from './Slider.Props';
 
 describe('Slider', () => {
+
+  it('renders Slider correctly', () => {
+    const component = renderer.create(<Slider />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('renders a slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
@@ -82,8 +89,36 @@ describe('Slider', () => {
     let slider: ISlider | undefined;
 
     ReactTestUtils.renderIntoDocument(
+      // tslint:disable-next-line:jsx-no-lambda
       <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
     expect(slider!.value).toEqual(12);
+  });
+
+  it('renders correct aria-valuetext', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <Slider />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    let ariaValueText = button.getAttribute('aria-valuetext');
+
+    expect(ariaValueText).toBeNull();
+
+    const values = ['small', 'medium', 'large'];
+    const selected = 1;
+    const getTextValue = (value: number) => values[value];
+
+    component = ReactTestUtils.renderIntoDocument(
+      <Slider
+        value={ selected }
+        ariaValueText={ getTextValue }
+      />
+    );
+    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    ariaValueText = button.getAttribute('aria-valuetext');
+
+    expect(ariaValueText).toEqual(values[selected]);
   });
 });

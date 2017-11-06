@@ -13,7 +13,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-82c8b87c.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-5-5bc71068.woff') format('woff')`, 
     },
     icons: {
       'SocialListeningLogo': '\uED7C',
@@ -96,7 +96,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'SingleBookmark': '\uEDFF',
       'DoubleChevronDown': '\uEE04',
       'ReplyAll': '\uEE0A',
-      'GoogleDriveLogo': '\uEE0B',
       'Questionnaire': '\uEE19',
       'ReplyMirrored': '\uEE35',
       'ReplyAllMirrored': '\uEE36',

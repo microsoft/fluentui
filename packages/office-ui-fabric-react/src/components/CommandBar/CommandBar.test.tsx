@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
 import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.Props';
@@ -17,6 +18,29 @@ describe('CommandBar', () => {
         i--;
       }
     }
+  });
+
+  it('renders CommandBar correctly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+    const component = renderer.create(
+      <CommandBar items={ items } />
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('opens a menu with deprecated IContextualMenuItem.items property', () => {

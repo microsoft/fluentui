@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Calendar } from './Calendar';
-import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 
-export { DayOfWeek, DateRangeType };
+export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
@@ -112,9 +112,26 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showWeekNumbers?: boolean;
 
   /**
+  * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+  * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+  * @defaultvalue FirstWeekOfYear.FirstDay
+  */
+  firstWeekOfYear?: FirstWeekOfYear;
+
+  /**
   * Apply additional formating to dates, for example localized date formatting.
   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
+
+  /**
+  * If set the Calendar will not allow navigation to or selection of a date earlier than this value.
+  */
+  minDate?: Date;
+
+  /**
+  * If set the Calendar will not allow navigation to or selection of a date later than this value.
+  */
+  maxDate?: Date;
 }
 
 export interface ICalendarStrings {

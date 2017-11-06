@@ -71,7 +71,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
-      className
+      className,
+      doNotContainWithinFocusZone
     } = this.props;
 
     if (colorCells.length < 1 || columnCount < 1) {
@@ -86,6 +87,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         positionInSet={ positionInSet && positionInSet }
         setSize={ setSize && setSize }
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
+        doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
         containerClassName={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer, className) }
       />);
@@ -178,7 +180,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string).str } >
+      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :

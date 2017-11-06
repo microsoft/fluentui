@@ -73,7 +73,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame } = this.props;
+    let { src, alt, width, height, shouldFadeIn, shouldStartVisible, className, imageFit, role, maximizeFrame } = this.props;
     let { loadState } = this.state;
     let coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
@@ -107,7 +107,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
               loaded && 'is-loaded ' + styles.imageIsLoaded,
               shouldFadeIn && 'is-fadeIn',
               loadState === ImageLoadState.error && 'is-error',
-              loaded && shouldFadeIn && AnimationClassNames.fadeIn400,
+              loaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
               {
                 ['ms-Image-image--scaleWidth ' + styles.imageIsScaleWidth]: (imageFit === undefined && !!width && !height),
                 ['ms-Image-image--scaleHeight ' + styles.imageIsScaleHeight]: (imageFit === undefined && !width && !!height),

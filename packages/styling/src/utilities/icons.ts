@@ -12,10 +12,11 @@ import {
 } from '@uifabric/merge-styles/lib/index';
 
 export interface IIconSubset {
-  fontFace: IFontFace;
+  fontFace?: IFontFace;
   icons: {
-    [key: string]: string;
+    [key: string]: string | JSX.Element;
   };
+
   style?: IRawStyle;
 }
 
@@ -25,11 +26,12 @@ export interface IIconSubsetRecord extends IIconSubset {
 }
 
 export interface IIconRecord {
-  code: string;
+  code: string | undefined;
   subset: IIconSubsetRecord;
 }
 
 export interface IIconOptions {
+  disableWarnings: boolean;
   warnOnMissingIcons: boolean;
 }
 
@@ -42,6 +44,7 @@ export interface IIconRecords {
 const ICON_SETTING_NAME = 'icons';
 const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
   __options: {
+    disableWarnings: false,
     warnOnMissingIcons: true
   },
   __remapped: {}
@@ -65,7 +68,7 @@ export function registerIcons(iconSubset: IIconSubset): void {
       const code = icons[iconName];
       const normalizedIconName = iconName.toLowerCase();
 
-      if (_icons[normalizedIconName]) {
+      if (_icons[normalizedIconName] && !_icons.__options.disableWarnings) {
         warn(`Icon '${iconName} being re-registered`);
       }
 
@@ -103,7 +106,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
     if (icon) {
       let { subset } = icon;
 
-      if (!subset.isRegistered) {
+      if (subset.fontFace && !subset.isRegistered) {
         // Register font face for given icons.
         fontFace(subset.fontFace);
 
@@ -119,8 +122,8 @@ export function getIcon(name?: string): IIconRecord | undefined {
         subset.isRegistered = true;
       }
     } else {
-      if (_icons.__options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was referenced but not registered.`);
+      if (_icons.__options.warnOnMissingIcons && !_icons.__options.disableWarnings) {
+        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
       }
     }
   }
@@ -133,7 +136,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
  *
  * @public
  */
-export function setIconOptions(options: IIconOptions): void {
+export function setIconOptions(options: Partial<IIconOptions>): void {
   _icons.__options = {
     ..._icons.__options,
     ...options

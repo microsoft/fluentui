@@ -6,12 +6,9 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuCustomizationExample extends React.Component<{}, {}> {
-  private _button: IButton | undefined;
-
   public render() {
     return (
       <DefaultButton
-        componentRef={ (button) => this._button = button }
         className='ContextualMenuButton3'
         text='Click for ContextualMenu'
         menuProps={
@@ -191,20 +188,13 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
   }
 
   @autobind
-  private _dismissMenu() {
-    if (this._button) {
-      this._button.dismissMenu();
-    }
-  }
-
-  @autobind
-  private _renderCharmMenuItem(item: any) {
+  private _renderCharmMenuItem(item: any, dismissMenu: () => void) {
     return (
       <IconButton
         iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
-        onClick={ this._dismissMenu }
+        onClick={ dismissMenu }
       />
     );
   }

@@ -3,8 +3,14 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IComboBox {
+  /**
+  * If there is a menu open this will dismiss the menu
+  */
+  dismissMenu: () => void;
+
   /**
    * Sets focus to the input in the comboBox
    * @returns True if focus could be set, false if no operation was taken.
@@ -42,10 +48,20 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
+   * Function that gets invoked when the ComboBox menu is launched
+   */
+  onMenuOpen?: () => void;
+
+  /**
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
+
+  /**
+   * Callback issued when the ComboBox requests the list to scroll to a specific element
+   */
+  onScrollToItem?: (itemIndex: number) => void;
 
   /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
@@ -54,9 +70,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
-   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style. Defaults to false.
+   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style.
+   *
+   * @default "on"
    */
-  autoComplete?: string;
+  autoComplete?: 'on' | 'off';
 
   /**
    * Value to show in the input, does not have to map to a combobox option
@@ -95,6 +113,10 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    */
   scrollSelectedToTop?: boolean;
 
+  /**
+   * Add additional content below the callout list.
+   */
+  onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 }
 
 export interface IComboBoxStyles {
@@ -107,6 +129,11 @@ export interface IComboBoxStyles {
    * Style for the label element of the ComboBox.
    */
   label: IStyle;
+
+  /**
+   * Style for the label element of the ComboBox in the disabled state.
+   */
+  labelDisabled: IStyle;
 
   /**
    * Base styles for the root element of all ComboBoxes.
@@ -161,6 +188,11 @@ export interface IComboBoxStyles {
    * Styles for the callout.
    */
   callout: IStyle;
+
+  /**
+  * Styles for the optionsContainerWrapper.
+  */
+  optionsContainerWrapper: IStyle;
 
   /**
    * Styles for the container of all the Combobox options

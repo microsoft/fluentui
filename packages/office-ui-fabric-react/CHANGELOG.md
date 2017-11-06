@@ -1,6 +1,321 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Oct 2017 10:17:42 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2017 18:44:43 GMT and should not be manually modified.
+
+## 5.20.1
+Mon, 06 Nov 2017 18:44:43 GMT
+
+### Patches
+
+- Fixing Icon amd import.
+
+## 5.20.0
+Sun, 05 Nov 2017 23:27:32 GMT
+
+### Minor changes
+
+- Allow optional minimum and maximum date boundaries on Calendar component. 
+
+### Patches
+
+- Persona: respecting the deprecated PersonaSize enum values to avoid breaking changes.
+- Persona: Renamed Persona size12 to Persona size10. Polished style to reflect the toolkit.
+
+## 5.19.1
+Fri, 03 Nov 2017 15:06:54 GMT
+
+### Patches
+
+- HoverCard: fixing an import to be AMD compliant.
+
+## 5.19.0
+Fri, 03 Nov 2017 14:09:56 GMT
+
+### Minor changes
+
+- OverflowSet: Support vertical orientation
+
+### Patches
+
+- SpinButton: Allow for styling of the icon when the component is disabled
+
+## 5.18.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Adding ES2015 Module Support
+- BaseButton: onMenuClick to support other actions for menu and split buttons
+- add accessibility behavior of hover card
+- CommandBar: iconOnly items prop
+- Add 'today' to DatePicker properties and forward it to the Calendar.
+- Grid: Add prop to for FocusZone presence
+- Slider: added `ariaValueText` property for better screen-reader support.
+
+### Patches
+
+- Changed es2015 module output to target es5 so that TypeScript downcompiles the code.
+- Dropdown: Updated caret dropdown colors.
+- Button: Added flexShrink: 0 to icons in button so long text won't make them shrink
+- Fixed contextual menu state colors.
+- Facepile style debugging, includes new FacepileButton
+- Menus: Update so they have one notion of focus (from both hover and keyboard)
+- Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname
+- Persona: Changed PersonaSize names from descriptive to numerical. 
+- TextField/DatePicker: The required astrisk is now more correctly positioned.
+
+## 5.17.1
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- ContextualMenu: Support suppressing dismiss on ItemClick via preventDefault
+
+## 5.17.0
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Minor changes
+
+- Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color
+
+### Patches
+
+- Fixed an issue where ComboBox would throw an exception under shallow rendering tests
+- Adjustments made to the disabled text color for Toggle and Checkbox.
+
+## 5.16.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Add ariaHidden prop to buttons
+
+### Patches
+
+- Restore forceAnchor prop for INavLink elements
+- SearchBox onKeyDown: prevent default events only when specified by the user
+- Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues
+- Theme Generator: improve perf
+
+## 5.15.0
+Thu, 26 Oct 2017 10:21:37 GMT
+
+### Minor changes
+
+- Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons.
+
+### Patches
+
+- Callout: Add check for undefined when comparing old and new position
+- SplitButtonInMenu: render icon in primary action button
+- ContextualMenu: Make the behavior of getIsChecked consistent for isChecked and checked props
+
+## 5.14.0
+Wed, 25 Oct 2017 02:03:33 GMT
+
+### Minor changes
+
+- Panel: Added possibility of using a custom function to handle clicks outside the panel when using isLightDismiss=true
+- ComboBox: Adding prop that keeps calout closed when using test input
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- Buttons: split button has `borderRadius` set to 0 to override defaults on Mac chrome/safari.
+- CalloutContent: Fix calculation of max size if calloutMaxHeight is not provided
+- Fix Dropdown's falsey check in selection to strict check for undefined in case key is 0
+
+## 5.13.0
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Minor changes
+
+- Adds "onInputChanged" prop to BasePicker
+- Layer: exposing `setDefaultTarget(selector)` static method to set a default target element where layered content should render by default.
+
+### Patches
+
+- ComboBox: Add support for custom styling of the label in the disabled state
+- Dialog: Don't add empty spans to footer for falsy children of DialogFooter
+- Nav: Add onRenderLink back to JSX to allow custom rendering of links
+- remove outdated semantic slots
+- Ensure that Select All checkbox can still be focused
+
+## 5.12.0
+Mon, 23 Oct 2017 10:24:13 GMT
+
+### Minor changes
+
+- ComboBox: Adding onMenuOpen callback
+
+### Patches
+
+- Added a new divider component
+- ContextualMenu/Callout: Fix (and deprecate) broken 'targetPoint' API
+- DatePicker will not try to parse a string if the formatted string of the selected date is the same as the string to be parsed.
+
+## 5.11.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Adding an Icons export in lib folder, as well as adding Check to the root index exports.
+- Add a way to force a layout update for ScrollablePane
+- ColorPicker: Adding hex/red/green/blue/alpha label props so applications can provide localized strings. Also turns off spell check for corresponding text fields.
+- Add opt-in modal selection behavior on touch
+
+### Patches
+
+- Fix minor state update bug with Sticky
+- ComboBox: Fix custom styling on menu options
+- Updated example to render some custom icons.
+- SpinButton: Disable last pass autofill
+- Menu Split Button: Launch split button menu with right arrow key
+- PersonaCoin - display initials only if no imageUrl is provided or if error loading image
+
+## 5.10.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- ComboBox: the label now appears disabled when the ComboBox is disabled.
+- "ContextualMenu: SplitButtons can now appear inside menus"
+- Theming: add SASS variables for semantic theming to support legacy scenarios"
+
+### Patches
+
+- Added implementation examples section to Button Page. Rearranged TextField borderless example.
+- Updated the Fabric Core package version
+- Fix Image css so it doesn't fade in if shouldStartVisible is true
+- Fix refs in Dropdown and Datepicker
+
+## 5.9.3
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Patches
+
+- SearchBox: expose onKeyDown event by invoking external prop
+- ContextualMenu: Pass in a menu dismiss function into onRender to allow custom rendered menu items to dismiss the menu
+
+## 5.9.2
+Mon, 16 Oct 2017 22:49:01 GMT
+
+### Patches
+
+- Nav: fixing amd-incompatible import.
+
+## 5.9.1
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Dropdown: Fixing nullref when nothing is selected in multi select rendering.
+- Updating shrinkwrap for Fabric Core package update
+
+## 5.9.0
+Mon, 16 Oct 2017 10:20:41 GMT
+
+### Minor changes
+
+- DatePicker getWeekNumbers function accepts firstWeekOfYear settings
+
+### Patches
+
+- Fix Slider css so label does not break lines if value is long
+- Fix rounding issue in Slider when step is less than 1
+- Fix CommandButton styles for Nav entries
+
+## 5.8.2
+Fri, 13 Oct 2017 04:00:17 GMT
+
+### Patches
+
+- Colors Utility: add error checking if an invalid string is given
+
+## 5.8.1
+Fri, 13 Oct 2017 01:36:02 GMT
+
+### Patches
+
+- Callout: Update the typings on the target prop to make it compatible with React refs
+- Tooltip: pass calloutProps.className to Callout
+- Theme Generator: insure color update when bg inverts
+
+## 5.8.0
+Thu, 12 Oct 2017 10:20:49 GMT
+
+### Minor changes
+
+- Dropdown: add onDismiss callback. Example multi select dropdown with filters, we want to apply filters after user has dismissed the dropdown. 
+- OverflowSet: Add FocusZoneProps and the ability to set the role
+- Callout: Added optional button at the bottom of the callout container
+- ComboBox: added selectedIndex prop and inputFieldText prop for more control over comboBox behavior
+- "Update spinButton styling to have the right font size and disabled visuals"
+
+### Patches
+
+- ComboBox: Updated typing and documentation for `autoComplete` to only allow 'on' or 'off' (following html standards) rather than a boolean.
+- ContextualMenu: Update the typings on getMenuItemClassNames
+- Adding Implementation Examples section to ComponentPage. Implemented in TextField.
+
+## 5.7.0
+Wed, 11 Oct 2017 10:11:04 GMT
+
+### Minor changes
+
+- ComboBox: Adding props to control height and width of Callout 
+- "Move getItemClassnNames forontextualMenuProps to IContextualMenuItem"
+- Make Modal's FocusTrapZone controllable
+
+### Patches
+
+- ContextualMenu: Update the typing for getMenuClassNames
+- SpinButton: Fix the code reference for the stateful spinButton Example (#3023)
+- MessageBar: replaced DefaultButton with MessageBarButton.
+
+## 5.6.0
+Tue, 10 Oct 2017 10:24:47 GMT
+
+### Minor changes
+
+- " Move ContextualMenu component to Glamor"
+- ComboBox: Add virtualization to the combobox control
+
+### Patches
+
+- ComboBox: Pass default render functions to ComboBox custom render functions
+- New MessageBarButton component to allow for the unique state styles need in MessageBar.
+
+## 5.5.1
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added sizing prop for Breadcrumb per design toolkit.
+- Vertically center checkbox in DetailsList header
+- Label: Convert sass to mergeStyles
+- Positioning: Fix an issue where beak would appear misaligned if an event was passed in
+
+## 5.5.0
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Minor changes
+
+- Style ms-Button-menuIcon according to root styles for the following states - hovered, pressed, expanded  ande expandedHovered.
+
+### Patches
+
+- Dropdown: fix broken implementation of controlled multi-select dropdowns
+- TSConfig: update to use preserveConstEnums so that certain builds systems don't break when importing const enums
+- Router: regex to be able to render the correct page when it encounters queries.
+
+## 5.4.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Fixing version dependencies.
 
 ## 6.0.1
 Thu, 05 Oct 2017 10:17:42 GMT

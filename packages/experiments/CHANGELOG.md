@@ -1,6 +1,59 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 04 Oct 2017 22:40:22 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2017 18:20:18 GMT and should not be manually modified.
+
+## 5.4.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker
+
+### Patches
+
+- Fix import that was causing build error
+
+## 5.3.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Switch to .svg files for FolderCover images
+
+## 5.3.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Add modal selection behavior to TilesList
+
+## 5.2.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add Form control
+
+## 5.1.0
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Minor changes
+
+- Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively
+
+## 5.0.5
+Fri, 13 Oct 2017 01:36:01 GMT
+
+### Patches
+
+- Fix visibility of Tile descenders
+
+## 5.0.4
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
 
 ## 5.0.3
 Wed, 04 Oct 2017 22:40:22 GMT
