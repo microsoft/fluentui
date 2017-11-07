@@ -39,6 +39,8 @@ import { withViewport } from '../../utilities/decorators/withViewport';
 const styles: any = stylesImport;
 
 export interface IDetailsListState {
+  focusedItem?: DetailsRow;
+  focusedItemIndex: number;
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
@@ -97,12 +99,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._onRowWillUnmount = this._onRowWillUnmount.bind(this);
     this._onToggleCollapse = this._onToggleCollapse.bind(this);
     this._onActiveRowChanged = this._onActiveRowChanged.bind(this);
+    this._onBlur = this._onBlur.bind(this);
     this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
+      focusedItem: undefined,
+      focusedItemIndex: -1,
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       isSizing: false,
@@ -140,6 +145,25 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         if (row) {
           this._setFocusToRowIfPending(row);
         }
+      }
+    }
+
+    if (
+      this.props.items !== prevProps.items &&
+      this.props.items.length > 0 &&
+      this.state.focusedItemIndex !== -1 &&
+      this.props.items.indexOf(this.state.focusedItem) === -1
+    ) {
+      // Item set has changed and previously-focused item is gone.
+      // Set focus to item at index of previously-focused item if it is in range,
+      // else set focus to the last item.
+      const item = this.state.focusedItemIndex < this.props.items.length
+        ? this.props.items[this.state.focusedItemIndex]
+        : this.props.items[this.props.items.length - 1];
+      const itemKey = this._getItemKey(item, this.state.focusedItemIndex);
+      const row = this._activeRows[itemKey];
+      if (row) {
+        this._setFocusToRow(row);
       }
     }
 
@@ -314,6 +338,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
               onActiveElementChanged={ this._onActiveRowChanged }
+              onBlur={ this._onBlur }
             >
               <SelectionZone
                 ref={ this._resolveRef('_selectionZone') }
@@ -493,15 +518,18 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _setFocusToRowIfPending(row: DetailsRow) {
     const { itemIndex } = row.props;
     if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
-      if (this._selectionZone) {
-        this._selectionZone.ignoreNextFocus();
-      }
-      this._async.setTimeout(() => {
-        row.focus();
-      }, 0);
-
+      this._setFocusToRow(row);
       delete this._initialFocusedIndex;
     }
+  }
+
+  private _setFocusToRow(row: DetailsRow) {
+    if (this._selectionZone) {
+      this._selectionZone.ignoreNextFocus();
+    }
+    this._async.setTimeout(() => {
+      row.focus();
+    }, 0);
   }
 
   private _onRowWillUnmount(row: DetailsRow) {
@@ -723,13 +751,26 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) {
     let { items, onActiveItemChanged } = this.props;
 
-    if (!onActiveItemChanged || !el) {
+    if (!el) {
       return;
     }
     let index = Number(el.getAttribute('data-item-index'));
     if (index >= 0) {
-      onActiveItemChanged(items[index], index, ev);
+      if (onActiveItemChanged) {
+        onActiveItemChanged(items[index], index, ev);
+      }
+      this.setState({
+        focusedItem: items[index],
+        focusedItemIndex: index
+      });
     }
+  }
+
+  private _onBlur(event: React.FocusEvent<HTMLElement>) {
+    this.setState({
+      focusedItem: undefined,
+      focusedItemIndex: -1
+    });
   }
 
   private _getItemKey(item: any, itemIndex: number): string | number {
