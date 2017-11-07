@@ -17,15 +17,24 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
   }
 
   public render(): JSX.Element | null {
-    let { presence } = this.props;
+    let { presence, coinSize } = this.props;
+    let coinSizeWithPresenceIconStyle = coinSize ? { fontSize: coinSize / 6, lineHeight: coinSize / 3 + 'px' } : undefined;
+    let coinSizeWithPresenceStyle = coinSize ? { width: coinSize / 3, height: coinSize / 3 } : undefined;
 
     if (presence === PersonaPresenceEnum.none) {
       return null;
     }
 
     return (
-      <div className={ css('ms-Persona-presence', styles.presence) }>
-        <Icon className={ css('ms-Persona-presenceIcon', styles.presenceIcon) } iconName={ this._determineIcon() } />
+      <div
+        className={ css('ms-Persona-presence', styles.presence) }
+        style={ coinSizeWithPresenceStyle }
+      >
+        <Icon
+          className={ css('ms-Persona-presenceIcon', styles.presenceIcon) }
+          iconName={ this._determineIcon() }
+          style={ coinSizeWithPresenceIconStyle }
+        />
       </div>
     );
   }
