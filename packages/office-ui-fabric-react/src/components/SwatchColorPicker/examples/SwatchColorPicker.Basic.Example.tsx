@@ -87,6 +87,20 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
             ]
           }
         />
+        <div>Larger circle styles:</div>
+        <SwatchColorPicker
+          largerSwatchStyles={ true }
+          columnCount={ 4 }
+          cellShape={ 'circle' }
+          colorCells={
+            [
+              { id: 'a', label: 'green', color: '#00ff00' },
+              { id: 'b', label: 'orange', color: '#ffa500' },
+              { id: 'c', label: 'blue', color: '#0000ff' },
+              { id: 'd', label: 'red', color: '#ff0000' }
+            ]
+          }
+        />
       </div>
     );
   }

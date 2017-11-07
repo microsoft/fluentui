@@ -5,10 +5,16 @@
 }
 
 .svg {
-  width: 32px;
-  height: 32px;
-  padding: 2px;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
   box-sizing: content-box;
+
+  &.larger {
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+  }
 }
 
 .item {
@@ -49,7 +55,7 @@
   padding: 0px;
   overflow: visible;
 
-  &:focus {
+  &:focus.larger {
     width: 38px;
   }
 
@@ -72,8 +78,13 @@
         border-radius: 100%;
       }
 
-      width: 24px;
-      height: 24px;
+      width: 12px;
+      height: 12px;
+
+      &.larger {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
@@ -86,13 +97,22 @@
     }
 
     &:focus::after {
-      width: 34px;
-      height: 34px;
-      margin-top: 2px;
+      width: 26px;
+      height: 26px;
+      margin-top: 6px;
       margin-left: 1px;
       outline-color: transparent!important;
       box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
       border: none;
+    }
+
+    &.larger {
+      &:focus::after{
+        margin-top: 2px;
+        margin-left: 1px;
+        width: 34px;
+        height: 34px;
+      }
     }
   }
 
@@ -104,8 +124,13 @@
   &:hover .svg,
   &:focus .svg,
   &:active .svg {
-    width: 24px;
-    height: 24px;
+    width: 12px;
+    height: 12px;
+
+    &.larger {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &:hover .svg.circle,
