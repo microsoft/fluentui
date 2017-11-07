@@ -48,11 +48,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   disabled?: boolean;
 
   /**
-   * If this is a split button, whether the active state styling of the control should be enabled in the whole button or not.
-   */
-  splitButtonFullActiveButtonStyling?: boolean;
-
-  /**
    * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
    */
   primaryDisabled?: boolean;

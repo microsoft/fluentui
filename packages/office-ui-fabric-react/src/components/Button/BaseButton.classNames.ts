@@ -21,7 +21,8 @@ export const getClassNames = memoizeFunction((
   menuIconClassName: string | undefined,
   disabled: boolean,
   checked: boolean,
-  expanded: boolean
+  expanded: boolean,
+  isSplit: boolean
 ): IButtonClassNames => {
   return {
     root: mergeStyles(
@@ -33,7 +34,7 @@ export const getClassNames = memoizeFunction((
         'is-checked',
         styles.rootChecked
       ],
-      expanded && [
+      expanded && !isSplit && [
         'is-expanded',
         styles.rootExpanded,
         {

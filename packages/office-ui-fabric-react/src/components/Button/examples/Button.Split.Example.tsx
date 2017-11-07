@@ -27,7 +27,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             onClick={ alertClicked }
             split={ true }
             style={ { height: '35px' } }
-            splitButtonFullActiveButtonStyling={ true }
             menuProps={ {
               items: [
                 {
