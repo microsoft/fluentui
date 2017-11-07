@@ -7,7 +7,7 @@
 .svg {
   width: 32px;
   height: 32px;
-  padding: 3px;
+  padding: 2px;
   box-sizing: content-box;
 }
 
@@ -50,7 +50,7 @@
   overflow: visible;
 
   &:focus {
-    width: 40px;
+    width: 38px;
   }
 
   &:hover .svg,
@@ -78,9 +78,18 @@
   }
 
   @include focus(true) {
+    & .svg,
+    &:hover .svg
+    &:active .svg
+    &:focus .svg {
+      border: 4px solid $ms-color-themeLight;
+    }
+
     &:focus::after {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
+      margin-top: 2px;
+      margin-left: 1px;
       outline-color: transparent!important;
       box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
       border: none;
