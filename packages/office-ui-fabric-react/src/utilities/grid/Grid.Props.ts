@@ -20,9 +20,16 @@ export interface IGridProps {
   onRenderItem: (item: any, index: number) => JSX.Element;
 
   /**
-   * Boolean indicating if the focus should support circular navigation
+   * Boolean indicating if the focus should support circular navigation.
+   * This prop is only relevant if doNotcontainWithinFocusZone is not true
    */
   shouldFocusCircularNavigate?: boolean;
+
+  /**
+   * If true do not contain the grid inside of a FocusZone.
+   * If false contain the grid inside of a FocusZone.
+   */
+  doNotContainWithinFocusZone?: boolean;
 
   /**
    * Optional, class name for the FocusZone container for the grid

@@ -42,7 +42,7 @@ function extractRules(
       const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
-        extractRules(expandedRules, rules);
+        extractRules(expandedRules, rules, currentSelector);
       }
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {

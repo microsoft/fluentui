@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Button: Added flexShrink: 0 to icons in button so long text won't make them shrink",
+      "comment": "Checkbox: Expose icon props for the check mark",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }
