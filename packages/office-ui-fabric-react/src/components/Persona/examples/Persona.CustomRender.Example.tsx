@@ -38,7 +38,7 @@ export class PersonaCustomRenderExample extends React.Component<React.Props<Pers
           { ...examplePersona }
           size={ PersonaSize.size100 }
           coinSize={ 150 }
-          presence={ PersonaPresence.offline }
+          presence={ PersonaPresence.online }
           onRenderSecondaryText={ this._onRenderSecondaryText }
         />
       </div>
