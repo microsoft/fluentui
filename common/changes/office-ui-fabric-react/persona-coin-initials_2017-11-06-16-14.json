@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "PersonaCoin: For non-latin initials, show a Contact icon instead of empty string.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
