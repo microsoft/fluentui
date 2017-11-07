@@ -58,11 +58,6 @@
   height: 24px;
 
   &.cellIsSelected {
-    &:hover .svg,
-    &:active .svg {
-      box-shadow: 0 0 0 1px #969696;
-    }
-
     &:focus .svg,
     & .svg {
       &.circle {
@@ -74,10 +69,6 @@
       border: 2px solid $ms-color-neutralTertiaryAlt;
     }
   }
-
-   &:focus .svg {
-      box-shadow: 0 0 0 1px #969696;
-   }
 
   &:hover .svg,
   &:focus .svg,
