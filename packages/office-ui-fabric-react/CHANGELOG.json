@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.20.2",
+      "tag": "office-ui-fabric-react_v5.20.2",
+      "date": "Tue, 07 Nov 2017 11:22:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "3106efb71237b4bffcc85fd286dd4ad3aa1c886c",
+            "comment": "Checkbox: Expose icon props for the check mark"
+          },
+          {
+            "author": "lejimsft <32402358+lejimsft@users.noreply.github.com>",
+            "commit": "d93bec6b7e866a697ef4a108289c861becacb7ad",
+            "comment": "added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.20.1",
       "tag": "office-ui-fabric-react_v5.20.1",
       "date": "Mon, 06 Nov 2017 18:44:43 GMT",

@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Nov 2017 18:44:43 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Nov 2017 11:22:31 GMT and should not be manually modified.
+
+## 5.20.2
+Tue, 07 Nov 2017 11:22:30 GMT
+
+### Patches
+
+- Checkbox: Expose icon props for the check mark
+- added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items.
 
 ## 5.20.1
 Mon, 06 Nov 2017 18:44:43 GMT
