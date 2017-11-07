@@ -22,8 +22,9 @@ export const getClassNames = memoizeFunction((
   disabled: boolean,
   checked: boolean,
   expanded: boolean,
-  isSplit: boolean
+  isSplit: boolean | undefined
 ): IButtonClassNames => {
+  const isExpanded = expanded && !isSplit;
   return {
     root: mergeStyles(
       className,
@@ -34,7 +35,7 @@ export const getClassNames = memoizeFunction((
         'is-checked',
         styles.rootChecked
       ],
-      expanded && !isSplit && [
+      isExpanded && [
         'is-expanded',
         styles.rootExpanded,
         {
@@ -49,7 +50,7 @@ export const getClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && !checked && {
+      !disabled && !isExpanded && !checked && {
         selectors: {
           ':hover': styles.rootHovered,
           ':hover .ms-Button-icon': styles.iconHovered,
@@ -87,7 +88,7 @@ export const getClassNames = memoizeFunction((
       'ms-Button-icon',
       iconClassName,
       styles.icon,
-      expanded && styles.iconExpanded,
+      isExpanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
     ),
@@ -106,14 +107,14 @@ export const getClassNames = memoizeFunction((
       checked && styles.menuIconChecked,
       disabled && styles.menuIconDisabled,
       !disabled &&
-      !expanded &&
+      !isExpanded &&
       !checked && {
         selectors: {
           ':hover': styles.menuIconHovered,
           ':active': styles.menuIconPressed,
         },
       },
-      expanded && [
+      isExpanded && [
         'is-expanded',
         styles.menuIconExpanded,
         {
