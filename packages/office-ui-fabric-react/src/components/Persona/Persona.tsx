@@ -105,8 +105,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
             className,
             PERSONA_SIZE[size],
             PERSONA_PRESENCE[presence as PersonaPresenceEnum],
-            showSecondaryText && styles.showSecondaryText,
-            coinSize && styles.coinSizeWithPresence
+            showSecondaryText && styles.showSecondaryText
           )
         }
         style={ coinSize ? { height: coinSize, minWidth: coinSize } : undefined }
