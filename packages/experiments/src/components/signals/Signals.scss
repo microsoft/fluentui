@@ -15,6 +15,12 @@
   }
 }
 
+.centeredSignal {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .newItem {
   width: 0;
   height: 1em;
