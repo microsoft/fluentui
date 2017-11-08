@@ -101,6 +101,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.focusZone.focus();
   }
 
+  public focusInput() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
   @autobind
   public dismissSuggestions() {
     // Select the first suggestion if one is available when user leaves.
