@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
 import { ICoachmarkProps } from './Coachmark.Props';
 import { DynamicallyPositionedContainer } from '../DynamicallyPositionedContainer/DynamicallyPositionedContainer';
+import { getStyles } from './Coachmark.Styles';
 
 export interface ICoachmarkState {
   isCollapsed: boolean;
@@ -9,28 +10,35 @@ export interface ICoachmarkState {
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
-
-  public static defaultState = {
-    isCollapsed: true,
-    isBeaconAnimating: true
-  };
+  constructor(props: ICoachmarkProps) {
+    super();
+    this.state =  {
+      isCollapsed: true,
+      isBeaconAnimating: true
+    };
+  }
 
   public render() {
     let {
       children
     } = this.props;
 
+    const classNames = getStyles({
+      isCollapsed: this.state.isCollapsed,
+      isBeaconAnimating: this.state.isBeaconAnimating
+    });
+
     return (
       <DynamicallyPositionedContainer>
         <div
-          className={ 'ms-Coachmark' }
+          className={ classNames.root }
           ref={ this._resolveRef('_hostElement') }
         >
-          <div className='ms-Coachmark-beacon'></div>
-          <div className="ms-Coachmark-translateAnimationLayer">
-            <div className="ms-Coachmark-scaleAnimationLayer">
-              <div className="ms-Coachmark-rotateAnimationLayer">
-                <div className="ms-Coachmark-content">
+          <div className={ classNames.pulsingBeacon }></div>
+          <div className= { classNames.translateAnimationContainer }>
+            <div className={ classNames.scaleAnimationLayer }>
+              <div className={ classNames.rotateAnimationLayer }>
+                <div className={ classNames.layerHost }>
                   { children }
                 </div>
               </div>
