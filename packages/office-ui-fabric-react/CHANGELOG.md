@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 Nov 2017 11:22:31 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Nov 2017 06:05:34 GMT and should not be manually modified.
+
+## 5.20.3
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Selection: calling `setItems` with new items will now invalidate the internal selection array.
+- Persona: DirectionalHint for Tooltip location, polished example spacing and documentation on PersonaPage.
+- Preserve focus in DetailsList when items change
 
 ## 5.20.2
 Tue, 07 Nov 2017 11:22:30 GMT

@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.20.3",
+      "tag": "office-ui-fabric-react_v5.20.3",
+      "date": "Wed, 08 Nov 2017 06:05:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "f35ef51ff9ca57ba057c7edd54c9548f0cebae7a",
+            "comment": "Selection: calling `setItems` with new items will now invalidate the internal selection array."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e30b47ff60bbbfe6a09d336224797606275b3c26",
+            "comment": "Persona: DirectionalHint for Tooltip location, polished example spacing and documentation on PersonaPage."
+          },
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "593e3aa8ea5b6e0aef67efc51b154513e6233ace",
+            "comment": "Preserve focus in DetailsList when items change"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.3.0 <6.0.0` to `>=5.3.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.20.2",
       "tag": "office-ui-fabric-react_v5.20.2",
       "date": "Tue, 07 Nov 2017 11:22:30 GMT",
