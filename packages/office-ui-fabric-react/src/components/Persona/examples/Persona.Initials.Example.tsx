@@ -3,6 +3,7 @@ import {
   Persona,
   PersonaInitialsColor,
 } from 'office-ui-fabric-react/lib/Persona';
+import './PersonaExample.scss';
 
 const examplePersona = {
   secondaryText: 'Designer',
@@ -19,7 +20,7 @@ const personaWithInitials = {
 export class PersonaInitialsExample extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className='ms-PersonaExample'>
         <Persona
           { ...examplePersona  }
           primaryText='Kat Larrson'
