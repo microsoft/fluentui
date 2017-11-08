@@ -153,12 +153,12 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
 
       <div
         ref={ this._resolveRef('_positionedHost') }
-        className={ css('ms-Callout-container', styles.container) }
+        className={ css('ms-DynamicallyPositionedContainer', styles.container) }
       >
         <div
           className={
             mergeStyles(
-              'ms-Callout',
+              'ms-DynamicallyPositionedContainer-layerHost',
               styles.root,
               className,
               directionalClassName,
