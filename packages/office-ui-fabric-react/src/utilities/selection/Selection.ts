@@ -165,6 +165,7 @@ export class Selection implements ISelection {
     this._keyToIndexMap = newKeyToIndexMap;
     this._unselectableIndices = newUnselectableIndices;
     this._items = items || [];
+    this._selectedItems = null;
 
     if (hasSelectionChanged) {
       this._change();
