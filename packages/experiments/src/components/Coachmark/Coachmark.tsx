@@ -4,12 +4,17 @@ import { ICoachmarkProps } from './Coachmark.Props';
 import { DynamicallyPositionedContainer } from '../DynamicallyPositionedContainer/DynamicallyPositionedContainer';
 
 export interface ICoachmarkState {
-  isInflated: boolean;
-  isExpanded: boolean;
-
+  isCollapsed: boolean;
+  isBeaconAnimating: boolean;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkProps, {}> {
+export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+
+  public static defaultState = {
+    isCollapsed: true,
+    isBeaconAnimating: true
+  };
+
   public render() {
     let {
       children
