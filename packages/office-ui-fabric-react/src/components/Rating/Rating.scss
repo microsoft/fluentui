@@ -2,7 +2,6 @@
 
 $Rating-defaultColor: $ms-color-neutralTertiary;
 $Rating-selectedColor: $ms-color-black;
-$Rating-hoverColor: $ms-color-themeDarkAlt;
 $Rating-disabledColor: $ms-color-neutralTertiaryAlt;
 
 $Rating-smallIconSize: 16px;
@@ -41,9 +40,14 @@ $Rating-largeIconSize: 20px;
 
 .ratingButton {
   background: none;
-  margin: 0;
-  padding: 3px 3px 0px 0px;
+  margin: 3px 3px 0px 0px;
+  padding: 0px;
   border: none;
+  cursor: pointer;
+  
+  &:disabled, &[disabled] {
+	cursor: default;
+  }
 }
 
 .rootIsSmall  {
@@ -61,5 +65,6 @@ $Rating-largeIconSize: 20px;
 }
 
 .ratingFocusZone {
-  display: inline-block
+  display: inline-block;
+  padding-bottom: 1px;
 }
