@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix bug in selection code",
+      "comment": "Selection: calling `setItems` with new items will now invalidate the internal selection array.",
       "type": "patch"
     }
   ],
