@@ -156,6 +156,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showWeekNumbers={ this.props.showWeekNumbers }
                   firstWeekOfYear={ this.props.firstWeekOfYear! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
+                  //isMonthPickerVisible={ isMonthPickerVisible }
                   ref='dayPicker'
                 />
                 }

@@ -57,6 +57,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   showWeekNumbers?: boolean;
   firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
+  //isMonthPickerVisible?: boolean;
 }
 
 export interface ICalendarDayState {
@@ -94,13 +95,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter/*, isMonthPickerVisible*/ } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
     let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
     let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
+    //let isMonthVisible = isMonthPickerVisible ? isMonthPickerVisible : false;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -116,7 +118,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         ) }
         id={ dayPickerId }
       >
-        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
+
+        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents/*, isMonthVisible && ('ms-DatePicker-monthComponents2 ' + styles.monthComponents2)*/) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
@@ -461,7 +464,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
 
-    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
+    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth /*|| weekIndex <= 5*/; weekIndex++) {
       let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
@@ -487,7 +490,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         date.setDate(date.getDate() + 1);
       }
 
-      if (!isAllDaysOfWeekOutOfMonth) {
+      if (!isAllDaysOfWeekOutOfMonth /*|| weekIndex <= 5*/) {
         weeks.push(week);
       }
     }
