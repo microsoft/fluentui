@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 08 Nov 2017 06:05:34 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Nov 2017 11:11:27 GMT and should not be manually modified.
+
+## 5.3.2
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout.
 
 ## 5.3.1
 Wed, 08 Nov 2017 06:05:34 GMT
