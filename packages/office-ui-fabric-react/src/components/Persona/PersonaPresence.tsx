@@ -18,8 +18,10 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
 
   public render(): JSX.Element | null {
     let { presence, coinSize } = this.props;
-    let coinSizeWithPresenceIconStyle = coinSize ? { fontSize: coinSize / 6, lineHeight: coinSize / 3 + 'px' } : undefined;
-    let coinSizeWithPresenceStyle = coinSize ? { width: coinSize / 3, height: coinSize / 3 } : undefined;
+    const coinSizeFontScaleFactor = 6;
+    const coinSizePresenceScaleFactor = 3;
+    const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: coinSize / coinSizeFontScaleFactor, lineHeight: coinSize / coinSizePresenceScaleFactor + 'px' } : undefined;
+    const coinSizeWithPresenceStyle = coinSize ? { width: coinSize / coinSizePresenceScaleFactor, height: coinSize / coinSizePresenceScaleFactor } : undefined;
 
     if (presence === PersonaPresenceEnum.none) {
       return null;
