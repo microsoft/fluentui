@@ -34,7 +34,7 @@ export function getLastFocusable(
 }
 
 /**
- * Get the last tabbable element.
+ * Gets the last tabbable element.
  *
  * @public
  */
