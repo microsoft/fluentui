@@ -119,7 +119,8 @@ export class App extends React.Component<IAppProps, IAppState> {
   }
 
   @autobind
-  private _onRenderLink(link: INavLink): (JSX.Element | null)[] {
+  // tslint:disable-next-line:no-any
+  private _onRenderLink(link: INavLink): any {
     return (
       [
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
