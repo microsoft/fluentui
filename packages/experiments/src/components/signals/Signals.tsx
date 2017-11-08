@@ -243,3 +243,13 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
     />
   );
 };
+
+export const ATPSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return (
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.atp) }
+      iconName='ATPLogo'
+    />
+  );
+};
