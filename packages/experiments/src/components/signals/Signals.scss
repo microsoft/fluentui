@@ -1,20 +1,6 @@
 
 @import '~office-ui-fabric-react/src/common/common';
 
-.signal {
-  display: inline-block;
-  margin: 0 4px;
-  position: relative;
-
-  &:first-child {
-    @include margin-left(0);
-  }
-
-  &:last-child {
-    @include margin-right(0);
-  }
-}
-
 .centeredSignal {
     display: inline-flex;
     flex-direction: column;
