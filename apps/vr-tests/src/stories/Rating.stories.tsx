@@ -11,7 +11,7 @@ storiesOf('Rating', module)
     <Screener
       steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .click('div.ms-Rating-star:nth-of-type(2)')
+        .click('button.ms-Rating-button:nth-of-type(2)')
         .snapshot('click', { cropTo: '.testWrapper' })
         .end()
       }
