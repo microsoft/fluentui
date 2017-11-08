@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.5.1",
+      "tag": "@uifabric/experiments_v5.5.1",
+      "date": "Wed, 08 Nov 2017 11:11:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "4af244d78e2887009a852192cc8bb4e23278adb9",
+            "comment": "Fix alignment with trending icon"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/experiments_v5.5.0",
       "date": "Wed, 08 Nov 2017 06:05:34 GMT",
