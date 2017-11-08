@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.3.1",
+      "tag": "@uifabric/utilities_v5.3.1",
+      "date": "Wed, 08 Nov 2017 06:05:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chaofeng2014 <fengchao199011@hotmail.com>",
+            "commit": "6055741480986f3e593feaf297001c6cec698b64",
+            "comment": "Update @uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "@uifabric/utilities_v5.3.0",
       "date": "Wed, 18 Oct 2017 10:21:25 GMT",
