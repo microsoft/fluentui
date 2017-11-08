@@ -113,11 +113,13 @@ export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element
 
 export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalStyles.trending) }
-      iconName='market'
-    />
+    <span className={ css(SignalStyles.signal, SignalStyles.centeredSignal) }>
+      <Icon
+        ariaLabel={ props.ariaLabel }
+        className={ css(SignalStyles.signal, SignalStyles.trending) }
+        iconName='market'
+      />
+    </span>
   );
 };
 
