@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.Styles';
-import { IStyleFunction } from '../../Utilities';
+export type IStyleFunction<TStylesProps, TStyles> = (props: TStylesProps) => Partial<TStyles>;
 
 export interface ICoachmark {
 }
