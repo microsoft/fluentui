@@ -1,10 +1,65 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
+import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-export class CoachmarkBasicExample extends React.Component<{}, {}> {
+export interface ICalloutBaiscExampleState {
+  isVisible?: boolean;
+}
+
+export class CoachmarkBasicExample extends React.Component<{}, ICalloutBaiscExampleState> {
+  private _menuButtonElement: HTMLElement | null;
+
+  public constructor() {
+    super();
+
+    this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
+    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
+
+    this.state = {
+      isVisible: false
+    };
+  }
+
   public render(): JSX.Element {
+    let { isVisible } = this.state;
+
+    const calloutProps: ICalloutProps = {
+      doNotLayer: true,
+      target: this._menuButtonElement!
+    };
+
     return (
-      <Coachmark />
+      <div className='ms-CoachmarkBasicExample'>
+        <div className='ms-CoachmarkBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+          <DefaultButton
+            onClick={ this._onShowMenuClicked }
+            text={ isVisible ? 'Hide coachmark' : 'Show coachmark' }
+          />
+        </div>
+        { isVisible && (
+          <Coachmark>
+            <TeachingBubble
+              headline='Example Title'
+              calloutProps={ calloutProps }
+            >
+            </TeachingBubble>
+          </Coachmark>
+        ) }
+      </div>
     );
+  }
+
+  private _onShowMenuClicked() {
+    this.setState({
+      isVisible: !this.state.isVisible
+    });
+  }
+
+  private _onCalloutDismiss() {
+    this.setState({
+      isVisible: false
+    });
   }
 }
