@@ -300,7 +300,7 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
 
   /**
    * Return the maximum height the container can grow to
-   * without going out of the bounds
+   * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
     //If the max height is undefined.
