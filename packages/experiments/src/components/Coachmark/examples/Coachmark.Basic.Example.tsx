@@ -25,24 +25,26 @@ export class CoachmarkBasicExample extends React.Component<{}, ICalloutBaiscExam
   public render(): JSX.Element {
     let { isVisible } = this.state;
 
-    const calloutProps: ICalloutProps = {
-      doNotLayer: true,
-      target: this._menuButtonElement!
+    const positioningContainerProps: ICalloutProps = {
+      doNotLayer: true
     };
 
     return (
       <div className='ms-CoachmarkBasicExample'>
-        <div className='ms-CoachmarkBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <div className='ms-CoachmarkBasicExample-buttonArea'>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isVisible ? 'Hide coachmark' : 'Show coachmark' }
+            componentRef={ (menuButton) => this._menuButtonElement }
           />
         </div>
         { isVisible && (
-          <Coachmark>
+          <Coachmark
+            positioningTarget={ this._menuButtonElement }
+          >
             <TeachingBubble
               headline='Example Title'
-              calloutProps={ calloutProps }
+              calloutProps={ positioningContainerProps }
             >
             </TeachingBubble>
           </Coachmark>
