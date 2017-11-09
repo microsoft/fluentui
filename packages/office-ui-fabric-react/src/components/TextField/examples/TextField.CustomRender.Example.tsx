@@ -19,7 +19,7 @@ export class TextFieldCustomRenderExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <div className='ms-TextFieldExample'>
+      <div className='docs-TextFieldExample'>
         <TextField onRenderLabel={ this._onRenderLabel } />
       </div>
     );
