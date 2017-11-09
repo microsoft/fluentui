@@ -176,7 +176,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
     }
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
-      styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.styles, ...buttonStyles },
+      styles: {
+        root: { height: COMMANDBAR_HEIGHT, whiteSpace: 'nowrap' },
+        ...item.styles,
+        ...buttonStyles
+      },
       className: css('ms-CommandBarItem-link', styles.commandButton, item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,

@@ -29,9 +29,9 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-labelledby={null}
             aria-pressed={undefined}
             className=
+                ms-CommandBarItem-link
                 ms-Button
                 ms-Button--commandBar
-                ms-CommandBarItem-link
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -57,6 +57,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  white-space: nowrap;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -131,9 +132,9 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-labelledby={null}
             aria-pressed={undefined}
             className=
+                ms-CommandBarItem-link
                 ms-Button
                 ms-Button--commandBar
-                ms-CommandBarItem-link
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -159,6 +160,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                  white-space: nowrap;
                 }
                 &::-moz-focus-inner {
                   border: 0;
