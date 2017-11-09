@@ -4,11 +4,11 @@ import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-export interface ICalloutBaiscExampleState {
+export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
 }
 
-export class CoachmarkBasicExample extends React.Component<{}, ICalloutBaiscExampleState> {
+export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
   public constructor() {
@@ -32,10 +32,11 @@ export class CoachmarkBasicExample extends React.Component<{}, ICalloutBaiscExam
 
     return (
       <div className='ms-CoachmarkBasicExample'>
-        <div className='ms-CoachmarkBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <div className='ms-CoachmarkBasicExample-buttonArea'>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isVisible ? 'Hide coachmark' : 'Show coachmark' }
+            className={ 'ms-Coachmark-basicExampleButton' }
           />
         </div>
         { isVisible && (
