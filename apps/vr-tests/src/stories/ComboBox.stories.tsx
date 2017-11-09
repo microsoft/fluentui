@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
+import { FabricDecoratorTallFixedWdith } from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType } from 'office-ui-fabric-react';
 
 let testOptions = [
@@ -45,7 +45,7 @@ let onRenderFontOption = (item) => {
 };
 
 storiesOf('ComboBox', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(FabricDecoratorTallFixedWdith)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
