@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "PersonaCoin: For non-latin initials, show a Contact icon instead of empty string.",
+      "comment": "PersonaCoin: For non-latin characters, if initials returns an empty string, use the Contact icon instead of the empty string.",
       "type": "minor"
     }
   ],
