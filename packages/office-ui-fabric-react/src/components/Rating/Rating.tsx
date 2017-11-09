@@ -90,7 +90,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         >
           { this._getLabel(i) }
           < RatingStar key={ i + 'rating' }  {...ratingStarProps} />
-        </button >
+        </button>
       );
     }
 
