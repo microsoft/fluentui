@@ -24,13 +24,13 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='FacepileExample'
         exampleCards={
           <div>
-            <ExampleCard title='Facepile with Extras' code={ FacepileBasicExampleCode }>
+            <ExampleCard title='Facepile with size and fade in options' code={ FacepileBasicExampleCode }>
               <FacepileBasicExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Overflow' code={ FacepileOverflowExampleCode }>
+            <ExampleCard title='Facepile with overflow buttons' code={ FacepileOverflowExampleCode }>
               <FacepileOverflowExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Add Face' code={ FacepileAddFaceExampleCode }>
+            <ExampleCard title='Facepile with face adding functionality' code={ FacepileAddFaceExampleCode }>
               <FacepileAddFaceExample />
             </ExampleCard>
           </div>

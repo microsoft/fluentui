@@ -14,6 +14,7 @@ import {
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -291,7 +292,7 @@ export interface IContextualMenuItem {
   data?: any;
 
   /**
-   * Callback issued when the menu item is invoked
+   * Callback issued when the menu item is invoked. If ev.preventDefault() is called in onClick, click will not close menu
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
@@ -334,6 +335,12 @@ export interface IContextualMenuItem {
     dividerClassName?: string,
     iconClassName?: string,
     subMenuClassName?: string) => IMenuItemClassNames;
+
+  /**
+  * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
+  * @default getSplitButtonVerticalDividerClassNames
+  */
+  getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**
    *  Properties to apply to render this item as a section.
@@ -439,6 +446,11 @@ export interface IMenuItemStyles extends IButtonStyles {
   iconColor: IStyle;
 
   /**
+   * Default style for checkmark icons.
+   */
+  checkmarkIcon: IStyle;
+
+  /**
    * Styles for the submenu icon of a menu item.
    */
   subMenuIcon: IStyle;
@@ -449,7 +461,8 @@ export interface IMenuItemStyles extends IButtonStyles {
   divider: IStyle;
 
   /**
-   * Styles for a split button divider in a menu item
+   *  Styles for a split button divider in a menu item
+   * @deprecated
    */
   splitButtonSeparator: IStyle;
 }

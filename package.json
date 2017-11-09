@@ -26,9 +26,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.12"
-  },
-  "dependencies": {
-    "gulp": "^3.9.1"
+    "@microsoft/rush": "4.0.0"
   }
 }

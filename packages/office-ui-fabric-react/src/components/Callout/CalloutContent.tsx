@@ -334,10 +334,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         const oldPositionEdge = oldPositions[key];
         const newPositionEdge = newPositions[key];
 
-        if (oldPositionEdge && newPositionEdge) {
+        if (oldPositionEdge !== undefined && newPositionEdge !== undefined) {
           if (oldPositionEdge.toFixed(2) !== newPositionEdge.toFixed(2)) {
             return false;
           }
+        } else {
+          return false;
         }
       }
     }

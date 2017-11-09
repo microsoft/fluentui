@@ -1,6 +1,132 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Oct 2017 02:03:33 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Nov 2017 06:05:34 GMT and should not be manually modified.
+
+## 5.20.3
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Selection: calling `setItems` with new items will now invalidate the internal selection array.
+- Persona: DirectionalHint for Tooltip location, polished example spacing and documentation on PersonaPage.
+- Preserve focus in DetailsList when items change
+
+## 5.20.2
+Tue, 07 Nov 2017 11:22:30 GMT
+
+### Patches
+
+- Checkbox: Expose icon props for the check mark
+- added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items.
+
+## 5.20.1
+Mon, 06 Nov 2017 18:44:43 GMT
+
+### Patches
+
+- Fixing Icon amd import.
+
+## 5.20.0
+Sun, 05 Nov 2017 23:27:32 GMT
+
+### Minor changes
+
+- Allow optional minimum and maximum date boundaries on Calendar component. 
+
+### Patches
+
+- Persona: respecting the deprecated PersonaSize enum values to avoid breaking changes.
+- Persona: Renamed Persona size12 to Persona size10. Polished style to reflect the toolkit.
+
+## 5.19.1
+Fri, 03 Nov 2017 15:06:54 GMT
+
+### Patches
+
+- HoverCard: fixing an import to be AMD compliant.
+
+## 5.19.0
+Fri, 03 Nov 2017 14:09:56 GMT
+
+### Minor changes
+
+- OverflowSet: Support vertical orientation
+
+### Patches
+
+- SpinButton: Allow for styling of the icon when the component is disabled
+
+## 5.18.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Adding ES2015 Module Support
+- BaseButton: onMenuClick to support other actions for menu and split buttons
+- add accessibility behavior of hover card
+- CommandBar: iconOnly items prop
+- Add 'today' to DatePicker properties and forward it to the Calendar.
+- Grid: Add prop to for FocusZone presence
+- Slider: added `ariaValueText` property for better screen-reader support.
+
+### Patches
+
+- Changed es2015 module output to target es5 so that TypeScript downcompiles the code.
+- Dropdown: Updated caret dropdown colors.
+- Button: Added flexShrink: 0 to icons in button so long text won't make them shrink
+- Fixed contextual menu state colors.
+- Facepile style debugging, includes new FacepileButton
+- Menus: Update so they have one notion of focus (from both hover and keyboard)
+- Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname
+- Persona: Changed PersonaSize names from descriptive to numerical. 
+- TextField/DatePicker: The required astrisk is now more correctly positioned.
+
+## 5.17.1
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- ContextualMenu: Support suppressing dismiss on ItemClick via preventDefault
+
+## 5.17.0
+Mon, 30 Oct 2017 10:23:09 GMT
+
+### Minor changes
+
+- Make red a reserved color for the PersonaCoin so it can only be used if you override the personacoin color
+
+### Patches
+
+- Fixed an issue where ComboBox would throw an exception under shallow rendering tests
+- Adjustments made to the disabled text color for Toggle and Checkbox.
+
+## 5.16.0
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Minor changes
+
+- Add ariaHidden prop to buttons
+
+### Patches
+
+- Restore forceAnchor prop for INavLink elements
+- SearchBox onKeyDown: prevent default events only when specified by the user
+- Panel: changed navigation layout to use flexbox, and pass overrides directly into button to avoid load order issues
+- Theme Generator: improve perf
+
+## 5.15.0
+Thu, 26 Oct 2017 10:21:37 GMT
+
+### Minor changes
+
+- Removing the `initializeIcons` call from the top level import. The bundle in the dist folder used in codepens will still continue to have it, so that codepens don't stop rendering icons.
+
+### Patches
+
+- Callout: Add check for undefined when comparing old and new position
+- SplitButtonInMenu: render icon in primary action button
+- ContextualMenu: Make the behavior of getIsChecked consistent for isChecked and checked props
 
 ## 5.14.0
 Wed, 25 Oct 2017 02:03:33 GMT

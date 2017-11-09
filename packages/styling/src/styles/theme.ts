@@ -83,18 +83,20 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
   return {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
-    bodySelectedText: p.black,
+    bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
     bodyDivider: p.neutralLight,
 
     disabledBackground: p.neutralLighter,
-    disabledText: p.neutralTertiaryAlt,
+    disabledText: p.neutralTertiary,
+    disabledBodyText: p.neutralTertiaryAlt,
     disabledSubtext: p.neutralQuaternary,
 
     focusBorder: p.black,
 
-    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
     errorText: !isInverted ? p.redDark : '#ff5f5f',
+    warningText: !isInverted ? '#333333' : '#ffffff',
+    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
     blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
     warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
@@ -106,6 +108,16 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
     inputFocusBorderAlt: p.themePrimary,
+
+    buttonBackground: p.neutralLighter,
+    buttonBackgroundChecked: p.neutralTertiaryAlt,
+    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundCheckedHovered: p.neutralLight,
+    buttonBorder: 'transparent',
+    buttonText: p.neutralPrimary,
+    buttonTextHovered: p.black,
+    buttonTextChecked: p.neutralDark,
+    buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
     menuItemBackgroundChecked: p.neutralQuaternaryAlt,
