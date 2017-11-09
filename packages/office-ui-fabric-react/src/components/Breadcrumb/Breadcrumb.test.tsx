@@ -7,7 +7,13 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { Breadcrumb } from './Breadcrumb';
-import { IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbItem, IBreadcrumbProps } from './Breadcrumb.props';
+
+class BreadcrumbWrapper extends React.Component<IBreadcrumbProps, {}> {
+  public render(): JSX.Element {
+    return <Breadcrumb { ...this.props } />;
+  }
+}
 
 describe('Breadcrumb', () => {
   it('renders breadcumb correctly', () => {
@@ -41,7 +47,7 @@ describe('Breadcrumb', () => {
 
   it('can call the callback when an item is clicked', () => {
     let callbackValue;
-    const clickCallback = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+    const clickCallback = (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, item: IBreadcrumbItem) => {
       callbackValue = item.key;
     };
 
@@ -49,16 +55,16 @@ describe('Breadcrumb', () => {
       { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
-      <Breadcrumb
+    let component = ReactTestUtils.renderIntoDocument(
+      <BreadcrumbWrapper
         items={ items }
       />
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
+    let crumbButton = renderedDOM.querySelector('.ms-Crumb-crumbButton');
 
-    ReactTestUtils.Simulate.click(itemLink!);
+    ReactTestUtils.Simulate.click(crumbButton!);
     expect(callbackValue).toEqual('TestKey');
   });
 
@@ -71,17 +77,17 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
-      <Breadcrumb
+    let component = ReactTestUtils.renderIntoDocument(
+      <BreadcrumbWrapper
         items={ items }
         maxDisplayedItems={ 2 }
       />
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
+    let crumb = renderedDOM.querySelectorAll('.ms-Crumb-textContent');
 
-    expect(itemLink[0].textContent).toEqual('TestText3');
+    expect(crumb[0].textContent).toEqual('TestText3');
   });
 
 });

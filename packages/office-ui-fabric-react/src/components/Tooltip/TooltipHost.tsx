@@ -51,13 +51,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       delay,
       id,
       setAriaDescribedBy = true,
+      className,
       hostClassName
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
     return (
       <div
-        className={ css('ms-TooltipHost', styles.host, hostClassName) }
+        className={ css('ms-TooltipHost', styles.host, className, hostClassName) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
@@ -75,7 +76,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             directionalHint={ directionalHint }
             directionalHintForRTL={ directionalHintForRTL }
             calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
-            { ...getNativeProps(this.props, divProperties) }
+            { ...getNativeProps(this.props, divProperties, ['className']) }
             { ...tooltipProps }
           />
         ) }

@@ -99,9 +99,9 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
         aria-labelledby={null}
         aria-pressed={undefined}
         className=
+            ms-Button
             ms-Facepile-itemButton
             ms-Facepile-person
-            ms-Button
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

@@ -5,22 +5,27 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Breadcrumb } from 'office-ui-fabric-react';
 
+const testWrapperClass = '.testWrapper';
+const overflowButtonClass = '.ms-Crumb:nth-child(1)';
+const longButtonClass = '.ms-Crumb:nth-child(2)';
+const shortButtonClass = '.ms-Crumb:nth-child(3)';
+
 storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Breadcrumb-overflowButton')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
-        .hover('.ms-Breadcrumb-overflowButton') // moving the mouse a bit to let dropdown open.
-        .snapshot('click', { cropTo: '.testWrapper' })
-        .click('.ms-Breadcrumb-overflowButton') // closing the dropdown
-        .hover('.ms-Breadcrumb-list li:nth-child(2)')
-        .snapshot('longTitleHover', { cropTo: '.testWrapper' })
-        .hover('.ms-Breadcrumb-list li:nth-child(3)')
-        .snapshot('shortTitleHover', { cropTo: '.testWrapper' })
+        .snapshot('default', { cropTo: testWrapperClass })
+        .hover(overflowButtonClass)
+        .snapshot('hover', { cropTo: testWrapperClass })
+        .click(overflowButtonClass) // opening the dropdown
+        .hover(overflowButtonClass) // moving the mouse a bit to let dropdown open.
+        .snapshot('click', { cropTo: testWrapperClass })
+        .click(overflowButtonClass) // closing the dropdown
+        .hover(longButtonClass)
+        .snapshot('longTitleHover', { cropTo: testWrapperClass })
+        .hover(shortButtonClass)
+        .snapshot('shortTitleHover', { cropTo: testWrapperClass })
         .end()
       }
     >

@@ -2,11 +2,11 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecoratorFixedWidth } from '../utilities';
 import { TextField } from 'office-ui-fabric-react';
 
 storiesOf('TextField', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()

@@ -36,10 +36,6 @@ export const getStyles = memoizeFunction((
       color: theme.palette.black,
     },
 
-    rootExpanded: {
-      color: theme.palette.themePrimary
-    },
-
     iconPressed: {
       color: theme.palette.themeDarker
     },
