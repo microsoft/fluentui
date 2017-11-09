@@ -18,7 +18,7 @@ function getStyles(props: IComponentStyleProps): IComponentStyles {
 With this in mind, let's make `getStyles` an optional prop to the component. Now style overrides can be applied in a functional way and even be conditionalized depending on the component state:
 
 ```tsx
-const myStyleOverrides = props => ({
+const getStyles = props => ({
   root: [
     {
       background: props.theme.palette.themePrimary,
@@ -41,11 +41,11 @@ Quite often, variants of a component which use the style must be created to abst
 
 ```tsx
 import { styled } from 'office-ui-fabric-react/lib/Styling';
+import { getStyles } from './MyComponentVariant.styles';
 
 const MyComponentVariant = styled(
   MyComponent,
-  props => ({
-    ...
+  getStyles
   })
 );
 ```
@@ -90,7 +90,7 @@ The idea is that components, especially reusable atomic components, should by de
 
 The props file should contain these 4 interfaces, in addition to any enums or consts externally required:
 
-1. The public methods of the component (`IComponentName`). This should include the `focus` method, as well as getters for important values like `checked` in the case the component will be referenced and the value may be read manually. Example:
+1. **IComponentName** - The public method accessible through `componentRef`. This should include the `focus` method, as well as getters for important values like `checked` in the case the component will be referenced and the value may be read manually. Example:
 
 ```tsx
 export IComponentName {
@@ -98,7 +98,7 @@ export IComponentName {
 }
 ```
 
-2. The props (`IComponentNameProps`). This should include the `componentRef` prop for accessing the public interface, the `theme` prop (which will be injected by the customizable decorator), as well as the `getStyles` function.
+2. **IComponentNameProps** - The props for the component. This should include the `componentRef` prop for accessing the public interface, the `theme` prop (which will be injected by the `@customizable` decorator), as well as the `getStyles` function.
 
 Example:
 
@@ -114,7 +114,7 @@ export IComponentNameProps extends React.Props<ComponentNameBase> {
 }
 ```
 
-3. The props needed to construct styles (`IComponentNameStyleProps`). This represents the simplified set of immutable things which control the class names. Note that things which were optional may be set to be required here, to simplify the style definitions:
+3. **IComponentNameStyleProps** - The props needed to construct styles. This represents the simplified set of immutable things which control the class names. Note that things which were optional may be set to be required here, to simplify the style definitions:
 
 ```tsx
 export interface IComponentNameStyleProps {
@@ -124,7 +124,7 @@ export interface IComponentNameStyleProps {
 }
 ```
 
-4. The styles (`IComponentNameStyles`). Each "area" should be listed here as an `IStyle`, with `root` always representing the root element of the component:
+4. **IComponentNameStyles** The styles which apply to each area of the component. Each area should be listed here required, as an `IStyle`, with `root` always representing the root element of the component:
 
 ```tsx
 export interface IComponentNameStyles {

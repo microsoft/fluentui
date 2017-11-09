@@ -4,7 +4,6 @@ import * as React from 'react';
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IBaseProps, IRenderFunction } from '../../Utilities';
 import { ITheme, IStyle, IStyleFunction } from '../../Styling';
-import { ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
 
 export interface IBreadcrumb {
   /**
@@ -51,8 +50,8 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement>, 
   onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
 
   /**
-   * Aria label to place on the navigation landmark for breadcrumb
-   */
+ * Aria label to place on the navigation landmark for breadcrumb
+ */
   ariaLabel?: string;
 
   /**
@@ -60,10 +59,6 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement>, 
    */
   getStyles?: IStyleFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>;
 
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  getCrumbStyles?: IStyleFunction<ICrumbStyleProps, ICrumbStyles>;
 }
 
 export interface IBreadcrumbItem {

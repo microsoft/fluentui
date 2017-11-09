@@ -24,10 +24,12 @@ import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
 const getClassNames = classNamesFunction<ICrumbStyleProps, ICrumbStyles>();
 const nullFunction = () => null;
 
-@customizable('CrumbBase', ['theme'])
+@customizable('Crumb', ['getStyles', 'theme'])
 export class CrumbBase extends React.Component<ICrumbProps, {}> {
+
   public render() {
     let {
+      as: RootElement = 'li',
       item = { text: '', onClick: undefined, href: undefined, isCurrentItem: false },
       menuProps,
       theme,
@@ -39,7 +41,7 @@ export class CrumbBase extends React.Component<ICrumbProps, {}> {
     const classNames = getClassNames(getStyles!, { theme: theme!, isCurrentItem: !!item.isCurrentItem });
 
     return (
-      <li className={ classNames.root }>
+      <RootElement className={ classNames.root }>
         { (item.onClick || item.href || menuProps) ? (
           <ActionButton
             className={ classNames.crumbButton }
@@ -79,7 +81,7 @@ export class CrumbBase extends React.Component<ICrumbProps, {}> {
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
           />
         ) }
-      </li>
+      </RootElement>
     );
   }
 

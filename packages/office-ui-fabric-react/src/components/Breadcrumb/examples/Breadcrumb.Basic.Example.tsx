@@ -23,7 +23,6 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
       <div>
         <Label className={ exampleStyles.exampleLabel }>With no maxDisplayedItems</Label>
         <Breadcrumb
-          getCrumbStyles={ () => ({ chevron: { background: 'red' } }) }
           items={ [
             { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked },

@@ -96,9 +96,8 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
   @autobind
   private _onRenderItem(data: IBreadCrumbData): JSX.Element {
     let {
-      ariaLabel,
-      getCrumbStyles
-    } = data.props;
+      ariaLabel
+        } = data.props;
     let classNames = this._classNames;
     let { renderedOverflowItems, renderedItems } = data;
 
@@ -121,9 +120,8 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
         aria-label={ ariaLabel }
       >
         { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
-          <CrumbBase
+          < CrumbBase
             key='overflow'
-            getStyles={ getCrumbStyles }
             iconProps={ { iconName: 'More' } }
             menuProps={ {
               items: contextualItems,
@@ -136,7 +134,6 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
           (item, index) => (
             <CrumbBase
               key={ item.key }
-              getStyles={ getCrumbStyles }
               item={ item }
               withChevron={ index !== (renderedItems.length - 1) }
             />

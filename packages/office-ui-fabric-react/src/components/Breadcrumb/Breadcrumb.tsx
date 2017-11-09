@@ -7,15 +7,15 @@ import {
 } from './Breadcrumb.props';
 import { BreadcrumbBase } from './Breadcrumb.base';
 import { styled } from '../../Styling';
-import { ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
+import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
 import { getStyles } from './Breadcrumb.styles';
 import { getStyles as getCrumbStyles } from './Crumb.styles';
 
-// Create a Breadcrumb variant which uses these default styles.
+// Create a Breadcrumb variant which uses these default styles and this styled subcomponent.
 export const Breadcrumb = styled(
   BreadcrumbBase,
+  getStyles,
   {
-    getStyles,
-    getCrumbStyles
+    'Crumb': { getStyles: getCrumbStyles }
   }
 );

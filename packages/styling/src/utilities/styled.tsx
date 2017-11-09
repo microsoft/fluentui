@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { concatStyleSets } from '../MergeStyles';
+import { Customizer } from '@uifabric/utilities/lib/Customizer';
 
 export interface IPropsWithStyles<TStyleProps, TStyles> {
   getStyles?: (props?: TStyleProps) => Partial<TStyles>;
@@ -21,29 +22,33 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
  */
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyles>, TStyleProps, TStyles>(
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
-  styleMethods: {[key in keyof TComponentProps]?: (props: TStyleProps) => TStyles } | ((props: TStyleProps) => TStyles)
+  getBaseStyles: (props: TStyleProps) => TStyles,
+  scopedSettings?: { [key: string]: {} }
 ): (props: TComponentProps) => JSX.Element {
 
   return (componentProps: TComponentProps) => {
-    const allStyleMethods: Partial<TComponentProps> = {};
-
-    if (typeof styleMethods === 'function') {
-      styleMethods = { getStyles: styleMethods } as {[key in keyof TComponentProps]?: (props: TStyleProps) => TStyles };
-    }
-
-    for (const methodName in styleMethods) {
-      if (styleMethods.hasOwnProperty(methodName)) {
-        const method = styleMethods[methodName];
-
-        allStyleMethods[methodName] = (styleProps: TStyleProps) => concatStyleSets(
-          method && method(styleProps),
-          componentProps[methodName] && componentProps[methodName](styleProps)
-        );
-      }
-    }
-
-    return (
-      <Component { ...componentProps } { ...allStyleMethods } />
+    const getStyles = (
+      styleProps: TStyleProps
+    ) => concatStyleSets(
+      getBaseStyles && getBaseStyles(styleProps),
+      componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
     );
+
+    const renderedComponent = (
+      <Component
+        { ...componentProps }
+        getStyles={ getStyles }
+      />
+    );
+
+    if (scopedSettings) {
+      return (
+        <Customizer scopedSettings={ scopedSettings }>
+          { renderedComponent }
+        </Customizer>
+      );
+    }
+
+    return renderedComponent;
   };
 }

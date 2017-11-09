@@ -8,6 +8,8 @@ import {
 } from './Breadcrumb.props';
 
 export interface ICrumbProps {
+  as?: string | ((props: any) => JSX.Element);
+  key?: string;
   theme?: ITheme;
   withChevron: boolean;
   item?: IBreadcrumbItem;
