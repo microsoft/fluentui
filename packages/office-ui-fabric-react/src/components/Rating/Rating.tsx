@@ -8,6 +8,8 @@ import { Icon } from '../../Icon';
 import { IRatingProps, RatingSize } from './Rating.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import * as stylesImport from './Rating.scss';
+import { format } from '../../Utilities';
+
 const styles: any = stylesImport;
 
 interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -122,14 +124,14 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getLabel(rating: number): JSX.Element {
-    const text = this.props.ariaLabelIcon || 'Star';
+    const text = this.props.ariaLabelFormat || '{0} of {1} stars selected';
 
     return (
       <span
         id={ `${this._labelId}-${rating}` }
         className={ css('ms-Rating-labelText', styles.labelText) }
       >
-        { `${rating} of ${this.props.max} ${text} selected` }
+        { format(text, rating, this.props.max) }
       </span>
     );
   }
