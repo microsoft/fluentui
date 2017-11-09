@@ -316,7 +316,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _onSetFocusButtonClicked() {
     if (this._picker) {
-      this._picker.focus();
+      this._picker.focusInput();
     }
   }
 
