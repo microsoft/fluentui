@@ -5,7 +5,7 @@ import './TextField.Examples.scss';
 export class TextFieldBorderlessExample extends React.Component<any, any> {
   public render() {
     return (
-      <div className='ms-TextFieldExample'>
+      <div className='docs-TextFieldExample'>
         <TextField
           label='Borderless Multiline TextField'
           multiline

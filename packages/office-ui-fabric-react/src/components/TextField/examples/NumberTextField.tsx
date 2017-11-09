@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import './NumberTextField.scss';
 
 export interface INumberTextFieldProps {
   label: string;
