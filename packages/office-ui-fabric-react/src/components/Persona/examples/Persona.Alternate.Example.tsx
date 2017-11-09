@@ -5,6 +5,7 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { TestImages } from '../../../common/TestImages';
+import './PersonaExample.scss';
 
 const examplePersona = {
   imageUrl: TestImages.personaMale,
@@ -28,7 +29,7 @@ export class PersonaAlternateExample extends React.Component<React.Props<Persona
     let { renderPersonaDetails } = this.state;
 
     return (
-      <div>
+      <div className='ms-PersonaExample'>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size24 }
