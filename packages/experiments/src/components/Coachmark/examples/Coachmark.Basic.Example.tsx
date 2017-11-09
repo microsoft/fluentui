@@ -8,8 +8,9 @@ export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
 }
 
+const EXAMPLE_BUTTON_CLASS = 'ms-Coachmark-basicExampleButton';
+
 export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
-  private _menuButtonElement: HTMLElement | null;
 
   public constructor() {
     super();
@@ -25,9 +26,8 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
   public render(): JSX.Element {
     let { isVisible } = this.state;
 
-    const calloutProps: ICalloutProps = {
-      doNotLayer: true,
-      target: this._menuButtonElement!
+    const positioningContainerProps: ICalloutProps = {
+      doNotLayer: true
     };
 
     return (
@@ -40,10 +40,12 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
           />
         </div>
         { isVisible && (
-          <Coachmark>
+          <Coachmark
+            positioningTarget={ EXAMPLE_BUTTON_CLASS }
+          >
             <TeachingBubble
               headline='Example Title'
-              calloutProps={ calloutProps }
+              calloutProps={ positioningContainerProps }
             >
             </TeachingBubble>
           </Coachmark>

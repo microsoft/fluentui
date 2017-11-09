@@ -36,7 +36,9 @@ export class DynamicallyPositionedContainerBasicExample extends React.Component<
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
           >
-            Ayyy test content
+            <DefaultButton
+              text={ 'Test element' }
+            />
           </DynamicallyPositionedContainer>
         ) }
       </div>
