@@ -1,6 +1,6 @@
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
-const DEFAULT_ID_STRING = '__id__';
+const DEFAULT_ID_STRING = 'id__';
 
 declare const process: {};
 
