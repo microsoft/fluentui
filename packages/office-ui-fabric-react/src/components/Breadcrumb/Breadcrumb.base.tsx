@@ -12,7 +12,7 @@ import {
   IBreadcrumbItem,
   IBreadcrumbStyles,
   IBreadcrumbStyleProps
-} from './Breadcrumb.props';
+} from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
@@ -47,12 +47,12 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
 
   public render() {
     const {
+      as,
       onReduceData = this._onReduceData,
       maxDisplayedItems,
       className,
       theme,
       items,
-      onRenderItem = this._onRenderItem,
       getStyles
     } = this.props;
 
@@ -66,8 +66,9 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
 
     return (
       <ResizeGroup
+        as={ as }
         className={ this._classNames.root }
-        onRenderData={ onRenderItem as any }
+        onRenderData={ this._onRenderData }
         onReduceData={ onReduceData }
         data={ breadCrumbData }
       />
@@ -94,9 +95,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
   }
 
   @autobind
-  private _onRenderItem(data: IBreadCrumbData): JSX.Element {
+  private _onRenderData(data: IBreadCrumbData): JSX.Element {
     let {
-      ariaLabel
+      ariaLabel,
+      crumbAs: CrumbType = CrumbBase
         } = data.props;
     let classNames = this._classNames;
     let { renderedOverflowItems, renderedItems } = data;
@@ -120,7 +122,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
         aria-label={ ariaLabel }
       >
         { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
-          < CrumbBase
+          <CrumbType
             key='overflow'
             iconProps={ { iconName: 'More' } }
             menuProps={ {
@@ -132,7 +134,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> impleme
         ) }
         { renderedItems.map(
           (item, index) => (
-            <CrumbBase
+            <CrumbType
               key={ item.key }
               item={ item }
               withChevron={ index !== (renderedItems.length - 1) }

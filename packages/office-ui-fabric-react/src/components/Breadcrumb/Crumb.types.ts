@@ -5,7 +5,7 @@ import {
 } from '../../Styling';
 import {
   IBreadcrumbItem
-} from './Breadcrumb.props';
+} from './Breadcrumb.types';
 
 export interface ICrumbProps {
   as?: string | ((props: any) => JSX.Element);

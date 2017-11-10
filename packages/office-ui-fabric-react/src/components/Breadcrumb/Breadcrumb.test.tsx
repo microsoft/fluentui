@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { Breadcrumb } from './Breadcrumb';
-import { IBreadcrumbItem, IBreadcrumbProps } from './Breadcrumb.props';
+import { IBreadcrumbItem, IBreadcrumbProps } from './Breadcrumb.types';
 
 class BreadcrumbWrapper extends React.Component<IBreadcrumbProps, {}> {
   public render(): JSX.Element {

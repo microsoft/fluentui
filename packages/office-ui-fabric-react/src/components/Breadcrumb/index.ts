@@ -1,4 +1,7 @@
 export * from './Breadcrumb.base';
-export * from './Breadcrumb.props';
+export * from './Breadcrumb.types';
 export * from './Breadcrumb';
-export * from './Crumb.props';
+
+export * from './Crumb.base';
+export * from './Crumb.types';
+export * from './Crumb';

@@ -15,11 +15,11 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { ActionButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.props';
+import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
+import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.types';
 
 const getClassNames = classNamesFunction<ICrumbStyleProps, ICrumbStyles>();
 const nullFunction = () => null;

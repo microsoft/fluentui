@@ -2,8 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
-import { IBaseProps, IRenderFunction } from '../../Utilities';
+import { IBaseProps, IComponentAs } from '../../Utilities';
 import { ITheme, IStyle, IStyleFunction } from '../../Styling';
+import { ICrumbProps } from './Crumb.types';
 
 export interface IBreadcrumb {
   /**
@@ -13,6 +14,16 @@ export interface IBreadcrumb {
 }
 
 export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement>, IBaseProps {
+  /**
+   * Allows the root to be reconfigured.
+   */
+  as?: IComponentAs<React.AllHTMLAttributes<HTMLElement>>;
+
+  /**
+   * Allows the crumb to be reconfigured.
+   */
+  crumbAs?: IComponentAs<ICrumbProps>;
+
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -40,9 +51,6 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement>, 
    */
   maxDisplayedItems?: number;
 
-  /** Method to call when trying to render an item. */
-  onRenderItem?: IRenderFunction<IBreadcrumbItem>;
-
   /**
    * Method to call when reducing the length of the breadcrumb.
    * Return undefined to never reduce breadcrumb length
@@ -50,8 +58,8 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement>, 
   onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
 
   /**
- * Aria label to place on the navigation landmark for breadcrumb
- */
+  * Aria label to place on the navigation landmark for breadcrumb
+  */
   ariaLabel?: string;
 
   /**
