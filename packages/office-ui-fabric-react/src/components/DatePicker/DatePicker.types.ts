@@ -80,7 +80,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
     * Value of today. If null, current time in client machine will be used.
     */
-    today?: Date;
+  today?: Date;
 
   /**
    * Default value of the DatePicker, if any
@@ -149,6 +149,16 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   * Apply additional formating to dates, for example localized date formatting.
   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
+
+  /**
+   * The minimum allowable date.
+   */
+  minDate?: Date;
+
+  /**
+   * The maximum allowable date.
+   */
+  maxDate?: Date;
 }
 
 export interface IDatePickerStrings {
@@ -190,6 +200,11 @@ export interface IDatePickerStrings {
    * Error message to render for TextField if input date string parsing fails.
    */
   invalidInputErrorMessage?: string;
+
+  /**
+   * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
+   */
+  isOutOfBoundsErrorMessage?: string;
 
   /**
    * Aria-label for the "previous month" button.
