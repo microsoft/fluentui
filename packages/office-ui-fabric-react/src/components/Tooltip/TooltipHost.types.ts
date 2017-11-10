@@ -80,4 +80,9 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;
+
+  /**
+   * Optional function to enable customization (such as defer-loading) on display of tooltip callout
+   */
+  onTooltipRender?(tooltip: ITooltipProps): void;
 }
