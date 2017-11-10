@@ -2,6 +2,33 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.7.0",
+      "tag": "@uifabric/styling_v5.7.0",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "696cd19b230f855f071f766c27c0066eb15d8109",
+            "comment": "Adjusting the IFabricConfig interface to allow for mergeStyle settings to be included."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "360596259b7e047fd6987cc05aafdc4f88d878d3",
+            "comment": "Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.3.2 <6.0.0` to `>=5.3.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.5.1 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.1",
       "tag": "@uifabric/styling_v5.6.1",
       "date": "Mon, 30 Oct 2017 10:23:09 GMT",

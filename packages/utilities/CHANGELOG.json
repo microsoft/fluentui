@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.3.3",
+      "tag": "@uifabric/utilities_v5.3.3",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "dc0a310f07398df8a158349958bfc463e1d773e4",
+            "comment": "Object: getId: updated so it will correctly return a string rather than an  int"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.2",
       "tag": "@uifabric/utilities_v5.3.2",
       "date": "Wed, 08 Nov 2017 11:11:27 GMT",
