@@ -13,7 +13,12 @@ export const enum InjectionMode {
   /**
    * Inserts rules using the insertRule api.
    */
-  insertNode = 1
+  insertNode = 1,
+
+  /**
+   * Appends rules using appendChild.
+   */
+  appendChild = 2
 }
 
 /**
@@ -60,7 +65,10 @@ export class Stylesheet {
     _stylesheet = win[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet) {
-      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet();
+      // tslint:disable-next-line:no-string-literal
+      const fabricConfig = (win && win['FabricConfig']) || {};
+
+      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
 
     return _stylesheet;
@@ -161,6 +169,10 @@ export class Stylesheet {
         } catch (e) {
           /* no-op on errors */
         }
+        break;
+
+      case InjectionMode.appendChild:
+        element!.appendChild(document.createTextNode(rule));
         break;
 
       default:
