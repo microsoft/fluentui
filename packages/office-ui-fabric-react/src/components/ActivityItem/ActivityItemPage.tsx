@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import './examples/ActivityItem.Example.scss';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ActivityItemStatus } from './ActivityItem.checklist';
 import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './examples/ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './examples/ActivityItem.Compact.Example';
@@ -66,6 +68,11 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ActivityItemStatus}
+          />
+        }
       />
     );
   }
