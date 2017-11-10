@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Object: getId: updated so it will correctly return a string rather than an  int",
+      "packageName": "@uifabric/utilities",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "joschect@microsoft.com"
+}

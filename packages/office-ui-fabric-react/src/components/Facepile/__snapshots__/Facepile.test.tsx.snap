@@ -8,7 +8,7 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
     className="ms-Facepile-itemContainer"
   >
     <div
-      aria-describedby="0"
+      aria-describedby="id__0"
       aria-labelledby={undefined}
       className="ms-FocusZone ms-Facepile-members"
       data-focuszone-id="FocusZone1"

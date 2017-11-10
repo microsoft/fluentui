@@ -1,5 +1,6 @@
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
+const DEFAULT_ID_STRING = 'id__';
 
 declare const process: {};
 
@@ -87,7 +88,7 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
 export function getId(prefix?: string): string {
   let index = _global[CURRENT_ID_PROPERTY]++;
 
-  return (prefix || '') + index;
+  return (prefix || DEFAULT_ID_STRING) + index;
 }
 
 /* Takes an enum and iterates over each value of the enum (as a string), running the callback on each, returning a mapped array.
