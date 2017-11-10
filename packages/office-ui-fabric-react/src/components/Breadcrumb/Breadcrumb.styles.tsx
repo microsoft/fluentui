@@ -1,4 +1,4 @@
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.props';
+import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
 export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => ({
   root: [

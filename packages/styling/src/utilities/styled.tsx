@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { concatStyleSets } from '../MergeStyles';
-import { Customizer } from '@uifabric/utilities/lib/Customizer';
+import { IStyleFunction } from '../interfaces/index';
 
 export interface IPropsWithStyles<TStyleProps, TStyles> {
-  getStyles?: (props?: TStyleProps) => Partial<TStyles>;
+  getStyles?: IStyleFunction<TStyleProps, TStyles>;
+  subComponents?: {
+    [key: string]: IStyleFunction<{}, {}>;
+  };
 }
 
 /**
@@ -23,7 +26,7 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyles>, TStyleProps, TStyles>(
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   getBaseStyles: (props: TStyleProps) => TStyles,
-  scopedSettings?: { [key: string]: {} }
+  getProps?: (props: TComponentProps) => Partial<TComponentProps>
 ): (props: TComponentProps) => JSX.Element {
 
   return (componentProps: TComponentProps) => {
@@ -33,22 +36,14 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
       getBaseStyles && getBaseStyles(styleProps),
       componentProps && componentProps.getStyles && componentProps.getStyles(styleProps)
     );
+    const additionalProps = getProps ? getProps(componentProps) : {};
 
-    const renderedComponent = (
+    return (
       <Component
+        { ...additionalProps }
         { ...componentProps }
         getStyles={ getStyles }
       />
     );
-
-    if (scopedSettings) {
-      return (
-        <Customizer scopedSettings={ scopedSettings }>
-          { renderedComponent }
-        </Customizer>
-      );
-    }
-
-    return renderedComponent;
   };
 }

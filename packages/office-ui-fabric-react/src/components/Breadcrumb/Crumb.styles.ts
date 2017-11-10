@@ -5,7 +5,7 @@ import {
   ScreenWidthMaxSmall
 } from '../../Styling';
 import { CrumbBase } from './Crumb.base';
-import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.props';
+import { ICrumbProps, ICrumbStyleProps, ICrumbStyles } from './Crumb.types';
 
 const MediumMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxMedium}px)`;
 const SmallMediaQuery = `@media screen and (max-width: ${ScreenWidthMaxSmall}px)`;

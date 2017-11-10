@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { ResizeGroup } from './ResizeGroup';
+import { IComponentAs } from '../../Utilities';
 
 export interface IResizeGroup {
 
 }
 
 export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HTMLElement> {
+  as?: IComponentAs<React.HTMLAttributes<ResizeGroup | HTMLElement>>;
 
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
