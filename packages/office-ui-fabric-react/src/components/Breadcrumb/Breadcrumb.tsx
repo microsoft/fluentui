@@ -97,6 +97,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   role='button'
                   aria-haspopup='true'
                   onRenderMenuIcon={ nullFunction }
+                  data-is-focusable={ this._isDataFocusable(renderedOverflowItems[0]) }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
@@ -132,6 +133,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
           aria-current={ item.isCurrentItem ? 'page' : null }
+          data-is-focusable={ this._isDataFocusable(item) }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }
         >
           <TooltipHost
@@ -161,5 +163,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     if (item.onClick) {
       item.onClick(ev, item);
     }
+  }
+
+  @autobind
+  private _isDataFocusable(item: IBreadcrumbItem): boolean {
+    return item.dataIsFocusable === void 0 && true || item.dataIsFocusable;
   }
 }

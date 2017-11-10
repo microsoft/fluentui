@@ -72,4 +72,9 @@ export interface IBreadcrumbItem {
    * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
    */
   isCurrentItem?: boolean;
+
+  /**
+   * Switch to toggle whether or not breadcrumb item should be focusable. Default is true.
+   */
+  dataIsFocusable?: boolean;
 }
