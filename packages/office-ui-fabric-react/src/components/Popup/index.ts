@@ -1,2 +1,2 @@
 export * from './Popup';
-export * from './Popup.Props';
+export * from './Popup.types';

@@ -1,5 +1,5 @@
 
-import { IComponentStatusProps } from './ComponentStatus.Props';
+import { IComponentStatusProps } from './ComponentStatus.types';
 export interface IComponentStatusState {
   [key: string]: IComponentStatusProps;
 }

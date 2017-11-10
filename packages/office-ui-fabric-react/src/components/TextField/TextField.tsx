@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITextField, ITextFieldProps } from './TextField.Props';
+import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {

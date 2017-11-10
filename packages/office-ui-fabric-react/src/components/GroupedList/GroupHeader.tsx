@@ -4,7 +4,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import { IGroupDividerProps } from './GroupedList.Props';
+import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';

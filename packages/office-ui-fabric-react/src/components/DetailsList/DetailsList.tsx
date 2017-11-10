@@ -19,7 +19,7 @@ import {
   IColumn,
   IDetailsList,
   IDetailsListProps,
-} from '../DetailsList/DetailsList.Props';
+} from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';

@@ -18,7 +18,7 @@ import {
   INavProps,
   INavLinkGroup,
   INavLink
-} from './Nav.Props';
+} from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;

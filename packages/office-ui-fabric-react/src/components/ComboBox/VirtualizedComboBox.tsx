@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { autobind, BaseComponent, customizable } from '../../Utilities';
 import { ComboBox } from './ComboBox';
-import { IComboBoxProps, IComboBox } from './ComboBox.Props';
+import { IComboBoxProps, IComboBox } from './ComboBox.types';
 import { List } from '../../List';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
   /** The combo box element */
