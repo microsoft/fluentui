@@ -4,5 +4,5 @@ export const ActivityItemStatus = {
   markupSupport: ChecklistStatus.unknown,
   highContrastSupport: ChecklistStatus.pass,
   rtlSupport: ChecklistStatus.pass,
-  testCoverage: ChecklistStatus.none
+  testCoverage: ChecklistStatus.fair
 };
