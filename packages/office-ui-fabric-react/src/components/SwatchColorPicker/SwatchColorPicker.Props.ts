@@ -82,6 +82,12 @@ export interface ISwatchColorPickerProps {
    * If false contain the grid inside of a FocusZone.
    */
   doNotContainWithinFocusZone?: boolean;
+
+  /**
+   * If true use the larger color swatches.
+   * If false use the default smaller swatches.
+   */
+  largerSwatchStyles?: boolean;
 }
 
 export interface IColorCellProps {

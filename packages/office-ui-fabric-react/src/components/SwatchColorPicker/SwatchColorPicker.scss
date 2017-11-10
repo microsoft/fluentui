@@ -9,12 +9,11 @@
   height: 20px;
   padding: 4px;
   box-sizing: content-box;
-}
 
-:global(.ms-Fabric.is-focusVisible) .cell {
-  &:focus,
-  &:focus::after {
-    border: none;
+  &.larger {
+    width: 32px;
+    height: 32px;
+    padding: 2px;
   }
 }
 
@@ -52,14 +51,25 @@
   }
 }
 
-.cell {
+.cell, .circleCell {
   padding: 0px;
   overflow: visible;
 
+  &:focus.larger {
+    width: 38px;
+  }
+
+  &:hover .svg,
+  &:focus .svg {
+      border: 4px solid $ms-color-neutralQuaternaryAlt;
+   }
+
   &.cellIsSelected {
-    &:hover .svg,
-    &:active .svg {
-      box-shadow: 0 0 0 1px #969696;
+    & .svg,
+    &:hover .svg
+    &:active .svg
+    &:focus .svg {
+      border: 4px solid $ms-color-themeLight;
     }
 
     &:focus .svg,
@@ -70,28 +80,57 @@
 
       width: 12px;
       height: 12px;
-      border: 4px solid $ms-color-neutralTertiaryAlt;
+
+      &.larger {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
-   &:focus .svg {
-      box-shadow: 0 0 0 1px #969696;
-   }
+  @include focus(true) {
+    & .svg,
+    &:hover .svg
+    &:active .svg
+    &:focus .svg {
+      border: 4px solid $ms-color-themeLight;
+    }
+
+    &:focus::after {
+      width: 26px;
+      height: 26px;
+      margin-top: 6px;
+      margin-left: 1px;
+      outline-color: transparent!important;
+      box-shadow: 0 0 0 1px $ms-color-neutralSecondary;
+      border: none;
+    }
+
+    &.larger {
+      &:focus::after{
+        margin-top: 2px;
+        margin-left: 1px;
+        width: 34px;
+        height: 34px;
+      }
+    }
+  }
+
+  &:active .svg,
+  &:hover .svg {
+    box-shadow: none;
+  }
 
   &:hover .svg,
   &:focus .svg,
   &:active .svg {
     width: 12px;
     height: 12px;
-  }
 
-  &:hover .svg,
-  &:focus .svg {
-      border: 4px solid $ms-color-neutralQuaternaryAlt;
-   }
-
-  &:active .svg {
-  border: 4px solid $ms-color-neutralTertiaryAlt;
+    &.larger {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &:hover .svg.circle,
@@ -101,7 +140,7 @@
   }
 
   &:active .svg {
-    border: 4px solid #969696;
+    border: 4px solid $ms-color-themeLight;
 
     // This is for a transform issue in IE
     // where the edge of the SVG becomes hidden
@@ -116,6 +155,13 @@
     cursor: default;
     pointer-events: none;
     opacity: .3;
+  }
+}
+
+.circleCell {
+  &:focus,
+  &:focus::after {
+    border-radius: 100%;
   }
 }
 

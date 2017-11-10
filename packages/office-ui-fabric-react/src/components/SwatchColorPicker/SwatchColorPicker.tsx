@@ -17,6 +17,7 @@ import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
+import { mergeStyles } from '@uifabric/merge-styles';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -124,13 +125,16 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   private _renderOption(item: IColorCellProps): JSX.Element {
     let id = this._id;
 
+    let circleClassName = this.props.cellShape === 'circle' ? styles.circleCell : styles.cell;
+    let className = mergeStyles(circleClassName, this.props.largerSwatchStyles ? styles.larger : null);
+
     return (
       <ColorPickerGridCell
         item={ item }
         id={ id }
         key={ id + item.id }
         disabled={ this.props.disabled }
-        className={ styles.cell }
+        className={ className }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }
         onFocus={ this._onGridCellFocused }
@@ -180,7 +184,17 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
+      <svg
+        className={
+          css(
+            styles.svg,
+            this.props.cellShape,
+            this.props.cellShape === 'circle' ? styles.circle : '',
+            this.props.largerSwatchStyles ? styles.larger : '')
+        }
+        viewBox='0 0 20 20'
+        fill={ getColorFromString(colorOption.color as string)!.str }
+      >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
