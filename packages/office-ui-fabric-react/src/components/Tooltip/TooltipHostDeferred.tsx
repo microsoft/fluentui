@@ -11,8 +11,8 @@ import {
   assign,
   hasOverflow
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.Props';
-import { TooltipDelay } from './Tooltip.Props';
+import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
+import { TooltipDelay } from './Tooltip.types';
 
 import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
@@ -51,7 +51,7 @@ export class TooltipHostDeferred extends BaseComponent<ITooltipHostProps, IToolt
       id,
       setAriaDescribedBy = true,
       hostClassName,
-      onTooltipRender
+      onRenderTooltip
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
@@ -66,7 +66,7 @@ export class TooltipHostDeferred extends BaseComponent<ITooltipHostProps, IToolt
         aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
-        { isTooltipVisible && onTooltipRender && onTooltipRender({
+        { isTooltipVisible && onRenderTooltip && onRenderTooltip({
           id: tooltipId,
           content: content,
           delay: delay,

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TooltipHost } from './TooltipHost';
 import { TooltipDelay, ITooltipProps } from './Tooltip.types';
+import { IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -35,6 +36,11 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
    */
   tooltipProps?: ITooltipProps;
+
+  /**
+   * Optional function to enable customization (such as defer-loading) on display of tooltip callout
+   */
+  onRenderTooltip?: IRenderFunction<ITooltipProps>;
 
   /**
    * Whether or not to mark the container as described by the tooltip.
@@ -80,9 +86,4 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
    */
   onTooltipToggle?(isTooltipVisible: boolean): void;
-
-  /**
-   * Optional function to enable customization (such as defer-loading) on display of tooltip callout
-   */
-  onTooltipRender?(tooltip: ITooltipProps): void;
 }
