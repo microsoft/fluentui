@@ -26,7 +26,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   { key: 'G', text: 'Option g' },
   { key: 'H', text: 'Option h' },
   { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j' },
+  { key: 'J', text: 'Option j', disabled: true },
   ];
 
   private _fontMapping: { [key: string]: string } = {
