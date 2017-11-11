@@ -35,7 +35,7 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')
             ] }
           />
         }

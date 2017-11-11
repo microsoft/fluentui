@@ -38,8 +38,8 @@ export class FormPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/Form/Form.Props.ts'),
-              require<string>('!raw-loader!experiments/src/components/Form/FormBaseInput.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/Form/Form.types.ts'),
+              require<string>('!raw-loader!experiments/src/components/Form/FormBaseInput.types.ts')
             ] }
           />
         }

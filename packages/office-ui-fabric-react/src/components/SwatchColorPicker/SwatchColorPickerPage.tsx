@@ -25,7 +25,7 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/SwatchColorPicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/SwatchColorPicker.types.ts')
             ] }
           />
         }

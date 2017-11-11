@@ -45,7 +45,7 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
             ] }
           />
         }

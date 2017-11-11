@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DialogContent } from './DialogContent';
-import { IButtonProps } from '../Button/Button.Props';
+import { IButtonProps } from '../Button/Button.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 export interface IDialogContent {

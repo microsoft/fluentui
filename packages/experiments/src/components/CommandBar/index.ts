@@ -1,2 +1,2 @@
 export * from './CommandBar';
-export * from './CommandBar.Props';
+export * from './CommandBar.types';

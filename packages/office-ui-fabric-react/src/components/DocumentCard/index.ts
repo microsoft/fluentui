@@ -1,5 +1,5 @@
 export * from './DocumentCard';
-export * from './DocumentCard.Props';
+export * from './DocumentCard.types';
 export * from './DocumentCardActions';
 export * from './DocumentCardActivity';
 export * from './DocumentCardLocation';

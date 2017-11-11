@@ -4,8 +4,8 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { IDialogProps } from './Dialog.Props';
-import { DialogType } from './DialogContent.Props';
+import { IDialogProps } from './Dialog.types';
+import { DialogType } from './DialogContent.types';
 import { Modal } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';

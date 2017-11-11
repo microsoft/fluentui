@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
+import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -18,7 +18,7 @@ import {
   KeyCodes,
   customizable
 } from '../../Utilities';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import {
   getStyles,
   getOptionStyles,

@@ -7,7 +7,7 @@ import {
   enableBodyScroll,
   disableBodyScroll
 } from '../../Utilities';
-import { IOverlayProps } from './Overlay.Props';
+import { IOverlayProps } from './Overlay.types';
 
 import * as stylesImport from './Overlay.scss';
 const styles: any = stylesImport;

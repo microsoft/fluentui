@@ -1,3 +1,3 @@
 
-export * from './Tile.Props';
+export * from './Tile.types';
 export * from './Tile';

@@ -6,7 +6,7 @@ import {
 import {
   memoizeFunction
 } from '../../Utilities';
-import { IActivityItemStyles } from './ActivityItem.Props';
+import { IActivityItemStyles } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';

@@ -7,7 +7,7 @@ import { Icon } from '../../Icon';
 import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum
-} from './Persona.Props';
+} from './Persona.types';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 

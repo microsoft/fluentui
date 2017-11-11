@@ -14,9 +14,9 @@ import {
   mergeStyles
 } from '../../Styling';
 
-import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
+import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
-import { ExpandingCardMode } from './ExpandingCard.Props';
+import { ExpandingCardMode } from './ExpandingCard.types';
 import { getStyles } from './HoverCard.styles';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 

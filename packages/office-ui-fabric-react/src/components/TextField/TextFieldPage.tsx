@@ -98,7 +98,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
             ] }
           />
         }

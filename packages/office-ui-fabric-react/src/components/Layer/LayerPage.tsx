@@ -33,7 +33,7 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.types.ts')
             ] }
           />
         }

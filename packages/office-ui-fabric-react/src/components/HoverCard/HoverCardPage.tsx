@@ -35,8 +35,8 @@ export class HoverCardPage extends React.Component<any, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
             ] }
           />
         }

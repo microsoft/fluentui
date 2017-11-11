@@ -46,7 +46,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/TilesList/TilesList.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/TilesList/TilesList.types.ts')
             ] }
           />
         }

@@ -1,2 +1,2 @@
 export * from './FocusTrapZone';
-export * from './FocusTrapZone.Props';
+export * from './FocusTrapZone.types';

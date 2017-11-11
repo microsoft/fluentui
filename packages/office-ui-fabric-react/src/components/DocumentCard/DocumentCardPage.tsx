@@ -46,7 +46,7 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts')
             ] }
           />
         }

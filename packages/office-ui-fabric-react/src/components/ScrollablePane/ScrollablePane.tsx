@@ -8,7 +8,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import { IScrollablePane, IScrollablePaneProps } from './ScrollablePane.Props';
+import { IScrollablePane, IScrollablePaneProps } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
 import * as stylesImport from './ScrollablePane.scss';
 const styles: any = stylesImport;

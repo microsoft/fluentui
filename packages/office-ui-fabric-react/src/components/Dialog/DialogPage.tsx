@@ -43,7 +43,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts')
             ] }
           />
         }

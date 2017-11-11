@@ -2,7 +2,7 @@
 export interface IPropertiesTableSetProps {
   /**
    * Component name, assumes component resides in /components/[name]/ folder
-   * and properties are at /components/[name]/[name].Props.ts.
+   * and properties are at /components/[name]/[name].types.ts.
    */
   componentName?: string;
 

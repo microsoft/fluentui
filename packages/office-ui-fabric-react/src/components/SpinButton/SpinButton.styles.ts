@@ -6,7 +6,7 @@ import {
 } from '../../Styling';
 
 import { IButtonStyles } from '../../Button';
-import { ISpinButtonStyles } from './SpinButton.Props';
+import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';

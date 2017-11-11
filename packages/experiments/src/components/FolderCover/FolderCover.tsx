@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.Props';
+import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.types';
 import { ISize, css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';

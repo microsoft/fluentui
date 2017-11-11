@@ -6,7 +6,7 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { ITeachingBubbleProps } from './TeachingBubble.Props';
+import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';

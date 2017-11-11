@@ -1,6 +1,6 @@
 import { IIconProps } from '../../Icon';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
+import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRenderFunction } from '../../Utilities';

@@ -1,3 +1,3 @@
 
-export * from './LayoutGroup.props';
+export * from './LayoutGroup.types';
 export * from './LayoutGroup';

@@ -1,5 +1,5 @@
 export * from './Dialog';
 export * from './DialogContent';
 export * from './DialogFooter';
-export * from './Dialog.Props';
-export * from './DialogContent.Props';
+export * from './Dialog.types';
+export * from './DialogContent.types';

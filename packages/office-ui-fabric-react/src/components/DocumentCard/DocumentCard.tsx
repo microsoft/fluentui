@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
+import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import {
   BaseComponent,
   KeyCodes,

@@ -1,2 +1,2 @@
 export * from './ColorPicker';
-export * from './ColorPicker.Props';
+export * from './ColorPicker.types';

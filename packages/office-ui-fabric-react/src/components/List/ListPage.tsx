@@ -46,7 +46,7 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')
             ] }
           />
         }

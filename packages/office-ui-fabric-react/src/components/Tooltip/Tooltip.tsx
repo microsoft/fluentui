@@ -7,7 +7,7 @@ import {
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
+import { ITooltipProps, TooltipDelay } from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './Tooltip.scss';

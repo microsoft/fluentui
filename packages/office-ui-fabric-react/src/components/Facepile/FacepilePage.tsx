@@ -38,7 +38,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
             ] }
           />
         }

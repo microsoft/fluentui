@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
-import { IIconProps } from '../Icon/Icon.Props';
+import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
@@ -14,7 +14,7 @@ import {
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 
 export enum ContextualMenuItemType {
   Normal = 0,

@@ -28,7 +28,7 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')
             ] }
           />
         }

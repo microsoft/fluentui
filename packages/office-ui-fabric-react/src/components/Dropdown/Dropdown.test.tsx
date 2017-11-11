@@ -10,7 +10,7 @@ import {
   KeyCodes,
 } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { DropdownMenuItemType, IDropdownOption } from './Dropdown.Props';
+import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },

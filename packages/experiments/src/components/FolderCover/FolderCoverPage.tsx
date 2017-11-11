@@ -26,7 +26,7 @@ export class FolderCoverPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/FolderCover/FolderCover.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/FolderCover/FolderCover.types.ts')
             ] }
           />
         }

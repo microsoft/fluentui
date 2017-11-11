@@ -1,2 +1,2 @@
 export * from './VerticalDivider';
-export * from './VerticalDivider.Props';
+export * from './VerticalDivider.types';

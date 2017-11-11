@@ -13,7 +13,7 @@ import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
 import {
   PERSONA_PRESENCE,
   PERSONA_SIZE

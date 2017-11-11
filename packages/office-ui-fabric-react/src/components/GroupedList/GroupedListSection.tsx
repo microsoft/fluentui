@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   IGroup,
   IGroupDividerProps
-} from './GroupedList.Props';
+} from './GroupedList.types';
 
 import {
   IDragDropContext,

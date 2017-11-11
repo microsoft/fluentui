@@ -53,7 +53,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')
             ] }
           />
         }

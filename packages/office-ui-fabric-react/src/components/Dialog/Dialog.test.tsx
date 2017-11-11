@@ -7,7 +7,7 @@ import { mount } from 'enzyme';
 
 import { Dialog } from './Dialog';
 import { DialogContent } from './DialogContent';
-import { DialogType } from './DialogContent.Props';
+import { DialogType } from './DialogContent.types';
 
 /* tslint:disable:no-unused-expression */// for express fluent assertions
 

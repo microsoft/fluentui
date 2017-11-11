@@ -11,9 +11,9 @@ import {
   assign,
   hasOverflow
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.Props';
+import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
-import { TooltipDelay } from './Tooltip.Props';
+import { TooltipDelay } from './Tooltip.types';
 
 import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;

@@ -6,7 +6,7 @@ import {
 import {
   Layer
 } from './Layer';
-import { ILayerHostProps } from './LayerHost.Props';
+import { ILayerHostProps } from './LayerHost.types';
 
 export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
 

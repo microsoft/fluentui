@@ -43,7 +43,7 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts')
             ] }
           />
         }

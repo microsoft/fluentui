@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISearchBoxProps } from './SearchBox.Props';
+import { ISearchBoxProps } from './SearchBox.types';
 import {
   BaseComponent,
   autobind,

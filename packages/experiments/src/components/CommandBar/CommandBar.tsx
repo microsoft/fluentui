@@ -5,7 +5,7 @@ import {
   getId,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
+import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';

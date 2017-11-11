@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
-import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.Props';
+import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.types';
 
 describe('CommandBar', () => {
 

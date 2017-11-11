@@ -9,7 +9,7 @@ import {
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ValidationState, Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
   from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.Props';
+import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 
 export interface IBaseFloatingPickerState {
   queryString: string;

@@ -1,2 +1,2 @@
 export * from './Checkbox';
-export * from './Checkbox.Props';
+export * from './Checkbox.types';

@@ -9,7 +9,7 @@ import {
   IGroupedList,
   IGroupedListProps,
   IGroup
-} from './GroupedList.Props';
+} from './GroupedList.types';
 import {
   GroupedListSection
 } from './GroupedListSection';

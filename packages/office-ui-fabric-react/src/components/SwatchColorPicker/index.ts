@@ -1,2 +1,2 @@
 export * from './SwatchColorPicker';
-export * from './SwatchColorPicker.Props';
+export * from './SwatchColorPicker.types';

@@ -1,4 +1,4 @@
-import { ICheckboxStyles } from './Checkbox.Props';
+import { ICheckboxStyles } from './Checkbox.types';
 import {
   ITheme,
   concatStyleSets,

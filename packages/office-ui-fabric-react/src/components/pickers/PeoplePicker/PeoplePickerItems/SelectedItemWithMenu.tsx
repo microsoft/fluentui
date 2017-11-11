@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, autobind, css } from '../../../../Utilities';
-import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
+import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';

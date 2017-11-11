@@ -7,7 +7,7 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.Props';
+import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 
 export interface IBaseSelectedItemsListState {
   // tslint:disable-next-line:no-any

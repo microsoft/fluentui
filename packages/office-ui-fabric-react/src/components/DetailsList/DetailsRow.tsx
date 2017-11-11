@@ -10,7 +10,7 @@ import {
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { IColumn, CheckboxVisibility } from './DetailsList.Props';
+import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';

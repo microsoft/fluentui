@@ -1,2 +1,2 @@
-export * from './Facepile.Props';
+export * from './Facepile.types';
 export * from './Facepile';

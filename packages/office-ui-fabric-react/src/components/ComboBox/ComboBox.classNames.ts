@@ -1,4 +1,4 @@
-import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.Props';
+import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyles,

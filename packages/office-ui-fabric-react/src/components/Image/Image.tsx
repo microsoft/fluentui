@@ -8,7 +8,7 @@ import {
   getNativeProps,
   imageProperties
 } from '../../Utilities';
-import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.Props';
+import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.types';
 import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;

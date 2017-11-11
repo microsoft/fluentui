@@ -6,7 +6,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import { IProgressIndicatorProps } from './ProgressIndicator.Props';
+import { IProgressIndicatorProps } from './ProgressIndicator.types';
 import * as stylesImport from './ProgressIndicator.scss';
 const styles: any = stylesImport;
 

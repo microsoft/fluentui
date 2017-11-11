@@ -7,7 +7,7 @@ import {
 } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
+import { IMessageBarProps, MessageBarType } from './MessageBar.types';
 import * as stylesImport from './MessageBar.scss';
 const styles: any = stylesImport;
 

@@ -10,7 +10,7 @@ import {
   ICheckbox,
   ICheckboxProps,
   ICheckboxStyles
-} from './Checkbox.Props';
+} from './Checkbox.types';
 import {
   customizable
 } from '../../Utilities';

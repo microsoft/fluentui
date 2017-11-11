@@ -7,7 +7,7 @@ import {
   css,
   getNativeProps
 } from '../../Utilities';
-import { ILink, ILinkProps } from './Link.Props';
+import { ILink, ILinkProps } from './Link.types';
 import * as stylesImport from './Link.scss';
 const styles: any = stylesImport;
 

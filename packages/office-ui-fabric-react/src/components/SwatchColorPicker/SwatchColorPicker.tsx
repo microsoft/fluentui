@@ -10,11 +10,11 @@ import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
   IColorCellProps
-} from './SwatchColorPicker.Props';
+} from './SwatchColorPicker.types';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
-import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
+import { IGridCellProps } from '../../utilities/grid/GridCell.types';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 

@@ -43,7 +43,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.types.ts')
             ] }
           />
         }

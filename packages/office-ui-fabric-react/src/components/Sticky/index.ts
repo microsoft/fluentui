@@ -1,2 +1,2 @@
 export * from './Sticky';
-export * from './Sticky.Props';
+export * from './Sticky.types';

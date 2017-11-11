@@ -5,7 +5,7 @@ import {
   toMatrix
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IGridProps } from './Grid.Props';
+import { IGridProps } from './Grid.types';
 
 export class Grid extends BaseComponent<IGridProps, {}> {
 

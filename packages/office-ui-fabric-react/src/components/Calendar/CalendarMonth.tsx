@@ -6,7 +6,7 @@ import {
   getRTL,
   autobind
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth, getYearStart, getYearEnd, getMonthStart, getMonthEnd, compareDatePart } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';

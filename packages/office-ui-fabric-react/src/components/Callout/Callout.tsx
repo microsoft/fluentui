@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { BaseComponent } from '../../Utilities';
-import { ICalloutProps } from './Callout.Props';
+import { ICalloutProps } from './Callout.types';
 import { ICalloutState, CalloutContent } from './CalloutContent';
 import { Layer } from '../../Layer';
 

@@ -27,7 +27,7 @@ export class ExtendedPeoplePickerPage extends React.Component<IComponentDemoPage
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/ExtendedPicker/BaseExtendedPicker.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')
             ] }
           />
         }

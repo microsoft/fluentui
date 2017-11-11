@@ -6,9 +6,9 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { TagPicker, ITag } from './TagPicker/TagPicker';
-import { IBasePickerProps } from './BasePicker.Props';
+import { IBasePickerProps } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
-import { IPickerItemProps } from './PickerItem.Props';
+import { IPickerItemProps } from './PickerItem.types';
 
 function onResolveSuggestions(text: string): ITag[] {
   return [

@@ -9,7 +9,7 @@ import {
   KeyCodes,
   IRenderFunction
 } from '../../Utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';

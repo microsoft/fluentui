@@ -1,3 +1,3 @@
 export * from './BaseFloatingPicker';
-export * from './BaseFloatingPicker.Props';
+export * from './BaseFloatingPicker.types';
 export * from './PeoplePicker/FloatingPeoplePicker';

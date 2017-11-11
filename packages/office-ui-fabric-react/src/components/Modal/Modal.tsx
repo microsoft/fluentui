@@ -5,7 +5,7 @@ import {
   getId
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
-import { IModalProps, IModal } from './Modal.Props';
+import { IModalProps, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';

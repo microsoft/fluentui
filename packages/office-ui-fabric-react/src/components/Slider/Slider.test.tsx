@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { Slider } from './Slider';
-import { ISlider } from './Slider.Props';
+import { ISlider } from './Slider.types';
 
 describe('Slider', () => {
 

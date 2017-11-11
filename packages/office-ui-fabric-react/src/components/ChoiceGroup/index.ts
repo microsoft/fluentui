@@ -1,2 +1,2 @@
 export * from './ChoiceGroup';
-export * from './ChoiceGroup.Props';
+export * from './ChoiceGroup.types';

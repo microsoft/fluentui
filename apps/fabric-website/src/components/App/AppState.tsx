@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Props
-import { INavPage } from '../Nav/Nav.Props';
+import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
 

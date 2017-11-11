@@ -8,7 +8,7 @@ import * as renderer from 'react-test-renderer';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
-import { ImageFit, ImageLoadState } from './Image.Props';
+import { ImageFit, ImageLoadState } from './Image.types';
 
 /* tslint:disable:no-unused-variable */
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

@@ -28,7 +28,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')
             ] }
           />
         }

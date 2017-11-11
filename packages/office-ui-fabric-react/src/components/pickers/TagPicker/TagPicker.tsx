@@ -6,9 +6,9 @@ import {
 } from '../../../Utilities';
 /* tslint:enable */
 import { BasePicker } from '../BasePicker';
-import { IBasePickerProps } from '../BasePicker.Props';
+import { IBasePickerProps } from '../BasePicker.types';
 import { TagItem } from './TagItem';
-import { IPickerItemProps } from '../PickerItem.Props';
+import { IPickerItemProps } from '../PickerItem.types';
 import * as stylesImport from './TagItem.scss';
 const styles: any = stylesImport;
 

@@ -9,7 +9,7 @@ import {
 import {
   IComboBoxOptionStyles,
   IComboBoxStyles,
-} from './ComboBox.Props';
+} from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';

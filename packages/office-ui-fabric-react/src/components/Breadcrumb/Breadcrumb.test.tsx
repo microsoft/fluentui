@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { Breadcrumb } from './Breadcrumb';
-import { IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbItem } from './Breadcrumb.types';
 
 describe('Breadcrumb', () => {
   it('renders breadcumb correctly', () => {

@@ -5,7 +5,7 @@ const styles: any = stylesImport;
 import {
   INavProps,
   INavPage
-} from './Nav.Props';
+} from './Nav.types';
 
 export interface INavState {
 }

@@ -4,7 +4,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import { IColorPickerProps } from './ColorPicker.Props';
+import { IColorPickerProps } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';

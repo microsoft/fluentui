@@ -42,7 +42,7 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')
             ] }
           />
         }

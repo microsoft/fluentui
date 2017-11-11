@@ -4,7 +4,7 @@ import {
   mergeStyleSets,
   getFocusStyle
 } from '../../Styling';
-import { IToggleStyles } from './Toggle.Props';
+import { IToggleStyles } from './Toggle.types';
 
 export interface IToggleClassNames {
   root?: string;

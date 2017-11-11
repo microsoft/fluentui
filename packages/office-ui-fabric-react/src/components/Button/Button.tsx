@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { BaseComponent, warn } from '../../Utilities';
-import { ButtonType, IButtonProps } from './Button.Props';
+import { ButtonType, IButtonProps } from './Button.types';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { ActionButton } from './ActionButton/ActionButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';

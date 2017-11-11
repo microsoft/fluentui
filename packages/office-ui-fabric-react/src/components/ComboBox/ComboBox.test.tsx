@@ -8,7 +8,7 @@ import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
 
 import { ComboBox } from './ComboBox';
-import { IComboBox, IComboBoxOption } from './ComboBox.Props';
+import { IComboBox, IComboBoxOption } from './ComboBox.types';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },

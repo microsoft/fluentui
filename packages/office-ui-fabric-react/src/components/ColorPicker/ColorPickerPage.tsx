@@ -28,7 +28,7 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts')
             ] }
           />
         }

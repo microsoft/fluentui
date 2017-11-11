@@ -1,2 +1,2 @@
 export * from './ResizeGroup';
-export * from './ResizeGroup.Props';
+export * from './ResizeGroup.types';

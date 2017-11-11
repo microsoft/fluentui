@@ -25,7 +25,7 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')
             ] }
           />
         }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IImageProps } from '../Image/Image.Props';
+import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
 
 // Please keep alphabetized

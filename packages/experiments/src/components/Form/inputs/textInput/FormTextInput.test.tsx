@@ -6,10 +6,10 @@ import * as sinon from 'sinon';
 
 // Controls
 import { Form } from '../../Form';
-import { IFormProps } from '../../Form.Props';
+import { IFormProps } from '../../Form.types';
 import { DEFAULT_DEBOUNCE } from '../../FormBaseInput';
 import { FormTextInput } from './FormTextInput';
-import { IFormTextInputProps } from './FormTextInput.Props';
+import { IFormTextInputProps } from './FormTextInput.types';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 // Utilities

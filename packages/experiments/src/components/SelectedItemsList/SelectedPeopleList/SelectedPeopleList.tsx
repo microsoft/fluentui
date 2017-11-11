@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
-import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.Props';
+import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
 import { autobind } from '../../../Utilities';

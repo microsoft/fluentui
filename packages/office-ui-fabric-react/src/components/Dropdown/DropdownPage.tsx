@@ -35,8 +35,8 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
             ] }
           />
         }

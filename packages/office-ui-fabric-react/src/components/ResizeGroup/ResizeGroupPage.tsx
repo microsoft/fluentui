@@ -34,7 +34,7 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')
             ] }
           />
         }

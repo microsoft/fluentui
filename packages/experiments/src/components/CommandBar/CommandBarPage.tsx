@@ -6,7 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { items, overflowItems, farItems } from './examples/data';
-import { ICommandBarProps } from './CommandBar.Props';
+import { ICommandBarProps } from './CommandBar.types';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 
 const CommandBarBasicExampleCode = require(
@@ -31,8 +31,8 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
             ] }
           />
         }

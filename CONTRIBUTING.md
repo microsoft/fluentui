@@ -12,7 +12,7 @@
 2. Create a new folder here with your component name
   * Our components use the Pascal Case naming convention.
   * In this example the component will be called `ExcitingNewComponent`.
-3. Create a `ExcitingNewComponent.Props.ts` file that will contain an interface for your props
+3. Create a `ExcitingNewComponent.types.ts` file that will contain an interface for your props
   * Import React
     * `import * as React from 'react'`;
   * Import ExcitingNewComponent
@@ -37,7 +37,7 @@
   * Import BaseComponent
     * `import { BaseComponent } from '../../Utilities';`
   * Import IExcitingNewComponentProps
-    * `import { IExcitingNewComponentProps } from './ExcitingNewComponent.Props';`
+    * `import { IExcitingNewComponentProps } from './ExcitingNewComponent.types';`
   * Add your class to this file.
     * Add the following example class
     * `export class ExcitingNewComponent extends BaseComponent<IExcitingNewComponentProps, {}> { };`
@@ -47,7 +47,7 @@
   * Import mergeStyles.
     * `import { mergeStyleSets } from '../../Styling';`
   * Import ExcitingNewComponent.
-    * `import { IExcitingNewComponentStyles } from './ExcitingNewComponent.Props';`
+    * `import { IExcitingNewComponentStyles } from './ExcitingNewComponent.types';`
   * Create and export an interface for your class names.
 ```
     export interface IExcitingNewComponentClassNames {

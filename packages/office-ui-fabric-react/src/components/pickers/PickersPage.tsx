@@ -33,7 +33,7 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')
             ] }
           />
         }

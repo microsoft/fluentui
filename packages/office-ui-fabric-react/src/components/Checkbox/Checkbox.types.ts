@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
-import { IIconProps } from '../Icon/Icon.Props';
+import { IIconProps } from '../Icon/Icon.types';
 
 /**
  * Checkbox class interface.

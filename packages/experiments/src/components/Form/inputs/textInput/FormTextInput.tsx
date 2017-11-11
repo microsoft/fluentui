@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Components
-import { IFormTextInputProps } from './FormTextInput.Props';
+import { IFormTextInputProps } from './FormTextInput.types';
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
