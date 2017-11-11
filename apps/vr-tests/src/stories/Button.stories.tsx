@@ -9,7 +9,7 @@ const baseProps: IButtonProps = {
   iconProps: {
     iconName: 'AddFriend'
   },
-  children: 'Butjon',
+  children: 'Button',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
 };
 
