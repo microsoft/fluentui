@@ -1,6 +1,14 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 30 Oct 2017 10:23:09 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2017 17:09:36 GMT and should not be manually modified.
+
+## 5.7.0
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Minor changes
+
+- Adjusting the IFabricConfig interface to allow for mergeStyle settings to be included.
+- Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`.
 
 ## 5.6.1
 Mon, 30 Oct 2017 10:23:09 GMT
@@ -61,7 +69,7 @@ Thu, 05 Oct 2017 17:03:43 GMT
 ## 5.1.1
 Wed, 04 Oct 2017 22:40:22 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 5.1.0
 Sat, 30 Sep 2017 01:26:37 GMT
@@ -215,22 +223,22 @@ Thu, 03 Aug 2017 10:13:03 GMT
 ## 0.15.4
 Wed, 02 Aug 2017 10:22:40 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.3
 Tue, 01 Aug 2017 10:13:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.2
 Mon, 31 Jul 2017 10:12:08 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.1
 Fri, 28 Jul 2017 18:36:00 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.15.0
 Fri, 28 Jul 2017 10:23:10 GMT
@@ -253,12 +261,12 @@ Thu, 27 Jul 2017 10:23:33 GMT
 ## 0.13.16
 Tue, 25 Jul 2017 10:22:35 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.15
 Mon, 24 Jul 2017 10:24:30 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.14
 Fri, 21 Jul 2017 10:21:45 GMT
@@ -271,7 +279,7 @@ Fri, 21 Jul 2017 10:21:45 GMT
 ## 0.13.13
 Thu, 20 Jul 2017 10:11:23 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.12
 Wed, 19 Jul 2017 21:40:34 GMT
@@ -283,17 +291,17 @@ Wed, 19 Jul 2017 21:40:34 GMT
 ## 0.13.11
 Mon, 17 Jul 2017 18:38:01 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.10
 Mon, 17 Jul 2017 10:22:38 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.9
 Fri, 14 Jul 2017 17:34:53 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.8
 Thu, 13 Jul 2017 10:21:52 GMT
@@ -305,7 +313,7 @@ Thu, 13 Jul 2017 10:21:52 GMT
 ## 0.13.7
 Thu, 13 Jul 2017 02:58:02 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.6
 Wed, 12 Jul 2017 01:49:50 GMT
@@ -317,22 +325,22 @@ Wed, 12 Jul 2017 01:49:50 GMT
 ## 0.13.5
 Tue, 11 Jul 2017 10:14:04 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.4
 Mon, 10 Jul 2017 19:18:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.3
 Mon, 10 Jul 2017 10:22:21 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.2
 Sat, 08 Jul 2017 05:59:28 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.13.1
 Sat, 08 Jul 2017 03:34:35 GMT
@@ -355,17 +363,17 @@ Fri, 07 Jul 2017 10:11:38 GMT
 ## 0.12.3
 Thu, 06 Jul 2017 10:11:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.12.2
 Tue, 04 Jul 2017 10:21:53 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.12.1
 Mon, 03 Jul 2017 10:11:52 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.12.0
 Fri, 30 Jun 2017 19:44:26 GMT
@@ -377,22 +385,22 @@ Fri, 30 Jun 2017 19:44:26 GMT
 ## 0.11.10
 Fri, 30 Jun 2017 10:23:15 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.9
 Thu, 29 Jun 2017 20:48:31 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.8
 Thu, 29 Jun 2017 10:13:16 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.7
 Wed, 28 Jun 2017 10:12:04 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.6
 Tue, 27 Jun 2017 01:26:31 GMT
@@ -404,22 +412,22 @@ Tue, 27 Jun 2017 01:26:31 GMT
 ## 0.11.5
 Fri, 23 Jun 2017 20:02:00 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.4
 Fri, 23 Jun 2017 04:12:23 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.3
 Thu, 22 Jun 2017 21:45:08 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.2
 Thu, 22 Jun 2017 10:13:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.11.1
 Wed, 21 Jun 2017 01:52:48 GMT
@@ -443,17 +451,17 @@ Wed, 21 Jun 2017 00:45:41 GMT
 ## 0.10.5
 Tue, 20 Jun 2017 10:22:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.10.4
 Sat, 17 Jun 2017 17:39:43 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.10.2
 Sat, 17 Jun 2017 06:27:45 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.10.1
 Sat, 17 Jun 2017 04:36:46 GMT
@@ -472,7 +480,7 @@ Fri, 16 Jun 2017 23:02:08 GMT
 ## 0.9.1
 Fri, 16 Jun 2017 19:39:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.9.0
 Thu, 15 Jun 2017 23:55:18 GMT
@@ -484,7 +492,7 @@ Thu, 15 Jun 2017 23:55:18 GMT
 ## 0.8.1
 Thu, 15 Jun 2017 10:09:15 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.8.0
 Wed, 14 Jun 2017 06:02:15 GMT
@@ -502,7 +510,7 @@ Wed, 14 Jun 2017 06:02:15 GMT
 ## 0.7.4
 Tue, 13 Jun 2017 10:13:21 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.7.3
 Mon, 12 Jun 2017 01:47:18 GMT
@@ -521,7 +529,7 @@ Fri, 09 Jun 2017 10:10:47 GMT
 ## 0.7.1
 Thu, 08 Jun 2017 10:20:07 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.7.0
 Thu, 08 Jun 2017 00:18:05 GMT
@@ -533,7 +541,7 @@ Thu, 08 Jun 2017 00:18:05 GMT
 ## 0.6.1
 Tue, 06 Jun 2017 07:41:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.6.0
 Tue, 06 Jun 2017 06:06:46 GMT
@@ -557,12 +565,12 @@ Tue, 06 Jun 2017 00:50:06 GMT
 ## 0.4.3
 Fri, 02 Jun 2017 01:19:36 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.4.2
 Thu, 01 Jun 2017 16:34:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.4.1
 Wed, 31 May 2017 01:58:23 GMT
