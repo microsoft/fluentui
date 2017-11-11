@@ -932,7 +932,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * */
   private _isOptionSelected(index: number | undefined): boolean {
     let {
-        currentPendingValueValidIndexOnHover
+      currentPendingValueValidIndexOnHover
     } = this.state;
 
     // If the hover state is set to clearAll, don't show a selected index.
@@ -951,7 +951,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _getPendingSelectedIndex(includeCurrentPendingValue: boolean): number {
     let {
-        currentPendingValueValidIndexOnHover,
+      currentPendingValueValidIndexOnHover,
       currentPendingValueValidIndex,
       currentPendingValue,
       selectedIndex
@@ -971,12 +971,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _scrollIntoView() {
     let {
-        onScrollToItem,
+      onScrollToItem,
       scrollSelectedToTop
     } = this.props;
 
     let {
-          currentPendingValueValidIndex,
+      currentPendingValueValidIndex,
       currentPendingValue,
       selectedIndex
     } = this.state;
@@ -1063,7 +1063,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _resetSelectedIndex() {
     let {
-        selectedIndex,
+      selectedIndex,
       currentOptions
     } = this.state;
     this._comboBox.clear();
@@ -1129,7 +1129,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _setInfoForIndexAndDirection(index: number, searchDirection: SearchDirection) {
     let {
-        isOpen,
+      isOpen,
       selectedIndex
     } = this.state;
 
@@ -1148,12 +1148,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
     let {
-        disabled,
+      disabled,
       allowFreeform,
       autoComplete
     } = this.props;
     let {
-          isOpen,
+      isOpen,
       currentPendingValueValidIndex,
       currentOptions,
       currentPendingValueValidIndexOnHover
