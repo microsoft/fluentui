@@ -27,7 +27,7 @@
   position: relative;
   @include margin-right(0);
   line-height: 1em;
-  color: $ms-color-themePrimary;
+  color: $signal;
 
   .selected & {
     color: $ms-color-themeDark;

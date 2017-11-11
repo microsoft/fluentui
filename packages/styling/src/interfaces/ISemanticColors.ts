@@ -131,6 +131,10 @@ export interface ISemanticColors {
    * Background for success
    */
   successBackground: string;
+  /**
+   * The color for signals
+   */
+  signal: string;
 
   //// Input controls slots (text fields, checkboxes, radios...)
 
