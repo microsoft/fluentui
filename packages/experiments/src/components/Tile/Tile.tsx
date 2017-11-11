@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { ITileProps, TileSize } from './Tile.Props';
+import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { ISize, css, BaseComponent, autobind, getId } from '../../Utilities';

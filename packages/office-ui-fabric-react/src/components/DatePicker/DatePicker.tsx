@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   IDatePickerProps,
   IDatePickerStrings
-} from './DatePicker.Props';
+} from './DatePicker.types';
 import {
   Calendar,
   DayOfWeek

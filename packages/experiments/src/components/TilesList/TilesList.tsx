@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.Props';
+import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
 import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { autobind, css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
