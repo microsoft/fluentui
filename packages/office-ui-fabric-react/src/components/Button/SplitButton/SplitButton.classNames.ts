@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 
 export interface ISplitButtonClassNames {
   root?: string;

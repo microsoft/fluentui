@@ -115,7 +115,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="2"
+                  id="id__2"
                 >
                   asdf
                 </div>
@@ -218,7 +218,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="5"
+                  id="id__5"
                 >
                   asdf
                 </div>

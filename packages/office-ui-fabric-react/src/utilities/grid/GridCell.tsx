@@ -4,7 +4,7 @@ import {
   css,
   getId,
 } from '../../Utilities';
-import { IGridCellProps } from './GridCell.Props';
+import { IGridCellProps } from './GridCell.types';
 import { CommandButton } from '../../Button';
 
 export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {

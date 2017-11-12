@@ -3,7 +3,7 @@ import {
   css,
   BaseComponent
 } from '../../Utilities';
-import { IResizeGroupProps } from './ResizeGroup.Props';
+import { IResizeGroupProps } from './ResizeGroup.types';
 import * as styles from './ResizeGroup.scss';
 
 const RESIZE_DELAY = 16;

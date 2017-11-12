@@ -10,7 +10,7 @@ import {
   getLastTabbable,
   getNextElement
 } from '../../Utilities';
-import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
+import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 

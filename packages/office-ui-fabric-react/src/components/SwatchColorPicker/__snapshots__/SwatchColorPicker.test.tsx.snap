@@ -15,7 +15,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   <table
     aria-posinset={undefined}
     aria-setsize={undefined}
-    id="2"
+    id="id__2"
     role="grid"
     style={
       Object {

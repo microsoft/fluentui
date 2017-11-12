@@ -6,7 +6,7 @@ import {
   autobind,
   nullRender
 } from '../../Utilities';
-import { ICommandBar, ICommandBarProps, ICommandBarItemProps, ICommandBarData } from './CommandBar.Props';
+import { ICommandBar, ICommandBarProps, ICommandBarItemProps, ICommandBarData } from './CommandBar.types';
 import { CommandBarButton } from '../../Button';
 import { OverflowSet, IOverflowSet } from '../../OverflowSet';
 import { ResizeGroup } from '../../ResizeGroup';
