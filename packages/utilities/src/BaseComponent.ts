@@ -68,7 +68,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * When the component will receive props, make sure the componentRef is updated.
    */
   // tslint:disable-next-line:no-any
-  public componentWillReceiveProps(newProps?: P, newContext?: any): void {
+  public componentWillReceiveProps(newProps: Readonly<P>, newContext: any): void {
     this._updateComponentRef(this.props, newProps);
   }
 
