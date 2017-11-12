@@ -9,14 +9,14 @@ import {
  * into mergeStyleSets.
  */
 export function classNamesFunction<TStyleProps extends {}, TStyles extends {}>(): (
-  getStyles: IStyleFunction<TStyleProps, TStyles>,
-  styleProps: TStyleProps
+  getStyles?: IStyleFunction<TStyleProps, TStyles>,
+  styleProps?: TStyleProps
 ) => IClassNames<TStyles> {
 
   // TODO: memoize.
   return (
-    getStyles: IStyleFunction<TStyleProps, TStyles>,
-    styleProps: TStyleProps
-  ): IClassNames<TStyles> => mergeStyleSets(getStyles && getStyles(styleProps)
+    getStyles?: IStyleFunction<TStyleProps, TStyles>,
+    styleProps?: TStyleProps
+  ): IClassNames<TStyles> => mergeStyleSets(getStyles && getStyles(styleProps!)
   );
 }

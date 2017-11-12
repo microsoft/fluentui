@@ -6,13 +6,14 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { Label } from './Label';
+import { LabelBase } from './Label.base';
+import { getStyles } from './Label.styles';
 
 describe('Label', () => {
 
   it('renders a label', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <Label>test</Label>
+      <LabelBase getStyles={ getStyles }>test</LabelBase>
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
 
@@ -21,7 +22,7 @@ describe('Label', () => {
 
   it('renders label correctly', () => {
     const component = renderer.create(
-      <Label>test</Label>
+      <LabelBase getStyles={ getStyles }>test</LabelBase>
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
