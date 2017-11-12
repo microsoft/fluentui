@@ -1,16 +1,25 @@
-import { memoizeFunction } from '../../Utilities';
-import { ITheme, FontSizes, mergeStyleSets } from '../../Styling';
+import {
+  ITheme,
+  IStyle,
+  FontSizes,
+  HighContrastSelector
+} from '../../Styling';
+import {
+  ILabelStyleProps,
+  ILabelStyles
+} from './Label.types';
 
-export interface ILabelClassNames {
-  root: string;
-}
+export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
+  const {
+    theme,
+    className,
+    disabled,
+    required
+  } = props;
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
-
-export const getLabelClassNames = memoizeFunction((theme: ITheme, className: string | undefined, disabled: boolean, required: boolean): ILabelClassNames => {
-  return mergeStyleSets({
-    root:
-    ['ms-Label',
+  return {
+    root: [
+      'ms-Label',
       {
         color: theme.semanticColors.bodyText,
         boxSizing: 'border-box',
@@ -24,7 +33,7 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
       disabled && {
         color: theme.semanticColors.disabledBodyText,
         selectors: {
-          [MS_HIGHCONTRAST_ACTIVE]: {
+          [HighContrastSelector]: {
             color: 'GrayText'
           }
         }
@@ -38,6 +47,7 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
           }
         }
       },
-      className]
-  });
-});
+      className
+    ]
+  };
+};

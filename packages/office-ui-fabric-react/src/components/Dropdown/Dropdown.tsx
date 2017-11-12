@@ -52,7 +52,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
   // tslint:disable-next-line:no-unused-variable
-  private _dropdownLabel: HTMLElement;
   private _id: string;
 
   constructor(props: IDropdownProps) {
@@ -145,7 +144,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref={ this._resolveRef('_root') } className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }

@@ -1,8 +1,8 @@
-import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.types';
+import { ChecklistStatus, IComponentStatusProps } from '../../demo/ComponentStatus/ComponentStatus.types';
 
-export const LabelStatus = {
-  keyboardAccessibilitySupport: ChecklistStatus.unknown,
-  markupSupport: ChecklistStatus.unknown,
+export const LabelStatus: IComponentStatusProps = {
+  keyboardAccessibilitySupport: ChecklistStatus.notApplicable,
+  markupSupport: ChecklistStatus.good,
   highContrastSupport: ChecklistStatus.pass,
   rtlSupport: ChecklistStatus.pass,
   testCoverage: ChecklistStatus.good
