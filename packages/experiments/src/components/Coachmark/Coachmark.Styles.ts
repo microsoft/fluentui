@@ -2,6 +2,8 @@ import { IStyle, keyframes } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets } from '../../Styling';
 
+export const themePrimary = '#0078d7';
+
 export interface ICoachmarkStyleProps {
   /**
    * Is the Coachmark collapsed
@@ -44,7 +46,14 @@ export interface ICoachmarkStyles {
   /**
    * The layer that content/components/elments will be hosted in.
    */
-  layerHost?: IStyle;
+  entityHost?: IStyle;
+
+  /**
+   * The inner layer that components will be hosted in
+   * and primary purpose is scaling the layer down while the
+   * Coachmark isCollapsed.
+   */
+  entityInnerHost: string;
 
   /**
    * The styles applied when the coachmark has collapsed.
@@ -82,9 +91,17 @@ export interface ICoachmarkStylesNames {
   rotateAnimationLayer: string;
 
   /**
-   * The layer that content/components/elments will be hosted in.
+   * The outer layer that content/components/elments will be hosted in
+   * and primary purpose is to display a background color
    */
-  layerHost: string;
+  entityHost: string;
+
+  /**
+   * The inner layer that components will be hosted in
+   * and primary purpose is scaling the layer down while the
+   * Coachmark isCollapsed.
+   */
+  entityInnerHost: string;
 
   /**
    * The styles applied when the coachmark has collapsed.
@@ -358,19 +375,26 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
       }
     ],
     // Layer Host
-    layerHost: [
+    entityHost: [
       {
         width: '100%',
         height: '100%',
         position: 'relative',
         outline: 'none',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: themePrimary
       },
       props.isCollapsed && {
         borderRadius: coachmarkCollapsedSize
       },
       (!props.isCollapsed) && {
         borderRadius: '1px'
+      }
+    ],
+    entityInnerHost: [
+      {
+        width: '100%',
+        position: 'relative'
       }
     ]
   });
