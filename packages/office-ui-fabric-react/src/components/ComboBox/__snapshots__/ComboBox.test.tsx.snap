@@ -46,7 +46,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           display: none;
         }
         &:hover {
-          border-color: #333333;
+          border-color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
