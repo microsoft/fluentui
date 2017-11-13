@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.4.0",
+      "tag": "@uifabric/utilities_v5.4.0",
+      "date": "Mon, 13 Nov 2017 11:20:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8d460f38a03684f44ead13a08d84a990ca07d24b",
+            "comment": "BaseComponent: fixing some typings to be compatible with current React typings."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.3",
       "tag": "@uifabric/utilities_v5.3.3",
       "date": "Fri, 10 Nov 2017 17:09:36 GMT",
