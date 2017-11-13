@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DatePicker } from './DatePicker';
 import { DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
-import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.Props';
+import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 
 export interface IDatePicker {
 

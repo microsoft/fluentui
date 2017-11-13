@@ -3,7 +3,7 @@ import {
   FocusZoneDirection,
   IFocusZone,
   IFocusZoneProps
-} from './FocusZone.Props';
+} from './FocusZone.types';
 import {
   BaseComponent,
   EventGroup,

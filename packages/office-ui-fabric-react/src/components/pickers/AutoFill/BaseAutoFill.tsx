@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.Props';
+import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.types';
 import {
   BaseComponent,
   KeyCodes,

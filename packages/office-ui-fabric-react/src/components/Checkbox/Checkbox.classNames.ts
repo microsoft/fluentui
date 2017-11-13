@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
-import { ICheckboxStyles } from './Checkbox.Props';
+import { ICheckboxStyles } from './Checkbox.types';
 
 export interface ICheckboxClassNames {
   root: string;
