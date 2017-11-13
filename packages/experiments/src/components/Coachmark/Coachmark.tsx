@@ -23,6 +23,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       children
     } = this.props;
 
+    // Classnames
     const classNames = getStyles({
       isCollapsed: this.state.isCollapsed,
       isBeaconAnimating: this.state.isBeaconAnimating
@@ -39,7 +40,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
           <div className={ classNames.translateAnimationContainer }>
             <div className={ classNames.scaleAnimationLayer }>
               <div className={ classNames.rotateAnimationLayer }>
-                <div className={ classNames.layerHost }>
+                <div className={ classNames.entityHost }>
                   { children }
                 </div>
               </div>
