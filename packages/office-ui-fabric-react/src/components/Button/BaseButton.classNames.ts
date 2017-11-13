@@ -22,9 +22,10 @@ export const getClassNames = memoizeFunction((
   disabled: boolean,
   checked: boolean,
   expanded: boolean,
-  isSplit: boolean | undefined
+  isSplit: boolean | undefined,
+  splitFullActiveState: boolean | undefined
 ): IButtonClassNames => {
-  const isExpanded = expanded && !isSplit;
+  const isExpanded = expanded && !isSplit || expanded && !!splitFullActiveState;
   return {
     root: mergeStyles(
       className,

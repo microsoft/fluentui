@@ -101,7 +101,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       isPrimaryButtonDisabled!,
       checked!,
       !!this.state.menuProps,
-      this.props.split
+      this.props.split,
+      this.props.splitFullActiveState
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
