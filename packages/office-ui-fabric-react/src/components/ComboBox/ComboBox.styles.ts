@@ -59,7 +59,7 @@ export const getOptionStyles = memoizeFunction((
 
   const { semanticColors, palette } = theme;
 
-  const ComboBoxOptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
+  const ComboBoxOptionBackgroundState = semanticColors.menuItemBackgroundHovered;
   const ComboBoxOptionTextColorHovered = semanticColors.bodyText;
   const ComboBoxOptionTextColorSelected = palette.black;
   const ComboBoxOptionTextColorDisabled = semanticColors.disabledText;
@@ -94,15 +94,19 @@ export const getOptionStyles = memoizeFunction((
       getFocusStyle(theme),
     ],
     rootHovered: {
-      backgroundColor: ComboBoxOptionBackgroundHovered,
+      backgroundColor: ComboBoxOptionBackgroundState,
       color: ComboBoxOptionTextColorHovered
     },
     rootFocused: {
-      backgroundColor: ComboBoxOptionBackgroundHovered
+      backgroundColor: ComboBoxOptionBackgroundState
+    },
+    rootPressed: {
+      backgroundColor: ComboBoxOptionBackgroundState,
+      color: ComboBoxOptionTextColorSelected
     },
     rootChecked: [
       {
-        backgroundColor: ComboBoxOptionBackgroundHovered,
+        backgroundColor: ComboBoxOptionBackgroundState,
         color: ComboBoxOptionTextColorSelected
       },
       getFocusStyle(theme),
@@ -254,6 +258,10 @@ export const getStyles = memoizeFunction((
           MsHighContrastAdjust: 'none'
         }
       },
+    },
+
+    rootPressed: {
+      borderColor: ComboBoxRootBorderColorActive
     },
 
     rootFocused: {
