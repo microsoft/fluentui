@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed RTL support for choicegroup",
+      "comment": "ChoiceGroup: Fixed RTL support.",
       "type": "patch"
     }
   ],
