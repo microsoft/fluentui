@@ -78,7 +78,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-weight: normal;
   position: absolute;
   top: 0;
-  left: 0;
+  @include ms-left(0);
   box-sizing: border-box;
   transition-property: border-color;
   transition-duration: $ms-choiceField-transition-duration;
