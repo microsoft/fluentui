@@ -892,14 +892,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
-    const rootClassName = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item)).root;
+    const rootClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item)).root;
 
     return (
       <CommandButton
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }
-        className={ rootClassName }
+        className={ rootClassNames }
         styles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
         onClick={ this._onItemClick(item.index) }
