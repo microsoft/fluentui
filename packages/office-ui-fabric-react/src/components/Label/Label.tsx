@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, divProperties, getNativeProps, customizable } from '../../Utilities';
-import { ILabelProps } from './Label.Props';
+import { ILabelProps } from './Label.types';
 import { getLabelClassNames } from './Label.classNames';
 
 @customizable('Label', ['theme'])

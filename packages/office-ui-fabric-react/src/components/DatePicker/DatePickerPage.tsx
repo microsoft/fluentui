@@ -54,7 +54,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
             ] }
           />
         }

@@ -1,6 +1,6 @@
 import { getRTL, getInitials } from '../../../Utilities';
 import { BaseFloatingPicker } from '../BaseFloatingPicker';
-import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.Props';
+import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
 import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import './PeoplePicker.scss';
