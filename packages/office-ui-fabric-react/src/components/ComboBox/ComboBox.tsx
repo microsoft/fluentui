@@ -1109,7 +1109,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _setPendingInfoFromIndex(index: number) {
     let {
-        currentOptions
+      currentOptions
     } = this.state;
 
     if (index >= 0 && index < currentOptions.length) {
@@ -1312,7 +1312,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
     let {
-        disabled,
+      disabled,
       allowFreeform,
       autoComplete
     } = this.props;
