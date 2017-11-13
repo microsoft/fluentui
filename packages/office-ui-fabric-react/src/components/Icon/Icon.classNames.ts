@@ -4,7 +4,7 @@ import {
 import {
   memoizeFunction
 } from '../../Utilities';
-import { IIconStyles } from './Icon.Props';
+import { IIconStyles } from './Icon.types';
 
 export interface IIconClassNames {
   root?: string;

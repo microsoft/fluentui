@@ -8,7 +8,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
-import { DateRangeType, DayOfWeek } from './Calendar.Props';
+import { DateRangeType, DayOfWeek } from './Calendar.types';
 import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
 
 describe('Calendar', () => {

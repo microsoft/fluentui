@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HoverCard } from './HoverCard';
-import { IExpandingCardProps } from './ExpandingCard.Props';
+import { IExpandingCardProps } from './ExpandingCard.types';
 import { IStyle } from '../../Styling';
 
 export interface IHoverCard {

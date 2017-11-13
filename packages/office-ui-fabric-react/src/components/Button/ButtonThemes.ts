@@ -1,4 +1,4 @@
-import { IButtonStyles } from './Button.Props';
+import { IButtonStyles } from './Button.types';
 import { ITheme } from '../../Styling';
 
 export function standardStyles(theme: ITheme): IButtonStyles {

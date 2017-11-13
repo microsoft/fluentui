@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles, IStyle } from '../../Styling';
-import { ISpinButtonStyles } from './SpinButton.Props';
+import { ISpinButtonStyles } from './SpinButton.types';
 import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
 

@@ -10,7 +10,7 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';

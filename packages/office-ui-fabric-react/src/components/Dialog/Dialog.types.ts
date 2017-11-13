@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IModalProps } from '../../Modal';
 import { Dialog } from './Dialog';
-import { DialogType, IDialogContentProps } from './DialogContent.Props';
-import { IButtonProps } from '../Button/Button.Props';
+import { DialogType, IDialogContentProps } from './DialogContent.types';
+import { IButtonProps } from '../Button/Button.types';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
