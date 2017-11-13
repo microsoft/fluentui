@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { Coachmark } from '../Coachmark';
-import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
 }
-
-const EXAMPLE_BUTTON_CLASS = 'ms-Coachmark-basicExampleButton';
 
 export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
 
@@ -41,13 +39,14 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
         </div>
         { isVisible && (
           <Coachmark
-            positioningTarget={ EXAMPLE_BUTTON_CLASS }
+            positioningTarget={ '.ms-Coachmark-basicExampleButton' }
           >
-            <TeachingBubble
+            <TeachingBubbleContent
               headline='Example Title'
               calloutProps={ positioningContainerProps }
             >
-            </TeachingBubble>
+              Welcome to the land of coachmarks
+            </TeachingBubbleContent>
           </Coachmark>
         ) }
       </div>
