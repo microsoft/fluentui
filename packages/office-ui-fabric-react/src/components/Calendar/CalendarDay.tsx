@@ -60,7 +60,8 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   showWeekNumbers?: boolean;
   firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
-  //isMonthPickerVisible?: boolean;
+  isMonthPickerVisible?: boolean;
+  showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
 }
@@ -100,14 +101,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate /*, isMonthPickerVisible*/ } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate, isMonthPickerVisible } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
     let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
     let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
-    //let isMonthVisible = isMonthPickerVisible ? isMonthPickerVisible : false;
+    let isMonthVisible = isMonthPickerVisible ? isMonthPickerVisible : false;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -128,8 +129,27 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         ) }
         id={ dayPickerId }
       >
-
-        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents/*, isMonthVisible && ('ms-DatePicker-monthComponents2 ' + styles.monthComponents2)*/) }>
+        <div className={ css('ms-DatePicker-header', styles.header) } >
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            { this.props.onHeaderSelect ?
+              <div
+                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
+                onClick={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderKeyDown }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+                role='button'
+                tabIndex={ 0 }
+              >
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+              :
+              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+            }
+          </div>
+        </div>
+        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents, isMonthVisible && css('ms-DatePicker-arrowsStyleWithMonthComponents', styles.arrowsStyleWithMonthComponents)) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth,
@@ -162,26 +182,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </span >
           </div >
         </div >
-        <div className={ css('ms-DatePicker-header', styles.header) } >
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            { this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-                role='button'
-                tabIndex={ 0 }
-              >
-                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-              </div>
-              :
-              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
-                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-              </div>
-            }
-          </div>
-        </div>
         <FocusZone>
           {
             showWeekNumbers ?
@@ -477,7 +477,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate } = propsToUse;
+    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate, showSixWeeksByDefault } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
     let weeks: IDayInfo[][] = [];
@@ -495,7 +495,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
     }
 
-    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth /*|| weekIndex <= 5*/; weekIndex++) {
+    let numOfWeeksToShow = true;
+
+    for (let weekIndex = 0; numOfWeeksToShow; weekIndex++) {
       let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
@@ -522,7 +524,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         date.setDate(date.getDate() + 1);
       }
 
-      if (!isAllDaysOfWeekOutOfMonth /*|| weekIndex <= 5*/) {
+      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
+      numOfWeeksToShow = showSixWeeksByDefault ? (!isAllDaysOfWeekOutOfMonth || weekIndex <= 5) : !isAllDaysOfWeekOutOfMonth;
+      if (numOfWeeksToShow) {
         weeks.push(week);
       }
     }

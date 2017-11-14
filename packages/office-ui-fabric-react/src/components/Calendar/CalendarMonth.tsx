@@ -61,6 +61,24 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          { this.props.onHeaderSelect ?
+            <div
+              className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView) }
+              onClick={ this._onHeaderSelect }
+              onKeyDown={ this._onHeaderKeyDown }
+              aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+              role='button'
+              tabIndex={ 0 }
+            >
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
+            :
+            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
+          }
+        </div>
         <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
@@ -88,24 +106,6 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span>
           </div>
-        </div>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
-          { this.props.onHeaderSelect ?
-            <div
-              className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView) }
-              onClick={ this._onHeaderSelect }
-              onKeyDown={ this._onHeaderKeyDown }
-              aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
-              role='button'
-              tabIndex={ 0 }
-            >
-              { dateTimeFormatter.formatYear(navigatedDate) }
-            </div>
-            :
-            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>
-              { dateTimeFormatter.formatYear(navigatedDate) }
-            </div>
-          }
         </div>
         <FocusZone>
           <div
