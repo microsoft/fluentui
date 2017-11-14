@@ -204,56 +204,6 @@ export default class Focus {
   }
 
   /**
-   * Navigates focus inside the element by setting focus on its first child in its Focusable Sub-Tree
-   *
-   * @returns true if the element has a focusable child
-   */
-  public static focusInside(element: HTMLElement): boolean {
-    if (!element) {
-      return false;
-    }
-
-    const children: HTMLElement[] = Focus.getFocusableChildren(element);
-    if (children.length) {
-      children[0].focus();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  /**
-   * Navigates focus to the element. If the element is not focusable, tries setting the focus inside the element
-   *
-   * @returns true if the element is focusable or has a focusable child
-   */
-  public static focusTo(element: HTMLElement): boolean {
-    if (Focus.isElementFocusable(element)) {
-      element.focus();
-      return true;
-    } else {
-      return Focus.focusInside(element);
-    }
-  }
-
-  /**
-   * Navigates focus to the first focusable parent of the element. topElement parameter can be used to scope the
-   *  parent search to a specific DOM tree. topElement defaults to document body.
-   *
-   * @returns true if a focusable parent is found
-   */
-  public static focusOutOf(element: HTMLElement, root: HTMLElement): boolean {
-    root = root || document.body;
-    const parent: HTMLElement = Focus.getFocusableParent(element, root);
-    if (parent && parent !== root) {
-      parent.focus();
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  /**
    * Checks if the given element has the focus
    *
    * @param element - the element to check

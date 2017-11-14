@@ -33,9 +33,9 @@ abstract class BaseNavigationMode {
    * @param event - the keyboard event to navigate
    * @param currentElement - the currently focused element. Can be used for testing. Defaults to document.activeElement
    */
-  public navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement?: HTMLElement): HTMLElement | undefined {
+  public navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement?: HTMLElement, params?: string[]): HTMLElement | undefined {
     currentElement = currentElement || document.activeElement as HTMLElement;
-    return this._navigate(modeRoot ? modeRoot : this.manager.root, event, currentElement);
+    return this._navigate(modeRoot ? modeRoot : this.manager.root, event, currentElement, params);
   }
 
   /**
@@ -77,7 +77,7 @@ abstract class BaseNavigationMode {
     this._onOutwardFocus(modeRoot, focusTransition);
   }
 
-  protected abstract _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement): HTMLElement | undefined;
+  protected abstract _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement, params?: string[]): HTMLElement | undefined;
 
   protected _select(modeRoot: HTMLElement, selector: string, currentElement: HTMLElement): HTMLElement | undefined {
     return undefined;

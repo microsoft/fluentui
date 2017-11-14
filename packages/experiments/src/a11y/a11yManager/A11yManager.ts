@@ -78,11 +78,9 @@ export default class A11yManager {
   private _activeElement: HTMLElement;
   private _id: string;
   private _config: IA11yManagerConfig;
-  private _lastActiveElement: HTMLElement;
+  private _lastActiveElement: HTMLElement | undefined;
   private _lastFocusInEvent: FocusEvent | undefined;
-  private _lastFocusInEventTime: number;
   private _lastFocusOutEvent: FocusEvent | undefined;
-  private _lastFocusOutEventTime: number;
   private _focusDetectionTimer: number;
   private _rootElement: HTMLElement;
   private _savedFocusMap: Map<string, HTMLElement>;
@@ -246,7 +244,17 @@ export default class A11yManager {
    * @returns true if there was an eligible element to set focus to
    */
   public focusInside(element: HTMLElement): boolean {
-    return Focus.focusInside(element);
+    if (!element) {
+      return false;
+    }
+
+    const children: HTMLElement[] = Focus.getFocusableChildren(element);
+    if (children.length > 0) {
+      this._focus(children[0]);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -255,8 +263,12 @@ export default class A11yManager {
    * @returns true if there was an eligible element to set focus to
    */
   public focusTo(element: HTMLElement): boolean {
-    const done: boolean = Focus.focusTo(element);
-    return done;
+    if (Focus.isElementFocusable(element)) {
+      this._focus(element);
+      return true;
+    } else {
+      return this.focusInside(element);
+    }
   }
 
   /**
@@ -274,15 +286,21 @@ export default class A11yManager {
    *
    * @returns true if there was an eligible element to set focus to
    */
-  public focusOutOf(element: HTMLElement): void {
-    Focus.focusOutOf(element, this._rootElement);
+  public focusOutOf(element: HTMLElement): boolean {
+    const parent: HTMLElement = Focus.getFocusableParent(element, this._rootElement);
+    if (parent && parent !== this._rootElement) {
+      this._focus(parent);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
    * Set the focus to element that was focused before the current active element
    */
   public undoFocus(): boolean {
-    return this.focusTo(this._lastActiveElement);
+    return this._lastActiveElement ? this.focusTo(this._lastActiveElement) : false;
   }
 
   /**
@@ -308,7 +326,9 @@ export default class A11yManager {
    * Save the last active element with a given string key
    */
   public saveLastActiveElementAs(key: string): void {
-    this._savedFocusMap.set(key, this._lastActiveElement);
+    if (this._lastActiveElement) {
+      this._savedFocusMap.set(key, this._lastActiveElement);
+    }
   }
 
   /**
@@ -415,6 +435,7 @@ export default class A11yManager {
     this._rootElement.addEventListener('keydown', this._handleKeyDown);
     this._rootElement.addEventListener('focusin', this._handleFocusIn);
     this._rootElement.addEventListener('focusout', this._handleFocusOut);
+    this._rootElement.addEventListener('mousedown', this._handleMouseDown);
 
     this.registerNavigationMode(HierarchicalNavigation);
 
@@ -524,6 +545,7 @@ export default class A11yManager {
     let path: HTMLElement[] | undefined = this._getElementPath(this._rootElement, evt.target as HTMLElement);
 
     if (path) {
+      let lastModeRoot: HTMLElement | undefined;
       // Take a path from the event target to the root element and look for navigation attibutes
       path = path.reverse();
       for (const elem of path) {
@@ -584,7 +606,26 @@ export default class A11yManager {
         if (modeAttrs && modeAttrs.length > 0 && modeAttrs[0].value) {
           const mode: BaseNavigationMode | undefined = this._getNavigationMode(modeAttrs[0].value!);
           if (mode) {
-            return mode.navigate(elem, evt, evt.target as HTMLElement);
+            // Check for mode parameters
+            let params: string[] | undefined;
+            const modeParamAttrs: A11yAttribute[] = A11yAttribute.getFromElementByType(
+              this.prefix,
+              elem,
+              A11yAttributeType.NavigationModeParameters
+            );
+            if (modeParamAttrs && modeParamAttrs.length > 0 && modeParamAttrs[0].value) {
+              params = modeParamAttrs[0].value!.trim().split(/\s+/);
+            }
+
+            const currentElement: HTMLElement = lastModeRoot || evt.target as HTMLElement;
+
+            const nextElement: HTMLElement | undefined = mode.navigate(elem, evt, currentElement, params);
+            if (nextElement) {
+              return nextElement;
+            }
+            // Don't return anything by default to allow checking parents for navigation modes
+            // Keep the last mode root in memory to help find currentElement for parent modes
+            lastModeRoot = elem;
           }
         }
       }
@@ -618,7 +659,17 @@ export default class A11yManager {
     return DomTraversal.getElementPath(higher, lower, this._rootElement);
   }
 
+  private _handleMouseDown(evt: Event): void {
+    this._lastTrigger = 'click';
+    this._lastTriggerTarget = evt.target as HTMLElement;
+  }
+
   private _handleKeyDown(evt: IKeyboardEvent): void {
+    if (Keyboard.isTab(evt) || Keyboard.isShiftTab(evt)) {
+      this._lastTrigger = 'tabbing';
+      this._lastTriggerTarget = evt.target as HTMLElement;
+    }
+
     if (this._shouldStopEvent(evt)) {
       evt.preventDefault();
       evt.stopPropagation();
@@ -640,7 +691,6 @@ export default class A11yManager {
 
   private _handleFocusIn(evt: FocusEvent): void {
     this._lastFocusInEvent = evt;
-    this._lastFocusInEventTime = Date.now();
     this._activeElement = evt.target as HTMLElement;
 
     this._checkFocusTransition();
@@ -649,7 +699,6 @@ export default class A11yManager {
   private _handleFocusOut(evt: FocusEvent): void {
     this._lastFocusInEvent = undefined;
     this._lastFocusOutEvent = evt;
-    this._lastFocusOutEventTime = Date.now();
     if (this._lastActiveElement !== evt.target) {
       this._lastActiveElement = evt.target as HTMLElement;
     }
@@ -736,6 +785,19 @@ export default class A11yManager {
     if (messages && messages.length > 0) {
       const msg: string = messages.join(' ');
       this.alert(msg);
+    }
+  }
+
+  /**
+   * The wrapper around native focus() method. All focus calls inside A11yManager should use this method.
+   * Ideally, all focus changes in code should happen through A11yManager, and in that case, this will be the single
+   * point of code in the whole application where focus can change by the code
+   */
+  private _focus(element: HTMLElement): void {
+    if (element) {
+      this._lastTrigger = 'manager';
+      this._lastTriggerTarget = element;
+      element.focus();
     }
   }
 }

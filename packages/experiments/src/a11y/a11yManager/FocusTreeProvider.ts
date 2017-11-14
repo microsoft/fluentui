@@ -36,6 +36,11 @@ export default class FocusTreeProvider {
     return new A11yElement(Focus.getPrevFocusableSibling(this._element, this._root), this._manager);
   }
 
+  public get isLastSibling(): boolean {
+    const parentChildren: HTMLElement[] = Focus.getFocusableChildren(this.parent.htmlElement);
+    return this._element === parentChildren[parentChildren.length - 1];
+  }
+
   public get parent(): A11yElement {
     return new A11yElement(Focus.getFocusableParent(this._element, this._root), this._manager);
   }

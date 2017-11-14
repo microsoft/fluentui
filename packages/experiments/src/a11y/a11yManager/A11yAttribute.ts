@@ -130,6 +130,7 @@ export enum A11yAttributeType {
   NavigateByHierarchy,
 
   NavigationMode,
+  NavigationModeParameters,
 }
 
 /**
@@ -231,7 +232,8 @@ export default class A11yAttribute {
       case A11yAttributeType.AlertOnFocusOut: return 'alertonfocusout';
       case A11yAttributeType.NavigateOnKey: return 'navigateonkey';
       case A11yAttributeType.NavigateByHierarchy: return 'navigatebyhierarchy';
-      case A11yAttributeType.NavigationMode: return 'navigationmode';
+      case A11yAttributeType.NavigationMode: return 'mode';
+      case A11yAttributeType.NavigationModeParameters: return 'modeparams';
 
       default: throw new Error(`Undefined string for attribute type: ${type}`);
     }

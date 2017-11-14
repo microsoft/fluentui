@@ -12,6 +12,7 @@ export interface IKeyboardEvent {
   ctrlKey: boolean;
   shiftKey: boolean;
   target: EventTarget;
+  timeStamp: number;
 
   preventDefault(): void;
   stopPropagation(): void;
@@ -52,7 +53,7 @@ export default class Keyboard {
    * Checks if a keyboard event key code is for Shift+Tab combination
    */
   public static isShiftTab(e: IKeyboardEvent): boolean {
-    return Keyboard.isKey(9, e, {shift: true});
+    return Keyboard.isKey(9, e, { shift: true });
   }
 
   /**

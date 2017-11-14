@@ -12,9 +12,16 @@ export default class ArrowNavigation extends BaseNavigationMode {
     return [];
   }
 
-  protected _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement): HTMLElement | undefined {
+  protected _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement, params?: string[]): HTMLElement | undefined {
     const zone: A11yElement = this.manager.a11yElement(modeRoot);
     const current: A11yElement = this.manager.a11yElement(currentElement);
+    let horizontal: boolean = !!params && params.map((p: string) => p.toLowerCase()).filter((p: string) => p === 'horizontal').length > 0;
+    let vertical: boolean = !!params && params.map((p: string) => p.toLowerCase()).filter((p: string) => p === 'vertical').length > 0;
+
+    if (!horizontal && !vertical) {
+      // If none is specified, then support both by default
+      horizontal = vertical = true;
+    }
 
     if (Keyboard.isTab(event)) {
       return zone.focusTree.nextSibling.htmlElement;
@@ -22,10 +29,10 @@ export default class ArrowNavigation extends BaseNavigationMode {
       return zone.focusTree.prevSibling.htmlElement;
     } else {
       switch (event.keyCode) {
-        case 37: /* Left  */ return current.focusTree.scopeTo(modeRoot).prevSibling.htmlElement;
-        case 39: /* Right */ return current.focusTree.scopeTo(modeRoot).nextSibling.htmlElement;
-        case 38: /* Up    */ return current.focusTree.scopeTo(modeRoot).nextSibling.htmlElement;
-        case 40: /* Down  */ return current.focusTree.scopeTo(modeRoot).prevSibling.htmlElement;
+        case 37: /* Left  */ return horizontal ? current.focusTree.scopeTo(modeRoot).prevSibling.htmlElement : undefined;
+        case 39: /* Right */ return horizontal ? current.focusTree.scopeTo(modeRoot).nextSibling.htmlElement : undefined;
+        case 38: /* Up    */ return vertical ? current.focusTree.scopeTo(modeRoot).prevSibling.htmlElement : undefined;
+        case 40: /* Down  */ return vertical ? current.focusTree.scopeTo(modeRoot).nextSibling.htmlElement : undefined;
       }
     }
 
@@ -33,6 +40,7 @@ export default class ArrowNavigation extends BaseNavigationMode {
   }
 
   protected _onInwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
+    console.log(focusTransition);
     const lastFocused: HTMLElement | undefined = modeRoot.querySelector('.lastFocused') as HTMLElement || undefined;
 
     if (lastFocused) {
