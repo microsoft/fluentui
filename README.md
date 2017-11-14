@@ -39,11 +39,14 @@ The library includes commonjs entry points under the lib folder. To use a contro
 ```js
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<div><Button>I am a button.</Button></div>);
-
-ReactDOM.render(<MyPage />, document.body.firstChild);
+ReactDOM.render(
+  <PrimaryButton>
+    I am a button.
+  </PrimaryButton>,
+  document.body.firstChild
+);
 ```
 
 ## Browser support

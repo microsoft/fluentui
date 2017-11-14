@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
-import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
+import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.types';
 import { PersonaSize } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import * as stylesImport from './DocumentCard.scss';
@@ -47,7 +47,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
           imageUrl={ person.profileImageSrc }
           initialsColor={ person.initialsColor }
           role='persentation'
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.size32 }
         />
 
       </div>

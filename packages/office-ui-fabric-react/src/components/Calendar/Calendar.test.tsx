@@ -8,7 +8,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
-import { DateRangeType, DayOfWeek } from './Calendar.Props';
+import { DateRangeType, DayOfWeek } from './Calendar.types';
 import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
 
 describe('Calendar', () => {
@@ -246,5 +246,118 @@ describe('Calendar', () => {
       expect(lastSelectedDateRange!.length).toEqual(7);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
     });
+  });
+
+  describe('render with date boundaries', () => {
+    it('out-of-bounds days should be disabled', () => {
+      const defaultDate = new Date('Mar 16 2017');
+      const minDate = new Date('Mar 6 2017');
+      const maxDate = new Date('Mar 24 2017');
+      const renderedComponent = ReactTestUtils.renderIntoDocument(
+        <Calendar
+          strings={ dayPickerStrings }
+          value={ defaultDate }
+          firstDayOfWeek={ DayOfWeek.Sunday }
+          dateRangeType={ DateRangeType.Day }
+          minDate={ minDate }
+          maxDate={ maxDate }
+        />) as Calendar;
+
+      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+
+      expect(days.slice(0, 7).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
+      expect(days.slice(8, 26).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(false);
+      expect(days.slice(27).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
+    });
+
+    it('out-of-bounds days should not be part of selected range', () => {
+      let lastSelectedDateRange: Date[] = new Array();
+      const defaultDate = new Date('Mar 16 2017');
+      const minDate = new Date('Mar 6 2017');
+      const maxDate = new Date('Mar 24 2017');
+      const onSelectDate = (): (date: Date, dateRangeArray: Date[]) => void => {
+        return (date: Date, dateRangeArray: Date[]): void => {
+          lastSelectedDateRange = dateRangeArray;
+        };
+      };
+      const renderedComponent = ReactTestUtils.renderIntoDocument(
+        <Calendar
+          strings={ dayPickerStrings }
+          value={ defaultDate }
+          firstDayOfWeek={ DayOfWeek.Sunday }
+          dateRangeType={ DateRangeType.Month }
+          minDate={ minDate }
+          maxDate={ maxDate }
+          onSelectDate={ onSelectDate() }
+        />) as Calendar;
+
+      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+      ReactTestUtils.Simulate.click(days[18]);
+      expect(lastSelectedDateRange!.length).toEqual(19);
+      lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(minDate, i))).toEqual(true));
+    });
+  });
+
+  it('navigators to out-of-bounds months should be disabled', () => {
+    const defaultDate = new Date('Mar 15 2017');
+    const minDate = new Date('Mar 1 2017');
+    const maxDate = new Date('Mar 31 2017');
+    const renderedComponent = ReactTestUtils.renderIntoDocument(
+      <Calendar
+        strings={ dayPickerStrings }
+        value={ defaultDate }
+        firstDayOfWeek={ DayOfWeek.Sunday }
+        dateRangeType={ DateRangeType.Day }
+        minDate={ minDate }
+        maxDate={ maxDate }
+      />) as Calendar;
+
+    const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
+    const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
+
+    expect(prevMonth.classList.contains('ms-DatePicker-prevMonth--disabled')).toBe(true);
+    expect(nextMonth.classList.contains('ms-DatePicker-nextMonth--disabled')).toBe(true);
+  });
+
+  it('out-of-bounds months should be disabled', () => {
+    const defaultDate = new Date('Mar 15 2017');
+    const minDate = new Date('Mar 1 2017');
+    const maxDate = new Date('Oct 1 2017');
+    const renderedComponent = ReactTestUtils.renderIntoDocument(
+      <Calendar
+        strings={ dayPickerStrings }
+        value={ defaultDate }
+        firstDayOfWeek={ DayOfWeek.Sunday }
+        dateRangeType={ DateRangeType.Day }
+        minDate={ minDate }
+        maxDate={ maxDate }
+      />) as Calendar;
+
+    const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
+
+    expect(months.slice(0, 1).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
+    expect(months.slice(2, 9).some(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(false);
+    expect(months.slice(10).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
+  });
+
+  it('navigators to out-of-bounds years should be disabled', () => {
+    const defaultDate = new Date('Mar 15 2017');
+    const minDate = new Date('Jan 1 2017');
+    const maxDate = new Date('Dec 31 2017');
+    const renderedComponent = ReactTestUtils.renderIntoDocument(
+      <Calendar
+        strings={ dayPickerStrings }
+        value={ defaultDate }
+        firstDayOfWeek={ DayOfWeek.Sunday }
+        dateRangeType={ DateRangeType.Day }
+        minDate={ minDate }
+        maxDate={ maxDate }
+      />) as Calendar;
+
+    const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
+    const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextYear');
+
+    expect(prevMonth.classList.contains('ms-DatePicker-prevYear--disabled')).toBe(true);
+    expect(nextMonth.classList.contains('ms-DatePicker-nextYear--disabled')).toBe(true);
   });
 });

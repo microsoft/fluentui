@@ -10,12 +10,12 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
-import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
+import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.Props';
+import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
-import { IPickerItemProps } from './PickerItem.Props';
-import { IPersonaProps } from '../Persona/Persona.Props';
+import { IPickerItemProps } from './PickerItem.types';
+import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
 const styles: any = stylesImport;
 
@@ -101,6 +101,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.focusZone.focus();
   }
 
+  public focusInput() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
   @autobind
   public dismissSuggestions() {
     // Select the first suggestion if one is available when user leaves.
@@ -180,6 +186,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 role='combobox'
                 disabled={ disabled }
                 aria-controls='selected-suggestion-alert'
+                onInputChange={ this.props.onInputChange }
               />) }
             </div>
           </SelectionZone>

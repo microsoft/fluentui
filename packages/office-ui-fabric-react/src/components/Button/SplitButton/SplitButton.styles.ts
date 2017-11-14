@@ -1,4 +1,4 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
   concatStyleSets,
@@ -31,6 +31,7 @@ export const getStyles = memoizeFunction((
         height: 'auto',
         boxSizing: 'border-box',
         border: '1px solid transparent',
+        borderRadius: 0,
         outline: 'transparent',
         userSelect: 'none',
         display: 'inline-block',

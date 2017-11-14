@@ -1,6 +1,45 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Nov 2017 11:11:27 GMT and should not be manually modified.
+
+## 5.5.1
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- Fix alignment with trending icon
+
+## 5.5.0
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Minor changes
+
+- added ATP signal
+
+## 5.4.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker
+
+### Patches
+
+- Fix import that was causing build error
+
+## 5.3.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Switch to .svg files for FolderCover images
+
+## 5.3.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Add modal selection behavior to TilesList
 
 ## 5.2.0
 Wed, 18 Oct 2017 10:21:25 GMT

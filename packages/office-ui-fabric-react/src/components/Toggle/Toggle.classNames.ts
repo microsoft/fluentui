@@ -4,7 +4,7 @@ import {
   mergeStyleSets,
   getFocusStyle
 } from '../../Styling';
-import { IToggleStyles } from './Toggle.Props';
+import { IToggleStyles } from './Toggle.types';
 
 export interface IToggleClassNames {
   root?: string;
@@ -36,7 +36,7 @@ export const getClassNames = memoizeFunction((
   const pillBorderColor = semanticColors.inputBorder;
   const pillBorderHoveredColor = semanticColors.inputBorderHovered;
   const pillBorderDisabledColor = semanticColors.disabledText;
-  const textDisabledColor = semanticColors.disabledText;
+  const textDisabledColor = semanticColors.disabledBodyText;
 
   styles = styles || {};
 

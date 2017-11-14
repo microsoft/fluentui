@@ -9,7 +9,7 @@ import {
 import {
   IToggleProps,
   IToggle
-} from './Toggle.Props';
+} from './Toggle.types';
 import { Label } from '../../Label';
 import {
   customizable

@@ -10,11 +10,11 @@ import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
   IColorCellProps
-} from './SwatchColorPicker.Props';
+} from './SwatchColorPicker.types';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
-import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
+import { IGridCellProps } from '../../utilities/grid/GridCell.types';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -71,7 +71,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
-      className
+      className,
+      doNotContainWithinFocusZone
     } = this.props;
 
     if (colorCells.length < 1 || columnCount < 1) {
@@ -86,6 +87,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         positionInSet={ positionInSet && positionInSet }
         setSize={ setSize && setSize }
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
+        doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
         containerClassName={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer, className) }
       />);

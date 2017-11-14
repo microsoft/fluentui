@@ -132,6 +132,7 @@ exports[`Nav renders Nav correctly 1`] = `
                         }
                         {
                           color: #106ebe;
+                          flex-shrink: 0;
                           font-size: 16px;
                           height: 16px;
                           line-height: 16px;
@@ -145,13 +146,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     role="presentation"
                   />
                   <div
-                    className=
-                        ms-Button-textContainer
-                        {
-                          flex-grow: 0;
-                          overflow: hidden;
-                        }
-                  />
+                    className="ms-Nav-linkText"
+                  >
+                    
+                  </div>
                 </div>
               </button>
             </div>

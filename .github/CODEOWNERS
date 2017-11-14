@@ -28,12 +28,15 @@
 
   ### Fabric
   # packages/office-ui-fabric-react/src/common/*
+  packages/office-ui-fabric-react/src/common/_semanticSlots.scss  @phkuo
+  packages/office-ui-fabric-react/src/common/_themeOverrides.scss @phkuo
+  packages/office-ui-fabric-react/src/common/_common.scss @phkuo
 
     ## Components
     # packages/office-ui-fabric-react/src/components/ActivityItem/*
     # packages/office-ui-fabric-react/src/components/Breadcrumb/*
     # packages/office-ui-fabric-react/src/components/Button/*
-    packages/office-ui-fabric-react/src/components/Calendar/*   @johannao76 @lorejoh12
+    packages/office-ui-fabric-react/src/components/Calendar/*   @johannao76 @lorejoh12@gmail.com @jolore@microsoft.com
     # packages/office-ui-fabric-react/src/components/Callout/*
     # packages/office-ui-fabric-react/src/components/Check/*
     # packages/office-ui-fabric-react/src/components/Checkbox/*
@@ -42,7 +45,7 @@
     # packages/office-ui-fabric-react/src/components/ComboBox/*
     packages/office-ui-fabric-react/src/components/CommandBar/*   @micahgodbolt
     # packages/office-ui-fabric-react/src/components/ContextualMenu/*
-    packages/office-ui-fabric-react/src/components/DatePicker/*   @johannao76 @lorejoh12
+    packages/office-ui-fabric-react/src/components/DatePicker/*   @johannao76 @lorejoh12@gmail.com @jolore@microsoft.com
     # packages/office-ui-fabric-react/src/components/DetailsList/*
     # packages/office-ui-fabric-react/src/components/Dialog/*
     # packages/office-ui-fabric-react/src/components/DocumentCard/*
@@ -67,6 +70,7 @@
     # packages/office-ui-fabric-react/src/components/Overlay/*
     # packages/office-ui-fabric-react/src/components/Panel/*
     # packages/office-ui-fabric-react/src/components/Persona/*
+    packages/office-ui-fabric-react/src/components/Persona/PersonaCo* @mtennoe @jakob101
     # packages/office-ui-fabric-react/src/components/pickers/*
     # packages/office-ui-fabric-react/src/components/Pivot/*
     # packages/office-ui-fabric-react/src/components/Popup/*
@@ -89,6 +93,7 @@
   # packages/office-ui-fabric-react/src/visualtest/*
 
 # packages/office-ui-fabric-react-tslint/*
-packages/styling/*  @dzearing @phkuo
+packages/styling/*  @dzearing
+packages/styling/src/interfaces/* @phkuo
+packages/styling/src/styles/* @phkuo
 # packages/utilities/*
-

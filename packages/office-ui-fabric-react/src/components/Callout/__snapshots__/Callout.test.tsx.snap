@@ -23,7 +23,7 @@ exports[`Callout renders Callout correctly 1`] = `
       style={
         Object {
           "backgroundColor": undefined,
-          "maxHeight": undefined,
+          "maxHeight": 750,
         }
       }
     >

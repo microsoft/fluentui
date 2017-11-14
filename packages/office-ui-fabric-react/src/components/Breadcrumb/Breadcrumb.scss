@@ -73,7 +73,7 @@ $Breadcrumb-chevron-sm: 8px;
   .item,
   .itemLink {
     @include ms-font-xl;
-    color: $ms-color-neutralPrimary;
+    color: $bodyTextColor;
     padding: 0 8px;
     max-width: $Breadcrumb-itemMaxWidth;
     white-space: nowrap;
@@ -98,8 +98,8 @@ $Breadcrumb-chevron-sm: 8px;
   }
 
   &:active {
-    background-color: $selectedActiveBackgroundColor;
-    color: $selectedActiveForegroundColor;
+    background-color: $ms-color-neutralTertiaryAlt;
+    color: $bodyTextColor;
   }
 
   &:active:hover {
@@ -115,7 +115,7 @@ $Breadcrumb-chevron-sm: 8px;
 
 .root .itemLink {
   &:hover {
-    background-color: $selectedHoverBackgroundColor;
+    background-color: $menuItemBackgroundHoveredColor;
     color: initial;
     cursor: pointer;
   }
@@ -126,8 +126,8 @@ $Breadcrumb-chevron-sm: 8px;
 
   &:active {
     outline: transparent;
-    background-color: $selectedActiveBackgroundColor;
-    color: $selectedActiveForegroundColor;
+    background-color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralPrimary;
   }
 }
 
