@@ -3,6 +3,11 @@ import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets } from '../../Styling';
 
 export const themePrimary = '#0078d7';
+export function coachmarkAnimateOutTransition() {
+  return {
+    transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)'
+  }
+}
 
 export interface ICoachmarkStyleProps {
   /**
@@ -14,6 +19,22 @@ export interface ICoachmarkStyleProps {
    * Is the beacon currently animating.
    */
   isBeaconAnimating: boolean;
+
+  /**
+   * Is the component taking measurements
+   */
+  isMeasuring: boolean;
+
+  /**
+   * The height measured before the component has been mounted
+   * in pixels
+   */
+  entityHostHeight?: string;
+
+  /**
+   * The width measured in pixels
+   */
+  entityHostWidth?: string;
 }
 
 export interface ICoachmarkStyles {
@@ -60,7 +81,6 @@ export interface ICoachmarkStyles {
    */
   isCollapsed?: IStyle;
 };
-
 
 // @TODO remove this extra block once the updates to mergeStyles reach master
 export interface ICoachmarkStylesNames {
@@ -291,13 +311,9 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
       {
         position: 'relative'
       },
-      props.isCollapsed && {
-        borderRadius: coachmarkCollapsedSize,
+      (props.isCollapsed && !props.isMeasuring) && {
         width: coachmarkCollapsedSize,
         height: coachmarkCollapsedSize
-      },
-      (!props.isCollapsed) && {
-        borderRadius: '1px'
       }
     ],
     // The pulsing beacon
@@ -335,7 +351,6 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         animationDelay: '0s',
         animationFillMode: 'forwards',
         animationName: translateOne,
-        opacity: '0.8',
         transition: 'opacity 0.5s ease-in-out'
       },
       (!props.isCollapsed) && {
@@ -382,19 +397,35 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         position: 'relative',
         outline: 'none',
         overflow: 'hidden',
-        backgroundColor: themePrimary
+        backgroundColor: themePrimary,
+        borderRadius: coachmarkCollapsedSize,
+        opacity: '0.8'
       },
+      coachmarkAnimateOutTransition(),
       props.isCollapsed && {
         borderRadius: coachmarkCollapsedSize
       },
       (!props.isCollapsed) && {
-        borderRadius: '1px'
+        borderRadius: '1px',
+        opacity: '1'
+      },
+      (!props.isCollapsed && props.entityHostWidth && props.entityHostHeight) && {
+        width: props.entityHostWidth + 'px',
+        height: props.entityHostHeight + 'px'
       }
     ],
     entityInnerHost: [
       {
-        width: '100%',
-        position: 'relative'
+        transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
+        transformOrigin: 'top left',
+        transform: 'scale(0)',
+        visibility: 'hidden'
+      },
+      (!props.isCollapsed) && {
+        transform: 'scale(1)'
+      },
+      (!props.isMeasuring) && {
+        visibility: 'visible'
       }
     ]
   });

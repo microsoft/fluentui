@@ -6,6 +6,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
+  isCoachmarkCollapsed?: boolean;
 }
 
 export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
@@ -17,7 +18,8 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
     this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
 
     this.state = {
-      isVisible: false
+      isVisible: false,
+      isCoachmarkCollapsed: true
     };
   }
 

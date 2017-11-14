@@ -34,4 +34,14 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
   positioningTarget?: HTMLElement | string | MouseEvent | IPoint | null;
 
   positioningContainerProps?: IDynamicallyPositionedContainerProps;
+
+  /**
+   * Is the Coachmark expanded
+   */
+  isCollapsed?: boolean;
+
+  /**
+   * The handler that is called when the Coachmark is clicked
+   */
+  onClickHandler?: (e?: React.SyntheticEvent<MouseEvent>) => void;
 }
