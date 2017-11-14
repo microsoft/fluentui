@@ -22,7 +22,7 @@ export const getBaseButtonClassNames = memoizeFunction((
   disabled: boolean,
   checked: boolean,
   expanded: boolean,
-  isSplit: boolean | undefined,
+  isSplit: boolean | undefined
 ): IButtonClassNames => {
   const isExpanded = expanded && !isSplit;
   return {

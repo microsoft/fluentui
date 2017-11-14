@@ -26,7 +26,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
-            splitFullActiveState={ true }
             style={ { height: '35px' } }
             menuProps={ {
               items: [
