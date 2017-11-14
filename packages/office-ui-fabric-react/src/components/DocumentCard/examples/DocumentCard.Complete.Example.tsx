@@ -77,7 +77,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
     let previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
-          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },
+          previewIconProps: { iconName: 'OpenFile', getStyles: () => ({ root: { fontSize: 42, color: '#ffffff' } }) },
           width: 318,
           height: 196
         }
