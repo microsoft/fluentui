@@ -429,10 +429,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         } else {
           date = parseDateFromString!(inputValue);
 
-          //check if date is null, or date is Invalid Date
+          // Check if date is null, or date is Invalid Date
           if (!date || isNaN(date.getTime())) {
 
-            //If date formatting is available, reset invalid input field
+            // Reset invalid input field, if formatting is available
             if (formatDate) {
               date = this.state.selectedDate;
               this.setState({
