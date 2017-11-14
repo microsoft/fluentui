@@ -401,6 +401,16 @@ export interface IButtonStyles {
   splitButtonContainerFocused?: IStyle;
 
   /**
+  * Style for container div around a SplitButton element when the button is checked.
+  */
+  splitButtonContainerChecked?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is checked and hovered.
+   */
+  splitButtonContainerCheckedHovered?: IStyle;
+
+  /**
    * Style override for the container div around a SplitButton element in a disabled state
    */
   splitButtonContainerDisabled?: IStyle;
