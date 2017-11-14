@@ -189,7 +189,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
 
   /**
   * Method to provide the classnames to style a button.
-  * The default value is the getClassnames func
+  * The default value for this prop is the getClassnames func
   * defined in BaseButton.classnames.
   * @default getBaseButtonClassNames
   */
@@ -201,7 +201,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined, ) => IButtonClassNames;
+    isSplit: boolean | undefined) => IButtonClassNames;
 }
 
 export enum ElementType {
