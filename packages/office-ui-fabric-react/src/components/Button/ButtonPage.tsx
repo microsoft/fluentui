@@ -131,7 +131,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           <div>
             <PropertiesTableSet
               sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.Props.ts')
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')
               ] }
             />
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>

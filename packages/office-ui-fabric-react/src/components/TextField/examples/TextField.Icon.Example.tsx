@@ -6,7 +6,7 @@ import './TextField.Examples.scss';
 export class TextFieldIconExample extends React.Component<any, any> {
   public render() {
     return (
-      <div className='ms-TextFieldExample'>
+      <div className='docs-TextFieldExample'>
         <TextField
           label='TextField with an icon'
           iconProps={ { iconName: 'Calendar' } }

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IPickerItemProps } from './PickerItem.Props';
-import { IPersonaProps } from '../Persona/Persona.Props';
+import { IPickerItemProps } from './PickerItem.types';
+import { IPersonaProps } from '../Persona/Persona.types';
 import { IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
@@ -9,8 +9,11 @@ export interface IBasePicker<T> {
   /** Gets the current value of the input. */
   items: T[] | undefined;
 
-  /** Sets focus to the input. */
+  /** Sets focus to the focus zone. */
   focus: () => void;
+
+  /** Set focus to the input */
+  focusInput: () => void;
 }
 
 // Type T is the type of the item that is displayed

@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import { Fabric } from '../../Fabric';
-import { ILayerProps } from './Layer.Props';
+import { ILayerProps } from './Layer.types';
 import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utilities';
 import * as stylesImport from './Layer.scss';
 const styles: any = stylesImport;

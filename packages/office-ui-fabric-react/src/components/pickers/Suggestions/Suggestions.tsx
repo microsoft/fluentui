@@ -7,7 +7,7 @@ import {
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
-import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
+import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
 
