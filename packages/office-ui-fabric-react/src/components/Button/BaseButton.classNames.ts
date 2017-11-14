@@ -13,7 +13,7 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
-export const getClassNames = memoizeFunction((
+export const getBaseButtonClassNames = memoizeFunction((
   styles: IButtonStyles,
   className: string,
   variantClassName: string,
@@ -23,9 +23,8 @@ export const getClassNames = memoizeFunction((
   checked: boolean,
   expanded: boolean,
   isSplit: boolean | undefined,
-  splitFullActiveState: boolean | undefined
 ): IButtonClassNames => {
-  const isExpanded = expanded && !isSplit || expanded && !!splitFullActiveState;
+  const isExpanded = expanded && !isSplit;
   return {
     root: mergeStyles(
       className,
