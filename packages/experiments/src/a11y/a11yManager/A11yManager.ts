@@ -435,7 +435,6 @@ export default class A11yManager {
     this._rootElement.addEventListener('keydown', this._handleKeyDown);
     this._rootElement.addEventListener('focusin', this._handleFocusIn);
     this._rootElement.addEventListener('focusout', this._handleFocusOut);
-    this._rootElement.addEventListener('mousedown', this._handleMouseDown);
 
     this.registerNavigationMode(HierarchicalNavigation);
 
@@ -659,17 +658,7 @@ export default class A11yManager {
     return DomTraversal.getElementPath(higher, lower, this._rootElement);
   }
 
-  private _handleMouseDown(evt: Event): void {
-    this._lastTrigger = 'click';
-    this._lastTriggerTarget = evt.target as HTMLElement;
-  }
-
   private _handleKeyDown(evt: IKeyboardEvent): void {
-    if (Keyboard.isTab(evt) || Keyboard.isShiftTab(evt)) {
-      this._lastTrigger = 'tabbing';
-      this._lastTriggerTarget = evt.target as HTMLElement;
-    }
-
     if (this._shouldStopEvent(evt)) {
       evt.preventDefault();
       evt.stopPropagation();
@@ -795,8 +784,6 @@ export default class A11yManager {
    */
   private _focus(element: HTMLElement): void {
     if (element) {
-      this._lastTrigger = 'manager';
-      this._lastTriggerTarget = element;
       element.focus();
     }
   }

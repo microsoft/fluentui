@@ -41,10 +41,7 @@ export default class IslandNavigation extends BaseNavigationMode {
   }
 
   protected _onOutwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
-    if (focusTransition.trigger !== 'manager' && focusTransition.src) {
-      this._recallingFocus = true;
-      this.manager.focusTo(focusTransition.src);
-    }
+    // this.manager.focusTo(focusTransition.src);
   }
 
   public exit(): void {
