@@ -131,7 +131,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')
             ] }
           />
         }

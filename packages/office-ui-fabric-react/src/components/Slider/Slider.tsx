@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ISliderProps, ISlider } from './Slider.Props';
+import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
 import * as stylesImport from './Slider.scss';
 const styles: any = stylesImport;

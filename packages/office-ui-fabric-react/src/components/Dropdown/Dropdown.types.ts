@@ -1,9 +1,9 @@
 import { IRenderFunction } from '../../Utilities';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
+import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
-export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
 export interface IDropdown {
   focus: () => void;

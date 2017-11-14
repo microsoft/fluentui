@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 08 Nov 2017 11:11:27 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Nov 2017 11:20:56 GMT and should not be manually modified.
+
+## 5.4.0
+Mon, 13 Nov 2017 11:20:56 GMT
+
+### Minor changes
+
+- BaseComponent: fixing some typings to be compatible with current React typings.
+
+## 5.3.3
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Patches
+
+- Object: getId: updated so it will correctly return a string rather than an  int
 
 ## 5.3.2
 Wed, 08 Nov 2017 11:11:27 GMT

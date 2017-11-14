@@ -5,7 +5,7 @@ import './TextField.Examples.scss';
 export class TextFieldUnderlinedExample extends React.Component<any, any> {
   public render() {
     return (
-      <div className='ms-TextFieldExample'>
+      <div className='docs-TextFieldExample'>
         <TextField
           label='Standard:'
           underlined

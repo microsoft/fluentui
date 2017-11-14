@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';

@@ -13,7 +13,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.Props';
+import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
@@ -100,7 +100,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps && menuIconProps.className,
       isPrimaryButtonDisabled!,
       checked!,
-      !!this.state.menuProps && !this.props.split
+      !!this.state.menuProps,
+      this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;

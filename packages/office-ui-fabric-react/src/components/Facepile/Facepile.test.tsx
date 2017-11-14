@@ -7,7 +7,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
-import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
+import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
 import { PersonaSize } from '../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import { TestImages } from '../../common/TestImages';

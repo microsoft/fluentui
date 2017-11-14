@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
 import { IRenderFunction, KeyCodes } from '../../../Utilities';
-import { IPersonaProps } from '../../Persona/Persona.Props';
+import { IPersonaProps } from '../../Persona/Persona.types';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**

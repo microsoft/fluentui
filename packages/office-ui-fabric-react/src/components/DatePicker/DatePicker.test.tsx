@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { Calendar, ICalendarStrings } from '../Calendar';
 import { DatePicker } from './DatePicker';
+import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
-import { shallow } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 
 describe('DatePicker', () => {
   it('renders default DatePicker correctly', () => {
@@ -55,16 +56,16 @@ describe('DatePicker', () => {
 
     const datePicker = shallow(
       <DatePicker
-        isMonthPickerVisible={false}
-        showMonthPickerAsOverlay={true}
-        value={value}
-        today={today}
-        firstDayOfWeek={2}
-        highlightCurrentMonth={true}
-        showWeekNumbers={true}
-        firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
-        showGoToToday={false}
-        dateTimeFormatter={dateTimeFormatter}
+        isMonthPickerVisible={ false }
+        showMonthPickerAsOverlay={ true }
+        value={ value }
+        today={ today }
+        firstDayOfWeek={ 2 }
+        highlightCurrentMonth={ true }
+        showWeekNumbers={ true }
+        firstWeekOfYear={ FirstWeekOfYear.FirstFullWeek }
+        showGoToToday={ false }
+        dateTimeFormatter={ dateTimeFormatter }
       />
     );
     datePicker.setState({ isDatePickerShown: true });
@@ -109,6 +110,111 @@ describe('DatePicker', () => {
 
     it('renders Calendar with same dateTimeFormatter', () => {
       expect(calendarProps.dateTimeFormatter).toBe(dateTimeFormatter);
+    });
+  });
+
+  describe('when date boundaries are specified', () => {
+    const defaultDate = new Date('Dec 15 2017');
+    const minDate = new Date('Jan 1 2017');
+    const maxDate = new Date('Dec 31 2017');
+    const strings: IDatePickerStrings = {
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ],
+      shortMonths: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+      ],
+      days: [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ],
+      shortDays: [
+        'S',
+        'M',
+        'T',
+        'W',
+        'T',
+        'F',
+        'S'
+      ],
+      goToToday: 'Go to today',
+      isOutOfBoundsErrorMessage: 'out of bounds'
+    };
+    let datePicker: ReactWrapper<any, any>;
+
+    beforeEach(() => {
+      datePicker = mount(
+        <DatePicker
+          allowTextInput={ true }
+          minDate={ minDate }
+          maxDate={ maxDate }
+          value={ defaultDate }
+          strings={ strings }
+        />);
+    });
+
+    afterEach(() => {
+      datePicker.unmount();
+    });
+
+    it('should throw validation error for date outside boundary', () => {
+      // before minDate
+      datePicker.find('input')
+        .simulate('change', { target: { value: 'Jan 1 2010' } })
+        .simulate('blur');
+      expect(datePicker.state('errorMessage')).toBe('out of bounds');
+
+      // after maxDate
+      datePicker.find('input')
+        .simulate('change', { target: { value: 'Jan 1 2020' } })
+        .simulate('blur');
+      expect(datePicker.state('errorMessage')).toBe('out of bounds');
+    });
+
+    it('should not throw validation error for date inside boundary', () => {
+      // in boundary
+      datePicker.find('input')
+        .simulate('change', { target: { value: 'Dec 16 2017' } })
+        .simulate('blur');
+      expect(datePicker.state('errorMessage')).toBeFalsy();
+
+      // on boundary
+      datePicker.find('input')
+        .simulate('change', { target: { value: 'Jan 1 2017' } })
+        .simulate('blur');
+      expect(datePicker.state('errorMessage')).toBeFalsy();
+    });
+
+    it('should throw validation error if boundaries are moved to intersect selected date', () => {
+      datePicker.setProps({ minDate: new Date('Dec 16 2017') });
+      expect(datePicker.state('errorMessage')).toBe('out of bounds');
     });
   });
 });
