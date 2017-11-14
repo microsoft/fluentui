@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Nov 2017 17:09:36 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Nov 2017 11:21:27 GMT and should not be manually modified.
+
+## 5.21.1
+Tue, 14 Nov 2017 11:21:27 GMT
+
+### Patches
+
+- ChoiceGroup: Fixed RTL support.
 
 ## 5.21.0
 Fri, 10 Nov 2017 17:09:36 GMT
