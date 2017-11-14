@@ -386,9 +386,29 @@ export interface IButtonStyles {
   screenReaderText?: IStyle;
 
   /**
-     * Style override for the container div around a SplitButton element
-     */
+   * Style override for the container div around a SplitButton element
+   */
   splitButtonContainer?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is hovered.
+   */
+  splitButtonContainerHovered?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is focused.
+   */
+  splitButtonContainerFocused?: IStyle;
+
+  /**
+  * Style for container div around a SplitButton element when the button is checked.
+  */
+  splitButtonContainerChecked?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is checked and hovered.
+   */
+  splitButtonContainerCheckedHovered?: IStyle;
 
   /**
    * Style override for the container div around a SplitButton element in a disabled state
