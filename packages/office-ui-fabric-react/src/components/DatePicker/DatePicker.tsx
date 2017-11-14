@@ -428,10 +428,22 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
           date = this.state.selectedDate;
         } else {
           date = parseDateFromString!(inputValue);
-          if (!date) {
+
+          //check if date is null, or date is Invalid Date
+          if (!date || isNaN(date.getTime())) {
+
+            //If date formatting is available, reset invalid input field
+            if (formatDate) {
+              date = this.state.selectedDate;
+              this.setState({
+                formattedDate: formatDate(date!).toString()
+              });
+            }
+
             this.setState({
               errorMessage: strings!.invalidInputErrorMessage || '*'
             });
+
           } else {
             // Check against optional date boundaries
             if (this._isDateOutOfBounds(date, minDate, maxDate)) {
