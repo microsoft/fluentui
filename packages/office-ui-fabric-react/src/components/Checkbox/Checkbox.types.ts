@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICheckboxClassNames } from 'src/components/Checkbox/Checkbox.classNames';
+import { ICheckboxClassNames } from './Checkbox.classNames';
 
 /**
  * Checkbox class interface.
