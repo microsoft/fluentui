@@ -89,7 +89,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const isReversed = boxSide !== 'start' ? true : false;
 
     this._classNames = this.props.getClassNames ?
-      this.props.getClassNames(!!disabled, !!isChecked, !!isReversed, className)
+      this.props.getClassNames(theme!, !!disabled, !!isChecked, !!isReversed, className)
       : getClassNames(
         getStyles(theme!, customStyles),
         !!disabled,
