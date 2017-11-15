@@ -1,3 +1,4 @@
+import { IStyle, ITheme } from '../../Styling';
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -108,4 +109,26 @@ export interface IColorCellProps {
    */
   index?: number;
 
+}
+
+/**
+ * Properties required to build the styles for the color picker component.
+ */
+export interface ISwatchColorPickerStyleProps {
+  theme: ITheme;
+  className?: string;
+  disabled?: boolean;
+  checked?: boolean;
+  circle?: boolean;
+}
+
+/**
+ * Styles for the Color Picker Component.
+ */
+export interface ISwatchColorPickerStyles {
+  root: IStyle;
+  item: IStyle;
+  cell: IStyle;
+  svg: IStyle;
+  container: IStyle;
 }
