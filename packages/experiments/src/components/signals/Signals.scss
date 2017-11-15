@@ -15,6 +15,12 @@
   }
 }
 
+.centeredSignal {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .newItem {
   width: 0;
   height: 1em;
@@ -77,11 +83,20 @@
 }
 
 .mention {
+  position: relative;
+
+  top: 0.2em;
+
   color: $ms-color-themePrimary;
 
   .selected & {
     color: $ms-color-themeDark;
   }
+}
+
+.atp {
+  color: $ms-color-redDark;
+  top: 3px;
 }
 
 .signal {

@@ -1,4 +1,4 @@
-import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.Props';
+import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyles,
@@ -14,6 +14,7 @@ export interface IComboBoxClassNames {
   optionsContainer: string;
   header: string;
   divider: string;
+  optionsContainerWrapper: string;
 }
 
 export interface IComboBoxOptionClassNames {
@@ -21,7 +22,7 @@ export interface IComboBoxOptionClassNames {
 }
 
 export const getClassNames = memoizeFunction((
-  styles: IComboBoxStyles,
+  styles: Partial<IComboBoxStyles>,
   className: string,
   isOpen: boolean,
   disabled: boolean,
@@ -35,10 +36,11 @@ export const getClassNames = memoizeFunction((
       'ms-ComboBox-container',
       className,
       styles.container,
-    ) as string,
+    ),
     label: mergeStyles(
-      styles.label
-    ) as string,
+      styles.label,
+      disabled && styles.labelDisabled
+    ),
     root: mergeStyles(
       'ms-ComboBox',
       isOpen && 'is-open',
@@ -55,43 +57,45 @@ export const getClassNames = memoizeFunction((
       disabled && [
         'is-disabled', styles.rootDisabled
       ],
-    ) as string,
+    ),
     input: mergeStyles(
       'ms-ComboBox-Input',
       styles.input,
       disabled && styles.inputDisabled
-    ) as string,
+    ),
     errorMessage: mergeStyles(
       styles.errorMessage
-    ) as string,
+    ),
     callout: mergeStyles(
       'ms-ComboBox-callout',
       styles.callout
-    ) as string,
+    ),
+    optionsContainerWrapper: mergeStyles(
+      'ms-ComboBox-optionsContainerWrapper',
+      styles.optionsContainerWrapper
+    ),
     optionsContainer: mergeStyles(
       'ms-ComboBox-optionsContainer',
       styles.optionsContainer
-    ) as string,
+    ),
     header: mergeStyles(
       'ms-ComboBox-header',
       styles.header
-    ) as string,
+    ),
     divider: mergeStyles(
       'ms-ComboBox-divider',
       styles.divider
-    ) as string,
+    ),
   };
 });
 
 export const getComboBoxOptionClassNames = memoizeFunction((
-  styles: IComboBoxOptionStyles,
-  optionIsSelected: boolean,
-  disabled: boolean,
+  styles: Partial<IComboBoxOptionStyles>,
 ): IComboBoxOptionClassNames => {
   return {
     optionText: mergeStyles(
       'ms-ComboBox-optionText',
       styles.optionText
-    ) as string,
+    ),
   };
 });

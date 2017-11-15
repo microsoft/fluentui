@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { ILayoutGroupProps } from './LayoutGroup.props';
+import { ILayoutGroupProps } from './LayoutGroup.types';
 import { IRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   autobind,
@@ -48,7 +48,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
                 flexGrow: 1
               }
 
-            ) as string
+            )
           }
         >
           { child }

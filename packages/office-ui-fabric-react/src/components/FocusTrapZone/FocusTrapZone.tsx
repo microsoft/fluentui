@@ -7,10 +7,10 @@ import {
   getNativeProps,
   divProperties,
   getFirstFocusable,
-  getLastFocusable,
+  getLastTabbable,
   getNextElement
 } from '../../Utilities';
-import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
+import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 
@@ -104,12 +104,16 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
    * Need to expose this method in case of popups since focus needs to be set when popup is opened
    */
   public focus() {
-    let { firstFocusableSelector } = this.props;
+    const { firstFocusableSelector } = this.props;
+    const focusSelector = typeof firstFocusableSelector === 'string'
+      ? firstFocusableSelector
+      : firstFocusableSelector && firstFocusableSelector();
+
     let _firstFocusableChild;
     let root = this.refs.root;
 
-    if (firstFocusableSelector) {
-      _firstFocusableChild = root.querySelector('.' + firstFocusableSelector);
+    if (focusSelector) {
+      _firstFocusableChild = root.querySelector('.' + focusSelector);
     } else {
       _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
     }
@@ -127,7 +131,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     let { root } = this.refs;
 
     const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
+    const _lastFocusableChild = getLastTabbable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
       _lastFocusableChild!.focus();

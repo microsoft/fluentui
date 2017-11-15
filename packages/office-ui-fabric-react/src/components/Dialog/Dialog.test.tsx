@@ -1,16 +1,23 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
-let { expect } = chai;
 import { mount } from 'enzyme';
 
 import { Dialog } from './Dialog';
-import { DialogType } from './DialogContent.Props';
+import { DialogContent } from './DialogContent';
+import { DialogType } from './DialogContent.types';
 
 /* tslint:disable:no-unused-expression */// for express fluent assertions
 
 describe('Dialog', () => {
+  it('renders Dialog correctly', () => {
+    const component = renderer.create(<DialogContent />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Fires dismissed after closing', (done) => {
     let dismissedCalled = false;
 
@@ -25,15 +32,15 @@ describe('Dialog', () => {
       />
     );
 
-    expect(document.querySelector('[role="dialog"]')).to.not.be.null;
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
     wrapper.setProps({ hidden: true });
     wrapper.update();
 
     // give time for update to complete
     setTimeout(() => {
       try {
-        expect(document.querySelector('[role="dialog"]')).to.be.null;
-        expect(dismissedCalled).to.be.true;
+        expect(document.querySelector('[role="dialog"]')).toBeNull();
+        expect(dismissedCalled).toEqual(true);
       } catch (e) {
         done(e);
       }
@@ -56,9 +63,9 @@ describe('Dialog', () => {
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
-    expect(dialogHTML).to.not.be.null;
-    expect(dialogHTML!.getAttribute('aria-labelledby')).to.match(/Dialog[\d+]+-title/, 'aria label should match the pattern');
-    expect(dialogHTML!.getAttribute('aria-describedby')).to.match(/Dialog[\d+]+-subText/, 'aria describeby should match the pattern');
+    expect(dialogHTML).not.toBeNull();
+    expect(dialogHTML!.getAttribute('aria-labelledby')).toMatch(/Dialog[\d+]+-title/);
+    expect(dialogHTML!.getAttribute('aria-describedby')).toMatch(/Dialog[\d+]+-subText/);
     wrapper.unmount();
   });
 
@@ -80,9 +87,9 @@ describe('Dialog', () => {
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
-    expect(dialogHTML).to.not.be.null;
-    expect(dialogHTML!.getAttribute('aria-labelledby')).to.match(/Dialog[\d+]+-title/, 'aria label should match the pattern');
-    expect(dialogHTML!.getAttribute('aria-describedby')).equals(subTextAriaId, 'aria describeby should match the pattern');
+    expect(dialogHTML).not.toBeNull();
+    expect(dialogHTML!.getAttribute('aria-labelledby')).toMatch(/Dialog[\d+]+-title/);
+    expect(dialogHTML!.getAttribute('aria-describedby')).toEqual(subTextAriaId);
     wrapper.unmount();
   });
 
@@ -104,9 +111,9 @@ describe('Dialog', () => {
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
-    expect(dialogHTML).to.not.be.null;
-    expect(dialogHTML!.getAttribute('aria-labelledby')).equals(titleAriaId, 'aria label should match the pattern');
-    expect(dialogHTML!.getAttribute('aria-describedby')).to.match(/Dialog[\d+]+-subText/, 'aria describeby should match the pattern');
+    expect(dialogHTML).not.toBeNull();
+    expect(dialogHTML!.getAttribute('aria-labelledby')).toEqual(titleAriaId);
+    expect(dialogHTML!.getAttribute('aria-describedby')).toMatch(/Dialog[\d+]+-subText/);
     wrapper.unmount();
   });
 });

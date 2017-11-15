@@ -1,7 +1,7 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   getFocusStyle
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -14,16 +14,12 @@ export const getStyles = memoizeFunction((
     splitButtonContainer: {
       position: 'relative',
       display: 'inline-block',
-      border: '1px solid transparent',
-
-      selectors: {
-        ':focus': {
-          outline: 'none!important',
-          border: '1px solid'
-        }
-      }
+      border: '1px solid transparent'
     },
-
+    splitButtonContainerFocused: {
+      outline: 'none!important',
+      border: '1px solid'
+    },
     splitButtonMenuButton: [
       getFocusStyle(theme, -1),
       {
@@ -31,6 +27,7 @@ export const getStyles = memoizeFunction((
         height: 'auto',
         boxSizing: 'border-box',
         border: '1px solid transparent',
+        borderRadius: 0,
         outline: 'transparent',
         userSelect: 'none',
         display: 'inline-block',
@@ -69,5 +66,5 @@ export const getStyles = memoizeFunction((
     },
   };
 
-  return mergeStyleSets(splitButtonStyles, customStyles)!;
+  return concatStyleSets(splitButtonStyles, customStyles)!;
 });

@@ -3,6 +3,7 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Grid.Example.scss';
 import { IRectangle } from '../../../Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IListGridExampleProps {
   items: any[];
@@ -54,6 +55,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
     return this._rowHeight * ROWS_PER_PAGE;
   }
 
+  @autobind
   private _onRenderCell(item: any, index: number | undefined): JSX.Element {
     return (
       <div

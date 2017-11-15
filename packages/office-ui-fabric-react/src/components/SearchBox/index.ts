@@ -1,2 +1,2 @@
 export * from './SearchBox';
-export * from './SearchBox.Props';
+export * from './SearchBox.types';

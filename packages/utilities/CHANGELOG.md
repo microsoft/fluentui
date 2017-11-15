@@ -1,6 +1,70 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 27 Sep 2017 00:20:58 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Nov 2017 11:20:56 GMT and should not be manually modified.
+
+## 5.4.0
+Mon, 13 Nov 2017 11:20:56 GMT
+
+### Minor changes
+
+- BaseComponent: fixing some typings to be compatible with current React typings.
+
+## 5.3.3
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Patches
+
+- Object: getId: updated so it will correctly return a string rather than an  int
+
+## 5.3.2
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout.
+
+## 5.3.1
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Update @uifabric/utilities
+
+## 5.3.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add cancel/flush to debounce
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+- Fixing version dependencies.
+
+## 5.1.0
+Thu, 05 Oct 2017 16:29:11 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT

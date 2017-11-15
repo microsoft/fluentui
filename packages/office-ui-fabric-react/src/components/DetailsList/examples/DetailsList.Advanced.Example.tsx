@@ -434,7 +434,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     }
     return {
       items: items,
-      targetElement: ev.currentTarget as HTMLElement,
+      target: ev.currentTarget as HTMLElement,
       directionalHint: DirectionalHint.bottomLeftEdge,
       gapSpace: 10,
       isBeakVisible: true,
@@ -618,7 +618,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         column.minWidth = 200;
       } else if (column.key === 'name') {
         column.onRender = (item) => (
-          <Link>{ item.name }</Link>
+          <Link data-selection-invoke={ true }>{ item.name }</Link>
         );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;

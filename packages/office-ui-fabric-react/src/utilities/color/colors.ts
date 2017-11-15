@@ -24,7 +24,7 @@ export interface IColor extends IRGB, IHSV {
   str: string;
 }
 
-export function cssColor(color: string): IRGB {
+export function cssColor(color: string): IRGB | undefined {
   return (_named(color)
     || _hex3(color)
     || _hex6(color)
@@ -155,8 +155,14 @@ export function hsv2rgb(h: number, s: number, v: number): IRGB {
   };
 }
 
-export function getColorFromString(color: string): IColor {
-  let { a, b, g, r } = cssColor(color);
+export function getColorFromString(inputColor: string): IColor | undefined {
+  let color = cssColor(inputColor);
+
+  if (!color) {
+    return;
+  }
+
+  let { a, b, g, r } = color;
   let { h, s, v } = rgb2hsv(r, g, b);
 
   return {
@@ -167,7 +173,7 @@ export function getColorFromString(color: string): IColor {
     hex: rgb2hex(r, g, b),
     r: r,
     s: s,
-    str: color,
+    str: inputColor,
     v: v
   };
 }

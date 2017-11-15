@@ -169,6 +169,8 @@
     &:hover:not(.linkIsSelected):not(.linkIsOverflow),
     &:focus:not(.linkIsSelected):not(.linkIsOverflow) {
       color: $ms-color-black;
+      //prevent next tab from covering the focus outline
+      z-index: 1;
     }
 
     &:active {
@@ -192,10 +194,12 @@
         bottom: 0;
         content: '';
         height: auto;
+      }
 
-        @include high-contrast {
-          border: 1px solid WindowText;
-        }
+      @include high-contrast {
+        color: HighlightText;
+        background: Highlight;
+        -ms-high-contrast-adjust: none;
       }
     }
   }

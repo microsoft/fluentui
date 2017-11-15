@@ -4,7 +4,7 @@ import {
   mergeStyleSets,
   getFocusStyle
 } from '../../Styling';
-import { IToggleStyles } from './Toggle.Props';
+import { IToggleStyles } from './Toggle.types';
 
 export interface IToggleClassNames {
   root?: string;
@@ -14,6 +14,8 @@ export interface IToggleClassNames {
   thumb?: string;
   text?: string;
 }
+
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getClassNames = memoizeFunction((
   theme: ITheme,
@@ -34,7 +36,7 @@ export const getClassNames = memoizeFunction((
   const pillBorderColor = semanticColors.inputBorder;
   const pillBorderHoveredColor = semanticColors.inputBorderHovered;
   const pillBorderDisabledColor = semanticColors.disabledText;
-  const textDisabledColor = semanticColors.disabledText;
+  const textDisabledColor = semanticColors.disabledBodyText;
 
   styles = styles || {};
 
@@ -53,7 +55,15 @@ export const getClassNames = memoizeFunction((
 
     label: [
       'ms-Toggle-label',
-      styles.label
+      styles.label,
+      disabled && {
+        color: textDisabledColor,
+        selectors: {
+          [MS_HIGHCONTRAST_ACTIVE]: {
+            color: 'GrayText'
+          },
+        }
+      }
     ],
 
     container: [
@@ -189,14 +199,19 @@ export const getClassNames = memoizeFunction((
           '&&': {
             padding: '0',
             margin: '0 10px',
-            userSelect: 'none'
+            userSelect: 'none',
           }
         }
       },
       disabled && {
         selectors: {
           '&&': {
-            color: textDisabledColor
+            color: textDisabledColor,
+            selectors: {
+              [MS_HIGHCONTRAST_ACTIVE]: {
+                color: 'GrayText'
+              },
+            }
           }
         }
       },

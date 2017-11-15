@@ -9,7 +9,7 @@ export interface ICalloutBaiscExampleState {
 }
 
 export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExampleState> {
-  private _menuButtonElement: HTMLElement;
+  private _menuButtonElement: HTMLElement | null;
 
   public constructor() {
     super();
@@ -26,7 +26,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
 
     return (
       <div className='ms-CalloutExample'>
-        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <DefaultButton
             onClick={ this._onDismiss }
             text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
@@ -39,7 +39,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               ariaLabelledBy={ 'callout-label-2' }
               className='ms-CalloutExample-callout'
               gapSpace={ 0 }
-              targetElement={ this._menuButtonElement }
+              target={ this._menuButtonElement }
               onDismiss={ this._onDismiss }
               setInitialFocus={ true }
             >

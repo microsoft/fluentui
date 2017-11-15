@@ -3,13 +3,17 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 /* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 
-let { expect } = chai;
-
 describe('Layer', () => {
+  it('renders Layer correctly', () => {
+    const component = renderer.create(<Layer>Content</Layer>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('can render in a targeted LayerHost and pass context through', () => {
 
@@ -69,12 +73,12 @@ describe('Layer', () => {
 
       let parentElement = appElement.querySelector('#parent');
 
-      expect(parentElement).is.not.empty;
-      expect(parentElement!.ownerDocument).is.not.empty;
+      expect(parentElement).toBeDefined();
+      expect(parentElement!.ownerDocument).toBeDefined();
 
       let childElement = appElement.querySelector('#child') as Element;
 
-      expect(childElement.textContent).equals('foo');
+      expect(childElement.textContent).toEqual('foo');
     } finally {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Props
-import { INavPage } from '../Nav/Nav.Props';
+import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
 
@@ -201,6 +201,12 @@ export const AppState: IAppState = {
           component: () => <LoadingComponent title='GroupedList' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/GroupedListComponentPage').GroupedListComponentPage))
 
+        },
+        {
+          title: 'Icon',
+          url: '#/components/Icon',
+          component: () => <LoadingComponent title='Icon' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/IconComponentPage').IconComponentPage))
         },
         {
           title: 'Image',

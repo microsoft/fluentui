@@ -14,25 +14,42 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaInitialsColor,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
 import {
   PERSONA_INITIALS_COLOR,
   PERSONA_SIZE
 } from './PersonaConsts';
+import {
+  Icon
+} from '../../Icon';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS = {
+  [PersonaSize.tiny]: 20,
   [PersonaSize.extraExtraSmall]: 24,
-  [PersonaSize.size28]: 28,
-  [PersonaSize.tiny]: 30,
-  [PersonaSize.extraSmall]: 32,
+  [PersonaSize.extraSmall]: 28,
   [PersonaSize.small]: 40,
   [PersonaSize.regular]: 48,
   [PersonaSize.large]: 72,
-  [PersonaSize.extraLarge]: 100
+  [PersonaSize.extraLarge]: 100,
+
+  [PersonaSize.size24]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.size10]: 20,
+  [PersonaSize.size32]: 32,
+  [PersonaSize.size40]: 40,
+  [PersonaSize.size48]: 48,
+  [PersonaSize.size72]: 72,
+  [PersonaSize.size100]: 100
 };
 
+/**
+ * These colors are considered reserved colors and can only be set with overrides:
+ * - Red is a color that often has a special meaning.
+ * - Transparent is not intended to be used with typical initials due to accessibility issues,
+ *   its primary use is for Facepile overflow buttons.
+ */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightGreen,
   PersonaInitialsColor.lightBlue,
@@ -47,20 +64,20 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.blue,
   PersonaInitialsColor.darkBlue,
   PersonaInitialsColor.orange,
-  PersonaInitialsColor.darkRed,
-  PersonaInitialsColor.red
+  PersonaInitialsColor.darkRed
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
+  isImageError?: boolean;
 }
 
 export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
-    size: PersonaSize.regular,
+    size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: ''
   };
@@ -70,11 +87,14 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
     this.state = {
       isImageLoaded: false,
+      isImageError: false
     };
   }
 
   public render(): JSX.Element | null {
     let {
+      coinProps,
+      coinSize,
       imageUrl,
       imageAlt,
       initialsColor,
@@ -86,6 +106,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
     let size = this.props.size as PersonaSize;
     let divProps = getNativeProps(this.props, divProperties);
+    let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
@@ -94,10 +115,15 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
-        { size !== PersonaSize.tiny && (
-          <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
+        { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
+          <div
+            { ...coinProps }
+            className={ css('ms-Persona-imageArea', styles.imageArea) }
+            style={ coinSizeStyle }
+          >
             {
               !this.state.isImageLoaded &&
+              (!imageUrl || this.state.isImageError) &&
               (
                 <div
                   className={ css(
@@ -105,6 +131,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                     styles.initials,
                     PERSONA_INITIALS_COLOR[initialsColor]
                   ) }
+                  style={ coinSizeStyle }
                   aria-hidden='true'
                 >
                   { onRenderInitials(this.props, this._onRenderInitials) }
@@ -115,16 +142,26 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
               className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
               src={ imageUrl }
-              width={ SIZE_TO_PIXELS[size] }
-              height={ SIZE_TO_PIXELS[size] }
+              width={ coinSize || SIZE_TO_PIXELS[size] }
+              height={ coinSize || SIZE_TO_PIXELS[size] }
               alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange }
             />
+            <PersonaPresence { ...this.props } />
           </div>
-        ) }
-        <PersonaPresence { ...this.props } />
+        ) :
+          (this.props.presence ?
+            <PersonaPresence
+              { ...this.props }
+            /> :
+            <Icon
+              iconName='Contact'
+              className={ styles.size10NoPresenceIcon }
+            />
+          )
+        }
         { this.props.children }
       </div>
     );
@@ -168,7 +205,8 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   @autobind
   private _onPhotoLoadingStateChange(loadState: ImageLoadState) {
     this.setState({
-      isImageLoaded: loadState === ImageLoadState.loaded
+      isImageLoaded: loadState === ImageLoadState.loaded,
+      isImageError: loadState === ImageLoadState.error
     });
   }
 }

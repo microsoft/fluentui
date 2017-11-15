@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles, IStyle } from '../../Styling';
-import { ISpinButtonStyles } from './SpinButton.Props';
+import { ISpinButtonStyles } from './SpinButton.types';
 import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
 
@@ -24,17 +24,19 @@ export const getClassNames = memoizeFunction((
   return {
     root: mergeStyles(
       styles.root
-    ) as string,
+    ),
     labelWrapper: mergeStyles(
       styles.labelWrapper,
       _getStyleForLabelBasedOnPosition(labelPosition, styles)
-    ) as string,
+    ),
     icon: mergeStyles(
       styles.icon,
-    ) as string,
+      disabled && styles.iconDisabled
+    ),
     label: mergeStyles(
-      styles.label
-    ) as string,
+      styles.label,
+      disabled && styles.labelDisabled
+    ),
     spinButtonWrapper: mergeStyles(
       styles.spinButtonWrapper,
       _getStyleForRootBasedOnPosition(labelPosition, styles),
@@ -53,7 +55,7 @@ export const getClassNames = memoizeFunction((
         }
       ],
       disabled && styles.spinButtonWrapperDisabled
-    ) as string,
+    ),
     input: mergeStyles(
       'ms-spinButton-input',
       styles.input,
@@ -63,11 +65,11 @@ export const getClassNames = memoizeFunction((
         }
       },
       disabled && styles.inputDisabled,
-    ) as string,
+    ),
     arrowBox: mergeStyles(
       styles.arrowButtonsContainer,
       disabled && styles.arrowButtonsContainerDisabled
-    ) as string,
+    ),
   };
 });
 

@@ -85,7 +85,7 @@ export class ThemePage extends React.Component<any, any> {
             <Callout
               isBeakVisible={ false }
               gapSpace={ 10 }
-              targetElement={ colorPickerProps.targetElement }
+              target={ colorPickerProps.targetElement }
               onDismiss={ this._onPickerDismiss }
             >
 

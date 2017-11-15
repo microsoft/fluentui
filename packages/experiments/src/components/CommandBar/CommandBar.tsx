@@ -5,7 +5,7 @@ import {
   getId,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
+import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
@@ -183,7 +183,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
   private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
     let { buttonStyles } = this.props;
 
-    if (item.onRender) { return item.onRender(item); }
+    if (item.onRender) {
+      // These are the top level items, there is no relevant menu dismissing function to
+      // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
+      return item.onRender(item, () => undefined);
+    }
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
       styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.styles, ...buttonStyles },

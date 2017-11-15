@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 
 .paragraphInGrid {
-    padding-left: $contentInGrid;
+  @include ms-padding-left($contentInGrid);
 }
 
 .exampleIcons {
@@ -50,6 +50,10 @@
     font-size: $ms-font-size-xl;
     font-weight: $ms-font-weight-light;
   }
+}
+
+.brandIconsPage .brandIconsPageLink {
+  color: $ms-color-themePrimary;
 }
 
 @media screen and (min-width: $uhf-screen-min-mobile) {

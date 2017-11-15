@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
-import { ICheckboxStyles } from './Checkbox.Props';
+import { ICheckboxStyles } from './Checkbox.types';
 
 export interface ICheckboxClassNames {
   root: string;
@@ -29,28 +29,31 @@ export const getClassNames = memoizeFunction((
       !disabled && [
         !isChecked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered
+            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered,
+            ':focus .ms-Checkbox-checkbox': styles.checkboxFocused
           }
         },
         isChecked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered
+            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered,
+            ':focus .ms-Checkbox-checkbox': styles.checkboxCheckedFocused
           }
         },
         {
           selectors: {
-            ':hover .ms-Checkbox-text': styles.textHovered
+            ':hover .ms-Checkbox-text': styles.textHovered,
+            ':focus .ms-Checkbox-text': styles.textFocused
           }
         }
       ]
-    ) as string,
+    ),
 
     label: mergeStyles(
       'ms-Checkbox-label',
       styles.label,
       isReversed && styles.labelReversed,
       disabled && styles.labelDisabled
-    ) as string,
+    ),
 
     checkbox: mergeStyles(
       'ms-Checkbox-checkbox',
@@ -58,19 +61,19 @@ export const getClassNames = memoizeFunction((
       !disabled && isChecked && styles.checkboxChecked,
       disabled && !isChecked && styles.checkboxDisabled,
       disabled && isChecked && styles.checkboxCheckedDisabled,
-    ) as string,
+    ),
 
     checkmark: mergeStyles(
       styles.checkmark,
       !disabled && isChecked && styles.checkmarkChecked,
       disabled && !isChecked && styles.checkmarkDisabled,
       disabled && isChecked && styles.checkmarkCheckedDisabled,
-    ) as string,
+    ),
 
     text: mergeStyles(
       'ms-Checkbox-text',
       styles.text,
       disabled && styles.textDisabled
-    ) as string,
+    ),
   };
 });

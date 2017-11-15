@@ -9,7 +9,7 @@ import {
   SharedSignal
 } from '../../signals/Signals';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../../FolderCover/FolderCover';
-import { FolderCoverType } from '../../FolderCover/FolderCover.Props';
+import { FolderCoverType } from '../../FolderCover/FolderCover.types';
 import { lorem } from '@uifabric/example-app-base';
 import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';

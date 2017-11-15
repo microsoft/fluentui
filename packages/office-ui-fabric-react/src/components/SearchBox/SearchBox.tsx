@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISearchBoxProps } from './SearchBox.Props';
+import { ISearchBoxProps } from './SearchBox.types';
 import {
   BaseComponent,
   autobind,
@@ -47,7 +47,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className, disabled } = this.props;
+    let { labelText, className, disabled, underlined } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
@@ -56,6 +56,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           ['is-active ' + styles.rootIsActive]: hasFocus,
           ['is-disabled ' + styles.rootIsDisabled]: disabled,
           ['can-clear ' + styles.rootCanClear]: value!.length > 0,
+          ['is-underlined ' + styles.rootIsUnderlined]: underlined,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
@@ -144,10 +145,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         break;
 
       default:
-        return;
+        this.props.onKeyDown && this.props.onKeyDown(ev);
+        if (!ev.defaultPrevented) {
+          return;
+        }
     }
 
-    // We only get here if the keypress has been handled.
+    // We only get here if the keypress has been handled,
+    // or preventDefault was called in case of default keyDown handler
     ev.preventDefault();
     ev.stopPropagation();
   }

@@ -1,2 +1,2 @@
 export * from './TilesList';
-export * from './TilesList.Props';
+export * from './TilesList.types';

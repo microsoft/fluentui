@@ -1,6 +1,90 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 27 Sep 2017 00:20:58 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+
+## 5.0.15
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Added support to IconGrid for icons wider than the grid.
+
+## 5.0.14
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Patches
+
+- Fixed initializeIcons call to pull from cdn instead of dist.
+
+## 5.0.13
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Removed Header component - it was replaced with UHF
+
+## 5.0.12
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Patches
+
+- TextField documentation style updates
+- Removed branding guidance pdf, updated fabric asset license pdf, and fixed link colors
+- Fixed in page navigation for Chrome and Firefox.
+
+## 5.0.11
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Updating to Fabric Core 9.0
+
+## 5.0.10
+Thu, 12 Oct 2017 10:20:49 GMT
+
+### Patches
+
+- Added Implementation Examples section to ComponentPage
+- Add promise polyfill
+
+## 5.0.9
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added/removed Best Practices links for component pages that had/didn't have a Best Practices section.
+- Updated themeLight color - typo
+
+## 5.0.8
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.0.7
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Patches
+
+- Updated ResourcePage text and made padding more rtl friendly.
+- Added section in Get Started page to document how to use icons in components.
+- Added Icon component to website
+
+## 5.0.6
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Added initializeIcons() call to make all icons in examples on the website available.
+- Added SharePoint Toolkit link and text to ResourcesPage.
+
+## 5.0.5
+Thu, 28 Sep 2017 10:19:12 GMT
+
+### Patches
+
+- Updated links in the SharePoint section of the ResourcesPage.
 
 ## 5.0.4
 Wed, 27 Sep 2017 00:20:58 GMT

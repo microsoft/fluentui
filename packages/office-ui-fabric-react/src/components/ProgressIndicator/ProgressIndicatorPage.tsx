@@ -25,7 +25,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.types.ts')
             ] }
           />
         }
