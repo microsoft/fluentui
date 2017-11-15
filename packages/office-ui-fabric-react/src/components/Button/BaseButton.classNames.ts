@@ -1,6 +1,7 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
+import { mergeStyles, ITheme } from '../../Styling';
 import { IButtonStyles } from './Button.types';
+import { getStyles } from './BaseButton.styles';
 
 export interface IButtonClassNames {
   root?: string;
@@ -14,7 +15,7 @@ export interface IButtonClassNames {
 }
 
 export const getBaseButtonClassNames = memoizeFunction((
-  styles: IButtonStyles,
+  theme: ITheme,
   className: string,
   variantClassName: string,
   iconClassName: string | undefined,
@@ -24,6 +25,7 @@ export const getBaseButtonClassNames = memoizeFunction((
   expanded: boolean,
   isSplit: boolean | undefined
 ): IButtonClassNames => {
+  const styles = getStyles(theme);
   const isExpanded = expanded && !isSplit;
   return {
     root: mergeStyles(

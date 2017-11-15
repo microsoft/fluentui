@@ -10,10 +10,11 @@ import {
   getNativeProps,
   KeyCodes
 } from '../../Utilities';
+import { ITheme } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton, IButtonStyles } from './Button.types';
+import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
@@ -86,7 +87,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       styles,
       text,
       checked,
-      variantClassName
+      variantClassName,
+      theme
          } = this.props;
 
     let { menuProps } = this.state;
@@ -94,7 +96,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let isPrimaryButtonDisabled = (disabled || primaryDisabled);
     let getClassNames = this.props.getClassNames || getBaseButtonClassNames;
     this._classNames = getClassNames(
-      styles!,
+      theme!,
       className!,
       variantClassName!,
       iconProps && iconProps.className,

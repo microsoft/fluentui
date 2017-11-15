@@ -193,7 +193,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   * defined in BaseButton.classnames.
   * @default getBaseButtonClassNames
   */
-  getClassNames?: (styles: IButtonStyles,
+  getClassNames?: (theme: ITheme,
     className: string,
     variantClassName: string,
     iconClassName: string | undefined,
