@@ -13,8 +13,8 @@ import { BaseAutoFill } from 'office-ui-fabric-react/lib/components/pickers/Auto
 import { IPickerItemProps, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
-import { IBaseFloatingPickerProps, BaseFloatingPicker } from 'experiments/lib/FloatingPicker';
-import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from 'experiments/lib/SelectedItemsList';
+import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
+import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
