@@ -456,7 +456,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
                 errorMessage: ''
               });
 
-              //If formatted date is valid, but is different from input, update with formatted date
+              // If formatted date is valid, but is different from input, update with formatted date
               if (formatDate && formatDate(date) !== inputValue) {
                 this.setState({
                   formattedDate: formatDate(date).toString()
