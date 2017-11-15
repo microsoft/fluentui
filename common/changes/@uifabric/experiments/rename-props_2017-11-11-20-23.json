@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/experiments",
-      "comment": "Fix alignment with trending icon",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "maxlus@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.6.0",
+      "tag": "@uifabric/merge-styles_v5.6.0",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "696cd19b230f855f071f766c27c0066eb15d8109",
+            "comment": "Adding the ability to append style content rather than inject using insertRule, for special cases."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.1",
       "tag": "@uifabric/merge-styles_v5.5.1",
       "date": "Thu, 02 Nov 2017 18:20:18 GMT",

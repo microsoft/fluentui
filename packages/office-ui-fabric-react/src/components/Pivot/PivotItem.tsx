@@ -4,7 +4,7 @@ import {
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { IPivotItemProps } from './PivotItem.Props';
+import { IPivotItemProps } from './PivotItem.types';
 
 export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
 

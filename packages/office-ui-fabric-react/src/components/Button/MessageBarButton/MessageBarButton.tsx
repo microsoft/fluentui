@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '../DefaultButton/DefaultButton';
 import { BaseComponent, customizable, nullRender } from '../../../Utilities';
-import { IButtonProps } from '../Button.Props';
+import { IButtonProps } from '../Button.types';
 import { getStyles } from './MessageBarButton.styles';
 
 @customizable('MessageBarButton', ['theme'])

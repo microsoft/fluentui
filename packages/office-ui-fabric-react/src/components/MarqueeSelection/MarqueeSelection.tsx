@@ -13,7 +13,7 @@ import {
   getRTL
 } from '../../Utilities';
 
-import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
+import { IMarqueeSelectionProps } from './MarqueeSelection.types';
 const styles: any = stylesImport;
 
 export interface IMarqueeSelectionState {

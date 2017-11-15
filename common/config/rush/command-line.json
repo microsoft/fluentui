@@ -1,0 +1,12 @@
+{
+  "customOptions": {
+    "--production": {
+      "optionType": "flag",
+      "description": "Builds production bits.",
+      "associatedCommands": [
+        "build",
+        "rebuild"
+      ]
+    }
+  }
+}

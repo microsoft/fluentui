@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.types';
 import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -22,7 +22,7 @@ import {
   getFirstFocusable,
   getLastFocusable
 } from '../../Utilities';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
