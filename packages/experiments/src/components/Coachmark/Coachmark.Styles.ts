@@ -3,11 +3,6 @@ import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets } from '../../Styling';
 
 export const themePrimary = '#0078d7';
-export function coachmarkAnimateOutTransition() {
-  return {
-    transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)'
-  }
-}
 
 export interface ICoachmarkStyleProps {
   /**
@@ -310,10 +305,6 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
     root: [
       {
         position: 'relative'
-      },
-      (props.isCollapsed && !props.isMeasuring) && {
-        width: coachmarkCollapsedSize,
-        height: coachmarkCollapsedSize
       }
     ],
     // The pulsing beacon
@@ -389,29 +380,26 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         animationName: rotateOne
       }
     ],
-    // Layer Host
+    // Layer Host, defaults to collapsed
     entityHost: [
       {
-        width: '100%',
-        height: '100%',
         position: 'relative',
         outline: 'none',
         overflow: 'hidden',
         backgroundColor: themePrimary,
         borderRadius: coachmarkCollapsedSize,
-        opacity: '0.8'
-      },
-      coachmarkAnimateOutTransition(),
-      props.isCollapsed && {
-        borderRadius: coachmarkCollapsedSize
+        width: coachmarkCollapsedSize,
+        height: coachmarkCollapsedSize,
+        opacity: '0.8',
+        transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)'
       },
       (!props.isCollapsed) && {
         borderRadius: '1px',
         opacity: '1'
       },
       (!props.isCollapsed && props.entityHostWidth && props.entityHostHeight) && {
-        width: props.entityHostWidth + 'px',
-        height: props.entityHostHeight + 'px'
+        width: props.entityHostWidth,
+        height: props.entityHostHeight
       }
     ],
     entityInnerHost: [
