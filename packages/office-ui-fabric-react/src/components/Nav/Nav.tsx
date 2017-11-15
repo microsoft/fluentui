@@ -303,13 +303,13 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
-    const { onLinkClick } = this.props;
+    const { onLinkExpandClick } = this.props;
 
     link.isExpanded = !link.isExpanded;
     this.setState({ isLinkExpandStateChanged: true });
 
-    if (onLinkClick) {
-      onLinkClick(ev, item);
+    if (onLinkExpandClick) {
+      onLinkExpandClick(ev, link);
     }
 
     ev.preventDefault();
