@@ -209,10 +209,9 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> impl
   private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement): void {
     let stickyArr = Array.from(stickyList);
     stickyArr = stickyArr.sort((a, b) => {
-      const [aParent, bParent] = [a.refs.root, b.refs.root].map((parent) => {
-        return this._findScrollablePaneParent(parent);
-      });
-      return aParent.offsetTop - bParent.offsetTop;
+      const aOffset = this._calculateOffsetParent(a.refs.root);
+      const bOffset = this._calculateOffsetParent(b.refs.root);
+      return aOffset - bOffset;
     });
     while (container.lastChild) {
       container.removeChild(container.lastChild);
@@ -222,10 +221,14 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> impl
     });
   }
 
-  private _findScrollablePaneParent(element: HTMLElement): HTMLElement {
-    while (element.parentElement !== this.refs.root && element.parentElement !== null) {
-      element = element.parentElement;
+  private _calculateOffsetParent(ele: HTMLElement): number {
+    let offset = 0;
+    while (ele.offsetParent !== this.refs.root.offsetParent) {
+      offset += ele.offsetTop;
+      if (ele.parentElement) {
+        ele = ele.parentElement;
+      }
     }
-    return element;
+    return offset;
   }
 }
