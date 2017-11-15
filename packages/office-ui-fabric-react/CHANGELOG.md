@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Nov 2017 11:21:27 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Nov 2017 11:11:59 GMT and should not be manually modified.
+
+## 5.21.2
+Wed, 15 Nov 2017 11:11:59 GMT
+
+### Patches
+
+- SplitButton: Disable visual changes in splitButtonContainer when control is disabled
 
 ## 5.21.1
 Tue, 14 Nov 2017 11:21:27 GMT
