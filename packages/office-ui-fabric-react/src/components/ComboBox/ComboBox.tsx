@@ -25,6 +25,9 @@ import {
   getCaretDownButtonStyles
 } from './ComboBox.styles';
 import {
+  IComboBoxStyles,
+} from './ComboBox.types';
+import {
   IComboBoxClassNames,
   getClassNames,
   getComboBoxOptionClassNames
@@ -255,7 +258,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let setWidth = isOpen ? (this._comboBoxWrapper.clientWidth - 2) + 'px' : undefined;
 
     this._classNames = getClassNames(
-      getStyles(theme!, customStyles, setWidth),
+      getStyles(theme!, customStyles),
       className!,
       !!isOpen,
       !!disabled,
@@ -800,6 +803,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderLowerContent = this._onRenderLowerContent
     } = props;
 
+    const dropdownWidth = (this.props.styles) ? this.props.styles.dropdownWidth : 0;
+
     return (
       <Callout
         isBeakVisible={ false }
@@ -812,6 +817,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
+        calloutWidth={ dropdownWidth || this._comboBoxWrapper.clientWidth }
       >
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
