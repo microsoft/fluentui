@@ -10,6 +10,7 @@ export interface ICoachmarkState {
   isBeaconAnimating: boolean;
   isMeasuring: boolean;
   entityInnerHostRect: IEntityRect;
+  isMouseInProximity: boolean;
 }
 
 export interface IEntityRect {
@@ -18,6 +19,8 @@ export interface IEntityRect {
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+
+  private _elementRect: ClientRect;
 
   private _entityInnerHostElement: HTMLElement;
 
@@ -35,7 +38,8 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
 
 
   public static defaultProps = {
-    isCollapsed: true
+    isCollapsed: true,
+    mouseProximityOffset: 100
   };
 
   constructor(props: ICoachmarkProps) {
@@ -47,8 +51,16 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       entityInnerHostRect: {
         width: 0,
         height: 0
-      }
+      },
+      isMouseInProximity: true
     };
+
+    // Remove the measurement from the initial paint
+    this._async.setTimeout(() => {
+      this._elementRect = this._entityInnerHostElement.getBoundingClientRect();
+    }, 10);
+
+    this._isElementInProximity();
   }
 
   public render() {
@@ -100,7 +112,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       </DynamicallyPositionedContainer>
     );
   }
-
   public componentDidMount() {
     if (this.state.isMeasuring) {
       this._async.setTimeout(() => {
@@ -132,5 +143,33 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     if (this.props.onClickHandler) {
       this.props.onClickHandler();
     }
+  }
+
+  private _isElementInProximity() {
+    let timeoutIds: number[] = [];
+
+    this._events.on(window, 'resize', () => {
+      timeoutIds.forEach((value) => {
+        clearInterval(value)
+      });
+
+      timeoutIds.push(this._async.setTimeout(() => {
+        this._elementRect = this._entityInnerHostElement.getBoundingClientRect();
+      }, 100));
+    });
+
+    this._events.on(document, 'mousemove', (e: MouseEvent) => {
+      let mouseY = e.pageY;
+      let mouseX = e.pageX;
+
+      this.setState({
+        isMouseInProximity: this._isInsideElement(this._elementRect, mouseX, mouseY)
+      });
+    });
+  }
+
+  private _isInsideElement(elementRect: ClientRect, mouseX: number, mouseY: number): boolean {
+    return mouseX > (elementRect.left - this.props.mouseProximityOffset) && mouseX < ((elementRect.left + elementRect.width) + this.props.mouseProximityOffset) &&
+      mouseY > (elementRect.top - this.props.mouseProximityOffset) && mouseY < ((elementRect.top + elementRect.height) + this.props.mouseProximityOffset);
   }
 };
