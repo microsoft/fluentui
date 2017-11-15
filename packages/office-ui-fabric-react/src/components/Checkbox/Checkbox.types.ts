@@ -100,10 +100,10 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom function for providing the classNames for the checkbox. Can be used to provide
    * all styles for the component instead of applying them on top of the default styles.
    */
-  getClassNames?: (className: string,
-    disabled: boolean,
+  getClassNames?: (disabled: boolean,
     isChecked: boolean,
-    isReversed: boolean) => ICheckboxClassNames;
+    isReversed: boolean,
+    className?: string) => ICheckboxClassNames;
 
   /**
    * Custom render function for the label.
