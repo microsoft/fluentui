@@ -7,7 +7,7 @@
 .svg {
   width: 20px;
   height: 20px;
-  padding: 4px;
+  padding: 2px;
   box-sizing: content-box;
 }
 
@@ -55,6 +55,7 @@
 .cell {
   padding: 0px;
   overflow: visible;
+  height: 24px;
 
   &.cellIsSelected {
     &:hover .svg,
@@ -68,9 +69,9 @@
         border-radius: 100%;
       }
 
-      width: 12px;
-      height: 12px;
-      border: 4px solid $ms-color-neutralTertiaryAlt;
+      width: 16px;
+      height: 16px;
+      border: 2px solid $ms-color-neutralTertiaryAlt;
     }
   }
 
@@ -81,17 +82,17 @@
   &:hover .svg,
   &:focus .svg,
   &:active .svg {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
   }
 
   &:hover .svg,
   &:focus .svg {
-      border: 4px solid $ms-color-neutralQuaternaryAlt;
+      border: 2px solid $ms-color-neutralQuaternaryAlt;
    }
 
   &:active .svg {
-  border: 4px solid $ms-color-neutralTertiaryAlt;
+  border: 2px solid $ms-color-neutralTertiaryAlt;
   }
 
   &:hover .svg.circle,
@@ -101,7 +102,7 @@
   }
 
   &:active .svg {
-    border: 4px solid #969696;
+    border: 2px solid #969696;
 
     // This is for a transform issue in IE
     // where the edge of the SVG becomes hidden

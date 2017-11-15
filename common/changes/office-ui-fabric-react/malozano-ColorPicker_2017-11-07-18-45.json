@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "SwatchColorPicker: Tweak hovering circle size and spacing between cells to meet redlines",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "malozano@microsoft.com"
+}
