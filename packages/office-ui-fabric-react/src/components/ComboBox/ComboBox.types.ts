@@ -9,7 +9,7 @@ export interface IComboBox {
   /**
   * If there is a menu open this will dismiss the menu
   */
-  dismissMenu: () => void;
+  dismissMenu: (isMenuOpen?: boolean) => void;
 
   /**
    * Sets focus to the input in the comboBox

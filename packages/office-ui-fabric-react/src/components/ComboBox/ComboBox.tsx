@@ -352,9 +352,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Close menu callout if it is open
    */
   @autobind
-  public dismissMenu(): void {
+  public dismissMenu(isMenuOpen = false): void {
     let { isOpen } = this.state;
-    isOpen && this.setState({ isOpen: false });
+    isOpen && this.setState({ isOpen: isMenuOpen });
   }
 
   /**
