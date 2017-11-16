@@ -84,6 +84,8 @@ export interface ISwatchColorPickerProps {
    */
   doNotContainWithinFocusZone?: boolean;
 
+  theme?: ITheme;
+
   /**
    * Optional styles for the component.
    */
@@ -113,7 +115,6 @@ export interface IColorCellProps {
    * Index for this option
    */
   index?: number;
-
 }
 
 /**

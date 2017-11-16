@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { SwatchColorPicker } from './SwatchColorPicker';
+import { SwatchColorPickerBase } from './SwatchColorPicker.base';
 import { IColorCellProps } from './SwatchColorPicker.types';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
@@ -27,7 +27,7 @@ describe('SwatchColorPicker', () => {
 
   it('renders SwatchColorPicker correctly', () => {
     const component = renderer.create(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
@@ -37,7 +37,7 @@ describe('SwatchColorPicker', () => {
 
   it('Can render in full without being parented to a button', () => {
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
@@ -46,7 +46,7 @@ describe('SwatchColorPicker', () => {
 
   it('Can render the correct options when not in a menu', () => {
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
@@ -73,7 +73,7 @@ describe('SwatchColorPicker', () => {
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         // tslint:disable-next-line:jsx-no-lambda
         onColorChanged={ (color) => eventFireCounter++ }
@@ -93,7 +93,7 @@ describe('SwatchColorPicker', () => {
   it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         // tslint:disable-next-line:jsx-no-lambda
         onCellHovered={ (color) => eventFireCounter++ }
@@ -113,7 +113,7 @@ describe('SwatchColorPicker', () => {
   it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         // tslint:disable-next-line:jsx-no-lambda
         onCellFocused={ (color) => eventFireCounter++ }
