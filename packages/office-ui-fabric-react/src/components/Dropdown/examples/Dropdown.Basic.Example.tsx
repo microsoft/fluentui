@@ -163,13 +163,6 @@ export class DropdownBasicExample extends BaseComponent<any, any> {
   }
 
   @autobind
-  private _onSetFocusButtonClicked() {
-    if (this._basicDropdown) {
-      this._basicDropdown.focus(true);
-    }
-  }
-
-  @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
@@ -199,6 +192,13 @@ export class DropdownBasicExample extends BaseComponent<any, any> {
       newArray[i] = array[i];
     }
     return newArray;
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked() {
+    if (this._basicDropdown) {
+      this._basicDropdown.focus(true);
+    }
   }
 
   private _log(str: string): () => void {
