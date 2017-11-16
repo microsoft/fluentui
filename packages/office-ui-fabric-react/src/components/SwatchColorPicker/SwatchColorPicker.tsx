@@ -79,8 +79,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     if (colorCells.length < 1 || columnCount < 1) {
       return null;
     }
-
-
     return (
       <Grid
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }

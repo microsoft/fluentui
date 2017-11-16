@@ -13,7 +13,7 @@ function getSvgSelectorStyles(borderColor: string): IRawStyle {
     border: '4px solid',
     borderColor: borderColor,
   };
-};
+}
 
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
   const {
