@@ -1,4 +1,4 @@
-import { IStyle, ITheme } from '../../Styling';
+import { IStyle, ITheme, IStyleFunction } from '../../Styling';
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -122,7 +122,7 @@ export interface IColorCellProps {
 export interface ISwatchColorPickerStyleProps {
   theme: ITheme;
   className?: string;
-  disabled?: boolean
+  disabled?: boolean;
   isSelected?: boolean;
   circle?: boolean;
 }
