@@ -238,7 +238,7 @@ export interface ISemanticColors {
   /**
    * The default text color for list item titles and text in column fields.
    */
-  listTextColor: string;
+  listText: string;
 
   /**
    * The background color of a hovered list item.
