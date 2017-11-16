@@ -255,3 +255,23 @@ export const ATPSignal: Signal = (props: ISignalProps): JSX.Element => {
     />
   );
 };
+
+/**
+ * Renders a signal for an external item.
+ */
+export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ...spanProps
+  } = props;
+
+  return (
+    <span
+      aria-label={ ariaLabel }
+      { ...spanProps }
+      className={ css(SignalStyles.signal, SignalStyles.external) }
+    >
+      { props.children }
+    </span>
+  );
+};
