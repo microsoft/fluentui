@@ -5,7 +5,7 @@ import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends BaseComponent<any, any> {
-  private _basicDropDown: IDropdown;
+  private _basicDropdown: IDropdown;
   constructor() {
     super();
     this.state = {
@@ -44,7 +44,7 @@ export class DropdownBasicExample extends BaseComponent<any, any> {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
-          componentRef={ this._resolveRef('_basicDropDown') }
+          componentRef={ this._resolveRef('_basicDropdown') }
         />
         <PrimaryButton
           text='Set focus'
@@ -164,8 +164,8 @@ export class DropdownBasicExample extends BaseComponent<any, any> {
 
   @autobind
   private _onSetFocusButtonClicked() {
-    if (this._basicDropDown) {
-      this._basicDropDown.focus(true);
+    if (this._basicDropdown) {
+      this._basicDropdown.focus(true);
     }
   }
 
