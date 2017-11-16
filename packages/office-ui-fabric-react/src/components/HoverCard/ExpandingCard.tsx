@@ -143,7 +143,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         ) }
         ref={ this._resolveRef('_expandedElem') }
       >
-        <div className={ mergeStyles(this._styles.expandedCardScroll) }>
+        <div className={ mergeStyles(this.state.needsScroll && this._styles.expandedCardScroll) }>
           { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
         </div>
       </div>
