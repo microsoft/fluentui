@@ -53,7 +53,7 @@ export class BrandIconsPage extends React.Component<any, any> {
         <div className={ pageStyles.u_maxTextWidth }>
           <h2 id='overview'>Overview</h2>
           <p>Fabric includes product and document icons that you can use to connect your experience with other Office and Office 365 endpoints. The icons come in three formats &mdash; SVG and PNG for multicolor and the icon font for monochrome &mdash; in a variety of sizes and resolutions.</p>
-          <p>Usage of these icons is subject to the <a className={ styles.brandIconsPageLink } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_v2_09262017.pdf'>assets license agreement (PDF)</a>. Please read this document and the resolution/size guidance carefully to ensure that you use our branded icons correctly to create the best experience.</p>
+          <p>Usage of these icons is subject to the <a className={ styles.brandIconsPageLink } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf'>assets license agreement (PDF)</a>. Please read this document and the resolution/size guidance carefully to ensure that you use our branded icons correctly to create the best experience.</p>
         </div>
         <h3>Product icons</h3>
         <div className='ms-Grid ms-Grid--wide'>
