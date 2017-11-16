@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 15 Nov 2017 11:11:59 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Nov 2017 11:20:34 GMT and should not be manually modified.
+
+## 5.22.0
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Minor changes
+
+- Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option.
+
+### Patches
+
+- Checkbox: Add getClassNames prop to allow complete customization of the component
+- SplitButton: Avoid applying selector rest changes when in toggle state
+- Toggle: Add label as fall back ariaLabel.
 
 ## 5.21.2
 Wed, 15 Nov 2017 11:11:59 GMT
