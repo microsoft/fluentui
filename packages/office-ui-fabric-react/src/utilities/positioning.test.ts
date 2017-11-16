@@ -22,7 +22,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;
   let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), gap);
 
-  let beak = positioningFunctions._positionBeak(beakWidth, result, target, 0);
+  let beak = positioningFunctions._positionBeak(beakWidth, result, target);
 
   expect(result.calloutRectangle).toEqual(validate.callout);
 

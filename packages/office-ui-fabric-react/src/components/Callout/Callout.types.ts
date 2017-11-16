@@ -4,8 +4,9 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle,
+  IRectangle
 } from '../../Utilities';
+import { IPositionInfo, IPositionData } from '../../utilities/positioning';
 
 export interface ICallout {
 
@@ -138,7 +139,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   /**
    * Optional callback that is called once the callout has been correctly positioned.
    */
-  onPositioned?: () => void;
+  onPositioned?: (positions?: IPositionData) => void;
 
   /**
    * Callback when the Callout tries to close.

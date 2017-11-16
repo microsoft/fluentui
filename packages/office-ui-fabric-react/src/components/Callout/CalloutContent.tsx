@@ -284,7 +284,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       } else {
         this._positionAttempts = 0;
         if (this.props.onPositioned) {
-          this.props.onPositioned();
+          this.props.onPositioned(this.state.positions);
         }
       }
     }
@@ -314,7 +314,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       if (this.props.directionalHintFixed && this._target) {
         let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
         let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, beakWidth! + gapSpace, this._getBounds());
+        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
+        // overlap with the target.
+        const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
+        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }

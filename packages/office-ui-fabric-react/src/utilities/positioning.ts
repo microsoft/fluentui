@@ -72,7 +72,8 @@ export interface IPositionProps {
 
 export interface IPositionInfo {
   calloutPosition: ICalloutPositon;
-  beakPosition: { position: ICalloutPositon, display: string };
+  beakPosition: { position: ICalloutPositon, display: string, beakClosestEdge: RectangleEdge };
+  targetEdge: RectangleEdge;
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }
@@ -199,7 +200,7 @@ export module positioningFunctions {
    */
   function _getCenterValue(rect: Rectangle, edge: RectangleEdge): number {
     const edges = _getFlankingEdges(edge);
-    return (_getEdgeValue(rect, edges.firstEdge) + _getEdgeValue(rect, edges.secondEdge)) / 2;
+    return (_getEdgeValue(rect, edges.positiveEdge) + _getEdgeValue(rect, edges.negativeEdge)) / 2;
   }
 
   /**
@@ -394,10 +395,10 @@ export module positioningFunctions {
    * @returns
    */
   function centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number) {
-    const { firstEdge } = _getFlankingEdges(edge);
+    const { positiveEdge } = _getFlankingEdges(edge);
     const calloutMiddle = _getCenterValue(rect, edge);
-    const distanceToMiddle = calloutMiddle - _getEdgeValue(rect, firstEdge);
-    return _moveEdge(rect, firstEdge, point - distanceToMiddle);
+    const distanceToMiddle = calloutMiddle - _getEdgeValue(rect, positiveEdge);
+    return _moveEdge(rect, positiveEdge, point - distanceToMiddle);
   }
 
   /**
@@ -445,16 +446,16 @@ export module positioningFunctions {
    * @param {RectangleEdge} edge
    * @returns {{ firstEdge: RectangleEdge, secondEdge: RectangleEdge }}
    */
-  function _getFlankingEdges(edge: RectangleEdge): { firstEdge: RectangleEdge, secondEdge: RectangleEdge } {
+  function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge, negativeEdge: RectangleEdge } {
     if (edge === RectangleEdge.top || edge === RectangleEdge.bottom) {
       return {
-        firstEdge: RectangleEdge.left,
-        secondEdge: RectangleEdge.right
+        positiveEdge: RectangleEdge.left,
+        negativeEdge: RectangleEdge.right
       };
     } else {
       return {
-        firstEdge: RectangleEdge.top,
-        secondEdge: RectangleEdge.bottom
+        positiveEdge: RectangleEdge.top,
+        negativeEdge: RectangleEdge.bottom
       };
     }
   }
@@ -483,7 +484,7 @@ export module positioningFunctions {
     const hostRect: Rectangle = _getRectangleFromHTMLElement(hostElement);
     const calloutEdge = targetEdge * -1;
     const calloutEdgeString = RectangleEdge[calloutEdge];
-    const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).firstEdge;
+    const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
 
     returnValue[calloutEdgeString] = _getRelativeEdgeDifference(calloutRectangle, hostRect, calloutEdge);
     returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(calloutRectangle, hostRect, returnEdge);
@@ -537,16 +538,21 @@ export module positioningFunctions {
    */
   function _getAlignmentData(positionData: IPositionData, target: Rectangle, boundingRect: Rectangle, coverTarget?: boolean): IPositionData {
     if (positionData.isAuto) {
-      let center: number = _getCenterValue(target, positionData.targetEdge);
-
-      if (center <= boundingRect.width / 2) {
-        positionData.alignmentEdge = RectangleEdge.left;
-      } else {
-        positionData.alignmentEdge = RectangleEdge.right;
-      }
+      positionData.alignmentEdge = getClosestEdge(positionData.targetEdge, target, boundingRect);
     }
 
     return positionData;
+  }
+
+  function getClosestEdge(targetEdge: RectangleEdge, target: Rectangle, boundingRect: Rectangle) {
+    const targetCenter: number = _getCenterValue(target, targetEdge);
+    const boundingCenter: number = _getCenterValue(boundingRect, targetEdge);
+    const { positiveEdge, negativeEdge } = _getFlankingEdges(targetEdge);
+    if (targetCenter <= boundingCenter) {
+      return positiveEdge;
+    } else {
+      return negativeEdge;
+    }
   }
 
   export function _positionCalloutWithinBounds(
@@ -569,16 +575,26 @@ export module positioningFunctions {
     }
   }
 
-  export function _positionBeak(beakWidth: number,
-    callout: ICallout,
-    target: Rectangle,
-    alignmentEdge?: RectangleEdge) {
-    /** Note about beak positioning: The actual beak width only matters for getting the gap between the callout and target, it does not impact the beak placement within the callout. For example example, if the beakWidth is 8, then the actual beakWidth is sqrroot(8^2 + 8^2) = 11.31x11.31. So the callout will need to be an extra 3 pixels away from its target. While the beak is being positioned in the callout it still acts as though it were 8x8.*/
-    const { firstEdge, secondEdge } = _getFlankingEdges(callout.targetEdge);
-    const beakTargetPoint = _getCenterValue(target, callout.targetEdge);
+  export function _finalizeBeakPosition(callout: ICallout,
+    positionedBeak: Rectangle) {
+    const targetEdge = callout.targetEdge * -1;
     // The "host" callout that we will use to help position the beak.
     const actualCallout = new Rectangle(0, callout.calloutRectangle.width, 0, callout.calloutRectangle.height);
+    const returnEdge = callout.alignmentEdge ? callout.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
+    let returnValue: IPartialIRectangle = {};
 
+    returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
+    returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualCallout, returnEdge);
+
+    return returnValue;
+  }
+
+  export function _positionBeak(beakWidth: number,
+    callout: ICallout,
+    target: Rectangle): Rectangle {
+    /** Note about beak positioning: The actual beak width only matters for getting the gap between the callout and target, it does not impact the beak placement within the callout. For example example, if the beakWidth is 8, then the actual beakWidth is sqrroot(8^2 + 8^2) = 11.31x11.31. So the callout will need to be an extra 3 pixels away from its target. While the beak is being positioned in the callout it still acts as though it were 8x8.*/
+    const { positiveEdge, negativeEdge } = _getFlankingEdges(callout.targetEdge);
+    const beakTargetPoint = _getCenterValue(target, callout.targetEdge);
     const calloutBounds = new Rectangle(
       beakWidth / 2,
       callout.calloutRectangle.width - beakWidth / 2,
@@ -591,23 +607,15 @@ export module positioningFunctions {
     beakPositon = _moveEdge(beakPositon, (callout.targetEdge * -1), -beakWidth / 2);
 
     beakPositon = centerEdgeToPoint(beakPositon, callout.targetEdge * -1,
-      beakTargetPoint - _getRelativeRectEdgeValue(firstEdge, callout.calloutRectangle));
+      beakTargetPoint - _getRelativeRectEdgeValue(positiveEdge, callout.calloutRectangle));
 
-    if (!_isEdgeInBounds(beakPositon, calloutBounds, firstEdge)) {
-      beakPositon = _alignEdges(beakPositon, calloutBounds, firstEdge);
-    } else if (!_isEdgeInBounds(beakPositon, calloutBounds, secondEdge)) {
-      beakPositon = _alignEdges(beakPositon, calloutBounds, secondEdge);
+    if (!_isEdgeInBounds(beakPositon, calloutBounds, positiveEdge)) {
+      beakPositon = _alignEdges(beakPositon, calloutBounds, positiveEdge);
+    } else if (!_isEdgeInBounds(beakPositon, calloutBounds, negativeEdge)) {
+      beakPositon = _alignEdges(beakPositon, calloutBounds, negativeEdge);
     }
 
-    const targetEdge = callout.targetEdge * -1;
-
-    const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).firstEdge;
-    let returnValue: IPartialIRectangle = {};
-
-    returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(beakPositon, targetEdge);
-    returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(beakPositon, actualCallout, returnEdge);
-
-    return returnValue;
+    return beakPositon;
   }
 
   export function _getRectangleFromHTMLElement(element: HTMLElement): Rectangle {
@@ -697,11 +705,14 @@ export module positioningFunctions {
       gap,
       props.directionalHintFixed,
       props.coverTarget);
-    const beakPositioned: IPartialIRectangle = _positionBeak(
+    const beakPositioned: Rectangle = _positionBeak(
       beakWidth,
       positionedCallout,
-      targetRect,
-      positionedCallout.alignmentEdge);
+      targetRect);
+    const finalizedBeakPosition: IPartialIRectangle = _finalizeBeakPosition(
+      positionedCallout,
+      beakPositioned
+    )
     const finalizedCallout: IPartialIRectangle = _finalizeCalloutPosition(
       positionedCallout.calloutRectangle,
       hostElement,
@@ -709,8 +720,13 @@ export module positioningFunctions {
       positionedCallout.alignmentEdge);
     return {
       calloutPosition: finalizedCallout,
-      beakPosition: { position: { ...beakPositioned }, display: 'block' },
+      beakPosition: {
+        position: { ...finalizedBeakPosition }, display: 'block',
+        beakClosestEdge: getClosestEdge(positionedCallout.targetEdge, beakPositioned,
+          new Rectangle(0, positionedCallout.calloutRectangle.width, 0, positionedCallout.calloutRectangle.height))
+      },
       directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
+      targetEdge: positionedCallout.targetEdge,
       submenuDirection: (positionedCallout.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
     };
   }

@@ -97,6 +97,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             beakWidth={ beakWidth }
             onDismiss={ this._onCalloutDismiss }
             directionalHint={ directionalHint }
+            onPositioned={ console.dir }
           >
             <div className='ms-CalloutExample-header'>
               <p className='ms-CalloutExample-title'>
