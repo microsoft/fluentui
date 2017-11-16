@@ -4,7 +4,14 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
 <div
   aria-describedby={undefined}
   aria-labelledby={undefined}
-  className="ms-FocusZone ms-swatchColorPickerBodyContainer"
+  className=
+      ms-FocusZone
+      ms-swatchColorPickerBodyContainer
+      {
+        clear: both;
+        display: block;
+        min-width: 180px;
+      }
   data-focuszone-id="FocusZone3"
   onBlur={[Function]}
   onFocus={[Function]}
@@ -61,6 +68,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -70,6 +78,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -121,7 +132,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="#00ff00"
                 viewBox="0 0 20 20"
               >
@@ -167,6 +189,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -176,6 +199,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -227,7 +253,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="#ffa500"
                 viewBox="0 0 20 20"
               >
@@ -273,6 +310,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -282,6 +320,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -333,7 +374,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="#0000ff"
                 viewBox="0 0 20 20"
               >
@@ -379,6 +431,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -388,6 +441,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -439,7 +495,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="#ff0000"
                 viewBox="0 0 20 20"
               >
@@ -489,6 +556,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -498,6 +566,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -549,7 +620,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="green"
                 viewBox="0 0 20 20"
               >
@@ -595,6 +677,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -604,6 +687,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -655,7 +741,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="orange"
                 viewBox="0 0 20 20"
               >
@@ -701,6 +798,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -710,6 +808,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -761,7 +862,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="blue"
                 viewBox="0 0 20 20"
               >
@@ -807,6 +919,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -816,6 +929,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -867,7 +983,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="red"
                 viewBox="0 0 20 20"
               >
@@ -917,6 +1044,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -926,6 +1054,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -977,7 +1108,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="black"
                 viewBox="0 0 20 20"
               >
@@ -1023,6 +1165,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -1032,6 +1175,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1083,7 +1229,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="grey"
                 viewBox="0 0 20 20"
               >
@@ -1129,6 +1286,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -1138,6 +1296,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1189,7 +1350,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="purple"
                 viewBox="0 0 20 20"
               >
@@ -1235,6 +1407,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 40px;
                   outline: transparent;
+                  overflow: visible;
                   padding-bottom: 0;
                   padding-left: 4px;
                   padding-right: 4px;
@@ -1244,6 +1417,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
+                }
+                .ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after {
+                  border: none;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1295,7 +1471,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   }
             >
               <svg
-                className="circle"
+                className=
+
+                    {
+                      border-radius: 100%;
+                      box-sizing: content-box;
+                      height: 20px;
+                      padding-bottom: 4px;
+                      padding-left: 4px;
+                      padding-right: 4px;
+                      padding-top: 4px;
+                      width: 20px;
+                    }
                 fill="yellow"
                 viewBox="0 0 20 20"
               >
