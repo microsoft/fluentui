@@ -3,7 +3,7 @@ import {
   FocusZoneDirection,
   IFocusZone,
   IFocusZoneProps
-} from './FocusZone.Props';
+} from './FocusZone.types';
 import {
   BaseComponent,
   EventGroup,
@@ -179,6 +179,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (element) {
       this._setActiveElement(element);
+      if (this._activeElement) {
+        this._activeElement.focus();
+      }
 
       return true;
     }
@@ -267,7 +270,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       this._activeElement.tabIndex = 0;
-      this._activeElement.focus();
     }
   }
 

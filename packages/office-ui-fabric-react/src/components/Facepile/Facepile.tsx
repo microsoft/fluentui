@@ -11,7 +11,7 @@ import {
   IFacepileProps,
   IFacepilePersona,
   OverflowButtonType
-} from './Facepile.Props';
+} from './Facepile.types';
 import {
   FocusZone,
   FocusZoneDirection

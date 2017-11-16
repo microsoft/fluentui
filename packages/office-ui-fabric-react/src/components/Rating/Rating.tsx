@@ -5,7 +5,7 @@ import {
   getId
 } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IRatingProps, RatingSize } from './Rating.Props';
+import { IRatingProps, RatingSize } from './Rating.types';
 import * as stylesImport from './Rating.scss';
 const styles: any = stylesImport;
 

@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 
 export interface ISplitButtonClassNames {
   root?: string;
@@ -33,6 +33,19 @@ export const getClassNames = memoizeFunction((
 
     splitButtonContainer: mergeStyles(
       styles.splitButtonContainer,
+      checked && !disabled && [
+        styles.splitButtonContainerChecked,
+        {
+          selectors: {
+            ':hover': styles.splitButtonContainerCheckedHovered
+          }
+        }],
+      !disabled && !checked && [{
+        selectors: {
+          ':hover': styles.splitButtonContainerHovered,
+          ':focus': styles.splitButtonContainerFocused
+        }
+      }],
       disabled && styles.splitButtonContainerDisabled
     ),
 

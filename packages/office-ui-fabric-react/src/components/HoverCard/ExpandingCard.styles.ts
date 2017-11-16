@@ -1,4 +1,4 @@
-import { IExpandingCardStyles } from './ExpandingCard.Props';
+import { IExpandingCardStyles } from './ExpandingCard.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   concatStyleSets,

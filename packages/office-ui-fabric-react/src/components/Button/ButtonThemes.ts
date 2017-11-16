@@ -1,4 +1,4 @@
-import { IButtonStyles } from './Button.Props';
+import { IButtonStyles } from './Button.types';
 import { ITheme } from '../../Styling';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';

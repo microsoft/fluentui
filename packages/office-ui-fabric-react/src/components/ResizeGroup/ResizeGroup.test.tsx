@@ -2,7 +2,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
-import { IResizeGroupProps } from './ResizeGroup.Props';
+import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 
 interface ITestScalingData {

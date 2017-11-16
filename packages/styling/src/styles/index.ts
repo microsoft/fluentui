@@ -9,3 +9,4 @@ export {
   loadTheme,
   createTheme
 } from './theme';
+export * from './CommonStyles';
