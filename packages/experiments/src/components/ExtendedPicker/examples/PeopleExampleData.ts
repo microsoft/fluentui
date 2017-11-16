@@ -1,5 +1,5 @@
 import { PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { IExtendedPersonaProps } from 'experiments/lib/SelectedItemsList';
+import { IExtendedPersonaProps } from '../../SelectedItemsList';
 import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 export const people: (IExtendedPersonaProps & { key: string | number })[] = [

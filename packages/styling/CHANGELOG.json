@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "@uifabric/styling_v5.8.0",
+      "date": "Thu, 16 Nov 2017 11:20:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f143a0d268256361a334e8ed33231e507d902e85",
+            "comment": "Adding `styled` and `classNameFunction` helpers, in addition to a variety of interface."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "@uifabric/styling_v5.7.0",
       "date": "Fri, 10 Nov 2017 17:09:36 GMT",

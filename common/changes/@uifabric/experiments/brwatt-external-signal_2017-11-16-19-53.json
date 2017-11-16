@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/experiments",
-      "type": "none"
+      "comment": "Add external signal",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "dzearing@microsoft.com"
+  "email": "brwatt@microsoft.com"
 }

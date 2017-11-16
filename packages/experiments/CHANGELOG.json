@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.5.2",
+      "tag": "@uifabric/experiments_v5.5.2",
+      "date": "Thu, 16 Nov 2017 11:20:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "7c6d7b6aa050c3fa02bda1fbf596111b60bd20fc",
+            "comment": "Fix experiment imports for FloatingPicker and ExtendedPicker components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.21.2 <6.0.0` to `>=5.22.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.1",
       "tag": "@uifabric/experiments_v5.5.1",
       "date": "Wed, 08 Nov 2017 11:11:27 GMT",
