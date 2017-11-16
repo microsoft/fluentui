@@ -103,7 +103,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             role='grid'
           >
             { strings.shortMonths.map((month, index) =>
-              <span
+              <button
                 role='gridcell'
                 className={
                   css('ms-DatePicker-monthOption',
@@ -121,7 +121,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
                 { month }
-              </span>
+              </button>
             ) }
           </div>
         </FocusZone>

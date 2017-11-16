@@ -655,18 +655,18 @@ $Calendar-dayPicker-margin: 10px;
 
 .monthIsCurrentMonth {
   font-weight: 600;
-  color: $ms-color-white;
-  background-color: $ms-color-themePrimary;
+  color: $ms-color-white !important;
+  background-color: $ms-color-themePrimary !important;
 
   &.monthOption:hover{
     font-weight: 600;
-    color: $ms-color-white;
-    background-color: $ms-color-themePrimary;
+    color: $ms-color-white !important;
+    background-color: $ms-color-themePrimary !important;
   }
 }
 
 .monthOption:active{
-  background-color: $ms-color-themeLight;
+  background-color: $ms-color-themeLight !important;
 }
 
 
@@ -694,4 +694,12 @@ $Calendar-dayPicker-margin: 10px;
 
 .singleBottomDate{
   border-radius: 0;
+}
+button {
+  background: none !important;
+  border: none;
+  padding: 0! important;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit !important;
 }
