@@ -88,14 +88,36 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   description?: string;
 
   /**
-  * String for addon.
-  */
+   * @deprecated
+   * Deprecated; use prefix instead.
+   */
   addonString?: string;
 
   /**
-  * Custom render function for addon
+  * String for prefix
   */
+  prefix?: string;
+
+  /**
+  * String for suffix
+  */
+  suffix?: string;
+
+  /**
+   * @deprecated
+   * Deprecated; use onRenderPrefix instead.
+   */
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
+
+  /**
+  * Custom render function for prefix
+  */
+  onRenderPrefix?: IRenderFunction<ITextFieldProps>;
+
+  /**
+  * Custom render function for suffix
+  */
+  onRenderSuffix?: IRenderFunction<ITextFieldProps>;
 
   /**
    * Optional icon props for an icon.

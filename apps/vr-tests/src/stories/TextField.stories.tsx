@@ -74,9 +74,14 @@ storiesOf('TextField', module)
       label='Icon'
       iconProps={ { iconName: 'Calendar' } }
     />
-  )).add('Addon', () => (
+  )).add('Prefix', () => (
     <TextField
-      label='Addon'
-      addonString='https://'
+      label='Prefix'
+      prefix='https://'
+    />
+  )).add('Suffix', () => (
+    <TextField
+      label='Suffix'
+      suffix='.com'
     />
   ));
