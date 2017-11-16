@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind } from '../../../Utilities';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
-export class DropdownBasicExample extends React.Component<any, any> {
+export class DropdownBasicExample extends BaseComponent<any, any> {
+  private _basicDropDown: IDropdown;
   constructor() {
     super();
     this.state = {
@@ -42,8 +44,12 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
+          componentRef={ this._resolveRef('_basicDropDown') }
         />
-
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
         <Dropdown
           className='Dropdown-example'
           label='Disabled uncontrolled example with defaultSelectedKey:'
@@ -154,6 +160,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
       </div>
 
     );
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked() {
+    if (this._basicDropDown) {
+      this._basicDropDown.focus(true);
+    }
   }
 
   @autobind
