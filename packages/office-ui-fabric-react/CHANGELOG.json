@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.22.0",
+      "tag": "office-ui-fabric-react_v5.22.0",
+      "date": "Thu, 16 Nov 2017 11:20:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "d973229862379082ddf4415d6286864150bf25ee",
+            "comment": "Checkbox: Add getClassNames prop to allow complete customization of the component"
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "ba70b786c4fbafd21693d6ce5e24e0a9cb085b0d",
+            "comment": "SplitButton: Avoid applying selector rest changes when in toggle state"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8550f69d236e9ed3e52c64207d4a9d847f14b057",
+            "comment": "Toggle: Add label as fall back ariaLabel."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "27b3e985fe437ad6b1dfcda1924eb6f13191f509",
+            "comment": "Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.7.0 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.21.2",
       "tag": "office-ui-fabric-react_v5.21.2",
       "date": "Wed, 15 Nov 2017 11:11:59 GMT",
