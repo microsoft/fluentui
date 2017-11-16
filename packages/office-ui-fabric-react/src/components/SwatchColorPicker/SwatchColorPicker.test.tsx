@@ -6,6 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPickerBase } from './SwatchColorPicker.base';
+import { getStyles } from './SwatchColorPicker.styles';
 import { IColorCellProps } from './SwatchColorPicker.types';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
@@ -30,6 +31,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -40,6 +42,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     expect(wrapper.find('.ms-swatchColorPickerBodyContainer').length).toEqual(1);
   });
@@ -49,6 +52,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
@@ -78,6 +82,7 @@ describe('SwatchColorPicker', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
@@ -98,6 +103,7 @@ describe('SwatchColorPicker', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onCellHovered={ (color) => eventFireCounter++ }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
@@ -118,6 +124,7 @@ describe('SwatchColorPicker', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onCellFocused={ (color) => eventFireCounter++ }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();

@@ -42,6 +42,18 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
         pointerEvents: 'none',
         opacity: .3
       },
+      !disabled && isSelected && 'is-selected' && {
+        selectors: {
+          '&:hover .svg': { boxShadow: '0 0 0 1px #969696' },
+          '&:focus .svg, & .svg': {
+            width: 12,
+            height: 12,
+            border: '4px solid',
+            borderColor: theme.palette.neutralTertiaryAlt
+          },
+          '&:active .svg ': { boxShadow: '0 0 0 1px #969696' },
+        },
+      },
       !disabled && {
         selectors: {
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after': { border: 'none' }
@@ -53,18 +65,31 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
         width: '20px',
         height: '20px',
         padding: '4px',
-        boxSizing: 'content-box'
+        boxSizing: 'content-box',
+        selectors: {
+          '&:hover': {
+            width: 12,
+            height: 12,
+            border: '4px solid',
+            borderColor: theme.palette.neutralQuaternaryAlt,
+          },
+          '&:focus': {
+            width: 12,
+            height: 12,
+            border: '4px solid',
+            borderColor: theme.palette.neutralQuaternaryAlt,
+          },
+          '&:active': {
+            width: 12,
+            height: 12,
+            border: '4px solid',
+            borderColor: theme.palette.neutralTertiaryAlt
+          }
+        }
       },
       circle && {
         borderRadius: '100%'
       },
-      'is-selected' && isSelected && getSvgSelectorStyles(theme.palette.neutralTertiaryAlt) && {
-        selectors: {
-          ':hover': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':focus': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':active': getSvgSelectorStyles(theme.palette.neutralTertiaryAlt),
-        }
-      }
     ],
     container: [
       'ms-swatchColorPickerBodyContainer',
