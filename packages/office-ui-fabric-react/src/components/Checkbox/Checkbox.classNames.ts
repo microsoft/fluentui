@@ -12,10 +12,10 @@ export interface ICheckboxClassNames {
 
 export const getClassNames = memoizeFunction((
   styles: ICheckboxStyles,
-  className: string,
   disabled: boolean,
   isChecked: boolean,
-  isReversed: boolean
+  isReversed: boolean,
+  className?: string
 ): ICheckboxClassNames => {
   return {
     root: mergeStyles(

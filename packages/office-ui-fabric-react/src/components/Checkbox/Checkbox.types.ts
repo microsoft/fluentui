@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
+import { ICheckboxClassNames } from './Checkbox.classNames';
 
 /**
  * Checkbox class interface.
@@ -94,6 +95,16 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom styles for this component
    */
   styles?: ICheckboxStyles;
+
+  /**
+   * Custom function for providing the classNames for the checkbox. Can be used to provide
+   * all styles for the component instead of applying them on top of the default styles.
+   */
+  getClassNames?: (theme: ITheme,
+    disabled: boolean,
+    isChecked: boolean,
+    isReversed: boolean,
+    className?: string) => ICheckboxClassNames;
 
   /**
    * Custom render function for the label.
