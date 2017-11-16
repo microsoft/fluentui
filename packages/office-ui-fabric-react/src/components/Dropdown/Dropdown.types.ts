@@ -6,7 +6,7 @@ import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
 export interface IDropdown {
-  focus: () => void;
+  focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
 export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {

@@ -195,8 +195,6 @@ $DropDown-item-height: 32px;
     color: inherit;
   }
 
-  @include focus-border();
-
   &:focus {
     background-color: $ms-color-neutralLighter;
     @include highContrastListItemState;
@@ -221,8 +219,6 @@ $DropDown-item-height: 32px;
 .item.itemIsSelected {
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
-
-  @include focus-border();
 
   @include highContrastListItemState;
 }

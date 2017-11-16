@@ -212,9 +212,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  public focus() {
+  public focus(shouldOpenOnFocus?: boolean) {
     if (this._dropDown && this._dropDown.tabIndex !== -1) {
       this._dropDown.focus();
+      if (shouldOpenOnFocus) {
+        this.setState({
+          isOpen: true
+        });
+      }
     }
   }
 
