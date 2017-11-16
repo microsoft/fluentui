@@ -23,7 +23,23 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             id="DatePickerDay-dayPicker10"
           >
             <div
-              className="ms-DatePicker-monthComponents"
+              className="ms-DatePicker-header"
+            >
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                aria-relevant="text"
+                id="DatePickerDay-monthAndYear11"
+              >
+                <div
+                  className="ms-DatePicker-monthAndYear"
+                >
+                  February 2000
+                </div>
+              </div>
+            </div>
+            <div
+              className="ms-DatePicker-monthComponents ms-DatePicker-arrowsStyleWithMonthComponents"
             >
               <div
                 className="ms-DatePicker-navContainer"
@@ -70,22 +86,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="presentation"
                   />
                 </span>
-              </div>
-            </div>
-            <div
-              className="ms-DatePicker-header"
-            >
-              <div
-                aria-atomic="true"
-                aria-live="polite"
-                aria-relevant="text"
-                id="DatePickerDay-monthAndYear11"
-              >
-                <div
-                  className="ms-DatePicker-monthAndYear"
-                >
-                  February 2000
-                </div>
               </div>
             </div>
             <div
@@ -901,6 +901,15 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             className="ms-DatePicker-monthPicker"
           >
             <div
+              className="ms-DatePicker-header"
+            >
+              <div
+                className="ms-DatePicker-currentYear js-showYearPicker"
+              >
+                2000
+              </div>
+            </div>
+            <div
               className="ms-DatePicker-yearComponents"
             >
               <div
@@ -946,15 +955,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="presentation"
                   />
                 </span>
-              </div>
-            </div>
-            <div
-              className="ms-DatePicker-header"
-            >
-              <div
-                className="ms-DatePicker-currentYear js-showYearPicker"
-              >
-                2000
               </div>
             </div>
             <div
