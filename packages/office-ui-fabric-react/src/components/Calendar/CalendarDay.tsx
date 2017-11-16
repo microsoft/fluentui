@@ -495,9 +495,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
     }
 
-    let numOfWeeksToShow = true;
+    let shouldGetWeeks = true;
 
-    for (let weekIndex = 0; numOfWeeksToShow; weekIndex++) {
+    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
       let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
@@ -525,8 +525,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       }
 
       // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
-      numOfWeeksToShow = showSixWeeksByDefault ? (!isAllDaysOfWeekOutOfMonth || weekIndex <= 5) : !isAllDaysOfWeekOutOfMonth;
-      if (numOfWeeksToShow) {
+      shouldGetWeeks = showSixWeeksByDefault ? (!isAllDaysOfWeekOutOfMonth || weekIndex <= 5) : !isAllDaysOfWeekOutOfMonth;
+      if (shouldGetWeeks) {
         weeks.push(week);
       }
     }
