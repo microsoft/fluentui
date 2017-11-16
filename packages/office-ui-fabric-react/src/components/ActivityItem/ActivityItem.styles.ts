@@ -70,7 +70,7 @@ export const getStyles = memoizeFunction((
       selectors: {
         '.ms-Persona-imageArea': {
           marginTop: '-2px',
-          border: '2px solid #fff',
+          border: '2px solid' + theme.palette.white,
           borderRadius: '50%',
           selectors: {
             [MS_HIGHCONTRAST_ACTIVE]: {
