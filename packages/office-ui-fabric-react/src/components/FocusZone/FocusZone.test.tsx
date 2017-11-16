@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection } from './FocusZone.Props';
+import { FocusZoneDirection } from './FocusZone.types';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;

@@ -10,7 +10,7 @@ import {
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { IColumn, CheckboxVisibility } from './DetailsList.Props';
+import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
@@ -51,6 +51,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
+  className?: string;
 }
 
 export interface IDetailsRowSelectionState {
@@ -175,6 +176,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
   public render() {
     const {
+      className,
       columns,
       dragDropEvents,
       item,
@@ -208,6 +210,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         aria-label={ ariaLabel }
         className={ css(
           'ms-DetailsRow',
+          className,
           AnimationClassNames.fadeIn400,
           styles.root,
           checkStyles.owner,

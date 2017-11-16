@@ -1,7 +1,7 @@
 import { IPersonaProps } from '../../../../Persona';
-import { IPickerItemProps } from '../../PickerItem.Props';
+import { IPickerItemProps } from '../../PickerItem.types';
 import { IContextualMenuItem } from '../../../../ContextualMenu';
-import { ValidationState } from '../../BasePicker.Props';
+import { ValidationState } from '../../BasePicker.types';
 export interface IPeoplePickerItemProps extends IPickerItemProps<IPersonaProps & { ValidationState: ValidationState }> {
 }
 

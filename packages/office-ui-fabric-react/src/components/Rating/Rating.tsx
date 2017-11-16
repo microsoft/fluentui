@@ -5,8 +5,8 @@ import {
   getId
 } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IRatingProps, RatingSize } from './Rating.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { IRatingProps, RatingSize } from './Rating.types';
 import * as stylesImport from './Rating.scss';
 import { format } from '../../Utilities';
 
@@ -124,7 +124,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getLabel(rating: number): JSX.Element {
-    const text = this.props.ariaLabelFormat || '{0} of {1} stars selected';
+    const text = this.props.ariaLabelFormat || '';
 
     return (
       <span

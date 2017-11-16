@@ -45,8 +45,9 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   onChanged?: (rating: number) => void;
 
   /**
-   * Optional label format for star ratings, will be read by screen readers, defaults to '{0} of {1} stars selected'.
-   * Where {0} is the current rating and {1} is the max rating.
+   * Optional label format for star ratings, will be read by screen readers, defaults to ''.
+   * Can be used like "{0} of {1} stars selected".
+   * Where {0} will be subsituted by the current rating and {1} will be subsituted by the max rating.
    */
   ariaLabelFormat?: string;
 

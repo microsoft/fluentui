@@ -32,7 +32,7 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.types.ts')
             ] }
           />
         }

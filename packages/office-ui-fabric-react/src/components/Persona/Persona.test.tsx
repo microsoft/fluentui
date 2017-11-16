@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
-import { PersonaInitialsColor } from './Persona.Props';
+import { PersonaInitialsColor } from './Persona.types';
 import { mount, ReactWrapper } from 'enzyme';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

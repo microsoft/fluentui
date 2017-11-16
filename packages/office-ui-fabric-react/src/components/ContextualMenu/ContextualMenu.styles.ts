@@ -6,7 +6,7 @@ import {
   concatStyleSets,
   getFocusStyle
 } from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 
 import { memoizeFunction } from '../../Utilities';
 

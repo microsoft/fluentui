@@ -27,7 +27,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         className="ms-Rating-labelText"
         id="RatingLabel1-1"
       >
-        1 of 5 stars selected
       </span>
       <div
         className="ms-RatingStar-container"
@@ -73,7 +72,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         className="ms-Rating-labelText"
         id="RatingLabel1-2"
       >
-        2 of 5 stars selected
       </span>
       <div
         className="ms-RatingStar-container"
@@ -119,7 +117,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         className="ms-Rating-labelText"
         id="RatingLabel1-3"
       >
-        3 of 5 stars selected
       </span>
       <div
         className="ms-RatingStar-container"
@@ -165,7 +162,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         className="ms-Rating-labelText"
         id="RatingLabel1-4"
       >
-        4 of 5 stars selected
       </span>
       <div
         className="ms-RatingStar-container"
@@ -211,7 +207,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         className="ms-Rating-labelText"
         id="RatingLabel1-5"
       >
-        5 of 5 stars selected
       </span>
       <div
         className="ms-RatingStar-container"

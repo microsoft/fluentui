@@ -33,6 +33,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           onChanged={ this._onLargeStarChanged }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          ariaLabelFormat={ '{0} of {1} stars selected' }
         />
 
         Small Stars
@@ -45,6 +46,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           getAriaLabel={ this._getRatingComponentAriaLabel }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          ariaLabelFormat={ '{0} of {1} stars selected' }
         />
 
         10 Small Stars
@@ -57,6 +59,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           getAriaLabel={ this._getRatingComponentAriaLabel }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          ariaLabelFormat={ '{0} of {1} stars selected' }
         />
 
         Disabled:
@@ -67,6 +70,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           disabled={ true }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          ariaLabelFormat={ '{0} of {1} stars selected' }
         />
 
         Half star in readOnly mode:
@@ -77,6 +81,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           rating={ 2.5 }
           getAriaLabel={ this._getRatingComponentAriaLabel }
           readOnly={ true }
+          ariaLabelFormat={ '{0} of {1} stars selected' }
         />
       </div>
     );
