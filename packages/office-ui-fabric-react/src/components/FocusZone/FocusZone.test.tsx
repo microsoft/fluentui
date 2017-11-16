@@ -701,8 +701,9 @@ describe('FocusZone', () => {
     expect(buttonB.tabIndex).toBe(0);
 
     // Clicking on A should enable its tab-index and disable others.
+    // But it doesn't set focus (browser will do it in the default event handler)
     ReactTestUtils.Simulate.mouseDown(buttonAElement);
-    expect(lastFocusedElement).toBe(buttonA);
+    expect(lastFocusedElement).toBe(buttonB);
 
     expect(buttonA.tabIndex).toBe(0);
     expect(buttonB.tabIndex).toBe(-1);
