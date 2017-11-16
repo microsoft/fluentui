@@ -2,7 +2,8 @@ import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,
   mergeStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../Styling';
 import { IToggleStyles } from './Toggle.types';
 
@@ -14,8 +15,6 @@ export interface IToggleClassNames {
   thumb?: string;
   text?: string;
 }
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getClassNames = memoizeFunction((
   theme: ITheme,
@@ -59,7 +58,7 @@ export const getClassNames = memoizeFunction((
       disabled && {
         color: textDisabledColor,
         selectors: {
-          [MS_HIGHCONTRAST_ACTIVE]: {
+          [HighContrastSelector]: {
             color: 'GrayText'
           },
         }
@@ -124,7 +123,7 @@ export const getClassNames = memoizeFunction((
               ':hover .ms-Toggle-thumb': [
                 styles.thumbCheckedHovered
               ],
-              [MS_HIGHCONTRAST_ACTIVE]: {
+              [HighContrastSelector]: {
                 backgroundColor: 'WindowText'
               }
             }
@@ -174,7 +173,7 @@ export const getClassNames = memoizeFunction((
           backgroundColor: thumbCheckedBackground,
           left: '1.4em',
           selectors: {
-            [MS_HIGHCONTRAST_ACTIVE]: {
+            [HighContrastSelector]: {
               backgroundColor: 'Window',
               borderColor: 'Window'
             }
@@ -217,7 +216,7 @@ export const getClassNames = memoizeFunction((
           '&&': {
             color: textDisabledColor,
             selectors: {
-              [MS_HIGHCONTRAST_ACTIVE]: {
+              [HighContrastSelector]: {
                 color: 'GrayText'
               },
             }

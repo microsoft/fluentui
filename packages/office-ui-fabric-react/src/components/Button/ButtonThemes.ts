@@ -1,7 +1,5 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme } from '../../Styling';
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+import { ITheme, HighContrastSelector } from '../../Styling';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   let s = theme.semanticColors;
@@ -97,7 +95,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'
@@ -109,7 +107,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.themeDark,
       color: theme.palette.white,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'
@@ -121,7 +119,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'
@@ -146,7 +144,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
 
     rootDisabled: {
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'GrayText',
           borderColor: 'GrayText',
           backgroundColor: 'Window'

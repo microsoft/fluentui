@@ -2,7 +2,8 @@ import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
   concatStyleSets,
-  FontWeights
+  FontWeights,
+  HighContrastSelector
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -15,8 +16,6 @@ import {
   primaryStyles,
   standardStyles
 } from '../ButtonThemes';
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -95,7 +94,7 @@ export const getStyles = memoizeFunction((
     description: {
       color: theme.palette.white,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'
@@ -107,7 +106,7 @@ export const getStyles = memoizeFunction((
     descriptionHovered: {
       color: theme.palette.white,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'Window',
           backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'

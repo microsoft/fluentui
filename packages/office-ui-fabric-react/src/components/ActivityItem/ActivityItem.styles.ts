@@ -1,7 +1,8 @@
 import {
   concatStyleSets,
   ITheme,
-  getTheme
+  getTheme,
+  HighContrastSelector
 } from '../../Styling';
 import {
   memoizeFunction
@@ -12,7 +13,6 @@ const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
@@ -73,7 +73,7 @@ export const getStyles = memoizeFunction((
           border: '2px solid' + theme.palette.white,
           borderRadius: '50%',
           selectors: {
-            [MS_HIGHCONTRAST_ACTIVE]: {
+            [HighContrastSelector]: {
               border: 'none',
               marginTop: '0'
             }
