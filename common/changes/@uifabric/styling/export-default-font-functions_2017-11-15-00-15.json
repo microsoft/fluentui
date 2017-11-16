@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Export functions used to create font sets based upon a given locale code",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "miclo@microsoft.com"
+}
