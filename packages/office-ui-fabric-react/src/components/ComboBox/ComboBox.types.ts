@@ -7,8 +7,9 @@ import { IRenderFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
-  * Close/open the menu
+  * Close/open the menu.
   * Default behavior: dismiss menu
+  * @default true;
   */
   dismissMenu: (dismissMenu?: boolean) => void;
 
