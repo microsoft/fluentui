@@ -83,6 +83,11 @@ export interface ISwatchColorPickerProps {
    * If false contain the grid inside of a FocusZone.
    */
   doNotContainWithinFocusZone?: boolean;
+
+  /**
+   * Optional styles for the component.
+   */
+  getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 }
 
 export interface IColorCellProps {
@@ -117,8 +122,8 @@ export interface IColorCellProps {
 export interface ISwatchColorPickerStyleProps {
   theme: ITheme;
   className?: string;
-  disabled?: boolean;
-  checked?: boolean;
+  disabled?: boolean
+  isSelected?: boolean;
   circle?: boolean;
 }
 
@@ -127,7 +132,6 @@ export interface ISwatchColorPickerStyleProps {
  */
 export interface ISwatchColorPickerStyles {
   root: IStyle;
-  item: IStyle;
   cell: IStyle;
   svg: IStyle;
   container: IStyle;

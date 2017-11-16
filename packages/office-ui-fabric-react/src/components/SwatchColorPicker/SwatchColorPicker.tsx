@@ -72,12 +72,14 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       setSize,
       shouldFocusCircularNavigate,
       className,
-      doNotContainWithinFocusZone
+      doNotContainWithinFocusZone,
+      getStyles
     } = this.props;
 
     if (colorCells.length < 1 || columnCount < 1) {
       return null;
     }
+
 
     return (
       <Grid
