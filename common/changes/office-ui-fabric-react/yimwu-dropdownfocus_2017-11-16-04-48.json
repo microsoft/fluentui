@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "yimwu@microsoft.com"
+}
