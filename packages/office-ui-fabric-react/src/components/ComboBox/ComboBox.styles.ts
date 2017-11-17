@@ -161,7 +161,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
           color: 'ButtonText',
           MsHighContrastAdjust: 'none'
         },
-        'i': {
+        '.ms-Icon': {
           fontSize: FontSizes.small
         }
       }
