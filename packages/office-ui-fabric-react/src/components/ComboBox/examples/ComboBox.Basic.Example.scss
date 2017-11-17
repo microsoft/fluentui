@@ -6,4 +6,42 @@
       margin: 0 0 10px 0;
     }
   }
+
+  /* FOR TEST ONLY   */
+  .customButton {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 36px;
+    background-color: white;
+    box-sizing: border-box;
+    border-top: 1px solid green;
+    text-align:left;
+    padding: 10px;
+
+    div {
+        font-weight: normal;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: pink;
+
+    }
+  }
+
+  .ms-Callout-main{
+    overflow: none;
+  }
+
+  .ms-ComboBox-optionsContainerWrapper{
+    min-width: 103px;
+    max-height: 154px;
+    top: 0px;
+    position: relative;
+    overflow-y: scroll;
+    margin-bottom: 36px;
+  }
+
+  /* FOR TEST ONLY   */
 }

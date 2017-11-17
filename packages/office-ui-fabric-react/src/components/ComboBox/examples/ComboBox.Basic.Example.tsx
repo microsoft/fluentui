@@ -1,33 +1,39 @@
 import * as React from 'react';
 import {
   ComboBox,
+  IComboBox,
   IComboBoxProps,
   IComboBoxOption,
   VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
+import {
+  DefaultButton,
+  IButton
+} from 'office-ui-fabric-react/lib/Button';
 import './ComboBox.Basic.Example.scss';
 import {
   assign,
-  autobind
+  autobind,
+  KeyCodes
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
-  [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'A', text: 'Arial Black' },
-  { key: 'B', text: 'Times New Roman' },
-  { key: 'C', text: 'Comic Sans MS' },
-  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'D', text: 'Option d' },
-  { key: 'E', text: 'Option e' },
-  { key: 'F', text: 'Option f' },
-  { key: 'G', text: 'Option g' },
-  { key: 'H', text: 'Option h' },
-  { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j' },
-  ];
+    [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'A', text: 'Arial Black' },
+    { key: 'B', text: 'Times New Roman' },
+    { key: 'C', text: 'Comic Sans MS' },
+    { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+    { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'D', text: 'Option d' },
+    { key: 'E', text: 'Option e' },
+    { key: 'F', text: 'Option f' },
+    { key: 'G', text: 'Option g' },
+    { key: 'H', text: 'Option h' },
+    { key: 'I', text: 'Option i' },
+    { key: 'J', text: 'Option j' },
+    ];
 
   private _fontMapping: { [key: string]: string } = {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
@@ -37,13 +43,18 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   };
 
   private scaleOptions: IComboBoxOption[] = [];
+  private IButtonRef: IButton;  /* FOR TEST ONLY   */
+  private IButtonRefFocus: IButton;  /* FOR TEST ONLY   */
+  private IComboBoxRef: IComboBox;  /* FOR TEST ONLY   */
+  private selectLowerContent: boolean = false; /* FOR TEST ONLY   */
 
   constructor() {
     super();
     this.state = {
       options: [],
       selectedOptionKey: null,
-      value: 'Calibri'
+      value: 'Calibri',
+      preventFocus: false
     };
 
     for (let i = 0; i < 1000; i++) {
@@ -59,6 +70,47 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
     return (
       <div className='ms-ComboBoxBasicExample'>
+        {/* FOR TEST ONLY START   */ }
+
+        <ComboBox
+          componentRef={ this.setComponentRef }
+          defaultSelectedKey='C'
+          label='TEST: With all fixes (works)'
+          id='Basicdrop11'
+          ariaLabel='Basic ComboBox example'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          onFocus={ this.onFocus }
+          onKeyDown={ this.onKeyDown }
+          onRenderLowerContent={ this.lowerContent }
+          preventInputFocus={ this.state.preventFocus }
+        />
+
+        <ComboBox
+          defaultSelectedKey='C'
+          label='TEST: Without fixes  (not working)'
+          id='Basicdrop12'
+          ariaLabel='Basic ComboBox example'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          onRenderLowerContent={ this.lowerContentBasic }
+        />
+
+        <ComboBox
+          componentRef={ this.setComponentRefButtonFocus }
+          defaultSelectedKey='C'
+          label='TEST: Add focus to button only (not working)'
+          id='Basicdrop13'
+          ariaLabel='Basic ComboBox example'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          onKeyDown={ this.onKeyDownFocus }
+          onRenderLowerContent={ this.lowerContentFocus }
+        />
+
+        <hr style={ { marginBottom: '100px' } } />
+
+        {/* FOR TEST ONLY END  */ }
 
         <ComboBox
           defaultSelectedKey='C'
@@ -216,6 +268,146 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
     );
   }
+
+  /* FOR TEST ONLY START  */
+
+  private setComponentRef = (component: IComboBox): void => {
+    this.IComboBoxRef = component;
+  }
+
+  private setComponentRefButton = (component: IButton): void => {
+    this.IButtonRef = component;
+  }
+
+  private setComponentRefButtonFocus = (component: IButton): void => {
+    this.IButtonRefFocus = component;
+  }
+
+  private lowerContentBasic = () => {
+    return (
+      <DefaultButton
+        className={ 'customButton' }
+        data-automation-id='customButton'
+        text='Custom'
+        ariaLabel='Custom'
+        // tslint:disable:jsx-no-lambda
+        onClick={ () => console.log('onClick called') }
+      // tslint:disable:jsx-no-lambda
+      />
+    );
+  }
+
+  private lowerContent = () => {
+    return (
+      <div onKeyDown={ this.onKeyDownLowerContent }>
+        <DefaultButton
+          componentRef={ this.setComponentRefButton }
+          id={ 'customButton' }
+          className={ 'customButton' }
+          data-automation-id='customButton'
+          text='Custom'
+          ariaLabel='Custom'
+          // tslint:disable:jsx-no-lambda
+          onClick={ () => console.log('onClick called') }
+          // tslint:disable:jsx-no-lambda
+          aria-selected={ this.selectLowerContent }
+          checked={ this.selectLowerContent }
+        />
+      </div>
+    );
+  }
+
+  private lowerContentFocus = () => {
+    return (
+      <DefaultButton
+        componentRef={ this.setComponentRefButtonFocus }
+        className={ 'customButton' }
+        data-automation-id='customButton'
+        text='Custom'
+        ariaLabel='Custom'
+        // tslint:disable:jsx-no-lambda
+        onClick={ () => console.log('onClick called') }
+        // tslint:disable:jsx-no-lambda
+        aria-selected={ this.selectLowerContent }
+        checked={ this.selectLowerContent }
+      />
+    );
+  }
+
+  private onKeyDown = (event: React.KeyboardEvent<IComboBox>) => {
+
+    // Tab-Back from comboBox input.  Focus on previous element (show code button)
+    if (KeyCodes.tab && event.shiftKey) {
+      // Prevent focus looping back around to custom button
+      let inputField: any = document.getElementById('Basicdrop11-input');
+      if (inputField === event.target) {
+        this.IComboBoxRef.dismissMenu();
+        this.selectLowerContent = false;
+        this.setState({ preventFocus: false });
+      }
+
+      // Tab from comboBox input.  Focus on custom button
+    } else if (KeyCodes.tab) {
+      if (!this.props.onRenderLowerContent && document.getElementById('Basicdrop11-list')) {
+        event.preventDefault();
+
+        // Prevent menu from closing
+        this.IComboBoxRef.dismissMenu(false);
+
+        // Select custom button, prevent focus return to input
+        this.selectLowerContent = true;
+        this.IButtonRef.focus();
+        this.setState({ preventFocus: true });
+      }
+    }
+
+  }
+
+  private onKeyDownFocus = (event: React.KeyboardEvent<IComboBox>) => {
+    // Tab from comboBox input.  Focus on custom button
+    if (KeyCodes.tab) {
+      if (!this.props.onRenderLowerContent && document.getElementById('Basicdrop13-list')) {
+        event.preventDefault();
+
+        // Select custom button, prevent focus return to input
+        this.selectLowerContent = true;
+        this.IButtonRefFocus.focus();
+      }
+    }
+
+  }
+
+  private onFocus = () => {
+    if (this.selectLowerContent) {
+      this.IButtonRef.focus();
+      this.selectLowerContent = false;
+    }
+  }
+
+  private onKeyDownLowerContent = (event: React.KeyboardEvent<HTMLDivElement>) => {
+
+    // Tab-Back from custom button.  Focus on current comboBox input
+    if (event.keyCode === 9 && event.shiftKey) {
+      let customButton: any = document.getElementById('customButton');
+      if (customButton === event.target) {
+        event.preventDefault();
+
+        this.selectLowerContent = false;
+        this.setState({ preventFocus: false });
+      }
+
+      // Tab from custom button.  Focus on next comboBox input
+    } else if (event.keyCode === 9) {
+      let customButton: any = document.getElementById('customButton');
+      if (customButton === event.target) {
+        this.IComboBoxRef.dismissMenu();
+        this.selectLowerContent = false;
+        this.setState({ preventFocus: false });
+      }
+    }
+  }
+
+  /* FOR TEST ONLY END  */
 
   // Render content of item
   @autobind

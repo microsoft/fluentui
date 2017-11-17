@@ -119,6 +119,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Add additional content below the callout list.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+
+  /**
+  * Prevent input focus.  When lower content is present, allows user to focus on lower content
+  * @default false;
+  */
+  preventInputFocus?: boolean;
 }
 
 export interface IComboBoxStyles {

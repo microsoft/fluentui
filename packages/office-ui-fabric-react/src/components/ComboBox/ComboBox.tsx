@@ -82,7 +82,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' }
+    buttonIconProps: { iconName: 'ChevronDown' },
+    preventInputFocus: false
   };
 
   public refs: {
@@ -677,10 +678,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   @autobind
   private _select() {
-    this._comboBox.inputElement.select();
+    if (!this.props.preventInputFocus) {
+      this._comboBox.inputElement.select();
 
-    if (!this.state.focused) {
-      this.setState({ focused: true });
+      if (!this.state.focused) {
+        this.setState({ focused: true });
+      }
     }
   }
 
