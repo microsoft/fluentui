@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IButtonClassNames } from './BaseButton.classNames';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
@@ -185,6 +186,22 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
  * Any custom data the developer wishes to associate with the menu item.
  */
   data?: any;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseButtonClassNames
+  */
+  getClassNames?: (theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined) => IButtonClassNames;
 }
 
 export enum ElementType {

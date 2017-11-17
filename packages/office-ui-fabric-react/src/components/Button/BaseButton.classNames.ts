@@ -1,6 +1,7 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
+import { mergeStyles, ITheme } from '../../Styling';
 import { IButtonStyles } from './Button.types';
+import { getStyles } from './BaseButton.styles';
 
 export interface IButtonClassNames {
   root?: string;
@@ -13,7 +14,7 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
-export const getClassNames = memoizeFunction((
+export const getBaseButtonClassNames = memoizeFunction((
   styles: IButtonStyles,
   className: string,
   variantClassName: string,
