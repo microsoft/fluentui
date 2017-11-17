@@ -150,7 +150,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
 
-      overflowItems = [...overflowItems, movedItem];
+      overflowItems = [movedItem, ...overflowItems];
       primaryItems = primaryItems.slice(0, -1);
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
@@ -163,13 +163,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
-    let movedItem = overflowItems[overflowItems.length - 1];
+    let movedItem = overflowItems[0];
 
     // Make sure that moved item exists and is not one of the original overflow items
     if (movedItem !== undefined && overflowItems.length > minimumOverflowItems) {
       movedItem.renderedInOverflow = false;
 
-      overflowItems = overflowItems.slice(0, -1);
+      overflowItems = overflowItems.slice(1);
       primaryItems = [...primaryItems, movedItem];
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
