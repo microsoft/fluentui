@@ -9,37 +9,37 @@
     {
       "packageName": "@uifabric/build",
       "projectFolder": "scripts",
-      "shouldPublish": false
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "@uifabric/experiments",
       "projectFolder": "packages/experiments",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "@uifabric/jest-serializer-merge-styles",
       "projectFolder": "packages/jest-serializer-merge-styles",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "@uifabric/utilities",
       "projectFolder": "packages/utilities",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
-      "shouldPublish": true,
+      "versionPolicyName": "lockedMajor",
       "cyclicDependencyProjects": [
         "office-ui-fabric-react"
       ]
@@ -47,7 +47,7 @@
     {
       "packageName": "@uifabric/styling",
       "projectFolder": "packages/styling",
-      "shouldPublish": true,
+      "versionPolicyName": "lockedMajor",
       "cyclicDependencyProjects": [
         "office-ui-fabric-react",
         "@uifabric/example-app-base"
@@ -56,7 +56,7 @@
     {
       "packageName": "@uifabric/icons",
       "projectFolder": "packages/icons",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "ssr-tests",
@@ -76,7 +76,7 @@
     {
       "packageName": "@uifabric/fabric-website",
       "projectFolder": "apps/fabric-website",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "test-bundle-button",
