@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { ICalloutProps } from './Callout.Props';
+import { ICalloutProps } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   BaseComponent,

@@ -32,7 +32,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.types.ts')
             ] }
           />
         }

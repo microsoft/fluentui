@@ -14,7 +14,7 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaInitialsColor,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
 import {
   PERSONA_INITIALS_COLOR,
   PERSONA_SIZE

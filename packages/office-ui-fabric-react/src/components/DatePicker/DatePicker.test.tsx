@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { Calendar, ICalendarStrings } from '../Calendar';
 import { DatePicker } from './DatePicker';
-import { IDatePickerStrings } from './DatePicker.Props';
+import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 

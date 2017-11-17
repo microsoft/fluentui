@@ -8,10 +8,10 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPicker } from '../../BaseFloatingPicker.Props';
+import { IBaseFloatingPicker } from '../../BaseFloatingPicker.types';
 import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people, mru } from 'experiments/lib/ExtendedPicker';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
+import { people, mru } from '../../../ExtendedPicker';
 import './FloatingPeoplePicker.Basic.Example.scss';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
