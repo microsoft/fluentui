@@ -80,13 +80,13 @@ export function loadTheme(theme: IPartialTheme): ITheme {
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 
-  for (let callback of _onThemeChangeCallbacks) {
+  _onThemeChangeCallbacks.forEach((callback: (theme: ITheme) => void) => {
     try {
       callback(_theme);
     } catch {
       // don't let a bad callback break everything else
     }
-  }
+  });
 
   return _theme;
 }
