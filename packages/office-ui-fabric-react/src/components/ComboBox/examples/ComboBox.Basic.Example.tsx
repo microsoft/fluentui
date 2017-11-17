@@ -369,7 +369,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       if (!this.props.onRenderLowerContent && document.getElementById('Basicdrop13-list')) {
         event.preventDefault();
 
-        // Select custom button, prevent focus return to input
+        // Select custom button
         this.selectLowerContent = true;
         this.IButtonRefFocus.focus();
       }
