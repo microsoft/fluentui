@@ -95,12 +95,12 @@ exports[`Toggle renders toggle correctly 1`] = `
               border-color: transparent;
               border-radius: .5em;
               border-style: solid;
-              border-width: .27em;
+              border-width: .28em;
               box-sizing: border-box;
               height: .5em;
               left: .2em;
               position: absolute;
-              top: .2em;
+              top: .18em;
               transition: all 0.1s ease;
               width: .5em;
             }
