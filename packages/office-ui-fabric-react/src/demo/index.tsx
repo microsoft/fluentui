@@ -14,7 +14,7 @@ import './ColorStyles.scss';
 
 import { initializeIcons } from '@uifabric/icons/lib/index';
 
-initializeIcons('dist/');
+initializeIcons();
 
 setBaseUrl('./dist/');
 ComponentPage.defaultProps.areBadgesVisible = true;
