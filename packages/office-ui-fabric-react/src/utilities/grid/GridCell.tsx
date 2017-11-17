@@ -35,7 +35,12 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         data-index={ index }
         data-is-focusable={ true }
         disabled={ disabled }
-        className={ className }
+        className={ css(className,
+          {
+            ['' + cellIsSelectedStyle]: selected,
+            ['' + cellDisabledStyle]: disabled
+          }
+        ) }
         onClick={ this._onClick }
         onMouseEnter={ this._onMouseEnter }
         onMouseLeave={ this._onMouseLeave }
