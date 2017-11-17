@@ -11,6 +11,7 @@ const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
   let {
+    disabled,
     item,
     onRemoveItem,
     index,
@@ -42,12 +43,15 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
           size={ PersonaSize.size28 }
         />
       </div>
-      <IconButton
-        onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
-        iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
-        className={ css('ms-PickerItem-removeButton', styles.removeButton) }
-        ariaLabel={ removeButtonAriaLabel }
-      />
+      {
+        disabled ? null :
+          <IconButton
+            onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
+            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
+            className={ css('ms-PickerItem-removeButton', styles.removeButton) }
+            ariaLabel={ removeButtonAriaLabel }
+          />
+      }
     </div >
   );
 };
