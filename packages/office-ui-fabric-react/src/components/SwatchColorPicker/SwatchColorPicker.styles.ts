@@ -5,6 +5,15 @@ import {
 } from '../../Styling';
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 
+function getSvgSelectorStyles(borderColor: string): IRawStyle {
+  return {
+    width: 12,
+    height: 12,
+    border: '4px solid',
+    borderColor: borderColor
+  };
+}
+
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
   const {
     theme,
@@ -38,24 +47,9 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
         padding: 4,
         boxSizing: 'content-box',
         selectors: {
-          ':hover': {
-            width: 12,
-            height: 12,
-            border: '4px solid',
-            borderColor: theme.palette.neutralQuaternaryAlt,
-          },
-          ':focus': {
-            width: 12,
-            height: 12,
-            border: '4px solid',
-            borderColor: theme.palette.neutralQuaternaryAlt,
-          },
-          ':active': {
-            width: 12,
-            height: 12,
-            border: '4px solid',
-            borderColor: theme.palette.neutralTertiaryAlt
-          }
+          ':hover': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
+          ':focus': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
+          ':active': getSvgSelectorStyles(theme.palette.neutralTertiaryAlt),
         }
       },
       circle && {

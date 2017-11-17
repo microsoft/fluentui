@@ -132,6 +132,10 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
+  private _isSelected(index: number): boolean {
+    return this.state.selectedIndex !== undefined && (this.state.selectedIndex === index);
+  }
+
   /**
    * Render a color cell
    * @param item - The item to render
@@ -146,7 +150,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         theme: this.props.theme!,
         className: this.props.className,
         disabled: this.props.disabled,
-        isSelected: this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index),
+        isSelected: this._isSelected(item.index!),
         circle: this.props.cellShape === 'circle',
       }
     );
@@ -209,7 +213,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         theme: this.props.theme!,
         className: this.props.className,
         disabled: this.props.disabled,
-        isSelected: this.state.selectedIndex !== undefined && (this.state.selectedIndex === colorOption.index),
+        isSelected: this._isSelected(colorOption.index!),
         circle: this.props.cellShape === 'circle',
       }
     );
