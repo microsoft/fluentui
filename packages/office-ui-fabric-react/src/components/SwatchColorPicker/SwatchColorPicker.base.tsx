@@ -40,7 +40,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     shouldFocusCircularNavigate: true
   } as ISwatchColorPickerProps;
 
-  private _classNames: IClassNames<ISwatchColorPickerStyles>;
   private _id: string;
 
   constructor(props: ISwatchColorPickerProps) {
@@ -143,7 +142,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   @autobind
   private _renderOption(item: IColorCellProps): JSX.Element {
     let id = this._id;
-    this._classNames = getClassNames(
+    const classNames = getClassNames(
       this.props.getStyles!,
       {
         theme: this.props.theme!,
@@ -159,7 +158,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         id={ id }
         key={ id + item.id }
         disabled={ this.props.disabled }
-        className={ this._classNames.cell }
+        className={ classNames.cell }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }
         onFocus={ this._onGridCellFocused }
@@ -206,8 +205,18 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   @autobind
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
     // Build an SVG for the cell with the given shape and color properties
+    const classNames = getClassNames(
+      this.props.getStyles!,
+      {
+        theme: this.props.theme!,
+        className: this.props.className,
+        disabled: this.props.disabled,
+        isSelected: this.state.selectedIndex !== undefined && (this.state.selectedIndex === colorOption.index),
+        circle: this.props.cellShape === 'circle',
+      }
+    );
     return (
-      <svg className={ this._classNames.svg } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
+      <svg className={ classNames.svg } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
