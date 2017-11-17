@@ -7,11 +7,6 @@
   "nodeSupportedVersionRange": ">=6.9.0 <9.0.0",
   "projects": [
     {
-      "packageName": "@uifabric/build",
-      "projectFolder": "scripts",
-      "versionPolicyName": "lockedMajor"
-    },
-    {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
       "versionPolicyName": "lockedMajor"
@@ -57,6 +52,11 @@
       "packageName": "@uifabric/icons",
       "projectFolder": "packages/icons",
       "versionPolicyName": "lockedMajor"
+    },
+    {
+      "packageName": "@uifabric/build",
+      "projectFolder": "scripts",
+      "shouldPublish": false
     },
     {
       "packageName": "ssr-tests",
