@@ -349,7 +349,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           }
           return;
 
-
         case KeyCodes.tab:
           if (direction === FocusZoneDirection.vertical) {
             if (ev.shiftKey) {
