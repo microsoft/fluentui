@@ -40,6 +40,11 @@ export interface INavProps {
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
+   * Function callback invoked when the chevron on a link is clicked
+   */
+  onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
+
+  /**
    * Indicates whether the navigation component renders on top of other content in the UI
    */
   isOnTop?: boolean;
