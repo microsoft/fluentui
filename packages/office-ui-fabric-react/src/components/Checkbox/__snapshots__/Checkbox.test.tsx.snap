@@ -108,10 +108,8 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         className=
             ms-Icon
             {
-              display: inline-block;
-            }
-            {
               color: #ffffff;
+              display: inline-block;
               opacity: 0;
             }
         data-icon-name="CheckMark"

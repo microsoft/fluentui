@@ -27,8 +27,6 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
 
     root: [
       'ms-Image',
-      isPortrait && 'ms-Image-image--portrait',
-      !isPortrait && 'ms-Image-image--landscape',
       {
         overflow: 'hidden'
       },
@@ -41,6 +39,8 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
 
     image: [
       'ms-Image-image',
+      isPortrait && 'ms-Image-image--portrait',
+      !isPortrait && 'ms-Image-image--landscape',
       imageFit === ImageFit.none && 'ms-Image-image--none',
       imageFit === ImageFit.center && 'ms-Image-image--center',
       imageFit === ImageFit.contain && 'ms-Image-image--contain',

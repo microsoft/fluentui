@@ -11,6 +11,10 @@ const IconExampleClass = mergeStyles({
   margin: '0 25px'
 });
 
+const DeepSkyBlue = { color: 'deepskyblue' };
+const GreenYellow = { color: 'greenyellow' };
+const Salmon = { color: 'salmon' };
+
 export class IconColorExample extends React.Component<any, any> {
   public render() {
     return (
@@ -18,17 +22,17 @@ export class IconColorExample extends React.Component<any, any> {
         <Icon
           iconName={ 'CompassNW' }
           className={ IconExampleClass }
-          getStyles={ () => ({ root: { color: 'deepskyblue' } }) }
+          style={ DeepSkyBlue }
         />
         <Icon
           iconName={ 'Dictionary' }
           className={ IconExampleClass }
-          getStyles={ () => ({ root: { color: 'greenyellow' } }) }
+          style={ GreenYellow }
         />
         <Icon
           iconName={ 'TrainSolid' }
           className={ IconExampleClass }
-          getStyles={ () => ({ root: { color: 'salmon' } }) }
+          style={ Salmon }
         />
       </div>
     );

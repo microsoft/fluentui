@@ -103,9 +103,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               ms-Icon
               ms-Crumb-chevron
               {
-                display: inline-block;
-              }
-              {
                 color: #666666;
                 display: inline-block;
                 font-size: 12px;
@@ -200,9 +197,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               ms-Icon
               ms-Crumb-chevron
               {
-                display: inline-block;
-              }
-              {
                 color: #666666;
                 display: inline-block;
                 font-size: 12px;
@@ -296,9 +290,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
           className=
               ms-Icon
               ms-Crumb-chevron
-              {
-                display: inline-block;
-              }
               {
                 color: #666666;
                 display: inline-block;
@@ -528,8 +519,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   ms-Icon
                   {
                     display: inline-block;
-                  }
-                  {
                     height: 40px;
                     line-height: 44px;
                   }
@@ -545,9 +534,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
           className=
               ms-Icon
               ms-Crumb-chevron
-              {
-                display: inline-block;
-              }
               {
                 color: #666666;
                 display: inline-block;
@@ -642,9 +628,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
           className=
               ms-Icon
               ms-Crumb-chevron
-              {
-                display: inline-block;
-              }
               {
                 color: #666666;
                 display: inline-block;

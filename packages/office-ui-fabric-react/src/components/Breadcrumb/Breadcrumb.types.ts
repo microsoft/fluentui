@@ -17,7 +17,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLDivElement>, 
   /**
    * Allows the root to be reconfigured.
    */
-  as?: IComponentAs<React.AllHTMLAttributes<HTMLElement>>;
+  as?: string;
 
   /**
    * Allows the crumb to be reconfigured.
