@@ -60,6 +60,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   showWeekNumbers?: boolean;
   firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
+  showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
 }
@@ -474,7 +475,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate } = propsToUse;
+    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate, showSixWeeksByDefault } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
     let weeks: IDayInfo[][] = [];
@@ -492,7 +493,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
     }
 
-    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
+    let shouldGetWeeks = true;
+
+    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
       let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
@@ -519,7 +522,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         date.setDate(date.getDate() + 1);
       }
 
-      if (!isAllDaysOfWeekOutOfMonth) {
+      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
+      shouldGetWeeks = showSixWeeksByDefault ? (!isAllDaysOfWeekOutOfMonth || weekIndex <= 5) : !isAllDaysOfWeekOutOfMonth;
+      if (shouldGetWeeks) {
         weeks.push(week);
       }
     }

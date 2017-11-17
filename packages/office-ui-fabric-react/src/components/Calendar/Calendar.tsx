@@ -59,7 +59,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     navigationIcons: iconStrings,
     showWeekNumbers: false,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    dateTimeFormatter: dateTimeFormatterCallbacks
+    dateTimeFormatter: dateTimeFormatterCallbacks,
+    showSixWeeksByDefault: false,
   };
 
   public refs: {
@@ -156,6 +157,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showWeekNumbers={ this.props.showWeekNumbers }
                   firstWeekOfYear={ this.props.firstWeekOfYear! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
+                  showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
                   minDate={ minDate }
                   maxDate={ maxDate }
                   ref='dayPicker'
