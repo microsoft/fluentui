@@ -5,16 +5,6 @@ import {
 } from '../../Styling';
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 
-function getSvgSelectorStyles(borderColor: string): IRawStyle {
-  return {
-    width: '12px',
-    height: '12px',
-    boxShadow: 'box-shadow: 0 0 0 1px #969696',
-    border: '4px solid',
-    borderColor: borderColor,
-  };
-}
-
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
   const {
     theme,
@@ -26,15 +16,13 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
 
   const { semanticColors, fonts } = theme;
   return {
-    root: [
-      {
-        position: 'relative',
-      }
-    ],
     cell: [
       {
-        padding: '0px',
+        padding: 0,
         overflow: 'visible',
+        selectors: {
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' }
+        }
       },
       disabled && 'is-disabled' && {
         color: semanticColors.disabledBodyText,
@@ -42,44 +30,27 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
         pointerEvents: 'none',
         opacity: .3
       },
-      !disabled && isSelected && 'is-selected' && {
-        selectors: {
-          '&:hover .svg': { boxShadow: '0 0 0 1px #969696' },
-          '&:focus .svg, & .svg': {
-            width: 12,
-            height: 12,
-            border: '4px solid',
-            borderColor: theme.palette.neutralTertiaryAlt
-          },
-          '&:active .svg ': { boxShadow: '0 0 0 1px #969696' },
-        },
-      },
-      !disabled && {
-        selectors: {
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisibl &:focus::after': { border: 'none' }
-        }
-      }
     ],
     svg: [
       {
-        width: '20px',
-        height: '20px',
-        padding: '4px',
+        width: 20,
+        height: 20,
+        padding: 4,
         boxSizing: 'content-box',
         selectors: {
-          '&:hover': {
+          ':hover': {
             width: 12,
             height: 12,
             border: '4px solid',
             borderColor: theme.palette.neutralQuaternaryAlt,
           },
-          '&:focus': {
+          ':focus': {
             width: 12,
             height: 12,
             border: '4px solid',
             borderColor: theme.palette.neutralQuaternaryAlt,
           },
-          '&:active': {
+          ':active': {
             width: 12,
             height: 12,
             border: '4px solid',
@@ -90,6 +61,20 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
       circle && {
         borderRadius: '100%'
       },
+      isSelected && {
+        boxShadow: '0 0 0 1px #969696',
+        border: '4px solid',
+        width: 12,
+        height: 12,
+        borderColor: theme.palette.neutralTertiaryAlt,
+        selectors: {
+          ':hover': { boxShadow: '0 0 0 1px #969696' },
+          ':focus': {
+            borderColor: theme.palette.neutralTertiaryAlt
+          },
+          ':active': { boxShadow: '0 0 0 1px #969696' },
+        },
+      }
     ],
     container: [
       'ms-swatchColorPickerBodyContainer',
