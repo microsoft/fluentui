@@ -239,7 +239,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     column.isPadded && styles.cellWrapperPadded
                   ) }
                   style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
-                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                   data-automationid='ColumnsHeaderColumn'
                   data-item-key={ column.key }
                 >
@@ -260,6 +259,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           aria-describedby={ `${this._id}-${column.key}-tooltip` }
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
+                          aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                         >
                           <span
                             id={ `${this._id}-${column.key}-name` }

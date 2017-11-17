@@ -2,12 +2,13 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
-export class TextFieldAddonExample extends React.Component<any, any> {
+export class TextFieldPrefixAndSuffixExample extends React.Component<any, any> {
   public render() {
     return (
-      <div className='docs-TextFieldExample'>
+      <div className='ms-TextFieldExample'>
         <TextField
-          addonString='https://'
+          prefix='https://'
+          suffix='.com'
         />
       </div>
     );

@@ -93,7 +93,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         checked && [
           {
             background: pillCheckedBackground,
-            borderColor: 'transparent',
+            borderColor: 'transparent'
           },
           {
             selectors: {
@@ -132,12 +132,12 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         height: '.5em',
         borderRadius: '.5em',
         position: 'absolute',
-        top: '.2em',
+        top: '.18em',
         transition: 'all 0.1s ease',
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
-        borderWidth: '.27em',
+        borderWidth: '.28em',
         borderStyle: 'solid',
         boxSizing: 'border-box',
         left: '.2em'
@@ -145,7 +145,13 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       !disabled && checked && [
         {
           backgroundColor: thumbCheckedBackground,
-          left: '1.4em'
+          left: '1.4em',
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Window',
+              borderColor: 'Window'
+            }
+          }
         }
       ],
       disabled && [
