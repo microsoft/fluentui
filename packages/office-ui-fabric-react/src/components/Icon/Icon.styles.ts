@@ -14,7 +14,7 @@ export const getStyles = (props: IIconStyleProps): IIconStyles => ({
     props.isImage && {
       overflow: 'hidden'
     },
-    props.hasCode && !props.isImage && {
+    props.isPlaceholder && {
       width: '1em'
     },
     props.subsetClassName,

@@ -25,7 +25,7 @@ export const IconBase = (props: IIconProps): JSX.Element => {
     getStyles,
     {
       className,
-      hasCode: typeof iconDefinition.code === 'string',
+      isPlaceholder: typeof iconName === 'string' && iconName.length === 0,
       isImage: iconType === IconType.image,
       subsetClassName: iconDefinition.subset.className
     }

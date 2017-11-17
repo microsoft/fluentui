@@ -59,7 +59,7 @@ export interface IIconStyleProps {
   className?: string;
   subsetClassName?: string;
   isImage: boolean;
-  hasCode: boolean;
+  isPlaceholder: boolean;
 }
 
 export interface IIconStyles {
