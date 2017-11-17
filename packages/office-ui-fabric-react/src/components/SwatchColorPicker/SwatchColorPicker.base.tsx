@@ -19,8 +19,6 @@ import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
 import { classNamesFunction, IClassNames } from '../../Styling';
-import * as stylesImport from './SwatchColorPicker.scss';
-const styles: any = stylesImport;
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -158,7 +156,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         id={ id }
         key={ id + item.id }
         disabled={ this.props.disabled }
-        className={ classNames.cell }
+        className={ classNames.josh }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }
         onFocus={ this._onGridCellFocused }
