@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ScrollablePane: Fix sortStickies function to sort elements by their true offsetTop in respect to scrollablePane's root",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-edwliu@microsoft.com"
+}

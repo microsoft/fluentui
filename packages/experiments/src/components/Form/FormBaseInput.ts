@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 import { IFormContext, IFormValidationResult } from './Form';
-import { IFormBaseInputProps } from './FormBaseInput.Props';
+import { IFormBaseInputProps } from './FormBaseInput.types';
 export { IFormBaseInputProps };
 
 // Components

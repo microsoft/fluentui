@@ -14,7 +14,7 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaInitialsColor,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
 import {
   PERSONA_INITIALS_COLOR,
   PERSONA_SIZE
@@ -198,7 +198,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     imageInitials = imageInitials || getInitials(primaryText, isRTL);
 
     return (
-      <span>{ imageInitials }</span>
+      imageInitials !== '' ?
+        <span>{ imageInitials }</span> :
+        <Icon iconName='Contact' />
     );
   }
 

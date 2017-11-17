@@ -43,7 +43,9 @@ $ProgressIndicatorTextHeight: 18px;
   width: 100%;
   height: 2px;
   background-color: $ms-color-neutralLight;
-  outline: 1px solid transparent;
+  @include high-contrast {
+    border-bottom: 1px solid WindowText;
+  }
 }
 
 .progressBar {

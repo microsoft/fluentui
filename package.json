@@ -20,15 +20,13 @@
     "build": "npm run _rushRebuild",
     "buildfast": "npm run _rushBuild",
     "change": "node node_modules/@microsoft/rush/bin/rush change",
-    "generate": "node node_modules/@microsoft/rush/bin/rush generate",
+    "generate": "node node_modules/@microsoft/rush/bin/rush generate --force",
     "bundlesize": "cd scripts && npm run bundlesize",
-    "create-component": "node scripts/create-component.js"
+    "create-component": "node scripts/create-component.js",
+    "checkchange": "node node_modules/@microsoft/rush/bin/rush change -v"
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.12"
-  },
-  "dependencies": {
-    "gulp": "^3.9.1"
+    "@microsoft/rush": "4.0.0"
   }
 }

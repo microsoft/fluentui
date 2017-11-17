@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   IDatePickerProps,
   IDatePickerStrings
-} from './DatePicker.Props';
+} from './DatePicker.types';
 import {
   Calendar,
   DayOfWeek
@@ -17,7 +17,7 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
-import { compareDates } from '../../utilities/dateMath/DateMath';
+import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import * as stylesImport from './DatePicker.scss';
 const styles: any = stylesImport;
 
@@ -143,8 +143,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let { formatDate, isRequired, strings, value } = nextProps;
-    const errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
+    let { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
+    let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
+
+    if (!errorMessage && value) {
+      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || '*' : undefined;
+    }
 
     // Set error message
     this.setState({
@@ -176,7 +180,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       placeholder,
       allowTextInput,
       borderless,
-      className
+      className,
+      minDate,
+      maxDate
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -240,6 +246,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               firstWeekOfYear={ this.props.firstWeekOfYear }
               showGoToToday={ this.props.showGoToToday }
               dateTimeFormatter={ this.props.dateTimeFormatter }
+              minDate={ minDate }
+              maxDate={ maxDate }
               ref={ this._resolveRef('_calendar') }
             />
           </Callout>
@@ -392,7 +400,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _validateTextInput() {
-    let { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate } = this.props;
+    const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
     const inputValue = this.state.formattedDate;
 
     // Do validation only if DatePicker's popup is dismissed
@@ -425,10 +433,17 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               errorMessage: strings!.invalidInputErrorMessage || '*'
             });
           } else {
-            this.setState({
-              selectedDate: date,
-              errorMessage: ''
-            });
+            // Check against optional date boundaries
+            if (this._isDateOutOfBounds(date, minDate, maxDate)) {
+              this.setState({
+                errorMessage: strings!.isOutOfBoundsErrorMessage || '*'
+              });
+            } else {
+              this.setState({
+                selectedDate: date,
+                errorMessage: ''
+              });
+            }
           }
         }
       } else {
@@ -445,5 +460,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         onSelectDate(date);
       }
     }
+  }
+
+  private _isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
+    return ((!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0));
   }
 }

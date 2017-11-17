@@ -6,9 +6,9 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from 'experiments/lib/ExtendedPicker';
+import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.Props';
+import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.types';
 import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
 
 export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedItemsListProps<IExtendedPersonaProps>, {}> {

@@ -2,11 +2,11 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecoratorFixedWidth } from '../utilities';
 import { TextField } from 'office-ui-fabric-react';
 
 storiesOf('TextField', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
@@ -74,9 +74,14 @@ storiesOf('TextField', module)
       label='Icon'
       iconProps={ { iconName: 'Calendar' } }
     />
-  )).add('Addon', () => (
+  )).add('Prefix', () => (
     <TextField
-      label='Addon'
-      addonString='https://'
+      label='Prefix'
+      prefix='https://'
+    />
+  )).add('Suffix', () => (
+    <TextField
+      label='Suffix'
+      suffix='.com'
     />
   ));

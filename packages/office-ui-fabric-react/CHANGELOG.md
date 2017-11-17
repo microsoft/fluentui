@@ -1,6 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 Nov 2017 06:05:34 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Nov 2017 11:20:34 GMT and should not be manually modified.
+
+## 5.22.0
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Minor changes
+
+- Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option.
+
+### Patches
+
+- Checkbox: Add getClassNames prop to allow complete customization of the component
+- SplitButton: Avoid applying selector rest changes when in toggle state
+- Toggle: Add label as fall back ariaLabel.
+
+## 5.21.2
+Wed, 15 Nov 2017 11:11:59 GMT
+
+### Patches
+
+- SplitButton: Disable visual changes in splitButtonContainer when control is disabled
+
+## 5.21.1
+Tue, 14 Nov 2017 11:21:27 GMT
+
+### Patches
+
+- ChoiceGroup: Fixed RTL support.
+
+## 5.21.0
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Minor changes
+
+- Allow optional minimum and maximum date boundaries on DatePicker component
+- Added className to IDetailsRowProps for the root element.
+- Have VirtualizedCombobox implement IComboBox interface
+- Add focusInput method in BasePicker to allow set focus to input element directly.
+
+### Patches
+
+- Expose prop to apply rootExpanded on Primary Button if isSplit is true
+- TextField: Moved required asterisk to be outside of fieldGroup when no label is present. No longer a need for special styles when icons are present.
+- TextField: Updated field width for all examples to be more legible. Replaced ms- with docs- prefix for example scss.
 
 ## 5.20.3
 Wed, 08 Nov 2017 06:05:34 GMT
@@ -1779,7 +1822,7 @@ Fri, 21 Apr 2017 06:23:54 GMT
 ## 2.20.2
 Wed, 19 Apr 2017 16:54:26 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 2.20.1
 Wed, 19 Apr 2017 15:36:48 GMT

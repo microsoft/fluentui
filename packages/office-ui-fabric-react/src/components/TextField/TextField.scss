@@ -85,7 +85,7 @@ $field-error-color: $errorTextColor;
   }
 }
 
-.fieldAddon {
+.fieldPrefixSuffix {
   background: $ms-color-neutralLighter;
   color: $ms-color-neutralSecondary;
   display: flex;
@@ -138,22 +138,11 @@ $field-error-color: $errorTextColor;
 .root.rootIsRequiredPlaceholderOnly {
   :global(.ms-TextField-fieldGroup) {
     &::after {
-      content: ' *';
-      color: $ms-color-error;
-      @include ms-padding-right(12px);
-    }
-  }
-}
-
-.root.rootIsRequiredPlaceholderIcon {
-  :global(.ms-Icon) {
-    &::before {
-      content: ' *';
+      content: '*';
       color: $ms-color-error;
       position: absolute;
-      top: -4px;
-      @include ms-right(8px);
-      @include ms-padding-right(12px);
+      top: -5px;
+      @include ms-right(-10px);
     }
   }
 }
