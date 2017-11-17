@@ -15,3 +15,11 @@ export {
 export {
   getIconClassName
 } from './getIconClassName';
+
+export {
+  IPropsWithStyles,
+  styled
+} from './styled';
+export {
+  classNamesFunction
+} from './classNamesFunction';

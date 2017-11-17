@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "add suffix to TextField",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "scott.balentine@microsoft.com"
 }

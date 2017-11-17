@@ -43,7 +43,7 @@ exports[`Toggle renders toggle correctly 1`] = `
   >
     <button
       aria-disabled={undefined}
-      aria-label={undefined}
+      aria-label="Label"
       aria-pressed={false}
       className=
           ms-Toggle-background

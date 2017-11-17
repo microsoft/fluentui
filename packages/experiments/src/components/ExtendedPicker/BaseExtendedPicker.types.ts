@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseAutoFill, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';
-import { IBaseSelectedItemsListProps } from 'experiments/lib/SelectedItemsList';
+import { IBaseFloatingPickerProps } from '../../FloatingPicker';
+import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */

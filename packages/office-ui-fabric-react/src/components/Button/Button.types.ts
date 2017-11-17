@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IButtonClassNames } from './BaseButton.classNames';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
@@ -185,6 +186,22 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
  * Any custom data the developer wishes to associate with the menu item.
  */
   data?: any;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseButtonClassNames
+  */
+  getClassNames?: (theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined) => IButtonClassNames;
 }
 
 export enum ElementType {
@@ -386,9 +403,29 @@ export interface IButtonStyles {
   screenReaderText?: IStyle;
 
   /**
-     * Style override for the container div around a SplitButton element
-     */
+   * Style override for the container div around a SplitButton element
+   */
   splitButtonContainer?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is hovered.
+   */
+  splitButtonContainerHovered?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is focused.
+   */
+  splitButtonContainerFocused?: IStyle;
+
+  /**
+  * Style for container div around a SplitButton element when the button is checked.
+  */
+  splitButtonContainerChecked?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is checked and hovered.
+   */
+  splitButtonContainerCheckedHovered?: IStyle;
 
   /**
    * Style override for the container div around a SplitButton element in a disabled state
