@@ -27,10 +27,10 @@ export const getClassNames = memoizeFunction((
   const isExpanded = expanded && !isSplit;
   return {
     root: mergeStyles(
-      className,
       'ms-Button',
-      variantClassName,
       styles.root,
+      variantClassName,
+      className,
       checked && [
         'is-checked',
         styles.rootChecked
