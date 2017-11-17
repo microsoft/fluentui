@@ -2,117 +2,69 @@
 
 $Rating-defaultColor: $ms-color-neutralTertiary;
 $Rating-selectedColor: $ms-color-black;
-$Rating-hoverColor: $ms-color-themeDarkAlt;
 $Rating-disabledColor: $ms-color-neutralTertiaryAlt;
 
 $Rating-smallIconSize: 16px;
 $Rating-largeIconSize: 20px;
 
-// Hide input field
-.input {
-  position: absolute;
-  opacity: 0;
-  top: 0px;
+.ratingStar {
+  display: inline-block;
+  position: relative;
 }
 
-.container {
-  position: relative;
-  display: inline-block;
+.ratingStarBack {
+  color: $Rating-defaultColor;
+  width: 100%;
 
-  &:hover {
-    .star:not(.starIsDisabled) {
-      color: $Rating-selectedColor;
-
-      @include high-contrast {
-        color: HighlightText;
-        background-color: Highlight;
-        -ms-high-contrast-adjust: none;
-      }
-
-      &.star:hover {
-        color: $Rating-hoverColor;
-
-        @include high-contrast {
-          color: HighlightText;
-        }
-
-        & ~ .star {
-          // Set default color for any star after hovered one
-          color: $Rating-defaultColor;
-
-          @include high-contrast {
-            color: GrayText;
-            background-color: Window;
-          }
-        }
-      }
-    }
-  }
-
-  .star {
-    display: inline-block;
-
-    text-align: center;
-
-    color: $Rating-defaultColor;
-
+  &.ratingStarDisabled {
+    color: $Rating-disabledColor;
     @include high-contrast {
-      color: WindowText;
-      -ms-high-contrast-adjust: none;
-    }
-
-    &.starIsSelected {
-      color: $Rating-selectedColor;
-
-      @include high-contrast {
-        color: HighlightText;
-        background-color: Highlight;
-        -ms-high-contrast-adjust: none;
-      }
-    }
-
-    &.starIsDisabled {
-      color: $Rating-disabledColor;
-
-      @include high-contrast {
-        color: GrayText;
-        background-color: Window;
-      }
-
-      .label {
-        cursor: default;
-      }
-    }
-
-    .label {
-      display: inline-block;
-      cursor: pointer;
-
-      font-size: $Rating-smallIconSize;
-      padding: 12px 0px;
-
-      // Reserve space for focus styling
-      border: 1px solid transparent;
-
-      @include high-contrast {
-        border-color: Window;
-      }
+      color: GrayText;
     }
   }
+}
 
-  .rootIsLarge & {
-    .label {
-      font-size: $Rating-largeIconSize;
-      padding: 6px 2px 9px 2px;
-    }
+.ratingStarFront {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  color: $Rating-selectedColor;
+  @include high-contrast {
+    color: Highlight;
   }
+}
+
+.ratingButton {
+  background: none;
+  margin: 3px 3px 0px 0px;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  
+  &:disabled, &[disabled] {
+	cursor: default;
+  }
+}
+
+.rootIsSmall  {
+    font-size: $Rating-smallIconSize;
+    line-height: $Rating-smallIconSize;
+  }
+
+.rootIsLarge  {
+    font-size: $Rating-largeIconSize;
+    line-height: $Rating-largeIconSize;
 }
 
 .labelText {
   @include ms-screenReaderOnly();
 }
 
-// Highlight focused star
-:global(.ms-Fabric.is-focusVisible) .starIsInFocus .label {
-  border: 1px solid $focusBorderColor;
+.ratingFocusZone {
+  display: inline-block;
+  padding-bottom: 1px;
 }

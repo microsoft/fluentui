@@ -45,14 +45,27 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   onChanged?: (rating: number) => void;
 
   /**
-   * Optional label for star ratings, will be read by screen readers, defaults to 'Star'.
+   * Optional label format for star ratings, will be read by screen readers, defaults to ''.
+   * Can be used like "{0} of {1} stars selected".
+   * Where {0} will be subsituted by the current rating and {1} will be subsituted by the max rating.
    */
-  ariaLabelIcon?: string;
+  ariaLabelFormat?: string;
 
   /**
-   * Optional id of label describing this instance of Rating
+   * Deprecated: Optional id of label describing this instance of Rating. Instead of this use getArialabel
+   * @deprecated
    */
   ariaLabelId?: string;
+
+  /**
+   * Optional flag to mark rating control as readOnly
+   */
+  readOnly?: boolean;
+
+  /*
+  * Optional callback to set the arialabel for rating control.
+  */
+  getAriaLabel?: (rating: number, max: number) => string;
 }
 
 export enum RatingSize {

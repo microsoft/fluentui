@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Rating control implementation using button, Half star support and ReadOnly rating control support",
+      "type": "major"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "nirmalar@microsoft.com"
+}
