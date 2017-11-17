@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 16 Nov 2017 11:20:34 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Nov 2017 17:36:36 GMT and should not be manually modified.
+
+## 5.6.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Add external signal
+
+### Patches
+
+- Make sure commands get added/removed in the correct order
 
 ## 5.5.2
 Thu, 16 Nov 2017 11:20:34 GMT

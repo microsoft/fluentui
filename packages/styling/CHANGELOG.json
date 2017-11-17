@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.10.0",
+      "tag": "@uifabric/styling_v5.10.0",
+      "date": "Fri, 17 Nov 2017 17:36:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "54dab7cabfc39ffe6e6ab68181e561467fa009fe",
+            "comment": "Export functions used to create font sets based upon a given locale code"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.0",
       "tag": "@uifabric/styling_v5.8.0",
       "date": "Thu, 16 Nov 2017 11:20:34 GMT",
