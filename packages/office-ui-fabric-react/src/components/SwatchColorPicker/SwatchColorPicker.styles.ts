@@ -1,7 +1,8 @@
 
 import {
   IRawStyle,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../Styling';
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 
@@ -30,7 +31,8 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
         padding: 0,
         overflow: 'visible',
         selectors: {
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' }
+          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' },
+          [HighContrastSelector]: { border: 'none' }
         }
       },
       disabled && 'is-disabled' && {
