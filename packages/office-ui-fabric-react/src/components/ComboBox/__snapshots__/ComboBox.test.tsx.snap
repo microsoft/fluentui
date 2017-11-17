@@ -169,7 +169,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             border-color: ButtonText;
             color: ButtonText;
           }
-          & i {
+          & .ms-Icon {
             font-size: 12px;
           }
           &:hover {
