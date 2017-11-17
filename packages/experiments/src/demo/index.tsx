@@ -16,7 +16,7 @@ import './ColorStyles.scss';
 setBaseUrl('./dist/');
 
 // Initialize all icons.
-initializeIcons('dist/');
+initializeIcons();
 
 let rootElement: HTMLElement | null;
 

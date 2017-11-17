@@ -1,7 +1,6 @@
 {
   "copyTo": {
     "dist": [
-      "../icons/fonts/*",
       "index.html"
     ],
     "dist/sass": [

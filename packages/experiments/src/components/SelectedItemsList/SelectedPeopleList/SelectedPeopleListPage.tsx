@@ -26,7 +26,7 @@ export class SelectedPeopleListPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/SelectedItemsList/BaseSelectedItemsList.props.ts')
+              require<string>('!raw-loader!experiments/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts')
             ] }
           />
         }

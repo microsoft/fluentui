@@ -26,7 +26,7 @@ export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/LayoutGroup/LayoutGroup.props.ts')
+              require<string>('!raw-loader!experiments/src/components/LayoutGroup/LayoutGroup.types.ts')
             ] }
           />
         }

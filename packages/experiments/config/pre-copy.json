@@ -1,7 +1,0 @@
-{
-  "copyTo": {
-    "dist": [
-      "../icons/fonts/*"
-    ]
-  }
-}
