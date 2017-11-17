@@ -4,20 +4,19 @@ import {
   IRawStyle,
   ITheme,
   concatStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 
 import { memoizeFunction } from '../../Utilities';
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const ContextualMenuItemHeight = '32px';
 
 const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
   return {
     selectors: {
-      [MS_HIGHCONTRAST_ACTIVE]: {
+      [HighContrastSelector]: {
         backgroundColor: 'Highlight',
         borderColor: 'Highlight',
         color: 'HighlightText',
@@ -130,7 +129,7 @@ export const getMenuItemStyles = memoizeFunction((
     iconColor: {
       color: semanticColors.menuIcon,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'HighlightText',
         }
       }
@@ -138,7 +137,7 @@ export const getMenuItemStyles = memoizeFunction((
     checkmarkIcon: {
       color: semanticColors.bodySubtext,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'HighlightText',
         }
       }

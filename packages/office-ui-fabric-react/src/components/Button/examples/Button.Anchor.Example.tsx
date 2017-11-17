@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   IButtonProps,
-  PrimaryButton
+  DefaultButton
 } from 'office-ui-fabric-react/lib/Button';
 import {
   Label
@@ -17,17 +17,16 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <PrimaryButton
+        <DefaultButton
           data-automation-id='test'
           disabled={ disabled }
           checked={ checked }
           href='http://bing.com'
           target='_blank'
           title='Let us bing!'
-          style={ { color: '#ffffff' } }
         >
           Bing
-        </PrimaryButton>
+        </DefaultButton>
       </div >
     );
   }

@@ -90,10 +90,6 @@ $ms-Persona-presenceBorder: 2px;
   height: $ms-Persona-size48;
   width: $ms-Persona-size48;
 
-  @include high-contrast {
-    border: 1px solid WindowText;
-  }
-
   .image {
     border: 0px;
   }
@@ -119,6 +115,13 @@ $ms-Persona-presenceBorder: 2px;
   font-weight: $ms-font-weight-regular;
   line-height: 46px;
   height: $ms-Persona-size48;
+
+  @include high-contrast {
+    border: 1px solid WindowText;
+    -ms-high-contrast-adjust: none;
+    // Using important to override all of the more specific initialsIsColor rules
+    background-color: Window !important;
+  }
 
   &.initialsIsLightBlue {
     background-color: $ms-color-initials-lightBlue;
@@ -335,10 +338,6 @@ $ms-Persona-presenceBorder: 2px;
 }
 
 .rootIsSize16 {
-  .imageArea {
-    box-shadow: 0 0 0 2px $ms-color-white;
-  }
-
   .imageArea,
   .image {
     height: $ms-Persona-size16;

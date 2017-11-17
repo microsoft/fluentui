@@ -12,6 +12,10 @@
 .colorRect {
   position: relative;
   margin-bottom: 10px;
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .rectContainer {

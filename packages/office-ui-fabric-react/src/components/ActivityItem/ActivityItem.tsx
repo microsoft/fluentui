@@ -108,8 +108,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       if (props.isCompact) {
         style = {
           display: 'inline-block',
-          width: '8px',
-          minWidth: '8px',
+          width: '10px',
+          minWidth: '10px',
           overflow: 'visible'
         };
       }

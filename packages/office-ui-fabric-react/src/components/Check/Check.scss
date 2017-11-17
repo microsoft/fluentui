@@ -33,6 +33,9 @@ $checkBoxHeight: 18px;
   &.rootIsChecked:before {
     background: $ms-color-themePrimary;
     opacity: 1;
+    @include high-contrast {
+      background: Window;
+    }
   }
 
   .check {
@@ -66,7 +69,7 @@ $checkBoxHeight: 18px;
   color: $ms-color-neutralTertiaryAlt;
 
   @include high-contrast {
-    display: none;
+    color: WindowText;
   }
 }
 
@@ -78,6 +81,10 @@ $checkBoxHeight: 18px;
   color: $ms-color-neutralTertiaryAlt;
   font-size: 16px;
   left: .5px;
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .rootIsChecked .check {
@@ -85,9 +92,7 @@ $checkBoxHeight: 18px;
   font-weight: 900;
 
   @include high-contrast {
-    border-radius: 10px;
     border: none;
-    background: Window;
     color: WindowText;
   }
 }
