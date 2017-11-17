@@ -591,25 +591,25 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .monthIsHighlighted {
-  background-color: $ms-color-themeLight;
+  background-color: $ms-color-themeLight !important;
   &.monthOption:hover {
-    background-color: $ms-color-themeLight;
+    background-color: $ms-color-themeLight !important;
   }
 }
 
 .monthIsCurrentMonth {
   font-weight: 600;
-  color: $ms-color-white;
-  background-color: $ms-color-themePrimary;
+  color: $ms-color-white !important;
+  background-color: $ms-color-themePrimary !important;
   &.monthOption:hover {
     font-weight: 600;
-    color: $ms-color-white;
-    background-color: $ms-color-themePrimary;
+    color: $ms-color-white !important;
+    background-color: $ms-color-themePrimary !important;
   }
 }
 
 .monthOption:active {
-  background-color: $ms-color-themeLight;
+  background-color: $ms-color-themeLight !important;
 }
 
 // Highlighted Month date styling.
@@ -636,4 +636,13 @@ $Calendar-dayPicker-margin: 10px;
 
 .singleBottomDate {
   border-radius: 0;
+}
+button {
+  background: none !important;
+  color: inherit;
+  border: none;
+  padding: 0! important;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit !important;
 }
