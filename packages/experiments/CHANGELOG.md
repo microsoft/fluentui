@@ -1,6 +1,66 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 13 Oct 2017 01:36:01 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Nov 2017 11:20:34 GMT and should not be manually modified.
+
+## 5.5.2
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Patches
+
+- Fix experiment imports for FloatingPicker and ExtendedPicker components
+
+## 5.5.1
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- Fix alignment with trending icon
+
+## 5.5.0
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Minor changes
+
+- added ATP signal
+
+## 5.4.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker
+
+### Patches
+
+- Fix import that was causing build error
+
+## 5.3.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Switch to .svg files for FolderCover images
+
+## 5.3.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Add modal selection behavior to TilesList
+
+## 5.2.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add Form control
+
+## 5.1.0
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Minor changes
+
+- Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively
 
 ## 5.0.5
 Fri, 13 Oct 2017 01:36:01 GMT
@@ -19,7 +79,7 @@ Fri, 06 Oct 2017 10:18:41 GMT
 ## 5.0.3
 Wed, 04 Oct 2017 22:40:22 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 5.0.2
 Sat, 30 Sep 2017 01:26:37 GMT
@@ -144,12 +204,12 @@ Fri, 25 Aug 2017 20:31:51 GMT
 ## 0.1.6
 Fri, 25 Aug 2017 19:27:18 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.5
 Thu, 24 Aug 2017 10:20:20 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.4
 Thu, 24 Aug 2017 05:38:14 GMT
@@ -171,7 +231,7 @@ Wed, 23 Aug 2017 19:04:55 GMT
 ## 0.1.2
 Tue, 22 Aug 2017 10:09:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.1
 Mon, 21 Aug 2017 10:19:29 GMT
@@ -194,7 +254,7 @@ Fri, 18 Aug 2017 16:32:33 GMT
 ## 0.0.2
 Wed, 16 Aug 2017 10:11:43 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.0.1
 Tue, 15 Aug 2017 10:19:22 GMT

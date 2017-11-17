@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentCard renders DocumentCard correctly 1`] = `
+<div
+  className="ms-DocumentCard"
+  onClick={undefined}
+  onKeyDown={undefined}
+  role={undefined}
+  style={undefined}
+  tabIndex={undefined}
+>
+  <div
+    className="ms-DocumentCardPreview"
+    style={undefined}
+  />
+  <div
+    className="ms-DocumentCardTitle"
+    title=""
+  >
+    
+  </div>
+  <div
+    className="ms-DocumentCardActivity"
+  >
+    <div
+      className="ms-DocumentCardActivity-avatars"
+    >
+      <div
+        className="ms-DocumentCardActivity-avatar"
+      >
+        <div
+          className="ms-Persona-coin ms-Persona--size32 undefined"
+          role="persentation"
+          size={11}
+        >
+          <div
+            className="ms-Persona-imageArea"
+            style={undefined}
+          >
+            <div
+              aria-hidden="true"
+              className="ms-Persona-initials ms-Persona-initials--blue undefined"
+              style={undefined}
+            >
+              <i
+                aria-hidden={true}
+                aria-label={undefined}
+                className=
+                    ms-Icon
+                    {
+                      display: inline-block;
+                    }
+                data-icon-name="Contact"
+                role="presentation"
+              />
+            </div>
+            <div
+              className="ms-Image ms-Persona-image"
+              style={
+                Object {
+                  "height": 32,
+                  "width": 32,
+                }
+              }
+            >
+              <img
+                alt=""
+                className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                onError={[Function]}
+                onLoad={[Function]}
+                role={undefined}
+                src=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ms-DocumentCardActivity-details"
+    >
+      <span
+        className="ms-DocumentCardActivity-name"
+      >
+        
+      </span>
+      <span
+        className="ms-DocumentCardActivity-activity"
+      >
+        
+      </span>
+    </div>
+  </div>
+</div>
+`;

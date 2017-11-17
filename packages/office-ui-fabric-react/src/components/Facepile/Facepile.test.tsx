@@ -7,7 +7,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
-import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
+import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
 import { PersonaSize } from '../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import { TestImages } from '../../common/TestImages';
@@ -154,14 +154,14 @@ describe('Facepile', () => {
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--xs');
+      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--size32');
       expect(addButton).toHaveLength(1);
       let faces = facepile.querySelectorAll('.ms-Facepile-person');
       expect(faces).toHaveLength(facepilePersonas.length);
       for (let i = 0; i < faces.length; ++i) {
-        expect(faces[i].innerHTML).toEqual(expect.stringMatching('ms-Persona--xs'));
+        expect(faces[i].innerHTML).toEqual(expect.stringMatching('ms-Persona--size32'));
       }
-      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton .ms-Persona--xs');
+      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton .ms-Persona--size32');
       expect(overflowButton).toHaveLength(1);
     });
 
@@ -170,24 +170,24 @@ describe('Facepile', () => {
       let wrapper = shallow(
         <Facepile
           personas={ facepilePersonas }
-          personaSize={ PersonaSize.extraExtraSmall }
+          personaSize={ PersonaSize.size24 }
         />);
       let faces = wrapper.find(PersonaCoin);
       expect(faces).toHaveLength(facepilePersonas.length);
       wrapper.find(PersonaCoin).forEach((node) => {
-        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--xxs'));
+        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--size24'));
       });
 
       // Test small size renders
       wrapper = shallow(
         <Facepile
           personas={ facepilePersonas }
-          personaSize={ PersonaSize.small }
+          personaSize={ PersonaSize.size40 }
         />);
       faces = wrapper.find(PersonaCoin);
       expect(faces).toHaveLength(facepilePersonas.length);
       wrapper.find(PersonaCoin).forEach((node) => {
-        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--sm'));
+        expect(node.html()).toEqual(expect.stringMatching('ms-Persona--size40'));
       });
     });
   });

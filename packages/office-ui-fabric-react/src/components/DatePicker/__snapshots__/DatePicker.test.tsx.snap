@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker renders default DatePicker correctly 1`] = `
+<div
+  className="ms-DatePicker"
+>
+  <div>
+    <div
+      className="ms-TextField"
+    >
+      <div
+        className="ms-TextField-wrapper"
+      >
+        <div
+          className="ms-TextField-fieldGroup"
+        >
+          <input
+            aria-describedby={null}
+            aria-expanded={false}
+            aria-haspopup="true"
+            aria-invalid={false}
+            aria-label={undefined}
+            className="ms-TextField-field"
+            disabled={undefined}
+            id="TextField0"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            placeholder={undefined}
+            readOnly={true}
+            required={false}
+            role="menu"
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden={true}
+            aria-label={undefined}
+            className=
+                ms-Icon
+                ms-DatePicker-event--without-label
+                {
+                  display: inline-block;
+                }
+            data-icon-name="Calendar"
+            onClick={[Function]}
+            role="presentation"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

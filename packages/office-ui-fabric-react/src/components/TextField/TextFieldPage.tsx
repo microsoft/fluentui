@@ -5,27 +5,31 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { TextFieldAddonExample } from './examples/TextField.Addon.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
-import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
-import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
-import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
-import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
+import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
 import { TextFieldIconExample } from './examples/TextField.Icon.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
+import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
+import { TextFieldPrefixExample } from './examples/TextField.Prefix.Example';
+import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndSuffix.Example';
 import { TextFieldStatus } from './TextField.checklist';
+import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
+import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 
-const TextFieldAddonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Addon.Example.tsx') as string;
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
-const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
-const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
-const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
-const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
+const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
 const TextFieldIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Icon.Example.tsx') as string;
+const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
+const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
+const TextFieldPrefixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Prefix.Example.tsx') as string;
+const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
+const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -70,10 +74,22 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         implementationExampleCards={
           <div>
             <ExampleCard
-              title='Textfield with an addon'
-              code={ TextFieldAddonExampleCode }
+              title='Textfield with a prefix'
+              code={ TextFieldPrefixExampleCode }
             >
-              <TextFieldAddonExample />
+              <TextFieldPrefixExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Textfield with a suffix'
+              code={ TextFieldSuffixExampleCode }
+            >
+              <TextFieldSuffixExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Textfield with a prefix and a suffix'
+              code={ TextFieldPrefixAndSuffixExampleCode }
+            >
+              <TextFieldPrefixAndSuffixExample />
             </ExampleCard>
             <ExampleCard
               title='TextField with an icon'
@@ -98,7 +114,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
             ] }
           />
         }

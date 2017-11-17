@@ -12,7 +12,7 @@ import {
 import {
   ISpinButton,
   ISpinButtonProps,
-} from './SpinButton.Props';
+} from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
@@ -188,6 +188,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             readOnly={ disabled }
             disabled={ disabled }
             aria-disabled={ disabled }
+            data-lpignore={ true }
           />
           <span className={ classNames.arrowBox }>
             <IconButton

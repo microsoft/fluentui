@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { ITheme, FontSizes, mergeStyleSets } from '../../Styling';
+import { ITheme, FontSizes, mergeStyleSets, HighContrastSelector } from '../../Styling';
 
 export interface ILabelClassNames {
   root: string;
@@ -20,7 +20,12 @@ export const getLabelClassNames = memoizeFunction((theme: ITheme, className: str
         overflowWrap: 'break-word',
       },
       disabled && {
-        color: theme.semanticColors.disabledText
+        color: theme.semanticColors.disabledBodyText,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText'
+          }
+        }
       },
       required && {
         selectors: {

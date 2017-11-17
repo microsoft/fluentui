@@ -2,6 +2,7 @@ import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { TextField } from './TextField';
 
@@ -23,6 +24,12 @@ describe('TextField', () => {
     return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
   }
 
+  it('renders TextField correctly', () => {
+    const component = renderer.create(<TextField label='Label' />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render label and value to input element', () => {
     const exampleLabel: string = 'this is label';
     const exampleValue: string = 'this is value';
@@ -41,6 +48,52 @@ describe('TextField', () => {
     // Assert on the label element.
     const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];
     expect(labelDOM.textContent).toEqual(exampleLabel);
+  });
+
+  it('should render prefix in input element', () => {
+    const examplePrefix: string = 'this is a prefix';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        prefix={ examplePrefix }
+      />
+    );
+
+    // Assert on the prefix
+    const prefixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-prefix')[0];
+    expect(prefixDOM.textContent).toEqual(examplePrefix);
+  });
+
+  it('should render suffix in input element', () => {
+    const exampleSuffix: string = 'this is a suffix';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        suffix={ exampleSuffix }
+      />
+    );
+
+    // Assert on the suffix
+    const suffixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-suffix')[0];
+    expect(suffixDOM.textContent).toEqual(exampleSuffix);
+  });
+
+  it('should render both prefix and suffix in input element', () => {
+    const examplePrefix: string = 'this is a prefix';
+    const exampleSuffix: string = 'this is a suffix';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        prefix={ examplePrefix}
+        suffix={ exampleSuffix }
+      />
+    );
+
+    // Assert on the prefix and suffix
+    const prefixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-prefix')[0];
+    const suffixDOM: Element = renderedDOM.getElementsByClassName('ms-TextField-suffix')[0];
+    expect(prefixDOM.textContent).toEqual(examplePrefix);
+    expect(suffixDOM.textContent).toEqual(exampleSuffix);
   });
 
   it('should render multiline as text area element', () => {

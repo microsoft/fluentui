@@ -1,2 +1,2 @@
 export * from './Label';
-export * from './Label.Props';
+export * from './Label.types';

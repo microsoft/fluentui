@@ -4,21 +4,19 @@ import {
   IRawStyle,
   ITheme,
   concatStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 
 import { memoizeFunction } from '../../Utilities';
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
-
 const ContextualMenuItemHeight = '32px';
-const ContextualMenuIconWidth = '14px';
 
 const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
   return {
     selectors: {
-      [MS_HIGHCONTRAST_ACTIVE]: {
+      [HighContrastSelector]: {
         backgroundColor: 'Highlight',
         borderColor: 'Highlight',
         color: 'HighlightText',
@@ -32,26 +30,21 @@ export const getMenuItemStyles = memoizeFunction((
   theme: ITheme,
 ): IMenuItemStyles => {
   const { semanticColors, fonts } = theme;
-  const ContextualMenuIconColor = semanticColors.menuIcon;
-  const ContextualMenuTextColor = semanticColors.bodyText;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
-  const ContextualMenuTextSelectedColor = semanticColors.bodySelectedText;
-  const ContextualMenuTextDisabledColor = semanticColors.disabledText;
-  const ContextualMenuDividerColor = semanticColors.bodyDivider;
 
   const menuItemStyles: IMenuItemStyles = {
     item: [
       fonts.medium,
       {
-        color: ContextualMenuTextColor,
+        color: semanticColors.bodyText,
         position: 'relative',
         boxSizing: 'border-box',
       }],
     divider: {
       display: 'block',
       height: '1px',
-      backgroundColor: ContextualMenuDividerColor,
+      backgroundColor: semanticColors.bodyDivider,
       position: 'relative'
     },
     root: [
@@ -71,7 +64,7 @@ export const getMenuItemStyles = memoizeFunction((
       },
     ],
     rootDisabled: {
-      color: ContextualMenuTextDisabledColor,
+      color: semanticColors.disabledBodyText,
       cursor: 'default',
       pointerEvents: 'none',
     },
@@ -84,7 +77,6 @@ export const getMenuItemStyles = memoizeFunction((
       ...getItemHighContrastStyles()
     },
     rootChecked: {
-      backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       ...getItemHighContrastStyles()
     },
     rootPressed: {
@@ -93,7 +85,7 @@ export const getMenuItemStyles = memoizeFunction((
     },
     rootExpanded: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
-      color: ContextualMenuTextSelectedColor,
+      color: semanticColors.bodyTextChecked,
       fontWeight: FontWeights.semibold,
       ...getItemHighContrastStyles()
     },
@@ -129,15 +121,23 @@ export const getMenuItemStyles = memoizeFunction((
       display: 'inline-block',
       minHeight: '1px',
       maxHeight: ContextualMenuItemHeight,
-      width: ContextualMenuIconWidth,
+      width: '14px',
       margin: '0 4px',
       verticalAlign: 'middle',
       flexShrink: '0',
     },
     iconColor: {
-      color: ContextualMenuIconColor,
+      color: semanticColors.menuIcon,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
+          color: 'HighlightText',
+        }
+      }
+    },
+    checkmarkIcon: {
+      color: semanticColors.bodySubtext,
+      selectors: {
+        [HighContrastSelector]: {
           color: 'HighlightText',
         }
       }
@@ -150,7 +150,15 @@ export const getMenuItemStyles = memoizeFunction((
       verticalAlign: 'middle',
       flexShrink: '0',
       fontSize: FontSizes.mini
-    }
+    },
+    splitButtonFlexContainer: {
+      display: 'flex',
+      height: ContextualMenuItemHeight,
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    splitButtonSeparator: {}
   };
 
   return concatStyleSets(menuItemStyles);

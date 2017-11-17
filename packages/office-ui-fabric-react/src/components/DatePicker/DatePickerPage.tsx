@@ -9,6 +9,8 @@ import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerWeekNumbersExample } from './examples/DatePicker.WeekNumbers.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { DatePickerFormatExample } from './examples/DatePicker.Format.Example';
+import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DatePickerStatus } from './DatePicker.checklist';
 
@@ -16,6 +18,10 @@ const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const DatePickerWeekNumbersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
+const DatePickerFormatExampleCode = require
+  ('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Format.Example.tsx') as string;
+const DatePickerBoundedExampleCode = require
+  ('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Bounded.Example.tsx') as string;
 
 export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -37,12 +43,18 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
               <DatePickerInputExample />
             </ExampleCard>
+            <ExampleCard title='DatePicker allows dates to be formatted' code={ DatePickerFormatExampleCode }>
+              <DatePickerFormatExample />
+            </ExampleCard>
+            <ExampleCard title='DatePicker with date boundary (minDate, maxDate)' code={ DatePickerBoundedExampleCode }>
+              <DatePickerBoundedExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
             ] }
           />
         }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
+import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -18,7 +18,7 @@ import {
   KeyCodes,
   customizable
 } from '../../Utilities';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import {
   getStyles,
   getOptionStyles,
@@ -26,7 +26,8 @@ import {
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
-  getClassNames
+  getClassNames,
+  getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -50,6 +51,10 @@ export interface IComboBoxState {
   // that the options input matches (-1 if no input or match)
   currentPendingValueValidIndex: number;
 
+  // This will store the hovered over value in the dropdown
+  // it is used for styling the options without updating the input
+  currentPendingValueValidIndexOnHover: number;
+
   // when taking input, this will store
   // the actual text that is being entered
   currentPendingValue: string;
@@ -59,6 +64,15 @@ enum SearchDirection {
   backward = -1,
   none = 0,
   forward = 1
+}
+
+enum HoverStatus {
+  // This is used when the user was hovering
+  // and has since moused out of the menu items
+  clearAll = -2,
+  // This is the default "normal" state
+  // when no hover has happened or a hover is in progress
+  default = -1
 }
 
 @customizable('ComboBox', ['theme'])
@@ -131,7 +145,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       suggestedDisplayValue: '',
       currentOptions: this.props.options,
       currentPendingValueValidIndex: -1,
-      currentPendingValue: ''
+      currentPendingValue: '',
+      currentPendingValueValidIndexOnHover: HoverStatus.default
     };
   }
 
@@ -159,7 +174,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     let {
       allowFreeform,
-      value
+      value,
+      onMenuOpen
     } = this.props;
     let {
       isOpen,
@@ -195,6 +211,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           value !== prevProps.value)
       )) {
       this._select();
+    }
+
+    if (isOpen && !prevState.isOpen && onMenuOpen) {
+      onMenuOpen();
     }
   }
 
@@ -248,7 +268,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
-          <Label id={ id + '-label' } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
+          <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }
@@ -326,6 +346,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._comboBox) {
       this._comboBox.focus();
     }
+  }
+
+  /**
+   * Close menu callout if it is open
+   */
+  @autobind
+  public dismissMenu(): void {
+    let { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
   }
 
   /**
@@ -712,7 +741,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       currentPendingValue,
       currentPendingValueValidIndex,
-      currentOptions
+      currentOptions,
+      currentPendingValueValidIndexOnHover
     } = this.state;
 
     // If we allow freeform and we have a pending value, we
@@ -752,6 +782,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // Since we are not allowing freeform, we must have a matching
       // to be able to update state
       this._setSelectedIndex(currentPendingValueValidIndex);
+    } else if (currentPendingValueValidIndexOnHover >= 0) {
+      // If all else failed and we were hovering over an item, select it
+      this._setSelectedIndex(currentPendingValueValidIndexOnHover);
     }
 
     // Finally, clear the pending info
@@ -868,6 +901,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         styles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
         onClick={ this._onItemClick(item.index) }
+        onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
+        onMouseMove={ this._onOptionMouseMove.bind(this, item.index) }
+        onMouseLeave={ this._onOptionMouseLeave }
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
         ariaLabel={ item.text }
@@ -880,18 +916,51 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * If we are coming from a mouseOut:
+   * there is no visible selected option.
+   *
+   * Else if We are hovering over an item:
+   * that gets the selected look.
+   *
+   * Else:
    * Use the current valid pending index if it exists OR
    * we do not have a valid index and we currently have a pending input value,
    * otherwise use the selected index
    * */
   private _isOptionSelected(index: number | undefined): boolean {
     let {
+      currentPendingValueValidIndexOnHover
+    } = this.state;
+
+    // If the hover state is set to clearAll, don't show a selected index.
+    // Note, this happens when the user moused out of the menu items
+    if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
+      return false;
+    }
+
+    return this._getPendingSelectedIndex(true /* includePendingValue */) === index;
+  }
+
+  /**
+   * Gets the pending selected index taking into account hover, valueValidIndex, and selectedIndex
+   * @param includeCurrentPendingValue - Should we include the currentPendingValue when
+   * finding the index
+   */
+  private _getPendingSelectedIndex(includeCurrentPendingValue: boolean): number {
+    let {
+      currentPendingValueValidIndexOnHover,
       currentPendingValueValidIndex,
       currentPendingValue,
       selectedIndex
     } = this.state;
-    return ((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ?
-      currentPendingValueValidIndex === index : selectedIndex === index);
+
+    return (
+      currentPendingValueValidIndexOnHover >= 0 ?
+        currentPendingValueValidIndexOnHover :
+        (currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')) ?
+          currentPendingValueValidIndex :
+          selectedIndex
+    );
   }
 
   /**
@@ -912,11 +981,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (onScrollToItem) {
       // Use the custom scroll handler
       onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : selectedIndex);
-    } else {
+    } else if (this._selectedElement && this._selectedElement.offsetParent) {
       // We are using refs, scroll the ref into view
-      if (this._selectedElement && scrollSelectedToTop) {
+      if (scrollSelectedToTop) {
         this._selectedElement.offsetParent.scrollIntoView(true);
-      } else if (this._selectedElement) {
+      } else {
         let alignToTop = true;
 
         if (this._comboBoxMenu.offsetParent) {
@@ -936,8 +1005,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    const optionStyles = this._getCurrentOptionStyles(item);
-    return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
+    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
   }
 
   /**
@@ -1026,7 +1095,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this.setState({
       currentPendingValue: currentPendingValue,
       currentPendingValueValidIndex: currentPendingValueValidIndex,
-      suggestedDisplayValue: suggestedDisplayValue
+      suggestedDisplayValue: suggestedDisplayValue,
+      currentPendingValueValidIndexOnHover: HoverStatus.default
     });
   }
 
@@ -1082,8 +1152,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       isOpen,
       currentPendingValueValidIndex,
-      selectedIndex,
-      currentOptions
+      currentOptions,
+      currentPendingValueValidIndexOnHover
     } = this.state;
 
     if (disabled) {
@@ -1091,7 +1161,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    let index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : selectedIndex;
+    let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
     switch (ev.which) {
       case KeyCodes.enter:
@@ -1148,6 +1218,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         break;
 
       case KeyCodes.up:
+        // if we are in clearAll state (e.g. the user as hovering
+        // and has since mousedOut of the menu items),
+        // go to the last index
+        if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
+          index = this.state.currentOptions.length;
+        }
+
         // Go to the previous option
         this._setInfoForIndexAndDirection(index, SearchDirection.backward);
         break;
@@ -1157,6 +1234,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
+          // if we are in clearAll state (e.g. the user as hovering
+          // and has since mousedOut of the menu items),
+          // go to the first index
+          if (currentPendingValueValidIndexOnHover === HoverStatus.clearAll) {
+            index = -1;
+          }
+
           // Got to the next option
           this._setInfoForIndexAndDirection(index, SearchDirection.forward);
         }
@@ -1254,6 +1338,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     ev.stopPropagation();
     ev.preventDefault();
+  }
+
+  private _onOptionMouseEnter(index: number) {
+    this.setState({
+      currentPendingValueValidIndexOnHover: index
+    });
+  }
+
+  private _onOptionMouseMove(index: number) {
+    this.setState({
+      currentPendingValueValidIndexOnHover: index
+    });
+  }
+
+  private _onOptionMouseLeave = () => {
+    this.setState({
+      currentPendingValueValidIndexOnHover: HoverStatus.clearAll
+    });
   }
 
   /**

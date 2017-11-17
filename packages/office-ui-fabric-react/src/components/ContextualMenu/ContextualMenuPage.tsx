@@ -56,7 +56,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuSectionExample />
             </ExampleCard>
             <ExampleCard
-              title='ContextualMenu with checkable menu items'
+              title='ContextualMenu with checkable menu items and toggable split button'
               code={ ContextualMenuCheckmarksExampleCode }
             >
               <ContextualMenuCheckmarksExample />
@@ -78,8 +78,8 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.Props.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts'),
             ] }
           />
         }

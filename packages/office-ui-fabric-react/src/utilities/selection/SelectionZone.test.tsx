@@ -99,12 +99,12 @@ describe('SelectionZone', () => {
     expect(_onItemInvokeCalled).toEqual(0);
   });
 
-  it('selects an unselected item on mousedown of invoke without modifiers pressed', () => {
+  it('selects an unselected item on mousedown of surface without modifiers pressed', () => {
     _selection.setAllSelected(true);
     _selection.setIndexSelected(0, false, true);
 
     // Mousedown on the only unselected item's invoke surface should deselect all and select that one.
-    ReactTestUtils.Simulate.mouseDown(_invoke0);
+    ReactTestUtils.Simulate.mouseDown(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(true);
     expect(_selection.getSelectedCount()).toEqual(1);
   });
@@ -134,9 +134,9 @@ describe('SelectionZone', () => {
     expect(_onItemInvokeCalled).toEqual(0);
   });
 
-  it('does not select an unselected item on mousedown of item surface element', () => {
+  it('selects an unselected item on mousedown of item surface element', () => {
     ReactTestUtils.Simulate.mouseDown(_surface0);
-    expect(_selection.isIndexSelected(0)).toEqual(false);
+    expect(_selection.isIndexSelected(0)).toEqual(true);
   });
 
   it('invokes an item on double clicking the surface element', () => {
@@ -227,6 +227,12 @@ describe('SelectionZone', () => {
     document.documentElement.click();
 
     expect(_selection.getSelectedCount()).toEqual(0);
+  });
+
+  it('does not select an item on mousedown of the surface with no modifiers', () => {
+    ReactTestUtils.Simulate.mouseDown(_invoke0);
+    expect(_selection.isIndexSelected(0)).toEqual(false);
+    expect(_onItemInvokeCalled).toEqual(0);
   });
 });
 

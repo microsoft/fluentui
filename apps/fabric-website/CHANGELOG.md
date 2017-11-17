@@ -1,6 +1,43 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 12 Oct 2017 10:20:49 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+
+## 5.0.15
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Added support to IconGrid for icons wider than the grid.
+
+## 5.0.14
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Patches
+
+- Fixed initializeIcons call to pull from cdn instead of dist.
+
+## 5.0.13
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Removed Header component - it was replaced with UHF
+
+## 5.0.12
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Patches
+
+- TextField documentation style updates
+- Removed branding guidance pdf, updated fabric asset license pdf, and fixed link colors
+- Fixed in page navigation for Chrome and Firefox.
+
+## 5.0.11
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Updating to Fabric Core 9.0
 
 ## 5.0.10
 Thu, 12 Oct 2017 10:20:49 GMT

@@ -178,6 +178,10 @@
   @include right(0);
   max-height: 16px;
   flex-shrink: 0;
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .dismissOneline {
