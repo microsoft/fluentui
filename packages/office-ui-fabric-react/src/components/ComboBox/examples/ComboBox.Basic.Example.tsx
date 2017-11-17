@@ -75,7 +75,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         <ComboBox
           componentRef={ this.setComponentRef }
           defaultSelectedKey='C'
-          label='TEST: With all fixes (works)'
+          label='TEST 1: With all fixes (works)'
           id='Basicdrop11'
           ariaLabel='Basic ComboBox example'
           options={ this._testOptions }
@@ -88,7 +88,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
         <ComboBox
           defaultSelectedKey='C'
-          label='TEST: Without fixes  (not working)'
+          label='TEST 2: Without fixes  (not working)'
           id='Basicdrop12'
           ariaLabel='Basic ComboBox example'
           options={ this._testOptions }
@@ -99,7 +99,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         <ComboBox
           componentRef={ this.setComponentRefButtonFocus }
           defaultSelectedKey='C'
-          label='TEST: Add focus to button only (not working)'
+          label='TEST 3: Add focus to button only (not working)'
           id='Basicdrop13'
           ariaLabel='Basic ComboBox example'
           options={ this._testOptions }
