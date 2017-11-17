@@ -136,7 +136,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
 
-      overflowItems = [...overflowItems, movedItem];
+      overflowItems = [movedItem, ...overflowItems];
       primaryItems = primaryItems.slice(0, -1);
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
@@ -155,7 +155,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
     if (movedItem !== undefined && overflowItems.length > minimumOverflowItems) {
       movedItem.renderedInOverflow = false;
 
-      overflowItems = overflowItems.slice(0, -1);
+      overflowItems = overflowItems.slice(1);
       primaryItems = [...primaryItems, movedItem];
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
