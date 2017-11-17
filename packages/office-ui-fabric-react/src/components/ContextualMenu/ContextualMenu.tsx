@@ -589,7 +589,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderSplitDivider(item: IContextualMenuItem) {
     let getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    return <VerticalDivider getClassNames={ getDividerClassnames } />;
+    return <VerticalDivider
+      getClassNames={ theme => getDividerClassnames(theme,
+        !!item.disabled,
+        this.state.expandedMenuItemKey === item.key,
+        !!item.checked) } />;
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {

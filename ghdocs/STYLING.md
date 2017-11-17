@@ -72,7 +72,7 @@ class Comp extends React.Component {
 A component should consist of these files:
 
 * `ComponentName.props.ts` - The interfaces for the component. We separate these out for documentation reasons.
-* `ComponentName.base.tsx` - The unstyled component. This renders DOM structure and conrtains logic, MINUS styling opinions.
+* `ComponentName.base.tsx` - The unstyled component. This renders DOM structure and contains logic, MINUS styling opinions.
 * `ComponentName.styles.ts` - Exports a `getStyles` function for the component which takes in `IComponentNameStyleProps` and returns `IComponentNameStyles`.
 
 Once these are defined, you can export the component which ties it all together:
@@ -199,7 +199,7 @@ export const ComponentName = styled(
 
 Note that the component may also intend to provide customized styling for nested components. For example, a `Breadcrumb` component may want to expose the `getStyles` function for nested `Crumb` components.
 
-The extra getStyles function would be added to the outer compoent's props:
+The extra getStyles function would be added to the outer component's props:
 
 ```
 getCrumbStyles?: IStyleFunction<ICrumbStyleProps, ICrumbStyles>;
@@ -232,7 +232,7 @@ export const Breadcrumb = styled(
 The test file should include:
 
 1. A snapshot test locking the component DOM structure down for the important states.
-2. Tests which simulate clicking on things, changing the state of the compoent, and validating things still work.
+2. Tests which simulate clicking on things, changing the state of the component, and validating things still work.
 
 ## Moving styles from scss to ts
 
