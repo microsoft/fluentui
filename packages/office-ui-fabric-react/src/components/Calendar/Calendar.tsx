@@ -157,7 +157,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showWeekNumbers={ this.props.showWeekNumbers }
                   firstWeekOfYear={ this.props.firstWeekOfYear! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
-                  isMonthPickerVisible={ isMonthPickerVisible }
                   showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
                   minDate={ minDate }
                   maxDate={ maxDate }

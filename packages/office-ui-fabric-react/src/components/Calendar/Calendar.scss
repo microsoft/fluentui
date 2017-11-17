@@ -229,16 +229,10 @@ $Calendar-dayPicker-margin: 10px;
 .decadeComponents {
   display: inline-flex;
   margin-left: 3px;
-  @include float('right');
-}
-
-.arrowsStyleWithMonthComponents {
-  margin-right: 12px;
 }
 
 .yearComponents {
   margin-left: 3px;
-  margin-right: 18px;
 }
 
 .prevMonth,

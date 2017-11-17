@@ -60,7 +60,6 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   showWeekNumbers?: boolean;
   firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
-  isMonthPickerVisible?: boolean;
   showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
@@ -101,14 +100,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate, isMonthPickerVisible } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
     let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
     let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
-    let isMonthVisible = isMonthPickerVisible ? isMonthPickerVisible : false;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -129,27 +127,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         ) }
         id={ dayPickerId }
       >
-        <div className={ css('ms-DatePicker-header', styles.header) } >
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            { this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-                role='button'
-                tabIndex={ 0 }
-              >
-                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-              </div>
-              :
-              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
-                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-              </div>
-            }
-          </div>
-        </div>
-        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents, isMonthVisible && css('ms-DatePicker-arrowsStyleWithMonthComponents', styles.arrowsStyleWithMonthComponents)) }>
+        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth,
@@ -182,6 +160,26 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </span >
           </div >
         </div >
+        <div className={ css('ms-DatePicker-header', styles.header) } >
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            { this.props.onHeaderSelect ?
+              <div
+                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
+                onClick={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderKeyDown }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+                role='button'
+                tabIndex={ 0 }
+              >
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+              :
+              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+            }
+          </div>
+        </div>
         <FocusZone>
           {
             showWeekNumbers ?
