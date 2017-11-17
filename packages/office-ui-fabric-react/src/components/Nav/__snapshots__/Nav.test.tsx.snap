@@ -125,13 +125,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     aria-label={undefined}
                     className=
                         ms-Icon
-                        ms-Icon-placeHolder
                         ms-Button-icon
                         {
-                          width: 1em;
-                        }
-                        {
                           color: #106ebe;
+                          display: inline-block;
                           flex-shrink: 0;
                           font-size: 16px;
                           height: 16px;
@@ -142,7 +139,9 @@ exports[`Nav renders Nav correctly 1`] = `
                           margin-top: 0;
                           text-align: center;
                           vertical-align: middle;
+                          width: 1em;
                         }
+                    data-icon-name=""
                     role="presentation"
                   />
                   <div

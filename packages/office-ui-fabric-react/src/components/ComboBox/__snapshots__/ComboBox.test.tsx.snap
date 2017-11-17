@@ -189,8 +189,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
               ms-Button-icon
               {
                 display: inline-block;
-              }
-              {
                 flex-shrink: 0;
                 font-size: 16px;
                 height: 16px;

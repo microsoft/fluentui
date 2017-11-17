@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IStyleFunction, IStyle } from '../../Styling';
 
 export interface IImage {
 
@@ -61,6 +62,11 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
    * aspect ratio for the image.
    */
   coverStyle?: ImageCoverStyle;
+
+  /**
+   * Overridable styles.
+   */
+  getStyles?: IStyleFunction<IImageStyleProps, IImageStyles>;
 }
 
 /**
@@ -89,7 +95,8 @@ export enum ImageFit {
    * Neither the image nor the frame are scaled. If their sizes do not match, the image will either be cropped or the
    * frame will have empty space.
    */
-  none = 3
+  none = 3,
+
 }
 
 /**
@@ -105,6 +112,21 @@ export enum ImageCoverStyle {
    * The image will be shown at 100% width of container and the height will be scaled accordingly
    */
   portrait = 1
+}
+
+export interface IImageStyleProps {
+  imageFit?: ImageFit;
+  loadState: ImageLoadState;
+  className?: string;
+  isPortrait?: boolean;
+  maximizeFrame?: boolean;
+  width?: string | number;
+  height?: string | number;
+  shouldFadeIn?: boolean;
+}
+export interface IImageStyles {
+  root: IStyle;
+  image: IStyle;
 }
 
 export enum ImageLoadState {

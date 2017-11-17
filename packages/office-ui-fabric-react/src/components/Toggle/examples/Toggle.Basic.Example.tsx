@@ -21,6 +21,8 @@ export const ToggleBasicExample = () => (
       label='Enabled and unchecked'
       onText='On'
       offText='Off'
+      onAriaLabel='This toggle is checked. Press to uncheck.'
+      offAriaLabel='This toggle is unchecked. Press to check.'
       onFocus={ () => console.log('onFocus called') }
       onBlur={ () => console.log('onBlur called') }
     />
@@ -30,6 +32,8 @@ export const ToggleBasicExample = () => (
       label='Disabled and checked'
       onText='On'
       offText='Off'
+      onAriaLabel='This toggle is checked. Press to uncheck.'
+      offAriaLabel='This toggle is unchecked. Press to check.'
       onFocus={ () => console.log('onFocus called') }
       onBlur={ () => console.log('onBlur called') }
     />
@@ -39,6 +43,8 @@ export const ToggleBasicExample = () => (
       label='Disabled and unchecked'
       onText='On'
       offText='Off'
+      onAriaLabel='This toggle is checked. Press to uncheck.'
+      offAriaLabel='This toggle is unchecked. Press to check.'
       onFocus={ () => console.log('onFocus called') }
       onBlur={ () => console.log('onBlur called') }
     />

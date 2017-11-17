@@ -34,3 +34,4 @@ export * from './scroll';
 export * from './string';
 export * from './warn';
 export * from './memoize';
+export * from './IComponentAs';

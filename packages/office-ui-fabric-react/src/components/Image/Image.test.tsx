@@ -8,13 +8,19 @@ import * as renderer from 'react-test-renderer';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
-import { ImageFit, ImageLoadState } from './Image.types';
+import { ImageFit, IImageProps, ImageLoadState } from './Image.types';
 
 /* tslint:disable:no-unused-variable */
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const testImage1x2 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWP4////fyYGBgYGAB32A/+PRyXoAAAAAElFTkSuQmCC';
 const testImage2x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAYAAAD0In+KAAAAEUlEQVQImWP8////fwYGBgYAGfgD/hEzDhoAAAAASUVORK5CYII=';
 const brokenImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+
+class ImageWrapper extends React.Component<IImageProps, {}> {
+  public render(): JSX.Element {
+    return <Image { ...this.props } />;
+  }
+}
 
 describe('Image', () => {
   beforeAll(() => {
@@ -24,14 +30,14 @@ describe('Image', () => {
   });
 
   it('renders Image correctly', () => {
-    const component = renderer.create(<Image src={ testImage1x1 } />);
+    const component = renderer.create(<ImageWrapper src={ testImage1x1 } />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders an image', (done) => {
     let component = ReactTestUtils.renderIntoDocument(
-      <Image
+      <ImageWrapper
         src={ testImage1x1 }
         // tslint:disable-next-line:jsx-no-lambda
         onLoad={ () => done() }
@@ -46,7 +52,7 @@ describe('Image', () => {
   it('can cover a portrait (tall) frame with a square image', () => {
     let component = mount(
       <div>
-        <Image
+        <ImageWrapper
           src={ testImage1x1 }
           width={ 1 }
           height={ 3 }
@@ -63,7 +69,7 @@ describe('Image', () => {
   it('can cover a landscape (wide) frame with a square image', () => {
     let component = mount(
       <div>
-        <Image
+        <ImageWrapper
           src={ testImage1x1 }
           width={ 3 }
           height={ 1 }
@@ -80,7 +86,7 @@ describe('Image', () => {
   it('can cover a landscape (wide) parent element with a square image', () => {
     let component = mount(
       <div style={ { width: '10px', height: '20px' } }>
-        <Image
+        <ImageWrapper
           className='is-frameMaximizedPortrait'
           imageFit={ ImageFit.cover }
           maximizeFrame
@@ -99,7 +105,7 @@ describe('Image', () => {
   it('can cover a portrait (tall) parent element with a square image', () => {
     let component = mount(
       <div style={ { width: '10px', height: '20px' } }>
-        <Image
+        <ImageWrapper
           src={ testImage1x1 }
           imageFit={ ImageFit.cover }
           className='is-frameMaximizedLandscape'
@@ -118,7 +124,7 @@ describe('Image', () => {
 
   it('allows onError events to be attached', (done) => {
     let component = ReactTestUtils.renderIntoDocument(
-      <Image
+      <ImageWrapper
         src={ brokenImage }
         // tslint:disable-next-line:jsx-no-lambda
         onError={ () => done() }

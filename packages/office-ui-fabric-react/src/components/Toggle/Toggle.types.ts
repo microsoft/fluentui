@@ -22,17 +22,20 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   componentRef?: (component: IToggle) => void;
 
   /**
-   * A label for the toggle.
+   * A label for the toggle. Note if on/offText values are not provided, screen readers will read this
+   * label value by default.
    */
   label?: string;
 
   /**
-   * Text to display when toggle is ON.
+   * Text to display when toggle is ON. Note that you should also provide `onAriaLabel` for a proper string for
+   * screen readers to read out.
    */
   onText?: string;
 
   /**
-   * Text to display when toggle is OFF.
+   * Text to display when toggle is OFF. Note that you should also provide `offAriaLabel` for a proper string for
+   * screen readers to read out.
    */
   offText?: string;
 

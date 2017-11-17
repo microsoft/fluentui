@@ -234,8 +234,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
-                }
-                {
                   flex-shrink: 0;
                   font-size: 6px;
                   height: 16px;
@@ -342,8 +340,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
-                }
-                {
                   flex-shrink: 0;
                   font-size: 6px;
                   height: 16px;

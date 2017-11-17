@@ -7,7 +7,13 @@ export interface IResizeGroup {
 }
 
 export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HTMLElement> {
-  as?: IComponentAs<React.HTMLAttributes<ResizeGroup | HTMLElement>>;
+  /**
+   * Render the resize group as an element of a different type. Note that because the root
+   * is measured and needs a ref, it must be a primative type.
+   *
+   * @default div
+   */
+  as?: string;
 
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing

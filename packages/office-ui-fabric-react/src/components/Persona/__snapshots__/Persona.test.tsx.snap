@@ -15,7 +15,12 @@ exports[`Persona renders Persona correctly with image 1`] = `
       style={undefined}
     >
       <div
-        className="ms-Image ms-Persona-image"
+        className=
+            ms-Image
+            ms-Persona-image
+            {
+              overflow: hidden;
+            }
         style={
           Object {
             "height": 48,
@@ -25,10 +30,23 @@ exports[`Persona renders Persona correctly with image 1`] = `
       >
         <img
           alt=""
-          className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+          className=
+              ms-Image-image
+              ms-Image-image--portrait
+              ms-Image-image--cover
+              is-notLoaded
+              {
+                display: block;
+                height: auto;
+                left: 50%;
+                opacity: 0;
+                position: relative;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+              }
           onError={[Function]}
           onLoad={[Function]}
-          role={undefined}
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
         />
       </div>
@@ -115,7 +133,12 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         </span>
       </div>
       <div
-        className="ms-Image ms-Persona-image"
+        className=
+            ms-Image
+            ms-Persona-image
+            {
+              overflow: hidden;
+            }
         style={
           Object {
             "height": 48,
@@ -125,10 +148,23 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       >
         <img
           alt=""
-          className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+          className=
+              ms-Image-image
+              ms-Image-image--portrait
+              ms-Image-image--cover
+              is-notLoaded
+              {
+                display: block;
+                height: auto;
+                left: 50%;
+                opacity: 0;
+                position: relative;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+              }
           onError={[Function]}
           onLoad={[Function]}
-          role={undefined}
           src={undefined}
         />
       </div>
