@@ -16,7 +16,7 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
 
   const { semanticColors, fonts } = theme;
   return {
-    josh: [
+    colorCell: [
       {
         padding: 0,
         overflow: 'visible',
