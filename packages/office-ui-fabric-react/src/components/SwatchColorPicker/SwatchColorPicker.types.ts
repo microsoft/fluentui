@@ -132,7 +132,7 @@ export interface ISwatchColorPickerStyleProps {
  * Styles for the Color Picker Component.
  */
 export interface ISwatchColorPickerStyles {
-  josh: IStyle;
+  colorCell: IStyle;
   svg: IStyle;
   container: IStyle;
 }
