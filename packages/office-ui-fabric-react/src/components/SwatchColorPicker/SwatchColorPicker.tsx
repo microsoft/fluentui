@@ -115,6 +115,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
+  private _getHoveredIndex(items: IColorCellProps[], selectedId: string): number | undefined {
+    let selectedIndex = findIndex(items, (item => (item.id === selectedId)));
+    return selectedIndex >= 0 ? selectedIndex : undefined;
+  }
+
   /**
    * Render a color cell
    * @param item - The item to render
@@ -179,8 +184,9 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   @autobind
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
     // Build an SVG for the cell with the given shape and color properties
+    let stroke = colorOption.label === 'white' ? styles.whiteCell : "";
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
+      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '', stroke) } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
