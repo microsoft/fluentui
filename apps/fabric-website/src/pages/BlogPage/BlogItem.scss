@@ -53,6 +53,10 @@ $BlogItem-dateColumnWidth: 120px;
     max-width: 50em;
     width: 100%;
     padding-top: 60px;
+
+    h2 {
+      margin: $uhf-h2-margin;
+    }
   }
 
   .BlogItem-title {
@@ -74,7 +78,7 @@ $BlogItem-dateColumnWidth: 120px;
     font-size: $ms-font-size-m;
   }
 
-  @media screen and (min-width: $ms-screen-min-lg) {
+  @media screen and (min-width: $uhf-screen-min-mobile) {
     // Place date to left instead of on top
     .BlogItem-contentColumn {
       padding-left: $BlogItem-dateColumnWidth;

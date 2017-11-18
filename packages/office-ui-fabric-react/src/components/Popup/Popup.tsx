@@ -8,7 +8,7 @@ import {
   getNativeProps,
   autobind
 } from '../../Utilities';
-import { IPopupProps } from './Popup.Props';
+import { IPopupProps } from './Popup.types';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -66,7 +66,8 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-label={ ariaLabel }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
-        onKeyDown={ this._onKeyDown }>
+        onKeyDown={ this._onKeyDown }
+      >
         { this.props.children }
       </div>
     );

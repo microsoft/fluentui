@@ -72,7 +72,8 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
           className,
           isAdjusting && 'is-adjusting'
         ) }
-        onMouseDown={ this._onMouseDown }>
+        onMouseDown={ this._onMouseDown }
+      >
         <div className={ css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay) } style={ overlayStyle } />
         <div className={ css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider) } style={ { left: currentPercentage + '%' } } />
       </div>

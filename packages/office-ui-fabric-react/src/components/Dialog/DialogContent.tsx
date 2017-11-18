@@ -3,7 +3,7 @@ import {
   BaseComponent,
   css,
 } from '../../Utilities';
-import { IDialogContentProps, DialogType } from './DialogContent.Props';
+import { IDialogContentProps, DialogType } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -55,7 +55,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
             { this.props.topButtonsProps!.map((props) => (
               <IconButton {...props} />
             )) }
-            { showCloseButton && type !== DialogType.largeHeader &&
+            { (type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) &&
               <IconButton
                 className={ css(
                   'ms-Dialog-button ms-Dialog-button--close',

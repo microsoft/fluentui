@@ -48,24 +48,6 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           label='Pick one'
           required={ true }
         />
-        <ChoiceGroup
-          defaultSelectedKey='A'
-          options={ [
-            {
-              key: 'A',
-              text: 'Option A',
-              disabled: true
-            },
-            {
-              key: 'B',
-              text: 'Option B',
-              disabled: true
-            }
-          ] }
-          onChange={ this._onChange }
-          label='Pick one'
-          required={ true }
-        />
       </div>
     );
   }

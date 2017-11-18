@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
+import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -32,7 +32,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
       <div>
         <DefaultButton
           description='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler.bind(this) }
+          onClick={ this._onButtonClickHandler }
           text='Go to Trap Zone'
         />
 
@@ -63,18 +63,19 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
-          componentRef={ toggle => this._toggle = toggle }
+          componentRef={ this._setRef }
           checked={ isChecked }
-          onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
+          onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         { (() => {
           if (isChecked) {
             return (
               <DefaultButton
                 description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler.bind(this) }
+                onClick={ this._onExitButtonClickHandler }
                 text='Exit Focus Trap Zone'
               />
             );
@@ -84,21 +85,29 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     );
   }
 
+  @autobind
   private _onButtonClickHandler() {
     this.setState({
       isChecked: true
     });
   }
 
+  @autobind
   private _onExitButtonClickHandler() {
     this.setState({
       isChecked: false
     });
   }
 
+  @autobind
   private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
     this.setState({
       isChecked: isChecked
     }, () => this._toggle.focus());
+  }
+
+  @autobind
+  private _setRef(toggle: IToggle): void {
+    this._toggle = toggle;
   }
 }

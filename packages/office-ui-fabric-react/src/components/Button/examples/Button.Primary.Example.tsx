@@ -12,12 +12,12 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Primary button</Label>
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
           checked={ checked }
           text='Create account'
+          // tslint:disable-next-line:jsx-no-lambda
           onClick={ () => alert('Clicked') }
         />
       </div>

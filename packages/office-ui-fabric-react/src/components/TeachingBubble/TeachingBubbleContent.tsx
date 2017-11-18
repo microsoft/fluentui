@@ -6,7 +6,7 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { ITeachingBubbleProps } from './TeachingBubble.Props';
+import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
@@ -56,12 +56,14 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (headline) {
       headerContent = (
-        <div className={ css(
-          'ms-TeachingBubble-header',
-          hasCondensedHeadline ?
-            'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
-            'ms-TeachingBubble-header--large ' + styles.headerIsLarge
-        ) }>
+        <div
+          className={ css(
+            'ms-TeachingBubble-header',
+            hasCondensedHeadline ?
+              'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
+              'ms-TeachingBubble-header--large ' + styles.headerIsLarge
+          ) }
+        >
           <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
             { headline }
           </p>

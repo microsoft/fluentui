@@ -28,7 +28,7 @@ export type ICssInput = string | ISerializableObject | IDictionary | null | unde
  *
  * @public
  */
-export function css(...args: ICssInput[]) {
+export function css(...args: ICssInput[]): string {
   let classes = [];
 
   for (let arg of args) {
@@ -38,7 +38,9 @@ export function css(...args: ICssInput[]) {
       } else if ((arg.hasOwnProperty('toString') && typeof (arg.toString) === 'function')) {
         classes.push(arg.toString());
       } else {
+        // tslint:disable-next-line:no-any
         for (let key in arg as any) {
+          // tslint:disable-next-line:no-any
           if ((arg as any)[key]) {
             classes.push(key);
           }

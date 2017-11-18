@@ -2,12 +2,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
-import { IColorCellProps } from './SwatchColorPicker.Props';
-
-let { expect } = chai;
+import { IColorCellProps } from './SwatchColorPicker.types';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },
@@ -26,13 +25,23 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
 
 describe('SwatchColorPicker', () => {
 
+  it('renders SwatchColorPicker correctly', () => {
+    const component = renderer.create(
+      <SwatchColorPicker
+        colorCells={ DEFAULT_OPTIONS }
+        columnCount={ 4 }
+      />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('Can render in full without being parented to a button', () => {
     const wrapper = mount(
       <SwatchColorPicker
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
-    expect(wrapper.find('.ms-swatchColorPickerBodyContainer').length).to.equal(1, 'should have a swatch color picker');
+    expect(wrapper.find('.ms-swatchColorPickerBodyContainer').length).toEqual(1);
   });
 
   it('Can render the correct options when not in a menu', () => {
@@ -43,26 +52,22 @@ describe('SwatchColorPicker', () => {
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
-    expect(container).to.not.equal(null, 'should have a container');
+    expect(container).not.toEqual(null);
 
     let tableElements = container.querySelectorAll('table[role="grid"]');
     let tableRowElements = container.querySelectorAll('tr[role="row"]');
     let tableCellElements = container.querySelectorAll('button[role="gridcell"]');
-    let headingElements = container.querySelectorAll('[role="heading"]');
-    let dividerElements = container.querySelectorAll('[role="separator"]');
-    let menuitems = container.querySelectorAll('button[role="menuitem"]');
-    let buttons = container.querySelectorAll('button[role="button"]');
     let setSizeElements = container.querySelectorAll('[aria-setsize]');
     let posInSetElements = container.querySelectorAll('[aria-posinset]');
 
-    expect(tableElements.length).to.equal(1, 'should be two grids in the swatch color picker');
-    expect(tableRowElements.length).to.equal(3, 'should be three rows in the swatch color picker');
-    expect(tableRowElements[0].getElementsByTagName('td').length).to.equal(4, 'the first row should have four td elements');
-    expect(tableRowElements[1].getElementsByTagName('td').length).to.equal(4, 'the second row should have four td elements');
-    expect(tableRowElements[2].getElementsByTagName('td').length).to.equal(4, 'the third row should have four td elements');
-    expect(tableCellElements.length).to.equal(12, 'should be twelve grid cells in the swatch color picker');
-    expect(setSizeElements.length).to.equal(0, 'should be zero elements with aria-setsize since we are not in a menu in the swatch color picker');
-    expect(posInSetElements.length).to.equal(0, 'should be zero elements with aria-posinset since we are not in a menu in the swatch color picker');
+    expect(tableElements.length).toEqual(1);
+    expect(tableRowElements.length).toEqual(3);
+    expect(tableRowElements[0].getElementsByTagName('td').length).toEqual(4);
+    expect(tableRowElements[1].getElementsByTagName('td').length).toEqual(4);
+    expect(tableRowElements[2].getElementsByTagName('td').length).toEqual(4);
+    expect(tableCellElements.length).toEqual(12);
+    expect(setSizeElements.length).toEqual(0);
+    expect(posInSetElements.length).toEqual(0);
   });
 
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
@@ -70,18 +75,19 @@ describe('SwatchColorPicker', () => {
     const wrapper = mount(
       <SwatchColorPicker
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        // tslint:disable-next-line:jsx-no-lambda
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
-    expect(container).to.not.equal(null, 'should have a container');
+    expect(container).not.toEqual(null);
 
     let item = container.querySelector('[role="gridcell"]') as Element;
-    expect(item).to.not.equal(null, 'should find a item');
+    expect(item).not.toEqual(null);
 
     ReactTestUtils.Simulate.click(item);
-    expect(eventFireCounter).to.equal(1, 'one color changed events were fired');
+    expect(eventFireCounter).toEqual(1);
   });
 
   it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
@@ -89,18 +95,19 @@ describe('SwatchColorPicker', () => {
     const wrapper = mount(
       <SwatchColorPicker
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        // tslint:disable-next-line:jsx-no-lambda
         onCellHovered={ (color) => eventFireCounter++ }
         columnCount={ 4 }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
-    expect(container).to.not.equal(null, 'should have a container');
+    expect(container).not.toEqual(null);
 
     let cell = container.querySelector('[role="gridcell"]') as Element;
-    expect(cell).to.not.equal(null, 'should find a cell');
+    expect(cell).not.toEqual(null);
 
     ReactTestUtils.Simulate.mouseEnter(cell);
-    expect(eventFireCounter).to.equal(1, 'one color changed events were fired');
+    expect(eventFireCounter).toEqual(1);
   });
 
   it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
@@ -108,17 +115,18 @@ describe('SwatchColorPicker', () => {
     const wrapper = mount(
       <SwatchColorPicker
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        // tslint:disable-next-line:jsx-no-lambda
         onCellFocused={ (color) => eventFireCounter++ }
         columnCount={ 4 }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
-    expect(container).to.not.equal(null, 'should have a container');
+    expect(container).not.toEqual(null);
 
     let cell = container.querySelector('[role="gridcell"]') as Element;
-    expect(cell).to.not.equal(null, 'should find a cell');
+    expect(cell).not.toEqual(null);
 
     ReactTestUtils.Simulate.focus(cell);
-    expect(eventFireCounter).to.equal(1, 'one color changed events were fired');
+    expect(eventFireCounter).toEqual(1);
   });
 });

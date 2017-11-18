@@ -1,9 +1,11 @@
 import { beep } from './beep';
 
-export function instrumentMethod(target: any, methodName: string) {
+// tslint:disable-next-line:no-any
+export function instrumentMethod(target: any, methodName: string): void {
   const originalMethod = target[methodName];
 
-  target[methodName] = function () {
+  // tslint:disable-next-line:no-any
+  target[methodName] = function (): any {
     beep();
 
     let startTime = performance.now();
@@ -24,14 +26,15 @@ export function instrumentMethod(target: any, methodName: string) {
   };
 }
 
-export function getStackTrace() {
+export function getStackTrace(): string {
   let obj = {
     stack: ''
   };
 
-  /* tslint:disable:no-string-literal */
-  const captureStackTrace = (Error as any)['captureStackTrace'];
-  /* tslint:enable:no-string-literal */
+  const captureStackTrace = (Error as {
+    captureStackTrace?: (obj: { stack: string; },
+      getStackTrace: () => {}) => void;
+  }).captureStackTrace;
 
   if (captureStackTrace) {
     captureStackTrace(obj, getStackTrace);

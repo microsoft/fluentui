@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating Renders Rating correctly 1`] = `
+<div
+  aria-label=""
+  className="ms-Rating-star"
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone ms-Rating-focuszone"
+    data-focuszone-id="FocusZone2"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+    tabIndex={-1}
+  >
+    <button
+      className="ms-Rating-button ms-Rating--small undefined"
+      data-is-current={true}
+      disabled={false}
+      onFocus={[Function]}
+      role="presentation"
+    >
+      <span
+        className="ms-Rating-labelText"
+        id="RatingLabel1-1"
+      >
+        
+      </span>
+      <div
+        className="ms-RatingStar-container"
+      >
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-back
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+        />
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-front
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        />
+      </div>
+    </button>
+    <button
+      className="ms-Rating-button ms-Rating--small undefined"
+      disabled={false}
+      onFocus={[Function]}
+      role="presentation"
+    >
+      <span
+        className="ms-Rating-labelText"
+        id="RatingLabel1-2"
+      >
+        
+      </span>
+      <div
+        className="ms-RatingStar-container"
+      >
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-back
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+        />
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-front
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+      </div>
+    </button>
+    <button
+      className="ms-Rating-button ms-Rating--small undefined"
+      disabled={false}
+      onFocus={[Function]}
+      role="presentation"
+    >
+      <span
+        className="ms-Rating-labelText"
+        id="RatingLabel1-3"
+      >
+        
+      </span>
+      <div
+        className="ms-RatingStar-container"
+      >
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-back
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+        />
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-front
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+      </div>
+    </button>
+    <button
+      className="ms-Rating-button ms-Rating--small undefined"
+      disabled={false}
+      onFocus={[Function]}
+      role="presentation"
+    >
+      <span
+        className="ms-Rating-labelText"
+        id="RatingLabel1-4"
+      >
+        
+      </span>
+      <div
+        className="ms-RatingStar-container"
+      >
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-back
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+        />
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-front
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+      </div>
+    </button>
+    <button
+      className="ms-Rating-button ms-Rating--small undefined"
+      disabled={false}
+      onFocus={[Function]}
+      role="presentation"
+    >
+      <span
+        className="ms-Rating-labelText"
+        id="RatingLabel1-5"
+      >
+        
+      </span>
+      <div
+        className="ms-RatingStar-container"
+      >
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-back
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+        />
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
+          className=
+              ms-Icon
+              ms-RatingStar-front
+              {
+                display: inline-block;
+              }
+          data-icon-name="FavoriteStarFill"
+          role="presentation"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+      </div>
+    </button>
+  </div>
+</div>
+`;

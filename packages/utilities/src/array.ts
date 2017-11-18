@@ -6,7 +6,7 @@
  * @param array - Array to search.
  * @param cb - Callback which returns true on matches.
  */
-export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolean): number {
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number {
   let index = -1;
 
   for (let i = 0; array && i < array.length; i++) {
@@ -17,6 +17,21 @@ export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolea
   }
 
   return index;
+}
+
+/**
+ * Helper to find the first item within an array that satisfies the callback.
+ * @param array - Array to search
+ * @param cb - Callback which returns true on matches
+ */
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
+  let index = findIndex(array, cb);
+
+  if (index < 0) {
+    return undefined;
+  }
+
+  return array[index];
 }
 
 /**
@@ -54,4 +69,47 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
     }
     return rows;
   }, [] as T[][]);
+}
+
+/**
+ * Given an array, it returns a new array that does not contain the item at the given index.
+ * @param array - The array to operate on
+ * @param index - The index of the element to remove
+ */
+export function removeIndex<T>(array: T[], index: number): T[] {
+  return array.filter((_: T, i: number) => index !== i);
+}
+
+/**
+ * Given an array, this function returns a new array where the element at a given index has been replaced.
+ * @param array - The array to operate on
+ * @param newElement - The element that will be placed in the new array
+ * @param index - The index of the element that should be replaced
+ */
+export function replaceElement<T>(array: T[], newElement: T, index: number): T[] {
+  const copy = array.slice();
+  copy[index] = newElement;
+  return copy;
+}
+
+/**
+ * Given an array, this function returns a new array where an element has been inserted at the given index.
+ * @param array - The array to operate on
+ * @param index - The index where an element should be inserted
+ * @param itemToAdd - The element to insert
+ */
+export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[] {
+  const copy = array.slice();
+  copy.splice(index, 0, itemToAdd);
+  return copy;
+}
+
+/**
+ * Given an array where each element is of type T or T[], flatten it into an array of T
+ * @param array - The array where each element can optionally also be an array
+ */
+export function flatten<T>(array: (T | T[])[]): T[] {
+  let result: T[] = [];
+  array.forEach((item: T | T[]): T[] => (result = result.concat(item)));
+  return result;
 }

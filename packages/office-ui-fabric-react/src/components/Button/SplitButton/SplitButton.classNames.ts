@@ -1,11 +1,13 @@
 import { memoizeFunction } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 
 export interface ISplitButtonClassNames {
   root?: string;
   icon?: string;
+  splitButtonContainer?: string;
   flexContainer?: string;
+  divider?: string;
 }
 
 export const getClassNames = memoizeFunction((
@@ -15,6 +17,7 @@ export const getClassNames = memoizeFunction((
   checked: boolean,
 ): ISplitButtonClassNames => {
   return {
+
     root: mergeStyles(
       styles.splitButtonMenuButton,
       expanded && [
@@ -23,11 +26,37 @@ export const getClassNames = memoizeFunction((
       disabled && [
         styles.splitButtonMenuButtonDisabled
       ],
-      checked && [
+      checked && !disabled && [
         styles.splitButtonMenuButtonChecked
       ]
-    ) as string,
-    icon: (disabled ? mergeStyles(styles.splitButtonMenuIcon, styles.splitButtonMenuIconDisabled) : styles.splitButtonMenuIcon) as string,
-    flexContainer: styles.splitButtonFlexContainer as string
+    ),
+
+    splitButtonContainer: mergeStyles(
+      styles.splitButtonContainer,
+      checked && !disabled && [
+        styles.splitButtonContainerChecked,
+        {
+          selectors: {
+            ':hover': styles.splitButtonContainerCheckedHovered
+          }
+        }],
+      !disabled && !checked && [{
+        selectors: {
+          ':hover': styles.splitButtonContainerHovered,
+          ':focus': styles.splitButtonContainerFocused
+        }
+      }],
+      disabled && styles.splitButtonContainerDisabled
+    ),
+
+    icon: mergeStyles(
+      styles.splitButtonMenuIcon,
+      disabled && styles.splitButtonMenuIconDisabled
+    ),
+
+    flexContainer: mergeStyles(styles.splitButtonFlexContainer),
+
+    divider: mergeStyles(styles.splitButtonDivider)
+
   };
 });

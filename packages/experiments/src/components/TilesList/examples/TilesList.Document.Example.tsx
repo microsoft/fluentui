@@ -1,10 +1,13 @@
 
 import * as React from 'react';
 import {
-  TilesList
+  TilesList,
+  ITilesGridItem,
+  ITilesGridSegment
 } from '../../TilesList';
 import { Tile } from '../../../Tile';
-import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Selection';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
@@ -34,7 +37,12 @@ declare class TilesListClass extends TilesList<IExampleItem> { }
 
 const TilesListType: typeof TilesListClass = TilesList;
 
-export class TilesListDocumentExample extends React.Component<any, any> {
+export interface ITilesListDocumentExampleState {
+  isModalSelection: boolean;
+  cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
+}
+
+export class TilesListDocumentExample extends React.Component<{}, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
   constructor() {
@@ -42,35 +50,78 @@ export class TilesListDocumentExample extends React.Component<any, any> {
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
+      onSelectionChanged: this._onSelectionChange
     });
 
     this._selection.setItems(ITEMS);
-  }
-  public render(): JSX.Element {
-    const items = getTileCells(GROUPS, {
-      onRenderCell: this._onRenderDocumentCell,
-      onRenderHeader: this._onRenderHeader
-    });
 
+    this.state = {
+      isModalSelection: this._selection.isModal(),
+      cells: getTileCells(GROUPS, {
+        onRenderCell: this._onRenderDocumentCell,
+        onRenderHeader: this._onRenderHeader
+      })
+    };
+  }
+
+  public render(): JSX.Element {
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '4px' } }>
+        <Toggle
+          label='Enable Modal Selection'
+          checked={ this.state.isModalSelection }
+          onChanged={ this._onToggleIsModalSelection }
+          onText='Modal'
+          offText='Normal'
+        />
         <MarqueeSelection selection={ this._selection }>
-          <TilesListType
+          <SelectionZone
             selection={ this._selection }
-            items={ items }
-          />
+            onItemInvoked={ this._onItemInvoked }
+            enterModalOnTouch={ true }
+          >
+            <TilesListType
+              role='list'
+              items={ this.state.cells }
+            />
+          </SelectionZone>
         </MarqueeSelection>
       </div>
     );
+  }
+
+    @autobind
+    private _onToggleIsModalSelection(checked: boolean): void {
+      this._selection.setModal(checked);
+    }
+
+    @autobind
+    private _onSelectionChange(): void {
+      this.setState({
+        isModalSelection: this._selection.isModal()
+      });
+    }
+
+  @autobind
+  private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    alert(`Invoked item '${item.name}'`);
   }
 
   @autobind
   private _onRenderDocumentCell(item: IExampleItem): JSX.Element {
     return (
       <Tile
+        role='listitem'
+        aria-setsize={ ITEMS.length }
+        aria-posinset={ item.index }
         className={ AnimationClassNames.fadeIn400 }
         selection={ this._selection }
-        selectionIndex={ ITEMS.indexOf(item) }
+        selectionIndex={ item.index }
+        invokeSelection={ true }
         foreground={
           <img
             src={
@@ -96,7 +147,7 @@ export class TilesListDocumentExample extends React.Component<any, any> {
   @autobind
   private _onRenderHeader(item: IExampleItem): JSX.Element {
     return (
-      <div>
+      <div role='presentation'>
         <h3>{ item.name }</h3>
       </div>
     );

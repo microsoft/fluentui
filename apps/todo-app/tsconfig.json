@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
@@ -8,16 +9,14 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
     "types": [
       "chai",
       "mocha",
       "webpack-env"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

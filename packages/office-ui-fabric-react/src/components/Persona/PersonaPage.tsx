@@ -9,6 +9,8 @@ import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { PersonaStatus } from './Persona.checklist';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
@@ -29,10 +31,10 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Alternative small personas' code={ PersonaAlternateExampleCode }>
               <PersonaAlternateExample />
             </ExampleCard>
-            <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
+            <ExampleCard title='Persona with initials' code={ PersonaInitialsExampleCode }>
               <PersonaInitialsExample />
             </ExampleCard>
-            <ExampleCard title='Rendering custom persona text' code={ PersonaCustomRenderExampleCode }>
+            <ExampleCard title='Rendering custom persona text and custom coin size' code={ PersonaCustomRenderExampleCode }>
               <PersonaCustomRenderExample />
             </ExampleCard>
           </div>
@@ -40,7 +42,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
             ] }
           />
         }
@@ -52,15 +54,15 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
             <ul>
-              <li>Use XXS size Persona in text fields in read mode or in experiences such as multi-column list view which need compact Persona representations.</li>
-              <li>Use XS size Persona in text fields in edit mode.</li>
-              <li>Use XS, S and M size Personas in menus and list views.</li>
-              <li>Use L and XXL size Personas in profile cards and views.</li>
+              <li>Use Size 24 Persona in text fields in read mode or in experiences such as multi-column list view which need compact Persona representations.</li>
+              <li>Use Size 32 Persona in text fields in edit mode.</li>
+              <li>Use Size 32, Size 40, and Size 48 Personas in menus and list views.</li>
+              <li>Use Size 72 and Size 100 Personas in profile cards and views.</li>
             </ul>
           </div>
         }
@@ -71,12 +73,13 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Persona/Persona.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...PersonaStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
-
 }

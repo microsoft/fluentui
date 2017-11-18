@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
+import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -32,7 +32,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
       <div>
         <DefaultButton
           description='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler.bind(this) }
+          onClick={ this._onButtonClickHandler }
           text='Go to Trap Zone'
         />
 
@@ -63,18 +63,19 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
         <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
-          componentRef={ t => this._toggle = t }
+          componentRef={ this._setRef }
           checked={ isToggled }
-          onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
+          onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         { (() => {
           if (isToggled) {
             return (
               <DefaultButton
                 description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler.bind(this) }
+                onClick={ this._onExitButtonClickHandler }
                 text='Exit Focus Trap Zone'
               />
             );
@@ -84,21 +85,29 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     );
   }
 
+  @autobind
   private _onButtonClickHandler() {
     this.setState({
       isToggled: true
     });
   }
 
+  @autobind
   private _onExitButtonClickHandler() {
     this.setState({
       isToggled: false
     });
   }
 
+  @autobind
   private _onFocusTrapZoneToggleChanged(isToggled: boolean) {
     this.setState({
       isToggled: isToggled
     }, () => this._toggle.focus());
+  }
+
+  @autobind
+  private _setRef(toggle: IToggle): void {
+    this._toggle = toggle;
   }
 }

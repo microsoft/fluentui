@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  css,
-  getRTL
-} from 'office-ui-fabric-react/lib/Utilities';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
@@ -41,26 +38,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
         <TextField label={ 'Filter by name' + resultCountText } onBeforeChange={ this._onFilterChanged } />
         <List
           items={ items }
-          onRenderCell={ (item, index) => (
-            <div className='ms-ListBasicExample-itemCell' data-is-focusable={ true }>
-              <Image
-                className='ms-ListBasicExample-itemImage'
-                src={ item.thumbnail }
-                width={ 50 }
-                height={ 50 }
-                imageFit={ ImageFit.cover }
-              />
-              <div className='ms-ListBasicExample-itemContent'>
-                <div className='ms-ListBasicExample-itemName'>{ item.name }</div>
-                <div className='ms-ListBasicExample-itemIndex'>{ `Item ${index}` }</div>
-                <div className='ms-ListBasicExample-itemDesc'>{ item.description }</div>
-              </div>
-              <Icon
-                className='ms-ListBasicExample-chevron'
-                iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-              />
-            </div>
-          ) }
+          onRenderCell={ this._onRenderCell }
         />
       </FocusZone>
     );
@@ -75,5 +53,28 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
         items.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) :
         items
     });
+  }
+
+  private _onRenderCell(item: any, index: number | undefined): JSX.Element {
+    return (
+      <div className='ms-ListBasicExample-itemCell' data-is-focusable={ true }>
+        <Image
+          className='ms-ListBasicExample-itemImage'
+          src={ item.thumbnail }
+          width={ 50 }
+          height={ 50 }
+          imageFit={ ImageFit.cover }
+        />
+        <div className='ms-ListBasicExample-itemContent'>
+          <div className='ms-ListBasicExample-itemName'>{ item.name }</div>
+          <div className='ms-ListBasicExample-itemIndex'>{ `Item ${index}` }</div>
+          <div className='ms-ListBasicExample-itemDesc'>{ item.description }</div>
+        </div>
+        <Icon
+          className='ms-ListBasicExample-chevron'
+          iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+        />
+      </div>
+    );
   }
 }

@@ -1,6 +1,177 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Nov 2017 11:20:56 GMT and should not be manually modified.
+
+## 5.4.0
+Mon, 13 Nov 2017 11:20:56 GMT
+
+### Minor changes
+
+- BaseComponent: fixing some typings to be compatible with current React typings.
+
+## 5.3.3
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Patches
+
+- Object: getId: updated so it will correctly return a string rather than an  int
+
+## 5.3.2
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout.
+
+## 5.3.1
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Update @uifabric/utilities
+
+## 5.3.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add cancel/flush to debounce
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+- Fixing version dependencies.
+
+## 5.1.0
+Thu, 05 Oct 2017 16:29:11 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.16.0
+Tue, 26 Sep 2017 20:42:17 GMT
+
+### Minor changes
+
+- Reverting Customizer changes, as they are breaking. Will include in 5.0.
+
+## 4.15.0
+Tue, 26 Sep 2017 10:09:04 GMT
+
+### Minor changes
+
+- Updating Customizer to support `scopedSettings` prop. Adding a `Customizations` object for applying global and scoped customizations in non-React environments.
+
+## 4.14.1
+Mon, 25 Sep 2017 10:19:18 GMT
+
+### Patches
+
+- Array: Add utility functions for updating arrays immutably
+
+## 4.14.0
+Fri, 22 Sep 2017 19:08:51 GMT
+
+### Minor changes
+
+- Adding `mapEnumByName` helper.
+
+## 4.13.1
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Patches
+
+- getLanguage: Use localStorage wrapper helpers to avoid exceptions thrown by the browser when accessing localStorage.
+
+## 4.13.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Add ISize interface and fitContentToBounds utility function
+
+## 4.12.1
+Fri, 01 Sep 2017 18:06:55 GMT
+
+### Patches
+
+- Set the RTL language when the language is read from session storage
+
+## 4.12.0
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Minor changes
+
+- RTL: Persist rtl settings between sessions
+
+## 4.11.1
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.11.0
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Minor changes
+
+- Array: rename removeElement to removeIndex
+
+## 4.10.3
+Mon, 28 Aug 2017 10:09:32 GMT
+
+### Patches
+
+- Array: Add removeElement method
+
+## 4.10.2
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 4.10.1
+Fri, 25 Aug 2017 10:09:40 GMT
+
+### Patches
+
+- Array: Add find utility method
+- BaseComponent: Make State type optional to be consistent with React.Component typing
+
+## 4.10.0
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Minor changes
+
+- createArray: reverting previous change to make getItem optional, cleaning up so that the return value is correct.
+- Array: Add typesafety for createArray and findIndex
 
 ## 4.9.1
 Mon, 21 Aug 2017 10:19:29 GMT

@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import * as stylesImport from './DetailsList.scss';
-import * as ReactDOM from 'react-dom';
 
 import {
   BaseComponent,
@@ -9,6 +8,7 @@ import {
   assign,
   autobind,
   css,
+  elementContains,
   getRTLSafeKeyCode,
   IRenderFunction
 } from '../../Utilities';
@@ -20,7 +20,7 @@ import {
   IColumn,
   IDetailsList,
   IDetailsListProps,
-} from '../DetailsList/DetailsList.Props';
+} from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -40,6 +40,7 @@ import { withViewport } from '../../utilities/decorators/withViewport';
 const styles: any = stylesImport;
 
 export interface IDetailsListState {
+  focusedItemIndex: number;
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
@@ -50,7 +51,7 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 36;
+const CHECKBOX_WIDTH = 40;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;
@@ -69,6 +70,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   };
 
   // References
+  // tslint:disable-next-line:no-unused-variable
   private _root: HTMLElement;
   private _header: IDetailsHeader;
   private _groupedList: GroupedList;
@@ -97,12 +99,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._onRowWillUnmount = this._onRowWillUnmount.bind(this);
     this._onToggleCollapse = this._onToggleCollapse.bind(this);
     this._onActiveRowChanged = this._onActiveRowChanged.bind(this);
+    this._onBlur = this._onBlur.bind(this);
     this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
+      focusedItemIndex: -1,
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       isSizing: false,
@@ -120,6 +124,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+    this._list && this._list.scrollToIndex(index, measureItem);
+    this._groupedList && this._groupedList.scrollToIndex(index, measureItem);
+  }
+
   public componentWillUnmount() {
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
@@ -128,9 +137,32 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   public componentDidUpdate(prevProps: any, prevState: any) {
     if (this._initialFocusedIndex !== undefined) {
-      const row = this._activeRows[this._initialFocusedIndex];
+      const item = this.props.items[this._initialFocusedIndex];
+      if (item) {
+        const itemKey = this._getItemKey(item, this._initialFocusedIndex);
+        const row = this._activeRows[itemKey];
+        if (row) {
+          this._setFocusToRowIfPending(row);
+        }
+      }
+    }
+
+    if (
+      this.props.items !== prevProps.items &&
+      this.props.items.length > 0 &&
+      this.state.focusedItemIndex !== -1 &&
+      !elementContains(this._root, document.activeElement as HTMLElement, false)
+    ) {
+      // Item set has changed and previously-focused item is gone.
+      // Set focus to item at index of previously-focused item if it is in range,
+      // else set focus to the last item.
+      const item = this.state.focusedItemIndex < this.props.items.length
+        ? this.props.items[this.state.focusedItemIndex]
+        : this.props.items[this.props.items.length - 1];
+      const itemKey = this._getItemKey(item, this.state.focusedItemIndex);
+      const row = this._activeRows[itemKey];
       if (row) {
-        this._setFocusToRowIfPending(row);
+        this._setFocusToRow(row);
       }
     }
 
@@ -267,12 +299,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
-        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
-        <div role='grid'
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }
+      >
+        <div
+          role='grid'
           aria-label={ ariaLabelForGrid }
           aria-rowcount={ (isHeaderVisible ? 1 : 0) + (items ? items.length : 0) }
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
-          aria-readonly='true'>
+          aria-readonly='true'
+        >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && onRenderDetailsHeader({
               componentRef: this._resolveRef('_header'),
@@ -302,6 +337,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
               onActiveElementChanged={ this._onActiveRowChanged }
+              onBlur={ this._onBlur }
             >
               <SelectionZone
                 ref={ this._resolveRef('_selectionZone') }
@@ -310,6 +346,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                 selectionMode={ selectionMode }
                 onItemInvoked={ onItemInvoked }
                 onItemContextMenu={ onItemContextMenu }
+                enterModalOnTouch={ this.props.enterModalSelectionOnTouch }
               >
                 { groups ? (
                   <GroupedList
@@ -333,7 +370,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       ref={ this._resolveRef('_list') }
                       role='presentation'
                       items={ items }
-                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
+                      onRenderCell={ this._onRenderListCell(0) }
                       usePageCache={ usePageCache }
                       onShouldVirtualize={ onShouldVirtualize }
                       { ...additionalListProps }
@@ -363,6 +400,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
+  @autobind
+  private _onRenderListCell(nestingDepth: number)
+    : (item: any, itemIndex: number) => React.ReactNode {
+    return (item: any, itemIndex: number): React.ReactNode => {
+      return this._onRenderCell(nestingDepth, item, itemIndex as number);
+    };
+  }
+
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
       compact,
@@ -376,6 +421,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
+      checkboxCellClassName,
       groupProps
     } = this.props;
     let collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
@@ -411,7 +457,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
-      checkButtonAriaLabel: checkButtonAriaLabel
+      checkButtonAriaLabel: checkButtonAriaLabel,
+      checkboxCellClassName: checkboxCellClassName,
     }, this._onRenderRow);
   }
 
@@ -455,40 +502,44 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _onRowDidMount(row: DetailsRow) {
-    let { onRowDidMount } = this.props;
-    let index = row.props.itemIndex;
-
-    this._activeRows[index] = row; // this is used for column auto resize
+    const { item, itemIndex } = row.props;
+    const itemKey = this._getItemKey(item, itemIndex);
+    this._activeRows[itemKey] = row; // this is used for column auto resize
 
     this._setFocusToRowIfPending(row);
 
+    const { onRowDidMount } = this.props;
     if (onRowDidMount) {
-      onRowDidMount(row.props.item, index);
+      onRowDidMount(item, itemIndex);
     }
   }
 
   private _setFocusToRowIfPending(row: DetailsRow) {
-    let index = row.props.itemIndex;
-    if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
-      if (this._selectionZone) {
-        this._selectionZone.ignoreNextFocus();
-      }
-      this._async.setTimeout(() => {
-        row.focus();
-      }, 0);
-
+    const { itemIndex } = row.props;
+    if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
+      this._setFocusToRow(row);
       delete this._initialFocusedIndex;
     }
   }
 
+  private _setFocusToRow(row: DetailsRow) {
+    if (this._selectionZone) {
+      this._selectionZone.ignoreNextFocus();
+    }
+    this._async.setTimeout(() => {
+      row.focus();
+    }, 0);
+  }
+
   private _onRowWillUnmount(row: DetailsRow) {
     let { onRowWillUnmount } = this.props;
-    let index = row.props.itemIndex;
 
-    delete this._activeRows[index];
-    this._events.off(row.refs.root);
+    const { item, itemIndex } = row.props;
+    const itemKey = this._getItemKey(item, itemIndex);
+    delete this._activeRows[itemKey];
+
     if (onRowWillUnmount) {
-      onRowWillUnmount(row.props.item, index);
+      onRowWillUnmount(item, itemIndex);
     }
   }
 
@@ -594,10 +645,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         },
         this._columnOverrides[column.key]);
 
-      if (newColumn.maxWidth && newColumn.calculatedWidth > newColumn.maxWidth) {
-        newColumn.calculatedWidth = newColumn.maxWidth;
-      }
-
       totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
 
       return newColumn;
@@ -606,7 +653,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let lastIndex = adjustedColumns.length - 1;
 
     // Remove collapsable columns.
-    while (lastIndex > 1 && totalWidth > availableWidth) {
+    while (lastIndex > -1 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
       if (column.isCollapsable) {
@@ -703,13 +750,43 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) {
     let { items, onActiveItemChanged } = this.props;
 
-    if (!onActiveItemChanged || !el) {
+    if (!el) {
       return;
     }
     let index = Number(el.getAttribute('data-item-index'));
     if (index >= 0) {
-      onActiveItemChanged(items[index], index, ev);
+      if (onActiveItemChanged) {
+        onActiveItemChanged(items[index], index, ev);
+      }
+      this.setState({
+        focusedItemIndex: index
+      });
     }
+  }
+
+  private _onBlur(event: React.FocusEvent<HTMLElement>) {
+    this.setState({
+      focusedItemIndex: -1
+    });
+  }
+
+  private _getItemKey(item: any, itemIndex: number): string | number {
+    const { getKey } = this.props;
+
+    let itemKey: string | number | undefined = undefined;
+    if (item) {
+      itemKey = item.key;
+    }
+
+    if (getKey) {
+      itemKey = getKey(item, itemIndex);
+    }
+
+    if (!itemKey) {
+      itemKey = itemIndex;
+    }
+
+    return itemKey;
   }
 }
 

@@ -10,7 +10,7 @@ import {
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { IColumn, CheckboxVisibility } from './DetailsList.Props';
+import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
@@ -23,10 +23,11 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '../../Styling';
-import * as checkStyles from './DetailsRowCheck.scss';
+import * as checkStylesImport from './DetailsRowCheck.scss';
+const checkStyles: any = checkStylesImport;
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   componentRef?: () => void;
@@ -49,11 +50,13 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
+  checkboxCellClassName?: string;
+  className?: string;
 }
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
-  anySelected: boolean;
+  isSelectionModal: boolean;
 }
 
 export interface IDetailsRowState {
@@ -173,6 +176,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
   public render() {
     const {
+      className,
       columns,
       dragDropEvents,
       item,
@@ -184,10 +188,11 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
-      selection
+      checkboxCellClassName,
+      selection,
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
-    const { isSelected, anySelected } = this.state.selectionState as IDetailsRowSelectionState;
+    const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
@@ -205,6 +210,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         aria-label={ ariaLabel }
         className={ css(
           'ms-DetailsRow',
+          className,
           AnimationClassNames.fadeIn400,
           styles.root,
           checkStyles.owner,
@@ -212,6 +218,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           {
             [`is-contentUnselectable ${styles.rootIsContentUnselectable}`]: isContentUnselectable,
             [`is-selected ${checkStyles.isSelected} ${styles.rootIsSelected}`]: isSelected,
+            [`${styles.anySelected} ${checkStyles.anySelected}`]: isSelectionModal,
             [`is-check-visible ${checkStyles.isVisible}`]: checkboxVisibility === CheckboxVisibility.always
           }) }
         data-is-focusable={ true }
@@ -230,13 +237,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             role='gridcell'
             aria-colindex={ 0 }
             data-selection-toggle={ true }
-            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell) }
+            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell, checkboxCellClassName) }
           >
             { onRenderCheck({
-              isSelected,
-              anySelected,
+              selected: isSelected,
+              anySelected: isSelectionModal,
               title: checkButtonAriaLabel,
-              canSelect
+              canSelect: canSelect
             }) }
           </div>
         ) }
@@ -249,7 +256,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             item={ item }
             itemIndex={ itemIndex }
             columnStartIndex={ showCheckbox ? 1 : 0 }
-            onRenderItemColumn={ onRenderItemColumn } />
+            onRenderItemColumn={ onRenderItemColumn }
+          />
         ) }
 
         { columnMeasureInfo && (
@@ -263,9 +271,17 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
               item={ item }
               itemIndex={ itemIndex }
               columnStartIndex={ (showCheckbox ? 1 : 0) + columns.length }
-              onRenderItemColumn={ onRenderItemColumn } />
+              onRenderItemColumn={ onRenderItemColumn }
+            />
           </span>
         ) }
+
+        <span
+          role='checkbox'
+          className={ css(styles.checkCover) }
+          aria-checked={ isSelected }
+          data-selection-toggle={ true }
+        />
       </FocusZone>
     );
   }
@@ -306,7 +322,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     return {
       isSelected: selection.isIndexSelected(itemIndex),
-      anySelected: selection.getSelectedCount() > 0
+      isSelectionModal: !!selection.isModal && selection.isModal()
     };
   }
 

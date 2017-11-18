@@ -18,7 +18,7 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
  *
  * @public
  */
-export function disableBodyScroll() {
+export function disableBodyScroll(): void {
   let doc = getDocument();
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
@@ -33,7 +33,7 @@ export function disableBodyScroll() {
  *
  * @public
  */
-export function enableBodyScroll() {
+export function enableBodyScroll(): void {
   if (_bodyScrollDisabledCount > 0) {
     let doc = getDocument();
 
@@ -104,6 +104,7 @@ export function findScrollableParent(startingElement: HTMLElement): HTMLElement 
 
   // Fall back to window scroll.
   if (!el || el === document.body) {
+    // tslint:disable-next-line:no-any
     el = window as any;
   }
 

@@ -11,7 +11,7 @@ export class PivotOnChangeExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs } onLinkClick={ this.onLinkClick.bind(this) }>
+        <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs } onLinkClick={ this.onLinkClick }>
           <PivotItem linkText='Foo'>
             <Label>Pivot #1</Label>
           </PivotItem>

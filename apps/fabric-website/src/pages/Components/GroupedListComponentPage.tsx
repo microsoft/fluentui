@@ -2,11 +2,12 @@ import * as React from 'react';
 import { GroupedListPage } from 'office-ui-fabric-react/lib/components/GroupedList/GroupedListPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class GroupedListComponentPage extends React.Component<any, any> {
   public render() {
     return (
-      <div ref='pageElement'>
+      <div ref='pageElement' className={ pageStyles.basePage }>
         <ComponentPage>
           <PageHeader pageTitle='GroupedList' backgroundColor='#038387'
             links={
@@ -14,10 +15,6 @@ export class GroupedListComponentPage extends React.Component<any, any> {
                 {
                   'text': 'Overview',
                   'location': 'Overview'
-                },
-                {
-                  'text': 'Best Practices',
-                  'location': 'Best Practices'
                 },
                 {
                   'text': 'Variants',

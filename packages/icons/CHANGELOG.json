@@ -1,0 +1,71 @@
+{
+  "name": "@uifabric/icons",
+  "entries": [
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/icons_v5.2.0",
+      "date": "Fri, 13 Oct 2017 21:59:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2160f2eb3f73deb473b879273030ed2b737d63a0",
+            "comment": "IconNames should not produce javascript."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.1",
+      "tag": "@uifabric/icons_v5.1.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/icons_v5.1.0",
+      "date": "Thu, 05 Oct 2017 10:17:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c13ebe30151821c40de32a3e64d3da7e476a030a",
+            "comment": "Exporting `IconNames` const enum."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/icons_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "Initial release of the icons package."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

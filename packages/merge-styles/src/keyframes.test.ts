@@ -3,8 +3,8 @@ import {
   Stylesheet,
   InjectionMode
 } from './Stylesheet';
+import { setRTL } from './transforms/rtlifyRules';
 
-const { expect } = chai;
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -12,6 +12,10 @@ _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 describe('keyframes', () => {
   beforeEach(() => {
     _stylesheet.reset();
+  });
+
+  afterEach(() => {
+    setRTL(false);
   });
 
   it('can register from/to keyframes', () => {
@@ -24,7 +28,23 @@ describe('keyframes', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).equals(
+    expect(_stylesheet.getRules()).toEqual(
+      '@keyframes css-0{from{opacity:0;}to{opacity:1;}}'
+    );
+  });
+
+  it('can register from/to keyframes in rtl', () => {
+    setRTL(true);
+    keyframes({
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
       '@keyframes css-0{from{opacity:0;}to{opacity:1;}}'
     );
   });
@@ -42,7 +62,7 @@ describe('keyframes', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).equals(
+    expect(_stylesheet.getRules()).toEqual(
       '@keyframes css-0{0%{opacity:0;}50%{opacity:0.8;}100%{opacity:1;}}'
     );
   });

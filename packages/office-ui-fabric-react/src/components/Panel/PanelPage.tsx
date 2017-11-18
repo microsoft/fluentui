@@ -14,9 +14,12 @@ import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
+import { PanelLightDismissCustomExample } from './examples/Panel.LightDismissCustom.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { PanelStatus } from './Panel.checklist';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
@@ -27,6 +30,7 @@ const PanelLargeFixedExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const PanelExtraLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ExtraLarge.Example.tsx') as string;
 const PanelCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Custom.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
+const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 
@@ -65,6 +69,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
             </ExampleCard>
+            <ExampleCard title='Panel - Custom Light Dismiss' code={ PanelLightDismissCustomExampleCode }>
+              <PanelLightDismissCustomExample />
+            </ExampleCard>
             <ExampleCard title='Panel - Non-Modal' code={ PanelNonModalExampleCode }>
               <PanelNonModalExample />
             </ExampleCard>
@@ -76,7 +83,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')
             ] }
           />
         }
@@ -98,7 +105,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -116,12 +123,13 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Panel/Panel.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...PanelStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
-
 }

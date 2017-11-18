@@ -1,22 +1,26 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
-export class DropdownBasicExample extends React.Component<any, any> {
+export class DropdownBasicExample extends BaseComponent<any, any> {
+  private _basicDropdown: IDropdown;
   constructor() {
     super();
     this.state = {
-      selectedItem: null
+      selectedItem: null,
+      selectedItems: [],
     };
   }
 
   public render() {
-    let { selectedItem } = this.state;
+    let { selectedItem, selectedItems } = this.state;
 
     return (
-      <div className='dropdownExample'>
-
+      <div className='DropdownBasicExample'>
         <Dropdown
+          className='Dropdown-example'
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
           id='Basicdrop1'
@@ -38,11 +42,16 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'J', text: 'Option j' },
             ]
           }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+          componentRef={ this._resolveRef('_basicDropdown') }
         />
-
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
         <Dropdown
+          className='Dropdown-example'
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
           options={
@@ -56,17 +65,18 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'G', text: 'Option g' },
             ]
           }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
           disabled={ true }
         />
 
         <Dropdown
+          className='Dropdown-example'
           label='Controlled example:'
           selectedKey={ selectedItem && selectedItem.key }
-          onChanged={ (item) => this.setState({ selectedItem: item }) }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onChanged={ this.changeState }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
           placeHolder='Select an Option'
           options={
             [
@@ -86,9 +96,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
           defaultSelectedKeys={ ['Apple', 'Banana'] }
-          onChanged={ (item) => this.changeState(item) }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
           multiSelect
           options={
             [
@@ -109,10 +118,10 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select controlled example:'
-          selectedKeys={ selectedItem && selectedItem.key }
-          onChanged={ (item) => this.onChangeMultiSelect(item) }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          selectedKeys={ selectedItems }
+          onChanged={ this.onChangeMultiSelect }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
           multiSelect
           options={
             [
@@ -145,42 +154,35 @@ export class DropdownBasicExample extends React.Component<any, any> {
             ]
           }
           disabled={ true }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
       </div>
 
     );
   }
 
-  public makeList(items: any) {
-    let list = [];
-    for (let i = 0; i < items; i++) {
-      list.push({ key: i, text: 'Option ' + i });
-    }
-
-    return list;
-  }
-
+  @autobind
   public changeState(item: IDropdownOption) {
     console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     this.setState({ selectedItem: item });
   }
 
+  @autobind
   public onChangeMultiSelect(item: IDropdownOption) {
-    let updatedSelectedItem = this.state.selectedItem ? this.copyArray(this.state.selectedItem) : [];
+    let updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked
-      updatedSelectedItem.push(item);
+      updatedSelectedItem.push(item.key);
     } else {
       // remove the option if it's unchecked
-      let currIndex = updatedSelectedItem.indexOf(item.index);
+      let currIndex = updatedSelectedItem.indexOf(item.key);
       if (currIndex > -1) {
         updatedSelectedItem.splice(currIndex, 1);
       }
     }
     this.setState({
-      selectedItem: updatedSelectedItem
+      selectedItems: updatedSelectedItem
     });
   }
 
@@ -190,6 +192,19 @@ export class DropdownBasicExample extends React.Component<any, any> {
       newArray[i] = array[i];
     }
     return newArray;
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked() {
+    if (this._basicDropdown) {
+      this._basicDropdown.focus(true);
+    }
+  }
+
+  private _log(str: string): () => void {
+    return (): void => {
+      console.log(str);
+    };
   }
 
 }

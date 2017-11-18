@@ -1,18 +1,18 @@
 /**
  * The collection of semantic slots for colors used in themes.
  *
- * ## Naming Convention 
+ * ## Naming Convention
  *
- * The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format: 
+ * The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format:
  *
- * [category name][element name][checked state][hovered/pressed/disabled state]  
- * [category name] – The “family” that this slot belongs to. 
- * [element name] – The name of the thing being targeted, such as the background or border. 
+ * [category name][element name][checked state][hovered/pressed/disabled state]
+ * [category name] – The “family” that this slot belongs to.
+ * [element name] – The name of the thing being targeted, such as the background or border.
  * [checked state] – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
- * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.) 
+ * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.)
  * [hovered/pressed/disabled state] – One of these states, if applicable. Each of these states are mutually exclusive.
- * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.   
- *  
+ * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.
+ *
  * ## Base Slots
  *
  * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, and so on.
@@ -26,24 +26,28 @@
  * will always want errors to be some shade of red, but we will need to tweak the exact shade so it's
  * legible depending on whether it's an inverted theme or not.
  * Invariant colors should almost never be changed by the theme, the defaults should suffice.
- *  
- * ## Input Controls 
+ *
+ * ## Input Controls
  *
  * This category contains input components commonly used to denote state, including radio buttons,
- * check boxes, toggle switches, sliders, progress bars, and more. 
- *  
- * ## Menus 
+ * check boxes, toggle switches, sliders, progress bars, and more.
  *
- * Any kind of popup menus uses this category. 
- *  
+ * ## Buttons
+ *
+ * Buttons! And all the flavors thereof.
+ *
+ * ## Menus
+ *
+ * Any kind of popup menus uses this category.
+ *
  * ## Lists
- *  
+ *
  * Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
  */
 export interface ISemanticColors {
-  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette() */
+  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
   //// Base slots
 
@@ -56,6 +60,11 @@ export interface ISemanticColors {
    * The default color for text.
    */
   bodyText: string;
+
+  /**
+   * Checked text color, e.g. selected menu item text.
+   */
+  bodyTextChecked: string;
 
   /**
    * De-emphasized text; e.g. metadata, captions, placeholder text.
@@ -73,12 +82,17 @@ export interface ISemanticColors {
   disabledBackground: string;
 
   /**
-   * The default color for disabled text; e.g. user input inside a disabled text field.
+   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
    */
   disabledText: string;
 
   /**
-   * Disabled de-emphasized text; e.g. placeholder text inside disabled input field.
+   * The default color for disabled text on the default background (bodyBackground).
+   */
+  disabledBodyText: string;
+
+  /**
+   * Disabled de-emphasized text, for use on disabledBackground.
    */
   disabledSubtext: string;
 
@@ -90,13 +104,17 @@ export interface ISemanticColors {
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
   /**
+   * The default color of error text, used on bodyBackground.
+   */
+  errorText: string;
+  /**
+   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   */
+  warningText: string;
+  /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
   errorBackground: string;
-  /**
-   * The default color of error text.
-   */
-  errorText: string;
   /**
    * Background for blocking issues, which is more severe than a warning, but not as bad as an error.
    */
@@ -105,6 +123,14 @@ export interface ISemanticColors {
    * Background for warning messages.
    */
   warningBackground: string;
+  /**
+   * Foreground color for warning highlights
+   */
+  warningHighlight: string;
+  /**
+   * Background for success
+   */
+  successBackground: string;
 
   //// Input controls slots (text fields, checkboxes, radios...)
 
@@ -138,6 +164,47 @@ export interface ISemanticColors {
    */
   inputFocusBorderAlt: string;
 
+  //// Buttons
+
+  /**
+   * Background of a standard button
+   */
+  buttonBackground: string;
+  /**
+   * Background of a hovered standard button
+   */
+  buttonBackgroundHovered: string;
+  /**
+   * Background of a checked standard button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundChecked: string;
+  /**
+   * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundCheckedHovered: string;
+
+  /**
+   * Border of a standard button
+   */
+  buttonBorder: string;
+
+  /**
+   * Color of text in a standard button
+   */
+  buttonText: string;
+  /**
+   * Color of text in a hovered standard button
+   */
+  buttonTextHovered: string;
+  /**
+   * Color of text in a checked standard button
+   */
+  buttonTextChecked: string;
+  /**
+   * Color of text in a checked and hovered standard button
+   */
+  buttonTextCheckedHovered: string;
+
   //// Menus, popups, etc
 
   /**
@@ -146,6 +213,7 @@ export interface ISemanticColors {
   menuItemBackgroundHovered: string;
 
   /**
+   * @deprecated
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;

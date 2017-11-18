@@ -1,6 +1,6 @@
 /* tslint:disable:no-trailing-whitespace */
 
-import { IProperty, PropertyType } from './interfaces';
+import { IEnumProperty, IInterfaceProperty, IProperty, PropertyType } from './interfaces';
 import { InterfaceParserHelper } from './InterfaceParserHelper';
 import { EnumParserHelper } from './EnumParserHelper';
 
@@ -59,8 +59,8 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
   return props;
 }
 
-function _parseEnumOrInterface(regexResult: RegExpExecArray) {
-  let parseInfo;
+function _parseEnumOrInterface(regexResult: RegExpExecArray): IInterfaceProperty[] | IEnumProperty[] {
+  let parseInfo: IInterfaceProperty[] | IEnumProperty[];
   if (regexResult[1] === 'interface') {
     let parser = new InterfaceParserHelper(regexResult[0]);
     parseInfo = parser.parse();

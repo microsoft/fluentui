@@ -1,15 +1,18 @@
+import './Header.scss';
+
 import * as React from 'react';
-import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
+
 import {
   ContextualMenu,
   DirectionalHint,
   IContextualMenuItem
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
+
+import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import './Header.scss';
-import { FontClassNames } from '@uifabric/styling/lib/index';
 
 export interface IHeaderProps {
   title: string;
@@ -26,11 +29,12 @@ export interface IHeaderState {
     target: HTMLElement,
     items: IContextualMenuItem[]
   };
-  isRTLEnabled?: boolean;
 }
 
 @withResponsiveMode
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
+  private _isRTLEnabled: boolean;
+
   constructor(props: IHeaderProps) {
     super(props);
 
@@ -39,13 +43,13 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this._onRTLToggled = this._onRTLToggled.bind(this);
     this._onMenuClick = this._onMenuClick.bind(this);
 
+    this._isRTLEnabled = getRTL();
     this.state = {
-      contextMenu: undefined,
-      isRTLEnabled: getRTL()
+      contextMenu: undefined
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { title, sideLinks, responsiveMode } = this.props;
     let { contextMenu } = this.state;
 
@@ -67,18 +71,20 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             </button>
           ) }
           <div className={ 'Header-title ' + FontClassNames.large }>
-            <Icon iconName='Org' />
             { title }
           </div>
           <div className='Header-buttons'>
             <FocusZone direction={ FocusZoneDirection.horizontal }>
-              { sideLinks.map((link, linkIndex) => (
-                <a key={ linkIndex } className='Header-button' href={ link.url }>{ link.name }</a>
-              )).concat([
-                <button key='headerButton' className='Header-button' onClick={ this._onGearClick }>
-                  <Icon iconName='Settings' />
-                </button>
-              ]) }
+              { sideLinks.map((link: {
+                name: string;
+                url: string;
+              }, linkIndex: number) => (
+                  <a key={ linkIndex } className='Header-button' href={ link.url }>{ link.name }</a>
+                )).concat([
+                  <button key='headerButton' className='Header-button' onClick={ this._onGearClick }>
+                    <Icon iconName='Settings' />
+                  </button>
+                ]) }
             </FocusZone>
           </div>
         </div>
@@ -86,7 +92,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
           <ContextualMenu
             items={ contextMenu.items }
             isBeakVisible={ true }
-            targetElement={ contextMenu.target }
+            target={ contextMenu.target }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             gapSpace={ 5 }
             onDismiss={ this._onDismiss }
@@ -96,7 +102,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     );
   }
 
-  private _onMenuClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onMenuClick(ev: React.MouseEvent<HTMLElement>): void {
     let { onIsMenuVisibleChanged, isMenuVisible } = this.props;
 
     if (onIsMenuVisibleChanged) {
@@ -104,7 +110,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
   }
 
-  private _onGearClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onGearClick(ev: React.MouseEvent<HTMLElement>): void {
     let { contextMenu } = this.state;
 
     this.setState({
@@ -118,24 +124,18 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   private _getOptionMenuItems(): IContextualMenuItem[] {
     return [{
       key: 'isRTL',
-      name: `Render in ${this.state.isRTLEnabled ? 'LTR' : 'RTL'}`,
+      name: `Render in ${this._isRTLEnabled ? 'LTR' : 'RTL'}`,
       icon: 'Settings',
       onClick: this._onRTLToggled
     }];
   }
 
-  private _onRTLToggled(ev: React.MouseEvent<HTMLElement>) {
-    let { isRTLEnabled } = this.state;
-
-    setRTL(!isRTLEnabled);
-
-    this.setState({
-      isRTLEnabled: !isRTLEnabled,
-      contextMenu: undefined
-    });
+  private _onRTLToggled(ev: React.MouseEvent<HTMLElement>): void {
+    setRTL(!this._isRTLEnabled, true);
+    location.reload();
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState({
       contextMenu: undefined
     });

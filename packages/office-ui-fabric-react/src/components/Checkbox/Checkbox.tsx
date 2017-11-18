@@ -10,14 +10,17 @@ import {
   ICheckbox,
   ICheckboxProps,
   ICheckboxStyles
-} from './Checkbox.Props';
+} from './Checkbox.types';
 import {
   customizable
 } from '../../Utilities';
 import {
   mergeStyles
 } from '../../Styling';
-
+import {
+  ICheckboxClassNames,
+  getClassNames
+} from './Checkbox.classNames';
 import { getStyles } from './Checkbox.styles';
 
 export interface ICheckboxState {
@@ -25,15 +28,7 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
-interface ICheckboxClassNames {
-  root: string;
-  label: string;
-  checkbox: string;
-  checkmark: string;
-  text: string;
-}
-
-@customizable(['theme'])
+@customizable('Checkbox', ['theme'])
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'
@@ -79,7 +74,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       defaultChecked,
       disabled,
       inputProps,
-      label,
       name,
       boxSide,
       theme,
@@ -87,19 +81,22 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       ariaLabelledBy,
       ariaDescribedBy,
       styles: customStyles,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      checkmarkIconProps,
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    this._classNames = this._getClassNames(
-      getStyles(theme!, customStyles),
-      className!,
-      disabled!,
-      isChecked!,
-      isReversed!
-    );
+    this._classNames = this.props.getClassNames ?
+      this.props.getClassNames(theme!, !!disabled, !!isChecked, !!isReversed, className)
+      : getClassNames(
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isChecked,
+        !!isReversed,
+        className
+      );
 
     return (
       <button
@@ -124,7 +121,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       >
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>
-            <Icon iconName='CheckMark' className={ this._classNames.checkmark } />
+            <Icon iconName='CheckMark' {...checkmarkIconProps} className={ this._classNames.checkmark } />
           </div>
           { onRenderLabel(this.props, this._onRenderLabel) }
         </label>
@@ -187,65 +184,5 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     ) : (
         null
       );
-  }
-
-  @memoize
-  private _getClassNames(
-    styles: ICheckboxStyles,
-    className: string,
-    disabled: boolean,
-    isChecked: boolean,
-    isReversed: boolean
-    ): ICheckboxClassNames {
-    return {
-      root: mergeStyles(
-        'ms-Checkbox',
-        isReversed && 'reversed',
-        isChecked && 'is-checked',
-        !disabled && 'is-enabled',
-        disabled && 'is-disabled',
-        className,
-        styles.root,
-        !disabled && [
-          !isChecked && {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered
-          },
-          isChecked && {
-            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered
-          },
-          {
-            ':hover .ms-Checkbox-text': styles.textHovered
-          }
-        ]
-      ) as string,
-
-      label: mergeStyles(
-        'ms-Checkbox-label',
-        styles.label,
-        isReversed && styles.labelReversed,
-        disabled && styles.labelDisabled
-      ) as string,
-
-      checkbox: mergeStyles(
-        'ms-Checkbox-checkbox',
-        styles.checkbox,
-        !disabled && isChecked && styles.checkboxChecked,
-        disabled && !isChecked && styles.checkboxDisabled,
-        disabled && isChecked && styles.checkboxCheckedDisabled,
-      ) as string,
-
-      checkmark: mergeStyles(
-        styles.checkmark,
-        !disabled && isChecked && styles.checkmarkChecked,
-        disabled && !isChecked && styles.checkmarkDisabled,
-        disabled && isChecked && styles.checkmarkCheckedDisabled,
-      ) as string,
-
-      text: mergeStyles(
-        'ms-Checkbox-text',
-        styles.text,
-        disabled && styles.textDisabled
-      ) as string,
-    };
   }
 }

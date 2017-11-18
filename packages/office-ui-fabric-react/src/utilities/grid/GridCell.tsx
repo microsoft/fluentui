@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {
   autobind,
-  BaseComponent,
   css,
   getId,
 } from '../../Utilities';
-import { IGridCellProps } from './GridCell.Props';
+import { IGridCellProps } from './GridCell.types';
 import { CommandButton } from '../../Button';
 
 export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
@@ -16,8 +15,6 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     id: getId('gridCell')
   };
 
-  private _id: string;
-
   public render() {
     let {
       item,
@@ -26,9 +23,6 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       role,
       selected,
       disabled,
-      onClick,
-      onHover,
-      onFocus,
       onRenderItem,
       cellDisabledStyle,
       cellIsSelectedStyle,
@@ -91,8 +85,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   private _onMouseLeave() {
     let {
       onHover,
-      disabled,
-      item
+      disabled
       } = this.props as P;
 
     if (onHover && !disabled) {

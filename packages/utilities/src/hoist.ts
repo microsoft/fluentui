@@ -19,6 +19,7 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
  * @param exclusions - (Optional) What methods to exclude from being hoisted.
  * @returns An array of names of methods that were hoisted.
  */
+// tslint:disable-next-line:no-any
 export function hoistMethods(destination: any, source: any, exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS): string[] {
   let hoisted: string[] = [];
   for (let methodName in source) {
@@ -29,7 +30,7 @@ export function hoistMethods(destination: any, source: any, exclusions: string[]
     ) {
       hoisted.push(methodName);
       /* tslint:disable:no-function-expression */
-      destination[methodName] = function () { source[methodName].apply(source, arguments); };
+      destination[methodName] = function (): void { source[methodName].apply(source, arguments); };
       /* tslint:enable */
     }
   }
@@ -44,7 +45,8 @@ export function hoistMethods(destination: any, source: any, exclusions: string[]
  * @param source - The source object upon which methods were hoisted.
  * @param methodNames - An array of method names to unhoist.
  */
+// tslint:disable-next-line:no-any
 export function unhoistMethods(source: any, methodNames: string[]): void {
   methodNames
-    .forEach((methodName) => delete source[methodName]);
+    .forEach((methodName: string) => delete source[methodName]);
 }

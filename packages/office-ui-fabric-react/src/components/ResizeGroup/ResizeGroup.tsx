@@ -3,8 +3,8 @@ import {
   css,
   BaseComponent
 } from '../../Utilities';
-import { IResizeGroupProps } from './ResizeGroup.Props';
-import styles = require('./ResizeGroup.scss');
+import { IResizeGroupProps } from './ResizeGroup.types';
+import * as styles from './ResizeGroup.scss';
 
 const RESIZE_DELAY = 16;
 
@@ -287,7 +287,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public render() {
-    const { onRenderData, data } = this.props;
+    const { onRenderData } = this.props;
     const { dataToMeasure, renderedData } = this.state;
 
     return (

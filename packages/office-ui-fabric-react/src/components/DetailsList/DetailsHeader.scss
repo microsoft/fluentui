@@ -1,8 +1,8 @@
 @import '../../common/common';
 
-$iconForegroundColor: $ms-color-neutralSecondary;
-$headerForegroundColor: $ms-color-neutralPrimary;
-$headerBackgroundColor: $ms-color-white;
+$iconForegroundColor: $bodySubtextColor;
+$headerForegroundColor: $bodyTextColor;
+$headerBackgroundColor: $bodyBackgroundColor;
 $dropdownChevronForegroundColor: $ms-color-neutralTertiary;
 $rowHeight: 32px;
 $resizerColor: $ms-color-neutralTertiaryAlt;
@@ -19,7 +19,7 @@ $isPaddedMargin: 24px;
   line-height: $rowHeight;
   white-space: nowrap;
   padding-bottom: 1px;
-  border-bottom: 1px solid $dividerColor;
+  border-bottom: 1px solid $bodyDividerColor;
   cursor: default;
   user-select: none;
 
@@ -53,19 +53,21 @@ $isPaddedMargin: 24px;
 
   &.cellIsCheck {
     position: relative;
-    padding: 6px 8px;
+    padding: 0;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
   }
 
   &.cellIsActionable {
 
     &:hover {
-      color: $ms-color-neutralPrimary;
-      background: $unselectedHoverBackgroundColor;
+      color: $bodyTextColor;
+      background: $bodyBackgroundColor;
     }
 
     &:active {
-      background: $unselectedActiveBackgroundColor;
+      background: $listItemBackgroundHoveredColor;
     }
   }
 
@@ -135,6 +137,12 @@ $isPaddedMargin: 24px;
   color: $iconForegroundColor;
   opacity: 1;
   @include ms-padding-left(8px);
+
+  &.sortIcon {
+    @include ms-padding-left(4px);
+    position: relative;
+    top: 1px;
+  }
 }
 
 .cell .filterChevron {
@@ -175,6 +183,11 @@ $isPaddedMargin: 24px;
   bottom: 0;
   cursor: ew-resize;
   background: rgba(255, 255, 255, 0);
+
+  @include high-contrast {
+    background: transparent;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .cell .collapseButton {

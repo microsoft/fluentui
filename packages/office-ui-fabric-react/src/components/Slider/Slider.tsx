@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ISliderProps, ISlider } from './Slider.Props';
+import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
 import * as stylesImport from './Slider.scss';
 const styles: any = stylesImport;
@@ -30,6 +30,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     max: 10,
     showValue: true,
     disabled: false,
+    vertical: false,
     buttonProps: {}
   };
 
@@ -83,11 +84,12 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       max,
       min,
       showValue,
-      buttonProps
+      buttonProps,
+      vertical
     } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue! - min!) / (max! - min!) * 100;
-
+    const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
@@ -96,9 +98,12 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       <div
         className={ css('ms-Slider', styles.root, className, {
           ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
-          ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled
+          ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
+          ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
+          ['ms-Slider-column ' + styles.rootIsVertical]: vertical
         }) }
-        ref='root'>
+        ref='root'
+      >
         { label && (
           <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
             { label }
@@ -109,6 +114,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
+            aria-valuetext={ this._getAriaValueText(value) }
+            aria-label={ ariaLabel || label }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
             { ...onKeyDownProp }
@@ -132,13 +139,16 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
               <span
                 ref='thumb'
                 className={ css('ms-Slider-thumb', styles.thumb) }
-                { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
-                style={ getRTL() ?
-                  { 'right': thumbOffsetPercent + '%' } :
-                  { 'left': thumbOffsetPercent + '%' } }
+                style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
-              <span className={ css('ms-Slider-active', styles.activeSection) } style={ { 'width': thumbOffsetPercent + '%' } }></span>
-              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
+              <span
+                className={ css('ms-Slider-active', styles.lineContainer, styles.activeSection) }
+                style={ { [lengthString]: thumbOffsetPercent + '%' } }
+              />
+              <span
+                className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
+                style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
+              />
             </div>
           </button>
           { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
@@ -146,7 +156,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       </div>
     ) as React.ReactElement<{}>;
   }
-
   public focus(): void {
     if (this.refs.thumb) {
       this.refs.thumb.focus();
@@ -158,6 +167,20 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   @autobind
+  private _getAriaValueText(value: number | undefined): string | void {
+    if (this.props.ariaValueText && value !== undefined) {
+      return this.props.ariaValueText(value);
+    }
+  }
+
+  private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
+    let direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
+    return {
+      [direction]: thumbOffsetPercent + '%'
+    };
+  }
+
+  @autobind
   private _onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
     if (event.type === 'mousedown') {
       this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
@@ -166,7 +189,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
       this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
     }
-
     this._onMouseMoveOrTouchMove(event, true);
   }
 
@@ -175,18 +197,19 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
     const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
-    const sliderLength: number = sliderPositionRect.width;
+    const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
+    let distance: number | undefined;
 
-    if (event.type === 'mousedown' || event.type === 'mousemove') {
-      currentSteps = getRTL() ?
-        (sliderPositionRect.right - (event as MouseEvent).clientX) / stepLength :
-        ((event as MouseEvent).clientX - sliderPositionRect.left) / stepLength;
-    } else if (event.type === 'touchstart' || event.type === 'touchmove') {
-      currentSteps = getRTL() ?
-        (sliderPositionRect.right - (event as TouchEvent).touches[0].clientX) / stepLength :
-        ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
+    if (!this.props.vertical) {
+      let left: number | undefined = this._getPosition(event, this.props.vertical);
+      distance = getRTL() ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
+      currentSteps = distance / stepLength;
+    } else {
+      let bottom: number | undefined = this._getPosition(event, this.props.vertical);
+      distance = sliderPositionRect.bottom - bottom!;
+      currentSteps = distance / stepLength;
     }
 
     let currentValue: number | undefined;
@@ -210,11 +233,29 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
   }
 
+  private _getPosition(event: MouseEvent | TouchEvent, vertical: boolean | undefined): number | undefined {
+    let currentPosition: number | undefined;
+    switch (event.type) {
+      case 'mousedown':
+      case 'mousemove':
+        currentPosition = !vertical ? (event as MouseEvent).clientX : (event as MouseEvent).clientY;
+        break;
+      case 'touchstart':
+      case 'touchmove':
+        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        break;
+    }
+    return currentPosition;
+  }
   private _updateValue(value: number, renderedValue: number) {
-    let valueChanged = value !== this.state.value;
+    let interval: number = 1.0 / this.props.step!;
+    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
+    let roundedValue: number = Math.round(value * interval) / interval;
+
+    let valueChanged = roundedValue !== this.state.value;
 
     this.setState({
-      value,
+      value: roundedValue,
       renderedValue
     }, () => {
       if (valueChanged && this.props.onChange) {
@@ -225,7 +266,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   @autobind
   private _onMouseUpOrTouchEnd(): void {
-
     // Synchronize the renderedValue to the actual value.
     this.setState({
       renderedValue: this.state.value

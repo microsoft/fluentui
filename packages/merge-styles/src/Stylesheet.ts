@@ -1,5 +1,4 @@
 import { IStyle } from './IStyle';
-
 /**
  * Injection mode for the stylesheet.
  *
@@ -14,7 +13,12 @@ export const enum InjectionMode {
   /**
    * Inserts rules using the insertRule api.
    */
-  insertNode = 1
+  insertNode = 1,
+
+  /**
+   * Appends rules using appendChild.
+   */
+  appendChild = 2
 }
 
 /**
@@ -50,7 +54,7 @@ export class Stylesheet {
   private _keyToClassName: { [key: string]: string };
 
   // tslint:disable-next-line:no-any
-  private _classNameToArgs: { [key: string]: any };
+  private _classNameToArgs: { [key: string]: { args: any, rules: string[] } };
 
   /**
    * Gets the singleton instance.
@@ -61,7 +65,10 @@ export class Stylesheet {
     _stylesheet = win[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet) {
-      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet();
+      // tslint:disable-next-line:no-string-literal
+      const fabricConfig = (win && win['FabricConfig']) || {};
+
+      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
 
     return _stylesheet;
@@ -102,9 +109,17 @@ export class Stylesheet {
    * Used internally to cache information about a class which was
    * registered with the stylesheet.
    */
-  public cacheClassName(className: string, key: string, args: IStyle[]): void {
+  public cacheClassName(
+    className: string,
+    key: string,
+    args: IStyle[],
+    rules: string[]
+  ): void {
     this._keyToClassName[key] = className;
-    this._classNameToArgs[className] = args;
+    this._classNameToArgs[className] = {
+      args,
+      rules
+    };
   }
 
   /**
@@ -120,7 +135,19 @@ export class Stylesheet {
    * previously registered using cacheClassName.
    */
   public argsFromClassName(className: string): IStyle[] | undefined {
-    return this._classNameToArgs[className];
+    const entry = this._classNameToArgs[className];
+
+    return (entry && entry.args);
+  }
+
+  /**
+ * Gets the arguments associated with a given classname which was
+ * previously registered using cacheClassName.
+ */
+  public insertedRulesFromClassName(className: string): string[] | undefined {
+    const entry = this._classNameToArgs[className];
+
+    return (entry && entry.rules);
   }
 
   /**
@@ -142,6 +169,10 @@ export class Stylesheet {
         } catch (e) {
           /* no-op on errors */
         }
+        break;
+
+      case InjectionMode.appendChild:
+        element!.appendChild(document.createTextNode(rule));
         break;
 
       default:
@@ -178,6 +209,7 @@ export class Stylesheet {
   private _getElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = document.createElement('style');
+      this._styleElement.setAttribute('data-merge-styles', 'true');
       document.head.appendChild(this._styleElement);
     }
 

@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -10,6 +11,10 @@ import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
+
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
@@ -84,7 +89,6 @@ function _onLoad(): void {
 
 function _createRoutes(pages: {}[]): {}[] {
   let routes = [];
-  let pageRoutes = [];
 
   // tslint:disable-next-line:no-any
   pages.forEach((page: any, pageIndex: number) => {
@@ -141,4 +145,4 @@ function addCSSToHeader(fileName: string) {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.1.0/css/fabric.min.css');
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.0.0/css/fabric.min.css');

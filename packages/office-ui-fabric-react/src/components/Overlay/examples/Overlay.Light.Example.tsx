@@ -32,7 +32,7 @@ export class OverlayLightExample extends React.Component<any, any> {
     );
   }
 
-  public _onClick() {
+  private _onClick() {
     this.setState({
       isOverlayVisible: !this.state.isOverlayVisible
     });

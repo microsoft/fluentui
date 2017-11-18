@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -12,13 +13,13 @@
     "strictNullChecks": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
     "lib": [
       "es2017",
       "dom"
     ],
     "types": [
-      "chai",
-      "mocha",
+      "jest",
       "webpack-env"
     ],
     "paths": {
@@ -27,10 +28,7 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

@@ -4,7 +4,6 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import Todo from './components/Todo';
 import DataProvider from './DataProvider';
-import { ITodoProps } from './types/index';
 
 let _rootDiv: HTMLElement;
 let _dataProvider = new DataProvider();
@@ -19,7 +18,7 @@ function start(): void {
     <Fabric>
       <Todo
         dataProvider={ _dataProvider }
-        />
+      />
     </Fabric>,
     _rootDiv);
 }

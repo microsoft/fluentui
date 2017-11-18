@@ -8,6 +8,7 @@ import {
   Selection
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 let _items: {
   key: number,
@@ -69,7 +70,7 @@ export class DetailsListCompactExample extends React.Component<any, any> {
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+          onChanged={ this._onChanged }
         />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
@@ -79,7 +80,7 @@ export class DetailsListCompactExample extends React.Component<any, any> {
             layoutMode={ DetailsListLayoutMode.fixedColumns }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onItemInvoked={ this._onItemInvoked }
             compact={ true }
           />
         </MarqueeSelection>
@@ -98,5 +99,14 @@ export class DetailsListCompactExample extends React.Component<any, any> {
       default:
         return `${selectionCount} items selected`;
     }
+  }
+
+  @autobind
+  private _onChanged(text: any): void {
+    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
   }
 }

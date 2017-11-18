@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as stylesImport from './Interstitials.module.scss';
 const styles: any = stylesImport;
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class FabricIOSPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.basePage }>
         <div className={ styles.header }>
           <h1>Office UI Fabric iOS</h1>
           <span>The Office design language for iOS</span>
@@ -17,7 +18,7 @@ export class FabricIOSPage extends React.Component<any, any> {
             <div className='ms-Grid-row'>
               <div className='ms-Grid-col ms-sm12 ms-lg8'>
                 <p className={ styles.overviewText }>Use Fabric styling and components written in native Swift to integrate your iOS experience with Office.</p>
-                <p className={ styles.overviewText }>Fabric iOS includes core design elements along with components that are used in iOS Office products like the <a href='https://itunes.apple.com/us/app/microsoft-sharepoint/id1091505266'>SharePoint iOS app</a>.</p>
+                <p className={ styles.overviewText }>Fabric iOS includes core design elements along with components that are used in iOS Office products like the <a className={ styles.overviewLink } href='https://itunes.apple.com/us/app/microsoft-sharepoint/id1091505266'>SharePoint iOS app</a>.</p>
               </div>
             </div>
           </div>

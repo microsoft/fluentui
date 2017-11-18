@@ -1,0 +1,22 @@
+@import '../../../common/_variables';
+
+:global {
+  .docs-TextFieldExample {
+    .ms-TextField {
+      margin: 0 0 15px 0;
+      max-width: $maxFieldWidth;
+    }
+  }
+
+  .docs-TextFieldErrorExample {
+    .ms-TextField,
+    .NumberTextField {
+      margin: 0 0 15px 0;
+      max-width: $maxFieldWidth*2; // wider width due to long labels / values / placeholders in the error message example
+    }
+
+    .NumberTextField .ms-TextField {
+      margin: 0 0 5px 0;
+    }
+  }
+}

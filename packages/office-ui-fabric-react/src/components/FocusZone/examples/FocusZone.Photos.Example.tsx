@@ -17,10 +17,15 @@ const PHOTOS = createArray(25, () => {
   };
 });
 
+const log = (): void => {
+  console.log('clicked');
+};
+
 export const FocusZonePhotosExample = () => (
   <FocusZone
     elementType='ul'
-    className='ms-FocusZoneExamples-photoList'>
+    className='ms-FocusZoneExamples-photoList'
+  >
     { PHOTOS.map((photo, index) => (
       <li
         key={ index }
@@ -29,7 +34,8 @@ export const FocusZonePhotosExample = () => (
         aria-setsize={ PHOTOS.length }
         aria-label='Photo'
         data-is-focusable={ true }
-        onClick={ () => console.log('clicked') }>
+        onClick={ log }
+      >
         <Image src={ photo.url } width={ photo.width } height={ photo.height } />
       </li>
     )) }

@@ -1,39 +1,41 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { customizable } from './customizable';
-import { Customizer } from './Customizer';
-import { GlobalSettings } from './GlobalSettings';
+import { Customizations } from './Customizations';
 
-let { expect } = chai;
-
-@customizable(['name', 'name2'])
-class Foo extends React.Component<{ field: string; }, {}> {
-  public name: any;
-
-  public render() {
-    return <div>{ (this.props as any)[this.props.field] }</div>;
+@customizable('Foo', ['field'])
+class Foo extends React.Component<{ field?: string; }, {}> {
+  public render(): JSX.Element {
+    return <div>{ this.props.field }</div>;
   }
 }
 
 describe('customizable', () => {
+  beforeEach(() => {
+    Customizations.reset();
+  });
 
-  it('can inject customizations', () => {
-    GlobalSettings.setValue('name', 'defaultName');
+  it('can receive global customizations', () => {
+    Customizations.applySettings({ field: 'globalName' });
+    expect(ReactDOM.renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
+  });
 
-    expect(ReactDOM.renderToStaticMarkup(<Foo field='name' />)).equals('<div>defaultName</div>');
-    expect(ReactDOM.renderToStaticMarkup(<Foo field='name2' />)).equals('<div></div>');
+  it('can receive scoped customizations', () => {
+    Customizations.applySettings({ field: 'globalName' });
+    Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
+    expect(ReactDOM.renderToStaticMarkup(<Foo />)).toEqual('<div>scopedName</div>');
+  });
 
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer settings={ { name: 'customName' } }>
-        <Foo field='name' />
-      </Customizer>
-    )).equals('<div>customName</div>');
+  it('can ignore scoped customizations that do not apply', () => {
+    Customizations.applySettings({ field: 'globalName' });
+    Customizations.applyScopedSettings('Bar', { field: 'scopedName' });
+    expect(ReactDOM.renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
+  });
 
-    expect(ReactDOM.renderToStaticMarkup(
-      <Customizer settings={ { name2: 'customName' } }>
-        <Foo field='name2' />
-      </Customizer>
-    )).equals('<div>customName</div>');
+  it('can accept props over global/scoped values', () => {
+    Customizations.applySettings({ field: 'globalName' });
+    Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
+    expect(ReactDOM.renderToStaticMarkup(<Foo field='name' />)).toEqual('<div>name</div>');
   });
 
 });

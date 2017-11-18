@@ -4,8 +4,8 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { IDialogProps } from './Dialog.Props';
-import { DialogType } from './DialogContent.Props';
+import { IDialogProps } from './Dialog.types';
+import { DialogType } from './DialogContent.types';
 import { Modal } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';
@@ -60,8 +60,6 @@ export class Dialog extends BaseComponent<IDialogProps, {}> {
 
   public render() {
     let {
-      ariaDescribedById,
-      ariaLabelledById,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -74,7 +72,6 @@ export class Dialog extends BaseComponent<IDialogProps, {}> {
       onDismiss,
       onDismissed,
       onLayerDidMount,
-      onLayerMounted,
       responsiveMode,
       subText,
       title,

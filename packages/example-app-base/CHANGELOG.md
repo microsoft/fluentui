@@ -1,6 +1,99 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 21 Aug 2017 10:19:28 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Oct 2017 02:03:33 GMT and should not be manually modified.
+
+## 5.1.2
+Wed, 25 Oct 2017 02:03:33 GMT
+
+### Patches
+
+- Minor css improvements to example header.
+
+## 5.1.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.1.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Fixing version dependencies.
+
+## 5.0.5
+Thu, 05 Oct 2017 10:17:42 GMT
+
+*Changes not tracked*
+
+## 5.0.4
+Wed, 04 Oct 2017 22:40:22 GMT
+
+*Changes not tracked*
+
+## 5.0.3
+Fri, 29 Sep 2017 10:20:24 GMT
+
+### Patches
+
+- Update fabric version for example-app-base
+
+## 5.0.2
+Thu, 28 Sep 2017 10:19:12 GMT
+
+*Changes not tracked*
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 4.2.7
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Update fabric-dependency version
+
+## 4.2.6
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Patches
+
+- Persist RTL setting between page refreshes
+
+## 4.2.5
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Patches
+
+- Refresh the page when swtiching languages to make sure that memoized styles are recomputed
+
+## 4.2.4
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.2.3
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 4.2.2
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Patches
+
+- Break up long lines or disable max line length in ex-app-base pkg to pass tslint
+- Added missing typedefs in ex-app-base pkg to pass tslint
 
 ## 4.2.1
 Mon, 21 Aug 2017 10:19:28 GMT

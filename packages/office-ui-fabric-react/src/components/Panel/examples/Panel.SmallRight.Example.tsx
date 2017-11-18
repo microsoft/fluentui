@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
@@ -26,22 +27,7 @@ export class PanelSmallRightExample extends React.Component<any, any> {
           onDismiss={ this._onClosePanel }
           headerText='Panel - Small, right-aligned, fixed, with footer'
           closeButtonAriaLabel='Close'
-          onRenderFooterContent={ () => {
-            return (
-              <div>
-                <PrimaryButton
-                  onClick={ this._onClosePanel }
-                  style={ { 'marginRight': '8px' } } >
-                  Save
-                </PrimaryButton>
-                <DefaultButton
-                  onClick={ this._onClosePanel }
-                >
-                  Cancel
-                </DefaultButton>
-              </div>
-            );
-          } }
+          onRenderFooterContent={ this._onRenderFooterContent }
         >
           <ChoiceGroup
             options={ [
@@ -74,11 +60,32 @@ export class PanelSmallRightExample extends React.Component<any, any> {
     );
   }
 
-  private _onClosePanel = () => {
+  @autobind
+  private _onClosePanel(): void {
     this.setState({ showPanel: false });
   }
 
-  private _onShowPanel = () => {
+  @autobind
+  private _onRenderFooterContent(): JSX.Element {
+    return (
+      <div>
+        <PrimaryButton
+          onClick={ this._onClosePanel }
+          style={ { 'marginRight': '8px' } }
+        >
+          Save
+        </PrimaryButton>
+        <DefaultButton
+          onClick={ this._onClosePanel }
+        >
+          Cancel
+        </DefaultButton>
+      </div>
+    );
+  }
+
+  @autobind
+  private _onShowPanel(): void {
     this.setState({ showPanel: true });
   }
 }

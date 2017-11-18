@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DropdownStatus } from './Dropdown.checklist';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
@@ -33,7 +35,8 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
             ] }
           />
         }
@@ -45,7 +48,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -57,13 +60,15 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         donts={
-          <div></div>
+          <div />
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Dropdown/Dropdown.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...DropdownStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }
