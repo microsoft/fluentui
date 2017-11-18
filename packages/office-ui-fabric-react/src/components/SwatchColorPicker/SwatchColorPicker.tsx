@@ -115,11 +115,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
-  private _getHoveredIndex(items: IColorCellProps[], selectedId: string): number | undefined {
-    let selectedIndex = findIndex(items, (item => (item.id === selectedId)));
-    return selectedIndex >= 0 ? selectedIndex : undefined;
-  }
-
   /**
    * Render a color cell
    * @param item - The item to render
