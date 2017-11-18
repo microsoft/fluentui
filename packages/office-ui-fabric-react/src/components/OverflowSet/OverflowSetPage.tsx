@@ -3,6 +3,7 @@ import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
@@ -15,7 +16,7 @@ const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react
 const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
 const OverflowSetVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
 
-export class OverflowSetPage extends React.Component<any, any> {
+export class OverflowSetPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -54,6 +55,7 @@ export class OverflowSetPage extends React.Component<any, any> {
             {...OverflowSetStatus}
           />
         }
+        isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }
