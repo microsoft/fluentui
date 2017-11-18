@@ -8,6 +8,7 @@ import {
   assign,
   autobind,
   css,
+  elementContains,
   getRTLSafeKeyCode,
   IRenderFunction
 } from '../../Utilities';
@@ -39,7 +40,6 @@ import { withViewport } from '../../utilities/decorators/withViewport';
 const styles: any = stylesImport;
 
 export interface IDetailsListState {
-  focusedItem?: DetailsRow;
   focusedItemIndex: number;
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
@@ -106,7 +106,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
-      focusedItem: undefined,
       focusedItemIndex: -1,
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
@@ -152,7 +151,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this.props.items !== prevProps.items &&
       this.props.items.length > 0 &&
       this.state.focusedItemIndex !== -1 &&
-      this.props.items.indexOf(this.state.focusedItem) === -1
+      !elementContains(this._root, document.activeElement as HTMLElement, false)
     ) {
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,
@@ -760,7 +759,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         onActiveItemChanged(items[index], index, ev);
       }
       this.setState({
-        focusedItem: items[index],
         focusedItemIndex: index
       });
     }
@@ -768,7 +766,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onBlur(event: React.FocusEvent<HTMLElement>) {
     this.setState({
-      focusedItem: undefined,
       focusedItemIndex: -1
     });
   }
