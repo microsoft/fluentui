@@ -66,13 +66,11 @@ export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element
 
 export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <span className={ css(SignalStyles.signal, SignalStyles.centeredSignal) }>
-      <Icon
-        ariaLabel={ props.ariaLabel }
-        className={ css(SignalStyles.signal, SignalStyles.trending) }
-        iconName='market'
-      />
-    </span>
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalsStyles.trending) }
+      iconName='market'
+    />
   );
 };
 
@@ -98,7 +96,7 @@ export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
     <span
       { ...spanProps }
-      className={ css(SignalStyles.signal, SignalsStyles.newItem) }
+      className={ css(SignalStyles.signal, SignalsStyles.new) }
     >
       <Icon
         ariaLabel={ props.ariaLabel }
@@ -198,15 +196,17 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
   );
 };
 
-export const ATPSignal: Signal = (props: ISignalProps): JSX.Element => {
+export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
     <Icon
       ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalStyles.atp) }
+      className={ css(SignalStyles.signal, SignalsStyles.malwareDetected) }
       iconName='ATPLogo'
     />
   );
 };
+
+export const ATPSignal: Signal = MalwareDetectedSignal; // TODO Delete on next major version.
 
 /**
  * Renders a signal for an external item.

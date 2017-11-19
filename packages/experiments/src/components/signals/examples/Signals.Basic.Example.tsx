@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   SignalField,
   YouCheckedOutSignal,
+  MalwareDetectedSignal,
   BlockedSignal,
   MissingMetadataSignal,
   WarningSignal,
@@ -31,13 +32,18 @@ const SignalsExampleStyles: any = SignalsExampleStylesModule;
 interface ISignalExampleProps {
   name: string;
   signal: React.ReactNode;
+  text?: string;
 }
 
 const SignalExample: React.StatelessComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
+  const {
+    text = lorem(4)
+  } = props;
+
   return (
     <div>
       <h3>{ props.name }</h3>
-      <SignalField before={ props.signal }>{ lorem(4) }</SignalField>
+      <SignalField before={ props.signal }>{ text }</SignalField>
     </div>
   );
 };
@@ -104,6 +110,10 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
             signal={ <YouCheckedOutSignal /> }
           />
           <SignalExample
+            name='Malware detected'
+            signal={ <MalwareDetectedSignal /> }
+          />
+          <SignalExample
             name='Blocked'
             signal={ <BlockedSignal /> }
           />
@@ -132,6 +142,11 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
             signal={ <NewSignal /> }
           />
           <SignalExample
+            name='New (positioning)'
+            signal={ <NewSignal /> }
+            text='O'
+          />
+          <SignalExample
             name='Live edit'
             signal={ <LiveEditSignal /> }
           />
@@ -142,6 +157,10 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
           <SignalExample
             name='Comments'
             signal={ <CommentsSignal /> }
+          />
+          <SignalExample
+            name='Comments (count)'
+            signal={ <CommentsSignal>2</CommentsSignal> }
           />
           <SignalExample
             name='Unseen edit'

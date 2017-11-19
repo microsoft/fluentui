@@ -15,6 +15,7 @@ export type Signal = React.StatelessComponent<ISignalProps>;
 export const Signal: Signal = (props: ISignalProps): JSX.Element => {
   const {
     ariaLabel,
+    className,
     ...spanProps
   } = props;
 
@@ -22,7 +23,7 @@ export const Signal: Signal = (props: ISignalProps): JSX.Element => {
     <span
       aria-label={ props.ariaLabel }
       { ...spanProps }
-      className={ css(SignalStyles.signal) }
+      className={ css(SignalStyles.signal, className) }
     >
       { props.children }
     </span>
