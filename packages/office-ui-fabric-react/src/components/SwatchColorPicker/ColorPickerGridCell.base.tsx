@@ -12,7 +12,7 @@ import {
 import { getColorFromString } from '../../utilities/color/colors';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { classNamesFunction, IClassNames, mergeStyleSets, Stylesheet, InjectionMode } from '../../Styling';
+import { classNamesFunction, IClassNames } from '../../Styling';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
