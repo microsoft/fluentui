@@ -93,6 +93,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
     this._classNames = getClassNames(
+      this.props.classNames!,
       styles!,
       className!,
       variantClassName!,

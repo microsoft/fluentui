@@ -72,6 +72,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    */
   className?: string;
 
+  classNames?: {};
+
   /**
    * The aria label of the button for the benefit of screen readers.
    */

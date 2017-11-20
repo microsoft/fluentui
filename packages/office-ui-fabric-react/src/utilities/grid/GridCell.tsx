@@ -26,7 +26,8 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       cellDisabledStyle,
       cellIsSelectedStyle,
       index,
-      label
+      label,
+      classNames
     } = this.props;
 
     return (
@@ -49,6 +50,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         aria-selected={ selected }
         ariaLabel={ label }
         title={ label }
+        classNames={ classNames }
       >
         { onRenderItem(item) }
       </CommandButton >
