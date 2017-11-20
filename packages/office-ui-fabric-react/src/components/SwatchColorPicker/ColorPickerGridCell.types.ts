@@ -1,10 +1,22 @@
 import { IStyle, ITheme, IStyleFunction } from '../../Styling';
 
-export interface IColorCellProps {
+export interface IColorPickerGridCell { }
+
+export interface IColorPickerGridCellProps {
+  /**
+   * Optional callback to access the IColorPickerGridCell interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IColorPickerGridCell) => void;
 
   /**
-   * Arbitrary unique string associated with this option
+   * Item to render
    */
+  item: IColorCellProps;
+
+  /**
+ * Arbitrary unique string associated with this option
+ */
   id: string;
 
   /**
@@ -24,35 +36,81 @@ export interface IColorCellProps {
    */
   index?: number;
 
-  theme: ITheme;
+  theme?: ITheme;
 
   circle?: boolean;
 
+  /**
+   * Optional, if the this option should be diabled
+   */
   disabled?: boolean;
 
-  isSelected: boolean;
+  /**
+   * Optional, if the cell is currently selected
+   */
+  selected: boolean;
+
+  /**
+   * The on click handler
+   */
+  onClick?: (item: IColorCellProps) => void;
+
+  /**
+ * Optional, the onHover handler
+ */
+  onHover?: (item?: IColorCellProps) => void;
+
+  /**
+   * Optional, the onFocus handler
+   */
+  onFocus?: (item: IColorCellProps) => void;
 
   /**
   * Optional styles for the component.
   */
-  getStyles?: IStyleFunction<IColorCellStyleProps, IColorCellStyles>;
+  getStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+}
+
+export interface IColorCellProps {
+
+  /**
+  * Arbitrary unique string associated with this option
+  */
+  id: string;
+
+  /**
+   * The label for this item.
+   * Visible text if this item is a header,
+   * tooltip if is this item is normal
+   */
+  label?: string;
+
+  /**
+   * The CSS-compatible string to describe the color
+   */
+  color?: string;
+
+  /**
+   * Index for this option
+   */
+  index?: number;
 }
 
 /**
  * Properties required to build the styles for the color picker component.
  */
-export interface IColorCellStyleProps {
+export interface IColorPickerGridCellStyleProps {
   theme: ITheme;
   className?: string;
   disabled?: boolean;
-  isSelected?: boolean;
+  selected?: boolean;
   circle?: boolean;
 }
 
 /**
  * Styles for the Color Picker Component.
  */
-export interface IColorCellStyles {
+export interface IColorPickerGridCellStyles {
   root: IStyle;
   svg: IStyle;
 }

@@ -1,4 +1,5 @@
 import { IStyle, ITheme, IStyleFunction } from '../../Styling';
+import { IColorCellProps } from './ColorPickerGridCell.types';
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -92,40 +93,12 @@ export interface ISwatchColorPickerProps {
   getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 }
 
-export interface IColorCellProps {
-
-  /**
-   * Arbitrary unique string associated with this option
-   */
-  id: string;
-
-  /**
-   * The label for this item.
-   * Visible text if this item is a header,
-   * tooltip if is this item is normal
-   */
-  label?: string;
-
-  /**
-   * The CSS-compatible string to describe the color
-   */
-  color?: string;
-
-  /**
-   * Index for this option
-   */
-  index?: number;
-}
-
 /**
  * Properties required to build the styles for the color picker component.
  */
 export interface ISwatchColorPickerStyleProps {
   theme: ITheme;
   className?: string;
-  disabled?: boolean;
-  isSelected?: boolean;
-  circle?: boolean;
 }
 
 /**
@@ -133,6 +106,4 @@ export interface ISwatchColorPickerStyleProps {
  */
 export interface ISwatchColorPickerStyles {
   root: IStyle;
-  svg: IStyle;
-  container: IStyle;
 }
