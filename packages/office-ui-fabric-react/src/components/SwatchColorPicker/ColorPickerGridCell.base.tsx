@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   autobind,
-  BaseComponent,
   customizable
 } from '../../Utilities';
 import {
@@ -18,10 +17,6 @@ import { classNamesFunction, IClassNames, mergeStyleSets, Stylesheet, InjectionM
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
 class ColorCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
-}
-
-export interface IColorPickerGridCellState {
-  selected: boolean;
 }
 
 @customizable('ColorPickerGridCell', ['theme'])
@@ -69,6 +64,9 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         role={ 'gridcell' }
         onRenderItem={ this._onRenderColorOption }
         selected={ selected }
+        onClick={ this.props.onClick }
+        onHover={ this.props.onHover }
+        onFocus={ this.props.onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
         classNames={ this._classNames }
