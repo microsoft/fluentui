@@ -5,6 +5,7 @@ import {
 } from '../../Styling';
 
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+const ACTIVE_BORDER_COLOR = '#969696';
 
 function getSvgSelectorStyles(borderColor: string): IRawStyle {
   return {
@@ -46,7 +47,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           '.ms-Fabric.is-focusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
           ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
           ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':active $svg': getSvgSelectorStyles(theme.palette.neutralTertiaryAlt),
+          ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR),
         }
       },
       circle && 'is-circle' && {
@@ -67,7 +68,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           ':focus $svg': {
             borderColor: theme.palette.neutralTertiaryAlt
           },
-          ':active $svg': { boxShadow: '0 0 0 1px #969696' },
+          ':active $svg':
+          {
+            boxShadow: '0 0 0 1px #969696',
+            borderColor: ACTIVE_BORDER_COLOR,
+          },
         },
       },
       disabled && 'is-disabled' && {
