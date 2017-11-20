@@ -72,9 +72,9 @@
       height: 12px;
       border: 4px solid $ms-color-neutralTertiaryAlt;
 
-      &.whitColoreCell {
+      &.whiteColorCell {
         padding: 4px;
-        margin: 0px;
+        margin: 0;
       }
     }
   }
@@ -89,9 +89,9 @@
     width: 12px;
     height: 12px;
 
-    &.whitColoreCell {
+    &.whiteColorCell {
       padding: 4px;
-      margin: 0px;
+      margin: 0;
     }
   }
 
@@ -129,8 +129,8 @@
   }
 }
 
-.whitColoreCell {
-  padding: 0px;
+.whiteColorCell {
+  padding: 0;
   border: 1px solid #D2D2D2;
   margin: 4px;
 

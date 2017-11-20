@@ -181,7 +181,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // Build an SVG for the cell with the given shape and color properties
     let color = colorOption.color as string;
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '', color.toLowerCase() === '#ffffff' ? styles.whitColoreCell : '') } viewBox='0 0 20 20' fill={ getColorFromString(color)!.str } >
+      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '', (color && color.toLowerCase() === '#ffffff') ? styles.whiteColorCell : '') } viewBox='0 0 20 20' fill={ getColorFromString(color)!.str } >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
