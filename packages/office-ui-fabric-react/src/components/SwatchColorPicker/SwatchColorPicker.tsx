@@ -180,7 +180,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '', this.getWhiteCellStyle(colorOption.color as string)) } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
+      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '', this._getWhiteCellStyle(colorOption.color as string)) } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
         {
           this.props.cellShape === 'circle' ?
             <circle cx='50%' cy='50%' r='50%' /> :
@@ -220,11 +220,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param inputColor - The color of the current cell
    * @returns - The White color cell style if the current style is white, empty otherwise
    */
-  private getWhiteCellStyle(inputColor: string): string {
-    if (inputColor || inputColor.toLocaleLowerCase() !== "#ffffff") {
+  private _getWhiteCellStyle(inputColor: string): string {
+    if (inputColor || inputColor.toLocaleLowerCase() !== '#ffffff') {
       return '';
     } else {
-      return styles.whiteColorCell
+      return styles.whiteColorCell;
     }
   }
 }
