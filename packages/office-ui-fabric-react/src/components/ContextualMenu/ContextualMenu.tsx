@@ -289,6 +289,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 className={ this._classNames.root }
                 direction={ arrowDirection }
                 isCircularNavigation={ true }
+                allowTabKey={ true }
               >
                 <ul
                   aria-label={ ariaLabel }

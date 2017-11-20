@@ -350,22 +350,24 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.tab:
-          if (direction === FocusZoneDirection.vertical) {
-            if (ev.shiftKey) {
-              this._moveFocusUp();
-            } else {
-              this._moveFocusDown();
+          if (this.props.allowTabKey) {
+            if (direction === FocusZoneDirection.vertical) {
+              if (ev.shiftKey) {
+                this._moveFocusUp();
+              } else {
+                this._moveFocusDown();
+              }
+              break;
+            } else if (direction === FocusZoneDirection.horizontal) {
+              if (ev.shiftKey) {
+                this._moveFocusLeft();
+              } else {
+                this._moveFocusRight();
+              }
+              break;
             }
-            break;
-          } else if (direction === FocusZoneDirection.horizontal) {
-            if (ev.shiftKey) {
-              this._moveFocusLeft();
-            } else {
-              this._moveFocusRight();
-            }
-            break;
+            return;
           }
-          return;
 
         case KeyCodes.home:
           if (

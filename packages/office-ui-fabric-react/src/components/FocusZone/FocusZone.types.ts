@@ -102,6 +102,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /** Allow focus to move to root */
   allowFocusRoot?: boolean;
+
+  /** Allows tab key to be handled */
+  allowTabKey?: boolean;
 }
 
 export enum FocusZoneDirection {
