@@ -798,10 +798,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       onRenderList,
       calloutProps,
+      dropdownWidth,
       onRenderLowerContent = this._onRenderLowerContent
     } = props;
-
-    const dropdownWidth = (this.props.styles) ? this.props.styles.dropdownWidth : 0;
 
     return (
       <Callout

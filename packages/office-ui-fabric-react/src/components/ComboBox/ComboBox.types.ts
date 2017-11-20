@@ -117,6 +117,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Add additional content below the callout list.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
+
+  /**
+  * Custom width for dropdown. If value is 0, width of the input field is used.
+  * @default 0
+  */
+  dropdownWidth?: number;
 }
 
 export interface IComboBoxStyles {
@@ -209,12 +215,6 @@ export interface IComboBoxStyles {
    * Styles for a divider in the options.
    */
   divider: IStyle;
-
-  /**
-  * Custom width for dropdown. If value is 0, width of the input field is used.
-  * @default 0
-  */
-  dropdownWidth?: number;
 }
 
 export interface IComboBoxOptionStyles extends IButtonStyles {
