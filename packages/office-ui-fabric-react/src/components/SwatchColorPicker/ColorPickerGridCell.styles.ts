@@ -27,7 +27,6 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
   return {
     colorCell: [
       {
-        color: theme.palette.neutralPrimary,
         backgroundColor: 'transparent',
         padding: 0,
         overflow: 'visible',
@@ -60,6 +59,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           '$svg': {
             boxShadow: '0 0 0 1px #969696',
             border: '4px solid',
+            borderColor: theme.palette.neutralTertiaryAlt,
             width: 12,
             height: 12,
           },
