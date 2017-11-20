@@ -340,7 +340,10 @@ export interface IContextualMenuItem {
   * Method to provide the classnames to style the Vertical Divider of a split button inside a menu. Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
   * @default getSplitButtonVerticalDividerClassNames
   */
-  getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+  getSplitButtonVerticalDividerClassNames?: (theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean) => IVerticalDividerClassNames;
 
   /**
    *  Properties to apply to render this item as a section.
