@@ -119,7 +119,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -270,7 +270,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -421,7 +421,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -572,7 +572,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -727,7 +727,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -878,7 +878,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -1029,7 +1029,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -1180,7 +1180,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -1335,7 +1335,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -1486,7 +1486,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -1637,7 +1637,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
@@ -1788,7 +1788,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   width: 12px;
                 }
                 &:active $svg {
-                  border-color: #c8c8c8;
+                  border-color: #969696;
                   border: 4px solid;
                   height: 12px;
                   width: 12px;
