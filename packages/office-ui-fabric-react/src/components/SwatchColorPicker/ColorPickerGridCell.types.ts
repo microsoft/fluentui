@@ -111,6 +111,6 @@ export interface IColorPickerGridCellStyleProps {
  * Styles for the Color Picker Component.
  */
 export interface IColorPickerGridCellStyles {
-  root: IStyle;
+  colorCell: IStyle;
   svg: IStyle;
 }

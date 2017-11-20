@@ -4,12 +4,17 @@ import {
   BaseComponent,
   customizable
 } from '../../Utilities';
-import { IColorPickerGridCell, IColorPickerGridCellProps, IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+import {
+  IColorPickerGridCell,
+  IColorPickerGridCellProps,
+  IColorCellProps,
+  IColorPickerGridCellStyleProps,
+  IColorPickerGridCellStyles
+} from './ColorPickerGridCell.types';
 import { getColorFromString } from '../../utilities/color/colors';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { classNamesFunction, IClassNames, mergeStyleSets } from '../../Styling';
-import { getStyles as getBaseButtonStyles } from '../Button/ActionButton/ActionButton.styles';
+import { classNamesFunction, IClassNames, mergeStyleSets, Stylesheet, InjectionMode } from '../../Styling';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
@@ -52,6 +57,10 @@ export class ColorPickerGridCellBase extends BaseComponent<IColorPickerGridCellP
       }
     );
 
+    // const styleSheet = Stylesheet.getInstance();
+    // styleSheet.setConfig({ injectionMode: InjectionMode.none });
+    // console.log(this._prettify(styleSheet.getRules()));
+
     return (
       <ColorCell
         item={ item }
@@ -62,9 +71,47 @@ export class ColorPickerGridCellBase extends BaseComponent<IColorPickerGridCellP
         onRenderItem={ this._onRenderColorOption }
         selected={ selected }
         label={ item.label }
-        styles={ mergeStyleSets(this._classNames, getBaseButtonStyles(theme!)) }
+        className={ this._classNames.colorCell }
+        classNames={ this._classNames }
       />
     );
+  }
+
+  private _prettify(styleRules: string): string {
+    let rules = styleRules.split('}');
+
+    let prettyRules = [''];
+
+    for (let rule of rules) {
+      if (rule) {
+        let parts = rule.split('{');
+        let indent = (parts.length > 2) ? '  ' : '';
+
+        if (parts.length > 2) {
+          prettyRules.push(parts[0] + ' {');
+        }
+        let selector = parts[parts.length - 2];
+        let styles = parts[parts.length - 1].split(';');
+
+        prettyRules.push(indent + selector + ' {');
+
+        for (let style of styles) {
+          if (style) {
+            prettyRules.push(indent + '  ' + style + ';');
+          }
+        }
+
+        prettyRules.push(indent + '}');
+
+        if (parts.length > 2) {
+          prettyRules.push('}');
+        }
+
+        prettyRules.push('');
+      }
+    }
+
+    return prettyRules.join('\n');
   }
 
   /**

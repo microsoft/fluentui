@@ -25,8 +25,10 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
 
   const { semanticColors, fonts } = theme;
   return {
-    root: [
+    colorCell: [
       {
+        color: theme.palette.neutralPrimary,
+        backgroundColor: 'transparent',
         padding: 0,
         overflow: 'visible',
         position: 'relative',

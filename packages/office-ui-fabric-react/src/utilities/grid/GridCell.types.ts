@@ -77,5 +77,5 @@ export interface IGridCellProps<T> {
   /**
    * Styles applied to the gridCell button.
    */
-  styles?: IButtonStyles;
+  classNames?: {};
 }
