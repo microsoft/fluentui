@@ -11,21 +11,14 @@ import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
   ISwatchColorPickerStyleProps,
-  ISwatchColorPickerStyles,
-  IColorCellProps,
+  ISwatchColorPickerStyles
 } from './SwatchColorPicker.types';
-import { getStyles } from './SwatchColorPicker.styles';
-import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
-import { GridCell } from '../../utilities/grid/GridCell';
-import { IGridCellProps } from '../../utilities/grid/GridCell.types';
+import { IColorCellProps } from './ColorPickerGridCell.types';
+import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { classNamesFunction, IClassNames, mergeStyleSets, Stylesheet, InjectionMode } from '../../Styling';
-
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
-}
-
-class ColorPickerGridCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
 }
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
@@ -88,9 +81,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       {
         theme: this.props.theme!,
         className,
-        disabled,
-        isSelected: false,
-        circle: this.props.cellShape === 'circle'
       }
     );
 
@@ -107,7 +97,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
         doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
-        containerClassName={ classNames.container }
+        containerClassName={ classNames.root }
       />);
   }
 
@@ -145,28 +135,15 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   @autobind
   private _renderOption(item: IColorCellProps): JSX.Element {
     let id = this._id;
-    const classNames = getClassNames(
-      this.props.getStyles!,
-      {
-        theme: this.props.theme!,
-        className: this.props.className,
-        disabled: this.props.disabled,
-        isSelected: this._isSelected(item.index!),
-        circle: this.props.cellShape === 'circle',
-      }
-    );
+
     return (
       <ColorPickerGridCell
         item={ item }
         id={ id }
-        key={ id + item.id }
         disabled={ this.props.disabled }
-        className={ classNames.root }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }
         onFocus={ this._onGridCellFocused }
-        onRenderItem={ this._onRenderColorOption }
-        role={ 'gridcell' }
         selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
         label={ item.label }
       />
@@ -199,34 +176,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         this.props.onCellFocused();
       }
     }
-  }
-
-  /**
-   * Render the core of a color cell
-   * @returns {JSX.Element} - Element representing the core of the item
-   */
-  @autobind
-  private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
-    // Build an SVG for the cell with the given shape and color properties
-    const classNames = getClassNames(
-      this.props.getStyles!,
-      {
-        theme: this.props.theme!,
-        className: this.props.className,
-        disabled: this.props.disabled,
-        isSelected: this._isSelected(colorOption.index!),
-        circle: this.props.cellShape === 'circle',
-      }
-    );
-    return (
-      <svg className={ classNames.svg } viewBox='0 0 20 20' fill={ getColorFromString(colorOption.color as string)!.str } >
-        {
-          this.props.cellShape === 'circle' ?
-            <circle cx='50%' cy='50%' r='50%' /> :
-            <rect width='100%' height='100%' />
-        }
-      </svg>
-    );
   }
 
   /**

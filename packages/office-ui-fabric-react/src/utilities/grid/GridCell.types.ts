@@ -1,3 +1,5 @@
+import { IButtonStyles } from '../../Button';
+
 export interface IGridCellProps<T> {
 
   /**
@@ -71,4 +73,9 @@ export interface IGridCellProps<T> {
  * tooltip if is this item is normal
  */
   label?: string;
+
+  /**
+   * Styles applied to the gridCell button.
+   */
+  styles?: IButtonStyles;
 }
