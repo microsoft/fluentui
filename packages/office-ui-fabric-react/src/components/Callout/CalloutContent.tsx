@@ -15,7 +15,7 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from '../../utilities/positioning';
+import { getRelativePositions, ICalloutPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon, RectangleEdge } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
@@ -25,9 +25,15 @@ const styles: any = stylesImport;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
+const SLIDE_ANIMATIONS: { [key: number]: string; } = {
+  [RectangleEdge.top]: 'slideUpIn20',
+  [RectangleEdge.bottom]: 'slideDownIn20',
+  [RectangleEdge.left]: 'slideLeftIn20',
+  [RectangleEdge.right]: 'slideRightIn20'
+};
 
 export interface ICalloutState {
-  positions?: IPositionInfo;
+  positions?: ICalloutPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
   heightOffset?: number;
@@ -121,30 +127,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       calloutMaxHeight } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
-    let beakStyleWidth = beakWidth;
 
-    // This is here to support the old way of setting the beak size until version 1.0.0.
-    // beakStyle is now deprecated and will be be removed at version 1.0.0
-    if (beakStyle === 'ms-Callout-smallbeak') {
-      beakStyleWidth = 16;
-    }
-
-    let beakReactStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.position : null),
-    };
-    beakReactStyle.height = beakStyleWidth;
-    beakReactStyle.width = beakStyleWidth;
-    beakReactStyle.backgroundColor = backgroundColor;
-    if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
-      beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
-      beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
-    }
-    let directionalClassName = (positions && positions.directionalClassName)
-      ? (AnimationClassNames as any)[positions.directionalClassName]
+    let directionalClassName = (positions && positions.targetEdge)
+      ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]]
       : '';
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+
+    const beakReactStyle = this._getBeakPosition(positions, beakWidth, backgroundColor, beakStyle);
 
     let beakVisible = isBeakVisible && (!!target);
 
@@ -162,7 +153,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               directionalClassName,
               !!calloutWidth && { width: calloutWidth }
             ) }
-          style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
+          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
@@ -255,9 +246,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
   }
+
   private _updateAsyncPosition() {
     this._async.requestAnimationFrame(() => this._updatePosition());
   }
+
   private _updatePosition() {
     let { positions } = this.state;
     let hostElement: HTMLElement = this._hostElement;
@@ -268,7 +261,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      let newPositions: IPositionInfo = getRelativePositions(currentProps!, hostElement, calloutElement);
+      let newPositions: ICalloutPositionInfo = getRelativePositions(currentProps!, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -288,6 +281,32 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         }
       }
     }
+  }
+
+  private _getBeakPosition(positions?: ICalloutPositionInfo,
+    beakWidth?: number,
+    backgroundColor?: string,
+    beakStyle?: string) {
+    let beakStyleWidth = beakWidth;
+
+    // This is here to support the old way of setting the beak size until version 1.0.0.
+    // beakStyle is now deprecated and will be be removed at version 1.0.0
+    if (beakStyle === 'ms-Callout-smallbeak') {
+      beakStyleWidth = 16;
+    }
+
+    let beakReactStyle: React.CSSProperties = {
+      ...(positions && positions.beakPosition ? positions.beakPosition.position : null),
+    };
+    beakReactStyle.height = beakStyleWidth;
+    beakReactStyle.width = beakStyleWidth;
+    beakReactStyle.backgroundColor = backgroundColor;
+    if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
+      beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
+      beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
+    }
+
+    return beakReactStyle;
   }
 
   private _getBounds(): IRectangle {
@@ -325,8 +344,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     return this._maxHeight!;
   }
 
-  private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo) {
-    return this._comparePositions(positions.calloutPosition, newPosition.calloutPosition) &&
+  private _arePositionsEqual(positions: ICalloutPositionInfo, newPosition: ICalloutPositionInfo) {
+    return this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
       this._comparePositions(positions.beakPosition.position, newPosition.beakPosition.position);
   }
 
