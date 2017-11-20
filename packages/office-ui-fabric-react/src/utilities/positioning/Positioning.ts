@@ -54,8 +54,8 @@ let DirectionalDictionary: { [key: number]: IPositionDirectionalHintData } = {
 
 export module positioningFunctions {
 
-  export interface ICallout {
-    calloutRectangle: Rectangle;
+  export interface IElementPosition {
+    elementRectangle: Rectangle;
     targetEdge: RectangleEdge;
     alignmentEdge: RectangleEdge | undefined;
   }
@@ -233,14 +233,18 @@ export module positioningFunctions {
    * @param {Rectangle} bounding
    * @param {IPositionDirectionalHintData} positionData
    * @param {number} [gap=0]
-   * @returns {ICallout}
+   * @returns {IElementPosition}
    */
-  function _flipToFit(rect: Rectangle, target: Rectangle, bounding: Rectangle, positionData: IPositionDirectionalHintData, gap: number = 0, ): ICallout {
+  function _flipToFit(rect: Rectangle,
+    target: Rectangle,
+    bounding: Rectangle,
+    positionData: IPositionDirectionalHintData,
+    gap: number = 0, ): IElementPosition {
     let directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
     let currentEstimate = rect;
     let currentEdge = positionData.targetEdge;
     let currentAlignment = positionData.alignmentEdge;
-    // Keep switching sides until one is found with enough space. If all sides don't fit then return the unmodified callout.
+    // Keep switching sides until one is found with enough space. If all sides don't fit then return the unmodified element.
     for (let i = 0; i < 4; i++) {
       if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
         directions.splice(directions.indexOf(currentEdge), 1);
@@ -253,61 +257,61 @@ export module positioningFunctions {
         currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap);
       } else {
         return {
-          calloutRectangle: currentEstimate,
+          elementRectangle: currentEstimate,
           targetEdge: currentEdge,
           alignmentEdge: currentAlignment
         };
       }
     }
     return {
-      calloutRectangle: rect,
+      elementRectangle: rect,
       targetEdge: positionData.targetEdge,
       alignmentEdge: currentAlignment
     };
   }
 
   /**
-   * Adjusts a callout rectangle to fit within the bounds given. If directionalHintFixed or covertarget is passed in
-   * then the callout will not flip sides on the target. They will, however, be nudged to fit within the bounds given.
+   * Adjusts a element rectangle to fit within the bounds given. If directionalHintFixed or covertarget is passed in
+   * then the element will not flip sides on the target. They will, however, be nudged to fit within the bounds given.
    *
-   * @param {Rectangle} callout
+   * @param {Rectangle} element
    * @param {Rectangle} target
    * @param {Rectangle} bounding
    * @param {IPositionDirectionalHintData} positionData
    * @param {number} [gap=0]
    * @param {boolean} [directionalHintFixed]
    * @param {boolean} [coverTarget]
-   * @returns {ICallout}
+   * @returns {IElementPosition}
    */
   function _adjustFitWithinBounds(
-    callout: Rectangle,
+    element: Rectangle,
     target: Rectangle,
     bounding: Rectangle,
     positionData: IPositionDirectionalHintData,
     gap: number = 0,
     directionalHintFixed?: boolean,
-    coverTarget?: boolean): ICallout {
+    coverTarget?: boolean): IElementPosition {
 
     let {
       alignmentEdge
     } = positionData;
-    let calloutEstimate: ICallout = {
-      calloutRectangle: callout,
+    let elementEstimate: IElementPosition = {
+      elementRectangle: element,
       targetEdge: positionData.targetEdge,
       alignmentEdge: alignmentEdge
     };
 
     if (!directionalHintFixed && !coverTarget) {
-      calloutEstimate = _flipToFit(callout, target, bounding, positionData, gap);
+      elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
     }
 
-    let outOfBounds = _getOutOfBoundsEdges(callout, bounding);
+    let outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
     for (const direction of outOfBounds) {
-      calloutEstimate.calloutRectangle = _alignEdges(calloutEstimate.calloutRectangle, bounding, direction);
+      elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
     }
 
-    return calloutEstimate;
+    return elementEstimate;
   }
 
   /**
@@ -318,20 +322,20 @@ export module positioningFunctions {
    * @param {Rectangle} rect
    * @param {RectangleEdge} edge
    * @param {number} point
-   * @returns
+   * @returns {Rectangle}
    */
-  function centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number) {
+  function centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number): Rectangle {
     const { positiveEdge } = _getFlankingEdges(edge);
-    const calloutMiddle = _getCenterValue(rect, edge);
-    const distanceToMiddle = calloutMiddle - _getEdgeValue(rect, positiveEdge);
+    const elementMiddle = _getCenterValue(rect, edge);
+    const distanceToMiddle = elementMiddle - _getEdgeValue(rect, positiveEdge);
     return _moveEdge(rect, positiveEdge, point - distanceToMiddle);
   }
 
   /**
-   * Moves the callout rectangle to be appropriately positioned relative to a given target.
-   * Does not flip or adjust the callout.
+   * Moves the element rectangle to be appropriately positioned relative to a given target.
+   * Does not flip or adjust the element.
    *
-   * @param {Rectangle} callout
+   * @param {Rectangle} elementToPosition
    * @param {Rectangle} target
    * @param {IPositionDirectionalHintData} positionData
    * @param {number} [gap=0]
@@ -339,30 +343,30 @@ export module positioningFunctions {
    * @returns {Rectangle}
    */
   function _estimatePosition(
-    callout: Rectangle,
+    elementToPosition: Rectangle,
     target: Rectangle,
     positionData: IPositionDirectionalHintData,
     gap: number = 0,
     coverTarget?: boolean
   ): Rectangle {
-    let estimatedCalloutPosition: Rectangle;
+    let estimatedElementPosition: Rectangle;
     let {
       alignmentEdge,
       targetEdge
     } = positionData;
-    const calloutEdge = coverTarget ? targetEdge : targetEdge * -1;
-    estimatedCalloutPosition = coverTarget ? _alignEdges(callout, target, targetEdge, gap) :
-      _alignOppositeEdges(callout, target, targetEdge, gap);
+    const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
+    estimatedElementPosition = coverTarget ? _alignEdges(elementToPosition, target, targetEdge, gap) :
+      _alignOppositeEdges(elementToPosition, target, targetEdge, gap);
     // if no alignment edge is provided it's supposed to be centered.
     if (!alignmentEdge) {
       const targetMiddlePoint = _getCenterValue(target, targetEdge);
-      estimatedCalloutPosition = centerEdgeToPoint(estimatedCalloutPosition, calloutEdge, targetMiddlePoint);
+      estimatedElementPosition = centerEdgeToPoint(estimatedElementPosition, elementEdge, targetMiddlePoint);
 
     } else {
-      estimatedCalloutPosition = _alignEdges(estimatedCalloutPosition, target, alignmentEdge);
+      estimatedElementPosition = _alignEdges(estimatedElementPosition, target, alignmentEdge);
     }
 
-    return estimatedCalloutPosition;
+    return estimatedElementPosition;
   }
 
   /**
@@ -387,20 +391,20 @@ export module positioningFunctions {
   }
 
   /**
-   * Finalizes the callout positon based on the hostElement. Only returns the
+   * Finalizes the element positon based on the hostElement. Only returns the
    * rectangle values to position such that they are anchored to the target.
    * This helps prevent resizing from looking very strange.
    * For instance, if the target edge is top and aligned with the left side then
    * the bottom and left values are returned so as the callou shrinks it shrinks towards that corner.
    *
-   * @param {Rectangle} calloutRectangle
+   * @param {Rectangle} elementRectangle
    * @param {HTMLElement} hostElement
    * @param {RectangleEdge} targetEdge
    * @param {RectangleEdge} [alignmentEdge]
    * @returns {IPartialIRectangle}
    */
-  function _finalizeCalloutPosition(
-    calloutRectangle: Rectangle,
+  function _finalizeElementPosition(
+    elementRectangle: Rectangle,
     hostElement: HTMLElement,
     targetEdge: RectangleEdge,
     alignmentEdge?: RectangleEdge
@@ -408,12 +412,12 @@ export module positioningFunctions {
     let returnValue: IPartialIRectangle = {};
 
     const hostRect: Rectangle = _getRectangleFromHTMLElement(hostElement);
-    const calloutEdge = targetEdge * -1;
-    const calloutEdgeString = RectangleEdge[calloutEdge];
+    const elementEdge = targetEdge * -1;
+    const elementEdgeString = RectangleEdge[elementEdge];
     const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
 
-    returnValue[calloutEdgeString] = _getRelativeEdgeDifference(calloutRectangle, hostRect, calloutEdge);
-    returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(calloutRectangle, hostRect, returnEdge);
+    returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
+    returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
 
     return returnValue;
   }
@@ -470,7 +474,7 @@ export module positioningFunctions {
     return positionData;
   }
 
-  function getClosestEdge(targetEdge: RectangleEdge, target: Rectangle, boundingRect: Rectangle) {
+  function getClosestEdge(targetEdge: RectangleEdge, target: Rectangle, boundingRect: Rectangle): RectangleEdge {
     const targetCenter: number = _getCenterValue(target, targetEdge);
     const boundingCenter: number = _getCenterValue(boundingRect, targetEdge);
     const { positiveEdge, negativeEdge } = _getFlankingEdges(targetEdge);
@@ -481,64 +485,64 @@ export module positioningFunctions {
     }
   }
 
-  export function _positionCalloutWithinBounds(
-    callout: Rectangle,
+  export function _positionElementWithinBounds(
+    elementToPosition: Rectangle,
     target: Rectangle,
     bounding: Rectangle,
     positionData: IPositionDirectionalHintData,
     gap: number,
     directionalHintFixed?: boolean,
-    coverTarget?: boolean): ICallout {
-    let estimatedCalloutPosition: Rectangle = _estimatePosition(callout, target, positionData, gap, coverTarget);
-    if (_isRectangleWithinBounds(estimatedCalloutPosition, bounding)) {
+    coverTarget?: boolean): IElementPosition {
+    let estimatedElementPosition: Rectangle = _estimatePosition(elementToPosition, target, positionData, gap, coverTarget);
+    if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
       return {
-        calloutRectangle: estimatedCalloutPosition,
+        elementRectangle: estimatedElementPosition,
         targetEdge: positionData.targetEdge,
         alignmentEdge: positionData.alignmentEdge
       };
     } else {
-      return _adjustFitWithinBounds(callout, target, bounding, positionData, gap, directionalHintFixed, coverTarget);
+      return _adjustFitWithinBounds(elementToPosition, target, bounding, positionData, gap, directionalHintFixed, coverTarget);
     }
   }
 
-  export function _finalizeBeakPosition(callout: ICallout,
+  export function _finalizeBeakPosition(elementPosition: IElementPosition,
     positionedBeak: Rectangle) {
-    const targetEdge = callout.targetEdge * -1;
-    // The "host" callout that we will use to help position the beak.
-    const actualCallout = new Rectangle(0, callout.calloutRectangle.width, 0, callout.calloutRectangle.height);
-    const returnEdge = callout.alignmentEdge ? callout.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
+    const targetEdge = elementPosition.targetEdge * -1;
+    // The "host" element that we will use to help position the beak.
+    const actualElement = new Rectangle(0, elementPosition.elementRectangle.width, 0, elementPosition.elementRectangle.height);
+    const returnEdge = elementPosition.alignmentEdge ? elementPosition.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
     let returnValue: IPartialIRectangle = {};
 
     returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
-    returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualCallout, returnEdge);
+    returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualElement, returnEdge);
 
     return returnValue;
   }
 
   export function _positionBeak(beakWidth: number,
-    callout: ICallout,
+    elementPosition: IElementPosition,
     target: Rectangle): Rectangle {
     /** Note about beak positioning: The actual beak width only matters for getting the gap between the callout and target, it does not impact the beak placement within the callout. For example example, if the beakWidth is 8, then the actual beakWidth is sqrroot(8^2 + 8^2) = 11.31x11.31. So the callout will need to be an extra 3 pixels away from its target. While the beak is being positioned in the callout it still acts as though it were 8x8.*/
-    const { positiveEdge, negativeEdge } = _getFlankingEdges(callout.targetEdge);
-    const beakTargetPoint = _getCenterValue(target, callout.targetEdge);
-    const calloutBounds = new Rectangle(
+    const { positiveEdge, negativeEdge } = _getFlankingEdges(elementPosition.targetEdge);
+    const beakTargetPoint = _getCenterValue(target, elementPosition.targetEdge);
+    const elementBounds = new Rectangle(
       beakWidth / 2,
-      callout.calloutRectangle.width - beakWidth / 2,
+      elementPosition.elementRectangle.width - beakWidth / 2,
       beakWidth / 2,
-      callout.calloutRectangle.height - beakWidth / 2
+      elementPosition.elementRectangle.height - beakWidth / 2
     );
 
     let beakPositon: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
 
-    beakPositon = _moveEdge(beakPositon, (callout.targetEdge * -1), -beakWidth / 2);
+    beakPositon = _moveEdge(beakPositon, (elementPosition.targetEdge * -1), -beakWidth / 2);
 
-    beakPositon = centerEdgeToPoint(beakPositon, callout.targetEdge * -1,
-      beakTargetPoint - _getRelativeRectEdgeValue(positiveEdge, callout.calloutRectangle));
+    beakPositon = centerEdgeToPoint(beakPositon, elementPosition.targetEdge * -1,
+      beakTargetPoint - _getRelativeRectEdgeValue(positiveEdge, elementPosition.elementRectangle));
 
-    if (!_isEdgeInBounds(beakPositon, calloutBounds, positiveEdge)) {
-      beakPositon = _alignEdges(beakPositon, calloutBounds, positiveEdge);
-    } else if (!_isEdgeInBounds(beakPositon, calloutBounds, negativeEdge)) {
-      beakPositon = _alignEdges(beakPositon, calloutBounds, negativeEdge);
+    if (!_isEdgeInBounds(beakPositon, elementBounds, positiveEdge)) {
+      beakPositon = _alignEdges(beakPositon, elementBounds, positiveEdge);
+    } else if (!_isEdgeInBounds(beakPositon, elementBounds, negativeEdge)) {
+      beakPositon = _alignEdges(beakPositon, elementBounds, negativeEdge);
     }
 
     return beakPositon;
@@ -611,7 +615,7 @@ export module positioningFunctions {
   export function _getRelativePositions(
     props: IPositionProps,
     hostElement: HTMLElement,
-    calloutElement: HTMLElement): ICalloutPositionInfo {
+    elementToPosition: HTMLElement): ICalloutPositionInfo {
     const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
     const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
     const boundingRect: Rectangle = props.bounds ?
@@ -623,8 +627,8 @@ export module positioningFunctions {
       targetRect,
       boundingRect,
       props.coverTarget);
-    const positionedCallout: ICallout = _positionCalloutWithinBounds(
-      _getRectangleFromHTMLElement(calloutElement),
+    const positionedElement: IElementPosition = _positionElementWithinBounds(
+      _getRectangleFromHTMLElement(elementToPosition),
       targetRect,
       boundingRect,
       positionData,
@@ -633,26 +637,26 @@ export module positioningFunctions {
       props.coverTarget);
     const beakPositioned: Rectangle = _positionBeak(
       beakWidth,
-      positionedCallout,
+      positionedElement,
       targetRect);
     const finalizedBeakPosition: IPartialIRectangle = _finalizeBeakPosition(
-      positionedCallout,
+      positionedElement,
       beakPositioned
     );
-    const finalizedCallout: IPartialIRectangle = _finalizeCalloutPosition(
-      positionedCallout.calloutRectangle,
+    const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
+      positionedElement.elementRectangle,
       hostElement,
-      positionedCallout.targetEdge,
-      positionedCallout.alignmentEdge);
+      positionedElement.targetEdge,
+      positionedElement.alignmentEdge);
     return {
-      elementPosition: finalizedCallout,
+      elementPosition: finalizedElement,
       beakPosition: {
         position: { ...finalizedBeakPosition },
-        beakClosestEdge: getClosestEdge(positionedCallout.targetEdge, beakPositioned,
-          new Rectangle(0, positionedCallout.calloutRectangle.width, 0, positionedCallout.calloutRectangle.height))
+        beakClosestEdge: getClosestEdge(positionedElement.targetEdge, beakPositioned,
+          new Rectangle(0, positionedElement.elementRectangle.width, 0, positionedElement.elementRectangle.height))
       },
-      targetEdge: positionedCallout.targetEdge,
-      submenuDirection: (positionedCallout.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
+      targetEdge: positionedElement.targetEdge,
+      submenuDirection: (positionedElement.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
     };
   }
 }
