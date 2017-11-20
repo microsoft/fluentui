@@ -2,7 +2,8 @@
 import {
   IRawStyle,
   getFocusStyle,
-  HighContrastSelector
+  HighContrastSelector,
+  mergeStyleSets
 } from '../../Styling';
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 
@@ -26,14 +27,48 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
 
   const { semanticColors, fonts } = theme;
   return {
-    colorCell: [
+    root: [
       {
         padding: 0,
         overflow: 'visible',
+        position: 'relative',
+        boxSizing: 'border-box',
+        display: 'inline-block',
+        border: '1px solid transparent',
+        background: 'transparent',
+        cursor: 'pointer',
+        textAlign: 'center',
+        verticalAlign: 'top',
+        userSelect: 'none',
+        height: 40,
         selectors: {
+          [HighContrastSelector]: { border: 'none' },
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' },
-          [HighContrastSelector]: { border: 'none' }
+          '.ms-Fabric.is-focusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
+          ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
+          ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
+          ':active $svg': getSvgSelectorStyles(theme.palette.neutralTertiaryAlt),
         }
+      },
+      circle && 'is-circle' && {
+        selectors: {
+          '$svg': { borderRadius: '100%' },
+        }
+      },
+      isSelected && 'isSelected' && {
+        selectors: {
+          '$svg': {
+            boxShadow: '0 0 0 1px #969696',
+            border: '4px solid',
+            width: 12,
+            height: 12,
+          },
+          ':hover $svg': { boxShadow: '0 0 0 1px #969696' },
+          ':focus $svg': {
+            borderColor: theme.palette.neutralTertiaryAlt
+          },
+          ':active $svg': { boxShadow: '0 0 0 1px #969696' },
+        },
       },
       disabled && 'is-disabled' && {
         color: semanticColors.disabledBodyText,
@@ -48,28 +83,6 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
         height: 20,
         padding: 4,
         boxSizing: 'content-box',
-        selectors: {
-          ':hover': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':focus': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':active': getSvgSelectorStyles(theme.palette.neutralTertiaryAlt),
-        }
-      },
-      circle && {
-        borderRadius: '100%'
-      },
-      isSelected && {
-        boxShadow: '0 0 0 1px #969696',
-        border: '4px solid',
-        width: 12,
-        height: 12,
-        borderColor: theme.palette.neutralTertiaryAlt,
-        selectors: {
-          ':hover': { boxShadow: '0 0 0 1px #969696' },
-          ':focus': {
-            borderColor: theme.palette.neutralTertiaryAlt
-          },
-          ':active': { boxShadow: '0 0 0 1px #969696' },
-        },
       }
     ],
     container: [

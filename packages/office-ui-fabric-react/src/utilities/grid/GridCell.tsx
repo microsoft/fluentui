@@ -29,7 +29,20 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       index,
       label
     } = this.props;
+
+    const buttonProps = {
+      id: id + '-item' + index,
+      disabled: disabled,
+      className: className,
+      onClick: this._onClick,
+      onMouseEnter: this._onMouseEnter,
+      onMouseLeave: this._onMouseLeave,
+      onFocus: this._onFocus,
+      role: role,
+      title: label
+    };
     return (
+      //React.createElement('button', buttonProps, onRenderItem(item)));
       <CommandButton
         id={ id + '-item' + index }
         data-index={ index }
@@ -41,6 +54,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
             ['' + cellDisabledStyle]: disabled
           }
         ) }
+        styles={ }
         onClick={ this._onClick }
         onMouseEnter={ this._onMouseEnter }
         onMouseLeave={ this._onMouseLeave }
