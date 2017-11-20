@@ -145,6 +145,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         onHover={ this._onGridCellHovered }
         onFocus={ this._onGridCellFocused }
         selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
+        circle={ this.props.cellShape === 'circle' }
         label={ item.label }
       />
     );
