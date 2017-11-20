@@ -221,11 +221,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @returns - The White color cell style if the current style is white, empty otherwise
    */
   private getWhiteCellStyle(inputColor: string): string {
-    if (inputColor) {
-      return '';
-    }
-
-    if (inputColor.toLocaleLowerCase() !== "#ffffff") {
+    if (inputColor || inputColor.toLocaleLowerCase() !== "#ffffff") {
       return '';
     } else {
       return styles.whiteColorCell
