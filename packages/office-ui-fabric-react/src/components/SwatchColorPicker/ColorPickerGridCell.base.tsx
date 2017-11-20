@@ -5,9 +5,8 @@ import {
   customizable
 } from '../../Utilities';
 import {
-  IColorPickerGridCell,
-  IColorPickerGridCellProps,
   IColorCellProps,
+  IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles
 } from './ColorPickerGridCell.types';
@@ -26,7 +25,7 @@ export interface IColorPickerGridCellState {
 }
 
 @customizable('ColorPickerGridCell', ['theme'])
-export class ColorPickerGridCellBase extends BaseComponent<IColorPickerGridCellProps, IColorPickerGridCellState> implements IColorPickerGridCell {
+export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCellProps, {}> {
 
   public static defaultProps = {
     circle: true,
