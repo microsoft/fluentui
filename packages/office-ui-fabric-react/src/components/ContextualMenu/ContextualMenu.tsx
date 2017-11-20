@@ -672,6 +672,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     if (elementToFocus) {
       elementToFocus.focus();
+      ev.preventDefault();
+      ev.stopPropagation();
     }
   }
 
