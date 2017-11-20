@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.24.0",
+      "tag": "office-ui-fabric-react_v5.24.0",
+      "date": "Mon, 20 Nov 2017 11:12:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "90d78667bf6450b9e88deb16eaa4a525fee201b1",
+            "comment": "Persona: Changed size40 primaryText font size back 14px."
+          },
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "f6726899890fd97c15c57ddd7337c383cd5f661d",
+            "comment": "DetailsList: preserve focus only if active element leaves the list"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "67466325ed0ff6b89f82fa152860f968d8d740a0",
+            "comment": "Edit HoverCardPage, OverflowSetPage, ScrollablePanePage, TeachingBubblePage to use IComponentDemoPageProps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "sathi23 <sathi23@gmail.com>",
+            "commit": "35a466a994844f6baa32b56ba5e4190f7f4e1055",
+            "comment": "calendar component ux changes plus exposing sixweeksbydefault"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.23.0",
       "tag": "office-ui-fabric-react_v5.23.0",
       "date": "Fri, 17 Nov 2017 17:36:36 GMT",

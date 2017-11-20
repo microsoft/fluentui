@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Nov 2017 17:36:36 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2017 11:12:47 GMT and should not be manually modified.
+
+## 5.24.0
+Mon, 20 Nov 2017 11:12:47 GMT
+
+### Minor changes
+
+- calendar component ux changes plus exposing sixweeksbydefault
+
+### Patches
+
+- Persona: Changed size40 primaryText font size back 14px.
+- DetailsList: preserve focus only if active element leaves the list
+- Edit HoverCardPage, OverflowSetPage, ScrollablePanePage, TeachingBubblePage to use IComponentDemoPageProps
 
 ## 5.23.0
 Fri, 17 Nov 2017 17:36:36 GMT
