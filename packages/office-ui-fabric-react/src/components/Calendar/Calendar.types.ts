@@ -132,6 +132,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * If set the Calendar will not allow navigation to or selection of a date later than this value.
   */
   maxDate?: Date;
+
+  /**
+  * Whether the calendar should show 6 weeks by default.
+  * @defaultvalue false
+  */
+  showSixWeeksByDefault?: boolean;
 }
 
 export interface ICalendarStrings {

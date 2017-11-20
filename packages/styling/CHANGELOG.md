@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 10 Nov 2017 17:09:36 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Nov 2017 17:36:36 GMT and should not be manually modified.
+
+## 5.10.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Export functions used to create font sets based upon a given locale code
+
+## 5.8.0
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Minor changes
+
+- Adding `styled` and `classNameFunction` helpers, in addition to a variety of interface.
 
 ## 5.7.0
 Fri, 10 Nov 2017 17:09:36 GMT
