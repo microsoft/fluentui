@@ -51,10 +51,6 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       }
     );
 
-    // const styleSheet = Stylesheet.getInstance();
-    // styleSheet.setConfig({ injectionMode: InjectionMode.none });
-    // console.log(this._prettify(styleSheet.getRules()));
-
     return (
       <ColorCell
         item={ item }
@@ -72,43 +68,6 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         classNames={ this._classNames }
       />
     );
-  }
-
-  private _prettify(styleRules: string): string {
-    let rules = styleRules.split('}');
-
-    let prettyRules = [''];
-
-    for (let rule of rules) {
-      if (rule) {
-        let parts = rule.split('{');
-        let indent = (parts.length > 2) ? '  ' : '';
-
-        if (parts.length > 2) {
-          prettyRules.push(parts[0] + ' {');
-        }
-        let selector = parts[parts.length - 2];
-        let styles = parts[parts.length - 1].split(';');
-
-        prettyRules.push(indent + selector + ' {');
-
-        for (let style of styles) {
-          if (style) {
-            prettyRules.push(indent + '  ' + style + ';');
-          }
-        }
-
-        prettyRules.push(indent + '}');
-
-        if (parts.length > 2) {
-          prettyRules.push('}');
-        }
-
-        prettyRules.push('');
-      }
-    }
-
-    return prettyRules.join('\n');
   }
 
   /**
