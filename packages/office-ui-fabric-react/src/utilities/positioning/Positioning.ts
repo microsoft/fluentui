@@ -13,7 +13,8 @@ import {
   IPositionDirectionalHintData,
   IPositionInfo,
   IPoint,
-  ICalloutPositionInfo
+  ICalloutPositionInfo,
+  ICalloutBeakPositionInfo
 } from './Positioning.Interfaces';
 import {
   IPositionProps
@@ -506,7 +507,7 @@ export module positioningFunctions {
   }
 
   export function _finalizeBeakPosition(elementPosition: IElementPosition,
-    positionedBeak: Rectangle) {
+    positionedBeak: Rectangle): ICalloutBeakPositionInfo {
     const targetEdge = elementPosition.targetEdge * -1;
     // The "host" element that we will use to help position the beak.
     const actualElement = new Rectangle(0, elementPosition.elementRectangle.width, 0, elementPosition.elementRectangle.height);
@@ -516,7 +517,11 @@ export module positioningFunctions {
     returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
     returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualElement, returnEdge);
 
-    return returnValue;
+    return {
+      elementPosition: { ...returnValue },
+      closestEdge: getClosestEdge(elementPosition.targetEdge, positionedBeak, actualElement),
+      targetEdge: targetEdge
+    };
   }
 
   export function _positionBeak(beakWidth: number,
@@ -639,7 +644,7 @@ export module positioningFunctions {
       beakWidth,
       positionedElement,
       targetRect);
-    const finalizedBeakPosition: IPartialIRectangle = _finalizeBeakPosition(
+    const finalizedBeakPosition: ICalloutBeakPositionInfo = _finalizeBeakPosition(
       positionedElement,
       beakPositioned
     );
@@ -650,13 +655,8 @@ export module positioningFunctions {
       positionedElement.alignmentEdge);
     return {
       elementPosition: finalizedElement,
-      beakPosition: {
-        position: { ...finalizedBeakPosition },
-        beakClosestEdge: getClosestEdge(positionedElement.targetEdge, beakPositioned,
-          new Rectangle(0, positionedElement.elementRectangle.width, 0, positionedElement.elementRectangle.height))
-      },
-      targetEdge: positionedElement.targetEdge,
-      submenuDirection: (positionedElement.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
+      beakPosition: finalizedBeakPosition,
+      targetEdge: positionedElement.targetEdge
     };
   }
 }

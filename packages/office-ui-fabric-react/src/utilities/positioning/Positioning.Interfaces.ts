@@ -2,13 +2,23 @@ import { RectangleEdge } from './Positioning.Enums';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IPositionInfo {
+  /**
+   * The new position of the element.
+   */
   elementPosition: IPosition;
+  /**
+   * The finalized target edge that element is aligning to. For isntance RectangleEdge.bottom would mean
+   * that the bottom edge of the target is being aligned to.
+   */
   targetEdge: RectangleEdge;
 }
 
 export interface ICalloutPositionInfo extends IPositionInfo {
-  beakPosition: { position: IPosition, beakClosestEdge: RectangleEdge };
-  submenuDirection: DirectionalHint;
+  beakPosition: ICalloutBeakPositionInfo;
+}
+
+export interface ICalloutBeakPositionInfo extends IPositionInfo {
+  closestEdge: RectangleEdge;
 }
 
 /**

@@ -296,7 +296,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     let beakReactStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.position : null),
+      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
     };
     beakReactStyle.height = beakStyleWidth;
     beakReactStyle.width = beakStyleWidth;
@@ -346,7 +346,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   private _arePositionsEqual(positions: ICalloutPositionInfo, newPosition: ICalloutPositionInfo) {
     return this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
-      this._comparePositions(positions.beakPosition.position, newPosition.beakPosition.position);
+      this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition);
   }
 
   private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon) {
