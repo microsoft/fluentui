@@ -74,7 +74,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               title='ContextualMenu with customized submenus'
               code={ ContextualMenuCustomizationExampleCode }
             >
-              <ContextualMenuWithScrollBarExample />
+              <ContextualMenuCustomizationExample />
             </ExampleCard>
             <ExampleCard
               title='ContextualMenu with a scroll bar and fixed direction'
