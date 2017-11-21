@@ -26,7 +26,7 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
   public render(): JSX.Element {
     let { isVisible } = this.state;
 
-    const positioningContainerProps: ICalloutProps = {
+    const calloutProps: ICalloutProps = {
       doNotLayer: true
     };
 
@@ -45,7 +45,7 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
           >
             <TeachingBubbleContent
               headline='Example Title'
-              calloutProps={ positioningContainerProps }
+              calloutProps={ calloutProps }
             >
               Welcome to the land of coachmarks
             </TeachingBubbleContent>
