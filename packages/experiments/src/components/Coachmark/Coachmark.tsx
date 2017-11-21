@@ -74,15 +74,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       },
       isMouseInProximity: true
     };
-
-    // Remove the measurement from the initial paint
-    this._async.setTimeout(() => {
-      this.setState({
-        entityInnerHostRect: this._entityInnerHostElement.getBoundingClientRect()
-      });
-    }, 10);
-
-    this._isElementInProximity(this._entityInnerHostElement);
   }
 
   public render() {
@@ -95,14 +86,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       isCollapsed: this.state.isCollapsed,
       isBeaconAnimating: this.state.isBeaconAnimating,
       isMeasuring: this.state.isMeasuring,
-      entityHostHeight: (this.state.entityInnerHostRect.width) ? this.state.entityInnerHostRect.height + 'px' : undefined,
-      entityHostWidth: (this.state.entityInnerHostRect.width) ? this.state.entityInnerHostRect.height + 'px' : undefined
+      entityHostHeight: this.state.entityInnerHostRect.height + 'px',
+      entityHostWidth: this.state.entityInnerHostRect.width + 'px'
     });
-
-    const entityHostStyles = {
-      height: this.state.entityInnerHostRect.height,
-      width: this.state.entityInnerHostRect.width
-    };
 
     return (
       <DynamicallyPositionedContainer
@@ -118,7 +104,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
                 <div
                   className={ classNames.entityHost }
                   ref={ this._resolveRef('_entityHost') }
-                  style={ entityHostStyles }
                 >
                   <div
                     className={ classNames.entityInnerHost }
@@ -135,6 +120,8 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     );
   }
   public componentDidMount() {
+    // If we have already accessed the width and height
+    // We do not wan't to do it again.
     if (this.state.isMeasuring) {
       this._async.setTimeout(() => {
         if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
@@ -145,11 +132,16 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
               height: this._entityInnerHostElement.offsetHeight
             }
           });
+
+          this.forceUpdate();
         }
-      }, 100);
+
+        // Initialize element in proximity now that initial
+        // measurements have been taken
+        this._isElementInProximity(this._entityInnerHostElement);
+      }, 10);
     }
   }
-
 
   @autobind
   private _onCLickHandler() {
@@ -199,8 +191,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       let mouseY = e.pageY;
       let mouseX = e.pageX;
 
-      // We try to set state every time because we assume
-      //
       this.setState({
         isMouseInProximity: this._isInsideElement(targetElementRect, mouseX, mouseY)
       });
