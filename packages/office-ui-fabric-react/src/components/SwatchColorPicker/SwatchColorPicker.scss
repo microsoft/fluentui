@@ -71,6 +71,11 @@
       width: 12px;
       height: 12px;
       border: 4px solid $ms-color-neutralTertiaryAlt;
+
+      &.whiteColorCell {
+        padding: 4px;
+        margin: 0;
+      }
     }
   }
 
@@ -83,6 +88,11 @@
   &:active .svg {
     width: 12px;
     height: 12px;
+
+    &.whiteColorCell {
+      padding: 4px;
+      margin: 0;
+    }
   }
 
   &:hover .svg,
@@ -120,6 +130,16 @@
 
   @include high-contrast {
     border: none;
+  }
+}
+
+.whiteColorCell {
+  padding: 0;
+  border: 1px solid #D2D2D2;
+  margin: 4px;
+
+  &.circle {
+    border-radius: 100%;
   }
 }
 
