@@ -62,8 +62,8 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
             hasCondensedHeadline ?
               'ms-TeachingBubble-header--condensed ' + styles.headerIsCondensed
               : hasSmallHeadline
-                ? "ms-TeachingBubble-header--small " + styles.headerIsSmall
-                : "ms-TeachingBubble-header--large " + styles.headerIsLarge
+                ? 'ms-TeachingBubble-header--small ' + styles.headerIsSmall
+                : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
           ) }
         >
           <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
