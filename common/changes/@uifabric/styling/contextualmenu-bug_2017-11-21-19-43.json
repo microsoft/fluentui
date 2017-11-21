@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Updated menuItemBackgroundChecked for ContextualMenu.",
+      "comment": "Theme: Updated menuItemBackgroundChecked for ContextualMenu.",
       "type": "patch"
     }
   ],
