@@ -145,5 +145,5 @@ function addCSSToHeader(fileName: string) {
   headEl.appendChild(linkEl);
 }
 
-const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
+const corePackageData = require('../node_modules/office-ui-fabric-core/package.json');
 addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageData.version + '/css/fabric.min.css');
