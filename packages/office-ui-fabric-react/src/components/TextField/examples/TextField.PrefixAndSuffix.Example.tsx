@@ -5,7 +5,7 @@ import './TextField.Examples.scss';
 export class TextFieldPrefixAndSuffixExample extends React.Component<any, any> {
   public render() {
     return (
-      <div className='ms-TextFieldExample'>
+      <div className='docs-TextFieldExample'>
         <TextField
           prefix='https://'
           suffix='.com'
