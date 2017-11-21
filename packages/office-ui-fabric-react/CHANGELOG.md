@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 20 Nov 2017 11:12:47 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Nov 2017 11:21:39 GMT and should not be manually modified.
+
+## 5.24.1
+Tue, 21 Nov 2017 11:21:39 GMT
+
+### Patches
+
+- ColorCells: Adding gray border to white color cells
+- Prevent default while handling up/down arrow keys on a contextual menu
+- TextField example: match the max width for TextFields.
 
 ## 5.24.0
 Mon, 20 Nov 2017 11:12:47 GMT

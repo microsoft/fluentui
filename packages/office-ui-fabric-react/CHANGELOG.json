@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.24.1",
+      "tag": "office-ui-fabric-react_v5.24.1",
+      "date": "Tue, 21 Nov 2017 11:21:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "c567ffebeaef2f186480c2106bd7894bb80196bb",
+            "comment": "ColorCells: Adding gray border to white color cells"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "5650796c11f5baaf9868083805350b738fb17ab1",
+            "comment": "Prevent default while handling up/down arrow keys on a contextual menu"
+          },
+          {
+            "author": "Scott Balentine <sbalentine88@gmail.com>",
+            "commit": "fb253516b8bed6ddcd86c2fb37856de62256baf6",
+            "comment": "TextField example: match the max width for TextFields."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.24.0",
       "tag": "office-ui-fabric-react_v5.24.0",
       "date": "Mon, 20 Nov 2017 11:12:47 GMT",
