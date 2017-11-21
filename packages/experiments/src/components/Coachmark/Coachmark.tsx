@@ -54,6 +54,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
    * element.
    */
   private _entityInnerHostElement: HTMLElement;
+  private _translateAnimationContainer: HTMLElement;
+  private _scaleAnimationContainer: HTMLElement;
+  private _rotateAnimationContainer: HTMLElement;
 
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
@@ -95,12 +98,20 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
         target={ this.props.positioningTarget }>
         <div
           className={ classNames.root }
-          onClick={ this._onCLickHandler }
         >
           <div className={ classNames.pulsingBeacon }></div>
-          <div className={ classNames.translateAnimationContainer }>
-            <div className={ classNames.scaleAnimationLayer }>
-              <div className={ classNames.rotateAnimationLayer }>
+          <div
+            className={ classNames.translateAnimationContainer }
+            ref={ this._resolveRef('_translateAnimationContainer') }
+          >
+            <div
+              className={ classNames.scaleAnimationLayer }
+              ref={ this._resolveRef('_scaleAnimationContainer') }
+            >
+              <div
+                className={ classNames.rotateAnimationLayer }
+                ref={ this._resolveRef('_rotateAnimationContainer') }
+              >
                 <div
                   className={ classNames.entityHost }
                   ref={ this._resolveRef('_entityHost') }
@@ -119,6 +130,11 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
       </DynamicallyPositionedContainer>
     );
   }
+
+  public componentWillReceiveProps(newProps: ICoachmarkProps) {
+    if (this.props.isCollapsed,
+  }
+
   public componentDidMount() {
     // If we have already accessed the width and height
     // We do not wan't to do it again.
@@ -143,17 +159,20 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     }
   }
 
-  @autobind
-  private _onCLickHandler() {
-
-    // @TODO remove this as it's an example
+  private _openCoachmark() {
     this.setState({
-      isCollapsed: !this.state.isCollapsed
+      isCollapsed: false
     });
 
-    if (this.props.onClickHandler) {
-      this.props.onClickHandler();
-    }
+    this._translateAnimationContainer.addEventListener('animationstart', () => {
+      if (this.props.onAnimationBegin) {
+        this.props.onAnimationBegin();
+      }
+    });
+
+    this._translateAnimationContainer.addEventListener('animationend', () => {
+      endCallback()
+    });
   }
 
   private _isElementInProximity(targetElement: HTMLElement, mouseProximityOffset: number = 0) {
