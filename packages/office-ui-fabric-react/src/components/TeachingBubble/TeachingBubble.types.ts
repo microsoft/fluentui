@@ -72,7 +72,7 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble | Teach
   isWide?: boolean;
 
   /**
-   * A variation with smaller bold headline and margins to the body.
+   * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
    */
   hasSmallHeadline?: boolean;
 }
