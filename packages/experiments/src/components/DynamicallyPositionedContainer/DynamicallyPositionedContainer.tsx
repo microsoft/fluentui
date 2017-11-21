@@ -133,11 +133,9 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
 
     let {
       className,
-      target,
       calloutWidth,
       calloutMaxHeight,
       children } = this.props;
-    target = this._getTarget();
     let { positions } = this.state;
 
     const styles: any = getClassNames();
