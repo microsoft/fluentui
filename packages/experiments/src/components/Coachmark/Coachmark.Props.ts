@@ -40,14 +40,12 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    */
   isCollapsed?: boolean;
 
-  /**
-   * The handler that is called when the Coachmark is clicked
-   */
-  onClickHandler?: (e?: React.SyntheticEvent<MouseEvent>) => void;
-
   /*
    * The distance in pixels the mouse is located
    * before opening up the coachmark.
    */
   mouseProximityOffset?: number;
+
+  onAnimationBegin?: () => void;
+  onAnimationEnd?: () => void;
 }
