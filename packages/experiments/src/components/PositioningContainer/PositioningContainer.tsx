@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
-  IDynamicallyPositionedContainerProps
-} from './DynamicallyPositionedContainer.Props';
-import { getClassNames } from './DynamicallyPositionedContainer.classNames';
+  IPositioningContainerProps
+} from './PositioningContainer.Props';
+import { getClassNames } from './PositioningContainer.classNames';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 
 // Utilites/Helpers
@@ -29,7 +29,7 @@ const OFF_SCREEN_STYLE = { opacity: 0 };
 // The value is abitrary.
 const BORDER_WIDTH: number = 1;
 
-export interface IDynamicallyPositionedContainerState {
+export interface IPositioningContainerState {
   /**
    * Current set of calcualted positions for the outermost parent container.
    */
@@ -42,7 +42,7 @@ export interface IDynamicallyPositionedContainerState {
   heightOffset?: number;
 }
 
-export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPositionedContainerProps, IDynamicallyPositionedContainerState> {
+export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState> {
 
   public static defaultProps = {
     preventDismissOnScroll: false,
@@ -69,12 +69,12 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
 
   /**
    * The bounds used when determing if and where the
-   * DynamicallyPositionedContainer should be placed.
+   * PositioningContainer should be placed.
    */
   private _positioningBounds: IRectangle;
 
   /**
-   * The maximum height the DynamicallyPositionedContainer can grow to
+   * The maximum height the PositioningContainer can grow to
    * without going being the window or target bounds
    */
   private _maxHeight: number | undefined;
@@ -82,7 +82,7 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
-  constructor(props: IDynamicallyPositionedContainerProps) {
+  constructor(props: IPositioningContainerProps) {
     super(props);
     this._didSetInitialFocus = false;
     this.state = {
@@ -105,7 +105,7 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IDynamicallyPositionedContainerProps) {
+  public componentWillUpdate(newProps: IPositioningContainerProps) {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -151,12 +151,12 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
 
       <div
         ref={ this._resolveRef('_positionedHost') }
-        className={ css('ms-DynamicallyPositionedContainer', styles.container) }
+        className={ css('ms-PositioningContainer', styles.container) }
       >
         <div
           className={
             mergeStyles(
-              'ms-DynamicallyPositionedContainer-layerHost',
+              'ms-PositioningContainer-layerHost',
               styles.root,
               className,
               directionalClassName,
@@ -380,7 +380,7 @@ export class DynamicallyPositionedContainer extends BaseComponent<IDynamicallyPo
     }
   }
 
-  private _getTarget(props: IDynamicallyPositionedContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
     let { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }

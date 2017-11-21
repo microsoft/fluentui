@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 // Component Dependencies
-import { DynamicallyPositionedContainer } from '../DynamicallyPositionedContainer/DynamicallyPositionedContainer';
+import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
 
 // Coachmark
 import { ICoachmarkProps } from './Coachmark.Props';
@@ -92,7 +92,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     });
 
     return (
-      <DynamicallyPositionedContainer
+      <PositioningContainer
         target={ this.props.positioningTarget }>
         <div
           className={ classNames.root }
@@ -125,7 +125,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
             </div>
           </div>
         </div>
-      </DynamicallyPositionedContainer>
+      </PositioningContainer>
     );
   }
 

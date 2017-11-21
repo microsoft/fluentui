@@ -2,14 +2,14 @@ import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets } from '../../Styling';
 import { IStyle } from '../../Styling';
 
-export interface IDynamicallyPositionedContainerStyles {
+export interface IPositioningContainerStyles {
   /**
   * Style for the root element in the default enabled/unchecked state.
   */
   root?: IStyle;
 }
 
-export interface IDynamicallyPositionedContainerNames {
+export interface IPositioningContainerNames {
 	/**
 	* Root html container for this component.
 	*/
@@ -38,7 +38,7 @@ export function focusClear() {
   }
 }
 
-export const getClassNames = memoizeFunction((): IDynamicallyPositionedContainerNames => {
+export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
   return mergeStyleSets({
     root: {
       position: 'absolute',

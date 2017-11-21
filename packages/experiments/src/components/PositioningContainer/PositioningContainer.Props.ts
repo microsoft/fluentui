@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { DynamicallyPositionedContainer } from './DynamicallyPositionedContainer';
+import { PositioningContainer } from './PositioningContainer';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import {
   IPoint,
   IRectangle,
 } from '../../Utilities';
 
-export interface IDynamicallyPositionedContainer {
+export interface IPositioningContainer {
 }
 
-export interface IDynamicallyPositionedContainerProps extends React.Props<DynamicallyPositionedContainer> {
+export interface IPositioningContainerProps extends React.Props<PositioningContainer> {
   /**
   * All props for your component are to be defined here.
   */
-  componentRef?: (component: IDynamicallyPositionedContainer) => void;
+  componentRef?: (component: IPositioningContainer) => void;
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
