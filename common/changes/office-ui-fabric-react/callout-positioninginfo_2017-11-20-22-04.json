@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate\"",
+      "comment": "Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate.",
       "type": "minor"
     }
   ],
