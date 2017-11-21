@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "match the max width of the rest of the text field examples",
+      "comment": "TextField example: match the max width for TextFields.",
       "type": "patch"
     }
   ],
