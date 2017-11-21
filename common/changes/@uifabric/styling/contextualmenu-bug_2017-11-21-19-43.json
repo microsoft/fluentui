@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Updated menuItemBackgroundChecked for ContextualMenu.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "lynam.emily@gmail.com"
+}
