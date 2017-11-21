@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.Styles';
-import { IDynamicallyPositionedContainerProps } from '../DynamicallyPositionedContainer/DynamicallyPositionedContainer.Props';
+import { IPositioningContainerProps } from '../PositioningContainer/PositioningContainer.Props';
 import {
   IPoint
 } from '../../Utilities';
@@ -33,7 +33,7 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    */
   positioningTarget?: HTMLElement | string | MouseEvent | IPoint | null;
 
-  positioningContainerProps?: IDynamicallyPositionedContainerProps;
+  positioningContainerProps?: IPositioningContainerProps;
 
   /**
    * Is the Coachmark expanded

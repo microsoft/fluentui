@@ -13,11 +13,11 @@ export class PositioningContainerPage extends React.Component<IComponentDemoPage
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title='Callout Container'
+        title='Positioning Container'
         componentName='PositioningContainer'
         exampleCards={
           <div>
-            <ExampleCard title='Callout Container Basic' isOptIn={ true } code={ CoachmarkBasicExampleCode }>
+            <ExampleCard title='Positioning Container Basic' isOptIn={ true } code={ CoachmarkBasicExampleCode }>
               <PositioningContainerBasicExample />
             </ExampleCard>
           </div>

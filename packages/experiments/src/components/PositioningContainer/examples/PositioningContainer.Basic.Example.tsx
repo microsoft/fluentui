@@ -11,7 +11,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
     super();
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
+    this._onDismiss = this._onDismiss.bind(this);
 
     this.state = {
       isPositioningContainerVisible: false
@@ -24,7 +24,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
         <div className='ms-PositioningContainerBasicExample-buttonArea'>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
-            text={ isPositioningContainerVisible ? 'Hide callout' : 'Show callout' }
+            text={ isPositioningContainerVisible ? 'Hide Positioning Container' : 'Show Positioning Container' }
             className={ 'ms-PositioningContainer-basicExampleButton' }
           />
         </div>
@@ -33,12 +33,10 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
             className='ms-PositioningContainer'
             role={ 'alertdialog' }
             target={ '.ms-PositioningContainer-basicExampleButton' }
-            onDismiss={ this._onCalloutDismiss }
+            onDismiss={ this._onDismiss }
             setInitialFocus={ true }
           >
-            <DefaultButton
-              text={ 'Test element' }
-            />
+            <h1>An H1 element</h1>
           </PositioningContainer>
         ) }
       </div>
@@ -50,7 +48,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
     });
   }
 
-  private _onCalloutDismiss() {
+  private _onDismiss() {
     this.setState({
       isPositioningContainerVisible: false
     });
