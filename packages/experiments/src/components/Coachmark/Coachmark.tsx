@@ -1,6 +1,6 @@
 // Utilities
 import * as React from 'react';
-import { autobind, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 // Component Dependencies
 import { DynamicallyPositionedContainer } from '../DynamicallyPositionedContainer/DynamicallyPositionedContainer';
@@ -55,8 +55,6 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
    */
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
-  private _scaleAnimationContainer: HTMLElement;
-  private _rotateAnimationContainer: HTMLElement;
 
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
@@ -132,7 +130,10 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
   }
 
   public componentWillReceiveProps(newProps: ICoachmarkProps) {
-    if (this.props.isCollapsed,
+    if (this.props.isCollapsed && !newProps.isCollapsed) {
+      // The coachmark is about to open
+      this._openCoachmark();
+    }
   }
 
   public componentDidMount() {
@@ -171,7 +172,9 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     });
 
     this._translateAnimationContainer.addEventListener('animationend', () => {
-      endCallback()
+      if (this.props.onAnimationEnd) {
+        this.props.onAnimationEnd();
+      }
     });
   }
 
