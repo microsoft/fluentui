@@ -24,6 +24,7 @@ describe('CommandBar', () => {
           { key: '1', name: 'asdf' },
           { key: '2', name: 'asdf' }
         ] }
+        className={ 'TestClassName' }
       />
     ).toJSON()).toMatchSnapshot();
   });
