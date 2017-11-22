@@ -30,7 +30,13 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
           />
         }
         overview={
-          <div />
+          <div>
+            <p>Coachmarks are used to draw a persons attention to a part of the UI, and increase engagement with that element in the product.</p>
+
+            <p>
+              They should be contextual whenever possible, or related to something that will make existing user flows more efficient
+            </p>
+          </div>
         }
         bestPractices={
           <div />
@@ -38,14 +44,16 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
         dos={
           <div>
             <ul>
-              <li>@TODO Add dos</li>
+              <li>Only one coachmark + callout combo will be displayed at a time</li>
+              <li>Coachmarks can be stand alone or sequential. Sequential coachmarks should be used sparingly, to walk through complex multi-step interactions. It is recommended that a sequence of coachmakrs does not exceed 3 steps.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>@TODO Add dos</li>
+              <li>Coachmark size, color, and animation should not be altered.</li>
+              <li>Don't show the coachmark more than once even if the user has not completed the action.</li>
             </ul>
           </div>
         }
