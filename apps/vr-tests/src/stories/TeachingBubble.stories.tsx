@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecoratorTall } from '../utilities';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
@@ -10,11 +10,11 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHi
 
 // tslint:disable:max-line-length
 storiesOf('TeachingBubble', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
+        .snapshot('default', { cropTo: '.ms-TeachingBubble' })
         .end()
       }
     >
