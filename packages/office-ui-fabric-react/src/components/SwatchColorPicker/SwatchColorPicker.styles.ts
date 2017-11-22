@@ -1,10 +1,4 @@
 
-import {
-  IRawStyle,
-  getFocusStyle,
-  HighContrastSelector,
-  mergeStyleSets
-} from '../../Styling';
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {

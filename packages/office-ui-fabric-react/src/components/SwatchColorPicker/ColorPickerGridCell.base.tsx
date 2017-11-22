@@ -12,7 +12,7 @@ import {
 import { getColorFromString } from '../../utilities/color/colors';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { classNamesFunction, IClassNames, Stylesheet, mergeStyleSets, InjectionMode } from '../../Styling';
+import { classNamesFunction, IClassNames } from '../../Styling';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
@@ -47,19 +47,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         theme: theme!,
         disabled,
         selected,
-        circle,
-        isWhite: this._isWhiteCell(this.props.color)
+        circle
       }
     );
 
-    // const stylesheet = Stylesheet.getInstance();
-    // stylesheet.setConfig({ injectionMode: InjectionMode.none });
-    // // Log what's injected in the stylesheet!
-    // if (this._isWhiteCell(this.props.color)) {
-    //   console.log('WHITEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE');
-    // }
-    // console.log(`Here's what's injected into the stylesheet:`);
-    // console.log(this._prettify(stylesheet.getRules()));
     return (
       <ColorCell
         item={ item }
@@ -80,9 +71,9 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   }
 
   /**
-  * Render the core of a color cell
-  * @returns {JSX.Element} - Element representing the core of the item
-  */
+ * Render the core of a color cell
+ * @returns {JSX.Element} - Element representing the core of the item
+ */
   @autobind
   private _onRenderColorOption(colorOption: IColorCellProps): JSX.Element {
     // Build an SVG for the cell with the given shape and color properties
@@ -95,52 +86,6 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         }
       </svg>
     );
-  }
-
-  /**
- * Validate if the cell's color is white or not to apply whiteCell style
- * @param inputColor - The color of the current cell
- * @returns - Whether the cell's color is white or not.
- */
-  private _isWhiteCell(inputColor: string | undefined): boolean {
-    return inputColor!.toLocaleLowerCase() === '#ffffff';
-  }
-
-  private _prettify(styleRules: string): string {
-    let rules = styleRules.split('}');
-
-    let prettyRules = [''];
-
-    for (let rule of rules) {
-      if (rule) {
-        let parts = rule.split('{');
-        let indent = (parts.length > 2) ? '  ' : '';
-
-        if (parts.length > 2) {
-          prettyRules.push(parts[0] + ' {');
-        }
-        let selector = parts[parts.length - 2];
-        let styles = parts[parts.length - 1].split(';');
-
-        prettyRules.push(indent + selector + ' {');
-
-        for (let style of styles) {
-          if (style) {
-            prettyRules.push(indent + '  ' + style + ';');
-          }
-        }
-
-        prettyRules.push(indent + '}');
-
-        if (parts.length > 2) {
-          prettyRules.push('}');
-        }
-
-        prettyRules.push('');
-      }
-    }
-
-    return prettyRules.join('\n');
   }
 
 }
