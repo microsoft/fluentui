@@ -86,7 +86,6 @@ export const getMenuItemStyles = memoizeFunction((
     rootExpanded: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       color: semanticColors.bodyTextChecked,
-      fontWeight: FontWeights.semibold,
       ...getItemHighContrastStyles()
     },
     linkContent: {
