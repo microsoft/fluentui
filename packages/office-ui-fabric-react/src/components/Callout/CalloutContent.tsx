@@ -15,7 +15,14 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, ICalloutPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon, RectangleEdge } from '../../utilities/positioning';
+import {
+  positionCallout,
+  ICalloutPositionedInfo,
+  IPositionProps,
+  getMaxHeight,
+  IPosition,
+  RectangleEdge
+} from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
@@ -33,7 +40,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string; } = {
 };
 
 export interface ICalloutState {
-  positions?: ICalloutPositionInfo;
+  positions?: ICalloutPositionedInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
   heightOffset?: number;
@@ -261,7 +268,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      let newPositions: ICalloutPositionInfo = getRelativePositions(currentProps!, hostElement, calloutElement);
+      let newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -283,7 +290,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
   }
 
-  private _getBeakPosition(positions?: ICalloutPositionInfo,
+  private _getBeakPosition(positions?: ICalloutPositionedInfo,
     beakWidth?: number,
     backgroundColor?: string,
     beakStyle?: string) {
@@ -344,12 +351,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     return this._maxHeight!;
   }
 
-  private _arePositionsEqual(positions: ICalloutPositionInfo, newPosition: ICalloutPositionInfo) {
+  private _arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo) {
     return this._comparePositions(positions.elementPosition, newPosition.elementPosition) &&
       this._comparePositions(positions.beakPosition.elementPosition, newPosition.beakPosition.elementPosition);
   }
 
-  private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon) {
+  private _comparePositions(oldPositions: IPosition, newPositions: IPosition) {
     for (const key in newPositions) {
       // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {

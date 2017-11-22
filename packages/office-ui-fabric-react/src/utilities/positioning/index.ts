@@ -1,4 +1,3 @@
-export * from './Positioning.Enums';
-export * from './Positioning.Interfaces';
-export * from './Positioning.Props';
-export * from './Positioning';
+export * from './positioning.enums';
+export * from './positioning';
+export * from './positioning.types';

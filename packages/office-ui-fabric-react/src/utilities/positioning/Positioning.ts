@@ -8,17 +8,17 @@ import {
 } from '../../Utilities';
 import {
   RectangleEdge
-} from './Positioning.Enums';
+} from './positioning.enums';
 import {
   IPositionDirectionalHintData,
-  IPositionInfo,
+  IPositionedData,
   IPoint,
-  ICalloutPositionInfo,
-  ICalloutBeakPositionInfo
-} from './Positioning.Interfaces';
-import {
-  IPositionProps
-} from './Positioning.Props';
+  ICalloutPositionedInfo,
+  ICalloutBeakPositionedInfo,
+  IPositionProps,
+  ICalloutPositon,
+  ICalloutPositionProps
+} from './positioning.types';
 
 export class Rectangle extends FullRectangle {
   [key: string]: number | boolean | any;
@@ -53,12 +53,29 @@ let DirectionalDictionary: { [key: number]: IPositionDirectionalHintData } = {
   [DirectionalHint.rightBottomEdge]: _createPositionData(RectangleEdge.right, RectangleEdge.bottom)
 };
 
+/**
+ * @deprecated will be removed in 6.0.
+ */
+const SLIDE_ANIMATIONS: { [key: number]: string; } = {
+  [RectangleEdge.top]: 'slideUpIn20',
+  [RectangleEdge.bottom]: 'slideDownIn20',
+  [RectangleEdge.left]: 'slideLeftIn20',
+  [RectangleEdge.right]: 'slideRightIn20'
+};
+/**
+ * Do not call methods from this directly, use either positionCallout or positionElement or make another function that
+ * utilizes them.
+ */
 export module positioningFunctions {
 
   export interface IElementPosition {
     elementRectangle: Rectangle;
     targetEdge: RectangleEdge;
     alignmentEdge: RectangleEdge | undefined;
+  }
+
+  export interface IElementPositionInfo extends IElementPosition {
+    targetRectangle: Rectangle;
   }
 
   export type PartialIRectangle = Partial<IRectangle>;
@@ -216,13 +233,7 @@ export module positioningFunctions {
    */
   function _isEdgeInBounds(rect: Rectangle, bounds: Rectangle, edge: RectangleEdge): boolean {
     const adjustedRectValue = _getRelativeRectEdgeValue(edge, rect);
-    // The adjusted value must be reversed to determine if it is within the bounds.
-    // Take these two examples:
-    // Top is out of bounds with -4 as value. Top is not reversed in _getRelativeRectEdgeValue. -4 * -1 = 4
-    // 4 is not less than the bounds of 0, so it must be out of bounds.
-    // Bottom is out of bounds with 5 as value, bounds bottom is 4. Bottom is reversed in _getRelaitveRectEdgeValue.
-    // Bottom is now -5. Bottom * -1 is now 5. 5 is greater than bounds bottom of 4, so it must be out of bounds.
-    return adjustedRectValue * -1 < _getEdgeValue(bounds, edge);
+    return adjustedRectValue > _getRelativeRectEdgeValue(edge, bounds);
   }
 
   /**
@@ -507,7 +518,7 @@ export module positioningFunctions {
   }
 
   export function _finalizeBeakPosition(elementPosition: IElementPosition,
-    positionedBeak: Rectangle): ICalloutBeakPositionInfo {
+    positionedBeak: Rectangle): ICalloutBeakPositionedInfo {
     const targetEdge = elementPosition.targetEdge * -1;
     // The "host" element that we will use to help position the beak.
     const actualElement = new Rectangle(0, elementPosition.elementRectangle.width, 0, elementPosition.elementRectangle.height);
@@ -525,8 +536,9 @@ export module positioningFunctions {
   }
 
   export function _positionBeak(beakWidth: number,
-    elementPosition: IElementPosition,
-    target: Rectangle): Rectangle {
+    elementPosition: IElementPositionInfo
+  ): Rectangle {
+    const target = elementPosition.targetRectangle;
     /** Note about beak positioning: The actual beak width only matters for getting the gap between the callout and target, it does not impact the beak placement within the callout. For example example, if the beakWidth is 8, then the actual beakWidth is sqrroot(8^2 + 8^2) = 11.31x11.31. So the callout will need to be an extra 3 pixels away from its target. While the beak is being positioned in the callout it still acts as though it were 8x8.*/
     const { positiveEdge, negativeEdge } = _getFlankingEdges(elementPosition.targetEdge);
     const beakTargetPoint = _getCenterValue(target, elementPosition.targetEdge);
@@ -617,12 +629,11 @@ export module positioningFunctions {
     return maxHeight > 0 ? maxHeight : bounds.height;
   }
 
-  export function _getRelativePositions(
+  export function _positionElementRelative(
     props: IPositionProps,
     hostElement: HTMLElement,
-    elementToPosition: HTMLElement): ICalloutPositionInfo {
-    const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
-    const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+    elementToPosition: HTMLElement): IElementPositionInfo {
+    const gap: number = props.gapSpace ? props.gapSpace : 0;
     const boundingRect: Rectangle = props.bounds ?
       _getRectangleFromIRect(props.bounds) :
       new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
@@ -640,14 +651,10 @@ export module positioningFunctions {
       gap,
       props.directionalHintFixed,
       props.coverTarget);
-    const beakPositioned: Rectangle = _positionBeak(
-      beakWidth,
-      positionedElement,
-      targetRect);
-    const finalizedBeakPosition: ICalloutBeakPositionInfo = _finalizeBeakPosition(
-      positionedElement,
-      beakPositioned
-    );
+    return { ...positionedElement, targetRectangle: targetRect };
+  }
+
+  export function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement) {
     const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
       positionedElement.elementRectangle,
       hostElement,
@@ -655,16 +662,96 @@ export module positioningFunctions {
       positionedElement.alignmentEdge);
     return {
       elementPosition: finalizedElement,
-      beakPosition: finalizedBeakPosition,
       targetEdge: positionedElement.targetEdge
     };
   }
-}
+  export function _positionElement(
+    props: IPositionProps,
+    hostElement: HTMLElement,
+    elementToPosition: HTMLElement): IPositionedData {
+    const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition);
+    return _finalizePositionData(positionedElement, hostElement);
+  }
 
+  export function _positionCallout(props: ICalloutPositionProps,
+    hostElement: HTMLElement,
+    callout: HTMLElement): ICalloutPositionedInfo {
+    const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
+    const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+    let positionProps: IPositionProps = props;
+    positionProps.gapSpace = gap;
+    const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout);
+    const beakPositioned: Rectangle = _positionBeak(
+      beakWidth,
+      positionedElement);
+    const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(
+      positionedElement,
+      beakPositioned
+    );
+    return {
+      ..._finalizePositionData(positionedElement, hostElement),
+      beakPosition: finalizedBeakPosition
+    };
+  }
+
+  /**
+   * @deprecated Do not use, this will be removed in 6.0
+   * use either _positionCallout or _positionElement.
+   * @export
+   * @param {IPositionProps} props
+   * @param {HTMLElement} hostElement
+   * @param {HTMLElement} elementToPosition
+   * @returns
+   */
+  export function _getRelativePositions(
+    props: IPositionProps,
+    hostElement: HTMLElement,
+    elementToPosition: HTMLElement) {
+    const positions = _positionCallout(props, hostElement, elementToPosition);
+    const beakPosition = positions && positions.beakPosition ? positions.beakPosition.elementPosition : undefined;
+    return {
+      calloutPosition: positions.elementPosition as ICalloutPositon,
+      beakPosition: { position: { ...beakPosition }, display: 'block' },
+      directionalClassName: SLIDE_ANIMATIONS[positions.targetEdge],
+      submenuDirection: (positions.targetEdge * -1) === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
+    };
+  }
+}
+/**
+ * @deprecated Do not use, this will be removed in 6.0.
+ * Use either positionElement, or positionCallout
+ *
+ * @export
+ * @param {IPositionProps} props
+ * @param {HTMLElement} hostElement
+ * @param {HTMLElement} calloutElement
+ * @returns
+ */
 export function getRelativePositions(props: IPositionProps,
   hostElement: HTMLElement,
   calloutElement: HTMLElement) {
   return positioningFunctions._getRelativePositions(props, hostElement, calloutElement);
+}
+
+/**
+ * Used to position an element relative to the given positioning props.
+ *
+ * @export
+ * @param {IPositionProps} props
+ * @param {HTMLElement} hostElement
+ * @param {HTMLElement} elementToPosition
+ * @returns
+ */
+export function positionElement(props: IPositionProps,
+  hostElement: HTMLElement,
+  elementToPosition: HTMLElement): IPositionedData {
+  return positioningFunctions._positionElement(props, hostElement, elementToPosition);
+}
+
+export function positionCallout(props: IPositionProps,
+  hostElement: HTMLElement,
+  elementToPosition: HTMLElement): ICalloutPositionedInfo {
+  return positioningFunctions._positionCallout(props, hostElement, elementToPosition);
 }
 
 /**
