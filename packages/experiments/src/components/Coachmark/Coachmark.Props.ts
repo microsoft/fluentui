@@ -17,11 +17,6 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
   componentRef?: (component: ICoachmark) => void;
 
   /**
-   * Called when the teaching bubble has been expanded.
-   */
-  onExpandComplete?: () => void;
-
-  /**
    * Get styles method
    */
   getStyles?: IStyleFunction<ICoachmarkStyleProps, ICoachmarkStyles>;
@@ -46,6 +41,13 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    */
   mouseProximityOffset?: number;
 
+  /**
+   * Callback when the opening animation begins
+   */
   onAnimationBegin?: () => void;
+
+  /**
+   * Callback when the opening animation completes
+   */
   onAnimationEnd?: () => void;
 }
