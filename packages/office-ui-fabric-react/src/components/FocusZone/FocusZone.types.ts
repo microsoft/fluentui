@@ -103,7 +103,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   /** Allow focus to move to root */
   allowFocusRoot?: boolean;
 
-  /** Allows tab key to be handled */
+  /** Allows tab key to be handled, a side effect is that users will not be able to tab out of the focus zone */
   allowTabKey?: boolean;
 }
 
