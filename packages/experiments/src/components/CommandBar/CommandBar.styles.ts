@@ -16,7 +16,8 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
       {
         display: 'flex',
         backgroundColor: palette.neutralLighter,
-        padding: '0 16px'
+        padding: '0 16px',
+        height: '40px'
       }
     ],
     primarySet: [

@@ -203,7 +203,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
-      styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.styles, ...buttonStyles },
+      styles: { root: { height: '100%' }, ...item.styles, ...buttonStyles },
       className: css(item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,
