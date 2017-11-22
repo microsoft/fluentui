@@ -28,12 +28,18 @@ export interface IColorPickerGridCellProps {
    */
   index?: number;
 
+  /**
+   * The theme object to use for styling.
+   */
   theme?: ITheme;
 
+  /**
+   * Wheter or not colorOption should be rendered as a circle or square.
+   */
   circle?: boolean;
 
   /**
-   * Optional, if the this option should be diabled
+   * Optional, if the this option should be disabled
    */
   disabled?: boolean;
 
@@ -97,12 +103,20 @@ export interface IColorPickerGridCellStyleProps {
   disabled?: boolean;
   selected?: boolean;
   circle?: boolean;
+  isWhite?: boolean;
 }
 
 /**
  * Styles for the Color Picker Component.
  */
 export interface IColorPickerGridCellStyles {
+  /**
+   * Style to apply to a colorCell in the color picker.
+   */
   colorCell: IStyle;
+
+  /**
+   * Style to apply to the svg element that renders the color.
+   */
   svg: IStyle;
 }

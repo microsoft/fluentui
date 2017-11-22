@@ -12,7 +12,7 @@ function getSvgSelectorStyles(borderColor: string): IRawStyle {
     width: 12,
     height: 12,
     border: '4px solid',
-    borderColor: borderColor
+    borderColor: borderColor,
   };
 }
 
@@ -21,7 +21,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
     theme,
     disabled,
     selected,
-    circle
+    circle,
+    isWhite
   } = props;
 
   const { semanticColors, fonts } = theme;
@@ -50,6 +51,19 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR),
         }
       },
+      isWhite && {
+        selectors: {
+          '$svg': {
+            padding: 0,
+            border: '1px solid #D2D2D2',
+            margin: 4,
+          },
+          ':hover $svg, :active $svg, .ms-Fabric.is-focusVisible &:focus $svg': {
+            padding: 4,
+            margin: 0
+          }
+        }
+      },
       circle && 'is-circle' && {
         selectors: {
           '$svg': { borderRadius: '100%' },
@@ -72,15 +86,25 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           {
             boxShadow: '0 0 0 1px #969696',
             borderColor: ACTIVE_BORDER_COLOR,
+            padding: 4,
+            margin: 0
           },
         },
+      },
+      selected && isWhite && {
+        selectors: {
+          '$svg': {
+            padding: 4,
+            margin: 0
+          }
+        }
       },
       disabled && 'is-disabled' && {
         color: semanticColors.disabledBodyText,
         cursor: 'default',
         pointerEvents: 'none',
         opacity: .3
-      },
+      }
     ],
     svg: [
       {
