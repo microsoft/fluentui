@@ -2,7 +2,7 @@
 
 exports[`CommandBar renders commands correctly 1`] = `
 <div
-  className="ms-ResizeGroup"
+  className="ms-ResizeGroup TestClassName"
 >
   <div
     className=""
