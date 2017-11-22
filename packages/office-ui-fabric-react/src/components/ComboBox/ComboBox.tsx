@@ -1122,23 +1122,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Sets either the pending info or the
-   * selected index depending of if the comboBox is open
+   * Sets the pending info for the comboBox
    * @param index - the index to search from
    * @param searchDirection - the direction to search
    */
-  private _setInfoForIndexAndDirection(index: number, searchDirection: SearchDirection) {
+  private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
     let {
       isOpen,
       selectedIndex
     } = this.state;
 
-    if (isOpen) {
-      index = this._getNextSelectableIndex(index, searchDirection);
-      this._setPendingInfoFromIndex(index);
-    } else {
-      this._setSelectedIndex(selectedIndex, searchDirection);
-    }
+    index = this._getNextSelectableIndex(index, searchDirection);
+    this._setPendingInfoFromIndex(index);
   }
 
   /**
@@ -1229,7 +1224,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
 
         // Go to the previous option
-        this._setInfoForIndexAndDirection(index, SearchDirection.backward);
+        this._setPendingInfoFromIndexAndDirection(index, SearchDirection.backward);
         break;
 
       case KeyCodes.down:
@@ -1245,7 +1240,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
 
           // Got to the next option
-          this._setInfoForIndexAndDirection(index, SearchDirection.forward);
+          this._setPendingInfoFromIndexAndDirection(index, SearchDirection.forward);
         }
         break;
 
@@ -1267,7 +1262,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           directionToSearch = SearchDirection.backward;
         }
 
-        this._setInfoForIndexAndDirection(index, directionToSearch);
+        this._setPendingInfoFromIndexAndDirection(index, directionToSearch);
         break;
 
       case KeyCodes.space:
