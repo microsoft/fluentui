@@ -4,7 +4,7 @@ export const items = [
     name: 'New',
     cacheKey: 'myCacheKey',
     iconProps: {
-      iconName: 'Add',
+      iconName: 'TestIcon1',
     },
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
@@ -14,7 +14,7 @@ export const items = [
           key: 'emailMessage',
           name: 'Email message',
           iconProps: {
-            iconName: 'Mail',
+            iconName: 'TestIcon2',
           },
           ['data-automation-id']: 'newEmailButton'
         },
@@ -22,7 +22,7 @@ export const items = [
           key: 'calendarEvent',
           name: 'Calendar event',
           iconProps: {
-            iconName: 'Calendar'
+            iconName: 'TestIcon3'
           },
         }
       ],
