@@ -15,7 +15,6 @@ export interface IButtonClassNames {
 }
 
 export const getBaseButtonClassNames = memoizeFunction((
-  classNames: {},
   styles: IButtonStyles,
   className: string,
   variantClassName: string,
@@ -27,7 +26,7 @@ export const getBaseButtonClassNames = memoizeFunction((
   isSplit: boolean | undefined
 ): IButtonClassNames => {
   const isExpanded = expanded && !isSplit;
-  return mergeStyleSets(classNames, {
+  return mergeStyleSets({
     root: [
       'ms-Button',
       styles.root,
