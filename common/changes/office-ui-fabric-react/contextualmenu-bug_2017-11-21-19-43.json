@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: Updated exampanded menu item style to match toolkit.",
+      "comment": "ContextualMenu: Updated expanded menu item style to match toolkit.",
       "type": "patch"
     }
   ],
