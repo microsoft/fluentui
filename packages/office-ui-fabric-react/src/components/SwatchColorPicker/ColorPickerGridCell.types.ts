@@ -98,11 +98,29 @@ export interface IColorCellProps {
  * Properties required to build the styles for the color picker component.
  */
 export interface IColorPickerGridCellStyleProps {
+  /**
+   * Theme to apply to the cell.
+   */
   theme: ITheme;
-  className?: string;
+
+  /**
+   * Whether the component is disabled or not.
+   */
   disabled?: boolean;
+
+  /**
+   * Whether the cell is currently selected or not.
+   */
   selected?: boolean;
+
+  /**
+   * Whether the svg color element should be rendered as a circle or not.
+   */
   circle?: boolean;
+
+  /**
+   * Whether the color being rendered is white or not. If it is white we show a border around it.
+   */
   isWhite?: boolean;
 }
 

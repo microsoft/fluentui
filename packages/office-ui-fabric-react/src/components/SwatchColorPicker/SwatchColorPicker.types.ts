@@ -85,6 +85,10 @@ export interface ISwatchColorPickerProps {
    */
   doNotContainWithinFocusZone?: boolean;
 
+
+  /**
+   * Theme to apply to the component.
+   */
   theme?: ITheme;
 
   /**
@@ -97,7 +101,14 @@ export interface ISwatchColorPickerProps {
  * Properties required to build the styles for the color picker component.
  */
 export interface ISwatchColorPickerStyleProps {
+  /**
+   * Theme to apply to the container
+   */
   theme: ITheme;
+
+  /**
+   * Custom className to apply to the container.
+   */
   className?: string;
 }
 
@@ -105,5 +116,8 @@ export interface ISwatchColorPickerStyleProps {
  * Styles for the Color Picker Component.
  */
 export interface ISwatchColorPickerStyles {
+  /**
+   * Style applied to the container of the swatchColorPicker
+   */
   root: IStyle;
 }
