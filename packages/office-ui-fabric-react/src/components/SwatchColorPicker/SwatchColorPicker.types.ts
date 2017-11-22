@@ -85,7 +85,6 @@ export interface ISwatchColorPickerProps {
    */
   doNotContainWithinFocusZone?: boolean;
 
-
   /**
    * Theme to apply to the component.
    */
