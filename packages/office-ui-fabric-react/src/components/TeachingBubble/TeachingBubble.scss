@@ -10,6 +10,8 @@
 .root {
   display: block;
   max-width: 364px;
+  border: 0;
+  box-shadow: none !important;
 }
 
 .bodyContent {
@@ -20,6 +22,10 @@
   margin-bottom: 14px;
 }
 
+.headerIsSmall:not(:last-child) {
+  margin-bottom: 14px;
+}
+
 .headline {
   margin: 0;
   color: $ms-color-white;
@@ -27,6 +33,12 @@
   .headerIsLarge & {
     @include ms-font-xxl;
     font-weight: $ms-font-weight-light;
+  }
+
+  .headerIsCondensed & {
+    @include ms-font-m;
+    @include ms-margin-right(10px);
+    font-weight: $ms-font-weight-semibold;
   }
 
   .headerIsSmall & {
@@ -70,6 +82,25 @@
   }
 }
 
+.wideCallout {
+  max-width: 456px;
+
+  :global(.ms-TeachingBubble-content) {
+    display: flex;
+  }
+
+  :global(.ms-TeachingBubble-image) {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    max-width: 154px;
+  }
+}
+
+.wideCallout .bodyContent {
+  max-width: 302px;
+}
+
 //Primary button style override
 .root .primaryButton {
   background-color: $ms-color-white;
@@ -86,7 +117,7 @@
   }
 
   &:focus {
-    background-color:  $ms-color-themeLighter;
+    background-color: $ms-color-themeLighter;
     border-color: $ms-color-white;
   }
 
