@@ -16,7 +16,7 @@ import {
   getDocument
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from '../../utilities/positioning';
-import { Popup } from '../../Popup';
+import { Popup, IPopup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
 
@@ -47,6 +47,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _didSetInitialFocus: boolean;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
+  private _popup: IPopup;
   private _targetWindow: Window;
   private _bounds: IRectangle;
   private _maxHeight: number | undefined;
@@ -146,6 +147,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
 
+    const needsVerticalScrollbar: boolean = !!(this._popup && this._popup.refs.root && this._popup.refs.root.scrollHeight > this._popup.refs.root.clientHeight);
+
     let beakVisible = isBeakVisible && (!!target);
 
     let content = (
@@ -186,7 +189,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             }) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
+            componentRef={ this._resolveRef('_popup') }
+            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor, overflowY: needsVerticalScrollbar ? 'scroll' : 'auto' } }
           >
             { children }
           </Popup>
