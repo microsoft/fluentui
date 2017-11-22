@@ -162,14 +162,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -345,14 +339,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -528,14 +516,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -711,14 +693,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -898,14 +874,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -1081,14 +1051,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -1264,14 +1228,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -1447,14 +1405,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -1634,14 +1586,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -1817,14 +1763,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -2000,14 +1940,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
@@ -2183,14 +2117,8 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover {
                   color: #0078d7;
                 }
-                &:hover .ms-Button-icon {
-                  color: #0078d7;
-                }
                 &:active {
                   color: #000000;
-                }
-                &:active .ms-Button-icon {
-                  color: #004578;
                 }
             data-index={undefined}
             data-is-focusable={true}
