@@ -40,36 +40,36 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
           ariaDescribedBy={ 'descriptionID' }
         />
         <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
-
+        <br />
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
         />
-
+        <br />
         <Checkbox
           label='Disabled uncontrolled checkbox'
           disabled={ true }
         />
-
+        <br />
         <Checkbox
           label='Disabled uncontrolled checkbox with defaultChecked true'
           disabled={ true }
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
         />
-
+        <br />
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
           onChange={ this._onControlledCheckboxChange }
         />
-
+        <br />
         <Checkbox
           label='Checkbox rendered with boxSide "end"'
           boxSide='end'
         />
-
+        <br />
         <Checkbox
           label='Persona Checkbox'
           onRenderLabel={ this._renderPersonaLabel }

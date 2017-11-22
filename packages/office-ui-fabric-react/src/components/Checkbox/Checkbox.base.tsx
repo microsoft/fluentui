@@ -19,7 +19,6 @@ import {
   classNamesFunction
 } from '../../Styling';
 
-
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
   isChecked?: boolean;
@@ -91,8 +90,8 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       theme: theme!,
       className,
       disabled,
-      isChecked,
-      isReversed
+      checked: isChecked,
+      reversed: isReversed
     });
 
     return (

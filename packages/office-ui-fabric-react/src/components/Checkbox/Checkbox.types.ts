@@ -111,8 +111,8 @@ export interface ICheckboxStyleProps {
   theme: ITheme;
   className?: string;
   disabled: boolean | undefined;
-  isChecked: boolean | undefined;
-  isReversed: boolean | undefined;
+  checked: boolean | undefined;
+  reversed: boolean | undefined;
 }
 
 export interface ICheckboxStyles {

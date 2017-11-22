@@ -26,6 +26,8 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
     return (
       <div>
         <Checkbox
+          // tslint:disable-next-line:jsx-no-lambda
+          getStyles={ (props) => ({ root: { background: 'red' } }) }
           label='Standard checkbox'
           onChange={ this._onCheckboxChange }
           ariaDescribedBy={ 'descriptionID' }

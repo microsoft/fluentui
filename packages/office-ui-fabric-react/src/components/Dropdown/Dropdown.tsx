@@ -25,7 +25,6 @@ import {
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
-import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
 import { getTheme } from '../../Styling';
 
 // Internal only props interface to support mixing in responsive mode
@@ -464,7 +463,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndices = [] } = this.state;
     let id = this._id;
     let isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    // let checkboxStyles = getCheckboxStyles(getTheme());
 
     return (
       !this.props.multiSelect ?
@@ -516,18 +514,23 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             checked={ isItemSelected }
-          // Hover is being handled by focus styles
-          // so clear out the explicit hover styles
-          // styles={ {
-          //   checkboxHovered: checkboxStyles.checkbox,
-          //   checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-          //   textHovered: checkboxStyles.text
-          // } }
+            // Hover is being handled by focus styles
+            // so clear out the explicit hover styles
+            // tslint:disable-next-line:jsx-no-lambda
+            getStyles={ (props) => {
+              return ({ root: { background: 'green' } });
+            } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>
         )
     );
   }
+
+  // {
+  //   checkboxHovered: checkboxStyles.checkbox,
+  //   checkboxCheckedHovered: checkboxStyles.checkboxChecked,
+  //   textHovered: checkboxStyles.text
+  // }
 
   // Render content of item (i.e. text/icon inside of button)
   @autobind
