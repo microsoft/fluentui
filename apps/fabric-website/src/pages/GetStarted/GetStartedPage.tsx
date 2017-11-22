@@ -7,6 +7,7 @@ const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
 import * as stylesImport from './GetStartedPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../PageStyles.module.scss');
+const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {
@@ -185,7 +186,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`
               <p>Add the following line to the &lt;head&gt; of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.2.0/css/fabric.min.css">`
+                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/${corePackageData.version}/css/fabric.min.css">`
                 }
               </CodeBlock>
             </li>
