@@ -203,6 +203,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       target,
       bounds,
       useTargetWidth,
+      useTargetAsMinWidth,
       directionalHintFixed,
       shouldFocusOnMount,
       title,
@@ -240,11 +241,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
      */
     let contextMenuStyle;
     let targetAsHtmlElement = this._target as HTMLElement;
-    if (useTargetWidth && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
-      let contextMenuWidth = targetAsHtmlElement.offsetWidth;
-      contextMenuStyle = {
-        width: contextMenuWidth
-      };
+    if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
+      let targetWidth = targetAsHtmlElement.offsetWidth;
+      if (useTargetWidth) {
+        contextMenuStyle = {
+          width: targetWidth
+        };
+      } else if (useTargetAsMinWidth) {
+        contextMenuStyle = {
+          minWidth: targetWidth
+        };
+      }
     }
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
