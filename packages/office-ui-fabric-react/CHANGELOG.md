@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Nov 2017 11:21:39 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Nov 2017 11:12:40 GMT and should not be manually modified.
+
+## 5.24.2
+Wed, 22 Nov 2017 11:12:40 GMT
+
+### Patches
+
+- Add small headline with margin and wide callout with image on the left side
 
 ## 5.24.1
 Tue, 21 Nov 2017 11:21:39 GMT

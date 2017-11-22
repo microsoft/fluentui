@@ -72,6 +72,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   useTargetWidth?: boolean;
 
   /**
+   * If true the context menu will have a minimum width equal to the width of the target element
+   * @default false
+   */
+  useTargetAsMinWidth?: boolean;
+
+  /**
    * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
