@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Nav: Added `onLinkExpandClick` callback for getting a callback when an item expanded state is toggled",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-jaebey@microsoft.com"
+}

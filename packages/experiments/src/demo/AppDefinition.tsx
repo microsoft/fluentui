@@ -11,10 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/DynamicallyPositionedContainer/DynamicallyPositionedContainerPage').DynamicallyPositionedContainerPage,
-          key: 'DynamicallyPositionedContainer',
-          name: 'DynamicallyPositionedContainer',
-          url: '#/examples/DynamicallyPositionedContainer'
+          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
+          key: 'PositioningContainer',
+          name: 'PositioningContainer',
+          url: '#/examples/PositioningContainer'
         },
         {
           component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,

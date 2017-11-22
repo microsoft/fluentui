@@ -388,16 +388,18 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         overflow: 'hidden',
         backgroundColor: themePrimary,
         borderRadius: coachmarkCollapsedSize,
+        opacity: '0.8',
+        transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
+        visibility: 'hidden'
+      },
+      (!props.isMeasuring) && {
         width: coachmarkCollapsedSize,
         height: coachmarkCollapsedSize,
-        opacity: '0.8',
-        transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)'
+        visibility: 'visible'
       },
-      (!props.isCollapsed) && {
+      !props.isCollapsed && {
         borderRadius: '1px',
-        opacity: '1'
-      },
-      (!props.isCollapsed && props.entityHostWidth && props.entityHostHeight) && {
+        opacity: '1',
         width: props.entityHostWidth,
         height: props.entityHostHeight
       }
@@ -406,8 +408,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
       {
         transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
         transformOrigin: 'top left',
-        transform: 'scale(0)',
-        visibility: 'hidden'
+        transform: 'scale(0)'
       },
       (!props.isCollapsed) && {
         transform: 'scale(1)'
