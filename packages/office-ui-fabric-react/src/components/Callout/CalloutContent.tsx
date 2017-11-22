@@ -147,6 +147,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
 
+    // When using overflow-y: auto, most browsers take away room from the content div to place the scrollbar. This can result
+    // in truncated content, since there isn't as much horizontal room available. If overflow-y:scroll is set, then the scrollbar
+    // does not take away from the content width. Overflow-y: scroll always shows a scrollbar, so we need to do some measurements
+    // to check if we actually need a scrollbar.
     const needsVerticalScrollbar: boolean = !!(this._popup && this._popup.refs.root && this._popup.refs.root.scrollHeight > this._popup.refs.root.clientHeight);
 
     let beakVisible = isBeakVisible && (!!target);
