@@ -73,6 +73,9 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    */
   className?: string;
 
+  /**
+   * ClassNames used by component.
+   */
   classNames?: {};
 
   /**

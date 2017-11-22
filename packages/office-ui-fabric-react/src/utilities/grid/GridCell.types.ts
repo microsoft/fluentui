@@ -75,7 +75,7 @@ export interface IGridCellProps<T> {
   label?: string;
 
   /**
-   * Styles applied to the gridCell button.
+   * ClassNames used by to the gridCell component.
    */
   classNames?: {};
 }
