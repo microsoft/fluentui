@@ -31,7 +31,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       'ms-Checkbox',
       reversed && 'reversed',
       checked && 'is-checked',
-      disabled && 'is-enabled',
+      !disabled && 'is-enabled',
       disabled && 'is-disabled',
       getFocusStyle(theme, -3),
       {
@@ -126,7 +126,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor
     },
     text: [
-      '.ms-Checkbox-text',
+      'ms-Checkbox-text',
       {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
         margin: '0 4px',
