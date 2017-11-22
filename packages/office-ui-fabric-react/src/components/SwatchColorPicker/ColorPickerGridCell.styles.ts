@@ -13,6 +13,8 @@ function getSvgSelectorStyles(borderColor: string): IRawStyle {
     height: 12,
     border: '4px solid',
     borderColor: borderColor,
+    padding: 4,
+    margin: 0
   };
 }
 
@@ -58,10 +60,6 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             border: '1px solid #D2D2D2',
             margin: 4,
           },
-          ':hover $svg, :active $svg, .ms-Fabric.is-focusVisible &:focus $svg': {
-            padding: 4,
-            margin: 0
-          }
         }
       },
       circle && 'is-circle' && {
@@ -86,8 +84,6 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           {
             boxShadow: '0 0 0 1px #969696',
             borderColor: ACTIVE_BORDER_COLOR,
-            padding: 4,
-            margin: 0
           },
         },
       },
