@@ -47,7 +47,8 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         theme: theme!,
         disabled,
         selected,
-        circle
+        circle,
+        isWhite: this._isWhiteCell(this.props.color)
       }
     );
 
@@ -86,6 +87,15 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         }
       </svg>
     );
+  }
+
+    /**
+ * Validate if the cell's color is white or not to apply whiteCell style
+ * @param inputColor - The color of the current cell
+ * @returns - Whether the cell's color is white or not.
+ */
+  private _isWhiteCell(inputColor: string | undefined): boolean {
+    return inputColor!.toLocaleLowerCase() === '#ffffff';
   }
 
 }
