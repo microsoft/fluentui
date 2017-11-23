@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 17 Nov 2017 17:36:36 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+
+## 5.10.1
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Patches
+
+- Theme: Updated menuItemBackgroundChecked for ContextualMenu.
 
 ## 5.10.0
 Fri, 17 Nov 2017 17:36:36 GMT
