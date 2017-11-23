@@ -20,38 +20,29 @@ export type FitMode = 'contain' | 'cover';
 /**
  * Options for fitting content sizes into bounding sizes.
  *
- * @export
- * @interface IFitContentToBoundsOptions
+ * @public
  */
 export interface IFitContentToBoundsOptions {
+
   /**
    * The size of the content to fit to the bounds.
    * The output will be proportional to this value.
-   *
-   * @type {ISize}
-   * @memberof IFitContentToBoundsOptions
    */
   contentSize: ISize;
+
   /**
    * The size of the bounds.
-   *
-   * @type {ISize}
-   * @memberof IFitContentToBoundsOptions
    */
   boundsSize: ISize;
+
   /**
    * The fit mode to apply, either 'contain' or 'cover'.
-   *
-   * @type {FitMode}
-   * @memberof IFitContentToBoundsOptions
    */
   mode: FitMode;
+
   /**
    * An optional maximum scale factor to apply. The default is 1.
    * Use Infinity for an unbounded resize.
-   *
-   * @type {number}
-   * @memberof IFitContentToBoundsOptions
    */
   maxScale?: number;
 }
@@ -65,7 +56,7 @@ export interface IFitContentToBoundsOptions {
  * With `cover`, the output size must be the smallest it can be while completely around the `boundsSize`.
  * By default, there is a `maxScale` value of 1, which prevents the `contentSize` from being scaled larger.
  *
- * @param options the options for the bounds fit operation
+ * @public
  */
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize {
   const {

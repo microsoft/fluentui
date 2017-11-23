@@ -20,6 +20,9 @@ let _theme: ITheme = {
   isInverted: false
 };
 
+/**
+ * The theme setting name used in Customizations.
+ */
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
@@ -37,6 +40,8 @@ if (!Customizations.getSettings([ThemeSettingName]).theme) {
 
 /**
  * Gets the theme object.
+ *
+ * @public
  */
 export function getTheme(): ITheme {
   return _theme;
@@ -44,6 +49,8 @@ export function getTheme(): ITheme {
 
 /**
  * Applies the theme, while filling in missing slots.
+ *
+ * @public
  */
 export function loadTheme(theme: IPartialTheme): ITheme {
   _theme = createTheme(theme);
@@ -58,6 +65,8 @@ export function loadTheme(theme: IPartialTheme): ITheme {
 
 /**
  * Creates a custom theme definition which can be used with the Customizer.
+ *
+ * @public
  */
 export function createTheme(theme: IPartialTheme): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };

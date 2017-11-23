@@ -68,7 +68,11 @@ const LanguageToFontMap = {
   'zh-hant': LocalizedFontFamilies.ChineseTraditional,
 };
 
-// Standard font sizes.
+/**
+ * Standard font sizes.
+ *
+ * @public
+ */
 export namespace FontSizes {
   export const mini = '10px';
   export const xSmall = '11px';
@@ -84,7 +88,11 @@ export namespace FontSizes {
   export const mega = '72px';
 }
 
-// Standard font weights.
+/**
+ * Standard font weights.
+ *
+ * @public
+ */
 export namespace FontWeights {
   export const light = 100;
   export const semilight = 300;
@@ -93,7 +101,11 @@ export namespace FontWeights {
   export const bold = 700;
 }
 
-// Standard Icon Sizes.
+/**
+ * Standard Icon Sizes.
+ *
+ * @public
+ */
 export namespace IconFontSizes {
   export const xSmall = '10px';
   export const small = '12px';
@@ -101,6 +113,13 @@ export namespace IconFontSizes {
   export const large = '20px';
 }
 
+/**
+ * Creates the font styles object, given a language code.
+ *
+ * @param localeCode - The language code. Example: "en"
+ *
+ * @public
+ */
 export function createFontStyles(localeCode: string | null): IFontStyles {
   return {
     tiny: _createFont(FontSizes.mini, FontWeights.semibold, localeCode),

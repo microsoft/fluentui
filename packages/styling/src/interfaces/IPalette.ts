@@ -1,5 +1,7 @@
 /**
  * UI Fabric color palette.
+ *
+ * @public
  */
 export interface IPalette {
   /**

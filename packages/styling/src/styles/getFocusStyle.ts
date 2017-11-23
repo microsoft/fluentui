@@ -10,6 +10,8 @@ import { ITheme } from '../interfaces/index';
  * @param position - The positioning applied to the container. Must
  * be 'relative' or 'absolute' so that the focus border can live around it.
  * @returns The style object.
+ *
+ * @public
  */
 export function getFocusStyle(
   theme: ITheme,

@@ -84,8 +84,8 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  * Gets the elements which are child elements of the given element.
  * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
  * after the original children.
- * @param parent
- * @param allowVirtualChildren
+ *
+ * @public
  */
 export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean = true): HTMLElement[] {
   const children: HTMLElement[] = [];

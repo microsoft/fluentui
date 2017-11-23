@@ -11,6 +11,11 @@ import {
   mergeStyles
 } from '@uifabric/merge-styles/lib/index';
 
+/**
+ * An icon subset.
+ *
+ * @public
+ */
 export interface IIconSubset {
   fontFace?: IFontFace;
   icons: {
@@ -20,21 +25,41 @@ export interface IIconSubset {
   style?: IRawStyle;
 }
 
+/**
+ * An icon subset record.
+ *
+ * @public
+ */
 export interface IIconSubsetRecord extends IIconSubset {
   isRegistered?: boolean;
   className?: string;
 }
 
+/**
+ * An icon record.
+ *
+ * @public
+ */
 export interface IIconRecord {
   code: string | undefined;
   subset: IIconSubsetRecord;
 }
 
+/**
+ * Icon options.
+ *
+ * @public
+ */
 export interface IIconOptions {
   disableWarnings: boolean;
   warnOnMissingIcons: boolean;
 }
 
+/**
+ * All icon records.
+ *
+ * @public
+ */
 export interface IIconRecords {
   __options: IIconOptions;
   __remapped: { [key: string]: string };
@@ -54,6 +79,8 @@ const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
  * Registers a given subset of icons.
  *
  * @param iconSubset - the icon subset definition.
+ *
+ * @public
  */
 export function registerIcons(iconSubset: IIconSubset): void {
   let subset = {
@@ -82,6 +109,8 @@ export function registerIcons(iconSubset: IIconSubset): void {
 
 /**
  * Remaps one icon name to another.
+ *
+ * @public
  */
 export function registerIconAlias(iconName: string, mappedToName: string): void {
   _icons.__remapped[iconName.toLowerCase()] = mappedToName.toLowerCase();

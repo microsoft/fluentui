@@ -3,6 +3,11 @@ import * as PropTypes from 'prop-types';
 import { BaseComponent, IBaseProps } from './BaseComponent';
 import { ICustomizations } from './Customizations';
 
+/**
+ * Customizer context.
+ *
+ * @public
+ */
 export interface ICustomizerContext {
   customizations: ICustomizations;
 }
@@ -25,8 +30,8 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerConte
   public static contextTypes: {
     customizations: PropTypes.Requireable<{}>;
   } = {
-    customizations: PropTypes.object
-  };
+      customizations: PropTypes.object
+    };
 
   public static childContextTypes: {
     customizations: PropTypes.Requireable<{}>;

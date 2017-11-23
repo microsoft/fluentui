@@ -23,6 +23,8 @@ export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean
  * Helper to find the first item within an array that satisfies the callback.
  * @param array - Array to search
  * @param cb - Callback which returns true on matches
+ *
+ * @public
  */
 export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
   let index = findIndex(array, cb);
@@ -37,9 +39,10 @@ export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T 
 /**
  * Creates an array of a given size and helper method to populate.
  *
- * @public
  * @param size - Size of array.
  * @param getItem - Callback to populate given cell index.
+ *
+ * @public
  */
 export function createArray<T>(size: number, getItem: (index: number) => T): T[] {
   let array: T[] = [];
@@ -55,10 +58,11 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
  * Convert the given array to a matrix with columnCount number
  * of columns.
  *
- * @public
  * @param items - The array to convert
  * @param columnCount - The number of columns for the resulting matrix
  * @returns {any[][]} - A matrix of items
+ *
+ * @public
  */
 export function toMatrix<T>(items: T[], columnCount: number): T[][] {
   return items.reduce((rows: T[][], currentValue: T, index: number) => {
@@ -75,6 +79,8 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
  * Given an array, it returns a new array that does not contain the item at the given index.
  * @param array - The array to operate on
  * @param index - The index of the element to remove
+ *
+ * @public
  */
 export function removeIndex<T>(array: T[], index: number): T[] {
   return array.filter((_: T, i: number) => index !== i);
@@ -85,6 +91,8 @@ export function removeIndex<T>(array: T[], index: number): T[] {
  * @param array - The array to operate on
  * @param newElement - The element that will be placed in the new array
  * @param index - The index of the element that should be replaced
+ *
+ * @public
  */
 export function replaceElement<T>(array: T[], newElement: T, index: number): T[] {
   const copy = array.slice();
@@ -97,6 +105,8 @@ export function replaceElement<T>(array: T[], newElement: T, index: number): T[]
  * @param array - The array to operate on
  * @param index - The index where an element should be inserted
  * @param itemToAdd - The element to insert
+ *
+ * @public
  */
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[] {
   const copy = array.slice();
@@ -107,6 +117,8 @@ export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T
 /**
  * Given an array where each element is of type T or T[], flatten it into an array of T
  * @param array - The array where each element can optionally also be an array
+ *
+ * @public
  */
 export function flatten<T>(array: (T | T[])[]): T[] {
   let result: T[] = [];

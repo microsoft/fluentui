@@ -2,6 +2,16 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Customizations } from './Customizations';
 
+/**
+ * Decorator used to provide cutomizations exposed either using defaults provided to the
+ * Customizations helper, or scoped via the Customizer component.
+ *
+ * @param scope - The name of the scope which can be targeted using scopedSettings provided
+ * to the Customizer.
+ * @param fields - Fields which are customizable, and allowed ot be injected.
+ *
+ * @public
+ */
 export function customizable(
   scope: string,
   fields: string[]
@@ -20,8 +30,8 @@ export function customizable(
       public static contextTypes: {
         customizations: PropTypes.Requireable<{}>;
       } = {
-        customizations: PropTypes.object
-      };
+          customizations: PropTypes.object
+        };
 
       // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
