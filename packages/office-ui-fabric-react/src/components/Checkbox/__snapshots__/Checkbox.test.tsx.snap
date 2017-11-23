@@ -31,13 +31,13 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       }
       .ms-Fabric.is-focusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: -1px;
+        bottom: -2px;
         content: "";
-        left: -1px;
+        left: -2px;
         outline: 1px solid #666666;
         position: absolute;
-        right: -1px;
-        top: -1px;
+        right: -2px;
+        top: -2px;
         z-index: 1;
       }
       &:hover .ms-Checkbox-checkbox {
@@ -83,7 +83,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           ms-Checkbox-checkbox
           {
             align-items: center;
-            border-color: #333333;
+            border-color: #a6a6a6;
             border-style: solid;
             border-width: 1px;
             box-sizing: border-box;

@@ -28,12 +28,6 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
   public render() {
     let { isChecked } = this.state;
 
-    let styles: ICheckboxStyles = {
-      root: {
-        marginTop: '10px'
-      }
-    };
-
     return (
       <div>
         <Checkbox
@@ -43,48 +37,41 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
             onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
           } }
-          styles={ styles }
           ariaDescribedBy={ 'descriptionID' }
         />
         <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
-
+        <br />
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          styles={ styles }
         />
-
+        <br />
         <Checkbox
           label='Disabled uncontrolled checkbox'
           disabled={ true }
-          styles={ styles }
         />
-
+        <br />
         <Checkbox
           label='Disabled uncontrolled checkbox with defaultChecked true'
           disabled={ true }
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          styles={ styles }
         />
-
+        <br />
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
           onChange={ this._onControlledCheckboxChange }
-          styles={ styles }
         />
-
+        <br />
         <Checkbox
           label='Checkbox rendered with boxSide "end"'
           boxSide='end'
-          styles={ styles }
         />
-
+        <br />
         <Checkbox
           label='Persona Checkbox'
-          styles={ styles }
           onRenderLabel={ this._renderPersonaLabel }
         />
       </div>
