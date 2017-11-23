@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.6.1",
+      "tag": "@uifabric/experiments_v5.6.1",
+      "date": "Thu, 23 Nov 2017 11:10:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "d6b160b67456101362c1b241b4c4ee6d11850fdb",
+            "comment": "Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.24.2 <6.0.0` to `>=5.25.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.0",
       "tag": "@uifabric/experiments_v5.6.0",
       "date": "Fri, 17 Nov 2017 17:36:36 GMT",
