@@ -9,8 +9,6 @@ export const ToggleBasicExample = () => (
     <Toggle
       defaultChecked={ true }
       label='Enabled and checked'
-      onAriaLabel='This toggle is checked. Press to uncheck.'
-      offAriaLabel='This toggle is unchecked. Press to check.'
       onText='On'
       offText='Off'
       onFocus={ () => console.log('onFocus called') }
