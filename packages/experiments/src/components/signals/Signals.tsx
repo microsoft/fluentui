@@ -272,7 +272,7 @@ export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
     >
       <Icon
         ariaLabel={ props.ariaLabel }
-        className={ css(SignalStyles.signal, SignalStyles.trending) }
+        className={ css(SignalStyles.signal, SignalStyles.external) }
         iconName='Globe'
       />
     </span>
