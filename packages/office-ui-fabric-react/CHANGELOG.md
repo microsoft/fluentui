@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Nov 2017 11:21:39 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Nov 2017 22:13:20 GMT and should not be manually modified.
+
+## 5.26.0
+Mon, 27 Nov 2017 22:13:20 GMT
+
+### Minor changes
+
+- DetailsList: Resizing columns in justified mode doesn't affect columns on the left.
+
+### Patches
+
+- ContextualMenu: Add ability to open splitButton chevron menu, when they are inside menus
+
+## 5.25.0
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Minor changes
+
+- Button: new prop splitButtonAriaLabel.
+
+### Patches
+
+- Combo box only updates the pending values in arrow keypresses, whether  its menu is open or  closed
+- ContextualMenu: Updated expanded menu item style to match toolkit.
+- ContextualMenu: Add a prop for setting the min width to be equal to the width of the target
+- Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot
+- Toggle: Split out a new example for on and offAriaLabels to clarify the experince.
+- Change the combobox alignment to be the same as the design of dropdown
+
+## 5.24.2
+Wed, 22 Nov 2017 11:12:40 GMT
+
+### Patches
+
+- Add small headline with margin and wide callout with image on the left side
 
 ## 5.24.1
 Tue, 21 Nov 2017 11:21:39 GMT
