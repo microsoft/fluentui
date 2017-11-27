@@ -182,7 +182,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       borderless,
       className,
       minDate,
-      maxDate
+      maxDate,
+      calendarProps
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -233,6 +234,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             onPositioned={ this._onCalloutPositioned }
           >
             <Calendar
+              { ...calendarProps }
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
