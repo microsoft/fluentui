@@ -25,6 +25,9 @@ import {
   getCaretDownButtonStyles
 } from './ComboBox.styles';
 import {
+  IComboBoxStyles,
+} from './ComboBox.types';
+import {
   IComboBoxClassNames,
   getClassNames,
   getComboBoxOptionClassNames
@@ -252,10 +255,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
-    let setWidth = isOpen ? (this._comboBoxWrapper.clientWidth - 2) + 'px' : undefined;
-
     this._classNames = getClassNames(
-      getStyles(theme!, customStyles, setWidth),
+      getStyles(theme!, customStyles),
       className!,
       !!isOpen,
       !!disabled,
@@ -797,6 +798,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       onRenderList,
       calloutProps,
+      dropdownWidth,
       onRenderLowerContent = this._onRenderLowerContent
     } = props;
 
@@ -812,6 +814,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
+        calloutWidth={ dropdownWidth || this._comboBoxWrapper.clientWidth + 2 }
       >
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
@@ -1119,23 +1122,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Sets either the pending info or the
-   * selected index depending of if the comboBox is open
+   * Sets the pending info for the comboBox
    * @param index - the index to search from
    * @param searchDirection - the direction to search
    */
-  private _setInfoForIndexAndDirection(index: number, searchDirection: SearchDirection) {
+  private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
     let {
       isOpen,
       selectedIndex
     } = this.state;
 
-    if (isOpen) {
-      index = this._getNextSelectableIndex(index, searchDirection);
-      this._setPendingInfoFromIndex(index);
-    } else {
-      this._setSelectedIndex(selectedIndex, searchDirection);
-    }
+    index = this._getNextSelectableIndex(index, searchDirection);
+    this._setPendingInfoFromIndex(index);
   }
 
   /**
@@ -1226,7 +1224,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
 
         // Go to the previous option
-        this._setInfoForIndexAndDirection(index, SearchDirection.backward);
+        this._setPendingInfoFromIndexAndDirection(index, SearchDirection.backward);
         break;
 
       case KeyCodes.down:
@@ -1242,7 +1240,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
 
           // Got to the next option
-          this._setInfoForIndexAndDirection(index, SearchDirection.forward);
+          this._setPendingInfoFromIndexAndDirection(index, SearchDirection.forward);
         }
         break;
 
@@ -1264,7 +1262,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           directionToSearch = SearchDirection.backward;
         }
 
-        this._setInfoForIndexAndDirection(index, directionToSearch);
+        this._setPendingInfoFromIndexAndDirection(index, directionToSearch);
         break;
 
       case KeyCodes.space:
