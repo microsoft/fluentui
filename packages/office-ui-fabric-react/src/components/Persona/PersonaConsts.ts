@@ -6,7 +6,7 @@ import {
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
-export const PERSONA_SIZE = {
+export const PERSONA_SIZE: { [key: number]: string } = {
   // All non-numerically named sizes are deprecated, use the numerically named classes below
   [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsSize10,
   [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsSize24,
@@ -27,7 +27,7 @@ export const PERSONA_SIZE = {
   [PersonaSize.size100]: 'ms-Persona--size100 ' + styles.rootIsSize100
 };
 
-export const PERSONA_PRESENCE = {
+export const PERSONA_PRESENCE: { [key: number]: string } = {
   [PersonaPresence.offline]: 'ms-Persona--offline ' + styles.rootIsOffline,
   [PersonaPresence.online]: 'ms-Persona--online ',
   [PersonaPresence.away]: 'ms-Persona--away ' + styles.rootIsAway,
@@ -36,7 +36,7 @@ export const PERSONA_PRESENCE = {
   [PersonaPresence.busy]: 'ms-Persona--busy ' + styles.rootIsBusy
 };
 
-export const PERSONA_INITIALS_COLOR = {
+export const PERSONA_INITIALS_COLOR: { [key: number]: string } = {
   [PersonaInitialsColor.lightBlue]: 'ms-Persona-initials--lightBlue ' + styles.initialsIsLightBlue,
   [PersonaInitialsColor.blue]: 'ms-Persona-initials--blue ' + styles.initialsIsBlue,
   [PersonaInitialsColor.darkBlue]: 'ms-Persona-initials--darkBlue ' + styles.initialsIsDarkBlue,

@@ -25,7 +25,7 @@ import {
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
-const SIZE_TO_PIXELS = {
+const SIZE_TO_PIXELS: { [key: number]: number } = {
   [PersonaSize.tiny]: 20,
   [PersonaSize.extraExtraSmall]: 24,
   [PersonaSize.extraSmall]: 28,
