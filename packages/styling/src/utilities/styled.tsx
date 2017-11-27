@@ -2,6 +2,10 @@ import * as React from 'react';
 import { concatStyleSets } from '../MergeStyles';
 import { IStyleFunction } from '../interfaces/index';
 
+/**
+ * Props with styles.
+ * @public
+ */
 export interface IPropsWithStyles<TStyleProps, TStyles> {
   getStyles?: IStyleFunction<TStyleProps, TStyles>;
   subComponents?: {
@@ -22,6 +26,7 @@ export interface IPropsWithStyles<TStyleProps, TStyles> {
  * );
  * ```
  *
+ * @public
  */
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyles>, TStyleProps, TStyles>(
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,

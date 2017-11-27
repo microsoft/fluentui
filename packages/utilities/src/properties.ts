@@ -215,7 +215,7 @@ export const htmlElementProperties = baseElementProperties.concat(baseElementEve
  *
  * @public
  */
-export const anchorProperties = htmlElementProperties.concat([
+export const anchorProperties: string[] = htmlElementProperties.concat([
   'href',
   'target'
 ]);

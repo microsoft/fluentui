@@ -5,6 +5,11 @@ import {
   EventGroup
 } from './EventGroup';
 
+/**
+ * Customizations structure stored in global settings.
+ *
+ * @public
+ */
 export interface ICustomizations {
   // tslint:disable-next-line:no-any
   settings: { [key: string]: any };
@@ -22,6 +27,12 @@ let _allSettings = GlobalSettings.getValue<ICustomizations>(CustomizationsGlobal
 
 const _events = new EventGroup(_allSettings);
 
+/**
+ * Helper for providing global customizations which can be accessed by the customizable
+ * decorators.
+ *
+ * @public
+ */
 export class Customizations {
   public static reset(): void {
     _allSettings.settings = {};

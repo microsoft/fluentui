@@ -2,6 +2,11 @@ import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 
+/**
+ * The theme object.
+ *
+ * @public
+ */
 export interface ITheme {
   palette: IPalette;
   fonts: IFontStyles;
@@ -9,9 +14,9 @@ export interface ITheme {
   isInverted: boolean;
 }
 
-export interface IPartialTheme {
-  palette?: Partial<IPalette>;
-  fonts?: Partial<IFontStyles>;
-  semanticColors?: Partial<ISemanticColors>;
-  isInverted?: boolean;
-}
+/**
+ * Partial theme.
+ *
+ * @public
+ */
+export type IPartialTheme = Partial<ITheme>;

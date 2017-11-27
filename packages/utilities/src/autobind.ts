@@ -1,6 +1,8 @@
 /**
  * Autobind is a utility for binding methods in a class. This simplifies tagging methods as being "bound" to the this pointer
  * so that they can be used in scenarios that simply require a function callback.
+ *
+ * @public
  */
 // tslint:disable-next-line:no-any
 export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {

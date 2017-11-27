@@ -3,6 +3,8 @@ import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined
  * keyframes. These objects can be mixed in with other class definitions.
+ *
+ * @public
  */
 export interface IAnimationStyles {
   slideRightIn10: IRawStyle;

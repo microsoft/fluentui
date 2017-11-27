@@ -18,7 +18,7 @@ export interface IBaseProps {
  *
  * @public
  */
-export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
+export class BaseComponent<TProps extends IBaseProps, TState = {}> extends React.Component<TProps, TState> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
@@ -47,7 +47,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param context - The context for the component.
    */
   // tslint:disable-next-line:no-any
-  constructor(props?: P, context?: any) {
+  constructor(props?: TProps, context?: any) {
     super(props, context);
 
     this._shouldUpdateComponentRef = true;
@@ -68,7 +68,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * When the component will receive props, make sure the componentRef is updated.
    */
   // tslint:disable-next-line:no-any
-  public componentWillReceiveProps(newProps: Readonly<P>, newContext: any): void {
+  public componentWillReceiveProps(newProps: TProps, newContext: any): void {
     this._updateComponentRef(this.props, newProps);
   }
 
@@ -192,7 +192,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
    * either null or a replacement prop name.
    */
-  protected _warnDeprecations(deprecationMap: ISettingsMap<P>): void {
+  protected _warnDeprecations(deprecationMap: ISettingsMap<TProps>): void {
     warnDeprecations(this.className, this.props, deprecationMap);
   }
 
@@ -201,7 +201,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    *
    * @param mutuallyExclusiveMap - The map of mutually exclusive props.
    */
-  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>): void {
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<TProps>): void {
     warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
   }
 

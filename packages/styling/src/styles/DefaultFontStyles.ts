@@ -46,6 +46,13 @@ function _registerFontFaceSet(
   _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold);
 }
 
+/**
+ * Registers default font faces, given an optional base url.
+ *
+ * @param baseUrl - The baseUrl which contains the 'fonts' folder.
+ *
+ * @public
+ */
 export function registerDefaultFontFaces(baseUrl: string): void {
   if (baseUrl) {
     const fontUrl = `${baseUrl}/fonts`;
