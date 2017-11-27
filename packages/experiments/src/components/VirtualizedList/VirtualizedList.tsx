@@ -135,7 +135,6 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     const result: (JSX.Element | null)[] = [];
 
     // Assume ranges are sorted.
-    const startIndex = 0;
 
     let lastRenderedIndex = -1;
 
