@@ -358,14 +358,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
                 this._moveFocusDown();
               }
               break;
-            } else if (direction === FocusZoneDirection.horizontal) {
-              if (ev.shiftKey) {
-                this._moveFocusLeft();
-              } else {
-                this._moveFocusRight();
-              }
-              break;
-            } else if (direction === FocusZoneDirection.bidirectional) {
+            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
               if (ev.shiftKey) {
                 this._moveFocusLeft();
               } else {
