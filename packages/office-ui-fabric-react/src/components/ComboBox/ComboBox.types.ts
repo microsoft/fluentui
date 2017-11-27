@@ -125,6 +125,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   * @default false;
   */
   preventInputFocus?: boolean;
+
+  /**
+  * Custom width for dropdown. If value is 0, width of the input field is used.
+  * @default 0
+  */
+  dropdownWidth?: number;
 }
 
 export interface IComboBoxStyles {

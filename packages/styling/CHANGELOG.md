@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 16 Nov 2017 11:20:34 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+
+## 5.10.1
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Patches
+
+- Theme: Updated menuItemBackgroundChecked for ContextualMenu.
+
+## 5.10.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Export functions used to create font sets based upon a given locale code
 
 ## 5.8.0
 Thu, 16 Nov 2017 11:20:34 GMT

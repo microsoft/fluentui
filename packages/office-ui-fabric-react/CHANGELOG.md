@@ -1,6 +1,69 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Nov 2017 11:20:34 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Minor changes
+
+- Button: new prop splitButtonAriaLabel.
+
+### Patches
+
+- Combo box only updates the pending values in arrow keypresses, whether  its menu is open or  closed
+- ContextualMenu: Updated expanded menu item style to match toolkit.
+- ContextualMenu: Add a prop for setting the min width to be equal to the width of the target
+- Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot
+- Toggle: Split out a new example for on and offAriaLabels to clarify the experince.
+- Change the combobox alignment to be the same as the design of dropdown
+
+## 5.24.2
+Wed, 22 Nov 2017 11:12:40 GMT
+
+### Patches
+
+- Add small headline with margin and wide callout with image on the left side
+
+## 5.24.1
+Tue, 21 Nov 2017 11:21:39 GMT
+
+### Patches
+
+- ColorCells: Adding gray border to white color cells
+- Prevent default while handling up/down arrow keys on a contextual menu
+- TextField example: match the max width for TextFields.
+
+## 5.24.0
+Mon, 20 Nov 2017 11:12:47 GMT
+
+### Minor changes
+
+- calendar component ux changes plus exposing sixweeksbydefault
+
+### Patches
+
+- Persona: Changed size40 primaryText font size back 14px.
+- DetailsList: preserve focus only if active element leaves the list
+- Edit HoverCardPage, OverflowSetPage, ScrollablePanePage, TeachingBubblePage to use IComponentDemoPageProps
+
+## 5.23.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- add suffix to TextField
+- Nav: Added `onLinkExpandClick` callback for getting a callback when an item expanded state is toggled
+- PersonaCoin: For non-latin characters, if initials return an empty string, use the Contact icon instead of the empty string.
+- Rating control implementation using button, Half star support and ReadOnly rating control support
+
+### Patches
+
+- DetailsList: mouse click gives preference to inner links.
+- DetailsHeader: Accessibility fix, move aria-haspopup to correct element
+- SplitButton: Add splitFullActiveState to make the whole splitButton look active if true
+- ScrollablePane: Fix sortStickies function to sort elements by their true offsetTop in respect to scrollablePane's root
+- Fixing high contrast bugs
 
 ## 5.22.0
 Thu, 16 Nov 2017 11:20:34 GMT

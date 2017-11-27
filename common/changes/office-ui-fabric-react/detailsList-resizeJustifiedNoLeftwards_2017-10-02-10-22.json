@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add suffix to TextField",
+      "comment": "DetailsList: Resizing columns in justified mode doesn't affect columns on the left.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "scott.balentine@microsoft.com"
+  "email": "v-panu@microsoft.com"
 }
