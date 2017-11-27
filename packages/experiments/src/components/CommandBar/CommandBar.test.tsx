@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { CommandBar } from './CommandBar';
+import { CommandBarBase } from './CommandBar.base';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
@@ -30,7 +31,7 @@ describe('CommandBar', () => {
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
-    const commandBar = mount<CommandBar>(
+    const commandBar = mount<CommandBarBase>(
       <CommandBar
         items={ [
           {

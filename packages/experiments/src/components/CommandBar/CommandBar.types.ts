@@ -3,7 +3,8 @@ import * as React from 'react';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
-import { ICommandBarData } from './CommandBar';
+import { ICommandBarData } from './CommandBar.base';
+import { IStyle, ITheme, IStyleFunction } from '../../Styling';
 
 export interface ICommandBar {
   /**
@@ -45,9 +46,19 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   elipisisIconProps?: IIconProps;
 
   /**
+  * Call to provide customized styling that will layer on top of the variant rules
+  */
+  getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
+
+  /**
    * Custom styles to be mixed into individual button styles
    */
   buttonStyles?: IButtonStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Custom render function for all non contextual menu buttons.
@@ -97,4 +108,15 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    */
   renderedInOverflow?: boolean;
 
+}
+
+export interface ICommandBarStyleProps {
+  theme: ITheme;
+  className?: string;
+}
+
+export interface ICommandBarStyles {
+  root?: IStyle;
+  primarySet?: IStyle;
+  secondarySet?: IStyle;
 }
