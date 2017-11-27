@@ -1,8 +1,6 @@
-import { mergeStyleSets } from '../MergeStyles';
-import {
-  IClassNames,
-  IStyleFunction
-} from '../interfaces/index';
+import { mergeStyleSets } from '@uifabric/merge-styles/lib/index';
+import { IClassNames } from './IClassNames';
+import { IStyleFunction } from './IStyleFunction';
 
 /**
  * Creates a getClassNames function which calls getStyles given the props, and injects them
