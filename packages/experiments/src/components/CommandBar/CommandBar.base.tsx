@@ -101,7 +101,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         // tslint:disable-next-line:jsx-no-lambda
         onRenderData={ (data: ICommandBarData) => {
           return (
-            <div className={ css('ms-CommandBar', this._classNames.root) }>
+            <div className={ css(this._classNames.root) }>
 
               {/*Primary Items*/ }
               <OverflowSet
