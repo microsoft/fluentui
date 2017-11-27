@@ -6,7 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
-import { IColorCellProps } from './SwatchColorPicker.Props';
+import { IColorCellProps } from './SwatchColorPicker.types';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },

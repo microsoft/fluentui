@@ -1,8 +1,9 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
   concatStyleSets,
-  FontWeights
+  FontWeights,
+  HighContrastSelector
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -92,10 +93,25 @@ export const getStyles = memoizeFunction((
 
     description: {
       color: theme.palette.white,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
+
     },
 
     descriptionHovered: {
-      color: theme.palette.white
+      color: theme.palette.white,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Window',
+          backgroundColor: 'WindowText',
+          MsHighContrastAdjust: 'none'
+        }
+      }
     },
 
     descriptionPressed: {

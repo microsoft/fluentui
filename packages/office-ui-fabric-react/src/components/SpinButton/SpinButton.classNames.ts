@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles, IStyle } from '../../Styling';
-import { ISpinButtonStyles } from './SpinButton.Props';
+import { ISpinButtonStyles } from './SpinButton.types';
 import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
 
@@ -31,6 +31,7 @@ export const getClassNames = memoizeFunction((
     ),
     icon: mergeStyles(
       styles.icon,
+      disabled && styles.iconDisabled
     ),
     label: mergeStyles(
       styles.label,

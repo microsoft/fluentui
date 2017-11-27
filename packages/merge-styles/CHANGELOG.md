@@ -1,6 +1,20 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 24 Oct 2017 10:21:08 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2017 17:09:36 GMT and should not be manually modified.
+
+## 5.6.0
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Minor changes
+
+- Adding the ability to append style content rather than inject using insertRule, for special cases.
+
+## 5.5.1
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Patches
+
+- When selectors use previously registered class names as values, they are now correctly auto expanded.
 
 ## 5.5.0
 Tue, 24 Oct 2017 10:21:08 GMT

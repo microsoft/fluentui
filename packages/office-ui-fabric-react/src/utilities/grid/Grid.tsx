@@ -5,7 +5,7 @@ import {
   toMatrix
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IGridProps } from './Grid.Props';
+import { IGridProps } from './Grid.types';
 
 export class Grid extends BaseComponent<IGridProps, {}> {
 
@@ -28,46 +28,51 @@ export class Grid extends BaseComponent<IGridProps, {}> {
     // Array to store the cells in the correct row index
     let rowsOfItems: any[][] = toMatrix(items, columnCount);
 
+    let content = (
+      <table
+        id={ this._id }
+        role={ 'grid' }
+        aria-posinset={ positionInSet }
+        aria-setsize={ setSize }
+        style={ { padding: '2px', outline: 'none' } }
+      >
+        <tbody>
+          {
+            rowsOfItems.map((rows: any[], rowIndex) => {
+              return (
+                <tr
+                  role={ 'row' }
+                  key={ this._id + '-' + rowIndex + '-row' }
+                >
+                  { rows.map((cell, cellIndex) => {
+                    return (
+                      <td
+                        role={ 'presentation' }
+                        key={ this._id + '-' + cellIndex + '-cell' }
+                        style={ { padding: '0px' } }
+                      >
+                        { onRenderItem(cell, cellIndex) }
+                      </td>
+                    );
+                  }) }
+                </tr>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    );
+
     // Create the table/grid
     return (
-      <FocusZone
-        isCircularNavigation={ this.props.shouldFocusCircularNavigate }
-        className={ this.props.containerClassName }
-        onBlur={ this.props.onBlur }
-      >
-        <table
-          id={ this._id }
-          role={ 'grid' }
-          aria-posinset={ positionInSet }
-          aria-setsize={ setSize }
-          style={ { padding: '2px', outline: 'none' } }
+      this.props.doNotContainWithinFocusZone ? content : (
+        <FocusZone
+          isCircularNavigation={ this.props.shouldFocusCircularNavigate }
+          className={ this.props.containerClassName }
+          onBlur={ this.props.onBlur }
         >
-          <tbody>
-            {
-              rowsOfItems.map((rows: any[], rowIndex) => {
-                return (
-                  <tr
-                    role={ 'row' }
-                    key={ this._id + '-' + rowIndex + '-row' }
-                  >
-                    { rows.map((cell, cellIndex) => {
-                      return (
-                        <td
-                          role={ 'presentation' }
-                          key={ this._id + '-' + cellIndex + '-cell' }
-                          style={ { padding: '0px' } }
-                        >
-                          { onRenderItem(cell, cellIndex) }
-                        </td>
-                      );
-                    }) }
-                  </tr>
-                );
-              })
-            }
-          </tbody>
-        </table>
-      </FocusZone>
-    );
+          { content }
+        </FocusZone>
+      ));
   }
 }

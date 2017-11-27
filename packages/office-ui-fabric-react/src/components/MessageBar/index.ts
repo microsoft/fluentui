@@ -1,2 +1,2 @@
 export * from './MessageBar';
-export * from './MessageBar.Props';
+export * from './MessageBar.types';

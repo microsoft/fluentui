@@ -14,27 +14,41 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaInitialsColor,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
 import {
   PERSONA_INITIALS_COLOR,
   PERSONA_SIZE
 } from './PersonaConsts';
+import {
+  Icon
+} from '../../Icon';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS = {
+  [PersonaSize.tiny]: 20,
   [PersonaSize.extraExtraSmall]: 24,
-  [PersonaSize.size28]: 28,
-  [PersonaSize.tiny]: 30,
-  [PersonaSize.extraSmall]: 32,
+  [PersonaSize.extraSmall]: 28,
   [PersonaSize.small]: 40,
   [PersonaSize.regular]: 48,
   [PersonaSize.large]: 72,
-  [PersonaSize.extraLarge]: 100
+  [PersonaSize.extraLarge]: 100,
+
+  [PersonaSize.size24]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.size10]: 20,
+  [PersonaSize.size32]: 32,
+  [PersonaSize.size40]: 40,
+  [PersonaSize.size48]: 48,
+  [PersonaSize.size72]: 72,
+  [PersonaSize.size100]: 100
 };
 
 /**
- * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+ * These colors are considered reserved colors and can only be set with overrides:
+ * - Red is a color that often has a special meaning.
+ * - Transparent is not intended to be used with typical initials due to accessibility issues,
+ *   its primary use is for Facepile overflow buttons.
  */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightGreen,
@@ -63,7 +77,7 @@ export interface IPersonaState {
 export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
-    size: PersonaSize.regular,
+    size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: ''
   };
@@ -101,7 +115,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         { ...divProps }
         className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
       >
-        { size !== PersonaSize.tiny && (
+        { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
           <div
             { ...coinProps }
             className={ css('ms-Persona-imageArea', styles.imageArea) }
@@ -137,7 +151,17 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
             />
             <PersonaPresence { ...this.props } />
           </div>
-        ) }
+        ) :
+          (this.props.presence ?
+            <PersonaPresence
+              { ...this.props }
+            /> :
+            <Icon
+              iconName='Contact'
+              className={ styles.size10NoPresenceIcon }
+            />
+          )
+        }
         { this.props.children }
       </div>
     );
@@ -174,7 +198,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     imageInitials = imageInitials || getInitials(primaryText, isRTL);
 
     return (
-      <span>{ imageInitials }</span>
+      imageInitials !== '' ?
+        <span>{ imageInitials }</span> :
+        <Icon iconName='Contact' />
     );
   }
 

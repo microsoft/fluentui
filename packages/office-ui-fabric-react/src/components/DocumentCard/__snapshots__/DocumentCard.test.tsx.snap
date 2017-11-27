@@ -29,9 +29,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         className="ms-DocumentCardActivity-avatar"
       >
         <div
-          className="ms-Persona-coin ms-Persona--xs undefined"
+          className="ms-Persona-coin ms-Persona--size32 undefined"
           role="persentation"
-          size={2}
+          size={11}
         >
           <div
             className="ms-Persona-imageArea"
@@ -42,9 +42,17 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               className="ms-Persona-initials ms-Persona-initials--blue undefined"
               style={undefined}
             >
-              <span>
-                
-              </span>
+              <i
+                aria-hidden={true}
+                aria-label={undefined}
+                className=
+                    ms-Icon
+                    {
+                      display: inline-block;
+                    }
+                data-icon-name="Contact"
+                role="presentation"
+              />
             </div>
             <div
               className="ms-Image ms-Persona-image"

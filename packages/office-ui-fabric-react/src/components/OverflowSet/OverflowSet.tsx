@@ -4,7 +4,8 @@ import {
   autobind,
   BaseComponent
 } from '../../Utilities';
-import { IOverflowSet, IOverflowSetProps } from './OverflowSet.Props';
+import { mergeStyles } from '../../Styling';
+import { IOverflowSet, IOverflowSetProps } from './OverflowSet.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';
@@ -21,6 +22,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       onRenderOverflowButton,
       className,
       focusZoneProps,
+      vertical = false,
       role = 'menubar'
     } = this.props;
 
@@ -28,12 +30,17 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
       <FocusZone
         { ...focusZoneProps }
         componentRef={ this._resolveRef('_focusZone') }
-        className={ css('ms-OverflowSet', styles.root, className) }
-        direction={ FocusZoneDirection.horizontal }
+        className={ mergeStyles(
+          'ms-OverflowSet',
+          styles.root,
+          vertical && styles.rootVertical,
+          className
+        ) }
+        direction={ vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal }
         role={ role }
       >
         { items && this._onRenderItems(items) }
-        { overflowItems && overflowItems.length > 0 && onRenderOverflowButton(overflowItems) }
+        { overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems) }
       </FocusZone>
     );
   }
@@ -57,6 +64,16 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
         </div>
       );
     });
+  }
+
+  @autobind
+  private _onRenderOverflowButtonWrapper(items: any[]): JSX.Element {
+    let wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
+    return (
+      <div {...wrapperDivProps}>
+        { this.props.onRenderOverflowButton(items) }
+      </div>
+    );
   }
 
 }

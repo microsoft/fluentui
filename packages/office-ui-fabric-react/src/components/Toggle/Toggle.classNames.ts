@@ -2,9 +2,10 @@ import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,
   mergeStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../Styling';
-import { IToggleStyles } from './Toggle.Props';
+import { IToggleStyles } from './Toggle.types';
 
 export interface IToggleClassNames {
   root?: string;
@@ -14,8 +15,6 @@ export interface IToggleClassNames {
   thumb?: string;
   text?: string;
 }
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getClassNames = memoizeFunction((
   theme: ITheme,
@@ -59,7 +58,7 @@ export const getClassNames = memoizeFunction((
       disabled && {
         color: textDisabledColor,
         selectors: {
-          [MS_HIGHCONTRAST_ACTIVE]: {
+          [HighContrastSelector]: {
             color: 'GrayText'
           },
         }
@@ -109,7 +108,7 @@ export const getClassNames = memoizeFunction((
         checked && [
           {
             background: pillCheckedBackground,
-            borderColor: 'transparent',
+            borderColor: 'transparent'
           },
           styles.pillChecked,
           {
@@ -123,7 +122,10 @@ export const getClassNames = memoizeFunction((
               ],
               ':hover .ms-Toggle-thumb': [
                 styles.thumbCheckedHovered
-              ]
+              ],
+              [HighContrastSelector]: {
+                backgroundColor: 'WindowText'
+              }
             }
           }
         ]
@@ -155,12 +157,12 @@ export const getClassNames = memoizeFunction((
         height: '.5em',
         borderRadius: '.5em',
         position: 'absolute',
-        top: '.2em',
+        top: '.18em',
         transition: 'all 0.1s ease',
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
-        borderWidth: '.27em',
+        borderWidth: '.28em',
         borderStyle: 'solid',
         boxSizing: 'border-box',
         left: '.2em'
@@ -169,9 +171,15 @@ export const getClassNames = memoizeFunction((
       !disabled && checked && [
         {
           backgroundColor: thumbCheckedBackground,
-          left: '1.4em'
+          left: '1.4em',
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Window',
+              borderColor: 'Window'
+            }
+          }
         },
-        styles.thumbChecked
+        styles.thumbChecked,
       ],
       disabled && [
         !checked && [
@@ -208,7 +216,7 @@ export const getClassNames = memoizeFunction((
           '&&': {
             color: textDisabledColor,
             selectors: {
-              [MS_HIGHCONTRAST_ACTIVE]: {
+              [HighContrastSelector]: {
                 color: 'GrayText'
               },
             }

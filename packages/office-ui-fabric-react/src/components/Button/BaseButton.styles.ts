@@ -1,4 +1,4 @@
-import { IButtonStyles } from './Button.Props';
+import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,
@@ -18,7 +18,8 @@ const iconStyle = {
   height: '16px',
   lineHeight: '16px',
   textAlign: 'center',
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  flexShrink: 0
 };
 
 /**

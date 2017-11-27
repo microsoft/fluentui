@@ -78,7 +78,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-weight: normal;
   position: absolute;
   top: 0;
-  left: 0;
+  @include ms-left(0);
   box-sizing: border-box;
   transition-property: border-color;
   transition-duration: $ms-choiceField-transition-duration;
@@ -213,6 +213,11 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
       .innerField {
         opacity: 0.25;
+
+        @include high-contrast {
+          color: GrayText;
+          opacity: 1;
+        }
       }
     }
 
@@ -333,7 +338,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   &.choiceFieldIsImage .choiceFieldWrapper,
   &.choiceFieldIsIcon .choiceFieldWrapper {
-    @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
+    @include focus-border(1px, $ms-color-neutralPrimary, 2px, false);
 
     @include high-contrast {
       @include focus-border(1px, WindowText, 2px, false);

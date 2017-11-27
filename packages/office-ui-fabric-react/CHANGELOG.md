@@ -1,6 +1,199 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 30 Oct 2017 10:23:09 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+
+## 5.25.0
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Minor changes
+
+- Button: new prop splitButtonAriaLabel.
+
+### Patches
+
+- Combo box only updates the pending values in arrow keypresses, whether  its menu is open or  closed
+- ContextualMenu: Updated expanded menu item style to match toolkit.
+- ContextualMenu: Add a prop for setting the min width to be equal to the width of the target
+- Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot
+- Toggle: Split out a new example for on and offAriaLabels to clarify the experince.
+- Change the combobox alignment to be the same as the design of dropdown
+
+## 5.24.2
+Wed, 22 Nov 2017 11:12:40 GMT
+
+### Patches
+
+- Add small headline with margin and wide callout with image on the left side
+
+## 5.24.1
+Tue, 21 Nov 2017 11:21:39 GMT
+
+### Patches
+
+- ColorCells: Adding gray border to white color cells
+- Prevent default while handling up/down arrow keys on a contextual menu
+- TextField example: match the max width for TextFields.
+
+## 5.24.0
+Mon, 20 Nov 2017 11:12:47 GMT
+
+### Minor changes
+
+- calendar component ux changes plus exposing sixweeksbydefault
+
+### Patches
+
+- Persona: Changed size40 primaryText font size back 14px.
+- DetailsList: preserve focus only if active element leaves the list
+- Edit HoverCardPage, OverflowSetPage, ScrollablePanePage, TeachingBubblePage to use IComponentDemoPageProps
+
+## 5.23.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- add suffix to TextField
+- Nav: Added `onLinkExpandClick` callback for getting a callback when an item expanded state is toggled
+- PersonaCoin: For non-latin characters, if initials return an empty string, use the Contact icon instead of the empty string.
+- Rating control implementation using button, Half star support and ReadOnly rating control support
+
+### Patches
+
+- DetailsList: mouse click gives preference to inner links.
+- DetailsHeader: Accessibility fix, move aria-haspopup to correct element
+- SplitButton: Add splitFullActiveState to make the whole splitButton look active if true
+- ScrollablePane: Fix sortStickies function to sort elements by their true offsetTop in respect to scrollablePane's root
+- Fixing high contrast bugs
+
+## 5.22.0
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Minor changes
+
+- Dropdown: Update dropdown interface to allow open dropdown after focus and remove extra focus border for dropdown option.
+
+### Patches
+
+- Checkbox: Add getClassNames prop to allow complete customization of the component
+- SplitButton: Avoid applying selector rest changes when in toggle state
+- Toggle: Add label as fall back ariaLabel.
+
+## 5.21.2
+Wed, 15 Nov 2017 11:11:59 GMT
+
+### Patches
+
+- SplitButton: Disable visual changes in splitButtonContainer when control is disabled
+
+## 5.21.1
+Tue, 14 Nov 2017 11:21:27 GMT
+
+### Patches
+
+- ChoiceGroup: Fixed RTL support.
+
+## 5.21.0
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Minor changes
+
+- Allow optional minimum and maximum date boundaries on DatePicker component
+- Added className to IDetailsRowProps for the root element.
+- Have VirtualizedCombobox implement IComboBox interface
+- Add focusInput method in BasePicker to allow set focus to input element directly.
+
+### Patches
+
+- Expose prop to apply rootExpanded on Primary Button if isSplit is true
+- TextField: Moved required asterisk to be outside of fieldGroup when no label is present. No longer a need for special styles when icons are present.
+- TextField: Updated field width for all examples to be more legible. Replaced ms- with docs- prefix for example scss.
+
+## 5.20.3
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Selection: calling `setItems` with new items will now invalidate the internal selection array.
+- Persona: DirectionalHint for Tooltip location, polished example spacing and documentation on PersonaPage.
+- Preserve focus in DetailsList when items change
+
+## 5.20.2
+Tue, 07 Nov 2017 11:22:30 GMT
+
+### Patches
+
+- Checkbox: Expose icon props for the check mark
+- added aira0expanded property to contextMenu item so that narrator will announce expand/collapse state of a menu item if it has submenu items.
+
+## 5.20.1
+Mon, 06 Nov 2017 18:44:43 GMT
+
+### Patches
+
+- Fixing Icon amd import.
+
+## 5.20.0
+Sun, 05 Nov 2017 23:27:32 GMT
+
+### Minor changes
+
+- Allow optional minimum and maximum date boundaries on Calendar component. 
+
+### Patches
+
+- Persona: respecting the deprecated PersonaSize enum values to avoid breaking changes.
+- Persona: Renamed Persona size12 to Persona size10. Polished style to reflect the toolkit.
+
+## 5.19.1
+Fri, 03 Nov 2017 15:06:54 GMT
+
+### Patches
+
+- HoverCard: fixing an import to be AMD compliant.
+
+## 5.19.0
+Fri, 03 Nov 2017 14:09:56 GMT
+
+### Minor changes
+
+- OverflowSet: Support vertical orientation
+
+### Patches
+
+- SpinButton: Allow for styling of the icon when the component is disabled
+
+## 5.18.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Adding ES2015 Module Support
+- BaseButton: onMenuClick to support other actions for menu and split buttons
+- add accessibility behavior of hover card
+- CommandBar: iconOnly items prop
+- Add 'today' to DatePicker properties and forward it to the Calendar.
+- Grid: Add prop to for FocusZone presence
+- Slider: added `ariaValueText` property for better screen-reader support.
+
+### Patches
+
+- Changed es2015 module output to target es5 so that TypeScript downcompiles the code.
+- Dropdown: Updated caret dropdown colors.
+- Button: Added flexShrink: 0 to icons in button so long text won't make them shrink
+- Fixed contextual menu state colors.
+- Facepile style debugging, includes new FacepileButton
+- Menus: Update so they have one notion of focus (from both hover and keyboard)
+- Split Button in Menu: add vertical divider component and hook to customize splitbutton in menu div classname
+- Persona: Changed PersonaSize names from descriptive to numerical. 
+- TextField/DatePicker: The required astrisk is now more correctly positioned.
+
+## 5.17.1
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Button: Pass specified onDismiss callback to contextual menu
+- ContextualMenu: Support suppressing dismiss on ItemClick via preventDefault
 
 ## 5.17.0
 Mon, 30 Oct 2017 10:23:09 GMT
@@ -1692,7 +1885,7 @@ Fri, 21 Apr 2017 06:23:54 GMT
 ## 2.20.2
 Wed, 19 Apr 2017 16:54:26 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 2.20.1
 Wed, 19 Apr 2017 15:36:48 GMT

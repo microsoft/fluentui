@@ -53,17 +53,23 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/tileslist'
         },
         {
+          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
+          url: '#/examples/floatingpeoplepicker'
+        },
+        {
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'PeopleItemList',
+          name: 'PeopleItemList',
+          url: '#/examples/peopleitemlist'
+        },
+        {
           component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
           key: 'ExtendedPeoplePicker',
           name: 'ExtendedPeoplePicker',
           url: '#/examples/extendedpeoplepicker'
         },
-        {
-          component: require<any>('../components/ExtendedPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
-          key: 'FloatingPeoplePicker',
-          name: 'FloatingPeoplePicker',
-          url: '#/examples/floatingpeoplepicker'
-        }
       ]
     }
   ],

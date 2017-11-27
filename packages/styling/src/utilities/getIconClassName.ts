@@ -3,6 +3,10 @@ import {
 } from '@uifabric/merge-styles/lib/index';
 import { getIcon } from './icons';
 
+const defaultIconStyles = {
+  display: 'inline-block'
+};
+
 /**
  * Gets an icon classname. You should be able to add this classname to an I tag with no
  * additional classnames, and render the icon.
@@ -16,6 +20,7 @@ export function getIconClassName(name: string): string {
   if (icon) {
     className = mergeStyles(
       icon.subset.className,
+      defaultIconStyles,
       {
         selectors: {
           '::before': {
