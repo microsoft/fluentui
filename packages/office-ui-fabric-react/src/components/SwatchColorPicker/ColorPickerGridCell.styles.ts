@@ -57,7 +57,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         selectors: {
           '$svg': {
             padding: 0,
-            border: '1px solid #D2D2D2',
+            border: '1px solid',
+            borderColor: theme.palette.neutralTertiary,
             margin: 4,
           },
         }
@@ -81,10 +82,10 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             borderColor: theme.palette.neutralTertiaryAlt
           },
           ':active $svg':
-          {
-            boxShadow: '0 0 0 1px #969696',
-            borderColor: ACTIVE_BORDER_COLOR,
-          },
+            {
+              boxShadow: '0 0 0 1px #969696',
+              borderColor: ACTIVE_BORDER_COLOR,
+            },
         },
       },
       selected && isWhite && {
