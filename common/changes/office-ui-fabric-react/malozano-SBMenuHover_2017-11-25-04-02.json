@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Prevent default while handling up/down arrow keys on a contextual menu",
+      "comment": "ContextualMenu: Add ability to open splitButton chevron menu, when they are inside menus",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com"
+  "email": "malozano@microsoft.com"
 }
