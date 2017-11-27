@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Nov 2017 22:13:20 GMT and should not be manually modified.
+
+## 5.26.0
+Mon, 27 Nov 2017 22:13:20 GMT
+
+### Minor changes
+
+- DetailsList: Resizing columns in justified mode doesn't affect columns on the left.
+
+### Patches
+
+- ContextualMenu: Add ability to open splitButton chevron menu, when they are inside menus
 
 ## 5.25.0
 Thu, 23 Nov 2017 11:10:13 GMT
