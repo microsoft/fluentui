@@ -15,7 +15,9 @@ import {
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { classNamesFunction, IClassNames, mergeStyleSets, Stylesheet, InjectionMode } from '../../Styling';
+import { mergeStyleSets } from '../../Styling';
+import { classNamesFunction } from '../../Utilities';
+
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
 }

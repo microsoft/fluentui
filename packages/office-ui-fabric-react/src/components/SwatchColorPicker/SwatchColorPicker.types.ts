@@ -1,4 +1,5 @@
-import { IStyle, ITheme, IStyleFunction } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 export interface ISwatchColorPicker { }
 

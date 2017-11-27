@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   IStyleFunction,
   styled
-} from '../../Styling';
+} from '../../Utilities';
 import { ColorPickerGridCellBase } from './ColorPickerGridCell.base';
 import { IColorPickerGridCellProps } from './ColorPickerGridCell.types';
 import { getStyles } from './ColorPickerGridCell.styles';

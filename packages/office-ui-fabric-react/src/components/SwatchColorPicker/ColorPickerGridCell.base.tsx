@@ -14,7 +14,8 @@ import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
 import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
-import { classNamesFunction, IClassNames, mergeStyleSets, ITheme } from '../../Styling';
+import { mergeStyleSets, ITheme } from '../../Styling';
+import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
