@@ -13,6 +13,7 @@ function getSvgSelectorStyles(borderColor: string): IRawStyle {
     height: 12,
     border: '4px solid',
     borderColor: borderColor,
+    boxShadow: '0 0 0 1px #969696',
     padding: 4,
     margin: 0
   };
@@ -79,13 +80,14 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           },
           ':hover $svg': { boxShadow: '0 0 0 1px #969696' },
           ':focus $svg': {
-            borderColor: theme.palette.neutralTertiaryAlt
+            borderColor: theme.palette.neutralTertiaryAlt,
+            boxShadow: '0 0 0 1px #969696',
           },
           ':active $svg':
-            {
-              boxShadow: '0 0 0 1px #969696',
-              borderColor: ACTIVE_BORDER_COLOR,
-            },
+          {
+            boxShadow: '0 0 0 1px #969696',
+            borderColor: ACTIVE_BORDER_COLOR,
+          },
         },
       },
       selected && isWhite && {
