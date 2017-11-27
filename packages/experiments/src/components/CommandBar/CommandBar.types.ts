@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem, IMenuItemStyles } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar.base';
@@ -41,9 +41,15 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   elipisisAriaLabel?: string;
 
   /**
-  * Text to be read by screen readers if there are overflow items and focus is on elipsis button
+  * Icon props to be passed to overflow elipsis
   */
   elipisisIconProps?: IIconProps;
+
+  /**
+  * If endAligned, all icons will be aligned to the far side of the commandbar, and overflow items
+  * will be taking from the starting side
+  */
+  endAligned?: boolean;
 
   /**
   * Call to provide customized styling that will layer on top of the variant rules
@@ -95,7 +101,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Custom styles for individual button
    */
-  styles?: IButtonStyles;
+  buttonStyles?: IButtonStyles;
 
   /**
    * A custom cache key to be used for this item. If cacheKey is changed, the cache will invalidate. Defaults to key value;
@@ -113,6 +119,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
 export interface ICommandBarStyleProps {
   theme: ITheme;
   className?: string;
+  endAligned?: boolean;
 }
 
 export interface ICommandBarStyles {

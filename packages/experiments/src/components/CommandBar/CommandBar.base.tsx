@@ -69,6 +69,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   public render(): JSX.Element {
     const {
       className,
+      endAligned,
       items,
       overflowItems,
       farItems,
@@ -90,7 +91,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: '',
     };
 
-    this._classNames = getClassNames(getStyles!, { theme: theme!, className });
+    this._classNames = getClassNames(getStyles!, { theme: theme!, className, endAligned });
 
     return (
       <ResizeGroup
@@ -157,14 +158,17 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
+    const { endAligned } = this.props;
     let { primaryItems, overflowItems, cacheKey, farItems } = data;
-    let movedItem = primaryItems[primaryItems.length - 1];
+
+    // Use first item if endAligned, otherwise use last item
+    let movedItem = primaryItems[endAligned ? 0 : primaryItems.length - 1];
 
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
 
       overflowItems = [movedItem, ...overflowItems];
-      primaryItems = primaryItems.slice(0, -1);
+      primaryItems = endAligned ? primaryItems.slice(1) : primaryItems.slice(0, -1);
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
@@ -175,15 +179,17 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
+    const { endAligned } = this.props;
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
-    let movedItem = overflowItems[0];
+    const movedItem = overflowItems[0];
 
     // Make sure that moved item exists and is not one of the original overflow items
     if (movedItem !== undefined && overflowItems.length > minimumOverflowItems) {
       movedItem.renderedInOverflow = false;
 
       overflowItems = overflowItems.slice(1);
-      primaryItems = [...primaryItems, movedItem];
+      // if endAligned, movedItem goes first, otherwise, last.
+      primaryItems = endAligned ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
@@ -203,7 +209,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
-      styles: { root: { height: '100%' }, ...item.styles, ...buttonStyles },
+      styles: { root: { height: '100%' }, ...item.buttonStyles, ...buttonStyles },
       className: css(item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,
