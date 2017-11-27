@@ -108,6 +108,16 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           onRenderLowerContent={ this.lowerContentFocus }
         />
 
+        <ComboBox
+          defaultSelectedKey='C'
+          label='TEST 4: New Test'
+          id='Basicdrop14'
+          ariaLabel='Basic ComboBox example'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          onRenderLowerContent={ this.lowerContentBasicTest }
+        />
+
         <hr style={ { marginBottom: '100px' } } />
 
         {/* FOR TEST ONLY END  */ }
@@ -281,6 +291,28 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
   private setComponentRefButtonFocus = (component: IButton): void => {
     this.IButtonRefFocus = component;
+  }
+
+  private lowerContentBasicTest = () => {
+    return (
+      <div aria-labelledby='customTime' role='listbox'>
+        <DefaultButton
+          id="Basicdrop14-list13"
+          data-index="13"
+          className={ 'customButton' }
+          data-automation-id='customButton'
+          aria-label='Custom'
+          role='option'
+          // tslint:disable:jsx-no-lambda
+          onClick={ () => console.log('onClick called') }
+          // tslint:disable:jsx-no-lambda
+          aria-selected={ this.selectLowerContent }
+          checked={ this.selectLowerContent }
+          text='Custom'
+          tab-index="0"
+        />
+      </div>
+    );
   }
 
   private lowerContentBasic = () => {
