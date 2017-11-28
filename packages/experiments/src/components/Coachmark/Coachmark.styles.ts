@@ -8,7 +8,7 @@ export interface ICoachmarkStyleProps {
   /**
    * Is the Coachmark collapsed
    */
-  isCollapsed: boolean;
+  collapsed: boolean;
 
   /**
    * Is the beacon currently animating.
@@ -67,14 +67,14 @@ export interface ICoachmarkStyles {
   /**
    * The inner layer that components will be hosted in
    * and primary purpose is scaling the layer down while the
-   * Coachmark isCollapsed.
+   * Coachmark collapsed.
    */
   entityInnerHost: string;
 
   /**
    * The styles applied when the coachmark has collapsed.
    */
-  isCollapsed?: IStyle;
+  collapsed?: IStyle;
 };
 
 // @TODO remove this extra block once the updates to mergeStyles reach master
@@ -114,14 +114,14 @@ export interface ICoachmarkStylesNames {
   /**
    * The inner layer that components will be hosted in
    * and primary purpose is scaling the layer down while the
-   * Coachmark isCollapsed.
+   * Coachmark collapsed.
    */
   entityInnerHost: string;
 
   /**
    * The styles applied when the coachmark has collapsed.
    */
-  isCollapsed: string;
+  collapsed: string;
 };
 
 export const coachmarkCollapsedSize = '36px';
@@ -320,7 +320,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         borderStyle: 'solid',
         opacity: '0'
       },
-      (props.isCollapsed && props.isBeaconAnimating) && {
+      (props.collapsed && props.isBeaconAnimating) && {
         animationName: ContinuousPulse,
         animationIterationCount: '1',
         animationDuration: '14s',
@@ -334,7 +334,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         width: '100%',
         height: '100%'
       },
-      props.isCollapsed && {
+      props.collapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -344,7 +344,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         animationName: translateOne,
         transition: 'opacity 0.5s ease-in-out'
       },
-      (!props.isCollapsed) && {
+      (!props.collapsed) && {
         opacity: '1'
       }
     ],
@@ -354,7 +354,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         width: '100%',
         height: '100%'
       },
-      props.isCollapsed && {
+      props.collapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -370,7 +370,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         width: '100%',
         height: '100%'
       },
-      props.isCollapsed && {
+      props.collapsed && {
         animationDuration: '14s',
         animationTimingFunction: 'linear',
         animationDirection: 'normal',
@@ -397,7 +397,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         height: coachmarkCollapsedSize,
         visibility: 'visible'
       },
-      !props.isCollapsed && {
+      !props.collapsed && {
         borderRadius: '1px',
         opacity: '1',
         width: props.entityHostWidth,
@@ -410,7 +410,7 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         transformOrigin: 'top left',
         transform: 'scale(0)'
       },
-      (!props.isCollapsed) && {
+      (!props.collapsed) && {
         transform: 'scale(1)'
       },
       (!props.isMeasuring) && {

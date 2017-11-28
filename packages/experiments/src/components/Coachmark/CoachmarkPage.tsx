@@ -25,7 +25,7 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/coachmark/Coachmark.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/coachmark/Coachmark.types.ts')
             ] }
           />
         }

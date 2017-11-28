@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { Coachmark } from './Coachmark';
-import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.Styles';
+import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from '../PositioningContainer/PositioningContainer.types';
-import {
-  IPoint
-} from '../../Utilities';
-export type IStyleFunction<TStylesProps, TStyles> = (props: TStylesProps) => Partial<TStyles>;
+import { IPoint, IStyleFunction } from '../../Utilities';
 
 export interface ICoachmark {
 }
@@ -26,18 +23,20 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  positioningTarget?: HTMLElement | string | MouseEvent | IPoint | null;
+  target?: HTMLElement | string | MouseEvent | IPoint | null;
 
   positioningContainerProps?: IPositioningContainerTypes;
 
   /**
    * Is the Coachmark expanded
+   * @default true
    */
-  isCollapsed?: boolean;
+  collapsed?: boolean;
 
-  /*
+  /**
    * The distance in pixels the mouse is located
    * before opening up the coachmark.
+   * @default 100
    */
   mouseProximityOffset?: number;
 

@@ -41,7 +41,7 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
         </div>
         { isVisible && (
           <Coachmark
-            positioningTarget={ '.ms-Coachmark-basicExampleButton' }
+            target={ '.ms-Coachmark-basicExampleButton' }
           >
             <TeachingBubbleContent
               headline='Example Title'

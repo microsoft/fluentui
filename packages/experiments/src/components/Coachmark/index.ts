@@ -1,2 +1,2 @@
 export * from './Coachmark';
-export * from './Coachmark.Props';
+export * from './Coachmark.types';

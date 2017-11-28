@@ -7,7 +7,7 @@ import { PositioningContainer } from '../PositioningContainer/PositioningContain
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
-import { getStyles } from './Coachmark.Styles';
+import { getStyles } from './Coachmark.styles';
 
 /**
  * An interface for the cached dimensions of entity inner host.
@@ -22,7 +22,7 @@ export interface ICoachmarkState {
    * Is the Coachmark currently collapsed into
    * a tear drop shape
    */
-  isCollapsed: boolean;
+  collapsed: boolean;
 
   /**
    * Enables/Disables the beacon that radiates
@@ -57,7 +57,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   private _translateAnimationContainer: HTMLElement;
 
   public static defaultProps: Partial<ICoachmarkTypes> = {
-    isCollapsed: true,
+    collapsed: true,
     mouseProximityOffset: 100
   };
 
@@ -66,7 +66,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     // Set defaults for state
     this.state = {
-      isCollapsed: props.isCollapsed!,
+      collapsed: props.collapsed!,
       isBeaconAnimating: true,
       isMeasuring: true,
       entityInnerHostRect: {
@@ -84,7 +84,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     // Retrieve classnames
     const classNames = getStyles({
-      isCollapsed: this.state.isCollapsed,
+      collapsed: this.state.collapsed,
       isBeaconAnimating: this.state.isBeaconAnimating,
       isMeasuring: this.state.isMeasuring,
       entityHostHeight: this.state.entityInnerHostRect.height + 'px',
@@ -93,7 +93,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     return (
       <PositioningContainer
-        target={ this.props.positioningTarget }>
+        target={ this.props.target }>
         <div
           className={ classNames.root }
         >
@@ -130,7 +130,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentWillReceiveProps(newProps: ICoachmarkTypes) {
-    if (this.props.isCollapsed && !newProps.isCollapsed) {
+    if (this.props.collapsed && !newProps.collapsed) {
       // The coachmark is about to open
       this._openCoachmark();
     }
@@ -162,7 +162,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   private _openCoachmark() {
     this.setState({
-      isCollapsed: false
+      collapsed: false
     });
 
     this._translateAnimationContainer.addEventListener('animationstart', () => {
