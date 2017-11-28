@@ -56,17 +56,15 @@ export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void)
 
 /**
  * See registerOnThemeChangeCallback().
- * Removes previously registered callbacks. True if the callback was found.
+ * Removes previously registered callbacks.
  */
-export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): boolean {
+export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
   const i = _onThemeChangeCallbacks.indexOf(callback);
   if (i === -1) {
-    return false;
+    return;
   }
 
   _onThemeChangeCallbacks.splice(i, 1);
-
-  return true;
 }
 
 /**
