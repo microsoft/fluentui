@@ -186,7 +186,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               [styles.overFlowYHidden]: !!finalHeight
             }) }
             onDismiss={ this.dismiss }
-            onScroll={ onScroll ? onScroll : undefined }
+            onScroll={ onScroll }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
           >
