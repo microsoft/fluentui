@@ -2,6 +2,7 @@
 
 exports[`Link renders Link correctly 1`] = `
 <a
+  aria-disabled={undefined}
   className="ms-Link"
   href="#"
   onClick={[Function]}
