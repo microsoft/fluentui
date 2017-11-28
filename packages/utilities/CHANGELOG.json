@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.5.0",
+      "tag": "@uifabric/utilities_v5.5.0",
+      "date": "Tue, 28 Nov 2017 02:24:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "94954657769c46824f84e8aba06b326721b4a161",
+            "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "@uifabric/utilities_v5.4.0",
       "date": "Mon, 13 Nov 2017 11:20:56 GMT",

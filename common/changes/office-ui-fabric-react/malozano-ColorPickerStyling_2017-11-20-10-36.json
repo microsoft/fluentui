@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add suffix to TextField",
+      "comment": "SwatchColorPicker: Change scss to js styling",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "scott.balentine@microsoft.com"
+  "email": "malozano@microsoft.com"
 }

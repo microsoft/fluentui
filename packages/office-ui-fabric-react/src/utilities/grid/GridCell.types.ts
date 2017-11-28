@@ -1,3 +1,6 @@
+import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
+import { ITheme } from '../../Styling';
+
 export interface IGridCellProps<T> {
 
   /**
@@ -71,4 +74,19 @@ export interface IGridCellProps<T> {
  * tooltip if is this item is normal
  */
   label?: string;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  */
+  getClassNames?: (theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined) => IButtonClassNames;
 }

@@ -117,6 +117,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuIconProps?: IIconProps;
 
   /**
+   * Accessible label for the dropdown chevron button if this button is split.
+   */
+  splitButtonAriaLabel?: string;
+
+  /**
    * Optional callback when menu is clicked.
    */
   onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
