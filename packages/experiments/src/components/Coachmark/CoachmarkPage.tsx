@@ -46,6 +46,7 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
             <ul>
               <li>Only one coachmark + callout combo will be displayed at a time</li>
               <li>Coachmarks can be stand alone or sequential. Sequential coachmarks should be used sparingly, to walk through complex multi-step interactions. It is recommended that a sequence of coachmakrs does not exceed 3 steps.</li>
+              <li>Coachmarks are designed to only hold Callouts.</li>
             </ul>
           </div>
         }
