@@ -103,6 +103,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -117,6 +118,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -131,6 +133,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -145,6 +148,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -280,6 +284,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -294,6 +299,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -308,6 +314,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -322,6 +329,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -457,6 +465,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -471,6 +480,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -485,6 +495,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -499,6 +510,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -634,6 +646,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -648,6 +661,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -662,6 +676,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -676,6 +691,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -815,6 +831,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -829,6 +846,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -843,6 +861,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -857,6 +876,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -992,6 +1012,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1006,6 +1027,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1020,6 +1042,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1034,6 +1057,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1169,6 +1193,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1183,6 +1208,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1197,6 +1223,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1211,6 +1238,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1346,6 +1374,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1360,6 +1389,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1374,6 +1404,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1388,6 +1419,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1527,6 +1559,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1541,6 +1574,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1555,6 +1589,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1569,6 +1604,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1704,6 +1740,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1718,6 +1755,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1732,6 +1770,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1746,6 +1785,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1881,6 +1921,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1895,6 +1936,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1909,6 +1951,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1923,6 +1966,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2058,6 +2102,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 .ms-Fabric.is-focusVisible &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2072,6 +2117,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:hover $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2086,6 +2132,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:focus $svg {
                   border-color: #dadada;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2100,6 +2147,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active $svg {
                   border-color: #969696;
                   border: 4px solid;
+                  box-shadow: 0 0 0 1px #969696;
                   height: 12px;
                   margin-bottom: 0px;
                   margin-left: 0px;
