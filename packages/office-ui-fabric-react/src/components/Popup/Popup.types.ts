@@ -4,10 +4,7 @@ import * as React from 'react';
 import { Popup } from './Popup';
 
 export interface IPopup {
-  refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  }
+
 }
 
 export interface IPopupProps extends React.HTMLAttributes<Popup> {

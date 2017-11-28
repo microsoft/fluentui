@@ -8,12 +8,12 @@ import {
   getNativeProps,
   autobind
 } from '../../Utilities';
-import { IPopupProps, IPopup } from './Popup.types';
+import { IPopupProps } from './Popup.types';
 
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export class Popup extends BaseComponent<IPopupProps, {}> implements IPopup {
+export class Popup extends BaseComponent<IPopupProps, {}> {
 
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
