@@ -8,12 +8,29 @@ exports[`CommandBar renders commands correctly 1`] = `
     className=""
   >
     <div
-      className="ms-CommandBar"
+      className=
+          ms-CommandBar
+          {
+            background-color: #f4f4f4;
+            display: flex;
+            height: 40px;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+          }
     >
       <div
         aria-describedby={undefined}
         aria-labelledby={undefined}
-        className="ms-FocusZone ms-OverflowSet"
+        className=
+            ms-FocusZone
+            ms-OverflowSet
+            {
+              align-items: stretch;
+              display: flex;
+              flex-grow: 1;
+            }
         data-focuszone-id="FocusZone1"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -44,7 +61,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 100%;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 0;
@@ -145,7 +162,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 40px;
+                  height: 100%;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 0;
@@ -226,7 +243,14 @@ exports[`CommandBar renders commands correctly 1`] = `
       <div
         aria-describedby={undefined}
         aria-labelledby={undefined}
-        className="ms-FocusZone ms-OverflowSet"
+        className=
+            ms-FocusZone
+            ms-OverflowSet
+            {
+              align-items: stretch;
+              display: flex;
+              flex-shrink: 0;
+            }
         data-focuszone-id="FocusZone8"
         onFocus={[Function]}
         onKeyDown={[Function]}
