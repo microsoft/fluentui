@@ -1,10 +1,12 @@
+import { getIconName } from '@uifabric/file-type-icons/lib/IconHelper';
+
 export const items = [
   {
     key: 'newItem',
     name: 'New',
     cacheKey: 'myCacheKey',
     iconProps: {
-      iconName: 'TestIcon1',
+      iconName: getIconName('mdb', 16)
     },
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
@@ -14,7 +16,7 @@ export const items = [
           key: 'emailMessage',
           name: 'Email message',
           iconProps: {
-            iconName: 'TestIcon2',
+            iconName: getIconName('gz', 16)
           },
           ['data-automation-id']: 'newEmailButton'
         },
@@ -22,7 +24,7 @@ export const items = [
           key: 'calendarEvent',
           name: 'Calendar event',
           iconProps: {
-            iconName: 'TestIcon3'
+            iconName: getIconName('aif', 16)
           },
         }
       ],
