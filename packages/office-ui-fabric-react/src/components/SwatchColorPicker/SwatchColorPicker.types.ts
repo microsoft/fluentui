@@ -1,3 +1,6 @@
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
+import { IColorCellProps } from './ColorPickerGridCell.types';
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -82,30 +85,39 @@ export interface ISwatchColorPickerProps {
    * If false contain the grid inside of a FocusZone.
    */
   doNotContainWithinFocusZone?: boolean;
+
+  /**
+   * Theme to apply to the component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Optional styles for the component.
+   */
+  getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
 }
 
-export interface IColorCellProps {
+/**
+ * Properties required to build the styles for the color picker component.
+ */
+export interface ISwatchColorPickerStyleProps {
+  /**
+   * Theme to apply to the container
+   */
+  theme: ITheme;
 
   /**
-   * Arbitrary unique string associated with this option
+   * Custom className to apply to the container.
    */
-  id: string;
+  className?: string;
+}
 
+/**
+ * Styles for the Color Picker Component.
+ */
+export interface ISwatchColorPickerStyles {
   /**
-   * The label for this item.
-   * Visible text if this item is a header,
-   * tooltip if is this item is normal
+   * Style applied to the container of the swatchColorPicker
    */
-  label?: string;
-
-  /**
-   * The CSS-compatible string to describe the color
-   */
-  color?: string;
-
-  /**
-   * Index for this option
-   */
-  index?: number;
-
+  root: IStyle;
 }

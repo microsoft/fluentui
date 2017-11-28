@@ -8,6 +8,7 @@
     "bundlesize": "bundlesize --debug"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^4.2.6",
     "@microsoft/load-themed-styles": "^1.7.5",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
     "@uifabric/merge-styles": ">=5.6.0 <6.0.0",
