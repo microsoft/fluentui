@@ -54,7 +54,8 @@ export const getClassNames = memoizeFunction((
         selectors: {
           ':hover': styles.rootHovered,
           ':active': styles.rootPressed,
-          ':focus': styles.rootFocused
+          ':focus': styles.rootFocused,
+          ':hover:active': styles.rootPressed
         }
       },
       disabled && [
