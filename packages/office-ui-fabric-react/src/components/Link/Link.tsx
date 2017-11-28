@@ -31,6 +31,7 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
           onClick={ this._onClick }
           ref={ this._resolveRef('_link') }
           target={ this.props.target }
+          aria-disabled={ disabled }
         >
           { children }
         </a>
@@ -46,6 +47,7 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
             ) }
             onClick={ this._onClick }
             ref={ this._resolveRef('_link') }
+            aria-disabled={ disabled }
           >
             { children }
           </button>
