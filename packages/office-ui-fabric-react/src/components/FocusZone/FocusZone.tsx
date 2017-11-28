@@ -179,6 +179,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (element) {
       this._setActiveElement(element);
+      if (this._activeElement) {
+        this._activeElement.focus();
+      }
 
       return true;
     }
@@ -267,7 +270,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       this._activeElement.tabIndex = 0;
-      this._activeElement.focus();
     }
   }
 
@@ -348,6 +350,26 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
             break;
           }
           return;
+
+        case KeyCodes.tab:
+          if (this.props.allowTabKey) {
+            if (direction === FocusZoneDirection.vertical) {
+              if (ev.shiftKey) {
+                this._moveFocusUp();
+              } else {
+                this._moveFocusDown();
+              }
+              break;
+            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+              if (ev.shiftKey) {
+                this._moveFocusLeft();
+              } else {
+                this._moveFocusRight();
+              }
+              break;
+            }
+            return;
+          }
 
         case KeyCodes.home:
           if (

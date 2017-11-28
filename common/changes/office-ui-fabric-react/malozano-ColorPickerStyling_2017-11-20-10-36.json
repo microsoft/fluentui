@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SplitButton: Disable visual changes in splitButtonContainer when control is disabled",
-      "type": "patch"
+      "comment": "SwatchColorPicker: Change scss to js styling",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",

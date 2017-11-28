@@ -13,9 +13,9 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
-import { FloatingPeoplePicker, IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';
+import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, IExtendedPersonaProps, ISelectedPeopleProps, SelectedPeopleList }
-  from 'experiments/lib/SelectedItemsList';
+  from '../../SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
