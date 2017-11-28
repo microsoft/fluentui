@@ -3,17 +3,17 @@ import {
   getFocusStyle,
   HighContrastSelector,
 } from '../../Styling';
-
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+
 const ACTIVE_BORDER_COLOR = '#969696';
 
-function getSvgSelectorStyles(borderColor: string): IRawStyle {
+function getSvgSelectorStyles(borderColor: string, isHover: boolean): IRawStyle {
   return {
     width: 12,
     height: 12,
     border: '4px solid',
     borderColor: borderColor,
-    boxShadow: '0 0 0 1px #969696',
+    boxShadow: isHover ? 'none' : '0 0 0 1px #969696',
     padding: 4,
     margin: 0
   };
@@ -48,10 +48,10 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         selectors: {
           [HighContrastSelector]: { border: 'none' },
           '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' },
-          '.ms-Fabric.is-focusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt),
-          ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR),
+          '.ms-Fabric.is-focusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
+          ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
+          ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
+          ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR, false),
         }
       },
       isWhite && {
@@ -80,14 +80,13 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           },
           ':hover $svg': { boxShadow: '0 0 0 1px #969696' },
           ':focus $svg': {
-            borderColor: theme.palette.neutralTertiaryAlt,
             boxShadow: '0 0 0 1px #969696',
           },
           ':active $svg':
-          {
-            boxShadow: '0 0 0 1px #969696',
-            borderColor: ACTIVE_BORDER_COLOR,
-          },
+            {
+              boxShadow: '0 0 0 1px #969696',
+              borderColor: ACTIVE_BORDER_COLOR,
+            },
         },
       },
       selected && isWhite && {
