@@ -895,12 +895,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
+    const rootClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item)).root;
+
     return (
       <CommandButton
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }
-        className={ 'ms-ComboBox-option' }
+        className={ rootClassNames }
         styles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
         onClick={ this._onItemClick(item.index) }
@@ -910,6 +912,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
         ariaLabel={ item.text }
+        disabled={ item.disabled }
       > { <span ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }>
         { onRenderOption(item, this._onRenderOption) }
       </span>
@@ -1045,7 +1048,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Get the index of the option that is marked as selected
    * @param options - the comboBox options
    * @param selectedKey - the known selected key to find
-   * @returns {number} - the index of the selected option, -1 if not found
+   * @returns { number } - the index of the selected option, -1 if not found
    */
   private _getSelectedIndex(options: IComboBoxOption[] | undefined, selectedKey: string | number | undefined): number {
     if (options === undefined || selectedKey === undefined) {

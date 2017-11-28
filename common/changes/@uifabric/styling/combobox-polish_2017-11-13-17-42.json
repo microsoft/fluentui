@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "SemanticSlots: Updated inputBorderHovered color.",
+      "packageName": "@uifabric/styling",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "lynam.emily@gmail.com"
+}

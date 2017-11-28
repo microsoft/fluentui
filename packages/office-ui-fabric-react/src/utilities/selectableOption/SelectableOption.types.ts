@@ -26,6 +26,12 @@ export interface ISelectableOption {
 
   /** If option is selected. */
   selected?: boolean;
+
+  /**
+   * Whether the option is disabled
+   * @defaultvalue false
+   */
+  disabled?: boolean;
 }
 
 export enum SelectableOptionMenuItemType {

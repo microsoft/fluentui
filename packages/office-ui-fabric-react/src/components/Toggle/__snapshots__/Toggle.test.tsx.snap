@@ -78,7 +78,7 @@ exports[`Toggle renders toggle correctly 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #212121;
           }
       data-is-focusable={true}
       disabled={undefined}
@@ -91,7 +91,7 @@ exports[`Toggle renders toggle correctly 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #212121;
               border-color: transparent;
               border-radius: .5em;
               border-style: solid;

@@ -163,6 +163,12 @@ export interface IComboBoxStyles {
   rootHovered: IStyle;
 
   /**
+   * Styles for when the ComboBox is active. These styles are applied for all comboBoxes except when
+   * the comboBox is disabled.
+   */
+  rootPressed: IStyle;
+
+  /**
    * Styles for when the ComboBox is focused. These styles are applied for all comboBoxes except when
    * the comboBox is disabled.
    */
