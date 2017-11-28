@@ -137,7 +137,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   onLayerMounted?: () => void;
 
   /**
-   * Optional callback that is called once the callout has been correctly positioned.   *
+   * Optional callback that is called once the callout has been correctly positioned.
    * @param {ICalloutPositionedInfo} positions gives the user information about how the callout is positioned such as the
    * final edge of the target that it positioned against, the beak position, and the beaks relationship to the
    * edges of the callout.

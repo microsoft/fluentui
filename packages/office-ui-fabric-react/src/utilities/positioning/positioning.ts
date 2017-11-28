@@ -7,9 +7,6 @@ import {
   IRectangle
 } from '../../Utilities';
 import {
-  RectangleEdge
-} from './positioning.enums';
-import {
   IPositionDirectionalHintData,
   IPositionedData,
   IPoint,
@@ -17,7 +14,8 @@ import {
   ICalloutBeakPositionedInfo,
   IPositionProps,
   ICalloutPositon,
-  ICalloutPositionProps
+  ICalloutPositionProps,
+  RectangleEdge
 } from './positioning.types';
 
 export class Rectangle extends FullRectangle {
@@ -336,7 +334,7 @@ export module positioningFunctions {
    * @param {number} point
    * @returns {Rectangle}
    */
-  function centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number): Rectangle {
+  function _centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number): Rectangle {
     const { positiveEdge } = _getFlankingEdges(edge);
     const elementMiddle = _getCenterValue(rect, edge);
     const distanceToMiddle = elementMiddle - _getEdgeValue(rect, positiveEdge);
@@ -372,7 +370,7 @@ export module positioningFunctions {
     // if no alignment edge is provided it's supposed to be centered.
     if (!alignmentEdge) {
       const targetMiddlePoint = _getCenterValue(target, targetEdge);
-      estimatedElementPosition = centerEdgeToPoint(estimatedElementPosition, elementEdge, targetMiddlePoint);
+      estimatedElementPosition = _centerEdgeToPoint(estimatedElementPosition, elementEdge, targetMiddlePoint);
 
     } else {
       estimatedElementPosition = _alignEdges(estimatedElementPosition, target, alignmentEdge);
@@ -553,7 +551,7 @@ export module positioningFunctions {
 
     beakPositon = _moveEdge(beakPositon, (elementPosition.targetEdge * -1), -beakWidth / 2);
 
-    beakPositon = centerEdgeToPoint(beakPositon, elementPosition.targetEdge * -1,
+    beakPositon = _centerEdgeToPoint(beakPositon, elementPosition.targetEdge * -1,
       beakTargetPoint - _getRelativeRectEdgeValue(positiveEdge, elementPosition.elementRectangle));
 
     if (!_isEdgeInBounds(beakPositon, elementBounds, positiveEdge)) {
