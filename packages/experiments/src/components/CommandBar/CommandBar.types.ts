@@ -4,7 +4,8 @@ import { IContextualMenuItem, IMenuItemStyles } from 'office-ui-fabric-react/lib
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar.base';
-import { IStyle, ITheme, IStyleFunction } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ICommandBar {
   /**

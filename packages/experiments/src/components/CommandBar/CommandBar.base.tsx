@@ -19,7 +19,7 @@ import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import {
   classNamesFunction
-} from '../../Styling';
+} from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
