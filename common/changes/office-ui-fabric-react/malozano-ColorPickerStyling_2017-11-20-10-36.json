@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Resizing columns in justified mode doesn't affect columns on the left.",
+      "comment": "SwatchColorPicker: Change scss to js styling",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-panu@microsoft.com"
+  "email": "malozano@microsoft.com"
 }
