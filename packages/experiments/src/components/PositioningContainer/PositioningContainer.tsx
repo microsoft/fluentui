@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
-  IPositioningContainerProps
-} from './PositioningContainer.Props';
-import { getClassNames } from './PositioningContainer.classNames';
+  IPositioningContainerTypes
+} from './PositioningContainer.types';
+import { getClassNames } from './PositioningContainer.styles';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 
 // Utilites/Helpers
@@ -42,7 +42,7 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState> {
+export class PositioningContainer extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState> {
 
   public static defaultProps = {
     preventDismissOnScroll: false,
@@ -82,7 +82,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
-  constructor(props: IPositioningContainerProps) {
+  constructor(props: IPositioningContainerTypes) {
     super(props);
     this._didSetInitialFocus = false;
     this.state = {
@@ -105,7 +105,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerProps) {
+  public componentWillUpdate(newProps: IPositioningContainerTypes) {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -380,7 +380,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     }
   }
 
-  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IPositioningContainerTypes = this.props): HTMLElement | string | MouseEvent | IPoint | null {
     let { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }

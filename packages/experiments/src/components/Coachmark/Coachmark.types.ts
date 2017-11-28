@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.Styles';
-import { IPositioningContainerProps } from '../PositioningContainer/PositioningContainer.Props';
+import { IPositioningContainerTypes } from '../PositioningContainer/PositioningContainer.types';
 import {
   IPoint
 } from '../../Utilities';
@@ -10,7 +10,7 @@ export type IStyleFunction<TStylesProps, TStyles> = (props: TStylesProps) => Par
 export interface ICoachmark {
 }
 
-export interface ICoachmarkProps extends React.Props<Coachmark> {
+export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
   * All props for your component are to be defined here.
   */
@@ -28,7 +28,7 @@ export interface ICoachmarkProps extends React.Props<Coachmark> {
    */
   positioningTarget?: HTMLElement | string | MouseEvent | IPoint | null;
 
-  positioningContainerProps?: IPositioningContainerProps;
+  positioningContainerProps?: IPositioningContainerTypes;
 
   /**
    * Is the Coachmark expanded

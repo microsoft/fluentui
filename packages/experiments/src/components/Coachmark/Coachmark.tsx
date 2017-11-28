@@ -6,7 +6,7 @@ import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
 
 // Coachmark
-import { ICoachmarkProps } from './Coachmark.Props';
+import { ICoachmarkTypes } from './Coachmark.types';
 import { getStyles } from './Coachmark.Styles';
 
 /**
@@ -47,7 +47,7 @@ export interface ICoachmarkState {
   isMouseInProximity: boolean;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   /**
    * The cached HTMLElement reference to the Entity Inner Host
@@ -56,12 +56,12 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
 
-  public static defaultProps: Partial<ICoachmarkProps> = {
+  public static defaultProps: Partial<ICoachmarkTypes> = {
     isCollapsed: true,
     mouseProximityOffset: 100
   };
 
-  constructor(props: ICoachmarkProps) {
+  constructor(props: ICoachmarkTypes) {
     super();
 
     // Set defaults for state
@@ -129,7 +129,7 @@ export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkProps) {
+  public componentWillReceiveProps(newProps: ICoachmarkTypes) {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();

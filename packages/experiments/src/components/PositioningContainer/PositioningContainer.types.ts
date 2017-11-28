@@ -9,7 +9,7 @@ import {
 export interface IPositioningContainer {
 }
 
-export interface IPositioningContainerProps extends React.Props<PositioningContainer> {
+export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {
   /**
   * All props for your component are to be defined here.
   */
