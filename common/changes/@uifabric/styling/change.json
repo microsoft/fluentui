@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities.",
+      "packageName": "@uifabric/styling",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com"
+}
