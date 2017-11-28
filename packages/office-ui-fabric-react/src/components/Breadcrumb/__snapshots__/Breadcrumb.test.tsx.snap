@@ -189,9 +189,9 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-owns={null}
               aria-pressed={undefined}
               className=
-                  ms-Breadcrumb-overflowButton
                   ms-Button
                   ms-Button--icon
+                  ms-Breadcrumb-overflowButton
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;

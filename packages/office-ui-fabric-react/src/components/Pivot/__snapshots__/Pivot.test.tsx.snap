@@ -23,12 +23,12 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-pressed={undefined}
         aria-selected={true}
         className=
-            ms-Pivot-link
-            is-selected
-            undefined
             ms-Button
             ms-Button--action
             ms-Button--command
+            ms-Pivot-link
+            is-selected
+            undefined
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -118,10 +118,10 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-pressed={undefined}
         aria-selected={false}
         className=
-            ms-Pivot-link
             ms-Button
             ms-Button--action
             ms-Button--command
+            ms-Pivot-link
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

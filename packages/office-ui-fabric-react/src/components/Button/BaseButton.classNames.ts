@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles, ITheme } from '../../Styling';
+import { mergeStyleSets } from '../../Styling';
 import { IButtonStyles } from './Button.types';
 import { getStyles } from './BaseButton.styles';
 
@@ -26,12 +26,12 @@ export const getBaseButtonClassNames = memoizeFunction((
   isSplit: boolean | undefined
 ): IButtonClassNames => {
   const isExpanded = expanded && !isSplit;
-  return {
-    root: mergeStyles(
-      className,
+  return mergeStyleSets({
+    root: [
       'ms-Button',
-      variantClassName,
       styles.root,
+      variantClassName,
+      className,
       checked && [
         'is-checked',
         styles.rootChecked
@@ -73,35 +73,30 @@ export const getBaseButtonClassNames = memoizeFunction((
           ':active': styles.rootCheckedPressed
         }
       }
-    ),
-
-    flexContainer: mergeStyles(
+    ],
+    flexContainer: [
       'ms-Button-flexContainer',
       styles.flexContainer
-    ),
-
-    textContainer: mergeStyles(
+    ],
+    textContainer: [
       'ms-Button-textContainer',
       styles.textContainer
-    ),
-
-    icon: mergeStyles(
+    ],
+    icon: [
       'ms-Button-icon',
       iconClassName,
       styles.icon,
       isExpanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
-    ),
-
-    label: mergeStyles(
+    ],
+    label: [
       'ms-Button-label',
       styles.label,
       checked && styles.labelChecked,
       disabled && styles.labelDisabled,
-    ),
-
-    menuIcon: mergeStyles(
+    ],
+    menuIcon: [
       'ms-Button-menuIcon',
       menuIconClassName,
       styles.menuIcon,
@@ -124,18 +119,16 @@ export const getBaseButtonClassNames = memoizeFunction((
           },
         },
       ]
-    ),
-
-    description: mergeStyles(
+    ],
+    description: [
       'ms-Button-description',
       styles.description,
       checked && styles.descriptionChecked,
       disabled && styles.descriptionDisabled
-    ),
-
-    screenReaderText: mergeStyles(
+    ],
+    screenReaderText: [
       'ms-Button-screenReaderText',
       styles.screenReaderText
-    )
-  };
+    ]
+  });
 });

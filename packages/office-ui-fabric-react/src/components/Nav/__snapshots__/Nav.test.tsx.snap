@@ -47,10 +47,10 @@ exports[`Nav renders Nav correctly 1`] = `
                 aria-labelledby={null}
                 aria-pressed={undefined}
                 className=
-                    ms-Nav-linkButton
                     ms-Button
                     ms-Button--action
                     ms-Button--command
+                    ms-Nav-linkButton
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
