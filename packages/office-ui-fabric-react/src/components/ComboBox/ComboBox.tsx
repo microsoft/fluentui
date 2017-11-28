@@ -125,6 +125,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _classNames: IComboBoxClassNames;
 
+  private _isScrollIdle: boolean;
+
+  private readonly _scrollIdleDelay: number = 250 /* ms */;
+
+  private _scrollIdleTimeoutId: number;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
@@ -138,6 +144,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
     this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
+    this._isScrollIdle = true;
+    this._scrollIdleTimeoutId = -1;
 
     let index: number = this._getSelectedIndex(props.options, selectedKey);
 
@@ -813,6 +821,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         className={ this._classNames.callout }
         target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
+        onScroll={ this._onScroll }
         setInitialFocus={ false }
         calloutWidth={ dropdownWidth || this._comboBoxWrapper.clientWidth + 2 }
       >
@@ -964,6 +973,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentPendingValueValidIndex :
           selectedIndex
     );
+  }
+
+  @autobind
+  private _onScroll() {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId >= 0) {
+      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this._scrollIdleTimeoutId = -1;
+    } else {
+      this._isScrollIdle = false;
+    }
+
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
   }
 
   /**
@@ -1339,18 +1360,30 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _onOptionMouseEnter(index: number) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     this.setState({
       currentPendingValueValidIndexOnHover: index
     });
   }
 
   private _onOptionMouseMove(index: number) {
+    if (!this._isScrollIdle || this.state.currentPendingValueValidIndexOnHover === index) {
+      return;
+    }
+
     this.setState({
       currentPendingValueValidIndexOnHover: index
     });
   }
 
   private _onOptionMouseLeave = () => {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     this.setState({
       currentPendingValueValidIndexOnHover: HoverStatus.clearAll
     });
