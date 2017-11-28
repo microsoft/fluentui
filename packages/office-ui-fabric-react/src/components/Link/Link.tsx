@@ -41,7 +41,8 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
               'ms-Link',
               styles.root,
               className,
-              disabled && ('is-disabled ' + styles.isDisabled)
+              disabled && ('is-disabled ' + styles.isDisabled),
+              !disabled && styles.isEnabled
             ) }
             onClick={ this._onClick }
             ref={ this._resolveRef('_link') }
