@@ -38,7 +38,7 @@
     "style-loader": "^0.18.2",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "2.5.3",
+    "typescript": "2.6.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.7.1",
     "webpack-bundle-analyzer": "^2.9.0",
