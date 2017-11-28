@@ -186,6 +186,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             }) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
+            shouldSetOverflowY={ true }
             style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
           >
             { children }

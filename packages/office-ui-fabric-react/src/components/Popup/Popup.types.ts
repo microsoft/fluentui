@@ -50,4 +50,11 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
    * @default true
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * If set to true, the popup will explicitly check if a scroll bar is needed and set overflow-y to scroll if necessary. This is useful
+   * when you don't want the scroll bar to take away space from the popout content, which is what happens when you use overflow-y:auto
+   * on some browsers.
+   */
+  shouldSetOverflowY?: boolean;
 }

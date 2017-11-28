@@ -10,14 +10,20 @@ import {
 } from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
+export interface IPopupState {
+  needsVerticalScrollBar?: boolean;
+}
+
 /**
  * This adds accessibility to Dialog and Panel controls
  */
-export class Popup extends BaseComponent<IPopupProps, {}> {
+export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
   };
+
+  public state: IPopupState = {};
 
   public refs: {
     [key: string]: React.ReactInstance;
@@ -54,8 +60,17 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     }
   }
 
+  public componentDidUpdate(): void {
+    if (this.refs.root) {
+      if (this.props.shouldSetOverflowY) {
+        this.setState({ needsVerticalScrollBar: this.refs.root.scrollHeight > this.refs.root.clientHeight });
+      }
+    }
+  }
+
   public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy } = this.props;
+    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+    let { needsVerticalScrollBar } = this.state;
 
     return (
       <div
@@ -67,6 +82,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
+        style={ { ...style, overflowY: needsVerticalScrollBar ? 'scroll' : 'auto' } }
       >
         { this.props.children }
       </div>
