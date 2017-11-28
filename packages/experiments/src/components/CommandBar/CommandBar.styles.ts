@@ -25,8 +25,8 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         flexGrow: '1',
         display: 'flex',
         alignItems: 'stretch',
-        justifyContent: endAligned ? 'flex-end' : undefined
-      }
+      },
+      endAligned && { justifyContent: 'flex-end' }
     ],
     secondarySet: [
       {
