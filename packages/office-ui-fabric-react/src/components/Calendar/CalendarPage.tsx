@@ -86,6 +86,15 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showWeekNumbers={ true }
               />
             </ExampleCard>
+            <ExampleCard title='Inline Calendar with 6 weeks display by default' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample
+                isMonthPickerVisible={ false }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ false }
+                showGoToToday={ false }
+                showSixWeeksByDefault={ true }
+              />
+            </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker and no day picker' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Month }

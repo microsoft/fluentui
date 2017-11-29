@@ -203,6 +203,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       target,
       bounds,
       useTargetWidth,
+      useTargetAsMinWidth,
       directionalHintFixed,
       shouldFocusOnMount,
       title,
@@ -240,11 +241,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
      */
     let contextMenuStyle;
     let targetAsHtmlElement = this._target as HTMLElement;
-    if (useTargetWidth && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
-      let contextMenuWidth = targetAsHtmlElement.offsetWidth;
-      contextMenuStyle = {
-        width: contextMenuWidth
-      };
+    if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
+      let targetWidth = targetAsHtmlElement.offsetWidth;
+      if (useTargetWidth) {
+        contextMenuStyle = {
+          width: targetWidth
+        };
+      } else if (useTargetAsMinWidth) {
+        contextMenuStyle = {
+          minWidth: targetWidth
+        };
+      }
     }
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
@@ -289,6 +296,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 className={ this._classNames.root }
                 direction={ arrowDirection }
                 isCircularNavigation={ true }
+                allowTabKey={ true }
               >
                 <ul
                   aria-label={ ariaLabel }
@@ -582,7 +590,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return React.createElement('button',
       assign({}, getNativeProps(itemProps, buttonProperties), {
-        onKeyDown: this._onItemKeyDown.bind(this, item)
+        onKeyDown: this._onItemKeyDown.bind(this, item),
+        onMouseEnter: this._onItemMouseEnter.bind(this, item),
+        onMouseLeave: this._onMouseItemLeave.bind(this, item),
+        onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+        onMouseMove: this._onItemMouseMove.bind(this, item)
       }),
       this._renderMenuItemChildren(itemProps, classNames, index, false, false));
   }
@@ -640,7 +652,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which === KeyCodes.escape
-      || ev.which === KeyCodes.tab
       || (ev.which === submenuCloseKey && this.props.isSubMenu && this.props.arrowDirection === FocusZoneDirection.vertical)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
@@ -672,6 +683,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     if (elementToFocus) {
       elementToFocus.focus();
+      ev.preventDefault();
+      ev.stopPropagation();
     }
   }
 

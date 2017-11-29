@@ -136,7 +136,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralPrimary,
+    inputBorderHovered: p.neutralDark,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
@@ -153,7 +153,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundChecked: p.neutralQuaternaryAlt,
+    menuItemBackgroundChecked: p.neutralLight,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 
