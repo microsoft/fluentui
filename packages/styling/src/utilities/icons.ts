@@ -91,14 +91,16 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
       const code = icons[iconName];
       const normalizedIconName = iconName.toLowerCase();
 
-      if (_iconSettings[normalizedIconName] && !options.disableWarnings) {
-        warn(`Icon '${iconName} being re-registered`);
+      if (_iconSettings[normalizedIconName]) {
+        if (!options.disableWarnings) {
+          warn(`Icon '${iconName} being re-registered. Ignoring duplicate registration.`);
+        }
+      } else {
+        _iconSettings[normalizedIconName] = {
+          code,
+          subset
+        };
       }
-
-      _iconSettings[normalizedIconName] = {
-        code,
-        subset
-      };
     }
   }
 }
