@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import { IObjectWithKey } from '../../utilities/selection/index';
+import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
 
-import { IGenericList } from './List.Props';
 import { IStaticListProps } from './StaticList.Props';
 
 import * as stylesImport from './StaticList.scss';

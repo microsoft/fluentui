@@ -1,8 +1,5 @@
-import { IRenderFunction } from '../../Utilities';
-import {
-  IObjectWithKey
-} from '../../utilities/selection/index';
-
+import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
+// tslint:disable-next-line:no-unused-variable
 export interface IGenericList<TItem extends IObjectWithKey> {
 }
 

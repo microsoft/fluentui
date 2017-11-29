@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VirtualizedList } from '../VirtualizedList';
 import { ScrollContainer } from '../../../utilities/scrolling/ScrollContainer';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IItem {
   key: string;
@@ -9,6 +10,7 @@ interface IItem {
 const items: IItem[] = [];
 
 type ExampleList = new () => VirtualizedList<IItem>;
+// tslint:disable-next-line:no-any
 const ExampleList: ExampleList = VirtualizedList as any;
 
 export class VirtualizedListBasicExample extends React.Component {
@@ -26,20 +28,26 @@ export class VirtualizedListBasicExample extends React.Component {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <ScrollContainer>
           <ExampleList
             items={ items }
             itemHeight={ 30 }
-            onRenderItem={ (item, itemIndex) => (
-              <div key={ item.key } style={ { height: 30 } }>
-                { item.key }
-              </div>
-            ) }
+            onRenderItem={ this._renderItem }
           />
         </ScrollContainer>
+      </div>
+    );
+  }
+
+  @autobind
+  private _renderItem(item: IItem, itemIndex: number): JSX.Element {
+    return (
+      // tslint:disable-next-line:jsx-ban-props
+      <div key={ item.key } style={ { height: 30 } }>
+        { item.key }
       </div>
     );
   }

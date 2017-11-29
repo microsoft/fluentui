@@ -1,4 +1,4 @@
-import { IBaseProps } from '../../Utilities';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IScrollContainerProps extends IBaseProps {
   /**

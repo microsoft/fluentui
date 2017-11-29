@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, autobind } from '../../Utilities';
 import { IScrollContainerProps } from './ScrollContainer.Props';
+import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IVisibleCallback {
   (scrollTop: number): void;
@@ -22,11 +22,8 @@ export const ScrollContainerContextTypes = {
   scrollContainer: React.PropTypes.object.isRequired
 };
 
-// Work around typescript definition file issue
-declare var IntersectionObserver: any;
-
 export class ScrollContainer extends BaseComponent<IScrollContainerProps> implements IScrollContainer {
-  public static childContextTypes = ScrollContainerContextTypes;
+  public static childContextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
 
   private _observer: IntersectionObserver;
 
@@ -63,13 +60,13 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     const { children } = this.props;
 
     return (
-      <div data-is-scrollable={ true } ref={ this._resolveRoot } style={ { height: 800, overflow: 'auto' } } >
+      <div data-is-scrollable={ true } ref={ this._resolveRoot }>
         { children as JSX.Element }
-      </div>
+      </div >
     );
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._observer) {
       this._observer.disconnect();
     }
@@ -84,8 +81,9 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
   }
 
   @autobind
-  private _onIntersection(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
+  private _onIntersection(entries: IntersectionObserverEntry[], observer: IntersectionObserver): void {
     for (const entry of entries) {
+      // tslint:disable-next-line:no-any
       if ((entry as any).isIntersecting || entry.intersectionRatio > 0) {
         // Schedule callbacks on next frame
         this._async.requestAnimationFrame(() => {
@@ -101,7 +99,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
     }
   }
 
-  private _init() {
+  private _init(): void {
     if (typeof IntersectionObserver !== 'undefined') {
       const threshold: number[] = [];
       for (let i = 0; i < 100; ++i) {
@@ -112,7 +110,6 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
         this._onIntersection as IntersectionObserverCallback,
         {
           root: this._root,
-          // rootMargin: '100% 0%',
           threshold
         } as IntersectionObserverInit
       );
@@ -133,6 +130,7 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
       // we don't need capture, we can pass it and have it ignored if not supported
       this._root.addEventListener('scroll', this._onScroll, {
         passive: true
+        // tslint:disable-next-line:no-any
       } as any);
     }
   }

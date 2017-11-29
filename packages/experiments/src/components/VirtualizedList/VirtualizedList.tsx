@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, css, findScrollableParent, getParent, autobind } from '../../Utilities';
-import { IObjectWithKey } from '../../utilities/selection/index';
 import { IVirtualizedListProps } from './VirtualizedList.Props';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
+import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
+import { BaseComponent, getParent, css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -23,17 +23,19 @@ export interface IVirtualizedListState {
 }
 
 export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<IVirtualizedListProps<TItem>, IVirtualizedListState> {
-  public static contextTypes = ScrollContainerContextTypes;
+  public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
   private _root: HTMLElement;
 
   private _spacerElements: { [key: string]: HTMLElement } = {};
 
-  private _focusedIndex: number = -1;
+  private _focusedIndex: number;
 
   constructor(props: IVirtualizedListProps<TItem>, context: IScrollContainerContext) {
     super(props, context);
+
+    this._focusedIndex = -1;
 
     const {
       initialViewportHeight = window.innerHeight  // Start with the window height if not passed in props, this does not cause layout
@@ -48,14 +50,14 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   public componentDidMount(): void {
     this._events.on(this._root, 'focus', this._onFocus, true);
 
-    this.context.scrollContainer.registerVisibleCallback((scrollTop) => {
+    this.context.scrollContainer.registerVisibleCallback((scrollTop: number) => {
       this._render(scrollTop);
     });
 
     this.componentDidUpdate();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // (Re-)register with the observer after every update, this way we'll get an intersection event immediately if one of the spacer
     // elements is visible right now.
     for (const key of Object.keys(this._spacerElements)) {
@@ -64,7 +66,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     }
   }
 
-  public componentWillUpdate() {
+  public componentWillUpdate(): void {
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
       this.context.scrollContainer.unobserve(ref);
@@ -187,11 +189,12 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
       key = `spacer-item-${index + numberOfItems}`;
     }
 
+    // tslint:disable-next-line:jsx-ban-props
     return <ItemTag ref={ this._spacerRef.bind(this, key) } key={ key } style={ { height: spacerHeight } } />;
   }
 
   @autobind
-  private _spacerRef(key: string, ref: HTMLElement) {
+  private _spacerRef(key: string, ref: HTMLElement): void {
     if (ref) {
       this._spacerElements[key] = ref;
     } else {
@@ -207,7 +210,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     });
   }
 
-  private _onFocus(ev: React.FocusEvent<HTMLDivElement>) {
+  private _onFocus(ev: React.FocusEvent<HTMLDivElement>): void {
     let target = ev.target as HTMLElement;
 
     while (target !== this._root) {
