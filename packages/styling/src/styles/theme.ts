@@ -81,7 +81,7 @@ export function loadTheme(theme: IPartialTheme): ITheme {
   _onThemeChangeCallbacks.forEach((callback: (theme: ITheme) => void) => {
     try {
       callback(_theme);
-    } catch {
+    } catch (e) {
       // don't let a bad callback break everything else
     }
   });
