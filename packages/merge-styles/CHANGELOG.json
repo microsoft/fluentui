@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.7.0",
+      "tag": "@uifabric/merge-styles_v5.7.0",
+      "date": "Wed, 29 Nov 2017 11:24:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a6ef94b3edb7679d7659ec0d51e199139102d28c",
+            "comment": "Updating TypeScript to 2.6.2."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.0",
       "tag": "@uifabric/merge-styles_v5.6.0",
       "date": "Fri, 10 Nov 2017 17:09:36 GMT",

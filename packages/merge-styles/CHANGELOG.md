@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 10 Nov 2017 17:09:36 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2017 11:24:05 GMT and should not be manually modified.
+
+## 5.7.0
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Minor changes
+
+- Updating TypeScript to 2.6.2.
 
 ## 5.6.0
 Fri, 10 Nov 2017 17:09:36 GMT

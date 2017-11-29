@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2017 11:24:05 GMT and should not be manually modified.
+
+## 5.7.0
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Minor changes
+
+- Updating TypeScript to 2.6.2.
 
 ## 5.6.1
 Thu, 23 Nov 2017 11:10:13 GMT

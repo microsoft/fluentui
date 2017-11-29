@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 28 Nov 2017 02:24:21 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2017 11:24:06 GMT and should not be manually modified.
+
+## 5.11.1
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Patches
+
+- SemanticSlots: Updated inputBorderHovered color.
 
 ## 5.11.0
 Tue, 28 Nov 2017 02:24:21 GMT
