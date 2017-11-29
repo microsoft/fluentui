@@ -117,13 +117,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
-  private _enterTimerId: number;
+  private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
-  private _scrollIdleTimeoutId: number;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -139,9 +139,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     });
 
     this._isFocusingPreviousElement = false;
-    this._enterTimerId = 0;
     this._isScrollIdle = true;
-    this._scrollIdleTimeoutId = -1;
   }
 
   @autobind
@@ -694,11 +692,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
   @autobind
   private _onScroll() {
-    if (!this._isScrollIdle && this._scrollIdleTimeoutId >= 0) {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
       this._async.clearTimeout(this._scrollIdleTimeoutId);
-      this._scrollIdleTimeoutId = -1;
+      this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
@@ -749,7 +751,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    this._async.clearTimeout(this._enterTimerId);
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+    }
 
     if (item.key === this.state.expandedMenuItemKey && hasSubmenuItems(item)) {
       return;

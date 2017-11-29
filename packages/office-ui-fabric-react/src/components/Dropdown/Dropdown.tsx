@@ -56,7 +56,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
-  private _scrollIdleTimeoutId: number;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -81,7 +81,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
-    this._scrollIdleTimeoutId = -1;
 
     this.state = {
       isOpen: false
@@ -561,11 +560,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     };
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
   @autobind
   private _onScroll() {
-    if (!this._isScrollIdle && this._scrollIdleTimeoutId >= 0) {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
       this._async.clearTimeout(this._scrollIdleTimeoutId);
-      this._scrollIdleTimeoutId = -1;
+      this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }

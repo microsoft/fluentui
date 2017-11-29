@@ -115,7 +115,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // After a character is inserted when autocomplete is true and
   // allowFreeform is false, remember the task that will clear
   // the pending string of characters
-  private _lastReadOnlyAutoCompleteChangeTimeoutId: number;
+  private _lastReadOnlyAutoCompleteChangeTimeoutId: number | undefined;
 
   // Promise used when resolving the comboBox options
   private _currentPromise: PromiseLike<IComboBoxOption[]>;
@@ -129,7 +129,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private readonly _scrollIdleDelay: number = 250 /* ms */;
 
-  private _scrollIdleTimeoutId: number;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IComboBoxProps) {
     super(props);
@@ -143,9 +143,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._id = props.id || getId('ComboBox');
 
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
-    this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
     this._isScrollIdle = true;
-    this._scrollIdleTimeoutId = -1;
 
     let index: number = this._getSelectedIndex(props.options, selectedKey);
 
@@ -570,9 +568,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // we know that the user is typing with keypresses happening
         // within the timeout of each other so remove the clearing task
         // and continue building the pending value with the udpated value
-        if (this._lastReadOnlyAutoCompleteChangeTimeoutId > 0) {
+        if (this._lastReadOnlyAutoCompleteChangeTimeoutId !== undefined) {
           this._async.clearTimeout(this._lastReadOnlyAutoCompleteChangeTimeoutId);
-          this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
+          this._lastReadOnlyAutoCompleteChangeTimeoutId = undefined;
           updatedValue = currentPendingValue + updatedValue;
         }
 
@@ -590,7 +588,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // Schedule a timeout to clear the pending value after the timeout span
         this._lastReadOnlyAutoCompleteChangeTimeoutId =
           this._async.setTimeout(
-            () => { this._lastReadOnlyAutoCompleteChangeTimeoutId = -1; },
+            () => { this._lastReadOnlyAutoCompleteChangeTimeoutId = undefined; },
             this._readOnlyPendingAutoCompleteTimeout
           );
         return;
@@ -975,11 +973,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
   @autobind
   private _onScroll() {
-    if (!this._isScrollIdle && this._scrollIdleTimeoutId >= 0) {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
       this._async.clearTimeout(this._scrollIdleTimeoutId);
-      this._scrollIdleTimeoutId = -1;
+      this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
