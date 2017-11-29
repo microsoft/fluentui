@@ -1,1 +1,1 @@
-export * from './components/beak/index';
+export * from './components/Beak/index';
