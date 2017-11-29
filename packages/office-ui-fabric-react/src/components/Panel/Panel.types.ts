@@ -40,6 +40,12 @@ export interface IPanelProps extends React.Props<Panel> {
   isLightDismiss?: boolean;
 
   /**
+  * Whether the panel's visibilty is hidden on dismiss. This will override isLightDismiss to true.
+  * @default false
+  */
+  isHiddenOnDismiss?: boolean;
+
+  /**
   * Whether the panel uses a modal overlay or not
   * @default true
   */

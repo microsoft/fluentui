@@ -30,6 +30,7 @@ export interface IPanelState {
 export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
 
   public static defaultProps: IPanelProps = {
+    isHiddenOnDismiss: false,
     isOpen: false,
     isBlocking: true,
     hasCloseButton: true,
@@ -78,6 +79,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       ignoreExternalFocusing,
       isBlocking,
       isLightDismiss,
+      isHiddenOnDismiss,
       layerProps,
       type,
       customWidth,
@@ -94,8 +96,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
     const renderProps: IPanelProps = { ...this.props, componentId: id };
+    isLightDismiss = isHiddenOnDismiss || isLightDismiss;
 
-    if (!isOpen && !isAnimating) {
+    if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
     }
 
@@ -137,7 +140,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 type === PanelType.largeFixed && ('ms-Panel--fixed ' + styles.rootIsFixed),
                 type === PanelType.extraLarge && ('ms-Panel--xl ' + styles.rootIsXLarge),
                 type === PanelType.custom && ('ms-Panel--custom ' + styles.rootIsCustom),
-                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton)
+                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton),
+                !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
               )
             }
           >
