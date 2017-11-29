@@ -133,8 +133,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
 
     let {
       className,
-      calloutWidth,
-      calloutMaxHeight,
+      positioningContainerWidth,
+      positioningContainerMaxHeight,
       children } = this.props;
     let { positions } = this.state;
 
@@ -145,7 +145,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       : '';
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : calloutMaxHeight!;
+    let contentMaxHeight: number = positioningContainerMaxHeight! && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
 
     let content = (
 
@@ -160,7 +160,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
               styles.root,
               className,
               directionalClassName,
-              !!calloutWidth && { width: calloutWidth }
+              !!positioningContainerWidth && { width: positioningContainerWidth }
             ) }
           style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
@@ -222,10 +222,10 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
 
   @autobind
   protected _onComponentDidMount() {
-    // This is added so the callout will dismiss when the window is scrolled
-    // but not when something inside the callout is scrolled. The delay seems
+    // This is added so the positioningContainer will dismiss when the window is scrolled
+    // but not when something inside the positioningContainer is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
-    // the target changing focus quickly prior to rendering the callout.
+    // the target changing focus quickly prior to rendering the positioningContainer.
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
@@ -248,21 +248,21 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   private _updatePosition() {
     let { positions } = this.state;
     let hostElement: HTMLElement = this._positionedHost;
-    let calloutElement: HTMLElement = this._contentHost;
+    let positioningContainerElement: HTMLElement = this._contentHost;
 
-    if (hostElement && calloutElement) {
+    if (hostElement && positioningContainerElement) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      let newPositions: IPositionInfo = getRelativePositions(currentProps!, hostElement, calloutElement);
+      let newPositions: IPositionInfo = getRelativePositions(currentProps!, hostElement, positioningContainerElement);
 
-      // Set the new position only when the positions are not exists or one of the new callout positions are different.
+      // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
       if ((!positions && newPositions) ||
         (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
           && this._positionAttempts < 5)) {
-        // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+        // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
         // and we should stop trying to reposition to prevent a stack overflow.
         this._positionAttempts++;
         this.setState({
@@ -362,16 +362,16 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   private _setHeightOffsetEveryFrame(): void {
     if (this._contentHost && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
-        const calloutMainElem = this._contentHost.lastChild as HTMLElement;
-        const cardScrollHeight: number = calloutMainElem.scrollHeight;
-        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const positioningContainerMainElem = this._contentHost.lastChild as HTMLElement;
+        const cardScrollHeight: number = positioningContainerMainElem.scrollHeight;
+        const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
           heightOffset: this.state.heightOffset! + scrollDiff
         });
 
-        if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
+        if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {
           this._setHeightOffsetEveryFrame();
         } else {
           this._async.cancelAnimationFrame(this._setHeightOffsetTimer);

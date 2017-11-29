@@ -15,7 +15,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   */
   componentRef?: (component: IPositioningContainer) => void;
   /**
-   * The target that the Callout should try to position itself based on.
+   * The target that the positioningContainer should try to position itself based on.
    * It can be either an HTMLElement a querySelector string of a valid HTMLElement
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
@@ -34,19 +34,19 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * The gap between the Callout and the target
+   * The gap between the positioningContainer and the target
    * @default 0
    */
   offsetFromTarget?: number;
 
   /**
-   * Custom width for callout including borders. If value is 0, no width is applied.
+   * Custom width for positioningContainer including borders. If value is 0, no width is applied.
    * @default 0
    */
-  calloutWidth?: number;
+  positioningContainerWidth?: number;
 
   /**
-   * The background color of the Callout in hex format ie. #ffffff.
+   * The background color of the positioningContainer in hex format ie. #ffffff.
    * @default $ms-color-white
    */
   backgroundColor?: string;
@@ -57,20 +57,20 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   bounds?: IRectangle;
 
   /**
-   * The minimum distance the callout will be away from the edge of the screen.
+   * The minimum distance the positioningContainer will be away from the edge of the screen.
    *  @default 8
    */
   minPagePadding?: number;
 
   /**
-   * If true use a point rather than rectangle to position the Callout.
+   * If true use a point rather than rectangle to position the positioningContainer.
    * For example it can be used to position based on a click.
    * @deprecated Use 'target' instead
    */
   useTargetPoint?: boolean;
 
   /**
-   * Point used to position the Callout
+   * Point used to position the positioningContainer
    * @deprecated Use 'target' instead
    */
   targetPoint?: IPoint;
@@ -89,27 +89,27 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   coverTarget?: boolean;
 
   /**
-   * Aria role assigned to the callout (Eg. dialog, alertdialog).
+   * Aria role assigned to the positioningContainer (Eg. dialog, alertdialog).
    */
   role?: string;
 
   /**
-   * Accessible label text for callout.
+   * Accessible label text for positioningContainer.
    */
   ariaLabel?: string;
 
   /**
-   *  Defines the element id referencing the element containing label text for callout.
+   *  Defines the element id referencing the element containing label text for positioningContainer.
    */
   ariaLabelledBy?: string;
 
   /**
-   * Defines the element id referencing the element containing the description for the callout.
+   * Defines the element id referencing the element containing the description for the positioningContainer.
    */
   ariaDescribedBy?: string;
 
   /**
-   * CSS class to apply to the callout.
+   * CSS class to apply to the positioningContainer.
    * @default null
    */
   className?: string;
@@ -120,12 +120,12 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   onLayerMounted?: () => void;
 
   /**
-   * Optional callback that is called once the callout has been correctly positioned.
+   * Optional callback that is called once the positioningContainer has been correctly positioned.
    */
   onPositioned?: () => void;
 
   /**
-   * Callback when the Callout tries to close.
+   * Callback when the positioningContainer tries to close.
    */
   onDismiss?: (ev?: any) => void;
 
@@ -135,7 +135,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   doNotLayer?: boolean;
 
   /**
-   * If true the position will not change sides in an attempt to fit the callout within bounds.
+   * If true the position will not change sides in an attempt to fit the positioningContainer within bounds.
    * It will still attempt to align it to whatever bounds are given.
    * @default false
    */
@@ -143,12 +143,12 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
 
   /**
    * Specify the final height of the content.
-   * To be used when expanding the content dynamically so that callout can adjust its position.
+   * To be used when expanding the content dynamically so that positioningContainer can adjust its position.
    */
   finalHeight?: number;
 
   /**
-   * If true then the callout will attempt to focus the first focusable element that it contains.
+   * If true then the positioningContainer will attempt to focus the first focusable element that it contains.
    * If it doesn't find an element, no focus will be set and the method will return false.
    * This means that it's the contents responsibility to either set focus or have
    * focusable items.
@@ -157,8 +157,8 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   setInitialFocus?: boolean;
 
   /**
-   * Set max height of callout
-   * When not set the callout will expand with contents up to the bottom of the screen
+   * Set max height of positioningContainer
+   * When not set the positioningContainer will expand with contents up to the bottom of the screen
    */
-  calloutMaxHeight?: number;
+  positioningContainerMaxHeight?: number;
 }
