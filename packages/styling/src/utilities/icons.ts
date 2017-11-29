@@ -91,7 +91,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
       const code = icons[iconName];
       const normalizedIconName = iconName.toLowerCase();
 
-      if (_iconSettings[normalizedIconName] && !options.disableWarnings && options.warnOnMissingIcons) {
+      if (_iconSettings[normalizedIconName] && !options.disableWarnings) {
         warn(`Icon '${iconName} being re-registered`);
       }
 
