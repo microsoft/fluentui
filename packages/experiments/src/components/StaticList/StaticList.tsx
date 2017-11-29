@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-
 import { IStaticListProps } from './StaticList.Props';
 
 import * as stylesImport from './StaticList.scss';
 
-export class StaticList<TItem extends IObjectWithKey> extends React.PureComponent<IStaticListProps<TItem>> implements IGenericList<TItem> {
+export class StaticList<TItem extends IObjectWithKey> extends React.PureComponent<IStaticListProps<TItem>> {
   public render(): JSX.Element {
     const {
       className,

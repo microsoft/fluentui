@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { IScrollContainerProps } from './ScrollContainer.Props';
-import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { IScrollContainerProps } from './ScrollContainer.types';
+import { BaseComponent, autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+
+import * as ScrollContainerStyles from './ScrollContainer.scss';
 
 export interface IVisibleCallback {
   (scrollTop: number): void;
@@ -57,10 +59,14 @@ export class ScrollContainer extends BaseComponent<IScrollContainerProps> implem
   }
 
   public render(): JSX.Element {
-    const { children } = this.props;
+    const { children, className } = this.props;
 
     return (
-      <div data-is-scrollable={ true } ref={ this._resolveRoot }>
+      <div
+        className={ css('ms-ScrollContainer', ScrollContainerStyles.root, className) }
+        data-is-scrollable={ true }
+        ref={ this._resolveRoot }
+      >
         { children as JSX.Element }
       </div >
     );

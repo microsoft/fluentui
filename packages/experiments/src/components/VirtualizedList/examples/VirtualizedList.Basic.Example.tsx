@@ -3,6 +3,8 @@ import { VirtualizedList } from '../VirtualizedList';
 import { ScrollContainer } from '../../../utilities/scrolling/ScrollContainer';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
+import * as VirtualizedListExampleStylesModule from './VirtualizedList.Example.scss';
+
 interface IItem {
   key: string;
 }
@@ -31,7 +33,7 @@ export class VirtualizedListBasicExample extends React.Component {
   public render(): JSX.Element {
     return (
       <div>
-        <ScrollContainer>
+        <ScrollContainer className={ VirtualizedListExampleStylesModule.fixedHeight }>
           <ExampleList
             items={ items }
             itemHeight={ 30 }
