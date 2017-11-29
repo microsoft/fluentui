@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Updating TypeScript to 2.6.2.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "dzearing@microsoft.com"
+}

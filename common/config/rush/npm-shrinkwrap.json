@@ -137,16 +137,16 @@
     },
     "@rush-temp/example-app-base": {
       "version": "file:projects/example-app-base.tgz",
-      "integrity": "sha1-o9QUWvdS3tNW42IqtrKa6pG/Z+U=",
+      "integrity": "sha1-8kpB3vZrOc04cnTTZ0XUgs4GYqs=",
       "requires": {
         "@types/chai": "3.4.35",
         "@types/enzyme": "2.8.8",
         "@types/es6-promise": "0.0.32",
         "@types/highlight.js": "9.1.9",
         "@types/mocha": "2.2.39",
-        "@types/react": "15.0.38",
+        "@types/react": "15.6.7",
         "@types/react-addons-test-utils": "0.14.18",
-        "@types/react-dom": "15.5.1",
+        "@types/react-dom": "15.5.6",
         "@types/webpack-env": "1.13.0",
         "enzyme": "2.9.1",
         "es6-map": "0.1.5",
@@ -162,16 +162,16 @@
     },
     "@rush-temp/experiments": {
       "version": "file:projects/experiments.tgz",
-      "integrity": "sha1-C1dt6G2VCWqdBstuRarjSIAd6Sg=",
+      "integrity": "sha1-2voKsS/niCi4jN2uKPG0guAWaJo=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.10",
         "@types/enzyme": "2.8.8",
         "@types/es6-promise": "0.0.32",
         "@types/jest": "21.1.8",
         "@types/prop-types": "15.5.1",
-        "@types/react": "15.0.38",
+        "@types/react": "15.6.7",
         "@types/react-addons-test-utils": "0.14.18",
-        "@types/react-dom": "15.5.1",
+        "@types/react-dom": "15.5.6",
         "@types/react-test-renderer": "15.5.5",
         "@types/resemblejs": "1.3.28",
         "@types/sinon": "2.2.2",
@@ -211,7 +211,7 @@
     },
     "@rush-temp/fabric-website": {
       "version": "file:projects/fabric-website.tgz",
-      "integrity": "sha1-TFztj7JCNZnJTsAIrcjMlInIxjY=",
+      "integrity": "sha1-k5f0C6upMfla6RNrk5RR0RDP2IQ=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.10",
         "@types/chai": "3.4.35",
@@ -220,8 +220,8 @@
         "@types/mocha": "2.2.39",
         "@types/node": "8.0.26",
         "@types/prop-types": "15.5.1",
-        "@types/react": "15.0.38",
-        "@types/react-dom": "15.5.1",
+        "@types/react": "15.6.7",
+        "@types/react-dom": "15.5.6",
         "@types/resemblejs": "1.3.28",
         "@types/sinon": "2.2.2",
         "@types/webpack-env": "1.13.0",
@@ -277,14 +277,14 @@
     },
     "@rush-temp/office-ui-fabric-react": {
       "version": "file:projects/office-ui-fabric-react.tgz",
-      "integrity": "sha1-vANXAPz4VYfmPSiAXO6mP9h3NLE=",
+      "integrity": "sha1-wfRl3XTH5Zw6NQva/Wu6Auo027U=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.10",
         "@types/enzyme": "2.8.8",
         "@types/es6-promise": "0.0.32",
         "@types/jest": "21.1.0",
         "@types/prop-types": "15.5.1",
-        "@types/react": "15.0.38",
+        "@types/react": "15.6.7",
         "@types/react-dom": "15.5.5",
         "@types/react-test-renderer": "15.5.5",
         "@types/resemblejs": "1.3.28",
@@ -316,7 +316,7 @@
           "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-15.5.5.tgz",
           "integrity": "sha512-o9mYuvKgPdyzk20DSIqEBUSGVsSb1QnWtOQoPK/ExcF70Qnhr80no4MgbrEw/2pHiZbLKOjV7mWgKYTLq6f04g==",
           "requires": {
-            "@types/react": "15.0.38"
+            "@types/react": "15.6.7"
           }
         },
         "lolex": {
@@ -369,13 +369,13 @@
     },
     "@rush-temp/styling": {
       "version": "file:projects/styling.tgz",
-      "integrity": "sha1-tCVFQkTsapOo/Lw/ezNtosmWB8A=",
+      "integrity": "sha1-Umkecm/LBaSSw+IAgCB94hsLvNo=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.10",
         "@types/chai": "3.4.35",
         "@types/enzyme": "2.8.8",
         "@types/mocha": "2.2.39",
-        "@types/react": "15.0.38",
+        "@types/react": "15.6.7",
         "@types/webpack-env": "1.13.0",
         "es6-map": "0.1.5",
         "es6-weak-map": "2.0.2",
@@ -386,11 +386,11 @@
     },
     "@rush-temp/test-bundle-button": {
       "version": "file:projects/test-bundle-button.tgz",
-      "integrity": "sha1-wpvEjRiwPheqEY6CNLUFm13t1qE=",
+      "integrity": "sha1-lS5iffFXNlrOUj31gZj76a1DkMQ=",
       "requires": {
         "@types/prop-types": "15.5.1",
-        "@types/react": "15.0.38",
-        "@types/react-dom": "15.5.1",
+        "@types/react": "15.6.7",
+        "@types/react-dom": "15.5.6",
         "@types/webpack-env": "1.13.0",
         "react": "15.6.2",
         "react-dom": "15.6.2",
@@ -399,15 +399,15 @@
     },
     "@rush-temp/todo-app": {
       "version": "file:projects/todo-app.tgz",
-      "integrity": "sha1-E1K9RTrdQEThrwZy9NZtD6ENiMw=",
+      "integrity": "sha1-z8dK5lcUmPp+gGZ2OAcs1t3L73w=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.10",
         "@types/chai": "3.4.35",
         "@types/enzyme": "2.8.8",
         "@types/es6-promise": "0.0.32",
         "@types/mocha": "2.2.39",
-        "@types/react": "15.0.38",
-        "@types/react-dom": "15.5.1",
+        "@types/react": "15.6.7",
+        "@types/react-dom": "15.5.6",
         "@types/webpack-env": "1.13.0",
         "es6-promise": "4.1.1",
         "immutability-helper": "2.5.1",
@@ -419,14 +419,14 @@
     },
     "@rush-temp/utilities": {
       "version": "file:projects/utilities.tgz",
-      "integrity": "sha1-ahWxuvm6UokIpgPUXsrt3g8n9tM=",
+      "integrity": "sha1-E0KaA1KnEMDyS6rOuPRmOscoiuo=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.10",
         "@types/enzyme": "2.8.8",
         "@types/jest": "21.1.0",
         "@types/prop-types": "15.5.1",
-        "@types/react": "15.0.38",
-        "@types/react-dom": "15.5.1",
+        "@types/react": "15.6.7",
+        "@types/react-dom": "15.5.6",
         "@types/sinon": "2.2.2",
         "enzyme": "2.9.1",
         "prop-types": "15.6.0",
@@ -465,12 +465,12 @@
     },
     "@rush-temp/vr-tests": {
       "version": "file:projects/vr-tests.tgz",
-      "integrity": "sha1-cknKmgIRn+FibCInTjLTsVHsIsk=",
+      "integrity": "sha1-B+zUdvbzO78nDwoeV2SCInhrRSQ=",
       "requires": {
         "@storybook/addon-options": "3.2.3",
         "@storybook/react": "3.2.16",
-        "@types/react": "15.0.38",
-        "@types/react-dom": "15.5.1",
+        "@types/react": "15.6.7",
+        "@types/react-dom": "15.5.6",
         "@types/storybook__react": "3.0.5",
         "awesome-typescript-loader": "3.4.0",
         "css-loader": "0.27.3",
@@ -814,7 +814,7 @@
       "integrity": "sha512-KBw0ZzOQNtwVGO4egRjEpQbXMFCSevy+gRFzaLXrU64LrVVuJF0FqVIdzed0NCSP+nMALj001//dwYKV/VDlCA==",
       "requires": {
         "@types/cheerio": "0.22.6",
-        "@types/react": "15.0.38"
+        "@types/react": "15.6.7"
       }
     },
     "@types/es6-promise": {
@@ -861,24 +861,24 @@
       "integrity": "sha1-Hs9SYhKZ5luFU3Qzf7Ef0tEGb8E="
     },
     "@types/react": {
-      "version": "15.0.38",
-      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.38.tgz",
-      "integrity": "sha512-CkRB27L/kMDu7K20U0V7BwYK9/kPd9Im6Jlxv2vAEolYBvQy6JrSpPJsbZXtOk4MoDUomkct8Q7PNBUSLd0fmg=="
+      "version": "15.6.7",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.6.7.tgz",
+      "integrity": "sha512-HMfRuwiTp7/MfjPOsVlvlduouJH3haDzjc0oXqZy3ZMn3OTl3i4gGgbxsqzA/u9gNyl/oKkwOrU2oVR6vG5SAw=="
     },
     "@types/react-addons-test-utils": {
       "version": "0.14.18",
       "resolved": "https://registry.npmjs.org/@types/react-addons-test-utils/-/react-addons-test-utils-0.14.18.tgz",
       "integrity": "sha1-g+EK8dvl7CU1vC3FNz17w7gv3uE=",
       "requires": {
-        "@types/react": "15.0.38"
+        "@types/react": "15.6.7"
       }
     },
     "@types/react-dom": {
-      "version": "15.5.1",
-      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-15.5.1.tgz",
-      "integrity": "sha512-4c+e/QPfvSa48YhgGOcQWoHishTo6BuJqka0Bh8qeLdnK1jS+1Nz8W/w1G17AIjtLxONYFUqmi8qyt+8p/yMFA==",
+      "version": "15.5.6",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-15.5.6.tgz",
+      "integrity": "sha512-dP4vEDEH4rL+uUl6f//c6mjepTVdJ6Ldx3z0dZbw047T5Z+o2PZDW/Qd+I4PkTmIgk7YNAZC/TFnm3IHT5UAhw==",
       "requires": {
-        "@types/react": "15.0.38"
+        "@types/react": "15.6.7"
       }
     },
     "@types/react-test-renderer": {
@@ -886,7 +886,7 @@
       "resolved": "https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-15.5.5.tgz",
       "integrity": "sha512-SEt2f9Hf+Y/OGstIDrINnls6wpeZGt9xiROBFjfMxXKbqg7zYkPVB7D58Rg9TZbi2kuxatchVTdiliYLs8WK0g==",
       "requires": {
-        "@types/react": "15.0.38"
+        "@types/react": "15.6.7"
       }
     },
     "@types/resemblejs": {
@@ -904,7 +904,7 @@
       "resolved": "https://registry.npmjs.org/@types/storybook__react/-/storybook__react-3.0.5.tgz",
       "integrity": "sha512-febLx40iQWoQKVaEMpxdzkJnqncPHoRivlilc3JhHJiRuBY1Mqa1yTKcvQ5RiFAYFIuv4x+bRuSIXErk5v41Bg==",
       "requires": {
-        "@types/react": "15.0.38",
+        "@types/react": "15.6.7",
         "@types/webpack-env": "1.13.0"
       }
     },
