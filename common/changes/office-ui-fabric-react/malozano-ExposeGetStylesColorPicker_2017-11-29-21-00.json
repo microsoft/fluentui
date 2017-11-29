@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SwatchColorPicker: Change scss to js styling",
-      "type": "minor"
+      "comment": "SwatchColorPicker: Expose getStyles of colorCell subcomponent",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

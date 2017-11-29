@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Nov 2017 02:24:21 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2017 11:24:06 GMT and should not be manually modified.
+
+## 5.27.0
+Wed, 29 Nov 2017 11:24:06 GMT
+
+### Minor changes
+
+- SelectableOption: New disabled prop for options. ComboBox: Updated styling per design spec, including new rootPressed prop, color updates, and className updates.
+- SwatchColorPicker: Change scss to js styling
+- Updating TypeScript to 2.6.2.
 
 ## 5.26.1
 Tue, 28 Nov 2017 02:24:21 GMT
