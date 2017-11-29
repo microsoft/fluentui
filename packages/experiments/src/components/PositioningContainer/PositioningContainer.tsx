@@ -381,7 +381,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   private _getTarget(props: IPositioningContainerTypes = this.props): HTMLElement | string | MouseEvent | IPoint | null {
-    let { useTargetPoint, targetPoint, target } = props;
-    return useTargetPoint ? targetPoint! : target!;
+    let { target } = props;
+    return target!;
   }
 };
