@@ -142,6 +142,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         item={ item }
         id={ id }
         color={ item.color }
+        getStyles={ this.props.getColorGridCellStyles }
         disabled={ this.props.disabled }
         onClick={ this._onCellClick }
         onHover={ this._onGridCellHovered }

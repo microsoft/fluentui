@@ -1,6 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
-import { IColorCellProps } from './ColorPickerGridCell.types';
+import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -95,6 +96,11 @@ export interface ISwatchColorPickerProps {
    * Optional styles for the component.
    */
   getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+
+  /**
+  * Optional styles for the component.
+  */
+  getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 }
 
 /**
