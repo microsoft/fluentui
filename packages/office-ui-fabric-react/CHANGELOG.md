@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2017 11:24:06 GMT and should not be manually modified.
+
+## 5.27.0
+Wed, 29 Nov 2017 11:24:06 GMT
+
+### Minor changes
+
+- SelectableOption: New disabled prop for options. ComboBox: Updated styling per design spec, including new rootPressed prop, color updates, and className updates.
+- SwatchColorPicker: Change scss to js styling
+- Updating TypeScript to 2.6.2.
+
+## 5.26.1
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Patches
+
+- Contextual Menu: made it so we can tab through items
+
+## 5.26.0
+Mon, 27 Nov 2017 22:13:20 GMT
+
+### Minor changes
+
+- DetailsList: Resizing columns in justified mode doesn't affect columns on the left.
+
+### Patches
+
+- ContextualMenu: Add ability to open splitButton chevron menu, when they are inside menus
 
 ## 5.25.0
 Thu, 23 Nov 2017 11:10:13 GMT

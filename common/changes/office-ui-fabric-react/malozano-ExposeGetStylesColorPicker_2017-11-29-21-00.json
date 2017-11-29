@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: Add ability to open splitButton chevron menu, when they are inside menus",
+      "comment": "SwatchColorPicker: Expose getStyles of colorCell subcomponent",
       "type": "patch"
     }
   ],

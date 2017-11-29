@@ -101,14 +101,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     let newItems = newProps.selectedItems;
 
     if (newItems) {
-      let focusIndex: number;
-
-      // If there are less new items than old items then something was removed and we
-      // should try to keep focus consistent
-      if (newItems.length < this.state.items.length) {
-        focusIndex = this.state.items.indexOf(this.selection.getSelection()[0]);
-      }
-
       this.setState({ items: newProps.selectedItems });
     }
   }

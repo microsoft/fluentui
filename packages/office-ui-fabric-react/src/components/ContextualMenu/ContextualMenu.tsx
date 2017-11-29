@@ -300,6 +300,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 className={ this._classNames.root }
                 direction={ arrowDirection }
                 isCircularNavigation={ true }
+                allowTabKey={ true }
               >
                 <ul
                   aria-label={ ariaLabel }
@@ -655,7 +656,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which === KeyCodes.escape
-      || ev.which === KeyCodes.tab
       || (ev.which === submenuCloseKey && this.props.isSubMenu && this.props.arrowDirection === FocusZoneDirection.vertical)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
