@@ -43,10 +43,10 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * Callback when the opening animation begins
    */
-  onAnimationBegin?: () => void;
+  onAnimationOpenStart?: () => void;
 
   /**
    * Callback when the opening animation completes
    */
-  onAnimationEnd?: () => void;
+  onAnimationOpenEnd?: () => void;
 }

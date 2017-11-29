@@ -166,14 +166,14 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
 
     this._translateAnimationContainer.addEventListener('animationstart', () => {
-      if (this.props.onAnimationBegin) {
-        this.props.onAnimationBegin();
+      if (this.props.onAnimationOpenStart) {
+        this.props.onAnimationOpenStart();
       }
     });
 
     this._translateAnimationContainer.addEventListener('animationend', () => {
-      if (this.props.onAnimationEnd) {
-        this.props.onAnimationEnd();
+      if (this.props.onAnimationOpenEnd) {
+        this.props.onAnimationOpenEnd();
       }
     });
   }
@@ -189,7 +189,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
      * The target element the mouse would be in
      * proximity to
      */
-    let targetElementRect: ClientRect;
+    let targetElementRect: ClientRect = targetElement.getBoundingClientRect();
 
     // When the window resizes we want to async
     // get the bounding client rectangle.
@@ -212,10 +212,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
       let mouseY = e.pageY;
       let mouseX = e.pageX;
+      let isMouseInProximity = this._isInsideElement(targetElementRect, mouseX, mouseY);
 
-      this.setState({
-        isMouseInProximity: this._isInsideElement(targetElementRect, mouseX, mouseY)
-      });
+      if (isMouseInProximity !== this.state.isMouseInProximity) {
+        this.setState({
+          isMouseInProximity: isMouseInProximity
+        });
+      }
     });
   }
 
