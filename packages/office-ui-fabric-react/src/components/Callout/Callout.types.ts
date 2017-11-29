@@ -187,4 +187,9 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * When not set the callout will expand with contents up to the bottom of the screen
    */
   calloutMaxHeight?: number;
+
+  /**
+   * Callback when the Callout body is scrolled.
+   */
+  onScroll?: () => void;
 }
