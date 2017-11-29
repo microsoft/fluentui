@@ -20,11 +20,11 @@ function stringifyResults(expected: any, actual: any) {
 function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let { callout, target, bounds, beakWidth } = testValues;
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;
-  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), gap);
+  let result: positioningFunctions.IElementPosition = positioningFunctions._positionElementWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), gap);
 
-  let beak = positioningFunctions._positionBeak(beakWidth, result, target, 0);
+  let beak = positioningFunctions._positionBeak(beakWidth, { ...result, targetRectangle: target });
 
-  expect(result.calloutRectangle).toEqual(validate.callout);
+  expect(result.elementRectangle).toEqual(validate.callout);
 
   for (const key in beak) {
     if (beak[key]) {
@@ -38,9 +38,9 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
 
 function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let { callout, target, bounds, beakWidth } = testValues;
-  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), beakWidth);
+  let result: positioningFunctions.IElementPosition = positioningFunctions._positionElementWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), beakWidth);
 
-  expect(result.calloutRectangle).toEqual(validate.callout);
+  expect(result.elementRectangle).toEqual(validate.callout);
 }
 
 describe('Callout Positioning', () => {
