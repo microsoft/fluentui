@@ -54,8 +54,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // tslint:disable-next-line:no-unused-variable
   private _dropdownLabel: HTMLElement;
   private _id: string;
+  private _isScrollIdle: boolean;
+  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IDropdownProps) {
+    super(props);
     props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
@@ -76,6 +80,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     });
 
     this._id = props.id || getId('Dropdown');
+    this._isScrollIdle = true;
 
     this.state = {
       isOpen: false
@@ -369,6 +374,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
             target={ this._dropDown }
             onDismiss={ this._onDismiss }
+            onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
           >
@@ -554,18 +560,47 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     };
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
+  @autobind
+  private _onScroll() {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
+      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this._scrollIdleTimeoutId = undefined;
+    } else {
+      this._isScrollIdle = false;
+    }
+
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+  }
+
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     let targetElement = ev.currentTarget as HTMLElement;
     targetElement.focus();
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
+
+    if (!this._isScrollIdle || document.activeElement === targetElement) {
+      return;
+    }
+
     targetElement.focus();
   }
 
   @autobind
   private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     this._host.focus();
   }
 

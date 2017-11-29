@@ -19,6 +19,7 @@ exports[`Callout renders Callout correctly 1`] = `
       aria-labelledby={undefined}
       className="ms-Callout-main"
       onKeyDown={[Function]}
+      onScroll={undefined}
       role={undefined}
       style={
         Object {

@@ -117,10 +117,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
-  private _enterTimerId: number;
+  private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
+  private _isScrollIdle: boolean;
+  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -136,7 +139,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     });
 
     this._isFocusingPreviousElement = false;
-    this._enterTimerId = 0;
+    this._isScrollIdle = true;
   }
 
   @autobind
@@ -278,6 +281,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           className='ms-ContextualMenu-Callout'
           setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
+          onScroll={ this._onScroll }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }
         >
@@ -688,7 +692,27 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
+  @autobind
+  private _onScroll() {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
+      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this._scrollIdleTimeoutId = undefined;
+    } else {
+      this._isScrollIdle = false;
+    }
+
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+  }
+
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     let targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
@@ -703,9 +727,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+
     let targetElement = ev.currentTarget as HTMLElement;
 
-    if (targetElement === this._targetWindow.document.activeElement as HTMLElement) {
+    if (!this._isScrollIdle || targetElement === this._targetWindow.document.activeElement as HTMLElement) {
       return;
     }
 
@@ -722,7 +747,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   @autobind
   private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
-    this._async.clearTimeout(this._enterTimerId);
+    if (!this._isScrollIdle) {
+      return;
+    }
+
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+    }
 
     if (item.key === this.state.expandedMenuItemKey && hasSubmenuItems(item)) {
       return;
