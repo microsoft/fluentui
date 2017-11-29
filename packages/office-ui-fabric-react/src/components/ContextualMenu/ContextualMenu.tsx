@@ -727,8 +727,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.key === this.state.expandedMenuItemKey && hasSubmenuItems(item)) {
       return;
     }
-
-    this._host.focus();
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {

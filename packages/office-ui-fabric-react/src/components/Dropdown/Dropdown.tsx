@@ -484,7 +484,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             ) }
             onClick={ this._onItemClick(item.index!) }
             onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-            onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
             onMouseMove={ this._onItemMouseMove.bind(this, item) }
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
@@ -503,7 +502,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             onChange={ this._onItemClick(item.index!) }
             inputProps={ {
               onMouseEnter: this._onItemMouseEnter.bind(this, item),
-              onMouseLeave: this._onMouseItemLeave.bind(this, item),
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
@@ -562,11 +560,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
     targetElement.focus();
-  }
-
-  @autobind
-  private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
-    this._host.focus();
   }
 
   @autobind
