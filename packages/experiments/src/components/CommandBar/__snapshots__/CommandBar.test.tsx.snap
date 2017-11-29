@@ -10,6 +10,7 @@ exports[`CommandBar renders commands correctly 1`] = `
     <div
       className=
           ms-CommandBar
+          TestClassName
           {
             background-color: #f4f4f4;
             display: flex;
@@ -31,7 +32,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               display: flex;
               flex-grow: 1;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone0"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -130,7 +131,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__2"
+                  id="id__1"
                 >
                   asdf
                 </div>
@@ -231,7 +232,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__5"
+                  id="id__4"
                 >
                   asdf
                 </div>
@@ -251,7 +252,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               display: flex;
               flex-shrink: 0;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

@@ -144,11 +144,8 @@ describe('Form', () => {
     });
 
     it('Invalid values are not returned', () => {
-      let result: any;
       let renderedForm: Form = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ (value: any) => { result = value; } }
-        >
+        <Form onSubmit={ (value: any) => { /*stub*/ } }>
           <FormTextInput
             inputKey='field'
             validators={ [Validators.required(formRequiredTestMessage)] }
