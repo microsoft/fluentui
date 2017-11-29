@@ -46,6 +46,12 @@ export interface IIconOptions {
    * However, consider whether the problems listed above will cause issues.
    **/
   disableWarnings: boolean;
+
+  /**
+   * @deprecated
+   * Use 'disableWarnings' instead.
+   */
+  warnOnMissingIcons?: boolean;
 }
 
 export interface IIconRecords {
@@ -58,7 +64,8 @@ const ICON_SETTING_NAME = 'icons';
 
 const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
   __options: {
-    disableWarnings: false
+    disableWarnings: false,
+    warnOnMissingIcons: true
   },
   __remapped: {}
 });
@@ -84,7 +91,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
       const code = icons[iconName];
       const normalizedIconName = iconName.toLowerCase();
 
-      if (_iconSettings[normalizedIconName] && !options.disableWarnings) {
+      if (_iconSettings[normalizedIconName] && !options.disableWarnings && options.warnOnMissingIcons) {
         warn(`Icon '${iconName} being re-registered`);
       }
 
@@ -139,7 +146,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
         subset.isRegistered = true;
       }
     } else {
-      if (!options.disableWarnings) {
+      if (!options.disableWarnings && options.warnOnMissingIcons) {
         warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
       }
     }
