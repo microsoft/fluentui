@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 29 Nov 2017 11:24:06 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2017 11:23:35 GMT and should not be manually modified.
+
+## 5.12.0
+Thu, 30 Nov 2017 11:23:35 GMT
+
+### Minor changes
+
+- Updating the `registerIcons` helper to take in options.
 
 ## 5.11.1
 Wed, 29 Nov 2017 11:24:05 GMT
