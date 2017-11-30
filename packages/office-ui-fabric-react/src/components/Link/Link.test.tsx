@@ -9,4 +9,14 @@ describe('Link', () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  it('renders disabled Link correctly', () => {
+    const component = renderer.create(<Link href='#' disabled={ true }>I'm a disabled link</Link>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('renders Link with no href as a button', () => {
+    const component = renderer.create(<Link>I'm a link as a button</Link>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
