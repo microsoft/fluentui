@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/icons",
+      "packageName": "office-ui-fabric-react",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/icons",
+  "packageName": "office-ui-fabric-react",
   "email": "dzearing@microsoft.com"
 }
