@@ -146,6 +146,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
+   * Callback when a menu is dismissed
+   */
+  onDismissMenu?: () => void;
+
+  /**
    * Description of the action this button takes.
    * Only used for compound buttons
    */

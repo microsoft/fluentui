@@ -960,6 +960,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onDismiss() {
 
+    // I need to put my code in this method
     // reset the selected index
     // to the last valud state
     this._resetSelectedIndex();

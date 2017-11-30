@@ -368,6 +368,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
+
+    if (currentMenuProps && this.props.onDismissMenu) {
+      this.props.onDismissMenu();
+    }
   }
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
