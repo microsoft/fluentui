@@ -3,11 +3,13 @@ import FileIconType from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 
-const GENERIC_FILE = 'genericfile';
-const FOLDER = 'folder';
-const SHARED_FOLDER = 'sharedfolder';
-const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'listitem';
+const GENERIC_FILE: string = 'genericfile';
+const FOLDER: string = 'folder';
+const SHARED_FOLDER: string = 'sharedfolder';
+const DOCSET_FOLDER: string = 'docset';
+const LIST_ITEM: string = 'listitem';
+
+const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 96; // Designers might add 64 later
 export type ImageFileType = 'svg' | 'png';
@@ -26,9 +28,9 @@ export interface IFileTypeIconOptions {
      */
     type?: FileIconType;
     /**
-     * The size of the icon in pixels.
+     * The size of the icon in pixels. Defaults to 16.
      */
-    size: FileTypeIconSize;
+    size?: FileTypeIconSize;
     /**
      * The type of image file to use. Can be svg or png.
      * Defaults to svg.
@@ -37,14 +39,14 @@ export interface IFileTypeIconOptions {
 }
 
 /**
- * This function returns the name of a file type icon given the IFileTypeIconOptions.
+ * This function returns properties for a file type icon given the IFileTypeIconOptions.
  * It accounts for different device pixel ratios. For example,
  * getFileTypeIconName({extension: 'doc', size: 16, imageFileType: 'png'})
- * will return 'docx16_2x_png' if the devicePixelRatio is 2.
+ * will return { iconName: 'docx16_2x_png' } if the devicePixelRatio is 2.
  * 
  * @param options
  */
-export function getFileTypeIconName(options: IFileTypeIconOptions): string {
+export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string } {
 
     // First, obtain the base name of the icon using the extension or type.
     let iconBaseName: string = GENERIC_FILE;
@@ -69,9 +71,10 @@ export function getFileTypeIconName(options: IFileTypeIconOptions): string {
 
     // Next, obtain the suffix using the icon size, user's device pixel ratio, and
     // preference for svg or png
-    let suffix: string = getFileTypeIconSuffix(options.size, options.imageFileType);
+    let size: FileTypeIconSize = options.size || DEFAULT_ICON_SIZE;
+    let suffix: string = getFileTypeIconSuffix(size, options.imageFileType);
     
-    return iconBaseName + suffix;
+    return { iconName: iconBaseName + suffix };
 
 }
 
