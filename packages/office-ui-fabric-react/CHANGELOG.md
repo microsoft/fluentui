@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Nov 2017 11:24:06 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2017 01:16:12 GMT and should not be manually modified.
+
+## 5.28.0
+Thu, 30 Nov 2017 01:16:12 GMT
+
+### Minor changes
+
+- Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate.
+- ComboBox/Dropdown/ContextualMenu: Update how the focus gets updated for hover so that 1) we aren't blasting mouseMoves and 2) so we get rid of weirdness around  hover and scroll
+
+### Patches
+
+- SwatchColorPicker: Expose getStyles of colorCell subcomponent
 
 ## 5.27.0
 Wed, 29 Nov 2017 11:24:06 GMT
