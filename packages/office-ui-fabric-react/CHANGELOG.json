@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.28.0",
+      "tag": "office-ui-fabric-react_v5.28.0",
+      "date": "Thu, 30 Nov 2017 01:16:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "70276089a58cdf49a4136097788d74ef3d089674",
+            "comment": "Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "52bce08e9e3c61aa1f40d6b56ca8d32e25ac44e9",
+            "comment": "ComboBox/Dropdown/ContextualMenu: Update how the focus gets updated for hover so that 1) we aren't blasting mouseMoves and 2) so we get rid of weirdness around  hover and scroll"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "41d25c9a4baee27a246ea0a74bdff4e5861204c8",
+            "comment": "SwatchColorPicker: Expose getStyles of colorCell subcomponent"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.27.0",
       "tag": "office-ui-fabric-react_v5.27.0",
       "date": "Wed, 29 Nov 2017 11:24:06 GMT",
