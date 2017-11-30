@@ -171,7 +171,12 @@ export class Stylesheet {
         break;
 
       case InjectionMode.appendChild:
-        element!.appendChild(document.createTextNode(rule));
+        const head: HTMLHeadElement = document.getElementsByTagName('head')[0];
+        const styleElement: HTMLStyleElement = document.createElement('style');
+
+        styleElement.type = 'text/css';
+        styleElement.appendChild(document.createTextNode(rule));
+        head.appendChild(styleElement);
         break;
 
       default:
