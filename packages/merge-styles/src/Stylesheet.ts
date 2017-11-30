@@ -31,6 +31,7 @@ export interface IStyleSheetConfig {
    * Injection mode for how rules are inserted.
    */
   injectionMode?: InjectionMode;
+  onInsertRule?: (rule: string) => void;
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
@@ -76,7 +77,7 @@ export class Stylesheet {
 
   constructor(config?: IStyleSheetConfig) {
     this._config = {
-      injectionMode: InjectionMode.insertNode,
+      injectionMode: InjectionMode.appendChild,
       ...config
     };
 
@@ -182,6 +183,10 @@ export class Stylesheet {
       default:
         this._rules.push(rule);
         break;
+    }
+
+    if (this._config.onInsertRule) {
+      this._config.onInsertRule(rule);
     }
   }
 
