@@ -176,8 +176,12 @@ export const getCaretDownButtonStyles = memoizeFunction((
       color: caretButtonTextColorHoveredChecked
     },
     rootChecked: {
+      backgroundColor: caretButtonBackgroundChecked,
+      color: caretButtonTextColorHoveredChecked
+    },
+    rootCheckedHovered: {
       backgroundColor: caretButtonBackgroundCheckedHovered,
-      color: caretButtonTextColorHoveredChecked,
+      color: caretButtonTextColorHoveredChecked
     },
     rootDisabled: getDisabledStyles(theme),
   };
@@ -196,7 +200,6 @@ export const getStyles = memoizeFunction((
   const ComboBoxRootTextColor = semanticColors.bodyText;
   const ComboBoxRootBorderColor = semanticColors.inputBorder;
   const ComboBoxRootBorderColorHovered = semanticColors.inputBorderHovered;
-  const ComboBoxRootBorderColorActive = palette.themeDark;
   const ComboBoxRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
   const ComboBoxRootColorErrored = semanticColors.errorText;
   const ComboBoxCalloutBorderColor = palette.neutralLight;
@@ -264,7 +267,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootPressed: {
-      borderColor: ComboBoxRootBorderColorActive
+      borderColor: ComboBoxRootBorderColorFocused
     },
 
     rootFocused: {
