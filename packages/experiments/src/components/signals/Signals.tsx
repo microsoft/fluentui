@@ -96,7 +96,7 @@ export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
     <span
       { ...spanProps }
-      className={ css(SignalStyles.signal, SignalsStyles.new) }
+      className={ css(SignalStyles.signal, SignalsStyles.newSignal) }
     >
       <Icon
         ariaLabel={ props.ariaLabel }
