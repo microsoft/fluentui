@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "merge-styles: Fixes injection mode of appendNode by adding style tags rather than modifying the tag (fixes flashes)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "kchau@microsoft.com"
+}
