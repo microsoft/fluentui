@@ -4,5 +4,5 @@ import { setIconOptions } from '@uifabric/styling';
 
 // Suppress icon warnings.
 setIconOptions({
-  warnOnMissingIcons: false
+  disableWarnings: true
 });
