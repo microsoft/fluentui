@@ -1,9 +1,16 @@
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,7 +20,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-03329fef.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-4-46fbc7bc.woff') format('woff')`, 
     },
     icons: {
       'ReminderGroup': '\uEBF8',
@@ -62,7 +69,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'Photo2Add': '\uECAB',
       'Photo2Remove': '\uECAC',
       'POI': '\uECAF',
-      'FacebookLogo': '\uECB3',
       'AddTo': '\uECC8',
       'RadioBtnOff': '\uECCA',
       'RadioBtnOn': '\uECCB',
@@ -109,13 +115,12 @@ export function initializeIcons(baseUrl: string = ''): void {
       'AdminPLogoInverse32': '\uED71',
       'AdminSLogoInverse32': '\uED72',
       'AdminYLogoInverse32': '\uED73',
-      'BoxLogo': '\uED75',
       'DelveLogoInverse': '\uED76',
-      'DropboxLogo': '\uED77',
       'ExchangeLogoInverse': '\uED78',
       'LyncLogo': '\uED79',
-      'OfficeVideoLogoInverse': '\uED7A',
-      'ParatureLogo': '\uED7B'
+      'OfficeVideoLogoInverse': '\uED7A'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

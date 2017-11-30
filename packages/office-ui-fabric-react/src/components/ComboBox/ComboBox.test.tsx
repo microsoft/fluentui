@@ -4,10 +4,11 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import { KeyCodes } from '../../Utilities';
 
 import { ComboBox } from './ComboBox';
-import { IComboBox, IComboBoxOption } from './ComboBox.Props';
+import { IComboBox, IComboBoxOption } from './ComboBox.types';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -22,6 +23,19 @@ const DEFAULT_OPTIONS2: IComboBoxOption[] = [
 ];
 
 describe('ComboBox', () => {
+  it('Renders ComboBox correctly', () => {
+    const createNodeMock = (el: React.ReactElement<{}>) => {
+      return {
+        __events__: {}
+      };
+    };
+    const component = renderer.create(
+      <ComboBox options={ DEFAULT_OPTIONS } />,
+      { createNodeMock }
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('Can flip between enabled and disabled.', () => {
     let wrapper = mount(
@@ -340,5 +354,23 @@ describe('ComboBox', () => {
     buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
     expect(comboBoxRoot.find('.is-opened').length).toEqual(0);
+  });
+
+  it('Call onMenuOpened when clicking on the button', () => {
+    let comboBoxRoot;
+    let buttonElement;
+    const returnUndefined = jest.fn();
+
+    let wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS2 }
+        onMenuOpen={ returnUndefined }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    buttonElement = comboBoxRoot.find('button');
+    buttonElement.simulate('click');
+    expect(returnUndefined.mock.calls.length).toBe(1);
   });
 });

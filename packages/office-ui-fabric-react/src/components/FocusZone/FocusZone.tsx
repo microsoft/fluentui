@@ -3,7 +3,7 @@ import {
   FocusZoneDirection,
   IFocusZone,
   IFocusZoneProps
-} from './FocusZone.Props';
+} from './FocusZone.types';
 import {
   BaseComponent,
   EventGroup,
@@ -40,6 +40,8 @@ interface IPoint {
 }
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
+const ALLOW_VIRTUAL_ELEMENTS = false;
+
 export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
 
   public static defaultProps: IFocusZoneProps = {
@@ -71,7 +73,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (this._root) {
       const windowElement = this._root.ownerDocument.defaultView;
 
-      let parentElement = getParent(this._root);
+      let parentElement = getParent(this._root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (
         parentElement &&
@@ -82,7 +84,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           this._isInnerZone = true;
           break;
         }
-        parentElement = getParent(parentElement);
+        parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
       }
 
       if (!this._isInnerZone) {
@@ -177,6 +179,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (element) {
       this._setActiveElement(element);
+      if (this._activeElement) {
+        this._activeElement.focus();
+      }
 
       return true;
     }
@@ -199,7 +204,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           this._activeElement = parentElement;
           break;
         }
-        parentElement = getParent(parentElement) as HTMLElement;
+        parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
     }
     if (onActiveElementChanged) {
@@ -229,7 +234,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     while (target && target !== this._root) {
       path.push(target);
-      target = getParent(target) as HTMLElement;
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
     }
 
     while (path.length) {
@@ -265,7 +270,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       this._activeElement.tabIndex = 0;
-      this._activeElement.focus();
     }
   }
 
@@ -347,6 +351,26 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           }
           return;
 
+        case KeyCodes.tab:
+          if (this.props.allowTabKey) {
+            if (direction === FocusZoneDirection.vertical) {
+              if (ev.shiftKey) {
+                this._moveFocusUp();
+              } else {
+                this._moveFocusDown();
+              }
+              break;
+            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+              if (ev.shiftKey) {
+                this._moveFocusLeft();
+              } else {
+                this._moveFocusRight();
+              }
+              break;
+            }
+            return;
+          }
+
         case KeyCodes.home:
           if (
             this._isElementInput(ev.target as HTMLElement) &&
@@ -409,7 +433,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         return true;
       }
 
-      target = getParent(target) as HTMLElement;
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
     } while (target !== this._root);
 
     return false;
@@ -656,14 +680,14 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _getOwnerZone(element?: HTMLElement): HTMLElement {
-    let parentElement = getParent(element as HTMLElement);
+    let parentElement = getParent(element as HTMLElement, ALLOW_VIRTUAL_ELEMENTS);
 
     while (parentElement && parentElement !== this._root && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
         return parentElement;
       }
 
-      parentElement = getParent(parentElement);
+      parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
     return this._root;

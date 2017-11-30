@@ -6,15 +6,15 @@
   "scripts": {
     "build": "",
     "clean": "",
-    "screener": "screener-storybook --conf screener.config.js --debug",
+    "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
-    "storybook": "start-storybook --port 5555"
+    "start": "start-storybook --port 5555"
   },
   "devDependencies": {
     "@storybook/addon-options": "=3.2.3",
     "@storybook/react": "^3.2.3",
-    "@types/react": "15.0.38",
-    "@types/react-dom": "15.5.1",
+    "@types/react": "15.6.7",
+    "@types/react-dom": "15.5.6",
     "@types/storybook__react": "=3.0.5",
     "css-loader": "=0.27.3",
     "file-loader": "=0.11.1",
@@ -28,7 +28,8 @@
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
-    "office-ui-fabric-react": ">=5.8.0 <6.0.0",
+    "@uifabric/icons": ">=5.2.0 <6.0.0",
+    "office-ui-fabric-react": ">=5.28.0 <6.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "typescript": "2.4.2",

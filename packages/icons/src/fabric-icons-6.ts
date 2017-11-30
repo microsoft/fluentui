@@ -1,9 +1,16 @@
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,7 +20,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-2ab76fc9.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-6-328cd253.woff') format('woff')`, 
     },
     icons: {
       'CalendarAgenda': '\uEE9A',
@@ -107,8 +114,6 @@ export function initializeIcons(baseUrl: string = ''): void {
       'RecycleBin': '\uEF87',
       'EmptyRecycleBin': '\uEF88',
       'Hide2': '\uEF89',
-      'iOSAppStoreLogo': '\uEF8A',
-      'AndroidLogo': '\uEF8B',
       'Breadcrumb': '\uEF8C',
       'PageEdit': '\uEFB6',
       'Database': '\uEFC7',
@@ -117,5 +122,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'ZipFolder': '\uF012',
       'TextDocument': '\uF029'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

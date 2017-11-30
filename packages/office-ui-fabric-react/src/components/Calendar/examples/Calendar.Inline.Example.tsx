@@ -76,6 +76,9 @@ export interface ICalendarInlineExampleProps {
   isDayPickerVisible?: boolean;
   showMonthPickerAsOverlay?: boolean;
   showWeekNumbers?: boolean;
+  minDate?: Date;
+  maxDate?: Date;
+  showSixWeeksByDefault?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -118,6 +121,12 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           Selected dates:
           <span> { !dateRangeString ? 'Not set' : dateRangeString }</span>
         </div>
+        { (this.props.minDate || this.props.maxDate) &&
+          <div>
+            Date boundary:
+            <span> { this.props.minDate ? this.props.minDate.toLocaleDateString() : 'Not set' }-{ this.props.maxDate ? this.props.maxDate.toLocaleDateString() : 'Not set' }</span>
+          </div>
+        }
         <Calendar
           onSelectDate={ this._onSelectDate }
           onDismiss={ this._onDismiss }
@@ -132,6 +141,9 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           isDayPickerVisible={ this.props.isDayPickerVisible }
           showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
           showWeekNumbers={ this.props.showWeekNumbers }
+          minDate={ this.props.minDate }
+          maxDate={ this.props.maxDate }
+          showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
         />
         { this.props.showNavigateButtons &&
           <div>

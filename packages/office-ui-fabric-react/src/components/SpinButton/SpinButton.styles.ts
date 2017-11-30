@@ -1,31 +1,31 @@
-import { IButtonStyles } from '../../Button';
-import { memoizeFunction } from '../../Utilities';
-import { ISpinButtonStyles } from './SpinButton.Props';
-
 import {
-  ITheme,
+  FontSizes,
   IRawStyle,
+  ITheme,
   concatStyleSets,
-  FontSizes
+  HighContrastSelector
 } from '../../Styling';
 
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+import { IButtonStyles } from '../../Button';
+import { ISpinButtonStyles } from './SpinButton.types';
+import { memoizeFunction } from '../../Utilities';
 
 const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
-  const { palette } = theme;
+  const { semanticColors } = theme;
 
-  const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
-  const SpinButtonBackgroundColorDisabled = palette.neutralLighter;
-  const SpinButtonBorderColorDisabled = palette.neutralLighter;
+  const SpinButtonTextColorDisabled = semanticColors.disabledText;
+  const SpinButtonBackgroundColorDisabled = semanticColors.disabledBackground;
 
   return {
     backgroundColor: SpinButtonBackgroundColorDisabled,
-    borderColor: SpinButtonBorderColorDisabled,
+    borderColor: 'transparent',
     pointerEvents: 'none',
     cursor: 'default',
     color: SpinButtonTextColorDisabled,
-    [MS_HIGHCONTRAST_ACTIVE]: {
-      color: 'GrayText'
+    selectors: {
+      [HighContrastSelector]: {
+        color: 'GrayText'
+      }
     }
   };
 });
@@ -64,24 +64,30 @@ export const getArrowButtonStyles = memoizeFunction((
     rootChecked: {
       backgroundColor: ArrowButtonBackgroundPressed,
       color: ArrowButtonTextColorPressed,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        backgroundColor: 'Highlight',
-        color: 'HighlightText'
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Highlight',
+          color: 'HighlightText'
+        }
       }
     },
     rootPressed: {
       backgroundColor: ArrowButtonBackgroundPressed,
       color: ArrowButtonTextColorPressed,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        backgroundColor: 'Highlight',
-        color: 'HighlightText'
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Highlight',
+          color: 'HighlightText'
+        }
       }
     },
     rootDisabled: {
       opacity: 0.5,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'GrayText',
-        opacity: 1,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          opacity: 1,
+        }
       }
     },
     icon: {
@@ -113,7 +119,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<ISpinButtonStyles>
 ): ISpinButtonStyles => {
-  const { fonts, palette } = theme;
+  const { fonts, palette, semanticColors } = theme;
 
   const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
   const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
@@ -123,6 +129,8 @@ export const getStyles = memoizeFunction((
   const SpinButtonInputTextColor = palette.neutralPrimary;
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
+
+  const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
   const defaultStyles: ISpinButtonStyles = {
     root: {
@@ -160,6 +168,9 @@ export const getStyles = memoizeFunction((
 
       fontSize: '20px'
     },
+    iconDisabled: {
+      color: SpinButtonIconDisabledColor
+    },
     label: {
       pointerEvents: 'none',
       paddingTop: '2px',
@@ -170,8 +181,10 @@ export const getStyles = memoizeFunction((
     labelDisabled: {
       cursor: 'default',
       color: SpinButtonTextColorDisabled,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'GrayText'
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
       }
     },
     spinButtonWrapper: {
@@ -188,15 +201,19 @@ export const getStyles = memoizeFunction((
     spinButtonWrapperHovered: {
       borderColor: SpinButtonRootBorderColorHovered,
       outline: '2px dashed transparent',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: 'Highlight'
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Highlight'
+        }
       }
     },
     spinButtonWrapperFocused: {
       borderColor: SpinButtonRootBorderColorFocused,
       outline: '2px dashed transparent',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: 'Highlight'
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Highlight'
+        }
       }
     },
     spinButtonWrapperDisabled: _getDisabledStyles(theme),
@@ -228,10 +245,12 @@ export const getStyles = memoizeFunction((
     inputTextSelected: {
       backgroundColor: SpinButtonInputBackgroundColorSelected,
       color: SpinButtonInputTextColorSelected,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        backgroundColor: 'Highlight',
-        borderColor: 'Highlight',
-        color: 'HighlightText',
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Highlight',
+          borderColor: 'Highlight',
+          color: 'HighlightText',
+        }
       }
     },
     inputDisabled: _getDisabledStyles(theme),

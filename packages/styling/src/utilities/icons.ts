@@ -12,10 +12,11 @@ import {
 } from '@uifabric/merge-styles/lib/index';
 
 export interface IIconSubset {
-  fontFace: IFontFace;
+  fontFace?: IFontFace;
   icons: {
-    [key: string]: string;
+    [key: string]: string | JSX.Element;
   };
+
   style?: IRawStyle;
 }
 
@@ -25,12 +26,32 @@ export interface IIconSubsetRecord extends IIconSubset {
 }
 
 export interface IIconRecord {
-  code: string;
+  code: string | undefined;
   subset: IIconSubsetRecord;
 }
 
 export interface IIconOptions {
-  warnOnMissingIcons: boolean;
+  /**
+   * By default, registering the same set of icons will generate a console warning per duplicate icon
+   * registered, because this scenario can create unexpected consequences.
+   *
+   * Some scenarios include:
+   *
+   * Icon set was previously registered using a different base url.
+   * Icon set was previously registered but a different version was provided.
+   * Icons in a previous registered set overlap with a new set.
+   *
+   * To simply ignore previously registered icons, you can specify to disable warnings. This means
+   * that if an icon which was previous registered is registered again, it will be silently ignored.
+   * However, consider whether the problems listed above will cause issues.
+   **/
+  disableWarnings: boolean;
+
+  /**
+   * @deprecated
+   * Use 'disableWarnings' instead.
+   */
+  warnOnMissingIcons?: boolean;
 }
 
 export interface IIconRecords {
@@ -40,8 +61,10 @@ export interface IIconRecords {
 }
 
 const ICON_SETTING_NAME = 'icons';
-const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
+
+const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
   __options: {
+    disableWarnings: false,
     warnOnMissingIcons: true
   },
   __remapped: {}
@@ -52,7 +75,7 @@ const _icons = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
  *
  * @param iconSubset - the icon subset definition.
  */
-export function registerIcons(iconSubset: IIconSubset): void {
+export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOptions>): void {
   let subset = {
     ...iconSubset,
     isRegistered: false,
@@ -60,19 +83,24 @@ export function registerIcons(iconSubset: IIconSubset): void {
   };
   let { icons } = iconSubset;
 
+  // Grab options, optionally mix user provided ones on top.
+  options = options ? { ..._iconSettings.__options, ...options } : _iconSettings.__options;
+
   for (const iconName in icons) {
     if (icons.hasOwnProperty(iconName)) {
       const code = icons[iconName];
       const normalizedIconName = iconName.toLowerCase();
 
-      if (_icons[normalizedIconName]) {
-        warn(`Icon '${iconName} being re-registered`);
+      if (_iconSettings[normalizedIconName]) {
+        if (!options.disableWarnings) {
+          warn(`Icon '${iconName} being re-registered. Ignoring duplicate registration.`);
+        }
+      } else {
+        _iconSettings[normalizedIconName] = {
+          code,
+          subset
+        };
       }
-
-      _icons[normalizedIconName] = {
-        code,
-        subset
-      };
     }
   }
 }
@@ -81,7 +109,7 @@ export function registerIcons(iconSubset: IIconSubset): void {
  * Remaps one icon name to another.
  */
 export function registerIconAlias(iconName: string, mappedToName: string): void {
-  _icons.__remapped[iconName.toLowerCase()] = mappedToName.toLowerCase();
+  _iconSettings.__remapped[iconName.toLowerCase()] = mappedToName.toLowerCase();
 }
 
 /**
@@ -93,17 +121,18 @@ export function registerIconAlias(iconName: string, mappedToName: string): void 
  */
 export function getIcon(name?: string): IIconRecord | undefined {
   let icon: IIconRecord | undefined = undefined;
+  const options = _iconSettings.__options;
 
   name = name ? name.toLowerCase() : '';
-  name = _icons.__remapped[name] || name;
+  name = _iconSettings.__remapped[name] || name;
 
   if (name) {
-    icon = _icons[name!] as IIconRecord;
+    icon = _iconSettings[name!] as IIconRecord;
 
     if (icon) {
       let { subset } = icon;
 
-      if (!subset.isRegistered) {
+      if (subset.fontFace && !subset.isRegistered) {
         // Register font face for given icons.
         fontFace(subset.fontFace);
 
@@ -119,8 +148,8 @@ export function getIcon(name?: string): IIconRecord | undefined {
         subset.isRegistered = true;
       }
     } else {
-      if (_icons.__options.warnOnMissingIcons) {
-        warn(`The icon "${name}" was referenced but not registered.`);
+      if (!options.disableWarnings && options.warnOnMissingIcons) {
+        warn(`The icon "${name}" was used but not registered. See http://aka.ms/fabric-icon-usage for more information.`);
       }
     }
   }
@@ -133,9 +162,9 @@ export function getIcon(name?: string): IIconRecord | undefined {
  *
  * @public
  */
-export function setIconOptions(options: IIconOptions): void {
-  _icons.__options = {
-    ..._icons.__options,
+export function setIconOptions(options: Partial<IIconOptions>): void {
+  _iconSettings.__options = {
+    ..._iconSettings.__options,
     ...options
   };
 }

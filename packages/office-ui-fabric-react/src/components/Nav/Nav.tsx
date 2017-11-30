@@ -8,24 +8,26 @@ import {
   getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandButton } from '../../Button';
+import { ActionButton, IButtonStyles } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../Styling';
 import {
   INav,
   INavProps,
   INavLinkGroup,
   INavLink
-} from './Nav.Props';
+} from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
-// Tne number of pixels of left margin when there is expand/collaps button
-const _indentWithExpandButton: number = 28;
-// Tne number of pixels of left margin when there is expand/collaps button
-const _indentNoExpandButton: number = 20;
+
+// The number of pixels of left margin
+const _baseIndent: number = 3;
+
+// The number of pixels of padding to add to the far side of the button (allows ellipsis to happen)
+const _farSidePadding: number = 20;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -44,8 +46,7 @@ export interface INavState {
 export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
-    groups: null,
-    onRenderLink: (link: INavLink) => (<span className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</span>)
+    groups: null
   };
 
   private _hasExpandButton: boolean;
@@ -129,58 +130,61 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     return this.state.selectedKey;
   }
 
-  private _renderAnchorLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    // Determine the appropriate padding to add before this link.
-    // In RTL, the "before" padding will go on the right instead of the left.
+  private _onRenderLink(link: INavLink) {
+    return (<div className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</div>);
+  }
+
+  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
     const isRtl: boolean = getRTL();
-    const paddingBefore = _indentationSize * nestingLevel +
-      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
+    const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
+    const buttonStyles: IButtonStyles = {
+      root: {
+        [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
+        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
+      },
+      textContainer: {
+        overflow: 'hidden',
+      },
+      label: {
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        lineHeight: '36px'
+      }
+    };
+    let {
+      onRenderLink = this._onRenderLink
+    } = this.props;
+
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
-      <a
-        className={ css('ms-Nav-link', styles.link) }
-        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore + 'px' } }
-        href={ link.url || 'javascript:' }
-        onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
-        aria-label={ link.ariaLabel }
+      <ActionButton
+        className={ mergeStyles(
+          'ms-Nav-link' + link.onClick && 'ms-Nav-linkButton',
+          styles.link,
+          link.onClick && !link.forceAnchor && styles.buttonEntry,
+          this._hasExpandButton && 'isOnExpanded') as string
+        }
+        styles={ buttonStyles }
+        href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
+        iconProps={ { iconName: link.icon || '' } }
+        description={ link.title || link.name }
+        onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
         target={ link.target }
         rel={ rel }
+        aria-label={ link.ariaLabel }
       >
-        { link.iconClassName && (
-          <Icon
-            className={ css(link.iconClassName, styles.iconLink) }
-            iconName='IconLink'
-          />
-        ) }
-        { this.props.onRenderLink!(link) }
-      </a>
-    );
-  }
-
-  private _renderButtonLink(link: INavLink, linkIndex: number) {
-    return (
-      <CommandButton
-        className={ css(
-          'ms-Nav-link ms-Nav-linkButton',
-          styles.link,
-          this._hasExpandButton && 'isOnExpanded ' + styles.linkIsOnExpanded
-        ) }
-        href={ link.url }
-        iconProps={ { iconName: link.icon } }
-        description={ link.title || link.name }
-        onClick={ this._onNavButtonLinkClicked.bind(this, link) }
-      >
-        { link.name }
-      </CommandButton>);
+        { onRenderLink(link, this._onRenderLink) }
+      </ActionButton>);
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
-    const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
+    const absolutePositionString = `${_indentationSize * nestingLevel + 1}px`;
 
     return (
       <div
@@ -197,8 +201,17 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
       >
         { (link.links && link.links.length > 0 ?
           <button
-            style={ { [isRtl ? 'marginRight' : 'marginLeft']: paddingBefore } }
-            className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
+            className={ mergeStyles(
+              'ms-Nav-chevronButton ms-Nav-chevronButton--link',
+              styles.chevronButton,
+              styles.chevronButtonLink,
+              isRtl && {
+                right: absolutePositionString,
+              },
+              !isRtl && {
+                left: absolutePositionString,
+              }) as string
+            }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
@@ -209,9 +222,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             />
           </button> : null
         ) }
-        { link.onClick && !link.forceAnchor
-          ? this._renderButtonLink(link, linkIndex)
-          : this._renderAnchorLink(link, linkIndex, nestingLevel) }
+        { this._renderNavLink(link, linkIndex, nestingLevel) }
       </div>
     );
   }
@@ -292,8 +303,16 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
-    link.isExpanded = !link.isExpanded;
-    this.setState({ isLinkExpandStateChanged: true });
+    const { onLinkExpandClick } = this.props;
+
+    if (onLinkExpandClick) {
+      onLinkExpandClick(ev, link);
+    }
+
+    if (!ev.defaultPrevented) {
+      link.isExpanded = !link.isExpanded;
+      this.setState({ isLinkExpandStateChanged: true });
+    }
 
     ev.preventDefault();
     ev.stopPropagation();

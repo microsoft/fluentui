@@ -4,6 +4,10 @@
   @include ms-padding-left($contentInGrid);
 }
 
+.overview .colorsPageLink {
+  color: $ms-color-themePrimary;
+}
+
 // XL and up
 @media screen and (min-width: $ms-screen-min-xl) {
   .accentGroup {

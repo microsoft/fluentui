@@ -14,7 +14,7 @@ import './styles/styles.scss';
 
 import { initializeIcons } from '@uifabric/icons/lib/index';
 
-initializeIcons('./dist/');
+initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
@@ -145,4 +145,4 @@ function addCSSToHeader(fileName: string) {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.3.0/css/fabric.min.css');
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.0.0/css/fabric.min.css');

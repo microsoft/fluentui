@@ -3,12 +3,14 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
 
 import {
   KeyCodes,
 } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { DropdownMenuItemType, IDropdownOption } from './Dropdown.Props';
+import { DropdownMenuItemType, IDropdownOption } from './Dropdown.types';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -25,6 +27,12 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 describe('Dropdown', () => {
 
   describe('single-select', () => {
+
+    it('Renders single-select Dropdown correctly', () => {
+      const component = renderer.create(<Dropdown options={ DEFAULT_OPTIONS } />);
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
     it('Can flip between enabled and disabled.', () => {
 
@@ -248,6 +256,27 @@ describe('Dropdown', () => {
       }
     });
 
+    it('sets the selected item even when key is number 0', () => {
+      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const selectedKey = 0;
+
+      const wrapper = shallow(
+        <Dropdown
+          options={ options }
+        />
+      );
+
+      // Use .dive() because Dropdown is a decorated component
+      let state = wrapper.dive().state('selectedIndices');
+      expect(state).toEqual([]);
+
+      const newProps = { options, selectedKey };
+      wrapper.setProps(newProps);
+      wrapper.update();
+      state = wrapper.dive().state('selectedIndices');
+      expect(state).toEqual([selectedKey]);
+    });
+
     it('issues the onChanged callback when the selected item is different', () => {
       let container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
@@ -352,6 +381,15 @@ describe('Dropdown', () => {
   });
 
   describe('multi-select', () => {
+    it('Renders multiselect Dropdown correctly', () => {
+      const component = renderer.create(
+        <Dropdown
+          options={ DEFAULT_OPTIONS }
+          multiSelect
+        />);
+      let tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
 
     it('Renders no selected item in default case', () => {
       let container = document.createElement('div');
@@ -383,6 +421,28 @@ describe('Dropdown', () => {
       let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
+    });
+
+    it('sets the selected items even when key is number 0', () => {
+      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      const selectedKeys = [0, 1];
+
+      const wrapper = shallow(
+        <Dropdown
+          multiSelect
+          options={ options }
+        />
+      );
+
+      // Use .dive() because Dropdown is a decorated component
+      let state = wrapper.dive().state('selectedIndices');
+      expect(state).toEqual([]);
+
+      const newProps = { options, selectedKeys };
+      wrapper.setProps(newProps);
+      wrapper.update();
+      state = wrapper.dive().state('selectedIndices');
+      expect(state).toEqual(selectedKeys);
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {

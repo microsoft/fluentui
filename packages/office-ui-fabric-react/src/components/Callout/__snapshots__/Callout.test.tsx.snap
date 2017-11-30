@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Callout renders Callout correctly 1`] = `
+<div
+  className="ms-Callout-container"
+>
+  <div
+    className="ms-Callout"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+    tabIndex={-1}
+  >
+    <div
+      aria-describedby={undefined}
+      aria-label={undefined}
+      aria-labelledby={undefined}
+      className="ms-Callout-main"
+      onKeyDown={[Function]}
+      onScroll={undefined}
+      role={undefined}
+      style={
+        Object {
+          "backgroundColor": undefined,
+          "maxHeight": 750,
+        }
+      }
+    >
+      Content
+    </div>
+  </div>
+</div>
+`;

@@ -13,7 +13,12 @@ export const enum InjectionMode {
   /**
    * Inserts rules using the insertRule api.
    */
-  insertNode = 1
+  insertNode = 1,
+
+  /**
+   * Appends rules using appendChild.
+   */
+  appendChild = 2
 }
 
 /**
@@ -60,7 +65,10 @@ export class Stylesheet {
     _stylesheet = win[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet) {
-      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet();
+      // tslint:disable-next-line:no-string-literal
+      const fabricConfig = (win && win['FabricConfig']) || {};
+
+      _stylesheet = win[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
 
     return _stylesheet;
@@ -68,7 +76,6 @@ export class Stylesheet {
 
   constructor(config?: IStyleSheetConfig) {
     this._config = {
-      async: false,
       injectionMode: InjectionMode.insertNode,
       ...config
     };
@@ -163,6 +170,10 @@ export class Stylesheet {
         }
         break;
 
+      case InjectionMode.appendChild:
+        element!.appendChild(document.createTextNode(rule));
+        break;
+
       default:
         this._rules.push(rule);
         break;
@@ -197,6 +208,7 @@ export class Stylesheet {
   private _getElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = document.createElement('style');
+      this._styleElement.setAttribute('data-merge-styles', 'true');
       document.head.appendChild(this._styleElement);
     }
 

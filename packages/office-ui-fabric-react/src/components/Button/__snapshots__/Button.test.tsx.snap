@@ -1,0 +1,582 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders ActionButton correctly 1`] = `
+<button
+  aria-describedby={null}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className=
+      ms-Button
+      ms-Button--action
+      ms-Button--command
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 40px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &:hover {
+        color: #0078d7;
+      }
+      &:hover .ms-Button-icon {
+        color: #0078d7;
+      }
+      &:active {
+        color: #000000;
+      }
+      &:active .ms-Button-icon {
+        color: #004578;
+      }
+  data-is-focusable={true}
+  disabled={undefined}
+  type="button"
+>
+  <div
+    className=
+        ms-Button-flexContainer
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: flex-start;
+        }
+  >
+    <div
+      className=
+          ms-Button-textContainer
+          {
+            flex-grow: 0;
+          }
+    >
+      <div
+        className=
+            ms-Button-label
+            {
+              line-height: 100%;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
+        id="id__3"
+      >
+        Button
+      </div>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Button renders CommandBarButton correctly 1`] = `
+<button
+  aria-describedby={null}
+  aria-expanded={false}
+  aria-haspopup={true}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-owns={null}
+  aria-pressed={undefined}
+  className=
+      ms-Button
+      ms-Button--commandBar
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        min-width: 40px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #eaeaea;
+        color: #212121;
+      }
+      &:active {
+        background-color: #dadada;
+        color: #000000;
+      }
+  data-is-focusable={true}
+  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  type="button"
+>
+  <div
+    className=
+        ms-Button-flexContainer
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+        }
+  >
+    <i
+      aria-hidden={true}
+      aria-label={undefined}
+      className=
+          ms-Icon
+          ms-Button-icon
+          {
+            display: inline-block;
+          }
+          {
+            color: #106ebe;
+            flex-shrink: 0;
+            font-size: 16px;
+            height: 16px;
+            line-height: 16px;
+            margin-bottom: 0;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top: 0;
+            text-align: center;
+            vertical-align: middle;
+          }
+      data-icon-name="Add"
+      role="presentation"
+    />
+    <div
+      className=
+          ms-Button-textContainer
+          {
+            flex-grow: 1;
+          }
+    >
+      <div
+        className=
+            ms-Button-label
+            {
+              font-weight: normal;
+              line-height: 100%;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
+        id="id__6"
+      >
+        Create account
+      </div>
+    </div>
+    <i
+      aria-hidden={true}
+      aria-label={undefined}
+      className=
+          ms-Icon
+          ms-Button-menuIcon
+          {
+            display: inline-block;
+          }
+          {
+            color: #666666;
+            flex-shrink: 0;
+            font-size: 12px;
+            height: 16px;
+            line-height: 16px;
+            margin-bottom: 0;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top: 0;
+            text-align: center;
+            vertical-align: middle;
+          }
+      data-icon-name="ChevronDown"
+      role="presentation"
+    />
+  </div>
+</button>
+`;
+
+exports[`Button renders CompoundButton correctly 1`] = `
+<button
+  aria-describedby="id__10"
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className=
+      ms-Button
+      ms-Button--compound
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: auto;
+        max-width: 280px;
+        min-height: 72px;
+        outline: transparent;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #eaeaea;
+        color: #000000;
+      }
+      &:hover .ms-Button-description {
+        color: #212121;
+      }
+      &:active {
+        background-color: #c8c8c8;
+        color: #212121;
+      }
+      &:active .ms-Button-description {
+        color: inherit;
+      }
+  data-is-focusable={true}
+  disabled={undefined}
+  type="button"
+>
+  <div
+    className=
+        ms-Button-flexContainer
+        {
+          align-items: flex-start;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+          margin-bottom: ;
+          margin-left: ;
+          margin-right: ;
+          margin-top: ;
+          min-width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Button-textContainer
+          {
+            flex-grow: 1;
+            text-align: left;
+          }
+    >
+      <div
+        className=
+            ms-Button-label
+            {
+              font-weight: 600;
+              line-height: 100%;
+              margin-bottom: 5px;
+              margin-left: 0;
+              margin-right: 0;
+              margin-top: 0;
+            }
+        id="id__9"
+      >
+        Create account
+      </div>
+      <div
+        className=
+            ms-Button-description
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #666666;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              line-height: 100%;
+            }
+        id="id__10"
+      >
+        You can create a new account here.
+      </div>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Button renders DefaultButton correctly 1`] = `
+<button
+  aria-describedby={null}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className=
+      ms-Button
+      ms-Button--default
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f4f4f4;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 32px;
+        min-width: 80px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #eaeaea;
+        color: #000000;
+      }
+      &:active {
+        background-color: #c8c8c8;
+        color: #212121;
+      }
+  data-is-focusable={true}
+  disabled={undefined}
+  type="button"
+>
+  <div
+    className=
+        ms-Button-flexContainer
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+        }
+  >
+    <div
+      className=
+          ms-Button-textContainer
+          {
+            flex-grow: 1;
+          }
+    >
+      <div
+        className=
+            ms-Button-label
+            {
+              font-weight: 600;
+              line-height: 100%;
+              margin-bottom: 0;
+              margin-left: 4px;
+              margin-right: 4px;
+              margin-top: 0;
+            }
+        id="id__0"
+      >
+        Button
+      </div>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Button renders IconButton correctly 1`] = `
+<button
+  aria-describedby={null}
+  aria-label="Emoji"
+  aria-labelledby={null}
+  aria-pressed={undefined}
+  className=
+      ms-Button
+      ms-Button--icon
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: transparent;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 32px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
+        width: 32px;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &:hover {
+        color: #004578;
+      }
+      &:active {
+        color: #0078d7;
+      }
+  data-is-focusable={true}
+  disabled={undefined}
+  title="Emoji"
+  type="button"
+>
+  <div
+    className=
+        ms-Button-flexContainer
+        {
+          align-items: center;
+          display: flex;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+        }
+  >
+    <i
+      aria-hidden={true}
+      aria-label={undefined}
+      className=
+          ms-Icon
+          ms-Button-icon
+          {
+            display: inline-block;
+          }
+          {
+            flex-shrink: 0;
+            font-size: 16px;
+            height: 16px;
+            line-height: 16px;
+            margin-bottom: 0;
+            margin-left: 4px;
+            margin-right: 4px;
+            margin-top: 0;
+            text-align: center;
+            vertical-align: middle;
+          }
+      data-icon-name="Emoji2"
+      role="presentation"
+    />
+  </div>
+</button>
+`;

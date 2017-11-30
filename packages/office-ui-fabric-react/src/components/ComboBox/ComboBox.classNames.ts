@@ -1,4 +1,4 @@
-import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.Props';
+import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyles,
@@ -19,6 +19,7 @@ export interface IComboBoxClassNames {
 
 export interface IComboBoxOptionClassNames {
   optionText: string;
+  root: string;
 }
 
 export const getClassNames = memoizeFunction((
@@ -38,7 +39,8 @@ export const getClassNames = memoizeFunction((
       styles.container,
     ),
     label: mergeStyles(
-      styles.label
+      styles.label,
+      disabled && styles.labelDisabled
     ),
     root: mergeStyles(
       'ms-ComboBox',
@@ -50,7 +52,9 @@ export const getClassNames = memoizeFunction((
       !disabled && focused && styles.rootFocused,
       !disabled && {
         selectors: {
-          ':hover': styles.rootHovered
+          ':hover': styles.rootHovered,
+          ':active': styles.rootPressed,
+          ':focus': styles.rootFocused
         }
       },
       disabled && [
@@ -89,14 +93,23 @@ export const getClassNames = memoizeFunction((
 });
 
 export const getComboBoxOptionClassNames = memoizeFunction((
-  styles: IComboBoxOptionStyles,
-  optionIsSelected: boolean,
-  disabled: boolean,
+  styles: Partial<IComboBoxOptionStyles>,
 ): IComboBoxOptionClassNames => {
   return {
     optionText: mergeStyles(
       'ms-ComboBox-optionText',
       styles.optionText
     ),
+    root: mergeStyles(
+      'ms-ComboBox-option',
+      styles.root,
+      {
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':active': styles.rootPressed,
+          ':focus': styles.rootFocused
+        }
+      }
+    )
   };
 });

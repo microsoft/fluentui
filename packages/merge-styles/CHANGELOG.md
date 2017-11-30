@@ -1,6 +1,66 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 09 Oct 2017 10:08:09 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2017 11:24:05 GMT and should not be manually modified.
+
+## 5.7.0
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Minor changes
+
+- Updating TypeScript to 2.6.2.
+
+## 5.6.0
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Minor changes
+
+- Adding the ability to append style content rather than inject using insertRule, for special cases.
+
+## 5.5.1
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Patches
+
+- When selectors use previously registered class names as values, they are now correctly auto expanded.
+
+## 5.5.0
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Minor changes
+
+- Adding `stroke` css property to typings.
+
+## 5.4.2
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Patches
+
+- Calling `mergeStyles` with strings containing space delimited class names was not expanding merge-styles generated class names in the final merge. Fixed so that it does.
+
+## 5.4.1
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Patches
+
+- mergeStyles: in RTL we were seeing exceptions with registering opacity: 0 in keyframes. This has been addressed and a test has been added to cover the case.
+
+## 5.4.0
+Fri, 13 Oct 2017 04:00:17 GMT
+
+### Minor changes
+
+- Fixes to support media queries.
+
+### Patches
+
+- Adding data-merge-styles attribute to the style element so that it can be uniquely identified.
+
+## 5.3.3
+Fri, 13 Oct 2017 01:36:02 GMT
+
+### Patches
+
+- Adding data-merge-styles attribute to the style element so that it can be uniquely identified.
 
 ## 5.3.2
 Mon, 09 Oct 2017 10:08:09 GMT

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommandBar renders CommandBar correctly 1`] = `
+<div
+  className="ms-CommandBar"
+>
+  <div
+    aria-describedby={undefined}
+    aria-labelledby={undefined}
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="menubar"
+  >
+    <div
+      className="ms-CommandBar-primaryCommands"
+    >
+      <div
+        className="ms-CommandBarItem"
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          aria-label={undefined}
+          className="ms-CommandBarItem-link undefined"
+          data-command-key="TestKey1"
+          id="CommandBar0TestKey1"
+          name="TestText 1"
+          onClick={[Function]}
+          role="menuitem"
+        >
+          <span
+            className="ms-CommandBarItem-commandText"
+          >
+            TestText 1
+          </span>
+          <i
+            aria-hidden={true}
+            aria-label={undefined}
+            className=
+                ms-Icon
+                ms-CommandBarItem-chevronDown
+                {
+                  display: inline-block;
+                }
+            data-icon-name="ChevronDown"
+            role="presentation"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      className="ms-CommandBar-sideCommands"
+    />
+  </div>
+</div>
+`;

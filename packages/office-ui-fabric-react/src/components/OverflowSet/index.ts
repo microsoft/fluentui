@@ -1,2 +1,2 @@
 export * from './OverflowSet';
-export * from './OverflowSet.Props';
+export * from './OverflowSet.types';

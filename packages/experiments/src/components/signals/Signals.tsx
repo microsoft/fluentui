@@ -113,11 +113,13 @@ export const AwaitingApprovalSignal: Signal = (props: ISignalProps): JSX.Element
 
 export const TrendingSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <Icon
-      ariaLabel={ props.ariaLabel }
-      className={ css(SignalStyles.signal, SignalStyles.trending) }
-      iconName='market'
-    />
+    <span className={ css(SignalStyles.signal, SignalStyles.centeredSignal) }>
+      <Icon
+        ariaLabel={ props.ariaLabel }
+        className={ css(SignalStyles.signal, SignalStyles.trending) }
+        iconName='market'
+      />
+    </span>
   );
 };
 
@@ -241,5 +243,38 @@ export const SharedSignal: Signal = (props: ISignalProps): JSX.Element => {
       className={ css(SignalStyles.signal, SignalStyles.shared) }
       iconName='people'
     />
+  );
+};
+
+export const ATPSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return (
+    <Icon
+      ariaLabel={ props.ariaLabel }
+      className={ css(SignalStyles.signal, SignalStyles.atp) }
+      iconName='ATPLogo'
+    />
+  );
+};
+
+/**
+ * Renders a signal for an external item.
+ */
+export const ExternalSignal: Signal = (props: ISignalProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ...spanProps
+  } = props;
+
+  return (
+    <span
+      { ...spanProps }
+      className={ css(SignalStyles.signal, SignalStyles.centeredSignal) }
+    >
+      <Icon
+        ariaLabel={ props.ariaLabel }
+        className={ css(SignalStyles.signal, SignalStyles.external) }
+        iconName='Globe'
+      />
+    </span>
   );
 };

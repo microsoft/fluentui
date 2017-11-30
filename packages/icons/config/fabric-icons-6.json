@@ -2,7 +2,7 @@
 	"fontName": "fabric-icons-6",
 	"fontFamilyName": "FabricMDL2Icons-6",
 	"excludeGlyphs": false,
-	"chunkSubsets": true,
+	"chunkSubsets": false,
 	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
@@ -371,14 +371,6 @@
 		{
 			"name": "Hide2",
 			"unicode": "EF89"
-		},
-		{
-			"name": "iOSAppStoreLogo",
-			"unicode": "EF8A"
-		},
-		{
-			"name": "AndroidLogo",
-			"unicode": "EF8B"
 		},
 		{
 			"name": "Breadcrumb",

@@ -1,6 +1,7 @@
 export { AnimationStyles } from './AnimationStyles';
 export { DefaultPalette } from './DefaultPalette';
-export { DefaultFontStyles, FontSizes, FontWeights } from './DefaultFontStyles';
+export { DefaultFontStyles, registerDefaultFontFaces } from './DefaultFontStyles';
+export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts';
 export { getFocusStyle } from './getFocusStyle';
 export { hiddenContentStyle } from './hiddenContentStyle';
 export {
@@ -9,3 +10,4 @@ export {
   loadTheme,
   createTheme
 } from './theme';
+export * from './CommonStyles';

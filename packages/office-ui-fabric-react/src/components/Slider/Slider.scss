@@ -70,6 +70,8 @@
 
   .valueLabel {
     margin: 0 8px;
+    white-space: nowrap;
+    width: 40px;
   }
 }
 
@@ -109,6 +111,8 @@
 
   .valueLabel {
     margin: 0 auto;
+    white-space: nowrap;
+    width: 40px;
   }
 }
 

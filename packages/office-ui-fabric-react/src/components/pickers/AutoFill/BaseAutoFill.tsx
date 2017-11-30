@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.Props';
+import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.types';
 import {
   BaseComponent,
   KeyCodes,
@@ -126,6 +126,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
         onChange={ this._onChange }
         onKeyDown={ this._onKeyDown }
         onClick={ this.props.onClick ? this.props.onClick : this._onClick }
+        data-lpignore={ true }
       />
     );
   }
@@ -192,8 +193,9 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     }
   }
 
+  @autobind
   private _updateValue(newValue: string) {
-    this._value = newValue;
+    this._value = this.props.onInputChange ? this.props.onInputChange(newValue) : newValue;
     let displayValue = newValue;
     if (this.props.suggestedDisplayValue &&
       this._doesTextStartWith(this.props.suggestedDisplayValue, displayValue)
@@ -202,7 +204,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     }
     this.setState({
       displayValue: newValue
-    }, () => this._notifyInputChange(newValue));
+    }, () => this._notifyInputChange(this._value));
   }
 
   private _doesTextStartWith(text: string, startWith: string) {

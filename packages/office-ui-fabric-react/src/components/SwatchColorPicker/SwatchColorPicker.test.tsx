@@ -3,9 +3,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { SwatchColorPicker } from './SwatchColorPicker';
-import { IColorCellProps } from './SwatchColorPicker.Props';
+import { SwatchColorPickerBase } from './SwatchColorPicker.base';
+import { getStyles } from './SwatchColorPicker.styles';
+import { IColorCellProps } from './ColorPickerGridCell.types';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },
@@ -24,20 +26,33 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
 
 describe('SwatchColorPicker', () => {
 
-  it('Can render in full without being parented to a button', () => {
-    const wrapper = mount(
-      <SwatchColorPicker
+  it('renders SwatchColorPicker correctly', () => {
+    const component = renderer.create(
+      <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
+        getStyles={ getStyles }
+      />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Can render in full without being parented to a button', () => {
+    const wrapper = mount(
+      <SwatchColorPickerBase
+        colorCells={ DEFAULT_OPTIONS }
+        columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     expect(wrapper.find('.ms-swatchColorPickerBodyContainer').length).toEqual(1);
   });
 
   it('Can render the correct options when not in a menu', () => {
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
@@ -62,11 +77,12 @@ describe('SwatchColorPicker', () => {
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         // tslint:disable-next-line:jsx-no-lambda
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
@@ -82,11 +98,12 @@ describe('SwatchColorPicker', () => {
   it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         // tslint:disable-next-line:jsx-no-lambda
         onCellHovered={ (color) => eventFireCounter++ }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();
@@ -102,11 +119,12 @@ describe('SwatchColorPicker', () => {
   it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
-      <SwatchColorPicker
+      <SwatchColorPickerBase
         colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         // tslint:disable-next-line:jsx-no-lambda
         onCellFocused={ (color) => eventFireCounter++ }
         columnCount={ 4 }
+        getStyles={ getStyles }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
     let container = reactContainer.getDOMNode();

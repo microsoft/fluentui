@@ -7,7 +7,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import { IDocumentCardTitleProps } from './DocumentCard.Props';
+import { IDocumentCardTitleProps } from './DocumentCard.types';
 import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 

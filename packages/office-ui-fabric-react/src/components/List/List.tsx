@@ -11,7 +11,7 @@ import {
   IRenderFunction,
   autobind
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps } from './List.Props';
+import { IList, IListProps, IPage, IPageProps } from './List.types';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
