@@ -102,17 +102,18 @@ function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileT
     let devicePixelRatioSuffix: string = ''; // Default is 1x
 
     // SVGs scale well, so you can generally use the default image.
-    // 1.5x is a special case where both SVGs and PNGs need a different image.
-    if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
-        devicePixelRatioSuffix = '_1.5x';
-        // Remove the if statement below after we have the full set of 1.5 icons.
-        // Special case for now because some icons are missing.
-        if (size === 20 || (size === 40 && imageFileType === 'svg')) {
-            devicePixelRatioSuffix = '_2x';
+    // 1.5x is a special case where SVGs need a different image.
+    if (imageFileType === 'svg' && 1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+        // Currently missing 1.5x SVGs at sizes 20 and 40, snap to 1x for now
+        if (size !== 20 && size !== 40) {
+            devicePixelRatioSuffix = '_1.5x';
         }
     } else if (imageFileType === 'png') {
         // To look good, PNGs should use a different image for higher device pixel ratios
-        if (1.5 < devicePixelRatio && devicePixelRatio <=2) {
+        if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+            // Currently missing 1.5x icons for size 20, snap to 2x for now
+            devicePixelRatioSuffix = (size === 20) ? '_2x' : '_1.5x';
+        } else if (1.5 < devicePixelRatio && devicePixelRatio <=2) {
             devicePixelRatioSuffix = '_2x';
         } else if (2 < devicePixelRatio && devicePixelRatio <= 3) {
             devicePixelRatioSuffix = '_3x';
