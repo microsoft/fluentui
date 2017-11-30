@@ -1,7 +1,7 @@
 {
   "changes": [
     {
-      "comment": "ComboBox: New selector for combined active and hover states.",
+      "comment": "ComboBox: More refined handling of pressed, checked, focused and hover states for styling.",
       "packageName": "office-ui-fabric-react",
       "type": "none"
     }
