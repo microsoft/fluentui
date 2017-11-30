@@ -12,6 +12,8 @@ import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;
+const presenceMaxSize = 40;
+const presenceFontMaxSize = 20;
 
 export class PersonaPresence extends React.Component<IPersonaProps, {}> {
   constructor(props: IPersonaProps) {
@@ -20,8 +22,8 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
 
   public render(): JSX.Element | null {
     const { presence, coinSize } = this.props;
-    const presenceHeightWidth = coinSize && (coinSize / coinSizePresenceScaleFactor < 40 ? coinSize / coinSizePresenceScaleFactor : '40');
-    const presenceFontSize = coinSize && (coinSize / coinSizeFontScaleFactor < 20 ? coinSize / coinSizeFontScaleFactor : '20');
+    const presenceHeightWidth = coinSize && (coinSize / coinSizePresenceScaleFactor < presenceMaxSize ? coinSize / coinSizePresenceScaleFactor : presenceMaxSize);
+    const presenceFontSize = coinSize && (coinSize / coinSizeFontScaleFactor < presenceFontMaxSize ? coinSize / coinSizeFontScaleFactor : presenceFontMaxSize);
     const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth + 'px' } : undefined;
     const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
