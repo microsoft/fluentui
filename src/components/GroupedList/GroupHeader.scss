@@ -49,6 +49,8 @@
   display: inline-block;
   cursor: pointer;
   outline: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ms-GroupHeader-expand {
