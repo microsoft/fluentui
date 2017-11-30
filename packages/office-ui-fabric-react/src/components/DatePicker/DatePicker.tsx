@@ -5,7 +5,8 @@ import {
 } from './DatePicker.types';
 import {
   Calendar,
-  DayOfWeek
+  DayOfWeek,
+  ICalendar
 } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -121,7 +122,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   private _root: HTMLElement;
-  private _calendar: Calendar;
+  private _calendar: ICalendar;
   private _datepicker: HTMLDivElement;
   private _textField: TextField;
   private _preventFocusOpeningPicker: boolean;
@@ -250,7 +251,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               dateTimeFormatter={ this.props.dateTimeFormatter }
               minDate={ minDate }
               maxDate={ maxDate }
-              ref={ this._resolveRef('_calendar') }
+              componentRef={ this._resolveRef('_calendar') }
             />
           </Callout>
         ) }

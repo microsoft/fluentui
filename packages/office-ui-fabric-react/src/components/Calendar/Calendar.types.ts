@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { Calendar } from './Calendar';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { CalendarBase } from './Calendar.base';
+import { DateRangeType, DayOfWeek, FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
+import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
+import { ICalendarMonthStyleProps, ICalendarMonthStyles } from './CalendarMonth.types';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
@@ -9,7 +13,7 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends React.Props<Calendar> {
+export interface ICalendarProps extends React.Props<CalendarBase> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -138,6 +142,31 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * @defaultvalue false
   */
   showSixWeeksByDefault?: boolean;
+
+  /**
+   * Optional root classname for the root Calendar element.
+   */
+  className?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ICalendarStyleProps, ICalendarStyles>;
+
+  /**
+   * Call to provide customized styling for day picker.
+   */
+  getDayStyles?: IStyleFunction<ICalendarDayStyleProps, ICalendarDayStyles>;
+
+  /**
+   * Call to provide customized styling for month picker.
+   */
+  getMonthStyles?: IStyleFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>;
 }
 
 export interface ICalendarStrings {
@@ -228,4 +257,70 @@ export interface ICalendarFormatDateCallbacks {
   */
   formatYear: (date: Date) => string;
 
+}
+
+export interface ICalendarStyleProps {
+
+  /**
+   * Theme to apply to the container.
+   */
+  theme: ITheme;
+
+  /**
+   * Custom class name to apply to the container.
+   */
+  className?: string;
+
+  /**
+   * Whether the month picker is visible.
+   */
+  isMonthPickerVisible: boolean;
+
+  /**
+   * Whether the day picker is visible.
+   */
+  isDayPickerVisible: boolean;
+
+  /**
+   * Whether the month picker overlays the day picker.
+   */
+  showMonthPickerAsOverlay: boolean;
+
+  /**
+   * Whether the Go To Today button is visible.
+   */
+  showGoToToday: boolean;
+}
+
+export interface ICalendarStyles {
+
+  /**
+   * Base styles for root element.
+   */
+  root: IStyle;
+
+  /**
+   * Styles for base wrapper for the date picker.
+   */
+  picker: IStyle;
+
+  /**
+   * Styles for the holder, which is the only scrollable top-level container element.
+   */
+  holder: IStyle;
+
+  /**
+   * Styles for the frame. The frame and wrap work together to ensure that clicks within the picker don’t reach the holder.
+   */
+  frame: IStyle;
+
+  /**
+   * Styles for the wrap. The frame and wrap work together to ensure that clicks within the picker don’t reach the holder.
+   */
+  wrap: IStyle;
+
+  /**
+   * Styles for the button to navigate to the current date.
+   */
+  goToday: IStyle;
 }

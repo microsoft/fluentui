@@ -2,14 +2,22 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
+import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 import { Calendar } from './Calendar';
-import { DateRangeType, DayOfWeek } from './Calendar.types';
+import { CalendarBase } from './Calendar.base';
+import { DateRangeType, DayOfWeek, ICalendarProps } from './Calendar.types';
 import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
+
+class CalendarWrapper extends React.Component<ICalendarProps, {}> {
+  public render(): JSX.Element {
+    return <Calendar { ...this.props } />;
+  }
+}
 
 describe('Calendar', () => {
   let dayPickerStrings = {
@@ -67,58 +75,59 @@ describe('Calendar', () => {
   };
 
   it('can handle invalid starting dates', () => {
-    // Arrange
     let defaultDate = new Date('invalid');
-
-    // Act
-
-    let renderedComponent = mount(
-      <Calendar
+    let renderedComponent = ReactTestUtils.renderIntoDocument(
+      <CalendarWrapper
         strings={ dayPickerStrings }
         isMonthPickerVisible={ true }
         value={ defaultDate }
       />);
+    let domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
 
-    let today = renderedComponent.find('.ms-DatePicker-day--today');
-    expect(+today.text()).toEqual(new Date().getDate());
+    let today = domElement.querySelector('.ms-DatePicker-day--today');
+    expect(+today!.textContent!).toEqual(new Date().getDate());
+  });
+
+  it('renders simple calendar correctly', () => {
+    const date = new Date(2000, 1, 1);
+    const component = renderer.create(
+      <Calendar
+        strings={ dayPickerStrings }
+        isMonthPickerVisible
+        value={ date }
+      />
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   describe('Test rendering simplest calendar', () => {
-    let renderedComponent: Calendar;
+    let renderedComponent: any;
+    let domElement: Element;
 
     beforeAll(() => {
       renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar
+        <CalendarWrapper
           strings={ dayPickerStrings }
           isMonthPickerVisible={ false }
-        />) as Calendar;
-    });
-
-    it('Renders simple calendar correctly', () => {
-      const date = new Date(2000, 1, 1);
-      const component = renderer.create(
-        <Calendar
-          strings={ dayPickerStrings }
-          isMonthPickerVisible
-          value={ date }
-        />
-      );
-
-      let tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+        />);
+      domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
     });
 
     it('Verify day picker header', () => {
       let today = new Date();
       let monthName = dayPickerStrings.months[today.getMonth()];
       let year = today.getFullYear();
-      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      let dayPickerMonth = domElement.querySelector('.ms-DatePicker-monthAndYear');
+
       expect(dayPickerMonth).toBeDefined();
-      expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + year.toString());
+      expect(dayPickerMonth!.textContent).toEqual(monthName + ' ' + year.toString());
     });
 
     it('Verify first day of week', () => {
-      let dayHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-weekday');
+      let dayHeaders = domElement.querySelectorAll('.ms-DatePicker-weekday');
+
       expect(dayHeaders.length).toEqual(7);
       expect(dayHeaders[0].textContent).toEqual(dayPickerStrings.shortDays[0]);
       expect(dayHeaders[1].textContent).toEqual(dayPickerStrings.shortDays[1]);
@@ -129,30 +138,17 @@ describe('Calendar', () => {
       expect(dayHeaders[6].textContent).toEqual(dayPickerStrings.shortDays[6]);
     });
 
-    it('Verify day picker selected date & navigated date', () => {
-      // When not passed in selected & navigated dates default to current date
-      // These dates will be ms different, so just compare their day, month, and year
-      // This test will likely fail around midnight.
-      let today = new Date();
-      expect(renderedComponent.state.selectedDate).not.toBeNull();
-      expect(renderedComponent.state.selectedDate!.getDate()).toEqual(today.getDate());
-      expect(renderedComponent.state.selectedDate!.getMonth()).toEqual(today.getMonth());
-      expect(renderedComponent.state.selectedDate!.getFullYear()).toEqual(today.getFullYear());
-      expect(renderedComponent.state.navigatedDate).not.toBeNull();
-      expect(renderedComponent.state.navigatedDate!.getDate()).toEqual(today.getDate());
-      expect(renderedComponent.state.navigatedDate!.getMonth()).toEqual(today.getMonth());
-      expect(renderedComponent.state.navigatedDate!.getFullYear()).toEqual(today.getFullYear());
-    });
-
     it('Verify go to today', () => {
-      let goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
+      let goToToday = domElement.querySelector('.ms-DatePicker-goToday');
+
       expect(goToToday).toBeDefined();
-      expect(goToToday.textContent).toEqual(dayPickerStrings.goToToday);
+      expect(goToToday!.textContent).toEqual(dayPickerStrings.goToToday);
     });
   });
 
   describe('Test rendering most complicated calendar', () => {
-    let renderedComponent: Calendar;
+    let renderedComponent: any;
+    let domElement: Element;
     let defaultDate: Date;
     let lastSelectedDateRange: Date[] | null = null;
 
@@ -165,7 +161,7 @@ describe('Calendar', () => {
       };
 
       renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar
+        <CalendarWrapper
           strings={ dayPickerStrings }
           isMonthPickerVisible={ true }
           value={ defaultDate }
@@ -173,18 +169,21 @@ describe('Calendar', () => {
           dateRangeType={ DateRangeType.Week }
           autoNavigateOnSelection={ true }
           onSelectDate={ onSelectDate() }
-        />) as Calendar;
+        />);
+      domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
     });
 
     it('Verify day picker header', () => {
       let monthName = dayPickerStrings.months[defaultDate.getMonth()];
-      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      let dayPickerMonth = domElement.querySelector('.ms-DatePicker-monthAndYear');
+
       expect(dayPickerMonth).toBeDefined();
-      expect(dayPickerMonth.textContent).toEqual(monthName + ' ' + defaultDate.getFullYear().toString());
+      expect(dayPickerMonth!.textContent).toEqual(monthName + ' ' + defaultDate.getFullYear().toString());
     });
 
     it('Verify first day of week', () => {
-      let dayHeaders = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-weekday');
+      let dayHeaders = domElement.querySelectorAll('.ms-DatePicker-weekday');
+
       expect(dayHeaders.length).toEqual(7);
       expect(dayHeaders[0].textContent).toEqual(dayPickerStrings.shortDays[2]);
       expect(dayHeaders[1].textContent).toEqual(dayPickerStrings.shortDays[3]);
@@ -195,25 +194,23 @@ describe('Calendar', () => {
       expect(dayHeaders[6].textContent).toEqual(dayPickerStrings.shortDays[1]);
     });
 
-    it('Verify day picker selected date & navigated date', () => {
-      expect(renderedComponent.state.selectedDate).toEqual(defaultDate);
-      expect(renderedComponent.state.navigatedDate).toEqual(defaultDate);
-    });
-
     it('Verify month picker seen', () => {
-      let monthPicker = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthPicker') as HTMLElement;
+      let monthPicker = domElement.querySelector('.ms-DatePicker-monthPicker') as HTMLElement;
+
       expect(monthPicker).toBeDefined();
       expect(monthPicker.style.display).not.toEqual('none');
     });
 
     it('Verify month picker header', () => {
-      let currentYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-currentYear');
+      let currentYear = domElement.querySelector('.ms-DatePicker-currentYear');
+
       expect(currentYear).toBeDefined();
-      expect(currentYear.textContent).toEqual(defaultDate.getFullYear().toString());
+      expect(currentYear!.textContent).toEqual(defaultDate.getFullYear().toString());
     });
 
     it('Verify month picker months', () => {
-      let months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
+      let months = domElement.querySelectorAll('.ms-DatePicker-monthOption');
+
       expect(months.length).toEqual(12);
       for (let i = 0; i < 12; i++) {
         expect(months[i].textContent).toEqual(dayPickerStrings.shortMonths[i]);
@@ -221,16 +218,18 @@ describe('Calendar', () => {
     });
 
     it('Verify go to today', () => {
-      let goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
+      let goToToday = domElement.querySelector('.ms-DatePicker-goToday');
+
       expect(goToToday).toBeDefined();
-      expect(goToToday.textContent).toEqual(dayPickerStrings.goToToday);
+      expect(goToToday!.textContent).toEqual(dayPickerStrings.goToToday);
     });
 
     it('Verify navigate to different week in same month', () => {
       lastSelectedDateRange = null;
-      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+      let days = domElement.querySelectorAll('.ms-DatePicker-day');
       let day = days[8]; // 03/08/2017
       ReactTestUtils.Simulate.click(day);
+
       expect(lastSelectedDateRange).not.toBeNull();
       expect(lastSelectedDateRange!.length).toEqual(7);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, new Date(2017, 2, 7 + i))).toEqual(true));
@@ -238,10 +237,11 @@ describe('Calendar', () => {
 
     it('Verify navigate to day in different month', () => {
       lastSelectedDateRange = null;
-      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+      let days = domElement.querySelectorAll('.ms-DatePicker-day');
       let day = days[34]; // 04/03/2017
       let firstDate = new Date(2017, 2, 28);
       ReactTestUtils.Simulate.click(day);
+
       expect(lastSelectedDateRange).not.toBeNull();
       expect(lastSelectedDateRange!.length).toEqual(7);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).toEqual(true));
@@ -253,17 +253,17 @@ describe('Calendar', () => {
       const defaultDate = new Date('Mar 16 2017');
       const minDate = new Date('Mar 6 2017');
       const maxDate = new Date('Mar 24 2017');
-      const renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar
+      let renderedComponent = ReactTestUtils.renderIntoDocument(
+        <CalendarWrapper
           strings={ dayPickerStrings }
           value={ defaultDate }
           firstDayOfWeek={ DayOfWeek.Sunday }
           dateRangeType={ DateRangeType.Day }
           minDate={ minDate }
           maxDate={ maxDate }
-        />) as Calendar;
-
-      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+        />);
+      const domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
+      const days = Array.from(domElement.querySelectorAll('.ms-DatePicker-day'));
 
       expect(days.slice(0, 7).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(true);
       expect(days.slice(8, 26).every(e => e.classList.contains('ms-DatePicker-day--disabled'))).toBe(false);
@@ -281,7 +281,7 @@ describe('Calendar', () => {
         };
       };
       const renderedComponent = ReactTestUtils.renderIntoDocument(
-        <Calendar
+        <CalendarWrapper
           strings={ dayPickerStrings }
           value={ defaultDate }
           firstDayOfWeek={ DayOfWeek.Sunday }
@@ -289,75 +289,117 @@ describe('Calendar', () => {
           minDate={ minDate }
           maxDate={ maxDate }
           onSelectDate={ onSelectDate() }
-        />) as Calendar;
-
-      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+        />);
+      const domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
+      const days = Array.from(domElement.querySelectorAll('.ms-DatePicker-day'));
       ReactTestUtils.Simulate.click(days[18]);
+
       expect(lastSelectedDateRange!.length).toEqual(19);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(minDate, i))).toEqual(true));
     });
+
+    it('navigators to out-of-bounds months should be disabled', () => {
+      const defaultDate = new Date('Mar 15 2017');
+      const minDate = new Date('Mar 1 2017');
+      const maxDate = new Date('Mar 31 2017');
+      const renderedComponent = ReactTestUtils.renderIntoDocument(
+        <CalendarWrapper
+          strings={ dayPickerStrings }
+          value={ defaultDate }
+          firstDayOfWeek={ DayOfWeek.Sunday }
+          dateRangeType={ DateRangeType.Day }
+          minDate={ minDate }
+          maxDate={ maxDate }
+        />);
+      const domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
+      const prevMonth = domElement.querySelector('.ms-DatePicker-prevMonth');
+      const nextMonth = domElement.querySelector('.ms-DatePicker-nextMonth');
+
+      expect(prevMonth!.classList.contains('ms-DatePicker-prevMonth--disabled')).toBe(true);
+      expect(nextMonth!.classList.contains('ms-DatePicker-nextMonth--disabled')).toBe(true);
+    });
+
+    it('out-of-bounds months should be disabled', () => {
+      const defaultDate = new Date('Mar 15 2017');
+      const minDate = new Date('Mar 1 2017');
+      const maxDate = new Date('Oct 1 2017');
+      const renderedComponent = ReactTestUtils.renderIntoDocument(
+        <CalendarWrapper
+          strings={ dayPickerStrings }
+          value={ defaultDate }
+          firstDayOfWeek={ DayOfWeek.Sunday }
+          dateRangeType={ DateRangeType.Day }
+          minDate={ minDate }
+          maxDate={ maxDate }
+        />);
+      const domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
+      const months = Array.from(domElement.querySelectorAll('.ms-DatePicker-monthOption'));
+
+      expect(months.slice(0, 1).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
+      expect(months.slice(2, 9).some(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(false);
+      expect(months.slice(10).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
+    });
+
+    it('navigators to out-of-bounds years should be disabled', () => {
+      const defaultDate = new Date('Mar 15 2017');
+      const minDate = new Date('Jan 1 2017');
+      const maxDate = new Date('Dec 31 2017');
+      const renderedComponent = ReactTestUtils.renderIntoDocument(
+        <CalendarWrapper
+          strings={ dayPickerStrings }
+          value={ defaultDate }
+          firstDayOfWeek={ DayOfWeek.Sunday }
+          dateRangeType={ DateRangeType.Day }
+          minDate={ minDate }
+          maxDate={ maxDate }
+        />);
+      const domElement = ReactDOM.findDOMNode(renderedComponent as React.ReactInstance);
+      const prevMonth = domElement.querySelector('.ms-DatePicker-prevYear');
+      const nextMonth = domElement.querySelector('.ms-DatePicker-nextYear');
+
+      expect(prevMonth!.classList.contains('ms-DatePicker-prevYear--disabled')).toBe(true);
+      expect(nextMonth!.classList.contains('ms-DatePicker-nextYear--disabled')).toBe(true);
+    });
   });
 
-  it('navigators to out-of-bounds months should be disabled', () => {
-    const defaultDate = new Date('Mar 15 2017');
-    const minDate = new Date('Mar 1 2017');
-    const maxDate = new Date('Mar 31 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
-      <Calendar
-        strings={ dayPickerStrings }
-        value={ defaultDate }
-        firstDayOfWeek={ DayOfWeek.Sunday }
-        dateRangeType={ DateRangeType.Day }
-        minDate={ minDate }
-        maxDate={ maxDate }
-      />) as Calendar;
+  describe('component state', () => {
+    it('selected & navigated date defaults should be today', () => {
+      // When not passed in selected & navigated dates default to current date
+      // These dates will be ms different, so just compare their day, month, and year
+      // This test will likely fail around midnight.
 
-    const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
-    const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
+      const component = shallow(
+        <CalendarBase
+          strings={ dayPickerStrings }
+          isMonthPickerVisible={ false }
+        />).dive();
 
-    expect(prevMonth.classList.contains('ms-DatePicker-prevMonth--disabled')).toBe(true);
-    expect(nextMonth.classList.contains('ms-DatePicker-nextMonth--disabled')).toBe(true);
-  });
+      const today = new Date();
+      const selectedDate = component.state('selectedDate') as Date;
+      const navigatedDate = component.state('navigatedDate') as Date;
 
-  it('out-of-bounds months should be disabled', () => {
-    const defaultDate = new Date('Mar 15 2017');
-    const minDate = new Date('Mar 1 2017');
-    const maxDate = new Date('Oct 1 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
-      <Calendar
-        strings={ dayPickerStrings }
-        value={ defaultDate }
-        firstDayOfWeek={ DayOfWeek.Sunday }
-        dateRangeType={ DateRangeType.Day }
-        minDate={ minDate }
-        maxDate={ maxDate }
-      />) as Calendar;
+      expect(selectedDate.getDate()).toEqual(today.getDate());
+      expect(selectedDate.getMonth()).toEqual(today.getMonth());
+      expect(selectedDate.getFullYear()).toEqual(today.getFullYear());
+      expect(navigatedDate.getDate()).toEqual(today.getDate());
+      expect(navigatedDate.getMonth()).toEqual(today.getMonth());
+      expect(navigatedDate.getFullYear()).toEqual(today.getFullYear());
+    });
 
-    const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
+    it('selected & navigated date should be value of "value" prop', () => {
+      const defaultDate = new Date(2017, 2, 16);
+      const component = shallow(
+        <CalendarBase
+          strings={ dayPickerStrings }
+          isMonthPickerVisible={ false }
+          value={ defaultDate }
+        />).dive();
 
-    expect(months.slice(0, 1).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
-    expect(months.slice(2, 9).some(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(false);
-    expect(months.slice(10).every(e => e.classList.contains('ms-DatePicker-monthOption--disabled'))).toBe(true);
-  });
+      const selectedDate = component.state('selectedDate') as Date;
+      const navigatedDate = component.state('navigatedDate') as Date;
 
-  it('navigators to out-of-bounds years should be disabled', () => {
-    const defaultDate = new Date('Mar 15 2017');
-    const minDate = new Date('Jan 1 2017');
-    const maxDate = new Date('Dec 31 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
-      <Calendar
-        strings={ dayPickerStrings }
-        value={ defaultDate }
-        firstDayOfWeek={ DayOfWeek.Sunday }
-        dateRangeType={ DateRangeType.Day }
-        minDate={ minDate }
-        maxDate={ maxDate }
-      />) as Calendar;
-
-    const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
-    const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextYear');
-
-    expect(prevMonth.classList.contains('ms-DatePicker-prevYear--disabled')).toBe(true);
-    expect(nextMonth.classList.contains('ms-DatePicker-nextYear--disabled')).toBe(true);
+      expect(selectedDate).toEqual(defaultDate);
+      expect(navigatedDate).toEqual(defaultDate);
+    });
   });
 });
