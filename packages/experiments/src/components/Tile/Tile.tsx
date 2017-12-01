@@ -204,6 +204,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         <a
           href={ href }
           onClick={ onClick }
+          ref={ this.props.linkRef }
           data-selection-invoke={ (isInvokable && selectionIndex > -1) ? true : undefined }
           className={ css('ms-Tile-link', TileStyles.link) }
         >
