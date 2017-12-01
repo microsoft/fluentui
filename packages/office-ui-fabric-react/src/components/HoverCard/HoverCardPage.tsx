@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
@@ -16,7 +16,7 @@ import './HoverCardPage.scss';
 const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
 
-export class HoverCardPage extends React.Component<any, any> {
+export class HoverCardPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -35,15 +35,14 @@ export class HoverCardPage extends React.Component<any, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
             ] }
           />
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/HoverCard'>HoverCards</Link>
-            <span> supplement content associated with a specific data element.</span>
+            <p>HoverCards supplement content associated with a specific data element.</p>
           </div>
         }
         componentStatus={
@@ -51,6 +50,7 @@ export class HoverCardPage extends React.Component<any, any> {
             {...HoverCardStatus}
           />
         }
+        isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }

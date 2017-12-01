@@ -13,8 +13,8 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.Props';
-import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
+import { IButtonProps, IButton } from './Button.types';
+import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
@@ -40,7 +40,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     baseClassName: 'ms-Button',
     classNames: {},
     styles: {},
-    split: false
+    split: false,
   };
 
   private _buttonElement: HTMLElement;
@@ -85,15 +85,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       styles,
       text,
       checked,
-      variantClassName
+      variantClassName,
+      theme,
+      getClassNames
          } = this.props;
 
     let { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
     let isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
-    this._classNames = getClassNames(
-      styles!,
+    this._classNames = getClassNames ? getClassNames(
+      theme!,
       className!,
       variantClassName!,
       iconProps && iconProps.className,
@@ -101,8 +103,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       isPrimaryButtonDisabled!,
       checked!,
       !!this.state.menuProps,
-      this.props.split
-    );
+      this.props.split) : getBaseButtonClassNames(styles!, className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        !!this.state.menuProps,
+        this.props.split);
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -422,7 +430,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
     let {
-      menuIconProps
+      menuIconProps,
+      splitButtonAriaLabel
     } = this.props;
 
     if (menuIconProps === undefined) {
@@ -437,7 +446,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'disabled': this.props.disabled,
       'onClick': this._onMenuClick,
       'menuProps': undefined,
-      'iconProps': menuIconProps
+      'iconProps': menuIconProps,
+      'ariaLabel': splitButtonAriaLabel
     };
 
     return <BaseButton {...splitButtonProps} />;

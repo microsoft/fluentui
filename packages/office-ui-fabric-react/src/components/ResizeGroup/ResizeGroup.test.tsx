@@ -2,8 +2,9 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
-import { IResizeGroupProps } from './ResizeGroup.Props';
+import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
+import * as renderer from 'react-test-renderer';
 
 interface ITestScalingData {
   scalingIndex: number;
@@ -24,6 +25,20 @@ function getRequiredResizeGroupProps() {
 }
 
 describe('ResizeGroup', () => {
+  it('renders the ResizeGroup correctly', () => {
+    const initialData = { content: 5 };
+    const renderedDataId = 'onRenderDataId';
+    const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
+    expect(renderer.create(
+      <ResizeGroup
+        data={ initialData }
+        onReduceData={ onReduceScalingData }
+        onRenderData={ onRenderData }
+        className={ 'TestClassName' }
+      />
+    ).toJSON()).toMatchSnapshot();
+  });
+
   it('renders the result of onRenderData', () => {
     const initialData = { content: 5 };
     const renderedDataId = 'onRenderDataId';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
+import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.types';
 import { Image } from '../../Image';
 import { Icon } from '../../Icon';
 import {

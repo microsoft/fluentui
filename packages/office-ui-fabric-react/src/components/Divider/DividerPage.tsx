@@ -33,7 +33,7 @@ export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')
             ] }
           />
         }

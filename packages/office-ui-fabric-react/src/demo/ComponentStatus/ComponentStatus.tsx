@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.Props';
+import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.types';
 import './ComponentStatus.scss';
 
 export class ComponentStatus extends React.Component<IComponentStatusProps, {}> {

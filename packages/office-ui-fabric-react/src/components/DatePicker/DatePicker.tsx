@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   IDatePickerProps,
   IDatePickerStrings
-} from './DatePicker.Props';
+} from './DatePicker.types';
 import {
   Calendar,
   DayOfWeek
@@ -182,7 +182,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       borderless,
       className,
       minDate,
-      maxDate
+      maxDate,
+      calendarProps
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -233,6 +234,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             onPositioned={ this._onCalloutPositioned }
           >
             <Calendar
+              { ...calendarProps }
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
@@ -428,10 +430,22 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
           date = this.state.selectedDate;
         } else {
           date = parseDateFromString!(inputValue);
-          if (!date) {
+
+          // Check if date is null, or date is Invalid Date
+          if (!date || isNaN(date.getTime())) {
+
+            // Reset invalid input field, if formatting is available
+            if (formatDate) {
+              date = this.state.selectedDate;
+              this.setState({
+                formattedDate: formatDate(date!).toString()
+              });
+            }
+
             this.setState({
               errorMessage: strings!.invalidInputErrorMessage || '*'
             });
+
           } else {
             // Check against optional date boundaries
             if (this._isDateOutOfBounds(date, minDate, maxDate)) {
@@ -443,6 +457,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
                 selectedDate: date,
                 errorMessage: ''
               });
+
+              // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
+              // This occurs when an invalid date is entered twice
+              if (formatDate && formatDate(date) !== inputValue) {
+                this.setState({
+                  formattedDate: formatDate(date).toString()
+                });
+              }
             }
           }
         }

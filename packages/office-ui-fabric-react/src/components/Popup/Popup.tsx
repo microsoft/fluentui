@@ -8,7 +8,7 @@ import {
   getNativeProps,
   autobind
 } from '../../Utilities';
-import { IPopupProps } from './Popup.Props';
+import { IPopupProps } from './Popup.types';
 
 /**
  * This adds accessibility to Dialog and Panel controls

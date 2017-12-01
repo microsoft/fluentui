@@ -1,2 +1,2 @@
 export * from './Toggle';
-export * from './Toggle.Props';
+export * from './Toggle.types';

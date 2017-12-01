@@ -1,9 +1,16 @@
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -116,5 +123,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'DoubleChevronLeft12': '\uEE98',
       'DoubleChevronRight12': '\uEE99'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }
