@@ -1,0 +1,15 @@
+
+@import '~office-ui-fabric-react/src/common/common';
+
+.signalField {
+  display: inline-flex;
+  max-width: 100%;
+  flex-direction: row nowrap;
+}
+
+.signalFieldValue {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+}

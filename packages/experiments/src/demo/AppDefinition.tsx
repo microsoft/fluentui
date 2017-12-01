@@ -35,6 +35,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/signals/SignalsPage').SignalsPage,
+          key: 'Signals',
+          name: 'Signals',
+          url: '#/examples/signals'
+        },
+        {
           component: require<any>('../components/Tile/TilePage').TilePage,
           key: 'Tile',
           name: 'Tile',
