@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { getFileTypeIconProps } from '@uifabric/file-type-icons/lib/IconHelper';
+import { getFileTypeIconProps } from '@uifabric/file-type-icons/lib/FileTypeIconHelper';
 import FileIconType from '@uifabric/file-type-icons/lib/FileIconType';
 
 export class FileTypeIconBasicExample extends React.Component<{}, {}> {

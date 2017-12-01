@@ -9,3 +9,6 @@ export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL): voi
     }
   );
 }
+
+export { FileTypeIconSize, ImageFileType, IFileTypeIconOptions, getFileTypeIconProps} from './FileTypeIconHelper';
+export { FileIconType } from './FileIconType';
