@@ -45,6 +45,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
         & input::-ms-clear {
           display: none;
         }
+        &.is-open {
+          border-color: #0078d7;
+        }
         &:hover {
           border-color: #212121;
         }
@@ -54,7 +57,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           color: HighlightText;
         }
         &:active {
-          border-color: #005a9e;
+          border-color: #0078d7;
         }
         &:focus {
           border-color: #0078d7;
@@ -117,7 +120,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       aria-hidden="true"
       aria-label={undefined}
       aria-labelledby={null}
-      aria-pressed={undefined}
+      aria-pressed={false}
+      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -173,12 +177,12 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             font-size: 12px;
           }
           &:hover {
-            background-color: #dadada;
+            background-color: #f4f4f4;
             color: #212121;
             cursor: pointer;
           }
           &:active {
-            background-color: #c8c8c8;
+            background-color: #eaeaea;
             color: #212121;
           }
       data-is-focusable={true}
