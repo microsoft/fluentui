@@ -10,6 +10,7 @@ import {
 import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
+import { TooltipAsyncExample } from './examples/Tooltip.Deferred.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TooltipStatus } from './Tooltip.checklist';
 
@@ -18,6 +19,7 @@ import './TooltipPage.scss';
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Custom.Example.tsx') as string;
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
+const TooltipAsyncExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Deferred.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
@@ -37,6 +39,10 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
 
             <ExampleCard title='Tooltip only on overflow' code={ TooltipOverflowExampleCode }>
               <TooltipOverflowExample />
+            </ExampleCard>
+
+            <ExampleCard title='Tooltip with defer loaded tooltip callout' code={ TooltipAsyncExampleCode }>
+              <TooltipAsyncExample />
             </ExampleCard>
           </LayerHost>
         }
