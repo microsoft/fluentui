@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "@uifabric/experiments_v5.8.0",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "95fa0ed17e7adc25e1c18977387a0ca840d3025a",
+            "comment": "Fixes the external signal component"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b1c7686173a7f56d894e1b90625df0132375b1ee",
+            "comment": "Revise Signals and provide example page"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.28.0 <6.0.0` to `>=5.29.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "@uifabric/experiments_v5.7.0",
       "date": "Wed, 29 Nov 2017 11:24:05 GMT",

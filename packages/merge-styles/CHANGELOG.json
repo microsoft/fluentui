@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "@uifabric/merge-styles_v5.8.0",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "df00b312271aff8c1b662b593caf1724271210d4",
+            "comment": "Adding `onInsertNode` callback and adjusting appendChild method for injecting styles to not cause flashes."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "@uifabric/merge-styles_v5.7.0",
       "date": "Wed, 29 Nov 2017 11:24:05 GMT",
