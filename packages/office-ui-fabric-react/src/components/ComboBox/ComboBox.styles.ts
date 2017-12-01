@@ -18,7 +18,7 @@ import { memoizeFunction } from '../../Utilities';
 const ComboBoxHeight = '32px';
 const ComboBoxLineHeight = '30px';
 const ComboxBoxCaretDownWidth = '32px';
-const ComboBoxOptionHeight = '36px';
+const ComboBoxOptionHeight = '32px';
 
 const getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   const { semanticColors } = theme;
