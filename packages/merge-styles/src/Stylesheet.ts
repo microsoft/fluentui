@@ -172,12 +172,7 @@ export class Stylesheet {
         break;
 
       case InjectionMode.appendChild:
-        const head: HTMLHeadElement = document.getElementsByTagName('head')[0];
-        const styleElement: HTMLStyleElement = document.createElement('style');
-
-        styleElement.type = 'text/css';
-        styleElement.appendChild(document.createTextNode(rule));
-        head.appendChild(styleElement);
+        createStyleElement(rule);
         break;
 
       default:
@@ -217,11 +212,21 @@ export class Stylesheet {
 
   private _getElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
-      this._styleElement = document.createElement('style');
-      this._styleElement.setAttribute('data-merge-styles', 'true');
-      document.head.appendChild(this._styleElement);
+      this._styleElement = createStyleElement();
     }
-
     return this._styleElement;
   }
+}
+
+function createStyleElement(content?: string): HTMLStyleElement {
+  const styleElement = document.createElement('style');
+
+  styleElement.setAttribute('data-merge-styles', 'true');
+  styleElement.type = 'text/css';
+  if (content) {
+    styleElement.appendChild(document.createTextNode(content));
+  }
+  document.head.appendChild(styleElement);
+
+  return styleElement;
 }
