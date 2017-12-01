@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "phloh@microsoft.com"
+}
