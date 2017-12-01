@@ -430,10 +430,22 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
           date = this.state.selectedDate;
         } else {
           date = parseDateFromString!(inputValue);
-          if (!date) {
+
+          // Check if date is null, or date is Invalid Date
+          if (!date || isNaN(date.getTime())) {
+
+            // Reset invalid input field, if formatting is available
+            if (formatDate) {
+              date = this.state.selectedDate;
+              this.setState({
+                formattedDate: formatDate(date!).toString()
+              });
+            }
+
             this.setState({
               errorMessage: strings!.invalidInputErrorMessage || '*'
             });
+
           } else {
             // Check against optional date boundaries
             if (this._isDateOutOfBounds(date, minDate, maxDate)) {
@@ -445,6 +457,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
                 selectedDate: date,
                 errorMessage: ''
               });
+
+              // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
+              // This occurs when an invalid date is entered twice
+              if (formatDate && formatDate(date) !== inputValue) {
+                this.setState({
+                  formattedDate: formatDate(date).toString()
+                });
+              }
             }
           }
         }
