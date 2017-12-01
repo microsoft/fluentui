@@ -119,10 +119,14 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-  * Custom width for dropdown. If value is undefined, width of the input field is used.
-  * If value is 0, no width is applied (e.g. the dropdown will be as wide as its content)
+  * Custom width for dropdown. If value is 0, width of the input field is used (unless useComboBoxAsMenuWidth is undefined or false)
   */
   dropdownWidth?: number;
+
+  /**
+   * Whether to use the ComboBoxes width as the menu's width
+   */
+  useComboBoxAsMenuWidth?: boolean;
 }
 
 export interface IComboBoxStyles {
