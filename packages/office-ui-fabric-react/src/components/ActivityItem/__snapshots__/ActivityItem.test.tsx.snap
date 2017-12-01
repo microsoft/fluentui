@@ -29,6 +29,15 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           line-height: 13px;
           margin-top: 1px;
         }
+        & .ms-Persona-imageArea {
+          border-radius: 50%;
+          border: 2px solid#ffffff;
+          margin-top: -2px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          border: none;
+          margin-top: 0;
+        }
   >
     <div
       className=
@@ -49,9 +58,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         style={
           Object {
             "display": "inline-block",
-            "minWidth": "8px",
+            "minWidth": "10px",
             "overflow": "visible",
-            "width": "8px",
+            "width": "10px",
           }
         }
       >
@@ -148,6 +157,15 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
           line-height: 13px;
           margin-top: 1px;
         }
+        & .ms-Persona-imageArea {
+          border-radius: 50%;
+          border: 2px solid#ffffff;
+          margin-top: -2px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          border: none;
+          margin-top: 0;
+        }
   >
     <i
       aria-hidden={true}
@@ -219,6 +237,15 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           line-height: 13px;
           margin-top: 1px;
         }
+        & .ms-Persona-imageArea {
+          border-radius: 50%;
+          border: 2px solid#ffffff;
+          margin-top: -2px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          border: none;
+          margin-top: 0;
+        }
   >
     <div
       className=
@@ -239,9 +266,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         style={
           Object {
             "display": "inline-block",
-            "minWidth": "8px",
+            "minWidth": "10px",
             "overflow": "visible",
-            "width": "8px",
+            "width": "10px",
           }
         }
       >
@@ -284,9 +311,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         style={
           Object {
             "display": "inline-block",
-            "minWidth": "8px",
+            "minWidth": "10px",
             "overflow": "visible",
-            "width": "8px",
+            "width": "10px",
           }
         }
       >
@@ -320,9 +347,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         style={
           Object {
             "display": "inline-block",
-            "minWidth": "8px",
+            "minWidth": "10px",
             "overflow": "visible",
-            "width": "8px",
+            "width": "10px",
           }
         }
       >
