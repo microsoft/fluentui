@@ -136,12 +136,13 @@ export const getCaretDownButtonStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
-  const { palette } = theme;
+  const { semanticColors } = theme;
 
-  const caretButtonTextColor = palette.neutralSecondary;
-  const caretButtonTextColorHoveredActive = palette.neutralDark;
-  const caretButtonBackgroundHovered = palette.neutralQuaternaryAlt;
-  const caretButtonBackgroundActive = palette.neutralTertiaryAlt;
+  const caretButtonTextColor = semanticColors.bodySubtext;
+  const caretButtonTextColorHoveredChecked = semanticColors.buttonTextChecked;
+  const caretButtonBackgroundHovered = semanticColors.listItemBackgroundHovered;
+  const caretButtonBackgroundChecked = semanticColors.listItemBackgroundChecked;
+  const caretButtonBackgroundCheckedHovered = semanticColors.listItemBackgroundCheckedHovered;
 
   const styles: IButtonStyles = {
     root: {
@@ -167,12 +168,20 @@ export const getCaretDownButtonStyles = memoizeFunction((
     },
     rootHovered: {
       backgroundColor: caretButtonBackgroundHovered,
-      color: caretButtonTextColorHoveredActive,
+      color: caretButtonTextColorHoveredChecked,
       cursor: 'pointer'
     },
     rootPressed: {
-      backgroundColor: caretButtonBackgroundActive,
-      color: caretButtonTextColorHoveredActive
+      backgroundColor: caretButtonBackgroundChecked,
+      color: caretButtonTextColorHoveredChecked
+    },
+    rootChecked: {
+      backgroundColor: caretButtonBackgroundChecked,
+      color: caretButtonTextColorHoveredChecked
+    },
+    rootCheckedHovered: {
+      backgroundColor: caretButtonBackgroundCheckedHovered,
+      color: caretButtonTextColorHoveredChecked
     },
     rootDisabled: getDisabledStyles(theme),
   };
@@ -191,7 +200,6 @@ export const getStyles = memoizeFunction((
   const ComboBoxRootTextColor = semanticColors.bodyText;
   const ComboBoxRootBorderColor = semanticColors.inputBorder;
   const ComboBoxRootBorderColorHovered = semanticColors.inputBorderHovered;
-  const ComboBoxRootBorderColorActive = palette.themeDark;
   const ComboBoxRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
   const ComboBoxRootColorErrored = semanticColors.errorText;
   const ComboBoxCalloutBorderColor = palette.neutralLight;
@@ -239,6 +247,9 @@ export const getStyles = memoizeFunction((
                 display: 'none'
               }
             }
+          },
+          '&.is-open': {
+            borderColor: ComboBoxRootBorderColorFocused
           }
         }
       }
@@ -256,7 +267,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootPressed: {
-      borderColor: ComboBoxRootBorderColorActive
+      borderColor: ComboBoxRootBorderColorFocused
     },
 
     rootFocused: {
