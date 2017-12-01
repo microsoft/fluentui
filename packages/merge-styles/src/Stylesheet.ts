@@ -77,7 +77,7 @@ export class Stylesheet {
 
   constructor(config?: IStyleSheetConfig) {
     this._config = {
-      injectionMode: InjectionMode.appendChild,
+      injectionMode: InjectionMode.insertNode,
       ...config
     };
 
