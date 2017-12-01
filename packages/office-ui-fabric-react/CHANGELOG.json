@@ -2,6 +2,70 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.29.0",
+      "tag": "office-ui-fabric-react_v5.29.0",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "1797c419ddf414b87f064928cc34ba925ce048b4",
+            "comment": "GroupHeader: Style fix to add nowrap on group header"
+          },
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "d2d2548b5e4f03d1df2ec2e0fcafb20358ab1ad7",
+            "comment": "Changed combobox option height to match other menu option heights"
+          },
+          {
+            "author": "David Wilson (VSNC) <dawilson@microsoft.com>",
+            "commit": "09f07e02dacb39516242b91bf7ce1b221313a5d7",
+            "comment": "FocusZone: Fix focus-in behavior when children are added asynchronously."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "aaeed1ac710b6031c3c2e4c35f663d78775bda73",
+            "comment": "ComboBox: Update to allow the dropdown to fit its content"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "3e885ee579cac2cf8a5596f7936362628495e2f6",
+            "comment": "DatePicker: Reset invalid input (typed by used)."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2207c10859801f04a37b682f14f83d67267022ed",
+            "comment": "PersonaPresence: Scale the presence and presence icon proportionally to the specified coinSize up to a max size."
+          }
+        ],
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "2e8e4893e78c7ffbfbd1a50e8205a81aff6b4f53",
+            "comment": "DatePicker: Calendar Props.  Adding access to ICalendarProps"
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "d99de57c86d8cd2110ad603b746ffe33c3fae7d4",
+            "comment": "ContextualMenu: Expose callback hook when menu is being removed from DOM"
+          },
+          {
+            "author": "Terri-Anne Cambridge <tacambridge@gmail.com>",
+            "commit": "742066348a7213c26fbadce6b97e2083b72275a9",
+            "comment": "Panel: When panel is dismissed, hide the panel instead of destroying it"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.7.0 <6.0.0` to `>=5.8.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.12.0 <6.0.0` to `>=5.12.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.28.0",
       "tag": "office-ui-fabric-react_v5.28.0",
       "date": "Thu, 30 Nov 2017 01:16:12 GMT",

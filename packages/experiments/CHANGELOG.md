@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 29 Nov 2017 11:24:05 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Dec 2017 11:11:16 GMT and should not be manually modified.
+
+## 5.8.0
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Minor changes
+
+- Revise Signals and provide example page
+
+### Patches
+
+- Fixes the external signal component
 
 ## 5.7.0
 Wed, 29 Nov 2017 11:24:05 GMT

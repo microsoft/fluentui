@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 30 Nov 2017 11:23:35 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Dec 2017 11:11:16 GMT and should not be manually modified.
+
+## 5.12.1
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Patches
+
+- Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI
 
 ## 5.12.0
 Thu, 30 Nov 2017 11:23:35 GMT
