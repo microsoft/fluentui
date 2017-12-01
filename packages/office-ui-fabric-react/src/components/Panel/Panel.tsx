@@ -96,7 +96,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
     const renderProps: IPanelProps = { ...this.props, componentId: id };
-    isLightDismiss = isHiddenOnDismiss || isLightDismiss;
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -123,6 +122,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           role='dialog'
           ariaLabelledBy={ headerText && headerTextId }
           onDismiss={ this.dismiss }
+          className={
+            css(
+              !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
+            )
+          }
         >
           <div
             className={
@@ -158,7 +162,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={ isLightDismiss }
+              isClickableOutsideFocusTrap={ isLightDismiss || isHiddenOnDismiss }
               ignoreExternalFocusing={ ignoreExternalFocusing }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }

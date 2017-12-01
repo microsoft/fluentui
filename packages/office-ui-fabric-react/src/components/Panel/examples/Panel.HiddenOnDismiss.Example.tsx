@@ -24,7 +24,7 @@ export class PanelHiddenOnDismissExample extends React.Component<any, any> {
           headerText='Hidden on Dismiss Panel'
           onDismiss={ this._hidePanel }
         >
-          <span>When dismissed, this panel will be hidden instead of destroyed. LightDismiss is overridden and enabled.</span>
+          <span>When dismissed, this panel will be hidden instead of destroyed.</span>
         </Panel>
       </div>
     );
