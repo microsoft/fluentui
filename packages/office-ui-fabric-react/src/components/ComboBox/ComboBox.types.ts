@@ -119,8 +119,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-  * Custom width for dropdown. If value is 0, width of the input field is used.
-  * @default 0
+  * Custom width for dropdown. If value is not defined, width of the input field is used.
   */
   dropdownWidth?: number;
 }

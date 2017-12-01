@@ -821,7 +821,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }
         setInitialFocus={ false }
-        calloutWidth={ dropdownWidth || this._comboBoxWrapper.clientWidth + 2 }
+        calloutWidth={ dropdownWidth === undefined ? this._comboBoxWrapper.clientWidth + 2 : dropdownWidth }
       >
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
