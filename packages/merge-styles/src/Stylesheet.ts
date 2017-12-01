@@ -172,7 +172,7 @@ export class Stylesheet {
         break;
 
       case InjectionMode.appendChild:
-        createStyleElement(rule);
+        _createStyleElement(rule);
         break;
 
       default:
@@ -212,13 +212,13 @@ export class Stylesheet {
 
   private _getElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
-      this._styleElement = createStyleElement();
+      this._styleElement = _createStyleElement();
     }
     return this._styleElement;
   }
 }
 
-function createStyleElement(content?: string): HTMLStyleElement {
+function _createStyleElement(content?: string): HTMLStyleElement {
   const styleElement = document.createElement('style');
 
   styleElement.setAttribute('data-merge-styles', 'true');
