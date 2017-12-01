@@ -10,4 +10,14 @@ export interface IBeakProps extends React.Props<Beak> {
   * All props for your component are to be defined here.
   */
   componentRef?: (component: IBeak) => void;
+
+  /**
+   * Beak Width
+   */
+  beakWidth: number;
+
+  /**
+   * Background color of the beak
+   */
+  backgroundColor: string;
 }
