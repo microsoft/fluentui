@@ -27,7 +27,7 @@ If you are using Fabric React, you can use the `Icon` component and pass in the 
 
 ```tsx
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { getFileTypeIconProps } from '@uifabric/file-type-icons/lib/FileTypeIconHelper';
+import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 
 <Icon {...getFileTypeIconProps({extension: 'docx', size: '16'}) />
 ```
