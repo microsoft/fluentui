@@ -1,5 +1,5 @@
-import FileTypeIconMap from './FileTypeIconMap';
-import FileIconType from './FileIconType';
+import { FileTypeIconMap } from './FileTypeIconMap';
+import { FileIconType } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 
@@ -11,7 +11,7 @@ const LIST_ITEM: string = 'listitem';
 
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
-export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 96; // Designers might add 64 later
+export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 96;
 export type ImageFileType = 'svg' | 'png';
 
 export interface IFileTypeIconOptions {

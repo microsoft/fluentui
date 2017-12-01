@@ -12,5 +12,3 @@ export const enum FileIconType {
     ListItem,
     SharedFolder
 }
-
-export default FileIconType;

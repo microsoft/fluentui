@@ -19,8 +19,6 @@ initializeFileTypeIcons();
 initializeFileTypeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-This will make ALL icons in the collection available, but will download them on demand.
-
 # Usage in code
 
 If you are using Fabric React, you can use the `Icon` component and pass in the corresponding icon properties to render a given icon.
@@ -29,7 +27,7 @@ If you are using Fabric React, you can use the `Icon` component and pass in the 
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 
-<Icon {...getFileTypeIconProps({extension: 'docx', size: '16'}) />
+<Icon {...getFileTypeIconProps({extension: 'docx', size: 16}) />
 ```
 
 # Notes

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { registerIcons } from '@uifabric/styling/lib/index';
-import FileTypeIconMap from './FileTypeIconMap';
+import { FileTypeIconMap } from './FileTypeIconMap';
 
 const PNG_SUFFIX: string = '_png';
 const SVG_SUFFIX: string = '_svg';

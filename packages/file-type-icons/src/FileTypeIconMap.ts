@@ -3,7 +3,7 @@
  * Please keep items alphabetical. Items without extensions may require specific logic in the code to map.
  * Track icon accuracy status here: https://msft-my.spoppe.com/personal/caperez_microsoft_com/Documents/Missing%20List.xlsx?web=1
  */
-const FileTypeIconMap: {[key: string]: { extensions?: string[]}} = {
+export const FileTypeIconMap: {[key: string]: { extensions?: string[]}} = {
     'accdb': { extensions: ['accdb', 'mdb'] },
     'archive': { extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'] },
     'audio': { extensions: ['aif', 'aiff', 'aac', 'amr', 'au', 'awb', 'dct', 'dss', 'dvf', 'flac', 'gsm', 'm4a', 'm4p', 'mid', 'mmf', 'mp3', 'ogg', 'oga', 'ra', 'rm', 'wav', 'wma', 'wv'] },
@@ -51,5 +51,3 @@ const FileTypeIconMap: {[key: string]: { extensions?: string[]}} = {
     'xsn': { extensions: ['xsn'] },
     'zip': { extensions: ['zip'] }
 };
-
-export default FileTypeIconMap;
