@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-80b6008d.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-3-80b6008d.woff') format('woff')`,
     },
     icons: {
       'ErrorBadge': '\uEA39',
