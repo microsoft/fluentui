@@ -85,9 +85,10 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
     let initialsColorCode: string;
-    if (initialsColor === undefined) {
-      initialsColorCode = personaInitialsColorToHexCode(getInitialsColorFromName(primaryText));
+    if (typeof initialsColor === 'string') {
+      initialsColorCode = initialsColor;
     } else {
+      initialsColor = initialsColor !== undefined ? initialsColor : getInitialsColorFromName(primaryText);
       initialsColorCode = personaInitialsColorToHexCode(initialsColor);
     }
 
