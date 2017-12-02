@@ -1,6 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Fri, 13 Oct 2017 21:59:12 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2017 11:23:35 GMT and should not be manually modified.
+
+## 5.3.0
+Thu, 30 Nov 2017 11:23:35 GMT
+
+### Minor changes
+
+- Updating the icons package to pass through optional `options` argument in `initializeIcons`.
 
 ## 5.2.0
 Fri, 13 Oct 2017 21:59:12 GMT

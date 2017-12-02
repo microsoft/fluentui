@@ -131,7 +131,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       calloutWidth,
       finalHeight,
       backgroundColor,
-      calloutMaxHeight } = this.props;
+      calloutMaxHeight,
+      onScroll } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
 
@@ -183,6 +184,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               [styles.overFlowYHidden]: !!finalHeight
             }) }
             onDismiss={ this.dismiss }
+            onScroll={ onScroll }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
           >
