@@ -51,8 +51,7 @@
     {
       "packageName": "@uifabric/file-type-icons",
       "projectFolder": "packages/file-type-icons",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/icons",
