@@ -122,55 +122,6 @@ $ms-Persona-presenceBorder: 2px;
     // Using important to override all of the more specific initialsIsColor rules
     background-color: Window !important;
   }
-
-  &.initialsIsLightBlue {
-    background-color: $ms-color-initials-lightBlue;
-  }
-  &.initialsIsBlue {
-    background-color: $ms-color-initials-blue;
-  }
-  &.initialsIsDarkBlue {
-    background-color: $ms-color-initials-darkBlue;
-  }
-  &.initialsIsTeal {
-    background-color: $ms-color-initials-teal;
-  }
-  &.initialsIsLightGreen {
-    background-color: $ms-color-initials-lightGreen;
-  }
-  &.initialsIsGreen {
-    background-color: $ms-color-initials-green;
-  }
-  &.initialsIsDarkGreen {
-    background-color: $ms-color-initials-darkGreen;
-  }
-  &.initialsIsLightPink {
-    background-color: $ms-color-initials-lightPink;
-  }
-  &.initialsIsPink {
-    background-color: $ms-color-initials-pink;
-  }
-  &.initialsIsMagenta {
-    background-color: $ms-color-initials-magenta;
-  }
-  &.initialsIsPurple {
-    background-color: $ms-color-initials-purple;
-  }
-  &.initialsIsBlack {
-    background-color: $ms-color-initials-black;
-  }
-  &.initialsIsOrange {
-    background-color: $ms-color-initials-orange;
-  }
-  &.initialsIsRed {
-    background-color: $ms-color-initials-red;
-  }
-  &.initialsIsDarkRed {
-    background-color: $ms-color-initials-darkRed;
-  }
-  &.initialsIsTransparent {
-    background-color: $ms-color-initials-transparent;
-  }
 }
 
 .image {
