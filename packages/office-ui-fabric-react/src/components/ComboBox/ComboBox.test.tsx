@@ -373,4 +373,20 @@ describe('ComboBox', () => {
     buttonElement.simulate('click');
     expect(returnUndefined.mock.calls.length).toBe(1);
   });
+
+  it('merges callout classNames', () => {
+    ReactTestUtils.renderIntoDocument<ComboBox>(
+      <ComboBox
+        options={ DEFAULT_OPTIONS }
+        calloutProps={ { className: 'foo' } }
+      />
+    );
+
+    setTimeout(() => {
+      let callout = document.querySelector('.ms-Callout') as HTMLElement;
+      expect(callout).toBeDefined();
+      expect(callout.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+      expect(callout.classList.contains('foo')).toBeTruthy();
+    }, 0);
+  });
 });

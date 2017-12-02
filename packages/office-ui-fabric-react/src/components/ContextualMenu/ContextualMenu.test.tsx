@@ -464,6 +464,23 @@ describe('ContextualMenu', () => {
     expect(menuMountedFirst).toEqual(false);
   });
 
+  it('merges callout classNames', () => {
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ [{
+          name: 'TestText 0',
+          key: 'TestKey0'
+        }] }
+        calloutProps={ { className: 'foo' } }
+      />
+    );
+
+    let callout = document.querySelector('.ms-Callout') as HTMLElement;
+    expect(callout).toBeDefined();
+    expect(callout.classList.contains('ms-ContextualMenu-Callout')).toBeTruthy();
+    expect(callout.classList.contains('foo')).toBeTruthy();
+  });
+
   describe('canAnyMenuItemsCheck', () => {
     it('returns false when there are no checkable menu items', () => {
       const items: IContextualMenuItem[] = [
