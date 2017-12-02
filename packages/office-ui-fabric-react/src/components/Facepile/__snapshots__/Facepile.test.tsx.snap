@@ -169,7 +169,11 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
             >
               <div
                 aria-hidden="true"
-                className="ms-Persona-initials ms-Persona-initials--darkGreen undefined"
+                className=
+                    ms-Persona-initials
+                    {
+                      background-color: #1E7145;
+                    }
                 style={undefined}
               >
                 <span>

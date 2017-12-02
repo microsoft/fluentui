@@ -1,4 +1,4 @@
-import { PersonaInitialsColor } from './Persona.types';
+import { PersonaInitialsColor, IPersonaProps } from './Persona.types';
 
 /**
  * These colors are considered reserved colors and can only be set with overrides:
@@ -25,7 +25,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
 
-export function getInitialsColorFromName(displayName: string | undefined): PersonaInitialsColor {
+function getInitialsColorFromName(displayName: string | undefined): PersonaInitialsColor {
   let color = PersonaInitialsColor.blue;
   if (!displayName) {
     return color;
@@ -44,7 +44,7 @@ export function getInitialsColorFromName(displayName: string | undefined): Perso
   return color;
 }
 
-export function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColor): string {
+function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColor): string {
   switch (personaInitialsColor) {
     case PersonaInitialsColor.lightBlue:
       return '#6BA5E7';
@@ -79,4 +79,17 @@ export function personaInitialsColorToHexCode(personaInitialsColor: PersonaIniti
     case PersonaInitialsColor.transparent:
       return 'transparent';
   }
+}
+
+export function initialsColorPropToColorCode(props: IPersonaProps): string {
+  let { initialsColor, primaryText } = props;
+  let initialsColorCode: string;
+  if (typeof initialsColor === 'string') {
+    initialsColorCode = initialsColor;
+  } else {
+    initialsColor = initialsColor !== undefined ? initialsColor : getInitialsColorFromName(primaryText);
+    initialsColorCode = personaInitialsColorToHexCode(initialsColor);
+  }
+
+  return initialsColorCode;
 }

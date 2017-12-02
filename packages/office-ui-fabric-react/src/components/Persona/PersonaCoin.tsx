@@ -43,7 +43,7 @@ const SIZE_TO_PIXELS: { [key: number]: number } = {
   [PersonaSize.size100]: 100
 };
 import { mergeStyles } from '../../Styling';
-import { getInitialsColorFromName, personaInitialsColorToHexCode } from './PersonaInitialsColor';
+import { initialsColorPropToColorCode } from './PersonaInitialsColor';
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
@@ -84,14 +84,6 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     let divProps = getNativeProps(this.props, divProperties);
     let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
-    let initialsColorCode: string;
-    if (typeof initialsColor === 'string') {
-      initialsColorCode = initialsColor;
-    } else {
-      initialsColor = initialsColor !== undefined ? initialsColor : getInitialsColorFromName(primaryText);
-      initialsColorCode = personaInitialsColorToHexCode(initialsColor);
-    }
-
     return (
       <div
         { ...divProps }
@@ -112,7 +104,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                     'ms-Persona-initials',
                     styles.initials,
                     mergeStyles({
-                      backgroundColor: initialsColorCode
+                      backgroundColor: initialsColorPropToColorCode(this.props)
                     })
                   ) }
                   style={ coinSizeStyle }
