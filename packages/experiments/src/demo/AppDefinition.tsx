@@ -29,6 +29,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/form'
         },
         {
+          component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
+          key: 'FileTypeIcon',
+          name: 'FileTypeIcon',
+          url: '#/examples/filetypeicon'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
