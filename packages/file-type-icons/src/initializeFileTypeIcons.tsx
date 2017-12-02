@@ -1,5 +1,3 @@
-// tslint:disable:max-line-length
-
 import * as React from 'react';
 import { registerIcons } from '@uifabric/styling/lib/index';
 import { FileTypeIconMap } from './FileTypeIconMap';

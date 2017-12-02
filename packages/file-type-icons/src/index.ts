@@ -2,8 +2,8 @@ export { initializeFileTypeIcons } from './initializeFileTypeIcons';
 
 export {
   FileTypeIconSize,
-  ImageFileType,
   IFileTypeIconOptions,
+  ImageFileType,
   getFileTypeIconProps
 } from './getFileTypeIconProps';
 
