@@ -29,15 +29,25 @@ function _initializeIcons(baseUrl: string, size: number): void {
     // 1.5x is a special case where both SVGs and PNGs need a different image.
     // Remove if statements when missing image files for sizes 20 and 40 are provided.
     if (size !== 20) {
-      fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = <img src={ baseUrl + size + '_1.5x/' + type + '.png' } height='100%' width='100%' />;
+      fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = (
+        <img src={ baseUrl + size + '_1.5x/' + type + '.png' } height='100%' width='100%' />
+      );
       if (size !== 40) {
-        fileTypeIcons[type + size + '_1.5x' + SVG_SUFFIX] = <img src={ baseUrl + size + '_1.5x/' + type + '.svg' } height='100%' width='100%' />;
+        fileTypeIcons[type + size + '_1.5x' + SVG_SUFFIX] = (
+          <img src={ baseUrl + size + '_1.5x/' + type + '.svg' } height='100%' width='100%' />
+        );
       }
     }
 
-    fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = <img src={ baseUrl + size + '_2x/' + type + '.png' } height='100%' width='100%' />;
-    fileTypeIcons[type + size + '_3x' + PNG_SUFFIX] = <img src={ baseUrl + size + '_3x/' + type + '.png' } height='100%' width='100%' />;
-    fileTypeIcons[type + size + '_4x' + PNG_SUFFIX] = <img src={ baseUrl + size + '_4x/' + type + '.png' } height='100%' width='100%' />;
+    fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = (
+      <img src={ baseUrl + size + '_2x/' + type + '.png' } height='100%' width='100%' />
+    );
+    fileTypeIcons[type + size + '_3x' + PNG_SUFFIX] = (
+      <img src={ baseUrl + size + '_3x/' + type + '.png' } height='100%' width='100%' />
+    );
+    fileTypeIcons[type + size + '_4x' + PNG_SUFFIX] = (
+      <img src={ baseUrl + size + '_4x/' + type + '.png' } height='100%' width='100%' />
+    );
   });
 
   registerIcons({
