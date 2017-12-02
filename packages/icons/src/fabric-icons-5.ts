@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-5bc71068.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-5-5bc71068.woff') format('woff')`,
     },
     icons: {
       'SocialListeningLogo': '\uED7C',

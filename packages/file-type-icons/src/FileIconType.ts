@@ -6,9 +6,9 @@
  */
 
 export const enum FileIconType {
-    Docset = 1, // Start at 1 so it will evaluate as "truthy"
-    Folder,
-    GenericFile,
-    ListItem,
-    SharedFolder
+  docset = 1, // Start at 1 so it will evaluate as "truthy"
+  folder = 2,
+  genericFile = 3,
+  listItem = 4,
+  sharedFolder = 5
 }

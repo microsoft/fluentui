@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-8a1666a2.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-0-8a1666a2.woff') format('woff')`,
     },
     icons: {
       'DecreaseIndentLegacy': '\uE290',

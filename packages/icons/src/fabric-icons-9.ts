@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-a362212c.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-9-a362212c.woff') format('woff')`,
     },
     icons: {
       'ArrowTallUpRight': '\uF2BE',

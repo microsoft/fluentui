@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-2be8dca9.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-2-2be8dca9.woff') format('woff')`,
     },
     icons: {
       'Fingerprint': '\uE928',

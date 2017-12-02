@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-a961c249.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-1-a961c249.woff') format('woff')`,
     },
     icons: {
       'TVMonitor': '\uE7F4',
