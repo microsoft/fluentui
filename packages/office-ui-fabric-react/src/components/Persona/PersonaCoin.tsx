@@ -22,7 +22,6 @@ import {
   Icon
 } from '../../Icon';
 import * as stylesImport from './Persona.scss';
-import { getInitialsColorClassName } from './PersonaCoin.styles';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS: { [key: number]: number } = {
@@ -43,6 +42,8 @@ const SIZE_TO_PIXELS: { [key: number]: number } = {
   [PersonaSize.size72]: 72,
   [PersonaSize.size100]: 100
 };
+import { mergeStyles } from '../../Styling';
+import { getInitialsColorFromName, personaInitialsColorToHexCode } from './PersonaInitialsColor';
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
@@ -83,6 +84,13 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     let divProps = getNativeProps(this.props, divProperties);
     let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
+    let initialsColorCode: string;
+    if (initialsColor === undefined) {
+      initialsColorCode = personaInitialsColorToHexCode(getInitialsColorFromName(primaryText));
+    } else {
+      initialsColorCode = personaInitialsColorToHexCode(initialsColor);
+    }
+
     return (
       <div
         { ...divProps }
@@ -102,7 +110,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                   className={ css(
                     'ms-Persona-initials',
                     styles.initials,
-                    getInitialsColorClassName(initialsColor, primaryText)
+                    mergeStyles({
+                      backgroundColor: initialsColorCode
+                    })
                   ) }
                   style={ coinSizeStyle }
                   aria-hidden='true'
