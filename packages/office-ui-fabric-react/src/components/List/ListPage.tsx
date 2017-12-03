@@ -19,8 +19,8 @@ const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src
 let _cachedItems: any;
 
 export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
-  constructor() {
-    super();
+  constructor(props: IComponentDemoPageProps) {
+    super(props);
 
     _cachedItems = _cachedItems || createListItems(5000);
   }

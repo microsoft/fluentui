@@ -13,7 +13,7 @@ const exampleStyles: any = exampleStylesImport;
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
   constructor() {
-    super();
+    super({});
   }
 
   public render() {

@@ -10,9 +10,9 @@ export interface IFacepileAddFaceExampleState {
   numberOfFaces: number;
 }
 
-export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFaceExampleState> {
+export class FacepileAddFaceExample extends React.Component<{}, IFacepileAddFaceExampleState> {
   public constructor() {
-    super();
+    super({});
 
     this.state = {
       numberOfFaces: 0

@@ -5,9 +5,9 @@ import {
 } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
-export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
+export class ButtonCompoundExample extends React.Component<IButtonProps> {
   public constructor() {
-    super();
+    super({});
   }
 
   public render() {

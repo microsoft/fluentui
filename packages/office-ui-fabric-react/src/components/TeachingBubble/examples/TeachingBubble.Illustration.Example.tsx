@@ -10,11 +10,11 @@ export interface ITeachingBubbleIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleIllustrationExample extends React.Component<any, ITeachingBubbleIllustrationExampleState> {
+export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeachingBubbleIllustrationExampleState> {
   private _menuButtonElement: HTMLElement;
 
   public constructor() {
-    super();
+    super({});
 
     this._onDismiss = this._onDismiss.bind(this);
 

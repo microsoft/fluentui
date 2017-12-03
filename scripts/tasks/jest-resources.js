@@ -35,7 +35,7 @@ const styleMockPath =
         ],
 
         'setupFiles': [
-          path.resolve(__dirname, './jest-disable-warnings.js')
+          path.resolve(__dirname, 'jest-setup.js')
         ],
 
         'moduleDirectories': [

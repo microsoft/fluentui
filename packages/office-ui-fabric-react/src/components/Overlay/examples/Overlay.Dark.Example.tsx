@@ -5,9 +5,11 @@ import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
 import './Overlay.Example.scss';
 
-export class OverlayDarkExample extends React.Component<any, any> {
+export class OverlayDarkExample extends React.Component<{}, {
+  isOverlayVisible: boolean;
+}> {
   constructor() {
-    super();
+    super({});
 
     this.state = { isOverlayVisible: false };
   }

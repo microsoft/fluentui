@@ -54,7 +54,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _picker: IBasePicker<IPersonaProps>;
 
   constructor() {
-    super();
+    super({});
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

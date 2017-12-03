@@ -21,9 +21,11 @@ const examplePersona = {
   optionalText: 'Available at 4:00pm'
 };
 
-export class PersonaBasicExample extends React.Component<React.Props<PersonaBasicExample>, { renderPersonaDetails?: boolean; }> {
+export class PersonaBasicExample extends React.Component<{}, {
+  renderPersonaDetails?: boolean;
+}> {
   constructor() {
-    super();
+    super({});
     this.state = {
       renderPersonaDetails: true
     };

@@ -12,9 +12,9 @@ const GROUP_COUNT = 20;
 let _items: any[];
 let _groups: IGroup[];
 
-export class DetailsListCustomGroupHeadersExample extends React.Component<any, any> {
+export class DetailsListCustomGroupHeadersExample extends React.Component {
   constructor() {
-    super();
+    super({});
 
     _items = _items || createListItems(500);
     _groups = _groups || createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);

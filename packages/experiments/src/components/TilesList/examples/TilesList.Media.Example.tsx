@@ -51,7 +51,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
   private _selection: Selection;
 
   constructor() {
-    super();
+    super({});
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,

@@ -4,12 +4,15 @@ import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'offi
 import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
-export class DropdownBasicExample extends BaseComponent<any, any> {
+export class DropdownBasicExample extends BaseComponent<{}, {
+  selectedItem?: { key: string | number | undefined },
+  selectedItems: string[]
+}> {
   private _basicDropdown: IDropdown;
   constructor() {
-    super();
+    super({});
     this.state = {
-      selectedItem: null,
+      selectedItem: undefined,
       selectedItems: [],
     };
   }
@@ -73,7 +76,7 @@ export class DropdownBasicExample extends BaseComponent<any, any> {
         <Dropdown
           className='Dropdown-example'
           label='Controlled example:'
-          selectedKey={ selectedItem && selectedItem.key }
+          selectedKey={ (selectedItem ? selectedItem.key : undefined) }
           onChanged={ this.changeState }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }

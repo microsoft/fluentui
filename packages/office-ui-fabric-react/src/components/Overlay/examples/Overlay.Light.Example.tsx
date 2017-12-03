@@ -4,9 +4,11 @@ import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
 import './Overlay.Example.scss';
 
-export class OverlayLightExample extends React.Component<any, any> {
+export class OverlayLightExample extends React.Component<{}, {
+  isOverlayVisible: boolean;
+}> {
   constructor() {
-    super();
+    super({});
 
     this._onClick = this._onClick.bind(this);
 

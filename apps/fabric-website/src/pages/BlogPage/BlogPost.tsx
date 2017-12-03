@@ -7,7 +7,7 @@ export class BlogPost extends React.Component<{}, {}> {
   private _postId: string;
 
   constructor() {
-    super();
+    super({});
     this._postId = this._getParameterByName('id');
   }
 

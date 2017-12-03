@@ -43,7 +43,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   };
 
   public constructor() {
-    super();
+    super({});
 
     this.state = {
       isBeakVisible: false,

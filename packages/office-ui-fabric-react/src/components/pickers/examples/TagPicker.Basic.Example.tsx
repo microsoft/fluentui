@@ -26,7 +26,7 @@ let _testTags = [
 
 export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
   constructor() {
-    super();
+    super({});
     this.state = {
       isPickerDisabled: false
     };

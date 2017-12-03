@@ -70,9 +70,9 @@ export interface IDatePickerInputExampleState {
   value?: Date | null;
 }
 
-export class DatePickerInputExample extends React.Component<any, IDatePickerInputExampleState> {
+export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
   public constructor() {
-    super();
+    super({});
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,

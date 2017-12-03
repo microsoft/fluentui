@@ -21,10 +21,7 @@ const examplePersona = {
   optionalText: 'Available at 4:00pm'
 };
 
-export class PersonaCustomRenderExample extends React.Component<React.Props<PersonaCustomRenderExample>, any> {
-  constructor() {
-    super();
-  }
+export class PersonaCustomRenderExample extends React.Component {
 
   public render() {
     return (

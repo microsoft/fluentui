@@ -15,19 +15,16 @@
     "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
-    "@types/chai": "3.4.35",
-    "@types/enzyme": "2.8.8",
-    "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
-    "@types/react": "15.6.7",
+    "@types/react": "16.0.25",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.7.2",
+    "@microsoft/load-themed-styles": "^1.7.11",
     "@uifabric/utilities": ">=5.5.0 <6.0.0",
     "@uifabric/merge-styles": ">=5.7.0 <6.0.0",
     "tslib": "^1.7.1"

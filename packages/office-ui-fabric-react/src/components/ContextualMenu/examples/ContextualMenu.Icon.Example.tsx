@@ -4,10 +4,10 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuIconExample extends React.Component<any, any> {
+export class ContextualMenuIconExample extends React.Component<{}, { showCallout: boolean }> {
 
   constructor() {
-    super();
+    super({});
     this.state = {
       showCallout: false
     };

@@ -27,9 +27,9 @@ export interface IFacepileOverflowExampleState {
   overflowButtonType: OverflowButtonType;
 }
 
-export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
+export class FacepileOverflowExample extends React.Component<{}, IFacepileOverflowExampleState> {
   public constructor() {
-    super();
+    super({});
 
     this.state = {
       displayedPersonas: 5,

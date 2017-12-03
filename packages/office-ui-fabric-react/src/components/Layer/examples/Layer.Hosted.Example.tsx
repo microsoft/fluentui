@@ -8,9 +8,12 @@ import './Layer.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class LayerHostedExample extends React.Component<any, any> {
+export class LayerHostedExample extends React.Component<{}, {
+  showLayer: boolean;
+  showHost: boolean;
+}> {
   constructor() {
-    super();
+    super({});
     this.state = {
       showLayer: false,
       showHost: true
