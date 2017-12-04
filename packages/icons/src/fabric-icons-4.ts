@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-46fbc7bc.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-4-46fbc7bc.woff') format('woff')`,
     },
     icons: {
       'ReminderGroup': '\uEBF8',
