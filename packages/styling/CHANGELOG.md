@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 01 Dec 2017 11:11:16 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Dec 2017 17:27:54 GMT and should not be manually modified.
+
+## 5.14.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add an event callback for when the theme changes.
 
 ## 5.12.1
 Fri, 01 Dec 2017 11:11:16 GMT
