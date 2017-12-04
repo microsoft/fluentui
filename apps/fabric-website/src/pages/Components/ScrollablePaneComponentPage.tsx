@@ -9,7 +9,7 @@ export class ScrollablePaneComponentPage extends React.Component<any, any> {
     return (
       <div ref='pageElement' className={ pageStyles.basePage }>
         <ComponentPage>
-          <PageHeader pageTitle='SearchBox' backgroundColor='#038387'
+          <PageHeader pageTitle='ScrollablePane' backgroundColor='#038387'
             links={
               [
                 {
