@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.14.0",
+      "tag": "@uifabric/styling_v5.14.0",
+      "date": "Mon, 04 Dec 2017 17:27:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f87d8889321e89fc697985c43b88b2bfc3288994",
+            "comment": "Add an event callback for when the theme changes."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.1",
       "tag": "@uifabric/styling_v5.12.1",
       "date": "Fri, 01 Dec 2017 11:11:16 GMT",
