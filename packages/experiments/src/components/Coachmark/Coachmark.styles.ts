@@ -77,53 +77,6 @@ export interface ICoachmarkStyles {
   collapsed?: IStyle;
 };
 
-// @TODO remove this extra block once the updates to mergeStyles reach master
-export interface ICoachmarkStylesNames {
-  /**
-  * Style for the root element in the default enabled/unchecked state.
-  */
-  root: string;
-
-  /**
-   * The pulsing beacon that animates when the coachmark
-   * is collapsed.
-   */
-  pulsingBeacon: string;
-
-  /**
-   * The layer, or div, that the translate animation will be applied to.
-   */
-  translateAnimationContainer: string;
-
-  /**
-   * The layer the Scale animation will be applied to.
-   */
-  scaleAnimationLayer: string;
-
-  /**
-   * The layer the Rotate animation will be applied to.
-   */
-  rotateAnimationLayer: string;
-
-  /**
-   * The outer layer that content/components/elments will be hosted in
-   * and primary purpose is to display a background color
-   */
-  entityHost: string;
-
-  /**
-   * The inner layer that components will be hosted in
-   * and primary purpose is scaling the layer down while the
-   * Coachmark collapsed.
-   */
-  entityInnerHost: string;
-
-  /**
-   * The styles applied when the coachmark has collapsed.
-   */
-  collapsed: string;
-};
-
 export const coachmarkCollapsedSize = '36px';
 export const beaconColorOne = '#00FFEC';
 export const beaconColorTwo = '#005EDD';
