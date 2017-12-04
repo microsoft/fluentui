@@ -137,7 +137,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._warnMutuallyExclusive({
       'defaultSelectedKey': 'selectedKey',
       'value': 'defaultSelectedKey',
-      'selectedKey': 'value'
+      'selectedKey': 'value',
+      'dropdownWidth': 'useComboBoxAsMenuWidth'
     });
 
     this._id = props.id || getId('ComboBox');
@@ -320,6 +321,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
             disabled={ disabled }
+            checked={ isOpen }
           />
         </div>
 
@@ -805,7 +807,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderList,
       calloutProps,
       dropdownWidth,
-      onRenderLowerContent = this._onRenderLowerContent
+      onRenderLowerContent = this._onRenderLowerContent,
+      useComboBoxAsMenuWidth
     } = props;
 
     return (
@@ -821,7 +824,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }
         setInitialFocus={ false }
-        calloutWidth={ dropdownWidth || this._comboBoxWrapper.clientWidth + 2 }
+        calloutWidth={
+          useComboBoxAsMenuWidth ?
+            this._comboBoxWrapper.clientWidth + 2
+            : dropdownWidth }
       >
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }

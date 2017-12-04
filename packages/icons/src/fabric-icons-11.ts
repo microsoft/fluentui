@@ -20,7 +20,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-11"`,
-      src: `url('${baseUrl}fabric-icons-11-c0dbf638.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-11-c0dbf638.woff') format('woff')`,
     },
     icons: {
       'IRMReplyMirrored': '\uF41E',
