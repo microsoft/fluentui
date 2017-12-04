@@ -1,14 +1,9 @@
 import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
-import {
-  ITheme,
-  getFocusStyle,
-  FontSizes
-} from 'office-ui-fabric-react';
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
 
   const { className, theme, endAligned } = props;
-  const { semanticColors, palette } = theme;
+  const { palette } = theme;
 
   return ({
     root: [
@@ -18,7 +13,8 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         backgroundColor: palette.neutralLighter,
         padding: '0 16px',
         height: '40px'
-      }
+      },
+      className
     ],
     primarySet: [
       {

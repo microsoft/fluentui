@@ -104,7 +104,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootHovered: {
-      backgroundColor: theme.palette.themeDark,
+      backgroundColor: theme.palette.themeDarkAlt,
       color: theme.palette.white,
       selectors: {
         [HighContrastSelector]: {
@@ -116,7 +116,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootPressed: {
-      backgroundColor: theme.palette.themePrimary,
+      backgroundColor: theme.palette.themeDark,
       color: theme.palette.white,
       selectors: {
         [HighContrastSelector]: {

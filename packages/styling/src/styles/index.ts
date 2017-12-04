@@ -8,6 +8,8 @@ export {
   ThemeSettingName,
   getTheme,
   loadTheme,
-  createTheme
+  createTheme,
+  registerOnThemeChangeCallback,
+  removeOnThemeChangeCallback
 } from './theme';
 export * from './CommonStyles';

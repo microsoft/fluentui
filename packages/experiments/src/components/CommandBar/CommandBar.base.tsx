@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getId,
   autobind,
   customizable
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -46,8 +45,6 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-const COMMANDBAR_HEIGHT = '40px';
-
 @customizable('CommandBar', ['theme'])
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
@@ -59,12 +56,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _overflowSet: IOverflowSet;
   private _classNames: {[key in keyof ICommandBarStyles]: string };
-  private _id: string;
-
-  constructor(props: ICommandBarProps) {
-    super(props);
-    this._id = getId('CommandBar');
-  }
 
   public render(): JSX.Element {
     const {

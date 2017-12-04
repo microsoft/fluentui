@@ -49,6 +49,11 @@
       ]
     },
     {
+      "packageName": "@uifabric/file-type-icons",
+      "projectFolder": "packages/file-type-icons",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/icons",
       "projectFolder": "packages/icons",
       "versionPolicyName": "lockedMajor"

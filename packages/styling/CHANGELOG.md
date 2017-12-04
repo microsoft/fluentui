@@ -1,6 +1,34 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 28 Nov 2017 02:24:21 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Dec 2017 17:27:54 GMT and should not be manually modified.
+
+## 5.14.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add an event callback for when the theme changes.
+
+## 5.12.1
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Patches
+
+- Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI
+
+## 5.12.0
+Thu, 30 Nov 2017 11:23:35 GMT
+
+### Minor changes
+
+- Updating the `registerIcons` helper to take in options.
+
+## 5.11.1
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Patches
+
+- SemanticSlots: Updated inputBorderHovered color.
 
 ## 5.11.0
 Tue, 28 Nov 2017 02:24:21 GMT
