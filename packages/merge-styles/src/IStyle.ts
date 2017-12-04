@@ -1,11 +1,11 @@
-import { IRawStyle } from './IRawStyle';
+import { IRawStyleBase } from './IRawStyleBase';
 
 /**
  * IStyleObject extends a raw style objects, but allows selectors to be defined
  * under the selectors node.
  * @public
  */
-export interface IExtendedRawStyle extends IRawStyle {
+export interface IRawStyle extends IRawStyleBase {
   /**
    * Display name for the style.
    */
@@ -19,11 +19,13 @@ export interface IExtendedRawStyle extends IRawStyle {
   };
 }
 
-export type IStyleBase = IExtendedRawStyle | string | false | null | undefined;
+export type IStyleBase = IRawStyle | string | false | null | undefined;
+
+export interface IStyleBaseArray extends Array<IStyle> { }
 
 /**
  * IStyleObject extends a raw style objects, but allows selectors to be defined
  * under the selectors node.
  * @public
  */
-export type IStyle = IStyleBase | IStyleBase[] | IStyleBase[][] | IStyleBase[][][];
+export type IStyle = IStyleBase | IStyleBaseArray;

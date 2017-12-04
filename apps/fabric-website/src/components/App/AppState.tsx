@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // Props
-import { INavPage } from '../Nav/Nav.Props';
+import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
 
@@ -25,19 +25,22 @@ export const AppState: IAppState = {
       title: 'Fabric',
       url: '#/',
       className: 'fabricPage',
+      isHomePage: true,
+      isUhfLink: true,
       component: require<any>('../../pages/HomePage/HomePage').HomePage,
-      isHomePage: true
     },
     {
       title: 'Get started',
       url: '#/get-started',
       className: 'getStartedPage',
+      isUhfLink: true,
       component: require<any>('../../pages/GetStarted/GetStartedPage').GetStartedPage,
     },
     {
       title: 'Styles',
       url: '#/styles',
       className: 'stylesPage',
+      isUhfLink: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
       pages: [
         {
@@ -71,6 +74,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
+          title: 'Beta Theme Generator',
+          url: '#/styles/themeGenerator',
+          isHiddenFromMainNav: true,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
+        },
+        {
           title: 'Typography',
           url: '#/styles/typography',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/TypographyPage/TypographyPage').TypographyPage))
@@ -80,15 +89,21 @@ export const AppState: IAppState = {
           url: '#/styles/utilities',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
-
       ]
     },
     {
       title: 'Components',
       url: '#/components',
       className: 'componentsPage',
+      isUhfLink: true,
       component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
       pages: [
+        {
+          title: 'ActivityItem',
+          url: '#/components/activityitem',
+          component: () => <LoadingComponent title='ActivityItem' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ActivityItemComponentPage').ActivityItemComponentPage))
+        },
         {
           title: 'Breadcrumb',
           url: '#/components/breadcrumb',
@@ -100,14 +115,18 @@ export const AppState: IAppState = {
           url: '#/components/button',
           component: () => <LoadingComponent title='Button' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ButtonComponentPage').ButtonComponentPage)),
-
+        },
+        {
+          title: 'Calendar',
+          url: '#/components/Calendar',
+          component: () => <LoadingComponent title='Calendar' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CalendarComponentPage').CalendarComponentPage))
         },
         {
           title: 'Callout',
           url: '#/components/callout',
           component: () => <LoadingComponent title='Callout' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CalloutComponentPage').CalloutComponentPage))
-
         },
         {
           title: 'Checkbox',
@@ -120,7 +139,6 @@ export const AppState: IAppState = {
           url: '#/components/choicegroup',
           component: () => <LoadingComponent title='ChoiceGroup' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ChoiceGroupComponentPage').ChoiceGroupComponentPage))
-
         },
         {
           title: 'ColorPicker',
@@ -133,7 +151,6 @@ export const AppState: IAppState = {
           url: '#/components/ComboBox',
           component: () => <LoadingComponent title='ComboBox' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ComboBoxComponentPage').ComboBoxComponentPage))
-
         },
         {
           title: 'CommandBar',
@@ -146,7 +163,6 @@ export const AppState: IAppState = {
           url: '#/components/contextualmenu',
           component: () => <LoadingComponent title='ContextualMenu' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ContextualMenuComponentPage').ContextualMenuComponentPage))
-
         },
         {
           title: 'DatePicker',
@@ -177,7 +193,6 @@ export const AppState: IAppState = {
           url: '#/components/dropdown',
           component: () => <LoadingComponent title='Dropdown' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/DropdownComponentPage').DropdownComponentPage))
-
         },
         {
           title: 'Facepile',
@@ -191,7 +206,18 @@ export const AppState: IAppState = {
           url: '#/components/groupedlist',
           component: () => <LoadingComponent title='GroupedList' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/GroupedListComponentPage').GroupedListComponentPage))
-
+        },
+        {
+          title: 'HoverCard',
+          url: '#/components/hovercard',
+          component: () => <LoadingComponent title='HoverCard' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/HoverCardComponentPage').HoverCardComponentPage))
+        },
+        {
+          title: 'Icon',
+          url: '#/components/icon',
+          component: () => <LoadingComponent title='Icon' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/IconComponentPage').IconComponentPage))
         },
         {
           title: 'Image',
@@ -210,7 +236,6 @@ export const AppState: IAppState = {
           url: '#/components/layer',
           component: () => <LoadingComponent title='Layer' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/LayerComponentPage').LayerComponentPage))
-
         },
         {
           title: 'Link',
@@ -241,6 +266,12 @@ export const AppState: IAppState = {
           url: '#/components/nav',
           component: () => <LoadingComponent title='Nav' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/NavComponentPage').NavComponentPage))
+        },
+        {
+          title: 'OverflowSet',
+          url: '#/components/overflowset',
+          component: () => <LoadingComponent title='OverflowSet' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/OverflowSetComponentPage').OverflowSetComponentPage))
         },
         {
           title: 'Overlay',
@@ -297,6 +328,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ResizeGroupComponentPage').ResizeGroupComponentPage))
         },
         {
+          title: 'ScrollablePane',
+          url: '#/components/scrollablepane',
+          component: () => <LoadingComponent title='ScrollablePane' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ScrollablePaneComponentPage').ScrollablePaneComponentPage))
+        },
+        {
           title: 'SearchBox',
           url: '#/components/searchbox',
           component: () => <LoadingComponent title='SearchBox' />,
@@ -325,6 +362,12 @@ export const AppState: IAppState = {
           url: '#/components/swatchcolorpicker',
           component: () => <LoadingComponent title='SwatchColorPicker' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SwatchColorPickerComponentPage').SwatchColorPickerComponentPage))
+        },
+        {
+          title: 'TeachingBubble',
+          url: '#/components/teachingbubble',
+          component: () => <LoadingComponent title='TeachingBubble' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/TeachingBubbleComponentPage').TeachingBubbleComponentPage))
         },
         {
           title: 'TextField',
@@ -388,12 +431,14 @@ export const AppState: IAppState = {
       title: 'Resources',
       url: '#/resources',
       className: 'resourcesPage',
+      isUhfLink: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesPage))
     },
     {
       title: 'Blog',
       url: '#/blog',
       className: 'blogPage',
+      isUhfLink: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
     },
     {

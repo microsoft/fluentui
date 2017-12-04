@@ -19,12 +19,12 @@ export class ImageMaximizeFrameExample extends React.Component<any, any> {
         <p>Where the exact width and height of the image's frame is not known, such as when sizing an image as a percentage of its parent, you can use the "maximizeFrame" prop to expand the frame to fill the parent element.</p>
         <Label>The image is placed within a landscape container.</Label>
         <div style={ { width: '200px', height: '100px' } }>
-          <Image { ...imageProps as any } />
+          <Image { ...imageProps as any } alt='Example implementation of the property maximize frame with a landscape container.' />
         </div>
         <br />
         <Label>The image is placed within a portrait container.</Label>
         <div style={ { width: '100px', height: '200px' } }>
-          <Image { ...imageProps as any } />
+          <Image { ...imageProps as any } alt='Example implementation of the property maximize frame with a portrait container' />
         </div>
       </div>
     );

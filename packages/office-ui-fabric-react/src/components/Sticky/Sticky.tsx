@@ -8,10 +8,7 @@ import {
   BaseComponent,
   autobind
 } from '../../Utilities';
-import { ScrollablePane } from '../../ScrollablePane';
-import { IStickyProps, StickyPositionType } from './Sticky.Props';
-import * as stylesImport from './Sticky.scss';
-const styles: any = stylesImport;
+import { IStickyProps, StickyPositionType } from './Sticky.types';
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -65,7 +62,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       throw new TypeError('Expected Sticky to be mounted within ScrollablePane');
     }
     const { scrollablePane } = this.context;
-    const { stickyClassName } = this.props;
     scrollablePane.subscribe(this._onScrollEvent);
     this.content = document.createElement('div');
     this.content.style.background = this._getBackground();
@@ -97,6 +93,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (this.props.children !== prevProps.children) {
       ReactDOM.render(<div>{ this.props.children }</div>, this.content);
     }
+
     if (isStickyTop && !prevState.isStickyTop) {
       this._setSticky(() => {
         scrollablePane.addStickyHeader(this);
@@ -105,7 +102,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this._resetSticky(() => {
         scrollablePane.removeStickyHeader(this);
       });
-    } else if (isStickyBottom && !prevState.isStickyBottom) {
+    }
+
+    if (isStickyBottom && !prevState.isStickyBottom) {
       this._setSticky(() => {
         scrollablePane.addStickyFooter(this);
       });

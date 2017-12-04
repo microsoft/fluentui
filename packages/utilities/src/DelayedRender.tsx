@@ -5,7 +5,7 @@ import * as React from 'react';
  *
  * @public
  */
-export interface IDelayedRenderProps extends React.Props<any> {
+export interface IDelayedRenderProps extends React.Props<{}> {
   /**
    * Number of milliseconds to delay rendering children.
    */
@@ -61,7 +61,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
     }
   }
 
-  public render(): React.ReactElement<any> | null {
+  public render(): React.ReactElement<{}> | null {
     return this.state.isRendered ? React.Children.only(this.props.children) : null;
   }
 }

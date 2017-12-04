@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
 import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
@@ -64,12 +63,13 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
         <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
-          componentRef={ t => this._toggle = t }
+          componentRef={ this._setRef }
           checked={ isToggled }
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         { (() => {
           if (isToggled) {
             return (
@@ -104,5 +104,10 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     this.setState({
       isToggled: isToggled
     }, () => this._toggle.focus());
+  }
+
+  @autobind
+  private _setRef(toggle: IToggle): void {
+    this._toggle = toggle;
   }
 }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
@@ -24,22 +25,7 @@ export class PanelFooterExample extends React.Component<any, any> {
           isFooterAtBottom={ true }
           headerText='Panel with footer at bottom'
           closeButtonAriaLabel='Close'
-          onRenderFooterContent={ () => {
-            return (
-              <div>
-                <PrimaryButton
-                  onClick={ this._onClosePanel }
-                  style={ { 'marginRight': '8px' } } >
-                  Save
-                </PrimaryButton>
-                <DefaultButton
-                  onClick={ this._onClosePanel }
-                >
-                  Cancel
-                </DefaultButton>
-              </div>
-            );
-          } }
+          onRenderFooterContent={ this._onRenderFooterContent }
         >
           <span>Content goes here.</span>
         </Panel>
@@ -49,6 +35,25 @@ export class PanelFooterExample extends React.Component<any, any> {
 
   private _onClosePanel = () => {
     this.setState({ showPanel: false });
+  }
+
+  @autobind
+  private _onRenderFooterContent(): JSX.Element {
+    return (
+      <div>
+        <PrimaryButton
+          onClick={ this._onClosePanel }
+          style={ { 'marginRight': '8px' } }
+        >
+          Save
+        </PrimaryButton>
+        <DefaultButton
+          onClick={ this._onClosePanel }
+        >
+          Cancel
+        </DefaultButton>
+      </div>
+    );
   }
 
   private _onShowPanel = () => {

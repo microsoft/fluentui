@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ISliderProps, ISlider } from './Slider.Props';
+import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
 import * as stylesImport from './Slider.scss';
 const styles: any = stylesImport;
@@ -102,7 +102,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
           ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
           ['ms-Slider-column ' + styles.rootIsVertical]: vertical
         }) }
-        ref='root'>
+        ref='root'
+      >
         { label && (
           <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
             { label }
@@ -113,6 +114,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
+            aria-valuetext={ this._getAriaValueText(value) }
+            aria-label={ ariaLabel || label }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
             { ...onKeyDownProp }
@@ -136,7 +139,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
               <span
                 ref='thumb'
                 className={ css('ms-Slider-thumb', styles.thumb) }
-                { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
                 style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
               <span
@@ -144,8 +146,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 style={ { [lengthString]: thumbOffsetPercent + '%' } }
               />
               <span
-                 className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
-                 style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
+                className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
+                style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
               />
             </div>
           </button>
@@ -162,6 +164,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   public get value(): number | undefined {
     return this.state.value;
+  }
+
+  @autobind
+  private _getAriaValueText(value: number | undefined): string | void {
+    if (this.props.ariaValueText && value !== undefined) {
+      return this.props.ariaValueText(value);
+    }
   }
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
@@ -239,10 +248,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number) {
-    let valueChanged = value !== this.state.value;
+    let interval: number = 1.0 / this.props.step!;
+    // Make sure value has correct number of decimal places based on steps without JS's floating point issues
+    let roundedValue: number = Math.round(value * interval) / interval;
+
+    let valueChanged = roundedValue !== this.state.value;
 
     this.setState({
-      value,
+      value: roundedValue,
       renderedValue
     }, () => {
       if (valueChanged && this.props.onChange) {

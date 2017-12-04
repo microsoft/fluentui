@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
+<div
+  className="ms-Dropdown-container"
+>
+  <div
+    aria-activedescendant={null}
+    aria-describedby="Dropdown94-option"
+    aria-disabled={undefined}
+    aria-expanded="false"
+    aria-label={undefined}
+    aria-live="assertive"
+    aria-owns={null}
+    className="ms-Dropdown"
+    data-is-focusable={true}
+    id="Dropdown94"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    role="menu"
+    tabIndex={0}
+  >
+    <span
+      aria-atomic={true}
+      aria-readonly="true"
+      className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
+      id="Dropdown94-option"
+      role="textbox"
+    />
+    <span
+      className="ms-Dropdown-caretDownWrapper"
+    >
+      <i
+        aria-hidden={true}
+        aria-label={undefined}
+        className=
+            ms-Icon
+            ms-Dropdown-caretDown
+            {
+              display: inline-block;
+            }
+        data-icon-name="ChevronDown"
+        role="presentation"
+      />
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
+<div
+  className="ms-Dropdown-container"
+>
+  <div
+    aria-activedescendant={null}
+    aria-describedby="Dropdown0-option"
+    aria-disabled={undefined}
+    aria-expanded="false"
+    aria-label={undefined}
+    aria-live="assertive"
+    aria-owns={null}
+    className="ms-Dropdown"
+    data-is-focusable={true}
+    id="Dropdown0"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    role="menu"
+    tabIndex={0}
+  >
+    <span
+      aria-atomic={true}
+      aria-readonly="true"
+      className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
+      id="Dropdown0-option"
+      role="textbox"
+    />
+    <span
+      className="ms-Dropdown-caretDownWrapper"
+    >
+      <i
+        aria-hidden={true}
+        aria-label={undefined}
+        className=
+            ms-Icon
+            ms-Dropdown-caretDown
+            {
+              display: inline-block;
+            }
+        data-icon-name="ChevronDown"
+        role="presentation"
+      />
+    </span>
+  </div>
+</div>
+`;

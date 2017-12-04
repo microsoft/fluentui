@@ -4,17 +4,21 @@ import * as React from 'react';
 import {
   BaseComponent,
   autobind,
-  css,
   divProperties,
   getNativeProps,
   getId,
+  KeyCodes,
   getDocument
 } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
-import { ExpandingCard } from './ExpandingCard';
-import { ExpandingCardMode } from './ExpandingCard.Props';
+import {
+  mergeStyles
+} from '../../Styling';
 
+import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
+import { ExpandingCard } from './ExpandingCard';
+import { ExpandingCardMode } from './ExpandingCard.types';
 import { getStyles } from './HoverCard.styles';
+import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 export interface IHoverCardState {
   isHoverCardVisible: boolean;
@@ -31,6 +35,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard: HTMLElement;
+  // tslint:disable-next-line:no-unused-variable
   private _expandingCard: ExpandingCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
@@ -53,8 +58,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this._events.on(target, 'mouseenter', this._cardOpen);
     this._events.on(target, 'mouseleave', this._cardDismiss);
-    this._events.on(target, 'focus', this._cardOpen);
-    this._events.on(target, 'blur', this._cardDismiss);
+    if (this.props.trapFocus) {
+      this._events.on(target, 'keydown', this._cardOpen);
+    } else {
+      this._events.on(target, 'focus', this._cardOpen);
+      this._events.on(target, 'blur', this._cardDismiss);
+    }
     if (this.props.instantOpenOnClick) {
       this._events.on(target, 'click', this._instantOpenExpanded);
     } else {
@@ -87,7 +96,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       expandingCardProps,
       children,
       id,
-      instantOpenOnClick,
       setAriaDescribedBy = true,
       styles: customStyles
     } = this.props;
@@ -98,7 +106,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     return (
       <div
-        className={ css(this._styles.host) }
+        className={ mergeStyles(this._styles.host) }
         ref={ this._resolveRef('_hoverCard') }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
@@ -108,6 +116,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             componentRef={ this._resolveRef('_expandingCard') }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
+            trapFocus={ !!this.props.trapFocus }
             targetElement={ this._getTargetElement() }
             onEnter={ this._cardOpen }
             onLeave={ this._cardDismiss }
@@ -137,8 +146,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Show HoverCard
   @autobind
   private _cardOpen(ev: MouseEvent) {
+    if (ev.type === 'keydown' && !(ev.shiftKey && ev.which === KeyCodes.space)) {
+      return;
+    }
     this._async.clearTimeout(this._dismissTimerId);
-    this._currentMouseTarget = ev.currentTarget;
+    if (ev.type === 'mouseenter') {
+      this._currentMouseTarget = ev.currentTarget;
+    }
 
     this._openTimerId = this._async.setTimeout(() => {
       if (!this.state.isHoverCardVisible) {
@@ -153,10 +167,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Hide HoverCard
   @autobind
   private _cardDismiss(ev: MouseEvent) {
+    if (ev.type === 'keydown' && (ev.which !== KeyCodes.escape)) {
+      return;
+    }
     this._async.clearTimeout(this._openTimerId);
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
-    if (!this.props.sticky && this._currentMouseTarget === ev.currentTarget) {
+    if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || (ev.which === KeyCodes.escape))) {
       this._dismissTimerId = this._async.setTimeout(() => {
         this.setState({
           isHoverCardVisible: false,

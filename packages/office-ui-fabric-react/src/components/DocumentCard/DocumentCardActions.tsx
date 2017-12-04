@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
-import { IDocumentCardActionsProps } from './DocumentCard.Props';
+import { IDocumentCardActionsProps } from './DocumentCard.types';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
 import * as stylesImport from './DocumentCard.scss';

@@ -11,21 +11,22 @@ import {
   IFacepileProps,
   IFacepilePersona,
   OverflowButtonType
-} from './Facepile.Props';
+} from './Facepile.types';
 import {
   FocusZone,
   FocusZoneDirection
 } from '../../FocusZone';
 import {
-  BaseButton
-} from '../../Button';
+  FacepileButton
+} from './FacepileButton';
 import {
   Icon
 } from '../../Icon';
 import {
-  Persona,
-  PersonaSize
-} from '../../Persona';
+  PersonaCoin,
+  PersonaSize,
+  PersonaInitialsColor
+} from '../../PersonaCoin';
 import * as stylesImport from './Facepile.scss';
 const styles: any = stylesImport;
 
@@ -33,7 +34,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
-    personaSize: PersonaSize.extraSmall
+    personaSize: PersonaSize.size32
   };
 
   private _ariaDescriptionId: string;
@@ -50,7 +51,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       maxDisplayablePersonas,
       overflowButtonProps,
       overflowButtonType,
-      ariaDescription,
       className,
       personas,
       showAddButton
@@ -103,46 +103,51 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     let { getPersonaProps, personaSize } = this.props;
-    return <Persona
-      imageInitials={ persona.imageInitials }
-      imageUrl={ persona.imageUrl }
-      initialsColor={ persona.initialsColor }
-      primaryText={ persona.personaName }
-      size={ personaSize }
-      hidePersonaDetails={ true }
-      {...(getPersonaProps ? getPersonaProps(persona) : null) }
-    />;
+    return (
+      <PersonaCoin
+        imageInitials={ persona.imageInitials }
+        imageUrl={ persona.imageUrl }
+        initialsColor={ persona.initialsColor }
+        primaryText={ persona.personaName }
+        size={ personaSize }
+        {...(getPersonaProps ? getPersonaProps(persona) : null) }
+      />
+    );
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <BaseButton
-      { ...getNativeProps(persona, buttonProperties) }
-      key={ (!!persona.imageUrl ? 'i' : '') + index }
-      data-is-focusable={ true }
-      role='option'
-      className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
-      title={ persona.personaName }
-      onClick={ this._onPersonaClick.bind(this, persona) }
-      onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
-    >
-      { personaControl }
-    </BaseButton>;
+    return (
+      <FacepileButton
+        { ...getNativeProps(persona, buttonProperties) }
+        key={ (!!persona.imageUrl ? 'i' : '') + index }
+        data-is-focusable={ true }
+        role='option'
+        className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
+        title={ persona.personaName }
+        onClick={ this._onPersonaClick.bind(this, persona) }
+        onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
+        onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+      >
+        { personaControl }
+      </FacepileButton>
+    );
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <div
-      { ...getNativeProps(persona, divProperties) }
-      key={ (!!persona.imageUrl ? 'i' : '') + index }
-      data-is-focusable={ true }
-      role='option'
-      className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
-      title={ persona.personaName }
-      onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
-    >
-      { personaControl }
-    </div>;
+    return (
+      <div
+        { ...getNativeProps(persona, divProperties) }
+        key={ (!!persona.imageUrl ? 'i' : '') + index }
+        data-is-focusable={ true }
+        role='option'
+        className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
+        title={ persona.personaName }
+        onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
+        onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+      >
+        { personaControl }
+      </div>
+    );
   }
 
   private _getOverflowElement(numPersonasToShow: number): JSX.Element | null {
@@ -166,55 +171,54 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
     let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
-    return <BaseButton
-      { ...overflowButtonProps}
-      ariaDescription={ personaNames }
-      className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
-    >
-      <Persona
-        title={ personaNames }
-        size={ personaSize }
-        hidePersonaDetails={ true }
-        onRenderInitials={ () => {
-          return (
-            <span>{ '+' + numPersonasNotPictured }</span>
-          );
-        } }
-      />
-    </BaseButton>;
+    return (
+      <FacepileButton
+        { ...overflowButtonProps}
+        ariaDescription={ personaNames }
+        className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
+      >
+        <PersonaCoin
+          title={ personaNames }
+          size={ personaSize }
+          onRenderInitials={ this._renderInitialsNotPictured(numPersonasNotPictured) }
+          initialsColor={ PersonaInitialsColor.transparent }
+        />
+      </FacepileButton>
+    );
   }
 
   private _getIconElement(icon: string): JSX.Element {
     let { overflowButtonProps, personaSize } = this.props;
+    let overflowInitialsIcon = true;
 
-    return <BaseButton
-      {...overflowButtonProps}
-      className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
-    >
-      <Persona
-        size={ personaSize }
-        hidePersonaDetails={ true }
-        onRenderInitials={ () => (
-          <Icon iconName={ icon } />
-        ) }
-      />
-    </BaseButton>;
+    return (
+      <FacepileButton
+        {...overflowButtonProps}
+        className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
+      >
+        <PersonaCoin
+          size={ personaSize }
+          onRenderInitials={ this._renderInitials(icon, overflowInitialsIcon) }
+          initialsColor={ PersonaInitialsColor.transparent }
+        />
+      </FacepileButton>
+    );
   }
 
   private _getAddNewElement(): JSX.Element {
     let { addButtonProps, personaSize } = this.props;
-    return <BaseButton
-      {...addButtonProps}
-      className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
-    >
-      <Persona
-        size={ personaSize }
-        hidePersonaDetails={ true }
-        onRenderInitials={ () => (
-          <Icon iconName='AddFriend' />
-        ) }
-      />
-    </BaseButton>;
+
+    return (
+      <FacepileButton
+        {...addButtonProps}
+        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
+      >
+        <PersonaCoin
+          size={ personaSize }
+          onRenderInitials={ this._renderInitials('AddFriend') }
+        />
+      </FacepileButton>
+    );
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
@@ -233,5 +237,28 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     if (!!persona.onMouseOut) {
       persona.onMouseOut(ev, persona);
     }
+  }
+
+  private _renderInitials(iconName: string, overflowButton?: boolean): () => JSX.Element {
+    return (): JSX.Element => {
+      return (
+        <Icon
+          iconName={ iconName }
+          className={ overflowButton ? styles.overflowInitialsIcon : '' }
+        />
+      );
+    };
+  }
+
+  private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
+    return (): JSX.Element => {
+      return (
+        <span
+          className={ styles.overflowInitialsIcon }
+        >
+          { '+' + numPersonasNotPictured }
+        </span>
+      );
+    };
   }
 }

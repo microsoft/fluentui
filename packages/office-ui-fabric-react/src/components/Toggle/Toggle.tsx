@@ -4,28 +4,23 @@ import {
   autobind,
   getId,
   inputProperties,
-  getNativeProps,
-  memoize
+  getNativeProps
 } from '../../Utilities';
 import {
   IToggleProps,
-  IToggle,
-  IToggleStyles
-} from './Toggle.Props';
+  IToggle
+} from './Toggle.types';
 import { Label } from '../../Label';
 import {
   customizable
 } from '../../Utilities';
-import {
-  mergeStyles
-} from '../../Styling';
 import { getClassNames } from './Toggle.classNames';
 
 export interface IToggleState {
   isChecked: boolean;
 }
 
-@customizable(['theme'])
+@customizable('Toggle', ['theme'])
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
@@ -106,9 +101,9 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             ref={ this._resolveRef('_toggleButton') }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
-            aria-label={ ariaLabel }
+            aria-label={ ariaLabel ? ariaLabel : label }
             data-is-focusable={ true }
-            onChange={ () => { /* no-op */ } }
+            onChange={ this._noop }
             onClick={ this._onClick }
           >
             <div className={ classNames.thumb } />
@@ -148,6 +143,10 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         onClick(ev);
       }
     }
+  }
+
+  private _noop(): void {
+    /* no-op */
   }
 
 }

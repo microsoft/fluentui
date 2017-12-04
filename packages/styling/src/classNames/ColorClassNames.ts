@@ -1,5 +1,7 @@
-import { mergeStyles } from '../utilities/index';
-import { IRawStyle } from '../interfaces/index';
+import {
+  IRawStyle,
+  mergeStyles
+} from '@uifabric/merge-styles/lib/index';
 import { DefaultPalette } from '../styles/DefaultPalette';
 import { getTheme } from '../styles/index';
 
@@ -333,7 +335,7 @@ function _defineGetter(
       // tslint:disable-next-line:no-any
       const style: IRawStyle = { [cssProperty]: (getTheme().palette as any)[colorName] };
 
-      return mergeStyles(isHover ? { ':hover': style } : style).toString();
+      return mergeStyles(isHover ? { selectors: { ':hover': style } } : style).toString();
     },
     enumerable: true,
     configurable: true

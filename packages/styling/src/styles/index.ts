@@ -1,14 +1,15 @@
 export { AnimationStyles } from './AnimationStyles';
 export { DefaultPalette } from './DefaultPalette';
-export { DefaultFontStyles, FontSizes, FontWeights } from './DefaultFontStyles';
-export { IconCodes } from './IconCodes';
+export { DefaultFontStyles, registerDefaultFontFaces } from './DefaultFontStyles';
+export { FontSizes, FontWeights, IconFontSizes, createFontStyles } from './fonts';
 export { getFocusStyle } from './getFocusStyle';
-export {
-  hideText
-} from './UtilityStyles';
+export { hiddenContentStyle } from './hiddenContentStyle';
 export {
   ThemeSettingName,
   getTheme,
   loadTheme,
-  createTheme
+  createTheme,
+  registerOnThemeChangeCallback,
+  removeOnThemeChangeCallback
 } from './theme';
+export * from './CommonStyles';

@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav renders Nav correctly 1`] = `
+<div
+  aria-describedby={undefined}
+  aria-labelledby={undefined}
+  className="ms-FocusZone"
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  role="presentation"
+>
+  <nav
+    className="ms-Nav"
+    role="navigation"
+  >
+    <div
+      className="ms-Nav-group is-expanded undefined"
+    >
+      <div
+        className=
+            ms-Nav-groupContent
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: css-0,css-13;
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+      >
+        <ul
+          aria-label={undefined}
+          className=""
+          role="list"
+        >
+          <li
+            className=""
+            role="listitem"
+          >
+            <div
+              className="ms-Nav-compositeLink"
+              name=""
+            >
+              <button
+                aria-describedby={null}
+                aria-label={undefined}
+                aria-labelledby={null}
+                aria-pressed={undefined}
+                className=
+                    ms-Button
+                    ms-Button--action
+                    ms-Button--command
+                    ms-Nav-linkButton
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      background-color: transparent;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
+                      display: inline-block;
+                      font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 40px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 3px;
+                      padding-right: 20px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric.is-focusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    &:hover {
+                      color: #0078d7;
+                    }
+                    &:hover .ms-Button-icon {
+                      color: #0078d7;
+                    }
+                    &:active {
+                      color: #000000;
+                    }
+                    &:active .ms-Button-icon {
+                      color: #004578;
+                    }
+                data-is-focusable={true}
+                disabled={undefined}
+                onClick={[Function]}
+                rel={undefined}
+                title=""
+                type="button"
+              >
+                <div
+                  className=
+                      ms-Button-flexContainer
+                      {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        height: 100%;
+                        justify-content: flex-start;
+                      }
+                >
+                  <i
+                    aria-hidden={true}
+                    aria-label={undefined}
+                    className=
+                        ms-Icon
+                        ms-Icon-placeHolder
+                        ms-Button-icon
+                        {
+                          width: 1em;
+                        }
+                        {
+                          color: #106ebe;
+                          flex-shrink: 0;
+                          font-size: 16px;
+                          height: 16px;
+                          line-height: 16px;
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          text-align: center;
+                          vertical-align: middle;
+                        }
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-Nav-linkText"
+                  >
+                    
+                  </div>
+                </div>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

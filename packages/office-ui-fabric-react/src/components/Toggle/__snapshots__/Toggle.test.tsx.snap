@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle renders toggle correctly 1`] = `
+<div
+  className=
+      ms-Toggle
+      is-enabled
+      {
+        margin-bottom: 8px;
+      }
+>
+  <label
+    className=
+        ms-Label
+        ms-Toggle-label
+        {
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+    htmlFor="Toggle1"
+  >
+    Label
+  </label>
+  <div
+    className=
+        ms-Toggle-innerContainer
+        {
+          display: inline-flex;
+          position: relative;
+        }
+  >
+    <button
+      aria-disabled={undefined}
+      aria-label="Label"
+      aria-pressed={false}
+      className=
+          ms-Toggle-background
+          {
+            background: #ffffff;
+            border-color: #a6a6a6;
+            border-radius: 1em;
+            border-style: solid;
+            border-width: 1px;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-size: 20px;
+            height: 1em;
+            line-height: 1em;
+            outline: transparent;
+            position: relative;
+            transition: all 0.1s ease;
+            width: 2.2em;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          &:hover {
+            border-color: #212121;
+          }
+      data-is-focusable={true}
+      disabled={undefined}
+      id="Toggle1"
+      onChange={[Function]}
+      onClick={[Function]}
+      type="button"
+    >
+      <div
+        className=
+            ms-Toggle-thumb
+            {
+              background-color: #212121;
+              border-color: transparent;
+              border-radius: .5em;
+              border-style: solid;
+              border-width: .28em;
+              box-sizing: border-box;
+              height: .5em;
+              left: .2em;
+              position: absolute;
+              top: .18em;
+              transition: all 0.1s ease;
+              width: .5em;
+            }
+      />
+    </button>
+  </div>
+</div>
+`;

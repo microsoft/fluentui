@@ -10,6 +10,7 @@ describe('getNativeProps', () => {
     let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>({
       'data-automation-id': 1
     }, divProperties);
+    // tslint:disable-next-line:no-any
     expect((result as any)['data-automation-id']).toEqual(1);
   });
 
@@ -17,6 +18,7 @@ describe('getNativeProps', () => {
     let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>({
       'aria-label': 1
     }, divProperties);
+    // tslint:disable-next-line:no-any
     expect((result as any)['aria-label']).toEqual(1);
   });
 
@@ -26,10 +28,11 @@ describe('getNativeProps', () => {
       onClick: () => { /* no-op */ },
       onClickCapture: () => { /* no-op */ }
     }, divProperties);
+
     expect(result.className).toEqual('foo');
     expect(typeof result.onClick).toEqual('function');
 
-    // tslint:disable-next-line:no-string-literal
+    // tslint:disable-next-line:no-string-literal no-any
     expect(typeof (result as any)['onClickCapture']).toEqual('function');
   });
 
@@ -38,11 +41,14 @@ describe('getNativeProps', () => {
       'foobar': 1,
       className: 'hi'
     }, divProperties);
+
     expect(result.className).toEqual('hi');
+    // tslint:disable-next-line:no-any
     expect((result as any)['foobar']).toEqual(undefined); // tslint:disable-line:no-string-literal
   });
 
   it('can exclude properties', () => {
+    // tslint:disable-next-line:no-any
     let result = getNativeProps<any>({ a: 1, b: 2 }, ['a', 'b'], ['b']);
 
     expect(result.a).toBeDefined();

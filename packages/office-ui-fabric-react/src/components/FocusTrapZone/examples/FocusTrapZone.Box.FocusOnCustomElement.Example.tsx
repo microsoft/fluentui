@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
 import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
@@ -63,12 +62,13 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <div className='shouldFocus input'>
           <Toggle
-            componentRef={ t => this._toggle = t }
+            componentRef={ this._setRef }
             checked={ isChecked }
             onChanged={ this._onFocusTrapZoneToggleChanged }
             label='Focus Trap Zone'
             onText='On'
-            offText='Off' />
+            offText='Off'
+          />
         </div>
         { (() => {
           if (isChecked) {
@@ -104,5 +104,10 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     this.setState({
       isChecked: isChecked
     }, () => this._toggle.focus());
+  }
+
+  @autobind
+  private _setRef(toggle: IToggle): void {
+    this._toggle = toggle;
   }
 }

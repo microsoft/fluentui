@@ -10,7 +10,6 @@ import {
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
@@ -47,6 +46,7 @@ export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
   items: IDocument[];
   selectionDetails: string;
+  isModalSelection: boolean;
   isCompactMode: boolean;
 }
 
@@ -108,7 +108,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
           return (
             <img
               src={ item.iconName }
-              className={ 'DetailsListExample-documentIconImage' } />
+              className={ 'DetailsListExample-documentIconImage' }
+            />
           );
         }
       },
@@ -137,8 +138,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         data: 'number',
         onRender: (item: IDocument) => {
           return (
-            <span
-              data-is-focusable={ true }>
+            <span>
               { item.dateModified }
             </span>
           );
@@ -152,12 +152,12 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
+        isCollapsable: true,
         data: 'string',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
-            <span
-              data-is-focusable={ true }>
+            <span>
               { item.modifiedBy }
             </span>
           );
@@ -171,12 +171,12 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
+        isCollapsable: true,
         data: 'number',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return (
-            <span
-              data-is-focusable={ true }>
+            <span>
               { item.fileSize }
             </span>
           );
@@ -185,13 +185,19 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     ];
 
     this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+      onSelectionChanged: () => {
+        this.setState({
+          selectionDetails: this._getSelectionDetails(),
+          isModalSelection: this._selection.isModal()
+        });
+      }
     });
 
     this.state = {
       items: _items,
       columns: _columns,
       selectionDetails: this._getSelectionDetails(),
+      isModalSelection: this._selection.isModal(),
       isCompactMode: false
     };
   }
@@ -204,14 +210,21 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <Toggle
           label='Enable Compact Mode'
           checked={ isCompactMode }
-          onChanged={ checked => this.setState({ isCompactMode: checked }) }
+          onChanged={ this._onChangeCompactMode }
           onText='Compact'
+          offText='Normal'
+        />
+        <Toggle
+          label='Enable Modal Selection'
+          checked={ this.state.isModalSelection }
+          onChanged={ this._onChangeModalSelection }
+          onText='Modal'
           offText='Normal'
         />
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+          onChanged={ this._onChangeText }
         />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
@@ -223,11 +236,37 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             isHeaderVisible={ true }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onItemInvoked={ this._onItemInvoked }
+            enterModalSelectionOnTouch={ true }
           />
         </MarqueeSelection>
       </div>
     );
+  }
+
+  public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
+    if (previousState.isModalSelection !== this.state.isModalSelection) {
+      this._selection.setModal(this.state.isModalSelection);
+    }
+  }
+
+  @autobind
+  private _onChangeCompactMode(checked: boolean): void {
+    this.setState({ isCompactMode: checked });
+  }
+
+  @autobind
+  private _onChangeModalSelection(checked: boolean): void {
+    this.setState({ isModalSelection: checked });
+  }
+
+  @autobind
+  private _onChangeText(text: any): void {
+    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
   }
 
   private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string; } {

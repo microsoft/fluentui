@@ -35,8 +35,8 @@ $linkRightPadding: 20px;
 
 .icon {
   padding: 0px;
-  color: $selectedForegroundColor;
-  background: $selectedBackgroundColor;
+  color: $ms-color-neutralPrimary;
+  background: $ms-color-neutralLighter;
   transition: transform .1s linear;
 }
 
@@ -63,22 +63,22 @@ $linkRightPadding: 20px;
 
   cursor: pointer;
 
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
+  color: $bodyTextColor;
+  background: $bodyBackgroundColor;
 
   &:visited {
     color: inherit;
   }
 
   &:hover {
-    color: $unselectedHoverForegroundColor;
-    background: $unselectedHoverBackgroundColor;
+    color: $bodyTextColor;
+    background: $ms-color-neutralLighterAlt;
   }
 
   &.chevronButtonIsGroup {
     width: 100%;
     height: $navnode-height;
-    border-bottom: 1px solid $dividerColor;
+    border-bottom: 1px solid $bodyDividerColor;
   }
 }
 
@@ -96,7 +96,10 @@ $linkRightPadding: 20px;
 }
 
 .linkText {
+  margin: 0 4px;
+  overflow: hidden;
   vertical-align: middle;
+  text-overflow: ellipsis;
 }
 
 .compositeLink {
@@ -109,7 +112,6 @@ $linkRightPadding: 20px;
     height: $navnode-height - 2;
     position: absolute;
     top: 1px;
-    @include ms-left(1px);
     z-index: 1;
     padding: 0;
     margin: 0;
@@ -119,18 +121,15 @@ $linkRightPadding: 20px;
     }
   }
 
-  & a {
-  color: $unselectedForegroundColor;
-  }
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
+  color: $bodyTextColor;
+  background: $bodyBackgroundColor;
 
   &:hover {
 
-    & a,
+    & .link,
     & .chevronButton {
-      background: $unselectedHoverBackgroundColor;
-      color: $unselectedHoverForegroundColor;
+      background: $ms-color-neutralLighterAlt;
+      color: $bodyTextColor;
     }
   }
 
@@ -141,11 +140,11 @@ $linkRightPadding: 20px;
   }
 
   &.compositeLinkIsSelected {
-    & a,
+    & .link,
     & .chevronButton {
 
       color: $ms-color-themePrimary;
-      background: $selectedBackgroundColor;
+      background: $ms-color-neutralLighter;
 
       &:after {
         @include border-left(2px, solid, $ms-color-themePrimary);
@@ -165,14 +164,18 @@ $linkRightPadding: 20px;
   display: block;
   position: relative;
   height: $navnode-height;
+  width: 100%;
   line-height: $navnode-height;
   text-decoration: none;
-  padding: 0 20px;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.buttonEntry {
+  color: $ms-color-themePrimary;
 }
 
 .groupHeaderFontSize {
@@ -187,13 +190,7 @@ $linkRightPadding: 20px;
 }
 
 .root .link {
-  @include ms-padding-left($noExpandButtonLinkLeftPadding);
   :global(.ms-Button-label) {
     @include ms-font-m;
-    color: $ms-color-themePrimary;
-  }
-
-  &.linkIsOnExpanded {
-  @include ms-padding-left($hasExpandButtonLinkLeftPadding);
   }
 }

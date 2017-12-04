@@ -3,12 +3,11 @@ import {
   BaseComponent,
   css,
   autobind,
-  assign,
   KeyCodes
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
-import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
+import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
 
@@ -19,11 +18,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem,
-      showRemoveButton,
-      id
+      onRemoveItem
     } = this.props;
-    let itemProps = assign({}, suggestionModel.item, { onRemoveItem });
     return (
       <div
         className={ css(
@@ -71,7 +67,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   public render() {
     let {
-      suggestionsHeaderText,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -87,25 +82,31 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
-      isResultsFooterVisible,
-      showRemoveButtons,
-      suggestionsAvailableAlertText
+      suggestionsAvailableAlertText,
+      suggestionsHeaderText
     } = this.props;
 
     let noResults = () => {
       return noResultsFoundText ?
-        <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
-          { noResultsFoundText }
-        </div> : null;
+        (
+          <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
+            { noResultsFoundText }
+          </div>
+        ) : null;
     };
-
-    let headerText = isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText ? mostRecentlyUsedHeaderText : null;
+    // MostRecently Used text should supercede the header text if it's there and available.
+    let headerText: string | undefined = suggestionsHeaderText;
+    if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
+      headerText = mostRecentlyUsedHeaderText;
+    }
     let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
     return (
-      <div className={ css(
-        'ms-Suggestions',
-        className ? className : '',
-        styles.root) }>
+      <div
+        className={ css(
+          'ms-Suggestions',
+          className ? className : '',
+          styles.root) }
+      >
         { headerText ?
           (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
             { headerText }
@@ -145,7 +146,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
           (<span
             role='alert'
-            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }>{ suggestionsAvailableAlertText }
+            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }
+          >
+            { suggestionsAvailableAlertText }
           </span>) : (null)
         }
       </div>
@@ -171,7 +174,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       onRenderSuggestion,
       suggestionsItemClassName,
       resultsMaximumNumber,
-      showRemoveButtons } = this.props;
+      showRemoveButtons,
+      suggestionsContainerAriaLabel } = this.props;
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
@@ -182,26 +186,26 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       <div
         className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
         id='suggestion-list'
-        role='menu'>
+        role='list'
+        aria-label={ suggestionsContainerAriaLabel }
+      >
         { suggestions.map((suggestion, index) =>
-          <div ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
+          <div
+            ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
-            role='menuitem'>
+            role='listitem'
+            aria-label={ suggestion.ariaLabel }
+          >
             <TypedSuggestionsItem
               id={ 'sug-item' + index }
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion as any }
-              onClick={ (ev: React.MouseEvent<HTMLElement>) => { this.props.onSuggestionClick(ev, suggestion.item, index); } }
+              onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
-              onRemoveItem={ (ev: React.MouseEvent<HTMLElement>) => {
-                let onSuggestionRemove = this.props.onSuggestionRemove!;
-                onSuggestionRemove(ev, suggestion.item, index);
-                ev.stopPropagation();
-              }
-              }
+              onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
             />
           </div>) }
       </div>);
@@ -215,9 +219,25 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   @autobind
+  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+    return (ev: React.MouseEvent<HTMLElement>): void => {
+      this.props.onSuggestionClick(ev, item, index);
+    };
+  }
+
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
     if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
       this.props.refocusSuggestions(ev.keyCode);
     }
+  }
+
+  @autobind
+  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+    return (ev: React.MouseEvent<HTMLElement>): void => {
+      let onSuggestionRemove = this.props.onSuggestionRemove!;
+      onSuggestionRemove(ev, item, index);
+      ev.stopPropagation();
+    };
   }
 }

@@ -1,14 +1,21 @@
+
 let path = require('path');
 let resources = require('../../scripts/tasks/webpack-resources');
+const devServerConfig = {
+  inline: true,
+  port: 4321
+};
 
-const PACKAGE_NAME = require('./package.json').name;
+const outputConfig = {
+  filename: 'fabric-sitev5.js'
+}
 
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
 
-  output: {
-    filename: 'fabric-website.js',
-  },
+  output: outputConfig,
+
+  devServer: devServerConfig,
 
   externals: {
     'react': 'React',
@@ -23,5 +30,5 @@ module.exports = resources.createServeConfig({
       'Example.tsx.js': 'Example'
     }
   }
-
 });
+

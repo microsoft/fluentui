@@ -8,7 +8,7 @@ import {
   getNativeProps,
   imageProperties
 } from '../../Utilities';
-import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.Props';
+import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.types';
 import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;
@@ -17,12 +17,12 @@ export interface IImageState {
   loadState?: ImageLoadState;
 }
 
-export const CoverStyleMap = {
+export const CoverStyleMap: { [key: number]: string } = {
   [ImageCoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageIsLandscape,
   [ImageCoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imageIsPortrait
 };
 
-export const ImageFitMap = {
+export const ImageFitMap: { [key: number]: string } = {
   [ImageFit.center]: 'ms-Image-image--center ' + styles.imageIsCenter,
   [ImageFit.contain]: 'ms-Image-image--contain ' + styles.imageIsContain,
   [ImageFit.cover]: 'ms-Image-image--cover ' + styles.imageIsCover,
@@ -73,7 +73,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame } = this.props;
+    let { src, alt, width, height, shouldFadeIn, shouldStartVisible, className, imageFit, role, maximizeFrame } = this.props;
     let { loadState } = this.state;
     let coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
@@ -107,7 +107,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
               loaded && 'is-loaded ' + styles.imageIsLoaded,
               shouldFadeIn && 'is-fadeIn',
               loadState === ImageLoadState.error && 'is-error',
-              loaded && shouldFadeIn && AnimationClassNames.fadeIn400,
+              loaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
               {
                 ['ms-Image-image--scaleWidth ' + styles.imageIsScaleWidth]: (imageFit === undefined && !!width && !height),
                 ['ms-Image-image--scaleHeight ' + styles.imageIsScaleHeight]: (imageFit === undefined && !width && !!height),

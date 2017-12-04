@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import {
   SignalField,
   Signal,
@@ -14,12 +14,33 @@ import {
 import { lorem } from '@uifabric/example-app-base';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
+const ITEMS: { name: string; activity: string; }[] = [
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  }
+];
+
 // tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
 interface IImageTileProps {
   tileSize: ISize;
   originalImageSize: ISize;
+  showBackground: boolean;
+  item: typeof ITEMS[0];
 }
 
 const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
@@ -32,7 +53,7 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
             <NewSignal />
           }
         >
-          { lorem(2) }
+          { props.item.name }
         </SignalField>
       }
       itemActivity={
@@ -41,12 +62,13 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
             [<Signal key={ 0 }><Icon iconName='play' /></Signal>, <MentionSignal key={ 1 } />]
           }
         >
-          { lorem(6) }
+          { props.item.activity }
         </SignalField>
       }
       background={
         <span /> // Placeholder content
       }
+      hideBackground={ !props.showBackground }
       showBackgroundFrame={ true }
     />
   );
@@ -86,10 +108,31 @@ const ImageTile: React.StatelessComponent<IImageTileProps> = (props: IImageTileP
   );
 };
 
-export class TileMediaExample extends React.Component<{}, {}> {
+export interface ITileMediaExampleState {
+  imagesLoaded: boolean;
+}
+
+export class TileMediaExample extends React.Component<{}, ITileMediaExampleState> {
+  constructor() {
+    super();
+
+    this.state = {
+      imagesLoaded: true
+    };
+  }
+
   public render(): JSX.Element {
+    const {
+      imagesLoaded
+    } = this.state;
+
     return (
       <div>
+        <Checkbox
+          label='Show images as loaded'
+          checked={ imagesLoaded }
+          onChange={ this._onImagesLoadedChanged }
+        />
         <h3>Landscape</h3>
         <ImageTile
           tileSize={
@@ -98,12 +141,14 @@ export class TileMediaExample extends React.Component<{}, {}> {
               height: 200
             }
           }
+          item={ ITEMS[0] }
           originalImageSize={
             {
               width: 400,
               height: 300
             }
           }
+          showBackground={ imagesLoaded }
         />
         <h3>Portrait</h3>
         <ImageTile
@@ -113,15 +158,34 @@ export class TileMediaExample extends React.Component<{}, {}> {
               height: 250
             }
           }
+          item={ ITEMS[1] }
           originalImageSize={
             {
               width: 300,
               height: 400
             }
           }
+          showBackground={ imagesLoaded }
+        />
+        <h3>Small Image</h3>
+        <ImageTile
+          tileSize={
+            {
+              width: 200,
+              height: 200
+            }
+          }
+          item={ ITEMS[2] }
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          showBackground={ imagesLoaded }
         />
         <h3>No preview</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+        <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
             itemName={
               <SignalField
@@ -129,7 +193,7 @@ export class TileMediaExample extends React.Component<{}, {}> {
                   <NewSignal />
                 }
               >
-                { lorem(2) }
+                { ITEMS[3].name }
               </SignalField>
             }
             itemActivity={
@@ -142,7 +206,7 @@ export class TileMediaExample extends React.Component<{}, {}> {
                     ]
                   }
                 >
-                  { lorem(8) }
+                  { ITEMS[3].name }
                 </SignalField>
               )
             }
@@ -154,5 +218,12 @@ export class TileMediaExample extends React.Component<{}, {}> {
         </div>
       </div>
     );
+  }
+
+  @autobind
+  private _onImagesLoadedChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+    this.setState({
+      imagesLoaded: checked
+    });
   }
 }

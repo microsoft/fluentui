@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Tile, getTileLayout, renderTileWithLayout } from '../Tile';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   SignalField,
   NewSignal,
@@ -10,14 +10,39 @@ import {
   SharedSignal
 } from '../../signals/Signals';
 import { lorem } from '@uifabric/example-app-base';
-import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { css, autobind, ISize, fitContentToBounds } from '../../../Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
+const ITEMS: { name: string; activity: string; }[] = [
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  }
+];
+
 interface IDocumentTileWithThumbnailProps {
   originalImageSize: ISize;
+  showForeground: boolean;
+  item: typeof ITEMS[0];
 }
 
 const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> =
@@ -26,8 +51,8 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
       <Tile
         contentSize={
           {
-            width: 200,
-            height: 200
+            width: 176,
+            height: 171
           }
         }
         itemName={
@@ -36,7 +61,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
               <TrendingSignal />
             }
           >
-            { lorem(2) }
+            { props.item.name }
           </SignalField>
         }
         itemActivity={
@@ -45,12 +70,13 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
               <CommentsSignal>{ '12' }</CommentsSignal>
             }
           >
-            { lorem(2) }
+            { props.item.activity }
           </SignalField>
         }
         foreground={
           <span />
         }
+        hideForeground={ !props.showForeground }
         showForegroundFrame={ true }
       />
     );
@@ -66,7 +92,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
     });
 
     return (
-      <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+      <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
         {
           renderTileWithLayout(tile, {
             foreground: (
@@ -81,10 +107,31 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
     );
   };
 
-export class TileDocumentExample extends React.Component<{}, {}> {
+export interface ITileDocumentExampleState {
+  imagesLoaded: boolean;
+}
+
+export class TileDocumentExample extends React.Component<{}, ITileDocumentExampleState> {
+  constructor() {
+    super();
+
+    this.state = {
+      imagesLoaded: true
+    };
+  }
+
   public render(): JSX.Element {
+    const {
+      imagesLoaded
+    } = this.state;
+
     return (
       <div>
+        <Checkbox
+          label='Show images as loaded'
+          checked={ imagesLoaded }
+          onChange={ this._onImagesLoadedChanged }
+        />
         <h3>Document thumbnail</h3>
         <DocumentTileWithThumbnail
           originalImageSize={
@@ -93,6 +140,8 @@ export class TileDocumentExample extends React.Component<{}, {}> {
               height: 40
             }
           }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[0] }
         />
         <DocumentTileWithThumbnail
           originalImageSize={
@@ -101,6 +150,8 @@ export class TileDocumentExample extends React.Component<{}, {}> {
               height: 150
             }
           }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[1] }
         />
         <DocumentTileWithThumbnail
           originalImageSize={
@@ -109,9 +160,21 @@ export class TileDocumentExample extends React.Component<{}, {}> {
               height: 200
             }
           }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[2] }
+        />
+        <DocumentTileWithThumbnail
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          showForeground={ imagesLoaded }
+          item={ ITEMS[3] }
         />
         <h3>Document icon</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+        <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
             itemName={
               <SignalField
@@ -119,7 +182,7 @@ export class TileDocumentExample extends React.Component<{}, {}> {
                   <NewSignal />
                 }
               >
-                { lorem(1) }
+                { ITEMS[3].name }
               </SignalField>
             }
             itemActivity={
@@ -129,7 +192,7 @@ export class TileDocumentExample extends React.Component<{}, {}> {
                     <SharedSignal />
                   }
                 >
-                  { lorem(3) }
+                  { ITEMS[3].activity }
                 </SignalField>
               )
             }
@@ -153,5 +216,12 @@ export class TileDocumentExample extends React.Component<{}, {}> {
         </div>
       </div>
     );
+  }
+
+  @autobind
+  private _onImagesLoadedChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+    this.setState({
+      imagesLoaded: checked
+    });
   }
 }

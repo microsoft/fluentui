@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, autobind, css } from '../../../../Utilities';
-import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
+import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
@@ -57,9 +57,10 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
             <ContextualMenu
               items={ item.menuItems! }
               shouldFocusOnMount={ true }
-              targetElement={ this.refs.ellipsisRef }
+              target={ this.refs.ellipsisRef }
               onDismiss={ this._onCloseContextualMenu }
-              directionalHint={ DirectionalHint.bottomAutoEdge } />)
+              directionalHint={ DirectionalHint.bottomAutoEdge }
+            />)
             : null }
         </FocusZone>
       </div>

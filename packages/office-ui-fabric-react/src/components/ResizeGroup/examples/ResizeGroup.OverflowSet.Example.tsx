@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -78,6 +78,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
           data={ dataToRender }
           onReduceData={ this._onReduceData }
           onGrowData={ onGrowDataEnabled ? this._onGrowData : undefined }
+          // tslint:disable-next-line:jsx-no-lambda
           onRenderData={ (data) => {
             return (
               <OverflowSet
@@ -120,7 +121,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 { key: '50', text: '50' },
                 { key: '75', text: '75' },
                 { key: '100', text: '100' },
-                { key: '200', text: '200' }] } />
+                { key: '200', text: '200' }] }
+            />
           </div>
         </div>
       </div>

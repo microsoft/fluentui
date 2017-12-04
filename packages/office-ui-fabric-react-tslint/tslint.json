@@ -17,7 +17,9 @@
       "when": "always"
     },
     "jsx-no-bind": true,
-    "jsx-boolean-value": "never",
+    "jsx-boolean-value": [
+      "never"
+    ],
     "jsx-equals-spacing": "never",
     "jsx-key": true,
     "jsx-no-lambda": true,

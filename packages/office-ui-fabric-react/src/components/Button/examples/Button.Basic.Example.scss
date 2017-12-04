@@ -2,4 +2,13 @@
   .ms-BasicButtonsExample .ms-Button {
     margin: 10px 0;
   }
+  .ms-BasicButtonsTwoUp {
+    display: flex;
+    & > * {
+      flex-grow: 1;
+    }
+    .ms-Label {
+      margin-bottom: 10px;
+    }
+  }
 }

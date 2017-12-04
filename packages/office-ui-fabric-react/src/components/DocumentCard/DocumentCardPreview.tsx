@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
+import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.types';
 import { Image } from '../../Image';
 import { Icon } from '../../Icon';
 import {
@@ -35,8 +35,10 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     }
 
     return (
-      <div className={ css('ms-DocumentCardPreview', styles.preview, isFileList && ('is-fileList ' + styles.previewIsFileList)) }
-        style={ style }>
+      <div
+        className={ css('ms-DocumentCardPreview', styles.preview, isFileList && ('is-fileList ' + styles.previewIsFileList)) }
+        style={ style }
+      >
         { preview }
       </div>
     );
@@ -59,7 +61,9 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
         height={ height }
         imageFit={ imageFit }
         src={ previewImage.previewImageSrc }
-        role='presentation' alt='' />
+        role='presentation'
+        alt=''
+      />
     );
 
     let icon;
@@ -97,7 +101,8 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
           role='presentation'
           alt=''
           width='16px'
-          height='16px' />
+          height='16px'
+        />
         <a href={ file.url }>{ file.name }</a>
       </li>
     ));

@@ -12,6 +12,10 @@
   top: 0;
   right: 0;
   bottom: 0;
+
+  @include high-contrast {
+    background: none;
+  }
 }
 
 .box {
@@ -20,6 +24,10 @@
   border: 1px solid $ms-color-themePrimary;
   pointer-events: none;
   z-index: $ms-zIndex-front;
+
+  @include high-contrast {
+    border-color: Highlight;
+  }
 }
 
 .boxFill {
@@ -31,4 +39,8 @@
   top: 0;
   right: 0;
   bottom: 0;
+
+  @include high-contrast {
+    background: none;
+  }
 }

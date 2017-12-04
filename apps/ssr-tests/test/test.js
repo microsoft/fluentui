@@ -1,5 +1,9 @@
 'use strict';
 
+import { initializeIcons } from '@uifabric/icons/lib/index';
+
+initializeIcons('dist/');
+
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
 themeLoader.configureLoadStyles((styles) => {

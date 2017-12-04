@@ -10,14 +10,15 @@ import {
   getRTL
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, PanelType } from './Panel.Props';
+import { IPanel, IPanelProps, PanelType } from './Panel.types';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames, getTheme, FontSizes, IconFontSizes } from '../../Styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
+const theme = getTheme();
 
 export interface IPanelState {
   isFooterSticky?: boolean;
@@ -29,6 +30,7 @@ export interface IPanelState {
 export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
 
   public static defaultProps: IPanelProps = {
+    isHiddenOnDismiss: false,
     isOpen: false,
     isBlocking: true,
     hasCloseButton: true,
@@ -68,9 +70,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   public render() {
     let {
-      children,
       className = '',
-      closeButtonAriaLabel,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -79,16 +79,17 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       ignoreExternalFocusing,
       isBlocking,
       isLightDismiss,
+      isHiddenOnDismiss,
       layerProps,
       type,
       customWidth,
-      headerClassName,
+      onLightDismissClick = this._onPanelClick,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    let { isOpen, isAnimating, id, isFooterSticky } = this.state;
+    let { isOpen, isAnimating, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
@@ -96,7 +97,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
     const renderProps: IPanelProps = { ...this.props, componentId: id };
 
-    if (!isOpen && !isAnimating) {
+    if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
     }
 
@@ -110,7 +111,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             !isOpen && isAnimating && AnimationClassNames.fadeOut200
           ) }
           isDarkThemed={ false }
-          onClick={ isLightDismiss ? this._onPanelClick : undefined }
+          onClick={ isLightDismiss ? onLightDismissClick : undefined }
         />
       );
     }
@@ -120,7 +121,13 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         <Popup
           role='dialog'
           ariaLabelledBy={ headerText && headerTextId }
-          onDismiss={ this.dismiss }>
+          onDismiss={ this.dismiss }
+          className={
+            css(
+              !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
+            )
+          }
+        >
           <div
             className={
               css(
@@ -137,7 +144,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 type === PanelType.largeFixed && ('ms-Panel--fixed ' + styles.rootIsFixed),
                 type === PanelType.extraLarge && ('ms-Panel--xl ' + styles.rootIsXLarge),
                 type === PanelType.custom && ('ms-Panel--custom ' + styles.rootIsCustom),
-                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton)
+                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton),
+                !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
               )
             }
           >
@@ -154,7 +162,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={ isLightDismiss }
+              isClickableOutsideFocusTrap={ isLightDismiss || isHiddenOnDismiss }
               ignoreExternalFocusing={ ignoreExternalFocusing }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }
@@ -209,13 +217,28 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     } = props;
     if (hasCloseButton) {
       return (
-        <IconButton
-          className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
-          onClick={ this._onPanelClick }
-          ariaLabel={ closeButtonAriaLabel }
-          data-is-visible={ true }
-          iconProps={ { iconName: 'Cancel' } }
-        />
+        <div className={ css('ms-Panel-navigation', styles.navigation) } >
+          <IconButton
+            styles={
+              {
+                root: {
+                  height: 'auto',
+                  width: '44px',
+                  color: theme.palette.neutralSecondary,
+                  fontSize: IconFontSizes.large,
+                },
+                rootHovered: {
+                  color: theme.palette.neutralPrimary
+                }
+              }
+            }
+            className={ css('ms-Panel-closeButton ms-PanelAction-close') }
+            onClick={ this._onPanelClick }
+            ariaLabel={ closeButtonAriaLabel }
+            data-is-visible={ true }
+            iconProps={ { iconName: 'Cancel' } }
+          />
+        </div>
       );
     }
     return null;
@@ -229,7 +252,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       headerClassName = '',
     } = props;
 
-    const { id } = this.state;
     if (headerText) {
       return (
         <div className={ css('ms-Panel-header', styles.header) }>

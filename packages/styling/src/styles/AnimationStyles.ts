@@ -1,6 +1,5 @@
 import { IAnimationStyles } from '../interfaces/index';
-import { IRawStyle } from '../interfaces/index';
-import { keyframes } from '../glamorExports';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
 
 /* Register the keyframes */
 
@@ -54,7 +53,7 @@ const SCALE_UP100: string = keyframes({
 
 const SCALE_DOWN98: string = keyframes({
   from: { transform: 'scale3d(1,1,1)' },
-  'top': { transform: 'scale3d(.98,.98,1)' },
+  to: { transform: 'scale3d(.98,.98,1)' },
 });
 
 const SCALE_DOWN100: string = keyframes({
@@ -122,6 +121,7 @@ export const AnimationStyles: IAnimationStyles = {
   fadeOut200: _createAnimation(FADE_OUT, DURATION_2, EASING_FUNCTION_2),
   fadeOut400: _createAnimation(FADE_OUT, DURATION_3, EASING_FUNCTION_2),
   fadeOut500: _createAnimation(FADE_OUT, DURATION_4, EASING_FUNCTION_2),
+
   rotate90deg: _createAnimation(ROTATE90, '0.1s', EASING_FUNCTION_2),
   rotateN90deg: _createAnimation(ROTATE_N90, '0.1s', EASING_FUNCTION_2)
 

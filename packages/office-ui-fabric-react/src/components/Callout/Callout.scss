@@ -29,11 +29,8 @@ $Callout-smallbeak-slant-width: 16px;
 
   @include focus-clear();
 
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-white;
-  }
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: 1px solid $ms-color-black;
+  @include high-contrast {
+    border: 1px solid WindowText;
   }
 }
 
@@ -45,7 +42,6 @@ $Callout-smallbeak-slant-width: 16px;
 .main {
   background-color: $ms-color-white;
   overflow-x: hidden;
-  overflow-y: auto;
   position: relative;
 }
 
@@ -65,4 +61,3 @@ $Callout-smallbeak-slant-width: 16px;
   left: 0;
   background-color: $ms-color-white;
 }
-

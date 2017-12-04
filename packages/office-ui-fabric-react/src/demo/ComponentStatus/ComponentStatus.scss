@@ -1,0 +1,11 @@
+@import '../../common/common';
+
+:global {
+  .ComponentStatus-badge {
+    margin-right: 5px;
+  }
+
+  .ComponentStatus-div {
+    display: inline-block;
+  }
+}

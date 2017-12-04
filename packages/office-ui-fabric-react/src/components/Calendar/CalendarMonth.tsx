@@ -6,9 +6,9 @@ import {
   getRTL,
   autobind
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
-import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
+import { addYears, setMonth, getYearStart, getYearEnd, getMonthStart, getMonthEnd, compareDatePart } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
@@ -23,6 +23,8 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -49,71 +51,95 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
+    // determine if previous/next years are in bounds
+    const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
+    const isNextYearInBounds = maxDate ? compareDatePart(getYearEnd(navigatedDate), maxDate) < 0 : true;
+
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
-          <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
-            <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-              <span
-                className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
-                onClick={ this._onSelectPrevYear }
-                onKeyDown={ this._onSelectPrevYearKeyDown }
-                aria-label={ strings.prevYearAriaLabel }
-                role='button'
-                tabIndex={ 0 }>
-                <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-              </span>
-              <span
-                className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
-                onClick={ this._onSelectNextYear }
-                onKeyDown={ this._onSelectNextYearKeyDown }
-                aria-label={ strings.nextYearAriaLabel }
-                role='button'
-                tabIndex={ 0 }>
-                <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-              </span>
-            </div>
+        <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
+          <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
+            <span
+              className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
+                ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
+              }) }
+              onClick={ this._onSelectPrevYear }
+              onKeyDown={ this._onSelectPrevYearKeyDown }
+              aria-label={ strings.prevYearAriaLabel ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1)) : undefined }
+              role='button'
+              tabIndex={ 0 }
+            >
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
+            </span>
+            <span
+              className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
+                ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
+              }) }
+              onClick={ this._onSelectNextYear }
+              onKeyDown={ this._onSelectNextYearKeyDown }
+              aria-label={ strings.nextYearAriaLabel ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1)) : undefined }
+              role='button'
+              tabIndex={ 0 }
+            >
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
+            </span>
           </div>
-          <div className={ css('ms-DatePicker-header', styles.header) }>
-            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
-            {
-              this.props.onHeaderSelect ?
-                <div
-                  className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                  onClick={ this._onHeaderSelect }
-                  onKeyDown={ this._onHeaderKeyDown }
-                  aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
-                  role='button'
-                  tabIndex={ 0 }
-                />
-                :
-                null
-            }
+        </div>
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          { this.props.onHeaderSelect ?
+            <div
+              className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView) }
+              onClick={ this._onHeaderSelect }
+              onKeyDown={ this._onHeaderKeyDown }
+              aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+              role='button'
+              tabIndex={ 0 }
+            >
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
+            :
+            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
+          }
         </div>
         <FocusZone>
-          <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
-            { strings.shortMonths.map((month, index) =>
-              <span
-                role='button'
+          <div
+            className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }
+            role='grid'
+          >
+            { strings.shortMonths.map((month, index) => {
+
+              const indexedMonth = setMonth(navigatedDate, index);
+              const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
+              const isNavigatedMonth = navigatedDate.getMonth() === index;
+              const isInBounds = (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+                (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
+
+              return <span
+                role={ 'gridcell' }
                 className={
-                  css('ms-DatePicker-monthOption',
-                    styles.monthOption,
+                  css('ms-DatePicker-monthOption', styles.monthOption,
                     {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!),
-                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && (navigatedDate.getMonth() === index)
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && isNavigatedMonth,
+                      ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
                     })
                 }
                 key={ index }
-                onClick={ this._selectMonthCallbacks[index] }
-                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
-                data-is-focusable={ true }
-                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
+                onClick={ isInBounds ? this._selectMonthCallbacks[index] : undefined }
+                aria-label={ dateTimeFormatter.formatMonthYear(indexedMonth, strings) }
+                aria-selected={ isCurrentMonth || isNavigatedMonth }
+                data-is-focusable={ isInBounds ? true : undefined }
+                ref={ isNavigatedMonth ? 'navigatedMonth' : undefined }
               >
                 { month }
-              </span>
+              </span>;
+            }
             ) }
           </div>
         </FocusZone>
@@ -158,7 +184,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectPrevYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    this._onKeyDown(this._onSelectNextYear, ev);
+    this._onKeyDown(this._onSelectPrevYear, ev);
   }
 
   @autobind

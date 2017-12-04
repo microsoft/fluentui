@@ -8,8 +8,8 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
-import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
+import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import {
@@ -19,8 +19,13 @@ import {
   compareDates,
   compareDatePart,
   getDateRangeArray,
-  isInDateRangeArray
+  isInDateRangeArray,
+  getWeekNumber,
+  getWeekNumbersInMonth,
+  getMonthStart,
+  getMonthEnd
 } from '../../utilities/dateMath/DateMath';
+import TimeConstants from '../../utilities/dateValues/TimeConstants';
 
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
@@ -34,6 +39,7 @@ export interface IDayInfo {
   isInMonth: boolean;
   isToday: boolean;
   isSelected: boolean;
+  isInBounds: boolean;
   onSelected: () => void;
 }
 
@@ -51,7 +57,12 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   navigationIcons: ICalendarIconStrings;
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
+  showWeekNumbers?: boolean;
+  firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
+  showSixWeeksByDefault?: boolean;
+  minDate?: Date;
+  maxDate?: Date;
 }
 
 export interface ICalendarDayState {
@@ -89,11 +100,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate, dateTimeFormatter } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
+    let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
+    let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek, firstWeekOfYear) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -102,51 +115,99 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       weekCorners = this._getWeekCornerStyles(weeks!);
     }
 
+    // determine if previous/next months are in bounds
+    const prevMonthInBounds = minDate ? compareDatePart(minDate, getMonthStart(navigatedDate)) < 0 : true;
+    const nextMonthInBounds = maxDate ? compareDatePart(getMonthEnd(navigatedDate), maxDate) < 0 : true;
+
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
+      <div
+        className={ css('ms-DatePicker-dayPicker',
+          styles.dayPicker,
+          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+        ) }
+        id={ dayPickerId }
+      >
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
-              className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
+              className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth,
+                {
+                  ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds
+                }
+              ) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onPrevMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.prevMonthAriaLabel }
+              aria-label={ strings.prevMonthAriaLabel ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()] : undefined }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span >
             <span
-              className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
+              className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth,
+                {
+                  ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds
+                }) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onNextMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.nextMonthAriaLabel }
+              aria-label={ strings.nextMonthAriaLabel ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()] : undefined }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
         </div >
         <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
-          </div>
-          {
-            this.props.onHeaderSelect ?
+            { this.props.onHeaderSelect ?
               <div
-                className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
+                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
                 aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 role='button'
                 tabIndex={ 0 }
-              />
+              >
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
               :
-              null
-          }
+              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+            }
+          </div>
         </div>
         <FocusZone>
+          {
+            showWeekNumbers ?
+              <table
+                className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers, 'ms-DatePicker-table', styles.table) }
+              >
+                <tbody>
+                  { weekNumbers!.map((weekNumber, index) =>
+                    <tr key={ index }>
+                      <td>
+                        <div
+                          className={ css(
+                            'ms-DatePicker-day',
+                            styles.day,
+                            {
+                              ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumber
+                            }
+                          ) }
+                        >
+                          <span>{ weekNumber }</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ) }
+                </tbody>
+              </table>
+              : null
+          }
           <table
             className={ css('ms-DatePicker-table', styles.table) }
             aria-readonly='true'
@@ -159,49 +220,55 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 { strings.shortDays.map((val, index) =>
                   <th
                     className={ css('ms-DatePicker-weekday', styles.weekday) }
+                    role='grid'
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  >
                     { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
             </thead>
             <tbody>
               { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex } >
-                  { week.map((day, dayIndex) =>
-                    <td key={ day.key } className={ css(
-                      {
-                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
-                        ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
-                      }) }
+                <tr key={ weekIndex } role='row'>
+                  { week.map((day, dayIndex) => {
+                    const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
+                    return <td
+                      key={ day.key }
+                      className={ css(
+                        {
+                          ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                          ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
+                          ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
+                        }) }
                     >
                       <div
                         className={ css(
                           'ms-DatePicker-day',
                           styles.day,
                           {
-                            ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
-                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
+                            ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
+                            ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInBounds && day.isInMonth,
+                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
                           }) }
-                        role='button'
-                        onClick={ day.onSelected }
-                        onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
-                          this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
-                        aria-selected={ day.isSelected }
+                        role={ 'gridcell' }
+                        onClick={ day.isInBounds ? day.onSelected : undefined }
+                        onKeyDown={ this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) }
                         aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
-                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
-                        data-is-focusable={ true }
-                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
+                        id={ isNavigatedDate ? activeDescendantId : undefined }
+                        aria-selected={ day.isInBounds ? day.isSelected : undefined }
+                        data-is-focusable={ day.isInBounds ? true : undefined }
+                        ref={ isNavigatedDate ? 'navigatedDay' : undefined }
+                        key={ isNavigatedDate ? 'navigatedDay' : undefined }
+                      >
                         <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
-                    </td>
-                  ) }
+                    </td>;
+                  }) }
                 </tr>
               ) }
             </tbody>
@@ -273,7 +340,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         if (cornerIndexes[cornersLength - 1] !== lastDayIndex) {
           weekCornersStyled[(weekIndex - 1) + '_' + lastDayIndex] = rightCornerStyle;
         }
-
       }
     }
   }
@@ -313,17 +379,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
+    const { minDate, maxDate } = this.props;
+    let targetDate: Date | undefined = undefined;
+
     if (weekIndex === 0 && ev.which === KeyCodes.up) {
-      this.props.onNavigateDate(addWeeks(date, -1), true);
-      ev.preventDefault();
+      targetDate = addWeeks(date, -1);
     } else if (weekIndex === (this.state.weeks!.length - 1) && ev.which === KeyCodes.down) {
-      this.props.onNavigateDate(addWeeks(date, 1), true);
-      ev.preventDefault();
+      targetDate = addWeeks(date, 1);
     } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
-      this.props.onNavigateDate(addDays(date, -1), true);
-      ev.preventDefault();
+      targetDate = addDays(date, -1);
     } else if (dayIndex === (DAYS_IN_WEEK - 1) && ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
-      this.props.onNavigateDate(addDays(date, 1), true);
+      targetDate = addDays(date, 1);
+    }
+
+    // Don't navigate to out-of-bounds date
+    if (targetDate && (minDate ? compareDatePart(minDate, targetDate) < 1 : true) && (maxDate ? compareDatePart(targetDate, maxDate) < 1 : true)) {
+      this.props.onNavigateDate(targetDate, true);
       ev.preventDefault();
     }
   }
@@ -336,10 +407,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   @autobind
+  private _onDayKeyDown(originalDate: Date, weekIndex: number, dayIndex: number)
+    : (ev: React.KeyboardEvent<HTMLElement>) => void {
+    return (ev: React.KeyboardEvent<HTMLElement>): void => {
+      this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
+    };
+  }
+
+  @autobind
   private _onSelectDate(selectedDate: Date) {
-    let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection } = this.props;
+    let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection, minDate, maxDate } = this.props;
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+    if (dateRangeType !== DateRangeType.Day) {
+      dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
+    }
+
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
     }
@@ -392,7 +475,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today } = propsToUse;
+    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate, showSixWeeksByDefault } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
     let weeks: IDayInfo[][] = [];
@@ -406,8 +489,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let isAllDaysOfWeekOutOfMonth = false;
 
     let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+    if (dateRangeType !== DateRangeType.Day) {
+      selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
+    }
 
-    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
+    let shouldGetWeeks = true;
+
+    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
       let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
@@ -421,7 +509,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
-          onSelected: this._onSelectDate.bind(this, originalDate)
+          onSelected: this._onSelectDate.bind(this, originalDate),
+          isInBounds: (minDate ? compareDatePart(minDate, date) < 1 : true) && (maxDate ? compareDatePart(date, maxDate) < 1 : true)
         };
 
         week.push(dayInfo);
@@ -433,11 +522,24 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         date.setDate(date.getDate() + 1);
       }
 
-      if (!isAllDaysOfWeekOutOfMonth) {
+      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
+      shouldGetWeeks = showSixWeeksByDefault ? (!isAllDaysOfWeekOutOfMonth || weekIndex <= 5) : !isAllDaysOfWeekOutOfMonth;
+      if (shouldGetWeeks) {
         weeks.push(week);
       }
     }
 
     return weeks;
+  }
+
+  private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
+    let boundedDateRange = [...dateRange];
+    if (minDate) {
+      boundedDateRange = boundedDateRange.filter((date) => compareDatePart(date, minDate as Date) >= 0);
+    }
+    if (maxDate) {
+      boundedDateRange = boundedDateRange.filter((date) => compareDatePart(date, maxDate as Date) <= 0);
+    }
+    return boundedDateRange;
   }
 }

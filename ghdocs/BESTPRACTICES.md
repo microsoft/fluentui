@@ -22,7 +22,7 @@ want a single command bar item with a dropdown menu.
 This is an example where instead of building a single large component, we should build more atomic building blocks that are puzzled
 together. While it may be more effort to think in smaller blocks, it makes the code easier to reuse and often simpler to maintain.
 
-## Use a .Props.ts file to extract out the public contracts that should be supported and documented.
+## Use a .types.ts file to extract out the public contracts that should be supported and documented.
 
 A props file contains all of the interface contracts that the user should know about to use the component. It is the "contract" for the
 component. When we evaluate semversioning, we look through the changes at Props files to determine if the change is a major, minor, or
@@ -43,7 +43,7 @@ interface IButton {
 }
 ```
 
-### Provide explicit return types for methods declared in .Props.ts
+### Provide explicit return types for methods declared in .types.ts
 
 Bad:
 ```typescript
@@ -96,11 +96,12 @@ controlling the disabled state of the input element.)
 ### Event callbacks
 
 Event callbacks should be prefixed with `on`. If it is necessary to target a subject, the subject should be in between `on` and the event
-name.
+name. Always use present tense verbs instead of past tense.
 
 |BAD|GOOD|Notes|
 |---|----|-----|
 |mouseClick|onClick|
+|onClicked|onClick|
 |inputClick, onClickInput|onInputClick|
 
 

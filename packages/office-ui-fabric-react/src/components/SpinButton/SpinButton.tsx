@@ -9,11 +9,10 @@ import {
   autobind,
   customizable
 } from '../../Utilities';
-import { ThemeSettingName } from '../../Styling';
 import {
   ISpinButton,
   ISpinButtonProps,
-} from './SpinButton.Props';
+} from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
@@ -43,7 +42,7 @@ export interface ISpinButtonState {
   keyboardSpinDirection: KeyboardSpinDirection;
 }
 
-@customizable([ThemeSettingName])
+@customizable('SpinButton', ['theme'])
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
 
   public static defaultProps: ISpinButtonProps = {
@@ -70,7 +69,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
   private _stepDelay = 75;
-  private _formattedValidUnitOptions: string[] = [];
 
   constructor(props: ISpinButtonProps) {
     super(props);
@@ -154,12 +152,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return (
       <div className={ classNames.root }>
         { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true'></Icon> }
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
           { label &&
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ classNames.label }>{ label }
+              className={ classNames.label }
+            >
+              { label }
             </Label>
           }
         </div> }
@@ -188,6 +188,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             readOnly={ disabled }
             disabled={ disabled }
             aria-disabled={ disabled }
+            data-lpignore={ true }
           />
           <span className={ classNames.arrowBox }>
             <IconButton
@@ -197,7 +198,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               aria-hidden='true'
-              onMouseDown={ () => this._onIncrementMouseDown() }
+              onMouseDown={ this._onIncrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
@@ -209,7 +210,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               aria-hidden='true'
-              onMouseDown={ () => this._onDecrementMouseDown() }
+              onMouseDown={ this._onDecrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
@@ -217,12 +218,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           </span>
         </div>
         { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true'></Icon> }
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true' /> }
           { label &&
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ classNames.label }>{ label }
+              className={ classNames.label }
+            >
+              { label }
             </Label>
           }
         </div>

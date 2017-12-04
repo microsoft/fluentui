@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./CommandBar.Example.scss');
+import * as styles from './CommandBar.Example.scss';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface ISplitDropDownButtonState {
@@ -69,14 +69,18 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
 
     return (
       <div>
-        <div className={ css(
-          styles.customButtonContainer,
-          darkerBG
-        ) } ref={ ref => this.container = ref! }>
+        <div
+          className={ css(
+            styles.customButtonContainer,
+            darkerBG
+          ) }
+          ref={ ref => this.container = ref! }
+        >
           <CommandButton
             className={ mainBtnClassName }
             iconProps={ { iconName: 'Add' } }
-            text='New' />
+            text='New'
+          />
           <span className={ styles.splitter }>|</span>
           <CommandButton
             onClick={ this._onClickChevron }
@@ -84,7 +88,8 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
             menuProps={ {
               className: css('ms-CommandBar-menuHost'),
               items: item.subMenuProps!.items
-            } } />
+            } }
+          />
         </div>
       </div >
     );

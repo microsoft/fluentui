@@ -14,7 +14,7 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
       <div>
         <h3>Layout Group</h3>
 
-        <LayoutGroup gap={ 20 } direction='vertical'>
+        <LayoutGroup layoutGap={ 20 } direction='vertical'>
           <h2 >A List of Inputs</h2>
           <Dropdown
             placeHolder='Select an Option'
@@ -36,12 +36,12 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
               ]
             }
           />
-          <LayoutGroup gap={ 20 } direction='horizontal' justify='fill'>
+          <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
             <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />
             <TextField label='TextField with an icon' iconProps={ { iconName: 'Calendar' } } />
           </LayoutGroup>
 
-          <LayoutGroup gap={ 20 } direction='horizontal' justify='fill'>
+          <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
             <ChoiceGroup
               defaultSelectedKey='B'
               options={ [
@@ -67,7 +67,7 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
               label='Pick one'
               required={ true }
             />
-            <LayoutGroup gap={ 10 }>
+            <LayoutGroup layoutGap={ 10 }>
               <Label>Pick a few</Label>
               <Checkbox
                 label='Checkbox A'

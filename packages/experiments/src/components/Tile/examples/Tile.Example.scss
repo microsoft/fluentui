@@ -5,9 +5,19 @@
   margin: 4px;
 }
 
-.squareTile {
-  width: 200px;
-  height: 200px;
+.smallTile {
+  width: 138px;
+  height: 135px;
+}
+
+.largeTile {
+  width: 176px;
+  height: 171px;
+}
+
+.tileFolder {
+  display: inline-block;
+  margin: 3px;
 }
 
 .tileImage {

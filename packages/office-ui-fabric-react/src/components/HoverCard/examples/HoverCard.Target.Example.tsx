@@ -2,14 +2,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './HoverCard.Example.scss';
 
@@ -41,7 +41,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
 
   public render() {
     return (
-      <div ref={ (c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c }) } >
+      <div ref={ (c: HTMLDivElement) => !this.state.contentRendered && this.setState({ contentRendered: c }) } data-is-focusable={ true }>
         { this.props.content }
         {
           this.state.contentRendered &&
@@ -49,12 +49,19 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
             expandingCardProps={ this.props.expandingCardProps }
             target={ this.state.contentRendered }
             cardDismissDelay={ 300 }
-            onCardVisible={ () => console.log('onCardVisible') }
-            onCardHide={ () => console.log('onCardHide') }
+            onCardVisible={ this._log('onCardVisible') }
+            onCardHide={ this._log('onCardHide') }
+            trapFocus={ true }
           />
         }
       </div>
     );
+  }
+
+  private _log(text: string): () => void {
+    return (): void => {
+      console.log(text);
+    };
   }
 }
 
@@ -82,6 +89,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
           items={ items! }
           columns={ columns }
           onRenderItemColumn={ this._onRenderItemColumn }
+          ariaLabel={ 'Hover card DetailsList test' }
         />
       </div>
     );

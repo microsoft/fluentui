@@ -3,14 +3,19 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
 import { Slider } from './Slider';
-import { ISlider } from './Slider.Props';
+import { ISlider } from './Slider.types';
 
 describe('Slider', () => {
+
+  it('renders Slider correctly', () => {
+    const component = renderer.create(<Slider />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
   it('renders a slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
@@ -19,7 +24,7 @@ describe('Slider', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
 
-    expect(labelElement.textContent).to.equal('slider');
+    expect(labelElement.textContent).toEqual('slider');
   });
 
   it('can slide to default min/max and execute onChange', () => {
@@ -53,7 +58,7 @@ describe('Slider', () => {
     });
 
     // Default max is 10.
-    expect(changedValue).equals(10);
+    expect(changedValue).toEqual(10);
 
     ReactTestUtils.Simulate.mouseDown(sliderThumb, {
       type: 'mousedown',
@@ -62,7 +67,7 @@ describe('Slider', () => {
     });
 
     // Default min is 0.
-    expect(changedValue).equals(0);
+    expect(changedValue).toEqual(0);
   });
 
   it('has type=button on all buttons', () => {
@@ -76,16 +81,44 @@ describe('Slider', () => {
     for (let i = 0; i < allButtons.length; i++) {
       let button = allButtons[i];
 
-      expect(button.getAttribute('type')).equals('button');
+      expect(button.getAttribute('type')).toEqual('button');
     }
   });
 
   it('can read the current value', () => {
     let slider: ISlider | undefined;
 
-    let component = ReactTestUtils.renderIntoDocument(
+    ReactTestUtils.renderIntoDocument(
+      // tslint:disable-next-line:jsx-no-lambda
       <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
-    expect(slider!.value).equals(12);
+    expect(slider!.value).toEqual(12);
+  });
+
+  it('renders correct aria-valuetext', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <Slider />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    let ariaValueText = button.getAttribute('aria-valuetext');
+
+    expect(ariaValueText).toBeNull();
+
+    const values = ['small', 'medium', 'large'];
+    const selected = 1;
+    const getTextValue = (value: number) => values[value];
+
+    component = ReactTestUtils.renderIntoDocument(
+      <Slider
+        value={ selected }
+        ariaValueText={ getTextValue }
+      />
+    );
+    renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    button = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    ariaValueText = button.getAttribute('aria-valuetext');
+
+    expect(ariaValueText).toEqual(values[selected]);
   });
 });

@@ -16,11 +16,13 @@ describe('warnDeprecations', () => {
   afterEach(() => setWarningCallback(undefined));
 
   it('does not warn when unnecessary', () => {
+    // tslint:disable-next-line:no-any
     warnDeprecations('Foo', { bar: 1 }, { 'foo': null } as any);
     expect(_lastWarning).toEqual(undefined);
   });
 
   it('can warn on a deprecated prop', () => {
+    // tslint:disable-next-line:no-any
     warnDeprecations('Foo', { foo: 1 }, { 'foo': null } as any);
     expect(_lastWarning).toEqual(`Foo property 'foo' was used but has been deprecated.`);
   });
@@ -45,6 +47,7 @@ describe('warnMutuallyExclusive', () => {
   });
 
   it('can warn on mutual exlusive props', () => {
+    // tslint:disable-next-line:no-any
     warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { 'foo': 'bar' } as any);
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });

@@ -9,7 +9,7 @@ import {
   KeyCodes,
   IRenderFunction
 } from '../../Utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -17,10 +17,11 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import * as checkStyles from './DetailsRowCheck.scss';
+import * as checkStylesModule from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 const styles: any = stylesImport;
+const checkStyles: any = checkStylesModule;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -38,7 +39,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   selectionMode: SelectionMode;
   layoutMode: DetailsListLayoutMode;
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
-  onColumnResized?: (column: IColumn, newWidth: number) => void;
+  onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
@@ -164,7 +165,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               aria-labelledby={ `${this._id}-check` }
               onClick={ this._onSelectAllClicked }
               aria-colindex={ 0 }
-              role='columnheader' >
+              role='columnheader'
+            >
               {
                 onRenderColumnHeaderTooltip({
                   hostClassName: css(styles.checkTooltip),
@@ -176,6 +178,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       id={ `${this._id}-check` }
                       aria-label={ ariaLabelForSelectionColumn }
                       aria-describedby={ `${this._id}-checkTooltip` }
+                      data-is-focusable={ true }
+                      isHeader={ true }
                       selected={ isAllSelected }
                       anySelected={ false }
                       canSelect={ true }
@@ -217,9 +221,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         { GroupSpacer({ count: groupNestingDepth! - 1 }) }
         {
           columns.map((column: IColumn, columnIndex: number) => {
-            const previousColumnIndex = columnIndex - 1;
-            const previousColumn = columns[previousColumnIndex];
-
             return (
               [
                 <div
@@ -238,7 +239,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     column.isPadded && styles.cellWrapperPadded
                   ) }
                   style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
-                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                   data-automationid='ColumnsHeaderColumn'
                   data-item-key={ column.key }
                 >
@@ -259,6 +259,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           aria-describedby={ `${this._id}-${column.key}-tooltip` }
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
+                          aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                         >
                           <span
                             id={ `${this._id}-${column.key}-name` }
@@ -334,7 +335,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   private _renderColumnSizer(columnIndex: number) {
     const { columns } = this.props;
     const column = this.props.columns[columnIndex];
-    const { isSizing, columnResizeDetails } = this.state;
+    const { columnResizeDetails } = this.state;
 
     return (
       <div
@@ -359,9 +360,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   @autobind
   private _onRenderColumnHeaderTooltip(tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>) {
-    return <span className={ tooltipHostProps.hostClassName }> {
-      tooltipHostProps.children
-    }</span >;
+    return (
+      <span className={ tooltipHostProps.hostClassName }>
+        { tooltipHostProps.children }
+      </span >
+    );
   }
 
   /**
@@ -476,7 +479,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         });
 
         if (onColumnResized) {
-          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment);
+          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment, columnIndex);
         }
 
         ev.preventDefault();
@@ -523,7 +526,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
       onColumnResized(
         columns[columnResizeDetails!.columnIndex],
-        columnResizeDetails!.columnMinWidth + movement
+        columnResizeDetails!.columnMinWidth + movement,
+        columnResizeDetails!.columnIndex
       );
     }
 

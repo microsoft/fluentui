@@ -23,10 +23,28 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
+          component: require<any>('../components/Form/FormPage').FormPage,
+          key: 'Form',
+          name: 'Form',
+          url: '#/examples/form'
+        },
+        {
+          component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
+          key: 'FileTypeIcon',
+          name: 'FileTypeIcon',
+          url: '#/examples/filetypeicon'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/signals/SignalsPage').SignalsPage,
+          key: 'Signals',
+          name: 'Signals',
+          url: '#/examples/signals'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,
@@ -39,7 +57,25 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist'
-        }
+        },
+        {
+          component: require<any>('../components/FloatingPicker/PeoplePicker/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
+          key: 'FloatingPeoplePicker',
+          name: 'FloatingPeoplePicker',
+          url: '#/examples/floatingpeoplepicker'
+        },
+        {
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'PeopleItemList',
+          name: 'PeopleItemList',
+          url: '#/examples/peopleitemlist'
+        },
+        {
+          component: require<any>('../components/ExtendedPicker/PeoplePicker/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
+          key: 'ExtendedPeoplePicker',
+          name: 'ExtendedPeoplePicker',
+          url: '#/examples/extendedpeoplepicker'
+        },
       ]
     }
   ],

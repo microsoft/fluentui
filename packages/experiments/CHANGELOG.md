@@ -1,6 +1,202 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Dec 2017 11:11:16 GMT and should not be manually modified.
+
+## 5.8.0
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Minor changes
+
+- Revise Signals and provide example page
+
+### Patches
+
+- Fixes the external signal component
+
+## 5.7.0
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Minor changes
+
+- Updating TypeScript to 2.6.2.
+
+## 5.6.1
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Patches
+
+- Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot
+
+## 5.6.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Add external signal
+
+### Patches
+
+- Make sure commands get added/removed in the correct order
+
+## 5.5.2
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Patches
+
+- Fix experiment imports for FloatingPicker and ExtendedPicker components
+
+## 5.5.1
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- Fix alignment with trending icon
+
+## 5.5.0
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Minor changes
+
+- added ATP signal
+
+## 5.4.0
+Thu, 02 Nov 2017 18:20:18 GMT
+
+### Minor changes
+
+- Added SelectedItemsList, change ExtendedPicker from extending BasePicker to be new component utilizing SelectedItemsList and FloatingPicker
+
+### Patches
+
+- Fix import that was causing build error
+
+## 5.3.1
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Switch to .svg files for FolderCover images
+
+## 5.3.0
+Fri, 20 Oct 2017 18:42:08 GMT
+
+### Minor changes
+
+- Add modal selection behavior to TilesList
+
+## 5.2.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add Form control
+
+## 5.1.0
+Tue, 17 Oct 2017 17:17:41 GMT
+
+### Minor changes
+
+- Create BaseExtendedPicker which extends current BasePicker to experiment with adding new functionality and create BaseFloatingPicker support @mention like scenarios, respectively
+
+## 5.0.5
+Fri, 13 Oct 2017 01:36:01 GMT
+
+### Patches
+
+- Fix visibility of Tile descenders
+
+## 5.0.4
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.0.3
+Wed, 04 Oct 2017 22:40:22 GMT
+
+*Version update only*
+
+## 5.0.2
+Sat, 30 Sep 2017 01:26:37 GMT
+
+### Patches
+
+- Code cleanup after move to MergeStyles
+
+## 5.0.1
+Wed, 27 Sep 2017 00:20:58 GMT
+
+### Patches
+
+- Updated for Fabric 5.0.
+
+## 0.10.0
+Thu, 21 Sep 2017 06:23:58 GMT
+
+### Minor changes
+
+- Adjust Tile and FolderCover alignments and behaviors
+
+### Patches
+
+- Consume Check hover behavior in Tile
+
+## 0.9.0
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Minor changes
+
+- LayoutGroup: Changed gap to layoutGap and updated docs
+
+## 0.8.0
+Mon, 18 Sep 2017 10:18:23 GMT
+
+### Minor changes
+
+- Add accessibility hooks for Tile, TilesList, and FolderCover
+
+## 0.7.1
+Fri, 15 Sep 2017 10:19:50 GMT
+
+### Patches
+
+- Add folder cover shadows
+
+## 0.7.0
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Minor changes
+
+- Add support for folder cover signals
+
+## 0.6.0
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Minor changes
+
+- Added LayoutGroup, FolderCover, Tile and TilesList to exports
+
+## 0.5.1
+Fri, 08 Sep 2017 10:16:28 GMT
+
+### Patches
+
+- Fix alignment of Tile foreground and background using flexbox
+- Add breakpoint size support to Tile
+
+## 0.5.0
+Thu, 07 Sep 2017 10:09:51 GMT
+
+### Minor changes
+
+- Removed global fabric export
+- Add presentation hooks for Tile and FolderCover
+- Support auto-focus for TilesList
+
+### Patches
+
+- Fix minor alignment issues with SignalField
 
 ## 0.4.0
 Mon, 04 Sep 2017 10:16:56 GMT
@@ -44,12 +240,12 @@ Fri, 25 Aug 2017 20:31:51 GMT
 ## 0.1.6
 Fri, 25 Aug 2017 19:27:18 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.5
 Thu, 24 Aug 2017 10:20:20 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.4
 Thu, 24 Aug 2017 05:38:14 GMT
@@ -71,7 +267,7 @@ Wed, 23 Aug 2017 19:04:55 GMT
 ## 0.1.2
 Tue, 22 Aug 2017 10:09:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.1
 Mon, 21 Aug 2017 10:19:29 GMT
@@ -94,7 +290,7 @@ Fri, 18 Aug 2017 16:32:33 GMT
 ## 0.0.2
 Wed, 16 Aug 2017 10:11:43 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.0.1
 Tue, 15 Aug 2017 10:19:22 GMT

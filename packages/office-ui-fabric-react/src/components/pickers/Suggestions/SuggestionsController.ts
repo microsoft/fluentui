@@ -1,6 +1,7 @@
 export interface ISuggestionModel<T> {
   item: T;
   selected: boolean;
+  ariaLabel?: string;
 }
 
 export class SuggestionsController<T> {
@@ -89,7 +90,7 @@ export class SuggestionsController<T> {
 
   public convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
-    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));
+    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false, ariaLabel: suggestion.name || suggestion.primaryText }));
     return converted;
   }
 

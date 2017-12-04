@@ -1,4 +1,4 @@
-import { IRawStyle } from '../interfaces/index';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 
 /**
  * UI Fabric font set.
@@ -15,5 +15,4 @@ export interface IFontStyles {
   xxLarge?: IRawStyle;
   superLarge?: IRawStyle;
   mega?: IRawStyle;
-  icon?: IRawStyle;
 }

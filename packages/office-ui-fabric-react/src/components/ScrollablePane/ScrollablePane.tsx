@@ -8,7 +8,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import { IScrollablePaneProps } from './ScrollablePane.Props';
+import { IScrollablePane, IScrollablePaneProps } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
 import * as stylesImport from './ScrollablePane.scss';
 const styles: any = stylesImport;
@@ -17,7 +17,7 @@ export interface IScrollablePaneContext {
   scrollablePane: PropTypes.Requireable<object>;
 }
 
-export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
+export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> implements IScrollablePane {
   public static childContextTypes: IScrollablePaneContext = {
     scrollablePane: PropTypes.object
   };
@@ -55,7 +55,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   public componentDidMount() {
-    const { root, stickyContainer, stickyAbove, stickyBelow } = this.refs;
+    const { root, stickyContainer } = this.refs;
 
     this._events.on(root, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
@@ -85,7 +85,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       <div
         ref='root'
         className={ css('ms-ScrollablePane', styles.root, className) }
-        data-is-scrollable={ true }>
+        data-is-scrollable={ true }
+      >
         <div ref='stickyContainer' className={ styles.stickyContainer }>
           <div ref='stickyAbove' className={ styles.stickyAbove } />
           <div ref='stickyBelow' className={ styles.stickyBelow } />
@@ -93,6 +94,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
         { this.props.children }
       </div>
     );
+  }
+
+  public forceLayoutUpdate() {
+    this._onWindowResize();
   }
 
   @autobind
@@ -173,7 +178,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   private _onWindowResize() {
-    const { stickyAbove, stickyBelow } = this.refs;
     setTimeout(() => {
       this._resizeContainer();
       this.notifySubscribers();
@@ -205,7 +209,9 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement): void {
     let stickyArr = Array.from(stickyList);
     stickyArr = stickyArr.sort((a, b) => {
-      return a.refs.root.offsetTop - b.refs.root.offsetTop;
+      const aOffset = this._calculateOffsetParent(a.refs.root);
+      const bOffset = this._calculateOffsetParent(b.refs.root);
+      return aOffset - bOffset;
     });
     while (container.lastChild) {
       container.removeChild(container.lastChild);
@@ -213,5 +219,16 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     stickyArr.forEach((sticky) => {
       container.appendChild(sticky.content);
     });
+  }
+
+  private _calculateOffsetParent(ele: HTMLElement): number {
+    let offset = 0;
+    while (ele.offsetParent !== this.refs.root.offsetParent) {
+      offset += ele.offsetTop;
+      if (ele.parentElement) {
+        ele = ele.parentElement;
+      }
+    }
+    return offset;
   }
 }

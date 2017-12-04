@@ -3,9 +3,9 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { BaseComponent, warn } from '../../Utilities';
-import { ButtonType, IButtonProps } from './Button.Props';
+import { ButtonType, IButtonProps } from './Button.types';
 import { DefaultButton } from './DefaultButton/DefaultButton';
-import { CommandButton } from './CommandButton/CommandButton';
+import { ActionButton } from './ActionButton/ActionButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
@@ -24,7 +24,7 @@ export class Button extends BaseComponent<IButtonProps, {}> {
 
     warn(
       `The Button component has been deprecated. Use specific variants instead. ` +
-      `(PrimaryButton, DefaultButton, IconButton, CommandButton, etc.)`
+      `(PrimaryButton, DefaultButton, IconButton, ActionButton, etc.)`
     );
   }
 
@@ -33,7 +33,7 @@ export class Button extends BaseComponent<IButtonProps, {}> {
 
     switch (props.buttonType) {
       case ButtonType.command:
-        return <CommandButton { ...props } />;
+        return <ActionButton { ...props } />;
 
       case ButtonType.compound:
         return <CompoundButton { ...props } />;

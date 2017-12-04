@@ -11,7 +11,7 @@
 
   // Modifier to increase the Grid's gutters depending on screen size
   .ms-Grid--wide {
-    @media screen and (min-width: $ms-screen-min-lg) {
+    @media screen and (min-width: $uhf-screen-min-mobile) {
       margin: 0 (-$contentPadding-lg / 2);
       padding: 0 ($contentPadding-lg / 2);
 

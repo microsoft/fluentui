@@ -31,6 +31,7 @@ export class AutoScroll {
     this._incrementScroll = this._incrementScroll.bind(this);
     this._scrollRect = getRect(this._scrollableParent);
 
+    // tslint:disable-next-line:no-any
     if (this._scrollableParent === window as any) {
       this._scrollableParent = document.body;
     }
