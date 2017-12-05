@@ -2,10 +2,11 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed Picker handling of createGenericItem",
+      "comment":
+        "Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "sohan.fernando@preciofishbone.se"
+  "email": "sohan@graceful.nu"
 }
