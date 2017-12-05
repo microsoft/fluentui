@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.18",
+      "tag": "@uifabric/fabric-website_v5.0.18",
+      "date": "Tue, 05 Dec 2017 02:04:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "1e7bfd33d32ee6f5367a1152377c203e2ab68888",
+            "comment": "Fix ScrollablePane page title"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.29.1 <6.0.0` to `>=5.29.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.17",
       "tag": "@uifabric/fabric-website_v5.0.17",
       "date": "Mon, 20 Nov 2017 11:12:47 GMT",
