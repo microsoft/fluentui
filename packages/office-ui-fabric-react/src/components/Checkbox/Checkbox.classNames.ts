@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
-import { ICheckboxStyles } from './Checkbox.Props';
+import { ICheckboxStyles } from './Checkbox.types';
 
 export interface ICheckboxClassNames {
   root: string;
@@ -12,10 +12,10 @@ export interface ICheckboxClassNames {
 
 export const getClassNames = memoizeFunction((
   styles: ICheckboxStyles,
-  className: string,
   disabled: boolean,
   isChecked: boolean,
-  isReversed: boolean
+  isReversed: boolean,
+  className?: string
 ): ICheckboxClassNames => {
   return {
     root: mergeStyles(

@@ -14,7 +14,7 @@ const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-r
 
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
 
-export class ScrollablePanePage extends React.Component<IComponentDemoPageProps, {}> {
+export class ScrollablePanePage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -33,7 +33,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts')
             ] }
           />
         }

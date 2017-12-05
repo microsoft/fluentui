@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 // Components
-import { IFormProps } from './Form.Props';
+import { IFormProps } from './Form.types';
 import { GenericFormInput } from './FormBaseInput';
 
 // Utilities

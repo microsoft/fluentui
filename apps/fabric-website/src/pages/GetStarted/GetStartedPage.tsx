@@ -7,6 +7,8 @@ const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
 import * as stylesImport from './GetStartedPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../PageStyles.module.scss');
+const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
+const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {
@@ -185,7 +187,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`
               <p>Add the following line to the &lt;head&gt; of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.0.0/css/fabric.min.css">`
+                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/${corePackageVersion}/css/fabric.min.css">`
                 }
               </CodeBlock>
             </li>
@@ -206,7 +208,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`
           <h3>Need an icon or feature Fabric Core doesn&rsquo;t have?</h3>
           <p>First, check the <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a className={ styles.getStartedLink } href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
 
-          <p className={ styles.trademark }>Usage of Fabric assets, such as fonts and icons, is subject to the <a className={ styles.getStartedLink } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_v2_09262017.pdf'>assets license agreement</a>.</p>
+          <p className={ styles.trademark }>Usage of Fabric assets, such as fonts and icons, is subject to the <a className={ styles.getStartedLink } href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf'>assets license agreement</a>.</p>
         </div>
 
       </div>

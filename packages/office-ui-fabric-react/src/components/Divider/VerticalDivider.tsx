@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getDividerClassNames } from './VerticalDivider.classNames';
-import { IVerticalDividerProps } from './VerticalDivider.Props';
+import { IVerticalDividerProps } from './VerticalDivider.types';
 import { getTheme } from '../../Styling';
 
 export const VerticalDivider = (props: IVerticalDividerProps) => {

@@ -1,11 +1,10 @@
-import { IExpandingCardStyles } from './ExpandingCard.Props';
+import { IExpandingCardStyles } from './ExpandingCard.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   concatStyleSets,
-  ITheme
+  ITheme,
+  HighContrastSelector
 } from '../../Styling';
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -21,7 +20,7 @@ export const getStyles = memoizeFunction((
           boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
           border: 'none',
           selectors: {
-            [MS_HIGHCONTRAST_ACTIVE]: {
+            [HighContrastSelector]: {
               border: '1px solid WindowText',
             }
           }
