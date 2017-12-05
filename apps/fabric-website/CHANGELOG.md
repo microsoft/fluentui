@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 20 Nov 2017 11:12:47 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Dec 2017 02:04:27 GMT and should not be manually modified.
+
+## 5.0.18
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Fix ScrollablePane page title
 
 ## 5.0.17
 Mon, 20 Nov 2017 11:12:47 GMT
