@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from '../PositioningContainer/PositioningContainer.types';
-import { IPoint } from '../../Utilities';
-import { IStyleFunction } from 'office-ui-fabric-react/lib/Styling';
+import { IPoint, IStyleFunction } from '../../Utilities';
 
 export interface ICoachmark {
 }

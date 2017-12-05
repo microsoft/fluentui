@@ -55,13 +55,13 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
     );
   }
 
-  private _onShowMenuClicked() {
+  private _onShowMenuClicked(): void {
     this.setState({
       isVisible: !this.state.isVisible
     });
   }
 
-  private _onCalloutDismiss() {
+  private _onCalloutDismiss(): void {
     this.setState({
       isVisible: false
     });

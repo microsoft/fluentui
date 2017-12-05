@@ -10,9 +10,9 @@ export interface IPositioningContainerStyles {
 }
 
 export interface IPositioningContainerNames {
-	/**
-	* Root html container for this component.
-	*/
+  /**
+   * Root html container for this component.
+   */
   root: string;
   container: string;
   main: string;
@@ -21,13 +21,16 @@ export interface IPositioningContainerNames {
   beakCurtain: string;
 }
 
+// @TODO Remove this tslint disable statement after the styles are converted
+// to the updated mergeStyles method.
+/* tslint:disable */
 export function highContrastActive(styles: IStyle): any {
   return {
     '@media screen and (-ms-high-contrast: active)': styles
   };
 }
 
-export function focusClear() {
+export function focusClear(): any {
   return {
     '&::-moz-focus-inner': {
       border: 0
@@ -37,6 +40,7 @@ export function focusClear() {
     }
   }
 }
+/* tslint:enable */
 
 export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
   return mergeStyleSets({

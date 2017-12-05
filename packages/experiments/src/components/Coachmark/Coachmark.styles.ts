@@ -1,6 +1,5 @@
 import { IStyle, keyframes } from '../../Styling';
-import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets } from '../../Styling';
+import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export const themePrimary = '#0078d7';
 
@@ -69,19 +68,19 @@ export interface ICoachmarkStyles {
    * and primary purpose is scaling the layer down while the
    * Coachmark collapsed.
    */
-  entityInnerHost: string;
+  entityInnerHost: IStyle;
 
   /**
    * The styles applied when the coachmark has collapsed.
    */
   collapsed?: IStyle;
-};
+}
 
 export const coachmarkCollapsedSize = '36px';
 export const beaconColorOne = '#00FFEC';
 export const beaconColorTwo = '#005EDD';
 
-function continuousPulseStepOne() {
+function continuousPulseStepOne(): IRawStyleBase {
   return {
     borderColor: beaconColorOne,
     borderWidth: '0px',
@@ -90,33 +89,33 @@ function continuousPulseStepOne() {
   };
 }
 
-function continuousPulseStepTwo() {
+function continuousPulseStepTwo(): IRawStyleBase {
   return {
     opacity: '1',
     borderWidth: '10px'
   };
 }
 
-function continuousPulseStepThree() {
+function continuousPulseStepThree(): IRawStyleBase {
   return {
     opacity: 1
-  }
+  };
 }
 
-function continuousPulseStepFour() {
+function continuousPulseStepFour(): IRawStyleBase {
   return {
     borderWidth: '0',
     width: '150px',
     height: '150px',
     opacity: '0',
     borderColor: beaconColorTwo
-  }
+  };
 }
 
-function continuousPulseStepFive() {
+function continuousPulseStepFive(): IRawStyleBase {
   return Object.assign(continuousPulseStepOne(), {
     opacity: '0'
-  })
+  });
 }
 
 export const ContinuousPulse: string = keyframes({
@@ -145,7 +144,7 @@ export const translateOne: string = keyframes({
     animationTimingFunction: 'linear'
   },
   '78.57%': {
-    transform: 'translate(0, 0)', //orig 25
+    transform: 'translate(0, 0)', // orig 25
     animationTimingFunction: 'cubic-bezier(0.62, 0, 0.56, 1)'
   },
   '82.14%': {
@@ -157,7 +156,7 @@ export const translateOne: string = keyframes({
     animationTimingFunction: 'cubic-bezier(1, 0, 0.56, 1)'
   },
   '88.1%': {
-    transform: 'translate(0, -2px)', //orig 23
+    transform: 'translate(0, -2px)', // orig 23
     animationTimingFunction: 'cubic-bezier(0.58, 0, 0.67, 1)'
   },
   '90.12%': {
@@ -253,8 +252,8 @@ export const rotateOne: string = keyframes({
   }
 });
 
-export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachmarkStylesNames => {
-  return mergeStyleSets({
+export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
+  return {
     root: [
       {
         position: 'relative'
@@ -370,5 +369,5 @@ export const getStyles = memoizeFunction((props: ICoachmarkStyleProps): ICoachma
         visibility: 'visible'
       }
     ]
-  });
-});
+  };
+}

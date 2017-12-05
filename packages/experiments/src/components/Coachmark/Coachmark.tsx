@@ -1,20 +1,22 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 
 // Component Dependencies
 import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
-import { getStyles } from './Coachmark.styles';
+import { getStyles, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
+
+const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
 /**
  * An interface for the cached dimensions of entity inner host.
  */
 export interface IEntityRect {
-  width: number,
-  height: number
+  width: number;
+  height: number;
 }
 
 export interface ICoachmarkState {
@@ -48,6 +50,10 @@ export interface ICoachmarkState {
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
+  public static defaultProps: Partial<ICoachmarkTypes> = {
+    collapsed: true,
+    mouseProximityOffset: 100
+  };
 
   /**
    * The cached HTMLElement reference to the Entity Inner Host
@@ -55,11 +61,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
-
-  public static defaultProps: Partial<ICoachmarkTypes> = {
-    collapsed: true,
-    mouseProximityOffset: 100
-  };
 
   constructor(props: ICoachmarkTypes) {
     super();
@@ -77,13 +78,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       children
     } = this.props;
 
-    // Retrieve classnames
-    const classNames = getStyles({
+    const classNames = getClassNames(getStyles, {
       collapsed: this.state.collapsed,
       isBeaconAnimating: this.state.isBeaconAnimating,
       isMeasuring: this.state.isMeasuring,
@@ -93,11 +93,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     return (
       <PositioningContainer
-        target={ this.props.target }>
+        target={ this.props.target }
+      >
         <div
           className={ classNames.root }
         >
-          <div className={ classNames.pulsingBeacon }></div>
+          <div className={ classNames.pulsingBeacon } />
           <div
             className={ classNames.translateAnimationContainer }
             ref={ this._resolveRef('_translateAnimationContainer') }
@@ -129,18 +130,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkTypes) {
+  public componentWillReceiveProps(newProps: ICoachmarkTypes): void {
     if (this.props.collapsed && !newProps.collapsed) {
       // The coachmark is about to open
       this._openCoachmark();
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // If we have already accessed the width and height
     // We do not wan't to do it again.
     if (this.state.isMeasuring) {
-      this._async.setTimeout(() => {
+      this._async.setTimeout((): void => {
         if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
           this.setState({
             isMeasuring: false,
@@ -160,25 +161,25 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     }
   }
 
-  private _openCoachmark() {
+  private _openCoachmark(): void {
     this.setState({
       collapsed: false
     });
 
-    this._translateAnimationContainer.addEventListener('animationstart', () => {
+    this._translateAnimationContainer.addEventListener('animationstart', (): void => {
       if (this.props.onAnimationOpenStart) {
         this.props.onAnimationOpenStart();
       }
     });
 
-    this._translateAnimationContainer.addEventListener('animationend', () => {
+    this._translateAnimationContainer.addEventListener('animationend', (): void => {
       if (this.props.onAnimationOpenEnd) {
         this.props.onAnimationOpenEnd();
       }
     });
   }
 
-  private _isElementInProximity(targetElement: HTMLElement, mouseProximityOffset: number = 0) {
+  private _isElementInProximity(targetElement: HTMLElement, mouseProximityOffset: number = 0): void {
     /**
      * An array of cached ids returned when setTimeout runs during
      * the window resize event trigger.
@@ -196,12 +197,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     // Every time the event is triggered we wan't to
     // setTimeout and then clear any previous instances
     // of setTimeout.
-    this._events.on(window, 'resize', () => {
-      timeoutIds.forEach((value) => {
-        clearInterval(value)
+    this._events.on(window, 'resize', (): void => {
+      timeoutIds.forEach((value: number): void => {
+        clearInterval(value);
       });
 
-      timeoutIds.push(this._async.setTimeout(() => {
+      timeoutIds.push(this._async.setTimeout((): void => {
         targetElementRect = targetElement.getBoundingClientRect();
       }, 100));
     });
@@ -226,4 +227,4 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     return mouseX > (elementRect.left - mouseProximityOffset) && mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
       mouseY > (elementRect.top - mouseProximityOffset) && mouseY < ((elementRect.top + elementRect.height) + mouseProximityOffset);
   }
-};
+}

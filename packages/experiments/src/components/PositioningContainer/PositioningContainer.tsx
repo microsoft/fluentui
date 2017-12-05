@@ -19,15 +19,29 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from 'office-ui-fabric-react/lib/utilities/positioning';
+
+import {
+  getRelativePositions,
+  IPositionProps,
+  getMaxHeight,
+  ICalloutPositon
+} from 'office-ui-fabric-react/lib/utilities/positioning';
+
 import { AnimationClassNames, mergeStyles } from '../../Styling';
+
+export interface IPositionInfo {
+  calloutPosition: ICalloutPositon;
+  beakPosition: { position: ICalloutPositon, display: string };
+  directionalClassName: string;
+  submenuDirection: DirectionalHint;
+}
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
 // In order for some of the max height logic to work
 // properly we need to set the border needs to be set.
 // The value is abitrary.
-const BORDER_WIDTH: number = 1;
+const BORDER_WIDTH = 1;
 
 export interface IPositioningContainerState {
   /**
@@ -44,7 +58,7 @@ export interface IPositioningContainerState {
 
 export class PositioningContainer extends BaseComponent<IPositioningContainerTypes, IPositioningContainerState> {
 
-  public static defaultProps = {
+  public static defaultProps: IPositioningContainerTypes = {
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
@@ -92,20 +106,20 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     this._positionAttempts = 0;
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._onComponentDidMount();
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     this._setInitialFocus();
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerTypes) {
+  public componentWillUpdate(newProps: IPositioningContainerTypes): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
@@ -125,7 +139,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     }
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!this._targetWindow) {
       return null;
@@ -138,17 +152,17 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       children } = this.props;
     let { positions } = this.state;
 
-    const styles: any = getClassNames();
+    const styles = getClassNames();
+    let directionalClassName = '';
 
-    let directionalClassName = (positions && positions.directionalClassName)
-      ? (AnimationClassNames as any)[positions.directionalClassName]
-      : '';
+    if (positions && positions.directionalClassName) {
+      directionalClassName = (AnimationClassNames as any)[positions.directionalClassName];
+    }
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = positioningContainerMaxHeight! && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
-
+    let contentMaxHeight: number = positioningContainerMaxHeight!
+      && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
     let content = (
-
       <div
         ref={ this._resolveRef('_positionedHost') }
         className={ css('ms-PositioningContainer', styles.container) }
@@ -183,7 +197,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -191,14 +205,14 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     }
   }
 
-  protected _dismissOnScroll(ev: Event) {
+  protected _dismissOnScroll(ev: Event): void {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }
 
-  protected _dismissOnLostFocus(ev: Event) {
+  protected _dismissOnLostFocus(ev: Event): void {
     let target = ev.target as HTMLElement;
     let clickedOutsideCallout = this._positionedHost && !elementContains(this._positionedHost, target);
 
@@ -213,7 +227,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   @autobind
-  protected _setInitialFocus() {
+  protected _setInitialFocus(): void {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
       this._didSetInitialFocus = true;
       focusFirstChild(this._contentHost);
@@ -221,7 +235,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   @autobind
-  protected _onComponentDidMount() {
+  protected _onComponentDidMount(): void {
     // This is added so the positioningContainer will dismiss when the window is scrolled
     // but not when something inside the positioningContainer is scrolled. The delay seems
     // to be required to avoid React firing an async focus event in IE from
@@ -241,11 +255,11 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     this._setHeightOffsetEveryFrame();
   }
 
-  private _updateAsyncPosition() {
+  private _updateAsyncPosition(): void {
     this._async.requestAnimationFrame(() => this._updatePosition());
   }
 
-  private _updatePosition() {
+  private _updatePosition(): void {
     let { positions } = this.state;
     let hostElement: HTMLElement = this._positionedHost;
     let positioningContainerElement: HTMLElement = this._contentHost;
@@ -313,11 +327,11 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     return this._maxHeight!;
   }
 
-  private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo) {
+  private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo): boolean {
     return this._comparePositions(positions.calloutPosition, newPosition.calloutPosition);
   }
 
-  private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon) {
+  private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon): boolean {
     for (const key in newPositions) {
       // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {
