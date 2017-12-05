@@ -4,13 +4,12 @@ import {
   css,
   getId,
 } from '../../Utilities';
-import { IGridCellProps } from './GridCell.Props';
+import { IGridCellProps } from './GridCell.types';
 import { CommandButton } from '../../Button';
 
 export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
 
   public static defaultProps = {
-    cellShape: 'circle',
     disabled: false,
     id: getId('gridCell')
   };
@@ -27,8 +26,10 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       cellDisabledStyle,
       cellIsSelectedStyle,
       index,
-      label
+      label,
+      getClassNames
     } = this.props;
+
     return (
       <CommandButton
         id={ id + '-item' + index }
@@ -49,6 +50,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         aria-selected={ selected }
         ariaLabel={ label }
         title={ label }
+        getClassNames={ getClassNames }
       >
         { onRenderItem(item) }
       </CommandButton >

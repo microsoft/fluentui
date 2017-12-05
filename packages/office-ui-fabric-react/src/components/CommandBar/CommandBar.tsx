@@ -9,7 +9,7 @@ import {
   getId,
   getNativeProps
 } from '../../Utilities';
-import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
+import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';

@@ -8,7 +8,7 @@ import {
   getNativeProps,
   autobind
 } from '../../Utilities';
-import { IPopupProps } from './Popup.Props';
+import { IPopupProps } from './Popup.types';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -55,7 +55,12 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy } = this.props;
+    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+
+    let needsVerticalScrollBar = false;
+    if (this.refs.root) {
+      needsVerticalScrollBar = this.refs.root.scrollHeight > this.refs.root.clientHeight;
+    }
 
     return (
       <div
@@ -67,6 +72,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
+        style={ { ...style, overflowY: needsVerticalScrollBar ? 'scroll' : 'auto' } }
       >
         { this.props.children }
       </div>

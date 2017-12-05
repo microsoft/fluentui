@@ -10,6 +10,7 @@ import { DatePickerWeekNumbersExample } from './examples/DatePicker.WeekNumbers.
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { DatePickerFormatExample } from './examples/DatePicker.Format.Example';
+import { DatePickerBoundedExample } from './examples/DatePicker.Bounded.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DatePickerStatus } from './DatePicker.checklist';
 
@@ -18,7 +19,9 @@ const DatePickerWeekNumbersExampleCode = require('!raw-loader!office-ui-fabric-r
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
 const DatePickerFormatExampleCode = require
-('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Format.Example.tsx') as string;
+  ('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Format.Example.tsx') as string;
+const DatePickerBoundedExampleCode = require
+  ('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Bounded.Example.tsx') as string;
 
 export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -43,12 +46,15 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
             <ExampleCard title='DatePicker allows dates to be formatted' code={ DatePickerFormatExampleCode }>
               <DatePickerFormatExample />
             </ExampleCard>
+            <ExampleCard title='DatePicker with date boundary (minDate, maxDate)' code={ DatePickerBoundedExampleCode }>
+              <DatePickerBoundedExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')
             ] }
           />
         }

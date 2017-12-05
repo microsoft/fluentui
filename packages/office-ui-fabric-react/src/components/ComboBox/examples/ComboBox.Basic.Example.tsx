@@ -10,7 +10,7 @@ import {
   assign,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
@@ -26,7 +26,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   { key: 'G', text: 'Option g' },
   { key: 'H', text: 'Option h' },
   { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j' },
+  { key: 'J', text: 'Option j', disabled: true },
   ];
 
   private _fontMapping: { [key: string]: string } = {

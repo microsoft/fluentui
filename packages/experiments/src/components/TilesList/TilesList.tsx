@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.Props';
+import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
 import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { autobind, css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
@@ -311,7 +311,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     let rowWidth = 0;
     let rowStart = 0;
-    let fillPercent = 0;
     let i = startIndex;
 
     let isAtGridEnd = true;
@@ -340,7 +339,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         // The current "grid" just takes up the full width.
         // No flex calculations necessary.
         isAtGridEnd = true;
-        fillPercent = 1;
         cellSizes[i] = {
           width: bounds.width,
           height: 0
@@ -363,7 +361,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         }
 
         rowWidth += width;
-        fillPercent = rowWidth / boundsWidth;
 
         cellSizes[i] = {
           // Assign the expected base size of the cell.
@@ -374,7 +371,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
         if (rowWidth > boundsWidth) {
           rowWidth = width;
-          fillPercent = rowWidth / boundsWidth;
           rowStart = i;
           currentRow = startCells[i] = {
             scaleFactor: 1

@@ -2,6 +2,160 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.14.0",
+      "tag": "@uifabric/styling_v5.14.0",
+      "date": "Mon, 04 Dec 2017 17:27:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f87d8889321e89fc697985c43b88b2bfc3288994",
+            "comment": "Add an event callback for when the theme changes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.1",
+      "tag": "@uifabric/styling_v5.12.1",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "philipzloh <philip.loh@students.olin.edu>",
+            "commit": "491764a41bf4fe95e0bc7bfc20fe150f0edd9d11",
+            "comment": "Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.7.0 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/styling_v5.12.0",
+      "date": "Thu, 30 Nov 2017 11:23:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7bd70ca910f147560e0c0e8a536a2659730b5f13",
+            "comment": "Updating the `registerIcons` helper to take in options."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/styling_v5.11.1",
+      "date": "Wed, 29 Nov 2017 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "7d322b1de493bd49f1a93a26bc09cdf67e574b25",
+            "comment": "SemanticSlots: Updated inputBorderHovered color."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.6.0 <6.0.0` to `>=5.7.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/styling_v5.11.0",
+      "date": "Tue, 28 Nov 2017 02:24:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "94954657769c46824f84e8aba06b326721b4a161",
+            "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.3.3 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/styling_v5.10.1",
+      "date": "Thu, 23 Nov 2017 11:10:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4e590b0b914e7be64fe85809a2bf5c4bda0f49ea",
+            "comment": "Theme: Updated menuItemBackgroundChecked for ContextualMenu."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.0",
+      "tag": "@uifabric/styling_v5.10.0",
+      "date": "Fri, 17 Nov 2017 17:36:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "54dab7cabfc39ffe6e6ab68181e561467fa009fe",
+            "comment": "Export functions used to create font sets based upon a given locale code"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.0",
+      "tag": "@uifabric/styling_v5.8.0",
+      "date": "Thu, 16 Nov 2017 11:20:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f143a0d268256361a334e8ed33231e507d902e85",
+            "comment": "Adding `styled` and `classNameFunction` helpers, in addition to a variety of interface."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/styling_v5.7.0",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "696cd19b230f855f071f766c27c0066eb15d8109",
+            "comment": "Adjusting the IFabricConfig interface to allow for mergeStyle settings to be included."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "360596259b7e047fd6987cc05aafdc4f88d878d3",
+            "comment": "Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.3.2 <6.0.0` to `>=5.3.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.5.1 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.6.1",
       "tag": "@uifabric/styling_v5.6.1",
       "date": "Mon, 30 Oct 2017 10:23:09 GMT",

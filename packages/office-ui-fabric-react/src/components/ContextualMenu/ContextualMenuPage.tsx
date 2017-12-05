@@ -12,6 +12,7 @@ import { ContextualMenuSubmenuExample } from './examples/ContextualMenu.Submenu.
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
+import { ContextualMenuWithScrollBarExample } from './examples/ContextualMenu.ScrollBar.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
@@ -22,6 +23,8 @@ const ContextualMenuSubmenuExampleCode = require('!raw-loader!office-ui-fabric-r
 const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
 const ContextualMenuDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Directional.Example.tsx') as string;
 const ContextualMenuCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
+const ContextualMenuWithScrollBarExampleCode = require
+  ('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.ScrollBar.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -73,13 +76,20 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             >
               <ContextualMenuCustomizationExample />
             </ExampleCard>
+            <ExampleCard
+              title='ContextualMenu with a scroll bar and fixed direction'
+              code={ ContextualMenuWithScrollBarExampleCode }
+            >
+              <ContextualMenuWithScrollBarExample />
+            </ExampleCard>
+
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.Props.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts'),
             ] }
           />
         }
