@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Update Default Button colors to match design spec",
+      "comment": "Button: Move contextual menu outside of button tag if doNotLayer",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miclo@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }
