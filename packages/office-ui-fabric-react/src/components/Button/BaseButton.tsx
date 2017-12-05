@@ -245,7 +245,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderChildren(props, this._onRenderChildren),
         !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
-    ));
+      ));
   }
 
   @autobind
