@@ -186,9 +186,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           <div
             className={ styles.screenReaderOnly }
-            role="alert"
-            id="selected-suggestion-alert"
-            aria-live="assertive"
+            role='alert'
+            id='selected-suggestion-alert'
+            aria-live='assertive'
           >
             { selectedSuggestionAlert }{ ' ' }
           </div>
@@ -212,14 +212,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-activedescendant={
                     'sug-' + this.suggestionStore.currentIndex
                   }
-                  aria-owns="suggestion-list"
-                  aria-expanded="true"
-                  aria-haspopup="true"
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  role="combobox"
+                  aria-owns='suggestion-list'
+                  aria-expanded='true'
+                  aria-haspopup='true'
+                  autoCapitalize='off'
+                  autoComplete='off'
+                  role='combobox'
                   disabled={ disabled }
-                  aria-controls="selected-suggestion-alert"
+                  aria-controls='selected-suggestion-alert'
                   onInputChange={ this.props.onInputChange }
                 />
               ) }
@@ -814,12 +814,12 @@ export class BasePickerListBelow<
                 aria-activedescendant={
                   'sug-' + this.suggestionStore.currentIndex
                 }
-                aria-owns="suggestion-list"
-                aria-expanded="true"
-                aria-haspopup="true"
-                autoCapitalize="off"
-                autoComplete="off"
-                role="combobox"
+                aria-owns='suggestion-list'
+                aria-expanded='true'
+                aria-haspopup='true'
+                autoCapitalize='off'
+                autoComplete='off'
+                role='combobox'
                 disabled={ disabled }
               />
             </div>
@@ -828,7 +828,7 @@ export class BasePickerListBelow<
         { this.renderSuggestions() }
         <FocusZone
           ref={ this._resolveRef('focusZone') }
-          className="ms-BasePicker-selectedItems"
+          className='ms-BasePicker-selectedItems'
           isCircularNavigation={ true }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
