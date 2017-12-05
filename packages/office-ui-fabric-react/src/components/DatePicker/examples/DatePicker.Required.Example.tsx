@@ -88,7 +88,7 @@ export class DatePickerRequiredExample extends React.Component<any, IDatePickerR
     let calendarProps: ICalendarProps = {
       strings: DayPickerStrings,
       firstDayOfWeek: firstDayOfWeek
-    }
+    };
 
     return (
       <div>

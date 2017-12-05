@@ -61,7 +61,7 @@ const DayPickerStrings: ICalendarStrings = {
 const DatePickerStrings: IDatePickerStrings = {
   isRequiredErrorMessage: 'Start date is required.',
   invalidInputErrorMessage: 'Invalid date format.'
-}
+};
 
 export interface IDatePickerFormatExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -89,7 +89,7 @@ export class DatePickerFormatExample extends React.Component<
     let calendarProps: ICalendarProps = {
       strings: DayPickerStrings,
       firstDayOfWeek: firstDayOfWeek
-    }
+    };
 
     return (
       <div>

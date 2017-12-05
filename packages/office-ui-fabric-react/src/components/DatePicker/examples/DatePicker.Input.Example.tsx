@@ -60,13 +60,13 @@ const DayPickerStrings: ICalendarStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year'
-}
+};
 
 const DatePickerStrings: IDatePickerStrings = {
   isRequiredErrorMessage: 'Start date is required.',
 
   invalidInputErrorMessage: 'Invalid date format.'
-}
+};
 
 export interface IDatePickerInputExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -89,7 +89,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
     let calendarProps: ICalendarProps = {
       strings: DayPickerStrings,
       firstDayOfWeek: firstDayOfWeek
-    }
+    };
 
     return (
       <div>

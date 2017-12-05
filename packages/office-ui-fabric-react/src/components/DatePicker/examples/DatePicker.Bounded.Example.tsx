@@ -96,7 +96,7 @@ export class DatePickerBoundedExample extends React.Component<any, IDatePickerRe
     let calendarProps: ICalendarProps = {
       strings: DayPickerStrings,
       firstDayOfWeek: firstDayOfWeek
-    }
+    };
 
     return (
       <div>

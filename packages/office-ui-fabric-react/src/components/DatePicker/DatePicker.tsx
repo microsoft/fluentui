@@ -189,10 +189,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     let calendarStrings = null;
-    if (calendarProps!.strings) {
-      calendarStrings = calendarProps!.strings
+    if (calendarProps && calendarProps.strings) {
+      calendarStrings = calendarProps.strings;
     } else if (DEFAULT_STRINGS) {
-      calendarStrings = DEFAULT_STRINGS
+      calendarStrings = DEFAULT_STRINGS;
     }
 
     return (

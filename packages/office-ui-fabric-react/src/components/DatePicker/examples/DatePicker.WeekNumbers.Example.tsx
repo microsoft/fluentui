@@ -61,8 +61,7 @@ const DayPickerStrings: ICalendarStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year'
-}
-
+};
 
 export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
@@ -87,11 +86,11 @@ export class DatePickerWeekNumbersExample extends React.Component<any, IDatePick
       firstWeekOfYear: 1,
       showMonthPickerAsOverlay: true,
       showSixWeeksByDefault: true
-    }
+    };
 
     let calloutProps: ICalloutProps = {
 
-    }
+    };
 
     return (
       <div>
