@@ -214,6 +214,25 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
+    if (menuProps && menuProps.doNotLayer) {
+      return React.createElement(
+        'div',
+        undefined,
+        React.createElement(
+          tag,
+          buttonProps,
+          React.createElement(
+            'div' as any,
+            { className: this._classNames.flexContainer },
+            onRenderIcon(props, this._onRenderIcon),
+            this._onRenderTextContents(),
+            onRenderAriaDescription(props, this._onRenderAriaDescription),
+            onRenderChildren(props, this._onRenderChildren),
+            !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon))),
+        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
+      );
+    }
+
     return React.createElement(
       tag,
       buttonProps,
