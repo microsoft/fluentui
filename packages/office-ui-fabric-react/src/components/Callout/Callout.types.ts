@@ -183,8 +183,14 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, IBa
    */
   calloutMaxHeight?: number;
 
+  /**
+   * Theme provided by HOC.
+   */
   theme?: ITheme;
 
+  /**
+  * Optional styles for the component.
+  */
   getStyles?: IStyleFunction<ICalloutStyleProps, ICalloutStyles>;
 }
 
