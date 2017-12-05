@@ -9,7 +9,7 @@ storiesOf('ActivityItem', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={ new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()
       }
