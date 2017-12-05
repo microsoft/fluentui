@@ -149,7 +149,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Show HoverCard
   @autobind
   private _cardOpen(ev: MouseEvent) {
-    if (ev.type === 'keydown' && !(ev.shiftKey && ev.which === KeyCodes.space)) {
+    if (ev.type === 'keydown' && !(ev.which === KeyCodes.c)) {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);
