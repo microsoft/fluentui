@@ -12,6 +12,8 @@ export class SuggestionsController<T> {
   constructor() {
     this.suggestions = [];
     this.currentIndex = -1;
+    this._ensureSuggestionModel = this._ensureSuggestionModel.bind(this);
+    this._isSuggestionModel = this._isSuggestionModel.bind(this);
   }
 
   public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
@@ -90,7 +92,7 @@ export class SuggestionsController<T> {
 
   public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {
     return Array.isArray(suggestions)
-      ? suggestions.map(this.ensureSuggestionModel)
+      ? suggestions.map(this._ensureSuggestionModel)
       : [];
   }
 
@@ -115,16 +117,16 @@ export class SuggestionsController<T> {
     }
   }
 
-  private isSuggestionModel(
+  private _isSuggestionModel(
     value: ISuggestionModel<T> | T
   ): value is ISuggestionModel<T> {
     return (<ISuggestionModel<T>>value).item !== undefined;
   }
 
-  private ensureSuggestionModel(
+  private _ensureSuggestionModel(
     suggestion: ISuggestionModel<T> | T
   ): ISuggestionModel<T> {
-    if (this.isSuggestionModel(suggestion)) {
+    if (this._isSuggestionModel(suggestion)) {
       return suggestion as ISuggestionModel<T>;
     } else {
       return {
