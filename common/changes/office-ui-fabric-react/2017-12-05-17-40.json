@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Contextual Tab and Focus Zone - reverted tabbing functionality to avoid tab being captured",
+      "comment": "Button: Move contextual menu outside of button tag if doNotLayer",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chiechan@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }
