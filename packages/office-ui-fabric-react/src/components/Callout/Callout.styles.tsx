@@ -62,5 +62,5 @@ export function getStyles(props: ICalloutStyleProps): ICalloutStyles {
       'ms-Callout-container',
       { position: 'relative' }
     ]
-  }
-};
+  };
+}
