@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
 import { Image } from '../Image/Image';
-import { getNativeProps, htmlElementProperties } from '../../Utilities';
-import { getIcon, IIconRecord, classNamesFunction } from '../../Styling';
+import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
+import { getIcon, IIconRecord } from '../../Styling';
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
 

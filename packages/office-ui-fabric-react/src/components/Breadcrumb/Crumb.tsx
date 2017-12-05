@@ -1,4 +1,4 @@
-import { styled } from '../../Styling';
+import { styled } from '../../Utilities';
 import { CrumbBase } from './Crumb.base';
 import { ICrumbProps } from './Crumb.types';
 import { getStyles } from './Crumb.styles';

@@ -3,14 +3,11 @@ import {
   BaseComponent,
   autobind,
   customizable,
-  getRTL
-} from '../../Utilities';
-import {
-  IStyle,
+  getRTL,
   IStyleFunction,
-  ITheme,
   classNamesFunction
-} from '../../Styling';
+} from '../../Utilities';
+
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';

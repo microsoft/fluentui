@@ -3,7 +3,8 @@ import {
   autobind,
   BaseComponent,
   getNativeProps,
-  imageProperties
+  imageProperties,
+  classNamesFunction
 } from '../../Utilities';
 import {
   IImageProps,
@@ -13,7 +14,6 @@ import {
   IImageStyleProps,
   IImageStyles
 } from './Image.types';
-import { classNamesFunction } from '../../Styling';
 
 export interface IImageState {
   loadState: ImageLoadState;

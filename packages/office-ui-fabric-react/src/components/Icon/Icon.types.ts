@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
-import { IStyle, IStyleFunction } from '../../Styling';
-import { IComponentAs } from '../../Utilities';
+import { IStyle } from '../../Styling';
+import { IComponentAs, IStyleFunction } from '../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {

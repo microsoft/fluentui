@@ -3,7 +3,9 @@ import {
   BaseComponent,
   autobind,
   getId,
-  memoize
+  memoize,
+  classNamesFunction,
+  customizable
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
@@ -12,12 +14,6 @@ import {
   ICheckboxStyles,
   ICheckboxStyleProps
 } from './Checkbox.types';
-import {
-  customizable
-} from '../../Utilities';
-import {
-  classNamesFunction
-} from '../../Styling';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */

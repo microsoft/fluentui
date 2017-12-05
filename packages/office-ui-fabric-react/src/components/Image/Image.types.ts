@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IStyleFunction, IStyle } from '../../Styling';
+import { IStyle } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IImage {
 

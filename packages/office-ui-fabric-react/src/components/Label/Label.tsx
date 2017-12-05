@@ -1,4 +1,4 @@
-import { styled } from '../../Styling';
+import { styled } from '../../Utilities';
 import { LabelBase } from './Label.base';
 import { ILabelProps } from './Label.types';
 import { getStyles } from './Label.styles';

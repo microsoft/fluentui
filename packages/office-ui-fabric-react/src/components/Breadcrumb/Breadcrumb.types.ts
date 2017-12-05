@@ -2,8 +2,8 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
-import { IBaseProps, IComponentAs } from '../../Utilities';
-import { ITheme, IStyle, IStyleFunction } from '../../Styling';
+import { IBaseProps, IComponentAs, IStyleFunction } from '../../Utilities';
+import { ITheme, IStyle } from '../../Styling';
 import { ICrumbProps } from './Crumb.types';
 
 export interface IBreadcrumb {

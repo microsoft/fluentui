@@ -4,11 +4,11 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
   IRectangle,
-  IBaseProps
+  IBaseProps,
+  IStyleFunction
 } from '../../Utilities';
 import {
   IStyle,
-  IStyleFunction,
   ITheme
 } from '../../Styling';
 

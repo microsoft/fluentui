@@ -1,8 +1,8 @@
 import {
   IStyle,
-  IStyleFunction,
   ITheme
 } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 import {
   IBreadcrumbItem
 } from './Breadcrumb.types';

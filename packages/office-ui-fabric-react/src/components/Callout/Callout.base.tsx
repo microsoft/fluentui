@@ -14,7 +14,9 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  customizable
+  customizable,
+  IStyleFunction,
+  classNamesFunction
 } from '../../Utilities';
 import { Layer } from '../../Layer';
 import {
@@ -31,9 +33,7 @@ import { Popup } from '../../Popup';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
 import {
   IStyle,
-  IStyleFunction,
   ITheme,
-  classNamesFunction
 } from '../../Styling';
 
 const getClassNames = classNamesFunction<ICalloutStyleProps, ICalloutStyles>();
