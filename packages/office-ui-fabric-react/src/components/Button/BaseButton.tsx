@@ -228,10 +228,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (menuProps && menuProps.doNotLayer) {
       return (
-        <span style={ { display: 'inline-block' } }>
+        <div style={ { display: 'inline-block' } }>
           { Content }
           { this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu) }
-        </span>
+        </div>
       );
     }
 
