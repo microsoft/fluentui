@@ -19,6 +19,7 @@
       "dom"
     ],
     "types": [
+      "jest",
       "webpack-env",
       "react"
     ],

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 17 Nov 2017 17:36:36 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Dec 2017 02:04:27 GMT and should not be manually modified.
+
+## 5.0.18
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Fix ScrollablePane page title
+
+## 5.0.17
+Mon, 20 Nov 2017 11:12:47 GMT
+
+### Patches
+
+- Add ActivityItem, Calendar, HoverCard, OverflowSet, ScrollablePane, TeachingBubble to fabric-website
 
 ## 5.0.16
 Fri, 17 Nov 2017 17:36:36 GMT

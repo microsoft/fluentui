@@ -19,6 +19,7 @@ let _theme: ITheme = {
   fonts: DefaultFontStyles,
   isInverted: false
 };
+let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
@@ -43,6 +44,30 @@ export function getTheme(): ITheme {
 }
 
 /**
+ * Registers a callback that gets called whenever the theme changes.
+ * This should only be used when the component cannot automatically get theme changes through its state.
+ * This will not register duplicate callbacks.
+ */
+export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+  if (_onThemeChangeCallbacks.indexOf(callback) === -1) {
+    _onThemeChangeCallbacks.push(callback);
+  }
+}
+
+/**
+ * See registerOnThemeChangeCallback().
+ * Removes previously registered callbacks.
+ */
+export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+  const i = _onThemeChangeCallbacks.indexOf(callback);
+  if (i === -1) {
+    return;
+  }
+
+  _onThemeChangeCallbacks.splice(i, 1);
+}
+
+/**
  * Applies the theme, while filling in missing slots.
  */
 export function loadTheme(theme: IPartialTheme): ITheme {
@@ -52,6 +77,14 @@ export function loadTheme(theme: IPartialTheme): ITheme {
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
+
+  _onThemeChangeCallbacks.forEach((callback: (theme: ITheme) => void) => {
+    try {
+      callback(_theme);
+    } catch (e) {
+      // don't let a bad callback break everything else
+    }
+  });
 
   return _theme;
 }
@@ -103,7 +136,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralPrimary,
+    inputBorderHovered: p.neutralDark,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
@@ -120,7 +153,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundChecked: p.neutralQuaternaryAlt,
+    menuItemBackgroundChecked: p.neutralLight,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 

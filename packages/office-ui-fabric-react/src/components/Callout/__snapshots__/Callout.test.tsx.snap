@@ -44,10 +44,12 @@ exports[`Callout renders Callout correctly 1`] = `
             position: relative;
           }
       onKeyDown={[Function]}
+      onScroll={undefined}
       role={undefined}
       style={
         Object {
           "maxHeight": 750,
+          "overflowY": "auto",
         }
       }
     >

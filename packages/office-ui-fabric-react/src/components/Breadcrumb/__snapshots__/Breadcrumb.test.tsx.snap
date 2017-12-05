@@ -525,7 +525,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               data-icon-name="More"
               role="presentation"
             />
-            
+
           </div>
         </button>
         <i
