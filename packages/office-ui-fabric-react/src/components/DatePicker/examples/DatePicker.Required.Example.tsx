@@ -4,8 +4,9 @@ import {
   DayOfWeek,
   IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
+import { ICalendarProps, ICalendarStrings } from 'office-ui-fabric-react/lib/Calendar';
 
-const DayPickerStrings: IDatePickerStrings = {
+const DayPickerStrings: ICalendarStrings = {
   months: [
     'January',
     'February',
@@ -61,9 +62,11 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
+};
+
+const DatePickerStrings: IDatePickerStrings = {
 
   isRequiredErrorMessage: 'Field is required.',
-
   invalidInputErrorMessage: 'Invalid date format.'
 };
 
@@ -82,11 +85,15 @@ export class DatePickerRequiredExample extends React.Component<any, IDatePickerR
 
   public render() {
     let { firstDayOfWeek } = this.state;
+    let calendarProps: ICalendarProps = {
+      strings: DayPickerStrings,
+      firstDayOfWeek: firstDayOfWeek
+    }
 
     return (
       <div>
         <p>Validation will happen when Date Picker loses focus.</p>
-        <DatePicker label='Date required' isRequired={ true } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker label='Date required' isRequired={ true } calendarProps={ calendarProps } strings={ DatePickerStrings } placeholder='Select a date...' />
       </div>
     );
   }

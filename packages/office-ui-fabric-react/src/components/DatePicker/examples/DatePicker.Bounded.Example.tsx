@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ICalendarProps, ICalendarStrings } from 'office-ui-fabric-react/lib/Calendar';
 import {
   DatePicker,
   DayOfWeek,
@@ -11,7 +12,7 @@ const minDate: Date = addMonths(today, -1);
 const maxDate: Date = addYears(today, 1);
 const description = `When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow out-of-bounds dates to be picked or entered. In this example, the allowed dates are ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
 
-const DayPickerStrings: IDatePickerStrings = {
+const DayPickerStrings: ICalendarStrings = {
   months: [
     'January',
     'February',
@@ -67,14 +68,15 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
+};
 
+const DatePickerStrings: IDatePickerStrings = {
   isRequiredErrorMessage: 'Field is required.',
 
   invalidInputErrorMessage: 'Invalid date format.',
 
   isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`
 };
-
 export interface IDatePickerRequiredExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
@@ -91,17 +93,22 @@ export class DatePickerBoundedExample extends React.Component<any, IDatePickerRe
   public render() {
     let { firstDayOfWeek } = this.state;
 
+    let calendarProps: ICalendarProps = {
+      strings: DayPickerStrings,
+      firstDayOfWeek: firstDayOfWeek
+    }
+
     return (
       <div>
         <p>{ description }</p>
         <DatePicker
           isRequired={ false }
-          firstDayOfWeek={ firstDayOfWeek }
-          strings={ DayPickerStrings }
           placeholder='Select a date...'
+          strings={ DatePickerStrings }
           minDate={ minDate }
           maxDate={ maxDate }
           allowTextInput={ true }
+          calendarProps={ calendarProps }
         />
       </div>
     );

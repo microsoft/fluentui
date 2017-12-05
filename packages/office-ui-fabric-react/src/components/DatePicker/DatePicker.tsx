@@ -5,7 +5,8 @@ import {
 } from './DatePicker.types';
 import {
   Calendar,
-  DayOfWeek
+  DayOfWeek,
+  ICalendarStrings
 } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -30,7 +31,7 @@ export interface IDatePickerState {
   errorMessage?: string;
 }
 
-const DEFAULT_STRINGS: IDatePickerStrings = {
+const DEFAULT_STRINGS: ICalendarStrings = {
   months: [
     'January',
     'February',
@@ -110,7 +111,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     isRequired: false,
     isMonthPickerVisible: true,
     showMonthPickerAsOverlay: false,
-    strings: DEFAULT_STRINGS,
     highlightCurrentMonth: false,
     borderless: false,
     pickerAriaLabel: 'Calender',
@@ -183,9 +183,17 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       className,
       minDate,
       maxDate,
-      calendarProps
+      calendarProps,
+      calloutProps
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
+
+    let calendarStrings = null;
+    if (calendarProps!.strings) {
+      calendarStrings = calendarProps!.strings
+    } else if (DEFAULT_STRINGS) {
+      calendarStrings = DEFAULT_STRINGS
+    }
 
     return (
       <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
@@ -232,9 +240,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
+            { ...calloutProps }
           >
             <Calendar
-              { ...calendarProps }
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
@@ -242,7 +250,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               today={ this.props.today }
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
-              strings={ strings! }
+              strings={ calendarStrings }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
               showWeekNumbers={ this.props.showWeekNumbers }
               firstWeekOfYear={ this.props.firstWeekOfYear }
@@ -251,6 +259,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               minDate={ minDate }
               maxDate={ maxDate }
               ref={ this._resolveRef('_calendar') }
+              { ...calendarProps }
             />
           </Callout>
         ) }

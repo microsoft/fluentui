@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { autobind } from '../../../Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { ICalendarProps, ICalendarStrings } from 'office-ui-fabric-react/lib/Calendar';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 
-const DayPickerStrings: IDatePickerStrings = {
+const DayPickerStrings: ICalendarStrings = {
   months: [
     'January',
     'February',
@@ -77,9 +78,14 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
   public render() {
     let { firstDayOfWeek } = this.state;
 
+    let calendarProps: ICalendarProps = {
+      strings: DayPickerStrings,
+      firstDayOfWeek: firstDayOfWeek
+    }
+
     return (
       <div>
-        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker calendarProps={ calendarProps } placeholder='Select a date...' />
         <Dropdown
           label='Select the first day of the week'
           options={ [
