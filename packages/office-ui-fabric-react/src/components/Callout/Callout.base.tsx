@@ -65,8 +65,6 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
   constructor(props: ICalloutProps) {
     super(props);
 
-    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
-
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
@@ -120,7 +118,6 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
       className,
       target,
       isBeakVisible,
-      beakStyle,
       children,
       beakWidth,
       calloutWidth,
@@ -134,12 +131,6 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
     let beakStyleWidth = beakWidth;
 
     const classNames = getClassNames(getStyles!, { theme: theme!, className, finalHeight, backgroundColor });
-
-    // This is here to support the old way of setting the beak size until version 1.0.0.
-    // beakStyle is now deprecated and will be be removed at version 1.0.0
-    if (beakStyle === 'ms-Callout-smallbeak') {
-      beakStyleWidth = 16;
-    }
 
     let beakReactStyle: React.CSSProperties = {
       ...(positions && positions.beakPosition ? positions.beakPosition.position : null),

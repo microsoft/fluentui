@@ -178,12 +178,6 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, IBa
   setInitialFocus?: boolean;
 
   /**
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    * @deprecated
-    */
-  beakStyle?: string;
-
-  /**
    * Set max height of callout
    * When not set the callout will expand with contents up to the bottom of the screen
    */
