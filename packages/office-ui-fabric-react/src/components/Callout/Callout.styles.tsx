@@ -58,6 +58,9 @@ export function getStyles(props: ICalloutStyleProps): ICalloutStyles {
         left: '0',
       }
     ],
-    container: { position: 'relative' }
+    container: [
+      'ms-Callout-container',
+      { position: 'relative' }
+    ]
   }
 };

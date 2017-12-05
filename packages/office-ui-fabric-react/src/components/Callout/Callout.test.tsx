@@ -6,7 +6,6 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { Callout } from './Callout';
-import { CalloutBase } from './Callout.base';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 describe('Callout', () => {
@@ -18,7 +17,7 @@ describe('Callout', () => {
       };
     };
     const component = renderer.create(
-      <CalloutBase>Content</CalloutBase>,
+      <Callout doNotLayer>Content</Callout>,
       { createNodeMock }
     );
     let tree = component.toJSON();

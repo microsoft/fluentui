@@ -2,10 +2,28 @@
 
 exports[`Callout renders Callout correctly 1`] = `
 <div
-  className="ms-Callout-container"
+  className=
+      ms-Callout-container
+      {
+        position: relative;
+      }
 >
   <div
-    className="ms-Callout"
+    className=
+        ms-Callout
+        {
+          border: 1px solid #eaeaea;
+          box-shadow: 0 0 5px 0px;
+          box-sizing: border-box;
+          outline: transparent;
+          position: absolute;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          border: 1px solid WindowText;
+        }
     style={
       Object {
         "opacity": 0,
@@ -17,12 +35,18 @@ exports[`Callout renders Callout correctly 1`] = `
       aria-describedby={undefined}
       aria-label={undefined}
       aria-labelledby={undefined}
-      className="ms-Callout-main"
+      className=
+          ms-Callout-main
+          {
+            background-color: #ffffff;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+          }
       onKeyDown={[Function]}
       role={undefined}
       style={
         Object {
-          "backgroundColor": undefined,
           "maxHeight": 750,
         }
       }
