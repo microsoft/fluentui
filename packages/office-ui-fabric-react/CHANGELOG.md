@@ -1,6 +1,67 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 27 Nov 2017 22:13:20 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Dec 2017 02:04:27 GMT and should not be manually modified.
+
+## 5.29.2
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Update Default Button colors to match design spec
+- Contextual Tab and Focus Zone - reverted tabbing functionality to avoid tab being captured
+
+## 5.29.1
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Patches
+
+- ContextualMenu: Make sure vertical scrollbar does not take space away from contents
+
+## 5.29.0
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Minor changes
+
+- DatePicker: Calendar Props.  Adding access to ICalendarProps
+- ContextualMenu: Expose callback hook when menu is being removed from DOM
+- Panel: When panel is dismissed, hide the panel instead of destroying it
+
+### Patches
+
+- GroupHeader: Style fix to add nowrap on group header
+- Changed combobox option height to match other menu option heights
+- FocusZone: Fix focus-in behavior when children are added asynchronously.
+- ComboBox: Update to allow the dropdown to fit its content
+- DatePicker: Reset invalid input (typed by used).
+- PersonaPresence: Scale the presence and presence icon proportionally to the specified coinSize up to a max size.
+
+## 5.28.0
+Thu, 30 Nov 2017 01:16:12 GMT
+
+### Minor changes
+
+- Positioning/Callout: made significant changes to help prepare for when positioning and calloutpositioning separate.
+- ComboBox/Dropdown/ContextualMenu: Update how the focus gets updated for hover so that 1) we aren't blasting mouseMoves and 2) so we get rid of weirdness around  hover and scroll
+
+### Patches
+
+- SwatchColorPicker: Expose getStyles of colorCell subcomponent
+
+## 5.27.0
+Wed, 29 Nov 2017 11:24:06 GMT
+
+### Minor changes
+
+- SelectableOption: New disabled prop for options. ComboBox: Updated styling per design spec, including new rootPressed prop, color updates, and className updates.
+- SwatchColorPicker: Change scss to js styling
+- Updating TypeScript to 2.6.2.
+
+## 5.26.1
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Patches
+
+- Contextual Menu: made it so we can tab through items
 
 ## 5.26.0
 Mon, 27 Nov 2017 22:13:20 GMT

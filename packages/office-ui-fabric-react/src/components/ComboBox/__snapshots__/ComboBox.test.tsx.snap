@@ -12,7 +12,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border-color: #c8c8c8;
+          border-color: #a6a6a6;
           border-style: solid;
           border-width: 1px;
           box-shadow: none;
@@ -42,10 +42,27 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           display: inline-block;
           margin-bottom: 8px;
         }
-        &:hover {
+        & input::-ms-clear {
+          display: none;
+        }
+        &.is-open {
           border-color: #0078d7;
         }
+        &:hover {
+          border-color: #212121;
+        }
         @media screen and (-ms-high-contrast: active){&:hover {
+          -ms-high-contrast-adjust: none;
+          border-color: Highlight;
+          color: HighlightText;
+        }
+        &:active {
+          border-color: #0078d7;
+        }
+        &:focus {
+          border-color: #0078d7;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus {
           -ms-high-contrast-adjust: none;
           border-color: Highlight;
           color: HighlightText;
@@ -103,11 +120,12 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       aria-hidden="true"
       aria-label={undefined}
       aria-labelledby={null}
-      aria-pressed={undefined}
+      aria-pressed={false}
+      checked={false}
       className=
-          ms-ComboBox-CaretDown-button
           ms-Button
           ms-Button--icon
+          ms-ComboBox-CaretDown-button
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -115,7 +133,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             border-radius: 0px;
             border: 1px solid transparent;
             box-sizing: border-box;
-            color: #212121;
+            color: #666666;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -155,13 +173,17 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             border-color: ButtonText;
             color: ButtonText;
           }
+          & .ms-Icon {
+            font-size: 12px;
+          }
           &:hover {
-            background-color: #dadada;
-            color: #004578;
+            background-color: #f4f4f4;
+            color: #212121;
+            cursor: pointer;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #0078d7;
+            background-color: #eaeaea;
+            color: #212121;
           }
       data-is-focusable={true}
       disabled={undefined}
