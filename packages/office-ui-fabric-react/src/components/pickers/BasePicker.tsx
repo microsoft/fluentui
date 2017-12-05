@@ -31,6 +31,7 @@ export interface IBasePickerState {
 }
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+
   protected selection: Selection;
 
   protected root: HTMLElement;
@@ -251,7 +252,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { items } = this.state;
 
     if (items.length && index! >= 0) {
-      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement; if (newEl) {
+      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
+      if (newEl) {
         this.focusZone.focusElement(newEl);
       }
     } else if (!this.canAddItems()) {
@@ -323,7 +325,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
 
       // Ensure that the promise will only use the callback if it was the most recent one.
-      let promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
+      let promise: PromiseLike<T[]> = this.currentPromise = suggestionsPromiseLike;
       promise.then((newSuggestions: T[]) => {
         if (promise === this.currentPromise) {
           if (updatedValue !== undefined) {
@@ -471,7 +473,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.down:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && this.suggestionStore.currentIndex + 1 === this.suggestionStore.suggestions.length) {
+          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
             this.suggestionElement.focusSearchForMoreButton();
             this.suggestionStore.deselectAllSuggestions();
             this.forceUpdate();
@@ -482,6 +484,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               this.onSuggestionSelect();
             }
           }
+
         }
         break;
     }
@@ -538,9 +541,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected addItem(item: T) {
-    let processedItem: T | PromiseLike<T> = this.props.onItemSelected
-      ? (this.props.onItemSelected as any)(item)
-      : item;
+    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
     let processedItemObject: T = processedItem as T;
     let processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
@@ -581,7 +582,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    if ((this.state.items.length && !this.input) || (!this.input.isValueSelected && this.input.cursorLocation === 0)) {
+    if (this.state.items.length && !this.input || (!this.input.isValueSelected && this.input.cursorLocation === 0)) {
       if (this.selection.getSelectedCount() > 0) {
         this.removeItems(this.selection.getSelection());
       } else {
@@ -629,12 +630,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   private _onValidateInput() {
-    if (this.props.onValidateInput &&
-      (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid
-      && this.props.createGenericItem) {
-
-      let itemToConvert = (this.props.createGenericItem as (input: string, ValidationState: ValidationState) => ISuggestionModel<T>)
-        (this.input.value, (this.props.onValidateInput as any)(this.input.value));
+    if (this.props.onValidateInput && (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
+      let itemToConvert = (this.props.createGenericItem as (input: string, ValidationState: ValidationState) => ISuggestionModel<T>)(this.input.value, (this.props.onValidateInput as any)(this.input.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
@@ -699,6 +696,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         >
           { this.renderItems() }
         </FocusZone>
+
       </div>
     );
   }
