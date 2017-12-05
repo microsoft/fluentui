@@ -179,18 +179,18 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
 
           { beakVisible && (
             <div
-              className={ css('ms-Callout-beak', classNames.beak) }
+              className={ classNames.beak }
               style={ beakReactStyle }
             />) }
 
           { beakVisible &&
-            (<div className={ css('ms-Callout-beakCurtain', classNames.beakCurtain) } />) }
+            (<div className={ classNames.beakCurtain } />) }
           <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
-            className={ css(classNames.main) }
+            className={ classNames.main }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight } }
