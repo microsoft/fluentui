@@ -1,31 +1,16 @@
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { styled } from '../../Styling';
+import {
+  ICalloutProps
+} from './Callout.types';
+import { CalloutBase } from './Callout.base';
+import { getStyles } from './Callout.styles';
 
-import { BaseComponent } from '../../Utilities';
-import { ICalloutProps } from './Callout.types';
-import { ICalloutState, CalloutContent } from './CalloutContent';
-import { Layer } from '../../Layer';
-
-export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
-
-  constructor(props: ICalloutProps) {
-    super(props);
-
-    this._warnDeprecations({
-      'targetPoint': 'target',
-      'useTargetPoint': 'target',
-    });
-  }
-
-  public render() {
-    let content = (
-      <CalloutContent { ...this.props } />
-    );
-    return this.props.doNotLayer ? content : (
-      <Layer>
-        { content }
-      </Layer>
-    );
-  }
-}
+// Create a Callout variant which uses these default styles and this styled subcomponent.
+export const Callout = styled(
+  CalloutBase,
+  getStyles
+);

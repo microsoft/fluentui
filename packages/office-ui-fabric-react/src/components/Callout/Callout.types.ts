@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { Callout } from './Callout';
-import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
   IRectangle,
+  IBaseProps
 } from '../../Utilities';
+import {
+  IStyle,
+  IStyleFunction,
+  ITheme
+} from '../../Styling';
 
 export interface ICallout {
 
 }
 
-export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, IBaseProps {
   /**
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -173,14 +178,33 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   setInitialFocus?: boolean;
 
   /**
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    * @deprecated
-    */
-  beakStyle?: string;
-
-  /**
    * Set max height of callout
    * When not set the callout will expand with contents up to the bottom of the screen
    */
   calloutMaxHeight?: number;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+  * Optional styles for the component.
+  */
+  getStyles?: IStyleFunction<ICalloutStyleProps, ICalloutStyles>;
+}
+
+export interface ICalloutStyleProps {
+  theme: ITheme;
+  className?: string;
+  finalHeight?: number;
+  backgroundColor?: string;
+}
+
+export interface ICalloutStyles {
+  root?: IStyle;
+  container?: IStyle;
+  main?: IStyle;
+  beak?: IStyle;
+  beakCurtain?: IStyle;
 }

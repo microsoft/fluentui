@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { ICalloutProps } from './Callout.types';
+import { ICalloutProps, ICalloutStyleProps, ICalloutStyles } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   BaseComponent,
@@ -13,14 +13,21 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
+  customizable
 } from '../../Utilities';
+import { Layer } from '../../Layer';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, ICalloutPositon } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
+import {
+  IStyle,
+  IStyleFunction,
+  ITheme,
+  classNamesFunction
+} from '../../Styling';
 
-const styles: any = stylesImport;
+const getClassNames = classNamesFunction<ICalloutStyleProps, ICalloutStyles>();
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
@@ -33,7 +40,8 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
+@customizable('Callout', ['getStyles', 'theme'])
+export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
     preventDismissOnScroll: false,
@@ -56,8 +64,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   constructor(props: ICalloutProps) {
     super(props);
-
-    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
 
     this._didSetInitialFocus = false;
     this.state = {
@@ -112,29 +118,25 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       className,
       target,
       isBeakVisible,
-      beakStyle,
       children,
       beakWidth,
       calloutWidth,
       finalHeight,
       backgroundColor,
-      calloutMaxHeight } = this.props;
+      calloutMaxHeight,
+      theme,
+      getStyles } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
-    // This is here to support the old way of setting the beak size until version 1.0.0.
-    // beakStyle is now deprecated and will be be removed at version 1.0.0
-    if (beakStyle === 'ms-Callout-smallbeak') {
-      beakStyleWidth = 16;
-    }
+    const classNames = getClassNames(getStyles!, { theme: theme!, className, finalHeight, backgroundColor });
 
     let beakReactStyle: React.CSSProperties = {
       ...(positions && positions.beakPosition ? positions.beakPosition.position : null),
     };
     beakReactStyle.height = beakStyleWidth;
     beakReactStyle.width = beakStyleWidth;
-    beakReactStyle.backgroundColor = backgroundColor;
     if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
       beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
       beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
@@ -151,14 +153,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
-        className={ css('ms-Callout-container', styles.container) }
+        className={ css(classNames.container) }
       >
         <div
           className={
             mergeStyles(
-              'ms-Callout',
-              styles.root,
-              className,
+              classNames.root,
               directionalClassName,
               !!calloutWidth && { width: calloutWidth }
             ) }
@@ -170,23 +170,21 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
           { beakVisible && (
             <div
-              className={ css('ms-Callout-beak', styles.beak) }
+              className={ classNames.beak }
               style={ beakReactStyle }
             />) }
 
           { beakVisible &&
-            (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
+            (<div className={ classNames.beakCurtain } />) }
           <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
-            className={ css('ms-Callout-main', styles.main, {
-              [styles.overFlowYHidden]: !!finalHeight
-            }) }
+            className={ classNames.main }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
+            style={ { maxHeight: contentMaxHeight } }
           >
             { children }
           </Popup>
@@ -194,7 +192,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       </div>
     );
 
-    return content;
+    return this.props.doNotLayer ? content : (
+      <Layer>
+        { content }
+      </Layer>
+    );
   }
 
   @autobind
