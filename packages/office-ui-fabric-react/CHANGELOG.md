@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Dec 2017 17:27:54 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Dec 2017 02:04:27 GMT and should not be manually modified.
+
+## 5.29.2
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Update Default Button colors to match design spec
+- Contextual Tab and Focus Zone - reverted tabbing functionality to avoid tab being captured
 
 ## 5.29.1
 Mon, 04 Dec 2017 17:27:54 GMT
