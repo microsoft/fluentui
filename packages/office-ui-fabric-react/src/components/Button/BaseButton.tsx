@@ -215,16 +215,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const Content = <Tag {...buttonProps }>
-      <div className={ this._classNames.flexContainer } >
-        { onRenderIcon(props, this._onRenderIcon) }
-        { this._onRenderTextContents() }
-        { onRenderAriaDescription(props, this._onRenderAriaDescription) }
-        { onRenderChildren(props, this._onRenderChildren) }
-        { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-        { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
-      </div>
-    </Tag>
+    const Content = (
+      <Tag {...buttonProps }>
+        <div className={ this._classNames.flexContainer } >
+          { onRenderIcon(props, this._onRenderIcon) }
+          { this._onRenderTextContents() }
+          { onRenderAriaDescription(props, this._onRenderAriaDescription) }
+          { onRenderChildren(props, this._onRenderChildren) }
+          { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
+          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
+        </div>
+      </Tag>
+    );
 
     if (menuProps && menuProps.doNotLayer) {
       return (
