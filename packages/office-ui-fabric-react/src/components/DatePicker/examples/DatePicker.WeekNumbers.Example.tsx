@@ -97,7 +97,7 @@ export class DatePickerWeekNumbersExample extends React.Component<any, IDatePick
       <div>
         <DatePicker calendarProps={ calendarProps } calloutProps={ calloutProps } placeholder='Select a date...' />
         <Dropdown
-          label='Select the first day of the week------------------'
+          label='Select the first day of the week'
           options={ [
             {
               text: 'Sunday',
