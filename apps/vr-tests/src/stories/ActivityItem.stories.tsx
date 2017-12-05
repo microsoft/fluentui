@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { ActivityItem, IActivityItemProps, Icon, Persona } from 'office-ui-fabric-react';
+import { ActivityItem, IActivityItemProps, Icon } from 'office-ui-fabric-react';
 
 storiesOf('ActivityItem', module)
   .addDecorator(FabricDecorator)
