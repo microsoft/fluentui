@@ -16,12 +16,6 @@ describe('FocusZone', () => {
     lastFocusedElement = ev.target;
   }
 
-  function _onKeyDown(ev: any) {
-    if (ev.which === KeyCodes.tab) {
-      tabKeyHit += 1;
-    }
-  }
-
   function setupElement(element: HTMLElement, {
     clientRect,
     isVisible = true
@@ -717,8 +711,9 @@ describe('FocusZone', () => {
   });
 
   it('Changes our focus to the next button when we hit tab when focus zone allow tabbing', () => {
+    const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus, onKeyDown: _onKeyDown } }>
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
         <FocusZone {...{ allowTabKey: true, isCircularNavigation: true }}>
           <button className='a'>a</button>
           <button className='b'>b</button>
@@ -793,12 +788,14 @@ describe('FocusZone', () => {
     expect(buttonC.tabIndex).toBe(-1);
 
     // FocusZone stops propagation of our tab when we enable tab handling
-    expect(tabKeyHit).toBe(0);
+    expect(tabDownListener.mock.calls.length).toBe(0);
   });
 
   it('detects tab when our focus zone does not allow tabbing', () => {
+    const tabDownListener = jest.fn();
+
     const component = ReactTestUtils.renderIntoDocument(
-      <div { ...{ onFocusCapture: _onFocus, onKeyDown: _onKeyDown } }>
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
         <FocusZone>
           <button className='a'>a</button>
         </FocusZone>
@@ -825,6 +822,6 @@ describe('FocusZone', () => {
 
     // Pressing tab when our focus zone doesn't allow tabbing will allow us to propagate our tab to our key down event handler
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
-    expect(tabKeyHit).toBe(1);
+    expect(tabDownListener.mock.calls.length).toBe(1);
   });
 });
