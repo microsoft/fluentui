@@ -13,6 +13,7 @@ const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 const BLOCK_OVERLAY = 'blockoverlay';
 const CHECKOUT_OVERLAY = 'checkoutoverlay';
+const CHECKOUT_OVERLAY_GRID = 'checkoutoverlaygrid';
 const NOTIFY_OVERLAY = 'notifyoverlay';
 
 export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 96;
@@ -151,6 +152,9 @@ function _getOverlayNameFromType(overlayType?: OverlayType): string {
         break;
       case OverlayType.checkout:
         overlayName = CHECKOUT_OVERLAY;
+        break;
+      case OverlayType.checkoutGrid:
+        overlayName = CHECKOUT_OVERLAY_GRID;
         break;
       case OverlayType.notify:
         overlayName = NOTIFY_OVERLAY;

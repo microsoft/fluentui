@@ -7,7 +7,7 @@ const SVG_SUFFIX = '_svg';
 
 const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/';
 const ICON_SIZES: number[] = [16, 20, 32, 40, 48, 96];
-const OVERLAY_NAMES: string[] = ['blockoverlay', 'checkoutoverlay', 'notifyoverlay'];
+const OVERLAY_NAMES: string[] = ['blockoverlay', 'checkoutoverlay', 'checkoutoverlaygrid', 'notifyoverlay'];
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL): void {
   ICON_SIZES.forEach((size: number) => {
@@ -71,7 +71,7 @@ function _initializeOverlays(baseUrl: string): void {
   const overlayIcons: { [key: string]: JSX.Element } = {};
 
   OVERLAY_NAMES.forEach((overlayName: string) => {
-    overlayIcons[overlayName] = <img src={ baseUrlOverlayIcons + overlayName + '.svg'} />;
+    overlayIcons[overlayName] = <img src={ baseUrlOverlayIcons + overlayName + '.svg'} height='100%' width='100%' />;
   });
 
   registerIcons({

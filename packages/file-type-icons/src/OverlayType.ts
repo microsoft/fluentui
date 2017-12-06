@@ -7,5 +7,6 @@ export const enum OverlayType {
     none = 0,
     block = 1,
     checkout = 2,
-    notify = 3
+    checkoutGrid = 3,
+    notify = 4
 }

@@ -42,11 +42,13 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <h3>Size 96 sharedfolder icon as .png</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 96, imageFileType: 'png' }) } />
         <h3>Checkout overlay</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'docx', size: 20, imageFileType: 'png', overlayType: OverlayType.checkout }) } />
+        <Icon {...getFileTypeIconProps({ extension: 'docx', size: 16, overlayType: OverlayType.checkout }) } />
+        <h3>Checkout overlay grid</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'pptx', size: 20, imageFileType: 'png', overlayType: OverlayType.checkoutGrid }) } />
         <h3>Block overlay</h3>
-        <Icon iconName='folder20_svg' overlayName='blockoverlay' />
+        <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 32, overlayType: OverlayType.block }) } />
         <h3>Notify overlay</h3>
-        <Icon iconName='notifyoverlay' />
+        <Icon {...getFileTypeIconProps({ extension: 'xlsx', size: 96, imageFileType: 'png', overlayType: OverlayType.notify }) } />
       </div>
     );
   }
