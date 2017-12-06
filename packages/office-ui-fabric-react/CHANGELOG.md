@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Dec 2017 02:04:27 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Dec 2017 17:38:45 GMT and should not be manually modified.
+
+## 5.29.4
+Wed, 06 Dec 2017 17:38:45 GMT
+
+### Patches
+
+- Contextual Menu: made it so we can tab through items
+
+## 5.29.3
+Wed, 06 Dec 2017 11:24:52 GMT
+
+### Patches
+
+- Button: Move contextual menu outside of button tag if doNotLayer
 
 ## 5.29.2
 Tue, 05 Dec 2017 02:04:27 GMT
