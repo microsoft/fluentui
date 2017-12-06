@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 05 Dec 2017 02:04:27 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Dec 2017 11:24:52 GMT and should not be manually modified.
+
+## 5.0.19
+Wed, 06 Dec 2017 11:24:52 GMT
+
+### Patches
+
+- Updated referenced FabricCore versions.
 
 ## 5.0.18
 Tue, 05 Dec 2017 02:04:27 GMT
