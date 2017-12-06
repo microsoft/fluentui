@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ITheme, IStyle, IStyleFunction } from '../../Styling';
-import { IRenderFunction, IBaseProps, IComponentAs } from '../../Utilities';
+import { ITheme, IStyle } from '../../Styling';
+import { IRenderFunction, IBaseProps, IComponentAs, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
 
 /**

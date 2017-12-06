@@ -33,16 +33,19 @@ storiesOf('Breadcrumb', module)
     </Screener>
   ))
   .add('Root', () => (
-    <Breadcrumb
-      items={ [
-        { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb' },
-        { text: 'This is link 1', 'key': 'l1', href: '#/examples/breadcrumb' },
-        { text: 'This is link 2', 'key': 'l2', href: '#/examples/breadcrumb' },
-        { text: 'This is link 3 with a long name', 'key': 'l3', href: '#/examples/breadcrumb' },
-        { text: 'This is link 4', 'key': 'l4', href: '#/examples/breadcrumb' },
-        { text: 'This is link 5', 'key': 'l5', href: '#/examples/breadcrumb', isCurrentItem: true },
-      ] }
-      maxDisplayedItems={ 3 }
-      ariaLabel={ 'Website breadcrumb' }
-    />
+    // force width to keep crumbs from collapsing in flex container.
+    <div style={ { width: '500px' } } >
+      <Breadcrumb
+        items={ [
+          { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb' },
+          { text: 'This is link 1', 'key': 'l1', href: '#/examples/breadcrumb' },
+          { text: 'This is link 2', 'key': 'l2', href: '#/examples/breadcrumb' },
+          { text: 'This is link 3 with a long name', 'key': 'l3', href: '#/examples/breadcrumb' },
+          { text: 'This is link 4', 'key': 'l4', href: '#/examples/breadcrumb' },
+          { text: 'This is link 5', 'key': 'l5', href: '#/examples/breadcrumb', isCurrentItem: true },
+        ] }
+        maxDisplayedItems={ 3 }
+        ariaLabel={ 'Website breadcrumb' }
+      />
+    </div>
   ));

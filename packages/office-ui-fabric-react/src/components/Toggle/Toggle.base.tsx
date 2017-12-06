@@ -5,7 +5,8 @@ import {
   customizable,
   getId,
   inputProperties,
-  getNativeProps
+  getNativeProps,
+  classNamesFunction
 } from '../../Utilities';
 import {
   IToggleProps,
@@ -14,7 +15,6 @@ import {
   IToggleStyles
 } from './Toggle.types';
 import { Label } from '../../Label';
-import { classNamesFunction } from '../../Styling';
 
 export interface IToggleState {
   checked: boolean;

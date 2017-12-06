@@ -288,13 +288,14 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public render() {
     const {
+      className,
       as: RootType = 'div',
       onRenderData
     } = this.props;
     const { dataToMeasure, renderedData } = this.state;
 
     return (
-      <RootType className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
+      <RootType className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             { onRenderData(dataToMeasure) }

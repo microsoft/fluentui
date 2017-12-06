@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DatePicker } from './DatePicker';
-import { DayOfWeek } from '../../Calendar';
+import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 
@@ -14,6 +14,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * the public methods and properties of the component.
    */
   componentRef?: (component: IDatePicker) => void;
+
+  /**
+   * Pass calendar props to calendar component
+   */
+  calendarProps?: ICalendarProps;
 
   /**
    * Callback issued when a date is selected

@@ -34,7 +34,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Persona with initials' code={ PersonaInitialsExampleCode }>
               <PersonaInitialsExample />
             </ExampleCard>
-            <ExampleCard title='Rendering custom persona text and custom coin size' code={ PersonaCustomRenderExampleCode }>
+            <ExampleCard title='Rendering custom persona text' code={ PersonaCustomRenderExampleCode }>
               <PersonaCustomRenderExample />
             </ExampleCard>
           </div>

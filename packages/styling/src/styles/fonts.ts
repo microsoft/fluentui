@@ -25,14 +25,14 @@ export namespace LocalizedFontNames {
 // Font families with fallbacks, for the general regions.
 export namespace LocalizedFontFamilies {
   export const Arabic = `'${LocalizedFontNames.Arabic}'`;
-  export const ChineseSimplified = `'Microsoft Yahei', Verdana, Simsun`;
-  export const ChineseTraditional = `'Microsoft Jhenghei', Pmingliu`;
+  export const ChineseSimplified = `'Microsoft Yahei UI', Verdana, Simsun`;
+  export const ChineseTraditional = `'Microsoft Jhenghei UI', Pmingliu`;
   export const Cyrillic = `'${LocalizedFontNames.Cyrillic}'`;
   export const EastEuropean = `'${LocalizedFontNames.EastEuropean}'`;
   export const Greek = `'${LocalizedFontNames.Greek}'`;
   export const Hebrew = `'${LocalizedFontNames.Hebrew}'`;
   export const Hindi = `'Nirmala UI'`;
-  export const Japanese = `'Yu Gothic', 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka`;
+  export const Japanese = `'Yu Gothic UI', 'Meiryo UI', Meiryo, 'MS Pgothic', Osaka`;
   export const Korean = `'Malgun Gothic', Gulim`;
   export const Selawik = `'${LocalizedFontNames.Selawik}'`;
   export const Thai = `'Leelawadee UI Web', 'Kmer UI'`;

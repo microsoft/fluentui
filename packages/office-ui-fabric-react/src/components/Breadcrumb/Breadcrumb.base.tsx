@@ -3,7 +3,8 @@ import {
   BaseComponent,
   autobind,
   customizable,
-  getRTL
+  getRTL,
+  classNamesFunction
 } from '../../Utilities';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -17,9 +18,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { CrumbBase } from './Crumb.base';
-import {
-  classNamesFunction
-} from '../../Styling';
 
 export interface IBreadCrumbData {
   props: IBreadcrumbProps;

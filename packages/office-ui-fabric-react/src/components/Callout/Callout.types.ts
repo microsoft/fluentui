@@ -4,13 +4,15 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
   IRectangle,
-  IBaseProps
+  IBaseProps,
+  IStyleFunction
 } from '../../Utilities';
 import {
   IStyle,
-  IStyleFunction,
   ITheme
 } from '../../Styling';
+
+import { ICalloutPositionedInfo } from '../../utilities/positioning';
 
 export interface ICallout {
 
@@ -142,8 +144,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, IBa
 
   /**
    * Optional callback that is called once the callout has been correctly positioned.
+   * @param {ICalloutPositionedInfo} positions gives the user information about how the callout is positioned such as the
+   * final edge of the target that it positioned against, the beak position, and the beaks relationship to the
+   * edges of the callout.
    */
-  onPositioned?: () => void;
+  onPositioned?: (positions?: ICalloutPositionedInfo) => void;
 
   /**
    * Callback when the Callout tries to close.
@@ -192,6 +197,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, IBa
   * Optional styles for the component.
   */
   getStyles?: IStyleFunction<ICalloutStyleProps, ICalloutStyles>;
+
+  /**
+   * Callback when the Callout body is scrolled.
+   */
+  onScroll?: () => void;
 }
 
 export interface ICalloutStyleProps {

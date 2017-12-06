@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, IStyleFunction, ITheme } from '../../Styling';
-import { IComponentAs } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IComponentAs, IStyleFunction } from '../../Utilities';
 
 export interface IToggle {
   focus: () => void;

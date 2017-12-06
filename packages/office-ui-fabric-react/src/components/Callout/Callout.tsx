@@ -2,7 +2,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { styled } from '../../Styling';
+import { styled } from '../../Utilities';
 import {
   ICalloutProps
 } from './Callout.types';

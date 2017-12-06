@@ -3,10 +3,9 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   ITheme,
-  IStyle,
-  IStyleFunction
+  IStyle
 } from '../../Styling';
-import { IComponentAs } from '../../Utilities';
+import { IComponentAs, IStyleFunction } from '../../Utilities';
 
 export interface ILabel {
 
