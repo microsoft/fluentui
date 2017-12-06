@@ -12,6 +12,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     aria-label={undefined}
     aria-live="assertive"
     aria-owns={null}
+    aria-readonly="true"
     className="ms-Dropdown"
     data-is-focusable={true}
     id="Dropdown94"
@@ -19,7 +20,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="menu"
+    role="combobox"
     tabIndex={0}
   >
     <span
@@ -61,6 +62,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     aria-label={undefined}
     aria-live="assertive"
     aria-owns={null}
+    aria-readonly="true"
     className="ms-Dropdown"
     data-is-focusable={true}
     id="Dropdown0"
@@ -68,7 +70,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="menu"
+    role="combobox"
     tabIndex={0}
   >
     <span
