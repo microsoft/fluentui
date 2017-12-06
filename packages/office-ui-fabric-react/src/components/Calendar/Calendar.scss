@@ -88,7 +88,7 @@ $Calendar-dayPicker-margin: 10px;
   border-spacing: 0;
   table-layout: fixed;
   font-size: inherit;
-  margin-top: 8px; // Layout is 2px's over and scrollbar appears in some scenarios. Changing from 10px to 8px to fix this
+  margin-top: 10px;
   td {
     margin: 0;
     padding: 0;
