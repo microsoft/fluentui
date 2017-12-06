@@ -39,7 +39,11 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           >
             <div
               aria-hidden="true"
-              className="ms-Persona-initials ms-Persona-initials--blue undefined"
+              className=
+                  ms-Persona-initials
+                  {
+                    background-color: #2D89EF;
+                  }
               style={undefined}
             >
               <i

@@ -107,7 +107,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     >
       <div
         aria-hidden="true"
-        className="ms-Persona-initials ms-Persona-initials--black undefined"
+        className=
+            ms-Persona-initials
+            {
+              background-color: #1D1D1D;
+            }
         style={undefined}
       >
         <span>
