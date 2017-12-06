@@ -11,7 +11,7 @@ export function getStyles(props: ICalloutStyleProps): ICalloutStyles {
     root: [
       'ms-Callout',
       {
-        boxShadow: '0 0 5px 0px',
+        boxShadow: '0 0 5px 0px rgba(0,0,0,.4)',
         position: 'absolute',
         boxSizing: 'border-box',
         border: `1px solid ${palette.neutralLight}`,
