@@ -13,7 +13,7 @@ exports[`Callout renders Callout correctly 1`] = `
         ms-Callout
         {
           border: 1px solid #eaeaea;
-          box-shadow: 0 0 5px 0px;
+          box-shadow: 0 0 5px 0px rgba(0,0,0,.4);
           box-sizing: border-box;
           outline: transparent;
           position: absolute;
