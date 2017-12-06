@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.19",
+      "tag": "@uifabric/fabric-website_v5.0.19",
+      "date": "Wed, 06 Dec 2017 11:24:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "871a5a441f6c38c7c82abbe8f7b6081ce0c551f7",
+            "comment": "Updated referenced FabricCore versions."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.29.2 <6.0.0` to `>=5.29.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.18",
       "tag": "@uifabric/fabric-website_v5.0.18",
       "date": "Tue, 05 Dec 2017 02:04:27 GMT",
