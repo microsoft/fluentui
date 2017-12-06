@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Dec 2017 17:38:45 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Dec 2017 23:00:38 GMT and should not be manually modified.
+
+## 5.29.5
+Wed, 06 Dec 2017 23:00:38 GMT
+
+### Patches
+
+- Persona: Allow for consumers to provide custom colors
+- ComboBox: Update scrolling behavior to behave as expected
 
 ## 5.29.4
 Wed, 06 Dec 2017 17:38:45 GMT
