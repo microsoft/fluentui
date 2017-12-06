@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.29.4",
+      "tag": "office-ui-fabric-react_v5.29.4",
+      "date": "Wed, 06 Dec 2017 17:38:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "30aad8429619efb979f32ee99a3a91bb9b575ef4",
+            "comment": "Contextual Menu: made it so we can tab through items"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.29.3",
       "tag": "office-ui-fabric-react_v5.29.3",
       "date": "Wed, 06 Dec 2017 11:24:52 GMT",
