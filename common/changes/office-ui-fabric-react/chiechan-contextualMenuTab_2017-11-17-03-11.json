@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Contextual Tab and Focus Zone - reverted tabbing functionality to avoid tab being captured",
+      "comment": "Contextual Menu: made it so we can tab through items",
       "type": "patch"
     }
   ],
