@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.29.3",
+      "tag": "office-ui-fabric-react_v5.29.3",
+      "date": "Wed, 06 Dec 2017 11:24:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "16d31b15a2d23def22f75bd688e2f15e62b6f7f6",
+            "comment": "Button: Move contextual menu outside of button tag if doNotLayer"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.29.2",
       "tag": "office-ui-fabric-react_v5.29.2",
       "date": "Tue, 05 Dec 2017 02:04:27 GMT",
