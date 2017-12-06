@@ -823,5 +823,7 @@ describe('FocusZone', () => {
     // Pressing tab when our focus zone doesn't allow tabbing will allow us to propagate our tab to our key down event handler
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
     expect(tabDownListener.mock.calls.length).toBe(1);
+    const onKeyDownEvent = tabDownListener.mock.calls[0][0];
+    expect(onKeyDownEvent.which).toBe(KeyCodes.tab);
   });
 });
