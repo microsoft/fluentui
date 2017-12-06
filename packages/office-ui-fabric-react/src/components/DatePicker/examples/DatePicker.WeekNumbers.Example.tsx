@@ -87,7 +87,6 @@ export class DatePickerWeekNumbersExample extends React.Component<any, IDatePick
       showSixWeeksByDefault: true
     };
 
-
     return (
       <div>
         <DatePicker calendarProps={ calendarProps } placeholder='Select a date...' />
