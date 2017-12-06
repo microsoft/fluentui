@@ -11,14 +11,14 @@ import { FocusZoneDirection } from './FocusZone.types';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
-  let keyHit: number;
+  let tabKeyHit: number;
   function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
   }
 
   function _onKeyDown(ev: any) {
-    if (ev.which == KeyCodes.tab) {
-      keyHit += 1;
+    if (ev.which === KeyCodes.tab) {
+      tabKeyHit += 1;
     }
   }
 
@@ -50,7 +50,7 @@ describe('FocusZone', () => {
 
   beforeEach(() => {
     lastFocusedElement = undefined;
-    keyHit = 0;
+    tabKeyHit = 0;
   });
 
   it('can use arrows vertically', () => {
@@ -708,9 +708,8 @@ describe('FocusZone', () => {
     expect(buttonB.tabIndex).toBe(0);
 
     // Clicking on A should enable its tab-index and disable others.
-    // But it doesn't set focus (browser will do it in the default event handler)
     ReactTestUtils.Simulate.mouseDown(buttonAElement);
-    expect(lastFocusedElement).toBe(buttonB);
+    expect(lastFocusedElement).toBe(buttonA);
 
     expect(buttonA.tabIndex).toBe(0);
     expect(buttonB.tabIndex).toBe(-1);
@@ -793,10 +792,10 @@ describe('FocusZone', () => {
     expect(buttonC.tabIndex).toBe(-1);
 
     // FocusZone stops propagation of our tab when we enable tab handling
-    expect(keyHit).toBe(0);
+    expect(tabKeyHit).toBe(0);
   });
 
-  it('tabs pass the focus zone', () => {
+  it('detects tab when our focus zone does not allow tabbing', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: _onKeyDown } }>
         <FocusZone>
@@ -824,7 +823,7 @@ describe('FocusZone', () => {
     expect(buttonA.tabIndex).toBe(0);
 
     // Pressing tab when our focus zone doesn't allow tabbing will allow us to propagate our tab to our key down event handler
-    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab })
-    expect(keyHit).toBe(1);
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(tabKeyHit).toBe(1);
   });
 });
