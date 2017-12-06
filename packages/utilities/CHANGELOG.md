@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 13 Nov 2017 11:20:56 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Nov 2017 02:24:21 GMT and should not be manually modified.
+
+## 5.5.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
 
 ## 5.4.0
 Mon, 13 Nov 2017 11:20:56 GMT
