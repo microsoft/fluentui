@@ -344,7 +344,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let getClassNames = item.getItemClassNames || getItemClassNames;
     let itemClassNames = getClassNames(
       this.props.theme!,
-      !!item.disabled,
+      this._isItemDisabled(item),
       (this.state.expandedMenuItemKey === item.key),
       !!getIsChecked(item),
       !!item.href,
@@ -475,7 +475,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
-          aria-disabled={ item.isDisabled }
+          aria-disabled={ this._isItemDisabled(item) }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
         >
@@ -513,7 +513,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onMouseLeave: this._onMouseItemLeave.bind(this, item),
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       onMouseMove: this._onItemMouseMove.bind(this, item),
-      disabled: item.isDisabled || item.disabled,
+      disabled: this._isItemDisabled(item),
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
@@ -523,7 +523,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-checked': isChecked,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
-      'aria-disabled': item.isDisabled,
+      'aria-disabled': this._isItemDisabled(item),
       role: item.role || defaultRole,
       style: item.style
     };
@@ -546,7 +546,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return (
       <div
         aria-labelledby={ item.ariaLabel }
-        aria-disabled={ item.isDisabled || item.disabled }
+        aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
@@ -571,7 +571,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const itemProps = {
       onClick: this._executeItemClick.bind(this, item),
-      disabled: item.disabled || item.primaryDisabled,
+      disabled: this._isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
       role: item.role || defaultRole,
@@ -589,7 +589,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
     const itemProps = {
       onClick: this._onItemClick.bind(this, item),
-      disabled: item.disabled,
+      disabled: this._isItemDisabled(item),
       className: classNames.splitMenu,
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps,
@@ -909,5 +909,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       this._targetWindow = getWindow()!;
     }
+  }
+
+  private _isItemDisabled(item: IContextualMenuItem): boolean {
+    return !!(item.isDisabled || item.disabled);
   }
 }
