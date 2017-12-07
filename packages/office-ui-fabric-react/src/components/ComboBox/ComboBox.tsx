@@ -1058,7 +1058,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onDismiss() {
 
-    // I need to put my code in this method
     // reset the selected index
     // to the last valud state
     this._resetSelectedIndex();
@@ -1066,6 +1065,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // close the menu and focus the input
     this.setState({ isOpen: false });
     this._comboBox.focus();
+
+    if (this.props.onMenuClose) {
+      this.props.onMenuClose();
+    }
   }
 
   /**
