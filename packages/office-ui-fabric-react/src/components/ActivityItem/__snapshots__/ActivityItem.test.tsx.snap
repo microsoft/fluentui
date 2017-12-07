@@ -70,7 +70,11 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials ms-Persona-initials--blue undefined"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #2D89EF;
+                }
             style={undefined}
           >
             <span>
@@ -278,7 +282,11 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials ms-Persona-initials--blue undefined"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #2D89EF;
+                }
             style={undefined}
           >
             <span>
@@ -359,7 +367,11 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials ms-Persona-initials--teal undefined"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #00ABA9;
+                }
             style={undefined}
           >
             <span>
@@ -468,7 +480,11 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials ms-Persona-initials--blue undefined"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #2D89EF;
+                }
             style={undefined}
           >
             <span>
@@ -689,7 +705,11 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials ms-Persona-initials--blue undefined"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #2D89EF;
+                }
             style={undefined}
           >
             <span>
@@ -756,7 +776,11 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         >
           <div
             aria-hidden="true"
-            className="ms-Persona-initials ms-Persona-initials--teal undefined"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #00ABA9;
+                }
             style={undefined}
           >
             <span>
