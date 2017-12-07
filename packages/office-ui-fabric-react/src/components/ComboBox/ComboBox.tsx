@@ -199,7 +199,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (isOpen &&
       (!prevState.isOpen ||
         prevState.currentPendingValueValidIndex !== currentPendingValueValidIndex)) {
-      this._scrollIntoView();
+      // Need this timeout so that the selectedElement ref is correctly updated
+      this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
     // If we are open or we are focused but are not the activeElement,
@@ -1027,7 +1028,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
           let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
 
-          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
+          // If we are completely in view then we do not need to scroll
+          if (scrollableParentRect.top <= selectedElementRect.top &&
+            scrollableParentRect.top + scrollableParentRect.height >= selectedElementRect.top + selectedElementRect.height) {
+            return;
+          }
+
+          // If we are lower than the scrollable parent viewport then we should align to the bottom
+          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top + selectedElementRect.height) {
             alignToTop = false;
           }
         }
