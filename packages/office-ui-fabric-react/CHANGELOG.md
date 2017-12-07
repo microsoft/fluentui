@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Dec 2017 23:00:38 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Dec 2017 03:44:42 GMT and should not be manually modified.
+
+## 5.30.0
+Thu, 07 Dec 2017 03:44:42 GMT
+
+### Minor changes
+
+- BaseButton: Expose getSplitButtonClassNames func as a prop to be able to override it.
+
+### Patches
+
+- ComboBox: Update onBlur to do nothing if the event came from an element inside of the  comboBox
 
 ## 5.29.5
 Wed, 06 Dec 2017 23:00:38 GMT
