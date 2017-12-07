@@ -4,6 +4,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Icon, IconType, getIconClassName } from 'office-ui-fabric-react';
+import { getFileTypeIconProps, FileIconType, OverlayType } from '@uifabric/file-type-icons';
 import { TestImages } from '../common/TestImages';
 
 storiesOf('Icon', module)
@@ -41,4 +42,12 @@ storiesOf('Icon', module)
         src: TestImages.iconOne
       } }
     />
+  )).add('Overlays', () => (
+    <div>
+      <Icon {...getFileTypeIconProps({ extension: 'docx', size: 16, overlayType: OverlayType.none })} />
+      <Icon {...getFileTypeIconProps({ extension: 'pptx', size: 20, overlayType: OverlayType.checkout })} />
+      <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 32, overlayType: OverlayType.checkoutGrid })} />
+      <Icon {...getFileTypeIconProps({ type: FileIconType.genericFile, size: 40, overlayType: OverlayType.block })} />
+      <Icon {...getFileTypeIconProps({ type: FileIconType.listItem, size: 48, overlayType: OverlayType.notify })} />
+    </div>
   ));

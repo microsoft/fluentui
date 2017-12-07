@@ -69,12 +69,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
       code: undefined
     };
 
-    let overlayDefinition = getIcon(overlayName) || {
-      subset: {
-        className: undefined
-      },
-      code: undefined
-    };
+    let overlayDefinition = getIcon(overlayName);
 
     return (
       <i
@@ -94,11 +89,11 @@ export const Icon = (props: IIconProps): JSX.Element => {
           ) }
       >
         { iconDefinition.code }
-        { overlayDefinition.code && (
+        { overlayDefinition && overlayDefinition.code && (
           <i
             className={
               css(
-                overlayDefinition.subset.className,
+                overlayDefinition.subset && overlayDefinition.subset.className,
                 classNames.overlay
               ) }
           >
