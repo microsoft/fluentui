@@ -30,6 +30,11 @@ const items = [
     key: 'disabled',
     name: 'Disabled item',
     disabled: true
+  },
+  {
+    key: 'isDisabled',
+    name: 'isDisabled item',
+    isDisabled: true
   }
 ];
 
