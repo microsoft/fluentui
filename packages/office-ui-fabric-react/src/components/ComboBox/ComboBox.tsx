@@ -733,7 +733,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * and submit any pending value
    */
   @autobind
-  private _onBlur() {
+  private _onBlur(event: React.FocusEvent<HTMLInputElement>) {
+
+    // Do nothing if the blur is coming from something
+    // inside the comboBox root or the comboBox menu since
+    // it we are not really bluring from the whole comboBox
+    if (event.relatedTarget &&
+      (this.refs.root && this.refs.root.contains(event.relatedTarget as HTMLElement) ||
+        this._comboBoxMenu && this._comboBoxMenu.contains(event.relatedTarget as HTMLElement))) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     if (this.state.focused) {
       this.setState({ focused: false });
       this._submitPendingValue();
