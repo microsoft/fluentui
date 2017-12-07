@@ -320,7 +320,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.inputElement === document.activeElement
+          suggestionsVisible: this.input && this.input.inputElement === document.activeElement
         });
       }
 
