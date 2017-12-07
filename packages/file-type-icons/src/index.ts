@@ -8,3 +8,4 @@ export {
 } from './getFileTypeIconProps';
 
 export { FileIconType } from './FileIconType';
+export { OverlayType } from './OverlayType';

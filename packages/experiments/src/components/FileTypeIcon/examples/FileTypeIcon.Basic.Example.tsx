@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { getFileTypeIconProps, FileIconType } from '@uifabric/file-type-icons';
+import { getFileTypeIconProps, FileIconType, OverlayType } from '@uifabric/file-type-icons';
 
 export class FileTypeIconBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -41,6 +41,14 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ type: FileIconType.listItem, size: 48, imageFileType: 'svg' }) } />
         <h3>Size 96 sharedfolder icon as .png</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 96, imageFileType: 'png' }) } />
+        <h3>Checkout overlay</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'docx', size: 16, overlayType: OverlayType.checkout }) } />
+        <h3>Checkout overlay grid</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'pptx', size: 20, imageFileType: 'png', overlayType: OverlayType.checkoutGrid }) } />
+        <h3>Block overlay</h3>
+        <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 32, overlayType: OverlayType.block }) } />
+        <h3>Notify overlay</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'xlsx', size: 96, imageFileType: 'png', overlayType: OverlayType.notify }) } />
       </div>
     );
   }

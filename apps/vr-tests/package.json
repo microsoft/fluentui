@@ -28,6 +28,7 @@
     "storybook-readme": "=3.0.6"
   },
   "dependencies": {
+    "@uifabric/file-type-icons": ">=0.0.1 <1.0.0",
     "@uifabric/icons": ">=5.2.0 <6.0.0",
     "@uifabric/styling": ">=5.14.0 <6.0.0",
     "office-ui-fabric-react": ">=5.30.0 <6.0.0",

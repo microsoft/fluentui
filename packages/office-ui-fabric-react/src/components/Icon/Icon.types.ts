@@ -41,6 +41,11 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   iconName?: string;
 
   /**
+   * The name of the icon to use as an overlay in the bottom right corner. If string is empty, no overlay will be rendered.
+   */
+  overlayName?: string;
+
+  /**
    * Optional styling for the elements within the Icon.
    */
   styles?: IIconStyles;

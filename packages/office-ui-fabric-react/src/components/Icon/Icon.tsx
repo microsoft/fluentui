@@ -16,10 +16,12 @@ export const Icon = (props: IIconProps): JSX.Element => {
     ariaLabel,
     className,
     styles,
-    iconName
+    iconName,
+    overlayName
    } = props;
   let classNames = getClassNames(
-    styles
+    styles,
+    !!overlayName
   );
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
@@ -67,6 +69,8 @@ export const Icon = (props: IIconProps): JSX.Element => {
       code: undefined
     };
 
+    let overlayDefinition = getIcon(overlayName);
+
     return (
       <i
         aria-label={ ariaLabel }
@@ -85,6 +89,17 @@ export const Icon = (props: IIconProps): JSX.Element => {
           ) }
       >
         { iconDefinition.code }
+        { overlayDefinition && overlayDefinition.code && (
+          <i
+            className={
+              css(
+                overlayDefinition.subset && overlayDefinition.subset.className,
+                classNames.overlay
+              ) }
+          >
+            { overlayDefinition.code }
+          </i>
+        ) }
       </i>
     );
   }
