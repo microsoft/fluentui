@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.30.0",
+      "tag": "office-ui-fabric-react_v5.30.0",
+      "date": "Thu, 07 Dec 2017 03:44:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "102bec79291519ee0709632f0846936945611042",
+            "comment": "ComboBox: Update onBlur to do nothing if the event came from an element inside of the  comboBox"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "832679132dc5e20301028b57f4a5b23ee1b86a7e",
+            "comment": "BaseButton: Expose getSplitButtonClassNames func as a prop to be able to override it."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.29.5",
       "tag": "office-ui-fabric-react_v5.29.5",
       "date": "Wed, 06 Dec 2017 23:00:38 GMT",
