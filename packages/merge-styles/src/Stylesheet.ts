@@ -31,6 +31,7 @@ export interface IStyleSheetConfig {
    * Injection mode for how rules are inserted.
    */
   injectionMode?: InjectionMode;
+  onInsertRule?: (rule: string) => void;
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
@@ -171,12 +172,16 @@ export class Stylesheet {
         break;
 
       case InjectionMode.appendChild:
-        element!.appendChild(document.createTextNode(rule));
+        _createStyleElement(rule);
         break;
 
       default:
         this._rules.push(rule);
         break;
+    }
+
+    if (this._config.onInsertRule) {
+      this._config.onInsertRule(rule);
     }
   }
 
@@ -207,11 +212,21 @@ export class Stylesheet {
 
   private _getElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
-      this._styleElement = document.createElement('style');
-      this._styleElement.setAttribute('data-merge-styles', 'true');
-      document.head.appendChild(this._styleElement);
+      this._styleElement = _createStyleElement();
     }
-
     return this._styleElement;
   }
+}
+
+function _createStyleElement(content?: string): HTMLStyleElement {
+  const styleElement = document.createElement('style');
+
+  styleElement.setAttribute('data-merge-styles', 'true');
+  styleElement.type = 'text/css';
+  if (content) {
+    styleElement.appendChild(document.createTextNode(content));
+  }
+  document.head.appendChild(styleElement);
+
+  return styleElement;
 }

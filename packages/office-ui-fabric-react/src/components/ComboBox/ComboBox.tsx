@@ -137,7 +137,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._warnMutuallyExclusive({
       'defaultSelectedKey': 'selectedKey',
       'value': 'defaultSelectedKey',
-      'selectedKey': 'value'
+      'selectedKey': 'value',
+      'dropdownWidth': 'useComboBoxAsMenuWidth'
     });
 
     this._id = props.id || getId('ComboBox');
@@ -198,7 +199,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (isOpen &&
       (!prevState.isOpen ||
         prevState.currentPendingValueValidIndex !== currentPendingValueValidIndex)) {
-      this._scrollIntoView();
+      // Need this timeout so that the selectedElement ref is correctly updated
+      this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
     // If we are open or we are focused but are not the activeElement,
@@ -320,6 +322,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
             disabled={ disabled }
+            checked={ isOpen }
           />
         </div>
 
@@ -730,7 +733,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * and submit any pending value
    */
   @autobind
-  private _onBlur() {
+  private _onBlur(event: React.FocusEvent<HTMLInputElement>) {
+
+    // Do nothing if the blur is coming from something
+    // inside the comboBox root or the comboBox menu since
+    // it we are not really bluring from the whole comboBox
+    if (event.relatedTarget &&
+      (this.refs.root && this.refs.root.contains(event.relatedTarget as HTMLElement) ||
+        this._comboBoxMenu && this._comboBoxMenu.contains(event.relatedTarget as HTMLElement))) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     if (this.state.focused) {
       this.setState({ focused: false });
       this._submitPendingValue();
@@ -805,7 +820,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderList,
       calloutProps,
       dropdownWidth,
-      onRenderLowerContent = this._onRenderLowerContent
+      onRenderLowerContent = this._onRenderLowerContent,
+      useComboBoxAsMenuWidth
     } = props;
 
     return (
@@ -821,7 +837,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }
         setInitialFocus={ false }
-        calloutWidth={ dropdownWidth || this._comboBoxWrapper.clientWidth + 2 }
+        calloutWidth={
+          useComboBoxAsMenuWidth ?
+            this._comboBoxWrapper.clientWidth + 2
+            : dropdownWidth }
       >
         <div className={ this._classNames.optionsContainerWrapper } ref={ this._resolveRef('_comboBoxMenu') }>
           { (onRenderList as any)({ ...props }, this._onRenderList) }
@@ -1021,7 +1040,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           let scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
           let selectedElementRect = this._selectedElement.offsetParent.getBoundingClientRect();
 
-          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top) {
+          // If we are completely in view then we do not need to scroll
+          if (scrollableParentRect.top <= selectedElementRect.top &&
+            scrollableParentRect.top + scrollableParentRect.height >= selectedElementRect.top + selectedElementRect.height) {
+            return;
+          }
+
+          // If we are lower than the scrollable parent viewport then we should align to the bottom
+          if (scrollableParentRect.top + scrollableParentRect.height <= selectedElementRect.top + selectedElementRect.height) {
             alignToTop = false;
           }
         }

@@ -1,6 +1,72 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Nov 2017 01:16:12 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Dec 2017 03:44:42 GMT and should not be manually modified.
+
+## 5.30.0
+Thu, 07 Dec 2017 03:44:42 GMT
+
+### Minor changes
+
+- BaseButton: Expose getSplitButtonClassNames func as a prop to be able to override it.
+
+### Patches
+
+- ComboBox: Update onBlur to do nothing if the event came from an element inside of the  comboBox
+
+## 5.29.5
+Wed, 06 Dec 2017 23:00:38 GMT
+
+### Patches
+
+- Persona: Allow for consumers to provide custom colors
+- ComboBox: Update scrolling behavior to behave as expected
+
+## 5.29.4
+Wed, 06 Dec 2017 17:38:45 GMT
+
+### Patches
+
+- Contextual Menu: made it so we can tab through items
+
+## 5.29.3
+Wed, 06 Dec 2017 11:24:52 GMT
+
+### Patches
+
+- Button: Move contextual menu outside of button tag if doNotLayer
+
+## 5.29.2
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Update Default Button colors to match design spec
+- Contextual Tab and Focus Zone - reverted tabbing functionality to avoid tab being captured
+
+## 5.29.1
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Patches
+
+- ContextualMenu: Make sure vertical scrollbar does not take space away from contents
+
+## 5.29.0
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Minor changes
+
+- DatePicker: Calendar Props.  Adding access to ICalendarProps
+- ContextualMenu: Expose callback hook when menu is being removed from DOM
+- Panel: When panel is dismissed, hide the panel instead of destroying it
+
+### Patches
+
+- GroupHeader: Style fix to add nowrap on group header
+- Changed combobox option height to match other menu option heights
+- FocusZone: Fix focus-in behavior when children are added asynchronously.
+- ComboBox: Update to allow the dropdown to fit its content
+- DatePicker: Reset invalid input (typed by used).
+- PersonaPresence: Scale the presence and presence icon proportionally to the specified coinSize up to a max size.
 
 ## 5.28.0
 Thu, 30 Nov 2017 01:16:12 GMT
