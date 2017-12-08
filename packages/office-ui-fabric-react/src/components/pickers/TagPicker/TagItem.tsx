@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { css, IDictionary } from '../../../Utilities';
 import { Icon } from '../../../Icon';
-import { IPickerItemProps } from '../PickerItem.Props';
+import { IPickerItemProps } from '../PickerItem.types';
 import { ITag } from './TagPicker';
 import * as stylesImport from './TagItem.scss';
 const styles: any = stylesImport;
