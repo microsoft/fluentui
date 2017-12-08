@@ -638,6 +638,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     newIndex = Math.max(0, Math.min(currentOptions.length - 1, newIndex));
 
+    if (!this._indexWithinBounds(currentOptions, newIndex)) {
+      return -1;
+    }
+
     let option: IComboBoxOption = currentOptions[newIndex];
 
     // attempt to skip headers and dividers
@@ -646,8 +650,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Should we continue looking for an index to select?
       if (searchDirection !== SearchDirection.none &&
-        ((newIndex !== 0 && searchDirection < SearchDirection.none) ||
-          (newIndex !== currentOptions.length - 1 && searchDirection > SearchDirection.none))) {
+        ((newIndex > 0 && searchDirection < SearchDirection.none) ||
+          (newIndex >= 0 && newIndex < currentOptions.length && searchDirection > SearchDirection.none))) {
         newIndex = this._getNextSelectableIndex(newIndex, searchDirection);
       } else {
         // If we cannot perform a useful search just return the index we were given
@@ -672,6 +676,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Find the next selectable index, if searchDirection is none
     // we will get our starting index back
     index = this._getNextSelectableIndex(index, searchDirection);
+
+    if (!this._indexWithinBounds(currentOptions, index)) {
+      return;
+    }
 
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
@@ -785,7 +793,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (allowFreeform && currentPendingValue !== '') {
 
       // Check to see if the user typed an exact match
-      if (currentPendingValueValidIndex >= 0) {
+      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         let pendingOptionText: string = currentOptions[currentPendingValueValidIndex].text.toLocaleLowerCase();
 
         // By exact match, that means: our pending value is the same as the the pending option text OR
@@ -1197,11 +1205,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
     let {
       isOpen,
-      selectedIndex
+      selectedIndex,
+      currentOptions
     } = this.state;
 
     index = this._getNextSelectableIndex(index, searchDirection);
-    this._setPendingInfoFromIndex(index);
+    if (this._indexWithinBounds(currentOptions, index)) {
+      this._setPendingInfoFromIndex(index);
+    }
   }
 
   /**
