@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 04 Dec 2017 17:27:54 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Dec 2017 18:09:44 GMT and should not be manually modified.
+
+## 5.9.1
+Fri, 08 Dec 2017 18:09:44 GMT
+
+### Patches
+
+- Experiments: Fix build breaks in master
 
 ## 5.9.0
 Mon, 04 Dec 2017 17:27:54 GMT
