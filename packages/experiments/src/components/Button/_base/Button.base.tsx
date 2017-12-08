@@ -8,6 +8,7 @@ import {
   getNativeProps,
   customizable
 } from '../../../Utilities';
+import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IButtonBaseProps, IButtonBase, IButtonBaseStyleProps, IButtonBaseStyles } from './Button.base.types';
 import { getAriaProps } from './ButtonUtils';
@@ -44,6 +45,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       disabled,
       href,
       checked,
+      primary,
       getStyles,
       expanded,
       onRenderIcon = this._onRenderIcon,
@@ -69,7 +71,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
         getNativeProps(this.props, [renderAsAnchor ? 'a' : 'button']
         ));
 
-    this._classNames = getClassNames(getStyles!, { theme: theme!, className, disabled, checked, expanded });
+    this._classNames = getClassNames(getStyles!, { theme: theme!, className, disabled, checked, expanded, primary });
     let RootType = renderAsAnchor ? 'a' : 'button';
     return (
       <div className={ 'ms-Button ' + this._classNames.root }>
@@ -219,7 +221,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
     // otherwise it will be assigned to descriptionSpan.
     if (ariaDescription) {
       return (
-        <span className={ this._classNames.screenReaderText } id={ ariaDescriptionId }>{ ariaDescription }</span>
+        <span className={ mergeStyles(hiddenContentStyle) } id={ ariaDescriptionId }>{ ariaDescription }</span>
       );
     }
 

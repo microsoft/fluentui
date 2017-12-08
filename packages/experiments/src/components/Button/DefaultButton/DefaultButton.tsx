@@ -2,9 +2,12 @@ import { styled } from '../../../Utilities';
 import { SplitButtonBase } from '../_base/SplitButton.base';
 
 
-import { getStyles } from './DefaultButton.styles';
+import { getStyles, getSplitStyles } from './DefaultButton.styles';
 
-export const DefaultSplitButton = styled(
+export const DefaultButton = styled(
   SplitButtonBase,
-  getStyles
+  getStyles,
+  props => ({
+    getSplitStyles
+  })
 );

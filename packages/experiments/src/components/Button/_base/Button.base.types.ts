@@ -171,7 +171,6 @@ export interface IButtonBaseStyles {
   label?: IStyle;
   menuIcon?: IStyle;
   description?: IStyle;
-  screenReaderText?: IStyle;
 }
 
 export interface IButtonBaseStyleProps {
@@ -180,4 +179,5 @@ export interface IButtonBaseStyleProps {
   disabled?: boolean;
   checked?: boolean;
   expanded?: boolean;
+  primary?: boolean;
 }

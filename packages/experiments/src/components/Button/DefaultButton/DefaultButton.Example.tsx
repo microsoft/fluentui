@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IBaseButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { DefaultSplitButton } from './DefaultButton';
+import { DefaultButton } from './DefaultButton';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class DefaultButtonExample extends React.Component<IBaseButtonProps, {}> {
@@ -9,14 +9,16 @@ export class DefaultButtonExample extends React.Component<IBaseButtonProps, {}> 
 
     return (
       <div>
-        <Label>Smart Button</Label>
-        <DefaultSplitButton
+        <Label>Standard Button</Label>
+        <br /> <br />
+        <DefaultButton
           disabled={ disabled }
           checked={ checked }
           onClick={ this._alertClicked }
           text='BaseButton'
         />
-        <DefaultSplitButton
+        <br /> <br />
+        <DefaultButton
           disabled={ disabled }
           checked={ checked }
           text='Menu'
@@ -35,7 +37,61 @@ export class DefaultButtonExample extends React.Component<IBaseButtonProps, {}> 
             ]
           } }
         />
-        <DefaultSplitButton
+        <br /> <br />
+        <DefaultButton
+          disabled={ disabled }
+          checked={ checked }
+          text='Split'
+          split
+          onClick={ this._alertClicked }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+        <Label>Primary Button</Label>
+        <br /> <br />
+        <DefaultButton
+          primary
+          disabled={ disabled }
+          checked={ checked }
+          onClick={ this._alertClicked }
+          text='BaseButton'
+        />
+        <br /> <br />
+        <DefaultButton
+          primary
+          disabled={ disabled }
+          checked={ checked }
+          text='Menu'
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+        <br /> <br />
+        <DefaultButton
+          primary
           disabled={ disabled }
           checked={ checked }
           text='Split'
@@ -57,7 +113,6 @@ export class DefaultButtonExample extends React.Component<IBaseButtonProps, {}> 
           } }
         />
       </div >
-
     );
   }
 

@@ -14,6 +14,7 @@ import {
   ISplitButton,
   ISplitButtonBaseProps,
 } from './SplitButton.base.types';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 
 @customizable('SplitButtonBase', ['theme'])
@@ -61,7 +62,7 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
           { ...primaryProps }
           { ...buttonProps } // merge these two together
           disabled={ primaryDisabled }
-          onRenderSuffix={ this._onRenderSuffix }
+          onRenderSuffix={ this._onRenderSplitSuffix }
         />
       );
     } else if (this.props.menuProps) {
@@ -79,24 +80,36 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
   }
 
   @autobind
-  private _onRenderSuffix(): JSX.Element {
+  private _onRenderSplitSuffix(): JSX.Element {
 
+    const {
+      menuIconProps,
+      onMenuClick,
+      onRenderMenuIcon,
+      onRenderMenu,
+      disabled,
+      getSplitStyles = this.props.getStyles, // default to getStyles if split is not supplied
+      primary
+    } = this.props;
     const menuButtonProps: IMenuButtonBaseProps = {
-      menuIconProps: this.props.menuIconProps || { iconName: 'ChevronDown' },
+      menuIconProps: menuIconProps || { iconName: 'ChevronDown' },
       menuProps: {
         items: [], // assure that items won't be empty
         ...this.props.menuProps,
         target: `[data-target-id='${this._labelId}']`
       },
-      onMenuClick: this.props.onMenuClick,
-      onRenderMenuIcon: this.props.onRenderMenuIcon,
-      onRenderMenu: this.props.onRenderMenu,
-      disabled: this.props.disabled,
+      getStyles: getSplitStyles,
+      primary,
+      onMenuClick,
+      onRenderMenuIcon,
+      onRenderMenu,
+      disabled,
     };
 
     return (
       <span style={ { display: 'flex' } }>
-        <VerticalDivider />
+        {/* move these styles into component when converted to getStyles */ }
+        <span style={ { margin: '4px -.5px', position: 'relative', zIndex: 1 } }><VerticalDivider /> </span>
         <MenuButtonBase {...menuButtonProps} />
       </span>
     )
