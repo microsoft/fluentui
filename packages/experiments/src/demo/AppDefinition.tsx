@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Button/ButtonPage').ButtonPage,
+          key: 'TestButton',
+          name: 'TestButton',
+          url: '#/examples/TestButton'
+        },
+        {
           component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
           key: 'PositioningContainer',
           name: 'PositioningContainer',
