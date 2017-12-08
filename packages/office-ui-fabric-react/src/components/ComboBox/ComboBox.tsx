@@ -214,7 +214,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If we are open or we are just closed, should focusAfter close, are focused but
     // we are not the activeElement set focus on the input
-    if (isOpen || (prevState.isOpen && !isOpen && this._focusInputAfterClose && focused && document.activeElement !== this._comboBox.inputElement)) {
+    if (isOpen ||
+      (prevState.isOpen &&
+        !isOpen &&
+        this._focusInputAfterClose &&
+        focused &&
+        document.activeElement !== this._comboBox.inputElement)) {
       this.focus();
     }
 
