@@ -77,6 +77,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
    * @deprecated
    */
   isDisabled?: boolean;
+
+  /**
+   * Enable type-ahead support. This allows a user to quickly highlight options by typing.
+   */
+  isTypeAheadEnabled?: boolean;
 }
 
 export interface IDropdownOption extends ISelectableOption {
