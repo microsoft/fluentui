@@ -131,8 +131,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _scrollIdleTimeoutId: number | undefined;
 
-  // This tracks how the comboBox was opened
-  // to help determine if we should be setting
+  // Determines if we should be setting
   // focus back to the input when the menu closes.
   // The general rule of thumb is if the menu was launched
   // vai the keyboard focus should go back to the input,
@@ -212,8 +211,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
-    // If we are open or we are just closed, should focusAfter close, are focused but
-    // we are not the activeElement set focus on the input
+    // If we are open or we are just closed, shouldFocusAfterClose is set,
+    // are focused but we are not the activeElement set focus on the input
     if (isOpen ||
       (prevState.isOpen &&
         !isOpen &&
@@ -1206,6 +1205,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * Sets the isOpen state and updates focusInputAfterClose
+   */
+  private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean) {
+    this._focusInputAfterClose = focusInputAfterClose;
+    this.setState({
+      isOpen: isOpen
+    });
+  }
+
+  /**
    * Handle keydown on the input
    * @param ev - The keyboard event that was fired
    */
@@ -1264,10 +1273,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we are not allowing freeform
         // or the comboBox is open, flip the open state
         if (isOpen) {
-          this._focusInputAfterClose = false;
-          this.setState({
-            isOpen: !isOpen
-          });
+          this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
         }
 
         // Allow TAB to propigate
@@ -1300,8 +1306,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       case KeyCodes.down:
         // Expand the comboBox on ALT + DownArrow
         if (ev.altKey || ev.metaKey) {
-          this._focusInputAfterClose = true;
-          this.setState({ isOpen: true });
+          this._setOpenStateAndFocusOnClose(true /* isOpen */, true /* focusInputAfterClose */);
         } else {
           // if we are in clearAll state (e.g. the user as hovering
           // and has since mousedOut of the menu items),
@@ -1352,8 +1357,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we get here and we got either and ALT key
         // or meta key and we are current open, let's close the menu
         if ((ev.altKey || ev.metaKey) && isOpen) {
-          this._focusInputAfterClose = true;
-          this.setState({ isOpen: !isOpen });
+          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
         }
 
         // If we are not allowing freeform and
@@ -1395,10 +1399,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // make space expand/collapse the comboBox
         // and allow the event to propagate
         if (!allowFreeform && autoComplete === 'off') {
-          this._focusInputAfterClose = !!this.state.isOpen;
-          this.setState({
-            isOpen: !this.state.isOpen
-          });
+          let isOpen = this.state.isOpen;
+          this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
           return;
         }
         break;
@@ -1477,10 +1479,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { isOpen } = this.state;
 
     if (!disabled) {
-      this._focusInputAfterClose = false;
-      this.setState({
-        isOpen: !isOpen
-      });
+      this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
     }
   }
 
