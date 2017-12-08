@@ -7,7 +7,7 @@ import {
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 
-import { TestButtonExample } from './TestButton/TestButton.Example';
+import { DefaultButtonExample } from './DefaultButton/DefaultButton.Example';
 
 export interface IButtonDemoPageState {
   areButtonsDisabled?: boolean;
@@ -41,7 +41,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               onChange={ this._onToggledChanged.bind(this) }
             />
             <ExampleCard title='Default Button'>
-            <TestButtonExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+              <DefaultButtonExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
           </div>
         }

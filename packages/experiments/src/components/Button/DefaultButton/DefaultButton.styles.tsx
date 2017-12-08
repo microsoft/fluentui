@@ -6,6 +6,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   return ({
     root: [
+      'ms-Default-Button',
       {
         display: 'inline-flex',
         color: theme.palette.white,

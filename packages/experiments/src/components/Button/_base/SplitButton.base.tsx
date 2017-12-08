@@ -35,15 +35,13 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
   public render(): JSX.Element {
 
     const {
-      primaryDisabled,
-      checked
+      primaryDisabled
     } = this.props;
 
 
     const buttonProps = {
       'aria-disabled': primaryDisabled,
       'aria-haspopup': true,
-      'aria-pressed': checked,
       'data-target-id': this._labelId,
       componentRef: this._resolveRef('_buttonElement')
     };
@@ -55,15 +53,29 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
       onRenderMenuIcon: undefined
     };
 
-    return (
-      <ButtonBase
-        { ...primaryProps }
-        { ...buttonProps } // merge these two together
-        disabled={ primaryDisabled }
-        onRenderSuffix={ this._onRenderSuffix }
-      />
-    );
+    const isSplit = !!this.props.menuProps && !!this.props.onClick && this.props.split;
 
+    if (isSplit) {
+      return (
+        <ButtonBase
+          { ...primaryProps }
+          { ...buttonProps } // merge these two together
+          disabled={ primaryDisabled }
+          onRenderSuffix={ this._onRenderSuffix }
+        />
+      );
+    } else if (this.props.menuProps) {
+      return (
+        <MenuButtonBase
+          {...this.props as IMenuButtonBaseProps}
+          menuIconProps={ this.props.menuIconProps || { iconName: 'ChevronDown' } }
+        />
+      );
+    } else {
+      return (
+        <ButtonBase {...this.props as IButtonBaseProps } />
+      );
+    }
   }
 
   @autobind
