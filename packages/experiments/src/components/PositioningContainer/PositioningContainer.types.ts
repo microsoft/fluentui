@@ -127,6 +127,7 @@ export interface IPositioningContainerTypes extends React.Props<PositioningConta
   /**
    * Callback when the positioningContainer tries to close.
    */
+  // tslint:disable-next-line:no-any
   onDismiss?: (ev?: any) => void;
 
   /**
