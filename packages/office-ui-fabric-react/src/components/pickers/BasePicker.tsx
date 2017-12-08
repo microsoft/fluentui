@@ -316,11 +316,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+          suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.inputElement === document.activeElement
+          suggestionsVisible: this.input && this.input.inputElement === document.activeElement
         });
       }
 
@@ -356,7 +356,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({
       suggestionsLoading: false,
       suggestedDisplayValue: itemValue,
-      suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+      suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
     });
   }
 
@@ -392,14 +392,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    if (this.input.value === '' && this.props.onEmptyInputFocus) {
+    if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
       this.setState({
         isMostRecentlyUsedVisible: true,
         moreSuggestionsAvailable: false,
         suggestionsVisible: true
       });
-    } else if (this.input.value) {
+    } else if (this.input && this.input.value) {
       this.setState({
         isMostRecentlyUsedVisible: false,
         suggestionsVisible: true
