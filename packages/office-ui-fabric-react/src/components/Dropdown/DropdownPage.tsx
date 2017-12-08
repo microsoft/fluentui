@@ -7,11 +7,13 @@ import {
 } from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
+import { DropdownTypeaheadExample } from './examples/Dropdown.Typeahead.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DropdownStatus } from './Dropdown.checklist';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
+const DropdownTypeaheadExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Typeahead.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -27,6 +29,10 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
 
             <ExampleCard title='Customized Dropdown' code={ DropdownCustomExampleCode }>
               <DropdownCustomExample />
+            </ExampleCard>
+
+            <ExampleCard title='Dropdown with Typeahead' code={ DropdownTypeaheadExampleCode }>
+              <DropdownTypeaheadExample />
             </ExampleCard>
 
           </div>

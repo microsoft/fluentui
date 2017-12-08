@@ -4,7 +4,7 @@ import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
-import { CommandButton } from '../../Button';
+import { ActionButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -36,6 +36,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndices?: number[];
+  typeAheadString?: string;
 }
 
 @withResponsiveMode
@@ -51,12 +52,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _host: HTMLDivElement;
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
+  private _options: { [key: number]: ActionButton | Checkbox };
   // tslint:disable-next-line:no-unused-variable
   private _dropdownLabel: HTMLElement;
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  private _typeDelayTimeout: number;
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -81,9 +84,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
+    this._options = {};
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      typeAheadString: ''
     };
     if (this.props.multiSelect) {
       let selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
@@ -417,6 +422,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           className={ css('ms-Dropdown-items', styles.items) }
           aria-labelledby={ id + '-label' }
           role='listbox'
+          onKeyDown={ this.props.isTypeAheadEnabled ? this._onTypeKeyDown : () => null }
         >
           { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
         </FocusZone>
@@ -476,9 +482,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       !this.props.multiSelect ?
         (
-          <CommandButton
+          <ActionButton
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
+            componentRef={ ((option: ActionButton) => {
+              this._options[item.index!] = option;
+            }).bind(this) }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ true }
@@ -498,11 +506,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             title={ item.text }
           >
             { onRenderOption(item, this._onRenderOption) }
-          </CommandButton>
+          </ActionButton>
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
+            componentRef={ ((option: Checkbox) => {
+              this._options[item.index!] = option;
+            }).bind(this) }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ true }
@@ -733,6 +743,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
+        if (this.props.isTypeAheadEnabled) {
+          this._onTypeKeyDown(ev);
+        }
         return;
     }
 
@@ -752,9 +765,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
     switch (ev.which) {
       case KeyCodes.space:
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
+        // Let the type key handler catch spaces if user is typing
+        if (!this.state.typeAheadString) {
+          this.setState({
+            isOpen: !this.state.isOpen
+          });
+        }
         break;
 
       default:
@@ -763,6 +779,54 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     ev.stopPropagation();
     ev.preventDefault();
+  }
+
+  @autobind
+  private _onTypeKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
+    // Ignore non-displayed, modifier, and special keys
+    if (!/^[a-zA-Z0-9-_ ]$/.test(ev.key)) {
+      return;
+    }
+
+    // Do not let spaces as first character
+    if (!this.state.typeAheadString && ev.key === ' ') {
+      return;
+    }
+
+    this.setState({
+      typeAheadString: this.state.typeAheadString !== undefined ?
+        (this.state.typeAheadString + ev.key).toLowerCase() :
+        ev.key.toLowerCase(),
+      isOpen: true
+    }, () => {
+      const indexFound: number = findIndex(
+        this.props.options,
+        ((item: IDropdownOption) => {
+          if (item.itemType) { // Item is not normal (0)
+            return false;
+          }
+          return item.text.toLowerCase().indexOf(this.state.typeAheadString!) >= 0;
+        }).bind(this));
+
+      if (indexFound >= 0) {
+        const option: ActionButton | Checkbox = this._options[indexFound];
+        if (option) {
+          option.focus();
+        }
+      }
+    });
+
+    this._async.clearTimeout(this._typeDelayTimeout);
+    this._typeDelayTimeout = this._async.setTimeout(() => {
+      this.setState({
+        typeAheadString: ''
+      });
+    }, 500);
+
+    if (ev.key === ' ') {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }
 
   @autobind

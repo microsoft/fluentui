@@ -11,6 +11,7 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
    * Tell BaseComponent to bypass resolution of componentRef.
    */
   protected _shouldUpdateComponentRef = false;
+  private _button: BaseButton;
 
   public render() {
     let { styles, theme } = this.props;
@@ -18,10 +19,17 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         { ...this.props }
+        ref={ button => { if (button) this._button = button; } }
         variantClassName='ms-Button--action ms-Button--command'
         styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
     );
+  }
+
+  public focus(): void {
+    if (this._button) {
+      this._button.focus();
+    }
   }
 }
