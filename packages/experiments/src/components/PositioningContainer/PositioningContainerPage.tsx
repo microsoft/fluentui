@@ -7,7 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 
 import { PositioningContainerBasicExample } from './examples/PositioningContainer.Basic.Example';
-const CoachmarkBasicExampleCode = require('!raw-loader!experiments/src/components/PositioningContainer/examples/PositioningContainer.Basic.Example.tsx') as string;
+const CoachmarkBasicExampleCode = require
+  ('!raw-loader!experiments/src/components/PositioningContainer/examples/PositioningContainer.Basic.Example.tsx') as string;
 
 export class PositioningContainerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

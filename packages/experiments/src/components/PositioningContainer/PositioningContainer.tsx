@@ -156,6 +156,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     let directionalClassName = '';
 
     if (positions && positions.directionalClassName) {
+      // tslint:disable-next-line:no-any
       directionalClassName = (AnimationClassNames as any)[positions.directionalClassName];
     }
 
@@ -176,6 +177,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
               directionalClassName,
               !!positioningContainerWidth && { width: positioningContainerWidth }
             ) }
+          // tslint:disable-next-line:jsx-ban-props
           style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
@@ -315,7 +317,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
-    //If the max height is undefined.
+    // If the max height is undefined.
     if (!this._maxHeight) {
       // if the directional hint is fixed and our target Exists
       if (this.props.directionalHintFixed && this._target) {
@@ -398,4 +400,4 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     let { target } = props;
     return target!;
   }
-};
+}
