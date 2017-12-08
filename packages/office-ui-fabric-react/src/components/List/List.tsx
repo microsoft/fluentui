@@ -724,6 +724,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       const pageSpecification = this._getPageSpecification(itemIndex, allowedRect);
       const pageHeight = pageSpecification.height;
       const pageData = pageSpecification.data;
+      const key = pageSpecification.key;
 
       itemsPerPage = pageSpecification.itemCount;
 
@@ -747,7 +748,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         }
 
         let itemsInPage = Math.min(itemsPerPage, endIndex - itemIndex);
-        let newPage = this._createPage(undefined, items!.slice(itemIndex, itemIndex + itemsInPage), itemIndex, undefined, undefined, pageData);
+        let newPage = this._createPage(key, items!.slice(itemIndex, itemIndex + itemsInPage), itemIndex, undefined, undefined, pageData);
 
         newPage.top = pageTop;
         newPage.height = pageHeight;
@@ -800,6 +801,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     itemCount: number;
     height: number;
     data?: any;
+    key?: string;
   } {
     const {
       getPageSpecification
@@ -818,7 +820,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return {
         itemCount: itemCount,
         height: height,
-        data: pageData.data
+        data: pageData.data,
+        key: pageData.key
       };
     } else {
       const itemCount = this._getItemCountForPage(itemIndex, visibleRect);

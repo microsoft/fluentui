@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  IRectangle,
   autobind,
   assign,
   css
@@ -104,6 +105,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ this._returnOne }
+              getPageSpecification= { this._getPageSpecification }
               usePageCache={ usePageCache }
               onShouldVirtualize={ onShouldVirtualize }
             />
@@ -276,6 +278,19 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
       this.forceUpdate();
     }
+  }
+
+  @autobind
+  private _getPageSpecification(itemIndex: number, visibleRect: IRectangle): {
+      itemCount?: number;
+      key?: string;
+  } {
+    const groups = this.state.groups;
+    const pageGroup = groups && groups.filter((group: IGroup) => group.startIndex === itemIndex)[0];
+    return {
+        itemCount: pageGroup && pageGroup.count,
+        key: pageGroup && pageGroup.name
+    };
   }
 
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
