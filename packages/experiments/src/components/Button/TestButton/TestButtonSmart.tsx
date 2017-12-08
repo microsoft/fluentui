@@ -12,7 +12,7 @@ import { MenuButtonBase } from '../_base/MenuButton.base';
 import { IMenuButtonBaseProps } from '../_base/MenuButton.base.types';
 import { SplitButtonBase } from '../_base/SplitButton.base';
 
-import { getStyles, getButtonStyles, getMenuButtonStyles } from './TestButton.styles';
+import { getStyles } from './TestButton.styles';
 
 const TestSplitButton = styled(
   SplitButtonBase,
@@ -25,7 +25,7 @@ const TestSplitButton = styled(
 
 const MenuButton = styled(
   MenuButtonBase,
-  getMenuButtonStyles,
+  getStyles,
   props => ({
     menuIconProps: { iconName: 'ChevronDown' }
   })
@@ -33,7 +33,7 @@ const MenuButton = styled(
 
 const Button = styled(
   ButtonBase,
-  getButtonStyles
+  getStyles
 );
 
 export class TestButtonSmart extends BaseComponent<ISplitButtonBaseProps, {}> {

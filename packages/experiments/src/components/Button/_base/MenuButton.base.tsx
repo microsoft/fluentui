@@ -31,9 +31,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
 
   public render(): JSX.Element {
     const {
-      menuProps,
-      getStyles,
-      onRenderMenu = this._onRenderMenu
+      getStyles
     } = this.props;
     return (
       <ButtonBase
@@ -45,16 +43,31 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
         {...this.props as IButtonBaseProps}
         getStyles={ getStyles }
         data-target-id={ this._labelId }
+        onRenderSuffix={ this._onRenderSuffix }
       >
-        { this.state.menuIsOpen && menuProps &&
-          onRenderMenu(menuProps, this._onRenderMenu)
-        }
+
       </ButtonBase>
     );
   }
 
   public dismissMenu(): void {
     this.setState({ menuIsOpen: false });
+  }
+
+  @autobind
+  private _onRenderSuffix(): JSX.Element | null {
+    const {
+      menuProps,
+      onRenderMenu = this._onRenderMenu
+    } = this.props;
+
+    if (this.state.menuIsOpen && this.props.menuProps) {
+      return (
+        onRenderMenu(menuProps, this._onRenderMenu)
+      );
+    } else {
+      return null;
+    }
   }
 
   @autobind

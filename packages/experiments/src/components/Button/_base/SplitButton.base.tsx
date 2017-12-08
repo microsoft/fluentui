@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  getId,
-  getNativeProps,
-  customizable
+  customizable,
+  autobind,
+  getId
 } from '../../../Utilities';
-import { getAriaProps } from './ButtonUtils';
 import { VerticalDivider } from 'office-ui-fabric-react/lib/Divider';
 import { ButtonBase } from './Button.base';
 import { IButtonBaseProps } from './Button.base.types';
@@ -14,15 +13,8 @@ import { IMenuButtonBaseProps } from './MenuButton.base.types';
 import {
   ISplitButton,
   ISplitButtonBaseProps,
-  ISplitButtonBaseStyleProps,
-  ISplitButtonBaseStyles
 } from './SplitButton.base.types';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import {
-  classNamesFunction
-} from '../../../Utilities';
 
-const getClassNames = classNamesFunction<ISplitButtonBaseStyleProps, ISplitButtonBaseStyles>();
 
 @customizable('SplitButtonBase', ['theme'])
 export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> implements ISplitButton {
@@ -31,51 +23,51 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
     split: false
   };
 
-  private _splitClassNames: {[key in keyof ISplitButtonBaseStyles]: string };
   private _buttonElement: HTMLElement;
-  // private _splitButtonContainer: HTMLElement;
   private _labelId: string;
-  private _descriptionId: string;
-  private _ariaDescriptionId: string;
 
-  constructor(props: ISplitButtonBaseProps, rootClassName: string) {
+
+  constructor(props: ISplitButtonBaseProps) {
     super(props);
-
     this._labelId = getId();
-    this._descriptionId = getId();
-    this._ariaDescriptionId = getId();
-    this.state = {
-      menuOpen: false
-    };
   }
 
   public render(): JSX.Element {
 
     const {
-      className,
-      disabled,
-      checked,
-      getStyles,
-      theme,
-      expanded
+      primaryDisabled,
+      checked
     } = this.props;
 
-    this._splitClassNames = getClassNames(getStyles!, { theme: theme!, className, disabled, checked, expanded });
-
-    const {
-      ariaDescribedBy,
-      ariaLabelledBy
-    } = getAriaProps(this.props, getNativeProps(this.props, ['div']));
 
     const buttonProps = {
-      'aria-labelledby': ariaLabelledBy,
-      'aria-disabled': disabled,
+      'aria-disabled': primaryDisabled,
       'aria-haspopup': true,
-      'aria-pressed': this.props.checked,
-      'aria-describedby': ariaDescribedBy,
+      'aria-pressed': checked,
       'data-target-id': this._labelId,
       componentRef: this._resolveRef('_buttonElement')
     };
+
+    const primaryProps: IButtonBaseProps = {
+      ...this.props as IButtonBaseProps,
+      labelId: this._labelId,
+      menuIconProps: undefined,
+      onRenderMenuIcon: undefined
+    };
+
+    return (
+      <ButtonBase
+        { ...primaryProps }
+        { ...buttonProps } // merge these two together
+        disabled={ primaryDisabled }
+        onRenderSuffix={ this._onRenderSuffix }
+      />
+    );
+
+  }
+
+  @autobind
+  private _onRenderSuffix(): JSX.Element {
 
     const menuButtonProps: IMenuButtonBaseProps = {
       menuIconProps: this.props.menuIconProps || { iconName: 'ChevronDown' },
@@ -90,34 +82,12 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
       disabled: this.props.disabled,
     };
 
-    const primaryProps: IButtonBaseProps = {
-      ...this.props as IButtonBaseProps,
-      menuIconProps: undefined,
-      onRenderMenuIcon: undefined,
-      ariaLabel: undefined,
-      ariaHidden: undefined,
-      ariaDescription: undefined,
-      getStyles: undefined,
-      ariaDescriptionId: this._ariaDescriptionId,
-      labelId: this._labelId,
-      descriptionId: this._descriptionId
-    };
-
     return (
-      <FocusZone
-        className={ this._splitClassNames.root }
-        { ...buttonProps }
-        direction={ FocusZoneDirection.horizontal }
-      >
-        <ButtonBase
-          { ...primaryProps }
-          disabled={ this.props.primaryDisabled }
-        />
+      <span style={ { display: 'flex' } }>
         <VerticalDivider />
         <MenuButtonBase {...menuButtonProps} />
-      </FocusZone>
-    );
-
+      </span>
+    )
   }
 
   public focus(): void {

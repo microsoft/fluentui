@@ -4,16 +4,16 @@ import { MenuButtonBase } from '../_base/MenuButton.base';
 import { SplitButtonBase } from '../_base/SplitButton.base';
 
 
-import { getStyles, getButtonStyles, getMenuButtonStyles } from './TestButton.styles';
+import { getStyles } from './TestButton.styles';
 
 export const TestButton = styled(
   ButtonBase,
-  getButtonStyles
+  getStyles
 );
 
 export const TestMenuButton = styled(
   MenuButtonBase,
-  getMenuButtonStyles,
+  getStyles,
   props => ({
     menuIconProps: { iconName: 'ChevronDown' }
   })

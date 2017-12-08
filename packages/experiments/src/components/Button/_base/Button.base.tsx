@@ -49,7 +49,9 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
-      onRenderMenuIcon = this._onRenderMenuIcon
+      onRenderMenuIcon = this._onRenderMenuIcon,
+      onRenderPrefix,
+      onRenderSuffix
     } = this.props;
 
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -70,23 +72,29 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
     this._classNames = getClassNames(getStyles!, { theme: theme!, className, disabled, checked, expanded });
     let RootType = renderAsAnchor ? 'a' : 'button';
     return (
-      <RootType
-        {...nativeProps}
-        className={ 'ms-Button ' + this._classNames.root }
-        type={ !renderAsAnchor && 'button' }
-        disabled={ disabled }
-        data-is-focusable={ ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true }
-        aria-pressed={ checked }
-        aria-label={ ariaLabel }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-      >
-        { onRenderIcon(this.props, this._onRenderIcon) }
-        { this._onRenderTextContents(this.props) }
-        { onRenderAriaDescription(this.props, this._onRenderAriaDescription) }
-        { onRenderChildren(this.props, this._onRenderChildren) }
-        { onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-      </RootType>
+      <div className={ 'ms-Button ' + this._classNames.root }>
+        { onRenderPrefix && onRenderPrefix() }
+
+        <RootType
+          {...nativeProps}
+          className={ this._classNames.button }
+          type={ !renderAsAnchor && 'button' }
+          disabled={ disabled }
+          data-is-focusable={ ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true }
+          aria-pressed={ checked }
+          aria-label={ ariaLabel }
+          aria-labelledby={ ariaLabelledBy }
+          aria-describedby={ ariaDescribedBy }
+        >
+          { onRenderIcon(this.props, this._onRenderIcon) }
+          { this._onRenderTextContents(this.props) }
+          { onRenderAriaDescription(this.props, this._onRenderAriaDescription) }
+          { onRenderChildren(this.props, this._onRenderChildren) }
+          { onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
+        </RootType>
+
+        { onRenderSuffix && onRenderSuffix() }
+      </div>
     );
   }
 

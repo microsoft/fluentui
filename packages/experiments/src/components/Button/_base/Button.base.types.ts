@@ -142,6 +142,16 @@ export interface IButtonBaseProps extends React.AllHTMLAttributes<HTMLAnchorElem
   onRenderChildren?: IRenderFunction<IButtonBaseProps>;
 
   /**
+  * Custom render function for prefix
+  */
+  onRenderPrefix?: () => JSX.Element | null;
+
+  /**
+  * Custom render function for suffix
+  */
+  onRenderSuffix?: () => JSX.Element | null;
+
+  /**
    * Custom render function for button menu icon
    */
   onRenderMenuIcon?: IRenderFunction<IButtonBaseProps>;
@@ -155,6 +165,7 @@ export interface IButtonBaseProps extends React.AllHTMLAttributes<HTMLAnchorElem
 
 export interface IButtonBaseStyles {
   root?: IStyle;
+  button?: IStyle;
   textContainer?: IStyle;
   icon?: IStyle;
   label?: IStyle;
