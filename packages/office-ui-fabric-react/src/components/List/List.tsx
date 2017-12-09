@@ -168,7 +168,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       DONE_SCROLLING_WAIT, {
         leading: false
       }
-    )
+    );
 
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
