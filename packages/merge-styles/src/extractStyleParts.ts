@@ -24,7 +24,10 @@ export function extractStyleParts(
             if (translatedArgs) {
               _processArgs(translatedArgs);
             } else {
-              classes.push(arg);
+              // Avoid adding the same class twice.
+              if (classes.indexOf(arg) === -1) {
+                classes.push(arg);
+              }
             }
           }
         } else if (Array.isArray(arg)) {

@@ -14,6 +14,8 @@ export function mergeStyleSets<T>(
 ): T {
   // tslint:disable-next-line:no-any
   const classNameSet: any = {};
+  const classMap: { [key: string]: string } = {};
+
   let cssSet = cssSets[0];
 
   if (cssSet) {
@@ -34,6 +36,7 @@ export function mergeStyleSets<T>(
         registrations.push(registration);
 
         if (registration) {
+          classMap[prop] = registration.className;
           classNameSet[prop] = classes.concat([registration.className]).join(' ');
         }
       }
@@ -41,7 +44,7 @@ export function mergeStyleSets<T>(
 
     for (const registration of registrations) {
       if (registration) {
-        applyRegistration(registration, classNameSet);
+        applyRegistration(registration, classMap);
       }
     }
   }
