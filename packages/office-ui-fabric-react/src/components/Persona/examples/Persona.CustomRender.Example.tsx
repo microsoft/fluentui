@@ -33,13 +33,6 @@ export class PersonaCustomRenderExample extends React.Component {
           presence={ PersonaPresence.offline }
           onRenderSecondaryText={ this._onRenderSecondaryText }
         />
-        <div className={ exampleStyles.exampleLabel }>Custom coin size = 150</div>
-        <Persona
-          { ...examplePersona }
-          coinSize={ 150 }
-          presence={ PersonaPresence.online }
-          onRenderSecondaryText={ this._onRenderSecondaryText }
-        />
       </div>
     );
   }

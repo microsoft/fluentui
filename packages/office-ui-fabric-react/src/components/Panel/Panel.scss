@@ -25,6 +25,10 @@ $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
 $CommandBarHeight: 44px;
 
+.hiddenPanel {
+  visibility: hidden;
+}
+
 .root {
   pointer-events: none;
 

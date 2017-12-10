@@ -1,6 +1,31 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 29 Nov 2017 11:24:05 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Dec 2017 18:09:44 GMT and should not be manually modified.
+
+## 5.9.1
+Fri, 08 Dec 2017 18:09:44 GMT
+
+### Patches
+
+- Experiments: Fix build breaks in master
+
+## 5.9.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add experiments page for file type icons
+
+## 5.8.0
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Minor changes
+
+- Revise Signals and provide example page
+
+### Patches
+
+- Fixes the external signal component
 
 ## 5.7.0
 Wed, 29 Nov 2017 11:24:05 GMT

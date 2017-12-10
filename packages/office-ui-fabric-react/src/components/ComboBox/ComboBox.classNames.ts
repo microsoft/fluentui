@@ -52,7 +52,7 @@ export const getClassNames = memoizeFunction((
       !disabled && focused && styles.rootFocused,
       !disabled && {
         selectors: {
-          ':hover': styles.rootHovered,
+          ':hover': !isOpen && !focused && styles.rootHovered,
           ':active': styles.rootPressed,
           ':focus': styles.rootFocused
         }
