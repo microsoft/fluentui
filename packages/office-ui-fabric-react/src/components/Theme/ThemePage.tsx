@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { loadTheme, FontClassNames, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { Highlight } from '@uifabric/example-app-base';
+import { IComponentDemoPageProps, Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
@@ -9,7 +9,7 @@ import { ColorPicker, IColorPickerProps } from 'office-ui-fabric-react/lib/Color
 import './ThemePage.scss';
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
-export class ThemePage extends React.Component<{}, {
+export class ThemePage extends React.Component<IComponentDemoPageProps, {
   colors: {
     key: string;
     name: string;
