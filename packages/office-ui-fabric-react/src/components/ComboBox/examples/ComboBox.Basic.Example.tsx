@@ -42,8 +42,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
   private scaleOptions: IComboBoxOption[] = [];
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       options: [],
       selectedOptionKey: undefined,

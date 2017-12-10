@@ -28,8 +28,8 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     list: DetailsList;
   };
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._onPickerDismiss = this._onPickerDismiss.bind(this);
 

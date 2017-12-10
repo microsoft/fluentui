@@ -38,8 +38,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
   private selectedItemsListProps: ISelectedPeopleProps;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

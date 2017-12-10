@@ -53,8 +53,8 @@ let _items = [
 export class DetailsListGroupedExample extends React.Component<{}, {
   items: {}[];
 }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       items: _items

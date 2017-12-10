@@ -9,8 +9,9 @@ import './DetailsListExample.scss';
 let _items: any[];
 
 export class DetailsListCustomRowsExample extends React.Component {
-  constructor() {
-    super({});
+
+  constructor(props: {}) {
+    super(props);
 
     _items = _items || createListItems(500);
   }

@@ -57,8 +57,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   private _isFetchingItems: boolean;
   private _selection: Selection;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);

@@ -21,8 +21,8 @@ export class LayerContentExample extends BaseComponent<{}, {
     message: string;
   };
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       time: new Date().toLocaleTimeString()
     };
@@ -50,8 +50,8 @@ export class LayerBasicExample extends BaseComponent<{}, {
     message: PropTypes.string
   };
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showLayer: false
     };

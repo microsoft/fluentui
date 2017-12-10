@@ -24,8 +24,8 @@ const examplePersona = {
 export class PersonaBasicExample extends React.Component<{}, {
   renderPersonaDetails?: boolean;
 }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       renderPersonaDetails: true
     };

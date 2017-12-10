@@ -12,8 +12,9 @@ export class LayerHostedExample extends React.Component<{}, {
   showLayer: boolean;
   showHost: boolean;
 }> {
-  constructor() {
-    super({});
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showLayer: false,
       showHost: true

@@ -7,8 +7,8 @@ export class PanelLightDismissExample extends React.Component<{}, {
   showPanel: boolean;
 }> {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = { showPanel: false };
   }

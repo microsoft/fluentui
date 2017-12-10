@@ -21,8 +21,8 @@ export class DetailsListDragDropExample extends React.Component<{}, {
 }> {
   private _selection: Selection;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
 

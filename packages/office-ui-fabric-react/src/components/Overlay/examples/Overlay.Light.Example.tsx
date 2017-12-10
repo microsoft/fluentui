@@ -7,8 +7,8 @@ import './Overlay.Example.scss';
 export class OverlayLightExample extends React.Component<{}, {
   isOverlayVisible: boolean;
 }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._onClick = this._onClick.bind(this);
 

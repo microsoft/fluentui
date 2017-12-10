@@ -6,8 +6,8 @@ import './ContextualMenuExample.scss';
 
 export class ContextualMenuIconExample extends React.Component<{}, { showCallout: boolean }> {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showCallout: false
     };

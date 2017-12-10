@@ -5,8 +5,8 @@ import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showCallout: false
     };

@@ -37,8 +37,8 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _picker: IBaseFloatingPicker;
   private _inputElement: HTMLDivElement;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

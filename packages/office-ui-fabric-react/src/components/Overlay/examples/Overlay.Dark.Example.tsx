@@ -8,8 +8,8 @@ import './Overlay.Example.scss';
 export class OverlayDarkExample extends React.Component<{}, {
   isOverlayVisible: boolean;
 }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = { isOverlayVisible: false };
   }

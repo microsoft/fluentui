@@ -63,8 +63,8 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
 export class SelectionBasicExample extends React.Component<{}, ISelectionBasicExampleState> {
   private _hasMounted: boolean;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._hasMounted = false;
     this._onSelectionChanged = this._onSelectionChanged.bind(this);

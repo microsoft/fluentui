@@ -8,8 +8,8 @@ export class ModalBasicExample extends React.Component<{}, {
   showModal: boolean;
 }> {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showModal: false
     };

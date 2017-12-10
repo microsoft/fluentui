@@ -13,8 +13,8 @@ export class RatingBasicExample extends React.Component<{}, {
   smallStarRating?: number;
   tenStarRating?: number;
 }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       largeStarRating: undefined,

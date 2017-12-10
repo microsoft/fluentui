@@ -14,8 +14,8 @@ export interface ITeachingBubbleWideIllustrationExampleState {
 export class TeachingBubbleWideIllustrationExample extends React.Component<{}, ITeachingBubbleWideIllustrationExampleState> {
   private _menuButtonElement: HTMLElement;
 
-  public constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
 

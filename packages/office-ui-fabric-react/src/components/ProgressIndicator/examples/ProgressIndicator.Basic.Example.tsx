@@ -17,8 +17,8 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
   private _interval: number;
   private _async: Async;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._async = new Async(this);
 

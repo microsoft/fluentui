@@ -11,8 +11,8 @@ let keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic'
 
 export class ContextualMenuCheckmarksExample extends React.Component<{}, IContextualMenuMultiselectExampleState> {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._onToggleSelect = this._onToggleSelect.bind(this);
 

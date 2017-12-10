@@ -7,8 +7,8 @@ export class DialogBlockingExample extends React.Component<{}, {
   hideDialog: boolean;
 }> {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       hideDialog: true
     };

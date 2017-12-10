@@ -9,8 +9,9 @@ export class DropdownBasicExample extends BaseComponent<{}, {
   selectedItems: string[]
 }> {
   private _basicDropdown: IDropdown;
-  constructor() {
-    super({});
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       selectedItem: undefined,
       selectedItems: [],

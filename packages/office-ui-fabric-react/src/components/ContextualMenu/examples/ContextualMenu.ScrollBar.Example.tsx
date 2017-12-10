@@ -7,8 +7,8 @@ export class ContextualMenuWithScrollBarExample extends React.Component<{}, {
   showCallout: boolean;
 }> {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showCallout: false
     };

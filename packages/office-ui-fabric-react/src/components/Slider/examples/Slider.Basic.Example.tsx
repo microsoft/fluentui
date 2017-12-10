@@ -5,8 +5,8 @@ import './Slider.Basic.Example.scss';
 export class SliderBasicExample extends React.Component<{}, {
   value: number
 }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       value: 0

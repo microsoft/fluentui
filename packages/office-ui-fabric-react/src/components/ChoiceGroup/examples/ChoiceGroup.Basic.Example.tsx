@@ -10,8 +10,8 @@ export interface IChoiceGroupBasicExampleState {
 }
 
 export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBasicExampleState> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       imageKey: ''

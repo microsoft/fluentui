@@ -5,8 +5,9 @@ import { DropdownMenuItemType, IDropdownOption, IDropdownProps } from './../Drop
 import { Icon } from '../../Icon';
 
 export class DropdownCustomExample extends React.Component {
-  constructor() {
-    super({});
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       selectedItem: null
     };

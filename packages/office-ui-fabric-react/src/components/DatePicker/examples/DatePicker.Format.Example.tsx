@@ -70,8 +70,8 @@ export class DatePickerFormatExample extends React.Component<
   {},
   IDatePickerFormatExampleState
   > {
-  public constructor() {
-    super({});
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,

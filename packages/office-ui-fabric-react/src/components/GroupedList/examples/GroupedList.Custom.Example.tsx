@@ -15,8 +15,8 @@ let _groups: IGroup[];
 
 export class GroupedListCustomExample extends React.Component {
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     _items = _items || createListItems(20);
     _groups = createGroups(4, 0, 0, 5);

@@ -11,8 +11,8 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
 
   private _iconButtonElement: HTMLElement;
 
-  public constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       isCalloutVisible: false

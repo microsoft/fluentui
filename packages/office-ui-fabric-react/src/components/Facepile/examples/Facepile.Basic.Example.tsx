@@ -17,8 +17,9 @@ export interface IFacepileBasicExampleState {
 }
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
-  public constructor() {
-    super({});
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       numberOfFaces: 3,

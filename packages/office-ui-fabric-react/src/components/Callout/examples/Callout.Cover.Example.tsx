@@ -29,8 +29,8 @@ const DIRECTION_OPTIONS = [
 export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
-  public constructor() {
-    super({});
+  public constructor(props: {}) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);

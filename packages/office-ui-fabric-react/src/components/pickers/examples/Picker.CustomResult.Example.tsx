@@ -334,8 +334,8 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
 export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {
 }
 export class PickerCustomResultExample extends React.Component<{}, IPeoplePickerExampleState> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this._onFilterChanged = this._onFilterChanged.bind(this);
     this.state = {
       isPickerDisabled: false

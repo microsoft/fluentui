@@ -57,8 +57,8 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
 }> {
   private _selection: Selection;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     // Populate with items for demos.
     if (_items.length === 0) {

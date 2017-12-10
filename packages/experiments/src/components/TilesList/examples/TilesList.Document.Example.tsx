@@ -45,8 +45,8 @@ export interface ITilesListDocumentExampleState {
 export class TilesListDocumentExample extends React.Component<{}, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
