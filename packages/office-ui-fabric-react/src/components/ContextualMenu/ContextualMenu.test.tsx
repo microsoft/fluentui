@@ -4,13 +4,14 @@ import * as React from 'react';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
-  KeyCodes,
+  KeyCodes
 } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { Layer } from '../Layer/Layer';
+import { mount } from 'enzyme';
 
 describe('ContextualMenu', () => {
 
@@ -249,12 +250,13 @@ describe('ContextualMenu', () => {
         key: 'TestKey1',
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
+          key: 'Section1',
           topDivider: true,
           bottomDivider: true,
           items: [
             {
               name: 'TestText 2',
-              key: 'TestKey3'
+              key: 'TestKey2'
             },
             {
               name: 'TestText 3',
@@ -267,6 +269,7 @@ describe('ContextualMenu', () => {
         key: 'TestKey4',
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
+          key: 'Section1',
           items: [
             {
               name: 'TestText 5',
@@ -281,7 +284,7 @@ describe('ContextualMenu', () => {
       }
     ];
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+    const foo = ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
       />
@@ -289,6 +292,7 @@ describe('ContextualMenu', () => {
 
     let menuItems = document.querySelectorAll('li');
     expect(menuItems.length).toEqual(8);
+
   });
 
   it('does not return a value if no items are given', () => {
@@ -499,6 +503,7 @@ describe('ContextualMenu', () => {
           name: 'Item 3',
           key: 'Item 3',
           sectionProps: {
+            key: 'Section1',
             items: [
               { name: 'Item 1', key: 'Item 1' },
               { name: 'Item 2', key: 'Item 2', canCheck: true },

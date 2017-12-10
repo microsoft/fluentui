@@ -2,6 +2,9 @@
 require('raf/polyfill');
 
 // Fail on warnings.
-console.warn = (message) => {
-  throw new Error(message);
+const consoleError = console.error;
+
+console.error = console.warn = (message) => {
+  consoleError(message);
+  throw new Error("Caught: " + message);
 };

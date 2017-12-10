@@ -524,10 +524,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       style: item.style
     };
 
-    return React.createElement(
-      'button',
-      assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
-      this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!));
+    return (
+      <button
+        { ...getNativeProps(item, buttonProperties) }
+        { ...itemButtonProperties }
+        children={ this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!) }
+      />
+    );
   }
 
   private _renderSplitButton(
@@ -566,6 +569,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
 
     const itemProps = {
+      key: item.key,
       onClick: this._executeItemClick.bind(this, item),
       disabled: item.disabled || item.primaryDisabled,
       name: item.name,

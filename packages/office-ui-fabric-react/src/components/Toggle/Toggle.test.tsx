@@ -124,8 +124,6 @@ describe('Toggle', () => {
     let button: any = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
-    // click to force propegation to form wrapper https://github.com/airbnb/enzyme/issues/308#issuecomment-255630011
-    button.get(0).click();
     expect((component as React.Component<any, any>).state.isChecked).toEqual(true);
     expect(onSubmit.called).toEqual(false);
   });
