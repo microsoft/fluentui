@@ -35,22 +35,3 @@ export const PERSONA_PRESENCE: { [key: number]: string } = {
   [PersonaPresence.blocked]: 'ms-Persona--blocked ' + styles.rootIsBlocked,
   [PersonaPresence.busy]: 'ms-Persona--busy ' + styles.rootIsBusy
 };
-
-export const PERSONA_INITIALS_COLOR: { [key: number]: string } = {
-  [PersonaInitialsColor.lightBlue]: 'ms-Persona-initials--lightBlue ' + styles.initialsIsLightBlue,
-  [PersonaInitialsColor.blue]: 'ms-Persona-initials--blue ' + styles.initialsIsBlue,
-  [PersonaInitialsColor.darkBlue]: 'ms-Persona-initials--darkBlue ' + styles.initialsIsDarkBlue,
-  [PersonaInitialsColor.teal]: 'ms-Persona-initials--teal ' + styles.initialsIsTeal,
-  [PersonaInitialsColor.lightGreen]: 'ms-Persona-initials--lightGreen ' + styles.initialsIsLightGreen,
-  [PersonaInitialsColor.green]: 'ms-Persona-initials--green ' + styles.initialsIsGreen,
-  [PersonaInitialsColor.darkGreen]: 'ms-Persona-initials--darkGreen ' + styles.initialsIsDarkGreen,
-  [PersonaInitialsColor.lightPink]: 'ms-Persona-initials--lightPink ' + styles.initialsIsLightPink,
-  [PersonaInitialsColor.pink]: 'ms-Persona-initials--pink ' + styles.initialsIsPink,
-  [PersonaInitialsColor.magenta]: 'ms-Persona-initials--magenta ' + styles.initialsIsMagenta,
-  [PersonaInitialsColor.purple]: 'ms-Persona-initials--purple ' + styles.initialsIsPurple,
-  [PersonaInitialsColor.black]: 'ms-Persona-initials--black ' + styles.initialsIsBlack,
-  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsOrange,
-  [PersonaInitialsColor.red]: 'ms-Persona-initials--red ' + styles.initialsIsRed,
-  [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed ' + styles.initialsIsDarkRed,
-  [PersonaInitialsColor.transparent]: 'ms-Persona-initials--transparent ' + styles.initialsIsTransparent
-};
