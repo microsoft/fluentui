@@ -357,9 +357,10 @@
     },
     "@rush-temp/styling": {
       "version": "file:projects/styling.tgz",
-      "integrity": "sha1-tRDWzRHIkKR55jv5FPThXS4MoNk=",
+      "integrity": "sha1-cfwuwmiZBA75r4f3XOGlfm8QeKI=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
+        "@types/jest": "21.1.8",
         "@types/react": "16.0.25",
         "@types/webpack-env": "1.13.0",
         "es6-map": "0.1.5",
