@@ -233,17 +233,9 @@
     },
     "@rush-temp/file-type-icons": {
       "version": "file:projects/file-type-icons.tgz",
-      "integrity": "sha1-ZUs8EllhOj3QCWYk4v/Y8EKaGdk=",
+      "integrity": "sha1-y7dYolrIfUQA4DjzSGbFTk3dpcw=",
       "requires": {
-        "@types/react": "15.6.7",
         "tslib": "1.8.1"
-      },
-      "dependencies": {
-        "@types/react": {
-          "version": "15.6.7",
-          "resolved": "https://registry.npmjs.org/@types/react/-/react-15.6.7.tgz",
-          "integrity": "sha512-HMfRuwiTp7/MfjPOsVlvlduouJH3haDzjc0oXqZy3ZMn3OTl3i4gGgbxsqzA/u9gNyl/oKkwOrU2oVR6vG5SAw=="
-        }
       }
     },
     "@rush-temp/icons": {
@@ -270,7 +262,7 @@
     },
     "@rush-temp/office-ui-fabric-react": {
       "version": "file:projects/office-ui-fabric-react.tgz",
-      "integrity": "sha1-lN6TTTjOWMfyvOgHxRLN09vGEIQ=",
+      "integrity": "sha1-gRlkBzAOt59tF8sFqocI1JUMQiU=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/enzyme": "3.1.5",
@@ -279,7 +271,7 @@
         "@types/jest": "21.1.8",
         "@types/prop-types": "15.5.2",
         "@types/react": "16.0.25",
-        "@types/react-dom": "15.5.5",
+        "@types/react-dom": "16.0.3",
         "@types/react-test-renderer": "16.0.0",
         "@types/resemblejs": "1.3.28",
         "@types/sinon": "2.2.2",
@@ -301,14 +293,6 @@
         "tslib": "1.8.1"
       },
       "dependencies": {
-        "@types/react-dom": {
-          "version": "15.5.5",
-          "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-15.5.5.tgz",
-          "integrity": "sha512-o9mYuvKgPdyzk20DSIqEBUSGVsSb1QnWtOQoPK/ExcF70Qnhr80no4MgbrEw/2pHiZbLKOjV7mWgKYTLq6f04g==",
-          "requires": {
-            "@types/react": "16.0.25"
-          }
-        },
         "lolex": {
           "version": "1.6.0",
           "resolved": "https://registry.npmjs.org/lolex/-/lolex-1.6.0.tgz",
@@ -7274,7 +7258,7 @@
         "hoek": "4.2.0",
         "isemail": "2.2.1",
         "items": "2.1.1",
-        "moment": "2.19.3",
+        "moment": "2.19.4",
         "topo": "2.0.2"
       }
     },
@@ -8160,9 +8144,9 @@
       }
     },
     "moment": {
-      "version": "2.19.3",
-      "resolved": "https://registry.npmjs.org/moment/-/moment-2.19.3.tgz",
-      "integrity": "sha1-vbmdJw1tf9p4zA+6zoVeJ/59pp8="
+      "version": "2.19.4",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.19.4.tgz",
+      "integrity": "sha512-1xFTAknSLfc47DIxHDUbnJWC+UwgWxATmymaxIPQpmMh7LBm7ZbwVEsuushqwL2GYZU0jie4xO+TK44hJPjNSQ=="
     },
     "ms": {
       "version": "2.0.0",
@@ -12575,7 +12559,7 @@
                 "hoek": "4.2.0",
                 "isemail": "2.2.1",
                 "items": "2.1.1",
-                "moment": "2.19.3",
+                "moment": "2.19.4",
                 "topo": "2.0.2"
               }
             },
@@ -14834,7 +14818,7 @@
         "filesize": "3.5.11",
         "lodash": "4.15.0",
         "mkdirp": "0.5.1",
-        "moment": "2.19.3"
+        "moment": "2.19.4"
       },
       "dependencies": {
         "ansi-styles": {

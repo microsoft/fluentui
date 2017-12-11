@@ -19,7 +19,6 @@
     "jest"
   ],
   "devDependencies": {
-    "@types/react": "15.6.7",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
