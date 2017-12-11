@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Dec 2017 03:44:42 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Dec 2017 21:30:54 GMT and should not be manually modified.
+
+## 5.30.2
+Fri, 08 Dec 2017 21:30:54 GMT
+
+### Patches
+
+- ComboBox:Make sure currentOtions has values before attempt to get values out of it
+
+## 5.30.1
+Fri, 08 Dec 2017 18:09:44 GMT
+
+### Patches
+
+- ComboBox: change when focus is set back to the input to make sure it doesn't  steal focus from somewhere else
+- Added checks to BasePicker if input is null.
+- ContextualMenu: properly observe deprecated `isDisabled` property (until we remove the property)
 
 ## 5.30.0
 Thu, 07 Dec 2017 03:44:42 GMT

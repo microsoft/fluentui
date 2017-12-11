@@ -15,7 +15,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
 
     this.state = {
       isPositioningContainerVisible: false
-    }
+    };
   }
   public render(): JSX.Element {
     let { isPositioningContainerVisible } = this.state;
@@ -42,13 +42,13 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
       </div>
     );
   }
-  private _onShowMenuClicked() {
+  private _onShowMenuClicked(): void {
     this.setState({
       isPositioningContainerVisible: !this.state.isPositioningContainerVisible
     });
   }
 
-  private _onDismiss() {
+  private _onDismiss(): void {
     this.setState({
       isPositioningContainerVisible: false
     });
