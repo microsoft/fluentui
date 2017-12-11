@@ -12,8 +12,8 @@ export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <DefaultButton
-        { ...this.props }
-        styles={ getStyles(theme!, styles) }
+        // { ...this.props }
+        // styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
     );

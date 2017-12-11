@@ -26,7 +26,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
-            splitButtonAriaLabel={ 'See 2 sample options' }
+            ariaLabel={ 'See 2 sample options' }
             style={ { height: '35px' } }
             menuProps={ {
               items: [

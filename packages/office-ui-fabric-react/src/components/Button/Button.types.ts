@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
-import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
@@ -19,7 +18,7 @@ export interface IButton {
   dismissMenu: () => void;
 }
 
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export interface ITeachingBubbleSmallHeadlineExampleState {
@@ -23,7 +23,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<any, ITe
 
   public render() {
     let { isTeachingBubbleVisible } = this.state;
-    let examplePrimaryButton: IButtonProps = {
+    let examplePrimaryButton: IButtonBaseProps = {
       children: 'Try it out',
     };
 
