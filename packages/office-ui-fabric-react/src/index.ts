@@ -3,6 +3,7 @@
  * parsed and available at load time, which is not necessary for most cases.
  */
 
+export * from './ActivityItem';
 export * from './Breadcrumb';
 export * from './Button';
 export * from './Calendar';
