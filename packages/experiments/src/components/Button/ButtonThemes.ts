@@ -1,12 +1,11 @@
 import { IButtonBaseStyles, IButtonBaseStyleProps } from './_base/Button.base.types';
-import { ISplitButtonBaseStyles, ISplitButtonBaseStyleProps } from './_base/SplitButton.base.types';
 import { HighContrastSelector } from '../../Styling';
 
 export function standardStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
   const {
     expanded,
     checked,
-    // disabled
+    disabled
   } = props;
 
   let s = props.theme.semanticColors;
@@ -23,7 +22,7 @@ export function standardStyles(props: IButtonBaseStyleProps): IButtonBaseStyles 
 
   return {
     button: [
-      {
+      !disabled && {
         backgroundColor: buttonBackground,
         color: buttonText,
         selectors: {
@@ -37,11 +36,11 @@ export function standardStyles(props: IButtonBaseStyleProps): IButtonBaseStyles 
           }
         }
       },
-      expanded && {
+      expanded && !disabled && {
         backgroundColor: buttonBackgroundChecked,
         color: buttonTextChecked
       },
-      checked && {
+      checked && !disabled && {
         backgroundColor: buttonBackgroundChecked,
         color: buttonTextChecked,
         selectors: {
@@ -55,38 +54,34 @@ export function standardStyles(props: IButtonBaseStyleProps): IButtonBaseStyles 
   };
 }
 
-export function standardSplitStyles(props: ISplitButtonBaseStyleProps): ISplitButtonBaseStyles {
+export function standardSplitStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
   const { theme, disabled, checked, expanded } = props;
   return ({
-    // Split button styles
-    divider: {
-      backgroundColor: theme.palette.neutralTertiaryAlt
-    },
-
-    button: [{
-      color: theme.palette.white,
-      backgroundColor: theme.palette.neutralLighter,
-      selectors: {
-        ':hover': {
-          backgroundColor: theme.palette.neutralLight
+    button: [
+      !disabled && {
+        color: theme.palette.white,
+        backgroundColor: theme.palette.neutralLighter,
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.neutralLight
+          }
+        },
+      },
+      disabled && {
+        backgroundColor: theme.palette.neutralLighter,
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.neutralLighter,
+          }
         }
       },
-    },
-    disabled && {
-      backgroundColor: theme.palette.neutralLighter,
-      selectors: {
-        ':hover': {
-          backgroundColor: theme.palette.neutralLighter,
-        }
-      }
-    },
-    checked && {
-      backgroundColor: theme.palette.themePrimary,
+      checked && !disabled && {
+        backgroundColor: theme.palette.themePrimary,
 
-    },
-    expanded && {
-      backgroundColor: theme.palette.neutralLight,
-    }
+      },
+      expanded && !disabled && {
+        backgroundColor: theme.palette.neutralLight,
+      }
     ],
     menuIcon: [
       {
@@ -110,7 +105,7 @@ export function primaryStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
 
   return {
     button: [
-      {
+      !disabled && {
         backgroundColor: theme.palette.themePrimary,
         color: theme.palette.white,
         selectors: {
@@ -143,11 +138,11 @@ export function primaryStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
           }
         }
       },
-      expanded && {
+      expanded && !disabled && {
         backgroundColor: theme.palette.themeDark,
         color: theme.palette.white
       },
-      checked && {
+      checked && !disabled && {
         backgroundColor: theme.palette.themeDark,
         color: theme.palette.white,
         selectors: {
@@ -170,38 +165,35 @@ export function primaryStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
   }
 }
 
-export function primarySplitStyles(props: ISplitButtonBaseStyleProps): ISplitButtonBaseStyles {
+export function primarySplitStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
   const { theme, disabled, checked, expanded } = props;
   return ({
-    // Split button styles
-    divider: {
-      backgroundColor: theme.palette.themeLighter
-    },
 
-    button: [{
-      backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white,
-      selectors: {
-        ':hover': {
-          backgroundColor: theme.palette.themeDark
+    button: [
+      !disabled && {
+        backgroundColor: theme.palette.themePrimary,
+        color: theme.palette.white,
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.themeDark
+          }
+        },
+      },
+      disabled && {
+        backgroundColor: theme.palette.neutralLighter,
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.neutralLighter,
+          }
         }
       },
-    },
-    disabled && {
-      backgroundColor: theme.palette.neutralLighter,
-      selectors: {
-        ':hover': {
-          backgroundColor: theme.palette.neutralLighter,
-        }
-      }
-    },
-    checked && {
-      backgroundColor: theme.palette.themeDark,
+      checked && !disabled && {
+        backgroundColor: theme.palette.themeDark,
 
-    },
-    expanded && {
-      backgroundColor: theme.palette.themeDark,
-    }
+      },
+      expanded && !disabled && {
+        backgroundColor: theme.palette.themeDark,
+      }
     ],
     menuIcon: [
       {

@@ -11,7 +11,6 @@ import {
 import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IButtonBaseProps, IButtonBase, IButtonBaseStyleProps, IButtonBaseStyles } from './Button.base.types';
-import { getAriaProps } from './ButtonUtils';
 import {
   classNamesFunction
 } from '../../../Utilities';
@@ -66,7 +65,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       ariaDescribedBy,
       ariaLabelledBy,
       ariaLabel
-    } = getAriaProps(
+    } = this._getAriaProps(
         this.props,
         getNativeProps(this.props, [renderAsAnchor ? 'a' : 'button']
         ));
@@ -226,5 +225,36 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
     }
 
     return null;
+  }
+
+  private _getAriaProps(props: IButtonBaseProps, nativeProps: {}) {
+    let ariaDescribedBy: string | null = null;
+    let ariaLabelledBy: string | null = null;
+    let nativeAriaDescribedBy: string | null = (nativeProps as any)['aria-describedby'];
+    let nativeAriaLabelledBy: string | null = (nativeProps as any)['aria-labelledby'];
+
+    if (props.ariaDescription) {
+      ariaDescribedBy = this._ariaDescriptionId;
+    } else if (props.description) {
+      ariaDescribedBy = this._descriptionId;
+    } else if (nativeAriaDescribedBy) {
+      ariaDescribedBy = nativeAriaDescribedBy;
+    }
+
+    if (!props.ariaLabel) {
+      if (nativeAriaLabelledBy) {
+        ariaLabelledBy = nativeAriaLabelledBy;
+      } else if (ariaDescribedBy) {
+        ariaLabelledBy = props.text ? this._labelId : null;
+      }
+    }
+
+    return {
+      ariaDescribedBy,
+      ariaLabelledBy,
+      ariaLabel: props.ariaLabel,
+      ariaHidden: props.ariaHidden,
+      ariaDescription: props.ariaDescription
+    };
   }
 }

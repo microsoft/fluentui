@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { IButtonBaseProps, IButtonBase, IButtonBaseStyleProps, IButtonBaseStyles } from './Button.base.types';
+import { IButtonBaseProps, IButtonBase } from './Button.base.types';
 import { IRenderFunction } from '../../../Utilities';
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
-import {
-  IStyleFunction,
-} from '../../../Utilities';
 
 export interface IMenuButtonBase extends IButtonBase {
   /**
@@ -40,17 +37,4 @@ export interface IMenuButtonBaseProps extends IButtonBaseProps {
  * Any custom data the developer wishes to associate with the menu item.
  */
   data?: any;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  getStyles?: IStyleFunction<IMenuButtonBaseStyleProps, IMenuButtonBaseStyles>;
-}
-
-export interface IMenuButtonBaseStyles extends IButtonBaseStyles {
-
-}
-
-export interface IMenuButtonBaseStyleProps extends IButtonBaseStyleProps {
-
 }

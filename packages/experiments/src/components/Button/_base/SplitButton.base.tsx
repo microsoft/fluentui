@@ -14,7 +14,6 @@ import {
   ISplitButton,
   ISplitButtonBaseProps,
 } from './SplitButton.base.types';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 
 @customizable('SplitButtonBase', ['theme'])
