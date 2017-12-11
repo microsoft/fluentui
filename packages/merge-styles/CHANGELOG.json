@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.8.1",
+      "tag": "@uifabric/merge-styles_v5.8.1",
+      "date": "Mon, 11 Dec 2017 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a1c3530c60b1b1b90de33fb917d0f668f1055525",
+            "comment": "Fixing issues where child variables in selectors would not expand correctly. Also fixing a case where the same static class registered in two different sets will not show up multiple times in the result from `mergeStyleSets`."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.0",
       "tag": "@uifabric/merge-styles_v5.8.0",
       "date": "Fri, 01 Dec 2017 11:11:16 GMT",
