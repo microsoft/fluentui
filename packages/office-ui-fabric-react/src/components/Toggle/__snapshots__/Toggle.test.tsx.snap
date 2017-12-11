@@ -43,7 +43,7 @@ exports[`Toggle renders toggle correctly 1`] = `
   >
     <button
       aria-disabled={undefined}
-      aria-label={undefined}
+      aria-label="Label"
       aria-pressed={false}
       className=
           ms-Toggle-background
@@ -78,7 +78,7 @@ exports[`Toggle renders toggle correctly 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #212121;
           }
       data-is-focusable={true}
       disabled={undefined}
@@ -91,16 +91,16 @@ exports[`Toggle renders toggle correctly 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #212121;
               border-color: transparent;
               border-radius: .5em;
               border-style: solid;
-              border-width: .27em;
+              border-width: .28em;
               box-sizing: border-box;
               height: .5em;
               left: .2em;
               position: absolute;
-              top: .2em;
+              top: .18em;
               transition: all 0.1s ease;
               width: .5em;
             }

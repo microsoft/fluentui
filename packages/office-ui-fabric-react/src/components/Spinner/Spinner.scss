@@ -62,7 +62,7 @@ $borderSize: 1.5px;
 @include high-contrast {
   .root {
     > .circle {
-        border-top-style: none;
+        border-top-color: Highlight;
     }
   }
 }

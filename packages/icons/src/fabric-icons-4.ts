@@ -1,9 +1,16 @@
 // tslint:disable:max-line-length
 
-import { registerIcons } from '@uifabric/styling/lib/index';
+import {
+  IIconOptions,
+  IIconSubset,
+  registerIcons
+} from '@uifabric/styling/lib/index';
 
-export function initializeIcons(baseUrl: string = ''): void {
-  registerIcons({
+export function initializeIcons(
+  baseUrl: string = '',
+  options?: IIconOptions
+): void {
+  const subset: IIconSubset = {
     style: {
       MozOsxFontSmoothing: 'grayscale',
       WebkitFontSmoothing: 'antialiased',
@@ -13,7 +20,7 @@ export function initializeIcons(baseUrl: string = ''): void {
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-46fbc7bc.woff') format('woff')`, 
+      src: `url('${baseUrl}fabric-icons-4-46fbc7bc.woff') format('woff')`,
     },
     icons: {
       'ReminderGroup': '\uEBF8',
@@ -113,5 +120,7 @@ export function initializeIcons(baseUrl: string = ''): void {
       'LyncLogo': '\uED79',
       'OfficeVideoLogoInverse': '\uED7A'
     }
-  });
+  };
+
+  registerIcons(subset, options);
 }

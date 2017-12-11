@@ -11,6 +11,18 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
+          key: 'PositioningContainer',
+          name: 'PositioningContainer',
+          url: '#/examples/PositioningContainer'
+        },
+        {
+          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
+          key: 'Coachmark',
+          name: 'Coachmark',
+          url: '#/examples/coachmark'
+        },
+        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
@@ -29,10 +41,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/form'
         },
         {
+          component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
+          key: 'FileTypeIcon',
+          name: 'FileTypeIcon',
+          url: '#/examples/filetypeicon'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/signals/SignalsPage').SignalsPage,
+          key: 'Signals',
+          name: 'Signals',
+          url: '#/examples/signals'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,

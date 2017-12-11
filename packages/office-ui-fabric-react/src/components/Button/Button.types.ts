@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IButtonClassNames } from './BaseButton.classNames';
+import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
@@ -116,6 +118,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuIconProps?: IIconProps;
 
   /**
+   * Accessible label for the dropdown chevron button if this button is split.
+   */
+  splitButtonAriaLabel?: string;
+
+  /**
    * Optional callback when menu is clicked.
    */
   onMenuClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, button?: IButtonProps) => void;
@@ -185,6 +192,32 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
  * Any custom data the developer wishes to associate with the menu item.
  */
   data?: any;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseButtonClassNames
+  */
+  getClassNames?: (theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined) => IButtonClassNames;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseSplitButtonClassNames
+  */
+  getSplitButtonClassNames?: (disabled: boolean,
+    expanded: boolean,
+    checked: boolean) => ISplitButtonClassNames;
 }
 
 export enum ElementType {
