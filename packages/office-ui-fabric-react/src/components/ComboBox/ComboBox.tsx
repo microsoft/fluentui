@@ -1112,8 +1112,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // close the menu and focus the input
     this.setState({ isOpen: false });
 
-    if (this.props.onMenuDismiss) {
-      this.props.onMenuDismiss();
+    if (this.props.onMenuDismissed) {
+      this.props.onMenuDismissed();
     }
 
     if (this._focusInputAfterClose) {
