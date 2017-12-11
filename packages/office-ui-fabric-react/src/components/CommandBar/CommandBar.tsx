@@ -7,7 +7,8 @@ import {
   css,
   divProperties,
   getId,
-  getNativeProps
+  getNativeProps,
+  assertNever
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -170,16 +171,24 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _renderCommandBarItem(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+    // If no itemType is passed, render an item as normal.
+    if (item.itemType === undefined) {
+      return this._renderNormalItem(item, index, expandedMenuItemKey);
+    }
+
     switch (item.itemType) {
       case ContextualMenuItemType.Divider:
         return this._renderSeparator(item, index, isFarItem);
+      case ContextualMenuItemType.Normal:
+        return this._renderNormalItem(item, index, expandedMenuItemKey);
       case ContextualMenuItemType.Header:
       case ContextualMenuItemType.Section:
         // Unsupported
         return null;
-      case ContextualMenuItemType.Normal:
       default:
-        return this._renderNormalItem(item, index, expandedMenuItemKey);
+        // If we ever add a new ContextualMenuItemType in the future without adding to this switch,
+        // it will result in a build break
+        assertNever(item.itemType as never);
     }
   }
 
@@ -292,21 +301,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _renderSeparator(item: ICommandBarItemProps, index: number, isFarItem?: boolean): React.ReactNode {
-    // Do not render if separator is first or last item
-    if (index > 0 &&
-      index + 1 < (isFarItem ?
-        this.state.renderedFarItems!.length :
-        this.state.renderedItems!.length)) {
-      const itemKey = item.key || String(index);
-      return (
-        <div
-          className={ css('ms-CommandBarDivider', styles.divider, item.className) }
-          key={ itemKey }
-          ref={ itemKey }
-        />
-      );
-    }
-    return null;
+    const itemKey = item.key || String(index);
+    return (
+      <div
+        className={ css('ms-CommandBarDivider', styles.divider, item.className) }
+        key={ itemKey }
+        ref={ itemKey }
+      />
+    );
   }
 
   private _renderIcon(item: IContextualMenuItem) {
@@ -344,14 +346,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       let item = this.props.items[i];
 
       if (!this._commandItemWidths[item.key]) {
-        if (item.itemType === ContextualMenuItemType.Divider) {
-          this._commandItemWidths[item.key] = 1;
-        } else {
-          let el = this.refs[item.key] as HTMLElement;
+        let el = this.refs[item.key] as HTMLElement;
 
-          if (el) {
-            this._commandItemWidths[item.key] = el.getBoundingClientRect().width;
-          }
+        if (el) {
+          this._commandItemWidths[item.key] = el.getBoundingClientRect().width;
         }
       }
     }
@@ -394,19 +392,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           i--;
         }
 
-        // Insert divider between overflow items
         renderedOverflowItems = renderedItems
           .splice(i)
-          .concat({
-            key: '_overflow_divider',
-            itemType: ContextualMenuItemType.Divider
-          })
           .concat(overflowItems!);
         break;
       } else {
         consumedWidth += itemWidth;
       }
-
     }
 
     let renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(

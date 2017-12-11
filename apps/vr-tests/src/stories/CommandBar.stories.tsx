@@ -3,7 +3,10 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
-import { CommandBar } from 'office-ui-fabric-react';
+import {
+  CommandBar,
+  ContextualMenuItemType
+} from 'office-ui-fabric-react';
 
 const items = [
   {
@@ -26,6 +29,10 @@ const items = [
     },
   },
   {
+    key: 'divider_1',
+    itemType: ContextualMenuItemType.Divider
+  },
+  {
     key: 'upload',
     name: 'Upload',
     icon: 'Upload'
@@ -39,6 +46,10 @@ const items = [
     key: 'download',
     name: 'Download',
     icon: 'Download'
+  },
+  {
+    key: 'divider_1',
+    itemType: ContextualMenuItemType.Divider
   },
   {
     key: 'disabled',
