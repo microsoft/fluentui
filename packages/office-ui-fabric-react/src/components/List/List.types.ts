@@ -29,8 +29,13 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   /** Items to render. */
   items?: any[];
 
-  /** Method to call when trying to render an item. */
-  onRenderCell?: (item?: any, index?: number) => React.ReactNode;
+  /**
+   * Method to call when trying to render an item.
+   * @param {any} item - The the data associated with the cell that is being rendered.
+   * @param {number} index - The index of the cell being rendered.
+   * @param {boolean} isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
+   */
+  onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
 
   /** Optional callback for monitoring when a page is added. */
   onPageAdded?: (page: IPage) => void;
