@@ -131,6 +131,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _scrollIdleTimeoutId: number | undefined;
 
+  // Determines if we should be setting
+  // focus back to the input when the menu closes.
+  // The general rule of thumb is if the menu was launched
+  // vai the keyboard focus should go back to the input,
+  // if it was dropped via the mouse focus should not be
+  // forced back to the input
+  private _focusInputAfterClose: boolean;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
@@ -203,24 +211,29 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
-    // If we are open or we are focused but are not the activeElement,
-    // set focus on the input
-    if (isOpen || (focused && document.activeElement !== this._comboBox.inputElement)) {
+    // If we are open or we are just closed, shouldFocusAfterClose is set,
+    // are focused but we are not the activeElement set focus on the input
+    if (isOpen ||
+      (prevState.isOpen &&
+        !isOpen &&
+        this._focusInputAfterClose &&
+        focused &&
+        document.activeElement !== this._comboBox.inputElement)) {
       this.focus();
     }
 
-    // If we just opened/closed the menu OR
-    // are focused AND
-    //   updated the selectedIndex with the menu closed OR
-    //   are not allowing freeform OR
-    //   the value changed
+    // If we should focusAfterClose AND
+    //   just opened/closed the menu OR
+    //   are focused AND
+    //     updated the selectedIndex with the menu closed OR
+    //     are not allowing freeform OR
+    //     the value changed
     // we need to set selection
-    if (prevState.isOpen !== isOpen ||
+    if (this._focusInputAfterClose && (prevState.isOpen && !isOpen ||
       (focused &&
         ((!isOpen && prevState.selectedIndex !== selectedIndex) ||
-          !allowFreeform ||
-          value !== prevProps.value)
-      )) {
+          !allowFreeform || value !== prevProps.value)
+      ))) {
       this._select();
     }
 
@@ -625,6 +638,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     newIndex = Math.max(0, Math.min(currentOptions.length - 1, newIndex));
 
+    if (!this._indexWithinBounds(currentOptions, newIndex)) {
+      return -1;
+    }
+
     let option: IComboBoxOption = currentOptions[newIndex];
 
     // attempt to skip headers and dividers
@@ -633,8 +650,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Should we continue looking for an index to select?
       if (searchDirection !== SearchDirection.none &&
-        ((newIndex !== 0 && searchDirection < SearchDirection.none) ||
-          (newIndex !== currentOptions.length - 1 && searchDirection > SearchDirection.none))) {
+        ((newIndex > 0 && searchDirection < SearchDirection.none) ||
+          (newIndex >= 0 && newIndex < currentOptions.length && searchDirection > SearchDirection.none))) {
         newIndex = this._getNextSelectableIndex(newIndex, searchDirection);
       } else {
         // If we cannot perform a useful search just return the index we were given
@@ -659,6 +676,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Find the next selectable index, if searchDirection is none
     // we will get our starting index back
     index = this._getNextSelectableIndex(index, searchDirection);
+
+    if (!this._indexWithinBounds(currentOptions, index)) {
+      return;
+    }
 
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
@@ -772,7 +793,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (allowFreeform && currentPendingValue !== '') {
 
       // Check to see if the user typed an exact match
-      if (currentPendingValueValidIndex >= 0) {
+      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         let pendingOptionText: string = currentOptions[currentPendingValueValidIndex].text.toLocaleLowerCase();
 
         // By exact match, that means: our pending value is the same as the the pending option text OR
@@ -1090,7 +1111,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // close the menu and focus the input
     this.setState({ isOpen: false });
-    this._comboBox.focus();
+
+    if (this._focusInputAfterClose) {
+      this._comboBox.focus();
+    }
   }
 
   /**
@@ -1181,11 +1205,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
     let {
       isOpen,
-      selectedIndex
+      selectedIndex,
+      currentOptions
     } = this.state;
 
     index = this._getNextSelectableIndex(index, searchDirection);
-    this._setPendingInfoFromIndex(index);
+    if (this._indexWithinBounds(currentOptions, index)) {
+      this._setPendingInfoFromIndex(index);
+    }
+  }
+
+  /**
+   * Sets the isOpen state and updates focusInputAfterClose
+   */
+  private _setOpenStateAndFocusOnClose(isOpen: boolean, focusInputAfterClose: boolean) {
+    this._focusInputAfterClose = focusInputAfterClose;
+    this.setState({
+      isOpen: isOpen
+    });
   }
 
   /**
@@ -1247,9 +1284,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we are not allowing freeform
         // or the comboBox is open, flip the open state
         if (isOpen) {
-          this.setState({
-            isOpen: !isOpen
-          });
+          this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
         }
 
         // Allow TAB to propigate
@@ -1282,7 +1317,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       case KeyCodes.down:
         // Expand the comboBox on ALT + DownArrow
         if (ev.altKey || ev.metaKey) {
-          this.setState({ isOpen: true });
+          this._setOpenStateAndFocusOnClose(true /* isOpen */, true /* focusInputAfterClose */);
         } else {
           // if we are in clearAll state (e.g. the user as hovering
           // and has since mousedOut of the menu items),
@@ -1333,7 +1368,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we get here and we got either and ALT key
         // or meta key and we are current open, let's close the menu
         if ((ev.altKey || ev.metaKey) && isOpen) {
-          this.setState({ isOpen: !isOpen });
+          this._setOpenStateAndFocusOnClose(!isOpen, true /* focusInputAfterClose */);
         }
 
         // If we are not allowing freeform and
@@ -1375,9 +1410,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // make space expand/collapse the comboBox
         // and allow the event to propagate
         if (!allowFreeform && autoComplete === 'off') {
-          this.setState({
-            isOpen: !this.state.isOpen
-          });
+          let isOpen = this.state.isOpen;
+          this._setOpenStateAndFocusOnClose(!isOpen, !!isOpen);
           return;
         }
         break;
@@ -1456,9 +1490,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { isOpen } = this.state;
 
     if (!disabled) {
-      this.setState({
-        isOpen: !isOpen
-      });
+      this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
     }
   }
 
