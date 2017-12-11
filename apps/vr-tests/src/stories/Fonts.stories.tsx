@@ -73,4 +73,4 @@ storiesOf('Fonts', module)
   ))
   .add('West European', () => (
     <RepresentativeText style={ createFontStyles('en').medium as React.CSSProperties } />
-  ))
+  ));

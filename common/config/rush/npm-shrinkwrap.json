@@ -93,7 +93,7 @@
     },
     "@rush-temp/build": {
       "version": "file:projects/build.tgz",
-      "integrity": "sha1-UnnWT65HVXCd3HRFBb0P++laqfk=",
+      "integrity": "sha1-mW63Gdgtg3Rb4FFVnKtpB7AOYII=",
       "requires": {
         "@microsoft/api-extractor": "4.3.3",
         "@microsoft/load-themed-styles": "1.7.13",
@@ -135,7 +135,7 @@
     },
     "@rush-temp/example-app-base": {
       "version": "file:projects/example-app-base.tgz",
-      "integrity": "sha1-hgeCh/f93ihZsMfumPAathMKu7c=",
+      "integrity": "sha1-GHOzyQ6u9Ei5oLs/yc9Xx5ub/Uw=",
       "requires": {
         "@types/es6-promise": "0.0.32",
         "@types/highlight.js": "9.12.2",
@@ -154,7 +154,7 @@
     },
     "@rush-temp/experiments": {
       "version": "file:projects/experiments.tgz",
-      "integrity": "sha1-0PTPcdZFYEt6iP4QsL8QinF4e4k=",
+      "integrity": "sha1-MRSwxE6pSDwHube5mjXGbFzFscA=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/enzyme": "3.1.5",
@@ -174,7 +174,7 @@
         "es6-weak-map": "2.0.2",
         "react": "16.2.0",
         "react-dom": "16.2.0",
-        "react-highlight": "0.9.0",
+        "react-highlight": "0.10.0",
         "react-test-renderer": "16.2.0",
         "sinon": "4.1.3",
         "tslib": "1.8.1"
@@ -182,7 +182,7 @@
     },
     "@rush-temp/fabric-website": {
       "version": "file:projects/fabric-website.tgz",
-      "integrity": "sha1-AL4aulOhTF35uSi93iisfk37kq4=",
+      "integrity": "sha1-1cv0+NHsPFRddMUqF33NqabItsI=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/es6-promise": "0.0.32",
@@ -200,14 +200,14 @@
         "office-ui-fabric-core": "9.3.0",
         "react": "16.2.0",
         "react-dom": "16.2.0",
-        "react-highlight": "0.9.0",
+        "react-highlight": "0.10.0",
         "tslib": "1.8.1",
         "write-file-webpack-plugin": "4.2.0"
       }
     },
     "@rush-temp/file-type-icons": {
       "version": "file:projects/file-type-icons.tgz",
-      "integrity": "sha1-bHWpgBW45cJ+l3qMmO2u+5YIIVQ=",
+      "integrity": "sha1-udaNhRyWr25jJxoMuWrAb820LJs=",
       "requires": {
         "@types/react": "16.0.25",
         "@types/react-dom": "16.0.3",
@@ -218,21 +218,21 @@
     },
     "@rush-temp/icons": {
       "version": "file:projects/icons.tgz",
-      "integrity": "sha1-fGcMDA4r4eTbj21ogyQQ6QNWsjI=",
+      "integrity": "sha1-QLAtYDi07VnxxqlRwJh4HwMX5ZQ=",
       "requires": {
         "tslib": "1.8.1"
       }
     },
     "@rush-temp/jest-serializer-merge-styles": {
       "version": "file:projects/jest-serializer-merge-styles.tgz",
-      "integrity": "sha1-JO+VV26BTngKULF9wpPNB+fE29A=",
+      "integrity": "sha1-YG+6fnNiX7kCA2/RB8thnpfEwRk=",
       "requires": {
         "@types/jest": "21.1.8"
       }
     },
     "@rush-temp/merge-styles": {
       "version": "file:projects/merge-styles.tgz",
-      "integrity": "sha1-aRKPMQTXCfPnAK0cWcKR7zRB/Xo=",
+      "integrity": "sha1-9FsmiciyWj0v1BN1DnU8y4LcwVI=",
       "requires": {
         "@types/jest": "21.1.8",
         "tslib": "1.8.1"
@@ -240,7 +240,7 @@
     },
     "@rush-temp/office-ui-fabric-react": {
       "version": "file:projects/office-ui-fabric-react.tgz",
-      "integrity": "sha1-WXRe6eRgjgc26lxZkJ6ZeWzJn2A=",
+      "integrity": "sha1-ipRTAdO/bwVeCK8R/4yBDw2Ukeg=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/enzyme": "3.1.5",
@@ -264,7 +264,7 @@
         "prop-types": "15.6.0",
         "react": "16.2.0",
         "react-dom": "16.2.0",
-        "react-highlight": "0.9.0",
+        "react-highlight": "0.10.0",
         "react-test-renderer": "16.2.0",
         "resemblejs": "2.2.6",
         "sinon": "4.1.3",
@@ -273,14 +273,14 @@
     },
     "@rush-temp/office-ui-fabric-react-tslint": {
       "version": "file:projects/office-ui-fabric-react-tslint.tgz",
-      "integrity": "sha1-UYgJ5D3Km0wCwIw1obdlj3R1VKI=",
+      "integrity": "sha1-ftNH8E8+9qc1g5n8mz15lYalVdE=",
       "requires": {
         "tslint-react": "3.2.0"
       }
     },
     "@rush-temp/ssr-tests": {
       "version": "file:projects/ssr-tests.tgz",
-      "integrity": "sha1-HmUO3P2Z88XGtVmVnXb7RW/nDCg=",
+      "integrity": "sha1-IkC7lUUJU0v93YQOZLq8fAclaLw=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/es6-promise": "0.0.32",
@@ -297,7 +297,7 @@
     },
     "@rush-temp/styling": {
       "version": "file:projects/styling.tgz",
-      "integrity": "sha1-Nj+i1dBgJCe2Uem2E13cUNAIuWA=",
+      "integrity": "sha1-+OvCHSRJohytZDZFerl9W69fOS8=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/jest": "21.1.8",
@@ -312,7 +312,7 @@
     },
     "@rush-temp/test-bundle-button": {
       "version": "file:projects/test-bundle-button.tgz",
-      "integrity": "sha1-LiKMc24ktYxIKuXQoVMkTzLGO70=",
+      "integrity": "sha1-nw7q0f+/4a1F8H4I64Pem7jp3nc=",
       "requires": {
         "@types/prop-types": "15.5.2",
         "@types/react": "16.0.25",
@@ -325,7 +325,7 @@
     },
     "@rush-temp/todo-app": {
       "version": "file:projects/todo-app.tgz",
-      "integrity": "sha1-fral7LuaPzihDc14lmHBh3m5pUk=",
+      "integrity": "sha1-krQzQRsRtyI2hMcwsnSPES1is4g=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/es6-promise": "0.0.32",
@@ -342,7 +342,7 @@
     },
     "@rush-temp/utilities": {
       "version": "file:projects/utilities.tgz",
-      "integrity": "sha1-8xy6UZhvzFkeQqljGAsYM3JvUi0=",
+      "integrity": "sha1-LJEPQGk63zhd4FWGM2hdFiG1iBk=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@types/enzyme": "3.1.5",
@@ -363,7 +363,7 @@
     },
     "@rush-temp/vr-tests": {
       "version": "file:projects/vr-tests.tgz",
-      "integrity": "sha1-N/znT2KZVExdhg4tSLNTJmkdRd8=",
+      "integrity": "sha1-kKrnkqV7fQJIaD7e5gLHDtXm4X0=",
       "requires": {
         "@storybook/addon-options": "3.2.3",
         "@storybook/react": "3.2.17",
@@ -744,9 +744,9 @@
       }
     },
     "@uifabric/merge-styles": {
-      "version": "5.8.0",
-      "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-5.8.0.tgz",
-      "integrity": "sha512-stjicZel1v/+8KUaxeN8RhGsCvOVcrjr0cVNDlp52IMnTYQqMmAlFUwQfdiDrqiz3T7HEoKxnSSfLFaX3Df9Aw==",
+      "version": "5.8.1",
+      "resolved": "https://registry.npmjs.org/@uifabric/merge-styles/-/merge-styles-5.8.1.tgz",
+      "integrity": "sha512-mgxb0rMwxJ7LfrPjF4dSUAPJkamlGCjKxzd5nR0wSxde9/k0Sw3zcf4BoefrbR03jnVkdtDXfj1rpq2yYbXXoA==",
       "requires": {
         "tslib": "1.8.1"
       }
@@ -757,7 +757,7 @@
       "integrity": "sha512-xHW/KuMMFbvr5z3+YRzUlz/yizDdUEh9MW2kzF0D1Omg1Jdfjg6qrDTVPifuyNQTbW9nCiAnb2lX4f0DEl/tuQ==",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
-        "@uifabric/merge-styles": "5.8.0",
+        "@uifabric/merge-styles": "5.8.1",
         "@uifabric/utilities": "5.5.0",
         "tslib": "1.8.1"
       }
@@ -768,7 +768,7 @@
       "integrity": "sha512-+U5gM9s9ue1zKYXlguzOHMl/NSYNvPZre7/LLH5RLfrBYJwkddUZ5AOFDD3xRT6nwpRhb5fPSJaJldAakFVY8Q==",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
-        "@uifabric/merge-styles": "5.8.0",
+        "@uifabric/merge-styles": "5.8.1",
         "prop-types": "15.6.0",
         "tslib": "1.8.1"
       }
@@ -8649,7 +8649,7 @@
       "requires": {
         "@microsoft/load-themed-styles": "1.7.13",
         "@uifabric/icons": "5.3.0",
-        "@uifabric/merge-styles": "5.8.0",
+        "@uifabric/merge-styles": "5.8.1",
         "@uifabric/styling": "5.14.0",
         "@uifabric/utilities": "5.5.0",
         "prop-types": "15.6.0",
@@ -11084,9 +11084,9 @@
       }
     },
     "react-highlight": {
-      "version": "0.9.0",
-      "resolved": "https://registry.npmjs.org/react-highlight/-/react-highlight-0.9.0.tgz",
-      "integrity": "sha1-1e3udEzLhon3k4eUtqG1VLsVDrc=",
+      "version": "0.10.0",
+      "resolved": "https://registry.npmjs.org/react-highlight/-/react-highlight-0.10.0.tgz",
+      "integrity": "sha1-04b53Oq4Z9wNzCNkFT+xzHZF0EY=",
       "requires": {
         "highlight.js": "9.12.0",
         "react": "15.6.2",
