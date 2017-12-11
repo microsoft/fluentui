@@ -193,6 +193,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   padding: 0 7px;
 }
 
+.divider {
+  background-color: $ms-color-neutralLight;
+  min-width: 1px;
+}
+
 // CommandBarSearch needs to replaced with SearchBox component, and hence following styles revisited/cleaned.
 .search {
   @include float(left);

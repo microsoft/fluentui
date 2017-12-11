@@ -11,7 +11,13 @@ import {
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import {
+  ContextualMenu,
+  ContextualMenuItemType,
+  hasSubmenuItems,
+  IContextualMenuProps,
+  IContextualMenuItem
+} from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -117,7 +123,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         <FocusZone ref='focusZone' className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
             { renderedItems!.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey!)
+              this._renderCommandBarItem(item, index, expandedMenuItemKey!, false)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
               <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <button
@@ -140,7 +146,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           </div>
           <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref='farCommandSurface'>
             { renderedFarItems!.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey!, true)
+              this._renderCommandBarItem(item, index, expandedMenuItemKey!, true)
             )) }
           </div>
         </FocusZone>
@@ -163,7 +169,21 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this.refs.focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+  private _renderCommandBarItem(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+    switch (item.itemType) {
+      case ContextualMenuItemType.Divider:
+        return this._renderSeparator(item, index, isFarItem);
+      case ContextualMenuItemType.Header:
+      case ContextualMenuItemType.Section:
+        // Unsupported
+        return null;
+      case ContextualMenuItemType.Normal:
+      default:
+        return this._renderNormalItem(item, index, expandedMenuItemKey);
+    }
+  }
+
+  private _renderNormalItem(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string) {
     if (item.onRender) {
       return (
         <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
@@ -271,6 +291,24 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     );
   }
 
+  private _renderSeparator(item: ICommandBarItemProps, index: number, isFarItem?: boolean): React.ReactNode {
+    // Do not render if separator is first or last item
+    if (index > 0 &&
+      index + 1 < (isFarItem ?
+        this.state.renderedFarItems!.length :
+        this.state.renderedItems!.length)) {
+      const itemKey = item.key || String(index);
+      return (
+        <div
+          className={ css('ms-CommandBarDivider', styles.divider, item.className) }
+          key={ itemKey }
+          ref={ itemKey }
+        />
+      );
+    }
+    return null;
+  }
+
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
@@ -306,10 +344,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       let item = this.props.items[i];
 
       if (!this._commandItemWidths[item.key]) {
-        let el = this.refs[item.key] as HTMLElement;
+        if (item.itemType === ContextualMenuItemType.Divider) {
+          this._commandItemWidths[item.key] = 1;
+        } else {
+          let el = this.refs[item.key] as HTMLElement;
 
-        if (el) {
-          this._commandItemWidths[item.key] = el.getBoundingClientRect().width;
+          if (el) {
+            this._commandItemWidths[item.key] = el.getBoundingClientRect().width;
+          }
         }
       }
     }
@@ -343,12 +385,23 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       let item = renderedItems[i];
       let itemWidth = this._commandItemWidths![item.key];
 
+      if (!itemWidth) {
+        continue;
+      }
+
       if ((consumedWidth + itemWidth) >= availableWidth) {
         if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < OVERFLOW_WIDTH) {
           i--;
         }
 
-        renderedOverflowItems = renderedItems.splice(i).concat(overflowItems!);
+        // Insert divider between overflow items
+        renderedOverflowItems = renderedItems
+          .splice(i)
+          .concat({
+            key: '_overflow_divider',
+            itemType: ContextualMenuItemType.Divider
+          })
+          .concat(overflowItems!);
         break;
       } else {
         consumedWidth += itemWidth;

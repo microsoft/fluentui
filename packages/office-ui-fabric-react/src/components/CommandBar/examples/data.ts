@@ -1,3 +1,5 @@
+import { ContextualMenuItemType } from '../../ContextualMenu/index';
+
 export const items = [
   {
     key: 'newItem',
@@ -22,6 +24,10 @@ export const items = [
     },
   },
   {
+    key: 'divider_1',
+    itemType: ContextualMenuItemType.Divider
+  },
+  {
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
@@ -39,6 +45,10 @@ export const items = [
     name: 'Download',
     icon: 'Download',
     onClick: () => { return; }
+  },
+  {
+    key: 'divider_2',
+    itemType: ContextualMenuItemType.Divider
   },
   {
     key: 'disabled',
