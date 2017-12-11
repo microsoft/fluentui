@@ -98,6 +98,11 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Trap focus or not
    */
   trapFocus?: boolean;
+
+  /**
+   * Focus on first element by default on card or not
+   */
+  firstFocus?: boolean;
 }
 
 export enum ExpandingCardMode {
@@ -110,6 +115,18 @@ export enum ExpandingCardMode {
    * To have both top compact and bottom expanded card
    */
   expanded = 1
+}
+
+export enum OpenCardMode {
+  /**
+   * Open card by hover
+   */
+  hover = 0,
+
+  /**
+   * Open card by hot key
+   */
+  hotKey = 1
 }
 
 export interface IExpandingCardStyles {

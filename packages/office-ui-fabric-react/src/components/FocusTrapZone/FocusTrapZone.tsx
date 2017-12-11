@@ -39,10 +39,10 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount() {
-    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss } = this.props;
+    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
+    if (!elementContains(this.refs.root, this._previouslyFocusedElement) && !disableFirstFocus) {
       this.focus();
     }
 
@@ -94,6 +94,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
         ref='root'
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyboardHandler }
+        tabIndex={ -1 }
+        onFocus={ this._onRootFocus }
       >
         { this.props.children }
       </div>
@@ -119,6 +121,13 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
     if (_firstFocusableChild) {
       (_firstFocusableChild as any).focus();
+    }
+  }
+
+  @autobind
+  private _onRootFocus(ev: React.FocusEvent<HTMLElement>) {
+    if (ev.target === this.refs.root) {
+      this.focus();
     }
   }
 

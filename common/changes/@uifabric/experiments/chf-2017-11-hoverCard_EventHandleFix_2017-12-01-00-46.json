@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "add link ref in tile",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "chf@microsoft.com"
+}

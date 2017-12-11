@@ -5,6 +5,7 @@
  */
 export const enum KeyCodes {
   a = 65,
+  c = 67,
   backspace = 8,
   comma = 188,
   del = 46,
