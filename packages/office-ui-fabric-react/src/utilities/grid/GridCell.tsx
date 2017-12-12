@@ -32,9 +32,6 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     const GridCellButton = styled(
       ButtonBase,
       getButtonBaseStyles,
-      props => ({
-        getStyles: getStyles
-      })
     );
 
     return (
@@ -53,6 +50,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         aria-selected={ selected }
         ariaLabel={ label }
         title={ label }
+        getStyles={ getStyles }
       >
         { onRenderItem(item) }
       </GridCellButton >
