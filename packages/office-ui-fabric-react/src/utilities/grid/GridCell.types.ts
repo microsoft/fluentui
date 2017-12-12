@@ -55,16 +55,6 @@ export interface IGridCellProps<T> {
   className?: string;
 
   /**
-  * Optional, the CSS class used for when the cell is disabled
-  */
-  cellDisabledStyle?: string[];
-
-  /**
-  * Optional, the CSS class used for when the cell is selected
-  */
-  cellIsSelectedStyle?: string[];
-
-  /**
   * Index for this option
   */
   index?: number;

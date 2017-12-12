@@ -69,8 +69,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         onFocus={ this.props.onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
-      // @TODO Style this based on actionButton
-      // getStyles={  }
+      // getClassNames={ this._getClassNames }
       />
     );
   }
@@ -101,5 +100,58 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
   }
+
+  /**
+   * Method to override the getClassNames func in a button.
+   */
+  // @autobind
+  // private _getClassNames(
+  //   theme: ITheme,
+  //   className: string,
+  //   variantClassName: string,
+  //   iconClassName: string | undefined,
+  //   menuIconClassName: string | undefined,
+  //   disabled: boolean,
+  //   checked: boolean,
+  //   expanded: boolean,
+  //   isSplit: boolean | undefined): IButtonClassNames {
+  //   let styles = getActionButtonStyles(theme);
+  //   return mergeStyleSets(this._classNames as {}, {
+  //     root: [
+  //       'ms-Button',
+  //       styles.root,
+  //       variantClassName,
+  //       className,
+  //       checked && [
+  //         'is-checked',
+  //         styles.rootChecked
+  //       ],
+  //       disabled && [
+  //         'is-disabled',
+  //         styles.rootDisabled
+  //       ],
+  //       !disabled && !checked && {
+  //         selectors: {
+  //           ':hover': styles.rootHovered,
+  //           ':focus': styles.rootFocused,
+  //           ':active': styles.rootPressed,
+  //         }
+  //       },
+  //       disabled && checked && [
+  //         styles.rootCheckedDisabled
+  //       ],
+  //       !disabled && checked && {
+  //         selectors: {
+  //           ':hover': styles.rootCheckedHovered,
+  //           ':active': styles.rootCheckedPressed
+  //         }
+  //       }
+  //     ],
+  //     flexContainer: [
+  //       'ms-Button-flexContainer',
+  //       styles.flexContainer
+  //     ]
+  //   });
+  // }
 
 }

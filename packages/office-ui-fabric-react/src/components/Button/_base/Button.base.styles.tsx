@@ -20,7 +20,7 @@ const iconStyle = {
   flexShrink: 0
 };
 
-export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
+export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
   const { theme, disabled } = props;
   const { fonts, semanticColors } = theme;
 
@@ -40,6 +40,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
       fonts.medium,
       getFocusStyle(theme, -1),
       {
+        background: 'transparent',
         boxSizing: 'border-box',
         display: 'flex',
         textAlign: 'center',

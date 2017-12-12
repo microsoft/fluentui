@@ -1,7 +1,7 @@
 import { concatStyleSets, FontWeights } from '../../../Styling';
 import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.types';
 
-import { getStyles as getBaseStyles } from '../_base/Button.base.styles';
+import { getButtonBaseStyles } from '../_base/Button.base.styles';
 import { primaryStyles, standardStyles, primarySplitStyles, standardSplitStyles } from '../DefaultButton/ButtonThemes';
 
 export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
@@ -41,7 +41,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
   };
 
   const themeStyles: IButtonBaseStyles = props.primary ? primaryStyles(props) : standardStyles(props);
-  const baseStyles: IButtonBaseStyles = getBaseStyles(props);
+  const baseStyles: IButtonBaseStyles = getButtonBaseStyles(props);
 
   return concatStyleSets(
     baseStyles,
@@ -63,7 +63,7 @@ export const getSplitStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles 
   };
 
   const themeStyles: IButtonBaseStyles = props.primary ? primarySplitStyles(props) : standardSplitStyles(props);
-  const baseStyles: IButtonBaseStyles = getBaseStyles(props);
+  const baseStyles: IButtonBaseStyles = getButtonBaseStyles(props);
 
   return concatStyleSets(
     baseStyles,
