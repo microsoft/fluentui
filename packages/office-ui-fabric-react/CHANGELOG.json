@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.31.0",
+      "tag": "office-ui-fabric-react_v5.31.0",
+      "date": "Tue, 12 Dec 2017 02:08:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chao <fengchao199011@hotmail.com>",
+            "commit": "253922868e6305b04c194ca8906e333d5abe6ebf",
+            "comment": "remove customized dismiss function in HoverCard"
+          },
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "413b160f9284b647facd0b39bb24cade87e5b94f",
+            "comment": "ComboBox: Add onMenuDismiss prop"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "63fcf342aae0b90ba96eab00cbedb00bb9f3829f",
+            "comment": "ActivityItem: Snapshot and Screener tests added"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Lambert W <lambert.ww@gmail.com>",
+            "commit": "1fe2b91ec993ea6a3ca500c62c755303431636ba",
+            "comment": "List: Support ghosting"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.2",
       "tag": "office-ui-fabric-react_v5.30.2",
       "date": "Fri, 08 Dec 2017 21:30:54 GMT",

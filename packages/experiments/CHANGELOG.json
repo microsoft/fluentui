@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.9.2",
+      "tag": "@uifabric/experiments_v5.9.2",
+      "date": "Tue, 12 Dec 2017 02:08:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chao <fengchao199011@hotmail.com>",
+            "commit": "253922868e6305b04c194ca8906e333d5abe6ebf",
+            "comment": "add link ref in tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.30.2 <6.0.0` to `>=5.31.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.1",
       "tag": "@uifabric/experiments_v5.9.1",
       "date": "Fri, 08 Dec 2017 18:09:44 GMT",
