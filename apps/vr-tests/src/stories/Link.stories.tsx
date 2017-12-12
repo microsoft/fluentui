@@ -24,4 +24,5 @@ storiesOf('Link', module)
   ))
   .add('Root', () => (<Link href='#'>I'm a link</Link>))
   .add('Disabled', () => (<Link href='#' disabled>I'm a disabled link</Link>))
-  .add('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>));
+  .add('No Href', () => (<Link>I'm rendered as a button because I have no href</Link>))
+  .add('No Href Disabled', () => (<Link disabled>I'm rendered as a button because I have no href and am disabled</Link>));
