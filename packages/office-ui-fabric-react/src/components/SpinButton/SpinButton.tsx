@@ -192,7 +192,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className={ classNames.arrowBox }>
             <IconButton
-              styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
+              // @TODO fix get styles
+              // getStyles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
               className={ 'ms-UpButton' }
               checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
               disabled={ disabled }
@@ -204,7 +205,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
+              // @TODO fix get styles
+              // getStyles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
               className={ 'ms-DownButton' }
               checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
               disabled={ disabled }

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IMenuButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 
-export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
+export class ButtonContextualMenuExample extends React.Component<IMenuButtonBaseProps, {}> {
   public render() {
     let { disabled, checked } = this.props;
 

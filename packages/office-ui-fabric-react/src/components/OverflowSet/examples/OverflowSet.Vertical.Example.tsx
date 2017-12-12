@@ -70,7 +70,7 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
         calloutProps={ { directionalHint: DirectionalHint.rightCenter, beakWidth: 12 } }
       >
         <CommandBarButton
-          styles={ { root: { padding: '10px' } } }
+          getStyles={ (props) => ({ button: { padding: '10px' } }) }
           iconProps={ { iconName: item.icon } }
           onClick={ item.onClick }
         />
@@ -81,7 +81,10 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
   private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
     return (
       <CommandBarButton
-        styles={ { root: { padding: '10px' }, menuIcon: { fontSize: '16px' } } }
+        getStyles={ (props) => ({
+          button: { padding: '10px' },
+          menuIcon: { fontSize: '16px' }
+        }) }
         menuIconProps={ { iconName: 'More' } }
         menuProps={ { items: overflowItems! } }
       />

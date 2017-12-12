@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { DefaultButton } from '../DefaultButton/DefaultButton';
 import { BaseComponent, customizable, nullRender } from '../../../Utilities';
-import { IButtonProps } from '../Button.types';
+import { IButtonBaseProps } from '../_base/Button.base.types';
 import { getStyles } from './MessageBarButton.styles';
 
 @customizable('MessageBarButton', ['theme'])
-export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
+export class MessageBarButton extends BaseComponent<IButtonBaseProps, {}> {
 
   public render() {
-    let { styles, theme } = this.props;
+    let { theme } = this.props;
 
     return (
       <DefaultButton

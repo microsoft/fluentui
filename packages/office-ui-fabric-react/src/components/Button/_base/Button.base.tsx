@@ -71,9 +71,10 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
         ));
 
     this._classNames = getClassNames(getStyles!, { theme: theme!, className, disabled, checked, expanded, primary });
+
     let RootType = renderAsAnchor ? 'a' : 'button';
     return (
-      <div className={ 'ms-Button ' + this._classNames.root }>
+      <div className={ this._classNames.root }>
         { onRenderPrefix && onRenderPrefix() }
 
         <RootType
@@ -179,8 +180,6 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       descriptionId = this._descriptionId
     } = this.props;
 
-    // ms-Button-description is only shown when the button type is compound.
-    // In other cases it will not be displayed.
     if (description) {
       return (
         <div

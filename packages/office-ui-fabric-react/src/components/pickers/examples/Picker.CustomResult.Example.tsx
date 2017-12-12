@@ -24,7 +24,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pickers';
 
 import { TestImages } from '../../../common/TestImages';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { ISplitButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import './Picker.CustomResult.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
@@ -63,41 +63,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          iconProps: { iconName: 'Share' },
-          onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Pin' },
-          onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Ringer' },
-          onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ] as IButtonProps[]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ] as ISplitButtonBaseProps[]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document1',
@@ -120,41 +120,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          iconProps: { iconName: 'Share' },
-          onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Pin' },
-          onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Ringer' },
-          onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document2',
@@ -177,41 +177,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          iconProps: { iconName: 'Share' },
-          onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Pin' },
-          onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Ringer' },
-          onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document3',
@@ -234,41 +234,41 @@ const data: IFullDocumentCardProps[] = [
     documentCardProps: {},
     documentActionsProps: {
       actions:
-      [
-        {
-          iconProps: { iconName: 'Share' },
-          onClick: (ev: any) => {
-            console.log('You clicked the share action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Pin' },
-          onClick: (ev: any) => {
-            console.log('You clicked the pin action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-        {
-          iconProps: { iconName: 'Ringer' },
-          onClick: (ev: any) => {
-            console.log('You clicked the Ringer action.');
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-        },
-      ]
+        [
+          {
+            iconProps: { iconName: 'Share' },
+            onClick: (ev: any) => {
+              console.log('You clicked the share action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Pin' },
+            onClick: (ev: any) => {
+              console.log('You clicked the pin action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+          {
+            iconProps: { iconName: 'Ringer' },
+            onClick: (ev: any) => {
+              console.log('You clicked the Ringer action.');
+              ev.preventDefault();
+              ev.stopPropagation();
+            }
+          },
+        ]
     },
     documentActivityProps: {
       activity: 'Created Feb 23, 2016',
       people:
-      [
-        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
-        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
-      ]
+        [
+          { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
+          { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+          { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
+        ]
     },
     documentTitleProps: {
       title: 'Document4',
@@ -303,9 +303,9 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
     documentActivityProps,
     documentTitleProps
   } = documentProps.item;
-  let actions: IButtonProps[] = [];
+  let actions: ISplitButtonBaseProps[] = [];
   if (documentActionsProps) {
-    documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
+    documentActionsProps.actions.forEach((action: ISplitButtonBaseProps) => actions.push(action));
     actions.push({
       iconProps: { iconName: 'Cancel' },
       onClick: (ev: any) => {

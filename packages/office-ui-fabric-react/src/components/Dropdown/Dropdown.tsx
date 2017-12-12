@@ -475,7 +475,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         (
           <CommandButton
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
+            // @TODO fix ref
+            // ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ true }
@@ -524,7 +525,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             // so clear out the explicit hover styles
             // tslint:disable-next-line:jsx-no-lambda
             getStyles={ (props) => {
-              return ({ root: { background: 'green' } });
+              return ({});
             } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>

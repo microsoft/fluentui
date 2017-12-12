@@ -7,7 +7,7 @@ import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
-import { IButtonProps } from '../../Button';
+import { IButtonBaseProps } from '../../Button';
 import { IIconProps } from '../../Icon';
 
 export interface IDocumentCard {
@@ -240,7 +240,7 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
   /**
    * The actions available for this document.
    */
-  actions: IButtonProps[];
+  actions: IButtonBaseProps[];
 
   /**
    * The number of views this document has received.

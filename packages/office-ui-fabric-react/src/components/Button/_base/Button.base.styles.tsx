@@ -29,9 +29,13 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
   let disabledText = semanticColors.disabledText;
 
   return {
-    root: {
-      display: 'inline-flex'
-    },
+    root: [
+      'ms-Button',
+      props.className,
+      {
+        display: 'inline-flex'
+      }
+    ],
     button: [
       fonts.medium,
       getFocusStyle(theme, -1),
@@ -49,7 +53,6 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
         flexWrap: 'nowrap',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'transparent',
         padding: '0 16px'
       },
       disabled && {
@@ -65,6 +68,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
     ],
 
     icon: [
+      'ms-Button-icon',
       iconStyle,
       disabled && {
         color: disabledText
@@ -72,6 +76,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
     ],
 
     menuIcon: [
+      'ms-Button-menuIcon',
       iconStyle,
       {
         fontSize: FontSizes.small
@@ -85,9 +90,15 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
       flexGrow: 1
     },
 
-    label: {
-      margin: '0 4px',
-      lineHeight: '100%'
-    }
+    label: [
+      'ms-Button-label',
+      {
+        margin: '0 4px',
+        lineHeight: '100%'
+      }
+    ],
+    description: [
+      'ms-Button-description'
+    ]
   };
 };

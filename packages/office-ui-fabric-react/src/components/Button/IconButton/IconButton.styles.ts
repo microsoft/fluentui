@@ -1,54 +1,50 @@
-import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
-import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
+import { concatStyleSets, FontWeights } from '../../../Styling';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.types';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let iconButtonStyles: IButtonStyles = {
-    root: {
-      padding: '0 4px',
-      width: '32px',
-      height: '32px',
-      backgroundColor: 'transparent'
-    },
+import { getStyles as getBaseStyles } from '../_base/Button.base.styles';
 
-    rootHovered: {
-      color: theme.palette.themeDarker
-    },
 
-    rootPressed: {
-      color: theme.palette.themePrimary
-    },
+export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
-    rootExpanded: {
-      color: theme.palette.themePrimary
-    },
+  const { theme, expanded, disabled, checked } = props;
 
-    rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-    },
-
-    rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight
-    },
-
-    rootDisabled: {
-      color: theme.palette.neutralTertiary
-    }
+  let buttonStyles: IButtonBaseStyles = {
+    button: [
+      {
+        padding: '0 4px',
+        width: '32px',
+        height: '32px',
+        backgroundColor: 'transparent',
+        selectors: {
+          ':hover': {
+            color: theme.palette.themeDarker
+          },
+          ':active': {
+            color: theme.palette.themePrimary
+          }
+        }
+      },
+      expanded && !disabled && {
+        color: theme.palette.themePrimary
+      },
+      checked && !disabled && {
+        backgroundColor: theme.palette.neutralTertiaryAlt,
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.neutralLight
+          }
+        }
+      },
+      disabled && {
+        color: theme.palette.neutralTertiary
+      }
+    ]
   };
 
-  return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
-});
+  const baseStyles: IButtonBaseStyles = getBaseStyles(props);
+
+  return concatStyleSets(
+    baseStyles,
+    buttonStyles
+  );
+};

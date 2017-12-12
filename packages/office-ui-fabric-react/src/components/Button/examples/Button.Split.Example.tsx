@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
 const alertClicked = (): void => {
   alert('Clicked');
@@ -27,7 +26,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             onClick={ alertClicked }
             split={ true }
             ariaLabel={ 'See 2 sample options' }
-            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -54,7 +52,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
-            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -111,7 +108,6 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
 
   public render() {
     let { disabled, checked } = this.props;
-    const customSplitButtonStyles = getCustomSplitButtonStyles();
 
     return (
       <div>
@@ -124,7 +120,13 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           text='Create account'
           onClick={ alertClicked }
           split={ true }
-          styles={ customSplitButtonStyles }
+          getStyles={ (props) => ({
+            button: { backgroundColor: 'white', width: '10px' },
+            menuIcon: { fontSize: '7px' }
+            // @TODO fix once divider is converted
+            // splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 12 }
+          })
+          }
           menuProps={ {
             items: [
               {

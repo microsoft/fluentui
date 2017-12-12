@@ -8,7 +8,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ActionButton, IButtonStyles } from '../../Button';
+import { ActionButton, IButtonBaseStyles } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
@@ -137,21 +137,23 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
-    const buttonStyles: IButtonStyles = {
-      root: {
-        [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
-        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
-      },
-      textContainer: {
-        overflow: 'hidden',
-      },
-      label: {
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        lineHeight: '36px'
+    const buttonStyles = function (): IButtonBaseStyles {
+      return ({
+        button: {
+          [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
+          [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
+          overflow: 'hidden',
+        },
+        label: {
+          whiteSpace: 'nowrap',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          lineHeight: '36px'
+        }
       }
+      );
     };
+
     let {
       onRenderLink = this._onRenderLink
     } = this.props;
@@ -167,7 +169,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           link.onClick && !link.forceAnchor && styles.buttonEntry,
           this._hasExpandButton && 'isOnExpanded') as string
         }
-        styles={ buttonStyles }
+        getStyles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
         iconProps={ { iconName: link.icon || '' } }
         description={ link.title || link.name }

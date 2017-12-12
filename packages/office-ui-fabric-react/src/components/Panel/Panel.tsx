@@ -219,19 +219,21 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       return (
         <div className={ css('ms-Panel-navigation', styles.navigation) } >
           <IconButton
-            styles={
+            getStyles={ (props) => (
               {
                 root: {
                   height: 'auto',
                   width: '44px',
-                  color: theme.palette.neutralSecondary,
+                  color: props.theme.palette.neutralSecondary,
                   fontSize: IconFontSizes.large,
-                },
-                rootHovered: {
-                  color: theme.palette.neutralPrimary
+                  selectors: {
+                    ':hover': {
+                      color: props.theme.palette.neutralPrimary
+                    }
+                  }
                 }
               }
-            }
+            ) }
             className={ css('ms-Panel-closeButton ms-PanelAction-close') }
             onClick={ this._onPanelClick }
             ariaLabel={ closeButtonAriaLabel }

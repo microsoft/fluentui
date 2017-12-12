@@ -50,7 +50,15 @@ export function standardStyles(props: IButtonBaseStyleProps): IButtonBaseStyles 
           },
         }
       }
-    ]
+    ],
+    description: !disabled && {
+      color: props.theme.palette.neutralSecondary,
+      selectors: {
+        '$button:hover &': {
+          color: props.theme.palette.neutralDark
+        }
+      }
+    }
   };
 }
 
@@ -160,6 +168,28 @@ export function primaryStyles(props: IButtonBaseStyleProps): IButtonBaseStyles {
             backgroundColor: 'Window'
           }
         },
+      }
+    ],
+    description: [
+      !disabled && {
+        color: theme.palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'Window',
+            backgroundColor: 'WindowText',
+            MsHighContrastAdjust: 'none'
+          },
+          '$button:hover &': {
+            color: theme.palette.white,
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'Window',
+                backgroundColor: 'WindowText',
+                MsHighContrastAdjust: 'none'
+              }
+            }
+          }
+        }
       }
     ]
   });

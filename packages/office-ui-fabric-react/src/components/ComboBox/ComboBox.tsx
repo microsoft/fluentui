@@ -314,7 +314,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
-            styles={ this._getCaretButtonStyles() }
+            // TODO Fix getStyles
+            // getStyles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
@@ -916,7 +917,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         key={ item.key }
         data-index={ item.index }
         className={ rootClassNames }
-        styles={ this._getCurrentOptionStyles(item) }
+        // @TODO conver to getStyles
+        // getStyles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
         onClick={ this._onItemClick(item.index) }
         onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
