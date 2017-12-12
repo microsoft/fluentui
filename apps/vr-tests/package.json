@@ -30,7 +30,7 @@
   "dependencies": {
     "@uifabric/icons": ">=5.2.0 <6.0.0",
     "@uifabric/styling": ">=5.14.0 <6.0.0",
-    "office-ui-fabric-react": ">=5.31.1 <6.0.0",
+    "office-ui-fabric-react": ">=5.31.2 <6.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "typescript": "2.4.2",
