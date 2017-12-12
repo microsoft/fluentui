@@ -8,6 +8,7 @@ import {
   assign,
   autobind,
   css,
+  elementContains,
   getRTLSafeKeyCode,
   IRenderFunction
 } from '../../Utilities';
@@ -19,7 +20,7 @@ import {
   IColumn,
   IDetailsList,
   IDetailsListProps,
-} from '../DetailsList/DetailsList.Props';
+} from '../DetailsList/DetailsList.types';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -39,6 +40,7 @@ import { withViewport } from '../../utilities/decorators/withViewport';
 const styles: any = stylesImport;
 
 export interface IDetailsListState {
+  focusedItemIndex: number;
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
@@ -97,12 +99,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._onRowWillUnmount = this._onRowWillUnmount.bind(this);
     this._onToggleCollapse = this._onToggleCollapse.bind(this);
     this._onActiveRowChanged = this._onActiveRowChanged.bind(this);
+    this._onBlur = this._onBlur.bind(this);
     this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
     this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
+      focusedItemIndex: -1,
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       isSizing: false,
@@ -140,6 +144,25 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         if (row) {
           this._setFocusToRowIfPending(row);
         }
+      }
+    }
+
+    if (
+      this.props.items !== prevProps.items &&
+      this.props.items.length > 0 &&
+      this.state.focusedItemIndex !== -1 &&
+      !elementContains(this._root, document.activeElement as HTMLElement, false)
+    ) {
+      // Item set has changed and previously-focused item is gone.
+      // Set focus to item at index of previously-focused item if it is in range,
+      // else set focus to the last item.
+      const item = this.state.focusedItemIndex < this.props.items.length
+        ? this.props.items[this.state.focusedItemIndex]
+        : this.props.items[this.props.items.length - 1];
+      const itemKey = this._getItemKey(item, this.state.focusedItemIndex);
+      const row = this._activeRows[itemKey];
+      if (row) {
+        this._setFocusToRow(row);
       }
     }
 
@@ -314,6 +337,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
               onActiveElementChanged={ this._onActiveRowChanged }
+              onBlur={ this._onBlur }
             >
               <SelectionZone
                 ref={ this._resolveRef('_selectionZone') }
@@ -409,7 +433,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (!item) {
       if (onRenderMissingItem) {
-        onRenderMissingItem(index);
+        return onRenderMissingItem(index);
       }
 
       return null;
@@ -493,15 +517,18 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _setFocusToRowIfPending(row: DetailsRow) {
     const { itemIndex } = row.props;
     if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
-      if (this._selectionZone) {
-        this._selectionZone.ignoreNextFocus();
-      }
-      this._async.setTimeout(() => {
-        row.focus();
-      }, 0);
-
+      this._setFocusToRow(row);
       delete this._initialFocusedIndex;
     }
+  }
+
+  private _setFocusToRow(row: DetailsRow) {
+    if (this._selectionZone) {
+      this._selectionZone.ignoreNextFocus();
+    }
+    this._async.setTimeout(() => {
+      row.focus();
+    }, 0);
   }
 
   private _onRowWillUnmount(row: DetailsRow) {
@@ -534,8 +561,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean) {
-    let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate);
+  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number) {
+    let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     let { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
@@ -547,7 +574,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
-  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean): IColumn[] | undefined {
+  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): IColumn[] | undefined {
     let { columns: newColumns, items: newItems, layoutMode, selectionMode } = newProps;
     let { width: viewportWidth } = newProps.viewport!;
 
@@ -578,7 +605,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
-      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
+      if (resizingColumnIndex !== undefined) {
+        adjustedColumns = this._getJustifiedColumnsAfterResize(newColumns, viewportWidth, newProps, resizingColumnIndex);
+      } else {
+        adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
+      }
+
+      adjustedColumns.forEach(column => {
+        this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
+      });
     }
 
     return adjustedColumns;
@@ -597,8 +632,24 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     });
   }
 
+  private _getJustifiedColumnsAfterResize(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, resizingColumnIndex: number): IColumn[] {
+    const fixedColumns = newColumns.slice(0, resizingColumnIndex);
+    fixedColumns.forEach(column =>
+      column.calculatedWidth = this._getColumnOverride(column.key).currentWidth);
+
+    const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0), 0);
+
+    const remainingColumns = newColumns.slice(resizingColumnIndex);
+    const remainingWidth = viewportWidth - fixedWidth;
+
+    return [
+      ...fixedColumns,
+      ...this._getJustifiedColumns(remainingColumns, remainingWidth, props, resizingColumnIndex),
+    ];
+  }
+
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps) {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps, firstIndex: number) {
     let {
       selectionMode,
       checkboxVisibility,
@@ -618,19 +669,26 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         },
         this._columnOverrides[column.key]);
 
-      totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
+      const isFirst = i + firstIndex === 0;
+      totalWidth += getPaddedWidth(newColumn, isFirst);
 
       return newColumn;
     });
 
     let lastIndex = adjustedColumns.length - 1;
 
-    // Remove collapsable columns.
-    while (lastIndex > -1 && totalWidth > availableWidth) {
+    // Shrink or remove collapsable columns.
+    while (lastIndex > 0 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
-      if (column.isCollapsable) {
-        totalWidth -= column.calculatedWidth! + DEFAULT_INNER_PADDING;
+      const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
+      const overflowWidth = totalWidth - availableWidth;
+
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
+        column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
+        totalWidth = availableWidth;
+      } else {
+        totalWidth -= getPaddedWidth(column, false);
         adjustedColumns.splice(lastIndex, 1);
       }
       lastIndex--;
@@ -639,48 +697,49 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     // Then expand columns starting at the beginning, until we've filled the width.
     for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       let column = adjustedColumns[i];
+      const isLast = i === (adjustedColumns.length - 1);
       const overrides = this._columnOverrides[column.key];
-      if (overrides && overrides.calculatedWidth) {
+      if (overrides && overrides.calculatedWidth && !isLast) {
         continue;
       }
 
-      let maxWidth = column.maxWidth;
-      let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
-      let increment = maxWidth ? Math.min(spaceLeft, maxWidth - minWidth) : spaceLeft;
-
-      // Add remaining space to the last column.
-      if (i === (adjustedColumns.length - 1)) {
+      let increment: number;
+      if (isLast) {
         increment = spaceLeft;
+      } else {
+        let maxWidth = column.maxWidth;
+        let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
+        increment = maxWidth ? Math.min(spaceLeft, maxWidth - minWidth) : spaceLeft;
       }
 
       column.calculatedWidth = (column.calculatedWidth as number) + increment;
       totalWidth += increment;
     }
 
-    // Mark the last column as not resizable to avoid extra scrolling issues.
-    if (adjustedColumns.length) {
-      adjustedColumns[adjustedColumns.length - 1].isResizable = false;
-    }
-
     return adjustedColumns;
   }
 
-  private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
+  private _onColumnResized(resizingColumn: IColumn, newWidth: number, resizingColumnIndex: number) {
     let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
     if (this.props.onColumnResize) {
-      this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+      this.props.onColumnResize(resizingColumn, newCalculatedWidth, resizingColumnIndex);
     }
 
     this._rememberCalculatedWidth(resizingColumn, newCalculatedWidth);
 
-    this._adjustColumns(this.props, true);
+    this._adjustColumns(this.props, true, resizingColumnIndex);
     this._forceListUpdates();
   }
 
   private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number) {
-    let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
+    let overrides = this._getColumnOverride(column.key);
     overrides.calculatedWidth = newCalculatedWidth;
+    overrides.currentWidth = newCalculatedWidth;
+  }
+
+  private _getColumnOverride(key: string): IColumn {
+    return this._columnOverrides[key] = this._columnOverrides[key] || {} as IColumn;
   }
 
   /**
@@ -705,7 +764,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           max = Math.max(max, width);
           count++;
           if (count === totalCount) {
-            this._onColumnResized(column, max);
+            this._onColumnResized(column, max, columnIndex);
           }
         });
       }
@@ -723,13 +782,24 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) {
     let { items, onActiveItemChanged } = this.props;
 
-    if (!onActiveItemChanged || !el) {
+    if (!el) {
       return;
     }
     let index = Number(el.getAttribute('data-item-index'));
     if (index >= 0) {
-      onActiveItemChanged(items[index], index, ev);
+      if (onActiveItemChanged) {
+        onActiveItemChanged(items[index], index, ev);
+      }
+      this.setState({
+        focusedItemIndex: index
+      });
     }
+  }
+
+  private _onBlur(event: React.FocusEvent<HTMLElement>) {
+    this.setState({
+      focusedItemIndex: -1
+    });
   }
 
   private _getItemKey(item: any, itemIndex: number): string | number {
@@ -795,4 +865,8 @@ export function buildColumns(
 
 function isRightArrow(event: React.KeyboardEvent<HTMLElement>) {
   return event.which === getRTLSafeKeyCode(KeyCodes.right);
+}
+
+function getPaddedWidth(column: IColumn, isFirst: boolean): number {
+  return column.calculatedWidth! + (isFirst ? 0 : DEFAULT_INNER_PADDING) + (column.isPadded ? ISPADDED_WIDTH : 0);
 }

@@ -1,6 +1,84 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 02 Nov 2017 18:20:18 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2017 02:08:36 GMT and should not be manually modified.
+
+## 5.9.2
+Tue, 12 Dec 2017 02:08:36 GMT
+
+### Patches
+
+- add link ref in tile
+
+## 5.9.1
+Fri, 08 Dec 2017 18:09:44 GMT
+
+### Patches
+
+- Experiments: Fix build breaks in master
+
+## 5.9.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add experiments page for file type icons
+
+## 5.8.0
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Minor changes
+
+- Revise Signals and provide example page
+
+### Patches
+
+- Fixes the external signal component
+
+## 5.7.0
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Minor changes
+
+- Updating TypeScript to 2.6.2.
+
+## 5.6.1
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Patches
+
+- Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot
+
+## 5.6.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Add external signal
+
+### Patches
+
+- Make sure commands get added/removed in the correct order
+
+## 5.5.2
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Patches
+
+- Fix experiment imports for FloatingPicker and ExtendedPicker components
+
+## 5.5.1
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- Fix alignment with trending icon
+
+## 5.5.0
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Minor changes
+
+- added ATP signal
 
 ## 5.4.0
 Thu, 02 Nov 2017 18:20:18 GMT
@@ -58,7 +136,7 @@ Fri, 06 Oct 2017 10:18:41 GMT
 ## 5.0.3
 Wed, 04 Oct 2017 22:40:22 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 5.0.2
 Sat, 30 Sep 2017 01:26:37 GMT
@@ -183,12 +261,12 @@ Fri, 25 Aug 2017 20:31:51 GMT
 ## 0.1.6
 Fri, 25 Aug 2017 19:27:18 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.5
 Thu, 24 Aug 2017 10:20:20 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.4
 Thu, 24 Aug 2017 05:38:14 GMT
@@ -210,7 +288,7 @@ Wed, 23 Aug 2017 19:04:55 GMT
 ## 0.1.2
 Tue, 22 Aug 2017 10:09:55 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.1.1
 Mon, 21 Aug 2017 10:19:29 GMT
@@ -233,7 +311,7 @@ Fri, 18 Aug 2017 16:32:33 GMT
 ## 0.0.2
 Wed, 16 Aug 2017 10:11:43 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 0.0.1
 Tue, 15 Aug 2017 10:19:22 GMT

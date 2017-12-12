@@ -1,9 +1,9 @@
 
 import * as React from 'react';
-import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.Props';
+import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.types';
 import { ISize, css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
-import * as SignalStylesModule from '../signals/Signals.scss';
+import * as SignalStylesModule from '../signals/Signal.scss';
 
 // tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
@@ -74,6 +74,9 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       folderCoverType: type = 'default',
       hideContent = false,
       ref,
+      metadata,
+      signal,
+      children,
       ...divProps
     } = this.props;
 
@@ -96,10 +99,10 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           src={ assets.back }
         />
         {
-          this.props.children ? (
+          children ? (
             <span className={ css('ms-FolderCover-content', FolderCoverStyles.content) }>
               <span className={ css('ms-FolderCover-frame', FolderCoverStyles.frame) }>
-                { this.props.children }
+                { children }
               </span>
             </span>
           ) : null
@@ -110,19 +113,19 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           src={ assets.front }
         />
         {
-          this.props.signal ?
+          signal ?
             (
               <span className={ css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark) }>
-                { this.props.signal }
+                { signal }
               </span>
             ) :
             null
         }
         {
-          this.props.metadata ?
+          metadata ?
             (
               <span className={ css('ms-FolderCover-metadata', FolderCoverStyles.metadata) }>
-                { this.props.metadata }
+                { metadata }
               </span>
             ) :
             null

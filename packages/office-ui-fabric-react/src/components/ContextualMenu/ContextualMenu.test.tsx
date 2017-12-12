@@ -9,7 +9,7 @@ import {
 import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
-import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
+import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { Layer } from '../Layer/Layer';
 
 describe('ContextualMenu', () => {
@@ -203,6 +203,46 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
+  });
+
+  it('applies disabled property when `disabled` is true', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        disabled: true,
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    expect(menuItem.disabled).toBeTruthy();
+  });
+
+  it('applies disabled property when deprecated property `isDisabled` is true', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        isDisabled: true,
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    expect(menuItem.disabled).toBeTruthy();
   });
 
   it('renders headers properly', () => {

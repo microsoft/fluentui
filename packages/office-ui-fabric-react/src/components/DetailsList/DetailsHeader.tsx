@@ -9,7 +9,7 @@ import {
   KeyCodes,
   IRenderFunction
 } from '../../Utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -39,7 +39,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   selectionMode: SelectionMode;
   layoutMode: DetailsListLayoutMode;
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
-  onColumnResized?: (column: IColumn, newWidth: number) => void;
+  onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
@@ -239,7 +239,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     column.isPadded && styles.cellWrapperPadded
                   ) }
                   style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
-                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                   data-automationid='ColumnsHeaderColumn'
                   data-item-key={ column.key }
                 >
@@ -260,6 +259,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           aria-describedby={ `${this._id}-${column.key}-tooltip` }
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
+                          aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                         >
                           <span
                             id={ `${this._id}-${column.key}-name` }
@@ -479,7 +479,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         });
 
         if (onColumnResized) {
-          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment);
+          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment, columnIndex);
         }
 
         ev.preventDefault();
@@ -526,7 +526,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
       onColumnResized(
         columns[columnResizeDetails!.columnIndex],
-        columnResizeDetails!.columnMinWidth + movement
+        columnResizeDetails!.columnMinWidth + movement,
+        columnResizeDetails!.columnIndex
       );
     }
 

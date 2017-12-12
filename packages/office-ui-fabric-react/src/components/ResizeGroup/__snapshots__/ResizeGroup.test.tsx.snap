@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResizeGroup renders the ResizeGroup correctly 1`] = `
+<div
+  className="ms-ResizeGroup TestClassName"
+>
+  <div
+    className=""
+  >
+    <div
+      id="onRenderDataId"
+    >
+       Rendered data: 
+      5
+    </div>
+  </div>
+</div>
+`;

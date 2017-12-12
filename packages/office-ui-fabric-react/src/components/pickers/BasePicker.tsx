@@ -10,12 +10,12 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
-import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
+import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.Props';
+import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
-import { IPickerItemProps } from './PickerItem.Props';
-import { IPersonaProps } from '../Persona/Persona.Props';
+import { IPickerItemProps } from './PickerItem.types';
+import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
 const styles: any = stylesImport;
 
@@ -99,6 +99,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public focus() {
     this.focusZone.focus();
+  }
+
+  public focusInput() {
+    if (this.input) {
+      this.input.focus();
+    }
   }
 
   @autobind
@@ -310,11 +316,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+          suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.inputElement === document.activeElement
+          suggestionsVisible: this.input && this.input.inputElement === document.activeElement
         });
       }
 
@@ -350,7 +356,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({
       suggestionsLoading: false,
       suggestedDisplayValue: itemValue,
-      suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+      suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
     });
   }
 
@@ -386,14 +392,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    if (this.input.value === '' && this.props.onEmptyInputFocus) {
+    if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
       this.setState({
         isMostRecentlyUsedVisible: true,
         moreSuggestionsAvailable: false,
         suggestionsVisible: true
       });
-    } else if (this.input.value) {
+    } else if (this.input && this.input.value) {
       this.setState({
         isMostRecentlyUsedVisible: false,
         suggestionsVisible: true

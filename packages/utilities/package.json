@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "5.3.0",
+  "version": "5.5.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,8 +23,8 @@
     "@types/jest": "21.1.0",
     "@types/enzyme": "2.8.8",
     "@types/prop-types": "15.5.1",
-    "@types/react": "15.0.38",
-    "@types/react-dom": "15.5.1",
+    "@types/react": "15.6.7",
+    "@types/react-dom": "15.5.6",
     "@types/sinon": "2.2.2",
     "enzyme": "^2.9.1",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
+    "@uifabric/merge-styles": ">=5.8.1 <6.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

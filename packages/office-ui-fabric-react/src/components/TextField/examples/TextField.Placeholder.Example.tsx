@@ -5,7 +5,7 @@ import './TextField.Examples.scss';
 export class TextFieldPlaceholderExample extends React.Component<any, any> {
   public render() {
     return (
-      <div className='ms-TextFieldExample'>
+      <div className='docs-TextFieldExample'>
         <TextField
           placeholder='I am a placeholder.'
           ariaLabel='Please enter text here'

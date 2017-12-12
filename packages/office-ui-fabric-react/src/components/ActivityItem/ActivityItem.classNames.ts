@@ -6,7 +6,7 @@ import {
 import {
   memoizeFunction
 } from '../../Utilities';
-import { IActivityItemStyles } from './ActivityItem.Props';
+import { IActivityItemStyles } from './ActivityItem.types';
 import { IPersonaProps } from '../../Persona';
 
 export interface IActivityItemClassNames {

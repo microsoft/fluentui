@@ -3,7 +3,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import { IGroupDividerProps } from './GroupedList.Props';
+import { IGroupDividerProps } from './GroupedList.types';
 import { GroupSpacer } from './GroupSpacer';
 import * as stylesImport from './GroupFooter.scss';
 const styles: any = stylesImport;

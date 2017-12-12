@@ -1,6 +1,7 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
-import { IButtonStyles } from './Button.Props';
+import { mergeStyleSets } from '../../Styling';
+import { IButtonStyles } from './Button.types';
+import { getStyles } from './BaseButton.styles';
 
 export interface IButtonClassNames {
   root?: string;
@@ -13,7 +14,7 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
-export const getClassNames = memoizeFunction((
+export const getBaseButtonClassNames = memoizeFunction((
   styles: IButtonStyles,
   className: string,
   variantClassName: string,
@@ -21,19 +22,21 @@ export const getClassNames = memoizeFunction((
   menuIconClassName: string | undefined,
   disabled: boolean,
   checked: boolean,
-  expanded: boolean
+  expanded: boolean,
+  isSplit: boolean | undefined
 ): IButtonClassNames => {
-  return {
-    root: mergeStyles(
-      className,
+  const isExpanded = expanded && !isSplit;
+  return mergeStyleSets({
+    root: [
       'ms-Button',
-      variantClassName,
       styles.root,
+      variantClassName,
+      className,
       checked && [
         'is-checked',
         styles.rootChecked
       ],
-      expanded && [
+      isExpanded && [
         'is-expanded',
         styles.rootExpanded,
         {
@@ -48,7 +51,7 @@ export const getClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && !checked && {
+      !disabled && !isExpanded && !checked && {
         selectors: {
           ':hover': styles.rootHovered,
           ':hover .ms-Button-icon': styles.iconHovered,
@@ -70,49 +73,44 @@ export const getClassNames = memoizeFunction((
           ':active': styles.rootCheckedPressed
         }
       }
-    ),
-
-    flexContainer: mergeStyles(
+    ],
+    flexContainer: [
       'ms-Button-flexContainer',
       styles.flexContainer
-    ),
-
-    textContainer: mergeStyles(
+    ],
+    textContainer: [
       'ms-Button-textContainer',
       styles.textContainer
-    ),
-
-    icon: mergeStyles(
+    ],
+    icon: [
       'ms-Button-icon',
       iconClassName,
       styles.icon,
-      expanded && styles.iconExpanded,
+      isExpanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
-    ),
-
-    label: mergeStyles(
+    ],
+    label: [
       'ms-Button-label',
       styles.label,
       checked && styles.labelChecked,
       disabled && styles.labelDisabled,
-    ),
-
-    menuIcon: mergeStyles(
+    ],
+    menuIcon: [
       'ms-Button-menuIcon',
       menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
       disabled && styles.menuIconDisabled,
       !disabled &&
-      !expanded &&
+      !isExpanded &&
       !checked && {
         selectors: {
           ':hover': styles.menuIconHovered,
           ':active': styles.menuIconPressed,
         },
       },
-      expanded && [
+      isExpanded && [
         'is-expanded',
         styles.menuIconExpanded,
         {
@@ -121,18 +119,16 @@ export const getClassNames = memoizeFunction((
           },
         },
       ]
-    ),
-
-    description: mergeStyles(
+    ],
+    description: [
       'ms-Button-description',
       styles.description,
       checked && styles.descriptionChecked,
       disabled && styles.descriptionDisabled
-    ),
-
-    screenReaderText: mergeStyles(
+    ],
+    screenReaderText: [
       'ms-Button-screenReaderText',
       styles.screenReaderText
-    )
-  };
+    ]
+  });
 });

@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IIconProps, IconType } from './Icon.Props';
+import { IIconProps, IconType } from './Icon.types';
 import { Image } from '../Image/Image';
 import {
   css,

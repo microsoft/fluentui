@@ -2,6 +2,76 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.5.0",
+      "tag": "@uifabric/utilities_v5.5.0",
+      "date": "Tue, 28 Nov 2017 02:24:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "94954657769c46824f84e8aba06b326721b4a161",
+            "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/utilities_v5.4.0",
+      "date": "Mon, 13 Nov 2017 11:20:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8d460f38a03684f44ead13a08d84a990ca07d24b",
+            "comment": "BaseComponent: fixing some typings to be compatible with current React typings."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.3",
+      "tag": "@uifabric/utilities_v5.3.3",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "dc0a310f07398df8a158349958bfc463e1d773e4",
+            "comment": "Object: getId: updated so it will correctly return a string rather than an  int"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.2",
+      "tag": "@uifabric/utilities_v5.3.2",
+      "date": "Wed, 08 Nov 2017 11:11:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
+            "commit": "07ff9612172861245b7cf01ffa38f9c5167e5d3a",
+            "comment": "This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.1",
+      "tag": "@uifabric/utilities_v5.3.1",
+      "date": "Wed, 08 Nov 2017 06:05:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chaofeng2014 <fengchao199011@hotmail.com>",
+            "commit": "6055741480986f3e593feaf297001c6cec698b64",
+            "comment": "Update @uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "@uifabric/utilities_v5.3.0",
       "date": "Wed, 18 Oct 2017 10:21:25 GMT",

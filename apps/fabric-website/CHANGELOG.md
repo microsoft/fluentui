@@ -1,6 +1,34 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 31 Oct 2017 10:22:25 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Dec 2017 11:24:52 GMT and should not be manually modified.
+
+## 5.0.19
+Wed, 06 Dec 2017 11:24:52 GMT
+
+### Patches
+
+- Updated referenced FabricCore versions.
+
+## 5.0.18
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Fix ScrollablePane page title
+
+## 5.0.17
+Mon, 20 Nov 2017 11:12:47 GMT
+
+### Patches
+
+- Add ActivityItem, Calendar, HoverCard, OverflowSet, ScrollablePane, TeachingBubble to fabric-website
+
+## 5.0.16
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Patches
+
+- Updated asset license to newest version.
 
 ## 5.0.15
 Tue, 31 Oct 2017 10:22:25 GMT
@@ -223,7 +251,7 @@ Tue, 27 Jun 2017 01:26:31 GMT
 ## 4.5.39
 Wed, 21 Jun 2017 00:45:41 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.38
 Wed, 14 Jun 2017 06:02:15 GMT
@@ -249,62 +277,62 @@ Mon, 12 Jun 2017 01:47:18 GMT
 ## 4.5.35
 Thu, 08 Jun 2017 00:18:05 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.34
 Tue, 06 Jun 2017 07:41:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.33
 Tue, 06 Jun 2017 06:06:46 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.32
 Tue, 06 Jun 2017 00:50:06 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.31
 Fri, 02 Jun 2017 01:19:36 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.30
 Thu, 01 Jun 2017 16:34:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.29
 Wed, 31 May 2017 01:58:23 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.28
 Tue, 30 May 2017 20:23:45 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.27
 Tue, 30 May 2017 03:27:20 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.26
 Fri, 26 May 2017 10:21:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.25
 Tue, 23 May 2017 10:16:04 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.24
 Thu, 18 May 2017 10:09:58 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.23
 Tue, 16 May 2017 21:47:38 GMT

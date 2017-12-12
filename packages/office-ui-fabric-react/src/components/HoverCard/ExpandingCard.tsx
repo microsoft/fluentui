@@ -6,13 +6,14 @@ import {
   getNativeProps,
   divProperties,
   customizable,
+  KeyCodes,
   autobind
 } from '../../Utilities';
-import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
+import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.types';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
-import { FocusTrapZone } from '../FocusTrapZone';
+import { FocusTrapZone } from '../../FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
 export interface IExpandingCardState {
@@ -26,6 +27,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     compactCardHeight: 156,
     expandedCardHeight: 384,
     directionalHint: DirectionalHint.bottomLeftEdge,
+    directionalHintFixed: true,
     gapSpace: 0
   };
 
@@ -53,7 +55,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     }
 
     if (this.props.trapFocus) {
-      this._expandingCard.focus();
       this._events.on(this._expandingCard, 'keydown', this._onDismiss);
     }
   }
@@ -68,6 +69,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       theme,
       styles: customStyles,
       compactCardHeight,
+      directionalHintFixed,
+      firstFocus,
       expandedCardHeight
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
@@ -75,8 +78,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     const content = (
       <div
         ref={ this._resolveRef('_expandingCard') }
-        onFocusCapture={ this.props.onEnter }
-        onBlurCapture={ this.props.onLeave }
         onMouseEnter={ this.props.onEnter }
         onMouseLeave={ this.props.onLeave }
       >
@@ -96,13 +97,14 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         target={ targetElement }
         isBeakVisible={ false }
         directionalHint={ this.props.directionalHint }
-        directionalHintFixed={ true }
+        directionalHintFixed={ directionalHintFixed }
         finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }
+        onDismiss={ this.props.onLeave }
         gapSpace={ this.props.gapSpace }
       >
         { this.props.trapFocus ?
-          <FocusTrapZone>
+          <FocusTrapZone forceFocusInsideTrap={ false } isClickableOutsideFocusTrap={ true } disableFirstFocus={ !firstFocus }>
             { content }
           </FocusTrapZone> :
           content
@@ -113,7 +115,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
   @autobind
   private _onDismiss(ev: MouseEvent): void {
-    if (ev.type === 'keydown') {
+    if (ev.type === 'keydown' && (ev.which !== KeyCodes.escape)) {
+      return;
+    } else {
       this.props.onLeave && this.props.onLeave(ev);
     }
   }

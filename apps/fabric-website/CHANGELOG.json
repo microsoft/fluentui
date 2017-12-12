@@ -2,6 +2,82 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.19",
+      "tag": "@uifabric/fabric-website_v5.0.19",
+      "date": "Wed, 06 Dec 2017 11:24:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "871a5a441f6c38c7c82abbe8f7b6081ce0c551f7",
+            "comment": "Updated referenced FabricCore versions."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.29.2 <6.0.0` to `>=5.29.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.18",
+      "tag": "@uifabric/fabric-website_v5.0.18",
+      "date": "Tue, 05 Dec 2017 02:04:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "1e7bfd33d32ee6f5367a1152377c203e2ab68888",
+            "comment": "Fix ScrollablePane page title"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.29.1 <6.0.0` to `>=5.29.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.17",
+      "tag": "@uifabric/fabric-website_v5.0.17",
+      "date": "Mon, 20 Nov 2017 11:12:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "67466325ed0ff6b89f82fa152860f968d8d740a0",
+            "comment": "Add ActivityItem, Calendar, HoverCard, OverflowSet, ScrollablePane, TeachingBubble to fabric-website"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.23.0 <6.0.0` to `>=5.24.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.16",
+      "tag": "@uifabric/fabric-website_v5.0.16",
+      "date": "Fri, 17 Nov 2017 17:36:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ad02795232194a76a6fc1468366d6ff1b030639b",
+            "comment": "Updated asset license to newest version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.22.0 <6.0.0` to `>=5.23.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.15",
       "tag": "@uifabric/fabric-website_v5.0.15",
       "date": "Tue, 31 Oct 2017 10:22:25 GMT",

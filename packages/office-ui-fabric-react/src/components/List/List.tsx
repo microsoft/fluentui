@@ -11,12 +11,14 @@ import {
   IRenderFunction,
   autobind
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps } from './List.Props';
+import { IList, IListProps, IPage, IPageProps } from './List.types';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
 const MAX_SCROLL_UPDATE_DELAY = 500;
 const IDLE_DEBOUNCE_DELAY = 200;
+// The amount of time to wait before declaring that the list isn't scrolling
+const DONE_SCROLLING_WAIT = 500;
 const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE_HEIGHT = 30;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -27,6 +29,7 @@ export interface IListState {
 
   /** The last versionstamp for  */
   measureVersion?: number;
+  isScrolling?: boolean;
 }
 
 interface IPageCacheItem {
@@ -126,7 +129,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     super(props);
 
     this.state = {
-      pages: []
+      pages: [],
+      isScrolling: false
     };
 
     this._estimatedPageHeight = 0;
@@ -158,6 +162,13 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       {
         leading: false
       });
+
+    this._onScrollingDone = this._async.debounce(
+      this._onScrollingDone,
+      DONE_SCROLLING_WAIT, {
+        leading: false
+      }
+    );
 
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
@@ -281,6 +292,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let { pages: oldPages } = this.state;
     let { pages: newPages } = newState;
     let shouldComponentUpdate = false;
+
+    // Update if the page stops scrolling
+    if (!newState.isScrolling && this.state.isScrolling) {
+      return true;
+    }
 
     if (newProps.items === this.props.items &&
       oldPages!.length === newPages!.length) {
@@ -446,7 +462,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           data-list-index={ index }
           data-automationid='ListCell'
         >
-          { onRenderCell && onRenderCell(item, index) }
+          { onRenderCell && onRenderCell(item, index, this.state.isScrolling) }
         </div>
       );
     });
@@ -479,7 +495,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
   private _onScroll() {
+    if (!this.state.isScrolling) {
+      this.setState({ isScrolling: true });
+    }
     this._resetRequiredWindows();
+    this._onScrollingDone();
   }
 
   private _resetRequiredWindows() {
@@ -528,6 +548,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       // Async increment on next tick.
       this._onAsyncIdle();
     }
+  }
+
+  /**
+   * Function to call when the list is done scrolling.
+   * This function is debounced.
+   */
+  private _onScrollingDone() {
+    this.setState({ isScrolling: false });
   }
 
   private _onAsyncResize() {

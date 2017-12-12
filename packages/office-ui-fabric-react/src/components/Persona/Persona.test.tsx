@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
-import { PersonaInitialsColor } from './Persona.Props';
+import { PersonaInitialsColor } from './Persona.types';
 import { mount, ReactWrapper } from 'enzyme';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -33,22 +33,6 @@ describe('Persona', () => {
   });
 
   describe('initials and colors', () => {
-    it('renders with expected initialsColor if none was provided', () => {
-      const wrapper = mount(<Persona primaryText='Kat Larrson' />);
-      let result = wrapper.find(STYLES.black);
-      expect(result).toHaveLength(1);
-
-      const wrapper2 = mount(<Persona primaryText='Annie Lindqvist' />);
-      result = wrapper2.find(STYLES.green);
-      expect(result).toHaveLength(1);
-    });
-
-    it('uses provided initialsColor if one was specified', () => {
-      const wrapper = mount(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.red } />);
-      let result = wrapper.find(STYLES.red);
-      expect(result).toHaveLength(1);
-    });
-
     it('calculates an expected initials in LTR if one was not specified', () => {
       let wrapper = mount(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find(STYLES.initials);
