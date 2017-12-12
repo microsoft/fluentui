@@ -193,7 +193,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       allowFreeform,
       value,
-      onMenuOpen
+      onMenuOpen,
+      onMenuDismissed
     } = this.props;
     let {
       isOpen,
@@ -239,6 +240,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (isOpen && !prevState.isOpen && onMenuOpen) {
       onMenuOpen();
+    }
+
+    if (!isOpen && prevState.isOpen && onMenuDismissed) {
+      onMenuDismissed();
     }
   }
 
