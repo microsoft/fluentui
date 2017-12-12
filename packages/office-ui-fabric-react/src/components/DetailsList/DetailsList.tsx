@@ -433,7 +433,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (!item) {
       if (onRenderMissingItem) {
-        onRenderMissingItem(index);
+        return onRenderMissingItem(index);
       }
 
       return null;
