@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Dec 2017 03:55:03 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2017 11:25:08 GMT and should not be manually modified.
+
+## 5.31.2
+Tue, 12 Dec 2017 11:25:08 GMT
+
+### Patches
+
+- Fix DetailsList onRenderMissingItem not rendering the missing item
 
 ## 5.31.1
 Tue, 12 Dec 2017 03:55:03 GMT
