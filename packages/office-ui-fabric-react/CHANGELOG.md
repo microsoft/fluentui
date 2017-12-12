@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Dec 2017 21:30:54 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2017 02:08:36 GMT and should not be manually modified.
+
+## 5.31.0
+Tue, 12 Dec 2017 02:08:36 GMT
+
+### Minor changes
+
+- List: Support ghosting
+
+### Patches
+
+- remove customized dismiss function in HoverCard
+- ComboBox: Add onMenuDismiss prop
+- ActivityItem: Snapshot and Screener tests added
 
 ## 5.30.2
 Fri, 08 Dec 2017 21:30:54 GMT

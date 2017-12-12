@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 Dec 2017 18:09:44 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2017 02:08:36 GMT and should not be manually modified.
+
+## 5.9.2
+Tue, 12 Dec 2017 02:08:36 GMT
+
+### Patches
+
+- add link ref in tile
 
 ## 5.9.1
 Fri, 08 Dec 2017 18:09:44 GMT
