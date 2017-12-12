@@ -24,6 +24,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
+import { VerticalDivider } from '../../Divider';
 import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
@@ -304,10 +305,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     const itemKey = item.key || String(index);
     return (
       <div
-        className={ css('ms-CommandBarDivider', styles.divider, item.className) }
+        className={ item.className }
         key={ itemKey }
         ref={ itemKey }
-      />
+      >
+        <VerticalDivider />
+      </div>
     );
   }
 
