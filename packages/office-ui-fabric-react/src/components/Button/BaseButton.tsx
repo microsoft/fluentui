@@ -376,7 +376,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
-    const { onDismiss = this._onToggleMenu } = menuProps;
+    const { onDismiss = this._dismissMenu } = menuProps;
 
     return (
       <ContextualMenu
@@ -389,6 +389,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onDismiss={ onDismiss }
       />
     );
+  }
+
+  @autobind
+  private _dismissMenu(): void {
+    this.setState({ menuProps: null });
   }
 
   @autobind
