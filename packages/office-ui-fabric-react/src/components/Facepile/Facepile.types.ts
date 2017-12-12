@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
-import { IButtonProps } from '../Button/index';
+import { IButtonBaseProps } from '../Button/index';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -37,16 +37,16 @@ export interface IFacepileProps extends React.Props<Facepile> {
   showAddButton?: boolean;
 
   /** Button properties for the add face button */
-  addButtonProps?: IButtonProps;
+  addButtonProps?: IButtonBaseProps;
 
   /**
    * Deprecated at v0.70, use 'overflowButtonProps' instead;
    * @deprecated
    */
-  chevronButtonProps?: IButtonProps;
+  chevronButtonProps?: IButtonBaseProps;
 
   /** Properties for the overflow icon */
-  overflowButtonProps?: IButtonProps;
+  overflowButtonProps?: IButtonBaseProps;
 
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;

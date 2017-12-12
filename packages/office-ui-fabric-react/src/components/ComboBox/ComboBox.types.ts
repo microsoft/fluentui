@@ -2,8 +2,8 @@ import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IButtonStyles } from '../../Button';
-import { IRenderFunction } from '../../Utilities';
+import { IButtonStyles, IButtonBaseStyleProps, IButtonBaseStyles } from '../../Button';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
@@ -99,13 +99,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Styles for the caret down button.
    */
-  caretDownButtonStyles?: Partial<IButtonStyles>;
+  getCaretDownButtonStyles?: IStyleFunction<IButtonBaseStyleProps, IButtonBaseStyles>;
 
   /**
    * Default styles that should be applied to ComboBox options,
    * in case an option does not come with user-defined custom styles
    */
-  comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+  getComboBoxOptionStyles?: IStyleFunction<IButtonBaseStyleProps, IButtonBaseStyles>;
 
   /**
    * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).

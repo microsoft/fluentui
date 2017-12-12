@@ -6,7 +6,8 @@ import {
   buttonProperties,
   getId,
   getNativeProps,
-  customizable
+  customizable,
+  nullRender
 } from '../../../Utilities';
 import { hiddenContentStyle, mergeStyles } from '../../../Styling';
 import { Icon } from '../../../Icon';
@@ -139,7 +140,12 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       onRenderDescription = this._onRenderDescription
     } = props;
 
-    if (text || description || onRenderText || onRenderDescription) {
+    if (
+      text
+      || description
+      || this.props.onRenderText && this.props.onRenderText !== nullRender
+      || this.props.onRenderDescription && this.props.onRenderDescription !== nullRender
+    ) {
       return (
         <div className={ this._classNames.textContainer } >
           { onRenderText({ ...props, text }, this._onRenderText) }

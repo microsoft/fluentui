@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../../Button';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ISpinButton {
   /**
@@ -140,7 +141,7 @@ export interface ISpinButtonProps {
    * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
    * for styling when that is the case.
    */
-  upArrowButtonStyles?: Partial<IButtonStyles>;
+  upArrowButtonStyles?: IStyleFunction<IButtonBaseStyleProps, IButtonBaseStyles>;
 
   /**
    * Custom styles for the downArrow button.
@@ -149,7 +150,7 @@ export interface ISpinButtonProps {
    * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
    * for styling when that is the case.
    */
-  downArrowButtonStyles?: Partial<IButtonStyles>;
+  downArrowButtonStyles?: IStyleFunction<IButtonBaseStyleProps, IButtonBaseStyles>;
 
   /**
    * Theme provided by HOC.

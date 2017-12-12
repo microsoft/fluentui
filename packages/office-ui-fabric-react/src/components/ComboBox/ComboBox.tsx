@@ -16,7 +16,8 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  customizable
+  customizable,
+  styled
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -273,6 +274,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       !!hasErrorMessage
     );
 
+    const ComboIconButton = styled(
+      IconButton,
+      getCaretDownButtonStyles,
+      props => ({
+        getStyles: this.props.getCaretDownButtonStyles,
+      })
+    );
+
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
@@ -312,10 +321,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
           />
-          <IconButton
+          <ComboIconButton
             className={ 'ms-ComboBox-CaretDown-button' }
-            // TODO Fix getStyles
-            // getStyles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
@@ -909,16 +916,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
-    const rootClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item)).root;
+
+    const ComboCommandButton = styled(
+      CommandButton,
+      getOptionStyles
+    )
 
     return (
-      <CommandButton
+      <ComboCommandButton
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }
-        className={ rootClassNames }
-        // @TODO conver to getStyles
-        // getStyles={ this._getCurrentOptionStyles(item) }
         checked={ isSelected }
         onClick={ this._onItemClick(item.index) }
         onMouseEnter={ this._onOptionMouseEnter.bind(this, item.index) }
@@ -928,11 +936,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         aria-selected={ isSelected ? 'true' : 'false' }
         ariaLabel={ item.text }
         disabled={ item.disabled }
-      > { <span ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }>
-        { onRenderOption(item, this._onRenderOption) }
-      </span>
-        }
-      </CommandButton>
+      >
+        <span ref={ this._resolveRef(isSelected ? '_selectedElement' : '') }>
+          { onRenderOption(item, this._onRenderOption) }
+        </span>
+      </ComboCommandButton>
     );
   }
 
@@ -1042,8 +1050,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
-    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
+
+    return <span
+    // @TODO Fix optionText
+    // className={ optionClassNames.optionText }
+    >{ item.text }</span>;
   }
 
   /**
@@ -1444,23 +1455,4 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  /**
- * Get the styles for the current option.
- * @param item Item props for the current option
- */
-  private _getCaretButtonStyles() {
-    const { caretDownButtonStyles: customCaretDownButtonStyles } = this.props;
-    return getCaretDownButtonStyles(this.props.theme!, customCaretDownButtonStyles);
-  }
-
-  /**
-   * Get the styles for the current option.
-   * @param item Item props for the current option
-   */
-  private _getCurrentOptionStyles(item: IComboBoxOption) {
-    const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
-    const { styles: customStylesForCurrentOption } = item;
-
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
-  }
 }
