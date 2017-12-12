@@ -43,8 +43,7 @@ export const getMenuItemStyles = memoizeFunction((
       }],
     divider: {
       display: 'block',
-      height: '1px',
-      backgroundColor: semanticColors.bodyDivider,
+      borderBottom: '1px solid ' + semanticColors.bodyDivider,
       position: 'relative'
     },
     root: [

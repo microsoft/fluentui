@@ -7,16 +7,24 @@ import {
   css,
   divProperties,
   getId,
-  getNativeProps
+  getNativeProps,
+  assertNever
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import {
+  ContextualMenu,
+  ContextualMenuItemType,
+  hasSubmenuItems,
+  IContextualMenuProps,
+  IContextualMenuItem
+} from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
   IIconProps
 } from '../../Icon';
+import { VerticalDivider } from '../../Divider';
 import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
@@ -117,7 +125,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         <FocusZone ref='focusZone' className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
             { renderedItems!.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey!)
+              this._renderCommandBarItem(item, index, expandedMenuItemKey!, false)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
               <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <button
@@ -140,7 +148,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           </div>
           <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref='farCommandSurface'>
             { renderedFarItems!.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey!, true)
+              this._renderCommandBarItem(item, index, expandedMenuItemKey!, true)
             )) }
           </div>
         </FocusZone>
@@ -163,7 +171,29 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this.refs.focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+  private _renderCommandBarItem(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+    // If no itemType is passed, render an item as normal.
+    if (item.itemType === undefined) {
+      return this._renderNormalItem(item, index, expandedMenuItemKey);
+    }
+
+    switch (item.itemType) {
+      case ContextualMenuItemType.Divider:
+        return this._renderSeparator(item, index, isFarItem);
+      case ContextualMenuItemType.Normal:
+        return this._renderNormalItem(item, index, expandedMenuItemKey);
+      case ContextualMenuItemType.Header:
+      case ContextualMenuItemType.Section:
+        // Unsupported
+        return null;
+      default:
+        // If we ever add a new ContextualMenuItemType in the future without adding to this switch,
+        // it will result in a build break
+        assertNever(item.itemType as never);
+    }
+  }
+
+  private _renderNormalItem(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string) {
     if (item.onRender) {
       return (
         <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
@@ -271,6 +301,19 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     );
   }
 
+  private _renderSeparator(item: ICommandBarItemProps, index: number, isFarItem?: boolean): React.ReactNode {
+    const itemKey = item.key || String(index);
+    return (
+      <div
+        className={ item.className }
+        key={ itemKey }
+        ref={ itemKey }
+      >
+        <VerticalDivider />
+      </div>
+    );
+  }
+
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
@@ -343,17 +386,22 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       let item = renderedItems[i];
       let itemWidth = this._commandItemWidths![item.key];
 
+      if (!itemWidth) {
+        continue;
+      }
+
       if ((consumedWidth + itemWidth) >= availableWidth) {
         if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < OVERFLOW_WIDTH) {
           i--;
         }
 
-        renderedOverflowItems = renderedItems.splice(i).concat(overflowItems!);
+        renderedOverflowItems = renderedItems
+          .splice(i)
+          .concat(overflowItems!);
         break;
       } else {
         consumedWidth += itemWidth;
       }
-
     }
 
     let renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
