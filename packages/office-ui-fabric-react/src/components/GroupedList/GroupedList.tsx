@@ -282,13 +282,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _getPageSpecification(itemIndex: number, visibleRect: IRectangle): {
-      itemCount?: number;
       key?: string;
   } {
     const groups = this.state.groups;
-    const pageGroup = groups && groups.filter((group: IGroup) => group.startIndex === itemIndex)[0];
+    const pageGroup = groups && groups[itemIndex];
     return {
-        itemCount: pageGroup && pageGroup.count,
         key: pageGroup && pageGroup.name
     };
   }
