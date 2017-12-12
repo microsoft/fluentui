@@ -591,6 +591,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           // Enqueue an idle bump.
           this._onAsyncIdle();
         }
+      } else {
+        // Enqueue an idle bump
+        this._onAsyncIdle();
       }
     });
   }
