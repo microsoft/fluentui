@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding onMenuDismissed for ComboBox",
+      "comment": "ComboBox: Add onMenuDismiss prop",
       "type": "patch"
     }
   ],
