@@ -146,7 +146,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               </CodeBlock>
             </li>
             <li>
-              <p>Add props to your component to maximize functionality.</p>
+              <p>Add props to your component to tack advantage of Fabric React's rich functionality.</p>
               <CodeBlock language='javascript' isLightTheme={ true }>
                 {
                   `<DefaultButton
@@ -164,7 +164,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>For more information about using components, check out the <a className={ styles.getStartedLink } href='#/components'>components page</a>.</p>
             </li>
             <li>
-              <p>If you are using Fabric React components that have icons, you can make all icons available by calling the <code>initializeIcons</code> function from the <code>@uifabric/icons</code> package:</p>
+              <p>If you are using Fabric React components that have icons, you can make all icons available by calling the <code>initializeIcons</code> function from the <code>@uifabric/icons</code> package.</p>
               <CodeBlock language='javascript' isLightTheme={ true }>
                 {
                   `import { initializeIcons } from '@uifabric/icons';
@@ -199,10 +199,12 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`
               </CodeBlock>
             </li>
             <li>
-              <p>Reference core Fabric styles:</p>
+              <p>Reference core Fabric styles. <code>ms-Fabric</code> sets the font-family for all Fabric typography classes used in the element it's added to.</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-                  `<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
+                  `<body class="ms-Fabric">
+  <span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>
+</body>`
                 }
               </CodeBlock>
               <p>To reference all the assets available in Fabric Core, see the <a className={ styles.getStartedLink } href='#/styles'>styles page</a>. To use components, see <a className={ styles.getStartedLink } href='#/get-started#react'>Fabric React</a> or <a className={ styles.getStartedLink } href='#/angular-js'>ngOfficeUIFabric</a>.</p>
