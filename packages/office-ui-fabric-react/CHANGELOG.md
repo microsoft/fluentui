@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Dec 2017 02:08:36 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2017 03:55:03 GMT and should not be manually modified.
+
+## 5.31.1
+Tue, 12 Dec 2017 03:55:03 GMT
+
+### Patches
+
+- BaseButton: Explicitly dismiss the menu when the contextual menu is dismissed rather than calling toggleMEnu
 
 ## 5.31.0
 Tue, 12 Dec 2017 02:08:36 GMT
