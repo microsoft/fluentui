@@ -286,6 +286,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   } {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
+    // Use the group name for the page key so React doesn't unmount/remount
+    // when a group above it in the list unmounts
     return {
         key: pageGroup && pageGroup.name
     };
