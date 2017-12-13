@@ -132,13 +132,21 @@
     font-size: $ms-font-size-l;
   }
 
-  a,
   .getStartedLink {
     color: $color-getStarted-medium;
   }
 
   .trademark {
     margin-top: 80px;
+  }
+
+  :global(.ms-Button) {
+    margin: 12px 0;
+  }
+
+  code {
+    background-color: $ms-color-white;
+    padding: 0 2px;
   }
 }
 
