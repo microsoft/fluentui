@@ -107,6 +107,30 @@ export interface IPanelProps extends React.Props<Panel> {
   elementToFocusOnDismiss?: HTMLElement;
 
   /**
+    * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
+    * Optional props to pass to the FocusTrapZone component to manage focus in the panel.
+    * Deprecated, use focusTrapZoneProps.
+    * @default false
+    * @deprecated
+    */
+  ignoreExternalFocusing?: boolean;
+
+  /**
+   * Indicates whether Panel should force focus inside the focus trap zone
+   * Deprecated, use focusTrapZoneProps.
+   * @default true
+   * @deprecated
+   */
+  forceFocusInsideTrap?: boolean;
+
+  /**
+   * Indicates the selector for first focusable item.
+   * Deprecated, use focusTrapZoneProps.
+   * @deprecated
+   */
+  firstFocusableSelector?: string;
+
+  /**
    * Optional props to pass to the FocusTrapZone component to manage focus in the panel.
    */
   focusTrapZoneProps?: IFocusTrapZoneProps;

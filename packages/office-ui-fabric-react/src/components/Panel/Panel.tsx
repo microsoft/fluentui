@@ -72,9 +72,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let {
       className = '',
       elementToFocusOnDismiss,
+      firstFocusableSelector,
       focusTrapZoneProps,
+      forceFocusInsideTrap,
       hasCloseButton,
       headerText,
+      ignoreExternalFocusing,
       isBlocking,
       isLightDismiss,
       isHiddenOnDismiss,
@@ -149,6 +152,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           >
             { overlay }
             <FocusTrapZone
+              ignoreExternalFocusing={ ignoreExternalFocusing }
+              forceFocusInsideTrap={ forceFocusInsideTrap }
+              firstFocusableSelector={ firstFocusableSelector }
               { ...focusTrapZoneProps }
               className={
                 css(
