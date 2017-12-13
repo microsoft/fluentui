@@ -108,6 +108,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuProps?: IContextualMenuProps;
 
   /**
+   * Callback that runs after Button's contextualmenu was closed (removed from the DOM)
+   */
+  onAfterMenuDismiss?: () => void;
+
+  /**
    * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
    */
   split?: boolean;

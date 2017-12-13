@@ -391,6 +391,44 @@ describe('Button', () => {
         expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
       });
 
+      it('Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
+
+        const callbackMock = jest.fn();
+
+        const renderedDOM: HTMLElement = renderIntoDocument(
+          <DefaultButton
+            data-automation-id='test'
+            text='Create account'
+            split={ true }
+            onClick={ setTrue }
+            onAfterMenuDismiss={ callbackMock }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        );
+
+        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
+
+        ReactTestUtils.Simulate.click(menuButtonElement);
+        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+
+        ReactTestUtils.Simulate.click(menuButtonElement);
+        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('false');
+        expect(callbackMock.mock.calls.length).toBe(1);
+      });
+
       it('A disabled SplitButton does not respond to clicks', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
