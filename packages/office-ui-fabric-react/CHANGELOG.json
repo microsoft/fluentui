@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.32.0",
+      "tag": "office-ui-fabric-react_v5.32.0",
+      "date": "Wed, 13 Dec 2017 04:06:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "0e28217a5d3aff9d3e4dcf9319f6e5a117c97fec",
+            "comment": "BaseButton:onAfterMenuDismiss"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "4f0fa0ea2450fd402eaf5d51b3cc46d282d79db9",
+            "comment": "ContextualMenu: Undo change to manually set the scrollbar"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8146c713b40cfbba03fd1f9e4197ef1502a0bc21",
+            "comment": "Link: Fixed state styling for the component and its documented examples."
+          },
+          {
+            "author": "Lambert W <lambert.ww@gmail.com>",
+            "commit": "52ffc478baaa3bf900f686ff6a67ba9965f1e523",
+            "comment": "Fix dropdown focus issue for IE"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.31.2",
       "tag": "office-ui-fabric-react_v5.31.2",
       "date": "Tue, 12 Dec 2017 11:25:08 GMT",
