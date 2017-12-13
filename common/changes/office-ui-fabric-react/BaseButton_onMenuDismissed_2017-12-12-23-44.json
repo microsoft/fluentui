@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton:onMenuDismissed",
+      "comment": "BaseButton:onAfterMenuDismiss",
       "type": "patch"
     }
   ],
