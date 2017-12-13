@@ -3,10 +3,9 @@ import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.t
 
 import { getButtonBaseStyles } from '../_base/Button.base.styles';
 
-
 export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
-  const {theme} = props;
+  const { theme } = props;
 
   let baseButtonStyles = getButtonBaseStyles(props);
   let messageBarButtonStyles: IButtonBaseStyles = {

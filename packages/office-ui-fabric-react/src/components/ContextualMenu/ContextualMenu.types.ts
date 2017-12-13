@@ -525,7 +525,6 @@ export interface IMenuItemStyles {
   splitButtonMenuIconDisabled?: IStyle;
   splitButtonFlexContainer?: IStyle;
 
-
   /**
    *  Styles for a split button divider in a menu item
    * @deprecated

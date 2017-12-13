@@ -187,6 +187,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       this.setState({
         isOpen: true,
         isAnimating: true
+        // tslint:disable-next-line:jsx-no-lambda
       }, () => {
         this._async.setTimeout(this._onTransitionComplete, 200);
       });
@@ -199,6 +200,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       this.setState({
         isOpen: false,
         isAnimating: true
+        // tslint:disable-next-line:jsx-no-lambda
       }, () => {
         this._async.setTimeout(this._onTransitionComplete, 200);
       });
@@ -219,16 +221,17 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       return (
         <div className={ css('ms-Panel-navigation', styles.navigation) } >
           <IconButton
-            getStyles={ (props) => (
+            // tslint:disable-next-line:jsx-no-lambda
+            getStyles={ (buttonProps) => (
               {
                 root: {
                   height: 'auto',
                   width: '44px',
-                  color: props.theme.palette.neutralSecondary,
+                  color: buttonProps.theme.palette.neutralSecondary,
                   fontSize: IconFontSizes.large,
                   selectors: {
                     ':hover': {
-                      color: props.theme.palette.neutralPrimary
+                      color: buttonProps.theme.palette.neutralPrimary
                     }
                   }
                 }

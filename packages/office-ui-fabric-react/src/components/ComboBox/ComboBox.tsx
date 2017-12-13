@@ -920,7 +920,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const ComboCommandButton = styled(
       CommandButton,
       getOptionStyles
-    )
+    );
 
     return (
       <ComboCommandButton
@@ -1051,10 +1051,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
 
-    return <span
-    // @TODO Fix optionText
-    // className={ optionClassNames.optionText }
-    >{ item.text }</span>;
+    return (
+      <span
+      // @TODO Fix optionText
+      // className={ optionClassNames.optionText }
+      >{ item.text }</span>
+    );
   }
 
   /**

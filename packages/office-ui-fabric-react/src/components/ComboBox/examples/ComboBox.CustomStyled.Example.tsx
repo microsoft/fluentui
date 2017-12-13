@@ -67,6 +67,7 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
               },
             }
           }
+          // tslint:disable-next-line:jsx-no-lambda
           getComboBoxOptionStyles={ () => ({
             label: {
               fontFamily: 'initial', // this should be overriden by custom styles for each option

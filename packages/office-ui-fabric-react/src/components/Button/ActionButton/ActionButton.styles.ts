@@ -3,7 +3,6 @@ import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.t
 
 import { getButtonBaseStyles } from '../_base/Button.base.styles';
 
-
 export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   const { theme, expanded, disabled, checked } = props;

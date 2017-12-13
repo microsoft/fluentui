@@ -66,6 +66,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         onFocus={ this.props.onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
+        // tslint:disable-next-line:jsx-no-lambda
         getStyles={ (props) => ({
           button: this._classNames.colorCell
         }) }

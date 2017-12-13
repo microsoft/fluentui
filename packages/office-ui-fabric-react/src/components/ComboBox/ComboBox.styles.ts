@@ -127,7 +127,6 @@ export const getOptionStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles
   return concatStyleSets(optionStyles);
 };
 
-
 export const getCaretDownButtonStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   const { checked, disabled } = props;

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DefaultButton, IconButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
+// tslint:disable-next-line:jsx-no-lambda
 const alertClicked = (): void => {
   alert('Clicked');
 };
@@ -120,6 +121,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonBaseProps, 
           text='Create account'
           onClick={ alertClicked }
           split={ true }
+          // tslint:disable-next-line:jsx-no-lambda
           getStyles={ (props) => ({
             button: { backgroundColor: 'white', width: '10px' },
             menuIcon: { fontSize: '7px' }

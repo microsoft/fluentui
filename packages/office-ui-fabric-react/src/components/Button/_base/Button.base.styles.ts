@@ -21,7 +21,7 @@ const iconStyle = {
 };
 
 export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
-  const { theme, disabled } = props;
+  const { theme, disabled, checked, expanded } = props;
   const { fonts, semanticColors } = theme;
 
   let border = semanticColors.buttonBorder;
@@ -56,7 +56,7 @@ export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseSt
         alignItems: 'center',
         padding: '0 16px'
       },
-      disabled && {
+      disabled && 'is-disabled' && {
         backgroundColor: disabledBackground,
         color: disabledText,
         cursor: 'default',
@@ -65,7 +65,9 @@ export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseSt
           ':hover': noOutline,
           ':focus': noOutline
         }
-      }
+      },
+      checked && 'is-checked',
+      expanded && 'is-expanded'
     ],
 
     icon: [
@@ -87,9 +89,12 @@ export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseSt
       }
     ],
 
-    textContainer: {
-      flexGrow: 1
-    },
+    textContainer: [
+      'ms-Button-textContainer',
+      {
+        flexGrow: 1
+      }
+    ],
 
     label: [
       'ms-Button-label',

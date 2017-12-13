@@ -137,7 +137,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
-    const buttonStyles = function (): IButtonBaseStyles {
+    const buttonStyles = (): IButtonBaseStyles => {
       return ({
         button: {
           [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
