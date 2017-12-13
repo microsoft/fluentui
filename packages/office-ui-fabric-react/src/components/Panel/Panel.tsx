@@ -164,6 +164,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                   isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
                   !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
                   !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
+                  focusTrapZoneProps ? focusTrapZoneProps.className : undefined
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
