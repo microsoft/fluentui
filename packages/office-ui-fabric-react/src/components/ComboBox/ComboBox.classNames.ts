@@ -106,8 +106,8 @@ export const getComboBoxOptionClassNames = memoizeFunction((
       {
         selectors: {
           ':hover': styles.rootHovered,
-          ':active': styles.rootPressed,
-          ':focus': styles.rootFocused
+          ':focus': styles.rootFocused,
+          ':active': styles.rootPressed
         }
       }
     )
