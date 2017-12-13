@@ -122,11 +122,11 @@ export class ButtonSplitCustomExample extends React.Component<IButtonBaseProps, 
           onClick={ alertClicked }
           split={ true }
           // tslint:disable-next-line:jsx-no-lambda
+          dividerAs={ () => <div style={ { borderLeft: '1px solid #c8c8c8', margin: '4px 8px', height: '1em' } } /> }
+          // tslint:disable-next-line:jsx-no-lambda
           getStyles={ (props) => ({
             button: { backgroundColor: 'white', width: '10px' },
             menuIcon: { fontSize: '7px' }
-            // @TODO fix once divider is converted
-            // splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 12 }
           })
           }
           menuProps={ {

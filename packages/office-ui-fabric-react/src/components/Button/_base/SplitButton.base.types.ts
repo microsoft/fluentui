@@ -3,9 +3,9 @@ import {
   IMenuButtonBaseProps,
   IMenuButtonBase
 } from './MenuButton.base.types';
-import { IButtonBaseStyleProps, IButtonBaseStyles } from './Button.base.types';
-// import { IVerticalDividerProps } from '../../../Divider';
-import { IStyleFunction } from '../../../Utilities';
+import { IButtonBaseStyleProps, IButtonBaseStyles, IButtonBaseProps } from './Button.base.types';
+import { IVerticalDividerProps } from '../../../Divider';
+import { IStyleFunction, IComponentAs } from '../../../Utilities';
 
 export interface ISplitButton extends IMenuButtonBase {
 
@@ -30,13 +30,5 @@ export interface ISplitButtonBaseProps extends IMenuButtonBaseProps {
    */
   primaryDisabled?: boolean;
 
-  /**
-  * Call to provide customized styling that will layer on top of the variant rules.
-  */
-  // buttonAs?: IComponentAs<IButtonBaseProps>;
-
-  // dividerAs?: IComponentAs<IVerticalDividerProps>;
-
-  // menuButtonAs?: IComponentAs<IMenuButtonBaseProps>;
-
+  dividerAs?: IComponentAs<IVerticalDividerProps>;
 }

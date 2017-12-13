@@ -94,6 +94,7 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
       onRenderMenuIcon,
       onRenderMenu,
       disabled,
+      dividerAs: SplitDivider = VerticalDivider,
       getSplitStyles = this.props.getStyles, // default to getStyles if split is not supplied
       primary
     } = this.props;
@@ -116,7 +117,7 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
     return (
       <span style={ { display: 'flex' } }>
         {/* move these styles into component when converted to getStyles */ }
-        <span style={ { margin: '4px -.5px', position: 'relative', zIndex: 1 } }><VerticalDivider /> </span>
+        <span style={ { margin: '4px -.5px', position: 'relative', zIndex: 1 } }><SplitDivider /> </span>
         <MenuButtonBase {...menuButtonProps} />
       </span>
     );
