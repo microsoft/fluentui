@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Dec 2017 11:25:08 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Dec 2017 04:06:51 GMT and should not be manually modified.
+
+## 5.32.0
+Wed, 13 Dec 2017 04:06:51 GMT
+
+### Minor changes
+
+- BaseButton:onAfterMenuDismiss
+
+### Patches
+
+- ContextualMenu: Undo change to manually set the scrollbar
+- Link: Fixed state styling for the component and its documented examples.
+- Fix dropdown focus issue for IE
 
 ## 5.31.2
 Tue, 12 Dec 2017 11:25:08 GMT
