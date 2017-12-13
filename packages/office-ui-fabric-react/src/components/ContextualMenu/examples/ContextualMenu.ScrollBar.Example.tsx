@@ -28,8 +28,8 @@ export class ContextualMenuWithScrollBarExample extends React.Component<any, any
                 name: 'New'
               },
               {
-                key: 'rename',
-                name: 'Rename'
+                key: 'item 2',
+                name: 'Item with a very long label text'
               },
               {
                 key: 'edit',
