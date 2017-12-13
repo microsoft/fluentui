@@ -72,11 +72,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let {
       className = '',
       elementToFocusOnDismiss,
-      firstFocusableSelector,
-      forceFocusInsideTrap,
+      focusTrapZoneProps,
       hasCloseButton,
       headerText,
-      ignoreExternalFocusing,
       isBlocking,
       isLightDismiss,
       isHiddenOnDismiss,
@@ -151,6 +149,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           >
             { overlay }
             <FocusTrapZone
+              { ...focusTrapZoneProps }
               className={
                 css(
                   'ms-Panel-main',
@@ -163,9 +162,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               isClickableOutsideFocusTrap={ isLightDismiss || isHiddenOnDismiss }
-              ignoreExternalFocusing={ ignoreExternalFocusing }
-              forceFocusInsideTrap={ forceFocusInsideTrap }
-              firstFocusableSelector={ firstFocusableSelector }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(renderProps, this._onRenderNavigation) }

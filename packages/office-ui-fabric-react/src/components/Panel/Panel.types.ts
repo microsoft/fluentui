@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Panel } from './Panel';
 import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
+import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
 export interface IPanel {
   /**
@@ -106,21 +107,9 @@ export interface IPanelProps extends React.Props<Panel> {
   elementToFocusOnDismiss?: HTMLElement;
 
   /**
-   * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
-   * @default false
+   * Optional props to pass to the FocusTrapZone component to manage focus in the panel.
    */
-  ignoreExternalFocusing?: boolean;
-
-  /**
-  * Indicates whether Panel should force focus inside the focus trap zone
-  * @default true
-  */
-  forceFocusInsideTrap?: boolean;
-
-  /**
-  * Indicates the selector for first focusable item
-  */
-  firstFocusableSelector?: string;
+  focusTrapZoneProps?: IFocusTrapZoneProps;
 
   /**
    * Optional props to pass to the Layer component hosting the panel.
