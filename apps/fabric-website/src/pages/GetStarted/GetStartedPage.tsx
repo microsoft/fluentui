@@ -191,7 +191,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`
 
           <ol className={ styles.steps }>
             <li>
-              <p>Add the following line to the &lt;head&gt; of your webpage:</p>
+              <p>Add the following line to the <code>&lt;head&gt;</code> of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
                   `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/${corePackageVersion}/css/fabric.min.css">`
@@ -199,7 +199,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`
               </CodeBlock>
             </li>
             <li>
-              <p>Reference core Fabric styles. <code>ms-Fabric</code> sets the font-family for all Fabric typography classes used in the element it's added to.</p>
+              <p>Reference core Fabric styles. Add the <code>ms-Fabric</code> class to a containing element, such as <code>&lt;body&gt;</code>, to set the font-family for all Fabric typography classes used within that element.</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
                   `<body class="ms-Fabric">
