@@ -12,6 +12,11 @@ export interface ICommandBar {
    * Sets focus to the active command in the list.
    */
   focus(): void;
+
+  /**
+   * Remeasures the available space.
+   */
+  remeasure(): void;
 }
 
 export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -325,6 +325,12 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this._afterComponentRendered();
   }
 
+  public remeasure(): void {
+    if (this._root) {
+      this.setState({ measureContainer: true });
+    }
+  }
+
   private _afterComponentRendered() {
     this._async.requestAnimationFrame(() => {
       let containerWidth = undefined;
