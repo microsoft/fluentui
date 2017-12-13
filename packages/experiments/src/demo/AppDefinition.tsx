@@ -88,6 +88,18 @@ export const AppDefinition: IAppDefinition = {
           name: 'ExtendedPeoplePicker',
           url: '#/examples/extendedpeoplepicker'
         },
+        {
+          component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
+          key: 'VirtualizedList',
+          name: 'VirtualizedList',
+          url: '#/examples/virtualizedlist'
+        },
+        {
+          component: require<any>('../components/StaticList/StaticListPage').StaticListPage,
+          key: 'StaticList',
+          name: 'StaticList',
+          url: '#/examples/staticlist'
+        }
       ]
     }
   ],
