@@ -13,8 +13,8 @@ const noOutline: IRawStyle = {
 const iconStyle = {
   fontSize: FontSizes.icon,
   margin: '0 4px',
-  height: '16px',
-  lineHeight: '16px',
+  height: 16,
+  lineHeight: 16,
   textAlign: 'center',
   verticalAlign: 'middle',
   flexShrink: 0

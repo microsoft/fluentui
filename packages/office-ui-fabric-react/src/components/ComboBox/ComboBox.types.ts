@@ -2,7 +2,7 @@ import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IButtonStyles, IButtonBaseStyleProps, IButtonBaseStyles } from '../../Button';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../../Button';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
 
 export interface IComboBox {
@@ -227,12 +227,12 @@ export interface IComboBoxStyles {
   divider: IStyle;
 }
 
-export interface IComboBoxOptionStyles extends IButtonStyles {
+export interface IComboBoxOptionStyles extends IButtonBaseStyles {
 
   /**
    * Styles for the text inside the comboBox option.
    * This should be used instead of the description
-   * inside IButtonStyles because we custom render the text
+   * inside IButtonBaseStyles because we custom render the text
    * in the comboBox options.
    */
   optionText: IStyle;

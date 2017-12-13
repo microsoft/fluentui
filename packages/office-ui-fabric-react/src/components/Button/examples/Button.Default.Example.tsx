@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
-export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
+export class ButtonDefaultExample extends React.Component<IButtonBaseProps, {}> {
   public render() {
     let { disabled, checked } = this.props;
 

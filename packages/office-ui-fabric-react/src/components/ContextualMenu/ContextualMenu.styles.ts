@@ -61,7 +61,7 @@ export const getMenuItemStyles = memoizeFunction((
         cursor: 'pointer',
         padding: '0px 6px',
         textAlign: 'left',
-      },
+      }
     ],
     rootDisabled: {
       color: semanticColors.disabledBodyText,

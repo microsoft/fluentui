@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonBaseStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
@@ -60,7 +60,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styles to be mixed into individual button styles
    */
-  buttonStyles?: IButtonStyles;
+  buttonStyles?: IButtonBaseStyles;
 
   /**
    * Theme provided by HOC.
@@ -102,7 +102,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Custom styles for individual button
    */
-  buttonStyles?: IButtonStyles;
+  buttonStyles?: IButtonBaseStyles;
 
   /**
    * A custom cache key to be used for this item. If cacheKey is changed, the cache will invalidate. Defaults to key value;

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
-export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
+export class ButtonScreenReaderExample extends React.Component<IButtonBaseProps, {}> {
   public constructor() {
     super();
   }

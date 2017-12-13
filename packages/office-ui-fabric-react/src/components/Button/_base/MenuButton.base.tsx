@@ -71,7 +71,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     const {
-      onDismiss = this._onToggleMenu,
+      onDismiss = this._toggleMenu,
       target = `[data-target-id='${this._labelId}']`
     } = menuProps;
 
@@ -89,7 +89,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
   }
 
   @autobind
-  private _onToggleMenu(): void {
+  private _toggleMenu(): void {
     this.setState((prevState: IMenuButtonBaseState) => {
       return { menuIsOpen: !prevState.menuIsOpen };
     });
@@ -100,7 +100,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
     if (ev.which === KeyCodes.down) {
       let { onMenuClick } = this.props;
       onMenuClick && onMenuClick(ev, this);
-      !ev.defaultPrevented && this._onToggleMenu();
+      !ev.defaultPrevented && this._toggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -110,7 +110,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
   private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
     let { onMenuClick } = this.props;
     onMenuClick && onMenuClick(ev, this);
-    !ev.defaultPrevented && this._onToggleMenu();
+    !ev.defaultPrevented && this._toggleMenu();
     ev.preventDefault();
     ev.stopPropagation();
   }

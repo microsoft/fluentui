@@ -1,10 +1,10 @@
 
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 
-export { IButtonProps };
+export { IButtonBaseProps };
 
 export interface IFormConditionalSubmitButtonProps extends IBaseProps {
   /** Props for the fabric button */
-  buttonProps?: IButtonProps;
+  buttonProps?: IButtonBaseProps;
 }

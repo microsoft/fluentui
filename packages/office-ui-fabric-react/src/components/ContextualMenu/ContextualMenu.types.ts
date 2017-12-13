@@ -5,7 +5,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+import { IButtonBaseStyles } from '../../Button';
 import {
   IPoint,
   IRectangle,
@@ -435,7 +435,7 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
   bottomDivider?: boolean;
 }
 
-export interface IMenuItemStyles extends IButtonStyles {
+export interface IMenuItemStyles {
   /**
    * Styles for a menu item that is an anchor link.
    */
@@ -470,6 +470,61 @@ export interface IMenuItemStyles extends IButtonStyles {
   * Styles for a divider item of a ConextualMenu.
   */
   divider: IStyle;
+
+  /**
+  * Old IButtonStyles props
+  */
+  root?: IStyle;
+  rootChecked?: IStyle;
+  rootDisabled?: IStyle;
+  rootHovered?: IStyle;
+  rootFocused?: IStyle;
+  rootPressed?: IStyle;
+  rootExpanded?: IStyle;
+  rootCheckedHovered?: IStyle;
+  rootCheckedPressed?: IStyle;
+  rootCheckedDisabled?: IStyle;
+  rootExpandedHovered?: IStyle;
+  flexContainer?: IStyle;
+  textContainer?: IStyle;
+  icon?: IStyle;
+  iconHovered?: IStyle;
+  iconPressed?: IStyle;
+  iconExpanded?: IStyle;
+  iconExpandedHovered?: IStyle;
+  iconDisabled?: IStyle;
+  iconChecked?: IStyle;
+  label?: IStyle;
+  labelDisabled?: IStyle;
+  labelChecked?: IStyle;
+  menuIcon?: IStyle;
+  menuIconHovered?: IStyle;
+  menuIconPressed?: IStyle;
+  menuIconExpanded?: IStyle;
+  menuIconExpandedHovered?: IStyle;
+  menuIconDisabled?: IStyle;
+  menuIconChecked?: IStyle;
+  description?: IStyle;
+  descriptionHovered?: IStyle;
+  descriptionPressed?: IStyle;
+  descriptionDisabled?: IStyle;
+  descriptionChecked?: IStyle;
+  screenReaderText?: IStyle;
+  splitButtonContainer?: IStyle;
+  splitButtonContainerHovered?: IStyle;
+  splitButtonContainerFocused?: IStyle;
+  splitButtonContainerChecked?: IStyle;
+  splitButtonContainerCheckedHovered?: IStyle;
+  splitButtonContainerDisabled?: IStyle;
+  splitButtonDivider?: IStyle;
+  splitButtonMenuButton?: IStyle;
+  splitButtonMenuButtonDisabled?: IStyle;
+  splitButtonMenuButtonChecked?: IStyle;
+  splitButtonMenuButtonExpanded?: IStyle;
+  splitButtonMenuIcon?: IStyle;
+  splitButtonMenuIconDisabled?: IStyle;
+  splitButtonFlexContainer?: IStyle;
+
 
   /**
    *  Styles for a split button divider in a menu item

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 const alertClicked = (): void => {
   alert('Clicked');
 };
 
-export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
+export class ButtonSplitExample extends React.Component<IButtonBaseProps, {}> {
   public constructor() {
     super();
   }
@@ -101,7 +101,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   }
 }
 
-export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> {
+export class ButtonSplitCustomExample extends React.Component<IButtonBaseProps, {}> {
   public constructor() {
     super();
   }

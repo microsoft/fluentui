@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu';
-import { IButtonStyles } from '../Button';
+import { IButtonBaseStyles } from '../Button';
 import { IIconProps } from '../Icon';
 
 export interface ICommandBar {
@@ -69,7 +69,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Custom styles to be mixed into individual button styles
    */
-  buttonStyles?: IButtonStyles;
+  buttonStyles?: IButtonBaseStyles;
 
   /**
    * Custom render function for all non contextual menu buttons.
@@ -105,7 +105,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Custom styles for individual button
    */
-  styles?: IButtonStyles;
+  styles?: IButtonBaseStyles;
 
   /**
    * A custom cache key to be used for this item. If cacheKey is changed, the cache will invalidate. Defaults to key value;

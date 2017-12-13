@@ -5,7 +5,7 @@ import {
   autobind,
   KeyCodes
 } from '../../../Utilities';
-import { CommandButton, IconButton, IButton } from '../../../Button';
+import { CommandButton, IconButton, IButtonBase } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
@@ -53,7 +53,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
-  protected _searchForMoreButton: IButton;
+  protected _searchForMoreButton: IButtonBase;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 

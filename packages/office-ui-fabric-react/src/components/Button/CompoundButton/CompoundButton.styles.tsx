@@ -8,11 +8,11 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   const buttonStyles: IButtonBaseStyles = {
     root: {
-      maxWidth: '280px',
+      maxWidth: 280,
       height: 'auto',
     },
     button: {
-      minHeight: '72px',
+      minHeight: 72,
       flexDirection: 'row',
       alignItems: 'flex-start',
       textAlign: 'left'
@@ -24,7 +24,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
       margin: '0px 8px 0px 0px',
       flexBasis: '1em',
       flexShrink: '0',
-      padding: '20px'
+      padding: 20
     },
 
     label: {

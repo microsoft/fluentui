@@ -107,10 +107,6 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
     }
   }
 
-  public dismissMenu(): void {
-    this.setState({ menuProps: null });
-  }
-
   @autobind
   private _getNativeProps(props: IButtonBaseProps, renderAsAnchor: boolean) {
     return getNativeProps(

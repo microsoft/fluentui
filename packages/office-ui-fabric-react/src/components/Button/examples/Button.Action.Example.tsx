@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   ActionButton,
-  IButtonProps
+  IButtonBaseProps
 } from 'office-ui-fabric-react/lib/Button';
 
-export class ButtonActionExample extends React.Component<IButtonProps, any> {
+export class ButtonActionExample extends React.Component<IButtonBaseProps, any> {
   public constructor() {
     super();
   }

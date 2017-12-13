@@ -10,7 +10,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
     button: [
       'ms-CommandBarButton',
       !disabled && {
-        minWidth: '40px',
+        minWidth: 40,
         backgroundColor: theme.palette.neutralLighter,
         color: theme.palette.neutralPrimary,
         padding: '0 4px',
