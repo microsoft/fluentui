@@ -33,7 +33,7 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/VirtualizedList/VirtualizedList.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/VirtualizedList/VirtualizedList.types.ts')
             ] }
           />
         }

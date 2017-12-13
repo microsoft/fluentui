@@ -1,3 +1,3 @@
-export * from './List.Props';
-export * from './StaticList.Props';
+export * from './List.types';
+export * from './StaticList.types';
 export * from './StaticList';

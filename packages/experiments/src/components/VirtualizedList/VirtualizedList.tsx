@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IVirtualizedListProps } from './VirtualizedList.Props';
+import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
 import { BaseComponent, getParent, css, autobind } from 'office-ui-fabric-react/lib/Utilities';
