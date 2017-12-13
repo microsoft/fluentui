@@ -108,7 +108,6 @@ export interface IPanelProps extends React.Props<Panel> {
 
   /**
     * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
-    * Optional props to pass to the FocusTrapZone component to manage focus in the panel.
     * Deprecated, use focusTrapZoneProps.
     * @default false
     * @deprecated
