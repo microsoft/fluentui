@@ -3,4 +3,8 @@
     padding: 0px;
     border: none;
   }
+
+  :global(.ms-Suggestions) {
+    width: 300px;
+    }
 }

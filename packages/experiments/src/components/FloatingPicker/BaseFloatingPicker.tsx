@@ -156,6 +156,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
               DirectionalHint.bottomLeftEdge
             )
         }
+        calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
