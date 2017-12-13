@@ -31,7 +31,9 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
 
   public render(): JSX.Element {
     const {
-      getStyles
+      getStyles,
+      menuProps,
+      labelId = this._labelId
     } = this.props;
     return (
       <ButtonBase
@@ -42,7 +44,8 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
         aria-expanded={ this.state.menuIsOpen }
         {...this.props as IButtonBaseProps}
         getStyles={ getStyles }
-        data-target-id={ this._labelId }
+        aria-haspopup={ !!menuProps }
+        data-target-id={ !!menuProps && labelId }
         onRenderSuffix={ this._onRenderSuffix }
       />
     );

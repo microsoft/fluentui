@@ -33,11 +33,12 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
   public render(): JSX.Element {
 
     const {
-      primaryDisabled
+      primaryDisabled,
+      disabled
     } = this.props;
 
-    const buttonProps = {
-      'aria-disabled': primaryDisabled,
+    const splitProps = {
+      'aria-disabled': primaryDisabled || disabled,
       'aria-haspopup': true,
       'data-target-id': this._labelId,
       componentRef: this._resolveRef('_buttonElement')
@@ -56,8 +57,8 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
       return (
         <ButtonBase
           { ...primaryProps }
-          { ...buttonProps } // merge these two together
-          disabled={ primaryDisabled }
+          { ...splitProps } // merge these two together
+          disabled={ primaryDisabled || disabled }
           onRenderSuffix={ this._onRenderSplitSuffix }
         />
       );

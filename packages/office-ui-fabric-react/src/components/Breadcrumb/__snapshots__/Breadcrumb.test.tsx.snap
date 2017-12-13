@@ -455,90 +455,89 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               margin-top: 0px;
             }
       >
-        <button
-          aria-current={null}
-          aria-describedby={null}
-          aria-expanded={false}
-          aria-haspopup={true}
-          aria-label={undefined}
-          aria-labelledby={null}
-          aria-owns={null}
-          aria-pressed={undefined}
+        <div
           className=
               ms-Button
-              ms-Button--action
-              ms-Button--command
               ms-Crumb-crumbButton
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: 1px solid transparent;
-                box-sizing: border-box;
-                color: #333333;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 40px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
-                position: relative;
+                display: inline-flex;
                 text-align: left;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric.is-focusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                z-index: 1;
               }
               &:hover {
                 background-color: #f4f4f4;
                 color: #333333;
                 cursor: pointer;
               }
-              &:hover .ms-Button-icon {
-                color: #0078d7;
-              }
               &:active {
                 background-color: #c8c8c8;
                 color: #333333;
               }
-              &:active .ms-Button-icon {
-                color: #004578;
-              }
-          data-is-focusable={true}
-          disabled={undefined}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          type="button"
         >
-          <div
+          <button
+            aria-current={null}
+            aria-describedby={null}
+            aria-expanded={false}
+            aria-haspopup={true}
+            aria-label={undefined}
+            aria-labelledby={null}
+            aria-pressed={undefined}
             className=
-                ms-Button-flexContainer
+
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-items: center;
+                  background-color: transparent;
+                  background: transparent;
+                  border-radius: 0px;
+                  border: 1px solid transparent;
+                  box-sizing: border-box;
+                  color: #333333;
+                  cursor: pointer;
                   display: flex;
                   flex-wrap: nowrap;
-                  height: 100%;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 40px;
                   justify-content: flex-start;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
                 }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric.is-focusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                &:hover {
+                  color: #0078d7;
+                }
+                &:active {
+                  color: #000000;
+                }
+            data-is-focusable={true}
+            data-target-id="id__7"
+            disabled={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            type="button"
           >
             <i
               aria-hidden={true}
@@ -554,8 +553,8 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               role="presentation"
             />
             
-          </div>
-        </button>
+          </button>
+        </div>
         <i
           aria-hidden={true}
           aria-label={undefined}

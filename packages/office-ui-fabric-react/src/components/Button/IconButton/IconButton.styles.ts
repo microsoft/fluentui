@@ -8,6 +8,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
   const { theme, expanded, disabled, checked } = props;
 
   let buttonStyles: IButtonBaseStyles = {
+    root: 'ms-Button--icon',
     button: [
       {
         padding: '0 4px',

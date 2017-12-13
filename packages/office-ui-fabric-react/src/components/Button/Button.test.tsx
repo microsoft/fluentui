@@ -6,20 +6,27 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
+import { ButtonBase } from './_base/Button.base';
 import { MenuButtonBase } from './_base/MenuButton.base';
+import { SplitButtonBase } from './_base/SplitButton.base';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { IconButton } from './IconButton/IconButton';
 import { ActionButton } from './ActionButton/ActionButton';
 import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
-// import { IconButton } from "src";
 
 const alertClicked = (): void => { /*noop*/ };
 
 describe('Button', () => {
   it('renders DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton text='Button' />);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Primary correctly', () => {
+    const component = renderer.create(<DefaultButton primary text='Button' />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -63,6 +70,15 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Primary CompoundButton correctly', () => {
+    const component = renderer.create(
+      <CompoundButton primary description='You can create a new account here.'>
+        Create account
+    </CompoundButton>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders IconButton correctly', () => {
     const component = renderer.create(
       <IconButton
@@ -74,7 +90,7 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  describe('DefaultButton', () => {
+  describe('ButtonBase', () => {
     function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
       const component = ReactTestUtils.renderIntoDocument(element);
       const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
@@ -83,28 +99,29 @@ describe('Button', () => {
 
     it('can render without an onClick.', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton>Hello</DefaultButton>
+        <ButtonBase>Hello</ButtonBase>
       );
+
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.tagName).toEqual('BUTTON');
+      expect(renderedDOM.firstElementChild!.tagName).toEqual('BUTTON');
     });
 
     it('can render with an onClick.', () => {
       let onClick: () => null = () => null;
 
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton onClick={ onClick }>Hello</DefaultButton>
+        <ButtonBase onClick={ onClick }>Hello</ButtonBase>
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.tagName).toEqual('BUTTON');
+      expect(renderedDOM.firstElementChild!.tagName).toEqual('BUTTON');
     });
 
     it('can render with an href', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
+        <ButtonBase href='http://www.microsoft.com' target='_blank'>Hello</ButtonBase>
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.tagName).toEqual('A');
+      expect(renderedDOM.firstElementChild!.tagName).toEqual('A');
     });
 
     it('applies the correct aria attributes', () => {
@@ -112,12 +129,12 @@ describe('Button', () => {
       let renderedDOM: any;
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
+        <ButtonBase
           href='http://www.microsoft.com'
           target='_blank'
         >
           Hello
-        </DefaultButton>
+        </ButtonBase>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       expect(renderedDOM.getAttribute('aria-label') === null);
@@ -125,13 +142,13 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-describedby') === null);
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
+        <ButtonBase
           href='http://www.microsoft.com'
           target='_blank'
           aria-label='MyLabel'
         >
           Hello
-        </DefaultButton>
+        </ButtonBase>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
@@ -139,58 +156,61 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-describedby') === null);
 
       button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
+        <ButtonBase
           href='http://www.microsoft.com'
           target='_blank'
           aria-labelledby='someid'
         >
           Hello
-        </DefaultButton>
+        </ButtonBase>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
       expect(renderedDOM.getAttribute('aria-labelledby') === 'someid');
       expect(renderedDOM.getAttribute('aria-describedby') === null);
 
-      // button = ReactTestUtils.renderIntoDocument<any>(
-      //   <DefaultButton
-      //     href='http://www.microsoft.com'
-      //     target='_blank'
-      //     ariaDescription='This description is not visible'
-      //     styles={ { screenReaderText: 'some-screenreader-class' } }
-      //   >
-      //     Hello
-      //   </DefaultButton>
-      // );
-      // renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      // expect(renderedDOM.getAttribute('aria-label') === null);
-      // expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector(`.ms-Button-label`).id);
-      // expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
-
-      // button = ReactTestUtils.renderIntoDocument<any>(
-      //   <IconButton
-      //     iconProps={ { iconName: 'Emoji2' } }
-      //     ariaDescription='Description on icon button'
-      //     styles={ { screenReaderText: 'some-screenreader-class' } }
-      //   />
-      // );
-      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === null);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
-
       button = ReactTestUtils.renderIntoDocument<any>(
-        <CompoundButton
-          description='Some awesome description'
-          ariaDescription='Description on icon button'
+        <ButtonBase
+          href='http://www.microsoft.com'
+          target='_blank'
+          ariaDescription='This description is not visible'
+          ariaDescriptionId='ariaID'
+          labelId='labelID'
         >
-          And this is the label
-        </CompoundButton>
+          Hello
+        </ButtonBase>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       expect(renderedDOM.getAttribute('aria-label') === null);
-      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('.ms-Button-label').id);
-      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.ms-Button-description').id);
+      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector(`#labelID`).id);
+      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('#ariaID').id);
+
+      button = ReactTestUtils.renderIntoDocument<any>(
+        <ButtonBase
+          iconProps={ { iconName: 'Emoji2' } }
+          ariaDescription='Description on icon button'
+          ariaDescriptionId='ariaID'
+        />
+      );
+      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      expect(renderedDOM.getAttribute('aria-label') === null);
+      expect(renderedDOM.getAttribute('aria-labelledby') === null);
+      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('#ariaID').id);
+
+      button = ReactTestUtils.renderIntoDocument<any>(
+        <ButtonBase
+          description='Some awesome description'
+          ariaDescription='Description on icon button'
+          ariaDescriptionId='ariaID'
+          labelId='labelID'
+        >
+          And this is the label
+          </ButtonBase>
+      );
+      renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+      expect(renderedDOM.getAttribute('aria-label') === null);
+      expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('#labelID').id);
+      expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('#ariaID').id);
     });
 
     describe('with menuProps', () => {
@@ -198,8 +218,8 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</DefaultButton>
-        ) as MenuButtonBase;
+          <SplitButtonBase menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</SplitButtonBase>
+        ) as SplitButtonBase;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
 
@@ -213,8 +233,8 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton>Hello</DefaultButton>
-        ) as MenuButtonBase;
+          <SplitButtonBase>Hello</SplitButtonBase>
+        ) as SplitButtonBase;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
 
@@ -228,7 +248,7 @@ describe('Button', () => {
 
       beforeAll(() => {
         const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuIconProps={ { iconName: 'fontColor' } }>Hello</DefaultButton>
+          <ButtonBase menuIconProps={ { iconName: 'fontColor' } }>Hello</ButtonBase>
         ) as MenuButtonBase;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -240,7 +260,7 @@ describe('Button', () => {
 
     it('Providing onClick and menuProps does not render a SplitButton', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
+        <SplitButtonBase
           data-automation-id='test'
           text='Create account'
           onClick={ alertClicked }
@@ -261,12 +281,12 @@ describe('Button', () => {
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.tagName).not.toEqual('DIV');
+      expect(renderedDOM.childElementCount).toEqual(1);
     });
 
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
+        <SplitButtonBase
           data-automation-id='test'
           text='Create account'
           split={ true }
@@ -288,12 +308,12 @@ describe('Button', () => {
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.tagName).toEqual('DIV');
+      expect(renderedDOM.childElementCount).toEqual(2);
     });
 
     it('Tapping menu button of SplitButton expands menu', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
-        <DefaultButton
+        <SplitButtonBase
           data-automation-id='test'
           text='Create account'
           split={ true }
@@ -317,7 +337,7 @@ describe('Button', () => {
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
-      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
     describe('Response to click event', () => {
@@ -332,7 +352,7 @@ describe('Button', () => {
 
       it('Clicking SplitButton button triggers action', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
+          <SplitButtonBase
             data-automation-id='test'
             text='Create account'
             split={ true }
@@ -359,42 +379,43 @@ describe('Button', () => {
         expect(didClick).toEqual(true);
       });
 
-      it('Pressing down on SplitButton triggers menu', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
-            data-automation-id='test'
-            text='Create account'
-            split={ true }
-            onClick={ setTrue }
-            menuProps={ {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            } }
-          />
-        );
+      // Not yet supported
+      // it('Pressing down on SplitButton triggers menu', () => {
+      //   const renderedDOM: HTMLElement = renderIntoDocument(
+      //     <SplitButtonBase
+      //       data-automation-id='test'
+      //       text='Create account'
+      //       split={ true }
+      //       onClick={ setTrue }
+      //       menuProps={ {
+      //         items: [
+      //           {
+      //             key: 'emailMessage',
+      //             name: 'Email message',
+      //             icon: 'Mail'
+      //           },
+      //           {
+      //             key: 'calendarEvent',
+      //             name: 'Calendar event',
+      //             icon: 'Calendar'
+      //           }
+      //         ]
+      //       } }
+      //     />
+      //   );
 
-        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
+      //   const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
-        ReactTestUtils.Simulate.keyDown(menuButtonElement,
-          {
-            which: KeyCodes.down
-          });
-        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
-      });
+      //   ReactTestUtils.Simulate.keyDown(menuButtonElement,
+      //     {
+      //       which: KeyCodes.down
+      //     });
+      //   expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+      // });
 
       it('A disabled SplitButton does not respond to clicks', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
+          <SplitButtonBase
             disabled={ true }
             data-automation-id='test'
             text='Create account'
