@@ -55,12 +55,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
-
-    let needsVerticalScrollBar = false;
-    if (this.refs.root) {
-      needsVerticalScrollBar = this.refs.root.scrollHeight > this.refs.root.clientHeight;
-    }
+    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy } = this.props;
 
     return (
       <div
@@ -72,7 +67,6 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
-        style={ { ...style, overflowY: needsVerticalScrollBar ? 'scroll' : 'auto' } }
       >
         { this.props.children }
       </div>
