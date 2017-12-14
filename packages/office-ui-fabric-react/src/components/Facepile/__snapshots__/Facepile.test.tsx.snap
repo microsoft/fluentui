@@ -129,130 +129,121 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
           </div>
         </div>
       </div>
-      <div
+      <button
+        aria-describedby={null}
+        aria-label={undefined}
+        aria-labelledby={null}
+        aria-pressed={undefined}
         className=
             ms-Button
             ms-Facepile-itemButton
             ms-Facepile-person
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              background: transparent;
+              border-radius: 0px;
+              border: 1px solid transparent;
+              box-sizing: border-box;
+              cursor: pointer;
               display: inline-flex;
+              flex-wrap: nowrap;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              justify-content: center;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
             }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric.is-focusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+        data="75%"
+        data-is-focusable={true}
+        disabled={undefined}
+        onClick={[Function]}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        role="option"
+        title="Alex Lundberg"
+        type="button"
       >
-        <button
-          aria-describedby={null}
-          aria-label={undefined}
-          aria-labelledby={null}
-          aria-pressed={undefined}
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                align-items: center;
-                background: transparent;
-                border-radius: 0px;
-                border: 1px solid transparent;
-                box-sizing: border-box;
-                cursor: pointer;
-                display: flex;
-                flex-wrap: nowrap;
-                font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 100%;
-                justify-content: center;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric.is-focusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                z-index: 1;
-              }
-          data="75%"
-          data-is-focusable={true}
-          disabled={undefined}
-          onClick={[Function]}
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          role="option"
-          title="Alex Lundberg"
-          type="button"
+        <div
+          className="ms-Persona-coin ms-Persona--size32 undefined"
+          size={11}
         >
           <div
-            className="ms-Persona-coin ms-Persona--size32 undefined"
-            size={11}
+            className="ms-Persona-imageArea"
+            style={undefined}
           >
             <div
-              className="ms-Persona-imageArea"
+              aria-hidden="true"
+              className="ms-Persona-initials ms-Persona-initials--darkGreen undefined"
               style={undefined}
             >
-              <div
-                aria-hidden="true"
-                className="ms-Persona-initials ms-Persona-initials--darkGreen undefined"
-                style={undefined}
-              >
-                <span>
-                  AL
-                </span>
-              </div>
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      overflow: hidden;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
+              <span>
+                AL
+              </span>
+            </div>
+            <div
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    overflow: hidden;
                   }
+              style={
+                Object {
+                  "height": 32,
+                  "width": 32,
                 }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--portrait
-                      ms-Image-image--cover
-                      is-notLoaded
-                      {
-                        display: block;
-                        height: auto;
-                        left: 50%;
-                        opacity: 0;
-                        position: relative;
-                        top: 50%;
-                        transform: translate(-50%, -50%);
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src={undefined}
-                />
-              </div>
+              }
+            >
+              <img
+                alt=""
+                className=
+                    ms-Image-image
+                    ms-Image-image--portrait
+                    ms-Image-image--cover
+                    is-notLoaded
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50%;
+                      opacity: 0;
+                      position: relative;
+                      top: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 100%;
+                    }
+                onError={[Function]}
+                onLoad={[Function]}
+                src={undefined}
+              />
             </div>
           </div>
-        </button>
-      </div>
+        </div>
+      </button>
     </div>
   </div>
 </div>

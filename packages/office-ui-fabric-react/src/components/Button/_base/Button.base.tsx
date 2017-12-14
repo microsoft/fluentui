@@ -22,6 +22,7 @@ const getClassNames = classNamesFunction<IButtonBaseStyleProps, IButtonBaseStyle
 export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements IButtonBase {
 
   public static defaultProps = {
+    forceWrapper: false
   };
 
   private _classNames: {[key in keyof IButtonBaseStyles]: string };
@@ -48,6 +49,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       primary,
       getStyles,
       expanded,
+      forceWrapper,
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
@@ -71,34 +73,41 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
         getNativeProps(this.props, [renderAsAnchor ? 'a' : 'button']
         ));
 
-    this._classNames = getClassNames(getStyles!, { theme: theme!, className, disabled, checked, expanded, primary });
+    this._classNames = getClassNames(getStyles!, { theme: theme!, disabled, checked, expanded, primary });
 
-    let RootType = renderAsAnchor ? 'a' : 'button';
-    return (
-      <div className={ this._classNames.root }>
-        { onRenderPrefix && onRenderPrefix() }
+    const RootType = renderAsAnchor ? 'a' : 'button';
 
-        <RootType
-          {...nativeProps}
-          className={ this._classNames.button }
-          type={ !renderAsAnchor && 'button' }
-          disabled={ disabled }
-          data-is-focusable={ ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true }
-          aria-pressed={ checked }
-          aria-label={ ariaLabel }
-          aria-labelledby={ ariaLabelledBy }
-          aria-describedby={ ariaDescribedBy }
-        >
-          { onRenderIcon(this.props, this._onRenderIcon) }
-          { this._onRenderTextContents(this.props) }
-          { onRenderAriaDescription(this.props, this._onRenderAriaDescription) }
-          { onRenderChildren(this.props, this._onRenderChildren) }
-          { onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
-        </RootType>
-
-        { onRenderSuffix && onRenderSuffix() }
-      </div>
+    const Button = (
+      <RootType
+        {...nativeProps}
+        className={ mergeStyles(this._classNames.button, className) }
+        type={ !renderAsAnchor && 'button' }
+        disabled={ disabled }
+        data-is-focusable={ ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true }
+        aria-pressed={ checked }
+        aria-label={ ariaLabel }
+        aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
+      >
+        { onRenderIcon(this.props, this._onRenderIcon) }
+        { this._onRenderTextContents(this.props) }
+        { onRenderAriaDescription(this.props, this._onRenderAriaDescription) }
+        { onRenderChildren(this.props, this._onRenderChildren) }
+        { onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
+      </RootType>
     );
+
+    if (onRenderPrefix || onRenderSuffix || forceWrapper) {
+      return (
+        <div className={ mergeStyles(this._classNames.root, className + '-root') }>
+          { onRenderPrefix && onRenderPrefix() }
+          { Button }
+          { onRenderSuffix && onRenderSuffix() }
+        </div>
+      );
+    }
+
+    return Button;
   }
 
   public focus(): void {

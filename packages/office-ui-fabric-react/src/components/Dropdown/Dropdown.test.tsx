@@ -190,7 +190,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"] button') as HTMLElement;
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -219,7 +219,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"] button') as HTMLElement;
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -248,7 +248,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"] button') as HTMLElement;
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -298,7 +298,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"] button') as HTMLElement;
+        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -570,7 +570,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"] button')[1] as HTMLElement;
+        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {

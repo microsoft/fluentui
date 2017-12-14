@@ -924,6 +924,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     return (
       <ComboCommandButton
+        className='ms-ComboBox-option'
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }

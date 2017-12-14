@@ -103,7 +103,7 @@ describe('Button', () => {
       );
 
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.firstElementChild!.tagName).toEqual('BUTTON');
+      expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('can render with an onClick.', () => {
@@ -113,7 +113,7 @@ describe('Button', () => {
         <ButtonBase onClick={ onClick }>Hello</ButtonBase>
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.firstElementChild!.tagName).toEqual('BUTTON');
+      expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('can render with an href', () => {
@@ -121,7 +121,7 @@ describe('Button', () => {
         <ButtonBase href='http://www.microsoft.com' target='_blank'>Hello</ButtonBase>
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.firstElementChild!.tagName).toEqual('A');
+      expect(renderedDOM.tagName).toEqual('A');
     });
 
     it('applies the correct aria attributes', () => {
@@ -205,7 +205,7 @@ describe('Button', () => {
           labelId='labelID'
         >
           And this is the label
-          </ButtonBase>
+        </ButtonBase>
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       expect(renderedDOM.getAttribute('aria-label') === null);

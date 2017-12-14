@@ -117,6 +117,11 @@ export interface IButtonBaseProps extends React.AllHTMLAttributes<HTMLAnchorElem
   menuIconProps?: IIconProps;
 
   /**
+   * Forces button to be rendered in wrapper div
+   */
+  forceWrapper?: boolean;
+
+  /**
    * Custom render function for the icon
    */
   onRenderIcon?: IRenderFunction<IButtonBaseProps>;
@@ -175,7 +180,6 @@ export interface IButtonBaseStyles {
 
 export interface IButtonBaseStyleProps {
   theme: ITheme;
-  className?: string;
   disabled?: boolean;
   checked?: boolean;
   expanded?: boolean;

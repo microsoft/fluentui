@@ -31,7 +31,7 @@ describe('Callout', () => {
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
-          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
+          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0' } }> target </button>
           <Callout
             target='#target'
             directionalHint={ DirectionalHint.topLeftEdge }
@@ -138,7 +138,7 @@ describe('Callout', () => {
       ReactDOM.render<HTMLDivElement>(
         <div>
           <button id='focustarget'> button </button>
-          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
+          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0' } }> target </button>
           <Callout
             target='#target'
             directionalHint={ DirectionalHint.topLeftEdge }

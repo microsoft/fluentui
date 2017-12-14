@@ -103,7 +103,6 @@ $linkRightPadding: 20px;
 }
 
 .compositeLink {
-  display: block;
   position: relative;
 
   .chevronButton.chevronButtonLink {
@@ -161,7 +160,6 @@ $linkRightPadding: 20px;
 }
 
 .link {
-  display: block;
   position: relative;
   height: $navnode-height;
   width: 100%;

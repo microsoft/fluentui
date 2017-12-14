@@ -63,13 +63,8 @@ export const getOptionStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles
   const ComboBoxOptionBorderColorFocused = palette.neutralSecondary;
 
   const optionStyles: IButtonBaseStyles = {
-    root: {
-      display: 'flex'
-
-    },
     button: [
       {
-        width: '100%',
         backgroundColor: 'transparent',
         boxSizing: 'border-box',
         cursor: 'pointer',
@@ -116,7 +111,7 @@ export const getOptionStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      minWidth: '0px',
+      minWidth: '0',
       maxWidth: '100%',
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
@@ -332,7 +327,8 @@ export const getStyles = memoizeFunction((
     },
 
     optionsContainer: {
-      display: 'block'
+      display: 'flex',
+      flexDirection: 'column'
     },
 
     header: [

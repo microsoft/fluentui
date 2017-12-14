@@ -12,6 +12,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   let buttonStyles: IButtonBaseStyles = {
     button: [
+      'ms-Button--action',
       {
         justifyContent: 'flex-start',
         padding: DEFAULT_PADDING,

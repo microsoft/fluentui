@@ -30,19 +30,19 @@ export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseSt
 
   return {
     root: [
-      'ms-Button',
-      props.className,
+      'ms-Button-root',
       {
         display: 'inline-flex'
       }
     ],
     button: [
+      'ms-Button',
       fonts.medium,
       getFocusStyle(theme, -1),
       {
         background: 'transparent',
         boxSizing: 'border-box',
-        display: 'flex',
+        display: 'inline-flex',
         textAlign: 'center',
         verticalAlign: 'top',
         border: '1px solid ' + border,
@@ -50,7 +50,6 @@ export const getButtonBaseStyles = (props: IButtonBaseStyleProps): IButtonBaseSt
         cursor: 'pointer',
         userSelect: 'none',
         textDecoration: 'none',
-        height: '100%',
         flexWrap: 'nowrap',
         justifyContent: 'center',
         alignItems: 'center',

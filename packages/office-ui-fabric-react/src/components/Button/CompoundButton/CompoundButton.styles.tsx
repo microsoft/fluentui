@@ -7,21 +7,20 @@ import { primaryStyles, standardStyles, primarySplitStyles, standardSplitStyles 
 export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   const buttonStyles: IButtonBaseStyles = {
-    root: {
+    button: {
       maxWidth: 280,
       height: 'auto',
-    },
-    button: {
       minHeight: 72,
       flexDirection: 'row',
       alignItems: 'flex-start',
       textAlign: 'left'
     },
+
     icon: {
       fontSize: '2em',
       lineHeight: '1em',
       height: '1em',
-      margin: '0px 8px 0px 0px',
+      margin: '0 8px 0 0',
       flexBasis: '1em',
       flexShrink: '0',
       padding: 20
@@ -47,7 +46,7 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
     baseStyles,
     themeStyles,
     buttonStyles,
-    { root: props.primary ? 'ms-Button-compoundPrimary' : 'ms-Button-compound' }
+    { button: props.primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
   );
 };
 
@@ -58,6 +57,7 @@ export const getSplitStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles 
       height: '100%',
     },
     button: {
+      height: '100%',
       padding: '0 8px',
     },
   };

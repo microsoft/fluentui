@@ -457,20 +457,11 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
       >
         <div
           className=
-              ms-Button
+              ms-Button-root
               ms-Crumb-crumbButton
+              crumbButton-35-root
               {
                 display: inline-flex;
-                text-align: left;
-              }
-              &:hover {
-                background-color: #f4f4f4;
-                color: #333333;
-                cursor: pointer;
-              }
-              &:active {
-                background-color: #c8c8c8;
-                color: #333333;
               }
         >
           <button
@@ -482,7 +473,9 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             aria-labelledby={null}
             aria-pressed={undefined}
             className=
-
+                ms-Button
+                ms-Button--action
+                ms-Crumb-crumbButton
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -494,7 +487,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
-                  display: flex;
+                  display: inline-flex;
                   flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -507,7 +500,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   padding-right: 4px;
                   padding-top: 0;
                   position: relative;
-                  text-align: center;
+                  text-align: left;
                   text-decoration: none;
                   user-select: none;
                   vertical-align: top;
@@ -527,10 +520,13 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   z-index: 1;
                 }
                 &:hover {
-                  color: #0078d7;
+                  background-color: #f4f4f4;
+                  color: #333333;
+                  cursor: pointer;
                 }
                 &:active {
-                  color: #000000;
+                  background-color: #c8c8c8;
+                  color: #333333;
                 }
             data-is-focusable={true}
             data-target-id="id__7"

@@ -42,19 +42,11 @@ export const getArrowButtonStyles = (props: IButtonBaseStyleProps): IButtonBaseS
   const ArrowButtonBackgroundPressed = palette.themePrimary;
 
   const defaultArrowButtonStyles: IButtonBaseStyles = {
-    root: {
-      display: 'block',
-      height: '50%',
-      width: '14px'
-    },
     button: [{
+      height: '50%',
+      width: '14px',
       outline: 'none',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
-      height: '100%',
-      width: '100%',
+      padding: 0,
       backgroundColor: 'transparent',
       textAlign: 'center',
       cursor: 'default',
@@ -162,7 +154,6 @@ export const getStyles = memoizeFunction((
       paddingRight: '5px',
       paddingBottom: '2px',
       paddingLeft: '5px',
-
       fontSize: '20px'
     },
     iconDisabled: {
@@ -218,22 +209,16 @@ export const getStyles = memoizeFunction((
       boxSizing: 'border-box',
       boxShadow: 'none',
       borderStyle: 'none',
-      marginTop: '0',
-      marginRight: '0',
-      marginBottom: '0',
-      marginLeft: '0',
+      margin: 0,
       fontSize: FontSizes.medium,
       color: SpinButtonInputTextColor,
-      height: '100%',
       paddingTop: '3px',
       paddingRight: '3px',
       paddingBottom: '4px',
       paddingLeft: '4px',
       outline: '0',
       textOverflow: 'ellipsis',
-      display: 'block',
-      float: 'left',
-      width: 'calc(100% - 14px)',
+      flexGrow: 1,
       minWidth: '72px',
       overflow: 'hidden',
       cursor: 'text',
@@ -254,15 +239,9 @@ export const getStyles = memoizeFunction((
     arrowButtonsContainer: {
       outline: 'none',
       fontSize: '12px',
-      display: 'block',
-      float: 'left',
-      height: '100%',
       cursor: 'default',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
-      boxSizing: 'border-box'
+      display: 'flex',
+      flexDirection: 'column'
     },
     arrowButtonsContainerDisabled: _getDisabledStyles(theme),
   };

@@ -49,7 +49,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
                       <td
                         role={ 'presentation' }
                         key={ this._id + '-' + cellIndex + '-cell' }
-                        style={ { padding: '0px' } }
+                        style={ { padding: '0' } }
                       >
                         { onRenderItem(cell, cellIndex) }
                       </td>

@@ -41,115 +41,108 @@ exports[`Nav renders Nav correctly 1`] = `
               className="ms-Nav-compositeLink"
               name=""
             >
-              <div
+              <button
+                aria-describedby={null}
+                aria-label={undefined}
+                aria-labelledby={null}
+                aria-pressed={undefined}
                 className=
                     ms-Button
+                    ms-Button--action
                     ms-Nav-linkButton
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      align-items: center;
+                      background-color: transparent;
+                      background: transparent;
+                      border-radius: 0px;
+                      border: 1px solid transparent;
+                      box-sizing: border-box;
+                      color: #333333;
+                      cursor: pointer;
                       display: inline-flex;
+                      flex-wrap: nowrap;
+                      font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 40px;
+                      justify-content: flex-start;
+                      outline: transparent;
+                      overflow: hidden;
+                      padding-bottom: 0;
+                      padding-left: 3px;
+                      padding-right: 20px;
+                      padding-top: 0;
+                      position: relative;
+                      text-align: center;
+                      text-decoration: none;
+                      user-select: none;
+                      vertical-align: top;
                     }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric.is-focusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 0px;
+                      content: "";
+                      left: 0px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 0px;
+                      top: 0px;
+                      z-index: 1;
+                    }
+                    &:hover {
+                      color: #0078d7;
+                    }
+                    &:active {
+                      color: #000000;
+                    }
+                data-is-focusable={true}
+                disabled={undefined}
+                onClick={[Function]}
+                rel={undefined}
+                title=""
+                type="button"
               >
-                <button
-                  aria-describedby={null}
+                <i
+                  aria-hidden={true}
                   aria-label={undefined}
-                  aria-labelledby={null}
-                  aria-pressed={undefined}
                   className=
-
+                      ms-Icon
+                      ms-Button-icon
                       {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        align-items: center;
-                        background-color: transparent;
-                        background: transparent;
-                        border-radius: 0px;
-                        border: 1px solid transparent;
-                        box-sizing: border-box;
-                        color: #333333;
-                        cursor: pointer;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: 40px;
-                        justify-content: flex-start;
-                        outline: transparent;
-                        overflow: hidden;
-                        padding-bottom: 0;
-                        padding-left: 3px;
-                        padding-right: 20px;
-                        padding-top: 0;
-                        position: relative;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-size: 16px;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
                         text-align: center;
-                        text-decoration: none;
-                        user-select: none;
-                        vertical-align: top;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric.is-focusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
-                        content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
-                        z-index: 1;
+                        vertical-align: middle;
+                        width: 1em;
                       }
                       &:hover {
                         color: #0078d7;
                       }
                       &:active {
-                        color: #000000;
+                        color: #004578;
                       }
-                  data-is-focusable={true}
-                  disabled={undefined}
-                  onClick={[Function]}
-                  rel={undefined}
-                  title=""
-                  type="button"
+                  data-icon-name=""
+                  role="presentation"
+                />
+                <div
+                  className="ms-Nav-linkText"
                 >
-                  <i
-                    aria-hidden={true}
-                    aria-label={undefined}
-                    className=
-                        ms-Icon
-                        ms-Button-icon
-                        {
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                        &:hover {
-                          color: #0078d7;
-                        }
-                        &:active {
-                          color: #004578;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
-                  <div
-                    className="ms-Nav-linkText"
-                  >
-                    
-                  </div>
-                </button>
-              </div>
+                  
+                </div>
+              </button>
             </div>
           </li>
         </ul>

@@ -8,12 +8,14 @@ export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
   let buttonStyles: IButtonBaseStyles = {
     button: [
-      'ms-CommandBarButton',
-      !disabled && {
+      'ms-Button--commandBar',
+      {
         minWidth: 40,
+        padding: '0 4px',
+      },
+      !disabled && {
         backgroundColor: theme.palette.neutralLighter,
         color: theme.palette.neutralPrimary,
-        padding: '0 4px',
         selectors: {
           ':hover': {
             backgroundColor: theme.palette.neutralLight,
