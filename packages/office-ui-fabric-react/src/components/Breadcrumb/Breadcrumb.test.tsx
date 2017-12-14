@@ -30,6 +30,7 @@ describe('Breadcrumb', () => {
       />
     );
 
+
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
@@ -62,7 +63,7 @@ describe('Breadcrumb', () => {
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let crumbButton = renderedDOM.querySelector('.ms-Crumb-crumbButton');
+    let crumbButton = renderedDOM.querySelector('.ms-Crumb-crumbButton button');
 
     ReactTestUtils.Simulate.click(crumbButton!);
     expect(callbackValue).toEqual('TestKey');
