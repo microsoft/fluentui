@@ -15,6 +15,10 @@
     color: $ms-color-themeDarker;
   }
 
+  &:active:hover {
+    color: $ms-color-themeDarker;
+  }
+
   &:focus {
     color: $ms-color-themePrimary;
   }
