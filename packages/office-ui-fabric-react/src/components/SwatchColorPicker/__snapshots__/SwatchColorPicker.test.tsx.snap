@@ -39,7 +39,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -203,7 +203,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -367,7 +367,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -531,7 +531,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -699,7 +699,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -863,7 +863,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1027,7 +1027,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1191,7 +1191,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1359,7 +1359,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1523,7 +1523,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1687,7 +1687,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1851,7 +1851,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
