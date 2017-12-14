@@ -131,8 +131,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _scrollIdleTimeoutId: number | undefined;
 
-  // private _lastTypedCharacter: string;
-
   // Determines if we should be setting
   // focus back to the input when the menu closes.
   // The general rule of thumb is if the menu was launched
@@ -1414,8 +1412,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    // this._lastTypedCharacter = '';
-
     switch (ev.which) {
       case KeyCodes.space:
         // If we are not allowing freeform and are not autoComplete
@@ -1429,9 +1425,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         break;
 
       default:
-        // if (ev.which >= KeyCodes.a && ev.which <= 90) {
-        //   this._lastTypedCharacter = String.fromCharCode(ev.which).toLocaleLowerCase();
-        // }
         return;
     }
 
