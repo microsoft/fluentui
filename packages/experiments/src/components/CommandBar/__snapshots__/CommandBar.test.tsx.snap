@@ -52,17 +52,20 @@ exports[`CommandBar renders commands correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #f4f4f4;
+                  background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline-flex;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 100%;
+                  justify-content: center;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 0;
@@ -104,37 +107,25 @@ exports[`CommandBar renders commands correctly 1`] = `
           >
             <div
               className=
-                  ms-Button-flexContainer
+                  ms-Button-textContainer
                   {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: center;
+                    flex-grow: 1;
                   }
             >
               <div
                 className=
-                    ms-Button-textContainer
+                    ms-Button-label
                     {
-                      flex-grow: 1;
+                      font-weight: normal;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
                     }
+                id="id__2"
               >
-                <div
-                  className=
-                      ms-Button-label
-                      {
-                        font-weight: normal;
-                        line-height: 100%;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                      }
-                  id="id__1"
-                >
-                  asdf
-                </div>
+                asdf
               </div>
             </div>
           </button>
@@ -153,17 +144,20 @@ exports[`CommandBar renders commands correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: #f4f4f4;
+                  background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
                   color: #333333;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline-flex;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  height: 100%;
+                  justify-content: center;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 0;
@@ -205,37 +199,25 @@ exports[`CommandBar renders commands correctly 1`] = `
           >
             <div
               className=
-                  ms-Button-flexContainer
+                  ms-Button-textContainer
                   {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: center;
+                    flex-grow: 1;
                   }
             >
               <div
                 className=
-                    ms-Button-textContainer
+                    ms-Button-label
                     {
-                      flex-grow: 1;
+                      font-weight: normal;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
                     }
+                id="id__6"
               >
-                <div
-                  className=
-                      ms-Button-label
-                      {
-                        font-weight: normal;
-                        line-height: 100%;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                      }
-                  id="id__4"
-                >
-                  asdf
-                </div>
+                asdf
               </div>
             </div>
           </button>
@@ -252,7 +234,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               display: flex;
               flex-shrink: 0;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone9"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
