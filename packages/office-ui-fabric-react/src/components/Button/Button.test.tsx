@@ -281,7 +281,7 @@ describe('Button', () => {
         />
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-      expect(renderedDOM.childElementCount).toEqual(1);
+      expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
