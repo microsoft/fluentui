@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 12 Dec 2017 02:08:36 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2017 11:23:17 GMT and should not be manually modified.
+
+## 5.10.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- Add remeasure public method to CommandBar
 
 ## 5.9.2
 Tue, 12 Dec 2017 02:08:36 GMT

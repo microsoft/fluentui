@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 13 Dec 2017 04:06:51 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2017 11:23:17 GMT and should not be manually modified.
+
+## 5.33.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- Add remeasure public method to ResizeGroup
+
+### Patches
+
+- ComboBox: Fix some issues with submitting values when freeform and autocomplete
+- Reversing the order of :focus and :active selectors for comboBox options.
+- Panel: Don't render Overlay unless Panel prop isOpen is true
 
 ## 5.32.0
 Wed, 13 Dec 2017 04:06:51 GMT

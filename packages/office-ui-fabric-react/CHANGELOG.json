@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.33.0",
+      "tag": "office-ui-fabric-react_v5.33.0",
+      "date": "Thu, 14 Dec 2017 11:23:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "341f9c1ef7e84ad379c3b6bf7819cad1be3d2f9d",
+            "comment": "ComboBox: Fix some issues with submitting values when freeform and autocomplete"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "5f03aaf93860c5c5a1d582e8eacdbdd31c37028c",
+            "comment": "Reversing the order of :focus and :active selectors for comboBox options."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "983096831e3b29bbecf557439006fb1d14bf3979",
+            "comment": "Panel: Don't render Overlay unless Panel prop isOpen is true"
+          }
+        ],
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "76aead93eeb29bac6f7a9d9e73893cfcfa0685fd",
+            "comment": "Add remeasure public method to ResizeGroup"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.32.0",
       "tag": "office-ui-fabric-react_v5.32.0",
       "date": "Wed, 13 Dec 2017 04:06:51 GMT",
