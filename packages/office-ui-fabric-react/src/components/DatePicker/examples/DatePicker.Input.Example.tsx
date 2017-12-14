@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { ICalendarProps, ICalendarStrings } from 'office-ui-fabric-react/lib/Calendar';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-const DayPickerStrings: IDatePickerStrings = {
+const DayPickerStrings: ICalendarStrings = {
   months: [
     'January',
     'February',
@@ -58,8 +59,10 @@ const DayPickerStrings: IDatePickerStrings = {
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
+  nextYearAriaLabel: 'Go to next year'
+};
 
+const DatePickerStrings: IDatePickerStrings = {
   isRequiredErrorMessage: 'Start date is required.',
 
   invalidInputErrorMessage: 'Invalid date format.'
@@ -83,6 +86,11 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
   public render() {
     let { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
+    let calendarProps: ICalendarProps = {
+      strings: DayPickerStrings,
+      firstDayOfWeek: firstDayOfWeek
+    };
+
     return (
       <div>
         <p>Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField again will dismiss the DatePicker and allow text input.</p>
@@ -91,10 +99,10 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           isRequired={ false }
           allowTextInput={ true }
           ariaLabel={ desc }
-          firstDayOfWeek={ firstDayOfWeek }
-          strings={ DayPickerStrings }
+          strings={ DatePickerStrings }
           value={ value! }
           onSelectDate={ this._onSelectDate }
+          calendarProps={ calendarProps }
         />
         <DefaultButton onClick={ this._onClick } text='Clear' />
       </div>

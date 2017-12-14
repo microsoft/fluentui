@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DatePicker } from './DatePicker';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
+import { ICallout } from '../../Callout';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 
@@ -19,6 +20,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Pass calendar props to calendar component
    */
   calendarProps?: ICalendarProps;
+
+  /**
+  * Pass callout props to callout component
+  */
+  calloutProps?: ICallout;
 
   /**
    * Callback issued when a date is selected
@@ -56,12 +62,14 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
    * Whether the month picker is shown beside the day picker or hidden.
    * @defaultvalue true
+   * @deprecated Use 'calendarProps' instead
    */
   isMonthPickerVisible?: boolean;
 
   /**
   * Show month picker on top of date picker when visible.
   * @defaultvalue false
+  * @deprecated Use 'calendarProps' instead
   */
   showMonthPickerAsOverlay?: boolean;
 
@@ -84,6 +92,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
     * Value of today. If null, current time in client machine will be used.
+    * @deprecated Use 'calendarProps' instead
     */
   today?: Date;
 
@@ -107,6 +116,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
    * The first day of the week for your locale.
    * @defaultvalue DayOfWeek.Sunday
+   * @deprecated Use 'calendarProps' instead
    */
   firstDayOfWeek?: DayOfWeek;
 
@@ -118,12 +128,14 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
   * Whether the month picker should highlight the current month
   * @defaultvalue false
+  * @deprecated Use 'calendarProps' instead
   */
   highlightCurrentMonth?: boolean;
 
   /**
   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
   * @defaultvalue false
+  * @deprecated Use 'calendarProps' instead
   */
   showWeekNumbers?: boolean;
 
@@ -131,11 +143,13 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
   * @defaultvalue FirstWeekOfYear.FirstFullWeek
+  * @deprecated Use 'calendarProps' instead
   */
   firstWeekOfYear?: FirstWeekOfYear;
 
   /**
    * Whether the "Go to today" link should be shown or not
+   * @deprecated Use 'calendarProps' instead
    */
   showGoToToday?: boolean;
 
@@ -168,35 +182,6 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
 export interface IDatePickerStrings {
   /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
-   */
-  months: string[];
-
-  /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
-   */
-  shortMonths: string[];
-
-  /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
-   */
-  days: string[];
-
-  /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
-   */
-  shortDays: string[];
-
-  /**
-   * String to render for button to direct the user to today's date.
-   */
-  goToToday: string;
-
-  /**
    * Error message to render for TextField if isRequired validation fails.
    */
   isRequiredErrorMessage?: string;
@@ -212,22 +197,60 @@ export interface IDatePickerStrings {
   isOutOfBoundsErrorMessage?: string;
 
   /**
+   * An array of strings for the full names of months.
+   * The array is 0-based, so months[0] should be the full name of January.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
+   */
+  months?: string[];
+
+  /**
+   * An array of strings for the short names of months.
+   * The array is 0-based, so shortMonths[0] should be the short name of January.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
+   */
+  shortMonths?: string[];
+
+  /**
+   * An array of strings for the full names of days of the week.
+   * The array is 0-based, so days[0] should be the full name of Sunday.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
+   */
+  days?: string[];
+
+  /**
+   * An array of strings for the initials of the days of the week.
+   * The array is 0-based, so days[0] should be the initial of Sunday.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
+   */
+  shortDays?: string[];
+
+  /**
+   * String to render for button to direct the user to today's date.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
+   */
+  goToToday?: string;
+
+  /**
    * Aria-label for the "previous month" button.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
    */
   prevMonthAriaLabel?: string;
 
   /**
    * Aria-label for the "next month" button.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
    */
   nextMonthAriaLabel?: string;
 
   /**
    * Aria-label for the "previous year" button.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
    */
   prevYearAriaLabel?: string;
 
   /**
    * Aria-label for the "next year" button.
+   * @deprecated Use 'calendarProps' with 'strings: ICalendarStrings' instead
    */
   nextYearAriaLabel?: string;
 }

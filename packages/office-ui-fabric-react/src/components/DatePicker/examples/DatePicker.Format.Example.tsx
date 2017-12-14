@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ICalendarProps, ICalendarStrings } from 'office-ui-fabric-react/lib/Calendar';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   DatePicker,
@@ -7,7 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/DatePicker';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-const DayPickerStrings: IDatePickerStrings = {
+const DayPickerStrings: ICalendarStrings = {
   months: [
     'January',
     'February',
@@ -54,10 +55,11 @@ const DayPickerStrings: IDatePickerStrings = {
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
+  nextYearAriaLabel: 'Go to next year'
+};
 
+const DatePickerStrings: IDatePickerStrings = {
   isRequiredErrorMessage: 'Start date is required.',
-
   invalidInputErrorMessage: 'Invalid date format.'
 };
 
@@ -69,7 +71,7 @@ export interface IDatePickerFormatExampleState {
 export class DatePickerFormatExample extends React.Component<
   any,
   IDatePickerFormatExampleState
-> {
+  > {
   public constructor() {
     super();
 
@@ -83,6 +85,12 @@ export class DatePickerFormatExample extends React.Component<
     let { firstDayOfWeek, value } = this.state;
     const desc =
       'This field is required. One of the support input formats is year dash month dash day.';
+
+    let calendarProps: ICalendarProps = {
+      strings: DayPickerStrings,
+      firstDayOfWeek: firstDayOfWeek
+    };
+
     return (
       <div>
         <p>
@@ -94,18 +102,18 @@ export class DatePickerFormatExample extends React.Component<
         </p>
         <DatePicker
           label='Start date'
-          isRequired={false}
-          allowTextInput={true}
-          ariaLabel={desc}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          value={value!}
-          onSelectDate={this._onSelectDate}
-          formatDate={this._onFormatDate}
-          parseDateFromString={this._onParseDateFromString}
+          isRequired={ false }
+          allowTextInput={ true }
+          strings={ DatePickerStrings }
+          ariaLabel={ desc }
+          value={ value! }
+          onSelectDate={ this._onSelectDate }
+          formatDate={ this._onFormatDate }
+          parseDateFromString={ this._onParseDateFromString }
+          calendarProps={ calendarProps }
         />
-        <DefaultButton onClick={this._onClick} text='Clear' />
-        <div>{(this.state.value || '').toString()}</div>
+        <DefaultButton onClick={ this._onClick } text='Clear' />
+        <div>{ (this.state.value || '').toString() }</div>
       </div>
     );
   }
