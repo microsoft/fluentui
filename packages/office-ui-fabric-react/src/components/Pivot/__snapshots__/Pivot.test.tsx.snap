@@ -78,6 +78,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #000000;
             }
         data-is-focusable={true}
+        data-target-id={null}
         disabled={undefined}
         id="Pivot0-Tab0"
         onClick={[Function]}
@@ -156,6 +157,7 @@ exports[`Pivot renders Pivot correctly 1`] = `
               color: #000000;
             }
         data-is-focusable={true}
+        data-target-id={null}
         disabled={undefined}
         id="Pivot0-Tab1"
         onClick={[Function]}

@@ -101,6 +101,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       color: #000000;
                     }
                 data-is-focusable={true}
+                data-target-id={null}
                 disabled={undefined}
                 onClick={[Function]}
                 rel={undefined}

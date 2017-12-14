@@ -98,7 +98,8 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       return (
         <div
           data-target-id={ renderWrapper && this.props.labelId ? labelId : null }
-          className={ mergeStyles(this._classNames.root, className + '-root') }>
+          className={ mergeStyles(this._classNames.root, className + '-root') }
+        >
           { onRenderPrefix && onRenderPrefix() }
           { Button }
           { onRenderSuffix && onRenderSuffix() }

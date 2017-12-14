@@ -84,6 +84,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
+            data-target-id={null}
             disabled={undefined}
             name="asdf"
             type="button"
@@ -177,6 +178,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   color: #000000;
                 }
             data-is-focusable={true}
+            data-target-id={null}
             disabled={undefined}
             name="asdf"
             type="button"

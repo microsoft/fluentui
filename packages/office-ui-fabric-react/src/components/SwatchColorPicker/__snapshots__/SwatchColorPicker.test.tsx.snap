@@ -166,6 +166,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -330,6 +331,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -494,6 +496,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -658,6 +661,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -826,6 +830,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -990,6 +995,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -1154,6 +1160,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -1318,6 +1325,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -1486,6 +1494,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -1650,6 +1659,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -1814,6 +1824,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
@@ -1978,6 +1989,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
             data-index={undefined}
             data-is-focusable={true}
+            data-target-id={null}
             disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}

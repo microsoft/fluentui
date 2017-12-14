@@ -59,6 +59,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         color: #000000;
       }
   data-is-focusable={true}
+  data-target-id={null}
   disabled={undefined}
   type="button"
 >
@@ -88,153 +89,144 @@ exports[`Button renders ActionButton correctly 1`] = `
 `;
 
 exports[`Button renders CommandBarButton correctly 1`] = `
-<div
+<button
+  aria-describedby={null}
+  aria-expanded={false}
+  aria-haspopup={true}
+  aria-label={undefined}
+  aria-labelledby={null}
+  aria-pressed={undefined}
   className=
-      ms-Button-root
-      undefined-root
+      ms-Button
+      ms-Button--commandBar
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        background-color: #f4f4f4;
+        background: transparent;
+        border-radius: 0px;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: pointer;
         display: inline-flex;
+        flex-wrap: nowrap;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        justify-content: center;
+        min-width: 40px;
+        outline: transparent;
+        padding-bottom: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: top;
       }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 0px;
+        content: "";
+        left: 0px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #eaeaea;
+        color: #212121;
+      }
+      &:active {
+        background-color: #dadada;
+        color: #000000;
+      }
+  data-is-focusable={true}
+  data-target-id="id__13"
+  disabled={undefined}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  type="button"
 >
-  <button
-    aria-describedby={null}
-    aria-expanded={false}
-    aria-haspopup={true}
+  <i
+    aria-hidden={true}
     aria-label={undefined}
-    aria-labelledby={null}
-    aria-pressed={undefined}
     className=
-        ms-Button
-        ms-Button--commandBar
+        ms-Icon
+        ms-Button-icon
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          align-items: center;
-          background-color: #f4f4f4;
-          background: transparent;
-          border-radius: 0px;
-          border: 1px solid transparent;
-          box-sizing: border-box;
-          color: #333333;
-          cursor: pointer;
-          display: inline-flex;
-          flex-wrap: nowrap;
-          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          justify-content: center;
-          min-width: 40px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 4px;
-          padding-right: 4px;
-          padding-top: 0;
-          position: relative;
+          color: #106ebe;
+          display: inline-block;
+          flex-shrink: 0;
+          font-size: 16px;
+          height: 16px;
+          line-height: 16px;
+          margin-bottom: 0;
+          margin-left: 4px;
+          margin-right: 4px;
+          margin-top: 0;
           text-align: center;
-          text-decoration: none;
-          user-select: none;
-          vertical-align: top;
+          vertical-align: middle;
         }
-        &::-moz-focus-inner {
-          border: 0;
+    data-icon-name="Add"
+    role="presentation"
+  />
+  <div
+    className=
+        ms-Button-textContainer
+        {
+          flex-grow: 1;
         }
-        .ms-Fabric.is-focusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          z-index: 1;
-        }
-        &:hover {
-          background-color: #eaeaea;
-          color: #212121;
-        }
-        &:active {
-          background-color: #dadada;
-          color: #000000;
-        }
-    data-is-focusable={true}
-    data-target-id="id__13"
-    disabled={undefined}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    type="button"
   >
-    <i
-      aria-hidden={true}
-      aria-label={undefined}
-      className=
-          ms-Icon
-          ms-Button-icon
-          {
-            color: #106ebe;
-            display: inline-block;
-            flex-shrink: 0;
-            font-size: 16px;
-            height: 16px;
-            line-height: 16px;
-            margin-bottom: 0;
-            margin-left: 4px;
-            margin-right: 4px;
-            margin-top: 0;
-            text-align: center;
-            vertical-align: middle;
-          }
-      data-icon-name="Add"
-      role="presentation"
-    />
     <div
       className=
-          ms-Button-textContainer
+          ms-Button-label
           {
-            flex-grow: 1;
-          }
-    >
-      <div
-        className=
-            ms-Button-label
-            {
-              font-weight: normal;
-              line-height: 100%;
-              margin-bottom: 0;
-              margin-left: 4px;
-              margin-right: 4px;
-              margin-top: 0;
-            }
-        id="id__13"
-      >
-        Create account
-      </div>
-    </div>
-    <i
-      aria-hidden={true}
-      aria-label={undefined}
-      className=
-          ms-Icon
-          ms-Button-menuIcon
-          {
-            color: #666666;
-            display: inline-block;
-            flex-shrink: 0;
-            font-size: 12px;
-            height: 16px;
-            line-height: 16px;
+            font-weight: normal;
+            line-height: 100%;
             margin-bottom: 0;
             margin-left: 4px;
             margin-right: 4px;
             margin-top: 0;
-            text-align: center;
-            vertical-align: middle;
           }
-      data-icon-name="ChevronDown"
-      role="presentation"
-    />
-  </button>
-</div>
+      id="id__13"
+    >
+      Create account
+    </div>
+  </div>
+  <i
+    aria-hidden={true}
+    aria-label={undefined}
+    className=
+        ms-Icon
+        ms-Button-menuIcon
+        {
+          color: #666666;
+          display: inline-block;
+          flex-shrink: 0;
+          font-size: 12px;
+          height: 16px;
+          line-height: 16px;
+          margin-bottom: 0;
+          margin-left: 4px;
+          margin-right: 4px;
+          margin-top: 0;
+          text-align: center;
+          vertical-align: middle;
+        }
+    data-icon-name="ChevronDown"
+    role="presentation"
+  />
+</button>
 `;
 
 exports[`Button renders CompoundButton correctly 1`] = `
@@ -301,6 +293,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         color: #212121;
       }
   data-is-focusable={true}
+  data-target-id={null}
   disabled={undefined}
   type="button"
 >
@@ -410,6 +403,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
         color: #212121;
       }
   data-is-focusable={true}
+  data-target-id={null}
   disabled={undefined}
   type="button"
 >
@@ -497,6 +491,7 @@ exports[`Button renders IconButton correctly 1`] = `
         color: #0078d7;
       }
   data-is-focusable={true}
+  data-target-id={null}
   disabled={undefined}
   title="Emoji"
   type="button"
@@ -605,6 +600,7 @@ exports[`Button renders Primary CompoundButton correctly 1`] = `
         color: Window;
       }
   data-is-focusable={true}
+  data-target-id={null}
   disabled={undefined}
   type="button"
 >
@@ -739,6 +735,7 @@ exports[`Button renders Primary correctly 1`] = `
         color: Window;
       }
   data-is-focusable={true}
+  data-target-id={null}
   disabled={undefined}
   type="button"
 >

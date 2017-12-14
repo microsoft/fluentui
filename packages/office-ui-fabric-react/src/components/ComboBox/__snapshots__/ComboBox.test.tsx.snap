@@ -189,6 +189,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             font-size: 12px;
           }
       data-is-focusable={true}
+      data-target-id={null}
       disabled={undefined}
       onClick={[Function]}
       role="presentation"

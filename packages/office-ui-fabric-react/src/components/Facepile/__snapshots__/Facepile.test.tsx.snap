@@ -180,6 +180,7 @@ exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
             }
         data="75%"
         data-is-focusable={true}
+        data-target-id={null}
         disabled={undefined}
         onClick={[Function]}
         onMouseMove={[Function]}

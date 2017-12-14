@@ -455,102 +455,92 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               margin-top: 0px;
             }
       >
-        <div
+        <button
+          aria-current={null}
+          aria-describedby={null}
+          aria-expanded={false}
+          aria-haspopup={true}
+          aria-label={undefined}
+          aria-labelledby={null}
+          aria-pressed={undefined}
           className=
-              ms-Button-root
+              ms-Button
+              ms-Button--action
               ms-Crumb-crumbButton
-              crumbButton-35-root
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                background-color: transparent;
+                background: transparent;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
                 display: inline-flex;
+                flex-wrap: nowrap;
+                font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 40px;
+                justify-content: flex-start;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0;
+                position: relative;
+                text-align: left;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
               }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric.is-focusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              &:hover {
+                background-color: #f4f4f4;
+                color: #333333;
+                cursor: pointer;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #333333;
+              }
+          data-is-focusable={true}
+          data-target-id="id__7"
+          disabled={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          type="button"
         >
-          <button
-            aria-current={null}
-            aria-describedby={null}
-            aria-expanded={false}
-            aria-haspopup={true}
+          <i
+            aria-hidden={true}
             aria-label={undefined}
-            aria-labelledby={null}
-            aria-pressed={undefined}
             className=
-                ms-Button
-                ms-Button--action
-                ms-Crumb-crumbButton
+                ms-Icon
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  align-items: center;
-                  background-color: transparent;
-                  background: transparent;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
-                  box-sizing: border-box;
-                  color: #333333;
-                  cursor: pointer;
-                  display: inline-flex;
-                  flex-wrap: nowrap;
-                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  display: inline-block;
                   height: 40px;
-                  justify-content: flex-start;
-                  outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 0;
-                  position: relative;
-                  text-align: left;
-                  text-decoration: none;
-                  user-select: none;
-                  vertical-align: top;
+                  line-height: 44px;
                 }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric.is-focusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  z-index: 1;
-                }
-                &:hover {
-                  background-color: #f4f4f4;
-                  color: #333333;
-                  cursor: pointer;
-                }
-                &:active {
-                  background-color: #c8c8c8;
-                  color: #333333;
-                }
-            data-is-focusable={true}
-            data-target-id="id__7"
-            disabled={undefined}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            type="button"
-          >
-            <i
-              aria-hidden={true}
-              aria-label={undefined}
-              className=
-                  ms-Icon
-                  {
-                    display: inline-block;
-                    height: 40px;
-                    line-height: 44px;
-                  }
-              data-icon-name="More"
-              role="presentation"
-            />
-            
-          </button>
-        </div>
+            data-icon-name="More"
+            role="presentation"
+          />
+          
+        </button>
         <i
           aria-hidden={true}
           aria-label={undefined}
