@@ -373,4 +373,38 @@ describe('ComboBox', () => {
     buttonElement.simulate('click');
     expect(returnUndefined.mock.calls.length).toBe(1);
   });
+
+  it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
+    let updatedOption;
+    let updatedIndex;
+    let executionCount = 0;
+    let initialOption = { key: '1', text: 'Text' };
+
+    let comboBoxRoot;
+    let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
+    let wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        options={ [initialOption] }
+        autoComplete='on'
+        allowFreeform={ true }
+        // tslint:disable-next-line:jsx-no-lambda
+        onChanged={ (option?: IComboBoxOption, index?: number) => {
+          updatedOption = option;
+          updatedIndex = index;
+          executionCount++;
+        } }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('change', { target: { value: 't' } });
+    inputElement.simulate('change', { target: { value: 'e' } });
+    inputElement.simulate('change', { target: { value: 'x' } });
+    inputElement.simulate('change', { target: { value: 't' } });
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    expect(executionCount).toEqual(1);
+    expect(updatedOption).toEqual(initialOption);
+    expect(updatedIndex).toEqual(0);
+    expect(inputElement.props().value).toEqual('Text');
+  });
 });
