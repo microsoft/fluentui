@@ -50,6 +50,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       getStyles,
       expanded,
       forceWrapper,
+      labelId = this._labelId,
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
@@ -64,18 +65,13 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
 
     const nativeProps = this._getNativeProps(this.props, renderAsAnchor);
 
-    const {
-      ariaDescribedBy,
-      ariaLabelledBy,
-      ariaLabel
-    } = this._getAriaProps(
-        this.props,
-        getNativeProps(this.props, [renderAsAnchor ? 'a' : 'button']
-        ));
+    const { ariaDescribedBy, ariaLabelledBy, ariaLabel } = this._getAriaProps(this.props, nativeProps);
 
     this._classNames = getClassNames(getStyles!, { theme: theme!, disabled, checked, expanded, primary });
 
     const RootType = renderAsAnchor ? 'a' : 'button';
+
+    const renderWrapper: boolean = !!onRenderPrefix || !!onRenderSuffix || !!forceWrapper;
 
     const Button = (
       <RootType
@@ -88,6 +84,7 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
         aria-label={ ariaLabel }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
+        data-target-id={ !renderWrapper && this.props.labelId ? labelId : null }
       >
         { onRenderIcon(this.props, this._onRenderIcon) }
         { this._onRenderTextContents(this.props) }
@@ -97,9 +94,11 @@ export class ButtonBase extends BaseComponent<IButtonBaseProps, {}> implements I
       </RootType>
     );
 
-    if (onRenderPrefix || onRenderSuffix || forceWrapper) {
+    if (renderWrapper) {
       return (
-        <div className={ mergeStyles(this._classNames.root, className + '-root') }>
+        <div
+          data-target-id={ renderWrapper && this.props.labelId ? labelId : null }
+          className={ mergeStyles(this._classNames.root, className + '-root') }>
           { onRenderPrefix && onRenderPrefix() }
           { Button }
           { onRenderSuffix && onRenderSuffix() }

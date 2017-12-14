@@ -37,27 +37,17 @@ export class SplitButtonBase extends BaseComponent<ISplitButtonBaseProps, {}> im
       disabled
     } = this.props;
 
-    const splitProps = {
-      'aria-disabled': primaryDisabled || disabled,
-      'aria-haspopup': true,
-      'data-target-id': this._labelId,
-      componentRef: this._resolveRef('_buttonElement')
-    };
-
-    const primaryProps: IButtonBaseProps = {
-      ...this.props as IButtonBaseProps,
-      labelId: this._labelId,
-      menuIconProps: undefined,
-      onRenderMenuIcon: undefined
-    };
-
     const isSplit = !!this.props.menuProps && !!this.props.onClick && this.props.split;
 
     if (isSplit) {
       return (
         <ButtonBase
-          { ...primaryProps }
-          { ...splitProps } // merge these two together
+          { ...this.props }
+          labelId={ this._labelId }
+          menuIconProps={ undefined }
+          onRenderMenuIcon={ undefined }
+          aria-haspopup={ true }
+          aria-disabled={ primaryDisabled || disabled }
           disabled={ primaryDisabled || disabled }
           onRenderSuffix={ this._onRenderSplitSuffix }
         />

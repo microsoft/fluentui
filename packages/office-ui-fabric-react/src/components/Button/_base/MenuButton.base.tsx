@@ -31,23 +31,24 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
 
   public render(): JSX.Element {
     const {
-      getStyles,
       menuProps,
+      children,
       labelId = this._labelId
     } = this.props;
     return (
       <ButtonBase
         onClick={ this._onMenuClick }
         onKeyDown={ this._onMenuKeyDown }
-        labelId={ this._labelId }
+        labelId={ labelId }
         expanded={ this.state.menuIsOpen }
         aria-expanded={ this.state.menuIsOpen }
         {...this.props as IButtonBaseProps}
-        getStyles={ getStyles }
         aria-haspopup={ !!menuProps }
-        data-target-id={ !!menuProps && labelId }
-        onRenderSuffix={ this._onRenderSuffix }
-      />
+        onRenderSuffix={ menuProps!.doNotLayer ? this._onRenderMenuContainer : undefined }
+      >
+        { children }
+        { !menuProps!.doNotLayer && this._onRenderMenuContainer() }
+      </ButtonBase>
     );
   }
 
@@ -56,7 +57,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
   }
 
   @autobind
-  private _onRenderSuffix(): JSX.Element | null {
+  private _onRenderMenuContainer(): JSX.Element | null {
     const {
       menuProps,
       onRenderMenu = this._onRenderMenu
@@ -73,19 +74,20 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+    const { labelId = this._labelId } = this.props;
     const {
       onDismiss = this._dismissMenu,
-      target = `[data-target-id='${this._labelId}']`
+      target = `[data-target-id='${labelId}']`
     } = menuProps;
 
     return (
       <ContextualMenu
-        id={ this._labelId + '-menu' }
+        id={ labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ target }
-        labelElementId={ this._labelId }
+        labelElementId={ labelId }
         onDismiss={ onDismiss }
       />
     );
