@@ -95,4 +95,9 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * A callback to get text from an item. Used to autofill text in the pickers.
    */
   getTextFromItem?: (item: T, currentValue?: string) => string;
+
+  /**
+   * Width for the suggestions callout
+   */
+  calloutWidth?: number;
 }
