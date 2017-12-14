@@ -573,20 +573,26 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let oldListPages = this.state.pages;
 
     this.setState(newListState, () => {
-      // If measured version is invalid since we've updated the DOM
-      const heightsChanged = this._updatePageMeasurements(oldListPages as IPage[], newListState.pages as IPage[]);
+      // If we weren't provided with the page height, measure the pages
+      if (!props.getPageHeight) {
+        // If measured version is invalid since we've updated the DOM
+        const heightsChanged = this._updatePageMeasurements(oldListPages as IPage[], newListState.pages as IPage[]);
 
-      // On first render, we should re-measure so that we don't get a visual glitch.
-      if (heightsChanged) {
-        this._materializedRect = null;
-        if (!this._hasCompletedFirstRender) {
-          this._hasCompletedFirstRender = true;
-          this._updatePages(props);
+        // On first render, we should re-measure so that we don't get a visual glitch.
+        if (heightsChanged) {
+          this._materializedRect = null;
+          if (!this._hasCompletedFirstRender) {
+            this._hasCompletedFirstRender = true;
+            this._updatePages(props);
+          } else {
+            this._onAsyncScroll();
+          }
         } else {
-          this._onAsyncScroll();
+          // Enqueue an idle bump.
+          this._onAsyncIdle();
         }
       } else {
-        // Enqueue an idle bump.
+        // Enqueue an idle bump
         this._onAsyncIdle();
       }
     });
