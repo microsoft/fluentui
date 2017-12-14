@@ -11,7 +11,8 @@
 
 @mixin isEnabled {
   &:active,
-  &:hover {
+  &:hover,
+  &:active:hover {
     color: $ms-color-themeDarker;
   }
 
