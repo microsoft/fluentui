@@ -156,4 +156,8 @@ export interface IPageSpecification {
    * Data to pass through to the page when rendering.
    */
   data?: any;
+  /**
+   * The key to use when creating the page.
+   */
+  key?: string;
 }
