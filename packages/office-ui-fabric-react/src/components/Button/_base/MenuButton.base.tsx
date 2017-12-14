@@ -74,7 +74,7 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     const {
-      onDismiss = this._toggleMenu,
+      onDismiss = this._dismissMenu,
       target = `[data-target-id='${this._labelId}']`
     } = menuProps;
 
@@ -89,6 +89,13 @@ export class MenuButtonBase extends BaseComponent<IMenuButtonBaseProps, IMenuBut
         onDismiss={ onDismiss }
       />
     );
+  }
+
+  @autobind
+  private _dismissMenu(): void {
+    this.setState(() => {
+      return { menuIsOpen: false };
+    });
   }
 
   @autobind
