@@ -70,7 +70,6 @@ export const getStyles = (props: ICalendarStyleProps): ICalendarStyles => {
             width: calendarsInline ? '440px' : '212px',
             height: 'auto'
           }
-
         }
       }
     ],
@@ -162,7 +161,6 @@ export const getStyles = (props: ICalendarStyleProps): ICalendarStyles => {
         selectors: {
           [MS_LARGESCREEN_ACTIVE]: {
             boxSizing: 'border-box',
-            // fontSize: FontSizes.small,
             height: '28px',
             lineHeight: '28px',
             padding: '0 10px',
