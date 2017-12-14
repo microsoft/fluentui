@@ -12,7 +12,7 @@ import {
   IComboBoxStyles,
 } from './ComboBox.types';
 
-import { IButtonStyles } from '../../Button';
+import { IButtonBaseStyles, IButtonBaseStyleProps } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
 
 const ComboBoxHeight = '32px';
@@ -50,12 +50,9 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawSty
   };
 });
 
-export const getOptionStyles = memoizeFunction((
-  theme: ITheme,
-  customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
-  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>
-): Partial<IComboBoxOptionStyles> => {
+export const getOptionStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
+  const { checked, disabled, theme } = props;
   const { semanticColors, palette } = theme;
 
   const ComboBoxOptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
@@ -65,14 +62,12 @@ export const getOptionStyles = memoizeFunction((
   const ComboBoxOptionBackgroundDisabled = semanticColors.bodyBackground;
   const ComboBoxOptionBorderColorFocused = palette.neutralSecondary;
 
-  const optionStyles: IComboBoxOptionStyles = {
-    root: [
+  const optionStyles: IButtonBaseStyles = {
+    button: [
       {
         backgroundColor: 'transparent',
         boxSizing: 'border-box',
         cursor: 'pointer',
-        display: 'block',
-        width: '100%',
         height: 'auto',
         minHeight: ComboBoxOptionHeight,
         lineHeight: '20px',
@@ -87,41 +82,36 @@ export const getOptionStyles = memoizeFunction((
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Background'
+          },
+          ':hover': {
+            backgroundColor: ComboBoxOptionBackgroundHovered,
+            color: ComboBoxOptionTextColorHovered
+          },
+          ':focus': {
+            backgroundColor: ComboBoxOptionBackgroundHovered
           }
         }
       },
       getFocusStyle(theme),
-    ],
-    rootHovered: {
-      backgroundColor: ComboBoxOptionBackgroundHovered,
-      color: ComboBoxOptionTextColorHovered
-    },
-    rootFocused: {
-      backgroundColor: ComboBoxOptionBackgroundHovered
-    },
-    rootChecked: [
-      {
-        backgroundColor: ComboBoxOptionBackgroundHovered,
-        color: ComboBoxOptionTextColorSelected
-      },
-      getFocusStyle(theme),
-      getListOptionHighContrastStyles(theme)
-    ],
-    rootDisabled: {
-      backgroundColor: ComboBoxOptionBackgroundDisabled,
-      color: ComboBoxOptionTextColorDisabled,
-      cursor: 'default',
-      selectors: {
-        '& .ms-Button-flexContainer': {
-          justifyContent: 'flex-start'
-        }
+      checked && [
+        {
+          backgroundColor: ComboBoxOptionBackgroundHovered,
+          color: ComboBoxOptionTextColorSelected
+        },
+        getFocusStyle(theme),
+        getListOptionHighContrastStyles(theme)
+      ],
+      disabled && {
+        backgroundColor: ComboBoxOptionBackgroundDisabled,
+        color: ComboBoxOptionTextColorDisabled,
+        cursor: 'default'
       }
-    },
-    optionText: {
+    ],
+    label: {
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      minWidth: '0px',
+      minWidth: '0',
       maxWidth: '100%',
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
@@ -129,14 +119,13 @@ export const getOptionStyles = memoizeFunction((
     }
   };
 
-  return concatStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption);
-});
+  return concatStyleSets(optionStyles);
+};
 
-export const getCaretDownButtonStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: Partial<IButtonStyles>,
-): IButtonStyles => {
-  const { semanticColors } = theme;
+export const getCaretDownButtonStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
+
+  const { checked, disabled } = props;
+  const { semanticColors } = props.theme;
 
   const caretButtonTextColor = semanticColors.bodySubtext;
   const caretButtonTextColorHoveredChecked = semanticColors.buttonTextChecked;
@@ -144,49 +133,68 @@ export const getCaretDownButtonStyles = memoizeFunction((
   const caretButtonBackgroundChecked = semanticColors.listItemBackgroundChecked;
   const caretButtonBackgroundCheckedHovered = semanticColors.listItemBackgroundCheckedHovered;
 
-  const styles: IButtonStyles = {
+  const styles: IButtonBaseStyles = {
     root: {
-      color: caretButtonTextColor,
-      fontSize: FontSizes.small,
       position: 'absolute',
-      height: ComboBoxHeight,
-      lineHeight: ComboBoxLineHeight,
-      width: ComboxBoxCaretDownWidth,
-      textAlign: 'center',
-      cursor: 'default',
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'ButtonFace',
-          borderColor: 'ButtonText',
-          color: 'ButtonText',
-          MsHighContrastAdjust: 'none'
+    },
+    button: [
+      {
+        color: caretButtonTextColor,
+        fontSize: FontSizes.small,
+        height: ComboBoxHeight,
+        lineHeight: ComboBoxLineHeight,
+        width: ComboxBoxCaretDownWidth,
+        textAlign: 'center',
+        cursor: 'default',
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'ButtonFace',
+            borderColor: 'ButtonText',
+            color: 'ButtonText',
+            MsHighContrastAdjust: 'none'
+          },
+          '.ms-Icon': {
+            fontSize: FontSizes.small
+          },
+          ':hover': {
+            backgroundColor: caretButtonBackgroundHovered,
+            color: caretButtonTextColorHoveredChecked,
+            cursor: 'pointer'
+          },
+          ':active': {
+            backgroundColor: caretButtonBackgroundChecked,
+            color: caretButtonTextColorHoveredChecked
+          }
         },
-        '.ms-Icon': {
-          fontSize: FontSizes.small
+      },
+      checked && {
+        backgroundColor: caretButtonBackgroundChecked,
+        color: caretButtonTextColorHoveredChecked,
+        selectors: {
+          ':hover': {
+            backgroundColor: caretButtonBackgroundCheckedHovered,
+            color: caretButtonTextColorHoveredChecked
+          }
         }
+      },
+      disabled && {
+        backgroundColor: semanticColors.disabledBackground,
+        borderColor: semanticColors.disabledBackground,
+        color: semanticColors.disabledText,
+        cursor: 'default',
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText',
+            color: 'GrayText'
+          }
+        },
       }
-    },
-    rootHovered: {
-      backgroundColor: caretButtonBackgroundHovered,
-      color: caretButtonTextColorHoveredChecked,
-      cursor: 'pointer'
-    },
-    rootPressed: {
-      backgroundColor: caretButtonBackgroundChecked,
-      color: caretButtonTextColorHoveredChecked
-    },
-    rootChecked: {
-      backgroundColor: caretButtonBackgroundChecked,
-      color: caretButtonTextColorHoveredChecked
-    },
-    rootCheckedHovered: {
-      backgroundColor: caretButtonBackgroundCheckedHovered,
-      color: caretButtonTextColorHoveredChecked
-    },
-    rootDisabled: getDisabledStyles(theme),
+    ],
   };
-  return concatStyleSets(styles, customStyles);
-});
+
+  return concatStyleSets(styles);
+
+};
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -319,7 +327,8 @@ export const getStyles = memoizeFunction((
     },
 
     optionsContainer: {
-      display: 'block'
+      display: 'flex',
+      flexDirection: 'column'
     },
 
     header: [

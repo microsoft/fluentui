@@ -1,20 +1,8 @@
-import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
-import { BaseButton, IButtonProps } from '../../Button';
-import { getTheme } from '../../Styling';
-import { getStyles } from '../Button/BaseButton.styles';
+import { styled } from '../../Utilities';
+import { ButtonBase, IButtonBaseProps } from '../Button';
+import { getButtonBaseStyles } from '../Button/_base/Button.base.styles';
 
-export class FacepileButton extends BaseComponent<IButtonProps, {}> {
-
-  public render() {
-    const baseButtonStyles = getStyles(getTheme());
-
-    return (
-      <BaseButton
-        { ...this.props }
-        styles={ baseButtonStyles }
-      />
-    );
-  }
-
-}
+export const FacepileButton = styled(
+  ButtonBase,
+  getButtonBaseStyles
+);

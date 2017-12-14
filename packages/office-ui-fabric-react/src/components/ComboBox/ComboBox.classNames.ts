@@ -102,14 +102,7 @@ export const getComboBoxOptionClassNames = memoizeFunction((
     ),
     root: mergeStyles(
       'ms-ComboBox-option',
-      styles.root,
-      {
-        selectors: {
-          ':hover': styles.rootHovered,
-          ':active': styles.rootPressed,
-          ':focus': styles.rootFocused
-        }
-      }
+      styles.root
     )
   };
 });

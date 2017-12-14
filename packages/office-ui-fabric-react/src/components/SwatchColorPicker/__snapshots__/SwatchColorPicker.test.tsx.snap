@@ -39,7 +39,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -47,27 +47,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="green"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -163,15 +164,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -181,46 +177,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="green"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="#00ff00"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="#00ff00"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -228,27 +212,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="orange"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -344,15 +329,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -362,46 +342,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="orange"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="#ffa500"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="#ffa500"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -409,27 +377,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="blue"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -525,15 +494,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -543,46 +507,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="blue"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="#0000ff"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="#0000ff"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -590,27 +542,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="red"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -706,15 +659,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -724,39 +672,27 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="red"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="#ff0000"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="#ff0000"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
       </tr>
@@ -767,7 +703,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -775,27 +711,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="green"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -891,15 +828,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -909,46 +841,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="green"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="green"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="green"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -956,27 +876,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="orange"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -1072,15 +993,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1090,46 +1006,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="orange"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="orange"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="orange"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1137,27 +1041,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="blue"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -1253,15 +1158,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1271,46 +1171,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="blue"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="blue"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="blue"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1318,27 +1206,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="red"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -1434,15 +1323,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1452,39 +1336,27 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="red"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="red"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="red"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
       </tr>
@@ -1495,7 +1367,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1503,27 +1375,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="black"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -1619,15 +1492,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1637,46 +1505,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="black"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="black"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="black"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1684,27 +1540,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="grey"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -1800,15 +1657,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1818,46 +1670,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="grey"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="grey"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="grey"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -1865,27 +1705,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="purple"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -1981,15 +1822,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -1999,46 +1835,34 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="purple"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="purple"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="purple"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
         <td
           role="presentation"
           style={
             Object {
-              "padding": "0px",
+              "padding": "0",
             }
           }
         >
@@ -2046,27 +1870,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="yellow"
             aria-labelledby={null}
-            aria-pressed={undefined}
+            aria-pressed={false}
             aria-selected={false}
+            checked={false}
             className=
                 ms-Button
-                ms-Button--action
-                ms-Button--command
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   background: transparent;
                   border-radius: 0px;
                   border: 1px solid transparent;
                   box-sizing: border-box;
-                  color: #333333;
                   cursor: pointer;
                   display: inline-block;
+                  flex-wrap: nowrap;
                   font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 40px;
+                  justify-content: center;
                   outline: transparent;
                   overflow: visible;
                   padding-bottom: 0px;
@@ -2162,15 +1987,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 & $svg {
                   border-radius: 100%;
                 }
-                &:hover {
-                  color: #0078d7;
-                }
-                &:active {
-                  color: #000000;
-                }
             data-index={undefined}
             data-is-focusable={true}
-            disabled={undefined}
+            data-target-id={null}
+            disabled={false}
             id="swatchColorPicker1-itemundefined"
             onClick={[Function]}
             onFocus={[Function]}
@@ -2180,39 +2000,27 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="yellow"
             type="button"
           >
-            <div
+            <svg
               className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: flex-start;
-                  }
-            >
-              <svg
-                className=
 
-                    {
-                      box-sizing: content-box;
-                      height: 20px;
-                      padding-bottom: 4px;
-                      padding-left: 4px;
-                      padding-right: 4px;
-                      padding-top: 4px;
-                      width: 20px;
-                    }
-                fill="yellow"
-                viewBox="0 0 20 20"
-              >
-                <circle
-                  cx="50%"
-                  cy="50%"
-                  r="50%"
-                />
-              </svg>
-            </div>
+                  {
+                    box-sizing: content-box;
+                    height: 20px;
+                    padding-bottom: 4px;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    padding-top: 4px;
+                    width: 20px;
+                  }
+              fill="yellow"
+              viewBox="0 0 20 20"
+            >
+              <circle
+                cx="50%"
+                cy="50%"
+                r="50%"
+              />
+            </svg>
           </button>
         </td>
       </tr>

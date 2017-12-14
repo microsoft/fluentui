@@ -85,14 +85,12 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             box-sizing: border-box;
             color: #333333;
             cursor: text;
-            display: block;
-            float: left;
+            flex-grow: 1;
             font-size: 14px;
-            height: 100%;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 72px;
             outline: 0;
             overflow: hidden;
@@ -102,7 +100,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             padding-top: 3px;
             text-overflow: ellipsis;
             user-select: text;
-            width: calc(100% - 14px);
           }
           &::selection {
             background-color: #0078d7;
@@ -131,17 +128,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       className=
 
           {
-            box-sizing: border-box;
             cursor: default;
-            display: block;
-            float: left;
+            display: flex;
+            flex-direction: column;
             font-size: 12px;
-            height: 100%;
             outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
           }
     >
       <button
@@ -153,27 +144,30 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-UpButton
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
+              background: transparent;
               border-radius: 0px;
               border: 1px solid transparent;
               box-sizing: border-box;
               color: #333333;
               cursor: default;
-              display: block;
+              display: inline-flex;
+              flex-wrap: nowrap;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
@@ -208,47 +202,36 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               color: HighlightText;
             }
         data-is-focusable={true}
-        disabled={undefined}
+        data-target-id={null}
+        disabled={false}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
         tabIndex={-1}
         type="button"
       >
-        <div
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
           className=
-              ms-Button-flexContainer
+              ms-Icon
+              ms-Button-icon
               {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
+                display: inline-block;
+                flex-shrink: 0;
+                font-size: 6px;
                 height: 100%;
-                justify-content: center;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 0;
+                text-align: center;
+                vertical-align: middle;
               }
-        >
-          <i
-            aria-hidden={true}
-            aria-label={undefined}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-size: 6px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
-                  text-align: center;
-                  vertical-align: middle;
-                }
-            data-icon-name="ChevronUpSmall"
-            role="presentation"
-          />
-        </div>
+          data-icon-name="ChevronUpSmall"
+          role="presentation"
+        />
       </button>
       <button
         aria-describedby={null}
@@ -259,27 +242,30 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-DownButton
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
+              background: transparent;
               border-radius: 0px;
               border: 1px solid transparent;
               box-sizing: border-box;
               color: #333333;
               cursor: default;
-              display: block;
+              display: inline-flex;
+              flex-wrap: nowrap;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
@@ -314,47 +300,36 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               color: HighlightText;
             }
         data-is-focusable={true}
-        disabled={undefined}
+        data-target-id={null}
+        disabled={false}
         onMouseDown={[Function]}
         onMouseLeave={[Function]}
         onMouseUp={[Function]}
         tabIndex={-1}
         type="button"
       >
-        <div
+        <i
+          aria-hidden={true}
+          aria-label={undefined}
           className=
-              ms-Button-flexContainer
+              ms-Icon
+              ms-Button-icon
               {
-                align-items: center;
-                display: flex;
-                flex-wrap: nowrap;
+                display: inline-block;
+                flex-shrink: 0;
+                font-size: 6px;
                 height: 100%;
-                justify-content: center;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 0;
+                text-align: center;
+                vertical-align: middle;
               }
-        >
-          <i
-            aria-hidden={true}
-            aria-label={undefined}
-            className=
-                ms-Icon
-                ms-Button-icon
-                {
-                  display: inline-block;
-                  flex-shrink: 0;
-                  font-size: 6px;
-                  height: 16px;
-                  line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
-                  text-align: center;
-                  vertical-align: middle;
-                }
-            data-icon-name="ChevronDownSmall"
-            role="presentation"
-          />
-        </div>
+          data-icon-name="ChevronDownSmall"
+          role="presentation"
+        />
       </button>
     </span>
   </div>

@@ -49,23 +49,27 @@ exports[`Nav renders Nav correctly 1`] = `
                 className=
                     ms-Button
                     ms-Button--action
-                    ms-Button--command
                     ms-Nav-linkButton
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: transparent;
+                      background: transparent;
                       border-radius: 0px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
-                      display: inline-block;
+                      display: inline-flex;
+                      flex-wrap: nowrap;
                       font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
                       height: 40px;
+                      justify-content: flex-start;
                       outline: transparent;
+                      overflow: hidden;
                       padding-bottom: 0;
                       padding-left: 3px;
                       padding-right: 20px;
@@ -93,62 +97,51 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:hover {
                       color: #0078d7;
                     }
-                    &:hover .ms-Button-icon {
-                      color: #0078d7;
-                    }
                     &:active {
                       color: #000000;
                     }
-                    &:active .ms-Button-icon {
-                      color: #004578;
-                    }
                 data-is-focusable={true}
+                data-target-id={null}
                 disabled={undefined}
                 onClick={[Function]}
                 rel={undefined}
                 title=""
                 type="button"
               >
-                <div
+                <i
+                  aria-hidden={true}
+                  aria-label={undefined}
                   className=
-                      ms-Button-flexContainer
+                      ms-Icon
+                      ms-Button-icon
                       {
-                        align-items: center;
-                        display: flex;
-                        flex-wrap: nowrap;
-                        height: 100%;
-                        justify-content: flex-start;
+                        color: #106ebe;
+                        display: inline-block;
+                        flex-shrink: 0;
+                        font-size: 16px;
+                        height: 16px;
+                        line-height: 16px;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                        text-align: center;
+                        vertical-align: middle;
+                        width: 1em;
                       }
+                      &:hover {
+                        color: #0078d7;
+                      }
+                      &:active {
+                        color: #004578;
+                      }
+                  data-icon-name=""
+                  role="presentation"
+                />
+                <div
+                  className="ms-Nav-linkText"
                 >
-                  <i
-                    aria-hidden={true}
-                    aria-label={undefined}
-                    className=
-                        ms-Icon
-                        ms-Button-icon
-                        {
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
-                  <div
-                    className="ms-Nav-linkText"
-                  >
-                    
-                  </div>
+                  
                 </div>
               </button>
             </div>

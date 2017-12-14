@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { CommandButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 
-export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
+export class ButtonCommandExample extends React.Component<IButtonBaseProps, {}> {
   public render() {
     let { disabled, checked } = this.props;
 

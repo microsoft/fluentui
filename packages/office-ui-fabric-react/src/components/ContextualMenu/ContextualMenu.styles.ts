@@ -59,9 +59,9 @@ export const getMenuItemStyles = memoizeFunction((
         lineHeight: ContextualMenuItemHeight,
         display: 'block',
         cursor: 'pointer',
-        padding: '0px 6px',
+        padding: '0 6px',
         textAlign: 'left',
-      },
+      }
     ],
     rootDisabled: {
       color: semanticColors.disabledBodyText,
@@ -96,13 +96,13 @@ export const getMenuItemStyles = memoizeFunction((
       maxWidth: '100%'
     },
     anchorLink: {
-      padding: '0px 6px',
+      padding: '0 6px',
       textRendering: 'auto',
       color: 'inherit',
       letterSpacing: 'normal',
       wordSpacing: 'normal',
       textTransform: 'none',
-      textIndent: '0px',
+      textIndent: '0',
       textShadow: 'none',
       textDecoration: 'none',
       boxSizing: 'border-box'
@@ -203,7 +203,7 @@ export const getStyles = memoizeFunction((
         height: ContextualMenuItemHeight,
         lineHeight: ContextualMenuItemHeight,
         cursor: 'default',
-        padding: '0px 6px',
+        padding: '0 6px',
         userSelect: 'none',
         textAlign: 'left',
       }

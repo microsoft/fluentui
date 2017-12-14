@@ -399,6 +399,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     let id = this._id;
     let { selectedIndices = [] } = this.state;
+    const defaultActiveElement = selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined;
 
     return (
       <div
@@ -410,7 +411,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         <FocusZone
           ref={ this._resolveRef('_focusZone') }
           direction={ FocusZoneDirection.vertical }
-          defaultActiveElement={ selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined }
+          defaultActiveElement={ defaultActiveElement }
           id={ id + '-list' }
           className={ css('ms-Dropdown-items', styles.items) }
           aria-labelledby={ id + '-label' }
@@ -475,7 +476,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         (
           <CommandButton
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
+            // @TODO fix ref
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ true }
@@ -499,7 +500,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            // ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ true }
@@ -524,19 +524,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             // so clear out the explicit hover styles
             // tslint:disable-next-line:jsx-no-lambda
             getStyles={ (props) => {
-              return ({ root: { background: 'green' } });
+              return ({});
             } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>
         )
     );
   }
-
-  // {
-  //   checkboxHovered: checkboxStyles.checkbox,
-  //   checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-  //   textHovered: checkboxStyles.text
-  // }
 
   // Render content of item (i.e. text/icon inside of button)
   @autobind

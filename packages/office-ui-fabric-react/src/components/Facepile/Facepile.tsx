@@ -175,7 +175,11 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       <FacepileButton
         { ...overflowButtonProps}
         ariaDescription={ personaNames }
-        className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
+        className={ css(
+          'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton',
+          styles.descriptiveOverflowButton,
+          styles.itemButton
+        ) }
       >
         <PersonaCoin
           title={ personaNames }

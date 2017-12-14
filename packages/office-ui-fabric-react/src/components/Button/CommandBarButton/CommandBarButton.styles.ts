@@ -1,57 +1,47 @@
-import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
-import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
+import { concatStyleSets, FontWeights } from '../../../Styling';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.types';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles,
-  focusInset?: string,
-  focusColor?: string
-): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let commandButtonStyles: IButtonStyles = {
-    root: {
-      minWidth: '40px',
-      backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralPrimary,
-      padding: '0 4px'
-    },
+import { getButtonBaseStyles } from '../_base/Button.base.styles';
 
-    rootHovered: {
-      backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark
-    },
+export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
+  const { theme, checked, disabled, expanded } = props;
 
-    rootPressed: {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
-    },
-
-    rootChecked: {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
-    },
-
-    rootExpanded: {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
-    },
-
-    rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralQuaternary,
-      color: theme.palette.black,
-    },
-
+  let buttonStyles: IButtonBaseStyles = {
+    button: [
+      'ms-Button--commandBar',
+      {
+        minWidth: 40,
+        padding: '0 4px',
+      },
+      !disabled && {
+        backgroundColor: theme.palette.neutralLighter,
+        color: theme.palette.neutralPrimary,
+        selectors: {
+          ':hover': {
+            backgroundColor: theme.palette.neutralLight,
+            color: theme.palette.neutralDark
+          },
+          ':active': {
+            backgroundColor: theme.palette.neutralQuaternaryAlt,
+            color: theme.palette.black
+          }
+        }
+      },
+      checked && !disabled && {
+        backgroundColor: theme.palette.neutralQuaternaryAlt,
+        color: theme.palette.black,
+        selectors: {
+          '$root:hovered &': {
+            backgroundColor: theme.palette.neutralQuaternary,
+            color: theme.palette.black
+          }
+        }
+      },
+      expanded && !disabled && {
+        backgroundColor: theme.palette.neutralQuaternaryAlt,
+        color: theme.palette.black
+      }
+    ],
     label: {
       fontWeight: 'normal' // theme.fontWeights.semibold,
     },
@@ -66,5 +56,10 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return concatStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
-});
+  const baseStyles: IButtonBaseStyles = getButtonBaseStyles(props);
+
+  return concatStyleSets(
+    baseStyles,
+    buttonStyles
+  );
+};

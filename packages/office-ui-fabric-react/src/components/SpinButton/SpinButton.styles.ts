@@ -6,7 +6,7 @@ import {
   HighContrastSelector
 } from '../../Styling';
 
-import { IButtonStyles } from '../../Button';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../../Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
 
@@ -30,11 +30,9 @@ const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   };
 });
 
-export const getArrowButtonStyles = memoizeFunction((
-  theme: ITheme,
-  isUpArrow: boolean,
-  customSpecificArrowStyles?: Partial<IButtonStyles>,
-): IButtonStyles => {
+export const getArrowButtonStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
+
+  const { theme, expanded, disabled, checked } = props;
 
   const { palette } = theme;
 
@@ -43,25 +41,33 @@ export const getArrowButtonStyles = memoizeFunction((
   const ArrowButtonBackgroundHovered = palette.neutralLight;
   const ArrowButtonBackgroundPressed = palette.themePrimary;
 
-  const defaultArrowButtonStyles: IButtonStyles = {
-    root: {
-      outline: 'none',
-      display: 'block',
+  const defaultArrowButtonStyles: IButtonBaseStyles = {
+    button: [{
       height: '50%',
       width: '14px',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
+      outline: 'none',
+      padding: 0,
       backgroundColor: 'transparent',
       textAlign: 'center',
       cursor: 'default',
-      color: ArrowButtonTextColor
+      color: ArrowButtonTextColor,
+      selectors: {
+        ':hover': {
+          backgroundColor: ArrowButtonBackgroundHovered
+        },
+        ':active': {
+          backgroundColor: ArrowButtonBackgroundPressed,
+          color: ArrowButtonTextColorPressed,
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: 'Highlight',
+              color: 'HighlightText'
+            }
+          }
+        }
+      }
     },
-    rootHovered: {
-      backgroundColor: ArrowButtonBackgroundHovered
-    },
-    rootChecked: {
+    checked && {
       backgroundColor: ArrowButtonBackgroundPressed,
       color: ArrowButtonTextColorPressed,
       selectors: {
@@ -71,17 +77,7 @@ export const getArrowButtonStyles = memoizeFunction((
         }
       }
     },
-    rootPressed: {
-      backgroundColor: ArrowButtonBackgroundPressed,
-      color: ArrowButtonTextColorPressed,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Highlight',
-          color: 'HighlightText'
-        }
-      }
-    },
-    rootDisabled: {
+    disabled && {
       opacity: 0.5,
       selectors: {
         [HighContrastSelector]: {
@@ -89,8 +85,11 @@ export const getArrowButtonStyles = memoizeFunction((
           opacity: 1,
         }
       }
-    },
+    }
+    ],
     icon: {
+      lineHeight: '100%',
+      height: '100%',
       fontSize: '6px',
       marginTop: '0',
       marginRight: '0',
@@ -99,21 +98,11 @@ export const getArrowButtonStyles = memoizeFunction((
     }
   };
 
-  // No specific styles needed as of now.
-  const defaultUpArrowButtonStyles: Partial<IButtonStyles> = {
-
-  };
-
-  const defaultDownArrowButtonStyles: Partial<IButtonStyles> = {
-
-  };
-
   return concatStyleSets(
     defaultArrowButtonStyles,
-    isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
-    customSpecificArrowStyles
-  ) as IButtonStyles;
-});
+
+  );
+};
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -165,7 +154,6 @@ export const getStyles = memoizeFunction((
       paddingRight: '5px',
       paddingBottom: '2px',
       paddingLeft: '5px',
-
       fontSize: '20px'
     },
     iconDisabled: {
@@ -221,22 +209,16 @@ export const getStyles = memoizeFunction((
       boxSizing: 'border-box',
       boxShadow: 'none',
       borderStyle: 'none',
-      marginTop: '0',
-      marginRight: '0',
-      marginBottom: '0',
-      marginLeft: '0',
+      margin: 0,
       fontSize: FontSizes.medium,
       color: SpinButtonInputTextColor,
-      height: '100%',
       paddingTop: '3px',
       paddingRight: '3px',
       paddingBottom: '4px',
       paddingLeft: '4px',
       outline: '0',
       textOverflow: 'ellipsis',
-      display: 'block',
-      float: 'left',
-      width: 'calc(100% - 14px)',
+      flexGrow: 1,
       minWidth: '72px',
       overflow: 'hidden',
       cursor: 'text',
@@ -257,15 +239,9 @@ export const getStyles = memoizeFunction((
     arrowButtonsContainer: {
       outline: 'none',
       fontSize: '12px',
-      display: 'block',
-      float: 'left',
-      height: '100%',
       cursor: 'default',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
-      boxSizing: 'border-box'
+      display: 'flex',
+      flexDirection: 'column'
     },
     arrowButtonsContainerDisabled: _getDisabledStyles(theme),
   };

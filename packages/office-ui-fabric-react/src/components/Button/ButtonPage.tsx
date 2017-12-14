@@ -15,7 +15,6 @@ import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
-import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -47,9 +46,6 @@ const ButtonScreenReaderExampleCode = require(
 ) as string;
 const ButtonContextualMenuExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx'
-) as string;
-const ButtonSwapExampleCode = require(
-  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx'
 ) as string;
 const ButtonSplitExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx'
@@ -119,9 +115,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
               <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
-            <ExampleCard title='Button Swap with Focus State' code={ ButtonSwapExampleCode }>
-              <ButtonSwapExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
-            </ExampleCard>
             <ExampleCard title='Custom Split Button' code={ ButtonSplitExampleCode }>
               <ButtonSplitCustomExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
@@ -131,7 +124,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           <div>
             <PropertiesTableSet
               sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/_base/Button.base.types.ts'),
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/_base/MenuButton.base.types.ts'),
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/_base/SplitButton.base.types.ts')
               ] }
             />
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>

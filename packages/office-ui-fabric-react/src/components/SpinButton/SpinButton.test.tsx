@@ -72,9 +72,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
-
-    expect(buttonDOM.tagName).toEqual('BUTTON');
+    const buttonDOM: Element = renderedDOM.getElementsByTagName('button')[0];
 
     ReactTestUtils.Simulate.mouseDown(buttonDOM,
       {
@@ -114,9 +112,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-DownButton')[0];
-
-    expect(buttonDOM.tagName).toEqual('BUTTON');
+    const buttonDOM: Element = renderedDOM.getElementsByTagName('button')[1];
 
     ReactTestUtils.Simulate.mouseDown(buttonDOM,
       {
@@ -475,7 +471,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-UpButton')[0] as HTMLButtonElement;
+    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
     ReactTestUtils.Simulate.mouseDown(upButtonDOM);
     ReactTestUtils.Simulate.mouseUp(upButtonDOM);
 
@@ -505,7 +501,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const downButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-DownButton')[0] as HTMLButtonElement;
+    const downButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
     ReactTestUtils.Simulate.mouseDown(downButtonDOM);
     ReactTestUtils.Simulate.mouseUp(downButtonDOM);
 
@@ -566,7 +562,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-UpButton')[0] as HTMLButtonElement;
+    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
     ReactTestUtils.Simulate.mouseDown(upButtonDOM);
     ReactTestUtils.Simulate.mouseUp(upButtonDOM);
 
@@ -595,7 +591,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
+    const buttonDOM: Element = renderedDOM.getElementsByTagName('button')[0];
 
     expect(buttonDOM.tagName).toEqual('BUTTON');
 

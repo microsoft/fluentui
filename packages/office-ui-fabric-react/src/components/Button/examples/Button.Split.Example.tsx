@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
+// tslint:disable-next-line:jsx-no-lambda
 const alertClicked = (): void => {
   alert('Clicked');
 };
 
-export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
+export class ButtonSplitExample extends React.Component<IButtonBaseProps, {}> {
   public constructor() {
     super();
   }
@@ -26,8 +26,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
-            splitButtonAriaLabel={ 'See 2 sample options' }
-            style={ { height: '35px' } }
+            ariaLabel={ 'See 2 sample options' }
             menuProps={ {
               items: [
                 {
@@ -54,7 +53,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
-            style={ { height: '35px' } }
             menuProps={ {
               items: [
                 {
@@ -104,14 +102,13 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   }
 }
 
-export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> {
+export class ButtonSplitCustomExample extends React.Component<IButtonBaseProps, {}> {
   public constructor() {
     super();
   }
 
   public render() {
     let { disabled, checked } = this.props;
-    const customSplitButtonStyles = getCustomSplitButtonStyles();
 
     return (
       <div>
@@ -124,7 +121,14 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           text='Create account'
           onClick={ alertClicked }
           split={ true }
-          styles={ customSplitButtonStyles }
+          // tslint:disable-next-line:jsx-no-lambda
+          dividerAs={ () => <div style={ { borderLeft: '1px solid #c8c8c8', margin: '4px 8px', height: '1em' } } /> }
+          // tslint:disable-next-line:jsx-no-lambda
+          getStyles={ (props) => ({
+            button: { backgroundColor: 'white', width: '10px' },
+            menuIcon: { fontSize: '7px' }
+          })
+          }
           menuProps={ {
             items: [
               {

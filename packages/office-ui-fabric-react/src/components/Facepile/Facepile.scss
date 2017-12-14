@@ -28,7 +28,7 @@ $spacingAroundItemButton: 2px;
   }
 }
 
-.itemButton {
+.itemButton, .itemButton > button {
   @include focus-border(-1px);
   text-align: center;
   padding: 0;
@@ -39,7 +39,7 @@ $spacingAroundItemButton: 2px;
   }
 }
 
-button.itemButton {
+.itemButton > button {
   display: inline;
   background: none;
   padding: 0;
@@ -51,7 +51,7 @@ button.itemButton {
   }
 }
 
-button.addButton {
+.addButton > button {
   font-size: $ms-font-size-m;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
@@ -70,14 +70,14 @@ button.addButton {
   }
 }
 
-button.overflowButton {
+.overflowButton > button {
   font-size: $ms-font-size-m;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
   @include margin-left($spacingAroundItemButton * 2);
 }
 
-button.descriptiveOverflowButton {
+.descriptiveOverflowButton > button {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;

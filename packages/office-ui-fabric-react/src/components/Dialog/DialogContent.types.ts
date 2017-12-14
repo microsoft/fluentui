@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DialogContent } from './DialogContent';
-import { IButtonProps } from '../Button/Button.types';
+import { IButtonBaseProps } from '../Button/_base/Button.base.types';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 export interface IDialogContent {
@@ -22,7 +22,7 @@ export interface IDialogContentProps extends React.Props<DialogContent> {
   /**
    * Other top buttons that will show up next to the close button
    */
-  topButtonsProps?: IButtonProps[];
+  topButtonsProps?: IButtonBaseProps[];
 
   /**
   * Optional override class name

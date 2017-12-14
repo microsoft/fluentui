@@ -7,7 +7,8 @@ import {
   getId,
   KeyCodes,
   autobind,
-  customizable
+  customizable,
+  styled
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -149,6 +150,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       labelPosition
     );
 
+    const SpinIconButton = styled(
+      IconButton,
+      getArrowButtonStyles
+    );
+
     return (
       <div className={ classNames.root }>
         { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
@@ -191,8 +197,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             data-lpignore={ true }
           />
           <span className={ classNames.arrowBox }>
-            <IconButton
-              styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
+            <SpinIconButton
+              getStyles={ customUpArrowButtonStyles }
               className={ 'ms-UpButton' }
               checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
               disabled={ disabled }
@@ -203,8 +209,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseUp={ this._stop }
               tabIndex={ -1 }
             />
-            <IconButton
-              styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
+            <SpinIconButton
+              getStyles={ customDownArrowButtonStyles }
               className={ 'ms-DownButton' }
               checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
               disabled={ disabled }

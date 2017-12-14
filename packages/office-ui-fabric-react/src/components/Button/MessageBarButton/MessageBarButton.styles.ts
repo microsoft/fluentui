@@ -1,37 +1,29 @@
-import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
-import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
+import { concatStyleSets, FontWeights } from '../../../Styling';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.types';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles,
-  focusInset?: string,
-  focusColor?: string
-): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let messageBarButtonStyles: IButtonStyles = {
-    root: {
+import { getButtonBaseStyles } from '../_base/Button.base.styles';
+
+export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
+
+  const { theme } = props;
+
+  let baseButtonStyles = getButtonBaseStyles(props);
+  let messageBarButtonStyles: IButtonBaseStyles = {
+    button: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.neutralPrimary
-    },
-
-    rootHovered: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
-    },
-
-    rootPressed: {
-      backgroundColor: theme.palette.neutralTertiary,
-      color: theme.palette.neutralDark
+      color: theme.palette.neutralPrimary,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralTertiaryAlt,
+          color: theme.palette.neutralDark
+        },
+        ':active': {
+          backgroundColor: theme.palette.neutralTertiary,
+          color: theme.palette.neutralDark
+        }
+      }
     }
-
   };
 
-  return concatStyleSets(baseButtonStyles, messageBarButtonStyles, customStyles)!;
-});
+  return concatStyleSets(baseButtonStyles, messageBarButtonStyles);
+};

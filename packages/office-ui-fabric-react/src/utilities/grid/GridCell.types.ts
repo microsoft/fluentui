@@ -1,4 +1,5 @@
-import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
+import { IStyleFunction } from '../../Utilities';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../../Button';
 import { ITheme } from '../../Styling';
 
 export interface IGridCellProps<T> {
@@ -54,16 +55,6 @@ export interface IGridCellProps<T> {
   className?: string;
 
   /**
-  * Optional, the CSS class used for when the cell is disabled
-  */
-  cellDisabledStyle?: string[];
-
-  /**
-  * Optional, the CSS class used for when the cell is selected
-  */
-  cellIsSelectedStyle?: string[];
-
-  /**
   * Index for this option
   */
   index?: number;
@@ -76,17 +67,7 @@ export interface IGridCellProps<T> {
   label?: string;
 
   /**
-  * Method to provide the classnames to style a button.
-  * The default value for this prop is the getClassnames func
-  * defined in BaseButton.classnames.
-  */
-  getClassNames?: (theme: ITheme,
-    className: string,
-    variantClassName: string,
-    iconClassName: string | undefined,
-    menuIconClassName: string | undefined,
-    disabled: boolean,
-    checked: boolean,
-    expanded: boolean,
-    isSplit: boolean | undefined) => IButtonClassNames;
+ * Call to provide customized styling that will layer on top of the variant rules.
+ */
+  getStyles?: IStyleFunction<IButtonBaseStyleProps, IButtonBaseStyles>;
 }

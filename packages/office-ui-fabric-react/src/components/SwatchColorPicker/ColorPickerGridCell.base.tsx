@@ -12,9 +12,6 @@ import {
 import { getColorFromString } from '../../utilities/color/colors';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { IButtonClassNames } from '../Button/BaseButton.classNames';
-import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
-import { mergeStyleSets, ITheme } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
@@ -69,7 +66,10 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         onFocus={ this.props.onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
-        getClassNames={ this._getClassNames }
+        // tslint:disable-next-line:jsx-no-lambda
+        getStyles={ (props) => ({
+          button: this._classNames.colorCell
+        }) }
       />
     );
   }
@@ -99,59 +99,6 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
-  }
-
-  /**
-   * Method to override the getClassNames func in a button.
-   */
-  @autobind
-  private _getClassNames(
-    theme: ITheme,
-    className: string,
-    variantClassName: string,
-    iconClassName: string | undefined,
-    menuIconClassName: string | undefined,
-    disabled: boolean,
-    checked: boolean,
-    expanded: boolean,
-    isSplit: boolean | undefined): IButtonClassNames {
-    let styles = getActionButtonStyles(theme);
-    return mergeStyleSets(this._classNames as {}, {
-      root: [
-        'ms-Button',
-        styles.root,
-        variantClassName,
-        className,
-        checked && [
-          'is-checked',
-          styles.rootChecked
-        ],
-        disabled && [
-          'is-disabled',
-          styles.rootDisabled
-        ],
-        !disabled && !checked && {
-          selectors: {
-            ':hover': styles.rootHovered,
-            ':focus': styles.rootFocused,
-            ':active': styles.rootPressed,
-          }
-        },
-        disabled && checked && [
-          styles.rootCheckedDisabled
-        ],
-        !disabled && checked && {
-          selectors: {
-            ':hover': styles.rootCheckedHovered,
-            ':active': styles.rootCheckedPressed
-          }
-        }
-      ],
-      flexContainer: [
-        'ms-Button-flexContainer',
-        styles.flexContainer
-      ]
-    });
   }
 
 }

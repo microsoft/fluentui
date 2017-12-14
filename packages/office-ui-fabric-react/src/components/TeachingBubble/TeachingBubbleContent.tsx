@@ -8,7 +8,7 @@ import {
 } from '../../Utilities';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
-import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
+import { DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
 import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
@@ -87,7 +87,8 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       footerContent = (
         <div className={ css('ms-TeachingBubble-footer', styles.footer) }>
           { primaryButtonProps && (
-            <PrimaryButton
+            <DefaultButton
+              primary
               { ...primaryButtonProps }
               className={ css('ms-TeachingBubble-primaryButton', styles.primaryButton, primaryButtonProps.className) }
             />

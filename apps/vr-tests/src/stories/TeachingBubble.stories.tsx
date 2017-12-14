@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
 // tslint:disable:max-line-length
@@ -23,7 +23,7 @@ storiesOf('TeachingBubble', module)
   ))
   .add('WideIllustration', () => {
     let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
-    let examplePrimaryButton: IButtonProps = {
+    let examplePrimaryButton: IButtonBaseProps = {
       children: 'Got it',
     };
     return <TeachingBubble
@@ -40,7 +40,7 @@ storiesOf('TeachingBubble', module)
     </TeachingBubble >
   })
   .add('SmallHeadline', () => {
-    let examplePrimaryButton: IButtonProps = {
+    let examplePrimaryButton: IButtonBaseProps = {
       children: 'Got it',
     };
     return <TeachingBubble

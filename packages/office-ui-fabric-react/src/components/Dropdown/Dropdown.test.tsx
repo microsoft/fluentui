@@ -603,7 +603,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
+        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[ button1] as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -633,7 +633,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let firstItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[0] as HTMLElement;
+        let firstItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[ button0] as HTMLElement;
         ReactTestUtils.Simulate.click(firstItemElement);
       }
       finally {

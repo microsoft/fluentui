@@ -1,24 +1,11 @@
-import * as React from 'react';
-import { BaseButton } from '../BaseButton';
-import { BaseComponent, customizable } from '../../../Utilities';
-import { IButtonProps } from '../Button.types';
-import { getStyles } from './CompoundButton.styles';
+import { styled } from '../../../Utilities';
+import { SplitButtonBase, ISplitButtonBaseProps } from '../';
+import { getStyles, getSplitStyles } from './CompoundButton.styles';
 
-@customizable('CompoundButton', ['theme'])
-export class CompoundButton extends BaseComponent<IButtonProps, {}> {
-  /**
-   * Tell BaseComponent to bypass resolution of componentRef.
-   */
-  protected _shouldUpdateComponentRef = false;
-
-  public render() {
-    let { primary = false, styles, theme } = this.props;
-    return (
-      <BaseButton
-        { ...this.props }
-        variantClassName={ primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
-        styles={ getStyles(theme!, styles, primary) }
-      />
-    );
-  }
-}
+export const CompoundButton = styled(
+  SplitButtonBase,
+  getStyles,
+  props => ({
+    getSplitStyles: getSplitStyles
+  })
+);

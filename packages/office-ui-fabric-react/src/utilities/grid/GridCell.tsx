@@ -3,9 +3,10 @@ import {
   autobind,
   css,
   getId,
+  styled
 } from '../../Utilities';
 import { IGridCellProps } from './GridCell.types';
-import { CommandButton } from '../../Button';
+import { ButtonBase, IButtonBaseProps, getButtonBaseStyles } from '../../Button';
 
 export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
 
@@ -23,25 +24,24 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       selected,
       disabled,
       onRenderItem,
-      cellDisabledStyle,
-      cellIsSelectedStyle,
       index,
       label,
-      getClassNames
+      getStyles
     } = this.props;
 
+    const GridCellButton = styled(
+      ButtonBase,
+      getButtonBaseStyles,
+    );
+
     return (
-      <CommandButton
+      <GridCellButton
         id={ id + '-item' + index }
         data-index={ index }
         data-is-focusable={ true }
         disabled={ disabled }
-        className={ css(className,
-          {
-            ['' + cellIsSelectedStyle]: selected,
-            ['' + cellDisabledStyle]: disabled
-          }
-        ) }
+        checked={ selected }
+        className={ css(className) }
         onClick={ this._onClick }
         onMouseEnter={ this._onMouseEnter }
         onMouseLeave={ this._onMouseLeave }
@@ -50,10 +50,10 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         aria-selected={ selected }
         ariaLabel={ label }
         title={ label }
-        getClassNames={ getClassNames }
+        getStyles={ getStyles }
       >
         { onRenderItem(item) }
-      </CommandButton >
+      </GridCellButton >
     );
   }
 

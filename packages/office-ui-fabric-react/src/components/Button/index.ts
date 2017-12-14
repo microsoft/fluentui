@@ -1,6 +1,4 @@
-export * from './BaseButton';
-export * from './Button.types';
-export * from './Button';
+export * from './_base';
 export * from './ActionButton/ActionButton';
 export * from './CommandBarButton/CommandBarButton';
 export * from './CommandButton/CommandButton';

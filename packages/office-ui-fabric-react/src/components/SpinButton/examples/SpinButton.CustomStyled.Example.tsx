@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from 'office-ui-fabric-react/lib/Button';
 
 const styles: Partial<ISpinButtonStyles> = {
   root: {
@@ -8,23 +8,35 @@ const styles: Partial<ISpinButtonStyles> = {
   }
 };
 
-const upArrowButtonStyles: Partial<IButtonStyles> = {
-  rootChecked: {
-    backgroundColor: 'green'
-  },
-  rootPressed: {
-    backgroundColor: 'green'
-  }
-};
+const upArrowButtonStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => ({
+  button: [
+    {
+      selectors: {
+        ':active': {
+          backgroundColor: 'green'
+        }
+      }
+    },
+    props.checked && {
+      backgroundColor: 'green'
+    }
+  ]
+});
 
-const downArrowButtonStyles: Partial<IButtonStyles> = {
-  rootChecked: {
-    backgroundColor: 'red'
-  },
-  rootPressed: {
-    backgroundColor: 'red'
-  }
-};
+const downArrowButtonStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => ({
+  button: [
+    {
+      selectors: {
+        ':active': {
+          backgroundColor: 'red'
+        }
+      }
+    },
+    props.checked && {
+      backgroundColor: 'red'
+    }
+  ]
+});
 
 export class SpinButtonCustomStyledExample extends React.Component<any, any> {
   public render() {

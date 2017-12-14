@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IModalProps } from '../../Modal';
 import { Dialog } from './Dialog';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { IButtonProps } from '../Button/Button.types';
+import { IButtonBaseProps } from '../Button/_base/Button.base.types';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
@@ -119,7 +119,7 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * Other top buttons that will show up next to the close button
    * @deprecated Pass through via dialogContentProps instead
    */
-  topButtonsProps?: IButtonProps[];
+  topButtonsProps?: IButtonBaseProps[];
 
   /**
   * Optional id for aria-LabelledBy

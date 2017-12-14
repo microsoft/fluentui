@@ -3,9 +3,9 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorTall } from '../utilities';
-import { DefaultButton, ActionButton, CompoundButton, IButtonProps, CommandBarButton } from 'office-ui-fabric-react';
+import { DefaultButton, ActionButton, CompoundButton, IButtonBaseProps, CommandBarButton, IMenuButtonBaseProps } from 'office-ui-fabric-react';
 
-const baseProps: IButtonProps = {
+const baseProps: IButtonBaseProps = {
   iconProps: {
     iconName: 'AddFriend'
   },
@@ -13,7 +13,7 @@ const baseProps: IButtonProps = {
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
 };
 
-const commandProps: IButtonProps = {
+const commandProps: IMenuButtonBaseProps = {
   'iconProps': { iconName: 'Add' },
   'text': 'Create account',
   'onClick': () => alert('Clicked'),

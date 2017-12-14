@@ -187,6 +187,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       this.setState({
         isOpen: true,
         isAnimating: true
+        // tslint:disable-next-line:jsx-no-lambda
       }, () => {
         this._async.setTimeout(this._onTransitionComplete, 200);
       });
@@ -199,6 +200,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       this.setState({
         isOpen: false,
         isAnimating: true
+        // tslint:disable-next-line:jsx-no-lambda
       }, () => {
         this._async.setTimeout(this._onTransitionComplete, 200);
       });
@@ -219,19 +221,22 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       return (
         <div className={ css('ms-Panel-navigation', styles.navigation) } >
           <IconButton
-            styles={
+            // tslint:disable-next-line:jsx-no-lambda
+            getStyles={ (buttonProps) => (
               {
                 root: {
                   height: 'auto',
                   width: '44px',
-                  color: theme.palette.neutralSecondary,
+                  color: buttonProps.theme.palette.neutralSecondary,
                   fontSize: IconFontSizes.large,
-                },
-                rootHovered: {
-                  color: theme.palette.neutralPrimary
+                  selectors: {
+                    ':hover': {
+                      color: buttonProps.theme.palette.neutralPrimary
+                    }
+                  }
                 }
               }
-            }
+            ) }
             className={ css('ms-Panel-closeButton ms-PanelAction-close') }
             onClick={ this._onPanelClick }
             ariaLabel={ closeButtonAriaLabel }

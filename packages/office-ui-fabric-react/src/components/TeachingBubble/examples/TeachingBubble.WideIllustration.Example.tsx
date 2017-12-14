@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonBaseProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
@@ -27,10 +27,10 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<any, 
   public render() {
     let { isTeachingBubbleVisible } = this.state;
     let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
-    let examplePrimaryButton: IButtonProps = {
+    let examplePrimaryButton: IButtonBaseProps = {
       children: 'Try it out',
     };
-    let exampleSecondaryButtonProps: IButtonProps = {
+    let exampleSecondaryButtonProps: IButtonBaseProps = {
       children: 'May be later',
       onClick: this._onDismiss
     };

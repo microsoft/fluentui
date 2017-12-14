@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { IImageProps } from '../../Image';
-import { IButtonProps } from '../../Button';
+import { IButtonBaseProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
 
@@ -49,12 +49,12 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble | Teach
   /**
    * The Primary interaction button
    */
-  primaryButtonProps?: IButtonProps;
+  primaryButtonProps?: IButtonBaseProps;
 
   /**
    * The Secondary interaction button
    */
-  secondaryButtonProps?: IButtonProps;
+  secondaryButtonProps?: IButtonBaseProps;
 
   /**
    * Element to anchor the TeachingBubble to.

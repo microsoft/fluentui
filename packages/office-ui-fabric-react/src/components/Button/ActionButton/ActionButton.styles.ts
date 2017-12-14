@@ -1,70 +1,61 @@
-import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
-import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
+import { concatStyleSets, FontWeights } from '../../../Styling';
+import { IButtonBaseStyleProps, IButtonBaseStyles } from '../_base/Button.base.types';
 
-const DEFAULT_BUTTON_HEIGHT = '40px';
-const DEFAULT_PADDING = '0 4px';
+import { getButtonBaseStyles } from '../_base/Button.base.styles';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let actionButtonStyles: IButtonStyles = {
-    root: {
-      padding: DEFAULT_PADDING,
-      height: DEFAULT_BUTTON_HEIGHT,
-      color: theme.palette.neutralPrimary,
-      backgroundColor: 'transparent'
-    },
+export const getStyles = (props: IButtonBaseStyleProps): IButtonBaseStyles => {
 
-    rootHovered: {
-      color: theme.palette.themePrimary,
-    },
+  const { theme, expanded, disabled, checked } = props;
 
-    iconHovered: {
-      color: theme.palette.themePrimary
-    },
+  const DEFAULT_BUTTON_HEIGHT = '40px';
+  const DEFAULT_PADDING = '0 4px';
 
-    rootPressed: {
-      color: theme.palette.black,
-    },
+  let buttonStyles: IButtonBaseStyles = {
+    button: [
+      'ms-Button--action',
+      {
+        justifyContent: 'flex-start',
+        padding: DEFAULT_PADDING,
+        height: DEFAULT_BUTTON_HEIGHT,
+        color: theme.palette.neutralPrimary,
+        backgroundColor: 'transparent',
+        selectors: {
+          ':hover': {
+            color: theme.palette.themePrimary,
+          },
+          ':active': {
+            color: theme.palette.black,
+          }
+        }
+      },
+      checked && {
+        color: theme.palette.black,
+      },
+      disabled && {
+        color: theme.palette.neutralTertiary,
+        backgroundColor: 'transparent'
+      }
+    ],
 
-    iconPressed: {
-      color: theme.palette.themeDarker
-    },
-
-    rootDisabled: {
-      color: theme.palette.neutralTertiary,
-      backgroundColor: 'transparent'
-    },
-
-    rootChecked: {
-      color: theme.palette.black,
-    },
-
-    iconChecked: {
-      color: theme.palette.themeDarker
-    },
-
-    flexContainer: {
-      justifyContent: 'flex-start'
-    },
-
-    icon: {
-      color: theme.palette.themeDarkAlt
-    },
-
-    iconDisabled: {
-      color: 'inherit'
-    },
-
+    icon: [
+      {
+        color: theme.palette.themeDarkAlt,
+        selectors: {
+          ':hover': {
+            color: theme.palette.themePrimary
+          },
+          ':active': {
+            color: theme.palette.themeDarker
+          }
+        }
+      },
+      checked && {
+        color: theme.palette.themeDarker
+      },
+      disabled && {
+        color: 'inherit'
+      }
+    ],
     menuIcon: {
       color: theme.palette.neutralSecondary
     },
@@ -72,8 +63,12 @@ export const getStyles = memoizeFunction((
     textContainer: {
       flexGrow: 0
     }
-
   };
 
-  return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
-});
+  const baseStyles: IButtonBaseStyles = getButtonBaseStyles(props);
+
+  return concatStyleSets(
+    baseStyles,
+    buttonStyles
+  );
+};
