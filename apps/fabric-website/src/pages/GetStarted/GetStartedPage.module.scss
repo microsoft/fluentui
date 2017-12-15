@@ -142,6 +142,12 @@
 
   :global(.ms-Button) {
     margin: 12px 0;
+    // The color override is need because of the UHF
+    color: $ms-color-white;
+
+    @include high-contrast {
+      color: Window;
+    }
   }
 
   code {
