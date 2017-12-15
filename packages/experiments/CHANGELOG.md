@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 14 Dec 2017 11:23:17 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Dec 2017 11:22:38 GMT and should not be manually modified.
+
+## 5.10.1
+Fri, 15 Dec 2017 11:22:38 GMT
+
+### Patches
+
+- Remove padding and border for suggestions and add callout width prop in floating picker
 
 ## 5.10.0
 Thu, 14 Dec 2017 11:23:17 GMT
