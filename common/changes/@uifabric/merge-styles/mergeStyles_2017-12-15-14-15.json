@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Added a setting to Stylesheet which allows overriding the default prefix",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "jawerne@microsoft.com"
+}
