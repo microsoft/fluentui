@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.10.1",
+      "tag": "@uifabric/experiments_v5.10.1",
+      "date": "Fri, 15 Dec 2017 11:22:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "81423e190fb9c8fffde2321104acbff4b561fdeb",
+            "comment": "Remove padding and border for suggestions and add callout width prop in floating picker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.33.0 <6.0.0` to `>=5.33.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.0",
       "tag": "@uifabric/experiments_v5.10.0",
       "date": "Thu, 14 Dec 2017 11:23:17 GMT",

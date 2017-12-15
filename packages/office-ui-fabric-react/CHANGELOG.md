@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Dec 2017 11:23:17 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Dec 2017 11:22:38 GMT and should not be manually modified.
+
+## 5.33.1
+Fri, 15 Dec 2017 11:22:38 GMT
+
+### Patches
+
+- Only perform list measurements if we absolutely need to
+- Link: Improved selectors to fix pressed state.
+- Fixes bug with GroupedList losing focus sometimes when item gets removed from list
 
 ## 5.33.0
 Thu, 14 Dec 2017 11:23:17 GMT

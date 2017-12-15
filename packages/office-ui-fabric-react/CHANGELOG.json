@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.33.1",
+      "tag": "office-ui-fabric-react_v5.33.1",
+      "date": "Fri, 15 Dec 2017 11:22:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "4be08698e006899f130ff0b7cfa5af512de335b1",
+            "comment": "Only perform list measurements if we absolutely need to"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "3eef7db9d269c562e45abae8a097a0c9b97cf9a2",
+            "comment": "Link: Improved selectors to fix pressed state."
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "d2edbbc6c069f8cb8d2936a8d982aa50be0613e1",
+            "comment": "Fixes bug with GroupedList losing focus sometimes when item gets removed from list"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.33.0",
       "tag": "office-ui-fabric-react_v5.33.0",
       "date": "Thu, 14 Dec 2017 11:23:17 GMT",
