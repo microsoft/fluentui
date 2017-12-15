@@ -156,13 +156,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,
       // else set focus to the last item.
-      const item = this.state.focusedItemIndex < this.props.items.length
-        ? this.props.items[this.state.focusedItemIndex]
-        : this.props.items[this.props.items.length - 1];
+      const index = this.state.focusedItemIndex < this.props.items.length ?
+        this.state.focusedItemIndex :
+        this.props.items.length - 1;
+      const item = this.props.items[index];
       const itemKey = this._getItemKey(item, this.state.focusedItemIndex);
       const row = this._activeRows[itemKey];
       if (row) {
         this._setFocusToRow(row);
+      } else {
+        this._initialFocusedIndex = index;
       }
     }
 
@@ -433,7 +436,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (!item) {
       if (onRenderMissingItem) {
-        onRenderMissingItem(index);
+        return onRenderMissingItem(index);
       }
 
       return null;

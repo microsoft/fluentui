@@ -1,6 +1,68 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Dec 2017 21:30:54 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Dec 2017 11:22:38 GMT and should not be manually modified.
+
+## 5.33.1
+Fri, 15 Dec 2017 11:22:38 GMT
+
+### Patches
+
+- Only perform list measurements if we absolutely need to
+- Link: Improved selectors to fix pressed state.
+- Fixes bug with GroupedList losing focus sometimes when item gets removed from list
+
+## 5.33.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- Add remeasure public method to ResizeGroup
+
+### Patches
+
+- ComboBox: Fix some issues with submitting values when freeform and autocomplete
+- Reversing the order of :focus and :active selectors for comboBox options.
+- Panel: Don't render Overlay unless Panel prop isOpen is true
+
+## 5.32.0
+Wed, 13 Dec 2017 04:06:51 GMT
+
+### Minor changes
+
+- BaseButton:onAfterMenuDismiss
+
+### Patches
+
+- ContextualMenu: Undo change to manually set the scrollbar
+- Link: Fixed state styling for the component and its documented examples.
+- Fix dropdown focus issue for IE
+
+## 5.31.2
+Tue, 12 Dec 2017 11:25:08 GMT
+
+### Patches
+
+- Fix DetailsList onRenderMissingItem not rendering the missing item
+
+## 5.31.1
+Tue, 12 Dec 2017 03:55:03 GMT
+
+### Patches
+
+- BaseButton: Explicitly dismiss the menu when the contextual menu is dismissed rather than calling toggleMEnu
+
+## 5.31.0
+Tue, 12 Dec 2017 02:08:36 GMT
+
+### Minor changes
+
+- List: Support ghosting
+
+### Patches
+
+- remove customized dismiss function in HoverCard
+- ComboBox: Add onMenuDismiss prop
+- ActivityItem: Snapshot and Screener tests added
 
 ## 5.30.2
 Fri, 08 Dec 2017 21:30:54 GMT

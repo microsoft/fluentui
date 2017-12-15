@@ -1,7 +1,7 @@
 @import '../../common/common';
 
-// Element: ms-Link root component
-.root {
+// Mixins: to be shared with Link.Example.scss
+@mixin root {
   color: $ms-color-themePrimary;
   margin: 0;
   overflow: inherit;
@@ -9,25 +9,38 @@
   text-overflow: inherit;
 }
 
-// State: The button is not disabled.
-.isEnabled {
+@mixin isEnabled {
+  &:active,
   &:hover,
-  &:focus {
+  &:active:hover {
     color: $ms-color-themeDarker;
   }
 
-  &:active {
+  &:focus {
     color: $ms-color-themePrimary;
   }
 }
 
-// State: The button is disabled.
-.isDisabled {
+@mixin isDisabled {
   color: $ms-color-neutralTertiary;
   pointer-events: none;
   cursor: default;
 }
 
+// Element: ms-Link root component
+.root {
+  @include root;
+}
+
+// State: The button is not disabled.
+.isEnabled {
+  @include isEnabled;
+}
+
+// State: The button is disabled.
+.isDisabled {
+  @include isDisabled;
+}
 
 // Link implemented as a button.
 button.root {

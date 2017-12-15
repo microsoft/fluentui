@@ -192,6 +192,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this._onRenderContent(tag, buttonProps);
   }
 
+  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
+    // If Button's menu was closed, run onAfterMenuDismiss
+    if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
+      this.props.onAfterMenuDismiss();
+    }
+  }
+
   public focus(): void {
     if (this._buttonElement) {
       this._buttonElement.focus();
@@ -376,7 +383,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
-    const { onDismiss = this._onToggleMenu } = menuProps;
+    const { onDismiss = this._dismissMenu } = menuProps;
 
     return (
       <ContextualMenu
@@ -389,6 +396,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onDismiss={ onDismiss }
       />
     );
+  }
+
+  @autobind
+  private _dismissMenu(): void {
+    this.setState({ menuProps: null });
   }
 
   @autobind

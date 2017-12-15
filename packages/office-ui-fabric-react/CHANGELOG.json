@@ -2,6 +2,151 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.33.1",
+      "tag": "office-ui-fabric-react_v5.33.1",
+      "date": "Fri, 15 Dec 2017 11:22:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "4be08698e006899f130ff0b7cfa5af512de335b1",
+            "comment": "Only perform list measurements if we absolutely need to"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "3eef7db9d269c562e45abae8a097a0c9b97cf9a2",
+            "comment": "Link: Improved selectors to fix pressed state."
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "d2edbbc6c069f8cb8d2936a8d982aa50be0613e1",
+            "comment": "Fixes bug with GroupedList losing focus sometimes when item gets removed from list"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.0",
+      "tag": "office-ui-fabric-react_v5.33.0",
+      "date": "Thu, 14 Dec 2017 11:23:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "341f9c1ef7e84ad379c3b6bf7819cad1be3d2f9d",
+            "comment": "ComboBox: Fix some issues with submitting values when freeform and autocomplete"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "5f03aaf93860c5c5a1d582e8eacdbdd31c37028c",
+            "comment": "Reversing the order of :focus and :active selectors for comboBox options."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "983096831e3b29bbecf557439006fb1d14bf3979",
+            "comment": "Panel: Don't render Overlay unless Panel prop isOpen is true"
+          }
+        ],
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "76aead93eeb29bac6f7a9d9e73893cfcfa0685fd",
+            "comment": "Add remeasure public method to ResizeGroup"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.32.0",
+      "tag": "office-ui-fabric-react_v5.32.0",
+      "date": "Wed, 13 Dec 2017 04:06:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "0e28217a5d3aff9d3e4dcf9319f6e5a117c97fec",
+            "comment": "BaseButton:onAfterMenuDismiss"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "4f0fa0ea2450fd402eaf5d51b3cc46d282d79db9",
+            "comment": "ContextualMenu: Undo change to manually set the scrollbar"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8146c713b40cfbba03fd1f9e4197ef1502a0bc21",
+            "comment": "Link: Fixed state styling for the component and its documented examples."
+          },
+          {
+            "author": "Lambert W <lambert.ww@gmail.com>",
+            "commit": "52ffc478baaa3bf900f686ff6a67ba9965f1e523",
+            "comment": "Fix dropdown focus issue for IE"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.2",
+      "tag": "office-ui-fabric-react_v5.31.2",
+      "date": "Tue, 12 Dec 2017 11:25:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "stephenzsy <stephen.zsy@gmail.com>",
+            "commit": "21cefb73e8d682196777fd38579c307fe67beff0",
+            "comment": "Fix DetailsList onRenderMissingItem not rendering the missing item"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.1",
+      "tag": "office-ui-fabric-react_v5.31.1",
+      "date": "Tue, 12 Dec 2017 03:55:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "05fe90c2295e04ed07c61cefefc5892e89926e71",
+            "comment": "BaseButton: Explicitly dismiss the menu when the contextual menu is dismissed rather than calling toggleMEnu"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.31.0",
+      "tag": "office-ui-fabric-react_v5.31.0",
+      "date": "Tue, 12 Dec 2017 02:08:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chao <fengchao199011@hotmail.com>",
+            "commit": "253922868e6305b04c194ca8906e333d5abe6ebf",
+            "comment": "remove customized dismiss function in HoverCard"
+          },
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "413b160f9284b647facd0b39bb24cade87e5b94f",
+            "comment": "ComboBox: Add onMenuDismiss prop"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "63fcf342aae0b90ba96eab00cbedb00bb9f3829f",
+            "comment": "ActivityItem: Snapshot and Screener tests added"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Lambert W <lambert.ww@gmail.com>",
+            "commit": "1fe2b91ec993ea6a3ca500c62c755303431636ba",
+            "comment": "List: Support ghosting"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.30.2",
       "tag": "office-ui-fabric-react_v5.30.2",
       "date": "Fri, 08 Dec 2017 21:30:54 GMT",

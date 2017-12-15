@@ -2,7 +2,10 @@ import * as React from 'react';
 import { ResizeGroup } from './ResizeGroup';
 
 export interface IResizeGroup {
-
+  /**
+   * Remeasures the available space.
+   */
+  remeasure(): void;
 }
 
 export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HTMLElement> {
