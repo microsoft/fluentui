@@ -66,7 +66,7 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   /**
    * Optional callback for when loading state of the photo changes
    */
-  onPhotoLoadingStateChange?: (loadSucceeded: ImageLoadState) => void;
+  onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
 
   /**
    * The background color when the user's initials are displayed.
