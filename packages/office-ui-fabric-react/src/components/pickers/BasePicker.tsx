@@ -44,6 +44,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected loadingTimer: number | undefined;
   protected currentPromise: PromiseLike<any>;
 
+  private _isUnmounted: boolean = false;
+
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
@@ -95,6 +97,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         }
       });
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._isUnmounted = true;
   }
 
   public focus() {
@@ -306,9 +312,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => this.setState({
-          suggestionsLoading: true
-        }), 500);
+        this.loadingTimer = this._async.setTimeout(() => {
+          if (!this._isUnmounted) {
+            this.setState({
+              suggestionsLoading: true
+            });
+          }
+        }, 500);
       }
 
       // Clear suggestions
@@ -332,9 +342,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             this.resolveNewValue(updatedValue, newSuggestions);
           } else {
             this.suggestionStore.updateSuggestions(newSuggestions);
-            this.setState({
-              suggestionsLoading: false
-            });
+            if (!this._isUnmounted) {
+              this.setState({
+                suggestionsLoading: false
+              });
+            }
           }
           if (this.loadingTimer) {
             this._async.clearTimeout(this.loadingTimer);
@@ -353,11 +365,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       itemValue = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
 
-    this.setState({
-      suggestionsLoading: false,
-      suggestedDisplayValue: itemValue,
-      suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
-    });
+    if (!this._isUnmounted) {
+      this.setState({
+        suggestionsLoading: false,
+        suggestedDisplayValue: itemValue,
+        suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
+      });
+    }
   }
 
   protected onChange(items?: T[]) {
