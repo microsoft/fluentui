@@ -6,7 +6,7 @@ import {
 import { styleToClassName } from './styleToClassName';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
-_stylesheet.setConfig({ injectionMode: InjectionMode.none, defaultPrefix: "myCss" });
+_stylesheet.setConfig({ injectionMode: InjectionMode.none, defaultPrefix: 'myCss' });
 
 describe('Stylesheet', () => {
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe('Stylesheet', () => {
   });
 
   it('supports overriding the default prefix', () => {
-    let className = styleToClassName({ background: 'red' });
+    const className = styleToClassName({ background: 'red' });
 
     expect(className).toEqual('myCss-0');
     expect(_stylesheet.getRules()).toEqual('.myCss-0{background:red;}');
