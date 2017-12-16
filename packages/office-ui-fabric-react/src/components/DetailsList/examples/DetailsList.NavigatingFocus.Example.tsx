@@ -17,6 +17,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
 
   private _columns = [
     {
+      key: 'filepath',
       name: 'File path',
       onRender: item =>
         (
@@ -29,6 +30,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         ),
     } as IColumn,
     {
+      key: 'size',
       name: 'Size',
       onRender: item => '4 KB',
     } as IColumn

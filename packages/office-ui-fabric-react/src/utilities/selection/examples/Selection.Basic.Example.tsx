@@ -60,11 +60,11 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
 /**
  * The SelectionBasicExample controls the selection state of all items
  */
-export class SelectionBasicExample extends React.Component<any, ISelectionBasicExampleState> {
+export class SelectionBasicExample extends React.Component<{}, ISelectionBasicExampleState> {
   private _hasMounted: boolean;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._hasMounted = false;
     this._onSelectionChanged = this._onSelectionChanged.bind(this);

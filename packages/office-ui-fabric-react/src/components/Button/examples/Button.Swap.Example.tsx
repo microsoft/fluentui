@@ -15,8 +15,8 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   private buttonRef: HTMLElement | null;
   private hasFocus: boolean;
 
-  public constructor() {
-    super();
+  public constructor(props: IButtonProps) {
+    super(props);
 
     this.hasFocus = false;
     this.buttonRef = null;

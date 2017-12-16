@@ -8,11 +8,11 @@ export interface ITeachingBubbleCondensedExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleCondensedExample extends React.Component<any, ITeachingBubbleCondensedExampleState> {
+export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachingBubbleCondensedExampleState> {
   private _menuButtonElement: HTMLElement;
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
 

@@ -23,7 +23,7 @@ export interface IDetailsRowFieldsState {
 
 export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
   constructor(props: IDetailsRowFieldsProps) {
-    super();
+    super(props);
 
     this.state = this._getState(props);
   }

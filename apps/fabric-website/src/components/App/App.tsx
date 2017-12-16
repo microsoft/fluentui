@@ -25,13 +25,6 @@ export class App extends React.Component<IAppProps, any> {
   public render() {
     let { isNavOpen } = this.state;
 
-    let toggleIcon;
-    if (isNavOpen) {
-      toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose' />;
-    } else {
-      toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton' />;
-    }
-
     return (
       <Fabric
         className={ css(

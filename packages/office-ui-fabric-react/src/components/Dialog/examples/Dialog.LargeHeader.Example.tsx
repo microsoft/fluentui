@@ -4,10 +4,12 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
-export class DialogLargeHeaderExample extends React.Component<any, any> {
+export class DialogLargeHeaderExample extends React.Component<{}, {
+  hideDialog: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       hideDialog: true
     };

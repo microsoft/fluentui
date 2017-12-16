@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { IScrollContainerProps } from './ScrollContainer.types';
 import { BaseComponent, autobind, css } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -21,7 +22,7 @@ export interface IScrollContainerContext {
 }
 
 export const ScrollContainerContextTypes = {
-  scrollContainer: React.PropTypes.object.isRequired
+  scrollContainer: PropTypes.object.isRequired
 };
 
 export class ScrollContainer extends BaseComponent<IScrollContainerProps> implements IScrollContainer {

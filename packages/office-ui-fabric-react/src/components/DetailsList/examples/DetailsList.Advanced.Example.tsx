@@ -48,7 +48,7 @@ export interface IDetailsListAdvancedExampleState {
   sortedColumnKey?: string;
 }
 
-export class DetailsListAdvancedExample extends React.Component<any, IDetailsListAdvancedExampleState> {
+export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
   public refs: {
     [key: string]: React.ReactInstance;
     list: DetailsList
@@ -57,8 +57,8 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   private _isFetchingItems: boolean;
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);

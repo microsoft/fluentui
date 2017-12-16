@@ -4,10 +4,12 @@ import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './Modal.Basic.Example.scss';
 
-export class ModalBasicExample extends React.Component<any, any> {
+export class ModalBasicExample extends React.Component<{}, {
+  showModal: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showModal: false
     };

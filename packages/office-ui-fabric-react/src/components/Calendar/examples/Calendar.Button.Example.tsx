@@ -79,8 +79,8 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
 
   private _calendarButtonElement: HTMLElement;
 
-  public constructor() {
-    super();
+  public constructor(props: ICalendarButtonExampleProps) {
+    super(props);
 
     this.state = {
       showCalendar: false,

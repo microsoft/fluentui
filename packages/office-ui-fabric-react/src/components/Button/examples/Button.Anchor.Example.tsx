@@ -7,11 +7,7 @@ import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
 
-export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
-
+export class ButtonAnchorExample extends React.Component<IButtonProps> {
   public render() {
     let { disabled, checked } = this.props;
 

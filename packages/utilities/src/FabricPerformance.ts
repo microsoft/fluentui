@@ -1,3 +1,5 @@
+declare const setTimeout: (cb: () => void, delay: number) => number;
+
 /**
  * PerfData interface.
  *

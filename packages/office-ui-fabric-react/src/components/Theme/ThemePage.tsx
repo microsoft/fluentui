@@ -1,23 +1,35 @@
 import * as React from 'react';
 import { loadTheme, FontClassNames, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { Highlight } from '@uifabric/example-app-base';
+import { IComponentDemoPageProps, Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { ColorPicker, IColorPickerProps } from 'office-ui-fabric-react/lib/ColorPicker';
 import './ThemePage.scss';
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
-export class ThemePage extends React.Component<any, any> {
+export class ThemePage extends React.Component<IComponentDemoPageProps, {
+  colors: {
+    key: string;
+    name: string;
+    value: string;
+    description: string;
+  }[];
+  colorPickerProps?: {
+    targetElement: HTMLElement;
+    value: any;
+    index: number;
+  };
+}> {
 
   public refs: {
     [key: string]: React.ReactInstance;
     list: DetailsList;
   };
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._onPickerDismiss = this._onPickerDismiss.bind(this);
 
@@ -27,7 +39,7 @@ export class ThemePage extends React.Component<any, any> {
         name: variableName,
         value: (defaultTheme as any)[variableName],
         description: '',
-        colorPickerProps: null
+        colorPickerProps: undefined
       }))
     };
   }
@@ -106,7 +118,7 @@ export class ThemePage extends React.Component<any, any> {
   private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       colorPickerProps: {
-        targetElement: (ev.currentTarget as HTMLElement).children[0],
+        targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
         index: index
       }
@@ -134,7 +146,7 @@ export class ThemePage extends React.Component<any, any> {
 
   private _onPickerDismiss() {
     this.setState({
-      colorPickerProps: null
+      colorPickerProps: undefined
     });
   }
 

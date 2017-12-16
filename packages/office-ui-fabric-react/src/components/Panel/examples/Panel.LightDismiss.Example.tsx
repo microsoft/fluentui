@@ -3,10 +3,12 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelLightDismissExample extends React.Component<any, any> {
+export class PanelLightDismissExample extends React.Component<{}, {
+  showPanel: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = { showPanel: false };
   }

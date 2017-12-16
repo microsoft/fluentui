@@ -5,12 +5,14 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import './TextField.Examples.scss';
 
-export class TextFieldCustomRenderExample extends React.Component<any, any> {
+export class TextFieldCustomRenderExample extends React.Component<{}, {
+  isCalloutVisible: boolean;
+}> {
 
   private _iconButtonElement: HTMLElement;
 
-  public constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       isCalloutVisible: false

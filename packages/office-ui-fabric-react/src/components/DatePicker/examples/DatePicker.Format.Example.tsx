@@ -67,11 +67,11 @@ export interface IDatePickerFormatExampleState {
 }
 
 export class DatePickerFormatExample extends React.Component<
-  any,
+  {},
   IDatePickerFormatExampleState
-> {
-  public constructor() {
-    super();
+  > {
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
@@ -94,18 +94,18 @@ export class DatePickerFormatExample extends React.Component<
         </p>
         <DatePicker
           label='Start date'
-          isRequired={false}
-          allowTextInput={true}
-          ariaLabel={desc}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          value={value!}
-          onSelectDate={this._onSelectDate}
-          formatDate={this._onFormatDate}
-          parseDateFromString={this._onParseDateFromString}
+          isRequired={ false }
+          allowTextInput={ true }
+          ariaLabel={ desc }
+          firstDayOfWeek={ firstDayOfWeek }
+          strings={ DayPickerStrings }
+          value={ value! }
+          onSelectDate={ this._onSelectDate }
+          formatDate={ this._onFormatDate }
+          parseDateFromString={ this._onParseDateFromString }
         />
-        <DefaultButton onClick={this._onClick} text='Clear' />
-        <div>{(this.state.value || '').toString()}</div>
+        <DefaultButton onClick={ this._onClick } text='Clear' />
+        <div>{ (this.state.value || '').toString() }</div>
       </div>
     );
   }

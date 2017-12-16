@@ -3,10 +3,12 @@ import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuWithScrollBarExample extends React.Component<any, any> {
+export class ContextualMenuWithScrollBarExample extends React.Component<{}, {
+  showCallout: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showCallout: false
     };

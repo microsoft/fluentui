@@ -50,8 +50,8 @@ export interface ITilesListMediaExampleState {
 export class TilesListMediaExample extends React.Component<{}, ITilesListMediaExampleState> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,

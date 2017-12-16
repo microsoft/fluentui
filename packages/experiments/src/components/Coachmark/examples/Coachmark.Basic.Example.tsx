@@ -11,8 +11,8 @@ export interface ICoachmarkBasicExampleState {
 
 export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onCalloutDismiss = this._onCalloutDismiss.bind(this);

@@ -34,11 +34,14 @@ let _columns: IColumn[] = [
   },
 ];
 
-export class DetailsListBasicExample extends React.Component<any, any> {
+export class DetailsListBasicExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails: {};
+}> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     // Populate with items for demos.
     if (_items.length === 0) {

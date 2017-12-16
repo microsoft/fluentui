@@ -4,10 +4,13 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelLightDismissCustomExample extends React.Component<any, any> {
+export class PanelLightDismissCustomExample extends React.Component<{}, {
+  showPanel: boolean;
+  hideDialog: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = { showPanel: false, hideDialog: true };
   }

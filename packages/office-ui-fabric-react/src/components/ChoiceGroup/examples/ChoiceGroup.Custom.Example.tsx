@@ -6,10 +6,7 @@ import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
 const styles: any = stylesImport;
 
-export class ChoiceGroupCustomExample extends React.Component<any, any> {
-  constructor() {
-    super();
-  }
+export class ChoiceGroupCustomExample extends React.Component {
 
   public render() {
     return (

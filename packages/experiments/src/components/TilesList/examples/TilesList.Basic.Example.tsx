@@ -26,8 +26,8 @@ export interface ITilesListBasicExampleState {
 }
 
 export class TilesListBasicExample extends React.Component<{}, ITilesListBasicExampleState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       items: ITEMS.map((item: IBasicItem): ITilesGridItem<IBasicItem> => {

@@ -113,8 +113,8 @@ export interface ITileMediaExampleState {
 }
 
 export class TileMediaExample extends React.Component<{}, ITileMediaExampleState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       imagesLoaded: true

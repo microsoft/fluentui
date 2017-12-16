@@ -128,7 +128,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
-    super();
+    super(props);
 
     let { formatDate, value } = props;
 

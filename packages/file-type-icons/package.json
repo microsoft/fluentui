@@ -19,11 +19,18 @@
     "jest"
   ],
   "devDependencies": {
-    "@types/react": "15.6.7",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
+    "@types/react": "16.0.25",
+    "@types/react-dom": "16.0.3",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "dependencies": {
     "@uifabric/styling": ">=5.14.0 <6.0.0",
-    "tslib": "^1.6.0"
+    "tslib": "^1.7.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   }
 }

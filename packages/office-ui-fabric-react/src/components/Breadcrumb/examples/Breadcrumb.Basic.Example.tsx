@@ -12,8 +12,8 @@ import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
   }
 
   public render() {

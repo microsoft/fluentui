@@ -53,8 +53,8 @@ const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limited
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _picker: IBasePicker<IPersonaProps>;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

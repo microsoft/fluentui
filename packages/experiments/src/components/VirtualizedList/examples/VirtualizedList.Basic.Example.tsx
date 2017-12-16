@@ -17,8 +17,8 @@ const ExampleList: ExampleList = VirtualizedList as any;
 
 export class VirtualizedListBasicExample extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     // Populate with items for demos.
     if (items.length === 0) {

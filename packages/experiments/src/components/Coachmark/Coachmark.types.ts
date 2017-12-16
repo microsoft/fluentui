@@ -7,7 +7,7 @@ import { IPoint, IStyleFunction } from '../../Utilities';
 export interface ICoachmark {
 }
 
-export interface ICoachmarkTypes extends React.Props<Coachmark> {
+export interface ICoachmarkProps extends React.Props<Coachmark> {
   /**
   * All props for your component are to be defined here.
   */

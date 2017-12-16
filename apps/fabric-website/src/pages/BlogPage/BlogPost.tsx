@@ -6,8 +6,8 @@ const blogData = require('../../data/blog-posts.json');
 export class BlogPost extends React.Component<{}, {}> {
   private _postId: string;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this._postId = this._getParameterByName('id');
   }
 

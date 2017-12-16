@@ -15,8 +15,9 @@ export interface ICheckboxBasicExampleState {
 }
 
 export class CheckboxImplementationExamples extends React.Component<{}, ICheckboxBasicExampleState> {
-  constructor() {
-    super();
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       isChecked: false

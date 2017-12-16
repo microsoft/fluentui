@@ -15,11 +15,14 @@ import './DetailsList.DragDrop.Example.scss';
 let _draggedItem: any = null;
 let _draggedIndex: number = -1;
 
-export class DetailsListDragDropExample extends React.Component<any, any> {
+export class DetailsListDragDropExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails?: string;
+}> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
 

@@ -61,8 +61,8 @@ export interface IButtonDemoPageState {
 }
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
-  constructor() {
-    super();
+  constructor(props: IComponentDemoPageProps) {
+    super(props);
     this.state = {
       areButtonsDisabled: false,
       areButtonsChecked: false

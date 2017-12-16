@@ -2,9 +2,11 @@ import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import './Slider.Basic.Example.scss';
 
-export class SliderBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class SliderBasicExample extends React.Component<{}, {
+  value: number
+}> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       value: 0

@@ -18,7 +18,7 @@ export interface IBaseProps {
  *
  * @public
  */
-export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
+export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
@@ -47,7 +47,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param context - The context for the component.
    */
   // tslint:disable-next-line:no-any
-  constructor(props?: P, context?: any) {
+  constructor(props: P, context?: any) {
     super(props, context);
 
     this._shouldUpdateComponentRef = true;

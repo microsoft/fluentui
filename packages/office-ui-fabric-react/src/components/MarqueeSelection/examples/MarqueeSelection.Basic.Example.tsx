@@ -38,8 +38,8 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
   private _selection: Selection;
   private _isMounted: boolean;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       isMarqueeEnabled: true

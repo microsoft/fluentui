@@ -27,7 +27,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   private _toggleButton: HTMLButtonElement;
 
   constructor(props: IToggleProps) {
-    super();
+    super(props);
 
     this._warnMutuallyExclusive({
       checked: 'defaultChecked'

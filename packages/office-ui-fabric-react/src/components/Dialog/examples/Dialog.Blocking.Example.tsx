@@ -3,10 +3,12 @@ import { autobind } from '../../../Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-export class DialogBlockingExample extends React.Component<any, any> {
+export class DialogBlockingExample extends React.Component<{}, {
+  hideDialog: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       hideDialog: true
     };

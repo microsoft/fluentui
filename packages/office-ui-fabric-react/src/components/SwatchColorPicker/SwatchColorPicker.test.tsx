@@ -8,6 +8,7 @@ import { mount } from 'enzyme';
 import { SwatchColorPickerBase } from './SwatchColorPicker.base';
 import { getStyles } from './SwatchColorPicker.styles';
 import { IColorCellProps } from './ColorPickerGridCell.types';
+import { expectNodes, findNodes } from '../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },
@@ -44,7 +45,8 @@ describe('SwatchColorPicker', () => {
         columnCount={ 4 }
         getStyles={ getStyles }
       />);
-    expect(wrapper.find('.ms-swatchColorPickerBodyContainer').length).toEqual(1);
+
+    expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
   });
 
   it('Can render the correct options when not in a menu', () => {
@@ -53,25 +55,21 @@ describe('SwatchColorPicker', () => {
         colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
         getStyles={ getStyles }
-      />);
-    let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
-    let container = reactContainer.getDOMNode();
-    expect(container).not.toEqual(null);
+      />
+    );
 
-    let tableElements = container.querySelectorAll('table[role="grid"]');
-    let tableRowElements = container.querySelectorAll('tr[role="row"]');
-    let tableCellElements = container.querySelectorAll('button[role="gridcell"]');
-    let setSizeElements = container.querySelectorAll('[aria-setsize]');
-    let posInSetElements = container.querySelectorAll('[aria-posinset]');
+    expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
+    expectNodes(wrapper, 'table[role="grid"]', 1);
 
-    expect(tableElements.length).toEqual(1);
+    const tableRowElements = findNodes(wrapper, 'tr[role="row"]');
+
     expect(tableRowElements.length).toEqual(3);
-    expect(tableRowElements[0].getElementsByTagName('td').length).toEqual(4);
-    expect(tableRowElements[1].getElementsByTagName('td').length).toEqual(4);
-    expect(tableRowElements[2].getElementsByTagName('td').length).toEqual(4);
-    expect(tableCellElements.length).toEqual(12);
-    expect(setSizeElements.length).toEqual(0);
-    expect(posInSetElements.length).toEqual(0);
+    expect(tableRowElements.at(0).find('td').length).toEqual(4);
+    expect(tableRowElements.at(1).find('td').length).toEqual(4);
+    expect(tableRowElements.at(2).find('td').length).toEqual(4);
+    expectNodes(wrapper, 'button[role="gridcell"]', 12);
+    expectNodes(wrapper, '[aria-setsize]', 0);
+    expectNodes(wrapper, '[aria-posinset]', 0);
   });
 
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
@@ -83,15 +81,13 @@ describe('SwatchColorPicker', () => {
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
         getStyles={ getStyles }
-      />);
-    let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
-    let container = reactContainer.getDOMNode();
-    expect(container).not.toEqual(null);
+      />
+    );
 
-    let item = container.querySelector('[role="gridcell"]') as Element;
-    expect(item).not.toEqual(null);
+    expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
+    expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);
 
-    ReactTestUtils.Simulate.click(item);
+    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(1).simulate('click');
     expect(eventFireCounter).toEqual(1);
   });
 
@@ -104,15 +100,10 @@ describe('SwatchColorPicker', () => {
         onCellHovered={ (color) => eventFireCounter++ }
         columnCount={ 4 }
         getStyles={ getStyles }
-      />);
-    let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
-    let container = reactContainer.getDOMNode();
-    expect(container).not.toEqual(null);
+      />
+    );
 
-    let cell = container.querySelector('[role="gridcell"]') as Element;
-    expect(cell).not.toEqual(null);
-
-    ReactTestUtils.Simulate.mouseEnter(cell);
+    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('mouseenter');
     expect(eventFireCounter).toEqual(1);
   });
 
@@ -125,15 +116,10 @@ describe('SwatchColorPicker', () => {
         onCellFocused={ (color) => eventFireCounter++ }
         columnCount={ 4 }
         getStyles={ getStyles }
-      />);
-    let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
-    let container = reactContainer.getDOMNode();
-    expect(container).not.toEqual(null);
+      />
+    );
 
-    let cell = container.querySelector('[role="gridcell"]') as Element;
-    expect(cell).not.toEqual(null);
-
-    ReactTestUtils.Simulate.focus(cell);
+    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('focus');
     expect(eventFireCounter).toEqual(1);
   });
 });

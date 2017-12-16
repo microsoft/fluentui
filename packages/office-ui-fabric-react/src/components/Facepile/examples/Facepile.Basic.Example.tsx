@@ -16,9 +16,10 @@ export interface IFacepileBasicExampleState {
   personaSize: PersonaSize;
 }
 
-export class FacepileBasicExample extends React.Component<any, IFacepileBasicExampleState> {
-  public constructor() {
-    super();
+export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       numberOfFaces: 3,

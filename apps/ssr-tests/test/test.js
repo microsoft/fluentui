@@ -1,6 +1,6 @@
 'use strict';
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 
 initializeIcons('dist/');
 

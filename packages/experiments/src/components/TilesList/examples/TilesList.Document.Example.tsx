@@ -45,8 +45,8 @@ export interface ITilesListDocumentExampleState {
 export class TilesListDocumentExample extends React.Component<{}, ITilesListDocumentExampleState> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
@@ -91,17 +91,17 @@ export class TilesListDocumentExample extends React.Component<{}, ITilesListDocu
     );
   }
 
-    @autobind
-    private _onToggleIsModalSelection(checked: boolean): void {
-      this._selection.setModal(checked);
-    }
+  @autobind
+  private _onToggleIsModalSelection(checked: boolean): void {
+    this._selection.setModal(checked);
+  }
 
-    @autobind
-    private _onSelectionChange(): void {
-      this.setState({
-        isModalSelection: this._selection.isModal()
-      });
-    }
+  @autobind
+  private _onSelectionChange(): void {
+    this.setState({
+      isModalSelection: this._selection.isModal()
+    });
+  }
 
   @autobind
   private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {

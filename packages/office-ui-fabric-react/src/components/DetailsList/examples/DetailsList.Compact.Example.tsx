@@ -35,11 +35,14 @@ let _columns = [
   },
 ];
 
-export class DetailsListCompactExample extends React.Component<any, any> {
+export class DetailsListCompactExample extends React.Component<{}, {
+  items: {}[];
+  selectionDetails: string;
+}> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     // Populate with items for demos.
     if (_items.length === 0) {

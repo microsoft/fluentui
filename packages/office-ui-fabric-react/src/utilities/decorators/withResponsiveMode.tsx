@@ -33,12 +33,12 @@ export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
   _defaultMode = responsiveMode;
 }
 
-export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
+export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
-  return class WithResponsiveMode extends BaseDecorator<P, IWithResponsiveModeState> {
+  return class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
 
-    constructor() {
-      super();
+    constructor(props: TProps) {
+      super(props);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {

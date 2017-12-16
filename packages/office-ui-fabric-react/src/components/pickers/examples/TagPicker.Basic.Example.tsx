@@ -25,8 +25,8 @@ let _testTags = [
 ].map(item => ({ key: item, name: item }));
 
 export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       isPickerDisabled: false
     };

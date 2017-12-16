@@ -3,10 +3,12 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelLargeExample extends React.Component<any, any> {
+export class PanelLargeExample extends React.Component<{}, {
+  showPanel: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = { showPanel: false };
   }
 
@@ -22,7 +24,7 @@ export class PanelLargeExample extends React.Component<any, any> {
         <Panel
           isOpen={ this.state.showPanel }
           // tslint:disable-next-line:jsx-no-lambda
-          onDismiss={ () => this.setState({ showPanel: false })  }
+          onDismiss={ () => this.setState({ showPanel: false }) }
           type={ PanelType.large }
           headerText='Large Panel'
         >
