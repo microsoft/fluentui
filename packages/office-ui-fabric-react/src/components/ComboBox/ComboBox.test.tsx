@@ -373,6 +373,8 @@ describe('ComboBox', () => {
     expect(executionCount).toEqual(1);
     expect(updatedOption).toEqual(initialOption);
     expect(updatedIndex).toEqual(0);
-    expect(inputElement.props().value).toEqual('Text');
+
+    wrapper.update();
+    expect(wrapper.find('.ms-ComboBox input').props().value).toEqual('Text');
   });
 });
