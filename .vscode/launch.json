@@ -22,14 +22,14 @@
       "sourceMaps": true
     },
     {
-      "name": "Debug test in experiments",
+      "name": "Build fabric",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
-      "cwd": "${workspaceRoot}/packages/experiments",
+      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "stopOnEntry": false,
       "args": [
-        "jest"
+        "ts"
       ],
       "runtimeExecutable": null,
       "runtimeArgs": [

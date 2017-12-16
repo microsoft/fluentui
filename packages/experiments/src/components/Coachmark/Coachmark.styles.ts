@@ -1,5 +1,4 @@
-import { IStyle, keyframes } from '../../Styling';
-import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IStyle, IRawStyle, keyframes } from '../../Styling';
 
 export const themePrimary = '#0078d7';
 
@@ -80,7 +79,7 @@ export const coachmarkCollapsedSize = '36px';
 export const beaconColorOne = '#00FFEC';
 export const beaconColorTwo = '#005EDD';
 
-function continuousPulseStepOne(): IRawStyleBase {
+function continuousPulseStepOne(): IRawStyle {
   return {
     borderColor: beaconColorOne,
     borderWidth: '0px',
@@ -89,20 +88,20 @@ function continuousPulseStepOne(): IRawStyleBase {
   };
 }
 
-function continuousPulseStepTwo(): IRawStyleBase {
+function continuousPulseStepTwo(): IRawStyle {
   return {
     opacity: '1',
     borderWidth: '10px'
   };
 }
 
-function continuousPulseStepThree(): IRawStyleBase {
+function continuousPulseStepThree(): IRawStyle {
   return {
     opacity: 1
   };
 }
 
-function continuousPulseStepFour(): IRawStyleBase {
+function continuousPulseStepFour(): IRawStyle {
   return {
     borderWidth: '0',
     width: '150px',
@@ -112,7 +111,7 @@ function continuousPulseStepFour(): IRawStyleBase {
   };
 }
 
-function continuousPulseStepFive(): IRawStyleBase {
+function continuousPulseStepFive(): IRawStyle {
   return Object.assign(continuousPulseStepOne(), {
     opacity: '0'
   });
