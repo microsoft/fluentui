@@ -514,6 +514,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
+            onRenderLabel={ () => onRenderOption(item, this._onRenderOption) }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
               'ms-Dropdown-item', styles.item, {
@@ -531,8 +532,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               checkboxCheckedHovered: checkboxStyles.checkboxChecked,
               textHovered: checkboxStyles.text
             } }
-          >{ onRenderOption(item, this._onRenderOption) }
-          </Checkbox>
+          />
         )
     );
   }
