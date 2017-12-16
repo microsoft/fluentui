@@ -2,6 +2,25 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "@uifabric/jest-serializer-merge-styles_v5.1.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.8.1 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/jest-serializer-merge-styles_v5.0.1",
       "date": "Tue, 24 Oct 2017 10:21:08 GMT",
