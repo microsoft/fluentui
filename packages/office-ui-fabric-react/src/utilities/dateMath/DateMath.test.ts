@@ -344,7 +344,6 @@ describe('DateMath', () => {
     result = DateMath.getWeekNumber(date1, 1, 0);
     expected = 53;
     expect(result).toEqual(expected);
-
   });
 
   // First week of year set to FirstWeekOfYear.FirstFullWeek
@@ -384,9 +383,6 @@ describe('DateMath', () => {
     result = DateMath.getWeekNumber(date1, 1, 1);
     expected = 52;
     expect(result).toEqual(expected);
-
-
-
   });
 
   // First week of year set to FirstWeekOfYear.FirstFourDayWeek
