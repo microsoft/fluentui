@@ -434,7 +434,6 @@ describe('DateMath', () => {
     result = DateMath.getWeekNumber(date1, 1, 2);
     expected = 53;
     expect(result).toEqual(expected);
-
   });
 
   it('can get the month start and end', () => {
