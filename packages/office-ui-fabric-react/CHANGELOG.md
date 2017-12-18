@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2017 11:22:54 GMT and should not be manually modified.
+
+## 5.34.1
+Mon, 18 Dec 2017 11:22:54 GMT
+
+### Patches
+
+- respect className for PersonaCoin
 
 ## 5.34.0
 Sat, 16 Dec 2017 05:07:22 GMT
