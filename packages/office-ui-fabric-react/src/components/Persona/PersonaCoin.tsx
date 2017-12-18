@@ -87,7 +87,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
+        className={ css('ms-Persona-coin', PERSONA_SIZE[size], coinProps && coinProps.className) }
       >
         { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
           <div
