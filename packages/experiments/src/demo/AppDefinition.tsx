@@ -11,6 +11,18 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
+          key: 'PositioningContainer',
+          name: 'PositioningContainer',
+          url: '#/examples/PositioningContainer'
+        },
+        {
+          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
+          key: 'Coachmark',
+          name: 'Coachmark',
+          url: '#/examples/coachmark'
+        },
+        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
@@ -76,6 +88,18 @@ export const AppDefinition: IAppDefinition = {
           name: 'ExtendedPeoplePicker',
           url: '#/examples/extendedpeoplepicker'
         },
+        {
+          component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
+          key: 'VirtualizedList',
+          name: 'VirtualizedList',
+          url: '#/examples/virtualizedlist'
+        },
+        {
+          component: require<any>('../components/StaticList/StaticListPage').StaticListPage,
+          key: 'StaticList',
+          name: 'StaticList',
+          url: '#/examples/staticlist'
+        }
       ]
     }
   ],

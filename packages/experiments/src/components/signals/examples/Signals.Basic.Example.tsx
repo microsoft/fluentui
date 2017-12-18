@@ -54,8 +54,8 @@ export interface ISignalsBasicExampleState {
 }
 
 export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampleState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       fontSize: 'small',

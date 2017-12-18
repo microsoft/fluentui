@@ -25,7 +25,6 @@ exports[`Callout renders Callout correctly 1`] = `
         Object {
           "backgroundColor": undefined,
           "maxHeight": 750,
-          "overflowY": "auto",
         }
       }
     >
