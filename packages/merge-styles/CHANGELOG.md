@@ -1,6 +1,20 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 01 Dec 2017 11:11:16 GMT and should not be manually modified.
+This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+
+## 5.9.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.8.1
+Mon, 11 Dec 2017 11:24:05 GMT
+
+### Patches
+
+- Fixing issues where child variables in selectors would not expand correctly. Also fixing a case where the same static class registered in two different sets will not show up multiple times in the result from `mergeStyleSets`.
 
 ## 5.8.0
 Fri, 01 Dec 2017 11:11:16 GMT

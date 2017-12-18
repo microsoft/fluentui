@@ -11,7 +11,6 @@ export interface IDONavigationState {
 }
 
 export class DONavigation extends React.Component<IDONavigationProps, IDONavigationState> {
-  private _links = [];
   private _containers = [];
   private HEADER_CLASS = '.od-Header';
   private LINKS_CLASS = '.od-Navigation-link';
@@ -39,7 +38,6 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
 
     this.headerel = document.querySelector(this.HEADER_CLASS);
     // Find navigation buttons
-    this._links = this.headerel.querySelectorAll(this.LINKS_CLASS);
     this._containers = this.headerel.querySelectorAll(this.CONTAINER_CLASS);
 
     // Settup Hamburger button
@@ -349,11 +347,12 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
 
   private _findAncestor(el, cls) {
     let newCLS = cls.replace('.', '');
-    let that;
     let newEL = el;
-    while ((newEL = newEL.parentElement) && !newEL.classList.contains(newCLS)) {
-      that = this;
-    }
+
+    do {
+      newEL = newEL.parentElement;
+    } while (!newEL.classList.contains(newCLS));
+
     return newEL;
   }
 }
