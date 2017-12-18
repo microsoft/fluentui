@@ -101,6 +101,7 @@ $ms-Persona-presenceBorder: 2px;
     border: 1px solid WindowText;
     -ms-high-contrast-adjust: none;
     color: WindowText;
+    box-sizing: border-box;
     // Using important to override all of the more specific initialsIsColor rules
     background-color: Window !important;
   }
