@@ -7,25 +7,6 @@
 // --------------------------------------------------
 // Persona styles
 
-
-//= Colors used in the initials color block
-$ms-color-initials-transparent:      transparent;
-$ms-color-initials-lightBlue:        #6BA5E7;
-$ms-color-initials-blue:             #2D89EF;
-$ms-color-initials-darkBlue:         #2B5797;
-$ms-color-initials-teal:             #00ABA9;
-$ms-color-initials-lightGreen:       #99B433;
-$ms-color-initials-green:            #00A300;
-$ms-color-initials-darkGreen:        #1E7145;
-$ms-color-initials-lightPink:        #E773BD;
-$ms-color-initials-pink:             #FF0097;
-$ms-color-initials-magenta:          #7E3878;
-$ms-color-initials-purple:           #603CBA;
-$ms-color-initials-black:            #1D1D1D;
-$ms-color-initials-orange:           #DA532C;
-$ms-color-initials-red:              #EE1111;
-$ms-color-initials-darkRed:          #B91D47;
-
 // Skype presence colors
 $ms-color-presence-available:          #7FBA00;
 $ms-color-presence-away:               #FCD116;
@@ -121,55 +102,6 @@ $ms-Persona-presenceBorder: 2px;
     -ms-high-contrast-adjust: none;
     // Using important to override all of the more specific initialsIsColor rules
     background-color: Window !important;
-  }
-
-  &.initialsIsLightBlue {
-    background-color: $ms-color-initials-lightBlue;
-  }
-  &.initialsIsBlue {
-    background-color: $ms-color-initials-blue;
-  }
-  &.initialsIsDarkBlue {
-    background-color: $ms-color-initials-darkBlue;
-  }
-  &.initialsIsTeal {
-    background-color: $ms-color-initials-teal;
-  }
-  &.initialsIsLightGreen {
-    background-color: $ms-color-initials-lightGreen;
-  }
-  &.initialsIsGreen {
-    background-color: $ms-color-initials-green;
-  }
-  &.initialsIsDarkGreen {
-    background-color: $ms-color-initials-darkGreen;
-  }
-  &.initialsIsLightPink {
-    background-color: $ms-color-initials-lightPink;
-  }
-  &.initialsIsPink {
-    background-color: $ms-color-initials-pink;
-  }
-  &.initialsIsMagenta {
-    background-color: $ms-color-initials-magenta;
-  }
-  &.initialsIsPurple {
-    background-color: $ms-color-initials-purple;
-  }
-  &.initialsIsBlack {
-    background-color: $ms-color-initials-black;
-  }
-  &.initialsIsOrange {
-    background-color: $ms-color-initials-orange;
-  }
-  &.initialsIsRed {
-    background-color: $ms-color-initials-red;
-  }
-  &.initialsIsDarkRed {
-    background-color: $ms-color-initials-darkRed;
-  }
-  &.initialsIsTransparent {
-    background-color: $ms-color-initials-transparent;
   }
 }
 

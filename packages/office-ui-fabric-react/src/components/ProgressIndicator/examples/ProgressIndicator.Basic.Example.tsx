@@ -12,13 +12,13 @@ const INTERVAL_DELAY: number = 100;
 const INTERVAL_INCREMENT: number = .01;
 const RESTART_WAIT_TIME: number = 2000;
 
-export class ProgressIndicatorBasicExample extends React.Component<any, IProgressIndicatorBasicExampleState> {
+export class ProgressIndicatorBasicExample extends React.Component<{}, IProgressIndicatorBasicExampleState> {
 
   private _interval: number;
   private _async: Async;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._async = new Async(this);
 

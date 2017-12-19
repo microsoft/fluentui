@@ -10,6 +10,9 @@ import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { ValidationState, Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
   from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
+import * as stylesImport from './BaseFloatingPicker.scss';
+// tslint:disable-next-line:no-any
+const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
   queryString: string;
@@ -141,6 +144,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
       <Callout
+        className={ styles.callout }
         isBeakVisible={ false }
         gapSpace={ 5 }
         target={ this.props.inputElement }
@@ -152,6 +156,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
               DirectionalHint.bottomLeftEdge
             )
         }
+        calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }

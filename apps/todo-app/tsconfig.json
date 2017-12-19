@@ -11,8 +11,6 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "types": [
-      "chai",
-      "mocha",
       "webpack-env"
     ]
   },
