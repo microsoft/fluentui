@@ -39,7 +39,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
       label = title;
     }
 
-    percentComplete = Math.min(100, Math.max(0, percentComplete! * 100));
+    this.props.percentComplete ? percentComplete = Math.min(100, Math.max(0, percentComplete! * 100)) : percentComplete = 0;
 
     return (
       <div className={ css('ms-ProgressIndicator', styles.root, className) }>
@@ -50,9 +50,10 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
             className={ css(
               'ms-ProgressIndicator-progressBar',
               styles.progressBar,
-              percentComplete > ZERO_THRESHOLD && 'smoothTransition'
+              percentComplete > ZERO_THRESHOLD && 'smoothTransition',
+              !percentComplete && styles.indeterminate
             ) }
-            style={ { width: percentComplete + '%' } }
+            style={ percentComplete ? { width: percentComplete + '%' } : {} }
             role='progressbar'
             aria-valuemin='0'
             aria-valuemax='100'
