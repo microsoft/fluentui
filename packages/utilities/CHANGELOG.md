@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+
+## 5.6.1
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Broaden the range of allowed prop-type versions
 
 ## 5.6.0
 Sat, 16 Dec 2017 05:07:22 GMT
