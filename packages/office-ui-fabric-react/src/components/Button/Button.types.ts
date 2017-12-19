@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
+import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
@@ -107,6 +108,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuProps?: IContextualMenuProps;
 
   /**
+   * Callback that runs after Button's contextualmenu was closed (removed from the DOM)
+   */
+  onAfterMenuDismiss?: () => void;
+
+  /**
    * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
    */
   split?: boolean;
@@ -207,6 +213,16 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined) => IButtonClassNames;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseSplitButtonClassNames
+  */
+  getSplitButtonClassNames?: (disabled: boolean,
+    expanded: boolean,
+    checked: boolean) => ISplitButtonClassNames;
 }
 
 export enum ElementType {

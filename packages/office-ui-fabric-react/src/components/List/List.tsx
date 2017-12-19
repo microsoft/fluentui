@@ -17,6 +17,8 @@ const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
 const MAX_SCROLL_UPDATE_DELAY = 500;
 const IDLE_DEBOUNCE_DELAY = 200;
+// The amount of time to wait before declaring that the list isn't scrolling
+const DONE_SCROLLING_WAIT = 500;
 const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE_HEIGHT = 30;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -27,6 +29,7 @@ export interface IListState {
 
   /** The last versionstamp for  */
   measureVersion?: number;
+  isScrolling?: boolean;
 }
 
 interface IPageCacheItem {
@@ -126,7 +129,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     super(props);
 
     this.state = {
-      pages: []
+      pages: [],
+      isScrolling: false
     };
 
     this._estimatedPageHeight = 0;
@@ -158,6 +162,13 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       {
         leading: false
       });
+
+    this._onScrollingDone = this._async.debounce(
+      this._onScrollingDone,
+      DONE_SCROLLING_WAIT, {
+        leading: false
+      }
+    );
 
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
@@ -281,6 +292,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let { pages: oldPages } = this.state;
     let { pages: newPages } = newState;
     let shouldComponentUpdate = false;
+
+    // Update if the page stops scrolling
+    if (!newState.isScrolling && this.state.isScrolling) {
+      return true;
+    }
 
     if (newProps.items === this.props.items &&
       oldPages!.length === newPages!.length) {
@@ -446,7 +462,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           data-list-index={ index }
           data-automationid='ListCell'
         >
-          { onRenderCell && onRenderCell(item, index) }
+          { onRenderCell && onRenderCell(item, index, this.state.isScrolling) }
         </div>
       );
     });
@@ -479,7 +495,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
   private _onScroll() {
+    if (!this.state.isScrolling) {
+      this.setState({ isScrolling: true });
+    }
     this._resetRequiredWindows();
+    this._onScrollingDone();
   }
 
   private _resetRequiredWindows() {
@@ -530,6 +550,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
+  /**
+   * Function to call when the list is done scrolling.
+   * This function is debounced.
+   */
+  private _onScrollingDone() {
+    this.setState({ isScrolling: false });
+  }
+
   private _onAsyncResize() {
     this.forceUpdate();
   }
@@ -545,20 +573,26 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let oldListPages = this.state.pages;
 
     this.setState(newListState, () => {
-      // If measured version is invalid since we've updated the DOM
-      const heightsChanged = this._updatePageMeasurements(oldListPages as IPage[], newListState.pages as IPage[]);
+      // If we weren't provided with the page height, measure the pages
+      if (!props.getPageHeight) {
+        // If measured version is invalid since we've updated the DOM
+        const heightsChanged = this._updatePageMeasurements(oldListPages as IPage[], newListState.pages as IPage[]);
 
-      // On first render, we should re-measure so that we don't get a visual glitch.
-      if (heightsChanged) {
-        this._materializedRect = null;
-        if (!this._hasCompletedFirstRender) {
-          this._hasCompletedFirstRender = true;
-          this._updatePages(props);
+        // On first render, we should re-measure so that we don't get a visual glitch.
+        if (heightsChanged) {
+          this._materializedRect = null;
+          if (!this._hasCompletedFirstRender) {
+            this._hasCompletedFirstRender = true;
+            this._updatePages(props);
+          } else {
+            this._onAsyncScroll();
+          }
         } else {
-          this._onAsyncScroll();
+          // Enqueue an idle bump.
+          this._onAsyncIdle();
         }
       } else {
-        // Enqueue an idle bump.
+        // Enqueue an idle bump
         this._onAsyncIdle();
       }
     });
@@ -696,6 +730,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       const pageSpecification = this._getPageSpecification(itemIndex, allowedRect);
       const pageHeight = pageSpecification.height;
       const pageData = pageSpecification.data;
+      const key = pageSpecification.key;
 
       itemsPerPage = pageSpecification.itemCount;
 
@@ -719,7 +754,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         }
 
         let itemsInPage = Math.min(itemsPerPage, endIndex - itemIndex);
-        let newPage = this._createPage(undefined, items!.slice(itemIndex, itemIndex + itemsInPage), itemIndex, undefined, undefined, pageData);
+        let newPage = this._createPage(key, items!.slice(itemIndex, itemIndex + itemsInPage), itemIndex, undefined, undefined, pageData);
 
         newPage.top = pageTop;
         newPage.height = pageHeight;
@@ -772,6 +807,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     itemCount: number;
     height: number;
     data?: any;
+    key?: string;
   } {
     const {
       getPageSpecification
@@ -790,7 +826,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return {
         itemCount: itemCount,
         height: height,
-        data: pageData.data
+        data: pageData.data,
+        key: pageData.key
       };
     } else {
       const itemCount = this._getItemCountForPage(itemIndex, visibleRect);

@@ -82,8 +82,8 @@ export interface ICalendarInlineExampleProps {
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
-  public constructor() {
-    super();
+  public constructor(props: ICalendarInlineExampleProps) {
+    super(props);
 
     this.state = {
       selectedDate: null,

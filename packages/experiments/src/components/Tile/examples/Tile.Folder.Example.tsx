@@ -124,8 +124,8 @@ export interface ITileFolderExampleState {
 }
 
 export class TileFolderExample extends React.Component<{}, ITileFolderExampleState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       size: 'large'

@@ -6,6 +6,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={null}
+    aria-autocomplete="none"
     aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
@@ -19,7 +20,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="menu"
+    role="combobox"
     tabIndex={0}
   >
     <span
@@ -55,6 +56,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={null}
+    aria-autocomplete="none"
     aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
@@ -68,7 +70,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="menu"
+    role="combobox"
     tabIndex={0}
   >
     <span
