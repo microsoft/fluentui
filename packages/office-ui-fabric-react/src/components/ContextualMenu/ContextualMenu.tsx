@@ -183,10 +183,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       setTimeout(() => this._previousActiveElement!.focus(), 0);
     }
 
-    if (this.props.onMenuDismissed) {
-      this.props.onMenuDismissed(this.props);
-    }
-
     this._events.dispose();
     this._async.dispose();
   }
