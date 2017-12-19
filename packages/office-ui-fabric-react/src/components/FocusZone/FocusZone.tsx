@@ -371,8 +371,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
               }
               break;
             }
-            return;
           }
+          return;
 
         case KeyCodes.home:
           if (

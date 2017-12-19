@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Broaden the range of allowed prop-type versions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "<christianjordangonzalez@gmail.com>"
+}

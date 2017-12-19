@@ -1,6 +1,48 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 01 Dec 2017 11:11:16 GMT and should not be manually modified.
+This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+
+## 5.11.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.10.1
+Fri, 15 Dec 2017 11:22:38 GMT
+
+### Patches
+
+- Remove padding and border for suggestions and add callout width prop in floating picker
+
+## 5.10.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- Add remeasure public method to CommandBar
+
+## 5.9.2
+Tue, 12 Dec 2017 02:08:36 GMT
+
+### Patches
+
+- add link ref in tile
+
+## 5.9.1
+Fri, 08 Dec 2017 18:09:44 GMT
+
+### Patches
+
+- Experiments: Fix build breaks in master
+
+## 5.9.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add experiments page for file type icons
 
 ## 5.8.0
 Fri, 01 Dec 2017 11:11:16 GMT

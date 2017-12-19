@@ -76,6 +76,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this.state = {
       positions: undefined,
       slideDirectionalClassName: undefined,
+      // @TODO it looks like this is not even being used anymore.
       calloutElementRect: undefined,
       heightOffset: 0
     };

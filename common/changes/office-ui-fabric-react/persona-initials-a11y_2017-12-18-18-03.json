@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "ComboBox: More refined handling of pressed, checked, focused and hover states for styling.",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "Persona: Set initials color for high contrast mode.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

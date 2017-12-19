@@ -158,7 +158,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='menu'
+          role='combobox'
+          aria-autocomplete='none'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
@@ -601,7 +602,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       return;
     }
 
-    this._host.focus();
+    /**
+     * IE11 focus() method forces parents to scroll to top of element.
+     * Edge and IE expose a setActive() function for focusable divs that
+     * sets the page focus but does not scroll the parent element.
+     */
+    if ((this._host as any).setActive) {
+      (this._host as any).setActive();
+    } else {
+      this._host.focus();
+    }
   }
 
   @autobind

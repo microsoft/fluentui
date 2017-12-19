@@ -16,13 +16,14 @@ import {
 
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
-import { ExpandingCardMode } from './ExpandingCard.types';
+import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
 import { getStyles } from './HoverCard.styles';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 export interface IHoverCardState {
   isHoverCardVisible: boolean;
   mode: ExpandingCardMode;
+  openMode: OpenCardMode;
 }
 
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
@@ -49,7 +50,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this.state = {
       isHoverCardVisible: false,
-      mode: ExpandingCardMode.compact
+      mode: ExpandingCardMode.compact,
+      openMode: OpenCardMode.hover
     };
   }
 
@@ -99,7 +101,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       setAriaDescribedBy = true,
       styles: customStyles
     } = this.props;
-    const { isHoverCardVisible, mode } = this.state;
+    const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
     this._styles = getStyles(customStyles);
@@ -117,9 +119,10 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             trapFocus={ !!this.props.trapFocus }
+            firstFocus={ openMode === OpenCardMode.hotKey }
             targetElement={ this._getTargetElement() }
             onEnter={ this._cardOpen }
-            onLeave={ this._cardDismiss }
+            onLeave={ this._executeCardDimiss }
             mode={ mode }
             { ...expandingCardProps }
           />
@@ -146,7 +149,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Show HoverCard
   @autobind
   private _cardOpen(ev: MouseEvent) {
-    if (ev.type === 'keydown' && !(ev.shiftKey && ev.which === KeyCodes.space)) {
+    if (ev.type === 'keydown' && !(ev.which === KeyCodes.c)) {
       return;
     }
     this._async.clearTimeout(this._dismissTimerId);
@@ -154,11 +157,17 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       this._currentMouseTarget = ev.currentTarget;
     }
 
+    this._executeCardOpen(ev);
+  }
+
+  @autobind
+  private _executeCardOpen(ev: MouseEvent) {
     this._openTimerId = this._async.setTimeout(() => {
       if (!this.state.isHoverCardVisible) {
         this.setState({
           isHoverCardVisible: true,
-          mode: ExpandingCardMode.compact
+          mode: ExpandingCardMode.compact,
+          openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
         });
       }
     }, this.props.cardOpenDelay!);
@@ -174,13 +183,19 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
     if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || (ev.which === KeyCodes.escape))) {
-      this._dismissTimerId = this._async.setTimeout(() => {
-        this.setState({
-          isHoverCardVisible: false,
-          mode: ExpandingCardMode.compact
-        });
-      }, this.props.cardDismissDelay!);
+      this._executeCardDimiss();
     }
+  }
+
+  @autobind
+  private _executeCardDimiss() {
+    this._dismissTimerId = this._async.setTimeout(() => {
+      this.setState({
+        isHoverCardVisible: false,
+        mode: ExpandingCardMode.compact,
+        openMode: OpenCardMode.hover
+      });
+    }, this.props.cardDismissDelay!);
   }
 
   // Instant Open the card in Expanded mode
