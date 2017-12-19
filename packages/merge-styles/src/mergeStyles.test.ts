@@ -18,6 +18,10 @@ describe('mergeStyles', () => {
     setRTL(false);
   });
 
+  it('can register the same static class twice', () => {
+    expect(mergeStyles('a', 'a')).toEqual('a');
+  });
+
   it('can register left', () => {
     mergeStyles({ left: 10 });
     expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}');

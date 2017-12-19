@@ -33,13 +33,13 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 };
 
 // tslint:disable-next-line:no-any
-export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
   private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
   private selectedItemsListProps: ISelectedPeopleProps;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

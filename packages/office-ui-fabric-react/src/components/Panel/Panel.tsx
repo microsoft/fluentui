@@ -102,7 +102,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     }
 
     let overlay;
-    if (isBlocking) {
+    if (isBlocking && isOpen) {
       overlay = (
         <Overlay
           className={ css(

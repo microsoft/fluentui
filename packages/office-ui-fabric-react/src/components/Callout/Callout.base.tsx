@@ -84,6 +84,7 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
     this.state = {
       positions: undefined,
       slideDirectionalClassName: undefined,
+      // @TODO it looks like this is not even being used anymore.
       calloutElementRect: undefined,
       heightOffset: 0
     };
@@ -141,7 +142,8 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
       calloutMaxHeight,
       onScroll,
       theme,
-      getStyles } = this.props;
+      getStyles
+    } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
 
@@ -303,9 +305,11 @@ export class CalloutBase extends BaseComponent<ICalloutProps, ICalloutState> {
     }
   }
 
-  private _getBeakPosition(positions?: ICalloutPositionedInfo,
+  private _getBeakPosition(
+    positions?: ICalloutPositionedInfo,
     beakWidth?: number,
-    backgroundColor?: string) {
+    backgroundColor?: string
+  ) {
     let beakStyleWidth = beakWidth;
 
     let beakReactStyle: React.CSSProperties = {

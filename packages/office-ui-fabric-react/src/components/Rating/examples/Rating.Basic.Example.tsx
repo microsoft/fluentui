@@ -7,14 +7,19 @@ import {
 
 import './Rating.Basic.Example.scss';
 
-export class RatingBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class RatingBasicExample extends React.Component<{}, {
+  rating?: number;
+  largeStarRating?: number;
+  smallStarRating?: number;
+  tenStarRating?: number;
+}> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
-      largeStarRating: null,
-      smallStarRating: null,
-      tenStarRating: null
+      largeStarRating: undefined,
+      smallStarRating: undefined,
+      tenStarRating: undefined
     };
   }
 

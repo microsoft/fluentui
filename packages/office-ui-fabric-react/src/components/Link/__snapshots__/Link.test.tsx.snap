@@ -2,6 +2,7 @@
 
 exports[`Link renders Link correctly 1`] = `
 <a
+  aria-disabled={undefined}
   className="ms-Link"
   href="#"
   onClick={[Function]}
@@ -9,4 +10,37 @@ exports[`Link renders Link correctly 1`] = `
 >
   I'm a link
 </a>
+`;
+
+exports[`Link renders Link with no href as a button 1`] = `
+<button
+  aria-disabled={undefined}
+  className="ms-Link"
+  onClick={[Function]}
+>
+  I'm a link as a button
+</button>
+`;
+
+exports[`Link renders disabled Link correctly 1`] = `
+<a
+  aria-disabled={true}
+  className="ms-Link is-disabled undefined"
+  href="#"
+  onClick={[Function]}
+  target={undefined}
+>
+  I'm a disabled link
+</a>
+`;
+
+exports[`Link renders disabled Link with no href as a button correctly 1`] = `
+<button
+  aria-disabled={true}
+  className="ms-Link is-disabled undefined"
+  disabled={true}
+  onClick={[Function]}
+>
+  I'm a link as a button
+</button>
 `;
