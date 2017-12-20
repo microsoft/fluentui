@@ -48,11 +48,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   public componentDidMount() {
-    if (this._expandedElem && this._expandedElem.scrollHeight >= (this.props.expandedCardHeight as number)) {
-      this.setState({
-        needsScroll: true
-      });
-    }
+    this._checkNeedsScroll();
 
     if (this.props.trapFocus) {
       this._events.on(this._expandingCard, 'keydown', this._onDismiss);
@@ -145,12 +141,11 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <div
         className={ mergeStyles(
           this._styles.expandedCard,
-          this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
-          this.state.needsScroll && { overflowY: 'auto' }
+          this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' }
         ) }
         ref={ this._resolveRef('_expandedElem') }
       >
-        <div className={ this._styles.expandedCardScroll as string }>
+        <div className={ mergeStyles(this.state.needsScroll && this._styles.expandedCardScroll) }>
           { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
         </div>
       </div>

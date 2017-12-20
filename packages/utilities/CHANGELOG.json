@@ -2,6 +2,39 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.6.1",
+      "tag": "@uifabric/utilities_v5.6.1",
+      "date": "Tue, 19 Dec 2017 11:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "745d39de8459b457c00c81af37b458188608eaad",
+            "comment": "Broaden the range of allowed prop-type versions"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/utilities_v5.6.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.8.1 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.5.0",
       "tag": "@uifabric/utilities_v5.5.0",
       "date": "Tue, 28 Nov 2017 02:24:21 GMT",

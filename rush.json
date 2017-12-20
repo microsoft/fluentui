@@ -1,6 +1,6 @@
 {
   "npmVersion": "5.5.1",
-  "rushVersion": "4.0.0",
+  "rushVersion": "4.1.0",
   "repository": {
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },

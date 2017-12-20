@@ -1,6 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 14 Dec 2017 11:23:17 GMT and should not be manually modified.
+This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+
+## 5.2.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+### Patches
+
+- GetStarted Page: More specific selectors for button with link to deal with UHF styles.
 
 ## 5.1.0
 Thu, 14 Dec 2017 11:23:17 GMT

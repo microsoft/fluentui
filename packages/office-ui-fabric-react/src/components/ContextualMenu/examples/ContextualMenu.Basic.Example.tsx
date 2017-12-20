@@ -3,10 +3,10 @@ import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMen
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuBasicExample extends React.Component<any, any> {
+export class ContextualMenuBasicExample extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showCallout: false
     };
