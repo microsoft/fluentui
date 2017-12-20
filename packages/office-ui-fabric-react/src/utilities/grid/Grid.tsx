@@ -7,13 +7,13 @@ import {
   classNamesFunction
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
+import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 import { getStyles as getBaseStyles } from './Grid.styles';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
 @customizable('Grid', ['theme'])
-export class Grid extends BaseComponent<IGridProps, {}> {
+export class Grid extends BaseComponent<IGridProps, {}> implements IGrid {
 
   private _id: string;
 

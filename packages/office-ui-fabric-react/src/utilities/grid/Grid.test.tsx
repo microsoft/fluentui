@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import { Grid } from './Grid';
+import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../Button';
 import { shallow } from 'enzyme';
 
@@ -23,7 +24,8 @@ describe('Grid', () => {
     let wrapper = shallow(
       <Grid
         items={ DEFAULT_ITEMS }
-        columnCount={ 4 }
+        columnnCount={ 4 }
+        getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
@@ -39,6 +41,7 @@ describe('Grid', () => {
       <Grid
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
+        getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
@@ -54,6 +57,7 @@ describe('Grid', () => {
       <Grid
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
+        getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
         positionInSet={ 1 }
