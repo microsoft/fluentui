@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Dec 2017 11:21:48 GMT and should not be manually modified.
+
+## 5.34.3
+Wed, 20 Dec 2017 11:21:48 GMT
+
+### Patches
+
+- HoverCard: fixing detection of if expanded scrolling is needed
 
 ## 5.34.2
 Tue, 19 Dec 2017 11:22:47 GMT
