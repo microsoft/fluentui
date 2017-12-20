@@ -98,6 +98,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
         doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
+        theme={ this.props.theme! }
         getStyles={ getStyles }
         containerClassName={ classNames.root }
       />);

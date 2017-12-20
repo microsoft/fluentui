@@ -24,7 +24,7 @@ describe('Grid', () => {
     let wrapper = shallow(
       <Grid
         items={ DEFAULT_ITEMS }
-        columnnCount={ 4 }
+        columnCount={ 4 }
         getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }

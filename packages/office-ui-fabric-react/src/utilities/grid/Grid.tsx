@@ -12,7 +12,6 @@ import { getStyles as getBaseStyles } from './Grid.styles';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
-@customizable('Grid', ['theme'])
 export class Grid extends BaseComponent<IGridProps, {}> implements IGrid {
 
   private _id: string;
