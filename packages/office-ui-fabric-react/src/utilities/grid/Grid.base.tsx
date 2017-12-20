@@ -7,7 +7,6 @@ import {
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
-import { getStyles as getBaseStyles } from './Grid.styles';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
