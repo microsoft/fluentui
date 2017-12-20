@@ -1,10 +1,9 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
-import { Grid } from './Grid';
 
 export interface IGrid { }
 
-export interface IGridProps extends React.Props<Grid> {
+export interface IGridProps {
   /**
    * Gets the component ref.
    */
