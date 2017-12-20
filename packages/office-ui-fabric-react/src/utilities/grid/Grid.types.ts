@@ -65,10 +65,28 @@ export interface IGridProps extends React.Props<Grid> {
   getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
 }
 
+/**
+ * Properties required to build the styles for the grid component.
+ */
 export interface IGridStyleProps { }
 
+/**
+ * Styles for the Grid Component.
+ */
 export interface IGridStyles {
+
+  /**
+   * Style for the table container of a grid.
+   */
   root: IStyle;
+
+  /**
+   * Style for the table cells of the grid.
+   */
   tableCell: IStyle;
+
+  /**
+   * Optional, style for the FocusZone container for the grid
+   */
   focusedContainer?: IStyle;
 }
