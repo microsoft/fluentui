@@ -123,6 +123,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback used to modify the input string.
    */
   onInputChange?: (input: string) => string;
+  /**
+   * A callback to overwrite the default behavior of adding the selected suggestion on dismiss.
+   */
+  onDismiss?: () => void;
 }
 
 export interface IBasePickerSuggestionsProps {
