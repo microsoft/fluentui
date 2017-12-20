@@ -7,33 +7,33 @@
 // --------------------------------------------------
 // Search box styles
 
-.root {
-  @include ms-font-m;
-  @include ms-normalize;
-  color: $ms-color-neutralPrimary;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  @include padding(0, 0, 0, 8px);
-  border: 1px solid $ms-color-neutralTertiary;
-  height: 32px;
-  @include high-contrast {
-    border: 1px solid WindowText;
-  }
-}
+// .root {
+//   @include ms-font-m;
+//   @include ms-normalize;
+//   color: $ms-color-neutralPrimary;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: nowrap;
+//   align-items: stretch;
+//   @include padding(0, 0, 0, 8px);
+//   border: 1px solid $ms-color-neutralTertiary;
+//   height: 32px;
+//   @include high-contrast {
+//     border: 1px solid WindowText;
+//   }
+// }
 
-.iconContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 16px;
-  width: 32px;
-  text-align: center;
-  transition: width $ms-animation-duration-1;
-  color: $ms-color-themePrimary;
-}
+// .iconContainer {
+//   // display: flex;
+//   // flex-direction: column;
+//   // justify-content: center;
+//   // flex-shrink: 0;
+//   // font-size: 16px;
+//   // width: 32px;
+//   // text-align: center;
+//   // transition: width $ms-animation-duration-1;
+//   // color: $ms-color-themePrimary;
+// }
 
 .icon {
   opacity: 1;
@@ -84,13 +84,13 @@
 
 // State: Active searchbox
 .root.rootIsActive {
-  border-color: $ms-color-themePrimary;
-  &:hover {
-    border-color: $ms-color-themePrimary;
-  }
-  @include high-contrast {
-    border-color: Highlight;
-  }
+  // border-color: $ms-color-themePrimary;
+  // &:hover {
+  //   border-color: $ms-color-themePrimary;
+  // }
+  // @include high-contrast {
+  //   border-color: Highlight;
+  // }
   .iconContainer {
     width: 4px;
     transition: width $ms-animation-duration-1;
