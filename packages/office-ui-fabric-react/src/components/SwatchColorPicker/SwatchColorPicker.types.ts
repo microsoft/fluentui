@@ -126,4 +126,8 @@ export interface ISwatchColorPickerStyles {
    * Style applied to the container of the swatchColorPicker
    */
   root: IStyle;
+
+  tableCell: IStyle;
+
+  focusedContainer?: IStyle;
 }

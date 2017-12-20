@@ -1,3 +1,6 @@
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
+
 export interface IGridProps {
   /**
    * Gets the component ref.
@@ -50,4 +53,27 @@ export interface IGridProps {
    * The optional size of the parent set (size of parent menu, for example)
    */
   setSize?: number;
+
+  /**
+ * Theme to apply to the component.
+ */
+  theme?: ITheme;
+
+  /**
+ * Optional styles for the component.
+ */
+  getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
+}
+
+export interface IGridStyleProps {
+  /**
+   * Theme to apply to the container
+   */
+  theme: ITheme;
+}
+
+export interface IGridStyles {
+  root: IStyle;
+  tableCell: IStyle;
+  focusedContainer?: IStyle;
 }

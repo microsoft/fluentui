@@ -2,11 +2,17 @@ import * as React from 'react';
 import {
   BaseComponent,
   getId,
-  toMatrix
+  toMatrix,
+  customizable,
+  classNamesFunction
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
-import { IGridProps } from './Grid.types';
+import { IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
+import { getStyles as getBaseStyles } from './Grid.styles';
 
+const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
+
+@customizable('Grid', ['theme'])
 export class Grid extends BaseComponent<IGridProps, {}> {
 
   private _id: string;
@@ -22,8 +28,11 @@ export class Grid extends BaseComponent<IGridProps, {}> {
       columnCount,
       onRenderItem,
       positionInSet,
-      setSize
+      setSize,
     } = this.props;
+
+    let getStyles = this.props.getStyles || getBaseStyles;
+    const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
     let rowsOfItems: any[][] = toMatrix(items, columnCount);
@@ -34,7 +43,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
         role={ 'grid' }
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
-        style={ { padding: '2px', outline: 'none' } }
+        className={ classNames.root }
       >
         <tbody>
           {
@@ -49,7 +58,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
                       <td
                         role={ 'presentation' }
                         key={ this._id + '-' + cellIndex + '-cell' }
-                        style={ { padding: '0px' } }
+                        className={ classNames.tableCell }
                       >
                         { onRenderItem(cell, cellIndex) }
                       </td>
@@ -60,7 +69,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
             })
           }
         </tbody>
-      </table>
+      </table >
     );
 
     // Create the table/grid
@@ -68,7 +77,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
       this.props.doNotContainWithinFocusZone ? content : (
         <FocusZone
           isCircularNavigation={ this.props.shouldFocusCircularNavigate }
-          className={ this.props.containerClassName }
+          className={ classNames.focusedContainer }
           onBlur={ this.props.onBlur }
         >
           { content }

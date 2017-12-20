@@ -4,7 +4,8 @@ import {
   BaseComponent,
   findIndex,
   getId,
-  customizable
+  customizable,
+  classNamesFunction
 } from '../../Utilities';
 import {
   ISwatchColorPicker,
@@ -16,7 +17,6 @@ import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 import { mergeStyleSets } from '../../Styling';
-import { classNamesFunction } from '../../Utilities';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -98,6 +98,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
         doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
+        getStyles={ getStyles }
         containerClassName={ classNames.root }
       />);
   }
