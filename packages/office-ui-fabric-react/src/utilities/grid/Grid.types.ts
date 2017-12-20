@@ -74,7 +74,6 @@ export interface IGridStyleProps { }
  * Styles for the Grid Component.
  */
 export interface IGridStyles {
-
   /**
    * Style for the table container of a grid.
    */
