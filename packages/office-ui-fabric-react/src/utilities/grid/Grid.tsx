@@ -3,7 +3,6 @@ import {
   BaseComponent,
   getId,
   toMatrix,
-  customizable,
   classNamesFunction
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
@@ -31,7 +30,7 @@ export class Grid extends BaseComponent<IGridProps, {}> implements IGrid {
     } = this.props;
 
     let getStyles = this.props.getStyles || getBaseStyles;
-    const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
+    const classNames = getClassNames(getStyles!);
 
     // Array to store the cells in the correct row index
     let rowsOfItems: any[][] = toMatrix(items, columnCount);

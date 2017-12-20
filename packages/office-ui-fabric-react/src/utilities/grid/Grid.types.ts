@@ -39,6 +39,8 @@ export interface IGridProps extends React.Props<Grid> {
 
   /**
    * Optional, class name for the FocusZone container for the grid
+   * @deprecated Use getStyles and IGridStyles to define a styling for the focus zone container with
+   * focusedContainer property.
    */
   containerClassName?: string;
 
@@ -58,22 +60,12 @@ export interface IGridProps extends React.Props<Grid> {
   setSize?: number;
 
   /**
- * Theme to apply to the component.
- */
-  theme?: ITheme;
-
-  /**
  * Optional styles for the component.
  */
   getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
 }
 
-export interface IGridStyleProps {
-  /**
-   * Theme to apply to the container
-   */
-  theme: ITheme;
-}
+export interface IGridStyleProps { }
 
 export interface IGridStyles {
   root: IStyle;
