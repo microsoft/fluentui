@@ -59,6 +59,11 @@ export interface IGridProps {
   setSize?: number;
 
   /**
+   * Theme to apply to the component.
+   */
+  theme?: ITheme;
+
+  /**
  * Optional styles for the component.
  */
   getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
@@ -67,7 +72,12 @@ export interface IGridProps {
 /**
  * Properties required to build the styles for the grid component.
  */
-export interface IGridStyleProps { }
+export interface IGridStyleProps {
+  /**
+  * Theme to apply to the grid
+  */
+  theme: ITheme;
+}
 
 /**
  * Styles for the Grid Component.

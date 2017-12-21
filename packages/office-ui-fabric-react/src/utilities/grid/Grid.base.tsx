@@ -29,7 +29,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       getStyles
     } = this.props;
 
-    const classNames = getClassNames(getStyles!);
+    const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
     let rowsOfItems: any[][] = toMatrix(items, columnCount);
