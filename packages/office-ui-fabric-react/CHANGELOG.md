@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Dec 2017 11:21:48 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Dec 2017 11:23:03 GMT and should not be manually modified.
+
+## 5.35.0
+Thu, 21 Dec 2017 11:23:03 GMT
+
+### Minor changes
+
+- Grid: Enable styling customization to grid through getStyles
+
+### Patches
+
+- Fixed persona import paths
 
 ## 5.34.3
 Wed, 20 Dec 2017 11:21:48 GMT

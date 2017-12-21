@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.35.0",
+      "tag": "office-ui-fabric-react_v5.35.0",
+      "date": "Thu, 21 Dec 2017 11:23:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "fc376bb77449323463cf80b52b69fb35aa9b9f92",
+            "comment": "Fixed persona import paths"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "e6eee8b4f76967676cc05a8da247589c10f764ff",
+            "comment": "Grid: Enable styling customization to grid through getStyles"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.34.3",
       "tag": "office-ui-fabric-react_v5.34.3",
       "date": "Wed, 20 Dec 2017 11:21:48 GMT",
