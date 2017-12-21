@@ -8,8 +8,16 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
   } = props;
 
   const { semanticColors, fonts } = theme;
+
   return {
-    root: [
+    root: {
+      padding: 2,
+      outline: 'none'
+    },
+    tableCell: {
+      padding: 0
+    },
+    focusedContainer: [
       'ms-swatchColorPickerBodyContainer',
       {
         clear: 'both',
