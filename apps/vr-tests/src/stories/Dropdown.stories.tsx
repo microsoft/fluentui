@@ -34,7 +34,7 @@ storiesOf('Dropdown', module)
           { key: 'B', text: 'Option b' },
           { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
           { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
-          { key: 'F', text: 'Option f' },
+          { key: 'F', text: 'Option f', disabled: true },
           { key: 'G', text: 'Option g' }
         ]
       }
@@ -69,7 +69,7 @@ storiesOf('Dropdown', module)
         [
           { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
           { key: 'Apple', text: 'apple' },
-          { key: 'Banana', text: 'banana' },
+          { key: 'Banana', text: 'banana', disabled: true },
           { key: 'Orange', text: 'orange' },
         ]
       }
