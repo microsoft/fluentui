@@ -70,9 +70,15 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    */
   underlined?: boolean;
 
+  /**
+   * Theme (provided through customization.)
+   */
   theme?: ITheme;
 
-  getStyles?: IStyleFunction<ISearchBoxProps, ISearchBoxStyles>
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ISearchBoxProps, ISearchBoxStyles>;
 }
 
 export interface ISearchBoxStyleProps {

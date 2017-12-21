@@ -9,7 +9,6 @@ import {
 import { SearchBoxBase } from './SearchBox.base';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
-
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus } = props;
   const { palette, fonts } = theme;
@@ -114,8 +113,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     ],
     field: [
       'ms-Searchbox-field',
+      normalize,
       {
-        //@include ms-normalize,
         border: 'none',
         outline: 'none',
         fontWeight: 'inherit',
@@ -140,4 +139,4 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ]
   }
-}
+};
