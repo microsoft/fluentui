@@ -109,14 +109,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   public dismissSuggestions() {
-    let selectItemFunction = this.props.onDismiss ?
-      this.props.onDismiss :
-      () => {
+    let selectItemFunction = () => {
+      if (this.props.onDismiss) {
+        this.props.onDismiss(
+          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined
+        );
+      } else {
         // Select the first suggestion if one is available when user leaves.
         if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
           this.addItemByIndex(0);
         }
-      };
+      }
+    };
 
     if (this.currentPromise) {
       this.currentPromise.then(() => selectItemFunction());

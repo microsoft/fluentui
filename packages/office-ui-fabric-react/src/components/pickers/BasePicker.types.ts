@@ -124,9 +124,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onInputChange?: (input: string) => string;
   /**
-   * A callback to overwrite the default behavior of adding the selected suggestion on dismiss.
+   * A callback to override the default behavior of adding the selected suggestion on dismiss.
    */
-  onDismiss?: () => void;
+  onDismiss?: (selectedItem?: T) => void;
 }
 
 export interface IBasePickerSuggestionsProps {
