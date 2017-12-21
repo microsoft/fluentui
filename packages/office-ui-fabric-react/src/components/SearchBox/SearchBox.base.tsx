@@ -6,12 +6,14 @@ import {
   css,
   getId,
   KeyCodes,
-  customizable
+  customizable,
+  classNamesFunction
 } from '../../Utilities';
 
+import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
-import { classNamesFunction } from '../../Utilities';
+import { FocusZone } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
 
@@ -60,17 +62,15 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
-        className={ css(className, classNames.root, {
-          // ['is-active ' + styles.rootIsActive]: hasFocus,
-          // ['is-disabled ' + styles.rootIsDisabled]: disabled,
-          // ['can-clear ' + styles.rootCanClear]: value!.length > 0,
-          // ['is-underlined ' + styles.rootIsUnderlined]: underlined,
-        }) }
+        className={ css(className, classNames.root,
+          hasFocus && 'is-active',
+          disabled && 'is-disabled',
+          value!.length > 0 && 'can-clear',
+          underlined && 'is-underlined'
+        ) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
-        <div
-          className={ css(classNames.iconContainer) }
-        >
+        <div className={ css(classNames.iconContainer) }>
           <Icon className={ css(classNames.icon) } iconName='Search' />
         </div>
         <input
@@ -85,12 +85,11 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
           ref={ this._resolveRef('_inputElement') }
         />
-        <div
-          className={ css(classNames.clearButton) }
-          onClick={ this._onClear }
-        >
-          <Icon iconName='Clear' />
-        </div>
+        { value!.length > 0 &&
+          <div className={ css(classNames.clearButton) }>
+            <IconButton styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } } onClick={ this._onClearClick } iconProps={ { iconName: 'Clear' } } />
+          </div>
+        }
       </div>
     );
   }
@@ -104,8 +103,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
-  @autobind
-  private _onClear(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
+  private _onClear(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement> | React.KeyboardEvent<HTMLElement>) {
     this.props.onClear && this.props.onClear(ev);
     if (!ev.defaultPrevented) {
       this._latestValue = '';
@@ -118,7 +116,6 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
       this._inputElement.focus();
     }
-
   }
 
   @autobind
@@ -132,6 +129,11 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
+  }
+
+  @autobind
+  private _onClearClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+    this._onClear(ev);
   }
 
   @autobind

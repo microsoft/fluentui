@@ -3,7 +3,8 @@ import {
   HighContrastSelector,
   ScreenWidthMaxMedium,
   ScreenWidthMaxSmall,
-  AnimationStyles
+  AnimationVariables,
+  normalize
 } from '../../Styling';
 import { SearchBoxBase } from './SearchBox.base';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
@@ -17,19 +18,28 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     root: [
       'ms-Searchbox',
       fonts.medium,
+      normalize,
       {
-        //@include ms-normalize;
         color: palette.neutralPrimary,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'stretch',
         padding: '0 0 0 8px',
-        border: `1px solid &{palette.neutralTertiary}`,
+        border: `1px solid ${palette.neutralTertiary}`,
         height: '32px',
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'
+          },
+          ':hover': {
+            borderColor: palette.neutralDark,
+            $label: {
+              color: palette.black,
+              $iconContainer: {
+                color: palette.themeDark
+              }
+            }
           }
         }
       },
@@ -45,7 +55,16 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         }
       },
       disabled && {
-
+        borderColor: palette.neutralLighter,
+        backgroundColor: palette.neutralLighter,
+        pointerEvents: 'none',
+        cursor: 'default',
+      },
+      underlined && {
+        borderWidth: '0 0 1px 0'
+      },
+      underlined && disabled && {
+        backgroundColor: 'transparent'
       }
     ],
     iconContainer: [
@@ -58,12 +77,66 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontSize: 16,
         width: 32,
         textAlign: 'center',
-        transition: 'width $ms-animation-duration-1',
+        transition: `width ${AnimationVariables.durationValue1}`,
         color: palette.themePrimary
       },
       hasFocus && {
         width: '4px',
-        transition: 'width  $ms-animation-duration-1'
+        transition: `width  ${AnimationVariables.durationValue1}`
+      },
+      disabled && {
+        color: palette.neutralTertiary
+      }
+    ],
+    icon: [
+      'ms-Searchbox-icon',
+      {
+        opacity: 1,
+        transition: `opacity ${AnimationVariables.durationValue1} 0s`
+      },
+      hasFocus && {
+        opacity: 0,
+        transition: `opacity 0 ${AnimationVariables.durationValue1}`
+      }
+    ],
+    clearButton: [
+      'ms-Searchbox-clearButton',
+      {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        cursor: 'pointer',
+        flexBasis: '32px',
+        flexShrink: 0,
+        padding: '1px',
+        color: palette.themePrimary,
+      }
+    ],
+    field: [
+      'ms-Searchbox-field',
+      {
+        //@include ms-normalize,
+        border: 'none',
+        outline: 'none',
+        fontWeight: 'inherit',
+        fontFamily: 'inherit',
+        fontSize: 'inherit',
+        color: palette.neutralPrimary,
+        backgroundColor: 'transparent',
+        flex: '1 1 0',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        // This padding forces the text placement to round up.
+        paddingBottom: '.5px',
+        // This removes the IE specific clear button in the input since we implimented our own
+        selectors: {
+          '::-ms-clear': {
+            display: 'none'
+          }
+        }
+      },
+      disabled && {
+        color: palette.neutralTertiary
       }
     ]
   }
