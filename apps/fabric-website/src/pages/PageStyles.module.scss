@@ -1,6 +1,8 @@
 @import '../styles/variables';
 
 .basePage {
+  // Typography values are set in _typography.scss,
+  // but they sometimes need to be added to more specific selectors throughout the website because of UHF
   h2 {
     margin: $uhf-h2-margin;
   }

@@ -41,7 +41,7 @@ $color-blog-lighter: #d1ec3c;
 // Component variables
 $App-maximumWidth: 1600px;
 
-//Padding matches padding at the same UHF breakpoints
+// Padding matches padding used by UHF at the same (lg / sm) UHF breakpoints
 $App-padding-left-lg: 5%;
 $App-padding-right-lg: 5%;
 $App-padding-left-sm: 6px;
@@ -92,11 +92,14 @@ $contentMargin-vertical: 16px; // Consistent spacing across pages for titles and
 $titleMargin-vertical: 32px; // Consistent spacing across pages for titles and descriptions
 
 // Screen sizes that align with UHF breakpoints
+// They differ from Fabric Core breakpoints
 $uhf-screen-min-mobile: 768px;
 $uhf-screen-max-mobile: ($uhf-screen-min-mobile - 1);
 $uhf-screen-max-lg: 1083px;
 
-// These variables assist with overriding UHF styles
+// These variables assist with overriding UHF typography styles
+// Typography values are set in _typography.scss,
+// but they sometimes need to be added to more specific selectors throughout the website because of UHF
 $uhf-h3-margin: 40px 0 8px 0;
 $uhf-h2-margin: 48px 0 4px 0;
 $uhf-h4-margin: 8px 0;
