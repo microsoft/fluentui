@@ -242,8 +242,6 @@ export class ComboBoxBasicExample extends React.Component<{ onRenderLowerContent
           preventInputFocus={ this.state.preventFocus }
         />
       </div>
-
-
     );
   }
 
@@ -329,7 +327,6 @@ export class ComboBoxBasicExample extends React.Component<{ onRenderLowerContent
       });
     }
   }
-
 
   private setComponentRef = (component: IComboBox): void => {
     this.IComboBoxRef = component;
