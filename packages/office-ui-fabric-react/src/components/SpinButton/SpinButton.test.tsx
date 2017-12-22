@@ -645,4 +645,3 @@ describe('SpinButton', () => {
     expect(onIncrement).toBeCalled();
   });
 });
-
