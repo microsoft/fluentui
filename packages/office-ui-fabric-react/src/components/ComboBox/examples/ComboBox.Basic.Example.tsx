@@ -14,14 +14,16 @@ import './ComboBox.Basic.Example.scss';
 import {
   assign,
   autobind,
-  KeyCodes
+  KeyCodes,
+  IRenderFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
-export class ComboBoxBasicExample extends React.Component<{}, {
+export class ComboBoxBasicExample extends React.Component<{ onRenderLowerContent?: IRenderFunction<IComboBoxProps> }, {
   options: IComboBoxOption[];
   selectedOptionKey?: string | number;
   value?: string;
+  preventFocus?: boolean;
 }> {
   private _testOptions =
     [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
@@ -52,7 +54,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   private IComboBoxRef: IComboBox;  /* FOR TEST ONLY   */
   private selectLowerContent: boolean = false; /* FOR TEST ONLY   */
 
-  constructor(props: {}) {
+  constructor(props: { onRenderLowerContent?: IRenderFunction<IComboBoxProps> }) {
     super(props);
     this.state = {
       options: [],
@@ -328,7 +330,6 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     }
   }
 
-  /* FOR TEST ONLY START  */
 
   private setComponentRef = (component: IComboBox): void => {
     this.IComboBoxRef = component;
@@ -363,7 +364,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
     // Tab-Back from comboBox input.  Focus on previous element (show code button)
     if (KeyCodes.tab && event.shiftKey) {
       // Prevent focus looping back around to custom button
-      let inputField: any = document.getElementById('Basicdrop11-input');
+      let inputField: any = document.getElementById('Basicdrop6-input');
       if (inputField === event.target) {
         this.IComboBoxRef.dismissMenu();
         this.selectLowerContent = false;
@@ -372,11 +373,11 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
       // Tab from comboBox input.  Focus on custom button
     } else if (KeyCodes.tab) {
-      if (!this.props.onRenderLowerContent && document.getElementById('Basicdrop11-list')) {
+      if (!this.props.onRenderLowerContent && document.getElementById('Basicdrop6-list')) {
         event.preventDefault();
 
         // Prevent menu from closing
-        this.IComboBoxRef.dismissMenu(false);
+        this.IComboBoxRef.dismissMenu(true);
 
         // Select custom button, prevent focus return to input
         this.selectLowerContent = true;
@@ -413,9 +414,10 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         this.IComboBoxRef.dismissMenu();
         this.selectLowerContent = false;
         this.setState({ preventFocus: false });
+        document.getElementsByClassName('ExampleCard')[1].getElementsByTagName('button')[0].focus();
+
       }
     }
   }
 
-  /* FOR TEST ONLY END  */
 }

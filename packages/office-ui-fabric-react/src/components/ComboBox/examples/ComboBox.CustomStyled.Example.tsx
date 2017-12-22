@@ -51,7 +51,7 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
         <ComboBox
           defaultSelectedKey='C'
           label='Custom styled uncontrolled ComboBox (allowFreeform: T, AutoComplete: T):'
-          id='Basicdrop6'
+          id='Basicdrop7'
           ariaLabel='Custom styled ComboBox example'
           allowFreeform={ true }
           autoComplete='on'
