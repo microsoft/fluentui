@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Dec 2017 11:23:03 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Dec 2017 11:10:56 GMT and should not be manually modified.
+
+## 5.35.1
+Fri, 22 Dec 2017 11:10:56 GMT
+
+### Patches
+
+- Callout: Fix opacity when class name has animation that involves opacity
+- Calendar: Fix scrollbar when today button is added to overlayed calendars
 
 ## 5.35.0
 Thu, 21 Dec 2017 11:23:03 GMT

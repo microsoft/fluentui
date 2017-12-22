@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.35.1",
+      "tag": "office-ui-fabric-react_v5.35.1",
+      "date": "Fri, 22 Dec 2017 11:10:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "cc4f4e4dae7ee5d3c075a078f0c3ec4ac871496e",
+            "comment": "Callout: Fix opacity when class name has animation that involves opacity"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "e963ea8a58939b8a567beaff361ed3292a257cbd",
+            "comment": "Calendar: Fix scrollbar when today button is added to overlayed calendars"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.35.0",
       "tag": "office-ui-fabric-react_v5.35.0",
       "date": "Thu, 21 Dec 2017 11:23:03 GMT",
