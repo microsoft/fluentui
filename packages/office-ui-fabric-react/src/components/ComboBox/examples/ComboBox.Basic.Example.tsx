@@ -18,7 +18,11 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
 
-export class ComboBoxBasicExample extends React.Component<any, any> {
+export class ComboBoxBasicExample extends React.Component<{}, {
+  options: IComboBoxOption[];
+  selectedOptionKey?: string | number;
+  value?: string;
+}> {
   private _testOptions =
     [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
     { key: 'A', text: 'Arial Black' },
@@ -48,11 +52,11 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   private IComboBoxRef: IComboBox;  /* FOR TEST ONLY   */
   private selectLowerContent: boolean = false; /* FOR TEST ONLY   */
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       options: [],
-      selectedOptionKey: null,
+      selectedOptionKey: undefined,
       value: 'Calibri'
     };
 
@@ -295,7 +299,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     this.setState({
       options: newOptions,
       selectedOptionKey: 'C1',
-      value: null
+      value: undefined
     });
 
     return newOptions;
@@ -306,12 +310,12 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
-        value: null
+        value: undefined
       });
     } else if (index !== undefined && index >= 0 && index < this.state.options.length) {
       this.setState({
         selectedOptionKey: this.state.options[index].key,
-        value: null
+        value: undefined
       });
     } else if (value !== undefined) {
       let newOption: IComboBoxOption = { key: value, text: value };
@@ -319,7 +323,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       this.setState({
         options: [...this.state.options, newOption],
         selectedOptionKey: newOption.key,
-        value: null
+        value: undefined
       });
     }
   }

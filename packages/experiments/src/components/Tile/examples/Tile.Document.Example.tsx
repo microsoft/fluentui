@@ -112,8 +112,8 @@ export interface ITileDocumentExampleState {
 }
 
 export class TileDocumentExample extends React.Component<{}, ITileDocumentExampleState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       imagesLoaded: true

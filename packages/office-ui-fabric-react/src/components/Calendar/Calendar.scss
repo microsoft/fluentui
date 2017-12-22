@@ -543,6 +543,12 @@ $Calendar-dayPicker-margin: 10px;
     }
     .holder {
       height: 240px;
+      min-height: 240px;
+    }
+
+    .holderWithButton{
+      padding-top:6px;
+      height: auto;
     }
   }
 }

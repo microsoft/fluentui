@@ -4,10 +4,7 @@ import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
-export class ScrollablePaneDefaultExample extends React.Component<any, any> {
-  constructor() {
-    super();
-  }
+export class ScrollablePaneDefaultExample extends React.Component {
 
   public render() {
     let contentAreas: JSX.Element[] = [];

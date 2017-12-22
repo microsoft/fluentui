@@ -73,10 +73,10 @@ export interface IFocusTrapZoneNestedExampleState {
 
 const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
 
-export default class FocusTrapZoneNestedExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IFocusTrapZoneNestedExampleState> {
+export default class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       stateMap: {}

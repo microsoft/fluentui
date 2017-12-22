@@ -117,10 +117,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
-  private _enterTimerId: number;
+  private _enterTimerId: number | undefined;
   private _targetWindow: Window;
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
+  private _isScrollIdle: boolean;
+  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -136,7 +139,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     });
 
     this._isFocusingPreviousElement = false;
-    this._enterTimerId = 0;
+    this._isScrollIdle = true;
   }
 
   @autobind
@@ -178,6 +181,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
       setTimeout(() => this._previousActiveElement!.focus(), 0);
+    }
+
+    if (this.props.onMenuDismissed) {
+      this.props.onMenuDismissed(this.props);
     }
 
     this._events.dispose();
@@ -278,6 +285,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           className='ms-ContextualMenu-Callout'
           setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
+          onScroll={ this._onScroll }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }
         >
@@ -336,7 +344,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let getClassNames = item.getItemClassNames || getItemClassNames;
     let itemClassNames = getClassNames(
       this.props.theme!,
-      !!item.disabled,
+      this._isItemDisabled(item),
       (this.state.expandedMenuItemKey === item.key),
       !!getIsChecked(item),
       !!item.href,
@@ -467,7 +475,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
-          aria-disabled={ item.isDisabled }
+          aria-disabled={ this._isItemDisabled(item) }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
         >
@@ -505,7 +513,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onMouseLeave: this._onMouseItemLeave.bind(this, item),
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       onMouseMove: this._onItemMouseMove.bind(this, item),
-      disabled: item.isDisabled || item.disabled,
+      disabled: this._isItemDisabled(item),
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
@@ -515,15 +523,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-checked': isChecked,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
-      'aria-disabled': item.isDisabled,
+      'aria-disabled': this._isItemDisabled(item),
       role: item.role || defaultRole,
       style: item.style
     };
 
-    return React.createElement(
-      'button',
-      assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
-      this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!));
+    return (
+      <button
+        { ...getNativeProps(item, buttonProperties) }
+        { ...itemButtonProperties }
+        children={ this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!) }
+      />
+    );
   }
 
   private _renderSplitButton(
@@ -538,7 +549,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return (
       <div
         aria-labelledby={ item.ariaLabel }
-        aria-disabled={ item.isDisabled || item.disabled }
+        aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
@@ -562,8 +573,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
 
     const itemProps = {
+      key: item.key,
       onClick: this._executeItemClick.bind(this, item),
-      disabled: item.disabled || item.primaryDisabled,
+      disabled: this._isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
       role: item.role || defaultRole,
@@ -581,7 +593,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
     const itemProps = {
       onClick: this._onItemClick.bind(this, item),
-      disabled: item.disabled,
+      disabled: this._isItemDisabled(item),
       className: classNames.splitMenu,
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps,
@@ -688,7 +700,27 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
+  @autobind
+  private _onScroll() {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
+      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this._scrollIdleTimeoutId = undefined;
+    } else {
+      this._isScrollIdle = false;
+    }
+
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+  }
+
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     let targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
@@ -703,9 +735,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+
     let targetElement = ev.currentTarget as HTMLElement;
 
-    if (targetElement === this._targetWindow.document.activeElement as HTMLElement) {
+    if (!this._isScrollIdle || targetElement === this._targetWindow.document.activeElement as HTMLElement) {
       return;
     }
 
@@ -722,13 +755,29 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   @autobind
   private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
-    this._async.clearTimeout(this._enterTimerId);
+    if (!this._isScrollIdle) {
+      return;
+    }
+
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+    }
 
     if (item.key === this.state.expandedMenuItemKey && hasSubmenuItems(item)) {
       return;
     }
 
-    this._host.focus();
+    /**
+     * IE11 focus() method forces parents to scroll to top of element.
+     * Edge and IE expose a setActive() function for focusable divs that
+     * sets the page focus but does not scroll the parent element.
+     */
+    if ((this._host as any).setActive) {
+      (this._host as any).setActive();
+    } else {
+      this._host.focus();
+    }
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
@@ -873,5 +922,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       this._targetWindow = getWindow()!;
     }
+  }
+
+  private _isItemDisabled(item: IContextualMenuItem): boolean {
+    return !!(item.isDisabled || item.disabled);
   }
 }

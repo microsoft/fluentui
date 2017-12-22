@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getId,
   autobind,
   customizable
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -15,7 +14,7 @@ import {
 } from './CommandBar.types';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import {
   classNamesFunction
@@ -46,8 +45,6 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-const COMMANDBAR_HEIGHT = '40px';
-
 @customizable('CommandBar', ['theme'])
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
@@ -58,13 +55,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _overflowSet: IOverflowSet;
+  private _resizeGroup: IResizeGroup;
   private _classNames: {[key in keyof ICommandBarStyles]: string };
-  private _id: string;
-
-  constructor(props: ICommandBarProps) {
-    super(props);
-    this._id = getId('CommandBar');
-  }
 
   public render(): JSX.Element {
     const {
@@ -95,6 +87,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     return (
       <ResizeGroup
+        componentRef={ this._resolveRef('_resizeGroup') }
         className={ className }
         data={ commandBardata }
         onReduceData={ onReduceData }
@@ -141,6 +134,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   public focus(): void {
     this._overflowSet.focus();
+  }
+
+  public remeasure(): void {
+    this._resizeGroup.remeasure();
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {

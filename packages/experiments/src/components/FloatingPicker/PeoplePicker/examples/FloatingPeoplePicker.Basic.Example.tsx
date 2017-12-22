@@ -33,13 +33,12 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-// tslint:disable-next-line:no-any
-export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: IBaseFloatingPicker;
   private _inputElement: HTMLDivElement;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};

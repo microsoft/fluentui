@@ -55,6 +55,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onMenuOpen?: () => void;
 
   /**
+   * Function that gets invoked when the ComboBox menu is dismissed
+   */
+  onMenuDismissed?: () => void;
+
+  /**
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
@@ -129,8 +134,14 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
   * Custom width for dropdown. If value is 0, width of the input field is used.
   * @default 0
+  * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
   */
   dropdownWidth?: number;
+
+  /**
+   * Whether to use the ComboBoxes width as the menu's width
+   */
+  useComboBoxAsMenuWidth?: boolean;
 }
 
 export interface IComboBoxStyles {

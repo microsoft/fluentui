@@ -1,6 +1,7 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
-import { IColorCellProps } from './ColorPickerGridCell.types';
+import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -95,6 +96,11 @@ export interface ISwatchColorPickerProps {
    * Optional styles for the component.
    */
   getStyles?: IStyleFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>;
+
+  /**
+  * Optional styles for the component.
+  */
+  getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
 }
 
 /**
@@ -117,7 +123,17 @@ export interface ISwatchColorPickerStyleProps {
  */
 export interface ISwatchColorPickerStyles {
   /**
-   * Style applied to the container of the swatchColorPicker
+   * Style applied to the container grid of the swatchColorPicker
    */
   root: IStyle;
+
+  /**
+  * Style for the table cells of the grid.
+  */
+  tableCell: IStyle;
+
+  /**
+  * Optional, style for the FocusZone container for the grid
+  */
+  focusedContainer?: IStyle;
 }

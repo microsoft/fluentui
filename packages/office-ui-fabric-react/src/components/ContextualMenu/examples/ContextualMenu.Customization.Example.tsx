@@ -13,7 +13,7 @@ export class ContextualMenuCustomizationExample extends React.Component<{}, {}> 
         text='Click for ContextualMenu'
         menuProps={
           {
-            shouldFocusOnMount: false,
+            shouldFocusOnMount: true,
             directionalHint: DirectionalHint.bottomLeftEdge,
             className: 'ms-ContextualMenu-customizationExample',
             items:
