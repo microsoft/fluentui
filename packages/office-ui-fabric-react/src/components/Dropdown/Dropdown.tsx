@@ -518,6 +518,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
+              styles.dropdownCheckbox,
               'ms-Dropdown-item', styles.item, {
                 ['is-selected ' + styles.itemIsSelected]: isItemSelected,
                 ['is-disabled ' + styles.itemIsDisabled]: item.disabled

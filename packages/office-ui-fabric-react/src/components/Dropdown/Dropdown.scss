@@ -221,7 +221,18 @@ $DropDown-item-height: 32px;
   color: $ms-color-black;
 
   @include highContrastListItemState;
+
+  &.itemIsDisabled {
+    color: $ms-color-neutralTertiary;
+  }
 }
+
+.dropdownCheckbox {
+  &.item.itemIsSelected.itemIsDisabled {
+    background-color: $ms-color-white;
+  }
+}
+
 
 .header {
   @include ms-font-m;

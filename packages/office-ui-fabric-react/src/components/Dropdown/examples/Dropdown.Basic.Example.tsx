@@ -99,7 +99,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
-          defaultSelectedKeys={ ['Apple', 'Banana'] }
+          defaultSelectedKeys={ ['Apple', 'Banana', 'Orange'] }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
           multiSelect
@@ -108,7 +108,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
               { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'Apple', text: 'apple' },
               { key: 'Banana', text: 'banana' },
-              { key: 'Orange', text: 'orange' },
+              { key: 'Orange', text: 'orange', disabled: true },
               { key: 'Grape', text: 'grape', disabled: true },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
