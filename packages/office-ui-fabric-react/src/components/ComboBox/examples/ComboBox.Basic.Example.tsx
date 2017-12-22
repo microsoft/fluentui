@@ -69,47 +69,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
     return (
       <div className='ms-ComboBoxBasicExample'>
-        {/* FOR TEST ONLY START   */ }
-
-        <ComboBox
-          componentRef={ this.setComponentRef }
-          defaultSelectedKey='C'
-          label='TEST 1: With all fixes (works)'
-          id='Basicdrop11'
-          ariaLabel='Basic ComboBox example'
-          options={ this._testOptions }
-          onRenderOption={ this._onRenderFontOption }
-          onFocus={ this.onFocus }
-          onKeyDown={ this.onKeyDown }
-          onRenderLowerContent={ this.lowerContent }
-          preventInputFocus={ this.state.preventFocus }
-        />
-
-        <ComboBox
-          defaultSelectedKey='C'
-          label='TEST 2: Without fixes  (not working)'
-          id='Basicdrop12'
-          ariaLabel='Basic ComboBox example'
-          options={ this._testOptions }
-          onRenderOption={ this._onRenderFontOption }
-          onRenderLowerContent={ this.lowerContentBasic }
-        />
-
-        <ComboBox
-          componentRef={ this.setComponentRefButtonFocus }
-          defaultSelectedKey='C'
-          label='TEST 3: Add focus to button only (not working)'
-          id='Basicdrop13'
-          ariaLabel='Basic ComboBox example'
-          options={ this._testOptions }
-          onRenderOption={ this._onRenderFontOption }
-          onKeyDown={ this.onKeyDownFocus }
-          onRenderLowerContent={ this.lowerContentFocus }
-        />
-
-        <hr style={ { marginBottom: '100px' } } />
-
-        {/* FOR TEST ONLY END  */ }
 
         <ComboBox
           defaultSelectedKey='C'
@@ -263,7 +222,21 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:enable:jsx-no-lambda
           />
         }
+
+        <ComboBox
+          componentRef={ this.setComponentRef }
+          defaultSelectedKey='C'
+          label='ComboBox with lower content'
+          id='Basicdrop6'
+          ariaLabel='ComboBox with lower content'
+          options={ this._testOptions }
+          onFocus={ this.onFocus }
+          onKeyDown={ this.onKeyDown }
+          onRenderLowerContent={ this.lowerContent }
+          preventInputFocus={ this.state.preventFocus }
+        />
       </div>
+
 
     );
   }
@@ -361,24 +334,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     this.IButtonRef = component;
   }
 
-  private setComponentRefButtonFocus = (component: IButton): void => {
-    this.IButtonRefFocus = component;
-  }
-
-  private lowerContentBasic = () => {
-    return (
-      <DefaultButton
-        className={ 'customButton' }
-        data-automation-id='customButton'
-        text='Custom'
-        ariaLabel='Custom'
-        // tslint:disable:jsx-no-lambda
-        onClick={ () => console.log('onClick called') }
-      // tslint:disable:jsx-no-lambda
-      />
-    );
-  }
-
   private lowerContent = () => {
     return (
       <div onKeyDown={ this.onKeyDownLowerContent }>
@@ -396,23 +351,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           checked={ this.selectLowerContent }
         />
       </div>
-    );
-  }
-
-  private lowerContentFocus = () => {
-    return (
-      <DefaultButton
-        componentRef={ this.setComponentRefButtonFocus }
-        className={ 'customButton' }
-        data-automation-id='customButton'
-        text='Custom'
-        ariaLabel='Custom'
-        // tslint:disable:jsx-no-lambda
-        onClick={ () => console.log('onClick called') }
-        // tslint:disable:jsx-no-lambda
-        aria-selected={ this.selectLowerContent }
-        checked={ this.selectLowerContent }
-      />
     );
   }
 
@@ -440,20 +378,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         this.selectLowerContent = true;
         this.IButtonRef.focus();
         this.setState({ preventFocus: true });
-      }
-    }
-
-  }
-
-  private onKeyDownFocus = (event: React.KeyboardEvent<IComboBox>) => {
-    // Tab from comboBox input.  Focus on custom button
-    if (KeyCodes.tab) {
-      if (!this.props.onRenderLowerContent && document.getElementById('Basicdrop13-list')) {
-        event.preventDefault();
-
-        // Select custom button
-        this.selectLowerContent = true;
-        this.IButtonRefFocus.focus();
       }
     }
 

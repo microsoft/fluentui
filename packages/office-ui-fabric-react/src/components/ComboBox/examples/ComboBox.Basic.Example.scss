@@ -1,3 +1,5 @@
+@import '../../../common/common';
+
 :global {
   .ms-ComboBoxBasicExample {
     max-width: 300px;
@@ -7,7 +9,6 @@
     }
   }
 
-  /* FOR TEST ONLY   */
   .customButton {
     position: absolute;
     bottom: 0px;
@@ -15,7 +16,7 @@
     height: 36px;
     background-color: white;
     box-sizing: border-box;
-    border-top: 1px solid green;
+    border-top: 1px solid $ms-color-neutralLight;
     text-align:left;
     padding: 10px;
 
@@ -25,7 +26,6 @@
 
     &:hover {
         cursor: pointer;
-        background-color: pink;
 
     }
   }
@@ -42,6 +42,4 @@
     overflow-y: scroll;
     margin-bottom: 36px;
   }
-
-  /* FOR TEST ONLY   */
 }
