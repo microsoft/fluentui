@@ -69,6 +69,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             isRightAligned && ' is-right-aligned'
           ) }
           data-is-scrollable='true'
+          tabIndex={ -1 }
         >
           { children }
         </div>
