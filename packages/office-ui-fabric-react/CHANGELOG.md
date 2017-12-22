@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 Dec 2017 11:22:54 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Dec 2017 11:10:56 GMT and should not be manually modified.
+
+## 5.35.1
+Fri, 22 Dec 2017 11:10:56 GMT
+
+### Patches
+
+- Callout: Fix opacity when class name has animation that involves opacity
+- Calendar: Fix scrollbar when today button is added to overlayed calendars
+
+## 5.35.0
+Thu, 21 Dec 2017 11:23:03 GMT
+
+### Minor changes
+
+- Grid: Enable styling customization to grid through getStyles
+
+### Patches
+
+- Fixed persona import paths
+
+## 5.34.3
+Wed, 20 Dec 2017 11:21:48 GMT
+
+### Patches
+
+- HoverCard: fixing detection of if expanded scrolling is needed
+
+## 5.34.2
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Persona: Set initials color for high contrast mode.
+- Broaden the range of allowed prop-type versions
 
 ## 5.34.1
 Mon, 18 Dec 2017 11:22:54 GMT

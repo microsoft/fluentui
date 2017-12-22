@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.11.1",
+      "tag": "@uifabric/experiments_v5.11.1",
+      "date": "Tue, 19 Dec 2017 11:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "745d39de8459b457c00c81af37b458188608eaad",
+            "comment": "Broaden the range of allowed prop-type versions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.34.1 <6.0.0` to `>=5.34.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.0",
       "tag": "@uifabric/experiments_v5.11.0",
       "date": "Sat, 16 Dec 2017 05:07:22 GMT",
