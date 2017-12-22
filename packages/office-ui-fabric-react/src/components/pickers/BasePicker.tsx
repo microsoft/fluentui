@@ -42,9 +42,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected loadingTimer: number | undefined;
-  protected currentPromise: PromiseLike<any>;
-
-  private _isUnmounted: boolean = false;
+  protected currentPromise: PromiseLike<any> | undefined;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -100,7 +98,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   public componentWillUnmount(): void {
-    this._isUnmounted = true;
+    super.componentWillUnmount();
+    if (this.loadingTimer) {
+      this._async.clearTimeout(this.loadingTimer);
+    }
+    if (this.currentPromise) {
+      this.currentPromise = undefined;
+    }
   }
 
   public focus() {
@@ -313,11 +317,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
         this.loadingTimer = this._async.setTimeout(() => {
-          if (!this._isUnmounted) {
-            this.setState({
-              suggestionsLoading: true
-            });
-          }
+          this.setState({
+            suggestionsLoading: true
+          });
         }, 500);
       }
 
@@ -342,11 +344,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             this.resolveNewValue(updatedValue, newSuggestions);
           } else {
             this.suggestionStore.updateSuggestions(newSuggestions);
-            if (!this._isUnmounted) {
-              this.setState({
-                suggestionsLoading: false
-              });
-            }
+            this.setState({
+              suggestionsLoading: false
+            });
           }
           if (this.loadingTimer) {
             this._async.clearTimeout(this.loadingTimer);
@@ -365,13 +365,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       itemValue = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
 
-    if (!this._isUnmounted) {
-      this.setState({
-        suggestionsLoading: false,
-        suggestedDisplayValue: itemValue,
-        suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
-      });
-    }
+    this.setState({
+      suggestionsLoading: false,
+      suggestedDisplayValue: itemValue,
+      suggestionsVisible: this.input && this.input.value !== '' && this.input.inputElement === document.activeElement
+    });
   }
 
   protected onChange(items?: T[]) {
