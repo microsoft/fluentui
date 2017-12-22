@@ -210,7 +210,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               iconName: 'Calendar',
               onClick: this._onIconClick,
               className: css(
-                disabled && styles['ms-DatePicker-disabled'],
+                disabled && styles.msDatePickerDisabled,
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel
               )
