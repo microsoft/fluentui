@@ -30,7 +30,10 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 const styles: any = stylesImport;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_STYLE = { opacity: 0 };
+// Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
+// To help ensure that edge will respect the offscreen style opacity
+// filter needs to be added as an additional way to set opacity.
+const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 const BORDER_WIDTH: number = 1;
 const SLIDE_ANIMATIONS: { [key: number]: string; } = {
   [RectangleEdge.top]: 'slideUpIn20',
