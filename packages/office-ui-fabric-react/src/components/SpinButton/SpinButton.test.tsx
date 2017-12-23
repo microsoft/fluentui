@@ -617,4 +617,31 @@ describe('SpinButton', () => {
     let newCurrentValue = inputDOM.value;
     expect(currentValue).toEqual(newCurrentValue);
   });
+
+  it('should fire custom handlers even when value prop is 0', () => {
+    const val: string = 0 as any;
+    const onIncrement: jest.Mock = jest.fn();
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label='label'
+        value={ val }
+        onIncrement={ onIncrement }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
+
+    ReactTestUtils.Simulate.mouseDown(buttonDOM,
+      {
+        type: 'mousedown',
+        clientX: 0,
+        clientY: 0
+      }
+    );
+
+    expect(onIncrement).toBeCalled();
+  });
 });
