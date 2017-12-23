@@ -403,8 +403,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   @autobind
   private _onContextMenuDismiss(ev?: any) {
-    const { onContextMenuDismiss  } = this.props;
-    
+    const { onContextMenuDismiss } = this.props;
+
     if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       const { contextualMenuProps } = this.state;
 
