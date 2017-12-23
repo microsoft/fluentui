@@ -7,10 +7,10 @@ import {
   getNativeProps,
   divProperties,
   getFirstFocusable,
-  getLastFocusable,
+  getLastTabbable,
   getNextElement
 } from '../../Utilities';
-import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
+import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 
@@ -39,10 +39,10 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount() {
-    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss } = this.props;
+    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
+    if (!elementContains(this.refs.root, this._previouslyFocusedElement) && !disableFirstFocus) {
       this.focus();
     }
 
@@ -94,6 +94,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
         ref='root'
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyboardHandler }
+        tabIndex={ -1 }
+        onFocus={ this._onRootFocus }
       >
         { this.props.children }
       </div>
@@ -123,6 +125,13 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   @autobind
+  private _onRootFocus(ev: React.FocusEvent<HTMLElement>) {
+    if (ev.target === this.refs.root) {
+      this.focus();
+    }
+  }
+
+  @autobind
   private _onKeyboardHandler(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which !== KeyCodes.tab) {
       return;
@@ -131,7 +140,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     let { root } = this.refs;
 
     const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
+    const _lastFocusableChild = getLastTabbable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
       _lastFocusableChild!.focus();

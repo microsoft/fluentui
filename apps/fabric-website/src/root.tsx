@@ -11,10 +11,11 @@ import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+const corePackageData = require('../node_modules/office-ui-fabric-core/package.json');
+const corePackageVersion: string = corePackageData && corePackageData.version || '9.2.0';
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
-
-initializeIcons('./dist/');
+initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
@@ -145,4 +146,4 @@ function addCSSToHeader(fileName: string) {
   headEl.appendChild(linkEl);
 }
 
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.0.0/css/fabric.min.css');
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' + corePackageVersion + '/css/fabric.min.css');

@@ -1,4 +1,4 @@
-import { IHoverCardStyles } from './HoverCard.Props';
+import { IHoverCardStyles } from './HoverCard.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyleSets

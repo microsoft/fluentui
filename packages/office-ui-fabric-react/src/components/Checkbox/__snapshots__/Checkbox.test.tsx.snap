@@ -41,9 +41,15 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         z-index: 1;
       }
       &:hover .ms-Checkbox-checkbox {
-        border-color: #333333;
+        border-color: #212121;
+      }
+      &:focus .ms-Checkbox-checkbox {
+        border-color: #212121;
       }
       &:hover .ms-Checkbox-text {
+        color: #000000;
+      }
+      &:focus .ms-Checkbox-text {
         color: #000000;
       }
   disabled={undefined}
@@ -77,7 +83,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           ms-Checkbox-checkbox
           {
             align-items: center;
-            border-color: #a6a6a6;
+            border-color: #212121;
             border-style: solid;
             border-width: 1px;
             box-sizing: border-box;

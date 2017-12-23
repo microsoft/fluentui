@@ -1,11 +1,11 @@
 
 import * as React from 'react';
-import { ITileProps, TileSize } from './Tile.Props';
+import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { ISize, css, BaseComponent, autobind, getId } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
-import * as SignalStylesModule from '../signals/Signals.scss';
+import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
 
 // tslint:disable:no-any
@@ -204,6 +204,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         <a
           href={ href }
           onClick={ onClick }
+          ref={ this.props.linkRef }
           data-selection-invoke={ (isInvokable && selectionIndex > -1) ? true : undefined }
           className={ css('ms-Tile-link', TileStyles.link) }
         >

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
+import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
@@ -59,7 +59,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     navigationIcons: iconStrings,
     showWeekNumbers: false,
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
-    dateTimeFormatter: dateTimeFormatterCallbacks
+    dateTimeFormatter: dateTimeFormatterCallbacks,
+    showSixWeeksByDefault: false,
   };
 
   public refs: {
@@ -118,10 +119,11 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
+    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons, minDate, maxDate } = this.props;
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     let monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
+    let overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
@@ -137,7 +139,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
             showMonthPickerAsOverlay && ('ms-DatePicker-monthPickerAsOverlay ' + styles.monthPickerAsOverlay),
           ) }
         >
-          <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
+          <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder, overlayedWithButton && styles.holderWithButton) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
               <div className={ css('ms-DatePicker-wrap', styles.wrap, showGoToToday && styles.goTodaySpacing) }>
                 { isDayPickerVisible && <CalendarDay
@@ -156,6 +158,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showWeekNumbers={ this.props.showWeekNumbers }
                   firstWeekOfYear={ this.props.firstWeekOfYear! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
+                  showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
+                  minDate={ minDate }
+                  maxDate={ maxDate }
                   ref='dayPicker'
                 />
                 }
@@ -169,6 +174,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
+                  minDate={ minDate }
+                  maxDate={ maxDate }
                   ref='monthPicker'
                 /> }
 

@@ -62,7 +62,7 @@ storiesOf('Facepile', module)
     <Facepile {...facepileProps} />
   ))
   .add('Extra extra small', () => (
-    <Facepile {...facepileProps} personaSize={ PersonaSize.extraExtraSmall } />
+    <Facepile {...facepileProps} personaSize={ PersonaSize.size24 } />
   ))
   .add('Overflow', () => (
     <Facepile

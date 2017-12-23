@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ISliderProps, ISlider } from './Slider.Props';
+import { ISliderProps, ISlider } from './Slider.types';
 import { Label } from '../../Label';
 import * as stylesImport from './Slider.scss';
 const styles: any = stylesImport;
@@ -114,6 +114,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
+            aria-valuetext={ this._getAriaValueText(value) }
             aria-label={ ariaLabel || label }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
@@ -163,6 +164,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   public get value(): number | undefined {
     return this.state.value;
+  }
+
+  @autobind
+  private _getAriaValueText(value: number | undefined): string | void {
+    if (this.props.ariaValueText && value !== undefined) {
+      return this.props.ariaValueText(value);
+    }
   }
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {

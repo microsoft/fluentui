@@ -8,7 +8,7 @@ import {
   BaseComponent,
   autobind
 } from '../../Utilities';
-import { IStickyProps, StickyPositionType } from './Sticky.Props';
+import { IStickyProps, StickyPositionType } from './Sticky.types';
 
 export interface IStickyState {
   isStickyTop: boolean;

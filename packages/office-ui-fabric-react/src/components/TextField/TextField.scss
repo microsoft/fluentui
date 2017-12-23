@@ -22,7 +22,7 @@ $field-text-color: $bodyTextColor;
 $field-text-disabled-color: $disabledTextColor;
 
 $field-placeholder-color: $bodySubtextColor;
-$field-placeholder-disabled-color: $disabledSubtextColor;
+$field-placeholder-disabled-color: $disabledTextColor;
 
 $field-description-color: $bodySubtextColor;
 $field-error-color: $errorTextColor;
@@ -85,7 +85,7 @@ $field-error-color: $errorTextColor;
   }
 }
 
-.fieldAddon {
+.fieldPrefixSuffix {
   background: $ms-color-neutralLighter;
   color: $ms-color-neutralSecondary;
   display: flex;
@@ -137,7 +137,13 @@ $field-error-color: $errorTextColor;
 
 .root.rootIsRequiredPlaceholderOnly {
   :global(.ms-TextField-fieldGroup) {
-    @include ms-TextField-fieldGroup-is-required;
+    &::after {
+      content: '*';
+      color: $ms-color-error;
+      position: absolute;
+      top: -5px;
+      @include ms-right(-10px);
+    }
   }
 }
 
@@ -149,9 +155,11 @@ $field-error-color: $errorTextColor;
 .icon {
   pointer-events: none;
   position: absolute;
-  bottom: 8px;
+  bottom: 5px;
   @include right(8px);
   top: auto;
+  font-size: 16px;
+  line-height: 18px;
 }
 
 .description {

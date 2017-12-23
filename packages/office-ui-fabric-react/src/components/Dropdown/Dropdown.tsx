@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.types';
 import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -18,11 +18,15 @@ import {
   findIndex,
   getId,
   getNativeProps,
-  divProperties
+  divProperties,
+  getFirstFocusable,
+  getLastFocusable
 } from '../../Utilities';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
+import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
+import { getTheme } from '../../Styling';
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -44,13 +48,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private static Option: string = 'option';
 
   private _root: HTMLElement;
+  private _host: HTMLDivElement;
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
   // tslint:disable-next-line:no-unused-variable
   private _dropdownLabel: HTMLElement;
   private _id: string;
+  private _isScrollIdle: boolean;
+  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IDropdownProps) {
+    super(props);
     props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
@@ -71,6 +80,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     });
 
     this._id = props.id || getId('Dropdown');
+    this._isScrollIdle = true;
 
     this.state = {
       isOpen: false
@@ -148,7 +158,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='menu'
+          role='combobox'
+          aria-autocomplete='none'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
@@ -207,9 +218,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  public focus() {
+  public focus(shouldOpenOnFocus?: boolean) {
     if (this._dropDown && this._dropDown.tabIndex !== -1) {
       this._dropDown.focus();
+      if (shouldOpenOnFocus) {
+        this.setState({
+          isOpen: true
+        });
+      }
     }
   }
 
@@ -359,6 +375,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
             target={ this._dropDown }
             onDismiss={ this._onDismiss }
+            onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
           >
@@ -387,7 +404,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndices = [] } = this.state;
 
     return (
-      <div onKeyDown={ this._onZoneKeyDown }>
+      <div
+        className={ styles.listWrapper }
+        onKeyDown={ this._onZoneKeyDown }
+        ref={ this._resolveRef('_host') }
+        tabIndex={ 0 }
+      >
         <FocusZone
           ref={ this._resolveRef('_focusZone') }
           direction={ FocusZoneDirection.vertical }
@@ -450,6 +472,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndices = [] } = this.state;
     let id = this._id;
     let isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
+    let checkboxStyles = getCheckboxStyles(getTheme());
 
     return (
       !this.props.multiSelect ?
@@ -467,6 +490,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               }
             ) }
             onClick={ this._onItemClick(item.index!) }
+            onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+            onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
+            onMouseMove={ this._onItemMouseMove.bind(this, item) }
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             ariaLabel={ item.ariaLabel || item.text }
@@ -482,6 +508,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             data-index={ item.index }
             data-is-focusable={ true }
             onChange={ this._onItemClick(item.index!) }
+            inputProps={ {
+              onMouseEnter: this._onItemMouseEnter.bind(this, item),
+              onMouseLeave: this._onMouseItemLeave.bind(this, item),
+              onMouseMove: this._onItemMouseMove.bind(this, item)
+            } }
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
@@ -493,6 +524,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             checked={ isItemSelected }
+            // Hover is being handled by focus styles
+            // so clear out the explicit hover styles
+            styles={ {
+              checkboxHovered: checkboxStyles.checkbox,
+              checkboxCheckedHovered: checkboxStyles.checkboxChecked,
+              textHovered: checkboxStyles.text
+            } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>
         )
@@ -523,6 +561,59 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     };
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
+  @autobind
+  private _onScroll() {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
+      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this._scrollIdleTimeoutId = undefined;
+    } else {
+      this._isScrollIdle = false;
+    }
+
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+  }
+
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
+    let targetElement = ev.currentTarget as HTMLElement;
+    targetElement.focus();
+  }
+
+  private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
+    let targetElement = ev.currentTarget as HTMLElement;
+
+    if (!this._isScrollIdle || document.activeElement === targetElement) {
+      return;
+    }
+
+    targetElement.focus();
+  }
+
+  @autobind
+  private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
+    /**
+     * IE11 focus() method forces parents to scroll to top of element.
+     * Edge and IE expose a setActive() function for focusable divs that
+     * sets the page focus but does not scroll the parent element.
+     */
+    if ((this._host as any).setActive) {
+      (this._host as any).setActive();
+    } else {
+      this._host.focus();
+    }
+  }
+
   @autobind
   private _onDismiss() {
     this.setState({ isOpen: false });
@@ -531,7 +622,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Get all selected indexes for multi-select mode
   private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
-    if (!selectedKey) {
+    if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);
       }
@@ -686,11 +777,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onZoneKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let elementToFocus;
+
     switch (ev.which) {
 
       case KeyCodes.up:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
+        } else {
+          elementToFocus = getLastFocusable(this._host, (this._host.lastChild as HTMLElement), true);
         }
         break;
 
@@ -700,7 +795,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.end:
       case KeyCodes.pageUp:
       case KeyCodes.pageDown:
+        break;
+
       case KeyCodes.down:
+        elementToFocus = getFirstFocusable(this._host, (this._host.firstChild as HTMLElement), true);
         break;
 
       case KeyCodes.escape:
@@ -713,6 +811,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       default:
         return;
+    }
+
+    if (elementToFocus) {
+      elementToFocus.focus();
     }
 
     ev.stopPropagation();

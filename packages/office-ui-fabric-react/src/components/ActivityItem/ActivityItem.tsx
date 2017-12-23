@@ -3,13 +3,11 @@ import * as React from 'react';
 /* tslint:enable */
 
 import { autobind, BaseComponent } from '../../Utilities';
-import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
+import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
 import { mergeStyles } from '../../Styling';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
-import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { PersonaCoin } from 'office-ui-fabric-react/lib/PersonaCoin';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaSize, PersonaCoin, IPersonaProps } from '../../Persona';
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _classNames: IActivityItemClassNames;
@@ -108,8 +106,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       if (props.isCompact) {
         style = {
           display: 'inline-block',
-          width: '8px',
-          minWidth: '8px',
+          width: '10px',
+          minWidth: '10px',
           overflow: 'visible'
         };
       }
@@ -120,7 +118,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
-            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
+            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.size32 }
             style={ style }
           />
         );

@@ -42,7 +42,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')
             ] }
           />
         }

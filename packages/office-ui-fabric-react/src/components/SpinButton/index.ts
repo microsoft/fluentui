@@ -1,2 +1,2 @@
 export * from './SpinButton';
-export * from './SpinButton.Props';
+export * from './SpinButton.types';

@@ -6,10 +6,10 @@ import * as sinon from 'sinon';
 
 // Controls
 import { Form } from './Form';
-import { IFormProps } from './Form.Props';
+import { IFormProps } from './Form.types';
 import { DEFAULT_DEBOUNCE } from './FormBaseInput';
 import { FormTextInput } from './inputs/textInput/FormTextInput';
-import { IFormTextInputProps } from './inputs/textInput/FormTextInput.Props';
+import { IFormTextInputProps } from './inputs/textInput/FormTextInput.types';
 import { Validators } from './validators/Validators';
 
 describe('Form', () => {
@@ -144,11 +144,8 @@ describe('Form', () => {
     });
 
     it('Invalid values are not returned', () => {
-      let result: any;
       let renderedForm: Form = ReactTestUtils.renderIntoDocument(
-        <Form
-          onSubmit={ (value: any) => { result = value; } }
-        >
+        <Form onSubmit={ (value: any) => { /*stub*/ } }>
           <FormTextInput
             inputKey='field'
             validators={ [Validators.required(formRequiredTestMessage)] }

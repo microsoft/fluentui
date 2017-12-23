@@ -12,7 +12,7 @@ import {
 import {
   ISpinButton,
   ISpinButtonProps,
-} from './SpinButton.Props';
+} from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
@@ -91,7 +91,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._inputId = getId('input');
     this._spinningByMouse = false;
 
-    if (!props.defaultValue && props.value) {
+    if (!props.defaultValue && props.value !== undefined) {
       this._onValidate = props.onValidate;
       this._onIncrement = props.onIncrement;
       this._onDecrement = props.onDecrement;

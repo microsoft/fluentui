@@ -18,7 +18,7 @@ import {
   INavProps,
   INavLinkGroup,
   INavLink
-} from './Nav.Props';
+} from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
@@ -164,11 +164,11 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         className={ mergeStyles(
           'ms-Nav-link' + link.onClick && 'ms-Nav-linkButton',
           styles.link,
-          link.onClick && styles.buttonEntry,
+          link.onClick && !link.forceAnchor && styles.buttonEntry,
           this._hasExpandButton && 'isOnExpanded') as string
         }
         styles={ buttonStyles }
-        href={ link.url }
+        href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
         iconProps={ { iconName: link.icon || '' } }
         description={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
@@ -303,8 +303,16 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
-    link.isExpanded = !link.isExpanded;
-    this.setState({ isLinkExpandStateChanged: true });
+    const { onLinkExpandClick } = this.props;
+
+    if (onLinkExpandClick) {
+      onLinkExpandClick(ev, link);
+    }
+
+    if (!ev.defaultPrevented) {
+      link.isExpanded = !link.isExpanded;
+      this.setState({ isLinkExpandStateChanged: true });
+    }
 
     ev.preventDefault();
     ev.stopPropagation();

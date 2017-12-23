@@ -18,7 +18,7 @@ import {
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru } from './PeoplePickerExampleData';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Promise } from 'es6-promise';
@@ -53,8 +53,8 @@ const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limited
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _picker: IBasePicker<IPersonaProps>;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
@@ -173,6 +173,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           'aria-label': 'People Picker'
         } }
         componentRef={ this._resolveRef('_picker') }
+        onInputChange={ this._onInputChange }
       />
     );
   }
@@ -315,7 +316,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _onSetFocusButtonClicked() {
     if (this._picker) {
-      this._picker.focus();
+      this._picker.focusInput();
     }
   }
 
@@ -433,4 +434,21 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
   }
 
+  /**
+   * Takes in the picker input and modifies it in whichever way
+   * the caller wants, i.e. parsing entries copied from Outlook (sample
+   * input: "Aaron Reid <aaron>").
+   *
+   * @param input The text entered into the picker.
+   */
+  private _onInputChange(input: string): string {
+    const outlookRegEx = /<.*>/g;
+    const emailAddress = outlookRegEx.exec(input);
+
+    if (emailAddress && emailAddress[0]) {
+      return emailAddress[0].substring(1, emailAddress[0].length - 1);
+    }
+
+    return input;
+  }
 }

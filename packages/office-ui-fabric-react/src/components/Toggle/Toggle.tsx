@@ -9,7 +9,7 @@ import {
 import {
   IToggleProps,
   IToggle
-} from './Toggle.Props';
+} from './Toggle.types';
 import { Label } from '../../Label';
 import {
   customizable
@@ -27,7 +27,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   private _toggleButton: HTMLButtonElement;
 
   constructor(props: IToggleProps) {
-    super();
+    super(props);
 
     this._warnMutuallyExclusive({
       checked: 'defaultChecked'
@@ -101,7 +101,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             ref={ this._resolveRef('_toggleButton') }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
-            aria-label={ ariaLabel }
+            aria-label={ ariaLabel ? ariaLabel : label }
             data-is-focusable={ true }
             onChange={ this._noop }
             onClick={ this._onClick }

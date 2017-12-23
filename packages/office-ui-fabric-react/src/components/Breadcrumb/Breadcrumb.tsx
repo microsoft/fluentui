@@ -9,7 +9,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';

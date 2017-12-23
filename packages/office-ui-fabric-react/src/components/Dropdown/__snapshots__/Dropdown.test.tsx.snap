@@ -6,7 +6,8 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={null}
-    aria-describedby="Dropdown92-option"
+    aria-autocomplete="none"
+    aria-describedby="Dropdown94-option"
     aria-disabled={undefined}
     aria-expanded="false"
     aria-label={undefined}
@@ -14,19 +15,19 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     aria-owns={null}
     className="ms-Dropdown"
     data-is-focusable={true}
-    id="Dropdown92"
+    id="Dropdown94"
     onBlur={[Function]}
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="menu"
+    role="combobox"
     tabIndex={0}
   >
     <span
       aria-atomic={true}
       aria-readonly="true"
       className="ms-Dropdown-title ms-Dropdown-titleIsPlaceHolder"
-      id="Dropdown92-option"
+      id="Dropdown94-option"
       role="textbox"
     />
     <span
@@ -55,6 +56,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 >
   <div
     aria-activedescendant={null}
+    aria-autocomplete="none"
     aria-describedby="Dropdown0-option"
     aria-disabled={undefined}
     aria-expanded="false"
@@ -68,7 +70,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    role="menu"
+    role="combobox"
     tabIndex={0}
   >
     <span
