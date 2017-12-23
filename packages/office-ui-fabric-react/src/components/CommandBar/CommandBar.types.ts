@@ -42,6 +42,16 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   elipisisAriaLabel?: string;
 
   /**
+   * Additional css class to apply to the command bar's context menu
+   */
+  contextMenuClassName?: string;
+
+  /**
+   * Optional callback when the ContextualMenu tries to close
+   */
+  onContextMenuDismiss?: (ev?: any) => void;
+
+  /**
    * Items to render on the right side (or left, in RTL).
    */
   farItems?: IContextualMenuItem[];

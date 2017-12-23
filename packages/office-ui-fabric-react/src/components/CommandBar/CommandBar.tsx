@@ -82,7 +82,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
+    const { isSearchBoxVisible, searchPlaceholderText, className, contextMenuClassName } = this.props;
     const { renderedItems, contextualMenuProps, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
 
@@ -146,7 +146,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </FocusZone>
         { (contextualMenuProps) ?
           (<ContextualMenu
-            className={ css('ms-CommandBar-menuHost') }
+            className={ css('ms-CommandBar-menuHost', contextMenuClassName) }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             { ...contextualMenuProps }
             target={ contextualMenuTarget }
@@ -372,7 +372,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
       if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
-        this._onContextMenuDismiss();
+        this._onContextMenuDismiss(ev);
       } else {
         this.setState({
           expandedMenuId: ev.currentTarget.id,
@@ -390,7 +390,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   @autobind
   private _onOverflowClick(ev: React.MouseEvent<HTMLButtonElement>) {
     if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
-      this._onContextMenuDismiss();
+      this._onContextMenuDismiss(ev);
     } else {
       this.setState({
         expandedMenuId: ev.currentTarget.id,
@@ -404,10 +404,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   @autobind
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
-      let { contextualMenuProps } = this.state;
+      const { contextualMenuProps } = this.state;
+      const { onContextMenuDismiss  } = this.props;
 
       if (contextualMenuProps && contextualMenuProps.onDismiss) {
         this.state.contextualMenuProps!.onDismiss!(ev);
+      }
+      if (onContextMenuDismiss) {
+        onContextMenuDismiss(ev);
       }
 
       this.setState({
