@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Dec 2017 11:10:56 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Dec 2017 11:13:32 GMT and should not be manually modified.
+
+## 5.35.2
+Mon, 25 Dec 2017 11:13:32 GMT
+
+### Patches
+
+- SpinButton: Fix falsey check for value so custom handlers work even if value is 0
 
 ## 5.35.1
 Fri, 22 Dec 2017 11:10:56 GMT
