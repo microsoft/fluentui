@@ -15,7 +15,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
 
   return {
     root: [
-      'ms-Searchbox',
+      'ms-SearchBox',
       fonts.medium,
       normalize,
       {
@@ -67,7 +67,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     iconContainer: [
-      'ms-Searchbox-iconContainer',
+      'ms-SearchBox-iconContainer',
       {
         display: 'flex',
         flexDirection: 'column',
@@ -88,7 +88,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     icon: [
-      'ms-Searchbox-icon',
+      'ms-SearchBox-icon',
       {
         opacity: 1,
         transition: `opacity ${AnimationVariables.durationValue1} 0s`
@@ -99,7 +99,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     clearButton: [
-      'ms-Searchbox-clearButton',
+      'ms-SearchBox-clearButton',
       {
         display: 'flex',
         flexDirection: 'row',
@@ -112,7 +112,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     field: [
-      'ms-Searchbox-field',
+      'ms-SearchBox-field',
       normalize,
       {
         border: 'none',
