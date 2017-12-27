@@ -31,6 +31,10 @@ export interface IStyleSheetConfig {
    * Injection mode for how rules are inserted.
    */
   injectionMode?: InjectionMode;
+  /**
+   * Falls back to "css".
+   */
+  defaultPrefix?: string;
   onInsertRule?: (rule: string) => void;
 }
 
@@ -78,6 +82,7 @@ export class Stylesheet {
   constructor(config?: IStyleSheetConfig) {
     this._config = {
       injectionMode: InjectionMode.insertNode,
+      defaultPrefix: 'css',
       ...config
     };
 
@@ -100,7 +105,7 @@ export class Stylesheet {
    * @param displayName - Optional value to use as a prefix.
    */
   public getClassName(displayName?: string): string {
-    const prefix = displayName || 'css';
+    const prefix = displayName || this._config.defaultPrefix;
 
     return `${prefix}-${this._counter++}`;
   }
