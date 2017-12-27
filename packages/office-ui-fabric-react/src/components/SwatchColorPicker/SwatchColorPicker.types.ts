@@ -123,7 +123,17 @@ export interface ISwatchColorPickerStyleProps {
  */
 export interface ISwatchColorPickerStyles {
   /**
-   * Style applied to the container of the swatchColorPicker
+   * Style applied to the container grid of the swatchColorPicker
    */
   root: IStyle;
+
+  /**
+  * Style for the table cells of the grid.
+  */
+  tableCell: IStyle;
+
+  /**
+  * Optional, style for the FocusZone container for the grid
+  */
+  focusedContainer?: IStyle;
 }

@@ -1,8 +1,13 @@
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
+
+export interface IGrid { }
+
 export interface IGridProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: () => void;
+  componentRef?: (componentRef?: IGrid) => void;
 
   /**
    * The items to turn into a grid
@@ -33,6 +38,8 @@ export interface IGridProps {
 
   /**
    * Optional, class name for the FocusZone container for the grid
+   * @deprecated Use getStyles and IGridStyles to define a styling for the focus zone container with
+   * focusedContainer property.
    */
   containerClassName?: string;
 
@@ -50,4 +57,44 @@ export interface IGridProps {
    * The optional size of the parent set (size of parent menu, for example)
    */
   setSize?: number;
+
+  /**
+   * Theme to apply to the component.
+   */
+  theme?: ITheme;
+
+  /**
+ * Optional styles for the component.
+ */
+  getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
+}
+
+/**
+ * Properties required to build the styles for the grid component.
+ */
+export interface IGridStyleProps {
+  /**
+  * Theme to apply to the grid
+  */
+  theme: ITheme;
+}
+
+/**
+ * Styles for the Grid Component.
+ */
+export interface IGridStyles {
+  /**
+   * Style for the table container of a grid.
+   */
+  root: IStyle;
+
+  /**
+   * Style for the table cells of the grid.
+   */
+  tableCell: IStyle;
+
+  /**
+   * Optional, style for the FocusZone container for the grid
+   */
+  focusedContainer?: IStyle;
 }

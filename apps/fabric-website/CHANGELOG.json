@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.2.1",
+      "tag": "@uifabric/fabric-website_v5.2.1",
+      "date": "Fri, 22 Dec 2017 11:10:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "1cbf872fe8f2feac82a8c2566dfd19b20be7d191",
+            "comment": "Added more descriptive comments to account for the specificity needed to style with the UHF."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.35.0 <6.0.0` to `>=5.35.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.0",
       "tag": "@uifabric/fabric-website_v5.2.0",
       "date": "Sat, 16 Dec 2017 05:07:22 GMT",
