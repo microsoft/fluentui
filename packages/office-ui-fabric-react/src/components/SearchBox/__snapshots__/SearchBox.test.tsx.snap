@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBox renders SearchBox correctly 1`] = `
+<div
+  className=
+      ms-SearchBox
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: stretch;
+        border: 1px solid #a6a6a6;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #333333;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 32px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 0;
+        padding-top: 0;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border: 1px solid WindowText;
+      }
+      &:hover {
+        $label: [object Object];
+        border-color: #212121;
+      }
+  onFocusCapture={[Function]}
+>
+  <div
+    className=
+        ms-SearchBox-iconContainer
+        {
+          color: #0078d7;
+          display: flex;
+          flex-direction: column;
+          flex-shrink: 0;
+          font-size: 16px;
+          justify-content: center;
+          text-align: center;
+          transition: width 0.167s;
+          width: 32px;
+        }
+  >
+    <i
+      aria-hidden={true}
+      aria-label={undefined}
+      className=
+          ms-Icon
+          ms-SearchBox-icon
+          {
+            display: inline-block;
+          }
+          {
+            opacity: 1;
+            transition: opacity 0.167s 0s;
+          }
+      data-icon-name="Search"
+      role="presentation"
+    />
+  </div>
+  <input
+    aria-label="Search"
+    className=
+        ms-SearchBox-field
+        {
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          flex: 1 1 0;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          outline: none;
+          overflow: hidden;
+          padding-bottom: 0.5px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          text-overflow: ellipsis;
+        }
+        &::-ms-clear {
+          display: none;
+        }
+    disabled={undefined}
+    id="SearchBox0"
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Search"
+    value=""
+  />
+</div>
+`;

@@ -1,4 +1,4 @@
-import { IAnimationStyles } from '../interfaces/index';
+import { IAnimationStyles, IAnimationVariables } from '../interfaces/index';
 import { IRawStyle, keyframes } from '@uifabric/merge-styles/lib/index';
 
 /* Register the keyframes */
@@ -75,6 +75,18 @@ const ROTATE_N90: string = keyframes({
   from: { transform: 'rotateZ(0deg)' },
   to: { transform: 'rotateZ(-90deg)' }
 });
+
+/**
+ * Exporting raw duraction values and easing functions to be used in custom animations
+ */
+export const AnimationVariables: IAnimationVariables = {
+  easeFunction1: EASING_FUNCTION_1,
+  easeFunction2: EASING_FUNCTION_2,
+  durationValue1: DURATION_1,
+  durationValue2: DURATION_2,
+  durationValue3: DURATION_3,
+  durationValue4: DURATION_4
+};
 
 /**
  * All Fabric standard animations, exposed as json objects referencing predefined
