@@ -87,6 +87,7 @@ export interface ISearchBoxStyleProps {
   disabled?: boolean;
   hasFocus?: boolean;
   underlined?: boolean;
+  hasInput?: boolean;
 }
 
 export interface ISearchBoxStyles {
