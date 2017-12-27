@@ -17,7 +17,6 @@ import { FocusZone } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
 
-
 export interface ISearchBoxState {
   value?: string;
   hasFocus?: boolean;
@@ -68,14 +67,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           value!.length > 0 && 'can-clear',
           underlined && 'is-underlined'
         ) }
-        { ...{ onFocusCapture: this._onFocusCapture } }
+        onFocusCapture={ this._onFocusCapture }
       >
-        <div className={ css(classNames.iconContainer) }>
-          <Icon className={ css(classNames.icon) } iconName='Search' />
+        <div className={ classNames.iconContainer }>
+          <Icon className={ classNames.icon } iconName='Search' />
         </div>
         <input
           id={ id }
-          className={ css(classNames.field) }
+          className={ classNames.field }
           placeholder={ labelText }
           onChange={ this._onInputChange }
           onInput={ this._onInputChange }
@@ -86,7 +85,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           ref={ this._resolveRef('_inputElement') }
         />
         { value!.length > 0 &&
-          <div className={ css(classNames.clearButton) }>
+          <div className={ classNames.clearButton }>
             <IconButton styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } } onClick={ this._onClearClick } iconProps={ { iconName: 'Clear' } } />
           </div>
         }

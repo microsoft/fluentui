@@ -26,7 +26,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         alignItems: 'stretch',
         padding: '0 0 0 8px',
         border: `1px solid ${palette.neutralTertiary}`,
-        height: '32px',
+        height: 32,
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'
@@ -80,7 +80,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         color: palette.themePrimary
       },
       hasFocus && {
-        width: '4px',
+        width: 4,
         transition: `width  ${AnimationVariables.durationValue1}`
       },
       disabled && {
@@ -107,7 +107,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         cursor: 'pointer',
         flexBasis: '32px',
         flexShrink: 0,
-        padding: '1px',
+        padding: 1,
         color: palette.themePrimary,
       }
     ],
@@ -126,7 +126,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         // This padding forces the text placement to round up.
-        paddingBottom: '.5px',
+        paddingBottom: 0.5,
         // This removes the IE specific clear button in the input since we implimented our own
         selectors: {
           '::-ms-clear': {
