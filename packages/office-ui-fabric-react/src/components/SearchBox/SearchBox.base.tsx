@@ -56,17 +56,19 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     let { labelText, className, disabled, underlined, getStyles, theme } = this.props;
     let { value, hasFocus, id } = this.state;
 
-    const classNames = getClassNames(getStyles!, { theme: theme!, underlined, hasFocus, disabled });
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className,
+      underlined,
+      hasFocus,
+      disabled,
+      hasInput: value!.length > 0
+    });
 
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
-        className={ css(className, classNames.root,
-          hasFocus && 'is-active',
-          disabled && 'is-disabled',
-          value!.length > 0 && 'can-clear',
-          underlined && 'is-underlined'
-        ) }
+        className={ classNames.root }
         onFocusCapture={ this._onFocusCapture }
       >
         <div className={ classNames.iconContainer }>

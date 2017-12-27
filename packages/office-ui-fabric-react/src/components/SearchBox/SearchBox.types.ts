@@ -83,9 +83,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
 export interface ISearchBoxStyleProps {
   theme: ITheme;
+  className?: string;
   disabled?: boolean;
   hasFocus?: boolean;
   underlined?: boolean;
+  hasInput?: boolean;
 }
 
 export interface ISearchBoxStyles {
