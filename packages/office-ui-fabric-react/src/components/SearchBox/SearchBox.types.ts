@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ISearchBox {
   /**
@@ -67,4 +69,29 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * @default false
    */
   underlined?: boolean;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ISearchBoxProps, ISearchBoxStyles>;
+}
+
+export interface ISearchBoxStyleProps {
+  theme: ITheme;
+  disabled?: boolean;
+  hasFocus?: boolean;
+  underlined?: boolean;
+}
+
+export interface ISearchBoxStyles {
+  root?: IStyle;
+  iconContainer?: IStyle;
+  icon?: IStyle;
+  field?: IStyle;
+  clearButton?: IStyle;
 }
