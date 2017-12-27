@@ -138,5 +138,5 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         color: palette.neutralTertiary
       }
     ]
-  }
-};
+  };
+}
