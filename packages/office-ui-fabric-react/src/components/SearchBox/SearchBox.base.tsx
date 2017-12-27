@@ -56,12 +56,12 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     let { labelText, className, disabled, underlined, getStyles, theme } = this.props;
     let { value, hasFocus, id } = this.state;
 
-    const classNames = getClassNames(getStyles!, { theme: theme!, underlined, hasFocus, disabled });
+    const classNames = getClassNames(getStyles!, { theme: theme!, className, underlined, hasFocus, disabled });
 
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
-        className={ css(className, classNames.root,
+        className={ css(classNames.root,
           hasFocus && 'is-active',
           disabled && 'is-disabled',
           value!.length > 0 && 'can-clear',

@@ -10,7 +10,7 @@ import { SearchBoxBase } from './SearchBox.base';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
-  const { theme, underlined, disabled, hasFocus } = props;
+  const { theme, underlined, disabled, hasFocus, className } = props;
   const { palette, fonts } = theme;
 
   return {
@@ -64,7 +64,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       },
       underlined && disabled && {
         backgroundColor: 'transparent'
-      }
+      },
+      className
     ],
     iconContainer: [
       'ms-SearchBox-iconContainer',
