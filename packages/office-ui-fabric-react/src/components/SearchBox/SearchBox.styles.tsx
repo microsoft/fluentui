@@ -10,7 +10,7 @@ import { SearchBoxBase } from './SearchBox.base';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
-  const { theme, underlined, disabled, hasFocus } = props;
+  const { theme, underlined, disabled, hasFocus, className, hasInput } = props;
   const { palette, fonts } = theme;
 
   return {
@@ -42,29 +42,40 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           }
         }
       },
-      hasFocus && {
-        borderColor: palette.themePrimary,
-        selectors: {
-          ':hover': {
-            borderColor: palette.themePrimary,
-          },
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
+      hasFocus && [
+        'is-active',
+        {
+          borderColor: palette.themePrimary,
+          selectors: {
+            ':hover': {
+              borderColor: palette.themePrimary,
+            },
+            [HighContrastSelector]: {
+              borderColor: 'Highlight'
+            }
           }
         }
-      },
-      disabled && {
-        borderColor: palette.neutralLighter,
-        backgroundColor: palette.neutralLighter,
-        pointerEvents: 'none',
-        cursor: 'default',
-      },
-      underlined && {
-        borderWidth: '0 0 1px 0'
-      },
+      ],
+      disabled && [
+        'is-disabled',
+        {
+          borderColor: palette.neutralLighter,
+          backgroundColor: palette.neutralLighter,
+          pointerEvents: 'none',
+          cursor: 'default',
+        }
+      ],
+      underlined && [
+        'is-underlined',
+        {
+          borderWidth: '0 0 1px 0'
+        }
+      ],
       underlined && disabled && {
         backgroundColor: 'transparent'
-      }
+      },
+      hasInput && 'can-clear',
+      className
     ],
     iconContainer: [
       'ms-SearchBox-iconContainer',
