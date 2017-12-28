@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.15.1",
+      "tag": "@uifabric/styling_v5.15.1",
+      "date": "Thu, 28 Dec 2017 11:23:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4c523699e33d9e2c15d60d947f8f4017c48e00e2",
+            "comment": "Adding new normalize and AnimationValues"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.9.0 <6.0.0` to `>=5.10.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.0",
       "tag": "@uifabric/styling_v5.15.0",
       "date": "Sat, 16 Dec 2017 05:07:22 GMT",
