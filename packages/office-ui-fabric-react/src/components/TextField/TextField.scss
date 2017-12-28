@@ -28,10 +28,10 @@ $field-description-color: $bodySubtextColor;
 $field-error-color: $errorTextColor;
 
 // the box containing the label and input field
-.root {
-  @include ms-normalize;
-  position: relative; /* Needed to position icon */
-}
+// .root {
+//   @include ms-normalize;
+//   position: relative; /* Needed to position icon */
+// }
 
 .screenReaderOnly {
   @include ms-screenReaderOnly;
@@ -39,29 +39,29 @@ $field-error-color: $errorTextColor;
 
 //= State: default
 .fieldGroup {
-  @include ms-normalize;
-  border: 1px solid $field-border-color;
-  background: $field-background-color;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  position: relative;
+  // @include ms-normalize;
+  // border: 1px solid $field-border-color;
+  // background: $field-background-color;
+  // height: 32px;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: stretch;
+  // position: relative;
 
-  &:hover {
-    border-color: $field-border-hover-color;
-  }
+  // &:hover {
+  //   border-color: $field-border-hover-color;
+  // }
 
-  &.fieldGroupIsFocused {
-    border-color: $field-border-focus-color;
-  }
+  // &.fieldGroupIsFocused {
+  //   border-color: $field-border-focus-color;
+  // }
 
-  .rootIsDisabled & {
-    background-color: $field-background-disabled-color;
-    border-color: $field-border-disabled-color;
-    pointer-events: none;
-    cursor: default;
-  }
+  // .rootIsDisabled & {
+  //   background-color: $field-background-disabled-color;
+  //   border-color: $field-border-disabled-color;
+  //   pointer-events: none;
+  //   cursor: default;
+  // }
 
   &:hover,
   &.fieldGroupIsFocused {
@@ -70,49 +70,49 @@ $field-error-color: $errorTextColor;
     }
   }
 
-  &::-ms-clear {
-    display: none;
-  }
+  // &::-ms-clear {
+  //   display: none;
+  // }
 }
 
 //= State: A disabled textfield
-.root.rootIsDisabled {
-  :global(.field) {
-    background-color: $field-background-disabled-color;
-    border-color: $field-border-disabled-color;
-    pointer-events: none;
-    cursor: default;
-  }
-}
+// .root.rootIsDisabled {
+//   :global(.field) {
+//     background-color: $field-background-disabled-color;
+//     border-color: $field-border-disabled-color;
+//     pointer-events: none;
+//     cursor: default;
+//   }
+// }
 
-.fieldPrefixSuffix {
-  background: $ms-color-neutralLighter;
-  color: $ms-color-neutralSecondary;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  line-height: 1;
-}
+// .fieldPrefixSuffix {
+//   background: $ms-color-neutralLighter;
+//   color: $ms-color-neutralSecondary;
+//   display: flex;
+//   align-items: center;
+//   padding: 0 10px;
+//   line-height: 1;
+// }
 
 .field {
-  @include ms-normalize;
-  font-size: $ms-font-size-m;
-  border-radius: 0;
-  border: none;
-  background: none;
-  color: $field-text-color;
-  @include ms-padding(0, 12px, 0, 12px);
-  width: 100%;
-  text-overflow: ellipsis;
-  outline: 0;
-  &:active,
-  &:focus,
-  &:hover {
-      outline: 0;
-    }
-  &.hasIcon {
-    @include ms-padding-right(24px);
-  }
+  // @include ms-normalize;
+  // font-size: $ms-font-size-m;
+  // border-radius: 0;
+  // border: none;
+  // background: none;
+  // color: $field-text-color;
+  // @include ms-padding(0, 12px, 0, 12px);
+  // width: 100%;
+  // text-overflow: ellipsis;
+  // outline: 0;
+  // &:active,
+  // &:focus,
+  // &:hover {
+  //     outline: 0;
+  //   }
+  // &.hasIcon {
+  //   @include ms-padding-right(24px);
+  // }
 
   &[disabled] {
     background-color: transparent;
@@ -121,11 +121,11 @@ $field-error-color: $errorTextColor;
     cursor: default;
   }
 
-  .field {
-    &::placeholder {
-      color: $field-placeholder-disabled-color;
-    }
-  }
+  // .field {
+  //   &::placeholder {
+  //     color: $field-placeholder-disabled-color;
+  //   }
+  // }
 }
 
 //= State: A required textfield
@@ -148,52 +148,52 @@ $field-error-color: $errorTextColor;
 }
 
 //= State: An active textfield
-.root.rootIsActive {
-  border-color: $field-border-focus-color;
-}
+// .root.rootIsActive {
+//   border-color: $field-border-focus-color;
+// }
 
-.icon {
-  pointer-events: none;
-  position: absolute;
-  bottom: 5px;
-  @include right(8px);
-  top: auto;
-  font-size: 16px;
-  line-height: 18px;
-}
+// .icon {
+//   pointer-events: none;
+//   position: absolute;
+//   bottom: 5px;
+//   @include right(8px);
+//   top: auto;
+//   font-size: 16px;
+//   line-height: 18px;
+// }
 
-.description {
-  color: $field-description-color;
-  font-size: $ms-font-size-xs;
-}
+// .description {
+//   color: $field-description-color;
+//   font-size: $ms-font-size-xs;
+// }
 
-.rootIsBorderless .fieldGroup {
-  border-color: transparent;
-  border-width: 0;
-}
+// .rootIsBorderless .fieldGroup {
+//   border-color: transparent;
+//   border-width: 0;
+// }
 
 //== Modifier: Single line (default), underlined
 .root.rootIsUnderlined {
-  border-width: 0px;
+  // border-width: 0px;
 
-  &:hover:not(.rootIsDisabled) {
-    border-color: $field-border-hover-color;
+  // &:hover:not(.rootIsDisabled) {
+  //   border-color: $field-border-hover-color;
 
-    @include high-contrast {
-      border-color: Highlight;
-    }
-  }
+  //   @include high-contrast {
+  //     border-color: Highlight;
+  //   }
+  // }
 
   .wrapper {
     display: flex;
     border-bottom: 1px solid $field-border-color;
     width: 100%;
 
-    &.invalid,
-    &.invalid:focus,
-    &.invalid:hover {
-      border-bottom: 1px solid $field-border-error-color;
-    }
+    // &.invalid,
+    // &.invalid:focus,
+    // &.invalid:hover {
+    //   border-bottom: 1px solid $field-border-error-color;
+    // }
   }
 
   :global(.ms-Label) {
@@ -240,41 +240,41 @@ $field-error-color: $errorTextColor;
 
 //== Modifier: Multiline textfield
 //
-.root.rootIsMultiline {
-  .fieldGroup {
-    min-height: 60px;
-    height: auto;
-    display: flex;
-  }
+// .root.rootIsMultiline {
+  // .fieldGroup {
+  //   min-height: 60px;
+  //   height: auto;
+  //   display: flex;
+  // }
 
-  .field {
-    line-height: 17px;
-    flex-grow: 1;
-    padding-top: 6px;
-    overflow: auto;
-    width: 100%;
+  // .field {
+    // line-height: 17px;
+    // flex-grow: 1;
+    // padding-top: 6px;
+    // overflow: auto;
+    // width: 100%;
 
-    &.hasIcon {
-      @include ms-padding-right(40px);
-    }
-  }
-}
+    // &.hasIcon {
+    //   @include ms-padding-right(40px);
+    // }
+  // }
+// }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
-.errorMessage {
-  @include ms-font-s;
-  color: $field-error-color;
-  margin: 0;
-  padding-top: 5px;
-  display: flex;
-  align-items: center;
-}
+// .errorMessage {
+//   @include ms-font-s;
+//   color: $field-error-color;
+//   margin: 0;
+//   padding-top: 5px;
+//   display: flex;
+//   align-items: center;
+// }
 
-.invalid,
-.invalid:focus,
-.invalid:hover {
-  border-color: $field-border-error-color;
-}
+// .invalid,
+// .invalid:focus,
+// .invalid:hover {
+//   border-color: $field-border-error-color;
+// }
 
 .root.rootIsUnderlined {
 
@@ -296,9 +296,9 @@ $field-error-color: $errorTextColor;
     align-items: flex-end;
   }
 
-  .field.fieldIsUnresizable {
-    resize: none;
-  }
+  // .field.fieldIsUnresizable {
+  //   resize: none;
+  // }
 }
 
 .hidden {

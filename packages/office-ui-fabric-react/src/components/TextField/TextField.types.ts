@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import {
+  IStyle,
+  ITheme
+} from '../../Styling';
+import { ILabelStyles } from '../../Label';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
 export interface ITextField {
@@ -217,14 +221,46 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   validateOnLoad?: boolean;
 
   /**
-   * @deprecated
-   * Deprecated; use iconProps instead.
-   */
-  iconClass?: string;
-
-  /**
  * Internal ID passed to render functions.
  */
   componentId?: string;
 
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ITextFieldStyleProps, ITextFieldStyles>;
+
+}
+
+export interface ITextFieldStyleProps {
+  theme: ITheme;
+  className?: string;
+  disabled?: boolean;
+  focused?: boolean;
+  required?: boolean;
+  multiline?: boolean;
+  hasLabel?: boolean;
+  borderless?: boolean;
+  underlined?: boolean;
+  hasErrorMessage?: boolean;
+  hasIcon?: boolean;
+  resizable?: boolean;
+}
+
+export interface ITextFieldStyles {
+  root?: IStyle;
+  fieldGroup?: IStyle;
+  prefix?: IStyle;
+  suffix?: IStyle;
+  field?: IStyle;
+  icon?: IStyle;
+  description?: IStyle;
+  wrapper?: IStyle;
+  errorMessage?: IStyle;
+  label?: IStyle;
 }

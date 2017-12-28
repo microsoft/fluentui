@@ -39,7 +39,6 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   public refs: {
     [key: string]: React.ReactInstance;
     menuButton: HTMLElement;
-    gapSize: TextField;
   };
 
   public constructor(props: {}) {

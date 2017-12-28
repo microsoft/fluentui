@@ -5,7 +5,7 @@ import {
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
-import { TextField } from '../../TextField';
+import { TextFieldBase, TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
@@ -35,11 +35,11 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     alphaLabel: 'Alpha'
   };
 
-  private hexText: TextField;
-  private rText: TextField;
-  private gText: TextField;
-  private bText: TextField;
-  private aText: TextField;
+  private hexText: TextFieldBase;
+  private rText: TextFieldBase;
+  private gText: TextFieldBase;
+  private bText: TextFieldBase;
+  private aText: TextFieldBase;
 
   constructor(props: IColorPickerProps) {
     super(props);
@@ -95,7 +95,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
-                    ref={ (ref) => this.hexText = ref! }
+                    // componentRef={ (ref) => this.hexText = ref! }
                     onBlur={ this._onHexChanged }
                     spellCheck={ false }
                   />
@@ -105,7 +105,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
-                    ref={ (ref) => this.rText = ref! }
+                    // componentRef={ (ref) => this.rText = ref! }
                     spellCheck={ false }
                   />
                 </td>
@@ -114,7 +114,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
-                    ref={ (ref) => this.gText = ref! }
+                    // componentRef={ (ref) => this.gText = ref! }
                     spellCheck={ false }
                   />
                 </td>
@@ -123,7 +123,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
-                    ref={ (ref) => this.bText = ref! }
+                    // componentRef={ (ref) => this.bText = ref! }
                     spellCheck={ false }
                   />
                 </td>
@@ -133,7 +133,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
-                      ref={ (ref) => this.aText = ref! }
+                      // componentRef={ (ref) => this.aText = ref! }
                       spellCheck={ false }
                     />
                   </td>
