@@ -1,30 +1,35 @@
 import * as React from 'react';
 import {
-  IFacepileProps,
-  Facepile,
-  OverflowButtonType,
+  IFacepilePersona,
+  OverflowButtonType
 } from 'office-ui-fabric-react/lib/Facepile';
+import {
+  ResizableFacepile,
+  IResizableFacepileProps
+} from '../ResizableFacepile';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 
-const facepileProps: IFacepileProps = {
+const facepileProps: IResizableFacepileProps = {
   personas: facepilePersonas,
-  maxDisplayablePersonas: 5,
-  overflowButtonType: OverflowButtonType.downArrow,
+  getPersonaProps: (persona: IFacepilePersona) => {
+    return {
+      imageShouldFadeIn: false
+    };
+  },
   overflowButtonProps: {
-    ariaLabel: 'More users',
+    ariaLabel: 'More info',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
-  },
-  ariaDescription: 'To move through the items use left and right arrow keys.'
+  }
 };
 
 export interface IFacepileOverflowExampleState {
-  displayedPersonas: any;
   overflowButtonType: OverflowButtonType;
+  widthAvailable: number;
 }
 
 export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
@@ -32,39 +37,45 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     super();
 
     this.state = {
-      displayedPersonas: 5,
-      overflowButtonType: OverflowButtonType.none
+      overflowButtonType: OverflowButtonType.none,
+      widthAvailable: 300
     };
   }
 
   public render() {
-    let { displayedPersonas, overflowButtonType } = this.state;
-    facepileProps.maxDisplayablePersonas = displayedPersonas;
-    facepileProps.overflowButtonType = overflowButtonType;
+    let { overflowButtonType, widthAvailable } = this.state;
+    let updatedFacepileProps: IResizableFacepileProps = {
+      ...facepileProps,
+      overflowButtonType: overflowButtonType,
+      width: widthAvailable
+    };
 
     return (
       <div className={ 'ms-FacepileExample' }>
-        <Facepile {...facepileProps} />
+        <ResizableFacepile {...updatedFacepileProps} />
         <div className={ 'control' }>
           <Slider
-            label='Number of Personas Shown:'
-            min={ 0 }
-            max={ 6 }
-            step={ 1 }
+            label='Width available:'
+            min={ 10 }
+            max={ 300 }
+            step={ 10 }
             showValue={ true }
-            value={ this.state.displayedPersonas }
-            onChange={ this._onChangePersonaNumber }
+            value={ widthAvailable }
+            onChange={ (value: number) => this.setState((prevState: IFacepileOverflowExampleState) => {
+              prevState.widthAvailable = value;
+              return prevState;
+            }) }
           />
         </div>
         <Dropdown
           label='Overflow Type:'
-          selectedKey={ this.state.overflowButtonType }
+          selectedKey={ overflowButtonType }
           options={
             [
               { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
               { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
               { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
+              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] }
             ]
           }
           onChanged={ this._onChangeType
@@ -72,14 +83,6 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
         />
       </div>
     );
-  }
-
-  @autobind
-  private _onChangePersonaNumber(value: number): void {
-    this.setState((prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
-      prevState.displayedPersonas = value;
-      return prevState;
-    });
   }
 
   @autobind

@@ -35,14 +35,17 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
+    overflowPersonas: [],
     personaSize: PersonaSize.extraSmall
   };
 
   private _ariaDescriptionId: string;
+  private _id: string;
 
   constructor(props: IFacepileProps) {
     super(props);
 
+    this._id = getId('Facepile');
     this._ariaDescriptionId = getId();
   }
 
@@ -55,6 +58,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType,
       className,
       personas,
+      overflowPersonas,
       showAddButton
     } = this.props;
 
@@ -66,8 +70,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType = OverflowButtonType.downArrow;
     }
 
-    let primaryPersonas: IFacepilePersona[] = personas.slice(0, numPersonasToShow);
-    let overflowPersonas: IFacepilePersona[] = personas.slice(numPersonasToShow);
+    let personasPrimary: IFacepilePersona[] = overflowPersonas ? personas : personas.slice(0, numPersonasToShow);
+    let personasOverlow: IFacepilePersona[] = overflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow);
 
     return (
       <div className={ css('ms-Facepile', styles.root, className) } >
@@ -80,9 +84,9 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
             className={ css('ms-Facepile-members', styles.members) }
             direction={ FocusZoneDirection.horizontal }
           >
-            { this._onRenderVisiblePersonas(primaryPersonas) }
+            { this._onRenderVisiblePersonas(personasPrimary) }
           </FocusZone>
-          { overflowButtonProps ? this._getOverflowElement(overflowPersonas.length) : null }
+          { overflowButtonProps ? this._getOverflowElement(personasOverlow) : null }
         </div>
       </div>
     );
@@ -156,10 +160,10 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     };
   }
 
-  private _getOverflowElement(numPersonasToShow: number): JSX.Element | null {
+  private _getOverflowElement(personasOverlow: IFacepilePersona[]): JSX.Element | null {
     switch (this.props.overflowButtonType) {
       case OverflowButtonType.descriptive:
-        return this._getDescriptiveOverflowElement(numPersonasToShow);
+        return this._getDescriptiveOverflowElement(personasOverlow);
       case OverflowButtonType.downArrow:
         return this._getIconElement('ChevronDown');
       case OverflowButtonType.more:
@@ -169,13 +173,13 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     }
   }
 
-  private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element | null {
+  private _getDescriptiveOverflowElement(personasOverlow: IFacepilePersona[]): JSX.Element | null {
     let { overflowButtonProps, personas, personaSize } = this.props;
-    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
+    let numPersonasNotPictured: number = personas.length - personasOverlow.length;
 
     if (!overflowButtonProps || numPersonasNotPictured < 1) { return null; }
 
-    let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
+    let personaNames: string = personasOverlow.map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return (
       <BaseButton

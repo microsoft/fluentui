@@ -1,41 +1,19 @@
 import * as React from 'react';
 import {
   autobind,
-  BaseComponent,
-  buttonProperties,
-  css,
-  divProperties,
-  getId,
-  getNativeProps
-} from '../../Utilities';
-import {
-  Facepile
-} from './Facepile';
+  BaseComponent
+} from 'office-ui-fabric-react/lib/Utilities';
 import {
   IFacepileProps,
   IFacepilePersona,
-  OverflowButtonType
-} from './Facepile.Props';
+  Facepile
+} from 'office-ui-fabric-react/lib/Facepile';
 import {
-  FocusZone,
-  FocusZoneDirection
-} from '../../FocusZone';
-import {
-  BaseButton,
-  DefaultButton
-} from '../../Button';
-import {
-  Icon
-} from '../../Icon';
-import {
-  PersonaCoin,
   PersonaSize
-} from '../../PersonaCoin';
+} from 'office-ui-fabric-react/lib/PersonaCoin';
 import {
   ResizeGroup
-} from '../../ResizeGroup';
-import * as stylesImport from './Facepile.scss';
-const styles: any = stylesImport;
+} from 'office-ui-fabric-react/lib/ResizeGroup';
 
 interface IOverflowData {
   props: IFacepileProps;
@@ -44,15 +22,15 @@ interface IOverflowData {
   cacheKey?: string;
 }
 
-export interface IFacepileResponsiveProps extends IFacepileProps {
+export interface IResizableFacepileProps extends IFacepileProps {
   /**
    * Set number of pixel to use for width instead of calculating it internally.
    */
   width?: number;
 }
 
-export class FacepileResponsive extends BaseComponent<IFacepileResponsiveProps, {}> {
-  public static defaultProps: IFacepileResponsiveProps = {
+export class ResizableFacepile extends BaseComponent<IResizableFacepileProps, {}> {
+  public static defaultProps: IResizableFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
     personaSize: PersonaSize.extraSmall
@@ -60,14 +38,9 @@ export class FacepileResponsive extends BaseComponent<IFacepileResponsiveProps, 
 
   public render(): JSX.Element {
     let {
-      ariaDescription,
-      chevronButtonProps,
       maxDisplayablePersonas,
-      overflowButtonProps,
-      overflowButtonType,
       className,
       personas,
-      showAddButton,
       width
     } = this.props;
 
@@ -93,8 +66,8 @@ export class FacepileResponsive extends BaseComponent<IFacepileResponsiveProps, 
           onRenderData={ (data: IOverflowData) => {
             return (
               <Facepile {...this.props}
-                maxDisplayablePersonas={ data.primary.length }
-                personas={ personas }
+                personas={ data.primary }
+                overflowPersonas={ data.overflow }
               />
             );
           } }
