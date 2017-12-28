@@ -107,6 +107,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       return null;
     },
     firstDayOfWeek: DayOfWeek.Sunday,
+    initialPickerDate: new Date(),
     isRequired: false,
     isMonthPickerVisible: true,
     showMonthPickerAsOverlay: false,
@@ -173,6 +174,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       firstDayOfWeek,
       strings,
       label,
+      initialPickerDate,
       isRequired,
       disabled,
       ariaLabel,
@@ -240,7 +242,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
               showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
               today={ this.props.today }
-              value={ selectedDate }
+              value={ selectedDate || initialPickerDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
