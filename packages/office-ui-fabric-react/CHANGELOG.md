@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Dec 2017 11:13:32 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+
+## 5.36.0
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Minor changes
+
+- SearchBox: Converted component to getStyles
+
+### Patches
+
+- SearchBox: moved className into styles file and added it to styles interface
 
 ## 5.35.2
 Mon, 25 Dec 2017 11:13:32 GMT
