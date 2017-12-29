@@ -7,8 +7,6 @@ import {
 } from '@uifabric/example-app-base';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { ComponentStatus } from 'office-ui-fabric-react/lib/demo/ComponentStatus/ComponentStatus';
-import { FacepileStatus } from 'office-ui-fabric-react/lib/Facepile/Facepile.checklist';
 
 const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Overflow.Example.tsx') as string;
 
@@ -89,11 +87,6 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            {...FacepileStatus}
-          />
-        }
       />
     );
   }

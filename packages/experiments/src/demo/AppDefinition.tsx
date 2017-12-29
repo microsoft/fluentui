@@ -17,6 +17,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/commandbar'
         },
         {
+          component: require<any>('../components/Facepile/FacepilePage').FacepilePage,
+          key: 'Facepile',
+          name: 'Facepile',
+          url: '#/examples/facepile'
+        },
+        {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
           key: 'FolderCover',
           name: 'FolderCover',
