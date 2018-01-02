@@ -200,7 +200,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   protected updateValue(updatedValue: string): void {
     // Call onInputChanged
     if (this.props.onInputChanged) {
-      (this.props.onInputChanged as any)(updatedValue);
+      (this.props.onInputChanged as (filter: string) => void)(updatedValue);
     }
 
     if (this.props.resolveDelay) {

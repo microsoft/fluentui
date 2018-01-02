@@ -51,7 +51,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * A callback for when the input has been changed
    */
-  onInputChanged?: (filtier: string) => void;
+  onInputChanged?: (filter: string) => void;
 
   /**
    * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
