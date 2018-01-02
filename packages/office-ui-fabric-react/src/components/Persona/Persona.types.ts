@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
+import { ImageLoadState } from '../../Image';
 
 export interface IPersona {
 
@@ -61,6 +62,11 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
    * Optional custom renderer for the initials
    */
   onRenderInitials?: IRenderFunction<IPersonaProps>;
+
+  /**
+   * Optional callback for when loading state of the photo changes
+   */
+  onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
 
   /**
    * The background color when the user's initials are displayed.
