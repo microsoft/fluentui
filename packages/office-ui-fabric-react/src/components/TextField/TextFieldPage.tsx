@@ -18,6 +18,7 @@ import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndS
 import { TextFieldStatus } from './TextField.checklist';
 import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
+import { TextFieldAutoCompleteExample } from './examples/TextField.AutoComplete.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
@@ -30,6 +31,7 @@ const TextFieldPrefixExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
 const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
+const TextFieldAutoCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.AutoComplete.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -68,6 +70,12 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               code={ TextFieldBorderlessExampleCode }
             >
               <TextFieldBorderlessExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with browser AutoComplete'
+              code={ TextFieldAutoCompleteExampleCode }
+            >
+              <TextFieldAutoCompleteExample />
             </ExampleCard>
           </div>
         }
