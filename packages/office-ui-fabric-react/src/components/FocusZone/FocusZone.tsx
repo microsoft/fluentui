@@ -51,7 +51,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _root: HTMLElement;
   private _id: string;
+  /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
+  /** The child element with tabindex=0. */
+  private _defaultFocusElement: HTMLElement | null;
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
@@ -348,6 +351,26 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.down:
           if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
             break;
+          }
+          return;
+
+        case KeyCodes.tab:
+          if (this.props.allowTabKey) {
+            if (direction === FocusZoneDirection.vertical) {
+              if (ev.shiftKey) {
+                this._moveFocusUp();
+              } else {
+                this._moveFocusDown();
+              }
+              break;
+            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+              if (ev.shiftKey) {
+                this._moveFocusLeft();
+              } else {
+                this._moveFocusRight();
+              }
+              break;
+            }
           }
           return;
 
@@ -675,6 +698,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _updateTabIndexes(element?: HTMLElement) {
     if (!element) {
+      this._defaultFocusElement = null;
       element = this._root;
       if (this._activeElement && !elementContains(element, this._activeElement)) {
         this._activeElement = null;
@@ -701,8 +725,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         if (isElementTabbable(child)) {
           if (this.props.disabled) {
             child.setAttribute(TABINDEX, '-1');
-          } else if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
-            this._activeElement = child;
+          } else if (!this._isInnerZone && ((!this._activeElement && !this._defaultFocusElement) || this._activeElement === child)) {
+            this._defaultFocusElement = child;
             if (child.getAttribute(TABINDEX) !== '0') {
               child.setAttribute(TABINDEX, '0');
             }
@@ -714,8 +738,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           child.setAttribute('focusable', 'false');
         }
       } else if (child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') {
-        if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
-          this._activeElement = child;
+        if (!this._isInnerZone && ((!this._activeElement && !this._defaultFocusElement) || this._activeElement === child)) {
+          this._defaultFocusElement = child;
           if (child.getAttribute(TABINDEX) !== '0') {
             child.setAttribute(TABINDEX, '0');
           }

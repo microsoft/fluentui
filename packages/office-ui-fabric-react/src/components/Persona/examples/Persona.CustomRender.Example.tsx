@@ -21,10 +21,7 @@ const examplePersona = {
   optionalText: 'Available at 4:00pm'
 };
 
-export class PersonaCustomRenderExample extends React.Component<React.Props<PersonaCustomRenderExample>, any> {
-  constructor() {
-    super();
-  }
+export class PersonaCustomRenderExample extends React.Component {
 
   public render() {
     return (
@@ -34,13 +31,6 @@ export class PersonaCustomRenderExample extends React.Component<React.Props<Pers
           { ...examplePersona }
           size={ PersonaSize.size72 }
           presence={ PersonaPresence.offline }
-          onRenderSecondaryText={ this._onRenderSecondaryText }
-        />
-        <div className={ exampleStyles.exampleLabel }>Custom coin size = 150</div>
-        <Persona
-          { ...examplePersona }
-          coinSize={ 150 }
-          presence={ PersonaPresence.online }
           onRenderSecondaryText={ this._onRenderSecondaryText }
         />
       </div>

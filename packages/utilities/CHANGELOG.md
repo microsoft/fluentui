@@ -1,6 +1,27 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 13 Nov 2017 11:20:56 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+
+## 5.6.1
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Broaden the range of allowed prop-type versions
+
+## 5.6.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.5.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
 
 ## 5.4.0
 Mon, 13 Nov 2017 11:20:56 GMT

@@ -15,7 +15,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
-import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -192,6 +192,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this._onRenderContent(tag, buttonProps);
   }
 
+  public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
+    // If Button's menu was closed, run onAfterMenuDismiss
+    if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
+      this.props.onAfterMenuDismiss();
+    }
+  }
+
   public focus(): void {
     if (this._buttonElement) {
       this._buttonElement.focus();
@@ -204,6 +211,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     let props = this.props;
+    let Tag = tag;
     let {
       menuIconProps,
       menuProps,
@@ -214,19 +222,29 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    return React.createElement(
-      tag,
-      buttonProps,
-      React.createElement(
-        'div' as any,
-        { className: this._classNames.flexContainer },
-        onRenderIcon(props, this._onRenderIcon),
-        this._onRenderTextContents(),
-        onRenderAriaDescription(props, this._onRenderAriaDescription),
-        onRenderChildren(props, this._onRenderChildren),
-        !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
-        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
-      ));
+    const Content = (
+      <Tag {...buttonProps }>
+        <div className={ this._classNames.flexContainer } >
+          { onRenderIcon(props, this._onRenderIcon) }
+          { this._onRenderTextContents() }
+          { onRenderAriaDescription(props, this._onRenderAriaDescription) }
+          { onRenderChildren(props, this._onRenderChildren) }
+          { !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon) }
+          { this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu) }
+        </div>
+      </Tag>
+    );
+
+    if (menuProps && menuProps.doNotLayer) {
+      return (
+        <div style={ { display: 'inline-block' } }>
+          { Content }
+          { this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu) }
+        </div>
+      );
+    }
+
+    return Content;
   }
 
   @autobind
@@ -365,7 +383,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
-    const { onDismiss = this._onToggleMenu } = menuProps;
+    const { onDismiss = this._dismissMenu } = menuProps;
 
     return (
       <ContextualMenu
@@ -381,6 +399,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
+  private _dismissMenu(): void {
+    this.setState({ menuProps: null });
+  }
+
+  @autobind
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
@@ -391,10 +414,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       styles = {},
       disabled,
-      checked
+      checked,
+      getSplitButtonClassNames
     } = this.props;
 
-    const classNames = styles && getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
+    const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
+      !!disabled,
+      !!this.state.menuProps,
+      !!checked) : styles && getBaseSplitButtonClassNames(
+        styles!,
+        !!disabled,
+        !!this.state.menuProps,
+        !!checked);
 
     return (
       <div

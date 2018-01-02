@@ -1,6 +1,55 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 23 Nov 2017 11:10:13 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+
+## 5.15.1
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Patches
+
+- Adding new normalize and AnimationValues
+
+## 5.15.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.14.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add an event callback for when the theme changes.
+
+## 5.12.1
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Patches
+
+- Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI
+
+## 5.12.0
+Thu, 30 Nov 2017 11:23:35 GMT
+
+### Minor changes
+
+- Updating the `registerIcons` helper to take in options.
+
+## 5.11.1
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Patches
+
+- SemanticSlots: Updated inputBorderHovered color.
+
+## 5.11.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
 
 ## 5.10.1
 Thu, 23 Nov 2017 11:10:13 GMT
