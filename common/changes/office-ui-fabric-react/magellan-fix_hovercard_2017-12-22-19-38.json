@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Hovercard: Check for null content ref",
+      "comment": "Hovercard: Changed content keydown listener to element event binding",
       "type": "patch"
     }
   ],
