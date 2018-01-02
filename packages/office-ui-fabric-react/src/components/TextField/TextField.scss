@@ -63,12 +63,12 @@ $field-error-color: $errorTextColor;
   //   cursor: default;
   // }
 
-  &:hover,
-  &.fieldGroupIsFocused {
-    @include high-contrast {
-      border-color: Highlight;
-    }
-  }
+  // &:hover,
+  // &.fieldGroupIsFocused {
+  //   @include high-contrast {
+  //     border-color: Highlight;
+  //   }
+  // }
 
   // &::-ms-clear {
   //   display: none;
@@ -185,9 +185,9 @@ $field-error-color: $errorTextColor;
   // }
 
   .wrapper {
-    display: flex;
-    border-bottom: 1px solid $field-border-color;
-    width: 100%;
+    // display: flex;
+    // border-bottom: 1px solid $field-border-color;
+    // width: 100%;
 
     // &.invalid,
     // &.invalid:focus,
@@ -204,36 +204,36 @@ $field-error-color: $errorTextColor;
     height: 32px;
   }
 
-  .fieldGroup {
-    flex: 1 1 0px;
-    border-width: 0;
+  // .fieldGroup {
+  //   flex: 1 1 0px;
+  //   border-width: 0;
 
-    @include ms-text-align(left);
-  }
+  //   @include ms-text-align(left);
+  // }
 
   &.rootIsDisabled {
-    border-bottom-color: $field-border-disabled-color;
+    // border-bottom-color: $field-border-disabled-color;
 
     :global(.ms-Label) {
       @include ms-Label-is-disabled;
     }
 
-    .field {
-      background-color: transparent;
-      color: $field-text-disabled-color;
-    }
+    // .field {
+    //   background-color: transparent;
+    //   color: $field-text-disabled-color;
+    // }
 
-    .fieldGroup {
-      background-color: transparent;
-    }
+    // .fieldGroup {
+    //   background-color: transparent;
+    // }
   }
 
   &.rootIsActive {
-    border-color: $field-border-focus-color;
+    // border-color: $field-border-focus-color;
 
-    @include high-contrast {
-      border-color: Highlight;
-    }
+    // @include high-contrast {
+    //   border-color: Highlight;
+    // }
   }
 }
 
