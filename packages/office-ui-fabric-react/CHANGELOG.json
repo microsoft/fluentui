@@ -2,6 +2,227 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.36.0",
+      "tag": "office-ui-fabric-react_v5.36.0",
+      "date": "Thu, 28 Dec 2017 11:23:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4c523699e33d9e2c15d60d947f8f4017c48e00e2",
+            "comment": "SearchBox: Converted component to getStyles"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "6ad2fed62aa8ffb8b42b813d614af552ffceb5d4",
+            "comment": "SearchBox: moved className into styles file and added it to styles interface"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.9.0 <6.0.0` to `>=5.10.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.15.0 <6.0.0` to `>=5.15.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.35.2",
+      "tag": "office-ui-fabric-react_v5.35.2",
+      "date": "Mon, 25 Dec 2017 11:13:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "58f68a474e62a012882d34cf5f4387fd8fefde53",
+            "comment": "SpinButton: Fix falsey check for value so custom handlers work even if value is 0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.35.1",
+      "tag": "office-ui-fabric-react_v5.35.1",
+      "date": "Fri, 22 Dec 2017 11:10:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "cc4f4e4dae7ee5d3c075a078f0c3ec4ac871496e",
+            "comment": "Callout: Fix opacity when class name has animation that involves opacity"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "e963ea8a58939b8a567beaff361ed3292a257cbd",
+            "comment": "Calendar: Fix scrollbar when today button is added to overlayed calendars"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.35.0",
+      "tag": "office-ui-fabric-react_v5.35.0",
+      "date": "Thu, 21 Dec 2017 11:23:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "fc376bb77449323463cf80b52b69fb35aa9b9f92",
+            "comment": "Fixed persona import paths"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "e6eee8b4f76967676cc05a8da247589c10f764ff",
+            "comment": "Grid: Enable styling customization to grid through getStyles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.3",
+      "tag": "office-ui-fabric-react_v5.34.3",
+      "date": "Wed, 20 Dec 2017 11:21:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "332ba751c6f0d9b1e286d30940bf39b50ccc434a",
+            "comment": "HoverCard: fixing detection of if expanded scrolling is needed"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.2",
+      "tag": "office-ui-fabric-react_v5.34.2",
+      "date": "Tue, 19 Dec 2017 11:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4de6890ed8f24f88c5aa1ec6801abf6c18a5fe5e",
+            "comment": "Persona: Set initials color for high contrast mode."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "745d39de8459b457c00c81af37b458188608eaad",
+            "comment": "Broaden the range of allowed prop-type versions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.6.0 <6.0.0` to `>=5.6.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.1",
+      "tag": "office-ui-fabric-react_v5.34.1",
+      "date": "Mon, 18 Dec 2017 11:22:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "MirandaGe <lingge@microsoft.com>",
+            "commit": "4b344435e71f8e1eaafb8ee8370d4d8d752d33a4",
+            "comment": "respect className for PersonaCoin"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.34.0",
+      "tag": "office-ui-fabric-react_v5.34.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme happy."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.8.1 <6.0.0` to `>=5.9.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.14.0 <6.0.0` to `>=5.15.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.1.2 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.1",
+      "tag": "office-ui-fabric-react_v5.33.1",
+      "date": "Fri, 15 Dec 2017 11:22:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "4be08698e006899f130ff0b7cfa5af512de335b1",
+            "comment": "Only perform list measurements if we absolutely need to"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "3eef7db9d269c562e45abae8a097a0c9b97cf9a2",
+            "comment": "Link: Improved selectors to fix pressed state."
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "d2edbbc6c069f8cb8d2936a8d982aa50be0613e1",
+            "comment": "Fixes bug with GroupedList losing focus sometimes when item gets removed from list"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.33.0",
+      "tag": "office-ui-fabric-react_v5.33.0",
+      "date": "Thu, 14 Dec 2017 11:23:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "341f9c1ef7e84ad379c3b6bf7819cad1be3d2f9d",
+            "comment": "ComboBox: Fix some issues with submitting values when freeform and autocomplete"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "5f03aaf93860c5c5a1d582e8eacdbdd31c37028c",
+            "comment": "Reversing the order of :focus and :active selectors for comboBox options."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "983096831e3b29bbecf557439006fb1d14bf3979",
+            "comment": "Panel: Don't render Overlay unless Panel prop isOpen is true"
+          }
+        ],
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "76aead93eeb29bac6f7a9d9e73893cfcfa0685fd",
+            "comment": "Add remeasure public method to ResizeGroup"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.32.0",
       "tag": "office-ui-fabric-react_v5.32.0",
       "date": "Wed, 13 Dec 2017 04:06:51 GMT",

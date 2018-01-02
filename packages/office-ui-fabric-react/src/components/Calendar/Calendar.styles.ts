@@ -27,6 +27,7 @@ export const getStyles = (props: ICalendarStyleProps): ICalendarStyles => {
 
   const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
   const calendarsInline = isMonthPickerVisible && isDayPickerVisible;
+  const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
   const { fonts, palette } = theme;
 
   return {
@@ -68,6 +69,22 @@ export const getStyles = (props: ICalendarStyleProps): ICalendarStyles => {
         selectors: {
           [MS_LARGESCREEN_ACTIVE]: {
             width: calendarsInline ? '440px' : '212px',
+            height: 'auto'
+          }
+        }
+      },
+      showMonthPickerAsOverlay && {
+        selectors: {
+          [MS_LARGESCREEN_ACTIVE]: {
+            height: '240px',
+            minHeight: '240px'
+          }
+        }
+      },
+      overlayedWithButton && {
+        selectors: {
+          [MS_LARGESCREEN_ACTIVE]: {
+            paddingTop: '6px',
             height: 'auto'
           }
         }

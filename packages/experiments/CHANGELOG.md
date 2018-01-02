@@ -1,6 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 12 Dec 2017 02:08:36 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+
+## 5.11.1
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Broaden the range of allowed prop-type versions
+
+## 5.11.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.10.1
+Fri, 15 Dec 2017 11:22:38 GMT
+
+### Patches
+
+- Remove padding and border for suggestions and add callout width prop in floating picker
+
+## 5.10.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- Add remeasure public method to CommandBar
 
 ## 5.9.2
 Tue, 12 Dec 2017 02:08:36 GMT

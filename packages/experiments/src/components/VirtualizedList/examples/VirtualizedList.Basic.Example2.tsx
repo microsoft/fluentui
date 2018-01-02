@@ -26,8 +26,8 @@ type ExampleList = new () => VirtualizedList<IItem>;
 const ExampleList: ExampleList = VirtualizedList as any;
 
 export class VirtualizedListBasicExample2 extends React.Component {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     // Populate with items for demos.
     if (items.length === 0) {

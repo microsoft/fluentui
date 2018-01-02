@@ -8,6 +8,7 @@ exports[`Callout renders Callout correctly 1`] = `
     className="ms-Callout"
     style={
       Object {
+        "filter": "opacity(0)",
         "opacity": 0,
       }
     }

@@ -2,6 +2,70 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.2.1",
+      "tag": "@uifabric/fabric-website_v5.2.1",
+      "date": "Fri, 22 Dec 2017 11:10:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "1cbf872fe8f2feac82a8c2566dfd19b20be7d191",
+            "comment": "Added more descriptive comments to account for the specificity needed to style with the UHF."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.35.0 <6.0.0` to `>=5.35.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/fabric-website_v5.2.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e329c53575a45272da4d28dbc725804f7fac4062",
+            "comment": "GetStarted Page: More specific selectors for button with link to deal with UHF styles."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.33.1 <6.0.0` to `>=5.34.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/fabric-website_v5.1.0",
+      "date": "Thu, 14 Dec 2017 11:23:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "6ed5a98773bb43468eb402b074e7a37847d22a0e",
+            "comment": "GetStarted page: updated to better reflect the current Fabric workflows."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.32.0 <6.0.0` to `>=5.33.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.19",
       "tag": "@uifabric/fabric-website_v5.0.19",
       "date": "Wed, 06 Dec 2017 11:24:52 GMT",

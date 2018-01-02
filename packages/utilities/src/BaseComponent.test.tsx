@@ -91,7 +91,7 @@ function _buildTestFor(methodName: string): void {
 
     BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
 
-    let c = new TestComponent();
+    let c = new TestComponent({});
 
     // tslint:disable-next-line:no-any
     (c as any)[methodName]();

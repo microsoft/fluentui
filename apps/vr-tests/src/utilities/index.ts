@@ -1,4 +1,4 @@
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 
 initializeIcons();
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Facepile Render personas and buttons renders Facepile correctly 1`] = `
+exports[`Facepile renders Facepile correctly 1`] = `
 <div
   className="ms-Facepile"
 >
