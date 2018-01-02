@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { ITextField, ITextFieldProps } from './TextField.types';
-import { Label } from '../../Label';
+import { Label, ILabelStyles, ILabelProps } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   DelayedRender,
   BaseComponent,
   getId,
-  css,
   getNativeProps,
   inputProperties,
   textAreaProperties,
@@ -14,7 +13,6 @@ import {
   classNamesFunction
 } from '../../Utilities';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
-import { AnimationClassNames } from '../../Styling';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();
 
@@ -33,7 +31,7 @@ export interface ITextFieldState {
   errorMessage?: string;
 }
 
-@customizable('TextField', ['theme'])
+@customizable('TextField', ['theme', 'getStyles', 'getLabelStyles'])
 export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
@@ -141,13 +139,11 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       required,
       underlined,
       borderless,
-      addonString, // @deprecated
       prefix,
       suffix,
       getStyles,
       theme,
       resizable,
-      onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel
@@ -197,9 +193,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
             { errorMessage &&
               <div>
                 <DelayedRender>
-                  <p
-                    className={ css(AnimationClassNames.slideDownIn20, this._classNames.errorMessage) }
-                  >
+                  <p className={ this._classNames.errorMessage }>
                     <span aria-live='assertive' data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
@@ -296,21 +290,28 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
     const {
+      theme,
+      underlined,
+      getLabelStyles,
       label,
-      componentId
+      componentId,
+      required,
+      disabled
      } = props;
+
+    const labelProps: ILabelProps = {
+      required,
+      htmlFor: componentId,
+      getStyles: getLabelStyles ? () => getLabelStyles({ theme: theme!, underlined, disabled }) : undefined
+    };
+
     if (label) {
-      return (<Label htmlFor={ componentId }>{ label }</Label>);
+      return (
+        <Label {...labelProps} >
+          { label }
+        </Label>);
     }
     return null;
-  }
-
-  // @deprecated
-  private _onRenderAddon(props: ITextFieldProps): JSX.Element {
-    let { addonString } = props;
-    return (
-      <span style={ { paddingBottom: '1px' } }>{ addonString }</span>
-    );
   }
 
   private _onRenderPrefix(props: ITextFieldProps): JSX.Element {

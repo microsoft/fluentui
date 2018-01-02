@@ -2,10 +2,30 @@ import {
   FontSizes,
   IRawStyle,
   hiddenContentStyle,
-  HighContrastSelector
+  HighContrastSelector,
+  AnimationClassNames
 } from '../../Styling';
+import { ILabelStyles } from '../../Label';
 import { TextFieldBase } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
+
+export function getLabelStyles(props: ITextFieldStyleProps): ILabelStyles {
+  return {
+    root: [
+      props.disabled && {
+        color: props.theme.palette.neutralTertiary
+      },
+      props.underlined && {
+        fontSize: FontSizes.medium,
+        marginRight: 8,
+        paddingLeft: 12,
+        paddingRight: 0,
+        lineHeight: '22px',
+        height: 32
+      }
+    ]
+  };
+}
 
 export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
@@ -73,10 +93,15 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             borderColor: 'Highlight'
           }
         }
-      }
+      },
     ],
     wrapper: [
-      hasErrorMessage && underlined && {
+      underlined && {
+        display: 'flex',
+        borderBottom: `1px solid ${semanticColors.inputBorder}`,
+        width: '100%'
+      },
+      hasErrorMessage && underlined && !disabled && {
         borderBottom: `1px solid ${semanticColors.errorText}`,
         selectors: {
           ':focus': {
@@ -86,11 +111,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             borderBottom: `1px solid ${semanticColors.errorText}`,
           }
         }
-      },
-      underlined && {
-        display: 'flex',
-        borderBottom: `1px solid ${semanticColors.inputBorder}`,
-        width: '100%'
       },
       underlined && disabled && {
         borderBottomColor: semanticColors.disabledBackground
@@ -162,6 +182,17 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             border: `1px solid ${semanticColors.errorText}`,
           }
         }
+      },
+      !hasLabel && required && {
+        selectors: {
+          ':after': {
+            content: `' *'`,
+            color: semanticColors.errorText,
+            position: 'absolute',
+            top: -5,
+            right: -10,
+          }
+        }
       }
     ],
     field: [
@@ -214,6 +245,11 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       }
     ],
     icon: [
+      multiline && {
+        paddingRight: 24,
+        paddingBottom: 8,
+        alignItems: 'flex-end'
+      },
       {
         pointerEvents: 'none',
         position: 'absolute',
@@ -233,6 +269,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     ],
     errorMessage: [
       'ms-TextField-errorMessage',
+      AnimationClassNames.slideDownIn20,
       {
         fontSize: FontSizes.small,
         color: semanticColors.errorText,
@@ -263,9 +300,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         padding: '0 10px',
         lineHeight: 1
       }
-    ],
-    label: {
-      background: 'pink'
-    }
-  }
+    ]
+  };
 }

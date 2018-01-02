@@ -235,6 +235,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    */
   getStyles?: IStyleFunction<ITextFieldStyleProps, ITextFieldStyles>;
 
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getLabelStyles?: IStyleFunction<ITextFieldStyleProps, ILabelStyles>;
+
 }
 
 export interface ITextFieldStyleProps {
