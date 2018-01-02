@@ -42,7 +42,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected loadingTimer: number | undefined;
-  protected currentPromise: PromiseLike<any>;
+  protected currentPromise: PromiseLike<any> | undefined;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -94,6 +94,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           this.resetFocus(focusIndex);
         }
       });
+    }
+  }
+
+  public componentWillUnmount(): void {
+    super.componentWillUnmount();
+    if (this.loadingTimer) {
+      this._async.clearTimeout(this.loadingTimer);
+    }
+    if (this.currentPromise) {
+      this.currentPromise = undefined;
     }
   }
 
@@ -306,9 +316,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => this.setState({
-          suggestionsLoading: true
-        }), 500);
+        this.loadingTimer = this._async.setTimeout(() => {
+          this.setState({
+            suggestionsLoading: true
+          });
+        }, 500);
       }
 
       // Clear suggestions
