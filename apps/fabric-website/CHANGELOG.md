@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Dec 2017 11:10:56 GMT and should not be manually modified.
+
+## 5.2.1
+Fri, 22 Dec 2017 11:10:56 GMT
+
+### Patches
+
+- Added more descriptive comments to account for the specificity needed to style with the UHF.
 
 ## 5.2.0
 Sat, 16 Dec 2017 05:07:22 GMT

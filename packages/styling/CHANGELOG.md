@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+
+## 5.15.1
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Patches
+
+- Adding new normalize and AnimationValues
 
 ## 5.15.0
 Sat, 16 Dec 2017 05:07:22 GMT
