@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Disabled focus on the examplecard",
+      "comment": "ExampleCard: Disabled focus on the container.",
       "type": "patch"
     }
   ],
