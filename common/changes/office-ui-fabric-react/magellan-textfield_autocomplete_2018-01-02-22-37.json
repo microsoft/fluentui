@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Enable autocomplete for textfield",
+      "comment": "TextField: Allows user to enable autocomplete.",
       "type": "minor"
     }
   ],
