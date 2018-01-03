@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changed ToolTipHost to inline-block",
+      "comment": "ToolTop: Changed ToolTipHost to inline-block",
       "type": "patch"
     }
   ],
