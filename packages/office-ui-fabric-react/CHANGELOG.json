@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.37.0",
+      "tag": "office-ui-fabric-react_v5.37.0",
+      "date": "Wed, 03 Jan 2018 11:23:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "MirandaGe <lingge@microsoft.com>",
+            "commit": "057b0bea9bf3aa9daab532c93bd9d9a206a085dd",
+            "comment": "add unmount check in suggestion promise"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "6d6a796f27a91408a065f330c08afc739075ae9f",
+            "comment": "TextField: Allows user to provide the `autocomplete` prop."
+          },
+          {
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "57763c505a6ebdf04577a3db70a521add6735cf4",
+            "comment": "Added optional callback for getting image load state change events from personacoin through Persona component"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.3.0 <6.0.0` to `>=5.4.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.36.0",
       "tag": "office-ui-fabric-react_v5.36.0",
       "date": "Thu, 28 Dec 2017 11:23:50 GMT",

@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2018 11:23:12 GMT and should not be manually modified.
+
+## 5.37.0
+Wed, 03 Jan 2018 11:23:12 GMT
+
+### Minor changes
+
+- TextField: Allows user to provide the `autocomplete` prop.
+- Added optional callback for getting image load state change events from personacoin through Persona component
+
+### Patches
+
+- add unmount check in suggestion promise
 
 ## 5.36.0
 Thu, 28 Dec 2017 11:23:50 GMT
