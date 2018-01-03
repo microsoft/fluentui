@@ -7,7 +7,6 @@ import {
 
 import A11yManager from './a11yManager/A11yManager';
 import ArrowNavigation from './a11yManager/ArrowNavigation';
-import TrapNavigation from './a11yManager/TrapNavigation';
 
 export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
   private _a11yManager: A11yManager | undefined;
@@ -18,7 +17,6 @@ export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
       prefix: 'a11y'  // only reads attributes starting with data-a11y-...
     });
     this._a11yManager!.registerNavigationMode(ArrowNavigation);
-    this._a11yManager!.registerNavigationMode(TrapNavigation);
   }
 
   // private _exitTrapZone() {
@@ -66,18 +64,6 @@ export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
                 <button>Element After</button>
               </div>
             </ExampleCard>
-
-            {/* <ExampleCard title='Trap Navigation Example'>
-              <div>
-                <p>Experimenting with FocusTrapZone idea. This can trap the focus, but locking/unlocking mechanism and focus restoration needs to be implemented. There also can be an advanced feature to disallow tabbing into the zone.</p>
-                <button>Element Before</button>
-                <div data-a11y-mode='Trap' style={ { border: 'dashed 2px black' } } ref={ c => this._trapZone = c as HTMLDivElement }>
-                  <button>Item 1</button><button>Item 2</button><button>Item 3</button><button>Item 4</button>
-                  <button onClick={ this._exitTrapZone }>Exit Trap Zone</button>
-                </div>
-                <button>Element After</button>
-              </div>
-            </ExampleCard> */}
           </div>
         }
         /* tslint:disable:max-line-length */

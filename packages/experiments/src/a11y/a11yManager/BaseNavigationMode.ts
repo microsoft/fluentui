@@ -77,11 +77,16 @@ abstract class BaseNavigationMode {
     this._onOutwardFocus(modeRoot, focusTransition);
   }
 
-  protected abstract _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement, params?: string[]): HTMLElement | undefined;
+  protected abstract _navigate(
+    modeRoot: HTMLElement,
+    event: IKeyboardEvent,
+    currentElement: HTMLElement,
+    params?: string[]
+  ): HTMLElement | undefined;
 
   protected _select(modeRoot: HTMLElement, selector: string, currentElement: HTMLElement): HTMLElement | undefined {
     return undefined;
-  };
+  }
 
   protected _onInwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
     // Do nothing

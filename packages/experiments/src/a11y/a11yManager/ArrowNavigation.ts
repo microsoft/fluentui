@@ -4,6 +4,9 @@ import Keyboard, { IKeyboardEvent } from '../keyboard/Keyboard';
 import FocusTransition from '../focus/FocusTransition';
 
 export default class ArrowNavigation extends BaseNavigationMode {
+  // A map to save where the last focused element for each zone was (key=>zone root, value=>last focused element)
+  private static _lastFocusedMap: Map<HTMLElement, HTMLElement> = new Map<HTMLElement, HTMLElement>();
+
   public get name(): string {
     return 'Arrow';
   }
@@ -12,7 +15,11 @@ export default class ArrowNavigation extends BaseNavigationMode {
     return [];
   }
 
-  protected _navigate(modeRoot: HTMLElement, event: IKeyboardEvent, currentElement: HTMLElement, params?: string[]): HTMLElement | undefined {
+  protected _navigate(
+    modeRoot: HTMLElement,
+    event: IKeyboardEvent,
+    currentElement: HTMLElement, params?: string[]
+  ): HTMLElement | undefined {
     const zone: A11yElement = this.manager.a11yElement(modeRoot);
     const current: A11yElement = this.manager.a11yElement(currentElement);
     let horizontal: boolean = !!params && params.map((p: string) => p.toLowerCase()).filter((p: string) => p === 'horizontal').length > 0;
@@ -41,7 +48,7 @@ export default class ArrowNavigation extends BaseNavigationMode {
 
   protected _onInwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
     console.log(focusTransition);
-    const lastFocused: HTMLElement | undefined = modeRoot.querySelector('.lastFocused') as HTMLElement || undefined;
+    const lastFocused: HTMLElement | undefined = ArrowNavigation._lastFocusedMap.get(modeRoot);
 
     if (lastFocused) {
       this.manager.focusTo(lastFocused);
@@ -49,15 +56,8 @@ export default class ArrowNavigation extends BaseNavigationMode {
   }
 
   protected _onOutwardFocus(modeRoot: HTMLElement, focusTransition: FocusTransition): void {
-    // Clear the old ones
-    const lastFocused: HTMLElement | undefined = modeRoot.querySelector('.lastFocused') as HTMLElement || undefined;
-    if (lastFocused) {
-      lastFocused.classList.remove('lastFocused');
-    }
-
-    // Mark the element losing focus
     if (focusTransition.src) {
-      focusTransition.src.classList.add('lastFocused');
+      ArrowNavigation._lastFocusedMap.set(modeRoot, focusTransition.src);
     }
   }
 }
