@@ -37,6 +37,10 @@ common/_semanticSlots.scss  @phkuo
 common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
+### Utilities
+dateMath/     @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+dateValues/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+
 ## Components
 # ActivityItem/
 # Breadcrumb/
