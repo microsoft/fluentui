@@ -133,6 +133,9 @@ export const getMenuItemStyles = memoizeFunction((
         }
       }
     },
+    iconDisabled: {
+      color: semanticColors.disabledBodyText,
+    },
     checkmarkIcon: {
       color: semanticColors.bodySubtext,
       selectors: {
