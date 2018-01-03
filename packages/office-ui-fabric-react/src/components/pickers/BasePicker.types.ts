@@ -126,7 +126,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback to override the default behavior of adding the selected suggestion on dismiss.
    */
-  onDismiss?: (selectedItem?: T) => void;
+  onDismiss?: (selectedItem?: T, ev?: any) => void;
 }
 
 export interface IBasePickerSuggestionsProps {
