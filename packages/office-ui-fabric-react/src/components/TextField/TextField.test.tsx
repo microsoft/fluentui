@@ -55,6 +55,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextFieldBase
+        // tslint:disable-next-line:jsx-no-lambda
         getStyles={ () => ({ prefix: 'prefix' }) }
         prefix={ examplePrefix }
       />
@@ -70,6 +71,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextFieldBase
+        // tslint:disable-next-line:jsx-no-lambda
         getStyles={ () => ({ suffix: 'suffix' }) }
         suffix={ exampleSuffix }
       />
@@ -86,6 +88,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextFieldBase
+        // tslint:disable-next-line:jsx-no-lambda
         getStyles={ () => ({ prefix: 'prefix', suffix: 'suffix' }) }
         prefix={ examplePrefix }
         suffix={ exampleSuffix }
@@ -407,23 +410,25 @@ describe('TextField', () => {
     expect(callCount).toEqual(2);
   });
 
-  // it('should select a range of text', () => {
-  //   let textField: TextField | undefined;
-  //   const initialValue = 'initial value';
+  it('should select a range of text', () => {
+    let textField: TextFieldBase | undefined;
+    const initialValue = 'initial value';
 
-  //   const onSelect = () => {
-  //     const selectedText = window.getSelection().toString();
-  //     expect(selectedText).toEqual(initialValue);
-  //   };
+    const onSelect = () => {
+      const selectedText = window.getSelection().toString();
+      expect(selectedText).toEqual(initialValue);
+    };
 
-  //   renderIntoDocument(
-  //     <TextFieldBase
-  //       componentRef={ (t) => textField = t! }
-  //       defaultValue={ initialValue }
-  //       onSelect={ onSelect }
-  //     />
-  //   );
+    renderIntoDocument(
+      <TextFieldBase
+        componentRef={ (t) => textField = t! }
+        defaultValue={ initialValue }
+        onSelect={ onSelect }
+      />
+    );
 
-  //   textField!.setSelectionRange(0, initialValue.length);
-  // });
+    console.log(textField);
+
+    textField!.setSelectionRange(0, initialValue.length);
+  });
 });
