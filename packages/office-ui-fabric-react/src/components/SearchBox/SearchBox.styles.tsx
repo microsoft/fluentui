@@ -133,7 +133,9 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontSize: 'inherit',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',
-        flex: '1 1 0',
+        flexBasis: 0,
+        flexGrow: 1,
+        flexShrink: 1,
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         // This padding forces the text placement to round up.
