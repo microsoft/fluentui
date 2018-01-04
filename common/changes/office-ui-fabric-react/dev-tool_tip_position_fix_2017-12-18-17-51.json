@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Allows user to provide the `autocomplete` prop.",
-      "type": "minor"
+      "comment": "ToolTop: Changed ToolTipHost to inline-block",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

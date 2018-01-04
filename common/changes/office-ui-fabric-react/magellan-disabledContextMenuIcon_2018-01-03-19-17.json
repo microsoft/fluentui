@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add unmount check in suggestion promise",
+      "comment": "ContextualMenu: Added styling for disabled icon\"",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lingge@microsoft.com"
+  "email": "law@microsoft.com"
 }
