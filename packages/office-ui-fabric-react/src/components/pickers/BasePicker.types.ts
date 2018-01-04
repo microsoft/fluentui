@@ -139,7 +139,7 @@ export interface IBasePickerSuggestionsProps {
    */
   suggestionsHeaderText?: string;
   /**
-   * The text that should appear at the top of the most recenty used box.
+   * The text that should appear at the top of the most recently used box.
    */
   mostRecentlyUsedHeaderText?: string;
   /**
