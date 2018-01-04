@@ -70,24 +70,38 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   public render() {
+    let id = this._id;
     let stars = [];
+    let starIds = [];
+    let {
+      disabled,
+      getAriaLabel,
+      max,
+      min,
+      rating,
+      readOnly,
+      size
+    } = this.props;
 
-    for (let i = this.props.min as number; i <= (this.props.max as number); i++) {
+    for (let i = min as number; i <= (max as number); i++) {
       let ratingStarProps: IRatingStarProps = {
         fillPercentage: this._getFillingPercentage(i),
-        disabled: this.props.disabled ? true : false
+        disabled: disabled ? true : false
       };
+
+      starIds.push(this._getStarId(i - 1));
 
       stars.push(
         <button
           className={ css('ms-Rating-button', styles.ratingButton, {
-            ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large,
-            ['ms-Rating--small ' + styles.rootIsSmall]: this.props.size !== RatingSize.Large
+            ['ms-Rating--large ' + styles.rootIsLarge]: size === RatingSize.Large,
+            ['ms-Rating--small ' + styles.rootIsSmall]: size !== RatingSize.Large
           }) }
+          id={ starIds[i - 1] }
           key={ i }
-          { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
+          { ...((i === Math.ceil(rating as number)) ? { 'data-is-current': true } : {}) }
           onFocus={ this._onFocus.bind(this, i) }
-          disabled={ this.props.disabled || this.props.readOnly ? true : false }
+          disabled={ disabled || readOnly ? true : false }
           role='presentation'
         >
           { this._getLabel(i) }
@@ -99,17 +113,24 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     return (
       <div
         className={ css('ms-Rating-star') }
-        aria-label={ this.props.getAriaLabel ? this.props.getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
+        aria-label={ getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : '' }
+        id={ id }
       >
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
-          tabIndex={ this.props.readOnly ? 0 : -1 }
+          tabIndex={ readOnly ? 0 : -1 }
+          data-is-focusable={ readOnly ? true : false }
+          defaultActiveElement={ rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined }
           className={ css('ms-Rating-focuszone', styles.ratingFocusZone) }
         >
           { stars }
         </FocusZone>
-      </div>
+      </div >
     );
+  }
+
+  private _getStarId(index: number): string {
+    return this._id + '-star-' + index;
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
