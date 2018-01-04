@@ -122,8 +122,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let selectItemFunction = () => {
       if (this.props.onDismiss) {
         this.props.onDismiss(
-          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined,
-          ev
+          ev,
+          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined
         );
       }
 
