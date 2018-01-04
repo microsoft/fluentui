@@ -15,7 +15,6 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     palette
   } = theme;
 
-
   const ratingSmallIconSize = '16px';
   const ratingLargeIconSize = '16px';
 
