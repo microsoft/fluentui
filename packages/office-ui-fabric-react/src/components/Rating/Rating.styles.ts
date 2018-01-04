@@ -11,12 +11,11 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   } = props;
 
   const {
-    semanticColors,
-    palette
+    semanticColors
   } = theme;
 
   const ratingSmallIconSize = '16px';
-  const ratingLargeIconSize = '16px';
+  const ratingLargeIconSize = '20px';
 
   return {
     ratingStar: [
@@ -29,11 +28,11 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     ratingStarBack: [
       'ms-RatingStar-back',
       {
-        color: semanticColors.ratingDefaultColor,
+        color: semanticColors.bodySubtext,
         width: '100%'
       },
       disabled && {
-        color: semanticColors.ratingDisabledColor,
+        color: semanticColors.disabledBodyText,
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText'
@@ -51,7 +50,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
         textAlign: 'center',
         verticalAlign: 'middle',
         overflow: 'hidden',
-        color: semanticColors.ratingSelectedColor,
+        color: semanticColors.bodyTextChecked,
         selectors: {
           [HighContrastSelector]: {
             'color': 'Highlight'

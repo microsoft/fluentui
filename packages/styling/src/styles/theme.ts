@@ -161,10 +161,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listTextColor: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
     listItemBackgroundChecked: p.neutralLight,
-    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
-
-    ratingDefaultColor: p.neutralTertiary,
-    ratingSelectedColor: p.black,
-    ratingDisabledColor: p.neutralTertiaryAlt
+    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
 }
