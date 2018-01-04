@@ -127,7 +127,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         );
       }
 
-      if (!ev || (ev && !ev.defaultPrevented)){
+      if (!ev || (ev && !ev.defaultPrevented)) {
         // Select the first suggestion if one is available when user leaves.
         if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
           this.addItemByIndex(0);
