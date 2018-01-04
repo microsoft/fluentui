@@ -254,4 +254,21 @@ export interface ISemanticColors {
    * The background color of a checked and hovered list item.
    */
   listItemBackgroundCheckedHovered: string;
+
+  //// Rating
+
+  /**
+   * The default color for rating stars.
+   */
+  ratingDefaultColor: string;
+
+  /**
+   * The color for selected rating stars.
+   */
+  ratingSelectedColor: string;
+
+  /**
+   * The color for disabled rating stars.
+   */
+  ratingDisabledColor: string;
 }

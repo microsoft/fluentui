@@ -1,0 +1,110 @@
+import {
+  hiddenContentStyle,
+  HighContrastSelector,
+} from '../../Styling';
+import { RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
+
+export function getStyles(props: IRatingStyleProps): IRatingStyles {
+  const {
+    disabled,
+    theme
+  } = props;
+
+  const {
+    semanticColors,
+    palette
+  } = theme;
+
+
+  const ratingSmallIconSize = '16px';
+  const ratingLargeIconSize = '16px';
+
+  return {
+    ratingStar: [
+      'ms-RatingStar-container',
+      {
+        display: 'inline-block',
+        position: 'relative'
+      }
+    ],
+    ratingStarBack: [
+      'ms-RatingStar-back',
+      {
+        color: semanticColors.ratingDefaultColor,
+        width: '100%'
+      },
+      disabled && {
+        color: semanticColors.ratingDisabledColor,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText'
+          }
+        }
+      }
+    ],
+    ratingStarFront: [
+      'ms-RatingStar-front',
+      {
+        position: 'absolute',
+        height: '100 %',
+        left: '0',
+        top: '0',
+        textAlign: 'center',
+        verticalAlign: 'middle',
+        overflow: 'hidden',
+        color: semanticColors.ratingSelectedColor,
+        selectors: {
+          [HighContrastSelector]: {
+            'color': 'Highlight'
+          }
+        }
+      }
+    ],
+    ratingButton: [
+      'ms-Rating-button',
+      {
+        background: 'none',
+        margin: '3px 3px 0px 0px',
+        padding: '0px',
+        border: 'none',
+        cursor: 'pointer',
+        selectors: {
+          '&:disabled': {
+            cursor: 'default'
+          },
+          '&[disabled]': {
+            cursor: 'default'
+          }
+        }
+      },
+      disabled && {
+        cursor: 'default'
+      },
+    ],
+    rootIsSmall: [
+      'ms-Rating--small',
+      {
+        fontSize: ratingSmallIconSize,
+        lineHeight: ratingSmallIconSize
+      }
+    ],
+    rootIsLarge: [
+      'ms-Rating--large',
+      {
+        fontSize: ratingLargeIconSize,
+        lineHeight: ratingLargeIconSize
+      }
+    ],
+    labelText: [
+      'ms-Rating-labelText',
+      hiddenContentStyle
+    ],
+    ratingFocusZone: [
+      'ms-Rating-focuszone',
+      {
+        display: 'inline-block',
+        paddingBottom: '1px'
+      }
+    ]
+  };
+}
