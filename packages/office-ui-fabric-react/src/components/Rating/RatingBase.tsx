@@ -120,7 +120,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     return (
       <div
-        className={ css('ms-Rating-star') }
+        className={ 'ms-Rating-star' }
         aria-label={ this.props.getAriaLabel ? this.props.getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
       >
         <FocusZone

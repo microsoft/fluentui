@@ -8,6 +8,7 @@ import * as renderer from 'react-test-renderer';
 
 import { Rating } from './Rating';
 import { RatingBase } from './RatingBase';
+import { getStyles } from './Rating.styles';
 
 describe('Rating', () => {
   it('Renders Rating correctly', () => {
@@ -21,8 +22,9 @@ describe('Rating', () => {
     let threwException = false;
     let rating;
     try {
-      rating = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <Rating
+      rating = ReactTestUtils.renderIntoDocument(
+        <RatingBase
+          getStyles={ getStyles }
           rating={ 2 }
         />
       );
@@ -62,8 +64,9 @@ describe('Rating', () => {
     let threwException = false;
     let rating;
     try {
-      rating = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <Rating
+      rating = ReactTestUtils.renderIntoDocument(
+        <RatingBase
+          getStyles={ getStyles }
           rating={ 10 }
         />
       );
@@ -98,7 +101,8 @@ describe('Rating', () => {
     let rating;
     try {
       rating = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <Rating
+        <RatingBase
+          getStyles={ getStyles }
           rating={ 2.5 }
         />
       );
@@ -131,7 +135,8 @@ describe('Rating', () => {
     let choiceGroup;
     try {
       choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <Rating
+        <RatingBase
+          getStyles={ getStyles }
           disabled={ true }
         />
       );
@@ -157,7 +162,8 @@ describe('Rating', () => {
     let choiceGroup;
     try {
       choiceGroup = ReactTestUtils.renderIntoDocument<RatingBase>(
-        <Rating
+        <RatingBase
+          getStyles={ getStyles }
           readOnly={ true }
           rating={ 2 }
         />
