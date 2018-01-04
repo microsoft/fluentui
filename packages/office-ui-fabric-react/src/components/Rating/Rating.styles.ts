@@ -28,7 +28,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     ratingStarBack: [
       'ms-RatingStar-back',
       {
-        color: semanticColors.bodySubtext,
+        color: semanticColors.disabledText,
         width: '100%'
       },
       disabled && {
