@@ -32,8 +32,8 @@ export class RatingBasicExample extends React.Component<{}, {
     };
 
     this._customTheme = createTheme(getTheme());
-    this._customTheme.semanticColors.ratingDefaultColor = '#DFDFDF';
-    this._customTheme.semanticColors.ratingSelectedColor = '#1E9FE8';
+    this._customTheme.semanticColors.bodySubtext = '#DFDFDF';
+    this._customTheme.semanticColors.bodyTextChecked = '#1E9FE8';
   }
 
   // tslint:disable:jsx-no-lambda
