@@ -7,9 +7,11 @@ import { IRenderFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
-  * If there is a menu open this will dismiss the menu
+  * Close/open the menu.
+  * Default behavior: dismiss menu
+  * @default false;
   */
-  dismissMenu: () => void;
+  dismissMenu: (isMenuOpen?: boolean) => void;
 
   /**
    * Sets focus to the input in the comboBox
@@ -124,6 +126,14 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
   /**
+  * Prevent input focus.  When lower content is present, allows user to focus on lower content
+  * @default false;
+  */
+  preventInputFocus?: boolean;
+
+  /**
+  * Custom width for dropdown. If value is 0, width of the input field is used.
+  * @default 0
   * Custom width for dropdown (unless useComboBoxAsMenuWidth is undefined or false)
   */
   dropdownWidth?: number;

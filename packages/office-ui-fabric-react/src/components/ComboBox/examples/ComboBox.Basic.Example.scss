@@ -1,3 +1,5 @@
+@import '../../../common/common';
+
 :global {
   .ms-ComboBoxBasicExample {
     max-width: 300px;
@@ -5,5 +7,39 @@
     .ms-ComboBox-container {
       margin: 0 0 10px 0;
     }
+  }
+
+  .customButton {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 36px;
+    background-color: white;
+    box-sizing: border-box;
+    border-top: 1px solid $ms-color-neutralLight;
+    text-align:left;
+    padding: 10px;
+
+    div {
+        font-weight: normal;
+    }
+
+    &:hover {
+        cursor: pointer;
+
+    }
+  }
+
+  .ms-Callout-main{
+    overflow: none;
+  }
+
+  .ms-ComboBox-optionsContainerWrapper{
+    min-width: 103px;
+    max-height: 154px;
+    top: 0px;
+    position: relative;
+    overflow-y: scroll;
+    margin-bottom: 36px;
   }
 }

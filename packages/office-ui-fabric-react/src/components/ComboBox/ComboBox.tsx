@@ -85,7 +85,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: 'on',
-    buttonIconProps: { iconName: 'ChevronDown' }
+    buttonIconProps: { iconName: 'ChevronDown' },
+    preventInputFocus: false
   };
 
   public refs: {
@@ -380,9 +381,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Close menu callout if it is open
    */
   @autobind
-  public dismissMenu(): void {
+  public dismissMenu(isMenuOpen = false): void {
     let { isOpen } = this.state;
-    isOpen && this.setState({ isOpen: false });
+    isOpen && this.setState({ isOpen: isMenuOpen });
   }
 
   /**
@@ -713,10 +714,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   @autobind
   private _select() {
-    this._comboBox.inputElement.select();
+    if (!this.props.preventInputFocus) {
+      this._comboBox.inputElement.select();
 
-    if (!this.state.focused) {
-      this.setState({ focused: true });
+      if (!this.state.focused) {
+        this.setState({ focused: true });
+      }
     }
   }
 
