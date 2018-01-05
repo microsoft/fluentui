@@ -211,12 +211,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </button>
       );
     } else if (item.href) {
+      // Allow the disabled property on anchor elements for commandbar
       command = (
         <a
-          { ...getNativeProps(item, anchorProperties) }
+          { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
-          href={ item.href }
+          href={ item.disabled ? undefined : item.href }
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenuItems(item) }
           role='menuitem'
@@ -233,9 +234,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </a>
       );
     } else {
+      // Allow the disabled property on div elements for commandbar
       command = (
         <div
-          { ...getNativeProps(item, divProperties) }
+          { ...getNativeProps(item, divProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
           data-command-key={ itemKey }
