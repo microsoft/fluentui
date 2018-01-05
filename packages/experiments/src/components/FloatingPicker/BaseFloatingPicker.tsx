@@ -39,7 +39,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
-  protected timer: number | undefined;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -97,6 +96,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   public componentDidMount(): void {
     this._bindToInputElement();
+
+    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay)
   }
 
   public componentDidUpdate(): void {
@@ -203,19 +204,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       (this.props.onInputChanged as (filter: string) => void)(updatedValue);
     }
 
-    if (this.props.resolveDelay) {
-      // If there is a resolve delay, clear the timer, if it is not null
-      if (this.timer) {
-        this._async.clearTimeout(this.timer);
-        this.timer = undefined;
-      }
-
-      // Set a timeout action to resolve the suggestions after the resolve delay time
-      this.timer = this._async.setTimeout(() => this._onResolveSuggestions(updatedValue), this.props.resolveDelay as number);
-    } else {
-      // If there is no resolve delay, resolve the suggestions immediately
-      this._onResolveSuggestions(updatedValue);
-    }
+    this._onResolveSuggestions(updatedValue);
   }
 
   protected updateSuggestionWithZeroState(): void {
