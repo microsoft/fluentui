@@ -123,6 +123,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback used to modify the input string.
    */
   onInputChange?: (input: string) => string;
+  /**
+   * A callback to override the default behavior of adding the selected suggestion on dismiss.
+   */
+  onDismiss?: (ev?: any, selectedItem?: T) => void;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -135,7 +139,7 @@ export interface IBasePickerSuggestionsProps {
    */
   suggestionsHeaderText?: string;
   /**
-   * The text that should appear at the top of the most recenty used box.
+   * The text that should appear at the top of the most recently used box.
    */
   mostRecentlyUsedHeaderText?: string;
   /**
