@@ -48,7 +48,7 @@ export interface IContextualMenuState {
 }
 
 export function hasSubmenu(item: IContextualMenuItem) {
-  return item.subMenuProps ? !!item.subMenuProps : !!item.items;
+  return !!(item.subMenuProps || item.items);
 }
 
 export function getSubmenuItems(item: IContextualMenuItem) {
