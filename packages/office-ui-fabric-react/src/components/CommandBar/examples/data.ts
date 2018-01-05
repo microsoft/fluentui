@@ -25,7 +25,7 @@ export const items = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    href: 'https://mytenenat.sharepoint.com/teams/IT/BPU/',
+    href: 'https://microsoft.com',
     ['data-automation-id']: 'uploadButton'
   },
   {
@@ -38,14 +38,12 @@ export const items = [
     key: 'download',
     name: 'Download',
     icon: 'Download',
-    onClick: () => { return; }
   },
   {
-    key: 'disabled',
-    name: 'Disabled...',
-    icon: 'Cancel',
-    disabled: true,
-    onClick: () => { return; }
+    key: 'link',
+    name: 'Link',
+    icon: 'WindowsLogo',
+    href: 'https://microsoft.com',
   }
 ];
 

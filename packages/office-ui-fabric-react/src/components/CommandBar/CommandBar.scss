@@ -109,6 +109,15 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &.itemLinkIsNoName {
     padding: 0 8px;
   }
+
+  &[disabled] {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: default;
+    pointer-events: none;
+    .itemIcon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+  }
 }
 
 .itemText {
@@ -161,15 +170,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
   &.itemLinkIsExpanded:hover {
     background-color: $ms-color-neutralQuaternary;
-  }
-
-  &[disabled] {
-    color: $ms-color-neutralTertiaryAlt;
-    cursor: default;
-    pointer-events: none;
-    .itemIcon {
-      color: $ms-color-neutralTertiaryAlt;
-    }
   }
 }
 
