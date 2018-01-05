@@ -11,7 +11,8 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   } = props;
 
   const {
-    semanticColors
+    semanticColors,
+    palette
   } = theme;
 
   const ratingSmallIconSize = '16px';
@@ -28,7 +29,8 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     ratingStarBack: [
       'ms-RatingStar-back',
       {
-        color: semanticColors.disabledText,
+        // TODO: Use a proper semantic color for this
+        color: palette.neutralTertiary,
         width: '100%'
       },
       disabled && {
