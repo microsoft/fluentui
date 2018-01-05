@@ -16,6 +16,7 @@ import './ExtendedPeoplePicker.Basic.Example.scss';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, IExtendedPersonaProps, ISelectedPeopleProps, SelectedPeopleList }
   from '../../SelectedItemsList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -37,6 +38,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _picker: ExtendedPeoplePicker;
   private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
   private selectedItemsListProps: ISelectedPeopleProps;
+  private selection: Selection;
 
   constructor(props: {}) {
     super(props);
@@ -47,6 +49,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       assign(target, persona);
       peopleList.push(target);
     });
+
+    this.selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
     this.state = {
       peopleList: peopleList,
@@ -69,6 +73,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       onExpandGroup: this._onExpandItem,
       removeMenuItemText: 'Remove',
       copyMenuItemText: 'Copy name',
+      selection: this.selection
     };
   }
 
@@ -99,8 +104,13 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
           'aria-label': 'People Picker'
         } }
         componentRef={ this._setComponentRef }
+        headerComponent={ this.renderHeader() }
       />
     );
+  }
+
+  private renderHeader(): JSX.Element {
+    return <div>TO:</div>
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IExtendedPersonaProps>): JSX.Element {
@@ -109,6 +119,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
     return (<SelectedPeopleList {...props} />);
+  }
+
+  private _onSelectionChange(): void {
+    this.forceUpdate();
   }
 
   @autobind

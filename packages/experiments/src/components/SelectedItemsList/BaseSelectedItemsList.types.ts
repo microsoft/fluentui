@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */
@@ -17,6 +18,8 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 // tslint:disable-next-line:no-any
 export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
   componentRef?: (component?: IBaseSelectedItemsList<T>) => void;
+
+  selection: Selection;
   /**
    * A callback for when items are copied
    */
