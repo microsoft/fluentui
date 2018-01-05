@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Jan 2018 11:14:58 GMT and should not be manually modified.
+
+## 5.38.0
+Fri, 05 Jan 2018 11:14:58 GMT
+
+### Minor changes
+
+- Added a customizable onDismiss to the BasePicker
+
+### Patches
+
+- ToolTop: Changed ToolTipHost to inline-block
+- ContextualMenu: Added styling for disabled icon"
+
+## 5.37.0
+Wed, 03 Jan 2018 11:23:12 GMT
+
+### Minor changes
+
+- TextField: Allows user to provide the `autocomplete` prop.
+- Added optional callback for getting image load state change events from personacoin through Persona component
+
+### Patches
+
+- add unmount check in suggestion promise
 
 ## 5.36.0
 Thu, 28 Dec 2017 11:23:50 GMT

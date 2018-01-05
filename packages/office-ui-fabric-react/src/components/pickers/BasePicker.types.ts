@@ -127,6 +127,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Whether or not suggestions should reposition based on the screensize.
    */
   fixSuggestions?: boolean;
+   * A callback to override the default behavior of adding the selected suggestion on dismiss.
+   */
+  onDismiss?: (ev?: any, selectedItem?: T) => void;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -139,7 +142,7 @@ export interface IBasePickerSuggestionsProps {
    */
   suggestionsHeaderText?: string;
   /**
-   * The text that should appear at the top of the most recenty used box.
+   * The text that should appear at the top of the most recently used box.
    */
   mostRecentlyUsedHeaderText?: string;
   /**
