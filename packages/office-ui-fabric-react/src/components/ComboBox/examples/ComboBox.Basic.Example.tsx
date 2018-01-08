@@ -319,7 +319,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   }
 
   @autobind
-  private _basicComboBoxComponentRef(component: IComboBox): {
+  private _basicComboBoxComponentRef(component: IComboBox) {
     this._basicCombobox = component;
   }
 }
