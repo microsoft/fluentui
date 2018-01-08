@@ -53,7 +53,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
               percentComplete > ZERO_THRESHOLD && 'smoothTransition',
               !percentComplete && styles.indeterminate
             ) }
-            style={ percentComplete ? { width: percentComplete + '%' } : {} }
+            style={ percentComplete ? { width: percentComplete + '%' } : undefined }
             role='progressbar'
             aria-valuemin='0'
             aria-valuemax='100'

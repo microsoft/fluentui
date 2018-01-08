@@ -22,11 +22,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
       aria-valuetext={undefined}
       className="ms-ProgressIndicator-progressBar"
       role="progressbar"
-      style={
-        Object {
-          "width": "0%",
-        }
-      }
+      style={undefined}
     />
   </div>
   <div
