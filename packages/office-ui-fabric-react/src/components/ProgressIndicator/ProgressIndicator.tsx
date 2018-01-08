@@ -18,7 +18,6 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
   public static defaultProps = {
     label: '',
     description: '',
-    percentComplete: 0,
     width: 180
   };
 
@@ -39,7 +38,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
       label = title;
     }
 
-    this.props.percentComplete ? percentComplete = Math.min(100, Math.max(0, percentComplete! * 100)) : percentComplete = 0;
+    this.props.percentComplete !== undefined ? percentComplete = Math.min(100, Math.max(0, percentComplete! * 100)) : percentComplete = 0;
 
     return (
       <div className={ css('ms-ProgressIndicator', styles.root, className) }>
