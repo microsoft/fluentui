@@ -67,6 +67,11 @@ $ProgressIndicatorTextHeight: 18px;
     background-color: WindowText;
   }
 }
+[dir='rtl'] .progressBar {
+  &.indeterminate {
+    animation: indeterminateProgressRTL 3s infinite;
+  }
+}
 
 .smoothTransition {
   transition-property: width;
@@ -80,5 +85,14 @@ $ProgressIndicatorTextHeight: 18px;
   }
   100% {
     left: 100%;
+  }
+}
+
+@keyframes indeterminateProgressRTL {
+  0% {
+    right: -30%;
+  }
+  100% {
+    right: 100%;
   }
 }
