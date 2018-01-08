@@ -36,10 +36,26 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-left: 0px;
             margin-right: 3px;
             margin-top: 3px;
+            outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
             padding-right: 0px;
             padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           &:disabled {
             cursor: default;
@@ -77,7 +93,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-1"
       >
-
+        
       </span>
       <div
         className=
@@ -147,10 +163,26 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-left: 0px;
             margin-right: 3px;
             margin-top: 3px;
+            outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
             padding-right: 0px;
             padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           &:disabled {
             cursor: default;
@@ -187,7 +219,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-2"
       >
-
+        
       </span>
       <div
         className=
@@ -257,10 +289,26 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-left: 0px;
             margin-right: 3px;
             margin-top: 3px;
+            outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
             padding-right: 0px;
             padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           &:disabled {
             cursor: default;
@@ -297,7 +345,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-3"
       >
-
+        
       </span>
       <div
         className=
@@ -367,10 +415,26 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-left: 0px;
             margin-right: 3px;
             margin-top: 3px;
+            outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
             padding-right: 0px;
             padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           &:disabled {
             cursor: default;
@@ -407,7 +471,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-4"
       >
-
+        
       </span>
       <div
         className=
@@ -477,10 +541,26 @@ exports[`Rating Renders Rating correctly 1`] = `
             margin-left: 0px;
             margin-right: 3px;
             margin-top: 3px;
+            outline: transparent;
             padding-bottom: 0px;
             padding-left: 0px;
             padding-right: 0px;
             padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           &:disabled {
             cursor: default;
@@ -517,7 +597,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
         id="RatingLabel1-5"
       >
-
+        
       </span>
       <div
         className=

@@ -85,6 +85,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       getStyles,
       max,
       min,
+      rating,
       readOnly,
       size,
       theme
