@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/file-type-icons",
+      "comment": "Adds possibility to pass options for icon registration when initializing file type icons",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/file-type-icons",
+  "email": "mark@thedutchies.com"
+}
