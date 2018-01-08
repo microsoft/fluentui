@@ -312,7 +312,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ () => { allowFreeform ? this.focus(true) : this._onComboBoxClick() } }
+            onClick={ this._onBaseAutofillClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ (!disabled && autoComplete === 'on') }
@@ -1504,6 +1504,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!disabled) {
       this._setOpenStateAndFocusOnClose(!isOpen, false /* focusInputAfterClose */);
+    }
+  }
+
+  /**
+   * Click handler for the autofill.
+   */
+  @autobind
+  private _onBaseAutofillClick() {
+    if (this.props.allowFreeform) {
+      this.focus(true);
+    } else {
+       this._onComboBoxClick();
     }
   }
 
