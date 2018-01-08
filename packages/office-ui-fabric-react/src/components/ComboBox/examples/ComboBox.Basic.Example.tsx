@@ -11,6 +11,8 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { IComboBox } from '../ComboBox.types';
+import { PrimaryButton } from '../../../Button';
 
 export class ComboBoxBasicExample extends React.Component<{}, {
   options: IComboBoxOption[];
@@ -41,6 +43,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   };
 
   private scaleOptions: IComboBoxOption[] = [];
+  private _basicCombobox: IComboBox;
 
   constructor(props: {}) {
     super(props);
@@ -73,12 +76,17 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          componentRef={ (component: IComboBox) => this._basicCombobox = component }
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-        // tslint:enable:jsx-no-lambda
+          // tslint:enable:jsx-no-lambda
         />
+
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._basicComboBoxOnClick } />
 
         <ComboBox
           defaultSelectedKey='C'
@@ -302,5 +310,10 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         value: undefined
       });
     }
+  }
+
+  @autobind
+  private _basicComboBoxOnClick(): void {
+    this._basicCombobox.focus(true);
   }
 }
