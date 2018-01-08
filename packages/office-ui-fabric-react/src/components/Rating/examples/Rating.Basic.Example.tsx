@@ -26,7 +26,7 @@ export class RatingBasicExample extends React.Component<{}, {
 
     this.state = {
       largeStarRating: undefined,
-      smallStarRating: undefined,
+      smallStarRating: 3,
       tenStarRating: undefined,
       themedStarRating: undefined
     };

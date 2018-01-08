@@ -76,10 +76,12 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   public render() {
+    let id = this._id;
     let stars = [];
-
+    let starIds = [];
     let {
       disabled,
+      getAriaLabel,
       getStyles,
       max,
       min,
@@ -100,12 +102,15 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         classNames: this._classNames
       };
 
+      starIds.push(this._getStarId(i - 1));
+
       stars.push(
         <button
           className={ css(this._classNames.ratingButton, {
             [this._classNames.rootIsLarge]: size === RatingSize.Large,
             [this._classNames.rootIsSmall]: size !== RatingSize.Large
           }) }
+          id={ starIds[i - 1] }
           key={ i }
           { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
           onFocus={ this._onFocus.bind(this, i) }
@@ -121,17 +126,24 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     return (
       <div
         className={ 'ms-Rating-star' }
-        aria-label={ this.props.getAriaLabel ? this.props.getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
+        aria-label={ getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : '' }
+        id={ id }
       >
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
-          tabIndex={ this.props.readOnly ? 0 : -1 }
+          tabIndex={ readOnly ? 0 : -1 }
           className={ this._classNames.ratingFocusZone }
+          data-is-focusable={ readOnly ? true : false }
+          defaultActiveElement={ rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined }
         >
           { stars }
         </FocusZone>
       </div>
     );
+  }
+
+  private _getStarId(index: number): string {
+    return this._id + '-star-' + index;
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {

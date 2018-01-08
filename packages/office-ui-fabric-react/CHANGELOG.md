@@ -1,6 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Jan 2018 11:23:12 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2018 11:13:51 GMT and should not be manually modified.
+
+## 5.38.1
+Mon, 08 Jan 2018 11:13:51 GMT
+
+### Patches
+
+- Contextual Menu submenus that have no items will have chevron icon and call onMenuOpened
+- CommandBar: Allow disabled anchor and text items
+- Rating: Set default active element and fixed focusability
+
+## 5.38.0
+Fri, 05 Jan 2018 11:14:58 GMT
+
+### Minor changes
+
+- Added a customizable onDismiss to the BasePicker
+
+### Patches
+
+- ToolTop: Changed ToolTipHost to inline-block
+- ContextualMenu: Added styling for disabled icon"
 
 ## 5.37.0
 Wed, 03 Jan 2018 11:23:12 GMT
