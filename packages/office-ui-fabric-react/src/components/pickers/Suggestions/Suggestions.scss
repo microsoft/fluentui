@@ -2,6 +2,9 @@
 
 .root {
   min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
 }
 
 .suggestionsItem {
@@ -104,8 +107,11 @@
 .suggestionsContainer {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 300px;
   border-bottom: 1px solid $ms-color-neutralLight;
+  min-height: 10px;
+  // Kept for legacy, remove in v6
+  max-height: 300px;
+  flex-shrink: 1;
 }
 
 .suggestionsNone {

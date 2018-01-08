@@ -230,6 +230,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         gapSpace={ 5 }
         target={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
+        directionalHintFixed={ this.props.fixSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
       >
         <TypedSuggestion
@@ -479,7 +480,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.up:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && this.suggestionStore.currentIndex === 0) {
+          if (this.state.moreSuggestionsAvailable &&
+            this.props.pickerSuggestionsProps &&
+            this.props.pickerSuggestionsProps.searchForMoreText &&
+            this.suggestionStore.currentIndex === 0) {
             this.suggestionElement.focusSearchForMoreButton();
             this.suggestionStore.deselectAllSuggestions();
             this.forceUpdate();
@@ -495,7 +499,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.down:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
+          if (this.state.moreSuggestionsAvailable &&
+            this.props.pickerSuggestionsProps &&
+            this.props.pickerSuggestionsProps.searchForMoreText &&
+            (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
             this.suggestionElement.focusSearchForMoreButton();
             this.suggestionStore.deselectAllSuggestions();
             this.forceUpdate();
