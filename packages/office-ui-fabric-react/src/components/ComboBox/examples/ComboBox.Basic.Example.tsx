@@ -86,7 +86,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
         <PrimaryButton
           text='Set focus'
-          onClick={ () => this._basicCombobox.focus(true) } />
+          onClick={ this._basicComboBoxOnClick } />
 
         <ComboBox
           defaultSelectedKey='C'
@@ -310,5 +310,10 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         value: undefined
       });
     }
+  }
+
+  @autobind
+  private _basicComboBoxOnClick(): void {
+    this._basicCombobox.focus(true);
   }
 }
