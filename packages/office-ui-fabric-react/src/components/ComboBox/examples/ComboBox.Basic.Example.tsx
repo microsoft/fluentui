@@ -76,7 +76,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          componentRef={ (component: IComboBox) => this._basicCombobox = component }
+          componentRef={ this._basicComboBoxComponentRef }
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
@@ -86,7 +86,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
 
         <PrimaryButton
           text='Set focus'
-          onClick={ this._basicComboBoxOnClick } />
+          onClick={ this._basicComboBoxOnClick }
+        />
 
         <ComboBox
           defaultSelectedKey='C'
@@ -315,5 +316,10 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   @autobind
   private _basicComboBoxOnClick(): void {
     this._basicCombobox.focus(true);
+  }
+
+  @autobind
+  private _basicComboBoxComponentRef(component: IComboBox): {
+    this._basicCombobox = component;
   }
 }
