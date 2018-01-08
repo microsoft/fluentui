@@ -1,4 +1,5 @@
 import {
+  getFocusStyle,
   hiddenContentStyle,
   HighContrastSelector,
 } from '../../Styling';
@@ -61,6 +62,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       }
     ],
     ratingButton: [
+      getFocusStyle(theme, 0),
       'ms-Rating-button',
       {
         background: 'none',
