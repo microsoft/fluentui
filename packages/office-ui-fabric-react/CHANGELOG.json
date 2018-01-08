@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.38.1",
+      "tag": "office-ui-fabric-react_v5.38.1",
+      "date": "Mon, 08 Jan 2018 11:13:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "adfcb2659b53d7d3dd7dccbf7bf760148fa65caa",
+            "comment": "Contextual Menu submenus that have no items will have chevron icon and call onMenuOpened"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "bf89b4c81ccfaff777e6915857508f60958af3e7",
+            "comment": "CommandBar: Allow disabled anchor and text items"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "b69a4aff021e8b0f76d6e8e5908571271af1ff7e",
+            "comment": "Rating: Set default active element and fixed focusability"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.38.0",
       "tag": "office-ui-fabric-react_v5.38.0",
       "date": "Fri, 05 Jan 2018 11:14:58 GMT",
