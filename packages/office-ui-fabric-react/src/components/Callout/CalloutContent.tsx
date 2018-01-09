@@ -394,6 +394,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         let targetElement: HTMLElement = target as HTMLElement;
         this._targetWindow = getWindow(targetElement)!;
         this._target = target;
+        // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
         this._targetWindow = getWindow()!;
         this._target = target;
