@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@uifabric/file-type-icons_v0.2.0",
+      "date": "Tue, 09 Jan 2018 11:12:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "41bc26b7f5663aa84842e4643e2cb48af08532c3",
+            "comment": "Adds possibility to pass options for icon registration when initializing file type icons"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@uifabric/file-type-icons_v0.1.0",
       "date": "Mon, 04 Dec 2017 17:27:54 GMT",
