@@ -83,6 +83,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
         componentRef={ this._setComponentRef }
         onChange={ this._onPickerChange }
         inputElement={ this._inputElement }
+        resolveDelay={ 300 }
       />
     );
   }
