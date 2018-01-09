@@ -8,6 +8,10 @@ export interface INavigateOnKeyAttribute {
   shift?: boolean;
 }
 
+/**
+ * This class is a wrapper around HTML Element that makes it easy to access A11y attributes used by A11yManager. A11y attributes
+ * are data attributes that declare behaviors for A11yManager.
+ */
 export default class A11yAttributeProvider {
   private _element: HTMLElement;
   private _managerPrefix: string;
