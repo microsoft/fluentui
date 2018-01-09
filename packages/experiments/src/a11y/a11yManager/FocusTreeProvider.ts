@@ -2,6 +2,10 @@ import A11yElement from './A11yElement';
 import A11yManager from './A11yManager';
 import Focus from '../focus/Focus';
 
+/**
+ * This class is a wrapper for HTML elements that makes it easy to find and navigate through focusable elements inside the
+ * application managed by A11yManager.
+ */
 export default class FocusTreeProvider {
   private _element: HTMLElement;
   private _manager: A11yManager;
