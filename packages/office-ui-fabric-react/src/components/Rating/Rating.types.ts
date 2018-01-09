@@ -1,4 +1,9 @@
 import * as React from 'react';
+import {
+  IStyle,
+  ITheme
+} from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IRating {
 
@@ -66,9 +71,35 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   * Optional callback to set the arialabel for rating control.
   */
   getAriaLabel?: (rating: number, max: number) => string;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<IRatingStyleProps, IRatingStyles>;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
 }
 
 export enum RatingSize {
   Small = 0,
   Large = 1
+}
+
+export interface IRatingStyleProps {
+  disabled?: boolean;
+  theme: ITheme;
+}
+
+export interface IRatingStyles {
+  ratingStar?: IStyle;
+  ratingStarBack?: IStyle;
+  ratingStarFront?: IStyle;
+  ratingButton?: IStyle;
+  rootIsSmall?: IStyle;
+  rootIsLarge?: IStyle;
+  labelText?: IStyle;
+  ratingFocusZone?: IStyle;
 }
