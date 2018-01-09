@@ -579,11 +579,12 @@ export module positioningFunctions {
       if ((target as MouseEvent).preventDefault) {
         let ev: MouseEvent = target as MouseEvent;
         targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
-      } else if ((target as IPoint).x !== undefined) {
+      } else if ((target as HTMLElement).getBoundingClientRect) {
+        targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
+        // HTMLImgElements can have x and y values. The check for it being a point must go last.
+      } else {
         let point: IPoint = target as IPoint;
         targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
-      } else {
-        targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
       }
 
       if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
