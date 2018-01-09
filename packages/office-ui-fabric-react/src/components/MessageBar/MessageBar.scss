@@ -29,6 +29,10 @@
 
   :global(.ms-Button) {
     @include margin-left(6px);
+
+    :global(.ms-Icon) {
+      font-size: $ms-icon-size-s;
+    }
   }
 }
 
@@ -141,39 +145,44 @@
 
 // Single line specific attributes
 .singleline {
-  height: 32px;
   .content {
-    align-items: center;
     padding: 8px 0px;
     .icon {
       font-family: 'FabricMDL2Icons';
-      padding: 0px 8px;
+      @include padding-right(8px);
     }
 
     .text {
       align-items: center;
       flex: 1 1 auto;
-
+      &.expandSingleLine {
+        .innerText,
+        .innerTextPadding {
+          @include padding-right(8px);
+          max-height: none;
+          overflow: visible;
+        }
+      }
       .innerText,
       .innerTextPadding {
         @include padding-right(8px);
-        max-height: 1.3em;
+        max-height: 16px;
         overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: pre-wrap;
       }
     }
   }
 }
 
-.actions, .actionsOneline {
+.actions, .actionsSingleLine {
   display: flex;
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
 }
 
-.dismissal {
+.dismissal,
+.expand {
   @include focus-border();
   @include right(0);
   max-height: 16px;
@@ -184,11 +193,12 @@
   }
 }
 
-.dismissOneline {
+.dismissSingleLine,
+.expandSingleLine {
   display: flex;
 }
 
-.rootIsOneline {
+.rootIsSingleLine {
   min-width: 16px;
   min-height: 16px;
   // We want padding between the outside of the dismiss button to be 8px
@@ -196,12 +206,12 @@
   @include padding(8px, 12px, 8px, 12px);
 }
 
-.actionsOneline {
+.actionsSingleLine {
   position: relative;
   padding: 0px 8px;
 }
 
-.actionableOneline {
+.actionableSingleLine {
   height: 48px;
   .content {
     .icon {
@@ -228,7 +238,8 @@
     }
   }
 
-  .dismissal {
+  .dismissal,
+  .expand {
     margin: 0;
   }
 }
