@@ -10,7 +10,6 @@ import ArrowNavigation from './a11yManager/ArrowNavigation';
 
 export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
   private _a11yManager: A11yManager | undefined;
-  // private _trapZone: HTMLDivElement;
 
   public componentDidMount(): void {
     this._a11yManager = A11yManager.create(document.body, {
@@ -18,12 +17,6 @@ export class A11yPage extends React.Component<IComponentDemoPageProps, {}> {
     });
     this._a11yManager!.registerNavigationMode(ArrowNavigation);
   }
-
-  // private _exitTrapZone() {
-  //   if (this._a11yManager && this._trapZone) {
-  //     this._a11yManager.focusById('arrowzone');
-  //   }
-  // }
 
   public render(): JSX.Element {
     return (
