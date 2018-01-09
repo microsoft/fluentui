@@ -5,6 +5,25 @@ import DomTraversal from '../dom/DomTraversal';
 import FocusTransition from '../focus/FocusTransition';
 import FocusTreeProvider from './FocusTreeProvider';
 
+/**
+ * This class is a wrapper for HTML elements that gives access to APIs that A11yManager provides for dealing with elements.
+ * This class is not required to use A11yManager features, but it makes it a lot easier and more readable.
+ *
+ * Example:
+ * HTML markup:
+ * <div data-a11y-class="menu">
+ *  <button id="menuButton1">Button 1</button>
+ *  <button id="menuButton2">Button 2</button>
+ *  <button id="menuButton3">Button 3</button>
+ * </div>
+ *
+ * Code:
+ * const firstButtonDiv = document.getElementById("#menuButton1");
+ * const firstButton = a11yManager.a11yElement(firstButtonDiv);
+ * // Easily navigate through focusable elements and elements marked up with data-a11y-* attributes
+ * const nextButton = fistButton.focusTree.nextSibling()
+ * const allButtons = firstButton.ancestor(".menu").focusTree.children()
+ */
 export default class A11yElement {
   private _element: HTMLElement;
   private _manager: A11yManager;
