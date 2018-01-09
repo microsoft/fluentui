@@ -206,7 +206,6 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    // const currentState: boolean = this.state.expandSingleLine ? this.state.expandSingleLine : ;
     this.setState({ expandSingleLine: !this.state.expandSingleLine });
   }
 }
