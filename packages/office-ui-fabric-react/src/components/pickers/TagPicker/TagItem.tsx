@@ -17,6 +17,8 @@ export const TagItem = (props: IPickerItemProps<ITag>) => (
     key={ props.index }
     data-selection-index={ props.index }
     data-is-focusable={ !props.disabled && true }
+    onClick={ props.onClick }
+    onKeyDown={ props.onKeyDown }
   >
     <span className={ css('ms-TagItem-text', styles.tagItemText) } aria-label={ props.children }>{ props.children }</span>
     { !props.disabled &&
