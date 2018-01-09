@@ -390,12 +390,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
-      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
-        this._target = target;
-      } else {
+      } else if ((target as HTMLElement).getBoundingClientRect) {
         let targetElement: HTMLElement = target as HTMLElement;
         this._targetWindow = getWindow(targetElement)!;
+        this._target = target;
+      } else {
+        this._targetWindow = getWindow()!;
         this._target = target;
       }
     } else {
