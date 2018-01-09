@@ -12,7 +12,7 @@ export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IB
       <div className={ css('ms-PeoplePicker-personaContent', stylesImport.peoplePickerPersonaContent) }>
         <Persona
           presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-          size={ PersonaSize.small }
+          size={ PersonaSize.size40 }
           className={ css('ms-PeoplePicker-Persona', stylesImport.peoplePickerPersona) }
           showSecondaryText={ true }
           { ...personaProps }
