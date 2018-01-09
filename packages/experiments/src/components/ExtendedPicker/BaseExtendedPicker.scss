@@ -21,4 +21,8 @@
   outline: none;
   padding: 0 6px 0px;
   margin: 1px;
+
+  &::-ms-clear {
+    display: none;
+  }
 }
