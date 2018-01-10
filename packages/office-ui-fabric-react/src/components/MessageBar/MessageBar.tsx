@@ -157,8 +157,14 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _renderInnerText(): JSX.Element {
     return (
-      <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
-        <span className={ css('ms-MessageBar-innerText ' + styles.innerText) } role='status' aria-live={ this._getAnnouncementPriority() }>
+      <div
+        className={ css('ms-MessageBar-text', styles.text, this.props.actions && this.props.isMultiline ? styles.multilineWithActions : null) }
+        id={ this.state.labelId }
+      >
+        <span
+          className={ css('ms-MessageBar-innerText ' + styles.innerText) }
+          role='status' aria-live={ this._getAnnouncementPriority() }
+        >
           <DelayedRender>
             <span>{ this.props.children }</span>
           </DelayedRender>

@@ -48,15 +48,15 @@
   min-width: 0;
   display: flex;
   flex-grow: 1;
-}
-
-.innerText {
-  line-height: 16px;
   // Margin-right is accounted for in the .dismissal and button margin-left
   @include margin(16px, 0, 16px, 8px);
   @media screen and (max-width: $ms-screen-max-sm) {
     @include margin(8px, 0, 8px, 8px);
   }
+}
+
+.innerText {
+  line-height: 16px;
 
   & > span {
     @include padding-right(4px); // Add padding between text and hyperlink
@@ -140,10 +140,10 @@
 }
 
 .actions {
-    @include padding(12px, 12px, 12px, 0);
-    :global(.ms-Button) {
-      @include margin-left(12px);
-    }
+  @include padding(0, 12px, 12px, 0);
+  :global(.ms-Button) {
+    @include margin-left(12px);
+  }
 }
 
 .actionsOneline {
@@ -192,6 +192,10 @@
   flex-direction: column;
   .content {
       flex-direction: row;
+  }
+  .text.multilineWithActions {
+    // This creates an 8px space between text and actions
+    margin-bottom: 8px;
   }
 }
 
