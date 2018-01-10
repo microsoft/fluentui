@@ -55,7 +55,6 @@ $ProgressIndicatorTextHeight: 18px;
   transition: width .3s ease;
   width: 0;
 
-
   &.indeterminate {
     position: absolute;
     min-width: 33%;
@@ -66,10 +65,11 @@ $ProgressIndicatorTextHeight: 18px;
   @include high-contrast {
     background-color: WindowText;
   }
-}
-[dir='rtl'] .progressBar {
-  &.indeterminate {
-    animation: indeterminateProgressRTL 3s infinite;
+
+  @include RTL {
+    &.indeterminate {
+      animation: indeterminateProgressRTL 3s infinite;
+    }
   }
 }
 
