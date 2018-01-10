@@ -34,9 +34,13 @@
   min-width: 16px;
   min-height: 16px;
   display: flex;
-  @include margin(16px, 0, 16px, 16px); // Margin-right is accounted for in the .innerText margin-left
   color: $ms-color-info;
   flex-shrink: 0;
+  // Margin-right is accounted for in the .innerText margin-left
+  @include margin(16px, 0, 16px, 16px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+  }
 }
 
 .text {
@@ -48,7 +52,11 @@
 
 .innerText {
   line-height: 16px;
-  @include margin(16px, 0, 16px, 8px); // Margin-right is accounted for in the .dismissal and button margin-left
+  // Margin-right is accounted for in the .dismissal and button margin-left
+  @include margin(16px, 0, 16px, 8px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+  }
 
   & > span {
     @include padding-right(4px); // Add padding between text and hyperlink
@@ -157,6 +165,9 @@
   flex-shrink: 0;
   // With a 12px icon and 32px button, the icon is already 10px from the edge of the message bar
   @include margin(6px, 6px, 6px, 8px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(0, 0, 0, 8px);
+  }
 
   @include high-contrast {
     -ms-high-contrast-adjust: none;
