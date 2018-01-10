@@ -167,5 +167,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       isImageLoaded: loadState === ImageLoadState.loaded,
       isImageError: loadState === ImageLoadState.error
     });
+
+    if (this.props.onPhotoLoadingStateChange) {
+      this.props.onPhotoLoadingStateChange(loadState);
+    }
   }
 }
