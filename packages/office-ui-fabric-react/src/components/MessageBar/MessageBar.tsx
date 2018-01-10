@@ -28,7 +28,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     [MessageBarType.info]: 'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
-    [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.blocked]: 'Blocked2',
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'
