@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Jan 2018 11:13:51 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2018 11:23:36 GMT and should not be manually modified.
+
+## 5.39.0
+Wed, 10 Jan 2018 11:23:36 GMT
+
+### Minor changes
+
+- Rating: Convert to getstyles
+
+### Patches
+
+- Add auto expand on focus for Combobox
+- Callout/Positioning: Fix a bug where callouts would position incorrectly if the target was  an HTMLImg element
 
 ## 5.38.1
 Mon, 08 Jan 2018 11:13:51 GMT

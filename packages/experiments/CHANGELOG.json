@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.12.0",
+      "tag": "@uifabric/experiments_v5.12.0",
+      "date": "Wed, 10 Jan 2018 11:23:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "6c4e42e8e5ec7d671a9a579053c1e2af6c4ef6ee",
+            "comment": "Add search throttle to floating picker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.38.1 <6.0.0` to `>=5.39.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.1",
       "tag": "@uifabric/experiments_v5.11.1",
       "date": "Tue, 19 Dec 2017 11:22:47 GMT",
