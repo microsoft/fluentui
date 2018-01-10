@@ -16,19 +16,10 @@
   display: flex;
   position: relative;
   word-break: break-word;
-  .icon {
-    @include padding-right(8px);
-    color: $ms-color-info;
-    flex-shrink: 0;
-  }
 
   :global(.ms-Link) {
     font-size: $ms-font-size-s;
     color: $ms-color-themeDark;
-  }
-
-  :global(.ms-Button) {
-    @include margin-left(6px);
   }
 }
 
@@ -43,6 +34,9 @@
   min-width: 16px;
   min-height: 16px;
   display: flex;
+  @include margin(16px, 0, 16px, 16px); // Margin-right is accounted for in the .innerText margin-left
+  color: $ms-color-info;
+  flex-shrink: 0;
 }
 
 .text {
@@ -52,6 +46,14 @@
   flex-grow: 1;
 }
 
+.innerText {
+  line-height: 16px;
+  @include margin(16px, 0, 16px, 8px); // Margin-right is accounted for in the .dismissal and button margin-left
+
+  & > span {
+    @include padding-right(4px); // Add padding between text and hyperlink
+  }
+}
 
 //== Modifier: Warning message
 //
@@ -108,7 +110,7 @@
   }
 }
 
-// Shared
+// Shared between Single- and Multi- Line
 .content {
   display: flex;
   line-height: normal;
@@ -130,39 +132,16 @@
 }
 
 .actions {
-  padding-top: 12px;
+    @include padding(12px, 12px, 12px, 0);
+    :global(.ms-Button) {
+      @include margin-left(12px);
+    }
 }
 
-.innerTextPadding {
-  span, .innerText > span {
-    @include padding-right(4px); // Add padding between text and hyperlink.
-  }
-}
-
-// Single line specific attributes
-.singleline {
-  height: 32px;
-  .content {
-    align-items: center;
-    padding: 8px 0px;
-    .icon {
-      font-family: 'FabricMDL2Icons';
-      padding: 0px 8px;
-    }
-
-    .text {
-      align-items: center;
-      flex: 1 1 auto;
-
-      .innerText,
-      .innerTextPadding {
-        @include padding-right(8px);
-        max-height: 1.3em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
+.actionsOneline {
+  @include padding(8px, 8px, 8px, 0);
+  :global(.ms-Button) {
+    @include margin-left(8px);
   }
 }
 
@@ -175,9 +154,9 @@
 
 .dismissal {
   @include focus-border();
-  @include right(0);
-  max-height: 16px;
   flex-shrink: 0;
+  // With a 12px icon and 32px button, the icon is already 10px from the edge of the message bar
+  @include margin(6px, 6px, 6px, 8px);
 
   @include high-contrast {
     -ms-high-contrast-adjust: none;
@@ -188,57 +167,37 @@
   display: flex;
 }
 
-.rootIsOneline {
-  min-width: 16px;
-  min-height: 16px;
-  // We want padding between the outside of the dismiss button to be 8px
-  // and the padding between the dismiss button and the text to be 12px
-  @include padding(8px, 12px, 8px, 12px);
-}
-
-.actionsOneline {
-  position: relative;
-  padding: 0px 8px;
-}
-
-.actionableOneline {
-  height: 48px;
-  .content {
-    .icon {
-      padding: 0px 16px;
-    }
-    .innerText {
-      @include padding-right(0px);
-    }
+.dismissal,
+.dismissOneline {
+  :global(.ms-Icon) {
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
   }
 }
 
 // Multi line specific attributes
 .multiline {
-  @include padding(16px, 12px, 12px, 16px);
+  flex-direction: column;
   .content {
       flex-direction: row;
-    .icon {
-      @include padding-right(8px);
-      font-family: 'FabricMDL2Icons';
-    }
-
-    .innerText {
-      line-height: 16px; // Each line should add 16px to the height
-    }
-  }
-
-  .dismissal {
-    margin: 0;
   }
 }
 
-.multiline {
-  flex-direction: column;
-}
+// Single line specific attributes
+.singleline {
+  .content {
+    align-items: center;
 
-.actionableMultiline.dismissalMultiline {
-  .innerTextPadding {
-    @include padding-right(48px);
+    .text {
+      align-items: center;
+      flex: 1 1 auto;
+
+      .innerText {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
   }
 }
