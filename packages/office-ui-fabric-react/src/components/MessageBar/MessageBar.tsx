@@ -4,6 +4,7 @@ import {
   DelayedRender,
   css,
   autobind,
+  hasOverflow,
   getId
 } from '../../Utilities';
 import { IconButton } from '../../Button';
@@ -16,6 +17,7 @@ export interface IMessageBarState {
   labelId?: string;
   showContent?: boolean;
   expandSingleLine?: boolean;
+  hasOverflow: boolean;
 }
 
 export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
@@ -36,13 +38,16 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     [MessageBarType.success]: 'Completed'
   };
 
+  private element: HTMLSpanElement | null;
+
   constructor(props: IMessageBarProps) {
     super(props);
 
     this.state = {
       labelId: getId('MessageBar'),
       showContent: false,
-      expandSingleLine: false
+      expandSingleLine: false,
+      hasOverflow: false,
     };
   }
 
@@ -50,6 +55,14 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     let { isMultiline } = this.props;
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
+  }
+
+  public componentDidMount() {
+    const element = this.element;
+    if (element) {
+      const hasOverflowingChildren = hasOverflow(element);
+      this.setState({ hasOverflow: hasOverflowingChildren })
+    }
   }
 
   private _getActionsDiv(): JSX.Element | null {
@@ -106,7 +119,8 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   }
 
   private _getExpandSingleLine(): JSX.Element | null {
-    if (!this.props.actions && this.props.truncated) {
+    // if (!this.props.actions && this.props.truncated) {
+    if (!this.props.actions && this.state.hasOverflow) {
       return (
         <div className={ css('ms-MessageBar-expandSingleLine', styles.expandSingleLine) }>
           <IconButton
@@ -184,11 +198,17 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _renderInnerText(): JSX.Element {
     return (
-      <div className={ css('ms-MessageBar-text', styles.text, this.state.expandSingleLine ? styles.expandSingleLine : null) } id={ this.state.labelId }>
-        <span className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }>
-          <DelayedRender>
-            <span>{ this.props.children }</span>
-          </DelayedRender>
+      <div
+        className={ css('ms-MessageBar-text', styles.text, this.state.expandSingleLine ? styles.expandSingleLine : null) }
+        id={ this.state.labelId }
+      >
+        <span
+          className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }
+          ref={ (el) => { this.element = el } }
+        >
+          {/* <DelayedRender> */ }
+          <span>{ this.props.children }</span>
+          {/* </DelayedRender> */ }
         </span>
       </div >
     );
