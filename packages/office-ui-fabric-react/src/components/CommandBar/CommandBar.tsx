@@ -11,7 +11,7 @@ import {
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenu } from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -173,7 +173,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     const itemKey = item.key || String(index);
-    const isLink = item.onClick || hasSubmenuItems(item);
+    const isLink = item.onClick || hasSubmenu(item);
     const className = css(
       isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
@@ -192,8 +192,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           className={ className }
           onClick={ this._onItemClick(item) }
           data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenuItems(item) }
-          aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
+          aria-haspopup={ hasSubmenu(item) }
+          aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
           role='menuitem'
           aria-label={ ariaLabel }
         >
@@ -205,20 +205,21 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               { item.name }
             </span>
           ) }
-          { hasSubmenuItems(item) ? (
+          { hasSubmenu(item) ? (
             <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
           ) : (null) }
         </button>
       );
     } else if (item.href) {
+      // Allow the disabled property on anchor elements for commandbar
       command = (
         <a
-          { ...getNativeProps(item, anchorProperties) }
+          { ...getNativeProps(item, anchorProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
-          href={ item.href }
+          href={ item.disabled ? undefined : item.href }
           data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenuItems(item) }
+          aria-haspopup={ hasSubmenu(item) }
           role='menuitem'
           aria-label={ ariaLabel }
         >
@@ -233,13 +234,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </a>
       );
     } else {
+      // Allow the disabled property on div elements for commandbar
       command = (
         <div
-          { ...getNativeProps(item, divProperties) }
+          { ...getNativeProps(item, divProperties.concat(['disabled'])) }
           id={ this._id + item.key }
           className={ className }
           data-command-key={ itemKey }
-          aria-haspopup={ hasSubmenuItems(item) }
+          aria-haspopup={ hasSubmenu(item) }
           aria-label={ ariaLabel }
         >
           { (hasIcon) ? this._renderIcon(item) : (null) }
@@ -371,7 +373,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _onItemClick(item: IContextualMenuItem): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLButtonElement>): void => {
-      if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
+      if (item.key === this.state.expandedMenuItemKey || !hasSubmenu(item)) {
         this._onContextMenuDismiss();
       } else {
         this.setState({

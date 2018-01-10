@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2018 11:23:36 GMT and should not be manually modified.
+
+## 5.12.0
+Wed, 10 Jan 2018 11:23:36 GMT
+
+### Minor changes
+
+- Add search throttle to floating picker
 
 ## 5.11.1
 Tue, 19 Dec 2017 11:22:47 GMT

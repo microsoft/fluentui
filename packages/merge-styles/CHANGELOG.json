@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.10.0",
+      "tag": "@uifabric/merge-styles_v5.10.0",
+      "date": "Thu, 28 Dec 2017 11:23:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jakob Werner <jaxxx_w@yahoo.com>",
+            "commit": "e5c7d91dff4a37f5d6dabe3ac461afd644804d37",
+            "comment": "Added a setting to Stylesheet which allows overriding the default prefix"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.0",
       "tag": "@uifabric/merge-styles_v5.9.0",
       "date": "Sat, 16 Dec 2017 05:07:22 GMT",

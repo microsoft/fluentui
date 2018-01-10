@@ -42,7 +42,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected loadingTimer: number | undefined;
-  protected currentPromise: PromiseLike<any>;
+  protected currentPromise: PromiseLike<any> | undefined;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -97,6 +97,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
+  public componentWillUnmount(): void {
+    super.componentWillUnmount();
+    if (this.loadingTimer) {
+      this._async.clearTimeout(this.loadingTimer);
+    }
+    if (this.currentPromise) {
+      this.currentPromise = undefined;
+    }
+  }
+
   public focus() {
     this.focusZone.focus();
   }
@@ -108,13 +118,23 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  public dismissSuggestions() {
-    // Select the first suggestion if one is available when user leaves.
+  public dismissSuggestions(ev?: any) {
     let selectItemFunction = () => {
-      if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
-        this.addItemByIndex(0);
+      if (this.props.onDismiss) {
+        this.props.onDismiss(
+          ev,
+          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined
+        );
+      }
+
+      if (!ev || (ev && !ev.defaultPrevented)) {
+        // Select the first suggestion if one is available when user leaves.
+        if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+          this.addItemByIndex(0);
+        }
       }
     };
+
     if (this.currentPromise) {
       this.currentPromise.then(() => selectItemFunction());
     } else {
@@ -306,9 +326,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => this.setState({
-          suggestionsLoading: true
-        }), 500);
+        this.loadingTimer = this._async.setTimeout(() => {
+          this.setState({
+            suggestionsLoading: true
+          });
+        }, 500);
       }
 
       // Clear suggestions
