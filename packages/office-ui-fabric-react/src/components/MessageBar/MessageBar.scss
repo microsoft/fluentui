@@ -58,8 +58,9 @@
 .innerText {
   line-height: 16px;
 
-  & > span {
-    @include padding-right(4px); // Add padding between text and hyperlink
+  // Add padding between text and hyperlink
+  span a {
+    @include padding-left(4px);
   }
 }
 
@@ -163,8 +164,7 @@
 .dismissal {
   @include focus-border();
   flex-shrink: 0;
-  // With a 12px icon and 32px button, the icon is already 10px from the edge of the message bar
-  @include margin(6px, 6px, 6px, 8px);
+  @include margin(8px, 8px, 8px, 8px);
   @media screen and (max-width: $ms-screen-max-sm) {
     @include margin(0, 0, 0, 8px);
   }
@@ -191,7 +191,7 @@
 .multiline {
   flex-direction: column;
   .content {
-      flex-direction: row;
+    flex-direction: row;
   }
   .text.multilineWithActions {
     // This creates an 8px space between text and actions
@@ -202,10 +202,7 @@
 // Single line specific attributes
 .singleline {
   .content {
-    align-items: center;
-
     .text {
-      align-items: center;
       flex: 1 1 auto;
 
       .innerText {
