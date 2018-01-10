@@ -2,40 +2,22 @@ import * as React from 'react';
 
 import {
   BaseComponent,
-  css
+  css,
+  classNamesFunction
 } from '../../Utilities';
-
 import { IBeakProps } from './Beak.types';
-
 import {
-  ICalloutPositionedInfo,
-  RectangleEdge
+  ICalloutPositionedInfo
 } from 'office-ui-fabric-react/lib/utilities/positioning';
+import { getStyles, IBeakStyles, IBeakStylesProps } from './Beak.styles';
 
-import {
-  AnimationClassNames,
-  mergeStyles
-} from '../../Styling';
-
-import {
-  getClassNames
-} from './Beak.styles';
+const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
 
 export interface IBeakState {
-  positions?: IPositionInfo;
+  positions?: ICalloutPositionedInfo;
 }
 
-const styles: any = stylesImport;
-
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_STYLE = { opacity: 0 };
-const BORDER_WIDTH: number = 1;
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
-  [RectangleEdge.top]: 'slideUpIn20',
-  [RectangleEdge.bottom]: 'slideDownIn20',
-  [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
-};
 
 export class Beak extends BaseComponent<IBeakProps, IBeakState> {
 
@@ -46,68 +28,58 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
 
   constructor() {
     super();
-
-    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
-
     this.state = {
       positions: undefined,
     }
   }
 
-  public componentWillUpdate(newProps: IBeakProps) {
-    if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
-      this._maxHeight = undefined;
-    }
-  }
-
-  public render() {
+  public render(): JSX.Element {
     let {
       beakWidth,
       backgroundColor,
       isBeakVisible,
-      beakStyle,
       target
-     } = this.props;
+    } = this.props;
+
+    const classNames = getClassNames(getStyles, {});
 
     let { positions } = this.state;
 
-    const beakReactStyle = this._getBeakPosition(positions, beakWidth, backgroundColor, beakStyle);
+    const beakReactStyle = this._getBeakPosition(positions, beakWidth, backgroundColor);
     let beakVisible = isBeakVisible && (!!target);
 
     return (
       <div>
-        { beakVisible && (
-          <div
-            className={ css('ms-Callout-beak', styles.beak) }
-            style={ beakReactStyle }
-          />) }
-
         { beakVisible &&
-          (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
+          (
+            <div
+              className={ css('ms-Beak', classNames.root) }
+              style={ beakReactStyle }
+            />
+          )
+        }
+        { beakVisible &&
+          (<div className={ css('ms-Beak-curtain', classNames.curtain) } />)
+        }
       </div>
     );
-
-
   }
 
-  private _getBeakPosition(positions?: ICalloutPositionedInfo,
+  private _getBeakPosition(
+    positions?: ICalloutPositionedInfo,
     beakWidth?: number,
-    backgroundColor?: string,
-    beakStyle?: string) {
+    backgroundColor?: string
+  ) {
     let beakStyleWidth = beakWidth;
-
-    // This is here to support the old way of setting the beak size until version 1.0.0.
-    // beakStyle is now deprecated and will be be removed at version 1.0.0
-    if (beakStyle === 'ms-Callout-smallbeak') {
-      beakStyleWidth = 16;
-    }
 
     let beakReactStyle: React.CSSProperties = {
       ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
     };
+
     beakReactStyle.height = beakStyleWidth;
     beakReactStyle.width = beakStyleWidth;
     beakReactStyle.backgroundColor = backgroundColor;
+
     if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
       beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
       beakReactStyle.top = BEAK_ORIGIN_POSITION.top;

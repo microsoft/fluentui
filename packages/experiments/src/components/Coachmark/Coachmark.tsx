@@ -4,6 +4,7 @@ import { BaseComponent, classNamesFunction } from '../../Utilities';
 
 // Component Dependencies
 import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
+import { Beak } from '../Beak/Beak';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
@@ -80,7 +81,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
   public render(): JSX.Element {
     let {
-      children
+      children,
+      beakWidth = 16, // Default beak width for coachmark
+      target
     } = this.props;
 
     const classNames = getClassNames(getStyles, {
@@ -93,7 +96,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
     return (
       <PositioningContainer
-        target={ this.props.target }
+        target={ target }
+        offsetFromTarget={ beakWidth }
       >
         <div
           className={ classNames.root }
@@ -111,6 +115,10 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                 className={ classNames.rotateAnimationLayer }
                 ref={ this._resolveRef('_rotateAnimationContainer') }
               >
+                <Beak
+                  target={ target! }
+                  beakWidth={ beakWidth }
+                />
                 <div
                   className={ classNames.entityHost }
                   ref={ this._resolveRef('_entityHost') }
@@ -207,7 +215,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       }, 100));
     });
 
-    // Everytime the document's mouse move is triggered
+    // Every time the document's mouse move is triggered
     // we want to check if inside of an element and
     // set the state with the result.
     this._events.on(document, 'mousemove', (e: MouseEvent) => {

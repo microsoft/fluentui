@@ -14,7 +14,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   componentRef?: (component: ICoachmark) => void;
 
   /**
-   * Get styles method
+   * Get styles method.
    */
   getStyles?: IStyleFunction<ICoachmarkStyleProps, ICoachmarkStyles>;
 
@@ -28,7 +28,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   positioningContainerProps?: IPositioningContainerTypes;
 
   /**
-   * Is the Coachmark expanded
+   * The starting collapsed state for the Coachmark?
    * @default true
    */
   collapsed?: boolean;
@@ -41,12 +41,17 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   mouseProximityOffset?: number;
 
   /**
-   * Callback when the opening animation begins
+   * Callback when the opening animation begins.
    */
   onAnimationOpenStart?: () => void;
 
   /**
-   * Callback when the opening animation completes
+   * Callback when the opening animation completes.
    */
   onAnimationOpenEnd?: () => void;
+
+  /**
+   * The width of the beak component.
+   */
+  beakWidth?: number;
 }
