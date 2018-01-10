@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Broaden the range of allowed prop-type versions",
+      "comment": "Add auto expand on focus for Combobox",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "<christianjordangonzalez@gmail.com>"
+  "email": "stanleyy@microsoft.com"
 }

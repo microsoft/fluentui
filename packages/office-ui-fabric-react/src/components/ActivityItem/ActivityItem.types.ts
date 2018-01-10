@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
-import { IPersonaProps } from '../Persona';
+import { IPersonaProps } from '../../Persona';
 
 // Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {

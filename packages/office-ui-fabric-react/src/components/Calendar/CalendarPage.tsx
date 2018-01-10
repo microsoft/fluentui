@@ -135,6 +135,16 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 buttonString={ 'Click for Month Picker' }
               />
             </ExampleCard>
+            <ExampleCard
+              title='Calendar with overlayed month picker launched from a button'
+              code={ CalendarButtonExampleCode }
+            >
+              <CalendarButtonExample
+                showMonthPickerAsOverlay={ true }
+                highlightCurrentMonth={ true }
+                buttonString={ 'Click for Overlayed Day Picker and Month Picker' }
+              />
+            </ExampleCard>
           </div>
         }
         propertiesTables={

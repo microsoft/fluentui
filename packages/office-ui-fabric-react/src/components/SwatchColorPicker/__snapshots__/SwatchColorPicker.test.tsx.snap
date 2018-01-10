@@ -22,26 +22,32 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   <table
     aria-posinset={undefined}
     aria-setsize={undefined}
+    className=
+
+        {
+          outline: none;
+          padding-bottom: 2px;
+          padding-left: 2px;
+          padding-right: 2px;
+          padding-top: 2px;
+        }
     id="id__2"
     role="grid"
-    style={
-      Object {
-        "outline": "none",
-        "padding": "2px",
-      }
-    }
   >
     <tbody>
       <tr
         role="row"
       >
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -217,12 +223,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -398,12 +407,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -579,12 +591,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -764,12 +779,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         role="row"
       >
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -945,12 +963,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1126,12 +1147,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1307,12 +1331,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1492,12 +1519,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         role="row"
       >
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1673,12 +1703,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1854,12 +1887,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -2035,12 +2071,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
