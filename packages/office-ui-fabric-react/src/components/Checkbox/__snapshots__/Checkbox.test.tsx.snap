@@ -83,7 +83,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           ms-Checkbox-checkbox
           {
             align-items: center;
-            border-color: #212121;
+            border-color: #666666;
             border-style: solid;
             border-width: 1px;
             box-sizing: border-box;
