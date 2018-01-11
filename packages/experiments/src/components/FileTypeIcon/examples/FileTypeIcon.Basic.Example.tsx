@@ -17,6 +17,8 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ extension: '.cpp', size: 40, imageFileType: 'png' }) } />
         <h3>Size 48 csv icon as .png</h3>
         <Icon {...getFileTypeIconProps({ extension: 'csv', size: 48, imageFileType: 'png' }) } />
+        <h3>Size 64 model icon as .png</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'blend', size: 64, imageFileType: 'png' }) } />
         <h3>Size 96 docx icon as .png</h3>
         <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'png' }) } />
         <h3>Size 16 dotx icon as .svg</h3>
@@ -29,6 +31,8 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ extension: '.woff', size: 40 }) } />
         <h3>Size 48 html icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ extension: 'html', size: 48 }) } />
+        <h3>Size 64 mpp icon as .svg</h3>
+        <Icon {...getFileTypeIconProps({ extension: 'mpp', size: 64 }) } />
         <h3>Size 96 link icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ extension: 'url', size: 96 }) } />
         <h3>Size 16 docset icon as .png</h3>
@@ -39,8 +43,8 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
         <Icon {...getFileTypeIconProps({ size: 40, imageFileType: 'png' }) } />
         <h3>Size 48 listitem icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ type: FileIconType.listItem, size: 48, imageFileType: 'svg' }) } />
-        <h3>Size 96 sharedfolder icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 96, imageFileType: 'png' }) } />
+        <h3>Size 64 sharedfolder icon as .png</h3>
+        <Icon {...getFileTypeIconProps({ type: FileIconType.sharedFolder, size: 64, imageFileType: 'png' }) } />
       </div>
     );
   }
