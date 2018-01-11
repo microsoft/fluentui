@@ -7,6 +7,21 @@
 // --------------------------------------------------
 // MessageBar Styles
 
+// Mixins
+@mixin multilineContent {
+  flex-direction: column;
+  .content {
+    flex-direction: row;
+  }
+}
+
+@mixin buttonMargins($sidesAndBottom, $top: $sidesAndBottom) {
+  @include margin($top, $sidesAndBottom, $sidesAndBottom, 0);
+  :global(.ms-Button) {
+    @include margin-left($sidesAndBottom);
+  }
+}
+
 .root {
   @include ms-bgColor-info;
   min-height: 32px;
@@ -141,17 +156,11 @@
 }
 
 .actions {
-  @include padding(0, 12px, 12px, 0);
-  :global(.ms-Button) {
-    @include margin-left(12px);
-  }
+  @include buttonMargins(12px, 0);
 }
 
 .actionsOneline {
-  @include padding(8px, 8px, 8px, 0);
-  :global(.ms-Button) {
-    @include margin-left(8px);
-  }
+  @include buttonMargins(8px);
 }
 
 .actions, .actionsOneline {
@@ -159,6 +168,12 @@
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include buttonMargins(8px, 0);
+    :global(.ms-Button) {
+      margin-top: 8px;
+    }
+  }
 }
 
 .dismissal {
@@ -189,26 +204,28 @@
 
 // Multi line specific attributes
 .multiline {
-  flex-direction: column;
-  .content {
-    flex-direction: row;
-  }
+  @include multilineContent();
   .text.multilineWithActions {
-    // This creates an 8px space between text and actions
-    margin-bottom: 8px;
+    margin-bottom: 8px; // This creates an 8px space between text and actions
+    @media screen and (max-width: $ms-screen-max-sm) {
+      margin-bottom: 0;
+    }
   }
 }
 
 // Single line specific attributes
 .singleline {
-  .content {
-    .text {
-      flex: 1 1 auto;
-
-      .innerText {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+  .innerText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media screen and (max-width: $ms-screen-max-sm) {
+    // Singleline acts like multiline in mobile, unless text is specified to be truncated
+    @include multilineContent();
+    .text.multilineWithActions {
+      @media screen and (max-width: $ms-screen-max-sm) {
+        margin-bottom: 0;
       }
     }
   }
