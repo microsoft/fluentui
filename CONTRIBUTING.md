@@ -4,7 +4,7 @@
 Our components are a collection of small, independent, general-purpose UI components intended to be reused throughout an existing application.
 
 ### Contributing new components
-We have two main buckets for our new and current components, Experimental and Fundamental. These categories are created to notify consumers and developers of Fabric which components are expected to be fully supported and stable and which ones are likely to change drastically over a short amount of time.
+We have two main buckets for our new and existing components, Experimental and Fundamental. These categories are created to notify consumers and developers of Fabric which components are expected to be fully supported and stable and which ones are likely to change drastically over a short amount of time.
 
 #### Contribute component design
 If you are looking to submit a newly designed component to this project we first suggest submitting an issue in our [issue tracking](https://github.com/OfficeDev/office-ui-fabric-react/issues) section of GitHub in order for our team and community to come to an agreement that the proposed component/feature makes sense for our project. We also suggest looking at our [Adobe XD Toolkit](https://static2.sharepointonline.com/files/fabric/fabric-website/files/officeuifabric.zip) to see if the component has not already been designed.
