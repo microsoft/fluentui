@@ -157,7 +157,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   private _renderInnerText(): JSX.Element {
     return (
       <div
-        className={ css('ms-MessageBar-text', styles.text, this.props.actions ? styles.multilineWithActions : null) }
+        className={ css('ms-MessageBar-text', styles.text, this.props.actions && styles.multilineWithActions, !this.props.onDismiss && styles.noDismissButton) }
         id={ this.state.labelId }
       >
         <span
