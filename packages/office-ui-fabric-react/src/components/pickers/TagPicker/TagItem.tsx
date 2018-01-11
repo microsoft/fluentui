@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { css, IDictionary } from '../../../Utilities';
+import { css, IDictionary, KeyCodes } from '../../../Utilities';
 import { Icon } from '../../../Icon';
 import { IPickerItemProps } from '../PickerItem.types';
 import { ITag } from './TagPicker';
@@ -9,15 +9,15 @@ import * as stylesImport from './TagItem.scss';
 const styles: any = stylesImport;
 
 export const TagItem = (props: IPickerItemProps<ITag>) => {
-  const _onClick = (event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
+  const onClick = (event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
     if (props.onClick) {
       props.onClick(event);
     }
   }
 
-  const _onKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      _onClick(event);
+  const onKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.keyCode === KeyCodes.enter || event.keyCode === KeyCodes.space) {
+      onClick(event);
     }
   }
 
@@ -30,9 +30,9 @@ export const TagItem = (props: IPickerItemProps<ITag>) => {
       key={ props.index }
       data-selection-index={ props.index }
       data-is-focusable={ !props.disabled && true }
-      onClick={ _onClick }
-      onKeyDown={ _onKeydown }
-      role={ "button" }
+      onClick={ onClick }
+      onKeyDown={ onKeydown }
+      role={ 'button' }
     >
       <span className={ css('ms-TagItem-text', styles.tagItemText) } aria-label={ props.children }>{ props.children }</span>
       { !props.disabled &&
