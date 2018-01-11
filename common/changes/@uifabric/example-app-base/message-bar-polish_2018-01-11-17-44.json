@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Updated theme override colors for MessageBar.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "lynam.emily@gmail.com"
+}
