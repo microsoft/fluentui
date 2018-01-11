@@ -162,7 +162,8 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
       >
         <span
           className={ css('ms-MessageBar-innerText ' + styles.innerText) }
-          role='status' aria-live={ this._getAnnouncementPriority() }
+          role='status'
+          aria-live={ this._getAnnouncementPriority() }
         >
           <DelayedRender>
             <span>{ this.props.children }</span>
