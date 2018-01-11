@@ -7,9 +7,9 @@ const fs = require('fs');
 // Paths/File Names
 const rootComponentFolderPath = './packages/experiments/src';
 const componentFolderPath = rootComponentFolderPath + '/components/' + newComponentName;
-const componentPropsFileName = newComponentName + '.Props.ts';
+const componentPropsFileName = newComponentName + '.types.ts';
 const componentFileName = newComponentName + '.tsx';
-const componentFileClassNamesName = newComponentName + '.classNames.ts';
+const componentFileClassNamesName = newComponentName + '.styles.ts';
 const globalIndexFileName = newComponentName + '.ts';
 const templateFolderPath = './scripts/templates';
 const indexFileName = 'index.ts';

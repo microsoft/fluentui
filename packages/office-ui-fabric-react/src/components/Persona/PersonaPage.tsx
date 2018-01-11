@@ -31,7 +31,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Alternative small personas' code={ PersonaAlternateExampleCode }>
               <PersonaAlternateExample />
             </ExampleCard>
-            <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
+            <ExampleCard title='Persona with initials' code={ PersonaInitialsExampleCode }>
               <PersonaInitialsExample />
             </ExampleCard>
             <ExampleCard title='Rendering custom persona text' code={ PersonaCustomRenderExampleCode }>
@@ -42,7 +42,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
             ] }
           />
         }

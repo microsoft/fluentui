@@ -50,9 +50,11 @@ let _items = [
   }
 ];
 
-export class DetailsListGroupedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DetailsListGroupedExample extends React.Component<{}, {
+  items: {}[];
+}> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       items: _items

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.types';
 import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -22,7 +22,7 @@ import {
   getFirstFocusable,
   getLastFocusable
 } from '../../Utilities';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
@@ -54,8 +54,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // tslint:disable-next-line:no-unused-variable
   private _dropdownLabel: HTMLElement;
   private _id: string;
+  private _isScrollIdle: boolean;
+  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private _scrollIdleTimeoutId: number | undefined;
 
   constructor(props: IDropdownProps) {
+    super(props);
     props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
@@ -76,6 +80,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     });
 
     this._id = props.id || getId('Dropdown');
+    this._isScrollIdle = true;
 
     this.state = {
       isOpen: false
@@ -153,7 +158,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='menu'
+          role='combobox'
+          aria-autocomplete='none'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
@@ -212,9 +218,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  public focus() {
+  public focus(shouldOpenOnFocus?: boolean) {
     if (this._dropDown && this._dropDown.tabIndex !== -1) {
       this._dropDown.focus();
+      if (shouldOpenOnFocus) {
+        this.setState({
+          isOpen: true
+        });
+      }
     }
   }
 
@@ -364,6 +375,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
             target={ this._dropDown }
             onDismiss={ this._onDismiss }
+            onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
             calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
           >
@@ -549,19 +561,57 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     };
   }
 
+  /**
+   * Scroll handler for the callout to make sure the mouse events
+   * for updating focus are not interacting during scroll
+   */
+  @autobind
+  private _onScroll() {
+    if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
+      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      this._scrollIdleTimeoutId = undefined;
+    } else {
+      this._isScrollIdle = false;
+    }
+
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+  }
+
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
+    if (!this._isScrollIdle) {
+      return;
+    }
+
     let targetElement = ev.currentTarget as HTMLElement;
     targetElement.focus();
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
+
+    if (!this._isScrollIdle || document.activeElement === targetElement) {
+      return;
+    }
+
     targetElement.focus();
   }
 
   @autobind
   private _onMouseItemLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
-    this._host.focus();
+    if (!this._isScrollIdle) {
+      return;
+    }
+
+    /**
+     * IE11 focus() method forces parents to scroll to top of element.
+     * Edge and IE expose a setActive() function for focusable divs that
+     * sets the page focus but does not scroll the parent element.
+     */
+    if ((this._host as any).setActive) {
+      (this._host as any).setActive();
+    } else {
+      this._host.focus();
+    }
   }
 
   @autobind

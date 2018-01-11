@@ -1,2 +1,2 @@
 export * from './Spinner';
-export * from './Spinner.Props';
+export * from './Spinner.types';

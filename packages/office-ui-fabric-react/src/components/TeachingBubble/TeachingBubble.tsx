@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, css } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import { ITeachingBubbleProps } from './TeachingBubble.Props';
+import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './TeachingBubble.scss';
@@ -39,7 +39,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
     return (
       <Callout
-        className={ css('ms-TeachingBubble', styles.root) }
+        className={ css('ms-TeachingBubble', styles.root, this.props.isWide ? styles.wideCallout : null) }
         ref={ this._resolveRef('_callout') }
         target={ targetElement }
         {...calloutProps}

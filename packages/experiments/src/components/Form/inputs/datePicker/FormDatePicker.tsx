@@ -6,7 +6,7 @@ const DatePickerStyles = DatePickerStylesModule as any;
 import * as React from 'react';
 
 // Components
-import { IFormDatePickerProps } from './FormDatePicker.Props';
+import { IFormDatePickerProps } from './FormDatePicker.types';
 import { DatePicker, IDatePickerProps } from 'office-ui-fabric-react/lib/DatePicker';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';

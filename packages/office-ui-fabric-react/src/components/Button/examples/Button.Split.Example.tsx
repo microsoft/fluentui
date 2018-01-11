@@ -7,10 +7,7 @@ const alertClicked = (): void => {
   alert('Clicked');
 };
 
-export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+export class ButtonSplitExample extends React.Component<IButtonProps> {
 
   public render() {
     let { disabled, checked } = this.props;
@@ -26,6 +23,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
             text='Create account'
             onClick={ alertClicked }
             split={ true }
+            splitButtonAriaLabel={ 'See 2 sample options' }
             style={ { height: '35px' } }
             menuProps={ {
               items: [
@@ -103,10 +101,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   }
 }
 
-export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
 
   public render() {
     let { disabled, checked } = this.props;

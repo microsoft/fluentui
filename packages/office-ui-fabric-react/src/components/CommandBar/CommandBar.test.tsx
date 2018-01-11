@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
-import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.Props';
+import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.types';
 
 describe('CommandBar', () => {
 
@@ -263,4 +263,57 @@ describe('CommandBar', () => {
       document.body.removeChild(renderContainer);
     }
   });
+
+  it('Command bar item shows chevron even if submenu has no items', () => {
+    const menuWithNoSubmenu: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: []
+        }
+      },
+    ];
+
+    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+      <CommandBar
+        items={ menuWithNoSubmenu }
+      />
+    ) as React.Component<CommandBar, {}>;
+    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+
+    expect(menuItem.querySelector('.ms-CommandBarItem-chevronDown')).not.toEqual(null);
+  });
+
+  it('Command bar item onMenuOpened is called even if submenu has no items', () => {
+    let subMenuOpened = false;
+
+    const onSubMenuOpened = (): void => {
+      subMenuOpened = true;
+    };
+
+    const menuWithEmptySubMenu: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [],
+          onMenuOpened: onSubMenuOpened
+        }
+      }
+    ];
+
+    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+      <CommandBar
+        items={ menuWithEmptySubMenu }
+      />
+    ) as React.Component<CommandBar, {}>;
+
+    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(subMenuOpened).toEqual(true);
+  });
+
 });

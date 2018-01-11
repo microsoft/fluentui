@@ -3,7 +3,7 @@ import {
   css,
   BaseComponent
 } from '../../Utilities';
-import { IResizeGroupProps } from './ResizeGroup.Props';
+import { IResizeGroupProps } from './ResizeGroup.types';
 import * as styles from './ResizeGroup.scss';
 
 const RESIZE_DELAY = 16;
@@ -287,11 +287,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public render() {
-    const { onRenderData } = this.props;
+    const { onRenderData, className } = this.props;
     const { dataToMeasure, renderedData } = this.state;
 
     return (
-      <div className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
+      <div className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             { onRenderData(dataToMeasure) }
@@ -323,6 +323,12 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       }
     }
     this._afterComponentRendered();
+  }
+
+  public remeasure(): void {
+    if (this._root) {
+      this.setState({ measureContainer: true });
+    }
   }
 
   private _afterComponentRendered() {

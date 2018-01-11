@@ -1,12 +1,13 @@
 import {
   concatStyleSets,
   ITheme,
-  getTheme
+  getTheme,
+  HighContrastSelector
 } from '../../Styling';
 import {
   memoizeFunction
 } from '../../Utilities';
-import { IActivityItemStyles } from './ActivityItem.Props';
+import { IActivityItemStyles } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
@@ -65,7 +66,20 @@ export const getStyles = memoizeFunction((
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,
       color: theme.palette.themePrimary,
-      marginTop: '1px'
+      marginTop: '1px',
+      selectors: {
+        '.ms-Persona-imageArea': {
+          marginTop: '-2px',
+          border: '2px solid' + theme.palette.white,
+          borderRadius: '50%',
+          selectors: {
+            [HighContrastSelector]: {
+              border: 'none',
+              marginTop: '0'
+            }
+          }
+        }
+      }
     },
 
     activityPersona: {

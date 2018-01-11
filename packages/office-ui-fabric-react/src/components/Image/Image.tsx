@@ -8,7 +8,7 @@ import {
   getNativeProps,
   imageProperties
 } from '../../Utilities';
-import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.Props';
+import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.types';
 import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;
@@ -17,12 +17,12 @@ export interface IImageState {
   loadState?: ImageLoadState;
 }
 
-export const CoverStyleMap = {
+export const CoverStyleMap: { [key: number]: string } = {
   [ImageCoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageIsLandscape,
   [ImageCoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imageIsPortrait
 };
 
-export const ImageFitMap = {
+export const ImageFitMap: { [key: number]: string } = {
   [ImageFit.center]: 'ms-Image-image--center ' + styles.imageIsCenter,
   [ImageFit.contain]: 'ms-Image-image--contain ' + styles.imageIsContain,
   [ImageFit.cover]: 'ms-Image-image--cover ' + styles.imageIsCover,

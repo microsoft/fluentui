@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image } from '../../Image';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
+import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.types';
 import {
   assign,
   BaseComponent,

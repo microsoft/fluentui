@@ -6,11 +6,13 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
+import { ToggleAriaLabelExample } from './examples/Toggle.AriaLabel.Example';
 import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
+const ToggleAriaLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.AriaLabel.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -19,14 +21,25 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         title='Toggle'
         componentName='ToggleExample'
         exampleCards={
-          <ExampleCard title='Default Toggles' code={ ToggleBasicExampleCode }>
-            <ToggleBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard
+              title='Default Toggles'
+              code={ ToggleBasicExampleCode }
+            >
+              <ToggleBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Toggle with specialized aria labels for the screen-reader to announce when the toggle is on and off'
+              code={ ToggleAriaLabelExampleCode }
+            >
+              <ToggleAriaLabelExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
             ] }
           />
         }

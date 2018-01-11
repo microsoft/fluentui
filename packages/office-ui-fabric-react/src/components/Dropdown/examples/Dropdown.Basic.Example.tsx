@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind } from '../../../Utilities';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
-export class DropdownBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DropdownBasicExample extends BaseComponent<{}, {
+  selectedItem?: { key: string | number | undefined },
+  selectedItems: string[]
+}> {
+  private _basicDropdown: IDropdown;
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
-      selectedItem: null,
+      selectedItem: undefined,
       selectedItems: [],
     };
   }
@@ -42,8 +48,12 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
+          componentRef={ this._resolveRef('_basicDropdown') }
         />
-
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
         <Dropdown
           className='Dropdown-example'
           label='Disabled uncontrolled example with defaultSelectedKey:'
@@ -67,7 +77,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           className='Dropdown-example'
           label='Controlled example:'
-          selectedKey={ selectedItem && selectedItem.key }
+          selectedKey={ (selectedItem ? selectedItem.key : undefined) }
           onChanged={ this.changeState }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
@@ -186,6 +196,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
       newArray[i] = array[i];
     }
     return newArray;
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked() {
+    if (this._basicDropdown) {
+      this._basicDropdown.focus(true);
+    }
   }
 
   private _log(str: string): () => void {

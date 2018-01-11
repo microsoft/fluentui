@@ -1,4 +1,4 @@
-import { IButtonStyles } from './Button.Props';
+import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,

@@ -1,21 +1,14 @@
 
 @import '~office-ui-fabric-react/src/common/common';
 
-.signal {
-  display: inline-block;
-  margin: 0 4px;
-  position: relative;
+/*
+Note: For icon alignment, please only use relative positioning in em units.
+Do not change the flex alignment or justification, or use vertical-alignment.
+It is important that Signals scale based on font-size and do not interfere with alternate alignment
+settings used by the parent control.
+*/
 
-  &:first-child {
-    @include margin-left(0);
-  }
-
-  &:last-child {
-    @include margin-right(0);
-  }
-}
-
-.newItem {
+.newSignal {
   width: 0;
   height: 1em;
   position: relative;
@@ -31,9 +24,9 @@
 .newIcon {
   position: absolute;
   bottom: 100%;
-  @include right(-1px);
+  @include right(-0.15em);
   font-size: 0.66em;
-  margin-bottom: -0.75em;
+  margin-bottom: -0.8em;
 }
 
 .comments {
@@ -69,7 +62,6 @@
 
 .shared {
   color: $ms-color-neutralSecondary;
-  top: 0.1em;
 }
 
 .missingMetadata {
@@ -79,8 +71,6 @@
 .mention {
   position: relative;
 
-  top: 0.2em;
-
   color: $ms-color-themePrimary;
 
   .selected & {
@@ -88,24 +78,10 @@
   }
 }
 
-.signal {
-  transition: color 0.2s linear;
-
-  .dark &,
-  .dark.selected {
-    color: $ms-color-white;
-  }
+.malwareDetected {
+  color: $ms-color-redDark;
 }
 
-.signalField {
-  display: inline-flex;
-  max-width: 100%;
-  flex-direction: row nowrap;
-}
-
-.signalFieldValue {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  text-align: left;
+.external {
+  color: $ms-color-neutralSecondary;
 }

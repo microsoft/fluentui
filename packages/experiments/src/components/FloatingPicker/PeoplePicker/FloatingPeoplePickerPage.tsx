@@ -27,7 +27,7 @@ export class FloatingPeoplePickerPage extends React.Component<IComponentDemoPage
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/FloatingPicker/BaseFloatingPicker.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/FloatingPicker/BaseFloatingPicker.types.ts')
             ] }
           />
         }

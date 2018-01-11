@@ -5,6 +5,7 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { TestImages } from '../../../common/TestImages';
+import './PersonaExample.scss';
 
 const examplePersona = {
   imageUrl: TestImages.personaMale,
@@ -16,9 +17,11 @@ const examplePersona = {
   showSecondaryText: true
 };
 
-export class PersonaAlternateExample extends React.Component<React.Props<PersonaAlternateExample>, { renderPersonaDetails?: boolean; }> {
-  constructor() {
-    super();
+export class PersonaAlternateExample extends React.Component<{}, {
+  renderPersonaDetails: boolean;
+}> {
+  constructor(props: {}) {
+    super(props);
     this.state = {
       renderPersonaDetails: true
     };
@@ -28,7 +31,7 @@ export class PersonaAlternateExample extends React.Component<React.Props<Persona
     let { renderPersonaDetails } = this.state;
 
     return (
-      <div>
+      <div className='ms-PersonaExample'>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size24 }

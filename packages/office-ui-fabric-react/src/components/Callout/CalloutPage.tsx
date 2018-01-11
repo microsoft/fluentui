@@ -47,7 +47,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           <div>
             <PropertiesTableSet
               sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.Props.ts')
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
               ] }
             />
             <p>Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
