@@ -17,7 +17,7 @@
 
 @mixin buttonMargins($sidesAndBottom, $top: $sidesAndBottom) {
   @include margin($top, $sidesAndBottom, $sidesAndBottom, 0);
-  :global(.ms-Button) {
+  :nth-child(n+2) {
     @include margin-left($sidesAndBottom);
   }
 }
@@ -63,8 +63,7 @@
   min-width: 0;
   display: flex;
   flex-grow: 1;
-  // Margin-right is accounted for in the .dismissal and button margin-left
-  @include margin(16px, 0, 16px, 8px);
+  @include margin(16px, 8px, 16px, 8px);
   @media screen and (max-width: $ms-screen-max-sm) {
     @include margin(8px, 0, 8px, 8px);
   }
@@ -179,7 +178,8 @@
 .dismissal {
   @include focus-border();
   flex-shrink: 0;
-  @include margin(8px, 8px, 8px, 8px);
+  @include margin(8px, 8px, 8px, 0); // Margin-left is accounted for in the .text margin-right
+
   @media screen and (max-width: $ms-screen-max-sm) {
     @include margin(0, 0, 0, 8px);
   }
