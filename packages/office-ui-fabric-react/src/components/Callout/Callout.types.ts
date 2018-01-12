@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Callout } from './Callout';
+import { IStyle, ITheme } from '../../Styling';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
@@ -192,4 +193,33 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * Callback when the Callout body is scrolled.
    */
   onScroll?: () => void;
+}
+
+export interface ICalloutContentStyleProps {
+  /**
+   * Theme to apply to the calloutContent.
+   */
+  theme: ITheme;
+
+  calloutWidth?: number;
+
+  className?: string;
+
+  directionalClassname?: any;
+
+  beakWidth?: number;
+
+  overflowYHidden?: boolean;
+
+  contentMaxHeight?: number;
+
+  positions?: ICalloutPositionedInfo;
+}
+
+export interface ICalloutContentStyles {
+  container: IStyle;
+  root: IStyle;
+  beak: IStyle;
+  beakCurtain: IStyle;
+  calloutMain: IStyle;
 }
