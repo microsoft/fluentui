@@ -1,37 +1,22 @@
 
 import * as React from 'react';
-import { IContextualMenuItem } from '../ContextualMenu';
-import { IButtonStyles } from '../Button';
-import { IIconProps } from '../Icon';
+import { IContextualMenuItem } from '../../ContextualMenu';
+import { IButtonStyles } from '../../Button';
+import { IIconProps } from '../../Icon';
+import { ICommandBarData } from './CommandBar.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ICommandBar {
   /**
    * Sets focus to the active command in the list.
    */
   focus(): void;
-}
 
-export interface ICommandBarData {
   /**
-   * Items being rendered in the primary region
+   * Remeasures the available space.
    */
-  primaryItems: ICommandBarItemProps[];
-  /**
-   * Items being rendered in the overflow
-   */
-  overflowItems: ICommandBarItemProps[];
-  /**
-   * Items being rendered on the far side
-   */
-  farItems: ICommandBarItemProps[] | undefined;
-  /**
-   * Length of original overflowItems to ensure that they are not moved into primary region on resize
-   */
-  minimumOverflowItems: number;
-  /**
-   * Unique string used to cache the width of the command bar
-   */
-  cacheKey: string;
+  remeasure(): void;
 }
 
 export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -62,14 +47,30 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   elipisisAriaLabel?: string;
 
   /**
-  * Text to be read by screen readers if there are overflow items and focus is on elipsis button
+  * Icon props to be passed to overflow elipsis
   */
   elipisisIconProps?: IIconProps;
+
+  /**
+  * If endAligned, all icons will be aligned to the far side of the commandbar, and overflow items
+  * will be taking from the starting side
+  */
+  endAligned?: boolean;
+
+  /**
+  * Call to provide customized styling that will layer on top of the variant rules
+  */
+  getStyles?: IStyleFunction<ICommandBarStyleProps, ICommandBarStyles>;
 
   /**
    * Custom styles to be mixed into individual button styles
    */
   buttonStyles?: IButtonStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Custom render function for all non contextual menu buttons.
@@ -96,6 +97,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
+
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false
@@ -105,7 +107,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Custom styles for individual button
    */
-  styles?: IButtonStyles;
+  buttonStyles?: IButtonStyles;
 
   /**
    * A custom cache key to be used for this item. If cacheKey is changed, the cache will invalidate. Defaults to key value;
@@ -118,4 +120,16 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    */
   renderedInOverflow?: boolean;
 
+}
+
+export interface ICommandBarStyleProps {
+  theme: ITheme;
+  className?: string;
+  endAligned?: boolean;
+}
+
+export interface ICommandBarStyles {
+  root?: IStyle;
+  primarySet?: IStyle;
+  secondarySet?: IStyle;
 }

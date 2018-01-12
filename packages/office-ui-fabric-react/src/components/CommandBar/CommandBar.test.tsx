@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { CommandBar } from './CommandBar';
+import { CommandBarBase } from './CommandBar.base';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
@@ -24,12 +25,13 @@ describe('CommandBar', () => {
           { key: '1', name: 'asdf' },
           { key: '2', name: 'asdf' }
         ] }
+        className={ 'TestClassName' }
       />
     ).toJSON()).toMatchSnapshot();
   });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
-    const commandBar = mount<CommandBar>(
+    const commandBar = mount<CommandBarBase>(
       <CommandBar
         items={ [
           {

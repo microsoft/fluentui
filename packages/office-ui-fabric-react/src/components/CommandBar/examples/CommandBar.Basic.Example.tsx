@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ICommandBarProps, CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar } from '../CommandBar';
+import { ICommandBarProps } from './../CommandBar.types';
 
 export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
 
