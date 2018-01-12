@@ -141,8 +141,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     this._inputElement.setSelectionRange(0, 0);
   }
 
-
-
   @autobind
   private _onCompositionStart(ev: React.CompositionEvent<HTMLInputElement>) {
     this._autoFillEnabled = false;
