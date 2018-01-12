@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Jan 2018 11:23:36 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jan 2018 20:03:22 GMT and should not be manually modified.
+
+## 5.39.1
+Fri, 12 Jan 2018 20:03:22 GMT
+
+### Patches
+
+- Checkbox and ChoiceGroup: New resting state border color.
 
 ## 5.39.0
 Wed, 10 Jan 2018 11:23:36 GMT
