@@ -154,6 +154,8 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    */
   doNotLayer?: boolean;
 
+  layerHostid?: string;
+
   /**
    * If true the position will not change sides in an attempt to fit the callout within bounds.
    * It will still attempt to align it to whatever bounds are given.
