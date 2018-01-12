@@ -96,7 +96,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Optional method to format the chosen date to a string to display in the DatePicker
    * @defaultvalue date.toString()
    */
-  formatDate?: (date: Date) => string;
+  formatDate?: (date?: Date) => string;
 
   /**
    * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
