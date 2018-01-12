@@ -22,8 +22,6 @@ import * as stylesImport from './DatePicker.scss';
 const styles: any = stylesImport;
 
 export interface IDatePickerState {
-  /** The currently focused date in the drop down, but not necessarily selected */
-  navigatedDate?: Date;
   selectedDate?: Date;
   formattedDate?: string;
   isDatePickerShown?: boolean;
@@ -134,7 +132,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, value } = props;
 
     this.state = {
-      selectedDate: value || new Date(),
+      selectedDate: value || undefined,
       formattedDate: (formatDate && value) ? formatDate(value) : '',
       isDatePickerShown: false,
       errorMessage: undefined
@@ -163,7 +161,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let oldValue = this.state.selectedDate;
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
-        selectedDate: value || new Date(),
+        selectedDate: value || undefined,
         formattedDate: (formatDate && value) ? formatDate(value) : '',
       });
     }
@@ -367,7 +365,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
-        navigatedDate: this.state.selectedDate,
         errorMessage: ''
       });
     }
