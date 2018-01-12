@@ -5,8 +5,7 @@ import {
   KeyCodes,
   autobind,
   getNativeProps,
-  inputProperties,
-  Async
+  inputProperties
 } from '../../../Utilities';
 
 export interface IBaseAutoFillState {
