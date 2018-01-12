@@ -164,6 +164,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * The maximum allowable date.
    */
   maxDate?: Date;
+
+  /**
+   * The initially highlighted date in the calendar picker
+   */
+  initialPickerDate?: Date;
 }
 
 export interface IDatePickerStrings {
