@@ -14,7 +14,7 @@ import { Label } from '../../Label';
 import {
   customizable
 } from '../../Utilities';
-import { getClassNames } from './Toggle.classNames';
+import { getClassNames } from './Toggle.styles';
 
 export interface IToggleState {
   isChecked: boolean;
