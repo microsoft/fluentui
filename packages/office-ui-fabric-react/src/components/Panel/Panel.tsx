@@ -42,6 +42,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   constructor(props: IPanelProps) {
     super(props);
 
+    this._warnDeprecations({
+      'ignoreExternalFocusing': 'focusTrapZoneProps',
+      'forceFocusInsideTrap': 'focusTrapZoneProps',
+      'firstFocusableSelector': 'focusTrapZoneProps'
+    });
+
     this.state = {
       isFooterSticky: false,
       isOpen: false,
