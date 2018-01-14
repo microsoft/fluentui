@@ -41,7 +41,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     aria-hidden={true}
                     aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
@@ -62,7 +62,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     aria-hidden={true}
                     aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
@@ -918,7 +918,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     aria-hidden={true}
                     aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
@@ -938,7 +938,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     aria-hidden={true}
                     aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
