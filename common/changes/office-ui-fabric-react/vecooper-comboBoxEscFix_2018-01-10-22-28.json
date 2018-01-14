@@ -1,0 +1,11 @@
+
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Escape key shouldn't propagate in combo box if it isn't open",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "vecooper@microsoft.com"
+}
