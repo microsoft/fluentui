@@ -18,7 +18,6 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
   public static defaultProps = {
     label: '',
     description: '',
-    percentComplete: 0,
     width: 180
   };
 
@@ -39,7 +38,9 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
       label = title;
     }
 
-    percentComplete = Math.min(100, Math.max(0, percentComplete! * 100));
+    if (this.props.percentComplete !== undefined) {
+      percentComplete = Math.min(100, Math.max(0, percentComplete! * 100));
+    }
 
     return (
       <div className={ css('ms-ProgressIndicator', styles.root, className) }>
@@ -50,13 +51,14 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
             className={ css(
               'ms-ProgressIndicator-progressBar',
               styles.progressBar,
-              percentComplete > ZERO_THRESHOLD && 'smoothTransition'
+              percentComplete && percentComplete > ZERO_THRESHOLD && 'smoothTransition',
+              percentComplete === undefined && styles.indeterminate
             ) }
-            style={ { width: percentComplete + '%' } }
+            style={ percentComplete !== undefined ? { width: percentComplete + '%' } : undefined }
             role='progressbar'
             aria-valuemin='0'
             aria-valuemax='100'
-            aria-valuenow={ percentComplete.toFixed().toString() }
+            aria-valuenow={ percentComplete && percentComplete.toFixed().toString() }
             aria-valuetext={ ariaValueText }
           />
         </div>

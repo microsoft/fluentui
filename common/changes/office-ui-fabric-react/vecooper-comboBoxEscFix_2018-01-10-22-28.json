@@ -1,11 +1,11 @@
-{
+
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ToolTop: Changed ToolTipHost to inline-block",
+      "comment": "Escape key shouldn't propagate in combo box if it isn't open",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "law@microsoft.com"
+  "email": "vecooper@microsoft.com"
 }

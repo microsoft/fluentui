@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jan 2018 20:03:21 GMT and should not be manually modified.
+
+## 5.13.0
+Fri, 12 Jan 2018 20:03:21 GMT
+
+### Minor changes
+
+- Add demo of size 64 file type icons
+
+## 5.12.0
+Wed, 10 Jan 2018 11:23:36 GMT
+
+### Minor changes
+
+- Add search throttle to floating picker
 
 ## 5.11.1
 Tue, 19 Dec 2017 11:22:47 GMT

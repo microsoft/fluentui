@@ -4,12 +4,20 @@ exports[`Rating Renders Rating correctly 1`] = `
 <div
   aria-label=""
   className="ms-Rating-star"
+  id="Rating0"
 >
   <div
     aria-describedby={undefined}
     aria-labelledby={undefined}
-    className="ms-FocusZone ms-Rating-focuszone"
+    className=
+        ms-FocusZone
+        ms-Rating-focuszone
+        {
+          display: inline-block;
+          padding-bottom: 1px;
+        }
     data-focuszone-id="FocusZone2"
+    data-is-focusable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -17,20 +25,83 @@ exports[`Rating Renders Rating correctly 1`] = `
     tabIndex={-1}
   >
     <button
-      className="ms-Rating-button ms-Rating--small undefined"
+      className=
+          ms-Rating-button
+          ms-Rating--small
+          {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 3px;
+            margin-top: 3px;
+            outline: transparent;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          &:disabled {
+            cursor: default;
+          }
+          &[disabled] {
+            cursor: default;
+          }
+          {
+            font-size: 16px;
+            line-height: 16px;
+          }
       data-is-current={true}
       disabled={false}
+      id="Rating0-star-0"
       onFocus={[Function]}
       role="presentation"
     >
       <span
-        className="ms-Rating-labelText"
+        className=
+            ms-Rating-labelText
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
         id="RatingLabel1-1"
       >
         
       </span>
       <div
-        className="ms-RatingStar-container"
+        className=
+            ms-RatingStar-container
+            {
+              display: inline-block;
+              position: relative;
+            }
       >
         <i
           aria-hidden={true}
@@ -40,6 +111,10 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-back
               {
                 display: inline-block;
+              }
+              {
+                color: #a6a6a6;
+                width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -52,6 +127,19 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-front
               {
                 display: inline-block;
+              }
+              {
+                color: #000000;
+                height: 100 %;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                vertical-align: middle;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -64,19 +152,82 @@ exports[`Rating Renders Rating correctly 1`] = `
       </div>
     </button>
     <button
-      className="ms-Rating-button ms-Rating--small undefined"
+      className=
+          ms-Rating-button
+          ms-Rating--small
+          {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 3px;
+            margin-top: 3px;
+            outline: transparent;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          &:disabled {
+            cursor: default;
+          }
+          &[disabled] {
+            cursor: default;
+          }
+          {
+            font-size: 16px;
+            line-height: 16px;
+          }
       disabled={false}
+      id="Rating0-star-1"
       onFocus={[Function]}
       role="presentation"
     >
       <span
-        className="ms-Rating-labelText"
+        className=
+            ms-Rating-labelText
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
         id="RatingLabel1-2"
       >
         
       </span>
       <div
-        className="ms-RatingStar-container"
+        className=
+            ms-RatingStar-container
+            {
+              display: inline-block;
+              position: relative;
+            }
       >
         <i
           aria-hidden={true}
@@ -86,6 +237,10 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-back
               {
                 display: inline-block;
+              }
+              {
+                color: #a6a6a6;
+                width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -99,6 +254,19 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 display: inline-block;
               }
+              {
+                color: #000000;
+                height: 100 %;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                vertical-align: middle;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Highlight;
+              }
           data-icon-name="FavoriteStarFill"
           role="presentation"
           style={
@@ -110,19 +278,82 @@ exports[`Rating Renders Rating correctly 1`] = `
       </div>
     </button>
     <button
-      className="ms-Rating-button ms-Rating--small undefined"
+      className=
+          ms-Rating-button
+          ms-Rating--small
+          {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 3px;
+            margin-top: 3px;
+            outline: transparent;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          &:disabled {
+            cursor: default;
+          }
+          &[disabled] {
+            cursor: default;
+          }
+          {
+            font-size: 16px;
+            line-height: 16px;
+          }
       disabled={false}
+      id="Rating0-star-2"
       onFocus={[Function]}
       role="presentation"
     >
       <span
-        className="ms-Rating-labelText"
+        className=
+            ms-Rating-labelText
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
         id="RatingLabel1-3"
       >
         
       </span>
       <div
-        className="ms-RatingStar-container"
+        className=
+            ms-RatingStar-container
+            {
+              display: inline-block;
+              position: relative;
+            }
       >
         <i
           aria-hidden={true}
@@ -132,6 +363,10 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-back
               {
                 display: inline-block;
+              }
+              {
+                color: #a6a6a6;
+                width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -145,6 +380,19 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 display: inline-block;
               }
+              {
+                color: #000000;
+                height: 100 %;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                vertical-align: middle;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Highlight;
+              }
           data-icon-name="FavoriteStarFill"
           role="presentation"
           style={
@@ -156,19 +404,82 @@ exports[`Rating Renders Rating correctly 1`] = `
       </div>
     </button>
     <button
-      className="ms-Rating-button ms-Rating--small undefined"
+      className=
+          ms-Rating-button
+          ms-Rating--small
+          {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 3px;
+            margin-top: 3px;
+            outline: transparent;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          &:disabled {
+            cursor: default;
+          }
+          &[disabled] {
+            cursor: default;
+          }
+          {
+            font-size: 16px;
+            line-height: 16px;
+          }
       disabled={false}
+      id="Rating0-star-3"
       onFocus={[Function]}
       role="presentation"
     >
       <span
-        className="ms-Rating-labelText"
+        className=
+            ms-Rating-labelText
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
         id="RatingLabel1-4"
       >
         
       </span>
       <div
-        className="ms-RatingStar-container"
+        className=
+            ms-RatingStar-container
+            {
+              display: inline-block;
+              position: relative;
+            }
       >
         <i
           aria-hidden={true}
@@ -178,6 +489,10 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-back
               {
                 display: inline-block;
+              }
+              {
+                color: #a6a6a6;
+                width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -190,6 +505,19 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-front
               {
                 display: inline-block;
+              }
+              {
+                color: #000000;
+                height: 100 %;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                vertical-align: middle;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -202,19 +530,82 @@ exports[`Rating Renders Rating correctly 1`] = `
       </div>
     </button>
     <button
-      className="ms-Rating-button ms-Rating--small undefined"
+      className=
+          ms-Rating-button
+          ms-Rating--small
+          {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 3px;
+            margin-top: 3px;
+            outline: transparent;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric.is-focusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          &:disabled {
+            cursor: default;
+          }
+          &[disabled] {
+            cursor: default;
+          }
+          {
+            font-size: 16px;
+            line-height: 16px;
+          }
       disabled={false}
+      id="Rating0-star-4"
       onFocus={[Function]}
       role="presentation"
     >
       <span
-        className="ms-Rating-labelText"
+        className=
+            ms-Rating-labelText
+            {
+              border: 0px;
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
         id="RatingLabel1-5"
       >
         
       </span>
       <div
-        className="ms-RatingStar-container"
+        className=
+            ms-RatingStar-container
+            {
+              display: inline-block;
+              position: relative;
+            }
       >
         <i
           aria-hidden={true}
@@ -224,6 +615,10 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-back
               {
                 display: inline-block;
+              }
+              {
+                color: #a6a6a6;
+                width: 100%;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
@@ -236,6 +631,19 @@ exports[`Rating Renders Rating correctly 1`] = `
               ms-RatingStar-front
               {
                 display: inline-block;
+              }
+              {
+                color: #000000;
+                height: 100 %;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+                text-align: center;
+                top: 0;
+                vertical-align: middle;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
           role="presentation"
