@@ -144,6 +144,11 @@ export interface ISemanticColors {
   inputBorderHovered: string;
 
   /**
+* The border of a small input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
+*/
+  smallInputBorder: string;
+
+  /**
    * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.
    */
   inputBackgroundChecked: string;
@@ -152,16 +157,6 @@ export interface ISemanticColors {
    * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
    */
   inputBackgroundCheckedHovered: string;
-
-  /**
-  * The border of a small input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
-  */
-  smallInputBorder: string;
-
-  /**
-   * The border color of a hovered small input control, such as checkbox.
-  */
-  smallInputBorderHovered: string;
 
   /**
    * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color,
