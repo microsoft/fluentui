@@ -149,7 +149,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   @autobind
   private _onCompositionEnd(ev: React.CompositionEvent<HTMLInputElement>) {
     let inputValue = this._getCurrentInputValue();
-    this._tryEnableAutoFill(inputValue, this.value, true);
+    this._tryEnableAutoFill(inputValue, this.value, false, true);
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => this._updateValue(inputValue), 0);
   }
@@ -167,36 +167,41 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       this.props.onKeyDown(ev);
     }
 
-    switch (ev.which) {
-      case KeyCodes.backspace:
-        this._autoFillEnabled = false;
-        break;
-      case KeyCodes.left:
-        if (this._autoFillEnabled) {
-          this._value = this.state.displayValue!;
+    // If the event is actively being composed, then don't alert autofill.
+    // Right now typing does not have isComposing, once that has been fixed any should be removed.
+    if (!(ev.nativeEvent as any).isComposing) {
+      switch (ev.which) {
+        case KeyCodes.backspace:
           this._autoFillEnabled = false;
-        }
-        break;
-      case KeyCodes.right:
-        if (this._autoFillEnabled) {
-          this._value = this.state.displayValue!;
-          this._autoFillEnabled = false;
-        }
-        break;
-      default:
-        if (!this._autoFillEnabled) {
-          if (this.props.enableAutoFillOnKeyPress!.indexOf(ev.which) !== -1) {
-            this._autoFillEnabled = true;
+          break;
+        case KeyCodes.left:
+          if (this._autoFillEnabled) {
+            this._value = this.state.displayValue!;
+            this._autoFillEnabled = false;
           }
-        }
-        break;
+          break;
+        case KeyCodes.right:
+          if (this._autoFillEnabled) {
+            this._value = this.state.displayValue!;
+            this._autoFillEnabled = false;
+          }
+          break;
+        default:
+          if (!this._autoFillEnabled) {
+            if (this.props.enableAutoFillOnKeyPress!.indexOf(ev.which) !== -1) {
+              this._autoFillEnabled = true;
+            }
+          }
+          break;
+      }
     }
   }
 
   @autobind
   private _onChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = this._getCurrentInputValue();
-    this._tryEnableAutoFill(value, this._value);
+    // Right now typing does not have isComposing, once that has been fixed any should be removed.
+    this._tryEnableAutoFill(value, this._value, (ev.nativeEvent as any).isComposing);
     this._updateValue(value);
   }
 
@@ -208,10 +213,17 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   /**
    * Attempts to enable autofill. Whether or not autofill is enabled depends on the input value,
    * whether or not any text is selected, and only if the new input value is longer than the old input value.
+   * isComposed is whether or not the new value is a composed value.
+   * Autofill should never be set to true if the value is composing. Once compositionEnd is called, then
+   * it should be completed.
    * @param newValue
+   * @param oldValue
+   * @param isComposing
+   * @param isComposed
    */
-  private _tryEnableAutoFill(newValue: string, oldValue: string, isComposed?: boolean) {
-    if (newValue
+  private _tryEnableAutoFill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean) {
+    if (!isComposing
+      && newValue
       && this._inputElement.selectionStart === newValue.length
       && !this._autoFillEnabled
       && (newValue.length > oldValue.length || isComposed)) {
