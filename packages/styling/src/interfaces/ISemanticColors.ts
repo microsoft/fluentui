@@ -144,7 +144,7 @@ export interface ISemanticColors {
   inputBorderHovered: string;
 
   /**
-* The border of a small input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
+* The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
 */
   smallInputBorder: string;
 
