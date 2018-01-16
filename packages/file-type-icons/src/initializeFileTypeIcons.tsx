@@ -12,6 +12,9 @@ export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, opti
   ICON_SIZES.forEach((size: number) => {
     _initializeIcons(baseUrl, size, options);
   });
+  // Currently we have a more limited set of image files for size 64.
+  // When we have the full set, add 64 to ICON_SIZES and remove _initializeSize64Icons.
+  _initializeSize64Icons(baseUrl, options);
 }
 
 function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIconOptions>): void {
@@ -47,6 +50,36 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
     );
     fileTypeIcons[type + size + '_4x' + PNG_SUFFIX] = (
       <img src={ baseUrl + size + '_4x/' + type + '.png' } height='100%' width='100%' />
+    );
+  });
+
+  registerIcons({
+    fontFace: {},
+    style: {
+      width: size,
+      height: size,
+      overflow: 'hidden'
+    },
+    icons: fileTypeIcons
+  }, options);
+}
+
+function _initializeSize64Icons(baseUrl: string, options?: Partial<IIconOptions>): void {
+  const iconTypes: string[] = Object.keys(FileTypeIconMap);
+  const fileTypeIcons: { [key: string]: JSX.Element } = {};
+  const size = 64;
+
+  iconTypes.forEach((type: string) => {
+    fileTypeIcons[type + size + PNG_SUFFIX] = <img src={ baseUrl + size + '/' + type + '.png' } />;
+    fileTypeIcons[type + size + SVG_SUFFIX] = <img src={ baseUrl + size + '/' + type + '.svg' } />;
+
+    // For high resolution screens, register additional versions.
+    // Size 64 only has PNGs for 1.5x and 2x.
+    fileTypeIcons[type + size + '_1.5x' + PNG_SUFFIX] = (
+      <img src={ baseUrl + size + '_1.5x/' + type + '.png' } height='100%' width='100%' />
+    );
+    fileTypeIcons[type + size + '_2x' + PNG_SUFFIX] = (
+      <img src={ baseUrl + size + '_2x/' + type + '.png' } height='100%' width='100%' />
     );
   });
 

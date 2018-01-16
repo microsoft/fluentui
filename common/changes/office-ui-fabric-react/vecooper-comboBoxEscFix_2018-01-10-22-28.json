@@ -1,11 +1,11 @@
-{
+
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox and ChoiceGroup: New resting state border color.",
+      "comment": "Escape key shouldn't propagate in combo box if it isn't open",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "vecooper@microsoft.com"
 }
