@@ -13,7 +13,7 @@ export const TagItem = (props: IPickerItemProps<ITag>) => {
     if (props.onClick) {
       props.onClick(event);
     }
-  }
+  };
 
   const onKeydown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.keyCode === KeyCodes.enter || event.keyCode === KeyCodes.space) {
