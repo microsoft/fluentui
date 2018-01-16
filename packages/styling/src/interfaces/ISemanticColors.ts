@@ -159,7 +159,7 @@ export interface ISemanticColors {
   smallInputBorder: string;
 
   /**
-   * The border color of a hovered small input control.
+   * The border color of a hovered small input control, such as checkbox.
   */
   smallInputBorderHovered: string;
 
