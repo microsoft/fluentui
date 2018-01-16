@@ -19,7 +19,7 @@ export const TagItem = (props: IPickerItemProps<ITag>) => {
     if (event.keyCode === KeyCodes.enter || event.keyCode === KeyCodes.space) {
       onClick(event);
     }
-  }
+  };
 
   return (
     <div
