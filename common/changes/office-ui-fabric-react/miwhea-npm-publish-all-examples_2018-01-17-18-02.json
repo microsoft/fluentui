@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox and ChoiceGroup: New resting state border color.",
+      "comment": "Update .npmignore to publish all examples",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "miwhea@microsoft.com"
 }
