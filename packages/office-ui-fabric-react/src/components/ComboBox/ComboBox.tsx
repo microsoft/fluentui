@@ -1527,18 +1527,27 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
   }
 
+  /**
+   * Get the aria autocomplete value for the Combobox
+   * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from and can
+   * dynamically populate input, and 'none' if auto-suggest is not enabled.
+   */
   private _getAriaAutoCompleteValue(): string {
     let autoComplete = !this.props.disabled && this.props.autoComplete;
 
     if (autoComplete && this.props.allowFreeform) {
-      return 'inline'
-    } else if (autoComplete && this.props.allowFreeform) {
-      return 'both'
+      return 'inline';
+    } else if (autoComplete && !this.props.allowFreeform) {
+      return 'both';
     } else {
       return 'none';
     }
   }
 
+  /**
+   * Get the aria-activedescendant value for the comboxbox.
+   * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
+   */
   private _getAriaActiveDescentValue(): string | null {
     let descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
     if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex != -1) {
