@@ -292,6 +292,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       !!hasErrorMessage
     );
 
+    let descendantText = (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null);
+    if (isOpen && this.state.focused && this.state.currentPendingValueValidIndex != -1) {
+      descendantText = (id + '-list' + this.state.currentPendingValueValidIndex);
+    }
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
@@ -315,14 +319,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onClick={ allowFreeform ? this.focus : this._onComboBoxClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
-            aria-autocomplete={ (!disabled && autoComplete === 'on') }
+            aria-autocomplete={ this._getAriaAutoCompleteValue() }
             role='combobox'
             aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
             readOnly={ disabled || !allowFreeform }
             aria-labelledby={ (label && (id + '-label')) }
             aria-label={ ((ariaLabel && !label) && ariaLabel) }
             aria-describedby={ (id + '-option') }
-            aria-activedescendant={ (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null) }
+            aria-activedescendant={ this._getAriaActiveDescentValue() }
             aria-disabled={ disabled }
             aria-owns={ (id + '-list') }
             spellCheck={ false }
@@ -330,6 +334,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             suggestedDisplayValue={ suggestedDisplayValue }
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+            title={ (ariaLabel && !label) ? ariaLabel : label }
           />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
@@ -1520,5 +1525,25 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { styles: customStylesForCurrentOption } = item;
 
     return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+  }
+
+  private _getAriaAutoCompleteValue(): string {
+    let autoComplete = !this.props.disabled && this.props.autoComplete;
+
+    if (autoComplete && this.props.allowFreeform) {
+      return 'inline'
+    } else if (autoComplete && this.props.allowFreeform) {
+      return 'both'
+    } else {
+      return 'none';
+    }
+  }
+
+  private _getAriaActiveDescentValue(): string | null {
+    let descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
+    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex != -1) {
+      descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
+    }
+    return descendantText;
   }
 }
