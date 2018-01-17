@@ -56,7 +56,8 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      showSecondaryText
+      showSecondaryText,
+      onPhotoLoadingStateChange
      } = this.props;
 
     let personaCoinProps = {
@@ -70,7 +71,8 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      size
+      size,
+      onPhotoLoadingStateChange
     };
 
     let divProps = getNativeProps(this.props, divProperties);
