@@ -56,7 +56,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
           ms-SearchBox-icon
           {
             display: inline-block;

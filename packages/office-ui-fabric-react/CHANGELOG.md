@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 12 Jan 2018 20:03:22 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2018 11:11:25 GMT and should not be manually modified.
+
+## 5.40.0
+Wed, 17 Jan 2018 11:11:25 GMT
+
+### Minor changes
+
+- DatePicker: Default selectedDate should be undefined, not new Date()
+- DatePicker: Add an initialPickerDate property
+- Icon: the `ms-Icon` class name, despite being unused, is causing conflicts with fabric-core usage inadvertently. There isn't a great way to deal with this other than to avoid re-using the `ms-Icon` class name.
+- ProgressIndicator: Adding indeterminate progress variant.
+
+### Patches
+
+- Pickers: Fixed border clipping of tag item in high-contrast mode
+- Escape key shouldn't propagate in combo box if it isn't open
 
 ## 5.39.1
 Fri, 12 Jan 2018 20:03:22 GMT
