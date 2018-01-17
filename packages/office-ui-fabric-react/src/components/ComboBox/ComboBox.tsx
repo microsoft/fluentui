@@ -319,7 +319,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onClick={ allowFreeform ? this.focus : this._onComboBoxClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
-            aria-autocomplete={ this._getAriaAutoCompleteValue() }
+            aria-autocomplete={ (!disabled && autoComplete === 'on') }
             role='combobox'
             aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
             readOnly={ disabled || !allowFreeform }
@@ -1525,23 +1525,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { styles: customStylesForCurrentOption } = item;
 
     return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
-  }
-
-  /**
-   * Get the aria autocomplete value for the Combobox
-   * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from and can
-   * dynamically populate input, and 'none' if auto-suggest is not enabled.
-   */
-  private _getAriaAutoCompleteValue(): string {
-    let autoComplete = !this.props.disabled && this.props.autoComplete;
-
-    if (autoComplete && this.props.allowFreeform) {
-      return 'inline';
-    } else if (autoComplete && !this.props.allowFreeform) {
-      return 'both';
-    } else {
-      return 'none';
-    }
   }
 
   /**
