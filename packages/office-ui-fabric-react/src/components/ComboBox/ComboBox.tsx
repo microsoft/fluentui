@@ -292,10 +292,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       !!hasErrorMessage
     );
 
-    let descendantText = (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null);
-    if (isOpen && this.state.focused && this.state.currentPendingValueValidIndex != -1) {
-      descendantText = (id + '-list' + this.state.currentPendingValueValidIndex);
-    }
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
