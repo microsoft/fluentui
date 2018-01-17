@@ -43,7 +43,7 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   public render() {
-    let { isNavOpen, navHeight } = this.state;
+    let { navHeight } = this.state;
     let navTop: string = this.state.isAttached ? '0' : 'unset'
     let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute'
     let navStyle = {
@@ -54,10 +54,7 @@ export class App extends React.Component<IAppProps, any> {
 
     return (
       <Fabric
-        className={ css(
-          'App',
-          isNavOpen && 'is-navOpen'
-        ) }
+        className='App'
       >
         <div className='App-wrapper'>
           <div
