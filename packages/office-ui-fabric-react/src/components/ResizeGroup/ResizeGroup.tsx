@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {
   css,
-  BaseComponent,
-  provideContext
+  BaseComponent
 } from '../../Utilities';
+import { provideContext } from '@uifabric/utilities/lib/Context';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as styles from './ResizeGroup.scss';
 
