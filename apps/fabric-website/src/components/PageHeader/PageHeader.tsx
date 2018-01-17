@@ -3,10 +3,8 @@ import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utili
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import AttachedScrollThresholdUtility from '../../utilities/AttachedScrollThresholdUtility';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
-
-const FULL_HEADER_HEIGHT = 236;
-const ATTACHED_HEADER_HEIGHT = 128;
 
 export interface IPageHeaderProps extends IBaseProps {
 
@@ -47,6 +45,8 @@ export interface IPageHeaderState {
    * The section title area is in a collapsed state.
    */
   isAttached: boolean;
+  headerBottom: string;
+  headerTop: string;
 }
 
 export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState> {
@@ -61,7 +61,9 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     super(props);
 
     this.state = {
-      isAttached: false
+      isAttached: false,
+      headerBottom: 'unset',
+      headerTop: '0'
     };
 
   }
@@ -71,7 +73,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
       this._events.on(window, 'scroll', this._onScroll, true);
-      this._calculateAttachedScrollThreshold();
+      this._attachedScrollThreshold = AttachedScrollThresholdUtility.calculateAttachedScrollThreshold();
     }
   }
 
@@ -81,19 +83,14 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     let baseRoute: string = getPageRouteFromState(
       this.props.pageTitle
     );
-
-    let backgroundStyle;
-    if (backgroundColor) {
-      backgroundStyle = {
-        backgroundColor: backgroundColor,
-      };
-    }
-
-    if (backgroundImage) {
-      backgroundStyle.backgroundImage = backgroundImage;
-    }
-
     let inPageNav;
+    let backgroundStyle = {
+      bottom: this.state.headerBottom,
+      top: this.state.headerTop,
+      backgroundColor: backgroundColor,
+      backgroundImage: backgroundImage
+    };
+
     if (links) {
       inPageNav = (
         <nav className={ styles.pageNav } aria-label='In page navigation'>
@@ -102,7 +99,6 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
               <li key={ linkIndex }>
                 <PageHeaderLink href={ baseRoute + '#' + link.location } text={ link.text } />
               </li>
-              // <li key={ linkIndex }><a>{ link.text }</a></li>
             )) }
           </ul>
         </nav>
@@ -122,21 +118,29 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
   }
 
   private _onScroll() {
-    let { isAttached } = this.state;
+    let { isAttached, headerBottom, headerTop } = this.state;
+    const headerBottomThreshold = window.scrollY + window.innerHeight;
+    const appContent = document.querySelector('[data-app-content-div]');
+    const appContentBoundingReact = appContent && appContent.getBoundingClientRect();
 
-    if (window.scrollY >= this._attachedScrollThreshold) {
+    if (appContent && appContentBoundingReact.bottom < AttachedScrollThresholdUtility.attachedHeaderHeight) {
+      // This causes the header to bump into the footer instead of overlapping it
+      headerBottom = (window.screen.height - appContentBoundingReact.bottom).toString();
+      headerTop = 'unset';
+    } else if (window.scrollY >= this._attachedScrollThreshold) {
       isAttached = true;
+      headerBottom = 'unset';
+      headerTop = '0';
     } else {
       isAttached = false;
+      headerBottom = 'unset';
+      headerTop = '0';
     }
 
     this.setState({
-      isAttached: isAttached
+      isAttached: isAttached,
+      headerBottom: headerBottom,
+      headerTop: headerTop
     });
-  }
-
-  private _calculateAttachedScrollThreshold() {
-    let attachedScrollThreshold = FULL_HEADER_HEIGHT - ATTACHED_HEADER_HEIGHT;
-    this._attachedScrollThreshold = attachedScrollThreshold;
   }
 }
