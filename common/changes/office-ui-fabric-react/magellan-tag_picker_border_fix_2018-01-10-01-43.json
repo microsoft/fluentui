@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add unmount check in suggestion promise",
+      "comment": "Pickers: Fixed border clipping of tag item in high-contrast mode",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lingge@microsoft.com"
+  "email": "law@microsoft.com"
 }

@@ -37,6 +37,10 @@ common/_semanticSlots.scss  @phkuo
 common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
+### Utilities
+dateMath/     @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+dateValues/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
+
 ## Components
 # ActivityItem/
 # Breadcrumb/
@@ -59,7 +63,7 @@ DatePicker/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
 # FacePile/
 # FocusTrapZone/
 # FocusZone/
-# GroupedList/
+GroupedList/  @aditima
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
