@@ -5,6 +5,7 @@ const styles: any = stylesImport;
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import AttachedScrollThresholdUtility from '../../utilities/AttachedScrollThresholdUtility';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
 export interface IPageHeaderProps extends IBaseProps {
 
@@ -93,15 +94,17 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
 
     if (links) {
       inPageNav = (
-        <nav className={ styles.pageNav } aria-label='In page navigation'>
-          <ul>
-            { links.map((link, linkIndex) => (
-              <li key={ linkIndex }>
-                <PageHeaderLink href={ baseRoute + '#' + link.location } text={ link.text } />
-              </li>
-            )) }
-          </ul>
-        </nav>
+        <FocusZone>
+          <nav className={ styles.pageNav } aria-label='In page navigation'>
+            <ul>
+              { links.map((link, linkIndex) => (
+                <li key={ linkIndex }>
+                  <PageHeaderLink href={ baseRoute + '#' + link.location } text={ link.text } />
+                </li>
+              )) }
+            </ul>
+          </nav>
+        </FocusZone>
       );
     }
 
