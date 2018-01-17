@@ -232,7 +232,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.input.clear();
 
     this.floatingPicker.hidePicker();
-    this.floatingPicker.showPicker();
   }
 
   @autobind

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "add optional title element to extendedPicker, css changes to have selected items flow on the same row as input",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "amyngu@microsoft.com"
+}
