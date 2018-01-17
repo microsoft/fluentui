@@ -10,7 +10,6 @@ export interface IAppProps extends React.Props<App> {
 }
 
 export interface IAppState {
-  isNavOpen: boolean;
   isAttached: boolean;
   navHeight: number;
 }
@@ -25,7 +24,7 @@ export class App extends React.Component<IAppProps, any> {
     super(props);
 
     this.state = {
-      isNavOpen: false
+      isAttached: false
     };
   }
 
@@ -52,7 +51,7 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   public render() {
-    let { isNavOpen, navHeight } = this.state;
+    let { navHeight } = this.state;
     let navTop: string = this.state.isAttached ? '0' : 'unset'
     let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute'
     let navStyle = {
@@ -63,10 +62,7 @@ export class App extends React.Component<IAppProps, any> {
 
     return (
       <Fabric
-        className={ css(
-          'App',
-          isNavOpen && 'is-navOpen'
-        ) }
+        className='App'
       >
         <div className='App-wrapper'>
           <div
@@ -75,7 +71,6 @@ export class App extends React.Component<IAppProps, any> {
           >
             <Nav
               pages={ AppState.pages }
-              onLinkClick={ this._onNavItemClicked.bind(this) }
             />
           </div>
           <div
@@ -89,12 +84,6 @@ export class App extends React.Component<IAppProps, any> {
         </div>
       </Fabric>
     );
-  }
-
-  private _onNavItemClicked(ev: MouseEvent) {
-    this.setState({
-      isNavOpen: false
-    });
   }
 
   @autobind
