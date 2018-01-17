@@ -24,7 +24,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
-      'ms-Icon',
       'ms-Icon-imageContainer',
       classNames.root,
       classNames.imageContainer,
@@ -53,7 +52,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon ms-Icon-placeHolder',
+            'ms-Icon-placeHolder',
             classNames.rootHasPlaceHolder,
             props.className
           ) }
@@ -78,7 +77,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon', // dangerous?
             iconDefinition.subset.className,
             classNames.root,
             props.className

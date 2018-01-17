@@ -40,7 +40,6 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
             aria-hidden={true}
             aria-label={undefined}
             className=
-                ms-Icon
                 ms-CommandBarItem-chevronDown
                 {
                   display: inline-block;

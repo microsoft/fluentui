@@ -160,11 +160,11 @@ export const getCaretDownButtonStyles = memoizeFunction((
           borderColor: 'ButtonText',
           color: 'ButtonText',
           MsHighContrastAdjust: 'none'
-        },
-        '.ms-Icon': {
-          fontSize: FontSizes.small
         }
       }
+    },
+    icon: {
+      fontSize: FontSizes.small
     },
     rootHovered: {
       backgroundColor: caretButtonBackgroundHovered,
@@ -195,7 +195,6 @@ export const getStyles = memoizeFunction((
 ): Partial<IComboBoxStyles> => {
 
   const { semanticColors, fonts, palette } = theme;
-
   const ComboBoxRootBackground = semanticColors.bodyBackground;
   const ComboBoxRootTextColor = semanticColors.bodyText;
   const ComboBoxRootBorderColor = semanticColors.inputBorder;

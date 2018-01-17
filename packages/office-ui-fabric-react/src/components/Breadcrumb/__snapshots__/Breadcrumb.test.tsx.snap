@@ -46,7 +46,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -76,7 +75,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -106,7 +104,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -136,7 +133,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -259,7 +255,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
                   aria-hidden={true}
                   aria-label={undefined}
                   className=
-                      ms-Icon
                       ms-Button-icon
                       {
                         display: inline-block;
@@ -285,7 +280,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -315,7 +309,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -345,7 +338,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;

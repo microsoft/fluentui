@@ -5,7 +5,7 @@ exports[`Icon renders Icon correctly 1`] = `
   aria-hidden={true}
   aria-label={undefined}
   className=
-      ms-Icon
+
       {
         display: inline-block;
       }

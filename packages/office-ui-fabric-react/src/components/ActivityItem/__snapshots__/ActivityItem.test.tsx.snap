@@ -175,7 +175,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
+
           {
             display: inline-block;
           }
@@ -596,7 +596,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
+
           {
             display: inline-block;
           }
