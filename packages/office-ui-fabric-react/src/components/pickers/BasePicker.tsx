@@ -84,7 +84,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       // If there are less new items than old items then something was removed and we
       // should try to keep focus consistent
       if (newItems.length < this.state.items.length) {
-        focusIndex = this.state.items.indexOf(this.selection.getSelection() [0]);
+        focusIndex = this.state.items.indexOf(this.selection.getSelection()[0]);
       }
 
       this.setState({
@@ -199,7 +199,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded={ this.state.suggestionsVisible ? 'true' : 'false' }
+                aria-expanded={ Boolean(this.state.suggestionsVisible) }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
@@ -272,7 +272,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { items } = this.state;
 
     if (items.length && index! >= 0) {
-      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]') [Math.min(index!, items.length - 1)] as HTMLElement;
+      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
       if (newEl) {
         this.focusZone.focusElement(newEl);
       }
@@ -698,7 +698,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded={ this.state.suggestionsVisible ? 'true' : 'false' }
+                aria-expanded={ Boolean(this.state.suggestionsVisible) }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
