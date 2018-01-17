@@ -10,7 +10,6 @@ export interface IAppProps extends React.Props<App> {
 }
 
 export interface IAppState {
-  isNavOpen: boolean;
   isAttached: boolean;
   navHeight: number;
 }
@@ -20,14 +19,6 @@ export class App extends React.Component<IAppProps, any> {
   private _attachedScrollThreshold: number;
   private _height: number;
   private _appContent: HTMLDivElement;
-
-  constructor(props: IAppProps) {
-    super(props);
-
-    this.state = {
-      isNavOpen: false
-    };
-  }
 
   public componentDidMount() {
     window.addEventListener('scroll', this._handleNavPositioning);
@@ -75,7 +66,6 @@ export class App extends React.Component<IAppProps, any> {
           >
             <Nav
               pages={ AppState.pages }
-              onLinkClick={ this._onNavItemClicked.bind(this) }
             />
           </div>
           <div
@@ -89,12 +79,6 @@ export class App extends React.Component<IAppProps, any> {
         </div>
       </Fabric>
     );
-  }
-
-  private _onNavItemClicked(ev: MouseEvent) {
-    this.setState({
-      isNavOpen: false
-    });
   }
 
   @autobind
