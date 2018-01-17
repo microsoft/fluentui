@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2018 11:11:25 GMT and should not be manually modified.
+
+## 5.10.1
+Wed, 17 Jan 2018 11:11:25 GMT
+
+### Patches
+
+- Fix styles with undefined values being added to document (#3700)
 
 ## 5.10.0
 Thu, 28 Dec 2017 11:23:50 GMT
