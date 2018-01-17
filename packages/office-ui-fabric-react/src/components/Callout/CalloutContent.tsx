@@ -25,7 +25,7 @@ import {
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { AnimationClassNames, mergeStyles, AnimationStyles, IRawStyle } from '../../Styling';
 
 const styles: any = stylesImport;
 
@@ -40,6 +40,13 @@ const SLIDE_ANIMATIONS: { [key: number]: string; } = {
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
   [RectangleEdge.right]: 'slideRightIn20'
+};
+
+const ANIMATIONS: { [key: number]: IRawStyle; } = {
+  [RectangleEdge.top]: AnimationStyles.slideUpIn20,
+  [RectangleEdge.bottom]: AnimationStyles.slideDownIn20,
+  [RectangleEdge.left]: AnimationStyles.slideLeftIn20,
+  [RectangleEdge.right]: AnimationStyles.slideRightIn20,
 };
 
 export interface ICalloutState {
