@@ -20,7 +20,7 @@ karma.config.js
 node_modules
 src/**/*
 !src/**/*.types.ts
-!src/**/*.Example.tsx
+!src/**/examples/*.tsx
 tsconfig.json
 tsd.json
 tslint.json
