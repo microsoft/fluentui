@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.10.1",
+      "tag": "@uifabric/merge-styles_v5.10.1",
+      "date": "Wed, 17 Jan 2018 11:11:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "3a3877323f5a0b1a9d9d7bb74d4a649802aa9bc0",
+            "comment": "Fix styles with undefined values being added to document (#3700)"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.0",
       "tag": "@uifabric/merge-styles_v5.10.0",
       "date": "Thu, 28 Dec 2017 11:23:50 GMT",
