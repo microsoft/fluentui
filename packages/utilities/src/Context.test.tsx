@@ -11,19 +11,19 @@ const TestContext = provideContext({
   return { isTest: props.isTest };
 });
 
-class Parent extends React.Component {
-  public render() {
-    return <Child />;
-  }
-}
-
 class Child extends React.Component {
-  public static contextTypes = {
+  public static contextTypes: PropTypes.ValidationMap<{ isTest: boolean }> = {
     isTest: PropTypes.bool
   };
 
-  public render() {
+  public render(): JSX.Element {
     return <div>{ `${this.context.isTest || false}` }</div>;
+  }
+}
+
+class Parent extends React.Component {
+  public render(): JSX.Element {
+    return <Child />;
   }
 }
 
@@ -31,5 +31,5 @@ describe('Context', () => {
   it('can provide context for child components', () => {
     expect(ReactDOM.renderToStaticMarkup(<Parent />)).toEqual('<div>false</div>');
     expect(ReactDOM.renderToStaticMarkup(<TestContext isTest={ true }><Parent /></TestContext>)).toEqual('<div>true</div>');
-  })
+  });
 });
