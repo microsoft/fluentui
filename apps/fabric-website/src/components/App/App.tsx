@@ -30,23 +30,25 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   public componentDidMount() {
-    window.addEventListener('scroll', this._handleScroll);
-    window.addEventListener('resize', this._handleResize);
+    window.addEventListener('scroll', this._handleNavPositioning);
+    window.addEventListener('resize', this._handleNavPositioning);
 
+    let { isAttached } = this.state;
     const appContentRect = this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
+    this._attachedScrollThreshold = AttachedScrollThresholdUtility.calculateAttachedScrollThreshold();
     this._height = this._calculateNavHeight(viewPortHeight, appContentRect, this._height);
+    isAttached = this._attachNav(this.state.isAttached, viewPortHeight, appContentRect);
 
     this.setState({
+      isAttached: isAttached,
       navHeight: this._height
     })
-
-    this._attachedScrollThreshold = AttachedScrollThresholdUtility.calculateAttachedScrollThreshold();
   }
 
   public componentWillUnmount() {
-    window.removeEventListener('scroll', this._handleScroll);
-    window.removeEventListener('resize', this._handleResize);
+    window.removeEventListener('scroll', this._handleNavPositioning);
+    window.removeEventListener('resize', this._handleNavPositioning);
   }
 
   public render() {
@@ -96,28 +98,25 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   @autobind
-  private _handleScroll() {
+  private _handleNavPositioning() {
     let { isAttached } = this.state;
     const appContentRect = this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
-
-    if (window.scrollY >= this._attachedScrollThreshold) {
-      isAttached = true;
-    } else {
-      isAttached = false;
-    }
-    const height = this._height;
-    this._height = this._calculateNavHeight(viewPortHeight, appContentRect, height);
-
+    isAttached = this._attachNav(isAttached, viewPortHeight, appContentRect);
+    this._height = this._calculateNavHeight(viewPortHeight, appContentRect, this._height);
     this.setState({
       isAttached: isAttached,
       navHeight: this._height
     });
   }
 
-  @autobind
-  private _handleResize() {
-    this.forceUpdate();
+  private _attachNav(isAttached, viewPortHeight, appContentRect): boolean {
+    if (window.scrollY >= this._attachedScrollThreshold) {
+      isAttached = true;
+    } else {
+      isAttached = false;
+    }
+    return isAttached;
   }
 
   private _calculateNavHeight(viewPortHeight: number, appContentRect: ClientRect, height: number): number {
