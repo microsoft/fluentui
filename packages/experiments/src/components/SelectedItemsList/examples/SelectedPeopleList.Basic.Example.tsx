@@ -14,7 +14,7 @@ import { Selection } from 'office-ui-fabric-react/lib/Selection';
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
   private index: number;
-  private selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
+  private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   public render(): JSX.Element {
     return (
