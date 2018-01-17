@@ -199,13 +199,16 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
 
   @autobind
   private _onChange(ev: React.FormEvent<HTMLElement>) {
-    let value: string = this._getCurrentInputValue();
+    let value: string = this._getCurrentInputValue(ev);
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
     this._tryEnableAutoFill(value, this._value, (ev.nativeEvent as any).isComposing);
     this._updateValue(value);
   }
 
-  private _getCurrentInputValue() {
+  private _getCurrentInputValue(ev?: React.FormEvent<HTMLElement>) {
+    if (ev && ev.target && (ev.target as any).value) {
+      return (ev.target as any).value;
+    }
     let value: string = this._inputElement.value;
     return value;
   }
