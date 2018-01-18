@@ -129,7 +129,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       >
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-            <span
+            <button
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth,
                 {
                   ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds
@@ -143,8 +143,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span >
-            <span
+            </button >
+            <button
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth,
                 {
                   ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds
@@ -157,7 +157,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span >
+            </button >
           </div >
         </div >
         <div className={ css('ms-DatePicker-header', styles.header) } >
