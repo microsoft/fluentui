@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Jan 2018 11:11:25 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jan 2018 11:21:56 GMT and should not be manually modified.
+
+## 5.40.1
+Thu, 18 Jan 2018 11:21:56 GMT
+
+### Patches
+
+- BasePicker: Fix accessibility bug where it always has aria-expanded=true
+- Calculate overflow manually to determine if Callout needs a scrollbar
+- Update .npmignore to publish all examples
 
 ## 5.40.0
 Wed, 17 Jan 2018 11:11:25 GMT

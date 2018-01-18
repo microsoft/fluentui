@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.40.1",
+      "tag": "office-ui-fabric-react_v5.40.1",
+      "date": "Thu, 18 Jan 2018 11:21:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e292345559756a62ccc92543d918d3c2854c3fb7",
+            "comment": "BasePicker: Fix accessibility bug where it always has aria-expanded=true"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "dbd8339d41e228ac1884c5780f3af6ddb67c4b8a",
+            "comment": "Calculate overflow manually to determine if Callout needs a scrollbar"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "320de0af73525c030af023d10e667c1c9272783b",
+            "comment": "Update .npmignore to publish all examples"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.40.0",
       "tag": "office-ui-fabric-react_v5.40.0",
       "date": "Wed, 17 Jan 2018 11:11:25 GMT",
