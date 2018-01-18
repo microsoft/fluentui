@@ -62,7 +62,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
-  /** Controls how/if the details list manages selection. */
+  /** Controls how/if the details list manages selection. Options include none, single, multiple */
   selectionMode?: SelectionMode;
 
   /**
