@@ -18,6 +18,10 @@ const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     const today = new Date(Date.now());
+    const dayTypes = require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/CalendarDay.types.ts') as string;
+    const monthTypes = require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/CalendarMonth.types.ts') as string;
+    const dayStyleTypes = dayTypes.match(/^export interface ((ICalendarDayStyles)|(ICalendarDayStyleProps)) \{[\s\S]*?\}$/mg)! as string[];
+    const monthStyleTypes = monthTypes.match(/^export interface ((ICalendarMonthStyles)|(ICalendarMonthStyleProps)) \{[\s\S]*?\}$/mg)! as string[];
     return (
       <ComponentPage
         title={ 'Calendar' }
@@ -147,10 +151,13 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             </ExampleCard>
           </div>
         }
+
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts'),
+              ...dayStyleTypes,
+              ...monthStyleTypes
             ] }
           />
         }

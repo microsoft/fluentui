@@ -1,37 +1,168 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Calendar Test rendering simplest calendar Renders simple calendar correctly 1`] = `
+exports[`Calendar renders simple calendar correctly 1`] = `
 <div
-  className="ms-DatePicker"
+  className=
+      ms-DatePicker
+      {
+        box-shadow: none;
+        box-sizing: border-box;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+      }
   role="application"
 >
   <div
-    className="ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ms-DatePicker-monthPickerVisible undefined ms-DatePicker-calendarsInline undefined"
+    className=
+        ms-DatePicker-picker
+        ms-DatePicker-picker--opened
+        ms-DatePicker-picker--focused
+        ms-DatePicker-calendarsInline
+        ms-DatePicker-picker--monthPickerVisible
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #000000;
+          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          position: relative;
+          text-align: left;
+        }
   >
     <div
-      className="ms-DatePicker-holder ms-slideDownIn10"
+      className=
+          ms-DatePicker-holder
+          {
+            animation-duration: 0.367s;
+            animation-fill-mode: both;
+            animation-name: css-0,css-12;
+            animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            box-sizing: border-box;
+            display: block;
+            width: 300px;
+          }
+          @media (min-device-width: 480px){& {
+            height: auto;
+            width: 440px;
+          }
       onKeyDown={[Function]}
     >
       <div
-        className="ms-DatePicker-frame"
+        className=
+            ms-DatePicker-frame
+            {
+              padding-bottom: 1px;
+              padding-left: 1px;
+              padding-right: 1px;
+              padding-top: 1px;
+              position: relative;
+            }
       >
         <div
-          className="ms-DatePicker-wrap"
+          className=
+              ms-DatePicker-wrap
+              {
+                display: flex;
+                margin-bottom: 30px;
+                margin-left: -1px;
+                margin-right: -1px;
+                margin-top: -1px;
+                padding-bottom: 9px;
+                padding-left: 9px;
+                padding-right: 9px;
+                padding-top: 9px;
+              }
+              @media (min-device-width: 480px){& {
+                margin-bottom: 0px;
+                padding-bottom: 9px;
+                padding-left: 12px;
+                padding-right: 12px;
+                padding-top: 9px;
+              }
         >
           <div
-            className="ms-DatePicker-dayPicker"
-            id="DatePickerDay-dayPicker10"
+            className=
+                ms-DatePicker-dayPicker
+                {
+                  display: block;
+                }
+                @media (min-device-width: 480px){& {
+                  border-right: 1px solid #eaeaea;
+                  box-sizing: border-box;
+                  margin-bottom: -10px;
+                  margin-left: 0;
+                  margin-right: 0;
+                  margin-top: -10px;
+                  min-height: 214px;
+                  padding-bottom: 10px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 10px;
+                  width: auto;
+                }
+            id="DatePickerDay-dayPicker6"
           >
             <div
-              className="ms-DatePicker-monthComponents"
+              className=
+                  ms-DatePicker-monthComponents
+                  {
+                    display: inline-flex;
+                    margin-left: 3px;
+                    margin-top: 2px;
+                  }
             >
               <div
                 className="ms-DatePicker-navContainer"
               >
                 <span
-                  aria-controls="DatePickerDay-dayPicker10"
+                  aria-controls="DatePickerDay-dayPicker6"
                   aria-label={undefined}
-                  className="ms-DatePicker-prevMonth js-prevMonth"
+                  className=
+                      ms-DatePicker-prevMonth
+                      js-prevMonth
+                      {
+                        color: #212121;
+                        display: inline-block;
+                        font-size: 16px;
+                        height: 40px;
+                        line-height: 40px;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        top: 2px;
+                        width: 40px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #666666;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 14px;
+                        height: 24px;
+                        line-height: 24px;
+                        width: 24px;
+                      }
+                      &:hover {
+                        background: #c8c8c8;
+                        cursor: pointer;
+                      }
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="button"
@@ -50,9 +181,48 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   />
                 </span>
                 <span
-                  aria-controls="DatePickerDay-dayPicker10"
+                  aria-controls="DatePickerDay-dayPicker6"
                   aria-label={undefined}
-                  className="ms-DatePicker-nextMonth js-nextMonth"
+                  className=
+                      ms-DatePicker-nextMonth
+                      js-nextMonth
+                      {
+                        color: #212121;
+                        display: inline-block;
+                        font-size: 16px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-left: 3px;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        top: 2px;
+                        width: 40px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #666666;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 14px;
+                        height: 24px;
+                        line-height: 24px;
+                        width: 24px;
+                      }
+                      &:hover {
+                        background: #c8c8c8;
+                        cursor: pointer;
+                      }
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="button"
@@ -73,16 +243,67 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </div>
             </div>
             <div
-              className="ms-DatePicker-header"
+              className=
+                  ms-DatePicker-header
+                  {
+                    display: inline-flex;
+                    height: 40px;
+                    line-height: 44px;
+                    position: relative;
+                  }
+                  @media (min-device-width: 480px){& {
+                    height: 28px;
+                    line-height: 28px;
+                  }
             >
               <div
                 aria-atomic="true"
                 aria-live="polite"
                 aria-relevant="text"
-                id="DatePickerDay-monthAndYear11"
+                id="DatePickerDay-monthAndYear7"
               >
                 <div
-                  className="ms-DatePicker-monthAndYear"
+                  className=
+                      ms-DatePicker-monthAndYear
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        display: block;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 21px;
+                        font-weight: 300;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-left: 5px;
+                        margin-top: -1px;
+                        outline: transparent;
+                        padding-bottom: 0;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        padding-top: 0;
+                        position: relative;
+                      }
+                      @media (min-device-width: 480px){& {
+                        display: inline-block;
+                        font-size: 17px;
+                        height: 28px;
+                        line-height: 26px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #666666;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
                 >
                   February 2000
                 </div>
@@ -92,24 +313,69 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               aria-describedby={undefined}
               aria-labelledby={undefined}
               className="ms-FocusZone"
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="presentation"
             >
               <table
-                aria-activedescendant="DatePickerDay-active9"
-                aria-labelledby="DatePickerDay-monthAndYear11"
+                aria-activedescendant="DatePickerDay-active5"
+                aria-labelledby="DatePickerDay-monthAndYear7"
                 aria-multiselectable="false"
                 aria-readonly="true"
-                className="ms-DatePicker-table"
+                className=
+                    ms-DatePicker-table
+                    {
+                      border-collapse: collapse;
+                      border-spacing: 0;
+                      font-size: inherit;
+                      margin-top: 10px;
+                      table-layout: fixed;
+                      text-align: center;
+                    }
+                    & td {
+                      margin-bottom: 0;
+                      margin-left: 0;
+                      margin-right: 0;
+                      margin-top: 0;
+                      padding-bottom: 0;
+                      padding-left: 0;
+                      padding-right: 0;
+                      padding-top: 0;
+                    }
+                    @media (min-device-width: 480px){& {
+                      margin-right: 12px;
+                    }
               >
                 <thead>
                   <tr>
                     <th
                       aria-label="Sunday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Sunday"
@@ -118,7 +384,30 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                     <th
                       aria-label="Monday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Monday"
@@ -127,7 +416,30 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                     <th
                       aria-label="Tuesday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Tuesday"
@@ -136,7 +448,30 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                     <th
                       aria-label="Wednesday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Wednesday"
@@ -145,7 +480,30 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                     <th
                       aria-label="Thursday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Thursday"
@@ -154,7 +512,30 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                     <th
                       aria-label="Friday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Friday"
@@ -163,7 +544,30 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </th>
                     <th
                       aria-label="Saturday"
-                      className="ms-DatePicker-weekday"
+                      className=
+                          ms-DatePicker-weekday
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            box-sizing: border-box;
+                            color: #333333;
+                            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 15px;
+                            font-weight: 400;
+                            height: 40px;
+                            line-height: 40px;
+                            padding-bottom: 0;
+                            padding-left: 0;
+                            padding-right: 0;
+                            padding-top: 0;
+                            width: 40px;
+                          }
+                          @media (min-device-width: 480px){& {
+                            font-size: 12px;
+                            height: 28px;
+                            line-height: 28px;
+                            width: 28px;
+                          }
                       role="grid"
                       scope="col"
                       title="Saturday"
@@ -177,12 +581,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="January 30, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--outfocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #a6a6a6;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -197,12 +649,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="January 31, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--outfocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #a6a6a6;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -217,14 +717,74 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className="ms-DatePicker-dayBackground undefined"
+                      className=
+                          ms-DatePicker-dayBackground
+                          {
+                            background: #eaeaea;
+                          }
                     >
                       <div
                         aria-label="February 1, 2000"
                         aria-selected={true}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined ms-DatePicker-day--highlighted undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            ms-DatePicker-day--highlighted
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              background: #c7e0f4;
+                              box-sizing: border-box;
+                              color: #000000;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #ffffff;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c7e0f4;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              border: 1px solid WindowText;
+                            }
+                            @media screen and (-ms-high-contrast: active){&:hover {
+                              border: 2px solid Highlight;
+                            }
                         data-is-focusable={true}
-                        id="DatePickerDay-active9"
+                        id="DatePickerDay-active5"
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="gridcell"
@@ -237,12 +797,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 2, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -257,12 +865,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 3, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -277,12 +933,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 4, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -297,12 +1001,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 5, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -321,12 +1073,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 6, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -341,12 +1141,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 7, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -361,12 +1209,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 8, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -381,12 +1277,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 9, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -401,12 +1345,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 10, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -421,12 +1413,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 11, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -441,12 +1481,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 12, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -465,12 +1553,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 13, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -485,12 +1621,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 14, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -505,12 +1689,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 15, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -525,12 +1757,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 16, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -545,12 +1825,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 17, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -565,12 +1893,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 18, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -585,12 +1961,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 19, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -609,12 +2033,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 20, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -629,12 +2101,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 21, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -649,12 +2169,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 22, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -669,12 +2237,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 23, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -689,12 +2305,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 24, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -709,12 +2373,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 25, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -729,12 +2441,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 26, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -753,12 +2513,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="row"
                   >
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 27, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -773,12 +2581,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 28, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -793,12 +2649,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="February 29, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--infocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--infocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #333333;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -813,12 +2717,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="March 1, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--outfocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #a6a6a6;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -833,12 +2785,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="March 2, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--outfocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #a6a6a6;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -853,12 +2853,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="March 3, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--outfocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #a6a6a6;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -873,12 +2921,60 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                       </div>
                     </td>
                     <td
-                      className=""
+                      className={undefined}
                     >
                       <div
                         aria-label="March 4, 2000"
                         aria-selected={false}
-                        className="ms-DatePicker-day ms-DatePicker-day--outfocus undefined"
+                        className=
+                            ms-DatePicker-day
+                            ms-DatePicker-day--outfocus
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              box-sizing: border-box;
+                              color: #a6a6a6;
+                              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 15px;
+                              font-weight: 400;
+                              height: 40px;
+                              line-height: 40px;
+                              outline: transparent;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                              position: relative;
+                              width: 40px;
+                            }
+                            @media (min-device-width: 480px){& {
+                              font-size: 12px;
+                              height: 28px;
+                              line-height: 28px;
+                              width: 28px;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric.is-focusVisible &:focus:after {
+                              border: 1px solid #666666;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid transparent;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #c8c8c8;
+                              cursor: pointer;
+                            }
+                            &:active {
+                              background: #c7e0f4;
+                              color: #000000;
+                            }
                         data-is-focusable={true}
                         id={undefined}
                         onClick={[Function]}
@@ -898,17 +2994,70 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
           </div>
           <div
-            className="ms-DatePicker-monthPicker"
+            className=
+                ms-DatePicker-monthPicker
+                {
+                  display: none;
+                }
+                @media (min-device-width: 480px){& {
+                  display: block;
+                  margin-left: 13px;
+                  min-height: 214px;
+                }
           >
             <div
-              className="ms-DatePicker-yearComponents"
+              className=
+                  ms-DatePicker-yearComponents
+                  {
+                    display: inline-flex;
+                    margin-left: 3px;
+                    margin-top: 2px;
+                  }
             >
               <div
                 className="ms-DatePicker-navContainer"
               >
                 <span
                   aria-label={undefined}
-                  className="ms-DatePicker-prevYear js-prevYear"
+                  className=
+                      ms-DatePicker-prevYear
+                      js-prevYear
+                      {
+                        color: #212121;
+                        display: inline-block;
+                        font-size: 16px;
+                        height: 40px;
+                        line-height: 40px;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        top: 2px;
+                        width: 40px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #666666;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 14px;
+                        height: 24px;
+                        line-height: 24px;
+                        width: 24px;
+                      }
+                      &:hover {
+                        background: #c8c8c8;
+                        cursor: pointer;
+                      }
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="button"
@@ -928,7 +3077,46 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 </span>
                 <span
                   aria-label={undefined}
-                  className="ms-DatePicker-nextYear js-nextYear"
+                  className=
+                      ms-DatePicker-nextYear
+                      js-nextYear
+                      {
+                        color: #212121;
+                        display: inline-block;
+                        font-size: 16px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-left: 3px;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        top: 2px;
+                        width: 40px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #666666;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 14px;
+                        height: 24px;
+                        line-height: 24px;
+                        width: 24px;
+                      }
+                      &:hover {
+                        background: #c8c8c8;
+                        cursor: pointer;
+                      }
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   role="button"
@@ -949,10 +3137,62 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </div>
             </div>
             <div
-              className="ms-DatePicker-header"
+              className=
+                  ms-DatePicker-header
+                  {
+                    display: inline-flex;
+                    height: 40px;
+                    line-height: 44px;
+                    position: relative;
+                  }
+                  @media (min-device-width: 480px){& {
+                    height: 28px;
+                    line-height: 28px;
+                  }
             >
               <div
-                className="ms-DatePicker-currentYear js-showYearPicker"
+                className=
+                    ms-DatePicker-currentYear
+                    js-showYearPicker
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #333333;
+                      display: block;
+                      font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 21px;
+                      font-weight: 300;
+                      height: 40px;
+                      line-height: 40px;
+                      margin-left: 5px;
+                      margin-top: -1px;
+                      outline: transparent;
+                      padding-bottom: 0;
+                      padding-left: 5px;
+                      padding-right: 5px;
+                      padding-top: 0;
+                      position: relative;
+                    }
+                    @media (min-device-width: 480px){& {
+                      display: inline-block;
+                      font-size: 17px;
+                      height: 28px;
+                      line-height: 26px;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0;
+                    }
+                    .ms-Fabric.is-focusVisible &:focus:after {
+                      border: 1px solid #666666;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #666666;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
               >
                 2000
               </div>
@@ -961,20 +3201,91 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               aria-describedby={undefined}
               aria-labelledby={undefined}
               className="ms-FocusZone"
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="presentation"
             >
               <div
-                className="ms-DatePicker-optionGrid"
+                className=
+                    ms-DatePicker-optionGrid
+                    {
+                      height: 210px;
+                      margin-bottom: 0;
+                      margin-left: 0;
+                      margin-right: 0;
+                      margin-top: 12px;
+                      position: relative;
+                      width: 280px;
+                    }
+                    @media (min-device-width: 480px){& {
+                      height: 150px;
+                      width: 212px;
+                    }
                 role="grid"
               >
                 <span
                   aria-label="January 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -984,7 +3295,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="February 2000"
                   aria-selected={true}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -994,7 +3362,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="March 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1004,7 +3429,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="April 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1014,7 +3496,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="May 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1024,7 +3563,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="June 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1034,7 +3630,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="July 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1044,7 +3697,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="August 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1054,7 +3764,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="September 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1064,7 +3831,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="October 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1074,7 +3898,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="November 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1084,7 +3965,64 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 <span
                   aria-label="December 2000"
                   aria-selected={false}
-                  className="ms-DatePicker-monthOption"
+                  className=
+                      ms-DatePicker-monthOption
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #333333;
+                        float: left;
+                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 13px;
+                        font-weight: 400;
+                        height: 60px;
+                        line-height: 60px;
+                        margin-bottom: 10px;
+                        margin-left: 0;
+                        margin-right: 10px;
+                        margin-top: 0;
+                        outline: transparent;
+                        position: relative;
+                        text-align: center;
+                        width: 60px;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric.is-focusVisible &:focus:after {
+                        border: 1px solid #666666;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid transparent;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media (min-device-width: 480px){& {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 11px;
+                        margin-top: 0;
+                        width: 40px;
+                      }
+                      &:hover {
+                        background-color: #c8c8c8;
+                        cursor: pointer;
+                      }
+                      @media (min-device-width: 480px){&:nth-child(4n+4) {
+                        margin-bottom: 11px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                        margin-top: 0;
+                      }
+                      &:active {
+                        background-color: #c7e0f4;
+                      }
                   data-is-focusable={true}
                   onClick={[Function]}
                   role="gridcell"
@@ -1095,7 +4033,61 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
           </div>
           <span
-            className="ms-DatePicker-goToday js-goToday"
+            className=
+                ms-DatePicker-goToday
+                js-goToday
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  bottom: 9px;
+                  color: #333333;
+                  font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 12px;
+                  font-weight: 400;
+                  height: 30px;
+                  line-height: 30px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 10px;
+                  padding-right: 10px;
+                  padding-top: 0;
+                  position: absolute;
+                  right: 13px;
+                  width: auto;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric.is-focusVisible &:focus:after {
+                  border: 1px solid #666666;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                &:hover {
+                  color: #0078d7;
+                  cursor: pointer;
+                }
+                &:active {
+                  color: #005a9e;
+                }
+                @media (min-device-width: 480px){& {
+                  box-sizing: border-box;
+                  height: 28px;
+                  line-height: 28px;
+                  padding-bottom: 0;
+                  padding-left: 10px;
+                  padding-right: 10px;
+                  padding-top: 0;
+                  right: 13px;
+                  text-align: right;
+                  top: 199px;
+                }
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
