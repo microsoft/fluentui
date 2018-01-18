@@ -57,6 +57,8 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
   };
 
   private _attachedScrollThreshold: number;
+  private _appContent: HTMLDivElement;
+  private _appContentRect: ClientRect;
 
   constructor(props: IPageHeaderProps) {
     super(props);
@@ -74,6 +76,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
       this._events.on(window, 'scroll', this._onScroll, true);
+      this._appContent = document.querySelector('[data-app-content-div]');
       this._attachedScrollThreshold = AttachedScrollUtility.calculateAttachedScrollThreshold();
     }
   }
@@ -123,13 +126,12 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
   private _onScroll() {
     let { isAttached, headerBottom, headerTop } = this.state;
     const headerBottomThreshold = window.scrollY + window.innerHeight;
-    const appContent = document.querySelector('[data-app-content-div]');
-    const appContentBoundingReact = appContent && appContent.getBoundingClientRect();
+    this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
 
-    if (appContent && appContentBoundingReact.bottom < AttachedScrollUtility.attachedHeaderHeight) {
+    if (this._appContent && this._appContentRect.bottom < AttachedScrollUtility.attachedHeaderHeight) {
       // This causes the header to bump into the footer instead of overlapping it
-      headerBottom = (window.innerHeight - appContentBoundingReact.bottom).toString();
+      headerBottom = (window.innerHeight - this._appContentRect.bottom).toString();
       headerTop = 'unset';
     } else {
       headerBottom = 'unset';
