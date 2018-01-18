@@ -188,8 +188,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   }) }
               >
                 <Image
-                  src={ option.imageSrc }
-                  alt={ option.selectedImageAlt ? option.selectedImageAlt : '' }
+                  src={ option.selectedImageSrc }
+                  alt={ option.imageAlt ? option.imageAlt : '' }
                   width={ option.imageSize ? option.imageSize.width : undefined }
                   height={ option.imageSize ? option.imageSize.height : undefined }
                 />

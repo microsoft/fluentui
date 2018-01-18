@@ -34,14 +34,12 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
               imageSrc: TestImages.choiceGroupBarUnselected,
               imageAlt: 'Bar chart icon',
               selectedImageSrc: TestImages.choiceGroupBarSelected,
-              selectedImageAlt: 'Selected bar chart icon',
               imageSize: { width: 32, height: 32 },
               text: 'Bar chart'
             },
             {
               key: 'pie',
               imageSrc: TestImages.choiceGroupBarUnselected,
-              imageAlt: '',
               selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
               text: 'Pie chart'
