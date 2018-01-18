@@ -82,7 +82,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       },
       className,
       positions && positions.targetEdge && ANIMATIONS[positions.targetEdge],
-      !!calloutWidth && { width: calloutWidth },
       // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
       // To help ensure that edge will respect the offscreen style opacity
       // filter needs to be added as an additional way to set opacity.
@@ -96,6 +95,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         left: positions.elementPosition.left,
         right: positions.elementPosition.right,
       },
+      !!calloutWidth && { width: calloutWidth },
     ],
     beak: [
       'ms-Callout-beak',
@@ -131,7 +131,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowY: 'auto',
         position: 'relative',
       },
-      !!contentMaxHeight && { width: contentMaxHeight },
+      !!calloutWidth && { width: calloutWidth },
       overflowYHidden && {
         overflowY: 'hidden'
       }
