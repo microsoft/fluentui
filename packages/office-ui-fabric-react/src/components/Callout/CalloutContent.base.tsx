@@ -29,16 +29,9 @@ import {
   RectangleEdge
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import * as stylesImport from './Callout.scss';
-import { AnimationClassNames, mergeStyles } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
-
-
-const styles: any = stylesImport;
-
-const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const BORDER_WIDTH: number = 1;
 
 export interface ICalloutState {
