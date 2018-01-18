@@ -52,10 +52,8 @@ export class App extends React.Component<IAppProps, any> {
 
   public render() {
     let { navHeight } = this.state;
-    let navTop: string = this.state.isAttached ? '0' : 'unset'
-    let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute'
+    let navTop: string = this.state.isAttached ? '0' : 'unset';
     let navStyle = {
-      position: navPosition,
       top: navTop,
       height: this.state.navHeight
     };
@@ -112,19 +110,21 @@ export class App extends React.Component<IAppProps, any> {
     if (!appContentRect) {
       return height;
     }
-    if (viewPortHeight < appContentRect.bottom) {
+    if (appContentRect.top >= 0) {
+      // This case accounts for space taken up by the UHF header
+      height = viewPortHeight - appContentRect.top;
+    } else if (viewPortHeight < appContentRect.bottom && appContentRect.top < 0) {
+      // For pages with content that's longer than the viewport, the viewport is the height.
+      // Takes effect when you scroll past the header.
       height = viewPortHeight;
-      if (appContentRect.top > 0) {
-        // This case accounts for space taken up by the UHF header
-        height = viewPortHeight - appContentRect.top;
-      }
     } else if (appContentRect.bottom < 0) {
-      // If you scroll all the way into the footer, collapse the nav
+      // In smaller screens when you scroll till the footer takes the whole page, collapse the nav.
       height = 0;
     } else if (appContentRect.height < appContentRect.bottom) {
-      // This case might only exist in the UHF testing environment
+      // This case might only exist in the UHF testing environment, when content isn't rendering properly.
       height = appContentRect.height;
     } else {
+      // Once the footer is in view, match nav bottom to content bottom.
       height = appContentRect.bottom;
     }
     return height;

@@ -14,11 +14,10 @@
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
     overflow-y: auto;
-    position: absolute;
+    position: fixed;
     top: $Header-height;
-    // transition: $ms-animation-duration-2 $ms-animation-ease-1;
-    // @include ms-transition-property(left);
     width: $Nav-width;
+    @include ms-float(left);
   }
 
   .App-content {
@@ -51,12 +50,10 @@
     }
 
     .App-nav {
-      @include ms-float(left);
       top: $Header-height*2;
       bottom: 0;
       overflow-y: auto;
       overflow-x: hidden;
-      position: absolute;
     }
 
     .App-content {
@@ -74,11 +71,11 @@
 
     .App-nav {
       @include ms-margin-left(18px);
-      @include ms-left(0);
     }
 
     .App-content {
-      width: calc(100% - #{$Nav-width})
+      width: calc(100% - #{$Nav-width});
+      @include ms-left($Nav-width + 18px);
     }
   }
 }

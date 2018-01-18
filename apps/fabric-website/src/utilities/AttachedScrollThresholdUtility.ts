@@ -8,9 +8,8 @@ export default class AttachedScrollThresholdUtility {
   public static attachedHeaderHeight = 128;
 
   public static calculateAttachedScrollThreshold(): number {
-    const FULL_HEADER_HEIGHT = 236;
-    const UHF_ADJUSTMENT = 12;
-    const attachedScrollThreshold = FULL_HEADER_HEIGHT - AttachedScrollThresholdUtility.attachedHeaderHeight - UHF_ADJUSTMENT;
+    const UHF_HEADER_HEIGHT = 50;
+    const attachedScrollThreshold = UHF_HEADER_HEIGHT * 2;
     return attachedScrollThreshold;
   }
 }
