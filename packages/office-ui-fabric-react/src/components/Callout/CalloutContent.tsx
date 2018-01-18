@@ -25,28 +25,21 @@ import {
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
-import { AnimationClassNames, mergeStyles, AnimationStyles, IRawStyle } from '../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../Styling';
 
 const styles: any = stylesImport;
 
-const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
+const BEAK_ORIGIN_POSITION = { top: 0, left: 0 }; // TODO: REMOVE from HERE
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
 // To help ensure that edge will respect the offscreen style opacity
 // filter needs to be added as an additional way to set opacity.
 const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 const BORDER_WIDTH: number = 1;
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
+const SLIDE_ANIMATIONS: { [key: number]: string; } = {  // TODO: REMOVE from HERE
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
   [RectangleEdge.right]: 'slideRightIn20'
-};
-
-const ANIMATIONS: { [key: number]: IRawStyle; } = {
-  [RectangleEdge.top]: AnimationStyles.slideUpIn20,
-  [RectangleEdge.bottom]: AnimationStyles.slideDownIn20,
-  [RectangleEdge.left]: AnimationStyles.slideLeftIn20,
-  [RectangleEdge.right]: AnimationStyles.slideRightIn20,
 };
 
 export interface ICalloutState {
@@ -303,6 +296,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
   }
 
+  // TODO REMOVE
   private _getBeakPosition(positions?: ICalloutPositionedInfo,
     beakWidth?: number,
     backgroundColor?: string,

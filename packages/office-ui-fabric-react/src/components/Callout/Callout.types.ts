@@ -8,6 +8,7 @@ import {
   IRectangle
 } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
+import { IStyleFunction } from 'src/index.bundle';
 
 export interface ICallout {
 
@@ -193,6 +194,16 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * Callback when the Callout body is scrolled.
    */
   onScroll?: () => void;
+
+  /**
+   * Optional theme for component
+   */
+  theme?: ITheme;
+
+  /**
+  * Optional styles for the component.
+  */
+  getStyles?: IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles>;
 }
 
 export interface ICalloutContentStyleProps {
@@ -205,15 +216,18 @@ export interface ICalloutContentStyleProps {
 
   className?: string;
 
-  directionalClassname?: any;
-
-  beakWidth?: number;
+  positions?: ICalloutPositionedInfo;
 
   overflowYHidden?: boolean;
 
   contentMaxHeight?: number;
 
-  positions?: ICalloutPositionedInfo;
+  backgroundColor?: string;
+
+  beakWidth?: number;
+
+  // IS THIS STILL BEING USED OR CAN IT BE REMOVED
+  beakStyle?: string;
 }
 
 export interface ICalloutContentStyles {
