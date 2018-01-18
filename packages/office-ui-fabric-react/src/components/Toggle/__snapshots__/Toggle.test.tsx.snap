@@ -49,7 +49,7 @@ exports[`Toggle renders toggle correctly 1`] = `
           ms-Toggle-background
           {
             background: #ffffff;
-            border-color: #a6a6a6;
+            border-color: #666666;
             border-radius: 1em;
             border-style: solid;
             border-width: 1px;
