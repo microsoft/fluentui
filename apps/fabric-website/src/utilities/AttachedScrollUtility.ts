@@ -8,7 +8,7 @@ export default class AttachedScrollUtility {
   public static attachedHeaderHeight = 128;
 
   public static shouldComponentAttach(isAttached, attachedScrollThreshold): boolean {
-    if (window.scrollY >= attachedScrollThreshold) {
+    if (window.pageYOffset >= attachedScrollThreshold) {
       isAttached = true;
     } else {
       isAttached = false;

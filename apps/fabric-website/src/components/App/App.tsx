@@ -46,7 +46,7 @@ export class App extends React.Component<IAppProps, any> {
     let navTop: string = this.state.isAttached ? '0' : 'unset';
     let navStyle = {
       top: navTop,
-      height: this.state.navHeight
+      height: navHeight
     };
 
     return (
@@ -93,7 +93,7 @@ export class App extends React.Component<IAppProps, any> {
       return height;
     }
     if (appContentRect.top >= 0) {
-      // This case accounts for space taken up by the UHF header
+      // This case accounts for space taken up by the UHF header in the viewport.
       height = viewPortHeight - appContentRect.top;
     } else if (viewPortHeight < appContentRect.bottom && appContentRect.top < 0) {
       // For pages with content that's longer than the viewport, the viewport is the height.

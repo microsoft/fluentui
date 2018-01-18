@@ -130,7 +130,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
 
     if (this._appContent && this._appContentRect.bottom < AttachedScrollUtility.attachedHeaderHeight) {
-      // This causes the header to bump into the footer instead of overlapping it
+      // This causes the header to bump into the footer instead of overlapping it, usually on narrow screens.
       headerBottom = (window.innerHeight - this._appContentRect.bottom).toString();
       headerTop = 'unset';
     } else {

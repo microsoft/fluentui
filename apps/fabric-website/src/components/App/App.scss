@@ -18,6 +18,7 @@
     top: $Header-height;
     width: $Nav-width;
     @include ms-float(left);
+    z-index: $ms-zIndex-1;
   }
 
   .App-content {
