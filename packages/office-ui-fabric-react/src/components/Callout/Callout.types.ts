@@ -14,7 +14,7 @@ export interface ICallout {
 
 }
 
-export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
+export interface ICalloutProps {
   /**
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
