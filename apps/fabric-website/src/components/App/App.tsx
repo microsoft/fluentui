@@ -17,7 +17,6 @@ export interface IAppState {
 export class App extends React.Component<IAppProps, any> {
 
   private _attachedScrollThreshold: number;
-  private _height: number;
   private _appContent: HTMLDivElement;
   private _appContentRect: ClientRect;
 
@@ -78,14 +77,14 @@ export class App extends React.Component<IAppProps, any> {
 
   @autobind
   private _handleNavPositioning() {
-    let { isAttached } = this.state;
+    let { isAttached, navHeight } = this.state;
     this._appContentRect = this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
-    this._height = this._calculateNavHeight(viewPortHeight, this._appContentRect, this._height);
+    navHeight = this._calculateNavHeight(viewPortHeight, this._appContentRect, navHeight);
     this.setState({
       isAttached: isAttached,
-      navHeight: this._height
+      navHeight: navHeight
     });
   }
 
