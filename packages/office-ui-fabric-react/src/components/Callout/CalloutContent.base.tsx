@@ -182,7 +182,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             onDismiss={ this.dismiss }
             onScroll={ onScroll }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
           >
             { children }
           </Popup>

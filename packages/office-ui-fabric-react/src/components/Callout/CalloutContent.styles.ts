@@ -130,10 +130,14 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',
+        maxHeight: '' + contentMaxHeight
       },
       !!calloutWidth && { width: calloutWidth },
       overflowYHidden && {
         overflowY: 'hidden'
+      },
+      backgroundColor && {
+        backgroundColor: backgroundColor
       }
     ],
   };
