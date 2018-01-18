@@ -78,9 +78,20 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   imageSrc?: string;
 
   /**
+   * The alt of image for choice field. Defaults to '' if not set.
+   */
+  imageAlt?: string;
+
+
+  /**
    * The src of image for choice field which is selected.
    */
   selectedImageSrc?: string;
+
+  /**
+   * The alt of image for choice field which is selected. Defaults to imageAlt if not set.
+   */
+  selectedImageAlt?: string;
 
   /**
    * The width and height of the image in px for choice field.
