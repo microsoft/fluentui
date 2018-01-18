@@ -210,6 +210,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               iconName: 'Calendar',
               onClick: this._onIconClick,
               className: css(
+                disabled && styles.msDatePickerDisabled,
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel
               )
@@ -342,7 +343,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
-    if (!this.state.isDatePickerShown) {
+    if (!this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
     } else {
       if (this.props.allowTextInput) {
