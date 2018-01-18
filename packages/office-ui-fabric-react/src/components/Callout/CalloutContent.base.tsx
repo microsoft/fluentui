@@ -1,7 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { ICalloutProps } from './Callout.types';
+import {
+  ICalloutProps,
+  ICalloutContentStyleProps,
+  ICalloutContentStyles
+} from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   BaseComponent,
@@ -13,7 +17,8 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
+  customizable
 } from '../../Utilities';
 import {
   positionCallout,
@@ -26,21 +31,15 @@ import {
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { classNamesFunction } from '../../Utilities';
+
+const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
+
 
 const styles: any = stylesImport;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-// Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
-// To help ensure that edge will respect the offscreen style opacity
-// filter needs to be added as an additional way to set opacity.
-const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 const BORDER_WIDTH: number = 1;
-const SLIDE_ANIMATIONS: { [key: number]: string; } = {
-  [RectangleEdge.top]: 'slideUpIn20',
-  [RectangleEdge.bottom]: 'slideDownIn20',
-  [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
-};
 
 export interface ICalloutState {
   positions?: ICalloutPositionedInfo;
@@ -49,6 +48,7 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
+@customizable('CalloutContent', ['theme'])
 export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
@@ -60,6 +60,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
+  private _classNames: {[key in keyof ICalloutContentStyles]: string };
   private _didSetInitialFocus: boolean;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
@@ -122,6 +123,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       return null;
     }
     let {
+      getStyles,
       role,
       ariaLabel,
       ariaDescribedBy,
@@ -136,36 +138,37 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       finalHeight,
       backgroundColor,
       calloutMaxHeight,
-      onScroll } = this.props;
+      onScroll,
+       } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
-
-    let directionalClassName = (positions && positions.targetEdge)
-      ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]]
-      : '';
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
 
-    const beakReactStyle = this._getBeakPosition(positions, beakWidth, backgroundColor, beakStyle);
-
     let beakVisible = isBeakVisible && (!!target);
+    this._classNames = getClassNames(
+      getStyles!,
+      {
+        theme: this.props.theme!,
+        className,
+        overflowYHidden: !!finalHeight,
+        calloutWidth,
+        contentMaxHeight,
+        positions,
+        beakWidth,
+        backgroundColor,
+        beakStyle
+      }
+    );
 
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
-        className={ css('ms-Callout-container', styles.container) }
+        className={ this._classNames.container }
       >
         <div
-          className={
-            mergeStyles(
-              'ms-Callout',
-              styles.root,
-              className,
-              directionalClassName,
-              !!calloutWidth && { width: calloutWidth }
-            ) }
-          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
+          className={ this._classNames.root }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
@@ -173,20 +176,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
           { beakVisible && (
             <div
-              className={ css('ms-Callout-beak', styles.beak) }
-              style={ beakReactStyle }
+              className={ this._classNames.beak }
             />) }
-
           { beakVisible &&
-            (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
+            (<div className={ this._classNames.beakCurtain } />) }
           <Popup
             role={ role }
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
-            className={ css('ms-Callout-main', styles.main, {
-              [styles.overFlowYHidden]: !!finalHeight
-            }) }
+            className={ this._classNames.calloutMain }
             onDismiss={ this.dismiss }
             onScroll={ onScroll }
             shouldRestoreFocus={ true }
@@ -294,32 +293,6 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         }
       }
     }
-  }
-
-  private _getBeakPosition(positions?: ICalloutPositionedInfo,
-    beakWidth?: number,
-    backgroundColor?: string,
-    beakStyle?: string) {
-    let beakStyleWidth = beakWidth;
-
-    // This is here to support the old way of setting the beak size until version 1.0.0.
-    // beakStyle is now deprecated and will be be removed at version 1.0.0
-    if (beakStyle === 'ms-Callout-smallbeak') {
-      beakStyleWidth = 16;
-    }
-
-    let beakReactStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
-    };
-    beakReactStyle.height = beakStyleWidth;
-    beakReactStyle.width = beakStyleWidth;
-    beakReactStyle.backgroundColor = backgroundColor;
-    if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
-      beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
-      beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
-    }
-
-    return beakReactStyle;
   }
 
   private _getBounds(): IRectangle {
