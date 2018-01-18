@@ -20,7 +20,6 @@ const ANIMATIONS: { [key: number]: IRawStyle; } = {
 
 function getBeakStylePosition(positions?: ICalloutPositionedInfo,
   beakWidth?: number,
-  backgroundColor?: string,
   beakStyle?: string): IRawStyle {
   let beakStyleWidth = beakWidth;
 
@@ -35,7 +34,6 @@ function getBeakStylePosition(positions?: ICalloutPositionedInfo,
   };
   beakReactStyle.height = beakStyleWidth;
   beakReactStyle.width = beakStyleWidth;
-  beakReactStyle.backgroundColor = backgroundColor;
   if (!beakReactStyle.top && !beakReactStyle.bottom && !beakReactStyle.left && !beakReactStyle.right) {
     beakReactStyle.left = BEAK_ORIGIN_POSITION.left;
     beakReactStyle.top = BEAK_ORIGIN_POSITION.top;
@@ -73,6 +71,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: palette.neutralLight,
+        boxShadow: '0 0 5px 0px rgba(0,0,0,0.4)',
         selectors: {
           [HighContrastSelector]: {
             borderWidth: 1,
@@ -81,6 +80,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
           }
         }
       },
+      className,
+      positions && positions.targetEdge && ANIMATIONS[positions.targetEdge],
       !!calloutWidth && { width: calloutWidth },
       // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
       // To help ensure that edge will respect the offscreen style opacity
@@ -95,8 +96,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         left: positions.elementPosition.left,
         right: positions.elementPosition.right,
       },
-      positions && positions.targetEdge && ANIMATIONS[positions.targetEdge],
-      className,
     ],
     beak: [
       'ms-Callout-beak',
@@ -108,7 +107,10 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxSizing: 'border-box',
         transform: 'rotate(45deg)'
       },
-      getBeakStylePosition(positions, beakWidth, backgroundColor, beakStyle)
+      getBeakStylePosition(positions, beakWidth, beakStyle),
+      backgroundColor && {
+        backgroundColor: backgroundColor
+      }
     ],
     beakCurtain: [
       'ms-Callout-beakCurtain',
