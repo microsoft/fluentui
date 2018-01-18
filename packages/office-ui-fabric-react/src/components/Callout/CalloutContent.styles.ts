@@ -106,8 +106,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxShadow: 'inherit',
         border: 'inherit',
         boxSizing: 'border-box',
-        // -webkit-transform: rotate(45deg); TODO
-        // -ms-transform: rotate(45deg); TODO
         transform: 'rotate(45deg)'
       },
       getBeakStylePosition(positions, beakWidth, backgroundColor, beakStyle)
