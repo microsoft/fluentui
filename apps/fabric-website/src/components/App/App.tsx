@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
 import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
-import AttachedScrollThresholdUtility from '../../utilities/AttachedScrollThresholdUtility';
+import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav } from '../Nav/Nav';
 
@@ -19,6 +19,7 @@ export class App extends React.Component<IAppProps, any> {
   private _attachedScrollThreshold: number;
   private _height: number;
   private _appContent: HTMLDivElement;
+  private _appContentRect: ClientRect;
 
   constructor(props: IAppProps) {
     super(props);
@@ -32,17 +33,8 @@ export class App extends React.Component<IAppProps, any> {
     window.addEventListener('scroll', this._handleNavPositioning);
     window.addEventListener('resize', this._handleNavPositioning);
 
-    let { isAttached } = this.state;
-    const appContentRect = this._appContent.getBoundingClientRect();
-    const viewPortHeight = window.innerHeight;
-    this._attachedScrollThreshold = AttachedScrollThresholdUtility.calculateAttachedScrollThreshold();
-    this._height = this._calculateNavHeight(viewPortHeight, appContentRect, this._height);
-    isAttached = this._attachNav(this.state.isAttached, viewPortHeight, appContentRect);
-
-    this.setState({
-      isAttached: isAttached,
-      navHeight: this._height
-    })
+    this._attachedScrollThreshold = AttachedScrollUtility.calculateAttachedScrollThreshold();
+    this._handleNavPositioning();
   }
 
   public componentWillUnmount() {
@@ -87,23 +79,14 @@ export class App extends React.Component<IAppProps, any> {
   @autobind
   private _handleNavPositioning() {
     let { isAttached } = this.state;
-    const appContentRect = this._appContent.getBoundingClientRect();
+    this._appContentRect = this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
-    isAttached = this._attachNav(isAttached, viewPortHeight, appContentRect);
-    this._height = this._calculateNavHeight(viewPortHeight, appContentRect, this._height);
+    isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
+    this._height = this._calculateNavHeight(viewPortHeight, this._appContentRect, this._height);
     this.setState({
       isAttached: isAttached,
       navHeight: this._height
     });
-  }
-
-  private _attachNav(isAttached, viewPortHeight, appContentRect): boolean {
-    if (window.scrollY >= this._attachedScrollThreshold) {
-      isAttached = true;
-    } else {
-      isAttached = false;
-    }
-    return isAttached;
   }
 
   private _calculateNavHeight(viewPortHeight: number, appContentRect: ClientRect, height: number): number {

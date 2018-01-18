@@ -3,7 +3,7 @@ import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utili
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import AttachedScrollThresholdUtility from '../../utilities/AttachedScrollThresholdUtility';
+import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
@@ -74,7 +74,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     // Only attach the header if there are in-page nav items
     if (this.props.links) {
       this._events.on(window, 'scroll', this._onScroll, true);
-      this._attachedScrollThreshold = AttachedScrollThresholdUtility.calculateAttachedScrollThreshold();
+      this._attachedScrollThreshold = AttachedScrollUtility.calculateAttachedScrollThreshold();
     }
   }
 
@@ -125,17 +125,13 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     const headerBottomThreshold = window.scrollY + window.innerHeight;
     const appContent = document.querySelector('[data-app-content-div]');
     const appContentBoundingReact = appContent && appContent.getBoundingClientRect();
+    isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
 
-    if (appContent && appContentBoundingReact.bottom < AttachedScrollThresholdUtility.attachedHeaderHeight) {
+    if (appContent && appContentBoundingReact.bottom < AttachedScrollUtility.attachedHeaderHeight) {
       // This causes the header to bump into the footer instead of overlapping it
       headerBottom = (window.innerHeight - appContentBoundingReact.bottom).toString();
       headerTop = 'unset';
-    } else if (window.scrollY >= this._attachedScrollThreshold) {
-      isAttached = true;
-      headerBottom = 'unset';
-      headerTop = '0';
     } else {
-      isAttached = false;
       headerBottom = 'unset';
       headerTop = '0';
     }
