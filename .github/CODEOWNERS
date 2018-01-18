@@ -33,6 +33,7 @@ packages/styling/  @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
+packages/utilities/positioning/ @joschect
 
 ### Fabric
 # common/
