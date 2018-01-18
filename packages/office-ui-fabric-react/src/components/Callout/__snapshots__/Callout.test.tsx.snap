@@ -2,23 +2,17 @@
 
 exports[`Callout renders Callout correctly 1`] = `
 <div
-  className="ms-Callout-container"
+  className={undefined}
 >
   <div
-    className="ms-Callout"
-    style={
-      Object {
-        "filter": "opacity(0)",
-        "opacity": 0,
-      }
-    }
+    className={undefined}
     tabIndex={-1}
   >
     <div
       aria-describedby={undefined}
       aria-label={undefined}
       aria-labelledby={undefined}
-      className="ms-Callout-main"
+      className={undefined}
       onKeyDown={[Function]}
       onScroll={undefined}
       role={undefined}
