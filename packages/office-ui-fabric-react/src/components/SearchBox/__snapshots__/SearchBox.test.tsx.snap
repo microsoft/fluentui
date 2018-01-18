@@ -78,9 +78,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
-          flex-basis: 0;
-          flex-grow: 1;
-          flex-shrink: 1;
+          flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
           font-weight: inherit;
