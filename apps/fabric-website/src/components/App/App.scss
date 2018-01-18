@@ -59,7 +59,7 @@
 
     .App-content {
       flex-grow: unset;
-      width: calc(100% - #{$Nav-width});
+      max-width: calc(100% - #{$Nav-width});
       @include ms-left($Nav-width);
     }
   }
