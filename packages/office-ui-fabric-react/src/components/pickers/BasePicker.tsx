@@ -199,7 +199,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
@@ -698,7 +698,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
