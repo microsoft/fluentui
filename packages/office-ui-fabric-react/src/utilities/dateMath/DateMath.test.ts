@@ -371,6 +371,18 @@ describe('DateMath', () => {
     result = DateMath.getWeekNumber(date1, 1, 1);
     expected = 52;
     expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
   });
 
   // First week of year set to FirstWeekOfYear.FirstFourDayWeek
@@ -409,6 +421,18 @@ describe('DateMath', () => {
     date1 = new Date(2011, 0, 1);
     result = DateMath.getWeekNumber(date1, 1, 2);
     expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 2);
+    expected = 53;
     expect(result).toEqual(expected);
   });
 
