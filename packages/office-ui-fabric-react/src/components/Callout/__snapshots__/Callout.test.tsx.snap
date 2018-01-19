@@ -16,6 +16,11 @@ exports[`Callout renders Callout correctly 1`] = `
       onKeyDown={[Function]}
       onScroll={undefined}
       role={undefined}
+      style={
+        Object {
+          "overflowY": "auto",
+        }
+      }
     >
       Content
     </div>

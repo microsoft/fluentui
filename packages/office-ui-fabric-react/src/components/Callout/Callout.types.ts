@@ -212,18 +212,40 @@ export interface ICalloutContentStyleProps {
    */
   theme: ITheme;
 
+  /**
+   * Width for callout including borders.
+   */
   calloutWidth?: number;
 
+  /**
+ * CSS class to apply to the callout.
+ */
   className?: string;
 
+  /**
+   * Callout positioning data
+   */
   positions?: ICalloutPositionedInfo;
 
+  /**
+   * Whether or not to clip content of the callout,
+   * if it overflows vertically.
+   */
   overflowYHidden?: boolean;
 
+  /**
+   * Max height applied to the content of a callout.
+   */
   contentMaxHeight?: number;
 
+  /**
+   * Background color for the beak and callout.
+   */
   backgroundColor?: string;
 
+  /**
+   * Width of Callout beak
+   */
   beakWidth?: number;
 
   // IS THIS STILL BEING USED OR CAN IT BE REMOVED
@@ -231,9 +253,28 @@ export interface ICalloutContentStyleProps {
 }
 
 export interface ICalloutContentStyles {
+  /**
+   * Style for wrapper of Callout component.
+   */
   container: IStyle;
+
+  /**
+  * Style for callout container root element.
+  */
   root: IStyle;
+
+  /**
+  * Style for callout beak.
+  */
   beak: IStyle;
+
+  /**
+  * Style for callout beak curtain.
+  */
   beakCurtain: IStyle;
+
+  /**
+  * Style for content component of the callout.
+  */
   calloutMain: IStyle;
 }
