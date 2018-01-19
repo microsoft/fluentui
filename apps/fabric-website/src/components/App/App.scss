@@ -59,7 +59,8 @@
 
     .App-content {
       flex-grow: unset;
-      max-width: calc(100% - #{$Nav-width});
+      max-width: calc(100% - #{$Nav-width}); // IE needs max-width, it was ignoring width
+      width: calc(100% - #{$Nav-width});
       @include ms-left($Nav-width);
     }
   }
