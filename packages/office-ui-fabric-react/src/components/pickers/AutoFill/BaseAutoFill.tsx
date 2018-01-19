@@ -141,11 +141,17 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     this._inputElement.setSelectionRange(0, 0);
   }
 
+  // Composition events are used when the character/text requires several keystrokes to be completed.
+  // Some examples of this are mobile text input and langauges like Japanese or Arabic.
+  // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   @autobind
   private _onCompositionStart(ev: React.CompositionEvent<HTMLInputElement>) {
     this._autoFillEnabled = false;
   }
 
+  // Composition events are used when the character/text requires several keystrokes to be completed.
+  // Some examples of this are mobile text input and langauges like Japanese or Arabic.
+  // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   @autobind
   private _onCompositionEnd(ev: React.CompositionEvent<HTMLInputElement>) {
     let inputValue = this._getCurrentInputValue();
