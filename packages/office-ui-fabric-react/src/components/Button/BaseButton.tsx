@@ -429,6 +429,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return (
       <div
+        role={ this.props.ariaHidden ? 'button' : undefined }
         aria-labelledby={ buttonProps.ariaLabel }
         aria-disabled={ disabled }
         aria-haspopup={ true }
@@ -478,7 +479,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'onClick': this._onMenuClick,
       'menuProps': undefined,
       'iconProps': menuIconProps,
-      'ariaLabel': splitButtonAriaLabel
+      'ariaLabel': splitButtonAriaLabel,
+      'aria-haspopup': true,
+      'aria-expanded': this._isExpanded
     };
 
     return <BaseButton {...splitButtonProps} />;
