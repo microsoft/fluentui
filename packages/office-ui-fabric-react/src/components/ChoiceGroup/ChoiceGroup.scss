@@ -64,7 +64,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .input {
   position: absolute;
   opacity: 0;
-  top: 8px
+  top: 8px;
 }
 
 // The circle
@@ -194,9 +194,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include ms-padding-left(0px);
   @include ms-bgColor-neutralLighter;
 
+  $radioButtonSpacing: 3px;
+  $radioButtonInnerSize: 5px;
+
   .fieldIsImage, .fieldIsIcon {
-    $radioButtonSpacing: 3px;
-    $radioButtonInnerSize: 5px;
 
     display: inline-block;
     box-sizing: border-box;
@@ -311,6 +312,16 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
         }
       }
     }
+  }
+
+  // Hidden input for icon and image
+  .inputHasImage, .inputHasIcon {
+    top: 0;
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
   }
 }
 
