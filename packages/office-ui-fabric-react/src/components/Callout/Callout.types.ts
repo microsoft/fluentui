@@ -248,7 +248,10 @@ export interface ICalloutContentStyleProps {
    */
   beakWidth?: number;
 
-  // IS THIS STILL BEING USED OR CAN IT BE REMOVED
+  /**
+    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    * @deprecated
+    */
   beakStyle?: string;
 }
 
