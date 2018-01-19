@@ -238,10 +238,12 @@
   }
   @media screen and (max-width: $ms-screen-max-sm) {
     // Singleline acts like multiLine in mobile, unless text is specified to be truncated
-    @include multiLineContent();
-    .text.multiLineWithActions {
-      @media screen and (max-width: $ms-screen-max-sm) {
-        margin-bottom: 0;
+    &:not(.expandingSingleLine) {
+      @include multiLineContent();
+      .text.multiLineWithActions {
+        @media screen and (max-width: $ms-screen-max-sm) {
+          margin-bottom: 0;
+        }
       }
     }
   }

@@ -160,7 +160,9 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           css(this._getClassName(),
             'ms-MessageBar-singleline',
             styles.singleLine,
-            this.props.onDismiss && 'ms-MessageBar-dismissalSingleLine'
+            this.props.onDismiss && 'ms-MessageBar-dismissalSingleLine',
+            this.props.truncated && 'ms-MessageBar-expandingSingleLine',
+            this.props.truncated && styles.expandingSingleLine
           )
         }
       >
