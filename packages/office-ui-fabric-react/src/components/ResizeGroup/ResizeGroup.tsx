@@ -274,6 +274,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   };
 };
 
+// Provides a context property that (if true) tells any child components that
+// they are only being used for measurement purposes and will not be visible.
 const MeasuredContext = provideContext({
   isMeasured: PropTypes.bool
 }, () => {
