@@ -24,7 +24,7 @@ export const MessageBarBasicExample = () => (
       Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website.</Link>
     </MessageBar>
 
-    <Label>Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons and should be used sparingly.</Label>
+    <Label>Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.</Label>
     <MessageBar
       messageBarType={ MessageBarType.blocked }
       isMultiline={ false }
