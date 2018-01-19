@@ -315,7 +315,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 
   // Hidden input for icon and image
-  .inputIsImage, .inputIsIcon {
+  .inputHasImage, .inputHasIcon {
     top: 0;
     right: 0;
     opacity: 0;

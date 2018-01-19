@@ -106,8 +106,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                     ref={ this._resolveRef('_inputElement') }
                     id={ option.id }
                     className={ css('ms-ChoiceField-input', styles.input, {
-                      ['ms-ChoiceField--image ' + styles.inputIsImage]: !!option.imageSrc,
-                      ['ms-ChoiceField--icon ' + styles.inputIsIcon]: !!option.iconProps
+                      ['ms-ChoiceField--image ' + styles.inputHasImage]: !!option.imageSrc,
+                      ['ms-ChoiceField--icon ' + styles.inputHasIcon]: !!option.iconProps
                     }) }
                     type='radio'
                     name={ this.props.name || this._id }
