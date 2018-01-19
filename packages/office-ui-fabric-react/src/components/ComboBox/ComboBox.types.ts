@@ -15,7 +15,7 @@ export interface IComboBox {
    * Sets focus to the input in the comboBox
    * @returns True if focus could be set, false if no operation was taken.
    */
-  focus(): boolean;
+  focus(shouldOpenOnFocus?: boolean): boolean;
 }
 
 export interface IComboBoxOption extends ISelectableOption {

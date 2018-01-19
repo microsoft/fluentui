@@ -144,11 +144,6 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _getInnerTextClassName(): string {
-    return this.props.onDismiss || this.props.actions ?
-      'ms-MessageBar-innerTextPadding ' + styles.innerTextPadding : 'ms-MessageBar-innerText ' + styles.innerText;
-  }
-
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
       <div
@@ -156,8 +151,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           css(this._getClassName(),
             'ms-MessageBar-multiline',
             styles.multiline,
-            this.props.onDismiss && styles.dismissalMultiline,
-            this.props.actions && styles.actionableMultiline
+            this.props.onDismiss && styles.dismissalMultiline
           )
         }
         role='status'
@@ -180,8 +174,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           css(this._getClassName(),
             'ms-MessageBar-singleline',
             styles.singleline,
-            this.props.onDismiss && 'ms-MessageBar-dismissalSingleLine ' + styles.rootIsSingleLine,
-            this.props.actions && styles.actionableSingleLine
+            this.props.onDismiss && 'ms-MessageBar-dismissalSingleLine'
           )
         }
       >
@@ -199,16 +192,18 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   private _renderInnerText(): JSX.Element {
     return (
       <div
-        className={ css('ms-MessageBar-text', styles.text, this.state.expandSingleLine ? styles.expandSingleLine : null) }
+        className={ css('ms-MessageBar-text', styles.text, this.props.actions && styles.multilineWithActions, !this.props.onDismiss && styles.noDismissButton, this.state.expandSingleLine && styles.expandSingleLine) }
         id={ this.state.labelId }
       >
         <span
-          className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }
+          className={ css('ms-MessageBar-innerText ' + styles.innerText) }
+          role='status'
+          aria-live={ this._getAnnouncementPriority() }
           ref={ (el) => { this.element = el } }
         >
-          {/* <DelayedRender> */ }
-          <span>{ this.props.children }</span>
-          {/* </DelayedRender> */ }
+          <DelayedRender>
+            <span>{ this.props.children }</span>
+          </DelayedRender>
         </span>
       </div >
     );

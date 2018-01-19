@@ -2,6 +2,7 @@
 
 .root {
   @include focus-border();
+  box-sizing: content-box;
   flex-shrink: 1;
   background: $ms-color-neutralLighter;
   margin: 1px;

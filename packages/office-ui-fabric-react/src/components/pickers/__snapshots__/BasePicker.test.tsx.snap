@@ -44,7 +44,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
         <input
           aria-activedescendant="sug--1"
           aria-controls="selected-suggestion-alert"
-          aria-expanded="true"
+          aria-expanded={false}
           aria-haspopup="true"
           aria-owns="suggestion-list"
           autoCapitalize="off"
@@ -109,7 +109,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
         <input
           aria-activedescendant="sug--1"
           aria-controls="selected-suggestion-alert"
-          aria-expanded="true"
+          aria-expanded={false}
           aria-haspopup="true"
           aria-owns="suggestion-list"
           autoCapitalize="off"

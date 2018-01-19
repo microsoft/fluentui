@@ -124,13 +124,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       <div className={ className }>
         { render
           ? render(this.props)
-          : <TooltipHost
+          : text && (<TooltipHost
             content={ text }
             overflowMode={ TooltipOverflowMode.Parent }
             directionalHint={ DirectionalHint.topLeftEdge }
           >
             { text }
-          </TooltipHost>
+          </TooltipHost>)
         }
       </div>
     );

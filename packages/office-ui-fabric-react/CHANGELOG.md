@@ -1,6 +1,60 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Jan 2018 11:13:51 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jan 2018 11:14:03 GMT and should not be manually modified.
+
+## 5.40.2
+Fri, 19 Jan 2018 11:14:03 GMT
+
+### Patches
+
+- added smallInputBorder semantic slots and updated checkbox, choicegroup, and toggle to use it.
+- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. 
+- Datepicker: Fix so calendar doesn't open when clicking icon when DatePicker is disabled
+- Persona: Fix a bug where space would be taken even though there was no secondary text
+- Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119
+
+## 5.40.1
+Thu, 18 Jan 2018 11:21:56 GMT
+
+### Patches
+
+- BasePicker: Fix accessibility bug where it always has aria-expanded=true
+- Calculate overflow manually to determine if Callout needs a scrollbar
+- Update .npmignore to publish all examples
+
+## 5.40.0
+Wed, 17 Jan 2018 11:11:25 GMT
+
+### Minor changes
+
+- DatePicker: Default selectedDate should be undefined, not new Date()
+- DatePicker: Add an initialPickerDate property
+- Icon: the `ms-Icon` class name, despite being unused, is causing conflicts with fabric-core usage inadvertently. There isn't a great way to deal with this other than to avoid re-using the `ms-Icon` class name.
+- ProgressIndicator: Adding indeterminate progress variant.
+
+### Patches
+
+- Pickers: Fixed border clipping of tag item in high-contrast mode
+- Escape key shouldn't propagate in combo box if it isn't open
+
+## 5.39.1
+Fri, 12 Jan 2018 20:03:22 GMT
+
+### Patches
+
+- Checkbox and ChoiceGroup: New resting state border color.
+
+## 5.39.0
+Wed, 10 Jan 2018 11:23:36 GMT
+
+### Minor changes
+
+- Rating: Convert to getstyles
+
+### Patches
+
+- Add auto expand on focus for Combobox
+- Callout/Positioning: Fix a bug where callouts would position incorrectly if the target was  an HTMLImg element
 
 ## 5.38.1
 Mon, 08 Jan 2018 11:13:51 GMT

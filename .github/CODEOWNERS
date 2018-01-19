@@ -24,12 +24,16 @@
 
 #### Packages
 # packages/example-app-base/
-# packages/example-component/
+packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp
+# packages/icons/
+# packages/jest-serializer-merge-styles/
+# packages/merge-styles/
 # packages/office-ui-fabric-react-tslint/
 packages/styling/  @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
+packages/utilities/positioning/ @joschect
 
 ### Fabric
 # common/
@@ -46,18 +50,18 @@ dateValues/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
 # Breadcrumb/
 # Button/
 Calendar/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
-# Callout/
+Callout/  @joschect
 # Check/
 # Checkbox/
 # ChoiceGroup/
 # ColorPicker/
 # ComboBox/
 CommandBar/   @micahgodbolt
-# ContextualMenu/
+ContextualMenu/  @joschect
 DatePicker/   @johannao76 lorejoh12@gmail.com jolore@microsoft.com
 # DetailsList/
 # Dialog/
-# DocumentCard/
+DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
 # Fabric/
 # FacePile/
@@ -68,7 +72,7 @@ HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
 # Label/
-# Layer/
+Layer/  @ThomasMichon
 # Link/
 List/  @cschleiden
 # MarqueeSelection/
@@ -81,7 +85,7 @@ OverflowSet/  @micahgodbolt
 # Persona/
 Persona/PersonaCoin.tsx @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
-# pickers/
+pickers/  @joschect
 # Pivot/
 # Popup/
 # ProgressIndicator/
