@@ -16,12 +16,6 @@ exports[`Callout renders Callout correctly 1`] = `
       onKeyDown={[Function]}
       onScroll={undefined}
       role={undefined}
-      style={
-        Object {
-          "backgroundColor": undefined,
-          "maxHeight": 750,
-        }
-      }
     >
       Content
     </div>
