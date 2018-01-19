@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 18 Jan 2018 11:21:56 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jan 2018 11:14:03 GMT and should not be manually modified.
+
+## 5.40.2
+Fri, 19 Jan 2018 11:14:03 GMT
+
+### Patches
+
+- added smallInputBorder semantic slots and updated checkbox, choicegroup, and toggle to use it.
+- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. 
+- Datepicker: Fix so calendar doesn't open when clicking icon when DatePicker is disabled
+- Persona: Fix a bug where space would be taken even though there was no secondary text
+- Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119
 
 ## 5.40.1
 Thu, 18 Jan 2018 11:21:56 GMT

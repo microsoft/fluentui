@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.40.2",
+      "tag": "office-ui-fabric-react_v5.40.2",
+      "date": "Fri, 19 Jan 2018 11:14:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "39864da18b987267a4c412398aae96342f1640f4",
+            "comment": "added smallInputBorder semantic slots and updated checkbox, choicegroup, and toggle to use it."
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b1f94259d8358ba55cdc4a69cda4eecf32df6528",
+            "comment": "Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. "
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "2d5b7d478c83e7953fb5e4f870fac84a042e3625",
+            "comment": "Datepicker: Fix so calendar doesn't open when clicking icon when DatePicker is disabled"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "1bfbeb9c1def0696ce3e946b3db67157e9d43fe1",
+            "comment": "Persona: Fix a bug where space would be taken even though there was no secondary text"
+          },
+          {
+            "author": "manas-misra <manas.misra@outlook.com>",
+            "commit": "e3dfe7671e4f7b26c0ad888dd7be735c0545d032",
+            "comment": "Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.15.1 <6.0.0` to `>=5.15.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.40.1",
       "tag": "office-ui-fabric-react_v5.40.1",
       "date": "Thu, 18 Jan 2018 11:21:56 GMT",
