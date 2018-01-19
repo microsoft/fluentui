@@ -28,7 +28,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     [MessageBarType.info]: 'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
-    [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.blocked]: 'Blocked2',
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'
@@ -69,7 +69,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
       ['ms-MessageBar ' + styles.root]: this.props.messageBarType === MessageBarType.info,
       ['ms-MessageBar--error ' + styles.rootIsError]: this.props.messageBarType === MessageBarType.error,
       ['ms-MessageBar--blocked ' + styles.rootIsBlocked]: (this.props.messageBarType === MessageBarType.blocked) ||
-      (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
+        (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
       ['ms-MessageBar--severeWarning ' + styles.rootIsSevereWarning]: this.props.messageBarType === MessageBarType.severeWarning,
       ['ms-MessageBar--success ' + styles.rootIsSuccess]: this.props.messageBarType === MessageBarType.success,
       ['ms-MessageBar--warning ' + styles.rootIsWarning]: this.props.messageBarType === MessageBarType.warning
@@ -110,11 +110,6 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _getInnerTextClassName(): string {
-    return this.props.onDismiss || this.props.actions ?
-      'ms-MessageBar-innerTextPadding ' + styles.innerTextPadding : 'ms-MessageBar-innerText ' + styles.innerText;
-  }
-
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
       <div
@@ -122,8 +117,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           css(this._getClassName(),
             'ms-MessageBar-multiline',
             styles.multiline,
-            this.props.onDismiss && styles.dismissalMultiline,
-            this.props.actions && styles.actionableMultiline
+            this.props.onDismiss && styles.dismissalMultiline
           )
         }
         role='status'
@@ -146,8 +140,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           css(this._getClassName(),
             'ms-MessageBar-singleline',
             styles.singleline,
-            this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.rootIsOneline,
-            this.props.actions && styles.actionableOneline
+            this.props.onDismiss && 'ms-MessageBar-dismissalOneline'
           )
         }
       >
@@ -163,8 +156,15 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _renderInnerText(): JSX.Element {
     return (
-      <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
-        <span className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }>
+      <div
+        className={ css('ms-MessageBar-text', styles.text, this.props.actions && styles.multilineWithActions, !this.props.onDismiss && styles.noDismissButton) }
+        id={ this.state.labelId }
+      >
+        <span
+          className={ css('ms-MessageBar-innerText ' + styles.innerText) }
+          role='status'
+          aria-live={ this._getAnnouncementPriority() }
+        >
           <DelayedRender>
             <span>{ this.props.children }</span>
           </DelayedRender>
