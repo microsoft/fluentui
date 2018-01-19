@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox and ChoiceGroup: New resting state border color.",
+      "comment": "Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "manas.misra@outlook.com"
 }
