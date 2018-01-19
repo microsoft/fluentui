@@ -97,6 +97,10 @@ export class App extends React.Component<IAppProps, any> {
     if (appContentRect.top >= 0) {
       // This case accounts for space taken up by the UHF header in the viewport.
       height = viewPortHeight - appContentRect.top;
+      if (appContentRect.height < appContentRect.bottom && viewPortHeight > appContentRect.bottom) {
+        // This case might only exist in the UHF testing environment, when content isn't rendering properly and its height is weird.
+        height = appContentRect.height;
+      }
     } else if (viewPortHeight < appContentRect.bottom && appContentRect.top < 0) {
       // For pages with content that's longer than the viewport, the viewport is the height.
       // Takes effect when you scroll past the header.
@@ -104,9 +108,6 @@ export class App extends React.Component<IAppProps, any> {
     } else if (appContentRect.bottom < 0) {
       // In smaller screens when you scroll till the footer takes the whole page, collapse the nav.
       height = 0;
-    } else if (appContentRect.height < appContentRect.bottom) {
-      // This case might only exist in the UHF testing environment, when content isn't rendering properly.
-      height = appContentRect.height;
     } else {
       // Once the footer is in view, match nav bottom to content bottom.
       height = appContentRect.bottom;
