@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
-import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav } from '../Nav/Nav';

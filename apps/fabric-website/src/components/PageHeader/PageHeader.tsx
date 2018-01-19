@@ -125,7 +125,6 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
 
   private _onScroll() {
     let { isAttached, headerBottom, headerTop } = this.state;
-    const headerBottomThreshold = window.scrollY + window.innerHeight;
     this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
 
