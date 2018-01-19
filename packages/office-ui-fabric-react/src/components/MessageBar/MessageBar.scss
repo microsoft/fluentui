@@ -7,6 +7,21 @@
 // --------------------------------------------------
 // MessageBar Styles
 
+// Mixins
+@mixin multilineContent {
+  flex-direction: column;
+  .content {
+    flex-direction: row;
+  }
+}
+
+@mixin buttonMargins($sidesAndBottom, $top: $sidesAndBottom) {
+  @include margin($top, $sidesAndBottom, $sidesAndBottom, 0);
+  :nth-child(n+2) {
+    @include margin-left($sidesAndBottom);
+  }
+}
+
 .root {
   @include ms-bgColor-info;
   min-height: 32px;
@@ -16,19 +31,10 @@
   display: flex;
   position: relative;
   word-break: break-word;
-  .icon {
-    @include padding-right(8px);
-    color: $ms-color-info;
-    flex-shrink: 0;
-  }
 
   :global(.ms-Link) {
     font-size: $ms-font-size-s;
     color: $ms-color-themeDark;
-  }
-
-  :global(.ms-Button) {
-    @include margin-left(6px);
   }
 }
 
@@ -43,6 +49,13 @@
   min-width: 16px;
   min-height: 16px;
   display: flex;
+  color: $ms-color-info;
+  flex-shrink: 0;
+  // Margin-right is accounted for in the .innerText margin-left
+  @include margin(16px, 0, 16px, 16px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+  }
 }
 
 .text {
@@ -50,8 +63,26 @@
   min-width: 0;
   display: flex;
   flex-grow: 1;
+  @include margin(16px, 8px, 16px, 8px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+    &.noDismissButton {
+      @include margin-right(8px);
+    }
+  }
+  &.noDismissButton {
+    @include margin-right(16px);
+  }
 }
 
+.innerText {
+  line-height: 16px;
+
+  // Add padding between text and hyperlink
+  span a {
+    @include padding-left(4px);
+  }
+}
 
 //== Modifier: Warning message
 //
@@ -108,7 +139,7 @@
   }
 }
 
-// Shared
+// Shared between Single- and Multi- Line
 .content {
   display: flex;
   line-height: normal;
@@ -130,40 +161,11 @@
 }
 
 .actions {
-  padding-top: 12px;
+  @include buttonMargins(12px, 0);
 }
 
-.innerTextPadding {
-  span, .innerText > span {
-    @include padding-right(4px); // Add padding between text and hyperlink.
-  }
-}
-
-// Single line specific attributes
-.singleline {
-  height: 32px;
-  .content {
-    align-items: center;
-    padding: 8px 0px;
-    .icon {
-      font-family: 'FabricMDL2Icons';
-      padding: 0px 8px;
-    }
-
-    .text {
-      align-items: center;
-      flex: 1 1 auto;
-
-      .innerText,
-      .innerTextPadding {
-        @include padding-right(8px);
-        max-height: 1.3em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-  }
+.actionsOneline {
+  @include buttonMargins(8px);
 }
 
 .actions, .actionsOneline {
@@ -171,13 +173,22 @@
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include buttonMargins(8px, 0);
+    :global(.ms-Button) {
+      margin-top: 8px;
+    }
+  }
 }
 
 .dismissal {
   @include focus-border();
-  @include right(0);
-  max-height: 16px;
   flex-shrink: 0;
+  @include margin(8px, 8px, 8px, 0); // Margin-left is accounted for in the .text margin-right
+
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(0, 0, 0, 8px);
+  }
 
   @include high-contrast {
     -ms-high-contrast-adjust: none;
@@ -188,57 +199,40 @@
   display: flex;
 }
 
-.rootIsOneline {
-  min-width: 16px;
-  min-height: 16px;
-  // We want padding between the outside of the dismiss button to be 8px
-  // and the padding between the dismiss button and the text to be 12px
-  @include padding(8px, 12px, 8px, 12px);
-}
-
-.actionsOneline {
-  position: relative;
-  padding: 0px 8px;
-}
-
-.actionableOneline {
-  height: 48px;
-  .content {
-    .icon {
-      padding: 0px 16px;
-    }
-    .innerText {
-      @include padding-right(0px);
-    }
+.dismissal,
+.dismissOneline {
+  :global(.ms-Icon) {
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
   }
 }
 
 // Multi line specific attributes
 .multiline {
-  @include padding(16px, 12px, 12px, 16px);
-  .content {
-      flex-direction: row;
-    .icon {
-      @include padding-right(8px);
-      font-family: 'FabricMDL2Icons';
+  @include multilineContent();
+  .text.multilineWithActions {
+    margin-bottom: 8px; // This creates an 8px space between text and actions
+    @media screen and (max-width: $ms-screen-max-sm) {
+      margin-bottom: 0;
     }
-
-    .innerText {
-      line-height: 16px; // Each line should add 16px to the height
-    }
-  }
-
-  .dismissal {
-    margin: 0;
   }
 }
 
-.multiline {
-  flex-direction: column;
-}
-
-.actionableMultiline.dismissalMultiline {
-  .innerTextPadding {
-    @include padding-right(48px);
+// Single line specific attributes
+.singleline {
+  .innerText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media screen and (max-width: $ms-screen-max-sm) {
+    // Singleline acts like multiline in mobile, unless text is specified to be truncated
+    @include multilineContent();
+    .text.multilineWithActions {
+      @media screen and (max-width: $ms-screen-max-sm) {
+        margin-bottom: 0;
+      }
+    }
   }
 }
