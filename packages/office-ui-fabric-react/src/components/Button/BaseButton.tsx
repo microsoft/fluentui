@@ -429,7 +429,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return (
       <div
-        role={ this.props.ariaHidden ? 'button' : undefined }
+        // TODO: THIS SHOULD BE SET BASED OFF OF ARIAHIDDEN
+        role={ 'button' }
         aria-labelledby={ buttonProps.ariaLabel }
         aria-disabled={ disabled }
         aria-haspopup={ true }
