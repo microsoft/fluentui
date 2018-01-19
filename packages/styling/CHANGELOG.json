@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.15.2",
+      "tag": "@uifabric/styling_v5.15.2",
+      "date": "Fri, 19 Jan 2018 11:14:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "39864da18b987267a4c412398aae96342f1640f4",
+            "comment": "added semantic slots for smallInputBorder and smallInputBorderHover"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.1",
       "tag": "@uifabric/styling_v5.15.1",
       "date": "Thu, 28 Dec 2017 11:23:50 GMT",
