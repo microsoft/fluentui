@@ -8,7 +8,7 @@ import {
   IRectangle
 } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
-import { IStyleFunction } from 'src/index.bundle';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ICallout {
 

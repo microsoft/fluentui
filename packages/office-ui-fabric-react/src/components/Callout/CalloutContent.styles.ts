@@ -1,7 +1,8 @@
 import {
   HighContrastSelector,
   AnimationStyles,
-  IRawStyle
+  IRawStyle,
+  focusClear
 } from '../../Styling';
 import {
   ICalloutPositionedInfo,
@@ -80,6 +81,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
           }
         }
       },
+      focusClear(),
       className,
       positions && positions.targetEdge && ANIMATIONS[positions.targetEdge],
       // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
@@ -130,7 +132,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',
-        maxHeight: '' + contentMaxHeight
+        maxHeight: contentMaxHeight
       },
       !!calloutWidth && { width: calloutWidth },
       overflowYHidden && {
