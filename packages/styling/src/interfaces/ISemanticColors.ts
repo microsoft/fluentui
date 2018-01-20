@@ -243,7 +243,7 @@ export interface ISemanticColors {
   /**
    * The default text color for list item titles and text in column fields.
    */
-  listTextColor: string;
+  listText: string;
 
   /**
    * The background color of a hovered list item.
@@ -259,4 +259,10 @@ export interface ISemanticColors {
    * The background color of a checked and hovered list item.
    */
   listItemBackgroundCheckedHovered: string;
+
+  //// DEPRECATED SLOTS
+  // Do not use these slots, they are only maintained for backwards compatibility.
+
+  /** DEPRECATED use listText instead */
+  listTextColor: string;
 }

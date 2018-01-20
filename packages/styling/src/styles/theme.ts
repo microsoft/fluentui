@@ -99,21 +99,26 @@ export function createTheme(theme: IPartialTheme): ITheme {
     newPalette.accent = newPalette.themePrimary;
   }
 
+  // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
+  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted), ...theme.semanticColors };
+  newSemanticColors = { ..._fixDeprecatedSlots(newSemanticColors), ...theme.semanticColors };
+
   return {
     palette: newPalette,
     fonts: {
       ...DefaultFontStyles,
       ...theme.fonts
     },
-    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted), ...theme.semanticColors },
+    semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted
   } as ITheme;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
+// This does NOT fix deprecated slots.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISemanticColors {
-  return {
+  let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
@@ -159,9 +164,20 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     menuHeader: p.themePrimary,
 
     listBackground: p.white,
-    listTextColor: p.neutralPrimary,
+    listText: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
     listItemBackgroundChecked: p.neutralLight,
-    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
+    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
+
+    // Deprecated slots, fixed by _fixDeprecatedSlots()
+    listTextColor: ''
   };
+
+  return toReturn;
+}
+
+function _fixDeprecatedSlots(s: ISemanticColors): ISemanticColors {
+  s.listTextColor = s.listText;
+
+  return s;
 }

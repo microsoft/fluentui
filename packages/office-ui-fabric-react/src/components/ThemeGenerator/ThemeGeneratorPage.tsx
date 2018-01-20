@@ -481,7 +481,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     }
     document.body.style.backgroundColor = themeAsJson.backgroundColor;
     document.body.style.color = themeAsJson.bodyText;
-    loadTheme({ palette: themeAsJson });
+    console.log('Full theme... ', loadTheme({ palette: themeAsJson }));
   }
 
   @autobind
