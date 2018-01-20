@@ -180,7 +180,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                 /> }
 
                 { showGoToToday &&
-                  <span
+                  <button
                     role='button'
                     className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                     onClick={ this._onGotoToday }
@@ -188,7 +188,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     tabIndex={ 0 }
                   >
                     { strings!.goToToday }
-                  </span>
+                  </button>
                 }
               </div>
             </div>
