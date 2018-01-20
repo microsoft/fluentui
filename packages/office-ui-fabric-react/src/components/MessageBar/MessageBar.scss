@@ -8,10 +8,14 @@
 // MessageBar Styles
 
 // Mixins
-@mixin multilineContent {
+@mixin multiLineContent {
   flex-direction: column;
   .content {
     flex-direction: row;
+  }
+  .innerText {
+    overflow: visible;
+    white-space: pre-wrap;
   }
 }
 
@@ -164,11 +168,11 @@
   @include buttonMargins(12px, 0);
 }
 
-.actionsOneline {
+.actionsSingleLine {
   @include buttonMargins(8px);
 }
 
-.actions, .actionsOneline {
+.actions, .actionsSingleLine {
   display: flex;
   flex: 0 0 auto;
   flex-direction: row-reverse;
@@ -181,7 +185,8 @@
   }
 }
 
-.dismissal {
+.dismissal,
+.expand {
   @include focus-border();
   flex-shrink: 0;
   @include margin(8px, 8px, 8px, 0); // Margin-left is accounted for in the .text margin-right
@@ -195,23 +200,26 @@
   }
 }
 
-.dismissOneline {
+.dismissSingleLine,
+.expandSingleLine {
   display: flex;
 }
 
 .dismissal,
-.dismissOneline {
-  :global(.ms-Icon) {
+.dismissSingleLine,
+.expandSingleLine {
+  :global(.ms-Button-icon) {
     font-size: 12px;
     height: 12px;
     line-height: 12px;
+    color: $ms-color-neutralSecondary;
   }
 }
 
 // Multi line specific attributes
-.multiline {
-  @include multilineContent();
-  .text.multilineWithActions {
+.multiLine {
+  @include multiLineContent();
+  .text.multiLineWithActions {
     margin-bottom: 8px; // This creates an 8px space between text and actions
     @media screen and (max-width: $ms-screen-max-sm) {
       margin-bottom: 0;
@@ -220,18 +228,23 @@
 }
 
 // Single line specific attributes
-.singleline {
+.singleLine {
   .innerText {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  .expandSingleLine {
+    @include multiLineContent();
+  }
   @media screen and (max-width: $ms-screen-max-sm) {
-    // Singleline acts like multiline in mobile, unless text is specified to be truncated
-    @include multilineContent();
-    .text.multilineWithActions {
-      @media screen and (max-width: $ms-screen-max-sm) {
-        margin-bottom: 0;
+    // Singleline acts like multiLine in mobile, unless text is specified to be truncated
+    &:not(.expandingSingleLine) {
+      @include multiLineContent();
+      .text.multiLineWithActions {
+        @media screen and (max-width: $ms-screen-max-sm) {
+          margin-bottom: 0;
+        }
       }
     }
   }
