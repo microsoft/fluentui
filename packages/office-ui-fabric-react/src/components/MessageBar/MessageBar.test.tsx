@@ -53,4 +53,18 @@ describe('MessageBar', () => {
       });
     });
   });
+
+  describe('truncated', () => {
+    it('is present when onDismiss exists', () => {
+      const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar truncated={ true } isMultiline={ false } />);
+      let expandElement = renderedDOM.querySelector('.ms-MessageBar-expand');
+      expect(expandElement).not.toBeNull();
+    });
+
+    it('is not present when truncated is missing', () => {
+      const renderedDOM: HTMLElement = renderIntoDocument(<MessageBar isMultiline={ false } />);
+      let expandElement = renderedDOM.querySelector('.ms-MessageBar-expand');
+      expect(expandElement).toBeNull();
+    });
+  });
 });
