@@ -155,7 +155,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
-    const { endAligned } = this.props;
+    const { endAligned, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey, farItems } = data;
 
     // Use first item if endAligned, otherwise use last item
@@ -168,6 +168,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       primaryItems = endAligned ? primaryItems.slice(1) : primaryItems.slice(0, -1);
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
+      if (onDataReduced) {
+        onDataReduced(movedItem);
+      }
+
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
 
@@ -176,7 +180,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
-    const { endAligned } = this.props;
+    const { endAligned, onDataGrown } = this.props;
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
     const movedItem = overflowItems[0];
 
@@ -188,6 +192,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if endAligned, movedItem goes first, otherwise, last.
       primaryItems = endAligned ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+
+      if (onDataGrown) {
+        onDataGrown(movedItem);
+      }
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
