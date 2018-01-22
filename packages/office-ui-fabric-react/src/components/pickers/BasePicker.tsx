@@ -11,7 +11,7 @@ import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { SuggestionsController } from './Suggestions/SuggestionsController';
+import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.types';
@@ -634,7 +634,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
-  */
+   */
   private _updateSelectedItems(items: T[], focusIndex?: number) {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
@@ -653,7 +653,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   private _onValidateInput() {
     if (this.props.onValidateInput && (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
-      let itemToConvert = (this.props.createGenericItem as any)(this.input.value, (this.props.onValidateInput as any)(this.input.value));
+      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
