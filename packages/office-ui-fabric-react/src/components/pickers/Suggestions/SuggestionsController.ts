@@ -1,3 +1,5 @@
+import { autobind } from '../../../Utilities';
+
 export interface ISuggestionModel<T> {
   item: T;
   selected: boolean;
@@ -12,8 +14,6 @@ export class SuggestionsController<T> {
   constructor() {
     this.suggestions = [];
     this.currentIndex = -1;
-    this._ensureSuggestionModel = this._ensureSuggestionModel.bind(this);
-    this._isSuggestionModel = this._isSuggestionModel.bind(this);
   }
 
   public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
@@ -117,15 +117,17 @@ export class SuggestionsController<T> {
     }
   }
 
+  @autobind
   private _isSuggestionModel(
     value: ISuggestionModel<T> | T
-  ): value is ISuggestionModel<T> {
+    ): value is ISuggestionModel<T> {
     return (<ISuggestionModel<T>>value).item !== undefined;
   }
 
+  @autobind
   private _ensureSuggestionModel(
     suggestion: ISuggestionModel<T> | T
-  ): ISuggestionModel<T> {
+    ): ISuggestionModel<T> {
     if (this._isSuggestionModel(suggestion)) {
       return suggestion as ISuggestionModel<T>;
     } else {
