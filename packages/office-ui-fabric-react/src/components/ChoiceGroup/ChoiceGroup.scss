@@ -197,6 +197,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   $radioButtonSpacing: 3px;
   $radioButtonInnerSize: 5px;
 
+  height: $ms-choiceField-iconField-size;
+  width: $ms-choiceField-iconField-size;
+
   .fieldIsImage, .fieldIsIcon {
 
     display: inline-block;
@@ -247,14 +250,15 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
 
     .labelWrapper {
-      $lineHeight: 16px;
+      $lineHeight: 15px;
+      $margin: 2px;
       display: block;
       position: relative;
-      margin: 4px 0 0 0;
-      height: $lineHeight * 2;
+      margin: $margin 0;
+      height: $lineHeight * 2 + $margin;
       line-height: $lineHeight;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: pre-wrap;
       text-overflow: ellipsis;
       @include ms-font-m;
 
@@ -327,9 +331,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
 .choiceFieldIsIcon {
   $iconSize: 32px;
-
-  height: $ms-choiceField-iconField-size;
-  width: $ms-choiceField-iconField-size;
 
   .iconWrapper {
     font-size: $iconSize;
