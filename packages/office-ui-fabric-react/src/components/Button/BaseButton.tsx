@@ -87,7 +87,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       variantClassName,
       theme,
-      getClassNames
+      getClassNames,
+      ariaPosInSet,
+      ariaSetSize
          } = this.props;
 
     let { menuProps } = this.state;
@@ -164,7 +166,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
         'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
-        'aria-pressed': checked
+        'aria-pressed': checked,
+        'aria-posinset': ariaPosInSet,
+        'aria-setsize': ariaSetSize
       }
     );
 
@@ -429,12 +433,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return (
       <div
+        // TODO: ROLE SHOULD BE SET BASED OFF OF ARIAHIDDEN
+        role={ 'button' }
         aria-labelledby={ buttonProps.ariaLabel }
         aria-disabled={ disabled }
         aria-haspopup={ true }
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
+        aria-posinset={ buttonProps.ariaPosInSet }
+        aria-setsize={ buttonProps.ariaSetSize }
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }
@@ -478,7 +486,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'onClick': this._onMenuClick,
       'menuProps': undefined,
       'iconProps': menuIconProps,
-      'ariaLabel': splitButtonAriaLabel
+      'ariaLabel': splitButtonAriaLabel,
+      'aria-haspopup': true,
+      'aria-expanded': this._isExpanded
     };
 
     return <BaseButton {...splitButtonProps} />;

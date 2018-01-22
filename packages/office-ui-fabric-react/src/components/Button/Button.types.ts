@@ -223,6 +223,10 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   getSplitButtonClassNames?: (disabled: boolean,
     expanded: boolean,
     checked: boolean) => ISplitButtonClassNames;
+
+  ariaPosInSet?: number;
+
+  ariaSetSize?: number;
 }
 
 export enum ElementType {
