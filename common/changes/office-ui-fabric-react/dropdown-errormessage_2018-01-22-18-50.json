@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Align error message styling to TextField.",
+      "comment": "Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states.",
       "type": "patch"
     }
   ],
