@@ -2,6 +2,58 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.41.0",
+      "tag": "office-ui-fabric-react_v5.41.0",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "fd2206f8041ba6aca3b61a67a8552652e67d4954",
+            "comment": "Address issue #1535 - Calendar: Change clickable spans to buttons."
+          },
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "f8dfda114728bf4cd800f8cc69b9ad6a826ba94f",
+            "comment": "updated divider color to be more visible"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "8b2e9c33ba8128e11809bf3f0111d43933457e0c",
+            "comment": "Hovercard: Changed content keydown listener to element event binding"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d94d83e908c3deed8de6a05063f18f857c95ea12",
+            "comment": "MessageBar: scss refactor and component polish."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3918313795cd6f12b7405aa94b559e68c7d71652",
+            "comment": "Add a context value under ResizeGroup to allow child components to detect whether they are being used only for measurement."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f3811054f54bdc22b2ee2bcbe9b277faf889b9f5",
+            "comment": "MessageBar: New prop to allow singleline text with no action buttons to be truncated."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.15.2 <6.0.0` to `>=5.15.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.6.1 <6.0.0` to `>=5.7.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.40.2",
       "tag": "office-ui-fabric-react_v5.40.2",
       "date": "Fri, 19 Jan 2018 11:14:03 GMT",

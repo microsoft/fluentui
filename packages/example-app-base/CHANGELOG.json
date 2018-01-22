@@ -2,6 +2,28 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.2.1",
+      "tag": "@uifabric/example-app-base_v5.2.1",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d94d83e908c3deed8de6a05063f18f857c95ea12",
+            "comment": "Updated theme override colors for MessageBar."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.15.2 <6.0.0` to `>=5.15.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.6.1 <6.0.0` to `>=5.7.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.0",
       "tag": "@uifabric/example-app-base_v5.2.0",
       "date": "Sat, 16 Dec 2017 05:07:22 GMT",
