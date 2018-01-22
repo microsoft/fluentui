@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.41.1",
+      "tag": "office-ui-fabric-react_v5.41.1",
+      "date": "Mon, 22 Jan 2018 18:39:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jakob Werner <jaxxx_w@yahoo.com>",
+            "commit": "8fcd40a85b53d1cb43ed444e102a0bdf9975281c",
+            "comment": "[FocusTrapZone] Text selection inside FocusTrapZone was broken. This brings it back"
+          },
+          {
+            "author": "MirandaGe <lingge@microsoft.com>",
+            "commit": "a541f4ea72c22da9b5b5ae46e896f99f2d97d3e6",
+            "comment": "fix hover card dismiss issue"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.41.0",
       "tag": "office-ui-fabric-react_v5.41.0",
       "date": "Mon, 22 Jan 2018 11:14:27 GMT",
