@@ -160,10 +160,9 @@ $DropDown-item-height: 32px;
 }
 
 .errorMessage{
-    color: $ms-color-error;
-  &::before {
-    content: '* ';
-  }
+  color: $ms-color-error;
+  @include ms-font-s;
+  padding-top: 5px;
 }
 
 .items {
