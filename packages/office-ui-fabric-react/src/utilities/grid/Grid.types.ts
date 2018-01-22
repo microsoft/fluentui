@@ -67,6 +67,8 @@ export interface IGridProps {
  * Optional styles for the component.
  */
   getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
+
+  ariaLabel?: String;
 }
 
 /**

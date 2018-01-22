@@ -101,6 +101,11 @@ export interface ISwatchColorPickerProps {
   * Optional styles for the component.
   */
   getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+
+  /**
+   * Accessible label text.
+   */
+  ariaLabel?: string;
 }
 
 /**
