@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jan 2018 18:39:02 GMT and should not be manually modified.
+
+## 5.41.1
+Mon, 22 Jan 2018 18:39:02 GMT
+
+### Patches
+
+- [FocusTrapZone] Text selection inside FocusTrapZone was broken. This brings it back
+- fix hover card dismiss issue
 
 ## 5.41.0
 Mon, 22 Jan 2018 11:14:27 GMT
