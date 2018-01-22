@@ -2,6 +2,35 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.14.0",
+      "tag": "@uifabric/experiments_v5.14.0",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "60225fba2411d965163b74eae9d61046013115b1",
+            "comment": "Add callbacks for onDataReduced and onDataGrown"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "2f247fff85ffd515c41b20aacc771f1269657713",
+            "comment": "Minor visual alignment for FolderCover text"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.40.1 <6.0.0` to `>=5.41.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.13.0",
       "tag": "@uifabric/experiments_v5.13.0",
       "date": "Fri, 12 Jan 2018 20:03:21 GMT",

@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Jan 2018 11:14:03 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+
+## 5.41.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Add a context value under ResizeGroup to allow child components to detect whether they are being used only for measurement.
+- MessageBar: New prop to allow singleline text with no action buttons to be truncated.
+
+### Patches
+
+- Address issue #1535 - Calendar: Change clickable spans to buttons.
+- updated divider color to be more visible
+- Hovercard: Changed content keydown listener to element event binding
+- MessageBar: scss refactor and component polish.
 
 ## 5.40.2
 Fri, 19 Jan 2018 11:14:03 GMT
