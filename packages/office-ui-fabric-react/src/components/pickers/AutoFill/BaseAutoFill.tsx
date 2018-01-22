@@ -155,7 +155,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   @autobind
   private _onCompositionEnd(ev: React.CompositionEvent<HTMLInputElement>) {
     let inputValue = this._getCurrentInputValue();
-    this._tryEnableAutoFill(inputValue, this.value, false, true);
+    this._tryEnableAutofill(inputValue, this.value, false, true);
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => this._updateValue(inputValue), 0);
   }
@@ -181,11 +181,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
           this._autoFillEnabled = false;
           break;
         case KeyCodes.left:
-          if (this._autoFillEnabled) {
-            this._value = this.state.displayValue!;
-            this._autoFillEnabled = false;
-          }
-          break;
         case KeyCodes.right:
           if (this._autoFillEnabled) {
             this._value = this.state.displayValue!;
@@ -207,7 +202,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   private _onChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = this._getCurrentInputValue(ev);
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
-    this._tryEnableAutoFill(value, this._value, (ev.nativeEvent as any).isComposing);
+    this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
     this._updateValue(value);
   }
 
@@ -222,15 +217,15 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   /**
    * Attempts to enable autofill. Whether or not autofill is enabled depends on the input value,
    * whether or not any text is selected, and only if the new input value is longer than the old input value.
-   * isComposed is whether or not the new value is a composed value.
    * Autofill should never be set to true if the value is composing. Once compositionEnd is called, then
    * it should be completed.
+   * See https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent for more information on composition.
    * @param newValue
    * @param oldValue
-   * @param isComposing
-   * @param isComposed
+   * @param isComposing if true then the text is actively being composed and it has not completed.
+   * @param isComposed if the text is a composed text value.
    */
-  private _tryEnableAutoFill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean) {
+  private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean) {
     if (!isComposing
       && newValue
       && this._inputElement.selectionStart === newValue.length
