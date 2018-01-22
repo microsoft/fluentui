@@ -91,12 +91,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         opacity: 0,
         filter: 'opacity(0)',
       },
-      positions && {
-        top: positions.elementPosition.top,
-        bottom: positions.elementPosition.bottom,
-        left: positions.elementPosition.left,
-        right: positions.elementPosition.right,
-      },
+      positions && { ...positions.elementPosition },
       !!calloutWidth && { width: calloutWidth },
     ],
     beak: [
