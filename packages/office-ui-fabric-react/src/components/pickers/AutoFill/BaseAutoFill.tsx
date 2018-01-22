@@ -206,12 +206,12 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     this._updateValue(value);
   }
 
-  private _getCurrentInputValue(ev?: React.FormEvent<HTMLElement>) {
+  private _getCurrentInputValue(ev?: React.FormEvent<HTMLElement>): string {
     if (ev && ev.target && (ev.target as any).value) {
       return (ev.target as any).value;
+    } else {
+      return this._inputElement.value;
     }
-    let value: string = this._inputElement.value;
-    return value;
   }
 
   /**
