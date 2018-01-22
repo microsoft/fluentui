@@ -211,6 +211,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
     border: 2px solid transparent;
+    height: $ms-choiceField-iconField-size;
+    width: $ms-choiceField-iconField-size;
 
     &.fieldIsDisabled {
       cursor: default;
