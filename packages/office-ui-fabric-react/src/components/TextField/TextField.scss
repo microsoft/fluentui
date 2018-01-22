@@ -73,6 +73,13 @@ $field-error-color: $errorTextColor;
   &::-ms-clear {
     display: none;
   }
+
+  ::placeholder,
+  :-ms-input-placeholder,
+  ::-ms-input-placeholder {
+    color: $ms-color-neutralSecondary;
+    opacity: 1;
+  }
 }
 
 //= State: A disabled textfield
