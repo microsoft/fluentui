@@ -145,8 +145,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   private _renderOption(item: IColorCellProps): JSX.Element {
     let id = this._id;
 
-    // TODO we either add the aria lable into the item or we just plumb it with the aria label that we pass in here
-    // TODO invetigate how to do both and give jeremy options
     return (
       <ColorPickerGridCell
         item={ item }
@@ -160,7 +158,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
         circle={ this.props.cellShape === 'circle' }
         label={ item.label }
-        ariaLabel={ this.props.sectionTitle }
       />
     );
   }
