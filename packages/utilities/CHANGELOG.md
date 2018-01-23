@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+
+## 5.7.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Adding a helper component to inject context values
 
 ## 5.6.1
 Tue, 19 Dec 2017 11:22:47 GMT

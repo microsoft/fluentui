@@ -107,7 +107,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-back
               {
                 display: inline-block;
@@ -123,7 +122,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-front
               {
                 display: inline-block;
@@ -233,7 +231,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-back
               {
                 display: inline-block;
@@ -249,7 +246,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-front
               {
                 display: inline-block;
@@ -359,7 +355,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-back
               {
                 display: inline-block;
@@ -375,7 +370,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-front
               {
                 display: inline-block;
@@ -485,7 +479,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-back
               {
                 display: inline-block;
@@ -501,7 +494,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-front
               {
                 display: inline-block;
@@ -611,7 +603,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-back
               {
                 display: inline-block;
@@ -627,7 +618,6 @@ exports[`Rating Renders Rating correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-RatingStar-front
               {
                 display: inline-block;

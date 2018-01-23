@@ -15,7 +15,7 @@ export class DropdownCustomExample extends React.Component {
 
   public render() {
     return (
-      <div className='dropdownExample'>
+      <div className='docs-DropdownExample'>
 
         <Dropdown
           placeHolder='Select an Option'

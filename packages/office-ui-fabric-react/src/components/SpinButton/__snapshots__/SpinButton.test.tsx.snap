@@ -230,7 +230,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             aria-hidden={true}
             aria-label={undefined}
             className=
-                ms-Icon
                 ms-Button-icon
                 {
                   display: inline-block;
@@ -338,7 +337,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             aria-hidden={true}
             aria-label={undefined}
             className=
-                ms-Icon
                 ms-Button-icon
                 {
                   display: inline-block;

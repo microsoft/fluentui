@@ -251,6 +251,9 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-neutralDark;
   position: relative;
   top: 2px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
   &:hover {
     color: $ms-color-neutralDark;
     cursor: pointer;
@@ -308,6 +311,9 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-font-s-plus;
   color: $ms-color-neutralPrimary;
   text-align: center; // border-radius: 2px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
   &:hover {
     color: $ms-color-black;
     background-color: $ms-color-neutralTertiaryAlt;
@@ -336,6 +342,8 @@ $Calendar-dayPicker-margin: 10px;
   height: 30px;
   line-height: 30px;
   padding: 0 10px;
+  background-color: transparent;
+  border: none;
   position: absolute !important;
   @include ms-right(13px);
   &:hover {

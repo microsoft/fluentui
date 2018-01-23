@@ -56,7 +56,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
           ms-SearchBox-icon
           {
             display: inline-block;
@@ -97,6 +96,13 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         }
         &::-ms-clear {
           display: none;
+        }
+        &::placeholder {
+          color: #666666;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #666666;
         }
     disabled={undefined}
     id="SearchBox0"

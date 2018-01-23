@@ -33,7 +33,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     navigatedMonth: HTMLElement;
   };
 
-  private _selectMonthCallbacks: (() => void)[];
+  private _selectMonthCallbacks: (() => void) [];
 
   public constructor(props: ICalendarMonthProps) {
     super(props);
@@ -63,7 +63,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
         <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-            <span
+            <button
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
                 ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
               }) }
@@ -74,8 +74,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span>
-            <span
+            </button>
+            <button
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
                 ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
               }) }
@@ -86,7 +86,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span>
+            </button>
           </div>
         </div>
         <div className={ css('ms-DatePicker-header', styles.header) }>
@@ -120,7 +120,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               const isInBounds = (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
                 (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
-              return <span
+              return <button
                 role={ 'gridcell' }
                 className={
                   css('ms-DatePicker-monthOption', styles.monthOption,
@@ -138,7 +138,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 ref={ isNavigatedMonth ? 'navigatedMonth' : undefined }
               >
                 { month }
-              </span>;
+              </button>;
             }
             ) }
           </div>

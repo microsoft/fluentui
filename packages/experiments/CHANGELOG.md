@@ -1,6 +1,24 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 10 Jan 2018 11:23:36 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+
+## 5.14.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Add callbacks for onDataReduced and onDataGrown
+
+### Patches
+
+- Minor visual alignment for FolderCover text
+
+## 5.13.0
+Fri, 12 Jan 2018 20:03:21 GMT
+
+### Minor changes
+
+- Add demo of size 64 file type icons
 
 ## 5.12.0
 Wed, 10 Jan 2018 11:23:36 GMT

@@ -1313,6 +1313,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           this.setState({
             isOpen: false
           });
+        } else {
+          return;
         }
         break;
 
@@ -1515,7 +1517,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.allowFreeform) {
       this.focus(true);
     } else {
-       this._onComboBoxClick();
+      this._onComboBoxClick();
     }
   }
 

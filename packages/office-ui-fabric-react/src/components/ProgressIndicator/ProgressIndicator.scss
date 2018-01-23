@@ -55,8 +55,21 @@ $ProgressIndicatorTextHeight: 18px;
   transition: width .3s ease;
   width: 0;
 
+  &.indeterminate {
+    position: absolute;
+    min-width: 33%;
+    background: linear-gradient(to right, transparent 0%, $ms-color-themePrimary 50%, transparent 100%);
+    animation: indeterminateProgress 3s infinite;
+  }
+
   @include high-contrast {
     background-color: WindowText;
+  }
+
+  @include RTL {
+    &.indeterminate {
+      animation: indeterminateProgressRTL 3s infinite;
+    }
   }
 }
 
@@ -64,4 +77,22 @@ $ProgressIndicatorTextHeight: 18px;
   transition-property: width;
   transition-timing-function: linear;
   transition-duration: 150ms;
+}
+
+@keyframes indeterminateProgress {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes indeterminateProgressRTL {
+  0% {
+    right: -30%;
+  }
+  100% {
+    right: 100%;
+  }
 }
