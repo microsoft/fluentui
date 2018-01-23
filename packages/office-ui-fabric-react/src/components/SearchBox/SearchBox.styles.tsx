@@ -144,14 +144,11 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             display: 'none'
           },
           '::placeholder': {
-            color: palette.neutralSecondary,
+            color: semanticColors.inputPlaceholderText,
             opacity: 1
           },
           ':-ms-input-placeholder': {
-            color: palette.neutralSecondary
-          },
-          '::-ms-input-placeholder': {
-            color: palette.neutralSecondary
+            color: semanticColors.inputPlaceholderText
           }
         }
       },
