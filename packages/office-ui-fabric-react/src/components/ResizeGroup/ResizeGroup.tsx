@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {
+  BaseComponent,
   css,
-  BaseComponent
+  divProperties,
+  getNativeProps
 } from '../../Utilities';
 import { provideContext } from '@uifabric/utilities/lib/Context';
 import { IResizeGroupProps } from './ResizeGroup.types';
@@ -299,9 +301,10 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   public render() {
     const { onRenderData, className } = this.props;
     const { dataToMeasure, renderedData } = this.state;
+    const divProps = getNativeProps(this.props, divProperties, ['data']);
 
     return (
-      <div className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
+      <div {...divProps} className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>

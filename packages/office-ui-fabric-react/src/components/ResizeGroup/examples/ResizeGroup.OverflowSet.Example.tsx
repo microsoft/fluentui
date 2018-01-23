@@ -75,6 +75,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
     return (
       <div className={ short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
+          role='tabpanel'
+          aria-label='Resize Group with an Overflow Set'
           data={ dataToRender }
           onReduceData={ this._onReduceData }
           onGrowData={ onGrowDataEnabled ? this._onGrowData : undefined }
