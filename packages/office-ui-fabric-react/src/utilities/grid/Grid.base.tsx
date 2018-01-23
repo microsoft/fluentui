@@ -31,7 +31,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       setSize
     } = this.props;
 
-    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['data']);
+    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['data', 'onBlur']);
 
     const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
