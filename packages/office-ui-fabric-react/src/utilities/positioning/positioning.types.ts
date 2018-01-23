@@ -72,7 +72,7 @@ export interface IPositionedData {
    */
   elementPosition: IPosition;
   /**
-   * The finalized target edge that element is aligning to. For isntance RectangleEdge.bottom would mean
+   * The finalized target edge that element is aligning to. For instance RectangleEdge.bottom would mean
    * that the bottom edge of the target is being aligned to.
    */
   targetEdge: RectangleEdge;
