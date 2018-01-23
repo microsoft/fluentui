@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jan 2018 18:39:02 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jan 2018 11:22:12 GMT and should not be manually modified.
+
+## 5.41.2
+Tue, 23 Jan 2018 11:22:12 GMT
+
+### Patches
+
+- Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly
 
 ## 5.41.1
 Mon, 22 Jan 2018 18:39:02 GMT
