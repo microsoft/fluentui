@@ -30,7 +30,10 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 const styles: any = stylesImport;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_STYLE = { opacity: 0 };
+// Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
+// To help ensure that edge will respect the offscreen style opacity
+// filter needs to be added as an additional way to set opacity.
+const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 const BORDER_WIDTH: number = 1;
 const SLIDE_ANIMATIONS: { [key: number]: string; } = {
   [RectangleEdge.top]: 'slideUpIn20',
@@ -387,12 +390,13 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
-      } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
-        this._targetWindow = getWindow()!;
-        this._target = target;
-      } else {
+      } else if ((target as HTMLElement).getBoundingClientRect) {
         let targetElement: HTMLElement = target as HTMLElement;
         this._targetWindow = getWindow(targetElement)!;
+        this._target = target;
+        // HTMLImgElements can have x and y values. The check for it being a point must go last.
+      } else {
+        this._targetWindow = getWindow()!;
         this._target = target;
       }
     } else {

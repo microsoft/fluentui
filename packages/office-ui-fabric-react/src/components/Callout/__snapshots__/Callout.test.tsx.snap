@@ -8,6 +8,7 @@ exports[`Callout renders Callout correctly 1`] = `
     className="ms-Callout"
     style={
       Object {
+        "filter": "opacity(0)",
         "opacity": 0,
       }
     }
@@ -25,6 +26,7 @@ exports[`Callout renders Callout correctly 1`] = `
         Object {
           "backgroundColor": undefined,
           "maxHeight": 750,
+          "overflowY": "auto",
         }
       }
     >

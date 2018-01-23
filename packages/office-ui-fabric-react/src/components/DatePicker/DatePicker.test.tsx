@@ -14,6 +14,19 @@ describe('DatePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('should not open DatePicker when disabled, no label', () => {
+    let wrapper = mount(<DatePicker disabled />);
+    wrapper.find('i').simulate('click');
+
+    expect(wrapper.state('isDatePickerShown')).toBe(false);
+  });
+
+  it('should not open DatePicker when disabled, with label', () => {
+    let wrapper = mount(<DatePicker disabled label='label' />);
+    wrapper.find('i').simulate('click');
+    expect(wrapper.state('isDatePickerShown')).toBe(false);
+  });
+
   describe('when Calendar properties are not specified', () => {
     const datePicker = shallow(<DatePicker />);
     datePicker.setState({ isDatePickerShown: true });

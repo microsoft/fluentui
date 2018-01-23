@@ -90,6 +90,16 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   onGrowData?: (data: ICommandBarData) => ICommandBarData;
 
   /**
+   * Function callback invoked when data has been reduced.
+   */
+  onDataReduced?: (movedItem: ICommandBarItemProps) => void;
+
+  /**
+   * Function callback invoked when data has been grown.
+   */
+  onDataGrown?: (movedItem: ICommandBarItemProps) => void;
+
+  /**
    * Additional css class to apply to the command bar
    * @defaultvalue undefined
    */

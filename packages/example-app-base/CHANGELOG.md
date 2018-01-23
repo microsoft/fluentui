@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+
+## 5.2.1
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Patches
+
+- Updated theme override colors for MessageBar.
 
 ## 5.2.0
 Sat, 16 Dec 2017 05:07:22 GMT

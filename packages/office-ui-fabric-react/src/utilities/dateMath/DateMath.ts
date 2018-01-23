@@ -305,8 +305,8 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
   let dateWeekDay = date.getDay();
   let num = (date.getDay()) - (dayOfYear % TimeConstants.DaysInOneWeek);
 
-  let lastDayOfyear = new Date(date.getFullYear(), MonthOfYear.December, 31);
-  let daysInYear = getDayOfYear(lastDayOfyear) - 1;
+  let lastDayOfPrevYear = new Date(date.getFullYear() - 1, MonthOfYear.December, 31);
+  let daysInYear = getDayOfYear(lastDayOfPrevYear) - 1;
 
   let adjustedWeekDay = adjustWeekDay(firstDayOfWeek, dateWeekDay);
 
