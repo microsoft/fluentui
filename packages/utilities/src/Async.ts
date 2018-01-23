@@ -360,12 +360,16 @@ export class Async {
     }
 
     let invokeFunction = (time: number) => {
+      markExecuted(time);
+      lastResult = func.apply(this._parent, lastArgs);
+    };
+
+    let markExecuted = (time: number) => {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
         timeoutId = null;
       }
       lastExecuteTime = time;
-      lastResult = func.apply(this._parent, lastArgs);
     };
 
     let callback = (userCall?: boolean) => {
@@ -401,16 +405,14 @@ export class Async {
     };
 
     let cancel = (): void => {
-      if (timeoutId) {
-        this.clearTimeout(timeoutId);
-        timeoutId = null;
+      if (pending()) {
+        // Mark the debounced function as having executed
+        markExecuted(new Date().getTime());
       }
     };
 
     let flush = (): T => {
-      if (timeoutId) {
-        this.clearTimeout(timeoutId);
-        timeoutId = null;
+      if (pending()) {
         invokeFunction(new Date().getTime());
       }
 
