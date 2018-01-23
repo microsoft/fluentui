@@ -64,9 +64,19 @@ export interface IGridProps {
   theme?: ITheme;
 
   /**
- * Optional styles for the component.
- */
+   * Optional styles for the component.
+   */
   getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
+
+  /**
+   * The optional id of an label to be read for the benefit of screen readers.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * The optional label to be read for the benefit of screen readers.
+   */
+  ariaLabel?: string;
 }
 
 /**

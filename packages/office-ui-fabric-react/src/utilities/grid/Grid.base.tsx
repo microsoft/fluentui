@@ -26,7 +26,9 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       onRenderItem,
       positionInSet,
       setSize,
-      getStyles
+      getStyles,
+      ariaLabelledBy,
+      ariaLabel
     } = this.props;
 
     const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
@@ -41,6 +43,8 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
         className={ classNames.root }
+        aria-label={ !ariaLabelledBy && ariaLabel }
+        aria-labelledby={ ariaLabelledBy }
       >
         <tbody>
           {
