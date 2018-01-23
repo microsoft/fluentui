@@ -30,6 +30,7 @@ $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-
 
 $ms-choiceField-field-size: 20px;
 $ms-choiceField-image-size: 32px;
+$ms-choiceField-text-height: 32px;
 $ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
@@ -256,11 +257,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     .labelWrapper {
       $lineHeight: 15px;
-      $margin: 2px;
       display: block;
       position: relative;
-      margin: $margin 0;
-      height: $lineHeight * 2 + $margin;
+      margin: 4px 0 2px 0;
+      height: $ms-choiceField-text-height;
       line-height: $lineHeight;
       overflow: hidden;
       white-space: pre-wrap;
