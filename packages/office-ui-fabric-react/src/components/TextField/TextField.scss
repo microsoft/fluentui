@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import '../../common/semanticSlots';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -72,6 +73,12 @@ $field-error-color: $errorTextColor;
 
   &::-ms-clear {
     display: none;
+  }
+
+  ::placeholder,
+  :-ms-input-placeholder {
+    color: $inputPlaceholderTextColor;
+    opacity: 1;
   }
 }
 
