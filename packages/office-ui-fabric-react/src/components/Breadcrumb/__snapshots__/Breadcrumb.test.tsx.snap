@@ -183,7 +183,9 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-label={undefined}
               aria-labelledby={null}
               aria-owns={null}
+              aria-posinset={undefined}
               aria-pressed={undefined}
+              aria-setsize={undefined}
               className=
                   ms-Button
                   ms-Button--icon

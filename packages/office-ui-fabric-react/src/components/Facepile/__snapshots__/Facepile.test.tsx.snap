@@ -97,7 +97,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
         aria-describedby={null}
         aria-label={undefined}
         aria-labelledby={null}
+        aria-posinset={undefined}
         aria-pressed={undefined}
+        aria-setsize={undefined}
         className=
             ms-Button
             ms-Facepile-itemButton

@@ -149,7 +149,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         aria-hidden="true"
         aria-label={undefined}
         aria-labelledby={null}
+        aria-posinset={undefined}
         aria-pressed={false}
+        aria-setsize={undefined}
         checked={false}
         className=
             ms-Button
@@ -256,7 +258,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         aria-hidden="true"
         aria-label={undefined}
         aria-labelledby={null}
+        aria-posinset={undefined}
         aria-pressed={false}
+        aria-setsize={undefined}
         checked={false}
         className=
             ms-Button

@@ -5,7 +5,9 @@ exports[`Button renders ActionButton correctly 1`] = `
   aria-describedby={null}
   aria-label={undefined}
   aria-labelledby={null}
+  aria-posinset={undefined}
   aria-pressed={undefined}
+  aria-setsize={undefined}
   className=
       ms-Button
       ms-Button--action
@@ -110,7 +112,9 @@ exports[`Button renders CommandBarButton correctly 1`] = `
   aria-label={undefined}
   aria-labelledby={null}
   aria-owns={null}
+  aria-posinset={undefined}
   aria-pressed={undefined}
+  aria-setsize={undefined}
   className=
       ms-Button
       ms-Button--commandBar
@@ -258,7 +262,9 @@ exports[`Button renders CompoundButton correctly 1`] = `
   aria-describedby="id__10"
   aria-label={undefined}
   aria-labelledby={null}
+  aria-posinset={undefined}
   aria-pressed={undefined}
+  aria-setsize={undefined}
   className=
       ms-Button
       ms-Button--compound
@@ -387,7 +393,9 @@ exports[`Button renders DefaultButton correctly 1`] = `
   aria-describedby={null}
   aria-label={undefined}
   aria-labelledby={null}
+  aria-posinset={undefined}
   aria-pressed={undefined}
+  aria-setsize={undefined}
   className=
       ms-Button
       ms-Button--default
@@ -486,7 +494,9 @@ exports[`Button renders IconButton correctly 1`] = `
   aria-describedby={null}
   aria-label="Emoji"
   aria-labelledby={null}
+  aria-posinset={undefined}
   aria-pressed={undefined}
+  aria-setsize={undefined}
   className=
       ms-Button
       ms-Button--icon

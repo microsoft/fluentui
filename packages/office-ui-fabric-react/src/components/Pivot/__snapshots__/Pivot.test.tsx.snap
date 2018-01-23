@@ -20,8 +20,10 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-describedby={null}
         aria-label={undefined}
         aria-labelledby={null}
+        aria-posinset={undefined}
         aria-pressed={undefined}
         aria-selected={true}
+        aria-setsize={undefined}
         className=
             ms-Button
             ms-Button--action
@@ -115,8 +117,10 @@ exports[`Pivot renders Pivot correctly 1`] = `
         aria-describedby={null}
         aria-label={undefined}
         aria-labelledby={null}
+        aria-posinset={undefined}
         aria-pressed={undefined}
         aria-selected={false}
+        aria-setsize={undefined}
         className=
             ms-Button
             ms-Button--action
