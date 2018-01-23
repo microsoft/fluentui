@@ -126,7 +126,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       labelPosition,
       iconProps,
       incrementButtonIcon,
+      incrementButtonAriaLabel,
       decrementButtonIcon,
+      decrementButtonAriaLabel,
       title,
       ariaLabel,
       styles: customStyles,
@@ -201,6 +203,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
+              ariaLabel={ incrementButtonAriaLabel }
             />
             <IconButton
               styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
@@ -212,6 +215,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
+              ariaLabel={ decrementButtonAriaLabel }
             />
           </span>
         </div>
