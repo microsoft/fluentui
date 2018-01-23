@@ -138,6 +138,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * @defaultvalue false
   */
   showSixWeeksByDefault?: boolean;
+
+  /**
+   * The days to use in work week layout
+   */
+  workWeekDays?: DayOfWeek[];
 }
 
 export interface ICalendarStrings {

@@ -161,6 +161,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
                   minDate={ minDate }
                   maxDate={ maxDate }
+                  workWeekDays={ this.props.workWeekDays }
                   ref='dayPicker'
                 />
                 }
