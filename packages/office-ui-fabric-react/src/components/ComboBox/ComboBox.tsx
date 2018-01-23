@@ -1560,7 +1560,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   * dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
   */
   private _getAriaAutoCompleteValue(): string {
-    let autoComplete = !this.props.disabled && this.props.autoComplete;
+    let autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
     if (autoComplete && this.props.allowFreeform) {
       return 'inline';
     } else if (autoComplete && !this.props.allowFreeform) {
