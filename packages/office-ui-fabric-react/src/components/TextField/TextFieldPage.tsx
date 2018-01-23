@@ -16,6 +16,7 @@ import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Ex
 import { TextFieldPrefixExample } from './examples/TextField.Prefix.Example';
 import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndSuffix.Example';
 import { TextFieldStatus } from './TextField.checklist';
+import { TextFieldSpellCheckExample } from './examples/TextField.SpellCheck.Example';
 import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 import { TextFieldAutoCompleteExample } from './examples/TextField.AutoComplete.Example';
@@ -29,6 +30,7 @@ const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-reac
 const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
 const TextFieldPrefixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Prefix.Example.tsx') as string;
 const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldSpellCheckExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.SpellCheck.Example.tsx') as string;
 const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 const TextFieldAutoCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.AutoComplete.Example.tsx') as string;
@@ -104,6 +106,12 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
               code={ TextFieldIconExampleCode }
             >
               <TextFieldIconExample />
+            </ExampleCard>
+            <ExampleCard
+              title='TextField with a spellCheck enabled'
+              code={ TextFieldSpellCheckExampleCode }
+            >
+              <TextFieldSpellCheckExample />
             </ExampleCard>
             <ExampleCard
               title='TextField with custom Label'
