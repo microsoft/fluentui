@@ -403,12 +403,14 @@ export class Async {
     let cancel = (): void => {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
+        timeoutId = null;
       }
     };
 
     let flush = (): T => {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
+        timeoutId = null;
         invokeFunction(new Date().getTime());
       }
 
