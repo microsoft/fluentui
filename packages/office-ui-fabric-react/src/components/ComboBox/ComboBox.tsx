@@ -1548,7 +1548,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _getAriaActiveDescentValue(): string | null {
     let descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
-    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex != -1) {
+    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
     }
     return descendantText;
