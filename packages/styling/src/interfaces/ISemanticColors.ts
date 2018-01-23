@@ -169,6 +169,11 @@ export interface ISemanticColors {
    */
   inputFocusBorderAlt: string;
 
+  /**
+   * The color of placeholder text.
+   */
+  inputPlaceholderText: string;
+
   //// Buttons
 
   /**
