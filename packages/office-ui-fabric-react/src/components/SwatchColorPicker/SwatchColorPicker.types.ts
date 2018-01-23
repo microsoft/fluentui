@@ -66,11 +66,15 @@ export interface ISwatchColorPickerProps {
 
   /**
    * The optional position this grid is in the parent set (index in a parent menu, for example)
+   * Keeping for backward compatability purposes, but we should only use native aria attributes
+   * like aria-posinset instead in our components
    */
   positionInSet?: number;
 
   /**
    * The optional size of the parent set (size of parent menu, for example)
+   * Keeping for backward compatability purposes, but we should only use native aria attributes
+   * like aria-setsize instead in our components
    */
   setSize?: number;
 
@@ -101,11 +105,6 @@ export interface ISwatchColorPickerProps {
   * Optional styles for the component.
   */
   getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
-
-  /**
-   * Accessible label text.
-   */
-  ariaLabel?: string;
 }
 
 /**

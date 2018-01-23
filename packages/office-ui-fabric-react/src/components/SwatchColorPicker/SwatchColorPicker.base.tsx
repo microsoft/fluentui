@@ -5,7 +5,9 @@ import {
   findIndex,
   getId,
   customizable,
-  classNamesFunction
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties
 } from '../../Utilities';
 import {
   ISwatchColorPicker,
@@ -75,8 +77,9 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       doNotContainWithinFocusZone,
       disabled,
       getStyles,
-      ariaLabel,
     } = this.props;
+
+    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['data']);
 
     const classNames = getClassNames(
       getStyles!,
@@ -91,11 +94,12 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
     return (
       <Grid
+        positionInSet={ positionInSet && positionInSet }
+        setSize={ setSize && setSize }
+        {...htmlProps}
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }
         columnCount={ columnCount }
         onRenderItem={ this._renderOption }
-        positionInSet={ positionInSet && positionInSet }
-        setSize={ setSize && setSize }
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
         doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
@@ -106,7 +110,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
           tableCell: classNames.tableCell,
           focusedContainer: classNames.focusedContainer
         }) }
-        ariaLabel={ ariaLabel }
       />);
   }
 
