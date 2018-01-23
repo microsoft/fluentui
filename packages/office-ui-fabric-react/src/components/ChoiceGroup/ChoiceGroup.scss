@@ -29,6 +29,7 @@ $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-
 // ChoiceField styles
 
 $ms-choiceField-field-size: 20px;
+$ms-choiceField-image-size: 32px;
 $ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
@@ -230,6 +231,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     .innerField {
       position: relative;
       padding: 0 28px;
+      height: $ms-choiceField-image-size;
+      width: $ms-choiceField-image-size;
 
       .imageWrapper {
         padding-bottom: 2px;
