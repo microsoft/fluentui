@@ -364,6 +364,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
+      getRowAriaDescribedBy,
       checkButtonAriaLabel
     } = this.props;
     let selection = this._selection;
@@ -396,6 +397,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport: viewport,
       checkboxVisibility: checkboxVisibility,
       getRowAriaLabel: getRowAriaLabel,
+      getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel
     }, this._onRenderRow);
   }

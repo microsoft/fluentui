@@ -156,6 +156,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
    */
   ariaLabelForSelectionColumn?: string;
 
+  /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
+  getRowAriaDescribedBy?: (item: any) => string;
+
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
