@@ -28,6 +28,7 @@ export interface IBasePickerState {
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
   isResultsFooterVisible?: boolean;
+  isFocused?: boolean;
 }
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
@@ -188,13 +189,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
               { this.canAddItems() && (<BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
@@ -279,6 +281,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } else if (!this.canAddItems()) {
       (items[items.length - 1] as IPickerItemProps<T>).selected = true;
       this.resetFocus(items.length - 1);
+      this.onInputBlur();
     } else {
       this.input.focus();
     }
@@ -419,17 +422,30 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.setState({
         isMostRecentlyUsedVisible: true,
         moreSuggestionsAvailable: false,
-        suggestionsVisible: true
+        suggestionsVisible: true,
+        isFocused: true
       });
     } else if (this.input && this.input.value) {
       this.setState({
         isMostRecentlyUsedVisible: false,
-        suggestionsVisible: true
+        suggestionsVisible: true,
+        isFocused: true
+      });
+    } else {
+      this.setState({
+        isFocused: true
       });
     }
     if (this.props.inputProps && this.props.inputProps.onFocus) {
       this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
+  }
+
+  @autobind
+  protected onInputBlur() {
+    this.setState({
+      isFocused: false
+    });
   }
 
   @autobind
@@ -688,12 +704,13 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             selection={ this.selection }
             selectionMode={ SelectionMode.multiple }
           >
-            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
               <BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
