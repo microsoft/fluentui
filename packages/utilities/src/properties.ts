@@ -241,7 +241,7 @@ export const divProperties = htmlElementProperties.concat(['align', 'noWrap']);
  *
  * @public
  */
-export const inputProperties = buttonProperties;
+export const inputProperties = buttonProperties.concat(['spellcheck']);
 
 /**
  * An array of TEXTAREA tag properties and events.
