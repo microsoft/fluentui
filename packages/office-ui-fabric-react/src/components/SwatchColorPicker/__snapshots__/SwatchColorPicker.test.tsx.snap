@@ -53,8 +53,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="green"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -237,8 +239,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="orange"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -421,8 +425,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="blue"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -605,8 +611,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="red"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -793,8 +801,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="green"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -977,8 +987,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="orange"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -1161,8 +1173,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="blue"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -1345,8 +1359,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="red"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -1533,8 +1549,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="black"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -1717,8 +1735,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="grey"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -1901,8 +1921,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="purple"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
@@ -2085,8 +2107,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             aria-describedby={null}
             aria-label="yellow"
             aria-labelledby={null}
+            aria-posinset={undefined}
             aria-pressed={undefined}
             aria-selected={false}
+            aria-setsize={undefined}
             className=
                 ms-Button
                 ms-Button--action
