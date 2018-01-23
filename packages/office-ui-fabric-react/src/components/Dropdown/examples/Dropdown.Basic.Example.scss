@@ -1,8 +1,8 @@
 :global {
-  .DropdownBasicExample {
+  .docs-DropdownExample {
     max-width: 300px;
-  }
-  .Dropdown-example {
-    margin-bottom: 10px;
+    .ms-Dropdown-container {
+      margin-bottom: 10px;
+    }
   }
 }

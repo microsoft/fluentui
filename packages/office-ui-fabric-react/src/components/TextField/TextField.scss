@@ -57,6 +57,12 @@ $field-error-color: $errorTextColor;
     border-color: $field-border-focus-color;
   }
 
+  &.fieldGroupIsFocused {
+    &.invalid {
+      border-color: $field-border-error-color;
+    }
+  }
+
   .rootIsDisabled & {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;

@@ -22,9 +22,8 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     let { selectedItem, selectedItems } = this.state;
 
     return (
-      <div className='DropdownBasicExample'>
+      <div className='docs-DropdownExample'>
         <Dropdown
-          className='Dropdown-example'
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
           id='Basicdrop1'
@@ -55,7 +54,6 @@ export class DropdownBasicExample extends BaseComponent<{}, {
           onClick={ this._onSetFocusButtonClicked }
         />
         <Dropdown
-          className='Dropdown-example'
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
           options={
@@ -75,7 +73,6 @@ export class DropdownBasicExample extends BaseComponent<{}, {
         />
 
         <Dropdown
-          className='Dropdown-example'
           label='Controlled example:'
           selectedKey={ (selectedItem ? selectedItem.key : undefined) }
           onChanged={ this.changeState }
