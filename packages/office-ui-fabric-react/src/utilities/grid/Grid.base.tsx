@@ -26,12 +26,12 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       items,
       columnCount,
       onRenderItem,
-      getStyles,
       positionInSet,
-      setSize
+      setSize,
+      getStyles
     } = this.props;
 
-    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['data', 'onBlur']);
+    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['onBlur, aria-posinset, aria-setsize']);
 
     const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
@@ -40,9 +40,9 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
 
     let content = (
       <table
+        {...htmlProps}
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
-        {...htmlProps}
         id={ this._id }
         role={ 'grid' }
         className={ classNames.root }

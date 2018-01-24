@@ -79,7 +79,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       getStyles,
     } = this.props;
 
-    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['data']);
+    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['aria-posinset, aria-setsize']);
 
     const classNames = getClassNames(
       getStyles!,
@@ -94,12 +94,12 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
     return (
       <Grid
-        positionInSet={ positionInSet && positionInSet }
-        setSize={ setSize && setSize }
         {...htmlProps}
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }
         columnCount={ columnCount }
         onRenderItem={ this._renderOption }
+        positionInSet={ positionInSet && positionInSet }
+        setSize={ setSize && setSize }
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
         doNotContainWithinFocusZone={ doNotContainWithinFocusZone }
         onBlur={ this._onSwatchColorPickerBlur }
