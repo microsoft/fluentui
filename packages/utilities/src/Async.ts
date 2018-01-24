@@ -359,17 +359,17 @@ export class Async {
       maxWait = options.maxWait;
     }
 
-    let invokeFunction = (time: number) => {
-      markExecuted(time);
-      lastResult = func.apply(this._parent, lastArgs);
-    };
-
     let markExecuted = (time: number) => {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
         timeoutId = null;
       }
       lastExecuteTime = time;
+    };
+
+    let invokeFunction = (time: number) => {
+      markExecuted(time);
+      lastResult = func.apply(this._parent, lastArgs);
     };
 
     let callback = (userCall?: boolean) => {
@@ -404,6 +404,10 @@ export class Async {
       return lastResult;
     };
 
+    let pending = (): boolean => {
+      return !!timeoutId;
+    };
+
     let cancel = (): void => {
       if (pending()) {
         // Mark the debounced function as having executed
@@ -417,10 +421,6 @@ export class Async {
       }
 
       return lastResult;
-    };
-
-    let pending = (): boolean => {
-      return !!timeoutId;
     };
 
     // tslint:disable-next-line:no-any
