@@ -60,8 +60,8 @@ describe('Grid', () => {
         getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
-        aria-posinset={ 1 }
-        aria-setsize={ 2 }
+        positionInSet={ 1 }
+        setSize={ 2 }
       />
     );
     expect(wrapper.find('table[role="grid"]').length).toEqual(1);
