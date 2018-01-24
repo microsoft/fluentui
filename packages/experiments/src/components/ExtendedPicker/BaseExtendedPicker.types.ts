@@ -19,6 +19,11 @@ export interface IBaseExtendedPickerProps<T> {
   componentRef?: (component?: IBaseExtendedPicker<T>) => void;
 
   /**
+   * Header/title element for the picker
+   */
+  headerComponent?: JSX.Element;
+
+  /**
    * Initial items that have already been selected and should appear in the people picker.
    */
   defaultSelectedItems?: T[];
