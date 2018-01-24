@@ -79,8 +79,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       getStyles,
     } = this.props;
 
-    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['aria-posinset, aria-setsize']);
-
     const classNames = getClassNames(
       getStyles!,
       {
@@ -94,7 +92,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
     return (
       <Grid
-        {...htmlProps}
+        {...this.props}
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }
         columnCount={ columnCount }
         onRenderItem={ this._renderOption }
