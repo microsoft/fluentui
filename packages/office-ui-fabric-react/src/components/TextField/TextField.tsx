@@ -3,6 +3,7 @@ import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
+  autobind,
   DelayedRender,
   BaseComponent,
   getId,
@@ -27,7 +28,16 @@ export interface ITextFieldState {
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
   errorMessage?: string;
+
+  /** The index into the rendered value of the first unfilled format character */
+  maskCursorPosition?: number;
 }
+
+const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
+  '9': /[0-9]/,
+  'a': /[a-zA-Z]/,
+  '*': /[a-zA-Z0-9]/
+};
 
 export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
@@ -101,6 +111,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     if (this.props.validateOnLoad) {
       this._validate(this.state.value);
+    }
+  }
+
+  public componentDidUpdate() {
+    if (this.state.maskCursorPosition) {
+      this.setSelectionRange(this.state.maskCursorPosition, this.state.maskCursorPosition);
+    } else {
+      this._extractValueFromMask(this._textElement.value, this._textElement);
     }
   }
 
@@ -274,6 +292,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     if (this.props.validateOnFocusIn) {
       this._validate(this.state.value);
     }
+
+    if (this.state.maskCursorPosition) {
+      this.setSelectionRange(this.state.maskCursorPosition, this.state.maskCursorPosition);
+    } else {
+      this._extractValueFromMask(this._textElement.value, this._textElement);
+    }
   }
 
   private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -365,6 +389,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    let {
+      mask
+    } = this.props;
     let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
@@ -373,9 +400,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         id={ this._id }
         { ...inputProps }
         ref={ this._resolveRef('_textElement') }
-        value={ this.state.value }
+        value={ this._getMaskValue() }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
+        onKeyDown={ this._onKeyDown }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
@@ -386,9 +414,106 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     );
   }
 
+  private _getMaskValue(): string | undefined {
+    // TODO: Add more comments to this
+    let {
+      mask,
+      maskChar
+    } = this.props;
+
+    let { value } = this.state;
+
+    if (mask === undefined) {
+      return value;
+    }
+
+    let outputMask = '';
+    let valueIndex = 0;
+
+    for (let i = 0; i < mask.length; i++) {
+      let c = mask.charAt(i);
+      if (c == '\\') {
+        // Escape next char
+        if (++i < mask.length) {
+          outputMask += mask.charAt(i);
+        }
+      } else {
+        // Search for default format char
+        const format = DEFAULT_MASK_FORMAT_CHARS[c];
+        // Check if format exists
+        if (format) {
+          // Check for value char to correspond to mask character
+          // Check if value character satisfies format
+          if (value && valueIndex < value.length && format.test(value.charAt(valueIndex))) {
+            outputMask += value.charAt(valueIndex++);
+          } else {
+            // Push maskChar or just return mask as-is
+            if (maskChar) {
+              outputMask += maskChar;
+            } else {
+              return outputMask;
+            }
+          }
+        } else {
+          // Otherwise, add non-format mask character
+          outputMask += c;
+        }
+      }
+    }
+
+    return outputMask;
+  }
+
+  private _extractValueFromMask(maskedValue: string, element: HTMLInputElement | HTMLTextAreaElement): string {
+    let {
+      mask,
+      maskChar
+    } = this.props;
+
+    if (!mask) {
+      return maskedValue;
+    }
+    let value = '';
+
+    // Find the char difference between the mask and the value
+    let valueIndex = 0;
+    let maskIndex = 0;
+    let escapeNext = false;
+    let skippedChars = 0;
+    while (valueIndex < maskedValue.length && maskIndex < mask.length) {
+      if (mask.charAt(maskIndex) == '\\') {
+        escapeNext = true;
+        maskIndex++;
+        continue;
+      } else {
+        if (!escapeNext && DEFAULT_MASK_FORMAT_CHARS[mask.charAt(maskIndex)]) {
+          let valueChar = maskedValue.charAt(valueIndex);
+          if (valueChar == maskChar) {
+            this.setState({ maskCursorPosition: valueIndex - skippedChars });
+            return value;
+          } else {
+            value += valueChar;
+          }
+        } else {
+          escapeNext = false;
+          while (
+            valueIndex < maskedValue.length &&
+            maskedValue.charAt(valueIndex) != mask.charAt(maskIndex)) {
+            skippedChars++;
+            valueIndex++;
+          }
+        }
+      }
+      valueIndex++;
+      maskIndex++;
+    }
+    this.setState({ maskCursorPosition: valueIndex });
+    return value;
+  }
+
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
-    const value: string = element.value;
+    let value: string = this._extractValueFromMask(element.value, element);
 
     // Avoid doing unnecessary work when the value has not changed.
     if (value === this._latestValue) {
@@ -415,6 +540,22 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     const onBeforeChange = this.props.onBeforeChange as (newValue: any) => void;
     onBeforeChange(value);
+  }
+
+  @autobind
+  private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    const key = event.keyCode || event.charCode;
+
+    // Check for backspace
+    if (key == 8) {
+      if (this.props.mask && this.state.maskCursorPosition && this.state.value) {
+        if ((event.target as HTMLInputElement).selectionStart >= this.state.maskCursorPosition) {
+          this.setState({
+            value: this.state.value.slice(0, this.state.value.length - 1)
+          })
+        }
+      }
+    }
   }
 
   private _validate(value: string | undefined): void {

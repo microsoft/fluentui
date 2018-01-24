@@ -7,6 +7,15 @@ export class TextFieldBasicExample extends React.Component<any, any> {
     return (
       <div className='docs-TextFieldExample'>
         <TextField
+          label='Input Masking'
+          mask='M\\ask: aaaa'
+        />
+        <TextField
+          label='Input Masking'
+          mask='Phone Number: (999) 999 - 9999'
+          maskChar='_'
+        />
+        <TextField
           label='Standard'
         />
         <TextField
