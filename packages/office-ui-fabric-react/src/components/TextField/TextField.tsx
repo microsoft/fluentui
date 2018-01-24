@@ -87,7 +87,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
     this._isDescriptionAvailable = false;
-    this._isControlled = props.value === undefined || typeof props.value !== 'string';
+    this._isControlled = typeof props.value !== 'string';
   }
 
   /**
