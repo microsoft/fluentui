@@ -1561,7 +1561,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   */
   private _getAriaAutoCompleteValue(): string {
     let autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
-    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none'
+    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
   }
 
   /**
@@ -1573,13 +1573,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * 4. Else empty string
    */
   private _getTitle(): string {
-    let title = "";
+    let title = '';
     if (this.props.title) {
       title = this.props.title;
     } else if (this.props.label) {
       title = this.props.label;
     } else if (this.props.ariaLabel) {
-      title = this.props.ariaLabel
+      title = this.props.ariaLabel;
     }
     return title;
   }
