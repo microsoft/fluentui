@@ -40,7 +40,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             aria-hidden={true}
             aria-label={undefined}
             className=
-                ms-Icon
                 ms-DatePicker-event--without-label
                 {
                   display: inline-block;

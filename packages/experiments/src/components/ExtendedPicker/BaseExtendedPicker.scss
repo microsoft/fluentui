@@ -22,9 +22,7 @@
   padding: 0 6px 0px;
   margin: 1px;
 
-  :global(.ms-BasePicker-input) {
-    &::-ms-clear {
-        display: none;
-    }
+  &::-ms-clear {
+    display: none;
   }
 }

@@ -11,7 +11,7 @@ import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { SuggestionsController } from './Suggestions/SuggestionsController';
+import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.types';
@@ -23,6 +23,7 @@ export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
+  isFocused?: boolean;
   isSearching?: boolean;
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
@@ -57,6 +58,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
+      isFocused: false,
       isSearching: false
     };
   }
@@ -118,13 +120,23 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  public dismissSuggestions() {
-    // Select the first suggestion if one is available when user leaves.
+  public dismissSuggestions(ev?: any) {
     let selectItemFunction = () => {
-      if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
-        this.addItemByIndex(0);
+      if (this.props.onDismiss) {
+        this.props.onDismiss(
+          ev,
+          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined
+        );
+      }
+
+      if (!ev || (ev && !ev.defaultPrevented)) {
+        // Select the first suggestion if one is available when user leaves.
+        if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+          this.addItemByIndex(0);
+        }
       }
     };
+
     if (this.currentPromise) {
       this.currentPromise.then(() => selectItemFunction());
     } else {
@@ -178,18 +190,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
               { this.canAddItems() && (<BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
@@ -403,6 +416,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+    this.setState({ isFocused: true });
     this.selection.setAllSelected(false);
     if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
@@ -420,6 +434,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.props.inputProps && this.props.inputProps.onFocus) {
       this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
+  }
+
+  @autobind
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+    this.setState({ isFocused: false });
   }
 
   @autobind
@@ -624,7 +643,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
-  */
+   */
   private _updateSelectedItems(items: T[], focusIndex?: number) {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
@@ -643,7 +662,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   private _onValidateInput() {
     if (this.props.onValidateInput && (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
-      let itemToConvert = (this.props.createGenericItem as any)(this.input.value, (this.props.onValidateInput as any)(this.input.value));
+      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
@@ -678,17 +697,18 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             selection={ this.selection }
             selectionMode={ SelectionMode.multiple }
           >
-            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
               <BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'

@@ -36,8 +36,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   public constructor(props: ISearchBoxProps) {
     super(props);
 
+    this._latestValue = props.value || '';
+
     this.state = {
-      value: props.value || '',
+      value: this._latestValue,
       hasFocus: false,
       id: getId('SearchBox')
     };

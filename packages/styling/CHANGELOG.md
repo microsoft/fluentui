@@ -1,6 +1,28 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jan 2018 11:23:26 GMT and should not be manually modified.
+
+## 5.16.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- New slot for inputPlaceholderText color.
+
+## 5.15.3
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Patches
+
+- updated divider color to neutralTertiaryAlt
+- Theming: fix listText semantic slot
+
+## 5.15.2
+Fri, 19 Jan 2018 11:14:02 GMT
+
+### Patches
+
+- added semantic slots for smallInputBorder and smallInputBorderHover
 
 ## 5.15.1
 Thu, 28 Dec 2017 11:23:50 GMT

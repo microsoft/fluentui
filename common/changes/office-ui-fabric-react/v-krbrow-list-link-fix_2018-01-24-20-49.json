@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add unmount check in suggestion promise",
+      "comment": "Fixed broken links on documentation pages",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lingge@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }

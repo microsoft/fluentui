@@ -10,7 +10,7 @@ const DOCSET_FOLDER = 'docset';
 const LIST_ITEM = 'listitem';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
-export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 96;
+export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 64 | 96;
 export type ImageFileType = 'svg' | 'png';
 
 export interface IFileTypeIconOptions {
@@ -105,24 +105,36 @@ function _getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFile
   let devicePixelRatio: number = window.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
-  // SVGs scale well, so you can generally use the default image.
-  // 1.5x is a special case where SVGs need a different image.
-  if (imageFileType === 'svg' && 1 < devicePixelRatio && devicePixelRatio <= 1.5) {
-    // Currently missing 1.5x SVGs at sizes 20 and 40, snap to 1x for now
-    if (size !== 20 && size !== 40) {
-      devicePixelRatioSuffix = '_1.5x';
+  if (size !== 64) {
+    // SVGs scale well, so you can generally use the default image.
+    // 1.5x is a special case where SVGs need a different image.
+    if (imageFileType === 'svg' && 1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+      // Currently missing 1.5x SVGs at sizes 20 and 40, snap to 1x for now
+      if (size !== 20 && size !== 40) {
+        devicePixelRatioSuffix = '_1.5x';
+      }
+    } else if (imageFileType === 'png') {
+      // To look good, PNGs should use a different image for higher device pixel ratios
+      if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+        // Currently missing 1.5x icons for size 20, snap to 2x for now
+        devicePixelRatioSuffix = (size === 20) ? '_2x' : '_1.5x';
+      } else if (1.5 < devicePixelRatio && devicePixelRatio <= 2) {
+        devicePixelRatioSuffix = '_2x';
+      } else if (2 < devicePixelRatio && devicePixelRatio <= 3) {
+        devicePixelRatioSuffix = '_3x';
+      } else if (3 < devicePixelRatio) {
+        devicePixelRatioSuffix = '_4x';
+      }
     }
-  } else if (imageFileType === 'png') {
-    // To look good, PNGs should use a different image for higher device pixel ratios
-    if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
-      // Currently missing 1.5x icons for size 20, snap to 2x for now
-      devicePixelRatioSuffix = (size === 20) ? '_2x' : '_1.5x';
-    } else if (1.5 < devicePixelRatio && devicePixelRatio <= 2) {
-      devicePixelRatioSuffix = '_2x';
-    } else if (2 < devicePixelRatio && devicePixelRatio <= 3) {
-      devicePixelRatioSuffix = '_3x';
-    } else if (3 < devicePixelRatio) {
-      devicePixelRatioSuffix = '_4x';
+  } else {
+    // Currently we have a more limited set of image files for size 64.
+    // For SVGs, we only have the default 1x. For PNGs, we have 1x, 1.5x, and 2x.
+    if (imageFileType === 'png') {
+      if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
+        devicePixelRatioSuffix = '_1.5x';
+      } else if (1.5 < devicePixelRatio) {
+        devicePixelRatioSuffix = '_2x';
+      }
     }
   }
 
