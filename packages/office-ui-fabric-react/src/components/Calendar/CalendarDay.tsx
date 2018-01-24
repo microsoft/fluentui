@@ -123,7 +123,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       <div
         className={ css('ms-DatePicker-dayPicker',
           styles.dayPicker,
-          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && (getRTL() ? styles.showWeekNumbersRTL : styles.showWeekNumbers)
         ) }
         id={ dayPickerId }
       >

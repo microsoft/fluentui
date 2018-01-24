@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.42.0",
+      "tag": "office-ui-fabric-react_v5.42.0",
+      "date": "Wed, 24 Jan 2018 11:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "09c29d1e2c1d6fc541fb13eacf535fca82f868ba",
+            "comment": "BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f2dcf91ae4e484ce483b52c35b012c90d28fd89e",
+            "comment": "Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "b31132497466cd88b1887badfef8c05833e35784",
+            "comment": "TextField and SearchBox: Specified placeholder text color to be more consistent across browsers."
+          },
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "e3f2856f94d3a7dd297c05c10ccc49181536dcb4",
+            "comment": "Prevent default to avoid setting focus on SplitButton menu button"
+          },
+          {
+            "author": "Srikanth Reddy Kandula <srikanthreddy.iitp@gmail.com>",
+            "commit": "ee2299a2ea7f5410343a6d50d94fd542c687fc26",
+            "comment": "Fix CalendarDay RTL view"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "5270872fcdfcbe3dfb5c3592d1bd895bf283414e",
+            "comment": "ResizeGroup: Add the ability for ResizeGroup to get divProps"
+          },
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "2a57fb1c2476d8677c4cee76c3ff23958c9ae5bd",
+            "comment": "Enhance Panel component props to allow all of FocusTrapZone props overrides."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.15.3 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.41.2",
       "tag": "office-ui-fabric-react_v5.41.2",
       "date": "Tue, 23 Jan 2018 11:22:12 GMT",

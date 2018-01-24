@@ -23,6 +23,7 @@ export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
+  isFocused?: boolean;
   isSearching?: boolean;
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
@@ -58,6 +59,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
+      isFocused: false,
       isSearching: false
     };
   }
@@ -416,24 +418,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+    this.setState({ isFocused: true });
     this.selection.setAllSelected(false);
     if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
       this.setState({
         isMostRecentlyUsedVisible: true,
         moreSuggestionsAvailable: false,
-        suggestionsVisible: true,
-        isFocused: true
+        suggestionsVisible: true
       });
     } else if (this.input && this.input.value) {
       this.setState({
         isMostRecentlyUsedVisible: false,
-        suggestionsVisible: true,
-        isFocused: true
-      });
-    } else {
-      this.setState({
-        isFocused: true
+        suggestionsVisible: true
       });
     }
     if (this.props.inputProps && this.props.inputProps.onFocus) {
@@ -442,10 +439,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputBlur() {
-    this.setState({
-      isFocused: false
-    });
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+    this.setState({ isFocused: false });
   }
 
   @autobind

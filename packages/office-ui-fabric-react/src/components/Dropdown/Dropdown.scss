@@ -54,11 +54,17 @@ $DropDown-item-height: 32px;
     .title {
       border-color: $ms-color-neutralDark;
     }
+    .titleIsError {
+      border-color: $ms-color-error;
+    }
   }
 
   &:active {
     .title {
       border-color: $ms-color-themeDark;
+    }
+    .titleIsError {
+      border-color: $ms-color-error;
     }
   }
 
@@ -66,6 +72,13 @@ $DropDown-item-height: 32px;
     .title {
       border-color: $ms-color-themePrimary;
     }
+    .titleIsError {
+      border-color: $ms-color-error;
+    }
+  }
+
+  .titleIsError {
+    border-color: $ms-color-error;
   }
 
   :global(.ms-Label) {
@@ -135,9 +148,6 @@ $DropDown-item-height: 32px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  &.titleIsError {
-    border-color: $ms-color-error;
-  }
   &.titleIsPlaceHolder {
     color: $ms-color-neutralSecondary;
   }
@@ -160,10 +170,9 @@ $DropDown-item-height: 32px;
 }
 
 .errorMessage{
-    color: $ms-color-error;
-  &::before {
-    content: '* ';
-  }
+  color: $ms-color-error;
+  @include ms-font-s;
+  padding-top: 5px;
 }
 
 .items {
