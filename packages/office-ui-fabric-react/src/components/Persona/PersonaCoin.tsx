@@ -5,7 +5,8 @@ import {
   divProperties,
   getInitials,
   getNativeProps,
-  getRTL
+  getRTL,
+  IRenderFunction
 } from '../../Utilities';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
 import { PersonaPresence } from './PersonaPresence';
@@ -114,17 +115,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                 </div>
               )
             }
-            <Image
-              className={ css('ms-Persona-image', styles.image) }
-              imageFit={ ImageFit.cover }
-              src={ imageUrl }
-              width={ coinSize || SIZE_TO_PIXELS[size] }
-              height={ coinSize || SIZE_TO_PIXELS[size] }
-              alt={ imageAlt }
-              shouldFadeIn={ imageShouldFadeIn }
-              shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange }
-            />
+            { this._onRenderCoin( this.props, size ) }
             <PersonaPresence { ...this.props } />
           </div>
         ) :
@@ -140,6 +131,43 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         }
         { this.props.children }
       </div>
+    );
+  }
+
+  @autobind
+  private _onRenderCoin(props: IPersonaProps, size: number): JSX.Element {
+    if (props.onRenderCoin) {
+      return(
+        <div className='wrapper-in-personacoin'>
+          { props.onRenderCoin(this.props) }
+        </div>
+      );
+    }
+
+    let {
+      coinProps,
+      coinSize,
+      imageUrl,
+      imageAlt,
+      initialsColor,
+      primaryText,
+      imageShouldFadeIn,
+      onRenderInitials = this._onRenderInitials,
+      imageShouldStartVisible
+    } = this.props;
+
+    return(
+      <Image
+        className={ css('ms-Persona-image', styles.image) }
+        imageFit={ ImageFit.cover }
+        src={ imageUrl }
+        width={ coinSize || SIZE_TO_PIXELS[size] }
+        height={ coinSize || SIZE_TO_PIXELS[size] }
+        alt={ imageAlt }
+        shouldFadeIn={ imageShouldFadeIn }
+        shouldStartVisible={ imageShouldStartVisible }
+        onLoadingStateChange={ this._onPhotoLoadingStateChange }
+      />
     );
   }
 

@@ -32,6 +32,7 @@ export class PersonaCustomRenderExample extends React.Component {
           size={ PersonaSize.size72 }
           presence={ PersonaPresence.offline }
           onRenderSecondaryText={ this._onRenderSecondaryText }
+          onRenderCoin={ this._onRenderCoin }
         />
       </div>
     );
@@ -43,6 +44,15 @@ export class PersonaCustomRenderExample extends React.Component {
       <div>
         <Icon iconName={ 'Suitcase' } className={ 'ms-JobIconExample' } />
         { props.secondaryText }
+      </div>
+    );
+  }
+
+  @autobind
+  private _onRenderCoin(props: IPersonaProps): JSX.Element {
+    return (
+      <div className='coming-from-example'>
+        <img src={ props.imageUrl } alt={ props.imageAlt } />
       </div>
     );
   }
