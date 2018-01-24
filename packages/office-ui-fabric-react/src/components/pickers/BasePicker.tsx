@@ -230,7 +230,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         gapSpace={ 5 }
         target={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        directionalHintForRTL={ DirectionalHint.bottomRightEdge }
       >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
