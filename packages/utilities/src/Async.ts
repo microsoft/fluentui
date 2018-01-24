@@ -359,12 +359,16 @@ export class Async {
       maxWait = options.maxWait;
     }
 
-    let invokeFunction = (time: number) => {
+    let markExecuted = (time: number) => {
       if (timeoutId) {
         this.clearTimeout(timeoutId);
         timeoutId = null;
       }
       lastExecuteTime = time;
+    };
+
+    let invokeFunction = (time: number) => {
+      markExecuted(time);
       lastResult = func.apply(this._parent, lastArgs);
     };
 
@@ -400,23 +404,23 @@ export class Async {
       return lastResult;
     };
 
+    let pending = (): boolean => {
+      return !!timeoutId;
+    };
+
     let cancel = (): void => {
-      if (timeoutId) {
-        this.clearTimeout(timeoutId);
+      if (pending()) {
+        // Mark the debounced function as having executed
+        markExecuted(new Date().getTime());
       }
     };
 
     let flush = (): T => {
-      if (timeoutId) {
-        this.clearTimeout(timeoutId);
+      if (pending()) {
         invokeFunction(new Date().getTime());
       }
 
       return lastResult;
-    };
-
-    let pending = (): boolean => {
-      return !!timeoutId;
     };
 
     // tslint:disable-next-line:no-any
