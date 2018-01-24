@@ -10,6 +10,14 @@ export class TextFieldBasicExample extends React.Component<any, any> {
           label='Standard'
         />
         <TextField
+          label='Standard with value attribute'
+          value="With a set value. (Can't be edited)" // tslint:disable-line quotemark
+        />
+        <TextField
+          label='Standard with defaultValue attribute'
+          defaultValue='With a set defaultValue.'
+        />
+        <TextField
           label='Disabled'
           disabled={ true }
         />
