@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 23 Jan 2018 11:22:12 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jan 2018 11:23:26 GMT and should not be manually modified.
+
+## 5.42.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- ResizeGroup: Add the ability for ResizeGroup to get divProps
+- Enhance Panel component props to allow all of FocusTrapZone props overrides.
+
+### Patches
+
+- BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese
+- Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states.
+- TextField and SearchBox: Specified placeholder text color to be more consistent across browsers.
+- Prevent default to avoid setting focus on SplitButton menu button
+- Fix CalendarDay RTL view
 
 ## 5.41.2
 Tue, 23 Jan 2018 11:22:12 GMT
