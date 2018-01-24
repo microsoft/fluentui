@@ -282,7 +282,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } else if (!this.canAddItems()) {
       (items[items.length - 1] as IPickerItemProps<T>).selected = true;
       this.resetFocus(items.length - 1);
-      this.onInputBlur();
     } else {
       this.input.focus();
     }
