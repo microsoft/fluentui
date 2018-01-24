@@ -15,6 +15,7 @@ import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
 import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
 import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
+import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
@@ -38,6 +39,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected root: HTMLElement;
   protected input: BaseAutoFill;
   protected focusZone: FocusZone;
+  protected selection: Selection;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
 
@@ -45,6 +47,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     super(basePickerProps);
 
     let items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
+
+    this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
+    this.selection.setItems(items);
 
     this.state = {
       items: items ? items : [],
@@ -91,30 +96,38 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
           onKeyDown={ this.onBackspace }
           onCopy={ this.onCopy }
         >
-          <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
-            { this.renderSelectedItemsList() }
-            { this.canAddItems() && (<BaseAutoFill
-              { ...inputProps as IInputProps }
-              className={ css('ms-BasePicker-input', styles.pickerInput) }
-              ref={ this._resolveRef('input') }
-              onFocus={ this.onInputFocus }
-              onInputValueChange={ this.onInputChange }
-              suggestedDisplayValue={ suggestedDisplayValue }
-              aria-activedescendant={ 'sug-' + this.state.items.length }
-              aria-owns='suggestion-list'
-              aria-expanded='true'
-              aria-haspopup='true'
-              autoCapitalize='off'
-              autoComplete='off'
-              role='combobox'
-              disabled={ disabled }
-              aria-controls='selected-suggestion-alert'
-            />) }
-          </div>
+
+          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
+              { this.props.headerComponent }
+              { this.renderSelectedItemsList() }
+              { this.canAddItems() && (<BaseAutoFill
+                { ...inputProps as IInputProps }
+                className={ css('ms-BasePicker-input', styles.pickerInput) }
+                ref={ this._resolveRef('input') }
+                onFocus={ this.onInputFocus }
+                onInputValueChange={ this.onInputChange }
+                suggestedDisplayValue={ suggestedDisplayValue }
+                aria-activedescendant={ 'sug-' + this.state.items.length }
+                aria-owns='suggestion-list'
+                aria-expanded='true'
+                aria-haspopup='true'
+                autoCapitalize='off'
+                autoComplete='off'
+                role='combobox'
+                disabled={ disabled }
+                aria-controls='selected-suggestion-alert'
+              />) }
+            </div>
+          </SelectionZone>
         </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
+  }
+
+  protected onSelectionChange(): void {
+    this.forceUpdate();
   }
 
   protected canAddItems(): boolean {
@@ -217,6 +230,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected _onSuggestionSelected(item: T): void {
     this.selectedItemsList.addItems([item]);
     this.input.clear();
+
     this.floatingPicker.hidePicker();
   }
 

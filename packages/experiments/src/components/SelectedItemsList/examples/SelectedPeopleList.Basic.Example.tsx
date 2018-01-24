@@ -8,12 +8,13 @@ import {
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.types';
 import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
-export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedItemsListProps<IExtendedPersonaProps>, {}> {
+export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
   private index: number;
+  private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   public render(): JSX.Element {
     return (
@@ -39,6 +40,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedI
         onExpandGroup={ this._onExpandItem }
         copyMenuItemText={ 'Copy' }
         removeMenuItemText={ 'Remove' }
+        selection={ this.selection }
       />
     );
   }
@@ -63,6 +65,10 @@ export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedI
   private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
     this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
+  }
+
+  private _onSelectionChange(): void {
+    this.forceUpdate();
   }
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
