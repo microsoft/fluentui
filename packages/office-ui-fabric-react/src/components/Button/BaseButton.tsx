@@ -481,7 +481,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'ariaLabel': splitButtonAriaLabel
     };
 
-    return <BaseButton {...splitButtonProps} />;
+    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } />;
+
+  }
+
+  @autobind
+  private _onMouseDown(ev: React.MouseEvent<BaseButton>) {
+    if (this.props.onMouseDown) {
+      this.props.onMouseDown(ev);
+    }
+
+    ev.preventDefault();
   }
 
   @autobind
