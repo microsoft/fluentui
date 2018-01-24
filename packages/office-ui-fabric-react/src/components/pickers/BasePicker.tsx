@@ -29,7 +29,6 @@ export interface IBasePickerState {
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
   isResultsFooterVisible?: boolean;
-  isFocused?: boolean;
 }
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
