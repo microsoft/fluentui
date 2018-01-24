@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding optional callback aria-describedby for each item in DetailsList",
+      "comment": "DetailsList: Adding optional callback aria-describedby for each item in DetailsList",
       "type": "patch"
     }
   ],
