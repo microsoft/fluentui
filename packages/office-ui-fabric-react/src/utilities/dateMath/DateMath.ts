@@ -156,6 +156,10 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
   let startDate: Date;
   let endDate = null;
 
+  if (!workWeekDays) {
+    workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
+  }
+
   switch (dateRangeType) {
     case DateRangeType.Day:
       startDate = getDatePart(date);
@@ -184,10 +188,7 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
     if (dateRangeType !== DateRangeType.WorkWeek) {
       // push all days not in work week view
       datesArray.push(nextDate);
-    } else if (!workWeekDays) {
-      // if work week view but days are not specified, assume all days are part of work week (same as week view)
-      datesArray.push(nextDate);
-    } else if (workWeekDays && workWeekDays.includes(nextDate.getDay())) {
+    } else if (workWeekDays.includes(nextDate.getDay())) {
       datesArray.push(nextDate);
     }
     nextDate = addDays(nextDate, 1);

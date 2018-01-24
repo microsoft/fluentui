@@ -297,6 +297,17 @@ describe('DateMath', () => {
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday, workWeekDays);
     Array(4).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 
+    // work week defaults
+    expectedDates = [
+      new Date(2017, 2, 13),
+      new Date(2017, 2, 14),
+      new Date(2017, 2, 15),
+      new Date(2017, 2, 16),
+      new Date(2017, 2, 17),
+    ];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
+    Array(4).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
+
     // Date range: month
     expectedDates = Array(31).map((val, i) => new Date(2017, 2, 1 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday);

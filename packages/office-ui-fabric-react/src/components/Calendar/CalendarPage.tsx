@@ -5,7 +5,7 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
+import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
@@ -118,16 +118,16 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               />
             </ExampleCard>
             <ExampleCard
-              title='Calendar with selectableDays provided'
+              title='Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday'
               code={ CalendarButtonExampleCode }
             >
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.WorkWeek }
+                firstDayOfWeek={ DayOfWeek.Monday }
                 autoNavigateOnSelection={ true }
                 highlightCurrentMonth={ true }
                 showGoToToday={ true }
-                selectableDaysOfWeek={ [2, 3, 5, 6] }
-                showNavigateButtons={ true }
+                selectableDaysOfWeek={ [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday] }
               />
             </ExampleCard>
             <ExampleCard
