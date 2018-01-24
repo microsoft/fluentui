@@ -48,5 +48,15 @@ describe('inputMask', () => {
       'Phone number: (999) 999 - 9999',
       'Phone number: (12) 45_ - ____');
     expect(result).toEqual('12');
+
+    result = getValueFromMaskDisplay(
+      'Phone number: (999) 999 - 9999',
+      '');
+    expect(result).toEqual('');
+
+    result = getValueFromMaskDisplay(
+      'Phone number: (999) 999 - 9999',
+      'Phone number: (12');
+    expect(result).toEqual('12');
   });
 });
