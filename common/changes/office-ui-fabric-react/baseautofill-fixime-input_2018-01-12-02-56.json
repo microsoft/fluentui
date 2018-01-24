@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Persona: Fix a bug where space would be taken even though there was no secondary text",
+      "comment": "BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese",
       "type": "patch"
     }
   ],

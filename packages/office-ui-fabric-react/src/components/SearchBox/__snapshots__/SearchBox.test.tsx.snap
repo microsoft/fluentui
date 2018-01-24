@@ -97,6 +97,13 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         &::-ms-clear {
           display: none;
         }
+        &::placeholder {
+          color: #666666;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #666666;
+        }
     disabled={undefined}
     id="SearchBox0"
     onChange={[Function]}

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119",
+      "comment": "Fix CalendarDay RTL view",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "manas.misra@outlook.com"
+  "email": "srkandu@microsoft.com"
 }
