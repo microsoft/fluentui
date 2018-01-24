@@ -116,7 +116,19 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 minDate={ addMonths(today, -1) }
                 maxDate={ addYears(today, 1) }
               />
-
+            </ExampleCard>
+            <ExampleCard
+              title='Calendar with selectableDays provided'
+              code={ CalendarButtonExampleCode }
+            >
+              <CalendarInlineExample
+                dateRangeType={ DateRangeType.WorkWeek }
+                autoNavigateOnSelection={ true }
+                highlightCurrentMonth={ true }
+                showGoToToday={ true }
+                selectableDaysOfWeek={ [2, 3, 5, 6] }
+                showNavigateButtons={ true }
+              />
             </ExampleCard>
             <ExampleCard
               title='Calendar launched from a button'
