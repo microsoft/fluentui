@@ -62,7 +62,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedI
   @autobind
   private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
-    this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
+    this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
   }
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {

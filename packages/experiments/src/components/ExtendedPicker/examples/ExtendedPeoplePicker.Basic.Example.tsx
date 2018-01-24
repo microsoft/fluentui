@@ -69,6 +69,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       onExpandGroup: this._onExpandItem,
       removeMenuItemText: 'Remove',
       copyMenuItemText: 'Copy name',
+      editMenuItemText: 'Edit',
+      getEditingItemText: this._getEditingItemText,
+      onRenderFloatingPicker: this._onRenderFloatingPicker,
+      floatingPickerProps: this.floatingPickerProps,
     };
   }
 
@@ -111,6 +115,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return (<SelectedPeopleList {...props} />);
   }
 
+  private _getEditingItemText(item: IExtendedPersonaProps): string {
+    return item.primaryText as string;
+  }
+
   @autobind
   private _setComponentRef(component: ExtendedPeoplePicker): void {
     this._picker = component;
@@ -126,7 +134,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   @autobind
   private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
-    (this._picker.selectedItemsList as SelectedPeopleList).onExpandItem(item, this._getExpandedGroupItems(item as any));
+    (this._picker.selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
   }
 
   @autobind
