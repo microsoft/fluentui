@@ -35,13 +35,14 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   }
 
   public render() {
-    let { calloutProps, targetElement } = this.props;
+    let { calloutProps, targetElement, onDismiss } = this.props;
 
     return (
       <Callout
         className={ css('ms-TeachingBubble', styles.root, this.props.isWide ? styles.wideCallout : null) }
         ref={ this._resolveRef('_callout') }
         target={ targetElement }
+        onDismiss={ onDismiss }
         {...calloutProps}
       >
         <TeachingBubbleContent { ...this.props } />
