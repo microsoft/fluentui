@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 17 Jan 2018 11:11:25 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+
+## 5.11.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- Change maxHeight/maxFontSize to CSSPixelUnitRule (number and string)
 
 ## 5.10.1
 Wed, 17 Jan 2018 11:11:25 GMT

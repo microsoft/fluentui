@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.7.1",
+      "tag": "@uifabric/utilities_v5.7.1",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "c0d264e51b37fb707a149c1dd22641f9378e367b",
+            "comment": "Set timeout ids to null for cancel and flush functions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.10.1 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.0",
       "tag": "@uifabric/utilities_v5.7.0",
       "date": "Mon, 22 Jan 2018 11:14:27 GMT",

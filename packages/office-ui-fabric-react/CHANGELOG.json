@@ -2,6 +2,58 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.43.0",
+      "tag": "office-ui-fabric-react_v5.43.0",
+      "date": "Thu, 25 Jan 2018 11:23:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "1f86b535cf6347ef09ce6c172eb875a0aaf203ea",
+            "comment": "spin button - add aria label for decrement and increment buttons"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "325c15ab5ea077d5b1c1ac77d898eba0dfc0f59a",
+            "comment": "Pickers: Fixing errors occuring onBlur of limited pickers"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "59111034b784874eec5c28fef8d6dd11f06502b1",
+            "comment": "Fixed broken links on documentation pages"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "3b5b375421343cbc74b4aa72c432a0910224459e",
+            "comment": "Pickers: Aligning suggestions callout to the correct RTL position"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "a2864f8c6d0fc2b271c952b9929767ed760660ab",
+            "comment": "Callout: Convert component to JS Styling"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "bd19b42da3e1452580283a30a682d22349af1fe6",
+            "comment": "Added onFocus state Boolean to BasePicker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.10.1 <6.0.0` to `>=5.11.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.16.0 <6.0.0` to `>=5.17.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.42.0",
       "tag": "office-ui-fabric-react_v5.42.0",
       "date": "Wed, 24 Jan 2018 11:23:26 GMT",

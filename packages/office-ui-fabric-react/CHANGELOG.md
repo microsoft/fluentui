@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Jan 2018 11:23:26 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jan 2018 11:23:07 GMT and should not be manually modified.
+
+## 5.43.0
+Thu, 25 Jan 2018 11:23:07 GMT
+
+### Minor changes
+
+- Callout: Convert component to JS Styling
+- Added onFocus state Boolean to BasePicker
+
+### Patches
+
+- spin button - add aria label for decrement and increment buttons
+- Pickers: Fixing errors occuring onBlur of limited pickers
+- Fixed broken links on documentation pages
+- Pickers: Aligning suggestions callout to the correct RTL position
 
 ## 5.42.0
 Wed, 24 Jan 2018 11:23:26 GMT
