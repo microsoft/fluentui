@@ -13,25 +13,24 @@ import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
 const examplePersona = {
-  imageUrl: TestImages.personaFemale,
-  imageInitials: 'AL',
-  primaryText: 'Annie Lindqvist',
-  secondaryText: 'Software Engineer',
-  tertiaryText: 'In a meeting',
+  imageUrl: TestImages.personaMale,
+  imageInitials: 'TR',
+  primaryText: 'Ted Randall',
+  secondaryText: 'Project Manager',
   optionalText: 'Available at 4:00pm'
 };
 
-export class PersonaCustomRenderExample extends React.Component {
+export class PersonaCustomCoinRenderExample extends React.Component {
 
   public render() {
     return (
       <div className='ms-PersonaExample'>
-        <div className={ exampleStyles.exampleLabel }>Custom icon in secondary text</div>
+        <div className={ exampleStyles.exampleLabel }>Custom functional element as image</div>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size72 }
-          presence={ PersonaPresence.offline }
-          onRenderSecondaryText={ this._onRenderSecondaryText }
+          presence={ PersonaPresence.online }
+          onRenderCoin={ this._onRenderCoin }
         />
       </div>
     );
@@ -43,6 +42,15 @@ export class PersonaCustomRenderExample extends React.Component {
       <div>
         <Icon iconName={ 'Suitcase' } className={ 'ms-JobIconExample' } />
         { props.secondaryText }
+      </div>
+    );
+  }
+
+  @autobind
+  private _onRenderCoin(props: IPersonaProps): JSX.Element {
+    return (
+      <div className='custom-example-coin'>
+        <img src={ props.imageUrl } alt='' width='72' height='72' />
       </div>
     );
   }

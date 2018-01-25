@@ -137,8 +137,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   @autobind
   private _onRenderCoin(props: IPersonaProps, size: number): JSX.Element {
     if (props.onRenderCoin) {
+      console.log(size);
       return(
-        <div className='wrapper-in-personacoin'>
+        <div>
           { props.onRenderCoin(this.props) }
         </div>
       );
