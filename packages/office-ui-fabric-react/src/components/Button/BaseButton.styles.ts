@@ -38,7 +38,7 @@ export const getStyles = memoizeFunction((
 
   return {
     root: [
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, 0),
       theme.fonts.medium,
       {
         boxSizing: 'border-box',
