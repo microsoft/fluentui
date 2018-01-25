@@ -482,14 +482,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
-            data-is-focusable={ true }
+            data-is-focusable={ !item.disabled }
+            disabled={ item.disabled }
             className={ css(
               'ms-Dropdown-item', styles.item, {
                 ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-                ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+                ['is-disabled ' + styles.itemIsDisabled]: item.disabled === true
               }
             ) }
-            onClick={ this._onItemClick(item.index!) }
+            onClick={ this._onItemClick(item) }
             onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
             onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
             onMouseMove={ this._onItemMouseMove.bind(this, item) }
@@ -506,8 +507,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
-            data-is-focusable={ true }
-            onChange={ this._onItemClick(item.index!) }
+            data-is-focusable={ !item.disabled }
+            disabled={ item.disabled }
+            onChange={ this._onItemClick(item) }
             inputProps={ {
               onMouseEnter: this._onItemMouseEnter.bind(this, item),
               onMouseLeave: this._onMouseItemLeave.bind(this, item),
@@ -516,9 +518,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
+              styles.dropdownCheckbox,
               'ms-Dropdown-item', styles.item, {
                 ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-                ['is-disabled ' + styles.itemIsDisabled]: isItemSelected
+                ['is-disabled ' + styles.itemIsDisabled]: item.disabled
               }
             ) }
             role='option'
@@ -549,14 +552,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onItemClick(index: number): () => void {
+  private _onItemClick(item: IDropdownOption): () => void {
     return (): void => {
-      this.setSelectedIndex(index);
-      if (!this.props.multiSelect) {
-        // only close the callout when it's in single-select mode
-        this.setState({
-          isOpen: false
-        });
+      if (!item.disabled) {
+        this.setSelectedIndex(item.index!);
+        if (!this.props.multiSelect) {
+          // only close the callout when it's in single-select mode
+          this.setState({
+            isOpen: false
+          });
+        }
       }
     };
   }

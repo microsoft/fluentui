@@ -34,7 +34,7 @@ storiesOf('Dropdown', module)
           { key: 'B', text: 'Option b' },
           { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
           { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
-          { key: 'F', text: 'Option f' },
+          { key: 'F', text: 'Option f', disabled: true },
           { key: 'G', text: 'Option g' }
         ]
       }
@@ -59,17 +59,37 @@ storiesOf('Dropdown', module)
       }
     />
   ))
+  .add('Disabled option selected', () => (
+    <Dropdown
+      placeHolder='Select an Option'
+      label='Basic example:'
+      defaultSelectedKey='F'
+      ariaLabel='Basic dropdown example'
+      options={
+        [
+          { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
+          { key: 'A', text: 'Option a' },
+          { key: 'B', text: 'Option b' },
+          { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+          { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
+          { key: 'F', text: 'Option f', disabled: true },
+          { key: 'G', text: 'Option g' }
+        ]
+      }
+    />
+  ))
   .add('Multiselect', () => (
     <Dropdown
       placeHolder='Select options'
       label='Multi-Select example:'
-      defaultSelectedKeys={ ['Orange'] }
+      defaultSelectedKeys={ ['Orange', 'Lemon'] }
       multiSelect
       options={
         [
           { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
           { key: 'Apple', text: 'apple' },
-          { key: 'Banana', text: 'banana' },
+          { key: 'Banana', text: 'banana', disabled: true },
+          { key: 'Lemon', text: 'lemon', disabled: true },
           { key: 'Orange', text: 'orange' },
         ]
       }
