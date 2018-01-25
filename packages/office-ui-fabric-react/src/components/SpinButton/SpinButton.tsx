@@ -126,7 +126,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       labelPosition,
       iconProps,
       incrementButtonIcon,
+      incrementButtonAriaLabel,
       decrementButtonIcon,
+      decrementButtonAriaLabel,
       title,
       ariaLabel,
       styles: customStyles,
@@ -197,11 +199,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
-              aria-hidden='true'
               onMouseDown={ this._onIncrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
+              ariaLabel={ incrementButtonAriaLabel }
             />
             <IconButton
               styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
@@ -209,11 +211,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
-              aria-hidden='true'
               onMouseDown={ this._onDecrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
+              ariaLabel={ decrementButtonAriaLabel }
             />
           </span>
         </div>
