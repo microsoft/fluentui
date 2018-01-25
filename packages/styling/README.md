@@ -94,7 +94,7 @@ The default palette of colors matches the default Fabric core styling convention
 ```tsx
 import {
   loadTheme({
-    colors: {
+    palette: {
       themePrimary: 'red',
       themeSeconary: 'blue'
     }
