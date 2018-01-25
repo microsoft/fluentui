@@ -5,8 +5,7 @@ import {
   divProperties,
   getInitials,
   getNativeProps,
-  getRTL,
-  IRenderFunction
+  getRTL
 } from '../../Utilities';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
 import { PersonaPresence } from './PersonaPresence';
@@ -77,6 +76,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       initialsColor,
       primaryText,
       imageShouldFadeIn,
+      onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       imageShouldStartVisible
      } = this.props;
@@ -115,7 +115,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                 </div>
               )
             }
-            { this._onRenderCoin( this.props, size ) }
+            { onRenderCoin(this.props, this._onRenderCoin) }
             <PersonaPresence { ...this.props } />
           </div>
         ) :
@@ -135,22 +135,16 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   }
 
   @autobind
-  private _onRenderCoin(props: IPersonaProps, size: number): JSX.Element | null {
-    if (props.onRenderCoin) {
-      return props.onRenderCoin(this.props);
-    }
-
+  private _onRenderCoin(props: IPersonaProps): JSX.Element | null {
     let {
-      coinProps,
       coinSize,
       imageUrl,
       imageAlt,
-      initialsColor,
-      primaryText,
       imageShouldFadeIn,
-      onRenderInitials = this._onRenderInitials,
       imageShouldStartVisible
     } = this.props;
+
+    let size = this.props.size as PersonaSize;
 
     return(
       <Image
