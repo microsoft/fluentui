@@ -48,7 +48,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
-          size={ PersonaSize.size28 }
+          size={ PersonaSize.size24 }
         />
       </div>
       <IconButton
