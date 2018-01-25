@@ -112,7 +112,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       readOnly={true}
       role="combobox"
       spellCheck={false}
-      title=""
+      title={undefined}
       type="text"
       value=""
     />

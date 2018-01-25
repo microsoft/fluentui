@@ -273,6 +273,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       buttonIconProps,
       styles: customStyles,
       theme,
+      title
     } = this.props;
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -330,7 +331,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             suggestedDisplayValue={ suggestedDisplayValue }
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
-            title={ this._getTitle() }
+            title={ title }
           />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
@@ -1562,25 +1563,5 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _getAriaAutoCompleteValue(): string {
     let autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
     return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
-  }
-
-  /**
-   * Get the string we would use for the title.
-   * @returns in order of priority:
-   * 1. The provided title
-   * 2. The label value that will be used by aria-labelled
-   * 3. The aria-label value
-   * 4. Else empty string
-   */
-  private _getTitle(): string {
-    let title = '';
-    if (this.props.title) {
-      title = this.props.title;
-    } else if (this.props.label) {
-      title = this.props.label;
-    } else if (this.props.ariaLabel) {
-      title = this.props.ariaLabel;
-    }
-    return title;
   }
 }
