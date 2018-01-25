@@ -41,3 +41,21 @@ export function getFocusStyle(
     }
   };
 }
+
+/**
+ * Generates style to clear browser specific focus styles.
+ */
+export function focusClear(): IRawStyle {
+  return {
+    selectors: {
+      '&::-moz-focus-inner': {
+        // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
+        border: 0
+      },
+      '&': {
+        // Clear browser specific focus styles and use transparent as placeholder for focus style
+        outline: 'transparent'
+      }
+    }
+  };
+}
