@@ -429,6 +429,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return (
       <div
+        role={ 'button' }
         aria-labelledby={ buttonProps.ariaLabel }
         aria-disabled={ disabled }
         aria-haspopup={ true }
@@ -440,8 +441,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         ref={ this._resolveRef('_splitButtonContainer') }
       >
         <span
-          aria-hidden={ true }
-          // TODO: THIS SHOULD BE REMOVED!
           style={ { 'display': 'flex' } }
         >
           { this._onRenderContent(tag, buttonProps) }
@@ -478,7 +477,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'onClick': this._onMenuClick,
       'menuProps': undefined,
       'iconProps': menuIconProps,
-      'ariaLabel': splitButtonAriaLabel
+      'ariaLabel': splitButtonAriaLabel,
+      'aria-haspopup': true,
+      'aria-expanded': this._isExpanded
     };
 
     return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } />;
