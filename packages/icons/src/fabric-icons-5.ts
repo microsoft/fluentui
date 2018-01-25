@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -46,9 +46,7 @@ export function initializeIcons(
       'AdminPLogoInverse32': '\uED71',
       'AdminSLogoInverse32': '\uED72',
       'AdminYLogoInverse32': '\uED73',
-      'BoxLogo': '\uED75',
       'DelveLogoInverse': '\uED76',
-      'DropboxLogo': '\uED77',
       'ExchangeLogoInverse': '\uED78',
       'LyncLogo': '\uED79',
       'OfficeVideoLogoInverse': '\uED7A',

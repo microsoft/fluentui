@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -53,8 +53,6 @@ export function initializeIcons(
       'RecycleBin': '\uEF87',
       'EmptyRecycleBin': '\uEF88',
       'Hide2': '\uEF89',
-      'iOSAppStoreLogo': '\uEF8A',
-      'AndroidLogo': '\uEF8B',
       'Breadcrumb': '\uEF8C',
       'BirthdayCake': '\uEF8D',
       'TimeEntry': '\uEF95',

@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -35,7 +35,6 @@ export function initializeIcons(
       'DoubleChevronDown': '\uEE04',
       'FollowUser': '\uEE05',
       'ReplyAll': '\uEE0A',
-      'GoogleDriveLogo': '\uEE0B',
       'WorkforceManagement': '\uEE0F',
       'Questionnaire': '\uEE19',
       'ManagerSelfService': '\uEE23',

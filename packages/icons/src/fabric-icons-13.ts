@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -84,10 +84,6 @@ export function initializeIcons(
       'MaximumValue': '\uF5BC',
       'MinimumValue': '\uF5BD',
       'VisualStudioIDELogo32': '\uF5D0',
-      'ApacheIvyLogo32': '\uF5D1',
-      'BitbucketLogo32': '\uF5D2',
-      'LinuxLogo32': '\uF5D3',
-      'GradleLogo32': '\uF5D4',
       'PasteAsText': '\uF5D5',
       'PasteAsCode': '\uF5D6',
       'BrowserTab': '\uF5D7',

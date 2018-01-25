@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -117,10 +117,6 @@ export function initializeIcons(
       'ChevronUpEnd6': '\uF370',
       'ChevronLeftEnd6': '\uF371',
       'ChevronRightEnd6': '\uF372',
-      'EgnyteLogo': '\uF373',
-      'GoogleDriveLogoLeftGreen': '\uF374',
-      'GoogleDriveLogoBottomBlue': '\uF375',
-      'GoogleDriveLogoRightYellow': '\uF376',
       'ContextMenu': '\uF37C',
       'AzureAPIManagement': '\uF37F',
       'AzureServiceEndpoint': '\uF380',
