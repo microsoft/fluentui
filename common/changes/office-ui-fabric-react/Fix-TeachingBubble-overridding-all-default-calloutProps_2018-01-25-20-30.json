@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown, Checkbox: Fix disabled Dropdown options and update Checkbox disabled styles",
+      "comment": "Add private _defaultCalloutProps instead of public defaultProps to set calloutProps.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "erabelle@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }
