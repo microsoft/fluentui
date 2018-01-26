@@ -156,6 +156,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       }
     );
 
+    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -183,7 +184,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             onDismiss={ this.dismiss }
             onScroll={ onScroll }
             shouldRestoreFocus={ true }
-            style={ { overflowY: overflowYHidden ? 'hidden' : 'auto' } }
+            style={ overflowStyle }
           >
             { children }
           </Popup>
