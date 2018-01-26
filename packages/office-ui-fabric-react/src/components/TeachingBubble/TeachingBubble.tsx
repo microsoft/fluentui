@@ -4,7 +4,7 @@ import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
-import { Callout } from '../../Callout';
+import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './TeachingBubble.scss';
 const styles: any = stylesImport;
@@ -14,17 +14,22 @@ export interface ITeachingBubbleState {
 }
 
 export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
-
-  // Specify default props values
   public static defaultProps = {
+    /**
+     * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
+     * Remove in next release.
+     * @deprecated
+     */
     calloutProps: {
       beakWidth: 16,
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter
+      directionalHint: DirectionalHint.rightCenter,
     }
   };
+
+  private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
   constructor(props: ITeachingBubbleProps) {
@@ -32,10 +37,19 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
     this.state = {
     };
+
+    this._defaultCalloutProps = {
+      beakWidth: 16,
+      gapSpace: 0,
+      setInitialFocus: true,
+      doNotLayer: false,
+      directionalHint: DirectionalHint.rightCenter,
+    };
   }
 
   public render() {
-    let { calloutProps, targetElement } = this.props;
+    let { calloutProps: setCalloutProps, targetElement } = this.props;
+    const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
 
     return (
       <Callout
