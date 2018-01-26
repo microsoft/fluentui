@@ -265,7 +265,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         ref={ isNavigatedDate ? 'navigatedDay' : undefined }
                         key={ isNavigatedDate ? 'navigatedDay' : undefined }
                       >
-                        <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
+                        <button aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</button>
                       </div>
                     </td>;
                   }) }
