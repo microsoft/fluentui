@@ -67,6 +67,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       farItems,
       elipisisAriaLabel,
       elipisisIconProps,
+      overflowMenuProps,
       buttonStyles,
       getStyles,
       theme,
@@ -111,7 +112,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
                       styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
                       ariaLabel: elipisisAriaLabel,
                       className: css('ms-CommandBar-overflowButton'),
-                      menuProps: { items: renderedOverflowItems },
+                      menuProps: { ...overflowMenuProps, items: renderedOverflowItems },
                       menuIconProps: elipisisIconProps,
                     })
                   );
