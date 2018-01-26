@@ -31,6 +31,11 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   size?: PersonaSize;
 
   /**
+   * Optional custom renderer for the coin
+   */
+  onRenderCoin?: IRenderFunction<IPersonaProps>;
+
+  /**
    * If true, adds the css class 'is-fadeIn' to the image.
    */
   imageShouldFadeIn?: boolean;
