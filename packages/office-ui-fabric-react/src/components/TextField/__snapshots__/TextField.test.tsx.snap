@@ -43,7 +43,6 @@ exports[`TextField renders TextField correctly 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
-        onKeyDown={[Function]}
         type="text"
         value=""
       />

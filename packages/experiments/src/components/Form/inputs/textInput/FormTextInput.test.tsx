@@ -10,7 +10,7 @@ import { IFormProps } from '../../Form.types';
 import { DEFAULT_DEBOUNCE } from '../../FormBaseInput';
 import { FormTextInput } from './FormTextInput';
 import { IFormTextInputProps } from './FormTextInput.types';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { BaseTextField } from 'office-ui-fabric-react/lib/TextField';
 
 // Utilities
 import { Validators } from '../../validators/Validators';
@@ -112,7 +112,7 @@ describe('FormTextInput Unit Tests', () => {
       ReactTestUtils.Simulate.submit(form);
 
       // Find the TextField component
-      let field = ReactTestUtils.findRenderedComponentWithType(renderedForm, TextField);
+      let field = ReactTestUtils.findRenderedComponentWithType(renderedForm, BaseTextField);
       expect(field.state.errorMessage).toBeTruthy();
       expect(result).toBeFalsy();
     });

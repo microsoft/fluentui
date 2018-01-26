@@ -1,16 +1,62 @@
-const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
+export interface IMaskValue {
+  value?: string;
+  displayIndex: number;
+  format: RegExp;
+}
+
+export const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
   '9': /[0-9]/,
   'a': /[a-zA-Z]/,
   '*': /[a-zA-Z0-9]/
 };
 
 /**
- * Takes in the mask string and the input value and returns what should be displayed in the input field;
+ * Takes in the mask string and the formatCharacters and returns an array of MaskValues
+ * Example:
+ * mask = 'Phone Number: (999) - 9999'
+ * return = [
+ *    { value: undefined, displayIndex: 16, format: /[0-9]/ },
+ *    { value: undefined, displayIndex: 17, format: /[0-9]/ },
+ *    { value: undefined, displayIndex: 18, format: /[0-9]/ },
+ *    { value: undefined, displayIndex: 22, format: /[0-9]/ },
+ * ]
  *
- * Takes
+ * @param mask The string use to define the format of the displayed maskedValue.
+ * @param formatChars An object defining how certain characters in the mask should accept input.
+ */
+export function parseMask(
+  mask: string | undefined,
+  formatChars: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): IMaskValue[] {
+  if (!mask) {
+    return [];
+  }
+
+  let maskCharData: IMaskValue[] = [];
+  let escapedChars = 0;
+  for (let i = 0; i + escapedChars < mask.length; i++) {
+    const maskChar = mask.charAt(i + escapedChars);
+    if (maskChar === '\\') {
+      escapedChars++;
+    } else {
+      const maskFormat = formatChars[maskChar];
+      if (maskFormat) {
+        maskCharData.push({
+          displayIndex: i,
+          format: maskFormat
+        });
+      }
+    }
+  }
+
+  return maskCharData;
+}
+
+/**
+ * Takes in the mask string, an array of MaskValues, and the maskCharacter
+ * returns the mask string formatted with the input values and maskCharacter
  * Example:
  * mask = 'Phone Number: (999) 999 - 9999'
- * value = '12345'
+ * maskCharData = '12345'
  * maskChar = '_'
  * return = 'Phone Number: (123) 45_ - ___'
  *
@@ -21,129 +67,159 @@ const DEFAULT_MASK_FORMAT_CHARS: { [key: string]: RegExp } = {
  * return = 'Phone Number: (123) 45'
  *
  * @param mask The string use to define the format of the displayed maskedValue.
- * @param value The validated user unput to insert into the mask string for displaying.
+ * @param maskCharData The input values to insert into the mask string for displaying.
  * @param maskChar? A character to display in place of unfilled mask format characters.
- * @param maskFormat An object defining how certain characters in the mask should accept input.
- *
- * @public
  */
-export function getMaskDisplay(
-  mask: string,
-  value?: string,
-  maskChar?: string,
-  maskFormat: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): string | undefined {
+export function getMaskDisplay(mask: string | undefined, maskCharData: IMaskValue[], maskChar?: string): string {
+  let maskDisplay = mask;
 
-  let outputMask = '';
-  let valueIndex = 0;
-
-  for (let i = 0; i < mask.length; i++) {
-    let c = mask.charAt(i);
-    if (c === '\\') {
-      // Escape next char
-      if (++i < mask.length) {
-        outputMask += mask.charAt(i);
-      }
-    } else {
-      // Search for default format char
-      const format = maskFormat[c];
-      // Check if format exists
-      if (format) {
-        // Check for value char to correspond to mask character
-        // Check if value character satisfies format
-        if (value && valueIndex < value.length && format.test(value.charAt(valueIndex))) {
-          outputMask += value.charAt(valueIndex++);
-        } else {
-          // Push maskChar or just return mask as-is
-          if (maskChar) {
-            outputMask += maskChar;
-          } else {
-            return outputMask;
-          }
-        }
-      } else {
-        // Otherwise, add non-format mask character
-        outputMask += c;
-      }
-    }
+  if (!maskDisplay) {
+    return '';
   }
 
-  return outputMask;
+  let lastDisplayIndex = 0;
+
+  /**
+   * For each input value, replace the character in the maskDisplay
+   * with the value or the maskChar if no value set
+   */
+  for (let charData of maskCharData) {
+    let nextChar = ' ';
+    if (charData.value) {
+      nextChar = charData.value;
+      if (charData.displayIndex > lastDisplayIndex) {
+        lastDisplayIndex = charData.displayIndex;
+      }
+    } else {
+      if (maskChar) {
+        nextChar = maskChar;
+      }
+    }
+
+    // Insert character into the maskdisplay at its corresponding index
+    maskDisplay = maskDisplay.slice(0, charData.displayIndex) + nextChar +
+      maskDisplay.slice(charData.displayIndex + 1);
+  }
+
+  // Cut off all mask characters after the last filled format value
+  if (!maskChar) {
+    maskDisplay = maskDisplay.slice(0, lastDisplayIndex + 1);
+  }
+
+  return maskDisplay;
 }
 
 /**
- * Takes the mask string and what is displayed in the input field and returns the input value.
- *
- * Example: No input changes to the maskedValue
- * mask = 'Phone Number: (999) 999 - 9999'
- * maskedValue = 'Phone Number: (123) 45_ - ___'
- * return = '12345'
- *
- * Example: User typed '6' on the input
- * mask = 'Phone Number: (999) 999 - 9999'
- * maskedValue = 'Phone Number: (123) 456_ - ___' (note: The user entered a '6' between the '4' and '_')
- * return = '123456'
- *
- * Example: User deleted '5' on the input
- * mask = 'Phone Number: (999) 999 - 9999'
- * maskedValue = 'Phone Number: (123) 4_ - ___'
- * return = '1234'
- *
- * @param mask The string use to define the format of the displayed maskedValue.
- * @param maskedValue The displayed mask string after an input change.
- * @param cursorPositionCallback? A callback to move the input cursor to the start of the first unfilled mask format character.
- * @param maskFormat An object defining how certain characters in the mask should accept input.
- *
- * @return The parsed value from the mask and maskedValue
- *
- * @public
+ * Get the next format index right of or at a specified index.
+ * If no index exists, returns the rightmost index.
+ * @param maskCharData
+ * @param index
  */
-export function getValueFromMaskDisplay(
-  mask: string,
-  maskedValue: string,
-  cursorPositionCallback?: (index: number) => void,
-  maskFormat: { [key: string]: RegExp } = DEFAULT_MASK_FORMAT_CHARS): string {
-
-  let value = '';
-
-  // Find the char difference between the mask and the value
-  let valueIndex = 0;
-  let maskIndex = 0;
-
-  let escapeNext = false;
-  // Count of characters skipped to reach next non-format mask character
-  let skippedChars = 0;
-  while (valueIndex < maskedValue.length && maskIndex < mask.length) {
-    // Check for escaped characters and skip them
-    if (mask.charAt(maskIndex) === '\\') {
-      escapeNext = true;
-      maskIndex++;
-    } else {
-      const formatExp = maskFormat[mask.charAt(maskIndex)];
-      // If next character is not escaped and is a format character
-      if (!escapeNext && formatExp) {
-        let valueChar = maskedValue.charAt(valueIndex);
-        // Check if the value does not match the format expression
-        if (!formatExp.test(valueChar)) {
-          cursorPositionCallback && cursorPositionCallback(valueIndex - skippedChars);
-          return value;
-        } else {
-          value += valueChar;
-        }
-      } else {
-        escapeNext = false;
-        // Otherwise, character in mask string is normal prompt text
-        // Skip characters in the maskedValue until you reach a character that matches the mask
-        while (
-          valueIndex < maskedValue.length &&
-          maskedValue.charAt(valueIndex) !== mask.charAt(maskIndex)) {
-          skippedChars++;
-          valueIndex++;
-        }
-      }
-      valueIndex++;
-      maskIndex++;
+export function getRightFormatIndex(maskCharData: IMaskValue[], index: number): number {
+  for (let i = 0; i < maskCharData.length; i++) {
+    if (maskCharData[i].displayIndex >= index) {
+      return maskCharData[i].displayIndex;
     }
   }
-  cursorPositionCallback && cursorPositionCallback(valueIndex);
-  return value;
+  return maskCharData[maskCharData.length - 1].displayIndex;
+}
+
+/**
+ * Get the next format index left of a specified index.
+ * If no index exists, returns the leftmost index.
+ * @param maskCharData
+ * @param index
+ */
+export function getLeftFormatIndex(maskCharData: IMaskValue[], index: number): number {
+  for (let i = maskCharData.length - 1; i >= 0; i--) {
+    if (maskCharData[i].displayIndex < index) {
+      return maskCharData[i].displayIndex;
+    }
+  }
+  return maskCharData[0].displayIndex;
+}
+
+/**
+ * Deletes all values in maskCharData with a displayIndex that falls inside the specified range.
+ * maskCharData is modified inline and also returned.
+ * @param maskCharData
+ * @param selectionStart
+ * @param selectionCount
+ */
+export function clearRange(maskCharData: IMaskValue[], selectionStart: number, selectionCount: number): IMaskValue[] {
+  for (let i = 0; i < maskCharData.length; i++) {
+    if (maskCharData[i].displayIndex >= selectionStart) {
+      if (maskCharData[i].displayIndex >= selectionStart + selectionCount) {
+        break;
+      }
+      maskCharData[i].value = undefined;
+    }
+  }
+  return maskCharData;
+}
+
+/**
+ * Deletes the input character at or after a specified index and returns the new array of charData
+ * maskCharData is modified inline and also returned.
+ * @param maskCharData
+ * @param selectionStart
+ */
+export function clearNext(maskCharData: IMaskValue[], selectionStart: number): IMaskValue[] {
+  for (let i = 0; i < maskCharData.length; i++) {
+    if (maskCharData[i].displayIndex >= selectionStart) {
+      maskCharData[i].value = undefined;
+      break;
+    }
+  }
+  return maskCharData;
+}
+
+/**
+ * Deletes the input character before a specified index and returns the new array of charData
+ * maskCharData is modified inline and also returned.
+ * @param maskCharData
+ * @param selectionStart
+ */
+export function clearPrev(maskCharData: IMaskValue[], selectionStart: number): IMaskValue[] {
+  for (let i = maskCharData.length - 1; i >= 0; i--) {
+    if (maskCharData[i].displayIndex < selectionStart) {
+      maskCharData[i].value = undefined;
+      break;
+    }
+  }
+  return maskCharData;
+}
+
+/**
+ * Deletes all values in maskCharData with a displayIndex that falls inside the specified range.
+ * Modifies the maskCharData inplace and returns an index.
+ *
+ * @param maskCharData
+ * @param selectionStart
+ * @param selectionCount
+ * @return The displayIndex of the next format character
+ */
+export function insertString(maskCharData: IMaskValue[], selectionStart: number, newString: string): number {
+  let stringIndex = 0,
+    nextIndex = 0;
+  // Iterate through _maskCharData finding values with a displayIndex after the specified range start
+  for (let i = 0; i < maskCharData.length && stringIndex < newString.length; i++) {
+    if (maskCharData[i].displayIndex >= selectionStart) {
+      nextIndex = maskCharData[i].displayIndex;
+      // Find the next character in the insertString that matches the format
+      while (stringIndex < newString.length) {
+        if (maskCharData[i].format.test(newString.charAt(stringIndex))) {
+          maskCharData[i].value = newString.charAt(stringIndex++);
+          if (i + 1 < maskCharData.length) {
+            nextIndex = maskCharData[i + 1].displayIndex;
+          } else {
+            nextIndex++;
+          }
+          break;
+        }
+        stringIndex++;
+      }
+    }
+  }
+  return nextIndex;
 }

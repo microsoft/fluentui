@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import { ITodoFormProps, ITodoFormState } from '../types/index';
 import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;
@@ -15,7 +15,7 @@ import strings from './../strings';
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormState> {
-  private _textField: TextField;
+  private _textField: ITextField;
 
   constructor(props: ITodoFormProps) {
     super(props);
@@ -32,10 +32,12 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
   public render(): JSX.Element {
     return (
       <form className={ styles.todoForm } onSubmit={ this._onSubmit }>
-        <TextField
+        <DefaultTextField
           className={ styles.textField }
           value={ this.state.inputValue }
-          ref={ ref => this._textField = ref }
+          /* tslint:disable:jsx-no-lambda*/
+          componentRef={ ref => this._textField = ref }
+          /* tslint:enable:jsx-no-lambda*/
           placeholder={ strings.inputBoxPlaceholder }
           onBeforeChange={ this._onBeforeTextFieldChange }
           autoComplete='off'

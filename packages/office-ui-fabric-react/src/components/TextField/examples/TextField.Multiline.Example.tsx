@@ -1,40 +1,40 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldMultilineExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <TextField
+        <DefaultTextField
           label='Standard'
           multiline
           rows={ 4 }
         />
-        <TextField
+        <DefaultTextField
           label='Disabled'
           multiline
           rows={ 4 }
           disabled={ true }
         />
-        <TextField
+        <DefaultTextField
           label='Required'
           multiline
           rows={ 4 }
           required={ true }
         />
-        <TextField
+        <DefaultTextField
           label='With error message'
           multiline
           rows={ 4 }
           errorMessage='This is an error message.'
         />
-        <TextField
+        <DefaultTextField
           label='Non-resizable'
           multiline
           resizable={ false }
         />
-        <TextField
+        <DefaultTextField
           label='With auto adjusting height'
           multiline
           autoAdjustHeight

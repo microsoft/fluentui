@@ -5,7 +5,7 @@ import {
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
-import { TextField } from '../../TextField';
+import { DefaultTextField, ITextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
@@ -35,11 +35,11 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     alphaLabel: 'Alpha'
   };
 
-  private hexText: TextField;
-  private rText: TextField;
-  private gText: TextField;
-  private bText: TextField;
-  private aText: TextField;
+  private hexText: ITextField;
+  private rText: ITextField;
+  private gText: ITextField;
+  private bText: ITextField;
+  private aText: ITextField;
 
   constructor(props: IColorPickerProps) {
     super(props);
@@ -92,48 +92,58 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             <tbody>
               <tr>
                 <td>
-                  <TextField
+                  <DefaultTextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
-                    ref={ (ref) => this.hexText = ref! }
+                    /* tslint:disable:jsx-no-lambda*/
+                    componentRef={ (ref) => this.hexText = ref! }
+                    /* tslint:enable:jsx-no-lambda*/
                     onBlur={ this._onHexChanged }
                     spellCheck={ false }
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <TextField
+                  <DefaultTextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
-                    ref={ (ref) => this.rText = ref! }
+                    /* tslint:disable:jsx-no-lambda*/
+                    componentRef={ (ref) => this.rText = ref! }
+                    /* tslint:enable:jsx-no-lambda*/
                     spellCheck={ false }
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <TextField
+                  <DefaultTextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
-                    ref={ (ref) => this.gText = ref! }
+                    /* tslint:disable:jsx-no-lambda*/
+                    componentRef={ (ref) => this.gText = ref! }
+                    /* tslint:enable:jsx-no-lambda*/
                     spellCheck={ false }
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <TextField
+                  <DefaultTextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
-                    ref={ (ref) => this.bText = ref! }
+                    /* tslint:disable:jsx-no-lambda*/
+                    componentRef={ (ref) => this.bText = ref! }
+                    /* tslint:enable:jsx-no-lambda*/
                     spellCheck={ false }
                   />
                 </td>
                 { !this.props.alphaSliderHidden && (
                   <td style={ { width: '18%' } }>
-                    <TextField
+                    <DefaultTextField
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
-                      ref={ (ref) => this.aText = ref! }
+                      /* tslint:disable:jsx-no-lambda*/
+                      componentRef={ (ref) => this.aText = ref! }
+                      /* tslint:enable:jsx-no-lambda*/
                       spellCheck={ false }
                     />
                   </td>

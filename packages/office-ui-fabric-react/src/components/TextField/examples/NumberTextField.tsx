@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
 
 export interface INumberTextFieldProps {
   label: string;
@@ -27,7 +27,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
   public render(): JSX.Element {
     return (
       <div className='NumberTextField'>
-        <TextField
+        <DefaultTextField
           className='NumberTextField-textField'
           label={ this.props.label }
           value={ this.state.value }

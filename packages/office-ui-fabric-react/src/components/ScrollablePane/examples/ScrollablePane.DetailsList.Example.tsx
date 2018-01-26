@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -87,7 +87,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
     return (
       <ScrollablePane>
         <Sticky>{ selectionDetails }</Sticky>
-        <TextField
+        <DefaultTextField
           label='Filter by name:'
           // tslint:disable-next-line:jsx-no-lambda
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }

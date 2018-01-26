@@ -4,7 +4,8 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-import { TextField } from './TextField';
+import { DefaultTextField } from './DefaultTextField/DefaultTextField';
+import { ITextField } from './TextField.types';
 
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
@@ -25,7 +26,7 @@ describe('TextField', () => {
   }
 
   it('renders TextField correctly', () => {
-    const component = renderer.create(<TextField label='Label' />);
+    const component = renderer.create(<DefaultTextField label='Label' />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -35,7 +36,7 @@ describe('TextField', () => {
     const exampleValue: string = 'this is value';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         label={ exampleLabel }
         value={ exampleValue }
       />
@@ -54,7 +55,7 @@ describe('TextField', () => {
     const examplePrefix: string = 'this is a prefix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         prefix={ examplePrefix }
       />
     );
@@ -68,7 +69,7 @@ describe('TextField', () => {
     const exampleSuffix: string = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         suffix={ exampleSuffix }
       />
     );
@@ -83,8 +84,8 @@ describe('TextField', () => {
     const exampleSuffix: string = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
-        prefix={ examplePrefix}
+      <DefaultTextField
+        prefix={ examplePrefix }
         suffix={ exampleSuffix }
       />
     );
@@ -98,7 +99,7 @@ describe('TextField', () => {
 
   it('should render multiline as text area element', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField value='This\nIs\nMultiline\nText\n' multiline />
+      <DefaultTextField value='This\nIs\nMultiline\nText\n' multiline />
     );
 
     // Assert on the input element.
@@ -108,7 +109,7 @@ describe('TextField', () => {
 
   it('should associate the label and input box', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         label='text-field-label'
         value='whatever value'
       />
@@ -124,7 +125,7 @@ describe('TextField', () => {
 
   it('should render a disabled input element', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField disabled={ true } />
+      <DefaultTextField disabled={ true } />
     );
 
     // Assert the input box is disabled.
@@ -152,7 +153,7 @@ describe('TextField', () => {
       }
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ validator }
@@ -172,7 +173,7 @@ describe('TextField', () => {
       }
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ validator }
@@ -188,7 +189,7 @@ describe('TextField', () => {
 
     it('should render error message on first render when onGetErrorMessage returns a string', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           label='text-field-label'
           value='whatever value'
           // tslint:disable-next-line:jsx-no-lambda
@@ -201,7 +202,7 @@ describe('TextField', () => {
 
     it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           label='text-field-label'
           value='whatever value'
           // tslint:disable-next-line:jsx-no-lambda
@@ -215,7 +216,7 @@ describe('TextField', () => {
 
     it('should not render error message when onGetErrorMessage return an empty string', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           label='text-field-label'
           value='whatever value'
           // tslint:disable-next-line:jsx-no-lambda
@@ -230,7 +231,7 @@ describe('TextField', () => {
       let actualValue: string | undefined = undefined;
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           label='text-field-label'
           // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ (value: string) => actualValue = value }
@@ -247,7 +248,7 @@ describe('TextField', () => {
       }
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           value='initial value'
           onGetErrorMessage={ validator }
         />
@@ -256,7 +257,7 @@ describe('TextField', () => {
       delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
 
       ReactDOM.render(
-        <TextField
+        <DefaultTextField
           value=''
           onGetErrorMessage={ validator }
         />,
@@ -274,7 +275,7 @@ describe('TextField', () => {
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusIn
@@ -297,7 +298,7 @@ describe('TextField', () => {
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusOut
@@ -321,7 +322,7 @@ describe('TextField', () => {
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
-        <TextField
+        <DefaultTextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusOut
@@ -348,7 +349,7 @@ describe('TextField', () => {
       };
 
       renderIntoDocument(
-        <TextField
+        <DefaultTextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnLoad={ false }
@@ -360,7 +361,7 @@ describe('TextField', () => {
 
   it('can render a default value', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         defaultValue='initial value'
       />
     );
@@ -370,7 +371,7 @@ describe('TextField', () => {
 
   it('can render a default value as a textarea', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         defaultValue='initial value'
         multiline={ true }
       />
@@ -384,7 +385,7 @@ describe('TextField', () => {
     let onChangedSpy = (value: string) => { callCount++; };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField
+      <DefaultTextField
         defaultValue='initial value'
         onChanged={ onChangedSpy }
         // tslint:disable-next-line:jsx-no-lambda
@@ -405,7 +406,7 @@ describe('TextField', () => {
   });
 
   it('should select a range of text', () => {
-    let textField: TextField | undefined;
+    let textField: ITextField | undefined;
     const initialValue = 'initial value';
 
     const onSelect = () => {
@@ -414,8 +415,10 @@ describe('TextField', () => {
     };
 
     renderIntoDocument(
-      <TextField
-        ref={ (t) => textField = t! }
+      <DefaultTextField
+        /* tslint:disable:jsx-no-lambda*/
+        componentRef={ (t) => textField = t! }
+        /* tslint:enable:jsx-no-lambda*/
         defaultValue={ initialValue }
         onSelect={ onSelect }
       />

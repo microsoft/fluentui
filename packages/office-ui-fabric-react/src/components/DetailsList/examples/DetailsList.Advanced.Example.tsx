@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import {
   IContextualMenuProps,
@@ -119,7 +119,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
         {
           (isGrouped) ?
-            <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
+            <DefaultTextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
             (null)
         }
 

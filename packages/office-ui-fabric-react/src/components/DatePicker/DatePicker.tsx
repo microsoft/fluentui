@@ -10,7 +10,7 @@ import {
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField } from '../../TextField';
+import { DefaultTextField, ITextField } from '../../TextField';
 import {
   autobind,
   BaseComponent,
@@ -122,7 +122,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _root: HTMLElement;
   private _calendar: Calendar;
   private _datepicker: HTMLDivElement;
-  private _textField: TextField;
+  private _textField: ITextField;
   private _preventFocusOpeningPicker: boolean;
   private _focusOnSelectedDateOnUpdate: boolean;
 
@@ -190,7 +190,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     return (
       <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
         <div ref={ this._resolveRef('_datepicker') }>
-          <TextField
+          <DefaultTextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
@@ -217,7 +217,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref={ this._resolveRef('_textField') }
+            componentRef={ this._resolveRef('_textField') }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />
         </div>

@@ -245,6 +245,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * The character to show in place of unfilled characters of the mask.
+   * @default '_'
    */
   maskChar?: string;
 }

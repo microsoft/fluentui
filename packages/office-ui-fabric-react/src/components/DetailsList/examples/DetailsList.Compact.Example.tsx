@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -71,7 +71,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
     return (
       <div>
         <div>{ selectionDetails }</div>
-        <TextField
+        <DefaultTextField
           label='Filter by name:'
           onChanged={ this._onChanged }
         />

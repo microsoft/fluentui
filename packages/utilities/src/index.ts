@@ -8,7 +8,6 @@ export * from './EventGroup';
 export * from './FabricPerformance';
 export * from './GlobalSettings';
 export * from './IDisposable';
-export * from './inputMask';
 export * from './IPoint';
 export * from './IRectangle';
 export * from './IRenderFunction';

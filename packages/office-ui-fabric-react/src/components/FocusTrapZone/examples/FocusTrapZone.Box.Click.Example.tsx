@@ -6,7 +6,7 @@ import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
 import './FocusTrapZone.Box.Example.scss';
 
@@ -60,7 +60,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
 
     return (
       <div className='ms-FocusTrapZoneBoxExample'>
-        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
+        <DefaultTextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
           componentRef={ this._setRef }

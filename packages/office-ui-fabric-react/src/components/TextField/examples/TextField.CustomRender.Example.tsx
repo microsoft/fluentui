@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
+import { DefaultTextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -22,7 +22,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <TextField onRenderLabel={ this._onRenderLabel } />
+        <DefaultTextField onRenderLabel={ this._onRenderLabel } />
       </div>
     );
   }
