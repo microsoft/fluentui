@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jan 2018 11:25:22 GMT and should not be manually modified.
+
+## 5.8.0
+Fri, 26 Jan 2018 11:25:22 GMT
+
+### Minor changes
+
+- IBaseProps: typings adjusted to be less restrictive and compatible with strict mode.
+
+## 5.7.1
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Patches
+
+- Set timeout ids to null for cancel and flush functions
 
 ## 5.7.0
 Mon, 22 Jan 2018 11:14:27 GMT
