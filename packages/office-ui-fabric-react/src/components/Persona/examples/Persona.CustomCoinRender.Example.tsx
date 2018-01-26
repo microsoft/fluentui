@@ -47,7 +47,7 @@ export class PersonaCustomCoinRenderExample extends React.Component {
     } = props;
 
     return (
-      <div className='custom-example-coin'>
+      <div className='customExampleCoin'>
         <img src={ imageUrl } alt={ imageAlt } width={ coinSize } height={ coinSize } />
       </div>
     );
