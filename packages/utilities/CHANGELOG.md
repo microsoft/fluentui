@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jan 2018 11:25:22 GMT and should not be manually modified.
+
+## 5.8.0
+Fri, 26 Jan 2018 11:25:22 GMT
+
+### Minor changes
+
+- IBaseProps: typings adjusted to be less restrictive and compatible with strict mode.
 
 ## 5.7.1
 Thu, 25 Jan 2018 11:23:06 GMT
