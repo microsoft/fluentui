@@ -356,6 +356,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         value={ this.state.value }
         onInput={ this._isControlled ? this._onInputChange : undefined }
         onChange={ this._isControlled ? this._onInputChange : undefined }
+        readOnly={ !this._isControlled }
         className={ this._getTextElementClassName() }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
@@ -378,6 +379,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         value={ this.state.value }
         onInput={ this._isControlled ? this._onInputChange : undefined }
         onChange={ this._isControlled ? this._onInputChange : undefined }
+        readOnly={ !this._isControlled }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
