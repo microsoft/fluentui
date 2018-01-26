@@ -21,25 +21,25 @@ export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProp
 }
 
 export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
-  private editingInput: HTMLInputElement;
-  private editingFloatingPicker: FloatingPeoplePicker;
-  private onRenderFloatingPicker: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
-  private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  private _editingInput: HTMLInputElement;
+  private _editingFloatingPicker: FloatingPeoplePicker;
+  private _onRenderFloatingPicker: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
+  private _floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
 
   constructor(props: IEditingSelectedPeopleItemProps) {
     super(props);
     this.state = { contextualMenuVisible: false };
-    this.onRenderFloatingPicker = this.props.onRenderFloatingPicker as
+    this._onRenderFloatingPicker = this.props.onRenderFloatingPicker as
       (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
-    this.floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
+    this._floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
   }
 
   public componentDidMount(): void {
     let getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
     let itemText = getEditingItemText(this.props.item);
-    this.editingFloatingPicker.onQueryStringChanged(itemText);
-    this.editingInput.value = itemText;
-    this.editingInput.focus();
+    this._editingFloatingPicker.onQueryStringChanged(itemText);
+    this._editingInput.value = itemText;
+    this._editingInput.focus();
   }
 
   @autobind
@@ -67,31 +67,31 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
 
   @autobind
   private _renderEditingSuggestions(): JSX.Element {
-    let onRenderFloatingPicker = this.onRenderFloatingPicker;
+    let onRenderFloatingPicker = this._onRenderFloatingPicker;
     return (onRenderFloatingPicker({
       componentRef: this._resolveRef('editingFloatingPicker'),
       onChange: this._onSuggestionSelected,
-      inputElement: this.editingInput,
+      inputElement: this._editingInput,
       selectedItems: [],
-      ...this.floatingPickerProps
+      ...this._floatingPickerProps
     }));
   }
 
   @autobind
   private _resolveInputRef(ref: HTMLInputElement): void {
-    this.editingInput = ref;
+    this._editingInput = ref;
 
-    this.forceUpdate(() => { this.editingInput.focus(); });
+    this.forceUpdate(() => { this._editingInput.focus(); });
   }
 
   @autobind
   private _onInputClick(): void {
-    this.editingFloatingPicker.showPicker();
+    this._editingFloatingPicker.showPicker();
   }
 
   @autobind
   private _onInputBlur(): void {
-    this.editingFloatingPicker.forceResolveSuggestion();
+    this._editingFloatingPicker.forceResolveSuggestion();
   }
 
   @autobind
@@ -103,7 +103,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
         this.props.onRemoveItem();
       }
     } else {
-      this.editingFloatingPicker.onQueryStringChanged(value);
+      this._editingFloatingPicker.onQueryStringChanged(value);
     }
   }
 
