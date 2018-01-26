@@ -1,6 +1,105 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 10 Nov 2017 17:09:36 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+
+## 5.17.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule 
+
+## 5.16.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- New slot for inputPlaceholderText color.
+
+## 5.15.3
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Patches
+
+- updated divider color to neutralTertiaryAlt
+- Theming: fix listText semantic slot
+
+## 5.15.2
+Fri, 19 Jan 2018 11:14:02 GMT
+
+### Patches
+
+- added semantic slots for smallInputBorder and smallInputBorderHover
+
+## 5.15.1
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Patches
+
+- Adding new normalize and AnimationValues
+
+## 5.15.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.14.0
+Mon, 04 Dec 2017 17:27:54 GMT
+
+### Minor changes
+
+- Add an event callback for when the theme changes.
+
+## 5.12.1
+Fri, 01 Dec 2017 11:11:16 GMT
+
+### Patches
+
+- Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI
+
+## 5.12.0
+Thu, 30 Nov 2017 11:23:35 GMT
+
+### Minor changes
+
+- Updating the `registerIcons` helper to take in options.
+
+## 5.11.1
+Wed, 29 Nov 2017 11:24:05 GMT
+
+### Patches
+
+- SemanticSlots: Updated inputBorderHovered color.
+
+## 5.11.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
+
+## 5.10.1
+Thu, 23 Nov 2017 11:10:13 GMT
+
+### Patches
+
+- Theme: Updated menuItemBackgroundChecked for ContextualMenu.
+
+## 5.10.0
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Minor changes
+
+- Export functions used to create font sets based upon a given locale code
+
+## 5.8.0
+Thu, 16 Nov 2017 11:20:34 GMT
+
+### Minor changes
+
+- Adding `styled` and `classNameFunction` helpers, in addition to a variety of interface.
 
 ## 5.7.0
 Fri, 10 Nov 2017 17:09:36 GMT

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IButtonClassNames } from './BaseButton.classNames';
+import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
@@ -106,6 +108,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuProps?: IContextualMenuProps;
 
   /**
+   * Callback that runs after Button's contextualmenu was closed (removed from the DOM)
+   */
+  onAfterMenuDismiss?: () => void;
+
+  /**
    * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
    */
   split?: boolean;
@@ -114,6 +121,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * The props for the icon shown when providing a menu dropdown.
    */
   menuIconProps?: IIconProps;
+
+  /**
+   * Accessible label for the dropdown chevron button if this button is split.
+   */
+  splitButtonAriaLabel?: string;
 
   /**
    * Optional callback when menu is clicked.
@@ -185,6 +197,32 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
  * Any custom data the developer wishes to associate with the menu item.
  */
   data?: any;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseButtonClassNames
+  */
+  getClassNames?: (theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined) => IButtonClassNames;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseSplitButtonClassNames
+  */
+  getSplitButtonClassNames?: (disabled: boolean,
+    expanded: boolean,
+    checked: boolean) => ISplitButtonClassNames;
 }
 
 export enum ElementType {
@@ -386,9 +424,29 @@ export interface IButtonStyles {
   screenReaderText?: IStyle;
 
   /**
-     * Style override for the container div around a SplitButton element
-     */
+   * Style override for the container div around a SplitButton element
+   */
   splitButtonContainer?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is hovered.
+   */
+  splitButtonContainerHovered?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is focused.
+   */
+  splitButtonContainerFocused?: IStyle;
+
+  /**
+  * Style for container div around a SplitButton element when the button is checked.
+  */
+  splitButtonContainerChecked?: IStyle;
+
+  /**
+   * Style for container div around a SplitButton element when the button is checked and hovered.
+   */
+  splitButtonContainerCheckedHovered?: IStyle;
 
   /**
    * Style override for the container div around a SplitButton element in a disabled state

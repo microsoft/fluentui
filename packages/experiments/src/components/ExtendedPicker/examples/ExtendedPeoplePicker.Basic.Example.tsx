@@ -13,9 +13,10 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
-import { FloatingPeoplePicker, IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';
+import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, IExtendedPersonaProps, ISelectedPeopleProps, SelectedPeopleList }
-  from 'experiments/lib/SelectedItemsList';
+  from '../../SelectedItemsList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -29,17 +30,19 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
+  searchForMoreText: 'Search more',
 };
 
 // tslint:disable-next-line:no-any
-export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
   private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
   private selectedItemsListProps: ISelectedPeopleProps;
+  private selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
@@ -47,6 +50,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
       assign(target, persona);
       peopleList.push(target);
     });
+
+    this.selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
     this.state = {
       peopleList: peopleList,
@@ -69,6 +74,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
       onExpandGroup: this._onExpandItem,
       removeMenuItemText: 'Remove',
       copyMenuItemText: 'Copy name',
+      selection: this.selection
     };
   }
 
@@ -99,8 +105,13 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
           'aria-label': 'People Picker'
         } }
         componentRef={ this._setComponentRef }
+        headerComponent={ this._renderHeader() }
       />
     );
+  }
+
+  private _renderHeader(): JSX.Element {
+    return <div>TO:</div>;
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IExtendedPersonaProps>): JSX.Element {
@@ -109,6 +120,10 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<any, IPeople
 
   private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
     return (<SelectedPeopleList {...props} />);
+  }
+
+  private _onSelectionChange(): void {
+    this.forceUpdate();
   }
 
   @autobind

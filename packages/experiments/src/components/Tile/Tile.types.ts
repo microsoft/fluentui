@@ -124,4 +124,11 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * @memberof ITileProps
    */
   toggleSelectionAriaLabel?: boolean;
+
+  /**
+   * Link ref
+   * @type {() => void}
+   * @memberof ITileProps
+   */
+  linkRef?: (element: HTMLAnchorElement) => void;
 }

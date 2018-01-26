@@ -78,7 +78,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     return `${completeState} ${titleString}`;
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+  private _onCheckboxChange(ev?: React.FormEvent<HTMLElement>, isChecked?: boolean): void {
     this._handleWithAnimation(this.props.onToggleComplete, 'ms-slideUpOut20');
   }
 

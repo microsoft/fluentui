@@ -78,11 +78,12 @@ export interface ICalendarInlineExampleProps {
   showWeekNumbers?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  showSixWeeksByDefault?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
-  public constructor() {
-    super();
+  public constructor(props: ICalendarInlineExampleProps) {
+    super(props);
 
     this.state = {
       selectedDate: null,
@@ -142,6 +143,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           showWeekNumbers={ this.props.showWeekNumbers }
           minDate={ this.props.minDate }
           maxDate={ this.props.maxDate }
+          showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
         />
         { this.props.showNavigateButtons &&
           <div>

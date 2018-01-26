@@ -19,6 +19,7 @@ export interface IComboBoxClassNames {
 
 export interface IComboBoxOptionClassNames {
   optionText: string;
+  root: string;
 }
 
 export const getClassNames = memoizeFunction((
@@ -43,15 +44,16 @@ export const getClassNames = memoizeFunction((
     ),
     root: mergeStyles(
       'ms-ComboBox',
-      isOpen && 'is-open',
+      hasErrorMessage ? styles.rootError : isOpen && 'is-open',
       required && 'is-required',
       styles.root,
       !allowFreeForm && styles.rootDisallowFreeForm,
-      hasErrorMessage && styles.rootError,
-      !disabled && focused && styles.rootFocused,
+      hasErrorMessage ? styles.rootError : !disabled && focused && styles.rootFocused,
       !disabled && {
         selectors: {
-          ':hover': styles.rootHovered
+          ':hover': hasErrorMessage ? styles.rootError : !isOpen && !focused && styles.rootHovered,
+          ':active': hasErrorMessage ? styles.rootError : styles.rootPressed,
+          ':focus': hasErrorMessage ? styles.rootError : styles.rootFocused
         }
       },
       disabled && [
@@ -97,5 +99,16 @@ export const getComboBoxOptionClassNames = memoizeFunction((
       'ms-ComboBox-optionText',
       styles.optionText
     ),
+    root: mergeStyles(
+      'ms-ComboBox-option',
+      styles.root,
+      {
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':focus': styles.rootFocused,
+          ':active': styles.rootPressed
+        }
+      }
+    )
   };
 });

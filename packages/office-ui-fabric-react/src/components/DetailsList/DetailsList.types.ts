@@ -62,7 +62,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
-  /** Controls how/if the details list manages selection. */
+  /** Controls how/if the details list manages selection. Options include none, single, multiple */
   selectionMode?: SelectionMode;
 
   /**
@@ -112,7 +112,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /** Callback fired on column resize */
-  onColumnResize?: (column?: IColumn, newWidth?: number) => void;
+  onColumnResize?: (column?: IColumn, newWidth?: number, columnIndex?: number) => void;
 
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
@@ -337,6 +337,13 @@ export interface IColumn {
    * Internal only value.
    */
   calculatedWidth?: number;
+
+  /**
+   * Internal only value.
+   * Remembers the actual witdh of the column on any case.
+   * On the other hand, calculatedWidth is only saved when it's defined by user, not for justified calculations.
+   */
+  currentWidth?: number;
 
   /**
    * An optional class name to stick on the column cell within each header.

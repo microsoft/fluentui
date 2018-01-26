@@ -44,7 +44,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     let filteredExpandedItems = expandedItems.filter((item: any) => items.indexOf(item) === -1);
     if (index > -1) {
       let newItems = items.slice(0, index).concat(filteredExpandedItems).concat(items.slice(index + 1));
-      this.updateSelectedItems(newItems);
+      this.updateItems(newItems);
     }
   }
 
@@ -59,7 +59,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       item,
       index,
       key: item.key ? item.key : index,
-      selected: this.selection.isIndexSelected(index),
+      selected: this.props.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,

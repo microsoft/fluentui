@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DatePicker } from './DatePicker';
-import { DayOfWeek } from '../../Calendar';
+import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 
@@ -14,6 +14,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * the public methods and properties of the component.
    */
   componentRef?: (component: IDatePicker) => void;
+
+  /**
+   * Pass calendar props to calendar component
+   */
+  calendarProps?: ICalendarProps;
 
   /**
    * Callback issued when a date is selected
@@ -91,7 +96,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Optional method to format the chosen date to a string to display in the DatePicker
    * @defaultvalue date.toString()
    */
-  formatDate?: (date: Date) => string;
+  formatDate?: (date?: Date) => string;
 
   /**
    * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
@@ -159,6 +164,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * The maximum allowable date.
    */
   maxDate?: Date;
+
+  /**
+   * The initially highlighted date in the calendar picker
+   */
+  initialPickerDate?: Date;
 }
 
 export interface IDatePickerStrings {

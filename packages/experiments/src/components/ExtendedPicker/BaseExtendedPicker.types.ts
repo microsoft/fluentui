@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseAutoFill, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
-import { IBaseFloatingPickerProps } from 'experiments/lib/FloatingPicker';
-import { IBaseSelectedItemsListProps } from 'experiments/lib/SelectedItemsList';
+import { IBaseFloatingPickerProps } from '../../FloatingPicker';
+import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */
@@ -17,6 +17,11 @@ export interface IBaseExtendedPicker<T> {
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBaseExtendedPickerProps<T> {
   componentRef?: (component?: IBaseExtendedPicker<T>) => void;
+
+  /**
+   * Header/title element for the picker
+   */
+  headerComponent?: JSX.Element;
 
   /**
    * Initial items that have already been selected and should appear in the people picker.

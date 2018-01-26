@@ -19,6 +19,7 @@ let _theme: ITheme = {
   fonts: DefaultFontStyles,
   isInverted: false
 };
+let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
@@ -43,6 +44,30 @@ export function getTheme(): ITheme {
 }
 
 /**
+ * Registers a callback that gets called whenever the theme changes.
+ * This should only be used when the component cannot automatically get theme changes through its state.
+ * This will not register duplicate callbacks.
+ */
+export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+  if (_onThemeChangeCallbacks.indexOf(callback) === -1) {
+    _onThemeChangeCallbacks.push(callback);
+  }
+}
+
+/**
+ * See registerOnThemeChangeCallback().
+ * Removes previously registered callbacks.
+ */
+export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void {
+  const i = _onThemeChangeCallbacks.indexOf(callback);
+  if (i === -1) {
+    return;
+  }
+
+  _onThemeChangeCallbacks.splice(i, 1);
+}
+
+/**
  * Applies the theme, while filling in missing slots.
  */
 export function loadTheme(theme: IPartialTheme): ITheme {
@@ -52,6 +77,14 @@ export function loadTheme(theme: IPartialTheme): ITheme {
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
+
+  _onThemeChangeCallbacks.forEach((callback: (theme: ITheme) => void) => {
+    try {
+      callback(_theme);
+    } catch (e) {
+      // don't let a bad callback break everything else
+    }
+  });
 
   return _theme;
 }
@@ -66,26 +99,31 @@ export function createTheme(theme: IPartialTheme): ITheme {
     newPalette.accent = newPalette.themePrimary;
   }
 
+  // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
+  let newSemanticColors = { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted), ...theme.semanticColors };
+  newSemanticColors = { ..._fixDeprecatedSlots(newSemanticColors), ...theme.semanticColors };
+
   return {
     palette: newPalette,
     fonts: {
       ...DefaultFontStyles,
       ...theme.fonts
     },
-    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted), ...theme.semanticColors },
+    semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted
   } as ITheme;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
+// This does NOT fix deprecated slots.
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISemanticColors {
-  return {
+  let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
     bodyTextChecked: p.black,
     bodySubtext: p.neutralSecondary,
-    bodyDivider: p.neutralLight,
+    bodyDivider: p.neutralTertiaryAlt,
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
@@ -103,11 +141,13 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralPrimary,
+    inputBorderHovered: p.neutralDark,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
     inputFocusBorderAlt: p.themePrimary,
+    smallInputBorder: p.neutralSecondary,
+    inputPlaceholderText: p.neutralSecondary,
 
     buttonBackground: p.neutralLighter,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
@@ -120,14 +160,25 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     buttonTextCheckedHovered: p.black,
 
     menuItemBackgroundHovered: p.neutralLighter,
-    menuItemBackgroundChecked: p.neutralQuaternaryAlt,
+    menuItemBackgroundChecked: p.neutralLight,
     menuIcon: p.themePrimary,
     menuHeader: p.themePrimary,
 
     listBackground: p.white,
-    listTextColor: p.neutralPrimary,
+    listText: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
     listItemBackgroundChecked: p.neutralLight,
-    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
+    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
+
+    // Deprecated slots, fixed by _fixDeprecatedSlots()
+    listTextColor: ''
   };
+
+  return toReturn;
+}
+
+function _fixDeprecatedSlots(s: ISemanticColors): ISemanticColors {
+  s.listTextColor = s.listText;
+
+  return s;
 }

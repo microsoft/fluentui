@@ -60,6 +60,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   showWeekNumbers?: boolean;
   firstWeekOfYear: FirstWeekOfYear;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
+  showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
 }
@@ -122,13 +123,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       <div
         className={ css('ms-DatePicker-dayPicker',
           styles.dayPicker,
-          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && (getRTL() ? styles.showWeekNumbersRTL : styles.showWeekNumbers)
         ) }
         id={ dayPickerId }
       >
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-            <span
+            <button
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth,
                 {
                   ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds
@@ -142,8 +143,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span >
-            <span
+            </button >
+            <button
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth,
                 {
                   ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds
@@ -156,7 +157,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span >
+            </button >
           </div >
         </div >
         <div className={ css('ms-DatePicker-header', styles.header) } >
@@ -474,7 +475,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate } = propsToUse;
+    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate, showSixWeeksByDefault } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
     let weeks: IDayInfo[][] = [];
@@ -492,7 +493,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
     }
 
-    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
+    let shouldGetWeeks = true;
+
+    for (let weekIndex = 0; shouldGetWeeks; weekIndex++) {
       let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
@@ -519,7 +522,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         date.setDate(date.getDate() + 1);
       }
 
-      if (!isAllDaysOfWeekOutOfMonth) {
+      // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
+      shouldGetWeeks = showSixWeeksByDefault ? (!isAllDaysOfWeekOutOfMonth || weekIndex <= 5) : !isAllDaysOfWeekOutOfMonth;
+      if (shouldGetWeeks) {
         weeks.push(week);
       }
     }

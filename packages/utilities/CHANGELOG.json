@@ -2,6 +2,100 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "@uifabric/utilities_v5.8.0",
+      "date": "Fri, 26 Jan 2018 11:25:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "46ca980e37486b51ccf2bc13aea571213bb081e9",
+            "comment": "IBaseProps: typings adjusted to be less restrictive and compatible with strict mode."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.1",
+      "tag": "@uifabric/utilities_v5.7.1",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "c0d264e51b37fb707a149c1dd22641f9378e367b",
+            "comment": "Set timeout ids to null for cancel and flush functions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.10.1 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/utilities_v5.7.0",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "3918313795cd6f12b7405aa94b559e68c7d71652",
+            "comment": "Adding a helper component to inject context values"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.1",
+      "tag": "@uifabric/utilities_v5.6.1",
+      "date": "Tue, 19 Dec 2017 11:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "745d39de8459b457c00c81af37b458188608eaad",
+            "comment": "Broaden the range of allowed prop-type versions"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/utilities_v5.6.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.8.1 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/utilities_v5.5.0",
+      "date": "Tue, 28 Nov 2017 02:24:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "94954657769c46824f84e8aba06b326721b4a161",
+            "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "@uifabric/utilities_v5.4.0",
       "date": "Mon, 13 Nov 2017 11:20:56 GMT",

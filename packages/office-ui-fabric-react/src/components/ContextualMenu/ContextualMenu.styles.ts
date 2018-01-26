@@ -4,20 +4,19 @@ import {
   IRawStyle,
   ITheme,
   concatStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../Styling';
 import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 
 import { memoizeFunction } from '../../Utilities';
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const ContextualMenuItemHeight = '32px';
 
 const getItemHighContrastStyles = memoizeFunction((): IRawStyle => {
   return {
     selectors: {
-      [MS_HIGHCONTRAST_ACTIVE]: {
+      [HighContrastSelector]: {
         backgroundColor: 'Highlight',
         borderColor: 'Highlight',
         color: 'HighlightText',
@@ -33,6 +32,7 @@ export const getMenuItemStyles = memoizeFunction((
   const { semanticColors, fonts } = theme;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
+  const ContextualMenuItemDividerColor = semanticColors.bodyDivider;
 
   const menuItemStyles: IMenuItemStyles = {
     item: [
@@ -45,7 +45,7 @@ export const getMenuItemStyles = memoizeFunction((
     divider: {
       display: 'block',
       height: '1px',
-      backgroundColor: semanticColors.bodyDivider,
+      backgroundColor: ContextualMenuItemDividerColor,
       position: 'relative'
     },
     root: [
@@ -87,7 +87,6 @@ export const getMenuItemStyles = memoizeFunction((
     rootExpanded: {
       backgroundColor: ContextualMenuItemBackgroundSelectedColor,
       color: semanticColors.bodyTextChecked,
-      fontWeight: FontWeights.semibold,
       ...getItemHighContrastStyles()
     },
     linkContent: {
@@ -130,15 +129,18 @@ export const getMenuItemStyles = memoizeFunction((
     iconColor: {
       color: semanticColors.menuIcon,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'HighlightText',
         }
       }
     },
+    iconDisabled: {
+      color: semanticColors.disabledBodyText,
+    },
     checkmarkIcon: {
       color: semanticColors.bodySubtext,
       selectors: {
-        [MS_HIGHCONTRAST_ACTIVE]: {
+        [HighContrastSelector]: {
           color: 'HighlightText',
         }
       }

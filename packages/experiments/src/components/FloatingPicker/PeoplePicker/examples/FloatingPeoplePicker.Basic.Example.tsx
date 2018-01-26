@@ -11,7 +11,7 @@ import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } f
 import { IBaseFloatingPicker } from '../../BaseFloatingPicker.types';
 import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
-import { people, mru } from 'experiments/lib/ExtendedPicker';
+import { people, mru } from '../../../ExtendedPicker';
 import './FloatingPeoplePicker.Basic.Example.scss';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
@@ -33,13 +33,12 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsContainerAriaLabel: 'Suggested contacts'
 };
 
-// tslint:disable-next-line:no-any
-export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
+export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: IBaseFloatingPicker;
   private _inputElement: HTMLDivElement;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     let peopleList: IPersonaWithMenu[] = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
@@ -84,6 +83,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<any, IPeople
         componentRef={ this._setComponentRef }
         onChange={ this._onPickerChange }
         inputElement={ this._inputElement }
+        resolveDelay={ 300 }
       />
     );
   }

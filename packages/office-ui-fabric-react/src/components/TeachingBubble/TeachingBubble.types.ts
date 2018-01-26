@@ -65,4 +65,14 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble | Teach
    * Callback when the TeachingBubble tries to close.
    */
   onDismiss?: (ev?: any) => void;
+
+  /**
+   * Whether or not the Teaching Bubble is wide, with image on the left side.
+   */
+  isWide?: boolean;
+
+  /**
+   * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
+   */
+  hasSmallHeadline?: boolean;
 }

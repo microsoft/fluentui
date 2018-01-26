@@ -42,12 +42,12 @@ export interface IThemeGeneratorPageState {
 const BackgroundImageUriKey = 'backgroundImageUri';
 const BackgroundOverlayKey = 'backgroundOverlay';
 
-export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageState> {
+export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageState> {
   private _semanticSlotColorChangeTimeout: number;
   private _imgUrl: string;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     let themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
@@ -481,7 +481,7 @@ export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageSt
     }
     document.body.style.backgroundColor = themeAsJson.backgroundColor;
     document.body.style.color = themeAsJson.bodyText;
-    loadTheme({ palette: themeAsJson });
+    console.log('Full theme... ', loadTheme({ palette: themeAsJson }));
   }
 
   @autobind
