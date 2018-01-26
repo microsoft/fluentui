@@ -53,7 +53,7 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
     );
   }
 
-  private _renderWorkingOnItSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderWorkingOnItSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | false {
     return (this.props.dataProvider.isLoading && this.state.items.length > 0) && (
       <div className={ styles.workingOnItSpinner }>
         <Spinner type={ SpinnerType.normal } />
@@ -61,7 +61,7 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
     );
   }
 
-  private _renderFetchingTasksSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderFetchingTasksSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | false {
     return (this.props.dataProvider.isLoading && this.state.items.length === 0) && (
       <div className={ styles.fetchingTasksSpinner }>
         <Spinner type={ SpinnerType.large } label={ strings.fetchingTasksLabel } />
