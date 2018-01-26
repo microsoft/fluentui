@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.8.0",
+      "tag": "@uifabric/utilities_v5.8.0",
+      "date": "Fri, 26 Jan 2018 11:25:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "46ca980e37486b51ccf2bc13aea571213bb081e9",
+            "comment": "IBaseProps: typings adjusted to be less restrictive and compatible with strict mode."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.7.1",
       "tag": "@uifabric/utilities_v5.7.1",
       "date": "Thu, 25 Jan 2018 11:23:06 GMT",
