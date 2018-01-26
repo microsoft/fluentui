@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix CalendarDay RTL view",
+      "comment": "Add private _defaultCalloutProps instead of public defaultProps to set calloutProps.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "srkandu@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }
