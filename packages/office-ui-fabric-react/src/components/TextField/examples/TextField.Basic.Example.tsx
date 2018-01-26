@@ -13,11 +13,13 @@ export class TextFieldBasicExample extends React.Component<any, any> {
           label='Standard with a blank value attribute'
           value=''
           description='Can not be edited by the user.'
+          readOnly={ true }
         />
         <TextField
           label='Standard with value attribute'
           value='With a set value.'
           description='Can not be edited by the user.'
+          readOnly={ true }
         />
         <TextField
           label='Standard with defaultValue attribute'
