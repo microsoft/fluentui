@@ -1,3 +1,5 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
 import {
@@ -20,11 +22,12 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-8a1666a2.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-0-2e092c7d.woff') format('woff')`,
     },
     icons: {
       'DecreaseIndentLegacy': '\uE290',
       'IncreaseIndentLegacy': '\uE291',
+      'SizeLegacy': '\uE2B2',
       'InternetSharing': '\uE704',
       'Brightness': '\uE706',
       'MapPin': '\uE707',
@@ -50,6 +53,8 @@ export function initializeIcons(
       'Back': '\uE72B',
       'Refresh': '\uE72C',
       'Lock': '\uE72E',
+      'BlockedSite': '\uE72F',
+      'ReportHacked': '\uE730',
       'EMI': '\uE731',
       'MiniLink': '\uE732',
       'Blocked': '\uE733',
@@ -65,6 +70,7 @@ export function initializeIcons(
       'Print': '\uE749',
       'Up': '\uE74A',
       'Down': '\uE74B',
+      'OEM': '\uE74C',
       'Save': '\uE74E',
       'Cloud': '\uE753',
       'CommandPrompt': '\uE756',
@@ -93,7 +99,6 @@ export function initializeIcons(
       'Error': '\uE783',
       'GripperBarVertical': '\uE784',
       'Unlock': '\uE785',
-      'Megaphone': '\uE789',
       'AutoEnhanceOn': '\uE78D',
       'AutoEnhanceOff': '\uE78E',
       'Color': '\uE790',
@@ -103,6 +108,7 @@ export function initializeIcons(
       'AspectRatio': '\uE799',
       'Contrast': '\uE7A1',
       'Redo': '\uE7A6',
+      'Crop': '\uE7A8',
       'PhotoCollection': '\uE7AA',
       'Album': '\uE7AB',
       'Rotate': '\uE7AD',
@@ -118,11 +124,7 @@ export function initializeIcons(
       'Move': '\uE7C2',
       'TouchPointer': '\uE7C9',
       'Merge': '\uE7D5',
-      'TurnRight': '\uE7DB',
-      'Ferry': '\uE7E3',
-      'Highlight': '\uE7E6',
-      'Tab': '\uE7E9',
-      'Admin': '\uE7EF'
+      'TurnRight': '\uE7DB'
     }
   };
 
