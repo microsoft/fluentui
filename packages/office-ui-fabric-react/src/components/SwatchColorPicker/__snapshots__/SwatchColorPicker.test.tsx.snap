@@ -91,13 +91,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -275,13 +275,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -459,13 +459,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -643,13 +643,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -831,13 +831,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1015,13 +1015,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1199,13 +1199,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1383,13 +1383,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1571,13 +1571,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1755,13 +1755,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -1939,13 +1939,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -2123,13 +2123,13 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 }
                 .ms-Fabric.is-focusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: 0px;
+                  bottom: 1px;
                   content: "";
-                  left: 0px;
+                  left: 1px;
                   outline: 1px solid #666666;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){& {
