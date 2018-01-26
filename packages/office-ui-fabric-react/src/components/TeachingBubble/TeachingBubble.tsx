@@ -14,6 +14,21 @@ export interface ITeachingBubbleState {
 }
 
 export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+  public static defaultProps = {
+    /**
+     * Default calloutProps is deprecated in favor of private _defaultCalloutProps.
+     * Remove in next release.
+     * @deprecated
+     */
+    calloutProps: {
+      beakWidth: 16,
+      gapSpace: 0,
+      setInitialFocus: true,
+      doNotLayer: false,
+      directionalHint: DirectionalHint.rightCenter,
+    }
+  };
+
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
@@ -28,19 +43,19 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter
+      directionalHint: DirectionalHint.rightCenter,
     };
   }
 
   public render() {
-    let { calloutProps, targetElement } = this.props;
+    let { calloutProps: setCalloutProps, targetElement } = this.props;
+    const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
 
     return (
       <Callout
         className={ css('ms-TeachingBubble', styles.root, this.props.isWide ? styles.wideCallout : null) }
         ref={ this._resolveRef('_callout') }
         target={ targetElement }
-        { ...this._defaultCalloutProps }
         {...calloutProps}
       >
         <TeachingBubbleContent { ...this.props } />
