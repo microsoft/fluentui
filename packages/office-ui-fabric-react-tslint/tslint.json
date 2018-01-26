@@ -135,7 +135,7 @@
     "no-constant-condition": true,
     "no-construct": true,
     "no-debugger": true,
-    "no-duplicate-case": true,
+    "no-duplicate-switch-case": true,
     "no-duplicate-parameter-names": true,
     "no-empty": true,
     "no-eval": true,
@@ -172,7 +172,6 @@
         "variable-declaration": "nospace"
       }
     ],
-    "use-named-parameter": true,
-    "valid-typeof": true
+    "use-named-parameter": true
   }
 }

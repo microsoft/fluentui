@@ -334,7 +334,7 @@
         "@types/react-dom": "16.0.3",
         "@types/webpack-env": "1.13.0",
         "es6-promise": "4.1.1",
-        "immutability-helper": "2.6.2",
+        "immutability-helper": "2.6.4",
         "react": "16.2.0",
         "react-dom": "16.2.0",
         "tslib": "1.8.1",
@@ -5885,9 +5885,8 @@
       "integrity": "sha1-vjPUCsEO8ZJnAfbwii2G+/0a0+Q="
     },
     "immutability-helper": {
-      "version": "2.6.2",
-      "resolved": "https://registry.npmjs.org/immutability-helper/-/immutability-helper-2.6.2.tgz",
-      "integrity": "sha512-2boGYtiA++szFIXl9tlTJ7f2emec+3UCaRjv8Ixnw62G43rz2n+vZ5kfs6fUmCORKuhJHFR2oSuAxBgrMxt95g==",
+      "version": "2.6.4",
+      "resolved": "https://registry.npmjs.org/immutability-helper/-/immutability-helper-2.6.4.tgz",
       "requires": {
         "invariant": "2.2.2"
       }

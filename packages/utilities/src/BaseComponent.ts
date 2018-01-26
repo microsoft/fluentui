@@ -9,8 +9,9 @@ import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps
  *
  * @public
  */
-export interface IBaseProps {
-  componentRef?: (ref: React.ReactNode | null) => (void | React.ReactNode);
+// tslint:disable-next-line:no-any
+export interface IBaseProps<T = any> {
+  componentRef?: (ref: T | null) => (void | T);
 }
 
 /**
