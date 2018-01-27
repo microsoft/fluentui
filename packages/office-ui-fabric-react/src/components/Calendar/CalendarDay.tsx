@@ -63,6 +63,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  workWeekDays?: DayOfWeek[];
 }
 
 export interface ICalendarDayState {
@@ -239,7 +240,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                       key={ day.key }
                       className={ css(
                         {
-                          ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                          ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && (dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek),
                           ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
                           ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
                         }) }
@@ -416,9 +417,18 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   @autobind
   private _onSelectDate(selectedDate: Date) {
-    let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection, minDate, maxDate } = this.props;
+    let {
+      onSelectDate,
+      dateRangeType,
+      firstDayOfWeek,
+      navigatedDate,
+      autoNavigateOnSelection,
+      minDate,
+      maxDate,
+      workWeekDays
+    } = this.props;
 
-    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {
       dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
     }
@@ -475,7 +485,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today, minDate, maxDate, showSixWeeksByDefault } = propsToUse;
+    let {
+      navigatedDate,
+      selectedDate,
+      dateRangeType,
+      firstDayOfWeek,
+      today,
+      minDate,
+      maxDate,
+      showSixWeeksByDefault,
+      workWeekDays
+    } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
     let weeks: IDayInfo[][] = [];
@@ -488,7 +508,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     // a flag to indicate whether all days of the week are in the month
     let isAllDaysOfWeekOutOfMonth = false;
 
-    let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+    let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {
       selectedDates = this._getBoundedDateRange(selectedDates, minDate, maxDate);
     }
