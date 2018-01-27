@@ -127,7 +127,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 autoNavigateOnSelection={ true }
                 highlightCurrentMonth={ true }
                 showGoToToday={ true }
-                selectableDaysOfWeek={ [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday] }
+                workWeekDays={ [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday] }
               />
             </ExampleCard>
             <ExampleCard

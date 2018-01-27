@@ -140,10 +140,10 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showSixWeeksByDefault?: boolean;
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek
+   * The days that are selectable when dateRangeType is WorkWeek. If dateRangeType is not WorkWeek this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
-  selectableDaysOfWeek?: DayOfWeek[];
+  workWeekDays?: DayOfWeek[];
 }
 
 export interface ICalendarStrings {

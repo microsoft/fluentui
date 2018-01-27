@@ -19,7 +19,7 @@ let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
 };
-let defaultSelectableDaysOfWeek: DayOfWeek[] = [
+let defaultWorkWeekDays: DayOfWeek[] = [
   DayOfWeek.Monday,
   DayOfWeek.Tuesday,
   DayOfWeek.Wednesday,
@@ -68,7 +68,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateTimeFormatter: dateTimeFormatterCallbacks,
     showSixWeeksByDefault: false,
-    selectableDaysOfWeek: defaultSelectableDaysOfWeek
+    workWeekDays: defaultWorkWeekDays
   };
 
   public refs: {
@@ -169,7 +169,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
                   minDate={ minDate }
                   maxDate={ maxDate }
-                  selectableDaysOfWeek={ this.props.selectableDaysOfWeek }
+                  workWeekDays={ this.props.workWeekDays }
                   ref='dayPicker'
                 />
                 }
@@ -260,9 +260,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   @autobind
   private _onGotoToday() {
 
-    let { dateRangeType, firstDayOfWeek, today, selectableDaysOfWeek } = this.props;
+    let { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
-    let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, selectableDaysOfWeek!);
+    let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
     this._onSelectDate(today!, dates);
 
