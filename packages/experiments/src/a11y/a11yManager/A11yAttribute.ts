@@ -13,7 +13,7 @@ export enum A11yAttributeType {
    * Params: None
    * Value Format: string containing alphanumerical characters, dashes and underscores
    *
-   * Example: <button data-sp-a11y-id="button1">Button</button>
+   * Example: <button data-a11y-id="button1">Button</button>
    */
   Id,
 
@@ -24,7 +24,7 @@ export enum A11yAttributeType {
    * Params: None
    * Value Format: string containing alphanumerical characters, dashes and underscores (multiple classes NOT supported)
    *
-   * Example: <button data-sp-a11y-class="button">Button</button>
+   * Example: <button data-a11y-class="button">Button</button>
    */
   Class,
 
@@ -37,7 +37,7 @@ export enum A11yAttributeType {
    * Params: None
    * Value Format: string
    *
-   * Example: <div data-sp-a11y-alertonfocusin="You entered the menu.">...</div>
+   * Example: <div data-a11y-alertonfocusin="You entered the menu.">...</div>
    */
   AlertOnFocusIn,
 
@@ -48,7 +48,7 @@ export enum A11yAttributeType {
    * Params: None
    * Value Format: string
    *
-   * Example: <div data-sp-a11y-alertonfocusout="You exited the menu.">...</div>
+   * Example: <div data-a11y-alertonfocusout="You exited the menu.">...</div>
    */
   AlertOnFocusOut,
 
@@ -59,8 +59,8 @@ export enum A11yAttributeType {
    * Params: None
    * Value Format: comma separated integer key codes or 'all'
    *
-   * Example: <div data-sp-a11y-skipkeys="65,66,67">'a', 'b', 'c' key strokes are skipped here.</div>
-   * Example: <div data-sp-a11y-skipkeys="all">All key strokes are skipped here.</div>
+   * Example: <div data-a11y-skipkeys="65,66,67">'a', 'b', 'c' key strokes are skipped here.</div>
+   * Example: <div data-a11y-skipkeys="all">All key strokes are skipped here.</div>
    */
   SkipKeys,
 
@@ -71,8 +71,8 @@ export enum A11yAttributeType {
    * Params: None
    * Value Format: comma separated integer key codes or 'all'
    *
-   * Example: <div data-sp-a11y-stopkeys="65,66,67">'a', 'b', 'c' key strokes are stopped here.</div>
-   * Example: <div data-sp-a11y-stopkeys="all">All key strokes are stopped here.</div>
+   * Example: <div data-a11y-stopkeys="65,66,67">'a', 'b', 'c' key strokes are stopped here.</div>
+   * Example: <div data-a11y-stopkeys="all">All key strokes are stopped here.</div>
    */
   StopKeys,
 
@@ -93,24 +93,24 @@ export enum A11yAttributeType {
    *    first focusable child, and focusable parent
    *
    * Example:
-   * <div data-sp-a11y-id="propertypane">...</div>
+   * <div data-a11y-id="propertypane">...</div>
    * <div id='app'
-   *    data-sp-a11y-navigateonkey-80-a='#propertypane'><!-- Alt+P takes focus to PropertyPane -->
+   *    data-a11y-navigateonkey-80-a='#propertypane'><!-- Alt+P takes focus to PropertyPane -->
    *    <!-- Alt+F10 inside web part takes focus to web part toolbar -->
    *    <!-- Ctrl+Up inside web part takes focus to previous web part -->
    *    <!-- Ctrl+Down inside web part takes focus to next web part -->
    *    <div class='webpart'
-   *      data-sp-a11y-navigateonkey-121-a='.toolbar'
-   *      data-sp-a11y-navigateonkey-38-c='$prev'
-   *      data-sp-a11y-navigateonkey-40-c='$next'
+   *      data-a11y-navigateonkey-121-a='.toolbar'
+   *      data-a11y-navigateonkey-38-c='$prev'
+   *      data-a11y-navigateonkey-40-c='$next'
    *    >
    *      <div data-sp-class='toolbar'>Web part 1 toolbar</div>
    *      <div>Web part 1 content</div>
    *    </div>
    *    <div class='webpart'
-   *      data-sp-a11y-navigateonkey-121-a='.toolbar'
-   *      data-sp-a11y-navigateonkey-38-c='$prev'
-   *      data-sp-a11y-navigateonkey-40-c='$next'
+   *      data-a11y-navigateonkey-121-a='.toolbar'
+   *      data-a11y-navigateonkey-38-c='$prev'
+   *      data-a11y-navigateonkey-40-c='$next'
    *    >
    *      <div data-sp-class='toolbar'>Web part 2 toolbar</div>
    *      <div>Web part 2 content</div>
@@ -122,7 +122,7 @@ export enum A11yAttributeType {
   /**
    * Params: None
    * Value Format: None (The value does not matter)
-   * Example: <div data-sp-a11y-navigatebyhierarchy="1">... Use Tab/Shift+Tab/Enter/Escape to navigate here ...</div>
+   * Example: <div data-a11y-navigatebyhierarchy="1">... Use Tab/Shift+Tab/Enter/Escape to navigate here ...</div>
    *
    * Uses Hierarchical Navigation inside the marked up element. For more information about Hierarchical Navigation
    * refer to A11yManager. It has no effect if Hierarchical Navigation is already enabled by an ancestor.
@@ -138,16 +138,16 @@ export enum A11yAttributeType {
  * a11y-related behaviors.
  *
  * The attributes name format is as follows: <appPrefix>-<attributeType>-<params?>
- * appPrefix is a string provided by A11yManager to make the attributes unique to the manager e.g. data-sp-a11y
+ * appPrefix is a string provided by A11yManager to make the attributes unique to the manager e.g. data-a11y
  * attributeType is a string identifier for the attribute type e.g. navigateonkey
  * params is an optional set of strings separated by dash that represent the parameters of the attribute e.g. 27-c-a
  *
  * Example: Pressing Ctrl+Alt+Escape inside menu element should set focus to Button1 element
- * <div data-sp-a11y-id='menu' data-sp-a11y-navigateonkey-27-c-a='#button1'>...</div>
- * <button data-sp-a11y-id='button1'>Button1</button>
+ * <div data-a11y-id='menu' data-a11y-navigateonkey-27-c-a='#button1'>...</div>
+ * <button data-a11y-id='button1'>Button1</button>
  *
  * The corresponding A11yAttribute instance would have the following property values:
- * appPrefix: 'data-sp-a11y-',
+ * appPrefix: 'data-a11y-',
  * type: NAVIGATION_ON_KEY,
  * params: ['27', 'c', 'a']
  * value: 'button1'
@@ -249,7 +249,7 @@ export default class A11yAttribute {
   /**
    * The attribute name that should be set on the element
    * The format of the name is <prefix>-<type>-<param1>-<param2>-...
-   * For example: data-sp-a11y-nextfocusonkey-9
+   * For example: data-a11y-nextfocusonkey-9
    */
   public get name(): string {
     let name: string = this.prefix;
@@ -284,7 +284,7 @@ export default class A11yAttribute {
   /**
    * The attribute parameters extracted from its name
    *
-   * Example: data-sp-a11y-type-p1-p2-p3 => ['p1','p2','p3']
+   * Example: data-a11y-type-p1-p2-p3 => ['p1','p2','p3']
    */
   public get params(): string[] {
     return this._params || [];

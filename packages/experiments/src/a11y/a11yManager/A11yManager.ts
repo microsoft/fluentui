@@ -65,8 +65,6 @@ export default class A11yManager {
   /**
    * Focus detection delay is the time that we wait after a focusout event to see a focusin event and pair them
    * as a focus transition. If the timer expires, the destination is considered to be an external element.
-   * The value is experminental and should be tested across browsers. Initially it's tested using the demo of
-   * sp-a11y project on supported browsers.
    *
    * @internalremarks If there is any need to change this value or make it environment-dependent, document the reason
    * and testing methodology.
@@ -97,7 +95,6 @@ export default class A11yManager {
    */
   public static create(domElement: HTMLElement, config?: IA11yManagerConfig): A11yManager {
     if (A11yManager._findInstanceForElement(domElement)) {
-      // VSO #372695: Localize sp-a11y errors
       console.warn('Creating an A11yManager on an element already managed by a parent A11yManager is not supported' +
         ' and may result in unexpected behavior. Inseatd you should use getInsanceById to get the existing manager.');
     }
@@ -412,7 +409,6 @@ export default class A11yManager {
 
   private constructor(rootElement: HTMLElement, config?: IA11yManagerConfig) {
     if (!rootElement) {
-      // VSO #372695: Localize sp-a11y errors
       throw Error('Invalid root element for constructing A11yManager');
     }
 
