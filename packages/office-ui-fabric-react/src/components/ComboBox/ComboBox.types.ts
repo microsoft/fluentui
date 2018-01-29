@@ -137,7 +137,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
    * @default true
    */
-  buttonAriaHidden?: boolean;
+  isButtonAriaHidden?: boolean;
 }
 
 export interface IComboBoxStyles {
