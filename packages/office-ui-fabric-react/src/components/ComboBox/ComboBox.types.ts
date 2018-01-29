@@ -132,6 +132,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether to use the ComboBoxes width as the menu's width
    */
   useComboBoxAsMenuWidth?: boolean;
+
+  /**
+   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
+   * @default true
+   */
+  isButtonAriaHidden?: boolean;
 }
 
 export interface IComboBoxStyles {
