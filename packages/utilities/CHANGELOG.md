@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 26 Jan 2018 11:25:22 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+
+## 5.9.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add work week date range type and update date math getDateRangeArray to consume it, add unit tests
 
 ## 5.8.0
 Fri, 26 Jan 2018 11:25:22 GMT
