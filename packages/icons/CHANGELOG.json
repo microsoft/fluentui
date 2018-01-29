@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "5.4.1",
+      "tag": "@uifabric/icons_v5.4.1",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Srikanth Deshpande <srideshpande@users.noreply.github.com>",
+            "commit": "25129e761bc4463160015d5282c82f66aad99174",
+            "comment": "Updating fabric icons in office-ui-fabric-react's  @uifabric/icons package"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "@uifabric/icons_v5.4.0",
       "date": "Wed, 03 Jan 2018 11:23:12 GMT",

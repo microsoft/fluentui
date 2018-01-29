@@ -2,6 +2,55 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.44.0",
+      "tag": "office-ui-fabric-react_v5.44.0",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "58615e57bf5698dc425d8c825163697b26303243",
+            "comment": "Combox box: added accessibility changes added a title and changed activedescendant to use focused element"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "048cf3af397658b628b7495c6ef7354b49147f22",
+            "comment": "Callout/Popup: Fix a bug where callout doesn't have the correct overflow style\""
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "9d785c7971d56222ec9cbb72d5d624fa8209718c",
+            "comment": "setting people picker default size back to 28 from 24"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4b472acc791f1b1d22b95e2ea48c6538aae94573",
+            "comment": "Add private _defaultCalloutProps instead of public defaultProps to set calloutProps."
+          }
+        ],
+        "minor": [
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "c91e28996fc74eff98bbb3c59426e8f6f159e64f",
+            "comment": "Add work week date range type and update calendar and calendarDay components to consume it"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "071a6daa6867df57ab98affde613a3264ae62b88",
+            "comment": "Added onRenderCoin prop that controls the persona coin image"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.43.1",
       "tag": "office-ui-fabric-react_v5.43.1",
       "date": "Fri, 26 Jan 2018 11:25:22 GMT",
