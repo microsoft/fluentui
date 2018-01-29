@@ -271,6 +271,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       autoComplete,
       buttonIconProps,
+      buttonAriaHidden = true,
       styles: customStyles,
       theme,
       title
@@ -337,7 +338,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
             role='presentation'
-            aria-hidden='true'
+            aria-hidden={ buttonAriaHidden }
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
