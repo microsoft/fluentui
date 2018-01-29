@@ -176,6 +176,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     let curr = this.refs.root;
     while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
+      if (curr.tagName === 'HTML') {
+        // Fallback color if no element has a declared background-color attribute
+        return 'rgba(244, 244, 244, 1)';
+      }
       if (curr.parentElement) {
         curr = curr.parentElement;
       }
