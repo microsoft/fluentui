@@ -99,12 +99,13 @@ $field-error-color: $errorTextColor;
 }
 
 .fieldPrefixSuffix {
+  align-items: center;
   background: $ms-color-neutralLighter;
   color: $ms-color-neutralSecondary;
   display: flex;
-  align-items: center;
-  padding: 0 10px;
   line-height: 1;
+  padding: 0 10px;
+  white-space: nowrap;
 }
 
 .field {
