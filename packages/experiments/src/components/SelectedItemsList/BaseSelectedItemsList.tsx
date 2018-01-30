@@ -100,6 +100,10 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (newItems) {
       this.setState({ items: newProps.selectedItems });
     }
+
+    if (newProps.selection) {
+      this.selection = newProps.selection;
+    }
   }
 
   // tslint:disable-next-line:no-any
