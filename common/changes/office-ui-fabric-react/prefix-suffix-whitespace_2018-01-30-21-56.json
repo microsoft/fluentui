@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix whitespace wrapping with prefix/suffix",
+      "comment": "TextField: fixed whitespace wrapping with prefix/suffix.",
       "type": "patch"
     }
   ],
