@@ -59,7 +59,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       item,
       index,
       key: item.key ? item.key : index,
-      selected: this.props.selection.isIndexSelected(index),
+      selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
