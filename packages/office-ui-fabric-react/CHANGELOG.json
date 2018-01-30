@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.45.0",
+      "tag": "office-ui-fabric-react_v5.45.0",
+      "date": "Tue, 30 Jan 2018 11:22:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b53aad15358e65df001ab1248cb336b76052cb3e",
+            "comment": " Fix TeachingBubble dismiss on scroll by passing onDismiss to callout."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "d64535e7e0a001f39bc81eab1e517d9acd95252c",
+            "comment": "Added prop to ComboBox to control its button's aria-hidden attribute"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.44.0",
       "tag": "office-ui-fabric-react_v5.44.0",
       "date": "Mon, 29 Jan 2018 11:23:40 GMT",

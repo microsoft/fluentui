@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2018 11:22:56 GMT and should not be manually modified.
+
+## 5.45.0
+Tue, 30 Jan 2018 11:22:56 GMT
+
+### Minor changes
+
+- Added prop to ComboBox to control its button's aria-hidden attribute
+
+### Patches
+
+-  Fix TeachingBubble dismiss on scroll by passing onDismiss to callout.
 
 ## 5.44.0
 Mon, 29 Jan 2018 11:23:40 GMT
