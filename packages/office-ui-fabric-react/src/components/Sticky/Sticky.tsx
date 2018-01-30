@@ -64,7 +64,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { scrollablePane } = this.context;
     scrollablePane.subscribe(this._onScrollEvent);
     this.content = document.createElement('div');
-    this.content.style.background = this._getBackground() || 'rgba(244, 244, 244, 1)';
+    this.content.style.background = this.props.stickyBackgroundColor || this._getBackground();
     ReactDOM.render(<div>{ this.props.children }</div>, this.content);
     this.refs.root.appendChild(this.content);
     this.context.scrollablePane.notifySubscribers(true);
