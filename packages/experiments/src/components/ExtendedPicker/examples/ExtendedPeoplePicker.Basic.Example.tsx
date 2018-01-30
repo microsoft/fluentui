@@ -16,7 +16,6 @@ import './ExtendedPeoplePicker.Basic.Example.scss';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps, IExtendedPersonaProps, ISelectedPeopleProps, SelectedPeopleList }
   from '../../SelectedItemsList';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
@@ -37,9 +36,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 // tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
-  private _floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
-  private _selectedItemsListProps: ISelectedPeopleProps;
-  private _selection: Selection;
+  private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  private selectedItemsListProps: ISelectedPeopleProps;
 
   constructor(props: {}) {
     super(props);
@@ -50,8 +48,6 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       assign(target, persona);
       peopleList.push(target);
     });
-
-    this._selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
     this.state = {
       peopleList: peopleList,
@@ -78,7 +74,6 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       getEditingItemText: this._getEditingItemText,
       onRenderFloatingPicker: this._onRenderFloatingPicker,
       floatingPickerProps: this._floatingPickerProps,
-      selection: this._selection,
     };
   }
 

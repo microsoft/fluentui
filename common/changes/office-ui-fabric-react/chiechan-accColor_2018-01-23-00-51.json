@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Combox box: added accessibility changes added a title and changed activedescendant to use focused element",
+      "comment": "swatch color picker - add ability to add aria-label",
       "type": "patch"
     }
   ],

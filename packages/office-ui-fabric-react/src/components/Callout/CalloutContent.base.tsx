@@ -132,12 +132,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       backgroundColor,
       calloutMaxHeight,
       onScroll,
-       } = this.props;
+    } = this.props;
     target = this._getTarget();
     let { positions } = this.state;
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+    const overflowYHidden = !!finalHeight;
 
     let beakVisible = isBeakVisible && (!!target);
     this._classNames = getClassNames(
@@ -145,7 +146,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       {
         theme: this.props.theme!,
         className,
-        overflowYHidden: !!finalHeight,
+        overflowYHidden: overflowYHidden,
         calloutWidth,
         contentMaxHeight,
         positions,
@@ -155,6 +156,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       }
     );
 
+    const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -182,6 +184,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
             onDismiss={ this.dismiss }
             onScroll={ onScroll }
             shouldRestoreFocus={ true }
+            style={ overflowStyle }
           >
             { children }
           </Popup>
