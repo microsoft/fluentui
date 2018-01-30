@@ -251,6 +251,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
         :global(.ms-Image) {
           display: inline-block;
+          border-style: none;
         }
       }
     }
