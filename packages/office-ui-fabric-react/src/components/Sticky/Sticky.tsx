@@ -64,7 +64,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { scrollablePane } = this.context;
     scrollablePane.subscribe(this._onScrollEvent);
     this.content = document.createElement('div');
-    this.content.style.background = this._getBackground();
+    this.content.style.background = this._getBackground() || 'rgba(244, 244, 244, 1)';
     ReactDOM.render(<div>{ this.props.children }</div>, this.content);
     this.refs.root.appendChild(this.content);
     this.context.scrollablePane.notifySubscribers(true);
@@ -172,13 +172,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   // Gets background of nearest parent element that has a declared background-color attribute
-  private _getBackground(): string {
+  private _getBackground(): string | null {
     let curr = this.refs.root;
     while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
       if (curr.tagName === 'HTML') {
         // Fallback color if no element has a declared background-color attribute
-        return 'rgba(244, 244, 244, 1)';
+        return null;
       }
       if (curr.parentElement) {
         curr = curr.parentElement;
