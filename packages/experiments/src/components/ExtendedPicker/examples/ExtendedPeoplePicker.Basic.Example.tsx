@@ -36,8 +36,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 // tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
-  private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
-  private selectedItemsListProps: ISelectedPeopleProps;
+  private _floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  private _selectedItemsListProps: ISelectedPeopleProps;
 
   constructor(props: {}) {
     super(props);
@@ -123,10 +123,6 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   private _getEditingItemText(item: IExtendedPersonaProps): string {
     return item.primaryText as string;
-  }
-
-  private _onSelectionChange(): void {
-    this.forceUpdate();
   }
 
   @autobind
