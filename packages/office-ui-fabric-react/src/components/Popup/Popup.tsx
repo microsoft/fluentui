@@ -72,7 +72,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
-        style={ { ...style, overflowY: needsVerticalScrollBar ? 'scroll' : 'auto' } }
+        style={ { overflowY: needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
       >
         { this.props.children }
       </div>

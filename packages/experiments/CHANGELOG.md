@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+
+## 5.16.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add overflowMenuProps to Experiments CommandBar
+
+## 5.15.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- add optional title element to extendedPicker, css changes to have selected items flow on the same row as input
 
 ## 5.14.0
 Mon, 22 Jan 2018 11:14:27 GMT

@@ -6,8 +6,15 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { Callout } from './Callout';
+import { ICalloutProps } from './Callout.types';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
+
+class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
+  public render(): JSX.Element {
+    return <CalloutContent { ...this.props } />;
+  }
+}
 
 describe('Callout', () => {
 
@@ -18,7 +25,7 @@ describe('Callout', () => {
       };
     };
     const component = renderer.create(
-      <CalloutContent>Content</CalloutContent>,
+      <CalloutContentWrapper>Content</CalloutContentWrapper>,
       { createNodeMock }
     );
     let tree = component.toJSON();
