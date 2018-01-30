@@ -87,7 +87,7 @@ storiesOf('ChoiceGroup', module)
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
           imageSize: { width: 32, height: 32 },
-          text: 'Bar chart'
+          text: 'Clustered bar chart'
         },
         {
           key: 'pie',

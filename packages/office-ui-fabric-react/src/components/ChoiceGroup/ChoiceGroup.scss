@@ -29,6 +29,8 @@ $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-
 // ChoiceField styles
 
 $ms-choiceField-field-size: 20px;
+$ms-choiceField-image-size: 32px;
+$ms-choiceField-text-height: 32px;
 $ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
@@ -197,6 +199,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   $radioButtonSpacing: 3px;
   $radioButtonInnerSize: 5px;
 
+  height: $ms-choiceField-iconField-size;
+  width: $ms-choiceField-iconField-size;
+
   .fieldIsImage, .fieldIsIcon {
 
     display: inline-block;
@@ -208,6 +213,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
     border: 2px solid transparent;
+    height: $ms-choiceField-iconField-size;
+    width: $ms-choiceField-iconField-size;
 
     &.fieldIsDisabled {
       cursor: default;
@@ -225,6 +232,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     .innerField {
       position: relative;
       padding: 0 28px;
+      height: $ms-choiceField-image-size;
+      width: $ms-choiceField-image-size;
 
       .imageWrapper {
         padding-bottom: 2px;
@@ -242,19 +251,20 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
         :global(.ms-Image) {
           display: inline-block;
+          border-style: none;
         }
       }
     }
 
     .labelWrapper {
-      $lineHeight: 16px;
+      $lineHeight: 15px;
       display: block;
       position: relative;
-      margin: 4px 0 0 0;
-      height: $lineHeight * 2;
+      margin: 4px 0 2px 0;
+      height: $ms-choiceField-text-height;
       line-height: $lineHeight;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: pre-wrap;
       text-overflow: ellipsis;
       @include ms-font-m;
 
@@ -327,9 +337,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
 .choiceFieldIsIcon {
   $iconSize: 32px;
-
-  height: $ms-choiceField-iconField-size;
-  width: $ms-choiceField-iconField-size;
 
   .iconWrapper {
     font-size: $iconSize;
