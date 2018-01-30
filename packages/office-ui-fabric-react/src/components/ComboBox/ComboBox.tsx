@@ -1518,7 +1518,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onBaseAutofillClick() {
     if (this.props.allowFreeform) {
-      this.focus(true);
+      this.focus(this.state.isOpen);
     } else {
       this._onComboBoxClick();
     }
