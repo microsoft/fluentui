@@ -147,6 +147,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     inputForegroundChecked: p.white,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
+    inputPlaceholderText: p.neutralSecondary,
 
     buttonBackground: p.neutralLighter,
     buttonBackgroundChecked: p.neutralTertiaryAlt,

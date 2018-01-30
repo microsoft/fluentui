@@ -2,6 +2,227 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.45.0",
+      "tag": "office-ui-fabric-react_v5.45.0",
+      "date": "Tue, 30 Jan 2018 11:22:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b53aad15358e65df001ab1248cb336b76052cb3e",
+            "comment": " Fix TeachingBubble dismiss on scroll by passing onDismiss to callout."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "d64535e7e0a001f39bc81eab1e517d9acd95252c",
+            "comment": "Added prop to ComboBox to control its button's aria-hidden attribute"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.44.0",
+      "tag": "office-ui-fabric-react_v5.44.0",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "58615e57bf5698dc425d8c825163697b26303243",
+            "comment": "Combox box: added accessibility changes added a title and changed activedescendant to use focused element"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "048cf3af397658b628b7495c6ef7354b49147f22",
+            "comment": "Callout/Popup: Fix a bug where callout doesn't have the correct overflow style\""
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "9d785c7971d56222ec9cbb72d5d624fa8209718c",
+            "comment": "setting people picker default size back to 28 from 24"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "4b472acc791f1b1d22b95e2ea48c6538aae94573",
+            "comment": "Add private _defaultCalloutProps instead of public defaultProps to set calloutProps."
+          }
+        ],
+        "minor": [
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "c91e28996fc74eff98bbb3c59426e8f6f159e64f",
+            "comment": "Add work week date range type and update calendar and calendarDay components to consume it"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "071a6daa6867df57ab98affde613a3264ae62b88",
+            "comment": "Added onRenderCoin prop that controls the persona coin image"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.8.0 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.43.1",
+      "tag": "office-ui-fabric-react_v5.43.1",
+      "date": "Fri, 26 Jan 2018 11:25:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "ec38e5b026b1f8a8e58fa6f3211f98d6d0eb2098",
+            "comment": "SplitButton - added aria support for button in split buttons and the whole container"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "c8a644b42c74a65224fa85c18eacd0de8e2e91c4",
+            "comment": "Dropdown, Checkbox: Fix disabled Dropdown options and update Checkbox disabled styles"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "9432151081a1c3af197fe5c74b3192fb97267b79",
+            "comment": "Persona: Changed text and root heights for size24 when secondary text is shown."
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "ecd9ec777720dc4e3c1e72e34640103e803a3a9b",
+            "comment": "TextField, Pickers, PeoplePicker: Homogenizing input heights and colors"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.7.1 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.43.0",
+      "tag": "office-ui-fabric-react_v5.43.0",
+      "date": "Thu, 25 Jan 2018 11:23:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "1f86b535cf6347ef09ce6c172eb875a0aaf203ea",
+            "comment": "spin button - add aria label for decrement and increment buttons"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "325c15ab5ea077d5b1c1ac77d898eba0dfc0f59a",
+            "comment": "Pickers: Fixing errors occuring onBlur of limited pickers"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "59111034b784874eec5c28fef8d6dd11f06502b1",
+            "comment": "Fixed broken links on documentation pages"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "3b5b375421343cbc74b4aa72c432a0910224459e",
+            "comment": "Pickers: Aligning suggestions callout to the correct RTL position"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "a2864f8c6d0fc2b271c952b9929767ed760660ab",
+            "comment": "Callout: Convert component to JS Styling"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "bd19b42da3e1452580283a30a682d22349af1fe6",
+            "comment": "Added onFocus state Boolean to BasePicker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.10.1 <6.0.0` to `>=5.11.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.16.0 <6.0.0` to `>=5.17.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.42.0",
+      "tag": "office-ui-fabric-react_v5.42.0",
+      "date": "Wed, 24 Jan 2018 11:23:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "09c29d1e2c1d6fc541fb13eacf535fca82f868ba",
+            "comment": "BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f2dcf91ae4e484ce483b52c35b012c90d28fd89e",
+            "comment": "Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "b31132497466cd88b1887badfef8c05833e35784",
+            "comment": "TextField and SearchBox: Specified placeholder text color to be more consistent across browsers."
+          },
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "e3f2856f94d3a7dd297c05c10ccc49181536dcb4",
+            "comment": "Prevent default to avoid setting focus on SplitButton menu button"
+          },
+          {
+            "author": "Srikanth Reddy Kandula <srikanthreddy.iitp@gmail.com>",
+            "commit": "ee2299a2ea7f5410343a6d50d94fd542c687fc26",
+            "comment": "Fix CalendarDay RTL view"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "5270872fcdfcbe3dfb5c3592d1bd895bf283414e",
+            "comment": "ResizeGroup: Add the ability for ResizeGroup to get divProps"
+          },
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "2a57fb1c2476d8677c4cee76c3ff23958c9ae5bd",
+            "comment": "Enhance Panel component props to allow all of FocusTrapZone props overrides."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.15.3 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.41.2",
+      "tag": "office-ui-fabric-react_v5.41.2",
+      "date": "Tue, 23 Jan 2018 11:22:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Sohan Fernando <ohritz@users.noreply.github.com>",
+            "commit": "e49507cddc72a273449a01aa56d9496787134427",
+            "comment": "Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.41.1",
       "tag": "office-ui-fabric-react_v5.41.1",
       "date": "Mon, 22 Jan 2018 18:39:02 GMT",

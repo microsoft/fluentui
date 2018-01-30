@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.11.0",
+      "tag": "@uifabric/merge-styles_v5.11.0",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "a2864f8c6d0fc2b271c952b9929767ed760660ab",
+            "comment": "Change maxHeight/maxFontSize to CSSPixelUnitRule (number and string)"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.1",
       "tag": "@uifabric/merge-styles_v5.10.1",
       "date": "Wed, 17 Jan 2018 11:11:25 GMT",

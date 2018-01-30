@@ -71,7 +71,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
   >
     <input
       aria-activedescendant={null}
-      aria-autocomplete={true}
+      aria-autocomplete="both"
       aria-describedby="ComboBox0-option"
       aria-disabled={undefined}
       aria-expanded={false}
@@ -106,18 +106,21 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
+      onCompositionEnd={[Function]}
+      onCompositionStart={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       readOnly={true}
       role="combobox"
       spellCheck={false}
+      title={undefined}
       type="text"
       value=""
     />
     <button
       aria-describedby={null}
-      aria-hidden="true"
+      aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={null}
       aria-pressed={false}

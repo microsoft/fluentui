@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import '../../common/semanticSlots';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -56,6 +57,12 @@ $field-error-color: $errorTextColor;
     border-color: $field-border-focus-color;
   }
 
+  &.fieldGroupIsFocused {
+    &.invalid {
+      border-color: $field-border-error-color;
+    }
+  }
+
   .rootIsDisabled & {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;
@@ -72,6 +79,12 @@ $field-error-color: $errorTextColor;
 
   &::-ms-clear {
     display: none;
+  }
+
+  ::placeholder,
+  :-ms-input-placeholder {
+    color: $inputPlaceholderTextColor;
+    opacity: 1;
   }
 }
 
@@ -174,19 +187,13 @@ $field-error-color: $errorTextColor;
 
 //== Modifier: Single line (default), underlined
 .root.rootIsUnderlined {
-  border-width: 0px;
-
-  &:hover:not(.rootIsDisabled) {
-    border-color: $field-border-hover-color;
-
-    @include high-contrast {
-      border-color: Highlight;
-    }
-  }
+  border: 0px solid $field-border-color;
 
   .wrapper {
     display: flex;
-    border-bottom: 1px solid $field-border-color;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: inherit;
     width: 100%;
 
     &.invalid,
@@ -212,7 +219,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.rootIsDisabled {
-    border-bottom-color: $field-border-disabled-color;
+    border-color: $field-border-disabled-color;
 
     :global(.ms-Label) {
       @include ms-Label-is-disabled;
@@ -228,11 +235,20 @@ $field-error-color: $errorTextColor;
     }
   }
 
+  &:hover:not(.rootIsActive):not(.rootIsDisabled) {
+    border-color: $field-border-hover-color;
+  }
+
   &.rootIsActive {
     border-color: $field-border-focus-color;
+  }
 
-    @include high-contrast {
-      border-color: Highlight;
+  &:hover:not(.rootIsDisabled),
+  &.rootIsActive {
+    .wrapper {
+      @include high-contrast {
+        border-color: Highlight;
+      }
     }
   }
 }

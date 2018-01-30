@@ -79,6 +79,8 @@ export interface ICalendarInlineExampleProps {
   minDate?: Date;
   maxDate?: Date;
   showSixWeeksByDefault?: boolean;
+  workWeekDays?: DayOfWeek[];
+  firstDayOfWeek?: DayOfWeek;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -135,7 +137,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           autoNavigateOnSelection={ this.props.autoNavigateOnSelection }
           showGoToToday={ this.props.showGoToToday }
           value={ this.state.selectedDate! }
-          firstDayOfWeek={ DayOfWeek.Sunday }
+          firstDayOfWeek={ this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday }
           strings={ DayPickerStrings }
           highlightCurrentMonth={ this.props.highlightCurrentMonth }
           isDayPickerVisible={ this.props.isDayPickerVisible }
@@ -144,6 +146,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           minDate={ this.props.minDate }
           maxDate={ this.props.maxDate }
           showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
+          workWeekDays={ this.props.workWeekDays }
         />
         { this.props.showNavigateButtons &&
           <div>
