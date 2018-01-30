@@ -14,8 +14,7 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
     const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
     const classNames = getClassNames(getStyles);
     return (
-      <div className={ css("ms-Beak", classNames.root) }>
-      </div>
+      <div className={ css("ms-Beak", classNames.root) }></div>
     );
   }
 };
