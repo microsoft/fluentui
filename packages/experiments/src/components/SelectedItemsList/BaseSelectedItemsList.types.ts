@@ -19,7 +19,10 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
   componentRef?: (component?: IBaseSelectedItemsList<T>) => void;
 
-  selection: Selection;
+  /**
+   * The selection
+   */
+  selection?: Selection;
   /**
    * A callback for when items are copied
    */
