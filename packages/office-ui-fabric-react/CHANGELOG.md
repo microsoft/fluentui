@@ -1,6 +1,32 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 26 Jan 2018 11:25:22 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2018 11:22:56 GMT and should not be manually modified.
+
+## 5.45.0
+Tue, 30 Jan 2018 11:22:56 GMT
+
+### Minor changes
+
+- Added prop to ComboBox to control its button's aria-hidden attribute
+
+### Patches
+
+-  Fix TeachingBubble dismiss on scroll by passing onDismiss to callout.
+
+## 5.44.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add work week date range type and update calendar and calendarDay components to consume it
+- Added onRenderCoin prop that controls the persona coin image
+
+### Patches
+
+- Combox box: added accessibility changes added a title and changed activedescendant to use focused element
+- Callout/Popup: Fix a bug where callout doesn't have the correct overflow style"
+- setting people picker default size back to 28 from 24
+- Add private _defaultCalloutProps instead of public defaultProps to set calloutProps.
 
 ## 5.43.1
 Fri, 26 Jan 2018 11:25:22 GMT

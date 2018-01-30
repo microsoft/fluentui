@@ -4,6 +4,7 @@ import {
   KeyCodes,
   autobind,
 } from '../../Utilities';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 
@@ -23,6 +24,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   extends BaseComponent<P, IBaseSelectedItemsListState> implements IBaseSelectedItemsList<T> {
 
   protected root: HTMLElement;
+  protected selection: Selection;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -31,6 +33,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     this.state = {
       items: items,
     };
+
+    // Create a new selection if one is not specified
+    this.selection = this.props.selection ? this.props.selection as Selection : new Selection({ onSelectionChanged: this.forceUpdate });
   }
 
   public get items(): T[] {
@@ -69,24 +74,24 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   @autobind
   public onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
-    if (this.props.onCopyItems && this.props.selection.getSelectedCount() > 0) {
-      let selectedItems: T[] = this.props.selection.getSelection() as T[];
+    if (this.props.onCopyItems && this.selection.getSelectedCount() > 0) {
+      let selectedItems: T[] = this.selection.getSelection() as T[];
       this.copyItems(selectedItems);
     }
   }
 
   public unselectAll(): void {
-    this.props.selection.setAllSelected(false);
+    this.selection.setAllSelected(false);
   }
 
   public componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
     if (newState.items && newState.items !== this.state.items) {
-      this.props.selection.setItems(newState.items);
+      this.selection.setItems(newState.items);
     }
   }
 
   public componentDidMount(): void {
-    this.props.selection.setItems(this.state.items);
+    this.selection.setItems(this.state.items);
   }
 
   public componentWillReceiveProps(newProps: P): void {
@@ -95,9 +100,14 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (newItems) {
       this.setState({ items: newProps.selectedItems });
     }
+
+    if (newProps.selection) {
+      this.selection = newProps.selection;
+    }
   }
 
-  public render(): JSX.Element[] {
+  // tslint:disable-next-line:no-any
+  public render(): any {
     return this.renderItems();
   }
 
@@ -112,7 +122,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       item,
       index,
       key: item.key ? item.key : index,
-      selected: this.props.selection.isIndexSelected(index),
+      selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
@@ -178,8 +188,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void {
     if (this.state.items.length) {
-      if (this.props.selection.getSelectedCount() > 0) {
-        this.removeItems(this.props.selection.getSelection());
+      if (this.selection.getSelectedCount() > 0) {
+        this.removeItems(this.selection.getSelection());
       } else {
         this.removeItem(this.state.items[this.state.items.length - 1]);
       }

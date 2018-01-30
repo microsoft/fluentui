@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+
+## 5.16.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add overflowMenuProps to Experiments CommandBar
 
 ## 5.15.0
 Thu, 25 Jan 2018 11:23:06 GMT

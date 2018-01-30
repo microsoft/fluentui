@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add private _defaultCalloutProps instead of public defaultProps to set calloutProps.",
+      "comment": "Fixing the up and down arrows position and behavior according to RTL expected behavior",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-jojanz@microsoft.com"
+  "email": "srkandu@microsoft.com"
 }
