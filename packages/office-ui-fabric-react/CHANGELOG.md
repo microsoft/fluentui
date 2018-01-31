@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Jan 2018 11:22:56 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+
+## 5.45.1
+Wed, 31 Jan 2018 11:11:59 GMT
+
+### Patches
+
+- swatch color picker - add ability to add aria-label
+- ChoiceGroup: Wrap long text for image and icon types.
+- updating willReceiveProps of date picker to not run validation unless the props actually changed
+- ComboBox: ComboBoxes were changed to always expand which is incorrect behavior, fixing to align with the correct design
+- ContextualMenu: Remove the list in the menu and move the aria-label/labelledby to the correct element
+- TextField: fixed whitespace wrapping with prefix/suffix.
+- Fixing the up and down arrows position and behavior according to RTL expected behavior
+- Removed unused scss file in Sticky component
 
 ## 5.45.0
 Tue, 30 Jan 2018 11:22:56 GMT
