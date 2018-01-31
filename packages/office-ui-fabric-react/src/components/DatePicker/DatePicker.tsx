@@ -143,6 +143,16 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
     let { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
+
+    if (compareDates(this.props.minDate!, nextProps.minDate!) &&
+      compareDates(this.props.maxDate!, nextProps.maxDate!) &&
+      this.props.isRequired === nextProps.isRequired &&
+      compareDates(this.state.selectedDate!, value!) &&
+      this.props.formatDate === formatDate) {
+      // if the props we care about haven't changed, don't run validation or updates
+      return;
+    }
+
     let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
 
     if (!errorMessage && value) {
@@ -216,7 +226,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               )
             } }
             readOnly={ !allowTextInput }
-            value={ formattedDate }
+            defaultValue={ formattedDate }
             ref={ this._resolveRef('_textField') }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />

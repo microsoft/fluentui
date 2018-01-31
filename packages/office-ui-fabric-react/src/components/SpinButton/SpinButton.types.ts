@@ -155,6 +155,16 @@ export interface ISpinButtonProps {
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+   * Accessibility label text for the increment button for the benefit of the screen reader.
+   */
+  incrementButtonAriaLabel?: string;
+
+  /**
+   * Accessibility label text for the decrement button for the benefit of the screen reader.
+   */
+  decrementButtonAriaLabel?: string;
 }
 
 export interface ISpinButtonStyles {

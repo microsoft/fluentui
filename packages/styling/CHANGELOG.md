@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+
+## 5.17.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule 
+
+## 5.16.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- New slot for inputPlaceholderText color.
 
 ## 5.15.3
 Mon, 22 Jan 2018 11:14:27 GMT
