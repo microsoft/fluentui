@@ -202,7 +202,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     return (
       <FocusZone
-        {...getNativeProps(this.props, divProperties) }
+        { ...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
         ref={ this._onRootRef }
         componentRef={ this._resolveRef('_focusZone') }
@@ -309,8 +309,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     });
   }
 
-  public focus(): boolean {
-    return !!this._focusZone && this._focusZone.focus();
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    return !!this._focusZone && this._focusZone.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
