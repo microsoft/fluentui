@@ -1,0 +1,22 @@
+:global {
+  .ms-result-content {
+    min-height: 100px;
+    display: inline-block;
+  }
+
+  .ms-result-item.ms-Persona {
+    width: 120px;
+  }
+
+  .ms-DocumentPicker-suggestion {
+    .ms-Suggestion-container {
+      width: 300px;
+    }
+  }
+
+  .ms-DocumentPicker-button {
+    height: 48px;
+    width: 100%;
+    padding: 4px;
+  }
+}

@@ -7,10 +7,12 @@ import {
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
+import { ITooltipProps, TooltipDelay } from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import './Tooltip.scss';
+import * as stylesImport from './Tooltip.scss';
+const styles: any = stylesImport;
+import { AnimationClassNames, mergeStyles } from '../../Styling';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -18,32 +20,57 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   public static defaultProps = {
     directionalHint: DirectionalHint.topCenter,
     delay: TooltipDelay.medium,
+    maxWidth: '364px',
     calloutProps: {
       isBeakVisible: true,
       beakWidth: 16,
-      gapSpace: 8,
+      gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false
     }
   };
 
   public render() {
-    let { targetElement, content, calloutProps, directionalHint, delay, id } = this.props;
+    const {
+      targetElement,
+      calloutProps,
+      directionalHint,
+      directionalHintForRTL,
+      delay,
+      id,
+      maxWidth,
+      onRenderContent = this._onRenderContent
+  } = this.props;
 
     return (
       <Callout
-        className={ css('ms-Tooltip', `has-${TooltipDelay[delay]}Delay`) }
-        targetElement={ targetElement }
+        target={ targetElement }
         directionalHint={ directionalHint }
+        directionalHintForRTL={ directionalHintForRTL }
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
-        >
-        <div className='ms-Tooltip-content'>
-          <p className='ms-Tooltip-subText' id={ id } role='tooltip'>
-            { content }
-          </p>
+        className={ mergeStyles(
+          'ms-Tooltip',
+          AnimationClassNames.fadeIn200,
+          styles.root,
+          (delay === TooltipDelay.medium) && styles.hasMediumDelay,
+          (maxWidth !== null) && { maxWidth: maxWidth },
+          calloutProps ? calloutProps.className : undefined,
+          this.props.className
+        ) }
+      >
+        <div className={ css('ms-Tooltip-content', styles.content) } id={ id } role='tooltip'>
+          { onRenderContent(this.props, this._onRenderContent) }
         </div>
-      </Callout>
+      </Callout >
+    );
+  }
+
+  private _onRenderContent(props: ITooltipProps): JSX.Element {
+    return (
+      <p className={ css('ms-Tooltip-subText', styles.subText) }>
+        { props.content }
+      </p>
     );
   }
 }

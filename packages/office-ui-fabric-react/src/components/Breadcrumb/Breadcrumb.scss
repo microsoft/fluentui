@@ -12,76 +12,111 @@ $Breadcrumb-overflowButtonSize: 16px;
 $Breadcrumb-buttonHoverColor: $ms-color-themeDark;
 $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
+$Breadcrumb-chevron-sm: 8px;
 
-.ms-Breadcrumb {
-  @include ms-baseFont;
+// Breadcrumb size mixins
+@mixin Breadcumb-small {
+  .listItem .itemLink {
+    font-size: $ms-font-size-m;
+  }
+
+  .chevron {
+    font-size: $Breadcrumb-chevron-sm;
+  }
+}
+
+@mixin Breadcumb-large {
+  .listItem .itemLink {
+    font-size: $ms-font-size-l;
+  }
+
+  .chevron {
+    font-size: $Breadcrumb-chevron-sm;
+  }
+}
+
+.root {
   margin: 23px 0 1px;
 }
 
-.ms-Breadcrumb-list {
+.list {
   white-space: nowrap;
   padding: 0;
   margin: 0;
+  display: flex;
+  align-items: stretch;
 }
 
-.ms-Breadcrumb-chevron {
+.chevron {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
-  vertical-align: top;
-  margin: 11px 7px;
-  line-height: 1;
+
+  @include high-contrast {
+    color: WindowText;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
-.ms-Breadcrumb-listItem {
+.listItem {
   list-style-type: none;
-  vertical-align: top;
   margin: 0;
   padding: 0;
-  display: inline-block;
+  display: flex;
   position: relative;
-
+  align-items: center;
   &:last-of-type {
-    .ms-Breadcrumb-chevron {
+    .chevron {
       display: none;
     }
   }
 
-  .ms-Breadcrumb-itemLink {
-    @include focus-border;
+  .item,
+  .itemLink {
     @include ms-font-xl;
-    color: $ms-color-neutralPrimary;
-    display: inline-block;
-    padding: 0 4px;
+    color: $bodyTextColor;
+    padding: 0 8px;
     max-width: $Breadcrumb-itemMaxWidth;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    vertical-align: top;
   }
 }
 
-.ms-Breadcrumb-overflow {
-  display: inline-block;
+.overflow {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.ms-Breadcrumb-overflowButton {
+.overflowButton {
   font-size: $Breadcrumb-overflowButtonSize;
-  display: inline-block;
-  color: $Breadcrumb-overflowButtonColor;
-  padding: 8px;
-  cursor: pointer;
-  vertical-align: top;
-}
-
-.ms-Breadcrumb-itemLink,
-.ms-Breadcrumb-overflowButton {
-  text-decoration: none;
-  outline: transparent;
+  height: 100%; // override button height
 
   &:hover {
-    background-color: $selectedHoverBackgroundColor;
-    color: $Breadcrumb-buttonHoverColor;
+    cursor: pointer;
+    background-color: $ms-color-neutralLighter;
+  }
+
+  &:active {
+    background-color: $ms-color-neutralTertiaryAlt;
+    color: $bodyTextColor;
+  }
+
+  &:active:hover {
+    background-color: $ms-color-neutralQuaternary;
+  }
+}
+
+.item {
+  &:hover {
+    cursor: default;
+  }
+}
+
+.root .itemLink {
+  &:hover {
+    background-color: $menuItemBackgroundHoveredColor;
+    color: initial;
     cursor: pointer;
   }
 
@@ -91,40 +126,34 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
   &:active {
     outline: transparent;
-    background-color: $selectedActiveBackgroundColor;
-    color: $selectedActiveForegroundColor;
+    background-color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralPrimary;
   }
 }
 
-@media screen and (max-width: $ms-screen-md-max) {
-  margin: 11px 0 1px;
+.itemLink,
+.overflowButton {
+  text-decoration: none;
+  outline: transparent;
+}
 
-  .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink {
-    font-size: $ms-font-size-l;
-  }
+@media screen and (max-width: $ms-screen-max-md) {
+  // margin: 11px 0 1px;
+  @include Breadcumb-large;
 
-  .ms-Breadcrumb-chevron {
-    font-size: $ms-font-size-mi;
-    margin: 8px 5px;
-  }
-
-  .ms-Breadcrumb-overflowButton {
+  .overflowButton {
     font-size: $ms-font-size-m-plus;
-    padding: 5px 4px;
   }
 }
 
-@media screen and (max-width: $ms-screen-sm-max) {
-  .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink {
-    font-size: $ms-font-size-m;
+@media screen and (max-width: $ms-screen-max-sm) {
+  @include Breadcumb-small;
+
+  .listItem .itemLink {
     max-width: $Breadcrumb-itemMaxWidth-sm;
   }
 
-  .ms-Breadcrumb-chevron {
-    margin: 5px 4px;
-  }
-
-  .ms-Breadcrumb-overflowButton {
-    padding: 2px 4px;
+  .overflowButton {
+    padding: 4px 6px;
   }
 }

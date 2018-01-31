@@ -1,23 +1,35 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "noEmitOnError": true,
+    "importHelpers": true,
+    "noUnusedLocals": false,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "types": [
-      "chai",
-      "mocha",
+      "jest",
       "webpack-env"
-    ]
+    ],
+    "paths": {
+      "office-ui-fabric-react/lib/*": [
+        "./src/*"
+      ]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

@@ -1,29 +1,26 @@
-/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable no-unused-imports*/
-import {
-  BaseComponent,
-  getNativeProps,
-  anchorProperties,
-  buttonProperties
-} from '../../../Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { IButtonProps } from '../Button.types';
+import { getStyles } from './DefaultButton.styles';
 
-import { Button, ButtonType } from '../index';
-import { IButtonProps } from '../index';
-import './DefaultButton.scss';
-import '../ButtonCore/ButtonCore.scss';
+@customizable('DefaultButton', ['theme'])
+export class DefaultButton extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Tell BaseComponent to bypass resolution of componentRef.
+   */
+  protected _shouldUpdateComponentRef = false;
 
-export class DefaultButton extends BaseComponent<IButtonProps, any> {
   public render() {
+    const { primary = false, styles, theme } = this.props;
+
     return (
-      <Button
-        className='ms-Button--default ms-Button'
-        buttonType={ ButtonType.clean }
-        { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
+      <BaseButton
         { ...this.props }
-      >
-        <span className='ms-Button-label'>{ this.props.children }</span>
-      </Button>
+        variantClassName={ primary ? 'ms-Button--primary' : 'ms-Button--default' }
+        styles={ getStyles(theme!, styles, primary) }
+        onRenderDescription={ nullRender }
+      />
     );
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "1.0.1",
+  "version": "5.9.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,35 +10,38 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
-    "clean": "gulp clean",
-    "test": "gulp"
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start-test": "node ../../scripts/start-test.js"
   },
+  "disabledTasks": [
+    "copy",
+    "karma",
+    "webpack"
+  ],
   "devDependencies": {
-    "@microsoft/web-library-build": ">=1.1.0 <2.0.0",
-    "@types/chai": "^3.4.34",
-    "@types/enzyme": "^2.7.1",
-    "@types/es6-promise": "0.0.32",
-    "@types/mocha": "^2.2.32",
-    "@types/react-addons-test-utils": "^0.14.15",
-    "enzyme": "^2.7.0",
-    "es6-promise": "3.2.1",
-    "gulp": "~3.9.1",
-    "mocha": "~2.5.3",
-    "react": ">=15.0.0 <16.0.0",
-    "react-addons-test-utils": "^15.1.0",
-    "react-dom": ">=15.0.0 <16.0.0",
-    "source-map-loader": "0.1.5",
-    "tslint": "^3.15.1",
-    "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "~2.1.0"
+    "@types/jest": "21.1.8",
+    "@types/enzyme": "3.1.5",
+    "@types/enzyme-adapter-react-16": "1.0.1",
+    "@types/prop-types": "15.5.2",
+    "@types/react": "16.0.25",
+    "@types/react-dom": "16.0.3",
+    "@types/sinon": "2.2.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "sinon": "^4.1.3"
   },
   "dependencies": {
-    "@types/react": "^0.14.41",
-    "@types/react-dom": "^0.14.18"
+    "@microsoft/load-themed-styles": "^1.7.13",
+    "@uifabric/merge-styles": ">=5.11.0 <6.0.0",
+    "prop-types": "^15.5.10",
+    "tslib": "^1.7.1"
   },
   "peerDependencies": {
-    "react": "^15.0.1 || ^0.14",
-    "react-dom": "^15.0.1 || ^0.14"
+    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   }
 }

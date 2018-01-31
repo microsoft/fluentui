@@ -1,0 +1,87 @@
+
+@import '~office-ui-fabric-react/src/common/common';
+
+/*
+Note: For icon alignment, please only use relative positioning in em units.
+Do not change the flex alignment or justification, or use vertical-alignment.
+It is important that Signals scale based on font-size and do not interfere with alternate alignment
+settings used by the parent control.
+*/
+
+.newSignal {
+  width: 0;
+  height: 1em;
+  position: relative;
+  @include margin-right(0);
+  line-height: 1em;
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.newIcon {
+  position: absolute;
+  bottom: 100%;
+  @include right(-0.15em);
+  font-size: 0.66em;
+  margin-bottom: -0.8em;
+}
+
+.comments {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.commentsIcon {
+  vertical-align: middle;
+}
+
+.commentsCount {
+  @include margin-left(0.2em);
+  font-size: 0.9em;
+  font-weight: $ms-font-weight-semibold;
+  vertical-align: baseline;
+}
+
+.trending {
+  color: #006257;
+}
+
+.blocked {
+  color: #a80000;
+}
+
+.warning {
+  color: #cf3902;
+}
+
+.shared {
+  color: $ms-color-neutralSecondary;
+}
+
+.missingMetadata {
+  color: $ms-color-themeDarker;
+}
+
+.mention {
+  position: relative;
+
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.malwareDetected {
+  color: $ms-color-redDark;
+}
+
+.external {
+  color: $ms-color-neutralSecondary;
+}

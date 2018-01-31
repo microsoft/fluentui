@@ -1,16 +1,21 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   KeyCodes,
   css,
-  getId
+  getId,
+  autobind
 } from '../../Utilities';
-import { IPivotProps } from './Pivot.Props';
-import { IPivotItemProps } from './PivotItem.Props';
+import { CommandButton } from '../../Button';
+import { IPivotProps } from './Pivot.types';
+import { IPivotItemProps } from './PivotItem.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
-import { PivotLinkFormat } from './Pivot.Props';
-import { PivotLinkSize } from './Pivot.Props';
-import './Pivot.scss';
+import { PivotLinkFormat } from './Pivot.types';
+import { PivotLinkSize } from './Pivot.types';
+import { Icon } from '../../Icon';
+import * as stylesImport from './Pivot.scss';
+const styles: any = stylesImport;
 
 /**
  *  Usage:
@@ -23,7 +28,7 @@ import './Pivot.scss';
  *       <Label>Pivot #2</Label>
  *     </PivotItem>
  *     <PivotItem linkText="Bas">
- *     <Label>Pivot #3</Label>
+ *       <Label>Pivot #3</Label>
  *     </PivotItem>
  *   </Pivot>
  */
@@ -34,7 +39,7 @@ export interface IPivotState {
   selectedTabId: string;
 }
 
-export class Pivot extends React.Component<IPivotProps, IPivotState> {
+export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
@@ -43,22 +48,22 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     super(props);
     this._pivotId = getId('Pivot');
     const links: IPivotItemProps[] = this._getPivotLinks(this.props);
-    let selectedKey: string;
+    let selectedKey: string | undefined;
 
     if (props.initialSelectedKey) {
       selectedKey = props.initialSelectedKey;
     } else if (props.initialSelectedIndex) {
-      selectedKey = links[props.initialSelectedIndex].itemKey;
+      selectedKey = links[props.initialSelectedIndex].itemKey as string;
     } else if (props.selectedKey) {
       selectedKey = props.selectedKey;
     } else if (links.length) {
-      selectedKey = links[0].itemKey;
+      selectedKey = links[0].itemKey as string;
     }
 
     this.state = {
       links,
-      selectedKey,
-      selectedTabId: this._keyToTabIds[selectedKey],
+      selectedKey: selectedKey!,
+      selectedTabId: this._keyToTabIds[selectedKey!],
     } as IPivotState;
 
     this._renderLink = this._renderLink.bind(this);
@@ -68,7 +73,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
 
     this.setState((prevState, props) => {
-      let selectedKey: string;
+      let selectedKey: string | undefined;
       if (this._isKeyValid(nextProps.selectedKey)) {
         selectedKey = nextProps.selectedKey;
       } else if (this._isKeyValid(prevState.selectedKey)) {
@@ -80,7 +85,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
       return {
         links: links,
         selectedKey,
-        selectedTabId: this._keyToTabIds[selectedKey],
+        selectedTabId: this._keyToTabIds[selectedKey as string],
       } as IPivotState;
     });
   }
@@ -100,10 +105,12 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   private _renderPivotLinks() {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
-        <ul className={ css('ms-Pivot',
-          { 'ms-Pivot--large': this.props.linkSize === PivotLinkSize.large },
-          { 'ms-Pivot--tabs': this.props.linkFormat === PivotLinkFormat.tabs }) }
-          role='tablist'>
+        <ul
+          className={ css('ms-Pivot', styles.root,
+            { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
+            { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
+          role='tablist'
+        >
           { this.state.links.map(this._renderLink) }
         </ul>
       </FocusZone>
@@ -113,39 +120,55 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders a pivot link
    */
+  @autobind
   private _renderLink(link: IPivotItemProps) {
-    const { itemKey, itemCount, itemIcon, linkText } = link;
-    const tabId = this._keyToTabIds[itemKey];
+    const { itemKey } = link;
+    const tabId = this._keyToTabIds[itemKey as string];
+    const { onRenderItemLink } = link;
+    let linkContent: JSX.Element | null;
 
-    let count;
-    if (itemCount !== undefined) {
-      count = <span className='ms-Pivot-count'>({ itemCount })</span>;
-    }
-
-    let icon: JSX.Element;
-    if (itemIcon !== undefined) {
-      icon = <span className='ms-Pivot-icon'><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span>;
-    }
-
-    let text: JSX.Element;
-    if (linkText !== undefined) {
-      text = <span className='ms-Pivot-text'>{ link.linkText }</span>;
+    if (onRenderItemLink) {
+      linkContent = onRenderItemLink(link, this._renderLinkContent);
+    } else {
+      linkContent = this._renderLinkContent(link);
     }
 
     return (
-      <button
+      <CommandButton
         id={ tabId }
         key={ itemKey }
-        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
+        className={ css(
+          'ms-Pivot-link',
+          styles.link,
+          {
+            ['is-selected ' + styles.linkIsSelected]: this.state.selectedKey === itemKey
+          }
+        ) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
-        aria-label={ link.ariaLabel }
+        ariaLabel={ link.ariaLabel }
         role='tab'
-        aria-selected={ this.state.selectedKey === itemKey }>
-        { icon }
-        { text }
-        { count }
-      </button>
+        aria-selected={ this.state.selectedKey === itemKey }
+      >
+        { linkContent }
+      </CommandButton>
+    );
+  }
+
+  @autobind
+  private _renderLinkContent(link: IPivotItemProps): JSX.Element {
+    const { itemCount, itemIcon, linkText } = link;
+
+    return (
+      <span className={ css('ms-Pivot-link-content') }>
+        { itemIcon !== undefined && (
+          <span className={ css('ms-Pivot-icon', styles.icon) }>
+            <Icon iconName={ itemIcon } />
+          </span>
+        ) }
+        { linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }
+        { itemCount !== undefined && <span className={ css('ms-Pivot-count', styles.count) } > ({ itemCount })</span> }
+      </span>
     );
   }
 
@@ -153,14 +176,19 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders the current Pivot Item
    */
   private _renderPivotItem() {
+    if (this.props.headersOnly) {
+      return null;
+    }
+
     const itemKey: string = this.state.selectedKey;
     const index = this._keyToIndexMapping[itemKey];
     let { selectedTabId } = this.state;
 
     return (
-      <div className='pivotItem'
+      <div
         role='tabpanel'
-        aria-labelledby={ selectedTabId }>
+        aria-labelledby={ selectedTabId }
+      >
         { React.Children.toArray(this.props.children)[index] }
       </div>
     );
@@ -185,10 +213,11 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
-          itemIcon: pivotItem.props.itemIcon
+          itemIcon: pivotItem.props.itemIcon,
+          onRenderItemLink: pivotItem.props.onRenderItemLink
         });
         this._keyToIndexMapping[itemKey] = index;
-        this._keyToTabIds[itemKey] = this._pivotId + `-Tab${index}`;
+        this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);
       }
     });
 
@@ -196,9 +225,20 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
+   * Generates the Id for the tab button.
+   */
+  private _getTabId(itemKey: string, index: number): string {
+    if (this.props.getTabId) {
+      return this.props.getTabId(itemKey, index);
+    }
+
+    return this._pivotId + `-Tab${index}`;
+  }
+
+  /**
    * whether the key exists in the pivot items.
    */
-  private _isKeyValid(itemKey: string) {
+  private _isKeyValid(itemKey: string | undefined) {
     return itemKey !== undefined && this._keyToIndexMapping[itemKey] !== undefined;
   }
 

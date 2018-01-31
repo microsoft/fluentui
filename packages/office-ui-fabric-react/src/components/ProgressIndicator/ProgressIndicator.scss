@@ -12,12 +12,11 @@ $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
 
-.ms-ProgressIndicator {
-  @include ms-baseFont;
+.root {
   font-weight: $ms-font-weight-regular;
 }
 
-.ms-ProgressIndicator-itemName {
+.itemName {
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   text-overflow: ellipsis;
@@ -27,44 +26,73 @@ $ProgressIndicatorTextHeight: 18px;
   line-height: $ProgressIndicatorTextHeight + 2;
 }
 
-.ms-ProgressIndicator-itemDescription {
+.itemDescription {
   color: $ms-color-neutralSecondaryAlt;
   font-size: $ms-font-size-xs;
   line-height: $ProgressIndicatorTextHeight;
 }
 
-.ms-ProgressIndicator-itemProgress {
+.itemProgress {
   position: relative;
   height: 2px;
   padding: $ProgressIndicatorMarginBetweenText 0;
 }
 
-.ms-ProgressIndicator-progressTrack {
+.progressTrack {
   position: absolute;
   width: 100%;
   height: 2px;
   background-color: $ms-color-neutralLight;
-  outline: 1px solid transparent;
+  @include high-contrast {
+    border-bottom: 1px solid WindowText;
+  }
 }
 
-.ms-ProgressIndicator-progressBar {
+.progressBar {
   background-color: $ms-color-themePrimary;
   height: 2px;
   position: absolute;
   transition: width .3s ease;
   width: 0;
 
-  @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-white;
+  &.indeterminate {
+    position: absolute;
+    min-width: 33%;
+    background: linear-gradient(to right, transparent 0%, $ms-color-themePrimary 50%, transparent 100%);
+    animation: indeterminateProgress 3s infinite;
   }
 
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-black;
+  @include high-contrast {
+    background-color: WindowText;
+  }
+
+  @include RTL {
+    &.indeterminate {
+      animation: indeterminateProgressRTL 3s infinite;
+    }
   }
 }
 
-.ms-ProgressIndicator-progressBar.smoothTransition {
+.smoothTransition {
   transition-property: width;
   transition-timing-function: linear;
   transition-duration: 150ms;
+}
+
+@keyframes indeterminateProgress {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes indeterminateProgressRTL {
+  0% {
+    right: -30%;
+  }
+  100% {
+    right: 100%;
+  }
 }

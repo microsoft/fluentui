@@ -77,9 +77,7 @@ function getMarkdownForEntry(entry) {
   comments += getChangeComments('Patches', entry.comments.patch);
 
   if (!comments) {
-    markdown += ((changelog.entries.length === index + 1) ?
-      '*Initial release*' :
-      '*Changes not tracked*') +
+    markdown += '*Changes not tracked*' +
       EOL + EOL;
   }
   else {
@@ -192,7 +190,7 @@ function updateReleaseNotes(shouldPatchChangelog) {
           "name": `${entry.name} v${entry.version}`,
           "body": entry.body,
           "draft": false,
-          "prerelease": true
+          "prerelease": false
         });
 
         if (!hasBeenReleased) {

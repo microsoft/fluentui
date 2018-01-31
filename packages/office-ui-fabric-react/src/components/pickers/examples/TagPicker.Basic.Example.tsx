@@ -1,0 +1,88 @@
+import * as React from 'react';
+import { autobind } from '../../../Utilities';
+import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
+
+let _testTags = [
+  'black',
+  'blue',
+  'brown',
+  'cyan',
+  'green',
+  'magenta',
+  'mauve',
+  'orange',
+  'pink',
+  'purple',
+  'red',
+  'rose',
+  'violet',
+  'white',
+  'yellow'
+].map(item => ({ key: item, name: item }));
+
+export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      isPickerDisabled: false
+    };
+  }
+
+  public render() {
+    return (
+      <div>
+        <Checkbox
+          className={ exampleStyles.exampleCheckbox }
+          label='Disable Tag Picker'
+          checked={ this.state.isPickerDisabled }
+          onChange={ this._onDisabledButtonClick }
+        />
+        <TagPicker
+          ref='tagPicker'
+          onResolveSuggestions={ this._onFilterChanged }
+          getTextFromItem={ this._getTextFromItem }
+          pickerSuggestionsProps={
+            {
+              suggestionsHeaderText: 'Suggested Tags',
+              noResultsFoundText: 'No Color Tags Found'
+            }
+          }
+          itemLimit={ 2 }
+          disabled={ this.state.isPickerDisabled }
+          inputProps={ {
+            onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+            'aria-label': 'Tag Picker'
+          } }
+        />
+      </div>
+    );
+  }
+
+  private _getTextFromItem(item: any): any {
+    return item.name;
+  }
+
+  @autobind
+  private _onDisabledButtonClick(): void {
+    this.setState({
+      isPickerDisabled: !this.state.isPickerDisabled
+    });
+  }
+
+  @autobind
+  private _onFilterChanged(filterText: string, tagList: { key: string, name: string }[]) {
+    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, tagList)) : [];
+  }
+
+  private _listContainsDocument(tag: { key: string, name: string }, tagList: { key: string, name: string }[]) {
+    if (!tagList || !tagList.length || tagList.length === 0) {
+      return false;
+    }
+    return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
+  }
+}

@@ -1,0 +1,39 @@
+@import './semanticColorVariables';
+
+@mixin focus-border($padding: 0, $color: $focusedBorderColor) {
+  &::-moz-focus-inner {
+    // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
+    border: 0;
+  }
+
+  & {
+    // Clear browser specific focus styles and use transparent as placeholder for focus style
+    outline: transparent;
+
+    // It is MUST because the pseudo-element is absolute position.
+    position: relative;
+  }
+
+  :global(.ms-Fabric.is-focusVisible) &:focus:after {
+    // Wrap the parent element with $padding pixels.
+    content: '';
+    position: absolute;
+    top: $padding;
+    right: $padding;
+    bottom: $padding;
+    left: $padding;
+
+    // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
+    pointer-events: none;
+
+    // Add focus border with $color
+    border: 1px solid $color;
+  }
+}
+
+// When focus is set using the keyboard, apply an outline.
+@mixin focus-outline {
+  :global(.ms-Fabric.is-focusVisible) &:focus {
+    outline: 1px solid $focusedBorderColor;
+  }
+}

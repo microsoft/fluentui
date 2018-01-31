@@ -1,0 +1,23 @@
+@import '../Link.scss';
+
+// UHF overrides link color and state so we need to re-assign them for the website documentation
+:global {
+  .docs-LinkExample {
+    .ms-Link {
+      // Element: ms-Link root component
+      .root {
+        @include root;
+      }
+
+      // State: The button is not disabled.
+      .isEnabled {
+        @include isEnabled;
+      }
+
+      // State: The button is disabled.
+      .isDisabled {
+        @include isDisabled;
+      }
+    }
+  }
+}

@@ -1,31 +1,24 @@
-/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable no-unused-imports*/
-import {
-  BaseComponent,
-  getNativeProps,
-  anchorProperties,
-  buttonProperties
-} from '../../../Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable } from '../../../Utilities';
+import { IButtonProps } from '../Button.types';
+import { getStyles } from './CompoundButton.styles';
 
-import { Button, ButtonType } from '../index';
-import { ICompoundButtonProps } from './CompoundButton.Props';
-import './CompoundButton.scss';
-import '../ButtonCore/ButtonCore.scss';
+@customizable('CompoundButton', ['theme'])
+export class CompoundButton extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Tell BaseComponent to bypass resolution of componentRef.
+   */
+  protected _shouldUpdateComponentRef = false;
 
-export class CompoundButton extends BaseComponent<ICompoundButtonProps, any> {
   public render() {
-    let { description } = this.props;
+    let { primary = false, styles, theme } = this.props;
     return (
-      <Button
-        className='ms-Button--compound'
-        buttonType={ ButtonType.clean }
-        { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
+      <BaseButton
         { ...this.props }
-      >
-        <span className='ms-Button-label'>{ this.props.children }</span>
-        <span className='ms-Button-description'>{ description }</span>
-      </Button>
+        variantClassName={ primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
+        styles={ getStyles(theme!, styles, primary) }
+      />
     );
   }
 }

@@ -1,23 +1,26 @@
 {
   "extends": [
-    "./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json"
+    "office-ui-fabric-react-tslint"
   ],
   "rules": {
+    "jsx-no-string-ref": false,
+    "jsx-key": false,
+    "jsx-boolean-value": false,
+    "jsx-ban-props": false,
     "max-line-length": [
       false,
       140
     ],
     "no-any": false,
-    "no-null-keyword": false,
     "variable-name": false,
+    "no-internal-module": false,
+    "prefer-const": false,
     "typedef": [
       false
     ],
-    "export-name": false,
-    "trailing-comma": [
+    "no-inferrable-types": [
       false
     ],
-    "no-internal-module": false,
-    "prefer-const": false
+    "no-unused-variable": false
   }
 }

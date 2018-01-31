@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.directionalIcons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.directionalIconPair {
+  display: flex;
+  margin: 40px 28px;
+}
+
+.directionalIcon {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 72px;
+
+  :global(.ms-Icon) {
+    color: $ms-color-neutralPrimaryAlt;
+    font-size: $font-size-bigger;
+  }
+
+  span {
+    color: $ms-color-neutralPrimary;
+    font-size: $ms-font-size-xs;
+    opacity: 0;
+    transition: opacity $ms-animation-duration-2 $ms-animation-ease-1;
+  }
+
+  &:hover {
+    span {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "black",
+    "value": "#000000",
+    "labelColorClass": "ms-fontColor-white"
+  },
+  {
+    "name": "neutralDark",
+    "value": "#212121",
+    "labelColorClass": "ms-fontColor-white"
+  },
+  {
+    "name": "neutralPrimary",
+    "value": "#333333",
+    "labelColorClass": "ms-fontColor-white"
+  },
+  {
+    "name": "neutralPrimaryAlt",
+    "value": "#3c3c3c",
+    "labelColorClass": "ms-fontColor-white"
+  },
+  {
+    "name": "neutralSecondary",
+    "value": "#666666",
+    "labelColorClass": "ms-fontColor-white"
+  },
+  {
+    "name": "neutralTertiary",
+    "value": "#a6a6a6",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
+    "name": "neutralTertiaryAlt",
+    "value": "#c8c8c8",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
+    "name": "neutralLight",
+    "value": "#eaeaea",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
+    "name": "neutralLighter",
+    "value": "#f4f4f4",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
+    "name": "neutralLighterAlt",
+    "value": "#f8f8f8",
+    "labelColorClass": "ms-fontColor-black"
+  },
+  {
+    "name": "white",
+    "value": "#ffffff",
+    "labelColorClass": "ms-fontColor-black"
+  }
+]

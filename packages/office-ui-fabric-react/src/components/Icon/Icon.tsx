@@ -1,30 +1,89 @@
 /* tslint:disable */
 import * as React from 'react';
-import './Icon.scss'
 /* tslint:enable */
-import { IIconProps } from './Icon.Props';
-import { IconType } from './IconType';
+import { IIconProps, IconType } from './Icon.types';
 import { Image } from '../Image/Image';
 import {
   css,
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
+import { getIcon, IIconRecord } from '../../Styling';
+import { getClassNames } from './Icon.classNames';
 
-export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
-  let customIcon = props.iconName === 'None';
+export const Icon = (props: IIconProps): JSX.Element => {
+  let {
+    ariaLabel,
+    className,
+    styles,
+    iconName
+   } = props;
+  let classNames = getClassNames(
+    styles
+  );
 
-  if (props.iconType === IconType.Image) {
-    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', props.className);
+  if (props.iconType === IconType.image || props.iconType === IconType.Image) {
+    let containerClassName = css(
+      'ms-Icon-imageContainer',
+      classNames.root,
+      classNames.imageContainer,
+      className
+    );
 
     return (
-      <div className={ containerClassName } >
+      <div
+        className={
+          css(
+            containerClassName,
+            classNames.root
+          ) }
+      >
         <Image { ...props.imageProps as any } />
       </div>
     );
+  } else if (typeof iconName === 'string' && iconName.length === 0) {
+    return (
+      <i
+        aria-label={ ariaLabel }
+        { ...(ariaLabel ? {} : {
+          role: 'presentation',
+          'aria-hidden': true
+        }) }
+        { ...getNativeProps(props, htmlElementProperties) }
+        className={
+          css(
+            'ms-Icon-placeHolder',
+            classNames.rootHasPlaceHolder,
+            props.className
+          ) }
+      />
+    );
   } else {
-    let className = css('ms-Icon', customIcon ? '' : ('ms-Icon--' + props.iconName), props.className);
+    let iconDefinition = getIcon(iconName) || {
+      subset: {
+        className: undefined
+      },
+      code: undefined
+    };
 
-    return <i { ...getNativeProps(props, htmlElementProperties) } className={ className } />;
+    return (
+      <i
+        aria-label={ ariaLabel }
+        { ...(ariaLabel ? {} : {
+          role: 'presentation',
+          'aria-hidden': true,
+          'data-icon-name': iconName,
+        }) }
+        { ...getNativeProps(props, htmlElementProperties) }
+        className={
+          css(
+            iconDefinition.subset.className,
+            classNames.root,
+            props.className
+          ) }
+      >
+        { iconDefinition.code }
+      </i>
+    );
   }
 };

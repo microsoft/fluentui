@@ -1,15 +1,26 @@
 import * as React from 'react';
-import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
+import { IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
 import {
+  BaseComponent,
+  KeyCodes,
   autobind,
   css
 } from '../../Utilities';
-import './DocumentCard.scss';
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
-export class DocumentCard extends React.Component<IDocumentCardProps, any> {
+export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
   };
+
+  constructor(props: IDocumentCardProps) {
+    super(props);
+
+    this._warnDeprecations({
+      accentColor: undefined
+    });
+  }
 
   public render() {
     let { onClick, onClickHref, children, className, type, accentColor } = this.props;
@@ -23,20 +34,29 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
       };
     }
 
+    // if this element is actionable it should have an aria role
+    let role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    let tabIndex = actionable ? 0 : undefined;
+
     return (
       <div
+        tabIndex={ tabIndex }
+        role={ role }
         className={
           css(
             'ms-DocumentCard',
+            styles.root,
             {
-              'ms-DocumentCard--actionable': actionable,
-              'ms-DocumentCard--compact': type === DocumentCardType.compact ? true : false
+              ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
+              ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
             },
             className
           )
         }
-        onClick={ actionable ? this._onClick : null }
-        style={ style }>
+        onKeyDown={ actionable ? this._onKeyDown : undefined }
+        onClick={ actionable ? this._onClick : undefined }
+        style={ style }
+      >
         { children }
       </div>
     );
@@ -44,6 +64,18 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+    this._onAction(ev);
+  }
+
+  @autobind
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+      this._onAction(ev);
+    }
+  }
+
+  @autobind
+  private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
     let { onClick, onClickHref } = this.props;
 
     if (onClick) {

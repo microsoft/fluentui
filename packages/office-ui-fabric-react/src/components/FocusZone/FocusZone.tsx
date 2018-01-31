@@ -3,21 +3,25 @@ import {
   FocusZoneDirection,
   IFocusZone,
   IFocusZoneProps
-} from './FocusZone.Props';
+} from './FocusZone.types';
 import {
   BaseComponent,
   EventGroup,
   KeyCodes,
   autobind,
   css,
+  divProperties,
   elementContains,
   getDocument,
   getId,
   getNextElement,
+  getNativeProps,
   getParent,
   getPreviousElement,
   getRTL,
+  getWindow,
   isElementFocusZone,
+  isElementFocusSubZone,
   isElementTabbable
 } from '../../Utilities';
 
@@ -36,6 +40,8 @@ interface IPoint {
 }
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
+const ALLOW_VIRTUAL_ELEMENTS = false;
+
 export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
 
   public static defaultProps: IFocusZoneProps = {
@@ -43,21 +49,21 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     direction: FocusZoneDirection.bidirectional
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement
-  };
-
+  private _root: HTMLElement;
   private _id: string;
-  private _activeElement: HTMLElement;
+  /** The most recently focused child element. */
+  private _activeElement: HTMLElement | null;
+  /** The child element with tabindex=0. */
+  private _defaultFocusElement: HTMLElement | null;
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
-  constructor(props) {
+  constructor(props: IFocusZoneProps) {
     super(props);
 
+    this._warnDeprecations({ rootProps: undefined });
+
     this._id = getId('FocusZone');
-    _allInstances[this._id] = this;
 
     this._focusAlignment = {
       left: 0,
@@ -66,29 +72,35 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public componentDidMount() {
-    const windowElement = this.refs.root.ownerDocument.defaultView;
+    _allInstances[this._id] = this;
+    if (this._root) {
+      const windowElement = this._root.ownerDocument.defaultView;
 
-    let parentElement = getParent(this.refs.root);
+      let parentElement = getParent(this._root, ALLOW_VIRTUAL_ELEMENTS);
 
-    while (
-      parentElement &&
-      parentElement !== document.body &&
-      parentElement.nodeType === 1
-    ) {
-      if (isElementFocusZone(parentElement)) {
-        this._isInnerZone = true;
-        break;
+      while (
+        parentElement &&
+        parentElement !== document.body &&
+        parentElement.nodeType === 1
+      ) {
+        if (isElementFocusZone(parentElement)) {
+          this._isInnerZone = true;
+          break;
+        }
+        parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
       }
-      parentElement = getParent(parentElement);
-    }
 
-    this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+      if (!this._isInnerZone) {
+        this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+      }
 
-    // Assign initial tab indexes so that we can set initial focus as appropriate.
-    this._updateTabIndexes();
+      // Assign initial tab indexes so that we can set initial focus as appropriate.
+      this._updateTabIndexes();
 
-    if (this.props.defaultActiveElement) {
-      this._activeElement = getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
+      if (this.props.defaultActiveElement) {
+        this._activeElement = getDocument()!.querySelector(this.props.defaultActiveElement) as HTMLElement;
+        this.focus();
+      }
     }
   }
 
@@ -97,21 +109,31 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public render() {
-    let { rootProps, ariaLabelledBy, className } = this.props;
+    let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
+    let divProps = getNativeProps(this.props, divProperties);
+
+    const Tag = this.props.elementType || 'div';
 
     return (
-      <div
-        { ...rootProps }
+      <Tag
+        role='presentation'
+        {
+        ...divProps
+        }
+        {
+        ...rootProps
+        }
         className={ css('ms-FocusZone', className) }
-        ref='root'
+        ref={ this._resolveRef('_root') }
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
-        { ...{ onMouseDownCapture: this._onMouseDown } }
-        >
+        onMouseDownCapture={ this._onMouseDown }
+      >
         { this.props.children }
-      </div>
+      </Tag>
     );
   }
 
@@ -119,15 +141,29 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Sets focus to the first tabbable item in the zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focus(): boolean {
-    if (this._activeElement && elementContains(this.refs.root, this._activeElement)) {
-      this._activeElement.focus();
-      return true;
-    } else {
-      const firstChild = this.refs.root.firstChild as HTMLElement;
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    if (this._root) {
+      if (!forceIntoFirstElement && this._root.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' && this._isInnerZone) {
+        const ownerZoneElement = this._getOwnerZone(this._root);
 
-      return this.focusElement(getNextElement(this.refs.root, firstChild, true));
+        if (ownerZoneElement !== this._root) {
+          const ownerZone = _allInstances[ownerZoneElement.getAttribute(FOCUSZONE_ID_ATTRIBUTE) as string];
+
+          return !!ownerZone && ownerZone.focusElement(this._root);
+        }
+
+        return false;
+      } else if (this._activeElement && elementContains(this._root, this._activeElement)
+        && isElementTabbable(this._activeElement)) {
+        this._activeElement.focus();
+        return true;
+      } else {
+        const firstChild = this._root.firstChild as HTMLElement;
+
+        return this.focusElement(getNextElement(this._root, firstChild, true) as HTMLElement);
+      }
     }
+    return false;
   }
 
   /**
@@ -145,22 +181,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (element) {
+      this._setActiveElement(element);
       if (this._activeElement) {
-        this._activeElement.tabIndex = -1;
+        this._activeElement.focus();
       }
 
-      this._activeElement = element;
-
-      if (element) {
-        if (!this._focusAlignment) {
-          this._setFocusAlignment(element, true, true);
-        }
-
-        this._activeElement.tabIndex = 0;
-        element.focus();
-
-        return true;
-      }
+      return true;
     }
 
     return false;
@@ -176,16 +202,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     } else {
       let parentElement = ev.target as HTMLElement;
 
-      while (parentElement && parentElement !== this.refs.root) {
+      while (parentElement && parentElement !== this._root) {
         if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
           this._activeElement = parentElement;
           break;
         }
-        parentElement = getParent(parentElement);
+        parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
     }
     if (onActiveElementChanged) {
-      onActiveElementChanged(this._activeElement, ev);
+      onActiveElementChanged(this._activeElement as HTMLElement, ev);
     }
   }
 
@@ -209,20 +235,44 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let target = ev.target as HTMLElement;
     const path = [];
 
-    while (target && target !== this.refs.root) {
+    while (target && target !== this._root) {
       path.push(target);
-      target = getParent(target);
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
     }
 
     while (path.length) {
-      target = path.pop();
+      target = path.pop() as HTMLElement;
+
+      if (target && isElementTabbable(target)) {
+        this._setActiveElement(target);
+      }
 
       if (isElementFocusZone(target)) {
+        // Stop here since the focus zone will take care of its own children.
         break;
-      } else if (target && isElementTabbable(target)) {
-        target.tabIndex = 0;
-        this._setFocusAlignment(target, true, true);
       }
+    }
+  }
+
+  private _setActiveElement(element: HTMLElement): void {
+    const previousActiveElement = this._activeElement;
+
+    this._activeElement = element;
+
+    if (previousActiveElement) {
+      if (isElementFocusZone(previousActiveElement)) {
+        this._updateTabIndexes(previousActiveElement);
+      }
+
+      previousActiveElement.tabIndex = -1;
+    }
+
+    if (this._activeElement) {
+      if (!this._focusAlignment) {
+        this._setFocusAlignment(element, true, true);
+      }
+
+      this._activeElement.tabIndex = 0;
     }
   }
 
@@ -237,19 +287,49 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return;
     }
 
+    if (document.activeElement === this._root && this._isInnerZone) {
+      // If this element has focus, it is being controlled by a parent.
+      // Ignore the keystroke.
+      return;
+    }
+
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+
+      if (ev.isDefaultPrevented()) {
+        return;
+      }
+    }
+
     if (
       isInnerZoneKeystroke &&
-      this._isImmediateDescendantOfZone(ev.target as HTMLElement) &&
-      isInnerZoneKeystroke(ev)) {
+      isInnerZoneKeystroke(ev) &&
+      this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
 
       // Try to focus
       let innerZone = this._getFirstInnerZone();
 
-      if (!innerZone || !innerZone.focus()) {
+      if (innerZone) {
+        if (!innerZone.focus(true)) {
+          return;
+        }
+      } else if (isElementFocusSubZone(ev.target as HTMLElement)) {
+        if (!this.focusElement(getNextElement(ev.target as HTMLElement, (ev.target as HTMLElement).firstChild as HTMLElement, true) as HTMLElement)) {
+          return;
+        }
+      } else {
         return;
       }
+    } else if (ev.altKey) {
+      return;
     } else {
       switch (ev.which) {
+        case KeyCodes.space:
+          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+            break;
+          }
+          return;
+
         case KeyCodes.left:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
             break;
@@ -274,16 +354,47 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           }
           return;
 
+        case KeyCodes.tab:
+          if (this.props.allowTabKey) {
+            if (direction === FocusZoneDirection.vertical) {
+              if (ev.shiftKey) {
+                this._moveFocusUp();
+              } else {
+                this._moveFocusDown();
+              }
+              break;
+            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+              if (ev.shiftKey) {
+                this._moveFocusLeft();
+              } else {
+                this._moveFocusRight();
+              }
+              break;
+            }
+          }
+          return;
+
         case KeyCodes.home:
-          const firstChild = this.refs.root.firstChild as HTMLElement;
-          if (this.focusElement(getNextElement(this.refs.root, firstChild, true))) {
+          if (
+            this._isElementInput(ev.target as HTMLElement) &&
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)) {
+            return false;
+          }
+          const firstChild = this._root.firstChild as HTMLElement;
+          if (this.focusElement(getNextElement(this._root, firstChild, true) as HTMLElement)) {
             break;
           }
           return;
 
         case KeyCodes.end:
-          const lastChild = this.refs.root.lastChild as HTMLElement;
-          if (this.focusElement(getPreviousElement(this.refs.root, lastChild, true, true, true))) {
+          if (
+            this._isElementInput(ev.target as HTMLElement) &&
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)) {
+            return false;
+          }
+
+          const lastChild = this._root.lastChild as HTMLElement;
+          if (this.focusElement(getPreviousElement(this._root, lastChild, true, true, true) as HTMLElement)) {
             break;
           }
           return;
@@ -307,8 +418,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Walk up the dom try to find a focusable element.
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
+    if (target === this._root) {
+      return false;
+    }
+
     do {
-      if (target.tagName === 'BUTTON' || target.tagName === 'A') {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         return false;
       }
 
@@ -321,8 +436,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         return true;
       }
 
-      target = getParent(target);
-    } while (target !== this.refs.root);
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+    } while (target !== this._root);
 
     return false;
   }
@@ -330,14 +445,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   /**
    * Traverse to find first child zone.
    */
-  private _getFirstInnerZone(rootElement?: HTMLElement): FocusZone {
-    rootElement = rootElement || this._activeElement || this.refs.root;
+  private _getFirstInnerZone(rootElement?: HTMLElement): FocusZone | null {
+    rootElement = rootElement || this._activeElement || this._root;
+
+    if (isElementFocusZone(rootElement)) {
+      return _allInstances[rootElement.getAttribute(FOCUSZONE_ID_ATTRIBUTE) as string];
+    }
 
     let child: HTMLElement = rootElement.firstElementChild as HTMLElement;
 
     while (child) {
       if (isElementFocusZone(child)) {
-        return _allInstances[child.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
+        return _allInstances[child.getAttribute(FOCUSZONE_ID_ATTRIBUTE) as string];
       }
       let match = this._getFirstInnerZone(child);
 
@@ -358,7 +477,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     let element = this._activeElement;
     let candidateDistance = -1;
-    let candidateElement: HTMLElement;
+    let candidateElement: HTMLElement | undefined = undefined;
     let changedFocus = false;
     let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
 
@@ -375,14 +494,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
-      element = isForward ?
-        getNextElement(this.refs.root, element) :
-        getPreviousElement(this.refs.root, element);
+      element = (isForward ?
+        getNextElement(this._root, element) :
+        getPreviousElement(this._root, element)) as HTMLElement;
 
       if (isBidirectional) {
         if (element) {
           const targetRect = element.getBoundingClientRect();
-          const elementDistance = getDistanceFromCenter(activeRect, targetRect);
+          const elementDistance = getDistanceFromCenter(activeRect as ClientRect, targetRect);
+
+          if (elementDistance === -1 && candidateDistance === -1) {
+            candidateElement = element;
+            break;
+          }
 
           if (elementDistance > -1 && (candidateDistance === -1 || elementDistance < candidateDistance)) {
             candidateDistance = elementDistance;
@@ -406,9 +530,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       this.focusElement(candidateElement);
     } else if (this.props.isCircularNavigation) {
       if (isForward) {
-        return this.focusElement(getNextElement(this.refs.root, this.refs.root.firstElementChild as HTMLElement, true));
+        return this.focusElement(getNextElement(this._root, this._root.firstElementChild as HTMLElement, true) as HTMLElement);
       } else {
-        return this.focusElement(getPreviousElement(this.refs.root, this.refs.root.lastElementChild as HTMLElement, true, true, true));
+        return this.focusElement(getPreviousElement(this._root, this._root.lastElementChild as HTMLElement, true, true, true) as HTMLElement);
       }
     }
 
@@ -428,6 +552,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectBottom = Math.floor(activeRect.bottom);
 
+      if (targetRectTop < activeRectBottom) {
+        return 999999999;
+      }
+
       if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
         (targetRectTop === targetTop)) {
         targetTop = targetRectTop;
@@ -440,7 +568,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       return distance;
     })) {
-      this._setFocusAlignment(this._activeElement, false, true);
+      this._setFocusAlignment(this._activeElement as HTMLElement, false, true);
       return true;
     }
 
@@ -461,6 +589,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectTop = Math.floor(activeRect.top);
 
+      if (targetRectBottom > activeRectTop) {
+        return 999999999;
+      }
+
       if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
         (targetRectTop === targetTop)) {
         targetTop = targetRectTop;
@@ -473,7 +605,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       return distance;
     })) {
-      this._setFocusAlignment(this._activeElement, false, true);
+      this._setFocusAlignment(this._activeElement as HTMLElement, false, true);
       return true;
     }
 
@@ -481,25 +613,21 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusLeft(): boolean {
-    let targetTop = -1;
-    const topAlignment = this._focusAlignment.top;
-
     if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
-      if ((
-        targetTop === -1 &&
+      if (
+        targetRect.bottom > activeRect.top &&
         targetRect.right <= activeRect.right &&
-        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
-        (targetRect.top === targetTop)) {
+        this.props.direction !== FocusZoneDirection.vertical
+      ) {
 
-        targetTop = targetRect.top;
-        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = activeRect.right - targetRect.right;
       }
 
       return distance;
     })) {
-      this._setFocusAlignment(this._activeElement, true, false);
+      this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
     }
 
@@ -507,25 +635,21 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusRight(): boolean {
-    let targetTop = -1;
-    const topAlignment = this._focusAlignment.top;
-
     if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
-      if ((
-        targetTop === -1 &&
+      if (
+        targetRect.top < activeRect.bottom &&
         targetRect.left >= activeRect.left &&
-        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
-        (targetRect.top === targetTop)) {
+        this.props.direction !== FocusZoneDirection.vertical
+      ) {
 
-        targetTop = targetRect.top;
-        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = targetRect.left - activeRect.left;
       }
 
       return distance;
     })) {
-      this._setFocusAlignment(this._activeElement, true, false);
+      this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
     }
 
@@ -555,25 +679,36 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _isImmediateDescendantOfZone(element?: HTMLElement): boolean {
-    let parentElement = getParent(element);
+    return this._getOwnerZone(element) === this._root;
+  }
 
-    while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
+  private _getOwnerZone(element?: HTMLElement): HTMLElement {
+    let parentElement = getParent(element as HTMLElement, ALLOW_VIRTUAL_ELEMENTS);
+
+    while (parentElement && parentElement !== this._root && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
-        return false;
+        return parentElement;
       }
 
-      parentElement = getParent(parentElement);
+      parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    return true;
+    return this._root;
   }
 
   private _updateTabIndexes(element?: HTMLElement) {
     if (!element) {
-      element = this.refs.root;
+      this._defaultFocusElement = null;
+      element = this._root;
       if (this._activeElement && !elementContains(element, this._activeElement)) {
         this._activeElement = null;
       }
+    }
+
+    // If active element changes state to disabled, set it to null.
+    // Otherwise, we lose keyboard accessibility to other elements in focus zone.
+    if (this._activeElement && !isElementTabbable(this._activeElement)) {
+      this._activeElement = null;
     }
 
     const childNodes = element.children;
@@ -586,11 +721,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         if (child.getAttribute && child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'false') {
           child.setAttribute(TABINDEX, '-1');
         }
+
         if (isElementTabbable(child)) {
           if (this.props.disabled) {
             child.setAttribute(TABINDEX, '-1');
-          } else if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
-            this._activeElement = child;
+          } else if (!this._isInnerZone && ((!this._activeElement && !this._defaultFocusElement) || this._activeElement === child)) {
+            this._defaultFocusElement = child;
             if (child.getAttribute(TABINDEX) !== '0') {
               child.setAttribute(TABINDEX, '0');
             }
@@ -601,15 +737,23 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           // Disgusting IE hack. Sad face.
           child.setAttribute('focusable', 'false');
         }
-
-        this._updateTabIndexes(child);
+      } else if (child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') {
+        if (!this._isInnerZone && ((!this._activeElement && !this._defaultFocusElement) || this._activeElement === child)) {
+          this._defaultFocusElement = child;
+          if (child.getAttribute(TABINDEX) !== '0') {
+            child.setAttribute(TABINDEX, '0');
+          }
+        } else if (child.getAttribute(TABINDEX) !== '-1') {
+          child.setAttribute(TABINDEX, '-1');
+        }
       }
-    }
 
+      this._updateTabIndexes(child);
+    }
   }
 
   private _isElementInput(element: HTMLElement): boolean {
-    if (element && element.tagName && element.tagName.toLowerCase() === 'input') {
+    if (element && element.tagName && (element.tagName.toLowerCase() === 'input' || element.tagName.toLowerCase() === 'textarea')) {
       return true;
     }
     return false;

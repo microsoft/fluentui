@@ -5,9 +5,10 @@ import {
   divProperties,
   doesElementContainFocus,
   getDocument,
-  getNativeProps
+  getNativeProps,
+  autobind
 } from '../../Utilities';
-import { IPopupProps } from './Popup.Props';
+import { IPopupProps } from './Popup.types';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -27,11 +28,10 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   private _containsFocus: boolean;
 
   public componentWillMount() {
-    this._originalFocusedElement = getDocument().activeElement as HTMLElement;
+    this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {
-    this._events.on(this.refs.root, 'keydown', this._onKeyDown);
     this._events.on(this.refs.root, 'focus', this._onFocus, true);
     this._events.on(this.refs.root, 'blur', this._onBlur, true);
     if (doesElementContainFocus(this.refs.root)) {
@@ -55,7 +55,12 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public render() {
-    let { role, className, ariaLabelledBy, ariaDescribedBy } = this.props;
+    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+
+    let needsVerticalScrollBar = false;
+    if (this.refs.root && this.refs.root.firstElementChild) {
+      needsVerticalScrollBar = this.refs.root.firstElementChild.clientHeight > this.refs.root.clientHeight;
+    }
 
     return (
       <div
@@ -63,19 +68,24 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         { ...getNativeProps(this.props, divProperties) }
         className={ className }
         role={ role }
+        aria-label={ ariaLabel }
         aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }>
+        aria-describedby={ ariaDescribedBy }
+        onKeyDown={ this._onKeyDown }
+        style={ { overflowY: needsVerticalScrollBar ? 'scroll' : 'auto', ...style } }
+      >
         { this.props.children }
       </div>
     );
   }
 
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.escape:
 
         if (this.props.onDismiss) {
-          this.props.onDismiss();
+          this.props.onDismiss(ev);
 
           ev.preventDefault();
           ev.stopPropagation();

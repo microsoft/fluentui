@@ -1,11 +1,13 @@
 import * as React from 'react';
-import './Dialog.scss';
+import { BaseComponent, css } from '../../Utilities';
+import * as stylesImport from './Dialog.scss';
+const styles: any = stylesImport;
 
-export class DialogFooter extends React.Component<any, any> {
+export class DialogFooter extends BaseComponent<any, any> {
   public render() {
     return (
-      <div className='ms-Dialog-actions'>
-        <div className='ms-Dialog-actionsRight'>
+      <div className={ css('ms-Dialog-actions', styles.actions) }>
+        <div className={ css('ms-Dialog-actionsRight', styles.actionsRight) }>
           { this._renderChildrenAsActions() }
         </div>
       </div>
@@ -14,7 +16,7 @@ export class DialogFooter extends React.Component<any, any> {
 
   private _renderChildrenAsActions() {
     return React.Children.map(this.props.children, child =>
-      <span className='ms-Dialog-action'>{ child }</span>
+      child && <span className={ css('ms-Dialog-action', styles.action) }>{ child }</span>
     );
   }
 }

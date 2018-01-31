@@ -2,10 +2,8 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { BaseComponent } from './BaseComponent';
-
-let { assert, expect } = chai;
 
 let _originalOnError = BaseComponent.onError;
 
@@ -19,8 +17,10 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public shouldComponentUpdate(): void {
+  public shouldComponentUpdate(nextProps?: {}, nextState?: {}): boolean {
     this._createNullRef();
+
+    return true;
   }
 
   public componentWillUpdate(): void {
@@ -31,7 +31,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     this._createNullRef();
     return null;
   }
@@ -44,8 +44,9 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  private _createNullRef() {
-    let foo: () => void = null;
+  private _createNullRef(): void {
+    // tslint:disable-next-line:no-any
+    let foo: any = null;
 
     // Calling a null
     foo();
@@ -70,29 +71,31 @@ describe('BaseComponent', () => {
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
 
-      public render() {
+      public render(): JSX.Element {
         return <div ref={ this._resolveRef('root') } />;
       }
     }
 
     let component = ReactTestUtils.renderIntoDocument(
       <Foo />
+      // tslint:disable-next-line:no-any
     ) as any;
 
-    expect(component.root).to.exist;
+    expect(component.root).toBeDefined();
   });
 });
 
-function _buildTestFor(methodName) {
+function _buildTestFor(methodName: string): void {
   it(`calls the error logger on ${methodName} exception`, () => {
-    let lastErrorMessage = null;
+    let lastErrorMessage;
 
-    BaseComponent.onError = (errorMessage, ex) => lastErrorMessage = errorMessage;
+    BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
 
-    let c = new TestComponent();
+    let c = new TestComponent({});
 
-    c[methodName]();
+    // tslint:disable-next-line:no-any
+    (c as any)[methodName]();
 
-    assert(lastErrorMessage !== null, 'Error callback not called');
+    expect(lastErrorMessage).toBeDefined();
   });
 }

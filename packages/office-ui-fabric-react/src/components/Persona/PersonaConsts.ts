@@ -2,40 +2,36 @@ import {
   PersonaInitialsColor,
   PersonaPresence,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
+import * as stylesImport from './Persona.scss';
+const styles: any = stylesImport;
 
-export const PERSONA_SIZE = {
-  [PersonaSize.tiny]: 'ms-Persona--tiny',
-  [PersonaSize.extraSmall]: 'ms-Persona--xs',
-  [PersonaSize.small]: 'ms-Persona--sm',
+export const PERSONA_SIZE: { [key: number]: string } = {
+  // All non-numerically named sizes are deprecated, use the numerically named classes below
+  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsSize10,
+  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsSize24,
+  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsSize28,
+  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSize40,
   [PersonaSize.regular]: '',
-  [PersonaSize.large]: 'ms-Persona--lg',
-  [PersonaSize.extraLarge]: 'ms-Persona--xl'
+  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsSize72,
+  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsSize100,
+
+  [PersonaSize.size10]: 'ms-Persona--size10 ' + styles.rootIsSize10,
+  [PersonaSize.size16]: 'ms-Persona--size16 ' + styles.rootIsSize16,
+  [PersonaSize.size24]: 'ms-Persona--size24 ' + styles.rootIsSize24,
+  [PersonaSize.size28]: 'ms-Persona--size28 ' + styles.rootIsSize28,
+  [PersonaSize.size32]: 'ms-Persona--size32 ' + styles.rootIsSize32,
+  [PersonaSize.size40]: 'ms-Persona--size40 ' + styles.rootIsSize40,
+  [PersonaSize.size48]: 'ms-Persona--size48 ' + styles.rootIsSize48,
+  [PersonaSize.size72]: 'ms-Persona--size72 ' + styles.rootIsSize72,
+  [PersonaSize.size100]: 'ms-Persona--size100 ' + styles.rootIsSize100
 };
 
-export const PERSONA_PRESENCE = {
-  [PersonaPresence.offline]: 'ms-Persona--offline',
-  [PersonaPresence.online]: 'ms-Persona--online',
-  [PersonaPresence.away]: 'ms-Persona--away',
-  [PersonaPresence.dnd]: 'ms-Persona--dnd',
-  [PersonaPresence.blocked]: 'ms-Persona--blocked',
-  [PersonaPresence.busy]: 'ms-Persona--busy'
-};
-
-export const PERSONA_INITIALS_COLOR = {
-  [PersonaInitialsColor.lightBlue]: 'ms-Persona-initials--lightBlue',
-  [PersonaInitialsColor.blue]: 'ms-Persona-initials--blue',
-  [PersonaInitialsColor.darkBlue]: 'ms-Persona-initials--darkBlue',
-  [PersonaInitialsColor.teal]: 'ms-Persona-initials--teal',
-  [PersonaInitialsColor.lightGreen]: 'ms-Persona-initials--lightGreen',
-  [PersonaInitialsColor.green]: 'ms-Persona-initials--green',
-  [PersonaInitialsColor.darkGreen]: 'ms-Persona-initials--darkGreen',
-  [PersonaInitialsColor.lightPink]: 'ms-Persona-initials--lightPink',
-  [PersonaInitialsColor.pink]: 'ms-Persona-initials--pink',
-  [PersonaInitialsColor.magenta]: 'ms-Persona-initials--magenta',
-  [PersonaInitialsColor.purple]: 'ms-Persona-initials--purple',
-  [PersonaInitialsColor.black]: 'ms-Persona-initials--black',
-  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange',
-  [PersonaInitialsColor.red]: 'ms-Persona-initials--red',
-  [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed'
+export const PERSONA_PRESENCE: { [key: number]: string } = {
+  [PersonaPresence.offline]: 'ms-Persona--offline ' + styles.rootIsOffline,
+  [PersonaPresence.online]: 'ms-Persona--online ',
+  [PersonaPresence.away]: 'ms-Persona--away ' + styles.rootIsAway,
+  [PersonaPresence.dnd]: 'ms-Persona--dnd ' + styles.rootIsDoNotDisturb,
+  [PersonaPresence.blocked]: 'ms-Persona--blocked ' + styles.rootIsBlocked,
+  [PersonaPresence.busy]: 'ms-Persona--busy ' + styles.rootIsBusy
 };

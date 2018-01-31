@@ -7,48 +7,90 @@
 // --------------------------------------------------
 // MessageBar Styles
 
-.ms-MessageBar {
-  @include ms-baseFont;
+// Mixins
+@mixin multiLineContent {
+  flex-direction: column;
+  .content {
+    flex-direction: row;
+  }
+  .innerText {
+    overflow: visible;
+    white-space: pre-wrap;
+  }
+}
+
+@mixin buttonMargins($sidesAndBottom, $top: $sidesAndBottom) {
+  @include margin($top, $sidesAndBottom, $sidesAndBottom, 0);
+  :nth-child(n+2) {
+    @include margin-left($sidesAndBottom);
+  }
+}
+
+.root {
   @include ms-bgColor-info;
+  min-height: 32px;
   color: $ms-color-infoText;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   position: relative;
+  word-break: break-word;
 
-  .ms-MessageBar-icon {
-    @include padding-right(8px);
-    color: $ms-color-info;
-  }
-
-  .ms-Link {
+  :global(.ms-Link) {
     font-size: $ms-font-size-s;
+    color: $ms-color-themeDark;
   }
 }
 
-.ms-MessageBar-icon,
-.ms-MessageBar-text {
+.icon,
+.text {
   display: table-cell;
   vertical-align: top;
 }
 
-.ms-MessageBar-icon {
+.icon {
   font-size: $ms-icon-size-m;
   min-width: 16px;
   min-height: 16px;
   display: flex;
+  color: $ms-color-info;
+  flex-shrink: 0;
+  // Margin-right is accounted for in the .innerText margin-left
+  @include margin(16px, 0, 16px, 16px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+  }
 }
 
-.ms-MessageBar-text {
+.text {
   @include ms-font-s;
   min-width: 0;
   display: flex;
+  flex-grow: 1;
+  @include margin(16px, 8px, 16px, 8px);
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(8px, 0, 8px, 8px);
+    &.noDismissButton {
+      @include margin-right(8px);
+    }
+  }
+  &.noDismissButton {
+    @include margin-right(16px);
+  }
 }
 
+.innerText {
+  line-height: 16px;
+
+  // Add padding between text and hyperlink
+  span a {
+    @include padding-left(4px);
+  }
+}
 
 //== Modifier: Warning message
 //
-.ms-MessageBar.ms-MessageBar--warning {
+.root.rootIsWarning {
   @include ms-bgColor-warning;
   color: $ms-color-warningText;
 }
@@ -56,11 +98,11 @@
 
 //== Modifier: Severe Warning message
 //
-.ms-MessageBar.ms-MessageBar--severeWarning {
+.root.rootIsSevereWarning {
   @include ms-bgColor-severeWarning;
   color: $ms-color-severeWarningText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-severeWarning;
   }
 }
@@ -68,11 +110,11 @@
 
 //== Modifier: Error message
 //
-.ms-MessageBar.ms-MessageBar--error {
+.root.rootIsError {
   @include ms-bgColor-error;
   color: $ms-color-errorText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-error;
   }
 }
@@ -80,11 +122,11 @@
 
 //== Modifier: Blocked message
 //
-.ms-MessageBar.ms-MessageBar--blocked {
+.root.rootIsBlocked {
   @include ms-bgColor-error;
   color: $ms-color-errorText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-error;
   }
 }
@@ -92,102 +134,118 @@
 
 //== Modifier: Success message
 //
-.ms-MessageBar.ms-MessageBar--success {
+.root.rootIsSuccess {
   @include ms-bgColor-success;
   color: $ms-color-successText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-green;
   }
 }
 
-// Shared
-
-.ms-MessageBar-content {
-  padding: 16px;
+// Shared between Single- and Multi- Line
+.content {
   display: flex;
+  line-height: normal;
   width: 100%;
   box-sizing: border-box;
+  &:before {
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    margin: 0;
+    @include high-contrast {
+        border: 1px solid WindowText;
+        content: ' ';
+    }
+  }
 }
 
-.ms-MessageBar-actionables {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
+.actions {
+  @include buttonMargins(12px, 0);
 }
 
-.ms-MessageBar-actionables > .ms-MessageBar-dismissal {
-  right: 0;
-  top: 0;
-  position: absolute !important; // Needed because we're using focus-border mixin
+.actionsSingleLine {
+  @include buttonMargins(8px);
 }
 
-.ms-MessageBar-actions, .ms-MessageBar-actionsOneline {
+.actions, .actionsSingleLine {
   display: flex;
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
-}
-
-.ms-MessageBar-actionsOneline {
-  position: relative;
-}
-
-.ms-MessageBar-dismissal {
-  @include focus-border();
-  min-width: 0;
-}
-.ms-MessageBar-actionsOneline .ms-MessageBar-dismissal {
-  @include margin-right(-8px);
-}
-
-// Add space between adjacent MessageBars.
-.ms-MessageBar + .ms-MessageBar {
-  margin-bottom: 6px;
-}
-
-.ms-MessageBar-innerTextPadding {
-  @include padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
-
-  span, .ms-MessageBar-innerText > span {
-    @include padding-right(4px); // Add padding between text and hyperlink.
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include buttonMargins(8px, 0);
+    :global(.ms-Button) {
+      margin-top: 8px;
+    }
   }
 }
 
-// When we can have multiple lines in the message bar.
-.ms-MessageBar-multiline > .ms-MessageBar-content > .ms-MessageBar-actionables {
-  flex-direction: column;
+.dismissal,
+.expand {
+  @include focus-border();
+  flex-shrink: 0;
+  @include margin(8px, 8px, 8px, 0); // Margin-left is accounted for in the .text margin-right
+
+  @media screen and (max-width: $ms-screen-max-sm) {
+    @include margin(0, 0, 0, 8px);
+  }
+
+  @include high-contrast {
+    -ms-high-contrast-adjust: none;
+  }
 }
 
-// When we should have only a single line of text in the message bar.
-.ms-MessageBar-singleline {
-  .ms-MessageBar-content {
-    .ms-MessageBar-icon{
-      align-items: center;
+.dismissSingleLine,
+.expandSingleLine {
+  display: flex;
+}
+
+.dismissal,
+.dismissSingleLine,
+.expandSingleLine {
+  :global(.ms-Button-icon) {
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+    color: $ms-color-neutralSecondary;
+  }
+}
+
+// Multi line specific attributes
+.multiLine {
+  @include multiLineContent();
+  .text.multiLineWithActions {
+    margin-bottom: 8px; // This creates an 8px space between text and actions
+    @media screen and (max-width: $ms-screen-max-sm) {
+      margin-bottom: 0;
     }
+  }
+}
 
-    .ms-MessageBar-actionables > .ms-MessageBar-text {
-      justify-content: center;
-      align-items: center;
-
-      .ms-MessageBar-innerText,
-      .ms-MessageBar-innerTextPadding {
-        max-height: 1.3em;
-        line-height: 1.3em;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+// Single line specific attributes
+.singleLine {
+  .innerText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .expandSingleLine {
+    @include multiLineContent();
+  }
+  @media screen and (max-width: $ms-screen-max-sm) {
+    // Singleline acts like multiLine in mobile, unless text is specified to be truncated
+    &:not(.expandingSingleLine) {
+      @include multiLineContent();
+      .text.multiLineWithActions {
+        @media screen and (max-width: $ms-screen-max-sm) {
+          margin-bottom: 0;
+        }
       }
     }
   }
-
-  .ms-MessageBar-content > .ms-MessageBar-actionables {
-    flex-direction: row;
-  }
-}
-
-// Because of an odd behaviour in other CSS, ms-MessageBar--remove causes children's icons to use 8px, and not inherit.
-.ms-MessageBar .ms-Icon--Cancel {
-  font-size: 14px;
 }

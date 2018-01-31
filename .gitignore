@@ -42,6 +42,7 @@ node_modules
 temp
 lib
 lib-amd
+lib-es2015
 coverage
 dist
 npm-debug.log
@@ -100,11 +101,16 @@ package
 # Dependency change files generated from npmx aka rush
 package-deps.json
 
-common/npm-local
-common/npmx-link.json
-common/last-install.*
-common/npmx-recycler
+# Non Essential Visual testing files.
+**/office-ui-fabric-react/visualtests/results/*.png
+**/office-ui-fabric-react/failures/*.png
 
-common/rush-link.json
-common/last-install.*
-common/rush-recycler
+common/temp
+
+# Gulp cache
+gulp-cache
+
+# NPM debug logs
+npm-debug.log.*
+
+package-lock.json

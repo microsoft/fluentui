@@ -1,0 +1,10 @@
+@mixin ms-Label-is-disabled {
+  color: $ms-color-neutralTertiary;
+}
+
+@mixin ms-Label-is-required {
+  &::after {
+    content: ' *';
+    color: $ms-color-error;
+  }
+}

@@ -2,35 +2,56 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
+import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
 
-export class BaseComponent<P, S> extends React.Component<P, S> {
+/**
+ * BaseProps interface.
+ *
+ * @public
+ */
+// tslint:disable-next-line:no-any
+export interface IBaseProps<T = any> {
+  componentRef?: (ref: T | null) => (void | T);
+}
+
+/**
+ * BaseComponent class, which provides basic helpers for all components.
+ *
+ * @public
+ */
+export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
    */
+  // tslint:disable-next-line:no-any
   public static onError: ((errorMessage?: string, ex?: any) => void);
 
+  /**
+   * Controls whether the componentRef prop will be resolved by this component instance. If you are
+   * implementing a passthrough (higher-order component), you would set this to false and pass through
+   * the props to the inner component, allowing it to resolve the componentRef.
+   */
+  protected _shouldUpdateComponentRef: boolean;
+
+  // tslint:disable:variable-name
   private __async: Async;
   private __events: EventGroup;
-  private __disposables: IDisposable[];
-  private __resolves: { [name: string]: (ref: any) => any };
+  private __disposables: IDisposable[] | null;
+  private __resolves: { [name: string]: (ref: React.ReactNode) => React.ReactNode };
+  private __className: string;
+  // tslint:enable:variable-name
 
   /**
    * BaseComponent constructor
-   * @param {P} props The props for the component.
-   * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
-   * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
+   * @param props - The props for the component.
+   * @param context - The context for the component.
    */
-  constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
-    super(props);
+  // tslint:disable-next-line:no-any
+  constructor(props: P, context?: any) {
+    super(props, context);
 
-    if (deprecatedProps) {
-      for (let propName in deprecatedProps) {
-        if (propName in props) {
-          _warnDeprecation(this, propName, deprecatedProps[propName]);
-        }
-      }
-    }
+    this._shouldUpdateComponentRef = true;
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
@@ -44,8 +65,25 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
     ]);
   }
 
-  /** If we have disposables, dispose them automatically on unmount. */
-  public componentWillUnmount() {
+  /**
+   * When the component will receive props, make sure the componentRef is updated.
+   */
+  // tslint:disable-next-line:no-any
+  public componentWillReceiveProps(newProps: Readonly<P>, newContext: any): void {
+    this._updateComponentRef(this.props, newProps);
+  }
+
+  /**
+   * When the component has mounted, update the componentRef.
+   */
+  public componentDidMount(): void {
+    this._updateComponentRef(undefined, this.props);
+  }
+
+  /**
+   * If we have disposables, dispose them automatically on unmount.
+   */
+  public componentWillUnmount(): void {
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
         let disposable = this.__disposables[i];
@@ -58,15 +96,23 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
     }
   }
 
-  /** Gets the object's class name. */
-  public get className() {
-    let funcNameRegex = /function (.{1,})\(/;
-    let results = (funcNameRegex).exec((this).constructor.toString());
+  /**
+   * Gets the object's class name.
+   */
+  public get className(): string {
+    if (!this.__className) {
+      let funcNameRegex = /function (.{1,})\(/;
+      let results = (funcNameRegex).exec((this).constructor.toString());
 
-    return (results && results.length > 1) ? results[1] : '';
+      this.__className = (results && results.length > 1) ? results[1] : '';
+    }
+
+    return this.__className;
   }
 
-  /** Allows subclasses to push things to this._disposables to be auto disposed. */
+  /**
+   * Allows subclasses to push things to this._disposables to be auto disposed.
+   */
   protected get _disposables(): IDisposable[] {
     if (!this.__disposables) {
       this.__disposables = [];
@@ -106,28 +152,71 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
 
   /**
    * Helper to return a memoized ref resolver function.
-   * @params refName Name of the member to assign the ref to.
-   *
-   * @examples
-   * class Foo extends BaseComponent<...> {
-   *   private _root: HTMLElement;
-   *
-   *   public render() {
-   *     return <div ref={ this._resolveRef('_root') } />
-   *   }
-   * }
+   * @param refName - Name of the member to assign the ref to.
+   * @returns A function instance keyed from the given refname.
    */
-  protected _resolveRef(refName: string) {
+  protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode {
     if (!this.__resolves) {
       this.__resolves = {};
     }
     if (!this.__resolves[refName]) {
-      this.__resolves[refName] = (ref) => {
-        return this[refName] = ref;
+      // tslint:disable-next-line:no-any
+      this.__resolves[refName] = (ref: React.ReactNode) => {
+        // tslint:disable-next-line:no-any
+        return (this as any)[refName] = ref;
       };
     }
+
     return this.__resolves[refName];
   }
+
+  /**
+   * Updates the componentRef (by calling it with "this" when necessary.)
+   */
+  protected _updateComponentRef(currentProps: IBaseProps | undefined, newProps: IBaseProps = {}): void {
+    if (this._shouldUpdateComponentRef &&
+      ((!currentProps && newProps.componentRef) ||
+        (currentProps && currentProps.componentRef !== newProps.componentRef))) {
+
+      if (currentProps && currentProps.componentRef) {
+        currentProps.componentRef(null);
+      }
+
+      if (newProps.componentRef) {
+        newProps.componentRef(this);
+      }
+    }
+  }
+  /**
+   * Warns when a deprecated props are being used.
+   *
+   * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
+   * either null or a replacement prop name.
+   */
+  protected _warnDeprecations(deprecationMap: ISettingsMap<P>): void {
+    warnDeprecations(this.className, this.props, deprecationMap);
+  }
+
+  /**
+   * Warns when props which are mutually exclusive with each other are both used.
+   *
+   * @param mutuallyExclusiveMap - The map of mutually exclusive props.
+   */
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>): void {
+    warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
+  }
+
+  /**
+   * Warns when props are required if a condition is met.
+   *
+   * @param requiredProps - The name of the props that are required when the condition is met.
+   * @param conditionalPropName - The name of the prop that the condition is based on.
+   * @param condition - Whether the condition is met.
+   */
+  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void {
+    warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
+  }
+
 }
 
 /**
@@ -135,25 +224,28 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
-function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNames: string[]) {
+function _makeAllSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodNames: string[]): void {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
-function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: string) {
-  let classMethod = obj[methodName];
-  let prototypeMethod = prototype[methodName];
+function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: string): void {
+  // tslint:disable:no-any
+  let classMethod = (obj as any)[methodName];
+  let prototypeMethod = (prototype as any)[methodName];
+  // tslint:enable:no-any
 
   if (classMethod || prototypeMethod) {
-    obj[methodName] = function () {
+    // tslint:disable-next-line:no-any
+    (obj as any)[methodName] = function (): any {
       let retVal;
 
       try {
         if (prototypeMethod) {
           retVal = prototypeMethod.apply(this, arguments);
         }
-        if (classMethod) {
+        if (classMethod !== prototypeMethod) {
           retVal = classMethod.apply(this, arguments);
         }
       } catch (e) {
@@ -169,19 +261,14 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
   }
 }
 
-function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
-  if (console && console.warn) {
-    let deprecationMessage = `${obj.className} property '${propertyName}' was used but has been deprecated.`;
-
-    if (newPropertyName) {
-      deprecationMessage += ` Use '${newPropertyName}' instead.`;
-    }
-
-    console.warn(deprecationMessage);
-  }
-}
-
-BaseComponent.onError = (errorMessage) => {
+BaseComponent.onError = (errorMessage: string) => {
   console.error(errorMessage);
   throw errorMessage;
 };
+
+/**
+ * Simple constant function for returning null, used to render empty templates in JSX.
+ *
+ * @public
+ */
+export function nullRender(): JSX.Element | null { return null; }

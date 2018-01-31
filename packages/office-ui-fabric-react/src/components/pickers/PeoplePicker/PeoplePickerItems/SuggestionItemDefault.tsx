@@ -1,29 +1,35 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
+import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
+import { IBasePickerSuggestionsProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
+import * as stylesImport from '../PeoplePicker.scss';
+const styles: any = stylesImport;
+
+export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<any>) => {
   return (
-    <div className='ms-PeoplePicker-personaContent'>
+    <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
       <Persona
-        { ...personaProps }
         presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-        size={ PersonaSize.small }
-        className={ 'ms-PeoplePicker-Persona' }
-        />
+        size={ PersonaSize.size24 }
+        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
+        showSecondaryText={ true }
+        { ...personaProps }
+      />
     </div>
   );
 };
 
-export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
+export const SuggestionItemSmall: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<any>) => {
   return (
-    <div className='ms-PeoplePicker-personaContent'>
+    <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
       <Persona
-        { ...personaProps }
         presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-        size={ PersonaSize.extraSmall }
-        className={ 'ms-PeoplePicker-Persona' }
-        />
+        size={ PersonaSize.size24 }
+        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
+        { ...personaProps }
+      />
     </div>
   );
 };

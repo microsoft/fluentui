@@ -1,27 +1,29 @@
 import * as React from 'react';
-import { IDocumentCardActionsProps } from './DocumentCard.Props';
-import { Button, ButtonType } from '../../Button';
-import './DocumentCardActions.scss';
+import { BaseComponent, css } from '../../Utilities';
+import { IDocumentCardActionsProps } from './DocumentCard.types';
+import { Icon } from '../../Icon';
+import { IconButton } from '../../Button';
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
-export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
+export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
   public render() {
     let { actions, views } = this.props;
 
     return (
-      <div className='ms-DocumentCardActions'>
+      <div className={ css('ms-DocumentCardActions', styles.actions) }>
 
         { actions && actions.map((action, index) => {
-          action.buttonType = ButtonType.icon;
           return (
-            <div className='ms-DocumentCardActions-action' key={ index }>
-              <Button { ...action } />
+            <div className={ css('ms-DocumentCardActions-action', styles.action) } key={ index }>
+              <IconButton { ...action } />
             </div>
           );
         }) }
 
-        { views > 0 && (
-          <div className='ms-DocumentCardActions-views'>
-            <i className='ms-Icon ms-Icon--View' />
+        { views! > 0 && (
+          <div className={ css('ms-DocumentCardActions-views', styles.views) }>
+            <Icon iconName='View' />
             { views }
           </div>
         ) }

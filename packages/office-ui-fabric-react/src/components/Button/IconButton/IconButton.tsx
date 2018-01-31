@@ -1,30 +1,27 @@
-/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable no-unused-imports*/
-import {
-  BaseComponent,
-  getNativeProps,
-  anchorProperties,
-  buttonProperties
-} from '../../../Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { IButtonProps } from '../Button.types';
+import { getStyles } from './IconButton.styles';
 
-import { Button, ButtonType } from '../index';
-import { IIconButtonProps } from './IconButton.Props';
-import './IconButton.scss';
-import '../ButtonCore/ButtonCore.scss';
+@customizable('IconButton', ['theme'])
+export class IconButton extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Tell BaseComponent to bypass resolution of componentRef.
+   */
+  protected _shouldUpdateComponentRef = false;
 
-export class IconButton extends BaseComponent<IIconButtonProps, any> {
   public render() {
-    let { icon } = this.props;
+    let { styles, theme } = this.props;
+
     return (
-      <Button
-        className='ms-Button--icon'
-        buttonType={ ButtonType.clean }
-        { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
+      <BaseButton
         { ...this.props }
-      >
-        <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
-      </Button>
+        variantClassName='ms-Button--icon'
+        styles={ getStyles(theme!, styles) }
+        onRenderText={ nullRender }
+        onRenderDescription={ nullRender }
+      />
     );
   }
 }

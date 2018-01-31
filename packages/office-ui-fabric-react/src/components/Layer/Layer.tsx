@@ -4,22 +4,24 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import { Fabric } from '../../Fabric';
-import { ILayerProps } from './Layer.Props';
+import { ILayerProps } from './Layer.types';
 import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utilities';
-import './Layer.scss';
+import * as stylesImport from './Layer.scss';
+const styles: any = stylesImport;
 
 let _layersByHostId: { [hostId: string]: Layer[] } = {};
+let _defaultHostSelector: string | undefined;
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
 
-  public static defaultProps = {
+  public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
     onLayerWillUnmount: () => undefined
   };
 
   private _rootElement: HTMLElement;
   private _host: Node;
-  private _layerElement: HTMLElement;
+  private _layerElement: HTMLElement | undefined;
   private _hasMounted: boolean;
   /**
    * Used for notifying applicable Layers that a host is available/unavailable and to re-evaluate Layers that
@@ -31,10 +33,23 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
     }
   }
 
+  /**
+   * Sets the default target selector to use when determining the host in which
+   * Layered content will be injected into. If not provided, an element will be
+   * created at the end of the document body.
+   *
+   * Passing in a falsey value will clear the default target and reset back to
+   * using a created element at the end of document body.
+   */
+  public static setDefaultTarget(selector?: string) {
+    _defaultHostSelector = selector;
+  }
+
   constructor(props: ILayerProps) {
-    super(props, {
-      // Make sure to deprecate old properties.
-      'onLayerMounted': 'onLayerDidMount'
+    super(props);
+
+    this._warnDeprecations({
+      onLayerMounted: 'onLayerDidMount'
     });
 
     if (this.props.hostId) {
@@ -72,11 +87,11 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        let doc = getDocument(this._rootElement);
+        let doc = getDocument(this._rootElement) as Document;
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = css('ms-Layer', {
-          'ms-Layer--fixed': !this.props.hostId
+          ['ms-Layer--fixed ' + styles.rootIsFixed]: !this.props.hostId
         });
 
         host.appendChild(this._layerElement);
@@ -86,9 +101,11 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       // Using this 'unstable' method allows us to retain the React context across the layer projection.
       ReactDOM.unstable_renderSubtreeIntoContainer(
         this,
-        <Fabric className='ms-Layer-content'>
-          { this.props.children }
-        </Fabric>,
+        (
+          <Fabric className={ css('ms-Layer-content', styles.content) }>
+            { this.props.children }
+          </Fabric>
+        ),
         this._layerElement,
         () => {
           if (!this._hasMounted) {
@@ -99,7 +116,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
               this.props.onLayerMounted();
             }
 
-            this.props.onLayerDidMount();
+            this.props.onLayerDidMount!();
           }
         });
     }
@@ -110,13 +127,13 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       <span
         className='ms-Layer'
         ref={ this._resolveRef('_rootElement') }
-        />
+      />
     );
   }
 
   private _removeLayerElement() {
     if (this._layerElement) {
-      this.props.onLayerWillUnmount();
+      this.props.onLayerWillUnmount!();
 
       ReactDOM.unmountComponentAtNode(this._layerElement);
       let parentNode = this._layerElement.parentNode;
@@ -130,12 +147,12 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
 
   private _getHost(): Node {
     let { hostId } = this.props;
-    let doc = getDocument(this._rootElement);
+    let doc = getDocument(this._rootElement) as Document;
 
     if (hostId) {
-      return doc.getElementById(hostId);
+      return doc.getElementById(hostId) as Node;
     } else {
-      return doc.body;
+      return _defaultHostSelector ? doc.querySelector(_defaultHostSelector) as Node : doc.body;
     }
   }
 

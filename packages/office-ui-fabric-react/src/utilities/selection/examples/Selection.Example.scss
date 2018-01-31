@@ -1,0 +1,30 @@
+:global {
+
+  // Overrwrites the default style for Button
+  .ms-SelectionItemExample-check {
+    display: inline-block;
+    cursor: default;
+    padding: 11px 8px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background: none;
+    border: none;
+  }
+
+  .ms-SelectionItemExample:hover {
+    background: #EEE;
+  }
+
+  .ms-SelectionItemExample-name {
+    display: inline-block;
+    overflow: hidden;
+    height: 36px;
+    cursor: default;
+    padding: 8px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background: none;
+    border: none;
+  }
+
+}

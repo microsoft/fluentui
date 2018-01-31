@@ -1,0 +1,54 @@
+
+@import '../../common/common';
+
+.check {
+  @include focus-border();
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  box-sizing: border-box;
+  vertical-align: top;
+  background: none;
+  border: none;
+  opacity: 0;
+
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+
+  @include focus(true) {
+    opacity: 1;
+  }
+
+  :global(.ms-DetailsList--Compact) & {
+    height: 32px;
+  }
+
+  &.isHeader {
+    height: 32px;
+  }
+}
+
+.owner {
+  &.isSelected,
+  &.isVisible,
+  &.anySelected,
+  &:hover {
+    .check {
+      opacity: 1;
+    }
+  }
+
+  @include focus(true) {
+    .check {
+      opacity: 1;
+    }
+  }
+}
+
+.isDisabled {
+  visibility: hidden;
+}

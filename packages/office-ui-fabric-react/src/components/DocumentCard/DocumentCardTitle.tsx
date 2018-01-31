@@ -4,10 +4,12 @@ import * as React from 'react';
 
 import {
   BaseComponent,
-  autobind
+  autobind,
+  css
 } from '../../Utilities';
-import { IDocumentCardTitleProps } from './DocumentCard.Props';
-import './DocumentCardTitle.scss';
+import { IDocumentCardTitleProps } from './DocumentCard.types';
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
@@ -69,11 +71,11 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
       documentCardTitle = (
-        <div className='ms-DocumentCardTitle' ref={ this._resolveRef('_titleElement') } title={ title }>{ truncatedTitleFirstPiece }&hellip;{ truncatedTitleSecondPiece }</div>
+        <div className={ css('ms-DocumentCardTitle', styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>{ truncatedTitleFirstPiece }&hellip;{ truncatedTitleSecondPiece }</div>
       );
     } else {
       documentCardTitle = (
-        <div className='ms-DocumentCardTitle' ref={ this._resolveRef('_titleElement') } title={ title }>{ title }</div>
+        <div className={ css('ms-DocumentCardTitle', styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>{ title }</div>
       );
     }
 
@@ -120,8 +122,8 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
       }
 
       this.setState({
-        truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-        truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
+        truncatedTitleFirstPiece: truncatedTitleFirstPiece!.slice(0, truncatedTitleFirstPiece!.length - 1),
+        truncatedTitleSecondPiece: truncatedTitleSecondPiece!.slice(1)
       });
     }
   }

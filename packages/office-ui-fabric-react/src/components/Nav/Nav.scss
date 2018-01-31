@@ -5,46 +5,46 @@ $hasExpandButtonLinkLeftPadding: 28px;
 $noExpandButtonLinkLeftPadding: 20px;
 $linkRightPadding: 20px;
 
-.ms-Nav {
+.root {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   user-select: none;
 }
 
-.ms-Nav.is-onTop {
+.rootIsOnTop {
   position: absolute;
 }
 
-.ms-Nav ul {
+.navItems {
   list-style-type: none;
 }
 
-.ms-Nav ul,
-.ms-Nav ul > li {
+.navItems,
+.navItems > .navItem {
   padding: 0;
 }
 
-.ms-Nav-groupContent {
+.groupContent {
   display: none;
   margin-bottom: 40px;
 }
 
-.ms-Nav-group.is-expanded .ms-Nav-groupContent {
+.group.groupIsExpanded .groupContent {
   display: block;
 }
 
-.ms-Nav-Icon {
+.icon {
   padding: 0px;
-  color: $selectedForegroundColor;
-  background: $selectedBackgroundColor;
+  color: $ms-color-neutralPrimary;
+  background: $ms-color-neutralLighter;
   transition: transform .1s linear;
 }
 
-.ms-Nav-IconLink {
-  @include margin-right(4px);
+.iconLink {
+  @include ms-margin-right(4px);
 }
 
-.ms-Nav-chevronButton {
+.chevronButton {
   display: block;
 
   font-weight: $ms-font-weight-regular;
@@ -57,92 +57,94 @@ $linkRightPadding: 20px;
   background: none;
   border: none;
 
-  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   cursor: pointer;
 
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
+  color: $bodyTextColor;
+  background: $bodyBackgroundColor;
 
   &:visited {
     color: inherit;
   }
 
   &:hover {
-    color: $unselectedHoverForegroundColor;
-    background: $unselectedHoverBackgroundColor;
+    color: $bodyTextColor;
+    background: $ms-color-neutralLighterAlt;
   }
 
-  &.ms-Nav-chevronButton--group {
+  &.chevronButtonIsGroup {
     width: 100%;
     height: $navnode-height;
-    border-bottom: 1px solid $dividerColor;
+    border-bottom: 1px solid $bodyDividerColor;
   }
 }
 
-.ms-Nav-chevron.ms-Icon {
+.chevronIcon {
   position: absolute;
-  @include left(8px);
+  @include ms-left(8px);
   height: $navnode-height;
   line-height: $navnode-height;
   font-size: 12px;
   transition: transform .1s linear;
 }
 
-.ms-Nav-group.is-expanded .ms-Nav-chevronButton--group .ms-Nav-chevron  {
+.chevronIsExpanded {
   transform: rotate(-180deg);
 }
 
-.ms-Nav-linkText {
+.linkText {
+  margin: 0 4px;
+  overflow: hidden;
   vertical-align: middle;
+  text-overflow: ellipsis;
 }
 
-.ms-Nav-compositeLink {
+.compositeLink {
   display: block;
   position: relative;
 
-  .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
+  .chevronButton.chevronButtonLink {
     display: block;
-    width: $hasExpandButtonLinkLeftPadding;
-    height: $navnode-height;
+    width: $hasExpandButtonLinkLeftPadding - 2;
+    height: $navnode-height - 2;
     position: absolute;
-    top: 0;
-    @include left(0);
+    top: 1px;
     z-index: 1;
     padding: 0;
     margin: 0;
 
-  .ms-Nav-chevron {
-      position: relative;
+    .chevronIcon {
+      top: 0;
     }
   }
 
-  & a {
-   color: $unselectedForegroundColor;
-  }
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
+  color: $bodyTextColor;
+  background: $bodyBackgroundColor;
 
   &:hover {
 
-     & a,
-     & .ms-Nav-chevronButton {
-       background: $unselectedHoverBackgroundColor;
-       color: $unselectedHoverForegroundColor;
-     }
+    & .link,
+    & .chevronButton {
+      background: $ms-color-neutralLighterAlt;
+      color: $bodyTextColor;
+    }
   }
 
-  &.is-expanded {
-    .ms-Nav-chevron {
+  &.compositeLinkIsExpanded {
+    .chevronIcon {
       transform: rotate(-180deg);
     }
   }
 
-  &.is-selected {
-    & a,
-    & .ms-Nav-chevronButton {
+  &.compositeLinkIsSelected {
+    & .link,
+    & .chevronButton {
 
       color: $ms-color-themePrimary;
-      background: $selectedBackgroundColor;
+      background: $ms-color-neutralLighter;
 
       &:after {
         @include border-left(2px, solid, $ms-color-themePrimary);
@@ -150,21 +152,21 @@ $linkRightPadding: 20px;
         content: '';
         position: absolute;
         top: 0;
-        @include right(0);
+        @include ms-right(0);
         bottom: 0;
-        @include left(0);
+        @include ms-left(0);
       }
     }
   }
 }
 
-.ms-Nav-link {
+.link {
   display: block;
   position: relative;
   height: $navnode-height;
+  width: 100%;
   line-height: $navnode-height;
   text-decoration: none;
-  padding: 0 20px;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
@@ -172,25 +174,23 @@ $linkRightPadding: 20px;
   overflow: hidden;
 }
 
-.ms-Nav-groupHeaderFontSize {
+.buttonEntry {
+  color: $ms-color-themePrimary;
+}
+
+.groupHeaderFontSize {
   @include ms-font-l;
 }
 
-.ms-Nav-chevronButton,
-.ms-Nav-chevronButton--group,
-.ms-Nav-chevronButton--link,
-.ms-Nav-link {
+.chevronButton,
+.chevronButtonGroup,
+.chevronButtonLink,
+.link {
   @include focus-border();
 }
 
-.ms-Nav-linkButton.ms-Button--command {
-  @include padding-left($noExpandButtonLinkLeftPadding);
-  .ms-Button-label {
+.root .link {
+  :global(.ms-Button-label) {
     @include ms-font-m;
-    color: $ms-color-themePrimary;
-  }
-
-  &.isOnExpanded {
-  @include padding-left($hasExpandButtonLinkLeftPadding);
   }
 }

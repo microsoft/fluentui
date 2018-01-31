@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
+  <title>Styling Examples</title>
+</head>
+
+<body>
+  <div id="content"></div>
+  <script type="text/javascript">
+    if (window.Storage !== undefined) {
+      if (localStorage.getItem('isRTL') === '1') {
+        document.documentElement.setAttribute('dir', 'rtl');
+      }
+    }
+
+    var isProduction = (
+      document.location.search.indexOf('?min=0') === -1 && (
+        document.location.search.indexOf('?min=1') > -1 ||
+        location.pathname === '/fabric-react/master/'
+      ));
+
+    function loadScript(n) {
+      for (var i = 0; i < n.length; i++) {
+        var s = document.createElement('script');
+        s.src = n[i];
+        s.async = false;
+        document.body.appendChild(s);
+      }
+    }
+    loadScript(isProduction ? [
+      'node_modules/react/dist/react.min.js',
+      'node_modules/react-dom/dist/react-dom.min.js',
+      'demo.min.js'
+    ] : [
+        'node_modules/react/dist/react.js',
+        'node_modules/react-dom/dist/react-dom.js',
+        'demo.js'
+      ]);
+  </script>
+</body>
+
+</html>

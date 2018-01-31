@@ -6,11 +6,12 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { ITeachingBubbleProps } from './TeachingBubble.Props';
+import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
-import { Button, ButtonType } from '../../Button';
+import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
-import './TeachingBubble.scss';
+import * as stylesImport from './TeachingBubble.scss';
+const styles: any = stylesImport;
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
 
@@ -37,7 +38,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
   }
 
   public render() {
-    let { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel } = this.props;
+    let { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
 
     let imageContent;
     let headerContent;
@@ -47,7 +48,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
-        <div className='ms-TeachingBubble-header'>
+        <div className={ 'ms-TeachingBubble-header ms-TeachingBubble-image' }>
           <Image { ...illustrationImage as any } />
         </div>
       );
@@ -55,11 +56,17 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (headline) {
       headerContent = (
-        <div className={ css(
-          'ms-TeachingBubble-header',
-          hasCondensedHeadline ? 'ms-TeachingBubble-header--small' : 'ms-TeachingBubble-header--large'
-        ) }>
-          <p className='ms-TeachingBubble-headline' >
+        <div
+          className={ css(
+            'ms-TeachingBubble-header',
+            hasCondensedHeadline ?
+              'ms-TeachingBubble-header--condensed ' + styles.headerIsCondensed
+              : hasSmallHeadline
+                ? 'ms-TeachingBubble-header--small ' + styles.headerIsSmall
+                : 'ms-TeachingBubble-header--large ' + styles.headerIsLarge
+          ) }
+        >
+          <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
             { headline }
           </p>
         </div>
@@ -68,8 +75,8 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (this.props.children) {
       bodyContent = (
-        <div className='ms-TeachingBubble-body'>
-          <p className='ms-TeachingBubble-subText'>
+        <div className={ css('ms-TeachingBubble-body', styles.body) }>
+          <p className={ css('ms-TeachingBubble-subText', styles.subText) }>
             { this.props.children }
           </p>
         </div>
@@ -78,31 +85,40 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (primaryButtonProps || secondaryButtonProps) {
       footerContent = (
-        <div className='ms-TeachingBubble-footer'>
-          { primaryButtonProps ? <Button className='ms-TeachingBubble-primaryButton' { ...primaryButtonProps } /> : null }
-          { secondaryButtonProps ? <Button className='ms-TeachingBubble-secondaryButton' { ...secondaryButtonProps } /> : null }
+        <div className={ css('ms-TeachingBubble-footer', styles.footer) }>
+          { primaryButtonProps && (
+            <PrimaryButton
+              { ...primaryButtonProps }
+              className={ css('ms-TeachingBubble-primaryButton', styles.primaryButton, primaryButtonProps.className) }
+            />
+          ) }
+          { secondaryButtonProps && (
+            <DefaultButton
+              { ...secondaryButtonProps }
+              className={ css('ms-TeachingBubble-secondaryButton', styles.secondaryButton, secondaryButtonProps.className) }
+            />
+          ) }
         </div>
       );
     }
 
     if (hasCloseIcon) {
       closeButton = (
-        <Button
-          className='ms-TeachingBubble-closebutton'
-          buttonType={ ButtonType.icon }
-          icon='Cancel'
+        <IconButton
+          className={ css('ms-TeachingBubble-closebutton', styles.closeButton) }
+          iconProps={ { iconName: 'Cancel' } }
           title={ closeButtonAriaLabel }
           ariaLabel={ closeButtonAriaLabel }
           onClick={ onDismiss }
-          />
+        />
       );
     }
 
     return (
-      <div className='ms-TeachingBubble-content'>
+      <div className={ css('ms-TeachingBubble-content') }>
         { imageContent }
         { closeButton }
-        <div className='ms-TeachingBubble-bodycontent'>
+        <div className={ css('ms-TeachingBubble-bodycontent', styles.bodyContent) }>
           { headerContent }
           { bodyContent }
           { footerContent }

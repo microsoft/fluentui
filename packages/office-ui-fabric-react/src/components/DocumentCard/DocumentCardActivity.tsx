@@ -1,34 +1,36 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
-import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
-import { Image } from '../../Image';
-import {
-  PERSONA_INITIALS_COLOR,
-  PersonaInitialsColor
-} from '../../Persona';
-import './DocumentCardActivity.scss';
+import { BaseComponent, css } from '../../Utilities';
+import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.types';
+import { PersonaSize } from '../../Persona';
+import { PersonaCoin } from '../../PersonaCoin';
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
-export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
+export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
   public render() {
     let { activity, people } = this.props;
 
     return (
       people && people.length > 0 &&
-      <div className={ css('ms-DocumentCardActivity', {
-        'ms-DocumentCardActivity--multiplePeople': people.length > 1
-      }) }>
-        { this._renderAvatars(people) }
-        <div className='ms-DocumentCardActivity-details'>
-          <span className='ms-DocumentCardActivity-name'>{ this._getNameString(people) }</span>
-          <span className='ms-DocumentCardActivity-activity'>{ activity }</span>
+      (
+        <div
+          className={ css('ms-DocumentCardActivity', styles.activity, {
+            ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
+          }) }
+        >
+          { this._renderAvatars(people) }
+          <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
+            <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
+            <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
+          </div>
         </div>
-      </div>
+      )
     );
   }
 
   private _renderAvatars(people: IDocumentCardActivityPerson[]): React.ReactElement<{}> {
     return (
-      <div className='ms-DocumentCardActivity-avatars'>
+      <div className={ css('ms-DocumentCardActivity-avatars', styles.avatars) }>
         { people.length > 1 ? this._renderAvatar(people[1]) : null }
         { this._renderAvatar(people[0]) }
       </div>
@@ -36,18 +38,18 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
   }
 
   private _renderAvatar(person: IDocumentCardActivityPerson) {
-    let initialsColor = person.initialsColor === undefined || person.initialsColor === null ? PersonaInitialsColor.blue : person.initialsColor;
 
     return (
-      <div className='ms-DocumentCardActivity-avatar'>
-        { person.initials && (
-          <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } role='presentation'>
-            { person.initials }
-          </div>
-        ) }
-        { person.profileImageSrc && (
-          <Image src={ person.profileImageSrc } role='presentation' alt='' />
-        ) }
+      <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>
+        <PersonaCoin
+          imageInitials={ person.initials }
+          primaryText={ person.name }
+          imageUrl={ person.profileImageSrc }
+          initialsColor={ person.initialsColor }
+          role='persentation'
+          size={ PersonaSize.size32 }
+        />
+
       </div>
     );
   }

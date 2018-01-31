@@ -1,0 +1,193 @@
+@import '../../common/common';
+
+$componentPageColor: #0f8387;
+$componentPagePadding: 50px;
+$componentPageDividingMargin: 40px;
+$componentSubHeadMargin: 24px;
+$dosColor: #177D3E;
+$dontColor: #A61E22;
+
+:global {
+
+  .ComponentPage {
+    background-color: $ms-color-white;
+  }
+
+  .ComponentPage-header {
+    background-color: $componentPageColor;
+    min-height: 245px;
+    padding: $componentPagePadding;
+    padding-bottom: 0;
+  }
+
+  .ComponentPage-title {
+    @include ms-font-xxl;
+    font-size: 82px;
+    line-height: 94px;
+    color: $ms-color-white;
+    display: inline-block;
+    width: 100%;
+    margin-top: $componentPagePadding;
+    margin-bottom: $componentPagePadding;
+  }
+
+  .ComponentPage-subHeading {
+    @include ms-font-xxl;
+    font-size: 36px;
+    margin-top: 10px;
+    margin-bottom: $componentSubHeadMargin;
+  }
+
+  .ComponentPage-smallSubHeading {
+    @include ms-font-l;
+    line-height: $ms-font-size-xl;
+    margin-bottom: 18px;
+  }
+
+  .ComponentPage-overviewSectionContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media(min-width: $ms-screen-min-xl) {
+      flex-direction: row;
+    }
+  }
+
+  .ComponentPage-overview {
+    font-size: $ms-font-size-m;
+    line-height: 1.5;
+    max-width: 50em;
+    @include padding-right(60px);
+    margin-bottom: -6px; // Trim padding off last paragraph
+
+    p {
+      margin: 0;
+      padding: 16px 0;
+    }
+
+    ul {
+      @include ms-padding-left(18px);
+    }
+
+    li {
+      @include ms-font-m;
+      list-style: disc;
+      margin-bottom: 16px;
+    }
+  }
+
+  .ComponentPage-related {
+    min-width: 200px;
+
+    .ComponentPage-relatedTitle {
+      color: $ms-color-neutralSecondary;
+      display: block;
+      font-size: $ms-font-size-l;
+      font-weight: $ms-font-weight-semibold;
+      margin-bottom: 12px;
+    }
+
+    a, a:visited {
+      @include ms-font-l;
+      text-decoration: none;
+    }
+  }
+
+  .ComponentPage-overviewSection {
+    padding-top: 15px;
+    padding-bottom: $componentPagePadding;
+    padding-left: $componentPagePadding;
+    padding-right: $componentPagePadding;
+  }
+
+  .ComponentPage-bestPracticesSection,
+  .ComponentPage-variantsSection,
+  .ComponentPage-implementationExamplesSection,
+  .ComponentPage-implementationSection {
+    padding: $componentPagePadding;
+  }
+
+  .ComponentPage-navigation {
+    width: 100%;
+  }
+
+  .ComponentPage-navLink {
+    display: inline-block;
+    @include ms-margin-right(40px);
+  }
+
+  .ComponentPage-navLink .ms-Link {
+    color: $ms-color-white;
+    text-decoration: none;
+    @include ms-font-l;
+    color: $ms-color-white;
+
+    &:hover {
+      color: $ms-color-neutralLight;
+    }
+  }
+
+  .ComponentPage-bestPracticesSection {
+    background-color: $ms-color-neutralLighterAlt;
+  }
+
+  .ComponentPage-doSection {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
+
+    h3 {
+      margin: 16px 0 40px 0;
+      @include ms-font-xl;
+
+      &::after {
+        background-color: #a4cf0c;
+        border-radius: 3px;
+        content: '';
+        display: block;
+        height: 8px;
+        margin: 12px 0;
+      }
+    }
+
+    ul {
+      @include ms-padding-left(18px);
+    }
+
+    li {
+      list-style: disc;
+      margin-bottom: 20px;
+
+      ul li {
+        list-style: circle;
+        margin-bottom: 0;
+      }
+    }
+
+    &:first-child {
+      @include ms-margin-right(120px);
+    }
+  }
+
+  .ComponentPage-doSection--dont h3::after {
+    background-color: #e74856;
+  }
+
+  @media screen and (min-width: $uhf-screen-min-mobile) {
+    .ComponentPage-doSection {
+      margin-bottom: -10px; // Trim last list item
+      width: calc(50% - 60px);
+    }
+  }
+
+  .ComponentPage-componentStatusSection {
+    padding-top: $componentPagePadding;
+    padding-bottom: 0px;
+    padding-left: $componentPagePadding;
+    padding-right: $componentPagePadding;
+  }
+
+}

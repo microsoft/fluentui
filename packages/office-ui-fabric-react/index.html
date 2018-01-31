@@ -12,9 +12,21 @@
 
 <body>
   <div id="content"></div>
-
   <script type="text/javascript">
-    var isProduction = (location.pathname === '/fabric-react/master/');
+    window.FabricConfig = {
+      // Uncommenting this prevents the fontfaces from being registered.
+      // Alternatively you can specify a base url which contains the font/icon assets.
+      // fontBaseUrl: '',
+      // mergeStyles: {
+      //   injectionMode: 2
+      // }
+    };
+
+    var isProduction = (
+      document.location.search.indexOf('?min=0') === -1 && (
+        document.location.search.indexOf('?min=1') > -1 ||
+        location.pathname === '/fabric-react/master/'
+      ));
 
     function loadScript(n) {
       for (var i = 0; i < n.length; i++) {
@@ -25,19 +37,16 @@
       }
     }
     loadScript(isProduction ? [
-      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.min.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.min.js',
-      'dist/demo-vendor.min.js',
-      'dist/demo-components.min.js',
-      'dist/demo-app.min.js'
+      '//cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js',
+      'demo-app.js'
     ] : [
-      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.js',
-      'dist/demo-vendor.js',
-      'dist/demo-components.js',
-      'dist/demo-app.js'
-    ]);
-    </script>
+        '//cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js',
+        '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js',
+        'demo-app.js'
+      ]);
+  </script>
+
 </body>
 
 </html>

@@ -1,52 +1,44 @@
 @import '../../common/common';
 
-.ms-Slider {
-
-  > .ms-Label {
-    padding: 0;
-  }
-
+.root {
   user-select: none;
-  margin-bottom: 8px;
 }
 
-.ms-Slider-line {
+.titleLabel {
+  padding: 0;
+ }
+
+.line {
+  display: flex;
   position: relative;
-  width: 100%;
 }
 
-.ms-Slider-line span {
-  height: 4px;
-  @include float(left);
+.line .lineContainer {
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.ms-Slider-active {
-  background: $ms-color-neutralSecondary;
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-.ms-Slider-inactive {
-  background: $ms-color-neutralTertiaryAlt;
+.valueLabel {
+  flex-shrink: 1;
+  width: 30px;
+  line-height: 1;
 }
 
-.ms-Slider-showTransitions {
-  .ms-Slider-thumb {
-    transition: left $ms-duration3 $ms-ease1;
-  }
-
-  .ms-Slider-active,
-  .ms-Slider-inactive {
-    transition: width $ms-duration3 $ms-ease1;
-  }
-}
-.ms-Slider-slideBox {
+.slideBox {
+  @include focus-border();
   background: transparent;
   border: none;
-  padding: 0;
-  margin: 0;
+  flex-grow: 1;
+  line-height: 28px;
 }
 
-.ms-Slider-slideBox .ms-Slider-thumb {
+.slideBox .thumb {
   border: 2px solid $ms-color-neutralSecondary;
   box-sizing: border-box;
   background: $ms-color-white;
@@ -54,66 +46,164 @@
   width: 16px;
   height: 16px;
   position: absolute;
-  top: -6px;
   border-radius: 10px;
-  @include transform-translateX(-50%);
 }
 
-.ms-Slider-container {
-  display: flex;
+.rootIsHorizontal {
+  .line {
+    width: 100%;
+  }
 
-  .ms-Slider-slideBox {
-    flex-grow: 1;
+  .line .lineContainer {
+    height: 4px;
+  }
+
+  .slideBox {
     height: 28px;
-    line-height: 28px;
-    @include focus-border();
     padding: 0 8px; // Make room for thumb at ends of line
   }
 
-  .ms-Label {
-    flex-shrink: 1;
-    width: 30px;
-    @include margin-left(8px);
+  .slideBox .thumb {
+    top: -6px;
+    @include transform-translateX(-50%);
+  }
+
+  .valueLabel {
+    margin: 0 8px;
+    white-space: nowrap;
+    width: 40px;
   }
 }
 
-.ms-Slider-enabled {
+.rootIsVertical {
+  margin-right: 8px;
 
-  .ms-Slider-slideBox:hover,
-  .ms-Slider-slideBox:active {
-
-    .ms-Slider-thumb {
-      border: 2px solid $ms-color-themePrimary;
-    }
-
-    .ms-Slider-active {
-      background-color: $ms-color-themePrimary;
-    }
-
-    .ms-Slider-inactive {
-      background-color: $ms-color-themeLight;
-    }
-
+  .line {
+    height: 100%;
+    width: 4px;
+    margin: 0 auto;
+    flex-direction: column-reverse;
   }
 
-  .ms-Slider-slideBox:active {
-    .ms-Slider-thumb {
+  .line .lineContainer {
+    width: 4px;
+    height: 100%;
+  }
+
+  .slideBox {
+    height: 100%;
+    width: 28px;
+    padding: 8px 0; // Make room for thumb at bottom of line
+  }
+
+  .slideBox .thumb {
+    left: -6px;
+    margin: 0 auto;
+    transform: translateY(8px);
+  }
+
+  .container {
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .valueLabel {
+    margin: 0 auto;
+    white-space: nowrap;
+    width: 40px;
+  }
+}
+
+.activeSection {
+  background: $ms-color-neutralSecondary;
+
+  @include high-contrast {
+    background-color: WindowText;
+  }
+}
+
+.inactiveSection {
+  background: $ms-color-neutralTertiaryAlt;
+
+  @include high-contrast {
+    border: 1px solid WindowText;
+  }
+}
+
+.showTransitions {
+  .thumb {
+    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
+  }
+
+  .activeSection,
+  .inactiveSection {
+    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
+  }
+}
+
+.rootIsEnabled {
+
+  .slideBox:hover,
+  .slideBox:active {
+
+    .thumb {
+      border: 2px solid $ms-color-themePrimary;
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+
+    .activeSection {
+      background-color: $ms-color-themePrimary;
+
+      @include high-contrast {
+        background-color: Highlight;
+      }
+    }
+
+    .inactiveSection {
+      background-color: $ms-color-themeLight;
+
+      @include high-contrast {
+        border-color: Highlight;
+      }
+    }
+  }
+
+  .slideBox:active {
+    .thumb {
       border: 2px solid $ms-color-themeDarkAlt;
     }
-    .ms-Slider-active {
+    .activeSection {
       background-color: $ms-color-themeDarkAlt;
     }
   }
 }
 
-.ms-Slider-disabled {
-  .ms-Slider-thumb {
+.rootIsDisabled {
+  .thumb {
     border-color: $ms-color-neutralTertiaryAlt;
+
+    @include high-contrast {
+      border-color: GrayText;
+    }
   }
-  .ms-Slider-active {
+
+  .activeSection,
+  .inactiveSection {
+    @include high-contrast {
+      background-color: GrayText;
+      border-color: GrayText;
+    }
+  }
+
+  .activeSection {
     background: $ms-color-neutralTertiaryAlt;
   }
-  .ms-Slider-inactive {
+  .inactiveSection {
     background: $ms-color-neutralLight;
   }
 }

@@ -6,8 +6,8 @@ Fabric React supports many commonly used web browsers such as Internet Explorer,
 |-----------------------------------------------------|:---------:|:-------------:|
 | Microsoft Edge                                      |     X     |               |
 | Internet Explorer 11                                |     X     |               |
-| Internet Explorer 10                                |     X     |               |
+| Internet Explorer 10                                |           |       X       |
 | Internet Explorer 9                                 |           |       X       |
-| Google Chrome (latest)                              |     X     |               |
-| Mozilla Firefox (latest release version + previous) |     X     |               |
-| Apple Safari (latest release)                       |     X     |               |
+| Google Chrome (latest 2 versions)                   |     X     |               |
+| Mozilla Firefox (latest 2 versions)                 |     X     |               |
+| Apple Safari (latest 2 versions)                    |     X     |               |

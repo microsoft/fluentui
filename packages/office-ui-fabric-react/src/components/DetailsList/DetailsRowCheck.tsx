@@ -1,37 +1,57 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
+import { css } from '../../Utilities';
 import { Check } from '../../Check';
+import * as DetailsRowCheckStyles from './DetailsRowCheck.scss';
+import * as CheckStylesModule from '../Check/Check.scss';
 
-export interface IDetailsRowCheckProps {
+// tslint:disable:no-any
+const CheckStyles: any = CheckStylesModule;
+// tslint:enable:no-any
+
+export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
+  isHeader?: boolean;
   selected?: boolean;
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   * @deprecated
    */
   isSelected?: boolean;
-  anySelected: boolean;
-  ariaLabel: string;
+  anySelected?: boolean;
   canSelect: boolean;
 }
 
 export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
-  let selected = props.isSelected || props.selected;
+  const {
+    canSelect = false,
+    isSelected = false,
+    anySelected = false,
+    selected = false,
+    isHeader = false,
+    className,
+    ...buttonProps
+  } = props;
+
+  let isPressed = props.isSelected || props.selected;
+
   return (
-    <button
-      type='button'
-      className='ms-DetailsRow-check'
-      role='button'
-      aria-pressed={ selected }
+    <div
+      { ...buttonProps }
+      role='checkbox'
+      className={
+        css(className, 'ms-DetailsRow-check', DetailsRowCheckStyles.check, CheckStyles.checkHost, {
+          [`ms-DetailsRow-check--isDisabled ${DetailsRowCheckStyles.isDisabled}`]: !props.canSelect,
+          [`ms-DetailsRow-check--isHeader ${DetailsRowCheckStyles.isHeader}`]: props.isHeader
+        })
+      }
+      aria-checked={ isPressed }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
-      aria-label={ props.ariaLabel }
-      >
-      { props.canSelect ?
-        <Check checked={ selected } /> :
-        <div className='ms-DetailsRow-checkSpacer' />
-      }
-    </button>
+    >
+      <Check
+        checked={ isPressed }
+      />
+    </div>
   );
 };

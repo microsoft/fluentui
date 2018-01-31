@@ -1,7 +1,11 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import './GroupSpacer.scss';
+import {
+  css
+} from '../../Utilities';
+import * as stylesImport from './GroupSpacer.scss';
+const styles: any = stylesImport;
 
 export interface IGroupSpacerProps {
   count: number;
@@ -10,4 +14,12 @@ export interface IGroupSpacerProps {
 const SPACER_WIDTH = 36;
 
 export const GroupSpacer = (props: IGroupSpacerProps) =>
-  props.count > 0 && <span className='ms-GroupSpacer' style={ { width: props.count * SPACER_WIDTH } } />;
+  props.count > 0 && (
+    <span
+      className={ css(
+        'ms-GroupSpacer',
+        styles.root
+      ) }
+      style={ { width: props.count * SPACER_WIDTH } }
+    />
+  );

@@ -1,0 +1,30 @@
+:global {
+
+  .ms-GroupedListExample-header,
+  .ms-GroupedListExample-showall,
+  .ms-GroupedListExample-footer {
+    min-width: 300px;
+    min-height: 40px;
+    line-height: 40px;
+    padding-left: 16px;
+  }
+
+  .ms-GroupedListExample-showall {
+    cursor: pointer;
+    padding-left: 32px;
+  }
+
+  .ms-GroupedListExample-name {
+    display: inline-block;
+    overflow: hidden;
+    height: 24px;
+    cursor: default;
+    padding: 8px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background: none;
+    border: none;
+    padding-left: 32px;
+  }
+
+}

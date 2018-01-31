@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { IColumn } from './DetailsList.Props';
-import { css } from '../../Utilities';
+import { IColumn } from './DetailsList.types';
+import { BaseComponent, css } from '../../Utilities';
+import * as stylesImport from './DetailsRow.scss';
+const styles: any = stylesImport;
+
+const INNER_PADDING = 16; // Account for padding around the cell.
+const ISPADDED_WIDTH = 24;
 
 export interface IDetailsRowFieldsProps {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
+  columnStartIndex: number;
   columns: IColumn[];
+  compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 }
 
@@ -13,9 +21,9 @@ export interface IDetailsRowFieldsState {
   cellContent: React.ReactNode[];
 }
 
-export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
+export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
   constructor(props: IDetailsRowFieldsProps) {
-    super();
+    super(props);
 
     this.state = this._getState(props);
   }
@@ -25,21 +33,30 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, ID
   }
 
   public render() {
-    let { columns } = this.props;
+    let { columns, columnStartIndex } = this.props;
     let { cellContent } = this.state;
 
     return (
-      <div className='ms-DetailsRow-fields' data-automationid='DetailsRowFields'>
+      <div
+        className={ css('ms-DetailsRow-fields', styles.fields) }
+        data-automationid='DetailsRowFields'
+        role='presentation'
+      >
         { columns.map((column, columnIndex) => (
           <div
             key={ columnIndex }
             role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
-            className={ css('ms-DetailsRow-cell', column.className, {
-              'is-multiline': column.isMultiline
-            }) }
-            style={ { width: column.calculatedWidth } }
+            aria-colindex={ columnIndex + columnStartIndex }
+            className={ css('ms-DetailsRow-cell', styles.cell, column.className,
+              column.isMultiline && 'is-multiline',
+              column.isRowHeader && styles.isRowHeader,
+              column.isPadded && styles.isPadded,
+              column.isMultiline && styles.isMultiline,
+            ) }
+            style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
-            data-automation-key={ column.key }>
+            data-automation-key={ column.key }
+          >
             { cellContent[columnIndex] }
           </div>
         )) }
@@ -65,7 +82,7 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, ID
     };
   }
 
-  private _getCellText(item, column) {
+  private _getCellText(item: any, column: IColumn) {
     let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
 
     if (value === null || value === undefined) {

@@ -47,7 +47,7 @@ npm start
 ![create-react-app preview in browser](./images/create-react-app-preview.png)
 
 ## Step 2: Install office-ui-fabric-react package
-To use Fabric React in your project, you will need to first install the `ofifce-ui-fabric-react` npm package. Type the following in the console to install the package:
+To use Fabric React in your project, you will need to first install the `office-ui-fabric-react` npm package. Type the following in the console to install the package:
 
 ```
 npm install office-ui-fabric-react --save
@@ -124,7 +124,7 @@ You can specify the default direction in your `index.html`. Add the `dir` attrib
 Load Office UI Fabric styles by linking to the Office UI Fabric CDN. Add the following to the `<head`> element:
 
 ```html
-<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/5.0.1/css/fabric.min.css">
+<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.2.0/css/fabric.min.css">
 ```
 
 Save the file.
