@@ -1,7 +1,6 @@
 // This file mimics styles and mixins from _General.Mixins.scss
 
 import { IRawStyle } from '@uifabric/merge-styles/lib/index';
-import { IRawFontStyle, IRawStyleBase } from '../../../merge-styles/lib/IRawStyleBase';
 
 export const normalize: IRawStyle = {
   boxShadow: 'none',
@@ -10,13 +9,13 @@ export const normalize: IRawStyle = {
   boxSizing: 'border-box'
 };
 
-export const userSelect = (value: string): IRawStyleBase => {
+export const UserSelect = (value: string): IRawStyle => {
   return {
     WebkitTouchCallout: value,
     WebkitUserSelect: value,
     KhtmlUserSelect: value,
     MozUserSelect: value,
     MsUserSelect: value,
-    UserSelect: value,
+    userSelect: value,
   };
 };
