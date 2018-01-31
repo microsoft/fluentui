@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Updating fabric icons in office-ui-fabric-react's  @uifabric/icons package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "srdeshpa@microsoft.com"
+}
