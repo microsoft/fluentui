@@ -1,7 +1,7 @@
 import { IStyle } from '../../../Styling';
 
 export interface IActivityItemExampleStyleProps {
-	/**
+  /**
    * 404 No Style Props Found
    */
 }

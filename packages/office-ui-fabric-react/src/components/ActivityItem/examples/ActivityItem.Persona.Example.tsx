@@ -3,10 +3,10 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css, classNamesFunction } from '../../../Utilities';
 import { ActivityItem } from '../ActivityItem';
-import { 
-  getStyles, 
-  IActivityItemExampleStyleProps, 
-  IActivityItemExampleStyles 
+import {
+  getStyles,
+  IActivityItemExampleStyleProps,
+  IActivityItemExampleStyles
 } from './ActivityItem.Example.styles';
 import { TestImages } from '../../../common/TestImages';
 import { Link } from '../../../Link';

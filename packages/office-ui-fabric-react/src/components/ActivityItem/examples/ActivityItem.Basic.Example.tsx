@@ -3,20 +3,19 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css, classNamesFunction } from '../../../Utilities';
 import { ActivityItem } from '../ActivityItem';
-import { 
-  getStyles, 
-  IActivityItemExampleStyleProps, 
-  IActivityItemExampleStyles 
+import {
+  getStyles,
+  IActivityItemExampleStyleProps,
+  IActivityItemExampleStyles
 } from './ActivityItem.Example.styles';
 import { Icon } from '../../../Icon';
 import { Link } from '../../../Link';
-
 
 export class ActivityItemBasicExample extends React.Component<React.Props<ActivityItemBasicExample>, {}> {
   public render() {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles);
-    
+
     // tslint:disable:jsx-no-lambda
     const activityItemExamples = [
       {
@@ -65,7 +64,7 @@ export class ActivityItemBasicExample extends React.Component<React.Props<Activi
         <ActivityItem {...props} key={ item.key } className={ css(classNames.exampleRoot) } />
       );
     });
-    
+
     return (
       <div>
         { activityExampleList }
