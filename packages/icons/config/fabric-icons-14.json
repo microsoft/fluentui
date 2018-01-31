@@ -1,0 +1,20 @@
+{
+	"fontName": "fabric-icons-14",
+	"fontFamilyName": "FabricMDL2Icons-14",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"hashFontFileName": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "Phishing",
+			"unicode": "F679"
+		},
+		{
+			"name": "CreateMailRule",
+			"unicode": "F67A"
+		}
+	]
+}
