@@ -82,6 +82,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
+  private _pendingForceUpdate: boolean;
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -213,6 +214,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     if (shouldForceUpdates) {
+      this._pendingForceUpdate = true;
+    }
+  }
+
+  public componentWillUpdate(): void {
+    if (this._pendingForceUpdate) {
       this._forceListUpdates();
     }
   }
@@ -556,6 +563,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _forceListUpdates() {
+    this._pendingForceUpdate = false;
+
     if (this._groupedList) {
       this._groupedList.forceUpdate();
     }

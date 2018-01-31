@@ -79,6 +79,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
     this._events.on(scrollElement, 'click', this._tryClearOnEmptyClick);
+    this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
+    this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
   }
 
   public render() {
@@ -89,8 +91,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onKeyDownCapture={ this._onKeyDownCapture }
-        onTouchStartCapture={ this._onTouchStartCapture }
-        onTouchEndCapture={ this._onTouchStartCapture }
         onClick={ this._onClick }
         role='presentation'
 
