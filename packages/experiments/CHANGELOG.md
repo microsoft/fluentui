@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+
+## 5.16.1
+Wed, 31 Jan 2018 11:11:59 GMT
+
+### Patches
+
+- Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react"
 
 ## 5.16.0
 Mon, 29 Jan 2018 11:23:40 GMT

@@ -2,6 +2,55 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.45.1",
+      "tag": "office-ui-fabric-react_v5.45.1",
+      "date": "Wed, 31 Jan 2018 11:11:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "2a554f6da9bc2655cd13fdd40b3efd0b902a9752",
+            "comment": "swatch color picker - add ability to add aria-label"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f803269ad6750215dad105710caeee16c8ea0aea",
+            "comment": "ChoiceGroup: Wrap long text for image and icon types."
+          },
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "7df5be25f84af0d634cc2c428026b0a98000703b",
+            "comment": "updating willReceiveProps of date picker to not run validation unless the props actually changed"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "e6136d1726d59c4766b58af9dd0bd40a3936952b",
+            "comment": "ComboBox: ComboBoxes were changed to always expand which is incorrect behavior, fixing to align with the correct design"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "b6a301e8164b5120d9c25049942ef112628f067d",
+            "comment": "ContextualMenu: Remove the list in the menu and move the aria-label/labelledby to the correct element"
+          },
+          {
+            "author": "Scott Balentine <sbalentine88@gmail.com>",
+            "commit": "2a9d79021114b2ad4b4c04f8557716077399c592",
+            "comment": "TextField: fixed whitespace wrapping with prefix/suffix."
+          },
+          {
+            "author": "Srikanth Reddy Kandula <srikanthreddy.iitp@gmail.com>",
+            "commit": "88066a817c1341690e124d93b499f34550214a69",
+            "comment": "Fixing the up and down arrows position and behavior according to RTL expected behavior"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "7d5b46f17b9fe7f997b815d77e5a2e4a4d038579",
+            "comment": "Removed unused scss file in Sticky component"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.45.0",
       "tag": "office-ui-fabric-react_v5.45.0",
       "date": "Tue, 30 Jan 2018 11:22:56 GMT",
