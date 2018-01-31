@@ -223,6 +223,32 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
+// week numbers style in right-to-left view
+.showWeekNumbersRTL {
+  .weekNumbers {
+    position: absolute;
+    margin-top: $Calendar-day;
+    border-left: 1px solid $ms-color-neutralLight;
+    box-sizing: border-box;
+    width: 30px;
+    .day {
+      color: $ms-color-neutralSecondary;
+      &.weekIsHighlighted {
+        color: $ms-color-black;
+      }
+    }
+  }
+  .table {
+    &:not(.weekNumbers) {
+      margin-right: 30px;
+    }
+    .day,
+    .weekday {
+      width: 30px;
+    }
+  }
+}
+
 // Month and year previous/next components.
 .monthComponents,
 .yearComponents,
@@ -434,6 +460,22 @@ $Calendar-dayPicker-margin: 10px;
     .table {
       &:not(.weekNumbers) {
         margin-left: 19px;
+      }
+      .day,
+      .weekday {
+        width: 26px;
+      }
+    }
+  } // week numbers style in right-to-left view
+  .showWeekNumbersRTL {
+    .weekNumbers {
+      margin-top: $Calendar-day;
+      width: 26px;
+      margin-right: -7px;
+    }
+    .table {
+      &:not(.weekNumbers) {
+        margin-right: 19px;
       }
       .day,
       .weekday {

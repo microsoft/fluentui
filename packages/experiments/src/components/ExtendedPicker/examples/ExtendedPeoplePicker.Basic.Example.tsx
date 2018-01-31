@@ -100,8 +100,13 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
           'aria-label': 'People Picker'
         } }
         componentRef={ this._setComponentRef }
+        headerComponent={ this._renderHeader() }
       />
     );
+  }
+
+  private _renderHeader(): JSX.Element {
+    return <div>TO:</div>;
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IExtendedPersonaProps>): JSX.Element {
