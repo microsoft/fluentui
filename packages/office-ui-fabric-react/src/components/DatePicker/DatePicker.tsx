@@ -142,7 +142,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    if (JSON.stringify(this.props) == JSON.stringify(nextProps)) {
+    if (JSON.stringify(this.props) === JSON.stringify(nextProps)) {
       // if the props haven't changed, don't run validation
       return;
     }
