@@ -55,6 +55,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
+  private _isControlled: boolean;
   private _textElement: HTMLTextAreaElement;
 
   public constructor(props: ITextFieldProps) {
@@ -86,6 +87,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
     this._isDescriptionAvailable = false;
+    this._isControlled = typeof props.value !== 'string';
   }
 
   /**
@@ -352,8 +354,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { ...textAreaProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
-        onInput={ this._onInputChange }
-        onChange={ this._onInputChange }
+        onInput={ this._isControlled ? this._onInputChange : undefined }
+        onChange={ this._isControlled ? this._onInputChange : undefined }
+        readOnly={ !this._isControlled }
         className={ this._getTextElementClassName() }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
@@ -374,8 +377,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { ...inputProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
-        onInput={ this._onInputChange }
-        onChange={ this._onInputChange }
+        onInput={ this._isControlled ? this._onInputChange : undefined }
+        onChange={ this._isControlled ? this._onInputChange : undefined }
+        readOnly={ !this._isControlled }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
