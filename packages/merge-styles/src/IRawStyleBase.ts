@@ -164,14 +164,49 @@ export interface IRawStyleBase extends IRawFontStyle {
   MsHighContrastAdjust?: ICSSRule | string;
 
   /**
+   * (Ms specific) controls whether the user can
+   * select text. This doesn't have any effect on content
+   * loaded as chrome, except in textboxes.
+   */
+  MsUserSelect?: 'none' | 'text' | 'all' | 'auto';
+
+  /**
    * (Moz specific) font smoothing directive.
    */
   MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
 
   /**
+   * (Moz specific) controls whether the user can
+   * select text. This doesn't have any effect on content
+   * loaded as chrome, except in textboxes.
+   */
+  MozUserSelect?: 'none' | 'text' | 'all' | 'auto';
+
+  /**
    * (Webkit specific) font smoothing directive.
    */
   WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+
+  /**
+   * (Webkit specific) controls the display of the
+   * default callout shown when you touch and hold
+   * a touch target.
+   */
+  WebkitTouchCallout?: 'default' | 'none' | 'initial' | 'inherit' | 'unset';
+
+  /**
+   * (Webkit specific) controls whether the user can
+   * select text. This doesn't have any effect on content
+   * loaded as chrome, except in textboxes.
+   */
+  WebkitUserSelect?: 'none' | 'text' | 'all' | 'auto';
+
+  /**
+   * (KDE specific) controls whether the user can
+   * select text. This doesn't have any effect on content
+   * loaded as chrome, except in textboxes.
+   */
+  KhtmlUserSelect?: 'none' | 'text' | 'all' | 'auto';
 
   /**
    * Aligns a flex container's lines within the flex container when there is extra space
