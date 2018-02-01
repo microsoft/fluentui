@@ -3,6 +3,8 @@ import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
+import { IStyleFunction } from '../../Utilities';
+import { SpinButtonBase, KeyboardSpinDirection } from './SpinButton.base';
 
 export interface ISpinButton {
   /**
@@ -17,8 +19,7 @@ export interface ISpinButton {
   focus: () => void;
 }
 
-export interface ISpinButtonProps {
-
+export interface ISpinButtonProps extends React.Props<SpinButtonBase> {
   /**
    * Gets the component ref.
    */
@@ -71,8 +72,8 @@ export interface ISpinButtonProps {
   disabled?: boolean;
 
   /**
-  * Optional className for SpinButton.
-  */
+   * Optional className for SpinButton.
+   */
   className?: string;
 
   /**
@@ -130,6 +131,8 @@ export interface ISpinButtonProps {
 
   /**
    * Custom styling for individual elements within the button DOM.
+   *
+   * @deprecated styles prop will be removed in favor of getStyles in 6.0
    */
   styles?: Partial<ISpinButtonStyles>;
 
@@ -139,6 +142,8 @@ export interface ISpinButtonProps {
    * Note: The buttons are in a checked state when arrow keys are used to
    * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
    * for styling when that is the case.
+   *
+   * @deprecated upArrowButtonStyles prop will be removed in favor of getUpArrowButtonStyles in 6.0
    */
   upArrowButtonStyles?: Partial<IButtonStyles>;
 
@@ -148,8 +153,33 @@ export interface ISpinButtonProps {
    * Note: The buttons are in a checked state when arrow keys are used to
    * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
    * for styling when that is the case.
+   *
+   * @deprecated upArrowButtonStyles prop will be removed in favor of getUpArrowButtonStyles in 6.0
    */
   downArrowButtonStyles?: Partial<IButtonStyles>;
+
+  /**
+   * Custom styling function for the spinButton
+   */
+  getStyles?: IStyleFunction<ISpinButtonStyleProps, ISpinButtonStyles>;
+
+  /**
+   * Custom styling function for the spinButton's up arrow
+   *
+   * Note: The buttons are in a checked state when arrow keys are used to
+   * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
+   * for styling when that is the case.
+   */
+  getUpArrowButtonStyles?: IStyleFunction<ISpinButtonArrowStyleProps, IButtonStyles>;
+
+  /**
+   * Custom styling function for the spinButton's down arrow
+   *
+   * Note: The buttons are in a checked state when arrow keys are used to
+   * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
+   * for styling when that is the case.
+   */
+  getDownArrowButtonStyles?: IStyleFunction<ISpinButtonArrowStyleProps, IButtonStyles>;
 
   /**
    * Theme provided by HOC.
@@ -167,8 +197,24 @@ export interface ISpinButtonProps {
   decrementButtonAriaLabel?: string;
 }
 
-export interface ISpinButtonStyles {
+export interface ISpinButtonStyleProps {
+  // todo: add comments for each fields
+  theme: ITheme;
+  disabled?: boolean;
+  isFocused?: boolean;
+  keyboardSpinDirection?: KeyboardSpinDirection;
+  labelPosition?: Position;
+  customStyles?: Partial<ISpinButtonStyles>;
+}
 
+export interface ISpinButtonArrowStyleProps {
+  // todo: add comments for each fields
+  theme: ITheme;
+  upArrowButtonStyles?: Partial<IButtonStyles>;
+  downArrowButtonStyles?: Partial<IButtonStyles>;
+}
+
+export interface ISpinButtonStyles {
   /**
    * Styles for the root of the spin button component.
    */

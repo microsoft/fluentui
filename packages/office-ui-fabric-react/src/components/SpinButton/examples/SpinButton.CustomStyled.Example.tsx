@@ -1,11 +1,20 @@
 import * as React from 'react';
-import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
+import {
+  SpinButton,
+  ISpinButtonStyles,
+  ISpinButtonStyleProps,
+  ISpinButtonArrowStyleProps
+} from 'office-ui-fabric-react/lib/SpinButton';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
-const styles: Partial<ISpinButtonStyles> = {
-  root: {
-    width: '400px'
-  }
+const getStyles = (
+  props: ISpinButtonStyleProps
+): Partial<ISpinButtonStyles> => {
+  return {
+    root: {
+      width: '400px'
+    }
+  };
 };
 
 const upArrowButtonStyles: Partial<IButtonStyles> = {
@@ -31,7 +40,7 @@ export class SpinButtonCustomStyledExample extends React.Component<any, any> {
     return (
       <div>
         <SpinButton
-          styles={ styles }
+          getStyles={ getStyles }
           upArrowButtonStyles={ upArrowButtonStyles }
           downArrowButtonStyles={ downArrowButtonStyles }
           defaultValue='0'

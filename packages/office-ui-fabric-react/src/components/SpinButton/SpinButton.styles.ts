@@ -3,12 +3,13 @@ import {
   IRawStyle,
   ITheme,
   concatStyleSets,
-  HighContrastSelector
+  HighContrastSelector,
+  IStyle
 } from '../../Styling';
-
 import { IButtonStyles } from '../../Button';
-import { ISpinButtonStyles } from './SpinButton.types';
+import { ISpinButtonStyles, ISpinButtonStyleProps, ISpinButtonArrowStyleProps } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
+import { Position } from '../../utilities/positioning';
 
 const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   const { semanticColors } = theme;
@@ -30,13 +31,13 @@ const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   };
 });
 
-export const getArrowButtonStyles = memoizeFunction((
-  theme: ITheme,
-  isUpArrow: boolean,
-  customSpecificArrowStyles?: Partial<IButtonStyles>,
+const getArrowButtonStyles = memoizeFunction((
+  props: ISpinButtonArrowStyleProps,
+  isUpArrow: boolean
 ): IButtonStyles => {
-
+  const { theme, upArrowButtonStyles, downArrowButtonStyles } = props;
   const { palette } = theme;
+  const customStyles = isUpArrow ? upArrowButtonStyles : downArrowButtonStyles;
 
   const ArrowButtonTextColor = palette.neutralPrimary;
   const ArrowButtonTextColorPressed = palette.white;
@@ -111,163 +112,286 @@ export const getArrowButtonStyles = memoizeFunction((
   return concatStyleSets(
     defaultArrowButtonStyles,
     isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
-    customSpecificArrowStyles
+    customStyles
   ) as IButtonStyles;
 });
 
+export const getUpArrowButtonStyles = memoizeFunction((
+  props: ISpinButtonArrowStyleProps,
+): IButtonStyles => {
+  return getArrowButtonStyles(props, true);
+});
+
+export const getDownArrowButtonStyles = memoizeFunction((
+  props: ISpinButtonArrowStyleProps,
+): IButtonStyles => {
+  return getArrowButtonStyles(props, false);
+});
+
+const _getStyleForLabelBasedOnPosition = memoizeFunction((
+  labelPosition?: Position
+): IRawStyle => {
+  switch (labelPosition) {
+    case Position.start:
+      return {
+        float: 'left',
+        marginRight: '10px',
+      };
+    case Position.end:
+      return {
+        float: 'right',
+        marginLeft: '10px'
+      };
+    case Position.top:
+      return {
+        marginBottom: '10px'
+      };
+    case Position.bottom:
+      return {
+        marginTop: '10px'
+      };
+    default: return {};
+  }
+});
+
+const _getStyleForRootBasedOnPosition = memoizeFunction((labelPosition?: Position): IRawStyle => {
+  switch (labelPosition) {
+    case Position.top:
+    case Position.bottom:
+      return {
+        width: '100%'
+      };
+    default: return {};
+  }
+});
+
 export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: Partial<ISpinButtonStyles>
-): ISpinButtonStyles => {
+  props: ISpinButtonStyleProps
+): Partial<ISpinButtonStyles> => {
+  const {
+    disabled,
+    isFocused,
+    keyboardSpinDirection,
+    labelPosition,
+    customStyles,
+    theme
+  } = props;
+
   const { fonts, palette, semanticColors } = theme;
 
   const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
   const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
   const SpinButtonRootBorderColorFocused = palette.themePrimary;
-
   const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
   const SpinButtonInputTextColor = palette.neutralPrimary;
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
-
   const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
-  const defaultStyles: ISpinButtonStyles = {
-    root: {
-      outline: 'none',
-      fontSize: FontSizes.medium,
-      width: '100%',
-      minWidth: '86px',
-      paddingTop: '2px',
-      paddingRight: '2px',
-      paddingBottom: '2px',
-      paddingLeft: '2px',
-    },
-    labelWrapper: {
-      display: 'inline-flex'
-    },
-    labelWrapperStart: {
-      float: 'left',
-      marginRight: '10px'
-    },
-    labelWrapperEnd: {
-      float: 'right',
-      marginLeft: '10px'
-    },
-    labelWrapperTop: {
-      marginBottom: '10px'
-    },
-    labelWrapperBottom: {
-      marginTop: '10px'
-    },
-    icon: {
-      paddingTop: '2px',
-      paddingRight: '5px',
-      paddingBottom: '2px',
-      paddingLeft: '5px',
-
-      fontSize: '20px'
-    },
-    iconDisabled: {
-      color: SpinButtonIconDisabledColor
-    },
-    label: {
-      pointerEvents: 'none',
-      paddingTop: '2px',
-      paddingRight: '0',
-      paddingBottom: '2px',
-      paddingLeft: '0',
-    },
-    labelDisabled: {
-      cursor: 'default',
-      color: SpinButtonTextColorDisabled,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText'
-        }
-      }
-    },
-    spinButtonWrapper: {
-      display: 'flex',
-      height: '26px',
-      minWidth: '86px',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: SpinButtonRootBorderColor,
-    },
-    spinButtonWrapperTopBottom: {
-      width: '100%'
-    },
-    spinButtonWrapperHovered: {
-      borderColor: SpinButtonRootBorderColorHovered,
-      outline: '2px dashed transparent',
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'Highlight'
-        }
-      }
-    },
-    spinButtonWrapperFocused: {
-      borderColor: SpinButtonRootBorderColorFocused,
-      outline: '2px dashed transparent',
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'Highlight'
-        }
-      }
-    },
-    spinButtonWrapperDisabled: _getDisabledStyles(theme),
-    input: {
-      boxSizing: 'border-box',
-      boxShadow: 'none',
-      borderStyle: 'none',
-      marginTop: '0',
-      marginRight: '0',
-      marginBottom: '0',
-      marginLeft: '0',
-      fontSize: FontSizes.medium,
-      color: SpinButtonInputTextColor,
-      height: '100%',
-      paddingTop: '3px',
-      paddingRight: '3px',
-      paddingBottom: '4px',
-      paddingLeft: '4px',
-      outline: '0',
-      textOverflow: 'ellipsis',
-      display: 'block',
-      float: 'left',
-      width: 'calc(100% - 14px)',
-      minWidth: '72px',
-      overflow: 'hidden',
-      cursor: 'text',
-      userSelect: 'text'
-    },
-    inputTextSelected: {
-      backgroundColor: SpinButtonInputBackgroundColorSelected,
-      color: SpinButtonInputTextColorSelected,
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: 'Highlight',
-          borderColor: 'Highlight',
-          color: 'HighlightText',
-        }
-      }
-    },
-    inputDisabled: _getDisabledStyles(theme),
-    arrowButtonsContainer: {
-      outline: 'none',
-      fontSize: '12px',
-      display: 'block',
-      float: 'left',
-      height: '100%',
-      cursor: 'default',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
-      boxSizing: 'border-box'
-    },
-    arrowButtonsContainerDisabled: _getDisabledStyles(theme),
+  const _getOptionalCustomStyles = <T extends keyof ISpinButtonStyles>(id: T): IStyle => {
+    return customStyles && customStyles[id];
   };
-  return concatStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
+
+  const _getOptionalCustomLabelStyles = (): IStyle => {
+    switch (labelPosition) {
+      case Position.start:
+        return _getOptionalCustomStyles('labelWrapperStart');
+      case Position.end:
+        return _getOptionalCustomStyles('labelWrapperEnd');
+      case Position.top:
+        return _getOptionalCustomStyles('labelWrapperTop');
+      case Position.bottom:
+        return _getOptionalCustomStyles('labelWrapperBottom');
+      default: return {};
+    }
+  };
+
+  const _getOptionalCustomStyleForRoot = (): IStyle => {
+    switch (labelPosition) {
+      case Position.top:
+      case Position.bottom:
+        return _getOptionalCustomStyles('spinButtonWrapperTopBottom');
+      default: return {};
+    }
+  };
+
+  return {
+    root: [
+      {
+        outline: 'none',
+        fontSize: FontSizes.medium,
+        width: '100%',
+        minWidth: '86px',
+        paddingTop: '2px',
+        paddingRight: '2px',
+        paddingBottom: '2px',
+        paddingLeft: '2px',
+      },
+      _getOptionalCustomStyles('root'),
+    ],
+    labelWrapper: [
+      {
+        display: 'inline-flex'
+      },
+      _getOptionalCustomStyles('labelWrapper'),
+      _getStyleForLabelBasedOnPosition(labelPosition),
+      _getOptionalCustomLabelStyles()
+    ],
+    icon: [
+      {
+        paddingTop: '2px',
+        paddingRight: '5px',
+        paddingBottom: '2px',
+        paddingLeft: '5px',
+        fontSize: '20px'
+      },
+      _getOptionalCustomStyles('icon'),
+      disabled && [
+        {
+          color: SpinButtonIconDisabledColor
+        },
+        _getOptionalCustomStyles('iconDisabled')
+      ]
+    ],
+    label: [
+      {
+        pointerEvents: 'none',
+        paddingTop: '2px',
+        paddingRight: '0',
+        paddingBottom: '2px',
+        paddingLeft: '0',
+      },
+      _getOptionalCustomStyles('label'),
+      disabled && [
+        {
+          cursor: 'default',
+          color: SpinButtonTextColorDisabled,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'GrayText'
+            }
+          }
+        }, _getOptionalCustomStyles('labelDisabled')
+      ]
+    ],
+    spinButtonWrapper: [
+      {
+        display: 'flex',
+        height: '26px',
+        minWidth: '86px',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: SpinButtonRootBorderColor,
+      },
+      _getOptionalCustomStyles('spinButtonWrapper'),
+      _getStyleForRootBasedOnPosition(labelPosition),
+      _getOptionalCustomStyleForRoot(),
+      !disabled && [
+        {
+          selectors: {
+            ':hover': [
+              {
+                borderColor: SpinButtonRootBorderColorHovered,
+                outline: '2px dashed transparent',
+                selectors: {
+                  [HighContrastSelector]: {
+                    borderColor: 'Highlight'
+                  }
+                }
+              }, _getOptionalCustomStyles('spinButtonWrapperHovered')
+            ]
+          }
+        },
+        isFocused && {
+          selectors: {
+            '&&': [
+              {
+                borderColor: SpinButtonRootBorderColorFocused,
+                outline: '2px dashed transparent',
+                selectors: {
+                  [HighContrastSelector]: {
+                    borderColor: 'Highlight'
+                  }
+                }
+              }, _getOptionalCustomStyles('spinButtonWrapperFocused')
+            ]
+          }
+        }
+      ],
+      disabled && [
+        _getDisabledStyles(theme),
+        _getOptionalCustomStyles('spinButtonWrapperDisabled')
+      ]
+    ],
+    input: [
+      'ms-spinButton-input',
+      {
+        boxSizing: 'border-box',
+        boxShadow: 'none',
+        borderStyle: 'none',
+        marginTop: '0',
+        marginRight: '0',
+        marginBottom: '0',
+        marginLeft: '0',
+        fontSize: FontSizes.medium,
+        color: SpinButtonInputTextColor,
+        height: '100%',
+        paddingTop: '3px',
+        paddingRight: '3px',
+        paddingBottom: '4px',
+        paddingLeft: '4px',
+        outline: '0',
+        textOverflow: 'ellipsis',
+        display: 'block',
+        float: 'left',
+        width: 'calc(100% - 14px)',
+        minWidth: '72px',
+        overflow: 'hidden',
+        cursor: 'text',
+        userSelect: 'text'
+      },
+      _getOptionalCustomStyles('input'),
+      !disabled && {
+        selectors: {
+          '::selection': [
+            {
+              backgroundColor: SpinButtonInputBackgroundColorSelected,
+              color: SpinButtonInputTextColorSelected,
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: 'Highlight',
+                  borderColor: 'Highlight',
+                  color: 'HighlightText',
+                }
+              }
+            }, _getOptionalCustomStyles('inputTextSelected')
+          ]
+        }
+      },
+      disabled && [
+        _getDisabledStyles(theme),
+        _getOptionalCustomStyles('inputDisabled')
+      ]
+    ],
+    arrowButtonsContainer: [
+      {
+        outline: 'none',
+        fontSize: '12px',
+        display: 'block',
+        float: 'left',
+        height: '100%',
+        cursor: 'default',
+        paddingTop: '0',
+        paddingRight: '0',
+        paddingBottom: '0',
+        paddingLeft: '0',
+        boxSizing: 'border-box'
+      },
+      _getOptionalCustomStyles('arrowButtonsContainer'),
+      disabled && [
+        _getDisabledStyles(theme),
+        _getOptionalCustomStyles('arrowButtonsContainerDisabled')
+      ]
+    ]
+  };
 });
