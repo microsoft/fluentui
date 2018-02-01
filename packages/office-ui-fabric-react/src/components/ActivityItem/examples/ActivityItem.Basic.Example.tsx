@@ -59,7 +59,6 @@ export class ActivityItemBasicExample extends React.Component<React.Props<Activi
     let activityExampleList: Array<JSX.Element> = [];
     activityItemExamples.forEach((item) => {
       let props = item;
-      console.log(props);
       activityExampleList.push(
         <ActivityItem {...props} key={ item.key } className={ css(classNames.exampleRoot) } />
       );
