@@ -6,17 +6,27 @@
   display: inline-flex;
   align-items: center;
   background: $ms-color-themeLighterAlt;
-  color: $ms-color-themeDark;
   margin: 4px;
   cursor: default;
   user-select: none;
   vertical-align: middle;
   position: relative;
-  @include ms-font-m;
 
-  .actionButton {
+  // Setting global values here to override persona's normal behavior specifically in this selected variation
+  :global(.ms-Persona-primaryText) {
+    color: $ms-color-themeDark;
     @include ms-font-m;
 
+    &.hover {
+      color: $ms-color-themeDark;
+    }
+
+    @include high-contrast {
+      color: HighlightText;
+    }
+  }
+
+  .actionButton {
     &:hover {
       background: $ms-color-themeLight;
     }
@@ -33,6 +43,15 @@
   &:hover {
     background: $ms-color-themeLighter;
 
+    // Setting global values here to override persona's normal behavior specifically in this selected variation
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-themeDark;
+      @include ms-font-m;
+
+      @include high-contrast {
+        color: HighlightText;
+      }
+    }
   }
 
   &.personaContainerIsSelected {
@@ -48,18 +67,18 @@
     }
 
     .actionButton {
-      @include ms-font-m;
+      color: $ms-color-white;
 
       :global(.ms-Button-icon) {
         color: $ms-color-themeDark;
 
+        &:hover {
+          background: $ms-color-themeDark;
+        }
+
         @include high-contrast {
           color: HighlightText;
         }
-      }
-
-      &:hover {
-        background: $ms-color-themeLight;
       }
     }
 
@@ -92,10 +111,6 @@
     /** CSS below is needed for IE 11 to properly truncate long persona names in the picker **/
     max-width: 100%;
     overflow-x: hidden;
-
-    :global(.ms-persona-details) {
-      padding: 0px 8px;
-    }
   }
 
   .removeButton {
@@ -108,20 +123,21 @@
 
   .expandButton {
     border-radius: 15px 0px 0px 15px;
-    height: 28px;
-    flex-basis: 28px;
-    padding-right: 12px;
+    height: 33px;
+    width: 44px;
+    padding-right: 16px;
     position: inherit;
-    margin-right: -8px;
-
-    &:hover {
-      background: $ms-color-themeLight;
-    }
+    display: flex;
+    margin-right: -17px;
   }
 
   .personaWrapper {
     position: relative;
     display: inherit;
+
+    :global(.ms-Persona-details) {
+      padding: 0px 8px;
+    }
   }
 
   .personaDetails {

@@ -51,7 +51,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
         <div hidden={ !item.canExpand || onExpandItem === undefined }>
           <IconButton
             onClick={ this.onClickIconButton(onExpandItem) }
-            iconProps={ { iconName: 'Add', style: { fontSize: '12px' } } }
+            iconProps={ { iconName: 'Add', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />
@@ -65,7 +65,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           </div>
           <IconButton
             onClick={ this.onClickIconButton(onRemoveItem) }
-            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
+            iconProps={ { iconName: 'Cancel', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />

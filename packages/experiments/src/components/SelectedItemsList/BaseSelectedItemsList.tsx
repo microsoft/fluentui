@@ -35,7 +35,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     };
 
     // Create a new selection if one is not specified
-    this.selection = this.props.selection ? this.props.selection as Selection : new Selection({ onSelectionChanged: this.forceUpdate });
+    this.selection = this.props.selection ? this.props.selection as Selection : new Selection({ onSelectionChanged: this.onSelectionChanged });
   }
 
   public get items(): T[] {
@@ -128,6 +128,11 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
     }));
+  }
+
+  @autobind
+  protected onSelectionChanged(): void {
+    this.forceUpdate();
   }
 
   protected onChange(items?: T[]): void {
