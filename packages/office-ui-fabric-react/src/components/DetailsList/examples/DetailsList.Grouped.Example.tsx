@@ -137,7 +137,8 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     return (
       <div
         className={ 'grouped-example-column' }
-        data-is-focusable={ true }>
+        data-is-focusable={ true }
+      >
         { value }
       </div>
     );
