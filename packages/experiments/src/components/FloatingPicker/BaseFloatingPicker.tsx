@@ -54,6 +54,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     };
   }
 
+  public forceResolveSuggestion(): void {
+    if (this.suggestionStore.hasSelectedSuggestion()) {
+      this.completeSuggestion();
+    } else {
+      this._onValidateInput();
+    }
+  }
+
   public get isSuggestionsShown(): boolean {
     return this.state.suggestionsVisible ? false : this.state.suggestionsVisible as boolean;
   }
