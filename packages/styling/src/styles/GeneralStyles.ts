@@ -16,11 +16,6 @@ export const normalize: IRawStyle = {
 export const setUserSelect = (value: 'initial' | 'inherit' | 'unset' |
   'none' | 'auto' | 'text' | 'all' | 'contain' | undefined): IRawStyle => {
   return {
-    // WebkitTouchCallout: value,
-    // WebkitUserSelect: value,
-    // KhtmlUserSelect: value,
-    // MozUserSelect: value,
-    // MsUserSelect: value,
     userSelect: value
   };
 };
