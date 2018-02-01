@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.16.1",
+      "tag": "@uifabric/experiments_v5.16.1",
+      "date": "Wed, 31 Jan 2018 11:11:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "0bcc2870320b3940d9e386a9996981e759ba4ddf",
+            "comment": "Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react\""
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.0 <6.0.0` to `>=5.45.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.16.0",
       "tag": "@uifabric/experiments_v5.16.0",
       "date": "Mon, 29 Jan 2018 11:23:40 GMT",

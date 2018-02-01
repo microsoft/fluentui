@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing the up and down arrows position and behavior according to RTL expected behavior",
+      "comment": "Converted ActivityItemExample to use mergeStyles instead of SCSS",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "srkandu@microsoft.com"
+  "email": "v-brgarl@microsoft.com"
 }
