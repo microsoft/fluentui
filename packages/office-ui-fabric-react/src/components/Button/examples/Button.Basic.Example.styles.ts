@@ -38,4 +38,4 @@ export function getStyles(props: IButtonBasicExampleStyleProps): IButtonBasicExa
       }
     ]
   });
-};
+}
