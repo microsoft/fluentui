@@ -168,7 +168,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * select text. This doesn't have any effect on content
    * loaded as chrome, except in textboxes.
    */
-  MsUserSelect?: ICSSRule | string;
+  // MsUserSelect?: ICSSRule | string;
 
   /**
    * (Moz specific) font smoothing directive.
@@ -180,7 +180,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * select text. This doesn't have any effect on content
    * loaded as chrome, except in textboxes.
    */
-  MozUserSelect?: ICSSRule | string;
+  // MozUserSelect?: ICSSRule | string;
 
   /**
    * (Webkit specific) font smoothing directive.
@@ -192,21 +192,21 @@ export interface IRawStyleBase extends IRawFontStyle {
    * default callout shown when you touch and hold
    * a touch target.
    */
-  WebkitTouchCallout?: ICSSRule | string;
+  // WebkitTouchCallout?: ICSSRule | string;
 
   /**
    * (Webkit specific) controls whether the user can
    * select text. This doesn't have any effect on content
    * loaded as chrome, except in textboxes.
    */
-  WebkitUserSelect?: ICSSRule | string;
+  // WebkitUserSelect?: ICSSRule | string;
 
   /**
    * (KDE specific) controls whether the user can
    * select text. This doesn't have any effect on content
    * loaded as chrome, except in textboxes.
    */
-  KhtmlUserSelect?: ICSSRule | string;
+  // KhtmlUserSelect?: ICSSRule | string;
 
   /**
    * Aligns a flex container's lines within the flex container when there is extra space

@@ -9,13 +9,18 @@ export const normalize: IRawStyle = {
   boxSizing: 'border-box'
 };
 
-export const UserSelect = (value: string): IRawStyle => {
+/**
+ * Prevents user selection of text elements.
+ * @param value The value of userSelect
+ */
+export const setUserSelect = (value: 'initial' | 'inherit' | 'unset' |
+  'none' | 'auto' | 'text' | 'all' | 'contain' | undefined): IRawStyle => {
   return {
-    WebkitTouchCallout: value,
-    WebkitUserSelect: value,
-    KhtmlUserSelect: value,
-    MozUserSelect: value,
-    MsUserSelect: value,
-    userSelect: value,
+    // WebkitTouchCallout: value,
+    // WebkitUserSelect: value,
+    // KhtmlUserSelect: value,
+    // MozUserSelect: value,
+    // MsUserSelect: value,
+    userSelect: value
   };
 };
