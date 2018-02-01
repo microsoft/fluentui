@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { IBaseProps } from '../../Utilities';
 import { FolderCover } from './FolderCover';

@@ -1,6 +1,117 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Jan 2018 11:14:03 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+
+## 5.45.1
+Wed, 31 Jan 2018 11:11:59 GMT
+
+### Patches
+
+- swatch color picker - add ability to add aria-label
+- ChoiceGroup: Wrap long text for image and icon types.
+- updating willReceiveProps of date picker to not run validation unless the props actually changed
+- ComboBox: ComboBoxes were changed to always expand which is incorrect behavior, fixing to align with the correct design
+- ContextualMenu: Remove the list in the menu and move the aria-label/labelledby to the correct element
+- TextField: fixed whitespace wrapping with prefix/suffix.
+- Fixing the up and down arrows position and behavior according to RTL expected behavior
+- Removed unused scss file in Sticky component
+
+## 5.45.0
+Tue, 30 Jan 2018 11:22:56 GMT
+
+### Minor changes
+
+- Added prop to ComboBox to control its button's aria-hidden attribute
+
+### Patches
+
+-  Fix TeachingBubble dismiss on scroll by passing onDismiss to callout.
+
+## 5.44.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add work week date range type and update calendar and calendarDay components to consume it
+- Added onRenderCoin prop that controls the persona coin image
+
+### Patches
+
+- Combox box: added accessibility changes added a title and changed activedescendant to use focused element
+- Callout/Popup: Fix a bug where callout doesn't have the correct overflow style"
+- setting people picker default size back to 28 from 24
+- Add private _defaultCalloutProps instead of public defaultProps to set calloutProps.
+
+## 5.43.1
+Fri, 26 Jan 2018 11:25:22 GMT
+
+### Patches
+
+- SplitButton - added aria support for button in split buttons and the whole container
+- Dropdown, Checkbox: Fix disabled Dropdown options and update Checkbox disabled styles
+- Persona: Changed text and root heights for size24 when secondary text is shown.
+- TextField, Pickers, PeoplePicker: Homogenizing input heights and colors
+
+## 5.43.0
+Thu, 25 Jan 2018 11:23:07 GMT
+
+### Minor changes
+
+- Callout: Convert component to JS Styling
+- Added onFocus state Boolean to BasePicker
+
+### Patches
+
+- spin button - add aria label for decrement and increment buttons
+- Pickers: Fixing errors occuring onBlur of limited pickers
+- Fixed broken links on documentation pages
+- Pickers: Aligning suggestions callout to the correct RTL position
+
+## 5.42.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- ResizeGroup: Add the ability for ResizeGroup to get divProps
+- Enhance Panel component props to allow all of FocusTrapZone props overrides.
+
+### Patches
+
+- BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese
+- Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states.
+- TextField and SearchBox: Specified placeholder text color to be more consistent across browsers.
+- Prevent default to avoid setting focus on SplitButton menu button
+- Fix CalendarDay RTL view
+
+## 5.41.2
+Tue, 23 Jan 2018 11:22:12 GMT
+
+### Patches
+
+- Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly
+
+## 5.41.1
+Mon, 22 Jan 2018 18:39:02 GMT
+
+### Patches
+
+- [FocusTrapZone] Text selection inside FocusTrapZone was broken. This brings it back
+- fix hover card dismiss issue
+
+## 5.41.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Add a context value under ResizeGroup to allow child components to detect whether they are being used only for measurement.
+- MessageBar: New prop to allow singleline text with no action buttons to be truncated.
+
+### Patches
+
+- Address issue #1535 - Calendar: Change clickable spans to buttons.
+- updated divider color to be more visible
+- Hovercard: Changed content keydown listener to element event binding
+- MessageBar: scss refactor and component polish.
 
 ## 5.40.2
 Fri, 19 Jan 2018 11:14:03 GMT

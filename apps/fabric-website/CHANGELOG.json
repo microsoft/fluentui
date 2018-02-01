@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.3.0",
+      "tag": "@uifabric/fabric-website_v5.3.0",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "a9d0f70495f315998a5dad78699ffd2349436420",
+            "comment": "Adding left nav scroll functionality, including fixing the left nav with the header. Other layout refactoring to accommodate."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.40.1 <6.0.0` to `>=5.41.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.1",
       "tag": "@uifabric/fabric-website_v5.2.1",
       "date": "Fri, 22 Dec 2017 11:10:56 GMT",

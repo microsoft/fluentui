@@ -78,7 +78,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
-          flex: 1 1 0;
+          flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
           font-weight: inherit;
@@ -96,6 +96,13 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         }
         &::-ms-clear {
           display: none;
+        }
+        &::placeholder {
+          color: #666666;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #666666;
         }
     disabled={undefined}
     id="SearchBox0"

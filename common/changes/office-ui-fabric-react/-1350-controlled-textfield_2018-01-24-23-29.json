@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Address issue #1535 - Calendar: Change clickable spans to buttons.",
+      "comment": "Adds the _isControlled flag to the TextField component that disabled onChange if the value prop is set, which follows developer expectations with React inputs.",
       "type": "patch"
     }
   ],

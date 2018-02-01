@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "MessageBar: scss refactor and component polish.",
+      "comment": "Fix bug in modal selection handling",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lynam.emily@gmail.com"
+  "email": "tmichon@microsoft.com"
 }

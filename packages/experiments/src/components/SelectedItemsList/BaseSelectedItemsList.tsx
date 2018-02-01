@@ -3,10 +3,9 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  css
 } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { Selection, SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/Selection';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
+
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 
 export interface IBaseSelectedItemsListState {
@@ -24,21 +23,19 @@ export interface IBaseSelectedItemsListState {
 export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   extends BaseComponent<P, IBaseSelectedItemsListState> implements IBaseSelectedItemsList<T> {
 
-  protected selection: Selection;
-
   protected root: HTMLElement;
-  protected focusZone: FocusZone;
+  protected selection: Selection;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
     let items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
-
-    this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
-    this.selection.setItems(items);
     this.state = {
       items: items,
     };
+
+    // Create a new selection if one is not specified
+    this.selection = this.props.selection ? this.props.selection as Selection : new Selection({ onSelectionChanged: this.forceUpdate });
   }
 
   public get items(): T[] {
@@ -56,11 +53,11 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (processedItemPromiseLikes && processedItemPromiseLikes.then) {
       processedItemPromiseLikes.then((resolvedProcessedItems: T[]) => {
         let newItems: T[] = this.state.items.concat(resolvedProcessedItems);
-        this.updateSelectedItems(newItems);
+        this.updateItems(newItems);
       });
     } else {
       let newItems: T[] = this.state.items.concat(processedItemObjects);
-      this.updateSelectedItems(newItems);
+      this.updateItems(newItems);
     }
     this.setState({ suggestedDisplayValue: '' });
   }
@@ -71,7 +68,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     // tslint:disable-next-line:no-any
     if (index > -1) {
       let newItems = items.slice(0, index).concat(items.slice(index + 1));
-      this.updateSelectedItems(newItems);
+      this.updateItems(newItems);
     }
   }
 
@@ -103,33 +100,15 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (newItems) {
       this.setState({ items: newProps.selectedItems });
     }
+
+    if (newProps.selection) {
+      this.selection = newProps.selection;
+    }
   }
 
-  public render(): JSX.Element {
-    let { className } = this.props;
-
-    return (
-      <div
-        ref={ this._resolveRef('root') }
-        className={ css(
-          'ms-BasePicker',
-          className ? className : '') }
-        onKeyDown={ this.onKeyDown }
-        onCopy={ this.onCopy }
-      >
-        <FocusZone
-          ref={ this._resolveRef('focusZone') }
-          direction={ FocusZoneDirection.bidirectional }
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
-        >
-          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple } >
-            <div role={ 'list' }>
-              { this.renderItems() }
-            </div>
-          </SelectionZone>
-        </FocusZone>
-      </div>
-    );
+  // tslint:disable-next-line:no-any
+  public render(): any {
+    return this.renderItems();
   }
 
   @autobind
@@ -149,10 +128,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
     }));
-  }
-
-  protected onSelectionChange(): void {
-    this.forceUpdate();
   }
 
   protected onChange(items?: T[]): void {
@@ -182,7 +157,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       let newItems: T[] = items;
       newItems[index] = changedItem;
 
-      this.updateSelectedItems(newItems);
+      this.updateItems(newItems);
     }
   }
 
@@ -193,7 +168,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
     if (index >= 0) {
       let newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-      this.updateSelectedItems(newItems);
+      this.updateItems(newItems);
     }
   }
 
@@ -206,7 +181,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     let firstItemToRemove = itemsToRemove[0];
     let index: number = items.indexOf(firstItemToRemove);
 
-    this.updateSelectedItems(newItems, index);
+    this.updateItems(newItems, index);
   }
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
@@ -225,7 +200,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
   */
-  protected updateSelectedItems(items: T[], focusIndex?: number): void {
+  protected updateItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
       this.onChange(items);

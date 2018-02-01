@@ -30,7 +30,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
         <TextField
           className='NumberTextField-textField'
           label={ this.props.label }
-          value={ this.state.value }
+          defaultValue={ this.state.value }
           onChanged={ this._onChanged }
           onGetErrorMessage={ this._validateNumber }
         />
