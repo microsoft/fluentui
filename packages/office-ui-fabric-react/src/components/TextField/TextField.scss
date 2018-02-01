@@ -33,6 +33,9 @@ $field-error-color: $errorTextColor;
   border-color: $field-border-focus-color;
   @include high-contrast {
     border-width: 2px;
+    .field {
+      @include ms-padding(0, 11px, 0, 11px);
+    }
   }
 }
 
