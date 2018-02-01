@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Converted ActivityItemExample to use mergeStyles instead of SCSS.",
+      "comment": "Converted ButtonBasicExample to use mergeStyles instead of SCSS.",
       "type": "patch"
     }
   ],
