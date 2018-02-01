@@ -198,19 +198,52 @@ export interface ISpinButtonProps extends React.Props<SpinButtonBase> {
 }
 
 export interface ISpinButtonStyleProps {
-  // todo: add comments for each fields
-  theme: ITheme;
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Whether or not the SpinButton is disabled.
+   */
   disabled?: boolean;
+
+  /**
+   * Whether focus is on the component
+   */
   isFocused?: boolean;
+
+  /**
+   * keyboard spin direction, used to style the up or down button
+   * as active when up/down arrow is pressed
+   */
   keyboardSpinDirection?: KeyboardSpinDirection;
+
+  /**
+   * @default: Left
+   */
   labelPosition?: Position;
+
+  /**
+   * Custom styles that are piped into the getStyles funtion
+   */
   customStyles?: Partial<ISpinButtonStyles>;
 }
 
 export interface ISpinButtonArrowStyleProps {
-  // todo: add comments for each fields
+  /**
+   * Theme provided by HOC.
+   */
   theme: ITheme;
+
+  /**
+   * Custom styles for the up arrow button that are piped into the getStyles funtion
+   */
   upArrowButtonStyles?: Partial<IButtonStyles>;
+
+  /**
+   * Custom styles for the down arrow button that are piped into the getStyles funtion
+   */
   downArrowButtonStyles?: Partial<IButtonStyles>;
 }
 
