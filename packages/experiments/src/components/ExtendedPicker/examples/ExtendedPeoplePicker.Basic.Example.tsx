@@ -7,14 +7,14 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { ExtendedPeoplePicker } from '../PeoplePicker/ExtendedPeoplePicker';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps, IExtendedPersonaProps, ISelectedPeopleProps, SelectedPeopleList }
+import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, ISelectedPersonaProps }
   from '../../SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
@@ -36,7 +36,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 // tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
-  private floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  private floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private selectedItemsListProps: ISelectedPeopleProps;
 
   constructor(props: {}) {
@@ -55,7 +55,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     };
 
     this.floatingPickerProps = {
-      suggestionsController: new SuggestionsController<IExtendedPersonaProps>(),
+      suggestionsController: new SuggestionsController<IPersonaProps>(),
       onResolveSuggestions: this._onFilterChanged,
       getTextFromItem: this._getTextFromItem,
       pickerSuggestionsProps: suggestionProps,
@@ -109,11 +109,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return <div>TO:</div>;
   }
 
-  private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IExtendedPersonaProps>): JSX.Element {
+  private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
     return (<FloatingPeoplePicker {...props} />);
   }
 
-  private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
+  private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<ISelectedPersonaProps>): JSX.Element {
     return (<SelectedPeopleList {...props} />);
   }
 
@@ -130,7 +130,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _onExpandItem(item: IExtendedPersonaProps): void {
+  private _onExpandItem(item: ISelectedPersonaProps): void {
     // tslint:disable-next-line:no-any
     (this._picker.selectedItemsList as SelectedPeopleList).onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
@@ -172,9 +172,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return mostRecentlyUsed;
   }
 
-  private _onCopyItems(items: IExtendedPersonaProps[]): string {
+  private _onCopyItems(items: ISelectedPersonaProps[]): string {
     let copyText = '';
-    items.forEach((item: IExtendedPersonaProps, index: number) => {
+    items.forEach((item: ISelectedPersonaProps, index: number) => {
       copyText += item.primaryText;
 
       if (index < items.length - 1) {
@@ -209,17 +209,17 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _validateInput(input: string): ValidationState {
+  private _validateInput(input: string): boolean {
     if (input.indexOf('@') !== -1) {
-      return ValidationState.valid;
+      return true;
     } else if (input.length > 1) {
-      return ValidationState.warning;
+      return false;
     } else {
-      return ValidationState.invalid;
+      return false;
     }
   }
 
-  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
+  private _getExpandedGroupItems(item: ISelectedPersonaProps): ISelectedPersonaProps[] {
     switch (item.primaryText) {
       case 'Group One':
         return groupOne;

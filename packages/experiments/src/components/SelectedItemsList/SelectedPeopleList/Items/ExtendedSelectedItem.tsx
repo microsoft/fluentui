@@ -2,9 +2,8 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
-import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
-import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { ISelectedPeopleItemProps, ISelectedPersonaProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import * as stylesImport from './ExtendedSelectedItem.scss';
@@ -40,7 +39,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-          { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
+          { ['is-invalid ' + styles.validationError]: !item.isValid }
         ) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
@@ -62,11 +61,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
             className={ css('ms-PickerItem-content', styles.itemContent) }
             id={ 'selectedItemPersona-' + itemId }
           >
-            <Persona
-              { ...item }
-              presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
-              size={ PersonaSize.size28 }
-            />
+            { this.renderPersonaElement(item) }
           </div>
           <IconButton
             onClick={ this.onClickIconButton(onRemoveItem) }
@@ -86,6 +81,15 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           : null
         }
       </div >);
+  }
+
+  private renderPersonaElement(item: ISelectedPersonaProps): JSX.Element {
+    return this.props.personaElement
+      ? this.props.personaElement
+      : <Persona
+        { ...item }
+        size={ PersonaSize.size32 }
+      />;
   }
 
   private onClickIconButton = (action: (() => void) | undefined): () => void => {

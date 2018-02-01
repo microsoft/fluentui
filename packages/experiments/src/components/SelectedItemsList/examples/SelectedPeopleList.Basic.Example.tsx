@@ -8,7 +8,7 @@ import {
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { ISelectedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
@@ -62,7 +62,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   }
 
   @autobind
-  private _onExpandItem(item: IExtendedPersonaProps): void {
+  private _onExpandItem(item: ISelectedPersonaProps): void {
     // tslint:disable-next-line:no-any
     this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
@@ -71,9 +71,9 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     this.forceUpdate();
   }
 
-  private _onCopyItems(items: IExtendedPersonaProps[]): string {
+  private _onCopyItems(items: ISelectedPersonaProps[]): string {
     let copyText = '';
-    items.forEach((item: IExtendedPersonaProps, index: number) => {
+    items.forEach((item: ISelectedPersonaProps, index: number) => {
       copyText += item.primaryText;
 
       if (index < items.length - 1) {
@@ -84,7 +84,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     return copyText;
   }
 
-  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
+  private _getExpandedGroupItems(item: ISelectedPersonaProps): ISelectedPersonaProps[] {
     switch (item.primaryText) {
       case 'Group One':
         return groupOne;

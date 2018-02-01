@@ -5,24 +5,38 @@
   border-radius: 15px;
   display: inline-flex;
   align-items: center;
-  background: $ms-color-neutralLighter;
+  background: $ms-color-themeLighterAlt;
+  color: $ms-color-themeDark;
   margin: 4px;
   cursor: default;
   user-select: none;
-  max-width: 300px;
   vertical-align: middle;
   position: relative;
+  @include ms-font-m;
 
-  &:hover {
-    background: $ms-color-neutralLight;
+  .actionButton {
+    @include ms-font-m;
 
-    .removeButton {
-      color: $ms-color-neutralPrimary;
+    &:hover {
+      background: $ms-color-themeLight;
+    }
+
+    :global(.ms-Button-icon) {
+      color: $ms-color-themeDark;
+
+      @include high-contrast {
+        color: HighlightText;
+      }
     }
   }
 
+  &:hover {
+    background: $ms-color-themeLighter;
+
+  }
+
   &.personaContainerIsSelected {
-    background: $ms-color-blue;
+    background: $ms-color-themePrimary;
 
     // Setting global values here to override persona's normal behavior specifically in this selected variation
     :global(.ms-Persona-primaryText) {
@@ -34,8 +48,10 @@
     }
 
     .actionButton {
+      @include ms-font-m;
+
       :global(.ms-Button-icon) {
-        color: $ms-color-white;
+        color: $ms-color-themeDark;
 
         @include high-contrast {
           color: HighlightText;
@@ -43,8 +59,7 @@
       }
 
       &:hover {
-        color: $ms-color-white;
-        background: $ms-color-themeDark;
+        background: $ms-color-themeLight;
       }
     }
 
@@ -58,25 +73,11 @@
   &.validationError {
     // Setting global values here to override persona's normal behavior in the error version
     :global(.ms-Persona-primaryText) {
-      color: $ms-color-redDark;
-      border-bottom: 2px dotted $ms-color-redDark;
+      color: $ms-color-red;
     }
 
     :global(.ms-Persona-initials) {
       font-size: 20px;
-    }
-
-    &.personaContainerIsSelected {
-      background: $ms-color-redDark;
-
-      :global(.ms-Persona-primaryText) {
-        color: $ms-color-white;
-        border-bottom: 2px dotted $ms-color-white;
-      }
-
-      .removeButton:hover {
-        background: $ms-color-red;
-      }
     }
   }
 
@@ -91,19 +92,18 @@
     /** CSS below is needed for IE 11 to properly truncate long persona names in the picker **/
     max-width: 100%;
     overflow-x: hidden;
+
+    :global(.ms-persona-details) {
+      padding: 0px 8px;
+    }
   }
 
   .removeButton {
     border-radius: 15px;
     flex: 0 0 auto;
-    width: 28px;
-    height: 28px;
-    flex-basis: 28px;
-
-    &:hover {
-      background: $ms-color-neutralTertiaryAlt;
-      color: $ms-color-neutralDark;
-    }
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
   }
 
   .expandButton {
@@ -115,8 +115,7 @@
     margin-right: -8px;
 
     &:hover {
-      background: $ms-color-neutralTertiaryAlt;
-      color: $ms-color-neutralDark;
+      background: $ms-color-themeLight;
     }
   }
 
