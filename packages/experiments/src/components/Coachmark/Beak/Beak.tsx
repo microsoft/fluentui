@@ -3,50 +3,45 @@ import {
   BaseComponent,
   css,
   classNamesFunction
-} from '../../Utilities';
+} from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles, IBeakStylesProps } from './Beak.styles';
-import { DefaultPalette } from '../../Styling';
+import { DefaultPalette } from '../../../Styling';
 
 export interface IBeakState { }
 
 export class Beak extends BaseComponent<IBeakProps, IBeakState> {
   private _canvasElement: HTMLCanvasElement;
 
-  public static defaultProps = {
-    beakHeight: 18,
-    beakWidth: 18
-  }
-
   constructor(props: IBeakProps) {
     super(props);
   }
 
-  public componentDidMount() {
-    this._createTriangle(this._canvasElement, DefaultPalette.themePrimary);
+  public componentDidMount(): void {
+    this._createCanvasTriangle(this._canvasElement, DefaultPalette.themePrimary);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
     const classNames = getClassNames(getStyles);
     const {
-      beakHeight,
-      beakWidth
+      beakHeight = 18,
+      beakWidth = 18
     } = this.props;
 
     return (
-      <div className={ css("ms-Beak", classNames.root) }>
+      <div className={ css('ms-Beak', classNames.root) }>
         <canvas
           ref={ this._resolveRef('_canvasElement') }
-          className={ css("ms-Beak-canvas", classNames.canvas) }
-          width={ beakWidth + "px" }
-          height={ beakHeight + "px" }
-        ></canvas>
+          className={ css('ms-Beak-canvas', classNames.canvas) }
+          width={ beakWidth + 'px' }
+          height={ beakHeight + 'px' }
+        />
       </div>
     );
   }
 
-  private _createTriangle(canvasElement: HTMLCanvasElement, backgroundColor: string): void {
+  private _createCanvasTriangle(canvasElement: HTMLCanvasElement, backgroundColor: string): void {
     const ctx = canvasElement.getContext('2d')!;
     ctx.beginPath();
     ctx.moveTo(this.props.beakWidth! / 2, 0); // Top point
@@ -55,4 +50,4 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
     ctx.fillStyle = backgroundColor;
     ctx.fill();
   }
-};
+}

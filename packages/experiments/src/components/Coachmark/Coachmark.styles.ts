@@ -320,7 +320,8 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     rotateAnimationLayer: [
       {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        opacity: '0.8'
       },
       props.collapsed && {
         animationDuration: '14s',
@@ -340,7 +341,6 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         overflow: 'hidden',
         backgroundColor: themePrimary,
         borderRadius: coachmarkCollapsedSize,
-        opacity: '0.8',
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },

@@ -4,7 +4,7 @@ import { BaseComponent, classNamesFunction } from '../../Utilities';
 
 // Component Dependencies
 import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
-import { Beak } from '../Beak/Beak';
+import { Beak } from './Beak/Beak';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
@@ -54,8 +54,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public static defaultProps: Partial<ICoachmarkTypes> = {
     collapsed: true,
     mouseProximityOffset: 100,
-    beakWidth: 18,
-    beakHeight: 10
+    beakWidth: 26,
+    beakHeight: 12
   };
 
   /**
@@ -64,6 +64,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
+  private _entityHost: HTMLElement;
 
   constructor(props: ICoachmarkTypes) {
     super();
@@ -77,7 +78,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         width: 0,
         height: 0
       },
-      isMouseInProximity: true
+      isMouseInProximity: false
     };
   }
 
@@ -100,7 +101,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     return (
       <PositioningContainer
         target={ target }
-        offsetFromTarget={ beakWidth }
+        offsetFromTarget={ beakHeight }
       >
         <div
           className={ classNames.root }
@@ -119,7 +120,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                 ref={ this._resolveRef('_rotateAnimationContainer') }
               >
                 <Beak
-                  target={ target! }
+                  target={ this._entityHost }
                   beakWidth={ beakWidth }
                   beakHeight={ beakHeight }
                 />
@@ -229,7 +230,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         this.setState({
-          isMouseInProximity: isMouseInProximity
+          collapsed: !isMouseInProximity
         });
       }
     });

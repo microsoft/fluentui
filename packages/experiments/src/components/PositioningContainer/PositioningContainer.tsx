@@ -39,7 +39,7 @@ export interface IPositionInfo {
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
 // In order for some of the max height logic to work
-// properly we need to set the border needs to be set.
+// properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
 
@@ -184,7 +184,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
           ref={ this._resolveRef('_contentHost') }
         >
           { children }
-          { // @TODO apply  to the content container
+          { // @TODO apply to the content container
             contentMaxHeight
           }
         </div>
@@ -317,11 +317,14 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
-    // If the max height is undefined.
     if (!this._maxHeight) {
-      // if the directional hint is fixed and our target Exists
       if (this.props.directionalHintFixed && this._target) {
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, this.props.offsetFromTarget, this._getBounds());
+        let beakWidth = 16;
+        let gapSpace = this.props.offsetFromTarget ? this.props.offsetFromTarget : 0;
+        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
+        // overlap with the target.
+        const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
+        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }

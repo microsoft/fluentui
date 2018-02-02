@@ -36,4 +36,5 @@ export * from './rtl';
 export * from './scroll';
 export * from './string';
 export * from './styled';
+export * from './Triangle';
 export * from './warn';
