@@ -51,6 +51,9 @@ export interface ISpinButtonProps {
 
   /**
    * The difference between the two adjacent values of the SpinButton.
+   * This value is sued to calculate the precision of the input if no
+   * precision is given. The precision calculated this way will always
+   * be >= 0.
    * @default 1
    */
   step?: number;
@@ -165,6 +168,13 @@ export interface ISpinButtonProps {
    * Accessibility label text for the decrement button for the benefit of the screen reader.
    */
   decrementButtonAriaLabel?: string;
+
+  /**
+   * To how many decimal places the value should be rounded to.
+   * The default value is calculated based on the precision of step.
+   * IE: if step = 1, precision = 0. step = 0.0089, precision = 4. step = 300, precision = 2. step = 23.00, precision = 2.
+   */
+  precision?: number;
 }
 
 export interface ISpinButtonStyles {
