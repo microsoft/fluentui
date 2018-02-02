@@ -8,3 +8,14 @@ export const normalize: IRawStyle = {
   padding: 0,
   boxSizing: 'border-box'
 };
+
+/**
+ * Prevents user selection of text elements.
+ * @param value The value of userSelect
+ */
+export const setUserSelect = (value: 'initial' | 'inherit' | 'unset' |
+  'none' | 'auto' | 'text' | 'all' | 'contain' | undefined): IRawStyle => {
+  return {
+    userSelect: value
+  };
+};
