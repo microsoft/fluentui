@@ -1,11 +1,11 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import {
   concatStyleSets,
-  setUserSelect,
   getTheme,
+  HighContrastSelector,
   ITheme,
   IStyle,
-  HighContrastSelector
+  setUserSelect,
 } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 
@@ -16,10 +16,13 @@ export const getStyles = (
 ): ICheckStyles => {
   const {
     checkBoxHeight = DEFAULT_CHECKBOX_HEIGHT,
-    theme = getTheme()
+    theme,
+    checked
   } = props;
+
   const { palette, semanticColors } = theme;
-  const _circle_check: IStyle = {
+
+  const _sharedCircleCheck: IStyle = {
     fontSize: checkBoxHeight,
     position: 'absolute',
     left: 0,
@@ -53,42 +56,24 @@ export const getStyles = (
             background: semanticColors.bodyBackground,
           },
 
-          rootIsChecked: {
+          /**
+           * TODO: Come back to this once .checkHost has been
+           * converted to mergeStyles
+           */
+          '.checkHost:hover &, .checkHost:focus &, &:hover, &:focus': {
+            opacity: 1
+          }
+        }
+      },
+
+      checked && {
+        selectors: {
+          ':before': {
+            background: palette.themePrimary,
+            opacity: 1,
             selectors: {
-              ':before': {
-                background: palette.themePrimary,
-                opacity: 1,
-                selectors: {
-                  [HighContrastSelector]: {
-                    background: 'Window'
-                  }
-                }
-              }
-            }
-          },
-          check: {
-            opacity: 0
-          },
-          checkHost: {
-            selectors: {
-              ':hover &': {
-                opacity: 1
-              },
-              ':focus &': {
-                opacity: 1
-              },
-              ':hover': {
-                opacity: 1
-              },
-              ':focus': {
-                opacity: 1
-              },
-              rootIsChecked: {
-                selectors: {
-                  check: {
-                    opacity: 1
-                  }
-                }
+              [HighContrastSelector]: {
+                background: 'Window'
               }
             }
           }
@@ -96,47 +81,52 @@ export const getStyles = (
       }
     ],
 
-    circle: {
-      ..._circle_check,
-      color: palette.neutralTertiaryAlt,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'WindowText'
+    circle: [
+      _sharedCircleCheck,
+
+      {
+        color: palette.neutralTertiaryAlt,
+
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'WindowText'
+          }
         }
+      },
+
+      checked && {
+        color: palette.white
       }
-    },
+    ],
 
-    check: {
-      ..._circle_check,
-      color: palette.neutralTertiaryAlt,
-      fontSize: '16px',
-      left: '.5px',
+    check: [
+      _sharedCircleCheck,
 
-      selectors: {
-        [HighContrastSelector]: {
-          MsHighContrastAdjust: 'none'
+      {
+        opacity: 0,
+        color: palette.neutralTertiaryAlt,
+        fontSize: '16px',
+        left: '.5px',
+
+        selectors: {
+          [HighContrastSelector]: {
+            MsHighContrastAdjust: 'none'
+          }
         }
-      }
-    },
+      },
 
-    rootIsChecked: {
-      selectors: {
-        circle: {
-          color: palette.white
-        },
+      checked && {
+        opacity: 1,
+        color: palette.white,
+        fontWeight: 900,
 
-        check: {
-          color: palette.white,
-          fontWeight: 900,
-
-          selectors: {
-            [HighContrastSelector]: {
-              border: 'none',
-              color: 'WindowText'
-            }
+        selectors: {
+          [HighContrastSelector]: {
+            border: 'none',
+            color: 'WindowText'
           }
         }
       }
-    },
+    ],
   });
 };
