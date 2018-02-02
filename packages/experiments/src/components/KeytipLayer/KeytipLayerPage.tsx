@@ -6,6 +6,10 @@ import {
 } from '@uifabric/example-app-base';
 import { KeytipLayerBasicExample } from './examples/KeytipLayer.Basic.Example';
 
+const KeytipLayerBasicExampleCode = require(
+  '!raw-loader!experiments/src/components/KeytipLayer/examples/KeytipLayer.Basic.Example.tsx'
+) as string;
+
 export class KeytipLayerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -14,7 +18,7 @@ export class KeytipLayerPage extends React.Component<IComponentDemoPageProps, {}
         componentName='KeytipLayer'
         exampleCards={
           <div>
-            <ExampleCard title='KeytipLayer Basic'>
+            <ExampleCard title='KeytipLayerBasic Example' code={ KeytipLayerBasicExampleCode }>
               <KeytipLayerBasicExample />
             </ExampleCard>
           </div>

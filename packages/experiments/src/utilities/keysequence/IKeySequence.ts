@@ -1,5 +1,5 @@
 import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
-
+// REMOVE IKEYSEQUENCE FROM CORE PACKAGE FOR NOW????
 export interface IKeySequence {
   keyCodes: KeyCodes[];
 }
