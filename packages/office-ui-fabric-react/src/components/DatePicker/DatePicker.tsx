@@ -11,7 +11,7 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField } from '../../TextField';
-import { Label } from "../../Label";
+import { Label } from '../../Label';
 import {
   autobind,
   BaseComponent,
