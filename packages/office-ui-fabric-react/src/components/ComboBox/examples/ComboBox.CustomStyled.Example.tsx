@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {
-  ComboBox
+  ComboBox,
+  IComboBoxStyleProps,
+  IComboBoxStyles
 } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
 
@@ -56,13 +58,7 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
           allowFreeform={ true }
           autoComplete='on'
           options={ this._testOptionsWithCustomStyling }
-          styles={
-            {
-              container: {
-                maxWidth: '300px'
-              },
-            }
-          }
+          getStyles={ this.getStyles }
           comboBoxOptionStyles={
             {
               optionText: {
@@ -74,5 +70,15 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
 
       </div>
     );
+  }
+
+  private getStyles = (
+    props: IComboBoxStyleProps
+  ): Partial<IComboBoxStyles> => {
+    return {
+      container: {
+        maxWidth: '300px'
+      }
+    };
   }
 }
