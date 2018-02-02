@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.45.3",
+      "tag": "office-ui-fabric-react_v5.45.3",
+      "date": "Fri, 02 Feb 2018 11:24:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "78c61efde3fb8ba11d5124adca4934f823094747",
+            "comment": "Converted ActivityItemExample to use mergeStyles instead of SCSS"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.45.2",
       "tag": "office-ui-fabric-react_v5.45.2",
       "date": "Thu, 01 Feb 2018 11:23:17 GMT",

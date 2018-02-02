@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 01 Feb 2018 11:23:17 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Feb 2018 11:24:16 GMT and should not be manually modified.
+
+## 5.45.3
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Patches
+
+- Converted ActivityItemExample to use mergeStyles instead of SCSS
 
 ## 5.45.2
 Thu, 01 Feb 2018 11:23:17 GMT
