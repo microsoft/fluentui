@@ -225,7 +225,7 @@ export const getStyles = memoizeFunction((
         top: '-2px'
       }
     }
-  }
+  };
 
   const styles: IComboBoxStyles = {
     container: {},
