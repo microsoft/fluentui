@@ -39,7 +39,7 @@ export interface IPositionInfo {
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
 // In order for some of the max height logic to work
-// properly we need to set the border needs to be set.
+// properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
 
