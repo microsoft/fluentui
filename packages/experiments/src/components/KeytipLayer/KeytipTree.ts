@@ -1,4 +1,10 @@
-import { IKeySequence, keySequencesContain, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import {
+  IKeySequence,
+  keySequencesContain,
+  keySequencesAreEqual,
+  keySequenceStartsWith,
+  convertSequencesToKeytipID
+} from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 
 export interface IKeytipTreeNode {
@@ -6,7 +12,7 @@ export interface IKeytipTreeNode {
   id: string;
 
   // KeySequence that invokes this KeytipTreeNode's onExecute function
-  keytipSequence?: IKeySequence;
+  keytipSequence: IKeySequence;
 
   // Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps
   onExecute?: () => void;
@@ -18,7 +24,7 @@ export interface IKeytipTreeNode {
   children: string[];
 
   // Parent keytip
-  parent?: string;
+  parent: string;
 
   // TODO: may need to know if keytip is disabled, if so shouldn't change visibility when start of sequence is pressed
   // TODO: visible/hidden
@@ -30,6 +36,7 @@ export interface IKeytipTreeNodeMap {
 
 export class KeytipTree {
   public currentKeytip?: IKeytipTreeNode;
+  public currentSequence: IKeySequence;
   public root: IKeytipTreeNode;
   public nodeMap: IKeytipTreeNodeMap = {};
 
@@ -50,9 +57,12 @@ export class KeytipTree {
 
     // Root has no keytipSequences, we instead check _enableSequences to handle multiple entry points
     this.root = {
-      id: this._manager.getLayer().props.id,
-      children: []
+      id: this._manager.getLayerId(),
+      children: [],
+      parent: '',
+      keytipSequence: { keyCodes: [] }
     };
+    this.currentSequence = { keyCodes: [] };
     this.nodeMap[this.root.id] = this.root;
   }
 
@@ -73,14 +83,14 @@ export class KeytipTree {
     if (node) {
       // If node exists, it was added when one of its children was added
       // Update keytipSequence, onExecute, parent
-      node.keytipSequence = keytipSequence;
+      node.keytipSequence = keytipSequence!;
       node.onExecute = onExecute;
       node.parent = parentID;
     } else {
       // If node doesn't exist, add node
       node = {
         id: nodeID,
-        keytipSequence: keytipSequence,
+        keytipSequence: keytipSequence!,
         onExecute: onExecute,
         children: [],
         parent: parentID
@@ -93,7 +103,9 @@ export class KeytipTree {
       // If parent doesn't exist, create parent with ID and children only
       parent = {
         id: parentID,
-        children: []
+        children: [],
+        keytipSequence: { keyCodes: [] },
+        parent: ''
       };
       this.nodeMap[parentID] = parent;
     }
@@ -106,27 +118,34 @@ export class KeytipTree {
    * @param keySequence - Keys pressed by the user
    */
   public processInput(keySequence: IKeySequence): void {
+    let currentSequence = { keyCodes: [...this.currentSequence.keyCodes, ...keySequence.keyCodes] };
+
     // If key sequence is in 'exit sequences', exit keytip mode
     //    Trigger layer's onExit callback
-    if (keySequencesContain(this._exitSequences, keySequence)) {
+    if (keySequencesContain(this._exitSequences, currentSequence) && this.currentKeytip) {
       this.currentKeytip = undefined;
-      this._manager.getLayer().exitKeytipMode();
+      this._manager.hideKeytips();
+      this._manager.exitKeytipMode();
       return;
     }
     // If key sequence is in 'go back sequences', move currentKeytip to parent (or if currentKeytip is the root, exit)
     //    Trigger node's onGoBackExecute
     //    Hide all keytips currently showing
     //    Show all keytips of children of currentKeytip
-    if (keySequencesContain(this._goBackSequences, keySequence)) {
+    if (keySequencesContain(this._goBackSequences, currentSequence)) {
       if (this.currentKeytip) {
         if (this.currentKeytip.id === this.root.id) {
           // We are at the root, exit keytip mode
           this.currentKeytip = undefined;
-          this._manager.getLayer().exitKeytipMode();
-          return;
+          this._manager.exitKeytipMode();
         } else {
           this.currentKeytip = this.nodeMap[this.currentKeytip.parent!];
-          // TODO:
+          if (this.currentKeytip.onGoBack) {
+            this.currentKeytip.onGoBack();
+          }
+
+          this._manager.hideKeytips(); // HIDE ALL
+          this._manager.showKeytips(this.currentKeytip.children);
         }
       }
       return;
@@ -135,11 +154,42 @@ export class KeytipTree {
     // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
     //    Show children of root
     //    Trigger layer's onEnter callback
-    if (keySequencesContain(this._enableSequences, keySequence) && !!this.currentKeytip) {
+    if (keySequencesContain(this._enableSequences, currentSequence) && !this.currentKeytip) {
       this.currentKeytip = this.root;
+      this._manager.showKeytips(this.currentKeytip.children);
+      this._manager.enterKeytipMode();
     }
 
-    // If currentKeytip is a non-root node, look at all children of currentKeytip
+    if (this.currentKeytip) {
+      let node = this._getExactMatchedNode(currentSequence, this.currentKeytip);
+      if (node) { // we found a matching node
+        this.currentKeytip = node;
+        if (this.currentKeytip.onExecute) {
+          this.currentKeytip.onExecute();
+        }
+        this._manager.hideKeytips();
+        if (this.currentKeytip.children.length === 0) {
+          this.currentKeytip = undefined;
+          this._manager.exitKeytipMode();
+          // TODO: WE NEED TO CHECK IF THIS IS REALLY A LEAF OR NOT
+        } else {
+          this._manager.showKeytips(this.currentKeytip.children);
+        }
+        this.currentSequence = { keyCodes: [] };
+        return;
+      }
+
+      let partialNodes = this._getPartialMatchedNodes(currentSequence, this.currentKeytip);
+      if (partialNodes.length > 0) {
+        // we found partial nodes, so we show only those.
+        this._manager.hideKeytips();
+        let ids = partialNodes.map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
+        this._manager.showKeytips(ids); // show only keytips that were partially matched
+        this.currentSequence = currentSequence;
+      }
+    }
+
+    // If currentKeytip is a node, look at all children of currentKeytip
     //    If the sequence exactly matches one of the children
     //      Trigger node's onExecute
     //      ** TODO: we would have to do the below after the DOM has finished rendering to know for sure if node was a leaf (e.g. menu) **
@@ -162,5 +212,34 @@ export class KeytipTree {
      * When we match a whole keytip, we clear currentSequence
      */
 
+  }
+
+  private _getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
+    let possibleNodes = this._getChildrenNodes(currentKeytip.children);
+    for (let node of possibleNodes) {
+      if (keySequencesAreEqual(node.keytipSequence, keySequence)) {
+        return node;
+      }
+    }
+    return undefined;
+  }
+
+  private _getPartialMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
+    let nodes: IKeytipTreeNode[] = [];
+    let possibleNodes = this._getChildrenNodes(currentKeytip.children);
+    for (let node of possibleNodes) {
+      if (keySequenceStartsWith(node.keytipSequence, keySequence)) {
+        nodes.push(node);
+      }
+    }
+    return nodes;
+  }
+
+  private _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
+    let nodes: IKeytipTreeNode[] = [];
+    for (let id of ids) {
+      nodes.push(this.nodeMap[id]);
+    }
+    return nodes;
   }
 }

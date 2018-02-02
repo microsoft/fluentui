@@ -1,6 +1,6 @@
 import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { ktpPrefix, ktpSeparator } from '../keytip/KeytipUtils';
-// REMOVE IKEYSEQUENCE FROM CORE PACKAGE FOR NOW????
+
 export interface IKeySequence {
   keyCodes: KeyCodes[];
 }
@@ -36,6 +36,24 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
     }
   }
   return false;
+}
+
+/**
+ *
+ * @param sequences
+ * @param seq
+ */
+export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): boolean {
+  let keyCodes1 = seq1.keyCodes;
+  let keyCodes2 = seq2.keyCodes;
+  let minLength = Math.min(keyCodes1.length, keyCodes2.length);
+
+  for (let i = 0; i < minLength; i++) {
+    if (keyCodes1[i] !== keyCodes2[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**

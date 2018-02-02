@@ -124,7 +124,7 @@ describe('KeytipTree', () => {
     expect(keytipNodeC).toBeDefined();
 
     // Test C has no parent
-    expect(keytipNodeC.parent).toBeUndefined();
+    expect(keytipNodeC.parent).toBeFalsy();
 
     // Test C has B as its child
     expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);

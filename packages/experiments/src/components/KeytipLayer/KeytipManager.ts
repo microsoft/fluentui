@@ -11,10 +11,23 @@ export class KeytipManager {
   private _layer: KeytipLayer;
 
   /**
-   * Static function to get singleton KeytipManager instance
-   */
+ * Static function to get singleton KeytipManager instance
+ */
   public static getInstance(): KeytipManager {
     return this._instance;
+  }
+
+  /**
+   * Sets the _layer property and creates a KeytipTree
+   * Should be called from the KeytipLayer constructor
+   * @param layer - KeytipLayer object
+   */
+  public init(layer: KeytipLayer): void {
+    this._layer = layer;
+    // Create the KeytipTree
+    this.keytipTree = new KeytipTree(this._layer.props.keytipStartSequences!,
+      this._layer.props.keytipExitSequences!,
+      this._layer.props.keytipGoBackSequences!);
   }
 
   /**
@@ -45,24 +58,24 @@ export class KeytipManager {
     this._layer && this._layer.registerKeytip(keytipProps);
   }
 
-  /**
-   * Getter for _layer
-   */
-  public getLayer(): KeytipLayer {
-    return this._layer;
+  public showKeytips(ids?: string[]): void {
+    // TODO
   }
 
-  /**
-   * Sets the _layer property and creates a KeytipTree
-   * Should be called from the KeytipLayer constructor
-   * @param layer - KeytipLayer object
-   */
-  public setLayer(layer: KeytipLayer): void {
-    this._layer = layer;
-    // Create the KeytipTree
-    this.keytipTree = new KeytipTree(this._layer.props.keytipStartSequences!,
-      this._layer.props.keytipExitSequences!,
-      this._layer.props.keytipGoBackSequences!);
+  public hideKeytips(ids?: string[]): void {
+    // TODO
+  }
+
+  public getLayerId(): string {
+    return this._layer.props.id;
+  }
+
+  public exitKeytipMode(): void {
+    this._layer.exitKeytipMode();
+  }
+
+  public enterKeytipMode(): void {
+    this._layer.enterKeytipMode();
   }
 
 }

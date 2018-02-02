@@ -54,7 +54,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       keytips: []
     };
 
-    this._keytipManager.setLayer(this);
+    this._keytipManager.init(this);
   }
 
   public addKeytip(keytipProps: IKeytipProps): {} {
@@ -105,6 +105,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     if (this.props.onEnterKeytipMode) {
       this.props.onEnterKeytipMode();
     }
+    // TODO
   }
 
   @autobind
