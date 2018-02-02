@@ -14,7 +14,11 @@ export interface IKeytipLayerState {
   keytips: IKeytipProps[];
 }
 
-const defaultSequence = {
+const defaultStartSequence = {
+  keyCodes: [KeyCodes.alt, KeyCodes.leftWindow]
+} as IKeySequence;
+
+const defaultExitSequence = {
   keyCodes: [KeyCodes.alt, KeyCodes.leftWindow]
 } as IKeySequence;
 
@@ -33,12 +37,13 @@ const ktpId = 'ktp';
  */
 export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {
-    keytipStartSequences: [defaultSequence],
+    keytipStartSequences: [defaultStartSequence],
+    keytipExitSequences: [defaultExitSequence],
+    keytipGoBackSequences: [defaultGoBackSequence],
     id: ktpId + '-' + KeyCodes.alt + '-' + KeyCodes.leftWindow
   };
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
-  private _keyString: IKeySequence;
 
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
@@ -52,7 +57,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._keytipManager.setLayer(this);
   }
 
-  public addKeytip(keytipProps: IKeytipProps) {
+  public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
       // TODO: check for duplicates
       let currentKeytips = [...previousState.keytips, ...[keytipProps]];
@@ -60,7 +65,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     };
   }
 
-  public registerKeytip(keytipProps: IKeytipProps) {
+  public registerKeytip(keytipProps: IKeytipProps): void {
     this.setState(this.addKeytip(keytipProps));
   }
 
@@ -82,23 +87,30 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._events.on(window, 'mousedown', this._onDismiss);
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown);
     this._events.on(window, 'keypress', this._onKeyPress);
   }
 
+  public exitKeytipMode(): void {
+    if (this.props.onExitKeytipMode) {
+      this.props.onExitKeytipMode();
+    }
+    this.setState({ keytips: [], inKeytipMode: false });
+  }
+
   @autobind
-  private _onDismiss(ev?: React.MouseEvent<HTMLElement>) {
+  private _onDismiss(ev?: React.MouseEvent<HTMLElement>): void {
     // if we are in keytip mode.. then exit keytip mode
     if (this.state.inKeytipMode) {
-      this._exitKeytipMode();
+      this.exitKeytipMode();
     }
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     switch (ev.which) {
       case KeyCodes.escape: {
         // exit current layer
@@ -107,20 +119,13 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       case KeyCodes.tab:
       case KeyCodes.enter:
       case KeyCodes.space:
-        this._exitKeytipMode();
+        this.exitKeytipMode();
         break;
     }
   }
 
   @autobind
-  private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>) {
-    let handled = false;
-
+  private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
     // call processInput
-  }
-
-  private _exitKeytipMode() {
-    // TODO should we close menus if opened???
-    this.setState({ keytips: [], inKeytipMode: false });
   }
 }

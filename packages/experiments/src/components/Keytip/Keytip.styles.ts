@@ -30,7 +30,6 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
 };
 
 export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
-  const { theme } = props;
   return {
     container: [
     ],

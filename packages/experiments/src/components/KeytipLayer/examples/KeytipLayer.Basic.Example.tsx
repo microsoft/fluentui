@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { KeytipLayer } from '../KeytipLayer';
 
 export interface IKeytipLayerBasicExampleState {
 }
@@ -12,6 +11,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
   public render(): JSX.Element {
 
+    /*
     const keytipProps = [
       {
         content: 'hello',
@@ -22,6 +22,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
         calloutProps: { target: '#testing-456' }
       }
     ];
+    */
 
     // <KeytipLayer id={ 'basic-keytip-layer' } keytips={ keytipProps } />
     return (

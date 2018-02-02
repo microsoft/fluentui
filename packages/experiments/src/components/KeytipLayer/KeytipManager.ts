@@ -1,20 +1,20 @@
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
-import { IKeySequence, KeyCodes } from '../../Utilities';
+import { IKeySequence } from '../../Utilities';
 
 export class KeytipManager {
-  private static _instance = new KeytipManager();
+  private static _instance: KeytipManager = new KeytipManager();
 
   public keytipTree: KeytipTree;
 
   private _layer: KeytipLayer;
-  private _ktpId = 'ktp';
+  private _ktpId: string = 'ktp';
 
   /**
    * Static function to get singleton KeytipManager instance
    */
-  public static getInstance() {
+  public static getInstance(): KeytipManager {
     return this._instance;
   }
 
@@ -54,7 +54,7 @@ export class KeytipManager {
    * Registers a keytip in _layer
    * @param keytipProps - Keytip to register
    */
-  public registerKeytip(keytipProps: IKeytipProps) {
+  public registerKeytip(keytipProps: IKeytipProps): void {
     // Set the 'keytips' property in _layer
     this._layer && this._layer.registerKeytip(keytipProps);
   }
@@ -62,7 +62,7 @@ export class KeytipManager {
   /**
    * Getter for _layer
    */
-  public getLayer() {
+  public getLayer(): KeytipLayer {
     return this._layer;
   }
 
@@ -71,9 +71,9 @@ export class KeytipManager {
    * Should be called from the KeytipLayer constructor
    * @param layer - KeytipLayer object
    */
-  public setLayer(layer: KeytipLayer) {
+  public setLayer(layer: KeytipLayer): void {
     this._layer = layer;
-    this.keytipTree = new KeytipTree(this._layer.props.keytipStartSequences);
+    this.keytipTree = new KeytipTree(this._layer.props.keytipStartSequences, this._layer.props.keytipExitSequences);
   }
 
 }

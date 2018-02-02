@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { Keytip } from '../../Keytip';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IPoint, IKeySequence, IStyleFunction } from '../../Utilities';
@@ -51,6 +49,14 @@ export interface IKeytipProps {
    * @memberof IKeytipProps
    */
   visible?: boolean;
+
+  /**
+   * Function to call when this keytip is activated
+   *
+   * @type {() => void}
+   * @memberof IKeytipProps
+   */
+  onExecute?: () => void;
 
   /**
    * Array of KeySequences which is the full key sequence to trigger this keytip

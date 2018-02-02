@@ -6,7 +6,6 @@ import {
 } from '../../Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { getTheme } from '../../Styling';
 import { getCalloutStyles } from './Keytip.styles';
 import { classNamesFunction } from '../../Utilities';
 
