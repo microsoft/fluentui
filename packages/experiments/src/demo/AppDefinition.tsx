@@ -10,12 +10,12 @@ export const AppDefinition: IAppDefinition = {
   examplePages: [
     {
       links: [
-        {
-          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
-          key: 'PositioningContainer',
-          name: 'PositioningContainer',
-          url: '#/examples/PositioningContainer'
-        },
+        // {
+        //   component: require<any>('../components/Beak/BeakPage').BeakPage,
+        //   key: 'Beak',
+        //   name: 'Beak',
+        //   url: '#/examples/beak'
+        // },
         {
           component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
           key: 'Coachmark',
@@ -51,6 +51,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
+          key: 'PositioningContainer',
+          name: 'PositioningContainer',
+          url: '#/examples/PositioningContainer'
         },
         {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,

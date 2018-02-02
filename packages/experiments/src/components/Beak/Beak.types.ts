@@ -13,12 +13,19 @@ export interface IBeakProps extends React.Props<Beak> {
   componentRef?: (component: IBeak) => void;
 
   /**
-   * Beak Width
+   * Beak width.
+   * @default 18
    */
   beakWidth?: number;
 
   /**
-   * Background color of the beak
+   * Beak height.
+   * @default 18
+   */
+  beakHeight?: number;
+
+  /**
+   * Background color of the beak.
    */
   backgroundColor?: string;
 
@@ -29,9 +36,7 @@ export interface IBeakProps extends React.Props<Beak> {
   isBeakVisible?: boolean;
 
   /**
-   * The target that the Callout should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
-   * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
+   * A reference to the target the beak will align to.
    */
-  target: HTMLElement | string | MouseEvent | IPoint | null;
+  targetComponentRef: HTMLElement;
 }
