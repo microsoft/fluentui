@@ -51,11 +51,12 @@ export interface ISpinButtonProps {
 
   /**
    * The difference between the two adjacent values of the SpinButton.
-   * A string can be entered to force precision to consider trailing zeros after a decimal
-   * For example, 2.00 gives a precision of 0 while the string literal "2.00" gives a precision of 2.
+   * This value is sued to calculate the precision of the input if no
+   * precision is given. The precision calculated this way will always
+   * be >= 0.
    * @default 1
    */
-  step?: number | string;
+  step?: number;
 
   /**
    * A description of the SpinButton for the benefit of screen readers.

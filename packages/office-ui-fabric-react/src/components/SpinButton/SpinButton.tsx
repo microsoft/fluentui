@@ -7,7 +7,9 @@ import {
   getId,
   KeyCodes,
   autobind,
-  customizable
+  customizable,
+  calculatePrecision,
+  precisionRound
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -45,40 +47,6 @@ export interface ISpinButtonState {
    * The calculated precision for the value.
    */
   precision: number;
-}
-
-/**
- *
- * @param value
- */
-export function calculatePrecision(value: number | string): number {
-  /**
-   * Group 1:
-   * [1-9]([0]+$) matches trailing zeros
-   * Group 2:
-   * \.([0-9]*) matches all digits after a decimal point.
-   */
-  const groups = /[1-9]([0]+$)|\.([0-9]*)/.exec(String(value));
-  if (!groups) {
-    return 0;
-  }
-  if (groups[1]) {
-    return -groups[1].length;
-  }
-  if (groups[2]) {
-    return groups[2].length;
-  }
-  return 0;
-}
-
-/**
- *
- * @param value The value that is being rounded.
- * @param precision The number of decimal places to round the number to
- */
-export function precisionRound(value: number, precision: number, base: number = 10): number {
-  const exp = Math.pow(base, precision);
-  return Math.round(value * exp) / exp;
 }
 
 @customizable('SpinButton', ['theme'])
@@ -119,11 +87,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     let value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
 
+    // Ensure that the autocalculated precision is not negative.
+    const precision = props.precision || Math.max(calculatePrecision(props.step || SpinButton.defaultProps.step!), 0);
+
     this.state = {
       isFocused: false,
       value: value,
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
-      precision: props.precision || calculatePrecision(props.step || SpinButton.defaultProps.step!)
+      precision
     };
 
     this._currentStepFunctionHandle = -1;
