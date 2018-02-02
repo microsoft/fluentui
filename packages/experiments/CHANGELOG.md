@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Feb 2018 11:24:16 GMT and should not be manually modified.
+
+## 5.17.0
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Minor changes
+
+- allow editing of selected items in selected people list
+
+### Patches
+
+- consume BlockedSite icon for malware detected signal
 
 ## 5.16.1
 Wed, 31 Jan 2018 11:11:59 GMT
