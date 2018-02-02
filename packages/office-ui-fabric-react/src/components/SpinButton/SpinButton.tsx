@@ -88,7 +88,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    const precision = props.precision || Math.max(calculatePrecision(props.step || SpinButton.defaultProps.step!), 0);
+    const precision = props.precision || Math.max(calculatePrecision(props.step!), 0);
 
     this.state = {
       isFocused: false,
