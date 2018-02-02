@@ -51,9 +51,11 @@ export interface ISpinButtonProps {
 
   /**
    * The difference between the two adjacent values of the SpinButton.
+   * A string can be entered to force precision to consider trailing zeros after a decimal
+   * For example, 2.00 gives a precision of 0 while the string literal "2.00" gives a precision of 2.
    * @default 1
    */
-  step?: number;
+  step?: number | string;
 
   /**
    * A description of the SpinButton for the benefit of screen readers.
@@ -165,6 +167,13 @@ export interface ISpinButtonProps {
    * Accessibility label text for the decrement button for the benefit of the screen reader.
    */
   decrementButtonAriaLabel?: string;
+
+  /**
+   * To how many decimal places the value should be rounded to.
+   * The default value is calculated based on the precision of step.
+   * IE: if step = 1, precision = 0. step = 0.0089, precision = 4. step = 300, precision = 2. step = 23.00, precision = 2.
+   */
+  precision?: number;
 }
 
 export interface ISpinButtonStyles {
