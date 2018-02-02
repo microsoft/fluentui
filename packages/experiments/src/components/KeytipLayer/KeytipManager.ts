@@ -3,13 +3,13 @@ import { KeytipTree } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
 import { IKeySequence } from '../../Utilities';
 
+const ktpId = 'ktp';
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
 
   public keytipTree: KeytipTree;
 
   private _layer: KeytipLayer;
-  private _ktpId: string = 'ktp';
 
   /**
    * Static function to get singleton KeytipManager instance
@@ -24,7 +24,7 @@ export class KeytipManager {
    * @param keySequences - Full path of IKeySequences for one keytip
    */
   public convertSequencesToID(keySequences: IKeySequence[]): string {
-    let id = this._ktpId;
+    let id = ktpId;
     for (let keySequence of keySequences) {
       id += '-' + keySequence.keyCodes.join('-');
     }
