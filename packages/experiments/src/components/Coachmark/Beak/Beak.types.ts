@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { Beak } from './Beak';
-import {
-  IPoint
-} from '../../Utilities';
 
 export interface IBeak { }
 
@@ -38,5 +35,5 @@ export interface IBeakProps extends React.Props<Beak> {
   /**
    * A reference to the target the beak will align to.
    */
-  targetComponentRef: HTMLElement;
+  target: HTMLElement;
 }

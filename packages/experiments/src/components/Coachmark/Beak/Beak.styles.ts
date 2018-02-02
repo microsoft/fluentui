@@ -1,4 +1,4 @@
-import { IStyle } from '../../Styling';
+import { IStyle } from '../../../Styling';
 
 export interface IBeakStylesProps { }
 
@@ -13,12 +13,16 @@ export interface IBeakStyles {
 export function getStyles(props: IBeakStylesProps): IBeakStyles {
   return {
     root: {
-      position: "absolute",
+      position: 'absolute',
       // backgroundColor: DefaultPalette.themePrimary,
-      boxShadow: "inherit",
-      border: "inherit",
-      boxSizing: "border-box"
+      boxShadow: 'inherit',
+      border: 'inherit',
+      boxSizing: 'border-box',
+      transform: 'translate(-50%, -75%)',
+      left: '50%'
     },
-    canvas: {}
-  }
-};
+    canvas: {
+      display: 'block'
+    }
+  };
+}

@@ -4,7 +4,7 @@ import { BaseComponent, classNamesFunction } from '../../Utilities';
 
 // Component Dependencies
 import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
-import { Beak } from '../Beak/Beak';
+import { Beak } from './Beak/Beak';
 
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
@@ -64,6 +64,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
+  private _entityHost: HTMLElement;
 
   constructor(props: ICoachmarkTypes) {
     super();
@@ -100,7 +101,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     return (
       <PositioningContainer
         target={ target }
-        offsetFromTarget={ beakWidth }
+        offsetFromTarget={ beakHeight }
       >
         <div
           className={ classNames.root }
@@ -119,7 +120,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                 ref={ this._resolveRef('_rotateAnimationContainer') }
               >
                 <Beak
-                  target={ target! }
+                  target={ this._entityHost }
                   beakWidth={ beakWidth }
                   beakHeight={ beakHeight }
                 />

@@ -184,7 +184,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
           ref={ this._resolveRef('_contentHost') }
         >
           { children }
-          { // @TODO apply  to the content container
+          { // @TODO apply to the content container
             contentMaxHeight
           }
         </div>
@@ -321,7 +321,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     if (!this._maxHeight) {
       // if the directional hint is fixed and our target Exists
       if (this.props.directionalHintFixed && this._target) {
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, this.props.offsetFromTarget, this._getBounds());
+        const totalGap = this.props.offsetFromTarget! + BORDER_WIDTH * 2;
+        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }
