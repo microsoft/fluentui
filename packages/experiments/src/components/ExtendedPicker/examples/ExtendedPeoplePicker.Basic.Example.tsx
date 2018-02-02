@@ -14,7 +14,7 @@ import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/
 import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
 import './ExtendedPeoplePicker.Basic.Example.scss';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, ISelectedPersonaProps }
+import { IBaseSelectedItemsListProps, ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps }
   from '../../SelectedItemsList';
 
 export interface IPeoplePickerExampleState {
@@ -113,7 +113,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return (<FloatingPeoplePicker {...props} />);
   }
 
-  private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<ISelectedPersonaProps>): JSX.Element {
+  private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
     return (<SelectedPeopleList {...props} />);
   }
 
@@ -130,7 +130,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _onExpandItem(item: ISelectedPersonaProps): void {
+  private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
     (this._picker.selectedItemsList as SelectedPeopleList).onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
@@ -172,9 +172,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     return mostRecentlyUsed;
   }
 
-  private _onCopyItems(items: ISelectedPersonaProps[]): string {
+  private _onCopyItems(items: IExtendedPersonaProps[]): string {
     let copyText = '';
-    items.forEach((item: ISelectedPersonaProps, index: number) => {
+    items.forEach((item: IExtendedPersonaProps, index: number) => {
       copyText += item.primaryText;
 
       if (index < items.length - 1) {
@@ -219,7 +219,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     }
   }
 
-  private _getExpandedGroupItems(item: ISelectedPersonaProps): ISelectedPersonaProps[] {
+  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
     switch (item.primaryText) {
       case 'Group One':
         return groupOne;

@@ -8,8 +8,11 @@ import {
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { ISelectedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
+import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
@@ -41,7 +44,31 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
         copyMenuItemText={ 'Copy' }
         removeMenuItemText={ 'Remove' }
         selection={ this.selection }
+        onRenderItem={ this._onRenderItem }
       />
+    );
+  }
+
+  @autobind
+  private _onRenderItem(props: ISelectedPeopleItemProps): JSX.Element {
+    return <ExtendedSelectedItem
+      {...props}
+      renderPrimaryText={ this._renderPersonaPrimaryTextElement }
+      renderPersonaCoin={ this._renderPersonaElement } />
+  }
+
+  private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
+    return (
+      <Icon
+        iconName={ 'Contact' }
+        style={ { fontSize: '14px', verticalAlign: '-webkit-baseline-middle' } }
+      />
+    );
+  }
+
+  private _renderPersonaPrimaryTextElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
+    return (
+      <div>HELLO</div>
     );
   }
 
@@ -62,7 +89,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   }
 
   @autobind
-  private _onExpandItem(item: ISelectedPersonaProps): void {
+  private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
     this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
   }
@@ -71,9 +98,9 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     this.forceUpdate();
   }
 
-  private _onCopyItems(items: ISelectedPersonaProps[]): string {
+  private _onCopyItems(items: IExtendedPersonaProps[]): string {
     let copyText = '';
-    items.forEach((item: ISelectedPersonaProps, index: number) => {
+    items.forEach((item: IExtendedPersonaProps, index: number) => {
       copyText += item.primaryText;
 
       if (index < items.length - 1) {
@@ -84,7 +111,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
     return copyText;
   }
 
-  private _getExpandedGroupItems(item: ISelectedPersonaProps): ISelectedPersonaProps[] {
+  private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {
     switch (item.primaryText) {
       case 'Group One':
         return groupOne;

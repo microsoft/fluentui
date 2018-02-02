@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { ISelectedPeopleItemProps, ISelectedPersonaProps } from '../SelectedPeopleList';
+import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import * as stylesImport from './ExtendedSelectedItem.scss';
@@ -61,7 +61,12 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
             className={ css('ms-PickerItem-content', styles.itemContent) }
             id={ 'selectedItemPersona-' + itemId }
           >
-            { this.renderPersonaElement(item) }
+            <Persona
+              { ...item }
+              onRenderCoin={ this.props.renderPersonaCoin }
+              onRenderPrimaryText={ this.props.renderPrimaryText }
+              size={ PersonaSize.size32 }
+            />
           </div>
           <IconButton
             onClick={ this.onClickIconButton(onRemoveItem) }
@@ -81,15 +86,6 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           : null
         }
       </div >);
-  }
-
-  private renderPersonaElement(item: ISelectedPersonaProps): JSX.Element {
-    return this.props.personaElement
-      ? this.props.personaElement
-      : <Persona
-        { ...item }
-        size={ PersonaSize.size32 }
-      />;
   }
 
   private onClickIconButton = (action: (() => void) | undefined): () => void => {

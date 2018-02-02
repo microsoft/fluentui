@@ -2,13 +2,13 @@
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
 
-import { ISelectedPersonaProps } from '../../../SelectedItemsList';
+import { IExtendedPersonaProps } from '../../../SelectedItemsList';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import './ExtendedPeoplePicker.scss';
 import { BaseExtendedPicker } from '../BaseExtendedPicker';
 import { IBaseExtendedPickerProps } from '../BaseExtendedPicker.types';
 
-export interface IPeoplePickerItemProps extends IPickerItemProps<ISelectedPersonaProps> {
+export interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
 }
 
 export interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {

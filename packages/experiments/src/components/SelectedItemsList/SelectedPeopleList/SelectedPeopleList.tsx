@@ -5,29 +5,30 @@ import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
-import { autobind } from '../../../Utilities';
+import { autobind, IRenderFunction } from '../../../Utilities';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 
-export interface ISelectedPersonaProps extends IPersonaProps {
+export interface IExtendedPersonaProps extends IPersonaProps {
   isValid: boolean;
   blockRecipientRemoval?: boolean;
   shouldBlockSelection?: boolean;
   canExpand?: boolean;
 }
 
-export interface ISelectedPeopleItemProps extends ISelectedItemProps<ISelectedPersonaProps> {
+export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps> {
   onExpandItem?: () => void;
   menuItems: IContextualMenuItem[];
-  personaElement?: JSX.Element;
+  renderPersonaCoin?: IRenderFunction<IPersonaProps>;
+  renderPrimaryText?: IRenderFunction<IPersonaProps>;
 }
 
-export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<ISelectedPersonaProps> {
-  onExpandGroup?: (item: ISelectedPersonaProps) => void;
+export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPersonaProps> {
+  onExpandGroup?: (item: IExtendedPersonaProps) => void;
   removeMenuItemText?: string;
   copyMenuItemText?: string;
 }
 
-export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<ISelectedPersonaProps, ISelectedPeopleProps> {
+export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {
 }
 
 /**
@@ -40,7 +41,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
-  public onExpandItem(itemToExpand: ISelectedPersonaProps, expandedItems: ISelectedPersonaProps[]): void {
+  public onExpandItem(itemToExpand: IExtendedPersonaProps, expandedItems: IExtendedPersonaProps[]): void {
     let { items } = this.state;
     let index: number = items.indexOf(itemToExpand);
     // tslint:disable-next-line:no-any
@@ -66,8 +67,8 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
-      onCopyItem: (itemToCopy: ISelectedPersonaProps) => this.copyItems([itemToCopy]),
-      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as (item: ISelectedPersonaProps) => void)(item) : undefined,
+      onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
+      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as (item: IExtendedPersonaProps) => void)(item) : undefined,
       menuItems: this._createMenuItems(item),
     }));
   }
@@ -80,7 +81,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         name: this.props.copyMenuItemText ? this.props.copyMenuItemText : 'Copy',
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
           if (this.props.onCopyItems) {
-            (this.copyItems as (items: ISelectedPersonaProps[]) => void)([menuItem.data] as ISelectedPersonaProps[]);
+            (this.copyItems as (items: IExtendedPersonaProps[]) => void)([menuItem.data] as IExtendedPersonaProps[]);
           }
         },
         data: item,
@@ -89,7 +90,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         key: 'Remove',
         name: this.props.removeMenuItemText ? this.props.removeMenuItemText : 'Remove',
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this.removeItem(menuItem.data as ISelectedItemProps<ISelectedPersonaProps>);
+          this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
         },
         data: item,
       },
