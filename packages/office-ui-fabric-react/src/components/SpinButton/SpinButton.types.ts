@@ -201,7 +201,7 @@ export interface ISpinButtonStyleProps {
   /**
    * Theme provided by HOC.
    */
-  theme?: ITheme;
+  theme: ITheme;
 
   /**
    * Whether or not the SpinButton is disabled.
