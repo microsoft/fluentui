@@ -12,8 +12,8 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
 $DropDown-item-height: 32px;
 
-// Mixin for high contrast mode link states
-@mixin highContrastListItemState {
+// Mixin for high contrast mode states
+@mixin highContrastItemAndTitleState {
   @include high-contrast {
     background-color: Highlight;
     border-color: Highlight;
@@ -21,6 +21,12 @@ $DropDown-item-height: 32px;
   }
 
   @include highContrastAdjust();
+}
+
+@mixin highContrastBorderState {
+  @include high-contrast {
+    border-color: Highlight;
+  }
 }
 
 .root {
@@ -38,11 +44,6 @@ $DropDown-item-height: 32px;
     .title,
     .caretDown {
       color: $ms-color-neutralDark;
-
-      @include high-contrast {
-        // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
-        color: Highlight;
-      }
     }
 
     .titleIsPlaceHolder {
@@ -53,6 +54,7 @@ $DropDown-item-height: 32px;
   &:hover {
     .title {
       border-color: $ms-color-neutralDark;
+      @include highContrastBorderState();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -62,6 +64,7 @@ $DropDown-item-height: 32px;
   &:active {
     .title {
       border-color: $ms-color-themeDark;
+      @include highContrastBorderState();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -71,6 +74,10 @@ $DropDown-item-height: 32px;
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
+      @include highContrastItemAndTitleState();
+    }
+    .caretDown {
+      @include highContrastAdjust();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -207,7 +214,7 @@ $DropDown-item-height: 32px;
 
   &:focus {
     background-color: $ms-color-neutralLighter;
-    @include highContrastListItemState;
+    @include highContrastItemAndTitleState;
   }
 
   &:active {
@@ -229,7 +236,7 @@ $DropDown-item-height: 32px;
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 
-  @include highContrastListItemState;
+  @include highContrastItemAndTitleState;
 
   &.itemIsDisabled {
     color: $ms-color-neutralTertiary;
