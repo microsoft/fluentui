@@ -2,27 +2,8 @@ import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Check.scss';
+import { ICheckProps } from './Check.types';
 const styles: any = stylesImport;
-
-export interface ICheckProps extends React.Props<Check> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: () => void;
-
-  /**
-   * Whether or not this menu item is currently checked.
-   * @defaultvalue false
-   */
-  checked?: boolean;
-  /**
-   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   * @deprecated
-   */
-  isChecked?: boolean;
-
-  alwaysShowCheck?: boolean;
-}
 
 export class Check extends BaseComponent<ICheckProps, {}> {
   public static defaultProps = {
