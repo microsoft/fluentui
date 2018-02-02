@@ -18,7 +18,7 @@ export function getStyles(props: IBeakStylesProps): IBeakStyles {
       boxShadow: 'inherit',
       border: 'inherit',
       boxSizing: 'border-box',
-      transform: 'translate(-50%, -75%)',
+      transform: 'translate(-50%, -54%)',
       left: '50%'
     },
     canvas: {

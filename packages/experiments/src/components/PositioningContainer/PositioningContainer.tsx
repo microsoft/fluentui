@@ -317,11 +317,13 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
-    // If the max height is undefined.
     if (!this._maxHeight) {
-      // if the directional hint is fixed and our target Exists
       if (this.props.directionalHintFixed && this._target) {
-        const totalGap = this.props.offsetFromTarget! + BORDER_WIDTH * 2;
+        let beakWidth = 16;
+        let gapSpace = this.props.offsetFromTarget ? this.props.offsetFromTarget : 0;
+        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
+        // overlap with the target.
+        const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
         this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;

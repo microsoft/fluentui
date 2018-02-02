@@ -54,8 +54,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public static defaultProps: Partial<ICoachmarkTypes> = {
     collapsed: true,
     mouseProximityOffset: 100,
-    beakWidth: 18,
-    beakHeight: 10
+    beakWidth: 26,
+    beakHeight: 12
   };
 
   /**
@@ -78,7 +78,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         width: 0,
         height: 0
       },
-      isMouseInProximity: true
+      isMouseInProximity: false
     };
   }
 
@@ -230,7 +230,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         this.setState({
-          isMouseInProximity: isMouseInProximity
+          collapsed: !isMouseInProximity
         });
       }
     });
