@@ -23,14 +23,41 @@ export interface ICheckProps extends React.Props<Check> {
 }
 
 export interface ICheckStyleProps {
+  /**
+   * Accept theme prop. Defaults to getTheme() function.
+   * @defaultvalue getTheme()
+   */
   theme?: ITheme;
+  /**
+   * Accept custom checkBox size in pixels.
+   * @defaultvalue '18px'
+   */
   checkBoxHeight?: string;
 }
 
 export interface ICheckStyles {
+  /**
+   * Style for the root element.
+   */
   root?: IStyle;
+
+  /**
+   * Change child element styles based on isChecked state.
+   */
   rootIsChecked?: IStyle;
+
+  /**
+   * The 'check' icon styles.
+   */
   check?: IStyle;
+
+  /**
+   * ??? Has something to do with DetailsList row???
+   */
   checkHost?: IStyle;
+
+  /**
+   * The 'circle' icon styles.
+   */
   circle?: IStyle;
 }
