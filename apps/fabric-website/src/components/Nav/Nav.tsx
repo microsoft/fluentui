@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import {
   INavProps,
   INavPage
-} from './Nav.Props';
+} from './Nav.types';
 
 export interface INavState {
 }
@@ -24,9 +25,11 @@ export class Nav extends React.Component<INavProps, INavState> {
       : null;
 
     return (
-      <nav className={ styles.nav } role='navigation'>
-        { links }
-      </nav>
+      <FocusZone>
+        <nav className={ styles.nav } role='navigation'>
+          { links }
+        </nav>
+      </FocusZone>
     );
   }
 

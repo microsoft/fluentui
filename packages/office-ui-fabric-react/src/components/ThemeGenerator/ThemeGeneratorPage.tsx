@@ -42,12 +42,12 @@ export interface IThemeGeneratorPageState {
 const BackgroundImageUriKey = 'backgroundImageUri';
 const BackgroundOverlayKey = 'backgroundOverlay';
 
-export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageState> {
+export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageState> {
   private _semanticSlotColorChangeTimeout: number;
   private _imgUrl: string;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     let themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
@@ -473,19 +473,20 @@ export class ThemeGeneratorPage extends BaseComponent<any, IThemeGeneratorPageSt
   @autobind
   private _makeNewTheme() {
     let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
-    console.log('New theme...', themeAsJson);
-
-    let root = document.querySelector('.App-content') as HTMLElement;
-    if (root) {
-      root.style.backgroundColor = themeAsJson.backgroundColor;
-      root.style.color = themeAsJson.bodyText;
-    }
     let finalTheme = loadTheme({
       palette: themeAsJson,
       isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
     });
+
+    let root = document.querySelector('.App-content') as HTMLElement;
+    if (root) {
+      root.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
+      root.style.color = finalTheme.semanticColors.bodyText;
+    }
+
     document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
     document.body.style.color = finalTheme.semanticColors.bodyText;
+    console.log('New theme:', finalTheme);
   }
 
   @autobind

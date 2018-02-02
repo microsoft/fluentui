@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IIconProps, IconType } from './Icon.Props';
+import { IIconProps, IconType } from './Icon.types';
 import { Image } from '../Image/Image';
 import {
   css,
@@ -24,7 +24,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
-      'ms-Icon',
       'ms-Icon-imageContainer',
       classNames.root,
       classNames.imageContainer,
@@ -53,7 +52,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon ms-Icon-placeHolder',
+            'ms-Icon-placeHolder',
             classNames.rootHasPlaceHolder,
             props.className
           ) }
@@ -78,7 +77,6 @@ export const Icon = (props: IIconProps): JSX.Element => {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon', // dangerous?
             iconDefinition.subset.className,
             classNames.root,
             props.className

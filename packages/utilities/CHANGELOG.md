@@ -1,6 +1,83 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 18 Oct 2017 10:21:25 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+
+## 5.9.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add work week date range type and update date math getDateRangeArray to consume it, add unit tests
+
+## 5.8.0
+Fri, 26 Jan 2018 11:25:22 GMT
+
+### Minor changes
+
+- IBaseProps: typings adjusted to be less restrictive and compatible with strict mode.
+
+## 5.7.1
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Patches
+
+- Set timeout ids to null for cancel and flush functions
+
+## 5.7.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Adding a helper component to inject context values
+
+## 5.6.1
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Broaden the range of allowed prop-type versions
+
+## 5.6.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.5.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
+
+## 5.4.0
+Mon, 13 Nov 2017 11:20:56 GMT
+
+### Minor changes
+
+- BaseComponent: fixing some typings to be compatible with current React typings.
+
+## 5.3.3
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Patches
+
+- Object: getId: updated so it will correctly return a string rather than an  int
+
+## 5.3.2
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout.
+
+## 5.3.1
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Update @uifabric/utilities
 
 ## 5.3.0
 Wed, 18 Oct 2017 10:21:25 GMT

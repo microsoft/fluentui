@@ -76,11 +76,16 @@ export interface ICalendarInlineExampleProps {
   isDayPickerVisible?: boolean;
   showMonthPickerAsOverlay?: boolean;
   showWeekNumbers?: boolean;
+  minDate?: Date;
+  maxDate?: Date;
+  showSixWeeksByDefault?: boolean;
+  workWeekDays?: DayOfWeek[];
+  firstDayOfWeek?: DayOfWeek;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
-  public constructor() {
-    super();
+  public constructor(props: ICalendarInlineExampleProps) {
+    super(props);
 
     this.state = {
       selectedDate: null,
@@ -118,6 +123,12 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           Selected dates:
           <span> { !dateRangeString ? 'Not set' : dateRangeString }</span>
         </div>
+        { (this.props.minDate || this.props.maxDate) &&
+          <div>
+            Date boundary:
+            <span> { this.props.minDate ? this.props.minDate.toLocaleDateString() : 'Not set' }-{ this.props.maxDate ? this.props.maxDate.toLocaleDateString() : 'Not set' }</span>
+          </div>
+        }
         <Calendar
           onSelectDate={ this._onSelectDate }
           onDismiss={ this._onDismiss }
@@ -126,12 +137,16 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           autoNavigateOnSelection={ this.props.autoNavigateOnSelection }
           showGoToToday={ this.props.showGoToToday }
           value={ this.state.selectedDate! }
-          firstDayOfWeek={ DayOfWeek.Sunday }
+          firstDayOfWeek={ this.props.firstDayOfWeek ? this.props.firstDayOfWeek : DayOfWeek.Sunday }
           strings={ DayPickerStrings }
           highlightCurrentMonth={ this.props.highlightCurrentMonth }
           isDayPickerVisible={ this.props.isDayPickerVisible }
           showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
           showWeekNumbers={ this.props.showWeekNumbers }
+          minDate={ this.props.minDate }
+          maxDate={ this.props.maxDate }
+          showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
+          workWeekDays={ this.props.workWeekDays }
         />
         { this.props.showNavigateButtons &&
           <div>

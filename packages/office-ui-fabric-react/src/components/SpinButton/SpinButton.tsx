@@ -12,7 +12,7 @@ import {
 import {
   ISpinButton,
   ISpinButtonProps,
-} from './SpinButton.Props';
+} from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
@@ -91,7 +91,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._inputId = getId('input');
     this._spinningByMouse = false;
 
-    if (!props.defaultValue && props.value) {
+    if (!props.defaultValue && props.value !== undefined) {
       this._onValidate = props.onValidate;
       this._onIncrement = props.onIncrement;
       this._onDecrement = props.onDecrement;
@@ -126,7 +126,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       labelPosition,
       iconProps,
       incrementButtonIcon,
+      incrementButtonAriaLabel,
       decrementButtonIcon,
+      decrementButtonAriaLabel,
       title,
       ariaLabel,
       styles: customStyles,
@@ -197,11 +199,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
-              aria-hidden='true'
               onMouseDown={ this._onIncrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
+              ariaLabel={ incrementButtonAriaLabel }
             />
             <IconButton
               styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
@@ -209,11 +211,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
-              aria-hidden='true'
               onMouseDown={ this._onDecrementMouseDown }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               tabIndex={ -1 }
+              ariaLabel={ decrementButtonAriaLabel }
             />
           </span>
         </div>

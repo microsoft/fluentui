@@ -1,8 +1,8 @@
 import { memoizeFunction } from '../../Utilities';
 import { ITheme, mergeStyleSets } from '../../Styling';
-import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.Props';
+import { IContextualMenuStyles, IMenuItemStyles } from './ContextualMenu.types';
 import { getStyles as getContextualMenuStyles, getMenuItemStyles } from './ContextualMenu.styles';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.Props';
+import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 
 export interface IContextualMenuClassNames {
@@ -183,6 +183,10 @@ export const getItemClassNames = memoizeFunction((
       knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
       styles.icon,
       iconClassName,
+      disabled && [
+        'is-disabled',
+        styles.iconDisabled
+      ]
     ],
     checkmarkIcon: [
       'ms-ContextualMenu-checkmarkIcon',

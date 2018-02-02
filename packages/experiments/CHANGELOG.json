@@ -2,6 +2,420 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.16.1",
+      "tag": "@uifabric/experiments_v5.16.1",
+      "date": "Wed, 31 Jan 2018 11:11:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "0bcc2870320b3940d9e386a9996981e759ba4ddf",
+            "comment": "Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react\""
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.0 <6.0.0` to `>=5.45.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/experiments_v5.16.0",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "e2487c7a2bbf513b47f4f5694180b56e1f6a4ed1",
+            "comment": "Add overflowMenuProps to Experiments CommandBar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.43.0 <6.0.0` to `>=5.44.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.0",
+      "tag": "@uifabric/experiments_v5.15.0",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "194ce4efa804ac4bbacef04b03d426c8a561a6b0",
+            "comment": "add optional title element to extendedPicker, css changes to have selected items flow on the same row as input"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.41.2 <6.0.0` to `>=5.43.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/experiments_v5.14.0",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "60225fba2411d965163b74eae9d61046013115b1",
+            "comment": "Add callbacks for onDataReduced and onDataGrown"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "2f247fff85ffd515c41b20aacc771f1269657713",
+            "comment": "Minor visual alignment for FolderCover text"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.40.1 <6.0.0` to `>=5.41.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.13.0",
+      "tag": "@uifabric/experiments_v5.13.0",
+      "date": "Fri, 12 Jan 2018 20:03:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "c874551bebff3b1936262d482c0b2f180ca6edb8",
+            "comment": "Add demo of size 64 file type icons"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.39.0 <6.0.0` to `>=5.39.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.2.0 <1.0.0` to `>=0.3.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/experiments_v5.12.0",
+      "date": "Wed, 10 Jan 2018 11:23:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "6c4e42e8e5ec7d671a9a579053c1e2af6c4ef6ee",
+            "comment": "Add search throttle to floating picker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.38.1 <6.0.0` to `>=5.39.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/experiments_v5.11.1",
+      "date": "Tue, 19 Dec 2017 11:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "745d39de8459b457c00c81af37b458188608eaad",
+            "comment": "Broaden the range of allowed prop-type versions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.34.1 <6.0.0` to `>=5.34.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/experiments_v5.11.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.33.1 <6.0.0` to `>=5.34.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.1.2 <6.0.0` to `>=5.2.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=5.0.1 <6.0.0` to `>=5.1.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/experiments_v5.10.1",
+      "date": "Fri, 15 Dec 2017 11:22:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "81423e190fb9c8fffde2321104acbff4b561fdeb",
+            "comment": "Remove padding and border for suggestions and add callout width prop in floating picker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.33.0 <6.0.0` to `>=5.33.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.0",
+      "tag": "@uifabric/experiments_v5.10.0",
+      "date": "Thu, 14 Dec 2017 11:23:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "76aead93eeb29bac6f7a9d9e73893cfcfa0685fd",
+            "comment": "Add remeasure public method to CommandBar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.32.0 <6.0.0` to `>=5.33.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.9.2",
+      "tag": "@uifabric/experiments_v5.9.2",
+      "date": "Tue, 12 Dec 2017 02:08:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chao <fengchao199011@hotmail.com>",
+            "commit": "253922868e6305b04c194ca8906e333d5abe6ebf",
+            "comment": "add link ref in tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.30.2 <6.0.0` to `>=5.31.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.9.1",
+      "tag": "@uifabric/experiments_v5.9.1",
+      "date": "Fri, 08 Dec 2017 18:09:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "4be48b6680992886e4b05a220e3e22c84228d9e1",
+            "comment": "Experiments: Fix build breaks in master"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.30.0 <6.0.0` to `>=5.30.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.9.0",
+      "tag": "@uifabric/experiments_v5.9.0",
+      "date": "Mon, 04 Dec 2017 17:27:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "KatherineThayerMicrosoft <kathayer@microsoft.com>",
+            "commit": "a4df7ef34766b89249ac276b6531609414dbc458",
+            "comment": "Add experiments page for file type icons"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.29.0 <6.0.0` to `>=5.29.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `>=0.0.1 <1.0.0` to `>=0.1.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.0",
+      "tag": "@uifabric/experiments_v5.8.0",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "95fa0ed17e7adc25e1c18977387a0ca840d3025a",
+            "comment": "Fixes the external signal component"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b1c7686173a7f56d894e1b90625df0132375b1ee",
+            "comment": "Revise Signals and provide example page"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.28.0 <6.0.0` to `>=5.29.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/experiments_v5.7.0",
+      "date": "Wed, 29 Nov 2017 11:24:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a6ef94b3edb7679d7659ec0d51e199139102d28c",
+            "comment": "Updating TypeScript to 2.6.2."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.26.0 <6.0.0` to `>=5.27.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.1",
+      "tag": "@uifabric/experiments_v5.6.1",
+      "date": "Thu, 23 Nov 2017 11:10:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "d6b160b67456101362c1b241b4c4ee6d11850fdb",
+            "comment": "Apply props.className in ResizeGroup. Add snapshot for ResizeGroup. Pass className from experiments CommandBarTests. Update experiments CommandBar snapshot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.24.2 <6.0.0` to `>=5.25.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/experiments_v5.6.0",
+      "date": "Fri, 17 Nov 2017 17:36:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "97afd9793fddd3c5216d44cb3a54e36984c405d7",
+            "comment": "Add external signal"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Bryan Watts <brwatt@microsoft.com>",
+            "commit": "8ad0e5ca9fb39a3d719de88792e2893c2aa92f20",
+            "comment": "Make sure commands get added/removed in the correct order"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.22.0 <6.0.0` to `>=5.23.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.2",
+      "tag": "@uifabric/experiments_v5.5.2",
+      "date": "Thu, 16 Nov 2017 11:20:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "7c6d7b6aa050c3fa02bda1fbf596111b60bd20fc",
+            "comment": "Fix experiment imports for FloatingPicker and ExtendedPicker components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.21.2 <6.0.0` to `>=5.22.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.1",
+      "tag": "@uifabric/experiments_v5.5.1",
+      "date": "Wed, 08 Nov 2017 11:11:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "4af244d78e2887009a852192cc8bb4e23278adb9",
+            "comment": "Fix alignment with trending icon"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/experiments_v5.5.0",
+      "date": "Wed, 08 Nov 2017 06:05:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lejimsft <32402358+lejimsft@users.noreply.github.com>",
+            "commit": "124c231295cce3b2afa794507e890398929da37e",
+            "comment": "added ATP signal"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.20.2 <6.0.0` to `>=5.20.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.4.0",
       "tag": "@uifabric/experiments_v5.4.0",
       "date": "Thu, 02 Nov 2017 18:20:18 GMT",

@@ -16,16 +16,16 @@
     "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
-    "@types/react": "15.0.38",
-    "@types/react-dom": "15.5.1",
+    "@types/react": "16.0.25",
+    "@types/react-dom": "16.0.3",
     "@types/webpack-env": "1.13.0",
-    "@types/prop-types": "15.5.1",
+    "@types/prop-types": "15.5.2",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=5.20.1 <6.0.0",
+    "office-ui-fabric-react": ">=5.45.1 <6.0.0",
     "tslib": "^1.7.1"
   }
 }

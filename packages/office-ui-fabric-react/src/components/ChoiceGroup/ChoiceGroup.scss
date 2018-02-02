@@ -14,7 +14,7 @@ $radioButton-text-hover-color: $bodyTextCheckedColor;
 
 $radioButton-dot-color: $inputBackgroundCheckedColor;
 
-$radioButton-border-color: $inputBorderColor;
+$radioButton-border-color: $smallInputBorderColor;
 $radioButton-border-hover-color: $inputBorderHoveredColor;
 $radioButton-border-selected-color: $radioButton-dot-color;
 $radioButton-border-selected-hover-color: $inputBackgroundCheckedHoveredColor;
@@ -29,6 +29,8 @@ $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-
 // ChoiceField styles
 
 $ms-choiceField-field-size: 20px;
+$ms-choiceField-image-size: 32px;
+$ms-choiceField-text-height: 32px;
 $ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
@@ -64,7 +66,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .input {
   position: absolute;
   opacity: 0;
-  top: 8px
+  top: 8px;
 }
 
 // The circle
@@ -78,7 +80,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-weight: normal;
   position: absolute;
   top: 0;
-  left: 0;
+  @include ms-left(0);
   box-sizing: border-box;
   transition-property: border-color;
   transition-duration: $ms-choiceField-transition-duration;
@@ -194,9 +196,13 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include ms-padding-left(0px);
   @include ms-bgColor-neutralLighter;
 
+  $radioButtonSpacing: 3px;
+  $radioButtonInnerSize: 5px;
+
+  height: $ms-choiceField-iconField-size;
+  width: $ms-choiceField-iconField-size;
+
   .fieldIsImage, .fieldIsIcon {
-    $radioButtonSpacing: 3px;
-    $radioButtonInnerSize: 5px;
 
     display: inline-block;
     box-sizing: border-box;
@@ -207,18 +213,27 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
     border: 2px solid transparent;
+    height: $ms-choiceField-iconField-size;
+    width: $ms-choiceField-iconField-size;
 
     &.fieldIsDisabled {
       cursor: default;
 
       .innerField {
         opacity: 0.25;
+
+        @include high-contrast {
+          color: GrayText;
+          opacity: 1;
+        }
       }
     }
 
     .innerField {
       position: relative;
       padding: 0 28px;
+      height: $ms-choiceField-image-size;
+      width: $ms-choiceField-image-size;
 
       .imageWrapper {
         padding-bottom: 2px;
@@ -236,19 +251,20 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
         :global(.ms-Image) {
           display: inline-block;
+          border-style: none;
         }
       }
     }
 
     .labelWrapper {
-      $lineHeight: 16px;
+      $lineHeight: 15px;
       display: block;
       position: relative;
-      margin: 4px 0 0 0;
-      height: $lineHeight * 2;
+      margin: 4px 0 2px 0;
+      height: $ms-choiceField-text-height;
       line-height: $lineHeight;
       overflow: hidden;
-      white-space: nowrap;
+      white-space: pre-wrap;
       text-overflow: ellipsis;
       @include ms-font-m;
 
@@ -307,13 +323,20 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       }
     }
   }
+
+  // Hidden input for icon and image
+  .inputHasImage, .inputHasIcon {
+    top: 0;
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
 }
 
 .choiceFieldIsIcon {
   $iconSize: 32px;
-
-  height: $ms-choiceField-iconField-size;
-  width: $ms-choiceField-iconField-size;
 
   .iconWrapper {
     font-size: $iconSize;
@@ -333,7 +356,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   &.choiceFieldIsImage .choiceFieldWrapper,
   &.choiceFieldIsIcon .choiceFieldWrapper {
-    @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
+    @include focus-border(1px, $ms-color-neutralPrimary, 2px, false);
 
     @include high-contrast {
       @include focus-border(1px, WindowText, 2px, false);

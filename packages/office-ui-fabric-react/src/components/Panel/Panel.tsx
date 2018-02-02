@@ -10,7 +10,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, PanelType } from './Panel.Props';
+import { IPanel, IPanelProps, PanelType } from './Panel.types';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
@@ -30,6 +30,7 @@ export interface IPanelState {
 export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
 
   public static defaultProps: IPanelProps = {
+    isHiddenOnDismiss: false,
     isOpen: false,
     isBlocking: true,
     hasCloseButton: true,
@@ -40,6 +41,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   constructor(props: IPanelProps) {
     super(props);
+
+    this._warnDeprecations({
+      'ignoreExternalFocusing': 'focusTrapZoneProps',
+      'forceFocusInsideTrap': 'focusTrapZoneProps',
+      'firstFocusableSelector': 'focusTrapZoneProps'
+    });
 
     this.state = {
       isFooterSticky: false,
@@ -72,12 +79,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       className = '',
       elementToFocusOnDismiss,
       firstFocusableSelector,
+      focusTrapZoneProps,
       forceFocusInsideTrap,
       hasCloseButton,
       headerText,
       ignoreExternalFocusing,
       isBlocking,
       isLightDismiss,
+      isHiddenOnDismiss,
       layerProps,
       type,
       customWidth,
@@ -95,12 +104,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
     const renderProps: IPanelProps = { ...this.props, componentId: id };
 
-    if (!isOpen && !isAnimating) {
+    if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
     }
 
     let overlay;
-    if (isBlocking) {
+    if (isBlocking && isOpen) {
       overlay = (
         <Overlay
           className={ css(
@@ -120,6 +129,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           role='dialog'
           ariaLabelledBy={ headerText && headerTextId }
           onDismiss={ this.dismiss }
+          className={
+            css(
+              !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
+            )
+          }
         >
           <div
             className={
@@ -137,12 +151,17 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 type === PanelType.largeFixed && ('ms-Panel--fixed ' + styles.rootIsFixed),
                 type === PanelType.extraLarge && ('ms-Panel--xl ' + styles.rootIsXLarge),
                 type === PanelType.custom && ('ms-Panel--custom ' + styles.rootIsCustom),
-                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton)
+                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton),
+                !isOpen && !isAnimating && isHiddenOnDismiss && styles.hiddenPanel
               )
             }
           >
             { overlay }
             <FocusTrapZone
+              ignoreExternalFocusing={ ignoreExternalFocusing }
+              forceFocusInsideTrap={ forceFocusInsideTrap }
+              firstFocusableSelector={ firstFocusableSelector }
+              { ...focusTrapZoneProps }
               className={
                 css(
                   'ms-Panel-main',
@@ -151,13 +170,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                   isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
                   !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
                   !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
+                  focusTrapZoneProps ? focusTrapZoneProps.className : undefined
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={ isLightDismiss }
-              ignoreExternalFocusing={ ignoreExternalFocusing }
-              forceFocusInsideTrap={ forceFocusInsideTrap }
-              firstFocusableSelector={ firstFocusableSelector }
+              isClickableOutsideFocusTrap={ isLightDismiss || isHiddenOnDismiss }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(renderProps, this._onRenderNavigation) }

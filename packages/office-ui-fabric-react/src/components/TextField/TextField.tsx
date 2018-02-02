@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITextField, ITextFieldProps } from './TextField.Props';
+import { ITextField, ITextFieldProps } from './TextField.types';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
@@ -61,7 +61,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     super(props);
 
     this._warnDeprecations({
-      'iconClass': 'iconProps'
+      'iconClass': 'iconProps',
+      'addonString': 'prefix',
+      'onRenderAddon': 'onRenderPrefix'
     });
 
     this._warnMutuallyExclusive({
@@ -135,8 +137,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       required,
       underlined,
       borderless,
-      addonString,
-      onRenderAddon = this._onRenderAddon,
+      addonString, // @deprecated
+      prefix,
+      suffix,
+      onRenderAddon = this._onRenderAddon, // @deprecated
+      onRenderPrefix = this._onRenderPrefix,
+      onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel
     } = this.props;
     let { isFocused } = this.state;
@@ -146,8 +152,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
-      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required && !iconProps,
-      ['is-required ' + styles.rootIsRequiredPlaceholderIcon]: !this.props.label && required && iconProps,
+      ['is-required ' + styles.rootIsRequiredPlaceholderOnly]: !this.props.label && required,
       ['is-disabled ' + styles.rootIsDisabled]: disabled,
       ['is-active ' + styles.rootIsActive]: isFocused,
       ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
@@ -161,12 +166,22 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
           { onRenderLabel(renderProps, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
-              <div className={ css(styles.fieldAddon) }>
+              <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
                 { onRenderAddon(this.props, this._onRenderAddon) }
+              </div>
+            ) }
+            { (prefix !== undefined || this.props.onRenderPrefix) && (
+              <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
+                { onRenderPrefix(this.props, this._onRenderPrefix) }
               </div>
             ) }
             { multiline ? this._renderTextArea() : this._renderInput() }
             { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+            { (suffix !== undefined || this.props.onRenderSuffix) && (
+              <div className={ css('ms-TextField-suffix', styles.fieldPrefixSuffix) }>
+                { onRenderSuffix(this.props, this._onRenderSuffix) }
+              </div>
+            ) }
           </div>
         </div>
         { this._isDescriptionAvailable &&
@@ -283,10 +298,25 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return null;
   }
 
+  // @deprecated
   private _onRenderAddon(props: ITextFieldProps): JSX.Element {
     let { addonString } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ addonString }</span>
+    );
+  }
+
+  private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
+    let { prefix } = props;
+    return (
+      <span style={ { paddingBottom: '1px' } }>{ prefix }</span>
+    );
+  }
+
+  private _onRenderSuffix(props: ITextFieldProps): JSX.Element {
+    let { suffix } = props;
+    return (
+      <span style={ { paddingBottom: '1px' } }>{ suffix }</span>
     );
   }
 

@@ -5,7 +5,7 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
-import { IOverflowSet, IOverflowSetProps } from './OverflowSet.Props';
+import { IOverflowSet, IOverflowSetProps } from './OverflowSet.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';

@@ -7,6 +7,7 @@ import {
   DetailsList,
   DetailsListLayoutMode,
   Selection,
+  SelectionMode,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
@@ -152,6 +153,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
+        isCollapsable: true,
         data: 'string',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
@@ -170,6 +172,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         minWidth: 70,
         maxWidth: 90,
         isResizable: true,
+        isCollapsable: true,
         data: 'number',
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
@@ -229,6 +232,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             items={ items }
             compact={ isCompactMode }
             columns={ columns }
+            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
             setKey='set'
             layoutMode={ DetailsListLayoutMode.justified }
             isHeaderVisible={ true }

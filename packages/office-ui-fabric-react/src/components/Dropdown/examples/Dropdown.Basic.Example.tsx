@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { autobind } from '../../../Utilities';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { autobind, BaseComponent } from '../../../Utilities';
 import './Dropdown.Basic.Example.scss';
 
-export class DropdownBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DropdownBasicExample extends BaseComponent<{}, {
+  selectedItem?: { key: string | number | undefined },
+  selectedItems: string[]
+}> {
+  private _basicDropdown: IDropdown;
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
-      selectedItem: null,
+      selectedItem: undefined,
       selectedItems: [],
     };
   }
@@ -16,9 +22,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
     let { selectedItem, selectedItems } = this.state;
 
     return (
-      <div className='DropdownBasicExample'>
+      <div className='docs-DropdownExample'>
         <Dropdown
-          className='Dropdown-example'
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
           id='Basicdrop1'
@@ -28,7 +33,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
               { key: 'A', text: 'Option a' },
               { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
+              { key: 'C', text: 'Option c', disabled: true },
               { key: 'D', text: 'Option d' },
               { key: 'E', text: 'Option e' },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
@@ -42,10 +47,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
+          componentRef={ this._resolveRef('_basicDropdown') }
         />
-
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._onSetFocusButtonClicked }
+        />
         <Dropdown
-          className='Dropdown-example'
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
           options={
@@ -65,9 +73,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
         />
 
         <Dropdown
-          className='Dropdown-example'
           label='Controlled example:'
-          selectedKey={ selectedItem && selectedItem.key }
+          selectedKey={ (selectedItem ? selectedItem.key : undefined) }
           onChanged={ this.changeState }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
@@ -89,7 +96,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
-          defaultSelectedKeys={ ['Apple', 'Banana'] }
+          defaultSelectedKeys={ ['Apple', 'Banana', 'Orange'] }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
           multiSelect
@@ -98,8 +105,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'Apple', text: 'apple' },
               { key: 'Banana', text: 'banana' },
-              { key: 'Orange', text: 'orange' },
-              { key: 'Grape', text: 'grape' },
+              { key: 'Orange', text: 'orange', disabled: true },
+              { key: 'Grape', text: 'grape', disabled: true },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
               { key: 'English', text: 'english' },
@@ -186,6 +193,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
       newArray[i] = array[i];
     }
     return newArray;
+  }
+
+  @autobind
+  private _onSetFocusButtonClicked() {
+    if (this._basicDropdown) {
+      this._basicDropdown.focus(true);
+    }
   }
 
   private _log(str: string): () => void {

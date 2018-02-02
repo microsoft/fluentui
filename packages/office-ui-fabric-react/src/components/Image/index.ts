@@ -1,2 +1,2 @@
 export * from './Image';
-export * from './Image.Props';
+export * from './Image.types';

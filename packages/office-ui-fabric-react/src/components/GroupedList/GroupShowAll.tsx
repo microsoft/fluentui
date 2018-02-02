@@ -5,7 +5,7 @@ import {
   css
 } from '../../Utilities';
 import { Link } from '../../Link';
-import { IGroupDividerProps } from './GroupedList.Props';
+import { IGroupDividerProps } from './GroupedList.types';
 import { GroupSpacer } from './GroupSpacer';
 import * as stylesImport from './GroupShowAll.scss';
 const styles: any = stylesImport;

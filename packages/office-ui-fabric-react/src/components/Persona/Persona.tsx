@@ -7,13 +7,13 @@ import {
   getNativeProps,
   IRenderFunction
 } from '../../Utilities';
-import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
+import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin';
 import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
-} from './Persona.Props';
+} from './Persona.types';
 import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
@@ -56,7 +56,9 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      showSecondaryText
+      showSecondaryText,
+      onPhotoLoadingStateChange,
+      onRenderCoin
      } = this.props;
 
     let personaCoinProps = {
@@ -70,7 +72,9 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      size
+      size,
+      onPhotoLoadingStateChange,
+      onRenderCoin
     };
 
     let divProps = getNativeProps(this.props, divProperties);
@@ -122,7 +126,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       <div className={ className }>
         { render
           ? render(this.props)
-          : <TooltipHost content={ text } overflowMode={ TooltipOverflowMode.Parent }>{ text }</TooltipHost>
+          : text && (<TooltipHost
+            content={ text }
+            overflowMode={ TooltipOverflowMode.Parent }
+            directionalHint={ DirectionalHint.topLeftEdge }
+          >
+            { text }
+          </TooltipHost>)
         }
       </div>
     );

@@ -34,9 +34,12 @@
 // Insert a calendar icon over the date field.
 .eventWithLabel {
   @include ms-DatePicker-event();
-  pointer-events: initial;
-  cursor: pointer;
   bottom:5px;
+
+  &:not(.msDatePickerDisabled) {
+    pointer-events: initial;
+    cursor: pointer;
+  }
 }
 
 .eventWithoutLabel {

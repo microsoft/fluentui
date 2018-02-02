@@ -6,10 +6,12 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
+import { ProgressIndicatorIndeterminateExample } from './examples/ProgressIndicator.Indeterminate.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ProgressIndicatorStatus } from './ProgressIndicator.checklist';
 
 const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
+const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Indeterminate.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -18,14 +20,19 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         title='ProgressIndicator'
         componentName='ProgressIndicatorExample'
         exampleCards={
-          <ExampleCard title='Default ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
-            <ProgressIndicatorBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Default ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
+              <ProgressIndicatorBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Indeterminate ProgressIndicator' code={ ProgressIndicatorIndeterminateExampleCode }>
+              <ProgressIndicatorIndeterminateExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/ProgressIndicator.types.ts')
             ] }
           />
         }

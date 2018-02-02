@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn } from './DetailsList.Props';
+import { IColumn } from './DetailsList.types';
 import { BaseComponent, css } from '../../Utilities';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
@@ -23,7 +23,7 @@ export interface IDetailsRowFieldsState {
 
 export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
   constructor(props: IDetailsRowFieldsProps) {
-    super();
+    super(props);
 
     this.state = this._getState(props);
   }
