@@ -54,4 +54,9 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * The width of the beak component.
    */
   beakWidth?: number;
+
+  /**
+   * The height of the beak component
+   */
+  beakHeight?: number;
 }

@@ -53,7 +53,9 @@ export interface ICoachmarkState {
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public static defaultProps: Partial<ICoachmarkTypes> = {
     collapsed: true,
-    mouseProximityOffset: 100
+    mouseProximityOffset: 100,
+    beakWidth: 18,
+    beakHeight: 10
   };
 
   /**
@@ -82,7 +84,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public render(): JSX.Element {
     let {
       children,
-      beakWidth = 16, // Default beak width for coachmark
+      beakWidth,
+      beakHeight,
       target
     } = this.props;
 
@@ -118,6 +121,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                 <Beak
                   target={ target! }
                   beakWidth={ beakWidth }
+                  beakHeight={ beakHeight }
                 />
                 <div
                   className={ classNames.entityHost }
