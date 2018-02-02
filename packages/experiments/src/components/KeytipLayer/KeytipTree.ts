@@ -1,4 +1,4 @@
-import { IKeySequence, keySequencesContain } from '../../utilities/keysequence';
+import { IKeySequence, keySequencesContain, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 
 export interface IKeytipTreeNode {
@@ -29,21 +29,25 @@ export interface IKeytipTreeNodeMap {
 }
 
 export class KeytipTree {
-  public currentKeytip: IKeytipTreeNode;
+  public currentKeytip?: IKeytipTreeNode;
   public root: IKeytipTreeNode;
   public nodeMap: IKeytipTreeNodeMap = {};
 
   private _enableSequences: IKeySequence[];
   private _exitSequences: IKeySequence[];
+  private _goBackSequences: IKeySequence[];
   private _manager: KeytipManager;
 
   /**
    * KeytipTree constructor
    * @param enableSequences - KeySequences that will start keytip mode, passed down through the KeytipLayer
    */
-  constructor(enableSequences: IKeySequence[], exitSequences: IKeySequence[]) {
+  constructor(enableSequences: IKeySequence[], exitSequences: IKeySequence[], goBackSequences: IKeySequence[]) {
     this._manager = KeytipManager.getInstance();
     this._enableSequences = enableSequences;
+    this._exitSequences = exitSequences;
+    this._goBackSequences = goBackSequences;
+
     // Root has no keytipSequences, we instead check _enableSequences to handle multiple entry points
     this.root = {
       id: this._manager.getLayer().props.id,
@@ -58,11 +62,11 @@ export class KeytipTree {
    * @param onExecute - Callback function to trigger when this keytip is activated
    */
   public addNode(fullSequence: IKeySequence[], onExecute: () => void): void {
-    let nodeID = this._manager.convertSequencesToID(fullSequence);
+    let nodeID = convertSequencesToKeytipID(fullSequence);
     // This keytip's sequence is the last one defined
     let keytipSequence = fullSequence.pop();
     // Parent ID is the root if there aren't any more sequences
-    let parentID = fullSequence.length === 0 ? this.root.id : this._manager.convertSequencesToID(fullSequence);
+    let parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
 
     // See if node already exists
     let node = this.nodeMap[nodeID];
@@ -105,18 +109,34 @@ export class KeytipTree {
     // If key sequence is in 'exit sequences', exit keytip mode
     //    Trigger layer's onExit callback
     if (keySequencesContain(this._exitSequences, keySequence)) {
+      this.currentKeytip = undefined;
       this._manager.getLayer().exitKeytipMode();
+      return;
     }
     // If key sequence is in 'go back sequences', move currentKeytip to parent (or if currentKeytip is the root, exit)
     //    Trigger node's onGoBackExecute
     //    Hide all keytips currently showing
     //    Show all keytips of children of currentKeytip
+    if (keySequencesContain(this._goBackSequences, keySequence)) {
+      if (this.currentKeytip) {
+        if (this.currentKeytip.id === this.root.id) {
+          // We are at the root, exit keytip mode
+          this.currentKeytip = undefined;
+          this._manager.getLayer().exitKeytipMode();
+          return;
+        } else {
+          this.currentKeytip = this.nodeMap[this.currentKeytip.parent!];
+          // TODO:
+        }
+      }
+      return;
+    }
 
     // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
     //    Show children of root
     //    Trigger layer's onEnter callback
-    if (keySequencesContain(this._enableSequences, keySequence)) {
-      // Test
+    if (keySequencesContain(this._enableSequences, keySequence) && !!this.currentKeytip) {
+      this.currentKeytip = this.root;
     }
 
     // If currentKeytip is a non-root node, look at all children of currentKeytip

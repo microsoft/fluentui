@@ -9,6 +9,7 @@ import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { KeyCodes } from '../../Utilities';
 import { IKeySequence } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
+import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -27,8 +28,6 @@ const defaultGoBackSequence = {
   keyCodes: [KeyCodes.escape]
 } as IKeySequence;
 
-const ktpId = 'ktp';
-
 /**
  * A layer that holds all keytip items
  *
@@ -41,7 +40,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipGoBackSequences: [defaultGoBackSequence],
-    id: ktpId + '-' + KeyCodes.alt + '-' + KeyCodes.leftWindow
+    id: ktpFullPrefix + KeyCodes.alt + ktpSeparator + KeyCodes.leftWindow
   };
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
@@ -100,6 +99,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       this.props.onExitKeytipMode();
     }
     this.setState({ keytips: [], inKeytipMode: false });
+  }
+
+  public enterKeytipMode(): void {
+    if (this.props.onEnterKeytipMode) {
+      this.props.onEnterKeytipMode();
+    }
   }
 
   @autobind

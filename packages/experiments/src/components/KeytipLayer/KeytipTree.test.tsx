@@ -6,6 +6,7 @@ import { KeytipLayer } from './KeytipLayer';
 import { KeytipManager } from './KeytipManager';
 import { IKeySequence } from '../../utilities/keysequence';
 import { KeyCodes } from '../../Utilities';
+import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 
 describe('KeytipTree', () => {
   function emptyCallback(): void {
@@ -17,10 +18,6 @@ describe('KeytipTree', () => {
   const keytipExitSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.alt, KeyCodes.leftWindow] }];
   const keytipGoBackSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.escape] }];
   const keytipManager = KeytipManager.getInstance();
-
-  const ktp = 'ktp';
-  const separator = '-';
-  const ktpPrefix = ktp + separator;
 
   beforeEach(() => {
     // Create layer
@@ -51,7 +48,7 @@ describe('KeytipTree', () => {
     let keytipTree = keytipManager.keytipTree;
 
     // TreeNode C, will be child of root
-    const keytipIdC = ktpPrefix + KeyCodes.c;
+    const keytipIdC = ktpFullPrefix + KeyCodes.c;
     const sampleKeySequence: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }];
 
     keytipTree.addNode(sampleKeySequence, emptyCallback);
@@ -75,11 +72,11 @@ describe('KeytipTree', () => {
     let keytipTree = keytipManager.keytipTree;
 
     // Parent
-    const keytipIdC = ktpPrefix + KeyCodes.c;
+    const keytipIdC = ktpFullPrefix + KeyCodes.c;
     const keytipSequenceC: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }];
 
     // Child
-    const keytipIdB = ktpPrefix + KeyCodes.c + separator + KeyCodes.b;
+    const keytipIdB = ktpFullPrefix + KeyCodes.c + ktpSeparator + KeyCodes.b;
     const keytipSequenceB: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }, { keyCodes: [KeyCodes.b] }];
 
     keytipTree.addNode(keytipSequenceC, emptyCallback);
@@ -103,11 +100,11 @@ describe('KeytipTree', () => {
     let keytipTree = keytipManager.keytipTree;
 
     // Parent
-    const keytipIdC = ktpPrefix + KeyCodes.c;
+    const keytipIdC = ktpFullPrefix + KeyCodes.c;
     const keytipSequenceC: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }];
 
     // Child
-    const keytipIdB = ktpPrefix + KeyCodes.c + separator + KeyCodes.b;
+    const keytipIdB = ktpFullPrefix + KeyCodes.c + ktpSeparator + KeyCodes.b;
     const keytipSequenceB: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }, { keyCodes: [KeyCodes.b] }];
 
     keytipTree.addNode(keytipSequenceB, emptyCallback);
@@ -164,23 +161,23 @@ describe('KeytipTree', () => {
     let keytipTree = keytipManager.keytipTree;
 
     // Node B
-    const keytipIdB = ktpPrefix + KeyCodes.c + separator + KeyCodes.b;
+    const keytipIdB = ktpFullPrefix + KeyCodes.c + ktpSeparator + KeyCodes.b;
     const keytipSequenceB: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }, { keyCodes: [KeyCodes.b] }];
 
     // Node C
-    const keytipIdC = ktpPrefix + KeyCodes.c;
+    const keytipIdC = ktpFullPrefix + KeyCodes.c;
     const keytipSequenceC: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }];
 
     // Node D
-    const keytipIdD = ktpPrefix + KeyCodes.e + separator + KeyCodes.d;
+    const keytipIdD = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.d;
     const keytipSequenceD: IKeySequence[] = [{ keyCodes: [KeyCodes.e] }, { keyCodes: [KeyCodes.d] }];
 
     // Node E
-    const keytipIdE = ktpPrefix + KeyCodes.e;
+    const keytipIdE = ktpFullPrefix + KeyCodes.e;
     const keytipSequenceE: IKeySequence[] = [{ keyCodes: [KeyCodes.e] }];
 
     // Node F
-    const keytipIdF = ktpPrefix + KeyCodes.e + separator + KeyCodes.f;
+    const keytipIdF = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.f;
     const keytipSequenceF: IKeySequence[] = [{ keyCodes: [KeyCodes.e] }, { keyCodes: [KeyCodes.f] }];
 
     keytipTree.addNode(keytipSequenceF, emptyCallback);

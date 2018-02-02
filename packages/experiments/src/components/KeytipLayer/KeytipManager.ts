@@ -1,9 +1,8 @@
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
-import { IKeySequence } from '../../utilities/keysequence';
+import { IKeySequence, convertSequencesToKeytipID } from '../../utilities/keysequence';
 
-const ktpId = 'ktp';
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
 
@@ -19,19 +18,6 @@ export class KeytipManager {
   }
 
   /**
-   * Converts a whole set of KeySequences into one ID, which will be the ID for the last keytip sequence specified
-   * keySequences should not include the initial keytip 'start' sequence
-   * @param keySequences - Full path of IKeySequences for one keytip
-   */
-  public convertSequencesToID(keySequences: IKeySequence[]): string {
-    let id = ktpId;
-    for (let keySequence of keySequences) {
-      id += '-' + keySequence.keyCodes.join('-');
-    }
-    return id;
-  }
-
-  /**
    * Gets the aria-describedby property for a set of keySequences
    * keySequences should not include the initial keytip 'start' sequence
    * @param keySequences - Full path of IKeySequences for one keytip
@@ -44,7 +30,7 @@ export class KeytipManager {
     }
 
     for (let i = 0; i < keySequences.length; i++) {
-      describedby += ' ' + this.convertSequencesToID(keySequences.slice(0, i + 1));
+      describedby += ' ' + convertSequencesToKeytipID(keySequences.slice(0, i + 1));
     }
 
     return describedby;
@@ -73,7 +59,10 @@ export class KeytipManager {
    */
   public setLayer(layer: KeytipLayer): void {
     this._layer = layer;
-    this.keytipTree = new KeytipTree(this._layer.props.keytipStartSequences, this._layer.props.keytipExitSequences);
+    // Create the KeytipTree
+    this.keytipTree = new KeytipTree(this._layer.props.keytipStartSequences!,
+      this._layer.props.keytipExitSequences!,
+      this._layer.props.keytipGoBackSequences!);
   }
 
 }

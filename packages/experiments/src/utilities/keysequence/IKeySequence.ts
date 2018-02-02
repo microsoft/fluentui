@@ -1,4 +1,5 @@
 import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { ktpPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 // REMOVE IKEYSEQUENCE FROM CORE PACKAGE FOR NOW????
 export interface IKeySequence {
   keyCodes: KeyCodes[];
@@ -38,13 +39,14 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
 }
 
 /**
- *
- * @param keySequences
+ * Converts a whole set of KeySequences into one keytip ID, which will be the ID for the last keytip sequence specified
+ * keySequences should not include the initial keytip 'start' sequence
+ * @param keySequences - Full path of IKeySequences for one keytip
  */
-export function convertSequencesToString(keySequences: IKeySequence[]): string {
-  let conversion = '';
+export function convertSequencesToKeytipID(keySequences: IKeySequence[]): string {
+  let conversion = ktpPrefix;
   for (let keySequence of keySequences) {
-    conversion += keySequence.keyCodes.join('-');
+    conversion += ktpSeparator + keySequence.keyCodes.join(ktpSeparator);
   }
   return conversion;
 }

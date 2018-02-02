@@ -24,7 +24,7 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
   * @type {KeySequence}
   * @memberof IKeytipLayerProps
   */
-  keytipStartSequences: IKeySequence[];
+  keytipStartSequences?: IKeySequence[];
 
   /**
    * List of key sequences that execute the 'go back' functionality in keytips (going back to the previous level of keytips)
@@ -32,7 +32,7 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
    * @type {KeySequence}
    * @memberof IKeytipLayerProps
    */
-  keytipGoBackSequences: IKeySequence[];
+  keytipGoBackSequences?: IKeySequence[];
 
   /**
    * List of key sequences that will exit keytips mode
@@ -40,7 +40,7 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
    * @type {KeySequence}
    * @memberof IKeytipLayerProps
    */
-  keytipExitSequences: IKeySequence[];
+  keytipExitSequences?: IKeySequence[];
 
   /**
    * List of keytips to add to this layer
@@ -54,4 +54,9 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
    *
    */
   onExitKeytipMode?: () => void;
+
+  /**
+   *
+   */
+  onEnterKeytipMode?: () => void;
 }
