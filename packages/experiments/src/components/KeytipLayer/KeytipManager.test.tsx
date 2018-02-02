@@ -3,7 +3,8 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { KeytipManager } from './KeytipManager';
-import { KeyCodes, IKeySequence } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
+import { IKeySequence } from '../../utilities/keysequence';
 import { KeytipLayer } from './KeytipLayer';
 
 describe('KeytipManager', () => {

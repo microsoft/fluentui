@@ -1,4 +1,4 @@
-import { IKeySequence, keySequencesContain } from '../../Utilities';
+import { IKeySequence, keySequencesContain } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 
 export interface IKeytipTreeNode {

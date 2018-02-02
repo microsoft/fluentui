@@ -6,7 +6,8 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { IKeySequence, KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
+import { IKeySequence } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 
 export interface IKeytipLayerState {

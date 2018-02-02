@@ -1,6 +1,7 @@
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IPoint, IKeySequence, IStyleFunction } from '../../Utilities';
+import { IPoint, IStyleFunction } from '../../Utilities';
+import { IKeySequence } from '../../utilities/keysequence';
 
 export interface IKeytip {
 

@@ -1,7 +1,7 @@
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
-import { IKeySequence } from '../../Utilities';
+import { IKeySequence } from '../../utilities/keysequence';
 
 const ktpId = 'ktp';
 export class KeytipManager {

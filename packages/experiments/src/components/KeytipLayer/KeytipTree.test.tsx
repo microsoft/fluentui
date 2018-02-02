@@ -4,7 +4,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipManager } from './KeytipManager';
-import { KeyCodes, IKeySequence } from '../../Utilities';
+import { IKeySequence } from '../../utilities/keysequence';
+import { KeyCodes } from '../../Utilities';
 
 describe('KeytipTree', () => {
   function emptyCallback(): void {
