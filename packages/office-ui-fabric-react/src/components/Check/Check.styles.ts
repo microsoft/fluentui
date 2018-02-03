@@ -35,7 +35,8 @@ export const getStyles = (
   return ({
     root: [
       {
-        lineHeight: 1,
+        // lineHeight currently needs to be a string to output without 'px'
+        lineHeight: '1',
         width: checkBoxHeight,
         height: checkBoxHeight,
         verticalAlign: 'top',
@@ -108,6 +109,10 @@ export const getStyles = (
         left: '.5px',
 
         selectors: {
+          ':hover': {
+            opacity: 1
+          },
+
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'
           }
