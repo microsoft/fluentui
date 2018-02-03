@@ -3,9 +3,8 @@ import {
   concatStyleSets,
   getTheme,
   HighContrastSelector,
-  ITheme,
   IStyle,
-  setUserSelect,
+  ITheme,
 } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 
@@ -35,13 +34,13 @@ export const getStyles = (
 
   return ({
     root: [
-      setUserSelect('none'),
       {
         lineHeight: 1,
         width: checkBoxHeight,
         height: checkBoxHeight,
         verticalAlign: 'top',
         position: 'relative',
+        userSelect: 'none',
 
         selectors: {
           ':before': {
@@ -127,6 +126,6 @@ export const getStyles = (
           }
         }
       }
-    ],
+    ]
   });
 };

@@ -13,18 +13,16 @@ import {
 import { Icon } from '../../Icon';
 import { getStyles } from './Check.styles';
 
-// import * as stylesImport from './Check.scss';
-// const styles: any = stylesImport;
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
 @customizable('Check', ['theme'])
 export class CheckBase extends BaseComponent<ICheckProps, {}> {
   public static defaultProps: ICheckProps = {
-    isChecked: false
+    checked: false
   };
 
   public shouldComponentUpdate(newProps: ICheckProps) {
-    return this.props.isChecked !== newProps.isChecked || this.props.checked !== newProps.checked;
+    return this.props.checked !== newProps.checked;
   }
 
   public render(): JSX.Element {

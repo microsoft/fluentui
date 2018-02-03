@@ -16,12 +16,6 @@ export interface ICheckProps extends React.Props<CheckBase> {
   checked?: boolean;
 
   /**
-   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   * @deprecated
-   */
-  isChecked?: boolean;
-
-  /**
   * Call to provide customized styling that will layer on top of the variant rules
   */
   getStyles?: IStyleFunction<ICheckStyleProps, ICheckStyles>;
@@ -45,8 +39,7 @@ export interface ICheckProps extends React.Props<CheckBase> {
 
 export interface ICheckStyleProps {
   /**
-   * Accept theme prop. Defaults to getTheme() function.
-   * @defaultvalue getTheme()
+   * Accept theme prop.
    */
   theme: ITheme;
 
@@ -69,11 +62,6 @@ export interface ICheckStyles {
    * Style for the root element.
    */
   root?: IStyle;
-
-  /**
-   * Change child element styles based on isChecked state.
-   */
-  rootIsChecked?: IStyle;
 
   /**
    * The 'check' icon styles.
