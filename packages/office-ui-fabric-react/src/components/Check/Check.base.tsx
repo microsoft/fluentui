@@ -20,11 +20,11 @@ const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 @customizable('Check', ['theme'])
 export class CheckBase extends BaseComponent<ICheckProps, {}> {
   public static defaultProps: ICheckProps = {
-    isChecked: false
+    checked: false
   };
 
   public shouldComponentUpdate(newProps: ICheckProps) {
-    return this.props.isChecked !== newProps.isChecked || this.props.checked !== newProps.checked;
+    return this.props.checked !== newProps.checked;
   }
 
   public render(): JSX.Element {
@@ -42,7 +42,8 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
           'ms-Check',
           className,
           classNames.root,
-          checked && 'is-checked'
+          checked && 'is-checked',
+          checked && 'rootIsChecked'
         ) }
       >
         { Icon({
