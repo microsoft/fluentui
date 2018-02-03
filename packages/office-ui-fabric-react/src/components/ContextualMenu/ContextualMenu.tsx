@@ -442,6 +442,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderNormalItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
+      item.positionInSet = focusableElementIndex;
+      item.setSize = totalItemCount;
       return [item.onRender(item, this.dismiss)];
     }
     if (item.href) {

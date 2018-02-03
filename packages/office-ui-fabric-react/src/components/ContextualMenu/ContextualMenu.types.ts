@@ -407,6 +407,16 @@ export interface IContextualMenuItem {
   role?: string;
 
   /**
+   * Optional accessibility a list item's position in the list (aria-posinset) attribute that will be stamped on to the element.
+   */
+  positionInSet?: number;
+
+  /**
+   * Optional accessibility for total size of a list (aria-setsize) attribute that will be stamped on to the element.
+   */
+  setSize?: number;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
