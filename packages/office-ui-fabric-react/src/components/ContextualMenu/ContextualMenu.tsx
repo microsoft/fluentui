@@ -444,6 +444,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (item.onRender) {
       item.positionInSet = focusableElementIndex;
       item.setSize = totalItemCount;
+      item.hasCheckMarks = hasCheckmarks;
+      item.hasIcon = hasIcons;
       return [item.onRender(item, this.dismiss)];
     }
     if (item.href) {

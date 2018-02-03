@@ -417,6 +417,16 @@ export interface IContextualMenuItem {
   setSize?: number;
 
   /**
+   * True if a list of menu items can contain a checkbox. False/undefined otherwise.
+   */
+  hasCheckMark?: boolean;
+
+  /**
+   * True if a menu items can contain a icon. False/undefined otherwise.
+   */
+  hasIcons?: boolean;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
