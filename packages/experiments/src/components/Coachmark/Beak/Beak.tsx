@@ -6,7 +6,6 @@ import {
 } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles, IBeakStylesProps } from './Beak.styles';
-import { DefaultPalette } from '../../../Styling';
 
 export interface IBeakState { }
 
@@ -18,7 +17,6 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
   }
 
   public componentDidMount(): void {
-    this._createCanvasTriangle(this._canvasElement, DefaultPalette.themePrimary);
   }
 
   public render(): JSX.Element {
@@ -29,25 +27,19 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
       beakWidth = 18
     } = this.props;
 
+    const pointOne = beakWidth / 2 + "," + 0;
+    const pointTwo = beakWidth + "," + beakHeight;
+    const pointThree = 0 + "," + beakHeight;
+
     return (
       <div className={ css('ms-Beak', classNames.root) }>
-        <canvas
-          ref={ this._resolveRef('_canvasElement') }
-          className={ css('ms-Beak-canvas', classNames.canvas) }
-          width={ beakWidth + 'px' }
-          height={ beakHeight + 'px' }
-        />
+        <svg
+          height={ beakHeight } width={ beakWidth }
+          className={ classNames.beak }
+        >
+          <polygon points={ pointOne + " " + pointTwo + " " + pointThree } />
+        </svg>
       </div>
     );
-  }
-
-  private _createCanvasTriangle(canvasElement: HTMLCanvasElement, backgroundColor: string): void {
-    const ctx = canvasElement.getContext('2d')!;
-    ctx.beginPath();
-    ctx.moveTo(this.props.beakWidth! / 2, 0); // Top point
-    ctx.lineTo(this.props.beakWidth!, this.props.beakHeight!); // Bottom right point
-    ctx.lineTo(0, this.props.beakHeight!); // Bottom left point
-    ctx.fillStyle = backgroundColor;
-    ctx.fill();
   }
 }

@@ -169,7 +169,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
         // Initialize element in proximity now that initial
         // measurements have been taken
-        this._isElementInProximity(this._entityInnerHostElement);
+        this._isElementInProximity(100);
       }, 10);
     }
   }
@@ -192,7 +192,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
   }
 
-  private _isElementInProximity(targetElement: HTMLElement, mouseProximityOffset: number = 0): void {
+  private _isElementInProximity(mouseProximityOffset: number = 0): void {
     /**
      * An array of cached ids returned when setTimeout runs during
      * the window resize event trigger.
@@ -203,7 +203,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
      * The target element the mouse would be in
      * proximity to
      */
-    let targetElementRect: ClientRect = targetElement.getBoundingClientRect();
+    let targetElementRect: ClientRect = this._entityInnerHostElement.getBoundingClientRect();
 
     // When the window resizes we want to async
     // get the bounding client rectangle.
@@ -216,7 +216,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       });
 
       timeoutIds.push(this._async.setTimeout((): void => {
-        targetElementRect = targetElement.getBoundingClientRect();
+        targetElementRect = this._entityInnerHostElement.getBoundingClientRect();
       }, 100));
     });
 
@@ -226,7 +226,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
       let mouseY = e.pageY;
       let mouseX = e.pageX;
-      let isMouseInProximity = this._isInsideElement(targetElementRect, mouseX, mouseY);
+      let isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         this.setState({
@@ -236,8 +236,11 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
   }
 
-  private _isInsideElement(elementRect: ClientRect, mouseX: number, mouseY: number, mouseProximityOffset: number = 0): boolean {
-    return mouseX > (elementRect.left - mouseProximityOffset) && mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
-      mouseY > (elementRect.top - mouseProximityOffset) && mouseY < ((elementRect.top + elementRect.height) + mouseProximityOffset);
+  private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0): boolean {
+    const elementRect = this._entityInnerHostElement.getBoundingClientRect();
+    return mouseX > (elementRect.left - mouseProximityOffset) &&
+      mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
+      mouseY > (elementRect.top - mouseProximityOffset) &&
+      mouseY < ((elementRect.top + elementRect.height) + mouseProximityOffset);
   }
 }
