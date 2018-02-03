@@ -1,2 +1,2 @@
-export * from './BaseAutofill';
-export * from './BaseAutofill.types';
+export * from './Autofill';
+export * from './Autofill.types';

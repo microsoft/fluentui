@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseAutofill } from 'office-ui-fabric-react/lib/Autofill';
+import { Autofill } from 'office-ui-fabric-react/lib/Autofill';
 import { IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPickerProps } from '../../FloatingPicker';
 import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
@@ -42,12 +42,12 @@ export interface IBaseExtendedPickerProps<T> {
   /**
    * A callback for when the user put focus on the picker
    */
-  onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutofill>;
+  onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * A callback for when the user moves the focus away from the picker
    */
-  onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutofill>;
+  onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
 
   /**
    * ClassName for the picker.
