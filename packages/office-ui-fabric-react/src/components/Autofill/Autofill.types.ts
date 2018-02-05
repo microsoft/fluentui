@@ -95,10 +95,16 @@ export interface IAutofillProps extends
   onInputChange?: (value: string) => string;
 }
 
+/**
+ * @deprecated do not use, will be removed in 6.0
+*/
 export interface IBaseAutoFill extends IAutofill {
 
 }
 
+/**
+ * @deprecated do not use, will be removed in 6.0
+*/
 export interface IBaseAutoFillProps extends IAutofillProps {
 
 }
