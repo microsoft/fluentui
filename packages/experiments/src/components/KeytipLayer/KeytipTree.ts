@@ -114,7 +114,7 @@ export class KeytipTree {
   }
 
   /**
-   * Processes inputs from the document listener and traverses the keytip tree
+   * Processes inputs from the document listener and traverse the keytip tree
    * @param keySequence - Keys pressed by the user
    */
   public processInput(keySequence: IKeySequence): void {
@@ -214,7 +214,7 @@ export class KeytipTree {
 
   }
 
-  private _getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
+  public _getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     let possibleNodes = this._getChildrenNodes(currentKeytip.children);
     for (let node of possibleNodes) {
       if (keySequencesAreEqual(node.keytipSequence, keySequence)) {
@@ -224,7 +224,7 @@ export class KeytipTree {
     return undefined;
   }
 
-  private _getPartialMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
+  public _getPartialMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
     let possibleNodes = this._getChildrenNodes(currentKeytip.children);
     for (let node of possibleNodes) {
@@ -235,7 +235,7 @@ export class KeytipTree {
     return nodes;
   }
 
-  private _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
+  public _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
     for (let id of ids) {
       nodes.push(this.nodeMap[id]);

@@ -1,4 +1,4 @@
-import { IKeySequence, keySequencesAreEqual, keySequencesContain, convertSequencesToKeytipID } from './IKeySequence';
+import { IKeySequence, keySequencesAreEqual, keySequenceStartsWith, keySequencesContain, convertSequencesToKeytipID } from './IKeySequence';
 import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { ktpFullPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 
@@ -43,6 +43,32 @@ describe('IKeySequence', () => {
       let sequences2: IKeySequence[] = [{ keyCodes: [KeyCodes.a, KeyCodes.b] }, { keyCodes: [KeyCodes.c, KeyCodes.d] }];
       expect(keySequencesContain(sequences, seq1)).toEqual(false);
       expect(keySequencesContain(sequences2, seq1)).toEqual(true);
+    });
+  });
+
+  describe('keySequencesStartsWith', () => {
+    it('false when sequence start is different', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
+      let seq2: IKeySequence = { keyCodes: [KeyCodes.b] };
+      expect(keySequenceStartsWith(seq1, seq2)).toEqual(false);
+    });
+
+    it('true when sequences are equal', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
+      let seq2: IKeySequence = { keyCodes: [KeyCodes.a] };
+      expect(keySequenceStartsWith(seq1, seq2)).toEqual(true);
+    });
+
+    it('true when sequence1 is a subset of sequence 2', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
+      let seq2: IKeySequence = { keyCodes: [KeyCodes.a, KeyCodes.b] };
+      expect(keySequenceStartsWith(seq1, seq2)).toEqual(true);
+    });
+
+    it('true when sequence2 is a subset of sequence 1', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a, KeyCodes.b] };
+      let seq2: IKeySequence = { keyCodes: [KeyCodes.a] };
+      expect(keySequenceStartsWith(seq1, seq2)).toEqual(true);
     });
   });
 

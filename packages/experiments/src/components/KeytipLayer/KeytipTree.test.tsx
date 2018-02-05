@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
 
+import { KeytipTree } from './KeytipTree';
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipManager } from './KeytipManager';
 import { IKeySequence } from '../../utilities/keysequence';
@@ -221,5 +222,45 @@ describe('KeytipTree', () => {
     expect(keytipTree.root.children).toHaveLength(2);
     expect(keytipTree.root.children).toContain(keytipIdC);
     expect(keytipTree.root.children).toContain(keytipIdE);
+  });
+
+  it('if keysequence is in ', () => {
+    let keytipTree = keytipManager.keytipTree;
+
+    /**
+     *   Tree should end up looking like:
+     *
+     *            a
+     *          /   \   \
+     *         c     e1   e2
+     *        /     / \
+     *       b     d   f
+     *
+     */
+
+    // Node B
+    const keytipIdB = ktpFullPrefix + KeyCodes.c + ktpSeparator + KeyCodes.b;
+    const keytipSequenceB: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }, { keyCodes: [KeyCodes.b] }];
+
+    // Node C
+    const keytipIdC = ktpFullPrefix + KeyCodes.c;
+    const keytipSequenceC: IKeySequence[] = [{ keyCodes: [KeyCodes.c] }];
+
+    // Node D
+    const keytipIdD = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one + ktpSeparator + KeyCodes.d;
+    const keytipSequenceD: IKeySequence[] = [{ keyCodes: [KeyCodes.e, KeyCodes.one] }, { keyCodes: [KeyCodes.d] }];
+
+    // Node E1
+    const keytipIdE1 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one;
+    const keytipSequenceE1: IKeySequence[] = [{ keyCodes: [KeyCodes.e, KeyCodes.one] }];
+
+    // Node E2
+    const keytipIdE2 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.two;
+    const keytipSequenceE2: IKeySequence[] = [{ keyCodes: [KeyCodes.e, KeyCodes.two] }];
+
+    // Node F
+    const keytipIdF = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one + ktpSeparator + KeyCodes.f;
+    const keytipSequenceF: IKeySequence[] = [{ keyCodes: [KeyCodes.e, KeyCodes.one] }, { keyCodes: [KeyCodes.f] }];
+
   });
 });
