@@ -5,6 +5,12 @@ import { ktpFullPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 describe('IKeySequence', () => {
 
   describe('keySequencesAreEqual', () => {
+    it('empty keyCode', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
+      let seq2: IKeySequence = { keyCodes: [] };
+      expect(keySequencesAreEqual(seq1, seq2)).toEqual(false);
+    });
+
     it('single KeyCode', () => {
       let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
       let seq2: IKeySequence = { keyCodes: [KeyCodes.a] };
@@ -29,6 +35,18 @@ describe('IKeySequence', () => {
   });
 
   describe('keySequencesContain', () => {
+    it('empty sequences', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
+      let sequences: IKeySequence[] = [{ keyCodes: [] }];
+      expect(keySequencesContain(sequences, seq1)).toEqual(false);
+    });
+
+    it('empty keycode sequence', () => {
+      let seq1: IKeySequence = { keyCodes: [] };
+      let sequences: IKeySequence[] = [{ keyCodes: [KeyCodes.a] }, { keyCodes: [KeyCodes.b] }];
+      expect(keySequencesContain(sequences, seq1)).toEqual(false);
+    });
+
     it('single KeyCode', () => {
       let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
       let sequences: IKeySequence[] = [{ keyCodes: [KeyCodes.a] }, { keyCodes: [KeyCodes.b] }];
