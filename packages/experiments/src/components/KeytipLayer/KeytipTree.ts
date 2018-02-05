@@ -235,7 +235,7 @@ export class KeytipTree {
     return nodes;
   }
 
-  public _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
+  private _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
     for (let id of ids) {
       nodes.push(this.nodeMap[id]);
