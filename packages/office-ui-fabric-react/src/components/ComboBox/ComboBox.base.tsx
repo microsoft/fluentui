@@ -7,7 +7,7 @@ import {
   CommandButton,
   IconButton
 } from '../../Button';
-import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
+import { Autofill } from '../Autofill/Autofill';
 import {
   autobind,
   BaseComponent,
@@ -93,7 +93,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
   };
 
   // The input aspect of the comboBox
-  private _comboBox: BaseAutoFill;
+  private _comboBox: Autofill;
 
   // The wrapping div of the input and button
   private _comboBoxWrapper: HTMLDivElement;
@@ -312,7 +312,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
           id={ id + 'wrapper' }
           className={ this._classNames.root }
         >
-          <BaseAutoFill
+          <Autofill
             data-is-interactable={ !disabled }
             ref={ this._resolveRef('_comboBox') }
             id={ id + '-input' }
@@ -322,7 +322,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ this._onBaseAutofillClick }
+            onClick={ this._onAutofillClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ this._getAriaAutoCompleteValue() }
@@ -338,8 +338,8 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
             spellCheck={ false }
             defaultVisibleValue={ this._currentVisibleValue }
             suggestedDisplayValue={ suggestedDisplayValue }
-            updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
-            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+            updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
             title={ title }
           />
           <IconButton
@@ -406,12 +406,12 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-   * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
   @autobind
-  private _onUpdateValueInAutoFillWillReceiveProps(): string | null {
+  private _onUpdateValueInAutofillWillReceiveProps(): string | null {
     if (this._comboBox === null || this._comboBox === undefined) {
       return null;
     }
@@ -432,7 +432,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
    * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
    */
   @autobind
-  private _onShouldSelectFullInputValueInAutoFillComponentDidUpdate(): boolean {
+  private _onShouldSelectFullInputValueInAutofillComponentDidUpdate(): boolean {
     return this._currentVisibleValue === this.state.suggestedDisplayValue;
   }
 
@@ -1257,7 +1257,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
    * @param ev - The keyboard event that was fired
    */
   @autobind
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
+  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     let {
     disabled,
       allowFreeform,
@@ -1420,7 +1420,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
    * @param ev - the keyboard event that was fired
    */
   @autobind
-  private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
+  private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     let {
     disabled,
       allowFreeform,
@@ -1487,7 +1487,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
    * eating the required key event when disabled
    * @param ev - the keyboard event that was fired
    */
-  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill> | null) {
+  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | Autofill> | null) {
     // If we are disabled, close the menu (if needed)
     // and eat all keystokes other than TAB or ESC
     if (this.props.disabled) {
@@ -1526,7 +1526,7 @@ export class ComboBoxBase extends BaseComponent<IComboBoxProps, IComboBoxState> 
    * Click handler for the autofill.
    */
   @autobind
-  private _onBaseAutofillClick() {
+  private _onAutofillClick() {
     if (this.props.allowFreeform) {
       this.focus(this.state.isOpen);
     } else {
