@@ -32,6 +32,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           padding-top: 2px;
         }
     id="id__2"
+    onBlur={[Function]}
     role="grid"
   >
     <tbody>

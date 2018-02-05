@@ -28,6 +28,17 @@ $field-placeholder-disabled-color: $disabledTextColor;
 $field-description-color: $bodySubtextColor;
 $field-error-color: $errorTextColor;
 
+// Mixin for focus border, including high contrast
+@mixin fieldFocusBorder {
+  border-color: $field-border-focus-color;
+  @include high-contrast {
+    border-width: 2px;
+    .field {
+      @include ms-padding(0, 11px, 0, 11px);
+    }
+  }
+}
+
 // the box containing the label and input field
 .root {
   @include ms-normalize;
@@ -54,7 +65,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.fieldGroupIsFocused {
-    border-color: $field-border-focus-color;
+    @include fieldFocusBorder();
   }
 
   &.fieldGroupIsFocused {
@@ -99,12 +110,13 @@ $field-error-color: $errorTextColor;
 }
 
 .fieldPrefixSuffix {
+  align-items: center;
   background: $ms-color-neutralLighter;
   color: $ms-color-neutralSecondary;
   display: flex;
-  align-items: center;
-  padding: 0 10px;
   line-height: 1;
+  padding: 0 10px;
+  white-space: nowrap;
 }
 
 .field {
@@ -162,7 +174,7 @@ $field-error-color: $errorTextColor;
 
 //= State: An active textfield
 .root.rootIsActive {
-  border-color: $field-border-focus-color;
+  @include fieldFocusBorder();
 }
 
 .icon {
@@ -240,7 +252,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.rootIsActive {
-    border-color: $field-border-focus-color;
+    @include fieldFocusBorder();
   }
 
   &:hover:not(.rootIsDisabled),
