@@ -96,7 +96,6 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
           onKeyDown={ this.onBackspace }
           onCopy={ this.onCopy }
         >
-
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.props.headerComponent }
@@ -126,6 +125,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     );
   }
 
+  @autobind
   protected onSelectionChange(): void {
     this.forceUpdate();
   }

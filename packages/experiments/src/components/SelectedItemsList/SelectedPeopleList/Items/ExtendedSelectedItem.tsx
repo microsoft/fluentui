@@ -2,8 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
-import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
-import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
@@ -40,7 +39,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-          { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
+          { ['is-invalid ' + styles.validationError]: !item.isValid }
         ) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
@@ -52,7 +51,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
         <div hidden={ !item.canExpand || onExpandItem === undefined }>
           <IconButton
             onClick={ this.onClickIconButton(onExpandItem) }
-            iconProps={ { iconName: 'Add', style: { fontSize: '12px' } } }
+            iconProps={ { iconName: 'Add', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />
@@ -64,13 +63,14 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           >
             <Persona
               { ...item }
-              presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
-              size={ PersonaSize.size28 }
+              onRenderCoin={ this.props.renderPersonaCoin }
+              onRenderPrimaryText={ this.props.renderPrimaryText }
+              size={ PersonaSize.size32 }
             />
           </div>
           <IconButton
             onClick={ this.onClickIconButton(onRemoveItem) }
-            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
+            iconProps={ { iconName: 'Cancel', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
           />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISuggestionModel, ValidationState, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IBaseFloatingPicker {
@@ -84,7 +84,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * A function used to validate if raw text entered into the well can be added
    */
-  onValidateInput?: (input: string) => ValidationState;
+  onValidateInput?: (input: string) => boolean;
   /**
    * The text to display while searching for more results in a limited suggestions list
    */
@@ -95,7 +95,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    */
   createGenericItem?: (
     input: string,
-    ValidationState: ValidationState
+    isValid: boolean
   ) => ISuggestionModel<T>;
 
   /**

@@ -4,7 +4,6 @@ import * as React from 'react';
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { IPeoplePickerItemProps } from '../../../ExtendedPicker';
-import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 // tslint:disable-next-line:no-any
@@ -34,7 +33,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         'ms-PickerPersona-container',
         styles.personaContainer,
         { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-        { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
+        { ['is-invalid ' + styles.validationError]: !item.isValid }
       ) }
       data-is-focusable={ true }
       data-is-sub-focuszone={ true }

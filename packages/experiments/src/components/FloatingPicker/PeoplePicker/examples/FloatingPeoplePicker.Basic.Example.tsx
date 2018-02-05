@@ -7,7 +7,7 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IBasePickerSuggestionsProps, ValidationState, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPicker } from '../../BaseFloatingPicker.types';
 import { FloatingPeoplePicker } from '../FloatingPeoplePicker';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
@@ -161,13 +161,13 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _validateInput(input: string): ValidationState {
+  private _validateInput(input: string): boolean {
     if (input.indexOf('@') !== -1) {
-      return ValidationState.valid;
+      return true;
     } else if (input.length > 1) {
-      return ValidationState.warning;
+      return false;
     } else {
-      return ValidationState.invalid;
+      return false;
     }
   }
 }

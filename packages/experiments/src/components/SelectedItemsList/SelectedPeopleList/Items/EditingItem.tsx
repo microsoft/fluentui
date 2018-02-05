@@ -6,6 +6,7 @@ import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../Floa
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPeoplePickerItemState } from './ExtendedSelectedItem';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 import * as stylesImport from './EditingItem.scss';
 
@@ -15,8 +16,8 @@ const styles: any = stylesImport;
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   // tslint:disable-next-line:no-any
   onEditingComplete: (oldItem: any, newItem: any) => void;
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
-  floatingPickerProps?: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
 }
 
@@ -34,6 +35,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     this._floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
   }
 
+  @autobind
   public componentDidMount(): void {
     let getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
     let itemText = getEditingItemText(this.props.item);
@@ -69,7 +71,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   private _renderEditingSuggestions(): JSX.Element {
     let onRenderFloatingPicker = this._onRenderFloatingPicker;
     return (onRenderFloatingPicker({
-      componentRef: this._resolveRef('editingFloatingPicker'),
+      componentRef: this._resolveRef('_editingFloatingPicker'),
       onChange: this._onSuggestionSelected,
       inputElement: this._editingInput,
       selectedItems: [],
@@ -90,8 +92,10 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   @autobind
-  private _onInputBlur(): void {
-    this._editingFloatingPicker.forceResolveSuggestion();
+  private _onInputBlur(ev: React.FocusEvent<HTMLElement>): void {
+    if (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1) {
+      this._editingFloatingPicker.forceResolveSuggestion();
+    }
   }
 
   @autobind
