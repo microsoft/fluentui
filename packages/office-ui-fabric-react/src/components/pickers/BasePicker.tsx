@@ -12,7 +12,7 @@ import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
-import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { Autofill } from '../Autofill/Autofill';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
@@ -35,7 +35,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected selection: Selection;
 
   protected root: HTMLElement;
-  protected input: BaseAutoFill;
+  protected input: Autofill;
   protected focusZone: FocusZone;
   protected suggestionElement: Suggestions<T>;
 
@@ -191,7 +191,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
-              { this.canAddItems() && (<BaseAutoFill
+              { this.canAddItems() && (<Autofill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -415,7 +415,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
     this.setState({ isFocused: true });
     this.selection.setAllSelected(false);
     if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
@@ -437,7 +437,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
     this.setState({ isFocused: false });
   }
 
@@ -700,7 +700,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             selectionMode={ SelectionMode.multiple }
           >
             <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
-              <BaseAutoFill
+              <Autofill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
