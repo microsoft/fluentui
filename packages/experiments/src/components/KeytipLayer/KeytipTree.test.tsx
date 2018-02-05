@@ -224,15 +224,15 @@ describe('KeytipTree', () => {
     expect(keytipTree.root.children).toContain(keytipIdE);
   });
 
-  it('getExactMatched node tests ', () => {
+  it('get matched and partially matched node tests ', () => {
     let keytipTree = new KeytipTree(keytipStartSequences, keytipExitSequences, keytipGoBackSequences);
 
     /**
      *   Tree should end up looking like:
      *
-     *            a
-     *          /   \   \
-     *         c     e1   e2
+     *              a
+     *          /   |   \
+     *         c    e1   e2
      *              / \
      *             d   f
      *
@@ -277,20 +277,24 @@ describe('KeytipTree', () => {
     keytipTree.nodeMap[keytipIdF] = nodeF;
 
     // node should be undefined because it is not a child of node A.
-    let matchedNode1 = keytipTree._getExactMatchedNode({ keyCodes: [KeyCodes.n] }, nodeA);
+    let matchedNode1 = keytipTree.getExactMatchedNode({ keyCodes: [KeyCodes.n] }, nodeA);
     expect(matchedNode1).toBeUndefined();
 
     // node should be equal to node c due to keysequnce.
-    let matchedNode2 = keytipTree._getExactMatchedNode({ keyCodes: [KeyCodes.c] }, nodeA);
+    let matchedNode2 = keytipTree.getExactMatchedNode({ keyCodes: [KeyCodes.c] }, nodeA);
     expect(matchedNode2).toEqual(nodeC);
 
     // nodes array should be empty.
-    let matchedNodes1 = keytipTree._getPartialMatchedNodes({ keyCodes: [KeyCodes.n] }, nodeA);
+    let matchedNodes1 = keytipTree.getPartiallyMatchedNodes({ keyCodes: [KeyCodes.n] }, nodeA);
     expect(matchedNodes1.length).toEqual(0);
 
     // nodes array should be empty.
-    let matchedNodes2 = keytipTree._getPartialMatchedNodes({ keyCodes: [KeyCodes.e] }, nodeA);
-    expect(matchedNodes2.length).toEqual(2);
+    let matchedNodes2 = keytipTree.getPartiallyMatchedNodes({ keyCodes: [] }, nodeA);
+    expect(matchedNodes2.length).toEqual(0);
+
+    // nodes array should be equal to 2.
+    let matchedNodes3 = keytipTree.getPartiallyMatchedNodes({ keyCodes: [KeyCodes.e] }, nodeA);
+    expect(matchedNodes3.length).toEqual(2);
   });
 });
 
@@ -300,5 +304,5 @@ function createTreeNode(id: string, parentId: string, childrenIds: string[], seq
     parent: parentId,
     children: childrenIds,
     keytipSequence: sequence
-  }
+  };
 }

@@ -161,7 +161,7 @@ export class KeytipTree {
     }
 
     if (this.currentKeytip) {
-      let node = this._getExactMatchedNode(currentSequence, this.currentKeytip);
+      let node = this.getExactMatchedNode(currentSequence, this.currentKeytip);
       if (node) { // we found a matching node
         this.currentKeytip = node;
         if (this.currentKeytip.onExecute) {
@@ -179,7 +179,7 @@ export class KeytipTree {
         return;
       }
 
-      let partialNodes = this._getPartialMatchedNodes(currentSequence, this.currentKeytip);
+      let partialNodes = this.getPartiallyMatchedNodes(currentSequence, this.currentKeytip);
       if (partialNodes.length > 0) {
         // we found partial nodes, so we show only those.
         this._manager.hideKeytips();
@@ -214,7 +214,7 @@ export class KeytipTree {
 
   }
 
-  public _getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
+  public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     let possibleNodes = this._getChildrenNodes(currentKeytip.children);
     for (let node of possibleNodes) {
       if (keySequencesAreEqual(node.keytipSequence, keySequence)) {
@@ -224,7 +224,7 @@ export class KeytipTree {
     return undefined;
   }
 
-  public _getPartialMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
+  public getPartiallyMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
     let possibleNodes = this._getChildrenNodes(currentKeytip.children);
     for (let node of possibleNodes) {

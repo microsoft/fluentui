@@ -47,6 +47,18 @@ describe('IKeySequence', () => {
   });
 
   describe('keySequencesStartsWith', () => {
+    it('false when the key sequence for seq1 is zero ', () => {
+      let seq1: IKeySequence = { keyCodes: [] };
+      let seq2: IKeySequence = { keyCodes: [KeyCodes.b] };
+      expect(keySequenceStartsWith(seq1, seq2)).toEqual(false);
+    });
+
+    it('false when the key sequence for seq2 is zero ', () => {
+      let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
+      let seq2: IKeySequence = { keyCodes: [] };
+      expect(keySequenceStartsWith(seq1, seq2)).toEqual(false);
+    });
+
     it('false when sequence start is different', () => {
       let seq1: IKeySequence = { keyCodes: [KeyCodes.a] };
       let seq2: IKeySequence = { keyCodes: [KeyCodes.b] };

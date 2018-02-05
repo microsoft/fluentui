@@ -39,14 +39,20 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
 }
 
 /**
- *
- * @param sequences
- * @param seq
+ * Method returns true if the key squence of the object with minimum length is in the other key sequence.
+ * If the minium length is zero, then it will default to false.
+ * @param seq1
+ * @param seq2
  */
 export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): boolean {
   let keyCodes1 = seq1.keyCodes;
   let keyCodes2 = seq2.keyCodes;
   let minLength = Math.min(keyCodes1.length, keyCodes2.length);
+
+  // If the miniumum length is zero we return false, we don't consider empty array of keycode a subset of the longer array.
+  if (minLength === 0) {
+    return false;
+  }
 
   for (let i = 0; i < minLength; i++) {
     if (keyCodes1[i] !== keyCodes2[i]) {
