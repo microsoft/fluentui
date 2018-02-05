@@ -7,7 +7,9 @@ import {
   getId,
   KeyCodes,
   autobind,
-  customizable
+  customizable,
+  calculatePrecision,
+  precisionRound
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -41,6 +43,11 @@ export interface ISpinButtonState {
    * as active when up/down arrow is pressed
    */
   keyboardSpinDirection: KeyboardSpinDirection;
+
+  /**
+   * The calculated precision for the value.
+   */
+  precision: number;
 }
 
 const getClassNames = classNamesFunction<ISpinButtonStyleProps, ISpinButtonStyles>();
@@ -83,10 +90,14 @@ export class SpinButtonBase extends BaseComponent<ISpinButtonProps, ISpinButtonS
     let value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
 
+    // Ensure that the autocalculated precision is not negative.
+    const precision = props.precision || Math.max(calculatePrecision(props.step!), 0);
+
     this.state = {
       isFocused: false,
       value: value,
-      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
+      precision
     };
 
     this._currentStepFunctionHandle = -1;
@@ -116,7 +127,8 @@ export class SpinButtonBase extends BaseComponent<ISpinButtonProps, ISpinButtonS
     }
 
     this.setState({
-      value: value
+      value: value,
+      precision: newProps.precision || this.state.precision
     });
   }
 
@@ -311,16 +323,18 @@ export class SpinButtonBase extends BaseComponent<ISpinButtonProps, ISpinButtonS
   /**
    * Increment function to use if one is not passed in
    */
-  private _defaultOnIncrement = (value: string) => {
-    let newValue = Math.min(Number(value) + (this.props.step as number), this.props.max as number);
+  private _defaultOnIncrement = (value: string): string | void => {
+    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, this.props.max!);
+    newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
   }
 
   /**
    * Increment function to use if one is not passed in
    */
-  private _defaultOnDecrement = (value: string) => {
-    let newValue = Math.max(Number(value) - (this.props.step as number), this.props.min as number);
+  private _defaultOnDecrement = (value: string): string | void => {
+    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, this.props.min!);
+    newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
   }
 
@@ -375,7 +389,7 @@ export class SpinButtonBase extends BaseComponent<ISpinButtonProps, ISpinButtonS
    */
   @autobind
   private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
-    const newValue = stepFunction(this.state.value as string);
+    let newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
