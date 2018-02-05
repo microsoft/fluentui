@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "[TextField] onChange fix for IE when using multiline with placeholder",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "hlynur.tryggvason@officeatwork.com"
+}
