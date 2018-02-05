@@ -1,12 +1,16 @@
+import { autobind } from '../../../Utilities';
+
 export interface ISuggestionModel<T> {
   item: T;
   selected: boolean;
+  ariaLabel?: string;
 }
 
 export class SuggestionsController<T> {
   public currentIndex: number;
-  public currentSuggestion: ISuggestionModel<T>;
-  private suggestions: ISuggestionModel<T>[];
+  public currentSuggestion: ISuggestionModel<T> | undefined;
+  public suggestions: ISuggestionModel<T>[];
+
   constructor() {
     this.suggestions = [];
     this.currentIndex = -1;
@@ -14,7 +18,7 @@ export class SuggestionsController<T> {
 
   public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
     if (newSuggestions && newSuggestions.length > 0) {
-      this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
+      this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
       if (selectedIndex !== undefined) {
         this.suggestions[selectedIndex].selected = true;
@@ -33,10 +37,10 @@ export class SuggestionsController<T> {
   public nextSuggestion(): boolean {
     if (this.suggestions && this.suggestions.length) {
       if (this.currentIndex < (this.suggestions.length - 1)) {
-        this._setSelectedSuggestion(this.currentIndex + 1);
+        this.setSelectedSuggestion(this.currentIndex + 1);
         return true;
       } else if (this.currentIndex === (this.suggestions.length - 1)) {
-        this._setSelectedSuggestion(0);
+        this.setSelectedSuggestion(0);
         return true;
       }
     }
@@ -50,10 +54,10 @@ export class SuggestionsController<T> {
   public previousSuggestion(): boolean {
     if (this.suggestions && this.suggestions.length) {
       if (this.currentIndex > 0) {
-        this._setSelectedSuggestion(this.currentIndex - 1);
+        this.setSelectedSuggestion(this.currentIndex - 1);
         return true;
       } else if (this.currentIndex === 0) {
-        this._setSelectedSuggestion(this.suggestions.length - 1);
+        this.setSelectedSuggestion(this.suggestions.length - 1);
         return true;
       }
     }
@@ -66,7 +70,7 @@ export class SuggestionsController<T> {
   }
 
   public getCurrentItem(): ISuggestionModel<T> {
-    return this.currentSuggestion;
+    return this.currentSuggestion!;
   }
 
   public getSuggestionAtIndex(index: number): ISuggestionModel<T> {
@@ -81,16 +85,26 @@ export class SuggestionsController<T> {
     this.suggestions.splice(index, 1);
   }
 
-  private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
-    let converted: ISuggestionModel<T>[] = [];
-    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));
-    return converted;
+  public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
+    let itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
+    this.currentSuggestion = itemToAdd;
   }
 
-  private _setSelectedSuggestion(index: number): void {
+  public convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[] {
+    return Array.isArray(suggestions)
+      ? suggestions.map(this._ensureSuggestionModel)
+      : [];
+  }
+
+  public deselectAllSuggestions(): void {
+    this.currentIndex = -1;
+    this.suggestions[this.currentIndex].selected = false;
+  }
+
+  public setSelectedSuggestion(index: number): void {
     if (index > this.suggestions.length - 1 || index < 0) {
       this.currentIndex = 0;
-      this.currentSuggestion.selected = false;
+      this.currentSuggestion!.selected = false;
       this.currentSuggestion = this.suggestions[0];
       this.currentSuggestion.selected = true;
     } else {
@@ -100,6 +114,28 @@ export class SuggestionsController<T> {
       this.suggestions[index].selected = true;
       this.currentIndex = index;
       this.currentSuggestion = this.suggestions[index];
+    }
+  }
+
+  @autobind
+  private _isSuggestionModel(
+    value: ISuggestionModel<T> | T
+    ): value is ISuggestionModel<T> {
+    return (<ISuggestionModel<T>>value).item !== undefined;
+  }
+
+  @autobind
+  private _ensureSuggestionModel(
+    suggestion: ISuggestionModel<T> | T
+    ): ISuggestionModel<T> {
+    if (this._isSuggestionModel(suggestion)) {
+      return suggestion as ISuggestionModel<T>;
+    } else {
+      return {
+        item: suggestion,
+        selected: false,
+        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
+      } as ISuggestionModel<T>;
     }
   }
 }

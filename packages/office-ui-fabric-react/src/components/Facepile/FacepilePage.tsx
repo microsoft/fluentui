@@ -9,6 +9,8 @@ import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { FacepileStatus } from './Facepile.checklist';
 
 const FacepileAddFaceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
 const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Basic.Example.tsx') as string;
@@ -22,13 +24,13 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='FacepileExample'
         exampleCards={
           <div>
-            <ExampleCard title='Facepile with Extras' code={ FacepileBasicExampleCode }>
+            <ExampleCard title='Facepile with size and fade in options' code={ FacepileBasicExampleCode }>
               <FacepileBasicExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Overflow' code={ FacepileOverflowExampleCode }>
+            <ExampleCard title='Facepile with overflow buttons' code={ FacepileOverflowExampleCode }>
               <FacepileOverflowExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Add Face' code={ FacepileAddFaceExampleCode }>
+            <ExampleCard title='Facepile with face adding functionality' code={ FacepileAddFaceExampleCode }>
               <FacepileAddFaceExample />
             </ExampleCard>
           </div>
@@ -36,7 +38,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
             ] }
           />
         }
@@ -76,7 +78,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -96,11 +98,13 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/FacePile/FacePile.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...FacepileStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

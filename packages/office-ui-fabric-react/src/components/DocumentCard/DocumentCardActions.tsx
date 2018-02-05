@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
-import { IDocumentCardActionsProps } from './DocumentCard.Props';
+import { IDocumentCardActionsProps } from './DocumentCard.types';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
 import * as stylesImport from './DocumentCard.scss';
@@ -21,7 +21,7 @@ export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps
           );
         }) }
 
-        { views > 0 && (
+        { views! > 0 && (
           <div className={ css('ms-DocumentCardActions-views', styles.views) }>
             <Icon iconName='View' />
             { views }

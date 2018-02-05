@@ -7,7 +7,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import { IDocumentCardTitleProps } from './DocumentCard.Props';
+import { IDocumentCardTitleProps } from './DocumentCard.types';
 import * as stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
@@ -122,8 +122,8 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
       }
 
       this.setState({
-        truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-        truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
+        truncatedTitleFirstPiece: truncatedTitleFirstPiece!.slice(0, truncatedTitleFirstPiece!.length - 1),
+        truncatedTitleSecondPiece: truncatedTitleSecondPiece!.slice(1)
       });
     }
   }

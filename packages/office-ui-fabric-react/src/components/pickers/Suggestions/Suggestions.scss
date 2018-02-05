@@ -12,7 +12,11 @@
   position: relative;
 
   &:hover {
-    background: $ms-color-neutralLight;
+    background: $ms-color-neutralLighter;
+
+    .closeButton {
+      display: block;
+    }
   }
 
   &.suggestionsItemIsSuggested {
@@ -20,13 +24,39 @@
 
     &:hover {
       background: $ms-color-neutralTertiaryAlt;
+
+      @include high-contrast {
+        background: Highlight;
+        color: HighlightText;
+      }
+    }
+
+    @include high-contrast {
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
     }
 
     .closeButton {
       &:hover {
         background: $ms-color-neutralTertiary;
-        color: $ms-color-black;
+        color: $ms-color-neutralPrimary;
       }
+    }
+
+    .itemButton {
+      @include high-contrast {
+        color: HighlightText;
+      }
+    }
+  }
+
+  .closeButton {
+    display: none;
+    color: $ms-color-neutralSecondary;
+
+    &:hover {
+      background: $ms-color-neutralLight;
     }
   }
 }
@@ -42,6 +72,7 @@
   height: 40px;
   @include ms-text-align(left);
   width: 100%;
+  font-size: 12px;
   &:hover {
       background-color: $ms-color-neutralLight;
       cursor: pointer;
@@ -66,7 +97,6 @@
   padding: 0 12px;
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
 }
@@ -91,6 +121,7 @@
   @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
+  font-size: 12px;
 
   :global(.ms-Spinner-circle) {
     display: inline-block;
@@ -107,6 +138,10 @@
   height: 100%;
   width: 100%;
   padding: 7px 12px;
+
+  @include high-contrast {
+    color: WindowText;
+  }
 }
 
 .closeButton {
@@ -114,8 +149,23 @@
   height: auto;
   width: 32px;
 
+  @include high-contrast {
+    color: WindowText;
+  }
+
   &:hover {
     background: $ms-color-neutralTertiaryAlt;
     color: $ms-color-neutralDark;
   }
+}
+
+.suggestionsAvailable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }

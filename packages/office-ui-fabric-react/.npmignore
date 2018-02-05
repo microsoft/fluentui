@@ -19,8 +19,8 @@ jsconfig.json
 karma.config.js
 node_modules
 src/**/*
-!src/**/*.Props.ts
-!src/**/*.Example.tsx
+!src/**/*.types.ts
+!src/**/examples/*.tsx
 tsconfig.json
 tsd.json
 tslint.json

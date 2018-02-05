@@ -11,9 +11,9 @@ import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-
 import './FocusZone.List.Example.scss';
 
 const ITEMS = createArray(10, (index) => ({
-  key: index,
+  key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (200 + index)
+  url: 'http://placehold.it/100x' + (200 + index!)
 }));
 
 const COLUMNS: IColumn[] = [
@@ -39,11 +39,11 @@ const COLUMNS: IColumn[] = [
   }
 ];
 
-export class FocusZoneListExample extends React.Component<any, any> {
+export class FocusZoneListExample extends React.Component {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._selection = new Selection();
     this._selection.setItems(ITEMS);
@@ -55,7 +55,8 @@ export class FocusZoneListExample extends React.Component<any, any> {
         className='ms-FocusZoneListExample'
         direction={ FocusZoneDirection.vertical }
         isCircularNavigation={ true }
-        isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }>
+        isInnerZoneKeystroke={ this._isInnerZoneKeystroke }
+      >
         { ITEMS.map((item, index) => (
           <DetailsRow
             key={ index }
@@ -63,10 +64,15 @@ export class FocusZoneListExample extends React.Component<any, any> {
             itemIndex={ index }
             columns={ COLUMNS }
             selectionMode={ SelectionMode.single }
-            selection={ this._selection } />
+            selection={ this._selection }
+          />
         )) }
       </FocusZone>
     );
+  }
+
+  private _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
   }
 
 }

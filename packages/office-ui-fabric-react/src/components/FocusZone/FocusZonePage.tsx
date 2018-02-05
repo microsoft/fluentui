@@ -35,7 +35,7 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')
             ] }
           />
         }
@@ -46,8 +46,8 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
             <p>Using a FocusZone is simple. Just wrap a bunch of content inside of a FocusZone, and arrows and tabbling will be handled for you! See examples below.</p>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 

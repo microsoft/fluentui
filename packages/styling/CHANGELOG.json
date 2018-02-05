@@ -2,6 +2,1085 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.17.0",
+      "tag": "@uifabric/styling_v5.17.0",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "a2864f8c6d0fc2b271c952b9929767ed760660ab",
+            "comment": "Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.7.0 <6.0.0` to `>=5.7.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.10.1 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/styling_v5.16.0",
+      "date": "Wed, 24 Jan 2018 11:23:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "b31132497466cd88b1887badfef8c05833e35784",
+            "comment": "New slot for inputPlaceholderText color."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.3",
+      "tag": "@uifabric/styling_v5.15.3",
+      "date": "Mon, 22 Jan 2018 11:14:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "f8dfda114728bf4cd800f8cc69b9ad6a826ba94f",
+            "comment": "updated divider color to neutralTertiaryAlt"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "04bf3df995b81d6bc60a3ec21c5497208ce0affa",
+            "comment": "Theming: fix listText semantic slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.6.1 <6.0.0` to `>=5.7.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.2",
+      "tag": "@uifabric/styling_v5.15.2",
+      "date": "Fri, 19 Jan 2018 11:14:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "39864da18b987267a4c412398aae96342f1640f4",
+            "comment": "added semantic slots for smallInputBorder and smallInputBorderHover"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.1",
+      "tag": "@uifabric/styling_v5.15.1",
+      "date": "Thu, 28 Dec 2017 11:23:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4c523699e33d9e2c15d60d947f8f4017c48e00e2",
+            "comment": "Adding new normalize and AnimationValues"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.9.0 <6.0.0` to `>=5.10.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.0",
+      "tag": "@uifabric/styling_v5.15.0",
+      "date": "Sat, 16 Dec 2017 05:07:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08e59c871894c8ff443d48dbe5b0dd3316eb4331",
+            "comment": "Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.5.0 <6.0.0` to `>=5.6.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.8.1 <6.0.0` to `>=5.9.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/styling_v5.14.0",
+      "date": "Mon, 04 Dec 2017 17:27:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f87d8889321e89fc697985c43b88b2bfc3288994",
+            "comment": "Add an event callback for when the theme changes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.1",
+      "tag": "@uifabric/styling_v5.12.1",
+      "date": "Fri, 01 Dec 2017 11:11:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "philipzloh <philip.loh@students.olin.edu>",
+            "commit": "491764a41bf4fe95e0bc7bfc20fe150f0edd9d11",
+            "comment": "Use Yu Gothic UI, Microsoft Yahei UI, Microsoft Jhenghei UI"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.7.0 <6.0.0` to `>=5.8.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/styling_v5.12.0",
+      "date": "Thu, 30 Nov 2017 11:23:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7bd70ca910f147560e0c0e8a536a2659730b5f13",
+            "comment": "Updating the `registerIcons` helper to take in options."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.1",
+      "tag": "@uifabric/styling_v5.11.1",
+      "date": "Wed, 29 Nov 2017 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "7d322b1de493bd49f1a93a26bc09cdf67e574b25",
+            "comment": "SemanticSlots: Updated inputBorderHovered color."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.6.0 <6.0.0` to `>=5.7.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/styling_v5.11.0",
+      "date": "Tue, 28 Nov 2017 02:24:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "94954657769c46824f84e8aba06b326721b4a161",
+            "comment": "Moving `styled` and `getClassNameFunction` out of styling to utilities."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.3.3 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/styling_v5.10.1",
+      "date": "Thu, 23 Nov 2017 11:10:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "4e590b0b914e7be64fe85809a2bf5c4bda0f49ea",
+            "comment": "Theme: Updated menuItemBackgroundChecked for ContextualMenu."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.0",
+      "tag": "@uifabric/styling_v5.10.0",
+      "date": "Fri, 17 Nov 2017 17:36:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "54dab7cabfc39ffe6e6ab68181e561467fa009fe",
+            "comment": "Export functions used to create font sets based upon a given locale code"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.8.0",
+      "tag": "@uifabric/styling_v5.8.0",
+      "date": "Thu, 16 Nov 2017 11:20:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f143a0d268256361a334e8ed33231e507d902e85",
+            "comment": "Adding `styled` and `classNameFunction` helpers, in addition to a variety of interface."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.7.0",
+      "tag": "@uifabric/styling_v5.7.0",
+      "date": "Fri, 10 Nov 2017 17:09:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "696cd19b230f855f071f766c27c0066eb15d8109",
+            "comment": "Adjusting the IFabricConfig interface to allow for mergeStyle settings to be included."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "360596259b7e047fd6987cc05aafdc4f88d878d3",
+            "comment": "Updating `getIconClassName` to return display: inline-block to be consistent with the styled used by `ms-Icon ms-Icon--*`."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.3.2 <6.0.0` to `>=5.3.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.5.1 <6.0.0` to `>=5.6.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.1",
+      "tag": "@uifabric/styling_v5.6.1",
+      "date": "Mon, 30 Oct 2017 10:23:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "1fa2b61ec7db61acd4a12c8d623f99954f8d8252",
+            "comment": "Adding Button related semantic slots."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.6.0",
+      "tag": "@uifabric/styling_v5.6.0",
+      "date": "Fri, 27 Oct 2017 10:25:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "02f5ef74858d988b0e5f48a32a688ea65c93b7d2",
+            "comment": "Added IconFontSizes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.5.0",
+      "tag": "@uifabric/styling_v5.5.0",
+      "date": "Thu, 26 Oct 2017 10:21:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b6ba83e0c27830b87824a8062d97ded3540a7ba7",
+            "comment": "Updating the icon warning to link to documentation for assistance."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.1",
+      "tag": "@uifabric/styling_v5.4.1",
+      "date": "Tue, 24 Oct 2017 10:21:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "1004504eb5cdba55db7f17c6b8af90ef5471010e",
+            "comment": "remove outdated semantic slots"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.4.0",
+      "tag": "@uifabric/styling_v5.4.0",
+      "date": "Fri, 20 Oct 2017 18:42:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a360af7a689c30f406ff7cb2346fafb3a972ab1a",
+            "comment": "Adjusting the `registerIcons` code to allow for icons to map to JSX.Elements or icon code strings."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.4.1 <6.0.0` to `>=5.4.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.3.0",
+      "tag": "@uifabric/styling_v5.3.0",
+      "date": "Tue, 10 Oct 2017 10:24:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "5ed121b0063871101decc50baf9e1c920e041155",
+            "comment": "\"Add menuSelectedText to theme and semanticColors\""
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.1",
+      "tag": "@uifabric/styling_v5.2.1",
+      "date": "Fri, 06 Oct 2017 10:18:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8e1dcc66cda8334653a8b5ccbde02bf6275e0b23",
+            "comment": "TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.2.0 <6.0.0` to `>=5.2.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.3.0 <6.0.0` to `>=5.3.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.2.0",
+      "tag": "@uifabric/styling_v5.2.0",
+      "date": "Thu, 05 Oct 2017 17:03:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "41cef49e56908d5a9a794617aad64e626ab5b315",
+            "comment": "Fixing version dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.1",
+      "tag": "@uifabric/styling_v5.1.1",
+      "date": "Wed, 04 Oct 2017 22:40:22 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.0.1 <6.0.0` to `>=6.0.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.1.0",
+      "tag": "@uifabric/styling_v5.1.0",
+      "date": "Sat, 30 Sep 2017 01:26:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "93a77f83352b357bae5d6b509a40eeec28d56a32",
+            "comment": "Add a new success background color"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.1.0 <6.0.0` to `>=5.2.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.0.1",
+      "tag": "@uifabric/styling_v5.0.1",
+      "date": "Wed, 27 Sep 2017 00:20:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8a8c240b39c3ba12effab2c6c8e7021c3bc9cea9",
+            "comment": "The 5.0 Fabric release. See the [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-5.0:-What's-new) for a full list of changes and how to work with the new bits."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.0.0 <6.0.0` to `>=5.0.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.2",
+      "tag": "@uifabric/styling_v0.24.2",
+      "date": "Tue, 26 Sep 2017 20:42:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c85736b0d854f1ecac15fee119106aeba61f1750",
+            "comment": "Reverting Customizer changes, as they are breaking. Will include in 5.0."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.15.0 <5.0.0` to `>=4.16.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.1",
+      "tag": "@uifabric/styling_v0.24.1",
+      "date": "Tue, 26 Sep 2017 10:09:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "724a69333e9c1b0833ef6f48c0fd6b49a2bf3a3a",
+            "comment": "Updating default theme registration to use the new `Customizations` helper."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.14.1 <5.0.0` to `>=4.15.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.24.0",
+      "tag": "@uifabric/styling_v0.24.0",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b691aa97525304884029629d2f40f14dc663f0bb",
+            "comment": "Adding `MoreVertical` icon."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.13.0 <5.0.0` to `>=4.13.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.1",
+      "tag": "@uifabric/styling_v0.23.1",
+      "date": "Tue, 12 Sep 2017 17:41:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "d07499a8a812bc8467f152ea1aee325e02e6ab6c",
+            "comment": "Fixing circular dependency issue."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.0",
+      "tag": "@uifabric/styling_v0.23.0",
+      "date": "Mon, 11 Sep 2017 10:08:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "eca3d17992576760e7b6b55d74f2d7a2b85e3a21",
+            "comment": "Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.1",
+      "tag": "@uifabric/styling_v0.22.1",
+      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "b4eee571f31db3c0950938e40aafea9313f73003",
+            "comment": "Icons: Added textDocument back into the icon list"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.12.1 <5.0.0` to `>=4.13.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.0",
+      "tag": "@uifabric/styling_v0.22.0",
+      "date": "Fri, 01 Sep 2017 16:51:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marena Richardson <marena.richardson@gmail.com>",
+            "commit": "698632d5cc6e2564f3b745e3c1919ff020fb6004",
+            "comment": "Add a new semantic slot for the warning foreground color"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "02d0358d39021ab96b27eb1ad78f595e3891d9a5",
+            "comment": "Add FullWidth icon."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.1",
+      "tag": "@uifabric/styling_v0.21.1",
+      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
+            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.11.0 <5.0.0` to `>=4.11.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.0",
+      "tag": "@uifabric/styling_v0.21.0",
+      "date": "Tue, 29 Aug 2017 10:20:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e9a99a34b2950f779b13b4299e2d495265872b52",
+            "comment": "Theming: added an accent color slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.3 <5.0.0` to `>=4.11.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.2",
+      "tag": "@uifabric/styling_v0.20.2",
+      "date": "Fri, 25 Aug 2017 20:31:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
+            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.1 <5.0.0` to `>=4.10.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.1",
+      "tag": "@uifabric/styling_v0.20.1",
+      "date": "Wed, 23 Aug 2017 19:04:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "042e2133b475a37340c4f05ae9eeb0abd22ec49d",
+            "comment": "add Comment icon"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.20.0",
+      "tag": "@uifabric/styling_v0.20.0",
+      "date": "Fri, 18 Aug 2017 16:32:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e35e5e23555797dae09d6f3aac98fd932c245f1d",
+            "comment": "mergeStyleSets: tweaked the return type to be less restrictive."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.2",
+      "tag": "@uifabric/styling_v0.19.2",
+      "date": "Mon, 14 Aug 2017 10:20:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "aed8e8abf6e9e97c6228d66e012e79da08fb63ea",
+            "comment": "getFocusStyle: Add -moz-focus-inner to fix outline bug"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.1",
+      "tag": "@uifabric/styling_v0.19.1",
+      "date": "Fri, 11 Aug 2017 19:38:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Qianqian Li <lqq201194@163.com>",
+            "commit": "c66fa123e9533644a1e1401005c8dc8a425aa448",
+            "comment": "add StreamLogo and PowerBILogo icons"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.0",
+      "tag": "@uifabric/styling_v0.19.0",
+      "date": "Tue, 08 Aug 2017 15:28:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a92eb2a9a79dcab033bdbe78ca7a18b2d6607e99",
+            "comment": "Styling: added a screenReaderText utility style"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a7bc11ddacabfcfbf4fbc56e99e6d13ea296b787",
+            "comment": "Adding a color to the palette"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.18.0",
+      "tag": "@uifabric/styling_v0.18.0",
+      "date": "Mon, 07 Aug 2017 10:22:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2c4a1740d6e9495c9eca4c27f8c8fb6c70b2c61a",
+            "comment": "Adding 4 icons that were missing in the codes map."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.17.0",
+      "tag": "@uifabric/styling_v0.17.0",
+      "date": "Fri, 04 Aug 2017 10:11:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "a230ec9fb1b83d215f7281cc3ee75f05d90f91f3",
+            "comment": "Theming: add semantic slots for warnings, and also legacy theme semantic slots"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.0",
+      "tag": "@uifabric/styling_v0.16.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "LQQ <lqq201194@163.com>",
+            "commit": "de2008d03de119da17a26b616be69c4b09c5320c",
+            "comment": "add Spacer and Divider toolbox icon"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.1 <5.0.0` to `>=4.9.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.15.4",
+      "tag": "@uifabric/styling_v0.15.4",
+      "date": "Wed, 02 Aug 2017 10:22:40 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.3",
+      "tag": "@uifabric/styling_v0.15.3",
+      "date": "Tue, 01 Aug 2017 10:13:55 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.2",
+      "tag": "@uifabric/styling_v0.15.2",
+      "date": "Mon, 31 Jul 2017 10:12:08 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.1",
+      "tag": "@uifabric/styling_v0.15.1",
+      "date": "Fri, 28 Jul 2017 18:36:00 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.0",
+      "tag": "@uifabric/styling_v0.15.0",
+      "date": "Fri, 28 Jul 2017 10:23:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "20d920d1a9f38c468ab47027e9fb2ec80018d85d",
+            "comment": "Adding High contrast colors to the paletter"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fd03731e7523f372438853eccbc13f59d0f2d9d7",
+            "comment": "Theming: add settings to the interface so we can track whether the current theme is inverted or not"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.0",
+      "tag": "@uifabric/styling_v0.14.0",
+      "date": "Thu, 27 Jul 2017 10:23:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df7a230735c92a73935bbdf97cfb6f2fcae9af45",
+            "comment": "Icons: Added new icons from 2.38"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.16",
+      "tag": "@uifabric/styling_v0.13.16",
+      "date": "Tue, 25 Jul 2017 10:22:35 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.15",
+      "tag": "@uifabric/styling_v0.13.15",
+      "date": "Mon, 24 Jul 2017 10:24:30 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.14",
+      "tag": "@uifabric/styling_v0.13.14",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "antonlabunets <alabunets@gmail.com>",
+            "commit": "0a145b00965c9aefabc1aa6648b36f53281691fb",
+            "comment": "Adding multi-column mapping to the icon map to be available in the ChoiceGroup"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "6900fc6013e77eb6cd7268358aa64f9c9b46edd6",
+            "comment": "Theming: fix color mapping for listItemBackgroundChecked"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.8.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.13",
+      "tag": "@uifabric/styling_v0.13.13",
+      "date": "Thu, 20 Jul 2017 10:11:23 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.12",
+      "tag": "@uifabric/styling_v0.13.12",
+      "date": "Wed, 19 Jul 2017 21:40:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "d21643832d11a6a6e2a7484a53de72a99665ad67",
+            "comment": "Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.2 <5.0.0` to `>=4.8.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.11",
+      "tag": "@uifabric/styling_v0.13.11",
+      "date": "Mon, 17 Jul 2017 18:38:01 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.10",
+      "tag": "@uifabric/styling_v0.13.10",
+      "date": "Mon, 17 Jul 2017 10:22:38 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.9",
+      "tag": "@uifabric/styling_v0.13.9",
+      "date": "Fri, 14 Jul 2017 17:34:53 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.8",
+      "tag": "@uifabric/styling_v0.13.8",
+      "date": "Thu, 13 Jul 2017 10:21:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "8ac8f0da64e88b10c1036296cf798da1e5657a9b",
+            "comment": "Only initialize the default theme once, even if multiple instances of @uifabric/styling are executed."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.7",
+      "tag": "@uifabric/styling_v0.13.7",
+      "date": "Thu, 13 Jul 2017 02:58:02 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.6",
+      "tag": "@uifabric/styling_v0.13.6",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.1 <5.0.0` to `>=4.7.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.5",
+      "tag": "@uifabric/styling_v0.13.5",
+      "date": "Tue, 11 Jul 2017 10:14:04 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.4",
+      "tag": "@uifabric/styling_v0.13.4",
+      "date": "Mon, 10 Jul 2017 19:18:55 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.3",
+      "tag": "@uifabric/styling_v0.13.3",
+      "date": "Mon, 10 Jul 2017 10:22:21 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.2",
+      "tag": "@uifabric/styling_v0.13.2",
+      "date": "Sat, 08 Jul 2017 05:59:28 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.1",
+      "tag": "@uifabric/styling_v0.13.1",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating dev dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.7.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.0",
+      "tag": "@uifabric/styling_v0.13.0",
+      "date": "Fri, 07 Jul 2017 10:11:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "8739efafc90df5f7c51da305189b2cdc131c66e0",
+            "comment": "Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "42587fd0ba26b9efade415cc5cc60103fbe2f980",
+            "comment": "Enable strict null checks in the styling package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.3",
+      "tag": "@uifabric/styling_v0.12.3",
+      "date": "Thu, 06 Jul 2017 10:11:47 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.2",
+      "tag": "@uifabric/styling_v0.12.2",
+      "date": "Tue, 04 Jul 2017 10:21:53 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.12.1",
+      "tag": "@uifabric/styling_v0.12.1",
+      "date": "Mon, 03 Jul 2017 10:11:52 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.12.0",
+      "tag": "@uifabric/styling_v0.12.0",
+      "date": "Fri, 30 Jun 2017 19:44:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "20e5559ad325465a6c1bdc3bbb879ce831adc9e9",
+            "comment": "Dependencies now use path based imports to various utilities to minimize the graph dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.5.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.10",
+      "tag": "@uifabric/styling_v0.11.10",
+      "date": "Fri, 30 Jun 2017 10:23:15 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.9",
+      "tag": "@uifabric/styling_v0.11.9",
+      "date": "Thu, 29 Jun 2017 20:48:31 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.2 <5.0.0` to `>=4.5.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.8",
+      "tag": "@uifabric/styling_v0.11.8",
+      "date": "Thu, 29 Jun 2017 10:13:16 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.1 <5.0.0` to `>=4.4.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.7",
       "tag": "@uifabric/styling_v0.11.7",
       "date": "Wed, 28 Jun 2017 10:12:04 GMT",

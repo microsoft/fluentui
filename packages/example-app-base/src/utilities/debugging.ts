@@ -1,9 +1,11 @@
 import { beep } from './beep';
 
-export function instrumentMethod(target: any, methodName: string) {
+// tslint:disable-next-line:no-any
+export function instrumentMethod(target: any, methodName: string): void {
   const originalMethod = target[methodName];
 
-  target[methodName] = function() {
+  // tslint:disable-next-line:no-any
+  target[methodName] = function (): any {
     beep();
 
     let startTime = performance.now();
@@ -12,11 +14,11 @@ export function instrumentMethod(target: any, methodName: string) {
 
     /* tslint:disable:no-console */
     if (duration <= 1) {
-      console.log(`${ methodName } called`, getStackTrace());
+      console.log(`${methodName} called`, getStackTrace());
     } else if (duration <= 10) {
-      console.warn(`${ methodName } called, took ${ Math.round(duration * 1000) / 1000 }ms`, getStackTrace());
+      console.warn(`${methodName} called, took ${Math.round(duration * 1000) / 1000}ms`, getStackTrace());
     } else {
-      console.error(`${ methodName } called, took ${ Math.round(duration * 1000) / 1000 }ms`, getStackTrace());
+      console.error(`${methodName} called, took ${Math.round(duration * 1000) / 1000}ms`, getStackTrace());
     }
     /* tslint:enable:no-console */
 
@@ -24,14 +26,15 @@ export function instrumentMethod(target: any, methodName: string) {
   };
 }
 
-export function getStackTrace() {
+export function getStackTrace(): string {
   let obj = {
     stack: ''
   };
 
-  /* tslint:disable:no-string-literal */
-  const captureStackTrace = Error['captureStackTrace'];
-  /* tslint:enable:no-string-literal */
+  const captureStackTrace = (Error as {
+    captureStackTrace?: (obj: { stack: string; },
+      getStackTrace: () => {}) => void;
+  }).captureStackTrace;
 
   if (captureStackTrace) {
     captureStackTrace(obj, getStackTrace);

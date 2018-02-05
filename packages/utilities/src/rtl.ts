@@ -1,5 +1,8 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument, getWindow } from './dom';
+import { getDocument } from './dom';
+import { getItem, setItem } from './sessionStorage';
+
+const RTL_LOCAL_STORAGE_KEY = 'isRTL';
 
 // Default to undefined so that we initialize on first read.
 let _isRTL: boolean | undefined;
@@ -9,51 +12,33 @@ let _isRTL: boolean | undefined;
  */
 export function getRTL(): boolean {
   if (_isRTL === undefined) {
-    let doc = getDocument();
-    let win = getWindow();
-
-    // tslint:disable-next-line:no-string-literal
-    if (win && win['localStorage']) {
-      let savedRTL = localStorage.getItem('isRTL');
-
-      if (savedRTL !== null) {
-        _isRTL = savedRTL === '1';
-      }
+    // Fabric supports persisting the RTL setting between page refreshes via session storage
+    let savedRTL = getItem(RTL_LOCAL_STORAGE_KEY);
+    if (savedRTL !== null) {
+      _isRTL = savedRTL === '1';
+      setRTL(_isRTL);
     }
+
+    let doc = getDocument();
     if (_isRTL === undefined && doc) {
       _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
     }
-
-    if (_isRTL !== undefined) {
-      setRTL(_isRTL, true);
-    } else {
-      throw new Error(
-        'getRTL was called in a server environment without setRTL being called first. ' +
-        'Call setRTL to set the correct direction first.'
-      );
-    }
   }
 
-  return _isRTL;
+  return !!_isRTL;
 }
 
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
  */
-export function setRTL(isRTL: boolean | undefined, avoidPersisting = false) {
+export function setRTL(isRTL: boolean, persistSetting: boolean = false): void {
   let doc = getDocument();
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
-  let win = getWindow();
-  // tslint:disable-next-line:no-string-literal
-  if (win && win['localStorage'] && !avoidPersisting) {
-    try {
-      localStorage.setItem('isRTL', isRTL ? '1' : '0');
-    } catch (e) {
-      /*  swallow the exception, because safari private mode does not have local storage */
-    }
+  if (persistSetting) {
+    setItem(RTL_LOCAL_STORAGE_KEY, isRTL ? '1' : '0');
   }
 
   _isRTL = isRTL;

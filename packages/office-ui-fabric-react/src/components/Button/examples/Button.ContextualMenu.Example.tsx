@@ -14,6 +14,8 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
             checked={ checked }
             iconProps={ { iconName: 'Add' } }
             text='New'
+            // tslint:disable-next-line:jsx-no-lambda
+            onMenuClick={ (ev) => { console.log(ev); } }
             menuProps={ {
               items: [
                 {
@@ -29,8 +31,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
               ]
             }
             }
-          >
-          </DefaultButton>
+          />
         </div>
       </div>
     );

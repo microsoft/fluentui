@@ -95,12 +95,8 @@
       box-sizing: border-box;
       border-bottom: 2px solid $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
-        border-bottom-color: $ms-color-white;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-bottom-color: $ms-color-black;
+      @include high-contrast {
+        border-bottom-color: WindowText;
       }
     }
   }
@@ -173,6 +169,8 @@
     &:hover:not(.linkIsSelected):not(.linkIsOverflow),
     &:focus:not(.linkIsSelected):not(.linkIsOverflow) {
       color: $ms-color-black;
+      //prevent next tab from covering the focus outline
+      z-index: 1;
     }
 
     &:active {
@@ -196,13 +194,12 @@
         bottom: 0;
         content: '';
         height: auto;
+      }
 
-        @media screen and (-ms-high-contrast: active) {
-          border: 1px solid $ms-color-white;
-        }
-        @media screen and (-ms-high-contrast: black-on-white) {
-          border: 1px solid $ms-color-black;
-        }
+      @include high-contrast {
+        color: HighlightText;
+        background: Highlight;
+        -ms-high-contrast-adjust: none;
       }
     }
   }
@@ -229,7 +226,7 @@
 
 // @TODO: Confirm that this component is not responsive.
 //
-// @media (min-width: $ms-screen-min-lg) {
+// @media (min-width: $uhf-screen-min-mobile) {
 //   .link {
 //     font-size: $ms-font-size-m;
 //   }
@@ -242,7 +239,7 @@
 // }
 
 // All high contrast styling rules
-@media screen and (-ms-high-contrast: active) {
+@include high-contrast {
   .root.rootIsTabs {
     .link {
       &.linkIsSelected {

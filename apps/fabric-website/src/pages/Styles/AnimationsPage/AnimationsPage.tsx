@@ -4,12 +4,12 @@ import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 
 const pageStyles: any = require('../../PageStyles.module.scss');
-const animationsData = require('json!../../../data/animations.json');
+const animationsData = require('../../../data/animations.json');
 
 export class AnimationsPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.basePage }>
         <PageHeader
           pageTitle='Animations'
           links={

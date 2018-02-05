@@ -1,7 +1,3 @@
-/* tslint:disable:no-unused-imports */
-import * as React from 'react';
-/* tslint:enable:no-unused-imports */
-
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IExample {
@@ -19,7 +15,7 @@ export class ExampleGroup {
     this._examples = [];
   }
 
-  public get title() {
+  public get title(): string {
     return this._title;
   }
 

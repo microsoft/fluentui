@@ -6,7 +6,7 @@
   "data": [
     [
       {
-        "value": "screenReaderOnly"
+        "value": "ms-screenReaderOnly"
       },
       {
         "value": "Visually Hides content while still keeping it accessible for screen readers."
@@ -14,7 +14,7 @@
     ],
     [
       {
-        "value": "borderBox"
+        "value": "ms-borderBox"
       },
       {
         "value": "Set the value of 'box-sizing' to 'border-box', so that the element's padding and border are included in its width."
@@ -22,7 +22,7 @@
     ],
     [
       {
-        "value": "clearfix"
+        "value": "ms-clearfix"
       },
       {
         "value": "Prevents the container of a floated element from collapsing."
@@ -30,7 +30,7 @@
     ],
     [
       {
-        "value": "textAlignLeft"
+        "value": "ms-textAlignLeft"
       },
       {
         "value": "Sets the value of 'text-align' to 'left'."
@@ -38,7 +38,7 @@
     ],
     [
       {
-        "value": "textAlignCenter"
+        "value": "ms-textAlignCenter"
       },
       {
         "value": "Sets the value of 'text-align' to 'center'."
@@ -46,7 +46,7 @@
     ],
     [
       {
-        "value": "textAlignRight"
+        "value": "ms-textAlignRight"
       },
       {
         "value": "Sets the value of 'text-align' to 'right'."
@@ -54,7 +54,7 @@
     ],
     [
       {
-        "value": "borderBase"
+        "value": "ms-borderBase"
       },
       {
         "value": "Applies a solid, 1px wide border to the element. A border color class can then be used to set a color for the border."
@@ -62,7 +62,7 @@
     ],
     [
       {
-        "value": "normalize"
+        "value": "ms-normalize"
       },
       {
         "value": "Sets a variety of baseline styles for the element. This helper applies 'border-box' box sizing, removes any margins and padding, and removes box shadow."

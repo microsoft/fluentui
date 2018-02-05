@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelNonModalExample extends React.Component<any, any> {
+export class PanelNonModalExample extends React.Component<{}, {
+  showPanel: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = { showPanel: false };
   }
 
@@ -14,12 +17,12 @@ export class PanelNonModalExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           text='Open panel'
-          onClick={ () => this.setState({ showPanel: true }) }
+          onClick={ this._setShowPanel(true) }
         />
         <Panel
           isBlocking={ false }
           isOpen={ this.state.showPanel }
-          onDismiss={ () => this.setState({ showPanel: false }) }
+          onDismiss={ this._setShowPanel(false) }
           type={ PanelType.medium }
           headerText='Non-Modal Panel'
           closeButtonAriaLabel='Close'
@@ -28,5 +31,12 @@ export class PanelNonModalExample extends React.Component<any, any> {
         </Panel>
       </div>
     );
+  }
+
+  @autobind
+  private _setShowPanel(showPanel: boolean): () => void {
+    return (): void => {
+      this.setState({ showPanel });
+    };
   }
 }

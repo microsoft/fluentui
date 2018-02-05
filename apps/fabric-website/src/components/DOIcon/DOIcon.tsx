@@ -14,7 +14,10 @@ export class DOIcon extends React.Component<IDOIconProps, {}> {
 
   public render() {
     return (
-      <i className={ 'od-Icon od-Icon--' + this.props.iconClass + ' ms-bgColor-' + this.props.bgColor } aria-hidden={ this.props.ariaHidden }></i>
+      <i
+        className={ 'od-Icon od-Icon--' + this.props.iconClass + ' ms-bgColor-' + this.props.bgColor }
+        aria-hidden={ this.props.ariaHidden }
+      />
     );
   }
 }

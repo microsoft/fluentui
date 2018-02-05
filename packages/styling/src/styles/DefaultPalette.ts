@@ -23,6 +23,7 @@ export const DefaultPalette: IPalette = {
   neutralLight: '#eaeaea',
   neutralLighter: '#f4f4f4',
   neutralLighterAlt: '#f8f8f8',
+  accent: '#0078d7',
   white: '#ffffff',
   yellow: '#ffb900',
   yellowLight: '#fff100',
@@ -46,5 +47,5 @@ export const DefaultPalette: IPalette = {
   tealLight: '#00b294',
   greenDark: '#004b1c',
   green: '#107c10',
-  greenLight: '#bad80a'
+  greenLight: '#bad80a',
 };

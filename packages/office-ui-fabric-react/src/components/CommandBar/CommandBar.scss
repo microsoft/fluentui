@@ -77,7 +77,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   height: $CommandBarItem-height;
   outline: transparent;
   vertical-align: top;
-  margin: 0 4px;
 
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -110,6 +109,15 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &.itemLinkIsNoName {
     padding: 0 8px;
   }
+
+  &[disabled] {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: default;
+    pointer-events: none;
+    .itemIcon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+  }
 }
 
 .itemText {
@@ -121,12 +129,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
   &:hover,
   &.itemLinkIsExpanded {
-    @media screen and (-ms-high-contrast: active) {
-      @include focus-border(0px, $ms-color-white, 1px, false);
-      }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      @include focus-border(0px, $ms-color-black, 1px, false);
+    @include high-contrast {
+      @include focus-border(0px, WindowText, 1px, false);
     }
   }
 
@@ -167,15 +171,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &.itemLinkIsExpanded:hover {
     background-color: $ms-color-neutralQuaternary;
   }
-
-  &[disabled] {
-    color: $ms-color-neutralTertiaryAlt;
-    cursor: default;
-    pointer-events: none;
-    .itemIcon {
-      color: $ms-color-neutralTertiaryAlt;
-    }
-  }
 }
 
 .itemIcon {
@@ -211,13 +206,9 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   border-color: transparent; // give a base state for animation
   @include border-right(1px, solid, $ms-color-neutralLight);
 
-  @media screen and (-ms-high-contrast: active) {
-    @include border-right(1px, solid, $ms-color-white);
+  @include high-contrast {
+    @include border-right(1px, solid, WindowText);
     z-index: 10;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include border-right(1px, solid, $ms-color-black);
   }
 
   &:before {
@@ -233,12 +224,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &:hover {
     color: $ms-color-themePrimary;
 
-    @media screen and (-ms-high-contrast: active) {
-      @include focus-border(0px, $ms-color-white, 1px, false);
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      @include focus-border(0px, $ms-color-black, 1px, false);
+    @include high-contrast {
+      @include focus-border(0px, WindowText, 1px, false);
     }
   }
 }
@@ -256,12 +243,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
   font-size: $ms-font-size-m;
 
-  @media screen and (-ms-high-contrast: active) {
-    @include border-left($SearchBox-height, solid, $ms-color-black);
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include border-left($SearchBox-height, solid, $ms-color-white);
+  @include high-contrast {
+    @include border-left($SearchBox-height, solid, Window);
   }
 
   // remove default iOS styles on input boxes
@@ -303,6 +286,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
   position: absolute;
   text-align: center;
+  -ms-high-contrast-adjust: none;
 }
 
 // New rules

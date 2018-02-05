@@ -8,17 +8,21 @@ import {
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
+import { ListGhostingExample } from './examples/List.Ghosting.Example';
 import { createListItems } from '@uifabric/example-app-base';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ListStatus } from './List.checklist';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
+const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
 
-let _cachedItems;
+let _cachedItems: any;
 
 export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
-  constructor() {
-    super();
+  constructor(props: IComponentDemoPageProps) {
+    super(props);
 
     _cachedItems = _cachedItems || createListItems(5000);
   }
@@ -39,12 +43,15 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Scrolling items into view' isOptIn={ true } code={ ListScrollingExampleCode }>
               <ListScrollingExample items={ _cachedItems } />
             </ExampleCard>
+            <ExampleCard title='Rendering ghost items while the list is scrolling' isOptIn={ true } code={ ListGhostingExampleCode }>
+              <ListGhostingExample items={ _cachedItems } />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')
             ] }
           />
         }
@@ -61,11 +68,13 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/List/List.html'>Fabric JS</a>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ListStatus}
+          />
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+      />
     );
   }
 }

@@ -2,12 +2,14 @@ import * as React from 'react';
 import { Image } from '../../Image';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
+import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.types';
 import {
   assign,
+  BaseComponent,
   css,
   getId,
-  BaseComponent
+  getNativeProps,
+  inputProperties
 } from '../../Utilities';
 import * as stylesImport from './ChoiceGroup.scss';
 const styles: any = stylesImport;
@@ -20,13 +22,13 @@ export interface IChoiceGroupState {
 }
 
 export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
-  public static defaultProps = {
+  public static defaultProps: IChoiceGroupProps = {
     options: []
   };
 
   private _id: string;
   private _labelId: string;
-  private _inputElement: HTMLInputElement;
+  private _inputElement: HTMLInputElement | null;
 
   constructor(props: IChoiceGroupProps, ) {
     super(props);
@@ -38,7 +40,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
     this.state = {
       keyChecked: (props.defaultSelectedKey === undefined) ?
-        this._getKeyChecked(props) :
+        this._getKeyChecked(props)! :
         props.defaultSelectedKey,
       keyFocused: undefined
     };
@@ -53,7 +55,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
     if (newKeyChecked !== oldKeyCheched) {
       this.setState({
-        keyChecked: newKeyChecked,
+        keyChecked: newKeyChecked!,
       });
     }
   }
@@ -63,26 +65,30 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     let { keyChecked, keyFocused } = this.state;
 
     return (
-      // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
+      // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
       <div role='application' className={ className }>
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
           role='radiogroup'
-          aria-labelledby={ this.props.label ? this._id + '-label' : '' }
+          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(this.props as any)['aria-labelledby'] || ''}` }
         >
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
           ) }
 
-          { options.map((option: IChoiceGroupOption) => {
-            let { onRenderField = this._onRenderField } = option;
+          { options!.map((option: IChoiceGroupOption) => {
+            let {
+              onRenderField = this._onRenderField,
+              onRenderLabel = this._onRenderLabel
+            } = option;
 
             // Merge internal props into option
             assign(option, {
               checked: option.key === keyChecked,
               disabled: option.disabled || this.props.disabled,
               id: `${this._id}-${option.key}`,
-              labelId: `${this._labelId}-${option.key}`
+              labelId: `${this._labelId}-${option.key}`,
+              onRenderLabel
             });
 
             return (
@@ -95,21 +101,27 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 })
                 }
               >
-                <input
-                  ref={ (c): HTMLInputElement => this._inputElement = c }
-                  id={ option.id }
-                  className={ css('ms-ChoiceField-input', styles.input) }
-                  type='radio'
-                  name={ this.props.name || this._id }
-                  disabled={ option.disabled || this.props.disabled }
-                  checked={ option.key === keyChecked }
-                  required={ required }
-                  onChange={ this._onChange.bind(this, option) }
-                  onFocus={ this._onFocus.bind(this, option) }
-                  onBlur={ this._onBlur.bind(this, option) }
-                  aria-labelledby={ option.id }
-                />
-                { onRenderField(option, this._onRenderField) }
+                <div className={ css('ms-ChoiceField-wrapper', styles.choiceFieldWrapper) }>
+                  <input
+                    ref={ this._resolveRef('_inputElement') }
+                    id={ option.id }
+                    className={ css('ms-ChoiceField-input', styles.input, {
+                      ['ms-ChoiceField--image ' + styles.inputHasImage]: !!option.imageSrc,
+                      ['ms-ChoiceField--icon ' + styles.inputHasIcon]: !!option.iconProps
+                    }) }
+                    type='radio'
+                    name={ this.props.name || this._id }
+                    disabled={ option.disabled || this.props.disabled }
+                    checked={ option.key === keyChecked }
+                    required={ required }
+                    onChange={ this._onChange.bind(this, option) }
+                    onFocus={ this._onFocus.bind(this, option) }
+                    onBlur={ this._onBlur.bind(this, option) }
+                    aria-labelledby={ option.id }
+                    { ...getNativeProps(option, inputProperties) }
+                  />
+                  { onRenderField(option, this._onRenderField) }
+                </div>
               </div>
             );
           }) }
@@ -140,6 +152,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
   private _onRenderField(option: IChoiceGroupOption) {
 
+    let { onRenderLabel } = option;
+
     return (
       <label
         htmlFor={ option.id }
@@ -153,30 +167,34 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         {
           option.imageSrc && (
             <div className={ css('ms-ChoiceField-innerField', styles.innerField) }>
-              <div className={ css(
-                'ms-ChoiceField-imageWrapper',
-                styles.imageWrapper,
-                {
-                  ['is-hidden ' + styles.imageWrapperIsHidden]: option.checked
-                }) }
+              <div
+                className={ css(
+                  'ms-ChoiceField-imageWrapper',
+                  styles.imageWrapper,
+                  {
+                    ['is-hidden ' + styles.imageWrapperIsHidden]: option.checked
+                  }) }
               >
                 <Image
                   src={ option.imageSrc }
-                  width={ option.imageSize.width }
-                  height={ option.imageSize.height }
+                  alt={ option.imageAlt ? option.imageAlt : '' }
+                  width={ option.imageSize ? option.imageSize.width : undefined }
+                  height={ option.imageSize ? option.imageSize.height : undefined }
                 />
               </div>
-              <div className={ css(
-                'ms-ChoiceField-imageWrapper',
-                styles.imageWrapper,
-                {
-                  ['is-hidden ' + styles.imageWrapperIsHidden]: !option.checked
-                }) }
+              <div
+                className={ css(
+                  'ms-ChoiceField-imageWrapper',
+                  styles.imageWrapper,
+                  {
+                    ['is-hidden ' + styles.imageWrapperIsHidden]: !option.checked
+                  }) }
               >
                 <Image
                   src={ option.selectedImageSrc }
-                  width={ option.imageSize.width }
-                  height={ option.imageSize.height }
+                  alt={ option.imageAlt ? option.imageAlt : '' }
+                  width={ option.imageSize ? option.imageSize.width : undefined }
+                  height={ option.imageSize ? option.imageSize.height : undefined }
                 />
               </div>
             </div>
@@ -195,13 +213,17 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           option.imageSrc || option.iconProps
             ? (
               <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
-                <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
+                { onRenderLabel!(option) }
               </div>
-            ) : (
-              <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
-            )
+            ) : onRenderLabel!(option)
         }
       </label>
+    );
+  }
+
+  private _onRenderLabel(option: IChoiceGroupOption): JSX.Element {
+    return (
+      <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
     );
   }
 
@@ -227,12 +249,12 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
    * If all the isChecked property of options are falsy values, return undefined;
    * Else return the key of the first option with the truthy isChecked property.
    */
-  private _getKeyChecked(props: IChoiceGroupProps): string | number {
+  private _getKeyChecked(props: IChoiceGroupProps): string | number | undefined {
     if (props.selectedKey !== undefined) {
       return props.selectedKey;
     }
 
-    const optionsChecked = props.options.filter((option: IChoiceGroupOption) => {
+    const optionsChecked = props.options!.filter((option: IChoiceGroupOption) => {
       return option.checked;
     });
 

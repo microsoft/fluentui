@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -10,15 +11,17 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "noImplicitAny": false,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
     "lib": [
       "es2017",
       "dom"
     ],
     "types": [
-      "chai",
-      "mocha",
-      "webpack-env"
+      "jest",
+      "webpack-env",
+      "react"
     ],
     "paths": {
       "@uifabric/styling": [
@@ -26,12 +29,7 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd",
-    "api",
-    "temp"
+  "include": [
+    "src"
   ]
 }

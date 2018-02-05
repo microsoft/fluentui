@@ -79,11 +79,7 @@ $od-Navigation-columnPadding: 30px;
     }
 
     @include high-contrast {
-      border: 1px solid $ms-color-white;
-    }
-
-    @include high-contrast-black-on-white  {
-      border: 1px solid $ms-color-black;
+      border: 1px solid WindowText;
     }
   }
 
@@ -105,11 +101,11 @@ $od-Navigation-columnPadding: 30px;
       color: $ms-color-white;
 
       @include high-contrast {
-        box-shadow: inset 0px 0px 0px 1px $ms-color-white;
+        box-shadow: inset 0px 0px 0px 1px WindowText;
       }
 
       @include high-contrast-black-on-white  {
-        box-shadow: inset 0px 0px 0px 1px $high-contrast-purpleBG;
+        box-shadow: inset 0px 0px 0px 1px Highlight;
       }
     }
 

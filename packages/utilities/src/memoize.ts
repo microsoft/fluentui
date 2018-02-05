@@ -1,3 +1,4 @@
+// tslint:disable:no-any
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;
@@ -13,15 +14,29 @@ interface IMemoizeNode {
   value?: any;
 }
 
-/** Test utility for providing a custom weakmap. */
+/**
+ *  Test utility for providing a custom weakmap.
+ *
+ * @internal
+ * */
 export function setMemoizeWeakMap(weakMap: any): void {
   _weakMap = weakMap;
 }
 
+/**
+ * Memoize decorator to be used on class methods. Note that the "this" reference
+ * will be inaccessible within a memoized method, given that a cached method's this
+ * would not be instance specific.
+ *
+ * @public
+ */
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>) {
+  descriptor: TypedPropertyDescriptor<T>): {
+    configurable: boolean;
+    get(): T;
+  } {
 
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
@@ -29,7 +44,7 @@ export function memoize<T extends Function>(
 
   return {
     configurable: true,
-    get() {
+    get(): T {
       return fn;
     }
   };
@@ -46,6 +61,7 @@ export function memoize<T extends Function>(
  * unintendedly called with unique objects. Without a reset, the cache could grow infinitely, so we safeguard
  * by resetting. To override this behavior, pass a value of 0 to the maxCacheSize parameter.
  *
+ * @public
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.
@@ -94,7 +110,9 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   } as any;
 }
 
-function _normalizeArg(val: any) {
+function _normalizeArg(val: null | undefined): { empty: boolean } | any;
+function _normalizeArg(val: object): any;
+function _normalizeArg(val: any): any {
   if (!val) {
     return _emptyObject;
   } else if (typeof val === 'object') {

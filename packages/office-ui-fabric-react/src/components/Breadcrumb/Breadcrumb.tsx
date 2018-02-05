@@ -9,9 +9,10 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
+import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 
 import * as stylesImport from './Breadcrumb.scss';
 const styles: any = stylesImport;
@@ -23,6 +24,7 @@ export interface IBreadCrumbData {
 }
 
 const OVERFLOW_KEY = 'overflow';
+const nullFunction = (): null => null;
 
 export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
@@ -30,18 +32,16 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     maxDisplayedItems: 999
   };
 
-  private _id: string;
-
   constructor(props: IBreadcrumbProps) {
     super(props);
   }
 
   public render() {
-    let { onReduceData = this._onReduceData } = this.props;
-    let breadCrumbData: IBreadCrumbData = {
+    const { onReduceData = this._onReduceData, maxDisplayedItems, items } = this.props;
+    const breadCrumbData: IBreadCrumbData = {
       props: this.props,
-      renderedItems: this.props.items.slice(0, this.props.maxDisplayedItems),
-      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems)
+      renderedItems: items.slice(-maxDisplayedItems!),
+      renderedOverflowItems: items.slice(0, -maxDisplayedItems!)
     };
 
     return (
@@ -56,8 +56,9 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   @autobind
   private _onReduceData(data: IBreadCrumbData): IBreadCrumbData | undefined {
     let { renderedItems, renderedOverflowItems } = data;
-    let movedItem = renderedItems[renderedItems.length - 1];
-    renderedItems = renderedItems.slice(0, -1);
+    let movedItem = renderedItems[0];
+    renderedItems = renderedItems.slice(1);
+
     renderedOverflowItems = [...renderedOverflowItems, movedItem];
 
     if (movedItem !== undefined) {
@@ -67,7 +68,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    let { className, ariaLabel, items, onRenderItem = this._onRenderItem } = data.props;
+    let { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
     let { renderedOverflowItems, renderedItems } = data;
 
     let contextualItems = renderedOverflowItems.map(
@@ -95,7 +96,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  menuIconProps={ null }
+                  onRenderMenuIcon={ nullFunction }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
@@ -110,10 +111,11 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
             { renderedItems.map(
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) } ref={ item.key || String(index) }>
-                  { onRenderItem(item, this._defaultRenderItem) }
+                  { onRenderItem(item, this._onRenderItem) }
                   <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+                  />
                 </li>
               )) }
           </ol>
@@ -123,26 +125,32 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   @autobind
-  private _onRenderItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
-    return this._defaultRenderItem(item);
-  }
-
-  @autobind
-  private _defaultRenderItem(item: IBreadcrumbItem) {
+  private _onRenderItem(item: IBreadcrumbItem) {
     if (item.onClick || item.href) {
       return (
         <Link
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
           aria-current={ item.isCurrentItem ? 'page' : null }
-          onClick={ this._onBreadcrumbClicked.bind(this, item) }>
-          { item.text }
+          onClick={ this._onBreadcrumbClicked.bind(this, item) }
+        >
+          <TooltipHost
+            content={ item.text }
+            overflowMode={ TooltipOverflowMode.Parent }
+          >
+            { item.text }
+          </TooltipHost>
         </Link>
       );
     } else {
       return (
         <span className={ css('ms-Breadcrumb-item', styles.item) }>
-          { item.text }
+          <TooltipHost
+            content={ item.text }
+            overflowMode={ TooltipOverflowMode.Parent }
+          >
+            { item.text }
+          </TooltipHost>
         </span>
       );
     }

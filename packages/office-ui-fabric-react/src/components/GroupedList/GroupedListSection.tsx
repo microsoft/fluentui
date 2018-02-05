@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   IGroup,
   IGroupDividerProps
-} from './GroupedList.Props';
+} from './GroupedList.types';
 
 import {
   IDragDropContext,
@@ -23,8 +23,9 @@ import {
   SELECTION_CHANGE
 } from '../../utilities/selection/index';
 
-import { GroupFooter } from './GroupFooter';
 import { GroupHeader } from './GroupHeader';
+import { GroupShowAll } from './GroupShowAll';
+import { GroupFooter } from './GroupFooter';
 
 import {
   List
@@ -38,6 +39,11 @@ import * as stylesImport from './GroupedList.scss';
 const styles: any = stylesImport;
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -84,11 +90,17 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   /** Controls how/if the details list manages selection. */
   selectionMode?: SelectionMode;
 
+  /** Information to pass in to the group Show All footer. */
+  showAllProps?: IGroupDividerProps;
+
   /** Optional Viewport, provided by the parent component. */
   viewport?: IViewport;
 
   /** Override for rendering the group header. */
   onRenderGroupHeader?: IRenderFunction<IGroupDividerProps>;
+
+  /** Override for rendering the group Show All link. */
+  onRenderGroupShowAll?: IRenderFunction<IGroupDividerProps>;
 
   /** Override for rendering the group footer. */
   onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
@@ -158,21 +170,23 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       getGroupItemLimit,
       group,
       groupIndex,
       headerProps,
+      showAllProps,
       footerProps,
       viewport,
       selectionMode,
       onRenderGroupHeader = this._onRenderGroupHeader,
+      onRenderGroupShowAll = this._onRenderGroupShowAll,
       onRenderGroupFooter = this._onRenderGroupFooter
     } = this.props;
     let { isSelected } = this.state;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
-    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
+    let isShowAllVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
       (group.count > renderCount || group.hasMoreData);
     let hasNestedGroups = group && group.children && group.children.length > 0;
 
@@ -185,12 +199,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionMode: selectionMode
     };
     let groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
+    let groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
     let groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
 
     return (
       <div
         ref='root'
         className={ css('ms-GroupedList-group', styles.group, this._getDroppingClassName()) }
+        role='presentation'
       >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
@@ -201,15 +217,20 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                 (
                   <List
                     ref='list'
-                    items={ group.children }
+                    items={ group!.children }
                     onRenderCell={ this._renderSubGroup }
-                    getItemCountForPage={ () => 1 }
+                    getItemCountForPage={ this._returnOne }
                   />
                 ) :
                 this._onRenderGroup(renderCount)
             )
         }
-        { isFooterVisible && onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
+        {
+          group && group.isCollapsed ?
+            null :
+            isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)
+        }
+        { onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
       </div>
     );
   }
@@ -251,17 +272,29 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   @autobind
+  private _onRenderGroupShowAll(props: IGroupDividerProps) {
+    return <GroupShowAll { ...props } />;
+  }
+
+  @autobind
   private _onRenderGroupFooter(props: IGroupDividerProps) {
     return <GroupFooter { ...props } />;
   }
 
   private _onSelectionChange() {
     let { group, selection } = this.props;
-    let isSelected = selection.isRangeSelected(group.startIndex, group.count);
+    let isSelected = selection!.isRangeSelected(group!.startIndex, group!.count);
 
     if (isSelected !== this.state.isSelected) {
       this.setState({ isSelected });
     }
+  }
+
+  private _onRenderGroupCell(onRenderCell: any, groupNestingDepth: number | undefined)
+    : (item: any, itemIndex: number | undefined) => React.ReactNode {
+    return (item: any, itemIndex: number | undefined): React.ReactNode => {
+      return onRenderCell(groupNestingDepth, item, itemIndex);
+    };
   }
 
   private _onRenderGroup(renderCount: number) {
@@ -278,7 +311,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (
       <List
         items={ items }
-        onRenderCell={ (item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
+        onRenderCell={ this._onRenderGroupCell(onRenderCell, groupNestingDepth) }
         ref={ 'list' }
         renderCount={ Math.min(count, renderCount) }
         startIndex={ startIndex }
@@ -288,7 +321,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   @autobind
-  private _renderSubGroup(subGroup, subGroupIndex) {
+  private _renderSubGroup(subGroup: any, subGroupIndex: number) {
     let {
       dragDropEvents,
       dragDropHelper,
@@ -297,6 +330,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       groupNestingDepth,
       items,
       headerProps,
+      showAllProps,
       footerProps,
       listProps,
       onRenderCell,
@@ -304,6 +338,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionMode,
       viewport,
       onRenderGroupHeader,
+      onRenderGroupShowAll,
       onRenderGroupFooter
     } = this.props;
 
@@ -325,14 +360,20 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderCell={ onRenderCell }
         selection={ selection }
         selectionMode={ selectionMode }
+        showAllProps={ showAllProps }
         viewport={ viewport }
         onRenderGroupHeader={ onRenderGroupHeader }
+        onRenderGroupShowAll={ onRenderGroupShowAll }
         onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;
   }
 
-  private _getGroupKey(group, index) {
+  private _returnOne(): number {
+    return 1;
+  }
+
+  private _getGroupKey(group: any, index: number) {
     return 'group-' + ((group && group.key) ? group.key : String(group.level) + String(index));
   }
 
@@ -347,11 +388,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
       canDrag: () => false, // cannot drag groups
-      canDrop: dragDropEvents.canDrop,
-      onDragStart: null,
+      canDrop: dragDropEvents!.canDrop,
       updateDropState: this._updateDroppingState
     };
-    return options;
+    return options as IDragDropOptions;
   }
 
   /**
@@ -367,12 +407,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let { dragDropEvents } = this.props;
 
     if (!isDropping) {
-      if (dragDropEvents.onDragLeave) {
-        dragDropEvents.onDragLeave(event, null);
+      if (dragDropEvents && dragDropEvents.onDragLeave) {
+        dragDropEvents.onDragLeave!(event, undefined);
       }
     } else {
-      if (dragDropEvents.onDragEnter) {
-        dragDropEvents.onDragEnter(event, null);
+      if (dragDropEvents && dragDropEvents.onDragEnter) {
+        dragDropEvents.onDragEnter(event, undefined);
       }
     }
 

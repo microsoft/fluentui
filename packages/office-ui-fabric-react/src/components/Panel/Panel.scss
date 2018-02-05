@@ -25,6 +25,10 @@ $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
 $CommandBarHeight: 44px;
 
+.hiddenPanel {
+  visibility: hidden;
+}
+
 .root {
   pointer-events: none;
 
@@ -108,7 +112,7 @@ $CommandBarHeight: 44px;
 .root.rootIsXLarge,
 .root.rootIsCustom {
   .main {
-    @media (min-width: $ms-screen-min-lg) {
+    @media (min-width: $uhf-screen-min-mobile) {
       @include ms-left($Panel-margin-md);
       width: auto;
     }
@@ -178,30 +182,17 @@ $CommandBarHeight: 44px;
     cursor: pointer;
     pointer-events: auto;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       opacity: 0;
     }
   }
 }
 
-// The button in the top right (x)
-.closeButton {
-  background: none;
-  border: 0;
-  cursor: pointer;
-  position: absolute;
-  @include ms-right(4px);
-  top: 0;
+.navigation {
+  padding: 0 5px;
   height: $CommandBarHeight;
-  width: $CommandBarHeight;
-  line-height: $CommandBarHeight;
-  padding: 0;
-  color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-l;
-
-  &:hover {
-    color: $ms-color-neutralPrimary;
-  }
+  display: flex;
+  justify-content: flex-end;
 }
 
 // Scrollable content area
@@ -228,7 +219,7 @@ $CommandBarHeight: 44px;
   padding-left: 16px;
   padding-right: 16px;
 
-  @media (min-width: $ms-screen-min-lg) {
+  @media (min-width: $uhf-screen-min-mobile) {
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -250,7 +241,12 @@ $CommandBarHeight: 44px;
 
 .content {
   margin-bottom: 0;
+  padding-bottom: 20px;
   overflow-y: auto;
+}
+
+.contentGrow {
+  flex-grow: 1;
 }
 
 .footer {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { App as AppBase, IAppDefinition } from '@uifabric/example-app-base';
+import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from '../components/DetailsList/examples/DetailsList.Basic.Example';
 
 export const AppDefinition: IAppDefinition = {
@@ -16,6 +16,12 @@ export const AppDefinition: IAppDefinition = {
   examplePages: [
     {
       links: [
+        {
+          component: require<any>('../components/ActivityItem/ActivityItemPage').ActivityItemPage,
+          key: 'ActivityItem',
+          name: 'ActivityItem',
+          url: '#/examples/activityitem'
+        },
         {
           component: require<any>('../components/Breadcrumb/BreadcrumbPage').BreadcrumbPage,
           key: 'Breadcrumb',
@@ -89,6 +95,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/dialog'
         },
         {
+          component: require<any>('../components/Divider/DividerPage').DividerPage,
+          key: 'Divider',
+          name: 'Divider',
+          url: '#/examples/Divider'
+        },
+        {
           component: require<any>('../components/DocumentCard/DocumentCardPage').DocumentCardPage,
           key: 'DocumentCard',
           name: 'DocumentCard',
@@ -105,6 +117,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Facepile',
           name: 'Facepile',
           url: '#/examples/facepile'
+        },
+        {
+          component: require<any>('../components/HoverCard/HoverCardPage').HoverCardPage,
+          key: 'HoverCard',
+          name: 'HoverCard',
+          url: '#/examples/hovercard'
         },
         {
           component: require<any>('../components/Icon/IconPage').IconPage,
@@ -203,6 +221,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/resizegroup'
         },
         {
+          component: require<any>('../components/ScrollablePane/ScrollablePanePage').ScrollablePanePage,
+          key: 'ScrollablePane',
+          name: 'ScrollablePane',
+          url: '#/examples/scrollablepane'
+        },
+        {
           component: require<any>('../components/SearchBox/SearchBoxPage').SearchBoxPage,
           key: 'SearchBox',
           name: 'SearchBox',
@@ -219,6 +243,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Spinner',
           name: 'Spinner',
           url: '#/examples/spinner'
+        },
+        {
+          component: require<any>('../components/SwatchColorPicker/SwatchColorPickerPage').SwatchColorPickerPage,
+          key: 'SwatchColorPicker',
+          name: 'SwatchColorPicker',
+          url: '#/examples/swatchcolorpicker'
         },
         {
           component: require<any>('../components/TeachingBubble/TeachingBubblePage').TeachingBubblePage,
@@ -319,6 +349,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
+        },
+        {
+          component: require<any>('../components/ThemeGenerator/ThemeGeneratorPage').ThemeGeneratorPage,
+          key: 'Theme Generator',
+          name: 'Beta Theme Generator',
+          url: '#examples/themeGenerator'
+        },
+        {
+          component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,
+          key: 'Components Status',
+          name: 'Components Checklist',
+          url: '#/components-status'
         }
       ],
       name: 'Utilities'
@@ -329,6 +371,10 @@ export const AppDefinition: IAppDefinition = {
     {
       name: 'Getting started',
       url: '#/'
+    },
+    {
+      name: 'Components Checklist',
+      url: '#/components-status'
     },
     {
       name: 'Fabric',
@@ -342,4 +388,4 @@ export const AppDefinition: IAppDefinition = {
 
 };
 
-export const App = (props) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;

@@ -50,40 +50,11 @@ let _items = [
   }
 ];
 
-function groupBy(items, fieldName) {
-  let groups = items.reduce((currentGroups, currentItem, index) => {
-    let lastGroup = currentGroups[currentGroups.length - 1];
-    let fieldValue = currentItem[fieldName];
-
-    if (!lastGroup || lastGroup.value !== fieldValue) {
-      currentGroups.push({
-        key: 'group' + fieldValue + index,
-        name: `By "${fieldValue}"`,
-        value: fieldValue,
-        startIndex: index,
-        level: 0,
-        count: 0
-      });
-    }
-    if (lastGroup) {
-      lastGroup.count = index - lastGroup.startIndex;
-    }
-    return currentGroups;
-  }, []);
-
-  // Fix last group count
-  let lastGroup = groups[groups.length - 1];
-
-  if (lastGroup) {
-    lastGroup.count = items.length - lastGroup.startIndex;
-  }
-
-  return groups;
-}
-
-export class DetailsListGroupedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DetailsListGroupedExample extends React.Component<{}, {
+  items: {}[];
+}> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       items: _items
@@ -95,13 +66,38 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
 
     return (
       <Fabric className='foo'>
-        <DefaultButton onClick={ () => this._addItem() } text='Add an item' />
+        <DefaultButton
+          onClick={ this._addItem }
+          text='Add an item'
+        />
         <DetailsList
           items={ items }
-          groups={ groupBy(items, 'color') }
+          groups={ [
+            {
+              key: 'groupred0',
+              name: 'By "red"',
+              startIndex: 0,
+              count: 2
+            },
+            {
+              key: 'groupgreen2',
+              name: 'By "green"',
+              startIndex: 2,
+              count: 0
+            },
+            {
+              key: 'groupblue2',
+              name: 'By "blue"',
+              startIndex: 2,
+              count: 3
+            }
+          ] }
           columns={ _columns }
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           ariaLabelForSelectionColumn='Toggle selection'
+          groupProps={ {
+            showEmptyGroups: true
+          } }
         />
       </Fabric>
     );

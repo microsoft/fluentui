@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DOSearchBox } from '../DOSearchBox/DOSearchBox';
 import { DONavigationLink } from './DONavigationLink';
 import './DONavigation.scss';
-const links = require('json!../../data/DONavigationLinkData.json');
+const links = require('../../data/DONavigationLinkData.json');
 
 export interface IDONavigationProps {
 }
@@ -11,7 +11,6 @@ export interface IDONavigationState {
 }
 
 export class DONavigation extends React.Component<IDONavigationProps, IDONavigationState> {
-  private _links = [];
   private _containers = [];
   private HEADER_CLASS = '.od-Header';
   private LINKS_CLASS = '.od-Navigation-link';
@@ -39,7 +38,6 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
 
     this.headerel = document.querySelector(this.HEADER_CLASS);
     // Find navigation buttons
-    this._links = this.headerel.querySelectorAll(this.LINKS_CLASS);
     this._containers = this.headerel.querySelectorAll(this.CONTAINER_CLASS);
 
     // Settup Hamburger button
@@ -88,7 +86,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
           <div className='od-Navigation-linkContainer'>
             <a className='od-Navigation-link is-selected' role='menuitem' aria-label='Explore menu item, hit enter to open sub-menu and tab to navigate to first sub menu item' href='/' aria-expanded='false'>
               Explore
-                <i className='ms-Icon ms-Icon--ChevronDown' aria-hidden='true'></i>
+                <i className='ms-Icon ms-Icon--ChevronDown' aria-hidden='true' />
             </a>
             <div className='od-Navigation-subMenu'>
               <div className='od-Navigation-subMenuItems'>
@@ -102,7 +100,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
                     </div>
                     <div className='ms-Grid-col ms-xl3 ms-sm12  od-Navigation-menuThirdColumn'>
                       { this._getLinks(links.exploreLinks.thirdMenuColumn) }
-                      <div className='od-Navigation-subMenuOverflowColor'></div>
+                      <div className='od-Navigation-subMenuOverflowColor' />
                     </div>
                   </div>
                 </div>
@@ -122,7 +120,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
           <div className='od-Navigation-linkContainer'>
             <a className='od-Navigation-link' role='menuitem' aria-label='Resources menu item, hit enter to open sub-menu' href='/' aria-expanded='false'>
               Resources
-                <i className='ms-Icon ms-Icon--ChevronDown' aria-hidden='true'></i>
+                <i className='ms-Icon ms-Icon--ChevronDown' aria-hidden='true' />
             </a>
             <div className='od-Navigation-subMenu'>
               <div className='od-Navigation-subMenuItems od-Navigation-menuFirstColumn'>
@@ -133,7 +131,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
           <div className='od-Navigation-linkContainer'>
             <a className='od-Navigation-link' role='menuitem' aria-label='Documentation menu item, hit enter to open sub-menu and tab to navigate to first sub menu item' href='/' aria-expanded='false'>
               Documentation
-                <i className='ms-Icon ms-Icon--ChevronDown' aria-hidden='true'></i>
+                <i className='ms-Icon ms-Icon--ChevronDown' aria-hidden='true' />
             </a>
             <div className='od-Navigation-subMenu'>
               <div className='od-Navigation-subMenuItems od-Navigation-menuFirstColumn'>
@@ -143,11 +141,11 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
           </div>
         </div>
         <div className='od-Navigation-socialButtons'>
-          <div className='od-Navigation-socialButton'></div>
-          <div className='od-Navigation-socialButton'></div>
-          <div className='od-Navigation-socialButton'></div>
-          <div className='od-Navigation-socialButton'></div>
-          <div className='od-Navigation-socialButton'></div>
+          <div className='od-Navigation-socialButton' />
+          <div className='od-Navigation-socialButton' />
+          <div className='od-Navigation-socialButton' />
+          <div className='od-Navigation-socialButton' />
+          <div className='od-Navigation-socialButton' />
         </div>
       </div>
     );
@@ -259,7 +257,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
   }
 
   private _closeDropdownHandler(e) {
-    if (!this.isDescendant(this.headerel, document.activeElement)) {
+    if (!this._isDescendant(this.headerel, document.activeElement)) {
       this._removeDropdown();
     }
   }
@@ -305,7 +303,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
         e.target.setAttribute('aria-expanded', false);
       }
     } else {
-      ancestor = this.findAncestor(e.target, this.CONTAINER_CLASS);
+      ancestor = this._findAncestor(e.target, this.CONTAINER_CLASS);
 
       if (!ancestor.classList.contains(this.LINK_OPEN_STATE)) {
         this._removeAllActiveClasses();
@@ -330,9 +328,9 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private isDescendant(parent, child) {
+  private _isDescendant(parent, child) {
     let node = child.parentNode;
-    while (node != null) {
+    while (node) {
       if (node === parent) {
         return true;
       }
@@ -347,13 +345,14 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     }
   }
 
-  private findAncestor(el, cls) {
+  private _findAncestor(el, cls) {
     let newCLS = cls.replace('.', '');
-    let that;
     let newEL = el;
-    while ((newEL = newEL.parentElement) && !newEL.classList.contains(newCLS)) {
-      that = this;
-    }
+
+    do {
+      newEL = newEL.parentElement;
+    } while (!newEL.classList.contains(newCLS));
+
     return newEL;
   }
 }

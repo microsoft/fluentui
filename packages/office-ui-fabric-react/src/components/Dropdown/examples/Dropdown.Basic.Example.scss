@@ -1,11 +1,8 @@
 :global {
-  .dropdownExample {
+  .docs-DropdownExample {
     max-width: 300px;
-  }
-  .dropdownExample-option {
-    display: flex;
-  }
-  .dropdownExample-placeholder {
-    display: flex;
+    .ms-Dropdown-container {
+      margin-bottom: 10px;
+    }
   }
 }

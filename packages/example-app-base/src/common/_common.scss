@@ -1,6 +1,9 @@
-@import '~office-ui-fabric-core/dist/sass/References';
+@import '~office-ui-fabric-react/dist/sass/References';
 @import './i18n';
 @import './themeOverrides';
 @import './focusBorder';
 @import './semanticColorVariables';
 
+// Screen sizes that align with UHF breakpoints for the website
+$uhf-screen-min-mobile: 768px;
+$uhf-screen-max-mobile: ($uhf-screen-min-mobile - 1);

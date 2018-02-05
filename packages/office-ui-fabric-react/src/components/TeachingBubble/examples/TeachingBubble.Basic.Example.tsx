@@ -9,11 +9,11 @@ export interface ITeachingBubbleBasicExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBubbleBasicExampleState> {
+export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBubbleBasicExampleState> {
   private _menuButtonElement: HTMLElement;
 
-  public constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
 
@@ -28,13 +28,13 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
       children: 'Try it out'
     };
     let exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later',
+      children: 'Maybe later',
       onClick: this._onDismiss
     };
 
     return (
       <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
           <DefaultButton
             onClick={ this._onDismiss }
             text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }

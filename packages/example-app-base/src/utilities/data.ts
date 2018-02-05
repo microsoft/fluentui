@@ -1,3 +1,5 @@
+import { IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+
 const LOREM_IPSUM = ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
   'labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +
   'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
@@ -5,17 +7,18 @@ const LOREM_IPSUM = ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
   'mollit anim id est laborum').split(' ');
 
 const DATA = {
-  'color' : [ 'red', 'blue', 'green', 'yellow' ],
-  'shape' : [ 'circle', 'square', 'triangle' ],
-  'location' : [ 'Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland' ]
+  'color': ['red', 'blue', 'green', 'yellow'],
+  'shape': ['circle', 'square', 'triangle'],
+  'location': ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
 };
 
-export function createListItems(count: number, startIndex = 0): any {
-  return Array.apply(null, Array(count)).map((item, index) => {
+// tslint:disable-next-line:no-any
+export function createListItems(count: number, startIndex: number = 0): any {
+  return Array.apply(null, Array(count)).map((item: number, index: number) => {
     let size = 150 + Math.round(Math.random() * 100);
 
     return {
-      thumbnail: `//placehold.it/${ size }x${ size }`,
+      thumbnail: `//placehold.it/${size}x${size}`,
       key: 'item-' + (index + startIndex) + ' ' + lorem(4),
       name: lorem(5),
       description: lorem(10 + Math.round(Math.random() * 50)),
@@ -29,12 +32,17 @@ export function createListItems(count: number, startIndex = 0): any {
 }
 
 export function createGroups(
-  groupCount: number, groupDepth: number, startIndex: number,
-  itemsPerGroup: number, level?: number, key?: string) {
-  key = key ? key + '-' : '';
-  level = level ? level : 0;
+  groupCount: number,
+  groupDepth: number,
+  startIndex: number,
+  itemsPerGroup: number,
+  level: number = 0,
+  key: string = ''): IGroup[] {
+  if (key !== '') {
+    key = key + '-';
+  }
   let count = Math.pow(itemsPerGroup, groupDepth);
-  return Array.apply(null, Array(groupCount)).map((value, index) => {
+  return Array.apply(null, Array(groupCount)).map((value: number, index: number) => {
     return {
       count: count,
       key: 'group' + key + index,
@@ -50,7 +58,7 @@ export function createGroups(
 
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
-    .map(item => _randWord(LOREM_IPSUM))
+    .map((item: number) => _randWord(LOREM_IPSUM))
     .join(' ');
 }
 
@@ -60,7 +68,7 @@ export function isGroupable(key: string): boolean {
     key === 'location';
 }
 
-function _randWord(array: string[]) {
+function _randWord(array: string[]): string {
   let index = Math.floor(Math.random() * array.length);
   return array[index];
 }

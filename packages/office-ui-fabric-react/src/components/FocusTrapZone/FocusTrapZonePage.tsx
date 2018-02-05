@@ -45,7 +45,7 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
             ] }
           />
         }
@@ -55,8 +55,8 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
             <span> is used to trap the focus in any html element. Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone.</span>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

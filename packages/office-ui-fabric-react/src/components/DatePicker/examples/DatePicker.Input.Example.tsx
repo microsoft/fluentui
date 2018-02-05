@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: [
@@ -66,12 +67,13 @@ const DayPickerStrings: IDatePickerStrings = {
 
 export interface IDatePickerInputExampleState {
   firstDayOfWeek?: DayOfWeek;
-  value?: Date;
+  value?: Date | null;
 }
 
-export class DatePickerInputExample extends React.Component<any, IDatePickerInputExampleState> {
-  public constructor() {
-    super();
+export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
@@ -92,11 +94,21 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           ariaLabel={ desc }
           firstDayOfWeek={ firstDayOfWeek }
           strings={ DayPickerStrings }
-          value={ value }
-          onSelectDate={ date => this.setState({ value: date }) }
+          value={ value! }
+          onSelectDate={ this._onSelectDate }
         />
-        <DefaultButton onClick={ () => this.setState({ value: null }) } text='Clear' />
+        <DefaultButton onClick={ this._onClick } text='Clear' />
       </div>
     );
+  }
+
+  @autobind
+  private _onSelectDate(date: Date | null | undefined): void {
+    this.setState({ value: date });
+  }
+
+  @autobind
+  private _onClick(): void {
+    this.setState({ value: null });
   }
 }

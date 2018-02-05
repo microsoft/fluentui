@@ -12,11 +12,11 @@ export interface IButtonSwapExampleState {
 }
 
 export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwapExampleState> {
-  private buttonRef: HTMLElement;
+  private buttonRef: HTMLElement | null;
   private hasFocus: boolean;
 
-  public constructor() {
-    super();
+  public constructor(props: IButtonProps) {
+    super(props);
 
     this.hasFocus = false;
     this.buttonRef = null;
@@ -34,7 +34,7 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
     // if our button previously had focus but we lost it
     // because we switched the control type, we need to set focus again
     if (this.hasFocus && document.activeElement !== this.buttonRef) {
-      this.buttonRef.focus();
+      this.buttonRef!.focus();
     }
   }
 
@@ -45,31 +45,35 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
 
     // determine which button to render
     let button = isPrimary
-      ? <PrimaryButton
-        ref={ this._setButtonRef }
-        disabled={ disabled }
-        checked={ checked }
-        onClick={ this._onClick }>
-        { text }
-      </PrimaryButton>
-      : <DefaultButton
-        ref={ this._setButtonRef }
-        disabled={ disabled }
-        checked={ checked }
-        onClick={ this._onClick }>
-        { text }
-      </DefaultButton>;
+      ? (
+        <PrimaryButton
+          ref={ this._setButtonRef }
+          disabled={ disabled }
+          checked={ checked }
+          onClick={ this._onClick }
+        >
+          { text }
+        </PrimaryButton>
+      ) : (
+        <DefaultButton
+          ref={ this._setButtonRef }
+          disabled={ disabled }
+          checked={ checked }
+          onClick={ this._onClick }
+        >
+          { text }
+        </DefaultButton>
+      );
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Click to swap button types</Label>
         { button }
       </div>
     );
   }
 
   @autobind
-  private _setButtonRef(ref: React.ReactInstance): void {
+  private _setButtonRef(ref: any): void {
     this.buttonRef = ReactDOM.findDOMNode(ref) as HTMLElement;
   }
 

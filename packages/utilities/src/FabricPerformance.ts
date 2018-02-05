@@ -1,16 +1,31 @@
-import { Async } from './Async';
+declare const setTimeout: (cb: () => void, delay: number) => number;
 
+/**
+ * PerfData interface.
+ *
+ * @internal
+ */
 export interface IPerfData {
   duration: number;
   timeStamp: number;
 }
 
+/**
+ * PerfMeasurement interface.
+ *
+ * @internal
+ */
 export interface IPerfMeasurement {
   totalDuration: number;
   count: number;
   all: IPerfData[];
 }
 
+/**
+ * PerfSummary interface.
+ *
+ * @internal
+ */
 export interface IPerfSummary {
   [key: string]: IPerfMeasurement;
 }
@@ -19,17 +34,25 @@ const now: () => number = () => (typeof performance !== 'undefined' && !!perform
 
 const RESET_INTERVAL = 3 * 60 * 1000; // auto reset every 3 minutes
 
+/**
+ * Performance helper class for measuring things.
+ *
+ * @public
+ */
 export class FabricPerformance {
   public static summary: IPerfSummary = {};
-  private static _async: Async = new Async();
   private static _timeoutId: number;
+
   /**
-   * Measures execution time of the given syncronous function. If the same logic is executed multiple times, 
+   * Measures execution time of the given syncronous function. If the same logic is executed multiple times,
    * each individual measurement will be collected as well the overall numbers.
    * @param name - The name of this measurement
    * @param func - The logic to be measured for execution time
    */
-  public static measure(name: string, func: () => void) {
+  public static measure(name: string, func: () => void): void {
+    if (Number.isInteger(FabricPerformance._timeoutId)) {
+      FabricPerformance.setPeriodicReset();
+    }
     const start = now();
     func();
     const end = now();
@@ -48,15 +71,13 @@ export class FabricPerformance {
     FabricPerformance.summary[name] = measurement;
   }
 
-  public static reset() {
+  public static reset(): void {
     FabricPerformance.summary = {};
-    FabricPerformance._async.clearTimeout(FabricPerformance._timeoutId);
-    FabricPerformance.setPeriodicReset();
+    clearTimeout(FabricPerformance._timeoutId);
+    FabricPerformance._timeoutId = NaN;
   }
 
   public static setPeriodicReset(): void {
-    FabricPerformance._timeoutId = FabricPerformance._async.setTimeout(() => FabricPerformance.reset(), RESET_INTERVAL);
-  };
+    FabricPerformance._timeoutId = setTimeout(() => FabricPerformance.reset(), RESET_INTERVAL);
+  }
 }
-
-FabricPerformance.setPeriodicReset();

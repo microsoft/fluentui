@@ -3,10 +3,12 @@
  * parsed and available at load time, which is not necessary for most cases.
  */
 
+export * from './ActivityItem';
 export * from './Breadcrumb';
 export * from './Button';
 export * from './Calendar';
 export * from './Callout';
+export * from './Check';
 export * from './Checkbox';
 export * from './ChoiceGroup';
 export * from './ColorPicker';
@@ -23,6 +25,7 @@ export * from './Facepile';
 export * from './FocusTrapZone';
 export * from './FocusZone';
 export * from './GroupedList';
+export * from './HoverCard';
 export * from './Icon';
 export * from './Image';
 export * from './Label';
@@ -37,15 +40,19 @@ export * from './Overlay';
 export * from './Panel';
 export * from './Pickers';
 export * from './Persona';
+export * from './PersonaCoin';
 export * from './Pivot';
 export * from './ProgressIndicator';
 export * from './Rating';
 export * from './ResizeGroup';
+export * from './ScrollablePane';
 export * from './SearchBox';
 export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
+export * from './Sticky';
 export * from './Styling';
+export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './TextField';
 export * from './Toggle';

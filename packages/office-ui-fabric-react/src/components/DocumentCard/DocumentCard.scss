@@ -35,7 +35,6 @@
 
 // Modifier: Compact layout
 .rootIsCompact {
-  border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   display: flex;
   max-width: 480px;
   height: 109px;
@@ -45,9 +44,9 @@
     flex: 1;
     justify-content: space-between;
   }
-  // Remove the usual accent color from the preview
+
   .preview {
-    border-bottom: none;
+    border-bottom: none;   // Remove the usual border from the preview
     max-height: 106px;
     max-width: 144px;
 
@@ -61,6 +60,10 @@
 
   .preview {
     @include border-right(1px, solid, $ms-color-neutralLight);
+  }
+
+  .previewIconContainer {
+    height: 100%;
   }
 
   .title {
@@ -210,7 +213,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 /** Preview **/
 .preview {
-  border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
+  border-bottom: 1px solid $ms-color-neutralLight;
   position: relative;
   background-color: $ms-color-neutralLighterAlt;
   overflow: hidden;
@@ -218,6 +221,12 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   &.previewIsFileList {
     background-color: $ms-color-white;
   }
+}
+
+.previewIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 .icon {

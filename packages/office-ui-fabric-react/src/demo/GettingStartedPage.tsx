@@ -1,3 +1,5 @@
+/* tslint:disable:jsx-no-multiline-js */
+
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import './GettingStartedPage.scss';

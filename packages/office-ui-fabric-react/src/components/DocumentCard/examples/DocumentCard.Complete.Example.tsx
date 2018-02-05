@@ -23,8 +23,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
@@ -33,8 +32,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'Spec Sheet for design',
@@ -43,8 +41,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'Contoso Marketing Presentation',
@@ -53,8 +50,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'Notes from Ignite conference',
@@ -63,8 +59,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'FY17 Cost Projections',
@@ -73,66 +68,99 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         }
       ],
 
     };
 
+    let previewPropsUsingIcon: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },
+          width: 318,
+          height: 196
+        }
+      ]
+    };
+
     return (
-      <DocumentCard
-        onClick={ () => { console.log('You clicked the card.'); } }
-      >
-        <DocumentCardPreview { ...previewProps } />
-        <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
-        <DocumentCardTitle title='6 files were uploaded' />
-        <DocumentCardActivity
-          activity='Created Feb 23, 2016'
-          people={
-            [
-              { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
-              { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
-              { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
-            ]
-          }
-        />
-        <DocumentCardActions
-          actions={
-            [
-              {
-                iconProps: { iconName: 'Share' },
-                onClick: (ev: any) => {
-                  console.log('You clicked the share action.');
-                  ev.preventDefault();
-                  ev.stopPropagation();
+      <div>
+        <DocumentCard
+          onClick={ this._onClick }
+        >
+          <DocumentCardPreview { ...previewProps } />
+          <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
+          <DocumentCardTitle title='6 files were uploaded' />
+          <DocumentCardActivity
+            activity='Created Feb 23, 2016'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
+              ]
+            }
+          />
+          <DocumentCardActions
+            actions={
+              [
+                {
+                  iconProps: { iconName: 'Share' },
+                  onClick: (ev: any) => {
+                    console.log('You clicked the share action.');
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                  },
+                  ariaLabel: 'share action'
                 },
-                ariaLabel: 'share action'
-              },
-              {
-                iconProps: { iconName: 'Pin' },
-                onClick: (ev: any) => {
-                  console.log('You clicked the pin action.');
-                  ev.preventDefault();
-                  ev.stopPropagation();
+                {
+                  iconProps: { iconName: 'Pin' },
+                  onClick: (ev: any) => {
+                    console.log('You clicked the pin action.');
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                  },
+                  ariaLabel: 'pin action'
                 },
-                ariaLabel: 'pin action'
-              },
-              {
-                iconProps: { iconName: 'Ringer' },
-                onClick: (ev: any) => {
-                  console.log('You clicked the ringer action.');
-                  ev.preventDefault();
-                  ev.stopPropagation();
+                {
+                  iconProps: { iconName: 'Ringer' },
+                  onClick: (ev: any) => {
+                    console.log('You clicked the ringer action.');
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                  },
+                  ariaLabel: 'ringer action'
                 },
-                ariaLabel: 'ringer action'
-              },
-            ]
-          }
-          views={ 432 }
-        />
-      </DocumentCard>
+              ]
+            }
+            views={ 432 }
+          />
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardPreview { ...previewPropsUsingIcon } />
+          <div className='ms-DocumentCard-details'>
+            <DocumentCardTitle
+              title='View and share files'
+              shouldTruncate={ true }
+            />
+            <DocumentCardActivity
+              activity='Created a few minutes ago'
+              people={
+                [
+                  { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }
+                ]
+              }
+            />
+          </div>
+        </DocumentCard>
+      </div>
     );
+  }
+
+  private _onClick(): void {
+    console.log('You clicked the card.');
   }
 
 }

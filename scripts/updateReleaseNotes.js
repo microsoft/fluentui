@@ -190,7 +190,7 @@ function updateReleaseNotes(shouldPatchChangelog) {
           "name": `${entry.name} v${entry.version}`,
           "body": entry.body,
           "draft": false,
-          "prerelease": true
+          "prerelease": false
         });
 
         if (!hasBeenReleased) {
