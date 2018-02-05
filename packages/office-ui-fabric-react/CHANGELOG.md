@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 02 Feb 2018 11:24:16 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Feb 2018 11:24:23 GMT and should not be manually modified.
+
+## 5.46.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [SpinButton] Implemented precision
+
+### Patches
+
+- ComboBox, Dropdown, TextField: Improved high contrast in focus state. Layout changes for ComboBox to allow for border-box sizing.
 
 ## 5.45.3
 Fri, 02 Feb 2018 11:24:16 GMT

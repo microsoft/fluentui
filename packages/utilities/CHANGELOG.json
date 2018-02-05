@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.10.0",
+      "tag": "@uifabric/utilities_v5.10.0",
+      "date": "Mon, 05 Feb 2018 11:24:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "fe1c0f061947e66f1a3c63b168cdfecdc282b39b",
+            "comment": "[Math] implemented precision rounding functions"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.9.0",
       "tag": "@uifabric/utilities_v5.9.0",
       "date": "Mon, 29 Jan 2018 11:23:40 GMT",
