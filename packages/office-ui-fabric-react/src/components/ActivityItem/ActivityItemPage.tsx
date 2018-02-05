@@ -5,7 +5,6 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import './examples/ActivityItem.Example.scss';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ActivityItemStatus } from './ActivityItem.checklist';
 import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';

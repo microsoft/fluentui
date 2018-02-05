@@ -430,6 +430,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
+      getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
       groupProps
@@ -467,6 +468,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
+      getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
     }, this._onRenderRow);
