@@ -49,6 +49,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   checkboxVisibility?: CheckboxVisibility;
   collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
+  getRowAriaDescribedBy?: (item: any) => string;
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
   className?: string;
@@ -187,6 +188,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
+      getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
       selection,
@@ -196,6 +198,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
+    const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
@@ -208,6 +211,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         componentRef={ this._resolveRef('_focusZone') }
         role='row'
         aria-label={ ariaLabel }
+        ariaDescribedBy={ ariaDescribedBy }
         className={ css(
           'ms-DetailsRow',
           className,
