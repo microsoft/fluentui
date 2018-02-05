@@ -7,7 +7,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ValidationState, Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
+import { Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
   from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import * as stylesImport from './BaseFloatingPicker.scss';
@@ -52,6 +52,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       isSearching: false,
       didBind: false,
     };
+  }
+
+  public forceResolveSuggestion(): void {
+    if (this.suggestionStore.hasSelectedSuggestion()) {
+      this.completeSuggestion();
+    } else {
+      this._onValidateInput();
+    }
   }
 
   public get isSuggestionsShown(): boolean {
@@ -458,16 +466,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   private _onValidateInput(): void {
     if (
       this.props.onValidateInput &&
-      (this.props.onValidateInput as ((input: string) => ValidationState))(this.state.queryString) !==
-      ValidationState.invalid &&
+      (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString) !== true &&
       this.props.createGenericItem
     ) {
       let itemToConvert = (this.props.createGenericItem as ((
         input: string,
-        ValidationState: ValidationState
+        isValid: boolean
       ) => ISuggestionModel<T>))(
         this.state.queryString,
-        (this.props.onValidateInput as ((input: string) => ValidationState))(this.state.queryString)
+        (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
         );
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
