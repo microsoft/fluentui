@@ -9,7 +9,7 @@ import {
   FocusZone,
   FocusZoneDirection
 } from 'office-ui-fabric-react/lib/FocusZone';
-import { BaseAutoFill } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill';
+import { Autofill } from 'office-ui-fabric-react/lib/components/Autofill/Autofill';
 import { IPickerItemProps, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
@@ -37,7 +37,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   public selectedItemsList: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>;
 
   protected root: HTMLElement;
-  protected input: BaseAutoFill;
+  protected input: Autofill;
   protected focusZone: FocusZone;
   protected selection: Selection;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
@@ -80,7 +80,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       className,
       inputProps,
       disabled
-        } = this.props;
+    } = this.props;
 
     return (
       <div
@@ -101,7 +101,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.props.headerComponent }
               { this.renderSelectedItemsList() }
-              { this.canAddItems() && (<BaseAutoFill
+              { this.canAddItems() && (<Autofill
                 { ...inputProps as IInputProps }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -177,7 +177,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>): void {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>): void {
     this.selectedItemsList.unselectAll();
     this.floatingPicker.showPicker();
 
@@ -194,7 +194,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       return;
     }
     if (this.state.items.length && !this.input || !this.input.isValueSelected) {
-      if ((this.input as BaseAutoFill).cursorLocation === 0) {
+      if ((this.input as Autofill).cursorLocation === 0) {
         this.selectedItemsList.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();
       }
