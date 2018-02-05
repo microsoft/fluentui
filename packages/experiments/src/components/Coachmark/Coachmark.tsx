@@ -203,7 +203,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
      * The target element the mouse would be in
      * proximity to
      */
-    let targetElementRect: ClientRect = this._entityInnerHostElement.getBoundingClientRect();
+    let targetElementRect: ClientRect = this._entityHost.getBoundingClientRect();
 
     // When the window resizes we want to async
     // get the bounding client rectangle.
@@ -216,7 +216,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       });
 
       timeoutIds.push(this._async.setTimeout((): void => {
-        targetElementRect = this._entityInnerHostElement.getBoundingClientRect();
+        targetElementRect = this._entityHost.getBoundingClientRect();
       }, 100));
     });
 
