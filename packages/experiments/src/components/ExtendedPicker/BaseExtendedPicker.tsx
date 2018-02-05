@@ -66,7 +66,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public componentDidMount(): void {
+    this.input.inputElement.addEventListener('paste', this.onPaste);
     this.forceUpdate();
+  }
+
+  public componentWillUnmount(): void {
+    this.input.inputElement.removeEventListener('paste', this.onPaste);
   }
 
   public focus(): void {
@@ -205,6 +210,15 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
     // Pass it down into the selected items list
     this.selectedItemsList.onCopy(ev);
+  }
+
+  @autobind
+  protected onPaste(ev: ClipboardEvent): void {
+    if (this.props.onPaste) {
+      let inputText = ev.clipboardData.getData('Text');
+      ev.preventDefault();
+      this.props.onPaste(inputText);
+    }
   }
 
   @autobind
