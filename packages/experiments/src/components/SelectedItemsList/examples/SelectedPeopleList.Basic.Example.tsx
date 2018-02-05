@@ -14,6 +14,8 @@ import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
+import * as styles from './SelectedPeopleList.Basic.Example.scss';
+
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
   private index: number;
@@ -51,24 +53,20 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
 
   @autobind
   private _onRenderItem(props: ISelectedPeopleItemProps): JSX.Element {
-    return <ExtendedSelectedItem
-      {...props}
-      renderPrimaryText={ this._renderPersonaPrimaryTextElement }
-      renderPersonaCoin={ this._renderPersonaElement } />
+    return (
+      <ExtendedSelectedItem
+        {...props}
+        renderPersonaCoin={ this._renderPersonaElement }
+      />
+    );
   }
 
   private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
     return (
       <Icon
         iconName={ 'Contact' }
-        style={ { fontSize: '14px', verticalAlign: '-webkit-baseline-middle' } }
+        className={ styles.persona }
       />
-    );
-  }
-
-  private _renderPersonaPrimaryTextElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
-    return (
-      <div>HELLO</div>
     );
   }
 
@@ -91,7 +89,7 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   @autobind
   private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
-    this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
+    this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
   }
 
   private _onSelectionChange(): void {

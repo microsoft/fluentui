@@ -3,7 +3,6 @@ import { BaseFloatingPicker } from '../BaseFloatingPicker';
 import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
 import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { IExtendedPersonaProps } from '../../../SelectedItemsList';
 import './PeoplePicker.scss';
 import { IBasePickerSuggestionsProps, ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 
@@ -22,7 +21,7 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
   };
 }
 
-export function createGenericItem(name: string, isValid: boolean): ISuggestionModel<IExtendedPersonaProps> {
+export function createGenericItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
   // tslint:disable-next-line:no-any
   let personaToConvert: any = {
     key: name,

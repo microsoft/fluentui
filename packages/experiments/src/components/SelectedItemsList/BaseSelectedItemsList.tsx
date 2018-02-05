@@ -35,7 +35,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     };
 
     // Create a new selection if one is not specified
-    this.selection = this.props.selection ? this.props.selection as Selection : new Selection({ onSelectionChanged: this.onSelectionChanged });
+    this.selection = this.props.selection
+      ? this.props.selection as Selection
+      : new Selection({ onSelectionChanged: this.onSelectionChanged });
   }
 
   public get items(): T[] {
