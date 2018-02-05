@@ -1,35 +1,44 @@
 import * as React from 'react';
+import { IKeySequence, convertSequencesToKeytipID } from '../../../utilities/keysequence';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { KeytipLayer } from '../KeytipLayer';
+import { KeytipManager } from '../KeytipManager';
+import { IKeytipProps } from '../../Keytip';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IKeytipLayerBasicExampleState {
 }
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
+  private keySequence: IKeySequence = { keyCodes: [KeyCodes.a] };
+  private startingKeySequence: IKeySequence = { keyCodes: [KeyCodes.alt] };
+
   constructor(props: {}) {
     super(props);
   }
 
   public render(): JSX.Element {
-
-    /*
-    const keytipProps = [
-      {
-        content: 'hello',
-        calloutProps: { target: '#testing-123' }
-      },
-      {
-        content: 'hello2',
-        calloutProps: { target: '#testing-456' }
-      }
-    ];
-    */
-
-    // <KeytipLayer id={ 'basic-keytip-layer' } keytips={ keytipProps } />
     return (
       <div>
-        <button id='testing-123'>123</button>
-        <button id='testing-456'>456</button>
+        <DefaultButton data-ktp-id={ convertSequencesToKeytipID([this.keySequence]) } text='Test Button' />
+        <KeytipLayer id={ convertSequencesToKeytipID([this.startingKeySequence]) } />
       </div>
     );
+  }
+
+  public componentDidMount(): void {
+    // Manually add keytips to the KeytipManager
+    let ktpMngr: KeytipManager = KeytipManager.getInstance();
+    let ktpID: string = convertSequencesToKeytipID([this.keySequence]);
+    let ktpProps: IKeytipProps = {
+      // TODO: do we have to include the ID if we include the keySequence
+      // shouldn't it be calculated for us
+      id: ktpID,
+      content: 'A',
+      keySequences: [this.keySequence],
+      keytipTarget: '[data-ktp-id="' + ktpID + '"]'
+    };
+    ktpMngr.registerKeytip(ktpProps);
   }
 }
