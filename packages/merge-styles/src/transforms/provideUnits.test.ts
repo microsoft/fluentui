@@ -58,14 +58,4 @@ describe('provideUnits', () => {
     expect(testSet).toEqual(['opacity', '0']);
   });
 
-  it('ignores line-height', () => {
-    const testSet = [
-      'line-height',
-      1
-    ];
-
-    provideUnits(testSet, 0);
-
-    expect(testSet).toEqual(['line-height', '1']);
-  });
 });
