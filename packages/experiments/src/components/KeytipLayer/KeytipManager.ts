@@ -68,14 +68,29 @@ export class KeytipManager {
     this._layer && this._layer.registerKeytip(keytipProps);
   }
 
-  public showKeytips(ids: string[]): void {
+  private _changeKeytipVisibility(ids: string[], visible: boolean): void {
     for (let id of ids) {
-      this.keytipTree.nodeMap[id] = { ...this.keytipTree.nodeMap[id], visible: true };
+      this.keytipTree.nodeMap[id] = { ...this.keytipTree.nodeMap[id], visible };
     }
   }
 
+  /**
+   * Method that makes visible keytips currently in the DOM given a list of IDs.
+   * @param ids: list of Ids to show.
+   */
+  public showKeytips(ids: string[]): void {
+    this._changeKeytipVisibility(ids, true /*visible*/);
+  }
+
+  /**
+   * Method that hides keytips from the DOM given a list of IDs.
+   * If a list is not passed in, than it will hide all the currently registered keytips.
+   * @param ids: optional list of Ids to hide.
+   */
   public hideKeytips(ids?: string[]): void {
-    // TODO
+    // We can either hide keytips from the supplied array of ids, or all keytips.
+    let keysToHide = ids ? ids : Object.keys(this.keytipTree);
+    this._changeKeytipVisibility(keysToHide, false /* visible */);
   }
 
   public getLayerId(): string {
