@@ -243,6 +243,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   @autobind
   protected _onSuggestionSelected(item: T): void {
     this.selectedItemsList.addItems([item]);
+    if (this.props.onItemSelected) {
+      this.props.onItemSelected(item);
+    }
     this.input.clear();
 
     this.floatingPicker.hidePicker();
