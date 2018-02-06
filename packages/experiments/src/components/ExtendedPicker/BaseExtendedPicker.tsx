@@ -208,7 +208,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.selectedItemsList.onCopy(ev);
   }
 
-  @autobind onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void {
+  @autobind
+  protected onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void {
     if (this.props.onPaste) {
       let inputText = ev.clipboardData.getData('Text');
       ev.preventDefault();
