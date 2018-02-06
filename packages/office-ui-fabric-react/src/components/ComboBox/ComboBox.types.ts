@@ -132,6 +132,22 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether to use the ComboBoxes width as the menu's width
    */
   useComboBoxAsMenuWidth?: boolean;
+
+  /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
+
+  /**
+   * Keys that will be initially used to set selected items.
+   */
+  defaultSelectedKeys?: string[] | number[];
+
+  /**
+  * Keys of the selected items. If you provide this, you must maintain selection
+  * state by observing onChange events and passing a new value in when changed.
+  */
+  selectedKeys?: string[] | number[];  
 }
 
 export interface IComboBoxStyles {

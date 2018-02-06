@@ -90,6 +90,23 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         />
 
         <ComboBox
+          multiSelect
+          defaultSelectedKeys={ ['C', 'E'] }
+          label='Basic uncontrolled multi select example (allowFreeform: T, AutoComplete: T):'
+          id='Basicdrop11'
+          ariaLabel='Basic ComboBox example'
+          allowFreeform={ true }
+          autoComplete='on'
+          options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
+          // tslint:enable:jsx-no-lambda
+        />
+
+        <ComboBox
           defaultSelectedKey='C'
           label='Basic uncontrolled example (allowFreeform: T, AutoComplete: F):'
           id='Basicdrop2'
