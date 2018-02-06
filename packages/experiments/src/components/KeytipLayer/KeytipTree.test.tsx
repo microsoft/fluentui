@@ -225,7 +225,7 @@ describe('KeytipTree', () => {
   });
 
   it('get matched and partially matched node tests ', () => {
-    let keytipTree = new KeytipTree(keytipStartSequences, keytipExitSequences, keytipGoBackSequences);
+    let keytipTree = new KeytipTree('id1', keytipStartSequences, keytipExitSequences, keytipGoBackSequences);
 
     /**
      *   Tree should end up looking like:

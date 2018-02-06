@@ -17,7 +17,7 @@ export interface IKeytipTreeNode {
   // Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps
   onExecute?: () => void;
 
-  // Function to execute when we 'go back' to this keytip
+  // Function to execute when we 'go back' to this keytip's parent.
   onGoBack?: () => void;
 
   // List of keytips that should become visible when this keytip is pressed, can be empty
@@ -49,7 +49,7 @@ export class KeytipTree {
    * KeytipTree constructor
    * @param enableSequences - KeySequences that will start keytip mode, passed down through the KeytipLayer
    */
-  constructor(enableSequences: IKeySequence[], exitSequences: IKeySequence[], goBackSequences: IKeySequence[]) {
+  constructor(rootId: string, enableSequences: IKeySequence[], exitSequences: IKeySequence[], goBackSequences: IKeySequence[]) {
     this._manager = KeytipManager.getInstance();
     this._enableSequences = enableSequences;
     this._exitSequences = exitSequences;
@@ -57,7 +57,7 @@ export class KeytipTree {
 
     // Root has no keytipSequences, we instead check _enableSequences to handle multiple entry points
     this.root = {
-      id: this._manager.getLayerId(),
+      id: rootId,
       children: [],
       parent: '',
       keytipSequence: { keyCodes: [] }
