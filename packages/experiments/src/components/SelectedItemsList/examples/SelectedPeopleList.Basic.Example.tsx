@@ -8,12 +8,18 @@ import {
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IBaseSelectedItemsListProps } from '../BaseSelectedItemsList.types';
-import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
+import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
-export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedItemsListProps<IExtendedPersonaProps>, {}> {
+import * as styles from './SelectedPeopleList.Basic.Example.scss';
+
+export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
   private index: number;
+  private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   public render(): JSX.Element {
     return (
@@ -39,6 +45,27 @@ export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedI
         onExpandGroup={ this._onExpandItem }
         copyMenuItemText={ 'Copy' }
         removeMenuItemText={ 'Remove' }
+        selection={ this.selection }
+        onRenderItem={ this._onRenderItem }
+      />
+    );
+  }
+
+  @autobind
+  private _onRenderItem(props: ISelectedPeopleItemProps): JSX.Element {
+    return (
+      <ExtendedSelectedItem
+        {...props}
+        renderPersonaCoin={ this._renderPersonaElement }
+      />
+    );
+  }
+
+  private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
+    return (
+      <Icon
+        iconName={ 'Contact' }
+        className={ styles.persona }
       />
     );
   }
@@ -62,7 +89,11 @@ export class PeopleSelectedItemsListExample extends BaseComponent<IBaseSelectedI
   @autobind
   private _onExpandItem(item: IExtendedPersonaProps): void {
     // tslint:disable-next-line:no-any
-    this._selectionList.onExpandItem(item, this._getExpandedGroupItems(item as any));
+    this._selectionList.replaceItem(item, this._getExpandedGroupItems(item as any));
+  }
+
+  private _onSelectionChange(): void {
+    this.forceUpdate();
   }
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {

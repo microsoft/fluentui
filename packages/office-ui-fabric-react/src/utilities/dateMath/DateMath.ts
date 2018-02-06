@@ -147,13 +147,18 @@ export function compareDatePart(date1: Date, date2: Date): Number {
  * of dates accounting for the specified first day of the week and date range type.
  * @param {Date} date - The input date
  * @param {DateRangeType} dateRangeType - The desired date range type, i.e., day, week, month, etc.
- * @param {DayOfWeek} dayOfWeek - The first day of the week.
+ * @param {DayOfWeek} firstDayOfWeek - The first day of the week.
+ * @param {DayOfWeek[]} workWeekDays - The allowed days in work week. If not provided, assumes all days are allowed.
  * @returns {Date[]} An array of dates representing the date range containing the specified date.
  */
-export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek): Date[] {
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[]): Date[] {
   let datesArray = new Array<Date>();
   let startDate: Date;
   let endDate = null;
+
+  if (!workWeekDays) {
+    workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
+  }
 
   switch (dateRangeType) {
     case DateRangeType.Day:
@@ -162,6 +167,7 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
       break;
 
     case DateRangeType.Week:
+    case DateRangeType.WorkWeek:
       startDate = getStartDateOfWeek(getDatePart(date), firstDayOfWeek);
       endDate = addDays(startDate, TimeConstants.DaysInOneWeek);
       break;
@@ -170,17 +176,23 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
       startDate = new Date(date.getFullYear(), date.getMonth(), 1);
       endDate = addMonths(startDate, 1);
       break;
+
     default:
       return assertNever(dateRangeType);
   }
 
   // Populate the dates array with the dates in range
-  datesArray.push(startDate);
-  let nextDate = addDays(startDate, 1);
-  while (!compareDates(nextDate, endDate)) {
-    datesArray.push(nextDate);
+  let nextDate = startDate;
+
+  do {
+    if (dateRangeType !== DateRangeType.WorkWeek) {
+      // push all days not in work week view
+      datesArray.push(nextDate);
+    } else if (workWeekDays.includes(nextDate.getDay())) {
+      datesArray.push(nextDate);
+    }
     nextDate = addDays(nextDate, 1);
-  }
+  } while (!compareDates(nextDate, endDate));
 
   return datesArray;
 }

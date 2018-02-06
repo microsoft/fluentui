@@ -2,6 +2,118 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.18.0",
+      "tag": "@uifabric/experiments_v5.18.0",
+      "date": "Tue, 06 Feb 2018 11:14:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "92c237d5804d8864ed44310ecb5ed93e835554e7",
+            "comment": "BasePicker: Use correct autofillnow"
+          }
+        ],
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "36c24d4e085515a0d74f2eb1b1cafd847af67667",
+            "comment": "change persona pill css"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.3 <6.0.0` to `>=5.47.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.17.0",
+      "tag": "@uifabric/experiments_v5.17.0",
+      "date": "Fri, 02 Feb 2018 11:24:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "83be28cba3b75cf3db87c21da190f2247f4bc33e",
+            "comment": "allow editing of selected items in selected people list"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lejimsft <32402358+lejimsft@users.noreply.github.com>",
+            "commit": "1b709bc84a01334f990fd6474d9fba0a07dbe61d",
+            "comment": "consume BlockedSite icon for malware detected signal"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.2 <6.0.0` to `>=5.45.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.1",
+      "tag": "@uifabric/experiments_v5.16.1",
+      "date": "Wed, 31 Jan 2018 11:11:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "0bcc2870320b3940d9e386a9996981e759ba4ddf",
+            "comment": "Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react\""
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.0 <6.0.0` to `>=5.45.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.16.0",
+      "tag": "@uifabric/experiments_v5.16.0",
+      "date": "Mon, 29 Jan 2018 11:23:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "e2487c7a2bbf513b47f4f5694180b56e1f6a4ed1",
+            "comment": "Add overflowMenuProps to Experiments CommandBar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.43.0 <6.0.0` to `>=5.44.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.0 <6.0.0` to `>=5.4.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.15.0",
+      "tag": "@uifabric/experiments_v5.15.0",
+      "date": "Thu, 25 Jan 2018 11:23:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "194ce4efa804ac4bbacef04b03d426c8a561a6b0",
+            "comment": "add optional title element to extendedPicker, css changes to have selected items flow on the same row as input"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.41.2 <6.0.0` to `>=5.43.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.14.0",
       "tag": "@uifabric/experiments_v5.14.0",
       "date": "Mon, 22 Jan 2018 11:14:27 GMT",

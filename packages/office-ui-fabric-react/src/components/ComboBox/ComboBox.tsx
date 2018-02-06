@@ -8,7 +8,7 @@ import {
   CommandButton,
   IconButton
 } from '../../Button';
-import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
+import { Autofill } from '../Autofill/Autofill';
 import {
   autobind,
   BaseComponent,
@@ -96,7 +96,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   // The input aspect of the comboBox
-  private _comboBox: BaseAutoFill;
+  private _comboBox: Autofill;
 
   // The wrapping div of the input and button
   private _comboBoxWrapper: HTMLDivElement;
@@ -132,8 +132,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private readonly _scrollIdleDelay: number = 250 /* ms */;
 
   private _scrollIdleTimeoutId: number | undefined;
-
-  private static Option: string = 'option';
 
   // Determines if we should be setting
   // focus back to the input when the menu closes.
@@ -282,8 +280,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       autoComplete,
       buttonIconProps,
+      isButtonAriaHidden = true,
       styles: customStyles,
       theme,
+      title
     } = this.props;
     let { isOpen, selectedIndices, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -304,54 +304,55 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
 
     return (
-      <div {...divProps } ref='root' className={this._classNames.container}>
-        {label && (
-          <Label id={id + '-label'} disabled={disabled} required={required} htmlFor={id} className={this._classNames.label}>{label}</Label>
-        )}
+      <div { ...divProps } ref='root' className={ this._classNames.container }>
+        { label && (
+          <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
+        ) }
         <div
-          ref={this._resolveRef('_comboBoxWrapper')}
-          id={id + 'wrapper'}
-          className={this._classNames.root}
+          ref={ this._resolveRef('_comboBoxWrapper') }
+          id={ id + 'wrapper' }
+          className={ this._classNames.root }
         >
-          <BaseAutoFill
-            data-is-interactable={!disabled}
-            ref={this._resolveRef('_comboBox')}
-            id={id + '-input'}
-            className={this._classNames.input}
+          <Autofill
+            data-is-interactable={ !disabled }
+            ref={ this._resolveRef('_comboBox') }
+            id={ id + '-input' }
+            className={ this._classNames.input }
             type='text'
-            onFocus={this._select}
-            onBlur={this._onBlur}
-            onKeyDown={this._onInputKeyDown}
-            onKeyUp={this._onInputKeyUp}
-            onClick={this._onBaseAutofillClick}
-            onInputValueChange={this._onInputChange}
-            aria-expanded={isOpen}
-            aria-autocomplete={(!disabled && autoComplete === 'on')}
+            onFocus={ this._select }
+            onBlur={ this._onBlur }
+            onKeyDown={ this._onInputKeyDown }
+            onKeyUp={ this._onInputKeyUp }
+            onClick={ this._onAutofillClick }
+            onInputValueChange={ this._onInputChange }
+            aria-expanded={ isOpen }
+            aria-autocomplete={ this._getAriaAutoCompleteValue() }
             role='combobox'
-            aria-readonly={((allowFreeform || disabled) ? null : 'true')}
-            readOnly={disabled || !allowFreeform}
-            aria-labelledby={(label && (id + '-label'))}
-            aria-label={((ariaLabel && !label) && ariaLabel)}
-            aria-describedby={(id + '-option')}
-            // aria-activedescendant={ (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null) }
-            aria-disabled={disabled}
-            aria-owns={(id + '-list')}
-            spellCheck={false}
-            defaultVisibleValue={this._currentVisibleValue}
-            suggestedDisplayValue={suggestedDisplayValue}
-            updateValueInWillReceiveProps={this._onUpdateValueInAutoFillWillReceiveProps}
-            shouldSelectFullInputValueInComponentDidUpdate={this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate}
+            aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
+            readOnly={ disabled || !allowFreeform }
+            aria-labelledby={ (label && (id + '-label')) }
+            aria-label={ ((ariaLabel && !label) && ariaLabel) }
+            aria-describedby={ (id + '-option') }
+            aria-activedescendant={ this._getAriaActiveDescentValue() }
+            aria-disabled={ disabled }
+            aria-owns={ (id + '-list') }
+            spellCheck={ false }
+            defaultVisibleValue={ this._currentVisibleValue }
+            suggestedDisplayValue={ suggestedDisplayValue }
+            updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
+            title={ title }
           />
           <IconButton
             className={'ms-ComboBox-CaretDown-button'}
             styles={this._getCaretButtonStyles()}
             role='presentation'
-            aria-hidden='true'
-            tabIndex={-1}
-            onClick={this._onComboBoxClick}
-            iconProps={buttonIconProps}
-            disabled={disabled}
-            checked={isOpen}
+            aria-hidden={ isButtonAriaHidden }
+            tabIndex={ -1 }
+            onClick={ this._onComboBoxClick }
+            iconProps={ buttonIconProps }
+            disabled={ disabled }
+            checked={ isOpen }
           />
         </div>
 
@@ -404,12 +405,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-   * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
   @autobind
-  private _onUpdateValueInAutoFillWillReceiveProps(): string | null {
+  private _onUpdateValueInAutofillWillReceiveProps(): string | null {
     if (this._comboBox === null || this._comboBox === undefined) {
       return null;
     }
@@ -430,7 +431,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
    */
   @autobind
-  private _onShouldSelectFullInputValueInAutoFillComponentDidUpdate(): boolean {
+  private _onShouldSelectFullInputValueInAutofillComponentDidUpdate(): boolean {
     return this._currentVisibleValue === this.state.suggestedDisplayValue;
   }
 
@@ -485,15 +486,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // Single-select
       let index: number = selectedIndices && selectedIndices[0] || -1;
       if (allowFreeform) {
-        // If we are allowing freeform and autocomplete is also true 
-        // and we've got a pending value that matches an option, remember 
-        // the matched option's index 
+        // If we are allowing freeform and autocomplete is also true
+        // and we've got a pending value that matches an option, remember
+        // the matched option's index
         if (autoComplete === 'on' && currentPendingIndexValid) {
           index = currentPendingValueValidIndex;
         }
 
-        // Since we are allowing freeform, if there is currently a nonempty pending value, use that 
-        // otherwise use the index determined above (falling back to '' if we did not get a valid index) 
+        // Since we are allowing freeform, if there is currently a nonempty pending value, use that
+        // otherwise use the index determined above (falling back to '' if we did not get a valid index)
         displayValues.push(currentPendingValue !== '' ? currentPendingValue : (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : ''));
       } else {
         // If we are not allowing freeform and have a
@@ -740,7 +741,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         if (option.selected && selectedIndices.indexOf(index) < 0) {
           selectedIndices.push(index);
         } else if (!option.selected && selectedIndices.indexOf(index) >= 0) {
-          selectedIndices = selectedIndices.filter((value: number) => value != index);
+          selectedIndices = selectedIndices.filter((value: number) => value !== index);
         }
       } else {
         selectedIndices[0] = index;
@@ -1047,7 +1048,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ) : (
           <Checkbox
             id={id + '-list' + item.index}
-            ref={ComboBox.Option + item.index}
+            ref={'option' + item.index}
             key={item.key}
             data-index={item.index}
             data-is-focusable={true}
@@ -1341,7 +1342,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param ev - The keyboard event that was fired
    */
   @autobind
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
+  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     let {
       disabled,
       allowFreeform,
@@ -1504,7 +1505,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param ev - the keyboard event that was fired
    */
   @autobind
-  private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
+  private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     let {
       disabled,
       allowFreeform,
@@ -1571,7 +1572,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * eating the required key event when disabled
    * @param ev - the keyboard event that was fired
    */
-  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill> | null) {
+  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | Autofill> | null) {
     // If we are disabled, close the menu (if needed)
     // and eat all keystokes other than TAB or ESC
     if (this.props.disabled) {
@@ -1610,9 +1611,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Click handler for the autofill.
    */
   @autobind
-  private _onBaseAutofillClick() {
+  private _onAutofillClick() {
     if (this.props.allowFreeform) {
-      this.focus(true);
+      this.focus(this.state.isOpen);
     } else {
       this._onComboBoxClick();
     }
@@ -1636,5 +1637,27 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { styles: customStylesForCurrentOption } = item;
 
     return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+  }
+
+  /**
+   * Get the aria-activedescendant value for the comboxbox.
+   * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
+   */
+  private _getAriaActiveDescentValue(): string | null {
+    let descendantText = (this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length >= 0 ? (this._id + '-list' + this.state.selectedIndices[0]) : null);
+    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
+      descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
+    }
+    return descendantText;
+  }
+
+  /**
+  * Get the aria autocomplete value for the Combobox
+  * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from and can
+  * dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
+  */
+  private _getAriaAutoCompleteValue(): string {
+    let autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
+    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
   }
 }
