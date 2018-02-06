@@ -68,12 +68,6 @@ export class KeytipManager {
     this._layer && this._layer.registerKeytip(keytipProps);
   }
 
-  private _changeKeytipVisibility(ids: string[], visible: boolean): void {
-    for (let id of ids) {
-      this.keytipTree.nodeMap[id] = { ...this.keytipTree.nodeMap[id], visible };
-    }
-  }
-
   /**
    * Method that makes visible keytips currently in the DOM given a list of IDs.
    * @param ids: list of Ids to show.
@@ -204,5 +198,11 @@ export class KeytipManager {
      * If it finds a match, it will set currentSequence += keySequence
      * When we match a whole keytip, we clear currentSequence
      */
+  }
+
+  private _changeKeytipVisibility(ids: string[], visible: boolean): void {
+    for (let id of ids) {
+      this.keytipTree.nodeMap[id] = { ...this.keytipTree.nodeMap[id], visible };
+    }
   }
 }
