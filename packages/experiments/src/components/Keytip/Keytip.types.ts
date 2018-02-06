@@ -63,7 +63,7 @@ export interface IKeytipProps {
    * Array of KeySequences which is the full key sequence to trigger this keytip
    * Should not include initial 'start' key sequence
    */
-  keySequences?: IKeySequence[];
+  keySequences: IKeySequence[];
 
   /**
    * ICalloutProps to pass to the callout element
@@ -77,6 +77,12 @@ export interface IKeytipProps {
   * Optional styles for the component.
   */
   getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
+
+  /**
+   * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
+   * their children registered after the initial rendering of the DOM.
+   */
+  hasChildrenNodes?: boolean;
 
   /**
    * The target that the Keytip should try to position itself based on.

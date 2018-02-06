@@ -66,6 +66,7 @@ export class KeytipManager {
   public registerKeytip(keytipProps: IKeytipProps): void {
     // Set the 'keytips' property in _layer
     this._layer && this._layer.registerKeytip(keytipProps);
+    this.keytipTree.addNode(keytipProps.keySequences, keytipProps.onExecute, keytipProps.hasChildrenNodes);
   }
 
   /**
@@ -155,10 +156,12 @@ export class KeytipManager {
           this.keytipTree.currentKeytip.onExecute();
         }
 
-        if (this.keytipTree.currentKeytip.children.length === 0) {
+        // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
+        // if the node doesn't have children nodes.
+        if (this.keytipTree.currentKeytip.children.length === 0 && !this.keytipTree.currentKeytip.hasChildrenNodes) {
           this.exitKeytipMode();
-          // TODO: WE NEED TO CHECK IF THIS IS REALLY A LEAF OR NOT
         } else {
+          // TODO... we need a way to show the keytips of the childrenNodes that are currently not loaded.
           this.showKeytips(this.keytipTree.currentKeytip.children);
         }
         this.hideKeytips();
