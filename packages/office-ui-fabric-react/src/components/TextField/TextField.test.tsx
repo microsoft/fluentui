@@ -84,7 +84,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        prefix={ examplePrefix}
+        prefix={ examplePrefix }
         suffix={ exampleSuffix }
       />
     );
@@ -120,6 +120,25 @@ describe('TextField', () => {
     // Assert the input ID and label FOR attribute are the same.
     expect(inputDOM.id).toBeDefined();
     expect(inputDOM.id).toEqual(labelDOM.htmlFor);
+  });
+
+  it('should associate the label and input box use custom id', () => {
+    const exampleComponentId: string = 'test-component-id';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        componentId={ exampleComponentId }
+        label='text-field-label'
+        value='whatever value'
+      />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];
+
+    // Assert the input ID and label FOR attribute are the equal to exampleComponentId.
+    expect(inputDOM.id).toEqual(exampleComponentId);
+    expect(labelDOM.htmlFor).toEqual(exampleComponentId);
   });
 
   it('should render a disabled input element', () => {

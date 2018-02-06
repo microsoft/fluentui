@@ -143,12 +143,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      componentId = this._id
     } = this.props;
     let { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
-    const renderProps: ITextFieldProps = { ...this.props, componentId: this._id };
+    const renderProps: ITextFieldProps = { ...this.props, componentId };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
@@ -175,7 +176,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                 { onRenderPrefix(this.props, this._onRenderPrefix) }
               </div>
             ) }
-            { multiline ? this._renderTextArea() : this._renderInput() }
+            { multiline ? this._renderTextArea(renderProps) : this._renderInput(renderProps) }
             { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
             { (suffix !== undefined || this.props.onRenderSuffix) && (
               <div className={ css('ms-TextField-suffix', styles.fieldPrefixSuffix) }>
@@ -343,12 +344,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return errorMessage;
   }
 
-  private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
+  private _renderTextArea(props: ITextFieldProps): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
+    let textAreaProps = getNativeProps(props, textAreaProperties, ['defaultValue']);
 
     return (
       <textarea
-        id={ this._id }
+        id={ props.componentId }
         { ...textAreaProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
@@ -357,27 +358,27 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         className={ this._getTextElementClassName() }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
-        aria-label={ this.props.ariaLabel }
+        aria-label={ props.ariaLabel }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
       />
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+  private _renderInput(props: ITextFieldProps): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties, ['defaultValue']);
 
     return (
       <input
         type={ 'text' }
-        id={ this._id }
+        id={ props.componentId }
         { ...inputProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-label={ this.props.ariaLabel }
+        aria-label={ props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
