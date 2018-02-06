@@ -68,8 +68,10 @@ export class KeytipManager {
     this._layer && this._layer.registerKeytip(keytipProps);
   }
 
-  public showKeytips(ids?: string[]): void {
-    // TODO
+  public showKeytips(ids: string[]): void {
+    for (let id of ids) {
+      this.keytipTree.nodeMap[id] = { ...this.keytipTree.nodeMap[id], visible: true };
+    }
   }
 
   public hideKeytips(ids?: string[]): void {

@@ -24,8 +24,12 @@ export interface IKeytipTreeNode {
   // Parent keytip
   parent: string;
 
+  /**
+   * Whether the keytip is visible or not in the dom.
+   */
+  visible?: boolean;
+
   // TODO: may need to know if keytip is disabled, if so shouldn't change visibility when start of sequence is pressed
-  // TODO: visible/hidden
 }
 
 export interface IKeytipTreeNodeMap {

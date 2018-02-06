@@ -14,6 +14,7 @@ const keytipExitSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.alt, KeyCodes
 const keytipGoBackSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.escape] }];
 const layerID = 'my-layer-id';
 const keytipIdC = ktpFullPrefix + KeyCodes.c;
+const keytipIdE1 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one;
 const keytipIdE2 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.two;
 
 describe('KeytipManager', () => {
@@ -133,14 +134,41 @@ describe('KeytipManager', () => {
       keytipManager.keytipTree.nodeMap[keytipIdE2] = { ...keytipManager.keytipTree.nodeMap[keytipIdE2], onExecute: onExecuteE2 };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processInput({ keyCodes: [KeyCodes.e] });
-      expect(keytipManager.currentSequence.keyCodes.length).toEqual(1); // waiting for second keycode
+      // We are still waiting for second keycode
+      expect(keytipManager.currentSequence.keyCodes.length).toEqual(1);
       keytipManager.processInput({ keyCodes: [KeyCodes.two] });
       expect(onExecuteE2).toBeCalled();
       expect(keytipManager.currentSequence.keyCodes.length).toEqual(0);
       expect(onExitKeytipMode).toBeCalled();
     });
+
+    it('Processing a node with two keycodes should wait for second keycode and if not leaf make children visible', () => {
+      const onExecuteE1: jest.Mock = jest.fn();
+      keytipManager.keytipTree.nodeMap[keytipIdE1] = { ...keytipManager.keytipTree.nodeMap[keytipIdE1], onExecute: onExecuteE1 };
+      keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+      keytipManager.processInput({ keyCodes: [KeyCodes.e] });
+      // We are still waiting for second keycode
+      expect(keytipManager.currentSequence.keyCodes.length).toEqual(1);
+      keytipManager.processInput({ keyCodes: [KeyCodes.one] });
+      expect(onExecuteE1).toBeCalled();
+      // There is no more buffer in the sequence
+      expect(keytipManager.currentSequence.keyCodes.length).toEqual(0);
+      // Children keytips should be visible
+      expect(childrenAreVisible(keytipManager.keytipTree, keytipManager.keytipTree.currentKeytip.children)).toEqual(true);
+      // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
+      expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdE1]);
+    });
   });
 });
+
+function childrenAreVisible(keytipTree: KeytipTree, ids: string[]): boolean {
+  for (let id of ids) {
+    if (!keytipTree.nodeMap[id].visible) {
+      return false;
+    }
+  }
+  return true;
+}
 
 function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   /**
@@ -166,7 +194,6 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   const keytipSequenceF: IKeySequence = { keyCodes: [KeyCodes.f] };
 
   // Node E1
-  const keytipIdE1 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one;
   const keytipSequenceE1: IKeySequence = { keyCodes: [KeyCodes.e, KeyCodes.one] };
 
   // Node E2
