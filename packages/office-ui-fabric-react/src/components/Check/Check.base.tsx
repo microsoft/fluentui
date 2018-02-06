@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  css,
   customizable,
 } from '@uifabric/utilities';
 import {
@@ -36,23 +35,14 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
 
     return (
       <div
-        className={ css(
-          'ms-Check',
-          className,
-          classNames.root,
-          checked && 'is-checked'
-        ) }
+        className={ classNames.root }
       >
         { Icon({
-          className: `
-            ms-Check-circle ${classNames.circle}
-          `,
+          className: classNames.circle,
           iconName: 'CircleRing'
         }) }
         { Icon({
-          className: `
-            ms-Check-check ${classNames.check}
-          `,
+          className: classNames.check,
           iconName: 'StatusCircleCheckmark'
         }) }
       </div>

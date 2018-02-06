@@ -15,8 +15,9 @@ export const getStyles = (
 ): ICheckStyles => {
   const {
     checkBoxHeight = DEFAULT_CHECKBOX_HEIGHT,
+    checked,
+    className,
     theme,
-    checked
   } = props;
 
   const { palette, semanticColors } = theme;
@@ -34,6 +35,8 @@ export const getStyles = (
 
   return ({
     root: [
+      'ms-Check',
+
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
@@ -66,6 +69,7 @@ export const getStyles = (
         }
       },
 
+      checked && 'is-checked',
       checked && {
         selectors: {
           ':before': {
@@ -78,10 +82,12 @@ export const getStyles = (
             }
           }
         }
-      }
+      },
+      className
     ],
 
     circle: [
+      'ms-Check-circle',
       _sharedCircleCheck,
 
       {
@@ -100,6 +106,7 @@ export const getStyles = (
     ],
 
     check: [
+      'ms-Check-check',
       _sharedCircleCheck,
 
       {
