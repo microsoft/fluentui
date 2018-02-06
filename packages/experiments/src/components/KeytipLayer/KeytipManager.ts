@@ -37,9 +37,7 @@ export class KeytipManager {
     this._exitSequences = this._layer.props.keytipExitSequences!;
     this._goBackSequences = this._layer.props.keytipGoBackSequences!;
     // Create the KeytipTree
-    this.keytipTree = new KeytipTree(this._layer.props.id, this._layer.props.keytipStartSequences!,
-      this._layer.props.keytipExitSequences!,
-      this._layer.props.keytipGoBackSequences!);
+    this.keytipTree = new KeytipTree(this._layer.props.id);
   }
 
   /**

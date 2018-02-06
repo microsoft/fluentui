@@ -1,11 +1,9 @@
 import {
   IKeySequence,
-  keySequencesContain,
   keySequencesAreEqual,
   keySequenceStartsWith,
   convertSequencesToKeytipID
 } from '../../utilities/keysequence';
-import { KeytipManager } from './KeytipManager';
 
 export interface IKeytipTreeNode {
   // ID of the <Keytip> DOM element. Needed to locate the correct keytip in the KeytipLayer's 'keytip' state array
@@ -40,20 +38,11 @@ export class KeytipTree {
   public root: IKeytipTreeNode;
   public nodeMap: IKeytipTreeNodeMap = {};
 
-  private _enableSequences: IKeySequence[];
-  private _exitSequences: IKeySequence[];
-  private _goBackSequences: IKeySequence[];
-  private _manager: KeytipManager;
-
   /**
    * KeytipTree constructor
    * @param enableSequences - KeySequences that will start keytip mode, passed down through the KeytipLayer
    */
-  constructor(rootId: string, enableSequences: IKeySequence[], exitSequences: IKeySequence[], goBackSequences: IKeySequence[]) {
-    this._manager = KeytipManager.getInstance();
-    this._enableSequences = enableSequences;
-    this._exitSequences = exitSequences;
-    this._goBackSequences = goBackSequences;
+  constructor(rootId: string) {
 
     // Root has no keytipSequences, we instead check _enableSequences to handle multiple entry points
     this.root = {
