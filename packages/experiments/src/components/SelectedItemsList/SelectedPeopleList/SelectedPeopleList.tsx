@@ -1,24 +1,28 @@
 /* tslint:disable */
 import * as React from 'react';
-import { ValidationState } from 'office-ui-fabric-react/lib/Pickers';
 /* tslint:enable */
 import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
-import { autobind } from '../../../Utilities';
+import { autobind, IRenderFunction } from '../../../Utilities';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem } from './Items/EditingItem';
 
 export interface IExtendedPersonaProps extends IPersonaProps {
+  isValid: boolean;
+  blockRecipientRemoval?: boolean;
+  shouldBlockSelection?: boolean;
   canExpand?: boolean;
   isEditing?: boolean;
 }
 
-export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps & { ValidationState: ValidationState }> {
+export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps> {
   onExpandItem?: () => void;
   menuItems: IContextualMenuItem[];
+  renderPersonaCoin?: IRenderFunction<IPersonaProps>;
+  renderPrimaryText?: IRenderFunction<IPersonaProps>;
 }
 
 export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPersonaProps> {
@@ -27,8 +31,8 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   copyMenuItemText?: string;
   editMenuItemText?: string;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
-  floatingPickerProps?: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
 }
 
 export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {

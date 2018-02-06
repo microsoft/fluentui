@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "allow editing of selected items in selected people list",
+      "comment": "change persona pill css",
       "type": "minor"
     }
   ],

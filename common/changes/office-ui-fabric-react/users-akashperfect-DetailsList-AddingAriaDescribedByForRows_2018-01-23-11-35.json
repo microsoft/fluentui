@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Converted ActivityItemExample to use mergeStyles instead of SCSS",
+      "comment": "DetailsList: Adding optional callback aria-describedby for each item in DetailsList",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-brgarl@microsoft.com"
+  "email": "akashperfect@gmail.com"
 }

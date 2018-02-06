@@ -398,7 +398,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       role: 'presentation'
     }, this._onRenderPage);
 
-    // cache the first page for now since it is re-rendered a lot times unncessarily.
+    // cache the first page for now since it is re-rendered a lot times unnecessarily.
     // todo: a more aggresive caching mechanism is to cache pages constaining the items not changed.
     // now we re-render pages too frequently, for example, props.items increased from 30 to 60, although the
     // first 30 items did not change, we still re-rendered all of them in this props.items change.
