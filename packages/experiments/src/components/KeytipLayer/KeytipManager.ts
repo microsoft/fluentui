@@ -91,6 +91,10 @@ export class KeytipManager {
     this._layer.enterKeytipMode();
   }
 
+  /**
+   * Processes inputs from the document listener and traverse the keytip tree
+   * @param keySequence - Keys pressed by the user
+   */
   public processInput(keySequence: IKeySequence): void {
     let currentSequence = { keyCodes: [...this.currentSequence.keyCodes, ...keySequence.keyCodes] };
 
@@ -162,5 +166,28 @@ export class KeytipManager {
         this.currentSequence = currentSequence;
       }
     }
+
+    // If currentKeytip is a node, look at all children of currentKeytip
+    //    If the sequence exactly matches one of the children
+    //      Trigger node's onExecute
+    //      ** TODO: we would have to do the below after the DOM has finished rendering to know for sure if node was a leaf (e.g. menu) **
+    //      If the new node is a leaf
+    //        Set currentKeytip to null and exit keytip mode
+    //      Else
+    //        Set currentKeytip to node just triggered
+    //        Hide all keytips currently showing
+    //        Show all keytips of children of currentKeytip
+    //    Else if the sequence matches the first part of a keytip
+    //      Set visibility to false on keytips that don't match
+    //    Else the sequence doesn't match anything
+    //      Do nothing
+
+    // Building up sequences
+    /**
+     * Have a 'currentSequence'
+     * Every time processInput runs, it takes currentSequence + keySequence and tries to match that to the children of 'currentKeytip'
+     * If it finds a match, it will set currentSequence += keySequence
+     * When we match a whole keytip, we clear currentSequence
+     */
   }
 }
