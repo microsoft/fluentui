@@ -5,18 +5,18 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import { KeyCodes } from '../../../Utilities';
-import { BaseAutoFill } from './BaseAutoFill';
+import { KeyCodes } from '../../Utilities';
+import { Autofill } from './Autofill';
 
-describe('BaseAutoFill', () => {
-  let autoFill: BaseAutoFill;
+describe('Autofill', () => {
+  let autoFill: Autofill;
   let autoFillInput: HTMLInputElement;
   let baseNode = document.createElement('div');
   document.body.appendChild(baseNode);
   beforeEach(() => {
 
     let component = ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello'
       />,
@@ -33,7 +33,7 @@ describe('BaseAutoFill', () => {
     };
 
     ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
@@ -43,7 +43,7 @@ describe('BaseAutoFill', () => {
     autoFillInput.value = 'hel';
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
@@ -63,7 +63,7 @@ describe('BaseAutoFill', () => {
     autoFillInput.value = 'hep';
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
@@ -78,7 +78,7 @@ describe('BaseAutoFill', () => {
     ReactTestUtils.Simulate.change(autoFillInput);
 
     ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello'
       />,
@@ -102,7 +102,7 @@ describe('BaseAutoFill', () => {
     ReactTestUtils.Simulate.change(autoFillInput);
 
     ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello'
       />,
@@ -121,7 +121,7 @@ describe('BaseAutoFill', () => {
     ReactTestUtils.Simulate.change(autoFillInput);
 
     ReactDOM.render(
-      <BaseAutoFill
+      <Autofill
         ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello'
       />,
