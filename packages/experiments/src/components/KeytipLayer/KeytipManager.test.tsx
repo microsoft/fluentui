@@ -13,6 +13,7 @@ const keytipStartSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.alt, KeyCode
 const keytipExitSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.alt, KeyCodes.leftWindow] }];
 const keytipGoBackSequences: IKeySequence[] = [{ keyCodes: [KeyCodes.escape] }];
 const layerID = 'my-layer-id';
+const keytipIdB = ktpFullPrefix + KeyCodes.b;
 const keytipIdC = ktpFullPrefix + KeyCodes.c;
 const keytipIdE1 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one;
 const keytipIdE2 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.two;
@@ -158,6 +159,19 @@ describe('KeytipManager', () => {
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
       expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdE1]);
     });
+
+    it('Processing a node which is not leaf but its children are not in the DOM', () => {
+      const onExecuteB: jest.Mock = jest.fn();
+      keytipManager.keytipTree.nodeMap[keytipIdB] = { ...keytipManager.keytipTree.nodeMap[keytipIdB], onExecute: onExecuteB };
+      keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+      keytipManager.processInput({ keyCodes: [KeyCodes.b] });
+      // Node B' on execute should be called
+      expect(onExecuteB).toBeCalled();
+      // There is no more buffer in the sequence
+      expect(keytipManager.currentSequence.keyCodes.length).toEqual(0);
+      // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
+      expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdB]);
+    });
   });
 });
 
@@ -175,13 +189,14 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
    *   Tree should end up looking like:
    *
    *            a
-   *          /   |   \
-   *        c    e1   e2
+   *     /     /   |   \
+   *     b   c    e1   e2
    *             / \
    *            d   f
    *
    */
 
+  const keytipSequenceB: IKeySequence = { keyCodes: [KeyCodes.b] };
   // Node C
   const keytipSequenceC: IKeySequence = { keyCodes: [KeyCodes.c] };
 
@@ -199,12 +214,14 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   // Node E2
   const keytipSequenceE2: IKeySequence = { keyCodes: [KeyCodes.e, KeyCodes.two] };
 
+  let nodeB = createTreeNode(keytipIdB, rootId, [], keytipSequenceB, true /* hasChildrenNodes*/);
   let nodeC = createTreeNode(keytipIdC, rootId, [], keytipSequenceC);
   let nodeE1 = createTreeNode(keytipIdE1, rootId, [keytipIdD, keytipIdF], keytipSequenceE1);
   let nodeE2 = createTreeNode(keytipIdE2, rootId, [keytipIdD, keytipIdF], keytipSequenceE2);
   let nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
   let nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
-  keytipTree.nodeMap[rootId].children.push(keytipIdC, keytipIdE1, keytipIdE2);
+  keytipTree.nodeMap[rootId].children.push(keytipIdB, keytipIdC, keytipIdE1, keytipIdE2);
+  keytipTree.nodeMap[keytipIdB] = nodeB;
   keytipTree.nodeMap[keytipIdC] = nodeC;
   keytipTree.nodeMap[keytipIdE1] = nodeE1;
   keytipTree.nodeMap[keytipIdE2] = nodeE2;
@@ -213,11 +230,13 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   return keytipTree;
 }
 
-function createTreeNode(id: string, parentId: string, childrenIds: string[], sequence: IKeySequence): IKeytipTreeNode {
+function createTreeNode(id: string, parentId: string, childrenIds: string[],
+  sequence: IKeySequence, hasChildren?: boolean): IKeytipTreeNode {
   return {
     id,
     parent: parentId,
     children: childrenIds,
-    keytipSequence: sequence
+    keytipSequence: sequence,
+    hasChildrenNodes: hasChildren
   };
 }

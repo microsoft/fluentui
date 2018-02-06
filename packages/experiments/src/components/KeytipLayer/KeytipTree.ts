@@ -25,6 +25,12 @@ export interface IKeytipTreeNode {
   parent: string;
 
   /**
+   * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
+   * their children registered after the initial rendering of the DOM.
+   */
+  hasChildrenNodes?: boolean;
+
+  /**
    * Whether the keytip is visible or not in the dom.
    */
   visible?: boolean;
@@ -53,7 +59,8 @@ export class KeytipTree {
       id: rootId,
       children: [],
       parent: '',
-      keytipSequence: { keyCodes: [] }
+      keytipSequence: { keyCodes: [] },
+      hasChildrenNodes: true
     };
     this.currentSequence = { keyCodes: [] };
     this.nodeMap[this.root.id] = this.root;
@@ -64,7 +71,7 @@ export class KeytipTree {
    * @param fullSequence - Full key sequence for the keytip to add
    * @param onExecute - Callback function to trigger when this keytip is activated
    */
-  public addNode(fullSequence: IKeySequence[], onExecute: () => void): void {
+  public addNode(fullSequence: IKeySequence[], onExecute?: () => void, hasChildrenNodes?: boolean): void {
     let nodeID = convertSequencesToKeytipID(fullSequence);
     // This keytip's sequence is the last one defined
     let keytipSequence = fullSequence.pop();
@@ -78,15 +85,17 @@ export class KeytipTree {
       // Update keytipSequence, onExecute, parent
       node.keytipSequence = keytipSequence!;
       node.onExecute = onExecute;
+      node.hasChildrenNodes = hasChildrenNodes;
       node.parent = parentID;
     } else {
       // If node doesn't exist, add node
       node = {
         id: nodeID,
         keytipSequence: keytipSequence!,
-        onExecute: onExecute,
         children: [],
-        parent: parentID
+        parent: parentID,
+        onExecute,
+        hasChildrenNodes,
       };
       this.nodeMap[nodeID] = node;
     }
@@ -96,6 +105,7 @@ export class KeytipTree {
       // If parent doesn't exist, create parent with ID and children only
       parent = {
         id: parentID,
+        hasChildrenNodes: true,
         children: [],
         keytipSequence: { keyCodes: [] },
         parent: ''
