@@ -35,7 +35,7 @@ export function rtlifyRules(
     const name = rulePairs[index] as string;
     const value = rulePairs[index + 1] as string;
 
-    if (value.indexOf(NO_FLIP) >= 0) {
+    if (typeof value.indexOf === 'string' && value.indexOf(NO_FLIP) >= 0) {
       rulePairs[index + 1] = value.replace(/\s*(?:\/\*\s*)?\@noflip\b(?:\s*\*\/)?\s*?/g, '');
     } else if (name.indexOf('left') >= 0) {
       rulePairs[index] = name.replace('left', 'right');
