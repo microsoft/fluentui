@@ -65,6 +65,18 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     };
   }
 
+  public setKeytipVisibility(ids: string[], visible: boolean): void {
+    this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
+      let currentKeytips: IKeytipProps[] = [...previousState.keytips];
+      for (let keytip of currentKeytips) {
+        if (ids.indexOf(keytip.id!) >= 0) {
+          keytip.visible = visible;
+        }
+      }
+      return { ...previousState, keytips: currentKeytips };
+    });
+  }
+
   public registerKeytip(keytipProps: IKeytipProps): void {
     this.setState(this.addKeytip(keytipProps));
   }
@@ -112,21 +124,20 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   private _onDismiss(ev?: React.MouseEvent<HTMLElement>): void {
     // if we are in keytip mode.. then exit keytip mode
     if (this.state.inKeytipMode) {
-      this.exitKeytipMode();
+      this._keytipManager.exitKeytipMode();
     }
   }
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     switch (ev.which) {
-      case KeyCodes.escape: {
-        // exit current layer
-      }
-        break;
       case KeyCodes.tab:
       case KeyCodes.enter:
       case KeyCodes.space:
         this.exitKeytipMode();
+        break;
+      default:
+        this._keytipManager.processInput({ keyCodes: [ev.keyCode] });
         break;
     }
   }
@@ -134,5 +145,6 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
     // call processInput
+    this._keytipManager.processInput({ keyCodes: [ev.keyCode] });
   }
 }

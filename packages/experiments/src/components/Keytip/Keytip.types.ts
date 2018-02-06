@@ -106,6 +106,11 @@ export interface IKeytipStyleProps {
    * Whether the keytip is disabled or not.
    */
   disabled?: boolean;
+
+  /**
+   * T/F if the keytip is visible
+   */
+  visible?: boolean;
 }
 
 export interface IKeytipStyles {
@@ -119,4 +124,9 @@ export interface IKeytipStyles {
    * Style for the keytip content element.
    */
   root: IStyle;
+
+  /**
+   * Style for the containing Callout
+   */
+  calloutContainer: IStyle;
 }

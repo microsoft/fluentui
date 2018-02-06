@@ -2,8 +2,13 @@ import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabric-react/lib/Callout';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
-  const { theme, disabled } = props;
+  const { theme, disabled, visible } = props;
   return {
+    calloutContainer: [
+      !visible && {
+        visibility: 'hidden'
+      }
+    ],
     container: [
       {
         backgroundColor: theme.palette.neutralDark
@@ -25,7 +30,7 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
     },
     disabled && {
       color: '#b1b1b1'
-    }],
+    }]
   };
 };
 

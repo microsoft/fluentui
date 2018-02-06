@@ -22,7 +22,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     return (
       <div>
         <DefaultButton data-ktp-id={ convertSequencesToKeytipID([this.keySequence]) } text='Test Button' />
-        <KeytipLayer id={ convertSequencesToKeytipID([this.startingKeySequence]) } />
+        <KeytipLayer keytipStartSequences={ [this.startingKeySequence] } id={ convertSequencesToKeytipID([this.startingKeySequence]) } />
       </div>
     );
   }

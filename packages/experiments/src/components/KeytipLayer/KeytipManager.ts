@@ -119,7 +119,7 @@ export class KeytipManager {
     //    Trigger node's onGoBackExecute
     //    Hide all keytips currently showing
     //    Show all keytips of children of currentKeytip
-    if (keySequencesContain(this._goBackSequences, currentSequence)) {
+    else if (keySequencesContain(this._goBackSequences, currentSequence)) {
       if (this.keytipTree.currentKeytip) {
         if (this.keytipTree.currentKeytip.id === this.keytipTree.root.id) {
           // We are at the root, exit keytip mode
@@ -142,13 +142,13 @@ export class KeytipManager {
     // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
     //    Show children of root
     //    Trigger layer's onEnter callback
-    if (keySequencesContain(this._enableSequences, currentSequence) && !this.keytipTree.currentKeytip) {
+    else if (keySequencesContain(this._enableSequences, currentSequence) && !this.keytipTree.currentKeytip) {
       this.keytipTree.currentKeytip = this.keytipTree.root;
       this.showKeytips(this.keytipTree.currentKeytip.children);
       this.enterKeytipMode();
     }
 
-    if (this.keytipTree.currentKeytip) {
+    else if (this.keytipTree.currentKeytip) {
       let node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
       if (node) { // we found a matching node
         this.keytipTree.currentKeytip = node;
@@ -204,8 +204,12 @@ export class KeytipManager {
   }
 
   private _changeKeytipVisibility(ids: string[], visible: boolean): void {
+    // Change visibility in tree
     for (let id of ids) {
       this.keytipTree.nodeMap[id] = { ...this.keytipTree.nodeMap[id], visible };
     }
+
+    // Change visibility in layer
+    this._layer.setKeytipVisibility(ids, visible);
   }
 }
