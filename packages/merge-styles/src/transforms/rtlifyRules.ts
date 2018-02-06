@@ -33,9 +33,14 @@ export function rtlifyRules(
 ): void {
   if (getRTL()) {
     const name = rulePairs[index] as string;
+
+    if (!name) {
+      return;
+    }
+
     const value = rulePairs[index + 1] as string;
 
-    if (typeof value.indexOf === 'string' && value.indexOf(NO_FLIP) >= 0) {
+    if (typeof value === 'string' && value.indexOf(NO_FLIP) >= 0) {
       rulePairs[index + 1] = value.replace(/\s*(?:\/\*\s*)?\@noflip\b(?:\s*\*\/)?\s*?/g, '');
     } else if (name.indexOf('left') >= 0) {
       rulePairs[index] = name.replace('left', 'right');
