@@ -32,6 +32,24 @@
   }
 }
 
+/*
+ * When the DetailsList hover mode is "above" and the list is in hover state,
+ * make all checkboxes visible by default and hide checkboxes in rows below the hovered row.
+ */
+:global(.ms-DetailsList--HoverAbove:hover) {
+  .check {
+    opacity: 1;
+  }
+  :global(.ms-List-cell:hover) ~ :global(.ms-List-cell) {
+    .check {
+      opacity: 0;
+    }
+  }
+  :global(.ms-List-page:hover) ~ :global(.ms-List-page) .check {
+    opacity: 0;
+  }
+}
+
 .owner {
   &.isSelected,
   &.isVisible,

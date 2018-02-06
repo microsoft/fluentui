@@ -213,6 +213,12 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
    * Whether or not the selection zone should enter modal state on touch.
    */
   enterModalSelectionOnTouch?: boolean;
+
+  /**
+   * Whether to style rows above the current row in a "hover" state when the cursor is hovering over a row.
+   * @default false
+   */
+  hoverAbove?: boolean;
 }
 
 export interface IColumn {

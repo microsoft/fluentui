@@ -52,6 +52,26 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   }
 }
 
+/*
+ * When the DetailsList hover mode is "above" and the list is in hover state,
+ * style all rows with "hover" colors by default and
+ * use default colors in rows below the hovered row.
+ */
+:global(.ms-DetailsList--HoverAbove:hover) {
+  .root {
+    background: $detailsList-item-hover-color-background;
+    color: $detailsList-item-hover-meta-text-color;
+  }
+  :global(.ms-List-cell:hover) ~ :global(.ms-List-cell) .root {
+    background: $detailsList-item-default-background-color;
+    color: $detailsList-item-default-meta-text-color;
+  }
+  :global(.ms-List-page:hover) ~ :global(.ms-List-page) .root {
+    background: $detailsList-item-default-background-color;
+    color: $detailsList-item-default-meta-text-color;
+  }
+}
+
 :global(.ms-List-cell:first-child) {
   .root {
     // Don't show border-top for first row's pseudo element

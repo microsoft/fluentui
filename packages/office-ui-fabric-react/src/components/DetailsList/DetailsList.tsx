@@ -252,7 +252,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       listProps,
       usePageCache,
-      onShouldVirtualize
+      onShouldVirtualize,
+      hoverAbove = false
     } = this.props;
     let {
       adjustedColumns,
@@ -343,7 +344,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
               ref={ this._resolveRef('_focusZone') }
-              className={ styles.focusZone }
+              className={ css(
+                styles.focusZone,
+                hoverAbove && 'ms-DetailsList--HoverAbove',
+              ) }
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ isRightArrow }
               onActiveElementChanged={ this._onActiveRowChanged }
