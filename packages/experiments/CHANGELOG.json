@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.18.0",
+      "tag": "@uifabric/experiments_v5.18.0",
+      "date": "Tue, 06 Feb 2018 11:14:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "92c237d5804d8864ed44310ecb5ed93e835554e7",
+            "comment": "BasePicker: Use correct autofillnow"
+          }
+        ],
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "36c24d4e085515a0d74f2eb1b1cafd847af67667",
+            "comment": "change persona pill css"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.3 <6.0.0` to `>=5.47.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.0",
       "tag": "@uifabric/experiments_v5.17.0",
       "date": "Fri, 02 Feb 2018 11:24:16 GMT",

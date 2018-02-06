@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2018 11:14:36 GMT and should not be manually modified.
+
+## 5.11.1
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Patches
+
+- [provideUnits] Add line-height to ignore
 
 ## 5.11.0
 Thu, 25 Jan 2018 11:23:06 GMT

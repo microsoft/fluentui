@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 02 Feb 2018 11:24:16 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2018 11:14:36 GMT and should not be manually modified.
+
+## 5.18.0
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Minor changes
+
+- change persona pill css
+
+### Patches
+
+- BasePicker: Use correct autofillnow
 
 ## 5.17.0
 Fri, 02 Feb 2018 11:24:16 GMT

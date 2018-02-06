@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.11.1",
+      "tag": "@uifabric/merge-styles_v5.11.1",
+      "date": "Tue, 06 Feb 2018 11:14:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "857b101451a04bb20ee88d08b36511485939005d",
+            "comment": "[provideUnits] Add line-height to ignore"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.0",
       "tag": "@uifabric/merge-styles_v5.11.0",
       "date": "Thu, 25 Jan 2018 11:23:06 GMT",
