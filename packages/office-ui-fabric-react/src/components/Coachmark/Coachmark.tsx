@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 
 // Component Dependencies
-import { PositioningContainer } from '../PositioningContainer/PositioningContainer';
+import { PositioningContainer } from './PositioningContainer/PositioningContainer';
 import { Beak } from './Beak/Beak';
 
 // Coachmark
@@ -48,6 +48,12 @@ export interface ICoachmarkState {
    * Is the mouse in proximity of the default target element
    */
   isMouseInProximity: boolean;
+
+  /**
+   * Containing element that the beak will use to position
+   * itself
+   */
+  targetBeakContainer?: HTMLElement;
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
@@ -55,7 +61,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     collapsed: true,
     mouseProximityOffset: 100,
     beakWidth: 26,
-    beakHeight: 12
+    beakHeight: 12,
+    delayBeforeMouseOpen: 3600 // The approximate time the coachmark shows up
   };
 
   /**
@@ -79,6 +86,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         height: 0
       },
       isMouseInProximity: false
+
     };
   }
 
@@ -113,17 +121,18 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           >
             <div
               className={ classNames.scaleAnimationLayer }
-              ref={ this._resolveRef('_scaleAnimationContainer') }
             >
               <div
                 className={ classNames.rotateAnimationLayer }
-                ref={ this._resolveRef('_rotateAnimationContainer') }
               >
-                <Beak
-                  target={ this._entityHost }
-                  beakWidth={ beakWidth }
-                  beakHeight={ beakHeight }
-                />
+                {
+                  this.state.targetBeakContainer && <Beak
+                    target={ this.props.target! }
+                    beakWidth={ beakWidth }
+                    beakHeight={ beakHeight }
+                    targetBeakContainer={ this.state.targetBeakContainer! }
+                  />
+                }
                 <div
                   className={ classNames.entityHost }
                   ref={ this._resolveRef('_entityHost') }
@@ -167,10 +176,16 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this.forceUpdate();
         }
 
-        // Initialize element in proximity now that initial
-        // measurements have been taken
-        this._isElementInProximity(100);
+        // We dont want to the user to immediatley trigger the coachmark when it's opened
+        this._async.setTimeout(() => {
+          this._isElementInProximity(100);
+        }, this.props.delayBeforeMouseOpen!);
       }, 10);
+    }
+    if (!this.state.targetBeakContainer) {
+      this.setState({
+        targetBeakContainer: this._entityHost
+      });
     }
   }
 
@@ -203,22 +218,28 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
      * The target element the mouse would be in
      * proximity to
      */
-    let targetElementRect: ClientRect = this._entityHost.getBoundingClientRect();
+    let targetElementRect: ClientRect;
 
-    // When the window resizes we want to async
-    // get the bounding client rectangle.
-    // Every time the event is triggered we wan't to
-    // setTimeout and then clear any previous instances
-    // of setTimeout.
-    this._events.on(window, 'resize', (): void => {
-      timeoutIds.forEach((value: number): void => {
-        clearInterval(value);
+    // Take the initial measure out of the initial render to prevent
+    // an unnessecary render.
+    this._async.setTimeout(() => {
+      targetElementRect = this._entityInnerHostElement.getBoundingClientRect();
+
+      // When the window resizes we want to async
+      // get the bounding client rectangle.
+      // Every time the event is triggered we want to
+      // setTimeout and then clear any previous instances
+      // of setTimeout.
+      this._events.on(window, 'resize', (): void => {
+        timeoutIds.forEach((value: number): void => {
+          clearInterval(value);
+        });
+
+        timeoutIds.push(this._async.setTimeout((): void => {
+          targetElementRect = this._entityInnerHostElement.getBoundingClientRect();
+        }, 100));
       });
-
-      timeoutIds.push(this._async.setTimeout((): void => {
-        targetElementRect = this._entityHost.getBoundingClientRect();
-      }, 100));
-    });
+    }, 10);
 
     // Every time the document's mouse move is triggered
     // we want to check if inside of an element and
@@ -226,18 +247,21 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
       let mouseY = e.pageY;
       let mouseX = e.pageX;
-      let isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
+      let isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset, targetElementRect);
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         this.setState({
           collapsed: !isMouseInProximity
         });
       }
+
+      if (this.props.onMouseMove) {
+        this.props.onMouseMove(e);
+      }
     });
   }
 
-  private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0): boolean {
-    const elementRect = this._entityInnerHostElement.getBoundingClientRect();
+  private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0, elementRect: ClientRect): boolean {
     return mouseX > (elementRect.left - mouseProximityOffset) &&
       mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
       mouseY > (elementRect.top - mouseProximityOffset) &&

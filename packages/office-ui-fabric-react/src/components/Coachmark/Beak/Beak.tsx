@@ -10,13 +10,30 @@ import { getStyles, IBeakStyles, IBeakStylesProps } from './Beak.styles';
 export interface IBeakState { }
 
 export class Beak extends BaseComponent<IBeakProps, IBeakState> {
-  private _canvasElement: HTMLCanvasElement;
-
   constructor(props: IBeakProps) {
     super(props);
   }
 
   public componentDidMount(): void {
+    // Determine where the target is
+    if (this.props.target && this.props.targetBeakContainer) {
+      let targetRect: ClientRect = this.props.target.getBoundingClientRect();
+      let containerRect: ClientRect = this.props.targetBeakContainer.getBoundingClientRect();
+
+      if (targetRect.right < containerRect.left) {
+        console.log("left aligned");
+        // Aligned left
+      } else if (targetRect.right > containerRect.left) {
+        // Aligned right
+        console.log("right aligned");
+      } else if (targetRect.top > containerRect.bottom) {
+        console.log("top aligned");
+        // Aligned top
+      } else if (targetRect.bottom < containerRect.top) {
+        console.log("bottom aligned");
+        // Aligned bottom
+      }
+    }
   }
 
   public render(): JSX.Element {

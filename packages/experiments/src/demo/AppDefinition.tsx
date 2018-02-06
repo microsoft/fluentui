@@ -10,18 +10,6 @@ export const AppDefinition: IAppDefinition = {
   examplePages: [
     {
       links: [
-        // {
-        //   component: require<any>('../components/Beak/BeakPage').BeakPage,
-        //   key: 'Beak',
-        //   name: 'Beak',
-        //   url: '#/examples/beak'
-        // },
-        {
-          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
-          key: 'Coachmark',
-          name: 'Coachmark',
-          url: '#/examples/coachmark'
-        },
         {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',

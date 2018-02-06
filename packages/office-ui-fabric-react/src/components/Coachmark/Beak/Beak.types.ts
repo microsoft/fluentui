@@ -36,4 +36,9 @@ export interface IBeakProps extends React.Props<Beak> {
    * A reference to the target the beak will align to.
    */
   target: HTMLElement;
+
+  /**
+   * The container the beak will be placed on.
+   */
+  targetBeakContainer: HTMLElement;
 }

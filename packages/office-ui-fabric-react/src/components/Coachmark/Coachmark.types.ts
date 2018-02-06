@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
-import { IPositioningContainerTypes } from '../PositioningContainer/PositioningContainer.types';
+import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
 import { IPoint, IStyleFunction } from '../../Utilities';
+import { MouseEvent } from 'react';
 
 export interface ICoachmark {
 }
 
 export interface ICoachmarkTypes extends React.Props<Coachmark> {
-  /**
-  * All props for your component are to be defined here.
-  */
   componentRef?: (component: ICoachmark) => void;
 
   /**
@@ -20,10 +18,8 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
 
   /**
    * The target that the TeachingBubble should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
-   * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | IPoint | null;
+  target: HTMLElement;
 
   positioningContainerProps?: IPositioningContainerTypes;
 
@@ -59,4 +55,15 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
    * The height of the beak component
    */
   beakHeight?: number;
+
+  /**
+   * Delay before allowing mouse movements to open
+   * the Coachmark
+   */
+  delayBeforeMouseOpen?: number;
+
+  /**
+   * Runs every time the mouse moves
+   */
+  onMouseMove?: (e: MouseEvent) => void;
 }

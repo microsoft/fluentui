@@ -3,13 +3,20 @@ import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import {
+  BaseComponent,
+  assign,
+  autobind
+} from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
   isCoachmarkCollapsed?: boolean;
+  targetElement?: HTMLElement;
 }
 
-export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
+export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
+  private _targetButton: HTMLElement;
 
   public constructor() {
     super();
@@ -32,7 +39,10 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
 
     return (
       <div className='ms-CoachmarkBasicExample'>
-        <div className='ms-CoachmarkBasicExample-buttonArea'>
+        <div
+          className='ms-CoachmarkBasicExample-buttonArea'
+          ref={ this._resolveRef('_targetButton') }
+        >
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isVisible ? 'Hide coachmark' : 'Show coachmark' }
@@ -41,7 +51,7 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
         </div>
         { isVisible && (
           <Coachmark
-            target={ '.ms-Coachmark-basicExampleButton' }
+            target={ this._targetButton }
           >
             <TeachingBubbleContent
               headline='Example Title'

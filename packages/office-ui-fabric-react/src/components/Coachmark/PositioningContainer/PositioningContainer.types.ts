@@ -4,7 +4,7 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHi
 import {
   IPoint,
   IRectangle
-} from '../../Utilities';
+} from '../../../Utilities';
 
 export interface IPositioningContainer {
 }

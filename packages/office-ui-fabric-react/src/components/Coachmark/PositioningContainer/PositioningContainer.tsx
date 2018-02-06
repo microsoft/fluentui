@@ -18,7 +18,7 @@ import {
   focusFirstChild,
   getWindow,
   getDocument
-} from '../../Utilities';
+} from '../../../Utilities';
 
 import {
   getRelativePositions,
@@ -27,7 +27,7 @@ import {
   ICalloutPositon
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
 export interface IPositionInfo {
   calloutPosition: ICalloutPositon;
