@@ -102,7 +102,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
-    const renderProps: IPanelProps = { ...this.props, componentId: id };
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -177,12 +176,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
               isClickableOutsideFocusTrap={ isLightDismiss || isHiddenOnDismiss }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
-                { onRenderNavigation(renderProps, this._onRenderNavigation) }
+                { onRenderNavigation(this.props, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                { onRenderHeader(renderProps, this._onRenderHeader) }
-                { onRenderBody(renderProps, this._onRenderBody) }
-                { onRenderFooter(renderProps, this._onRenderFooter) }
+                { onRenderHeader(this.props, this._onRenderHeader) }
+                { onRenderBody(this.props, this._onRenderBody) }
+                { onRenderFooter(this.props, this._onRenderFooter) }
               </div>
             </FocusTrapZone>
           </div>
@@ -257,9 +256,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   private _onRenderHeader(props: IPanelProps): JSX.Element | null {
     const {
       headerText,
-      componentId,
       headerClassName = '',
     } = props;
+    const componentId = this.state.id;
 
     if (headerText) {
       return (
