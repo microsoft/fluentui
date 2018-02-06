@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CheckBase } from './Check.base';
-import { IStyle, ITheme } from '@uifabric/Styling';
+import { IStyle, ITheme } from '@uifabric/styling';
 import { IStyleFunction } from '@uifabric/utilities';
 
 export interface ICheckProps extends React.Props<CheckBase> {
