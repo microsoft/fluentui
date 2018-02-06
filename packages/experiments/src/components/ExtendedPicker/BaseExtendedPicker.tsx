@@ -66,12 +66,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public componentDidMount(): void {
-    this.input.inputElement.addEventListener('paste', this.onPaste);
     this.forceUpdate();
-  }
-
-  public componentWillUnmount(): void {
-    this.input.inputElement.removeEventListener('paste', this.onPaste);
   }
 
   public focus(): void {
@@ -121,6 +116,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                 role='combobox'
                 disabled={ disabled }
                 aria-controls='selected-suggestion-alert'
+                onPaste={ this.onPaste }
               />) }
             </div>
           </SelectionZone>
@@ -212,8 +208,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.selectedItemsList.onCopy(ev);
   }
 
-  @autobind
-  protected onPaste(ev: ClipboardEvent): void {
+  @autobind onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void {
     if (this.props.onPaste) {
       let inputText = ev.clipboardData.getData('Text');
       ev.preventDefault();
