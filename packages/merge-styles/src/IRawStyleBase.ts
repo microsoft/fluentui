@@ -1053,14 +1053,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * used when the text-align-last property is set to size. It controls allowed
    * adjustments of font-size to fit line content.
    */
-  maxFontSize?: ICSSRule | string;
+  maxFontSize?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the maximum height for an element. It prevents the height of the element to
    *  exceed the specified value. If min-height is specified and is greater than
    * max-height, max-height is overridden.
    */
-  maxHeight?: ICSSRule | string;
+  maxHeight?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the maximum width for an element. It limits the width property to be larger

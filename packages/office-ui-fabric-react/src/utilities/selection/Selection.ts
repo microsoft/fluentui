@@ -86,7 +86,7 @@ export class Selection implements ISelection {
 
   public setModal(isModal: boolean): void {
     if (this._isModal !== isModal) {
-      this.setChangeEvents(true);
+      this.setChangeEvents(false);
 
       this._isModal = isModal;
 
@@ -96,7 +96,7 @@ export class Selection implements ISelection {
 
       this._change();
 
-      this.setChangeEvents(false);
+      this.setChangeEvents(true);
     }
   }
 

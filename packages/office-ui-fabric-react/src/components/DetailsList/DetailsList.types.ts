@@ -162,6 +162,9 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
+  /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
+  getRowAriaDescribedBy?: (item: any) => string;
+
   /** Optional callback to get the item key, to be used in the selection and on render. */
   getKey?: (item: any, index?: number) => string;
 
