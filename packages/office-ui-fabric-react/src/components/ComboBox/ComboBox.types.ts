@@ -203,7 +203,7 @@ export interface IComboBoxStyleProps {
   hasErrorMessage?: boolean;
 
   /**
-   * Whether an error message is uncluded.
+   * Custom styles that are passed in from the control
    */
   customStyles?: Partial<IComboBoxStyles>;
 }
