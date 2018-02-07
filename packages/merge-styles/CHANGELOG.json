@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.11.2",
+      "tag": "@uifabric/merge-styles_v5.11.2",
+      "date": "Wed, 07 Feb 2018 11:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d121208b61c93811909fb69d2ba8d104c3531769",
+            "comment": "Adjusting rtl flipping logic to be more resilient to invalid styling."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.1",
       "tag": "@uifabric/merge-styles_v5.11.1",
       "date": "Tue, 06 Feb 2018 11:14:36 GMT",
