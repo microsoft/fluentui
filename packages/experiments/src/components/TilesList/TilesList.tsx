@@ -148,9 +148,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         className={ css(TilesListStyles.cell) }
         // tslint:disable-next-line:jsx-ban-props
         style={
-          {
-            paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
-          }
+          item.grid.mode === TilesGridMode.fillHorizontal ?
+            {
+              height: `${item.grid.minRowHeight}px`
+            } :
+            {
+              paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
+            }
         }
       >
         <div
@@ -214,12 +218,17 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             scaleFactor
           } = currentRow;
 
-          if (grid.mode === TilesGridMode.fill && (!currentRow.isLastRow || scaleFactor <= grid.maxScaleFactor)) {
+          if ((grid.mode === TilesGridMode.fill ||
+            grid.mode === TilesGridMode.fillHorizontal) &&
+            (!currentRow.isLastRow ||
+              scaleFactor <= grid.maxScaleFactor)) {
             const finalScaleFactor = Math.min(grid.maxScaleFactor, scaleFactor);
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
-              height: finalSize.height * finalScaleFactor
+              height: grid.mode === TilesGridMode.fill ?
+                finalSize.height * finalScaleFactor :
+                grid.minRowHeight
             };
           }
         }
@@ -390,7 +399,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         currentRow.scaleFactor = (boundsWidth - totalMargin) / (rowWidth - totalMargin);
       }
 
-      if (!isAtGridEnd && currentRow.scaleFactor > (grid.mode === TilesGridMode.fill ? grid.maxScaleFactor : 1)) {
+      if (!isAtGridEnd && currentRow.scaleFactor > (
+        grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ?
+          grid.maxScaleFactor :
+          1)) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
         extraCells = cells.slice(rowStart, i);
@@ -442,7 +454,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const itemWidthOverHeight = item.aspectRatio || 1;
     const margin = grid.spacing / 2;
-    const isFill = gridMode === TilesGridMode.fill;
+    const isFill = gridMode === TilesGridMode.fill || gridMode === TilesGridMode.fillHorizontal;
     const width = itemWidthOverHeight * grid.minRowHeight;
 
     return {
