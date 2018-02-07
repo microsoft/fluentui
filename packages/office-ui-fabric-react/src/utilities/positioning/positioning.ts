@@ -455,9 +455,12 @@ export module positioningFunctions {
   ): IPositionDirectionalHintData {
     let positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
     if (getRTL()) {
+
       // If alignment edge exists and that alignment edge is -2 or 2, right or left, then flip it.
-      positionInformation.alignmentEdge = positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0
-        ? positionInformation.alignmentEdge * -1 : undefined;
+      if (positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0) {
+        positionInformation.alignmentEdge = positionInformation.alignmentEdge * -1;
+      }
+
       return directionalHintForRTL !== undefined ?
         DirectionalDictionary[directionalHintForRTL] :
         positionInformation;
