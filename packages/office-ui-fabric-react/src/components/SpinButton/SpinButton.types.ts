@@ -154,7 +154,7 @@ export interface ISpinButtonProps extends React.Props<SpinButtonBase> {
    * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
    * for styling when that is the case.
    *
-   * @deprecated upArrowButtonStyles prop will be removed in favor of getUpArrowButtonStyles in 6.0
+   * @deprecated downArrowButtonStyles prop will be removed in favor of getUpArrowButtonStyles in 6.0
    */
   downArrowButtonStyles?: Partial<IButtonStyles>;
 
@@ -221,6 +221,7 @@ export interface ISpinButtonStyleProps {
 
   /**
    * @default: Left
+   * The position of the label on the control
    */
   labelPosition?: Position;
 

@@ -17,22 +17,30 @@ const getStyles = (
   };
 };
 
-const upArrowButtonStyles: Partial<IButtonStyles> = {
-  rootChecked: {
-    backgroundColor: 'green'
-  },
-  rootPressed: {
-    backgroundColor: 'green'
-  }
+const getUpArrowButtonStyles = (
+  props: ISpinButtonArrowStyleProps
+): Partial<IButtonStyles> => {
+  return {
+    rootChecked: {
+      backgroundColor: 'green'
+    },
+    rootPressed: {
+      backgroundColor: 'green'
+    }
+  };
 };
 
-const downArrowButtonStyles: Partial<IButtonStyles> = {
-  rootChecked: {
-    backgroundColor: 'red'
-  },
-  rootPressed: {
-    backgroundColor: 'red'
-  }
+const getDownArrowButtonStyles = (
+  props: ISpinButtonArrowStyleProps
+): Partial<IButtonStyles> => {
+  return {
+    rootChecked: {
+      backgroundColor: 'red'
+    },
+    rootPressed: {
+      backgroundColor: 'red'
+    }
+  };
 };
 
 export class SpinButtonCustomStyledExample extends React.Component<any, any> {
@@ -41,8 +49,8 @@ export class SpinButtonCustomStyledExample extends React.Component<any, any> {
       <div>
         <SpinButton
           getStyles={ getStyles }
-          upArrowButtonStyles={ upArrowButtonStyles }
-          downArrowButtonStyles={ downArrowButtonStyles }
+          getUpArrowButtonStyles={ getUpArrowButtonStyles }
+          getDownArrowButtonStyles={ getDownArrowButtonStyles }
           defaultValue='0'
           label={ 'Custom styled SpinButton:' }
           min={ 0 }
