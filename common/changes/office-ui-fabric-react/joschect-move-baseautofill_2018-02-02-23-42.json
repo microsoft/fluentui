@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix bug in modal selection handling",
-      "type": "patch"
+      "comment": "BaseAutofill: Move to it's own component",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "joschect@microsoft.com"
 }

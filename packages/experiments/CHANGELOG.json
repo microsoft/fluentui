@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.17.0",
+      "tag": "@uifabric/experiments_v5.17.0",
+      "date": "Fri, 02 Feb 2018 11:24:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "83be28cba3b75cf3db87c21da190f2247f4bc33e",
+            "comment": "allow editing of selected items in selected people list"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lejimsft <32402358+lejimsft@users.noreply.github.com>",
+            "commit": "1b709bc84a01334f990fd6474d9fba0a07dbe61d",
+            "comment": "consume BlockedSite icon for malware detected signal"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.45.2 <6.0.0` to `>=5.45.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.16.1",
       "tag": "@uifabric/experiments_v5.16.1",
       "date": "Wed, 31 Jan 2018 11:11:59 GMT",
