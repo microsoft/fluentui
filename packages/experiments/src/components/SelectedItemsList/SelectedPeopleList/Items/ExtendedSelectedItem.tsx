@@ -88,8 +88,10 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
       </div >);
   }
 
-  private onClickIconButton = (action: (() => void) | undefined): () => void => {
-    return (): void => {
+  private onClickIconButton = (action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void => {
+    return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
+      ev.stopPropagation();
+      ev.preventDefault();
       if (action) {
         action();
       }
