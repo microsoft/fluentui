@@ -32,7 +32,7 @@ function getBeakStyleStyle(beakWidth?: number,
   return {
     height: beakStyleWidth,
     width: beakStyleWidth
-  }
+  };
 }
 
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
