@@ -49,7 +49,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     const itemId = getId();
     const nativeProps = getNativeProps(this.props, inputProperties);
     return (
-      <div aria-labelledby={ 'editingItemPersona-' + itemId }>
+      <div aria-labelledby={ 'ms-EditingItem editingItemPersona-' + itemId }>
         <input
           { ...nativeProps}
           ref={ this._resolveInputRef }
