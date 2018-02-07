@@ -460,6 +460,7 @@ export module positioningFunctions {
       if (positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0) {
         positionInformation.alignmentEdge = positionInformation.alignmentEdge * -1;
       }
+
       return directionalHintForRTL !== undefined ?
         DirectionalDictionary[directionalHintForRTL] :
         positionInformation;
