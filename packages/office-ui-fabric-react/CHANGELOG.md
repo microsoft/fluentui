@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Feb 2018 11:14:36 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+
+## 5.48.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- SearchBox: Export base component as well as styled
+
+### Patches
+
+- Remove duplicate export of command button from the button index
+- [Spinner] Use rotateZ to stop the spinner from wiggling in IE
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+- SearchBox: minor correction in hover styles.
 
 ## 5.47.0
 Tue, 06 Feb 2018 11:14:36 GMT

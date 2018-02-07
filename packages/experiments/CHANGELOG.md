@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 06 Feb 2018 11:14:36 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+
+## 5.19.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- Added a fillHorizontal mode to TilesList
 
 ## 5.18.0
 Tue, 06 Feb 2018 11:14:36 GMT
