@@ -51,4 +51,11 @@ describe('rtlifyRules', () => {
     expect(rules).toEqual(['cursor', 'hand']);
   });
 
+  it('does not crash when name or value are not strings', () => {
+    // tslint:disable:no-any
+    rtlifyRules(['left', null] as any, 0);
+    rtlifyRules(['left', {}] as any, 0);
+    rtlifyRules([null, 'abc'] as any, 0);
+    // tslint:enable:no-any
+  });
 });
