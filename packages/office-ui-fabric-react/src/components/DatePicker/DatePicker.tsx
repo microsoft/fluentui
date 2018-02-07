@@ -190,7 +190,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     return (
       <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
-        <Label required={ isRequired }>{ label }</Label>
+        { label && (
+          <Label required={ isRequired }>{ label }</Label>
+        ) }
         <div ref={ this._resolveRef('_datepicker') }>
           <TextField
             className={ styles.textField }
