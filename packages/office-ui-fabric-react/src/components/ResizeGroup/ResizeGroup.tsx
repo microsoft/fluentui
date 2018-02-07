@@ -4,9 +4,9 @@ import {
   BaseComponent,
   css,
   divProperties,
-  getNativeProps
+  getNativeProps,
+  provideContext
 } from '../../Utilities';
-import { provideContext } from '@uifabric/utilities/lib/Context';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as styles from './ResizeGroup.scss';
 
