@@ -99,7 +99,11 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLElement>): void {
     ev.preventDefault();
-    this.setState({ contextualMenuVisible: true });
+    if (this.props.beginEditing && !this.props.item.isValid) {
+      this.props.beginEditing(this.props.item);
+    } else {
+      this.setState({ contextualMenuVisible: true });
+    }
   }
 
   @autobind

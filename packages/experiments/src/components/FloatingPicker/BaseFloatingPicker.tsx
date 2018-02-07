@@ -460,7 +460,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   private _onResolveSuggestions(updatedValue: string): void {
     let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
 
-    this.updateSuggestionsList(suggestions, updatedValue);
+    if (suggestions !== null) {
+      this.updateSuggestionsList(suggestions, updatedValue);
+    }
   }
 
   private _onValidateInput(): void {
