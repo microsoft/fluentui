@@ -484,7 +484,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
     } else {
       // Single-select
-      let index: number = selectedIndices && selectedIndices[0] || -1;
+      let index: number = this._getFirstSelectedIndex();
       if (allowFreeform) {
         // If we are allowing freeform and autocomplete is also true
         // and we've got a pending value that matches an option, remember
@@ -659,13 +659,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // If we get here, either autoComplete is on or we did not find a match with autoComplete on.
     // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
-    let index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : (selectedIndices && selectedIndices[0] || -1); // todo: stanleyy
+    let index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : this._getFirstSelectedIndex();
 
     // Since we are not allowing freeform, we need to
     // set both the pending and suggested values/index
     // to allow us to select all content in the input to
     // give the illusion that we are readonly (e.g. freeform off)
     this._setPendingInfoFromIndex(index);
+  }
+
+  private _getFirstSelectedIndex(): number {
+    return (this.state.selectedIndices && this.state.selectedIndices.length > 0) ? this.state.selectedIndices[0] : -1;
   }
 
   /**
@@ -1116,8 +1120,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover >= 0 ?
         currentPendingValueValidIndexOnHover :
         (currentPendingValueValidIndex >= 0 || (includeCurrentPendingValue && currentPendingValue !== '')) ?
-          currentPendingValueValidIndex :
-          (selectedIndices && selectedIndices[0] || -1) // todo: stanleyy
+          currentPendingValueValidIndex : this._getFirstSelectedIndex()
     );
   }
 
@@ -1154,7 +1157,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (onScrollToItem) {
       // Use the custom scroll handler
-      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : (selectedIndices && selectedIndices[0] || -1)); // todo: stanleyy
+      onScrollToItem((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ? currentPendingValueValidIndex : this._getFirstSelectedIndex());
     } else if (this._selectedElement && this._selectedElement.offsetParent) {
       // We are using refs, scroll the ref into view
       if (scrollSelectedToTop) {
@@ -1257,7 +1260,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._comboBox.clear();
     this._clearPendingInfo();
 
-    let selectedIndex: number = selectedIndices && selectedIndices[0] || -1; // todo: stanleyy
+    let selectedIndex: number = this._getFirstSelectedIndex();
     if (selectedIndex > 0 && selectedIndex < currentOptions.length) {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
