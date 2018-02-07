@@ -70,8 +70,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public focus(): void {
-    console.log('extended picker focus');
     this.focusZone.focus();
+  }
+
+  public get inputElement(): HTMLInputElement {
+    return this.input.inputElement;
   }
 
   public render(): JSX.Element {
