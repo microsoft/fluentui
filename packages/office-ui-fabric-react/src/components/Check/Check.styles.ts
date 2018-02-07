@@ -22,7 +22,7 @@ export const getStyles = (
 
   const { palette, semanticColors } = theme;
 
-  const _sharedCircleCheck: IStyle = {
+  const sharedCircleCheck: IStyle = {
     fontSize: checkBoxHeight,
     position: 'absolute',
     left: 0,
@@ -88,7 +88,7 @@ export const getStyles = (
 
     circle: [
       'ms-Check-circle',
-      _sharedCircleCheck,
+      sharedCircleCheck,
 
       {
         color: palette.neutralTertiaryAlt,
@@ -107,7 +107,7 @@ export const getStyles = (
 
     check: [
       'ms-Check-check',
-      _sharedCircleCheck,
+      sharedCircleCheck,
 
       {
         opacity: 0,
