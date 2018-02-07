@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 06 Feb 2018 11:14:36 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+
+## 5.11.2
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Adjusting rtl flipping logic to be more resilient to invalid styling.
 
 ## 5.11.1
 Tue, 06 Feb 2018 11:14:36 GMT
