@@ -65,5 +65,5 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * Runs every time the mouse moves
    */
-  onMouseMove?: (e: MouseEvent) => void;
+  onMouseMove?: (e: MouseEvent<HTMLElement>) => void;
 }
