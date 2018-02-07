@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Adding optional callback aria-describedby for each item in DetailsList",
+      "comment": "Remove duplicate export of command button from the button index",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "akashperfect@gmail.com"
+  "email": "christianjordangonzalez@gmail.com"
 }
