@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 05 Feb 2018 11:24:23 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+
+## 5.10.1
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
 
 ## 5.10.0
 Mon, 05 Feb 2018 11:24:23 GMT

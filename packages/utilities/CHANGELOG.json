@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.10.1",
+      "tag": "@uifabric/utilities_v5.10.1",
+      "date": "Wed, 07 Feb 2018 11:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "48700c65292e57126b95be80c3092a39c6e171d0",
+            "comment": "Fixing direct reference to @uifabric/utilities/lib from ResizeGroup"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.0",
       "tag": "@uifabric/utilities_v5.10.0",
       "date": "Mon, 05 Feb 2018 11:24:23 GMT",

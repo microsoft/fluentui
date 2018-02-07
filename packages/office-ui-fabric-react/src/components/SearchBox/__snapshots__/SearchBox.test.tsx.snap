@@ -32,8 +32,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        $label: [object Object];
         border-color: #212121;
+      }
+      &:hover $iconContainer {
+        color: #005a9e;
       }
   onFocusCapture={[Function]}
 >
