@@ -137,6 +137,7 @@ storiesOf('Button Split', module)
         .mouseDown('.ms-Button:nth-child(1)')
         .snapshot('pressed main', { cropTo: '.testWrapper' })
         .hover('.ms-Button') // reset mouseDown
+        .mouseUp('.ms-Button:nth-child(2)')
         .mouseDown('.ms-Button:nth-child(2)')
         .snapshot('pressed split', { cropTo: '.testWrapper' })
         .click('.ms-Button:nth-child(2)')
