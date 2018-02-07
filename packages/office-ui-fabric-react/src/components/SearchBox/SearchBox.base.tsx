@@ -3,7 +3,6 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   BaseComponent,
   autobind,
-  css,
   getId,
   KeyCodes,
   customizable,
