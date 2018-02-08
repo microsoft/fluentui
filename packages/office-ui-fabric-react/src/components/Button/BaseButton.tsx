@@ -504,7 +504,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ev.preventDefault();
       ev.stopPropagation();
     } else {
-      if (!this._isSplitButton && this.props.onKeyDown) {
+      if (this.props.onKeyDown) {
         this.props.onKeyDown(ev);
       }
     }
