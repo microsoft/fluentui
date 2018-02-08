@@ -1,27 +1,12 @@
 import { Steps as OriginalSteps } from 'screener-storybook/src/screener';
 
-OriginalSteps.prototype.RTL = function (code, isAsync) {
-  var step = {
-    type: 'executeScript',
-    code: 'document.documentElement.setAttribute("dir", "rtl")',
-    isAsync: false
-  };
-  if (isAsync === true) {
-    step.isAsync = true;
-  }
-  this.steps.push(step);
-  return this;
-};
+OriginalSteps.prototype.setRTL = function (isRTL: boolean = false) {
 
-OriginalSteps.prototype.LTR = function (code, isAsync) {
   var step = {
     type: 'executeScript',
-    code: 'document.documentElement.setAttribute("dir", "ltr")',
-    isAsync: false
+    code: `document.documentElement.setAttribute("dir", ${isRTL ? '"rtl"' : '"ltr"'})`
   };
-  if (isAsync === true) {
-    step.isAsync = true;
-  }
+
   this.steps.push(step);
   return this;
 };

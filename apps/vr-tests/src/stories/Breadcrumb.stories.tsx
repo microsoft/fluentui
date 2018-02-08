@@ -11,9 +11,9 @@ storiesOf('Breadcrumb', module)
     <Screener
       steps={ new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .RTL()
+        .setRTL(true)
         .snapshot('defaultRTL', { cropTo: '.testWrapper' })
-        .LTR()
+        .setRTL(false)
         .hover('.ms-Breadcrumb-overflowButton')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
