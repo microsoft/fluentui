@@ -11,6 +11,16 @@ import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
 
+export enum SuggestionActionType {
+  none,
+  useInputText,
+  searchMore,
+}
+
+export interface ISuggestionsState {
+  selectedActionType: SuggestionActionType;
+}
+
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {
     let {
@@ -51,14 +61,18 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
   }
 }
 
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
+export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
 
+  protected _useInputButton: IButton;
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
+    this.state = {
+      selectedActionType: SuggestionActionType.none,
+    };
   }
 
   public componentDidUpdate() {
@@ -67,6 +81,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   public render() {
     let {
+      useInputText,
+      createGenericItem,
+      isTextValid,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -83,7 +100,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsFooterFull,
       resultsFooter,
       suggestionsAvailableAlertText,
-      suggestionsHeaderText
+      suggestionsHeaderText,
     } = this.props;
 
     let noResults = () => {
@@ -100,6 +117,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       headerText = mostRecentlyUsedHeaderText;
     }
     let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    let hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     return (
       <div
         className={ css(
@@ -116,17 +134,36 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
             label={ loadingText }
           />) }
-        { (!suggestions || !suggestions.length) && !isLoading ?
+        { hasNoSuggestions ?
           (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) :
           this._renderSuggestions()
         }
+        { useInputText && !moreSuggestionsAvailable && hasNoSuggestions && this._isTextValid() && (
+          <CommandButton
+            componentRef={ this._resolveRef('_useInputButton') }
+            className={ css(
+              'ms-SearchMore-button',
+              styles.actionButton,
+              {
+                ['is-selected ' + styles.buttonSelected]:
+                this.state.selectedActionType === SuggestionActionType.useInputText
+              }) }
+            onClick={ this._useInput }
+          >
+            { useInputText }
+          </CommandButton>
+        ) }
         { searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={ this._resolveRef('_searchForMoreButton') }
-            className={ css('ms-SearchMore-button', styles.searchMoreButton) }
+            className={ css('ms-SearchMore-button',
+              styles.actionButton,
+              {
+                ['is-selected ' + styles.buttonSelected]:
+                this.state.selectedActionType === SuggestionActionType.searchMore
+              }) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults }
-            onKeyDown={ this._onKeyDown }
           >
             { searchForMoreText }
           </CommandButton>
@@ -153,6 +190,89 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         }
       </div>
     );
+  }
+
+  @autobind
+  public tryHandleKeyDown(keyCode: number): boolean {
+    let isEventHandled = false;
+    let newSelectedActionType = null;
+    let currentSelectedAction = this.state.selectedActionType;
+    if (currentSelectedAction !== SuggestionActionType.none) {
+      if (keyCode === KeyCodes.down) {
+        switch (currentSelectedAction) {
+          case SuggestionActionType.useInputText:
+            if (this._searchForMoreButton) {
+              newSelectedActionType = SuggestionActionType.searchMore;
+            } else {
+              this._refocusOnSuggestions(keyCode);
+              newSelectedActionType = SuggestionActionType.none;
+            }
+            break;
+          case SuggestionActionType.searchMore:
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+            break;
+        }
+      } else if (keyCode === KeyCodes.up) {
+        switch (currentSelectedAction) {
+          case SuggestionActionType.useInputText:
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+            break;
+          case SuggestionActionType.searchMore:
+            if (this._useInputButton) {
+              newSelectedActionType = SuggestionActionType.useInputText;
+            } else {
+              this._refocusOnSuggestions(keyCode);
+              newSelectedActionType = SuggestionActionType.none;
+            }
+            break;
+        }
+      }
+
+      if (newSelectedActionType !== null) {
+        this.setState({ selectedActionType: newSelectedActionType });
+        isEventHandled = true;
+      }
+    }
+
+    return isEventHandled;
+  }
+
+  public hasSuggestedAction(): boolean {
+    return this._searchForMoreButton !== null || this._useInputButton !== null;
+  }
+
+  public hasSuggestedActionSelected(): boolean {
+    return (this.state.selectedActionType !== SuggestionActionType.none);
+  }
+
+  public executeSelectedAction(): void {
+    switch (this.state.selectedActionType) {
+      case SuggestionActionType.useInputText:
+        this._useInput();
+        break;
+      case SuggestionActionType.searchMore:
+        this._getMoreResults();
+        break;
+    }
+  }
+
+  public focusAboveSuggestions(): void {
+    let newSelectedActionType = null;
+    if (this._searchForMoreButton) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    } else if (this._useInputButton) {
+      this.setState({ selectedActionType: SuggestionActionType.useInputText });
+    }
+  }
+
+  public focusBelowSuggestions(): void {
+    if (this._useInputButton) {
+      this.setState({ selectedActionType: SuggestionActionType.useInputText });
+    } else if (this._searchForMoreButton) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    }
   }
 
   public focusSearchForMoreButton() {
@@ -219,6 +339,18 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   @autobind
+  private _useInput() {
+    if (this.props.createGenericItem) {
+      this.props.createGenericItem();
+    }
+  }
+
+  @autobind
+  private _isTextValid() {
+    return this.props.isTextValid ? this.props.isTextValid() : false;
+  }
+
+  @autobind
   private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       this.props.onSuggestionClick(ev, item, index);
@@ -226,9 +358,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
-    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
-      this.props.refocusSuggestions(ev.keyCode);
+  private _refocusOnSuggestions(keyCode: number): void {
+    if (typeof this.props.refocusSuggestions === 'function') {
+      this.props.refocusSuggestions(keyCode);
     }
   }
 

@@ -163,6 +163,10 @@ export interface IBasePickerSuggestionsProps {
    */
   searchForMoreText?: string;
   /**
+   * The text that appears indicated to the user that they can use the inputed text as an item
+   */
+  useInputText?: string;
+  /**
    * The text to display while the results are loading.
    */
   loadingText?: string;
