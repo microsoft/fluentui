@@ -19,7 +19,7 @@ const ANIMATIONS: { [key: number]: IRawStyle; } = {
   [RectangleEdge.right]: AnimationStyles.slideRightIn20,
 };
 
-function getBeakStyleStyle(beakWidth?: number,
+function getBeakStyle(beakWidth?: number,
   beakStyle?: string): IRawStyle {
   let beakStyleWidth = beakWidth;
 
@@ -88,7 +88,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxSizing: 'border-box',
         transform: 'rotate(45deg)'
       },
-      getBeakStyleStyle(beakWidth, beakStyle),
+      getBeakStyle(beakWidth, beakStyle),
       backgroundColor && {
         backgroundColor: backgroundColor
       }
