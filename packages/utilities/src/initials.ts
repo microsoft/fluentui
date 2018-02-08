@@ -9,7 +9,7 @@ const UNWANTED_CHARS_REGEX: RegExp = /\([^)]*\)|[\0-\u001F\!-/:-@\[-`\{-\u00BF\u
  * Regular expression matching phone numbers. Applied after chars matching UNWANTED_CHARS_REGEX have been removed
  * and number has been trimmed for whitespaces
  */
-const PHONENUMBER_REGEX: RegExp = /^\d+[\d\s]*(:?extension|ext|x|)\s*\d+$/i;
+const PHONENUMBER_REGEX: RegExp = /^\d+[\d\s]*(:?ext|x|)\s*\d+$/i;
 
 /** Regular expression matching one or more spaces. */
 const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
@@ -67,6 +67,7 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 
   displayName = cleanupDisplayName(displayName);
 
+  // For names containing CJK characters, and phone numbers, we don't display initials
   if (UNSUPPORTED_TEXT_REGEX.test(displayName) || PHONENUMBER_REGEX.test(displayName)) {
     return '';
   }
