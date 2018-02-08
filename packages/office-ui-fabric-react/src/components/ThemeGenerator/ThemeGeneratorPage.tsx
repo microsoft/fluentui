@@ -1,3 +1,5 @@
+import { getStrongVariant } from '@uifabric/variants';
+
 import * as React from 'react';
 import './ThemeGeneratorPage.scss';
 import {
@@ -473,12 +475,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
   @autobind
   private _makeNewTheme() {
     let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
-    let finalTheme = loadTheme({
-      palette: themeAsJson,
+
+    const finalTheme = loadTheme({
+      ...getStrongVariant({ palette: themeAsJson }),
       isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
     });
 
-    let root = document.querySelector('.App-content') as HTMLElement;
+    const root = document.querySelector('.App-content') as HTMLElement;
     if (root) {
       root.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
       root.style.color = finalTheme.semanticColors.bodyText;

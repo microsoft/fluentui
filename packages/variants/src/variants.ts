@@ -3,8 +3,8 @@ import {
   ISemanticColors,
   ITheme,
   IPartialTheme
-} from '../interfaces/index';
-import { createTheme } from './theme';
+} from '@uifabric/styling';
+import { createTheme } from '@uifabric/styling';
 
 /* Variants
  * Variants are themes based off the current theme.
@@ -23,12 +23,12 @@ import { createTheme } from './theme';
  * @returns {ITheme} the variant theme
  */
 export function getTintVariant(theme: IPartialTheme): ITheme {
-  let fullTheme = createTheme(theme);
-  let p = fullTheme.palette;
+  const fullTheme = createTheme(theme);
+  const p = fullTheme.palette;
 
   // commented lines are unchanged, but left in for tracking purposes
   // in a tint variant, most colors remain unchanged
-  let partialPalette: Partial<IPalette> = {
+  const partialPalette: Partial<IPalette> = {
     // theme
     // themeDarker: '#004578',
     // themeDark: '#005a9e',
@@ -58,7 +58,7 @@ export function getTintVariant(theme: IPartialTheme): ITheme {
     white: p.themeLighterAlt
   };
 
-  let partialSemantic: Partial<ISemanticColors> = {
+  const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themeLighterAlt,
 
     inputBorder: p.themeLighter,
@@ -84,15 +84,15 @@ export function getTintVariant(theme: IPartialTheme): ITheme {
  * @returns {ITheme} the variant theme
  */
 export function getStrongVariant(theme: IPartialTheme): ITheme {
-  let fullTheme = createTheme(theme);
-  let p = fullTheme.palette;
+  const fullTheme = createTheme(theme);
+  const p = fullTheme.palette;
 
   // dirty algorithm:
   // in a tricolor theme, foreground doesn't get used?
   // theme colors -> background shades
   // foregrounds -> background shades
   // backgrounds -> theme colors
-  let partialPalette: Partial<IPalette> = {
+  const partialPalette: Partial<IPalette> = {
     // theme
     themeDarker: p.white,
     themeDark: p.neutralLighterAlt,
@@ -122,7 +122,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     white: p.themeDarkAlt
   };
 
-  let partialSemantic: Partial<ISemanticColors> = {
+  const partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themeDarkAlt,
     bodyText: p.white,
 

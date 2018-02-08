@@ -12,9 +12,5 @@ export {
   registerOnThemeChangeCallback,
   removeOnThemeChangeCallback
 } from './theme';
-export {
-  getTintVariant,
-  getStrongVariant
-} from './Variants';
 export * from './CommonStyles';
 export { normalize } from './GeneralStyles';
