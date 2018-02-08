@@ -218,7 +218,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         {
           option.imageSrc || option.iconProps
             ? (
-              <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }
+              <div
+                className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }
                 style={ { maxWidth: imageSize.width * 2 } }
               >
                 { onRenderLabel!(option) }
