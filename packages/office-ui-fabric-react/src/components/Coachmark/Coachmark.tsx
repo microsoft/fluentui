@@ -126,8 +126,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isMeasuring: this.state.isMeasuring,
       entityHostHeight: this.state.entityInnerHostRect.height + 'px',
       entityHostWidth: this.state.entityInnerHostRect.width + 'px',
-      width: width + "px",
-      height: height + "px",
+      width: width + 'px',
+      height: height + 'px',
       color: color,
       beaconColorOne: beaconColorOne,
       beaconColorTwo: beaconColorTwo
@@ -201,8 +201,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
               width: this._entityInnerHostElement.offsetWidth,
               height: this._entityInnerHostElement.offsetHeight
             },
-            beakLeft: beakLeft + "px",
-            beakTop: beakTop + "px"
+            beakLeft: beakLeft + 'px',
+            beakTop: beakTop + 'px'
           });
 
           this.forceUpdate();
