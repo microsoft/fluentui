@@ -41,12 +41,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
-          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
-          key: 'PositioningContainer',
-          name: 'PositioningContainer',
-          url: '#/examples/PositioningContainer'
-        },
-        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
