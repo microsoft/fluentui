@@ -22,8 +22,6 @@ import * as stylesImport from './DatePicker.scss';
 const styles: any = stylesImport;
 
 export interface IDatePickerState {
-  /** The currently focused date in the drop down, but not necessarily selected */
-  navigatedDate?: Date;
   selectedDate?: Date;
   formattedDate?: string;
   isDatePickerShown?: boolean;
@@ -107,6 +105,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       return null;
     },
     firstDayOfWeek: DayOfWeek.Sunday,
+    initialPickerDate: new Date(),
     isRequired: false,
     isMonthPickerVisible: true,
     showMonthPickerAsOverlay: false,
@@ -133,7 +132,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, value } = props;
 
     this.state = {
-      selectedDate: value || new Date(),
+      selectedDate: value || undefined,
       formattedDate: (formatDate && value) ? formatDate(value) : '',
       isDatePickerShown: false,
       errorMessage: undefined
@@ -144,6 +143,16 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
     let { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
+
+    if (compareDates(this.props.minDate!, nextProps.minDate!) &&
+      compareDates(this.props.maxDate!, nextProps.maxDate!) &&
+      this.props.isRequired === nextProps.isRequired &&
+      compareDates(this.state.selectedDate!, value!) &&
+      this.props.formatDate === formatDate) {
+      // if the props we care about haven't changed, don't run validation or updates
+      return;
+    }
+
     let errorMessage = (isRequired && !value) ? (strings!.isRequiredErrorMessage || '*') : undefined;
 
     if (!errorMessage && value) {
@@ -162,7 +171,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let oldValue = this.state.selectedDate;
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
-        selectedDate: value || new Date(),
+        selectedDate: value || undefined,
         formattedDate: (formatDate && value) ? formatDate(value) : '',
       });
     }
@@ -173,6 +182,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       firstDayOfWeek,
       strings,
       label,
+      initialPickerDate,
       isRequired,
       disabled,
       ariaLabel,
@@ -210,6 +220,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               iconName: 'Calendar',
               onClick: this._onIconClick,
               className: css(
+                disabled && styles.msDatePickerDisabled,
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel
               )
@@ -240,7 +251,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
               showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
               today={ this.props.today }
-              value={ selectedDate }
+              value={ selectedDate || initialPickerDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
@@ -342,7 +353,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
-    if (!this.state.isDatePickerShown) {
+    if (!this.state.isDatePickerShown && !this.props.disabled) {
       this._showDatePickerPopup();
     } else {
       if (this.props.allowTextInput) {
@@ -365,7 +376,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
-        navigatedDate: this.state.selectedDate,
         errorMessage: ''
       });
     }

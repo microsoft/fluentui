@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem, IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar.base';
@@ -52,6 +52,11 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   elipisisIconProps?: IIconProps;
 
   /**
+  * Menu props to be passed to overflow elipsis
+  */
+  overflowMenuProps?: Partial<IContextualMenuProps>;
+
+  /**
   * If endAligned, all icons will be aligned to the far side of the commandbar, and overflow items
   * will be taking from the starting side
   */
@@ -88,6 +93,16 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Return `undefined` if no more steps can be taken to avoid infinate loop.
    */
   onGrowData?: (data: ICommandBarData) => ICommandBarData;
+
+  /**
+   * Function callback invoked when data has been reduced.
+   */
+  onDataReduced?: (movedItem: ICommandBarItemProps) => void;
+
+  /**
+   * Function callback invoked when data has been grown.
+   */
+  onDataGrown?: (movedItem: ICommandBarItemProps) => void;
 
   /**
    * Additional css class to apply to the command bar

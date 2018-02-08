@@ -32,8 +32,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        $label: [object Object];
         border-color: #212121;
+      }
+      &:hover $iconContainer {
+        color: #005a9e;
       }
   onFocusCapture={[Function]}
 >
@@ -56,7 +58,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
           ms-SearchBox-icon
           {
             display: inline-block;
@@ -79,7 +80,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
-          flex: 1 1 0;
+          flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
           font-weight: inherit;
@@ -97,6 +98,13 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         }
         &::-ms-clear {
           display: none;
+        }
+        &::placeholder {
+          color: #666666;
+          opacity: 1;
+        }
+        &:-ms-input-placeholder {
+          color: #666666;
         }
     disabled={undefined}
     id="SearchBox0"

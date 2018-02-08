@@ -1,6 +1,34 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 28 Dec 2017 11:23:50 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+
+## 5.11.2
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Adjusting rtl flipping logic to be more resilient to invalid styling.
+
+## 5.11.1
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Patches
+
+- [provideUnits] Add line-height to ignore
+
+## 5.11.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- Change maxHeight/maxFontSize to CSSPixelUnitRule (number and string)
+
+## 5.10.1
+Wed, 17 Jan 2018 11:11:25 GMT
+
+### Patches
+
+- Fix styles with undefined values being added to document (#3700)
 
 ## 5.10.0
 Thu, 28 Dec 2017 11:23:50 GMT

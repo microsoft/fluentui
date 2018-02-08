@@ -124,7 +124,6 @@ exports[`Nav renders Nav correctly 1`] = `
                     aria-hidden={true}
                     aria-label={undefined}
                     className=
-                        ms-Icon
                         ms-Icon-placeHolder
                         ms-Button-icon
                         {

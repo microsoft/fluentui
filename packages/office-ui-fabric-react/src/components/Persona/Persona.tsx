@@ -57,7 +57,8 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       imageShouldFadeIn,
       imageShouldStartVisible,
       showSecondaryText,
-      onPhotoLoadingStateChange
+      onPhotoLoadingStateChange,
+      onRenderCoin
      } = this.props;
 
     let personaCoinProps = {
@@ -72,7 +73,8 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       imageShouldFadeIn,
       imageShouldStartVisible,
       size,
-      onPhotoLoadingStateChange
+      onPhotoLoadingStateChange,
+      onRenderCoin
     };
 
     let divProps = getNativeProps(this.props, divProperties);
@@ -124,13 +126,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       <div className={ className }>
         { render
           ? render(this.props)
-          : <TooltipHost
+          : text && (<TooltipHost
             content={ text }
             overflowMode={ TooltipOverflowMode.Parent }
             directionalHint={ DirectionalHint.topLeftEdge }
           >
             { text }
-          </TooltipHost>
+          </TooltipHost>)
         }
       </div>
     );

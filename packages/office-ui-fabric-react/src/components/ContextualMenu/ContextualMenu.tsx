@@ -289,6 +289,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         >
           <div
             role='menu'
+            aria-label={ ariaLabel }
+            aria-labelledby={ labelElementId }
             style={ contextMenuStyle }
             ref={ (host: HTMLDivElement) => this._host = host }
             id={ id }
@@ -305,8 +307,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 allowTabKey={ true }
               >
                 <ul
-                  aria-label={ ariaLabel }
-                  aria-labelledby={ labelElementId }
+                  role='presentation'
                   className={ this._classNames.list }
                   onKeyDown={ this._onKeyDown }
                 >

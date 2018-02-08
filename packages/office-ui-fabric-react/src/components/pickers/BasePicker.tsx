@@ -3,17 +3,16 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  css,
-  getRTL
+  css
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { SuggestionsController } from './Suggestions/SuggestionsController';
+import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
-import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { Autofill } from '../Autofill/Autofill';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
@@ -23,6 +22,7 @@ export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
+  isFocused?: boolean;
   isSearching?: boolean;
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
@@ -35,7 +35,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected selection: Selection;
 
   protected root: HTMLElement;
-  protected input: BaseAutoFill;
+  protected input: Autofill;
   protected focusZone: FocusZone;
   protected suggestionElement: Suggestions<T>;
 
@@ -57,6 +57,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
+      isFocused: false,
       isSearching: false
     };
   }
@@ -129,7 +130,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (!ev || (ev && !ev.defaultPrevented)) {
         // Select the first suggestion if one is available when user leaves.
-        if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+        if (this.canAddItems() && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
           this.addItemByIndex(0);
         }
       }
@@ -188,18 +189,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
-              { this.canAddItems() && (<BaseAutoFill
+              { this.canAddItems() && (<Autofill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
@@ -230,7 +232,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         gapSpace={ 5 }
         target={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        directionalHintForRTL={ DirectionalHint.bottomRightEdge }
       >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
@@ -412,7 +415,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
+    this.setState({ isFocused: true });
     this.selection.setAllSelected(false);
     if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
@@ -430,6 +434,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.props.inputProps && this.props.inputProps.onFocus) {
       this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
+  }
+
+  @autobind
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
+    this.setState({ isFocused: false });
   }
 
   @autobind
@@ -557,7 +566,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected addItemByIndex(index: number): void {
     this.addItem(this.suggestionStore.getSuggestionAtIndex(index).item);
-    this.input.clear();
+    if (this.input) {
+      this.input.clear();
+    }
     this.updateValue('');
   }
 
@@ -634,7 +645,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
-  */
+   */
   private _updateSelectedItems(items: T[], focusIndex?: number) {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
@@ -653,7 +664,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   private _onValidateInput() {
     if (this.props.onValidateInput && (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
-      let itemToConvert = (this.props.createGenericItem as any)(this.input.value, (this.props.onValidateInput as any)(this.input.value));
+      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
@@ -688,17 +699,18 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             selection={ this.selection }
             selectionMode={ SelectionMode.multiple }
           >
-            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
-              <BaseAutoFill
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
+              <Autofill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'

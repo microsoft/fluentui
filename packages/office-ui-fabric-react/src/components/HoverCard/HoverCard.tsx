@@ -74,9 +74,9 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     }
   }
 
-  public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
-    if (newState.isHoverCardVisible !== this.state.isHoverCardVisible) {
-      if (newState.isHoverCardVisible) {
+  public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {
+    if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
+      if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
           this.setState({
             mode: ExpandingCardMode.expanded
@@ -162,14 +162,17 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   @autobind
   private _executeCardOpen(ev: MouseEvent) {
+    this._async.clearTimeout(this._openTimerId);
     this._openTimerId = this._async.setTimeout(() => {
-      if (!this.state.isHoverCardVisible) {
-        this.setState({
-          isHoverCardVisible: true,
-          mode: ExpandingCardMode.compact,
-          openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
-        });
-      }
+      this.setState((prevState: IHoverCardState) => {
+        if (!prevState.isHoverCardVisible) {
+          return ({
+            isHoverCardVisible: true,
+            mode: ExpandingCardMode.compact,
+            openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
+          });
+        }
+      });
     }, this.props.cardOpenDelay!);
   }
 
@@ -179,7 +182,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     if (ev.type === 'keydown' && (ev.which !== KeyCodes.escape)) {
       return;
     }
-    this._async.clearTimeout(this._openTimerId);
 
     // Dismiss if not sticky and currentTarget is the same element that mouse last entered
     if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || (ev.which === KeyCodes.escape))) {
@@ -189,6 +191,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   @autobind
   private _executeCardDimiss() {
+    this._async.clearTimeout(this._openTimerId);
+    this._async.clearTimeout(this._dismissTimerId);
     this._dismissTimerId = this._async.setTimeout(() => {
       this.setState({
         isHoverCardVisible: false,
@@ -201,9 +205,15 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Instant Open the card in Expanded mode
   @autobind
   private _instantOpenExpanded(ev: React.MouseEvent<HTMLDivElement>) {
-    this.setState({
-      isHoverCardVisible: true,
-      mode: ExpandingCardMode.expanded
+    this._async.clearTimeout(this._dismissTimerId);
+
+    this.setState((prevState: IHoverCardState) => {
+      if (!prevState.isHoverCardVisible) {
+        return ({
+          isHoverCardVisible: true,
+          mode: ExpandingCardMode.expanded
+        });
+      }
     });
   }
 }

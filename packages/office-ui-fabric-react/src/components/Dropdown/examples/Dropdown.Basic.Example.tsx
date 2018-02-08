@@ -22,9 +22,8 @@ export class DropdownBasicExample extends BaseComponent<{}, {
     let { selectedItem, selectedItems } = this.state;
 
     return (
-      <div className='DropdownBasicExample'>
+      <div className='docs-DropdownExample'>
         <Dropdown
-          className='Dropdown-example'
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
           id='Basicdrop1'
@@ -34,7 +33,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
               { key: 'A', text: 'Option a' },
               { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
+              { key: 'C', text: 'Option c', disabled: true },
               { key: 'D', text: 'Option d' },
               { key: 'E', text: 'Option e' },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
@@ -55,7 +54,6 @@ export class DropdownBasicExample extends BaseComponent<{}, {
           onClick={ this._onSetFocusButtonClicked }
         />
         <Dropdown
-          className='Dropdown-example'
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
           options={
@@ -75,7 +73,6 @@ export class DropdownBasicExample extends BaseComponent<{}, {
         />
 
         <Dropdown
-          className='Dropdown-example'
           label='Controlled example:'
           selectedKey={ (selectedItem ? selectedItem.key : undefined) }
           onChanged={ this.changeState }
@@ -99,7 +96,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
         <Dropdown
           placeHolder='Select options'
           label='Multi-Select uncontrolled example:'
-          defaultSelectedKeys={ ['Apple', 'Banana'] }
+          defaultSelectedKeys={ ['Apple', 'Banana', 'Orange'] }
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
           multiSelect
@@ -108,8 +105,8 @@ export class DropdownBasicExample extends BaseComponent<{}, {
               { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'Apple', text: 'apple' },
               { key: 'Banana', text: 'banana' },
-              { key: 'Orange', text: 'orange' },
-              { key: 'Grape', text: 'grape' },
+              { key: 'Orange', text: 'orange', disabled: true },
+              { key: 'Grape', text: 'grape', disabled: true },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
               { key: 'English', text: 'english' },
