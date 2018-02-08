@@ -3,12 +3,19 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Link } from './Link';
 
+import {
+  IStyle,
+  ITheme
+} from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
+
 export interface ILink {
   /** Sets focus to the link. */
   focus(): void;
 }
 
-export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | Link> {
+// @todo: Try to add Link back in here
+export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -20,4 +27,21 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
    */
   disabled?: boolean;
 
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ILinkProps, ILinkStyles>;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+}
+
+export interface ILinkStyleProps {
+  theme: ITheme;
+}
+
+export interface ILinkStyles {
+  root?: IStyle;
 }
