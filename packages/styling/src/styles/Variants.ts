@@ -61,7 +61,7 @@ export function getTintVariant(theme: IPartialTheme): ITheme {
   let partialSemantic: Partial<ISemanticColors> = {
     bodyBackground: p.themeLighterAlt,
 
-    inputBorder: 'transparent',
+    inputBorder: p.themeLighter,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeLighter,
     // inputBackgroundChecked: p.themePrimary,
@@ -126,7 +126,7 @@ export function getStrongVariant(theme: IPartialTheme): ITheme {
     bodyBackground: p.themeDarkAlt,
     bodyText: p.white,
 
-    inputBorder: 'transparent',
+    inputBorder: p.themeDark,
     // inputBorderHovered: p.neutralPrimary,
     inputBackground: p.themeDark,
     inputBackgroundChecked: p.white,
