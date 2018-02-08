@@ -62,9 +62,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         className={ css('ms-TooltipHost',
           styles.host,
           hostClassName,
-          {
-            [styles.hostOverflow]: overflowMode !== undefined,
-          }
+          overflowMode !== undefined && styles.hostOverflow
         ) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }

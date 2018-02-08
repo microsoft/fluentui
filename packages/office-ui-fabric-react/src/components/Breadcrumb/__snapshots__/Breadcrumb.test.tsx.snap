@@ -33,7 +33,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             >
               <div
                 aria-describedby={undefined}
-                className="ms-TooltipHost undefined"
+                className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
@@ -62,7 +62,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             >
               <div
                 aria-describedby={undefined}
-                className="ms-TooltipHost undefined"
+                className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
@@ -91,7 +91,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             >
               <div
                 aria-describedby={undefined}
-                className="ms-TooltipHost undefined"
+                className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
@@ -120,7 +120,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             >
               <div
                 aria-describedby={undefined}
-                className="ms-TooltipHost undefined"
+                className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
@@ -296,7 +296,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             >
               <div
                 aria-describedby={undefined}
-                className="ms-TooltipHost undefined"
+                className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
@@ -325,7 +325,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             >
               <div
                 aria-describedby={undefined}
-                className="ms-TooltipHost undefined"
+                className="ms-TooltipHost"
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
                 onMouseEnter={[Function]}
