@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Feb 2018 02:29:26 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Feb 2018 11:13:51 GMT and should not be manually modified.
+
+## 5.48.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
 
 ## 5.48.1
 Thu, 08 Feb 2018 02:29:26 GMT
