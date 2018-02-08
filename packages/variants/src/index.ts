@@ -1,4 +1,4 @@
 export {
-  getTintVariant,
+  getSoftVariant,
   getStrongVariant
 } from './variants';

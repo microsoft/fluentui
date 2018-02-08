@@ -22,7 +22,7 @@ import { createTheme } from '@uifabric/styling';
  * @param {IPartialTheme} theme the theme for which to build a variant for
  * @returns {ITheme} the variant theme
  */
-export function getTintVariant(theme: IPartialTheme): ITheme {
+export function getSoftVariant(theme: IPartialTheme): ITheme {
   const fullTheme = createTheme(theme);
   const p = fullTheme.palette;
 
