@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Feb 2018 11:13:51 GMT and should not be manually modified.
+
+## 5.10.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
 
 ## 5.10.1
 Wed, 07 Feb 2018 11:23:59 GMT
