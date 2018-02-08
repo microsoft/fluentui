@@ -3,16 +3,30 @@ import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { IStyle, DefaultPalette } from '../../../Styling';
 import {
   BaseComponent,
   assign,
-  autobind
+  autobind,
+  classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
   isCoachmarkCollapsed?: boolean;
   targetElement?: HTMLElement;
+}
+
+export interface ICoachmarkBasicExampleStyles {
+  /**
+   * Style for the root element in the default enabled/unchecked state.
+   */
+  root?: IStyle;
+
+  /**
+   * The example button container
+   */
+  buttonContainer: IStyle;
 }
 
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
@@ -37,16 +51,25 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
       doNotLayer: true
     };
 
+    const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
+    const classNames = getClassNames(() => {
+      return {
+        root: {},
+        buttonContainer: {
+          display: 'inline-block'
+        }
+      }
+    });
+
     return (
-      <div className='ms-CoachmarkBasicExample'>
+      <div className={ classNames.root }>
         <div
-          className='ms-CoachmarkBasicExample-buttonArea'
+          className={ classNames.buttonContainer }
           ref={ this._resolveRef('_targetButton') }
         >
           <DefaultButton
             onClick={ this._onShowMenuClicked }
-            text={ isVisible ? 'Hide coachmark' : 'Show coachmark' }
-            className={ 'ms-Coachmark-basicExampleButton' }
+            text={ isVisible ? 'Hide Coachmark' : 'Show Coachmark' }
           />
         </div>
         { isVisible && (
