@@ -2,8 +2,6 @@
 
 Office UI Fabric React is an evolving snapshot of the Office 365 Design Language's components, built with [React](https://facebook.github.io/react/).
 
-Right now, the project is in a **pre-v1** state, so we're mainly driving torwards the goals outlined in the [roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md). With this in mind, feel free to file bugs but new components or additional features will probably not be considered to be executed on until after the v1 state is reached.
-
 ### Contribution license agreement
 For pull requests affecting fewer than 15 lines of code, you will need to sign a [Contribution License Agreement (CLA)](https://cla.microsoft.com/) before your contribution can be incorporated. To complete the CLA, you will need to submit the request via the form and then electronically sign the CLA when you receive the email containing the link to the document.
 
