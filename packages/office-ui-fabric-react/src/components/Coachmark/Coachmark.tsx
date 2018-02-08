@@ -1,6 +1,7 @@
 // Utilities
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { DefaultPalette } from '../../Styling';
 
 // Component Dependencies
 import { PositioningContainer } from './PositioningContainer/PositioningContainer';
@@ -54,6 +55,16 @@ export interface ICoachmarkState {
    * itself
    */
   targetBeakContainer?: HTMLElement;
+
+  /**
+   * The left position of the beak
+   */
+  beakLeft?: string | null;
+
+  /**
+   * The right position of the beak
+   */
+  beakTop?: string | null;
 }
 
 export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
@@ -62,7 +73,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     mouseProximityOffset: 100,
     beakWidth: 26,
     beakHeight: 12,
-    delayBeforeMouseOpen: 3600 // The approximate time the coachmark shows up
+    delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
+    width: 36,
+    height: 36,
+    beaconColorOne: '#00FFEC',
+    beaconColorTwo: '#005EDD',
+    color: DefaultPalette.themePrimary
   };
 
   /**
@@ -72,6 +88,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
   private _entityHost: HTMLElement;
+  private _positioningContainer: PositioningContainer;
 
   constructor(props: ICoachmarkTypes) {
     super();
@@ -95,7 +112,12 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       children,
       beakWidth,
       beakHeight,
-      target
+      target,
+      width,
+      height,
+      color,
+      beaconColorOne,
+      beaconColorTwo
     } = this.props;
 
     const classNames = getClassNames(getStyles, {
@@ -103,34 +125,34 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       isBeaconAnimating: this.state.isBeaconAnimating,
       isMeasuring: this.state.isMeasuring,
       entityHostHeight: this.state.entityInnerHostRect.height + 'px',
-      entityHostWidth: this.state.entityInnerHostRect.width + 'px'
+      entityHostWidth: this.state.entityInnerHostRect.width + 'px',
+      width: width + "px",
+      height: height + "px",
+      color: color,
+      beaconColorOne: beaconColorOne,
+      beaconColorTwo: beaconColorTwo
     });
 
     return (
       <PositioningContainer
         target={ target }
         offsetFromTarget={ beakHeight }
+        componentRef={ this._resolveRef('_positioningContainer') }
       >
-        <div
-          className={ classNames.root }
-        >
+        <div className={ classNames.root }>
           <div className={ classNames.pulsingBeacon } />
           <div
             className={ classNames.translateAnimationContainer }
             ref={ this._resolveRef('_translateAnimationContainer') }
           >
-            <div
-              className={ classNames.scaleAnimationLayer }
-            >
-              <div
-                className={ classNames.rotateAnimationLayer }
-              >
+            <div className={ classNames.scaleAnimationLayer }>
+              <div className={ classNames.rotateAnimationLayer }>
                 {
-                  this.state.targetBeakContainer && <Beak
-                    target={ this.props.target! }
-                    beakWidth={ beakWidth }
-                    beakHeight={ beakHeight }
-                    targetBeakContainer={ this.state.targetBeakContainer! }
+                  this._positioningContainer && <Beak
+                    width={ beakWidth }
+                    height={ beakHeight }
+                    left={ this.state.beakLeft }
+                    top={ this.state.beakTop }
                   />
                 }
                 <div
@@ -162,15 +184,25 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   public componentDidMount(): void {
     // If we have already accessed the width and height
     // We do not wan't to do it again.
+    const entityInnerHostRect = this._entityInnerHostElement.offsetWidth;
+
     if (this.state.isMeasuring) {
       this._async.setTimeout((): void => {
+
         if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
+
+          // @TODO Eventually we need to add the various directions
+          const beakLeft = (this.props.width! / 2);
+          const beakTop = 0;
+
           this.setState({
             isMeasuring: false,
             entityInnerHostRect: {
               width: this._entityInnerHostElement.offsetWidth,
               height: this._entityInnerHostElement.offsetHeight
-            }
+            },
+            beakLeft: beakLeft + "px",
+            beakTop: beakTop + "px"
           });
 
           this.forceUpdate();
@@ -182,6 +214,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         }, this.props.delayBeforeMouseOpen!);
       }, 10);
     }
+
     if (!this.state.targetBeakContainer) {
       this.setState({
         targetBeakContainer: this._entityHost
