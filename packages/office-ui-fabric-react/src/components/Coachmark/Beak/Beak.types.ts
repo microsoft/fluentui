@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Beak } from './Beak';
+import { IPositionInfo } from '../PositioningContainer/PositioningContainer.types';
 
 export interface IBeak { }
 
@@ -13,32 +14,26 @@ export interface IBeakProps extends React.Props<Beak> {
    * Beak width.
    * @default 18
    */
-  beakWidth?: number;
+  width?: number;
 
   /**
    * Beak height.
    * @default 18
    */
-  beakHeight?: number;
+  height?: number;
 
   /**
-   * Background color of the beak.
+   * Color of the beak
    */
-  backgroundColor?: string;
+  color?: string;
 
   /**
-   * If true then the beak is visible. If false it will not be shown.
-   * @default true
+   * Left position of the beak
    */
-  isBeakVisible?: boolean;
+  left?: string | null;
 
   /**
-   * A reference to the target the beak will align to.
+   * Top position of the beak
    */
-  target: HTMLElement;
-
-  /**
-   * The container the beak will be placed on.
-   */
-  targetBeakContainer: HTMLElement;
+  top?: string | null;
 }
