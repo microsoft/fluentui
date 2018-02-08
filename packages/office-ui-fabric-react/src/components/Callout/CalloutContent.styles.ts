@@ -63,9 +63,18 @@ const BOUNCE: string = keyframes({
   '100%': { transform: 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' }
 });
 
+const OPACITY_FADEIN: string = keyframes({
+  '0%': {
+    opacity: 0,
+    animationTimingFunction: '$ms-animation-ease-2'
+  },
+  '50%': { opacity: 1 },
+  '100%': { opacity: 1 }
+});
+
 const bounceAnimation: IRawStyle = {
   // animation: `${BOUNCE} 2000ms linear infinite both`,
-  animationName: `${BOUNCE}`,
+  animationName: `${BOUNCE}, ${OPACITY_FADEIN}`,
   animationDuration: '2000ms',
   animationTimingFunction: 'linear',
   // animationIterationCount: 'infinite',
