@@ -9,13 +9,13 @@ import {
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { disabled, theme } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     root: [
       'ms-Link',
       {
-        color: palette.themePrimary,
+        color: semanticColors.linkText,
         margin: 0,
         overflow: 'inherit',
         padding: 0,
@@ -48,7 +48,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       disabled && [
         'is-disabled',
         {
-          color: palette.neutralTertiary,
+          color: semanticColors.linkTextDisabled,
           cursor: 'default',
           pointerEvents: 'none'
         }
@@ -56,10 +56,10 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       !disabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            color: palette.themeDarker
+            color: semanticColors.linkTextHovered
           },
           '&:focus': {
-            color: palette.themePrimary
+            color: semanticColors.linkTextFocused
           }
         }
       }

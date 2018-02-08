@@ -265,6 +265,26 @@ export interface ISemanticColors {
    */
   listItemBackgroundCheckedHovered: string;
 
+  /**
+   * The color of a link.
+   */
+  linkText: string;
+
+  /**
+   * The color of a hovered link. Also used when the link is active.
+   */
+  linkTextHovered: string;
+
+  /**
+   * The color of a focused link.
+   */
+  linkTextFocused: string;
+
+  /**
+   * The color of a disabled link.
+   */
+  linkTextDisabled: string;
+
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 
