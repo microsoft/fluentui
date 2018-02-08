@@ -109,15 +109,16 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   public exitKeytipMode(): void {
     if (this.props.onExitKeytipMode) {
       this.props.onExitKeytipMode();
+      this._keytipManager.exitKeytipMode();
     }
-    this.setState({ keytips: [], inKeytipMode: false });
+    this.setState({ inKeytipMode: false });
   }
 
   public enterKeytipMode(): void {
     if (this.props.onEnterKeytipMode) {
       this.props.onEnterKeytipMode();
     }
-    // TODO
+    this.setState({ inKeytipMode: true });
   }
 
   @autobind
