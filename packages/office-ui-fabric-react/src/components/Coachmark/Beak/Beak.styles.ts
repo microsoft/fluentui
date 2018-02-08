@@ -1,7 +1,11 @@
-import { IStyle } from '../../../Styling';
-import { DefaultPalette } from '../../../Styling';
+import { IStyle, DefaultPalette } from '../../../Styling';
 
-export interface IBeakStylesProps { }
+export interface IBeakStylesProps {
+  left?: string | null;
+  top?: string | null;
+  width?: string;
+  height?: string;
+}
 
 export interface IBeakStyles {
   /**
@@ -13,16 +17,25 @@ export interface IBeakStyles {
 
 export function getStyles(props: IBeakStylesProps): IBeakStyles {
   return {
-    root: {
-      position: 'absolute',
-      boxShadow: 'inherit',
-      border: 'inherit',
-      boxSizing: 'border-box',
-      transform: 'translate(-50%, -50%)',
-      left: '50%'
-    },
+    root: [
+      {
+        position: 'absolute',
+        boxShadow: 'inherit',
+        border: 'inherit',
+        boxSizing: 'border-box',
+        transform: 'translate(-50%, -50%)',
+        left: '50%',
+        width: props.width,
+        height: props.height
+      },
+      (props.left && props.top) && {
+        left: props.left,
+        top: props.top
+      }
+    ],
     beak: {
-      fill: DefaultPalette.themePrimary
+      fill: DefaultPalette.themePrimary,
+      display: 'block'
     }
   };
 }
