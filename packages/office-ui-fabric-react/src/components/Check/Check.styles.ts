@@ -69,20 +69,22 @@ export const getStyles = (
         }
       },
 
-      checked && 'is-checked',
-      checked && {
-        selectors: {
-          ':before': {
-            background: palette.themePrimary,
-            opacity: 1,
-            selectors: {
-              [HighContrastSelector]: {
-                background: 'Window'
+      checked && [
+        'is-checked',
+        {
+          selectors: {
+            ':before': {
+              background: palette.themePrimary,
+              opacity: 1,
+              selectors: {
+                [HighContrastSelector]: {
+                  background: 'Window'
+                }
               }
             }
           }
-        }
-      },
+        },
+      ],
       className
     ],
 
