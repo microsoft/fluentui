@@ -407,24 +407,14 @@ export interface IContextualMenuItem {
   role?: string;
 
   /**
-   * Optional accessibility a list item's position in the list (aria-posinset) attribute that will be stamped on to the element.
+   * (Optional) Accessible value of a list item's position in the list (aria-posinset) attribute that will be stamped on to the element.
    */
   positionInSet?: number;
 
   /**
-   * Optional accessibility for total size of a list (aria-setsize) attribute that will be stamped on to the element.
+   * (Optional) Accessible value for total size of a list (aria-setsize) that will be stamped on to the element.
    */
   setSize?: number;
-
-  /**
-   * True if a list of menu items can contain a checkbox. False/undefined otherwise.
-   */
-  hasCheckMark?: boolean;
-
-  /**
-   * True if a menu items can contain a icon. False/undefined otherwise.
-   */
-  hasIcons?: boolean;
 
   /**
    * Any additional properties to use when custom rendering menu items.
