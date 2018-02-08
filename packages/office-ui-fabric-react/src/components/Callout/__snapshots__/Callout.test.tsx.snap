@@ -17,8 +17,6 @@ exports[`Callout renders Callout correctly 1`] = `
           border-width: 1px;
           box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
           box-sizing: border-box;
-          filter: opacity(0);
-          opacity: 0;
           outline: transparent;
           position: absolute;
         }
@@ -30,6 +28,12 @@ exports[`Callout renders Callout correctly 1`] = `
         &::-moz-focus-inner {
           border: 0px;
         }
+    style={
+      Object {
+        "filter": "opacity(0)",
+        "opacity": 0,
+      }
+    }
     tabIndex={-1}
   >
     <div
