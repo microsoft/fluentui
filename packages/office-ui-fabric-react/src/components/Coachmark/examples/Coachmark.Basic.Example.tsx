@@ -58,7 +58,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         buttonContainer: {
           display: 'inline-block'
         }
-      }
+      };
     });
 
     return (

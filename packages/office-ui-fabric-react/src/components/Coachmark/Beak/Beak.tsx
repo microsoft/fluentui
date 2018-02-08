@@ -54,7 +54,8 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
         ref={ this._resolveRef('_beakElement') }
       >
         <svg
-          height={ height } width={ width }
+          height={ height }
+          width={ width }
           className={ classNames.beak }
         >
           <polygon points={ pointOne + ' ' + pointTwo + ' ' + pointThree } />

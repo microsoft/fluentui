@@ -280,7 +280,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
       let mouseY = e.pageY;
       let mouseX = e.pageX;
-      let isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset, targetElementRect);
+      let isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         this.setState({
@@ -294,7 +294,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
   }
 
-  private _isInsideElement(mouseX: number, mouseY: number, mouseProximityOffset: number = 0, elementRect: ClientRect): boolean {
+  private _isInsideElement(mouseX: number, mouseY: number, elementRect: ClientRect, mouseProximityOffset: number = 0): boolean {
     return mouseX > (elementRect.left - mouseProximityOffset) &&
       mouseX < ((elementRect.left + elementRect.width) + mouseProximityOffset) &&
       mouseY > (elementRect.top - mouseProximityOffset) &&
