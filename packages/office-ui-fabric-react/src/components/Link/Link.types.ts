@@ -39,6 +39,7 @@ export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | 
 }
 
 export interface ILinkStyleProps {
+  disabled?: boolean;
   theme: ITheme;
 }
 

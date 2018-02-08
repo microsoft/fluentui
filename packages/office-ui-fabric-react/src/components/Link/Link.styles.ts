@@ -8,7 +8,7 @@ import {
 } from './Link.types';
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
-  const { theme } = props;
+  const { disabled, theme } = props;
   const { palette } = theme;
 
   return {
@@ -43,6 +43,24 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               textDecoration: 'none'
             }
           ]
+        }
+      },
+      disabled && [
+        'is-disabled',
+        {
+          color: palette.neutralTertiary,
+          cursor: 'default',
+          pointerEvents: 'none'
+        }
+      ],
+      !disabled && {
+        selectors: {
+          '&:active, &:hover, &:active:hover': {
+            color: palette.themeDarker
+          },
+          '&:focus': {
+            color: palette.themePrimary
+          }
         }
       }
     ]
