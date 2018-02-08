@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.10.2",
+      "tag": "@uifabric/utilities_v5.10.2",
+      "date": "Thu, 08 Feb 2018 11:13:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "77a0be82fb6c440fa7ec6f4e80efed7d67f007c1",
+            "comment": "Return empty initials for phone numbers"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.1",
       "tag": "@uifabric/utilities_v5.10.1",
       "date": "Wed, 07 Feb 2018 11:23:59 GMT",
