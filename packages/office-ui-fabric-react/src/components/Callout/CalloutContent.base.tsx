@@ -13,7 +13,6 @@ import {
   IRectangle,
   assign,
   autobind,
-  css,
   elementContains,
   focusFirstChild,
   getWindow,
@@ -33,6 +32,11 @@ import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
 const BORDER_WIDTH: number = 1;
+const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
+// Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
+// To help ensure that edge will respect the offscreen style opacity
+// filter needs to be added as an additional way to set opacity.
+const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 
 export interface ICalloutState {
   positions?: ICalloutPositionedInfo;
@@ -164,6 +168,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       >
         <div
           className={ this._classNames.root }
+          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
@@ -172,6 +177,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
           { beakVisible && (
             <div
               className={ this._classNames.beak }
+              style={ this._getBeakPosition() }
             />) }
           { beakVisible &&
             (<div className={ this._classNames.beakCurtain } />) }
@@ -256,6 +262,20 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _updateAsyncPosition() {
     this._async.requestAnimationFrame(() => this._updatePosition());
+  }
+
+  private _getBeakPosition(): React.CSSProperties {
+    let { positions } = this.state;
+    let beakPostionStyle: React.CSSProperties = {
+      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
+    };
+
+    if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
+      beakPostionStyle.left = BEAK_ORIGIN_POSITION.left;
+      beakPostionStyle.top = BEAK_ORIGIN_POSITION.top;
+    }
+
+    return beakPostionStyle;
   }
 
   private _updatePosition() {
