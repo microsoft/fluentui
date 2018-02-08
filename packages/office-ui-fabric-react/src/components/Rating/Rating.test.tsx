@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { Rating } from './Rating';
-import { RatingBase } from './RatingBase';
+import { RatingBase } from './Rating.base';
 import { getStyles } from './Rating.styles';
 
 describe('Rating', () => {
