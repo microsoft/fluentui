@@ -7,10 +7,7 @@ const alertClicked = (): void => {
   alert('Clicked');
 };
 
-export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+export class ButtonSplitExample extends React.Component<IButtonProps> {
 
   public render() {
     let { disabled, checked } = this.props;
@@ -104,10 +101,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   }
 }
 
-export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
 
   public render() {
     let { disabled, checked } = this.props;

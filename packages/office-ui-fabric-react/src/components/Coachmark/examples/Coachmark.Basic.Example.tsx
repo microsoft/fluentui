@@ -32,8 +32,8 @@ export interface ICoachmarkBasicExampleStyles {
 export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
   private _targetButton: HTMLElement;
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onCalloutDismiss = this._onCalloutDismiss.bind(this);

@@ -4,18 +4,36 @@ import {
   Rating,
   RatingSize
 } from 'office-ui-fabric-react/lib/Rating';
+import {
+  getTheme,
+  createTheme,
+  ITheme
+} from '../../../Styling';
 
 import './Rating.Basic.Example.scss';
 
-export class RatingBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class RatingBasicExample extends React.Component<{}, {
+  rating?: number;
+  largeStarRating?: number;
+  smallStarRating?: number;
+  tenStarRating?: number;
+  themedStarRating?: number;
+}> {
+  private _customTheme: ITheme;
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
-      largeStarRating: null,
-      smallStarRating: null,
-      tenStarRating: null
+      largeStarRating: undefined,
+      smallStarRating: 3,
+      tenStarRating: undefined,
+      themedStarRating: undefined
     };
+
+    this._customTheme = createTheme(getTheme());
+    this._customTheme.semanticColors.bodySubtext = '#DFDFDF';
+    this._customTheme.semanticColors.bodyTextChecked = '#1E9FE8';
   }
 
   // tslint:disable:jsx-no-lambda
@@ -83,6 +101,20 @@ export class RatingBasicExample extends React.Component<any, any> {
           readOnly={ true }
           ariaLabelFormat={ '{0} of {1} stars selected' }
         />
+
+        Themed star
+        <Rating
+          id={ 'themedRatingStar' }
+          min={ 1 }
+          max={ 5 }
+          rating={ this.state.themedStarRating }
+          onChanged={ this._onThemedStarChanged }
+          getAriaLabel={ this._getRatingComponentAriaLabel }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          ariaLabelFormat={ '{0} of {1} stars selected' }
+          theme={ this._customTheme }
+        />
       </div>
     );
   }
@@ -105,6 +137,13 @@ export class RatingBasicExample extends React.Component<any, any> {
   private _onTenStarChanged(rating: number) {
     this.setState({
       tenStarRating: rating
+    });
+  }
+
+  @autobind
+  private _onThemedStarChanged(rating: number) {
+    this.setState({
+      themedStarRating: rating
     });
   }
 

@@ -15,7 +15,7 @@ export interface IComboBox {
    * Sets focus to the input in the comboBox
    * @returns True if focus could be set, false if no operation was taken.
    */
-  focus(): boolean;
+  focus(shouldOpenOnFocus?: boolean): boolean;
 }
 
 export interface IComboBoxOption extends ISelectableOption {
@@ -51,6 +51,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Function that gets invoked when the ComboBox menu is launched
    */
   onMenuOpen?: () => void;
+
+  /**
+   * Function that gets invoked when the ComboBox menu is dismissed
+   */
+  onMenuDismissed?: () => void;
 
   /**
    * Callback issued when the options should be resolved, if they have been updated or
@@ -127,6 +132,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Whether to use the ComboBoxes width as the menu's width
    */
   useComboBoxAsMenuWidth?: boolean;
+
+  /**
+   * Sets the 'aria-hidden' attribute on the ComboBox's button element instructing screen readers how to handle the element. This element is hidden by default because all functionality is handled by the input element and the arrow button is only meant to be decorative.
+   * @default true
+   */
+  isButtonAriaHidden?: boolean;
 }
 
 export interface IComboBoxStyles {

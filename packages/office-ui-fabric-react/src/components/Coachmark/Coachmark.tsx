@@ -8,7 +8,7 @@ import { PositioningContainer } from './PositioningContainer/PositioningContaine
 import { Beak } from './Beak/Beak';
 
 // Coachmark
-import { ICoachmarkTypes } from './Coachmark.types';
+import { ICoachmarkProps } from './Coachmark.types';
 import { getStyles, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
@@ -67,8 +67,8 @@ export interface ICoachmarkState {
   beakTop?: string | null;
 }
 
-export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
-  public static defaultProps: Partial<ICoachmarkTypes> = {
+export class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState> {
+  public static defaultProps: Partial<ICoachmarkProps> = {
     collapsed: true,
     mouseProximityOffset: 100,
     beakWidth: 26,
@@ -90,8 +90,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   private _entityHost: HTMLElement;
   private _positioningContainer: PositioningContainer;
 
-  constructor(props: ICoachmarkTypes) {
-    super();
+  constructor(props: ICoachmarkProps) {
+    super(props);
 
     // Set defaults for state
     this.state = {
@@ -174,7 +174,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkTypes): void {
+  public componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.collapsed && !newProps.collapsed) {
       // The coachmark is about to open
       this._openCoachmark();

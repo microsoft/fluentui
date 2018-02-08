@@ -21,13 +21,4 @@ describe('withResponsiveMode', () => {
     setSSR(false);
   });
 
-  it('throws in server scenario when responsive mode is not specified', () => {
-    setSSR(true);
-
-    setResponsiveMode(undefined);
-    expect(() => ReactTestUtils.renderIntoDocument(<Example />)).toThrow();
-
-    setSSR(false);
-  });
-
 });

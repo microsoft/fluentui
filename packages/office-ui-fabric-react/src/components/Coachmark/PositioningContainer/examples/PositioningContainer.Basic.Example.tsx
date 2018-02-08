@@ -7,8 +7,9 @@ export interface IPositioningContainerBasicExampleState {
 }
 
 export class PositioningContainerBasicExample extends React.Component<{}, IPositioningContainerBasicExampleState> {
-  public constructor() {
-    super();
+
+  constructor(props: {}) {
+    super(props);
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
@@ -17,6 +18,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
       isPositioningContainerVisible: false
     };
   }
+
   public render(): JSX.Element {
     let { isPositioningContainerVisible } = this.state;
     return (
@@ -42,6 +44,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
       </div>
     );
   }
+
   private _onShowMenuClicked(): void {
     this.setState({
       isPositioningContainerVisible: !this.state.isPositioningContainerVisible

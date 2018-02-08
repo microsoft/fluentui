@@ -4,13 +4,14 @@ import * as React from 'react';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
-  KeyCodes,
+  KeyCodes
 } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { Layer } from '../Layer/Layer';
+import { mount } from 'enzyme';
 
 describe('ContextualMenu', () => {
 
@@ -289,12 +290,13 @@ describe('ContextualMenu', () => {
         key: 'TestKey1',
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
+          key: 'Section1',
           topDivider: true,
           bottomDivider: true,
           items: [
             {
               name: 'TestText 2',
-              key: 'TestKey3'
+              key: 'TestKey2'
             },
             {
               name: 'TestText 3',
@@ -307,6 +309,7 @@ describe('ContextualMenu', () => {
         key: 'TestKey4',
         itemType: ContextualMenuItemType.Section,
         sectionProps: {
+          key: 'Section1',
           items: [
             {
               name: 'TestText 5',
@@ -321,7 +324,7 @@ describe('ContextualMenu', () => {
       }
     ];
 
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+    const foo = ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
       />
@@ -329,6 +332,7 @@ describe('ContextualMenu', () => {
 
     let menuItems = document.querySelectorAll('li');
     expect(menuItems.length).toEqual(8);
+
   });
 
   it('does not return a value if no items are given', () => {
@@ -504,6 +508,59 @@ describe('ContextualMenu', () => {
     expect(menuMountedFirst).toEqual(false);
   });
 
+  it('Contextual Menu submenu has chrevron icon even if submenu has no items', () => {
+    const menuWithEmptySubMenu: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: []
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ menuWithEmptySubMenu }
+      />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    expect(menuItem.querySelector('.ms-ContextualMenu-submenuIcon')).not.toEqual(null);
+  });
+
+  it('Contextual Menu submenu calls onMenuOpened on click even if submenu has no items', () => {
+    let subMenuOpened = false;
+
+    const onSubMenuOpened = (): void => {
+      subMenuOpened = true;
+    };
+
+    const menuWithEmptySubMenu: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [],
+          onMenuOpened: onSubMenuOpened
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ menuWithEmptySubMenu }
+      />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(subMenuOpened).toEqual(true);
+  });
+
   describe('canAnyMenuItemsCheck', () => {
     it('returns false when there are no checkable menu items', () => {
       const items: IContextualMenuItem[] = [
@@ -539,6 +596,7 @@ describe('ContextualMenu', () => {
           name: 'Item 3',
           key: 'Item 3',
           sectionProps: {
+            key: 'Section1',
             items: [
               { name: 'Item 1', key: 'Item 1' },
               { name: 'Item 2', key: 'Item 2', canCheck: true },

@@ -7,9 +7,12 @@ import {
   getRTL
 } from '../../Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ValidationState, Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
+import { Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
   from 'office-ui-fabric-react/lib/Pickers';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
+import * as stylesImport from './BaseFloatingPicker.scss';
+// tslint:disable-next-line:no-any
+const styles: any = stylesImport;
 
 export interface IBaseFloatingPickerState {
   queryString: string;
@@ -49,6 +52,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       isSearching: false,
       didBind: false,
     };
+  }
+
+  public forceResolveSuggestion(): void {
+    if (this.suggestionStore.hasSelectedSuggestion()) {
+      this.completeSuggestion();
+    } else {
+      this._onValidateInput();
+    }
   }
 
   public get isSuggestionsShown(): boolean {
@@ -93,6 +104,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   public componentDidMount(): void {
     this._bindToInputElement();
+
+    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
   public componentDidUpdate(): void {
@@ -141,6 +154,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
       <Callout
+        className={ styles.callout }
         isBeakVisible={ false }
         gapSpace={ 5 }
         target={ this.props.inputElement }
@@ -152,6 +166,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
               DirectionalHint.bottomLeftEdge
             )
         }
+        calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
@@ -192,11 +207,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected updateValue(updatedValue: string): void {
-    let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(
-      updatedValue,
-      this.props.selectedItems
-    );
-    this.updateSuggestionsList(suggestions, updatedValue);
+    // Call onInputChanged
+    if (this.props.onInputChanged) {
+      (this.props.onInputChanged as (filter: string) => void)(updatedValue);
+    }
+
+    this._onResolveSuggestions(updatedValue);
   }
 
   protected updateSuggestionWithZeroState(): void {
@@ -336,6 +352,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       case KeyCodes.enter:
         if (
           !ev.shiftKey &&
+          !ev.ctrlKey &&
           this.suggestionStore.hasSelectedSuggestion()) {
           this.completeSuggestion();
           ev.preventDefault();
@@ -424,6 +441,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
               this.setState({ isSearching: false });
             });
           }
+
+          // Focus back on the input element
+          if (this.props.inputElement) {
+            (this.props.inputElement as HTMLDivElement).focus();
+          }
         } else {
           this.setState({ isSearching: false });
         }
@@ -435,19 +457,24 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     );
   }
 
+  private _onResolveSuggestions(updatedValue: string): void {
+    let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
+
+    this.updateSuggestionsList(suggestions, updatedValue);
+  }
+
   private _onValidateInput(): void {
     if (
       this.props.onValidateInput &&
-      (this.props.onValidateInput as ((input: string) => ValidationState))(this.state.queryString) !==
-      ValidationState.invalid &&
+      (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString) !== true &&
       this.props.createGenericItem
     ) {
       let itemToConvert = (this.props.createGenericItem as ((
         input: string,
-        ValidationState: ValidationState
+        isValid: boolean
       ) => ISuggestionModel<T>))(
         this.state.queryString,
-        (this.props.onValidateInput as ((input: string) => ValidationState))(this.state.queryString)
+        (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
         );
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();

@@ -35,10 +35,11 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
-export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
+export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement | null;
-  public constructor() {
-    super();
+
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       isCalloutVisible: false,

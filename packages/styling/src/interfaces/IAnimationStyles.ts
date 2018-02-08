@@ -44,3 +44,12 @@ export interface IAnimationStyles {
   rotate90deg: IRawStyle;
   rotateN90deg: IRawStyle;
 }
+
+export interface IAnimationVariables {
+  easeFunction1: string;
+  easeFunction2: string;
+  durationValue1: string;
+  durationValue2: string;
+  durationValue3: string;
+  durationValue4: string;
+}

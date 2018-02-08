@@ -4,9 +4,10 @@ import './Dropdown.Basic.Example.scss';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps } from './../Dropdown.types';
 import { Icon } from '../../Icon';
 
-export class DropdownCustomExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DropdownCustomExample extends React.Component {
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       selectedItem: null
     };
@@ -14,7 +15,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <div className='dropdownExample'>
+      <div className='docs-DropdownExample'>
 
         <Dropdown
           placeHolder='Select an Option'

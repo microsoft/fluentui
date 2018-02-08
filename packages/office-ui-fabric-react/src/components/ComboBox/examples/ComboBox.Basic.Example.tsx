@@ -11,23 +11,29 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { IComboBox } from '../ComboBox.types';
+import { PrimaryButton } from '../../../Button';
 
-export class ComboBoxBasicExample extends React.Component<any, any> {
+export class ComboBoxBasicExample extends React.Component<{}, {
+  options: IComboBoxOption[];
+  selectedOptionKey?: string | number;
+  value?: string;
+}> {
   private _testOptions =
-  [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'A', text: 'Arial Black' },
-  { key: 'B', text: 'Times New Roman' },
-  { key: 'C', text: 'Comic Sans MS' },
-  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'D', text: 'Option d' },
-  { key: 'E', text: 'Option e' },
-  { key: 'F', text: 'Option f' },
-  { key: 'G', text: 'Option g' },
-  { key: 'H', text: 'Option h' },
-  { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j', disabled: true },
-  ];
+    [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'A', text: 'Arial Black' },
+    { key: 'B', text: 'Times New Roman' },
+    { key: 'C', text: 'Comic Sans MS' },
+    { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+    { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'D', text: 'Option d' },
+    { key: 'E', text: 'Option e' },
+    { key: 'F', text: 'Option f' },
+    { key: 'G', text: 'Option g' },
+    { key: 'H', text: 'Option h' },
+    { key: 'I', text: 'Option i' },
+    { key: 'J', text: 'Option j', disabled: true },
+    ];
 
   private _fontMapping: { [key: string]: string } = {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
@@ -37,12 +43,13 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   };
 
   private scaleOptions: IComboBoxOption[] = [];
+  private _basicCombobox: IComboBox;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       options: [],
-      selectedOptionKey: null,
+      selectedOptionKey: undefined,
       value: 'Calibri'
     };
 
@@ -69,11 +76,17 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          componentRef={ this._basicComboBoxComponentRef }
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-        // tslint:enable:jsx-no-lambda
+          // tslint:enable:jsx-no-lambda
+        />
+
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._basicComboBoxOnClick }
         />
 
         <ComboBox
@@ -271,7 +284,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     this.setState({
       options: newOptions,
       selectedOptionKey: 'C1',
-      value: null
+      value: undefined
     });
 
     return newOptions;
@@ -282,12 +295,12 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
-        value: null
+        value: undefined
       });
     } else if (index !== undefined && index >= 0 && index < this.state.options.length) {
       this.setState({
         selectedOptionKey: this.state.options[index].key,
-        value: null
+        value: undefined
       });
     } else if (value !== undefined) {
       let newOption: IComboBoxOption = { key: value, text: value };
@@ -295,8 +308,18 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       this.setState({
         options: [...this.state.options, newOption],
         selectedOptionKey: newOption.key,
-        value: null
+        value: undefined
       });
     }
+  }
+
+  @autobind
+  private _basicComboBoxOnClick(): void {
+    this._basicCombobox.focus(true);
+  }
+
+  @autobind
+  private _basicComboBoxComponentRef(component: IComboBox) {
+    this._basicCombobox = component;
   }
 }

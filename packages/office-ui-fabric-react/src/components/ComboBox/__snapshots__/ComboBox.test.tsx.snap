@@ -16,7 +16,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           border-style: solid;
           border-width: 1px;
           box-shadow: none;
-          box-sizing: content-box;
+          box-sizing: border-box;
           color: #333333;
           cursor: text;
           display: block;
@@ -24,7 +24,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          line-height: 30px;
           margin-bottom: 10px;
           margin-left: 0;
           outline: 0;
@@ -48,30 +47,71 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
         &.is-open {
           border-color: #0078d7;
         }
+        @media screen and (-ms-high-contrast: active){&.is-open {
+          -ms-high-contrast-adjust: none;
+          background-color: Window;
+          border-color: Highlight;
+          border-width: 2px;
+          color: HighlightText;
+          padding-left: 11px;
+        }
+        @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-Input {
+          height: 28px;
+        }
+        @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
+          right: -2px;
+          top: -2px;
+        }
         &:hover {
           border-color: #212121;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
+          background-color: Window;
           border-color: Highlight;
           color: HighlightText;
         }
         &:active {
           border-color: #0078d7;
         }
+        @media screen and (-ms-high-contrast: active){&:active {
+          -ms-high-contrast-adjust: none;
+          background-color: Window;
+          border-color: Highlight;
+          border-width: 2px;
+          color: HighlightText;
+          padding-left: 11px;
+        }
+        @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-Input {
+          height: 28px;
+        }
+        @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
+          right: -2px;
+          top: -2px;
+        }
         &:focus {
           border-color: #0078d7;
         }
         @media screen and (-ms-high-contrast: active){&:focus {
           -ms-high-contrast-adjust: none;
+          background-color: Window;
           border-color: Highlight;
+          border-width: 2px;
           color: HighlightText;
+          padding-left: 11px;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+          height: 28px;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
+          right: -2px;
+          top: -2px;
         }
     id="ComboBox0wrapper"
   >
     <input
       aria-activedescendant={null}
-      aria-autocomplete={true}
+      aria-autocomplete="both"
       aria-describedby="ComboBox0-option"
       aria-disabled={undefined}
       aria-expanded={false}
@@ -88,10 +128,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             box-sizing: border-box;
             font: inherit;
             height: 30px;
-            margin-bottom: 1px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 1px;
             outline: none;
             padding-bottom: 0;
             padding-left: 0;
@@ -106,18 +142,21 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
+      onCompositionEnd={[Function]}
+      onCompositionStart={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       readOnly={true}
       role="combobox"
       spellCheck={false}
+      title={undefined}
       type="text"
       value=""
     />
     <button
       aria-describedby={null}
-      aria-hidden="true"
+      aria-hidden={true}
       aria-label={undefined}
       aria-labelledby={null}
       aria-pressed={false}
@@ -147,8 +186,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             padding-right: 4px;
             padding-top: 0;
             position: absolute;
+            right: -1px;
             text-align: center;
             text-decoration: none;
+            top: -1px;
             user-select: none;
             vertical-align: top;
             width: 32px;
@@ -172,9 +213,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             background-color: ButtonFace;
             border-color: ButtonText;
             color: ButtonText;
-          }
-          & .ms-Icon {
-            font-size: 12px;
           }
           &:hover {
             background-color: #f4f4f4;
@@ -207,14 +245,13 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Button-icon
               {
                 display: inline-block;
               }
               {
                 flex-shrink: 0;
-                font-size: 16px;
+                font-size: 12px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;

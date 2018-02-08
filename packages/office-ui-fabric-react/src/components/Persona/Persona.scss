@@ -100,6 +100,8 @@ $ms-Persona-presenceBorder: 2px;
   @include high-contrast {
     border: 1px solid WindowText;
     -ms-high-contrast-adjust: none;
+    color: WindowText;
+    box-sizing: border-box;
     // Using important to override all of the more specific initialsIsColor rules
     background-color: Window !important;
   }
@@ -358,12 +360,12 @@ $ms-Persona-presenceBorder: 2px;
   }
 
   &.showSecondaryText {
-    height: 32px;
+    height: 36px;
 
     .primaryText,
     .secondaryText {
       display: block;
-      height: 16px;
+      height: 18px;
       line-height: 16px;
       overflow-x: hidden;
     }

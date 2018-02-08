@@ -82,6 +82,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
+  private _pendingForceUpdate: boolean;
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -156,13 +157,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,
       // else set focus to the last item.
-      const item = this.state.focusedItemIndex < this.props.items.length
-        ? this.props.items[this.state.focusedItemIndex]
-        : this.props.items[this.props.items.length - 1];
+      const index = this.state.focusedItemIndex < this.props.items.length ?
+        this.state.focusedItemIndex :
+        this.props.items.length - 1;
+      const item = this.props.items[index];
       const itemKey = this._getItemKey(item, this.state.focusedItemIndex);
       const row = this._activeRows[itemKey];
       if (row) {
         this._setFocusToRow(row);
+      } else {
+        this._initialFocusedIndex = index;
       }
     }
 
@@ -210,6 +214,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     if (shouldForceUpdates) {
+      this._pendingForceUpdate = true;
+    }
+  }
+
+  public componentWillUpdate(): void {
+    if (this._pendingForceUpdate) {
       this._forceListUpdates();
     }
   }
@@ -420,6 +430,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
+      getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
       groupProps
@@ -433,7 +444,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (!item) {
       if (onRenderMissingItem) {
-        onRenderMissingItem(index);
+        return onRenderMissingItem(index);
       }
 
       return null;
@@ -457,6 +468,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
+      getRowAriaDescribedBy: getRowAriaDescribedBy,
       checkButtonAriaLabel: checkButtonAriaLabel,
       checkboxCellClassName: checkboxCellClassName,
     }, this._onRenderRow);
@@ -553,6 +565,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _forceListUpdates() {
+    this._pendingForceUpdate = false;
+
     if (this._groupedList) {
       this._groupedList.forceUpdate();
     }

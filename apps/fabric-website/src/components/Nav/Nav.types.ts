@@ -56,6 +56,8 @@ export interface INavPage {
 
   /**
    * Whether this link appears in the UHF header nav.
+   * This flag is different from isHiddenFromMainNav because we want the UHF link's childLinks to be rendered.
+   * isHiddenFromMainNav will not render childLinks.
    * @default false
    */
   isUhfLink?: boolean;

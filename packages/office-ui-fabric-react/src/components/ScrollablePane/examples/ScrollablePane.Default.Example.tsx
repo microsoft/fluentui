@@ -4,10 +4,7 @@ import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
-export class ScrollablePaneDefaultExample extends React.Component<any, any> {
-  constructor() {
-    super();
-  }
+export class ScrollablePaneDefaultExample extends React.Component {
 
   public render() {
     let contentAreas: JSX.Element[] = [];
@@ -34,17 +31,16 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
   }
 
   private _createContentArea(index: number) {
-    const style = {
-      backgroundColor: this._getRandomColor()
-    };
+    const style = this._getRandomColor();
 
     return (
       <div key={ index }>
         <Sticky
           stickyPosition={ StickyPositionType.Both }
           stickyClassName='largeFont'
+          stickyBackgroundColor={ style }
         >
-          <div className='sticky' style={ style }>
+          <div className='sticky'>
             Sticky Component #{ index + 1 }
           </div>
         </Sticky>

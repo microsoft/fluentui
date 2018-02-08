@@ -1,5 +1,4 @@
-import { IStyle, keyframes } from '../../Styling';
-import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IStyle, IRawStyle, keyframes } from '../../Styling';
 
 export interface ICoachmarkStyleProps {
   /**
@@ -99,7 +98,7 @@ export interface ICoachmarkStyles {
   collapsed?: IStyle;
 }
 
-function continuousPulseStepOne(beaconColorOne: string): IRawStyleBase {
+function continuousPulseStepOne(beaconColorOne: string): IRawStyle {
   return {
     borderColor: beaconColorOne,
     borderWidth: '0px',
@@ -108,20 +107,20 @@ function continuousPulseStepOne(beaconColorOne: string): IRawStyleBase {
   };
 }
 
-function continuousPulseStepTwo(): IRawStyleBase {
+function continuousPulseStepTwo(): IRawStyle {
   return {
     opacity: '1',
     borderWidth: '10px'
   };
 }
 
-function continuousPulseStepThree(): IRawStyleBase {
+function continuousPulseStepThree(): IRawStyle {
   return {
     opacity: 1
   };
 }
 
-function continuousPulseStepFour(beaconColorTwo: string): IRawStyleBase {
+function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
   return {
     borderWidth: '0',
     width: '150px',
@@ -131,7 +130,7 @@ function continuousPulseStepFour(beaconColorTwo: string): IRawStyleBase {
   };
 }
 
-function continuousPulseStepFive(beaconColorOne: string): IRawStyleBase {
+function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
   return Object.assign(continuousPulseStepOne(beaconColorOne), {
     opacity: '0'
   });

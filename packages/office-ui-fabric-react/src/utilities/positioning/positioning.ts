@@ -455,9 +455,12 @@ export module positioningFunctions {
   ): IPositionDirectionalHintData {
     let positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
     if (getRTL()) {
+
       // If alignment edge exists and that alignment edge is -2 or 2, right or left, then flip it.
-      positionInformation.alignmentEdge = positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0
-        ? positionInformation.alignmentEdge * -1 : undefined;
+      if (positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0) {
+        positionInformation.alignmentEdge = positionInformation.alignmentEdge * -1;
+      }
+
       return directionalHintForRTL !== undefined ?
         DirectionalDictionary[directionalHintForRTL] :
         positionInformation;
@@ -579,11 +582,12 @@ export module positioningFunctions {
       if ((target as MouseEvent).preventDefault) {
         let ev: MouseEvent = target as MouseEvent;
         targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
-      } else if ((target as IPoint).x !== undefined) {
+      } else if ((target as HTMLElement).getBoundingClientRect) {
+        targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
+        // HTMLImgElements can have x and y values. The check for it being a point must go last.
+      } else {
         let point: IPoint = target as IPoint;
         targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
-      } else {
-        targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
       }
 
       if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
