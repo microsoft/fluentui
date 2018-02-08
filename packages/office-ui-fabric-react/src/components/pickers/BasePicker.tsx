@@ -492,35 +492,48 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.up:
-        if (ev.target === this.input.inputElement && this.state.suggestionsVisible && !this.suggestionElement.tryHandleKeyDown(keyCode)) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && this.suggestionStore.currentIndex === 0) {
-            this.suggestionElement.focusSearchForMoreButton();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
+          if (this.suggestionElement.tryHandleKeyDown(keyCode)) {
+            ev.preventDefault();
+            ev.stopPropagation();
           } else {
-            if (this.suggestionStore.previousSuggestion()) {
+            if (this.suggestionElement.hasSuggestedAction() && this.suggestionStore.currentIndex === 0) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.onSuggestionSelect();
+              this.suggestionElement.focusSearchForMoreButton();
+              this.suggestionStore.deselectAllSuggestions();
+              this.forceUpdate();
+            } else {
+              if (this.suggestionStore.previousSuggestion()) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.onSuggestionSelect();
+              }
             }
           }
         }
         break;
 
       case KeyCodes.down:
-        if (ev.target === this.input.inputElement && this.state.suggestionsVisible && !this.suggestionElement.tryHandleKeyDown(keyCode)) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
-            this.suggestionElement.focusSearchForMoreButton();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
+          if (this.suggestionElement.tryHandleKeyDown(keyCode)) {
+            ev.preventDefault();
+            ev.stopPropagation();
           } else {
-            if (this.suggestionStore.nextSuggestion()) {
+            if (this.suggestionElement.hasSuggestedAction() && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.onSuggestionSelect();
+              this.suggestionElement.focusSearchForMoreButton();
+              this.suggestionStore.deselectAllSuggestions();
+              this.forceUpdate();
+            } else {
+              if (this.suggestionStore.nextSuggestion()) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.onSuggestionSelect();
+              }
             }
           }
-
         }
         break;
     }
