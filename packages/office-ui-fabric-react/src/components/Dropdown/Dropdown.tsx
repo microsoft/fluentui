@@ -748,6 +748,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({
+            isOpen: false
+          });
+          ev.stopPropagation();
+          ev.preventDefault();
+        }
         return;
     }
 
@@ -815,6 +822,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
 
       default:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({
+            isOpen: false
+          });
+          break;
+        }
         return;
     }
 
