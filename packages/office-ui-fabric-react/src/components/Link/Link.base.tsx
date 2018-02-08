@@ -5,7 +5,6 @@ import {
   BaseComponent,
   buttonProperties,
   classNamesFunction,
-  css,
   customizable,
   getNativeProps
 } from '../../Utilities';
@@ -29,43 +28,32 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       theme: theme!
     });
 
-    return (
-      href ? (
-        <a
-          { ...getNativeProps(this.props, anchorProperties) }
-          // className={ css(
-          //   'ms-Link',
-          //   styles.root,
-          //   className,
-          //   disabled && ('is-disabled ' + styles.isDisabled),
-          //   !disabled && styles.isEnabled
-          // ) }
-          className={ classNames.root }
-          onClick={ this._onClick }
-          ref={ this._resolveRef('_link') }
-          target={ this.props.target }
-          aria-disabled={ disabled }
-        >
-          { children }
-        </a>
-      ) : (
-          <button
-            { ...getNativeProps(this.props, buttonProperties) }
-            // className={ css(
-            //   'ms-Link',
-            //   styles.root,
-            //   className,
-            //   disabled && ('is-disabled ' + styles.isDisabled),
-            //   !disabled && styles.isEnabled
-            // ) }
-            className={ classNames.root }
-            onClick={ this._onClick }
-            ref={ this._resolveRef('_link') }
-            aria-disabled={ disabled }
-          >
-            { children }
-          </button>
-        ));
+    const anchorElement: JSX.Element = (
+      <a
+        { ...getNativeProps(this.props, anchorProperties) }
+        className={ classNames.root }
+        onClick={ this._onClick }
+        ref={ this._resolveRef('_link') }
+        target={ this.props.target }
+        aria-disabled={ disabled }
+      >
+        { children }
+      </a>
+    );
+
+    const buttonElement: JSX.Element = (
+      <button
+        { ...getNativeProps(this.props, buttonProperties) }
+        className={ classNames.root }
+        onClick={ this._onClick }
+        ref={ this._resolveRef('_link') }
+        aria-disabled={ disabled }
+      >
+        { children }
+      </button>
+    );
+
+    return href ? anchorElement : buttonElement;
   }
 
   public focus() {
