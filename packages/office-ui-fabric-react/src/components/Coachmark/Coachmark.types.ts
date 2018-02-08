@@ -3,7 +3,6 @@ import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
 import { IPoint, IStyleFunction } from '../../Utilities';
-import { MouseEvent } from 'react';
 
 export interface ICoachmark {
 }
@@ -65,5 +64,30 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * Runs every time the mouse moves
    */
-  onMouseMove?: (e: MouseEvent<HTMLElement>) => void;
+  onMouseMove?: (e: MouseEvent) => void;
+
+  /**
+   * The width of the coachmark
+   */
+  width?: number;
+
+  /**
+   * The height of the coachmark
+   */
+  height?: number;
+
+  /**
+   * Color
+   */
+  color?: string;
+
+  /**
+   * Beacon color one
+   */
+  beaconColorOne?: string;
+
+  /**
+   * Beacon color two
+   */
+  beaconColorTwo?: string;
 }
