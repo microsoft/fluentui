@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Feb 2018 02:29:26 GMT and should not be manually modified.
+
+## 5.48.1
+Thu, 08 Feb 2018 02:29:26 GMT
+
+### Patches
+
+- Callout/Positioning: Fixed a bug where callout would lose alignment for some hints in rtl
+- Callout: Move positioning to inline styling
 
 ## 5.48.0
 Wed, 07 Feb 2018 11:23:59 GMT
