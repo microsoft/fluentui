@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 29 Jan 2018 11:23:40 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+
+## 5.10.1
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+
+## 5.10.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [Math] implemented precision rounding functions
 
 ## 5.9.0
 Mon, 29 Jan 2018 11:23:40 GMT

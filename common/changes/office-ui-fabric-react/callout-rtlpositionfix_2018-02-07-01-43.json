@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Converted ActivityItemExample to use mergeStyles instead of SCSS",
+      "comment": "Callout/Positioning: Fixed a bug where callout would lose alignment for some hints in rtl",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-brgarl@microsoft.com"
+  "email": "joschect@microsoft.com"
 }
