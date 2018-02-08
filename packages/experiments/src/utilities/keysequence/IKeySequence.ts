@@ -1,8 +1,19 @@
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { ModifierKeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { ktpPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 
 export interface IKeySequence {
-  keyCodes: KeyCodes[];
+  keys: string[];
+}
+
+// TODO: how to handle more than one modifier key as a transition sequence
+// i.e. Alt-Shift-H
+export interface IKeytipTransitionKey {
+  key: string;
+  modifierKey?: ModifierKeyCodes;
+}
+
+export interface IKeytipTransitionSequence {
+  keys: IKeytipTransitionKey[];
 }
 
 /**
@@ -11,13 +22,24 @@ export interface IKeySequence {
  * @param seq2 - Second IKeySequence
  */
 export function keySequencesAreEqual(seq1: IKeySequence, seq2: IKeySequence): boolean {
-  let keyCodes1 = seq1.keyCodes;
-  let keyCodes2 = seq2.keyCodes;
-  if (keyCodes1.length !== keyCodes2.length) {
+  let keyCodes1 = seq1.keys.join();
+  let keyCodes2 = seq2.keys.join();
+  return keyCodes1 === keyCodes2;
+}
+
+/**
+ *
+ * @param seq1
+ * @param seq2
+ */
+export function transitionKeySequencesAreEqual(seq1: IKeytipTransitionSequence, seq2: IKeytipTransitionSequence): boolean {
+  let keys1 = seq1.keys;
+  let keys2 = seq2.keys;
+  if (keys1.length !== keys2.length) {
     return false;
   }
-  for (let i = 0; i < keyCodes1.length; i++) {
-    if (keyCodes1[i] !== keyCodes2[i]) {
+  for (let i = 0; i < keys1.length; i++) {
+    if (keys1[i].key !== keys2[i].key || keys1[i].modifierKey !== keys2[i].modifierKey) {
       return false;
     }
   }
@@ -38,6 +60,15 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
   return false;
 }
 
+export function transitionKeySequencesContain(sequences: IKeytipTransitionSequence[], seq: IKeytipTransitionSequence): boolean {
+  for (let i = 0; i < sequences.length; i++) {
+    if (transitionKeySequencesAreEqual(sequences[i], seq)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /**
  * Method returns true if the key squence of the object with minimum length is in the other key sequence.
  * If the minium length is zero, then it will default to false.
@@ -45,21 +76,12 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
  * @param seq2
  */
 export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): boolean {
-  let keyCodes1 = seq1.keyCodes;
-  let keyCodes2 = seq2.keyCodes;
-  let minLength = Math.min(keyCodes1.length, keyCodes2.length);
-
-  // If the miniumum length is zero we return false, we don't consider empty array of keycode a subset of the longer array.
-  if (minLength === 0) {
+  let keyCodes1 = seq1.keys.join();
+  let keyCodes2 = seq2.keys.join();
+  if (keyCodes1.length === 0 || keyCodes2.length === 0) {
     return false;
   }
-
-  for (let i = 0; i < minLength; i++) {
-    if (keyCodes1[i] !== keyCodes2[i]) {
-      return false;
-    }
-  }
-  return true;
+  return keyCodes1.indexOf(keyCodes2) === 0 || keyCodes2.indexOf(keyCodes1) === 0;
 }
 
 /**
@@ -70,7 +92,7 @@ export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): b
 export function convertSequencesToKeytipID(keySequences: IKeySequence[]): string {
   let conversion = ktpPrefix;
   for (let keySequence of keySequences) {
-    conversion += ktpSeparator + keySequence.keyCodes.join(ktpSeparator);
+    conversion += ktpSeparator + keySequence.keys.join(ktpSeparator);
   }
   return conversion;
 }

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { IKeySequence } from '../../../utilities/keysequence';
-import { KeyCodes } from '../../../Utilities';
 import { Keytip } from '../Keytip';
 
 export interface IKeytipBasicExampleState {
 }
 
-const keytipSequence: IKeySequence[] = [{ keyCodes: [KeyCodes.a] }];
+const keytipSequence: IKeySequence[] = [{ keys: ['a'] }];
 
 export class KeytipBasicExample extends React.Component<{}, IKeytipBasicExampleState> {
 

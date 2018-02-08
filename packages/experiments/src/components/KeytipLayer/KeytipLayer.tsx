@@ -6,8 +6,8 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { KeyCodes } from '../../Utilities';
-import { IKeySequence } from '../../utilities/keysequence';
+import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
+import { IKeytipTransitionSequence, IKeytipTransitionKey } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
 
@@ -17,16 +17,16 @@ export interface IKeytipLayerState {
 }
 
 const defaultStartSequence = {
-  keyCodes: [KeyCodes.alt, KeyCodes.leftWindow]
-} as IKeySequence;
+  keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
+} as IKeytipTransitionSequence;
 
 const defaultExitSequence = {
-  keyCodes: [KeyCodes.alt, KeyCodes.leftWindow]
-} as IKeySequence;
+  keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
+} as IKeytipTransitionSequence;
 
 const defaultGoBackSequence = {
-  keyCodes: [KeyCodes.escape]
-} as IKeySequence;
+  keys: [{ key: 'Escape' }]
+} as IKeytipTransitionSequence;
 
 /**
  * A layer that holds all keytip items
@@ -137,7 +137,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         this.exitKeytipMode();
         break;
       default:
-        this._keytipManager.processInput({ keyCodes: [ev.keyCode] });
+        // TODO: Add other meta keys
+        let transitionKey: IKeytipTransitionKey = { key: ev.key };
+        if (ev.altKey) {
+          transitionKey.modifierKey = ModifierKeyCodes.alt;
+        }
+        this._keytipManager.processTransitionInput({ key: ev.key });
         break;
     }
   }
@@ -145,6 +150,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
     // call processInput
-    this._keytipManager.processInput({ keyCodes: [ev.keyCode] });
+    // TODO: why don't we just pass in one key?
+    this._keytipManager.processInput({ keys: [ev.key] });
   }
 }

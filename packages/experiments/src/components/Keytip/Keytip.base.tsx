@@ -70,6 +70,8 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
       }
     );
 
+    let onKeytipDismiss = this._onKeytipDismiss.bind(this);
+
     return (
       <Callout
         { ...calloutProps }
@@ -78,7 +80,7 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
         directionalHint={ DirectionalHint.bottomCenter }
         target={ keytipTarget }
         getStyles={ getCalloutStyles }
-        onDismiss={ this._onKeytipDismiss.bind(this) }
+        onDismiss={ onKeytipDismiss }
         className={ this._classNames.calloutContainer }
       >
         <div className={ this._classNames.container }>

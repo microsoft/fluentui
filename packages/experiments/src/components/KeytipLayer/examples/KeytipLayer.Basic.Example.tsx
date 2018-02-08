@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IKeySequence, convertSequencesToKeytipID } from '../../../utilities/keysequence';
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { IKeySequence, IKeytipTransitionSequence, convertSequencesToKeytipID } from '../../../utilities/keysequence';
 import { KeytipLayer } from '../KeytipLayer';
 import { KeytipManager } from '../KeytipManager';
 import { IKeytipProps } from '../../Keytip';
@@ -11,8 +10,8 @@ export interface IKeytipLayerBasicExampleState {
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
-  private keySequence: IKeySequence = { keyCodes: [KeyCodes.a] };
-  private startingKeySequence: IKeySequence = { keyCodes: [KeyCodes.alt] };
+  private keySequence: IKeySequence = { keys: ['a'] };
+  private startingKeySequence: IKeytipTransitionSequence = { keys: [{ key: 'Alt' }] };
 
   constructor(props: {}) {
     super(props);
@@ -22,7 +21,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     return (
       <div>
         <DefaultButton data-ktp-id={ convertSequencesToKeytipID([this.keySequence]) } text='Test Button' />
-        <KeytipLayer keytipStartSequences={ [this.startingKeySequence] } id={ convertSequencesToKeytipID([this.startingKeySequence]) } />
+        <KeytipLayer keytipStartSequences={ [this.startingKeySequence] } id={ 'test-id' } />
       </div>
     );
   }

@@ -59,10 +59,10 @@ export class KeytipTree {
       id: rootId,
       children: [],
       parent: '',
-      keytipSequence: { keyCodes: [] },
+      keytipSequence: { keys: [] },
       hasChildrenNodes: true
     };
-    this.currentSequence = { keyCodes: [] };
+    this.currentSequence = { keys: [] };
     this.nodeMap[this.root.id] = this.root;
   }
 
@@ -107,7 +107,7 @@ export class KeytipTree {
         id: parentID,
         hasChildrenNodes: true,
         children: [],
-        keytipSequence: { keyCodes: [] },
+        keytipSequence: { keys: [] },
         parent: ''
       };
       this.nodeMap[parentID] = parent;
