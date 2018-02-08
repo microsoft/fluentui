@@ -31,6 +31,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
   suggestionsContainerAriaLabel: 'Suggested contacts',
   searchForMoreText: 'Search more',
+  useInputText: 'Use this name',
 };
 
 // tslint:disable-next-line:no-any
