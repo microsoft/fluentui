@@ -501,9 +501,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
+    let { onMenuClick } = this.props;
+    if (onMenuClick) {
+      onMenuClick(ev, this);
+    }
+
     if (!ev.defaultPrevented && ev.which === KeyCodes.down) {
-      let { onMenuClick } = this.props;
-      onMenuClick && onMenuClick(ev, this);
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
@@ -513,7 +516,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
     let { onMenuClick } = this.props;
-    onMenuClick && onMenuClick(ev, this);
+    if (onMenuClick) {
+      onMenuClick(ev, this);
+    }
 
     if (!ev.defaultPrevented) {
       this._onToggleMenu();
