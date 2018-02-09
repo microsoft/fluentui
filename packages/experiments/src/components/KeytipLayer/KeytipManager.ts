@@ -88,7 +88,7 @@ export class KeytipManager {
    */
   public hideKeytips(ids?: string[]): void {
     // We can either hide keytips from the supplied array of ids, or all keytips.
-    let keysToHide = ids ? ids : Object.keys(this.keytipTree);
+    let keysToHide = ids ? ids : Object.keys(this.keytipTree.nodeMap);
     this._changeKeytipVisibility(keysToHide, false /* visible */);
   }
 
@@ -97,6 +97,7 @@ export class KeytipManager {
   }
 
   public exitKeytipMode(): void {
+    this.hideKeytips();
     this.keytipTree.currentKeytip = undefined;
     this._layer.exitKeytipMode();
   }
@@ -116,7 +117,6 @@ export class KeytipManager {
     if (transitionKeySequencesContain(this._exitSequences, currentTransitionSequnce) && this.keytipTree.currentKeytip) {
       // If key sequence is in 'exit sequences', exit keytip mode
       //    Trigger layer's onExit callback
-      this.hideKeytips();
       this.exitKeytipMode();
       return;
     } else if (transitionKeySequencesContain(this._goBackSequences, currentTransitionSequnce)) {
