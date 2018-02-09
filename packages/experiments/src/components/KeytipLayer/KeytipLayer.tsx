@@ -103,8 +103,15 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   public componentDidMount(): void {
     this._events.on(window, 'mousedown', this._onDismiss);
     this._events.on(window, 'resize', this._onDismiss);
+    this._events.on(window, 'scroll', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown);
     this._events.on(window, 'keypress', this._onKeyPress);
+    // TODO: SHOULD WE DO THIS: -> To remove callout when scrolled
+    window.addEventListener('scroll', (): void => {
+      if (this.state.inKeytipMode) {
+        this._keytipManager.exitKeytipMode();
+      }
+    }, { capture: true });
   }
 
   public exitKeytipMode(): void {

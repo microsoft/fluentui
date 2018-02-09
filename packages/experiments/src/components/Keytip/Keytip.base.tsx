@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IKeytip, IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import {
+  // autobind,
   BaseComponent,
   customizable
 } from '../../Utilities';
@@ -71,8 +72,6 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
       }
     );
 
-    let onKeytipDismiss = this._onKeytipDismiss.bind(this);
-
     return (
       <Callout
         { ...calloutProps }
@@ -81,7 +80,8 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
         directionalHint={ DirectionalHint.bottomCenter }
         target={ this._constructKeytipTarget(keySequences) }
         getStyles={ getCalloutStyles }
-        onDismiss={ onKeytipDismiss }
+        preventDismissOnScroll={ true }
+        // onDismiss={ this._onKeytipDismiss }
         className={ this._classNames.calloutContainer }
       >
         <div className={ this._classNames.container }>
@@ -98,13 +98,13 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
   private _constructKeytipTarget(keySequences: IKeySequence[]): string {
     return '[data-ktp-id="' + convertSequencesToKeytipID(keySequences) + '"]';
   }
-
-  // tslint:disable-next-line:no-any
-  private _onKeytipDismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
-    this.setState({
-      visible: false
-    });
-    // TODO: should call manager.exitKeytipMode here but when you do it throws a big error in the console
-  }
+  // COMMENTING OUT THINGS FOR DISCUSSION
+  // @autobind
+  // private _onKeytipDismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
+  //   this.setState({
+  //     visible: false
+  //   });
+  //   // TODO: should call manager.exitKeytipMode here but when you do it throws a big error in the console
+  // }
 
 }
