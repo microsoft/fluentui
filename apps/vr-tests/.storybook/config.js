@@ -2,15 +2,13 @@
 import * as storybook from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 
-import { initializeRTL } from 'storybook-addon-rtl';
-
 initializeRTL();
 
 setOptions({
   name: 'Fabric'
 });
 
-const req = require.context('../src/stories', true, /Breadcrumb\.stories\.tsx$/)
+const req = require.context('../src/stories', true, /\.stories\.tsx$/)
 
 function loadStories() {
   req.keys().forEach((filename) => req(filename))
