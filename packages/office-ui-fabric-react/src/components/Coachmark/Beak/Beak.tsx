@@ -20,14 +20,6 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
     super(props);
   }
 
-  public componentDidMount(): void {
-    const beakComputedStyles = window.getComputedStyle(this._beakElement);
-    this.setState({
-      left: beakComputedStyles.left,
-      top: beakComputedStyles.top
-    });
-  }
-
   public render(): JSX.Element {
     const {
       height = 18,

@@ -51,12 +51,6 @@ export interface ICoachmarkState {
   isMouseInProximity: boolean;
 
   /**
-   * Containing element that the beak will use to position
-   * itself
-   */
-  targetBeakContainer?: HTMLElement;
-
-  /**
    * The left position of the beak
    */
   beakLeft?: string | null;
@@ -181,10 +175,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentDidMount(): void {
-    // If we have already accessed the width and height
-    // We do not wan't to do it again.
-    const entityInnerHostRect = this._entityInnerHostElement.offsetWidth;
-
     if (this.state.isMeasuring) {
       this._async.setTimeout((): void => {
 
@@ -212,12 +202,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
           this._isElementInProximity(100);
         }, this.props.delayBeforeMouseOpen!);
       }, 10);
-    }
-
-    if (!this.state.targetBeakContainer) {
-      this.setState({
-        targetBeakContainer: this._entityHost
-      });
     }
   }
 
