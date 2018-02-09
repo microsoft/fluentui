@@ -46,7 +46,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    * Returns the already selected items so the resolver can filter them out.
    * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    */
-  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
   /**
    * A callback for when the input has been changed

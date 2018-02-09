@@ -5,6 +5,7 @@ import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
+import { SelectedItemWithContextMenu } from './Items/SelectedItemWithContextMenu';
 import { autobind, IRenderFunction } from '../../../Utilities';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
@@ -20,8 +21,6 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 
 export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps> {
   onExpandItem?: () => void;
-  beginEditing?: (item: IExtendedPersonaProps) => void;
-  menuItems: IContextualMenuItem[];
   renderPersonaCoin?: IRenderFunction<IPersonaProps>;
   renderPrimaryText?: IRenderFunction<IPersonaProps>;
 }
@@ -94,11 +93,14 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       );
     } else {
       let onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
-      let itemProps = {
-        beginEditing: this._beginEditing,
-        ...props
-      }
-      return onRenderItem(itemProps);
+      let renderedItem = onRenderItem(props);
+      return (props.menuItems.length > 0 ?
+        <SelectedItemWithContextMenu
+          renderedItem={ renderedItem }
+          beginEditing={ this._beginEditing }
+          menuItems={ this._createMenuItems(props.item) }
+          item={ props.item } />
+        : renderedItem);
     }
   }
 
