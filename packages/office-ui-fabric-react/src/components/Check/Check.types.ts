@@ -61,20 +61,15 @@ export interface ICheckStyles {
   /**
    * Style for the root element.
    */
-  root?: IStyle;
+  root: IStyle;
 
   /**
    * The 'check' icon styles.
    */
-  check?: IStyle;
-
-  /**
-   * ??? Has something to do with DetailsList row???
-   */
-  checkHost?: IStyle;
+  check: IStyle;
 
   /**
    * The 'circle' icon styles.
    */
-  circle?: IStyle;
+  circle: IStyle;
 }
