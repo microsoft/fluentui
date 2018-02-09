@@ -268,12 +268,12 @@ export interface ISemanticColors {
   /**
    * The color of a link.
    */
-  linkText: string;
+  link: string;
 
   /**
    * The color of a hovered link. Also used when the link is active.
    */
-  linkTextHovered: string;
+  linkHovered: string;
 
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.

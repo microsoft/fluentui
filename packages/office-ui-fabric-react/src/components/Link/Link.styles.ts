@@ -15,7 +15,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
     root: [
       'ms-Link',
       {
-        color: semanticColors.linkText,
+        color: semanticColors.link,
         margin: 0,
         overflow: 'inherit',
         padding: 0,
@@ -56,10 +56,10 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       !disabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            color: semanticColors.linkTextHovered
+            color: semanticColors.linkHovered
           },
           '&:focus': {
-            color: semanticColors.linkText
+            color: semanticColors.link
           }
         }
       }

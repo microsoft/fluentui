@@ -170,8 +170,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
 
-    linkText: p.themePrimary,
-    linkTextHovered: p.themeDarker,
+    link: p.themePrimary,
+    linkHovered: p.themeDarker,
 
     // Deprecated slots, fixed by _fixDeprecatedSlots()
     listTextColor: ''
