@@ -4,10 +4,10 @@ import { IPoint } from './IPoint';
  * A triangle abstraction class used to make calculations
  */
 export class Triangle {
-  public vertexOne: IPoint;
-  public vertexTwo: IPoint;
-  public vertexThree: IPoint;
-  public centroid: IPoint;
+  public readonly vertexOne: IPoint;
+  public readonly vertexTwo: IPoint;
+  public readonly vertexThree: IPoint;
+  public readonly centroid: IPoint;
 
   constructor(vertexOne: IPoint, vertexTwo: IPoint, vertexThree: IPoint) {
     this.vertexOne = vertexOne;
