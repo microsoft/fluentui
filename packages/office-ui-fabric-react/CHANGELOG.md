@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Feb 2018 11:13:51 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Feb 2018 18:11:52 GMT and should not be manually modified.
+
+## 5.49.0
+Fri, 09 Feb 2018 18:11:52 GMT
+
+### Minor changes
+
+- ChoiceGroup: More flexible image field sizing, default image size, large image class.
+
+### Patches
+
+- Allowing for contextual and menus to be closed on Alt keys
+- Rating: Renamed RatingBase.tsx to Rating.base.tsx to match convention
 
 ## 5.48.2
 Thu, 08 Feb 2018 11:13:51 GMT
