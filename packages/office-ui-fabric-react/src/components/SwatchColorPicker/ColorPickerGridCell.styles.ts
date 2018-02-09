@@ -25,7 +25,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
     disabled,
     selected,
     circle,
-    isWhite
+    isWhite,
+    isDark
   } = props;
 
   const { semanticColors, fonts } = theme;
@@ -52,6 +53,20 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
           ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
           ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR, false),
+        }
+      },
+      isDark && {
+        selectors: {
+          [HighContrastSelector]: {
+            selectors: {
+              '$svg': {
+                padding: 0,
+                border: '1px solid',
+                borderColor: theme.palette.white,
+                margin: 4,
+              }
+            },
+          }
         }
       },
       isWhite && {
