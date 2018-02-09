@@ -44,5 +44,5 @@ export interface ILinkStyleProps {
 }
 
 export interface ILinkStyles {
-  root?: IStyle;
+  root: IStyle;
 }

@@ -9,7 +9,7 @@ import {
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   const { disabled, theme } = props;
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
 
   return {
     root: [
