@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[DetailsHeader] Set box-sizing to content-box",
+      "comment": "DetailsList: fix disappearing line when hovering on column header",
       "type": "patch"
     }
   ],
