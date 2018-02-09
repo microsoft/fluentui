@@ -172,7 +172,6 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
 
     linkText: p.themePrimary,
     linkTextHovered: p.themeDarker,
-    linkTextFocused: p.themePrimary,
     linkTextDisabled: p.neutralTertiary,
 
     // Deprecated slots, fixed by _fixDeprecatedSlots()

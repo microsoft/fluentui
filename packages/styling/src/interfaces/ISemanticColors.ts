@@ -276,11 +276,6 @@ export interface ISemanticColors {
   linkTextHovered: string;
 
   /**
-   * The color of a focused link.
-   */
-  linkTextFocused: string;
-
-  /**
    * The color of a disabled link.
    */
   linkTextDisabled: string;

@@ -59,7 +59,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             color: semanticColors.linkTextHovered
           },
           '&:focus': {
-            color: semanticColors.linkTextFocused
+            color: semanticColors.linkText
           }
         }
       }
