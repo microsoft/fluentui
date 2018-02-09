@@ -266,7 +266,12 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   private _updatePosition(): void {
-    let { positions } = this.state;
+    const { positions } = this.state;
+    const {
+      offsetFromTarget,
+      onPositioned
+    } = this.props;
+
     let hostElement: HTMLElement = this._positionedHost;
     let positioningContainerElement: HTMLElement = this._contentHost;
 
@@ -275,6 +280,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
+      currentProps!.gapSpace = offsetFromTarget
       let newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
@@ -290,8 +296,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
         });
       } else {
         this._positionAttempts = 0;
-        if (this.props.onPositioned) {
-          this.props.onPositioned();
+        if (onPositioned) {
+          onPositioned();
         }
       }
     }
@@ -321,14 +327,16 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
+    const {
+      directionalHintFixed,
+      offsetFromTarget,
+      directionalHint
+    } = this.props;
+
     if (!this._maxHeight) {
-      if (this.props.directionalHintFixed && this._target) {
-        let beakWidth = 16;
-        let gapSpace = this.props.offsetFromTarget ? this.props.offsetFromTarget : 0;
-        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
-        // overlap with the target.
-        const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds());
+      if (directionalHintFixed && this._target) {
+        let gapSpace = offsetFromTarget ? offsetFromTarget : 0;
+        this._maxHeight = getMaxHeight(this._target, directionalHint!, gapSpace, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }
