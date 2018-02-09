@@ -77,7 +77,7 @@ storiesOf('ChoiceGroup', module)
       ] }
     />
   ))
-  .add('With images', () => (
+  .add('With default size images', () => (
     <ChoiceGroup
       label='Pick one image'
       defaultSelectedKey='bar'
@@ -86,14 +86,34 @@ storiesOf('ChoiceGroup', module)
           key: 'bar',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
-          imageSize: { width: 32, height: 32 },
           text: 'Clustered bar chart'
         },
         {
           key: 'pie',
           imageSrc: TestImages.choiceGroupBarUnselected,
           selectedImageSrc: TestImages.choiceGroupBarSelected,
-          imageSize: { width: 32, height: 32 },
+          text: 'Pie chart'
+        }
+      ] }
+    />
+  ))
+  .add('With large size images', () => (
+    <ChoiceGroup
+      label='Pick one image'
+      defaultSelectedKey='bar'
+      options={ [
+        {
+          key: 'bar2',
+          imageSrc: TestImages.choiceGroupBarUnselected,
+          selectedImageSrc: TestImages.choiceGroupBarSelected,
+          imageSize: { width: 120, height: 120 },
+          text: 'Clustered bar chart'
+        },
+        {
+          key: 'pie2',
+          imageSrc: TestImages.choiceGroupBarUnselected,
+          selectedImageSrc: TestImages.choiceGroupBarSelected,
+          imageSize: { width: 120, height: 120 },
           text: 'Pie chart'
         }
       ] }
