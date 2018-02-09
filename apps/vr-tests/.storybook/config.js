@@ -2,6 +2,8 @@
 import * as storybook from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 
+initializeRTL();
+
 setOptions({
   name: 'Fabric'
 });

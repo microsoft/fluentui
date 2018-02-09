@@ -1,16 +1,19 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
+import { FabricDecoratorTall, Steps } from '../utilities';
 import { Breadcrumb } from 'office-ui-fabric-react';
 
 storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={ new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
+        .setRTL(true)
+        .snapshot('defaultRTL', { cropTo: '.testWrapper' })
+        .setRTL(false)
         .hover('.ms-Breadcrumb-overflowButton')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Breadcrumb-overflowButton') // opening the dropdown
