@@ -275,11 +275,6 @@ export interface ISemanticColors {
    */
   linkTextHovered: string;
 
-  /**
-   * The color of a disabled link.
-   */
-  linkTextDisabled: string;
-
   //// DEPRECATED SLOTS
   // Do not use these slots, they are only maintained for backwards compatibility.
 

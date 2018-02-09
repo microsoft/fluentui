@@ -48,7 +48,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       disabled && [
         'is-disabled',
         {
-          color: semanticColors.linkTextDisabled,
+          color: semanticColors.disabledText,
           cursor: 'default',
           pointerEvents: 'none'
         }
