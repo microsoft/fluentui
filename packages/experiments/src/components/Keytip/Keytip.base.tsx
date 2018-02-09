@@ -8,6 +8,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { getCalloutStyles } from './Keytip.styles';
 import { classNamesFunction } from '../../Utilities';
+import { IKeySequence, convertSequencesToKeytipID } from '../../utilities/keysequence';
 
 const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
 
@@ -50,11 +51,11 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
   public render(): JSX.Element {
     const {
       content,
-      keytipTarget,
       calloutProps,
       getStyles,
       theme,
-      disabled
+      disabled,
+      keySequences
     } = this.props;
 
     const {
@@ -78,16 +79,24 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
         isBeakVisible={ false }
         doNotLayer={ true }
         directionalHint={ DirectionalHint.bottomCenter }
-        target={ keytipTarget }
+        target={ this._constructKeytipTarget(keySequences) }
         getStyles={ getCalloutStyles }
         onDismiss={ onKeytipDismiss }
         className={ this._classNames.calloutContainer }
       >
         <div className={ this._classNames.container }>
-          <span className={ this._classNames.root }>{ content }</span>
+          <span id={ convertSequencesToKeytipID(keySequences) } className={ this._classNames.root }>{ content }</span>
         </div >
       </Callout>
     );
+  }
+
+  /**
+   *
+   * @param keySequences
+   */
+  private _constructKeytipTarget(keySequences: IKeySequence[]): string {
+    return '[data-ktp-id="' + convertSequencesToKeytipID(keySequences) + '"]';
   }
 
   // tslint:disable-next-line:no-any

@@ -1,6 +1,6 @@
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IPoint, IStyleFunction } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 import { IKeySequence } from '../../utilities/keysequence';
 
 export interface IKeytip {
@@ -13,14 +13,6 @@ export interface IKeytipProps {
    * the public methods and properties of the component.
    */
   componentRef?: (component: IKeytip) => void;
-
-  /**
-   * The DOM ID to use for the keytip HTML element
-   *
-   * @type {string}
-   * @memberof IKeytipProps
-   */
-  id?: string;
 
   /**
    * Content to put inside the keytip
@@ -83,13 +75,6 @@ export interface IKeytipProps {
    * their children registered after the initial rendering of the DOM.
    */
   hasChildrenNodes?: boolean;
-
-  /**
-   * The target that the Keytip should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
-   * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
-   */
-  keytipTarget?: HTMLElement | string | MouseEvent | IPoint | null;
 }
 
 /**

@@ -7,7 +7,7 @@ import {
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
-import { IKeytipTransitionSequence, IKeytipTransitionKey } from '../../utilities/keysequence';
+import { IKeytipTransitionSequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
 
@@ -69,7 +69,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
       let currentKeytips: IKeytipProps[] = [...previousState.keytips];
       for (let keytip of currentKeytips) {
-        if (ids.indexOf(keytip.id!) >= 0) {
+        let keytipId = convertSequencesToKeytipID(keytip.keySequences);
+        if (ids.indexOf(keytipId) >= 0) {
           keytip.visible = visible;
         }
       }
