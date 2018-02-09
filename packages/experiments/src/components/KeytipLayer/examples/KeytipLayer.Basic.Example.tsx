@@ -86,7 +86,11 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
             />
           </PivotItem>
         </Pivot>
-        <KeytipLayer keytipStartSequences={ [this.startingKeySequence] } keytipExitSequences={ [this.startingKeySequence] } id={ 'test-id' } />
+        <KeytipLayer
+          keytipStartSequences={ [this.startingKeySequence] }
+          keytipExitSequences={ [this.startingKeySequence] }
+          id={ 'test-id' }
+        />
       </div>
     );
   }

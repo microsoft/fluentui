@@ -186,9 +186,9 @@ export class KeytipManager {
           this.exitKeytipMode();
         } else {
           // TODO... we need a way to show the keytips of the childrenNodes that are currently not loaded.
+          this.hideKeytips();
           this.showKeytips(this.keytipTree.currentKeytip.children);
         }
-        this.hideKeytips();
         this.currentSequence = { keys: [] };
         return;
       }
