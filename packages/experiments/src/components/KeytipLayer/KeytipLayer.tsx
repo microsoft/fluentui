@@ -94,7 +94,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     return (
       <Layer id={ id }>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
-          return <Keytip key={ index } {...keytipProps} />;
+          return <Keytip key={ index } { ...keytipProps } />;
         }) }
       </Layer>
     );
@@ -110,7 +110,6 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   public exitKeytipMode(): void {
     if (this.props.onExitKeytipMode) {
       this.props.onExitKeytipMode();
-      this._keytipManager.exitKeytipMode();
     }
     this.setState({ inKeytipMode: false });
   }
@@ -136,7 +135,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       case KeyCodes.tab:
       case KeyCodes.enter:
       case KeyCodes.space:
-        this.exitKeytipMode();
+        this._keytipManager.exitKeytipMode();
         break;
       default:
         // TODO: Add other meta keys
