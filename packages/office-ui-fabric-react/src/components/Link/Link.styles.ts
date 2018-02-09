@@ -14,35 +14,30 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       'ms-Link',
+      getFocusStyle(theme),
       {
         color: semanticColors.link,
-        margin: 0,
-        overflow: 'inherit',
-        padding: 0,
-        textOverflow: 'inherit',
         selectors: {
-          'button&': [
-            getFocusStyle(theme),
-            {
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'inline',
-              fontSize: 'inherit',
-              textAlign: 'left',
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'Highlight'
-                }
+          'button&': {
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            display: 'inline',
+            fontSize: 'inherit',
+            margin: 0,
+            overflow: 'inherit',
+            padding: 0,
+            textAlign: 'left',
+            textOverflow: 'inherit',
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'Highlight'
               }
             }
-          ],
-          'a&': [
-            getFocusStyle(theme),
-            {
-              textDecoration: 'none'
-            }
-          ]
+          },
+          'a&': {
+            textDecoration: 'none'
+          }
         }
       },
       disabled && [
