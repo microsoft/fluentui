@@ -103,10 +103,9 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   public componentDidMount(): void {
     this._events.on(window, 'mousedown', this._onDismiss);
     this._events.on(window, 'resize', this._onDismiss);
-    this._events.on(window, 'scroll', this._onDismiss);
-    this._events.on(window, 'keydown', this._onKeyDown);
-    this._events.on(window, 'keypress', this._onKeyPress);
-    // TODO: SHOULD WE DO THIS: -> To remove callout when scrolled
+    this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
+    this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
+    // TODO: SHOULD WE DO THIS ??: -> To remove callout when scrolled
     window.addEventListener('scroll', (): void => {
       if (this.state.inKeytipMode) {
         this._keytipManager.exitKeytipMode();
@@ -139,6 +138,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     switch (ev.which) {
+      case KeyCodes.alt:
+        break;
       case KeyCodes.tab:
       case KeyCodes.enter:
       case KeyCodes.space:
@@ -150,7 +151,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         if (ev.altKey) {
           transitionKey.modifierKey = ModifierKeyCodes.alt;
         }
-        this._keytipManager.processTransitionInput({ key: ev.key });
+        this._keytipManager.processTransitionInput(transitionKey);
         break;
     }
   }

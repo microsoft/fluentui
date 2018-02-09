@@ -6,6 +6,7 @@ import { IKeytipProps } from '../../Keytip';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { addKeytipSequence } from '../../../utilities/keytip';
+import { ModifierKeyCodes } from '../../../../../office-ui-fabric-react/lib/index';
 
 export interface IKeytipLayerBasicExampleState {
 }
@@ -16,7 +17,7 @@ export interface IKeytipMap {
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
-  private startingKeySequence: IKeytipTransitionSequence = { keys: [{ key: 'Alt' }] };
+  private startingKeySequence: IKeytipTransitionSequence = { keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] };
   private keytipMap: IKeytipMap = {};
 
   constructor(props: {}) {
