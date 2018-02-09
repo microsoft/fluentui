@@ -1647,6 +1647,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-top: 4px;
                   width: 12px;
                 }
+                @media screen and (-ms-high-contrast: active){& $svg {
+                  border-color: #ffffff;
+                  border: 1px solid;
+                  margin-bottom: 4px;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 4px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
                 & $svg {
                   border-radius: 100%;
                 }
