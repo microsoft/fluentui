@@ -10,7 +10,7 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
     return (
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox
-          clearButtonAriaLabel="Clear searchbox"
+          clearButtonAriaLabel='Clear Searchbox'
           onEscape={ (ev) => {
             console.log('Custom onEscape Called');
           } }
