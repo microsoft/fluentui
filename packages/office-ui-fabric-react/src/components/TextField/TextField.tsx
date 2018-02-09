@@ -70,8 +70,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       'value': 'defaultValue'
     });
 
-    this._id = getId('TextField');
-    this._descriptionId = getId('TextFieldDescription');
+    let { id } = props;
+
+    this._id = typeof id === 'undefined' ? getId('TextField') : id;
+    this._descriptionId = typeof id === 'undefined' ? getId('TextFieldDescription') : `${id}Description`;
 
     this.state = {
       value: props.value || props.defaultValue || '',
@@ -143,13 +145,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon, // @deprecated
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
-      onRenderLabel = this._onRenderLabel,
-      componentId = this._id
+      onRenderLabel = this._onRenderLabel
     } = this.props;
     let { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
-    const renderProps: ITextFieldProps = { ...this.props, componentId };
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
       ['is-required ' + styles.rootIsRequiredLabel]: this.props.label && required,
@@ -161,26 +161,28 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       ['ms-TextField--borderless ' + styles.rootIsBorderless]: borderless
     });
 
+    let propsWithNewId = { ...this.props, id: this._id };
+
     return (
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper, underlined ? errorMessage && styles.invalid : '') }>
-          { onRenderLabel(renderProps, this._onRenderLabel) }
+          { onRenderLabel(propsWithNewId, this._onRenderLabel) }
           <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
-                { onRenderAddon(this.props, this._onRenderAddon) }
+                { onRenderAddon(propsWithNewId, this._onRenderAddon) }
               </div>
             ) }
             { (prefix !== undefined || this.props.onRenderPrefix) && (
               <div className={ css('ms-TextField-prefix', styles.fieldPrefixSuffix) }>
-                { onRenderPrefix(this.props, this._onRenderPrefix) }
+                { onRenderPrefix(propsWithNewId, this._onRenderPrefix) }
               </div>
             ) }
-            { multiline ? this._renderTextArea(renderProps) : this._renderInput(renderProps) }
+            { multiline ? this._renderTextArea() : this._renderInput() }
             { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
             { (suffix !== undefined || this.props.onRenderSuffix) && (
               <div className={ css('ms-TextField-suffix', styles.fieldPrefixSuffix) }>
-                { onRenderSuffix(this.props, this._onRenderSuffix) }
+                { onRenderSuffix(propsWithNewId, this._onRenderSuffix) }
               </div>
             ) }
           </div>
@@ -291,10 +293,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _onRenderLabel(props: ITextFieldProps): JSX.Element | null {
     const {
       label,
-      componentId
+      id
      } = props;
+
     if (label) {
-      return (<Label htmlFor={ componentId }>{ label }</Label>);
+      return (<Label htmlFor={ id }>{ label }</Label>);
     }
     return null;
   }
@@ -344,12 +347,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return errorMessage;
   }
 
-  private _renderTextArea(props: ITextFieldProps): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    let textAreaProps = getNativeProps(props, textAreaProperties, ['defaultValue']);
+  private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
+    let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
       <textarea
-        id={ props.componentId }
+        id={ this._id }
         { ...textAreaProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
@@ -358,27 +361,27 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         className={ this._getTextElementClassName() }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
-        aria-label={ props.ariaLabel }
+        aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
       />
     );
   }
 
-  private _renderInput(props: ITextFieldProps): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties, ['defaultValue']);
+  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
         type={ 'text' }
-        id={ props.componentId }
+        id={ this._id }
         { ...inputProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-label={ props.ariaLabel }
+        aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }

@@ -127,7 +127,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        componentId={ exampleComponentId }
+        id={ exampleComponentId }
         label='text-field-label'
         value='whatever value'
       />
