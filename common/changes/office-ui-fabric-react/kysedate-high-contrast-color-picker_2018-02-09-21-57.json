@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding logic to determine if a color in the color picker is 'dark'. If it is, add a white border around the icon in high contrast mode.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kysedate@microsoft.com"
+}
