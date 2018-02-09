@@ -23,7 +23,7 @@ export function getStyles(props: IBeakStylesProps): IBeakStyles {
         boxShadow: 'inherit',
         border: 'none',
         boxSizing: 'border-box',
-        transform: 'translate(-50%, -50%)',
+        transform: 'translateY(-50%)',
         left: '50%',
         width: props.width,
         height: props.height

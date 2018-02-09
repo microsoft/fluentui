@@ -181,7 +181,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
 
           // @TODO Eventually we need to add the various directions
-          const beakLeft = (this.props.width! / 2);
+          const beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
           const beakTop = 0;
 
           this.setState({
