@@ -3,7 +3,57 @@
 exports[`Link renders Link correctly 1`] = `
 <a
   aria-disabled={undefined}
-  className="ms-Link"
+  className=
+      ms-Link
+      {
+        color: #0078d7;
+        outline: transparent;
+        position: relative;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      button& {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: left;
+        text-overflow: inherit;
+      }
+      @media screen and (-ms-high-contrast: active){button& {
+        color: Highlight;
+      }
+      a& {
+        text-decoration: none;
+      }
+      &:active, &:hover, &:active:hover {
+        color: #004578;
+      }
+      &:focus {
+        color: #0078d7;
+      }
   href="#"
   onClick={[Function]}
   target={undefined}
@@ -15,7 +65,57 @@ exports[`Link renders Link correctly 1`] = `
 exports[`Link renders Link with no href as a button 1`] = `
 <button
   aria-disabled={undefined}
-  className="ms-Link"
+  className=
+      ms-Link
+      {
+        color: #0078d7;
+        outline: transparent;
+        position: relative;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      button& {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: left;
+        text-overflow: inherit;
+      }
+      @media screen and (-ms-high-contrast: active){button& {
+        color: Highlight;
+      }
+      a& {
+        text-decoration: none;
+      }
+      &:active, &:hover, &:active:hover {
+        color: #004578;
+      }
+      &:focus {
+        color: #0078d7;
+      }
   onClick={[Function]}
 >
   I'm a link as a button
@@ -25,7 +125,54 @@ exports[`Link renders Link with no href as a button 1`] = `
 exports[`Link renders disabled Link correctly 1`] = `
 <a
   aria-disabled={true}
-  className="ms-Link is-disabled undefined"
+  className=
+      ms-Link
+      is-disabled
+      {
+        color: #a6a6a6;
+        cursor: default;
+        outline: transparent;
+        pointer-events: none;
+        position: relative;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      button& {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: left;
+        text-overflow: inherit;
+      }
+      @media screen and (-ms-high-contrast: active){button& {
+        color: Highlight;
+      }
+      a& {
+        text-decoration: none;
+      }
   href="#"
   onClick={[Function]}
   target={undefined}
@@ -37,7 +184,54 @@ exports[`Link renders disabled Link correctly 1`] = `
 exports[`Link renders disabled Link with no href as a button correctly 1`] = `
 <button
   aria-disabled={true}
-  className="ms-Link is-disabled undefined"
+  className=
+      ms-Link
+      is-disabled
+      {
+        color: #a6a6a6;
+        cursor: default;
+        outline: transparent;
+        pointer-events: none;
+        position: relative;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric.is-focusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      button& {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: left;
+        text-overflow: inherit;
+      }
+      @media screen and (-ms-high-contrast: active){button& {
+        color: Highlight;
+      }
+      a& {
+        text-decoration: none;
+      }
   disabled={true}
   onClick={[Function]}
 >
