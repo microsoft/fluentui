@@ -71,7 +71,8 @@ export class KeytipTree {
    * @param fullSequence - Full key sequence for the keytip to add
    * @param onExecute - Callback function to trigger when this keytip is activated
    */
-  public addNode(fullSequence: IKeySequence[], onExecute?: () => void, hasChildrenNodes?: boolean): void {
+  public addNode(sequence: IKeySequence[], onExecute?: () => void, hasChildrenNodes?: boolean): void {
+    let fullSequence = [...sequence];
     let nodeID = convertSequencesToKeytipID(fullSequence);
     // This keytip's sequence is the last one defined
     let keytipSequence = fullSequence.pop();

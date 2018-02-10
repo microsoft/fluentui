@@ -57,8 +57,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._keytipManager.init(this);
   }
 
+  public registerKeytip(keytipProps: IKeytipProps): void {
+    this.setState(this.addKeytip(keytipProps));
+  }
+
   public addKeytip(keytipProps: IKeytipProps): {} {
-    return (previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
+    return (previousState: IKeytipLayerState) => {
       // TODO: check for duplicates
       let currentKeytips = [...previousState.keytips, ...[keytipProps]];
       return { ...previousState, keytips: currentKeytips };
@@ -76,10 +80,6 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
       }
       return { ...previousState, keytips: currentKeytips };
     });
-  }
-
-  public registerKeytip(keytipProps: IKeytipProps): void {
-    this.setState(this.addKeytip(keytipProps));
   }
 
   public render(): JSX.Element {
@@ -139,6 +139,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     switch (ev.which) {
       case KeyCodes.alt:
+        // ALT puts focus in the browser bar, so it should not be used as a key for keytips.
+        // It can be used as a modifier
         break;
       case KeyCodes.tab:
       case KeyCodes.enter:
@@ -146,20 +148,28 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         this._keytipManager.exitKeytipMode();
         break;
       default:
-        // TODO: Add other meta keys
         let transitionKey: IKeytipTransitionKey = { key: ev.key };
-        if (ev.altKey) {
-          transitionKey.modifierKey = ModifierKeyCodes.alt;
-        }
+        transitionKey.modifierKey = this._getModifierKey(ev);
         this._keytipManager.processTransitionInput(transitionKey);
         break;
     }
   }
 
+  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes | undefined {
+    if (ev.altKey) {
+      return ModifierKeyCodes.alt;
+    } else if (ev.ctrlKey) {
+      return ModifierKeyCodes.ctrl;
+    } else if (ev.shiftKey) {
+      return ModifierKeyCodes.shift;
+    }
+    // TODO include windows key or option for MAC
+    return undefined;
+  }
+
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
     // call processInput
-    // TODO: why don't we just pass in one key?
     this._keytipManager.processInput({ keys: [ev.key] });
   }
 }

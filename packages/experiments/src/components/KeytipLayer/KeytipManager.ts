@@ -146,6 +146,7 @@ export class KeytipManager {
       //    Show children of root
       //    Trigger layer's onEnter callback
       this.keytipTree.currentKeytip = this.keytipTree.root;
+      this.hideKeytips();
       this.showKeytips(this.keytipTree.currentKeytip.children);
       this.enterKeytipMode();
     }
