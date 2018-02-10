@@ -84,7 +84,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        prefix={ examplePrefix}
+        prefix={ examplePrefix }
         suffix={ exampleSuffix }
       />
     );
@@ -311,6 +311,14 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.focus(inputDOM);
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input va'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(3);
+
     });
 
     it('should trigger validation on both blur and focus', () => {
