@@ -247,7 +247,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let contextMenuStyle;
     let targetAsHtmlElement = this._target as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
-      let targetWidth = targetAsHtmlElement.offsetWidth;
+      const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
+      const targetWidth = targetBoundingRect.width;
+
       if (useTargetWidth) {
         contextMenuStyle = {
           width: targetWidth
@@ -271,7 +273,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       }
       return (
         <Callout
-          {...calloutProps}
+          { ...calloutProps }
           target={ useTargetPoint ? targetPoint : target }
           isBeakVisible={ isBeakVisible }
           beakWidth={ beakWidth }
