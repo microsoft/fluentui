@@ -90,6 +90,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     this._classNames = getClassNames(getStyles!, {
       theme: theme!,
       className,
+      customStyles,
       disabled,
       isChecked,
       isReversed
