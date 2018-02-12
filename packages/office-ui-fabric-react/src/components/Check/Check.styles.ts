@@ -7,13 +7,11 @@ import {
 } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 
-const DEFAULT_CHECKBOX_HEIGHT: string = '18px';
-
 export const getStyles = (
   props: ICheckStyleProps
 ): ICheckStyles => {
   const {
-    checkBoxHeight = DEFAULT_CHECKBOX_HEIGHT,
+    checkBoxHeight = '18px',
     checked,
     className,
     theme,
