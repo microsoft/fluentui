@@ -45,6 +45,7 @@ export interface IContextualMenuState {
   slideDirectionalClassName?: string;
   subMenuId?: string;
   submenuDirection?: DirectionalHint;
+  targetWidth?: number;
 }
 
 export function hasSubmenu(item: IContextualMenuItem) {
@@ -153,6 +154,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (newProps.target !== this.props.target) {
       let newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
+      this._setTargetWidthAsync();
     }
   }
 
@@ -160,6 +162,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   public componentWillMount() {
     let target = this.props.target;
     this._setTargetWindowAndElement(target!);
+    this._setTargetWidthAsync();
     this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
@@ -246,17 +249,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
      */
     let contextMenuStyle;
     let targetAsHtmlElement = this._target as HTMLElement;
-    if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
-      const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
-      const targetWidth = targetBoundingRect.width;
-
+    if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement) {
       if (useTargetWidth) {
         contextMenuStyle = {
-          width: targetWidth
+          width: this.state.targetWidth
         };
       } else if (useTargetAsMinWidth) {
         contextMenuStyle = {
-          minWidth: targetWidth
+          minWidth: this.state.targetWidth
         };
       }
     }
@@ -330,6 +330,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       return null;
     }
+  }
+
+  private _setTargetWidthAsync() {
+    const targetAsHtmlElement = this._target as HTMLElement;
+
+    // If component doesn't care about target's width, then this is a no-op.
+    if ((!this.props.useTargetWidth && !this.props.useTargetAsMinWidth) || !targetAsHtmlElement) {
+      return;
+    }
+
+    this._async.requestAnimationFrame(() => {
+      const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
+
+      this.setState({
+        targetWidth: targetBoundingRect.width - 2 /* Need to account for border width */
+      });
+    });
   }
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
