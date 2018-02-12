@@ -13,7 +13,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.types';
+import { IButtonProps, IButton, MenuTriggerDirection } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
@@ -41,6 +41,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     classNames: {},
     styles: {},
     split: false,
+    menuTriggerDirection: MenuTriggerDirection.down,
+    allowDirectionalMenuTrigger: true,
   };
 
   private _buttonElement: HTMLElement;
@@ -497,7 +499,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.down) {
+    if (this.props.allowDirectionalMenuTrigger && ev.which === this._getDirectionKeyCode()) {
       let { onMenuClick } = this.props;
       onMenuClick && onMenuClick(ev, this);
       !ev.defaultPrevented && this._onToggleMenu();
@@ -513,5 +515,21 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     !ev.defaultPrevented && this._onToggleMenu();
     ev.preventDefault();
     ev.stopPropagation();
+  }
+
+  @autobind
+  private _getDirectionKeyCode(): KeyCodes {
+    switch (this.props.menuTriggerDirection) {
+      case MenuTriggerDirection.up:
+        return KeyCodes.up;
+      case MenuTriggerDirection.down:
+        return KeyCodes.down;
+      case MenuTriggerDirection.left:
+        return KeyCodes.left;
+      case MenuTriggerDirection.right:
+        return KeyCodes.right;
+      default:
+        return KeyCodes.down;
+    }
   }
 }

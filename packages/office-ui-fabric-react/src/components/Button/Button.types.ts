@@ -223,6 +223,18 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   getSplitButtonClassNames?: (disabled: boolean,
     expanded: boolean,
     checked: boolean) => ISplitButtonClassNames;
+
+  /**
+  * Defines which arrow key opens button menu.
+  * @default MenuTriggerDirection.down
+  */
+  menuTriggerDirection?: MenuTriggerDirection;
+
+  /**
+  * Allow arrow keys to open button menu.
+  * @default true
+  */
+  allowDirectionalMenuTrigger?: boolean;
 }
 
 export enum ElementType {
@@ -240,6 +252,17 @@ export enum ButtonType {
   command = 4,
   icon = 5,
   default = 6
+}
+
+export enum MenuTriggerDirection {
+  /** Open menu with up arrow */
+  up = 0,
+  /** Open menu with down arrow */
+  down = 1,
+  /** Open menu with left arrow */
+  left = 2,
+  /** Open menu with right arrow */
+  right = 3
 }
 
 export interface IButtonStyles {
