@@ -170,6 +170,6 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
     // call processInput
-    this._keytipManager.processInput({ keys: [ev.key] });
+    this._keytipManager.processInput(ev.key);
   }
 }

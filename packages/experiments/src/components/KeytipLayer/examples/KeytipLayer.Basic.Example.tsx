@@ -76,7 +76,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
             <DefaultButton
               data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button1Pivot1Keytip.keySequences) }
               text='Test Button 1'
-              onClick={ () => { alert('Clicked Button 1'); } }
+            // onClick={ () => { alert('Clicked Button 1'); } }
             />
             <DefaultButton
               data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button2Pivot1Keytip.keySequences) }
@@ -123,8 +123,9 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     }
   }
 
-  private _getExecute(id: string): () => void {
-    let element = document.querySelector(id) as HTMLElement;
-    return element.click;
-  }
+  // TODO use this to getExecute of buttons
+  // private _getExecute(id: string): () => void {
+  //   let element = document.querySelector(id) as HTMLElement;
+  //   return element.click;
+  // }
 }

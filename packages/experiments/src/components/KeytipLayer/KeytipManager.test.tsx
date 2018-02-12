@@ -124,7 +124,7 @@ describe('KeytipManager', () => {
       const onExecuteC: jest.Mock = jest.fn();
       keytipManager.keytipTree.nodeMap[keytipIdC] = { ...keytipManager.keytipTree.nodeMap[keytipIdC], onExecute: onExecuteC };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processInput({ keys: ['c'] });
+      keytipManager.processInput('c');
       expect(onExecuteC).toBeCalled();
       expect(onExitKeytipMode).toBeCalled();
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
@@ -134,10 +134,10 @@ describe('KeytipManager', () => {
       const onExecuteE2: jest.Mock = jest.fn();
       keytipManager.keytipTree.nodeMap[keytipIdE2] = { ...keytipManager.keytipTree.nodeMap[keytipIdE2], onExecute: onExecuteE2 };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processInput({ keys: ['e'] });
+      keytipManager.processInput('e');
       // We are still waiting for second keycode
       expect(keytipManager.currentSequence.keys.length).toEqual(1);
-      keytipManager.processInput({ keys: ['2'] });
+      keytipManager.processInput('2');
       expect(onExecuteE2).toBeCalled();
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
       expect(onExitKeytipMode).toBeCalled();
@@ -147,10 +147,10 @@ describe('KeytipManager', () => {
       const onExecuteE1: jest.Mock = jest.fn();
       keytipManager.keytipTree.nodeMap[keytipIdE1] = { ...keytipManager.keytipTree.nodeMap[keytipIdE1], onExecute: onExecuteE1 };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processInput({ keys: ['e'] });
+      keytipManager.processInput('e');
       // We are still waiting for second keycode
       expect(keytipManager.currentSequence.keys.length).toEqual(1);
-      keytipManager.processInput({ keys: ['1'] });
+      keytipManager.processInput('1');
       expect(onExecuteE1).toBeCalled();
       // There is no more buffer in the sequence
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
@@ -164,7 +164,7 @@ describe('KeytipManager', () => {
       const onExecuteB: jest.Mock = jest.fn();
       keytipManager.keytipTree.nodeMap[keytipIdB] = { ...keytipManager.keytipTree.nodeMap[keytipIdB], onExecute: onExecuteB };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processInput({ keys: ['b'] });
+      keytipManager.processInput('b');
       // Node B' on execute should be called
       expect(onExecuteB).toBeCalled();
       // There is no more buffer in the sequence
