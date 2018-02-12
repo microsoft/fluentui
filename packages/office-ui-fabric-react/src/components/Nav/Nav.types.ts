@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { ITheme, IStyle } from '../../Styling';
+import { exampleCheckbox } from 'src/common/_exampleStyles.scss';
 
 export interface INav {
   /**
@@ -16,7 +18,7 @@ export interface INavProps {
    * Optional callback to access the INav interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: INav) => void;
+  componentRef?: (component: INavProps) => void;
 
   /**
    * A collection of link groups to display in the navigation bar
@@ -24,7 +26,8 @@ export interface INavProps {
   groups: INavLinkGroup[] | null;
 
   /**
-   * Optional class name to allow styling.
+   * Additional css class to apply to the Nav
+   * @defaultvalue undefined
    */
   className?: string;
 
@@ -80,6 +83,17 @@ export interface INavProps {
    * @deprecated
    **/
   collapsedStateText?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<INavProps, INavStyles>;
+
 }
 
 export interface INavLinkGroup {
@@ -200,4 +214,38 @@ export interface INavLink {
    * (Optional) Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
+}
+
+export interface INavStyleProps {
+  theme: ITheme;
+  className?: string;
+  isOnTop?: boolean;
+  // isGroupExpanded?: boolean;
+  // isLinkExpanded?: boolean;
+  isExpanded?: boolean;
+  isSelected?: boolean;
+
+  navnodeHeight?: string;
+  hasExpandButtonLinkLeftPadding?: string;
+  noExpandButtonLinkLeftPadding?: string;
+  linkRightPadding?: string;
+
+  /**
+   * Inherited from INavProps
+   * A collection of link groups to display in the navigation bar
+   */
+  groups: INavLinkGroup[] | null;
+}
+
+export interface INavStyles {
+  root: IStyle;
+  linkText: IStyle;
+  link: IStyle;
+  compositeLink: IStyle;
+  chevronButton: IStyle;
+  chevronIcon: IStyle;
+  navItem: IStyle;
+  navItems: IStyle;
+  group: IStyle;
+  groupContent: IStyle;
 }
