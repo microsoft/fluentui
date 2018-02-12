@@ -175,49 +175,6 @@ export const getStyles = (
         // ms-fontColor-neutralTertiary
       }
     ],
-    // checkboxHovered: {
-    //   borderColor: checkboxBorderHoveredColor,
-    // },
-    // checkboxFocused: {
-    //   borderColor: checkboxBorderHoveredColor,
-    // },
-    // checkboxChecked: {
-    //   background: checkboxBackgroundChecked,
-    //   borderColor: checkboxBorderColorChecked
-    // },
-    // checkboxCheckedHovered: {
-    //   background: checkboxBackgroundCheckedHovered,
-    //   borderColor: checkboxBorderColorCheckedHovered
-    // },
-    // checkboxCheckedFocused: {
-    //   background: checkboxBackgroundCheckedHovered,
-    //   borderColor: checkboxBorderColorCheckedHovered
-    // },
-    // checkboxDisabled: {
-    //   borderColor: checkboxBorderColorDisabled
-    // },
-    // checkboxCheckedDisabled: {
-    //   background: checkboxBackgroundDisabled,
-    //   borderColor: checkboxBorderColorDisabled
-    // },
-    // checkmarkChecked: {
-    //   opacity: '1'
-    // },
-    // checkmarkDisabled: {
-    // },
-    // checkmarkCheckedDisabled: {
-    //   opacity: '1',
-    //   color: checkmarkFontColorCheckedDisabled,
-    // },
-    // textHovered: {
-    //   color: palette.black,
-    // },
-    // textFocused: {
-    //   color: palette.black,
-    // },
-    // textDisabled: {
-    //   color: checkboxTextColorDisabled,   // ms-fontColor-neutralTertiary
-    // }
   };
 
   return concatStyleSets(styles, customStyles)!;
