@@ -9,6 +9,7 @@ exports[`Link renders Link correctly 1`] = `
         color: #0078d7;
         outline: transparent;
         position: relative;
+        text-decoration: none;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -23,30 +24,6 @@ exports[`Link renders Link correctly 1`] = `
         right: 1px;
         top: 1px;
         z-index: 1;
-      }
-      button& {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: inline;
-        font-size: inherit;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: inherit;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        text-align: left;
-        text-overflow: inherit;
-      }
-      @media screen and (-ms-high-contrast: active){button& {
-        color: Highlight;
-      }
-      a& {
-        text-decoration: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -68,9 +45,25 @@ exports[`Link renders Link with no href as a button 1`] = `
   className=
       ms-Link
       {
+        background: none;
+        border: none;
         color: #0078d7;
+        cursor: pointer;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         outline: transparent;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
         position: relative;
+        text-align: left;
+        text-overflow: inherit;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -86,29 +79,8 @@ exports[`Link renders Link with no href as a button 1`] = `
         top: 1px;
         z-index: 1;
       }
-      button& {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: inline;
-        font-size: inherit;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: inherit;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        text-align: left;
-        text-overflow: inherit;
-      }
-      @media screen and (-ms-high-contrast: active){button& {
+      @media screen and (-ms-high-contrast: active){& {
         color: Highlight;
-      }
-      a& {
-        text-decoration: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -134,6 +106,7 @@ exports[`Link renders disabled Link correctly 1`] = `
         outline: transparent;
         pointer-events: none;
         position: relative;
+        text-decoration: none;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -148,30 +121,6 @@ exports[`Link renders disabled Link correctly 1`] = `
         right: 1px;
         top: 1px;
         z-index: 1;
-      }
-      button& {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: inline;
-        font-size: inherit;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: inherit;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        text-align: left;
-        text-overflow: inherit;
-      }
-      @media screen and (-ms-high-contrast: active){button& {
-        color: Highlight;
-      }
-      a& {
-        text-decoration: none;
       }
   href="#"
   onClick={[Function]}
@@ -188,11 +137,26 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       ms-Link
       is-disabled
       {
+        background: none;
+        border: none;
         color: #a6a6a6;
         cursor: default;
+        display: inline;
+        font-size: inherit;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
         outline: transparent;
+        overflow: inherit;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
         pointer-events: none;
         position: relative;
+        text-align: left;
+        text-overflow: inherit;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -208,29 +172,8 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         top: 1px;
         z-index: 1;
       }
-      button& {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: inline;
-        font-size: inherit;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: inherit;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        text-align: left;
-        text-overflow: inherit;
-      }
-      @media screen and (-ms-high-contrast: active){button& {
+      @media screen and (-ms-high-contrast: active){& {
         color: Highlight;
-      }
-      a& {
-        text-decoration: none;
       }
   disabled={true}
   onClick={[Function]}
