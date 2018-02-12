@@ -53,7 +53,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       suggestionsAvailableAlertText: 'People Picker Suggestions available',
       suggestionsContainerAriaLabel: 'Suggested contacts',
       searchForMoreText: 'Search more',
-      useInputText: 'Use this name',
+      forceResolveText: 'Use this name',
     };
 
     this._floatingPickerProps = {
@@ -65,7 +65,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       onRemoveSuggestion: this._onRemoveSuggestion,
       onValidateInput: this._validateInput,
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
-      showUseInput: this._shouldShowUseInput,
+      showForceResolve: this._shouldShowForceResolve,
     };
 
     this._selectedItemsListProps = {
@@ -197,7 +197,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _shouldShowUseInput(): boolean {
+  private _shouldShowForceResolve(): boolean {
     return this._validateInput(this._picker.floatingPicker.inputText)
       && this._picker.floatingPicker.suggestions.length === 0;
   }

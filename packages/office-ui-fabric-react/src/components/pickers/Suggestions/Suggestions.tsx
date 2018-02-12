@@ -81,9 +81,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   public render() {
     let {
-      useInputText,
+      forceResolveText,
       createGenericItem,
-      showUseInput,
+      showForceResolve,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -129,7 +129,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
             { headerText }
           </div>) : (null) }
-        { useInputText && this._shouldShowUseInput() && (
+        { forceResolveText && this._shouldShowForceResolve() && (
           <CommandButton
             componentRef={ this._resolveRef('_useInputButton') }
             className={ css(
@@ -141,7 +141,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               }) }
             onClick={ this._useInput }
           >
-            { useInputText }
+            { forceResolveText }
           </CommandButton>
         ) }
         { isLoading && (
@@ -367,8 +367,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   @autobind
-  private _shouldShowUseInput() {
-    return this.props.showUseInput ? this.props.showUseInput() : false;
+  private _shouldShowForceResolve() {
+    return this.props.showForceResolve ? this.props.showForceResolve() : false;
   }
 
   @autobind

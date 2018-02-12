@@ -96,7 +96,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({
       suggestionsVisible: false,
     });
-    console.log('hidepicker');
   }
 
   public showPicker(): void {
@@ -180,7 +179,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
         <TypedSuggestion
-          showUseInput={ this._shouldShowUseInput }
+          showForceResolve={ this._showForceResolve }
           createGenericItem={ this._onValidateInput }
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
@@ -508,8 +507,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   @autobind
-  private _shouldShowUseInput(): boolean {
-    return this.props.showUseInput ? this.props.showUseInput() : false;
+  private _showForceResolve(): boolean {
+    return this.props.showForceResolve ? this.props.showForceResolve() : false;
   }
 
   private _getTextFromItem(item: T, currentValue?: string): string {

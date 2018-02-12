@@ -99,9 +99,9 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   ) => ISuggestionModel<T>;
 
   /**
-   * The callback that should be called to see if the use input text command should be shown
+   * The callback that should be called to see if the force resolve command should be shown
    */
-  showUseInput?: () => boolean;
+  showForceResolve?: () => boolean;
 
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled

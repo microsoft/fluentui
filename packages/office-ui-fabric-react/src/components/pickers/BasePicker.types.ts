@@ -163,9 +163,9 @@ export interface IBasePickerSuggestionsProps {
    */
   searchForMoreText?: string;
   /**
-   * The text that appears indicated to the user that they can use the inputed text as an item
+   * The text that appears indicating to the use to force resolve the input
    */
-  useInputText?: string;
+  forceResolveText?: string;
   /**
    * The text to display while the results are loading.
    */
