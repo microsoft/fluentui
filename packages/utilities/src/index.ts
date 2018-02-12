@@ -8,6 +8,7 @@ export * from './DelayedRender';
 export * from './EventGroup';
 export * from './FabricPerformance';
 export * from './GlobalSettings';
+export * from './IClassNames';
 export * from './IDisposable';
 export * from './IPoint';
 export * from './IRectangle';
