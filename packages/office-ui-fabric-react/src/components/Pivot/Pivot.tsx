@@ -149,6 +149,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
+        name={ link.linkText }
       >
         { linkContent }
       </CommandButton>
