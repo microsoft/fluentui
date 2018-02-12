@@ -40,8 +40,18 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     } as IKeytipProps;
 
     this.keytipMap.Button1Pivot1Keytip = {
-      content: '1',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1'] })
+      content: '1B',
+      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'b'] })
+    } as IKeytipProps;
+
+    this.keytipMap.Button2Pivot1Keytip = {
+      content: '1A',
+      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'a'] })
+    } as IKeytipProps;
+
+    this.keytipMap.Button3Pivot1Keytip = {
+      content: 'M',
+      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['m'] })
     } as IKeytipProps;
 
     this.keytipMap.Button1Pivot2Keytip = {
@@ -66,6 +76,14 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
             <DefaultButton
               data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button1Pivot1Keytip.keySequences) }
               text='Test Button 1'
+            />
+            <DefaultButton
+              data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button2Pivot1Keytip.keySequences) }
+              text='Test Button 2'
+            />
+            <DefaultButton
+              data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button3Pivot1Keytip.keySequences) }
+              text='Test Button 3'
             />
           </PivotItem>
           <PivotItem
