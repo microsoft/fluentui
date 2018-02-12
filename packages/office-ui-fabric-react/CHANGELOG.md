@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Feb 2018 11:14:02 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Feb 2018 17:33:11 GMT and should not be manually modified.
+
+## 5.49.2
+Mon, 12 Feb 2018 17:33:11 GMT
+
+### Patches
+
+- presence indicator does not influence layout of Persona
 
 ## 5.49.1
 Mon, 12 Feb 2018 11:14:02 GMT
