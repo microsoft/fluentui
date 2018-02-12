@@ -94,13 +94,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       suggestionsVisible: true,
     });
 
-    if (this.suggestionStore.suggestions.length == 0
-      || this.props.inputElement && this.props.inputElement.textContent !== this.state.queryString)
+    if (this.suggestionStore.suggestions.length === 0
+      || this.props.inputElement && this.props.inputElement.textContent !== this.state.queryString) {
       if (this.state.queryString === '') {
         this.updateSuggestionWithZeroState();
       } else {
         this.updateValue(this.state.queryString);
       }
+    }
   }
 
   public componentDidMount(): void {
@@ -246,7 +247,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       this.setState({
         suggestionsLoading: true
-      })
+      });
 
       if (updatedValue !== undefined) {
         this.setState({

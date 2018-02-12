@@ -217,7 +217,8 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
-    return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 150));
+    // tslint:disable-next-line:no-any
+    return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 150));
   }
 
   @autobind

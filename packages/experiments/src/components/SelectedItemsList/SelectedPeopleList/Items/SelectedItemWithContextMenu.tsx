@@ -29,7 +29,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
   public render(): JSX.Element {
     return (
       <div
-        ref={ this._resolveRef("itemElement") }
+        ref={ this._resolveRef('itemElement') }
         onContextMenu={ this._onClick }
       >
         { this.props.renderedItem }

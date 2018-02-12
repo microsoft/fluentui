@@ -94,13 +94,18 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     } else {
       let onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
       let renderedItem = onRenderItem(props);
-      return (props.menuItems.length > 0 ?
-        <SelectedItemWithContextMenu
-          renderedItem={ renderedItem }
-          beginEditing={ this._beginEditing }
-          menuItems={ this._createMenuItems(props.item) }
-          item={ props.item } />
-        : renderedItem);
+      return (
+        props.menuItems.length > 0 ?
+          (
+            <SelectedItemWithContextMenu
+              renderedItem={ renderedItem }
+              beginEditing={ this._beginEditing }
+              menuItems={ this._createMenuItems(props.item) }
+              item={ props.item }
+            />
+          )
+          : renderedItem
+      );
     }
   }
 
