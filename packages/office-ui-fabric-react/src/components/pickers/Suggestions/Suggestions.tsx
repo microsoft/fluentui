@@ -83,7 +83,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     let {
       useInputText,
       createGenericItem,
-      isTextValid,
+      showUseInput,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -129,20 +129,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
             { headerText }
           </div>) : (null) }
-        { isLoading && (
-          <Spinner
-            className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
-            label={ loadingText }
-          />) }
-        { hasNoSuggestions ?
-          (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) :
-          this._renderSuggestions()
-        }
-        { useInputText && !moreSuggestionsAvailable && hasNoSuggestions && this._isTextValid() && (
+        { useInputText && this._shouldShowUseInput() && (
           <CommandButton
             componentRef={ this._resolveRef('_useInputButton') }
             className={ css(
-              'ms-SearchMore-button',
+              'ms-useInput-button',
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
@@ -153,6 +144,15 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             { useInputText }
           </CommandButton>
         ) }
+        { isLoading && (
+          <Spinner
+            className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
+            label={ loadingText }
+          />) }
+        { hasNoSuggestions ?
+          (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) :
+          this._renderSuggestions()
+        }
         { searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={ this._resolveRef('_searchForMoreButton') }
@@ -193,47 +193,68 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   @autobind
-  public tryHandleKeyDown(keyCode: number): boolean {
+  public tryHandleKeyDown(keyCode: number, currentSuggestionIndex: number): boolean {
     let isEventHandled = false;
     let newSelectedActionType = null;
     let currentSelectedAction = this.state.selectedActionType;
-    if (currentSelectedAction !== SuggestionActionType.none) {
-      if (keyCode === KeyCodes.down) {
-        switch (currentSelectedAction) {
-          case SuggestionActionType.useInputText:
-            if (this._searchForMoreButton) {
-              newSelectedActionType = SuggestionActionType.searchMore;
-            } else {
-              this._refocusOnSuggestions(keyCode);
-              newSelectedActionType = SuggestionActionType.none;
-            }
-            break;
-          case SuggestionActionType.searchMore:
+    let suggestionLength = this.props.suggestions.length;
+    if (keyCode === KeyCodes.down) {
+      switch (currentSelectedAction) {
+        case SuggestionActionType.useInputText:
+          if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
-            break;
-        }
-      } else if (keyCode === KeyCodes.up) {
-        switch (currentSelectedAction) {
-          case SuggestionActionType.useInputText:
+          } else if (this._searchForMoreButton) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          } else {
+            newSelectedActionType = SuggestionActionType.useInputText;
+          }
+          break;
+        case SuggestionActionType.searchMore:
+          if (this._useInputButton) {
+            newSelectedActionType = SuggestionActionType.useInputText;
+          } else if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
-            break;
-          case SuggestionActionType.searchMore:
-            if (this._useInputButton) {
-              newSelectedActionType = SuggestionActionType.useInputText;
-            } else {
-              this._refocusOnSuggestions(keyCode);
-              newSelectedActionType = SuggestionActionType.none;
-            }
-            break;
-        }
+          } else {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          }
+          break;
+        case SuggestionActionType.none:
+          if (currentSuggestionIndex === -1 && this._useInputButton) {
+            newSelectedActionType = SuggestionActionType.useInputText;
+          }
+          break;
       }
+    } else if (keyCode === KeyCodes.up) {
+      switch (currentSelectedAction) {
+        case SuggestionActionType.useInputText:
+          if (this._searchForMoreButton) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          } else if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+            break;
+          }
+        case SuggestionActionType.searchMore:
+          if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else if (this._useInputButton) {
+            newSelectedActionType = SuggestionActionType.useInputText;
+          }
+          break;
+        case SuggestionActionType.none:
+          if (currentSuggestionIndex === -1 && this._searchForMoreButton) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          }
+          break;
+      }
+    }
 
-      if (newSelectedActionType !== null) {
-        this.setState({ selectedActionType: newSelectedActionType });
-        isEventHandled = true;
-      }
+    if (newSelectedActionType !== null) {
+      this.setState({ selectedActionType: newSelectedActionType });
+      isEventHandled = true;
     }
 
     return isEventHandled;
@@ -260,18 +281,18 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   public focusAboveSuggestions(): void {
     let newSelectedActionType = null;
-    if (this._searchForMoreButton) {
-      this.setState({ selectedActionType: SuggestionActionType.searchMore });
-    } else if (this._useInputButton) {
-      this.setState({ selectedActionType: SuggestionActionType.useInputText });
-    }
-  }
-
-  public focusBelowSuggestions(): void {
     if (this._useInputButton) {
       this.setState({ selectedActionType: SuggestionActionType.useInputText });
     } else if (this._searchForMoreButton) {
       this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    }
+  }
+
+  public focusBelowSuggestions(): void {
+    if (this._searchForMoreButton) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    } else if (this._useInputButton) {
+      this.setState({ selectedActionType: SuggestionActionType.useInputText });
     }
   }
 
@@ -346,8 +367,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   @autobind
-  private _isTextValid() {
-    return this.props.isTextValid ? this.props.isTextValid() : false;
+  private _shouldShowUseInput() {
+    return this.props.showUseInput ? this.props.showUseInput() : false;
   }
 
   @autobind

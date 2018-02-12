@@ -54,6 +54,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     };
   }
 
+  public get inputText(): string {
+    return this.state.queryString;
+  }
+
+  // tslint:disable-next-line:no-any
+  public get suggestions(): any[] {
+    return this.suggestionStore.suggestions;
+  }
+
   public forceResolveSuggestion(): void {
     if (this.suggestionStore.hasSelectedSuggestion()) {
       this.completeSuggestion();
@@ -171,7 +180,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
         <TypedSuggestion
-          isTextValid={ this._tryValidateInput }
+          showUseInput={ this._shouldShowUseInput }
           createGenericItem={ this._onValidateInput }
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
@@ -384,7 +393,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         break;
 
       case KeyCodes.up:
-        if (this.suggestionElement.tryHandleKeyDown(keyCode)) {
+        if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
           ev.preventDefault();
           ev.stopPropagation();
         } else {
@@ -407,7 +416,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         break;
 
       case KeyCodes.down:
-        if (this.suggestionElement.tryHandleKeyDown(keyCode)) {
+        if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
           ev.preventDefault();
           ev.stopPropagation();
         } else {
@@ -499,8 +508,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   @autobind
-  private _tryValidateInput(): boolean {
-    return this.props.onValidateInput ? this.props.onValidateInput(this.state.queryString) : false;
+  private _shouldShowUseInput(): boolean {
+    return this.props.showUseInput ? this.props.showUseInput() : false;
   }
 
   private _getTextFromItem(item: T, currentValue?: string): string {

@@ -46,9 +46,9 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   useInputText?: string;
   /**
-   * The callback that should be called to see if the input text is valid
+   * The callback that should be called to see if the use input text command should be shown
    */
-  isTextValid?: () => boolean;
+  showUseInput?: () => boolean;
   /**
    * The callback that should be called when the user attempts to use the input text as as item
    */

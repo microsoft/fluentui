@@ -22,23 +22,12 @@ export interface IPeoplePickerExampleState {
   mostRecentlyUsed: IPersonaProps[];
 }
 
-const suggestionProps: IBasePickerSuggestionsProps = {
-  suggestionsHeaderText: 'Suggested People',
-  mostRecentlyUsedHeaderText: 'Suggested Contacts',
-  noResultsFoundText: 'No results found',
-  loadingText: 'Loading',
-  showRemoveButtons: true,
-  suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts',
-  searchForMoreText: 'Search more',
-  useInputText: 'Use this name',
-};
-
 // tslint:disable-next-line:no-any
 export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
+  private _suggestionProps: IBasePickerSuggestionsProps;
 
   constructor(props: {}) {
     super(props);
@@ -55,15 +44,28 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       mostRecentlyUsed: mru,
     };
 
+    this._suggestionProps = {
+      suggestionsHeaderText: 'Suggested People',
+      mostRecentlyUsedHeaderText: 'Suggested Contacts',
+      noResultsFoundText: 'No results found',
+      loadingText: 'Loading',
+      showRemoveButtons: true,
+      suggestionsAvailableAlertText: 'People Picker Suggestions available',
+      suggestionsContainerAriaLabel: 'Suggested contacts',
+      searchForMoreText: 'Search more',
+      useInputText: 'Use this name',
+    };
+
     this._floatingPickerProps = {
       suggestionsController: new SuggestionsController<IPersonaProps>(),
       onResolveSuggestions: this._onFilterChanged,
       getTextFromItem: this._getTextFromItem,
-      pickerSuggestionsProps: suggestionProps,
+      pickerSuggestionsProps: this._suggestionProps,
       key: 'normal',
       onRemoveSuggestion: this._onRemoveSuggestion,
       onValidateInput: this._validateInput,
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
+      showUseInput: this._shouldShowUseInput,
     };
 
     this._selectedItemsListProps = {
@@ -192,6 +194,12 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
     });
 
     return copyText;
+  }
+
+  @autobind
+  private _shouldShowUseInput(): boolean {
+    return this._validateInput(this._picker.floatingPicker.inputText)
+      && this._picker.floatingPicker.suggestions.length === 0;
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {

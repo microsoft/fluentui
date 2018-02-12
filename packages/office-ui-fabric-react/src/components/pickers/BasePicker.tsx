@@ -493,14 +493,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.up:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.suggestionElement.tryHandleKeyDown(keyCode)) {
+          if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
             ev.preventDefault();
             ev.stopPropagation();
           } else {
             if (this.suggestionElement.hasSuggestedAction() && this.suggestionStore.currentIndex === 0) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.suggestionElement.focusSearchForMoreButton();
+              this.suggestionElement.focusAboveSuggestions();
               this.suggestionStore.deselectAllSuggestions();
               this.forceUpdate();
             } else {
@@ -516,14 +516,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.down:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.suggestionElement.tryHandleKeyDown(keyCode)) {
+          if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
             ev.preventDefault();
             ev.stopPropagation();
           } else {
             if (this.suggestionElement.hasSuggestedAction() && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.suggestionElement.focusSearchForMoreButton();
+              this.suggestionElement.focusBelowSuggestions();
               this.suggestionStore.deselectAllSuggestions();
               this.forceUpdate();
             } else {
