@@ -151,14 +151,14 @@ export interface ICheckboxStyles {
   /**
    * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
    */
-  root: IStyle;
+  root?: IStyle;
 
   customStyles?: IStyle;
 
   /**
    * Style for the label part (contains the customized checkbox + text) when enabled.
    */
-  label: IStyle;
+  label?: IStyle;
 
   /**
    * Style for the label when reversed
@@ -173,7 +173,7 @@ export interface ICheckboxStyles {
   /**
    * Style for checkbox in its default unchecked/enabled state.
    */
-  checkbox: IStyle;
+  checkbox?: IStyle;
 
   /**
    * Style override for checkbox when enabled/unchecked/hovered.
@@ -213,7 +213,7 @@ export interface ICheckboxStyles {
   /**
    * Style for the checkmark in the default enabled/unchecked state.
    */
-  checkmark: IStyle;
+  checkmark?: IStyle;
 
   /**
    * Style override for the checkmark when enabled/checked.
@@ -233,7 +233,7 @@ export interface ICheckboxStyles {
   /**
    * Style for text appearing with the checkbox in its default enabled state.
    */
-  text: IStyle;
+  text?: IStyle;
 
   /**
    * Style override for text appearing with the checkbox when enabled/hovered.
