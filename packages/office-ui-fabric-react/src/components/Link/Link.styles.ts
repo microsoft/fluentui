@@ -8,7 +8,7 @@ import {
 } from './Link.types';
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
-  const { disabled, theme } = props;
+  const { isButton, isDisabled, theme } = props;
   const { semanticColors } = theme;
 
   return {
@@ -17,30 +17,28 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
       getFocusStyle(theme),
       {
         color: semanticColors.link,
+      },
+      isButton && {
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        display: 'inline',
+        fontSize: 'inherit',
+        margin: 0,
+        overflow: 'inherit',
+        padding: 0,
+        textAlign: 'left',
+        textOverflow: 'inherit',
         selectors: {
-          'button&': {
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'inline',
-            fontSize: 'inherit',
-            margin: 0,
-            overflow: 'inherit',
-            padding: 0,
-            textAlign: 'left',
-            textOverflow: 'inherit',
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'Highlight'
-              }
-            }
-          },
-          'a&': {
-            textDecoration: 'none'
+          [HighContrastSelector]: {
+            color: 'Highlight'
           }
         }
       },
-      disabled && [
+      !isButton && {
+        textDecoration: 'none'
+      },
+      isDisabled && [
         'is-disabled',
         {
           color: semanticColors.disabledText,
@@ -48,7 +46,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           pointerEvents: 'none'
         }
       ],
-      !disabled && {
+      !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
             color: semanticColors.linkHovered
