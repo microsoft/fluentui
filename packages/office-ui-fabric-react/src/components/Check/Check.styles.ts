@@ -1,6 +1,5 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import {
-  concatStyleSets,
   getTheme,
   HighContrastSelector,
   IStyle,
