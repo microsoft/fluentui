@@ -34,17 +34,9 @@ export class CheckBase extends BaseComponent<ICheckProps, {}> {
     const classNames = getClassNames(getStyles!, { theme: theme!, className, checked });
 
     return (
-      <div
-        className={ classNames.root }
-      >
-        { Icon({
-          className: classNames.circle,
-          iconName: 'CircleRing'
-        }) }
-        { Icon({
-          className: classNames.check,
-          iconName: 'StatusCircleCheckmark'
-        }) }
+      <div className={ classNames.root } >
+        <Icon iconName='CircleRing' className={ classNames.circle } />
+        <Icon iconName='StatusCircleCheckmark' className={ classNames.check } />
       </div>
     );
   }
