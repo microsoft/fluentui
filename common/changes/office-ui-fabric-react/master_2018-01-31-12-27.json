@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: fix disappearing line when hovering on column header",
+      "comment": "presence indicator does not influence layout of Persona",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "law@microsoft.com"
+  "email": "vibailly@microsoft.com"
 }
