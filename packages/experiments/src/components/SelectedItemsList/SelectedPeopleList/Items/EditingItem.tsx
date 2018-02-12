@@ -49,7 +49,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     const itemId = getId();
     const nativeProps = getNativeProps(this.props, inputProperties);
     return (
-      <div aria-labelledby={ 'ms-EditingItem editingItemPersona-' + itemId }>
+      <div aria-labelledby={ 'editingItemPersona-' + itemId } className={ styles.editingContainer }>
         <input
           { ...nativeProps}
           ref={ this._resolveInputRef }
@@ -94,7 +94,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   @autobind
   private _onInputBlur(ev: React.FocusEvent<HTMLElement>): void {
     if (ev.relatedTarget === null || (ev.relatedTarget as HTMLElement).className.indexOf('ms-SearchMore-button') === -1) {
-      //this._editingFloatingPicker.forceResolveSuggestion();
+      this._editingFloatingPicker.forceResolveSuggestion();
     }
   }
 
