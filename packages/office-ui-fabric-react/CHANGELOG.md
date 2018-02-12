@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Feb 2018 18:11:52 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Feb 2018 11:14:02 GMT and should not be manually modified.
+
+## 5.49.1
+Mon, 12 Feb 2018 11:14:02 GMT
+
+### Patches
+
+- Fix issue where CommandBar chevron doesn't change color with rest of control when disabled
+- DetailsList: fix disappearing line when hovering on column header
 
 ## 5.49.0
 Fri, 09 Feb 2018 18:11:52 GMT
