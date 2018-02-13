@@ -58,15 +58,6 @@ describe('BaseComponent', () => {
     BaseComponent.onError = _originalOnError;
   });
 
-  _buildTestFor('componentWillMount');
-  _buildTestFor('componentDidMount');
-  _buildTestFor('shouldComponentUpdate');
-  _buildTestFor('componentWillUpdate');
-  _buildTestFor('componentWillReceiveProps');
-  _buildTestFor('render');
-  _buildTestFor('componentDidUpdate');
-  _buildTestFor('componentWillUnmount');
-
   it('can resolve refs', () => {
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
@@ -84,18 +75,3 @@ describe('BaseComponent', () => {
     expect(component.root).toBeDefined();
   });
 });
-
-function _buildTestFor(methodName: string): void {
-  it(`calls the error logger on ${methodName} exception`, () => {
-    let lastErrorMessage;
-
-    BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
-
-    let c = new TestComponent({});
-
-    // tslint:disable-next-line:no-any
-    (c as any)[methodName]();
-
-    expect(lastErrorMessage).toBeDefined();
-  });
-}
