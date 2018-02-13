@@ -39,16 +39,6 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
                     checkForNoWrap: true,
                     items: [
                       {
-                        key: 'item1',
-                        name: 'Item 1',
-                        'data-no-horizontal-wrap': true
-                      },
-                      {
-                        key: 'item2',
-                        name: 'Item 2',
-                        'data-no-horizontal-wrap': true
-                      },
-                      {
                         key: 'bulb',
                         name: 'Lightbulb',
                         onRender: this._renderCharmMenuItem,
