@@ -80,7 +80,6 @@ storiesOf('ChoiceGroup', module)
   .add('With default size images', () => (
     <ChoiceGroup
       label='Pick one image'
-      defaultSelectedKey='bar'
       options={ [
         {
           key: 'bar',
