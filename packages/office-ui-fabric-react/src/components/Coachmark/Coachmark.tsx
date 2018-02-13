@@ -267,7 +267,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         this.setState({
-          collapsed: !isMouseInProximity
+          collapsed: !isMouseInProximity,
+          isMouseInProximity: isMouseInProximity
         });
       }
 
