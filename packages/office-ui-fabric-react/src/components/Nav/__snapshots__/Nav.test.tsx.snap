@@ -71,10 +71,6 @@ exports[`Nav renders Nav correctly 1`] = `
                     display: block;
                     position: relative;
                   }
-                  &:hover {
-                    background-color: #f8f8f8;
-                    color: #333333;
-                  }
               name=""
             >
               <button
@@ -132,6 +128,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       z-index: 1;
                     }
                     .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
                       color: #333333;
                     }
                     &:hover {
