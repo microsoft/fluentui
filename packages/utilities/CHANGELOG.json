@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.10.3",
+      "tag": "@uifabric/utilities_v5.10.3",
+      "date": "Tue, 13 Feb 2018 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "938be5b0904db106f39b5afdc0bd6a79a78462cd",
+            "comment": "Export IClassNames fro Utilities for creating private getClassNames methods"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.2",
       "tag": "@uifabric/utilities_v5.10.2",
       "date": "Thu, 08 Feb 2018 11:13:51 GMT",
