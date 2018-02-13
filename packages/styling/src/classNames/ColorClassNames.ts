@@ -296,7 +296,7 @@ export interface IColorClassNames {
   greenLightBorderHover: string;
 }
 
-export const ColorClassNames: Partial<IColorClassNames> = {};
+export const ColorClassNames: IColorClassNames = {} as IColorClassNames;
 
 for (const colorName in DefaultPalette) {
   if (DefaultPalette.hasOwnProperty(colorName)) {
@@ -324,7 +324,7 @@ for (const colorName in DefaultPalette) {
  * Defines a getter for the given class configuration.
  */
 function _defineGetter(
-  obj: Partial<IColorClassNames>,
+  obj: IColorClassNames,
   colorName: string,
   suffix: string,
   isHover: boolean,
