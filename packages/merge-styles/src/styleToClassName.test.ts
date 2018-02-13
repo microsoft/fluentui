@@ -97,7 +97,7 @@ describe('styleToClassName', () => {
   });
 
   it('does not emit a rule which has an undefined value', () => {
-    expect(styleToClassName({fontFamily: undefined})).toEqual('');
+    expect(styleToClassName({ fontFamily: undefined })).toEqual('');
     expect(_stylesheet.getRules()).toEqual('');
   });
 
@@ -144,6 +144,17 @@ describe('styleToClassName', () => {
 
     expect(newClassName).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1 > *{background:red;}');
+  });
+
+  it('can register global selectors', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(button)': { background: 'red' }
+      },
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('button{background:red;}');
   });
 
   it('can expand an array of rules', () => {

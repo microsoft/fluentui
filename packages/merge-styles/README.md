@@ -195,6 +195,21 @@ This would register the rules:
 .css-0 .child { background: green; }
 ```
 
+### Global selectors
+
+While we suggest avoiding global selectors, there are some cases which make sense to register things globally. Keep in mind that global selectors can't be guaranteed unique and may suffer from specificity problems and versioning issues in the case that two different versions of your library get rendered on the page.
+
+To register a selector globally, wrap it in a `:global()` wrapper:
+
+```tsx
+{
+  selectors: {
+    ':global(button): {
+      overflow: 'visible'
+    }
+  }
+}
+
 ### Media queries
 
 Media queries can be applied via selectors. For example, this style will produce a class which has a red background when above 600px, and green when at or below 600px:

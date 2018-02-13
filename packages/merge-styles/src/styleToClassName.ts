@@ -58,7 +58,9 @@ function extractRules(
             if (selectors.hasOwnProperty(newSelector)) {
               const selectorValue = selectors[newSelector];
 
-              if (newSelector.indexOf('@media') === 0) {
+              if (newSelector.indexOf(':global(') === 0) {
+                newSelector = newSelector.replace(/:global\(|\)$/g, '');
+              } else if (newSelector.indexOf('@media') === 0) {
                 newSelector = newSelector + '{' + currentSelector;
               } else if (newSelector.indexOf(':') === 0) {
                 newSelector = currentSelector + newSelector;
