@@ -220,15 +220,16 @@ export interface INavStyleProps {
   theme: ITheme;
   className?: string;
   isOnTop?: boolean;
-  // isGroupExpanded?: boolean;
-  // isLinkExpanded?: boolean;
+  isLink?: boolean;
+  isGroup?: boolean;
   isExpanded?: boolean;
   isSelected?: boolean;
+  isButtonEntry?: boolean;
 
-  navnodeHeight?: string;
-  hasExpandButtonLinkLeftPadding?: string;
-  noExpandButtonLinkLeftPadding?: string;
-  linkRightPadding?: string;
+  navnodeHeight?: number;
+  hasExpandButtonLinkLeftPadding?: number;
+  noExpandButtonLinkLeftPadding?: number;
+  linkRightPadding?: number;
 
   /**
    * Inherited from INavProps

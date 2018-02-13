@@ -176,9 +176,11 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
       isSelected: this._isLinkSelected(link),
+      isButtonEntry: link.onClick && !link.forceAnchor,
       groups
     });
 
+    console.log(link.onClick && !link.forceAnchor);
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
@@ -216,6 +218,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       theme: theme!,
       isExpanded: !!link.isExpanded,
       isSelected: this._isLinkSelected(link),
+      isLink: true,
       groups
     });
 
@@ -301,6 +304,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
+      isGroup: true,
       isExpanded: !this.state.isGroupCollapsed![group.name!],
       groups
     });
@@ -322,6 +326,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
             onClick={ this._onGroupHeaderClicked.bind(this, group) }
           >
             <Icon
+              className={ classNames.chevronIcon }
               // className={ css(
               //   'ms-Nav-chevron',
               //   styles.chevronIcon,

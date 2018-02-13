@@ -3,11 +3,15 @@ import {
   AnimationClassNames,
   IStyle,
   ITheme,
+  getFocusStyle,
+  DefaultFontStyles,
+  FontSizes,
+  FontWeights
 } from '../../Styling';
-import { createFontStyles, FontSizes, FontWeights } from '../../../../styling/lib/styles/fonts';
-import { textAreaProperties } from 'src/index.bundle';
-import { fontFace } from '../../../../merge-styles/lib/fontFace';
-import { DefaultFontStyles } from '../../../../styling/lib/styles/DefaultFontStyles';
+// import { createFontStyles, FontSizes, FontWeights } from '../../../../styling/lib/styles/fonts';
+// import { textAreaProperties } from 'src/index.bundle';
+// import { fontFace } from '../../../../merge-styles/lib/fontFace';
+// import { DefaultFontStyles } from '../../../../styling/lib/styles/DefaultFontStyles';
 
 export const getStyles = (
   props: INavStyleProps
@@ -17,13 +21,14 @@ export const getStyles = (
     theme,
     isOnTop,
     isExpanded,
-    // isGroupExpanded,
-    // isLinkExpanded,
+    isGroup,
+    isLink,
     isSelected,
-    navnodeHeight = '36px',
-    hasExpandButtonLinkLeftPadding = '28px',
-    noExpandButtonLinkLeftPadding = '20px',
-    linkRightPadding = '20px'
+    isButtonEntry,
+    navnodeHeight = 36,
+    hasExpandButtonLinkLeftPadding = 28,
+    noExpandButtonLinkLeftPadding = 20,
+    linkRightPadding = 20
   } = props;
 
   const { palette, semanticColors } = theme;
@@ -57,10 +62,11 @@ export const getStyles = (
     ],
     link: [
       'ms-Nav-link',
+      getFocusStyle(theme),
       {
         display: 'block',
         position: 'relative',
-        height: navnodeHeight,
+        height: `${navnodeHeight}px`,
         width: '100%',
         lineHeight: 'navnodeHeight',
         textDecoration: 'none',
@@ -73,33 +79,27 @@ export const getStyles = (
             backgroundColor: palette.neutralLighterAlt,
             color: semanticColors.bodyText
           },
-          '$compositeLink &': [
-            isSelected && {
-              color: palette.themePrimary,
-              backgroundColor: palette.neutralLighter,
-              selectors: {
-                '&:after': {
-                  borderLeft: `2px solid ${palette.themePrimary}`,
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0
-                }
-              }
-            }
-          ]
+        },
+
+      },
+      isSelected && {
+        color: palette.themePrimary,
+        backgroundColor: palette.neutralLighter,
+        selectors: {
+          '&:after': {
+            borderLeft: `2px solid ${palette.themePrimary}`,
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          }
         }
       },
-      // isLinkExpanded && 'is-expanded' && {
-      //   selectors: {
-      //     '$chevronIcon': {
-      //       transform: 'rotate(-180deg)'
-      //     }
-      //   }
-      // },
-      isSelected && 'is-selected'
+      isButtonEntry && {
+        color: palette.themePrimary
+      }
     ],
     compositeLink: [
       'ms-Nav-compositeLink',
@@ -112,14 +112,15 @@ export const getStyles = (
     ],
     chevronButton: [
       'ms-Nav-chevronButton',
+      getFocusStyle(theme),
       {
         display: 'block',
         fontWeight: FontWeights.regular,
         fontSize: FontSizes.small,
         textAlign: 'left',
-        lineHeight: navnodeHeight,
+        lineHeight: `${navnodeHeight}px`,
         margin: '5px 0',
-        padding: `0px, ${linkRightPadding}, 0px, ${hasExpandButtonLinkLeftPadding}`,
+        padding: `0px, ${linkRightPadding}px, 0px, ${hasExpandButtonLinkLeftPadding}px`,
         border: 'none',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
@@ -139,32 +140,41 @@ export const getStyles = (
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
           },
-          '$group &': [
-            // fonts.large, //from .groupHeaderFontSize
-            {
-              width: '100%',
-              height: navnodeHeight,
-              borderBottom: `1px solid ${semanticColors.bodyDivider}`
-            },
-            DefaultFontStyles.large
-          ],
-          '$compositeLink &': [
-            isSelected && {
-              color: palette.themePrimary,
-              backgroundColor: palette.neutralLighterAlt,
-              selectors: {
-                '&:after': {
-                  borderLeft: `2px solid ${palette.themePrimary}`,
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0
-                }
-              }
-            }
-          ]
+        }
+      },
+      isGroup && [
+        {
+          width: '100%',
+          height: `${navnodeHeight}px`,
+          borderBottom: `1px solid ${semanticColors.bodyDivider}`
+        },
+        DefaultFontStyles.large
+      ],
+      isLink && [
+        {
+          display: 'block',
+          width: `${hasExpandButtonLinkLeftPadding - 2}`,
+          height: `${navnodeHeight - 2}px`,
+          position: 'absolute',
+          top: '1px',
+          zIndex: 1,
+          padding: 0,
+          margin: 0
+        }
+      ],
+      isSelected && {
+        color: palette.themePrimary,
+        backgroundColor: palette.neutralLighterAlt,
+        selectors: {
+          '&:after': {
+            borderLeft: `2px solid ${palette.themePrimary}`,
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          }
         }
       }
     ],
@@ -173,13 +183,16 @@ export const getStyles = (
       {
         position: 'absolute',
         left: '8px',
-        height: navnodeHeight,
-        lineHeight: navnodeHeight,
+        height: `${navnodeHeight}px`,
+        lineHeight: `${navnodeHeight}px`,
         fontSize: '12px',
         transition: 'transform .1s linear',
       },
       isExpanded && {
         transform: 'rotate(-180deg)'
+      },
+      isLink && {
+        top: 0
       }
     ],
     navItem: [

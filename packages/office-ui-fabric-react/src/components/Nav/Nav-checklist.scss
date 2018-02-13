@@ -1,9 +1,9 @@
 @import '../../common/common';
 
-$navnode-height: 36px;
-$hasExpandButtonLinkLeftPadding: 28px;
-$noExpandButtonLinkLeftPadding: 20px;
-$linkRightPadding: 20px;
+// $navnode-height: 36px;
+// $hasExpandButtonLinkLeftPadding: 28px;
+// $noExpandButtonLinkLeftPadding: 20px;
+// $linkRightPadding: 20px;
 
 // .root {
 //   overflow-y: auto;
@@ -17,12 +17,12 @@ $linkRightPadding: 20px;
 
 // .navItems {
   // list-style-type: none;
-}
+// }
 
 // .navItems,
 // .navItems > .navItem {
   // padding: 0;
-}
+// }
 
 // .groupContent {
   // display: none;
@@ -32,6 +32,10 @@ $linkRightPadding: 20px;
 // .group.groupIsExpanded .groupContent {
 //   display: block;
 // }
+
+/**
+ *  These are not used
+ */
 
 .icon {
   padding: 0px;
@@ -80,7 +84,7 @@ $linkRightPadding: 20px;
   //   background: $ms-color-neutralLighterAlt;
   // }
 
-}
+// }
 
 // .chevronIcon {
   // position: absolute;
@@ -91,9 +95,9 @@ $linkRightPadding: 20px;
   // transition: transform .1s linear;
 // }
 
-.chevronIsExpanded {
-  transform: rotate(-180deg);
-}
+// .chevronIsExpanded {
+//   transform: rotate(-180deg);
+// }
 
 // .linkText {
 //   margin: 0 4px;
@@ -102,24 +106,24 @@ $linkRightPadding: 20px;
 //   text-overflow: ellipsis;
 // }
 
-.compositeLink {
-  // display: block;
-  // position: relative;
+// .compositeLink {
+//   // display: block;
+//   // position: relative;
 
-  .chevronButton.chevronButtonLink {
-    display: block;
-    width: $hasExpandButtonLinkLeftPadding - 2;
-    height: $navnode-height - 2;
-    position: absolute;
-    top: 1px;
-    z-index: 1;
-    padding: 0;
-    margin: 0;
+//   .chevronButton.chevronButtonLink {
+//     display: block;
+    // width: $hasExpandButtonLinkLeftPadding - 2;
+    // height: $navnode-height - 2;
+//     position: absolute;
+//     top: 1px;
+//     z-index: 1;
+//     padding: 0;
+//     margin: 0;
 
-    .chevronIcon {
-      top: 0;
-    }
-  }
+//     .chevronIcon {
+//       top: 0;
+//     }
+//   }
 
   // color: $bodyTextColor;
   // background: $bodyBackgroundColor;
@@ -139,26 +143,26 @@ $linkRightPadding: 20px;
   //   }
   // }
 
-  &.compositeLinkIsSelected {
-    & .link,
-    & .chevronButton {
+  // &.compositeLinkIsSelected {
+  //   & .link,
+  //   & .chevronButton {
 
-      color: $ms-color-themePrimary;
-      background: $ms-color-neutralLighter;
+  //     color: $ms-color-themePrimary;
+  //     background: $ms-color-neutralLighter;
 
-      &:after {
-        @include border-left(2px, solid, $ms-color-themePrimary);
+  //     &:after {
+  //       @include border-left(2px, solid, $ms-color-themePrimary);
 
-        content: '';
-        position: absolute;
-        top: 0;
-        @include ms-right(0);
-        bottom: 0;
-        @include ms-left(0);
-      }
-    }
-  }
-}
+  //       content: '';
+  //       position: absolute;
+  //       top: 0;
+  //       @include ms-right(0);
+  //       bottom: 0;
+  //       @include ms-left(0);
+  //     }
+  //   }
+  // }
+// }
 
 // .link {
 //   display: block;
@@ -174,20 +178,24 @@ $linkRightPadding: 20px;
 //   overflow: hidden;
 // }
 
-.buttonEntry {
-  color: $ms-color-themePrimary;
-}
+// .buttonEntry {
+//   color: $ms-color-themePrimary;
+// }
 
 // .groupHeaderFontSize {
 //   @include ms-font-l;
 // }
 
-.chevronButton,
-.chevronButtonGroup,
-.chevronButtonLink,
-.link {
-  @include focus-border();
-}
+// .chevronButton,
+// .chevronButtonGroup,
+// .chevronButtonLink,
+// .link {
+//   @include focus-border(); // getFocusStyle(theme) ?
+// }
+
+/**
+ * Pretty sure this is unused - Don't see labels used
+ */
 
 .root .link {
   :global(.ms-Button-label) {
