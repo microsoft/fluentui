@@ -153,7 +153,7 @@ export const getStyles = (
       isLink && [
         {
           display: 'block',
-          width: `${hasExpandButtonLinkLeftPadding - 2}`,
+          width: `${hasExpandButtonLinkLeftPadding - 2}px`,
           height: `${navnodeHeight - 2}px`,
           position: 'absolute',
           top: '1px',
