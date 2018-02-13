@@ -308,7 +308,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 direction={ arrowDirection }
                 isCircularNavigation={ true }
                 allowTabKey={ true }
-                checkForNoWrap={ !!checkForNoWrap }
+                checkForNoWrap={ checkForNoWrap }
               >
                 <ul
                   role='presentation'
