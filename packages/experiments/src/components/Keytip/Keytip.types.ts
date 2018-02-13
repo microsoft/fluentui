@@ -1,6 +1,6 @@
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IPoint } from '../../Utilities';
 import { IKeySequence } from '../../utilities/keysequence';
 
 export interface IKeytip {
@@ -18,20 +18,20 @@ export interface IKeytipProps {
    * Content to put inside the keytip
    *
    * @type {string}
-   * @memberof IKeytipProps
    */
   content?: string;
 
   /**
-  * Optional theme for component
-  */
+   * Theme for the component
+   *
+   * @type {ITheme}
+   */
   theme?: ITheme;
 
   /**
    * T/F if the corresponding control is disabled
    *
    * @type {boolean}
-   * @memberof IKeytipProps
    */
   disabled?: boolean;
 
@@ -39,7 +39,6 @@ export interface IKeytipProps {
    * T/F if the keytip is visible
    *
    * @type {boolean}
-   * @memberof IKeytipProps
    */
   visible?: boolean;
 
@@ -47,13 +46,21 @@ export interface IKeytipProps {
    * Function to call when this keytip is activated
    *
    * @type {() => void}
-   * @memberof IKeytipProps
    */
   onExecute?: () => void;
 
   /**
+   * Function to call when the keytip is returned to
+   *
+   * @type {() => void}
+   */
+  onReturn?: () => void;
+
+  /**
    * Array of KeySequences which is the full key sequence to trigger this keytip
    * Should not include initial 'start' key sequence
+   *
+   * @type {IKeySequence[]}
    */
   keySequences: IKeySequence[];
 
@@ -61,18 +68,36 @@ export interface IKeytipProps {
    * ICalloutProps to pass to the callout element
    *
    * @type {string}
-   * @memberof IKeytipProps
    */
   calloutProps?: ICalloutProps;
 
   /**
-  * Optional styles for the component.
-  */
+   * Optional styles for the component.
+   *
+   * @type {IStyleFunction<IKeytipStyleProps, IKeytipStyles>}
+   */
   getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
+
+  /**
+   * Offset from the top-left corner of the component for positioning this keytip
+   *
+   * @type {IPoint}
+   */
+  offset?: IPoint;
+
+  /**
+   * If defined, means this keytip has been moved to an overflow set and this is the sequence to get to the
+   * new component
+   *
+   * @type {IKeySequence}
+   */
+  overflowSetSequence?: IKeySequence;
 
   /**
    * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
    * their children registered after the initial rendering of the DOM.
+   *
+   * @type {boolean}
    */
   hasChildrenNodes?: boolean;
 }

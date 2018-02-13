@@ -6,22 +6,34 @@ import {
 } from '../../utilities/keysequence';
 
 export interface IKeytipTreeNode {
-  // ID of the <Keytip> DOM element. Needed to locate the correct keytip in the KeytipLayer's 'keytip' state array
+  /**
+   * ID of the <Keytip> DOM element. Needed to locate the correct keytip in the KeytipLayer's 'keytip' state array
+   */
   id: string;
 
-  // KeySequence that invokes this KeytipTreeNode's onExecute function
+  /**
+   * KeySequence that invokes this KeytipTreeNode's onExecute function
+   */
   keytipSequence: IKeySequence;
 
-  // Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps
+  /**
+   * Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps
+   */
   onExecute?: () => void;
 
-  // Function to execute when we 'go back' to this keytip's parent.
-  onGoBack?: () => void;
+  /**
+   * Function to execute when we return to this keytip
+   */
+  onReturn?: () => void;
 
-  // List of keytips that should become visible when this keytip is pressed, can be empty
+  /**
+   * List of keytips that should become visible when this keytip is pressed, can be empty
+   */
   children: string[];
 
-  // Parent keytip
+  /**
+   * Parent keytip ID
+   */
   parent: string;
 
   /**
@@ -35,7 +47,15 @@ export interface IKeytipTreeNode {
    */
   visible?: boolean;
 
-  // TODO: may need to know if keytip is disabled, if so shouldn't change visibility when start of sequence is pressed
+  /**
+   * T/F if this keytip's component is currently disabled
+   */
+  disabled?: boolean;
+
+  /**
+   * Link to another keytip node if this is a persisted keytip
+   */
+  keytipLink?: IKeytipTreeNode;
 }
 
 export interface IKeytipTreeNodeMap {
