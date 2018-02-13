@@ -541,6 +541,23 @@ describe('ContextualMenu', () => {
     expect(menuMountedFirst).toEqual(false);
   });
 
+  it('merges callout classNames', () => {
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ [{
+          name: 'TestText 0',
+          key: 'TestKey0'
+        }] }
+        calloutProps={ { className: 'foo' } }
+      />
+    );
+
+    let callout = document.querySelector('.ms-Callout') as HTMLElement;
+    expect(callout).toBeDefined();
+    expect(callout.classList.contains('ms-ContextualMenu-Callout')).toBeTruthy();
+    expect(callout.classList.contains('foo')).toBeTruthy();
+  });
+
   it('Contextual Menu submenu has chrevron icon even if submenu has no items', () => {
     const menuWithEmptySubMenu: IContextualMenuItem[] = [
       {
