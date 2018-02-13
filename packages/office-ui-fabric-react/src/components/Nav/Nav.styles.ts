@@ -66,7 +66,13 @@ export const getStyles = (
         display: 'block',
         position: 'relative',
         color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground
+        backgroundColor: semanticColors.bodyBackground,
+        selectors: {
+          '&:hover': {
+            backgroundColor: palette.neutralLighterAlt,
+            color: semanticColors.bodyText
+          }
+        }
       }
     ],
     link: [
@@ -83,13 +89,12 @@ export const getStyles = (
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        selectors: {
-          '$compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt,
-            color: semanticColors.bodyText
-          },
-        },
-
+        // selectors: {
+        //   '$compositeLink:hover &': {
+        //     backgroundColor: palette.neutralLighterAlt,
+        //     color: semanticColors.bodyText
+        //   },
+        // },
       },
       isSelected && {
         color: palette.themePrimary,
@@ -127,19 +132,20 @@ export const getStyles = (
         overflow: 'hidden',
         cursor: 'pointer',
         color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground,
+        // backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: 'transparent',
         selectors: {
           '&:visited': {
             color: 'inherit'
           },
-          '&:hover': {
-            color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
-          },
-          '$compositeLink:hover &': {
-            color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
-          },
+          // '&:hover': { // not really needed
+          //   color: semanticColors.bodyText,
+          //   backgroundColor: palette.neutralLighterAlt
+          // },
+          // '$compositeLink:hover &': { // works
+          //   color: semanticColors.bodyText,
+          //   backgroundColor: palette.neutralLighterAlt
+          // },
         }
       },
       isGroup && [
