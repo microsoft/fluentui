@@ -156,8 +156,8 @@ export class KeytipManager {
    * Processes inputs from the document listener and traverse the keytip tree
    * @param keySequence - Keys pressed by the user
    */
-  public processInput(keySequence: IKeySequence): void {
-    let currentSequence: IKeySequence = { keys: [...this.currentSequence.keys, ...keySequence.keys] };
+  public processInput(key: string): void {
+    let currentSequence: IKeySequence = { keys: [...this.currentSequence.keys, ...[key]] };
 
     if (this.keytipTree.currentKeytip) {
       // If currentKeytip is a node, look at all children of currentKeytip

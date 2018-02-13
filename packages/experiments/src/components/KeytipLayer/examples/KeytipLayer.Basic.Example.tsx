@@ -41,7 +41,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
     this.keytipMap.Button1Pivot1Keytip = {
       content: '1B',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'b'] })
+      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'b'] }),
     } as IKeytipProps;
 
     this.keytipMap.Button2Pivot1Keytip = {
@@ -76,6 +76,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
             <DefaultButton
               data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button1Pivot1Keytip.keySequences) }
               text='Test Button 1'
+            // onClick={ () => { alert('Clicked Button 1'); } }
             />
             <DefaultButton
               data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button2Pivot1Keytip.keySequences) }
@@ -121,4 +122,10 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
       ktpMngr.registerKeytip(this.keytipMap[component]);
     }
   }
+
+  // TODO use this to getExecute of buttons
+  // private _getExecute(id: string): () => void {
+  //   let element = document.querySelector(id) as HTMLElement;
+  //   return element.click;
+  // }
 }
