@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix bug: '#3940 Validate function works incorrect with attribute validateOnFocusOut'",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "ia.samoylov@icloud.com"
+}

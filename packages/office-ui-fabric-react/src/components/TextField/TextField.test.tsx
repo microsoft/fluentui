@@ -84,7 +84,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        prefix={ examplePrefix}
+        prefix={ examplePrefix }
         suffix={ exampleSuffix }
       />
     );
@@ -287,6 +287,11 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input '));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should trigger validation only on blur', () => {
@@ -305,12 +310,17 @@ describe('TextField', () => {
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      ReactTestUtils.Simulate.focus(inputDOM);
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
       expect(validationCallCount).toEqual(1);
 
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input va'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should trigger validation on both blur and focus', () => {
@@ -335,9 +345,20 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before foc'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before focus'));
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).toEqual(3);
+
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(validationCallCount).toEqual(3);
+      expect(validationCallCount).toEqual(4);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before bl'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(5);
     });
 
     it('should not trigger validation on component mount', () => {
