@@ -284,16 +284,26 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
-    this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      className!,
-      !!isOpen,
-      !!disabled,
-      !!required,
-      !!focused,
-      !!allowFreeform,
-      !!hasErrorMessage
-    );
+    this._classNames = this.props.getClassNames ?
+      this.props.getClassNames(
+        theme!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage,
+        className) :
+      getClassNames(
+        getStyles(theme!, customStyles),
+        className!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage
+      );
 
     return (
       <div { ...divProps } ref='root' className={ this._classNames.container }>
