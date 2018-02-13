@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: fix disappearing line when hovering on column header",
+      "comment": "Fix bug: '#3940 Validate function works incorrect with attribute validateOnFocusOut'",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "law@microsoft.com"
+  "email": "ia.samoylov@icloud.com"
 }
