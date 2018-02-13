@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
+import { ISpinButtonClassNames } from './SpinButton.classNames';
+import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 
 export interface ISpinButton {
@@ -135,6 +137,18 @@ export interface ISpinButtonProps {
    * Custom styling for individual elements within the button DOM.
    */
   styles?: Partial<ISpinButtonStyles>;
+
+  /**
+   * Custom function for providing the classNames for the spinbutton. Can be used to provide
+   * all styles for the component instead of applying them on top of the default styles.
+   */
+  getClassNames?: (
+    theme: ITheme,
+    disabled: boolean,
+    isFocused: boolean,
+    keyboardSpinDirection: KeyboardSpinDirection,
+    labelPosition?: Position
+  ) => ISpinButtonClassNames;
 
   /**
    * Custom styles for the upArrow button.
