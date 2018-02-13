@@ -2,6 +2,7 @@ import {
   FontSizes,
   FontWeights,
   IRawStyle,
+  IStyle,
   ITheme,
   concatStyleSets,
   getFocusStyle,
@@ -10,6 +11,9 @@ import {
 import {
   IComboBoxOptionStyles,
   IComboBoxStyles,
+  IComboBoxStyleProps,
+  IComboBoxCaretStyleProps,
+  IComboBoxOptionStyleProps
 } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
@@ -51,10 +55,14 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawSty
 });
 
 export const getOptionStyles = memoizeFunction((
-  theme: ITheme,
-  customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
-  customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>
+  props: IComboBoxOptionStyleProps
 ): Partial<IComboBoxOptionStyles> => {
+
+  const {
+    theme,
+    customStylesForAllOptions,
+    customStylesForCurrentOption
+  } = props;
 
   const { semanticColors, palette } = theme;
 
@@ -129,13 +137,13 @@ export const getOptionStyles = memoizeFunction((
     }
   };
 
-  return concatStyleSets(optionStyles, customStylesForAllOptions, customOptionStylesForCurrentOption);
+  return concatStyleSets(optionStyles, customStylesForAllOptions, customStylesForCurrentOption);
 });
 
 export const getCaretDownButtonStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: Partial<IButtonStyles>,
+  props: IComboBoxCaretStyleProps
 ): IButtonStyles => {
+  const { theme, customCaretDownButtonStyles: customStyles } = props;
   const { semanticColors } = theme;
 
   const caretButtonTextColor = semanticColors.bodySubtext;
@@ -192,10 +200,19 @@ export const getCaretDownButtonStyles = memoizeFunction((
 });
 
 export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: Partial<IComboBoxStyles>,
-  comboBoxOptionWidth?: string,
+  props: IComboBoxStyleProps
 ): Partial<IComboBoxStyles> => {
+  const {
+    theme,
+    comboBoxOptionWidth,
+    isOpen,
+    disabled,
+    required,
+    focused,
+    allowFreeform,
+    hasErrorMessage,
+    customStyles
+  } = props;
 
   const { semanticColors, fonts, palette } = theme;
   const ComboBoxRootBackground = semanticColors.bodyBackground;
@@ -368,5 +385,60 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return concatStyleSets(styles, customStyles);
+  let mergedStyles: Partial<IComboBoxStyles> = concatStyleSets(styles, customStyles);
+
+  return {
+    container: [
+      'ms-ComboBox-container',
+      mergedStyles.container
+    ],
+    label: [
+      mergedStyles.label,
+      disabled && mergedStyles.labelDisabled
+    ],
+    root: [
+      'ms-ComboBox',
+      hasErrorMessage ? mergedStyles.rootError : isOpen && 'is-open',
+      required && 'is-required',
+      mergedStyles.root,
+      !allowFreeform && mergedStyles.rootDisallowFreeForm,
+      hasErrorMessage ? mergedStyles.rootError : !disabled && focused && mergedStyles.rootFocused,
+      !disabled && {
+        selectors: {
+          ':hover': hasErrorMessage ? mergedStyles.rootError : !isOpen && !focused && mergedStyles.rootHovered,
+          ':active': hasErrorMessage ? mergedStyles.rootError : mergedStyles.rootPressed,
+          ':focus': hasErrorMessage ? mergedStyles.rootError : mergedStyles.rootFocused
+        }
+      },
+      disabled && [
+        'is-disabled', mergedStyles.rootDisabled
+      ],
+    ],
+    input: [
+      'ms-ComboBox-Input',
+      mergedStyles.input,
+      disabled && mergedStyles.inputDisabled
+    ],
+    errorMessage: mergedStyles.errorMessage,
+    callout: [
+      'ms-ComboBox-callout',
+      mergedStyles.callout
+    ],
+    optionsContainerWrapper: [
+      'ms-ComboBox-optionsContainerWrapper',
+      mergedStyles.optionsContainerWrapper
+    ],
+    optionsContainer: [
+      'ms-ComboBox-optionsContainer',
+      mergedStyles.optionsContainer
+    ],
+    header: [
+      'ms-ComboBox-header',
+      mergedStyles.header
+    ],
+    divider: [
+      'ms-ComboBox-divider',
+      mergedStyles.divider
+    ]
+  };
 });

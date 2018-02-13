@@ -3,7 +3,9 @@
 exports[`ComboBox Renders ComboBox correctly 1`] = `
 <div
   autoComplete="on"
-  className="ms-ComboBox-container "
+  className=
+      ms-ComboBox-container
+
 >
   <div
     className=

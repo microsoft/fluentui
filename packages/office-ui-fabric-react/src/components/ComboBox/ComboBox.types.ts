@@ -3,7 +3,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
 
 export interface IComboBox {
   /**
@@ -98,19 +98,40 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Custom styles for this component
+   *
+   * @deprecated styles prop will be removed in favor of getStyles in 6.0
    */
   styles?: Partial<IComboBoxStyles>;
 
   /**
    * Styles for the caret down button.
+   *
+   * @deprecated caretDownButtonStyles prop will be removed in favor of getCaretDownButtonStyles in 6.0
    */
   caretDownButtonStyles?: Partial<IButtonStyles>;
 
   /**
    * Default styles that should be applied to ComboBox options,
    * in case an option does not come with user-defined custom styles
+   *
+   * @deprecated comboBoxOptionStyles prop will be removed in favor of getOptionStyles in 6.0
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
+
+  /**
+    * Custom styles function for this component
+    */
+  getStyles?: IStyleFunction<IComboBoxStyleProps, IComboBoxStyles>;
+
+  /**
+   * Custom styles function for this component
+   */
+  getOptionStyles?: IStyleFunction<IComboBoxStyleProps, IComboBoxStyles>;
+
+  /**
+   * Custom styles function for this component
+   */
+  getCaretDownButtonStyles?: IStyleFunction<IComboBoxCaretStyleProps, IComboBoxStyles>;
 
   /**
    * When options are scrollable the selected option is positioned at the top of the callout when it is opened (unless it has reached the end of the scrollbar).
@@ -138,6 +159,82 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default true
    */
   isButtonAriaHidden?: boolean;
+}
+
+export interface IComboBoxStyleProps {
+  /**
+   * Theme provided by HOC.
+   */
+  theme: ITheme;
+
+  /**
+   * WIdth of the comboBox options
+   */
+  comboBoxOptionWidth?: string;
+
+  /**
+   * The open state.
+   */
+  isOpen?: boolean;
+
+  /**
+   * The disabled state.
+   */
+  disabled?: boolean;
+
+  /**
+   * Whether the associated form field is required or not.
+   */
+  required?: boolean;
+
+  /**
+   * Whether focus is on the control.
+   */
+  focused?: boolean;
+
+  /**
+   * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
+   */
+  allowFreeform?: boolean;
+
+  /**
+   * Whether an error message is uncluded.
+   */
+  hasErrorMessage?: boolean;
+
+  /**
+   * Custom styles that are passed in from the control
+   */
+  customStyles?: Partial<IComboBoxStyles>;
+}
+
+export interface IComboBoxCaretStyleProps {
+  /**
+   * Theme provided by HOC.
+   */
+  theme: ITheme;
+
+  /**
+   * Custom styles for the caret down button injected into the getStyles method
+   */
+  customCaretDownButtonStyles?: Partial<IButtonStyles>;
+}
+
+export interface IComboBoxOptionStyleProps {
+  /**
+   * Theme provided by HOC.
+   */
+  theme: ITheme;
+
+  /**
+   * Custom styles for all options injected into the getStyles method
+   */
+  customStylesForAllOptions?: Partial<IComboBoxOptionStyles>;
+
+  /**
+   * Custom styles for the current option injected into the getStyles method
+   */
+  customStylesForCurrentOption?: Partial<IComboBoxOptionStyles>;
 }
 
 export interface IComboBoxStyles {
