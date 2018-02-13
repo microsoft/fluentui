@@ -179,6 +179,39 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
+  it('sets the correct aria-owns attribute for the submenu', () => {
+    const submenuId = 'testSubmenuId';
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          id: submenuId,
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const parentMenuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(parentMenuItem);
+    const childMenu = document.getElementById(submenuId);
+
+    expect(childMenu!.id).toBe(submenuId);
+    expect(parentMenuItem.getAttribute('aria-owns')).toBe(submenuId);
+  });
+
   it('still works with deprecated IContextualMenuItem.items property', () => {
     const items: IContextualMenuItem[] = [
       {

@@ -110,14 +110,17 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         </div>
       );
     }
+    // Total # of menu items is regular items + far items + 1 for the ellipsis, if necessary
+    const setSize = renderedItems!.length + renderedFarItems!.length + (renderedOverflowItems && renderedOverflowItems.length > 0 ? 1 : 0);
+    let posInSet = 1;
 
     return (
       <div className={ css('ms-CommandBar', styles.root, className) } ref='commandBarRegion'>
         { searchBox }
         <FocusZone ref='focusZone' className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
-            { renderedItems!.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey!)
+            { renderedItems!.map(item => (
+              this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
               <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <button
@@ -131,6 +134,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                   aria-expanded={ this.state.expandedMenuItemKey === OVERFLOW_KEY }
                   aria-label={ this.props.elipisisAriaLabel || '' }
                   aria-haspopup={ true }
+                  aria-setsize={ setSize }
+                  aria-posinset={ posInSet++ }
                   data-automation-id='commandBarOverflow'
                 >
                   <Icon className={ css('ms-CommandBarItem-overflow', styles.itemOverflow) } iconName='more' />
@@ -139,8 +144,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             ] : []) }
           </div>
           <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref='farCommandSurface'>
-            { renderedFarItems!.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey!, true)
+            { renderedFarItems!.map(item => (
+              this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!, true)
             )) }
           </div>
         </FocusZone>
@@ -163,7 +168,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this.refs.focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item: ICommandBarItemProps, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+  private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     if (item.onRender) {
       return (
         <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
@@ -172,7 +177,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       );
     }
 
-    const itemKey = item.key || String(index);
+    const itemKey = item.key || String(posInSet);
     const isLink = item.onClick || hasSubmenu(item);
     const className = css(
       isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
@@ -196,6 +201,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           aria-expanded={ hasSubmenu(item) ? expandedMenuItemKey === item.key : undefined }
           role='menuitem'
           aria-label={ ariaLabel }
+          aria-setsize={ setSize }
+          aria-posinset={ posInSet }
         >
           { (hasIcon) ? this._renderIcon(item) : (null) }
           { isNameVisible && (
@@ -222,6 +229,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           aria-haspopup={ hasSubmenu(item) }
           role='menuitem'
           aria-label={ ariaLabel }
+          aria-setsize={ setSize }
+          aria-posinset={ posInSet }
         >
           { (hasIcon) ? this._renderIcon(item) : (null) }
           { isNameVisible && (
@@ -243,6 +252,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           data-command-key={ itemKey }
           aria-haspopup={ hasSubmenu(item) }
           aria-label={ ariaLabel }
+          aria-setsize={ setSize }
+          aria-posinset={ posInSet }
         >
           { (hasIcon) ? this._renderIcon(item) : (null) }
           { (isNameVisible) && (
