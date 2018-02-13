@@ -5,6 +5,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { SpinButton } from './SpinButton';
 import { KeyCodes } from '../../Utilities';
+import { SpinButtonBase } from './SpinButton.base';
 
 describe('SpinButton', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
@@ -32,7 +33,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -62,7 +63,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -104,7 +105,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -146,7 +147,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -181,7 +182,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -216,7 +217,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -252,7 +253,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -289,7 +290,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = '21';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -316,7 +317,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = 'garbage';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -343,7 +344,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = '23';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -370,7 +371,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = '0';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -398,7 +399,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = '21';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -431,7 +432,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = '100';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -464,7 +465,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = String(Number(exampleDefaultValue) + exampleStepValue);
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -494,7 +495,7 @@ describe('SpinButton', () => {
     const exampleNewValue: string = String(Number(exampleDefaultValue) - exampleStepValue);
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -522,7 +523,7 @@ describe('SpinButton', () => {
     const exampleStepValue: number = 2;
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -543,7 +544,7 @@ describe('SpinButton', () => {
     const exampleLabelValue: string = 'SpinButton';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
       />
     );
@@ -559,7 +560,7 @@ describe('SpinButton', () => {
     const exampleLabelValue: string = 'SpinButton';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
       />
     );
@@ -585,7 +586,7 @@ describe('SpinButton', () => {
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -623,7 +624,7 @@ describe('SpinButton', () => {
     const onIncrement: jest.Mock = jest.fn();
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton
+      <SpinButtonBase
         label='label'
         value={ val }
         onIncrement={ onIncrement }

@@ -1,29 +1,46 @@
 import * as React from 'react';
-import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
+import {
+  SpinButton,
+  ISpinButtonStyles,
+  ISpinButtonStyleProps,
+  ISpinButtonArrowStyleProps
+} from 'office-ui-fabric-react/lib/SpinButton';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
-const styles: Partial<ISpinButtonStyles> = {
-  root: {
-    width: '400px'
-  }
+const getStyles = (
+  props: ISpinButtonStyleProps
+): Partial<ISpinButtonStyles> => {
+  return {
+    root: {
+      width: '400px'
+    }
+  };
 };
 
-const upArrowButtonStyles: Partial<IButtonStyles> = {
-  rootChecked: {
-    backgroundColor: 'green'
-  },
-  rootPressed: {
-    backgroundColor: 'green'
-  }
+const getUpArrowButtonStyles = (
+  props: ISpinButtonArrowStyleProps
+): Partial<IButtonStyles> => {
+  return {
+    rootChecked: {
+      backgroundColor: 'green'
+    },
+    rootPressed: {
+      backgroundColor: 'green'
+    }
+  };
 };
 
-const downArrowButtonStyles: Partial<IButtonStyles> = {
-  rootChecked: {
-    backgroundColor: 'red'
-  },
-  rootPressed: {
-    backgroundColor: 'red'
-  }
+const getDownArrowButtonStyles = (
+  props: ISpinButtonArrowStyleProps
+): Partial<IButtonStyles> => {
+  return {
+    rootChecked: {
+      backgroundColor: 'red'
+    },
+    rootPressed: {
+      backgroundColor: 'red'
+    }
+  };
 };
 
 export class SpinButtonCustomStyledExample extends React.Component<any, any> {
@@ -31,9 +48,9 @@ export class SpinButtonCustomStyledExample extends React.Component<any, any> {
     return (
       <div>
         <SpinButton
-          styles={ styles }
-          upArrowButtonStyles={ upArrowButtonStyles }
-          downArrowButtonStyles={ downArrowButtonStyles }
+          getStyles={ getStyles }
+          getUpArrowButtonStyles={ getUpArrowButtonStyles }
+          getDownArrowButtonStyles={ getDownArrowButtonStyles }
           defaultValue='0'
           label={ 'Custom styled SpinButton:' }
           min={ 0 }

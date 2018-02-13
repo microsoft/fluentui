@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Converting the SpinButton to the getStyles model. I have redesigned the component according to ghdocs/styling.md to allow for complete style overrides using the base component. I have deprecated  but not removed the current styles props to avoid breakage for current users",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kysedate@microsoft.com"
+}

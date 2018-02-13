@@ -3,12 +3,13 @@ import {
   IRawStyle,
   ITheme,
   concatStyleSets,
-  HighContrastSelector
+  HighContrastSelector,
+  IStyle
 } from '../../Styling';
-
 import { IButtonStyles } from '../../Button';
-import { ISpinButtonStyles } from './SpinButton.types';
+import { ISpinButtonStyles, ISpinButtonStyleProps, ISpinButtonArrowStyleProps } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
+import { Position } from '../../utilities/positioning';
 
 const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   const { semanticColors } = theme;
@@ -30,13 +31,13 @@ const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   };
 });
 
-export const getArrowButtonStyles = memoizeFunction((
-  theme: ITheme,
-  isUpArrow: boolean,
-  customSpecificArrowStyles?: Partial<IButtonStyles>,
+const getArrowButtonStyles = memoizeFunction((
+  props: ISpinButtonArrowStyleProps,
+  isUpArrow: boolean
 ): IButtonStyles => {
-
+  const { theme, upArrowButtonStyles, downArrowButtonStyles } = props;
   const { palette } = theme;
+  const customStyles = isUpArrow ? upArrowButtonStyles : downArrowButtonStyles;
 
   const ArrowButtonTextColor = palette.neutralPrimary;
   const ArrowButtonTextColorPressed = palette.white;
@@ -111,25 +112,68 @@ export const getArrowButtonStyles = memoizeFunction((
   return concatStyleSets(
     defaultArrowButtonStyles,
     isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
-    customSpecificArrowStyles
+    customStyles
   ) as IButtonStyles;
 });
 
+export const getUpArrowButtonStyles = memoizeFunction((
+  props: ISpinButtonArrowStyleProps,
+): IButtonStyles => {
+  return getArrowButtonStyles(props, true);
+});
+
+export const getDownArrowButtonStyles = memoizeFunction((
+  props: ISpinButtonArrowStyleProps,
+): IButtonStyles => {
+  return getArrowButtonStyles(props, false);
+});
+
+const _getStyleForLabelBasedOnPosition = (
+  styles: ISpinButtonStyles, labelPosition?: Position
+): IStyle => {
+  switch (labelPosition) {
+    case Position.start:
+      return styles.labelWrapperStart;
+    case Position.end:
+      return styles.labelWrapperEnd;
+    case Position.top:
+      return styles.labelWrapperTop;
+    case Position.bottom:
+      return styles.labelWrapperBottom;
+    default: return {};
+  }
+};
+
+const _getStyleForRootBasedOnPosition = (styles: ISpinButtonStyles, labelPosition?: Position): IStyle => {
+  switch (labelPosition) {
+    case Position.top:
+    case Position.bottom:
+      return styles.spinButtonWrapperTopBottom;
+    default: return {};
+  }
+};
+
 export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: Partial<ISpinButtonStyles>
-): ISpinButtonStyles => {
+  props: ISpinButtonStyleProps
+): Partial<ISpinButtonStyles> => {
+  const {
+    disabled,
+    isFocused,
+    keyboardSpinDirection,
+    labelPosition,
+    customStyles,
+    theme
+  } = props;
+
   const { fonts, palette, semanticColors } = theme;
 
   const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
   const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
   const SpinButtonRootBorderColorFocused = palette.themePrimary;
-
   const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
   const SpinButtonInputTextColor = palette.neutralPrimary;
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
-
   const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
   const defaultStyles: ISpinButtonStyles = {
@@ -269,5 +313,53 @@ export const getStyles = memoizeFunction((
     },
     arrowButtonsContainerDisabled: _getDisabledStyles(theme),
   };
-  return concatStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
+
+  let mergedStyles: Partial<ISpinButtonStyles> = concatStyleSets(defaultStyles, customStyles);
+
+  return {
+    root: mergedStyles.root,
+    labelWrapper: [
+      mergedStyles.labelWrapper,
+      _getStyleForLabelBasedOnPosition(defaultStyles, labelPosition),
+    ],
+    icon: [
+      mergedStyles.icon,
+      disabled && mergedStyles.iconDisabled
+    ],
+    label: [
+      mergedStyles.label,
+      disabled && mergedStyles.labelDisabled
+    ],
+    spinButtonWrapper: [
+      mergedStyles.spinButtonWrapper,
+      _getStyleForRootBasedOnPosition(defaultStyles, labelPosition),
+      !disabled && [
+        {
+          selectors: {
+            ':hover': mergedStyles.spinButtonWrapperHovered
+          }
+        },
+        isFocused && {
+          selectors: {
+            '&&': mergedStyles.spinButtonWrapperFocused
+          }
+        }
+      ],
+      disabled && mergedStyles.spinButtonWrapperDisabled
+    ],
+    input: [
+      'ms-spinButton-input',
+      mergedStyles.input,
+      !disabled && {
+        selectors: {
+          '::selection': mergedStyles.inputTextSelected
+        }
+      },
+      disabled && mergedStyles.inputDisabled
+    ],
+    arrowButtonsContainer: [
+      mergedStyles.arrowButtonsContainer,
+      disabled && mergedStyles.arrowButtonsContainerDisabled
+    ]
+  };
 });
