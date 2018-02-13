@@ -31,6 +31,12 @@ export interface IKeytipTreeNode {
   hasChildrenNodes?: boolean;
 
   /**
+   * Optional link to another IKeytipTreeNode; only used for persisted Keytips in OverflowWells,
+   * where we want keytips to be executed with and without the overflow keytip.
+   */
+  keytipLink?: IKeytipTreeNode;
+
+  /**
    * Whether the keytip is visible or not in the dom.
    */
   visible?: boolean;
@@ -71,7 +77,7 @@ export class KeytipTree {
    * @param fullSequence - Full key sequence for the keytip to add
    * @param onExecute - Callback function to trigger when this keytip is activated
    */
-  public addNode(sequence: IKeySequence[], onExecute?: () => void, hasChildrenNodes?: boolean): void {
+  public addNode(sequence: IKeySequence[], onExecute?: () => void, hasChildrenNodes?: boolean, overflowSet?: IKeySequence): void {
     let fullSequence = [...sequence];
     let nodeID = convertSequencesToKeytipID(fullSequence);
     // This keytip's sequence is the last one defined

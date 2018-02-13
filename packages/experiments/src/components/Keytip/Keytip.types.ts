@@ -58,6 +58,11 @@ export interface IKeytipProps {
   keySequences: IKeySequence[];
 
   /**
+   * KeySequence of overflow set which will trigger the keytip.
+   */
+  overflowSetSequence?: IKeySequence;
+
+  /**
    * ICalloutProps to pass to the callout element
    *
    * @type {string}
