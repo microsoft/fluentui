@@ -205,6 +205,29 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 }
 
 /**
+ * Determines if an element, or any of its ancestors, contian the given attribute
+ * @param element - element to start searching from
+ * @param attribute - the attribute to search for
+ * @returns the value of the first instance found
+ */
+export function elementContainsAttribute(element: HTMLElement, attribute: string): string | undefined {
+
+  let attributeValue = element.getAttribute(attribute);
+
+  if (attributeValue) {
+    return attributeValue;
+  }
+
+  let parentElement = element.parentElement;
+
+  if (parentElement && parentElement !== document.body) {
+    return this.elementContainsAttribute(parentElement, attribute);
+  }
+
+  return undefined;
+}
+
+/**
  * Determines whether or not an element has the virtual hierarchy extension.
  *
  * @public

@@ -219,6 +219,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * when determining how to move focus
+   * @default false
+   */
+  checkForNoWrap?: boolean;
 }
 
 export interface IContextualMenuItem {

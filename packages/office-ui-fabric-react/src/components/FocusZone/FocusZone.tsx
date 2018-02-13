@@ -22,13 +22,16 @@ import {
   getWindow,
   isElementFocusZone,
   isElementFocusSubZone,
-  isElementTabbable
+  isElementTabbable,
+  shouldWrapFocus
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const TABINDEX = 'tabindex';
+const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
+const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 
 let _allInstances: {
   [key: string]: FocusZone
@@ -473,7 +476,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _moveFocus(
     isForward: boolean,
     getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
-    ev?: Event): boolean {
+    ev?: Event,
+    shouldWrap: boolean = true): boolean {
 
     let element = this._activeElement;
     let candidateDistance = -1;
@@ -494,9 +498,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
-      element = (isForward ?
-        getNextElement(this._root, element) :
-        getPreviousElement(this._root, element)) as HTMLElement;
+      element = (isForward ? getNextElement(this._root, element) : getPreviousElement(this._root, element)) as HTMLElement;
 
       if (isBidirectional) {
         if (element) {
@@ -528,7 +530,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (candidateElement && candidateElement !== this._activeElement) {
       changedFocus = true;
       this.focusElement(candidateElement);
-    } else if (this.props.isCircularNavigation) {
+    } else if (this.props.isCircularNavigation && shouldWrap) {
       if (isForward) {
         return this.focusElement(getNextElement(this._root, this._root.firstElementChild as HTMLElement, true) as HTMLElement);
       } else {
@@ -553,6 +555,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let activeRectBottom = Math.floor(activeRect.bottom);
 
       if (targetRectTop < activeRectBottom) {
+        if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+          return -2;
+        }
+
         return 999999999;
       }
 
@@ -590,6 +596,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let activeRectTop = Math.floor(activeRect.top);
 
       if (targetRectBottom > activeRectTop) {
+        if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
+          return -2;
+        }
         return 999999999;
       }
 
@@ -613,6 +622,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusLeft(): boolean {
+    let shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
@@ -623,10 +633,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       ) {
 
         distance = activeRect.right - targetRect.right;
+      } else {
+        if (!shouldWrap) {
+          distance = -2;
+        }
       }
 
       return distance;
-    })) {
+    },
+      undefined /*ev*/,
+      (shouldWrap || !getRTL())
+    )) {
       this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
     }
@@ -635,6 +652,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusRight(): boolean {
+    let shouldWrap = this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP);
     if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
@@ -645,10 +663,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       ) {
 
         distance = targetRect.left - activeRect.left;
+      } else if (!shouldWrap) {
+        distance = -2;
       }
 
       return distance;
-    })) {
+    },
+      undefined /*ev*/,
+      (shouldWrap || getRTL())
+    )) {
       this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
     }
@@ -782,4 +805,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return true;
   }
 
+  private _shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
+    return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+  }
 }

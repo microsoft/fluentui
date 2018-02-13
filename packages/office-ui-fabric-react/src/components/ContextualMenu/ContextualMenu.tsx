@@ -24,7 +24,8 @@ import {
   getWindow,
   customizable,
   getFirstFocusable,
-  getLastFocusable
+  getLastFocusable,
+  shouldWrapFocus
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
@@ -35,6 +36,7 @@ import {
 import {
   VerticalDivider
 } from '../../Divider';
+
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
   dismissedMenuItemKey?: string;
@@ -215,7 +217,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       styles: customStyles,
       theme,
       calloutProps,
-      onRenderSubMenu = this._onRenderSubMenu
+      onRenderSubMenu = this._onRenderSubMenu,
+      checkForNoWrap
     } = this.props;
 
     let menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
@@ -305,6 +308,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 direction={ arrowDirection }
                 isCircularNavigation={ true }
                 allowTabKey={ true }
+                checkForNoWrap={ !!checkForNoWrap }
               >
                 <ul
                   role='presentation'
@@ -661,11 +665,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    let {
+      isSubMenu,
+      arrowDirection,
+      checkForNoWrap
+    } = this.props;
 
-    if (ev.which === KeyCodes.escape
-      || ev.altKey
-      || ev.metaKey
-      || (ev.which === submenuCloseKey && this.props.isSubMenu && this.props.arrowDirection === FocusZoneDirection.vertical)) {
+    if (ev.which === KeyCodes.escape ||
+      ev.altKey ||
+      ev.metaKey ||
+      (ev.which === submenuCloseKey &&
+        isSubMenu &&
+        (arrowDirection === FocusZoneDirection.vertical ||
+          (this.props.checkForNoWrap && !shouldWrapFocus(ev.target as HTMLElement, 'data-no-horizontal-wrap'))))) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
