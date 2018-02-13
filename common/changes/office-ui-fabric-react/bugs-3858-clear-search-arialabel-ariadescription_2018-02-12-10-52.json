@@ -1,11 +1,9 @@
 {
-  "changes": [
-    {
-      "packageName": "office-ui-fabric-react",
-      "comment": "Add clearButtonAriaLabel and clearButtonAriaDescription props to SearchBox.types.ts and pass them to the icon button in SearchBox.base.tsx",
-      "type": "minor"
-    }
-  ],
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Add clearButtonProps prop to SearchBox.types.ts with ariaLabel and ariaDescription. These are passed to the icon button in SearchBox.base.tsx",
+    "type": "minor"
+  }],
   "packageName": "office-ui-fabric-react",
   "email": "cohoov@microsoft.com"
 }

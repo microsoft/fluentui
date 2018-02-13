@@ -54,7 +54,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { labelText, className, disabled, underlined, getStyles, theme } = this.props;
+    let { labelText, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
     let { value, hasFocus, id } = this.state;
 
     const classNames = getClassNames(getStyles!, {
@@ -93,8 +93,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
               styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
               onClick={ this._onClearClick }
               iconProps={ { iconName: 'Clear' } }
-              ariaLabel={ this.props.clearButtonAriaLabel }
-              ariaDescription={ this.props.clearButtonAriaDescription }
+              ariaLabel={ clearButtonProps && clearButtonProps.ariaLabel }
+              ariaDescription={ clearButtonProps && clearButtonProps.ariaDescription }
             />
           </div>
         }
