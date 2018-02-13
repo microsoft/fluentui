@@ -24,7 +24,7 @@ const defaultExitSequence = {
   keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
 } as IKeytipTransitionSequence;
 
-const defaultGoBackSequence = {
+const defaultReturnSequence = {
   keys: [{ key: 'Escape' }]
 } as IKeytipTransitionSequence;
 
@@ -39,7 +39,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   public static defaultProps: IKeytipLayerProps = {
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
-    keytipGoBackSequences: [defaultGoBackSequence],
+    keytipReturnSequences: [defaultReturnSequence],
     id: ktpFullPrefix + KeyCodes.alt + ktpSeparator + KeyCodes.leftWindow
   };
 

@@ -32,7 +32,7 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
    * @type {KeySequence}
    * @memberof IKeytipLayerProps
    */
-  keytipGoBackSequences?: IKeytipTransitionSequence[];
+  keytipReturnSequences?: IKeytipTransitionSequence[];
 
   /**
    * List of key sequences that will exit keytips mode

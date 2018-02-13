@@ -11,7 +11,7 @@ import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils'
 
 const keytipStartSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
 const keytipExitSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-const keytipGoBackSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
+const keytipReturnSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
 const layerID = 'my-layer-id';
 const keytipIdB = ktpFullPrefix + KeyCodes.b;
 const keytipIdC = ktpFullPrefix + KeyCodes.c;
@@ -29,7 +29,7 @@ describe('KeytipManager', () => {
         <KeytipLayer
           id={ layerID }
           keytipStartSequences={ keytipStartSequences }
-          keytipGoBackSequences={ keytipGoBackSequences }
+          keytipReturnSequences={ keytipReturnSequences }
           keytipExitSequences={ keytipExitSequences }
         />
       );
@@ -81,7 +81,7 @@ describe('KeytipManager', () => {
         <KeytipLayer
           id={ layerID }
           keytipStartSequences={ keytipStartSequences }
-          keytipGoBackSequences={ keytipGoBackSequences }
+          keytipReturnSequences={ keytipReturnSequences }
           keytipExitSequences={ keytipExitSequences }
           onEnterKeytipMode={ onEnterKeytipMode }
           onExitKeytipMode={ onExitKeytipMode }
@@ -111,12 +111,12 @@ describe('KeytipManager', () => {
       expect(onExitKeytipMode).toBeCalled();
     });
 
-    it('C`s goback func should be invoked and Current keytip pointer should return to equal root node', () => {
-      const onGoBackC: jest.Mock = jest.fn();
-      keytipManager.keytipTree.currentKeytip = { ...keytipManager.keytipTree.nodeMap[keytipIdC], onGoBack: onGoBackC };
+    it('C`s Return func should be invoked and Current keytip pointer should return to equal root node', () => {
+      const onReturnC: jest.Mock = jest.fn();
+      keytipManager.keytipTree.currentKeytip = { ...keytipManager.keytipTree.nodeMap[keytipIdC], onReturn: onReturnC };
       keytipManager.processTransitionInput({ key: 'Escape' });
       expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.root);
-      expect(onGoBackC).toBeCalled();
+      expect(onReturnC).toBeCalled();
     });
 
     // Processing keys tests

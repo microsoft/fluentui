@@ -16,7 +16,7 @@ export interface IKeytipTreeNode {
   onExecute?: () => void;
 
   // Function to execute when we 'go back' to this keytip's parent.
-  onGoBack?: () => void;
+  onReturn?: () => void;
 
   // List of keytips that should become visible when this keytip is pressed, can be empty
   children: string[];

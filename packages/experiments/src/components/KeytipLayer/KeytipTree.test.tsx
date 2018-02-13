@@ -17,7 +17,7 @@ describe('KeytipTree', () => {
   const layerID = 'my-layer-id';
   const keytipStartSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
   const keytipExitSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-  const keytipGoBackSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
+  const keytipReturnSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
   const keytipManager = KeytipManager.getInstance();
 
   beforeEach(() => {
@@ -26,7 +26,7 @@ describe('KeytipTree', () => {
       <KeytipLayer
         id={ layerID }
         keytipStartSequences={ keytipStartSequences }
-        keytipGoBackSequences={ keytipGoBackSequences }
+        keytipReturnSequences={ keytipReturnSequences }
         keytipExitSequences={ keytipExitSequences }
       />
     );
