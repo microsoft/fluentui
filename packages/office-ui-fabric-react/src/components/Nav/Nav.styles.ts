@@ -8,10 +8,6 @@ import {
   FontSizes,
   FontWeights
 } from '../../Styling';
-// import { createFontStyles, FontSizes, FontWeights } from '../../../../styling/lib/styles/fonts';
-// import { textAreaProperties } from 'src/index.bundle';
-// import { fontFace } from '../../../../merge-styles/lib/fontFace';
-// import { DefaultFontStyles } from '../../../../styling/lib/styles/DefaultFontStyles';
 
 export const getStyles = (
   props: INavStyleProps
@@ -32,8 +28,6 @@ export const getStyles = (
   } = props;
 
   const { palette, semanticColors } = theme;
-
-  // const navFonts = createFontStyles(null);
 
   return ({
     root: [
@@ -89,12 +83,12 @@ export const getStyles = (
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        // selectors: {
-        //   '$compositeLink:hover &': {
-        //     backgroundColor: palette.neutralLighterAlt,
-        //     color: semanticColors.bodyText
-        //   },
-        // },
+        selectors: {
+          // '$compositeLink:hover &': { // not working
+          '.ms-Nav-compositeLink:hover &': {
+            color: semanticColors.bodyText
+          },
+        },
       },
       isSelected && {
         color: palette.themePrimary,
@@ -142,10 +136,10 @@ export const getStyles = (
           //   color: semanticColors.bodyText,
           //   backgroundColor: palette.neutralLighterAlt
           // },
-          // '$compositeLink:hover &': { // works
-          //   color: semanticColors.bodyText,
-          //   backgroundColor: palette.neutralLighterAlt
-          // },
+          '$compositeLink:hover &': { // works
+            color: semanticColors.bodyText,
+            // backgroundColor: palette.neutralLighterAlt
+          },
         }
       },
       isGroup && [
