@@ -24,7 +24,8 @@ import {
   getWindow,
   customizable,
   getFirstFocusable,
-  getLastFocusable
+  getLastFocusable,
+  css
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
@@ -280,7 +281,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           gapSpace={ gapSpace }
           coverTarget={ coverTarget }
           doNotLayer={ doNotLayer }
-          className='ms-ContextualMenu-Callout'
+          className={ css('ms-ContextualMenu-Callout', calloutProps ? calloutProps.className : undefined) }
           setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
           onScroll={ this._onScroll }

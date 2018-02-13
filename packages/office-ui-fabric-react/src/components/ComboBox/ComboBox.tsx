@@ -16,7 +16,8 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  customizable
+  customizable,
+  css
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -870,7 +871,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
-        className={ this._classNames.callout }
+        className={ css(this._classNames.callout, calloutProps ? calloutProps.className : undefined) }
         target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }

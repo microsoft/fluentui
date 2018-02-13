@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix ComboBox, ContextualMenu, Teachingbubble overwriting calloutProps.className",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kurt.carpenter@microsoft.com"
+}
