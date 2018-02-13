@@ -57,15 +57,48 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._keytipManager.init(this);
   }
 
+  /**
+   *
+   * @param keytipProps
+   */
   public registerKeytip(keytipProps: IKeytipProps): void {
     this.setState(this.addKeytip(keytipProps));
   }
 
+  /**
+   *
+   * @param keytipProps
+   */
+  public unregisterKeytip(keytipProps: IKeytipProps): void {
+    this.setState(this.removeKeytip(keytipProps));
+  }
+
+  /**
+   *
+   */
   public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
-      // TODO: check for duplicates
+      // TODO: check for duplicates, do an add or update
       let currentKeytips = [...previousState.keytips, ...[keytipProps]];
       return { ...previousState, keytips: currentKeytips };
+    };
+  }
+
+  /**
+   * Removes a keytip from the layer's state
+   * TODO: do we just need to pass in the keytip sequence?
+   * @param keytipToRemove - IKeytipProps of the keytip to remove
+   */
+  public removeKeytip(keytipToRemove: IKeytipProps): {} {
+    let ktpIdToRemove = convertSequencesToKeytipID(keytipToRemove.keySequences);
+    return (previousState: IKeytipLayerState) => {
+      let currentKeytips = previousState.keytips;
+      // Filter out keytips that don't equal the one to remove
+      let filteredKeytips: IKeytipProps[] = currentKeytips.filter((currentKeytip: IKeytipProps) => {
+        let currentKeytipId = convertSequencesToKeytipID(currentKeytip.keySequences);
+        return currentKeytipId !== ktpIdToRemove;
+      });
+      return { ...previousState, keytips: filteredKeytips };
     };
   }
 

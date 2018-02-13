@@ -10,10 +10,6 @@ import { ModifierKeyCodes } from '../../Utilities';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 
 describe('KeytipTree', () => {
-  function emptyCallback(): void {
-    return undefined;
-  }
-
   const layerID = 'my-layer-id';
   const keytipStartSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
   const keytipExitSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
@@ -45,183 +41,266 @@ describe('KeytipTree', () => {
     expect(Object.keys(keytipTree.nodeMap)).toHaveLength(1);
   });
 
-  it('addNode directly under root works correctly', () => {
-    let keytipTree = keytipManager.keytipTree;
+  describe('addNode', () => {
+    it('directly under root works correctly', () => {
+      let keytipTree = keytipManager.keytipTree;
 
-    // TreeNode C, will be child of root
-    const keytipIdC = ktpFullPrefix + 'c';
-    const sampleKeySequence: IKeySequence[] = [{ keys: ['c'] }];
+      // TreeNode C, will be child of root
+      const keytipIdC = ktpFullPrefix + 'c';
+      const sampleKeySequence: IKeySequence[] = [{ keys: ['c'] }];
 
-    keytipTree.addNode(sampleKeySequence, emptyCallback);
+      keytipTree.addNode(sampleKeySequence, jest.fn());
 
-    // Test C has been added to root's children
-    expect(keytipTree.root.children).toHaveLength(1);
-    expect(keytipTree.root.children).toContain(keytipIdC);
+      // Test C has been added to root's children
+      expect(keytipTree.root.children).toHaveLength(1);
+      expect(keytipTree.root.children).toContain(keytipIdC);
 
-    // Test C was added to nodeMap
-    expect(Object.keys(keytipTree.nodeMap)).toHaveLength(2);
-    let keytipNodeC = keytipTree.nodeMap[keytipIdC];
-    expect(keytipNodeC).toBeDefined();
+      // Test C was added to nodeMap
+      expect(Object.keys(keytipTree.nodeMap)).toHaveLength(2);
+      let keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      expect(keytipNodeC).toBeDefined();
 
-    // Test TreeNode C properties
-    expect(keytipNodeC.id).toEqual(keytipIdC);
-    expect(keytipNodeC.children).toHaveLength(0);
-    expect(keytipNodeC.parent).toEqual(layerID);
+      // Test TreeNode C properties
+      expect(keytipNodeC.id).toEqual(keytipIdC);
+      expect(keytipNodeC.children).toHaveLength(0);
+      expect(keytipNodeC.parent).toEqual(layerID);
+    });
+
+    it('two levels from root', () => {
+      let keytipTree = keytipManager.keytipTree;
+
+      // Parent
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+
+      // Child
+      const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+
+      keytipTree.addNode(keytipSequenceC, jest.fn());
+      keytipTree.addNode(keytipSequenceB, jest.fn());
+
+      // Test B was added to C's children
+      expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
+      expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+
+      // Test B was added to nodeMap
+      let keytipNodeB = keytipTree.nodeMap[keytipIdB];
+      expect(keytipNodeB).toBeDefined();
+
+      // Test TreeNode B properties
+      expect(keytipNodeB.id).toEqual(keytipIdB);
+      expect(keytipNodeB.children).toHaveLength(0);
+      expect(keytipNodeB.parent).toEqual(keytipIdC);
+    });
+
+    it('add a child node before its parent', () => {
+      let keytipTree = keytipManager.keytipTree;
+
+      // Parent
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+
+      // Child
+      const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+
+      keytipTree.addNode(keytipSequenceB, jest.fn());
+
+      // Test B was added to nodeMap
+      let keytipNodeB = keytipTree.nodeMap[keytipIdB];
+      expect(keytipNodeB).toBeDefined();
+
+      // Test B has C set as parent
+      expect(keytipNodeB.parent).toEqual(keytipIdC);
+
+      // Test root still has no children
+      expect(keytipTree.root.children).toHaveLength(0);
+
+      // Test C is added to nodeMap
+      let keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      expect(keytipNodeC).toBeDefined();
+
+      // Test C has no parent
+      expect(keytipNodeC.parent).toBeFalsy();
+
+      // Test C has B as its child
+      expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
+      expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+
+      // Add parent
+      keytipTree.addNode(keytipSequenceC, jest.fn());
+
+      keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      expect(keytipNodeC).toBeDefined();
+
+      // Test C has B as its child
+      expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
+      expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+
+      // Test root has C as its child
+      expect(keytipTree.root.children).toHaveLength(1);
+      expect(keytipTree.root.children).toContain(keytipIdC);
+    });
+
+    it('creates a correct Tree when many nodes are added out of order', () => {
+      /**
+       *   Tree should end up looking like:
+       *
+       *            a
+       *          /   \
+       *         c     e
+       *        /     / \
+       *       b     d   f
+       *
+       * Nodes will be added in order: F, C, B, D, E
+       */
+
+      let keytipTree = keytipManager.keytipTree;
+
+      // Node B
+      const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+
+      // Node C
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+
+      // Node D
+      const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + 'd';
+      const keytipSequenceD: IKeySequence[] = [{ keys: ['e'] }, { keys: ['d'] }];
+
+      // Node E
+      const keytipIdE = ktpFullPrefix + 'e';
+      const keytipSequenceE: IKeySequence[] = [{ keys: ['e'] }];
+
+      // Node F
+      const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
+      const keytipSequenceF: IKeySequence[] = [{ keys: ['e'] }, { keys: ['f'] }];
+
+      keytipTree.addNode(keytipSequenceF, jest.fn());
+      keytipTree.addNode(keytipSequenceC, jest.fn());
+      keytipTree.addNode(keytipSequenceB, jest.fn());
+      keytipTree.addNode(keytipSequenceD, jest.fn());
+      keytipTree.addNode(keytipSequenceE, jest.fn());
+
+      // Test all nodes are in the nodeMap
+      let keytipNodeB = keytipTree.nodeMap[keytipIdB];
+      expect(keytipNodeB).toBeDefined();
+      let keytipNodeC = keytipTree.nodeMap[keytipIdC];
+      expect(keytipNodeC).toBeDefined();
+      let keytipNodeD = keytipTree.nodeMap[keytipIdD];
+      expect(keytipNodeD).toBeDefined();
+      let keytipNodeE = keytipTree.nodeMap[keytipIdE];
+      expect(keytipNodeE).toBeDefined();
+      let keytipNodeF = keytipTree.nodeMap[keytipIdF];
+      expect(keytipNodeF).toBeDefined();
+
+      // Test each node's parent and children
+      expect(keytipNodeB.parent).toEqual(keytipIdC);
+      expect(keytipNodeB.children).toHaveLength(0);
+
+      expect(keytipNodeC.parent).toEqual(layerID);
+      expect(keytipNodeC.children).toHaveLength(1);
+      expect(keytipNodeC.children).toContain(keytipIdB);
+
+      expect(keytipNodeD.parent).toEqual(keytipIdE);
+      expect(keytipNodeD.children).toHaveLength(0);
+
+      expect(keytipNodeE.parent).toEqual(layerID);
+      expect(keytipNodeE.children).toHaveLength(2);
+      expect(keytipNodeE.children).toContain(keytipIdD);
+      expect(keytipNodeE.children).toContain(keytipIdF);
+
+      expect(keytipNodeF.parent).toEqual(keytipIdE);
+      expect(keytipNodeF.children).toHaveLength(0);
+
+      // Test root's children
+      expect(keytipTree.root.children).toHaveLength(2);
+      expect(keytipTree.root.children).toContain(keytipIdC);
+      expect(keytipTree.root.children).toContain(keytipIdE);
+    });
   });
 
-  it('addNode two levels from root', () => {
-    let keytipTree = keytipManager.keytipTree;
+  describe('removeNode', () => {
+    it('removes a child node of root and has no children', () => {
+      let keytipTree = keytipManager.keytipTree;
 
-    // Parent
-    const keytipIdC = ktpFullPrefix + 'c';
-    const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      // Node C
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
 
-    // Child
-    const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-    const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      keytipTree.addNode(keytipSequenceC, jest.fn());
 
-    keytipTree.addNode(keytipSequenceC, emptyCallback);
-    keytipTree.addNode(keytipSequenceB, emptyCallback);
+      // Remove C from the tree
+      keytipTree.removeNode(keytipSequenceC);
 
-    // Test B was added to C's children
-    expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
-    expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+      // Verify that C is not in the node map
+      expect(keytipTree.nodeMap[keytipIdC]).toBeUndefined();
 
-    // Test B was added to nodeMap
-    let keytipNodeB = keytipTree.nodeMap[keytipIdB];
-    expect(keytipNodeB).toBeDefined();
+      // Verify that root has no children
+      expect(keytipTree.root.children).toHaveLength(0);
+    });
 
-    // Test TreeNode B properties
-    expect(keytipNodeB.id).toEqual(keytipIdB);
-    expect(keytipNodeB.children).toHaveLength(0);
-    expect(keytipNodeB.parent).toEqual(keytipIdC);
-  });
+    it('removes multiple nodes in order correctly', () => {
+      let keytipTree = keytipManager.keytipTree;
 
-  it('add a child node before its parent', () => {
-    let keytipTree = keytipManager.keytipTree;
+      // Node C
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
 
-    // Parent
-    const keytipIdC = ktpFullPrefix + 'c';
-    const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
+      // Node B
+      const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-    // Child
-    const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-    const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
+      keytipTree.addNode(keytipSequenceC, jest.fn());
+      keytipTree.addNode(keytipSequenceB, jest.fn());
 
-    keytipTree.addNode(keytipSequenceB, emptyCallback);
+      // Remove B
+      keytipTree.removeNode(keytipSequenceB);
 
-    // Test B was added to nodeMap
-    let keytipNodeB = keytipTree.nodeMap[keytipIdB];
-    expect(keytipNodeB).toBeDefined();
+      // Verify that B is not in the node map
+      expect(keytipTree.nodeMap[keytipIdB]).toBeUndefined();
 
-    // Test B has C set as parent
-    expect(keytipNodeB.parent).toEqual(keytipIdC);
+      // Verify C has no children
+      let nodeC = keytipTree.nodeMap[keytipIdC];
+      expect(nodeC.children).toHaveLength(0);
 
-    // Test root still has no children
-    expect(keytipTree.root.children).toHaveLength(0);
+      // Remove C
+      keytipTree.removeNode(keytipSequenceC);
 
-    // Test C is added to nodeMap
-    let keytipNodeC = keytipTree.nodeMap[keytipIdC];
-    expect(keytipNodeC).toBeDefined();
+      // Verify that C is not in the node map
+      expect(keytipTree.nodeMap[keytipIdC]).toBeUndefined();
 
-    // Test C has no parent
-    expect(keytipNodeC.parent).toBeFalsy();
+      // Verify that root has no children
+      expect(keytipTree.root.children).toHaveLength(0);
+    });
 
-    // Test C has B as its child
-    expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
-    expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+    it('removes children as well when a parent is removed', () => {
+      let keytipTree = keytipManager.keytipTree;
 
-    // Add parent
-    keytipTree.addNode(keytipSequenceC, emptyCallback);
+      // Node C
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
 
-    keytipNodeC = keytipTree.nodeMap[keytipIdC];
-    expect(keytipNodeC).toBeDefined();
+      // Node B
+      const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-    // Test C has B as its child
-    expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
-    expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
+      keytipTree.addNode(keytipSequenceC, jest.fn());
+      keytipTree.addNode(keytipSequenceB, jest.fn());
 
-    // Test root has C as its child
-    expect(keytipTree.root.children).toHaveLength(1);
-    expect(keytipTree.root.children).toContain(keytipIdC);
-  });
+      // Remove C
+      keytipTree.removeNode(keytipSequenceC);
 
-  it('creates a correct Tree when many nodes are added out of order', () => {
-    /**
-     *   Tree should end up looking like:
-     *
-     *            a
-     *          /   \
-     *         c     e
-     *        /     / \
-     *       b     d   f
-     *
-     * Nodes will be added in order: F, C, B, D, E
-     */
+      // Verify that C is not in the node map
+      expect(keytipTree.nodeMap[keytipIdC]).toBeUndefined();
+      // Verify that B is not in the node map
+      expect(keytipTree.nodeMap[keytipIdB]).toBeUndefined();
 
-    let keytipTree = keytipManager.keytipTree;
-
-    // Node B
-    const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
-    const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
-
-    // Node C
-    const keytipIdC = ktpFullPrefix + 'c';
-    const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
-
-    // Node D
-    const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + 'd';
-    const keytipSequenceD: IKeySequence[] = [{ keys: ['e'] }, { keys: ['d'] }];
-
-    // Node E
-    const keytipIdE = ktpFullPrefix + 'e';
-    const keytipSequenceE: IKeySequence[] = [{ keys: ['e'] }];
-
-    // Node F
-    const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
-    const keytipSequenceF: IKeySequence[] = [{ keys: ['e'] }, { keys: ['f'] }];
-
-    keytipTree.addNode(keytipSequenceF, emptyCallback);
-    keytipTree.addNode(keytipSequenceC, emptyCallback);
-    keytipTree.addNode(keytipSequenceB, emptyCallback);
-    keytipTree.addNode(keytipSequenceD, emptyCallback);
-    keytipTree.addNode(keytipSequenceE, emptyCallback);
-
-    // Test all nodes are in the nodeMap
-    let keytipNodeB = keytipTree.nodeMap[keytipIdB];
-    expect(keytipNodeB).toBeDefined();
-    let keytipNodeC = keytipTree.nodeMap[keytipIdC];
-    expect(keytipNodeC).toBeDefined();
-    let keytipNodeD = keytipTree.nodeMap[keytipIdD];
-    expect(keytipNodeD).toBeDefined();
-    let keytipNodeE = keytipTree.nodeMap[keytipIdE];
-    expect(keytipNodeE).toBeDefined();
-    let keytipNodeF = keytipTree.nodeMap[keytipIdF];
-    expect(keytipNodeF).toBeDefined();
-
-    // Test each node's parent and children
-    expect(keytipNodeB.parent).toEqual(keytipIdC);
-    expect(keytipNodeB.children).toHaveLength(0);
-
-    expect(keytipNodeC.parent).toEqual(layerID);
-    expect(keytipNodeC.children).toHaveLength(1);
-    expect(keytipNodeC.children).toContain(keytipIdB);
-
-    expect(keytipNodeD.parent).toEqual(keytipIdE);
-    expect(keytipNodeD.children).toHaveLength(0);
-
-    expect(keytipNodeE.parent).toEqual(layerID);
-    expect(keytipNodeE.children).toHaveLength(2);
-    expect(keytipNodeE.children).toContain(keytipIdD);
-    expect(keytipNodeE.children).toContain(keytipIdF);
-
-    expect(keytipNodeF.parent).toEqual(keytipIdE);
-    expect(keytipNodeF.children).toHaveLength(0);
-
-    // Test root's children
-    expect(keytipTree.root.children).toHaveLength(2);
-    expect(keytipTree.root.children).toContain(keytipIdC);
-    expect(keytipTree.root.children).toContain(keytipIdE);
+      // Verify that root has no children
+      expect(keytipTree.root.children).toHaveLength(0);
+    });
   });
 
   it('get matched and partially matched node tests ', () => {

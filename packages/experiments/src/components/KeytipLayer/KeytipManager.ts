@@ -64,13 +64,34 @@ export class KeytipManager {
   }
 
   /**
-   * Registers a keytip in _layer
+   * Registers a keytip
+   * TODO: should this return an any? or something else
    * @param keytipProps - Keytip to register
    */
-  public registerKeytip(keytipProps: IKeytipProps): void {
+  // tslint:disable-next-line:no-any
+  public registerKeytip(keytipProps: IKeytipProps): any {
     // Set the 'keytips' property in _layer
+    // TODO: do we have to check for this._layer?
     this._layer && this._layer.registerKeytip(keytipProps);
     this.keytipTree.addNode(keytipProps.keySequences, keytipProps.onExecute, keytipProps.hasChildrenNodes);
+
+    // Construct aria-describedby and data-ktp-id attributes and return
+    let ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences);
+    let ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
+
+    return {
+      'aria-describedby': ariaDescribedBy,
+      'data-ktp-id': ktpId
+    };
+  }
+
+  /**
+   * Unregisters a keytip
+   * @param keytipToRemove - IKeytipProps of the keytip to remove
+   */
+  public unregisterKeytip(keytipToRemove: IKeytipProps): void {
+    this._layer.removeKeytip(keytipToRemove);
+    this.keytipTree.removeNode(keytipToRemove.keySequences);
   }
 
   /**
