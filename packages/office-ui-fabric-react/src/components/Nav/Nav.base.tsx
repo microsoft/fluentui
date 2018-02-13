@@ -192,7 +192,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         //   link.onClick && !link.forceAnchor && styles.buttonEntry,
         //   this._hasExpandButton && 'isOnExpanded') as string
         // }
-        //@todo Need to move this to the styles.ts file
+        // @todo Need to move this to the styles.ts file
         styles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
         iconProps={ { iconName: link.icon || '' } }
