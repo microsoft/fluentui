@@ -443,7 +443,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderNormalItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
-      return [item.onRender(item, this.dismiss)];
+      return [item.onRender({ 'aria-posinset': focusableElementIndex, 'aria-setsize': totalItemCount, ...item }, this.dismiss)];
     }
     if (item.href) {
       return this._renderAnchorMenuItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
@@ -663,6 +663,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which === KeyCodes.escape
+      || ev.altKey
+      || ev.metaKey
       || (ev.which === submenuCloseKey && this.props.isSubMenu && this.props.arrowDirection === FocusZoneDirection.vertical)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
@@ -674,7 +676,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   @autobind
   private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.escape) {
+    if (ev.which === KeyCodes.escape || ev.altKey || ev.metaKey) {
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
       ev.stopPropagation();

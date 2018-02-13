@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Feb 2018 11:24:05 GMT and should not be manually modified.
+
+## 5.10.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Export IClassNames fro Utilities for creating private getClassNames methods
+
+## 5.10.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
 
 ## 5.10.1
 Wed, 07 Feb 2018 11:23:59 GMT

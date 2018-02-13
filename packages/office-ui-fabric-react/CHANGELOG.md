@@ -1,6 +1,57 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Feb 2018 11:24:05 GMT and should not be manually modified.
+
+## 5.49.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering
+- Moves DatePicker label outside of hit target
+- Add name attribute to button
+
+## 5.49.2
+Mon, 12 Feb 2018 17:33:11 GMT
+
+### Patches
+
+- presence indicator does not influence layout of Persona
+
+## 5.49.1
+Mon, 12 Feb 2018 11:14:02 GMT
+
+### Patches
+
+- Fix issue where CommandBar chevron doesn't change color with rest of control when disabled
+- DetailsList: fix disappearing line when hovering on column header
+
+## 5.49.0
+Fri, 09 Feb 2018 18:11:52 GMT
+
+### Minor changes
+
+- ChoiceGroup: More flexible image field sizing, default image size, large image class.
+
+### Patches
+
+- Allowing for contextual and menus to be closed on Alt keys
+- Rating: Renamed RatingBase.tsx to Rating.base.tsx to match convention
+
+## 5.48.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.48.1
+Thu, 08 Feb 2018 02:29:26 GMT
+
+### Patches
+
+- Callout/Positioning: Fixed a bug where callout would lose alignment for some hints in rtl
+- Callout: Move positioning to inline styling
 
 ## 5.48.0
 Wed, 07 Feb 2018 11:23:59 GMT
