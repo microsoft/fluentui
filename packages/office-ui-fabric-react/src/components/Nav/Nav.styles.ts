@@ -60,6 +60,15 @@ export const getStyles = (
         textOverflow: 'ellipsis'
       }
     ],
+    compositeLink: [
+      'ms-Nav-compositeLink',
+      {
+        display: 'block',
+        position: 'relative',
+        color: semanticColors.bodyText,
+        backgroundColor: semanticColors.bodyBackground
+      }
+    ],
     link: [
       'ms-Nav-link',
       getFocusStyle(theme),
@@ -99,15 +108,6 @@ export const getStyles = (
       },
       isButtonEntry && {
         color: palette.themePrimary
-      }
-    ],
-    compositeLink: [
-      'ms-Nav-compositeLink',
-      {
-        display: 'block',
-        position: 'relative',
-        color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground
       }
     ],
     chevronButton: [

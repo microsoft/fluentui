@@ -180,7 +180,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       groups
     });
 
-    console.log(link.onClick && !link.forceAnchor);
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
