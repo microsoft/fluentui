@@ -13,7 +13,7 @@ const styles: any = stylesImport;
 
 export enum SuggestionActionType {
   none,
-  useInputText,
+  forceResolve,
   searchMore,
 }
 
@@ -63,7 +63,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
 
-  protected _useInputButton: IButton;
+  protected _forceResolveButton: IButton;
   protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
@@ -131,15 +131,15 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           </div>) : (null) }
         { forceResolveText && this._shouldShowForceResolve() && (
           <CommandButton
-            componentRef={ this._resolveRef('_useInputButton') }
+            componentRef={ this._resolveRef('_forceResolveButton') }
             className={ css(
-              'ms-useInput-button',
+              'ms-forceResolve-button',
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                this.state.selectedActionType === SuggestionActionType.useInputText
+                this.state.selectedActionType === SuggestionActionType.forceResolve
               }) }
-            onClick={ this._useInput }
+            onClick={ this._forceResolve }
           >
             { forceResolveText }
           </CommandButton>
@@ -203,19 +203,19 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     let suggestionLength = this.props.suggestions.length;
     if (keyCode === KeyCodes.down) {
       switch (currentSelectedAction) {
-        case SuggestionActionType.useInputText:
+        case SuggestionActionType.forceResolve:
           if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
           } else if (this._searchForMoreButton) {
             newSelectedActionType = SuggestionActionType.searchMore;
           } else {
-            newSelectedActionType = SuggestionActionType.useInputText;
+            newSelectedActionType = SuggestionActionType.forceResolve;
           }
           break;
         case SuggestionActionType.searchMore:
-          if (this._useInputButton) {
-            newSelectedActionType = SuggestionActionType.useInputText;
+          if (this._forceResolveButton) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
           } else if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
@@ -224,14 +224,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           }
           break;
         case SuggestionActionType.none:
-          if (currentSuggestionIndex === -1 && this._useInputButton) {
-            newSelectedActionType = SuggestionActionType.useInputText;
+          if (currentSuggestionIndex === -1 && this._forceResolveButton) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
           }
           break;
       }
     } else if (keyCode === KeyCodes.up) {
       switch (currentSelectedAction) {
-        case SuggestionActionType.useInputText:
+        case SuggestionActionType.forceResolve:
           if (this._searchForMoreButton) {
             newSelectedActionType = SuggestionActionType.searchMore;
           } else if (suggestionLength > 0) {
@@ -243,8 +243,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
-          } else if (this._useInputButton) {
-            newSelectedActionType = SuggestionActionType.useInputText;
+          } else if (this._forceResolveButton) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
           }
           break;
         case SuggestionActionType.none:
@@ -264,7 +264,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public hasSuggestedAction(): boolean {
-    return this._searchForMoreButton !== null || this._useInputButton !== null;
+    return this._searchForMoreButton !== null || this._forceResolveButton !== null;
   }
 
   public hasSuggestedActionSelected(): boolean {
@@ -273,8 +273,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   public executeSelectedAction(): void {
     switch (this.state.selectedActionType) {
-      case SuggestionActionType.useInputText:
-        this._useInput();
+      case SuggestionActionType.forceResolve:
+        this._forceResolve();
         break;
       case SuggestionActionType.searchMore:
         this._getMoreResults();
@@ -284,8 +284,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   public focusAboveSuggestions(): void {
     let newSelectedActionType = null;
-    if (this._useInputButton) {
-      this.setState({ selectedActionType: SuggestionActionType.useInputText });
+    if (this._forceResolveButton) {
+      this.setState({ selectedActionType: SuggestionActionType.forceResolve });
     } else if (this._searchForMoreButton) {
       this.setState({ selectedActionType: SuggestionActionType.searchMore });
     }
@@ -294,8 +294,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   public focusBelowSuggestions(): void {
     if (this._searchForMoreButton) {
       this.setState({ selectedActionType: SuggestionActionType.searchMore });
-    } else if (this._useInputButton) {
-      this.setState({ selectedActionType: SuggestionActionType.useInputText });
+    } else if (this._forceResolveButton) {
+      this.setState({ selectedActionType: SuggestionActionType.forceResolve });
     }
   }
 
@@ -363,7 +363,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   @autobind
-  private _useInput() {
+  private _forceResolve() {
     if (this.props.createGenericItem) {
       this.props.createGenericItem();
     }
