@@ -1,6 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
+import { css, classNamesFunction } from '../../../Utilities';
+import {
+  getStyles,
+  IButtonBasicExampleStyleProps,
+  IButtonBasicExampleStyles
+} from './Button.Basic.Example.styles';
 import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -65,8 +70,11 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
         </DefaultButton>
       );
 
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles);
+
     return (
-      <div className='ms-BasicButtonsExample'>
+      <div className={ css(classNames.example) }>
         { button }
       </div>
     );

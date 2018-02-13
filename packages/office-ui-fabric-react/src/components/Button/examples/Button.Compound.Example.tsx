@@ -1,4 +1,10 @@
 import * as React from 'react';
+import { css, classNamesFunction } from '../../../Utilities';
+import {
+  getStyles,
+  IButtonBasicExampleStyleProps,
+  IButtonBasicExampleStyles
+} from './Button.Basic.Example.styles';
 import {
   CompoundButton,
   IButtonProps
@@ -13,8 +19,11 @@ export class ButtonCompoundExample extends React.Component<IButtonProps> {
   public render() {
     let { disabled, checked } = this.props;
 
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles);
+
     return (
-      <div className='ms-BasicButtonsExample ms-BasicButtonsTwoUp'>
+      <div className={ css(classNames.example, classNames.twoup) }>
         <div>
           <Label>Standard</Label>
           <CompoundButton
