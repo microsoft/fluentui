@@ -192,6 +192,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     );
   }
 
+  /**
+   * Returns true if the event was handled, false otherwise
+   */
   @autobind
   public tryHandleKeyDown(keyCode: number, currentSuggestionIndex: number): boolean {
     let isEventHandled = false;
