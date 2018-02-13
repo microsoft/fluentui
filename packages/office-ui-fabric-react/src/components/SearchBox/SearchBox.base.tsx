@@ -93,8 +93,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
               styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
               onClick={ this._onClearClick }
               iconProps={ { iconName: 'Clear' } }
-              ariaLabel={ clearButtonProps && clearButtonProps.ariaLabel }
-              ariaDescription={ clearButtonProps && clearButtonProps.ariaDescription }
+              { ...clearButtonProps }
             />
           </div>
         }
