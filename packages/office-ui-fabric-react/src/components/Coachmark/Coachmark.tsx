@@ -266,6 +266,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
       let isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
+        // We don't want to update the isMouseInProximtiy state because
+        // The coachmark only opens and does not collapse.
+        // Setting isMouseInProximity here will cause the coachmark to open and close
         this.setState({
           collapsed: !isMouseInProximity
         });
