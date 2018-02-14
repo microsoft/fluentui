@@ -12,7 +12,7 @@ export const getStyles = (
     theme,
   } = props;
 
-  const { palette, semanticColors } = theme;
+  // const { palette, semanticColors } = theme;
 
   return ({
     root: [
