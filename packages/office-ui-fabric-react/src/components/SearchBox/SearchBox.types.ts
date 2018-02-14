@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
+import { IButtonProps } from '../Button';
 
 export interface ISearchBox {
   /**
@@ -63,6 +64,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
    * @defaultvalue labelText
    */
   ariaLabel?: string;
+
+  /**
+   * The props for the clear button.
+   */
+  clearButtonProps?: IButtonProps;
 
   /**
    * Whether or not the SearchBox is underlined.
