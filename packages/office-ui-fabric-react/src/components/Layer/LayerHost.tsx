@@ -3,9 +3,7 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import {
-  LayerBase
-} from './Layer.base';
+import { LayerBase } from './Layer.base';
 import { ILayerHostProps } from './LayerHost.types';
 
 export class LayerHost extends BaseComponent<ILayerHostProps, {}> {

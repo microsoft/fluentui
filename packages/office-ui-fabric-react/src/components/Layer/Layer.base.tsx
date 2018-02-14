@@ -25,7 +25,7 @@ let _defaultHostSelector: string | undefined;
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
-@customizable('Layer', ['theme'])
+// @customizable('Layer', ['theme'])
 export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   public static defaultProps: ILayerProps = {
@@ -45,6 +45,10 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     if (_layersByHostId[id]) {
       _layersByHostId[id].forEach(layer => layer.forceUpdate());
     }
+  }
+
+  public static myTestFunction(s: string) {
+    console.log(`inside ${s}`);
   }
 
   /**
