@@ -4,14 +4,14 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { KeytipManager } from './KeytipManager';
 import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
-import { IKeySequence, IKeytipTransitionSequence, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { IKeySequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from './KeytipLayer';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 
-const keytipStartSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-const keytipExitSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-const keytipReturnSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
+const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
+const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
+const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
 const layerID = 'my-layer-id';
 const keytipIdB = ktpFullPrefix + KeyCodes.b;
 const keytipIdC = ktpFullPrefix + KeyCodes.c;

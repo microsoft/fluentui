@@ -7,7 +7,7 @@ import {
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
-import { IKeytipTransitionSequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
 
@@ -16,17 +16,17 @@ export interface IKeytipLayerState {
   keytips: IKeytipProps[];
 }
 
-const defaultStartSequence = {
-  keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
-} as IKeytipTransitionSequence;
+const defaultStartSequence: IKeytipTransitionKey = {
+  key: 'Meta', modifierKey: ModifierKeyCodes.alt
+};
 
-const defaultExitSequence = {
-  keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
-} as IKeytipTransitionSequence;
+const defaultExitSequence: IKeytipTransitionKey = {
+  key: 'Meta', modifierKey: ModifierKeyCodes.alt
+};
 
-const defaultReturnSequence = {
-  keys: [{ key: 'Escape' }]
-} as IKeytipTransitionSequence;
+const defaultReturnSequence: IKeytipTransitionKey = {
+  key: 'Escape'
+};
 
 /**
  * A layer that holds all keytip items

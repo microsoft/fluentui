@@ -12,10 +12,6 @@ export interface IKeytipTransitionKey {
   modifierKey?: ModifierKeyCodes;
 }
 
-export interface IKeytipTransitionSequence {
-  keys: IKeytipTransitionKey[];
-}
-
 /**
  * Tests for equality between two IKeySequences
  * @param seq1 - First IKeySequence
@@ -32,18 +28,8 @@ export function keySequencesAreEqual(seq1: IKeySequence, seq2: IKeySequence): bo
  * @param seq1
  * @param seq2
  */
-export function transitionKeySequencesAreEqual(seq1: IKeytipTransitionSequence, seq2: IKeytipTransitionSequence): boolean {
-  let keys1 = seq1.keys;
-  let keys2 = seq2.keys;
-  if (keys1.length !== keys2.length) {
-    return false;
-  }
-  for (let i = 0; i < keys1.length; i++) {
-    if (keys1[i].key !== keys2[i].key || keys1[i].modifierKey !== keys2[i].modifierKey) {
-      return false;
-    }
-  }
-  return true;
+export function transitionKeysAreEqual(seq1: IKeytipTransitionKey, seq2: IKeytipTransitionKey): boolean {
+  return seq1.key === seq2.key && seq1.modifierKey === seq2.modifierKey;
 }
 
 /**
@@ -60,9 +46,9 @@ export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence
   return false;
 }
 
-export function transitionKeySequencesContain(sequences: IKeytipTransitionSequence[], seq: IKeytipTransitionSequence): boolean {
+export function transitionKeySequencesContain(sequences: IKeytipTransitionKey[], seq: IKeytipTransitionKey): boolean {
   for (let i = 0; i < sequences.length; i++) {
-    if (transitionKeySequencesAreEqual(sequences[i], seq)) {
+    if (transitionKeysAreEqual(sequences[i], seq)) {
       return true;
     }
   }

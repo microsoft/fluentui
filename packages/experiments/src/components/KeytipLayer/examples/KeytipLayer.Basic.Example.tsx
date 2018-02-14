@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IKeytipTransitionSequence, convertSequencesToKeytipID } from '../../../utilities/keysequence';
+import { IKeytipTransitionKey, convertSequencesToKeytipID } from '../../../utilities/keysequence';
 import { KeytipLayer } from '../KeytipLayer';
 import { KeytipManager } from '../KeytipManager';
 import { IKeytipProps } from '../../Keytip';
@@ -17,7 +17,7 @@ export interface IKeytipMap {
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
-  private startingKeySequence: IKeytipTransitionSequence = { keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] };
+  private startingKeySequence: IKeytipTransitionKey = { key: 'Meta', modifierKey: ModifierKeyCodes.alt };
   private keytipMap: IKeytipMap = {};
 
   constructor(props: {}) {

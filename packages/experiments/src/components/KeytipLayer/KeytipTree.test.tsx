@@ -5,15 +5,15 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipManager } from './KeytipManager';
-import { IKeySequence, IKeytipTransitionSequence } from '../../utilities/keysequence';
+import { IKeySequence, IKeytipTransitionKey } from '../../utilities/keysequence';
 import { ModifierKeyCodes } from '../../Utilities';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 
 describe('KeytipTree', () => {
   const layerID = 'my-layer-id';
-  const keytipStartSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-  const keytipExitSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-  const keytipReturnSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
+  const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
+  const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
+  const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
   const keytipManager = KeytipManager.getInstance();
 
   beforeEach(() => {
