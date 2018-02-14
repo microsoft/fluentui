@@ -280,7 +280,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      currentProps!.gapSpace = offsetFromTarget
+      currentProps!.gapSpace = offsetFromTarget;
       let newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
