@@ -104,7 +104,7 @@ describe('KeytipManager', () => {
       expect(onEnterKeytipMode).toBeCalled();
     });
 
-    // GO Back Tests
+    // Return Tests
     it('Should call on exit keytip mode because we are going back in the root', () => {
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processTransitionInput({ key: 'Escape' });

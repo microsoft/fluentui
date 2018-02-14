@@ -120,7 +120,7 @@ export class KeytipManager {
       this.exitKeytipMode();
       return;
     } else if (transitionKeySequencesContain(this._returnSequences, currentTransitionSequnce)) {
-      // If key sequence is in 'go back sequences', move currentKeytip to parent (or if currentKeytip is the root, exit)
+      // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
       //    Trigger node's onReturnExecute
       //    Hide all keytips currently showing
       //    Show all keytips of children of currentKeytip
@@ -129,7 +129,7 @@ export class KeytipManager {
           // We are at the root, exit keytip mode
           this.exitKeytipMode();
         } else {
-          // If this keytip has a Return prop, we execute the func.
+          // If this keytip has a onReturn prop, we execute the func.
           if (this.keytipTree.currentKeytip.onReturn) {
             this.keytipTree.currentKeytip.onReturn();
           }
