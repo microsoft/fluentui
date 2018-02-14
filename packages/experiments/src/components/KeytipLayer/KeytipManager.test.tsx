@@ -3,14 +3,15 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { KeytipManager } from './KeytipManager';
-import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
 import { IKeySequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from './KeytipLayer';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
+import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
-const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
-const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
+const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
+const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
 const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
 const layerID = 'my-layer-id';
 const keytipIdB = ktpFullPrefix + KeyCodes.b;
@@ -94,13 +95,13 @@ describe('KeytipManager', () => {
     // On Exit keytip mode
     it('Call on exit keytip mode when we process alt + left win ', () => {
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processTransitionInput({ key: 'Meta', modifierKey: ModifierKeyCodes.alt });
+      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] });
       expect(onExitKeytipMode).toBeCalled();
     });
 
     // On Enter keytip mode
     it('Call on enter keytip mode when we process alt + left win', () => {
-      keytipManager.processTransitionInput({ key: 'Meta', modifierKey: ModifierKeyCodes.alt });
+      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] });
       expect(onEnterKeytipMode).toBeCalled();
     });
 

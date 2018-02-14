@@ -6,10 +6,11 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
 import { IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipManager } from './KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
+import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -17,11 +18,11 @@ export interface IKeytipLayerState {
 }
 
 const defaultStartSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKey: ModifierKeyCodes.alt
+  key: 'Meta', modifierKeys: [ModifierKeyCodes.alt]
 };
 
 const defaultExitSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKey: ModifierKeyCodes.alt
+  key: 'Meta', modifierKeys: [ModifierKeyCodes.alt]
 };
 
 const defaultReturnSequence: IKeytipTransitionKey = {
@@ -182,22 +183,25 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         break;
       default:
         let transitionKey: IKeytipTransitionKey = { key: ev.key };
-        transitionKey.modifierKey = this._getModifierKey(ev);
+        transitionKey.modifierKeys = this._getModifierKey(ev);
         this._keytipManager.processTransitionInput(transitionKey);
         break;
     }
   }
 
-  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes | undefined {
+  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes[] | undefined {
+    let modifierKeys = [];
     if (ev.altKey) {
-      return ModifierKeyCodes.alt;
-    } else if (ev.ctrlKey) {
-      return ModifierKeyCodes.ctrl;
-    } else if (ev.shiftKey) {
-      return ModifierKeyCodes.shift;
+      modifierKeys.push(ModifierKeyCodes.alt);
+    }
+    if (ev.ctrlKey) {
+      modifierKeys.push(ModifierKeyCodes.ctrl);
+    }
+    if (ev.shiftKey) {
+      modifierKeys.push(ModifierKeyCodes.shift);
     }
     // TODO include windows key or option for MAC
-    return undefined;
+    return modifierKeys.length ? modifierKeys : undefined;
   }
 
   @autobind

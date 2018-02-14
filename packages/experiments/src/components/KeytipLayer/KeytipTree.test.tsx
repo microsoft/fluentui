@@ -6,13 +6,13 @@ import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipManager } from './KeytipManager';
 import { IKeySequence, IKeytipTransitionKey } from '../../utilities/keysequence';
-import { ModifierKeyCodes } from '../../Utilities';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
+import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
 describe('KeytipTree', () => {
   const layerID = 'my-layer-id';
-  const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
-  const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }];
+  const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
+  const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
   const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
   const keytipManager = KeytipManager.getInstance();
 

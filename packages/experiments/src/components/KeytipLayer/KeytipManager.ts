@@ -4,7 +4,7 @@ import { IKeytipProps } from '../../Keytip';
 import {
   IKeySequence,
   convertSequencesToKeytipID,
-  transitionKeySequencesContain,
+  transitionKeysContain,
   IKeytipTransitionKey
 } from '../../utilities/keysequence';
 
@@ -128,12 +128,10 @@ export class KeytipManager {
    * @param keySequence
    */
   public processTransitionInput(transitionKey: IKeytipTransitionKey): void {
-    // TODO: need to do partial matching here
-    if (transitionKeySequencesContain(this._exitSequences, transitionKey) && this.keytipTree.currentKeytip) {
+    if (transitionKeysContain(this._exitSequences, transitionKey) && this.keytipTree.currentKeytip) {
       // If key sequence is in 'exit sequences', exit keytip mode
-      //    Trigger layer's onExit callback
       this.exitKeytipMode();
-    } else if (transitionKeySequencesContain(this._returnSequences, transitionKey)) {
+    } else if (transitionKeysContain(this._returnSequences, transitionKey)) {
       // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
       //    Trigger node's onReturnExecute
       //    Hide all keytips currently showing
@@ -154,7 +152,7 @@ export class KeytipManager {
           this.showKeytips(this.keytipTree.currentKeytip.children);
         }
       }
-    } else if (transitionKeySequencesContain(this._enableSequences, transitionKey) && !this.keytipTree.currentKeytip) {
+    } else if (transitionKeysContain(this._enableSequences, transitionKey) && !this.keytipTree.currentKeytip) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
       //    Show children of root
       //    Trigger layer's onEnter callback
