@@ -91,9 +91,9 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
           <div className={ classNames.clearButton }>
             <IconButton
               styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
-              onClick={ this._onClearClick }
               iconProps={ { iconName: 'Clear' } }
               { ...clearButtonProps }
+              onClick={ this._onClearClick }
             />
           </div>
         }
@@ -140,7 +140,15 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onClearClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    this._onClear(ev);
+    let { clearButtonProps } = this.props;
+
+    if (clearButtonProps && clearButtonProps.onClick) {
+      clearButtonProps.onClick(ev);
+    }
+
+    if (!ev.defaultPrevented) {
+      this._onClear(ev);
+    }
   }
 
   @autobind
@@ -188,7 +196,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    const value = this._inputElement.value;
+    const value = ev.target.value;
+
     if (value === this._latestValue) {
       return;
     }
