@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { autobind } from '../../../Utilities';
+import { Checkbox } from '../../../Checkbox';
+// import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { Layer } from '../Layer';
+import { LayerHost } from '../LayerHost';
+import { Toggle } from '../../../Toggle';
 import { AnimationClassNames } from '../../../Styling';
 import './Layer.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
