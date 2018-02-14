@@ -21,8 +21,7 @@ export interface IBaseProps<T = any> {
  */
 export class BaseComponent<P extends IBaseProps = {}, S = {}> extends React.Component<P, S> {
   /**
-   * External consumers should override BaseComponent.onError to hook into error messages that occur from
-   * exceptions thrown from within components.
+   * @deprecated Use React's error boundaries instead.
    */
   // tslint:disable-next-line:no-any
   public static onError: ((errorMessage?: string, ex?: any) => void);
@@ -241,30 +240,17 @@ function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: st
     (obj as any)[methodName] = function (): any {
       let retVal;
 
-      try {
-        if (prototypeMethod) {
-          retVal = prototypeMethod.apply(this, arguments);
-        }
-        if (classMethod !== prototypeMethod) {
-          retVal = classMethod.apply(this, arguments);
-        }
-      } catch (e) {
-        const errorMessage = `Exception in ${obj.className}.${methodName}(): ${typeof e === 'string' ? e : e.stack}`;
-
-        if (BaseComponent.onError) {
-          BaseComponent.onError(errorMessage, e);
-        }
+      if (prototypeMethod) {
+        retVal = prototypeMethod.apply(this, arguments);
+      }
+      if (classMethod !== prototypeMethod) {
+        retVal = classMethod.apply(this, arguments);
       }
 
       return retVal;
     };
   }
 }
-
-BaseComponent.onError = (errorMessage: string) => {
-  console.error(errorMessage);
-  throw errorMessage;
-};
 
 /**
  * Simple constant function for returning null, used to render empty templates in JSX.
