@@ -29,9 +29,12 @@ storiesOf('ChoiceGroup', module)
       steps={ new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('div.ms-ChoiceField:nth-of-type(1)')
-        .snapshot('hover selected', { cropTo: '.testWrapper' })
-        .hover('div.ms-ChoiceField:nth-of-type(2)')
         .snapshot('hover unselected', { cropTo: '.testWrapper' })
+        .click('div.ms-ChoiceField:nth-of-type(1)')
+        .snapshot('selected', { cropTo: '.testWrapper' })
+        .click('div.ms-ChoiceField:nth-of-type(1)')
+        .hover('div.ms-ChoiceField:nth-of-type(1)')
+        .snapshot('hover selected', { cropTo: '.testWrapper' })
         .end()
       }
     >
@@ -40,14 +43,12 @@ storiesOf('ChoiceGroup', module)
   ))
   .add('Root', () => (
     <ChoiceGroup
-      defaultSelectedKey='A'
       options={ options }
       label='Pick one'
     />
   ))
   .add('Required', () => (
     <ChoiceGroup
-      defaultSelectedKey='A'
       options={ options }
       label='Pick one'
       required
@@ -56,7 +57,6 @@ storiesOf('ChoiceGroup', module)
   .add('With icons', () => (
     <ChoiceGroup
       label='Pick one icon'
-      defaultSelectedKey='day'
       options={ [
         {
           key: 'day',
@@ -80,7 +80,6 @@ storiesOf('ChoiceGroup', module)
   .add('With default size images', () => (
     <ChoiceGroup
       label='Pick one image'
-      defaultSelectedKey='bar'
       options={ [
         {
           key: 'bar',
@@ -100,7 +99,6 @@ storiesOf('ChoiceGroup', module)
   .add('With large size images', () => (
     <ChoiceGroup
       label='Pick one image'
-      defaultSelectedKey='bar'
       options={ [
         {
           key: 'bar2',
