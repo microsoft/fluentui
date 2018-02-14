@@ -155,10 +155,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   public refocusSuggestions(keyCode: KeyCodes) {
     this.resetFocus();
-    if (keyCode === KeyCodes.up) {
-      this.suggestionStore.setSelectedSuggestion(this.suggestionStore.suggestions.length - 1);
-    } else if (keyCode === KeyCodes.down) {
-      this.suggestionStore.setSelectedSuggestion(0);
+    if (this.suggestionStore.suggestions && this.suggestionStore.suggestions.length > 0) {
+      if (keyCode === KeyCodes.up) {
+        this.suggestionStore.setSelectedSuggestion(this.suggestionStore.suggestions.length - 1);
+      } else if (keyCode === KeyCodes.down) {
+        this.suggestionStore.setSelectedSuggestion(0);
+      }
     }
   }
 
@@ -443,7 +445,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
+    let keyCode = ev.which;
+    switch (keyCode) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
           this.setState({ suggestionsVisible: false });
@@ -454,7 +457,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (this.suggestionElement.hasSuggestedActionSelected()) {
+          this.suggestionElement.executeSelectedAction();
+        } else if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -488,15 +493,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.up:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && this.suggestionStore.currentIndex === 0) {
-            this.suggestionElement.focusSearchForMoreButton();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
+          if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+            ev.preventDefault();
+            ev.stopPropagation();
           } else {
-            if (this.suggestionStore.previousSuggestion()) {
+            if (this.suggestionElement.hasSuggestedAction() && this.suggestionStore.currentIndex === 0) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.onSuggestionSelect();
+              this.suggestionElement.focusAboveSuggestions();
+              this.suggestionStore.deselectAllSuggestions();
+              this.forceUpdate();
+            } else {
+              if (this.suggestionStore.previousSuggestion()) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.onSuggestionSelect();
+              }
             }
           }
         }
@@ -504,18 +516,24 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.down:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
-            this.suggestionElement.focusSearchForMoreButton();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
+          if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+            ev.preventDefault();
+            ev.stopPropagation();
           } else {
-            if (this.suggestionStore.nextSuggestion()) {
+            if (this.suggestionElement.hasSuggestedAction() && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.onSuggestionSelect();
+              this.suggestionElement.focusBelowSuggestions();
+              this.suggestionStore.deselectAllSuggestions();
+              this.forceUpdate();
+            } else {
+              if (this.suggestionStore.nextSuggestion()) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.onSuggestionSelect();
+              }
             }
           }
-
         }
         break;
     }
