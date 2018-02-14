@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import { SearchBox } from './SearchBox';
 
 // tslint:disable:jsx-no-lambda
