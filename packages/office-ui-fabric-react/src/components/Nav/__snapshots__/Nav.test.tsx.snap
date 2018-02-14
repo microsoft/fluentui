@@ -97,7 +97,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       height: 36px;
-                      line-height: navnodeHeight;
+                      line-height: 36px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
