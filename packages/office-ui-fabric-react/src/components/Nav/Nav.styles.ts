@@ -77,7 +77,7 @@ export const getStyles = (
         position: 'relative',
         height: `${navnodeHeight}px`,
         width: '100%',
-        lineHeight: 'navnodeHeight',
+        lineHeight: `${navnodeHeight}px`,
         textDecoration: 'none',
         cursor: 'pointer',
         textOverflow: 'ellipsis',
