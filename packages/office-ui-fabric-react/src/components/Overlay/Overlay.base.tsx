@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css,
+  customizable,
   getNativeProps,
   divProperties,
   enableBodyScroll,
@@ -17,6 +17,7 @@ import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
+@customizable('Overlay', ['theme'])
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
 
   public componentDidMount() {
@@ -42,14 +43,6 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
       className,
       isDarkThemed,
     });
-
-    // const modifiedClassName = css(
-    //   'ms-Overlay',
-    //   styles.root,
-    //   className,
-    //   {
-    //     ['ms-Overlay--dark ' + styles.rootIsDark]: isDarkThemed,
-    //   });
 
     return (
       <div { ...divProps } className={ classNames.root } />
