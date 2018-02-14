@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.12.0",
+      "tag": "@uifabric/merge-styles_v5.12.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "711ef243d0212f623a55ebde0d98042f148d81db",
+            "comment": "mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.11.2",
       "tag": "@uifabric/merge-styles_v5.11.2",
       "date": "Wed, 07 Feb 2018 11:23:59 GMT",

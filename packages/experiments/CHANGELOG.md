@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 07 Feb 2018 11:23:59 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+
+## 5.20.0
+Wed, 14 Feb 2018 22:10:49 GMT
+
+### Minor changes
+
+- Use new "use current input" command in Suggestions
 
 ## 5.19.0
 Wed, 07 Feb 2018 11:23:59 GMT
