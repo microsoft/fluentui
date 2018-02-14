@@ -349,6 +349,9 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         animationDelay: '0s',
         animationFillMode: 'forwards',
         animationName: rotateOne
+      },
+      !props.collapsed && {
+        opacity: '1'
       }
     ],
     // Layer Host, defaults to collapsed
@@ -362,7 +365,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },
-      (!props.isMeasuring) && {
+      !props.isMeasuring && {
         width: props.width,
         height: props.height,
         visibility: 'visible'
