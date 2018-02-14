@@ -384,10 +384,12 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         transform: 'scale(0)'
       },
       (!props.collapsed) && {
+        width: props.entityHostWidth,
+        height: props.entityHostHeight,
         transform: 'scale(1)'
       },
       (!props.isMeasuring) && {
-        visibility: 'visible'
+        visibility: 'visible',
       }
     ]
   };
