@@ -11,7 +11,6 @@ import { IconButton } from './IconButton/IconButton';
 import { ActionButton } from './ActionButton/ActionButton';
 import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
-import { MenuTriggerDirection } from './Button.types';
 import { KeyCodes } from '../../Utilities';
 // import { IconButton } from "src";
 
@@ -320,12 +319,12 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
-    it('If directional menu trigger is disabled, pressing down does not trigger menu', () => {
+    it('If menu trigger is disabled, pressing down does not trigger menu', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
           data-automation-id='test'
           text='Create account'
-          allowDirectionalMenuTrigger={ false }
+          menuTriggerKeyCode={ null }
           menuProps={ {
             items: [
               {
@@ -351,12 +350,12 @@ describe('Button', () => {
       expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
     });
 
-    it('If menu trigger direction is specefied, default direction is overridden', () => {
+    it('If menu trigger is specefied, default key is overridden', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton
           data-automation-id='test'
           text='Create account'
-          menuTriggerDirection={ MenuTriggerDirection.right }
+          menuTriggerKeyCode={ KeyCodes.right }
           menuProps={ {
             items: [
               {

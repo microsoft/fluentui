@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -225,16 +225,10 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     checked: boolean) => ISplitButtonClassNames;
 
   /**
-  * Defines which arrow key opens button menu.
-  * @default MenuTriggerDirection.down
+  * Defines a custom key that opens button menu. If the value is not provided, down arrow key is used.
+  * If set to null, this will be disabled.
   */
-  menuTriggerDirection?: MenuTriggerDirection;
-
-  /**
-  * Allow arrow keys to open button menu.
-  * @default true
-  */
-  allowDirectionalMenuTrigger?: boolean;
+  menuTriggerKeyCode?: KeyCodes | null;
 }
 
 export enum ElementType {
@@ -252,17 +246,6 @@ export enum ButtonType {
   command = 4,
   icon = 5,
   default = 6
-}
-
-export enum MenuTriggerDirection {
-  /** Open menu with up arrow */
-  up = 0,
-  /** Open menu with down arrow */
-  down = 1,
-  /** Open menu with left arrow */
-  left = 2,
-  /** Open menu with right arrow */
-  right = 3
 }
 
 export interface IButtonStyles {
