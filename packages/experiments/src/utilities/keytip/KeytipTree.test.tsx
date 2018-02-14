@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { IKeytipProps } from '../Keytip/Keytip.types';
+import { IKeytipProps } from '../../Keytip';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipManager } from './KeytipManager';
 import { IKeySequence, IKeytipTransitionKey } from '../../utilities/keysequence';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';

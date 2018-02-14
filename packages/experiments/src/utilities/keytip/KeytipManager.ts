@@ -1,4 +1,4 @@
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
 import {
@@ -69,7 +69,7 @@ export class KeytipManager {
     // Set the 'keytips' property in _layer
     // TODO: do we have to check for this._layer?
     this._layer && this._layer.registerKeytip(keytipProps);
-    this.keytipTree.addNode(keytipProps.keySequences, keytipProps.onExecute, keytipProps.hasChildrenNodes);
+    this.keytipTree.addNode(keytipProps);
 
     // Construct aria-describedby and data-ktp-id attributes and return
     let ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences);

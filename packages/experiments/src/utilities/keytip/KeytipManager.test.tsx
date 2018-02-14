@@ -6,7 +6,7 @@ import { KeytipManager } from './KeytipManager';
 import { KeyCodes } from '../../Utilities';
 import { IKeySequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 

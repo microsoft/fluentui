@@ -35,18 +35,6 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipProps, context: any) {
     super(props, context);
-
-    this.state = {
-      visible: props.visible || false
-    };
-  }
-
-  public componentWillReceiveProps(nextProps: IKeytipProps): void {
-    let { visible } = nextProps;
-
-    this.setState({
-      visible: visible
-    });
   }
 
   public render(): JSX.Element {
@@ -56,12 +44,9 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
       getStyles,
       theme,
       disabled,
-      keySequences
-    } = this.props;
-
-    const {
+      keySequences,
       visible
-    } = this.state;
+    } = this.props;
 
     this._classNames = getClassNames(
       getStyles!,

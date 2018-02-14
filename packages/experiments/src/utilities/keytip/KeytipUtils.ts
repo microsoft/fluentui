@@ -1,6 +1,6 @@
 import { IKeySequence } from '../keysequence';
 import { IKeytipProps } from '../../Keytip';
-import { KeytipManager } from '../../KeytipLayer';
+import { KeytipManager } from './KeytipManager';
 
 // Constants
 export const ktpPrefix = 'ktp';
