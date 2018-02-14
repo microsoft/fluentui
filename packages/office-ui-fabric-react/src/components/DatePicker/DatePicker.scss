@@ -45,5 +45,10 @@
 .eventWithoutLabel {
   @include ms-DatePicker-event();
   top: 7px;
+
+  &:not(.msDatePickerDisabled) {
+    pointer-events: initial;
+    cursor: pointer;
+  }
 }
 
