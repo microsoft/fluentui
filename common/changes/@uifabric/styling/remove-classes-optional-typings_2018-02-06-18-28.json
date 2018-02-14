@@ -1,7 +1,7 @@
 {
   "changes": [
     {
-      "comment": "",
+      "comment": "Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume.",
       "packageName": "@uifabric/styling",
       "type": "minor"
     }
