@@ -70,7 +70,7 @@ export class KeytipManager {
   public registerKeytip(keytipProps: IKeytipProps): void {
     // Set the 'keytips' property in _layer
     this._layer && this._layer.registerKeytip(keytipProps);
-    this.keytipTree.addNode(keytipProps.keySequences, keytipProps.onExecute, keytipProps.hasChildrenNodes, keytipProps.overflowSetSequence);
+    this.keytipTree.addNode(keytipProps);
   }
 
   /**
