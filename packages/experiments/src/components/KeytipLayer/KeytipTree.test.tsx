@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-
+import { IKeytipProps } from '../Keytip/Keytip.types';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from './KeytipLayer';
 import { KeytipManager } from './KeytipManager';
@@ -49,7 +49,7 @@ describe('KeytipTree', () => {
       const keytipIdC = ktpFullPrefix + 'c';
       const sampleKeySequence: IKeySequence[] = [{ keys: ['c'] }];
 
-      keytipTree.addNode(sampleKeySequence, jest.fn());
+      keytipTree.addNode(createKeytipProps(sampleKeySequence));
 
       // Test C has been added to root's children
       expect(keytipTree.root.children).toHaveLength(1);
@@ -73,12 +73,11 @@ describe('KeytipTree', () => {
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
 
-      // Child
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-      keytipTree.addNode(keytipSequenceC, jest.fn());
-      keytipTree.addNode(keytipSequenceB, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Test B was added to C's children
       expect(keytipTree.nodeMap[keytipIdC].children).toHaveLength(1);
@@ -105,7 +104,7 @@ describe('KeytipTree', () => {
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-      keytipTree.addNode(keytipSequenceB, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Test B was added to nodeMap
       let keytipNodeB = keytipTree.nodeMap[keytipIdB];
@@ -129,7 +128,7 @@ describe('KeytipTree', () => {
       expect(keytipTree.nodeMap[keytipIdC].children).toContain(keytipIdB);
 
       // Add parent
-      keytipTree.addNode(keytipSequenceC, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceC));
 
       keytipNodeC = keytipTree.nodeMap[keytipIdC];
       expect(keytipNodeC).toBeDefined();
@@ -178,11 +177,11 @@ describe('KeytipTree', () => {
       const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + 'f';
       const keytipSequenceF: IKeySequence[] = [{ keys: ['e'] }, { keys: ['f'] }];
 
-      keytipTree.addNode(keytipSequenceF, jest.fn());
-      keytipTree.addNode(keytipSequenceC, jest.fn());
-      keytipTree.addNode(keytipSequenceB, jest.fn());
-      keytipTree.addNode(keytipSequenceD, jest.fn());
-      keytipTree.addNode(keytipSequenceE, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceF));
+      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      keytipTree.addNode(createKeytipProps(keytipSequenceB));
+      keytipTree.addNode(createKeytipProps(keytipSequenceD));
+      keytipTree.addNode(createKeytipProps(keytipSequenceE));
 
       // Test all nodes are in the nodeMap
       let keytipNodeB = keytipTree.nodeMap[keytipIdB];
@@ -230,7 +229,7 @@ describe('KeytipTree', () => {
       const keytipIdC = ktpFullPrefix + 'c';
       const keytipSequenceC: IKeySequence[] = [{ keys: ['c'] }];
 
-      keytipTree.addNode(keytipSequenceC, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceC));
 
       // Remove C from the tree
       keytipTree.removeNode(keytipSequenceC);
@@ -253,8 +252,8 @@ describe('KeytipTree', () => {
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-      keytipTree.addNode(keytipSequenceC, jest.fn());
-      keytipTree.addNode(keytipSequenceB, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Remove B
       keytipTree.removeNode(keytipSequenceB);
@@ -287,8 +286,8 @@ describe('KeytipTree', () => {
       const keytipIdB = ktpFullPrefix + 'c' + ktpSeparator + 'b';
       const keytipSequenceB: IKeySequence[] = [{ keys: ['c'] }, { keys: ['b'] }];
 
-      keytipTree.addNode(keytipSequenceC, jest.fn());
-      keytipTree.addNode(keytipSequenceB, jest.fn());
+      keytipTree.addNode(createKeytipProps(keytipSequenceC));
+      keytipTree.addNode(createKeytipProps(keytipSequenceB));
 
       // Remove C
       keytipTree.removeNode(keytipSequenceC);
@@ -376,6 +375,12 @@ describe('KeytipTree', () => {
     expect(matchedNodes3.length).toEqual(2);
   });
 });
+
+function createKeytipProps(keySequences: IKeySequence[]): IKeytipProps {
+  return {
+    keySequences
+  };
+}
 
 function createTreeNode(id: string, parentId: string, childrenIds: string[], sequence: IKeySequence): IKeytipTreeNode {
   return {

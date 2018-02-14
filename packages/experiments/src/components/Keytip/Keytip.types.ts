@@ -65,6 +65,11 @@ export interface IKeytipProps {
   keySequences: IKeySequence[];
 
   /**
+   * KeySequence of overflow set which will trigger the keytip.
+   */
+  overflowSetSequence?: IKeySequence;
+
+  /**
    * ICalloutProps to pass to the callout element
    *
    * @type {string}
@@ -84,14 +89,6 @@ export interface IKeytipProps {
    * @type {IPoint}
    */
   offset?: IPoint;
-
-  /**
-   * If defined, means this keytip has been moved to an overflow set and this is the sequence to get to the
-   * new component
-   *
-   * @type {IKeySequence}
-   */
-  overflowSetSequence?: IKeySequence;
 
   /**
    * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
