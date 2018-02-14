@@ -237,8 +237,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           } else if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
             newSelectedActionType = SuggestionActionType.none;
-            break;
           }
+          break;
         case SuggestionActionType.searchMore:
           if (suggestionLength > 0) {
             this._refocusOnSuggestions(keyCode);
@@ -264,7 +264,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public hasSuggestedAction(): boolean {
-    return this._searchForMoreButton !== null || this._forceResolveButton !== null;
+    return this._searchForMoreButton !== undefined || this._forceResolveButton !== undefined;
   }
 
   public hasSuggestedActionSelected(): boolean {
