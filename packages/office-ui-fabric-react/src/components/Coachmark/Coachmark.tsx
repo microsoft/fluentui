@@ -1,6 +1,6 @@
 // Utilities
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction, autobind } from '../../Utilities';
 import { DefaultPalette } from '../../Styling';
 
 // Component Dependencies
@@ -10,6 +10,7 @@ import { Beak } from './Beak/Beak';
 // Coachmark
 import { ICoachmarkTypes } from './Coachmark.types';
 import { getStyles, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
+import { FocusZone } from '../../FocusZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -132,7 +133,8 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         offsetFromTarget={ beakHeight }
         componentRef={ this._resolveRef('_positioningContainer') }
       >
-        <div className={ classNames.root }>
+        <div
+          className={ classNames.root }>
           <div className={ classNames.pulsingBeacon } />
           <div
             className={ classNames.translateAnimationContainer }
@@ -148,17 +150,21 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
                     top={ this.state.beakTop }
                   />
                 }
-                <div
-                  className={ classNames.entityHost }
-                  ref={ this._resolveRef('_entityHost') }
-                >
+                <FocusZone>
                   <div
-                    className={ classNames.entityInnerHost }
-                    ref={ this._resolveRef('_entityInnerHostElement') }
+                    className={ classNames.entityHost }
+                    ref={ this._resolveRef('_entityHost') }
+                    data-is-focusable={ true }
+                    onFocus={ this._onFocusHandler }
                   >
-                    { children }
+                    <div
+                      className={ classNames.entityInnerHost }
+                      ref={ this._resolveRef('_entityInnerHostElement') }
+                    >
+                      { children }
+                    </div>
                   </div>
-                </div>
+                </FocusZone>
               </div>
             </div>
           </div>
@@ -205,6 +211,13 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     }
   }
 
+  @autobind
+  private _onFocusHandler(): void {
+    this._openCoachmark();
+    console.log("Focusesd");
+  }
+
+  @autobind
   private _openCoachmark(): void {
     this.setState({
       collapsed: false
