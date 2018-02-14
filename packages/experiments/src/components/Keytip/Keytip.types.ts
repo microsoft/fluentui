@@ -91,14 +91,6 @@ export interface IKeytipProps {
   offset?: IPoint;
 
   /**
-   * If defined, means this keytip has been moved to an overflow set and this is the sequence to get to the
-   * new component
-   *
-   * @type {IKeySequence}
-   */
-  overflowSetSequence?: IKeySequence;
-
-  /**
    * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
    * their children registered after the initial rendering of the DOM.
    *

@@ -44,12 +44,6 @@ export interface IKeytipTreeNode {
   hasChildrenNodes?: boolean;
 
   /**
-   * Optional link to another IKeytipTreeNode; only used for persisted Keytips in OverflowWells,
-   * where we want keytips to be executed with and without the overflow keytip.
-   */
-  keytipLink?: IKeytipTreeNode;
-
-  /**
    * Whether the keytip is visible or not in the dom.
    */
   visible?: boolean;
