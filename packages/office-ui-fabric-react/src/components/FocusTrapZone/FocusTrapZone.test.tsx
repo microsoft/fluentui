@@ -9,7 +9,7 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 
-describe('FocusZone', () => {
+describe('FocusTrapZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
   function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
@@ -45,7 +45,7 @@ describe('FocusZone', () => {
     lastFocusedElement = undefined;
   });
 
-  it('can use tab to the next FocusZone', () => {
+  it('can tab across FocusZones with different button structures', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
         <FocusTrapZone forceFocusInsideTrap={ false }>
