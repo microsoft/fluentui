@@ -4,7 +4,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ButtonPrimaryExample extends React.Component<IButtonProps> {
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>

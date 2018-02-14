@@ -11,7 +11,7 @@ export class ButtonCompoundExample extends React.Component<IButtonProps> {
   }
 
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample ms-BasicButtonsTwoUp'>

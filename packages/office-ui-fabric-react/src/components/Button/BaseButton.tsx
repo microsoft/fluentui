@@ -90,9 +90,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getClassNames
          } = this.props;
 
-    let { menuProps } = this.state;
+    const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
-    let isPrimaryButtonDisabled = (disabled || primaryDisabled);
+    const isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
     this._classNames = getClassNames ? getClassNames(
       theme!,
@@ -210,9 +210,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    let props = this.props;
-    let Tag = tag;
-    let {
+    const props = this.props;
+    const Tag = tag;
+    const {
       menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
@@ -249,7 +249,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
-    let {
+    const {
       iconProps
        } = this.props;
 

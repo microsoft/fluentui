@@ -14,7 +14,7 @@
     "no-any": false,
     "variable-name": false,
     "no-internal-module": false,
-    "prefer-const": false,
+    "prefer-const": true,
     "typedef": [
       false
     ],

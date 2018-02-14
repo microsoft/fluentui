@@ -10,7 +10,7 @@ const alertClicked = (): void => {
 export class ButtonSplitExample extends React.Component<IButtonProps> {
 
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     return (
       <div className='ms-BasicButtonsTwoUp'>
@@ -104,7 +104,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
 export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
 
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
     const customSplitButtonStyles = getCustomSplitButtonStyles();
 
     return (
