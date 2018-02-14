@@ -37,3 +37,10 @@ export interface IBeakProps extends React.Props<Beak> {
    */
   top?: string | null;
 }
+
+export interface IBeakStylesProps {
+  left?: string | null;
+  top?: string | null;
+  width?: string;
+  height?: string;
+}

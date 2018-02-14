@@ -1,11 +1,5 @@
 import { IStyle, DefaultPalette } from '../../../Styling';
-
-export interface IBeakStylesProps {
-  left?: string | null;
-  top?: string | null;
-  width?: string;
-  height?: string;
-}
+import { IBeakStylesProps } from './Beak.types';
 
 export interface IBeakStyles {
   /**

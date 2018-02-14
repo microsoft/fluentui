@@ -5,8 +5,9 @@ import {
   classNamesFunction
 } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
-import { getStyles, IBeakStyles, IBeakStylesProps } from './Beak.styles';
+import { getStyles, IBeakStyles } from './Beak.styles';
 import { getComboBoxOptionClassNames } from 'src/components/ComboBox/ComboBox.classNames';
+import { IBeakStylesProps } from './Beak.types';
 
 export interface IBeakState {
   left: string | null;
@@ -14,8 +15,6 @@ export interface IBeakState {
 }
 
 export class Beak extends BaseComponent<IBeakProps, IBeakState> {
-  private _beakElement: HTMLElement;
-
   constructor(props: IBeakProps) {
     super(props);
   }
@@ -43,7 +42,6 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
     return (
       <div
         className={ css('ms-Beak', classNames.root) }
-        ref={ this._resolveRef('_beakElement') }
       >
         <svg
           height={ height }
