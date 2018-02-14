@@ -1,0 +1,9 @@
+{
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx",
+    "type": "minor"
+  }],
+  "packageName": "office-ui-fabric-react",
+  "email": "cohoov@microsoft.com"
+}
