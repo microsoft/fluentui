@@ -116,7 +116,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this.setState({
         value: newProps.value,
         errorMessage: ''
-      } as ITextFieldState);
+      } as ITextFieldState,
+        () => {
+          this._adjustInputHeight();
+        });
 
       this._delayedValidate(newProps.value);
     }
