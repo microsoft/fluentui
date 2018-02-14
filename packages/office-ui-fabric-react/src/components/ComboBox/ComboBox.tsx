@@ -16,7 +16,8 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  customizable
+  customizable,
+  css
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -283,16 +284,26 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
-    this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      className!,
-      !!isOpen,
-      !!disabled,
-      !!required,
-      !!focused,
-      !!allowFreeform,
-      !!hasErrorMessage
-    );
+    this._classNames = this.props.getClassNames ?
+      this.props.getClassNames(
+        theme!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage,
+        className) :
+      getClassNames(
+        getStyles(theme!, customStyles),
+        className!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage
+      );
 
     return (
       <div { ...divProps } ref='root' className={ this._classNames.container }>
@@ -870,7 +881,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
-        className={ this._classNames.callout }
+        className={ css(this._classNames.callout, calloutProps ? calloutProps.className : undefined) }
         target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }

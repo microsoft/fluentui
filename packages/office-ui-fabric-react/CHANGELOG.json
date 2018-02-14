@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.49.3",
+      "tag": "office-ui-fabric-react_v5.49.3",
+      "date": "Tue, 13 Feb 2018 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "8dc2a79a815874d6bb26d867a49b9f46809397e1",
+            "comment": "Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "23070cad70c1e18548cf6a07dfa4f27d365db770",
+            "comment": "Moves DatePicker label outside of hit target"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "32c4e2529eef487e2c2b69adab8ff85d2fa0d23d",
+            "comment": "Add name attribute to button"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.10.2 <6.0.0` to `>=5.10.3 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.49.2",
       "tag": "office-ui-fabric-react_v5.49.2",
       "date": "Mon, 12 Feb 2018 17:33:11 GMT",

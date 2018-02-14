@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Moves DatePicker label outside of hit target",
+      "comment": "SpinButton: Add getClassNAmes prop to allow complete customization of the component",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joem@microsoft.com"
+  "email": "kysedate@microsoft.com"
 }
