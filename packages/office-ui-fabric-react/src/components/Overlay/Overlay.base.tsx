@@ -7,12 +7,17 @@ import {
   enableBodyScroll,
   disableBodyScroll
 } from '../../Utilities';
-import { IOverlayProps } from './Overlay.types';
+import {
+  IOverlayProps,
+  IOverlayStyleProps,
+  IOverlayStyles,
+} from './Overlay.types';
 
-import * as stylesImport from './Overlay.scss';
-const styles: any = stylesImport;
+import { classNamesFunction } from '../../Utilities';
 
-export class Overlay extends BaseComponent<IOverlayProps, {}> {
+const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
+
+export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
 
   public componentDidMount() {
     disableBodyScroll();
@@ -23,19 +28,31 @@ export class Overlay extends BaseComponent<IOverlayProps, {}> {
   }
 
   public render() {
-    let { isDarkThemed, className } = this.props;
-    let divProps = getNativeProps(this.props, divProperties);
-
-    let modifiedClassName = css(
-      'ms-Overlay',
-      styles.root,
+    const {
+      isDarkThemed,
       className,
-      {
-        ['ms-Overlay--dark ' + styles.rootIsDark]: isDarkThemed,
-      });
+      theme,
+      getStyles
+    } = this.props;
+
+    const divProps = getNativeProps(this.props, divProperties);
+
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className,
+      isDarkThemed,
+    });
+
+    // const modifiedClassName = css(
+    //   'ms-Overlay',
+    //   styles.root,
+    //   className,
+    //   {
+    //     ['ms-Overlay--dark ' + styles.rootIsDark]: isDarkThemed,
+    //   });
 
     return (
-      <div { ...divProps } className={ modifiedClassName } />
+      <div { ...divProps } className={ classNames.root } />
     );
   }
 }

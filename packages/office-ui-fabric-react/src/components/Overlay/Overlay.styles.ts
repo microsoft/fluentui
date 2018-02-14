@@ -39,9 +39,12 @@ export const getStyles = (
         visibility: 'hidden',
       },
 
-      isDarkThemed && {
-        backgroundColor: palette.blackTranslucent40,
-      },
+      isDarkThemed && [
+        'ms-Overlay--dark',
+        {
+          backgroundColor: palette.blackTranslucent40,
+        }
+      ],
 
       className
     ],
