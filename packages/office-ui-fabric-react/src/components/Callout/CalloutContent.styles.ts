@@ -20,11 +20,13 @@ const ANIMATIONS: { [key: number]: IRawStyle; } = {
   [RectangleEdge.right]: AnimationStyles.slideRightIn20,
 };
 
-// all of the first 2 non zero values are divided by 2
+// Source:
+// http://bouncejs.com/#{s:[{T:"c",e:"b",d:1000,D:0,f:{x:1,y:1},t:{x:2,y:1},s:1,b:4},{T:"c",e:"b",d:1000,D:0,f:{x:1,y:1},t:{x:1,y:2},s:1,b:6}]}
+// ^ all of the first 2 non zero values in the matrix3d are divided by 2
 const BOUNCE: string = keyframes({
   '0%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
-  '17.4%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
-  '17.5%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
+  // '17.4%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' }, //for v2, comment out
+  '18.4%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' }, // v1 = 17.5, v2 = 15.5
   '19.2%': { transform: 'matrix3d(.658, 0, 0, 0, 0, .704, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
   '19.85%': { transform: 'matrix3d(.725, 0, 0, 0, 0, .8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
   '20.9%': { transform: 'matrix3d(.83, 0, 0, 0, 0, .947, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
@@ -68,16 +70,17 @@ const OPACITY_FADEIN: string = keyframes({
     opacity: 0,
     animationTimingFunction: '$ms-animation-ease-2'
   },
-  '50%': { opacity: 1 },
+  '18.4%': { opacity: .25 }, // v2
+  // '22.2%': { opacity: 0 }, // v2
+  '26.26%': { opacity: 1 }, // v2
+  // '22.61%': { opacity: 1 }, // v1
   '100%': { opacity: 1 }
 });
 
 const bounceAnimation: IRawStyle = {
-  // animation: `${BOUNCE} 2000ms linear infinite both`,
   animationName: `${BOUNCE}, ${OPACITY_FADEIN}`,
   animationDuration: '2000ms',
   animationTimingFunction: 'linear',
-  // animationIterationCount: 'infinite',
   animationFillMode: 'both'
 };
 
