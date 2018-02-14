@@ -72,6 +72,11 @@ export class KeytipTree {
     this.nodeMap[this.root.id] = this.root;
   }
 
+  // check if it has an overflow set
+  // get overflowset node
+  // add node to overflowset node
+  // node
+
   /**
    * Add a keytip node to this KeytipTree
    * @param fullSequence - Full key sequence for the keytip to add
@@ -150,5 +155,26 @@ export class KeytipTree {
       nodes.push(this.nodeMap[id]);
     }
     return nodes;
+  }
+
+  private _getOverflowNode(overflowSequence: IKeySequence, parentSequence: IKeySequence[]): IKeytipTreeNode {
+    let fullOverflowSequence = [...parentSequence, ...[overflowSequence]];
+    let overflowNodeId = convertSequencesToKeytipID(fullOverflowSequence);
+
+    let node = this.nodeMap[overflowNodeId];
+
+    // if overflow node has not been added, we create it
+    if (!node) {
+      node = {
+        id: overflowNodeId,
+        keytipSequence: overflowSequence,
+        parent: convertSequencesToKeytipID(parentSequence),
+        children: [],
+        hasChildrenNodes: true,
+      };
+      this.nodeMap[overflowNodeId] = node;
+    }
+
+    return node;
   }
 }
