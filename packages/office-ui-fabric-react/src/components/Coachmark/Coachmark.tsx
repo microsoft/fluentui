@@ -214,7 +214,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   @autobind
   private _onFocusHandler(): void {
     this._openCoachmark();
-    console.log("Focusesd");
   }
 
   @autobind
