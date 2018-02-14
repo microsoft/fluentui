@@ -78,7 +78,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<ISearchBoxProps, ISearchBoxStyles>;
+  getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
 }
 
 export interface ISearchBoxStyleProps {

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com"
+}
