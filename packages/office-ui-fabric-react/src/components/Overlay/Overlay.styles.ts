@@ -21,7 +21,7 @@ export const getStyles = (
     root: [
       'ms-Overlay',
       {
-        backgroundColor: palette.blackTranslucent40,
+        backgroundColor: palette.whiteTranslucent40,
         top: 0,
         right: 0,
         bottom: 0,
