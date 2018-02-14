@@ -133,8 +133,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
         offsetFromTarget={ beakHeight }
         componentRef={ this._resolveRef('_positioningContainer') }
       >
-        <div
-          className={ classNames.root }>
+        <div className={ classNames.root }>
           <div className={ classNames.pulsingBeacon } />
           <div
             className={ classNames.translateAnimationContainer }
