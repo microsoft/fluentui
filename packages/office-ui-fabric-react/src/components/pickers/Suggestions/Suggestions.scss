@@ -61,7 +61,7 @@
   }
 }
 
-.searchMoreButton {
+.actionButton {
   background: none;
   border: 0;
   cursor: pointer;
@@ -91,6 +91,10 @@
   :global(.ms-Button-label) {
     @include margin(0, 4px, 0, 9px);
   }
+}
+
+.buttonSelected {
+  background-color: $ms-color-themeLight;
 }
 
 .suggestionsTitle {

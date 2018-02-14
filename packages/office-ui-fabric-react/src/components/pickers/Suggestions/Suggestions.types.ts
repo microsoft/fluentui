@@ -42,6 +42,18 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   onGetMoreResults?: () => void;
   /**
+   * The text that appears indicating to the use to force resolve the input
+   */
+  forceResolveText?: string;
+  /**
+   * The callback that should be called to see if the force resolve command should be shown
+   */
+  showForceResolve?: () => boolean;
+  /**
+   * The callback that should be called when the user attempts to use the input text as as item
+   */
+  createGenericItem?: () => void;
+  /**
    * The CSS classname of the suggestions list.
    */
   className?: string;
