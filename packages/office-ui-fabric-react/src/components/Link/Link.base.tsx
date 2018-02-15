@@ -25,6 +25,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     let { disabled, children, className, href, theme, getStyles } = this.props;
 
     const classNames = getClassNames(getStyles!, {
+      className,
       isButton: !href,
       isDisabled: disabled,
       theme: theme!

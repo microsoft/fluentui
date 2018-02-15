@@ -8,12 +8,13 @@ import {
 } from './Link.types';
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
-  const { isButton, isDisabled, theme } = props;
+  const { className, isButton, isDisabled, theme } = props;
   const { semanticColors } = theme;
 
   return {
     root: [
       'ms-Link',
+      className,
       getFocusStyle(theme),
       {
         color: semanticColors.link,
