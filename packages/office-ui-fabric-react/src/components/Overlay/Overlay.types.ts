@@ -7,7 +7,7 @@ export interface IOverlay {
 
 }
 
-export interface IOverlayProps extends React.Props<OverlayBase> {
+export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */
