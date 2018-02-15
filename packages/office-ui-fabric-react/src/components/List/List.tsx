@@ -435,7 +435,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const {
       page: {
         items,
-      startIndex
+        startIndex
       },
       ...divProps
     } = pageProps;
@@ -572,11 +572,13 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let newListState = this._buildPages(props);
     let oldListPages = this.state.pages;
 
+    this._notifyPageChanges(oldListPages, newListState.pages as IPage[]);
+
     this.setState(newListState, () => {
       // If we weren't provided with the page height, measure the pages
       if (!props.getPageHeight) {
         // If measured version is invalid since we've updated the DOM
-        const heightsChanged = this._updatePageMeasurements(oldListPages as IPage[], newListState.pages as IPage[]);
+        const heightsChanged = this._updatePageMeasurements(newListState.pages as IPage[]);
 
         // On first render, we should re-measure so that we don't get a visual glitch.
         if (heightsChanged) {
@@ -598,7 +600,51 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     });
   }
 
-  private _updatePageMeasurements(oldPages: IPage[], newPages: IPage[]) {
+  /**
+   * Notify consumers that the rendered pages have changed
+   * @param oldPages The old pages
+   * @param newPages The new pages
+   */
+  private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props) {
+    const {
+      onPageAdded,
+      onPageRemoved
+    } = props;
+
+    if (onPageAdded || onPageRemoved) {
+      const renderedIndexes: {
+        [index: number]: IPage;
+      } = {};
+
+      for (let i = 0; i < oldPages.length; i++) {
+        let page = oldPages[i];
+
+        if (page.items) {
+          renderedIndexes[page.startIndex] = page;
+        }
+      }
+
+      for (let i = 0; i < newPages.length; i++) {
+        let page = newPages[i];
+
+        if (page.items) {
+          if (!renderedIndexes[page.startIndex]) {
+            this._onPageAdded(page);
+          } else {
+            delete renderedIndexes[page.startIndex];
+          }
+        }
+      }
+
+      for (let index in renderedIndexes) {
+        if (renderedIndexes.hasOwnProperty(index)) {
+          this._onPageRemoved(renderedIndexes[index]);
+        }
+      }
+    }
+  }
+
+  private _updatePageMeasurements(pages: IPage[]) {
     const renderedIndexes: {
       [index: number]: IPage;
     } = {};
@@ -610,31 +656,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return heightChanged;
     }
 
-    for (let i = 0; i < oldPages.length; i++) {
-      let page = oldPages[i];
-
-      if (page.items) {
-        renderedIndexes[page.startIndex] = page;
-      }
-    }
-
-    for (let i = 0; i < newPages.length; i++) {
-      let page = newPages[i];
+    for (let i = 0; i < pages.length; i++) {
+      let page = pages[i];
 
       if (page.items) {
         heightChanged = this._measurePage(page) || heightChanged;
-
-        if (!renderedIndexes[page.startIndex]) {
-          this._onPageAdded(page);
-        } else {
-          delete renderedIndexes[page.startIndex];
-        }
-      }
-    }
-
-    for (let index in renderedIndexes) {
-      if (renderedIndexes.hasOwnProperty(index)) {
-        this._onPageRemoved(renderedIndexes[index]);
       }
     }
 
