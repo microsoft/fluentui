@@ -53,7 +53,6 @@ export function initializeIcons(
       'Back': '\uE72B',
       'Refresh': '\uE72C',
       'Lock': '\uE72E',
-      'BlockedSite': '\uE72F',
       'ReportHacked': '\uE730',
       'EMI': '\uE731',
       'MiniLink': '\uE732',

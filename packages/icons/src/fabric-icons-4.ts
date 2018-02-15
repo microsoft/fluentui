@@ -116,7 +116,6 @@ export function initializeIcons(
       'ProgressLoopOuter': '\uECDF',
       'Blocked2': '\uECE4',
       'FangBody': '\uECEB',
-      'Glimmer': '\uECF4',
       'ChatInviteFriend': '\uECFE',
       'Crown': '\uED01',
       'ScaleUp': '\uED09',
