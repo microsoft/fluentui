@@ -16,10 +16,6 @@ export function transitionKeysAreEqual(seq1: IKeytipTransitionKey, seq2: IKeytip
   }
   let mod1 = seq1.modifierKeys;
   let mod2 = seq2.modifierKeys;
-  if (!mod1 && !mod2) {
-    // If they're both null return true, nothing more to check
-    return true;
-  }
 
   if ((!mod1 && mod2) || (mod1 && !mod2)) {
     // Not equal if one is defined and the other isn't
@@ -27,7 +23,6 @@ export function transitionKeysAreEqual(seq1: IKeytipTransitionKey, seq2: IKeytip
   }
 
   if (mod1 && mod2) {
-    // Null check needed for ts
     if (mod1.length !== mod2.length) {
       return false;
     }

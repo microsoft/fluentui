@@ -41,7 +41,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    id: ktpFullPrefix + KeyCodes.alt + ktpSeparator + KeyCodes.leftWindow
+    id: ktpFullPrefix + 'Alt' + ktpSeparator + 'Meta'
   };
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();

@@ -108,8 +108,8 @@ export class KeytipTree {
     // See if node already exists
     let node = this.nodeMap[nodeID];
     if (node) {
-      // If node exists, it was added when one of its children was added
-      // Update keytipSequence, onExecute, parent
+      // If node exists, it was added when one of its children was added or is now being updated
+      // Update values
       node.keytipSequence = keytipSequence!;
       node.onExecute = keytipProps.onExecute;
       node.hasChildrenNodes = keytipProps.hasChildrenNodes;
@@ -122,7 +122,7 @@ export class KeytipTree {
         children: [],
         parent: parentID,
         onExecute: keytipProps.onExecute,
-        hasChildrenNodes: keytipProps.hasChildrenNodes,
+        hasChildrenNodes: keytipProps.hasChildrenNodes
       };
       this.nodeMap[nodeID] = node;
     }
@@ -132,7 +132,6 @@ export class KeytipTree {
       // If parent doesn't exist, create parent with ID and children only
       parent = {
         id: parentID,
-        hasChildrenNodes: true,
         children: [],
         keytipSequence: { keys: [] },
         parent: ''

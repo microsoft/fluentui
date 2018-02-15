@@ -66,6 +66,11 @@ export class KeytipManager {
    */
   // tslint:disable-next-line:no-any
   public registerKeytip(keytipProps: IKeytipProps): any {
+    // Set 'visible' property to true in keytipProps if currentKeytip is this keytips parent
+    if (this._isCurrentKeytipParent(keytipProps)) {
+      keytipProps.visible = true;
+    }
+
     // Set the 'keytips' property in _layer
     // TODO: do we have to check for this._layer?
     this._layer && this._layer.registerKeytip(keytipProps);
@@ -224,5 +229,17 @@ export class KeytipManager {
 
     // Change visibility in layer
     this._layer.setKeytipVisibility(ids, visible);
+  }
+
+  private _isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
+    if (this.keytipTree.currentKeytip) {
+      let fullSequence = [...keytipProps.keySequences];
+      // Take off the last sequence to calculate the parent ID
+      fullSequence.pop();
+      // Parent ID is the root if there aren't any more sequences
+      let parentID = fullSequence.length === 0 ? this.keytipTree.root.id : convertSequencesToKeytipID(fullSequence);
+      return this.keytipTree.currentKeytip.id === parentID;
+    }
+    return false;
   }
 }
