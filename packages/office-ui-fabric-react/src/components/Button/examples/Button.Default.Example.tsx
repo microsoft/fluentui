@@ -23,7 +23,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            text='Butjon'
+            text='Button'
           />
         </div>
         <div>
@@ -33,7 +33,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            text='Butjon'
+            text='Button'
             onClick={ this._alertClicked }
           />
         </div>
