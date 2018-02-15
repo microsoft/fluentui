@@ -50,7 +50,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
       >
         <div hidden={ !item.canExpand || onExpandItem === undefined }>
           <IconButton
-            onClick={ this.onClickIconButton(onExpandItem) }
+            onClick={ this._onClickIconButton(onExpandItem) }
             iconProps={ { iconName: 'Add', style: { fontSize: '14px' } } }
             className={ css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton) }
             ariaLabel={ removeButtonAriaLabel }
@@ -88,7 +88,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
       </div >);
   }
 
-  private _onClickIconButton = (action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void => {
+  private _onClickIconButton(action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
       ev.stopPropagation();
       ev.preventDefault();
