@@ -2,6 +2,93 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.50.0",
+      "tag": "office-ui-fabric-react_v5.50.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "cdd6bafa27a6514e51ffe816ebb89b8a71b63a94",
+            "comment": "Add \"use current input command\" and remove need to explicity call focus when moving between suggestions and commands"
+          },
+          {
+            "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
+            "commit": "45f36ccd4e4954d54d3008a09aef5f0adb24fb16",
+            "comment": "Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "27e230cd7f368d471e0dfceb5e4b11a9ab10354b",
+            "comment": "SearchBox: Fixed getStyles interface to be using ISearchBoxStyleProps instead of ISearchBoxProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Ivan Samoylov <IA.Samoylov@outlook.com>",
+            "commit": "ad1dcfca80bf8f14209f4911a24874b5582ac60e",
+            "comment": "Fix bug: '#3940 Validate function works incorrect with attribute validateOnFocusOut'"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "746b36e94dfbe2fa97bb5432a6d2e723e5a28551",
+            "comment": "Converted ButtonBasicExample to use mergeStyles instead of SCSS."
+          },
+          {
+            "author": "Kurt Carpenter <github@kurtcarpenter.io>",
+            "commit": "8fa181dab613c604f49ca518eceff53b7206deda",
+            "comment": "Fix ComboBox, ContextualMenu, Teachingbubble overwriting calloutProps.className"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "0d7e546429c8c6d26404e9514e2abbf746df92ad",
+            "comment": "Fire onKeyDown for Button with menuProps"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "cd1d7afb76421fbc3c744bc61c81ddffceafd0af",
+            "comment": "Fabric: Adds button overflow visible global style so that ie11 renders like edge/chrome/firefox"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "9e3fa5810fe09e5e7b0b8e6101aab95fc0c04980",
+            "comment": "DatePicker: Fixing pointer when datepicker doesn't have a label"
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "7d67c1dc215c25dd3b734e53dc8e9499dded3c17",
+            "comment": "ComboBox: Add getClassNAmes prop to allow complete customization of the component"
+          },
+          {
+            "author": "Montse Lozano Dieck <malozano@microsoft.com>",
+            "commit": "6dcf97580ec7690ffd73af23f2162a00b3ccf091",
+            "comment": "CalloutContent: Remove calloutWidth from calloutMain "
+          },
+          {
+            "author": "kysedate <35615581+kysedate@users.noreply.github.com>",
+            "commit": "0fdbf1d7223ac21dc2775d68f22888aa7759b65a",
+            "comment": "SpinButton: Add getClassNAmes prop to allow complete customization of the component"
+          },
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "f57acaa79994e796b1219ed4cbe61904c4948e5b",
+            "comment": "Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.2 <6.0.0` to `>=5.12.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.17.0 <6.0.0` to `>=5.18.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.10.3 <6.0.0` to `>=5.11.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.49.3",
       "tag": "office-ui-fabric-react_v5.49.3",
       "date": "Tue, 13 Feb 2018 11:24:05 GMT",

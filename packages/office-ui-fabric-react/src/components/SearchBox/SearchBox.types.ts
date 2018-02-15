@@ -50,9 +50,14 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onChanged?: (newValue: any) => void;
 
   /**
-  * The value of the text in the SearchBox.
-  */
+   * The value of the text in the SearchBox.
+   */
   value?: string;
+
+  /**
+   * The default value of the text in the SearchBox, in the case of an uncontrolled component.
+   */
+  defaultValue?: string;
 
   /**
   * CSS class to apply to the SearchBox.
