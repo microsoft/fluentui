@@ -114,7 +114,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-neutralTertiaryAlt;
     cursor: default;
     pointer-events: none;
-    .itemIcon {
+    .itemIcon,
+    .itemChevronDown {
       color: $ms-color-neutralTertiaryAlt;
     }
   }

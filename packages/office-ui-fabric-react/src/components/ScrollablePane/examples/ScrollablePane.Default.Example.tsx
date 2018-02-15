@@ -31,17 +31,16 @@ export class ScrollablePaneDefaultExample extends React.Component {
   }
 
   private _createContentArea(index: number) {
-    const style = {
-      backgroundColor: this._getRandomColor()
-    };
+    const style = this._getRandomColor();
 
     return (
       <div key={ index }>
         <Sticky
           stickyPosition={ StickyPositionType.Both }
           stickyClassName='largeFont'
+          stickyBackgroundColor={ style }
         >
-          <div className='sticky' style={ style }>
+          <div className='sticky'>
             Sticky Component #{ index + 1 }
           </div>
         </Sticky>

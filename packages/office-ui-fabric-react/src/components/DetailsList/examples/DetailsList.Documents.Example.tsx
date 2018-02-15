@@ -7,6 +7,7 @@ import {
   DetailsList,
   DetailsListLayoutMode,
   Selection,
+  SelectionMode,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
@@ -231,6 +232,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             items={ items }
             compact={ isCompactMode }
             columns={ columns }
+            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
             setKey='set'
             layoutMode={ DetailsListLayoutMode.justified }
             isHeaderVisible={ true }

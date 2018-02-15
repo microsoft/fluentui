@@ -5,7 +5,9 @@ import {
   findIndex,
   getId,
   customizable,
-  classNamesFunction
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties
 } from '../../Utilities';
 import {
   ISwatchColorPicker,
@@ -90,6 +92,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
     return (
       <Grid
+        {...this.props}
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }
         columnCount={ columnCount }
         onRenderItem={ this._renderOption }
