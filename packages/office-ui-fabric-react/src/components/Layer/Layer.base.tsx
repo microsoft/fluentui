@@ -17,8 +17,6 @@ import {
   getDocument,
   setVirtualParent
 } from '../../Utilities';
-// import * as stylesImport from './Layer.scss';
-// const styles: any = stylesImport;
 
 let _layersByHostId: { [hostId: string]: LayerBase[] } = {};
 let _defaultHostSelector: string | undefined;
@@ -112,7 +110,6 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
         let doc = getDocument(this._rootElement) as Document;
 
         this._layerElement = doc.createElement('div');
-        // this._layerElement.className = css('ms-Layer', { ['ms-Layer--fixed ' + styles.rootIsFixed]: !this.props.hostId });
         this._layerElement.className = classNames.root;
 
         host.appendChild(this._layerElement);
@@ -123,7 +120,6 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       ReactDOM.unstable_renderSubtreeIntoContainer(
         this,
         (
-          // <Fabric className={ css('ms-Layer-content', styles.content) }>
           <Fabric className={ classNames.content }>
             { this.props.children }
           </Fabric>
