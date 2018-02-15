@@ -1,19 +1,7 @@
-import { ModifierKeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { ktpPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 
 export interface IKeySequence {
   keys: string[];
-}
-
-// TODO: how to handle more than one modifier key as a transition sequence
-// i.e. Alt-Shift-H
-export interface IKeytipTransitionKey {
-  key: string;
-  modifierKey?: ModifierKeyCodes;
-}
-
-export interface IKeytipTransitionSequence {
-  keys: IKeytipTransitionKey[];
 }
 
 /**
@@ -29,40 +17,12 @@ export function keySequencesAreEqual(seq1: IKeySequence, seq2: IKeySequence): bo
 
 /**
  *
- * @param seq1
- * @param seq2
- */
-export function transitionKeySequencesAreEqual(seq1: IKeytipTransitionSequence, seq2: IKeytipTransitionSequence): boolean {
-  let keys1 = seq1.keys;
-  let keys2 = seq2.keys;
-  if (keys1.length !== keys2.length) {
-    return false;
-  }
-  for (let i = 0; i < keys1.length; i++) {
-    if (keys1[i].key !== keys2[i].key || keys1[i].modifierKey !== keys2[i].modifierKey) {
-      return false;
-    }
-  }
-  return true;
-}
-
-/**
- *
  * @param sequences
  * @param seq
  */
 export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence): boolean {
   for (let i = 0; i < sequences.length; i++) {
     if (keySequencesAreEqual(sequences[i], seq)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-export function transitionKeySequencesContain(sequences: IKeytipTransitionSequence[], seq: IKeytipTransitionSequence): boolean {
-  for (let i = 0; i < sequences.length; i++) {
-    if (transitionKeySequencesAreEqual(sequences[i], seq)) {
       return true;
     }
   }

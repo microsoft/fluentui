@@ -4,13 +4,13 @@ import { ktpFullPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 describe('IKeySequence', () => {
 
   describe('keySequencesAreEqual', () => {
-    it('empty keyCode', () => {
+    it('empty key', () => {
       let seq1: IKeySequence = { keys: ['a'] };
       let seq2: IKeySequence = { keys: [] };
       expect(keySequencesAreEqual(seq1, seq2)).toEqual(false);
     });
 
-    it('single KeyCode', () => {
+    it('single key', () => {
       let seq1: IKeySequence = { keys: ['a'] };
       let seq2: IKeySequence = { keys: ['a'] };
       let seq3: IKeySequence = { keys: ['b'] };
@@ -18,7 +18,7 @@ describe('IKeySequence', () => {
       expect(keySequencesAreEqual(seq1, seq3)).toEqual(false);
     });
 
-    it('multiple KeyCodes', () => {
+    it('multiple keys', () => {
       let seq1: IKeySequence = { keys: ['a', 'b'] };
       let seq2: IKeySequence = { keys: ['a', 'b'] };
       let seq3: IKeySequence = { keys: ['b', 'a'] };
@@ -40,13 +40,13 @@ describe('IKeySequence', () => {
       expect(keySequencesContain(sequences, seq1)).toEqual(false);
     });
 
-    it('empty keycode sequence', () => {
+    it('empty key sequence', () => {
       let seq1: IKeySequence = { keys: [] };
       let sequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['b'] }];
       expect(keySequencesContain(sequences, seq1)).toEqual(false);
     });
 
-    it('single KeyCode', () => {
+    it('single key', () => {
       let seq1: IKeySequence = { keys: ['a'] };
       let sequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['b'] }];
       let sequences2: IKeySequence[] = [{ keys: ['a', 'b'] }];
@@ -54,7 +54,7 @@ describe('IKeySequence', () => {
       expect(keySequencesContain(sequences2, seq1)).toEqual(false);
     });
 
-    it('multiple KeyCodes', () => {
+    it('multiple keys', () => {
       let seq1: IKeySequence = { keys: ['a', 'b'] };
       let sequences: IKeySequence[] = [{ keys: ['a'] }, { keys: ['b'] }];
       let sequences2: IKeySequence[] = [{ keys: ['a', 'b'] }, { keys: ['c', 'd'] }];

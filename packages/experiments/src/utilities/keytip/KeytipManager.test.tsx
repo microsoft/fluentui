@@ -3,25 +3,27 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { KeytipManager } from './KeytipManager';
-import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
-import { IKeySequence, IKeytipTransitionSequence, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { IKeySequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
+import { IKeytipProps } from '../../Keytip';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
+import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
+import { mount } from 'enzyme';
 
-const keytipStartSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-const keytipExitSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] }];
-const keytipReturnSequences: IKeytipTransitionSequence[] = [{ keys: [{ key: 'Escape' }] }];
+const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
+const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
+const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
 const layerID = 'my-layer-id';
-const keytipIdB = ktpFullPrefix + KeyCodes.b;
-const keytipIdC = ktpFullPrefix + KeyCodes.c;
-const keytipIdE1 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.one;
-const keytipIdE2 = ktpFullPrefix + KeyCodes.e + ktpSeparator + KeyCodes.two;
+const keytipIdB = ktpFullPrefix + 'b';
+const keytipIdC = ktpFullPrefix + 'c';
+const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
 
 describe('KeytipManager', () => {
+  const keytipManager = KeytipManager.getInstance();
 
   describe('getAriaDescribedBy', () => {
-    const keytipManager = KeytipManager.getInstance();
 
     beforeEach(() => {
       // Create layer
@@ -71,7 +73,6 @@ describe('KeytipManager', () => {
   });
 
   describe('processInput tests', () => {
-    const keytipManager = KeytipManager.getInstance();
     const onEnterKeytipMode: jest.Mock = jest.fn();
     const onExitKeytipMode: jest.Mock = jest.fn();
 
@@ -94,13 +95,13 @@ describe('KeytipManager', () => {
     // On Exit keytip mode
     it('Call on exit keytip mode when we process alt + left win ', () => {
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processTransitionInput({ key: 'Meta', modifierKey: ModifierKeyCodes.alt });
+      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] });
       expect(onExitKeytipMode).toBeCalled();
     });
 
     // On Enter keytip mode
     it('Call on enter keytip mode when we process alt + left win', () => {
-      keytipManager.processTransitionInput({ key: 'Meta', modifierKey: ModifierKeyCodes.alt });
+      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] });
       expect(onEnterKeytipMode).toBeCalled();
     });
 
@@ -130,12 +131,12 @@ describe('KeytipManager', () => {
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
     });
 
-    it('Processing a node with two keycodes should save sequence and wait for second keycode', () => {
+    it('Processing a node with two keys should save sequence and wait for second key', () => {
       const onExecuteE2: jest.Mock = jest.fn();
       keytipManager.keytipTree.nodeMap[keytipIdE2] = { ...keytipManager.keytipTree.nodeMap[keytipIdE2], onExecute: onExecuteE2 };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processInput('e');
-      // We are still waiting for second keycode
+      // We are still waiting for second key
       expect(keytipManager.currentSequence.keys.length).toEqual(1);
       keytipManager.processInput('2');
       expect(onExecuteE2).toBeCalled();
@@ -143,12 +144,12 @@ describe('KeytipManager', () => {
       expect(onExitKeytipMode).toBeCalled();
     });
 
-    it('Processing a node with two keycodes should wait for second keycode and if not leaf make children visible', () => {
+    it('Processing a node with two keys should wait for second key and if not leaf make children visible', () => {
       const onExecuteE1: jest.Mock = jest.fn();
       keytipManager.keytipTree.nodeMap[keytipIdE1] = { ...keytipManager.keytipTree.nodeMap[keytipIdE1], onExecute: onExecuteE1 };
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
       keytipManager.processInput('e');
-      // We are still waiting for second keycode
+      // We are still waiting for second key
       expect(keytipManager.currentSequence.keys.length).toEqual(1);
       keytipManager.processInput('1');
       expect(onExecuteE1).toBeCalled();
@@ -172,6 +173,45 @@ describe('KeytipManager', () => {
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
       expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdB]);
     });
+  });
+
+  it('registerKeytip should automatically show Keytip when currentKeytip is its parent', () => {
+    let keytipLayer = mount(
+      <KeytipLayer
+        id={ layerID }
+        keytipStartSequences={ keytipStartSequences }
+        keytipReturnSequences={ keytipReturnSequences }
+        keytipExitSequences={ keytipExitSequences }
+      />
+    );
+
+    // Create keytip b
+    const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+    const keytipBProps: IKeytipProps = {
+      keySequences: keytipSequenceB,
+      content: 'B'
+    };
+    keytipManager.registerKeytip(keytipBProps);
+
+    // Set currentKeytip to 'b'
+    keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.nodeMap[keytipIdB];
+
+    // Add a node 'g' who's parent is 'b'
+    const keytipSequenceG: IKeySequence[] = [{ keys: ['b'] }, { keys: ['g'] }];
+    const keytipIdG = ktpFullPrefix + 'b' + ktpSeparator + 'g';
+    const keytipGProps: IKeytipProps = {
+      keySequences: keytipSequenceG,
+      content: 'G'
+    };
+    keytipManager.registerKeytip(keytipGProps);
+
+    // G should now be visible in the layer
+    let currentKeytips: IKeytipProps[] = keytipLayer.state('keytips');
+    let keytipG = currentKeytips.filter((currentKeytip: IKeytipProps) => {
+      return convertSequencesToKeytipID(currentKeytip.keySequences) === keytipIdG;
+    });
+    expect(keytipG).toHaveLength(1);
+    expect(keytipG[0].visible).toEqual(true);
   });
 });
 

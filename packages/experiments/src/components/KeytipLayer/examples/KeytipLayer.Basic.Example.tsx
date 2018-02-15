@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IKeytipTransitionSequence, convertSequencesToKeytipID } from '../../../utilities/keysequence';
+import { convertSequencesToKeytipID, IKeytipTransitionKey } from '../../../utilities/keysequence';
 import { KeytipLayer } from '../KeytipLayer';
-import { KeytipManager } from '../KeytipManager';
+import { registerKeytip } from '../../../utilities/keytip/KeytipUtils';
 import { IKeytipProps } from '../../Keytip';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { addKeytipSequence } from '../../../utilities/keytip';
-import { ModifierKeyCodes } from '../../../../../office-ui-fabric-react/lib/index';
+import { ModifierKeyCodes } from '../../../utilities/keytip/ModifierKeyCodes';
 
 export interface IKeytipLayerBasicExampleState {
 }
@@ -17,7 +17,7 @@ export interface IKeytipMap {
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
-  private startingKeySequence: IKeytipTransitionSequence = { keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }] };
+  private startingKeySequence: IKeytipTransitionKey = { key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] };
   private keytipMap: IKeytipMap = {};
 
   constructor(props: {}) {
@@ -117,9 +117,8 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
   public componentDidMount(): void {
     // Manually add keytips to the KeytipManager
-    let ktpMngr: KeytipManager = KeytipManager.getInstance();
     for (let component of Object.keys(this.keytipMap)) {
-      ktpMngr.registerKeytip(this.keytipMap[component]);
+      registerKeytip(this.keytipMap[component]);
     }
   }
 

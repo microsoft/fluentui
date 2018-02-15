@@ -126,8 +126,8 @@ export class KeytipTree {
     // See if node already exists
     let node = this.nodeMap[nodeID];
     if (node) {
-      // If node exists, it was added when one of its children was added
-      // Update keytipSequence, onExecute, parent
+      // If node exists, it was added when one of its children was added or is now being updated
+      // Update values
       node.keytipSequence = keytipSequence!;
       node.onExecute = keytipProps.onExecute;
       node.onReturn = keytipProps.onReturn;
@@ -146,6 +146,38 @@ export class KeytipTree {
     let parent = this._getParentNode(parentID);
     // Add node to parent's children
     parent.children.push(nodeID);
+  }
+
+  /**
+   * Removes a node from the KeytipTree
+   * Will also remove all of the node's children from the Tree
+   * @param sequence - full IKeySequence of the node to remove
+   */
+  public removeNode(sequence: IKeySequence[]): void {
+    let fullSequence = [...sequence];
+    let nodeID = convertSequencesToKeytipID(fullSequence);
+    // Take off the last sequence to calculate the parent ID
+    fullSequence.pop();
+    // Parent ID is the root if there aren't any more sequences
+    let parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
+
+    let parent = this.nodeMap[parentID];
+    if (parent) {
+      // Remove node from its parent's children
+      parent.children.splice(parent.children.indexOf(nodeID), 1);
+    }
+
+    let node = this.nodeMap[nodeID];
+    if (node) {
+      // Remove all the node's children from the nodeMap
+      let children = node.children;
+      for (let child of children) {
+        delete this.nodeMap[child];
+      }
+
+      // Remove the node from the nodeMap
+      delete this.nodeMap[nodeID];
+    }
   }
 
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {

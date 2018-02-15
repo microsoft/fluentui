@@ -1,11 +1,10 @@
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
 import {
   IKeySequence,
   convertSequencesToKeytipID,
-  IKeytipTransitionSequence,
-  transitionKeySequencesContain,
+  transitionKeysContain,
   IKeytipTransitionKey
 } from '../../utilities/keysequence';
 
@@ -14,12 +13,10 @@ export class KeytipManager {
 
   public keytipTree: KeytipTree;
   public currentSequence: IKeySequence;
-  public currentTransitionSequnce: IKeytipTransitionSequence;
-
   private _layer: KeytipLayer;
-  private _enableSequences: IKeytipTransitionSequence[];
-  private _exitSequences: IKeytipTransitionSequence[];
-  private _returnSequences: IKeytipTransitionSequence[];
+  private _enableSequences: IKeytipTransitionKey[];
+  private _exitSequences: IKeytipTransitionKey[];
+  private _returnSequences: IKeytipTransitionKey[];
 
   /**
  * Static function to get singleton KeytipManager instance
@@ -36,7 +33,6 @@ export class KeytipManager {
   public init(layer: KeytipLayer): void {
     this._layer = layer;
     this.currentSequence = { keys: [] };
-    this.currentTransitionSequnce = { keys: [] };
     this._enableSequences = this._layer.props.keytipStartSequences!;
     this._exitSequences = this._layer.props.keytipExitSequences!;
     this._returnSequences = this._layer.props.keytipReturnSequences!;
@@ -64,13 +60,39 @@ export class KeytipManager {
   }
 
   /**
-   * Registers a keytip in _layer
+   * Registers a keytip
+   * TODO: should this return an any? or something else
    * @param keytipProps - Keytip to register
    */
-  public registerKeytip(keytipProps: IKeytipProps): void {
+  // tslint:disable-next-line:no-any
+  public registerKeytip(keytipProps: IKeytipProps): any {
+    // Set 'visible' property to true in keytipProps if currentKeytip is this keytips parent
+    if (this._isCurrentKeytipParent(keytipProps)) {
+      keytipProps.visible = true;
+    }
+
     // Set the 'keytips' property in _layer
+    // TODO: do we have to check for this._layer?
     this._layer && this._layer.registerKeytip(keytipProps);
     this.keytipTree.addNode(keytipProps);
+
+    // Construct aria-describedby and data-ktp-id attributes and return
+    let ariaDescribedBy = this.getAriaDescribedBy(keytipProps.keySequences);
+    let ktpId = convertSequencesToKeytipID(keytipProps.keySequences);
+
+    return {
+      'aria-describedby': ariaDescribedBy,
+      'data-ktp-id': ktpId
+    };
+  }
+
+  /**
+   * Unregisters a keytip
+   * @param keytipToRemove - IKeytipProps of the keytip to remove
+   */
+  public unregisterKeytip(keytipToRemove: IKeytipProps): void {
+    this._layer.removeKeytip(keytipToRemove);
+    this.keytipTree.removeNode(keytipToRemove.keySequences);
   }
 
   /**
@@ -110,16 +132,11 @@ export class KeytipManager {
    *
    * @param keySequence
    */
-  public processTransitionInput(key: IKeytipTransitionKey): void {
-    let currentTransitionSequnce: IKeytipTransitionSequence = { keys: [...this.currentTransitionSequnce.keys, key] };
-
-    // TODO: need to do partial matching here
-    if (transitionKeySequencesContain(this._exitSequences, currentTransitionSequnce) && this.keytipTree.currentKeytip) {
+  public processTransitionInput(transitionKey: IKeytipTransitionKey): void {
+    if (transitionKeysContain(this._exitSequences, transitionKey) && this.keytipTree.currentKeytip) {
       // If key sequence is in 'exit sequences', exit keytip mode
-      //    Trigger layer's onExit callback
       this.exitKeytipMode();
-      return;
-    } else if (transitionKeySequencesContain(this._returnSequences, currentTransitionSequnce)) {
+    } else if (transitionKeysContain(this._returnSequences, transitionKey)) {
       // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
       //    Trigger node's onReturnExecute
       //    Hide all keytips currently showing
@@ -140,8 +157,7 @@ export class KeytipManager {
           this.showKeytips(this.keytipTree.currentKeytip.children);
         }
       }
-      return;
-    } else if (transitionKeySequencesContain(this._enableSequences, currentTransitionSequnce) && !this.keytipTree.currentKeytip) {
+    } else if (transitionKeysContain(this._enableSequences, transitionKey) && !this.keytipTree.currentKeytip) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
       //    Show children of root
       //    Trigger layer's onEnter callback
@@ -213,5 +229,17 @@ export class KeytipManager {
 
     // Change visibility in layer
     this._layer.setKeytipVisibility(ids, visible);
+  }
+
+  private _isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
+    if (this.keytipTree.currentKeytip) {
+      let fullSequence = [...keytipProps.keySequences];
+      // Take off the last sequence to calculate the parent ID
+      fullSequence.pop();
+      // Parent ID is the root if there aren't any more sequences
+      let parentID = fullSequence.length === 0 ? this.keytipTree.root.id : convertSequencesToKeytipID(fullSequence);
+      return this.keytipTree.currentKeytip.id === parentID;
+    }
+    return false;
   }
 }

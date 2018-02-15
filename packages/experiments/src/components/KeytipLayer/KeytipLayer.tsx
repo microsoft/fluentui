@@ -6,27 +6,28 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { KeyCodes, ModifierKeyCodes } from '../../Utilities';
-import { IKeytipTransitionSequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
-import { KeytipManager } from './KeytipManager';
+import { KeyCodes } from '../../Utilities';
+import { IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { KeytipManager } from '../../utilities/keytip/KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
+import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
   keytips: IKeytipProps[];
 }
 
-const defaultStartSequence = {
-  keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
-} as IKeytipTransitionSequence;
+const defaultStartSequence: IKeytipTransitionKey = {
+  key: 'Meta', modifierKeys: [ModifierKeyCodes.alt]
+};
 
-const defaultExitSequence = {
-  keys: [{ key: 'Meta', modifierKey: ModifierKeyCodes.alt }]
-} as IKeytipTransitionSequence;
+const defaultExitSequence: IKeytipTransitionKey = {
+  key: 'Meta', modifierKeys: [ModifierKeyCodes.alt]
+};
 
-const defaultReturnSequence = {
-  keys: [{ key: 'Escape' }]
-} as IKeytipTransitionSequence;
+const defaultReturnSequence: IKeytipTransitionKey = {
+  key: 'Escape'
+};
 
 /**
  * A layer that holds all keytip items
@@ -40,7 +41,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    id: ktpFullPrefix + KeyCodes.alt + ktpSeparator + KeyCodes.leftWindow
+    id: ktpFullPrefix + 'Alt' + ktpSeparator + 'Meta'
   };
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
@@ -57,15 +58,48 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._keytipManager.init(this);
   }
 
+  /**
+   *
+   * @param keytipProps
+   */
   public registerKeytip(keytipProps: IKeytipProps): void {
     this.setState(this.addKeytip(keytipProps));
   }
 
+  /**
+   *
+   * @param keytipProps
+   */
+  public unregisterKeytip(keytipProps: IKeytipProps): void {
+    this.setState(this.removeKeytip(keytipProps));
+  }
+
+  /**
+   *
+   */
   public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
-      // TODO: check for duplicates
+      // TODO: check for duplicates, do an add or update
       let currentKeytips = [...previousState.keytips, ...[keytipProps]];
       return { ...previousState, keytips: currentKeytips };
+    };
+  }
+
+  /**
+   * Removes a keytip from the layer's state
+   * TODO: do we just need to pass in the keytip sequence?
+   * @param keytipToRemove - IKeytipProps of the keytip to remove
+   */
+  public removeKeytip(keytipToRemove: IKeytipProps): {} {
+    let ktpIdToRemove = convertSequencesToKeytipID(keytipToRemove.keySequences);
+    return (previousState: IKeytipLayerState) => {
+      let currentKeytips = previousState.keytips;
+      // Filter out keytips that don't equal the one to remove
+      let filteredKeytips: IKeytipProps[] = currentKeytips.filter((currentKeytip: IKeytipProps) => {
+        let currentKeytipId = convertSequencesToKeytipID(currentKeytip.keySequences);
+        return currentKeytipId !== ktpIdToRemove;
+      });
+      return { ...previousState, keytips: filteredKeytips };
     };
   }
 
@@ -149,22 +183,25 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
         break;
       default:
         let transitionKey: IKeytipTransitionKey = { key: ev.key };
-        transitionKey.modifierKey = this._getModifierKey(ev);
+        transitionKey.modifierKeys = this._getModifierKey(ev);
         this._keytipManager.processTransitionInput(transitionKey);
         break;
     }
   }
 
-  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes | undefined {
+  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes[] | undefined {
+    let modifierKeys = [];
     if (ev.altKey) {
-      return ModifierKeyCodes.alt;
-    } else if (ev.ctrlKey) {
-      return ModifierKeyCodes.ctrl;
-    } else if (ev.shiftKey) {
-      return ModifierKeyCodes.shift;
+      modifierKeys.push(ModifierKeyCodes.alt);
+    }
+    if (ev.ctrlKey) {
+      modifierKeys.push(ModifierKeyCodes.ctrl);
+    }
+    if (ev.shiftKey) {
+      modifierKeys.push(ModifierKeyCodes.shift);
     }
     // TODO include windows key or option for MAC
-    return undefined;
+    return modifierKeys.length ? modifierKeys : undefined;
   }
 
   @autobind
