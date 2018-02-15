@@ -61,12 +61,6 @@ export const getStyles = (
         position: 'relative',
         color: semanticColors.bodyText,
         backgroundColor: semanticColors.bodyBackground,
-        // selectors: {
-        //   '&:hover': {
-        //     backgroundColor: palette.neutralLighterAlt,
-        //     color: semanticColors.bodyText
-        //   }
-        // }
       }
     ],
     link: [
@@ -84,7 +78,6 @@ export const getStyles = (
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         selectors: {
-          // '$compositeLink:hover &': { // not working
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
             color: semanticColors.bodyText
@@ -127,17 +120,16 @@ export const getStyles = (
         overflow: 'hidden',
         cursor: 'pointer',
         color: semanticColors.bodyText,
-        // backgroundColor: semanticColors.bodyBackground,
         backgroundColor: 'transparent',
         selectors: {
           '&:visited': {
             color: 'inherit'
           },
-          '&:hover': { // not really needed
+          '&:hover': {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
           },
-          '$compositeLink:hover &': { // works
+          '$compositeLink:hover &': {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
           },
