@@ -225,8 +225,8 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     checked: boolean) => ISplitButtonClassNames;
 
   /**
-  * Defines a custom key that opens button menu. If the value is not provided, down arrow key is used.
-  * If set to null, this will be disabled.
+  * Provides a custom KeyCode that can be used to open the button menu.
+  * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
   */
   menuTriggerKeyCode?: KeyCodes | null;
 }
