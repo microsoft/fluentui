@@ -31,9 +31,6 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   public componentDidMount() {
-    this.setState({
-      shouldLeftNavLoad: true
-    });
     window.addEventListener('scroll', this._handleNavPositioning);
     window.addEventListener('resize', this._handleNavPositioning);
 
