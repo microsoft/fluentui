@@ -18,7 +18,7 @@
     top: $Header-height;
     width: $Nav-width;
     @include ms-float(left);
-    z-index: $ms-zIndex-1;
+    z-index: 999; // This z-index needs to be high to prevent jittery scrolling in Edge.
   }
 
   .App-content {
