@@ -7,7 +7,10 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 
-import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import {
+  loadTheme,
+  createTheme
+} from 'office-ui-fabric-react/lib/Styling';
 import {
   IColor,
   getContrastRatio,
@@ -439,6 +442,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       }
     }
 
+    const themeAsJson = ThemeGenerator.getThemeAsJson(abridgedTheme);
+
     return (
       <div>
         <h2>Output</h2>
@@ -448,7 +453,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             <textarea
               readOnly={ true }
               spellCheck={ false }
-              value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
+              value={ JSON.stringify(
+                getStrongVariant(
+                  createTheme({
+                    palette: ThemeGenerator.getThemeAsJson(abridgedTheme),
+                    semanticColors: ThemeGenerator.getThemeAsJson(abridgedTheme)
+                  }))
+                , void 0, 2) }
             />
           </div>
           <div>
