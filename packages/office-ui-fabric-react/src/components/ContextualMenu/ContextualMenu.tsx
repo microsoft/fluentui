@@ -248,7 +248,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let targetAsHtmlElement = this._target as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
-      const targetWidth = targetBoundingRect.width;
+      const targetWidth = targetBoundingRect.width - 2 /* Accounts for 1px border */;
 
       if (useTargetWidth) {
         contextMenuStyle = {
