@@ -7,7 +7,7 @@ import {
   CommandButton,
   IconButton
 } from '../../Button';
-import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
+import { Autofill } from '../Autofill/Autofill';
 import {
   autobind,
   BaseComponent,
@@ -16,7 +16,8 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  customizable
+  customizable,
+  css
 } from '../../Utilities';
 import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import {
@@ -94,7 +95,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   // The input aspect of the comboBox
-  private _comboBox: BaseAutoFill;
+  private _comboBox: Autofill;
 
   // The wrapping div of the input and button
   private _comboBoxWrapper: HTMLDivElement;
@@ -271,6 +272,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       autoComplete,
       buttonIconProps,
+      isButtonAriaHidden = true,
       styles: customStyles,
       theme,
       title
@@ -282,19 +284,29 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
-    this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      className!,
-      !!isOpen,
-      !!disabled,
-      !!required,
-      !!focused,
-      !!allowFreeform,
-      !!hasErrorMessage
-    );
+    this._classNames = this.props.getClassNames ?
+      this.props.getClassNames(
+        theme!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage,
+        className) :
+      getClassNames(
+        getStyles(theme!, customStyles),
+        className!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage
+      );
 
     return (
-      <div {...divProps } ref='root' className={ this._classNames.container }>
+      <div { ...divProps } ref='root' className={ this._classNames.container }>
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
@@ -303,7 +315,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           id={ id + 'wrapper' }
           className={ this._classNames.root }
         >
-          <BaseAutoFill
+          <Autofill
             data-is-interactable={ !disabled }
             ref={ this._resolveRef('_comboBox') }
             id={ id + '-input' }
@@ -313,7 +325,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ this._onBaseAutofillClick }
+            onClick={ this._onAutofillClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ this._getAriaAutoCompleteValue() }
@@ -329,15 +341,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             spellCheck={ false }
             defaultVisibleValue={ this._currentVisibleValue }
             suggestedDisplayValue={ suggestedDisplayValue }
-            updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
-            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+            updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
             title={ title }
           />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
             role='presentation'
-            aria-hidden='true'
+            aria-hidden={ isButtonAriaHidden }
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
@@ -395,12 +407,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-   * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   * @param {IAutofillProps} defaultVisibleValue - the defaultVisibleValue that got passed
    *  in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
   @autobind
-  private _onUpdateValueInAutoFillWillReceiveProps(): string | null {
+  private _onUpdateValueInAutofillWillReceiveProps(): string | null {
     if (this._comboBox === null || this._comboBox === undefined) {
       return null;
     }
@@ -421,7 +433,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
    */
   @autobind
-  private _onShouldSelectFullInputValueInAutoFillComponentDidUpdate(): boolean {
+  private _onShouldSelectFullInputValueInAutofillComponentDidUpdate(): boolean {
     return this._currentVisibleValue === this.state.suggestedDisplayValue;
   }
 
@@ -869,7 +881,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
-        className={ this._classNames.callout }
+        className={ css(this._classNames.callout, calloutProps ? calloutProps.className : undefined) }
         target={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         onScroll={ this._onScroll }
@@ -1246,7 +1258,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param ev - The keyboard event that was fired
    */
   @autobind
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
+  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     let {
       disabled,
       allowFreeform,
@@ -1409,7 +1421,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param ev - the keyboard event that was fired
    */
   @autobind
-  private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
+  private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | Autofill>) {
     let {
       disabled,
       allowFreeform,
@@ -1476,7 +1488,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * eating the required key event when disabled
    * @param ev - the keyboard event that was fired
    */
-  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill> | null) {
+  private _handleInputWhenDisabled(ev: React.KeyboardEvent<HTMLElement | Autofill> | null) {
     // If we are disabled, close the menu (if needed)
     // and eat all keystokes other than TAB or ESC
     if (this.props.disabled) {
@@ -1515,9 +1527,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Click handler for the autofill.
    */
   @autobind
-  private _onBaseAutofillClick() {
+  private _onAutofillClick() {
     if (this.props.allowFreeform) {
-      this.focus(true);
+      this.focus(this.state.isOpen);
     } else {
       this._onComboBoxClick();
     }

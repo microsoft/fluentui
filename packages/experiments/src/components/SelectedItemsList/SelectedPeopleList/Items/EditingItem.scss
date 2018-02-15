@@ -1,0 +1,8 @@
+.editingInput {
+  border: 0px;
+  outline: none;
+
+  &::-ms-clear {
+    display: none;
+  }
+}

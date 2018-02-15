@@ -33,12 +33,9 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           },
           ':hover': {
             borderColor: palette.neutralDark,
-            $label: {
-              color: palette.black,
-              $iconContainer: {
-                color: palette.themeDark
-              }
-            }
+          },
+          ':hover $iconContainer': {
+            color: palette.themeDark
           }
         }
       },

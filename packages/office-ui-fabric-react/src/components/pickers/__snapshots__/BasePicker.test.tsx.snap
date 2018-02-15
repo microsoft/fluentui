@@ -33,8 +33,6 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
       onKeyDownCapture={[Function]}
       onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
-      onTouchEndCapture={[Function]}
-      onTouchStartCapture={[Function]}
       role="presentation"
     >
       <div
@@ -101,8 +99,6 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
       onKeyDownCapture={[Function]}
       onMouseDown={[Function]}
       onMouseDownCapture={[Function]}
-      onTouchEndCapture={[Function]}
-      onTouchStartCapture={[Function]}
       role="presentation"
     >
       <div
