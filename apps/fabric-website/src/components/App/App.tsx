@@ -12,7 +12,6 @@ export interface IAppProps extends React.Props<App> {
 export interface IAppState {
   isAttached: boolean;
   navHeight: number;
-  shouldLeftNavLoad: boolean;
 }
 
 export class App extends React.Component<IAppProps, any> {
@@ -25,8 +24,7 @@ export class App extends React.Component<IAppProps, any> {
     super(props);
 
     this.state = {
-      isAttached: false,
-      shouldLeftNavLoad: false
+      isAttached: false
     };
   }
 
@@ -62,11 +60,9 @@ export class App extends React.Component<IAppProps, any> {
             className='App-nav'
             style={ navStyle }
           >
-            { this.state.shouldLeftNavLoad &&
-              <Nav
-                pages={ AppState.pages }
-              />
-            }
+            <Nav
+              pages={ AppState.pages }
+            />
           </div>
           <div
             className='App-content'
