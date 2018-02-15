@@ -48,7 +48,5 @@ export const getStyles = (
 
       className
     ],
-
-    // Insert className styles
   });
 };
