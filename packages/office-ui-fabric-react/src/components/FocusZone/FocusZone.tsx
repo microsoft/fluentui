@@ -139,6 +139,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   /**
    * Sets focus to the first tabbable item in the zone.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focus(forceIntoFirstElement: boolean = false): boolean {
@@ -153,7 +154,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         }
 
         return false;
-      } else if (this._activeElement && elementContains(this._root, this._activeElement)
+      } else if (!forceIntoFirstElement && this._activeElement && elementContains(this._root, this._activeElement)
         && isElementTabbable(this._activeElement)) {
         this._activeElement.focus();
         return true;
