@@ -219,6 +219,97 @@ describe('KeytipTree', () => {
       expect(keytipTree.root.children).toContain(keytipIdC);
       expect(keytipTree.root.children).toContain(keytipIdE);
     });
+
+    it('add a node with overflowsetSequence when overflow node already has been created', () => {
+      let rootId = 'a';
+      let keytipTree = new KeytipTree(rootId);
+      /**
+       *   Tree should end up looking like: Where O is overflow menu and d is inside
+       *
+       *              a
+       *          /   |
+       *          o  d
+       *          |
+       *          d
+       *
+       */
+
+      const keytipIdO = ktpFullPrefix + 'o';
+      const overflowSequence: IKeySequence = { keys: ['o'] };
+      keytipTree.addNode({ keySequences: [overflowSequence] });
+
+      const keytipPersistedIdD = ktpFullPrefix + 'd';
+      const keytipOverflowIdD = ktpFullPrefix + 'o' + ktpSeparator + 'd';
+      const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
+      let keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
+
+      // Add d node with an overflow sequence
+      keytipTree.addNode(keytipProps);
+
+      // Root should have overflow keytip node and persisted keytip node.
+      expect(keytipTree.root.children).toHaveLength(2);
+
+      // Test nodes are in the node map
+      let keytipOverflowNode = keytipTree.nodeMap[keytipIdO];
+      expect(keytipOverflowNode).toBeDefined();
+      let keytipPersistedD = keytipTree.nodeMap[keytipPersistedIdD];
+      expect(keytipPersistedD).toBeDefined();
+      let keytipOverflowD = keytipTree.nodeMap[keytipOverflowIdD];
+      expect(keytipOverflowD).toBeDefined();
+
+      // Test hierarchy
+      expect(keytipOverflowNode.parent).toEqual(rootId);
+      expect(keytipPersistedD.parent).toEqual(rootId);
+      expect(keytipOverflowD.parent).toEqual(keytipIdO);
+
+      // Persisted keytip keytip link should be the node in the overflow
+      expect(keytipPersistedD.keytipLink).toEqual(keytipOverflowD);
+    });
+
+    it('add a node with overflowsetSequence when overflow node has not been created', () => {
+      let rootId = 'a';
+      let keytipTree = new KeytipTree(rootId);
+      /**
+       *   Tree should end up looking like: Where O is overflow menu and d is inside
+       *
+       *              a
+       *          /   |
+       *          o  d
+       *          |
+       *          d
+       *
+       */
+
+      const keytipIdO = ktpFullPrefix + 'o';
+      const overflowSequence: IKeySequence = { keys: ['o'] };
+
+      const keytipPersistedIdD = ktpFullPrefix + 'd';
+      const keytipOverflowIdD = ktpFullPrefix + 'o' + ktpSeparator + 'd';
+      const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
+      let keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
+
+      // Add d node with an overflow sequence
+      keytipTree.addNode(keytipProps);
+
+      // Root should have overflow keytip node and persisted keytip node.
+      expect(keytipTree.root.children).toHaveLength(2);
+
+      // Test nodes are in the node map
+      let keytipOverflowNode = keytipTree.nodeMap[keytipIdO];
+      expect(keytipOverflowNode).toBeDefined();
+      let keytipPersistedD = keytipTree.nodeMap[keytipPersistedIdD];
+      expect(keytipPersistedD).toBeDefined();
+      let keytipOverflowD = keytipTree.nodeMap[keytipOverflowIdD];
+      expect(keytipOverflowD).toBeDefined();
+
+      // Test hierarchy
+      expect(keytipOverflowNode.parent).toEqual(rootId);
+      expect(keytipPersistedD.parent).toEqual(rootId);
+      expect(keytipOverflowD.parent).toEqual(keytipIdO);
+
+      // Persisted keytip keytip link should be the node in the overflow
+      expect(keytipPersistedD.keytipLink).toEqual(keytipOverflowD);
+    });
   });
 
   describe('removeNode', () => {
@@ -376,9 +467,10 @@ describe('KeytipTree', () => {
   });
 });
 
-function createKeytipProps(keySequences: IKeySequence[]): IKeytipProps {
+function createKeytipProps(keySequences: IKeySequence[], overflowSequence?: IKeySequence): IKeytipProps {
   return {
-    keySequences
+    keySequences,
+    overflowSetSequence: overflowSequence
   };
 }
 
