@@ -105,6 +105,24 @@ export class KeytipTree {
     // Parent ID is the root if there aren't any more sequences
     let parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
 
+    let overflowNode = undefined;
+    if (keytipProps.overflowSetSequence && keytipSequence) {
+      let overflowParentNode = this._getOverflowNode(keytipProps.overflowSetSequence, parentID, fullSequence);
+      let overflowNodeID = convertSequencesToKeytipID([...fullSequence, keytipProps.overflowSetSequence, keytipSequence]);
+      overflowNode = this.nodeMap[overflowNodeID];
+
+      if (overflowNode) {
+        overflowNode.keytipSequence = keytipSequence;
+        overflowNode.onExecute = keytipProps.onExecute;
+        overflowNode.hasChildrenNodes = keytipProps.hasChildrenNodes;
+        overflowNode.parent = overflowParentNode.id;
+      } else {
+        overflowNode = this._createNode(overflowNodeID, keytipSequence, overflowParentNode.id, [], keytipProps.hasChildrenNodes);
+        this.nodeMap[overflowNodeID] = overflowNode;
+      }
+      overflowParentNode.children.push(overflowNodeID);
+    }
+
     // See if node already exists
     let node = this.nodeMap[nodeID];
     if (node) {
@@ -112,33 +130,20 @@ export class KeytipTree {
       // Update keytipSequence, onExecute, parent
       node.keytipSequence = keytipSequence!;
       node.onExecute = keytipProps.onExecute;
+      node.onReturn = keytipProps.onReturn;
       node.hasChildrenNodes = keytipProps.hasChildrenNodes;
+      node.keytipLink = overflowNode;
       node.parent = parentID;
     } else {
       // If node doesn't exist, add node
-      node = {
-        id: nodeID,
-        keytipSequence: keytipSequence!,
-        children: [],
-        parent: parentID,
-        onExecute: keytipProps.onExecute,
-        hasChildrenNodes: keytipProps.hasChildrenNodes,
-      };
+      node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
+        keytipProps.onExecute, keytipProps.onReturn);
+      node.keytipLink = overflowNode;
       this.nodeMap[nodeID] = node;
     }
 
-    let parent = this.nodeMap[parentID];
-    if (!parent) {
-      // If parent doesn't exist, create parent with ID and children only
-      parent = {
-        id: parentID,
-        hasChildrenNodes: true,
-        children: [],
-        keytipSequence: { keys: [] },
-        parent: ''
-      };
-      this.nodeMap[parentID] = parent;
-    }
+    // Get parent node given it's id.
+    let parent = this._getParentNode(parentID);
     // Add node to parent's children
     parent.children.push(nodeID);
   }
@@ -164,6 +169,29 @@ export class KeytipTree {
     return nodes;
   }
 
+  private _getParentNode(parentId: string): IKeytipTreeNode {
+    let parent = this.nodeMap[parentId];
+    if (!parent) {
+      // If parent doesn't exist, create parent with ID and children only
+      parent = this._createNode(parentId, { keys: [] }, '' /* parentId */, [] /* childrenIds */, true /*hasChildren */);
+      this.nodeMap[parentId] = parent;
+    }
+    return parent;
+  }
+
+  private _createNode(id: string, sequence: IKeySequence, parentId: string, children: string[],
+    hasChildrenNodes?: boolean, onExecute?: () => void, onReturn?: () => void): IKeytipTreeNode {
+    return {
+      id,
+      keytipSequence: sequence,
+      parent: parentId,
+      children,
+      onExecute,
+      onReturn,
+      hasChildrenNodes
+    };
+  }
+
   private _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
     for (let id of ids) {
@@ -172,24 +200,20 @@ export class KeytipTree {
     return nodes;
   }
 
-  // private _getOverflowNode(overflowSequence: IKeySequence, parentSequence: IKeySequence[]): IKeytipTreeNode {
-  //   let fullOverflowSequence = [...parentSequence, ...[overflowSequence]];
-  //   let overflowNodeId = convertSequencesToKeytipID(fullOverflowSequence);
+  private _getOverflowNode(overflowSequence: IKeySequence, parentId: string, parentSequence: IKeySequence[]): IKeytipTreeNode {
+    let fullOverflowSequence = [...parentSequence, ...[overflowSequence]];
+    let overflowNodeId = convertSequencesToKeytipID(fullOverflowSequence);
 
-  //   let node = this.nodeMap[overflowNodeId];
+    let node = this.nodeMap[overflowNodeId];
 
-  //   // if overflow node has not been added, we create it
-  //   if (!node) {
-  //     node = {
-  //       id: overflowNodeId,
-  //       keytipSequence: overflowSequence,
-  //       parent: convertSequencesToKeytipID(parentSequence),
-  //       children: [],
-  //       hasChildrenNodes: true,
-  //     };
-  //     this.nodeMap[overflowNodeId] = node;
-  //   }
+    // if overflow node has not been added, we create it
+    if (!node) {
+      node = this._createNode(overflowNodeId, overflowSequence, parentId, [], true);
+      this.nodeMap[overflowNodeId] = node;
+      let parent = this._getParentNode(parentId);
+      parent.children.push(overflowNodeId);
+    }
 
-  //   return node;
-  // }
+    return node;
+  }
 }
