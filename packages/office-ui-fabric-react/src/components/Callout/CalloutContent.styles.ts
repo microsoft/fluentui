@@ -25,8 +25,6 @@ const ANIMATIONS: { [key: number]: IRawStyle; } = {
 // ^ all of the first 2 non zero values in the matrix3d are divided by 2
 const BOUNCE: string = keyframes({
   '0%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
-  // '17.4%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' }, //for v2, comment out
-  '18.4%': { transform: 'matrix3d(.5, 0, 0, 0, 0, .5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' }, // v1 = 17.5, v2 = 15.5
   '19.2%': { transform: 'matrix3d(.658, 0, 0, 0, 0, .704, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
   '19.85%': { transform: 'matrix3d(.725, 0, 0, 0, 0, .8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
   '20.9%': { transform: 'matrix3d(.83, 0, 0, 0, 0, .947, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)' },
@@ -70,10 +68,7 @@ const OPACITY_FADEIN: string = keyframes({
     opacity: 0,
     animationTimingFunction: '$ms-animation-ease-2'
   },
-  '18.4%': { opacity: .25 }, // v2
-  // '22.2%': { opacity: 0 }, // v2
-  '26.26%': { opacity: 1 }, // v2
-  // '22.61%': { opacity: 1 }, // v1
+  '24.31%': { opacity: 1 },
   '100%': { opacity: 1 }
 });
 
