@@ -23,15 +23,13 @@ import {
   INavStyleProps,
   INavStyles
 } from './Nav.types';
+import { buttonStyles } from './Nav.styles';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
 
 // The number of pixels of left margin
 const _baseIndent: number = 3;
-
-// The number of pixels of padding to add to the far side of the button (allows ellipsis to happen)
-const _farSidePadding: number = 20;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -142,23 +140,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
-    const isRtl: boolean = getRTL();
-    const paddingBefore = _indentationSize * nestingLevel + _baseIndent;
-    const buttonStyles: IButtonStyles = {
-      root: {
-        [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
-        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
-      },
-      textContainer: {
-        overflow: 'hidden',
-      },
-      label: {
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        lineHeight: '36px'
-      }
-    };
     let {
       getStyles,
       groups,
@@ -170,6 +151,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       theme: theme!,
       isSelected: this._isLinkSelected(link),
       isButtonEntry: link.onClick && !link.forceAnchor,
+      leftPadding: _indentationSize * nestingLevel + _baseIndent,
       groups
     });
 
@@ -194,10 +176,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const isLinkSelected: boolean = this._isLinkSelected(link);
-    const isRtl: boolean = getRTL();
-    const absolutePositionString = `${_indentationSize * nestingLevel + 1}px`;
-
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -262,7 +240,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
   @autobind
   private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
-
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,

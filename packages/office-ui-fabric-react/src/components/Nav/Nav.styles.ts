@@ -1,4 +1,5 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
+import { IButtonStyles } from '../../Button';
 import {
   AnimationClassNames,
   IStyle,
@@ -8,6 +9,24 @@ import {
   FontSizes,
   FontWeights
 } from '../../Styling';
+
+export const buttonStyles: IButtonStyles = {
+  // root: {
+  //   // [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
+  //   // [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
+  //   paddingRight: '20px',
+  //   paddingLeft: '20px'
+  // },
+  textContainer: {
+    overflow: 'hidden',
+  },
+  label: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    lineHeight: '36px'
+  }
+};
 
 export const getStyles = (
   props: INavStyleProps
@@ -22,9 +41,11 @@ export const getStyles = (
     isSelected,
     isButtonEntry,
     navnodeHeight = 36,
-    hasExpandButtonLinkLeftPadding = 28,
-    noExpandButtonLinkLeftPadding = 20,
-    linkRightPadding = 20
+    // hasExpandButtonLinkLeftPadding = 28,
+    // noExpandButtonLinkLeftPadding = 20,
+    leftPadding = 20,
+    leftPaddingExpanded = 28,
+    rightPadding = 20
   } = props;
 
   const { palette, semanticColors } = theme;
@@ -77,6 +98,8 @@ export const getStyles = (
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
+        paddingLeft: leftPadding,
+        paddingRight: rightPadding,
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
@@ -113,7 +136,7 @@ export const getStyles = (
         textAlign: 'left',
         lineHeight: `${navnodeHeight}px`,
         margin: '5px 0',
-        padding: `0px, ${linkRightPadding}px, 0px, ${hasExpandButtonLinkLeftPadding}px`,
+        padding: `0px, ${rightPadding}px, 0px, ${leftPaddingExpanded}px`,
         border: 'none',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
@@ -146,7 +169,7 @@ export const getStyles = (
       isLink && [
         {
           display: 'block',
-          width: `${hasExpandButtonLinkLeftPadding - 2}px`,
+          width: `${leftPaddingExpanded - 2}px`,
           height: `${navnodeHeight - 2}px`,
           position: 'absolute',
           top: '1px',

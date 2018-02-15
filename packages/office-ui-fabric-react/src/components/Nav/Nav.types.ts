@@ -225,11 +225,14 @@ export interface INavStyleProps {
   isExpanded?: boolean;
   isSelected?: boolean;
   isButtonEntry?: boolean;
-
+  // paddingBefore?: number;
+  // paddingAfter?: number;
   navnodeHeight?: number;
-  hasExpandButtonLinkLeftPadding?: number;
-  noExpandButtonLinkLeftPadding?: number;
-  linkRightPadding?: number;
+  // hasExpandButtonLinkLeftPadding?: number;
+  // noExpandButtonLinkLeftPadding?: number;
+  leftPadding?: number;
+  leftPaddingExpanded?: number;
+  rightPadding?: number;
 
   /**
    * Inherited from INavProps
