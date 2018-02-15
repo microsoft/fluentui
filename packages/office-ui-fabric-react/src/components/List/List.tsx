@@ -572,7 +572,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let newListState = this._buildPages(props);
     let oldListPages = this.state.pages;
 
-    this._notifyPageChanges(oldListPages, newListState.pages as IPage[]);
+    this._notifyPageChanges(oldListPages as IPage[], newListState.pages as IPage[]);
 
     this.setState(newListState, () => {
       // If we weren't provided with the page height, measure the pages
