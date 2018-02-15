@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   customizable,
+  classNamesFunction,
   getNativeProps,
   divProperties,
   enableBodyScroll,
@@ -12,8 +13,6 @@ import {
   IOverlayStyleProps,
   IOverlayStyles,
 } from './Overlay.types';
-
-import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
