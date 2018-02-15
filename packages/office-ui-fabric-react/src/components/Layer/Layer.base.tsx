@@ -17,8 +17,8 @@ import {
   getDocument,
   setVirtualParent
 } from '../../Utilities';
-import * as stylesImport from './Layer.scss';
-const styles: any = stylesImport;
+// import * as stylesImport from './Layer.scss';
+// const styles: any = stylesImport;
 
 let _layersByHostId: { [hostId: string]: LayerBase[] } = {};
 let _defaultHostSelector: string | undefined;
@@ -45,10 +45,6 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     if (_layersByHostId[id]) {
       _layersByHostId[id].forEach(layer => layer.forceUpdate());
     }
-  }
-
-  public static myTestFunction(s: string) {
-    console.log(`inside ${s}`);
   }
 
   /**
@@ -98,7 +94,12 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
     let host = this._getHost();
 
     const { getStyles, theme } = this.props;
-    const classNames = getClassNames(getStyles!, { theme: theme! });
+    const classNames = getClassNames(getStyles!,
+      {
+        theme: theme!,
+        isNotHost: !this.props.hostId
+      }
+    );
 
     if (host !== this._host) {
       this._removeLayerElement();
@@ -111,9 +112,8 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
         let doc = getDocument(this._rootElement) as Document;
 
         this._layerElement = doc.createElement('div');
-        this._layerElement.className = css('ms-Layer', {
-          ['ms-Layer--fixed ' + styles.rootIsFixed]: !this.props.hostId
-        });
+        // this._layerElement.className = css('ms-Layer', { ['ms-Layer--fixed ' + styles.rootIsFixed]: !this.props.hostId });
+        this._layerElement.className = classNames.root;
 
         host.appendChild(this._layerElement);
         setVirtualParent(this._layerElement, this._rootElement);

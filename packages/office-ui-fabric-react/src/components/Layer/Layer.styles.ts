@@ -10,6 +10,7 @@ export const getStyles = (
   const {
     className,
     theme,
+    isNotHost
   } = props;
 
   // const { palette, semanticColors } = theme;
@@ -17,7 +18,7 @@ export const getStyles = (
   return ({
     root: [
       'ms-Layer',
-      {
+      isNotHost && 'ms-Layer--fixed' && {
         position: 'fixed',
         zIndex: 1000000,
         top: 0,

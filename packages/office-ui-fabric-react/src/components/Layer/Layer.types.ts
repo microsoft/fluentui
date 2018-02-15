@@ -62,11 +62,16 @@ export interface ILayerStyleProps {
    * Accept custom classNames
    */
   className?: string;
+
+  /**
+   * Check if Host
+  */
+  isNotHost?: boolean;
 }
 
 export interface ILayerStyles {
   /**
-   * Style for the root element.
+   * Style for the root element when fixed.
    */
   root?: IStyle;
   /**
