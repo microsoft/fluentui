@@ -222,11 +222,6 @@ export class KeytipManager {
   }
 
   private _changeKeytipVisibility(ids: string[], visible: boolean): void {
-    // Change visibility in tree
-    for (let id of ids) {
-      this.keytipTree.nodeMap[id].visible = visible;
-    }
-
     // Change visibility in layer
     this._layer.setKeytipVisibility(ids, visible);
   }

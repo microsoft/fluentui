@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import * as ReactTestUtils from 'react-dom/test-utils';
-
 import { KeytipManager } from './KeytipManager';
 import { IKeySequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
@@ -9,7 +7,7 @@ import { KeytipLayer } from '../../KeytipLayer';
 import { IKeytipProps } from '../../Keytip';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 
 const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
 const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
@@ -22,20 +20,25 @@ const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
 
 describe('KeytipManager', () => {
   const keytipManager = KeytipManager.getInstance();
+  let defaultKeytipLayer: ReactWrapper;
+  const onEnterKeytipMode: jest.Mock = jest.fn();
+  const onExitKeytipMode: jest.Mock = jest.fn();
+
+  beforeEach(() => {
+    // Create layer
+    defaultKeytipLayer = mount(
+      <KeytipLayer
+        id={ layerID }
+        keytipStartSequences={ keytipStartSequences }
+        keytipReturnSequences={ keytipReturnSequences }
+        keytipExitSequences={ keytipExitSequences }
+        onEnterKeytipMode={ onEnterKeytipMode }
+        onExitKeytipMode={ onExitKeytipMode }
+      />
+    );
+  });
 
   describe('getAriaDescribedBy', () => {
-
-    beforeEach(() => {
-      // Create layer
-      ReactTestUtils.renderIntoDocument<KeytipLayer>(
-        <KeytipLayer
-          id={ layerID }
-          keytipStartSequences={ keytipStartSequences }
-          keytipReturnSequences={ keytipReturnSequences }
-          keytipExitSequences={ keytipExitSequences }
-        />
-      );
-    });
 
     it('returns just the layer ID when an empty sequence is passed in', () => {
       let keySequence: IKeySequence[] = [];
@@ -73,22 +76,8 @@ describe('KeytipManager', () => {
   });
 
   describe('processInput tests', () => {
-    const onEnterKeytipMode: jest.Mock = jest.fn();
-    const onExitKeytipMode: jest.Mock = jest.fn();
 
     beforeEach(() => {
-      // Create layer
-      ReactTestUtils.renderIntoDocument<KeytipLayer>(
-        <KeytipLayer
-          id={ layerID }
-          keytipStartSequences={ keytipStartSequences }
-          keytipReturnSequences={ keytipReturnSequences }
-          keytipExitSequences={ keytipExitSequences }
-          onEnterKeytipMode={ onEnterKeytipMode }
-          onExitKeytipMode={ onExitKeytipMode }
-        />
-      );
-
       keytipManager.keytipTree = populateTreeMap(keytipManager.keytipTree, layerID);
     });
 
@@ -156,7 +145,10 @@ describe('KeytipManager', () => {
       // There is no more buffer in the sequence
       expect(keytipManager.currentSequence.keys.length).toEqual(0);
       // Children keytips should be visible
-      expect(childrenAreVisible(keytipManager.keytipTree, keytipManager.keytipTree.currentKeytip.children)).toEqual(true);
+      let childrenKeytips = getKeytips(defaultKeytipLayer, keytipManager.keytipTree.currentKeytip.children);
+      for (let childrenKeytip of childrenKeytips) {
+        expect(childrenKeytip.visible).toEqual(true);
+      }
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
       expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdE1]);
     });
@@ -175,53 +167,78 @@ describe('KeytipManager', () => {
     });
   });
 
-  it('registerKeytip should automatically show Keytip when currentKeytip is its parent', () => {
-    let keytipLayer = mount(
-      <KeytipLayer
-        id={ layerID }
-        keytipStartSequences={ keytipStartSequences }
-        keytipReturnSequences={ keytipReturnSequences }
-        keytipExitSequences={ keytipExitSequences }
-      />
-    );
+  describe('registerKeytip', () => {
 
-    // Create keytip b
-    const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
-    const keytipBProps: IKeytipProps = {
-      keySequences: keytipSequenceB,
-      content: 'B'
-    };
-    keytipManager.registerKeytip(keytipBProps);
+    it('should automatically show Keytip when currentKeytip is its parent', () => {
+      // Create keytip b
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipBProps: IKeytipProps = {
+        keySequences: keytipSequenceB,
+        content: 'B'
+      };
+      keytipManager.registerKeytip(keytipBProps);
 
-    // Set currentKeytip to 'b'
-    keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.nodeMap[keytipIdB];
+      // Set currentKeytip to 'b'
+      keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.nodeMap[keytipIdB];
 
-    // Add a node 'g' who's parent is 'b'
-    const keytipSequenceG: IKeySequence[] = [{ keys: ['b'] }, { keys: ['g'] }];
-    const keytipIdG = ktpFullPrefix + 'b' + ktpSeparator + 'g';
-    const keytipGProps: IKeytipProps = {
-      keySequences: keytipSequenceG,
-      content: 'G'
-    };
-    keytipManager.registerKeytip(keytipGProps);
+      // Add a node 'g' who's parent is 'b'
+      const keytipSequenceG: IKeySequence[] = [{ keys: ['b'] }, { keys: ['g'] }];
+      const keytipIdG = ktpFullPrefix + 'b' + ktpSeparator + 'g';
+      const keytipGProps: IKeytipProps = {
+        keySequences: keytipSequenceG,
+        content: 'G'
+      };
+      keytipManager.registerKeytip(keytipGProps);
 
-    // G should now be visible in the layer
-    let currentKeytips: IKeytipProps[] = keytipLayer.state('keytips');
-    let keytipG = currentKeytips.filter((currentKeytip: IKeytipProps) => {
-      return convertSequencesToKeytipID(currentKeytip.keySequences) === keytipIdG;
+      // G should now be visible in the layer
+      let keytipG = getKeytips(defaultKeytipLayer, [keytipIdG]);
+      expect(keytipG).toHaveLength(1);
+      expect(keytipG[0].visible).toEqual(true);
     });
-    expect(keytipG).toHaveLength(1);
-    expect(keytipG[0].visible).toEqual(true);
+
+    it('should update the keytip if it has the same key sequence', () => {
+      // Create keytip b
+      const keytipSequenceB: IKeySequence[] = [{ keys: ['b'] }];
+      const keytipBProps: IKeytipProps = {
+        keySequences: keytipSequenceB,
+        content: 'B',
+        disabled: false
+      };
+      keytipManager.registerKeytip(keytipBProps);
+
+      let keytipB = getKeytips(defaultKeytipLayer, [keytipIdB]);
+      let keytipNodeB = keytipManager.keytipTree.nodeMap[keytipIdB];
+      expect(keytipB).toHaveLength(1);
+      expect(keytipB[0].disabled).toEqual(false);
+      expect(keytipB[0].content).toEqual('B');
+      expect(keytipNodeB.disabled).toEqual(false);
+
+      // Change some properties
+      keytipBProps.disabled = true;
+      keytipBProps.content = 'BEE';
+
+      // Re-register
+      keytipManager.registerKeytip(keytipBProps);
+
+      keytipB = getKeytips(defaultKeytipLayer, [keytipIdB]);
+      keytipNodeB = keytipManager.keytipTree.nodeMap[keytipIdB];
+      expect(keytipB).toHaveLength(1);
+      expect(keytipB[0].disabled).toEqual(true);
+      expect(keytipB[0].content).toEqual('BEE');
+      expect(keytipNodeB.disabled).toEqual(true);
+    });
   });
 });
 
-function childrenAreVisible(keytipTree: KeytipTree, ids: string[]): boolean {
-  for (let id of ids) {
-    if (!keytipTree.nodeMap[id].visible) {
-      return false;
-    }
+function getKeytips(keytipLayer: ReactWrapper, keytipIDs?: string[]): IKeytipProps[] {
+  let currentKeytips: IKeytipProps[] = keytipLayer.state('keytips');
+  if (keytipIDs) {
+    return currentKeytips.filter((currentKeytip: IKeytipProps) => {
+      return keytipIDs.indexOf(convertSequencesToKeytipID(currentKeytip.keySequences)) !== -1;
+    });
+  } else {
+    return currentKeytips;
   }
-  return true;
 }
 
 function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {

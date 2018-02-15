@@ -44,11 +44,6 @@ export interface IKeytipTreeNode {
   hasChildrenNodes?: boolean;
 
   /**
-   * Whether the keytip is visible or not in the dom.
-   */
-  visible?: boolean;
-
-  /**
    * T/F if this keytip's component is currently disabled
    */
   disabled?: boolean;
@@ -112,8 +107,10 @@ export class KeytipTree {
       // Update values
       node.keytipSequence = keytipSequence!;
       node.onExecute = keytipProps.onExecute;
+      node.onReturn = keytipProps.onReturn;
       node.hasChildrenNodes = keytipProps.hasChildrenNodes;
       node.parent = parentID;
+      node.disabled = keytipProps.disabled;
     } else {
       // If node doesn't exist, add node
       node = {
@@ -122,7 +119,9 @@ export class KeytipTree {
         children: [],
         parent: parentID,
         onExecute: keytipProps.onExecute,
-        hasChildrenNodes: keytipProps.hasChildrenNodes
+        onReturn: keytipProps.onReturn,
+        hasChildrenNodes: keytipProps.hasChildrenNodes,
+        disabled: keytipProps.disabled
       };
       this.nodeMap[nodeID] = node;
     }
@@ -138,8 +137,10 @@ export class KeytipTree {
       };
       this.nodeMap[parentID] = parent;
     }
-    // Add node to parent's children
-    parent.children.push(nodeID);
+    // Add node to parent's children if not yet there
+    if (parent.children.indexOf(nodeID) === -1) {
+      parent.children.push(nodeID);
+    }
   }
 
   /**

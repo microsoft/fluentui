@@ -16,6 +16,25 @@ export function keySequencesAreEqual(seq1: IKeySequence, seq2: IKeySequence): bo
 }
 
 /**
+ * Tests for equality between two arrays of IKeySequence
+ * @param seq1 - First IKeySequence[]
+ * @param seq2 - Second IKeySequence[]
+ */
+export function fullKeySequencesAreEqual(seq1: IKeySequence[], seq2: IKeySequence[]): boolean {
+  if (seq1.length !== seq2.length) {
+    return false;
+  }
+
+  for (let i = 0; i < seq1.length; i++) {
+    if (!keySequencesAreEqual(seq1[i], seq2[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
  *
  * @param sequences
  * @param seq
