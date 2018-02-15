@@ -11,12 +11,6 @@ import {
 } from '../../Styling';
 
 export const buttonStyles: IButtonStyles = {
-  // root: {
-  //   // [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
-  //   // [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding,
-  //   paddingRight: '20px',
-  //   paddingLeft: '20px'
-  // },
   textContainer: {
     overflow: 'hidden',
   },
@@ -41,8 +35,6 @@ export const getStyles = (
     isSelected,
     isButtonEntry,
     navnodeHeight = 36,
-    // hasExpandButtonLinkLeftPadding = 28,
-    // noExpandButtonLinkLeftPadding = 20,
     leftPadding = 20,
     leftPaddingExpanded = 28,
     rightPadding = 20
