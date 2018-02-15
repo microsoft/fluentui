@@ -473,7 +473,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let id = this._id;
     let isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
     let checkboxStyles = getCheckboxStyles(getTheme());
-
     return (
       !this.props.multiSelect ?
         (
