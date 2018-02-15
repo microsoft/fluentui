@@ -151,6 +151,8 @@ export class KeytipManager {
             this.keytipTree.currentKeytip.onReturn();
           }
 
+          // Clean currentSequence array
+          this.currentSequence.keys = [];
           // Return pointer to its parent
           this.keytipTree.currentKeytip = this.keytipTree.nodeMap[this.keytipTree.currentKeytip.parent!];
           this.hideKeytips(); // HIDE ALL
