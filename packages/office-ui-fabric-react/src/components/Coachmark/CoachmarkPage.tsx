@@ -8,7 +8,7 @@ import {
 
 import { CoachmarkBasicExample } from './examples/Coachmark.Basic.Example';
 const CoachmarkBasicExampleCode =
-  require('!raw-loader!experiments/src/components/Coachmark/examples/Coachmark.Basic.Example.tsx') as string;
+  require('!raw-loader!office-ui-fabric-react/src/components/Coachmark/examples/Coachmark.Basic.Example.tsx') as string;
 
 export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -26,7 +26,7 @@ export class CoachmarkPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!experiments/src/components/coachmark/Coachmark.types.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/Coachmark.types.ts')
             ] }
           />
         }

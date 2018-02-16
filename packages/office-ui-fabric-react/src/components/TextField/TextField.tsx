@@ -116,7 +116,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this.setState({
         value: newProps.value,
         errorMessage: ''
-      } as ITextFieldState);
+      } as ITextFieldState,
+        () => {
+          this._adjustInputHeight();
+        });
 
       this._delayedValidate(newProps.value);
     }
@@ -418,8 +421,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _validate(value: string | undefined): void {
+    const { validateOnFocusIn, validateOnFocusOut } = this.props;
+
     // In case of _validate called multi-times during executing validate logic with promise return.
-    if (this._latestValidateValue === value) {
+    if (this._latestValidateValue === value && !(validateOnFocusIn || validateOnFocusOut)) {
       return;
     }
 

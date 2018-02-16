@@ -377,4 +377,20 @@ describe('ComboBox', () => {
     wrapper.update();
     expect(wrapper.find('.ms-ComboBox input').props().value).toEqual('Text');
   });
+
+  it('merges callout classNames', () => {
+    ReactTestUtils.renderIntoDocument<ComboBox>(
+      <ComboBox
+        options={ DEFAULT_OPTIONS }
+        calloutProps={ { className: 'foo' } }
+      />
+    );
+
+    setTimeout(() => {
+      let callout = document.querySelector('.ms-Callout') as HTMLElement;
+      expect(callout).toBeDefined();
+      expect(callout.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+      expect(callout.classList.contains('foo')).toBeTruthy();
+    }, 0);
+  });
 });
