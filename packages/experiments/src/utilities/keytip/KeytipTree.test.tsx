@@ -423,77 +423,213 @@ describe('KeytipTree', () => {
     });
   });
 
-  it('get matched and partially matched node tests ', () => {
-    let keytipTree = new KeytipTree('id1');
+  describe('getExactlyMatchedNodes', () => {
+    it('get matched node tests ', () => {
+      let keytipTree = new KeytipTree('id1');
 
-    /**
-     *   Tree should end up looking like:
-     *
-     *              a
-     *          /   |   \
-     *         c    e1   e2
-     *              / \
-     *             d   f
-     *
-     */
+      /**
+       *   Tree should end up looking like:
+       *
+       *              a
+       *          /   |   \
+       *         c    e1   e2
+       *              / \
+       *             d   f
+       *
+       */
 
-    // Node C
-    const keytipIdC = ktpFullPrefix + 'c';
-    const keytipSequenceC: IKeySequence = { keys: ['c'] };
+      // Node C
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence = { keys: ['c'] };
 
-    // Node D
-    const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'd';
-    const keytipSequenceD: IKeySequence = { keys: ['d'] };
+      // Node D
+      const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'd';
+      const keytipSequenceD: IKeySequence = { keys: ['d'] };
 
-    // Node F
-    const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'f';
-    const keytipSequenceF: IKeySequence = { keys: ['f'] };
+      // Node F
+      const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'f';
+      const keytipSequenceF: IKeySequence = { keys: ['f'] };
 
-    // Node E1
-    const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
-    const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+      // Node E1
+      const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
 
-    // Node E2
-    const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
-    const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+      // Node E2
+      const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
 
-    // Node A
-    const keytipIdA = ktpFullPrefix + 'a';
-    const keytipSequenceA: IKeySequence = { keys: ['a'] };
+      // Node A
+      const keytipIdA = ktpFullPrefix + 'a';
+      const keytipSequenceA: IKeySequence = { keys: ['a'] };
 
-    let nodeA = createTreeNode(keytipIdA, '', [keytipIdC, keytipIdE1, keytipIdE2], keytipSequenceA);
-    let nodeC = createTreeNode(keytipIdC, keytipIdA, [], keytipSequenceC);
-    let nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE1);
-    let nodeE2 = createTreeNode(keytipIdE2, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE2);
-    let nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
-    let nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
+      let nodeA = createTreeNode(keytipIdA, '', [keytipIdC, keytipIdE1, keytipIdE2], keytipSequenceA);
+      let nodeC = createTreeNode(keytipIdC, keytipIdA, [], keytipSequenceC);
+      let nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE1);
+      let nodeE2 = createTreeNode(keytipIdE2, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE2);
+      let nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
+      let nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
 
-    keytipTree.nodeMap[keytipIdA] = nodeA;
-    keytipTree.nodeMap[keytipIdC] = nodeC;
-    keytipTree.nodeMap[keytipIdE1] = nodeE1;
-    keytipTree.nodeMap[keytipIdE2] = nodeE2;
-    keytipTree.nodeMap[keytipIdD] = nodeD;
-    keytipTree.nodeMap[keytipIdF] = nodeF;
+      keytipTree.nodeMap[keytipIdA] = nodeA;
+      keytipTree.nodeMap[keytipIdC] = nodeC;
+      keytipTree.nodeMap[keytipIdE1] = nodeE1;
+      keytipTree.nodeMap[keytipIdE2] = nodeE2;
+      keytipTree.nodeMap[keytipIdD] = nodeD;
+      keytipTree.nodeMap[keytipIdF] = nodeF;
 
-    // node should be undefined because it is not a child of node A.
-    let matchedNode1 = keytipTree.getExactMatchedNode({ keys: ['n'] }, nodeA);
-    expect(matchedNode1).toBeUndefined();
+      // node should be undefined because it is not a child of node A.
+      let matchedNode1 = keytipTree.getExactMatchedNode({ keys: ['n'] }, nodeA);
+      expect(matchedNode1).toBeUndefined();
 
-    // node should be equal to node c due to keysequnce.
-    let matchedNode2 = keytipTree.getExactMatchedNode({ keys: ['c'] }, nodeA);
-    expect(matchedNode2).toEqual(nodeC);
+      // node should be equal to node c due to keysequnce.
+      let matchedNode2 = keytipTree.getExactMatchedNode({ keys: ['c'] }, nodeA);
+      expect(matchedNode2).toEqual(nodeC);
+    });
 
-    // nodes array should be empty.
-    let matchedNodes1 = keytipTree.getPartiallyMatchedNodes({ keys: ['n'] }, nodeA);
-    expect(matchedNodes1.length).toEqual(0);
+    it('should be undefined is matched node is disabled ', () => {
+      let keytipTree = new KeytipTree('id1');
 
-    // nodes array should be empty.
-    let matchedNodes2 = keytipTree.getPartiallyMatchedNodes({ keys: [] }, nodeA);
-    expect(matchedNodes2.length).toEqual(0);
+      /**
+       *   Tree should end up looking like:
+       *
+       *              a
+       *          /   |   \
+       *         c    e1   e2
 
-    // nodes array should be equal to 2.
-    let matchedNodes3 = keytipTree.getPartiallyMatchedNodes({ keys: ['e'] }, nodeA);
-    expect(matchedNodes3.length).toEqual(2);
+       *
+       */
+
+      // Node C
+      const keytipIdC = ktpFullPrefix + 'c';
+      const keytipSequenceC: IKeySequence = { keys: ['c'] };
+
+      // Node E1
+      const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+
+      // Node E2
+      const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+
+      // Node A
+      const keytipIdA = ktpFullPrefix + 'a';
+      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+
+      let nodeA = createTreeNode(keytipIdA, '', [keytipIdC, keytipIdE1, keytipIdE2], keytipSequenceA);
+      let nodeC = createTreeNode(keytipIdC, keytipIdA, [], keytipSequenceC);
+      nodeC.disabled = true;
+      let nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [], keytipSequenceE1);
+      let nodeE2 = createTreeNode(keytipIdE2, keytipIdA, [], keytipSequenceE2);
+
+      keytipTree.nodeMap[keytipIdA] = nodeA;
+      keytipTree.nodeMap[keytipIdC] = nodeC;
+      keytipTree.nodeMap[keytipIdE1] = nodeE1;
+      keytipTree.nodeMap[keytipIdE2] = nodeE2;
+
+      // node should be undefined because it is disabled.
+      let matchedNode1 = keytipTree.getExactMatchedNode({ keys: ['c'] }, nodeA);
+      expect(matchedNode1).toBeUndefined();
+    });
+  });
+
+  describe('getPartiallyMatchedNodes', () => {
+    it('get partially matched node tests ', () => {
+      let keytipTree = new KeytipTree('id1');
+
+      /**
+       *   Tree should end up looking like:
+       *
+       *              a
+       *             |   \
+       *            e1   e2
+       *              / \
+       *             d   f
+       *
+       */
+
+      // Node D
+      const keytipIdD = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'd';
+      const keytipSequenceD: IKeySequence = { keys: ['d'] };
+
+      // Node F
+      const keytipIdF = ktpFullPrefix + 'e' + ktpSeparator + '1' + ktpSeparator + 'f';
+      const keytipSequenceF: IKeySequence = { keys: ['f'] };
+
+      // Node E1
+      const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+
+      // Node E2
+      const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+
+      // Node A
+      const keytipIdA = ktpFullPrefix + 'a';
+      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+
+      let nodeA = createTreeNode(keytipIdA, '', [keytipIdE1, keytipIdE2], keytipSequenceA);
+      let nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE1);
+      let nodeE2 = createTreeNode(keytipIdE2, keytipIdA, [keytipIdD, keytipIdF], keytipSequenceE2);
+      let nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
+      let nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
+
+      keytipTree.nodeMap[keytipIdA] = nodeA;
+      keytipTree.nodeMap[keytipIdE1] = nodeE1;
+      keytipTree.nodeMap[keytipIdE2] = nodeE2;
+      keytipTree.nodeMap[keytipIdD] = nodeD;
+      keytipTree.nodeMap[keytipIdF] = nodeF;
+
+      // nodes array should be empty.
+      let matchedNodes1 = keytipTree.getPartiallyMatchedNodes({ keys: ['n'] }, nodeA);
+      expect(matchedNodes1.length).toEqual(0);
+
+      // nodes array should be empty.
+      let matchedNodes2 = keytipTree.getPartiallyMatchedNodes({ keys: [] }, nodeA);
+      expect(matchedNodes2.length).toEqual(0);
+
+      // nodes array should be equal to 2.
+      let matchedNodes3 = keytipTree.getPartiallyMatchedNodes({ keys: ['e'] }, nodeA);
+      expect(matchedNodes3.length).toEqual(2);
+    });
+
+    it('get partially matched nodes that are not disabled ', () => {
+      let keytipTree = new KeytipTree('id1');
+
+      /**
+       *   Tree should end up looking like:
+       *
+       *              a
+       *             |   \
+       *            e1   e2
+       *              / \
+       *             d   f
+       *
+       */
+
+      // Node E1
+      const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
+      const keytipSequenceE1: IKeySequence = { keys: ['e', '1'] };
+
+      // Node E2
+      const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+      const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
+
+      // Node A
+      const keytipIdA = ktpFullPrefix + 'a';
+      const keytipSequenceA: IKeySequence = { keys: ['a'] };
+
+      let nodeA = createTreeNode(keytipIdA, '', [keytipIdE1, keytipIdE2], keytipSequenceA);
+      let nodeE1 = createTreeNode(keytipIdE1, keytipIdA, [], keytipSequenceE1);
+      let nodeE2 = createTreeNode(keytipIdE2, keytipIdA, [], keytipSequenceE2);
+      nodeE2.disabled = true;
+
+      keytipTree.nodeMap[keytipIdA] = nodeA;
+      keytipTree.nodeMap[keytipIdE1] = nodeE1;
+      keytipTree.nodeMap[keytipIdE2] = nodeE2;
+
+      // nodes array should equal 1, for node e2 is disabled.
+      let matchedNodes = keytipTree.getPartiallyMatchedNodes({ keys: ['e'] }, nodeA);
+      expect(matchedNodes.length).toEqual(1);
+    });
   });
 });
 

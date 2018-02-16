@@ -190,7 +190,8 @@ export class KeytipTree {
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     let possibleNodes = this._getChildrenNodes(currentKeytip.children);
     for (let node of possibleNodes) {
-      if (keySequencesAreEqual(node.keytipSequence, keySequence)) {
+      // A node is matched if its sequence is the same and it is not disabled
+      if (keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled) {
         return node;
       }
     }
@@ -201,7 +202,8 @@ export class KeytipTree {
     let nodes: IKeytipTreeNode[] = [];
     let possibleNodes = this._getChildrenNodes(currentKeytip.children);
     for (let node of possibleNodes) {
-      if (keySequenceStartsWith(node.keytipSequence, keySequence)) {
+      // A node is matched if its sequence is a subset and it is not disabled
+      if (keySequenceStartsWith(node.keytipSequence, keySequence) && !node.disabled) {
         nodes.push(node);
       }
     }
