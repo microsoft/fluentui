@@ -16,6 +16,7 @@ import {
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
+import { FocusZone } from '../../FocusZone';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -168,28 +169,32 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
         >
-          <input
-            value={ value }
-            id={ this._inputId }
-            onChange={ this._onChange }
-            onInput={ this._onInputChange }
+          <FocusZone
             className={ classNames.input }
-            type='text'
-            role='spinbutton'
-            aria-labelledby={ label && this._labelId }
-            aria-valuenow={ value }
-            aria-valuemin={ min && String(min) }
-            aria-valuemax={ max && String(max) }
-            onBlur={ this._onBlur }
-            ref={ this._resolveRef('_input') }
-            onFocus={ this._onFocus }
-            onKeyDown={ this._handleKeyDown }
-            onKeyUp={ this._handleKeyUp }
-            readOnly={ disabled }
-            disabled={ disabled }
-            aria-disabled={ disabled }
-            data-lpignore={ true }
-          />
+          >
+            <input
+              value={ value }
+              id={ this._inputId }
+              onChange={ this._onChange }
+              onInput={ this._onInputChange }
+              className={ classNames.input }
+              type='text'
+              role='spinbutton'
+              aria-labelledby={ label && this._labelId }
+              aria-valuenow={ value }
+              aria-valuemin={ min && String(min) }
+              aria-valuemax={ max && String(max) }
+              onBlur={ this._onBlur }
+              ref={ this._resolveRef('_input') }
+              onFocus={ this._onFocus }
+              onKeyDown={ this._handleKeyDown }
+              onKeyUp={ this._handleKeyUp }
+              readOnly={ disabled }
+              disabled={ disabled }
+              aria-disabled={ disabled }
+              data-lpignore={ true }
+            />
+          </FocusZone>
           <span className={ classNames.arrowBox }>
             <IconButton
               styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
