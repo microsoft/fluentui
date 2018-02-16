@@ -1,5 +1,3 @@
-import { getStrongVariant } from '@uifabric/variants';
-
 import * as React from 'react';
 import './ThemeGeneratorPage.scss';
 import {
@@ -444,6 +442,12 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     const themeAsJson = ThemeGenerator.getThemeAsJson(abridgedTheme);
 
+    // todo: need to start outputting the real ITheme object:
+    /* createTheme({
+      palette: ThemeGenerator.getThemeAsJson(abridgedTheme),
+      semanticColors: ThemeGenerator.getThemeAsJson(abridgedTheme)
+    }) */
+
     return (
       <div>
         <h2>Output</h2>
@@ -453,13 +457,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             <textarea
               readOnly={ true }
               spellCheck={ false }
-              value={ JSON.stringify(
-                getStrongVariant(
-                  createTheme({
-                    palette: ThemeGenerator.getThemeAsJson(abridgedTheme),
-                    semanticColors: ThemeGenerator.getThemeAsJson(abridgedTheme)
-                  }))
-                , void 0, 2) }
+              value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
             />
           </div>
           <div>
@@ -488,7 +486,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
 
     const finalTheme = loadTheme({
-      ...getStrongVariant({ palette: themeAsJson }),
+      ...{ palette: themeAsJson },
       isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
     });
 
