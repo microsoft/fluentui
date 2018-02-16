@@ -3,7 +3,7 @@ import {
   keySequencesAreEqual,
   keySequenceStartsWith,
   convertSequencesToKeytipID
-} from '../../utilities/keysequence';
+} from '../../utilities/keysequence/IKeySequence';
 import { IKeytipProps } from 'src/Keytip';
 
 export interface IKeytipTreeNode {
@@ -20,12 +20,12 @@ export interface IKeytipTreeNode {
   /**
    * Control's execute function for when keytip is invoked, passed from the component to the Manager in the IKeytipProps
    */
-  onExecute?: () => void;
+  onExecute?: (el: HTMLElement) => void;
 
   /**
    * Function to execute when we return to this keytip
    */
-  onReturn?: () => void;
+  onReturn?: (el: HTMLElement) => void;
 
   /**
    * List of keytips that should become visible when this keytip is pressed, can be empty
@@ -220,8 +220,15 @@ export class KeytipTree {
     return parent;
   }
 
-  private _createNode(id: string, sequence: IKeySequence, parentId: string, children: string[],
-    hasChildrenNodes?: boolean, onExecute?: () => void, onReturn?: () => void, disabled?: boolean): IKeytipTreeNode {
+  private _createNode(
+    id: string,
+    sequence: IKeySequence,
+    parentId: string,
+    children: string[],
+    hasChildrenNodes?: boolean,
+    onExecute?: (el: HTMLElement) => void,
+    onReturn?: (el: HTMLElement) => void,
+    disabled?: boolean): IKeytipTreeNode {
     return {
       id,
       keytipSequence: sequence,

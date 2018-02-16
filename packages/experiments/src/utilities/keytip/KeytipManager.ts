@@ -4,9 +4,12 @@ import { IKeytipProps } from '../../Keytip';
 import {
   IKeySequence,
   convertSequencesToKeytipID,
+} from '../../utilities/keysequence/IKeySequence';
+import {
   transitionKeysContain,
   IKeytipTransitionKey
-} from '../../utilities/keysequence';
+} from '../../utilities/keysequence/IKeytipTransitionKey';
+import { constructKeytipTargetFromId } from '../../utilities/keytip/KeytipUtils';
 
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
@@ -148,7 +151,8 @@ export class KeytipManager {
         } else {
           // If this keytip has a onReturn prop, we execute the func.
           if (this.keytipTree.currentKeytip.onReturn) {
-            this.keytipTree.currentKeytip.onReturn();
+            let domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
+            this.keytipTree.currentKeytip.onReturn(domEl);
           }
 
           // Clean currentSequence array
@@ -198,7 +202,8 @@ export class KeytipManager {
         // if this is a persisted keytip, then we use its keytipLink
         this.keytipTree.currentKeytip = node.keytipLink ? node.keytipLink : node;
         if (this.keytipTree.currentKeytip.onExecute) {
-          this.keytipTree.currentKeytip.onExecute();
+          let domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
+          this.keytipTree.currentKeytip.onExecute(domEl);
         }
 
         // To exit keytipMode after executing keytip we should check if currentKeytip has no children and
@@ -240,5 +245,10 @@ export class KeytipManager {
       return this.keytipTree.currentKeytip.id === parentID;
     }
     return false;
+  }
+
+  private _getKeytipDOMElement(keytipId: string): HTMLElement {
+    let dataKeytipId = constructKeytipTargetFromId(keytipId);
+    return document.querySelector(dataKeytipId) as HTMLElement;
   }
 }
