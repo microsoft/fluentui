@@ -12,7 +12,7 @@ export const getStyles = (
     className,
     theme,
     isNone,
-    isDarkThemed,
+    isDark,
   } = props;
 
   const { palette, semanticColors } = theme;
@@ -39,7 +39,7 @@ export const getStyles = (
         visibility: 'hidden',
       },
 
-      isDarkThemed && [
+      isDark && [
         'ms-Overlay--dark',
         {
           backgroundColor: palette.blackTranslucent40,

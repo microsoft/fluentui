@@ -29,7 +29,7 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
 
   public render() {
     const {
-      isDarkThemed,
+      isDarkThemed: isDark,
       className,
       theme,
       getStyles
@@ -40,7 +40,7 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
       className,
-      isDarkThemed,
+      isDark,
     });
 
     return (

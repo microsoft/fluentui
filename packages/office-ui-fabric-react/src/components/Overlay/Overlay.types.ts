@@ -57,7 +57,7 @@ export interface IOverlayStyleProps {
   /**
    * Is overlay dark themed
    */
-  isDarkThemed?: boolean;
+  isDark?: boolean;
 }
 
 export interface IOverlayStyles {
