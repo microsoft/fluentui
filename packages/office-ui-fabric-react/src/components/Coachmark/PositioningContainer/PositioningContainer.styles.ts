@@ -1,6 +1,6 @@
-import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets } from '../../Styling';
-import { IStyle } from '../../Styling';
+import { memoizeFunction } from '../../../Utilities';
+import { mergeStyleSets } from '../../../Styling';
+import { IStyle } from '../../../Styling';
 
 export interface IPositioningContainerStyles {
   /**

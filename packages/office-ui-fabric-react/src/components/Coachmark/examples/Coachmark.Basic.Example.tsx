@@ -3,13 +3,34 @@ import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { IStyle, DefaultPalette } from '../../../Styling';
+import {
+  BaseComponent,
+  assign,
+  autobind,
+  classNamesFunction
+} from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICoachmarkBasicExampleState {
   isVisible?: boolean;
   isCoachmarkCollapsed?: boolean;
+  targetElement?: HTMLElement;
 }
 
-export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
+export interface ICoachmarkBasicExampleStyles {
+  /**
+   * Style for the root element in the default enabled/unchecked state.
+   */
+  root?: IStyle;
+
+  /**
+   * The example button container
+   */
+  buttonContainer: IStyle;
+}
+
+export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
+  private _targetButton: HTMLElement;
 
   public constructor(props: {}) {
     super(props);
@@ -30,18 +51,30 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
       doNotLayer: true
     };
 
+    const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
+    const classNames = getClassNames(() => {
+      return {
+        root: {},
+        buttonContainer: {
+          display: 'inline-block'
+        }
+      };
+    });
+
     return (
-      <div className='ms-CoachmarkBasicExample'>
-        <div className='ms-CoachmarkBasicExample-buttonArea'>
+      <div className={ classNames.root }>
+        <div
+          className={ classNames.buttonContainer }
+          ref={ this._resolveRef('_targetButton') }
+        >
           <DefaultButton
             onClick={ this._onShowMenuClicked }
-            text={ isVisible ? 'Hide coachmark' : 'Show coachmark' }
-            className={ 'ms-Coachmark-basicExampleButton' }
+            text={ isVisible ? 'Hide Coachmark' : 'Show Coachmark' }
           />
         </div>
         { isVisible && (
           <Coachmark
-            target={ '.ms-Coachmark-basicExampleButton' }
+            target={ this._targetButton }
           >
             <TeachingBubbleContent
               headline='Example Title'

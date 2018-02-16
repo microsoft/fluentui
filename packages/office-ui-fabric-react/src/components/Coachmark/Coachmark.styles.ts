@@ -1,7 +1,5 @@
 import { IStyle, IRawStyle, keyframes } from '../../Styling';
 
-export const themePrimary = '#0078d7';
-
 export interface ICoachmarkStyleProps {
   /**
    * Is the Coachmark collapsed
@@ -28,6 +26,31 @@ export interface ICoachmarkStyleProps {
    * The width measured in pixels
    */
   entityHostWidth?: string;
+
+  /**
+   * Width of the coachmark
+   */
+  width?: string;
+
+  /**
+   * Height of the coachmark
+   */
+  height?: string;
+
+  /**
+   * Color
+   */
+  color?: string;
+
+  /**
+   * Beacon color one
+   */
+  beaconColorOne?: string;
+
+  /**
+   * Beacon color two
+   */
+  beaconColorTwo?: string;
 }
 
 export interface ICoachmarkStyles {
@@ -75,11 +98,7 @@ export interface ICoachmarkStyles {
   collapsed?: IStyle;
 }
 
-export const coachmarkCollapsedSize = '36px';
-export const beaconColorOne = '#00FFEC';
-export const beaconColorTwo = '#005EDD';
-
-function continuousPulseStepOne(): IRawStyle {
+function continuousPulseStepOne(beaconColorOne: string): IRawStyle {
   return {
     borderColor: beaconColorOne,
     borderWidth: '0px',
@@ -101,7 +120,7 @@ function continuousPulseStepThree(): IRawStyle {
   };
 }
 
-function continuousPulseStepFour(): IRawStyle {
+function continuousPulseStepFour(beaconColorTwo: string): IRawStyle {
   return {
     borderWidth: '0',
     width: '150px',
@@ -111,31 +130,11 @@ function continuousPulseStepFour(): IRawStyle {
   };
 }
 
-function continuousPulseStepFive(): IRawStyle {
-  return Object.assign(continuousPulseStepOne(), {
+function continuousPulseStepFive(beaconColorOne: string): IRawStyle {
+  return Object.assign(continuousPulseStepOne(beaconColorOne), {
     opacity: '0'
   });
 }
-
-export const ContinuousPulse: string = keyframes({
-  '0%': continuousPulseStepOne(),
-  '1.42%': continuousPulseStepTwo(),
-  '3.57%': continuousPulseStepThree(),
-  '7.14%': continuousPulseStepFour(),
-  '8%': continuousPulseStepFive(),
-  '29.99%': continuousPulseStepFive(),
-  '30%': continuousPulseStepOne(),
-  '31.42%': continuousPulseStepTwo(),
-  '33.57%': continuousPulseStepThree(),
-  '37.14%': continuousPulseStepFour(),
-  '38%': continuousPulseStepFive(),
-  '79.42%': continuousPulseStepFive(),
-  '79.43': continuousPulseStepOne(),
-  '81.85': continuousPulseStepTwo(),
-  '83.42': continuousPulseStepThree(),
-  '87%': continuousPulseStepFour(),
-  '100%': {}
-});
 
 export const translateOne: string = keyframes({
   '0%': {
@@ -252,6 +251,26 @@ export const rotateOne: string = keyframes({
 });
 
 export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
+  const ContinuousPulse: string = keyframes({
+    '0%': continuousPulseStepOne(props.beaconColorOne!),
+    '1.42%': continuousPulseStepTwo(),
+    '3.57%': continuousPulseStepThree(),
+    '7.14%': continuousPulseStepFour(props.beaconColorTwo!),
+    '8%': continuousPulseStepFive(props.beaconColorOne!),
+    '29.99%': continuousPulseStepFive(props.beaconColorOne!),
+    '30%': continuousPulseStepOne(props.beaconColorOne!),
+    '31.42%': continuousPulseStepTwo(),
+    '33.57%': continuousPulseStepThree(),
+    '37.14%': continuousPulseStepFour(props.beaconColorTwo!),
+    '38%': continuousPulseStepFive(props.beaconColorOne!),
+    '79.42%': continuousPulseStepFive(props.beaconColorOne!),
+    '79.43': continuousPulseStepOne(props.beaconColorOne!),
+    '81.85': continuousPulseStepTwo(),
+    '83.42': continuousPulseStepThree(),
+    '87%': continuousPulseStepFour(props.beaconColorTwo!),
+    '100%': {}
+  });
+
   return {
     root: [
       {
@@ -319,7 +338,8 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     rotateAnimationLayer: [
       {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        opacity: '0.8'
       },
       props.collapsed && {
         animationDuration: '14s',
@@ -329,6 +349,9 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         animationDelay: '0s',
         animationFillMode: 'forwards',
         animationName: rotateOne
+      },
+      !props.collapsed && {
+        opacity: '1'
       }
     ],
     // Layer Host, defaults to collapsed
@@ -337,15 +360,14 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         position: 'relative',
         outline: 'none',
         overflow: 'hidden',
-        backgroundColor: themePrimary,
-        borderRadius: coachmarkCollapsedSize,
-        opacity: '0.8',
+        backgroundColor: props.color,
+        borderRadius: props.width,
         transition: 'border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1)',
         visibility: 'hidden'
       },
-      (!props.isMeasuring) && {
-        width: coachmarkCollapsedSize,
-        height: coachmarkCollapsedSize,
+      !props.isMeasuring && {
+        width: props.width,
+        height: props.height,
         visibility: 'visible'
       },
       !props.collapsed && {
@@ -362,10 +384,12 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         transform: 'scale(0)'
       },
       (!props.collapsed) && {
+        width: props.entityHostWidth,
+        height: props.entityHostHeight,
         transform: 'scale(1)'
       },
       (!props.isMeasuring) && {
-        visibility: 'visible'
+        visibility: 'visible',
       }
     ]
   };
