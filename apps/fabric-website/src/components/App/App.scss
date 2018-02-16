@@ -14,8 +14,6 @@
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
     overflow-y: auto;
-    position: fixed;
-    top: $Header-height;
     width: $Nav-width;
     @include ms-float(left);
     z-index: 999; // This z-index needs to be high to prevent jittery scrolling in Edge.

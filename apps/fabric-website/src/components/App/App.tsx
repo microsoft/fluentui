@@ -43,12 +43,12 @@ export class App extends React.Component<IAppProps, any> {
 
   public render() {
     let { navHeight } = this.state;
-    let appContentTop = this._appContentRect ? this._appContentRect.top : 100;
-    // Using appContentTop as a reference to match instead of 'unset' because it does not work in IE.
-    let navTop: string = this.state.isAttached ? '0' : appContentTop.toString();
+    let navTop: string = this.state.isAttached ? '0' : '100';
+    let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute';
     let navStyle = {
       top: navTop,
-      height: navHeight
+      height: navHeight,
+      position: navPosition
     };
 
     return (
