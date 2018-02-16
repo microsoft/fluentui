@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { convertSequencesToKeytipID, IKeytipTransitionKey } from '../../../utilities/keysequence';
+import { convertSequencesToKeytipID } from '../../../utilities/keysequence/IKeySequence';
+import { IKeytipTransitionKey } from '../../../utilities/keysequence/IKeytipTransitionKey';
+import { registerKeytip, addKeytipSequence } from '../../../utilities/keytip/KeytipUtils';
+import { ModifierKeyCodes } from '../../../utilities/keytip/ModifierKeyCodes';
 import { KeytipLayer } from '../KeytipLayer';
-import { registerKeytip } from '../../../utilities/keytip/KeytipUtils';
 import { IKeytipProps } from '../../Keytip';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { addKeytipSequence } from '../../../utilities/keytip';
-import { ModifierKeyCodes } from '../../../utilities/keytip/ModifierKeyCodes';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
@@ -47,31 +47,49 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     this.keytipMap.Button1Pivot1Keytip = {
       content: '1B',
       keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'b'] }),
+      onExecute: (el: HTMLElement) => {
+        el.click();
+      }
     } as IKeytipProps;
 
     this.keytipMap.Button2Pivot1Keytip = {
       content: '1A',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'a'] })
+      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'a'] }),
+      onExecute: (el: HTMLElement) => {
+        el.click();
+      }
     } as IKeytipProps;
 
     this.keytipMap.Button3Pivot1Keytip = {
       content: 'M',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['m'] })
+      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['m'] }),
+      onExecute: (el: HTMLElement) => {
+        el.click();
+      }
     } as IKeytipProps;
 
     this.keytipMap.CommandButton1Pivot2Keytip = {
       content: '2',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['2'] })
+      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['2'] }),
+      onExecute: (el: HTMLElement) => {
+        el.click();
+      }
     } as IKeytipProps;
 
     this.keytipMap.CommandButton2Pivot2Keytip = {
       content: 'Y',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['y'] })
+      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['y'] }),
+      onExecute: (el: HTMLElement) => {
+        el.click();
+      }
     } as IKeytipProps;
 
     this.keytipMap.CommandButton3Pivot2Keytip = {
       content: 'LK',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['l', 'k'] })
+      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['l', 'k'] }),
+      onExecute: (el: HTMLElement) => {
+        el.click();
+      }
     } as IKeytipProps;
   }
 

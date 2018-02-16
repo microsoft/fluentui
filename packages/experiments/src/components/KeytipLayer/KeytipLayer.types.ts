@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IKeytipTransitionKey } from '../../utilities/keysequence';
+import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { KeytipLayer } from './KeytipLayer';
 
 export interface IKeytipLayerProps extends React.Props<KeytipLayer> {

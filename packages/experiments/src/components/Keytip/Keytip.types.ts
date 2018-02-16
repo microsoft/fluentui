@@ -1,7 +1,7 @@
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction, IPoint } from '../../Utilities';
-import { IKeySequence } from '../../utilities/keysequence';
+import { IKeySequence } from '../../utilities/keysequence/IKeySequence';
 
 export interface IKeytip {
 
@@ -19,7 +19,7 @@ export interface IKeytipProps {
    *
    * @type {string}
    */
-  content?: string;
+  content: string;
 
   /**
    * Theme for the component
@@ -44,17 +44,19 @@ export interface IKeytipProps {
 
   /**
    * Function to call when this keytip is activated
+   * 'el' is the DOM element that the keytip is attached to
    *
-   * @type {() => void}
+   * @type {(HTMLElement) => void}
    */
-  onExecute?: () => void;
+  onExecute?: (el: HTMLElement) => void;
 
   /**
    * Function to call when the keytip is returned to
+   * 'el' is the DOM element that the keytip is attached to
    *
-   * @type {() => void}
+   * @type {(HTMLElement) => void}
    */
-  onReturn?: () => void;
+  onReturn?: (el: HTMLElement) => void;
 
   /**
    * Array of KeySequences which is the full key sequence to trigger this keytip

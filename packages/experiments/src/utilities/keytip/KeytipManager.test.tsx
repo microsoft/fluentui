@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { KeytipManager } from './KeytipManager';
-import { IKeySequence, IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { IKeySequence, convertSequencesToKeytipID } from '../../utilities/keysequence/IKeySequence';
+import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from '../../KeytipLayer';
 import { IKeytipProps } from '../../Keytip';

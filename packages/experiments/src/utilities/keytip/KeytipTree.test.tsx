@@ -5,7 +5,8 @@ import { IKeytipProps } from '../../Keytip';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipManager } from './KeytipManager';
-import { IKeySequence, IKeytipTransitionKey } from '../../utilities/keysequence';
+import { IKeySequence } from '../../utilities/keysequence/IKeySequence';
+import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
 import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
@@ -236,7 +237,7 @@ describe('KeytipTree', () => {
 
       const keytipIdO = ktpFullPrefix + 'o';
       const overflowSequence: IKeySequence = { keys: ['o'] };
-      keytipTree.addNode({ keySequences: [overflowSequence] });
+      keytipTree.addNode({ keySequences: [overflowSequence], content: '' });
 
       const keytipPersistedIdD = ktpFullPrefix + 'd';
       const keytipOverflowIdD = ktpFullPrefix + 'o' + ktpSeparator + 'd';
@@ -408,7 +409,7 @@ describe('KeytipTree', () => {
 
       const keytipIdO = ktpFullPrefix + 'o';
       const overflowSequence: IKeySequence = { keys: ['o'] };
-      keytipTree.addNode({ keySequences: [overflowSequence] });
+      keytipTree.addNode({ keySequences: [overflowSequence], content: '' });
 
       const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
       let keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
@@ -636,7 +637,9 @@ describe('KeytipTree', () => {
 function createKeytipProps(keySequences: IKeySequence[], overflowSequence?: IKeySequence): IKeytipProps {
   return {
     keySequences,
-    overflowSetSequence: overflowSequence
+    overflowSetSequence: overflowSequence,
+    // Just add empty content since it's required, but not needed for tests
+    content: ''
   };
 }
 

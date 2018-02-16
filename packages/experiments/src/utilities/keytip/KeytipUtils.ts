@@ -1,4 +1,4 @@
-import { IKeySequence } from '../keysequence';
+import { IKeySequence, convertSequencesToKeytipID } from '../keysequence/IKeySequence';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
 
@@ -6,6 +6,7 @@ import { KeytipManager } from './KeytipManager';
 export const ktpPrefix = 'ktp';
 export const ktpSeparator = '-';
 export const ktpFullPrefix = ktpPrefix + ktpSeparator;
+export const dataKtpId = 'data-ktp-id';
 
 /**
  * Adds seq1 to the list of sequences
@@ -36,4 +37,12 @@ export function registerKeytip(keytipProps: IKeytipProps): any {
 export function unregisterKeytip(keytipProps: IKeytipProps): void {
   let ktpMgr = KeytipManager.getInstance();
   ktpMgr.unregisterKeytip(keytipProps);
+}
+
+export function constructKeytipTargetFromSequences(keySequences: IKeySequence[]): string {
+  return '[' + dataKtpId + '="' + convertSequencesToKeytipID(keySequences) + '"]';
+}
+
+export function constructKeytipTargetFromId(keytipId: string): string {
+  return '[' + dataKtpId + '="' + keytipId + '"]';
 }

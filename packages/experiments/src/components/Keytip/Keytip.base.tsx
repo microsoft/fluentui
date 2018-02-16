@@ -9,7 +9,8 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { getCalloutStyles } from './Keytip.styles';
 import { classNamesFunction } from '../../Utilities';
-import { IKeySequence, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { convertSequencesToKeytipID } from '../../utilities/keysequence/IKeySequence';
+import { constructKeytipTargetFromSequences } from '../../utilities/keytip/KeytipUtils';
 
 const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
 
@@ -63,7 +64,7 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
         isBeakVisible={ false }
         doNotLayer={ true }
         directionalHint={ DirectionalHint.bottomCenter }
-        target={ this._constructKeytipTarget(keySequences) }
+        target={ constructKeytipTargetFromSequences(keySequences) }
         getStyles={ getCalloutStyles }
         preventDismissOnScroll={ true }
         // onDismiss={ this._onKeytipDismiss }
@@ -76,13 +77,6 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
     );
   }
 
-  /**
-   *
-   * @param keySequences
-   */
-  private _constructKeytipTarget(keySequences: IKeySequence[]): string {
-    return '[data-ktp-id="' + convertSequencesToKeytipID(keySequences) + '"]';
-  }
   // COMMENTING OUT THINGS FOR DISCUSSION
   // @autobind
   // private _onKeytipDismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {

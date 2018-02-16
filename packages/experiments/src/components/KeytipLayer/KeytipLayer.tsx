@@ -7,7 +7,8 @@ import {
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { KeyCodes } from '../../Utilities';
-import { IKeytipTransitionKey, convertSequencesToKeytipID, fullKeySequencesAreEqual } from '../../utilities/keysequence';
+import { convertSequencesToKeytipID, fullKeySequencesAreEqual } from '../../utilities/keysequence/IKeySequence';
+import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { KeytipManager } from '../../utilities/keytip/KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
 import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IKeySequence } from '../../../utilities/keysequence';
+import { IKeySequence } from '../../../utilities/keysequence/IKeySequence';
 import { Keytip } from '../Keytip';
 
 export interface IKeytipBasicExampleState {
