@@ -4,9 +4,22 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHi
 import {
   IPoint,
   IRectangle
-} from '../../Utilities';
+} from '../../../Utilities';
+import {
+  getRelativePositions,
+  IPositionProps,
+  getMaxHeight,
+  ICalloutPositon
+} from 'office-ui-fabric-react/lib/utilities/positioning';
 
 export interface IPositioningContainer {
+}
+
+export interface IPositionInfo {
+  calloutPosition: ICalloutPositon;
+  beakPosition: { position: ICalloutPositon, display: string };
+  directionalClassName: string;
+  submenuDirection: DirectionalHint;
 }
 
 export interface IPositioningContainerTypes extends React.Props<PositioningContainer> {

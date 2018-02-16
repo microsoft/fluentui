@@ -18,36 +18,42 @@ import {
   focusFirstChild,
   getWindow,
   getDocument
-} from '../../Utilities';
+} from '../../../Utilities';
 
 import {
   getRelativePositions,
   IPositionProps,
   getMaxHeight,
-  ICalloutPositon
+  ICalloutPositon,
+  positionElement,
+  IPositionedData,
+  RectangleEdge
 } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import {
+  IPositionInfo
+} from './PositioningContainer.types';
 
-export interface IPositionInfo {
-  calloutPosition: ICalloutPositon;
-  beakPosition: { position: ICalloutPositon, display: string };
-  directionalClassName: string;
-  submenuDirection: DirectionalHint;
-}
+import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
 // In order for some of the max height logic to work
-// properly we need to set the border needs to be set.
+// properly we need to set the border.
 // The value is abitrary.
 const BORDER_WIDTH = 1;
+const SLIDE_ANIMATIONS: { [key: number]: string; } = {
+  [RectangleEdge.top]: 'slideUpIn20',
+  [RectangleEdge.bottom]: 'slideDownIn20',
+  [RectangleEdge.left]: 'slideLeftIn20',
+  [RectangleEdge.right]: 'slideRightIn20'
+};
 
 export interface IPositioningContainerState {
   /**
    * Current set of calcualted positions for the outermost parent container.
    */
-  positions?: IPositionInfo;
+  positions?: IPositionedData;
 
   /**
    * Tracks the current height offset and updates during
@@ -153,12 +159,10 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     let { positions } = this.state;
 
     const styles = getClassNames();
-    let directionalClassName = '';
 
-    if (positions && positions.directionalClassName) {
-      // tslint:disable-next-line:no-any
-      directionalClassName = (AnimationClassNames as any)[positions.directionalClassName];
-    }
+    let directionalClassName = (positions && positions.targetEdge)
+      ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]]
+      : '';
 
     let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let contentMaxHeight: number = positioningContainerMaxHeight!
@@ -178,13 +182,13 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
               !!positioningContainerWidth && { width: positioningContainerWidth }
             ) }
           // tslint:disable-next-line:jsx-ban-props
-          style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
+          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_contentHost') }
         >
           { children }
-          { // @TODO apply  to the content container
+          { // @TODO apply to the content container
             contentMaxHeight
           }
         </div>
@@ -262,7 +266,12 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   private _updatePosition(): void {
-    let { positions } = this.state;
+    const { positions } = this.state;
+    const {
+      offsetFromTarget,
+      onPositioned
+    } = this.props;
+
     let hostElement: HTMLElement = this._positionedHost;
     let positioningContainerElement: HTMLElement = this._contentHost;
 
@@ -271,7 +280,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      let newPositions: IPositionInfo = getRelativePositions(currentProps!, hostElement, positioningContainerElement);
+      currentProps!.gapSpace = offsetFromTarget;
+      let newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -286,8 +296,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
         });
       } else {
         this._positionAttempts = 0;
-        if (this.props.onPositioned) {
-          this.props.onPositioned();
+        if (onPositioned) {
+          onPositioned();
         }
       }
     }
@@ -317,11 +327,16 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
    * without going out of the specified bounds
    */
   private _getMaxHeight(): number {
-    // If the max height is undefined.
+    const {
+      directionalHintFixed,
+      offsetFromTarget,
+      directionalHint
+    } = this.props;
+
     if (!this._maxHeight) {
-      // if the directional hint is fixed and our target Exists
-      if (this.props.directionalHintFixed && this._target) {
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, this.props.offsetFromTarget, this._getBounds());
+      if (directionalHintFixed && this._target) {
+        let gapSpace = offsetFromTarget ? offsetFromTarget : 0;
+        this._maxHeight = getMaxHeight(this._target, directionalHint!, gapSpace, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
       }
@@ -329,8 +344,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     return this._maxHeight!;
   }
 
-  private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo): boolean {
-    return this._comparePositions(positions.calloutPosition, newPosition.calloutPosition);
+  private _arePositionsEqual(positions: IPositionedData, newPosition: IPositionedData): boolean {
+    return this._comparePositions(positions.elementPosition, newPosition.elementPosition);
   }
 
   private _comparePositions(oldPositions: ICalloutPositon, newPositions: ICalloutPositon): boolean {
