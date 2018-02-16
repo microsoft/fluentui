@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
+import { Icon } from './Icon';
 
 // Please keep alphabetized
 export enum IconType {
@@ -65,4 +66,9 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @memberOf IIconProps
    */
   imageProps?: IImageProps;
+
+  /**
+   * If rendering an image icon, this function callback will be invoked in the event loading the image errors.
+   */
+  errorAs?: (image: IImageProps) => any;
 }
