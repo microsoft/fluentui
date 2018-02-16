@@ -1,4 +1,4 @@
-@import '../Link.scss';
+@import '../../../common/common';
 
 // UHF overrides link color and state so we need to re-assign them for the website documentation
 :global {
@@ -6,17 +6,31 @@
     .ms-Link {
       // Element: ms-Link root component
       .root {
-        @include root;
+        color: $ms-color-themePrimary;
+        margin: 0;
+        overflow: inherit;
+        padding: 0;
+        text-overflow: inherit;
       }
 
       // State: The button is not disabled.
       .isEnabled {
-        @include isEnabled;
+        &:active,
+        &:hover,
+        &:active:hover {
+          color: $ms-color-themeDarker;
+        }
+
+        &:focus {
+          color: $ms-color-themePrimary;
+        }
       }
 
       // State: The button is disabled.
       .isDisabled {
-        @include isDisabled;
+        color: $ms-color-neutralTertiary;
+        pointer-events: none;
+        cursor: default;
       }
     }
   }

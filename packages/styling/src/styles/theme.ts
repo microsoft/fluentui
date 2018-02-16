@@ -170,6 +170,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
 
+    link: p.themePrimary,
+    linkHovered: p.themeDarker,
+
     // Deprecated slots, fixed by _fixDeprecatedSlots()
     listTextColor: ''
   };
