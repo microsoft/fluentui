@@ -61,9 +61,13 @@ export const getStyles = (
         'is-enabled',
         !isChecked && {
           selectors: {
-            '&:hover .ms-Checkbox-checkbox, &:focus .ms-Checkbox-checkbox': {
+            '&:hover .ms-Checkbox-checkbox, &:focus .ms-Checkbox-checkbox, &:hover .ms-Checkbox-text, &:focus .ms-Checkbox-text': {
               borderColor: checkboxBorderHoveredColor
             },
+            '&:hover .ms-Checkbox-checkmark, &:focus .ms-Checkbox-checkmark': {
+              color: checkboxBorderColor,
+              opacity: '0.5'
+            }
           }
         }
       ],
@@ -113,12 +117,6 @@ export const getStyles = (
 
         // incase the icon is bigger than the box
         overflow: 'hidden',
-
-        selectors: {
-          '&:hover, &:focus': {
-            borderColor: checkboxBorderHoveredColor
-          }
-        }
       },
       !disabled && isChecked && {
         background: checkboxBackgroundChecked,
@@ -163,18 +161,11 @@ export const getStyles = (
         color: checkboxTextColor,
         margin: '0 4px',
         fontSize: FontSizes.medium,
-
-        selectors: {
-          '&:hover, &:focus': {
-            color: palette.black
-          }
-        }
       },
       disabled && {
         color: checkboxTextColorDisabled,
-        // ms-fontColor-neutralTertiary
       }
-    ],
+    ]
   };
 
   return concatStyleSets(styles, customStyles)!;
