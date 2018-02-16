@@ -8,8 +8,13 @@ import {
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker';
 import 'office-ui-fabric-react/lib/components/Pickers/PeoplePicker/examples/PeoplePicker.Types.Example.scss';
-import { IExtendedPersonaProps, SelectedPeopleList } from '../SelectedPeopleList/SelectedPeopleList';
+import { IExtendedPersonaProps, SelectedPeopleList, ISelectedPeopleItemProps } from '../SelectedPeopleList/SelectedPeopleList';
+import { ExtendedSelectedItem } from '../SelectedPeopleList/Items/ExtendedSelectedItem';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
+import * as styles from './SelectedPeopleList.Basic.Example.scss';
 
 export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
   private _selectionList: SelectedPeopleList;
@@ -41,6 +46,26 @@ export class PeopleSelectedItemsListExample extends BaseComponent<{}, {}> {
         copyMenuItemText={ 'Copy' }
         removeMenuItemText={ 'Remove' }
         selection={ this.selection }
+        onRenderItem={ this._onRenderItem }
+      />
+    );
+  }
+
+  @autobind
+  private _onRenderItem(props: ISelectedPeopleItemProps): JSX.Element {
+    return (
+      <ExtendedSelectedItem
+        {...props}
+        renderPersonaCoin={ this._renderPersonaElement }
+      />
+    );
+  }
+
+  private _renderPersonaElement(props: IPersonaProps, defaultRender: (props?: IPersonaProps) => JSX.Element | null): JSX.Element {
+    return (
+      <Icon
+        iconName={ 'Contact' }
+        className={ styles.persona }
       />
     );
   }

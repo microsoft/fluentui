@@ -25,6 +25,7 @@ import {
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
+import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
 import { getTheme } from '../../Styling';
 
 // Internal only props interface to support mixing in responsive mode
@@ -51,6 +52,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
   // tslint:disable-next-line:no-unused-variable
+  private _dropdownLabel: HTMLElement;
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -148,7 +150,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref={ this._resolveRef('_root') } className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } required={ required }>{ label }</Label>
+          <Label
+            className={ css('ms-Dropdown-label') }
+            id={ id + '-label' }
+            htmlFor={ id }
+            componentRef={ this._resolveRef('_dropdownLabel') }
+            required={ required }
+          >
+            { label }
+          </Label>
         ) }
         <div
           data-is-focusable={ !disabled }
@@ -409,7 +419,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         tabIndex={ 0 }
       >
         <FocusZone
-          ref={ this._resolveRef('_focusZone') }
+          componentRef={ this._resolveRef('_focusZone') }
           direction={ FocusZoneDirection.vertical }
           defaultActiveElement={ selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined }
           id={ id + '-list' }
@@ -470,6 +480,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndices = [] } = this.state;
     let id = this._id;
     let isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
+    let checkboxStyles = getCheckboxStyles(getTheme());
 
     return (
       !this.props.multiSelect ?
@@ -501,7 +512,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            // ref={ Dropdown.Option + item.index }
+            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -526,21 +537,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             checked={ isItemSelected }
             // Hover is being handled by focus styles
             // so clear out the explicit hover styles
-            // tslint:disable-next-line:jsx-no-lambda
-            getStyles={ (props) => {
-              return ({ root: { background: 'green' } });
+            styles={ {
+              checkboxHovered: checkboxStyles.checkbox,
+              checkboxCheckedHovered: checkboxStyles.checkboxChecked,
+              textHovered: checkboxStyles.text
             } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>
         )
     );
   }
-
-  // {
-  //   checkboxHovered: checkboxStyles.checkbox,
-  //   checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-  //   textHovered: checkboxStyles.text
-  // }
 
   // Render content of item (i.e. text/icon inside of button)
   @autobind
@@ -750,6 +756,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({
+            isOpen: false
+          });
+          ev.stopPropagation();
+          ev.preventDefault();
+        }
         return;
     }
 
@@ -817,6 +830,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
 
       default:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({
+            isOpen: false
+          });
+          break;
+        }
         return;
     }
 

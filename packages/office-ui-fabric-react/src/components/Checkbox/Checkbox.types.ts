@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../Styling';
-import { IRenderFunction, IBaseProps, IComponentAs, IStyleFunction } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
+import { ICheckboxClassNames } from './Checkbox.classNames';
 
 /**
  * Checkbox class interface.
@@ -17,12 +18,11 @@ export interface ICheckbox {
 /**
  * Checkbox properties.
  */
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, IBaseProps {
-
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
- * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
- * the public methods and properties of the component.
- */
+   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
   componentRef?: (component: ICheckbox) => void;
 
   /**
@@ -92,9 +92,19 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   ariaDescribedBy?: string;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
+   * Custom styles for this component
    */
-  getStyles?: IStyleFunction<ICheckboxStyleProps, ICheckboxStyles>;
+  styles?: ICheckboxStyles;
+
+  /**
+   * Custom function for providing the classNames for the checkbox. Can be used to provide
+   * all styles for the component instead of applying them on top of the default styles.
+   */
+  getClassNames?: (theme: ITheme,
+    disabled: boolean,
+    isChecked: boolean,
+    isReversed: boolean,
+    className?: string) => ICheckboxClassNames;
 
   /**
    * Custom render function for the label.
@@ -105,14 +115,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom icon props for the check mark rendered by the checkbox
    */
   checkmarkIconProps?: IIconProps;
-}
-
-export interface ICheckboxStyleProps {
-  theme: ITheme;
-  className?: string;
-  disabled: boolean | undefined;
-  checked: boolean | undefined;
-  reversed: boolean | undefined;
 }
 
 export interface ICheckboxStyles {
@@ -127,9 +129,54 @@ export interface ICheckboxStyles {
   label?: IStyle;
 
   /**
+   * Style for the label when reversed
+   */
+  labelReversed?: IStyle;
+
+  /**
+   * Style override for the label part when disabled.
+   */
+  labelDisabled?: IStyle;
+
+  /**
    * Style for checkbox in its default unchecked/enabled state.
    */
   checkbox?: IStyle;
+
+  /**
+   * Style override for checkbox when enabled/unchecked/hovered.
+   */
+  checkboxHovered?: IStyle;
+
+  /**
+   * Style override for checkbox when enabled/unchecked/focused.
+   */
+  checkboxFocused?: IStyle;
+
+  /**
+   * Style override for checkbox when enabled/checked.
+   */
+  checkboxChecked?: IStyle;
+
+  /**
+   * Style override for checkbox when enabled/checked/hovered.
+   */
+  checkboxCheckedHovered?: IStyle;
+
+  /**
+   * Style override for checkbox when enabled/checked/focused.
+   */
+  checkboxCheckedFocused?: IStyle;
+
+  /**
+   * Style override for checkbox when disabled/unchecked.
+   */
+  checkboxDisabled?: IStyle;
+
+  /**
+   * Style override for checkbox when disabled/checked.
+   */
+  checkboxCheckedDisabled?: IStyle;
 
   /**
    * Style for the checkmark in the default enabled/unchecked state.
@@ -137,7 +184,37 @@ export interface ICheckboxStyles {
   checkmark?: IStyle;
 
   /**
+   * Style override for the checkmark when enabled/checked.
+   */
+  checkmarkChecked?: IStyle;
+
+  /**
+   * Style override for checkmark when disabled/unchecked.
+   */
+  checkmarkDisabled?: IStyle;
+
+  /**
+ * Style override for checkmark when disabled/checked.
+ */
+  checkmarkCheckedDisabled?: IStyle;
+
+  /**
    * Style for text appearing with the checkbox in its default enabled state.
    */
   text?: IStyle;
+
+  /**
+   * Style override for text appearing with the checkbox when enabled/hovered.
+   */
+  textHovered?: IStyle;
+
+  /**
+   * Style override for text appearing with the checkbox when enabled/focused.
+   */
+  textFocused?: IStyle;
+
+  /**
+   * Style override for text appearing with the checkbox when disabled.
+   */
+  textDisabled?: IStyle;
 }

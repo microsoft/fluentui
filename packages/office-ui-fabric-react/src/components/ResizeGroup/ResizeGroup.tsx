@@ -4,9 +4,9 @@ import {
   BaseComponent,
   css,
   divProperties,
-  getNativeProps
+  getNativeProps,
+  provideContext
 } from '../../Utilities';
-import { provideContext } from '@uifabric/utilities/lib/Context';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as styles from './ResizeGroup.scss';
 
@@ -308,7 +308,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     const divProps = getNativeProps(this.props, divProperties, ['data']);
 
     return (
-      <RootType className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
+      <RootType {...divProps} className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>

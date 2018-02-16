@@ -30,7 +30,6 @@ $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-
 
 $ms-choiceField-field-size: 20px;
 $ms-choiceField-image-size: 32px;
-$ms-choiceField-text-height: 32px;
 $ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
@@ -199,22 +198,20 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   $radioButtonSpacing: 3px;
   $radioButtonInnerSize: 5px;
 
-  height: $ms-choiceField-iconField-size;
-  width: $ms-choiceField-iconField-size;
-
   .fieldIsImage, .fieldIsIcon {
 
     display: inline-block;
     box-sizing: border-box;
-    min-width: $ms-choiceField-iconField-size;
     cursor: pointer;
     padding-top: 22px;
     margin: 0;
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
     border: 2px solid transparent;
-    height: $ms-choiceField-iconField-size;
-    width: $ms-choiceField-iconField-size;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
     &.fieldIsDisabled {
       cursor: default;
@@ -229,11 +226,18 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       }
     }
 
+    &.imageIsLarge {
+      .innerField {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
     .innerField {
       position: relative;
-      padding: 0 28px;
-      height: $ms-choiceField-image-size;
-      width: $ms-choiceField-image-size;
+      display: inline-block;
+      padding-left: 30px;
+      padding-right: 30px;
 
       .imageWrapper {
         padding-bottom: 2px;
@@ -260,8 +264,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       $lineHeight: 15px;
       display: block;
       position: relative;
-      margin: 4px 0 2px 0;
-      height: $ms-choiceField-text-height;
+      margin: 4px 8px;
+      height: $lineHeight*2;
       line-height: $lineHeight;
       overflow: hidden;
       white-space: pre-wrap;

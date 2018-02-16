@@ -108,7 +108,7 @@ export interface ISwatchColorPickerProps {
  */
 export interface ISwatchColorPickerStyleProps {
   /**
-   * Theme.
+   * Theme to apply to the container
    */
   theme: ITheme;
 

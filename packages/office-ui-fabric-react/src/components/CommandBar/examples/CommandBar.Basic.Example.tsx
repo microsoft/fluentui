@@ -8,8 +8,7 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
     super(props);
     this.state = {
       areNamesVisible: true,
-      areIconsVisible: true,
-      areItemsEnabled: true
+      areIconsVisible: true
     };
   }
 

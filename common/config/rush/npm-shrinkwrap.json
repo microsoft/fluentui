@@ -88,7 +88,7 @@
     },
     "@rush-temp/build": {
       "version": "file:projects/build.tgz",
-      "integrity": "sha1-1ASRKgr3F1EdMzbqG7n3re/4/9g=",
+      "integrity": "sha1-nO9aCXQxnksDO7RVnbV2Ft8DoOk=",
       "requires": {
         "@microsoft/api-extractor": "4.3.7",
         "@microsoft/load-themed-styles": "1.7.29",
@@ -130,7 +130,7 @@
     },
     "@rush-temp/example-app-base": {
       "version": "file:projects/example-app-base.tgz",
-      "integrity": "sha1-B8I6L8DN7Hwa5m/LG+daZ03w3Uo=",
+      "integrity": "sha1-RFrHTeyhEC2ACr0fRuuUXFvTVDU=",
       "requires": {
         "@types/es6-promise": "0.0.32",
         "@types/highlight.js": "9.12.2",
@@ -149,7 +149,7 @@
     },
     "@rush-temp/experiments": {
       "version": "file:projects/experiments.tgz",
-      "integrity": "sha1-8KtRRjhglivX4XerPRw6X7sIfZE=",
+      "integrity": "sha1-3qSSKnF8Il1qXnSOdwqV6BFuK2A=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/enzyme": "3.1.5",
@@ -178,7 +178,7 @@
     },
     "@rush-temp/fabric-website": {
       "version": "file:projects/fabric-website.tgz",
-      "integrity": "sha1-EWcFtuXgaRGPR6TfkI7g8xV1tgM=",
+      "integrity": "sha1-wEYWp97rGr9FA3ovW9lmgTAAuCg=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/es6-promise": "0.0.32",
@@ -203,7 +203,7 @@
     },
     "@rush-temp/file-type-icons": {
       "version": "file:projects/file-type-icons.tgz",
-      "integrity": "sha1-niPWfQPofyOCMB8RaBAyNdVfoVw=",
+      "integrity": "sha1-O+Gkpx4m0X3AnqHUBxF18Pxc1I0=",
       "requires": {
         "@types/react": "16.0.25",
         "@types/react-dom": "16.0.3",
@@ -214,21 +214,21 @@
     },
     "@rush-temp/icons": {
       "version": "file:projects/icons.tgz",
-      "integrity": "sha1-bxIo+vG66vqwnrDauj3kXLN0ZDA=",
+      "integrity": "sha1-cmaiurXvdf5iUCWrj/tLlex4/xg=",
       "requires": {
         "tslib": "1.9.0"
       }
     },
     "@rush-temp/jest-serializer-merge-styles": {
       "version": "file:projects/jest-serializer-merge-styles.tgz",
-      "integrity": "sha1-1wE27ytLMuOKCQzabCEfqMVeAAE=",
+      "integrity": "sha1-085wc6HCTq+6fkbPF/2DtDbprig=",
       "requires": {
         "@types/jest": "21.1.8"
       }
     },
     "@rush-temp/merge-styles": {
       "version": "file:projects/merge-styles.tgz",
-      "integrity": "sha1-huzoKG2gvhC/cAhevBWfvJRjjQA=",
+      "integrity": "sha1-qkHNNRdx2HiYnG10tjganpP7j+k=",
       "requires": {
         "@types/jest": "21.1.8",
         "tslib": "1.9.0"
@@ -236,7 +236,7 @@
     },
     "@rush-temp/office-ui-fabric-react": {
       "version": "file:projects/office-ui-fabric-react.tgz",
-      "integrity": "sha1-dPCFjYeW84Cnqw2bxQ/Mf6Mn3jU=",
+      "integrity": "sha1-xU7j71FkOSyr5URMr55adQvjJdU=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/enzyme": "3.1.5",
@@ -269,14 +269,14 @@
     },
     "@rush-temp/office-ui-fabric-react-tslint": {
       "version": "file:projects/office-ui-fabric-react-tslint.tgz",
-      "integrity": "sha1-4srgdu8LfjxNC2sJrzzM77s86Rw=",
+      "integrity": "sha1-Ntbhz5oykWMTUy24zHMQ7E/9pow=",
       "requires": {
         "tslint-react": "3.5.1"
       }
     },
     "@rush-temp/ssr-tests": {
       "version": "file:projects/ssr-tests.tgz",
-      "integrity": "sha1-LqIH90Rsv0XNGwLia7Nh2E5t0zg=",
+      "integrity": "sha1-AMOZeHZ3kMBIqh3C4VSGxTKG3HA=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/es6-promise": "0.0.32",
@@ -293,7 +293,7 @@
     },
     "@rush-temp/styling": {
       "version": "file:projects/styling.tgz",
-      "integrity": "sha1-yD8t3RggqmV3R9UzhwMDAnKSzkM=",
+      "integrity": "sha1-21BcjiCw0y0dIHW3PQhvOMlvSSY=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/jest": "21.1.8",
@@ -308,7 +308,7 @@
     },
     "@rush-temp/test-bundle-button": {
       "version": "file:projects/test-bundle-button.tgz",
-      "integrity": "sha1-6ozSeYYYIeuQ4TKLYRebIo3LCU8=",
+      "integrity": "sha1-8UgrkXB6tgrGqweuM4zSecOqdTM=",
       "requires": {
         "@types/prop-types": "15.5.2",
         "@types/react": "16.0.25",
@@ -321,7 +321,7 @@
     },
     "@rush-temp/todo-app": {
       "version": "file:projects/todo-app.tgz",
-      "integrity": "sha1-MLZap+k2hMY5Oz4u1S2TWN820yM=",
+      "integrity": "sha1-GU3jal7Afbwen3rQASaamB8RMEU=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/es6-promise": "0.0.32",
@@ -338,7 +338,7 @@
     },
     "@rush-temp/utilities": {
       "version": "file:projects/utilities.tgz",
-      "integrity": "sha1-0k2hP8sKeo7bQs/I8sG6h+5kRjU=",
+      "integrity": "sha1-EgEYK36teV0ClZPWIjaKq0U2ZYk=",
       "requires": {
         "@microsoft/load-themed-styles": "1.7.29",
         "@types/enzyme": "3.1.5",
@@ -359,7 +359,7 @@
     },
     "@rush-temp/vr-tests": {
       "version": "file:projects/vr-tests.tgz",
-      "integrity": "sha1-3Ny1Be/I6+Aew6WxvR+rof/YVRk=",
+      "integrity": "sha1-j+m4BwruG1sAzdyQoIIsh5L422E=",
       "requires": {
         "@storybook/addon-options": "3.2.3",
         "@storybook/react": "3.3.13",
@@ -374,7 +374,7 @@
         "react": "16.2.0",
         "react-dom": "16.2.0",
         "screener-runner": "0.6.19",
-        "screener-storybook": "0.9.15",
+        "screener-storybook": "0.11.2",
         "storybook-readme": "3.0.6",
         "style-loader": "0.19.1",
         "tslib": "1.9.0",
@@ -12650,9 +12650,9 @@
       }
     },
     "screener-storybook": {
-      "version": "0.9.15",
-      "resolved": "https://registry.npmjs.org/screener-storybook/-/screener-storybook-0.9.15.tgz",
-      "integrity": "sha1-EtU1lXPUBH5G1LwCgHC2TMbqKmU=",
+      "version": "0.11.2",
+      "resolved": "https://registry.npmjs.org/screener-storybook/-/screener-storybook-0.11.2.tgz",
+      "integrity": "sha1-gBPeIF5DYl+D8JXpNGGSJDZpECU=",
       "requires": {
         "bluebird": "3.4.7",
         "colors": "1.1.2",
@@ -12666,7 +12666,7 @@
         "react-dom": "15.4.2",
         "request": "2.81.0",
         "requestretry": "1.12.3",
-        "screener-runner": "0.7.12"
+        "screener-runner": "0.8.1"
       },
       "dependencies": {
         "acorn": {
@@ -12958,9 +12958,9 @@
           }
         },
         "screener-runner": {
-          "version": "0.7.12",
-          "resolved": "https://registry.npmjs.org/screener-runner/-/screener-runner-0.7.12.tgz",
-          "integrity": "sha1-2+wn4gRAVEueDBFFQK5fEGm6sm4=",
+          "version": "0.8.1",
+          "resolved": "https://registry.npmjs.org/screener-runner/-/screener-runner-0.8.1.tgz",
+          "integrity": "sha1-EGUqCcftTH88ABSKX4HglNv3CnU=",
           "requires": {
             "bluebird": "3.4.7",
             "colors": "1.1.2",
