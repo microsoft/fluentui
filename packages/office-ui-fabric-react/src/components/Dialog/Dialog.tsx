@@ -16,12 +16,13 @@ import { DialogContent } from './DialogContent';
 @withResponsiveMode
 export class Dialog extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
-    modalProps: {
-      isDarkOverlay: true,
-      isBlocking: false,
-      className: '',
-      containerClassName: ''
-    },
+
+    // modalProps: {
+    //   isDarkOverlay: false,
+    //   isBlocking: false,
+    //   className: '',
+    //   containerClassName: ''
+    // },
     dialogContentProps: {
       type: DialogType.normal,
       className: '',
@@ -36,6 +37,13 @@ export class Dialog extends BaseComponent<IDialogProps, {}> {
 
   constructor(props: IDialogProps) {
     super(props);
+
+    Modal.defaultProps = {
+      isDarkOverlay: false,
+      isBlocking: false,
+      className: '',
+      containerClassName: ''
+    };
 
     this._id = getId('Dialog');
     this._defaultTitleTextId = this._id + '-title';
