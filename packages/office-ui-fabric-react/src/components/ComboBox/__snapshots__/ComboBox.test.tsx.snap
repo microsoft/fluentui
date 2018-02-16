@@ -69,19 +69,11 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
         }
     id="ComboBox0wrapper"
   >
-    <input
-      aria-activedescendant={null}
-      aria-autocomplete={true}
-      aria-describedby="ComboBox0-option"
-      aria-disabled={undefined}
-      aria-expanded={false}
-      aria-label={undefined}
+    <div
+      aria-describedby={undefined}
       aria-labelledby={undefined}
-      aria-owns="ComboBox0-list"
-      aria-readonly="true"
-      autoCapitalize="off"
-      autoComplete="off"
       className=
+          ms-FocusZone
           ms-ComboBox-Input
           {
             border-style: none;
@@ -100,21 +92,64 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             text-overflow: ellipsis;
             width: 100%;
           }
-      data-is-interactable={true}
-      data-lpignore={true}
-      id="ComboBox0-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
+      data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      readOnly={true}
-      role="combobox"
-      spellCheck={false}
-      type="text"
-      value=""
-    />
+      onMouseDownCapture={[Function]}
+      role="presentation"
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <input
+        aria-activedescendant={null}
+        aria-autocomplete={true}
+        aria-describedby="ComboBox0-option"
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-label={undefined}
+        aria-labelledby={undefined}
+        aria-owns="ComboBox0-list"
+        aria-readonly="true"
+        autoCapitalize="off"
+        autoComplete="off"
+        className=
+            ms-ComboBox-Input
+            {
+              border-style: none;
+              box-sizing: border-box;
+              font: inherit;
+              height: 30px;
+              margin-bottom: 1px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 1px;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+        data-is-interactable={true}
+        data-lpignore={true}
+        id="ComboBox0-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        readOnly={true}
+        role="combobox"
+        spellCheck={false}
+        type="text"
+        value=""
+      />
+    </div>
     <button
       aria-describedby={null}
       aria-hidden="true"
