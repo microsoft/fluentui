@@ -391,6 +391,36 @@ describe('KeytipTree', () => {
       // Verify that root has no children
       expect(keytipTree.root.children).toHaveLength(0);
     });
+
+    it('Removing persisted keytip also removes overflow link node', () => {
+      let rootId = 'a';
+      let keytipTree = new KeytipTree(rootId);
+      /**
+       *   Tree should end up looking like: Where O is overflow menu and d is inside
+       *
+       *              a
+       *          /   |
+       *          o  d
+       *          |
+       *          d
+       *
+       */
+
+      const keytipIdO = ktpFullPrefix + 'o';
+      const overflowSequence: IKeySequence = { keys: ['o'] };
+      keytipTree.addNode({ keySequences: [overflowSequence] });
+
+      const keytipSequenceD: IKeySequence[] = [{ keys: ['d'] }];
+      let keytipProps = createKeytipProps(keytipSequenceD, overflowSequence);
+
+      // Add d node with an overflow sequence
+      keytipTree.addNode(keytipProps);
+
+      keytipTree.removeNode(keytipSequenceD);
+      expect(keytipTree.nodeMap[rootId].children).toHaveLength(1);
+      // Removing persisted d, should also remove o's children.
+      expect(keytipTree.nodeMap[keytipIdO].children).toHaveLength(0);
+    });
   });
 
   it('get matched and partially matched node tests ', () => {

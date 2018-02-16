@@ -174,6 +174,14 @@ export class KeytipTree {
         delete this.nodeMap[child];
       }
 
+      // If node has an overflowLink, delete that node too.
+      let overflowLink = node.keytipLink;
+      if (overflowLink) {
+        let parentOverflow = this.nodeMap[overflowLink.parent];
+        parentOverflow.children.splice(parentOverflow.children.indexOf(overflowLink.id, 1));
+        delete this.nodeMap[overflowLink.id];
+      }
+
       // Remove the node from the nodeMap
       delete this.nodeMap[nodeID];
     }
