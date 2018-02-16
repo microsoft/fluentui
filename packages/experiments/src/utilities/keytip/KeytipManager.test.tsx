@@ -19,6 +19,7 @@ const keytipIdB = ktpFullPrefix + 'b';
 const keytipIdC = ktpFullPrefix + 'c';
 const keytipIdE1 = ktpFullPrefix + 'e' + ktpSeparator + '1';
 const keytipIdE2 = ktpFullPrefix + 'e' + ktpSeparator + '2';
+const keytipOverflowIdM = ktpFullPrefix + 'o' + ktpSeparator + 'm';
 
 describe('KeytipManager', () => {
   const keytipManager = KeytipManager.getInstance();
@@ -173,6 +174,16 @@ describe('KeytipManager', () => {
       // We haven't exited keytip mode (current keytip is not undefined and is set to the matched keytip)
       expect(keytipManager.keytipTree.currentKeytip).toEqual(keytipManager.keytipTree.nodeMap[keytipIdB]);
     });
+
+    it('Processing a node with with a keytipLink should make currentKeytip its link', () => {
+      const onExecuteOM: jest.Mock = jest.fn();
+      let nodeOverflowM = keytipManager.keytipTree.nodeMap[keytipOverflowIdM];
+      nodeOverflowM.onExecute = onExecuteOM;
+      keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
+      keytipManager.processInput('m');
+      // Expect overflow m node's execute func to be
+      expect(onExecuteOM).toBeCalled();
+    });
   });
 
   it('registerKeytip should automatically show Keytip when currentKeytip is its parent', () => {
@@ -229,10 +240,10 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
    *   Tree should end up looking like:
    *
    *            a
-   *     /     /   |   \
-   *     b   c    e1   e2
-   *             / \
-   *            d   f
+   *     /     /   |   \   \   \
+   *     b   c    e1   e2   o   m
+   *             / \        |
+   *            d   f       m
    *
    */
 
@@ -254,19 +265,34 @@ function populateTreeMap(keytipTree: KeytipTree, rootId: string): KeytipTree {
   // Node E2
   const keytipSequenceE2: IKeySequence = { keys: ['e', '2'] };
 
+  // Node O
+  const keytipIdO = ktpFullPrefix + 'o';
+  const keytipOverflowSeq: IKeySequence = { keys: ['o'] };
+
+  // Node M
+  const keytipIdM = ktpFullPrefix + 'm';
+  const keytipSeqM: IKeySequence = { keys: ['m'] };
+
   let nodeB = createTreeNode(keytipIdB, rootId, [], keytipSequenceB, true /* hasChildrenNodes*/);
   let nodeC = createTreeNode(keytipIdC, rootId, [], keytipSequenceC);
   let nodeE1 = createTreeNode(keytipIdE1, rootId, [keytipIdD, keytipIdF], keytipSequenceE1);
   let nodeE2 = createTreeNode(keytipIdE2, rootId, [keytipIdD, keytipIdF], keytipSequenceE2);
   let nodeD = createTreeNode(keytipIdD, keytipIdE1, [], keytipSequenceD);
   let nodeF = createTreeNode(keytipIdF, keytipIdE1, [], keytipSequenceF);
-  keytipTree.nodeMap[rootId].children.push(keytipIdB, keytipIdC, keytipIdE1, keytipIdE2);
+  let nodeO = createTreeNode(keytipIdO, rootId, [keytipOverflowIdM], keytipOverflowSeq, true);
+  let nodeOM = createTreeNode(keytipOverflowIdM, keytipIdO, [], keytipSeqM);
+  let nodeM = createTreeNode(keytipIdM, rootId, [], keytipSeqM);
+  nodeM.keytipLink = nodeOM;
+  keytipTree.nodeMap[rootId].children.push(keytipIdB, keytipIdC, keytipIdE1, keytipIdE2, keytipIdO, keytipIdM);
   keytipTree.nodeMap[keytipIdB] = nodeB;
   keytipTree.nodeMap[keytipIdC] = nodeC;
   keytipTree.nodeMap[keytipIdE1] = nodeE1;
   keytipTree.nodeMap[keytipIdE2] = nodeE2;
   keytipTree.nodeMap[keytipIdD] = nodeD;
   keytipTree.nodeMap[keytipIdF] = nodeF;
+  keytipTree.nodeMap[keytipIdO] = nodeO;
+  keytipTree.nodeMap[keytipOverflowIdM] = nodeOM;
+  keytipTree.nodeMap[keytipIdM] = nodeM;
   return keytipTree;
 }
 

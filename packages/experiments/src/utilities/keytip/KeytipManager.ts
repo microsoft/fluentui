@@ -194,7 +194,9 @@ export class KeytipManager {
       //      Do nothing
       let node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
       if (node) { // we found a matching node
-        this.keytipTree.currentKeytip = node;
+
+        // if this is a persisted keytip, then we use its keytipLink
+        this.keytipTree.currentKeytip = node.keytipLink ? node.keytipLink : node;
         if (this.keytipTree.currentKeytip.onExecute) {
           this.keytipTree.currentKeytip.onExecute();
         }
