@@ -70,8 +70,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public focus(): void {
-    console.log('extended picker focus');
     this.focusZone.focus();
+  }
+
+  public get inputElement(): HTMLInputElement {
+    return this.input.inputElement;
   }
 
   public render(): JSX.Element {
@@ -116,6 +119,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                 role='combobox'
                 disabled={ disabled }
                 aria-controls='selected-suggestion-alert'
+                onPaste={ this.onPaste }
               />) }
             </div>
           </SelectionZone>
@@ -208,6 +212,15 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   @autobind
+  protected onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void {
+    if (this.props.onPaste) {
+      let inputText = ev.clipboardData.getData('Text');
+      ev.preventDefault();
+      this.props.onPaste(inputText);
+    }
+  }
+
+  @autobind
   protected _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
     // If suggestions are shown let up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.floatingPicker.isSuggestionsShown) {
@@ -229,6 +242,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   @autobind
   protected _onSuggestionSelected(item: T): void {
     this.selectedItemsList.addItems([item]);
+    if (this.props.onItemSelected) {
+      this.props.onItemSelected(item);
+    }
     this.input.clear();
 
     this.floatingPicker.hidePicker();
