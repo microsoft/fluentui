@@ -44,11 +44,6 @@ export interface IKeytipTreeNode {
   hasChildrenNodes?: boolean;
 
   /**
-   * Whether the keytip is visible or not in the dom.
-   */
-  visible?: boolean;
-
-  /**
    * T/F if this keytip's component is currently disabled
    */
   disabled?: boolean;
@@ -134,18 +129,22 @@ export class KeytipTree {
       node.hasChildrenNodes = keytipProps.hasChildrenNodes;
       node.keytipLink = overflowNode;
       node.parent = parentID;
+      node.disabled = keytipProps.disabled;
     } else {
       // If node doesn't exist, add node
       node = this._createNode(nodeID, keytipSequence!, parentID, [], keytipProps.hasChildrenNodes,
-        keytipProps.onExecute, keytipProps.onReturn);
+        keytipProps.onExecute, keytipProps.onReturn, keytipProps.disabled);
       node.keytipLink = overflowNode;
       this.nodeMap[nodeID] = node;
     }
 
     // Get parent node given it's id.
     let parent = this._getParentNode(parentID);
+
     // Add node to parent's children
-    parent.children.push(nodeID);
+    if (parent.children.indexOf(nodeID) === -1) {
+      parent.children.push(nodeID);
+    }
   }
 
   /**
@@ -212,7 +211,7 @@ export class KeytipTree {
   }
 
   private _createNode(id: string, sequence: IKeySequence, parentId: string, children: string[],
-    hasChildrenNodes?: boolean, onExecute?: () => void, onReturn?: () => void): IKeytipTreeNode {
+    hasChildrenNodes?: boolean, onExecute?: () => void, onReturn?: () => void, disabled?: boolean): IKeytipTreeNode {
     return {
       id,
       keytipSequence: sequence,
@@ -220,7 +219,8 @@ export class KeytipTree {
       children,
       onExecute,
       onReturn,
-      hasChildrenNodes
+      hasChildrenNodes,
+      disabled
     };
   }
 

@@ -7,7 +7,7 @@ import {
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { KeyCodes } from '../../Utilities';
-import { IKeytipTransitionKey, convertSequencesToKeytipID } from '../../utilities/keysequence';
+import { IKeytipTransitionKey, convertSequencesToKeytipID, fullKeySequencesAreEqual } from '../../utilities/keysequence';
 import { KeytipManager } from '../../utilities/keytip/KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
 import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
@@ -79,8 +79,23 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    */
   public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
-      // TODO: check for duplicates, do an add or update
-      let currentKeytips = [...previousState.keytips, ...[keytipProps]];
+      let previousKeytips: IKeytipProps[] = previousState.keytips;
+      // Try to find keytipProps in previousKeytips to update
+      let keytipToUpdateIndex = -1;
+      for (let i = 0; i < previousKeytips.length; i++) {
+        if (fullKeySequencesAreEqual(keytipProps.keySequences, previousKeytips[i].keySequences)) {
+          keytipToUpdateIndex = i;
+          break;
+        }
+      }
+      let currentKeytips = [...previousState.keytips];
+      if (keytipToUpdateIndex >= 0) {
+        // Replace the keytip props
+        currentKeytips.splice(keytipToUpdateIndex, 1, keytipProps);
+      } else {
+        // Add the new keytip props
+        currentKeytips.push(keytipProps);
+      }
       return { ...previousState, keytips: currentKeytips };
     };
   }
@@ -91,13 +106,11 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @param keytipToRemove - IKeytipProps of the keytip to remove
    */
   public removeKeytip(keytipToRemove: IKeytipProps): {} {
-    let ktpIdToRemove = convertSequencesToKeytipID(keytipToRemove.keySequences);
     return (previousState: IKeytipLayerState) => {
       let currentKeytips = previousState.keytips;
       // Filter out keytips that don't equal the one to remove
       let filteredKeytips: IKeytipProps[] = currentKeytips.filter((currentKeytip: IKeytipProps) => {
-        let currentKeytipId = convertSequencesToKeytipID(currentKeytip.keySequences);
-        return currentKeytipId !== ktpIdToRemove;
+        return !fullKeySequencesAreEqual(currentKeytip.keySequences, keytipToRemove.keySequences);
       });
       return { ...previousState, keytips: filteredKeytips };
     };

@@ -1,4 +1,11 @@
-import { IKeySequence, keySequencesAreEqual, keySequenceStartsWith, keySequencesContain, convertSequencesToKeytipID } from './IKeySequence';
+import {
+  IKeySequence,
+  keySequencesAreEqual,
+  keySequenceStartsWith,
+  keySequencesContain,
+  convertSequencesToKeytipID,
+  fullKeySequencesAreEqual
+} from './IKeySequence';
 import { ktpFullPrefix, ktpSeparator } from '../keytip/KeytipUtils';
 
 describe('IKeySequence', () => {
@@ -126,6 +133,25 @@ describe('IKeySequence', () => {
       expect(keytipID).toEqual(ktpFullPrefix + 'a' +
         ktpSeparator + 'n' + ktpSeparator +
         'c' + ktpSeparator + 'b');
+    });
+  });
+
+  describe('fullKeySequencesAreEqual', () => {
+    it('different lengths should not be equal', () => {
+      let keySequences1: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
+      let keySequences2: IKeySequence[] = [{ keys: ['a', 'n'] }];
+      expect(fullKeySequencesAreEqual(keySequences1, keySequences2)).toEqual(false);
+    });
+
+    it('should correctly be equal', () => {
+      let keySequences1: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
+      let keySequences2: IKeySequence[] = [{ keys: ['a', 'n'] }, { keys: ['c', 'b'] }];
+      let keySequences3: IKeySequence[] = [{ keys: ['n', 'a'] }, { keys: ['c', 'b'] }];
+      let keySequences4: IKeySequence[] = [{ keys: ['a'] }, { keys: ['c', 'b'] }];
+
+      expect(fullKeySequencesAreEqual(keySequences1, keySequences2)).toEqual(true);
+      expect(fullKeySequencesAreEqual(keySequences1, keySequences3)).toEqual(false);
+      expect(fullKeySequencesAreEqual(keySequences1, keySequences4)).toEqual(false);
     });
   });
 });
