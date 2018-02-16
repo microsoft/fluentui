@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "jspurlin@microsoft.com"
+}
