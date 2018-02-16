@@ -70,5 +70,5 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * If rendering an image icon, this function callback will be invoked in the event loading the image errors.
    */
-  errorAs?: (image: IImageProps) => any;
+  imageErrorAs?: (image: IImageProps) => any;
 }

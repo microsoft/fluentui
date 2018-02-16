@@ -39,7 +39,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
       className,
       styles,
       iconName,
-      errorAs,
+      imageErrorAs,
    } = this.props;
     let classNames = getClassNames(
       styles
@@ -60,7 +60,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
       );
       let { imageLoadError } = this.state;
       let imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange }
-      let ImageType = imageLoadError && errorAs || Image;
+      let ImageType = imageLoadError && imageErrorAs || Image;
       return (
         <div
           {...containerProps}
