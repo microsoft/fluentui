@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.12.1",
+      "tag": "@uifabric/merge-styles_v5.12.1",
+      "date": "Fri, 16 Feb 2018 11:23:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "04bd4051d81e68f7b007009e85b50665d4b9db4e",
+            "comment": "mergeStyles: setting `fill-opacity` as unitless."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.0",
       "tag": "@uifabric/merge-styles_v5.12.0",
       "date": "Wed, 14 Feb 2018 22:10:50 GMT",

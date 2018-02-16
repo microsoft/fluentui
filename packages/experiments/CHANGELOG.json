@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.21.0",
+      "tag": "@uifabric/experiments_v5.21.0",
+      "date": "Fri, 16 Feb 2018 11:23:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "01b3c8a05ea5c33bd1a12bda479f7587f02eb8eb",
+            "comment": "Hook up onPaste for BaseExtendedPicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "44b167af31b9b6dd079359209f101f1af10762a5",
+            "comment": "Removing Coachmark"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.50.0 <6.0.0` to `>=5.51.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.20.0",
       "tag": "@uifabric/experiments_v5.20.0",
       "date": "Wed, 14 Feb 2018 22:10:49 GMT",

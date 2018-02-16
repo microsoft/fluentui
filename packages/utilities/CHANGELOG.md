@@ -1,6 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+
+## 5.12.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added a triangle abstraction class
+
+### Patches
+
+- Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found
 
 ## 5.11.0
 Wed, 14 Feb 2018 22:10:50 GMT
