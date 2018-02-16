@@ -25,7 +25,7 @@ export interface ISearchBoxState {
 @customizable('SearchBox', ['theme'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
-    labelText: 'Search',
+    placeholder: 'Search',
   };
 
   private _rootElement: HTMLElement;
@@ -54,7 +54,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { labelText, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
+    let { labelText, placeholder, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
     let { value, hasFocus, id } = this.state;
 
     const classNames = getClassNames(getStyles!, {
@@ -78,13 +78,13 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         <input
           id={ id }
           className={ classNames.field }
-          placeholder={ labelText }
+          placeholder={ labelText ? labelText : placeholder }
           onChange={ this._onInputChange }
           onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
           disabled={ this.props.disabled }
-          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
+          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : placeholder }
           ref={ this._resolveRef('_inputElement') }
         />
         { value!.length > 0 &&
