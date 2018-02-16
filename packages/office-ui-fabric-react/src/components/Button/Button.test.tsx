@@ -384,6 +384,74 @@ describe('Button', () => {
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
     });
 
+    it('If menu trigger is disabled, pressing down does not trigger menu', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          menuTriggerKeyCode={ null }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
+        {
+          which: KeyCodes.down
+        });
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
+    });
+
+    it('If menu trigger is specefied, default key is overridden', () => {
+      const button = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton
+          data-automation-id='test'
+          text='Create account'
+          menuTriggerKeyCode={ KeyCodes.right }
+          menuProps={ {
+            items: [
+              {
+                key: 'emailMessage',
+                name: 'Email message',
+                icon: 'Mail'
+              },
+              {
+                key: 'calendarEvent',
+                name: 'Calendar event',
+                icon: 'Calendar'
+              }
+            ]
+          } }
+        />
+      );
+      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
+        {
+          which: KeyCodes.down
+        });
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
+
+      ReactTestUtils.Simulate.keyDown(menuButtonDOM,
+        {
+          which: KeyCodes.right
+        });
+      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('true');
+    });
+
     describe('Response to click event', () => {
       let didClick = false;
       const setTrue = (): void => {
