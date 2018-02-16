@@ -1,4 +1,10 @@
 import * as React from 'react';
+import { css, classNamesFunction } from '../../../Utilities';
+import {
+  getStyles,
+  IButtonBasicExampleStyleProps,
+  IButtonBasicExampleStyles
+} from './Button.Basic.Example.styles';
 import {
   IButtonProps,
   DefaultButton
@@ -11,8 +17,11 @@ export class ButtonAnchorExample extends React.Component<IButtonProps> {
   public render() {
     let { disabled, checked } = this.props;
 
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles);
+
     return (
-      <div className='ms-BasicButtonsExample'>
+      <div className={ css(classNames.example) }>
         <DefaultButton
           data-automation-id='test'
           disabled={ disabled }

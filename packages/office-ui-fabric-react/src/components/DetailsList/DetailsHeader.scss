@@ -18,6 +18,7 @@ $isPaddedMargin: 24px;
   height: $rowHeight;
   line-height: $rowHeight;
   white-space: nowrap;
+  box-sizing: content-box;
   padding-bottom: 1px;
   border-bottom: 1px solid $bodyDividerColor;
   cursor: default;

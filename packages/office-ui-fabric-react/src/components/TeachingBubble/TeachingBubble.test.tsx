@@ -33,4 +33,18 @@ describe('TeachingBubble', () => {
     expect(titleElement!.textContent).toEqual('Title');
   });
 
+  it('merges callout classNames', () => {
+    ReactTestUtils.renderIntoDocument<TeachingBubbleContent>(
+      <TeachingBubbleContent
+        headline='Title'
+        calloutProps={ { className: 'foo' } }
+      />
+    );
+    setTimeout(() => {
+      let callout = document.querySelector('.ms-Callout') as HTMLElement;
+      expect(callout).toBeDefined();
+      expect(callout.classList.contains('ms-TeachingBubble')).toBeTruthy();
+      expect(callout.classList.contains('foo')).toBeTruthy();
+    }, 0);
+  });
 });
