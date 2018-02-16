@@ -35,6 +35,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   public constructor(props: ISearchBoxProps) {
     super(props);
 
+    this._warnDeprecations({
+      "labelText": "placeholder"
+    });
+
     this._latestValue = props.value || '';
 
     this.state = {
@@ -54,8 +58,12 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { labelText, placeholder, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
+    let { ariaLabel, placeholder, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
     let { value, hasFocus, id } = this.state;
+
+    if (this.props.labelText) {
+      placeholder = this.props.labelText;
+    }
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -78,13 +86,13 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         <input
           id={ id }
           className={ classNames.field }
-          placeholder={ labelText ? labelText : placeholder }
+          placeholder={ placeholder }
           onChange={ this._onInputChange }
           onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
           disabled={ this.props.disabled }
-          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : placeholder }
+          aria-label={ ariaLabel ? ariaLabel : placeholder }
           ref={ this._resolveRef('_inputElement') }
         />
         { value!.length > 0 &&
