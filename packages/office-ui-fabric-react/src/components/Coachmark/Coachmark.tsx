@@ -180,34 +180,31 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public componentDidMount(): void {
-    if (this.state.isMeasuring) {
-      this._async.setTimeout((): void => {
+    this._async.requestAnimationFrame(((): void => {
+      if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
 
-        if ((this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width) === 0) {
+        // @TODO Eventually we need to add the various directions
+        const beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
+        const beakTop = 0;
 
-          // @TODO Eventually we need to add the various directions
-          const beakLeft = (this.props.width! / 2) - (this.props.beakWidth! / 2);
-          const beakTop = 0;
+        this.setState({
+          isMeasuring: false,
+          entityInnerHostRect: {
+            width: this._entityInnerHostElement.offsetWidth,
+            height: this._entityInnerHostElement.offsetHeight
+          },
+          beakLeft: beakLeft + 'px',
+          beakTop: beakTop + 'px'
+        });
 
-          this.setState({
-            isMeasuring: false,
-            entityInnerHostRect: {
-              width: this._entityInnerHostElement.offsetWidth,
-              height: this._entityInnerHostElement.offsetHeight
-            },
-            beakLeft: beakLeft + 'px',
-            beakTop: beakTop + 'px'
-          });
+        this.forceUpdate();
+      }
 
-          this.forceUpdate();
-        }
-
-        // We dont want to the user to immediatley trigger the coachmark when it's opened
-        this._async.setTimeout(() => {
-          this._isElementInProximity(100);
-        }, this.props.delayBeforeMouseOpen!);
-      }, 10);
-    }
+      // We dont want to the user to immediatley trigger the coachmark when it's opened
+      this._async.setTimeout(() => {
+        this._addProximityHandler(100);
+      }, this.props.delayBeforeMouseOpen!);
+    }));
   }
 
   @autobind
@@ -234,7 +231,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     });
   }
 
-  private _isElementInProximity(mouseProximityOffset: number = 0): void {
+  private _addProximityHandler(mouseProximityOffset: number = 0): void {
     /**
      * An array of cached ids returned when setTimeout runs during
      * the window resize event trigger.
