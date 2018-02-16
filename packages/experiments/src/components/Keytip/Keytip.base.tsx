@@ -75,24 +75,4 @@ export class KeytipBase extends BaseComponent<IKeytipProps, IKeytipState> implem
       </Callout>
     );
   }
-
-<<<<<<< HEAD
-  /**
-   *
-   * @param keySequences
-   */
-  private _constructKeytipTarget(keySequences: IKeySequence[]): string {
-    return '[data-ktp-id="' + convertSequencesToKeytipID(keySequences) + '"]';
-  }
-=======
-  // COMMENTING OUT THINGS FOR DISCUSSION
-  // @autobind
-  // private _onKeytipDismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
-  //   this.setState({
-  //     visible: false
-  //   });
-  //   // TODO: should call manager.exitKeytipMode here but when you do it throws a big error in the console
-  // }
-
->>>>>>> deea27e1605e4a5dfa3d7352b741bf24ab12776b
 }
