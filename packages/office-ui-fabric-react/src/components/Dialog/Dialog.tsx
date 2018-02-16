@@ -17,12 +17,6 @@ import { DialogContent } from './DialogContent';
 export class Dialog extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
 
-    // modalProps: {
-    //   isDarkOverlay: false,
-    //   isBlocking: false,
-    //   className: '',
-    //   containerClassName: ''
-    // },
     dialogContentProps: {
       type: DialogType.normal,
       className: '',
