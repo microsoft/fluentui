@@ -40,17 +40,12 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         top: -1px;
         z-index: 1;
       }
-      &:hover .ms-Checkbox-checkbox {
+      &:hover .ms-Checkbox-checkbox, &:focus .ms-Checkbox-checkbox, &:hover .ms-Checkbox-text, &:focus .ms-Checkbox-text {
         border-color: #212121;
       }
-      &:focus .ms-Checkbox-checkbox {
-        border-color: #212121;
-      }
-      &:hover .ms-Checkbox-text {
-        color: #000000;
-      }
-      &:focus .ms-Checkbox-text {
-        color: #000000;
+      &:hover .ms-Checkbox-checkmark, &:focus .ms-Checkbox-checkmark {
+        color: #666666;
+        opacity: 0.5;
       }
   disabled={undefined}
   id="checkbox-0"
@@ -106,7 +101,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         className=
-
+            ms-Checkbox-checkmark
             {
               display: inline-block;
             }
