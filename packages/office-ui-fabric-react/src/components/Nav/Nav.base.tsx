@@ -12,8 +12,6 @@ import {
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ActionButton, IButtonStyles } from '../../Button';
 import { Icon } from '../../Icon';
-import * as stylesImport from './Nav.scss';
-const styles: any = stylesImport;
 import { AnimationClassNames, mergeStyles } from '../../Styling';
 import {
   INav,
