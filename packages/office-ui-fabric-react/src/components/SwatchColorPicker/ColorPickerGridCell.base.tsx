@@ -51,7 +51,8 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         disabled,
         selected,
         circle,
-        isWhite: this._isWhiteCell(this.props.color)
+        isWhite: this._isWhiteCell(this.props.color),
+        isDark: this._isDarkCell(this.props.color)
       }
     );
 
@@ -99,6 +100,16 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
+  }
+
+  /**
+* Validate if the cell's color is dark enough to apply the dark cell high contrast style
+* @param inputColor - The color of the current cell
+* @returns - Whether the cell's color is dark or not.
+*/
+  private _isDarkCell(inputColor: string | undefined): boolean {
+    let color = inputColor ? getColorFromString(inputColor) : undefined;
+    return (color && (color.r < 120 && color.g < 120 && color.b < 120)) || false;
   }
 
   /**

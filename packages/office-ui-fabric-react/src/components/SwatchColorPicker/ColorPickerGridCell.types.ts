@@ -123,6 +123,11 @@ export interface IColorPickerGridCellStyleProps {
    * Whether the color being rendered is white or not. If it is white we show a border around it.
    */
   isWhite?: boolean;
+
+  /**
+   * Whether the color being rendered is dark or not. If it is dark we show a white around it in high contrast.
+   */
+  isDark?: boolean;
 }
 
 /**
