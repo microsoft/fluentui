@@ -72,11 +72,6 @@ export interface ISemanticColors {
   bodySubtext: string;
 
   /**
-   * Color of links/anchors (<a>)
-   */
-  bodyLink: string;
-
-  /**
    * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
    */
   bodyDivider: string;
