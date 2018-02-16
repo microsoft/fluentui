@@ -107,16 +107,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   styles?: ICheckboxStyles;
 
   /**
-   * Custom function for providing the classNames for the checkbox. Can be used to provide
-   * all styles for the component instead of applying them on top of the default styles.
-   */
-  // getClassNames?: (theme: ITheme,
-  //   disabled: boolean,
-  //   isChecked: boolean,
-  //   isReversed: boolean,
-  //   className?: string) => ICheckboxClassNames;
-
-  /**
    * Custom render function for the label.
    */
   onRenderLabel?: IRenderFunction<ICheckboxProps>;
@@ -153,7 +143,7 @@ export interface ICheckboxStyles {
    */
   root?: IStyle;
 
-  customStyles?: IStyle;
+  customStyles?: ICheckboxStyles;
 
   /**
    * Style for the label part (contains the customized checkbox + text) when enabled.
@@ -161,54 +151,9 @@ export interface ICheckboxStyles {
   label?: IStyle;
 
   /**
-   * Style for the label when reversed
-   */
-  // labelReversed?: IStyle;
-
-  /**
-   * Style override for the label part when disabled.
-   */
-  // labelDisabled?: IStyle;
-
-  /**
    * Style for checkbox in its default unchecked/enabled state.
    */
   checkbox?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/unchecked/hovered.
-   */
-  // checkboxHovered?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/unchecked/focused.
-   */
-  // checkboxFocused?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/checked.
-   */
-  // checkboxChecked?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/checked/hovered.
-   */
-  // checkboxCheckedHovered?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/checked/focused.
-   */
-  // checkboxCheckedFocused?: IStyle;
-
-  /**
-   * Style override for checkbox when disabled/unchecked.
-   */
-  // checkboxDisabled?: IStyle;
-
-  /**
-   * Style override for checkbox when disabled/checked.
-   */
-  // checkboxCheckedDisabled?: IStyle;
 
   /**
    * Style for the checkmark in the default enabled/unchecked state.
@@ -216,37 +161,7 @@ export interface ICheckboxStyles {
   checkmark?: IStyle;
 
   /**
-   * Style override for the checkmark when enabled/checked.
-   */
-  // checkmarkChecked?: IStyle;
-
-  /**
-   * Style override for checkmark when disabled/unchecked.
-   */
-  // checkmarkDisabled?: IStyle;
-
-  /**
- * Style override for checkmark when disabled/checked.
- */
-  // checkmarkCheckedDisabled?: IStyle;
-
-  /**
    * Style for text appearing with the checkbox in its default enabled state.
    */
   text?: IStyle;
-
-  /**
-   * Style override for text appearing with the checkbox when enabled/hovered.
-   */
-  // textHovered?: IStyle;
-
-  /**
-   * Style override for text appearing with the checkbox when enabled/focused.
-   */
-  // textFocused?: IStyle;
-
-  /**
-   * Style override for text appearing with the checkbox when disabled.
-   */
-  // textDisabled?: IStyle;
 }
