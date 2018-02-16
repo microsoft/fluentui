@@ -85,6 +85,10 @@
       "unicode": "E787"
     },
     {
+      "name": "Megaphone",
+      "unicode": "E789"
+    },
+    {
       "name": "Undo",
       "unicode": "E7A7"
     },
@@ -95,6 +99,10 @@
     {
       "name": "Page",
       "unicode": "E7C3"
+    },
+    {
+      "name": "Pinned",
+      "unicode": "E840"
     },
     {
       "name": "View",
@@ -139,10 +147,6 @@
     {
       "name": "Info",
       "unicode": "E946"
-    },
-    {
-      "name": "Pinned",
-      "unicode": "E840"
     },
     {
       "name": "SortLines",

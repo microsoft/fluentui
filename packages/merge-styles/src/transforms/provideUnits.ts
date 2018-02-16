@@ -6,6 +6,7 @@ const NON_PIXEL_NUMBER_PROPS = [
   'flex-grow',
   'flex-shrink',
   'opacity',
+  'fill-opacity',
   'order',
   'z-index',
   'zoom'

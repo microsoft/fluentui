@@ -32,6 +32,7 @@ export const getMenuItemStyles = memoizeFunction((
   const { semanticColors, fonts } = theme;
   const ContextualMenuItemBackgroundHoverColor = semanticColors.menuItemBackgroundHovered;
   const ContextualMenuItemBackgroundSelectedColor = semanticColors.menuItemBackgroundChecked;
+  const ContextualMenuItemDividerColor = semanticColors.bodyDivider;
 
   const menuItemStyles: IMenuItemStyles = {
     item: [
@@ -44,7 +45,7 @@ export const getMenuItemStyles = memoizeFunction((
     divider: {
       display: 'block',
       height: '1px',
-      backgroundColor: semanticColors.bodyDivider,
+      backgroundColor: ContextualMenuItemDividerColor,
       position: 'relative'
     },
     root: [
@@ -132,6 +133,9 @@ export const getMenuItemStyles = memoizeFunction((
           color: 'HighlightText',
         }
       }
+    },
+    iconDisabled: {
+      color: semanticColors.disabledBodyText,
     },
     checkmarkIcon: {
       color: semanticColors.bodySubtext,

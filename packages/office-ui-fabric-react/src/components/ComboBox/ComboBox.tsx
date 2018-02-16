@@ -271,8 +271,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       autoComplete,
       buttonIconProps,
+      isButtonAriaHidden = true,
       styles: customStyles,
       theme,
+      title
     } = this.props;
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -295,7 +297,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
-          <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
+          <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }
@@ -312,17 +314,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
-            onClick={ allowFreeform ? this.focus : this._onComboBoxClick }
+            onClick={ this._onBaseAutofillClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
-            aria-autocomplete={ (!disabled && autoComplete === 'on') }
+            aria-autocomplete={ this._getAriaAutoCompleteValue() }
             role='combobox'
             aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
             readOnly={ disabled || !allowFreeform }
             aria-labelledby={ (label && (id + '-label')) }
             aria-label={ ((ariaLabel && !label) && ariaLabel) }
             aria-describedby={ (id + '-option') }
-            aria-activedescendant={ (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null) }
+            aria-activedescendant={ this._getAriaActiveDescentValue() }
             aria-disabled={ disabled }
             aria-owns={ (id + '-list') }
             spellCheck={ false }
@@ -330,12 +332,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             suggestedDisplayValue={ suggestedDisplayValue }
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+            title={ title }
           />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
             role='presentation'
-            aria-hidden='true'
+            aria-hidden={ isButtonAriaHidden }
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
@@ -370,9 +373,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Set focus on the input
    */
   @autobind
-  public focus() {
+  public focus(shouldOpenOnFocus?: boolean) {
     if (this._comboBox) {
       this._comboBox.focus();
+      if (shouldOpenOnFocus) {
+        this.setState({
+          isOpen: true
+        });
+      }
     }
   }
 
@@ -1308,6 +1316,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           this.setState({
             isOpen: false
           });
+        } else {
+          return;
         }
         break;
 
@@ -1503,6 +1513,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
+   * Click handler for the autofill.
+   */
+  @autobind
+  private _onBaseAutofillClick() {
+    if (this.props.allowFreeform) {
+      this.focus(this.state.isOpen);
+    } else {
+      this._onComboBoxClick();
+    }
+  }
+
+  /**
  * Get the styles for the current option.
  * @param item Item props for the current option
  */
@@ -1520,5 +1542,27 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { styles: customStylesForCurrentOption } = item;
 
     return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
+  }
+
+  /**
+   * Get the aria-activedescendant value for the comboxbox.
+   * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
+   */
+  private _getAriaActiveDescentValue(): string | null {
+    let descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
+    if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
+      descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
+    }
+    return descendantText;
+  }
+
+  /**
+  * Get the aria autocomplete value for the Combobox
+  * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from and can
+  * dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
+  */
+  private _getAriaAutoCompleteValue(): string {
+    let autoComplete = !this.props.disabled && this.props.autoComplete === 'on';
+    return autoComplete ? (this.props.allowFreeform ? 'inline' : 'both') : 'none';
   }
 }

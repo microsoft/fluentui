@@ -96,6 +96,11 @@ describe('styleToClassName', () => {
     expect(styleToClassName()).toEqual('');
   });
 
+  it('does not emit a rule which has an undefined value', () => {
+    expect(styleToClassName({fontFamily: undefined})).toEqual('');
+    expect(_stylesheet.getRules()).toEqual('');
+  });
+
   it('returns the same class name for a rule that only has a displayName', () => {
     expect(styleToClassName({ displayName: 'foo' })).toEqual('foo-0');
     expect(styleToClassName({ displayName: 'foo' })).toEqual('foo-0');

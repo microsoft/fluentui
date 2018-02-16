@@ -25,7 +25,7 @@ export interface IProgressIndicatorProps {
   description?: string;
 
   /**
-   * Percentage of the operation's completeness.
+   * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
 

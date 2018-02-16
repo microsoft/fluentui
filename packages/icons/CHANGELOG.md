@@ -1,6 +1,28 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Thu, 30 Nov 2017 11:23:35 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Feb 2018 11:23:17 GMT and should not be manually modified.
+
+## 5.4.2
+Thu, 01 Feb 2018 11:23:17 GMT
+
+### Patches
+
+- updating config files in @uifabric/icons package
+- Updating fabric icons in office-ui-fabric-react's  @uifabric/icons package
+
+## 5.4.1
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Patches
+
+- Updating fabric icons in office-ui-fabric-react's  @uifabric/icons package
+
+## 5.4.0
+Wed, 03 Jan 2018 11:23:12 GMT
+
+### Minor changes
+
+- Updated icon font files to match the hash in the src files.
 
 ## 5.3.0
 Thu, 30 Nov 2017 11:23:35 GMT

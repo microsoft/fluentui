@@ -279,12 +279,39 @@ describe('DateMath', () => {
     // Date range: week
     let expectedDates = Array(7).map((val, i) => new Date(2017, 2, 12 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
-    Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+    Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
+
+    // Date range: work week
+    let workWeekDays = [
+      DayOfWeek.Monday,
+      DayOfWeek.Tuesday,
+      DayOfWeek.Thursday,
+      DayOfWeek.Friday
+    ];
+    expectedDates = [
+      new Date(2017, 2, 13),
+      new Date(2017, 2, 14),
+      new Date(2017, 2, 16),
+      new Date(2017, 2, 17),
+    ];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday, workWeekDays);
+    Array(4).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
+
+    // work week defaults
+    expectedDates = [
+      new Date(2017, 2, 13),
+      new Date(2017, 2, 14),
+      new Date(2017, 2, 15),
+      new Date(2017, 2, 16),
+      new Date(2017, 2, 17),
+    ];
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
+    Array(4).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 
     // Date range: month
     expectedDates = Array(31).map((val, i) => new Date(2017, 2, 1 + i));
     dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday);
-    Array(31).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).toBe(true));
+    Array(31).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 
     // First day of week: Tuesday
     expectedDates = Array(7).map((val, i) => new Date(2017, 2, 14 + i));
@@ -371,6 +398,18 @@ describe('DateMath', () => {
     result = DateMath.getWeekNumber(date1, 1, 1);
     expected = 52;
     expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 1);
+    expected = 52;
+    expect(result).toEqual(expected);
   });
 
   // First week of year set to FirstWeekOfYear.FirstFourDayWeek
@@ -409,6 +448,18 @@ describe('DateMath', () => {
     date1 = new Date(2011, 0, 1);
     result = DateMath.getWeekNumber(date1, 1, 2);
     expected = 52;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Sunday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 0, 2);
+    expected = 53;
+    expect(result).toEqual(expected);
+
+    // firstDayOfWeek is Monday
+    date1 = new Date(2021, 0, 1);
+    result = DateMath.getWeekNumber(date1, 1, 2);
+    expected = 53;
     expect(result).toEqual(expected);
   });
 
