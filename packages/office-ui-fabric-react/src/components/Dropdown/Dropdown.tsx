@@ -479,7 +479,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         (
           <CommandButton
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
+            // ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -504,7 +504,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
+            // ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -527,6 +527,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             checked={ isItemSelected }
+          /** Dropdown shouldn't be overriding styles
+           * according to the XD document.
+           */
           // Hover is being handled by focus styles
           // so clear out the explicit hover styles
           // styles={ {
