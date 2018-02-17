@@ -267,7 +267,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       for (let item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider &&
           item.itemType !== ContextualMenuItemType.Header) {
-          totalItemCount++;
+          if (item.customOnRenderListLength) {
+            totalItemCount += item.customOnRenderListLength;
+          } else {
+            totalItemCount++;
+          }
         }
       }
       return (
@@ -313,11 +317,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                   onKeyDown={ this._onKeyDown }
                 >
                   { items.map((item, index) => {
-                    if (item.itemType === ContextualMenuItemType.Divider ||
-                      item.itemType === ContextualMenuItemType.Header) {
-                      indexCorrection++;
+                    let menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                    if (item.itemType !== ContextualMenuItemType.Divider &&
+                      item.itemType !== ContextualMenuItemType.Header) {
+                      const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+                      indexCorrection += indexIncrease;
                     }
-                    return this._renderMenuItem(item, index, index - indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                    return menuItem;
                   }) }
                 </ul>
               </FocusZone>

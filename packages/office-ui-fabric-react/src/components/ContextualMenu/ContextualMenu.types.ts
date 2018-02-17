@@ -407,6 +407,13 @@ export interface IContextualMenuItem {
   role?: string;
 
   /**
+   * When rendering a custom component that is passed in, the component might also be a list of
+   * elements. We want to keep track of the correct index our menu is using based off of
+   * the length of the custom list.
+   */
+  customOnRenderListLength?: number;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
