@@ -205,7 +205,7 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 }
 
 /**
- * Finds the first parent element where the matchFunctionReturns true
+ * Finds the first parent element where the matchFunction returns true
  * @param element element to start searching at
  * @param matchFunction the function that determines if the element is a match
  * @returns the matched element or null no match was found
@@ -215,7 +215,7 @@ export function findElementRecursive(element: HTMLElement | null, matchFunction:
     return null;
   }
 
-  return matchFunction(element) ? element : findElementRecursive(element.parentElement, matchFunction);
+  return matchFunction(element) ? element : findElementRecursive(getParent(element), matchFunction);
 }
 
 /**
@@ -225,7 +225,7 @@ export function findElementRecursive(element: HTMLElement | null, matchFunction:
  * @returns the value of the first instance found
  */
 export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null {
-  let elementMatch = findElementRecursive(element, element => element.hasAttribute(attribute));
+  let elementMatch = findElementRecursive(element, (testElement: HTMLElement) => testElement.hasAttribute(attribute));
   return elementMatch && elementMatch.getAttribute(attribute);
 }
 
