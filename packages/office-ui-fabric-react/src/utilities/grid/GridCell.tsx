@@ -32,7 +32,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 
     return (
       <CommandButton
-        id={ id + '-item' + index }
+        id={ id }
         data-index={ index }
         data-is-focusable={ true }
         disabled={ disabled }
@@ -44,6 +44,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         ) }
         onClick={ this._onClick }
         onMouseEnter={ this._onMouseEnter }
+        onMouseMove={ this._onMouseMove }
         onMouseLeave={ this._onMouseLeave }
         onFocus={ this._onFocus }
         role={ role }
@@ -71,26 +72,48 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   }
 
   @autobind
-  private _onMouseEnter() {
+  private _onMouseEnter(ev: React.MouseEvent<HTMLButtonElement>) {
     let {
       onHover,
       disabled,
-      item
+      item,
+      onMouseEnter
       } = this.props as P;
 
-    if (onHover && !disabled) {
+    let didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
+
+    if (!didUpdateOnEnter && onHover && !disabled) {
       onHover(item);
     }
   }
 
   @autobind
-  private _onMouseLeave() {
+  private _onMouseMove(ev: React.MouseEvent<HTMLButtonElement>) {
     let {
       onHover,
-      disabled
+      disabled,
+      item,
+      onMouseMove
       } = this.props as P;
 
-    if (onHover && !disabled) {
+    let didUpdateOnMove = onMouseMove && onMouseMove(ev);
+
+    if (!didUpdateOnMove && onHover && !disabled) {
+      onHover(item);
+    }
+  }
+
+  @autobind
+  private _onMouseLeave(ev: React.MouseEvent<HTMLButtonElement>) {
+    let {
+      onHover,
+      disabled,
+      onMouseLeave
+      } = this.props as P;
+
+    let didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
+
+    if (!didUpdateOnLeave && onHover && !disabled) {
       onHover();
     }
   }
