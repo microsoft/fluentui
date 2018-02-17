@@ -32,6 +32,8 @@ const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const TABINDEX = 'tabindex';
 const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
 const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
+const LARGE_DISTANCE_FROM_CENTER = 999999999;
+const Large_Negative_DISTANCE_FROM_CENTER = -999999999;
 
 let _allInstances: {
   [key: string]: FocusZone
@@ -477,7 +479,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     isForward: boolean,
     getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
     ev?: Event,
-    shouldWrap: boolean = true): boolean {
+    useDefaultWrap: boolean = true): boolean {
 
     let element = this._activeElement;
     let candidateDistance = -1;
@@ -530,7 +532,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (candidateElement && candidateElement !== this._activeElement) {
       changedFocus = true;
       this.focusElement(candidateElement);
-    } else if (this.props.isCircularNavigation && shouldWrap) {
+    } else if (this.props.isCircularNavigation && useDefaultWrap) {
       if (isForward) {
         return this.focusElement(getNextElement(this._root, this._root.firstElementChild as HTMLElement, true) as HTMLElement);
       } else {
@@ -556,10 +558,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (targetRectTop < activeRectBottom) {
         if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-          return -2;
+          return Large_Negative_DISTANCE_FROM_CENTER;
         }
 
-        return 999999999;
+        return LARGE_DISTANCE_FROM_CENTER;
       }
 
       if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
@@ -597,9 +599,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (targetRectBottom > activeRectTop) {
         if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-          return -2;
+          return Large_Negative_DISTANCE_FROM_CENTER;
         }
-        return 999999999;
+        return LARGE_DISTANCE_FROM_CENTER;
       }
 
       if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
@@ -635,7 +637,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         distance = activeRect.right - targetRect.right;
       } else {
         if (!shouldWrap) {
-          distance = -2;
+          distance = Large_Negative_DISTANCE_FROM_CENTER;
         }
       }
 
@@ -664,7 +666,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
         distance = targetRect.left - activeRect.left;
       } else if (!shouldWrap) {
-        distance = -2;
+        distance = Large_Negative_DISTANCE_FROM_CENTER;
       }
 
       return distance;
