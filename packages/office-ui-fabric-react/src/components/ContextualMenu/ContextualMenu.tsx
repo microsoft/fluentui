@@ -267,11 +267,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       for (let item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider &&
           item.itemType !== ContextualMenuItemType.Header) {
-          if (item.customOnRenderListLength) {
-            totalItemCount += item.customOnRenderListLength;
-          } else {
-            totalItemCount++;
-          }
+          let itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+          totalItemCount += itemCount;
         }
       }
       return (

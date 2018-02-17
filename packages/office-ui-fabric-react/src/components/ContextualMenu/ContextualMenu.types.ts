@@ -409,7 +409,7 @@ export interface IContextualMenuItem {
   /**
    * When rendering a custom component that is passed in, the component might also be a list of
    * elements. We want to keep track of the correct index our menu is using based off of
-   * the length of the custom list.
+   * the length of the custom list. It is up to the user to increment the count for their list.
    */
   customOnRenderListLength?: number;
 
