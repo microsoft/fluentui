@@ -20,7 +20,7 @@ export const getStyles = (
     pointerEvents: 'auto',
     width: '100%',
     zIndex: 1
-  }
+  };
 
   return ({
     root: [
