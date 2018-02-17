@@ -26,6 +26,7 @@ export const DefaultPalette: IPalette = {
   neutralLighterAlt: '#f8f8f8',
   accent: '#0078d7',
   white: '#ffffff',
+  whiteTranslucent40: 'rgba(255,255,255,.4)',
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',

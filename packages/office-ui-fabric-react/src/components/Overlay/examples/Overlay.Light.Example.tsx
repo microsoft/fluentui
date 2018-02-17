@@ -1,8 +1,18 @@
 import * as React from 'react';
+import {
+  autobind,
+  IStyleFunction,
+  classNamesFunction
+} from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
-import './Overlay.Example.scss';
+import { Overlay } from '../Overlay';
+
+import { getStyles, IOverlayExampleStyles } from './Overlay.Example.styles';
+
+export interface IOverlayLightExampleProps {
+  getStyles?: IStyleFunction<{}, IOverlayExampleStyles>;
+}
 
 export class OverlayLightExample extends React.Component<{}, {
   isOverlayVisible: boolean;
@@ -10,22 +20,23 @@ export class OverlayLightExample extends React.Component<{}, {
   constructor(props: {}) {
     super(props);
 
-    this._onClick = this._onClick.bind(this);
-
-    this.state = {
-      isOverlayVisible: false
-    };
+    this.state = { isOverlayVisible: false };
   }
 
   public render() {
-    let { isOverlayVisible } = this.state;
+    const { isOverlayVisible } = this.state;
+    const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
+    const classNames = getClassNames(getStyles);
 
     return (
       <div>
-        <DefaultButton onClick={ this._onClick }>Show the overlay</DefaultButton>
+        <DefaultButton
+          onClick={ this._toggleOverlay }
+          text='Show the overlay'
+        />
         { isOverlayVisible && (
-          <Overlay onClick={ this._onClick }>
-            <div className='OverlayExample-content'>
+          <Overlay onClick={ this._setVisibilityFalse } >
+            <div className={ classNames.root }>
               <p>I am content within the overlay.</p>
             </div>
           </Overlay>
@@ -34,9 +45,13 @@ export class OverlayLightExample extends React.Component<{}, {
     );
   }
 
-  private _onClick() {
-    this.setState({
-      isOverlayVisible: !this.state.isOverlayVisible
-    });
+  @autobind
+  private _setVisibilityFalse(): void {
+    this.setState({ isOverlayVisible: false });
+  }
+
+  @autobind
+  private _toggleOverlay(): void {
+    this.setState({ isOverlayVisible: !this.state.isOverlayVisible });
   }
 }
