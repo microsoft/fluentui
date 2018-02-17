@@ -78,8 +78,6 @@ describe('CommandBar', () => {
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
-    console.log(document.body.innerHTML);
-
     const [item1, item2, item3] = ['.item1', '.item2', '.item3'].map(i => document.querySelector(i)!.children[0]);
     expect(item1.getAttribute('aria-setsize')).toBe('3');
     expect(item2.getAttribute('aria-setsize')).toBe('3');
