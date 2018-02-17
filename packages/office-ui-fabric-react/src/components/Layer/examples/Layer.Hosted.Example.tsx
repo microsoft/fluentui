@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { autobind } from '../../../Utilities';
 import { Checkbox } from '../../../Checkbox';
-// import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Layer } from '../Layer';
 import { LayerHost } from '../LayerHost';
 import { Toggle } from '../../../Toggle';
