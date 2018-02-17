@@ -91,10 +91,11 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   public componentDidUpdate() {
     let host = this._getHost();
 
-    const { getStyles, theme } = this.props;
+    const { className, getStyles, theme } = this.props;
     const classNames = getClassNames(getStyles!,
       {
         theme: theme!,
+        className,
         isNotHost: !this.props.hostId
       }
     );

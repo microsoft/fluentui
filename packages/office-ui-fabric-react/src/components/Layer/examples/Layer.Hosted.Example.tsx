@@ -61,6 +61,7 @@ export class LayerHostedExample extends React.Component<{}, {
             hostId='layerhost1'
             onLayerDidMount={ this._log('didmount') }
             onLayerWillUnmount={ this._log('willunmount') }
+            className={ 'exampleLayerClassName' }
           >
             { content }
           </Layer>
