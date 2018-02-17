@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.52.0",
+      "tag": "office-ui-fabric-react_v5.52.0",
+      "date": "Sat, 17 Feb 2018 21:29:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "8b235107117de864c76803eeedbefb9de9e9c17e",
+            "comment": "Add notifyPageChange function to List"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "c4aceacd30e2eddfb9ed23b2c2e2a335d268237a",
+            "comment": "Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "6a7d210880de2cf99cfa5ac154ea887140635d01",
+            "comment": "Fixes useTargetWidth prop for ContextualMenu"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "1f1db9da4f7368806e1a819e75d7685ec7b73f04",
+            "comment": "Convert overlay and examples to mergeStyles"
+          },
+          {
+            "author": "Mike Pateras <35780775+paterasMSFT@users.noreply.github.com>",
+            "commit": "108ba47a0f555af5a833d3dbd880ddfb1bf6f5e4",
+            "comment": "DetailsList: Groups are now considered for aria-rowcount."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "f009d10b1c548e15b905a0148a3b79bb5c8d34b6",
+            "comment": "Converting SCSS to MergeStyles step 1 - file structure"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.18.0 <6.0.0` to `>=5.18.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.51.0",
       "tag": "office-ui-fabric-react_v5.51.0",
       "date": "Fri, 16 Feb 2018 11:23:29 GMT",
