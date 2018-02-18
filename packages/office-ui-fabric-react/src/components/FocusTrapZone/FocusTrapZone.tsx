@@ -87,7 +87,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       <div
         { ...divProps }
         className={ className }
-        ref='root'
+        ref={ this._resolveRef('_root') }
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyboardHandler }
       >
@@ -106,12 +106,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
-    let root = this._root;
 
     if (focusSelector) {
-      _firstFocusableChild = root.querySelector('.' + focusSelector);
+      _firstFocusableChild = this._root.querySelector('.' + focusSelector);
     } else {
-      _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
+      _firstFocusableChild = getNextElement(this._root, this._root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
       (_firstFocusableChild as any).focus();
@@ -124,10 +123,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    let { root } = this.refs;
-
-    const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastTabbable(root, root.lastChild as HTMLElement, true);
+    const _firstFocusableChild = getFirstFocusable(this._root, this._root.firstChild as HTMLElement, true);
+    const _lastFocusableChild = getLastTabbable(this._root, this._root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
       _lastFocusableChild!.focus();
