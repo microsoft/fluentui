@@ -26,7 +26,7 @@ export class GroupedListCustomExample extends React.Component {
   public render() {
     return (
       <GroupedList
-        ref={ this.createGroupedListRef }
+        ref={ this._createGroupedListRef }
         items={ _items }
         onRenderCell={ this._onRenderCell }
         groupProps={
@@ -41,7 +41,7 @@ export class GroupedListCustomExample extends React.Component {
   }
 
   @autobind
-  private createGroupedListRef(groupedList: GroupedList) {
+  private _createGroupedListRef(groupedList: GroupedList) {
     this._groupedList = groupedList;
   }
 
