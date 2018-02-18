@@ -514,7 +514,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
-            onRenderLabel={ this._renderCustomLabel.bind(this, item) }
+            onRenderLabel={ this._onRenderLabel.bind(this, item) }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
               'ms-Dropdown-item', styles.item, {
@@ -541,6 +541,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
     return <span className={ css('ms-Dropdown-optionText', styles.optionText) }>{ item.text }</span>;
+  }
+
+  // Render custom label for drop down item
+  @autobind
+  private _onRenderLabel(item: IDropdownOption) {
+    const { onRenderOption = this._onRenderOption } = this.props;
+    return onRenderOption(item, this._onRenderOption);
   }
 
   @autobind
@@ -842,9 +849,5 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         isOpen: !isOpen
       });
     }
-  }
-  private _renderCustomLabel(item: IDropdownOption) {
-    const { onRenderOption = this._onRenderOption } = this.props;
-    return onRenderOption(item, this._onRenderOption);
   }
 }
