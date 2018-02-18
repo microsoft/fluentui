@@ -36,6 +36,7 @@ import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { GroupedList } from '../../GroupedList';
 import { List, IListProps } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
+import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 
 const styles: any = stylesImport;
 
@@ -293,6 +294,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       onRenderDetailsHeader = this._onRenderDetailsHeader
     } = this.props;
 
+    const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
@@ -314,7 +317,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         <div
           role='grid'
           aria-label={ ariaLabelForGrid }
-          aria-rowcount={ (isHeaderVisible ? 1 : 0) + (items ? items.length : 0) }
+          aria-rowcount={ rowCount }
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly='true'
         >

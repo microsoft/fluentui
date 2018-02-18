@@ -1,6 +1,123 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Feb 2018 11:14:36 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Feb 2018 21:29:00 GMT and should not be manually modified.
+
+## 5.52.0
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Minor changes
+
+- Converting SCSS to MergeStyles step 1 - file structure
+
+### Patches
+
+- Add notifyPageChange function to List
+- Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots
+- Fixes useTargetWidth prop for ContextualMenu
+- Convert overlay and examples to mergeStyles
+- DetailsList: Groups are now considered for aria-rowcount.
+
+## 5.51.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added enum for triggering menu with arrow keys and bool to allow it or not
+- Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout
+- FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this
+- Link: Update to use merge-styles
+
+### Patches
+
+- Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'
+- SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself.
+
+## 5.50.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- Add "use current input command" and remove need to explicity call focus when moving between suggestions and commands
+- Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx
+- SearchBox: Fixed getStyles interface to be using ISearchBoxStyleProps instead of ISearchBoxProps
+
+### Patches
+
+- Fix bug: '#3940 Validate function works incorrect with attribute validateOnFocusOut'
+- Converted ButtonBasicExample to use mergeStyles instead of SCSS.
+- Fix ComboBox, ContextualMenu, Teachingbubble overwriting calloutProps.className
+- Fire onKeyDown for Button with menuProps
+- Fabric: Adds button overflow visible global style so that ie11 renders like edge/chrome/firefox
+- DatePicker: Fixing pointer when datepicker doesn't have a label
+- ComboBox: Add getClassNAmes prop to allow complete customization of the component
+- CalloutContent: Remove calloutWidth from calloutMain 
+- SpinButton: Add getClassNAmes prop to allow complete customization of the component
+- Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items.
+
+## 5.49.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering
+- Moves DatePicker label outside of hit target
+- Add name attribute to button
+
+## 5.49.2
+Mon, 12 Feb 2018 17:33:11 GMT
+
+### Patches
+
+- presence indicator does not influence layout of Persona
+
+## 5.49.1
+Mon, 12 Feb 2018 11:14:02 GMT
+
+### Patches
+
+- Fix issue where CommandBar chevron doesn't change color with rest of control when disabled
+- DetailsList: fix disappearing line when hovering on column header
+
+## 5.49.0
+Fri, 09 Feb 2018 18:11:52 GMT
+
+### Minor changes
+
+- ChoiceGroup: More flexible image field sizing, default image size, large image class.
+
+### Patches
+
+- Allowing for contextual and menus to be closed on Alt keys
+- Rating: Renamed RatingBase.tsx to Rating.base.tsx to match convention
+
+## 5.48.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.48.1
+Thu, 08 Feb 2018 02:29:26 GMT
+
+### Patches
+
+- Callout/Positioning: Fixed a bug where callout would lose alignment for some hints in rtl
+- Callout: Move positioning to inline styling
+
+## 5.48.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- SearchBox: Export base component as well as styled
+
+### Patches
+
+- Remove duplicate export of command button from the button index
+- [Spinner] Use rotateZ to stop the spinner from wiggling in IE
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+- SearchBox: minor correction in hover styles.
 
 ## 5.47.0
 Tue, 06 Feb 2018 11:14:36 GMT

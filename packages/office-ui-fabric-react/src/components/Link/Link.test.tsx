@@ -24,4 +24,9 @@ describe('Link', () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  it('renders Link with a custom class name', () => {
+    const component = renderer.create(<Link href='#' className='customClassName'>I'm a link</Link>);
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
