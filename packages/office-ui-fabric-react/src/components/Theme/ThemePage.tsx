@@ -23,12 +23,6 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     index: number;
   };
 }> {
-
-  public refs: {
-    [key: string]: React.ReactInstance;
-    list: DetailsList;
-  };
-
   private _list: DetailsList;
 
   constructor(props: {}) {
@@ -149,7 +143,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     loadTheme({ palette });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
-    this.refs.list.forceUpdate();
+    this._list.forceUpdate();
   }
 
   private _onPickerDismiss() {
