@@ -35,7 +35,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
-    Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
@@ -87,6 +87,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({
       suggestionsVisible: false,
     });
+    console.log('hidepicker');
   }
 
   public showPicker(): void {
@@ -180,7 +181,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
           refocusSuggestions={ this.refocusSuggestions }
-          { ...this.props.pickerSuggestionsProps as IBasePickerSuggestionsProps }
+          {...this.props.pickerSuggestionsProps as IBasePickerSuggestionsProps}
         />
       </Callout>
     ) : null;
@@ -317,7 +318,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-  ): void {
+    ): void {
     this.onChange(item);
   }
 
@@ -326,7 +327,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-  ): void {
+    ): void {
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
@@ -474,7 +475,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       ) => ISuggestionModel<T>))(
         this.state.queryString,
         (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
-      );
+        );
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
