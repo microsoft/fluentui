@@ -182,7 +182,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
           ms-Button-icon
           {
             color: #106ebe;
@@ -228,7 +227,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
           ms-Button-menuIcon
           {
             color: #666666;
@@ -553,7 +551,6 @@ exports[`Button renders IconButton correctly 1`] = `
       aria-hidden={true}
       aria-label={undefined}
       className=
-          ms-Icon
           ms-Button-icon
           {
             display: inline-block;

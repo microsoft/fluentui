@@ -50,9 +50,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _root: HTMLElement;
   private _host: HTMLDivElement;
   private _focusZone: FocusZone;
-  private _dropDown: HTMLDivElement;
-  // tslint:disable-next-line:no-unused-variable
-  private _dropdownLabel: HTMLElement;
+  private _dropDownDiv: HTMLDivElement;
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -113,7 +111,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
-      this._dropDown.focus();
+      this._dropDownDiv.focus();
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
@@ -154,7 +152,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             className={ css('ms-Dropdown-label') }
             id={ id + '-label' }
             htmlFor={ id }
-            componentRef={ this._resolveRef('_dropdownLabel') }
             required={ required }
           >
             { label }
@@ -162,7 +159,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) }
         <div
           data-is-focusable={ !disabled }
-          ref={ this._resolveRef('_dropDown') }
+          ref={ this._resolveRef('_dropDownDiv') }
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
@@ -227,8 +224,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public focus(shouldOpenOnFocus?: boolean) {
-    if (this._dropDown && this._dropDown.tabIndex !== -1) {
-      this._dropDown.focus();
+    if (this._dropDownDiv && this._dropDownDiv.tabIndex !== -1) {
+      this._dropDownDiv.focus();
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -381,11 +378,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-            target={ this._dropDown }
+            target={ this._dropDownDiv }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
-            calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
+            calloutWidth={ dropdownWidth || this._dropDownDiv.clientWidth }
           >
             { onRenderList(props, this._onRenderList) }
           </Callout>
@@ -480,14 +477,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndices = [] } = this.state;
     let id = this._id;
     let isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
-    let checkboxStyles = getCheckboxStyles(getTheme());
 
     return (
       !this.props.multiSelect ?
         (
           <CommandButton
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -512,7 +507,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
             data-is-focusable={ !item.disabled }
@@ -535,13 +529,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             checked={ isItemSelected }
-            // Hover is being handled by focus styles
-            // so clear out the explicit hover styles
-            styles={ {
-              checkboxHovered: checkboxStyles.checkbox,
-              checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-              textHovered: checkboxStyles.text
-            } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>
         )
@@ -630,7 +617,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onDismiss() {
     this.setState({ isOpen: false });
-    this._dropDown.focus();
+    this._dropDownDiv.focus();
   }
 
   // Get all selected indexes for multi-select mode

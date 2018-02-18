@@ -248,7 +248,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Button-icon
               {
                 display: inline-block;

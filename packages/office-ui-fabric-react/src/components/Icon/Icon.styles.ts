@@ -7,7 +7,6 @@ import {
 
 export const getStyles = (props: IIconStyleProps): IIconStyles => ({
   root: [
-    'ms-Icon',
     {
       display: 'inline-block'
     },
