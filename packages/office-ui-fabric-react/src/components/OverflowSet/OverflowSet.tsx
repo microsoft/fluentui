@@ -55,11 +55,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _onRenderItems(items: any[]): JSX.Element[] {
     return items.map((item, i) => {
       let wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
-      if (item.key) {
-        wrapperDivProps.key = item.key;
-      }
+
       return (
-        <div {...wrapperDivProps}>
+        <div key={ item.key } { ...wrapperDivProps }>
           { this.props.onRenderItem(item) }
         </div>
       );
@@ -70,7 +68,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   private _onRenderOverflowButtonWrapper(items: any[]): JSX.Element {
     let wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     return (
-      <div {...wrapperDivProps}>
+      <div { ...wrapperDivProps }>
         { this.props.onRenderOverflowButton(items) }
       </div>
     );

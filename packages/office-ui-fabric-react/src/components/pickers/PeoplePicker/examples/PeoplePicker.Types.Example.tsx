@@ -289,7 +289,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           componentRef={ this._resolveRef('_picker') }
         />
         <label> Click to Add a person </label>
-        { controlledItems.map(item => <div>
+        { controlledItems.map((item, index) => <div key={ index }>
           <DefaultButton
             className='controlledPickerButton'
             // tslint:disable-next-line:jsx-no-lambda
@@ -299,7 +299,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
               });
             } }
           >
-            <Persona { ...item} />
+            <Persona { ...item } />
           </DefaultButton>
         </div>) }
       </div>
