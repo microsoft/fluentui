@@ -506,7 +506,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onMenuClick(ev, this);
     }
 
-    if (!ev.defaultPrevented && ev.which === KeyCodes.down) {
+    if (!ev.defaultPrevented &&
+      this.props.menuTriggerKeyCode !== null &&
+      ev.which === (this.props.menuTriggerKeyCode === undefined ? KeyCodes.down : this.props.menuTriggerKeyCode)) {
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
