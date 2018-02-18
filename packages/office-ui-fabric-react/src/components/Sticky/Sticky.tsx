@@ -29,11 +29,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     scrollablePane: PropTypes.object
   };
 
-  public refs: {
-    root: HTMLElement;
-    placeholder: HTMLElement;
-  };
-
   public context: {
     scrollablePane: {
       subscribe: (handler: Function) => void;
@@ -47,6 +42,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   };
 
   public content: HTMLElement;
+
+  public _root: HTMLElement;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -66,7 +63,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.content = document.createElement('div');
     this.content.style.background = this.props.stickyBackgroundColor || this._getBackground();
     ReactDOM.render(<div>{ this.props.children }</div>, this.content);
-    this.refs.root.appendChild(this.content);
+    this._root.appendChild(this.content);
     this.context.scrollablePane.notifySubscribers(true);
   }
 
@@ -134,15 +131,15 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const isSticky = isStickyTop || isStickyBottom;
 
     return (
-      <div ref='root'>
-        <div ref='placeholder' style={ { height: (isSticky ? placeholderHeight : 0) } } />
+      <div ref={ this._resolveRef('_root') }>
+        <div style={ { height: (isSticky ? placeholderHeight : 0) } } />
       </div>
     );
   }
 
   @autobind
   private _onScrollEvent(headerBound: ClientRect, footerBound: ClientRect) {
-    const { top, bottom } = this.refs.root.getBoundingClientRect();
+    const { top, bottom } = this._root.getBoundingClientRect();
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyPosition } = this.props;
     const canStickyHeader = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Header;
@@ -162,7 +159,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _resetSticky(callback: () => void) {
-    this.refs.root.appendChild(this.content);
+    this._root.appendChild(this.content);
     setTimeout(() => {
       if (this.props.stickyClassName) {
         this.content.children[0].classList.remove(this.props.stickyClassName);
@@ -173,7 +170,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string | null {
-    let curr = this.refs.root;
+    let curr = this._root;
     while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
       window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
       if (curr.tagName === 'HTML') {

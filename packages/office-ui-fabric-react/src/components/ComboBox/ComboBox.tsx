@@ -88,10 +88,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement
-  };
+  public root: HTMLElement;
 
   // The input aspect of the comboBox
   private _comboBox: Autofill;
@@ -295,7 +292,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
 
     return (
-      <div { ...divProps } ref='root' className={ this._classNames.container }>
+      <div { ...divProps } ref={ this._resolveRef('root') } className={ this._classNames.container }>
         { label && (
           <Label id={ id + '-label' } disabled={ disabled } required={ required } htmlFor={ id + '-input' } className={ this._classNames.label }>{ label }</Label>
         ) }
@@ -773,7 +770,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
     if (event.relatedTarget &&
-      (this.refs.root && this.refs.root.contains(event.relatedTarget as HTMLElement) ||
+      (this.root && this.root.contains(event.relatedTarget as HTMLElement) ||
         this._comboBoxMenu && this._comboBoxMenu.contains(event.relatedTarget as HTMLElement))) {
       event.preventDefault();
       event.stopPropagation();

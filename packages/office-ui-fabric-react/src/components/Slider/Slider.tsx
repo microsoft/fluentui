@@ -34,13 +34,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     buttonProps: {}
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement,
-    sliderLine: HTMLElement,
-    thumb: HTMLElement
-  };
-
+  private _sliderLine: HTMLDivElement;
+  private _thumb: HTMLSpanElement;
   private _id: string;
 
   constructor(props: ISliderProps) {
@@ -102,7 +97,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
           ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
           ['ms-Slider-column ' + styles.rootIsVertical]: vertical
         }) }
-        ref='root'
       >
         { label && (
           <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
@@ -133,11 +127,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             role='slider'
           >
             <div
-              ref='sliderLine'
+              ref={ this._resolveRef('_sliderLine') }
               className={ css('ms-Slider-line', styles.line) }
             >
               <span
-                ref='thumb'
+                ref={ this._resolveRef('_thumb') }
                 className={ css('ms-Slider-thumb', styles.thumb) }
                 style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
@@ -157,8 +151,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     ) as React.ReactElement<{}>;
   }
   public focus(): void {
-    if (this.refs.thumb) {
-      this.refs.thumb.focus();
+    if (this._thumb) {
+      this._thumb.focus();
     }
   }
 
@@ -196,7 +190,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
-    const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
+    const sliderPositionRect: ClientRect = this._sliderLine.getBoundingClientRect();
     const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;

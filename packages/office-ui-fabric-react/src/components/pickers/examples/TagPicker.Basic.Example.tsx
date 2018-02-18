@@ -42,7 +42,6 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
           onChange={ this._onDisabledButtonClick }
         />
         <TagPicker
-          ref='tagPicker'
           onResolveSuggestions={ this._onFilterChanged }
           getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={
