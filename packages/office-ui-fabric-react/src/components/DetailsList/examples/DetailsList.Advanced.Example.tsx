@@ -29,7 +29,7 @@ const PAGING_SIZE = 10;
 const PAGING_DELAY = 5000;
 const ITEMS_COUNT = 5000;
 
-const _items: any;
+let _items: any;
 
 export interface IDetailsListAdvancedExampleState {
   canResizeColumns?: boolean;
@@ -178,7 +178,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   @autobind
   private _onToggleLazyLoad() {
-    const { isLazyLoaded } = this.state;
+    let { isLazyLoaded } = this.state;
 
     isLazyLoaded = !isLazyLoaded;
 
@@ -190,7 +190,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   @autobind
   private _onToggleResizing() {
-    const { items, canResizeColumns, sortedColumnKey, isSortedDescending } = this.state;
+    const { items, sortedColumnKey, isSortedDescending } = this.state;
+    let { canResizeColumns } = this.state;
 
     canResizeColumns = !canResizeColumns;
 
@@ -223,7 +224,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   @autobind
   private _onItemLimitChanged(value: string) {
-    const newValue = parseInt(value, 10);
+    let newValue = parseInt(value, 10);
     if (isNaN(newValue)) {
       newValue = DEFAULT_ITEM_LIMIT;
     }
@@ -508,8 +509,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     if (isGrouped) { // ungroup
       this._onSortColumn(sortedColumnKey as string, !!isSortedDescending);
     } else {
-      const groupedItems = [];
-      const newGroups = null;
+      let groupedItems = [];
+      let newGroups = null;
       if (groups) {
         newGroups = groups.concat([]);
         groupedItems = this._groupByKey(newGroups, items as any[], key);
@@ -531,7 +532,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _groupByKey(groups: IGroup[], items: any[], key: string): any[] {
-    const groupedItems: any[] = [];
+    let groupedItems: any[] = [];
     if (groups) {
       groups.forEach((group: IGroup) => {
         if (group.children && group.children.length > 0) {
@@ -575,7 +576,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _getLeafGroupKey(key: string, separator: string): string {
-    const leafKey = key;
+    let leafKey = key;
     if (key.indexOf(separator) !== -1) {
       const arrKeys = key.split(separator);
       leafKey = arrKeys[arrKeys.length - 1];

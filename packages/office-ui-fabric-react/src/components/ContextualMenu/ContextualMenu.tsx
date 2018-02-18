@@ -190,9 +190,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   public render(): JSX.Element | null {
-    const { className,
+    let {
+      isBeakVisible
+    } = this.props;
+
+    const {
+      className,
       items,
-      isBeakVisible,
       labelElementId,
       id,
       targetPoint,
@@ -244,7 +248,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     /**
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
      */
-    const contextMenuStyle;
+    let contextMenuStyle;
     const targetAsHtmlElement = this._target as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetWidth = targetAsHtmlElement.offsetWidth;
@@ -261,8 +265,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
-      const indexCorrection = 0;
-      const totalItemCount = 0;
+      let indexCorrection = 0;
+      let totalItemCount = 0;
       for (const item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider &&
           item.itemType !== ContextualMenuItemType.Header) {
@@ -384,7 +388,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    const headerItem;
+    let headerItem;
     if (section.title) {
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${section.title}-title`,
@@ -492,7 +496,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean) {
     const { expandedMenuItemKey, subMenuId } = this.state;
-    const ariaLabel = '';
+    let ariaLabel = '';
 
     if (item.ariaLabel) {
       ariaLabel = item.ariaLabel;
@@ -844,7 +848,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _getSubmenuProps() {
     const { submenuTarget, expandedMenuItemKey } = this.state;
     const item = this._findItemByKey(expandedMenuItemKey!);
-    const submenuProps = null;
+    let submenuProps = null;
 
     if (item) {
       submenuProps = {

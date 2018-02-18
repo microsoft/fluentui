@@ -9,7 +9,7 @@ describe('SearchBox', () => {
 
   it('renders SearchBox correctly', () => {
     const component = renderer.create(<SearchBox />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

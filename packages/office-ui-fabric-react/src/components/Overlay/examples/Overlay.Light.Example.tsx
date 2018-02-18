@@ -18,7 +18,7 @@ export class OverlayLightExample extends React.Component<{}, {
   }
 
   public render() {
-    let { isOverlayVisible } = this.state;
+    const { isOverlayVisible } = this.state;
 
     return (
       <div>

@@ -45,7 +45,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
       this._originalFocusedElement &&
       this._containsFocus &&
       this._originalFocusedElement as any !== window) {
-      // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
+      // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
       if (this._originalFocusedElement) {
@@ -55,7 +55,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     let needsVerticalScrollBar = false;
     if (this.refs.root && this.refs.root.firstElementChild) {

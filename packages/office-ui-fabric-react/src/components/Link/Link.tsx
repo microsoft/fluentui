@@ -15,7 +15,7 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
   private _link: HTMLElement;
 
   public render() {
-    let { disabled, children, className, href } = this.props;
+    const { disabled, children, className, href } = this.props;
 
     return (
       href ? (
@@ -62,7 +62,7 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    let { onClick } = this.props;
+    const { onClick } = this.props;
 
     if (onClick) {
       onClick(ev);

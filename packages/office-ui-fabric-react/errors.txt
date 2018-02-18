@@ -1,0 +1,362 @@
+
+> office-ui-fabric-react@5.49.3 build E:\git\office-ui-fabric-react\packages\office-ui-fabric-react
+> node ../../scripts/build.js
+
+[office-ui-fabric-react 14:49:20] Starting: copy
+  Copying "index.html" to "dist"
+  Copying "node_modules\office-ui-fabric-core\dist\sass\**\*" to "dist\sass"
+  Copying "node_modules\office-ui-fabric-core\dist\css\**\*" to "dist\css"
+[office-ui-fabric-react 14:49:20] Pass: copy (197ms)
+[office-ui-fabric-react 14:49:20] Starting: sass
+[office-ui-fabric-react 14:49:23] Pass: sass (2.408s)
+[office-ui-fabric-react 14:49:23] Starting: tslint
+[office-ui-fabric-react 14:49:34] Pass: tslint (11.906s)
+[office-ui-fabric-react 14:49:34] Starting: ts
+[office-ui-fabric-react 14:49:45] Pass: ts (10.744s)
+[office-ui-fabric-react 14:49:45] Starting: jest
+
+ RUNS  ...SpinButton.test.tsx
+[K[1A[K[1APASS src\components\SpinButton\SpinButton.test.tsx (5.179s)
+
+ RUNS  ...SpinButton.test.tsx
+[K[1A[K[1A
+ RUNS  ...SpinButton.test.tsx
+[K[1A[K[1A
+ RUNS  ...TextField.test.tsx
+[K[1A[K[1A
+ RUNS  ...TextField.test.tsx
+[K[1A[K[1A
+ RUNS  ...TextField.test.tsx
+[K[1A[K[1A
+ RUNS  ...TextField.test.tsx
+[K[1A[K[1A
+ RUNS  ...BasePicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...BasePicker.test.tsx
+[K[1A[K[1APASS src\components\TextField\TextField.test.tsx
+
+ RUNS  ...BasePicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...Dialog.test.tsx
+[K[1A[K[1A
+ RUNS  ...Dialog.test.tsx
+[K[1A[K[1APASS src\components\pickers\BasePicker.test.tsx
+
+ RUNS  ...Dialog.test.tsx
+[K[1A[K[1A
+ RUNS  ...Dropdown.test.tsx
+[K[1A[K[1A
+ RUNS  ...Dropdown.test.tsx
+[K[1A[K[1APASS src\components\Dialog\Dialog.test.tsx
+
+ RUNS  ...Dropdown.test.tsx
+[K[1A[K[1A
+ RUNS  ...Facepile.test.tsx
+[K[1A[K[1A
+ RUNS  ...Facepile.test.tsx
+[K[1A[K[1APASS src\components\Dropdown\Dropdown.test.tsx
+
+ RUNS  ...Facepile.test.tsx
+[K[1A[K[1A
+ RUNS  ...SwatchColorPicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...SwatchColorPicker.test.tsx
+[K[1A[K[1APASS src\components\Facepile\Facepile.test.tsx
+
+ RUNS  ...SwatchColorPicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...Calendar.test.tsx
+[K[1A[K[1A
+ RUNS  ...Calendar.test.tsx
+[K[1A[K[1APASS src\components\SwatchColorPicker\SwatchColorPicker.test.tsx
+
+ RUNS  ...Calendar.test.tsx
+[K[1A[K[1A
+ RUNS  ...ComboBox.test.tsx
+[K[1A[K[1A
+ RUNS  ...ComboBox.test.tsx
+[K[1A[K[1APASS src\components\Calendar\Calendar.test.tsx
+
+ RUNS  ...ComboBox.test.tsx
+[K[1A[K[1A
+ RUNS  ...Panel.test.tsx
+[K[1A[K[1A
+ RUNS  ...Panel.test.tsx
+[K[1A[K[1APASS src\components\ComboBox\ComboBox.test.tsx
+
+ RUNS  ...Panel.test.tsx
+[K[1A[K[1A
+ RUNS  ...Panel.test.tsx
+[K[1A[K[1A
+ RUNS  ...SelectionZone.test.tsx
+[K[1A[K[1A
+ RUNS  ...SelectionZone.test.tsx
+[K[1A[K[1APASS src\components\Panel\Panel.test.tsx
+
+ RUNS  ...SelectionZone.test.tsx
+[K[1A[K[1A
+ RUNS  ...ContextualMenu.test.tsx
+[K[1A[K[1A
+ RUNS  ...ContextualMenu.test.tsx
+[K[1A[K[1APASS src\utilities\selection\SelectionZone.test.tsx
+
+ RUNS  ...ContextualMenu.test.tsx
+[K[1A[K[1A
+ RUNS  ...ResizeGroup.test.tsx
+[K[1A[K[1A
+ RUNS  ...ResizeGroup.test.tsx
+[K[1A[K[1APASS src\components\ContextualMenu\ContextualMenu.test.tsx
+
+ RUNS  ...ResizeGroup.test.tsx
+[K[1A[K[1A
+ RUNS  ...CommandBar.test.tsx
+[K[1A[K[1A
+ RUNS  ...CommandBar.test.tsx
+[K[1A[K[1APASS src\components\ResizeGroup\ResizeGroup.test.tsx
+
+ RUNS  ...CommandBar.test.tsx
+[K[1A[K[1A
+ RUNS  ...Breadcrumb.test.tsx
+[K[1A[K[1A
+ RUNS  ...Breadcrumb.test.tsx
+[K[1A[K[1APASS src\components\CommandBar\CommandBar.test.tsx
+
+ RUNS  ...Breadcrumb.test.tsx
+[K[1A[K[1A
+ RUNS  ...ColorPicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...ColorPicker.test.tsx
+[K[1A[K[1APASS src\components\Breadcrumb\Breadcrumb.test.tsx
+
+ RUNS  ...ColorPicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...Callout.test.tsx
+[K[1A[K[1A
+ RUNS  ...Callout.test.tsx
+[K[1A[K[1APASS src\components\ColorPicker\ColorPicker.test.tsx
+
+ RUNS  ...Callout.test.tsx
+[K[1A[K[1A
+ RUNS  ...Button.test.tsx
+[K[1A[K[1A
+ RUNS  ...Button.test.tsx
+[K[1A[K[1APASS src\components\Callout\Callout.test.tsx
+
+ RUNS  ...Button.test.tsx
+[K[1A[K[1A
+ RUNS  ...DatePicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...DatePicker.test.tsx
+[K[1A[K[1APASS src\components\Button\Button.test.tsx
+
+ RUNS  ...DatePicker.test.tsx
+[K[1A[K[1A
+ RUNS  ...Rating.test.tsx
+[K[1A[K[1A
+ RUNS  ...Rating.test.tsx
+[K[1A[K[1APASS src\components\DatePicker\DatePicker.test.tsx
+
+ RUNS  ...Rating.test.tsx
+[K[1A[K[1A
+ RUNS  ...TeachingBubble.test.tsx
+[K[1A[K[1A
+ RUNS  ...TeachingBubble.test.tsx
+[K[1A[K[1APASS src\components\Rating\Rating.test.tsx
+
+ RUNS  ...TeachingBubble.test.tsx
+[K[1A[K[1A
+ RUNS  ...MessageBar.test.tsx
+[K[1A[K[1A
+ RUNS  ...MessageBar.test.tsx
+[K[1A[K[1APASS src\components\TeachingBubble\TeachingBubble.test.tsx
+
+ RUNS  ...MessageBar.test.tsx
+[K[1A[K[1A
+ RUNS  ...DocumentCard.test.tsx
+[K[1A[K[1A
+ RUNS  ...DocumentCard.test.tsx
+[K[1A[K[1APASS src\components\MessageBar\MessageBar.test.tsx
+
+ RUNS  ...DocumentCard.test.tsx
+[K[1A[K[1A
+ RUNS  ...Pivot.test.tsx
+[K[1A[K[1A
+ RUNS  ...Pivot.test.tsx
+[K[1A[K[1APASS src\components\DocumentCard\DocumentCard.test.tsx
+
+ RUNS  ...Pivot.test.tsx
+[K[1A[K[1A
+ RUNS  ...SearchBox.test.tsx
+[K[1A[K[1A
+ RUNS  ...SearchBox.test.tsx
+[K[1A[K[1APASS src\components\Pivot\Pivot.test.tsx
+
+ RUNS  ...SearchBox.test.tsx
+[K[1A[K[1A
+ RUNS  ...Grid.test.tsx
+[K[1A[K[1A
+ RUNS  ...Grid.test.tsx
+[K[1A[K[1APASS src\components\SearchBox\SearchBox.test.tsx
+
+ RUNS  ...Grid.test.tsx
+[K[1A[K[1A
+ RUNS  ...Nav.test.tsx
+[K[1A[K[1A
+ RUNS  ...Nav.test.tsx
+[K[1A[K[1APASS src\utilities\grid\Grid.test.tsx
+
+ RUNS  ...Nav.test.tsx
+[K[1A[K[1A
+ RUNS  ...ActivityItem.test.tsx
+[K[1A[K[1A
+ RUNS  ...ActivityItem.test.tsx
+[K[1A[K[1APASS src\components\Nav\Nav.test.tsx
+
+ RUNS  ...ActivityItem.test.tsx
+[K[1A[K[1A
+ RUNS  ...Persona.test.tsx
+[K[1A[K[1A
+ RUNS  ...Persona.test.tsx
+[K[1A[K[1APASS src\components\ActivityItem\ActivityItem.test.tsx
+
+ RUNS  ...Persona.test.tsx
+[K[1A[K[1A
+ RUNS  ...Toggle.test.tsx
+[K[1A[K[1A
+ RUNS  ...Toggle.test.tsx
+[K[1A[K[1APASS src\components\Persona\Persona.test.tsx
+
+ RUNS  ...Toggle.test.tsx
+[K[1A[K[1A
+ RUNS  ...ChoiceGroup.test.tsx
+[K[1A[K[1A
+ RUNS  ...ChoiceGroup.test.tsx
+[K[1A[K[1APASS src\components\Toggle\Toggle.test.tsx
+
+ RUNS  ...ChoiceGroup.test.tsx
+[K[1A[K[1A
+ RUNS  ...FocusZone.test.tsx
+[K[1A[K[1A
+ RUNS  ...FocusZone.test.tsx
+[K[1A[K[1APASS src\components\ChoiceGroup\ChoiceGroup.test.tsx
+
+ RUNS  ...FocusZone.test.tsx
+[K[1A[K[1A
+ RUNS  ...Slider.test.tsx
+[K[1A[K[1A
+ RUNS  ...Slider.test.tsx
+[K[1A[K[1APASS src\components\FocusZone\FocusZone.test.tsx
+
+ RUNS  ...Slider.test.tsx
+[K[1A[K[1A
+ RUNS  ...Image.test.tsx
+[K[1A[K[1A
+ RUNS  ...Image.test.tsx
+[K[1A[K[1APASS src\components\Slider\Slider.test.tsx
+
+ RUNS  ...Image.test.tsx
+[K[1A[K[1A
+ RUNS  ...OverflowSet.test.tsx
+[K[1A[K[1A
+ RUNS  ...OverflowSet.test.tsx
+[K[1A[K[1APASS src\components\Image\Image.test.tsx
+
+ RUNS  ...OverflowSet.test.tsx
+[K[1A[K[1A
+ RUNS  ...ProgressIndicator.test.tsx
+[K[1A[K[1A
+ RUNS  ...ProgressIndicator.test.tsx
+[K[1A[K[1APASS src\components\OverflowSet\OverflowSet.test.tsx
+
+ RUNS  ...ProgressIndicator.test.tsx
+[K[1A[K[1A
+ RUNS  ...DateMath.test.ts
+[K[1A[K[1A
+ RUNS  ...DateMath.test.ts
+[K[1A[K[1APASS src\components\ProgressIndicator\ProgressIndicator.test.tsx
+
+ RUNS  ...DateMath.test.ts
+[K[1A[K[1A
+ RUNS  ...List.test.tsx
+[K[1A[K[1A
+ RUNS  ...List.test.tsx
+[K[1A[K[1APASS src\utilities\dateMath\DateMath.test.ts
+
+ RUNS  ...List.test.tsx
+[K[1A[K[1A
+ RUNS  ...Layer.test.tsx
+[K[1A[K[1A
+ RUNS  ...Layer.test.tsx
+[K[1A[K[1APASS src\components\List\List.test.tsx
+
+ RUNS  ...Layer.test.tsx
+[K[1A[K[1A
+ RUNS  ...Autofill.test.tsx
+[K[1A[K[1A
+ RUNS  ...Autofill.test.tsx
+[K[1A[K[1APASS src\components\Layer\Layer.test.tsx
+
+ RUNS  ...Autofill.test.tsx
+[K[1A[K[1A
+ RUNS  ...Checkbox.test.tsx
+[K[1A[K[1A
+ RUNS  ...Checkbox.test.tsx
+[K[1A[K[1APASS src\components\Autofill\Autofill.test.tsx
+
+ RUNS  ...Checkbox.test.tsx
+[K[1A[K[1A
+ RUNS  ...Label.test.tsx
+[K[1A[K[1A
+ RUNS  ...Label.test.tsx
+[K[1A[K[1APASS src\components\Checkbox\Checkbox.test.tsx
+
+ RUNS  ...Label.test.tsx
+[K[1A[K[1A
+ RUNS  ...positioning.test.ts
+[K[1A[K[1A
+ RUNS  ...positioning.test.ts
+[K[1A[K[1APASS src\components\Label\Label.test.tsx
+
+ RUNS  ...positioning.test.ts
+[K[1A[K[1A
+ RUNS  ...Link.test.tsx
+[K[1A[K[1A
+ RUNS  ...Link.test.tsx
+[K[1A[K[1APASS src\utilities\positioning.test.ts
+
+ RUNS  ...Link.test.tsx
+[K[1A[K[1A
+ RUNS  ...Icon.test.tsx
+[K[1A[K[1A
+ RUNS  ...Icon.test.tsx
+[K[1A[K[1APASS src\components\Link\Link.test.tsx
+
+ RUNS  ...Icon.test.tsx
+[K[1A[K[1A
+ RUNS  ...Selection.test.ts
+[K[1A[K[1A
+ RUNS  ...Selection.test.ts
+[K[1A[K[1APASS src\components\Icon\Icon.test.tsx
+
+ RUNS  ...Selection.test.ts
+[K[1A[K[1A
+ RUNS  ...withResponsiveMode.test.tsx
+[K[1A[K[1A
+ RUNS  ...withResponsiveMode.test.tsx
+[K[1A[K[1APASS src\utilities\selection\Selection.test.ts
+
+ RUNS  ...withResponsiveMode.test.tsx
+[K[1A[K[1A
+ RUNS  ...PersonaInitialsColor.test.ts
+[K[1A[K[1A
+ RUNS  ...PersonaInitialsColor.test.ts
+[K[1A[K[1APASS src\utilities\decorators\withResponsiveMode.test.tsx
+
+ RUNS  ...PersonaInitialsColor.test.ts
+[K[1A[K[1APASS src\components\Persona\PersonaInitialsColor.test.ts
+[office-ui-fabric-react 14:50:42] Pass: jest (56.315s)
+[office-ui-fabric-react 14:50:42] Starting: webpack
+[office-ui-fabric-react 14:50:52] Pass: webpack (10.738s)
+
+============[ office-ui-fabric-react ]=[ Pass ]=[ 92.308s ]============
+  

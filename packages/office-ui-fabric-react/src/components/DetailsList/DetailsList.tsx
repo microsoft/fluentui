@@ -185,7 +185,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport
     } = this.props;
     const shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
-    const shouldForceUpdates = false;
+    let shouldForceUpdates = false;
 
     if (newProps.layoutMode !== this.props.layoutMode) {
       shouldForceUpdates = true;
@@ -271,13 +271,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       ...listProps
     };
-    const selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
+    let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
     if (selectionMode === SelectionMode.single) {
       selectAllVisibility = SelectAllVisibility.hidden;
     }
     if (selectionMode === SelectionMode.multiple) {
       // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
-      const isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+      let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
       if (isCollapsedGroupSelectVisible === undefined) {
         isCollapsedGroupSelectVisible = true;
       }
@@ -502,8 +502,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _getGroupNestingDepth(): number {
     const { groups } = this.props;
-    const level = 0;
-    const groupsInLevel = groups;
+    let level = 0;
+    let groupsInLevel = groups;
 
     while (groupsInLevel && groupsInLevel.length > 0) {
       level++;
@@ -589,8 +589,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): IColumn[] | undefined {
-    const { columns: newColumns, items: newItems, layoutMode, selectionMode } = newProps;
-    const { width: viewportWidth } = newProps.viewport!;
+    const { items: newItems, layoutMode, selectionMode } = newProps;
+    let { columns: newColumns } = newProps;
+    let { width: viewportWidth } = newProps.viewport!;
 
     const columns = this.props ? this.props.columns : [];
     const lastWidth = this.state ? this.state.lastWidth : -1;
@@ -609,7 +610,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     newColumns = newColumns || buildColumns(newItems, true);
 
-    const adjustedColumns: IColumn[];
+    let adjustedColumns: IColumn[];
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       adjustedColumns = this._getFixedColumns(newColumns);
@@ -672,7 +673,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     const outerPadding = DEFAULT_INNER_PADDING;
     const rowCheckWidth = (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
-    const totalWidth = 0; // offset because we have one less inner padding.
+    let totalWidth = 0; // offset because we have one less inner padding.
     const availableWidth = viewportWidth - (outerPadding + rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
       const newColumn = assign(
@@ -689,7 +690,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       return newColumn;
     });
 
-    const lastIndex = adjustedColumns.length - 1;
+    let lastIndex = adjustedColumns.length - 1;
 
     // Shrink or remove collapsable columns.
     while (lastIndex > 0 && totalWidth > availableWidth) {
@@ -709,7 +710,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
 
     // Then expand columns starting at the beginning, until we've filled the width.
-    for (const i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
+    for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       const column = adjustedColumns[i];
       const isLast = i === (adjustedColumns.length - 1);
       const overrides = this._columnOverrides[column.key];
@@ -718,7 +719,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       }
 
       const spaceLeft = availableWidth - totalWidth;
-      const increment: number;
+      let increment: number;
       if (isLast) {
         increment = spaceLeft;
       } else {
@@ -767,8 +768,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
    * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
    */
   private _onColumnAutoResized(column: IColumn, columnIndex: number) {
-    const max = 0;
-    const count = 0;
+    let max = 0;
+    let count = 0;
     const totalCount = Object.keys(this._activeRows).length;
 
     for (const key in this._activeRows) {
@@ -819,7 +820,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _getItemKey(item: any, itemIndex: number): string | number {
     const { getKey } = this.props;
 
-    const itemKey: string | number | undefined = undefined;
+    let itemKey: string | number | undefined = undefined;
     if (item) {
       itemKey = item.key;
     }
@@ -848,7 +849,7 @@ export function buildColumns(
 
   if (items && items.length) {
     const firstItem = items[0];
-    const isFirstColumn = true;
+    let isFirstColumn = true;
 
     for (const propName in firstItem) {
       if (firstItem.hasOwnProperty(propName)) {

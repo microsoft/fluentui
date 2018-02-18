@@ -13,7 +13,7 @@ const styles: any = stylesImport;
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {
-    let {
+    const {
       suggestionModel,
       RenderSuggestion,
       onClick,
@@ -66,7 +66,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   public render() {
-    let {
+    const {
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -86,7 +86,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       suggestionsHeaderText
     } = this.props;
 
-    let noResults = () => {
+    const noResults = () => {
       return noResultsFoundText ?
         (
           <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
@@ -99,7 +99,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
       headerText = mostRecentlyUsedHeaderText;
     }
-    let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    const footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
     return (
       <div
         className={ css(
@@ -169,14 +169,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   private _renderSuggestions(): JSX.Element {
-    let {
-      suggestions,
+    const {
       onRenderSuggestion,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel } = this.props;
-    let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+    let { suggestions } = this.props;
+    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
@@ -235,7 +235,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   @autobind
   private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
     return (ev: React.MouseEvent<HTMLElement>): void => {
-      let onSuggestionRemove = this.props.onSuggestionRemove!;
+      const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);
       ev.stopPropagation();
     };

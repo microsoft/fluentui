@@ -215,7 +215,7 @@ describe('Calendar', () => {
     it('Verify month picker months', () => {
       const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
       expect(months.length).toEqual(12);
-      for (const i = 0; i < 12; i++) {
+      for (let i = 0; i < 12; i++) {
         expect(months[i].textContent).toEqual(dayPickerStrings.shortMonths[i]);
       }
     });
@@ -271,7 +271,7 @@ describe('Calendar', () => {
     });
 
     it('out-of-bounds days should not be part of selected range', () => {
-      const lastSelectedDateRange: Date[] = new Array();
+      let lastSelectedDateRange: Date[] = new Array();
       const defaultDate = new Date('Mar 16 2017');
       const minDate = new Date('Mar 6 2017');
       const maxDate = new Date('Mar 24 2017');
@@ -291,7 +291,7 @@ describe('Calendar', () => {
           onSelectDate={ onSelectDate() }
         />) as Calendar;
 
-      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+      const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
       ReactTestUtils.Simulate.click(days[18]);
       expect(lastSelectedDateRange!.length).toEqual(19);
       lastSelectedDateRange!.forEach((val, i) => expect(compareDates(val, addDays(minDate, i))).toEqual(true));

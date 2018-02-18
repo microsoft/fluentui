@@ -54,8 +54,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { labelText, className, disabled, underlined, getStyles, theme } = this.props;
-    let { value, hasFocus, id } = this.state;
+    const { labelText, className, disabled, underlined, getStyles, theme } = this.props;
+    const { value, hasFocus, id } = this.state;
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -194,7 +194,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange, onChanged } = this.props;
+    const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
     if (onChanged) {

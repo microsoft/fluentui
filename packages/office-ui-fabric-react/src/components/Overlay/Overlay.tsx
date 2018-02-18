@@ -23,10 +23,10 @@ export class Overlay extends BaseComponent<IOverlayProps, {}> {
   }
 
   public render() {
-    let { isDarkThemed, className } = this.props;
-    let divProps = getNativeProps(this.props, divProperties);
+    const { isDarkThemed, className } = this.props;
+    const divProps = getNativeProps(this.props, divProperties);
 
-    let modifiedClassName = css(
+    const modifiedClassName = css(
       'ms-Overlay',
       styles.root,
       className,

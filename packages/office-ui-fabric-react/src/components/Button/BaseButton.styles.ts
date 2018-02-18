@@ -24,7 +24,7 @@ const iconStyle = {
 
 /**
  * Gets the base button styles. Note: because it is a base class to be used with the `mergeRules`
- * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
+ * helper, it should have values for all class names in the interface. This const `mergeRules` optimize
  * mixing class names together.
  */
 export const getStyles = memoizeFunction((

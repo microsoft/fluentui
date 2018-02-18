@@ -455,7 +455,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return value;
     }
 
-    const index = selectedIndex;
+    let index = selectedIndex;
 
     if (allowFreeform) {
       // If we are allowing freeform and autocomplete is also true
@@ -541,8 +541,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const originalUpdatedValue: string = updatedValue;
     updatedValue = updatedValue.toLocaleLowerCase();
 
-    const newSuggestedDisplayValue = '';
-    const newCurrentPendingValueValidIndex = -1;
+    let newSuggestedDisplayValue = '';
+    let newCurrentPendingValueValidIndex = -1;
 
     // If autoComplete is on, attempt to find a match from the available options
     if (this.props.autoComplete === 'on') {
@@ -647,7 +647,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _getNextSelectableIndex(index: number, searchDirection: SearchDirection): number {
     const { currentOptions } = this.state;
 
-    const newIndex = index + searchDirection;
+    let newIndex = index + searchDirection;
 
     newIndex = Math.max(0, Math.min(currentOptions.length - 1, newIndex));
 
@@ -1072,7 +1072,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (scrollSelectedToTop) {
         this._selectedElement.offsetParent.scrollIntoView(true);
       } else {
-        const alignToTop = true;
+        let alignToTop = true;
 
         if (this._comboBoxMenu.offsetParent) {
           const scrollableParentRect = this._comboBoxMenu.offsetParent.getBoundingClientRect();
@@ -1265,7 +1265,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return;
     }
 
-    const index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
+    let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
     switch (ev.which) {
       case KeyCodes.enter:
@@ -1359,7 +1359,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // Set the initial values to respond to HOME
         // which goes to the first selectable option
         index = -1;
-        const directionToSearch = SearchDirection.forward;
+        let directionToSearch = SearchDirection.forward;
 
         // If end, update the values to respond to END
         // which goes to the last selectable option
@@ -1549,7 +1549,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
    */
   private _getAriaActiveDescentValue(): string | null {
-    const descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
+    let descendantText = (this.state.isOpen && (this.state.selectedIndex as number) >= 0 ? (this._id + '-list' + this.state.selectedIndex) : null);
     if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
       descendantText = (this._id + '-list' + this.state.currentPendingValueValidIndex);
     }

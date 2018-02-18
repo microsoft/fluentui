@@ -175,7 +175,6 @@ describe('ComboBox', () => {
   });
 
   it('Can change items in uncontrolled case', () => {
-    const comboBoxRoot;
     const wrapper = mount(
       <ComboBox
         label='testgroup'
