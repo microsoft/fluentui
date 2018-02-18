@@ -5,7 +5,7 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
-import { IOverflowSet, IOverflowSetProps } from './OverflowSet.types';
+import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';
@@ -52,7 +52,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   @autobind
-  private _onRenderItems(items: any[]): JSX.Element[] {
+  private _onRenderItems(items: IOverflowSetItemProps[]): JSX.Element[] {
     return items.map((item, i) => {
       let wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
 
