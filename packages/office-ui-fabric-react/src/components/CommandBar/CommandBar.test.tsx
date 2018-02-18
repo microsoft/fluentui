@@ -2,8 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { CommandBar } from './CommandBar';
 import { CommandBarBase } from './CommandBar.base';
+import { CommandBar } from './CommandBar';
+import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.types';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
@@ -29,6 +30,48 @@ describe('CommandBar', () => {
       />
     ).toJSON()).toMatchSnapshot();
   });
+
+  // it('adds the correct aria-setsize and aria-posinset attributes to the command bar items.', () => {
+  //   const items: IContextualMenuItem[] = [
+  //     {
+  //       name: 'TestText 1',
+  //       key: 'TestKey1',
+  //       className: 'item1',
+  //       subMenuProps: {
+  //         items: [
+  //           {
+  //             name: 'SubmenuText 1',
+  //             key: 'SubmenuKey1',
+  //             className: 'SubMenuClass'
+  //           }
+  //         ]
+  //       }
+  //     },
+  //     {
+  //       name: 'TestText 2',
+  //       key: 'TestKey2',
+  //       className: 'item2',
+  //     },
+  //     {
+  //       name: 'TestText 3',
+  //       key: 'TestKey3',
+  //       className: 'item3',
+  //     },
+  //   ];
+
+  //   const wrapper = mount(
+  //     <CommandBar
+  //       items={ items }
+  //     />
+  //   );
+
+  //   expect(wrapper.find('.item1').first().prop('aria-setsize')).toEqual('3');
+  //   expect(wrapper.find('.item1').first().prop('aria-posinset')).toEqual('1');
+  //   expect(wrapper.find('.item2').first().prop('aria-setsize')).toEqual('3');
+  //   expect(wrapper.find('.item2').first().prop('aria-posinset')).toEqual('2');
+  //   expect(wrapper.find('.item3').first().prop('aria-setsize')).toEqual('3');
+  //   expect(wrapper.find('.item3').first().prop('aria-posinset')).toEqual('3');
+  // });
 
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
     const commandBar = mount<CommandBarBase>(
