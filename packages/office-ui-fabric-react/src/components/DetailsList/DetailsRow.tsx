@@ -75,12 +75,12 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   private _root: HTMLElement | undefined;
+  private _cellMeasurer: HTMLElement;
   private _focusZone: IFocusZone;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
-  private _cellMeasurer: HTMLElement;
 
   constructor(props: IDetailsRowProps) {
     super(props);
