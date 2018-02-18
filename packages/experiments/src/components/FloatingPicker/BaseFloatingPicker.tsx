@@ -31,7 +31,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   protected selection: Selection;
 
   protected root: HTMLElement;
-  protected _suggestionElement: Suggestions<T>;
+  protected suggestionElement: Suggestions<T>;
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
@@ -87,7 +87,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({
       suggestionsVisible: false,
     });
-    console.log('hidepicker');
   }
 
   public showPicker(): void {
@@ -142,7 +141,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     let { className } = this.props;
     return (
       <div
-        ref={ this._resolveRef('_root') }
+        ref={ this._resolveRef('root') }
         className={ css('ms-BasePicker', className ? className : '') }
       >
         { this.renderSuggestions() }
@@ -173,7 +172,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           onSuggestionClick={ this.onSuggestionClick }
           onSuggestionRemove={ this.onSuggestionRemove }
           suggestions={ this.suggestionStore.getSuggestions() }
-          ref={ this._resolveRef('_suggestionElement') }
+          ref={ this._resolveRef('suggestionElement') }
           onGetMoreResults={ this.onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
@@ -380,10 +379,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       case KeyCodes.up:
         if (
           this.state.moreSuggestionsAvailable &&
-          this._suggestionElement.props.searchForMoreText &&
+          this.suggestionElement.props.searchForMoreText &&
           this.suggestionStore.currentIndex === 0
         ) {
-          this._suggestionElement.focusSearchForMoreButton();
+          this.suggestionElement.focusSearchForMoreButton();
           this.suggestionStore.deselectAllSuggestions();
           this.forceUpdate();
         } else {
@@ -398,11 +397,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       case KeyCodes.down:
         if (
           this.state.moreSuggestionsAvailable &&
-          this._suggestionElement.props.searchForMoreText &&
+          this.suggestionElement.props.searchForMoreText &&
           this.suggestionStore.currentIndex + 1 ===
           this.suggestionStore.suggestions.length
         ) {
-          this._suggestionElement.focusSearchForMoreButton();
+          this.suggestionElement.focusSearchForMoreButton();
           this.suggestionStore.deselectAllSuggestions();
           this.forceUpdate();
         } else {
