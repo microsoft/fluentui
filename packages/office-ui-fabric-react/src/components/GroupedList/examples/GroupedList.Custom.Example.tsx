@@ -4,7 +4,7 @@ import {
   IGroup,
   IGroupDividerProps
 } from 'office-ui-fabric-react/lib/components/GroupedList/index';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
 import { FontClassNames } from '../../../Styling';
@@ -26,7 +26,7 @@ export class GroupedListCustomExample extends React.Component {
   public render() {
     return (
       <GroupedList
-        ref={ (groupedList: GroupedList) => this._groupedList = groupedList }
+        ref={ this.createGroupedListRef }
         items={ _items }
         onRenderCell={ this._onRenderCell }
         groupProps={
@@ -38,6 +38,11 @@ export class GroupedListCustomExample extends React.Component {
         groups={ _groups }
       />
     );
+  }
+
+  @autobind
+  private createGroupedListRef(groupedList: GroupedList) {
+    this._groupedList = groupedList;
   }
 
   private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {

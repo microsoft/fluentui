@@ -121,7 +121,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         }
 
         <DetailsList
-          ref={ (detailsList: DetailsList) => this.list = detailsList }
+          ref={ this._createDetailsListRef }
           setKey='items'
           items={ items as any[] }
           groups={ groups }
@@ -145,6 +145,11 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         ) }
       </div>
     );
+  }
+
+  @autobind
+  private _createDetailsListRef(detailsList: DetailsList) {
+    this.list = detailsList;
   }
 
   private _onDataMiss(index: number) {
