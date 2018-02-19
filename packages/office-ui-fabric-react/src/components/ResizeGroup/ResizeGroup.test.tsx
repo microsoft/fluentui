@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
+import { ResizeGroup } from './ResizeGroup';
 import { ResizeGroupBase, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
@@ -30,7 +31,7 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
     expect(renderer.create(
-      <ResizeGroupBase
+      <ResizeGroup
         data={ initialData }
         onReduceData={ onReduceScalingData }
         onRenderData={ onRenderData }
