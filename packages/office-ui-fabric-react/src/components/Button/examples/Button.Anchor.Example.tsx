@@ -28,7 +28,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps> {
           checked={ checked }
           href='http://bing.com'
           target='_blank'
-          title='const us bing!'
+          title='let us bing!'
         >
           Bing
         </DefaultButton>

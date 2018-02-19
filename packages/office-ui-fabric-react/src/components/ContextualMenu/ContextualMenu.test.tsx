@@ -95,7 +95,8 @@ describe('ContextualMenu', () => {
   });
 
   it('does not close on left arrow if it is a submenu with bidirectional arrowDirection', () => {
-    const items: IContextualMenuItem[] = [{ name: 'TestText 1', key: 'TestKey1' },
+    const items: IContextualMenuItem[] = [
+      { name: 'TestText 1', key: 'TestKey1' },
       { name: 'TestText 2', key: 'TestKey2' },
       { name: 'TestText 3', key: 'TestKey3' },
       { name: 'TestText 4', key: 'TestKey4' },

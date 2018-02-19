@@ -260,7 +260,7 @@ export class DragDropHelper implements IDragDropHelper {
       }
 
       if (this._dragData.dropTarget) {
-        // raise dragleave event to let opTarget know it need to remove dropping style
+        // raise dragleave event to let dropTarget know it need to remove dropping style
         EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
         EventGroup.raise(this._dragData.dropTarget.root, 'drop');
       }

@@ -679,7 +679,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let totalWidth = 0; // offset because we have one less inner padding.
     const availableWidth = viewportWidth - (outerPadding + rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
-      const newColumn = assign(
+    const newColumn = assign(
         {},
         column,
         {

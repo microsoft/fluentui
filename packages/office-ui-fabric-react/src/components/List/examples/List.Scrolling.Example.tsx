@@ -69,7 +69,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
   private _getPageHeight(idx: number): number {
     let h = 0;
-    for (let i = 0; i < idx + numberOfItemsOnPage; ++i) {
+    for (let i = idx; i < idx + numberOfItemsOnPage; ++i) {
       const isEvenRow = i % 2 === 0;
 
       h += isEvenRow ? evenItemHeight : oddItemHeight;

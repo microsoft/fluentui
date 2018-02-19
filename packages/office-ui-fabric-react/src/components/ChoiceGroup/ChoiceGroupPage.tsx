@@ -49,7 +49,7 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         overview={
           <div>
             <p>
-              The ChoiceGroup component, also known as radio buttons, const users select one option from two or more choices. Each option is represented by one ChoiceGroup button; a user can select only one ChoiceGroup in a button group.
+              The ChoiceGroup component, also known as radio buttons, let users select one option from two or more choices. Each option is represented by one ChoiceGroup button; a user can select only one ChoiceGroup in a button group.
             </p>
 
             <p>

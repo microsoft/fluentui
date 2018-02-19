@@ -124,7 +124,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
-        'disabled' // const disabled buttons be focused and styled as disabled.
+        'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
