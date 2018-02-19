@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 25 Jan 2018 11:23:06 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Feb 2018 21:29:00 GMT and should not be manually modified.
+
+## 5.18.1
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Patches
+
+- Add whiteTranslucent40 to palette
+
+## 5.18.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- Adjusting IColorClassNames and IFontStyles to remove the optional part for the members, to make the interfaces easier to consume.
 
 ## 5.17.0
 Thu, 25 Jan 2018 11:23:06 GMT

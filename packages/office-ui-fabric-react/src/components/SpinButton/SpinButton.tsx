@@ -155,13 +155,20 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       keyboardSpinDirection
     } = this.state;
 
-    const classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      !!disabled,
-      !!isFocused,
-      keyboardSpinDirection,
-      labelPosition
-    );
+    const classNames = this.props.getClassNames ?
+      this.props.getClassNames(
+        theme!,
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition
+      ) : getClassNames(
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition
+      );
 
     return (
       <div className={ classNames.root }>

@@ -95,8 +95,7 @@ describe('ContextualMenu', () => {
   });
 
   it('does not close on left arrow if it is a submenu with bidirectional arrowDirection', () => {
-    const items: IContextualMenuItem[] = [
-      { name: 'TestText 1', key: 'TestKey1' },
+    const items: IContextualMenuItem[] = [{ name: 'TestText 1', key: 'TestKey1' },
       { name: 'TestText 2', key: 'TestKey2' },
       { name: 'TestText 3', key: 'TestKey3' },
       { name: 'TestText 4', key: 'TestKey4' },
@@ -177,6 +176,39 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
+  });
+
+  it('sets the correct aria-owns attribute for the submenu', () => {
+    const submenuId = 'testSubmenuId';
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          id: submenuId,
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const parentMenuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(parentMenuItem);
+    const childMenu = document.getElementById(submenuId);
+
+    expect(childMenu!.id).toBe(submenuId);
+    expect(parentMenuItem.getAttribute('aria-owns')).toBe(submenuId);
   });
 
   it('still works with deprecated IContextualMenuItem.items property', () => {
@@ -506,6 +538,23 @@ describe('ContextualMenu', () => {
     expect(menuMounted).toEqual(true);
     expect(layerMountedFirst).toEqual(true);
     expect(menuMountedFirst).toEqual(false);
+  });
+
+  it('merges callout classNames', () => {
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ [{
+          name: 'TestText 0',
+          key: 'TestKey0'
+        }] }
+        calloutProps={ { className: 'foo' } }
+      />
+    );
+
+    const callout = document.querySelector('.ms-Callout') as HTMLElement;
+    expect(callout).toBeDefined();
+    expect(callout.classList.contains('ms-ContextualMenu-Callout')).toBeTruthy();
+    expect(callout.classList.contains('foo')).toBeTruthy();
   });
 
   it('Contextual Menu submenu has chrevron icon even if submenu has no items', () => {

@@ -1,9 +1,18 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  autobind,
+  IStyleFunction,
+  classNamesFunction
+} from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
-import './Overlay.Example.scss';
+import { Overlay } from '../Overlay';
+
+import { getStyles, IOverlayExampleStyles } from './Overlay.Example.styles';
+
+export interface IOverlayDarkExampleProps {
+  getStyles?: IStyleFunction<{}, IOverlayExampleStyles>;
+}
 
 export class OverlayDarkExample extends React.Component<{}, {
   isOverlayVisible: boolean;
@@ -16,6 +25,8 @@ export class OverlayDarkExample extends React.Component<{}, {
 
   public render() {
     const { isOverlayVisible } = this.state;
+    const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
+    const classNames = getClassNames(getStyles);
 
     return (
       <div>
@@ -28,7 +39,7 @@ export class OverlayDarkExample extends React.Component<{}, {
             isDarkThemed={ true }
             onClick={ this._setVisibilityFalse }
           >
-            <div className='OverlayExample-content'>
+            <div className={ classNames.root }>
               <p>I am content within the overlay.</p>
             </div>
           </Overlay>
