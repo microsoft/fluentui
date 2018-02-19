@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
+import { ResizeGroup } from './ResizeGroup';
+import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
