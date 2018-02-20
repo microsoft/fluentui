@@ -622,12 +622,12 @@ describe('ContextualMenu', () => {
         key: 'TestKey2',
       }
     ];
-    const customRenderer = jest.fn();
+    const customRenderer = jest.fn(() => null);
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
-        contextualMenuChildrenAs={customRenderer}
+        contextualMenuChildrenAs={ customRenderer }
       />
     );
 
