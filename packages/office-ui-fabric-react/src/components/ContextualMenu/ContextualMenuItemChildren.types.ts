@@ -1,6 +1,6 @@
 import { ContextualMenuItemChildren } from "./ContextualMenuItemChildren";
-import { IContextualMenuItem } from "../ContextualMenu/ContextualMenu.types";
-import { IMenuItemClassNames } from "../ContextualMenu/ContextualMenu.classNames";
+import { IContextualMenuItem } from "./ContextualMenu.types";
+import { IMenuItemClassNames } from "./ContextualMenu.classNames";
 
 export interface IContextualMenuItemChildrenProps
   extends React.Props<IContextualMenuItemChildrenProps> {

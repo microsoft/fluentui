@@ -1,7 +1,7 @@
 import * as React from "react";
 import { hasSubmenu, getIsChecked } from '../../utilities/contextMenu';
-import { IContextualMenuItem } from "../ContextualMenu";
-import { IMenuItemClassNames } from "../ContextualMenu/ContextualMenu.classNames";
+import { IContextualMenuItem } from "./ContextualMenu.types";
+import { IMenuItemClassNames } from "./ContextualMenu.classNames";
 import { getRTL } from "../../Utilities";
 import { Icon, IIconProps } from "../../Icon";
 import { IContextualMenuItemChildrenProps } from "./ContextualMenuItemChildren.types";

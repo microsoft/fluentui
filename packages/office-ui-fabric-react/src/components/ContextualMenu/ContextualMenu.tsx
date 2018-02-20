@@ -37,8 +37,8 @@ import {
 import {
   VerticalDivider
 } from '../../Divider';
-import { ContextualMenuItemChildren } from '../ContextualMenuItemChildren';
-import { IContextualMenuItemChildrenProps } from '../ContextualMenuItemChildren';
+import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
+import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

@@ -15,8 +15,8 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { ContextualMenuItemChildren } from '../ContextualMenuItemChildren';
-import { IContextualMenuItemChildrenProps } from '../ContextualMenuItemChildren/ContextualMenuItemChildren.types';
+import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
+import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
 
 export enum ContextualMenuItemType {
   Normal = 0,
