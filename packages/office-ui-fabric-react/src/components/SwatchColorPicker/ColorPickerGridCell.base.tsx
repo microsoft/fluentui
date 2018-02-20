@@ -41,7 +41,16 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
       disabled,
       getStyles,
       theme,
-      circle
+      circle,
+      color,
+      onClick,
+      onHover,
+      onFocus,
+      onMouseEnter,
+      onMouseMove,
+      onMouseLeave,
+      onWheel,
+      onKeyDown
     } = this.props;
 
     this._classNames = getClassNames(
@@ -51,25 +60,31 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         disabled,
         selected,
         circle,
-        isWhite: this._isWhiteCell(this.props.color)
+        isWhite: this._isWhiteCell(color)
       }
     );
 
     return (
       <ColorCell
         item={ item }
-        id={ id }
+        id={ `${id}-${item.id}-${item.index}` }
         key={ item.id }
         disabled={ disabled }
         role={ 'gridcell' }
         onRenderItem={ this._onRenderColorOption }
         selected={ selected }
-        onClick={ this.props.onClick }
-        onHover={ this.props.onHover }
-        onFocus={ this.props.onFocus }
+        onClick={ onClick }
+        onHover={ onHover }
+        onFocus={ onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
         getClassNames={ this._getClassNames }
+        index={ item.index }
+        onMouseEnter={ onMouseEnter }
+        onMouseMove={ onMouseMove }
+        onMouseLeave={ onMouseLeave }
+        onWheel={ onWheel }
+        onKeyDown={ onKeyDown }
       />
     );
   }
