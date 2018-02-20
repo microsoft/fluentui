@@ -105,7 +105,6 @@ exports[`Rating Renders Rating correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-back
               {
@@ -120,7 +119,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         />
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-front
               {
@@ -229,7 +227,6 @@ exports[`Rating Renders Rating correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-back
               {
@@ -244,7 +241,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         />
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-front
               {
@@ -353,7 +349,6 @@ exports[`Rating Renders Rating correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-back
               {
@@ -368,7 +363,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         />
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-front
               {
@@ -477,7 +471,6 @@ exports[`Rating Renders Rating correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-back
               {
@@ -492,7 +485,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         />
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-front
               {
@@ -601,7 +593,6 @@ exports[`Rating Renders Rating correctly 1`] = `
       >
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-back
               {
@@ -616,7 +607,6 @@ exports[`Rating Renders Rating correctly 1`] = `
         />
         <i
           aria-hidden={true}
-          aria-label={undefined}
           className=
               ms-RatingStar-front
               {

@@ -21,19 +21,10 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     super(props);
     this.state = {
       imageLoadError: false,
-    }
+    };
   }
 
-  private onImageLoadingStateChange = (state: ImageLoadState): void => {
-    if (this.props.imageProps && this.props.imageProps.onLoadingStateChange) {
-      this.props.imageProps.onLoadingStateChange(state);
-    }
-    if (state == ImageLoadState.error) {
-      this.setState({ imageLoadError: true });
-    }
-  }
-
-  render() {
+  public render() {
     let {
     ariaLabel,
       className,
@@ -49,7 +40,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
       role: 'presentation',
       'aria-hidden': true,
       'data-icon-name': iconName,
-    }
+    };
 
     if (this.props.iconType === IconType.image || this.props.iconType === IconType.Image) {
       let containerClassName = css(
@@ -59,7 +50,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
         className
       );
       let { imageLoadError } = this.state;
-      let imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange }
+      let imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
       let ImageType = imageLoadError && imageErrorAs || Image;
       return (
         <div
@@ -110,4 +101,13 @@ export class Icon extends React.Component<IIconProps, IIconState> {
       );
     }
   }
-};
+
+  private onImageLoadingStateChange = (state: ImageLoadState): void => {
+    if (this.props.imageProps && this.props.imageProps.onLoadingStateChange) {
+      this.props.imageProps.onLoadingStateChange(state);
+    }
+    if (state === ImageLoadState.error) {
+      this.setState({ imageLoadError: true });
+    }
+  }
+}
