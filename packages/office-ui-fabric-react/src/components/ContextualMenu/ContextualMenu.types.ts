@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZoneDirection } from '../../FocusZone';
+import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -169,7 +169,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Direction for arrow navigation of the ContextualMenu. Should only be specified if using custom-rendered menu items.
-   * @default FocusZoneDirection.vertical
+   * @deprecated Use focusZoneProps instead
    */
   arrowDirection?: FocusZoneDirection;
 
@@ -221,11 +221,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
-   * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
-   * when determining how to move focus
-   * @default false
+   * Props to pass down to the FocusZone.
+   * NOTE: the default FocusZoneDirection will be used unless a direction
+   * is specified in the focusZoneProps (even if other focusZoneProps are defined)
+   * @default {direction: FocusZoneDirection.vertical}
    */
-  checkForNoWrap?: boolean;
+  focusZoneProps?: IFocusZoneProps;
 }
 
 export interface IContextualMenuItem {

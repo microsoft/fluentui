@@ -35,8 +35,10 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
                   name: 'Charm',
                   className: 'Charm-List',
                   subMenuProps: {
-                    arrowDirection: FocusZoneDirection.bidirectional,
-                    checkForNoWrap: true,
+                    focusZoneProps: {
+                      direction: FocusZoneDirection.bidirectional,
+                      checkForNoWrap: true
+                    },
                     items: [
                       {
                         key: 'bulb',
