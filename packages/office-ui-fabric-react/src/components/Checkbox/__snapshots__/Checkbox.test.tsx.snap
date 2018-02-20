@@ -46,6 +46,14 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       &:focus .ms-Checkbox-checkbox {
         border-color: #212121;
       }
+      &:hover .ms-Checkbox-checkmark {
+        color: #212121;
+        opacity: 0.5;
+      }
+      &:focus .ms-Checkbox-checkmark {
+        color: #212121;
+        opacity: 0.5;
+      }
       &:hover .ms-Checkbox-text {
         color: #000000;
       }
@@ -107,6 +115,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         aria-label={undefined}
         className=
             ms-Icon
+            ms-Checkbox-checkmark
             {
               color: #ffffff;
               display: inline-block;
