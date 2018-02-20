@@ -238,7 +238,7 @@ export class DragDropHelper implements IDragDropHelper {
   }
 
   private _onDragEnd(target: IDragDropTarget, event: DragEvent) {
-    let { options } = target;
+    const { options } = target;
     if (options.onDragEnd) {
       options.onDragEnd(options.context.data, event);
     }
@@ -283,7 +283,7 @@ export class DragDropHelper implements IDragDropHelper {
    * The target will handle style change on dragenter and dragleave events.
    */
   private _onMouseMove(target: IDragDropTarget, event: MouseEvent) {
-    let {
+    const {
       // use buttons property here since ev.button in some edge case is not updating well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
       buttons = MOUSEMOVE_PRIMARY_BUTTON
@@ -295,7 +295,7 @@ export class DragDropHelper implements IDragDropHelper {
       return;
     }
 
-    let { root, options, key } = target;
+    const { root, options, key } = target;
     if (this._isDragging) {
       if (this._isDroppable(target)) {
         // we can have nested drop targets in the DOM, like a folder inside a group. In that case, when we drag into
@@ -319,8 +319,8 @@ export class DragDropHelper implements IDragDropHelper {
       }
     } else if (this._dragData) {
       if (this._isDraggable(target)) {
-        let xDiff = this._dragData.clientX - event.clientX;
-        let yDiff = this._dragData.clientY - event.clientY;
+        const xDiff = this._dragData.clientX - event.clientX;
+        const yDiff = this._dragData.clientY - event.clientY;
         if (xDiff * xDiff + yDiff * yDiff >= this._distanceSquaredForDrag) {
           if (this._dragData.dragTarget) {
             this._isDragging = true;
@@ -378,7 +378,7 @@ export class DragDropHelper implements IDragDropHelper {
    * determine whether the child target is a descendant of the parent
    */
   private _isChild(parent: React.ReactInstance, child: React.ReactInstance): boolean {
-    let parentElement = ReactDOM.findDOMNode(parent);
+    const parentElement = ReactDOM.findDOMNode(parent);
     let childElement = ReactDOM.findDOMNode(child);
     while (childElement && childElement.parentElement) {
       if (childElement.parentElement === parentElement) {
@@ -390,14 +390,14 @@ export class DragDropHelper implements IDragDropHelper {
   }
 
   private _isDraggable(target: IDragDropTarget): boolean {
-    let { options } = target;
+    const { options } = target;
     return !!(options.canDrag && options.canDrag(options.context.data));
   }
 
   private _isDroppable(target: IDragDropTarget): boolean {
     // TODO: take the drag item into consideration to prevent dragging an item into the same group
-    let { options } = target;
-    let dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
+    const { options } = target;
+    const dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
     return !!(options.canDrop && options.canDrop(options.context, dragContext));
   }
 }

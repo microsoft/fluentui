@@ -15,7 +15,7 @@ import {
 
 export class ButtonAnchorExample extends React.Component<IButtonProps> {
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles);
@@ -28,7 +28,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps> {
           checked={ checked }
           href='http://bing.com'
           target='_blank'
-          title='Let us bing!'
+          title='let us bing!'
         >
           Bing
         </DefaultButton>
