@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
+import { ResizeGroup } from './ResizeGroup';
+import { ResizeGroupBase, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
@@ -45,7 +46,7 @@ describe('ResizeGroup', () => {
     const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
 
     const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
-      <ResizeGroup
+      <ResizeGroupBase
         data={ initialData }
         onReduceData={ onReduceScalingData }
         onRenderData={ onRenderData }

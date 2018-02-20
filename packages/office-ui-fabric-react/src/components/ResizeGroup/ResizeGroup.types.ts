@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ResizeGroup } from './ResizeGroup';
-
+import { ResizeGroupBase } from './ResizeGroup.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 export interface IResizeGroup {
   /**
    * Remeasures the available space.
@@ -8,13 +9,29 @@ export interface IResizeGroup {
   remeasure(): void;
 }
 
-export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
 
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IResizeGroup) => void;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<IResizeGroupStyleProps, IResizeGroupStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Component
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * Initial data to be passed to the onRenderData function. When there is no onGrowData provided, this data should represent what should
@@ -51,4 +68,23 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HT
    * onReduceData triggers.
    */
   dataDidRender?: (renderedData: any) => void;
+}
+
+export interface IResizeGroupStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+}
+
+export interface IResizeGroupStyles {
+  /**
+   * Style for the root element.
+   */
+  root: IStyle;
 }
