@@ -25,14 +25,14 @@ export class Icon extends React.Component<IIconProps, IIconState> {
   }
 
   public render() {
-    let {
+    const {
     ariaLabel,
       className,
       styles,
       iconName,
       imageErrorAs,
    } = this.props;
-    let classNames = getClassNames(
+    const classNames = getClassNames(
       styles
     );
 
@@ -43,13 +43,13 @@ export class Icon extends React.Component<IIconProps, IIconState> {
     };
 
     if (this.props.iconType === IconType.image || this.props.iconType === IconType.Image) {
-      let containerClassName = css(
+      const containerClassName = css(
         'ms-Icon-imageContainer',
         classNames.root,
         classNames.imageContainer,
         className
       );
-      let { imageLoadError } = this.state;
+      const { imageLoadError } = this.state;
       let imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
       let ImageType = imageLoadError && imageErrorAs || Image;
       return (
@@ -78,7 +78,7 @@ export class Icon extends React.Component<IIconProps, IIconState> {
         />
       );
     } else {
-      let iconDefinition = getIcon(iconName) || {
+      const iconDefinition = getIcon(iconName) || {
         subset: {
           className: undefined
         },

@@ -90,9 +90,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getClassNames
          } = this.props;
 
-    let { menuProps } = this.state;
+    const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
-    let isPrimaryButtonDisabled = (disabled || primaryDisabled);
+    const isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
     this._classNames = getClassNames ? getClassNames(
       theme!,
@@ -124,7 +124,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
-        'disabled' // Let disabled buttons be focused and styled as disabled.
+        'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
@@ -210,9 +210,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    let props = this.props;
-    let Tag = tag;
-    let {
+    const props = this.props;
+    const Tag = tag;
+    const {
       menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
@@ -249,7 +249,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
-    let {
+    const {
       iconProps
        } = this.props;
 
@@ -266,7 +266,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderTextContents(): JSX.Element | (JSX.Element | null)[] {
-    let {
+    const {
       text,
       children,
       description,
@@ -293,9 +293,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderText(): JSX.Element | null {
     let {
-      children,
       text
-            } = this.props;
+    } = this.props;
+    const {
+      children
+    } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -368,7 +370,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let {
+    const {
       menuIconProps
     } = this.props;
 
@@ -408,7 +410,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
-    let currentMenuProps = this.state.menuProps;
+    const currentMenuProps = this.state.menuProps;
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
@@ -463,6 +465,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
     let {
       menuIconProps,
+    } = this.props;
+
+    const {
       splitButtonAriaLabel
     } = this.props;
 
@@ -472,7 +477,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    let splitButtonProps = {
+    const splitButtonProps = {
       'styles': classNames,
       'checked': this.props.checked,
       'disabled': this.props.disabled,
@@ -503,12 +508,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
-    let { onMenuClick } = this.props;
+    const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);
     }
 
-    if (!ev.defaultPrevented && ev.which === KeyCodes.down) {
+    if (!ev.defaultPrevented &&
+      this.props.menuTriggerKeyCode !== null &&
+      ev.which === (this.props.menuTriggerKeyCode === undefined ? KeyCodes.down : this.props.menuTriggerKeyCode)) {
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
@@ -517,7 +524,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
-    let { onMenuClick } = this.props;
+    const { onMenuClick } = this.props;
     if (onMenuClick) {
       onMenuClick(ev, this);
     }

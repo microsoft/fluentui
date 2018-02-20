@@ -38,7 +38,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   public componentDidMount() {
-    let { title, shouldTruncate } = this.props;
+    const { title, shouldTruncate } = this.props;
     if (shouldTruncate && title && title.length > TRUNCATION_MINIMUM_LENGTH) {
       if (this._doesTitleOverflow()) {
         this._startTruncation(this.props);
@@ -65,8 +65,8 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   public render() {
-    let { title, shouldTruncate } = this.props;
-    let { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
+    const { title, shouldTruncate } = this.props;
+    const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
@@ -84,7 +84,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
 
   @autobind
   private _startTruncation(props: IDocumentCardTitleProps) {
-    let originalTitle = props.title;
+    const originalTitle = props.title;
     this._isTruncated = false;
 
     // If the title is really short, there's no need to truncate it
@@ -114,7 +114,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
 
   private _shrinkTitle() {
     if (this._doesTitleOverflow()) {
-      let { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
+      const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
       this._isTruncated = true;
 
       if (!truncatedTitleFirstPiece && !truncatedTitleSecondPiece) {
@@ -129,7 +129,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   private _doesTitleOverflow(): boolean {
-    let titleElement = this._titleElement;
+    const titleElement = this._titleElement;
     return titleElement.scrollHeight > titleElement.clientHeight + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD || titleElement.scrollWidth > titleElement.clientWidth;
   }
 

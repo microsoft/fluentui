@@ -184,7 +184,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
       (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded)
     );
-    let hasIcon = !!item.icon || !!item.iconProps;
+    const hasIcon = !!item.icon || !!item.iconProps;
     const isNameVisible = !!item.name && !item.iconOnly;
     const ariaLabel = item.ariaLabel || (item.iconOnly ? item.name : undefined);
 
@@ -286,12 +286,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
-    let iconProps: IIconProps = item.iconProps ? item.iconProps : {
+    const iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: item.icon
     };
     // Use the default icon color for the known icon names
-    let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-CommandBarItem-iconColor ' + styles.itemIconColor);
-    let iconClassName = css('ms-CommandBarItem-icon', styles.itemIcon, iconColorClassName, iconProps.className);
+    const iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-CommandBarItem-iconColor ' + styles.itemIconColor);
+    const iconClassName = css('ms-CommandBarItem-icon', styles.itemIcon, iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;
   }
@@ -316,10 +316,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     for (let i = 0; i < this.props.items.length; i++) {
-      let item = this.props.items[i];
+      const item = this.props.items[i];
 
       if (!this._commandItemWidths[item.key]) {
-        let el = this.refs[item.key] as HTMLElement;
+        const el = this.refs[item.key] as HTMLElement;
 
         if (el) {
           this._commandItemWidths[item.key] = el.getBoundingClientRect().width;
@@ -329,17 +329,17 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _updateRenderedItems() {
-    let { items, overflowItems } = this.props;
-    let commandSurface = this.refs.commandSurface;
-    let farCommandSurface = this.refs.farCommandSurface;
-    let commandBarRegion = this.refs.commandBarRegion;
-    let searchSurface = this.refs.searchSurface;
-    let renderedItems = [...items];
+    const { items, overflowItems } = this.props;
+    const commandSurface = this.refs.commandSurface;
+    const farCommandSurface = this.refs.farCommandSurface;
+    const commandBarRegion = this.refs.commandBarRegion;
+    const searchSurface = this.refs.searchSurface;
+    const renderedItems = [...items];
     let renderedOverflowItems = overflowItems;
     let consumedWidth = 0;
-    let isOverflowVisible = overflowItems && overflowItems.length;
+    const isOverflowVisible = overflowItems && overflowItems.length;
 
-    let style = window.getComputedStyle(commandSurface);
+    const style = window.getComputedStyle(commandSurface);
     let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft!, 10) - parseInt(style.marginRight!, 10);
     if (searchSurface) {
       availableWidth -= searchSurface.getBoundingClientRect().width;
@@ -353,8 +353,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     for (let i = 0; i < renderedItems.length; i++) {
-      let item = renderedItems[i];
-      let itemWidth = this._commandItemWidths![item.key];
+      const item = renderedItems[i];
+      const itemWidth = this._commandItemWidths![item.key];
 
       if ((consumedWidth + itemWidth) >= availableWidth) {
         if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < OVERFLOW_WIDTH) {
@@ -369,7 +369,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
     }
 
-    let renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
+    const renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
       renderedItems.concat(this.state.renderedFarItems!),
       renderedOverflowItems!);
 
@@ -417,7 +417,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   @autobind
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
-      let { contextualMenuProps } = this.state;
+      const { contextualMenuProps } = this.state;
 
       if (contextualMenuProps && contextualMenuProps.onDismiss) {
         this.state.contextualMenuProps!.onDismiss!(ev);
@@ -451,7 +451,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         return { items: overflowItems };
       } else {
         // Find the currently open key in the new props
-        let matchingItem = renderedItems.filter(item => item.key === this.state.expandedMenuItemKey);
+        const matchingItem = renderedItems.filter(item => item.key === this.state.expandedMenuItemKey);
 
         if (matchingItem.length === 1) {
           return this._getContextualMenuPropsFromItem(matchingItem[0]);
