@@ -86,7 +86,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     beakWidth: 16,
     arrowDirection: FocusZoneDirection.vertical,
     getMenuClassNames: getContextualMenuClassNames,
-    contextualMenuChildrenAs: ContextualMenuItemChildren,
   };
 
   private _host: HTMLElement;
@@ -446,14 +445,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div className={ this._classNames.header } style={ item.style } role='heading' aria-level={ this.props.title ? 2 : 1 }>
-        <ContextualMenuItemChildren
+        <ChildrenRenderer
           item={item}
           classNames={classNames}
           index={index}
           onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
           hasIcons={hasIcons}
         />
-        <ChildrenRenderer item={item} classNames={classNames} index={index} hasCheckmarks={hasCheckmarks} hasIcons={hasIcons} />
       </div>);
   }
 
@@ -473,13 +471,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
         >
-          <ContextualMenuItemChildren
+          <ChildrenRenderer
             item={item}
             classNames={classNames}
             index={index}
             onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
             hasIcons={hasIcons} />
-          <ChildrenRenderer item={item} classNames={classNames} index={index} hasCheckmarks={hasCheckmarks} hasIcons={hasIcons} />
         </a>
       </div>);
   }
