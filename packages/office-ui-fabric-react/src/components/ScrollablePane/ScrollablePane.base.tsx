@@ -191,14 +191,16 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
   private _resizeContainer() {
     const { stickyContainer, root } = this.refs;
-    const { borderTopWidth, borderLeftWidth } = getComputedStyle(root);
-    stickyContainer.style.height = root.clientHeight + 'px';
-    stickyContainer.style.width = root.clientWidth + 'px';
-    if (borderTopWidth) {
-      stickyContainer.style.top = root.offsetTop + parseInt(borderTopWidth, 10) + 'px';
-    }
-    if (borderLeftWidth) {
-      stickyContainer.style.left = root.offsetLeft + parseInt(borderLeftWidth, 10) + 'px';
+    if (root && stickyContainer) {
+      const { borderTopWidth, borderLeftWidth } = getComputedStyle(root);
+      stickyContainer.style.height = root.clientHeight + 'px';
+      stickyContainer.style.width = root.clientWidth + 'px';
+      if (borderTopWidth) {
+        stickyContainer.style.top = root.offsetTop + parseInt(borderTopWidth, 10) + 'px';
+      }
+      if (borderLeftWidth) {
+        stickyContainer.style.left = root.offsetLeft + parseInt(borderLeftWidth, 10) + 'px';
+      }
     }
   }
 
