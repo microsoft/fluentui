@@ -3,7 +3,6 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   BaseComponent,
   autobind,
-  css,
   getId,
   KeyCodes,
   customizable,
@@ -55,8 +54,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { labelText, className, disabled, underlined, getStyles, theme } = this.props;
-    let { value, hasFocus, id } = this.state;
+    const { labelText, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
+    const { value, hasFocus, id } = this.state;
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -90,7 +89,12 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         />
         { value!.length > 0 &&
           <div className={ classNames.clearButton }>
-            <IconButton styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } } onClick={ this._onClearClick } iconProps={ { iconName: 'Clear' } } />
+            <IconButton
+              styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
+              iconProps={ { iconName: 'Clear' } }
+              { ...clearButtonProps }
+              onClick={ this._onClearClick }
+            />
           </div>
         }
       </div>
@@ -136,7 +140,15 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onClearClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    this._onClear(ev);
+    const { clearButtonProps } = this.props;
+
+    if (clearButtonProps && clearButtonProps.onClick) {
+      clearButtonProps.onClick(ev);
+    }
+
+    if (!ev.defaultPrevented) {
+      this._onClear(ev);
+    }
   }
 
   @autobind
@@ -184,7 +196,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    const value = this._inputElement.value;
+    const value = ev.target.value;
+
     if (value === this._latestValue) {
       return;
     }
@@ -195,7 +208,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange, onChanged } = this.props;
+    const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
     if (onChanged) {

@@ -1,6 +1,53 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 31 Jan 2018 11:11:59 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+
+## 5.21.0
+Fri, 16 Feb 2018 11:23:28 GMT
+
+### Minor changes
+
+- Removing Coachmark
+
+### Patches
+
+- Hook up onPaste for BaseExtendedPicker
+
+## 5.20.0
+Wed, 14 Feb 2018 22:10:49 GMT
+
+### Minor changes
+
+- Use new "use current input" command in Suggestions
+
+## 5.19.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- Added a fillHorizontal mode to TilesList
+
+## 5.18.0
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Minor changes
+
+- change persona pill css
+
+### Patches
+
+- BasePicker: Use correct autofillnow
+
+## 5.17.0
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Minor changes
+
+- allow editing of selected items in selected people list
+
+### Patches
+
+- consume BlockedSite icon for malware detected signal
 
 ## 5.16.1
 Wed, 31 Jan 2018 11:11:59 GMT

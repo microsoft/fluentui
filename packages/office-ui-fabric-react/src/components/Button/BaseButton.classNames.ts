@@ -31,7 +31,6 @@ export const getBaseButtonClassNames = memoizeFunction((
       'ms-Button',
       styles.root,
       variantClassName,
-      className,
       checked && [
         'is-checked',
         styles.rootChecked
@@ -72,7 +71,8 @@ export const getBaseButtonClassNames = memoizeFunction((
           ':hover': styles.rootCheckedHovered,
           ':active': styles.rootCheckedPressed
         }
-      }
+      },
+      className
     ],
     flexContainer: [
       'ms-Button-flexContainer',
