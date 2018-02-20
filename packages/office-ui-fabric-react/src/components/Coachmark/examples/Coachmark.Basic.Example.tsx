@@ -45,7 +45,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
   }
 
   public render(): JSX.Element {
-    let { isVisible } = this.state;
+    const { isVisible } = this.state;
 
     const calloutProps: ICalloutProps = {
       doNotLayer: true

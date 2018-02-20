@@ -21,7 +21,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   }
 
   public render() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
     return (
       <div>

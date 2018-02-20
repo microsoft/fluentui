@@ -60,7 +60,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public componentWillReceiveProps(newProps: IGroupedListProps) {
-    let {
+    const {
       groups,
       selectionMode
     } = this.props;
@@ -81,12 +81,12 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public render() {
-    let {
+    const {
       className,
       usePageCache,
       onShouldVirtualize
     } = this.props;
-    let {
+    const {
       groups
     } = this.state;
 
@@ -121,9 +121,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public toggleCollapseAll(allCollapsed: boolean) {
-    let { groups } = this.state;
-    let { groupProps } = this.props;
-    let onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
+    const { groups } = this.state;
+    const { groupProps } = this.props;
+    const onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
 
     if (groups) {
       if (onToggleCollapseAll) {
@@ -142,7 +142,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _renderGroup(group: any, groupIndex: number) {
-    let {
+    const {
       dragDropEvents,
       dragDropHelper,
       eventsToRegister,
@@ -156,16 +156,16 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     } = this.props;
 
     // override group header/footer props as needed
-    let dividerProps = {
+    const dividerProps = {
       onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleCollapse: this._onToggleCollapse,
       onToggleSummarize: this._onToggleSummarize
     };
 
-    let headerProps = assign({}, groupProps!.headerProps, dividerProps);
-    let showAllProps = assign({}, groupProps!.showAllProps, dividerProps);
-    let footerProps = assign({}, groupProps!.footerProps, dividerProps);
-    let groupNestingDepth = this._getGroupNestingDepth();
+    const headerProps = assign({}, groupProps!.headerProps, dividerProps);
+    const showAllProps = assign({}, groupProps!.showAllProps, dividerProps);
+    const footerProps = assign({}, groupProps!.footerProps, dividerProps);
+    const groupNestingDepth = this._getGroupNestingDepth();
 
     if (!groupProps!.showEmptyGroups && group && group.count === 0) {
       return null;
@@ -207,7 +207,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   private _getGroupNestingDepth(): number {
-    let { groups } = this.state;
+    const { groups } = this.state;
     let level = 0;
     let groupsInLevel = groups;
 
@@ -221,8 +221,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _onToggleCollapse(group: IGroup) {
-    let { groupProps } = this.props;
-    let onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
+    const { groupProps } = this.props;
+    const onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
 
     if (group) {
       if (onToggleCollapse) {
@@ -245,19 +245,19 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   private _forceListUpdates(groups?: IGroup[]) {
     groups = groups || this.state.groups;
 
-    let groupCount = groups ? groups.length : 1;
+    const groupCount = groups ? groups.length : 1;
 
     if (this.refs.list) {
       this.refs.list.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        let group = this.refs.list.refs['group_' + String(i)] as GroupedListSection;
+        const group = this.refs.list.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
       }
     } else {
-      let group = this.refs['group_' + String(0)] as GroupedListSection;
+      const group = this.refs['group_' + String(0)] as GroupedListSection;
       if (group) {
         group.forceListUpdate();
       }
@@ -266,8 +266,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _onToggleSummarize(group: IGroup) {
-    let { groupProps } = this.props;
-    let onToggleSummarize = groupProps && groupProps.showAllProps && groupProps.showAllProps.onToggleSummarize;
+    const { groupProps } = this.props;
+    const onToggleSummarize = groupProps && groupProps.showAllProps && groupProps.showAllProps.onToggleSummarize;
 
     if (onToggleSummarize) {
       onToggleSummarize(group);
@@ -296,10 +296,10 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   private _updateIsSomeGroupExpanded() {
-    let { groups } = this.state;
-    let { onGroupExpandStateChanged } = this.props;
+    const { groups } = this.state;
+    const { onGroupExpandStateChanged } = this.props;
 
-    let newIsSomeGroupExpanded = this._computeIsSomeGroupExpanded(groups);
+    const newIsSomeGroupExpanded = this._computeIsSomeGroupExpanded(groups);
     if (this._isSomeGroupExpanded !== newIsSomeGroupExpanded) {
       if (onGroupExpandStateChanged) {
         onGroupExpandStateChanged(newIsSomeGroupExpanded);

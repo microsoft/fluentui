@@ -23,7 +23,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBaiscExampl
   }
 
   public render() {
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>

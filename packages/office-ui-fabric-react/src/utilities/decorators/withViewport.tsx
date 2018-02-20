@@ -64,11 +64,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
     }
 
     public render() {
-      let { viewport } = this.state;
+      const { viewport } = this.state;
       const {
         skipViewportMeasures
       } = this.props as IWithViewportProps;
-      let isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
+      const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
@@ -89,18 +89,18 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
 
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
-      let { viewport } = this.state;
-      let viewportElement = (this.refs as any).root;
-      let scrollElement = findScrollableParent(viewportElement);
-      let scrollRect = getRect(scrollElement);
-      let clientRect = getRect(viewportElement);
-      let updateComponent = () => {
+      const { viewport } = this.state;
+      const viewportElement = (this.refs as any).root;
+      const scrollElement = findScrollableParent(viewportElement);
+      const scrollRect = getRect(scrollElement);
+      const clientRect = getRect(viewportElement);
+      const updateComponent = () => {
         if (withForceUpdate && this._composedComponentInstance) {
           this._composedComponentInstance.forceUpdate();
         }
       };
 
-      let isSizeChanged = (
+      const isSizeChanged = (
         (clientRect && clientRect.width) !== viewport!.width ||
         (scrollRect && scrollRect.height) !== viewport!.height);
 

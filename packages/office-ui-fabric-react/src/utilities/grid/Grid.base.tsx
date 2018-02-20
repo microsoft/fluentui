@@ -22,7 +22,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
   }
 
   public render() {
-    let {
+    const {
       items,
       columnCount,
       onRenderItem,
@@ -36,9 +36,9 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
-    let rowsOfItems: any[][] = toMatrix(items, columnCount);
+    const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
-    let content = (
+    const content = (
       <table
         {...htmlProps}
         aria-posinset={ positionInSet }
@@ -49,7 +49,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       >
         <tbody>
           {
-            rowsOfItems.map((rows: any[], rowIndex) => {
+            rowsOfItems.map((rows: any[], rowIndex: any) => {
               return (
                 <tr
                   role={ 'row' }

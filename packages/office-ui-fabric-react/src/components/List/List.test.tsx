@@ -10,7 +10,7 @@ describe('List', () => {
     const component = renderer.create(
       // tslint:disable-next-line:jsx-no-lambda
       <List items={ [] } onRenderCell={ () => null } />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

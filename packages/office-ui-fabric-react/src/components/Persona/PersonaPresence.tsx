@@ -47,7 +47,7 @@ export class PersonaPresence extends React.Component<IPersonaProps, {}> {
 
   @autobind
   private _determineIcon(): string | undefined {
-    let { presence } = this.props;
+    const { presence } = this.props;
 
     if (presence !== PersonaPresenceEnum.none) {
       let userPresence = PersonaPresenceEnum[presence as PersonaPresenceEnum];

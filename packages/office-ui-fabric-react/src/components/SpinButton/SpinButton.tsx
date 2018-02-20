@@ -84,7 +84,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       'value': 'defaultValue'
     });
 
-    let value = props.value || props.defaultValue || String(props.min) || '0';
+    const value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
@@ -372,7 +372,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    */
   @autobind
   private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
-    let newValue: string | void = stepFunction(this.state.value);
+    const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });

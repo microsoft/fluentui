@@ -21,7 +21,7 @@ const DEFAULT_ITEMS: any[] = [
 describe('Grid', () => {
 
   it('Can render a grid with width of four', () => {
-    let wrapper = shallow(
+    const wrapper = shallow(
       <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 4 }
@@ -37,7 +37,7 @@ describe('Grid', () => {
     expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
   it('Can render a grid with width of 2', () => {
-    let wrapper = shallow(
+    const wrapper = shallow(
       <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
@@ -53,7 +53,7 @@ describe('Grid', () => {
     expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
   it('Can render a grid with posInSet and setSize', () => {
-    let wrapper = shallow(
+    const wrapper = shallow(
       <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }

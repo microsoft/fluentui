@@ -24,7 +24,7 @@ export class CalloutNestedExample extends React.Component<ICalloutNestedExampleP
   }
 
   public render() {
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>

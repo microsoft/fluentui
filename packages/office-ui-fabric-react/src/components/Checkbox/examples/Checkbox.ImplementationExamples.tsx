@@ -27,9 +27,9 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
   }
 
   public render() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
-    let styles: ICheckboxStyles = {
+    const styles: ICheckboxStyles = {
       root: {
         marginTop: '10px'
       }

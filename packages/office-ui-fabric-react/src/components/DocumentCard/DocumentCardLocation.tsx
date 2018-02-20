@@ -6,7 +6,7 @@ const styles: any = stylesImport;
 
 export class DocumentCardLocation extends BaseComponent<IDocumentCardLocationProps, any> {
   public render() {
-    let { location, locationHref, ariaLabel, onClick } = this.props;
+    const { location, locationHref, ariaLabel, onClick } = this.props;
 
     return (
       <a

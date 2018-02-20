@@ -22,7 +22,7 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
   }
 
   public render() {
-    let { isTeachingBubbleVisible } = this.state;
+    const { isTeachingBubbleVisible } = this.state;
 
     return (
       <div className='ms-TeachingBubbleExample'>

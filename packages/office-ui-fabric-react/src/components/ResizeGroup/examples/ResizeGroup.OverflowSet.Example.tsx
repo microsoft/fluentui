@@ -18,10 +18,10 @@ export interface IOverflowData {
 
 function generateData(count: number, cachingEnabled: boolean, checked: boolean): IOverflowData {
   const icons = ['Add', 'Share', 'Upload'];
-  let dataItems = [];
+  const dataItems = [];
   let cacheKey = '';
   for (let index = 0; index < count; index++) {
-    let item = {
+    const item = {
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
@@ -70,8 +70,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
   }
 
   public render() {
-    let { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
-    let dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
+    const { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
+    const dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
     return (
       <div className={ short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
@@ -137,8 +137,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
       return undefined;
     }
 
-    let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
-    let primary = currentData.primary.slice(0, -1);
+    const overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
+    const primary = currentData.primary.slice(0, -1);
 
     let cacheKey = undefined;
     if (this.state.cachingEnabled) {
@@ -153,8 +153,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
       return undefined;
     }
 
-    let overflow = currentData.overflow.slice(1);
-    let primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
+    const overflow = currentData.overflow.slice(1);
+    const primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
 
     let cacheKey = undefined;
     if (this.state.cachingEnabled) {

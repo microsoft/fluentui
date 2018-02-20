@@ -18,7 +18,7 @@ const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
-    let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
+    const cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (
       <ComponentPage

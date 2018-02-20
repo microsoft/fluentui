@@ -23,11 +23,11 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
   }
 
   public render() {
-    let { isTeachingBubbleVisible } = this.state;
-    let examplePrimaryButton: IButtonProps = {
+    const { isTeachingBubbleVisible } = this.state;
+    const examplePrimaryButton: IButtonProps = {
       children: 'Try it out'
     };
-    let exampleSecondaryButtonProps: IButtonProps = {
+    const exampleSecondaryButtonProps: IButtonProps = {
       children: 'Maybe later',
       onClick: this._onDismiss
     };

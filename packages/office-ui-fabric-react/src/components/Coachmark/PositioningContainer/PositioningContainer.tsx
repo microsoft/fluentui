@@ -129,8 +129,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.
-    let newTarget = this._getTarget(newProps);
-    let oldTarget = this._getTarget();
+    const newTarget = this._getTarget(newProps);
+    const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
@@ -151,23 +151,23 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       return null;
     }
 
-    let {
+    const {
       className,
       positioningContainerWidth,
       positioningContainerMaxHeight,
       children } = this.props;
-    let { positions } = this.state;
+    const { positions } = this.state;
 
     const styles = getClassNames();
 
-    let directionalClassName = (positions && positions.targetEdge)
+    const directionalClassName = (positions && positions.targetEdge)
       ? (AnimationClassNames as any)[SLIDE_ANIMATIONS[positions.targetEdge]]
       : '';
 
-    let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = positioningContainerMaxHeight!
+    const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    const contentMaxHeight: number = positioningContainerMaxHeight!
       && (positioningContainerMaxHeight! > getContentMaxHeight) ? getContentMaxHeight : positioningContainerMaxHeight!;
-    let content = (
+    const content = (
       <div
         ref={ this._resolveRef('_positionedHost') }
         className={ css('ms-PositioningContainer', styles.container) }
@@ -204,7 +204,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
 
   @autobind
   public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void {
-    let { onDismiss } = this.props;
+    const { onDismiss } = this.props;
 
     if (onDismiss) {
       onDismiss(ev);
@@ -219,8 +219,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   protected _dismissOnLostFocus(ev: Event): void {
-    let target = ev.target as HTMLElement;
-    let clickedOutsideCallout = this._positionedHost && !elementContains(this._positionedHost, target);
+    const target = ev.target as HTMLElement;
+    const clickedOutsideCallout = this._positionedHost && !elementContains(this._positionedHost, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -272,8 +272,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       onPositioned
     } = this.props;
 
-    let hostElement: HTMLElement = this._positionedHost;
-    let positioningContainerElement: HTMLElement = this._contentHost;
+    const hostElement: HTMLElement = this._positionedHost;
+    const positioningContainerElement: HTMLElement = this._contentHost;
 
     if (hostElement && positioningContainerElement) {
       let currentProps: IPositionProps | undefined;
@@ -281,7 +281,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
       currentProps!.gapSpace = offsetFromTarget;
-      let newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
+      const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
 
       // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -335,7 +335,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
 
     if (!this._maxHeight) {
       if (directionalHintFixed && this._target) {
-        let gapSpace = offsetFromTarget ? offsetFromTarget : 0;
+        const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
         this._maxHeight = getMaxHeight(this._target, directionalHint!, gapSpace, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
@@ -368,7 +368,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
     if (target) {
       if (typeof target === 'string') {
-        let currentDoc: Document = getDocument()!;
+        const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
@@ -378,7 +378,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
         this._targetWindow = getWindow()!;
         this._target = target;
       } else {
-        let targetElement: HTMLElement = target as HTMLElement;
+        const targetElement: HTMLElement = target as HTMLElement;
         this._targetWindow = getWindow(targetElement)!;
         this._target = target;
       }
@@ -412,7 +412,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerTyp
   }
 
   private _getTarget(props: IPositioningContainerTypes = this.props): HTMLElement | string | MouseEvent | IPoint | null {
-    let { target } = props;
+    const { target } = props;
     return target!;
   }
 }

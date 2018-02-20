@@ -14,8 +14,8 @@ export const getStyles = memoizeFunction((
   focusInset?: string,
   focusColor?: string
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let messageBarButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const messageBarButtonStyles: IButtonStyles = {
     root: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
       color: theme.palette.neutralPrimary

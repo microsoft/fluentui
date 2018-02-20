@@ -31,9 +31,9 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
   public componentWillReceiveProps(newProps: any) {
     if (newProps.group) {
-      let newCollapsed = newProps.group.isCollapsed;
-      let isGroupLoading = newProps.headerProps && newProps.headerProps.isGroupLoading;
-      let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(newProps.group);
+      const newCollapsed = newProps.group.isCollapsed;
+      const isGroupLoading = newProps.headerProps && newProps.headerProps.isGroupLoading;
+      const newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(newProps.group);
 
       this.setState({
         isCollapsed: newCollapsed,
@@ -44,23 +44,25 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
   public render(): JSX.Element | null {
     let {
+      isCollapsedGroupSelectVisible
+    } = this.props;
+    const {
       group,
       groupLevel,
       viewport,
       selectionMode,
       loadingText,
       isSelected,
-      selected,
-      isCollapsedGroupSelectVisible
+      selected
     } = this.props;
-    let { isCollapsed, isLoadingVisible } = this.state;
+    const { isCollapsed, isLoadingVisible } = this.state;
 
     if (isCollapsedGroupSelectVisible === undefined) {
       isCollapsedGroupSelectVisible = true;
     }
-    let canSelectGroup = selectionMode === SelectionMode.multiple;
-    let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
-    let currentlySelected = isSelected || selected;
+    const canSelectGroup = selectionMode === SelectionMode.multiple;
+    const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
+    const currentlySelected = isSelected || selected;
 
     if (!group) {
       return null;
@@ -136,11 +138,11 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
   @autobind
   private _onToggleCollapse(ev: React.MouseEvent<HTMLElement>) {
-    let { group, onToggleCollapse, isGroupLoading } = this.props;
-    let { isCollapsed } = this.state;
+    const { group, onToggleCollapse, isGroupLoading } = this.props;
+    const { isCollapsed } = this.state;
 
-    let newCollapsed = !isCollapsed;
-    let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group!);
+    const newCollapsed = !isCollapsed;
+    const newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group!);
 
     this.setState({
       isCollapsed: newCollapsed,
@@ -156,7 +158,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
   @autobind
   private _onToggleSelectGroupClick(ev: React.MouseEvent<HTMLElement>) {
-    let { onToggleSelectGroup, group } = this.props;
+    const { onToggleSelectGroup, group } = this.props;
 
     if (onToggleSelectGroup) {
       onToggleSelectGroup(group!);
@@ -168,7 +170,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
 
   @autobind
   private _onHeaderClick() {
-    let { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
+    const { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
 
     if (onGroupHeaderClick) {
       onGroupHeaderClick(group!);

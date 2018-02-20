@@ -21,7 +21,7 @@ describe('SpinButton', () => {
 
   it('renders SpinButton correctly', () => {
     const component = renderer.create(<SpinButton label='label' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -405,7 +405,7 @@ describe('SpinButton', () => {
         defaultValue={ exampleDefaultValue }
         // tslint:disable-next-line:jsx-no-lambda
         onValidate={ (newValue: string): string => {
-          let numberValue: number = +newValue;
+          const numberValue: number = +newValue;
           return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
         } }
       />
@@ -438,7 +438,7 @@ describe('SpinButton', () => {
         value={ exampleDefaultValue }
         // tslint:disable-next-line:jsx-no-lambda
         onValidate={ (newValue: string): string => {
-          let numberValue: number = Number(newValue);
+          const numberValue: number = Number(newValue);
           return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
         } }
       />
@@ -608,13 +608,13 @@ describe('SpinButton', () => {
 
     delay(500).then(() => ReactTestUtils.Simulate.focus(inputDOM));
 
-    let currentValue = inputDOM.value;
+    const currentValue = inputDOM.value;
     expect(currentValue).not.toEqual('2');
     expect(inputDOM.getAttribute('aria-valuemin')).toEqual(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).toEqual(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuenow')).toEqual(currentValue);
 
-    let newCurrentValue = inputDOM.value;
+    const newCurrentValue = inputDOM.value;
     expect(currentValue).toEqual(newCurrentValue);
   });
 

@@ -8,7 +8,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ImageNoneExample extends React.Component<any, any> {
   public render() {
-    let imageProps: IImageProps = {
+    const imageProps: IImageProps = {
       src: 'http://placehold.it/500x250',
       imageFit: ImageFit.none,
       width: 350,

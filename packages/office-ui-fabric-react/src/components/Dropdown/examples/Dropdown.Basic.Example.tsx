@@ -19,7 +19,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
   }
 
   public render() {
-    let { selectedItem, selectedItems } = this.state;
+    const { selectedItem, selectedItems } = this.state;
 
     return (
       <div className='docs-DropdownExample'>
@@ -171,13 +171,13 @@ export class DropdownBasicExample extends BaseComponent<{}, {
 
   @autobind
   public onChangeMultiSelect(item: IDropdownOption) {
-    let updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
+    const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
     if (item.selected) {
       // add the option if it's checked
       updatedSelectedItem.push(item.key);
     } else {
       // remove the option if it's unchecked
-      let currIndex = updatedSelectedItem.indexOf(item.key);
+      const currIndex = updatedSelectedItem.indexOf(item.key);
       if (currIndex > -1) {
         updatedSelectedItem.splice(currIndex, 1);
       }
@@ -188,7 +188,7 @@ export class DropdownBasicExample extends BaseComponent<{}, {
   }
 
   public copyArray(array: any[]): any[] {
-    let newArray: any[] = [];
+    const newArray: any[] = [];
     for (let i = 0; i < array.length; i++) {
       newArray[i] = array[i];
     }

@@ -23,7 +23,7 @@ export interface ISuggestionsState {
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {
-    let {
+    const {
       suggestionModel,
       RenderSuggestion,
       onClick,
@@ -80,7 +80,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public render() {
-    let {
+    const {
       forceResolveText,
       createGenericItem,
       showForceResolve,
@@ -103,7 +103,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       suggestionsHeaderText,
     } = this.props;
 
-    let noResults = () => {
+    const noResults = () => {
       return noResultsFoundText ?
         (
           <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
@@ -116,8 +116,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
       headerText = mostRecentlyUsedHeaderText;
     }
-    let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
-    let hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
+    const footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+    const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
     return (
       <div
         className={ css(
@@ -199,8 +199,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   public tryHandleKeyDown(keyCode: number, currentSuggestionIndex: number): boolean {
     let isEventHandled = false;
     let newSelectedActionType = null;
-    let currentSelectedAction = this.state.selectedActionType;
-    let suggestionLength = this.props.suggestions.length;
+    const currentSelectedAction = this.state.selectedActionType;
+    const suggestionLength = this.props.suggestions.length;
     if (keyCode === KeyCodes.down) {
       switch (currentSelectedAction) {
         case SuggestionActionType.forceResolve:
@@ -283,7 +283,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public focusAboveSuggestions(): void {
-    let newSelectedActionType = null;
+    const newSelectedActionType = null;
     if (this._forceResolveButton) {
       this.setState({ selectedActionType: SuggestionActionType.forceResolve });
     } else if (this._searchForMoreButton) {
@@ -313,14 +313,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   private _renderSuggestions(): JSX.Element {
-    let {
-      suggestions,
+    const {
       onRenderSuggestion,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel } = this.props;
-    let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+    let { suggestions } = this.props;
+    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
@@ -391,7 +391,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   @autobind
   private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
     return (ev: React.MouseEvent<HTMLElement>): void => {
-      let onSuggestionRemove = this.props.onSuggestionRemove!;
+      const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);
       ev.stopPropagation();
     };

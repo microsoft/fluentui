@@ -12,7 +12,7 @@ describe('ColorPicker', () => {
     const component = renderer.create(
       <ColorPicker color='#FFFFFF' />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

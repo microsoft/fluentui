@@ -44,12 +44,12 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   }
 
   public render() {
-    let { isPrimary } = this.state;
-    let { disabled, checked } = this.props;
-    let text = 'Swap';
+    const { isPrimary } = this.state;
+    const { disabled, checked } = this.props;
+    const text = 'Swap';
 
     // determine which button to render
-    let button = isPrimary
+    const button = isPrimary
       ? (
         <PrimaryButton
           ref={ this._setButtonRef }

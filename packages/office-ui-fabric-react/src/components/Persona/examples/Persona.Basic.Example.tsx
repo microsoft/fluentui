@@ -32,7 +32,7 @@ export class PersonaBasicExample extends React.Component<{}, {
   }
 
   public render() {
-    let { renderPersonaDetails } = this.state;
+    const { renderPersonaDetails } = this.state;
 
     return (
       <div>

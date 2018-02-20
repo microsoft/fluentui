@@ -75,7 +75,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   public render() {
-    let {
+    const {
       className = '',
       elementToFocusOnDismiss,
       firstFocusableSelector,
@@ -96,10 +96,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    let { isOpen, isAnimating, id } = this.state;
-    let isLeft = type === PanelType.smallFixedNear ? true : false;
-    let isRTL = getRTL();
-    let isOnRightSide = isRTL ? isLeft : !isLeft;
+    const { isOpen, isAnimating, id } = this.state;
+    const isLeft = type === PanelType.smallFixedNear ? true : false;
+    const isRTL = getRTL();
+    const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
     const renderProps: IPanelProps = { ...this.props, componentId: id };
@@ -290,8 +290,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   @autobind
   private _onRenderFooter(props: IPanelProps): JSX.Element | null {
-    let { isFooterSticky } = this.state;
-    let { onRenderFooterContent = null } = this.props;
+    const { isFooterSticky } = this.state;
+    const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {
       return (
         <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
@@ -305,10 +305,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   private _updateFooterPosition() {
-    let _content = this._content;
+    const _content = this._content;
     if (_content) {
-      let height = _content.clientHeight;
-      let innerHeight = _content.scrollHeight;
+      const height = _content.clientHeight;
+      const innerHeight = _content.scrollHeight;
 
       this.setState({
         isFooterSticky: height < innerHeight ? true : false

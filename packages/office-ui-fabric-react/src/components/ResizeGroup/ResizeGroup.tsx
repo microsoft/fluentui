@@ -86,12 +86,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * is not in the cache.
    */
   function _getMeasuredWidth(measuredData: any, getElementToMeasureWidth: () => number): number {
-    let cachedWidth = _measurementCache.getCachedMeasurement(measuredData);
+    const cachedWidth = _measurementCache.getCachedMeasurement(measuredData);
     if (cachedWidth !== undefined) {
       return cachedWidth;
     }
 
-    let measuredWidth = getElementToMeasureWidth();
+    const measuredWidth = getElementToMeasureWidth();
     _measurementCache.addMeasurementToCache(measuredData, measuredWidth);
     return measuredWidth;
   }
@@ -111,7 +111,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
     while (measuredWidth > _containerWidth!) {
-      let nextMeasuredData = onReduceData(dataToMeasure);
+      const nextMeasuredData = onReduceData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
       // scaling steps, so implementations of onReduceData should return undefined when
@@ -159,7 +159,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
     while (measuredWidth < _containerWidth!) {
-      let nextMeasuredData = onGrowData(dataToMeasure);
+      const nextMeasuredData = onGrowData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
       // scaling steps, so implementations of onGrowData should return undefined when
@@ -350,7 +350,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       if (this.state.measureContainer) {
         containerWidth = this._root.getBoundingClientRect().width;
       }
-      let nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
+      const nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
         this.state,
         () => this._measured.scrollWidth,
         containerWidth);

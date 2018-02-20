@@ -49,14 +49,14 @@ describe('Breadcrumb', () => {
       { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
       <Breadcrumb
         items={ items }
       />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
 
     ReactTestUtils.Simulate.click(itemLink!);
     expect(callbackValue).toEqual('TestKey');
@@ -71,15 +71,15 @@ describe('Breadcrumb', () => {
       { text: 'TestText4', key: 'TestKey4' }
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
+    const component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
       <Breadcrumb
         items={ items }
         maxDisplayedItems={ 2 }
       />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const itemLink = renderedDOM.querySelectorAll('.ms-Breadcrumb-item');
 
     expect(itemLink[0].textContent).toEqual('TestText3');
   });

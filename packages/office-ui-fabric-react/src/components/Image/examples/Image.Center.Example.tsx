@@ -8,7 +8,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ImageCenterExample extends React.Component<any, any> {
   public render() {
-    let imageProps: IImageProps = {
+    const imageProps: IImageProps = {
       src: 'http://placehold.it/800x300',
       imageFit: ImageFit.center,
       width: 350,

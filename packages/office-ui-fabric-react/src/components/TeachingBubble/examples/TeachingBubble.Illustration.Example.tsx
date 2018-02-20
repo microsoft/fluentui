@@ -24,12 +24,12 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
   }
 
   public render() {
-    let { isTeachingBubbleVisible } = this.state;
-    let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
-    let examplePrimaryButton: IButtonProps = {
+    const { isTeachingBubbleVisible } = this.state;
+    const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
+    const examplePrimaryButton: IButtonProps = {
       children: 'Try it out',
     };
-    let exampleSecondaryButtonProps: IButtonProps = {
+    const exampleSecondaryButtonProps: IButtonProps = {
       children: 'May be later',
       onClick: this._onDismiss
     };

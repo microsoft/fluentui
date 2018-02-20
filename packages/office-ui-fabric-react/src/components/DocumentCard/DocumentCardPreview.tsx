@@ -14,7 +14,7 @@ const LIST_ITEM_COUNT = 3;
 
 export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
   public render() {
-    let { previewImages } = this.props;
+    const { previewImages } = this.props;
     let style, preview;
     let isFileList = false;
 
@@ -45,7 +45,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
   }
 
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    let { width, height, imageFit, previewIconProps } = previewImage;
+    const { width, height, imageFit, previewIconProps } = previewImage;
 
     if (previewIconProps) {
       return (
@@ -55,7 +55,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
       );
     }
 
-    let image = (
+    const image = (
       <Image
         width={ width }
         height={ height }
@@ -81,19 +81,19 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
 
   @autobind
   private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    let { getOverflowDocumentCountText } = this.props;
+    const { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing
-    let overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
+    const overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
 
     // Determine the overflow text that will be rendered after the preview list.
-    let overflowText = overflowDocumentCount ?
+    const overflowText = overflowDocumentCount ?
       (getOverflowDocumentCountText ?
         getOverflowDocumentCountText(overflowDocumentCount) :
         '+' + overflowDocumentCount) : null;
 
     // Create list items for the documents to be shown
-    let fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
+    const fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
       <li key={ fileIndex }>
         <Image
           className={ css('ms-DocumentCardPreview-fileListIcon', styles.fileListIcon) }

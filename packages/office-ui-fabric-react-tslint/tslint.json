@@ -53,7 +53,7 @@
       "property-declaration",
       "member-variable-declaration"
     ],
-    "prefer-const": false,
+    "prefer-const": true,
     "quotemark": [
       true,
       "single",

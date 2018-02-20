@@ -32,7 +32,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   }
 
   public render() {
-    let { sortedItems, columns } = this.state;
+    const { sortedItems, columns } = this.state;
 
     return (
       <DetailsList
@@ -49,7 +49,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
   @autobind
   private _onColumnClick(event: React.MouseEvent<HTMLElement>, column: IColumn) {
-    let { sortedItems, columns } = this.state;
+    const { columns } = this.state;
+    let { sortedItems } = this.state;
     let isSortedDescending = column.isSortedDescending;
 
     // If we've sorted this column, flip it.
@@ -59,8 +60,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     // Sort the items.
     sortedItems = sortedItems!.concat([]).sort((a, b) => {
-      let firstValue = a[column.fieldName];
-      let secondValue = b[column.fieldName];
+      const firstValue = a[column.fieldName];
+      const secondValue = b[column.fieldName];
 
       if (isSortedDescending) {
         return firstValue > secondValue ? -1 : 1;
@@ -94,9 +95,9 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 }
 
 function _buildColumns() {
-  let columns = buildColumns(_items);
+  const columns = buildColumns(_items);
 
-  let thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
+  const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
 
   // Special case one column's definition.
   thumbnailColumn.name = '';
@@ -106,7 +107,7 @@ function _buildColumns() {
 }
 
 function _renderItemColumn(item: any, index: number, column: IColumn) {
-  let fieldContent = item[column.fieldName];
+  const fieldContent = item[column.fieldName];
 
   switch (column.key) {
     case 'thumbnail':

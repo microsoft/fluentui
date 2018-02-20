@@ -18,7 +18,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   }
 
   public render() {
-    let {
+    const {
       onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
@@ -97,11 +97,11 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   @autobind
   private _onRenderPersonaArray(props: IActivityItemProps): JSX.Element | null {
     let personaElement: JSX.Element | null = null;
-    let activityPersonas = props.activityPersonas as Array<IPersonaProps & { key?: string | number }>;
+    const activityPersonas = props.activityPersonas as Array<IPersonaProps & { key?: string | number }>;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
-      let personaList: Array<JSX.Element> = [];
-      let showSize16Personas = (activityPersonas.length > 1 || props.isCompact);
-      let personaLimit = props.isCompact ? 3 : 4;
+      const personaList: Array<JSX.Element> = [];
+      const showSize16Personas = (activityPersonas.length > 1 || props.isCompact);
+      const personaLimit = props.isCompact ? 3 : 4;
       let style: React.CSSProperties | undefined = undefined;
       if (props.isCompact) {
         style = {

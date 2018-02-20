@@ -7,7 +7,7 @@ export interface IContextualMenuMultiselectExampleState {
   selection?: { [key: string]: boolean };
 }
 
-let keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent'];
+const keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent'];
 
 export class ContextualMenuCheckmarksExample extends React.Component<{}, IContextualMenuMultiselectExampleState> {
 
@@ -22,7 +22,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
   }
 
   public render() {
-    let { selection } = this.state;
+    const { selection } = this.state;
 
     return (
       <DefaultButton
@@ -110,7 +110,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
   }
 
   private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem) {
-    let { selection } = this.state;
+    const { selection } = this.state;
     ev!.preventDefault();
     selection![item!.key] = !selection![item!.key];
 

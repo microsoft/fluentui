@@ -86,7 +86,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   public render() {
-    let {
+    const {
       checkboxVisibility,
       columns,
       constrainMode,
@@ -99,8 +99,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionMode
     } = this.state;
 
-    let isGrouped = groups && groups.length > 0;
-    let groupProps = {
+    const isGrouped = groups && groups.length > 0;
+    const groupProps = {
       getGroupItemLimit: (group: IGroup) => {
         if (group) {
           return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit as number);
@@ -159,7 +159,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
       setTimeout(() => {
         this._isFetchingItems = false;
-        let itemsCopy = ([] as any[]).concat(this.state.items);
+        const itemsCopy = ([] as any[]).concat(this.state.items);
 
         itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
 
@@ -190,7 +190,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   @autobind
   private _onToggleResizing() {
-    let { items, canResizeColumns, sortedColumnKey, isSortedDescending } = this.state;
+    const { items, sortedColumnKey, isSortedDescending } = this.state;
+    let { canResizeColumns } = this.state;
 
     canResizeColumns = !canResizeColumns;
 
@@ -233,7 +234,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _getCommandItems(): IContextualMenuItem[] {
-    let {
+    const {
       canResizeColumns,
       checkboxVisibility,
       constrainMode,
@@ -404,7 +405,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _getContextualMenuProps(ev: React.MouseEvent<HTMLElement>, column: IColumn): IContextualMenuProps {
-    let items = [
+    const items = [
       {
         key: 'aToZ',
         name: 'A to Z',
@@ -482,7 +483,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   @autobind
   private _onSortColumn(key: string, isSortedDescending: boolean) {
-    let sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
+    const sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
       items: sortedItems,
@@ -502,8 +503,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   @autobind
   private _onGroupByColumn(column: IColumn) {
-    let { key, isGrouped } = column;
-    let { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
+    const { key, isGrouped } = column;
+    const { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
 
     if (isGrouped) { // ungroup
       this._onSortColumn(sortedColumnKey as string, !!isSortedDescending);
@@ -518,7 +519,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         newGroups = this._getGroups(groupedItems, key);
       }
 
-      let newColumns = columns as IColumn[];
+      const newColumns = columns as IColumn[];
       newColumns.filter(matchColumn => matchColumn.key === key).forEach((groupedColumn: IColumn) => {
         groupedColumn.isGrouped = true;
       });
@@ -535,11 +536,11 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     if (groups) {
       groups.forEach((group: IGroup) => {
         if (group.children && group.children.length > 0) {
-          let childGroupedItems = this._groupByKey(group.children, items, key);
+          const childGroupedItems = this._groupByKey(group.children, items, key);
           groupedItems = groupedItems.concat(childGroupedItems);
         } else {
-          let itemsInGroup = items.slice(group.startIndex, group.startIndex + group.count);
-          let nextLevelGroupedItems = this._groupItems(itemsInGroup, key);
+          const itemsInGroup = items.slice(group.startIndex, group.startIndex + group.count);
+          const nextLevelGroupedItems = this._groupItems(itemsInGroup, key);
           groupedItems = groupedItems.concat(nextLevelGroupedItems);
           group.children = this._getGroups(nextLevelGroupedItems, key, group);
         }
@@ -553,9 +554,9 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   private _getGroups(groupedItems: any[], key: string, parentGroup?: IGroup): IGroup[] {
-    let separator = '-';
-    let groups = groupedItems.reduce((current, item, index) => {
-      let currentGroup = current[current.length - 1];
+    const separator = '-';
+    const groups = groupedItems.reduce((current, item, index) => {
+      const currentGroup = current[current.length - 1];
 
       if (!currentGroup || (this._getLeafGroupKey(currentGroup.key, separator) !== item[key])) {
         current.push({
@@ -577,7 +578,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   private _getLeafGroupKey(key: string, separator: string): string {
     let leafKey = key;
     if (key.indexOf(separator) !== -1) {
-      let arrKeys = key.split(separator);
+      const arrKeys = key.split(separator);
       leafKey = arrKeys[arrKeys.length - 1];
     }
     return leafKey;
@@ -605,7 +606,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     isSortedDescending?: boolean,
     groupedColumnKey?: string,
     onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any) {
-    let columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
+    const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
       column.onColumnContextMenu = onColumnContextMenu;

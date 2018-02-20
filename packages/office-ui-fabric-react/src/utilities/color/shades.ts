@@ -105,7 +105,7 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
   }
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
+  const tableIndex = shade - 1;
   let _soften = _lighten;
   let _strongen = _darken;
   if (isInverted) {
@@ -146,7 +146,7 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
   }
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
+  const tableIndex = shade - 1;
   if (!isInverted) { // lightish
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish
@@ -173,15 +173,15 @@ export function getContrastRatio(color1: IColor, color2: IColor) {
     }
   }
 
-  let r1 = _getThing(color1.r / MAX_COLOR_RGBA);
-  let g1 = _getThing(color1.g / MAX_COLOR_RGBA);
-  let b1 = _getThing(color1.b / MAX_COLOR_RGBA);
+  const r1 = _getThing(color1.r / MAX_COLOR_RGBA);
+  const g1 = _getThing(color1.g / MAX_COLOR_RGBA);
+  const b1 = _getThing(color1.b / MAX_COLOR_RGBA);
   let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
   L1 += .05;
 
-  let r2 = _getThing(color2.r / MAX_COLOR_RGBA);
-  let g2 = _getThing(color2.g / MAX_COLOR_RGBA);
-  let b2 = _getThing(color2.b / MAX_COLOR_RGBA);
+  const r2 = _getThing(color2.r / MAX_COLOR_RGBA);
+  const g2 = _getThing(color2.g / MAX_COLOR_RGBA);
+  const b2 = _getThing(color2.b / MAX_COLOR_RGBA);
   let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
   L2 += .05;
 

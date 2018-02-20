@@ -8,7 +8,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ImageMaximizeFrameExample extends React.Component<any, any> {
   public render() {
-    let imageProps: IImageProps = {
+    const imageProps: IImageProps = {
       src: 'http://placehold.it/500x500',
       imageFit: ImageFit.cover,
       maximizeFrame: true

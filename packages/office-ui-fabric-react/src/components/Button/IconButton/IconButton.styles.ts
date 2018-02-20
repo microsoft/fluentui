@@ -15,9 +15,9 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let iconButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const iconButtonStyles: IButtonStyles = {
     root: {
       padding: '0 4px',
       width: '32px',

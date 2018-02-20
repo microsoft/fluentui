@@ -53,7 +53,7 @@ export class ListPeoplePicker extends MemberListPeoplePicker {
 }
 
 export function createGenericItem(name: string, currentValidationState: ValidationState) {
-  let personaToConvert = {
+  const personaToConvert = {
     key: name,
     primaryText: name,
     imageInitials: '!',

@@ -34,7 +34,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <div className='detailsListDragDropExample'>
@@ -89,9 +89,9 @@ export class DetailsListDragDropExample extends React.Component<{}, {
   }
 
   private _insertBeforeItem(item: any) {
-    let draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
-    let items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.

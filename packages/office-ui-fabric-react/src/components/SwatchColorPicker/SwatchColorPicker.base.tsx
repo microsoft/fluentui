@@ -67,7 +67,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   }
 
   public render() {
-    let {
+    const {
       colorCells,
       columnCount,
       positionInSet,
@@ -129,7 +129,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * @returns {number} - The index of the selected item's id, -1 if there was no match
    */
   private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
-    let selectedIndex = findIndex(items, (item => (item.id === selectedId)));
+    const selectedIndex = findIndex(items, (item => (item.id === selectedId)));
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
@@ -144,7 +144,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    */
   @autobind
   private _renderOption(item: IColorCellProps): JSX.Element {
-    let id = this._id;
+    const id = this._id;
 
     return (
       <ColorPickerGridCell
@@ -201,7 +201,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       return;
     }
 
-    let index = item.index as number;
+    const index = item.index as number;
 
     // If we have a valid index and it is not already
     // selected, select it

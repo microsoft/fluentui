@@ -28,7 +28,7 @@ describe('Callout', () => {
       <CalloutContentWrapper>Content</CalloutContentWrapper>,
       { createNodeMock }
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -59,8 +59,8 @@ describe('Callout', () => {
   });
 
   it('target MouseEvents does not throw exception', () => {
-    let mouseEvent = document.createEvent('MouseEvent');
-    let eventTarget = document.createElement('div');
+    const mouseEvent = document.createEvent('MouseEvent');
+    const eventTarget = document.createElement('div');
     mouseEvent.initMouseEvent('click', false, false, window, 0, 0, 0, 0, 0, false, false, false, false, 1, eventTarget);
     let threwException: boolean = false;
     try {
@@ -85,7 +85,7 @@ describe('Callout', () => {
   });
 
   it('target HTMLElements does not throw exception', () => {
-    let targetElement = document.createElement('div');
+    const targetElement = document.createElement('div');
     document.body.appendChild(targetElement);
     let threwException: boolean = false;
     try {
@@ -132,7 +132,7 @@ describe('Callout', () => {
   it('passes event to onDismiss prop', (done) => {
     let threwException: boolean = false;
     let gotEvent: boolean = false;
-    let onDismiss = (ev?: any) => {
+    const onDismiss = (ev?: any) => {
       if (ev) {
         gotEvent = true;
       }
@@ -140,7 +140,7 @@ describe('Callout', () => {
 
     // In order to have eventlisteners that have been added to the window to be called the JSX needs
     // to be rendered into the real dom rather than the testutil simulated dom.
-    let root = document.createElement('div');
+    const root = document.createElement('div');
     document.body.appendChild(root);
     try {
       ReactDOM.render<HTMLDivElement>(
@@ -163,7 +163,7 @@ describe('Callout', () => {
     }
     expect(threwException).toEqual(false);
 
-    let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
+    const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
     // Move focus
     setTimeout(() => {

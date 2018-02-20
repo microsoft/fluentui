@@ -82,7 +82,8 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
 }
 
 export function initialsColorPropToColorCode(props: IPersonaProps): string {
-  let { initialsColor, primaryText } = props;
+  const { primaryText } = props;
+  let { initialsColor } = props;
   let initialsColorCode: string;
   if (typeof initialsColor === 'string') {
     initialsColorCode = initialsColor;

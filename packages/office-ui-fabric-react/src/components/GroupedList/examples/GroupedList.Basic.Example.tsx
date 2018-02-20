@@ -59,7 +59,7 @@ export class GroupedListBasicExample extends React.Component {
   }
 
   private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
-    let {
+    const {
       _selection: selection
     } = this;
     return (

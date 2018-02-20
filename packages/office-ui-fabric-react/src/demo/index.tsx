@@ -23,7 +23,7 @@ let rootElement: HTMLElement | null;
 
 // Return the anchor link from the URL without the hash
 function _extractAnchorLink(path: string) {
-  let index = path.lastIndexOf('#');
+  const index = path.lastIndexOf('#');
   if (index >= 0) {
     path = path.substr(index + 1, path.length - index);
   }
@@ -32,7 +32,7 @@ function _extractAnchorLink(path: string) {
 
 function _scrollAnchorLink() {
   if ((window.location.hash.match(/#/g) || []).length > 1) {
-    let anchor = _extractAnchorLink(window.location.hash);
+    const anchor = _extractAnchorLink(window.location.hash);
     document.getElementById(anchor)!.scrollIntoView();
   }
 }
@@ -50,8 +50,8 @@ function _onLoad() {
 }
 
 function _getRoutes() {
-  let routes = AppDefinition.testPages.map(page => <Route key={ page.key } path={ page.url } component={ page.component } />);
-  let appRoutes: JSX.Element[] = [];
+  const routes = AppDefinition.testPages.map(page => <Route key={ page.key } path={ page.url } component={ page.component } />);
+  const appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach(group => {
     group.links
@@ -89,7 +89,7 @@ function _onUnload() {
   }
 }
 
-let isReady = document.readyState === 'interactive' || document.readyState === 'complete';
+const isReady = document.readyState === 'interactive' || document.readyState === 'complete';
 
 if (isReady) {
   _onLoad();

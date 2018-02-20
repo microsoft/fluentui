@@ -37,7 +37,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
   }
 
   public render() {
-    let { percentComplete } = this.state;
+    const { percentComplete } = this.state;
 
     return (
       <ProgressIndicator

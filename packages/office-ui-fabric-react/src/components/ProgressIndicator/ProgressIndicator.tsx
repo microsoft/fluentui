@@ -31,7 +31,8 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
   }
 
   public render() {
-    let { title, label, description, percentComplete, className, ariaValueText } = this.props;
+    const { title, description, className, ariaValueText } = this.props;
+    let { label, percentComplete } = this.props;
 
     // Handle deprecated value.
     if (title) {

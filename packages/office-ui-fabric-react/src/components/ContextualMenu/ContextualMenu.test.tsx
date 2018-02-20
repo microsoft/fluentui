@@ -38,7 +38,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuList = document.querySelector('.ms-ContextualMenu-list') as HTMLUListElement;
+    const menuList = document.querySelector('.ms-ContextualMenu-list') as HTMLUListElement;
 
     expect(menuList.scrollHeight).toBeLessThanOrEqual(menuList.offsetHeight);
   });
@@ -52,7 +52,7 @@ describe('ContextualMenu', () => {
     ];
 
     let spyCalled = false;
-    let onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
+    const onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
@@ -62,7 +62,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
     expect(spyCalled).toEqual(true);
@@ -77,7 +77,7 @@ describe('ContextualMenu', () => {
     ];
 
     let spyCalled = false;
-    let onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
+    const onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
@@ -88,7 +88,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
     expect(spyCalled).toEqual(false);
@@ -103,7 +103,7 @@ describe('ContextualMenu', () => {
     ];
 
     let spyCalled = false;
-    let onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
+    const onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
@@ -114,7 +114,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
     expect(spyCalled).toEqual(false);
@@ -142,7 +142,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
 
@@ -172,7 +172,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(menuItem);
 
@@ -233,7 +233,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
@@ -254,7 +254,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
     expect(menuItem.disabled).toBeTruthy();
   });
@@ -274,7 +274,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
     expect(menuItem.disabled).toBeTruthy();
   });
@@ -303,12 +303,12 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItems = document.querySelectorAll('li');
+    const menuItems = document.querySelectorAll('li');
 
     expect(menuItems.length).toEqual(4);
-    let headerOne = menuItems[0];
-    let dividerOne = menuItems[2];
-    let headerTwo = menuItems[3];
+    const headerOne = menuItems[0];
+    const dividerOne = menuItems[2];
+    const headerTwo = menuItems[3];
 
     expect(headerOne.className).not.toEqual(expect.stringMatching('divider'));
     expect(headerOne.firstElementChild!.className).toEqual(expect.stringMatching('header'));
@@ -363,7 +363,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItems = document.querySelectorAll('li');
+    const menuItems = document.querySelectorAll('li');
     expect(menuItems.length).toEqual(8);
 
   });
@@ -374,7 +374,7 @@ describe('ContextualMenu', () => {
         items={ [] }
       />
     );
-    let menuList = document.querySelector('.ms-ContextualMenu-list');
+    const menuList = document.querySelector('.ms-ContextualMenu-list');
 
     expect(menuList).toBeNull();
 
@@ -473,8 +473,8 @@ describe('ContextualMenu', () => {
         focusedItem = document.querySelector('.testkey2')!.firstChild;
 
         if (focusedItem) {
-          let focusedItemElement = focusedItem as HTMLElement;
-          let eventObject = document.createEvent('Events');
+          const focusedItemElement = focusedItem as HTMLElement;
+          const eventObject = document.createEvent('Events');
           eventObject.initEvent('mouseenter', true, false);
           focusedItemElement.dispatchEvent(eventObject);
         }
@@ -552,7 +552,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let callout = document.querySelector('.ms-Callout') as HTMLElement;
+    const callout = document.querySelector('.ms-Callout') as HTMLElement;
     expect(callout).toBeDefined();
     expect(callout.classList.contains('ms-ContextualMenu-Callout')).toBeTruthy();
     expect(callout.classList.contains('foo')).toBeTruthy();
@@ -575,7 +575,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
     expect(menuItem.querySelector('.ms-ContextualMenu-submenuIcon')).not.toEqual(null);
   });
@@ -604,7 +604,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(menuItem);
 

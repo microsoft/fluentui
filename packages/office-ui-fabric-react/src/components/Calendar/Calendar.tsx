@@ -15,11 +15,11 @@ const styles: any = stylesImport;
 
 const leftArrow: string = 'Up';
 const rightArrow: string = 'Down';
-let iconStrings: ICalendarIconStrings = {
+const iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
 };
-let defaultWorkWeekDays: DayOfWeek[] = [
+const defaultWorkWeekDays: DayOfWeek[] = [
   DayOfWeek.Monday,
   DayOfWeek.Tuesday,
   DayOfWeek.Wednesday,
@@ -27,7 +27,7 @@ let defaultWorkWeekDays: DayOfWeek[] = [
   DayOfWeek.Friday,
 ];
 
-let dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
+const dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatMonthDayYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()),
   formatMonthYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getFullYear()),
   formatDay: (date: Date) => date.getDate().toString(),
@@ -82,7 +82,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   constructor(props: ICalendarProps) {
     super(props);
-    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
+    const currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
 
     this.state = {
       selectedDate: currentDate,
@@ -97,11 +97,11 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public componentWillReceiveProps(nextProps: ICalendarProps) {
-    let { autoNavigateOnSelection, value, today = new Date() } = nextProps;
+    const { autoNavigateOnSelection, value, today = new Date() } = nextProps;
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
     // if selected date is updated via props, we may need to modify the navigated date
-    let overrideNavigatedDate = (autoNavigateOnSelection && !compareDates(value!, this.props.value!));
+    const overrideNavigatedDate = (autoNavigateOnSelection && !compareDates(value!, this.props.value!));
     if (overrideNavigatedDate) {
       this.setState({
         navigatedDate: value
@@ -126,12 +126,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public render() {
-    let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons, minDate, maxDate } = this.props;
-    let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
-    let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
-    let monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
-    let overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
+    const rootClass = 'ms-DatePicker';
+    const { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons, minDate, maxDate } = this.props;
+    const { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
+    const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
+    const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
+    const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
@@ -234,7 +234,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onSelectDate(date: Date, selectedDateRangeArray?: Date[]) {
-    let { onSelectDate } = this.props;
+    const { onSelectDate } = this.props;
 
     this.setState({
       selectedDate: date
@@ -260,9 +260,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   @autobind
   private _onGotoToday() {
 
-    let { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
+    const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
-    let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
+    const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
     this._onSelectDate(today!, dates);
 

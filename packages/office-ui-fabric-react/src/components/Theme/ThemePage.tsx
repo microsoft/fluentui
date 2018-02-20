@@ -45,7 +45,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
   }
 
   public render() {
-    let { colors, colorPickerProps } = this.state;
+    const { colors, colorPickerProps } = this.state;
 
     return (
       <div className='Themes'>
@@ -126,14 +126,14 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
   }
 
   private _onColorChanged(index: number, newColor: string) {
-    let { colors } = this.state;
-    let color = colors[index];
-    let palette: Partial<IPalette> = {};
+    const { colors } = this.state;
+    const color = colors[index];
+    const palette: Partial<IPalette> = {};
 
     color.value = newColor;
 
     for (let i = 0; i < colors.length; i++) {
-      let themeColor = colors[i];
+      const themeColor = colors[i];
 
       (palette as any)[themeColor.key] = themeColor.value;
     }

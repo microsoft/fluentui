@@ -6,7 +6,7 @@ import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/p
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-let _testTags = [
+const _testTags = [
   'black',
   'blue',
   'brown',

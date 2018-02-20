@@ -10,7 +10,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
-  let splitButtonStyles: IButtonStyles = {
+  const splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
       display: 'inline-block',

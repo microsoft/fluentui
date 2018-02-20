@@ -75,7 +75,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
   }
 
   public render() {
-    let { firstDayOfWeek } = this.state;
+    const { firstDayOfWeek } = this.state;
 
     return (
       <div>

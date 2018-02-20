@@ -11,11 +11,11 @@ import { Autofill } from './Autofill';
 describe('Autofill', () => {
   let autoFill: Autofill;
   let autoFillInput: HTMLInputElement;
-  let baseNode = document.createElement('div');
+  const baseNode = document.createElement('div');
   document.body.appendChild(baseNode);
   beforeEach(() => {
 
-    let component = ReactDOM.render(
+    const component = ReactDOM.render(
       <Autofill
         ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello'

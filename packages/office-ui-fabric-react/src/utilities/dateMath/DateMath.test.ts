@@ -19,39 +19,39 @@ enum Months {
 describe('DateMath', () => {
 
   it('can add days', () => {
-    let startDate = new Date(2016, Months.Apr, 1);
-    let result = DateMath.addDays(startDate, 5);
-    let expected = new Date(2016, Months.Apr, 6);
+    const startDate = new Date(2016, Months.Apr, 1);
+    const result = DateMath.addDays(startDate, 5);
+    const expected = new Date(2016, Months.Apr, 6);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add days across a month boundary', () => {
-    let startDate = new Date(2016, Months.Mar, 30);
-    let result = DateMath.addDays(startDate, 5);
-    let expected = new Date(2016, Months.Apr, 4);
+    const startDate = new Date(2016, Months.Mar, 30);
+    const result = DateMath.addDays(startDate, 5);
+    const expected = new Date(2016, Months.Apr, 4);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add days across multiple month boundaries', () => {
-    let startDate = new Date(2016, Months.Mar, 31);
-    let result = DateMath.addDays(startDate, 65);
-    let expected = new Date(2016, Months.Jun, 4);
+    const startDate = new Date(2016, Months.Mar, 31);
+    const result = DateMath.addDays(startDate, 65);
+    const expected = new Date(2016, Months.Jun, 4);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add days across leap day boundaries', () => {
-    let startDate = new Date(2016, Months.Feb, 28);
-    let result = DateMath.addDays(startDate, 2);
-    let expected = new Date(2016, Months.Mar, 1);
+    const startDate = new Date(2016, Months.Feb, 28);
+    const result = DateMath.addDays(startDate, 2);
+    const expected = new Date(2016, Months.Mar, 1);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can add months', () => {
-    let startDate = new Date(2015, Months.Dec, 31);
+    const startDate = new Date(2015, Months.Dec, 31);
 
     let result = DateMath.addMonths(startDate, 1);
     let expected = new Date(2016, Months.Jan, 31);
@@ -127,39 +127,39 @@ describe('DateMath', () => {
   });
 
   it('can subtract days', () => {
-    let startDate = new Date(2016, Months.Apr, 30);
-    let result = DateMath.addDays(startDate, -5);
-    let expected = new Date(2016, Months.Apr, 25);
+    const startDate = new Date(2016, Months.Apr, 30);
+    const result = DateMath.addDays(startDate, -5);
+    const expected = new Date(2016, Months.Apr, 25);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract days across a month boundry', () => {
-    let startDate = new Date(2016, Months.Apr, 1);
-    let result = DateMath.addDays(startDate, -5);
-    let expected = new Date(2016, Months.Mar, 27);
+    const startDate = new Date(2016, Months.Apr, 1);
+    const result = DateMath.addDays(startDate, -5);
+    const expected = new Date(2016, Months.Mar, 27);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract days across multiple month boundaries', () => {
-    let startDate = new Date(2016, Months.Jul, 4);
-    let result = DateMath.addDays(startDate, -65);
-    let expected = new Date(2016, Months.Apr, 30);
+    const startDate = new Date(2016, Months.Jul, 4);
+    const result = DateMath.addDays(startDate, -65);
+    const expected = new Date(2016, Months.Apr, 30);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract days across leap day boundaries', () => {
-    let startDate = new Date(2016, Months.Mar, 1);
-    let result = DateMath.addDays(startDate, -2);
-    let expected = new Date(2016, Months.Feb, 28);
+    const startDate = new Date(2016, Months.Mar, 1);
+    const result = DateMath.addDays(startDate, -2);
+    const expected = new Date(2016, Months.Feb, 28);
 
     expect(result.getTime()).toEqual(expected.getTime());
   });
 
   it('can subtract months', () => {
-    let startDate = new Date(2016, Months.Dec, 31);
+    const startDate = new Date(2016, Months.Dec, 31);
 
     let result = DateMath.addMonths(startDate, -12);
     let expected = new Date(2015, Months.Dec, 31);
@@ -269,7 +269,7 @@ describe('DateMath', () => {
   });
 
   it('can get date range array', () => {
-    let date = new Date(2017, 2, 16);
+    const date = new Date(2017, 2, 16);
 
     // Date range: day
     let dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday);
@@ -282,7 +282,7 @@ describe('DateMath', () => {
     Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], expectedDates[i])).toBe(true));
 
     // Date range: work week
-    let workWeekDays = [
+    const workWeekDays = [
       DayOfWeek.Monday,
       DayOfWeek.Tuesday,
       DayOfWeek.Thursday,
@@ -464,7 +464,7 @@ describe('DateMath', () => {
   });
 
   it('can get the month start and end', () => {
-    let date = new Date('Dec 15 2017');
+    const date = new Date('Dec 15 2017');
 
     // First day of month
     expect(DateMath.compareDates(new Date('Dec 1 2017'), DateMath.getMonthStart(date))).toBe(true);
@@ -474,7 +474,7 @@ describe('DateMath', () => {
   });
 
   it('can get the year start and end', () => {
-    let date = new Date('Dec 15 2017');
+    const date = new Date('Dec 15 2017');
 
     // First day of year
     expect(DateMath.compareDates(new Date('Jan 1 2017'), DateMath.getYearStart(date))).toBe(true);

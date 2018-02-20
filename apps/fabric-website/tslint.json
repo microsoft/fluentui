@@ -14,6 +14,7 @@
     "jsx-alignment": false,
     "jsx-ban-props": false,
     "jsx-no-string-ref": false,
-    "jsx-no-bind": false
+    "jsx-no-bind": false,
+    "prefer-const": false
   }
 }

@@ -56,7 +56,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   @autobind
   private _onReduceData(data: IBreadCrumbData): IBreadCrumbData | undefined {
     let { renderedItems, renderedOverflowItems } = data;
-    let movedItem = renderedItems[0];
+    const movedItem = renderedItems[0];
     renderedItems = renderedItems.slice(1);
 
     renderedOverflowItems = [...renderedOverflowItems, movedItem];
@@ -68,10 +68,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    let { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
-    let { renderedOverflowItems, renderedItems } = data;
+    const { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
+    const { renderedOverflowItems, renderedItems } = data;
 
-    let contextualItems = renderedOverflowItems.map(
+    const contextualItems = renderedOverflowItems.map(
       (item, index) => ({
         name: item.text,
         key: item.key,

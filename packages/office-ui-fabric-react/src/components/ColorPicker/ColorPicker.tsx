@@ -56,7 +56,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
   }
 
   public render() {
-    let { color } = this.state;
+    const { color } = this.state;
 
     return (
       <div className={ css('ms-ColorPicker', styles.root) }>
@@ -181,7 +181,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
       return;
     }
 
-    let { onColorChanged } = this.props;
+    const { onColorChanged } = this.props;
 
     if (newColor.str !== this.state.color.str) {
       this.setState({

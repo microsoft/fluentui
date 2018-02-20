@@ -30,20 +30,20 @@ describe('Dropdown', () => {
 
     it('Renders single-select Dropdown correctly', () => {
       const component = renderer.create(<Dropdown options={ DEFAULT_OPTIONS } />);
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('Can flip between enabled and disabled.', () => {
 
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       ReactDOM.render(
         <Dropdown
           label='testgroup'
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
       expect(dropdownRoot.className).not.toEqual(expect.stringMatching('is-disabled'));
       expect(dropdownRoot.getAttribute('data-is-focusable')).toEqual('true');
@@ -61,7 +61,7 @@ describe('Dropdown', () => {
     });
 
     it('Renders no selected item in default case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -69,14 +69,14 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('');
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -84,14 +84,14 @@ describe('Dropdown', () => {
           options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2' },] }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -100,14 +100,14 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
     });
 
     it('does not change the selected item in when defaultKey changes', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -116,8 +116,8 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
 
@@ -132,7 +132,7 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item in controlled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -141,14 +141,14 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
     });
 
     it('does change the selected item in when selectedKey changes', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -157,8 +157,8 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
 
@@ -173,7 +173,7 @@ describe('Dropdown', () => {
     });
 
     it('Can change items in uncontrolled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
@@ -190,7 +190,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+        const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -199,12 +199,12 @@ describe('Dropdown', () => {
     });
 
     it('issues the onChanged callback when the selected item is different', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      let onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jasmine.createSpy('onChanged');
 
       try {
         ReactDOM.render(
@@ -219,7 +219,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+        const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -228,12 +228,12 @@ describe('Dropdown', () => {
     });
 
     it('issues the onDismiss callback when dismissing options callout', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      let onDismissSpy = jasmine.createSpy('onDismiss');
+      const onDismissSpy = jasmine.createSpy('onDismiss');
 
       try {
         ReactDOM.render(
@@ -248,7 +248,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+        const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -278,12 +278,12 @@ describe('Dropdown', () => {
     });
 
     it('issues the onChanged callback when the selected item is different', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      let onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jasmine.createSpy('onChanged');
 
       try {
         ReactDOM.render(
@@ -298,7 +298,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
+        const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -307,7 +307,7 @@ describe('Dropdown', () => {
     });
 
     it('Will select the first valid item on keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -315,15 +315,15 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
 
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('1');
     });
 
     it('Will select the first valid item on Home keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -331,15 +331,15 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
 
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('1');
     });
 
     it('Will select the last valid item on End keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -347,15 +347,15 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
 
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('6');
     });
 
     it('Will skip over headers and separators on keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       let dropdownRoot;
       let titleElement;
 
@@ -387,12 +387,12 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
           multiSelect
         />);
-      let tree = component.toJSON();
+      const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('Renders no selected item in default case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -401,14 +401,14 @@ describe('Dropdown', () => {
           multiSelect
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('');
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -417,8 +417,8 @@ describe('Dropdown', () => {
           multiSelect
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1');
     });
@@ -446,7 +446,7 @@ describe('Dropdown', () => {
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -455,14 +455,14 @@ describe('Dropdown', () => {
           multiSelect
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 2');
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -472,14 +472,14 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 2');
     });
 
     it('does not change the selected items when defaultSelectedKeys changes', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -489,8 +489,8 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 2');
 
@@ -507,7 +507,7 @@ describe('Dropdown', () => {
     });
 
     it('Renders selected items in controlled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -517,14 +517,14 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 3');
     });
 
     it('changes selected items in controlled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -534,8 +534,8 @@ describe('Dropdown', () => {
           options={ DEFAULT_OPTIONS }
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
       expect(titleElement.textContent).toEqual('1, 3');
 
@@ -551,7 +551,7 @@ describe('Dropdown', () => {
     });
 
     it('Can change items in uncontrolled case', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
@@ -570,7 +570,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
+        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -582,12 +582,12 @@ describe('Dropdown', () => {
     // I'm not sure why these two tests fail. I've manually verified the scenario, even manually through programatic clicks, but these
     // tests simply won't pass
     it('issues the onChanged callback when selecting an item', () => {
-      let container = document.createElement('div');
-      let dropdownRoot: HTMLElement | undefined;
+      const container = document.createElement('div');
+      const dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      let onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jasmine.createSpy('onChanged');
 
       try {
         ReactDOM.render(
@@ -603,7 +603,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
+        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       }
       finally {
@@ -612,12 +612,12 @@ describe('Dropdown', () => {
     });
 
     it('issues the onChanged callback when unselecting an item', () => {
-      let container = document.createElement('div');
-      let dropdownRoot: HTMLElement | undefined;
+      const container = document.createElement('div');
+      const dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      let onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jasmine.createSpy('onChanged');
 
       try {
         ReactDOM.render(
@@ -633,7 +633,7 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        let firstItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[0] as HTMLElement;
+        const firstItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[0] as HTMLElement;
         ReactTestUtils.Simulate.click(firstItemElement);
       }
       finally {
@@ -643,7 +643,7 @@ describe('Dropdown', () => {
     */
 
     it('Will not select the first valid item on keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -652,15 +652,15 @@ describe('Dropdown', () => {
           multiSelect
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
 
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('');
     });
 
     it('Will not select the first valid item on Home keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -669,15 +669,15 @@ describe('Dropdown', () => {
           multiSelect
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
 
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('');
     });
 
     it('Will not select the last valid item on End keypress', () => {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
 
       ReactDOM.render(
         <Dropdown
@@ -686,10 +686,10 @@ describe('Dropdown', () => {
           multiSelect
         />,
         container);
-      let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
 
-      let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
       expect(titleElement.textContent).toEqual('');
     });
 

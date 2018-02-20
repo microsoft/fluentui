@@ -26,7 +26,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
   }
 
   public render() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
     return (
       <div>
@@ -56,7 +56,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
   }
 
   private _internalContents() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
     return (
       <div className='ms-FocusTrapZoneBoxExample'>

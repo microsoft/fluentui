@@ -72,11 +72,11 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   public render() {
-    let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, shouldStartVisible, className, imageFit, role, maximizeFrame } = this.props;
-    let { loadState } = this.state;
-    let coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
+    const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
+    const { src, alt, width, height, shouldFadeIn, shouldStartVisible, className, imageFit, role, maximizeFrame } = this.props;
+    const { loadState } = this.state;
+    const coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
+    const loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
@@ -124,7 +124,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   @autobind
   private _onImageLoaded(ev: React.SyntheticEvent<HTMLImageElement>): void {
-    let { src, onLoad } = this.props;
+    const { src, onLoad } = this.props;
     if (onLoad) {
       onLoad(ev);
     }
@@ -139,15 +139,15 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   private _checkImageLoaded(): void {
-    let { src } = this.props;
-    let { loadState } = this.state;
+    const { src } = this.props;
+    const { loadState } = this.state;
 
     if (loadState === ImageLoadState.notLoaded) {
       // testing if naturalWidth and naturalHeight are greater than zero is better than checking
       // .complete, because .complete will also be set to true if the image breaks. However,
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
-      let isLoaded: boolean = src && this._imageElement && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
+      const isLoaded: boolean = src && this._imageElement && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
         (this._imageElement.complete && Image._svgRegex.test(src!));
 
       if (isLoaded) {
@@ -160,7 +160,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   private _computeCoverStyle(props: IImageProps) {
-    let { imageFit, width, height } = props;
+    const { imageFit, width, height } = props;
 
     // Do not compute cover style if it was already specified in props
     if ((imageFit === ImageFit.cover || imageFit === ImageFit.contain) &&
@@ -176,7 +176,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       }
 
       // Examine the source image to determine its original ratio.
-      let naturalRatio = this._imageElement.naturalWidth / this._imageElement.naturalHeight;
+      const naturalRatio = this._imageElement.naturalWidth / this._imageElement.naturalHeight;
 
       // Should we crop from the top or the sides?
       if (naturalRatio > desiredRatio) {

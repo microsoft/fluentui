@@ -10,13 +10,13 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-let _items: {
+const _items: {
   key: number,
   name: string,
   value: number
 }[] = [];
 
-let _columns = [
+const _columns = [
   {
     key: 'column1',
     name: 'Name',
@@ -66,7 +66,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <div>
@@ -92,7 +92,7 @@ export class DetailsListCompactExample extends React.Component<{}, {
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:

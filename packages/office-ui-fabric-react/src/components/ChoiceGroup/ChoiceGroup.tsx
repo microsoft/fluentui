@@ -61,8 +61,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   }
 
   public render() {
-    let { label, options, className, required } = this.props;
-    let { keyChecked, keyFocused } = this.state;
+    const { label, options, className, required } = this.props;
+    const { keyChecked, keyFocused } = this.state;
 
     return (
       // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
@@ -77,7 +77,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           ) }
 
           { options!.map((option: IChoiceGroupOption) => {
-            let {
+            const {
               onRenderField = this._onRenderField,
               onRenderLabel = this._onRenderLabel
             } = option;
@@ -152,9 +152,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
   private _onRenderField(option: IChoiceGroupOption) {
 
-    let { onRenderLabel } = option;
-    let imageSize = option.imageSize ? option.imageSize : { width: 32, height: 32 };
-    let imageIsLarge: boolean = imageSize.width > 71 || imageSize.height > 71;
+    const { onRenderLabel } = option;
+    const imageSize = option.imageSize ? option.imageSize : { width: 32, height: 32 };
+    const imageIsLarge: boolean = imageSize.width > 71 || imageSize.height > 71;
 
     return (
       <label
@@ -237,7 +237,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   }
 
   private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
-    let { onChanged, onChange, selectedKey } = this.props;
+    const { onChanged, onChange, selectedKey } = this.props;
 
     // Only manage state in uncontrolled scenarios.
     if (selectedKey === undefined) {

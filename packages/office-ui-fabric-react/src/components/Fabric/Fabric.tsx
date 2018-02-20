@@ -68,7 +68,7 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
       isFocusVisible!
     );
 
-    let divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(this.props, divProperties);
     return (
       <div
         { ...divProps }

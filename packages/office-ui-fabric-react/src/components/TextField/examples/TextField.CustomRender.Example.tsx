@@ -30,7 +30,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
   @autobind
   private _onRenderLabel(props: ITextFieldProps): JSX.Element {
 
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
     return (
       <div className='ms-CustomRenderExample' style={ { display: 'flex', alignItems: 'center' } }>
         <span>TextField with custom label render</span>

@@ -3,7 +3,7 @@ import { CommandButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     return (
       <div>

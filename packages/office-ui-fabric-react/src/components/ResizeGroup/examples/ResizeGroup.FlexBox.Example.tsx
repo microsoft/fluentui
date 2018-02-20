@@ -39,7 +39,7 @@ const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
   (props: IBoxWithLabelProps) => (<div className={ getNumberedBoxClassName(props.backgroundColor) } >{ props.label }</div >);
 
 function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
-  let result: JSX.Element[] = [];
+  const result: JSX.Element[] = [];
   for (let i = 1; i <= count; i += 1) {
     result.push(
       <BoxWithLabel
@@ -82,7 +82,7 @@ function onReduceData(props: ILeftRightBoxSetProps): ILeftRightBoxSetProps | und
 
 export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
   public render() {
-    let data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
+    const data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
     return (
       <ResizeGroup
         data={ data }

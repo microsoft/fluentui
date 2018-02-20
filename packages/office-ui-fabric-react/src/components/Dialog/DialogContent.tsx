@@ -25,7 +25,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
   }
 
   public render() {
-    let {
+    const {
       showCloseButton,
       closeButtonAriaLabel,
       onDismiss,
@@ -36,7 +36,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
       type
     } = this.props;
 
-    let groupings = this._groupChildren();
+    const groupings = this._groupChildren();
     let subTextContent;
     if (subText) {
       subTextContent = <p className={ css('ms-Dialog-subText', styles.subText) } id={ subTextId }>{ subText }</p>;
@@ -84,7 +84,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
   // "Neither type 'ReactElement<any>' nor type 'DialogFooter' is assignable to the other."
   private _groupChildren(): { footers: any[]; contents: any[]; } {
 
-    let groupings: { footers: any[]; contents: any[]; } = {
+    const groupings: { footers: any[]; contents: any[]; } = {
       footers: [],
       contents: []
     };

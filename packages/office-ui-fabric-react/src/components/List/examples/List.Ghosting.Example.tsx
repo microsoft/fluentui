@@ -17,7 +17,7 @@ export class ListGhostingExample extends React.Component<IListGhostingExamplePro
   }
 
   public render() {
-    let { items } = this.props;
+    const { items } = this.props;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>

@@ -32,71 +32,71 @@ const defaultPersonaProps = [
 describe('ActivityItem', () => {
 
   it('renders with an icon correctly', () => {
-    let component = renderer.create(
+    const component = renderer.create(
       <ActivityItem
         {...defaultProps}
         activityIcon={ <Icon iconName={ 'Message' } /> }
       />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders with a single persona correctly', () => {
-    let component = renderer.create(
+    const component = renderer.create(
       <ActivityItem
         {...defaultProps}
         activityPersonas={ [defaultPersonaProps[0]] }
       />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders with multiple personas correctly', () => {
-    let component = renderer.create(
+    const component = renderer.create(
       <ActivityItem
         {...defaultProps}
         activityPersonas={ defaultPersonaProps }
       />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders compact with an icon correctly', () => {
-    let component = renderer.create(
+    const component = renderer.create(
       <ActivityItem
         {...defaultProps}
         activityIcon={ <Icon iconName={ 'Message' } /> }
         isCompact={ true }
       />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders compact with a single persona correctly', () => {
-    let component = renderer.create(
+    const component = renderer.create(
       <ActivityItem
         {...defaultProps}
         activityPersonas={ [defaultPersonaProps[0]] }
         isCompact={ true }
       />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders compact with multiple personas correctly', () => {
-    let component = renderer.create(
+    const component = renderer.create(
       <ActivityItem
         {...defaultProps}
         activityPersonas={ defaultPersonaProps }
         isCompact={ true }
       />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

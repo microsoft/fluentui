@@ -19,13 +19,13 @@ const alertClicked = (): void => { /*noop*/ };
 describe('Button', () => {
   it('renders DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton text='Button' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders ActionButton correctly', () => {
     const component = renderer.create(<ActionButton>Button</ActionButton>);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -49,7 +49,7 @@ describe('Button', () => {
           ]
         } }
       />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -58,7 +58,7 @@ describe('Button', () => {
       <CompoundButton description='You can create a new account here.'>
         Create account
     </CompoundButton>);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -69,7 +69,7 @@ describe('Button', () => {
         title='Emoji'
         ariaLabel='Emoji'
       />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -89,7 +89,7 @@ describe('Button', () => {
     });
 
     it('can render with an onClick.', () => {
-      let onClick: () => null = () => null;
+      const onClick: () => null = () => null;
 
       const button = ReactTestUtils.renderIntoDocument<any>(
         <DefaultButton onClick={ onClick }>Hello</DefaultButton>

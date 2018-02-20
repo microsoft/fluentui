@@ -3,7 +3,7 @@ import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     return (
       <div className='ms-ContextualMenuButtonsExample'>

@@ -95,8 +95,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   public componentWillUpdate(newProps: ICalloutProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
-    let newTarget = this._getTarget(newProps);
-    let oldTarget = this._getTarget();
+    const newTarget = this._getTarget(newProps);
+    const oldTarget = this._getTarget();
     if (newTarget !== oldTarget || typeof (newTarget) === 'string' || newTarget instanceof String) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
@@ -120,13 +120,15 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       return null;
     }
     let {
+      target
+    } = this.props;
+    const {
       getStyles,
       role,
       ariaLabel,
       ariaDescribedBy,
       ariaLabelledBy,
       className,
-      target,
       isBeakVisible,
       beakStyle,
       children,
@@ -138,13 +140,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       onScroll,
     } = this.props;
     target = this._getTarget();
-    let { positions } = this.state;
+    const { positions } = this.state;
 
-    let getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
-    let contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
+    const getContentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    const contentMaxHeight: number = calloutMaxHeight! && (calloutMaxHeight! < getContentMaxHeight) ? calloutMaxHeight! : getContentMaxHeight!;
     const overflowYHidden = !!finalHeight;
 
-    let beakVisible = isBeakVisible && (!!target);
+    const beakVisible = isBeakVisible && (!!target);
     this._classNames = getClassNames(
       getStyles!,
       {
@@ -161,7 +163,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     );
 
     const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
-    let content = (
+    const content = (
       <div
         ref={ this._resolveRef('_hostElement') }
         className={ this._classNames.container }
@@ -203,7 +205,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   @autobind
   public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
-    let { onDismiss } = this.props;
+    const { onDismiss } = this.props;
 
     if (onDismiss) {
       onDismiss(ev);
@@ -218,8 +220,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   protected _dismissOnLostFocus(ev: Event) {
-    let target = ev.target as HTMLElement;
-    let clickedOutsideCallout = this._hostElement && !elementContains(this._hostElement, target);
+    const target = ev.target as HTMLElement;
+    const clickedOutsideCallout = this._hostElement && !elementContains(this._hostElement, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -265,8 +267,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _getBeakPosition(): React.CSSProperties {
-    let { positions } = this.state;
-    let beakPostionStyle: React.CSSProperties = {
+    const { positions } = this.state;
+    const beakPostionStyle: React.CSSProperties = {
       ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
     };
 
@@ -279,16 +281,16 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _updatePosition() {
-    let { positions } = this.state;
-    let hostElement: HTMLElement = this._hostElement;
-    let calloutElement: HTMLElement = this._calloutElement;
+    const { positions } = this.state;
+    const hostElement: HTMLElement = this._hostElement;
+    const calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
       let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
       currentProps!.bounds = this._getBounds();
       currentProps!.target = this._target!;
-      let newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement);
+      const newPositions: ICalloutPositionedInfo = positionCallout(currentProps!, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -332,8 +334,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _getMaxHeight(): number {
     if (!this._maxHeight) {
       if (this.props.directionalHintFixed && this._target) {
-        let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
-        let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
+        const beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
+        const gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
         const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
@@ -372,14 +374,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
     if (target) {
       if (typeof target === 'string') {
-        let currentDoc: Document = getDocument()!;
+        const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
       } else if ((target as HTMLElement).getBoundingClientRect) {
-        let targetElement: HTMLElement = target as HTMLElement;
+        const targetElement: HTMLElement = target as HTMLElement;
         this._targetWindow = getWindow(targetElement)!;
         this._target = target;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
@@ -414,7 +416,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _getTarget(props: ICalloutProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
-    let { useTargetPoint, targetPoint, target } = props;
+    const { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }
 }

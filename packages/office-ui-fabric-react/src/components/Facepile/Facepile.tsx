@@ -47,15 +47,17 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
   public render(): JSX.Element {
     let {
-      chevronButtonProps,
-      maxDisplayablePersonas,
       overflowButtonProps,
       overflowButtonType,
+    } = this.props;
+    const {
+      chevronButtonProps,
+      maxDisplayablePersonas,
       className,
       personas,
       showAddButton
     } = this.props;
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
+    const numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -102,7 +104,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
-    let { getPersonaProps, personaSize } = this.props;
+    const { getPersonaProps, personaSize } = this.props;
     return (
       <PersonaCoin
         imageInitials={ persona.imageInitials }
@@ -164,12 +166,12 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element | null {
-    let { overflowButtonProps, personas, personaSize } = this.props;
-    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
+    const { overflowButtonProps, personas, personaSize } = this.props;
+    const numPersonasNotPictured: number = personas.length - numPersonasToShow;
 
     if (!overflowButtonProps || numPersonasNotPictured < 1) { return null; }
 
-    let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
+    const personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return (
       <FacepileButton
@@ -188,8 +190,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getIconElement(icon: string): JSX.Element {
-    let { overflowButtonProps, personaSize } = this.props;
-    let overflowInitialsIcon = true;
+    const { overflowButtonProps, personaSize } = this.props;
+    const overflowInitialsIcon = true;
 
     return (
       <FacepileButton
@@ -206,7 +208,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getAddNewElement(): JSX.Element {
-    let { addButtonProps, personaSize } = this.props;
+    const { addButtonProps, personaSize } = this.props;
 
     return (
       <FacepileButton

@@ -39,7 +39,7 @@ describe('Facepile', () => {
 
   it('renders Facepile correctly', () => {
     const component = renderer.create(<Facepile personas={ facepilePersonas } />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

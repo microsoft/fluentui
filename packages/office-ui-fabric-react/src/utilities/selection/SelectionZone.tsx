@@ -73,8 +73,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isTouchTimeoutId: number | undefined;
 
   public componentDidMount() {
-    let win = getWindow(this.refs.root);
-    let scrollElement = findScrollableParent(this.refs.root);
+    const win = getWindow(this.refs.root);
+    const scrollElement = findScrollableParent(this.refs.root);
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
@@ -147,18 +147,18 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   private _onFocus(ev: React.FocusEvent<HTMLElement>) {
-    let target = ev.target as HTMLElement;
-    let { selection } = this.props;
-    let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
+    const target = ev.target as HTMLElement;
+    const { selection } = this.props;
+    const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
     const selectionMode = this._getSelectionMode();
 
     if (this._shouldHandleFocus && selectionMode !== SelectionMode.none) {
-      let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-      let itemRoot = this._findItemRoot(target);
+      const isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+      const itemRoot = this._findItemRoot(target);
 
       if (!isToggle && itemRoot) {
-        let index = this._getItemIndex(itemRoot);
+        const index = this._getItemIndex(itemRoot);
 
         if (isToggleModifierPressed) {
           // set anchor only.
@@ -183,7 +183,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
-    let itemRoot = this._findItemRoot(target);
+    const itemRoot = this._findItemRoot(target);
 
     while (target !== this.refs.root) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
@@ -213,7 +213,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
-    let itemRoot = this._findItemRoot(target);
+    const itemRoot = this._findItemRoot(target);
 
     // No-op if selection is disabled
     if (this._isSelectionDisabled(target)) {
@@ -225,7 +225,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         this._onToggleAllClick(ev);
         break;
       } else if (itemRoot) {
-        let index = this._getItemIndex(itemRoot);
+        const index = this._getItemIndex(itemRoot);
 
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           if (this._isShiftPressed) {
@@ -292,13 +292,13 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    let { onItemInvoked } = this.props;
-    let itemRoot = this._findItemRoot(target);
+    const { onItemInvoked } = this.props;
+    const itemRoot = this._findItemRoot(target);
 
     const selectionMode = this._getSelectionMode();
 
     if (itemRoot && onItemInvoked && selectionMode !== SelectionMode.none && !this._isInputElement(target)) {
-      let index = this._getItemIndex(itemRoot);
+      const index = this._getItemIndex(itemRoot);
 
       while (target !== this.refs.root) {
         if (
@@ -334,9 +334,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    let { selection } = this.props;
-    let isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
-    let isClearSelectionKey = ev.which === KeyCodes.escape;
+    const { selection } = this.props;
+    const isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
+    const isClearSelectionKey = ev.which === KeyCodes.escape;
 
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
@@ -362,11 +362,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       return;
     }
 
-    let itemRoot = this._findItemRoot(target);
+    const itemRoot = this._findItemRoot(target);
 
     // If a key was pressed within an item, we should treat "enters" as invokes and "space" as toggle
     if (itemRoot) {
-      let index = this._getItemIndex(itemRoot);
+      const index = this._getItemIndex(itemRoot);
 
       while (target !== this.refs.root) {
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
@@ -395,7 +395,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {
-    let { selection } = this.props;
+    const { selection } = this.props;
 
     const selectionMode = this._getSelectionMode();
 
@@ -407,7 +407,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _onToggleClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
-    let { selection } = this.props;
+    const { selection } = this.props;
 
     const selectionMode = this._getSelectionMode();
 
@@ -421,7 +421,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     if (selectionMode === SelectionMode.multiple) {
       selection.toggleIndexSelected(index);
     } else if (selectionMode === SelectionMode.single) {
-      let isSelected = selection.isIndexSelected(index);
+      const isSelected = selection.isIndexSelected(index);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, !isSelected, true);
     } else {
@@ -438,7 +438,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _onInvokeClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
-    let { selection, onItemInvoked } = this.props;
+    const { selection, onItemInvoked } = this.props;
 
     if (onItemInvoked) {
       onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
@@ -448,8 +448,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _onItemSurfaceClick(ev: React.SyntheticEvent<HTMLElement>, index: number) {
-    let { selection } = this.props;
-    let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
+    const { selection } = this.props;
+    const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
     const selectionMode = this._getSelectionMode();
 
@@ -467,7 +467,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
-    let { selection } = this.props;
+    const { selection } = this.props;
 
     // Only do work if item is not selected.
     if (selection.isIndexSelected(index)) {
@@ -487,8 +487,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _clearAndSelectIndex(index: number) {
-    let { selection } = this.props;
-    let isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
+    const { selection } = this.props;
+    const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
     if (!isAlreadySingleSelected) {
       selection.setChangeEvents(false);
@@ -513,11 +513,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _findItemRoot(target: HTMLElement): HTMLElement | undefined {
-    let { selection } = this.props;
+    const { selection } = this.props;
 
     while (target !== this.refs.root) {
-      let indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
-      let index = Number(indexValue);
+      const indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
+      const index = Number(indexValue);
 
       if (indexValue !== null && index >= 0 && index < selection.getItems().length) {
         break;
@@ -553,7 +553,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _isNonHandledClick(element: HTMLElement): boolean {
-    let doc = getDocument();
+    const doc = getDocument();
 
     if (doc && element) {
       while (element && element !== doc.documentElement) {

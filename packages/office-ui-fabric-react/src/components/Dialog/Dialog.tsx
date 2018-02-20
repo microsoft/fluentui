@@ -59,7 +59,7 @@ export class Dialog extends BaseComponent<IDialogProps, {}> {
   }
 
   public render() {
-    let {
+    const {
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -123,7 +123,7 @@ export class Dialog extends BaseComponent<IDialogProps, {}> {
   }
 
   private _getSubTextId = (): string | undefined => {
-    let { ariaDescribedById, modalProps, dialogContentProps, subText } = this.props;
+    const { ariaDescribedById, modalProps, dialogContentProps, subText } = this.props;
     let id = ariaDescribedById || (modalProps && modalProps.subtitleAriaId);
 
     if (!id) {
@@ -134,7 +134,7 @@ export class Dialog extends BaseComponent<IDialogProps, {}> {
   }
 
   private _getTitleTextId = (): string | undefined => {
-    let { ariaLabelledById, modalProps, dialogContentProps, title } = this.props;
+    const { ariaLabelledById, modalProps, dialogContentProps, title } = this.props;
     let id = ariaLabelledById || (modalProps && modalProps.titleAriaId);
 
     if (!id) {

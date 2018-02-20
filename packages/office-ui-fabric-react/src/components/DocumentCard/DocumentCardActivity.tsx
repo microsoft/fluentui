@@ -8,7 +8,7 @@ const styles: any = stylesImport;
 
 export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
   public render() {
-    let { activity, people } = this.props;
+    const { activity, people } = this.props;
 
     return (
       people && people.length > 0 &&

@@ -12,18 +12,18 @@ import { getIcon, IIconRecord } from '../../Styling';
 import { getClassNames } from './Icon.classNames';
 
 export const Icon = (props: IIconProps): JSX.Element => {
-  let {
+  const {
     ariaLabel,
     className,
     styles,
     iconName
    } = props;
-  let classNames = getClassNames(
+  const classNames = getClassNames(
     styles
   );
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
-    let containerClassName = css(
+    const containerClassName = css(
       'ms-Icon-imageContainer',
       classNames.root,
       classNames.imageContainer,
@@ -59,7 +59,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
       />
     );
   } else {
-    let iconDefinition = getIcon(iconName) || {
+    const iconDefinition = getIcon(iconName) || {
       subset: {
         className: undefined
       },

@@ -20,7 +20,7 @@ export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
   }
 
   public render() {
-    let content = (
+    const content = (
       <CalloutContent { ...this.props } />
     );
     return this.props.doNotLayer ? content : (

@@ -24,7 +24,7 @@ export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
   };
 
   public render(): JSX.Element | null {
-    let { group, groupLevel, showAllLinkText } = this.props;
+    const { group, groupLevel, showAllLinkText } = this.props;
 
     if (group) {
       return (

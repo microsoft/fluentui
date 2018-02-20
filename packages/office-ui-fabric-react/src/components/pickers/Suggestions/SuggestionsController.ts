@@ -86,7 +86,7 @@ export class SuggestionsController<T> {
   }
 
   public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
-    let itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
+    const itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
     this.currentSuggestion = itemToAdd;
   }
 

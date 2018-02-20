@@ -9,7 +9,7 @@ import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utiliti
 import * as stylesImport from './Layer.scss';
 const styles: any = stylesImport;
 
-let _layersByHostId: { [hostId: string]: Layer[] } = {};
+const _layersByHostId: { [hostId: string]: Layer[] } = {};
 let _defaultHostSelector: string | undefined;
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
@@ -77,7 +77,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidUpdate() {
-    let host = this._getHost();
+    const host = this._getHost();
 
     if (host !== this._host) {
       this._removeLayerElement();
@@ -87,7 +87,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        let doc = getDocument(this._rootElement) as Document;
+        const doc = getDocument(this._rootElement) as Document;
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = css('ms-Layer', {
@@ -136,7 +136,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       this.props.onLayerWillUnmount!();
 
       ReactDOM.unmountComponentAtNode(this._layerElement);
-      let parentNode = this._layerElement.parentNode;
+      const parentNode = this._layerElement.parentNode;
       if (parentNode) {
         parentNode.removeChild(this._layerElement);
       }
@@ -146,8 +146,8 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   }
 
   private _getHost(): Node {
-    let { hostId } = this.props;
-    let doc = getDocument(this._rootElement) as Document;
+    const { hostId } = this.props;
+    const doc = getDocument(this._rootElement) as Document;
 
     if (hostId) {
       return doc.getElementById(hostId) as Node;

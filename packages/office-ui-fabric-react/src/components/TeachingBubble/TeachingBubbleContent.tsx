@@ -38,7 +38,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
   }
 
   public render() {
-    let { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
+    const { illustrationImage, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, onDismiss, closeButtonAriaLabel, hasSmallHeadline } = this.props;
 
     let imageContent;
     let headerContent;

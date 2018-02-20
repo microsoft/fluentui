@@ -11,7 +11,7 @@ import { LayerHost } from './LayerHost';
 describe('Layer', () => {
   it('renders Layer correctly', () => {
     const component = renderer.create(<Layer>Content</Layer>);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -65,18 +65,18 @@ describe('Layer', () => {
       }
     }
 
-    let appElement = document.createElement('div');
+    const appElement = document.createElement('div');
 
     try {
       document.body.appendChild(appElement);
       ReactDOM.render(<App />, appElement);
 
-      let parentElement = appElement.querySelector('#parent');
+      const parentElement = appElement.querySelector('#parent');
 
       expect(parentElement).toBeDefined();
       expect(parentElement!.ownerDocument).toBeDefined();
 
-      let childElement = appElement.querySelector('#child') as Element;
+      const childElement = appElement.querySelector('#child') as Element;
 
       expect(childElement.textContent).toEqual('foo');
     } finally {

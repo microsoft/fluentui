@@ -25,12 +25,12 @@ describe('Image', () => {
 
   it('renders Image correctly', () => {
     const component = renderer.create(<Image src={ testImage1x1 } />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders an image', (done) => {
-    let component = ReactTestUtils.renderIntoDocument(
+    const component = ReactTestUtils.renderIntoDocument(
       <Image
         src={ testImage1x1 }
         // tslint:disable-next-line:jsx-no-lambda
@@ -38,13 +38,13 @@ describe('Image', () => {
       />
     );
 
-    let image = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
+    const image = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
     ReactTestUtils.Simulate.load(image);
 
   });
 
   it('can cover a portrait (tall) frame with a square image', () => {
-    let component = mount(
+    const component = mount(
       <div>
         <Image
           src={ testImage1x1 }
@@ -61,7 +61,7 @@ describe('Image', () => {
   });
 
   it('can cover a landscape (wide) frame with a square image', () => {
-    let component = mount(
+    const component = mount(
       <div>
         <Image
           src={ testImage1x1 }
@@ -78,7 +78,7 @@ describe('Image', () => {
   });
 
   it('can cover a landscape (wide) parent element with a square image', () => {
-    let component = mount(
+    const component = mount(
       <div style={ { width: '10px', height: '20px' } }>
         <Image
           className='is-frameMaximizedPortrait'
@@ -97,7 +97,7 @@ describe('Image', () => {
   });
 
   it('can cover a portrait (tall) parent element with a square image', () => {
-    let component = mount(
+    const component = mount(
       <div style={ { width: '10px', height: '20px' } }>
         <Image
           src={ testImage1x1 }
@@ -117,7 +117,7 @@ describe('Image', () => {
   });
 
   it('allows onError events to be attached', (done) => {
-    let component = ReactTestUtils.renderIntoDocument(
+    const component = ReactTestUtils.renderIntoDocument(
       <Image
         src={ brokenImage }
         // tslint:disable-next-line:jsx-no-lambda
@@ -125,7 +125,7 @@ describe('Image', () => {
       />
     );
 
-    let img = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
+    const img = ReactTestUtils.findRenderedDOMComponentWithTag(component as any, 'img');
     ReactTestUtils.Simulate.error(img);
   });
 });
