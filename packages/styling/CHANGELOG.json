@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.18.1",
+      "tag": "@uifabric/styling_v5.18.1",
+      "date": "Sat, 17 Feb 2018 21:29:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "1f1db9da4f7368806e1a819e75d7685ec7b73f04",
+            "comment": "Add whiteTranslucent40 to palette"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.0",
       "tag": "@uifabric/styling_v5.18.0",
       "date": "Wed, 14 Feb 2018 22:10:50 GMT",

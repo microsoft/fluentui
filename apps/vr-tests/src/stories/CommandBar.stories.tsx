@@ -9,18 +9,24 @@ const items = [
   {
     key: 'newItem',
     name: 'New',
-    icon: 'Add',
+    iconProps: {
+      iconName: 'Add'
+    },
     subMenuProps: {
       items: [
         {
           key: 'emailMessage',
           name: 'Email message',
-          icon: 'Mail'
+          iconProps: {
+            iconName: 'Mail'
+          }
         },
         {
           key: 'calendarEvent',
           name: 'Calendar event',
-          icon: 'Calendar'
+          iconProps: {
+            iconName: 'Calendar'
+          }
         }
       ],
     },
@@ -28,22 +34,30 @@ const items = [
   {
     key: 'upload',
     name: 'Upload',
-    icon: 'Upload'
+    iconProps: {
+      iconName: 'Upload'
+    }
   },
   {
     key: 'share',
     name: 'Share',
-    icon: 'Share'
+    iconProps: {
+      iconName: 'Share'
+    }
   },
   {
     key: 'download',
     name: 'Download',
-    icon: 'Download'
+    iconProps: {
+      iconName: 'Download'
+    }
   },
   {
     key: 'disabled',
     name: 'Disabled...',
-    icon: 'Cancel',
+    iconProps: {
+      iconName: 'Cancel'
+    },
     disabled: true
   }
 ];
@@ -52,17 +66,23 @@ const farItems = [
   {
     key: 'sort',
     name: 'Sort',
-    icon: 'SortLines'
+    iconProps: {
+      iconName: 'SortLines'
+    }
   },
   {
     key: 'tile',
     name: 'Grid view',
-    icon: 'Tiles'
+    iconProps: {
+      iconName: 'Tiles'
+    }
   },
   {
     key: 'info',
     name: 'Info',
-    icon: 'Info'
+    iconProps: {
+      iconName: 'Info'
+    }
   }
 ];
 
@@ -100,8 +120,8 @@ storiesOf('CommandBar', module)
   .add('Text only', () => (
     <CommandBar
       isSearchBoxVisible={ false }
-      items={ items.map(item => ({ ...item, icon: '' })) }
-      farItems={ farItems.map(item => ({ ...item, icon: '' })) }
+      items={ items.map(item => ({ ...item, iconProps: undefined })) }
+      farItems={ farItems.map(item => ({ ...item, iconProps: undefined })) }
     />
   ))
   .add('Icons only', () => (

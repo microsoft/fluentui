@@ -58,8 +58,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { ariaLabel, placeholder, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
-    let { value, hasFocus, id } = this.state;
+    const { ariaLabel, placeholder, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
+    const { value, hasFocus, id } = this.state;
 
     if (this.props.labelText) {
       placeholder = this.props.labelText;
@@ -148,7 +148,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onClearClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    let { clearButtonProps } = this.props;
+    const { clearButtonProps } = this.props;
 
     if (clearButtonProps && clearButtonProps.onClick) {
       clearButtonProps.onClick(ev);
@@ -216,7 +216,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange, onChanged } = this.props;
+    const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
     if (onChanged) {
