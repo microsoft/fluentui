@@ -713,7 +713,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
-      return false
+      return false;
     }
 
     return this._adjustedFocusZoneProps.direction === FocusZoneDirection.vertical ||
