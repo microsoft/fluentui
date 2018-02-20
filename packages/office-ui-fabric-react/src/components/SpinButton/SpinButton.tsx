@@ -146,7 +146,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
-      theme
+      theme,
+      ariaPositionInSet,
+      ariaSetSize
     } = this.props;
 
     const {
@@ -188,6 +190,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           className={ classNames.spinButtonWrapper }
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
+          aria-posinset={ ariaPositionInSet }
+          aria-setsize={ ariaSetSize }
         >
           <input
             value={ value }
