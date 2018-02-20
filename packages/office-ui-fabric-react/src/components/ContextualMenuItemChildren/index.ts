@@ -1,1 +1,2 @@
-export { ContextualMenuItemChildren } from "./ContextualMenuItemChildren";
+export * from "./ContextualMenuItemChildren";
+export * from './ContextualMenuItemChildren.types';
