@@ -1,6 +1,7 @@
 import * as React from "react";
 import { getIsChecked, hasSubmenu } from "../ContextualMenu";
-import {} from "../Con";
+import { IContextualMenuItem } from "../ContextualMenu";
+import { IMenuItemClassNames } from "../ContextualMenu/ContextualMenu.classNames";
 import { getRTL } from "../../Utilities";
 import { Icon } from "../../Icon";
 import { IContextualMenuItemChildrenProps } from "./ContextualMenuItemChildren.types";
@@ -24,7 +25,7 @@ export const ContextualMenuItemChildren: React.StatelessComponent<
           onClick={this._onItemClick.bind(this, item)}
         />
       ) : null}
-      {hasIcons ? this._renderIcon(item, classNames) : null}
+      {hasIcons ? renderIcon(item, classNames) : null}
       {item.name ? <span className={classNames.label}>{item.name}</span> : null}
       {hasSubmenu(item) ? (
         <Icon
@@ -35,4 +36,14 @@ export const ContextualMenuItemChildren: React.StatelessComponent<
       ) : null}
     </div>
   );
+};
+
+const renderIcon = (
+  item: IContextualMenuItem,
+  classNames: IMenuItemClassNames
+) => {
+  // Only present to allow continued use of item.icon which is deprecated.
+  const iconProps = this._getIconProps(item);
+
+  return <Icon {...iconProps} className={classNames.icon} />;
 };
