@@ -27,6 +27,7 @@ import {
   getLastFocusable,
   css
 } from '../../Utilities';
+import { hasSubmenu, getIsChecked } from '../../utilities/contextMenu';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import {
@@ -50,37 +51,8 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-export function hasSubmenu(item: IContextualMenuItem) {
-  return !!(item.subMenuProps || item.items);
-}
-
 export function getSubmenuItems(item: IContextualMenuItem) {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
-}
-
-/**
- * Determines the effective checked state of a menu item.
- *
- * @param item {IContextualMenuItem} to get the check state of.
- * @returns {true} if the item is checked.
- * @returns {false} if the item is unchecked.
- * @returns {null} if the item is not checkable.
- */
-export function getIsChecked(item: IContextualMenuItem): boolean | null {
-  if (item.canCheck) {
-    return !!(item.isChecked || item.checked);
-  }
-
-  if (typeof item.isChecked === 'boolean') {
-    return item.isChecked;
-  }
-
-  if (typeof item.checked === 'boolean') {
-    return item.checked;
-  }
-
-  // Item is not checkable.
-  return null;
 }
 
 /**
@@ -468,7 +440,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderHeaderMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
       <div className={ this._classNames.header } style={ item.style } role='heading' aria-level={ this.props.title ? 2 : 1 }>
-        <ContextualMenuItemChildren item={item} classNames={classNames} index={index} hasCheckmarks={hasCheckmarks} hasIcons={hasIcons} />
+        <ContextualMenuItemChildren
+          item={item}
+          classNames={classNames}
+          index={index}
+          onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
+          hasIcons={hasIcons}
+        />
       </div>);
   }
 
@@ -487,7 +465,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
         >
-          <ContextualMenuItemChildren item={item} classNames={classNames} index={index} hasCheckmarks={hasCheckmarks} hasIcons={hasIcons} />
+          <ContextualMenuItemChildren
+            item={item}
+            classNames={classNames}
+            index={index}
+            onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
+            hasIcons={hasIcons} />
         </a>
       </div>);
   }
@@ -547,7 +530,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { ...getNativeProps(item, buttonProperties) }
         { ...itemButtonProperties }
       >
-        <ContextualMenuItemChildren item={item} classNames={classNames} index={index} hasCheckmarks={hasCheckmarks} hasIcons={hasIcons} />
+        <ContextualMenuItemChildren
+          item={item}
+          classNames={classNames}
+          index={index}
+          onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
+          hasIcons={hasIcons}
+        />
       </button>
     );
   }
@@ -602,7 +591,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
-      <ContextualMenuItemChildren item={item} classNames={classNames} index={index} hasCheckmarks={hasCheckmarks} hasIcons={hasIcons} />,
+      <ContextualMenuItemChildren
+        item={item}
+        classNames={classNames}
+        index={index}
+        hasIcons={hasIcons}
+        onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
+      />,
     );
   }
 
@@ -624,7 +619,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item)
       }),
-      <ContextualMenuItemChildren item={item} classNames={classNames} index={index} hasCheckmarks={false} hasIcons={false} />
+      <ContextualMenuItemChildren item={item} classNames={classNames} index={index} hasIcons={false}  />
     );
   }
 

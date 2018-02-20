@@ -7,6 +7,6 @@ export interface IContextualMenuItemChildrenProps
   item: IContextualMenuItem;
   classNames: IMenuItemClassNames;
   index: number;
-  hasCheckmarks: boolean | undefined;
   hasIcons: boolean | undefined;
+  onCheckmarkClick?: ((item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) => void);
 }
