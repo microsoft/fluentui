@@ -8,7 +8,7 @@ const styles: any = stylesImport;
 
 export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
   public render() {
-    let { actions, views } = this.props;
+    const { actions, views } = this.props;
 
     return (
       <div className={ css('ms-DocumentCardActions', styles.actions) }>

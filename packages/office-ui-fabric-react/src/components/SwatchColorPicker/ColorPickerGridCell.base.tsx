@@ -34,7 +34,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   private _classNames: {[key in keyof IColorPickerGridCellStyles]: string };
 
   public render() {
-    let {
+    const {
       item,
       id,
       selected,
@@ -92,11 +92,11 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     );
   }
 
-  /**
-* Validate if the cell's color is white or not to apply whiteCell style
-* @param inputColor - The color of the current cell
-* @returns - Whether the cell's color is white or not.
-*/
+ /**
+  * Validate if the cell's color is white or not to apply whiteCell style
+  * @param inputColor - The color of the current cell
+  * @returns - Whether the cell's color is white or not.
+  */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
   }
@@ -115,7 +115,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined): IButtonClassNames {
-    let styles = getActionButtonStyles(theme);
+    const styles = getActionButtonStyles(theme);
     return mergeStyleSets(this._classNames as {}, {
       root: [
         'ms-Button',
