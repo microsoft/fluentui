@@ -7,7 +7,6 @@ import {
   autobind,
   BaseComponent,
   classNamesFunction,
-  css,
   customizable
 } from '../../Utilities';
 import {
