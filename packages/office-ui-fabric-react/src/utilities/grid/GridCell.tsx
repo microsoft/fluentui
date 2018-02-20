@@ -80,7 +80,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       onMouseEnter
     } = this.props as P;
 
-    let didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
+    const didUpdateOnEnter = onMouseEnter && onMouseEnter(ev);
 
     if (!didUpdateOnEnter && onHover && !disabled) {
       onHover(item);
@@ -96,7 +96,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       onMouseMove
     } = this.props as P;
 
-    let didUpdateOnMove = onMouseMove && onMouseMove(ev);
+    const didUpdateOnMove = onMouseMove && onMouseMove(ev);
 
     if (!didUpdateOnMove && onHover && !disabled) {
       onHover(item);
@@ -105,13 +105,13 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 
   @autobind
   private _onMouseLeave(ev: React.MouseEvent<HTMLButtonElement>) {
-    let {
+    const {
       onHover,
       disabled,
       onMouseLeave
     } = this.props as P;
 
-    let didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
+    const didUpdateOnLeave = onMouseLeave && onMouseLeave(ev);
 
     if (!didUpdateOnLeave && onHover && !disabled) {
       onHover();

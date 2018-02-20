@@ -112,7 +112,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
     return (
       <Grid
-        {...this.props}
+        { ...this.props }
         items={ colorCells.map((item, index) => { return { ...item, index: index }; }) }
         columnCount={ columnCount }
         onRenderItem={ this._renderOption }
@@ -207,7 +207,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
 
     return true;
-  };
+  }
 
   /**
    * Callback passed to the GridCell that will manage Hover/Focus updates
@@ -223,7 +223,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       return false;
     }
 
-    let targetElement = ev.currentTarget as HTMLElement;
+    const targetElement = ev.currentTarget as HTMLElement;
 
     // If navigation is idle and the targetElement is the focused element bail out
     // if (!this.isNavigationIdle || (document && targetElement === (document.activeElement as HTMLElement))) {
@@ -232,7 +232,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
 
     return true;
-  };
+  }
 
   /**
    * Callback passed to the GridCell that will manage Hover/Focus updates
@@ -240,7 +240,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   @autobind
   private _onMouseLeave(ev: React.MouseEvent<HTMLButtonElement>): void {
 
-    let parentSelector = this.props.mouseLeaveParentSelector;
+    const parentSelector = this.props.mouseLeaveParentSelector;
 
     if (!this.props.focusOnHover ||
       !parentSelector ||
@@ -250,7 +250,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     }
 
     // Get the the elements that math the given selector
-    let elements = document.querySelectorAll(parentSelector);
+    const elements = document.querySelectorAll(parentSelector);
 
     // iterate over the elements return to make sure it is a parent of the target and focus it
     for (let index = 0; index < elements.length; index += 1) {
@@ -269,7 +269,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
         break;
       }
     }
-  };
+  }
 
   /**
    * Callback to make sure we don't update the hovered element during mouse wheel
@@ -277,7 +277,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   @autobind
   private _onWheel(): void {
     this.setNavigationTimeout();
-  };
+  }
 
   /**
    * Callback that
@@ -292,7 +292,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     ) {
       this.setNavigationTimeout();
     }
-  };
+  }
 
   /**
    * Sets a timeout so we won't process any mouse "hover" events
@@ -309,26 +309,18 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
     this.navigationIdleTimeoutId = this.async.setTimeout(() => {
       this.isNavigationIdle = true;
     }, this.navigationIdleDelay);
-  };
+  }
 
   /**
    * Callback passed to the GridCell class that will trigger the onCellHovered callback of the SwatchColorPicker
+   * NOTE: This will not be triggered if shouldFocusOnHover === true
    */
   @autobind
   private _onGridCellHovered(item?: IColorCellProps): void {
-    let { focusOnHover, onCellHovered } = this.props;
-    if (focusOnHover) {
-      if (item) {
-
-      }
-    }
+    const { onCellHovered } = this.props;
 
     if (onCellHovered) {
-      if (item) {
-        onCellHovered(item.id, item.color);
-      } else {
-        onCellHovered();
-      }
+      return item ? onCellHovered(item.id, item.color) : onCellHovered();
     }
   }
 
@@ -337,12 +329,9 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    */
   @autobind
   private _onGridCellFocused(item?: IColorCellProps): void {
-    if (this.props && this.props.onCellFocused) {
-      if (item) {
-        this.props.onCellFocused(item.id, item.color);
-      } else {
-        this.props.onCellFocused();
-      }
+    const { onCellFocused } = this.props;
+    if (onCellFocused) {
+      return item ? onCellFocused(item.id, item.color) : onCellFocused();
     }
   }
 
