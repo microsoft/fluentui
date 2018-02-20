@@ -50,8 +50,8 @@ export class Icon extends React.Component<IIconProps, IIconState> {
         className
       );
       const { imageLoadError } = this.state;
-      let imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
-      let ImageType = imageLoadError && imageErrorAs || Image;
+      const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
+      const ImageType = imageLoadError && imageErrorAs || Image;
       return (
         <div
           {...containerProps}
