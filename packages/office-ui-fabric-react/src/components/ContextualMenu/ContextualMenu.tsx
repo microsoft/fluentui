@@ -317,7 +317,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                     let menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
                     if (item.itemType !== ContextualMenuItemType.Divider &&
                       item.itemType !== ContextualMenuItemType.Header) {
-                      const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+                      const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength + 1 : 1; // +1 move to the next elemnt
                       indexCorrection += indexIncrease;
                     }
                     return menuItem;
