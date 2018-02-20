@@ -43,10 +43,8 @@ export class App extends React.Component<IAppProps, any> {
 
   public render() {
     let { navHeight } = this.state;
-    let navTop: string = this.state.isAttached ? '0' : '100';
     let navPosition: 'fixed' | 'absolute' = this.state.isAttached ? 'fixed' : 'absolute';
     let navStyle = {
-      top: navTop,
       height: navHeight,
       position: navPosition
     };
