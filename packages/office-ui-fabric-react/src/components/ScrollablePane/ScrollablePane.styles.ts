@@ -29,8 +29,7 @@ export const getStyles = (
         overflowY: 'auto',
         maxHeight: 'inherit',
         height: 'inherit',
-        // @todo this doesn't work with JS
-        // -webkit-overflow-scrolling: touch;
+        WebkitOverflowScrolling: 'touch'
       },
       className
     ],
