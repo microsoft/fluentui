@@ -36,6 +36,8 @@ import {
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import * as stylesImport from './GroupedList.scss';
+import { IList, IListProps } from '../List/index';
+
 const styles: any = stylesImport;
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
@@ -104,6 +106,14 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
 
   /** Override for rendering the group footer. */
   onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when this callback is not provided.
+   */
+  onShouldVirtualize?: (props: IListProps) => boolean;
 }
 
 export interface IGroupedListSectionState {
@@ -182,7 +192,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionMode,
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupShowAll = this._onRenderGroupShowAll,
-      onRenderGroupFooter = this._onRenderGroupFooter
+      onRenderGroupFooter = this._onRenderGroupFooter,
+      onShouldVirtualize
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -220,6 +231,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                     items={ group!.children }
                     onRenderCell={ this._renderSubGroup }
                     getItemCountForPage={ this._returnOne }
+                    onShouldVirtualize={ onShouldVirtualize }
                   />
                 ) :
                 this._onRenderGroup(renderCount)
@@ -303,7 +315,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       items,
       onRenderCell,
       listProps,
-      groupNestingDepth
+      groupNestingDepth,
+      onShouldVirtualize
     } = this.props;
     const count = group ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
@@ -315,6 +328,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         ref={ 'list' }
         renderCount={ Math.min(count, renderCount) }
         startIndex={ startIndex }
+        onShouldVirtualize={ onShouldVirtualize }
         { ...listProps }
       />
     );
@@ -339,7 +353,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       viewport,
       onRenderGroupHeader,
       onRenderGroupShowAll,
-      onRenderGroupFooter
+      onRenderGroupFooter,
+      onShouldVirtualize
     } = this.props;
 
     return (!subGroup || subGroup.count > 0) ? (
@@ -365,6 +380,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupHeader={ onRenderGroupHeader }
         onRenderGroupShowAll={ onRenderGroupShowAll }
         onRenderGroupFooter={ onRenderGroupFooter }
+        onShouldVirtualize={ onShouldVirtualize }
       />
     ) : null;
   }

@@ -152,7 +152,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       onRenderCell,
       selectionMode,
       selection,
-      viewport
+      viewport,
+      onShouldVirtualize
     } = this.props;
 
     // override group header/footer props as needed
@@ -194,6 +195,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         selection={ selection }
         showAllProps={ showAllProps }
         viewport={ viewport }
+        onShouldVirtualize={ onShouldVirtualize }
       />
     );
   }
