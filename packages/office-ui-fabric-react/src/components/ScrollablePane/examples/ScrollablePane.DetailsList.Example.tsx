@@ -24,13 +24,13 @@ import {
 } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
-let _items: {
+const _items: {
   key: number,
   name: string,
   value: number
 }[] = [];
 
-let _columns: IColumn[] = [
+const _columns: IColumn[] = [
   {
     key: 'column1',
     name: 'Name',
@@ -82,7 +82,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <ScrollablePane>
@@ -124,7 +124,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:

@@ -34,7 +34,7 @@ describe('SwatchColorPicker', () => {
         columnCount={ 4 }
         getStyles={ getStyles }
       />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
