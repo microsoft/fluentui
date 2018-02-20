@@ -8,9 +8,10 @@ export interface IComponentStatusProps {
 
 export enum ChecklistStatus {
   unknown = 'Unknown',
+  notApplicable = 'Not applicable',
   pass = 'Pass',
   fail = 'Fail',
-  none = 'No Tests',
+  none = 'No tests',
   poor = 'Poor',
   fair = 'Fair',
   good = 'Good'
