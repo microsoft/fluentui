@@ -476,7 +476,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             classNames={classNames}
             index={index}
             onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
-            hasIcons={hasIcons} />
+            hasIcons={hasIcons}
+          />
         </a>
       </div>);
   }

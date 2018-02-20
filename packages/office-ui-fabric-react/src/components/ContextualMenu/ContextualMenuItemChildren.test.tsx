@@ -6,6 +6,6 @@ describe('ContextMenuItemChildren', () => {
   describe('does something', () => {
     it('passes', () => {
       expect(true).toBe(true);
-    })
+    });
   });
 });

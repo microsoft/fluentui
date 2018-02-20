@@ -626,7 +626,7 @@ describe('ContextualMenu', () => {
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
-        items={ items },
+        items={ items }
         contextualMenuChildrenAs={customRenderer}
       />
     );
