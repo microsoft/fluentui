@@ -23,8 +23,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
   }
 
   public render() {
-    let { onClick, onClickHref, children, className, type, accentColor } = this.props;
-    let actionable = (onClick || onClickHref) ? true : false;
+    const { onClick, onClickHref, children, className, type, accentColor } = this.props;
+    const actionable = (onClick || onClickHref) ? true : false;
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
@@ -35,8 +35,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? 'button' : 'link') : undefined;
-    let tabIndex = actionable ? 0 : undefined;
+    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const tabIndex = actionable ? 0 : undefined;
 
     return (
       <div
@@ -76,7 +76,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
 
   @autobind
   private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
-    let { onClick, onClickHref } = this.props;
+    const { onClick, onClickHref } = this.props;
 
     if (onClick) {
       onClick(ev);

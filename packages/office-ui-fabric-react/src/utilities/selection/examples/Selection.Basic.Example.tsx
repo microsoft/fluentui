@@ -35,7 +35,7 @@ export interface ISelectionItemExampleProps {
  */
 export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
   public render() {
-    let { item, itemIndex, selection } = this.props;
+    const { item, itemIndex, selection } = this.props;
     let isSelected = false;
 
     if (selection && itemIndex !== undefined) {
@@ -87,7 +87,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
   }
 
   public render() {
-    let { items, selection } = this.state;
+    const { items, selection } = this.state;
 
     return (
       <div className='ms-SelectionBasicExample'>
@@ -120,13 +120,13 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
   }
 
   private _onToggleSelectAll() {
-    let { selection } = this.state;
+    const { selection } = this.state;
     selection.toggleAllSelected();
   }
 
   private _onSelectionModeChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
     this.setState((previousState: ISelectionBasicExampleState) => {
-      let newSelection = new Selection({
+      const newSelection = new Selection({
         onSelectionChanged: this._onSelectionChanged,
         canSelectItem: previousState.canSelect === 'vowels' ? this._canSelectItem : undefined,
         selectionMode: menuItem.data
@@ -140,10 +140,10 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
   }
 
   private _onCanSelectChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
-    let canSelectItem = (menuItem.data === 'vowels') ? this._canSelectItem : undefined;
+    const canSelectItem = (menuItem.data === 'vowels') ? this._canSelectItem : undefined;
 
     this.setState((previousState: ISelectionBasicExampleState) => {
-      let newSelection = new Selection({ onSelectionChanged: this._onSelectionChanged, canSelectItem: canSelectItem, selectionMode: previousState.selection.mode });
+      const newSelection = new Selection({ onSelectionChanged: this._onSelectionChanged, canSelectItem: canSelectItem, selectionMode: previousState.selection.mode });
       newSelection.setItems(previousState.items as IObjectWithKey[], false);
       return {
         selection: newSelection,
@@ -157,7 +157,7 @@ export class SelectionBasicExample extends React.Component<{}, ISelectionBasicEx
   }
 
   private _getCommandItems(): IContextualMenuItem[] {
-    let { selection, canSelect } = this.state;
+    const { selection, canSelect } = this.state;
 
     return [
       {

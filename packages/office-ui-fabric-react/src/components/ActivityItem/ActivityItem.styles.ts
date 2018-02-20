@@ -18,7 +18,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
   customStyles?: IActivityItemStyles
 ): IActivityItemStyles => {
-  let ActivityItemStyles: IActivityItemStyles = {
+  const ActivityItemStyles: IActivityItemStyles = {
 
     root: [
       theme.fonts.small,

@@ -76,10 +76,10 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   public render() {
-    let id = this._id;
-    let stars = [];
-    let starIds = [];
-    let {
+    const id = this._id;
+    const stars = [];
+    const starIds = [];
+    const {
       disabled,
       getAriaLabel,
       getStyles,
@@ -97,7 +97,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     });
 
     for (let i = min as number; i <= (max as number); i++) {
-      let ratingStarProps: IRatingStarProps = {
+      const ratingStarProps: IRatingStarProps = {
         fillPercentage: this._getFillingPercentage(i),
         disabled: disabled ? true : false,
         classNames: this._classNames
@@ -188,7 +188,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getFillingPercentage(starPosition: number): number {
-    let ceilValue = Math.ceil((this.state.rating as number));
+    const ceilValue = Math.ceil((this.state.rating as number));
     let fillPercentage = 100;
 
     if (starPosition === this.state.rating) {
