@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
 import { Icon } from './Icon';
+import { IBaseProps } from '../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {
@@ -35,7 +36,7 @@ export interface IIconStyles {
   imageContainer?: IStyle;
 }
 
-export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
+export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
    */

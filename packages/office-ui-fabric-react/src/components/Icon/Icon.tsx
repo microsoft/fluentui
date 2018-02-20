@@ -7,7 +7,8 @@ import { ImageLoadState } from '../Image/Image.types';
 import {
   css,
   getNativeProps,
-  htmlElementProperties
+  htmlElementProperties,
+  BaseComponent
 } from '../../Utilities';
 import { getIcon, IIconRecord } from '../../Styling';
 import { getClassNames } from './Icon.classNames';
@@ -16,7 +17,7 @@ export interface IIconState {
   imageLoadError: boolean;
 }
 
-export class Icon extends React.Component<IIconProps, IIconState> {
+export class Icon extends BaseComponent<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
