@@ -55,13 +55,13 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
 
   @autobind
   private _renderSplitButtonMenuItem(item: IContextualMenuItem) {
-    let darkerBG = this.state.isContextMenuShown && styles.darkerBG;
+    const darkerBG = this.state.isContextMenuShown && styles.darkerBG;
 
-    let dropDownButtonClass = css(
+    const dropDownButtonClass = css(
       styles.button,
       darkerBG
     );
-    let mainBtnClassName = css(
+    const mainBtnClassName = css(
       !item.name && ('ms-CommandBarItem--noName'),
       styles.button,
       darkerBG

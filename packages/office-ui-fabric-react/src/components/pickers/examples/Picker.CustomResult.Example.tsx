@@ -282,7 +282,7 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
 };
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
-  let {
+  const {
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
@@ -297,13 +297,13 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
 };
 
 export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
-  let {
+  const {
     documentActionsProps,
     documentPreviewProps,
     documentActivityProps,
     documentTitleProps
   } = documentProps.item;
-  let actions: IButtonProps[] = [];
+  const actions: IButtonProps[] = [];
   if (documentActionsProps) {
     documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
     actions.push({
@@ -392,7 +392,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     if (!items || !items.length || items.length === 0) {
       return false;
     }
-    let documentTitle = document.documentTitleProps && document.documentTitleProps.title;
+    const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
     return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
   }
 }

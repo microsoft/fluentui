@@ -11,7 +11,7 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
   };
 
   public render() {
-    let { type, size, label, className, ariaLive, ariaLabel } = this.props; // TODO remove deprecated type property at >= 2.0.0
+    const { type, size, label, className, ariaLive, ariaLabel } = this.props; // TODO remove deprecated type property at >= 2.0.0
     const statusMessage = ariaLabel || label;
 
     return (

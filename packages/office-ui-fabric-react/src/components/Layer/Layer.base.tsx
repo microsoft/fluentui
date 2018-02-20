@@ -18,7 +18,7 @@ import {
   setVirtualParent
 } from '../../Utilities';
 
-let _layersByHostId: { [hostId: string]: LayerBase[] } = {};
+const _layersByHostId: { [hostId: string]: LayerBase[] } = {};
 let _defaultHostSelector: string | undefined;
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
@@ -89,7 +89,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidUpdate() {
-    let host = this._getHost();
+    const host = this._getHost();
 
     const { className, getStyles, theme } = this.props;
     const classNames = getClassNames(getStyles!,
@@ -108,7 +108,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        let doc = getDocument(this._rootElement) as Document;
+        const doc = getDocument(this._rootElement) as Document;
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = classNames.root;
@@ -155,7 +155,7 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
       this.props.onLayerWillUnmount!();
 
       ReactDOM.unmountComponentAtNode(this._layerElement);
-      let parentNode = this._layerElement.parentNode;
+      const parentNode = this._layerElement.parentNode;
       if (parentNode) {
         parentNode.removeChild(this._layerElement);
       }
@@ -165,8 +165,8 @@ export class LayerBase extends BaseComponent<ILayerProps, {}> {
   }
 
   private _getHost(): Node {
-    let { hostId } = this.props;
-    let doc = getDocument(this._rootElement) as Document;
+    const { hostId } = this.props;
+    const doc = getDocument(this._rootElement) as Document;
 
     if (hostId) {
       return doc.getElementById(hostId) as Node;
