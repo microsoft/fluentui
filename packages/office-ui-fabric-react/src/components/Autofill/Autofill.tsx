@@ -35,7 +35,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   public get cursorLocation(): number {
     if (this._inputElement) {
-      let inputElement = this._inputElement;
+      const inputElement = this._inputElement;
       if (inputElement.selectionDirection !== SELECTION_FORWARD) {
         return inputElement.selectionEnd;
       } else {
@@ -81,8 +81,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public componentDidUpdate() {
-    let value = this._value;
-    let {
+    const value = this._value;
+    const {
       suggestedDisplayValue,
       shouldSelectFullInputValueInComponentDidUpdate
     } = this.props;
@@ -109,7 +109,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public render() {
-    let {
+    const {
       displayValue
     } = this.state;
 
@@ -154,7 +154,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   @autobind
   private _onCompositionEnd(ev: React.CompositionEvent<HTMLInputElement>) {
-    let inputValue = this._getCurrentInputValue();
+    const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => this._updateValue(inputValue), 0);
@@ -200,7 +200,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   @autobind
   private _onChange(ev: React.FormEvent<HTMLElement>) {
-    let value: string = this._getCurrentInputValue(ev);
+    const value: string = this._getCurrentInputValue(ev);
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
     this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
     this._updateValue(value);
