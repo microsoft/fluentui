@@ -48,7 +48,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
     public componentDidMount() {
       this._events.on(window, 'resize', () => {
-        let responsiveMode = this._getResponsiveMode();
+        const responsiveMode = this._getResponsiveMode();
 
         if (responsiveMode !== this.state.responsiveMode) {
           this.setState({
@@ -63,7 +63,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
     }
 
     public render() {
-      let { responsiveMode } = this.state;
+      const { responsiveMode } = this.state;
 
       return (
         <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props as any } />
@@ -72,7 +72,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
     private _getResponsiveMode(): ResponsiveMode {
       let responsiveMode = ResponsiveMode.small;
-      let win = getWindow();
+      const win = getWindow();
 
       if (typeof win !== 'undefined') {
         try {

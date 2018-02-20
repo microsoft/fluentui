@@ -30,7 +30,7 @@ const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const TABINDEX = 'tabindex';
 
-let _allInstances: {
+const _allInstances: {
   [key: string]: FocusZone
 } = {};
 
@@ -109,8 +109,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public render() {
-    let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
-    let divProps = getNativeProps(this.props, divProperties);
+    const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
+    const divProps = getNativeProps(this.props, divProperties);
 
     const Tag = this.props.elementType || 'div';
 
@@ -175,7 +175,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focusElement(element: HTMLElement): boolean {
-    let { onBeforeFocus } = this.props;
+    const { onBeforeFocus } = this.props;
 
     if (onBeforeFocus && !onBeforeFocus(element)) {
       return false;
@@ -195,7 +195,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   @autobind
   private _onFocus(ev: React.FocusEvent<HTMLElement>) {
-    let { onActiveElementChanged } = this.props;
+    const { onActiveElementChanged } = this.props;
 
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
       this._activeElement = ev.target as HTMLElement;
@@ -308,7 +308,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
 
       // Try to focus
-      let innerZone = this._getFirstInnerZone();
+      const innerZone = this._getFirstInnerZone();
 
       if (innerZone) {
         if (!innerZone.focus(true)) {
@@ -459,7 +459,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (isElementFocusZone(child)) {
         return _allInstances[child.getAttribute(FOCUSZONE_ID_ATTRIBUTE) as string];
       }
-      let match = this._getFirstInnerZone(child);
+      const match = this._getFirstInnerZone(child);
 
       if (match) {
         return match;
@@ -480,7 +480,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let candidateDistance = -1;
     let candidateElement: HTMLElement | undefined = undefined;
     let changedFocus = false;
-    let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
+    const isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
 
     if (!element) {
       return false;
@@ -550,8 +550,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // If the difference between top and bottom are within a pixel then we should treat
       // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
       // but without Math.Floor they will be handled incorrectly.
-      let targetRectTop = Math.floor(targetRect.top);
-      let activeRectBottom = Math.floor(activeRect.bottom);
+      const targetRectTop = Math.floor(targetRect.top);
+      const activeRectBottom = Math.floor(activeRect.bottom);
 
       if (targetRectTop < activeRectBottom) {
         return 999999999;
@@ -586,9 +586,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // If the difference between top and bottom are within a pixel then we should treat
       // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
       // but without Math.Floor they will be handled incorrectly.
-      let targetRectBottom = Math.floor(targetRect.bottom);
-      let targetRectTop = Math.floor(targetRect.top);
-      let activeRectTop = Math.floor(activeRect.top);
+      const targetRectBottom = Math.floor(targetRect.bottom);
+      const targetRectTop = Math.floor(targetRect.top);
+      const activeRectTop = Math.floor(activeRect.top);
 
       if (targetRectBottom > activeRectTop) {
         return 999999999;
@@ -764,10 +764,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (element &&
       element.type &&
       ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
-      let selectionStart = element.selectionStart;
-      let selectionEnd = element.selectionEnd;
-      let isRangeSelected = selectionStart !== selectionEnd;
-      let inputValue = element.value;
+      const selectionStart = element.selectionStart;
+      const selectionEnd = element.selectionEnd;
+      const isRangeSelected = selectionStart !== selectionEnd;
+      const inputValue = element.value;
 
       // We shouldn't lose focus in the following cases:
       // 1. There is range selected.
@@ -782,5 +782,4 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     return true;
   }
-
 }

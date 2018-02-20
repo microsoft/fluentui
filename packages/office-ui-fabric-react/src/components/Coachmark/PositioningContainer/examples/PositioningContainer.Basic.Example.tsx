@@ -20,7 +20,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
   }
 
   public render(): JSX.Element {
-    let { isPositioningContainerVisible } = this.state;
+    const { isPositioningContainerVisible } = this.state;
     return (
       <div>
         <div className='ms-PositioningContainerBasicExample-buttonArea'>
