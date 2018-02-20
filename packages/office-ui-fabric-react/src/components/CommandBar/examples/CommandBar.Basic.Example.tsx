@@ -18,7 +18,7 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
     return (
       <div>
         <CommandBar
-          elipisisAriaLabel='More options'
+          shiftOnReduce
           items={ items }
           overflowItems={ overflowItems }
           farItems={ farItems }
