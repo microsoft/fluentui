@@ -3,7 +3,7 @@ import { getIsChecked, hasSubmenu } from "../ContextualMenu";
 import { IContextualMenuItem } from "../ContextualMenu";
 import { IMenuItemClassNames } from "../ContextualMenu/ContextualMenu.classNames";
 import { getRTL } from "../../Utilities";
-import { Icon } from "../../Icon";
+import { Icon, IIconProps } from "../../Icon";
 import { IContextualMenuItemChildrenProps } from "./ContextualMenuItemChildren.types";
 
 export const ContextualMenuItemChildren: React.StatelessComponent<
@@ -43,7 +43,16 @@ const renderIcon = (
   classNames: IMenuItemClassNames
 ) => {
   // Only present to allow continued use of item.icon which is deprecated.
-  const iconProps = this._getIconProps(item);
+  const iconProps = getIconProps(item);
 
   return <Icon {...iconProps} className={classNames.icon} />;
+};
+
+const getIconProps = (item: IContextualMenuItem): IIconProps => {
+  const iconProps: IIconProps = item.iconProps
+    ? item.iconProps
+    : {
+        iconName: item.icon
+      };
+  return iconProps;
 };
