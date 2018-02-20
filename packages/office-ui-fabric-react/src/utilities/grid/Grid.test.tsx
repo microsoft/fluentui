@@ -2,7 +2,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import { Grid } from './Grid';
+import { GridBase } from './Grid.base';
+import { getStyles } from './Grid.styles';
 import { DefaultButton } from '../../Button';
 import { shallow } from 'enzyme';
 
@@ -20,10 +21,11 @@ const DEFAULT_ITEMS: any[] = [
 describe('Grid', () => {
 
   it('Can render a grid with width of four', () => {
-    let wrapper = shallow(
-      <Grid
+    const wrapper = shallow(
+      <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 4 }
+        getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
@@ -35,10 +37,11 @@ describe('Grid', () => {
     expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
   it('Can render a grid with width of 2', () => {
-    let wrapper = shallow(
-      <Grid
+    const wrapper = shallow(
+      <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
+        getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
       />
@@ -50,10 +53,11 @@ describe('Grid', () => {
     expect(wrapper.find('[aria-setsize]').length).toEqual(0);
   });
   it('Can render a grid with posInSet and setSize', () => {
-    let wrapper = shallow(
-      <Grid
+    const wrapper = shallow(
+      <GridBase
         items={ DEFAULT_ITEMS }
         columnCount={ 2 }
+        getStyles={ getStyles }
         // tslint:disable-next-line:jsx-no-lambda
         onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
         positionInSet={ 1 }

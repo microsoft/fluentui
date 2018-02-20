@@ -34,17 +34,17 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
   }
 
   public render() {
-    let {
+    const {
       hidePersonaDetails,
       onRenderPrimaryText,
       onRenderSecondaryText,
       onRenderTertiaryText,
       onRenderOptionalText,
     } = this.props;
-    let size = this.props.size as PersonaSize;
+    const size = this.props.size as PersonaSize;
 
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
-    let {
+    const {
       className,
       coinProps,
       coinSize,
@@ -56,10 +56,12 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      showSecondaryText
+      showSecondaryText,
+      onPhotoLoadingStateChange,
+      onRenderCoin
      } = this.props;
 
-    let personaCoinProps = {
+    const personaCoinProps = {
       coinProps,
       coinSize,
       imageUrl,
@@ -70,11 +72,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       primaryText,
       imageShouldFadeIn,
       imageShouldStartVisible,
-      size
+      size,
+      onPhotoLoadingStateChange,
+      onRenderCoin
     };
 
-    let divProps = getNativeProps(this.props, divProperties);
-    let personaDetails = (
+    const divProps = getNativeProps(this.props, divProperties);
+    const personaDetails = (
       <div className={ css('ms-Persona-details', styles.details) }>
         { this._renderElement(
           this.props.primaryText,
@@ -122,13 +126,13 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
       <div className={ className }>
         { render
           ? render(this.props)
-          : <TooltipHost
+          : text && (<TooltipHost
             content={ text }
             overflowMode={ TooltipOverflowMode.Parent }
             directionalHint={ DirectionalHint.topLeftEdge }
           >
             { text }
-          </TooltipHost>
+          </TooltipHost>)
         }
       </div>
     );

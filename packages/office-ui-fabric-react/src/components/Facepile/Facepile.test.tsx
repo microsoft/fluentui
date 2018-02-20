@@ -7,7 +7,7 @@ import { mount, shallow, ReactWrapper } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
-import { PersonaSize } from '../Persona';
+import { PersonaSize } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
 import { TestImages } from '../../common/TestImages';
 import { findNodes, expectOne, expectMissing } from '../../common/testUtilities';
@@ -39,7 +39,7 @@ describe('Facepile', () => {
 
   it('renders Facepile correctly', () => {
     const component = renderer.create(<Facepile personas={ facepilePersonas } />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

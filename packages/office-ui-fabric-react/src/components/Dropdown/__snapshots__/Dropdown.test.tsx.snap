@@ -37,7 +37,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         className=
-            ms-Icon
             ms-Dropdown-caretDown
             {
               display: inline-block;
@@ -87,7 +86,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         aria-hidden={true}
         aria-label={undefined}
         className=
-            ms-Icon
             ms-Dropdown-caretDown
             {
               display: inline-block;
