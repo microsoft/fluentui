@@ -9,10 +9,11 @@ export const ktpFullPrefix = ktpPrefix + ktpSeparator;
 export const dataKtpId = 'data-ktp-id';
 
 /**
- * Adds seq1 to the list of sequences
+ * Adds an IKeySequence to a list of sequences
  * Returns a new array of IKeySequence
- * @param sequences
- * @param seq1
+ *
+ * @param sequences - Array of sequences to append to
+ * @param seq1 - IKeySequence to append
  */
 export function addKeytipSequence(sequences: IKeySequence[], seq1: IKeySequence): IKeySequence[] {
   return [...sequences, { keys: [...seq1.keys] }];
@@ -20,7 +21,7 @@ export function addKeytipSequence(sequences: IKeySequence[], seq1: IKeySequence)
 
 /**
  * Utility funciton to register a keytip in the KeytipManager
- * TODO: should this return an any? or something else
+ *
  * @param keytipProps - Keytip to register
  * @returns - any {} containing the aria-describedby and data-ktp-id to add to the relevant element
  */
@@ -32,6 +33,7 @@ export function registerKeytip(keytipProps: IKeytipProps): any {
 
 /**
  * Utility funciton to unregister a keytip in the KeytipManager
+ *
  * @param keytipProps - Keytip to unregister
  */
 export function unregisterKeytip(keytipProps: IKeytipProps): void {
@@ -39,10 +41,20 @@ export function unregisterKeytip(keytipProps: IKeytipProps): void {
   ktpMgr.unregisterKeytip(keytipProps);
 }
 
+/**
+ * Constructs the data-ktp-id attribute selector from a full key sequence
+ *
+ * @param keySequences - Full IKeySequence for a Keytip
+ */
 export function constructKeytipTargetFromSequences(keySequences: IKeySequence[]): string {
   return '[' + dataKtpId + '="' + convertSequencesToKeytipID(keySequences) + '"]';
 }
 
+/**
+ * Constructs the data-ktp-id attribute selector from a keytip ID
+ *
+ * @param keytipId - ID of the Keytip
+ */
 export function constructKeytipTargetFromId(keytipId: string): string {
   return '[' + dataKtpId + '="' + keytipId + '"]';
 }

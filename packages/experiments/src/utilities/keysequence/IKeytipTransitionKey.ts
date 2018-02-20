@@ -6,19 +6,22 @@ export interface IKeytipTransitionKey {
 }
 
 /**
+ * Tests for equality between two IKeytipTransitionKeys
  *
- * @param seq1
- * @param seq2
+ * @param key1 - First IKeytipTransitionKey
+ * @param key2 - Second IKeytipTransitionKey
+ * @returns {boolean} T/F if the transition keys are equal
  */
-export function transitionKeysAreEqual(seq1: IKeytipTransitionKey, seq2: IKeytipTransitionKey): boolean {
-  if (seq1.key !== seq2.key) {
+export function transitionKeysAreEqual(key1: IKeytipTransitionKey, key2: IKeytipTransitionKey): boolean {
+  if (key1.key !== key2.key) {
     return false;
   }
-  let mod1 = seq1.modifierKeys;
-  let mod2 = seq2.modifierKeys;
+
+  let mod1 = key1.modifierKeys;
+  let mod2 = key2.modifierKeys;
 
   if ((!mod1 && mod2) || (mod1 && !mod2)) {
-    // Not equal if one is defined and the other isn't
+    // Not equal if one modifier is defined and the other isn't
     return false;
   }
 
@@ -46,13 +49,15 @@ export function transitionKeysAreEqual(seq1: IKeytipTransitionKey, seq2: IKeytip
 }
 
 /**
+ * Tests if 'key' is present in 'keys'
  *
- * @param sequences
- * @param seq
+ * @param keys - Array of IKeytipTransitionKey
+ * @param key - IKeytipTransitionKey to find in 'keys'
+ * @returns {boolean} T/F if 'keys' contains 'key'
  */
-export function transitionKeysContain(sequences: IKeytipTransitionKey[], seq: IKeytipTransitionKey): boolean {
-  for (let i = 0; i < sequences.length; i++) {
-    if (transitionKeysAreEqual(sequences[i], seq)) {
+export function transitionKeysContain(keys: IKeytipTransitionKey[], key: IKeytipTransitionKey): boolean {
+  for (let i = 0; i < keys.length; i++) {
+    if (transitionKeysAreEqual(keys[i], key)) {
       return true;
     }
   }

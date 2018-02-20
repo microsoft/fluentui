@@ -60,23 +60,28 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   }
 
   /**
+   * Register a keytip in this layer
    *
-   * @param keytipProps
+   * @param keytipProps - IKeytipProps to add to this layer
    */
   public registerKeytip(keytipProps: IKeytipProps): void {
     this.setState(this.addKeytip(keytipProps));
   }
 
   /**
+   * Unregister a keytip in this layer
    *
-   * @param keytipProps
+   * @param keytipProps - IKeytipProps to remove from this layer
    */
   public unregisterKeytip(keytipProps: IKeytipProps): void {
     this.setState(this.removeKeytip(keytipProps));
   }
 
   /**
+   * Add or update a keytip to this layer by modifying this layer's state
    *
+   * @param keytipProps - Keytip to add or update in the layer
+   * @returns Function to call with setState
    */
   public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
@@ -102,9 +107,10 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   }
 
   /**
-   * Removes a keytip from the layer's state
-   * TODO: do we just need to pass in the keytip sequence?
+   * Removes a keytip from this layer's state
+   *
    * @param keytipToRemove - IKeytipProps of the keytip to remove
+   * @returns Function to call with setState
    */
   public removeKeytip(keytipToRemove: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
@@ -117,6 +123,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     };
   }
 
+  /**
+   * Sets the visibility of the keytips in this layer
+   *
+   * @param ids - Keytip IDs that should have their visibility updated
+   * @param visible - T/F if the specified Keytips will be visible or not
+   */
   public setKeytipVisibility(ids: string[], visible: boolean): void {
     this.setState((previousState: IKeytipLayerState, currentProps: IKeytipLayerState) => {
       let currentKeytips: IKeytipProps[] = [...previousState.keytips];
@@ -153,7 +165,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this._events.on(window, 'resize', this._onDismiss);
     this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
     this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
-    // TODO: SHOULD WE DO THIS ??: -> To remove callout when scrolled
+
+    // Add handler to remove Keytips when we scroll the page
     window.addEventListener('scroll', (): void => {
       if (this.state.inKeytipMode) {
         this._keytipManager.exitKeytipMode();
@@ -161,6 +174,9 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     }, { capture: true });
   }
 
+  /**
+   * Exits keytip mode for this layer
+   */
   public exitKeytipMode(): void {
     if (this.props.onExitKeytipMode) {
       this.props.onExitKeytipMode();
@@ -168,6 +184,9 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     this.setState({ inKeytipMode: false });
   }
 
+  /**
+   * Enters keytip mode for this layer
+   */
   public enterKeytipMode(): void {
     if (this.props.onEnterKeytipMode) {
       this.props.onEnterKeytipMode();
@@ -177,7 +196,7 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
 
   @autobind
   private _onDismiss(ev?: React.MouseEvent<HTMLElement>): void {
-    // if we are in keytip mode.. then exit keytip mode
+    // if we are in keytip mode, then exit keytip mode
     if (this.state.inKeytipMode) {
       this._keytipManager.exitKeytipMode();
     }
@@ -203,6 +222,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     }
   }
 
+  /**
+   * Gets the ModifierKeyCodes based on the keyboard event
+   *
+   * @param ev - React.KeyboardEvent
+   * @returns List of ModifierKeyCodes that were pressed
+   */
   private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes[] | undefined {
     let modifierKeys = [];
     if (ev.altKey) {
@@ -214,13 +239,13 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     if (ev.shiftKey) {
       modifierKeys.push(ModifierKeyCodes.shift);
     }
-    // TODO include windows key or option for MAC
+    // TODO: include windows key or option for MAC
     return modifierKeys.length ? modifierKeys : undefined;
   }
 
   @autobind
   private _onKeyPress(ev: React.KeyboardEvent<HTMLElement>): void {
-    // call processInput
+    // Call processInput
     this._keytipManager.processInput(ev.key);
   }
 }

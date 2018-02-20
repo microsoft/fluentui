@@ -9,6 +9,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { autobind } from '../../../Utilities';
 
 export interface IKeytipLayerBasicExampleState {
   showModal: boolean;
@@ -95,10 +96,6 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
   public render(): JSX.Element {
-    let showModal = this._showModal.bind(this);
-    let hideModal = this._hideModal.bind(this);
-    let showMessageBar = this._showMessageBar.bind(this);
-
     let divStyle = {
       width: '50%',
       display: 'inline-block',
@@ -148,14 +145,14 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
                     key: 'commandBarItem1',
                     name: 'New',
                     icon: 'Add',
-                    onClick: showModal,
+                    onClick: this._showModal,
                     ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton1Pivot2Keytip.keySequences)
                   },
                   {
                     key: 'commandBarItem2',
                     name: 'Upload',
                     icon: 'Upload',
-                    onClick: showMessageBar,
+                    onClick: this._showMessageBar,
                     ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton2Pivot2Keytip.keySequences)
                   }
                 ]
@@ -194,7 +191,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
         }
         <Modal
           isOpen={ this.state.showModal }
-          onDismiss={ hideModal }
+          onDismiss={ this._hideModal }
           isBlocking={ false }
         >
           <h2>Hello this is a Modal</h2>
@@ -209,20 +206,24 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
   }
 
   public componentDidMount(): void {
-    // Manually add keytips to the KeytipManager
+    // Manually add keytips to the KeytipManager for now
+    // This should really be done in each component
     for (let component of Object.keys(this.keytipMap)) {
       registerKeytip(this.keytipMap[component]);
     }
   }
 
+  @autobind
   private _showModal(): void {
     this.setState({ showModal: true });
   }
 
+  @autobind
   private _hideModal(): void {
     this.setState({ showModal: false });
   }
 
+  @autobind
   private _showMessageBar(): void {
     this.setState({ showMessageBar: true });
     // Hide the MessageBar after 2 seconds
@@ -231,10 +232,4 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
     };
     setTimeout(hideMessageBar.bind(this), 2000);
   }
-
-  // TODO use this to getExecute of buttons
-  // private _getExecute(id: string): () => void {
-  //   let element = document.querySelector(id) as HTMLElement;
-  //   return element.click;
-  // }
 }

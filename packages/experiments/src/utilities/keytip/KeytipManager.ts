@@ -16,14 +16,17 @@ export class KeytipManager {
 
   public keytipTree: KeytipTree;
   public currentSequence: IKeySequence;
+
   private _layer: KeytipLayer;
   private _enableSequences: IKeytipTransitionKey[];
   private _exitSequences: IKeytipTransitionKey[];
   private _returnSequences: IKeytipTransitionKey[];
 
   /**
- * Static function to get singleton KeytipManager instance
- */
+   * Static function to get singleton KeytipManager instance
+   *
+   * @returns {KeytipManager} Singleton KeytipManager instance
+   */
   public static getInstance(): KeytipManager {
     return this._instance;
   }
@@ -31,6 +34,7 @@ export class KeytipManager {
   /**
    * Sets the _layer property and creates a KeytipTree
    * Should be called from the KeytipLayer constructor
+   *
    * @param layer - KeytipLayer object
    */
   public init(layer: KeytipLayer): void {
@@ -46,7 +50,9 @@ export class KeytipManager {
   /**
    * Gets the aria-describedby property for a set of keySequences
    * keySequences should not include the initial keytip 'start' sequence
+   *
    * @param keySequences - Full path of IKeySequences for one keytip
+   * @returns {string} String to use for the aria-describedby property for the element with this Keytip
    */
   public getAriaDescribedBy(keySequences: IKeySequence[]): string {
     let describedby = this._layer.props.id;
@@ -65,7 +71,9 @@ export class KeytipManager {
   /**
    * Registers a keytip
    * TODO: should this return an any? or something else
+   *
    * @param keytipProps - Keytip to register
+   * @returns {any} Object containing the aria-describedby and data-ktp-id DOM properties
    */
   // tslint:disable-next-line:no-any
   public registerKeytip(keytipProps: IKeytipProps): any {
@@ -75,8 +83,7 @@ export class KeytipManager {
     }
 
     // Set the 'keytips' property in _layer
-    // TODO: do we have to check for this._layer?
-    this._layer && this._layer.registerKeytip(keytipProps);
+    this._layer.registerKeytip(keytipProps);
     this.keytipTree.addNode(keytipProps);
 
     // Construct aria-describedby and data-ktp-id attributes and return
@@ -91,15 +98,17 @@ export class KeytipManager {
 
   /**
    * Unregisters a keytip
+   *
    * @param keytipToRemove - IKeytipProps of the keytip to remove
    */
   public unregisterKeytip(keytipToRemove: IKeytipProps): void {
-    this._layer.removeKeytip(keytipToRemove);
+    this._layer.unregisterKeytip(keytipToRemove);
     this.keytipTree.removeNode(keytipToRemove.keySequences);
   }
 
   /**
    * Method that makes visible keytips currently in the DOM given a list of IDs.
+   *
    * @param ids: list of Ids to show.
    */
   public showKeytips(ids: string[]): void {
@@ -109,6 +118,7 @@ export class KeytipManager {
   /**
    * Method that hides keytips from the DOM given a list of IDs.
    * If a list is not passed in, than it will hide all the currently registered keytips.
+   *
    * @param ids: optional list of Ids to hide.
    */
   public hideKeytips(ids?: string[]): void {
@@ -132,8 +142,9 @@ export class KeytipManager {
   }
 
   /**
+   * Processes an IKeytipTransitionKey entered by the user
    *
-   * @param keySequence
+   * @param transitionKey - IKeytipTransitionKey received by the layer to process
    */
   public processTransitionInput(transitionKey: IKeytipTransitionKey): void {
     if (transitionKeysContain(this._exitSequences, transitionKey) && this.keytipTree.currentKeytip) {
@@ -141,9 +152,6 @@ export class KeytipManager {
       this.exitKeytipMode();
     } else if (transitionKeysContain(this._returnSequences, transitionKey)) {
       // If key sequence is in return sequences, move currentKeytip to parent (or if currentKeytip is the root, exit)
-      //    Trigger node's onReturnExecute
-      //    Hide all keytips currently showing
-      //    Show all keytips of children of currentKeytip
       if (this.keytipTree.currentKeytip) {
         if (this.keytipTree.currentKeytip.id === this.keytipTree.root.id) {
           // We are at the root, exit keytip mode
@@ -159,48 +167,40 @@ export class KeytipManager {
           this.currentSequence.keys = [];
           // Return pointer to its parent
           this.keytipTree.currentKeytip = this.keytipTree.nodeMap[this.keytipTree.currentKeytip.parent!];
-          this.hideKeytips(); // HIDE ALL
+          // Hide all keytips
+          this.hideKeytips();
+          // Show children keytips of the new currentKeytip
           this.showKeytips(this.keytipTree.currentKeytip.children);
         }
       }
     } else if (transitionKeysContain(this._enableSequences, transitionKey) && !this.keytipTree.currentKeytip) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, set currentKeytip to root
-      //    Show children of root
-      //    Trigger layer's onEnter callback
       this.keytipTree.currentKeytip = this.keytipTree.root;
       this.hideKeytips();
+      // Show children of root
       this.showKeytips(this.keytipTree.currentKeytip.children);
+      // Trigger onEnter callback
       this.enterKeytipMode();
     }
   }
 
   /**
    * Processes inputs from the document listener and traverse the keytip tree
-   * @param keySequence - Keys pressed by the user
+   *
+   * @param key - Key pressed by the user
    */
   public processInput(key: string): void {
+    // Concat the input key with the current sequence
     let currentSequence: IKeySequence = { keys: [...this.currentSequence.keys, ...[key]] };
 
+    // currentKeytip must be defined, otherwise we haven't entered keytip mode yet
     if (this.keytipTree.currentKeytip) {
-      // If currentKeytip is a node, look at all children of currentKeytip
-      //    If the sequence exactly matches one of the children
-      //      Trigger node's onExecute
-      //      ** TODO: we would have to do the below after the DOM has finished rendering to know for sure if node was a leaf (e.g. menu) **
-      //      If the new node is a leaf
-      //        Set currentKeytip to null and exit keytip mode
-      //      Else
-      //        Set currentKeytip to node just triggered
-      //        Hide all keytips currently showing
-      //        Show all keytips of children of currentKeytip
-      //    Else if the sequence matches the first part of a keytip
-      //      Set visibility to false on keytips that don't match
-      //    Else the sequence doesn't match anything
-      //      Do nothing
       let node = this.keytipTree.getExactMatchedNode(currentSequence, this.keytipTree.currentKeytip);
-      if (node) { // we found a matching node
-
-        // if this is a persisted keytip, then we use its keytipLink
+      if (node) {
+        // If this is a persisted keytip, then we use its keytipLink
         this.keytipTree.currentKeytip = node.keytipLink ? node.keytipLink : node;
+
+        // Execute this node's onExecute if defined
         if (this.keytipTree.currentKeytip.onExecute) {
           let domEl = this._getKeytipDOMElement(this.keytipTree.currentKeytip.id);
           this.keytipTree.currentKeytip.onExecute(domEl);
@@ -211,20 +211,23 @@ export class KeytipManager {
         if (this.keytipTree.currentKeytip.children.length === 0 && !this.keytipTree.currentKeytip.hasChildrenNodes) {
           this.exitKeytipMode();
         } else {
-          // TODO... we need a way to show the keytips of the childrenNodes that are currently not loaded.
+          // Show all children keytips
           this.hideKeytips();
           this.showKeytips(this.keytipTree.currentKeytip.children);
         }
+
+        // Clear currentSequence
         this.currentSequence = { keys: [] };
         return;
       }
 
       let partialNodes = this.keytipTree.getPartiallyMatchedNodes(currentSequence, this.keytipTree.currentKeytip);
       if (partialNodes.length > 0) {
-        // we found partial nodes, so we show only those.
+        // We found nodes that partially match the sequence, so we show only those.
         this.hideKeytips();
         let ids = partialNodes.map((partialNode: IKeytipTreeNode) => { return partialNode.id; });
-        this.showKeytips(ids); // show only keytips that were partially matched
+        this.showKeytips(ids);
+        // Save currentSequence
         this.currentSequence = currentSequence;
       }
     }
@@ -235,6 +238,12 @@ export class KeytipManager {
     this._layer.setKeytipVisibility(ids, visible);
   }
 
+  /**
+   * Tests if the currentKeytip in this.keytipTree is the parent of 'keytipProps'
+   *
+   * @param keytipProps - Keytip to test the parent for
+   * @returns {boolean} T/F if the currentKeytip is this keytipProps' parent
+   */
   private _isCurrentKeytipParent(keytipProps: IKeytipProps): boolean {
     if (this.keytipTree.currentKeytip) {
       let fullSequence = [...keytipProps.keySequences];
@@ -247,6 +256,12 @@ export class KeytipManager {
     return false;
   }
 
+  /**
+   * Gets the DOM element for the specified keytip
+   *
+   * @param keytipId - ID of the keytip to query for
+   * @return {HTMLElement} DOM element of the keytip
+   */
   private _getKeytipDOMElement(keytipId: string): HTMLElement {
     let dataKeytipId = constructKeytipTargetFromId(keytipId);
     return document.querySelector(dataKeytipId) as HTMLElement;

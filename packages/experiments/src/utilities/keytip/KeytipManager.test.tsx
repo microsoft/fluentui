@@ -22,9 +22,10 @@ const keytipOverflowIdM = ktpFullPrefix + 'o' + ktpSeparator + 'm';
 
 describe('KeytipManager', () => {
   const keytipManager = KeytipManager.getInstance();
-  let defaultKeytipLayer: ReactWrapper;
   const onEnterKeytipMode: jest.Mock = jest.fn();
   const onExitKeytipMode: jest.Mock = jest.fn();
+
+  let defaultKeytipLayer: ReactWrapper;
 
   beforeEach(() => {
     // Create layer

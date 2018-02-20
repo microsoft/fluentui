@@ -28,7 +28,7 @@ export interface IKeytipTreeNode {
   onReturn?: (el: HTMLElement) => void;
 
   /**
-   * List of keytips that should become visible when this keytip is pressed, can be empty
+   * List of keytip IDs that should become visible when this keytip is pressed, can be empty
    */
   children: string[];
 
@@ -66,11 +66,12 @@ export class KeytipTree {
 
   /**
    * KeytipTree constructor
-   * @param enableSequences - KeySequences that will start keytip mode, passed down through the KeytipLayer
+   *
+   * @param rootId - Layer ID to create the root node of the tree
    */
   constructor(rootId: string) {
 
-    // Root has no keytipSequences, we instead check _enableSequences to handle multiple entry points
+    // Root has no keytipSequence, we instead check _enableSequences to handle multiple entry points
     this.root = {
       id: rootId,
       children: [],
@@ -82,15 +83,10 @@ export class KeytipTree {
     this.nodeMap[this.root.id] = this.root;
   }
 
-  // check if it has an overflow set
-  // get overflowset node
-  // add node to overflowset node
-  // node
-
   /**
    * Add a keytip node to this KeytipTree
-   * @param fullSequence - Full key sequence for the keytip to add
-   * @param onExecute - Callback function to trigger when this keytip is activated
+   *
+   * @param keytipProps - Keytip to add to the Tree
    */
   public addNode(keytipProps: IKeytipProps): void {
     let fullSequence = [...keytipProps.keySequences];
@@ -101,16 +97,19 @@ export class KeytipTree {
     let parentID = fullSequence.length === 0 ? this.root.id : convertSequencesToKeytipID(fullSequence);
 
     let overflowNode = undefined;
+    // Account for overflowSetSequence
     if (keytipProps.overflowSetSequence && keytipSequence) {
-      let overflowParentNode = this._getOverflowNode(keytipProps.overflowSetSequence, parentID, fullSequence);
+      let overflowParentNode = this._getOrCreateOverflowNode(keytipProps.overflowSetSequence, parentID, fullSequence);
       let overflowNodeID = convertSequencesToKeytipID([...fullSequence, keytipProps.overflowSetSequence, keytipSequence]);
       overflowNode = this.nodeMap[overflowNodeID];
 
+      // Create or update the persisted keytip
       if (overflowNode) {
         overflowNode.keytipSequence = keytipSequence;
         overflowNode.onExecute = keytipProps.onExecute;
         overflowNode.hasChildrenNodes = keytipProps.hasChildrenNodes;
         overflowNode.parent = overflowParentNode.id;
+        overflowNode.disabled = keytipProps.disabled;
       } else {
         overflowNode = this._createNode(overflowNodeID, keytipSequence, overflowParentNode.id, [], keytipProps.hasChildrenNodes);
         this.nodeMap[overflowNodeID] = overflowNode;
@@ -138,10 +137,10 @@ export class KeytipTree {
       this.nodeMap[nodeID] = node;
     }
 
-    // Get parent node given it's id.
-    let parent = this._getParentNode(parentID);
+    // Get parent node given its id.
+    let parent = this._getOrCreateParentNode(parentID);
 
-    // Add node to parent's children
+    // Add node to parent's children if not already added
     if (parent.children.indexOf(nodeID) === -1) {
       parent.children.push(nodeID);
     }
@@ -150,6 +149,7 @@ export class KeytipTree {
   /**
    * Removes a node from the KeytipTree
    * Will also remove all of the node's children from the Tree
+   *
    * @param sequence - full IKeySequence of the node to remove
    */
   public removeNode(sequence: IKeySequence[]): void {
@@ -187,8 +187,15 @@ export class KeytipTree {
     }
   }
 
+  /**
+   * Searches the currentKeytip's children to exactly match a sequence
+   *
+   * @param keySequence - IKeySequence to match
+   * @param currentKeytip - The keytip who's children will try to match
+   * @returns {IKeytipTreeNode | undefined} The node that exactly matched the keySequence, or undefined if none matched
+   */
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
-    let possibleNodes = this._getChildrenNodes(currentKeytip.children);
+    let possibleNodes = this._getNodes(currentKeytip.children);
     for (let node of possibleNodes) {
       // A node is matched if its sequence is the same and it is not disabled
       if (keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled) {
@@ -198,9 +205,16 @@ export class KeytipTree {
     return undefined;
   }
 
+  /**
+   * Searches the currentKeytip's children to find nodes that start with the given sequence
+   *
+   * @param keySequence - IKeySequence to partially match
+   * @param currentKeytip - The keytip who's children will try to partially match
+   * @returns {IKeytipTreeNode[]} List of tree nodes that partially match the given sequence
+   */
   public getPartiallyMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
-    let possibleNodes = this._getChildrenNodes(currentKeytip.children);
+    let possibleNodes = this._getNodes(currentKeytip.children);
     for (let node of possibleNodes) {
       // A node is matched if its sequence is a subset and it is not disabled
       if (keySequenceStartsWith(node.keytipSequence, keySequence) && !node.disabled) {
@@ -210,7 +224,13 @@ export class KeytipTree {
     return nodes;
   }
 
-  private _getParentNode(parentId: string): IKeytipTreeNode {
+  /**
+   * Retrieves or creates a parent node based on an ID
+   *
+   * @param parentId - ID of the parent node
+   * @returns {IKeytipTreeNode} Node retrieved or created from the given parent ID
+   */
+  private _getOrCreateParentNode(parentId: string): IKeytipTreeNode {
     let parent = this.nodeMap[parentId];
     if (!parent) {
       // If parent doesn't exist, create parent with ID and children only
@@ -241,7 +261,13 @@ export class KeytipTree {
     };
   }
 
-  private _getChildrenNodes(ids: string[]): IKeytipTreeNode[] {
+  /**
+   * Gets all nodes from their IDs
+   *
+   * @param ids List of keytip IDs
+   * @returns {IKeytipTreeNode[]} Array of nodes that match the given IDs
+   */
+  private _getNodes(ids: string[]): IKeytipTreeNode[] {
     let nodes: IKeytipTreeNode[] = [];
     for (let id of ids) {
       nodes.push(this.nodeMap[id]);
@@ -249,7 +275,15 @@ export class KeytipTree {
     return nodes;
   }
 
-  private _getOverflowNode(overflowSequence: IKeySequence, parentId: string, parentSequence: IKeySequence[]): IKeytipTreeNode {
+  /**
+   * Retrieves or creates an overflow node
+   *
+   * @param overflowSequence - Single key sequence for the overflow item
+   * @param parentId - ID of the parent keytip
+   * @param parentSequence - Full IKeySequence[] of the parent
+   * @returns {IKeytipTreeNode} - Node for this overflow item
+   */
+  private _getOrCreateOverflowNode(overflowSequence: IKeySequence, parentId: string, parentSequence: IKeySequence[]): IKeytipTreeNode {
     let fullOverflowSequence = [...parentSequence, ...[overflowSequence]];
     let overflowNodeId = convertSequencesToKeytipID(fullOverflowSequence);
 
@@ -259,7 +293,7 @@ export class KeytipTree {
     if (!node) {
       node = this._createNode(overflowNodeId, overflowSequence, parentId, [], true);
       this.nodeMap[overflowNodeId] = node;
-      let parent = this._getParentNode(parentId);
+      let parent = this._getOrCreateParentNode(parentId);
       parent.children.push(overflowNodeId);
     }
 

@@ -4,7 +4,6 @@ import { IStyleFunction, IPoint } from '../../Utilities';
 import { IKeySequence } from '../../utilities/keysequence/IKeySequence';
 
 export interface IKeytip {
-
 }
 
 export interface IKeytipProps {
@@ -68,6 +67,8 @@ export interface IKeytipProps {
 
   /**
    * KeySequence of overflow set which will trigger the keytip.
+   *
+   * @type {IKeySequence}
    */
   overflowSetSequence?: IKeySequence;
 
@@ -108,16 +109,22 @@ export interface IKeytipStyleProps {
 
   /**
    * The theme for the keytip.
+   *
+   * @type {ITheme}
    */
   theme: ITheme;
 
   /**
    * Whether the keytip is disabled or not.
+   *
+   * @type {boolean}
    */
   disabled?: boolean;
 
   /**
    * T/F if the keytip is visible
+   *
+   * @type {boolean}
    */
   visible?: boolean;
 }
@@ -126,16 +133,22 @@ export interface IKeytipStyles {
 
   /**
    * Style for the div container surrounding the keytip content.
+   *
+   * @type {IStyle}
    */
   container: IStyle;
 
   /**
    * Style for the keytip content element.
+   *
+   * @type {IStyle}
    */
   root: IStyle;
 
   /**
    * Style for the containing Callout
+   *
+   * @type {IStyle}
    */
   calloutContainer: IStyle;
 }

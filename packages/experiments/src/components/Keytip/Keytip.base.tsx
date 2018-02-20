@@ -15,7 +15,6 @@ import { constructKeytipTargetFromSequences } from '../../utilities/keytip/Keyti
 const getClassNames = classNamesFunction<IKeytipStyleProps, IKeytipStyles>();
 
 export interface IKeytipState {
-  visible?: boolean;
 }
 
 /**
