@@ -50,9 +50,19 @@ export interface IScrollablePaneStyleProps {
 
 export interface IScrollablePaneStyles {
   /**
-   * Style for the root element.
+   * Style set for the root element.
    */
   root: IStyle;
-
-  // Insert ScrollablePane classNames below
+  /**
+   * Style set for the stickyContainer element.
+   */
+  stickyContainer: IStyle;
+  /**
+   * Style set for the stickyAbove element.
+   */
+  stickyAbove: IStyle;
+  /**
+   * Style set for the stickyAbove element.
+   */
+  stickyBelow: IStyle;
 }

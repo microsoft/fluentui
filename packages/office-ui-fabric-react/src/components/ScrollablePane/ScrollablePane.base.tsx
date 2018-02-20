@@ -6,20 +6,24 @@ import * as PropTypes from 'prop-types';
 import {
   autobind,
   BaseComponent,
-  css
+  classNamesFunction,
+  customizable
 } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneProps,
+  IScrollablePaneStyles,
+  IScrollablePaneStyleProps
 } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
-import * as stylesImport from './ScrollablePane.scss';
-const styles: any = stylesImport;
 
 export interface IScrollablePaneContext {
   scrollablePane: PropTypes.Requireable<object>;
 }
 
+const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
+
+@customizable('ScrollablePane', ['theme'])
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {
     scrollablePane: PropTypes.object
@@ -82,17 +86,23 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   public render() {
-    const { className } = this.props;
+    const { className, theme, getStyles } = this.props;
+    const classNames = getClassNames(getStyles!,
+      {
+        theme: theme!,
+        className
+      }
+    );
 
     return (
       <div
         ref='root'
-        className={ css('ms-ScrollablePane', styles.root, className) }
+        className={ classNames.root }
         data-is-scrollable={ true }
       >
-        <div ref='stickyContainer' className={ styles.stickyContainer }>
-          <div ref='stickyAbove' className={ styles.stickyAbove } />
-          <div ref='stickyBelow' className={ styles.stickyBelow } />
+        <div ref='stickyContainer' className={ classNames.stickyContainer }>
+          <div ref='stickyAbove' className={ classNames.stickyAbove } />
+          <div ref='stickyBelow' className={ classNames.stickyBelow } />
         </div>
         { this.props.children }
       </div>
