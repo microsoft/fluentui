@@ -95,9 +95,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
-                    /* tslint:disable:jsx-no-lambda*/
-                    componentRef={ (ref) => this.hexText = ref! }
-                    /* tslint:enable:jsx-no-lambda*/
+                    ref={ (ref) => this.hexText = ref! }
                     onBlur={ this._onHexChanged }
                     spellCheck={ false }
                   />
@@ -107,9 +105,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
-                    /* tslint:disable:jsx-no-lambda*/
-                    componentRef={ (ref) => this.rText = ref! }
-                    /* tslint:enable:jsx-no-lambda*/
+                    ref={ (ref) => this.rText = ref! }
                     spellCheck={ false }
                   />
                 </td>
@@ -118,9 +114,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
-                    /* tslint:disable:jsx-no-lambda*/
-                    componentRef={ (ref) => this.gText = ref! }
-                    /* tslint:enable:jsx-no-lambda*/
+                    ref={ (ref) => this.gText = ref! }
                     spellCheck={ false }
                   />
                 </td>
@@ -129,9 +123,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
-                    /* tslint:disable:jsx-no-lambda*/
-                    componentRef={ (ref) => this.bText = ref! }
-                    /* tslint:enable:jsx-no-lambda*/
+                    ref={ (ref) => this.bText = ref! }
                     spellCheck={ false }
                   />
                 </td>
@@ -141,9 +133,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
-                      /* tslint:disable:jsx-no-lambda*/
-                      componentRef={ (ref) => this.aText = ref! }
-                      /* tslint:enable:jsx-no-lambda*/
+                      ref={ (ref) => this.aText = ref! }
                       spellCheck={ false }
                     />
                   </td>

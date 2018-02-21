@@ -5,7 +5,6 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { TextField } from './TextField';
-import { ITextField } from './TextField.types';
 
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
@@ -435,12 +434,9 @@ describe('TextField', () => {
       expect(selectedText).toEqual(initialValue);
     };
 
-    console.log('test test test');
     renderIntoDocument(
       <TextField
-        /* tslint:disable:jsx-no-lambda*/
-        componentRef={ (t) => { console.log('binding componentref?'); console.log(t); textField = t!; } }
-        /* tslint:enable:jsx-no-lambda*/
+        ref={ (t) => textField = t! }
         defaultValue={ initialValue }
         onSelect={ onSelect }
       />
