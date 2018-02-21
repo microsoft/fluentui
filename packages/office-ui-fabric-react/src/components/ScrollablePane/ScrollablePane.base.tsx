@@ -171,7 +171,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
           }
         }, 1);
       }
-      this.notifySubscribers();
       this._setPlaceholderHeights(stickyList);
     }
   }
