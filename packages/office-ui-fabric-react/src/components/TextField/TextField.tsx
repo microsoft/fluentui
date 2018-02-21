@@ -13,8 +13,7 @@ import {
   getId,
   getNativeProps,
   inputProperties,
-  textAreaProperties,
-  warn
+  textAreaProperties
 } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './TextField.scss';
@@ -56,11 +55,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     validateOnLoad: true,
   };
 
-  /**
-   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
-   */
-  protected _shouldUpdateComponentRef = false;
-
   private _id: string;
   private _descriptionId: string;
   private _delayedValidate: (value: string | undefined) => void;
@@ -71,7 +65,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLTextAreaElement;
 
-  constructor(props: ITextFieldProps) {
+  public constructor(props: ITextFieldProps) {
     super(props);
 
     this._warnDeprecations({

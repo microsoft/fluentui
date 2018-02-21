@@ -5,7 +5,7 @@ import {
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
-import { TextField, ITextField } from '../../TextField';
+import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
@@ -35,11 +35,11 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     alphaLabel: 'Alpha'
   };
 
-  private hexText: ITextField;
-  private rText: ITextField;
-  private gText: ITextField;
-  private bText: ITextField;
-  private aText: ITextField;
+  private hexText: TextField;
+  private rText: TextField;
+  private gText: TextField;
+  private bText: TextField;
+  private aText: TextField;
 
   constructor(props: IColorPickerProps) {
     super(props);
