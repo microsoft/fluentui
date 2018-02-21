@@ -92,6 +92,16 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   ariaDescribedBy?: string;
 
   /**
+   * The position in the parent set (if in a set) for aria-posinset.
+   */
+  ariaPositionInSet?: number;
+
+  /**
+  * The total size of the parent set (if in a set) for aria-setsize.
+  */
+  ariaSetSize?: number;
+
+  /**
    * Custom styles for this component
    */
   styles?: ICheckboxStyles;
