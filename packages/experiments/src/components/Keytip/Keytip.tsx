@@ -12,7 +12,7 @@ import { constructKeytipTargetFromSequences } from '../../utilities/keytip/Keyti
  *
  * @export
  * @class Keytip
- * @extends {BaseComponent<IKeytipProps, IKeytipState>}
+ * @extends {BaseComponent<IKeytipProps, {}}>}
  */
 export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
 

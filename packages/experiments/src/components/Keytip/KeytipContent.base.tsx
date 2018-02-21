@@ -1,11 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, customizable } from '../../Utilities';
 import { convertSequencesToKeytipID } from '../../utilities/keysequence/IKeySequence';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
-
-export interface IKeytipState {
-}
 
 /**
  * A component corresponding the the content rendered inside the callout of the keytip component.
@@ -38,7 +34,7 @@ export class KeytipContentBase extends BaseComponent<IKeytipProps, {}> {
     );
 
     return (
-      < div className={ classNames.container } >
+      <div className={ classNames.container } >
         <span id={ convertSequencesToKeytipID(keySequences) } className={ classNames.root }>{ content }</span>
       </div >
     );

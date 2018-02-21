@@ -5,7 +5,7 @@ import { registerKeytip, addKeytipSequence } from '../../../utilities/keytip/Key
 import { ModifierKeyCodes } from '../../../utilities/keytip/ModifierKeyCodes';
 import { KeytipLayer } from '../KeytipLayer';
 import { IKeytipProps } from '../../Keytip';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -108,7 +108,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
         <div>
           <div style={ divStyle }>
             <div>
-              <DefaultButton
+              <ActionButton
                 data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Pivot1Keytip.keySequences) }
                 text='Mock Pivot 1'
               />
@@ -133,7 +133,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
           </div>
           <div style={ divStyle }>
             <div>
-              <DefaultButton
+              <ActionButton
                 data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Pivot2Keytip.keySequences) }
                 text='Mock Pivot 2'
               />
