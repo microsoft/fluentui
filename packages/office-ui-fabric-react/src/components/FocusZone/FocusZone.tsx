@@ -59,7 +59,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _isInnerZone: boolean;
 
   /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
-  private _tabPressActive: boolean;
+  private _processingTabKey: boolean;
 
   constructor(props: IFocusZoneProps) {
     super(props);
@@ -73,7 +73,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       top: 0
     };
 
-    this._tabPressActive = false;
+    this._processingTabKey = false;
   }
 
   public componentDidMount() {
@@ -363,13 +363,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.tab:
           if (this.props.allowTabKey) {
             let focusChanged = false;
-            this._tabPressActive = true;
+            this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical) {
               focusChanged = ev.shiftKey ? this._moveFocusUp() : this._moveFocusDown();
             } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
               focusChanged = ev.shiftKey ? this._moveFocusLeft() : this._moveFocusRight();
             }
-            this._tabPressActive = false;
+            this._processingTabKey = false;
             if (focusChanged) {
               break;
             }
@@ -488,7 +488,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (this._isElementInput(element)) {
-      if (!this._tabPressActive && !this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
         return false;
       }
     }
@@ -762,7 +762,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
-    if (element &&
+    // If a tab was used, we want to focus on the next element.
+    if (!this._processingTabKey &&
+      element &&
       element.type &&
       ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
       let selectionStart = element.selectionStart;
