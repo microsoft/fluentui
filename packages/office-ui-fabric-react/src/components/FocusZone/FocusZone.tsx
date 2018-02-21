@@ -372,6 +372,25 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
               break;
             }
           }
+
+          if (this.props.allowTabKeyOnInput && this._isElementInput(ev.target as HTMLElement)) {
+            if (direction === FocusZoneDirection.vertical) {
+              if (ev.shiftKey) {
+                this._moveFocusUp();
+              } else {
+                this._moveFocusDown();
+              }
+              break;
+            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
+              if (ev.shiftKey) {
+                this._moveFocusLeft();
+              } else {
+                this._moveFocusRight();
+              }
+              break;
+            }
+          }
+
           return;
 
         case KeyCodes.home:
@@ -486,7 +505,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (this._isElementInput(element)) {
-      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+      if (!this.props.allowTabKeyOnInput && !this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
         return false;
       }
     }

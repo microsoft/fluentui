@@ -109,6 +109,8 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * and have to hit escape or some other key.
    */
   allowTabKey?: boolean;
+
+  allowTabKeyOnInput?: boolean;
 }
 
 export enum FocusZoneDirection {
