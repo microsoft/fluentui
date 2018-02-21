@@ -10,7 +10,7 @@ import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
-  let {
+  const {
     item,
     onRemoveItem,
     index,

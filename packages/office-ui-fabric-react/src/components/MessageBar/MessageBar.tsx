@@ -47,7 +47,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   }
 
   public render(): JSX.Element {
-    let { isMultiline } = this.props;
+    const { isMultiline } = this.props;
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
   }

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { NavBase } from './Nav.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
 
 export interface INav {
   /**
@@ -19,14 +21,25 @@ export interface INavProps {
   componentRef?: (component: INav) => void;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Nav
+   * @defaultvalue undefined
+   */
+  className?: string;
+
+  /**
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[] | null;
-
-  /**
-   * Optional class name to allow styling.
-   */
-  className?: string;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -200,4 +213,23 @@ export interface INavLink {
    * (Optional) Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
+}
+
+export interface INavStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+}
+
+export interface INavStyles {
+  /**
+   * Style for the root element.
+   */
+  root?: IStyle;
 }

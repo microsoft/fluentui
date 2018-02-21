@@ -163,6 +163,10 @@ export interface IBasePickerSuggestionsProps {
    */
   searchForMoreText?: string;
   /**
+   * The text that appears indicating to the use to force resolve the input
+   */
+  forceResolveText?: string;
+  /**
    * The text to display while the results are loading.
    */
   loadingText?: string;

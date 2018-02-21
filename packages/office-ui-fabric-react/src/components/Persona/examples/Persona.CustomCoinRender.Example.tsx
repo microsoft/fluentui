@@ -40,7 +40,7 @@ export class PersonaCustomCoinRenderExample extends React.Component {
 
   @autobind
   private _onRenderCoin(props: IPersonaProps): JSX.Element {
-    let {
+    const {
       coinSize,
       imageUrl,
       imageAlt,
