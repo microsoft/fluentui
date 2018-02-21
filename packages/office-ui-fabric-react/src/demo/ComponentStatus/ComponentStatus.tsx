@@ -59,6 +59,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
   private _colorForComponentStateStatus(testCoverageStatus: ChecklistStatus | undefined): string {
     switch (testCoverageStatus) {
       case ChecklistStatus.unknown:
+      case ChecklistStatus.notApplicable:
         return 'lightgrey';
       case ChecklistStatus.fail:
       case ChecklistStatus.none:

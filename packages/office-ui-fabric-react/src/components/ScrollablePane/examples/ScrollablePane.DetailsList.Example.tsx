@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -24,13 +24,13 @@ import {
 } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
-let _items: {
+const _items: {
   key: number,
   name: string,
   value: number
 }[] = [];
 
-let _columns: IColumn[] = [
+const _columns: IColumn[] = [
   {
     key: 'column1',
     name: 'Name',
@@ -82,12 +82,12 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <ScrollablePane>
         <Sticky>{ selectionDetails }</Sticky>
-        <DefaultTextField
+        <TextField
           label='Filter by name:'
           // tslint:disable-next-line:jsx-no-lambda
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
@@ -124,7 +124,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, {
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:

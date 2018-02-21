@@ -3,7 +3,7 @@ import * as React from 'react';
 import { LayoutGroup } from '../LayoutGroup';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -37,12 +37,12 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
             }
           />
           <LayoutGroup layoutGap={ 20 } direction='horizontal' justify='fill'>
-            <DefaultTextField
+            <TextField
               label='TextField with a placeholder'
               placeholder='Now I am a Placeholder'
               ariaLabel='Please enter text here'
             />
-            <DefaultTextField
+            <TextField
               label='TextField with an icon'
               iconProps={ { iconName: 'Calendar' } }
             />

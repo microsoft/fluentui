@@ -4,7 +4,7 @@ import * as React from 'react';
 import { IFormTextInputProps } from './FormTextInput.types';
 import { FormBaseInput, IFormBaseInputState } from '../../FormBaseInput';
 import { IFormContext } from '../../Form';
-import { DefaultTextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 
 // Utilities
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
@@ -37,7 +37,7 @@ export class FormTextInput extends FormBaseInput<string, IFormTextInputProps, IF
    */
   public render(): JSX.Element {
     return (
-      <DefaultTextField
+      <TextField
         {...this.props.textFieldProps}
         key={ this.props.inputKey }
         value={ this.state.currentValue }

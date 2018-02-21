@@ -1,24 +1,24 @@
 import * as React from 'react';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldPlaceholderExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <DefaultTextField
+        <TextField
           placeholder='I am a placeholder.'
           ariaLabel='Please enter text here'
         />
-        <DefaultTextField
+        <TextField
           disabled={ true }
           placeholder='I am disabled. '
         />
-        <DefaultTextField
+        <TextField
           required={ true }
           placeholder='I am required.'
         />
-        <DefaultTextField
+        <TextField
           errorMessage='Error message'
           placeholder='I have an error message.'
         />

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
@@ -29,13 +29,13 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   }
 
   public render() {
-    let { items: originalItems } = this.props;
-    let { items } = this.state;
-    let resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
+    const { items: originalItems } = this.props;
+    const { items } = this.state;
+    const resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
-        <DefaultTextField label={ 'Filter by name' + resultCountText } onBeforeChange={ this._onFilterChanged } />
+        <TextField label={ 'Filter by name' + resultCountText } onBeforeChange={ this._onFilterChanged } />
         <List
           items={ items }
           onRenderCell={ this._onRenderCell }
@@ -45,7 +45,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   }
 
   private _onFilterChanged(text: string) {
-    let { items } = this.props;
+    const { items } = this.props;
 
     this.setState({
       filterText: text,

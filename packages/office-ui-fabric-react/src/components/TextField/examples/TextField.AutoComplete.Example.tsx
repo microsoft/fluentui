@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldAutoCompleteExample extends React.Component<any, any> {
   public render() {
     return (
       <form action='' className='docs-TextFieldExample'>
-        <DefaultTextField
+        <TextField
           label='Fill in and submit this form. The page will reload and autocomplete suggestions will appear.'
           name='example'
           autoComplete='on'

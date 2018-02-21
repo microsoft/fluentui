@@ -9,7 +9,7 @@ import {
 } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
 
 export interface IListScrollingExampleProps {
@@ -36,7 +36,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   }
 
   public render() {
-    let { items } = this.props;
+    const { items } = this.props;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
@@ -49,7 +49,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
         <div>
           Scroll item index:
-          <DefaultTextField
+          <TextField
             value={ this.state.selectedIndex.toString(10) }
             onChanged={ this._onChangeText }
           />

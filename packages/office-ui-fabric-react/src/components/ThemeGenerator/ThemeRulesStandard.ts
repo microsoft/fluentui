@@ -59,7 +59,7 @@ export enum SemanticColorSlots {
 }
 
 export function themeRulesStandardCreator() {
-  let slotRules: IThemeRules = {};
+  const slotRules: IThemeRules = {};
 
   /*** BASE COLORS and their SHADES */
   // iterate through each base slot and make the SlotRules for those
@@ -76,8 +76,8 @@ export function themeRulesStandardCreator() {
       if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }
-      let inherits = slotRules[baseSlot];
-      let thisSlotRule = {
+      const inherits = slotRules[baseSlot];
+      const thisSlotRule = {
         name: baseSlot + shadeName,
         inherits: slotRules[baseSlot],
         asShade: shadeValue,
@@ -120,8 +120,8 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
   function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false) {
-    let inherits = slotRules[BaseSlots[inheritedBase]];
-    let thisSlotRule = {
+    const inherits = slotRules[BaseSlots[inheritedBase]];
+    const thisSlotRule = {
       name: slotName,
       inherits: inherits,
       asShade: inheritedShade,
@@ -149,8 +149,8 @@ export function themeRulesStandardCreator() {
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade.Shade5, true);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade.Shade6, true); // bg6 or fg2
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade.Shade3);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade.Shade5);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade.Shade6);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade.Shade4);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade.Shade5);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade.Unshaded);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade.Shade7);
 
@@ -176,7 +176,7 @@ export function themeRulesStandardCreator() {
   slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
 
   // todo: can remove this once we remove these outdated slots from the product
-  let primaryBackground = 'primaryBackground';
+  const primaryBackground = 'primaryBackground';
   slotRules[primaryBackground] = {
     name: primaryBackground,
     inherits: slotRules[FabricSlots[FabricSlots.white]],
@@ -185,7 +185,7 @@ export function themeRulesStandardCreator() {
   };
   slotRules[FabricSlots[FabricSlots.white]].dependentRules.push(slotRules[primaryBackground]);
 
-  let primaryText = 'primaryText';
+  const primaryText = 'primaryText';
   slotRules[primaryText] = {
     name: primaryText,
     inherits: slotRules[FabricSlots[FabricSlots.neutralPrimary]],
@@ -197,8 +197,8 @@ export function themeRulesStandardCreator() {
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot
   function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots) {
-    let inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-    let thisSlotRule = {
+    const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
+    const thisSlotRule = {
       name: SemanticColorSlots[semanticSlot],
       inherits: slotRules[FabricSlots[inheritedFabricSlot]],
       isCustomized: false,

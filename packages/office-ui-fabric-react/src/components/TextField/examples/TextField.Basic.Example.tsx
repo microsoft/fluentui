@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  DefaultTextField,
+  TextField,
   MaskedTextField
 } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
@@ -9,18 +9,18 @@ export class TextFieldBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <DefaultTextField
+        <TextField
           label='Standard'
         />
-        <DefaultTextField
+        <TextField
           label='Disabled'
           disabled={ true }
         />
-        <DefaultTextField
+        <TextField
           label='Required '
           required={ true }
         />
-        <DefaultTextField
+        <TextField
           label='With error message'
           errorMessage='Error message'
         />

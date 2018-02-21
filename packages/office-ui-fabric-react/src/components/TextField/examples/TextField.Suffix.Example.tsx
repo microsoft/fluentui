@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldSuffixExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <DefaultTextField
+        <TextField
           suffix='.com'
         />
       </div>

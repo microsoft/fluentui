@@ -9,7 +9,7 @@ import {
   FocusZone,
   FocusZoneDirection
 } from 'office-ui-fabric-react/lib/FocusZone';
-import { BaseAutoFill } from 'office-ui-fabric-react/lib/components/pickers/AutoFill/BaseAutoFill';
+import { Autofill } from 'office-ui-fabric-react/lib/components/Autofill/Autofill';
 import { IPickerItemProps, IInputProps } from 'office-ui-fabric-react/lib/Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
 import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
@@ -37,7 +37,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   public selectedItemsList: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>;
 
   protected root: HTMLElement;
-  protected input: BaseAutoFill;
+  protected input: Autofill;
   protected focusZone: FocusZone;
   protected selection: Selection;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
@@ -70,8 +70,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public focus(): void {
-    console.log('extended picker focus');
     this.focusZone.focus();
+  }
+
+  public get inputElement(): HTMLInputElement {
+    return this.input.inputElement;
   }
 
   public render(): JSX.Element {
@@ -80,7 +83,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       className,
       inputProps,
       disabled
-        } = this.props;
+    } = this.props;
 
     return (
       <div
@@ -96,12 +99,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
           onKeyDown={ this.onBackspace }
           onCopy={ this.onCopy }
         >
-
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.props.headerComponent }
               { this.renderSelectedItemsList() }
-              { this.canAddItems() && (<BaseAutoFill
+              { this.canAddItems() && (<Autofill
                 { ...inputProps as IInputProps }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -117,6 +119,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                 role='combobox'
                 disabled={ disabled }
                 aria-controls='selected-suggestion-alert'
+                onPaste={ this.onPaste }
               />) }
             </div>
           </SelectionZone>
@@ -126,6 +129,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     );
   }
 
+  @autobind
   protected onSelectionChange(): void {
     this.forceUpdate();
   }
@@ -177,7 +181,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>): void {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>): void {
     this.selectedItemsList.unselectAll();
     this.floatingPicker.showPicker();
 
@@ -194,7 +198,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       return;
     }
     if (this.state.items.length && !this.input || !this.input.isValueSelected) {
-      if ((this.input as BaseAutoFill).cursorLocation === 0) {
+      if ((this.input as Autofill).cursorLocation === 0) {
         this.selectedItemsList.removeItemAt(this.items.length - 1);
         this._onSelectedItemsChanged();
       }
@@ -205,6 +209,15 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
     // Pass it down into the selected items list
     this.selectedItemsList.onCopy(ev);
+  }
+
+  @autobind
+  protected onPaste(ev: React.ClipboardEvent<Autofill | HTMLInputElement>): void {
+    if (this.props.onPaste) {
+      let inputText = ev.clipboardData.getData('Text');
+      ev.preventDefault();
+      this.props.onPaste(inputText);
+    }
   }
 
   @autobind
@@ -229,6 +242,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   @autobind
   protected _onSuggestionSelected(item: T): void {
     this.selectedItemsList.addItems([item]);
+    if (this.props.onItemSelected) {
+      this.props.onItemSelected(item);
+    }
     this.input.clear();
 
     this.floatingPicker.hidePicker();

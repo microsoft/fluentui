@@ -5,7 +5,7 @@ import {
   css
 } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.types';
-import { DefaultTextField, ITextField } from '../../TextField';
+import { TextField, ITextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
@@ -56,7 +56,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
   }
 
   public render() {
-    let { color } = this.state;
+    const { color } = this.state;
 
     return (
       <div className={ css('ms-ColorPicker', styles.root) }>
@@ -92,7 +92,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             <tbody>
               <tr>
                 <td>
-                  <DefaultTextField
+                  <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
                     /* tslint:disable:jsx-no-lambda*/
@@ -103,7 +103,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <DefaultTextField
+                  <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
@@ -114,7 +114,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <DefaultTextField
+                  <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
@@ -125,7 +125,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   />
                 </td>
                 <td style={ { width: '18%' } }>
-                  <DefaultTextField
+                  <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
@@ -137,7 +137,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                 </td>
                 { !this.props.alphaSliderHidden && (
                   <td style={ { width: '18%' } }>
-                    <DefaultTextField
+                    <TextField
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
@@ -191,7 +191,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
       return;
     }
 
-    let { onColorChanged } = this.props;
+    const { onColorChanged } = this.props;
 
     if (newColor.str !== this.state.color.str) {
       this.setState({

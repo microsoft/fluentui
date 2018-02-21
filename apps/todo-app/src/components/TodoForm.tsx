@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { autobind, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { DefaultTextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;
 import strings from './../strings';
@@ -59,7 +59,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
   public render(): JSX.Element {
     return (
       <form className={ styles.todoForm } onSubmit={ this._onSubmit }>
-        <DefaultTextField
+        <TextField
           className={ styles.textField }
           value={ this.state.inputValue }
           componentRef={ this._resolveRef('_textField') }

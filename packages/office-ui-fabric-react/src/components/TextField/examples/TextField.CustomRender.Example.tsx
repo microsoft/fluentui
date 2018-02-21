@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultTextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -22,7 +22,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <DefaultTextField onRenderLabel={ this._onRenderLabel } />
+        <TextField onRenderLabel={ this._onRenderLabel } />
       </div>
     );
   }
@@ -30,7 +30,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, {
   @autobind
   private _onRenderLabel(props: ITextFieldProps): JSX.Element {
 
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
     return (
       <div className='ms-CustomRenderExample' style={ { display: 'flex', alignItems: 'center' } }>
         <span>TextField with custom label render</span>

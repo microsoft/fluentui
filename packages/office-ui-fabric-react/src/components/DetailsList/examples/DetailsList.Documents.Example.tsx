@@ -1,12 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
   DetailsList,
   DetailsListLayoutMode,
   Selection,
+  SelectionMode,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
@@ -203,7 +204,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   }
 
   public render() {
-    let { columns, isCompactMode, items, selectionDetails } = this.state;
+    const { columns, isCompactMode, items, selectionDetails } = this.state;
 
     return (
       <div>
@@ -222,7 +223,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
           offText='Normal'
         />
         <div>{ selectionDetails }</div>
-        <DefaultTextField
+        <TextField
           label='Filter by name:'
           onChanged={ this._onChangeText }
         />
@@ -231,6 +232,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             items={ items }
             compact={ isCompactMode }
             columns={ columns }
+            selectionMode={ this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none }
             setKey='set'
             layoutMode={ DetailsListLayoutMode.justified }
             isHeaderVisible={ true }
@@ -295,7 +297,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:
@@ -311,8 +313,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   private _onColumnClick(ev: React.MouseEvent<HTMLElement>, column: IColumn) {
     const { columns, items } = this.state;
     let newItems: IDocument[] = items.slice();
-    let newColumns: IColumn[] = columns.slice();
-    let currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
+    const newColumns: IColumn[] = columns.slice();
+    const currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
       return column.key === currCol.key;
     })[0];
     newColumns.forEach((newCol: IColumn) => {

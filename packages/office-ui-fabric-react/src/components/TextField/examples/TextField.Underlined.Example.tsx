@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './TextField.Examples.scss';
 
 export class TextFieldUnderlinedExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='docs-TextFieldExample'>
-        <DefaultTextField
+        <TextField
           label='Standard:'
           underlined
         />
-        <DefaultTextField
+        <TextField
           label='Disabled:'
           underlined
           disabled={ true }
         />
-        <DefaultTextField
+        <TextField
           label='Required:'
           underlined
           required={ true }
         />
-        <DefaultTextField
+        <TextField
           label='With error message:'
           underlined
           errorMessage='Error message'

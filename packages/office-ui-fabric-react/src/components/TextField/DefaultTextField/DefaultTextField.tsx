@@ -5,7 +5,7 @@ import {
   BaseComponent,
 } from '../../../Utilities';
 
-export class DefaultTextField extends BaseComponent<ITextFieldProps, {}> {
+export class TextField extends BaseComponent<ITextFieldProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */

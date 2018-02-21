@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { DefaultTextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -11,9 +11,9 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-let _items: any[] = [];
+const _items: any[] = [];
 
-let _columns: IColumn[] = [
+const _columns: IColumn[] = [
   {
     key: 'column1',
     name: 'Name',
@@ -65,12 +65,12 @@ export class DetailsListBasicExample extends React.Component<{}, {
   }
 
   public render() {
-    let { items, selectionDetails } = this.state;
+    const { items, selectionDetails } = this.state;
 
     return (
       <div>
         <div>{ selectionDetails }</div>
-        <DefaultTextField
+        <TextField
           label='Filter by name:'
           onChanged={ this._onChanged }
         />
@@ -92,7 +92,7 @@ export class DetailsListBasicExample extends React.Component<{}, {
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:

@@ -25,9 +25,9 @@ export const getStyles = memoizeFunction((
   customStyles?: IButtonStyles,
   primary?: boolean
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let defaultButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const defaultButtonStyles: IButtonStyles = {
     root: {
       minWidth: DEFAULT_BUTTON_MINWIDTH,
       height: DEFAULT_BUTTON_HEIGHT,
