@@ -12,8 +12,8 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
 $DropDown-item-height: 32px;
 
-// Mixin for high contrast mode link states
-@mixin highContrastListItemState {
+// Mixin for high contrast mode states
+@mixin highContrastItemAndTitleState {
   @include high-contrast {
     background-color: Highlight;
     border-color: Highlight;
@@ -21,6 +21,12 @@ $DropDown-item-height: 32px;
   }
 
   @include highContrastAdjust();
+}
+
+@mixin highContrastBorderState {
+  @include high-contrast {
+    border-color: Highlight;
+  }
 }
 
 .root {
@@ -38,11 +44,6 @@ $DropDown-item-height: 32px;
     .title,
     .caretDown {
       color: $ms-color-neutralDark;
-
-      @include high-contrast {
-        // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
-        color: Highlight;
-      }
     }
 
     .titleIsPlaceHolder {
@@ -53,6 +54,7 @@ $DropDown-item-height: 32px;
   &:hover {
     .title {
       border-color: $ms-color-neutralDark;
+      @include highContrastBorderState();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -62,6 +64,7 @@ $DropDown-item-height: 32px;
   &:active {
     .title {
       border-color: $ms-color-themeDark;
+      @include highContrastBorderState();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -71,6 +74,10 @@ $DropDown-item-height: 32px;
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
+      @include highContrastItemAndTitleState();
+    }
+    .caretDown {
+      @include highContrastAdjust();
     }
     .titleIsError {
       border-color: $ms-color-error;
@@ -101,7 +108,7 @@ $DropDown-item-height: 32px;
     }
 
     &.titleIsError {
-        border-color: $ms-color-error;
+      border-color: $ms-color-error;
     }
   }
 
@@ -154,20 +161,21 @@ $DropDown-item-height: 32px;
 }
 
 .panel {
-    // Force drop shadow even under medium breakpoint
-    :global(.ms-Panel-main) {
-      @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
-    }
-    // Remove padding as items have their own padding and bg
-    :global(.ms-Panel-contentInner) {
-      padding: 0 0 20px
-    }
+  // Force drop shadow even under medium breakpoint
+   :global(.ms-Panel-main) {
+    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
   }
+  // Remove padding as items have their own padding and bg
+   :global(.ms-Panel-contentInner) {
+    padding: 0 0 20px
+  }
+}
 
 .callout {
   box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
 }
+
 
 .errorMessage{
   color: $ms-color-error;
@@ -206,7 +214,7 @@ $DropDown-item-height: 32px;
 
   &:focus {
     background-color: $ms-color-neutralLighter;
-    @include highContrastListItemState;
+    @include highContrastItemAndTitleState;
   }
 
   &:active {
@@ -215,11 +223,10 @@ $DropDown-item-height: 32px;
   }
 
   &.itemIsDisabled {
-    background: $ms-color-white;
     color: $ms-color-neutralTertiary;
     cursor: default;
   }
-  :global(.ms-Button-flexContainer) {
+   :global(.ms-Button-flexContainer) {
     justify-content: flex-start;
   }
 }
@@ -229,7 +236,12 @@ $DropDown-item-height: 32px;
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 
-  @include highContrastListItemState;
+  @include highContrastItemAndTitleState;
+
+  &.itemIsDisabled {
+    color: $ms-color-neutralTertiary;
+    background-color: transparent;
+  }
 }
 
 .header {

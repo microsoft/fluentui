@@ -3,7 +3,9 @@ import {
   BaseComponent,
   getId,
   toMatrix,
-  classNamesFunction
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
@@ -20,7 +22,7 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
   }
 
   public render() {
-    let {
+    const {
       items,
       columnCount,
       onRenderItem,
@@ -29,22 +31,25 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       getStyles
     } = this.props;
 
+    const htmlProps = getNativeProps(this.props, htmlElementProperties, ['onBlur, aria-posinset, aria-setsize']);
+
     const classNames = getClassNames(getStyles!, { theme: this.props.theme! });
 
     // Array to store the cells in the correct row index
-    let rowsOfItems: any[][] = toMatrix(items, columnCount);
+    const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
-    let content = (
+    const content = (
       <table
-        id={ this._id }
-        role={ 'grid' }
+        {...htmlProps}
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
+        id={ this._id }
+        role={ 'grid' }
         className={ classNames.root }
       >
         <tbody>
           {
-            rowsOfItems.map((rows: any[], rowIndex) => {
+            rowsOfItems.map((rows: any[], rowIndex: any) => {
               return (
                 <tr
                   role={ 'row' }

@@ -55,9 +55,9 @@ export class ThemeGenerator {
    */
   public static insureSlots(slotRules: IThemeRules, isInverted: boolean) {
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
-    for (let ruleName in slotRules) {
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
+        const rule: IThemeSlotRule = slotRules[ruleName];
         if (!rule.inherits && !rule.value) {
           if (!rule.color) {
             throw 'A color slot rule that does not inherit must provide its own color.';
@@ -75,10 +75,10 @@ export class ThemeGenerator {
    *   ... }
    */
   public static getThemeAsJson(slotRules: IThemeRules): any {
-    let theme: any = {};
-    for (let ruleName in slotRules) {
+    const theme: any = {};
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
+        const rule: IThemeSlotRule = slotRules[ruleName];
         theme[rule.name] = rule.color ? rule.color.str : rule.value || '';
       }
     }
@@ -91,13 +91,13 @@ export class ThemeGenerator {
    * ...
    */
   public static getThemeAsSass(slotRules: IThemeRules): any {
-    let sassVarTemplate = '${0}Color: "[theme: {1}, default: {2}]";\n';
+    const sassVarTemplate = '${0}Color: "[theme: {1}, default: {2}]";\n';
     let output = '';
 
-    for (let ruleName in slotRules) {
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
-        let camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const rule: IThemeSlotRule = slotRules[ruleName];
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
         output += format(sassVarTemplate,
           camelCasedName,
           camelCasedName,
@@ -115,17 +115,17 @@ export class ThemeGenerator {
    * }
    */
   public static getThemeForPowerShell(slotRules: IThemeRules): any {
-    let psVarTemplate = '"{0}" = "{1}";\n';
+    const psVarTemplate = '"{0}" = "{1}";\n';
     let output = '';
 
-    for (let ruleName in slotRules) {
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
+        const rule: IThemeSlotRule = slotRules[ruleName];
         if (rule.value) {
           // skip this one, it's not a color
           continue;
         }
-        let camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
         let outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
         // powershell endpoint uses the RGBA format
         if (rule.color && rule.color.a && rule.color.a !== 100) {
@@ -170,7 +170,7 @@ export class ThemeGenerator {
       }
 
       // then update dependent colors
-      for (let ruleToUpdate of rule.dependentRules) {
+      for (const ruleToUpdate of rule.dependentRules) {
         ThemeGenerator._setSlot(ruleToUpdate, rule.color, isInverted, false, overwriteCustomColor);
       }
     }

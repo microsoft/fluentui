@@ -1,0 +1,9 @@
+{
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Only apply 'pointer-events: none' to disabled Link components if there is an href ",
+    "type": "patch"
+  }],
+  "packageName": "office-ui-fabric-react",
+  "email": "cohoov@microsoft.com"
+}
