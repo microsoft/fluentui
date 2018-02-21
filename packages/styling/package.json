@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/utilities": ">=5.12.0 <6.0.0",
-    "@uifabric/merge-styles": ">=5.12.1 <6.0.0",
+    "@uifabric/utilities": ">=5.12.1 <6.0.0",
+    "@uifabric/merge-styles": ">=5.12.2 <6.0.0",
     "tslib": "^1.7.1"
   }
 }

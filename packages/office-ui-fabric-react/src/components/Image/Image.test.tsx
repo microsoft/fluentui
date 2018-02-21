@@ -8,6 +8,7 @@ import * as renderer from 'react-test-renderer';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { Image } from './Image';
+import { ImageBase } from './Image.base';
 import { ImageFit, ImageLoadState } from './Image.types';
 
 /* tslint:disable:no-unused-variable */
@@ -31,7 +32,7 @@ describe('Image', () => {
 
   it('renders an image', (done) => {
     const component = ReactTestUtils.renderIntoDocument(
-      <Image
+      <ImageBase
         src={ testImage1x1 }
         // tslint:disable-next-line:jsx-no-lambda
         onLoad={ () => done() }
@@ -118,7 +119,7 @@ describe('Image', () => {
 
   it('allows onError events to be attached', (done) => {
     const component = ReactTestUtils.renderIntoDocument(
-      <Image
+      <ImageBase
         src={ brokenImage }
         // tslint:disable-next-line:jsx-no-lambda
         onError={ () => done() }

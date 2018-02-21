@@ -174,12 +174,12 @@ export interface ISpinButtonProps {
   theme?: ITheme;
 
   /**
-   * Accessibility label text for the increment button for the benefit of the screen reader.
+   * Accessibile label text for the increment button for the benefit of the screen reader.
    */
   incrementButtonAriaLabel?: string;
 
   /**
-   * Accessibility label text for the decrement button for the benefit of the screen reader.
+   * Accessibile label text for the decrement button for the benefit of the screen reader.
    */
   decrementButtonAriaLabel?: string;
 
@@ -189,6 +189,16 @@ export interface ISpinButtonProps {
    * IE: if step = 1, precision = 0. step = 0.0089, precision = 4. step = 300, precision = 2. step = 23.00, precision = 2.
    */
   precision?: number;
+
+  /**
+   * The position in the parent set (if in a set) for aria-posinset.
+   */
+  ariaPositionInSet?: number;
+
+  /**
+  * The total size of the parent set (if in a set) for aria-setsize.
+  */
+  ariaSetSize?: number;
 }
 
 export interface ISpinButtonStyles {

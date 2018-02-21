@@ -280,7 +280,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       for (const item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider &&
           item.itemType !== ContextualMenuItemType.Header) {
-          totalItemCount++;
+          const itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+          totalItemCount += itemCount;
         }
       }
       return (
@@ -326,11 +327,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                   onKeyDown={ this._onKeyDown }
                 >
                   { items.map((item, index) => {
-                    if (item.itemType === ContextualMenuItemType.Divider ||
-                      item.itemType === ContextualMenuItemType.Header) {
-                      indexCorrection++;
+                    const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                    if (item.itemType !== ContextualMenuItemType.Divider &&
+                      item.itemType !== ContextualMenuItemType.Header) {
+                      const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+                      indexCorrection += indexIncrease;
                     }
-                    return this._renderMenuItem(item, index, index - indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                    return menuItem;
                   }) }
                 </ul>
               </FocusZone>
@@ -470,7 +473,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderNormalItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
-      return [item.onRender({ 'aria-posinset': focusableElementIndex, 'aria-setsize': totalItemCount, ...item }, this.dismiss)];
+      return [item.onRender({ 'aria-posinset': focusableElementIndex + 1, 'aria-setsize': totalItemCount, ...item }, this.dismiss)];
     }
     if (item.href) {
       return this._renderAnchorMenuItem(item, classNames, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
@@ -585,6 +588,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
+        aria-posinset={ focusableElementIndex + 1 }
+        aria-setsize={ totalItemCount }
       >
         <span
           aria-hidden={ true }

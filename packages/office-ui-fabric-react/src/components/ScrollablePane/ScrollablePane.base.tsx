@@ -6,20 +6,24 @@ import * as PropTypes from 'prop-types';
 import {
   autobind,
   BaseComponent,
-  css
+  classNamesFunction,
+  customizable
 } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneProps,
+  IScrollablePaneStyles,
+  IScrollablePaneStyleProps
 } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
-import * as stylesImport from './ScrollablePane.scss';
-const styles: any = stylesImport;
 
 export interface IScrollablePaneContext {
   scrollablePane: PropTypes.Requireable<object>;
 }
 
+const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
+
+@customizable('ScrollablePane', ['theme'])
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {
     scrollablePane: PropTypes.object
@@ -62,7 +66,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
     this._events.on(root, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this._resizeContainer();
       if (stickyContainer.parentElement && root.parentElement) {
         stickyContainer.parentElement.removeChild(stickyContainer);
@@ -82,17 +86,23 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   public render() {
-    const { className } = this.props;
+    const { className, theme, getStyles } = this.props;
+    const classNames = getClassNames(getStyles!,
+      {
+        theme: theme!,
+        className
+      }
+    );
 
     return (
       <div
         ref='root'
-        className={ css('ms-ScrollablePane', styles.root, className) }
+        className={ classNames.root }
         data-is-scrollable={ true }
       >
-        <div ref='stickyContainer' className={ styles.stickyContainer }>
-          <div ref='stickyAbove' className={ styles.stickyAbove } />
-          <div ref='stickyBelow' className={ styles.stickyBelow } />
+        <div ref='stickyContainer' className={ classNames.stickyContainer }>
+          <div ref='stickyAbove' className={ classNames.stickyAbove } />
+          <div ref='stickyBelow' className={ classNames.stickyBelow } />
         </div>
         { this.props.children }
       </div>
@@ -161,7 +171,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
         this._setPlaceholderHeights.bind(null, stickyList),
         false);
       if (sticky.props.stickyClassName) {
-        setTimeout(() => {
+        this._async.setTimeout(() => {
           if (sticky.props.stickyClassName) {
             sticky.content.children[0].classList.add(sticky.props.stickyClassName);
           }
@@ -181,7 +191,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   private _onWindowResize() {
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this._resizeContainer();
       this.notifySubscribers();
       this._setPlaceholderHeights(this._stickyAbove);

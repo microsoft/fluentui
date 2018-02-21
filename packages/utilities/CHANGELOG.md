@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+
+## 5.12.1
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- fix bug in IE that IE does not support Number.IsInteger
 
 ## 5.12.0
 Fri, 16 Feb 2018 11:23:29 GMT
