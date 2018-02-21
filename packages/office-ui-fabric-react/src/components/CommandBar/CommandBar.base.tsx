@@ -50,8 +50,7 @@ export interface ICommandBarData {
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
-    overflowItems: [],
-    farItems: []
+    overflowItems: []
   };
 
   private _setSize: number;
@@ -79,8 +78,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: '',
     };
 
-    this._setAriaPosinset(commandBardata);
-
     this._classNames = getClassNames(getStyles!, { theme: theme!, className });
 
     return (
@@ -103,19 +100,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     this._resizeGroup.remeasure();
   }
 
-  private _setAriaPosinset(data: ICommandBarData): ICommandBarData {
-
-    this._setSize = data.primaryItems.length + (data.overflowItems.length > 0 ? 1 : 0);
-
-    data.primaryItems = data.primaryItems.map((item, i, array) => {
-      item['aria-posinset'] = i + 1;
-      item['aria-setsize'] = this._setSize;
-      return item;
-    });
-
-    return data;
-  }
-
   @autobind
   private _onRenderData(data: ICommandBarData): JSX.Element {
     return (
@@ -132,12 +116,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         />
 
         {/*Secondary Items*/ }
-        <OverflowSet
+        { data.farItems && <OverflowSet
           className={ css(this._classNames.secondarySet) }
           items={ data.farItems }
           onRenderItem={ this._onRenderItem }
           onRenderOverflowButton={ nullRender }
-        />
+        /> }
       </div>
     );
   }
@@ -222,7 +206,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onDataReduced(movedItem);
       }
 
-      return this._setAriaPosinset({ ...data, primaryItems, overflowItems, cacheKey });
+      return { ...data, primaryItems, overflowItems, cacheKey };
     }
 
     return undefined;
@@ -247,7 +231,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onDataGrown(movedItem);
       }
 
-      return this._setAriaPosinset({ ...data, primaryItems, overflowItems, cacheKey });
+      return { ...data, primaryItems, overflowItems, cacheKey };
     }
 
     return undefined;

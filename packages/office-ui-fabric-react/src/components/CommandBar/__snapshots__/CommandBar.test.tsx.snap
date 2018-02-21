@@ -45,9 +45,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-describedby={null}
             aria-label={undefined}
             aria-labelledby={null}
-            aria-posinset={1}
             aria-pressed={undefined}
-            aria-setsize={2}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -148,9 +146,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             aria-describedby={null}
             aria-label={undefined}
             aria-labelledby={null}
-            aria-posinset={2}
             aria-pressed={undefined}
-            aria-setsize={2}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -245,23 +241,6 @@ exports[`CommandBar renders commands correctly 1`] = `
           </button>
         </div>
       </div>
-      <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
-        className=
-            ms-FocusZone
-            ms-OverflowSet
-            {
-              align-items: stretch;
-              display: flex;
-              flex-shrink: 0;
-            }
-        data-focuszone-id="FocusZone7"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="menubar"
-      />
     </div>
   </div>
 </div>
