@@ -223,7 +223,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
-   * Method to override the children menu items
+   * Method to override the render of the children menu items
    * @default ContextualMenuItemChildren
    */
   contextualMenuChildrenAs?:
