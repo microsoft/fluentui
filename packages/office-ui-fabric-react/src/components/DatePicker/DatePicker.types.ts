@@ -6,7 +6,7 @@ import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
-  focus: () => void;
+  focus(): void;
 }
 
 export interface IDatePickerProps extends React.Props<DatePicker> {

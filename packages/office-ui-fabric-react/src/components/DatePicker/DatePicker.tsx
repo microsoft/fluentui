@@ -287,7 +287,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     });
   }
 
-  public focus() {
+  public focus(): void {
     if (this._textField) {
       this._textField.focus();
     }
