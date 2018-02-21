@@ -10,11 +10,14 @@ export interface IAppState {
   pages: INavPage[];
 }
 
+// Giving the loading component a height so that the left nav loads in full screen and there is less flashing as the component page loads.
 const LoadingComponent = (props: any): JSX.Element => {
   return (
-    <ComponentPage>
-      <PageHeader pageTitle={ props.title } backgroundColor='#038387' />
-    </ComponentPage>
+    <div style={ { height: '1500px' } }>
+      <ComponentPage>
+        <PageHeader pageTitle={ props.title } backgroundColor='#038387' />
+      </ComponentPage>
+    </div>
   );
 };
 
@@ -133,6 +136,12 @@ export const AppState: IAppState = {
           url: '#/components/checkbox',
           component: () => <LoadingComponent title='Checkbox' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CheckboxComponentPage').CheckboxComponentPage))
+        },
+        {
+          title: 'Coachmark',
+          url: '#/components/coachmark',
+          component: () => <LoadingComponent title='Coachmark' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CoachmarkComponentPage').CoachmarkComponentPage))
         },
         {
           title: 'ChoiceGroup',

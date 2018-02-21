@@ -52,7 +52,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     this._id = getId('Slider');
 
-    let value = props.value || props.defaultValue || props.min;
+    const value = props.value || props.defaultValue || props.min;
 
     this.state = {
       value: value,
@@ -66,7 +66,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   public componentWillReceiveProps(newProps: ISliderProps): void {
 
     if (newProps.value !== undefined) {
-      let value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
+      const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
 
       this.setState({
         value: value,
@@ -174,7 +174,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
-    let direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
+    const direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
     return {
       [direction]: thumbOffsetPercent + '%'
     };
@@ -203,11 +203,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     let distance: number | undefined;
 
     if (!this.props.vertical) {
-      let left: number | undefined = this._getPosition(event, this.props.vertical);
+      const left: number | undefined = this._getPosition(event, this.props.vertical);
       distance = getRTL() ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
       currentSteps = distance / stepLength;
     } else {
-      let bottom: number | undefined = this._getPosition(event, this.props.vertical);
+      const bottom: number | undefined = this._getPosition(event, this.props.vertical);
       distance = sliderPositionRect.bottom - bottom!;
       currentSteps = distance / stepLength;
     }
@@ -248,11 +248,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number) {
-    let interval: number = 1.0 / this.props.step!;
+    const interval: number = 1.0 / this.props.step!;
     // Make sure value has correct number of decimal places based on steps without JS's floating point issues
-    let roundedValue: number = Math.round(value * interval) / interval;
+    const roundedValue: number = Math.round(value * interval) / interval;
 
-    let valueChanged = roundedValue !== this.state.value;
+    const valueChanged = roundedValue !== this.state.value;
 
     this.setState({
       value: roundedValue,
@@ -310,5 +310,4 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     event.preventDefault();
     event.stopPropagation();
   }
-
 }

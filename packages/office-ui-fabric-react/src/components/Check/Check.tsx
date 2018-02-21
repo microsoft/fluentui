@@ -34,7 +34,8 @@ export class Check extends BaseComponent<ICheckProps, {}> {
   }
 
   public render() {
-    let { isChecked, checked } = this.props;
+    let { isChecked } = this.props;
+    const { checked } = this.props;
 
     isChecked = isChecked || checked;
 

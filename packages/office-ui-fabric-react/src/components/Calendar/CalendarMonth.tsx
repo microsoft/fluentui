@@ -51,9 +51,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
-    let leftNavigationIcon = navigationIcons.leftNavigation;
-    let rightNavigationIcon = navigationIcons.rightNavigation;
+    const { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
+    const leftNavigationIcon = navigationIcons.leftNavigation;
+    const rightNavigationIcon = navigationIcons.rightNavigation;
 
     // determine if previous/next years are in bounds
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
@@ -167,7 +167,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectNextYear() {
-    let { navigatedDate, onNavigateDate } = this.props;
+    const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
   }
 
@@ -178,7 +178,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectPrevYear() {
-    let { navigatedDate, onNavigateDate } = this.props;
+    const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
   }
 
@@ -189,7 +189,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectMonth(newMonth: number) {
-    let { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
+    const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
 
     // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
     if (onHeaderSelect) {
@@ -200,7 +200,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onHeaderSelect() {
-    let { onHeaderSelect } = this.props;
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
       onHeaderSelect(true);
     }
@@ -208,7 +208,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let { onHeaderSelect } = this.props;
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }

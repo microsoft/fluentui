@@ -7,7 +7,9 @@ import {
   getId,
   KeyCodes,
   autobind,
-  customizable
+  customizable,
+  calculatePrecision,
+  precisionRound
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -40,6 +42,11 @@ export interface ISpinButtonState {
    * as active when up/down arrow is pressed
    */
   keyboardSpinDirection: KeyboardSpinDirection;
+
+  /**
+   * The calculated precision for the value.
+   */
+  precision: number;
 }
 
 @customizable('SpinButton', ['theme'])
@@ -77,13 +84,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       'value': 'defaultValue'
     });
 
-    let value = props.value || props.defaultValue || String(props.min) || '0';
+    const value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
+
+    // Ensure that the autocalculated precision is not negative.
+    const precision = props.precision || Math.max(calculatePrecision(props.step!), 0);
 
     this.state = {
       isFocused: false,
       value: value,
-      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
+      precision
     };
 
     this._currentStepFunctionHandle = -1;
@@ -113,7 +124,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
 
     this.setState({
-      value: value
+      value: value,
+      precision: newProps.precision || this.state.precision
     });
   }
 
@@ -134,7 +146,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
-      theme
+      theme,
+      ariaPositionInSet,
+      ariaSetSize
     } = this.props;
 
     const {
@@ -143,13 +157,20 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       keyboardSpinDirection
     } = this.state;
 
-    const classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      !!disabled,
-      !!isFocused,
-      keyboardSpinDirection,
-      labelPosition
-    );
+    const classNames = this.props.getClassNames ?
+      this.props.getClassNames(
+        theme!,
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition
+      ) : getClassNames(
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isFocused,
+        keyboardSpinDirection,
+        labelPosition
+      );
 
     return (
       <div className={ classNames.root }>
@@ -169,6 +190,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           className={ classNames.spinButtonWrapper }
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
+          aria-posinset={ ariaPositionInSet }
+          aria-setsize={ ariaSetSize }
         >
           <input
             value={ value }
@@ -287,16 +310,18 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Increment function to use if one is not passed in
    */
-  private _defaultOnIncrement = (value: string) => {
-    let newValue = Math.min(Number(value) + (this.props.step as number), this.props.max as number);
+  private _defaultOnIncrement = (value: string): string | void => {
+    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, this.props.max!);
+    newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
   }
 
   /**
    * Increment function to use if one is not passed in
    */
-  private _defaultOnDecrement = (value: string) => {
-    let newValue = Math.max(Number(value) - (this.props.step as number), this.props.min as number);
+  private _defaultOnDecrement = (value: string): string | void => {
+    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, this.props.min!);
+    newValue = precisionRound(newValue, this.state.precision);
     return String(newValue);
   }
 
@@ -351,7 +376,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    */
   @autobind
   private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
-    const newValue = stepFunction(this.state.value as string);
+    const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
