@@ -1,6 +1,52 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 05 Feb 2018 11:24:23 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+
+## 5.12.1
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- fix bug in IE that IE does not support Number.IsInteger
+
+## 5.12.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added a triangle abstraction class
+
+### Patches
+
+- Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found
+
+## 5.11.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling.
+
+## 5.10.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Export IClassNames fro Utilities for creating private getClassNames methods
+
+## 5.10.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.10.1
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
 
 ## 5.10.0
 Mon, 05 Feb 2018 11:24:23 GMT

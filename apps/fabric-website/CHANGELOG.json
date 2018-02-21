@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.3.1",
+      "tag": "@uifabric/fabric-website_v5.3.1",
+      "date": "Fri, 16 Feb 2018 11:23:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "97593b0e0ff8c69cafbaefe40a3ba6834572eddf",
+            "comment": "Left nav: Less jittery and component pages load in full height."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.50.0 <6.0.0` to `>=5.51.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.0",
       "tag": "@uifabric/fabric-website_v5.3.0",
       "date": "Mon, 22 Jan 2018 11:14:27 GMT",
