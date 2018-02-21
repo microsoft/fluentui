@@ -185,8 +185,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
     const absolutePositionString = `${_indentationSize * nestingLevel + 1}px`;
-    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties) };
-    delete divProps.onClick;
+    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
 
     return (
       <div
