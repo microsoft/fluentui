@@ -3,9 +3,9 @@ jest.mock('../../utilities/contextMenu');
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
-import { IContextualMenuItemChildrenProps } from "./ContextualMenuItemChildren.types";
-import { IContextualMenuItem } from "./ContextualMenu.types";
-import { IMenuItemClassNames } from "./ContextualMenu.classNames";
+import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
+import { IContextualMenuItem } from './ContextualMenu.types';
+import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { hasSubmenu } from '../../utilities/contextMenu';
 
 describe('ContextMenuItemChildren', () => {
@@ -28,7 +28,7 @@ describe('ContextMenuItemChildren', () => {
           hasIcons={ undefined }
           onCheckmarkClick={ onCheckmarkClick }
         />
-      )
+      );
     });
 
     it('renders the component with the checkmark', () => {
@@ -65,11 +65,12 @@ describe('ContextMenuItemChildren', () => {
             index={ 1 }
             hasIcons={ true }
           />
-        )
+        );
       });
+
       it('renders the icon', () => {
         expect(wrapper).toMatchSnapshot();
-      })
+      });
     });
 
     describe('when it doesnt have iconProps', () => {
@@ -88,12 +89,12 @@ describe('ContextMenuItemChildren', () => {
             index={ 1 }
             hasIcons={ true }
           />
-        )
+        );
       });
 
       it('renders the icon with iconName', () => {
         expect(wrapper).toMatchSnapshot();
-      })
+      });
     });
   });
 
@@ -114,7 +115,7 @@ describe('ContextMenuItemChildren', () => {
           index={ 1 }
           hasIcons={ true }
         />
-      )
+      );
     });
 
     it('renders the menu icon', () => {
