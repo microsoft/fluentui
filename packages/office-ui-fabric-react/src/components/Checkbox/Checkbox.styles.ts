@@ -14,6 +14,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const { className, theme, reversed, checked, disabled } = props;
   const { semanticColors, palette } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
+  const checkmartFontColorHovered = semanticColors.inputBorder;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
   const checkboxBorderColor = semanticColors.inputBorder;
   const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
@@ -48,8 +49,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           selectors: {
             ':hover .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
             ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
-            ':hover .ms-Checkbox-checkmark': { color: checkboxBorderHoveredColor, opacity: '0.5' },
-            ':focus .ms-Checkbox-checkmark': { color: checkboxBorderHoveredColor, opacity: '0.5' },
+            ':hover .ms-Checkbox-checkmark': { color: checkmartFontColorHovered, opacity: '1' },
           }
         },
         checked && {
@@ -127,7 +127,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       'ms-Checkbox-checkmark',
       {
         opacity: checked ? '1' : '0',
-        color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor,
+        color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor
       }
     ],
     text: [
