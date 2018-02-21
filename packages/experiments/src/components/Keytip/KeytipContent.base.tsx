@@ -4,9 +4,6 @@ import { BaseComponent, classNamesFunction, customizable } from '../../Utilities
 import { convertSequencesToKeytipID } from '../../utilities/keysequence/IKeySequence';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
-export interface IKeytipState {
-}
-
 /**
  * A component corresponding the the content rendered inside the callout of the keytip component.
  *
