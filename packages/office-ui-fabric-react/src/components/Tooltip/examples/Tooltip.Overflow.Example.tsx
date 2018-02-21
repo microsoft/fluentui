@@ -55,7 +55,7 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
             </TooltipHost>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }
