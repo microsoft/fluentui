@@ -6,8 +6,26 @@ const sequence: IKeySequence[] = [{ keys: ['a'] }];
 const keyCont = 'A';
 
 describe('Keytip', () => {
-  it('renders Keytip correctly', () => {
-    const componentContent = renderer.create(<KeytipContent content={ keyCont } keySequences={ sequence } />);
+  it('renders visible Keytip correctly', () => {
+    const componentContent = renderer.create(<KeytipContent visible={ true } content={ keyCont } keySequences={ sequence } />);
+    let tree = componentContent.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders visible disabled Keytip correctly', () => {
+    const componentContent = renderer.create(
+      <KeytipContent
+        visible={ true }
+        disabled={ true }
+        content={ keyCont }
+        keySequences={ sequence }
+      />);
+    let tree = componentContent.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders invisible Keytip correctly', () => {
+    const componentContent = renderer.create(<KeytipContent visible={ false } content={ keyCont } keySequences={ sequence } />);
     let tree = componentContent.toJSON();
     expect(tree).toMatchSnapshot();
   });
