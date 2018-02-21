@@ -12,11 +12,20 @@ exports[`Nav renders Nav correctly 1`] = `
   role="presentation"
 >
   <nav
-    className="ms-Nav"
+    className=
+        ms-Nav
+        {
+          -webkit-overflow-scrolling: touch;
+          overflow-y: auto;
+          user-select: none;
+        }
     role="navigation"
   >
     <div
-      className="ms-Nav-group is-expanded undefined"
+      className=
+          ms-Nav-group
+          is-expanded
+
     >
       <div
         className=
@@ -26,19 +35,43 @@ exports[`Nav renders Nav correctly 1`] = `
               animation-fill-mode: both;
               animation-name: css-0,css-13;
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
+              display: block;
+              margin-bottom: 40px;
             }
       >
         <ul
           aria-label={undefined}
-          className=""
+          className=
+              ms-Nav-navItems
+              {
+                list-style-type: none;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="list"
         >
           <li
-            className=""
+            className=
+                ms-Nav-navItem
+                {
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
             role="listitem"
           >
             <div
-              className="ms-Nav-compositeLink"
+              className=
+                  ms-Nav-compositeLink
+                  {
+                    background-color: #ffffff;
+                    color: #333333;
+                    display: block;
+                    position: relative;
+                  }
               name=""
             >
               <button
@@ -50,7 +83,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     ms-Button
                     ms-Button--action
                     ms-Button--command
-                    ms-Nav-linkButton
+                    ms-Nav-link
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -60,12 +93,14 @@ exports[`Nav renders Nav correctly 1`] = `
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
-                      display: inline-block;
+                      display: block;
                       font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 40px;
+                      height: 36px;
+                      line-height: 36px;
                       outline: transparent;
+                      overflow: hidden;
                       padding-bottom: 0;
                       padding-left: 3px;
                       padding-right: 20px;
@@ -73,21 +108,24 @@ exports[`Nav renders Nav correctly 1`] = `
                       position: relative;
                       text-align: center;
                       text-decoration: none;
+                      text-overflow: ellipsis;
                       user-select: none;
                       vertical-align: top;
+                      white-space: nowrap;
+                      width: 100%;
                     }
                     &::-moz-focus-inner {
                       border: 0;
                     }
                     .ms-Fabric.is-focusVisible &:focus:after {
                       border: 1px solid #ffffff;
-                      bottom: 0px;
+                      bottom: 1px;
                       content: "";
-                      left: 0px;
+                      left: 1px;
                       outline: 1px solid #666666;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 1px;
+                      top: 1px;
                       z-index: 1;
                     }
                     &:hover {
@@ -101,6 +139,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
+                    }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
+                      color: #333333;
                     }
                 data-is-focusable={true}
                 disabled={undefined}
@@ -145,7 +187,17 @@ exports[`Nav renders Nav correctly 1`] = `
                     role="presentation"
                   />
                   <div
-                    className="ms-Nav-linkText"
+                    className=
+                        ms-Nav-linkText
+                        {
+                          margin-bottom: 0;
+                          margin-left: 4px;
+                          margin-right: 4px;
+                          margin-top: 0;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          vertical-align: middle;
+                        }
                   >
                     
                   </div>
