@@ -6,7 +6,7 @@ import { getRTL } from '../../Utilities';
 import { Icon, IIconProps } from '../../Icon';
 import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
 
-const renderIcon = ({ hasIcons, item, classNames }: IContextualMenuItemChildrenProps) => {
+const ItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemChildrenProps) => {
   // Only present to allow continued use of item.icon which is deprecated.
   const { iconProps, icon } = item;
 
@@ -21,7 +21,7 @@ const renderIcon = ({ hasIcons, item, classNames }: IContextualMenuItemChildrenP
   return <Icon iconName={ icon } className={ classNames.icon } />;
 };
 
-const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemChildrenProps) => {
+const CheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemChildrenProps) => {
   const isItemChecked = getIsChecked(item);
   if (onCheckmarkClick) {
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
@@ -37,14 +37,14 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
   return null;
 };
 
-const renderName = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
+const ItemName = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
   if (item.name) {
     return <span className={ classNames.label }>{ item.name }</span>;
   }
   return null;
 };
 
-const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
+const SubMenuIcon = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
   if (hasSubmenu(item)) {
     return (
       <Icon
@@ -54,7 +54,6 @@ const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemChildrenProp
       />
     );
   }
-
   return null;
 };
 
@@ -67,10 +66,10 @@ export const ContextualMenuItemChildren: React.StatelessComponent<IContextualMen
         item.split ? classNames.linkContentMenu : classNames.linkContent
       }
     >
-      { renderCheckMarkIcon(props) }
-      { renderIcon(props) }
-      { renderName(props) }
-      { renderSubMenuIcon(props) }
+      <CheckMarkIcon {...props} />
+      <ItemIcon {...props} />
+      <ItemName {...props} />
+      <SubMenuIcon { ...props }/>
     </div>
   );
 };
