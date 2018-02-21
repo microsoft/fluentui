@@ -69,7 +69,7 @@ export const ContextualMenuItemChildren: React.StatelessComponent<IContextualMen
       <CheckMarkIcon {...props} />
       <ItemIcon {...props} />
       <ItemName {...props} />
-      <SubMenuIcon { ...props }/>
+      <SubMenuIcon { ...props } />
     </div>
   );
 };
