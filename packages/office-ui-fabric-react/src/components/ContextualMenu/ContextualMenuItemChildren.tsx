@@ -23,7 +23,6 @@ const renderIcon = ({ hasIcons, item, classNames }: IContextualMenuItemChildrenP
 
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemChildrenProps) => {
   const isItemChecked = getIsChecked(item);
-
   if (onCheckmarkClick) {
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
 
