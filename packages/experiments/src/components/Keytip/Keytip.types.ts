@@ -133,9 +133,4 @@ export interface IKeytipStyles {
    * Style for the keytip content element.
    */
   root: IStyle;
-
-  /**
-   * Style for the containing Callout
-   */
-  calloutContainer: IStyle;
 }

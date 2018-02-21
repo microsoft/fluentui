@@ -4,17 +4,15 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabr
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
   const { theme, disabled, visible } = props;
   return {
-    calloutContainer: [
-      !visible && {
-        visibility: 'hidden'
-      }
-    ],
     container: [
       {
         backgroundColor: theme.palette.neutralDark
       },
       disabled && {
         opacity: 0.5,
+      },
+      !visible && {
+        visibility: 'hidden'
       }
     ],
     root: [{
@@ -39,13 +37,16 @@ export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutCont
     container: [
     ],
     root: [{
-      border: 'none'
+      border: 'none',
+      boxShadow: 'none'
     }],
     beak: [
     ],
     beakCurtain: [
     ],
-    calloutMain: [
+    calloutMain: [{
+      backgroundColor: 'transparent'
+    }
     ]
   };
 };

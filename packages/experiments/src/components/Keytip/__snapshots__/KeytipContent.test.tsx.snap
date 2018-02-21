@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keytip renders Keytip correctly 1`] = `
+<div
+  className=
+
+      {
+        background-color: #212121;
+        visibility: hidden;
+      }
+>
+  <span
+    className=
+
+        {
+          background-color: #212121;
+          color: #eaeaea;
+          display: inline-block;
+          height: 17px;
+          line-height: 17px;
+          min-width: 11px;
+          padding-left: 3px;
+          padding-right: 3px;
+          text-align: center;
+        }
+    id="ktp-a"
+  >
+    A
+  </span>
+</div>
+`;
