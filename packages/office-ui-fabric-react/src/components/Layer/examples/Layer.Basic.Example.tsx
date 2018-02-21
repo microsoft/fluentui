@@ -2,10 +2,9 @@ import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import * as PropTypes from 'prop-types';
 import './Layer.Example.scss';
 import '../../../common/_exampleStyles.scss';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind, BaseComponent } from '../../../Utilities';
+import { Checkbox } from '../../../Checkbox';
+import { Layer } from '../Layer';
 import { AnimationClassNames } from '../../../Styling';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
