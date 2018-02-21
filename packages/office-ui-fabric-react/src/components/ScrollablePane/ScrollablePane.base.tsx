@@ -66,7 +66,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
     this._events.on(root, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this._resizeContainer();
       if (stickyContainer.parentElement && root.parentElement) {
         stickyContainer.parentElement.removeChild(stickyContainer);
@@ -171,7 +171,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
         this._setPlaceholderHeights.bind(null, stickyList),
         false);
       if (sticky.props.stickyClassName) {
-        setTimeout(() => {
+        this._async.setTimeout(() => {
           if (sticky.props.stickyClassName) {
             sticky.content.children[0].classList.add(sticky.props.stickyClassName);
           }
@@ -191,7 +191,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   private _onWindowResize() {
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this._resizeContainer();
       this.notifySubscribers();
       this._setPlaceholderHeights(this._stickyAbove);

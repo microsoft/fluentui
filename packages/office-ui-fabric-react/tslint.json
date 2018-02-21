@@ -10,7 +10,6 @@
       140
     ],
     "no-any": false,
-    "no-internal-module": false,
     "typedef": [
       false
     ],
