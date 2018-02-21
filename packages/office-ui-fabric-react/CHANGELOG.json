@@ -2,6 +2,93 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.53.0",
+      "tag": "office-ui-fabric-react_v5.53.0",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "0a9153f40d3fc7e7757c352862d78de917e22656",
+            "comment": "added support for aria-posinset and aria-setsize"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "eaf26188ea91738b3daacc16bb7b426aa60a1e8d",
+            "comment": "Converting Image SCSS to MergeStyles step 1 - file structure"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "2e447758c56e5a06fbe22726397e7fea4fc9f65f",
+            "comment": "SwatchColorPicker: Improve keyboard/mouse behavior"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "0037f82fbf63447b60ca73970fc116ad004f7c0e",
+            "comment": "Convert Dialog to mergeStyles, part 1 - file structure"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "d6ed496697cb3ee61d7c52c0a04b271fd576f425",
+            "comment": "Converting Nav SCSS to MergeStyles step 1 - file structure"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "c168360f1ae7e1a97df1d278552b1b3498c13c28",
+            "comment": "Converting ResizeGroup SCSS to MergeStyles step 1 - file structure"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "f899dabeaf57d1f9c6018eb89b46b87835f8ade6",
+            "comment": "Converting SCSS to MergeStyles step 2 - style conversion"
+          },
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "0661239920ded0ecfce53788322b4bc5b21860e1",
+            "comment": "make onShouldVirtualize work for grouped list"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "6d58ab7f983c1cf8b2a93b444edf5d9c6b1b3f52",
+            "comment": "Enable jsx-key tslint rule"
+          },
+          {
+            "author": "Cody Hoover <hoovercj@users.noreply.github.com>",
+            "commit": "6a35693c2cfb692a8adb381ecb228a2e23f801e4",
+            "comment": "Only apply 'pointer-events: none' to disabled Link components if there is an href "
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4bf99461473d1fb282196c67f82410765a712f10",
+            "comment": "Dialog: default modal props now respective (Modal rendered with light background.)"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "51d47a80898d9834d40205274268e60730f306a1",
+            "comment": "Buttons: moving className lower in the merge list so that it has more precedence than default rules."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a5f021f9a60e65b6b2824a588f31cd080fd74ecb",
+            "comment": "Rating: Adding `type=button` to Rating buttons."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.1 <6.0.0` to `>=5.12.2 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.12.0 <6.0.0` to `>=5.12.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.1 <6.0.0` to `>=5.2.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.52.0",
       "tag": "office-ui-fabric-react_v5.52.0",
       "date": "Sat, 17 Feb 2018 21:29:00 GMT",
