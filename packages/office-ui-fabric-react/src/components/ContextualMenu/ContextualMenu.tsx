@@ -267,7 +267,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       for (let item of items) {
         if (item.itemType !== ContextualMenuItemType.Divider &&
           item.itemType !== ContextualMenuItemType.Header) {
-          let itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
+          const itemCount = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
           totalItemCount += itemCount;
         }
       }
@@ -314,7 +314,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                   onKeyDown={ this._onKeyDown }
                 >
                   { items.map((item, index) => {
-                    let menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                    const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
                     if (item.itemType !== ContextualMenuItemType.Divider &&
                       item.itemType !== ContextualMenuItemType.Header) {
                       const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
