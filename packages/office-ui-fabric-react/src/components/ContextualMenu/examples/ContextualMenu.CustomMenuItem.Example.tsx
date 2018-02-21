@@ -4,7 +4,7 @@ import { IContextualMenuItemProps } from 'office-ui-fabric-react/lib/ContextualM
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
-export class ContextualMenuWithCustomChildrenExample extends React.Component {
+export class ContextualMenuWithCustomMenuItemExample extends React.Component {
 
   constructor(props: {}) {
     super(props);

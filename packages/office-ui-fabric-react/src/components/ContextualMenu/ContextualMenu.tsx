@@ -98,7 +98,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
-  private _contextualMenuChildrenAs: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
+  private _contextualMenuItemAs: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -115,7 +115,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
-    this._contextualMenuChildrenAs = props.contextualMenuChildrenAs || ContextualMenuItem;
+    this._contextualMenuItemAs = props.contextualMenuItemAs || ContextualMenuItem;
   }
 
   @autobind
@@ -441,7 +441,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
-    const ChildrenRenderer = this._contextualMenuChildrenAs;
+    const ChildrenRenderer = this._contextualMenuItemAs;
 
     return (
       <div className={ this._classNames.header } style={ item.style } role='heading' aria-level={ this.props.title ? 2 : 1 }>
@@ -456,7 +456,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
-    const ChildrenRenderer = this._contextualMenuChildrenAs;
+    const ChildrenRenderer = this._contextualMenuItemAs;
     return (
       <div>
         <a
@@ -491,7 +491,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean) {
     const { expandedMenuItemKey } = this.state;
-    const ChildrenRenderer = this._contextualMenuChildrenAs;
+    const ChildrenRenderer = this._contextualMenuItemAs;
 
     let { subMenuId } = this.state;
     if (item.subMenuProps && item.subMenuProps.id) {
@@ -578,7 +578,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
-    const ChildrenRenderer = this._contextualMenuChildrenAs;
+    const ChildrenRenderer = this._contextualMenuItemAs;
 
     const itemProps = {
       key: item.key,
@@ -600,7 +600,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
-    const ChildrenRenderer = this._contextualMenuChildrenAs;
+    const ChildrenRenderer = this._contextualMenuItemAs;
     const itemProps = {
       onClick: this._onItemClick.bind(this, item),
       disabled: this._isItemDisabled(item),

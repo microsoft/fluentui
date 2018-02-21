@@ -611,7 +611,7 @@ describe('ContextualMenu', () => {
     expect(subMenuOpened).toEqual(true);
   });
 
-  it('calls the custom child renderer when the contextualMenuChildrenAs prop is provided', () => {
+  it('calls the custom child renderer when the contextualMenuItemAs prop is provided', () => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -627,7 +627,7 @@ describe('ContextualMenu', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
-        contextualMenuChildrenAs={ customRenderer }
+        contextualMenuItemAs={ customRenderer }
       />
     );
 

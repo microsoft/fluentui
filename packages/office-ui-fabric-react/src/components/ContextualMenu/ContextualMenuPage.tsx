@@ -13,7 +13,7 @@ import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Check
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuWithScrollBarExample } from './examples/ContextualMenu.ScrollBar.Example';
-import { ContextualMenuWithCustomChildrenExample } from './examples/ContextualMenu.CustomChildren.Example';
+import { ContextualMenuWithCustomMenuItemExample } from './examples/ContextualMenu.CustomMenuItem.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
@@ -26,7 +26,7 @@ const ContextualMenuDirectionalExampleCode = require('!raw-loader!office-ui-fabr
 const ContextualMenuCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
 const ContextualMenuWithScrollBarExampleCode = require
   ('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.ScrollBar.Example.tsx') as string;
-const ContextualMenuWithCustomChildrenExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.CustomChildren.Example.tsx') as string;
+const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.CustomMenuItem.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -85,10 +85,10 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuWithScrollBarExample />
             </ExampleCard>
             <ExampleCard
-              title='ContextualMenu with custom rendered children'
-              code={ ContextualMenuWithCustomChildrenExampleCode }
+              title='ContextualMenu with custom rendered menu items'
+              code={ ContextualMenuWithCustomMenuItemExampleCode }
             >
-              <ContextualMenuWithCustomChildrenExample />
+              <ContextualMenuWithCustomMenuItemExample />
             </ExampleCard>
 
           </div>
