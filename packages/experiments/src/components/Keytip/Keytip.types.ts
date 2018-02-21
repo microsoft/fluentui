@@ -145,3 +145,11 @@ export interface IKeytipStyles {
    */
   root: IStyle;
 }
+
+export enum KeytipTransitionModifier {
+  shift = 16,
+  ctrl = 17,
+  alt = 18,
+  leftWindow = 91,
+  rightWindow = 92
+}

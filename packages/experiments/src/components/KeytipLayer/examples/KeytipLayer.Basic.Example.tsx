@@ -2,9 +2,8 @@ import * as React from 'react';
 import { convertSequencesToKeytipID } from '../../../utilities/keysequence/IKeySequence';
 import { IKeytipTransitionKey } from '../../../utilities/keysequence/IKeytipTransitionKey';
 import { registerKeytip, addKeytipSequence } from '../../../utilities/keytip/KeytipUtils';
-import { ModifierKeyCodes } from '../../../utilities/keytip/ModifierKeyCodes';
 import { KeytipLayer } from '../KeytipLayer';
-import { IKeytipProps } from '../../Keytip';
+import { IKeytipProps, KeytipTransitionModifier } from '../../Keytip';
 import { DefaultButton, ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
@@ -22,7 +21,7 @@ export interface IKeytipMap {
 
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
-  private startingKeySequence: IKeytipTransitionKey = { key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] };
+  private startingKeySequence: IKeytipTransitionKey = { key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] };
   private keytipMap: IKeytipMap = {};
 
   constructor(props: {}) {

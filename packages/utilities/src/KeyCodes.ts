@@ -3,7 +3,7 @@
  *
  * @public
  */
-export enum KeyCodes {
+export const enum KeyCodes {
   backspace = 8,
   tab = 9,
   enter = 13,

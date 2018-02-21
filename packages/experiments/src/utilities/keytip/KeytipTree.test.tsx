@@ -1,19 +1,18 @@
 import * as React from 'react';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { IKeytipProps } from '../../Keytip';
+import { IKeytipProps, KeytipTransitionModifier } from '../../Keytip';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipManager } from './KeytipManager';
 import { IKeySequence } from '../../utilities/keysequence/IKeySequence';
 import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
-import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
 describe('KeytipTree', () => {
   const layerID = 'my-layer-id';
-  const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
-  const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
+  const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
+  const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
   const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
   const keytipManager = KeytipManager.getInstance();
 

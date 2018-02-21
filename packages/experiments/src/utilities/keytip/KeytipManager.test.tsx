@@ -5,13 +5,12 @@ import { IKeySequence, convertSequencesToKeytipID } from '../../utilities/keyseq
 import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { KeytipLayer } from '../../KeytipLayer';
-import { IKeytipProps } from '../../Keytip';
+import { IKeytipProps, KeytipTransitionModifier } from '../../Keytip';
 import { ktpSeparator, ktpFullPrefix } from '../../utilities/keytip/KeytipUtils';
-import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 import { mount, ReactWrapper } from 'enzyme';
 
-const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
-const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] }];
+const keytipStartSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
+const keytipExitSequences: IKeytipTransitionKey[] = [{ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] }];
 const keytipReturnSequences: IKeytipTransitionKey[] = [{ key: 'Escape' }];
 const layerID = 'my-layer-id';
 const keytipIdB = ktpFullPrefix + 'b';
@@ -87,13 +86,13 @@ describe('KeytipManager', () => {
     // On Exit keytip mode
     it('Call on exit keytip mode when we process alt + left win ', () => {
       keytipManager.keytipTree.currentKeytip = keytipManager.keytipTree.root;
-      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] });
+      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] });
       expect(onExitKeytipMode).toBeCalled();
     });
 
     // On Enter keytip mode
     it('Call on enter keytip mode when we process alt + left win', () => {
-      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [ModifierKeyCodes.alt] });
+      keytipManager.processTransitionInput({ key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] });
       expect(onEnterKeytipMode).toBeCalled();
     });
 

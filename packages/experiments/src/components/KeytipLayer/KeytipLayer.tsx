@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IKeytipLayerProps } from './KeytipLayer.types';
-import { Keytip, IKeytipProps } from '../Keytip';
+import { Keytip, IKeytipProps, KeytipTransitionModifier } from '../Keytip';
 import {
   autobind,
   BaseComponent
@@ -11,7 +11,6 @@ import { convertSequencesToKeytipID, fullKeySequencesAreEqual } from '../../util
 import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { KeytipManager } from '../../utilities/keytip/KeytipManager';
 import { ktpFullPrefix, ktpSeparator } from '../../utilities/keytip/KeytipUtils';
-import { ModifierKeyCodes } from '../../utilities/keytip/ModifierKeyCodes';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -19,11 +18,11 @@ export interface IKeytipLayerState {
 }
 
 const defaultStartSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKeys: [ModifierKeyCodes.alt]
+  key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
 };
 
 const defaultExitSequence: IKeytipTransitionKey = {
-  key: 'Meta', modifierKeys: [ModifierKeyCodes.alt]
+  key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt]
 };
 
 const defaultReturnSequence: IKeytipTransitionKey = {
@@ -228,16 +227,16 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
    * @param ev - React.KeyboardEvent
    * @returns List of ModifierKeyCodes that were pressed
    */
-  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): ModifierKeyCodes[] | undefined {
+  private _getModifierKey(ev: React.KeyboardEvent<HTMLElement>): KeytipTransitionModifier[] | undefined {
     let modifierKeys = [];
     if (ev.altKey) {
-      modifierKeys.push(ModifierKeyCodes.alt);
+      modifierKeys.push(KeytipTransitionModifier.alt);
     }
     if (ev.ctrlKey) {
-      modifierKeys.push(ModifierKeyCodes.ctrl);
+      modifierKeys.push(KeytipTransitionModifier.ctrl);
     }
     if (ev.shiftKey) {
-      modifierKeys.push(ModifierKeyCodes.shift);
+      modifierKeys.push(KeytipTransitionModifier.shift);
     }
     // TODO: include windows key or option for MAC
     return modifierKeys.length ? modifierKeys : undefined;

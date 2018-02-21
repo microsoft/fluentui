@@ -1,8 +1,8 @@
-import { ModifierKeyCodes } from '../keytip/ModifierKeyCodes';
+import { KeytipTransitionModifier } from '../../Keytip';
 
 export interface IKeytipTransitionKey {
   key: string;
-  modifierKeys?: ModifierKeyCodes[];
+  modifierKeys?: KeytipTransitionModifier[];
 }
 
 /**
