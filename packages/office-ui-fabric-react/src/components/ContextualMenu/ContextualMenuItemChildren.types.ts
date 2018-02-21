@@ -3,7 +3,7 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 
 export interface IContextualMenuItemChildrenProps
-  extends React.Props<IContextualMenuItemChildrenProps> {
+  extends React.HTMLAttributes<IContextualMenuItemChildrenProps> {
   item: IContextualMenuItem;
   classNames: IMenuItemClassNames;
   index: number;

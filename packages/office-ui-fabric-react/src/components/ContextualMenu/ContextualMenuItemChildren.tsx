@@ -44,7 +44,7 @@ const renderName = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
   return null;
 };
 
-const renderSubMenu = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
+const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
   if (hasSubmenu(item)) {
     return (
       <Icon
@@ -54,6 +54,8 @@ const renderSubMenu = ({ item, classNames }: IContextualMenuItemChildrenProps) =
       />
     );
   }
+
+  return null;
 };
 
 export const ContextualMenuItemChildren: React.StatelessComponent<IContextualMenuItemChildrenProps> = (props) => {
@@ -68,7 +70,7 @@ export const ContextualMenuItemChildren: React.StatelessComponent<IContextualMen
       { renderCheckMarkIcon(props) }
       { renderIcon(props) }
       { renderName(props) }
-      { renderSubMenu(props) }
+      { renderSubMenuIcon(props) }
     </div>
   );
 };
