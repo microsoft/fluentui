@@ -91,13 +91,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
     return (
       <div
-        ref={ el => this._rootRef = el! }
+        ref={ this._resolveRef('_rootRef') }
         className={ classNames.root }
         data-is-scrollable={ true }
       >
-        <div ref={ el => this._stickyContainerRef = el! } className={ classNames.stickyContainer }>
-          <div ref={ el => this._stickyAboveRef = el! } className={ classNames.stickyAbove }/>
-          <div ref={ el => this._stickyBelowRef = el! } className={ classNames.stickyBelow }/>
+        <div ref={ this._resolveRef('_stickyContainerRef') } className={ classNames.stickyContainer }>
+          <div ref={ this._resolveRef('_stickyAboveRef') } className={ classNames.stickyAbove }/>
+          <div ref={ this._resolveRef('_stickyBelowRef') } className={ classNames.stickyBelow }/>
         </div>
         { this.props.children }
       </div>
