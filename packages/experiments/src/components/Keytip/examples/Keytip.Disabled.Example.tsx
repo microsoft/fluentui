@@ -1,46 +1,38 @@
 import * as React from 'react';
 import { IKeytipProps, Keytip } from '../../Keytip';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { convertSequencesToKeytipID } from '../../../utilities/keysequence/IKeySequence';
-
-export interface IKeytipExampleState {
-  keytipVisible: boolean;
-}
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { IKeytipExampleState, onKeytipButtonClick } from './Keytip.Basic.Example';
 
 export interface IKeytipMap {
   [componentKeytipId: string]: IKeytipProps;
 }
 
-export function onKeytipButtonClick(): void {
-  this.setState((previousState: IKeytipExampleState) => {
-    let currentKeytipVisible = !previousState.keytipVisible;
-    return { keytipVisible: currentKeytipVisible };
-  });
-}
-
-export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState> {
+export class KeytipDisabledExample extends React.Component<{}, IKeytipExampleState> {
   private keytipMap: IKeytipMap = {};
 
   constructor(props: {}) {
     super(props);
 
     this.state = {
-      keytipVisible: false,
+      keytipVisible: false
     };
 
     // Setup keytips
     this.keytipMap.Keytip1 = {
-      content: 'A',
-      keySequences: [{ keys: ['a'] }],
+      content: 'B',
+      keySequences: [{ keys: ['b'] }],
+      disabled: true
     } as IKeytipProps;
   }
 
   /* tslint:disable:jsx-ban-props */
   public render(): JSX.Element {
     let btnClick = onKeytipButtonClick.bind(this);
-
     return (
       <div>
+        <p>A disabled keytip will be displayed when keytips are enabled, but the component will not
+          be activated when its keys are pressed</p>
         <DefaultButton
           text='Click to toggle keytip'
           data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }
@@ -50,6 +42,7 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
           content={ this.keytipMap.Keytip1.content }
           keySequences={ this.keytipMap.Keytip1.keySequences }
           visible={ this.state.keytipVisible }
+          disabled={ this.keytipMap.Keytip1.disabled }
         />
       </div>
     );

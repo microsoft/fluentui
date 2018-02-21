@@ -6,10 +6,6 @@ import {
 } from '@uifabric/example-app-base';
 import { KeytipLayerBasicExample } from './examples/KeytipLayer.Basic.Example';
 
-const KeytipLayerBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/KeytipLayer/examples/KeytipLayer.Basic.Example.tsx'
-) as string;
-
 export class KeytipLayerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -18,13 +14,20 @@ export class KeytipLayerPage extends React.Component<IComponentDemoPageProps, {}
         componentName='KeytipLayer'
         exampleCards={
           <div>
-            <ExampleCard title='KeytipLayerBasic Example' code={ KeytipLayerBasicExampleCode }>
+            <ExampleCard title='KeytipLayer Basic'>
               <KeytipLayerBasicExample />
             </ExampleCard>
           </div>
         }
         overview={
-          <div />
+          <div>
+            <p>A KeytipLayer is the component to add to your app to enable Keytips. It can be added anywhere in your document, but must
+              only be added once. Use the registerKeytip utility helper to add a Keytip to your app through the component render() function
+              it belongs to.</p>
+            <p>Key sequences can be defined to enter and exit Keytip mode. These sequences can be any keys along with modifiers (Alt, Shift
+              Ctrl, etc). The enter and exit sequences default to Alt-Win. There is also a sequence to 'return' up a level of keytips, this
+              defaults to 'Esc'.</p>
+          </div>
         }
         bestPractices={
           <div />
@@ -32,14 +35,14 @@ export class KeytipLayerPage extends React.Component<IComponentDemoPageProps, {}
         dos={
           <div>
             <ul>
-              <li>@TODO Add dos</li>
+              <li>Keytip sequences can be duplicated as long as none of their siblings have the same sequence</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>@TODO Add dos</li>
+              <li>Don't create more than 1 KeytipLayer per app. This will cause issues with the key listeners</li>
             </ul>
           </div>
         }

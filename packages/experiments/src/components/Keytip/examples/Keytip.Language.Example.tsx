@@ -2,23 +2,13 @@ import * as React from 'react';
 import { IKeytipProps, Keytip } from '../../Keytip';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { convertSequencesToKeytipID } from '../../../utilities/keysequence/IKeySequence';
-
-export interface IKeytipExampleState {
-  keytipVisible: boolean;
-}
+import { IKeytipExampleState, onKeytipButtonClick } from './Keytip.Basic.Example';
 
 export interface IKeytipMap {
   [componentKeytipId: string]: IKeytipProps;
 }
 
-export function onKeytipButtonClick(): void {
-  this.setState((previousState: IKeytipExampleState) => {
-    let currentKeytipVisible = !previousState.keytipVisible;
-    return { keytipVisible: currentKeytipVisible };
-  });
-}
-
-export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState> {
+export class KeytipLanguageExample extends React.Component<{}, IKeytipExampleState> {
   private keytipMap: IKeytipMap = {};
 
   constructor(props: {}) {
@@ -30,7 +20,7 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
 
     // Setup keytips
     this.keytipMap.Keytip1 = {
-      content: 'A',
+      content: 'ы ñ خ',
       keySequences: [{ keys: ['a'] }],
     } as IKeytipProps;
   }
@@ -38,9 +28,9 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
   /* tslint:disable:jsx-ban-props */
   public render(): JSX.Element {
     let btnClick = onKeytipButtonClick.bind(this);
-
     return (
       <div>
+        <p>Keytips can support displaying and processing keys for any unicode language</p>
         <DefaultButton
           text='Click to toggle keytip'
           data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Keytip1.keySequences) }

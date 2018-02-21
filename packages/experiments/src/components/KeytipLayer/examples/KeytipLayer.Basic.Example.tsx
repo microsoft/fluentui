@@ -226,10 +226,13 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
   @autobind
   private _showMessageBar(): void {
     this.setState({ showMessageBar: true });
+
     // Hide the MessageBar after 2 seconds
-    let hideMessageBar = () => {
-      this.setState({ showMessageBar: false });
-    };
-    setTimeout(hideMessageBar.bind(this), 2000);
+    setTimeout(this._hideMessageBar, 2000);
+  }
+
+  @autobind
+  private _hideMessageBar(): void {
+    this.setState({ showMessageBar: false });
   }
 }
