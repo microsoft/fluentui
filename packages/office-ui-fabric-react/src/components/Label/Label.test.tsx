@@ -11,10 +11,10 @@ import { Label } from './Label';
 describe('Label', () => {
 
   it('renders a label', () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    const component = ReactTestUtils.renderIntoDocument(
       <Label>test</Label>
     );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
 
     expect(renderedDOM.textContent).toEqual('test');
   });
@@ -23,7 +23,7 @@ describe('Label', () => {
     const component = renderer.create(
       <Label>test</Label>
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

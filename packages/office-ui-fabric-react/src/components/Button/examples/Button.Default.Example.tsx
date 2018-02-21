@@ -1,20 +1,29 @@
 import * as React from 'react';
+import { css, classNamesFunction } from '../../../Utilities';
+import {
+  getStyles,
+  IButtonBasicExampleStyleProps,
+  IButtonBasicExampleStyles
+} from './Button.Basic.Example.styles';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
+
+    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+    const classNames = getClassNames(getStyles);
 
     return (
-      <div className='ms-BasicButtonsTwoUp'>
+      <div className={ css(classNames.twoup) }>
         <div>
           <Label>Standard</Label>
           <DefaultButton
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            text='Butjon'
+            text='Button'
           />
         </div>
         <div>
@@ -24,7 +33,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            text='Butjon'
+            text='Button'
             onClick={ this._alertClicked }
           />
         </div>
