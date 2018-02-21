@@ -42,12 +42,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     farItems: []
   };
 
-  private _overflow: HTMLDivElement;
-  private _commandSurface: HTMLDivElement;
-  private _farCommandSurface: HTMLDivElement;
-  private _commandBarRegion: HTMLDivElement;
-  private _searchSurface: HTMLDivElement;
+  public refs: {
+    [key: string]: React.ReactInstance;
+  };
+
+  private _searchSurface: HTMLElement;
+  private _commandSurface: HTMLElement;
+  private _commandBarRegion: HTMLElement;
+  private _farCommandSurface: HTMLElement;
   private _focusZone: FocusZone;
+  private _overflow: HTMLElement;
 
   private _id: string;
   private _overflowWidth: number;
@@ -120,7 +124,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             { renderedItems!.map(item => (
               this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
-              <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ this._resolveRef(`_overflow`) }>
+              <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ this._resolveRef('_overflow') }>
                 <button
                   type='button'
                   id={ this._id + OVERFLOW_KEY }
@@ -147,17 +151,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             )) }
           </div>
         </FocusZone>
-        {
-          (contextualMenuProps) ?
-            (<ContextualMenu
-              className={ css('ms-CommandBar-menuHost') }
-              directionalHint={ DirectionalHint.bottomAutoEdge }
-              { ...contextualMenuProps }
-              target={ contextualMenuTarget }
-              labelElementId={ expandedMenuId }
-              onDismiss={ this._onContextMenuDismiss }
-            />
-            ) : (null)
+        { (contextualMenuProps) ?
+          (<ContextualMenu
+            className={ css('ms-CommandBar-menuHost') }
+            directionalHint={ DirectionalHint.bottomAutoEdge }
+            { ...contextualMenuProps }
+            target={ contextualMenuTarget }
+            labelElementId={ expandedMenuId }
+            onDismiss={ this._onContextMenuDismiss }
+          />
+          ) : (null)
         }
       </div >
     );
@@ -170,7 +173,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     if (item.onRender) {
       return (
-        <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ this._resolveRef(item.key) }>
+        <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
           { item.onRender(item, this._onContextMenuDismiss) }
         </div>
       );
@@ -277,7 +280,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     return (
-      <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ this._resolveRef(itemKey) }>
+      <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ itemKey }>
         { command }
       </div>
     );
