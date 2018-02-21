@@ -14,7 +14,7 @@ import { DialogType } from './DialogContent.types';
 describe('Dialog', () => {
   it('renders Dialog correctly', () => {
     const component = renderer.create(<DialogContent />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 

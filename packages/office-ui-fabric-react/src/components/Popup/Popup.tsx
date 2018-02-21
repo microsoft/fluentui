@@ -55,7 +55,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public render() {
-    let { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
+    const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     let needsVerticalScrollBar = false;
     if (this.refs.root && this.refs.root.firstElementChild) {

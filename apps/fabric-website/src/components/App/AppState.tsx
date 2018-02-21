@@ -138,6 +138,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CheckboxComponentPage').CheckboxComponentPage))
         },
         {
+          title: 'Coachmark',
+          url: '#/components/coachmark',
+          component: () => <LoadingComponent title='Coachmark' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/CoachmarkComponentPage').CoachmarkComponentPage))
+        },
+        {
           title: 'ChoiceGroup',
           url: '#/components/choicegroup',
           component: () => <LoadingComponent title='ChoiceGroup' />,

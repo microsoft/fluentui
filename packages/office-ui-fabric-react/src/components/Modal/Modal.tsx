@@ -81,7 +81,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
   }
 
   public render(): JSX.Element | null {
-    let {
+    const {
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -95,7 +95,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
       titleAriaId,
       subtitleAriaId,
     } = this.props;
-    let { isOpen, isVisible } = this.state;
+    const { isOpen, isVisible } = this.state;
 
     const modalClassName = css(
       'ms-Modal',

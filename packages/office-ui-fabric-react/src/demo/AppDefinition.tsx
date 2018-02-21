@@ -53,6 +53,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox'
         },
         {
+          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
+          key: 'Coachmark',
+          name: 'Coachmark',
+          url: '#/examples/coachmark'
+        },
+        {
           component: require<any>('../components/ChoiceGroup/ChoiceGroupPage').ChoiceGroupPage,
           key: 'ChoiceGroup',
           name: 'ChoiceGroup',
