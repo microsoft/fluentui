@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Changed modalProps to Modal.defaultProps and moved it into the constructor to change overlay to white",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "betrue@microsoft.com"
+}
