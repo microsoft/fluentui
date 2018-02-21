@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add notifyPageChange function to List",
-      "type": "patch"
+      "comment": "make onShouldVirtualize work for grouped list",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "alebet@microsoft.com"
+  "email": "zhiliu@microsoft.com"
 }

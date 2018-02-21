@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes useTargetWidth prop for ContextualMenu",
+      "comment": "Enable jsx-key tslint rule",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joem@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

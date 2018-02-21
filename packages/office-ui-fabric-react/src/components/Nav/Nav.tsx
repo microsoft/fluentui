@@ -61,7 +61,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     };
 
     if (props.groups) {
-      for (let group of props.groups) {
+      for (const group of props.groups) {
         if (group.collapseByDefault && group.name) {
           this.state.isGroupCollapsed![group.name] = true;
         }
@@ -71,14 +71,14 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   public componentWillReceiveProps(newProps: INavProps) {
-    let newGroups = newProps.groups || [];
-    let isGroupCollapsed = this.state.isGroupCollapsed!;
+    const newGroups = newProps.groups || [];
+    const isGroupCollapsed = this.state.isGroupCollapsed!;
 
     // If the component's props were updated, new groups may have been added, which may have
     // collapseByDefault set. Ensure that setting is respected for any new groups.
     // (If isGroupCollapsed is already set for a group, don't overwrite that.)
     let hasUpdated = false;
-    for (let newGroup of newGroups) {
+    for (const newGroup of newGroups) {
       if (newGroup.name && newGroup.collapseByDefault && !isGroupCollapsed.hasOwnProperty(newGroup.name)) {
         isGroupCollapsed[newGroup.name] = true;
         hasUpdated = true;
@@ -152,7 +152,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         lineHeight: '36px'
       }
     };
-    let {
+    const {
       onRenderLink = this._onRenderLink
     } = this.props;
 
@@ -287,9 +287,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _onGroupHeaderClicked(group: INavLinkGroup, ev: React.MouseEvent<HTMLElement>): void {
-    let { isGroupCollapsed } = this.state;
-    let groupKey = group.name!;
-    let isCollapsed = !isGroupCollapsed![groupKey];
+    const { isGroupCollapsed } = this.state;
+    const groupKey = group.name!;
+    const isCollapsed = !isGroupCollapsed![groupKey];
 
     if (group.onHeaderClick) {
       group.onHeaderClick(ev, isCollapsed);

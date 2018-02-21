@@ -64,7 +64,7 @@ export class LayerBasicExample extends BaseComponent<{}, {
   }
 
   public render() {
-    let { showLayer } = this.state;
+    const { showLayer } = this.state;
 
     return (
       <div>

@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Feb 2018 21:29:00 GMT and should not be manually modified.
+
+## 5.52.0
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Minor changes
+
+- Converting SCSS to MergeStyles step 1 - file structure
+
+### Patches
+
+- Add notifyPageChange function to List
+- Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots
+- Fixes useTargetWidth prop for ContextualMenu
+- Convert overlay and examples to mergeStyles
+- DetailsList: Groups are now considered for aria-rowcount.
 
 ## 5.51.0
 Fri, 16 Feb 2018 11:23:29 GMT
