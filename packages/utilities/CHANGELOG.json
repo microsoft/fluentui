@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.12.1",
+      "tag": "@uifabric/utilities_v5.12.1",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "0661239920ded0ecfce53788322b4bc5b21860e1",
+            "comment": "fix bug in IE that IE does not support Number.IsInteger"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.1 <6.0.0` to `>=5.12.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.0",
       "tag": "@uifabric/utilities_v5.12.0",
       "date": "Fri, 16 Feb 2018 11:23:29 GMT",

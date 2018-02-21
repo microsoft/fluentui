@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+
+## 5.12.2
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- Adding test coverage for media queries.
 
 ## 5.12.1
 Fri, 16 Feb 2018 11:23:29 GMT

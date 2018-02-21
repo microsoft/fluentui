@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "5.2.2",
+      "tag": "@uifabric/example-app-base_v5.2.2",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "51d47a80898d9834d40205274268e60730f306a1",
+            "comment": "Tweaking css for example pages."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.12.0 <6.0.0` to `>=5.12.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.2.1",
       "tag": "@uifabric/example-app-base_v5.2.1",
       "date": "Mon, 22 Jan 2018 11:14:27 GMT",
