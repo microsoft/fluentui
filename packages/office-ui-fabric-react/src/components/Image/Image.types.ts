@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { ImageBase } from './Image.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
 
 export interface IImage {
 
@@ -12,6 +15,22 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   componentRef?: (component: IImage) => void;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<IImageStyleProps, IImageStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Component
+   * @defaultvalue undefined
+   */
+  className?: string;
+
+  /**
    * If true, fades the image in when loaded.
    * @defaultvalue true
    */
@@ -23,11 +42,6 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
    * @defaultvalue false;
    */
   shouldStartVisible?: boolean;
-
-  /**
-   * If provided, adds the indicated css class to the image.
-   */
-  className?: string;
 
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
@@ -129,4 +143,23 @@ export enum ImageLoadState {
    * @deprecated
    */
   errorLoaded = 3
+}
+
+export interface IImageStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+}
+
+export interface IImageStyles {
+  /**
+   * Style for the root element.
+   */
+  root?: IStyle;
 }
