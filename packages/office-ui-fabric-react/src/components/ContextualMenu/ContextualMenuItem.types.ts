@@ -1,9 +1,9 @@
-import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
+import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 
-export interface IContextualMenuItemChildrenProps
-  extends React.HTMLAttributes<IContextualMenuItemChildrenProps> {
+export interface IContextualMenuItemProps
+  extends React.HTMLAttributes<IContextualMenuItemProps> {
   item: IContextualMenuItem;
   classNames: IMenuItemClassNames;
   index: number;

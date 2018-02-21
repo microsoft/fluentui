@@ -2,8 +2,8 @@ jest.mock('../../utilities/contextMenu');
 
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
-import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
+import { ContextualMenuItem } from './ContextualMenuItem';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { hasSubmenu } from '../../utilities/contextMenu';
@@ -13,7 +13,7 @@ describe('ContextMenuItemChildren', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
-    let wrapper: ReactWrapper<IContextualMenuItemChildrenProps, {}>;
+    let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
 
     beforeEach(() => {
       menuItem = { key: '123' };
@@ -21,7 +21,7 @@ describe('ContextMenuItemChildren', () => {
       onCheckmarkClick = jest.fn();
 
       wrapper = mount(
-        <ContextualMenuItemChildren
+        <ContextualMenuItem
           item={ menuItem }
           classNames={ menuClassNames }
           index={ 1 }
@@ -52,14 +52,14 @@ describe('ContextMenuItemChildren', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
       let menuClassNames: IMenuItemClassNames;
-      let wrapper: ReactWrapper<IContextualMenuItemChildrenProps, {}>;
+      let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
         menuItem = { key: '123', icon: 'itemIcon', name: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
         wrapper = mount(
-          <ContextualMenuItemChildren
+          <ContextualMenuItem
             item={ menuItem }
             classNames={ menuClassNames }
             index={ 1 }
@@ -76,14 +76,14 @@ describe('ContextMenuItemChildren', () => {
     describe('when it doesnt have iconProps', () => {
       let menuItem: IContextualMenuItem;
       let menuClassNames: IMenuItemClassNames;
-      let wrapper: ReactWrapper<IContextualMenuItemChildrenProps, {}>;
+      let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
         menuItem = { key: '123', iconProps: {} };
         menuClassNames = getMenuItemClassNames();
 
         wrapper = mount(
-          <ContextualMenuItemChildren
+          <ContextualMenuItem
             item={ menuItem }
             classNames={ menuClassNames }
             index={ 1 }
@@ -101,7 +101,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when it has a sub menu', () => {
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
-    let wrapper: ReactWrapper<IContextualMenuItemChildrenProps, {}>;
+    let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
 
     beforeEach(() => {
       (hasSubmenu as jest.Mock).mockReturnValue(true);
@@ -109,7 +109,7 @@ describe('ContextMenuItemChildren', () => {
       menuClassNames = getMenuItemClassNames();
 
       wrapper = mount(
-        <ContextualMenuItemChildren
+        <ContextualMenuItem
           item={ menuItem }
           classNames={ menuClassNames }
           index={ 1 }

@@ -4,9 +4,9 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { getRTL } from '../../Utilities';
 import { Icon, IIconProps } from '../../Icon';
-import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
-const ItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemChildrenProps) => {
+const ItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemProps) => {
   // Only present to allow continued use of item.icon which is deprecated.
   const { iconProps, icon } = item;
 
@@ -21,7 +21,7 @@ const ItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemChildrenPro
   return <Icon iconName={ icon } className={ classNames.icon } />;
 };
 
-const CheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemChildrenProps) => {
+const CheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {
   const isItemChecked = getIsChecked(item);
   if (onCheckmarkClick) {
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
@@ -37,14 +37,14 @@ const CheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuIt
   return null;
 };
 
-const ItemName = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
+const ItemName = ({ item, classNames }: IContextualMenuItemProps) => {
   if (item.name) {
     return <span className={ classNames.label }>{ item.name }</span>;
   }
   return null;
 };
 
-const SubMenuIcon = ({ item, classNames }: IContextualMenuItemChildrenProps) => {
+const SubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
     return (
       <Icon
@@ -57,7 +57,7 @@ const SubMenuIcon = ({ item, classNames }: IContextualMenuItemChildrenProps) => 
   return null;
 };
 
-export const ContextualMenuItemChildren: React.StatelessComponent<IContextualMenuItemChildrenProps> = (props) => {
+export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemProps> = (props) => {
   const { item, classNames } = props;
 
   return (

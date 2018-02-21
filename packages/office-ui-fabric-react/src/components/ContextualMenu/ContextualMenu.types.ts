@@ -15,8 +15,8 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
-import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
+import { ContextualMenuItem } from './ContextualMenuItem';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -223,12 +223,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
-   * Method to override the render of the children menu items
-   * @default ContextualMenuItemChildren
+   * Method to override the render of the individual menu items
+   * @default ContextualMenuItem
    */
-  contextualMenuChildrenAs?:
-    React.ComponentClass<IContextualMenuItemChildrenProps> |
-    React.StatelessComponent<IContextualMenuItemChildrenProps>;
+  contextualMenuItemAs?:
+    React.ComponentClass<IContextualMenuItemProps> |
+    React.StatelessComponent<IContextualMenuItemProps>;
 }
 
 export interface IContextualMenuItem {

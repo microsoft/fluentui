@@ -37,8 +37,8 @@ import {
 import {
   VerticalDivider
 } from '../../Divider';
-import { ContextualMenuItemChildren } from './ContextualMenuItemChildren';
-import { IContextualMenuItemChildrenProps } from './ContextualMenuItemChildren.types';
+import { ContextualMenuItem } from './ContextualMenuItem';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -98,7 +98,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
-  private _contextualMenuChildrenAs: React.ComponentClass<IContextualMenuItemChildrenProps> | React.StatelessComponent<IContextualMenuItemChildrenProps>;
+  private _contextualMenuChildrenAs: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -115,7 +115,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     this._isFocusingPreviousElement = false;
     this._isScrollIdle = true;
-    this._contextualMenuChildrenAs = props.contextualMenuChildrenAs || ContextualMenuItemChildren;
+    this._contextualMenuChildrenAs = props.contextualMenuChildrenAs || ContextualMenuItem;
   }
 
   @autobind
