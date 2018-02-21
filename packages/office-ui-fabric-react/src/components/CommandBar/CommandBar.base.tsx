@@ -54,6 +54,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     farItems: []
   };
 
+  private _setSize: number;
   private _overflowSet: IOverflowSet;
   private _resizeGroup: IResizeGroup;
   private _classNames: {[key in keyof ICommandBarStyles]: string };
@@ -78,6 +79,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: '',
     };
 
+    this._setAriaPosinset(commandBardata);
+
     this._classNames = getClassNames(getStyles!, { theme: theme!, className });
 
     return (
@@ -100,6 +103,19 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     this._resizeGroup.remeasure();
   }
 
+  private _setAriaPosinset(data: ICommandBarData): ICommandBarData {
+
+    this._setSize = data.primaryItems.length + (data.overflowItems.length > 0 ? 1 : 0);
+
+    data.primaryItems = data.primaryItems.map((item, i, array) => {
+      item['aria-posinset'] = i + 1;
+      item['aria-setsize'] = this._setSize;
+      return item;
+    });
+
+    return data;
+  }
+
   @autobind
   private _onRenderData(data: ICommandBarData): JSX.Element {
     return (
@@ -111,7 +127,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
           className={ css(this._classNames.primarySet) }
           items={ data.primaryItems }
           overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
-          onRenderItem={ this._onRenderItems }
+          onRenderItem={ this._onRenderItem }
           onRenderOverflowButton={ this._onRenderOverflowButton }
         />
 
@@ -119,7 +135,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         <OverflowSet
           className={ css(this._classNames.secondarySet) }
           items={ data.farItems }
-          onRenderItem={ this._onRenderItems }
+          onRenderItem={ this._onRenderItem }
           onRenderOverflowButton={ nullRender }
         />
       </div>
@@ -127,7 +143,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   @autobind
-  private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
+  private _onRenderItem(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
     let {
       buttonAs: CommandButtonType = CommandBarButton
     } = this.props;
@@ -171,7 +187,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
-    return <OverflowButtonType { ...overflowProps as IButtonProps } />;
+    return <OverflowButtonType aria-posinset={ this._setSize } aria-setsize={ this._setSize } { ...overflowProps as IButtonProps } />;
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
@@ -206,7 +222,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onDataReduced(movedItem);
       }
 
-      return { ...data, primaryItems, overflowItems, cacheKey };
+      return this._setAriaPosinset({ ...data, primaryItems, overflowItems, cacheKey });
     }
 
     return undefined;
@@ -231,7 +247,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onDataGrown(movedItem);
       }
 
-      return { ...data, primaryItems, overflowItems, cacheKey };
+      return this._setAriaPosinset({ ...data, primaryItems, overflowItems, cacheKey });
     }
 
     return undefined;

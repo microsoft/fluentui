@@ -18,7 +18,6 @@ export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}
     return (
       <div>
         <CommandBar
-          shiftOnReduce
           items={ items }
           overflowItems={ overflowItems }
           farItems={ farItems }
