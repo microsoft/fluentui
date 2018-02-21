@@ -1,17 +1,75 @@
 import * as React from 'react';
 
 import {
+  ITextField,
+  ITextFieldProps
+} from './TextField.types';
+import { Label } from '../../Label';
+import { Icon } from '../../Icon';
+import {
   BaseComponent,
+  css,
+  DelayedRender,
+  getId,
+  getNativeProps,
+  inputProperties,
+  textAreaProperties,
   warn
 } from '../../Utilities';
-import { ITextField, ITextFieldProps } from './TextField.types';
-import { TextField } from './TextField/TextField';
+import { AnimationClassNames } from '../../Styling';
+import * as stylesImport from './TextField.scss';
+const styles: any = stylesImport;
 
-export class TextField extends BaseComponent<ITextFieldProps, {}> {
+export interface ITextFieldState {
+  value?: string | undefined;
+
+  /** Is true when the control has focus. */
+  isFocused?: boolean;
+
+  /**
+   * The validation error message.
+   *
+   * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
+   * - If we have done the validation and there is validation error, errorMessage is the validation error message.
+   */
+  errorMessage?: string;
+}
+
+export const DEFAULT_MASK_CHAR = '_';
+
+export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
+  public static defaultProps: ITextFieldProps = {
+    multiline: false,
+    resizable: true,
+    autoAdjustHeight: false,
+    underlined: false,
+    borderless: false,
+    maskChar: DEFAULT_MASK_CHAR,
+    onChanged: () => { /* noop */ },
+    onBeforeChange: () => { /* noop */ },
+    onNotifyValidationResult: () => { /* noop */ },
+    onGetErrorMessage: () => undefined,
+    deferredValidationTime: 200,
+    errorMessage: '',
+    validateOnFocusIn: false,
+    validateOnFocusOut: false,
+    validateOnLoad: true,
+  };
+
   /**
    * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
    */
   protected _shouldUpdateComponentRef = false;
+
+  private _id: string;
+  private _descriptionId: string;
+  private _delayedValidate: (value: string | undefined) => void;
+  private _isMounted: boolean;
+  private _lastValidation: number;
+  private _latestValue: string | undefined;
+  private _latestValidateValue: string | undefined;
+  private _isDescriptionAvailable: boolean;
+  private _textElement: HTMLTextAreaElement;
 
   constructor(props: ITextFieldProps) {
     super(props);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseTextField } from '../BaseTextField';
+import { TextField } from '../TextField';
 import {
   ITextField,
   ITextFieldProps
@@ -110,7 +110,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   public render() {
     return (
-      <BaseTextField
+      <TextField
         { ...this.props }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
@@ -208,7 +208,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
 
   @autobind
   private _onInputChange(value: string) {
-    let { displayValue } = this.state;
+    const { displayValue } = this.state;
     const selectionEnd = this._textField.selectionEnd;
 
     // The initial value of cursorPos does not matter
@@ -281,7 +281,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   private _onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     this._charRemovalData = null;
     if (this._textField.value) {
-      let {
+      const {
         keyCode,
         ctrlKey,
         metaKey
