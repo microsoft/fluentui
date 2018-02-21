@@ -72,6 +72,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       id="Rating0-star-0"
       onFocus={[Function]}
       role="presentation"
+      type="button"
     >
       <span
         className=
@@ -196,6 +197,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       id="Rating0-star-1"
       onFocus={[Function]}
       role="presentation"
+      type="button"
     >
       <span
         className=
@@ -320,6 +322,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       id="Rating0-star-2"
       onFocus={[Function]}
       role="presentation"
+      type="button"
     >
       <span
         className=
@@ -444,6 +447,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       id="Rating0-star-3"
       onFocus={[Function]}
       role="presentation"
+      type="button"
     >
       <span
         className=
@@ -568,6 +572,7 @@ exports[`Rating Renders Rating correctly 1`] = `
       id="Rating0-star-4"
       onFocus={[Function]}
       role="presentation"
+      type="button"
     >
       <span
         className=

@@ -117,6 +117,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
           onFocus={ this._onFocus.bind(this, i) }
           disabled={ disabled || readOnly ? true : false }
           role='presentation'
+          type='button'
         >
           { this._getLabel(i) }
           <RatingStar key={ i + 'rating' }  {...ratingStarProps} />
