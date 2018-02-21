@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix Scrollable-Pane getComputedStyle error - clearing timeouts during componentWillUnmount to avoid using refs after they have been removed",
+      "comment": "Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount",
       "type": "minor"
     }
   ],
