@@ -24,10 +24,6 @@ export interface ISearchBoxState {
 
 @customizable('SearchBox', ['theme'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: ISearchBoxProps = {
-    placeholder: 'Search',
-  };
-
   private _rootElement: HTMLElement;
   private _inputElement: HTMLInputElement;
   private _latestValue: string;
