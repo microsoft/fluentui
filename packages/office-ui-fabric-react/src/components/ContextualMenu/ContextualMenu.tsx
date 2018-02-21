@@ -565,6 +565,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
+        aria-posinset={ focusableElementIndex + 1 }
+        aria-setsize={ totalItemCount }
       >
         <span
           aria-hidden={ true }
