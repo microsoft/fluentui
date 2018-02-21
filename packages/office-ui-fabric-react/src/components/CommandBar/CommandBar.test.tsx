@@ -39,7 +39,7 @@ describe('CommandBar', () => {
     const component = renderer.create(
       <CommandBar items={ items } />
     );
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -102,14 +102,14 @@ describe('CommandBar', () => {
       },
     ];
 
-    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ items }
       />
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
-    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+    const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
@@ -132,25 +132,25 @@ describe('CommandBar', () => {
       },
     ];
 
-    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ items }
       />
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
-    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+    const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
   it('keeps menu open after update if item is still present', () => {
-    let renderContainer = document.createElement('div');
+    const renderContainer = document.createElement('div');
     document.body.appendChild(renderContainer);
 
     try {
-      let items: IContextualMenuItem[] = [
+      const items: IContextualMenuItem[] = [
         {
           name: 'TestText 1',
           key: 'TestKey1',
@@ -173,7 +173,7 @@ describe('CommandBar', () => {
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
-      let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+      const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
@@ -201,7 +201,7 @@ describe('CommandBar', () => {
   });
 
   it('closes menu after update if item is not longer present', () => {
-    let renderContainer = document.createElement('div');
+    const renderContainer = document.createElement('div');
     document.body.appendChild(renderContainer);
 
     try {
@@ -228,7 +228,7 @@ describe('CommandBar', () => {
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
-      let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+      const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
@@ -256,11 +256,11 @@ describe('CommandBar', () => {
   });
 
   it('updates menu after update if item is still present', () => {
-    let renderContainer = document.createElement('div');
+    const renderContainer = document.createElement('div');
     document.body.appendChild(renderContainer);
 
     try {
-      let items: IContextualMenuItem[] = [
+      const items: IContextualMenuItem[] = [
         {
           name: 'TestText 1',
           key: 'TestKey1',
@@ -283,7 +283,7 @@ describe('CommandBar', () => {
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
-      let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+      const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
@@ -319,12 +319,12 @@ describe('CommandBar', () => {
       },
     ];
 
-    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ menuWithNoSubmenu }
       />
     ) as React.Component<CommandBar, {}>;
-    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+    const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
 
     expect(menuItem.querySelector('.ms-CommandBarItem-chevronDown')).not.toEqual(null);
   });
@@ -347,13 +347,13 @@ describe('CommandBar', () => {
       }
     ];
 
-    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+    const renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ menuWithEmptySubMenu }
       />
     ) as React.Component<CommandBar, {}>;
 
-    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+    const menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(menuItem);
 

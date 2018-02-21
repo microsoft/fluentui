@@ -27,7 +27,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
   }
 
   public render() {
-    let {
+    const {
       item,
       onRemoveItem,
       removeButtonAriaLabel

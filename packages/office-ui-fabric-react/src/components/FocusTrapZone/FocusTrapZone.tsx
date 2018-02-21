@@ -23,7 +23,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _isInClickStack: boolean = false;
 
   public componentWillMount() {
-    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
+    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
     if (forceFocusInsideTrap) {
       this._isInFocusStack = true;
       FocusTrapZone._focusStack.push(this);
@@ -35,7 +35,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount() {
-    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
+    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
     if (!elementContains(this._root, this._previouslyFocusedElement) && !disableFirstFocus) {
@@ -52,18 +52,18 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentWillReceiveProps(nextProps: IFocusTrapZoneProps) {
-    let { elementToFocusOnDismiss } = nextProps;
+    const { elementToFocusOnDismiss } = nextProps;
     if (elementToFocusOnDismiss && this._previouslyFocusedElement !== elementToFocusOnDismiss) {
       this._previouslyFocusedElement = elementToFocusOnDismiss;
     }
   }
 
   public componentWillUnmount() {
-    let { ignoreExternalFocusing } = this.props;
+    const { ignoreExternalFocusing } = this.props;
 
     this._events.dispose();
     if (this._isInFocusStack || this._isInClickStack) {
-      let filter = (value: FocusTrapZone) => {
+      const filter = (value: FocusTrapZone) => {
         return this !== value;
       };
       if (this._isInFocusStack) {
@@ -80,8 +80,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public render() {
-    let { className, ariaLabelledBy } = this.props;
-    let divProps = getNativeProps(this.props, divProperties);
+    const { className, ariaLabelledBy } = this.props;
+    const divProps = getNativeProps(this.props, divProperties);
 
     return (
       <div

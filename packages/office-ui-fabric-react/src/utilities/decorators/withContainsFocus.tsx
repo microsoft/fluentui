@@ -25,7 +25,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
     }
 
     public render() {
-      let { containsFocus } = this.state;
+      const { containsFocus } = this.state;
 
       return (
         <div onFocus={ this._handleFocus } onBlur={ this._handleBlur }>

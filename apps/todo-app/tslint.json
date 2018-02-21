@@ -6,6 +6,7 @@
     "no-any": false,
     "typedef": [
       false
-    ]
+    ],
+    "prefer-const": false
   }
 }
