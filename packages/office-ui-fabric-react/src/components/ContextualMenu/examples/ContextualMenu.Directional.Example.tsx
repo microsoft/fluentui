@@ -36,8 +36,6 @@ const DIRECTION_OPTIONS = [{ key: DirectionalHint.topLeftEdge, text: 'Top Left E
 ];
 
 export class ContextualMenuDirectionalExample extends React.Component<{}, IContextualMenuDirectionalExampleState> {
-  private _menuButton: HTMLElement;
-
   public constructor(props: {}) {
     super(props);
 
@@ -91,7 +89,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             />
           }
         </div>
-        <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref={ (element: HTMLDivElement) => this._menuButton = element }>
+        <div className='ms-ContextualMenuDirectionalExample-buttonArea'>
           <DefaultButton
             text='Show context menu'
             menuProps={ {
