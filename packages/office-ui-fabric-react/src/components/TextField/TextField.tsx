@@ -294,7 +294,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const {
       label,
       componentId
-     } = props;
+    } = props;
     if (label) {
       return (<Label htmlFor={ componentId }>{ label }</Label>);
     }
@@ -370,6 +370,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
+    /**
+     * Size is set to 1 for the input element in order to force the browser to
+     * respect the width set on parent elements.
+     * See: https://html.spec.whatwg.org/multipage/input.html#the-size-attribute
+     */
     return (
       <input
         type={ 'text' }
@@ -385,6 +390,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
+        size={ 1 }
       />
     );
   }
