@@ -58,12 +58,19 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    const { ariaLabel, placeholder, className, disabled, underlined, getStyles, theme, clearButtonProps } = this.props;
+    const { 
+      ariaLabel,
+      placeholder,
+      className,
+      disabled,
+      underlined,
+      getStyles,
+      labelText,
+      theme,
+      clearButtonProps
+    } = this.props;
     const { value, hasFocus, id } = this.state;
-
-    if (this.props.labelText) {
-      placeholder = this.props.labelText;
-    }
+    const placeholderValue = labelText === undefined ? placeholder : labelText;
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -86,7 +93,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         <input
           id={ id }
           className={ classNames.field }
-          placeholder={ placeholder }
+          placeholder={ placeholderValue }
           onChange={ this._onInputChange }
           onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
