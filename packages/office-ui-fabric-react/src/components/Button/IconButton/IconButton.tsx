@@ -12,7 +12,7 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    let { styles, theme } = this.props;
+    const { styles, theme } = this.props;
 
     return (
       <BaseButton

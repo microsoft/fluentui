@@ -4,7 +4,6 @@
   ],
   "rules": {
     "jsx-no-string-ref": false,
-    "jsx-key": false,
     "jsx-ban-props": false,
     "max-line-length": [
       false,
@@ -12,7 +11,6 @@
     ],
     "no-any": false,
     "no-internal-module": false,
-    "prefer-const": false,
     "typedef": [
       false
     ],

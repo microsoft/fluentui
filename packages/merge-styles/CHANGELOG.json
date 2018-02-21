@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.12.2",
+      "tag": "@uifabric/merge-styles_v5.12.2",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "51d47a80898d9834d40205274268e60730f306a1",
+            "comment": "Adding test coverage for media queries."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.1",
       "tag": "@uifabric/merge-styles_v5.12.1",
       "date": "Fri, 16 Feb 2018 11:23:29 GMT",

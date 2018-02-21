@@ -101,6 +101,18 @@ export interface ISwatchColorPickerProps {
   * Optional styles for the component.
   */
   getColorGridCellStyles?: IStyleFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
+
+  /**
+   * Optional, whether to update focus when a cell is hovered.
+   * @default false
+   */
+  focusOnHover?: boolean;
+
+  /**
+   * Selector to focus on mouseLeave
+   * SHOULD ONLY BE USED IN CONJUNCTION WITH focusOnHover
+   */
+  mouseLeaveParentSelector?: string | undefined;
 }
 
 /**

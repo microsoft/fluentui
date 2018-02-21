@@ -13,34 +13,34 @@ describe('Slider', () => {
 
   it('renders Slider correctly', () => {
     const component = renderer.create(<Slider />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders a slider', () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    const component = ReactTestUtils.renderIntoDocument(
       <Slider label='slider' />
     );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
 
     expect(labelElement.textContent).toEqual('slider');
   });
 
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-    let onChange = (val: any) => {
+    const onChange = (val: any) => {
       changedValue = val;
     };
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Slider
         onChange={ onChange }
       />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
-    let sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
+    const sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
     sliderLine.getBoundingClientRect = () => ({
       left: 0,
@@ -71,15 +71,15 @@ describe('Slider', () => {
   });
 
   it('has type=button on all buttons', () => {
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    const component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Slider />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let allButtons = renderedDOM.querySelectorAll('button');
+    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const allButtons = renderedDOM.querySelectorAll('button');
 
     for (let i = 0; i < allButtons.length; i++) {
-      let button = allButtons[i];
+      const button = allButtons[i];
 
       expect(button.getAttribute('type')).toEqual('button');
     }

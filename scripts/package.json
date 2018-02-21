@@ -11,7 +11,7 @@
     "@microsoft/api-extractor": "^4.2.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=5.12.1 <6.0.0",
+    "@uifabric/merge-styles": ">=5.12.2 <6.0.0",
     "autoprefixer": "^7.1.5",
     "awesome-typescript-loader": "^3.2.3",
     "bundlesize": "^0.15.2",
@@ -49,7 +49,7 @@
   "bundlesize": [
     {
       "path": "../apps/test-bundle-button/dist/main.min.js",
-      "maxSize": "43.1 kB"
+      "maxSize": "43.3 kB"
     }
   ]
 }
