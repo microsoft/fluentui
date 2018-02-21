@@ -13,7 +13,7 @@ import { getStyles } from './Rating.styles';
 describe('Rating', () => {
   it('Renders Rating correctly', () => {
     const component = renderer.create(<Rating />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -33,14 +33,14 @@ describe('Rating', () => {
       threwException = true;
     }
     expect(threwException).toEqual(false);
-    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
 
-    let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
-    let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
+    const ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
+    const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
 
     const checkState = (ratingToCheck: number, state: string) => {
-      let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
-      let width = iconElement.style.width;
+      const iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
+      const width = iconElement.style.width;
       expect(width).toEqual(state);
     };
 
@@ -76,13 +76,13 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
 
-    let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
+    const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
 
     const checkState = (ratingToCheck: number, state: string) => {
-      let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
-      let width = iconElement.style.width;
+      const iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
+      const width = iconElement.style.width;
       expect(width).toEqual(state);
     };
 
@@ -112,12 +112,12 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
-    let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
+    const renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
 
     const checkState = (ratingToCheck: number, state: string) => {
-      let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
-      let width = iconElement.style.width;
+      const iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
+      const width = iconElement.style.width;
       expect(width).toEqual(state);
     };
 
@@ -146,8 +146,8 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
     expect((ratingButtons[0] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[1] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[2] as HTMLButtonElement).disabled).toEqual(true);
@@ -175,18 +175,18 @@ describe('Rating', () => {
     }
     expect(threwException).toEqual(false);
 
-    let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const ratingButtons = renderedDOM.querySelectorAll('.ms-Rating-button');
     expect((ratingButtons[0] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[1] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[2] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[3] as HTMLButtonElement).disabled).toEqual(true);
     expect((ratingButtons[4] as HTMLButtonElement).disabled).toEqual(true);
 
-    let ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
+    const ratingFrontStars = renderedDOM.querySelectorAll('.ms-RatingStar-front');
     const checkState = (ratingToCheck: number, state: string) => {
-      let iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
-      let width = iconElement.style.width;
+      const iconElement = ratingFrontStars[ratingToCheck - 1] as HTMLElement;
+      const width = iconElement.style.width;
       expect(width).toEqual(state);
     };
 

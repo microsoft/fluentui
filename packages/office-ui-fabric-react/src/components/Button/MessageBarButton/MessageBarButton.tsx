@@ -8,7 +8,7 @@ import { getStyles } from './MessageBarButton.styles';
 export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
 
   public render() {
-    let { styles, theme } = this.props;
+    const { styles, theme } = this.props;
 
     return (
       <DefaultButton

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add notifyPageChange function to List",
+      "comment": "Enable jsx-key tslint rule",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "alebet@microsoft.com"
+  "email": "mark@thedutchies.com"
 }

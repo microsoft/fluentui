@@ -10,7 +10,7 @@ describe('Checkbox', () => {
         label='Standard checkbox'
         ariaDescribedBy={ 'descriptionID' }
       />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

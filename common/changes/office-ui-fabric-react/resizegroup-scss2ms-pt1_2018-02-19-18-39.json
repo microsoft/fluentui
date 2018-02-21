@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Converting SCSS to MergeStyles step 1 - file structure",
+      "comment": "Converting ResizeGroup SCSS to MergeStyles step 1 - file structure",
       "type": "minor"
     }
   ],
