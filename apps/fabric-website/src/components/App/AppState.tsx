@@ -77,9 +77,8 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
-          title: 'Beta Theme Generator',
+          title: 'Theme generator',
           url: '#/styles/themeGenerator',
-          isHiddenFromMainNav: true,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
         },
         {
