@@ -10,7 +10,7 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import './DetailsList.Grouped.Example.scss';
 
-let _columns = [
+const _columns = [
   {
     key: 'name',
     name: 'Name',
@@ -27,7 +27,7 @@ let _columns = [
     maxWidth: 200
   }
 ];
-let _items = [
+const _items = [
   {
     key: 'a',
     name: 'a',
@@ -69,7 +69,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
   }
 
   public render() {
-    let { items } = this.state;
+    const { items } = this.state;
 
     return (
       <Fabric className='DetailsList-grouped-example'>
@@ -114,7 +114,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
 
   @autobind
   private _addItem() {
-    let items = this.state.items;
+    const items = this.state.items;
 
     this.setState({
       items: items.concat([{

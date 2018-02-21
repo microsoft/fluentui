@@ -26,7 +26,7 @@ describe('TextField', () => {
 
   it('renders TextField correctly', () => {
     const component = renderer.create(<TextField label='Label' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -37,7 +37,7 @@ describe('TextField', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
         label={ exampleLabel }
-        defaultValue={ exampleValue }
+        value={ exampleValue }
       />
     );
 
@@ -98,7 +98,7 @@ describe('TextField', () => {
 
   it('should render multiline as text area element', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField defaultValue='This\nIs\nMultiline\nText\n' multiline />
+      <TextField value='This\nIs\nMultiline\nText\n' multiline />
     );
 
     // Assert on the input element.
@@ -110,7 +110,7 @@ describe('TextField', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
         label='text-field-label'
-        defaultValue='whatever value'
+        value='whatever value'
       />
     );
 
@@ -154,7 +154,7 @@ describe('TextField', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
-          defaultValue='whatever value'
+          value='whatever value'
           onGetErrorMessage={ validator }
         />
       );
@@ -174,7 +174,7 @@ describe('TextField', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
-          defaultValue='whatever value'
+          value='whatever value'
           onGetErrorMessage={ validator }
         />
       );
@@ -190,7 +190,7 @@ describe('TextField', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
-          defaultValue='whatever value'
+          value='whatever value'
           // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ () => errorMessage }
         />
@@ -203,7 +203,7 @@ describe('TextField', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
-          defaultValue='whatever value'
+          value='whatever value'
           // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ () => Promise.resolve(errorMessage) }
         />
@@ -217,7 +217,7 @@ describe('TextField', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
-          defaultValue='whatever value'
+          value='whatever value'
           // tslint:disable-next-line:jsx-no-lambda
           onGetErrorMessage={ () => '' }
         />
@@ -268,14 +268,14 @@ describe('TextField', () => {
 
     it('should trigger validation only on focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
-          defaultValue='initial value'
+          value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusIn
         />
@@ -287,42 +287,52 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input '));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should trigger validation only on blur', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
-          defaultValue='initial value'
+          value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusOut
         />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      ReactTestUtils.Simulate.focus(inputDOM);
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
       expect(validationCallCount).toEqual(1);
 
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input va'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
+
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(3);
     });
 
     it('should trigger validation on both blur and focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
-          defaultValue='initial value'
+          value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusOut
           validateOnFocusIn
@@ -335,21 +345,32 @@ describe('TextField', () => {
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).toEqual(2);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before foc'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before focus'));
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).toEqual(3);
+
       ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(validationCallCount).toEqual(3);
+      expect(validationCallCount).toEqual(4);
+
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before bl'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).toEqual(5);
     });
 
     it('should not trigger validation on component mount', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return '';
       };
 
       renderIntoDocument(
         <TextField
-          defaultValue='initial value'
+          value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnLoad={ false }
         />
@@ -381,7 +402,7 @@ describe('TextField', () => {
 
   it('should call onChanged handler for input change', () => {
     let callCount = 0;
-    let onChangedSpy = (value: string) => { callCount++; };
+    const onChangedSpy = (value: string) => { callCount++; };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField

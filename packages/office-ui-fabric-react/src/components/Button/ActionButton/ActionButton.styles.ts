@@ -15,8 +15,8 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let actionButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const actionButtonStyles: IButtonStyles = {
     root: {
       padding: DEFAULT_PADDING,
       height: DEFAULT_BUTTON_HEIGHT,
