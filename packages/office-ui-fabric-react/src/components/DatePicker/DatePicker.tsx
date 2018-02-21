@@ -287,6 +287,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     });
   }
 
+  public focus() {
+    if (this._textField) {
+      this._textField.focus();
+    }
+  }
+
   @autobind
   private _onCalloutPositioned() {
     this._calendar.focus();
