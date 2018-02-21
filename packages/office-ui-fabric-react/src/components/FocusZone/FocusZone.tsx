@@ -376,7 +376,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.home:
           if (
             this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)) {
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false, false)) {
             return false;
           }
           const firstChild = this._root.firstChild as HTMLElement;
@@ -388,7 +388,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.end:
           if (
             this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)) {
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true, false)) {
             return false;
           }
 
