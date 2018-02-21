@@ -19,7 +19,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * Placeholder for the search box.
-   * @default "Search"
    */
   placeholder?: string;
 
