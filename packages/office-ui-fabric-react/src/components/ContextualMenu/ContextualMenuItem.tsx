@@ -6,7 +6,7 @@ import { getRTL } from '../../Utilities';
 import { Icon, IIconProps } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
-const ItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemProps) => {
+const renderItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemProps) => {
   // Only present to allow continued use of item.icon which is deprecated.
   const { iconProps, icon } = item;
 
@@ -21,7 +21,7 @@ const ItemIcon = ({ hasIcons, item, classNames }: IContextualMenuItemProps) => {
   return <Icon iconName={ icon } className={ classNames.icon } />;
 };
 
-const CheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {
+const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {
   const isItemChecked = getIsChecked(item);
   if (onCheckmarkClick) {
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
@@ -37,14 +37,14 @@ const CheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuIt
   return null;
 };
 
-const ItemName = ({ item, classNames }: IContextualMenuItemProps) => {
+const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
   if (item.name) {
     return <span className={ classNames.label }>{ item.name }</span>;
   }
   return null;
 };
 
-const SubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
+const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
     return (
       <Icon
@@ -66,10 +66,10 @@ export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemPro
         item.split ? classNames.linkContentMenu : classNames.linkContent
       }
     >
-      <CheckMarkIcon {...props} />
-      <ItemIcon {...props} />
-      <ItemName {...props} />
-      <SubMenuIcon { ...props } />
+      { renderCheckMarkIcon(props) }
+      { renderItemIcon(props) }
+      { renderItemName(props) }
+      { renderSubMenuIcon(props) }
     </div>
   );
 };

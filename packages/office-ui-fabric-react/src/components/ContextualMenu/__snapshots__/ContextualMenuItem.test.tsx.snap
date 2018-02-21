@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContextMenuItemChildren when a checkmark icon renders the component with the checkmark 1`] = `
-ReactWrapper {
+ShallowWrapper {
   "length": 1,
+  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Unknown
     classNames={
       Object {
@@ -36,157 +37,59 @@ ReactWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
-      "classNames": Object {
-        "checkmarkIcon": "checkmarkIcon",
-        "divider": "---",
-        "icon": "icon",
-        "item": "item",
-        "label": "label",
-        "linkContent": "linkContent",
-        "linkContentMenu": "linkContentMenu",
-        "root": "root",
-        "splitContainer": "splitContainer",
-        "splitMenu": "splitMenu",
-        "splitPrimary": "splitPrimary",
-        "subMenuIcon": "subMenuIcon",
-      },
-      "hasIcons": undefined,
-      "index": 1,
-      "item": Object {
-        "key": "123",
-      },
-      "onCheckmarkClick": [Function],
+      "children": Array [
+        <Unknown
+          className="checkmarkIcon"
+          iconName=""
+          onClick={[Function]}
+        />,
+        null,
+        null,
+        null,
+      ],
+      "className": "linkContent",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": <div
-        class="linkContent"
-      >
-        <i
-          aria-hidden="true"
-          class=
-              ms-Icon-placeHolder
-              checkmarkIcon
-              {
-                width: 1em;
-              }
-          role="presentation"
-        />
-      </div>,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "checkmarkIcon",
+          "iconName": "",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      null,
+      null,
+      null,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
       "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <CheckMarkIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={undefined}
-            index={1}
-            item={
-              Object {
-                "key": "123",
-              }
-            }
-            onCheckmarkClick={[Function]}
+          <Unknown
+            className="checkmarkIcon"
+            iconName=""
+            onClick={[Function]}
           />,
-          <ItemIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={undefined}
-            index={1}
-            item={
-              Object {
-                "key": "123",
-              }
-            }
-            onCheckmarkClick={[Function]}
-          />,
-          <ItemName
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={undefined}
-            index={1}
-            item={
-              Object {
-                "key": "123",
-              }
-            }
-            onCheckmarkClick={[Function]}
-          />,
-          <SubMenuIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={undefined}
-            index={1}
-            item={
-              Object {
-                "key": "123",
-              }
-            }
-            onCheckmarkClick={[Function]}
-          />,
+          null,
+          null,
+          null,
         ],
         "className": "linkContent",
       },
@@ -197,490 +100,19 @@ ReactWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": undefined,
-            "index": 1,
-            "item": Object {
-              "key": "123",
-            },
-            "onCheckmarkClick": [Function],
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "checkmarkIcon",
-              "iconName": "",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": <i
-                aria-hidden="true"
-                class=
-                    ms-Icon-placeHolder
-                    checkmarkIcon
-                    {
-                      width: 1em;
-                    }
-                role="presentation"
-              />,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-hidden": true,
-                "aria-label": undefined,
-                "className": 
-                  ms-Icon-placeHolder
-                  checkmarkIcon
-                  {
-                    width: 1em;
-                  },
-                "onClick": [Function],
-                "role": "presentation",
-              },
-              "ref": null,
-              "rendered": Array [
-                undefined,
-              ],
-              "type": "i",
-            },
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": undefined,
-            "index": 1,
-            "item": Object {
-              "key": "123",
-            },
-            "onCheckmarkClick": [Function],
+            "className": "checkmarkIcon",
+            "iconName": "",
+            "onClick": [Function],
           },
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": undefined,
-            "index": 1,
-            "item": Object {
-              "key": "123",
-            },
-            "onCheckmarkClick": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": undefined,
-            "index": 1,
-            "item": Object {
-              "key": "123",
-            },
-            "onCheckmarkClick": [Function],
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        null,
+        null,
+        null,
       ],
       "type": "div",
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "classNames": Object {
-          "checkmarkIcon": "checkmarkIcon",
-          "divider": "---",
-          "icon": "icon",
-          "item": "item",
-          "label": "label",
-          "linkContent": "linkContent",
-          "linkContentMenu": "linkContentMenu",
-          "root": "root",
-          "splitContainer": "splitContainer",
-          "splitMenu": "splitMenu",
-          "splitPrimary": "splitPrimary",
-          "subMenuIcon": "subMenuIcon",
-        },
-        "hasIcons": undefined,
-        "index": 1,
-        "item": Object {
-          "key": "123",
-        },
-        "onCheckmarkClick": [Function],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": <div
-          class="linkContent"
-        >
-          <i
-            aria-hidden="true"
-            class=
-                ms-Icon-placeHolder
-                checkmarkIcon
-                {
-                  width: 1em;
-                }
-            role="presentation"
-          />
-        </div>,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <CheckMarkIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={undefined}
-              index={1}
-              item={
-                Object {
-                  "key": "123",
-                }
-              }
-              onCheckmarkClick={[Function]}
-            />,
-            <ItemIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={undefined}
-              index={1}
-              item={
-                Object {
-                  "key": "123",
-                }
-              }
-              onCheckmarkClick={[Function]}
-            />,
-            <ItemName
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={undefined}
-              index={1}
-              item={
-                Object {
-                  "key": "123",
-                }
-              }
-              onCheckmarkClick={[Function]}
-            />,
-            <SubMenuIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={undefined}
-              index={1}
-              item={
-                Object {
-                  "key": "123",
-                }
-              }
-              onCheckmarkClick={[Function]}
-            />,
-          ],
-          "className": "linkContent",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": undefined,
-              "index": 1,
-              "item": Object {
-                "key": "123",
-              },
-              "onCheckmarkClick": [Function],
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "checkmarkIcon",
-                "iconName": "",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": <i
-                  aria-hidden="true"
-                  class=
-                      ms-Icon-placeHolder
-                      checkmarkIcon
-                      {
-                        width: 1em;
-                      }
-                  role="presentation"
-                />,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "aria-hidden": true,
-                  "aria-label": undefined,
-                  "className": 
-                    ms-Icon-placeHolder
-                    checkmarkIcon
-                    {
-                      width: 1em;
-                    },
-                  "onClick": [Function],
-                  "role": "presentation",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                ],
-                "type": "i",
-              },
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": undefined,
-              "index": 1,
-              "item": Object {
-                "key": "123",
-              },
-              "onCheckmarkClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": undefined,
-              "index": 1,
-              "item": Object {
-                "key": "123",
-              },
-              "onCheckmarkClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": undefined,
-              "index": 1,
-              "item": Object {
-                "key": "123",
-              },
-              "onCheckmarkClick": [Function],
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -694,8 +126,9 @@ ReactWrapper {
 `;
 
 exports[`ContextMenuItemChildren when it has a sub menu renders the menu icon 1`] = `
-ReactWrapper {
+ShallowWrapper {
   "length": 1,
+  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Unknown
     classNames={
       Object {
@@ -730,763 +163,102 @@ ReactWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
-      "classNames": Object {
-        "checkmarkIcon": "checkmarkIcon",
-        "divider": "---",
-        "icon": "icon",
-        "item": "item",
-        "label": "label",
-        "linkContent": "linkContent",
-        "linkContentMenu": "linkContentMenu",
-        "root": "root",
-        "splitContainer": "splitContainer",
-        "splitMenu": "splitMenu",
-        "splitPrimary": "splitPrimary",
-        "subMenuIcon": "subMenuIcon",
-      },
-      "hasIcons": true,
-      "index": 1,
-      "item": Object {
-        "iconProps": Object {},
-        "key": "123",
-        "submenuIconProps": Object {},
-      },
+      "children": Array [
+        null,
+        <Unknown
+          className="icon"
+        />,
+        null,
+        <Unknown
+          className="subMenuIcon"
+          iconName="ChevronRight"
+        />,
+      ],
+      "className": "linkContent",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": <div
-        class="linkContent"
-      >
-        <i
-          aria-hidden="true"
-          class=
-              icon
-              {
-                display: inline-block;
-              }
-          role="presentation"
-        />
-        <i
-          aria-hidden="true"
-          class=
-              subMenuIcon
-              {
-                display: inline-block;
-              }
-          data-icon-name="ChevronRight"
-          role="presentation"
-        />
-      </div>,
+    "rendered": Array [
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "icon",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "subMenuIcon",
+          "iconName": "ChevronRight",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
       "key": undefined,
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <CheckMarkIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              }
-            }
+          null,
+          <Unknown
+            className="icon"
           />,
-          <ItemIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              }
-            }
-          />,
-          <ItemName
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              }
-            }
-          />,
-          <SubMenuIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              }
-            }
+          null,
+          <Unknown
+            className="subMenuIcon"
+            iconName="ChevronRight"
           />,
         ],
         "className": "linkContent",
       },
       "ref": null,
       "rendered": Array [
+        null,
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-              "submenuIconProps": Object {},
-            },
+            "className": "icon",
           },
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
+        null,
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-              "submenuIconProps": Object {},
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "icon",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": <i
-                aria-hidden="true"
-                class=
-                    icon
-                    {
-                      display: inline-block;
-                    }
-                role="presentation"
-              />,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-hidden": true,
-                "aria-label": undefined,
-                "children": undefined,
-                "className": 
-                  icon
-                  {
-                    display: inline-block;
-                  },
-                "data-icon-name": undefined,
-                "role": "presentation",
-              },
-              "ref": null,
-              "rendered": Array [
-                undefined,
-              ],
-              "type": "i",
-            },
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-              "submenuIconProps": Object {},
-            },
+            "className": "subMenuIcon",
+            "iconName": "ChevronRight",
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-              "submenuIconProps": Object {},
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "subMenuIcon",
-              "iconName": "ChevronRight",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": <i
-                aria-hidden="true"
-                class=
-                    subMenuIcon
-                    {
-                      display: inline-block;
-                    }
-                data-icon-name="ChevronRight"
-                role="presentation"
-              />,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-hidden": true,
-                "aria-label": undefined,
-                "children": undefined,
-                "className": 
-                  subMenuIcon
-                  {
-                    display: inline-block;
-                  },
-                "data-icon-name": "ChevronRight",
-                "role": "presentation",
-              },
-              "ref": null,
-              "rendered": Array [
-                undefined,
-              ],
-              "type": "i",
-            },
-            "type": [Function],
-          },
           "type": [Function],
         },
       ],
       "type": "div",
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "classNames": Object {
-          "checkmarkIcon": "checkmarkIcon",
-          "divider": "---",
-          "icon": "icon",
-          "item": "item",
-          "label": "label",
-          "linkContent": "linkContent",
-          "linkContentMenu": "linkContentMenu",
-          "root": "root",
-          "splitContainer": "splitContainer",
-          "splitMenu": "splitMenu",
-          "splitPrimary": "splitPrimary",
-          "subMenuIcon": "subMenuIcon",
-        },
-        "hasIcons": true,
-        "index": 1,
-        "item": Object {
-          "iconProps": Object {},
-          "key": "123",
-          "submenuIconProps": Object {},
-        },
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": <div
-          class="linkContent"
-        >
-          <i
-            aria-hidden="true"
-            class=
-                icon
-                {
-                  display: inline-block;
-                }
-            role="presentation"
-          />
-          <i
-            aria-hidden="true"
-            class=
-                subMenuIcon
-                {
-                  display: inline-block;
-                }
-            data-icon-name="ChevronRight"
-            role="presentation"
-          />
-        </div>,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <CheckMarkIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                  "submenuIconProps": Object {},
-                }
-              }
-            />,
-            <ItemIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                  "submenuIconProps": Object {},
-                }
-              }
-            />,
-            <ItemName
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                  "submenuIconProps": Object {},
-                }
-              }
-            />,
-            <SubMenuIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                  "submenuIconProps": Object {},
-                }
-              }
-            />,
-          ],
-          "className": "linkContent",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "icon",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": <i
-                  aria-hidden="true"
-                  class=
-                      icon
-                      {
-                        display: inline-block;
-                      }
-                  role="presentation"
-                />,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "aria-hidden": true,
-                  "aria-label": undefined,
-                  "children": undefined,
-                  "className": 
-                    icon
-                    {
-                      display: inline-block;
-                    },
-                  "data-icon-name": undefined,
-                  "role": "presentation",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                ],
-                "type": "i",
-              },
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-                "submenuIconProps": Object {},
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "subMenuIcon",
-                "iconName": "ChevronRight",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": <i
-                  aria-hidden="true"
-                  class=
-                      subMenuIcon
-                      {
-                        display: inline-block;
-                      }
-                  data-icon-name="ChevronRight"
-                  role="presentation"
-                />,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "aria-hidden": true,
-                  "aria-label": undefined,
-                  "children": undefined,
-                  "className": 
-                    subMenuIcon
-                    {
-                      display: inline-block;
-                    },
-                  "data-icon-name": "ChevronRight",
-                  "role": "presentation",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                ],
-                "type": "i",
-              },
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-      "type": [Function],
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -1500,8 +272,9 @@ ReactWrapper {
 `;
 
 exports[`ContextMenuItemChildren when it has icons when it doesnt have iconProps renders the icon with iconName 1`] = `
-ReactWrapper {
+ShallowWrapper {
   "length": 1,
+  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Unknown
     classNames={
       Object {
@@ -1535,643 +308,74 @@ ReactWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
-      "classNames": Object {
-        "checkmarkIcon": "checkmarkIcon",
-        "divider": "---",
-        "icon": "icon",
-        "item": "item",
-        "label": "label",
-        "linkContent": "linkContent",
-        "linkContentMenu": "linkContentMenu",
-        "root": "root",
-        "splitContainer": "splitContainer",
-        "splitMenu": "splitMenu",
-        "splitPrimary": "splitPrimary",
-        "subMenuIcon": "subMenuIcon",
-      },
-      "hasIcons": true,
-      "index": 1,
-      "item": Object {
-        "iconProps": Object {},
-        "key": "123",
-      },
+      "children": Array [
+        null,
+        <Unknown
+          className="icon"
+        />,
+        null,
+        null,
+      ],
+      "className": "linkContent",
     },
     "ref": null,
-    "rendered": Object {
-      "instance": <div
-        class="linkContent"
-      >
-        <i
-          aria-hidden="true"
-          class=
-              icon
-              {
-                display: inline-block;
-              }
-          role="presentation"
-        />
-      </div>,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <CheckMarkIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-              }
-            }
-          />,
-          <ItemIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-              }
-            }
-          />,
-          <ItemName
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-              }
-            }
-          />,
-          <SubMenuIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "iconProps": Object {},
-                "key": "123",
-              }
-            }
-          />,
-        ],
-        "className": "linkContent",
+    "rendered": Array [
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "icon",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
       },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "icon",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": <i
-                aria-hidden="true"
-                class=
-                    icon
-                    {
-                      display: inline-block;
-                    }
-                role="presentation"
-              />,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-hidden": true,
-                "aria-label": undefined,
-                "children": undefined,
-                "className": 
-                  icon
-                  {
-                    display: inline-block;
-                  },
-                "data-icon-name": undefined,
-                "role": "presentation",
-              },
-              "ref": null,
-              "rendered": Array [
-                undefined,
-              ],
-              "type": "i",
-            },
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "iconProps": Object {},
-              "key": "123",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": "div",
-    },
-    "type": [Function],
+      null,
+      null,
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "host",
       "props": Object {
-        "classNames": Object {
-          "checkmarkIcon": "checkmarkIcon",
-          "divider": "---",
-          "icon": "icon",
-          "item": "item",
-          "label": "label",
-          "linkContent": "linkContent",
-          "linkContentMenu": "linkContentMenu",
-          "root": "root",
-          "splitContainer": "splitContainer",
-          "splitMenu": "splitMenu",
-          "splitPrimary": "splitPrimary",
-          "subMenuIcon": "subMenuIcon",
-        },
-        "hasIcons": true,
-        "index": 1,
-        "item": Object {
-          "iconProps": Object {},
-          "key": "123",
-        },
+        "children": Array [
+          null,
+          <Unknown
+            className="icon"
+          />,
+          null,
+          null,
+        ],
+        "className": "linkContent",
       },
       "ref": null,
-      "rendered": Object {
-        "instance": <div
-          class="linkContent"
-        >
-          <i
-            aria-hidden="true"
-            class=
-                icon
-                {
-                  display: inline-block;
-                }
-            role="presentation"
-          />
-        </div>,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <CheckMarkIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                }
-              }
-            />,
-            <ItemIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                }
-              }
-            />,
-            <ItemName
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                }
-              }
-            />,
-            <SubMenuIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "iconProps": Object {},
-                  "key": "123",
-                }
-              }
-            />,
-          ],
-          "className": "linkContent",
+      "rendered": Array [
+        null,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "icon",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
         },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "icon",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": <i
-                  aria-hidden="true"
-                  class=
-                      icon
-                      {
-                        display: inline-block;
-                      }
-                  role="presentation"
-                />,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "aria-hidden": true,
-                  "aria-label": undefined,
-                  "children": undefined,
-                  "className": 
-                    icon
-                    {
-                      display: inline-block;
-                    },
-                  "data-icon-name": undefined,
-                  "role": "presentation",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                ],
-                "type": "i",
-              },
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "iconProps": Object {},
-                "key": "123",
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-        ],
-        "type": "div",
-      },
-      "type": [Function],
+        null,
+        null,
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
@@ -2185,8 +389,9 @@ ReactWrapper {
 `;
 
 exports[`ContextMenuItemChildren when it has icons when it has iconProps renders the icon 1`] = `
-ReactWrapper {
+ShallowWrapper {
   "length": 1,
+  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Unknown
     classNames={
       Object {
@@ -2221,711 +426,108 @@ ReactWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "host",
     "props": Object {
-      "classNames": Object {
-        "checkmarkIcon": "checkmarkIcon",
-        "divider": "---",
-        "icon": "icon",
-        "item": "item",
-        "label": "label",
-        "linkContent": "linkContent",
-        "linkContentMenu": "linkContentMenu",
-        "root": "root",
-        "splitContainer": "splitContainer",
-        "splitMenu": "splitMenu",
-        "splitPrimary": "splitPrimary",
-        "subMenuIcon": "subMenuIcon",
-      },
-      "hasIcons": true,
-      "index": 1,
-      "item": Object {
-        "icon": "itemIcon",
-        "key": "123",
-        "name": "menuItem",
-      },
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": <div
-        class="linkContent"
-      >
-        <i
-          aria-hidden="true"
-          class=
-              icon
-              {
-                display: inline-block;
-              }
-          data-icon-name="itemIcon"
-          role="presentation"
-        />
+      "children": Array [
+        null,
+        <Unknown
+          className="icon"
+          iconName="itemIcon"
+        />,
         <span
-          class="label"
+          className="label"
         >
           menuItem
-        </span>
-      </div>,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <CheckMarkIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              }
-            }
-          />,
-          <ItemIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              }
-            }
-          />,
-          <ItemName
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              }
-            }
-          />,
-          <SubMenuIcon
-            classNames={
-              Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              }
-            }
-            hasIcons={true}
-            index={1}
-            item={
-              Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              }
-            }
-          />,
-        ],
-        "className": "linkContent",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "icon": "itemIcon",
-              "key": "123",
-              "name": "menuItem",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "icon": "itemIcon",
-              "key": "123",
-              "name": "menuItem",
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "className": "icon",
-              "iconName": "itemIcon",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": <i
-                aria-hidden="true"
-                class=
-                    icon
-                    {
-                      display: inline-block;
-                    }
-                data-icon-name="itemIcon"
-                role="presentation"
-              />,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "aria-hidden": true,
-                "aria-label": undefined,
-                "children": undefined,
-                "className": 
-                  icon
-                  {
-                    display: inline-block;
-                  },
-                "data-icon-name": "itemIcon",
-                "role": "presentation",
-              },
-              "ref": null,
-              "rendered": Array [
-                undefined,
-              ],
-              "type": "i",
-            },
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "icon": "itemIcon",
-              "key": "123",
-              "name": "menuItem",
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": <span
-              class="label"
-            >
-              menuItem
-            </span>,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "menuItem",
-              "className": "label",
-            },
-            "ref": null,
-            "rendered": Array [
-              "menuItem",
-            ],
-            "type": "span",
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "classNames": Object {
-              "checkmarkIcon": "checkmarkIcon",
-              "divider": "---",
-              "icon": "icon",
-              "item": "item",
-              "label": "label",
-              "linkContent": "linkContent",
-              "linkContentMenu": "linkContentMenu",
-              "root": "root",
-              "splitContainer": "splitContainer",
-              "splitMenu": "splitMenu",
-              "splitPrimary": "splitPrimary",
-              "subMenuIcon": "subMenuIcon",
-            },
-            "hasIcons": true,
-            "index": 1,
-            "item": Object {
-              "icon": "itemIcon",
-              "key": "123",
-              "name": "menuItem",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
+        </span>,
+        null,
       ],
-      "type": "div",
+      "className": "linkContent",
     },
-    "type": [Function],
+    "ref": null,
+    "rendered": Array [
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "className": "icon",
+          "iconName": "itemIcon",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "menuItem",
+          "className": "label",
+        },
+        "ref": null,
+        "rendered": "menuItem",
+        "type": "span",
+      },
+      null,
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "host",
       "props": Object {
-        "classNames": Object {
-          "checkmarkIcon": "checkmarkIcon",
-          "divider": "---",
-          "icon": "icon",
-          "item": "item",
-          "label": "label",
-          "linkContent": "linkContent",
-          "linkContentMenu": "linkContentMenu",
-          "root": "root",
-          "splitContainer": "splitContainer",
-          "splitMenu": "splitMenu",
-          "splitPrimary": "splitPrimary",
-          "subMenuIcon": "subMenuIcon",
-        },
-        "hasIcons": true,
-        "index": 1,
-        "item": Object {
-          "icon": "itemIcon",
-          "key": "123",
-          "name": "menuItem",
-        },
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": <div
-          class="linkContent"
-        >
-          <i
-            aria-hidden="true"
-            class=
-                icon
-                {
-                  display: inline-block;
-                }
-            data-icon-name="itemIcon"
-            role="presentation"
-          />
+        "children": Array [
+          null,
+          <Unknown
+            className="icon"
+            iconName="itemIcon"
+          />,
           <span
-            class="label"
+            className="label"
           >
             menuItem
-          </span>
-        </div>,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <CheckMarkIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "icon": "itemIcon",
-                  "key": "123",
-                  "name": "menuItem",
-                }
-              }
-            />,
-            <ItemIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "icon": "itemIcon",
-                  "key": "123",
-                  "name": "menuItem",
-                }
-              }
-            />,
-            <ItemName
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "icon": "itemIcon",
-                  "key": "123",
-                  "name": "menuItem",
-                }
-              }
-            />,
-            <SubMenuIcon
-              classNames={
-                Object {
-                  "checkmarkIcon": "checkmarkIcon",
-                  "divider": "---",
-                  "icon": "icon",
-                  "item": "item",
-                  "label": "label",
-                  "linkContent": "linkContent",
-                  "linkContentMenu": "linkContentMenu",
-                  "root": "root",
-                  "splitContainer": "splitContainer",
-                  "splitMenu": "splitMenu",
-                  "splitPrimary": "splitPrimary",
-                  "subMenuIcon": "subMenuIcon",
-                }
-              }
-              hasIcons={true}
-              index={1}
-              item={
-                Object {
-                  "icon": "itemIcon",
-                  "key": "123",
-                  "name": "menuItem",
-                }
-              }
-            />,
-          ],
-          "className": "linkContent",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "className": "icon",
-                "iconName": "itemIcon",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": <i
-                  aria-hidden="true"
-                  class=
-                      icon
-                      {
-                        display: inline-block;
-                      }
-                  data-icon-name="itemIcon"
-                  role="presentation"
-                />,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "aria-hidden": true,
-                  "aria-label": undefined,
-                  "children": undefined,
-                  "className": 
-                    icon
-                    {
-                      display: inline-block;
-                    },
-                  "data-icon-name": "itemIcon",
-                  "role": "presentation",
-                },
-                "ref": null,
-                "rendered": Array [
-                  undefined,
-                ],
-                "type": "i",
-              },
-              "type": [Function],
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": <span
-                class="label"
-              >
-                menuItem
-              </span>,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "menuItem",
-                "className": "label",
-              },
-              "ref": null,
-              "rendered": Array [
-                "menuItem",
-              ],
-              "type": "span",
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "classNames": Object {
-                "checkmarkIcon": "checkmarkIcon",
-                "divider": "---",
-                "icon": "icon",
-                "item": "item",
-                "label": "label",
-                "linkContent": "linkContent",
-                "linkContentMenu": "linkContentMenu",
-                "root": "root",
-                "splitContainer": "splitContainer",
-                "splitMenu": "splitMenu",
-                "splitPrimary": "splitPrimary",
-                "subMenuIcon": "subMenuIcon",
-              },
-              "hasIcons": true,
-              "index": 1,
-              "item": Object {
-                "icon": "itemIcon",
-                "key": "123",
-                "name": "menuItem",
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
+          </span>,
+          null,
         ],
-        "type": "div",
+        "className": "linkContent",
       },
-      "type": [Function],
+      "ref": null,
+      "rendered": Array [
+        null,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "className": "icon",
+            "iconName": "itemIcon",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "menuItem",
+            "className": "label",
+          },
+          "ref": null,
+          "rendered": "menuItem",
+          "type": "span",
+        },
+        null,
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

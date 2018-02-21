@@ -1,7 +1,7 @@
 jest.mock('../../utilities/contextMenu');
 
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 import { IContextualMenuItem } from './ContextualMenu.types';
@@ -13,14 +13,14 @@ describe('ContextMenuItemChildren', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
-    let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
+    let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
     beforeEach(() => {
       menuItem = { key: '123' };
       menuClassNames = getMenuItemClassNames();
       onCheckmarkClick = jest.fn();
 
-      wrapper = mount(
+      wrapper = shallow(
         <ContextualMenuItem
           item={ menuItem }
           classNames={ menuClassNames }
@@ -39,11 +39,11 @@ describe('ContextMenuItemChildren', () => {
       let event: jest.Mock;
       beforeEach(() => {
         event = jest.fn();
-        wrapper.find('CheckMarkIcon').simulate('click', event);
+        wrapper.find('.checkmarkIcon').simulate('click', event);
       });
 
       it('invokes the onCheckmarkClick callback', () => {
-        expect(onCheckmarkClick).toHaveBeenCalledWith(menuItem, expect.any(Object));
+        expect(onCheckmarkClick).toHaveBeenCalledWith(menuItem, event);
       });
     });
   });
@@ -52,13 +52,13 @@ describe('ContextMenuItemChildren', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
       let menuClassNames: IMenuItemClassNames;
-      let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
+      let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
         menuItem = { key: '123', icon: 'itemIcon', name: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = mount(
+        wrapper = shallow(
           <ContextualMenuItem
             item={ menuItem }
             classNames={ menuClassNames }
@@ -76,13 +76,13 @@ describe('ContextMenuItemChildren', () => {
     describe('when it doesnt have iconProps', () => {
       let menuItem: IContextualMenuItem;
       let menuClassNames: IMenuItemClassNames;
-      let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
+      let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
       beforeEach(() => {
         menuItem = { key: '123', iconProps: {} };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = mount(
+        wrapper = shallow(
           <ContextualMenuItem
             item={ menuItem }
             classNames={ menuClassNames }
@@ -101,14 +101,14 @@ describe('ContextMenuItemChildren', () => {
   describe('when it has a sub menu', () => {
     let menuItem: IContextualMenuItem;
     let menuClassNames: IMenuItemClassNames;
-    let wrapper: ReactWrapper<IContextualMenuItemProps, {}>;
+    let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
     beforeEach(() => {
       (hasSubmenu as jest.Mock).mockReturnValue(true);
       menuItem = { key: '123', iconProps: {}, submenuIconProps: {} };
       menuClassNames = getMenuItemClassNames();
 
-      wrapper = mount(
+      wrapper = shallow(
         <ContextualMenuItem
           item={ menuItem }
           classNames={ menuClassNames }
