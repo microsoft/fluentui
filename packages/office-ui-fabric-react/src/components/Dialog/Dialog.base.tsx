@@ -5,28 +5,30 @@ import {
   getId
 } from '../../Utilities';
 import { IDialogProps } from './Dialog.types';
-import { DialogType } from './DialogContent.types';
-import { Modal } from '../../Modal';
+import { DialogType, IDialogContentProps } from './DialogContent.types';
+import { Modal, IModalProps } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';
 const styles: any = stylesImport;
 
 import { DialogContent } from './DialogContent';
 
+const DefaultModalProps: IModalProps = {
+  isDarkOverlay: false,
+  isBlocking: false,
+  className: '',
+  containerClassName: ''
+};
+
+const DefaultDialogContentProps: IDialogContentProps = {
+  type: DialogType.normal,
+  className: '',
+  topButtonsProps: [],
+};
+
 @withResponsiveMode
 export class DialogBase extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
-    modalProps: {
-      isDarkOverlay: true,
-      isBlocking: false,
-      className: '',
-      containerClassName: ''
-    },
-    dialogContentProps: {
-      type: DialogType.normal,
-      className: '',
-      topButtonsProps: [],
-    },
     hidden: true,
   };
 
@@ -78,11 +80,19 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       type,
       contentClassName,
       topButtonsProps,
-      dialogContentProps,
-      modalProps,
       containerClassName,
       hidden
     } = this.props;
+
+    const modalProps = {
+      ...DefaultModalProps,
+      ...this.props.modalProps
+    };
+
+    const dialogContentProps: IDialogContentProps = {
+      ...DefaultDialogContentProps,
+      ...this.props.dialogContentProps
+    };
 
     return (
       <Modal
