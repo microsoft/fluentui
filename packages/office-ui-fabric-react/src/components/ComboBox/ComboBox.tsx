@@ -320,7 +320,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             style={ { display: 'inline-block' } }
             className={ this._classNames.input }
           >
-            <BaseAutoFill
+            <Autofill
               data-is-interactable={ !disabled }
               ref={ this._resolveRef('_comboBox') }
               id={ id + '-input' }
@@ -330,7 +330,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               onBlur={ this._onBlur }
               onKeyDown={ this._onInputKeyDown }
               onKeyUp={ this._onInputKeyUp }
-              onClick={ this._onBaseAutofillClick }
+              onClick={ this._onAutofillClick }
               onInputValueChange={ this._onInputChange }
               aria-expanded={ isOpen }
               aria-autocomplete={ (!disabled && autoComplete === 'on') }
@@ -346,8 +346,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               spellCheck={ false }
               defaultVisibleValue={ this._currentVisibleValue }
               suggestedDisplayValue={ suggestedDisplayValue }
-              updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
-              shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+              updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+              shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
               title={ title }
             />
           </FocusZone>

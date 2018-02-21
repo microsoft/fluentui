@@ -158,10 +158,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
               box-sizing: border-box;
               font: inherit;
               height: 30px;
-              margin-bottom: 1px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 1px;
               outline: none;
               padding-bottom: 0;
               padding-left: 0;
@@ -176,6 +172,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
