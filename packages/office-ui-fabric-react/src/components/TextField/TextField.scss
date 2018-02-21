@@ -128,6 +128,12 @@ $field-error-color: $errorTextColor;
   color: $field-text-color;
   @include ms-padding(0, 12px, 0, 12px);
   width: 100%;
+  /**
+   * min-width is set to 1 in order to tell the browser to ignore the
+   * default value calculated from the size attribute and respect the
+   * width set on parent elements.
+   */
+  min-width: 0;
   text-overflow: ellipsis;
   outline: 0;
   &:active,

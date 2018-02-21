@@ -294,7 +294,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const {
       label,
       componentId
-     } = props;
+    } = props;
     if (label) {
       return (<Label htmlFor={ componentId }>{ label }</Label>);
     }
