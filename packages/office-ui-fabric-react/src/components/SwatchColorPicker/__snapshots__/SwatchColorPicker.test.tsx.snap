@@ -22,26 +22,33 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   <table
     aria-posinset={undefined}
     aria-setsize={undefined}
+    className=
+
+        {
+          outline: none;
+          padding-bottom: 2px;
+          padding-left: 2px;
+          padding-right: 2px;
+          padding-top: 2px;
+        }
     id="id__2"
+    onBlur={[Function]}
     role="grid"
-    style={
-      Object {
-        "outline": "none",
-        "padding": "2px",
-      }
-    }
   >
     <tbody>
       <tr
         role="row"
       >
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -169,14 +176,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={0}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-a-0"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -217,12 +225,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -350,14 +361,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={1}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-b-1"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -398,12 +410,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -531,14 +546,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={2}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-c-2"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -579,12 +595,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -712,14 +731,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={3}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-d-3"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -764,12 +784,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         role="row"
       >
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -897,14 +920,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={4}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-g-4"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -945,12 +969,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1078,14 +1105,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={5}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-h-5"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -1126,12 +1154,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1259,14 +1290,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={6}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-i-6"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -1307,12 +1339,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1440,14 +1475,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={7}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-j-7"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -1492,12 +1528,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
         role="row"
       >
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1625,14 +1664,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={8}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-k-8"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="black"
             type="button"
@@ -1673,12 +1713,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1806,14 +1849,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={9}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-l-9"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="grey"
             type="button"
@@ -1854,12 +1898,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -1987,14 +2034,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={10}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-m-10"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="purple"
             type="button"
@@ -2035,12 +2083,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           </button>
         </td>
         <td
+          className=
+
+              {
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="presentation"
-          style={
-            Object {
-              "padding": "0px",
-            }
-          }
         >
           <button
             aria-describedby={null}
@@ -2168,14 +2219,15 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 &:active {
                   color: #000000;
                 }
-            data-index={undefined}
+            data-index={11}
             data-is-focusable={true}
             disabled={undefined}
-            id="swatchColorPicker1-itemundefined"
+            id="swatchColorPicker1-n-11"
             onClick={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            onMouseMove={[Function]}
             role="gridcell"
             title="yellow"
             type="button"

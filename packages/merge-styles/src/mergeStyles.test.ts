@@ -80,4 +80,20 @@ describe('mergeStyles', () => {
     );
   });
 
+  it('can register media queries', () => {
+    mergeStyles({
+      background: 'red',
+      selectors: {
+        '@media screen and (max-width: 100px)': {
+          background: 'green'
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;}' +
+      '@media screen and (max-width: 100px){.css-0{background:green;}}'
+    );
+  });
+
 });

@@ -4,7 +4,7 @@ import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 // tslint:disable:jsx-no-lambda
 export class SpinButtonStatefulExample extends React.Component<any, any> {
   public render() {
-    let suffix = ' cm';
+    const suffix = ' cm';
 
     return (
       <div style={ { width: '400px' } }>
@@ -35,7 +35,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
   }
 
   private _hasSuffix(string: string, suffix: string): Boolean {
-    let subString = string.substr(string.length - suffix.length);
+    const subString = string.substr(string.length - suffix.length);
     return subString === suffix;
   }
 

@@ -8,6 +8,7 @@ export class SearchBoxFullSizeExample extends React.Component<any, any> {
         // tslint:disable:jsx-no-lambda
         onFocus={ () => console.log('onFocus called') }
         onBlur={ () => console.log('onBlur called') }
+        onChange={ () => console.log('onChange called') }
       />
     );
   }

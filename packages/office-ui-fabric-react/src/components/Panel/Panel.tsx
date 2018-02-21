@@ -42,6 +42,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   constructor(props: IPanelProps) {
     super(props);
 
+    this._warnDeprecations({
+      'ignoreExternalFocusing': 'focusTrapZoneProps',
+      'forceFocusInsideTrap': 'focusTrapZoneProps',
+      'firstFocusableSelector': 'focusTrapZoneProps'
+    });
+
     this.state = {
       isFooterSticky: false,
       isOpen: false,
@@ -69,10 +75,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   public render() {
-    let {
+    const {
       className = '',
       elementToFocusOnDismiss,
       firstFocusableSelector,
+      focusTrapZoneProps,
       forceFocusInsideTrap,
       hasCloseButton,
       headerText,
@@ -89,10 +96,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    let { isOpen, isAnimating, id } = this.state;
-    let isLeft = type === PanelType.smallFixedNear ? true : false;
-    let isRTL = getRTL();
-    let isOnRightSide = isRTL ? isLeft : !isLeft;
+    const { isOpen, isAnimating, id } = this.state;
+    const isLeft = type === PanelType.smallFixedNear ? true : false;
+    const isRTL = getRTL();
+    const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
     const renderProps: IPanelProps = { ...this.props, componentId: id };
@@ -151,6 +158,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
           >
             { overlay }
             <FocusTrapZone
+              ignoreExternalFocusing={ ignoreExternalFocusing }
+              forceFocusInsideTrap={ forceFocusInsideTrap }
+              firstFocusableSelector={ firstFocusableSelector }
+              { ...focusTrapZoneProps }
               className={
                 css(
                   'ms-Panel-main',
@@ -159,13 +170,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                   isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
                   !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
                   !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
+                  focusTrapZoneProps ? focusTrapZoneProps.className : undefined
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               isClickableOutsideFocusTrap={ isLightDismiss || isHiddenOnDismiss }
-              ignoreExternalFocusing={ ignoreExternalFocusing }
-              forceFocusInsideTrap={ forceFocusInsideTrap }
-              firstFocusableSelector={ firstFocusableSelector }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { onRenderNavigation(renderProps, this._onRenderNavigation) }
@@ -281,8 +290,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   @autobind
   private _onRenderFooter(props: IPanelProps): JSX.Element | null {
-    let { isFooterSticky } = this.state;
-    let { onRenderFooterContent = null } = this.props;
+    const { isFooterSticky } = this.state;
+    const { onRenderFooterContent = null } = this.props;
     if (onRenderFooterContent) {
       return (
         <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
@@ -296,10 +305,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   private _updateFooterPosition() {
-    let _content = this._content;
+    const _content = this._content;
     if (_content) {
-      let height = _content.clientHeight;
-      let innerHeight = _content.scrollHeight;
+      const height = _content.clientHeight;
+      const innerHeight = _content.scrollHeight;
 
       this.setState({
         isFooterSticky: height < innerHeight ? true : false

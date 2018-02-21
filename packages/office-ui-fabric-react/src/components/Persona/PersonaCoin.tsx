@@ -68,7 +68,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   }
 
   public render(): JSX.Element | null {
-    let {
+    const {
       coinProps,
       coinSize,
       imageUrl,
@@ -76,18 +76,19 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       initialsColor,
       primaryText,
       imageShouldFadeIn,
+      onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       imageShouldStartVisible
      } = this.props;
 
-    let size = this.props.size as PersonaSize;
-    let divProps = getNativeProps(this.props, divProperties);
-    let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
+    const size = this.props.size as PersonaSize;
+    const divProps = getNativeProps(this.props, divProperties);
+    const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona-coin', PERSONA_SIZE[size]) }
+        className={ css('ms-Persona-coin', PERSONA_SIZE[size], coinProps && coinProps.className) }
       >
         { (size !== PersonaSize.size10 && size !== PersonaSize.tiny) ? (
           <div
@@ -114,17 +115,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                 </div>
               )
             }
-            <Image
-              className={ css('ms-Persona-image', styles.image) }
-              imageFit={ ImageFit.cover }
-              src={ imageUrl }
-              width={ coinSize || SIZE_TO_PIXELS[size] }
-              height={ coinSize || SIZE_TO_PIXELS[size] }
-              alt={ imageAlt }
-              shouldFadeIn={ imageShouldFadeIn }
-              shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange }
-            />
+            { onRenderCoin(this.props, this._onRenderCoin) }
             <PersonaPresence { ...this.props } />
           </div>
         ) :
@@ -144,13 +135,38 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   }
 
   @autobind
-  private _onRenderInitials(props: IPersonaProps): JSX.Element {
-    let {
-      imageInitials,
-      primaryText
-    } = props;
+  private _onRenderCoin(props: IPersonaProps): JSX.Element | null {
+    const {
+      coinSize,
+      imageUrl,
+      imageAlt,
+      imageShouldFadeIn,
+      imageShouldStartVisible
+    } = this.props;
 
-    let isRTL = getRTL();
+    const size = this.props.size as PersonaSize;
+
+    return(
+      <Image
+        className={ css('ms-Persona-image', styles.image) }
+        imageFit={ ImageFit.cover }
+        src={ imageUrl }
+        width={ coinSize || SIZE_TO_PIXELS[size] }
+        height={ coinSize || SIZE_TO_PIXELS[size] }
+        alt={ imageAlt }
+        shouldFadeIn={ imageShouldFadeIn }
+        shouldStartVisible={ imageShouldStartVisible }
+        onLoadingStateChange={ this._onPhotoLoadingStateChange }
+      />
+    );
+  }
+
+  @autobind
+  private _onRenderInitials(props: IPersonaProps): JSX.Element {
+    let { imageInitials } = props;
+    const { primaryText } = props;
+
+    const isRTL = getRTL();
 
     imageInitials = imageInitials || getInitials(primaryText, isRTL);
 
@@ -167,5 +183,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       isImageLoaded: loadState === ImageLoadState.loaded,
       isImageError: loadState === ImageLoadState.error
     });
+
+    if (this.props.onPhotoLoadingStateChange) {
+      this.props.onPhotoLoadingStateChange(loadState);
+    }
   }
 }
