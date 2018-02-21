@@ -184,7 +184,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       groups
     });
 
-
     return (
       <div
         { ...getNativeProps(link, divProperties) }

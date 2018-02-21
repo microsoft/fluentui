@@ -276,7 +276,6 @@ export interface INavStyleProps {
    */
   rightPadding?: number;
 
-
   /**
    * position value
    */
