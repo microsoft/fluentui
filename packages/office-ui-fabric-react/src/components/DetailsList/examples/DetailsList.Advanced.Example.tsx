@@ -49,8 +49,6 @@ export interface IDetailsListAdvancedExampleState {
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
-  public list: DetailsList;
-
   private _isFetchingItems: boolean;
   private _selection: Selection;
 
@@ -121,7 +119,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         }
 
         <DetailsList
-          ref={ this._createDetailsListRef }
           setKey='items'
           items={ items as any[] }
           groups={ groups }
@@ -145,11 +142,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         ) }
       </div>
     );
-  }
-
-  @autobind
-  private _createDetailsListRef(detailsList: DetailsList) {
-    this.list = detailsList;
   }
 
   private _onDataMiss(index: number) {
