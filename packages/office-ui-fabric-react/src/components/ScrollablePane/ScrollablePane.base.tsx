@@ -32,6 +32,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     stickyBelow: HTMLElement;
   };
 
+  private _timers = {
+    resizing: 0, mounting: 0, addingSticky: 0
+  };
+
   private _subscribers: Set<Function>;
   private _stickyAbove: Set<Sticky>;
   private _stickyBelow: Set<Sticky>;
@@ -62,7 +66,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
     this._events.on(root, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
-    setTimeout(() => {
+    this._timers.mounting = setTimeout(() => {
       this._resizeContainer();
       if (stickyContainer.parentElement && root.parentElement) {
         stickyContainer.parentElement.removeChild(stickyContainer);
@@ -79,6 +83,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     if (stickyContainer.parentElement) {
       stickyContainer.parentElement.removeChild(stickyContainer);
     }
+    clearTimeout(this._timers.mounting);
+    clearTimeout(this._timers.addingSticky);
+    clearTimeout(this._timers.resizing);
   }
 
   public render() {
@@ -161,7 +168,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
         this._setPlaceholderHeights.bind(null, stickyList),
         false);
       if (sticky.props.stickyClassName) {
-        setTimeout(() => {
+        this._timers.addingSticky = setTimeout(() => {
           if (sticky.props.stickyClassName) {
             sticky.content.children[0].classList.add(sticky.props.stickyClassName);
           }
@@ -181,7 +188,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   }
 
   private _onWindowResize() {
-    setTimeout(() => {
+    this._timers.resizing = setTimeout(() => {
       this._resizeContainer();
       this.notifySubscribers();
       this._setPlaceholderHeights(this._stickyAbove);
@@ -191,16 +198,14 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
   private _resizeContainer() {
     const { stickyContainer, root } = this.refs;
-    if (root && stickyContainer) {
-      const { borderTopWidth, borderLeftWidth } = getComputedStyle(root);
-      stickyContainer.style.height = root.clientHeight + 'px';
-      stickyContainer.style.width = root.clientWidth + 'px';
-      if (borderTopWidth) {
-        stickyContainer.style.top = root.offsetTop + parseInt(borderTopWidth, 10) + 'px';
-      }
-      if (borderLeftWidth) {
-        stickyContainer.style.left = root.offsetLeft + parseInt(borderLeftWidth, 10) + 'px';
-      }
+    const { borderTopWidth, borderLeftWidth } = getComputedStyle(root);
+    stickyContainer.style.height = root.clientHeight + 'px';
+    stickyContainer.style.width = root.clientWidth + 'px';
+    if (borderTopWidth) {
+      stickyContainer.style.top = root.offsetTop + parseInt(borderTopWidth, 10) + 'px';
+    }
+    if (borderLeftWidth) {
+      stickyContainer.style.left = root.offsetLeft + parseInt(borderLeftWidth, 10) + 'px';
     }
   }
 
