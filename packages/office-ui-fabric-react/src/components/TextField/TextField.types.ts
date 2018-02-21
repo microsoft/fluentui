@@ -227,4 +227,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * This tells the browser to display options based on earlier typed values.
    */
   autoComplete?: 'on' | 'off';
+
+  /**
+   * Deprecated property. Serves no function.
+   * @deprecated
+   */
+  componentId?: string;
 }
