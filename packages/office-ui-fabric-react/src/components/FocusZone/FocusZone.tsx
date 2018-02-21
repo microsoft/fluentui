@@ -58,6 +58,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
+  /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
+  private _tabPressActive: boolean;
+
   constructor(props: IFocusZoneProps) {
     super(props);
 
@@ -69,6 +72,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       left: 0,
       top: 0
     };
+
+    this._tabPressActive = false;
   }
 
   public componentDidMount() {
@@ -357,16 +362,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
         case KeyCodes.tab:
           if (this.props.allowTabKey) {
+            let focusChanged = false;
+            this._tabPressActive = true;
             if (direction === FocusZoneDirection.vertical) {
-              let focusChanged = ev.shiftKey ? this._moveFocusUp(true) : this._moveFocusDown(true);
-              if (focusChanged) {
-                break;
-              }
+              focusChanged = ev.shiftKey ? this._moveFocusUp() : this._moveFocusDown();
             } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
-              let focusChanged = ev.shiftKey ? this._moveFocusLeft(true) : this._moveFocusRight(true);
-              if (focusChanged) {
-                break;
-              }
+              focusChanged = ev.shiftKey ? this._moveFocusLeft() : this._moveFocusRight();
+            }
+            this._tabPressActive = false;
+            if (focusChanged) {
+              break;
             }
           }
           return;
@@ -374,7 +379,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.home:
           if (
             this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false, false)) {
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)) {
             return false;
           }
           const firstChild = this._root.firstChild as HTMLElement;
@@ -386,7 +391,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.end:
           if (
             this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true, false)) {
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)) {
             return false;
           }
 
@@ -469,7 +474,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _moveFocus(
     isForward: boolean,
-    isTab: boolean,
     getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
     ev?: Event): boolean {
 
@@ -484,7 +488,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (this._isElementInput(element)) {
-      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward, isTab)) {
+      if (!this._tabPressActive && !this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
         return false;
       }
     }
@@ -537,11 +541,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return changedFocus;
   }
 
-  private _moveFocusDown(isTab = false): boolean {
+  private _moveFocusDown(): boolean {
     let targetTop = -1;
     const leftAlignment = this._focusAlignment.left;
 
-    if (this._moveFocus(true, isTab, (activeRect: ClientRect, targetRect: ClientRect) => {
+    if (this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
       // ClientRect values can be floats that differ by very small fractions of a decimal.
       // If the difference between top and bottom are within a pixel then we should treat
@@ -573,11 +577,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _moveFocusUp(isTab = false): boolean {
+  private _moveFocusUp(): boolean {
     let targetTop = -1;
     const leftAlignment = this._focusAlignment.left;
 
-    if (this._moveFocus(false, isTab, (activeRect: ClientRect, targetRect: ClientRect) => {
+    if (this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
       // ClientRect values can be floats that differ by very small fractions of a decimal.
       // If the difference between top and bottom are within a pixel then we should treat
@@ -610,8 +614,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _moveFocusLeft(isTab = false): boolean {
-    if (this._moveFocus(getRTL(), isTab, (activeRect: ClientRect, targetRect: ClientRect) => {
+  private _moveFocusLeft(): boolean {
+    if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
       if (
@@ -632,8 +636,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _moveFocusRight(isTab = false): boolean {
-    if (this._moveFocus(!getRTL(), isTab, (activeRect: ClientRect, targetRect: ClientRect) => {
+  private _moveFocusRight(): boolean {
+    if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
       if (
@@ -757,7 +761,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean, isTab?: boolean) {
+  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
     if (element &&
       element.type &&
       ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
@@ -770,9 +774,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward.
       // 3. when selection start is not the end of lenght and it is forward.
-      if (!isTab && (isRangeSelected ||
+      if (isRangeSelected ||
         (selectionStart > 0 && !isForward) ||
-        (selectionStart !== inputValue.length && isForward))) {
+        (selectionStart !== inputValue.length && isForward)) {
         return false;
       }
     }
