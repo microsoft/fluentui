@@ -12,7 +12,6 @@
     ],
     "no-any": false,
     "variable-name": false,
-    "no-internal-module": false,
     "typedef": [
       false
     ],
