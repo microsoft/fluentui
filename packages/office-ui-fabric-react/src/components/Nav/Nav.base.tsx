@@ -10,9 +10,6 @@ import {
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
-// import * as stylesImport from './Nav.scss';
-// const styles: any = stylesImport;
-// import { AnimationClassNames, mergeStyles } from '../../Styling';
 import { buttonStyles } from './Nav.styles';
 import {
   INav,
