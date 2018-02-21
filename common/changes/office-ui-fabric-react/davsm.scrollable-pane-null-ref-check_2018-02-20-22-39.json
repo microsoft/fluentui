@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix Scrollable-Pane getComputedStyle error - check for null before using this.refs.root and this.refs.stickyContainer",
+      "comment": "Fix Scrollable-Pane getComputedStyle error - clearing timeouts during componentWillUnmount to avoid using refs after they have been removed",
       "type": "minor"
     }
   ],
