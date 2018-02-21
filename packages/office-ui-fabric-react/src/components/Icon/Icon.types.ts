@@ -71,5 +71,5 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   /**
    * If rendering an image icon, this function callback will be invoked in the event loading the image errors.
    */
-  imageErrorAs?: (image: IImageProps) => any;
+  imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
 }
