@@ -332,66 +332,49 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.left:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
+          if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft(false)) {
             break;
           }
           return;
 
         case KeyCodes.right:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
+          if (direction !== FocusZoneDirection.vertical && this._moveFocusRight(false)) {
             break;
           }
           return;
 
         case KeyCodes.up:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
+          if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp(false)) {
             break;
           }
           return;
 
         case KeyCodes.down:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
+          if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown(false)) {
             break;
           }
           return;
 
         case KeyCodes.tab:
-          if (this.props.allowTabKey) {
+          if (this.props.allowTabKey || (this.props.allowTabKeyOnInput && this._isElementInput(ev.target as HTMLElement))) {
+            let handled: boolean = false;
             if (direction === FocusZoneDirection.vertical) {
               if (ev.shiftKey) {
-                this._moveFocusUp();
+                handled = this._moveFocusUp(true);
               } else {
-                this._moveFocusDown();
+                handled = this._moveFocusDown(true);
               }
-              break;
             } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
               if (ev.shiftKey) {
-                this._moveFocusLeft();
+                handled = this._moveFocusLeft(true);
               } else {
-                this._moveFocusRight();
+                handled = this._moveFocusRight(true);
               }
+            }
+            if (handled) {
               break;
             }
           }
-
-          if (this.props.allowTabKeyOnInput && this._isElementInput(ev.target as HTMLElement)) {
-            if (direction === FocusZoneDirection.vertical) {
-              if (ev.shiftKey) {
-                this._moveFocusUp();
-              } else {
-                this._moveFocusDown();
-              }
-              break;
-            } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
-              if (ev.shiftKey) {
-                this._moveFocusLeft();
-              } else {
-                this._moveFocusRight();
-              }
-              break;
-            }
-          }
-
           return;
 
         case KeyCodes.home:
@@ -493,7 +476,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _moveFocus(
     isForward: boolean,
     getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
-    ev?: Event): boolean {
+    isTab?: boolean, ev?: Event): boolean {
 
     let element = this._activeElement;
     let candidateDistance = -1;
@@ -506,8 +489,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (this._isElementInput(element)) {
-      if (!this.props.allowTabKeyOnInput && !this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
-        return false;
+      if (!this.props.allowTabKeyOnInput || !isTab) {
+        if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+          return false;
+        }
       }
     }
 
@@ -559,7 +544,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return changedFocus;
   }
 
-  private _moveFocusDown(): boolean {
+  private _moveFocusDown(isTab: boolean): boolean {
     let targetTop = -1;
     const leftAlignment = this._focusAlignment.left;
 
@@ -587,7 +572,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       return distance;
-    })) {
+    }, isTab)) {
       this._setFocusAlignment(this._activeElement as HTMLElement, false, true);
       return true;
     }
@@ -595,7 +580,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _moveFocusUp(): boolean {
+  private _moveFocusUp(isTab: boolean): boolean {
     let targetTop = -1;
     const leftAlignment = this._focusAlignment.left;
 
@@ -624,7 +609,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       return distance;
-    })) {
+    }, isTab)) {
       this._setFocusAlignment(this._activeElement as HTMLElement, false, true);
       return true;
     }
@@ -632,7 +617,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _moveFocusLeft(): boolean {
+  private _moveFocusLeft(isTab: boolean): boolean {
     if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
@@ -646,7 +631,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       return distance;
-    })) {
+    }, isTab)) {
       this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
     }
@@ -654,7 +639,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
-  private _moveFocusRight(): boolean {
+  private _moveFocusRight(isTab: boolean): boolean {
     if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
@@ -668,7 +653,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       return distance;
-    })) {
+    }, isTab)) {
       this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
     }
