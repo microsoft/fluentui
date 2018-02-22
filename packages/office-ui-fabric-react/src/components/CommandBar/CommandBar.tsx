@@ -11,7 +11,8 @@ import {
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenu } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
+import { hasSubmenu } from '../../utilities/contextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,

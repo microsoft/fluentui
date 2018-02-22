@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "add optional custom rendering of items for ContextualMenu",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "alhenry@microsoft.com"
+}
