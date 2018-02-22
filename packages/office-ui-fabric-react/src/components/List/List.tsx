@@ -265,7 +265,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._scrollElement = findScrollableParent(this.refs.root) as HTMLElement;
 
     this._events.on(window, 'resize', this._onAsyncResize);
-    this._events.on(this.refs.root, 'focus', this._onFocus, true);
+    if (this.refs.root) {
+      this._events.on(this.refs.root, 'focus', this._onFocus, true);
+    }
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
       this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
