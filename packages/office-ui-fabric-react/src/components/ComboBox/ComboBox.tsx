@@ -33,7 +33,6 @@ import {
   getClassNames,
   getComboBoxOptionClassNames
 } from './ComboBox.classNames';
-import { FocusZone } from '../../FocusZone';
 
 export interface IComboBoxState {
 

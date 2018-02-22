@@ -18,7 +18,6 @@ import {
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
-import { FocusZone } from '../../FocusZone';
 
 export enum KeyboardSpinDirection {
   down = -1,
