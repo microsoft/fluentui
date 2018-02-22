@@ -46,12 +46,12 @@ describe('ResizeGroup', () => {
     const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
 
     const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
-      <ResizeGroupBase
+      <ResizeGroup
         data={ initialData }
         onReduceData={ onReduceScalingData }
         onRenderData={ onRenderData }
       />
-    );
+    ).first().shallow().first().shallow();
 
     expect(wrapper.containsMatchingElement(onRenderData(initialData))).toEqual(true);
   });
