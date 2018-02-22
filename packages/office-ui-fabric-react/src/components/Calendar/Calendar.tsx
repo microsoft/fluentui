@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { CalendarDay } from './CalendarDay';
-import { CalendarMonth } from './CalendarMonth';
+import { CalendarDay, ICalendarDay } from './CalendarDay';
+import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
 import {
   autobind,
@@ -71,9 +71,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     workWeekDays: defaultWorkWeekDays
   };
 
-  public root: HTMLElement;
-  public dayPicker: CalendarDay;
-  public monthPicker: CalendarMonth;
+  private _root: HTMLElement;
+  private _dayPicker: ICalendarDay;
+  private _monthPicker: ICalendarMonth;
 
   private _focusOnUpdate: boolean;
 
@@ -113,10 +113,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   public componentDidUpdate() {
     if (this._focusOnUpdate) {
       // if the day picker is shown, focus on it
-      if (this.dayPicker) {
-        this.dayPicker.focus();
-      } else if (this.monthPicker) {
-        this.monthPicker.focus();
+      if (this._dayPicker) {
+        this._dayPicker.focus();
+      } else if (this._monthPicker) {
+        this._monthPicker.focus();
       }
       this._focusOnUpdate = false;
     }
@@ -131,7 +131,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref={ this._resolveRef('root') } role='application'>
+      <div className={ css(rootClass, styles.root) } ref={ this._resolveRef('_root') } role='application'>
         <div
           className={ css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
@@ -167,7 +167,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   minDate={ minDate }
                   maxDate={ maxDate }
                   workWeekDays={ this.props.workWeekDays }
-                  ref={ this._resolveRef('_dayPicker') }
+                  componentRef={ this._resolveRef('_dayPicker') }
                 />
                 }
 
@@ -182,7 +182,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   minDate={ minDate }
                   maxDate={ maxDate }
-                  ref={ this._resolveRef('monthPicker') }
+                  componentRef={ this._resolveRef('_monthPicker') }
                 /> }
 
                 { showGoToToday &&
@@ -205,8 +205,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public focus() {
-    if (this.dayPicker) {
-      this.dayPicker.focus();
+    if (this._dayPicker) {
+      this._dayPicker.focus();
     }
   }
 
