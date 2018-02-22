@@ -87,4 +87,9 @@ export interface IResizeGroupStyles {
    * Style for the root element.
    */
   root: IStyle;
+
+  /**
+   * Style set for the measured element.
+   */
+  measured: IStyle;
 }

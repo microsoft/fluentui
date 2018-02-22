@@ -18,11 +18,17 @@ export const getStyles = (
     root: [
       'ms-ResizeGroup',
       {
-        // Insert css properties
-
-      }
+        display: 'block',
+        position: 'relative'
+      },
+      className
     ],
-
-    // Insert className styles
+    measured: [
+      'ms-ResizeGroup--measured',
+      {
+        position: 'fixed',
+        visibility: 'hidden'
+      }
+    ]
   });
 };
