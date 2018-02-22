@@ -35,7 +35,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
     >
       <i
         aria-hidden={true}
-        aria-label={undefined}
         className=
             ms-Dropdown-caretDown
             {
@@ -84,7 +83,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
     >
       <i
         aria-hidden={true}
-        aria-label={undefined}
         className=
             ms-Dropdown-caretDown
             {

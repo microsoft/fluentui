@@ -101,10 +101,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                     directionalHint: DirectionalHint.bottomLeftEdge
                   } }
                 />
-                { Icon({
-                  className: css('ms-Breadcrumb-chevron', styles.chevron),
-                  iconName: getRTL() ? 'ChevronLeft' : 'ChevronRight'
-                }) }
+                { <Icon
+                  className={ css('ms-Breadcrumb-chevron', styles.chevron) }
+                  iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+                /> }
               </li>
             ) }
             { renderedItems.map(
