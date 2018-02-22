@@ -14,7 +14,7 @@ export const FocusZoneTabbableExample = () => (
         <span>Circular Tabbable FocusZone: </span>
         <DefaultButton>Button 1</DefaultButton>
         <DefaultButton>Button 2</DefaultButton>
-        <TextField type="text" value='FocusZone TextField' className='ms-FocusZoneTabbableExample-textField' />
+        <TextField value='FocusZone TextField' className='ms-FocusZoneTabbableExample-textField' />
         <DefaultButton>Button 3</DefaultButton>
       </FocusZone>
     </div>
