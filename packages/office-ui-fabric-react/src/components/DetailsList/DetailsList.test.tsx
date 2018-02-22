@@ -32,11 +32,12 @@ describe('DetailsList', () => {
     DetailsList.prototype.componentDidMount = jest.fn();
 
     const component = renderer.create(
-      // tslint:disable-next-line:jsx-no-lambda
       <DetailsList
         items={ mockItems(5) }
+        // tslint:disable-next-line:jsx-no-lambda
         onRenderRow={ () => null }
         skipViewportMeasures={ true }
+        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={ () => false }
       />
     );
@@ -51,8 +52,10 @@ describe('DetailsList', () => {
     const wrapper = mount(
       <DetailsList
         items={ mockItems(5) }
+        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         skipViewportMeasures={ true }
+        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={ () => false }
       />);
 
@@ -66,17 +69,18 @@ describe('DetailsList', () => {
   });
 
   it('focuses into row element', () => {
-    let onRenderColumn = (item: any, index: number, column: IColumn) => {
+    const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
       if (value === null || value === undefined) {
         value = '';
       }
+      console.log('Rendered column');
       return (
         <div className={ 'test-column' } data-is-focusable={ true } >
           { value }
         </div>
       );
-    }
+    };
 
     jest.useFakeTimers();
 
@@ -84,8 +88,10 @@ describe('DetailsList', () => {
     const wrapper = mount(
       <DetailsList
         items={ mockItems(5) }
+        // tslint:disable-next-line:jsx-no-lambda
         componentRef={ ref => component = ref }
         skipViewportMeasures={ true }
+        // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={ () => false }
         onRenderItemColumn={ onRenderColumn }
       />);
