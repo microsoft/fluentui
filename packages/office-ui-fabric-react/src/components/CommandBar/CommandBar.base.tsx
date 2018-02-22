@@ -53,7 +53,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     overflowItems: []
   };
 
-  private _setSize: number;
   private _overflowSet: IOverflowSet;
   private _resizeGroup: IResizeGroup;
   private _classNames: {[key in keyof ICommandBarStyles]: string };
@@ -140,7 +139,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
-      className: css(item.className),
+      className: css('ms-CommandBarItem-overflowlink', item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,
     };
@@ -171,7 +170,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
-    return <OverflowButtonType aria-posinset={ this._setSize } aria-setsize={ this._setSize } { ...overflowProps as IButtonProps } />;
+    return <OverflowButtonType { ...overflowProps as IButtonProps } />;
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
