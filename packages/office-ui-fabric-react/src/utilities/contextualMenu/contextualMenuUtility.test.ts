@@ -1,4 +1,4 @@
-import { getIsChecked, hasSubmenu } from './contextMenuUtility';
+import { getIsChecked, hasSubmenu } from './contextualMenuUtility';
 import { IContextualMenuItem } from '../..';
 
 describe('getIsChecked', () => {
