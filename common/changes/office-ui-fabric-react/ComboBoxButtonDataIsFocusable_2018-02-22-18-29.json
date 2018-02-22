@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added property to set ComboBox's button's data-is-focusable attribute.",
+      "comment": "ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.",
       "type": "patch"
     }
   ],
