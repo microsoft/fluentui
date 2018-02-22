@@ -97,7 +97,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper',
               styles.searchIconWrapper, styles.searchIconSearchWrapper) }
           >
-            { Icon({ iconName: 'Search' }) }
+            { <Icon iconName={ 'Search' } /> }
           </div>
           <div
             className={ css(
