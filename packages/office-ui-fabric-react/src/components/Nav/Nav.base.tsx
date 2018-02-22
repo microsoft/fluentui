@@ -171,6 +171,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
+    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -183,7 +184,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
     return (
       <div
-        { ...getNativeProps(link, divProperties) }
+        { ...divProps }
         key={ link.key || linkIndex }
         className={ classNames.compositeLink }
       >
