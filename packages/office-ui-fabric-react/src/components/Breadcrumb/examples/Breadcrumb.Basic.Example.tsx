@@ -11,7 +11,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class BreadcrumbBasicExample extends React.Component<any, any> {
+export class BreadcrumbBasicExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }
