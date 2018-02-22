@@ -171,9 +171,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const isLinkSelected: boolean = this._isLinkSelected(link);
-    const isRtl: boolean = getRTL();
-    const absolutePositionString = `${_indentationSize * nestingLevel + 1}px`;
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
