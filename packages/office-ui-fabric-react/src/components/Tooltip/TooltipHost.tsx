@@ -43,21 +43,27 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   public render() {
     const {
       calloutProps,
-      tooltipProps,
-      content,
       children,
+      content,
+      delay,
       directionalHint,
       directionalHintForRTL,
-      delay,
+      hostClassName,
       id,
+      overflowMode,
       setAriaDescribedBy = true,
-      hostClassName
+      tooltipProps
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
+
     return (
       <div
-        className={ css('ms-TooltipHost', styles.host, hostClassName) }
+        className={ css('ms-TooltipHost',
+          styles.host,
+          hostClassName,
+          overflowMode !== undefined && styles.hostOverflow
+        ) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
