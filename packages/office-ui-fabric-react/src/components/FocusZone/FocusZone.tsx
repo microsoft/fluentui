@@ -33,7 +33,7 @@ const TABINDEX = 'tabindex';
 const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
 const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 const LARGE_DISTANCE_FROM_CENTER = 999999999;
-const Large_Negative_DISTANCE_FROM_CENTER = -999999999;
+const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 
 const _allInstances: {
   [key: string]: FocusZone
@@ -560,7 +560,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (targetRectTop < activeRectBottom) {
         if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-          return Large_Negative_DISTANCE_FROM_CENTER;
+          return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
         }
 
         return LARGE_DISTANCE_FROM_CENTER;
@@ -601,7 +601,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (targetRectBottom > activeRectTop) {
         if (!this._shouldWrapFocus(this._activeElement as HTMLElement, NO_VERTICAL_WRAP)) {
-          return Large_Negative_DISTANCE_FROM_CENTER;
+          return LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
         }
         return LARGE_DISTANCE_FROM_CENTER;
       }
@@ -639,7 +639,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         distance = activeRect.right - targetRect.right;
       } else {
         if (!shouldWrap) {
-          distance = Large_Negative_DISTANCE_FROM_CENTER;
+          distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
         }
       }
 
@@ -668,7 +668,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
         distance = targetRect.left - activeRect.left;
       } else if (!shouldWrap) {
-        distance = Large_Negative_DISTANCE_FROM_CENTER;
+        distance = LARGE_NEGATIVE_DISTANCE_FROM_CENTER;
       }
 
       return distance;
