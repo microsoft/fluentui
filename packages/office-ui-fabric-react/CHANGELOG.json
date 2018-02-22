@@ -2,6 +2,87 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.54.0",
+      "tag": "office-ui-fabric-react_v5.54.0",
+      "date": "Thu, 22 Feb 2018 11:15:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "davsm <36288536+davsm@users.noreply.github.com>",
+            "commit": "a40160db28a702c2bacb1cb7c147b150c59b7a9c",
+            "comment": "Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "b0550145231d18adea954f56be47967ab04cb19d",
+            "comment": "FocusZone: Add the ability turn off directional wrapping on sections of a FocusZone"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "3cf846061686c05dbc2329aa16596c9be206ded1",
+            "comment": "Convert Layer component to mergeStyles"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "4b74ee848acc55a619b99a2b1b08be90f5127149",
+            "comment": "Converting SCSS to MergeStyles step 2 - style conversion"
+          },
+          {
+            "author": "staylo8 <33881401+staylo8@users.noreply.github.com>",
+            "commit": "af4a2976ca729f9a7107ed7b05e7f0f5292f674f",
+            "comment": "Add imageErrorAs to IIconProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "7ff46ee4fe64b303d6a4845b404ee16f909ac847",
+            "comment": "Enable variable-name and jsx-boolean-value tslint rules"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "08066258199e0de38a145777aeee1e0a31fd057b",
+            "comment": "Calendar: changing refs to componentRef."
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "fa5626d6b1cfe17646f78927746b34c3efeb06a9",
+            "comment": "DatePicker-onAfterMenuDismiss callback created"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "b806c8d972e306f71c26874c5262a33ddc862d4a",
+            "comment": "DatePicker - Adding public focus method"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "6b2f5885f2d76e8539d6108db8cd3ed6dc5deabc",
+            "comment": "[TextField] Set input size to 1"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "67730082e1053486ae59876f24c7ee639b4ca251",
+            "comment": "[TooltipHost] Inline display for when overflow mode is on\""
+          },
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "8f5fe3b6b8feb89df75ee76d886fdcccddceb875",
+            "comment": "Updated contextual menu to pass the correct number"
+          },
+          {
+            "author": "chang47 <coralbue@gmail.com>",
+            "commit": "6fbbe8922e7b97983e36346f1577f040e8e13acb",
+            "comment": "Contextual Menu - Added aria-posinset and aria-setsize to split buttons"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.12.1 <6.0.0` to `>=5.13.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.53.0",
       "tag": "office-ui-fabric-react_v5.53.0",
       "date": "Wed, 21 Feb 2018 11:12:11 GMT",
