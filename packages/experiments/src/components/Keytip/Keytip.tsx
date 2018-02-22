@@ -25,11 +25,13 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
     const {
       calloutProps,
       keySequences,
+      offset = 0 // Default value for gap is 0
     } = this.props;
 
     return (
       <Callout
         { ...calloutProps }
+        gapSpace={ offset }
         isBeakVisible={ false }
         doNotLayer={ true }
         directionalHint={ DirectionalHint.bottomCenter }
