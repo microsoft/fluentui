@@ -10,7 +10,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { Layer } from '../Layer/Layer';
+import { LayerBase as Layer } from '../Layer/Layer.base';
 import { mount } from 'enzyme';
 
 describe('ContextualMenu', () => {
@@ -84,7 +84,7 @@ describe('ContextualMenu', () => {
         items={ items }
         isSubMenu={ true }
         onDismiss={ onDismissSpy }
-        arrowDirection={ FocusZoneDirection.horizontal }
+        focusZoneProps={ { direction: FocusZoneDirection.horizontal } }
       />
     );
 
@@ -110,7 +110,7 @@ describe('ContextualMenu', () => {
         items={ items }
         isSubMenu={ true }
         onDismiss={ onDismissSpy }
-        arrowDirection={ FocusZoneDirection.horizontal }
+        focusZoneProps={ { direction: FocusZoneDirection.bidirectional } }
       />
     );
 

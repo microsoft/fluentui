@@ -146,7 +146,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
-      theme
+      theme,
+      ariaPositionInSet,
+      ariaSetSize
     } = this.props;
 
     const {
@@ -188,6 +190,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           className={ classNames.spinButtonWrapper }
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
+          aria-posinset={ ariaPositionInSet }
+          aria-setsize={ ariaSetSize }
         >
           <input
             value={ value }
@@ -371,7 +375,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param stepFunction - function to use to step by
    */
   @autobind
-  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
+  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void) {
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;

@@ -8,9 +8,9 @@ export interface IProgressIndicatorBasicExampleState {
   percentComplete: number;
 }
 
-const INTERVAL_DELAY: number = 100;
-const INTERVAL_INCREMENT: number = .01;
-const RESTART_WAIT_TIME: number = 2000;
+const INTERVAL_DELAY = 100;
+const INTERVAL_INCREMENT = .01;
+const RESTART_WAIT_TIME = 2000;
 
 export class ProgressIndicatorBasicExample extends React.Component<{}, IProgressIndicatorBasicExampleState> {
 

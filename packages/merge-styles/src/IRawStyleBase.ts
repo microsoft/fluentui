@@ -174,6 +174,11 @@ export interface IRawStyleBase extends IRawFontStyle {
   WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
 
   /**
+   * (Webkit specific) momentum scrolling on iOS devices
+   */
+  WebkitOverflowScrolling?: 'auto' | 'touch';
+
+  /**
    * Aligns a flex container's lines within the flex container when there is extra space
    * in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
