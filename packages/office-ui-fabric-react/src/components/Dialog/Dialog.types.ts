@@ -156,15 +156,34 @@ export interface IDialogStyleProps {
    * Accept custom classNames
    */
   className?: string;
+  containerClassName?: string;
 
-  // Insert Dialog style props below
+  /**
+  * Whether the dialog is hidden.
+  * @default false
+  */
+  hidden?: boolean;
+  isLargeHeader?: boolean;
+  isMultiline?: boolean;
+  isRight?: boolean;
 }
 
 export interface IDialogStyles {
   /**
    * Style for the root element.
    */
-  root: IStyle;
+  root?: IStyle;
 
-  // Insert Dialog classNames below
+  button?: IStyle;
+  inner?: IStyle;
+  header?: IStyle;
+  title?: IStyle;
+  topButton?: IStyle;
+  content?: IStyle;
+  subText?: IStyle;
+  actions?: IStyle;
+  actionsRight?: IStyle;
+  action?: IStyle;
+  // isMultiline: IStyle;
+  // isLargeHeader: IStyle;
 }
