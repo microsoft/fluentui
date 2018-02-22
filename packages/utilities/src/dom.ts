@@ -205,6 +205,31 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 }
 
 /**
+ * Finds the first parent element where the matchFunction returns true
+ * @param element element to start searching at
+ * @param matchFunction the function that determines if the element is a match
+ * @returns the matched element or null no match was found
+ */
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
+  if (!element || element === document.body) {
+    return null;
+  }
+
+  return matchFunction(element) ? element : findElementRecursive(getParent(element), matchFunction);
+}
+
+/**
+ * Determines if an element, or any of its ancestors, contian the given attribute
+ * @param element - element to start searching at
+ * @param attribute - the attribute to search for
+ * @returns the value of the first instance found
+ */
+export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null {
+  let elementMatch = findElementRecursive(element, (testElement: HTMLElement) => testElement.hasAttribute(attribute));
+  return elementMatch && elementMatch.getAttribute(attribute);
+}
+
+/**
  * Determines whether or not an element has the virtual hierarchy extension.
  *
  * @public

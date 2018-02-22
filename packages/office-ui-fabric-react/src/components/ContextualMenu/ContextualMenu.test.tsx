@@ -84,7 +84,7 @@ describe('ContextualMenu', () => {
         items={ items }
         isSubMenu={ true }
         onDismiss={ onDismissSpy }
-        arrowDirection={ FocusZoneDirection.horizontal }
+        focusZoneProps={ { direction: FocusZoneDirection.horizontal } }
       />
     );
 
@@ -110,7 +110,7 @@ describe('ContextualMenu', () => {
         items={ items }
         isSubMenu={ true }
         onDismiss={ onDismissSpy }
-        arrowDirection={ FocusZoneDirection.horizontal }
+        focusZoneProps={ { direction: FocusZoneDirection.bidirectional } }
       />
     );
 
