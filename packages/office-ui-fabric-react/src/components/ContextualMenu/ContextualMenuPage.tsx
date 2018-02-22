@@ -9,10 +9,12 @@ import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Exam
 import { ContextualMenuIconExample } from './examples/ContextualMenu.Icon.Example';
 import { ContextualMenuSectionExample } from './examples/ContextualMenu.Section.Example';
 import { ContextualMenuSubmenuExample } from './examples/ContextualMenu.Submenu.Example';
+import { ContextualMenuCustomizationWithNoWrapExample } from './examples/ContextualMenu.CustomizationWithNoWrap.Example';
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuWithScrollBarExample } from './examples/ContextualMenu.ScrollBar.Example';
+import { ContextualMenuWithCustomMenuItemExample } from './examples/ContextualMenu.CustomMenuItem.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
@@ -20,11 +22,13 @@ const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-rea
 const ContextualMenuIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.Example.tsx') as string;
 const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
 const ContextualMenuSubmenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Submenu.Example.tsx') as string;
+const ContextualMenuCustomizationWithNoWrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.CustomizationWithNoWrap.Example.tsx') as string;
 const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
 const ContextualMenuDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Directional.Example.tsx') as string;
 const ContextualMenuCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
 const ContextualMenuWithScrollBarExampleCode = require
   ('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.ScrollBar.Example.tsx') as string;
+const ContextualMenuWithCustomMenuItemExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.CustomMenuItem.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -77,10 +81,22 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <ContextualMenuCustomizationExample />
             </ExampleCard>
             <ExampleCard
+              title='ContextualMenu with customized submenus and noWrap attributes'
+              code={ ContextualMenuSubmenuExampleCode }
+            >
+              <ContextualMenuCustomizationWithNoWrapExample />
+            </ExampleCard>
+            <ExampleCard
               title='ContextualMenu with a scroll bar and fixed direction'
               code={ ContextualMenuWithScrollBarExampleCode }
             >
               <ContextualMenuWithScrollBarExample />
+            </ExampleCard>
+            <ExampleCard
+              title='ContextualMenu with custom rendered menu items'
+              code={ ContextualMenuWithCustomMenuItemExampleCode }
+            >
+              <ContextualMenuWithCustomMenuItemExample />
             </ExampleCard>
 
           </div>

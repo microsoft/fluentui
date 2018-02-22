@@ -78,10 +78,12 @@ export function createGroup(items: IExampleItem[], type: 'document' | 'media', i
 
 export function getTileCells(groups: IExampleGroup[], {
   onRenderCell,
-  onRenderHeader
+  onRenderHeader,
+  size = 'large'
 }: {
     onRenderHeader: (item: IExampleItem) => JSX.Element;
     onRenderCell: (item: IExampleItem, finalSize?: ITileSize) => JSX.Element;
+    size?: 'large' | 'small'
   }): (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] {
   const items: (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] = [];
 
@@ -89,9 +91,9 @@ export function getTileCells(groups: IExampleGroup[], {
     const header: ITilesGridItem<IExampleItem> = {
       key: `header-${group.key}`,
       content: {
-        key: '',
+        key: group.key,
         aspectRatio: 1,
-        name: lorem(6),
+        name: group.name,
         index: group.index
       },
       onRender: onRenderHeader
@@ -118,7 +120,9 @@ export function getTileCells(groups: IExampleGroup[], {
       marginBottom: 40,
       minRowHeight: 171,
       mode: group.type === 'document' ?
-        TilesGridMode.stack :
+        size === 'small' ?
+          TilesGridMode.fillHorizontal :
+          TilesGridMode.stack :
         TilesGridMode.fill,
       key: group.key
     });

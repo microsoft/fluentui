@@ -51,7 +51,6 @@ $ms-Persona-presenceBorder: 2px;
   height: $ms-Persona-size48;
   display: flex;
   align-items: center;
-  overflow: hidden;
 
   .contextualHost {
     display: none;
@@ -202,7 +201,7 @@ $ms-Persona-presenceBorder: 2px;
   min-width: $ms-Persona-size10;
 }
 
-.rootIsSize10{
+.rootIsSize10 {
   .imageArea {
     overflow: visible;
     background: transparent;
@@ -266,9 +265,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 16 Persona
 //
 .root.rootIsSize16 {
-  height: $ms-Persona-size16 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size16  + $ms-Persona-presenceBorder;
-  overflow: hidden;
+  height: $ms-Persona-size16;
+  min-width: $ms-Persona-size16;
 }
 
 .rootIsSize16 {
@@ -312,8 +310,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 24 Persona
 //
 .root.rootIsSize24 {
-  height: $ms-Persona-size24 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size24 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size24;
+  min-width: $ms-Persona-size24;
 }
 
 .rootIsSize24 {
@@ -372,13 +370,11 @@ $ms-Persona-presenceBorder: 2px;
   }
 }
 
-
 //== Modifier: Size 28 Persona
 //
 .root.rootIsSize28 {
-  height: $ms-Persona-size28 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size28 + $ms-Persona-presenceBorder;
-  overflow: hidden;
+  height: $ms-Persona-size28;
+  min-width: $ms-Persona-size28;
 }
 
 .rootIsSize28 {
@@ -441,8 +437,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 32 Persona
 //
 .root.rootIsSize32 {
-  height: $ms-Persona-size32 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size32 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size32;
+  min-width: $ms-Persona-size32;
 }
 
 .rootIsSize32 {
@@ -495,8 +491,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 40 Persona
 //
 .root.rootIsSize40 {
-  height: $ms-Persona-size40 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size40 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size40;
+  min-width: $ms-Persona-size40;
 }
 
 .rootIsSize40 {
@@ -526,8 +522,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 72 Persona
 //
 .root.rootIsSize72 {
-  height: $ms-Persona-size72 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size72 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size72;
+  min-width: $ms-Persona-size72;
 }
 
 .rootIsSize72 {
@@ -575,8 +571,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 100 Persona
 //
 .root.rootIsSize100 {
-  height: $ms-Persona-size100 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size100 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size100;
+  min-width: $ms-Persona-size100;
 }
 
 .rootIsSize100 {

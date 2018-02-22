@@ -20,7 +20,6 @@ import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Link } from '../../Link';
-import './examples/Button.Basic.Example.scss';
 import * as exampleStylesImport from '../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 

@@ -118,7 +118,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this.setState({
         value: newProps.value,
         errorMessage: ''
-      } as ITextFieldState);
+      } as ITextFieldState,
+        () => {
+          this._adjustInputHeight();
+        });
 
       this._delayedValidate(newProps.value);
     }
@@ -129,7 +132,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   public render() {
-    let {
+    const {
       className,
       description,
       disabled,
@@ -147,7 +150,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel
     } = this.props;
-    let { isFocused } = this.state;
+    const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
 
@@ -304,21 +307,21 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   // @deprecated
   private _onRenderAddon(props: ITextFieldProps): JSX.Element {
-    let { addonString } = props;
+    const { addonString } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ addonString }</span>
     );
   }
 
   private _onRenderPrefix(props: ITextFieldProps): JSX.Element {
-    let { prefix } = props;
+    const { prefix } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ prefix }</span>
     );
   }
 
   private _onRenderSuffix(props: ITextFieldProps): JSX.Element {
-    let { suffix } = props;
+    const { suffix } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ suffix }</span>
     );
@@ -348,7 +351,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
+    const textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
       <textarea
@@ -369,7 +372,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
@@ -422,14 +425,16 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _validate(value: string | undefined): void {
+    const { validateOnFocusIn, validateOnFocusOut } = this.props;
+
     // In case of _validate called multi-times during executing validate logic with promise return.
-    if (this._latestValidateValue === value) {
+    if (this._latestValidateValue === value && !(validateOnFocusIn || validateOnFocusOut)) {
       return;
     }
 
     this._latestValidateValue = value;
-    let onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
-    let result = onGetErrorMessage(value || '');
+    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
+    const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
       if (typeof result === 'string') {
@@ -438,7 +443,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         } as ITextFieldState);
         this._notifyAfterValidate(value, result);
       } else {
-        let currentValidation: number = ++this._lastValidation;
+        const currentValidation: number = ++this._lastValidation;
 
         result.then((errorMessage: string) => {
           if (this._isMounted && currentValidation === this._lastValidation) {
@@ -464,7 +469,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     if (this._textElement && this.props.autoAdjustHeight && this.props.multiline) {
       const textField = this._textElement as HTMLElement;
       textField.style.height = '';
-      let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
+      const scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';
     }
   }
