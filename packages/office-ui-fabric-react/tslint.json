@@ -12,9 +12,6 @@
     "typedef": [
       false
     ],
-    "no-inferrable-types": [
-      false
-    ],
     "no-unused-variable": false
   }
 }

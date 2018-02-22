@@ -45,7 +45,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     options: [] as any[]
   };
 
-  private static Option: string = 'option';
+  private static Option = 'option';
 
   private _root: HTMLElement;
   private _host: HTMLDivElement;

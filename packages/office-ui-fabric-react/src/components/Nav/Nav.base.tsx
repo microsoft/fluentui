@@ -21,10 +21,10 @@ import {
 } from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
-const _indentationSize: number = 14;
+const _indentationSize = 14;
 
 // The number of pixels of left margin
-const _baseIndent: number = 3;
+const _baseIndent = 3;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;

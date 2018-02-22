@@ -22,7 +22,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   };
 
   private _inputElement: HTMLInputElement;
-  private _autoFillEnabled: boolean = true;
+  private _autoFillEnabled = true;
   private _value: string;
 
   constructor(props: IAutofillProps) {

@@ -29,7 +29,7 @@ export const ImageFitMap: { [key: number]: string } = {
   [ImageFit.none]: 'ms-Image-image--none ' + styles.imageIsNone
 };
 
-const KEY_PREFIX: string = 'fabricImage';
+const KEY_PREFIX = 'fabricImage';
 
 export class ImageBase extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
