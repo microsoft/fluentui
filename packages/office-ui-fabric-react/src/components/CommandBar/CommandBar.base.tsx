@@ -3,7 +3,8 @@ import {
   BaseComponent,
   css,
   autobind,
-  customizable
+  customizable,
+  nullRender
 } from '../../Utilities';
 import {
   ICommandBar,
@@ -12,7 +13,7 @@ import {
   ICommandBarStyleProps,
   ICommandBarStyles
 } from './CommandBar.types';
-import { CommandBarButton } from '../../Button';
+import { CommandBarButton, IButtonProps } from '../../Button';
 import { OverflowSet, IOverflowSet } from '../../OverflowSet';
 import { ResizeGroup, IResizeGroup } from '../../ResizeGroup';
 import { TooltipHost } from '../../Tooltip';
@@ -49,9 +50,7 @@ export interface ICommandBarData {
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
-    overflowItems: [],
-    farItems: [],
-    elipisisIconProps: { iconName: 'More' }
+    overflowItems: []
   };
 
   private _overflowSet: IOverflowSet;
@@ -61,16 +60,11 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   public render(): JSX.Element {
     const {
       className,
-      endAligned,
       items,
       overflowItems,
       farItems,
-      elipisisAriaLabel,
-      elipisisIconProps,
-      buttonStyles,
       getStyles,
       theme,
-      onRenderButton = this._onRenderButton,
       onReduceData = this._onReduceData,
       onGrowData = this._onGrowData,
     } = this.props;
@@ -83,7 +77,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: '',
     };
 
-    this._classNames = getClassNames(getStyles!, { theme: theme!, className, endAligned });
+    this._classNames = getClassNames(getStyles!, { theme: theme!, className });
 
     return (
       <ResizeGroup
@@ -92,42 +86,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         data={ commandBardata }
         onReduceData={ onReduceData }
         onGrowData={ onGrowData }
-        // tslint:disable-next-line:jsx-no-lambda
-        onRenderData={ (data: ICommandBarData) => {
-          return (
-            <div className={ css(this._classNames.root) }>
-
-              {/*Primary Items*/ }
-              <OverflowSet
-                componentRef={ this._resolveRef('_overflowSet') }
-                className={ css(this._classNames.primarySet) }
-                items={ data.primaryItems }
-                overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
-                onRenderItem={ this._onRenderItems }
-                onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
-                  return (
-                    onRenderButton({
-                      key: 'oveflowButton',
-                      styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
-                      ariaLabel: elipisisAriaLabel,
-                      className: css('ms-CommandBar-overflowButton'),
-                      menuProps: { items: renderedOverflowItems },
-                      menuIconProps: elipisisIconProps,
-                    })
-                  );
-                } }
-              />
-
-              {/*Secondary Items*/ }
-              <OverflowSet
-                className={ css(this._classNames.secondarySet) }
-                items={ data.farItems }
-                onRenderItem={ this._onRenderItems }
-                onRenderOverflowButton={ () => null }
-              />
-            </div>
-          );
-        } }
+        onRenderData={ this._onRenderData }
       />
     );
   }
@@ -138,6 +97,80 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   public remeasure(): void {
     this._resizeGroup.remeasure();
+  }
+
+  @autobind
+  private _onRenderData(data: ICommandBarData): JSX.Element {
+    return (
+      <div className={ css(this._classNames.root) }>
+
+        {/*Primary Items*/ }
+        <OverflowSet
+          componentRef={ this._resolveRef('_overflowSet') }
+          className={ css(this._classNames.primarySet) }
+          items={ data.primaryItems }
+          overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
+          onRenderItem={ this._onRenderItem }
+          onRenderOverflowButton={ this._onRenderOverflowButton }
+        />
+
+        {/*Secondary Items*/ }
+        { data.farItems && <OverflowSet
+          className={ css(this._classNames.secondarySet) }
+          items={ data.farItems }
+          onRenderItem={ this._onRenderItem }
+          onRenderOverflowButton={ nullRender }
+        /> }
+      </div>
+    );
+  }
+
+  @autobind
+  private _onRenderItem(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
+    let {
+      buttonAs: CommandButtonType = CommandBarButton
+    } = this.props;
+
+    if (item.onRender) {
+      // These are the top level items, there is no relevant menu dismissing function to
+      // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
+      return item.onRender(item, () => undefined);
+    }
+    const commandButtonProps: ICommandBarItemProps = {
+      ...item,
+      styles: { root: { height: '100%' }, ...item.buttonStyles },
+      className: css('ms-CommandBarItem-overflowlink', item.className),
+      text: !item.iconOnly ? item.name : '',
+      menuProps: item.subMenuProps,
+    };
+
+    if (item.iconOnly && item.name !== undefined) {
+      return (
+        <TooltipHost content={ item.name } >
+          <CommandButtonType { ...commandButtonProps } />
+        </TooltipHost>
+      );
+    }
+
+    return <CommandButtonType { ...commandButtonProps } />;
+  }
+
+  @autobind
+  private _onRenderOverflowButton(overflowItems: ICommandBarItemProps[]): JSX.Element {
+    const {
+      overflowButtonAs: OverflowButtonType = CommandBarButton,
+      overflowButtonProps = {} // assure that props is not empty
+    } = this.props;
+
+    const overflowProps: IButtonProps = {
+      ...overflowButtonProps,
+      styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
+      className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
+      menuProps: { items: overflowItems, ...overflowButtonProps.menuProps },
+      menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
+    };
+
+    return <OverflowButtonType { ...overflowProps as IButtonProps } />;
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
@@ -155,18 +188,22 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
-    const { endAligned } = this.props;
+    const { shiftOnReduce, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey, farItems } = data;
 
-    // Use first item if endAligned, otherwise use last item
-    let movedItem = primaryItems[endAligned ? 0 : primaryItems.length - 1];
+    // Use first item if shiftOnReduce, otherwise use last item
+    let movedItem = primaryItems[shiftOnReduce ? 0 : primaryItems.length - 1];
 
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
 
       overflowItems = [movedItem, ...overflowItems];
-      primaryItems = endAligned ? primaryItems.slice(1) : primaryItems.slice(0, -1);
+      primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+
+      if (onDataReduced) {
+        onDataReduced(movedItem);
+      }
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -176,7 +213,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
-    const { endAligned } = this.props;
+    const { shiftOnReduce, onDataGrown } = this.props;
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
     const movedItem = overflowItems[0];
 
@@ -185,9 +222,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       movedItem.renderedInOverflow = false;
 
       overflowItems = overflowItems.slice(1);
-      // if endAligned, movedItem goes first, otherwise, last.
-      primaryItems = endAligned ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
+      // if shiftOnReduce, movedItem goes first, otherwise, last.
+      primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+
+      if (onDataGrown) {
+        onDataGrown(movedItem);
+      }
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -195,37 +236,4 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return undefined;
   }
 
-  @autobind
-  private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
-    let { buttonStyles } = this.props;
-
-    if (item.onRender) {
-      // These are the top level items, there is no relevant menu dismissing function to
-      // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
-      return item.onRender(item, () => undefined);
-    }
-    const commandButtonProps: ICommandBarItemProps = {
-      ...item,
-      styles: { root: { height: '100%' }, ...item.buttonStyles, ...buttonStyles },
-      className: css(item.className),
-      text: !item.iconOnly ? item.name : '',
-      menuProps: item.subMenuProps,
-    };
-
-    if (item.iconOnly && item.name !== undefined) {
-      return (
-        <TooltipHost content={ item.name } >
-          { this._onRenderButton(commandButtonProps) }
-        </TooltipHost>
-      );
-    }
-
-    return this._onRenderButton(commandButtonProps);
-  }
-
-  @autobind
-  private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
-    // tslint:disable-next-line:no-any
-    return <CommandBarButton {...props as any} />;
-  }
 }

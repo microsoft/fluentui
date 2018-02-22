@@ -24,7 +24,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         exampleCards={
           <div>
             <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
-              <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
+              <CommandBarBasicExample { ...cmdBarParamsTextAndIcons } />
             </ExampleCard>
           </div>
         }
