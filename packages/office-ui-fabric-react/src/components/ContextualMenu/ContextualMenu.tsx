@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import {
   IMenuItemClassNames,
   IContextualMenuClassNames,
@@ -25,7 +25,8 @@ import {
   customizable,
   getFirstFocusable,
   getLastFocusable,
-  css
+  css,
+  shouldWrapFocus
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
@@ -36,6 +37,7 @@ import {
 import {
   VerticalDivider
 } from '../../Divider';
+
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
   dismissedMenuItemKey?: string;
@@ -109,8 +111,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     gapSpace: 0,
     directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16,
-    arrowDirection: FocusZoneDirection.vertical,
-    getMenuClassNames: getContextualMenuClassNames,
+    getMenuClassNames: getContextualMenuClassNames
   };
 
   private _host: HTMLElement;
@@ -124,6 +125,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
+  private _adjustedFocusZoneProps: IFocusZoneProps;
+
   constructor(props: IContextualMenuProps) {
     super(props);
 
@@ -135,6 +138,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._warnDeprecations({
       'targetPoint': 'target',
       'useTargetPoint': 'target',
+      'arrowDirection': 'focusZoneProps'
     });
 
     this._isFocusingPreviousElement = false;
@@ -220,7 +224,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       styles: customStyles,
       theme,
       calloutProps,
-      onRenderSubMenu = this._onRenderSubMenu
+      onRenderSubMenu = this._onRenderSubMenu,
+      focusZoneProps
     } = this.props;
 
     const menuClassNames = this.props.getMenuClassNames || getContextualMenuClassNames;
@@ -241,6 +246,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
       return false;
     }
+
+    this._adjustedFocusZoneProps = { ...focusZoneProps, direction: this._getFocusZoneDirection() };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
@@ -309,8 +316,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
             { (items && items.length) ? (
               <FocusZone
+                {...this._adjustedFocusZoneProps }
                 className={ this._classNames.root }
-                direction={ arrowDirection }
                 isCircularNavigation={ true }
                 allowTabKey={ true }
               >
@@ -338,6 +345,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       return null;
     }
+  }
+
+  /**
+   * Gets the focusZoneDirection by using the arrowDirection if specified,
+   * the direction specificed in the focusZoneProps, or defaults to FocusZoneDirection.vertical
+   */
+  private _getFocusZoneDirection() {
+    const {
+      arrowDirection,
+      focusZoneProps
+    } = this.props;
+    return arrowDirection !== undefined ? arrowDirection :
+      focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
   }
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
@@ -678,18 +698,31 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
-
-    if (ev.which === KeyCodes.escape
-      || ev.altKey
-      || ev.metaKey
-      || (ev.which === submenuCloseKey && this.props.isSubMenu && this.props.arrowDirection === FocusZoneDirection.vertical)) {
+    if (ev.which === KeyCodes.escape ||
+      ev.altKey ||
+      ev.metaKey ||
+      this._shouldCloseSubMenu(ev)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
       ev.stopPropagation();
       this.dismiss(ev);
     }
+  }
+
+  /**
+   * Checks if the submenu should be closed
+   */
+  @autobind
+  private _shouldCloseSubMenu(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    const submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+
+    if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
+      return false;
+    }
+
+    return this._adjustedFocusZoneProps.direction === FocusZoneDirection.vertical ||
+      (!!this._adjustedFocusZoneProps.checkForNoWrap && !shouldWrapFocus(ev.target as HTMLElement, 'data-no-horizontal-wrap'));
   }
 
   @autobind
