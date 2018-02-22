@@ -28,6 +28,7 @@ import {
   css,
   shouldWrapFocus
 } from '../../Utilities';
+import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import {
@@ -37,6 +38,8 @@ import {
 import {
   VerticalDivider
 } from '../../Divider';
+import { ContextualMenuItem } from './ContextualMenuItem';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -50,37 +53,8 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-export function hasSubmenu(item: IContextualMenuItem) {
-  return !!(item.subMenuProps || item.items);
-}
-
 export function getSubmenuItems(item: IContextualMenuItem) {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
-}
-
-/**
- * Determines the effective checked state of a menu item.
- *
- * @param item {IContextualMenuItem} to get the check state of.
- * @returns {true} if the item is checked.
- * @returns {false} if the item is unchecked.
- * @returns {null} if the item is not checkable.
- */
-function getIsChecked(item: IContextualMenuItem): boolean | null {
-  if (item.canCheck) {
-    return !!(item.isChecked || item.checked);
-  }
-
-  if (typeof item.isChecked === 'boolean') {
-    return item.isChecked;
-  }
-
-  if (typeof item.checked === 'boolean') {
-    return item.checked;
-  }
-
-  // Item is not checkable.
-  return null;
 }
 
 /**
@@ -487,13 +461,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+    const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
+
     return (
       <div className={ this._classNames.header } style={ item.style } role='heading' aria-level={ this.props.title ? 2 : 1 }>
-        { this._renderMenuItemChildren(item, classNames, index, hasCheckmarks, hasIcons) }
+        <ChildrenRenderer
+          item={item}
+          classNames={classNames}
+          index={index}
+          onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
+          hasIcons={hasIcons}
+        />
       </div>);
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+    const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     return (
       <div>
         <a
@@ -508,7 +491,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }
         >
-          { this._renderMenuItemChildren(item, classNames, index, hasCheckmarks, hasIcons) }
+          <ChildrenRenderer
+            item={item}
+            classNames={classNames}
+            index={index}
+            onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
+            hasIcons={hasIcons}
+          />
         </a>
       </div>);
   }
@@ -522,6 +511,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     hasCheckmarks?: boolean,
     hasIcons?: boolean) {
     const { expandedMenuItemKey } = this.state;
+    const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
+
     let { subMenuId } = this.state;
     if (item.subMenuProps && item.subMenuProps.id) {
       subMenuId = item.subMenuProps.id;
@@ -567,8 +558,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <button
         { ...getNativeProps(item, buttonProperties) }
         { ...itemButtonProperties }
-        children={ this._renderMenuItemChildren(item, classNames, index, hasCheckmarks!, hasIcons!) }
-      />
+      >
+        <ChildrenRenderer item={item} classNames={classNames} index={index} onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined} hasIcons={hasIcons} />
+      </button>
     );
   }
 
@@ -608,6 +600,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
+    const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
 
     const itemProps = {
       key: item.key,
@@ -624,10 +617,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
-      this._renderMenuItemChildren(itemProps, classNames, index, hasCheckmarks, hasIcons));
+      <ChildrenRenderer item={item} classNames={classNames} index={index} onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined} hasIcons={hasIcons} />,
+    );
   }
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+    const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const itemProps = {
       onClick: this._onItemClick.bind(this, item),
       disabled: this._isItemDisabled(item),
@@ -645,7 +640,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item)
       }),
-      this._renderMenuItemChildren(itemProps, classNames, index, false, false));
+      <ChildrenRenderer item={item} classNames={classNames} index={index} hasIcons={false} />
+    );
   }
 
   private _renderSplitDivider(item: IContextualMenuItem) {
@@ -653,47 +649,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }
 
-  private _renderMenuItemChildren(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    const isItemChecked: boolean | null | undefined = getIsChecked(item);
-    return (
-      <div className={ item.split ? classNames.linkContentMenu : classNames.linkContent }>
-        { (hasCheckmarks) ? (
-          <Icon
-            iconName={ isItemChecked === true ? 'CheckMark' : '' }
-            className={ classNames.checkmarkIcon }
-            onClick={ this._onItemClick.bind(this, item) }
-          />
-        ) : (null) }
-        { (hasIcons) ? (
-          this._renderIcon(item, classNames)
-        ) : (null) }
-        { item.name ? (
-          <span className={ classNames.label }>{ item.name }</span>
-        ) : null
-        }
-        { hasSubmenu(item) ? (
-          <Icon
-            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-            { ...item.submenuIconProps }
-            className={ classNames.subMenuIcon }
-          />
-        ) : (null) }
-      </div>
-    );
-  }
-
   private _getIconProps(item: IContextualMenuItem): IIconProps {
     const iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: item.icon
     };
     return iconProps;
-  }
-
-  private _renderIcon(item: IContextualMenuItem, classNames: IMenuItemClassNames) {
-    // Only present to allow continued use of item.icon which is deprecated.
-    const iconProps = this._getIconProps(item);
-
-    return <Icon { ...iconProps } className={ classNames.icon } />;
   }
 
   @autobind

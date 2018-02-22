@@ -611,6 +611,32 @@ describe('ContextualMenu', () => {
     expect(subMenuOpened).toEqual(true);
   });
 
+  it('calls the custom child renderer when the contextualMenuItemAs prop is provided', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+      }
+    ];
+    const customRenderer = jest.fn(() => null);
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        contextualMenuItemAs={ customRenderer }
+      />
+    );
+
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(customRenderer).toHaveBeenCalledTimes(2);
+  });
+
   describe('canAnyMenuItemsCheck', () => {
     it('returns false when there are no checkable menu items', () => {
       const items: IContextualMenuItem[] = [
