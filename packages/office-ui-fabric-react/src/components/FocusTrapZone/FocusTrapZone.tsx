@@ -17,11 +17,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private static _focusStack: FocusTrapZone[] = [];
   private static _clickStack: FocusTrapZone[] = [];
 
-  public refs: {
-    [key: string]: React.ReactInstance,
-    root: HTMLElement
-  };
-
+  private _root: HTMLElement;
   private _previouslyFocusedElement: HTMLElement;
   private _isInFocusStack: boolean = false;
   private _isInClickStack: boolean = false;
@@ -42,7 +38,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    if (!elementContains(this.refs.root, this._previouslyFocusedElement) && !disableFirstFocus) {
+    if (!elementContains(this._root, this._previouslyFocusedElement) && !disableFirstFocus) {
       this.focus();
     }
 
@@ -91,7 +87,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       <div
         { ...divProps }
         className={ className }
-        ref='root'
+        ref={ this._resolveRef('_root') }
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyboardHandler }
       >
@@ -110,12 +106,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
-    const root = this.refs.root;
 
     if (focusSelector) {
-      _firstFocusableChild = root.querySelector('.' + focusSelector);
+      _firstFocusableChild = this._root.querySelector('.' + focusSelector);
     } else {
-      _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
+      _firstFocusableChild = getNextElement(this._root, this._root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
       (_firstFocusableChild as any).focus();
@@ -128,10 +123,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    const { root } = this.refs;
-
-    const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true);
-    const _lastFocusableChild = getLastTabbable(root, root.lastChild as HTMLElement, true);
+    const _firstFocusableChild = getFirstFocusable(this._root, this._root.firstChild as HTMLElement, true);
+    const _lastFocusableChild = getLastTabbable(this._root, this._root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
       _lastFocusableChild!.focus();
@@ -148,7 +141,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
       const focusedElement = document.activeElement as HTMLElement;
 
-      if (!elementContains(this.refs.root, focusedElement)) {
+      if (!elementContains(this._root, focusedElement)) {
         this.focus();
         ev.preventDefault();
         ev.stopPropagation();
@@ -160,7 +153,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (FocusTrapZone._clickStack.length && this === FocusTrapZone._clickStack[FocusTrapZone._clickStack.length - 1]) {
       const clickedElement = ev.target as HTMLElement;
 
-      if (clickedElement && !elementContains(this.refs.root, clickedElement)) {
+      if (clickedElement && !elementContains(this._root, clickedElement)) {
         this.focus();
         ev.preventDefault();
         ev.stopPropagation();

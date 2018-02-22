@@ -71,12 +71,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     workWeekDays: defaultWorkWeekDays
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-    dayPicker: CalendarDay;
-    monthPicker: CalendarMonth;
-  };
+  public root: HTMLElement;
+  public dayPicker: CalendarDay;
+  public monthPicker: CalendarMonth;
 
   private _focusOnUpdate: boolean;
 
@@ -116,10 +113,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   public componentDidUpdate() {
     if (this._focusOnUpdate) {
       // if the day picker is shown, focus on it
-      if (this.refs.dayPicker) {
-        this.refs.dayPicker.focus();
-      } else if (this.refs.monthPicker) {
-        this.refs.monthPicker.focus();
+      if (this.dayPicker) {
+        this.dayPicker.focus();
+      } else if (this.monthPicker) {
+        this.monthPicker.focus();
       }
       this._focusOnUpdate = false;
     }
@@ -134,7 +131,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref='root' role='application'>
+      <div className={ css(rootClass, styles.root) } ref={ this._resolveRef('root') } role='application'>
         <div
           className={ css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
@@ -170,7 +167,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   minDate={ minDate }
                   maxDate={ maxDate }
                   workWeekDays={ this.props.workWeekDays }
-                  ref='dayPicker'
+                  ref={ this._resolveRef('_dayPicker') }
                 />
                 }
 
@@ -185,7 +182,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   minDate={ minDate }
                   maxDate={ maxDate }
-                  ref='monthPicker'
+                  ref={ this._resolveRef('monthPicker') }
                 /> }
 
                 { showGoToToday &&
@@ -208,8 +205,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public focus() {
-    if (this.refs.dayPicker) {
-      this.refs.dayPicker.focus();
+    if (this.dayPicker) {
+      this.dayPicker.focus();
     }
   }
 

@@ -38,9 +38,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   public refs: {
     [key: string]: React.ReactInstance,
-    root: HTMLElement,
-    list: List
   };
+
+  private _list: List;
 
   private _isSomeGroupExpanded: boolean;
 
@@ -56,7 +56,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
-    this.refs.list && this.refs.list.scrollToIndex(index, measureItem);
+    this._list && this._list.scrollToIndex(index, measureItem);
   }
 
   public componentWillReceiveProps(newProps: IGroupedListProps) {
@@ -92,7 +92,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
     return (
       <div
-        ref='root'
         className={ css('ms-GroupedList', styles.root, className) }
         data-automationid='GroupedList'
         data-is-scrollable='false'
@@ -101,11 +100,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         { !groups ?
           this._renderGroup(null, 0) : (
             <List
-              ref='list'
+              ref={ this._resolveRef('_list') }
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ this._returnOne }
-              getPageSpecification= { this._getPageSpecification }
+              getPageSpecification={ this._getPageSpecification }
               usePageCache={ usePageCache }
               onShouldVirtualize={ onShouldVirtualize }
             />
@@ -249,11 +248,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
     const groupCount = groups ? groups.length : 1;
 
-    if (this.refs.list) {
-      this.refs.list.forceUpdate();
+    if (this._list) {
+      this._list.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        const group = this.refs.list.refs['group_' + String(i)] as GroupedListSection;
+        const group = this._list.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
@@ -284,12 +283,12 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _getPageSpecification(itemIndex: number, visibleRect: IRectangle): {
-      key?: string;
+    key?: string;
   } {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {
-        key: pageGroup && pageGroup.name
+      key: pageGroup && pageGroup.name
     };
   }
 

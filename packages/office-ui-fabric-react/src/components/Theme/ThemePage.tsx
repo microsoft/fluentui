@@ -6,6 +6,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker, IColorPickerProps } from 'office-ui-fabric-react/lib/ColorPicker';
+import { autobind } from '../../Utilities';
 import './ThemePage.scss';
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
@@ -22,11 +23,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     index: number;
   };
 }> {
-
-  public refs: {
-    [key: string]: React.ReactInstance;
-    list: DetailsList;
-  };
+  private _list: DetailsList;
 
   constructor(props: {}) {
     super(props);
@@ -60,7 +57,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
         <h1 className={ FontClassNames.xLarge }>Define a theme</h1>
         <div>
           <DetailsList
-            ref='list'
+            ref={ this._createDetailsListRef }
             items={ colors }
             selectionMode={ SelectionMode.none }
             layoutMode={ LayoutMode.fixedColumns }
@@ -115,6 +112,11 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     );
   }
 
+  @autobind
+  private _createDetailsListRef(component: DetailsList) {
+    this._list = component;
+  }
+
   private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       colorPickerProps: {
@@ -141,7 +143,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     loadTheme({ palette });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
-    this.refs.list.forceUpdate();
+    this._list.forceUpdate();
   }
 
   private _onPickerDismiss() {

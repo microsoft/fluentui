@@ -49,11 +49,6 @@ export interface IDetailsListAdvancedExampleState {
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    list: DetailsList
-  };
-
   private _isFetchingItems: boolean;
   private _selection: Selection;
 
@@ -124,7 +119,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         }
 
         <DetailsList
-          ref='list'
           setKey='items'
           items={ items as any[] }
           groups={ groups }
