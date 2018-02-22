@@ -1,6 +1,80 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+
+## 5.54.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount
+- FocusZone: Add the ability turn off directional wrapping on sections of a FocusZone
+- Convert Layer component to mergeStyles
+- Converting SCSS to MergeStyles step 2 - style conversion
+- Add imageErrorAs to IIconProps
+
+### Patches
+
+- Enable variable-name and jsx-boolean-value tslint rules
+- Calendar: changing refs to componentRef.
+- DatePicker-onAfterMenuDismiss callback created
+- DatePicker - Adding public focus method
+- [TextField] Set input size to 1
+- [TooltipHost] Inline display for when overflow mode is on"
+- Updated contextual menu to pass the correct number
+- Contextual Menu - Added aria-posinset and aria-setsize to split buttons
+
+## 5.53.0
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Minor changes
+
+- added support for aria-posinset and aria-setsize
+- Converting Image SCSS to MergeStyles step 1 - file structure
+- SwatchColorPicker: Improve keyboard/mouse behavior
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Converting Nav SCSS to MergeStyles step 1 - file structure
+- Converting ResizeGroup SCSS to MergeStyles step 1 - file structure
+- Converting SCSS to MergeStyles step 2 - style conversion
+- make onShouldVirtualize work for grouped list
+
+### Patches
+
+- Enable jsx-key tslint rule
+- Only apply 'pointer-events: none' to disabled Link components if there is an href 
+- Dialog: default modal props now respective (Modal rendered with light background.)
+- Buttons: moving className lower in the merge list so that it has more precedence than default rules.
+- Rating: Adding `type=button` to Rating buttons.
+
+## 5.52.0
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Minor changes
+
+- Converting SCSS to MergeStyles step 1 - file structure
+
+### Patches
+
+- Add notifyPageChange function to List
+- Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots
+- Fixes useTargetWidth prop for ContextualMenu
+- Convert overlay and examples to mergeStyles
+- DetailsList: Groups are now considered for aria-rowcount.
+
+## 5.51.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added enum for triggering menu with arrow keys and bool to allow it or not
+- Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout
+- FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this
+- Link: Update to use merge-styles
+
+### Patches
+
+- Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'
+- SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself.
 
 ## 5.50.0
 Wed, 14 Feb 2018 22:10:50 GMT

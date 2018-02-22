@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZoneDirection } from '../../FocusZone';
+import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -169,7 +169,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Direction for arrow navigation of the ContextualMenu. Should only be specified if using custom-rendered menu items.
-   * @default FocusZoneDirection.vertical
+   * @deprecated Use focusZoneProps instead
    */
   arrowDirection?: FocusZoneDirection;
 
@@ -219,6 +219,14 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Props to pass down to the FocusZone.
+   * NOTE: the default FocusZoneDirection will be used unless a direction
+   * is specified in the focusZoneProps (even if other focusZoneProps are defined)
+   * @default {direction: FocusZoneDirection.vertical}
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 export interface IContextualMenuItem {
@@ -405,6 +413,13 @@ export interface IContextualMenuItem {
    * have a value of menuitem or menuitemcheckbox.
    */
   role?: string;
+
+  /**
+   * When rendering a custom component that is passed in, the component might also be a list of
+   * elements. We want to keep track of the correct index our menu is using based off of
+   * the length of the custom list. It is up to the user to increment the count for their list.
+   */
+  customOnRenderListLength?: number;
 
   /**
    * Any additional properties to use when custom rendering menu items.

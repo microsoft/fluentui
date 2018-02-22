@@ -102,7 +102,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
   }
 
   public render(): JSX.Element {
-    let {
+    const {
       children,
       beakWidth,
       beakHeight,
@@ -236,7 +236,7 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
      * An array of cached ids returned when setTimeout runs during
      * the window resize event trigger.
      */
-    let timeoutIds: number[] = [];
+    const timeoutIds: number[] = [];
 
     /**
      * The target element the mouse would be in
@@ -269,9 +269,9 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
     // we want to check if inside of an element and
     // set the state with the result.
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
-      let mouseY = e.pageY;
-      let mouseX = e.pageX;
-      let isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
+      const mouseY = e.pageY;
+      const mouseX = e.pageX;
+      const isMouseInProximity = this._isInsideElement(mouseX, mouseY, targetElementRect, mouseProximityOffset);
 
       if (isMouseInProximity !== this.state.isMouseInProximity) {
         // We don't want to update the isMouseInProximtiy state because

@@ -173,7 +173,6 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
   >
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
 
           {
@@ -594,7 +593,6 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
   >
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
 
           {

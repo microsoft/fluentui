@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "Link: Update to use merge-styles",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mike@mikewheaton.ca"
+  "email": "mark@thedutchies.com"
 }

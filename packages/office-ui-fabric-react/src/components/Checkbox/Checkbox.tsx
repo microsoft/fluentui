@@ -83,6 +83,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       styles: customStyles,
       onRenderLabel = this._onRenderLabel,
       checkmarkIconProps,
+      ariaPositionInSet,
+      ariaSetSize
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
@@ -118,6 +120,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         aria-label={ ariaLabel }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
+        aria-posinset={ ariaPositionInSet }
+        aria-setsize={ ariaSetSize }
       >
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>

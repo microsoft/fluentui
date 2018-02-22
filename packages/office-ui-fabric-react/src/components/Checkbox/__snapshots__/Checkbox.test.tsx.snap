@@ -7,6 +7,8 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
   aria-disabled={undefined}
   aria-label={undefined}
   aria-labelledby={undefined}
+  aria-posinset={undefined}
+  aria-setsize={undefined}
   className=
       ms-Checkbox
       is-enabled
@@ -104,7 +106,6 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
     >
       <i
         aria-hidden={true}
-        aria-label={undefined}
         className=
 
             {
