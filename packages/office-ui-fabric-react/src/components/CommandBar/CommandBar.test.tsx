@@ -4,7 +4,10 @@ import * as React from 'react';
 
 import { CommandBar } from './CommandBar';
 import { CommandBarBase } from './CommandBar.base';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import * as renderer from 'react-test-renderer';
+import * as ReactDOM from 'react-dom';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 describe('CommandBar', () => {

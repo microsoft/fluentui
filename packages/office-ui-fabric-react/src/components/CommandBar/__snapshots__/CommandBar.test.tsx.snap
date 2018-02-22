@@ -27,6 +27,7 @@ exports[`CommandBar renders commands correctly 1`] = `
         className=
             ms-FocusZone
             ms-OverflowSet
+            ms-CommandBar-primaryCommand
             {
               align-items: stretch;
               display: flex;
@@ -49,6 +50,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             className=
                 ms-Button
                 ms-Button--commandBar
+                ms-CommandBarItem-overflowlink
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -150,6 +152,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             className=
                 ms-Button
                 ms-Button--commandBar
+                ms-CommandBarItem-overflowlink
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
@@ -241,23 +244,6 @@ exports[`CommandBar renders commands correctly 1`] = `
           </button>
         </div>
       </div>
-      <div
-        aria-describedby={undefined}
-        aria-labelledby={undefined}
-        className=
-            ms-FocusZone
-            ms-OverflowSet
-            {
-              align-items: stretch;
-              display: flex;
-              flex-shrink: 0;
-            }
-        data-focuszone-id="FocusZone7"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="menubar"
-      />
     </div>
   </div>
 </div>
