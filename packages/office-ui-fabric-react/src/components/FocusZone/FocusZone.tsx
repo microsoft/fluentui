@@ -73,7 +73,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   public componentDidMount() {
     _allInstances[this._id] = this;
-    if (this._root && this._root.ownerDocument) {
+    if (this._root) {
       const windowElement = this._root.ownerDocument.defaultView;
 
       let parentElement = getParent(this._root, ALLOW_VIRTUAL_ELEMENTS);
