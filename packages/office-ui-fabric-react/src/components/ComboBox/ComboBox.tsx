@@ -316,41 +316,36 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           id={ id + 'wrapper' }
           className={ this._classNames.root }
         >
-          <FocusZone
-            style={ { display: 'inline-block' } }
+          <Autofill
+            data-is-interactable={ !disabled }
+            ref={ this._resolveRef('_comboBox') }
+            id={ id + '-input' }
             className={ this._classNames.input }
-          >
-            <Autofill
-              data-is-interactable={ !disabled }
-              ref={ this._resolveRef('_comboBox') }
-              id={ id + '-input' }
-              className={ this._classNames.input }
-              type='text'
-              onFocus={ this._select }
-              onBlur={ this._onBlur }
-              onKeyDown={ this._onInputKeyDown }
-              onKeyUp={ this._onInputKeyUp }
-              onClick={ this._onAutofillClick }
-              onInputValueChange={ this._onInputChange }
-              aria-expanded={ isOpen }
-              aria-autocomplete={ (!disabled && autoComplete === 'on') }
-              role='combobox'
-              aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
-              readOnly={ disabled || !allowFreeform }
-              aria-labelledby={ (label && (id + '-label')) }
-              aria-label={ ((ariaLabel && !label) && ariaLabel) }
-              aria-describedby={ (id + '-option') }
-              aria-activedescendant={ (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null) }
-              aria-disabled={ disabled }
-              aria-owns={ (id + '-list') }
-              spellCheck={ false }
-              defaultVisibleValue={ this._currentVisibleValue }
-              suggestedDisplayValue={ suggestedDisplayValue }
-              updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
-              shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
-              title={ title }
-            />
-          </FocusZone>
+            type='text'
+            onFocus={ this._select }
+            onBlur={ this._onBlur }
+            onKeyDown={ this._onInputKeyDown }
+            onKeyUp={ this._onInputKeyUp }
+            onClick={ this._onAutofillClick }
+            onInputValueChange={ this._onInputChange }
+            aria-expanded={ isOpen }
+            aria-autocomplete={ (!disabled && autoComplete === 'on') }
+            role='combobox'
+            aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
+            readOnly={ disabled || !allowFreeform }
+            aria-labelledby={ (label && (id + '-label')) }
+            aria-label={ ((ariaLabel && !label) && ariaLabel) }
+            aria-describedby={ (id + '-option') }
+            aria-activedescendant={ (isOpen && (selectedIndex as number) >= 0 ? (id + '-list' + selectedIndex) : null) }
+            aria-disabled={ disabled }
+            aria-owns={ (id + '-list') }
+            spellCheck={ false }
+            defaultVisibleValue={ this._currentVisibleValue }
+            suggestedDisplayValue={ suggestedDisplayValue }
+            updateValueInWillReceiveProps={ this._onUpdateValueInAutofillWillReceiveProps }
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutofillComponentDidUpdate }
+            title={ title }
+          />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
