@@ -154,6 +154,12 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @default true
    */
   isButtonAriaHidden?: boolean;
+
+  /**
+   * Sets the 'data-is-focusable' attribute on the ComboBox's button element. Setting this to false while the ComboBox is wrapped in a
+   * FocusZone will allow keyboard navigation to skip the button (as it is redundant within that context).
+   */
+  isButtonDataFocusable?: boolean;
 }
 
 export interface IComboBoxStyles {
