@@ -33,7 +33,7 @@ export interface IFabricState {
 
 // We will track the last focus visibility state so that if we tear down and recreate
 // the Fabric component, we will use the last known value as the default.
-let _lastIsFocusVisible: boolean = false;
+let _lastIsFocusVisible = false;
 
 // Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
 if (typeof (document) === 'object' && document.documentElement && !document.documentElement.getAttribute('dir')) {

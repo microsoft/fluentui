@@ -4,10 +4,6 @@ import { BaseDecorator } from './BaseDecorator';
 export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>(ComposedComponent: (new (props: TProps, ...args: any[]) => (React.Component<TProps, S>))): any {
 
   return class WithContainsFocusComponent extends BaseDecorator<TProps & { containsFocus?: boolean }, { containsFocus?: boolean }> {
-    public refs: {
-      [key: string]: React.ReactInstance,
-    };
-
     private _newContainsFocus: boolean;
     private _delayedSetContainsFocus: () => void;
 
@@ -32,7 +28,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
       const { containsFocus } = this.state;
 
       return (
-        <div ref='root' onFocus={ this._handleFocus } onBlur={ this._handleBlur }>
+        <div onFocus={ this._handleFocus } onBlur={ this._handleBlur }>
           <ComposedComponent
             ref={ this._updateComposedComponentRef }
             containsFocus={ containsFocus }

@@ -110,6 +110,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * and have to hit escape or some other key.
    */
   allowTabKey?: boolean;
+
+  /**
+   * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * when determining how to move focus
+   * @default false
+   */
+  checkForNoWrap?: boolean;
 }
 
 export enum FocusZoneDirection {

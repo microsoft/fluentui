@@ -254,10 +254,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
        } = this.props;
 
     if (iconProps) {
-      return Icon({
-        ...iconProps,
-        className: this._classNames.icon
-      });
+      return (
+        <Icon
+          {...iconProps}
+          className={ this._classNames.icon }
+        />
+      );
     }
     return null;
   }

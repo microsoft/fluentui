@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.13.0",
+      "tag": "@uifabric/utilities_v5.13.0",
+      "date": "Thu, 22 Feb 2018 11:15:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "b0550145231d18adea954f56be47967ab04cb19d",
+            "comment": "Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.1",
       "tag": "@uifabric/utilities_v5.12.1",
       "date": "Wed, 21 Feb 2018 11:12:11 GMT",
