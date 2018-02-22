@@ -239,11 +239,15 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
-  it('applies disabled property when `disabled` is true', () => {
+  it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
         disabled: true,
       },
     ];
@@ -254,17 +258,30 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
 
-    expect(menuItem.disabled).toBeTruthy();
+    menuItems[0].focus();
+    expect(document.activeElement.className.split(' ')).toContain('ms-ContextualMenu-link');
+    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+
+    menuItems[1].focus();
+    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
   });
 
-  it('applies disabled property when deprecated property `isDisabled` is true', () => {
+  it('cannot click on disabled items', () => {
+    let activeItemClicked = false;
+    let disabledItemClicked = false;
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
-        isDisabled: true,
+        onClick: () => activeItemClicked = true
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+        disabled: true,
+        onClick: () => disabledItemClicked = false
       },
     ];
 
@@ -274,9 +291,14 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItem = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItem.length).toEqual(2);
 
-    expect(menuItem.disabled).toBeTruthy();
+    menuItem[0].click();
+    expect(activeItemClicked).toEqual(true);
+
+    menuItem[1].click();
+    expect(disabledItemClicked).toEqual(false);
   });
 
   it('renders headers properly', () => {
