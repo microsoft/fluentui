@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not requied.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
