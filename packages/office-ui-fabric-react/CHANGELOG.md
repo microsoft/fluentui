@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+
+## 5.54.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount
+- FocusZone: Add the ability turn off directional wrapping on sections of a FocusZone
+- Convert Layer component to mergeStyles
+- Converting SCSS to MergeStyles step 2 - style conversion
+- Add imageErrorAs to IIconProps
+
+### Patches
+
+- Enable variable-name and jsx-boolean-value tslint rules
+- Calendar: changing refs to componentRef.
+- DatePicker-onAfterMenuDismiss callback created
+- DatePicker - Adding public focus method
+- [TextField] Set input size to 1
+- [TooltipHost] Inline display for when overflow mode is on"
+- Updated contextual menu to pass the correct number
+- Contextual Menu - Added aria-posinset and aria-setsize to split buttons
 
 ## 5.53.0
 Wed, 21 Feb 2018 11:12:11 GMT
