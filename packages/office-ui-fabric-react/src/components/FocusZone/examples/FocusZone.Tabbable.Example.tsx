@@ -18,5 +18,16 @@ export const FocusZoneTabbableExample = () => (
         <DefaultButton>Button 3</DefaultButton>
       </FocusZone>
     </div>
+    <div className='ms-Row'>
+      <FocusZone direction={ FocusZoneDirection.horizontal } tabPermission={ FocusZoneTabbableElements.inputOnly } isCircularNavigation={ false }>
+        <span>Input Only FocusZone: </span>
+        <DefaultButton>Button 1</DefaultButton>
+        <DefaultButton>Button 2</DefaultButton>
+        <TextField value='FocusZone TextField' className='ms-FocusZoneTabbableExample-textField' />
+        <DefaultButton>Button 3</DefaultButton>
+      </FocusZone>
+    </div>
   </div>
+
+
 );

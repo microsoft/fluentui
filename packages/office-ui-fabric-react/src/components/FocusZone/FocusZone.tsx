@@ -367,7 +367,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.tab:
-          if (this.props.tabPermission === FocusZoneTabbableElements.all) {
+          if (this.props.tabPermission === FocusZoneTabbableElements.all
+            || (this.props.tabPermission === FocusZoneTabbableElements.inputOnly && this._isElementInput(ev.target as HTMLElement))) {
             let focusChanged = false;
             this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical ||
@@ -789,6 +790,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+    if (this.props.tabPermission === FocusZoneTabbableElements.inputOnly && !this._processingTabKey) {
+      return false;
+    }
+
     // If a tab was used, we want to focus on the next element.
     if (!this._processingTabKey &&
       element &&
