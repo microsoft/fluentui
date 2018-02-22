@@ -178,6 +178,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
+  public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
+    // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
+    if (this.props.onAfterMenuDismiss && prevState.isDatePickerShown && !this.state.isDatePickerShown) {
+      this.props.onAfterMenuDismiss();
+    }
+  }
+
   public render() {
     const {
       firstDayOfWeek,
