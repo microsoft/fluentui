@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Deprecates the SelectionLayout component as it is no longer in use by SelectionZone",
+      "comment": "SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not requied.",
       "type": "patch"
     }
   ],
