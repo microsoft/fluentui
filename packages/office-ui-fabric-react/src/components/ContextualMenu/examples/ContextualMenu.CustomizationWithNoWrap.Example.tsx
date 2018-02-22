@@ -215,7 +215,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>
           { item.categoryList.map((category: any) =>
-            <button className='ms-ContextualMenu-link' role='menuitem'>
+            <button key={ category.name } className='ms-ContextualMenu-link' role='menuitem'>
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
