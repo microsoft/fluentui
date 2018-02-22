@@ -5,12 +5,13 @@ import {
 } from './DatePicker.types';
 import {
   Calendar,
+  ICalendar,
   DayOfWeek
 } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField } from '../../TextField';
+import { TextField, ITextField } from '../../TextField';
 import { Label } from '../../Label';
 import {
   autobind,
@@ -121,9 +122,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   private _root: HTMLElement;
-  private _calendar: Calendar;
-  private _datepicker: HTMLDivElement;
-  private _textField: TextField;
+  private _calendar: ICalendar;
+  private _datePickerDiv: HTMLDivElement;
+  private _textField: ITextField;
   private _preventFocusOpeningPicker: boolean;
   private _focusOnSelectedDateOnUpdate: boolean;
 
@@ -210,7 +211,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         { label && (
           <Label required={ isRequired }>{ label }</Label>
         ) }
-        <div ref={ this._resolveRef('_datepicker') }>
+        <div ref={ this._resolveRef('_datePickerDiv') }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
@@ -237,7 +238,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref={ this._resolveRef('_textField') }
+            componentRef={ this._resolveRef('_textField') }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />
         </div>
@@ -249,7 +250,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
-            target={ this._datepicker }
+            target={ this._datePickerDiv }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
@@ -271,7 +272,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               dateTimeFormatter={ this.props.dateTimeFormatter }
               minDate={ minDate }
               maxDate={ maxDate }
-              ref={ this._resolveRef('_calendar') }
+              componentRef={ this._resolveRef('_calendar') }
             />
           </Callout>
         ) }
