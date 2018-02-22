@@ -70,7 +70,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       onGrowData = this._onGrowData,
     } = this.props;
 
-    let commandBardata: ICommandBarData = {
+    let commandBarData: ICommandBarData = {
       primaryItems: [...items],
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
@@ -78,7 +78,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       cacheKey: '',
     };
 
-    this._setAriaPosinset(commandBardata);
+    this._setAriaPosinset(commandBarData);
 
     this._classNames = getClassNames(getStyles!, { theme: theme!, className });
 
@@ -86,7 +86,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       <ResizeGroup
         componentRef={ this._resolveRef('_resizeGroup') }
         className={ className }
-        data={ commandBardata }
+        data={ commandBarData }
         onReduceData={ onReduceData }
         onGrowData={ onGrowData }
         onRenderData={ this._onRenderData }
