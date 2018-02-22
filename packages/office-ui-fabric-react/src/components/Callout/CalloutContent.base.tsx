@@ -31,7 +31,7 @@ import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
-const BORDER_WIDTH: number = 1;
+const BORDER_WIDTH = 1;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
 // To help ensure that edge will respect the offscreen style opacity
