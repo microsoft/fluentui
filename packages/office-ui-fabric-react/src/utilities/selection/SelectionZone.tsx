@@ -10,10 +10,8 @@ import {
   getWindow,
   isElementTabbable
 } from '../../Utilities';
-import { SelectionLayout } from './SelectionLayout';
 import {
   ISelection,
-  ISelectionLayout,
   SelectionDirection,
   SelectionMode
 } from './interfaces';
@@ -42,7 +40,10 @@ const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   componentRef?: () => void;
   selection: ISelection;
-  layout?: ISelectionLayout;
+  /**
+   * @deprecated No longer in use, focus is now managed by FocusZone
+   */
+  layout?: {};
   selectionMode?: SelectionMode;
   selectionPreservedOnEmptyClick?: boolean;
   enterModalOnTouch?: boolean;
@@ -53,7 +54,6 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
 
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
-    layout: new SelectionLayout(SelectionDirection.vertical),
     isMultiSelectEnabled: true,
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple

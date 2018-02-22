@@ -58,13 +58,6 @@ export interface ISelection {
   toggleRangeSelected(fromIndex: number, count: number): void;
 }
 
-export interface ISelectionLayout {
-  getItemIndexAbove(index: number, items: any[]): number;
-  getItemIndexBelow(index: number, items: any[]): number;
-  getItemIndexLeft(index: number, items: any[]): number;
-  getItemIndexRight(index: number, items: any[]): number;
-}
-
 export enum SelectionDirection {
   horizontal = 0,
   vertical = 1
