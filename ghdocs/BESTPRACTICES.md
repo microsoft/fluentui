@@ -187,10 +187,6 @@ Note that it's very critical you do NOT inline the functions in render! This cau
 is recreated. If you do this, react will call your function with null to clear it, and then render, and then once complete, will
 call it again with the element. This creates timing issues where your ref may be null when you didn't expect.
 
-See example here that illustates refs being re-evaluated:
-
-http://codepen.io/dzearing/pen/WGZOaR
-
 ## Use unique keys for items in a mapped array, avoid indexes for keys
 
 ```typescript
