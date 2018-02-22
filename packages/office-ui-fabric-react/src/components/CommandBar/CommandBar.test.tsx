@@ -3,9 +3,10 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { CommandBarBase } from './CommandBar.base';
-import { CommandBar } from './CommandBar';
-import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.types';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import * as renderer from 'react-test-renderer';
+import * as ReactDOM from 'react-dom';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 describe('CommandBar', () => {
