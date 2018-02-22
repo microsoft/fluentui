@@ -109,7 +109,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * an unfortunate side effect is that users will not be able to tab out of the focus zone
    * and have to hit escape or some other key.
    */
-  allowTabKey?: boolean;
+  tabPermission?: FocusZoneTabbableElements;
 
   /**
    * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
@@ -117,6 +117,18 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * @default false
    */
   checkForNoWrap?: boolean;
+}
+
+export enum FocusZoneTabbableElements {
+
+  // allowTabKey is false
+  none = 0,
+
+  // allowTabKey is true
+  all = 1,
+
+  // allowTabKeyOnInput is true and allowTabKey is false
+  inputOnly = 2
 }
 
 export enum FocusZoneDirection {

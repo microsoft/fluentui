@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   FocusZoneDirection,
+  FocusZoneTabbableElements,
   IFocusZone,
   IFocusZoneProps
 } from './FocusZone.types';
@@ -366,7 +367,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.tab:
-          if (this.props.allowTabKey) {
+          if (this.props.tabPermission === FocusZoneTabbableElements.all) {
             let focusChanged = false;
             this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical ||

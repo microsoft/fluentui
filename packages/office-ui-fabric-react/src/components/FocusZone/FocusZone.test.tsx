@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -1048,7 +1048,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ allowTabKey: true, isCircularNavigation: true }}>
+        <FocusZone {...{ tabPermission: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
           <button className='a'>a</button>
           <button className='b'>b</button>
           <button className='c'>c</button>
