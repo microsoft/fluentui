@@ -49,14 +49,14 @@ export class Check extends BaseComponent<ICheckProps, {}> {
           }
         ) }
       >
-        { Icon({
-          className: 'ms-Check-circle ' + styles.circle,
-          iconName: 'CircleRing'
-        }) }
-        { Icon({
-          className: 'ms-Check-check ' + styles.check,
-          iconName: 'StatusCircleCheckmark'
-        }) }
+        { <Icon
+          className={ 'ms-Check-circle ' + styles.circle }
+          iconName={ 'CircleRing' }
+        /> }
+        { <Icon
+          className={ 'ms-Check-check ' + styles.check }
+          iconName={ 'StatusCircleCheckmark' }
+        /> }
       </div>
     );
   }

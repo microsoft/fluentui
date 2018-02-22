@@ -39,7 +39,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
 
                         {
@@ -60,7 +59,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
 
                         {
@@ -916,7 +914,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
 
                         {
@@ -936,7 +933,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
 
                         {
