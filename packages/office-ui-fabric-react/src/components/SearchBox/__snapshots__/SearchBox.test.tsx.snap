@@ -71,7 +71,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     />
   </div>
   <input
-    aria-label="Search"
+    aria-label={undefined}
     className=
         ms-SearchBox-field
         {
@@ -111,7 +111,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
-    placeholder="Search"
+    placeholder={undefined}
     value=""
   />
 </div>
