@@ -28,6 +28,4 @@ export const FocusZoneTabbableExample = () => (
       </FocusZone>
     </div>
   </div>
-
-
 );
