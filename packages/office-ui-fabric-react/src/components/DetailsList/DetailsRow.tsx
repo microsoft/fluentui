@@ -74,12 +74,8 @@ export interface IDetailsRowState {
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
-  public refs: {
-    [key: string]: React.ReactInstance,
-    cellMeasurer: HTMLElement
-  };
-
   private _root: HTMLElement | undefined;
+  private _cellMeasurer: HTMLElement;
   private _focusZone: IFocusZone;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
@@ -105,7 +101,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public componentDidMount() {
-    let { dragDropHelper } = this.props;
+    const { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
       this._dragDropSubscription = dragDropHelper.subscribe(this._root as HTMLElement, this._events, this._getRowDragDropOptions());
@@ -121,9 +117,9 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public componentDidUpdate(previousProps: IDetailsRowProps) {
-    let state = this.state;
-    let { item, onDidMount } = this.props;
-    let { columnMeasureInfo } = state;
+    const state = this.state;
+    const { item, onDidMount } = this.props;
+    const { columnMeasureInfo } = state;
 
     if (this.props.itemIndex !== previousProps.itemIndex ||
       this.props.item !== previousProps.item ||
@@ -139,7 +135,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
 
     if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
-      let newWidth = this.refs.cellMeasurer.getBoundingClientRect().width;
+      const newWidth = this._cellMeasurer.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -155,7 +151,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public componentWillUnmount() {
-    let { item, onWillUnmount } = this.props;
+    const { item, onWillUnmount } = this.props;
 
     // Only call the onWillUnmount callback if we have an item.
     if (onWillUnmount && item) {
@@ -205,7 +201,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     return (
       <FocusZone
-        {...getNativeProps(this.props, divProperties) }
+        { ...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
         ref={ this._onRootRef }
         componentRef={ this._resolveRef('_focusZone') }
@@ -268,7 +264,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           <span
             role='presentation'
             className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
-            ref='cellMeasurer'
+            ref={ this._resolveRef('_cellMeasurer') }
           >
             <DetailsRowFields
               columns={ [columnMeasureInfo.column] }
@@ -297,7 +293,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
    * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
    */
   public measureCell(index: number, onMeasureDone: (width: number) => void) {
-    let column = assign({}, this.props.columns[index]) as IColumn;
+    const column = assign({}, this.props.columns[index]) as IColumn;
 
     column.minWidth = 0;
     column.maxWidth = 999999;
@@ -322,7 +318,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
-    let { itemIndex, selection } = props;
+    const { itemIndex, selection } = props;
 
     return {
       isSelected: selection.isIndexSelected(itemIndex),
@@ -331,7 +327,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   private _onSelectionChanged() {
-    let selectionState = this._getSelectionState(this.props);
+    const selectionState = this._getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
       this.setState({
@@ -363,7 +359,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       dragDropEvents,
       eventsToRegister
     } = this.props;
-    let options = {
+    const options = {
       eventMap: eventsToRegister,
       selectionIndex: itemIndex,
       context: { data: item, index: itemIndex },
@@ -391,8 +387,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
    * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
    */
   private _updateDroppingState(newValue: boolean, event: DragEvent) {
-    let { selectionState, isDropping } = this.state;
-    let { dragDropEvents, item } = this.props;
+    const { selectionState, isDropping } = this.state;
+    const { dragDropEvents, item } = this.props;
 
     if (!newValue) {
       if (dragDropEvents!.onDragLeave) {

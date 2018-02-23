@@ -26,7 +26,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
   }
 
   public render() {
-    let { isToggled } = this.state;
+    const { isToggled } = this.state;
 
     return (
       <div>
@@ -56,7 +56,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
   }
 
   private _internalContents() {
-    let { isToggled } = this.state;
+    const { isToggled } = this.state;
 
     return (
       <div className='ms-FocusTrapZoneBoxExample'>

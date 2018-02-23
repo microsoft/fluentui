@@ -52,6 +52,8 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
   </div>
   <div
     aria-label={undefined}
+    aria-posinset={undefined}
+    aria-setsize={undefined}
     className=
 
         {
@@ -227,7 +229,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-Button-icon
                 {
@@ -333,7 +334,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-Button-icon
                 {

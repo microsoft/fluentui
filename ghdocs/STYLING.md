@@ -195,36 +195,29 @@ export const ComponentName = styled(
 );
 ```
 
-#### Support for customized sub component styling
+#### Support for customizable sub-component styling
 
-Note that the component may also intend to provide customized styling for nested components. For example, a `Breadcrumb` component may want to expose the `getStyles` function for nested `Crumb` components.
+The component may also intend to provide customized styling for nested components. For example, a `Breadcrumb` component may want to render `Crumb` components, which may take in their own styles.
 
-The extra getStyles function would be added to the outer compoent's props:
+The recommended approach is to avoid exposing the individual `Crumb` props at the `Breadcrumb` layer. Instead, expose a way to provide an alternative component for the `Crumb` using the `as` prop convention. This lets the caller create their own `Crumb` variant and use it within the `Breadcrumb`. It also opens up other scenarios such as providing additional default props on the sub-component, or replacing it completely.
+
+In the `Breadcrumb` case, we would expose an optional `crumbAs` prop. This would allow the consumer to make a `Breadcrumb` variant which renders red `Crumb` components:
 
 ```
-getCrumbStyles?: IStyleFunction<ICrumbStyleProps, ICrumbStyles>;
+const RedCrumb = styled(Crumb, props => ({ root: background: 'red' }));
+
+render() {
+  return <Breadcrumb crumbAs={ RedCrumb } ... />
 ```
 
-The base component would pipe the function into the child:
+Additionally this "breadcrumb with red crumbs" scenario could be abstracted as its own component, by passing in the 3rd optional param to `styled`, which lets the caller provide new default prop values:
 
-```tsx
-let { getCrumbStyles } = this.props;
-
-// ...and in the render function:
-
-<Crumb getStyles={ getCrumbStyles }>
 ```
+const RedBreadcrumb = styled(Breadcrumb, undefined, { crumbAs: RedCrumb });
 
-And finally, the composite component created by the `styles` wrapper would link default styling for the property:
-
-```tsx
-export const Breadcrumb = styled(
-  BreadcrumbBase,
-  {
-    getStyles,
-    getCrumbStyles
-  }
-)
+render() {
+  return <RedBreadcrumb ... />
+}
 ```
 
 ### ComponentName.test.tsx

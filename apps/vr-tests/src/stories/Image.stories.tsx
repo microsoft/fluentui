@@ -5,8 +5,6 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Image, ImageFit, Label, Layer } from 'office-ui-fabric-react';
 
-import './Image.css';
-
 const img350x150 = 'http://placehold.it/350x150';
 
 let imagePropsFitNone = {

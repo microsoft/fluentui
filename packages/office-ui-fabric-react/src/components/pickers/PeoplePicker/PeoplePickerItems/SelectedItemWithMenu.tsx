@@ -17,8 +17,9 @@ export interface IPeoplePickerItemState {
 export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
   public refs: {
     [key: string]: any,
-    ellipsisRef: HTMLElement
   };
+
+  private _ellipsisRef: HTMLElement;
 
   constructor(props: IPeoplePickerItemWithMenuProps) {
     super(props);
@@ -26,7 +27,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
   }
 
   public render() {
-    let {
+    const {
       item,
       onRemoveItem,
       removeButtonAriaLabel
@@ -40,7 +41,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
               presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
           </div>
-          <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.itemContent) }>
+          <div ref={ this._resolveRef('_ellipsisRef') } className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
               iconProps={ { iconName: 'More' } }
               onClick={ this._onContextualMenu }

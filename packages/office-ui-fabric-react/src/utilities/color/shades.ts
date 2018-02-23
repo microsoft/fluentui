@@ -23,8 +23,8 @@ const ColorTintTable = [.07, .18, .436, .751, .956]; // default soften
 const ColorShadeTable = [.90, .64, .550]; // default strongen
 
 // If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
-const c_LuminanceLow = 0.2;
-const c_LuminanceHigh = 0.8;
+const LowLuminanceThreshold = 0.2;
+const HighLuminanceThreshold = 0.8;
 
 /** Shades of a given color, from softest to strongest. */
 export enum Shade {
@@ -105,7 +105,7 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
   }
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
+  const tableIndex = shade - 1;
   let _soften = _lighten;
   let _strongen = _darken;
   if (isInverted) {
@@ -117,9 +117,9 @@ export function getShade(color: IColor, shade: Shade, isInverted = false) {
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
   } else if (_isBlack(color)) { // black
     hsl = _lighten(hsl, BlackTintTable[tableIndex]);
-  } else if (hsl.l / 100 > c_LuminanceHigh) { // light
+  } else if (hsl.l / 100 > HighLuminanceThreshold) { // light
     hsl = _strongen(hsl, LumShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < c_LuminanceLow) { // dark
+  } else if (hsl.l / 100 < LowLuminanceThreshold) { // dark
     hsl = _soften(hsl, LumTintTable[tableIndex]);
   } else { // default
     if (tableIndex < ColorTintTable.length) {
@@ -146,7 +146,7 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
   }
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
+  const tableIndex = shade - 1;
   if (!isInverted) { // lightish
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish
@@ -173,15 +173,15 @@ export function getContrastRatio(color1: IColor, color2: IColor) {
     }
   }
 
-  let r1 = _getThing(color1.r / MAX_COLOR_RGBA);
-  let g1 = _getThing(color1.g / MAX_COLOR_RGBA);
-  let b1 = _getThing(color1.b / MAX_COLOR_RGBA);
+  const r1 = _getThing(color1.r / MAX_COLOR_RGBA);
+  const g1 = _getThing(color1.g / MAX_COLOR_RGBA);
+  const b1 = _getThing(color1.b / MAX_COLOR_RGBA);
   let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
   L1 += .05;
 
-  let r2 = _getThing(color2.r / MAX_COLOR_RGBA);
-  let g2 = _getThing(color2.g / MAX_COLOR_RGBA);
-  let b2 = _getThing(color2.b / MAX_COLOR_RGBA);
+  const r2 = _getThing(color2.r / MAX_COLOR_RGBA);
+  const g2 = _getThing(color2.g / MAX_COLOR_RGBA);
+  const b2 = _getThing(color2.b / MAX_COLOR_RGBA);
   let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
   L2 += .05;
 
