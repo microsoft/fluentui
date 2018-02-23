@@ -27,6 +27,7 @@ import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
 import { getTheme } from '../../Styling';
+import { TextField } from 'office-ui-fabric-react/lib/components/TextField';
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -36,6 +37,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndices?: number[];
+  searchText: string | null;
 }
 
 @withResponsiveMode
@@ -57,6 +59,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
+  private _filteredOptionsCache: { filter: string, original: any, result: any };
 
   constructor(props: IDropdownProps) {
     super(props);
@@ -83,17 +86,20 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._isScrollIdle = true;
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      searchText: null
     };
     if (this.props.multiSelect) {
       const selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       this.state = {
-        selectedIndices: this._getSelectedIndexes(props.options, selectedKeys)
+        selectedIndices: this._getSelectedIndexes(this._filteredOptions(), selectedKeys),
+        searchText: null
       };
     } else {
       const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       this.state = {
-        selectedIndices: this._getSelectedIndexes(props.options, selectedKey!)
+        selectedIndices: this._getSelectedIndexes(this._filteredOptions(), selectedKey!),
+        searchText: null
       };
     }
 
@@ -106,14 +112,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (newProps[selectedKeyProp] !== undefined &&
       (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || newProps.options !== this.props.options)) {
       this.setState({
-        selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp])
+        selectedIndices: this._getSelectedIndexes(this._filteredOptions(newProps.options), newProps[selectedKeyProp])
       });
     }
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
-      this._dropDown.focus();
+      if (!this.props.searchItemsBy) {
+        this._dropDown.focus();
+      }
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
@@ -130,7 +138,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const {
       className,
       label,
-      options,
       isDisabled,
       ariaLabel,
       required,
@@ -141,6 +148,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderCaretDown = this._onRenderCaretDown
     } = this.props;
     const { isOpen, selectedIndices = [] } = this.state;
+    const options = this._filteredOptions();
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(this.props, divProperties);
 
@@ -195,7 +203,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             aria-readonly='true'
           >
             { // If option is selected render title, otherwise render the placeholder text
-              selectedOptions.length ? (
+              selectedOptions.length && this.state.searchText === null ? (
                 onRenderTitle(selectedOptions, this._onRenderTitle)
               ) :
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
@@ -232,19 +240,26 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    const { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
+    this.setState(this._toSetSelectedIndex(index) as IDropdownState);
+  }
+
+  private _toSetSelectedIndex(index: number) {
+    const { onChanged, selectedKey, selectedKeys, multiSelect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
+    const options = this._filteredOptions();
+    let result: Partial<IDropdownState> = {};
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
     if (!multiSelect && index === selectedIndices[0]) {
-      return;
+      return {};
     } else if (!multiSelect && selectedKey === undefined) {
       // Set the selected option if this is an uncontrolled component
-      this.setState({
+      result = {
+        searchText: null,
         selectedIndices: [index]
-      });
+      };
     } else if (multiSelect && selectedKeys === undefined) {
       const newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
       if (checked) {
@@ -257,9 +272,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         // add the new selected index into the existing one
         newIndexes.push(index);
       }
-      this.setState({
+      result = {
+        searchText: null,
         selectedIndices: newIndexes
-      });
+      };
     }
 
     if (onChanged) {
@@ -268,6 +284,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
       onChanged(changedOpt, index);
     }
+
+    return result;
   }
 
   private _copyArray(array: any[]): any[] {
@@ -286,7 +304,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
    * @returns The next valid dropdown option's index
    */
   private _moveIndex(stepValue: number, index: number, selectedIndex: number): number {
-    const { options } = this.props;
+    const options = this._filteredOptions();
+
     // Return selectedIndex if nothing has changed or options is empty
     if (selectedIndex === index || options.length === 0) {
       return selectedIndex;
@@ -326,18 +345,173 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderTitle(item: IDropdownOption[]): JSX.Element {
     const { multiSelectDelimiter = ', ' } = this.props;
-
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
-    return <span>{ displayTxt }</span>;
+    const displayText = item.map(i => i.text).join(multiSelectDelimiter);
+    if (this.props.searchItemsBy) {
+      return (
+        <TextField
+          borderless
+          cellPadding={'0'}
+          style={{ padding: '0 0' }}
+          placeholder={this.props.placeHolder}
+          value={ displayText }
+          disabled={this.props.disabled}
+          onChanged={this._onSearchChanged}
+          onClick={this._onClickSearchInput}
+          onFocus={this._onSearchFocus}
+          onKeyDown={this._onSearchKeyDown}
+          onKeyUp={this._onSearchKeyUp}
+        />
+      );
+    } else {
+      return <span>{ displayText }</span>;
+    }
   }
 
   // Render placeHolder text in dropdown input
   @autobind
   private _onRenderPlaceHolder(props: IDropdownProps): JSX.Element | null {
-    if (!props.placeHolder) {
-      return null;
+    if (props.searchItemsBy) {
+      return (
+        <TextField
+          borderless
+          cellPadding={'0'}
+          style={{ padding: '0 0' }}
+          placeholder={this.props.placeHolder}
+          value={this.state.searchText || ''}
+          disabled={this.props.disabled}
+          onClick={this._onClickSearchInput}
+          onChanged={this._onSearchChanged}
+          onFocus={this._onSearchFocus}
+          onBlur={this._onSearchBlur}
+          onKeyDown={this._onSearchKeyDown}
+          onKeyUp={this._onSearchKeyUp}
+        />
+      );
+    } else {
+      if (!props.placeHolder) {
+        return null;
+      }
+      return <span>{ props.placeHolder }</span>;
     }
-    return <span>{ props.placeHolder }</span>;
+  }
+
+  @autobind
+  private _onSearchChanged(searchText: string) {
+    const index = this._matchingIndex(searchText, this._filteredOptions(undefined, searchText));
+    this.setState({
+      ...index !== -1 ? this._toSetSelectedIndex(index) : { selectedIndices: [] },
+      searchText,
+      isOpen: true
+    });
+  }
+
+  @autobind
+  private _onSearchFocus() {
+    if (this.state.searchText === null) {
+      this._openSearch();
+    }
+  }
+
+  @autobind
+  private _onSearchBlur() {
+    return;
+  }
+
+  @autobind
+  private _onClickSearchInput(event: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    event.stopPropagation();
+    return false;
+  }
+
+  private _openSearch() {
+    this.setState({
+      searchText: '',
+      isOpen: true
+    });
+  }
+
+  private _closeSearch() {
+    if (this.state.selectedIndices && this.state.selectedIndices.length) {
+      const index = this._matchingIndex(this.state.searchText, this.props.options);
+      this.setState({
+        selectedIndices: [index],
+        searchText: null,
+        isOpen: false
+      });
+    } else {
+      this.setState({
+        searchText: null,
+        isOpen: false
+      });
+    }
+  }
+
+  @autobind
+  private _filteredOptions(options?: any, filter?: string | null) {
+    filter = (filter || this.state.searchText || '').trim();
+    options = options || this.props.options;
+
+    if (this.props.searchItemsBy) {
+      if (!this._filteredOptionsCache ||
+          this._filteredOptionsCache.filter !== filter ||
+          this._filteredOptionsCache.original !== options) {
+        this._filteredOptionsCache = {
+          filter,
+          original: options,
+          result: !filter ? options : options.filter((x: any) =>
+            !x.disabled&&
+            (
+              x.itemType === SelectableOptionMenuItemType.Header ||
+              x.itemType === SelectableOptionMenuItemType.Divider ||
+              (
+                x[this.props.searchItemsBy!] &&
+                x[this.props.searchItemsBy!].includes(filter))))
+        };
+      }
+
+      return this._filteredOptionsCache.result;
+    } else {
+      return options;
+    }
+  }
+
+  @autobind
+  private _onSearchKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev as any);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
+
+    if (ev.which === KeyCodes.enter) {
+      if (this.state.searchText === null) {
+        this._openSearch();
+      } else {
+        this._closeSearch();
+      }
+    }
+
+    ev.stopPropagation();
+  }
+
+  @autobind
+  private _onSearchKeyUp(ev: React.KeyboardEvent<HTMLElement>) {
+    if (this.props.onKeyUp) {
+      this.props.onKeyUp(ev as any);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
+
+    ev.stopPropagation();
+  }
+
+  private _matchingIndex(filter: string | undefined | null, options: any) {
+    return options.findIndex((x: any) =>
+      x.itemType !== SelectableOptionMenuItemType.Header &&
+      x.itemType !== SelectableOptionMenuItemType.Divider &&
+      x[this.props.searchItemsBy!].includes(filter));
   }
 
   // Render Callout or Panel container and pass in list
@@ -411,17 +585,19 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         onKeyDown={ this._onZoneKeyDown }
         ref={ this._resolveRef('_host') }
         tabIndex={ 0 }
+        { ...{ 'aria-live': 'polite', 'aria-atomic': true, 'aria-relevant': 'all' }}
       >
         <FocusZone
           ref={ this._resolveRef('_focusZone') }
           direction={ FocusZoneDirection.vertical }
-          defaultActiveElement={ selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined }
+          defaultActiveElement={ this.state.searchText === null && selectedIndices[0] !== undefined ?
+            `#${id}-list${selectedIndices[0]}` : undefined }
           id={ id + '-list' }
           className={ css('ms-Dropdown-items', styles.items) }
           aria-labelledby={ id + '-label' }
           role='listbox'
         >
-          { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+          { this._filteredOptions().map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
         </FocusZone>
       </div>
     );
@@ -550,6 +726,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onPositioned() {
+    if (this.state.searchText !== null) {
+      return;
+    }
     this._focusZone.focus();
   }
 
@@ -557,11 +736,19 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onItemClick(item: IDropdownOption): () => void {
     return (): void => {
       if (!item.disabled) {
-        this.setSelectedIndex(item.index!);
+        const common = this._toSetSelectedIndex(item.index!);
+
+        // only close the callout when it's in single-select mode
         if (!this.props.multiSelect) {
-          // only close the callout when it's in single-select mode
           this.setState({
+            ...common,
+            searchText: null,
             isOpen: false
+          });
+        } else {
+          this.setState({
+            ...common,
+            searchText: null,
           });
         }
       }
@@ -741,7 +928,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.end:
         if (!this.props.multiSelect) {
-          newIndex = this._moveIndex(-1, this.props.options.length - 1, selectedIndex);
+          newIndex = this._moveIndex(-1, this._filteredOptions().length - 1, selectedIndex);
         }
         break;
 

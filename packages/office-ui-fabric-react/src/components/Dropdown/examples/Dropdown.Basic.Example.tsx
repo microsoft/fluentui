@@ -158,6 +158,32 @@ export class DropdownBasicExample extends BaseComponent<{}, {
           onFocus={ this._log('onFocus called') }
           onBlur={ this._log('onBlur called') }
         />
+        <Dropdown
+          placeHolder='Select an Option'
+          label='Text search allowed example:'
+          id='Basicdrop1'
+          ariaLabel='Text search allowed example'
+          searchItemsBy='text'
+          options={
+            [
+              { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
+              { key: 'A', text: 'Create' },
+              { key: 'B', text: 'Delete' },
+              { key: 'C', text: 'Modify', disabled: true },
+              { key: 'D', text: 'Duplicate' },
+              { key: 'E', text: 'Save' },
+              { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+              { key: 'Header2', text: 'Compare', itemType: DropdownMenuItemType.Header },
+              { key: 'F', text: 'Apples' },
+              { key: 'G', text: 'Oranges' },
+              { key: 'H', text: 'Cats' },
+              { key: 'I', text: 'Dogs' },
+            ]
+          }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
+          componentRef={ this._resolveRef('_basicDropdown') }
+        />
       </div>
 
     );
