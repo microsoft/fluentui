@@ -1,7 +1,7 @@
 {
-  "name": "@uifabric/icons",
-  "version": "5.4.2",
-  "description": "Office UI Fabric icon set.",
+  "name": "@uifabric/variants",
+  "version": "5.11.2",
+  "description": "Office UI Fabric subtheme generator.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
@@ -11,18 +11,20 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "start-test": "node ../../scripts/start-test.js"
   },
   "disabledTasks": [
+    "copy",
     "sass",
-    "karma",
-    "jest"
+    "karma"
   ],
   "devDependencies": {
+    "@types/jest": "21.1.8",
     "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=5.19.0 <6.0.0",
-    "tslib": "^1.7.1"
+    "tslib": "^1.7.1",
+    "@uifabric/styling": ">=5.19.0 <6.0.0"
   }
 }

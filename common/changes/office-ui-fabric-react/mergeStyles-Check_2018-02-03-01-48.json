@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "Convert Check to mergeStyles",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mark@thedutchies.com"
+  "email": "v-jojanz@microsoft.com"
 }

@@ -223,7 +223,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             background-color: #eaeaea;
             color: #212121;
           }
-      data-is-focusable={true}
+      data-is-focusable={false}
       disabled={undefined}
       onClick={[Function]}
       role="presentation"

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   FocusZoneDirection,
+  FocusZoneTabbableElements,
   IFocusZone,
   IFocusZoneProps
 } from './FocusZone.types';
@@ -63,10 +64,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
+  /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
+  private _processingTabKey: boolean;
+
   constructor(props: IFocusZoneProps) {
     super(props);
 
-    this._warnDeprecations({ rootProps: undefined });
+    this._warnDeprecations({
+      rootProps: undefined,
+      'allowTabKey': 'handleTabKey'
+    });
 
     this._id = getId('FocusZone');
 
@@ -74,6 +81,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       left: 0,
       top: 0
     };
+
+    this._processingTabKey = false;
   }
 
   public componentDidMount() {
@@ -361,21 +370,20 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.tab:
-          if (this.props.allowTabKey) {
+          if (this.props.allowTabKey ||
+            this.props.handleTabKey === FocusZoneTabbableElements.all ||
+            (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly &&
+              this._isElementInput(ev.target as HTMLElement))) {
+            let focusChanged = false;
+            this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical ||
               !this._shouldWrapFocus(this._activeElement as HTMLElement, NO_HORIZONTAL_WRAP)) {
-              if (ev.shiftKey) {
-                this._moveFocusUp();
-              } else {
-                this._moveFocusDown();
-              }
-              break;
+              focusChanged = ev.shiftKey ? this._moveFocusUp() : this._moveFocusDown();
             } else if (direction === FocusZoneDirection.horizontal || direction === FocusZoneDirection.bidirectional) {
-              if (ev.shiftKey) {
-                this._moveFocusLeft();
-              } else {
-                this._moveFocusRight();
-              }
+              focusChanged = ev.shiftKey ? this._moveFocusLeft() : this._moveFocusRight();
+            }
+            this._processingTabKey = false;
+            if (focusChanged) {
               break;
             }
           }
@@ -646,7 +654,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return distance;
     },
       undefined /*ev*/,
-      (shouldWrap || !getRTL())
+      shouldWrap
     )) {
       this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
@@ -674,7 +682,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return distance;
     },
       undefined /*ev*/,
-      (shouldWrap || getRTL())
+      shouldWrap
     )) {
       this._setFocusAlignment(this._activeElement as HTMLElement, true, false);
       return true;
@@ -787,7 +795,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
-    if (element &&
+    // If a tab was used, we want to focus on the next element.
+    if (!this._processingTabKey &&
+      element &&
       element.type &&
       ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
       const selectionStart = element.selectionStart;
@@ -799,9 +809,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward.
       // 3. when selection start is not the end of lenght and it is forward.
+      // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit tab)
       if (isRangeSelected ||
         (selectionStart > 0 && !isForward) ||
-        (selectionStart !== inputValue.length && isForward)) {
+        (selectionStart !== inputValue.length && isForward) ||
+        !!this.props.handleTabKey) {
         return false;
       }
     }
