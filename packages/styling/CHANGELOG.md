@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Sat, 17 Feb 2018 21:29:00 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Feb 2018 03:05:53 GMT and should not be manually modified.
+
+## 5.19.0
+Fri, 23 Feb 2018 03:05:53 GMT
+
+### Minor changes
+
+- add preliminary support for variant theming, add bodyLink slot
 
 ## 5.18.1
 Sat, 17 Feb 2018 21:29:00 GMT
