@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import {
   IMenuItemClassNames,
   IContextualMenuClassNames,
@@ -293,7 +293,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 {...this._adjustedFocusZoneProps }
                 className={ this._classNames.root }
                 isCircularNavigation={ true }
-                allowTabKey={ true }
+                handleTabKey={ FocusZoneTabbableElements.all }
               >
                 <ul
                   role='presentation'
