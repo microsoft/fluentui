@@ -736,7 +736,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onItemClick(item: IDropdownOption): () => void {
     return (): void => {
       if (!item.disabled) {
-        const common = this._toSetSelectedIndex(item.index!);
+        const common = this._toSetSelectedIndex(this.props.options.findIndex((x: IDropdownOption) => x.key === item.key));
 
         // only close the callout when it's in single-select mode
         if (!this.props.multiSelect) {
