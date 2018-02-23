@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "5.19.0",
+      "tag": "@uifabric/styling_v5.19.0",
+      "date": "Fri, 23 Feb 2018 03:05:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "ebe601051c081838ae9d029e1020f316258d148a",
+            "comment": "add preliminary support for variant theming, add bodyLink slot"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.1",
       "tag": "@uifabric/styling_v5.18.1",
       "date": "Sat, 17 Feb 2018 21:29:00 GMT",

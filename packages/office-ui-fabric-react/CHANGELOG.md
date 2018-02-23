@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Feb 2018 03:05:53 GMT and should not be manually modified.
+
+## 5.55.0
+Fri, 23 Feb 2018 03:05:53 GMT
+
+### Minor changes
+
+- add optional custom rendering of items for ContextualMenu
+- Focus Zone: Add support for tab to skip selection elements
+- SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not required.
+
+### Patches
+
+- Nav: fix multiple invocations of onClick
+- minor fixes to theming
 
 ## 5.54.0
 Thu, 22 Feb 2018 11:15:23 GMT
