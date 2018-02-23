@@ -68,9 +68,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   public componentWillUnmount() {
     this._events.off(this.root);
     this._events.off(window);
-    if (this.stickyContainer.parentElement) {
-      this.stickyContainer.parentElement.removeChild(this.stickyContainer);
-    }
   }
 
   public render() {
