@@ -348,16 +348,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       return (
         <TextField
           borderless
-          cellPadding={'0'}
-          style={{ padding: '0 0' }}
-          placeholder={this.props.placeHolder}
+          cellPadding={ '0' }
+          style={ { padding: '0 0' } }
+          placeholder={ this.props.placeHolder }
           value={ displayText }
-          disabled={this.props.disabled}
-          onChanged={this._onSearchChanged}
-          onClick={this._onClickSearchInput}
-          onFocus={this._onSearchFocus}
-          onKeyDown={this._onSearchKeyDown}
-          onKeyUp={this._onSearchKeyUp}
+          disabled={ this.props.disabled }
+          onChanged={ this._onSearchChanged }
+          onClick={ this._onClickSearchInput }
+          onFocus={ this._onSearchFocus }
+          onKeyDown={ this._onSearchKeyDown }
+          onKeyUp={ this._onSearchKeyUp }
         />
       );
     } else {
@@ -372,16 +372,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       return (
         <TextField
           borderless
-          cellPadding={'0'}
-          style={{ padding: '0 0' }}
-          placeholder={this.props.placeHolder}
-          value={this.state.searchText || ''}
-          disabled={this.props.disabled}
-          onClick={this._onClickSearchInput}
-          onChanged={this._onSearchChanged}
-          onFocus={this._onSearchFocus}
-          onKeyDown={this._onSearchKeyDown}
-          onKeyUp={this._onSearchKeyUp}
+          cellPadding={ '0' }
+          style={ { padding: '0 0' } }
+          placeholder={ this.props.placeHolder }
+          value={ this.state.searchText || '' }
+          disabled={ this.props.disabled }
+          onClick={ this._onClickSearchInput }
+          onChanged={ this._onSearchChanged }
+          onFocus={ this._onSearchFocus }
+          onKeyDown={ this._onSearchKeyDown }
+          onKeyUp={ this._onSearchKeyUp }
         />
       );
     } else {
@@ -439,8 +439,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
+  /**
+   * Creates a case insensitive regex for the given search string.
+   */
   private _filterRegex(text: string) {
-      return new RegExp(text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
+    return new RegExp(text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
   }
 
   @autobind
@@ -451,13 +454,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     if (this.props.searchItemsBy) {
       if (!this._filteredOptionsCache ||
-          this._filteredOptionsCache.filter !== filter ||
-          this._filteredOptionsCache.original !== options) {
+        this._filteredOptionsCache.filter !== filter ||
+        this._filteredOptionsCache.original !== options) {
         this._filteredOptionsCache = {
           filter,
           original: options,
           result: !filter ? options : options.filter((x: any) =>
-            !x.disabled&&
+            !x.disabled &&
             (
               x.itemType === SelectableOptionMenuItemType.Header ||
               x.itemType === SelectableOptionMenuItemType.Divider ||
@@ -507,6 +510,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     ev.stopPropagation();
   }
 
+  /**
+   * Gets the first selectable item that matches the given or current filter.
+   */
   private _matchingIndex(filter: string | undefined | null, options: any) {
     const regex = this._filterRegex(filter || '');
     return options.findIndex((x: any) =>
@@ -586,7 +592,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         onKeyDown={ this._onZoneKeyDown }
         ref={ this._resolveRef('_host') }
         tabIndex={ 0 }
-        { ...{ 'aria-live': 'polite', 'aria-atomic': true, 'aria-relevant': 'all' }}
+        { ...{ 'aria-live': 'polite', 'aria-atomic': true, 'aria-relevant': 'all' } }
       >
         <FocusZone
           ref={ this._resolveRef('_focusZone') }
@@ -737,7 +743,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onItemClick(item: IDropdownOption): () => void {
     return (): void => {
       if (!item.disabled) {
-        const common = this._toSetSelectedIndex(this.props.options.findIndex((x: IDropdownOption) => x.key === item.key));
+        const common = {
+          selectedIndices: [this.props.options.findIndex((x: IDropdownOption) => x.key === item.key)],
+        };
 
         // only close the callout when it's in single-select mode
         if (!this.props.multiSelect) {

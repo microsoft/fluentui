@@ -160,9 +160,9 @@ export class DropdownBasicExample extends BaseComponent<{}, {
         />
         <Dropdown
           placeHolder='Select an Option'
-          label='Text search allowed example:'
+          label='Text search example:'
           id='Basicdrop1'
-          ariaLabel='Text search allowed example'
+          ariaLabel='Text search example'
           searchItemsBy='text'
           options={
             [
