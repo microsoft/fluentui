@@ -281,7 +281,10 @@ describe('ContextualMenu', () => {
         name: 'TestText 2',
         key: 'TestKey2',
         disabled: true,
-        onClick: () => disabledItemClicked = true
+        onClick: () => {
+          disabledItemClicked = true;
+          fail('Disabled item should not be clickable');
+        }
       },
     ];
 
