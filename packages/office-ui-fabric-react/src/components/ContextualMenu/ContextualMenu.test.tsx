@@ -280,7 +280,7 @@ describe('ContextualMenu', () => {
   });
 
   it('cannot click on disabled items', () => {
-    let itemsClicked = [
+    const itemsClicked = [
       false,
       false,
       false
