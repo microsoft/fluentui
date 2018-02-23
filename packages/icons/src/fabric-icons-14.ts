@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -25,8 +25,6 @@ export function initializeIcons(
       src: `url('${baseUrl}fabric-icons-14-95a97fbd.woff') format('woff')`,
     },
     icons: {
-      'SVNLogo': '\uF662',
-      'JenkinsLogo': '\uF663',
       'VersionControlPush': '\uF664',
       'ExternalGit': '\uF665',
       'WhiteBoardApp16': '\uF673',

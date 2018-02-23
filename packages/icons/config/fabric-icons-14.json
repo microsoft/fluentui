@@ -9,14 +9,6 @@
 	},
 	"glyphs": [
 		{
-			"name": "SVNLogo",
-			"unicode": "F662"
-		},
-		{
-			"name": "JenkinsLogo",
-			"unicode": "F663"
-		},
-		{
 			"name": "VersionControlPush",
 			"unicode": "F664"
 		},
