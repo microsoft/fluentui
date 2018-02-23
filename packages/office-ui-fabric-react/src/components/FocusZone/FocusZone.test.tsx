@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -1048,7 +1048,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ allowTabKey: true, isCircularNavigation: true }}>
+        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
           <button className='a'>a</button>
           <button className='b'>b</button>
           <button className='c'>c</button>
@@ -1159,5 +1159,63 @@ describe('FocusZone', () => {
     expect(tabDownListener.mock.calls.length).toBe(1);
     const onKeyDownEvent = tabDownListener.mock.calls[0][0];
     expect(onKeyDownEvent.which).toBe(KeyCodes.tab);
+  });
+
+  it('should stay in input box with arrow keys and exit with tab', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
+          <input type='text' className='a' />
+          <button className='b'>b</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // InputA should be focused.
+    inputA.focus();
+    expect(lastFocusedElement).toBe(inputA);
+
+    // When we hit right/left on the arrow key, we don't want to be able to leave focus on an input
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(inputA);
+
+    expect(inputA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+
+    // Pressing tab will be the only way for us to exit the focus zone
+    ReactTestUtils.Simulate.keyDown(inputA, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonB);
+    expect(inputA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
   });
 });
