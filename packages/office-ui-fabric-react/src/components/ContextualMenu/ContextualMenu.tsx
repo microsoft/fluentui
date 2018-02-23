@@ -28,7 +28,7 @@ import {
   css,
   shouldWrapFocus
 } from '../../Utilities';
-import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu';
+import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import {
