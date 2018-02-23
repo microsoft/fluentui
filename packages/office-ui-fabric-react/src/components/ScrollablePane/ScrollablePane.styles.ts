@@ -33,14 +33,6 @@ export const getStyles = (
       },
       className
     ],
-    stickyContainer: [
-      {
-        overflow: 'hidden',
-        position: 'absolute',
-        pointerEvents: 'none',
-
-      }
-    ],
     stickyAbove: [
       {
         top: 0,
