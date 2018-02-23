@@ -62,15 +62,51 @@ exports[`DetailsList renders List correctly 1`] = `
                 role="checkbox"
               >
                 <div
-                  className="ms-Check"
+                  className=
+                      ms-Check
+                      {
+                        height: 18px;
+                        line-height: 1;
+                        position: relative;
+                        user-select: none;
+                        vertical-align: top;
+                        width: 18px;
+                      }
+                      &:before {
+                        background: #ffffff;
+                        border-radius: 50%;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        opacity: 1;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                      }
+                      .checkHost:hover &, .checkHost:focus &, &:hover, &:focus {
+                        opacity: 1;
+                      }
                 >
                   <i
                     aria-hidden={true}
                     className=
                         ms-Check-circle
-                        undefined
                         {
                           display: inline-block;
+                        }
+                        {
+                          color: #c8c8c8;
+                          font-size: 18px;
+                          height: 18px;
+                          left: 0px;
+                          position: absolute;
+                          text-align: center;
+                          top: 0px;
+                          vertical-align: middle;
+                          width: 18px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          color: WindowText;
                         }
                     data-icon-name="CircleRing"
                     role="presentation"
@@ -79,9 +115,26 @@ exports[`DetailsList renders List correctly 1`] = `
                     aria-hidden={true}
                     className=
                         ms-Check-check
-                        undefined
                         {
                           display: inline-block;
+                        }
+                        {
+                          color: #c8c8c8;
+                          font-size: 16px;
+                          height: 18px;
+                          left: .5px;
+                          opacity: 0;
+                          position: absolute;
+                          text-align: center;
+                          top: 0px;
+                          vertical-align: middle;
+                          width: 18px;
+                        }
+                        &:hover {
+                          opacity: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          -ms-high-contrast-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
