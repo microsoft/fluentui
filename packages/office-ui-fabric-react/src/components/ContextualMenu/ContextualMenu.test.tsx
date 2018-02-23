@@ -239,31 +239,20 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.SubMenuClass')).toBeDefined();
   });
 
-  it('applies disabled property when `disabled` is true', () => {
+  it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
         disabled: true,
       },
-    ];
-
-    ReactTestUtils.renderIntoDocument<ContextualMenu>(
-      <ContextualMenu
-        items={ items }
-      />
-    );
-
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-
-    expect(menuItem.disabled).toBeTruthy();
-  });
-
-  it('applies disabled property when deprecated property `isDisabled` is true', () => {
-    const items: IContextualMenuItem[] = [
       {
-        name: 'TestText 1',
-        key: 'TestKey1',
+        name: 'TestText 3',
+        key: 'TestKey3',
         isDisabled: true,
       },
     ];
@@ -274,9 +263,71 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItems.length).toEqual(3);
 
-    expect(menuItem.disabled).toBeTruthy();
+    menuItems[0].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 1');
+    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+
+    menuItems[1].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 2');
+    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+
+    menuItems[2].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 3');
+    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+  });
+
+  it('cannot click on disabled items', () => {
+    const itemsClicked = [
+      false,
+      false,
+      false
+    ];
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        onClick: () => itemsClicked[0] = true
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+        disabled: true,
+        onClick: () => {
+          itemsClicked[1] = true;
+          fail('Disabled item should not be clickable');
+        }
+      },
+      {
+        name: 'TestText 3',
+        key: 'TestKey3',
+        isDisabled: true,
+        onClick: () => {
+          itemsClicked[2] = true;
+          fail('Disabled item should not be clickable');
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItems.length).toEqual(3);
+
+    menuItems[0].click();
+    expect(itemsClicked[0]).toEqual(true);
+
+    menuItems[1].click();
+    expect(itemsClicked[1]).toEqual(false);
+
+    menuItems[2].click();
+    expect(itemsClicked[2]).toEqual(false);
   });
 
   it('renders headers properly', () => {
