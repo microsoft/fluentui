@@ -1160,4 +1160,62 @@ describe('FocusZone', () => {
     const onKeyDownEvent = tabDownListener.mock.calls[0][0];
     expect(onKeyDownEvent.which).toBe(KeyCodes.tab);
   });
+
+
+  it('Changes our focus to the next button when we hit tab when focus zone allow tabbing on input', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
+          <input type="text" className='a' />
+          <button className='b'>b</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // InputA should be focused.
+    inputA.focus();
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(inputA);
+
+    expect(inputA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+
+    // Pressing tab will shift focus to button B
+    ReactTestUtils.Simulate.keyDown(inputA, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonB);
+    expect(inputA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
+  });
+
+
 });
