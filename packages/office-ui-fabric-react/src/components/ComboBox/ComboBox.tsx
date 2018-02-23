@@ -270,7 +270,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autoComplete,
       buttonIconProps,
       isButtonAriaHidden = true,
-      isButtonDataFocusable = true,
       styles: customStyles,
       theme,
       title
@@ -348,7 +347,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             styles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden={ isButtonAriaHidden }
-            data-is-focusable={ isButtonDataFocusable }
+            data-is-focusable={false}
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
