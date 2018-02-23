@@ -250,6 +250,11 @@ describe('ContextualMenu', () => {
         key: 'TestKey2',
         disabled: true,
       },
+      {
+        name: 'TestText 3',
+        key: 'TestKey3',
+        isDisabled: true,
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
@@ -259,30 +264,48 @@ describe('ContextualMenu', () => {
     );
 
     const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItems.length).toEqual(3);
 
     menuItems[0].focus();
-    expect(document.activeElement.className.split(' ')).toContain('ms-ContextualMenu-link');
+    expect(document.activeElement.textContent).toEqual('TestText 1');
     expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
 
     menuItems[1].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 2');
+    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+
+    menuItems[2].focus();
+    expect(document.activeElement.textContent).toEqual('TestText 3');
     expect(document.activeElement.className.split(' ')).toContain('is-disabled');
   });
 
   it('cannot click on disabled items', () => {
-    let activeItemClicked = false;
-    let disabledItemClicked = false;
+    let itemsClicked = [
+      false,
+      false,
+      false
+    ];
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
-        onClick: () => activeItemClicked = true
+        onClick: () => itemsClicked[0] = true
       },
       {
         name: 'TestText 2',
         key: 'TestKey2',
         disabled: true,
         onClick: () => {
-          disabledItemClicked = true;
+          itemsClicked[1] = true;
+          fail('Disabled item should not be clickable');
+        }
+      },
+      {
+        name: 'TestText 3',
+        key: 'TestKey3',
+        isDisabled: true,
+        onClick: () => {
+          itemsClicked[2] = true;
           fail('Disabled item should not be clickable');
         }
       },
@@ -294,14 +317,17 @@ describe('ContextualMenu', () => {
       />
     );
 
-    const menuItem = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
-    expect(menuItem.length).toEqual(2);
+    const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
+    expect(menuItems.length).toEqual(3);
 
-    menuItem[0].click();
-    expect(activeItemClicked).toEqual(true);
+    menuItems[0].click();
+    expect(itemsClicked[0]).toEqual(true);
 
-    menuItem[1].click();
-    expect(disabledItemClicked).toEqual(false);
+    menuItems[1].click();
+    expect(itemsClicked[1]).toEqual(false);
+
+    menuItems[2].click();
+    expect(itemsClicked[2]).toEqual(false);
   });
 
   it('renders headers properly', () => {
