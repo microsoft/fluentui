@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallowUntilTarget } from '../../Utilities';
+import { shallowUntilTarget } from '../../common/shallowUntilTarget';
 
 import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
