@@ -95,6 +95,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
+                  ariaLabel='More items'
                   onRenderMenuIcon={ nullFunction }
                   menuProps={ {
                     items: contextualItems,
