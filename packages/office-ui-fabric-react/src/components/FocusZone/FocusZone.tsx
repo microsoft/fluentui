@@ -813,7 +813,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (isRangeSelected ||
         (selectionStart > 0 && !isForward) ||
         (selectionStart !== inputValue.length && isForward) ||
-        this.props.handleTabKey === FocusZoneTabbableElements.inputOnly || this.props.handleTabKey === FocusZoneTabbableElements.all) {
+        !!this.props.handleTabKey) {
         return false;
       }
     }

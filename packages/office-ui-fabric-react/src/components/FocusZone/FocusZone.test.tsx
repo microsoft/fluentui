@@ -1132,7 +1132,7 @@ describe('FocusZone', () => {
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
         <FocusZone>
           <button className='a'>a</button>
-        </FocusZone>g
+        </FocusZone>
       </div >
     );
 
@@ -1162,7 +1162,7 @@ describe('FocusZone', () => {
   });
 
 
-  it('Changes our focus to the next button when we hit tab when focus zone allow tabbing on input', () => {
+  it('should stay in input box with arrow keys and exit with tab', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
@@ -1198,6 +1198,9 @@ describe('FocusZone', () => {
 
     // InputA should be focused.
     inputA.focus();
+    expect(lastFocusedElement).toBe(inputA);
+
+    // When we hit right/left on the arrow key, we don't want to be able to leave focus on an input
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
@@ -1210,7 +1213,7 @@ describe('FocusZone', () => {
     expect(inputA.tabIndex).toBe(0);
     expect(buttonB.tabIndex).toBe(-1);
 
-    // Pressing tab will shift focus to button B
+    // Pressing tab will be the only way for us to exit the focus zone
     ReactTestUtils.Simulate.keyDown(inputA, { which: KeyCodes.tab });
     expect(lastFocusedElement).toBe(buttonB);
     expect(inputA.tabIndex).toBe(-1);
