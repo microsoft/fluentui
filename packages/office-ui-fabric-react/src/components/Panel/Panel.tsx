@@ -262,7 +262,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     if (headerText) {
       return (
         <div className={ css('ms-Panel-header', styles.header) }>
-          <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) }
+          <p
+            className={ css('ms-Panel-headerText', styles.headerText, headerClassName) }
             id={ this.state.id + '-headerText' }
             role='heading'
           >
