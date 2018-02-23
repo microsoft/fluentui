@@ -108,8 +108,17 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Allows tab key to be handled to tab through a list of items in the focus zone,
    * an unfortunate side effect is that users will not be able to tab out of the focus zone
    * and have to hit escape or some other key.
+   * @deprecated Use 'handleTabKey' instead.
+   *
    */
-  tabPermission?: FocusZoneTabbableElements;
+  allowTabKey?: boolean;
+
+  /**
+   * Allows tab key to be handled to tab through a list of items in the focus zone,
+   * an unfortunate side effect is that users will not be able to tab out of the focus zone
+   * and have to hit escape or some other key.
+   */
+  handleTabKey?: FocusZoneTabbableElements;
 
   /**
    * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
@@ -119,7 +128,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   checkForNoWrap?: boolean;
 }
 
-export enum FocusZoneTabbableElements {
+export const enum FocusZoneTabbableElements {
 
   /** Tabbing is not allowed */
   none = 0,

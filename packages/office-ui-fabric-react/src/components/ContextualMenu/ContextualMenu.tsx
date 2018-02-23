@@ -319,7 +319,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 {...this._adjustedFocusZoneProps }
                 className={ this._classNames.root }
                 isCircularNavigation={ true }
-                tabPermission={ FocusZoneTabbableElements.all }
+                handleTabKey={ FocusZoneTabbableElements.all }
               >
                 <ul
                   role='presentation'

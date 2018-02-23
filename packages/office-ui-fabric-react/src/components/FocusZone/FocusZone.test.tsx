@@ -1048,7 +1048,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ tabPermission: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
+        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
           <button className='a'>a</button>
           <button className='b'>b</button>
           <button className='c'>c</button>
@@ -1132,7 +1132,7 @@ describe('FocusZone', () => {
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
         <FocusZone>
           <button className='a'>a</button>
-        </FocusZone>
+        </FocusZone>g
       </div >
     );
 
