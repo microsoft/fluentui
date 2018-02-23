@@ -2,7 +2,8 @@ import * as React from 'react';
 import './ThemeGeneratorPage.scss';
 import {
   BaseComponent,
-  autobind
+  autobind,
+  css
 } from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
@@ -31,6 +32,7 @@ import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/exam
 import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+const pageStyles: any = require('../../../../../apps/fabric-website/src/pages/PageStyles.module.scss');
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
@@ -107,13 +109,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <div className='ms-themer'>
-        <p>
-          This tool helps you easily create all the shades and slots for a custom theme.
-          The theme can be used by Fabric React's styling package, see the <a href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
+        <div className={ css(pageStyles.u_maxTextWidth, 'overview') }>
+          <h2 id='Overview'>Overview</h2>
+          <p>This tool helps you easily create all the shades and slots for a custom theme.
+          The theme can be used by Fabric React's styling package, see the <a className={ 'themeGeneratorPageLink' } href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
           <br />
-          As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.
-        </p>
-
+            As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.</p>
+        </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
           * Cognitive Vision API, documented here:
           * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
@@ -158,7 +160,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         { this._outputSection() }
         <br />
 
-        <h2>Fabric Palette</h2>
+        <h2 id='Fabric palette'>Fabric palette</h2>
         <p>The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.</p>
         <div className={ 'ms-themer-fabricPalette-root' }>
           <div>{ fabricThemeSlots }</div>
@@ -173,7 +175,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         </div>
         <br />
 
-        <h3>Samples</h3>
+        <h2 id='Samples'>Samples</h2>
         { <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'>
             <TextFieldBasicExample />
@@ -218,7 +220,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           </div>
         </div> }
 
-        <h3>Accessibility</h3>
+        <h2 id='Accessibility'>Accessibility</h2>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5.</p>
         <table className='ms-themer-accessibilityTable'>
           <thead>
