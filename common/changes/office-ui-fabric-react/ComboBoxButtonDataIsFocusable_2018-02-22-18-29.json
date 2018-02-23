@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add notifyPageChange function to List",
+      "comment": "ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "alebet@microsoft.com"
+  "email": "mipatera@microsoft.com"
 }

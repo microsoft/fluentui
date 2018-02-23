@@ -26,13 +26,13 @@ describe('TextField', () => {
 
   it('renders TextField correctly', () => {
     const component = renderer.create(<TextField label='Label' />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should render label and value to input element', () => {
-    const exampleLabel: string = 'this is label';
-    const exampleValue: string = 'this is value';
+    const exampleLabel = 'this is label';
+    const exampleValue = 'this is value';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -51,7 +51,7 @@ describe('TextField', () => {
   });
 
   it('should render prefix in input element', () => {
-    const examplePrefix: string = 'this is a prefix';
+    const examplePrefix = 'this is a prefix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -65,7 +65,7 @@ describe('TextField', () => {
   });
 
   it('should render suffix in input element', () => {
-    const exampleSuffix: string = 'this is a suffix';
+    const exampleSuffix = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -79,8 +79,8 @@ describe('TextField', () => {
   });
 
   it('should render both prefix and suffix in input element', () => {
-    const examplePrefix: string = 'this is a prefix';
-    const exampleSuffix: string = 'this is a suffix';
+    const examplePrefix = 'this is a prefix';
+    const exampleSuffix = 'this is a suffix';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -133,7 +133,7 @@ describe('TextField', () => {
   });
 
   describe('error message', () => {
-    const errorMessage: string = 'The string is too long, should not exceed 3 characters.';
+    const errorMessage = 'The string is too long, should not exceed 3 characters.';
 
     function assertErrorMessage(renderedDOM: HTMLElement, expectedErrorMessage: string | boolean): void {
       const errorMessageDOM: HTMLElement =
@@ -268,7 +268,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -296,7 +296,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on blur', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -325,7 +325,7 @@ describe('TextField', () => {
 
     it('should trigger validation on both blur and focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -363,7 +363,7 @@ describe('TextField', () => {
 
     it('should not trigger validation on component mount', () => {
       let validationCallCount = 0;
-      let validatorSpy = (value: string) => {
+      const validatorSpy = (value: string) => {
         validationCallCount++;
         return '';
       };
@@ -402,7 +402,7 @@ describe('TextField', () => {
 
   it('should call onChanged handler for input change', () => {
     let callCount = 0;
-    let onChangedSpy = (value: string) => { callCount++; };
+    const onChangedSpy = (value: string) => { callCount++; };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField

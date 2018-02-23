@@ -10,19 +10,19 @@ describe('DatePicker', () => {
   it('renders default DatePicker correctly', () => {
     // This will only render the input. Calendar component has its own snapshot.
     const component = renderer.create(<DatePicker />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should not open DatePicker when disabled, no label', () => {
-    let wrapper = mount(<DatePicker disabled />);
+    const wrapper = mount(<DatePicker disabled />);
     wrapper.find('i').simulate('click');
 
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
   it('should not open DatePicker when disabled, with label', () => {
-    let wrapper = mount(<DatePicker disabled label='label' />);
+    const wrapper = mount(<DatePicker disabled label='label' />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });

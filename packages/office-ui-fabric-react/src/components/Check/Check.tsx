@@ -34,7 +34,8 @@ export class Check extends BaseComponent<ICheckProps, {}> {
   }
 
   public render() {
-    let { isChecked, checked } = this.props;
+    let { isChecked } = this.props;
+    const { checked } = this.props;
 
     isChecked = isChecked || checked;
 
@@ -48,14 +49,14 @@ export class Check extends BaseComponent<ICheckProps, {}> {
           }
         ) }
       >
-        { Icon({
-          className: 'ms-Check-circle ' + styles.circle,
-          iconName: 'CircleRing'
-        }) }
-        { Icon({
-          className: 'ms-Check-check ' + styles.check,
-          iconName: 'StatusCircleCheckmark'
-        }) }
+        { <Icon
+          className={ 'ms-Check-circle ' + styles.circle }
+          iconName={ 'CircleRing' }
+        /> }
+        { <Icon
+          className={ 'ms-Check-check ' + styles.check }
+          iconName={ 'StatusCircleCheckmark' }
+        /> }
       </div>
     );
   }
