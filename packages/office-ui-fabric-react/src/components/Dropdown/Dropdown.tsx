@@ -257,7 +257,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     } else if (!multiSelect && selectedKey === undefined) {
       // Set the selected option if this is an uncontrolled component
       result = {
-        searchText: null,
         selectedIndices: [index]
       };
     } else if (multiSelect && selectedKeys === undefined) {
@@ -273,7 +272,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         newIndexes.push(index);
       }
       result = {
-        searchText: null,
         selectedIndices: newIndexes
       };
     }
@@ -382,7 +380,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={this._onClickSearchInput}
           onChanged={this._onSearchChanged}
           onFocus={this._onSearchFocus}
-          onBlur={this._onSearchBlur}
           onKeyDown={this._onSearchKeyDown}
           onKeyUp={this._onSearchKeyUp}
         />
@@ -413,11 +410,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onSearchBlur() {
-    return;
-  }
-
-  @autobind
   private _onClickSearchInput(event: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>) {
     event.stopPropagation();
     return false;
@@ -432,7 +424,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _closeSearch() {
     if (this.state.selectedIndices && this.state.selectedIndices.length) {
-      const index = this._matchingIndex(this.state.searchText, this.props.options);
+      const key = this._filteredOptions()[this.state.selectedIndices[0]].key;
+      const index = this.props.options.findIndex((x: IDropdownOption) => x.key === key);
       this.setState({
         selectedIndices: [index],
         searchText: null,
@@ -446,10 +439,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
+  private _filterRegex(text: string) {
+      return new RegExp(text.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
+  }
+
   @autobind
   private _filteredOptions(options?: any, filter?: string | null) {
     filter = (filter || this.state.searchText || '').trim();
     options = options || this.props.options;
+    const regex = this._filterRegex(filter);
 
     if (this.props.searchItemsBy) {
       if (!this._filteredOptionsCache ||
@@ -465,7 +463,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               x.itemType === SelectableOptionMenuItemType.Divider ||
               (
                 x[this.props.searchItemsBy!] &&
-                x[this.props.searchItemsBy!].includes(filter))))
+                regex.test(x[this.props.searchItemsBy!]))))
         };
       }
 
@@ -490,6 +488,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       } else {
         this._closeSearch();
       }
+    } else {
+      this._onDropdownKeyDown(ev as React.KeyboardEvent<HTMLDivElement>);
     }
 
     ev.stopPropagation();
@@ -508,10 +508,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _matchingIndex(filter: string | undefined | null, options: any) {
+    const regex = this._filterRegex(filter || '');
     return options.findIndex((x: any) =>
       x.itemType !== SelectableOptionMenuItemType.Header &&
       x.itemType !== SelectableOptionMenuItemType.Divider &&
-      x[this.props.searchItemsBy!].includes(filter));
+      regex.test(x[this.props.searchItemsBy!]));
   }
 
   // Render Callout or Panel container and pass in list
