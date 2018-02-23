@@ -74,7 +74,6 @@ describe('DetailsList', () => {
       if (value === null || value === undefined) {
         value = '';
       }
-      console.log('Rendered column');
       return (
         <div className={ 'test-column' } data-is-focusable={ true } >
           { value }
