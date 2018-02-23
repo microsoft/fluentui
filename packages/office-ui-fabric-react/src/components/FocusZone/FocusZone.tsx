@@ -373,7 +373,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         case KeyCodes.tab:
           if (this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
-            (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly && this._isElementInput(ev.target as HTMLElement))) {
+            (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly &&
+              this._isElementInput(ev.target as HTMLElement))) {
             let focusChanged = false;
             this._processingTabKey = true;
             if (direction === FocusZoneDirection.vertical ||
@@ -809,7 +810,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward.
       // 3. when selection start is not the end of lenght and it is forward.
-      // 4. We press any of the arrow keys when we're in a mode that supports tab (only losing focus if we hit tab)
+      // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit tab)
       if (isRangeSelected ||
         (selectionStart > 0 && !isForward) ||
         (selectionStart !== inputValue.length && isForward) ||
