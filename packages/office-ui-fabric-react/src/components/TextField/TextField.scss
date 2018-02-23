@@ -10,7 +10,7 @@
 @import '../Label/LabelMixins.scss';
 
 // component slots
-$field-background-color: $bodyBackgroundColor;
+$field-background-color: $inputBackgroundColor;
 $field-background-disabled-color: $disabledBackgroundColor;
 
 $field-border-color: $inputBorderColor;
