@@ -1161,13 +1161,12 @@ describe('FocusZone', () => {
     expect(onKeyDownEvent.which).toBe(KeyCodes.tab);
   });
 
-
   it('should stay in input box with arrow keys and exit with tab', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
         <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
-          <input type="text" className='a' />
+          <input type='text' className='a' />
           <button className='b'>b</button>
         </FocusZone>
       </div >
@@ -1219,6 +1218,4 @@ describe('FocusZone', () => {
     expect(inputA.tabIndex).toBe(-1);
     expect(buttonB.tabIndex).toBe(0);
   });
-
-
 });

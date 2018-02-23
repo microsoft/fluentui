@@ -75,7 +75,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       'allowTabKey': 'handleTabKey'
     });
 
-
     this._id = getId('FocusZone');
 
     this._focusAlignment = {
