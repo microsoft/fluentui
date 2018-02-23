@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu';
+import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { getRTL } from '../../Utilities';
