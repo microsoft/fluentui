@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
 import { shallowUntilTarget } from '../../Utilities';
 
 import { ResizeGroup } from './ResizeGroup';
@@ -46,13 +45,6 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
 
-    const oldWrapper = shallow<IResizeGroupProps, IResizeGroupState>(
-      <ResizeGroup
-        data={ initialData }
-        onReduceData={ onReduceScalingData }
-        onRenderData={ onRenderData }
-      />
-    );
     const wrapper = shallowUntilTarget<IResizeGroupProps, IResizeGroupState>(
       <ResizeGroup
         data={ initialData }

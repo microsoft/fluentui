@@ -1,8 +1,5 @@
-// import * as tests from './common/tests';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { configure, shallow, ShallowWrapper } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16'
-// import * as Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
