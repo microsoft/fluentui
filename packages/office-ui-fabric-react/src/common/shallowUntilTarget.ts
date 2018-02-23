@@ -1,7 +1,4 @@
-// import * as Adapter from 'enzyme-adapter-react-16';
 import { shallow, ShallowWrapper } from 'enzyme';
-
-// configure({ adapter: new Adapter() });
 
 /**
  * Duplicated enzyme's ShallowRendererProps
