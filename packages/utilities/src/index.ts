@@ -36,6 +36,7 @@ export * from './properties';
 export * from './resources';
 export * from './rtl';
 export * from './scroll';
+export * from './shallowUntilTarget';
 export * from './string';
 export * from './styled';
 export * from './warn';
