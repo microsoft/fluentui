@@ -28,7 +28,7 @@ import {
   css,
   shouldWrapFocus
 } from '../../Utilities';
-import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu';
+import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import {
@@ -290,7 +290,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             { title && <div className={ this._classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
             { (items && items.length) ? (
               <FocusZone
-                {...this._adjustedFocusZoneProps }
+                { ...this._adjustedFocusZoneProps }
                 className={ this._classNames.root }
                 isCircularNavigation={ true }
                 handleTabKey={ FocusZoneTabbableElements.all }
@@ -466,11 +466,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return (
       <div className={ this._classNames.header } style={ item.style } role='heading' aria-level={ this.props.title ? 2 : 1 }>
         <ChildrenRenderer
-          item={item}
-          classNames={classNames}
-          index={index}
-          onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
-          hasIcons={hasIcons}
+          item={ item }
+          classNames={ classNames }
+          index={ index }
+          onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+          hasIcons={ hasIcons }
         />
       </div>);
   }
@@ -492,11 +492,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onClick={ this._onAnchorClick.bind(this, item) }
         >
           <ChildrenRenderer
-            item={item}
-            classNames={classNames}
-            index={index}
-            onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined}
-            hasIcons={hasIcons}
+            item={ item }
+            classNames={ classNames }
+            index={ index }
+            onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+            hasIcons={ hasIcons }
           />
         </a>
       </div>);
@@ -559,7 +559,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { ...getNativeProps(item, buttonProperties) }
         { ...itemButtonProperties }
       >
-        <ChildrenRenderer item={item} classNames={classNames} index={index} onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined} hasIcons={hasIcons} />
+        <ChildrenRenderer item={ item } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined } hasIcons={ hasIcons } />
       </button>
     );
   }
@@ -617,7 +617,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
-      <ChildrenRenderer item={item} classNames={classNames} index={index} onCheckmarkClick={hasCheckmarks? this._onItemClick : undefined} hasIcons={hasIcons} />,
+      <ChildrenRenderer item={ item } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined } hasIcons={ hasIcons } />,
     );
   }
 
@@ -640,7 +640,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item)
       }),
-      <ChildrenRenderer item={item} classNames={classNames} index={index} hasIcons={false} />
+      <ChildrenRenderer item={ item } classNames={ classNames } index={ index } hasIcons={ false } />
     );
   }
 
