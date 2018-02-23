@@ -22,9 +22,14 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-11"`,
-      src: `url('${baseUrl}fabric-icons-11-18d2ffa4.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-11-bb9c4989.woff') format('woff')`,
     },
     icons: {
+      'ChevronRightEnd6': '\uF372',
+      'ContextMenu': '\uF37C',
+      'AzureAPIManagement': '\uF37F',
+      'AzureServiceEndpoint': '\uF380',
+      'VSTSLogo': '\uF381',
       'VSTSAltLogo1': '\uF382',
       'VSTSAltLogo2': '\uF383',
       'FileTypeSolution': '\uF387',
@@ -119,12 +124,7 @@ export function initializeIcons(
       'TFVCLogo': '\uF44D',
       'ProjectLogo32': '\uF47E',
       'ProjectLogoFill32': '\uF47F',
-      'ProjectLogo16': '\uF480',
-      'ProjectLogoFill16': '\uF481',
-      'SwayLogo32': '\uF482',
-      'SwayLogoFill32': '\uF483',
-      'SwayLogo16': '\uF484',
-      'SwayLogoFill16': '\uF485'
+      'ProjectLogo16': '\uF480'
     }
   };
 

@@ -22,9 +22,18 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-8"`,
-      src: `url('${baseUrl}fabric-icons-8-bd2a110b.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-8-b5ef381f.woff') format('woff')`,
     },
     icons: {
+      'StatusCircleBlock2': '\uF141',
+      'StatusCircleQuestionMark': '\uF142',
+      'Toll': '\uF160',
+      'ExploreContentSingle': '\uF164',
+      'CollapseContent': '\uF165',
+      'CollapseContentSingle': '\uF166',
+      'InfoSolid': '\uF167',
+      'ProgressRingDots': '\uF16A',
+      'CaloriesAdd': '\uF172',
       'BranchFork': '\uF173',
       'MobileReport': '\uF18A',
       'HardDriveGroup': '\uF18F',
@@ -115,16 +124,7 @@ export function initializeIcons(
       'BranchLocked': '\uF292',
       'BranchCommit': '\uF293',
       'BranchCompare': '\uF294',
-      'BranchMerge': '\uF295',
-      'BranchPullRequest': '\uF296',
-      'BranchSearch': '\uF297',
-      'BranchShelveset': '\uF298',
-      'RawSource': '\uF299',
-      'MergeDuplicate': '\uF29A',
-      'RowsGroup': '\uF29B',
-      'RowsChild': '\uF29C',
-      'Deploy': '\uF29D',
-      'Redeploy': '\uF29E'
+      'BranchMerge': '\uF295'
     }
   };
 

@@ -9,12 +9,64 @@
 	},
 	"glyphs": [
 		{
+			"name": "SVNLogo",
+			"unicode": "F662"
+		},
+		{
+			"name": "JenkinsLogo",
+			"unicode": "F663"
+		},
+		{
+			"name": "VersionControlPush",
+			"unicode": "F664"
+		},
+		{
+			"name": "ExternalGit",
+			"unicode": "F665"
+		},
+		{
+			"name": "WhiteBoardApp16",
+			"unicode": "F673"
+		},
+		{
+			"name": "WhiteBoardApp32",
+			"unicode": "F674"
+		},
+		{
+			"name": "InsertSignatureLine",
+			"unicode": "F677"
+		},
+		{
+			"name": "ArrangeByFrom",
+			"unicode": "F678"
+		},
+		{
 			"name": "Phishing",
 			"unicode": "F679"
 		},
 		{
 			"name": "CreateMailRule",
 			"unicode": "F67A"
+		},
+		{
+			"name": "PublishCourse",
+			"unicode": "F699"
+		},
+		{
+			"name": "DictionaryRemove",
+			"unicode": "F69A"
+		},
+		{
+			"name": "UserRemove",
+			"unicode": "F69B"
+		},
+		{
+			"name": "UserEvent",
+			"unicode": "F69C"
+		},
+		{
+			"name": "Encryption",
+			"unicode": "F69D"
 		}
 	]
 }

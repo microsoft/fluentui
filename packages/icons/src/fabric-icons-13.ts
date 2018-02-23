@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,9 +22,14 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-13"`,
-      src: `url('${baseUrl}fabric-icons-13-02c4bea1.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-13-37a0c318.woff') format('woff')`,
     },
     icons: {
+      'PaddingBottom': '\uF51A',
+      'PaddingLeft': '\uF51B',
+      'PaddingRight': '\uF51C',
+      'NavigationFlipper': '\uF51D',
+      'AlignJustify': '\uF51E',
       'TextOverflow': '\uF51F',
       'VisualsFolder': '\uF520',
       'VisualsStore': '\uF521',
@@ -84,6 +89,10 @@ export function initializeIcons(
       'MaximumValue': '\uF5BC',
       'MinimumValue': '\uF5BD',
       'VisualStudioIDELogo32': '\uF5D0',
+      'ApacheIvyLogo32': '\uF5D1',
+      'BitbucketLogo32': '\uF5D2',
+      'LinuxLogo32': '\uF5D3',
+      'GradleLogo32': '\uF5D4',
       'PasteAsText': '\uF5D5',
       'PasteAsCode': '\uF5D6',
       'BrowserTab': '\uF5D7',
@@ -102,6 +111,7 @@ export function initializeIcons(
       'SquareShapeSolid': '\uF63D',
       'TriangleShapeSolid': '\uF63E',
       'DropShapeSolid': '\uF63F',
+      'RectangleShapeSolid': '\uF640',
       'InsertColumnsLeft': '\uF64A',
       'InsertColumnsRight': '\uF64B',
       'InsertRowsAbove': '\uF64C',
@@ -114,13 +124,7 @@ export function initializeIcons(
       'GitHubLogo': '\uF65E',
       'ApacheMavenLogo': '\uF65F',
       'NPMLogo': '\uF660',
-      'GitFork': '\uF661',
-      'SVNLogo': '\uF662',
-      'JenkinsLogo': '\uF663',
-      'VersionControlPush': '\uF664',
-      'ExternalGit': '\uF665',
-      'InsertSignatureLine': '\uF677',
-      'ArrangeByFrom': '\uF678'
+      'GitFork': '\uF661'
     }
   };
 

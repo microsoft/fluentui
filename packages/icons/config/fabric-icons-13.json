@@ -9,6 +9,26 @@
 	},
 	"glyphs": [
 		{
+			"name": "PaddingBottom",
+			"unicode": "F51A"
+		},
+		{
+			"name": "PaddingLeft",
+			"unicode": "F51B"
+		},
+		{
+			"name": "PaddingRight",
+			"unicode": "F51C"
+		},
+		{
+			"name": "NavigationFlipper",
+			"unicode": "F51D"
+		},
+		{
+			"name": "AlignJustify",
+			"unicode": "F51E"
+		},
+		{
 			"name": "TextOverflow",
 			"unicode": "F51F"
 		},
@@ -333,6 +353,10 @@
 			"unicode": "F63F"
 		},
 		{
+			"name": "RectangleShapeSolid",
+			"unicode": "F640"
+		},
+		{
 			"name": "InsertColumnsLeft",
 			"unicode": "F64A"
 		},
@@ -383,30 +407,6 @@
 		{
 			"name": "GitFork",
 			"unicode": "F661"
-		},
-		{
-			"name": "SVNLogo",
-			"unicode": "F662"
-		},
-		{
-			"name": "JenkinsLogo",
-			"unicode": "F663"
-		},
-		{
-			"name": "VersionControlPush",
-			"unicode": "F664"
-		},
-		{
-			"name": "ExternalGit",
-			"unicode": "F665"
-		},
-		{
-			"name": "InsertSignatureLine",
-			"unicode": "F677"
-		},
-		{
-			"name": "ArrangeByFrom",
-			"unicode": "F678"
 		}
 	]
 }

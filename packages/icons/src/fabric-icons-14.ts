@@ -22,11 +22,24 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-14"`,
-      src: `url('${baseUrl}fabric-icons-14-36569c01.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-14-95a97fbd.woff') format('woff')`,
     },
     icons: {
+      'SVNLogo': '\uF662',
+      'JenkinsLogo': '\uF663',
+      'VersionControlPush': '\uF664',
+      'ExternalGit': '\uF665',
+      'WhiteBoardApp16': '\uF673',
+      'WhiteBoardApp32': '\uF674',
+      'InsertSignatureLine': '\uF677',
+      'ArrangeByFrom': '\uF678',
       'Phishing': '\uF679',
-      'CreateMailRule': '\uF67A'
+      'CreateMailRule': '\uF67A',
+      'PublishCourse': '\uF699',
+      'DictionaryRemove': '\uF69A',
+      'UserRemove': '\uF69B',
+      'UserEvent': '\uF69C',
+      'Encryption': '\uF69D'
     }
   };
 
