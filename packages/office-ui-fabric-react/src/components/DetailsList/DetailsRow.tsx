@@ -309,8 +309,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     });
   }
 
-  public focus(): boolean {
-    return !!this._focusZone && this._focusZone.focus();
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    return !!this._focusZone && this._focusZone.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {

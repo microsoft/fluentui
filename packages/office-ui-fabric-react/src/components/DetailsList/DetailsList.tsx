@@ -131,6 +131,23 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._groupedList && this._groupedList.scrollToIndex(index, measureItem);
   }
 
+  public focusIndex(
+    index: number,
+    forceIntoFirstElement: boolean = false,
+    measureItem?: (itemIndex: number) => number): void {
+
+    const item = this.props.items[index];
+    if (item) {
+      this.scrollToIndex(index, measureItem);
+
+      const itemKey = this._getItemKey(item, index);
+      const row = this._activeRows[itemKey];
+      if (row) {
+        this._setFocusToRow(row, forceIntoFirstElement);
+      }
+    }
+  }
+
   public componentWillUnmount() {
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
@@ -537,12 +554,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  private _setFocusToRow(row: DetailsRow) {
+  private _setFocusToRow(row: DetailsRow, forceIntoFirstElement: boolean = false) {
     if (this._selectionZone) {
       this._selectionZone.ignoreNextFocus();
     }
     this._async.setTimeout(() => {
-      row.focus();
+      row.focus(forceIntoFirstElement);
     }, 0);
   }
 
@@ -679,7 +696,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let totalWidth = 0; // offset because we have one less inner padding.
     const availableWidth = viewportWidth - (outerPadding + rowCheckWidth + groupExpandWidth);
     const adjustedColumns: IColumn[] = newColumns.map((column, i) => {
-    const newColumn = assign(
+      const newColumn = assign(
         {},
         column,
         {

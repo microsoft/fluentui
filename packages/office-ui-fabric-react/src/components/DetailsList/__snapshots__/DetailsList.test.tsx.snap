@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsList renders List correctly 1`] = `
+<div
+  className="ms-Viewport"
+  style={
+    Object {
+      "minHeight": 1,
+      "minWidth": 1,
+    }
+  }
+>
+  <div
+    aria-label={undefined}
+    className="ms-DetailsList is-horizontalConstrained undefined"
+    data-automationid="DetailsList"
+    data-is-scrollable="false"
+  >
+    <div
+      aria-colcount={2}
+      aria-label={undefined}
+      aria-readonly="true"
+      aria-rowcount={6}
+      role="grid"
+    >
+      <div
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-label={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone ms-DetailsHeader"
+          data-automationid="DetailsHeader"
+          data-focuszone-id="FocusZone1"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          onMouseMove={[Function]}
+          role="row"
+        >
+          <div
+            aria-colindex={0}
+            aria-labelledby="header0-check"
+            className="ms-DetailsHeader-cell ms-DetailsHeader-cellIsCheck"
+            onClick={[Function]}
+            role="columnheader"
+          >
+            <span
+              className=""
+            >
+              <div
+                aria-checked={undefined}
+                aria-describedby="header0-checkTooltip"
+                aria-label={undefined}
+                className="ms-DetailsRow-check ms-DetailsRow-check--isHeader undefined"
+                data-automationid="DetailsRowCheck"
+                data-is-focusable={true}
+                data-selection-toggle={true}
+                id="header0-check"
+                role="checkbox"
+              >
+                <div
+                  className="ms-Check"
+                >
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Check-circle
+                        undefined
+                        {
+                          display: inline-block;
+                        }
+                    data-icon-name="CircleRing"
+                    role="presentation"
+                  />
+                  <i
+                    aria-hidden={true}
+                    className=
+                        ms-Check-check
+                        undefined
+                        {
+                          display: inline-block;
+                        }
+                    data-icon-name="StatusCircleCheckmark"
+                    role="presentation"
+                  />
+                </div>
+              </div>
+            </span>
+          </div>
+          <div
+            aria-colindex={1}
+            aria-disabled={false}
+            aria-sort="none"
+            className="ms-DetailsHeader-cell is-actionable undefined"
+            data-automationid="ColumnsHeaderColumn"
+            data-item-key="key"
+            role="columnheader"
+            style={
+              Object {
+                "width": 116,
+              }
+            }
+          >
+            <span
+              className=""
+            >
+              <span
+                aria-describedby="header0-key-tooltip"
+                aria-haspopup={false}
+                aria-label={undefined}
+                aria-labelledby="header0-key-name "
+                className="ms-DetailsHeader-cellTitle"
+                data-is-focusable={true}
+                id="header0-key"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                role="button"
+              >
+                <span
+                  className="ms-DetailsHeader-cellName"
+                  id="header0-key-name"
+                >
+                  key
+                </span>
+              </span>
+            </span>
+          </div>
+          <div
+            aria-hidden={true}
+            className="ms-DetailsHeader-cellSizer"
+            data-is-focusable={false}
+            data-sizer-index={0}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDoubleClick={[Function]}
+            role="button"
+          />
+        </div>
+      </div>
+      <div
+        onKeyDown={[Function]}
+        role="presentation"
+      >
+        <div
+          aria-describedby={undefined}
+          aria-labelledby={undefined}
+          className="ms-FocusZone"
+          data-focuszone-id="FocusZone2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseDownCapture={[Function]}
+          role="presentation"
+        >
+          <div
+            className="ms-SelectionZone"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onKeyDownCapture={[Function]}
+            onMouseDown={[Function]}
+            onMouseDownCapture={[Function]}
+            role="presentation"
+          >
+            <div
+              className="ms-List"
+              role="presentation"
+            >
+              <div
+                className="ms-List-surface"
+                role="presentation"
+              >
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={0}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={2}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={3}
+                    role="presentation"
+                  />
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={4}
+                    role="presentation"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
