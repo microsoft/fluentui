@@ -74,12 +74,8 @@ export interface IDetailsRowState {
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
-  public refs: {
-    [key: string]: React.ReactInstance,
-    cellMeasurer: HTMLElement
-  };
-
   private _root: HTMLElement | undefined;
+  private _cellMeasurer: HTMLElement;
   private _focusZone: IFocusZone;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
@@ -139,7 +135,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
 
     if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
-      const newWidth = this.refs.cellMeasurer.getBoundingClientRect().width;
+      const newWidth = this._cellMeasurer.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
 
@@ -205,7 +201,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     return (
       <FocusZone
-        {...getNativeProps(this.props, divProperties) }
+        { ...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
         ref={ this._onRootRef }
         componentRef={ this._resolveRef('_focusZone') }
@@ -268,7 +264,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           <span
             role='presentation'
             className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
-            ref='cellMeasurer'
+            ref={ this._resolveRef('_cellMeasurer') }
           >
             <DetailsRowFields
               columns={ [columnMeasureInfo.column] }

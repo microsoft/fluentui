@@ -14,7 +14,7 @@ const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
-const QUERY_SELECTOR: string = '.ms-ChoiceField-input';
+const QUERY_SELECTOR = '.ms-ChoiceField-input';
 
 describe('ChoiceGroup', () => {
 

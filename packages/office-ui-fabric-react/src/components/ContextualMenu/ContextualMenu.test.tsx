@@ -10,7 +10,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
-import { Layer } from '../Layer/Layer';
+import { LayerBase as Layer } from '../Layer/Layer.base';
 import { mount } from 'enzyme';
 
 describe('ContextualMenu', () => {
@@ -84,7 +84,7 @@ describe('ContextualMenu', () => {
         items={ items }
         isSubMenu={ true }
         onDismiss={ onDismissSpy }
-        arrowDirection={ FocusZoneDirection.horizontal }
+        focusZoneProps={ { direction: FocusZoneDirection.horizontal } }
       />
     );
 
@@ -110,7 +110,7 @@ describe('ContextualMenu', () => {
         items={ items }
         isSubMenu={ true }
         onDismiss={ onDismissSpy }
-        arrowDirection={ FocusZoneDirection.horizontal }
+        focusZoneProps={ { direction: FocusZoneDirection.bidirectional } }
       />
     );
 
@@ -609,6 +609,32 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(subMenuOpened).toEqual(true);
+  });
+
+  it('calls the custom child renderer when the contextualMenuItemAs prop is provided', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+      }
+    ];
+    const customRenderer = jest.fn(() => null);
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        contextualMenuItemAs={ customRenderer }
+      />
+    );
+
+    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(customRenderer).toHaveBeenCalledTimes(2);
   });
 
   describe('canAnyMenuItemsCheck', () => {
