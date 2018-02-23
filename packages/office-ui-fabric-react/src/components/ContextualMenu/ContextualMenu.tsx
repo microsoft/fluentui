@@ -532,7 +532,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const itemHasSubmenu = hasSubmenu(item);
 
     const buttonNativeProperties = getNativeProps(item, buttonProperties);
-    // Do not add the deleted attribute to the button so that it is focusable
+    // Do not add the disabled attribute to the button so that it is focusable
     delete (buttonNativeProperties as any).disabled;
 
     const itemButtonProperties = {
