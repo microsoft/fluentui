@@ -531,6 +531,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
     const itemHasSubmenu = hasSubmenu(item);
 
+    const buttonNativeProperties = getNativeProps(item, buttonProperties);
+    // Do not add the disabled attribute to the button so that it is focusable
+    delete (buttonNativeProperties as any).disabled;
+
     const itemButtonProperties = {
       className: classNames.root,
       onClick: this._onItemClick.bind(this, item),
@@ -539,7 +543,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onMouseLeave: this._onMouseItemLeave.bind(this, item),
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       onMouseMove: this._onItemMouseMove.bind(this, item),
-      disabled: this._isItemDisabled(item),
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
@@ -556,10 +559,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <button
-        { ...getNativeProps(item, buttonProperties) }
+        { ...buttonNativeProperties }
         { ...itemButtonProperties }
       >
-        <ChildrenRenderer item={ item } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined } hasIcons={ hasIcons } />
+        <ChildrenRenderer
+          item={ item }
+          classNames={ classNames }
+          index={ index }
+          onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined }
+          hasIcons={ hasIcons }
+        />
       </button>
     );
   }
@@ -821,6 +830,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
+    if (item.disabled || item.isDisabled) {
+      return;
+    }
     if (item.onClick) {
       item.onClick(ev, item);
     } else if (this.props.onItemClick) {
