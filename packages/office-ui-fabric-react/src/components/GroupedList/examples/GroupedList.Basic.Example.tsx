@@ -25,11 +25,11 @@ const groupDepth = 3;
 let _items: any[];
 let _groups: IGroup[];
 
-export class GroupedListBasicExample extends React.Component<any, any> {
+export class GroupedListBasicExample extends React.Component {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     _items = _items || createListItems(Math.pow(groupCount, groupDepth + 1));
     _groups = _groups || createGroups(groupCount, groupDepth, 0, groupCount);
@@ -59,7 +59,7 @@ export class GroupedListBasicExample extends React.Component<any, any> {
   }
 
   private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
-    let {
+    const {
       _selection: selection
     } = this;
     return (

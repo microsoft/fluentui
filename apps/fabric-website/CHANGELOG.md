@@ -1,6 +1,45 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 06 Dec 2017 11:24:52 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+
+## 5.3.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- Left nav: Less jittery and component pages load in full height.
+
+## 5.3.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Adding left nav scroll functionality, including fixing the left nav with the header. Other layout refactoring to accommodate.
+
+## 5.2.1
+Fri, 22 Dec 2017 11:10:56 GMT
+
+### Patches
+
+- Added more descriptive comments to account for the specificity needed to style with the UHF.
+
+## 5.2.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+### Patches
+
+- GetStarted Page: More specific selectors for button with link to deal with UHF styles.
+
+## 5.1.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- GetStarted page: updated to better reflect the current Fabric workflows.
 
 ## 5.0.19
 Wed, 06 Dec 2017 11:24:52 GMT

@@ -69,11 +69,11 @@ export interface IDatePickerFormatExampleState {
 }
 
 export class DatePickerFormatExample extends React.Component<
-  any,
+  {},
   IDatePickerFormatExampleState
   > {
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
@@ -82,7 +82,7 @@ export class DatePickerFormatExample extends React.Component<
   }
 
   public render() {
-    let { firstDayOfWeek, value } = this.state;
+    const { firstDayOfWeek, value } = this.state;
     const desc =
       'This field is required. One of the support input formats is year dash month dash day.';
 
@@ -141,13 +141,13 @@ export class DatePickerFormatExample extends React.Component<
 
   @autobind
   private _onParseDateFromString(value: string): Date {
-    let date = this.state.value || new Date();
-    let values = (value || '').trim().split('/');
-    let day =
+    const date = this.state.value || new Date();
+    const values = (value || '').trim().split('/');
+    const day =
       values.length > 0
         ? Math.max(1, Math.min(31, parseInt(values[0], 10)))
         : date.getDate();
-    let month =
+    const month =
       values.length > 1
         ? Math.max(1, Math.min(12, parseInt(values[1], 10))) - 1
         : date.getMonth();

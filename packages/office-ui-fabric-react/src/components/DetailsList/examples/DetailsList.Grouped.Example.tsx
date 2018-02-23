@@ -5,7 +5,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 
-let _columns = [
+const _columns = [
   {
     key: 'name',
     name: 'Name',
@@ -22,7 +22,7 @@ let _columns = [
     maxWidth: 200
   }
 ];
-let _items = [
+const _items = [
   {
     key: 'a',
     name: 'a',
@@ -50,9 +50,11 @@ let _items = [
   }
 ];
 
-export class DetailsListGroupedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class DetailsListGroupedExample extends React.Component<{}, {
+  items: {}[];
+}> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       items: _items
@@ -60,7 +62,7 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { items } = this.state;
+    const { items } = this.state;
 
     return (
       <Fabric className='foo'>
@@ -102,7 +104,7 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
   }
 
   private _addItem() {
-    let items = this.state.items;
+    const items = this.state.items;
 
     this.setState({
       items: items.concat([{

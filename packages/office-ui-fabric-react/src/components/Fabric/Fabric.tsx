@@ -45,8 +45,8 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
   // tslint:disable-next-line:no-unused-variable
   private _root: HTMLElement;
 
-  constructor() {
-    super();
+  constructor(props: IFabricProps) {
+    super(props);
 
     this.state = {
       isFocusVisible: _lastIsFocusVisible
@@ -68,7 +68,7 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
       isFocusVisible!
     );
 
-    let divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(this.props, divProperties);
     return (
       <div
         { ...divProps }

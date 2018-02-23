@@ -8,11 +8,11 @@ export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;
 }
 
-export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExampleState> {
+export class CalloutBasicExample extends React.Component<{}, ICalloutBaiscExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
@@ -23,7 +23,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
   }
 
   public render() {
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>

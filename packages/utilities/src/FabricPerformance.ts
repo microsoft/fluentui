@@ -1,3 +1,5 @@
+declare const setTimeout: (cb: () => void, delay: number) => number;
+
 /**
  * PerfData interface.
  *
@@ -48,7 +50,7 @@ export class FabricPerformance {
    * @param func - The logic to be measured for execution time
    */
   public static measure(name: string, func: () => void): void {
-    if (Number.isInteger(FabricPerformance._timeoutId)) {
+    if (FabricPerformance._timeoutId) {
       FabricPerformance.setPeriodicReset();
     }
     const start = now();

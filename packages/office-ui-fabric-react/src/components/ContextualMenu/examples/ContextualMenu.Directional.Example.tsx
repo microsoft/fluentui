@@ -42,8 +42,8 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     gapSize: TextField;
   };
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       isBeakVisible: false,
@@ -57,7 +57,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   }
 
   public render() {
-    let {
+    const {
       beakWidth,
       directionalHint,
       directionalHintForRTL,

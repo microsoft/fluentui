@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
 
-export interface ICalloutBaiscExampleState {
-  isCalloutVisible?: boolean;
+export interface ICalloutNestedExampleProps {
+  items: ICommandBarItemProps[];
 }
 
-export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExampleState> {
+export class CalloutNestedExample extends React.Component<ICalloutNestedExampleProps, {
+  isCalloutVisible: boolean;
+}> {
   private _menuButtonElement: HTMLElement | null;
 
-  public constructor() {
-    super();
+  public constructor(props: ICalloutNestedExampleProps) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
 
@@ -22,7 +24,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
   }
 
   public render() {
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>

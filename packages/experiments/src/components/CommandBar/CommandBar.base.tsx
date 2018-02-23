@@ -14,7 +14,7 @@ import {
 } from './CommandBar.types';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import {
   classNamesFunction
@@ -55,6 +55,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _overflowSet: IOverflowSet;
+  private _resizeGroup: IResizeGroup;
   private _classNames: {[key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
@@ -66,6 +67,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       farItems,
       elipisisAriaLabel,
       elipisisIconProps,
+      overflowMenuProps,
       buttonStyles,
       getStyles,
       theme,
@@ -86,6 +88,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     return (
       <ResizeGroup
+        componentRef={ this._resolveRef('_resizeGroup') }
         className={ className }
         data={ commandBardata }
         onReduceData={ onReduceData }
@@ -109,7 +112,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
                       styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
                       ariaLabel: elipisisAriaLabel,
                       className: css('ms-CommandBar-overflowButton'),
-                      menuProps: { items: renderedOverflowItems },
+                      menuProps: { ...overflowMenuProps, items: renderedOverflowItems },
                       menuIconProps: elipisisIconProps,
                     })
                   );
@@ -134,6 +137,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     this._overflowSet.focus();
   }
 
+  public remeasure(): void {
+    this._resizeGroup.remeasure();
+  }
+
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
@@ -149,7 +156,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
-    const { endAligned } = this.props;
+    const { endAligned, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey, farItems } = data;
 
     // Use first item if endAligned, otherwise use last item
@@ -162,6 +169,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       primaryItems = endAligned ? primaryItems.slice(1) : primaryItems.slice(0, -1);
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
+      if (onDataReduced) {
+        onDataReduced(movedItem);
+      }
+
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
 
@@ -170,7 +181,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
-    const { endAligned } = this.props;
+    const { endAligned, onDataGrown } = this.props;
     let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
     const movedItem = overflowItems[0];
 
@@ -182,6 +193,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if endAligned, movedItem goes first, otherwise, last.
       primaryItems = endAligned ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
       cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+
+      if (onDataGrown) {
+        onDataGrown(movedItem);
+      }
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }

@@ -17,16 +17,18 @@ const examplePersona = {
   showSecondaryText: true
 };
 
-export class PersonaAlternateExample extends React.Component<React.Props<PersonaAlternateExample>, { renderPersonaDetails?: boolean; }> {
-  constructor() {
-    super();
+export class PersonaAlternateExample extends React.Component<{}, {
+  renderPersonaDetails: boolean;
+}> {
+  constructor(props: {}) {
+    super(props);
     this.state = {
       renderPersonaDetails: true
     };
   }
 
   public render() {
-    let { renderPersonaDetails } = this.state;
+    const { renderPersonaDetails } = this.state;
 
     return (
       <div className='ms-PersonaExample'>

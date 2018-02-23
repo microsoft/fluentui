@@ -26,11 +26,11 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
-export class CalloutCoverExample extends React.Component<any, ICalloutCoverExampleState> {
+export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
@@ -43,7 +43,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
   }
 
   public render() {
-    let { isCalloutVisible, directionalHint } = this.state;
+    const { isCalloutVisible, directionalHint } = this.state;
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>

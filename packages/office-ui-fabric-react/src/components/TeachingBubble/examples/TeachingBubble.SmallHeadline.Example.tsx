@@ -8,11 +8,11 @@ export interface ITeachingBubbleSmallHeadlineExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleSmallHeadlineExample extends React.Component<any, ITeachingBubbleSmallHeadlineExampleState> {
+export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITeachingBubbleSmallHeadlineExampleState> {
   private _menuButtonElement: HTMLElement;
 
-  public constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
 
@@ -22,8 +22,8 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<any, ITe
   }
 
   public render() {
-    let { isTeachingBubbleVisible } = this.state;
-    let examplePrimaryButton: IButtonProps = {
+    const { isTeachingBubbleVisible } = this.state;
+    const examplePrimaryButton: IButtonProps = {
       children: 'Try it out',
     };
 

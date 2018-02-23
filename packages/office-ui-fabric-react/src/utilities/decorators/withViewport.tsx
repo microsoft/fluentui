@@ -21,17 +21,17 @@ export interface IWithViewportProps {
 const RESIZE_DELAY = 500;
 const MAX_RESIZE_ATTEMPTS = 3;
 
-export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
+export function withViewport<TProps extends { viewport?: IViewport }, TState>(ComposedComponent: (new (props: TProps, ...args: any[]) => React.Component<TProps, TState>)): any {
 
-  return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
+  return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
     public refs: {
       [key: string]: React.ReactInstance;
     };
 
     private _resizeAttempts: number;
 
-    constructor() {
-      super();
+    constructor(props: TProps) {
+      super(props);
       this._resizeAttempts = 0;
 
       this.state = {
@@ -64,11 +64,11 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
     }
 
     public render() {
-      let { viewport } = this.state;
+      const { viewport } = this.state;
       const {
         skipViewportMeasures
       } = this.props as IWithViewportProps;
-      let isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
+      const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
@@ -89,18 +89,18 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
-      let { viewport } = this.state;
-      let viewportElement = (this.refs as any).root;
-      let scrollElement = findScrollableParent(viewportElement);
-      let scrollRect = getRect(scrollElement);
-      let clientRect = getRect(viewportElement);
-      let updateComponent = () => {
+      const { viewport } = this.state;
+      const viewportElement = (this.refs as any).root;
+      const scrollElement = findScrollableParent(viewportElement);
+      const scrollRect = getRect(scrollElement);
+      const clientRect = getRect(viewportElement);
+      const updateComponent = () => {
         if (withForceUpdate && this._composedComponentInstance) {
           this._composedComponentInstance.forceUpdate();
         }
       };
 
-      let isSizeChanged = (
+      const isSizeChanged = (
         (clientRect && clientRect.width) !== viewport!.width ||
         (scrollRect && scrollRect.height) !== viewport!.height);
 

@@ -8,9 +8,13 @@ import './Layer.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class LayerHostedExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export class LayerHostedExample extends React.Component<{}, {
+  showLayer: boolean;
+  showHost: boolean;
+}> {
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showLayer: false,
       showHost: true
@@ -18,8 +22,8 @@ export class LayerHostedExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { showLayer, showHost } = this.state;
-    let content = (
+    const { showLayer, showHost } = this.state;
+    const content = (
       <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 } >
         This is example layer content.
       </div>

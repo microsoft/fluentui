@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
+import { ImageLoadState } from '../../Image';
 
 export interface IPersona {
 
@@ -28,6 +29,11 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
    * @defaultvalue PersonaSize.size48
    */
   size?: PersonaSize;
+
+  /**
+   * Optional custom renderer for the coin
+   */
+  onRenderCoin?: IRenderFunction<IPersonaProps>;
 
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
@@ -63,10 +69,15 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   onRenderInitials?: IRenderFunction<IPersonaProps>;
 
   /**
+   * Optional callback for when loading state of the photo changes
+   */
+  onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
+
+  /**
    * The background color when the user's initials are displayed.
    * @defaultvalue [Derived from primaryText]
    */
-  initialsColor?: PersonaInitialsColor;
+  initialsColor?: PersonaInitialsColor | string;
 
   /**
    * Presence of the person to display - will not display presence if undefined.
@@ -208,7 +219,7 @@ export enum PersonaInitialsColor {
   red = 13,
   darkRed = 14,
   /**
-   * Tranparent is not intended to be used with typical initials due to accessibility issues.
+   * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
   transparent = 15,

@@ -6,7 +6,7 @@ import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/p
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-let _testTags = [
+const _testTags = [
   'black',
   'blue',
   'brown',
@@ -25,8 +25,8 @@ let _testTags = [
 ].map(item => ({ key: item, name: item }));
 
 export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       isPickerDisabled: false
     };

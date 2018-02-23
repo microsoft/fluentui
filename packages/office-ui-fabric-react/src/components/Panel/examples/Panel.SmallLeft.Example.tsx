@@ -2,10 +2,12 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
-export class PanelSmallLeftExample extends React.Component<any, any> {
+export class PanelSmallLeftExample extends React.Component<{}, {
+  showPanel: boolean;
+}> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = { showPanel: false };
   }
 

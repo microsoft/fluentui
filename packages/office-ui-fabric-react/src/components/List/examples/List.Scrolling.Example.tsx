@@ -36,7 +36,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   }
 
   public render() {
-    let { items } = this.props;
+    const { items } = this.props;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>

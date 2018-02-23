@@ -15,8 +15,9 @@ export interface ICheckboxBasicExampleState {
 }
 
 export class CheckboxImplementationExamples extends React.Component<{}, ICheckboxBasicExampleState> {
-  constructor() {
-    super();
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       isChecked: false
@@ -26,9 +27,9 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
   }
 
   public render() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
-    let styles: ICheckboxStyles = {
+    const styles: ICheckboxStyles = {
       root: {
         marginTop: '10px'
       }

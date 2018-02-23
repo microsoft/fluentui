@@ -10,27 +10,36 @@ export class CommandBarBasicExample extends React.Component<any, any> {
     this.state = {
       isSearchBoxVisible: true,
       areNamesVisible: true,
-      areIconsVisible: true
+      areIconsVisible: true,
+      areItemsEnabled: true
     };
   }
 
   public render() {
-    let { items, overflowItems, farItems } = this.props;
-    let { isSearchBoxVisible: searchBoxVisible, areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
+    const { items, overflowItems, farItems } = this.props;
+    const {
+      isSearchBoxVisible: searchBoxVisible,
+      areIconsVisible: iconsVisible,
+      areNamesVisible: namesVisible,
+      areItemsEnabled: itemsEnabled
+    } = this.state;
 
-    let filteredItems = items.map((item: any) => assign({}, item, {
+    const filteredItems = items.map((item: any) => assign({}, item, {
       iconOnly: !namesVisible,
-      icon: iconsVisible ? item.icon : ''
+      icon: iconsVisible ? item.icon : '',
+      disabled: !itemsEnabled
     }));
 
-    let filteredOverflowItems = overflowItems.map((item: any) => assign({}, item, {
+    const filteredOverflowItems = overflowItems.map((item: any) => assign({}, item, {
       iconOnly: !namesVisible,
-      icon: iconsVisible ? item.icon : ''
+      icon: iconsVisible ? item.icon : '',
+      disabled: !itemsEnabled
     }));
 
-    let filteredFarItems = farItems.map((item: any) => assign({}, item, {
+    const filteredFarItems = farItems.map((item: any) => assign({}, item, {
       iconOnly: !namesVisible,
-      icon: iconsVisible ? item.icon : ''
+      icon: iconsVisible ? item.icon : '',
+      disabled: !itemsEnabled
     }));
 
     return (
@@ -56,6 +65,14 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           checked={ iconsVisible }
           // tslint:disable-next-line:jsx-no-lambda
           onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
+          onText='Visible'
+          offText='Hidden'
+        />
+        <Toggle
+          label='Enable Items'
+          checked={ itemsEnabled }
+          // tslint:disable-next-line:jsx-no-lambda
+          onChanged={ areItemsEnabled => this.setState({ areItemsEnabled }) }
           onText='Visible'
           offText='Hidden'
         />

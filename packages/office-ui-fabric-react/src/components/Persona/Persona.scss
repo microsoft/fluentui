@@ -7,25 +7,6 @@
 // --------------------------------------------------
 // Persona styles
 
-
-//= Colors used in the initials color block
-$ms-color-initials-transparent:      transparent;
-$ms-color-initials-lightBlue:        #6BA5E7;
-$ms-color-initials-blue:             #2D89EF;
-$ms-color-initials-darkBlue:         #2B5797;
-$ms-color-initials-teal:             #00ABA9;
-$ms-color-initials-lightGreen:       #99B433;
-$ms-color-initials-green:            #00A300;
-$ms-color-initials-darkGreen:        #1E7145;
-$ms-color-initials-lightPink:        #E773BD;
-$ms-color-initials-pink:             #FF0097;
-$ms-color-initials-magenta:          #7E3878;
-$ms-color-initials-purple:           #603CBA;
-$ms-color-initials-black:            #1D1D1D;
-$ms-color-initials-orange:           #DA532C;
-$ms-color-initials-red:              #EE1111;
-$ms-color-initials-darkRed:          #B91D47;
-
 // Skype presence colors
 $ms-color-presence-available:          #7FBA00;
 $ms-color-presence-away:               #FCD116;
@@ -70,7 +51,6 @@ $ms-Persona-presenceBorder: 2px;
   height: $ms-Persona-size48;
   display: flex;
   align-items: center;
-  overflow: hidden;
 
   .contextualHost {
     display: none;
@@ -119,57 +99,10 @@ $ms-Persona-presenceBorder: 2px;
   @include high-contrast {
     border: 1px solid WindowText;
     -ms-high-contrast-adjust: none;
+    color: WindowText;
+    box-sizing: border-box;
     // Using important to override all of the more specific initialsIsColor rules
     background-color: Window !important;
-  }
-
-  &.initialsIsLightBlue {
-    background-color: $ms-color-initials-lightBlue;
-  }
-  &.initialsIsBlue {
-    background-color: $ms-color-initials-blue;
-  }
-  &.initialsIsDarkBlue {
-    background-color: $ms-color-initials-darkBlue;
-  }
-  &.initialsIsTeal {
-    background-color: $ms-color-initials-teal;
-  }
-  &.initialsIsLightGreen {
-    background-color: $ms-color-initials-lightGreen;
-  }
-  &.initialsIsGreen {
-    background-color: $ms-color-initials-green;
-  }
-  &.initialsIsDarkGreen {
-    background-color: $ms-color-initials-darkGreen;
-  }
-  &.initialsIsLightPink {
-    background-color: $ms-color-initials-lightPink;
-  }
-  &.initialsIsPink {
-    background-color: $ms-color-initials-pink;
-  }
-  &.initialsIsMagenta {
-    background-color: $ms-color-initials-magenta;
-  }
-  &.initialsIsPurple {
-    background-color: $ms-color-initials-purple;
-  }
-  &.initialsIsBlack {
-    background-color: $ms-color-initials-black;
-  }
-  &.initialsIsOrange {
-    background-color: $ms-color-initials-orange;
-  }
-  &.initialsIsRed {
-    background-color: $ms-color-initials-red;
-  }
-  &.initialsIsDarkRed {
-    background-color: $ms-color-initials-darkRed;
-  }
-  &.initialsIsTransparent {
-    background-color: $ms-color-initials-transparent;
   }
 }
 
@@ -268,7 +201,7 @@ $ms-Persona-presenceBorder: 2px;
   min-width: $ms-Persona-size10;
 }
 
-.rootIsSize10{
+.rootIsSize10 {
   .imageArea {
     overflow: visible;
     background: transparent;
@@ -332,9 +265,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 16 Persona
 //
 .root.rootIsSize16 {
-  height: $ms-Persona-size16 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size16  + $ms-Persona-presenceBorder;
-  overflow: hidden;
+  height: $ms-Persona-size16;
+  min-width: $ms-Persona-size16;
 }
 
 .rootIsSize16 {
@@ -378,8 +310,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 24 Persona
 //
 .root.rootIsSize24 {
-  height: $ms-Persona-size24 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size24 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size24;
+  min-width: $ms-Persona-size24;
 }
 
 .rootIsSize24 {
@@ -426,25 +358,23 @@ $ms-Persona-presenceBorder: 2px;
   }
 
   &.showSecondaryText {
-    height: 32px;
+    height: 36px;
 
     .primaryText,
     .secondaryText {
       display: block;
-      height: 16px;
+      height: 18px;
       line-height: 16px;
       overflow-x: hidden;
     }
   }
 }
 
-
 //== Modifier: Size 28 Persona
 //
 .root.rootIsSize28 {
-  height: $ms-Persona-size28 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size28 + $ms-Persona-presenceBorder;
-  overflow: hidden;
+  height: $ms-Persona-size28;
+  min-width: $ms-Persona-size28;
 }
 
 .rootIsSize28 {
@@ -507,8 +437,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 32 Persona
 //
 .root.rootIsSize32 {
-  height: $ms-Persona-size32 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size32 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size32;
+  min-width: $ms-Persona-size32;
 }
 
 .rootIsSize32 {
@@ -561,8 +491,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 40 Persona
 //
 .root.rootIsSize40 {
-  height: $ms-Persona-size40 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size40 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size40;
+  min-width: $ms-Persona-size40;
 }
 
 .rootIsSize40 {
@@ -592,8 +522,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 72 Persona
 //
 .root.rootIsSize72 {
-  height: $ms-Persona-size72 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size72 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size72;
+  min-width: $ms-Persona-size72;
 }
 
 .rootIsSize72 {
@@ -641,8 +571,8 @@ $ms-Persona-presenceBorder: 2px;
 //== Modifier: Size 100 Persona
 //
 .root.rootIsSize100 {
-  height: $ms-Persona-size100 + $ms-Persona-presenceBorder;
-  min-width: $ms-Persona-size100 + $ms-Persona-presenceBorder;
+  height: $ms-Persona-size100;
+  min-width: $ms-Persona-size100;
 }
 
 .rootIsSize100 {

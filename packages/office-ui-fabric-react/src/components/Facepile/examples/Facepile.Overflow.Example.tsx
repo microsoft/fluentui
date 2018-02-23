@@ -27,9 +27,10 @@ export interface IFacepileOverflowExampleState {
   overflowButtonType: OverflowButtonType;
 }
 
-export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
-  public constructor() {
-    super();
+export class FacepileOverflowExample extends React.Component<{}, IFacepileOverflowExampleState> {
+
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       displayedPersonas: 5,
@@ -38,7 +39,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
   }
 
   public render() {
-    let { displayedPersonas, overflowButtonType } = this.state;
+    const { displayedPersonas, overflowButtonType } = this.state;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;
 

@@ -66,9 +66,9 @@ export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
-export class DatePickerWeekNumbersExample extends React.Component<any, IDatePickerBasicExampleState> {
-  public constructor() {
-    super();
+export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePickerBasicExampleState> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Monday
@@ -76,7 +76,7 @@ export class DatePickerWeekNumbersExample extends React.Component<any, IDatePick
   }
 
   public render() {
-    let { firstDayOfWeek } = this.state;
+    const { firstDayOfWeek } = this.state;
 
     let calendarProps: ICalendarProps = {
       strings: DayPickerStrings,

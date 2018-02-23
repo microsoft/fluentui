@@ -11,7 +11,7 @@ import { TestImages } from '../../../common/TestImages';
 
 export class DocumentCardCompactExample extends React.Component<any, any> {
   public render() {
-    let previewProps: IDocumentCardPreviewProps = {
+    const previewProps: IDocumentCardPreviewProps = {
       getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
       previewImages: [
         {
@@ -45,7 +45,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       ],
     };
 
-    let previewPropsUsingIcon: IDocumentCardPreviewProps = {
+    const previewPropsUsingIcon: IDocumentCardPreviewProps = {
       previewImages: [
         {
           previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },

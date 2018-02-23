@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
-import { IRenderFunction } from '../../Utilities';
+import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -19,7 +20,7 @@ export interface IButton {
   dismissMenu: () => void;
 }
 
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -105,6 +106,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * how the default icon looks. Providing this in addition of onClick and setting the split property to true will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
+
+  /**
+   * Callback that runs after Button's contextualmenu was closed (removed from the DOM)
+   */
+  onAfterMenuDismiss?: () => void;
 
   /**
    * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
@@ -207,6 +213,22 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined) => IButtonClassNames;
+
+  /**
+  * Method to provide the classnames to style a button.
+  * The default value for this prop is the getClassnames func
+  * defined in BaseButton.classnames.
+  * @default getBaseSplitButtonClassNames
+  */
+  getSplitButtonClassNames?: (disabled: boolean,
+    expanded: boolean,
+    checked: boolean) => ISplitButtonClassNames;
+
+  /**
+  * Provides a custom KeyCode that can be used to open the button menu.
+  * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
+  */
+  menuTriggerKeyCode?: KeyCodes | null;
 }
 
 export enum ElementType {

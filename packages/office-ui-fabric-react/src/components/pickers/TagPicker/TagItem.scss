@@ -2,9 +2,10 @@
 
 .root {
   @include focus-border();
+  box-sizing: content-box;
   flex-shrink: 1;
   background: $ms-color-neutralLighter;
-  margin: 1px;
+  margin: 2px;
   height: 26px;
   line-height: 26px;
   cursor: default;

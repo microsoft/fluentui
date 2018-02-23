@@ -1,6 +1,553 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Dec 2017 11:24:52 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+
+## 5.53.0
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Minor changes
+
+- added support for aria-posinset and aria-setsize
+- Converting Image SCSS to MergeStyles step 1 - file structure
+- SwatchColorPicker: Improve keyboard/mouse behavior
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Converting Nav SCSS to MergeStyles step 1 - file structure
+- Converting ResizeGroup SCSS to MergeStyles step 1 - file structure
+- Converting SCSS to MergeStyles step 2 - style conversion
+- make onShouldVirtualize work for grouped list
+
+### Patches
+
+- Enable jsx-key tslint rule
+- Only apply 'pointer-events: none' to disabled Link components if there is an href 
+- Dialog: default modal props now respective (Modal rendered with light background.)
+- Buttons: moving className lower in the merge list so that it has more precedence than default rules.
+- Rating: Adding `type=button` to Rating buttons.
+
+## 5.52.0
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Minor changes
+
+- Converting SCSS to MergeStyles step 1 - file structure
+
+### Patches
+
+- Add notifyPageChange function to List
+- Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots
+- Fixes useTargetWidth prop for ContextualMenu
+- Convert overlay and examples to mergeStyles
+- DetailsList: Groups are now considered for aria-rowcount.
+
+## 5.51.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added enum for triggering menu with arrow keys and bool to allow it or not
+- Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout
+- FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this
+- Link: Update to use merge-styles
+
+### Patches
+
+- Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'
+- SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself.
+
+## 5.50.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- Add "use current input command" and remove need to explicity call focus when moving between suggestions and commands
+- Add clearButtonProps prop to SearchBox.types.ts with the IButtonPropsType. This is passed to the icon button in SearchBox.base.tsx
+- SearchBox: Fixed getStyles interface to be using ISearchBoxStyleProps instead of ISearchBoxProps
+
+### Patches
+
+- Fix bug: '#3940 Validate function works incorrect with attribute validateOnFocusOut'
+- Converted ButtonBasicExample to use mergeStyles instead of SCSS.
+- Fix ComboBox, ContextualMenu, Teachingbubble overwriting calloutProps.className
+- Fire onKeyDown for Button with menuProps
+- Fabric: Adds button overflow visible global style so that ie11 renders like edge/chrome/firefox
+- DatePicker: Fixing pointer when datepicker doesn't have a label
+- ComboBox: Add getClassNAmes prop to allow complete customization of the component
+- CalloutContent: Remove calloutWidth from calloutMain 
+- SpinButton: Add getClassNAmes prop to allow complete customization of the component
+- Fix aria-owns in contextual menu items, and add appropriate aria properties to CommandBar items.
+
+## 5.49.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Contextual Menu - adding support for aria-setsize and aria-posinset for rendering menu items that relies on the menu item's own rendering
+- Moves DatePicker label outside of hit target
+- Add name attribute to button
+
+## 5.49.2
+Mon, 12 Feb 2018 17:33:11 GMT
+
+### Patches
+
+- presence indicator does not influence layout of Persona
+
+## 5.49.1
+Mon, 12 Feb 2018 11:14:02 GMT
+
+### Patches
+
+- Fix issue where CommandBar chevron doesn't change color with rest of control when disabled
+- DetailsList: fix disappearing line when hovering on column header
+
+## 5.49.0
+Fri, 09 Feb 2018 18:11:52 GMT
+
+### Minor changes
+
+- ChoiceGroup: More flexible image field sizing, default image size, large image class.
+
+### Patches
+
+- Allowing for contextual and menus to be closed on Alt keys
+- Rating: Renamed RatingBase.tsx to Rating.base.tsx to match convention
+
+## 5.48.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.48.1
+Thu, 08 Feb 2018 02:29:26 GMT
+
+### Patches
+
+- Callout/Positioning: Fixed a bug where callout would lose alignment for some hints in rtl
+- Callout: Move positioning to inline styling
+
+## 5.48.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- SearchBox: Export base component as well as styled
+
+### Patches
+
+- Remove duplicate export of command button from the button index
+- [Spinner] Use rotateZ to stop the spinner from wiggling in IE
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+- SearchBox: minor correction in hover styles.
+
+## 5.47.0
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Minor changes
+
+- BaseAutofill: Move to it's own component
+
+### Patches
+
+- fix deselect all in suggestionsController
+- DetailsList: Adding optional callback aria-describedby for each item in DetailsList
+
+## 5.46.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [SpinButton] Implemented precision
+
+### Patches
+
+- ComboBox, Dropdown, TextField: Improved high contrast in focus state. Layout changes for ComboBox to allow for border-box sizing.
+
+## 5.45.3
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Patches
+
+- Converted ActivityItemExample to use mergeStyles instead of SCSS
+
+## 5.45.2
+Thu, 01 Feb 2018 11:23:17 GMT
+
+### Patches
+
+- Adds the _isControlled flag to the TextField component that disabled onChange if the value prop is set, which follows developer expectations with React inputs.
+- Theme Generator: fix autogenerated neutral colors
+- Fix bug in modal selection handling
+- added return default when reaching the html tag in while loop inside _getBackground() inside Sticky component.
+
+## 5.45.1
+Wed, 31 Jan 2018 11:11:59 GMT
+
+### Patches
+
+- swatch color picker - add ability to add aria-label
+- ChoiceGroup: Wrap long text for image and icon types.
+- updating willReceiveProps of date picker to not run validation unless the props actually changed
+- ComboBox: ComboBoxes were changed to always expand which is incorrect behavior, fixing to align with the correct design
+- ContextualMenu: Remove the list in the menu and move the aria-label/labelledby to the correct element
+- TextField: fixed whitespace wrapping with prefix/suffix.
+- Fixing the up and down arrows position and behavior according to RTL expected behavior
+- Removed unused scss file in Sticky component
+
+## 5.45.0
+Tue, 30 Jan 2018 11:22:56 GMT
+
+### Minor changes
+
+- Added prop to ComboBox to control its button's aria-hidden attribute
+
+### Patches
+
+-  Fix TeachingBubble dismiss on scroll by passing onDismiss to callout.
+
+## 5.44.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add work week date range type and update calendar and calendarDay components to consume it
+- Added onRenderCoin prop that controls the persona coin image
+
+### Patches
+
+- Combox box: added accessibility changes added a title and changed activedescendant to use focused element
+- Callout/Popup: Fix a bug where callout doesn't have the correct overflow style"
+- setting people picker default size back to 28 from 24
+- Add private _defaultCalloutProps instead of public defaultProps to set calloutProps.
+
+## 5.43.1
+Fri, 26 Jan 2018 11:25:22 GMT
+
+### Patches
+
+- SplitButton - added aria support for button in split buttons and the whole container
+- Dropdown, Checkbox: Fix disabled Dropdown options and update Checkbox disabled styles
+- Persona: Changed text and root heights for size24 when secondary text is shown.
+- TextField, Pickers, PeoplePicker: Homogenizing input heights and colors
+
+## 5.43.0
+Thu, 25 Jan 2018 11:23:07 GMT
+
+### Minor changes
+
+- Callout: Convert component to JS Styling
+- Added onFocus state Boolean to BasePicker
+
+### Patches
+
+- spin button - add aria label for decrement and increment buttons
+- Pickers: Fixing errors occuring onBlur of limited pickers
+- Fixed broken links on documentation pages
+- Pickers: Aligning suggestions callout to the correct RTL position
+
+## 5.42.0
+Wed, 24 Jan 2018 11:23:26 GMT
+
+### Minor changes
+
+- ResizeGroup: Add the ability for ResizeGroup to get divProps
+- Enhance Panel component props to allow all of FocusTrapZone props overrides.
+
+### Patches
+
+- BaseAutoFill: Fixed a bug where baseautofill would not work with composed languages like Japanese
+- Dropdown: Align error message styling to TextField. TextField & ComboBox: Updated invalid input border color to be red in all states.
+- TextField and SearchBox: Specified placeholder text color to be more consistent across browsers.
+- Prevent default to avoid setting focus on SplitButton menu button
+- Fix CalendarDay RTL view
+
+## 5.41.2
+Tue, 23 Jan 2018 11:22:12 GMT
+
+### Patches
+
+- Fixed SuggestionsController method convertSuggestionsToSuggestionItems to handle BasePicker createGenericItem correctly
+
+## 5.41.1
+Mon, 22 Jan 2018 18:39:02 GMT
+
+### Patches
+
+- [FocusTrapZone] Text selection inside FocusTrapZone was broken. This brings it back
+- fix hover card dismiss issue
+
+## 5.41.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Add a context value under ResizeGroup to allow child components to detect whether they are being used only for measurement.
+- MessageBar: New prop to allow singleline text with no action buttons to be truncated.
+
+### Patches
+
+- Address issue #1535 - Calendar: Change clickable spans to buttons.
+- updated divider color to be more visible
+- Hovercard: Changed content keydown listener to element event binding
+- MessageBar: scss refactor and component polish.
+
+## 5.40.2
+Fri, 19 Jan 2018 11:14:03 GMT
+
+### Patches
+
+- added smallInputBorder semantic slots and updated checkbox, choicegroup, and toggle to use it.
+- Add classNames and style the hidden input inside the ChoiceGroup image and icon variants so the Narrator highlights it correctly. 
+- Datepicker: Fix so calendar doesn't open when clicking icon when DatePicker is disabled
+- Persona: Fix a bug where space would be taken even though there was no secondary text
+- Changes in Week Number Computation logic for FirstFourDayWeek setting to fix issue 3119
+
+## 5.40.1
+Thu, 18 Jan 2018 11:21:56 GMT
+
+### Patches
+
+- BasePicker: Fix accessibility bug where it always has aria-expanded=true
+- Calculate overflow manually to determine if Callout needs a scrollbar
+- Update .npmignore to publish all examples
+
+## 5.40.0
+Wed, 17 Jan 2018 11:11:25 GMT
+
+### Minor changes
+
+- DatePicker: Default selectedDate should be undefined, not new Date()
+- DatePicker: Add an initialPickerDate property
+- Icon: the `ms-Icon` class name, despite being unused, is causing conflicts with fabric-core usage inadvertently. There isn't a great way to deal with this other than to avoid re-using the `ms-Icon` class name.
+- ProgressIndicator: Adding indeterminate progress variant.
+
+### Patches
+
+- Pickers: Fixed border clipping of tag item in high-contrast mode
+- Escape key shouldn't propagate in combo box if it isn't open
+
+## 5.39.1
+Fri, 12 Jan 2018 20:03:22 GMT
+
+### Patches
+
+- Checkbox and ChoiceGroup: New resting state border color.
+
+## 5.39.0
+Wed, 10 Jan 2018 11:23:36 GMT
+
+### Minor changes
+
+- Rating: Convert to getstyles
+
+### Patches
+
+- Add auto expand on focus for Combobox
+- Callout/Positioning: Fix a bug where callouts would position incorrectly if the target was  an HTMLImg element
+
+## 5.38.1
+Mon, 08 Jan 2018 11:13:51 GMT
+
+### Patches
+
+- Contextual Menu submenus that have no items will have chevron icon and call onMenuOpened
+- CommandBar: Allow disabled anchor and text items
+- Rating: Set default active element and fixed focusability
+
+## 5.38.0
+Fri, 05 Jan 2018 11:14:58 GMT
+
+### Minor changes
+
+- Added a customizable onDismiss to the BasePicker
+
+### Patches
+
+- ToolTop: Changed ToolTipHost to inline-block
+- ContextualMenu: Added styling for disabled icon"
+
+## 5.37.0
+Wed, 03 Jan 2018 11:23:12 GMT
+
+### Minor changes
+
+- TextField: Allows user to provide the `autocomplete` prop.
+- Added optional callback for getting image load state change events from personacoin through Persona component
+
+### Patches
+
+- add unmount check in suggestion promise
+
+## 5.36.0
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Minor changes
+
+- SearchBox: Converted component to getStyles
+
+### Patches
+
+- SearchBox: moved className into styles file and added it to styles interface
+
+## 5.35.2
+Mon, 25 Dec 2017 11:13:32 GMT
+
+### Patches
+
+- SpinButton: Fix falsey check for value so custom handlers work even if value is 0
+
+## 5.35.1
+Fri, 22 Dec 2017 11:10:56 GMT
+
+### Patches
+
+- Callout: Fix opacity when class name has animation that involves opacity
+- Calendar: Fix scrollbar when today button is added to overlayed calendars
+
+## 5.35.0
+Thu, 21 Dec 2017 11:23:03 GMT
+
+### Minor changes
+
+- Grid: Enable styling customization to grid through getStyles
+
+### Patches
+
+- Fixed persona import paths
+
+## 5.34.3
+Wed, 20 Dec 2017 11:21:48 GMT
+
+### Patches
+
+- HoverCard: fixing detection of if expanded scrolling is needed
+
+## 5.34.2
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Persona: Set initials color for high contrast mode.
+- Broaden the range of allowed prop-type versions
+
+## 5.34.1
+Mon, 18 Dec 2017 11:22:54 GMT
+
+### Patches
+
+- respect className for PersonaCoin
+
+## 5.34.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme happy.
+
+## 5.33.1
+Fri, 15 Dec 2017 11:22:38 GMT
+
+### Patches
+
+- Only perform list measurements if we absolutely need to
+- Link: Improved selectors to fix pressed state.
+- Fixes bug with GroupedList losing focus sometimes when item gets removed from list
+
+## 5.33.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- Add remeasure public method to ResizeGroup
+
+### Patches
+
+- ComboBox: Fix some issues with submitting values when freeform and autocomplete
+- Reversing the order of :focus and :active selectors for comboBox options.
+- Panel: Don't render Overlay unless Panel prop isOpen is true
+
+## 5.32.0
+Wed, 13 Dec 2017 04:06:51 GMT
+
+### Minor changes
+
+- BaseButton:onAfterMenuDismiss
+
+### Patches
+
+- ContextualMenu: Undo change to manually set the scrollbar
+- Link: Fixed state styling for the component and its documented examples.
+- Fix dropdown focus issue for IE
+
+## 5.31.2
+Tue, 12 Dec 2017 11:25:08 GMT
+
+### Patches
+
+- Fix DetailsList onRenderMissingItem not rendering the missing item
+
+## 5.31.1
+Tue, 12 Dec 2017 03:55:03 GMT
+
+### Patches
+
+- BaseButton: Explicitly dismiss the menu when the contextual menu is dismissed rather than calling toggleMEnu
+
+## 5.31.0
+Tue, 12 Dec 2017 02:08:36 GMT
+
+### Minor changes
+
+- List: Support ghosting
+
+### Patches
+
+- remove customized dismiss function in HoverCard
+- ComboBox: Add onMenuDismiss prop
+- ActivityItem: Snapshot and Screener tests added
+
+## 5.30.2
+Fri, 08 Dec 2017 21:30:54 GMT
+
+### Patches
+
+- ComboBox:Make sure currentOtions has values before attempt to get values out of it
+
+## 5.30.1
+Fri, 08 Dec 2017 18:09:44 GMT
+
+### Patches
+
+- ComboBox: change when focus is set back to the input to make sure it doesn't  steal focus from somewhere else
+- Added checks to BasePicker if input is null.
+- ContextualMenu: properly observe deprecated `isDisabled` property (until we remove the property)
+
+## 5.30.0
+Thu, 07 Dec 2017 03:44:42 GMT
+
+### Minor changes
+
+- BaseButton: Expose getSplitButtonClassNames func as a prop to be able to override it.
+
+### Patches
+
+- ComboBox: Update onBlur to do nothing if the event came from an element inside of the  comboBox
+
+## 5.29.5
+Wed, 06 Dec 2017 23:00:38 GMT
+
+### Patches
+
+- Persona: Allow for consumers to provide custom colors
+- ComboBox: Update scrolling behavior to behave as expected
+
+## 5.29.4
+Wed, 06 Dec 2017 17:38:45 GMT
+
+### Patches
+
+- Contextual Menu: made it so we can tab through items
 
 ## 5.29.3
 Wed, 06 Dec 2017 11:24:52 GMT

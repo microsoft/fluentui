@@ -18,6 +18,10 @@ describe('mergeStyles', () => {
     setRTL(false);
   });
 
+  it('can register the same static class twice', () => {
+    expect(mergeStyles('a', 'a')).toEqual('a');
+  });
+
   it('can register left', () => {
     mergeStyles({ left: 10 });
     expect(_stylesheet.getRules()).toEqual('.css-0{left:10px;}');
@@ -73,6 +77,22 @@ describe('mergeStyles', () => {
     expect(_stylesheet.getRules()).toEqual(
       '.css-0{background:red;}' +
       '.css-1{background:green;}'
+    );
+  });
+
+  it('can register media queries', () => {
+    mergeStyles({
+      background: 'red',
+      selectors: {
+        '@media screen and (max-width: 100px)': {
+          background: 'green'
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:red;}' +
+      '@media screen and (max-width: 100px){.css-0{background:green;}}'
     );
   });
 
