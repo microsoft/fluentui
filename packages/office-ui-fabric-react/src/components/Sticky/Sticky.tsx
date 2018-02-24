@@ -130,7 +130,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const isSticky = isStickyTop || isStickyBottom;
 
     return (
-      <div ref={ this._resolveRef('_root') }>
+      <div ref={ this._resolveRef('root') }>
         <div style={ { height: (isSticky ? placeholderHeight : 0) } } />
       </div>
     );
