@@ -2,6 +2,55 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.55.1",
+      "tag": "office-ui-fabric-react_v5.55.1",
+      "date": "Sat, 24 Feb 2018 05:10:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Henry <adhe223@g.uky.edu>",
+            "commit": "38a629f83d0730e20ccd5743c571a3cc74ea9fcd",
+            "comment": "Fix SplitButton rendering issue in ContextualMenu"
+          },
+          {
+            "author": "Mike Pateras <35780775+paterasMSFT@users.noreply.github.com>",
+            "commit": "f803791c522390bd2f0ebaedf628f5dc1d679332",
+            "comment": "ComboBox: Added property to set ComboBox's button's data-is-focusable attribute."
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "bd4d47d624f37dceb935c6da3575e1faff30e344",
+            "comment": "ContextualMenu: Import ContextualMenuUtility/index directly instead of folder. "
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "d2c5b2408050c0d4e6e844fda09ec4549e4a81d1",
+            "comment": "[Focus] Enable focus forceIntoFirstElement parameter"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "0194f8aeb81cfd6b0a301034bf7a409cc6031568",
+            "comment": "[DetailsList] Fixed test by mocking visiblity"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "c5029640480d565cc1774046f8003095f68a368b",
+            "comment": "[ContextualMenu] Disabled buttons are focusable"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b2177a5c35ad305cc305d002c59a7f1a9b96f35e",
+            "comment": "Convert Check to mergeStyles"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c5f5b4b4abf089fb415203a27c9ef9f5e8d62394",
+            "comment": "Button: reverting previous tweak to fix ComboBox dropdown selection styling."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.55.0",
       "tag": "office-ui-fabric-react_v5.55.0",
       "date": "Fri, 23 Feb 2018 03:05:53 GMT",

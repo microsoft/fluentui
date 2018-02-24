@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Feb 2018 03:05:53 GMT and should not be manually modified.
+This log was last generated on Sat, 24 Feb 2018 05:10:14 GMT and should not be manually modified.
+
+## 5.55.1
+Sat, 24 Feb 2018 05:10:13 GMT
+
+### Patches
+
+- Fix SplitButton rendering issue in ContextualMenu
+- ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.
+- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder. 
+- [Focus] Enable focus forceIntoFirstElement parameter
+- [DetailsList] Fixed test by mocking visiblity
+- [ContextualMenu] Disabled buttons are focusable
+- Convert Check to mergeStyles
+- Button: reverting previous tweak to fix ComboBox dropdown selection styling.
 
 ## 5.55.0
 Fri, 23 Feb 2018 03:05:53 GMT
