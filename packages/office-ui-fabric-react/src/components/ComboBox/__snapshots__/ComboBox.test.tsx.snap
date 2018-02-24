@@ -163,8 +163,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       checked={false}
       className=
           ms-Button
-          ms-Button--icon
           ms-ComboBox-CaretDown-button
+          ms-Button--icon
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;

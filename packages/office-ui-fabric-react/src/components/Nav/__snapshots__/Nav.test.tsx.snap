@@ -81,9 +81,9 @@ exports[`Nav renders Nav correctly 1`] = `
                 aria-pressed={undefined}
                 className=
                     ms-Button
+                    ms-Nav-link
                     ms-Button--action
                     ms-Button--command
-                    ms-Nav-link
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -128,6 +128,10 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #f8f8f8;
+                      color: #333333;
+                    }
                     &:hover {
                       color: #0078d7;
                     }
@@ -139,10 +143,6 @@ exports[`Nav renders Nav correctly 1`] = `
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
-                    }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
                     }
                 data-is-focusable={true}
                 disabled={undefined}
