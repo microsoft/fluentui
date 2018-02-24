@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./CommandBar.Example.scss');
+import * as styles from './CommandBar.Example.scss';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface ISplitDropDownButtonState {
@@ -55,13 +55,13 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
 
   @autobind
   private _renderSplitButtonMenuItem(item: IContextualMenuItem) {
-    let darkerBG = this.state.isContextMenuShown && styles.darkerBG;
+    const darkerBG = this.state.isContextMenuShown && styles.darkerBG;
 
-    let dropDownButtonClass = css(
+    const dropDownButtonClass = css(
       styles.button,
       darkerBG
     );
-    let mainBtnClassName = css(
+    const mainBtnClassName = css(
       !item.name && ('ms-CommandBarItem--noName'),
       styles.button,
       darkerBG

@@ -13,12 +13,15 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "preserveConstEnums": true,
     "lib": [
       "es2017",
       "dom"
     ],
     "types": [
-      "webpack-env"
+      "jest",
+      "webpack-env",
+      "react"
     ],
     "paths": {
       "@uifabric/styling": [

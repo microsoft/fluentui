@@ -10,8 +10,8 @@ export interface ICheckboxBasicExampleState {
 }
 
 export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExampleState> {
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       isChecked: false
@@ -21,7 +21,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   }
 
   public render() {
-    let { isChecked } = this.state;
+    const { isChecked } = this.state;
 
     return (
       <div>

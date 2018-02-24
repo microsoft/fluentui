@@ -1,8 +1,14 @@
 import * as React from 'react';
 import './ThemeGeneratorPage.scss';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  BaseComponent,
+  autobind
+} from 'office-ui-fabric-react/lib/Utilities';
 
-import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import {
+  loadTheme,
+  createTheme
+} from 'office-ui-fabric-react/lib/Styling';
 import {
   IColor,
   getContrastRatio,
@@ -39,14 +45,14 @@ export interface IThemeGeneratorPageState {
 const BackgroundImageUriKey = 'backgroundImageUri';
 const BackgroundOverlayKey = 'backgroundOverlay';
 
-export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPageState> {
-
+export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageState> {
+  private _semanticSlotColorChangeTimeout: number;
   private _imgUrl: string;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
-    let themeRules = themeRulesStandardCreator();
+    const themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
     this.state = {
@@ -59,7 +65,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
   public componentWillUnmount(): void {
     // remove temp styles
-    let root = document.querySelector('.App-content') as HTMLElement;
+    const root = document.querySelector('.App-content') as HTMLElement;
     if (root) {
       root.style.backgroundColor = '';
       root.style.color = '';
@@ -68,15 +74,15 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     document.body.style.color = '';
 
     // and apply the default theme to overwrite any existing custom theme
-    let themeRules = themeRulesStandardCreator();
+    const themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules, false);
     loadTheme({ palette: themeRules });
   }
 
   public render() {
-    let { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
+    const { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
-    let fabricThemeSlots =
+    const fabricThemeSlots =
       [this._fabricSlotWidget(FabricSlots.themeDarker),
       this._fabricSlotWidget(FabricSlots.themeDark),
       this._fabricSlotWidget(FabricSlots.themeDarkAlt),
@@ -86,14 +92,15 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       this._fabricSlotWidget(FabricSlots.themeLight),
       this._fabricSlotWidget(FabricSlots.themeLighter),
       this._fabricSlotWidget(FabricSlots.themeLighterAlt)];
-    let fabricNeutralForegroundSlots =
+    const fabricNeutralForegroundSlots =
       [this._fabricSlotWidget(FabricSlots.black),
       this._fabricSlotWidget(FabricSlots.neutralDark),
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
+      this._fabricSlotWidget(FabricSlots.neutralPrimaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
       this._fabricSlotWidget(FabricSlots.neutralTertiary)
       ];
-    let fabricNeutralBackgroundSlots =
+    const fabricNeutralBackgroundSlots =
       [this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralQuaternary),
       this._fabricSlotWidget(FabricSlots.neutralQuaternaryAlt),
@@ -133,7 +140,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           <Callout
             key={ colorPickerSlotRule.name }
             gapSpace={ 10 }
-            targetElement={ colorPickerElement }
+            target={ colorPickerElement }
             setInitialFocus={ true }
             onDismiss={ this._colorPickerOnDismiss }
           >
@@ -239,7 +246,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
 
     if (this._imgUrl) {
-      let xhr = new XMLHttpRequest();
+      const xhr = new XMLHttpRequest();
       xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
       // you may need to change the URL here
       xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
@@ -249,7 +256,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       xhr.send('{ "url": "' + this._imgUrl + '" }');
     } else {
       // remove related properties from theme
-      let { themeRules } = this.state;
+      const { themeRules } = this.state;
       if (themeRules.hasOwnProperty(BackgroundImageUriKey)) {
         delete themeRules[BackgroundImageUriKey];
       }
@@ -295,38 +302,37 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         return '#fff';
       };
 
-      let { themeRules } = this.state;
+      const { themeRules } = this.state;
       const bgColor = getHexFromColor(response.color.dominantColorBackground, true);
-      const bgColorIsDark = isDark(getColorFromString(bgColor));
+      const bgColorIsDark = isDark(getColorFromString(bgColor)!);
       ThemeGenerator.setSlot(
         themeRules[BaseSlots[BaseSlots.backgroundColor]],
         bgColor,
-        themeRules,
         bgColorIsDark,
         true,
         true);
       ThemeGenerator.setSlot(
         themeRules[BaseSlots[BaseSlots.primaryColor]],
         '#' + response.color.accentColor,
-        themeRules,
         bgColorIsDark,
         true,
         true);
       ThemeGenerator.setSlot(
         themeRules[BaseSlots[BaseSlots.foregroundColor]],
         getHexFromColor(response.color.dominantColorForeground, false),
-        themeRules,
         bgColorIsDark,
         true,
         true);
 
       themeRules[BackgroundImageUriKey] = {
         name: BackgroundImageUriKey,
-        value: 'url(\'' + this._imgUrl + '\')'
+        value: 'url(\'' + this._imgUrl + '\')',
+        dependentRules: []
       };
       themeRules[BackgroundOverlayKey] = {
         name: BackgroundOverlayKey,
-        color: updateA((themeRules[BaseSlots[BaseSlots.backgroundColor]]).color!, 50)
+        color: updateA((themeRules[BaseSlots[BaseSlots.backgroundColor]]).color!, 50),
+        dependentRules: []
       };
 
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
@@ -343,15 +349,22 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
   @autobind
   private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
-    let { themeRules } = this.state;
+    if (this._semanticSlotColorChangeTimeout) {
+      clearTimeout(this._semanticSlotColorChangeTimeout);
+    }
+    this._semanticSlotColorChangeTimeout = this._async.setTimeout(() => {
+      const { themeRules } = this.state;
 
-    ThemeGenerator.setSlot(slotRule, color, themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
-    this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      ThemeGenerator.setSlot(slotRule, color, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+    }, 20);
+    // 20ms is low enough that you can slowly drag to change color and see that theme,
+    // but high enough that quick changes don't get bogged down by a million changes inbetween
   }
 
   @autobind
   private _onSwatchClick(slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>) {
-    let { colorPickerSlotRule, colorPickerElement } = this.state;
+    const { colorPickerSlotRule, colorPickerElement } = this.state;
 
     if (colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && !!colorPickerElement && colorPickerSlotRule === slotRule && colorPickerElement === ev.target) { // same one, close it
       this.setState({ colorPickerVisible: false, colorPickerSlotRule: null, colorPickerElement: null });
@@ -393,11 +406,11 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
   @autobind
   private _accessibilityRow(foreground: FabricSlots, background: FabricSlots) {
-    let themeRules = this.state.themeRules;
-    let bgc: IColor = themeRules[FabricSlots[background]].color!;
-    let fgc: IColor = themeRules[FabricSlots[foreground]].color!;
+    const themeRules = this.state.themeRules;
+    const bgc: IColor = themeRules[FabricSlots[background]].color!;
+    const fgc: IColor = themeRules[FabricSlots[foreground]].color!;
 
-    let contrastRatio = getContrastRatio(bgc, fgc);
+    const contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
     contrastRatioString = contrastRatioString.substr(0, contrastRatioString.indexOf('.') + 3);
     if (contrastRatio < 4.5) {
@@ -418,14 +431,22 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     const themeRules = this.state.themeRules;
 
     // strip out the unnecessary shade slots from the final output theme
-    let abridgedTheme: IThemeRules = {};
-    for (let ruleName in themeRules) {
+    const abridgedTheme: IThemeRules = {};
+    for (const ruleName in themeRules) {
       if (themeRules.hasOwnProperty(ruleName)) {
         if (ruleName.indexOf('ColorShade') === -1 && ruleName !== 'primaryColor' && ruleName !== 'backgroundColor' && ruleName !== 'foregroundColor') {
           abridgedTheme[ruleName] = themeRules[ruleName];
         }
       }
     }
+
+    const themeAsJson = ThemeGenerator.getThemeAsJson(abridgedTheme);
+
+    // todo: need to start outputting the real ITheme object:
+    /* createTheme({
+      palette: ThemeGenerator.getThemeAsJson(abridgedTheme),
+      semanticColors: ThemeGenerator.getThemeAsJson(abridgedTheme)
+    }) */
 
     return (
       <div>
@@ -462,36 +483,50 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
   @autobind
   private _makeNewTheme() {
-    let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+    const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
 
-    let root = document.querySelector('.App-content') as HTMLElement;
+    const finalTheme = loadTheme({
+      ...{ palette: themeAsJson },
+      isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+    });
+
+    const root = document.querySelector('.App-content') as HTMLElement;
     if (root) {
-      root.style.backgroundColor = themeAsJson.backgroundColor;
-      root.style.color = themeAsJson.bodyText;
+      root.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
+      root.style.color = finalTheme.semanticColors.bodyText;
     }
-    document.body.style.backgroundColor = themeAsJson.backgroundColor;
-    document.body.style.color = themeAsJson.bodyText;
-    loadTheme({ palette: themeAsJson });
+
+    document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
+    document.body.style.color = finalTheme.semanticColors.bodyText;
+    console.log('New theme:', finalTheme);
   }
 
   @autobind
   private _baseColorSlotPicker(baseSlot: BaseSlots, title: string) {
+    let colorChangeTimeout: number;
+
     function _onColorChanged(newColor: string) {
-      let themeRules = this.state.themeRules;
-      const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-      ThemeGenerator.setSlot(
-        themeRules[BaseSlots[baseSlot]],
-        newColor,
-        themeRules,
-        currentIsDark,
-        true,
-        true);
-      if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
-        // isInverted got swapped, so need to refresh slots with new shading rules
-        ThemeGenerator.insureSlots(themeRules, !currentIsDark);
+      if (colorChangeTimeout) {
+        clearTimeout(colorChangeTimeout);
       }
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      colorChangeTimeout = this._async.setTimeout(() => {
+        const themeRules = this.state.themeRules;
+        const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
+        ThemeGenerator.setSlot(
+          themeRules[BaseSlots[baseSlot]],
+          newColor,
+          currentIsDark,
+          true,
+          true);
+        if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
+          // isInverted got swapped, so need to refresh slots with new shading rules
+          ThemeGenerator.insureSlots(themeRules, !currentIsDark);
+        }
+        this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      }, 20);
+      // 20ms is low enough that you can slowly drag to change color and see that theme,
+      // but high enough that quick changes don't get bogged down by a million changes inbetween
     }
 
     return (

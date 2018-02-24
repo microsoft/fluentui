@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { DefaultButton, Link, MessageBar, IMessageBarProps, MessageBarType } from 'office-ui-fabric-react';
+import { MessageBarButton, Link, MessageBar, IMessageBarProps, MessageBarType } from 'office-ui-fabric-react';
 
 let noop = (): void => { /**/ };
 // tslint:disable-next-line:max-line-length
@@ -25,12 +25,14 @@ storiesOf('MessageBar', module)
   .add('Root', () => (<MessageBar>Info/default message bar. { link }</MessageBar>))
   .add('Root dismiss', () => (
     <MessageBar onDismiss={ noop }>Info/default message bar. { link }</MessageBar>))
+  .add('Root truncated', () => (
+    <MessageBar truncated={ true } isMultiline={ false }>Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris. { link }</MessageBar>))
   .add('Root actions', () => (
     <MessageBar
       actions={
         <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
+          <MessageBarButton>Yes</MessageBarButton>
+          <MessageBarButton>No</MessageBarButton>
         </div>
       }
     >Info/default message bar. { link }

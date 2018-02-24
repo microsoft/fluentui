@@ -1,22 +1,20 @@
-// Polyfills
-import 'es6-weak-map/implement';
-import 'es6-map/implement';
+/** Jest test setup file. */
 
-/**
- * This is a test entry point to help karma-webpack find all tests in the project.
- **/
+import { setIconOptions } from 'office-ui-fabric-react/lib/Styling';
+import { configure } from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 
-import { initializeIcons } from '@uifabric/icons/lib/index';
+// Suppress icon warnings.
+setIconOptions({
+  disableWarnings: true
+});
 
-console.log('initializing icons');
-initializeIcons('dist/');
+// Mock requestAnimationFrame for React 16+.
+declare const global: { requestAnimationFrame: (cb: () => void) => void };
 
-// Before loading modules, treat errors and warnings as test failures.
-console.error = console.warn = (warning: string) => {
-  throw new Error(warning);
+global.requestAnimationFrame = (callback: () => void) => {
+  setTimeout(callback, 0);
 };
 
-const testContext = require.context('..', true, /.+\.test\.js?$/);
-
-testContext.keys().forEach(testContext);
-module.exports = testContext;
+// Configure enzyme.
+configure({ adapter: new Adapter() });

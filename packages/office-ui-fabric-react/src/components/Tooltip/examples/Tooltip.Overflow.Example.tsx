@@ -25,6 +25,7 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
     };
   }
 
+  // tslint:disable:jsx-no-lambda
   public render() {
     return (
       <div>

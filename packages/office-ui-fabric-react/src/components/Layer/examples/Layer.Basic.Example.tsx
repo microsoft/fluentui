@@ -2,15 +2,16 @@ import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import * as PropTypes from 'prop-types';
 import './Layer.Example.scss';
 import '../../../common/_exampleStyles.scss';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind, BaseComponent } from '../../../Utilities';
+import { Checkbox } from '../../../Checkbox';
+import { Layer } from '../Layer';
 import { AnimationClassNames } from '../../../Styling';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class LayerContentExample extends BaseComponent<any, any> {
+export class LayerContentExample extends BaseComponent<{}, {
+  time: string
+}> {
   public static contextTypes = {
     message: PropTypes.string
   };
@@ -19,8 +20,8 @@ export class LayerContentExample extends BaseComponent<any, any> {
     message: string;
   };
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       time: new Date().toLocaleTimeString()
     };
@@ -40,14 +41,16 @@ export class LayerContentExample extends BaseComponent<any, any> {
     );
   }
 }
-export class LayerBasicExample extends BaseComponent<any, any> {
+export class LayerBasicExample extends BaseComponent<{}, {
+  showLayer: boolean;
+}> {
 
   public static childContextTypes = {
     message: PropTypes.string
   };
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
     this.state = {
       showLayer: false
     };
@@ -60,7 +63,7 @@ export class LayerBasicExample extends BaseComponent<any, any> {
   }
 
   public render() {
-    let { showLayer } = this.state;
+    const { showLayer } = this.state;
 
     return (
       <div>

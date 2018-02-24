@@ -4,7 +4,7 @@ import {
   IGroup,
   IGroupDividerProps
 } from 'office-ui-fabric-react/lib/components/GroupedList/index';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
 import { FontClassNames } from '../../../Styling';
@@ -13,10 +13,11 @@ import './GroupedList.Custom.Example.scss';
 let _items: any[];
 let _groups: IGroup[];
 
-export class GroupedListCustomExample extends React.Component<any, any> {
+export class GroupedListCustomExample extends React.Component {
+  private _groupedList: GroupedList;
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     _items = _items || createListItems(20);
     _groups = createGroups(4, 0, 0, 5);
@@ -25,7 +26,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
   public render() {
     return (
       <GroupedList
-        ref='groupedList'
+        ref={ this._createGroupedListRef }
         items={ _items }
         onRenderCell={ this._onRenderCell }
         groupProps={
@@ -37,6 +38,11 @@ export class GroupedListCustomExample extends React.Component<any, any> {
         groups={ _groups }
       />
     );
+  }
+
+  @autobind
+  private _createGroupedListRef(groupedList: GroupedList) {
+    this._groupedList = groupedList;
   }
 
   private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {

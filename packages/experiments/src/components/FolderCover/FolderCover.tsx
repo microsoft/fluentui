@@ -1,9 +1,9 @@
 
 import * as React from 'react';
-import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.Props';
+import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.types';
 import { ISize, css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
-import * as SignalStylesModule from '../signals/Signals.scss';
+import * as SignalStylesModule from '../signals/Signal.scss';
 
 // tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
@@ -40,7 +40,6 @@ const SIZES: {
 const ASSETS: {
   [P in FolderCoverSize]: {
     [T in FolderCoverType]: {
-      shadow: string;
       back: string;
       front: string;
     };
@@ -48,26 +47,22 @@ const ASSETS: {
 } = {
     small: {
       default: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultfront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_frontplate_thumbnail.svg` // Yes, it's mis-named.
       },
       media: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotoback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotosfront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons//folder-small_frontplate_nopreview.svg` // Yes, it's mis-named
       }
     },
     large: {
       default: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultfront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_frontplate_nopreview.svg`
       },
       media: {
-        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
-        back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotoback.png`,
-        front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotofront.png`
+        back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
+        front: `${ASSET_CDN_BASE_URL}/foldericons//folder-large_frontplate_thumbnail.svg`
       }
     }
   };
@@ -79,6 +74,9 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       folderCoverType: type = 'default',
       hideContent = false,
       ref,
+      metadata,
+      signal,
+      children,
       ...divProps
     } = this.props;
 
@@ -97,19 +95,14 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       >
         <img
           aria-hidden={ true }
-          className={ css('ms-FolderCover-shadow', FolderCoverStyles.shadow) }
-          src={ assets.shadow }
-        />
-        <img
-          aria-hidden={ true }
           className={ css('ms-FolderCover-back', FolderCoverStyles.back) }
           src={ assets.back }
         />
         {
-          this.props.children ? (
+          children ? (
             <span className={ css('ms-FolderCover-content', FolderCoverStyles.content) }>
               <span className={ css('ms-FolderCover-frame', FolderCoverStyles.frame) }>
-                { this.props.children }
+                { children }
               </span>
             </span>
           ) : null
@@ -120,19 +113,19 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           src={ assets.front }
         />
         {
-          this.props.signal ?
+          signal ?
             (
               <span className={ css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark) }>
-                { this.props.signal }
+                { signal }
               </span>
             ) :
             null
         }
         {
-          this.props.metadata ?
+          metadata ?
             (
               <span className={ css('ms-FolderCover-metadata', FolderCoverStyles.metadata) }>
-                { this.props.metadata }
+                { metadata }
               </span>
             ) :
             null

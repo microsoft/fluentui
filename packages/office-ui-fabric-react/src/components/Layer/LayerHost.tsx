@@ -3,10 +3,8 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import {
-  Layer
-} from './Layer';
-import { ILayerHostProps } from './LayerHost.Props';
+import { LayerBase } from './Layer.base';
+import { ILayerHostProps } from './LayerHost.types';
 
 export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
 
@@ -15,11 +13,11 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
   }
 
   public componentDidMount() {
-    Layer.notifyHostChanged(this.props.id!);
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
   public componentWillUnmount() {
-    Layer.notifyHostChanged(this.props.id!);
+    LayerBase.notifyHostChanged(this.props.id!);
   }
 
   public render() {

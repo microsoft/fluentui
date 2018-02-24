@@ -1,6 +1,179 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 27 Sep 2017 00:20:58 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+
+## 5.13.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true
+
+## 5.12.1
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- fix bug in IE that IE does not support Number.IsInteger
+
+## 5.12.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added a triangle abstraction class
+
+### Patches
+
+- Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found
+
+## 5.11.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling.
+
+## 5.10.3
+Tue, 13 Feb 2018 11:24:05 GMT
+
+### Patches
+
+- Export IClassNames fro Utilities for creating private getClassNames methods
+
+## 5.10.2
+Thu, 08 Feb 2018 11:13:51 GMT
+
+### Patches
+
+- Return empty initials for phone numbers
+
+## 5.10.1
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Fixing direct reference to @uifabric/utilities/lib from ResizeGroup
+
+## 5.10.0
+Mon, 05 Feb 2018 11:24:23 GMT
+
+### Minor changes
+
+- [Math] implemented precision rounding functions
+
+## 5.9.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add work week date range type and update date math getDateRangeArray to consume it, add unit tests
+
+## 5.8.0
+Fri, 26 Jan 2018 11:25:22 GMT
+
+### Minor changes
+
+- IBaseProps: typings adjusted to be less restrictive and compatible with strict mode.
+
+## 5.7.1
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Patches
+
+- Set timeout ids to null for cancel and flush functions
+
+## 5.7.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Adding a helper component to inject context values
+
+## 5.6.1
+Tue, 19 Dec 2017 11:22:47 GMT
+
+### Patches
+
+- Broaden the range of allowed prop-type versions
+
+## 5.6.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+## 5.5.0
+Tue, 28 Nov 2017 02:24:21 GMT
+
+### Minor changes
+
+- Moving `styled` and `getClassNameFunction` out of styling to utilities.
+
+## 5.4.0
+Mon, 13 Nov 2017 11:20:56 GMT
+
+### Minor changes
+
+- BaseComponent: fixing some typings to be compatible with current React typings.
+
+## 5.3.3
+Fri, 10 Nov 2017 17:09:36 GMT
+
+### Patches
+
+- Object: getId: updated so it will correctly return a string rather than an  int
+
+## 5.3.2
+Wed, 08 Nov 2017 11:11:27 GMT
+
+### Patches
+
+- This PR addresses #3226 by removing the automatic call to `setPeriodicReset`. Now it is only called when `measure` is called. This prevents unnecessary resets from occurring before measure is even called. Additionally, `reset` no longer calls `setPeriodicReset`, and instead waits again for the next `measure` to set the timeout.
+
+## 5.3.1
+Wed, 08 Nov 2017 06:05:34 GMT
+
+### Patches
+
+- Update @uifabric/utilities
+
+## 5.3.0
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Minor changes
+
+- Add cancel/flush to debounce
+
+## 5.2.1
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.2.0
+Thu, 05 Oct 2017 17:03:43 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+- Fixing version dependencies.
+
+## 5.1.0
+Thu, 05 Oct 2017 16:29:11 GMT
+
+### Minor changes
+
+- Undoing 6.0 bump which was made by automation inadvertently.
+
+## 6.0.0
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Breaking changes
+
+- Positioning: Refactored positioning and removed deprecated properties
 
 ## 5.0.1
 Wed, 27 Sep 2017 00:20:58 GMT

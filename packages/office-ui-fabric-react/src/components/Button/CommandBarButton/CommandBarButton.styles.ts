@@ -1,4 +1,4 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
   concatStyleSets
@@ -17,9 +17,9 @@ export const getStyles = memoizeFunction((
   focusInset?: string,
   focusColor?: string
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let commandButtonStyles: IButtonStyles = {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+  const commandButtonStyles: IButtonStyles = {
     root: {
       minWidth: '40px',
       backgroundColor: theme.palette.neutralLighter,

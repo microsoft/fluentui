@@ -3,17 +3,15 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection } from './FocusZone.Props';
-
-const { assert } = chai;
+import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
-
+  let tabKeyHit: number;
   function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
   }
@@ -38,16 +36,15 @@ describe('FocusZone', () => {
       width: clientRect.right - clientRect.left,
       height: clientRect.bottom - clientRect.top
     });
-    if (isVisible) {
-      (element as any).isVisible = isVisible;
-    } else {
-      (element as any).hidden = !isVisible;
-    }
+
+    element.setAttribute('data-is-visible', String(isVisible));
+
     element.focus = () => ReactTestUtils.Simulate.focus(element);
   }
 
   beforeEach(() => {
     lastFocusedElement = undefined;
+    tabKeyHit = 0;
   });
 
   it('can use arrows vertically', () => {
@@ -97,54 +94,54 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing down should go to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonB, 'pressing down did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Pressing down should go to c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonC, 'pressing down did not focus c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing down should stay on c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonC, 'pressing down again did not stay on c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing up should go to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonB, 'pressing up did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Pressing up should go to a.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonA, 'pressing up did not focus a');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing up should stay on a.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonA, 'pressing up again did not stay on a');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Click on c to focus it.
     ReactTestUtils.Simulate.focus(buttonC);
-    assert(lastFocusedElement === buttonC, 'buttonC was not focused');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing up should move to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonB, 'pressing up after clicking on c did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Test that pressing horizontal buttons don't move focus.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === buttonB, 'pressing left did not keep focus on b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonB, 'pressing right did not keep focus on b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Press home should go to the first target.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.home });
-    assert(lastFocusedElement === buttonA, 'pressing home did not move focus to a');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // // Press end should go to the last target.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.end });
-    assert(lastFocusedElement === buttonC, 'pressing end did not move focus to c');
+    expect(lastFocusedElement).toBe(buttonC);
   });
 
   it('can use arrows horizontally', () => {
@@ -193,54 +190,54 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing right should go to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonB, 'pressing right did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Pressing right should go to c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonC, 'pressing right did not focus c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing right should stay on c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonC, 'pressing right again did not stay on c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing left should go to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === buttonB, 'pressing left did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Pressing left should go to a.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === buttonA, 'pressing left did not focus a');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing left should stay on a.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === buttonA, 'pressing left again did not stay on a');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Click on c to focus it.
     ReactTestUtils.Simulate.focus(buttonC);
-    assert(lastFocusedElement === buttonC, 'buttonC was not focused');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing left should move to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === buttonB, 'pressing left after clicking on c did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Test that pressing vertical buttons don't move focus.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonB, 'pressing up did not keep focus on b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonB, 'pressing down did not keep focus on b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Press home should go to the first target.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.home });
-    assert(lastFocusedElement === buttonA, 'pressing home did not move focus to a');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // // Press end should go to the last target.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.end });
-    assert(lastFocusedElement === buttonC, 'pressing end did not move focus to c');
+    expect(lastFocusedElement).toBe(buttonC);
   });
 
   it('can use arrows bidirectionally', () => {
@@ -330,31 +327,365 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing right should go to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonB, 'pressing right did not focus b');
+    expect(lastFocusedElement).toBe(buttonB);
 
     // Pressing down should go to c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonC, 'pressing down did not focus c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing down should go to e.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonE, 'pressing down did not focus e');
+    expect(lastFocusedElement).toBe(buttonE);
 
     // Pressing left should go to d.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === buttonD, 'pressing left did not focus d');
+    expect(lastFocusedElement).toBe(buttonD);
 
     // Pressing up should go to c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonC, 'pressing up did not focus c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing up should go to a.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonA, 'pressing up did not focus a');
+    expect(lastFocusedElement).toBe(buttonA);
+  });
+
+  it('can use arrows bidirectionally with data-no-vertical-wrap', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone checkForNoWrap={ true } data-no-vertical-wrap={ true }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+    const buttonD = focusZone.querySelector('.d') as HTMLElement;
+
+    // Set up a grid like so:
+    // A B
+    // C D
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonD, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing up should stay on a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing left should stay on a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing right should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing down should go to d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing down stay on d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing right stay on d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing left should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing down should stay on c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing left should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing up should stay on b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing right should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonC);
+  });
+
+  it('can use arrows bidirectionally with data-no-horizontal-wrap', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone checkForNoWrap={ true } data-no-horizontal-wrap={ true }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+    const buttonD = focusZone.querySelector('.d') as HTMLElement;
+
+    // Set up a grid like so:
+    // A B
+    // C D
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonD, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing up should stay on a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing left should stay on a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing right should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing right should stay on b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing down should go to d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing down stay on d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing right stay on d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing left should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing left should stay on c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing down should go to d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing left should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing left should go to a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing left should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing up should go to a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
+  });
+
+  it('can use arrows bidirectionally with data-no-horizontal-wrap and data-no-vertical-wrap', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone checkForNoWrap={ true } data-no-horizontal-wrap={ true } data-no-vertical-wrap={ true }>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+          <button className='d'>d</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+    const buttonD = focusZone.querySelector('.d') as HTMLElement;
+
+    // Set up a grid like so:
+    // A B
+    // C D
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonD, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing up should stay on a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing left should stay on a.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    // Pressing right should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing right should stay on b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing up should stay on b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing down should go to d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing down stay on d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing right stay on d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing left should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing left should stay on c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing down should stay on c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    // Pressing left should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    expect(lastFocusedElement).toBe(buttonA);
   });
 
   it('correctly skips data-not-focusable elements', () => {
@@ -409,15 +740,15 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing right should go to b.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-    assert(lastFocusedElement === buttonC, 'pressing down did not focus c');
+    expect(lastFocusedElement).toBe(buttonC);
 
     // Pressing down should go to c.
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
-    assert(lastFocusedElement === buttonA, 'pressing down did not focus a');
+    expect(lastFocusedElement).toBe(buttonA);
   });
 
   it('skips subzone elements until manually entered', () => {
@@ -489,30 +820,30 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === divB, 'pressing right did not focus divB');
+    expect(lastFocusedElement).toBe(divB);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonC, 'pressing right did not skip to buttonC');
+    expect(lastFocusedElement).toBe(buttonC);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+    expect(lastFocusedElement).toBe(divB);
 
     ReactTestUtils.Simulate.keyDown(divB, { which: KeyCodes.enter });
-    assert(lastFocusedElement === buttonB, 'pressing enter did not jump in to buttonB');
+    expect(lastFocusedElement).toBe(buttonB);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonC, 'pressing enter did not move to buttonC');
+    expect(lastFocusedElement).toBe(buttonC);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+    expect(lastFocusedElement).toBe(divB);
   });
 
   it('skips child focusZone elements until manually entered', () => {
     const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
-    e.which === KeyCodes.enter;
+      e.which === KeyCodes.enter;
 
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
@@ -579,25 +910,25 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonA);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === divB, 'pressing right did not focus divB');
+    expect(lastFocusedElement).toBe(divB);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonC, 'pressing right did not skip to buttonC');
+    expect(lastFocusedElement).toBe(buttonC);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+    expect(lastFocusedElement).toBe(divB);
 
     ReactTestUtils.Simulate.keyDown(divB, { which: KeyCodes.enter });
-    assert(lastFocusedElement === buttonB, 'pressing enter did not jump in to buttonB');
+    expect(lastFocusedElement).toBe(buttonB);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonC, 'pressing enter did not move to buttonC');
+    expect(lastFocusedElement).toBe(buttonC);
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
-    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+    expect(lastFocusedElement).toBe(divB);
   });
 
   it('Focus first tabbable element, when active element is dynamically disabled', () => {
@@ -637,17 +968,17 @@ describe('FocusZone', () => {
 
     // ButtonA should be focussed.
     focusZone!.focus();
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+    expect(lastFocusedElement).toBe(buttonA);
 
     buttonA.disabled = true;
 
     // Focus the text area, outside focus zone.
     ReactTestUtils.Simulate.focus(textArea);
-    assert(lastFocusedElement === textArea, 'textArea was not focused');
+    expect(lastFocusedElement).toBe(textArea);
 
     // ButtonB should be focussed.
     focusZone!.focus();
-    assert(lastFocusedElement === buttonB, 'buttonB was not focused ');
+    expect(lastFocusedElement).toBe(buttonB);
   });
 
   it('removes tab-index of previous element when another one is selected (mouse & keyboard)', () => {
@@ -692,23 +1023,199 @@ describe('FocusZone', () => {
 
     // ButtonA should be focussed.
     focusZone.focus();
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused after initial focus');
+    expect(lastFocusedElement).toBe(buttonA);
 
-    assert(buttonA.tabIndex === 0, 'buttonA tab-index was not on after initial focus');
-    assert(buttonB.tabIndex === -1, 'buttonB tab-index was not off after initial focus');
+    expect(buttonA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
 
     // Pressing right should go to b.
     ReactTestUtils.Simulate.keyDown(focusZoneElement, { which: KeyCodes.right });
-    assert(lastFocusedElement === buttonB, 'buttonB was not focused after key down');
+    expect(lastFocusedElement).toBe(buttonB);
 
-    assert(buttonA.tabIndex === -1, 'buttonA tab-index was not off after key down');
-    assert(buttonB.tabIndex === 0, 'buttonB tab-index was not on after key down');
+    expect(buttonA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
 
     // Clicking on A should enable its tab-index and disable others.
+    // But it doesn't set focus (browser will do it in the default event handler)
     ReactTestUtils.Simulate.mouseDown(buttonAElement);
-    assert(lastFocusedElement === buttonA, 'buttonA was not focused after mouse down');
+    expect(lastFocusedElement).toBe(buttonB);
 
-    assert(buttonA.tabIndex === 0, 'buttonA tab-index was not on after mouse down');
-    assert(buttonB.tabIndex === -1, 'buttonB tab-index was not off after mouse down');
+    expect(buttonA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+  });
+
+  it('Changes our focus to the next button when we hit tab when focus zone allow tabbing', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
+          <button className='a'>a</button>
+          <button className='b'>b</button>
+          <button className='c'>c</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60
+      }
+    });
+
+    // ButtonA should be focussed.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+
+    expect(buttonA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(-1);
+
+    // Pressing tab will shift focus to button B
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonB);
+
+    expect(buttonA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
+    expect(buttonC.tabIndex).toBe(-1);
+
+    // Pressing tab will shift focus to button C
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonC);
+
+    expect(buttonA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(0);
+
+    // Pressing tab on our final element will shift focus back to our first element A
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonA);
+
+    expect(buttonA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+    expect(buttonC.tabIndex).toBe(-1);
+
+    // FocusZone stops propagation of our tab when we enable tab handling
+    expect(tabDownListener.mock.calls.length).toBe(0);
+  });
+
+  it('detects tab when our focus zone does not allow tabbing', () => {
+    const tabDownListener = jest.fn();
+
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone>
+          <button className='a'>a</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    // ButtonA should be focussed.
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(lastFocusedElement).toBe(buttonA);
+    expect(buttonA.tabIndex).toBe(0);
+
+    // Pressing tab when our focus zone doesn't allow tabbing will allow us to propagate our tab to our key down event handler
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
+    expect(tabDownListener.mock.calls.length).toBe(1);
+    const onKeyDownEvent = tabDownListener.mock.calls[0][0];
+    expect(onKeyDownEvent.which).toBe(KeyCodes.tab);
+  });
+
+  it('should stay in input box with arrow keys and exit with tab', () => {
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
+        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
+          <input type='text' className='a' />
+          <button className='b'>b</button>
+        </FocusZone>
+      </div >
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // InputA should be focused.
+    inputA.focus();
+    expect(lastFocusedElement).toBe(inputA);
+
+    // When we hit right/left on the arrow key, we don't want to be able to leave focus on an input
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    expect(lastFocusedElement).toBe(inputA);
+
+    expect(inputA.tabIndex).toBe(0);
+    expect(buttonB.tabIndex).toBe(-1);
+
+    // Pressing tab will be the only way for us to exit the focus zone
+    ReactTestUtils.Simulate.keyDown(inputA, { which: KeyCodes.tab });
+    expect(lastFocusedElement).toBe(buttonB);
+    expect(inputA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
   });
 });

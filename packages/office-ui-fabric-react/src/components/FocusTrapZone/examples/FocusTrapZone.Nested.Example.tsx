@@ -22,7 +22,7 @@ interface IFocusTrapComponentState {
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
 
   public render() {
-    let contents = (
+    const contents = (
       <div className='ms-FocusTrapComponent'>
         <DefaultButton
           onClick={ this._onStringButtonClicked }
@@ -73,10 +73,10 @@ export interface IFocusTrapZoneNestedExampleState {
 
 const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
 
-export default class FocusTrapZoneNestedExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IFocusTrapZoneNestedExampleState> {
+export default class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
 
-  constructor() {
-    super();
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       stateMap: {}
@@ -84,7 +84,7 @@ export default class FocusTrapZoneNestedExample extends React.Component<React.HT
   }
 
   public render() {
-    let { stateMap } = this.state;
+    const { stateMap } = this.state;
 
     return (
       <div>

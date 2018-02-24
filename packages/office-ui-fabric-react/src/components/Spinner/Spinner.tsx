@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css, DelayedRender } from '../../Utilities';
-import { ISpinnerProps, SpinnerType, SpinnerSize } from './Spinner.Props';
+import { ISpinnerProps, SpinnerType, SpinnerSize } from './Spinner.types';
 import * as stylesImport from './Spinner.scss';
 const styles: any = stylesImport;
 
@@ -11,7 +11,7 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
   };
 
   public render() {
-    let { type, size, label, className, ariaLive, ariaLabel } = this.props; // TODO remove deprecated type property at >= 2.0.0
+    const { type, size, label, className, ariaLive, ariaLabel } = this.props; // TODO remove deprecated type property at >= 2.0.0
     const statusMessage = ariaLabel || label;
 
     return (

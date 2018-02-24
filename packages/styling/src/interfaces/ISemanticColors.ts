@@ -32,6 +32,10 @@
  * This category contains input components commonly used to denote state, including radio buttons,
  * check boxes, toggle switches, sliders, progress bars, and more.
  *
+ * ## Buttons
+ *
+ * Buttons! And all the flavors thereof.
+ *
  * ## Menus
  *
  * Any kind of popup menus uses this category.
@@ -43,7 +47,7 @@
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
  */
 export interface ISemanticColors {
-  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette() */
+  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
   //// Base slots
 
@@ -56,6 +60,11 @@ export interface ISemanticColors {
    * The default color for text.
    */
   bodyText: string;
+
+  /**
+   * Checked text color, e.g. selected menu item text.
+   */
+  bodyTextChecked: string;
 
   /**
    * De-emphasized text; e.g. metadata, captions, placeholder text.
@@ -73,12 +82,17 @@ export interface ISemanticColors {
   disabledBackground: string;
 
   /**
-   * The default color for disabled text; e.g. user input inside a disabled text field.
+   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
    */
   disabledText: string;
 
   /**
-   * Disabled de-emphasized text; e.g. placeholder text inside disabled input field.
+   * The default color for disabled text on the default background (bodyBackground).
+   */
+  disabledBodyText: string;
+
+  /**
+   * Disabled de-emphasized text, for use on disabledBackground.
    */
   disabledSubtext: string;
 
@@ -90,13 +104,17 @@ export interface ISemanticColors {
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
   /**
+   * The default color of error text, used on bodyBackground.
+   */
+  errorText: string;
+  /**
+   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   */
+  warningText: string;
+  /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
   errorBackground: string;
-  /**
-   * The default color of error text.
-   */
-  errorText: string;
   /**
    * Background for blocking issues, which is more severe than a warning, but not as bad as an error.
    */
@@ -117,13 +135,24 @@ export interface ISemanticColors {
   //// Input controls slots (text fields, checkboxes, radios...)
 
   /**
-   * The border of an input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
+   * The border of a large input control in its resting, state; e.g. the box of dropdown.
    */
   inputBorder: string;
+
+  /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
+  *
+  */
+  smallInputBorder: string;
+
   /**
-   * The border color of a hovered input control.
+   * The border color of a large hovered input control, such as textbox.
    */
   inputBorderHovered: string;
+
+  /**
+   * The background color of an input, e.g. textbox background.
+   */
+  inputBackground: string;
 
   /**
    * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.
@@ -146,6 +175,52 @@ export interface ISemanticColors {
    */
   inputFocusBorderAlt: string;
 
+  /**
+   * The color of placeholder text.
+   */
+  inputPlaceholderText: string;
+
+  //// Buttons
+
+  /**
+   * Background of a standard button
+   */
+  buttonBackground: string;
+  /**
+   * Background of a hovered standard button
+   */
+  buttonBackgroundHovered: string;
+  /**
+   * Background of a checked standard button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundChecked: string;
+  /**
+   * Background of a checked and hovered standard button; e.g. bold/italicize/underline text button in toolbar
+   */
+  buttonBackgroundCheckedHovered: string;
+
+  /**
+   * Border of a standard button
+   */
+  buttonBorder: string;
+
+  /**
+   * Color of text in a standard button
+   */
+  buttonText: string;
+  /**
+   * Color of text in a hovered standard button
+   */
+  buttonTextHovered: string;
+  /**
+   * Color of text in a checked standard button
+   */
+  buttonTextChecked: string;
+  /**
+   * Color of text in a checked and hovered standard button
+   */
+  buttonTextCheckedHovered: string;
+
   //// Menus, popups, etc
 
   /**
@@ -154,6 +229,7 @@ export interface ISemanticColors {
   menuItemBackgroundHovered: string;
 
   /**
+   * @deprecated
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
   menuItemBackgroundChecked: string;
@@ -178,7 +254,7 @@ export interface ISemanticColors {
   /**
    * The default text color for list item titles and text in column fields.
    */
-  listTextColor: string;
+  listText: string;
 
   /**
    * The background color of a hovered list item.
@@ -194,4 +270,20 @@ export interface ISemanticColors {
    * The background color of a checked and hovered list item.
    */
   listItemBackgroundCheckedHovered: string;
+
+  /**
+   * The color of a link.
+   */
+  link: string;
+
+  /**
+   * The color of a hovered link. Also used when the link is active.
+   */
+  linkHovered: string;
+
+  //// DEPRECATED SLOTS
+  // Do not use these slots, they are only maintained for backwards compatibility.
+
+  /** DEPRECATED use listText instead */
+  listTextColor: string;
 }

@@ -9,7 +9,7 @@ import {
   KeyCodes,
   IRenderFunction
 } from '../../Utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -17,10 +17,11 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import * as checkStyles from './DetailsRowCheck.scss';
+import * as checkStylesModule from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
 const styles: any = stylesImport;
+const checkStyles: any = checkStylesModule;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -38,7 +39,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   selectionMode: SelectionMode;
   layoutMode: DetailsListLayoutMode;
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
-  onColumnResized?: (column: IColumn, newWidth: number) => void;
+  onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
@@ -81,10 +82,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: FocusZone;
-  };
+  private _root: FocusZone;
 
   private _id: string;
 
@@ -103,11 +101,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public componentDidMount() {
-    let { selection } = this.props;
+    const { selection } = this.props;
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
-    const rootElement = ReactDOM.findDOMNode(this.refs.root);
+    const rootElement = ReactDOM.findDOMNode(this._root);
 
     // We need to use native on this to avoid MarqueeSelection from handling the event before us.
     this._events.on(rootElement, 'mousedown', this._onRootMouseDown);
@@ -116,7 +114,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
-    let { groupNestingDepth } = this.state;
+    const { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
       this.setState({ groupNestingDepth: newProps.groupNestingDepth });
@@ -124,8 +122,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render() {
-    let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
-    let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
+    const { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
+    const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
 
@@ -144,7 +142,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
           (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
         ) }
-        ref='root'
+        ref={ this._resolveRef('_root') }
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'
         direction={ FocusZoneDirection.horizontal }
@@ -177,6 +175,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       id={ `${this._id}-check` }
                       aria-label={ ariaLabelForSelectionColumn }
                       aria-describedby={ `${this._id}-checkTooltip` }
+                      data-is-focusable={ true }
+                      isHeader={ true }
                       selected={ isAllSelected }
                       anySelected={ false }
                       canSelect={ true }
@@ -236,7 +236,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     column.isPadded && styles.cellWrapperPadded
                   ) }
                   style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
-                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                   data-automationid='ColumnsHeaderColumn'
                   data-item-key={ column.key }
                 >
@@ -257,6 +256,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           aria-describedby={ `${this._id}-${column.key}-tooltip` }
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
+                          aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                         >
                           <span
                             id={ `${this._id}-${column.key}-name` }
@@ -326,7 +326,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return this.refs.root.focus();
+    return this._root.focus();
   }
 
   private _renderColumnSizer(columnIndex: number) {
@@ -373,7 +373,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @param {React.MouseEvent} ev (mouse double click event)
    */
   private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>) {
-    let { onColumnAutoResized, columns } = this.props;
+    const { onColumnAutoResized, columns } = this.props;
     if (onColumnAutoResized) {
       onColumnAutoResized(columns[columnIndex], columnIndex);
     }
@@ -385,16 +385,16 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   @autobind
   private _onSelectAllClicked() {
-    let { selection } = this.props;
+    const { selection } = this.props;
 
     selection.toggleAllSelected();
   }
 
   @autobind
   private _onRootMouseDown(ev: MouseEvent) {
-    let columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
-    let columnIndex = Number(columnIndexAttr);
-    let { columns } = this.props;
+    const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
+    const columnIndex = Number(columnIndexAttr);
+    const { columns } = this.props;
 
     if (columnIndexAttr === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
       // Ignore anything except the primary button.
@@ -415,7 +415,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   @autobind
   private _onRootMouseMove(ev: React.MouseEvent<HTMLElement>) {
-    let { columnResizeDetails, isSizing } = this.state;
+    const { columnResizeDetails, isSizing } = this.state;
 
     if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
       this.setState({ isSizing: true });
@@ -476,7 +476,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         });
 
         if (onColumnResized) {
-          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment);
+          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment, columnIndex);
         }
 
         ev.preventDefault();
@@ -494,13 +494,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    */
   @autobind
   private _onSizerMouseMove(ev: React.MouseEvent<HTMLElement>) {
-    let {
+    const {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
       buttons
-  } = ev;
-    let { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
-    let { columnResizeDetails } = this.state;
+    } = ev;
+    const { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
+    const { columnResizeDetails } = this.state;
 
     if (buttons !== undefined && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
       // cancel mouse down event and return early when the primary button is not pressed
@@ -523,7 +523,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
       onColumnResized(
         columns[columnResizeDetails!.columnIndex],
-        columnResizeDetails!.columnMinWidth + movement
+        columnResizeDetails!.columnMinWidth + movement,
+        columnResizeDetails!.columnIndex
       );
     }
 
@@ -551,8 +552,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    */
   @autobind
   private _onSizerMouseUp(ev: React.MouseEvent<HTMLElement>) {
-    let { columns, onColumnIsSizingChanged } = this.props;
-    let { columnResizeDetails } = this.state;
+    const { columns, onColumnIsSizingChanged } = this.props;
+    const { columnResizeDetails } = this.state;
 
     this.setState({
       columnResizeDetails: undefined,
@@ -565,7 +566,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _onSelectionChanged() {
-    let isAllSelected = this.props.selection.isAllSelected();
+    const isAllSelected = this.props.selection.isAllSelected();
 
     if (this.state.isAllSelected !== isAllSelected) {
       this.setState({
@@ -575,7 +576,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
-    let { onColumnClick } = this.props;
+    const { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
       column.onColumnClick(ev, column);
@@ -587,7 +588,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
-    let { onColumnContextMenu } = this.props;
+    const { onColumnContextMenu } = this.props;
 
     if (column.onColumnContextMenu) {
       column.onColumnContextMenu(column, ev);
@@ -603,8 +604,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   private _onToggleCollapseAll() {
-    let { onToggleCollapseAll } = this.props;
-    let newCollapsed = !this.state.isAllCollapsed;
+    const { onToggleCollapseAll } = this.props;
+    const newCollapsed = !this.state.isAllCollapsed;
     this.setState({
       isAllCollapsed: newCollapsed
     });

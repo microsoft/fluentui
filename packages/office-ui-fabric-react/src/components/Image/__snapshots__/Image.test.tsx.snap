@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders Image correctly 1`] = `
+<div
+  className="ms-Image"
+  style={
+    Object {
+      "height": undefined,
+      "width": undefined,
+    }
+  }
+>
+  <img
+    alt={undefined}
+    className="ms-Image-image ms-Image-image--portrait undefined is-notLoaded is-fadeIn"
+    onError={[Function]}
+    onLoad={[Function]}
+    role={undefined}
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII="
+  />
+</div>
+`;

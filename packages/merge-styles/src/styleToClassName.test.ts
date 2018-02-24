@@ -1,9 +1,10 @@
-import { setRTL } from './transforms/rtlifyRules';
-import { styleToClassName } from './styleToClassName';
 import {
   InjectionMode,
   Stylesheet
 } from './Stylesheet';
+
+import { setRTL } from './transforms/rtlifyRules';
+import { styleToClassName } from './styleToClassName';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
@@ -30,6 +31,26 @@ describe('styleToClassName', () => {
 
     expect(className).toEqual('css-1');
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:green;}');
+  });
+
+  it('can have child selectors', () => {
+    styleToClassName({
+      selectors: {
+        '.foo': { background: 'red' }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
+  });
+
+  it('can have same element class selectors', () => {
+    styleToClassName({
+      selectors: {
+        '&.foo': [{ background: 'red' }]
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual('.css-0.foo{background:red;}');
   });
 
   it('can register pseudo selectors', () => {
@@ -75,6 +96,17 @@ describe('styleToClassName', () => {
     expect(styleToClassName()).toEqual('');
   });
 
+  it('does not emit a rule which has an undefined value', () => {
+    expect(styleToClassName({ fontFamily: undefined })).toEqual('');
+    expect(_stylesheet.getRules()).toEqual('');
+  });
+
+  it('returns the same class name for a rule that only has a displayName', () => {
+    expect(styleToClassName({ displayName: 'foo' })).toEqual('foo-0');
+    expect(styleToClassName({ displayName: 'foo' })).toEqual('foo-0');
+    expect(_stylesheet.getRules()).toEqual('');
+  });
+
   it('can preserve displayName in names', () => {
     expect(styleToClassName({ displayName: 'DisplayName', background: 'red' })).toEqual('DisplayName-0');
     expect(_stylesheet.getRules()).toEqual('.DisplayName-0{background:red;}');
@@ -102,6 +134,29 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1{background:red;color:white;}');
   });
 
+  it('can expand previously defined rules in selectors', () => {
+    const className = styleToClassName({ background: 'red' });
+    const newClassName = styleToClassName({
+      selectors: {
+        '& > *': className
+      },
+    });
+
+    expect(newClassName).toEqual('css-1');
+    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}.css-1 > *{background:red;}');
+  });
+
+  it('can register global selectors', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(button)': { background: 'red' }
+      },
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('button{background:red;}');
+  });
+
   it('can expand an array of rules', () => {
     styleToClassName([
       { background: 'red' },
@@ -121,4 +176,31 @@ describe('styleToClassName', () => {
 
     expect(_stylesheet.getRules()).toEqual('.css-0.css-0.css-0{background:red;}');
   });
+
+  it('can apply media queries', () => {
+    styleToClassName({
+      background: 'blue',
+      selectors: {
+        '@media(min-width: 300px)': {
+          background: 'red',
+          selectors: {
+            ':hover': {
+              background: 'green'
+            }
+          }
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).toEqual(
+      '.css-0{background:blue;}' +
+      '@media(min-width: 300px){' +
+      '.css-0{background:red;}' +
+      '}' +
+      '@media(min-width: 300px){' +
+      '.css-0:hover{background:green;}' +
+      '}'
+    );
+  });
+
 });

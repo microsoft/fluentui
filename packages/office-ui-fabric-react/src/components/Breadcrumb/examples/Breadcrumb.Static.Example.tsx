@@ -9,10 +9,7 @@ import {
   autobind
 } from '../../../Utilities';
 
-export class BreadcrumbStaticExample extends React.Component<any, any> {
-  constructor() {
-    super();
-  }
+export class BreadcrumbStaticExample extends React.Component {
 
   public render() {
     return (

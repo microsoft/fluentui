@@ -19,32 +19,25 @@ export interface IContextualMenuDirectionalExampleState {
   edgeFixed?: boolean;
 }
 
-const DIRECTION_OPTIONS = [
-  { key: DirectionalHint[DirectionalHint.topLeftEdge], text: 'Top Left Edge' },
-  { key: DirectionalHint[DirectionalHint.topCenter], text: 'Top Center' },
-  { key: DirectionalHint[DirectionalHint.topRightEdge], text: 'Top Right Edge' },
-  { key: DirectionalHint[DirectionalHint.topAutoEdge], text: 'Top Auto Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomLeftEdge], text: 'Bottom Left Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomCenter], text: 'Bottom Center' },
-  { key: DirectionalHint[DirectionalHint.bottomRightEdge], text: 'Bottom Right Edge' },
-  { key: DirectionalHint[DirectionalHint.bottomAutoEdge], text: 'Bottom Auto Edge' },
-  { key: DirectionalHint[DirectionalHint.leftTopEdge], text: 'Left Top Edge' },
-  { key: DirectionalHint[DirectionalHint.leftCenter], text: 'Left Center' },
-  { key: DirectionalHint[DirectionalHint.leftBottomEdge], text: 'Left Bottom Edge' },
-  { key: DirectionalHint[DirectionalHint.rightTopEdge], text: 'Right Top Edge' },
-  { key: DirectionalHint[DirectionalHint.rightCenter], text: 'Right Center' },
-  { key: DirectionalHint[DirectionalHint.rightBottomEdge], text: 'Right Bottom Edge' },
+const DIRECTION_OPTIONS = [{ key: DirectionalHint.topLeftEdge, text: 'Top Left Edge' },
+{ key: DirectionalHint.topCenter, text: 'Top Center' },
+{ key: DirectionalHint.topRightEdge, text: 'Top Right Edge' },
+{ key: DirectionalHint.topAutoEdge, text: 'Top Auto Edge' },
+{ key: DirectionalHint.bottomLeftEdge, text: 'Bottom Left Edge' },
+{ key: DirectionalHint.bottomCenter, text: 'Bottom Center' },
+{ key: DirectionalHint.bottomRightEdge, text: 'Bottom Right Edge' },
+{ key: DirectionalHint.bottomAutoEdge, text: 'Bottom Auto Edge' },
+{ key: DirectionalHint.leftTopEdge, text: 'Left Top Edge' },
+{ key: DirectionalHint.leftCenter, text: 'Left Center' },
+{ key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
+{ key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
+{ key: DirectionalHint.rightCenter, text: 'Right Center' },
+{ key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
 export class ContextualMenuDirectionalExample extends React.Component<{}, IContextualMenuDirectionalExampleState> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    menuButton: HTMLElement;
-    gapSize: TextField;
-  };
-
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this.state = {
       isBeakVisible: false,
@@ -58,7 +51,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   }
 
   public render() {
-    let {
+    const {
       beakWidth,
       directionalHint,
       directionalHintForRTL,
@@ -79,7 +72,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
           />
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint!] }
+            selectedKey={ directionalHint! }
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged }
           />
@@ -89,14 +82,14 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
           { getRTL() &&
             <Dropdown
               label='Directional hint for RTL'
-              selectedKey={ DirectionalHint[directionalHintForRTL!] }
+              selectedKey={ directionalHintForRTL! }
               options={ DIRECTION_OPTIONS }
               onChanged={ this._onDirectionalRtlChanged }
               disabled={ !useDirectionalHintForRtl }
             />
           }
         </div>
-        <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
+        <div className='ms-ContextualMenuDirectionalExample-buttonArea'>
           <DefaultButton
             text='Show context menu'
             menuProps={ {
@@ -158,14 +151,14 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: (DirectionalHint as any)[option.key]
+      directionalHint: option.key as number
     });
   }
 
   @autobind
   private _onDirectionalRtlChanged(option: IDropdownOption) {
     this.setState({
-      directionalHintForRTL: (DirectionalHint as any)[option.key]
+      directionalHintForRTL: option.key as number
     });
   }
 

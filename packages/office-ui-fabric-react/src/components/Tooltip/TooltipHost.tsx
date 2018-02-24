@@ -11,9 +11,9 @@ import {
   assign,
   hasOverflow
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.Props';
+import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
-import { TooltipDelay } from './Tooltip.Props';
+import { TooltipDelay } from './Tooltip.types';
 
 import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
@@ -43,21 +43,27 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   public render() {
     const {
       calloutProps,
-      tooltipProps,
-      content,
       children,
+      content,
+      delay,
       directionalHint,
       directionalHintForRTL,
-      delay,
+      hostClassName,
       id,
+      overflowMode,
       setAriaDescribedBy = true,
-      hostClassName
+      tooltipProps
     } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipId = id || getId('tooltip');
+
     return (
       <div
-        className={ css('ms-TooltipHost', styles.host, hostClassName) }
+        className={ css('ms-TooltipHost',
+          styles.host,
+          hostClassName,
+          overflowMode !== undefined && styles.hostOverflow
+        ) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }

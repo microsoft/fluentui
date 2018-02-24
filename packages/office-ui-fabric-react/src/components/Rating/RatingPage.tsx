@@ -25,7 +25,7 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')
             ] }
           />
         }

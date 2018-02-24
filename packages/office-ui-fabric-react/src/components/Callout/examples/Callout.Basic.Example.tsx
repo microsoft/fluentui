@@ -8,11 +8,11 @@ export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;
 }
 
-export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExampleState> {
-  private _menuButtonElement: HTMLElement;
+export class CalloutBasicExample extends React.Component<{}, ICalloutBaiscExampleState> {
+  private _menuButtonElement: HTMLElement | null;
 
-  public constructor() {
-    super();
+  public constructor(props: {}) {
+    super(props);
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
@@ -23,11 +23,11 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
   }
 
   public render() {
-    let { isCalloutVisible } = this.state;
+    const { isCalloutVisible } = this.state;
 
     return (
       <div className='ms-CalloutExample'>
-        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
@@ -40,7 +40,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
             ariaDescribedBy={ 'callout-description-1' }
             role={ 'alertdialog' }
             gapSpace={ 0 }
-            targetElement={ this._menuButtonElement }
+            target={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
           >

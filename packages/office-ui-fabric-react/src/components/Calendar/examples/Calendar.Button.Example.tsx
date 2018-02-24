@@ -67,20 +67,24 @@ export interface ICalendarButtonExampleState {
 
 export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
+  isMonthPickerVisible?: boolean;
   highlightCurrentMonth?: boolean;
   buttonString?: string;
+  showMonthPickerAsOverlay?: boolean;
 }
 
 export class CalendarButtonExample extends React.Component<ICalendarButtonExampleProps, ICalendarButtonExampleState> {
   public static defaultProps: ICalendarButtonExampleProps = {
+    showMonthPickerAsOverlay: false,
     isDayPickerVisible: true,
+    isMonthPickerVisible: true,
     buttonString: 'Click for Calendar'
   };
 
   private _calendarButtonElement: HTMLElement;
 
-  public constructor() {
-    super();
+  public constructor(props: ICalendarButtonExampleProps) {
+    super(props);
 
     this.state = {
       showCalendar: false,
@@ -107,7 +111,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
             className='ms-DatePicker-callout'
             gapSpace={ 0 }
             doNotLayer={ false }
-            targetElement={ this._calendarButtonElement }
+            target={ this._calendarButtonElement }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             setInitialFocus={ false }
@@ -115,12 +119,13 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
             <Calendar
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._onDismiss }
-              isMonthPickerVisible={ true }
+              isMonthPickerVisible={ this.props.isMonthPickerVisible }
               value={ this.state.selectedDate! }
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
               isDayPickerVisible={ this.props.isDayPickerVisible }
               highlightCurrentMonth={ this.props.highlightCurrentMonth }
+              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
             />
           </Callout>
         )

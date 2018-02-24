@@ -1,6 +1,142 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 29 Sep 2017 10:20:24 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+
+## 5.3.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- Left nav: Less jittery and component pages load in full height.
+
+## 5.3.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Adding left nav scroll functionality, including fixing the left nav with the header. Other layout refactoring to accommodate.
+
+## 5.2.1
+Fri, 22 Dec 2017 11:10:56 GMT
+
+### Patches
+
+- Added more descriptive comments to account for the specificity needed to style with the UHF.
+
+## 5.2.0
+Sat, 16 Dec 2017 05:07:22 GMT
+
+### Minor changes
+
+- Updated build to newest React version and typings. Updated tests and made various tweaks to the code to remove React warnings and keep Enzyme
+
+### Patches
+
+- GetStarted Page: More specific selectors for button with link to deal with UHF styles.
+
+## 5.1.0
+Thu, 14 Dec 2017 11:23:17 GMT
+
+### Minor changes
+
+- GetStarted page: updated to better reflect the current Fabric workflows.
+
+## 5.0.19
+Wed, 06 Dec 2017 11:24:52 GMT
+
+### Patches
+
+- Updated referenced FabricCore versions.
+
+## 5.0.18
+Tue, 05 Dec 2017 02:04:27 GMT
+
+### Patches
+
+- Fix ScrollablePane page title
+
+## 5.0.17
+Mon, 20 Nov 2017 11:12:47 GMT
+
+### Patches
+
+- Add ActivityItem, Calendar, HoverCard, OverflowSet, ScrollablePane, TeachingBubble to fabric-website
+
+## 5.0.16
+Fri, 17 Nov 2017 17:36:36 GMT
+
+### Patches
+
+- Updated asset license to newest version.
+
+## 5.0.15
+Tue, 31 Oct 2017 10:22:25 GMT
+
+### Patches
+
+- Added support to IconGrid for icons wider than the grid.
+
+## 5.0.14
+Fri, 27 Oct 2017 10:25:09 GMT
+
+### Patches
+
+- Fixed initializeIcons call to pull from cdn instead of dist.
+
+## 5.0.13
+Tue, 24 Oct 2017 10:21:08 GMT
+
+### Patches
+
+- Removed Header component - it was replaced with UHF
+
+## 5.0.12
+Wed, 18 Oct 2017 10:21:25 GMT
+
+### Patches
+
+- TextField documentation style updates
+- Removed branding guidance pdf, updated fabric asset license pdf, and fixed link colors
+- Fixed in page navigation for Chrome and Firefox.
+
+## 5.0.11
+Mon, 16 Oct 2017 20:00:51 GMT
+
+### Patches
+
+- Updating to Fabric Core 9.0
+
+## 5.0.10
+Thu, 12 Oct 2017 10:20:49 GMT
+
+### Patches
+
+- Added Implementation Examples section to ComponentPage
+- Add promise polyfill
+
+## 5.0.9
+Mon, 09 Oct 2017 10:08:09 GMT
+
+### Patches
+
+- Added/removed Best Practices links for component pages that had/didn't have a Best Practices section.
+- Updated themeLight color - typo
+
+## 5.0.8
+Fri, 06 Oct 2017 10:18:41 GMT
+
+### Patches
+
+- TSConfig: update to use preserveConstEnums so that certain builds s ystems don't break when importing const enums
+
+## 5.0.7
+Wed, 04 Oct 2017 22:40:22 GMT
+
+### Patches
+
+- Updated ResourcePage text and made padding more rtl friendly.
+- Added section in Get Started page to document how to use icons in components.
+- Added Icon component to website
 
 ## 5.0.6
 Fri, 29 Sep 2017 10:20:24 GMT
@@ -154,7 +290,7 @@ Tue, 27 Jun 2017 01:26:31 GMT
 ## 4.5.39
 Wed, 21 Jun 2017 00:45:41 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.38
 Wed, 14 Jun 2017 06:02:15 GMT
@@ -180,62 +316,62 @@ Mon, 12 Jun 2017 01:47:18 GMT
 ## 4.5.35
 Thu, 08 Jun 2017 00:18:05 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.34
 Tue, 06 Jun 2017 07:41:47 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.33
 Tue, 06 Jun 2017 06:06:46 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.32
 Tue, 06 Jun 2017 00:50:06 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.31
 Fri, 02 Jun 2017 01:19:36 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.30
 Thu, 01 Jun 2017 16:34:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.29
 Wed, 31 May 2017 01:58:23 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.28
 Tue, 30 May 2017 20:23:45 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.27
 Tue, 30 May 2017 03:27:20 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.26
 Fri, 26 May 2017 10:21:03 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.25
 Tue, 23 May 2017 10:16:04 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.24
 Thu, 18 May 2017 10:09:58 GMT
 
-*Changes not tracked*
+*Version update only*
 
 ## 4.5.23
 Tue, 16 May 2017 21:47:38 GMT

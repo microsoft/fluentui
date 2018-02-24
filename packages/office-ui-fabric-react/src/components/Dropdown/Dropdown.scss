@@ -12,8 +12,8 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
 $DropDown-item-height: 32px;
 
-// Mixin for high contrast mode link states
-@mixin highContrastListItemState {
+// Mixin for high contrast mode states
+@mixin highContrastItemAndTitleState {
   @include high-contrast {
     background-color: Highlight;
     border-color: Highlight;
@@ -21,6 +21,12 @@ $DropDown-item-height: 32px;
   }
 
   @include highContrastAdjust();
+}
+
+@mixin highContrastBorderState {
+  @include high-contrast {
+    border-color: Highlight;
+  }
 }
 
 .root {
@@ -37,12 +43,7 @@ $DropDown-item-height: 32px;
   &:active {
     .title,
     .caretDown {
-      color: $ms-color-black;
-
-      @include high-contrast {
-        // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
-        color: Highlight;
-      }
+      color: $ms-color-neutralDark;
     }
 
     .titleIsPlaceHolder {
@@ -53,19 +54,38 @@ $DropDown-item-height: 32px;
   &:hover {
     .title {
       border-color: $ms-color-neutralDark;
+      @include highContrastBorderState();
+    }
+    .titleIsError {
+      border-color: $ms-color-error;
     }
   }
 
   &:active {
     .title {
       border-color: $ms-color-themeDark;
+      @include highContrastBorderState();
+    }
+    .titleIsError {
+      border-color: $ms-color-error;
     }
   }
 
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
+      @include highContrastItemAndTitleState();
     }
+    .caretDown {
+      @include highContrastAdjust();
+    }
+    .titleIsError {
+      border-color: $ms-color-error;
+    }
+  }
+
+  .titleIsError {
+    border-color: $ms-color-error;
   }
 
   :global(.ms-Label) {
@@ -83,12 +103,12 @@ $DropDown-item-height: 32px;
     cursor: default;
 
     @include high-contrast {
-      border-color: GrayText;
+      border: 1px solid GrayText;
       color: GrayText;
     }
 
     &.titleIsError {
-        border-color: $ms-color-error;
+      border-color: $ms-color-error;
     }
   }
 
@@ -101,6 +121,12 @@ $DropDown-item-height: 32px;
   }
 }
 
+.listWrapper {
+  &:focus {
+    outline: 0
+  }
+}
+
 .caretDownWrapper {
   position: absolute;
   top: 1px; // border
@@ -110,7 +136,7 @@ $DropDown-item-height: 32px;
 }
 
 .caretDown {
-  color: $ms-color-neutralDark;
+  color: $ms-color-neutralSecondary;
   font-size: $ms-icon-size-s;
   pointer-events: none;
 }
@@ -129,35 +155,32 @@ $DropDown-item-height: 32px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  &.titleIsError {
-        border-color: $ms-color-error;
-    }
   &.titleIsPlaceHolder {
     color: $ms-color-neutralSecondary;
   }
 }
 
 .panel {
-    // Force drop shadow even under medium breakpoint
-    :global(.ms-Panel-main) {
-      @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
-    }
-    // Remove padding as items have their own padding and bg
-    :global(.ms-Panel-contentInner) {
-      padding: 0 0 20px
-    }
+  // Force drop shadow even under medium breakpoint
+   :global(.ms-Panel-main) {
+    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
   }
+  // Remove padding as items have their own padding and bg
+   :global(.ms-Panel-contentInner) {
+    padding: 0 0 20px
+  }
+}
 
 .callout {
   box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
 }
 
+
 .errorMessage{
-    color: $ms-color-error;
-  &::before {
-    content: '* ';
-  }
+  color: $ms-color-error;
+  @include ms-font-s;
+  padding-top: 5px;
 }
 
 .items {
@@ -186,16 +209,12 @@ $DropDown-item-height: 32px;
   }
 
   &:hover {
-    background-color: $Dropdown-selectedItem-hover-bg;
-    color: $ms-color-black;
-
-    @include highContrastListItemState;
+    color: inherit;
   }
-
-  @include focus-border();
 
   &:focus {
     background-color: $ms-color-neutralLighter;
+    @include highContrastItemAndTitleState;
   }
 
   &:active {
@@ -204,11 +223,10 @@ $DropDown-item-height: 32px;
   }
 
   &.itemIsDisabled {
-    background: $ms-color-white;
     color: $ms-color-neutralTertiary;
     cursor: default;
   }
-  :global(.ms-Button-flexContainer) {
+   :global(.ms-Button-flexContainer) {
     justify-content: flex-start;
   }
 }
@@ -218,13 +236,12 @@ $DropDown-item-height: 32px;
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 
-  &:hover {
-    background-color: $Dropdown-selectedItem-bg;
+  @include highContrastItemAndTitleState;
+
+  &.itemIsDisabled {
+    color: $ms-color-neutralTertiary;
+    background-color: transparent;
   }
-
-  @include focus-border();
-
-  @include highContrastListItemState;
 }
 
 .header {
@@ -243,7 +260,7 @@ $DropDown-item-height: 32px;
 
 .divider {
   height: 1px;
-  background-color: $dividerColor;
+  background-color: $bodyDividerColor;
 }
 
 .optionText {

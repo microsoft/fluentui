@@ -10,7 +10,7 @@ import {
   ICheckbox,
   ICheckboxProps,
   ICheckboxStyles
-} from './Checkbox.Props';
+} from './Checkbox.types';
 import {
   customizable
 } from '../../Utilities';
@@ -81,19 +81,24 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       ariaLabelledBy,
       ariaDescribedBy,
       styles: customStyles,
-      onRenderLabel = this._onRenderLabel
+      onRenderLabel = this._onRenderLabel,
+      checkmarkIconProps,
+      ariaPositionInSet,
+      ariaSetSize
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    this._classNames = getClassNames(
-      getStyles(theme!, customStyles),
-      className!,
-      disabled!,
-      isChecked!,
-      isReversed!
-    );
+    this._classNames = this.props.getClassNames ?
+      this.props.getClassNames(theme!, !!disabled, !!isChecked, !!isReversed, className)
+      : getClassNames(
+        getStyles(theme!, customStyles),
+        !!disabled,
+        !!isChecked,
+        !!isReversed,
+        className
+      );
 
     return (
       <button
@@ -115,10 +120,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         aria-label={ ariaLabel }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
+        aria-posinset={ ariaPositionInSet }
+        aria-setsize={ ariaSetSize }
       >
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>
-            <Icon iconName='CheckMark' className={ this._classNames.checkmark } />
+            <Icon iconName='CheckMark' {...checkmarkIconProps} className={ this._classNames.checkmark } />
           </div>
           { onRenderLabel(this.props, this._onRenderLabel) }
         </label>

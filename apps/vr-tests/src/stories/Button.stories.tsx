@@ -22,12 +22,16 @@ const commandProps: IButtonProps = {
       {
         key: 'emailMessage',
         name: 'Email message',
-        icon: 'Mail'
+        iconProps: {
+          iconName: 'Mail'
+        }
       },
       {
         key: 'calendarEvent',
         name: 'Calendar event',
-        icon: 'Calendar'
+        iconProps: {
+          iconName: 'Calendar'
+        }
       }
     ]
   }
@@ -137,6 +141,7 @@ storiesOf('Button Split', module)
         .mouseDown('.ms-Button:nth-child(1)')
         .snapshot('pressed main', { cropTo: '.testWrapper' })
         .hover('.ms-Button') // reset mouseDown
+        .mouseUp('.ms-Button:nth-child(2)')
         .mouseDown('.ms-Button:nth-child(2)')
         .snapshot('pressed split', { cropTo: '.testWrapper' })
         .click('.ms-Button:nth-child(2)')
@@ -154,3 +159,41 @@ storiesOf('Button Split', module)
   .add('Primary', () => (<DefaultButton {...commandProps} primary={ true } split={ true } />))
   .add('Primary Disabled', () => (<DefaultButton {...commandProps} primary={ true } disabled={ true } split={ true } />))
   .add('Primary Checked', () => (<DefaultButton {...commandProps} primary={ true } checked={ true } split={ true } />));
+
+storiesOf('Button Special Scenarios', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={ new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      { story() }
+    </Screener>
+  ))
+
+  .add('primary with placeholder', () => (
+    <div>
+      <DefaultButton {...baseProps} iconProps={ { iconName: '' } } primary={ true } />
+      <br />
+      <DefaultButton {...baseProps} iconProps={ { iconName: 'Add' } } primary={ true } />
+    </div>
+  ))
+  .add('no flex shrink', () => (
+    <div style={ { width: '300px' } }>
+      <DefaultButton
+        {...baseProps }
+        iconProps={ { iconName: 'Add' } }
+        menuIconProps={ {} }
+        styles={ { root: { width: '100%' } } }
+      />
+      <DefaultButton
+        {...baseProps }
+        text='This is a much longer string of text in a constrained space'
+        iconProps={ { iconName: 'Add' } }
+        menuIconProps={ {} }
+        styles={ { root: { width: '100%' } } }
+      />
+    </div>
+  ));

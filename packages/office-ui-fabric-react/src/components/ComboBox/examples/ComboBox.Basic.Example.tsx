@@ -1,31 +1,39 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxOption
+  IComboBoxProps,
+  IComboBoxOption,
+  VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
 import {
   assign,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.types';
+import { IComboBox } from '../ComboBox.types';
+import { PrimaryButton } from '../../../Button';
 
-export class ComboBoxBasicExample extends React.Component<any, any> {
+export class ComboBoxBasicExample extends React.Component<{}, {
+  options: IComboBoxOption[];
+  selectedOptionKey?: string | number;
+  value?: string;
+}> {
   private _testOptions =
-  [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'A', text: 'Arial Black' },
-  { key: 'B', text: 'Times New Roman' },
-  { key: 'C', text: 'Comic Sans MS' },
-  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
-  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'D', text: 'Option d' },
-  { key: 'E', text: 'Option e' },
-  { key: 'F', text: 'Option f' },
-  { key: 'G', text: 'Option g' },
-  { key: 'H', text: 'Option h' },
-  { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j' },
-  ];
+    [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'A', text: 'Arial Black' },
+    { key: 'B', text: 'Times New Roman' },
+    { key: 'C', text: 'Comic Sans MS' },
+    { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+    { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+    { key: 'D', text: 'Option d' },
+    { key: 'E', text: 'Option e' },
+    { key: 'F', text: 'Option f' },
+    { key: 'G', text: 'Option g' },
+    { key: 'H', text: 'Option h' },
+    { key: 'I', text: 'Option i' },
+    { key: 'J', text: 'Option j', disabled: true },
+    ];
 
   private _fontMapping: { [key: string]: string } = {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
@@ -34,17 +42,27 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif'
   };
 
-  constructor() {
-    super();
+  private scaleOptions: IComboBoxOption[] = [];
+  private _basicCombobox: IComboBox;
+
+  constructor(props: {}) {
+    super(props);
     this.state = {
       options: [],
-      selectedOptionKey: null,
+      selectedOptionKey: undefined,
       value: 'Calibri'
     };
+
+    for (let i = 0; i < 1000; i++) {
+      this.scaleOptions.push({
+        key: `${i}`,
+        text: `Option ${i}`
+      });
+    }
   }
 
   public render() {
-    let { options, selectedOptionKey, value } = this.state;
+    const { options, selectedOptionKey, value } = this.state;
 
     return (
       <div className='ms-ComboBoxBasicExample'>
@@ -58,10 +76,17 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
+          componentRef={ this._basicComboBoxComponentRef }
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-        // tslint:enable:jsx-no-lambda
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
+          // tslint:enable:jsx-no-lambda
+        />
+
+        <PrimaryButton
+          text='Set focus'
+          onClick={ this._basicComboBoxOnClick }
         />
 
         <ComboBox
@@ -76,6 +101,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -91,6 +117,22 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
+        // tslint:enable:jsx-no-lambda
+        />
+
+        <VirtualizedComboBox
+          defaultSelectedKey='C'
+          label='Scaled example with 1000 items (allowFreeform: T, AutoComplete: T):'
+          id='Basicdrop1'
+          ariaLabel='Basic ComboBox example'
+          allowFreeform={ true }
+          autoComplete='on'
+          options={ this.scaleOptions }
+          // tslint:disable:jsx-no-lambda
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -106,6 +148,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -119,6 +162,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -140,6 +184,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+          onMenuOpen={ () => console.log('ComboBox menu opened') }
         // tslint:enable:jsx-no-lambda
         />
 
@@ -158,6 +203,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             // tslint:disable:jsx-no-lambda
             onFocus={ () => console.log('onFocus called') }
             onBlur={ () => console.log('onBlur called') }
+            onMenuOpen={ () => console.log('ComboBox menu opened') }
           // tslint:enable:jsx-no-lambda
           />
           :
@@ -175,6 +221,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             // tslint:disable:jsx-no-lambda
             onFocus={ () => console.log('onFocus called') }
             onBlur={ () => console.log('onBlur called') }
+            onMenuOpen={ () => console.log('ComboBox menu opened') }
           // tslint:enable:jsx-no-lambda
           />
         }
@@ -217,7 +264,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       return this.state.options;
     }
 
-    let newOptions =
+    const newOptions =
       [
         { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
         { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
@@ -237,7 +284,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     this.setState({
       options: newOptions,
       selectedOptionKey: 'C1',
-      value: null
+      value: undefined
     });
 
     return newOptions;
@@ -248,21 +295,31 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
-        value: null
+        value: undefined
       });
     } else if (index !== undefined && index >= 0 && index < this.state.options.length) {
       this.setState({
         selectedOptionKey: this.state.options[index].key,
-        value: null
+        value: undefined
       });
     } else if (value !== undefined) {
-      let newOption: IComboBoxOption = { key: value, text: value };
+      const newOption: IComboBoxOption = { key: value, text: value };
 
       this.setState({
         options: [...this.state.options, newOption],
         selectedOptionKey: newOption.key,
-        value: null
+        value: undefined
       });
     }
+  }
+
+  @autobind
+  private _basicComboBoxOnClick(): void {
+    this._basicCombobox.focus(true);
+  }
+
+  @autobind
+  private _basicComboBoxComponentRef(component: IComboBox) {
+    this._basicCombobox = component;
   }
 }

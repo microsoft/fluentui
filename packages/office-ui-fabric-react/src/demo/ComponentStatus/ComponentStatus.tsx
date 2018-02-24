@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.Props';
+import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.types';
 import './ComponentStatus.scss';
 
 export class ComponentStatus extends React.Component<IComponentStatusProps, {}> {
@@ -59,6 +59,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
   private _colorForComponentStateStatus(testCoverageStatus: ChecklistStatus | undefined): string {
     switch (testCoverageStatus) {
       case ChecklistStatus.unknown:
+      case ChecklistStatus.notApplicable:
         return 'lightgrey';
       case ChecklistStatus.fail:
       case ChecklistStatus.none:

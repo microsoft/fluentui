@@ -1,4 +1,4 @@
-import { ICheckboxStyles } from './Checkbox.Props';
+import { ICheckboxStyles } from './Checkbox.types';
 import {
   ITheme,
   concatStyleSets,
@@ -18,12 +18,14 @@ export const getStyles = memoizeFunction((
   const { semanticColors, palette } = theme;
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
-  const checkboxBorderColor = semanticColors.inputBorder;
-  const checkboxBorderColorDisabled = semanticColors.disabledText;
+  const checkboxBorderColor = semanticColors.smallInputBorder;
+  const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
+  const checkboxBorderColorDisabled = semanticColors.disabledBodyText;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBackgroundDisabled = semanticColors.disabledText;
+  const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+  const checkboxBackgroundDisabled = semanticColors.disabledBodyText;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
@@ -78,14 +80,22 @@ export const getStyles = memoizeFunction((
     checkboxHovered: {
       borderColor: checkboxBorderHoveredColor,
     },
+    checkboxFocused: {
+      borderColor: checkboxBorderHoveredColor,
+    },
     checkboxChecked: {
       background: checkboxBackgroundChecked,
+      borderColor: checkboxBorderColorChecked
     },
     checkboxCheckedHovered: {
       background: checkboxBackgroundCheckedHovered,
+      borderColor: checkboxBorderColorCheckedHovered
+    },
+    checkboxCheckedFocused: {
+      background: checkboxBackgroundCheckedHovered,
+      borderColor: checkboxBorderColorCheckedHovered
     },
     checkboxDisabled: {
-      background: checkboxBackgroundDisabled,
       borderColor: checkboxBorderColorDisabled
     },
     checkboxCheckedDisabled: {
@@ -111,6 +121,9 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.medium
     },
     textHovered: {
+      color: palette.black,
+    },
+    textFocused: {
       color: palette.black,
     },
     textDisabled: {

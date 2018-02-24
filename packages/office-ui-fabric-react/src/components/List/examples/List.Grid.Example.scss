@@ -14,7 +14,7 @@
     text-align: center;
     outline: none;
     position: relative;
-    float: left;
+    @include ms-float(left);
     background: $ms-color-neutralLighter;
   }
 

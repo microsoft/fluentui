@@ -1,10 +1,9 @@
 
 import * as React from 'react';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../FolderCover';
-import { IFolderCoverProps } from '../FolderCover.Props';
+import { IFolderCoverProps } from '../FolderCover.types';
 import { ISize, fitContentToBounds } from '../../../Utilities';
 import { SharedSignal } from '../../signals/Signals';
-import { lorem } from '@uifabric/example-app-base';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
@@ -76,7 +75,8 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           }
           folderCoverSize='large'
           folderCoverType='media'
-          metadata={ lorem(5) }
+          metadata={ 20 }
+          signal={ <SharedSignal /> }
         />
         <h3>Small Media Cover</h3>
         <FolderCoverWithImage

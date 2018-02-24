@@ -6,13 +6,14 @@ import {
   getNativeProps,
   divProperties,
   customizable,
+  KeyCodes,
   autobind
 } from '../../Utilities';
-import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
+import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.types';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationStyles, mergeStyles } from '../../Styling';
-
+import { FocusTrapZone } from '../../FocusTrapZone';
 import { getStyles } from './ExpandingCard.styles';
 
 export interface IExpandingCardState {
@@ -26,6 +27,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     compactCardHeight: 156,
     expandedCardHeight: 384,
     directionalHint: DirectionalHint.bottomLeftEdge,
+    directionalHintFixed: true,
     gapSpace: 0
   };
 
@@ -44,11 +46,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   public componentDidMount() {
-    if (this._expandedElem && this._expandedElem.scrollHeight >= (this.props.expandedCardHeight as number)) {
-      this.setState({
-        needsScroll: true
-      });
-    }
+    this._checkNeedsScroll();
   }
 
   public componentWillUnmount() {
@@ -61,9 +59,22 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       theme,
       styles: customStyles,
       compactCardHeight,
+      directionalHintFixed,
+      firstFocus,
       expandedCardHeight
     } = this.props;
     this._styles = getStyles(theme!, customStyles);
+
+    const content = (
+      <div
+        onMouseEnter={ this.props.onEnter }
+        onMouseLeave={ this.props.onLeave }
+        onKeyDown={ this._onKeyDown }
+      >
+        { this._onRenderCompactCard() }
+        { this._onRenderExpandedCard() }
+      </div>
+    );
 
     return (
       <Callout
@@ -73,25 +84,35 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
           AnimationStyles.scaleUpIn100,
           this._styles.root
         ) }
-        targetElement={ targetElement }
+        target={ targetElement }
         isBeakVisible={ false }
         directionalHint={ this.props.directionalHint }
-        directionalHintFixed={ true }
+        directionalHintFixed={ directionalHintFixed }
         finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }
+        onDismiss={ this.props.onLeave }
         gapSpace={ this.props.gapSpace }
       >
-        <div
-          onFocusCapture={ this.props.onEnter }
-          onBlurCapture={ this.props.onLeave }
-          onMouseEnter={ this.props.onEnter }
-          onMouseLeave={ this.props.onLeave }
-        >
-          { this._onRenderCompactCard() }
-          { this._onRenderExpandedCard() }
-        </div>
+        { this.props.trapFocus ?
+          <FocusTrapZone forceFocusInsideTrap={ false } isClickableOutsideFocusTrap={ true } disableFirstFocus={ !firstFocus }>
+            { content }
+          </FocusTrapZone> :
+          content
+        }
       </Callout >
     );
+  }
+
+  @autobind
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+    if (ev.which === KeyCodes.escape) {
+      this.props.onLeave && this.props.onLeave(ev);
+    }
+  }
+
+  @autobind
+  private _onDismiss(ev: MouseEvent): void {
+    this.props.onLeave && this.props.onLeave(ev);
   }
 
   @autobind
@@ -117,12 +138,11 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <div
         className={ mergeStyles(
           this._styles.expandedCard,
-          this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
-          this.state.needsScroll && { overflowY: 'auto' }
+          this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' }
         ) }
         ref={ this._resolveRef('_expandedElem') }
       >
-        <div className={ this._styles.expandedCardScroll as string }>
+        <div className={ mergeStyles(this.state.needsScroll && this._styles.expandedCardScroll) }>
           { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
         </div>
       </div>

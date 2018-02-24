@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn } from './DetailsList.Props';
+import { IColumn } from './DetailsList.types';
 import { BaseComponent, css } from '../../Utilities';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
@@ -23,7 +23,7 @@ export interface IDetailsRowFieldsState {
 
 export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
   constructor(props: IDetailsRowFieldsProps) {
-    super();
+    super(props);
 
     this.state = this._getState(props);
   }
@@ -33,8 +33,8 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render() {
-    let { columns, columnStartIndex } = this.props;
-    let { cellContent } = this.state;
+    const { columns, columnStartIndex } = this.props;
+    const { cellContent } = this.state;
 
     return (
       <div
@@ -65,14 +65,14 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   private _getState(props: IDetailsRowFieldsProps) {
-    let { item, itemIndex, onRenderItemColumn } = props;
+    const { item, itemIndex, onRenderItemColumn } = props;
 
     return {
       cellContent: props.columns.map((column) => {
         let cellContent;
 
         try {
-          let render = column.onRender || onRenderItemColumn;
+          const render = column.onRender || onRenderItemColumn;
 
           cellContent = render ? render(item, itemIndex, column) : this._getCellText(item, column);
         } catch (e) { /* no-op */ }
@@ -91,5 +91,4 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
 
     return value;
   }
-
 }
