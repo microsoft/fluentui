@@ -15,11 +15,14 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
+#### Core build stuff
+scripts/ @dzearing
+
 #### Apps
 # component-demo/
 # fabric-website/
 # ssr-tests/
-# test-bundle-button/
+# test-bundle-button/ @dzearing
 # todo-app/
 
 #### Packages
@@ -29,7 +32,7 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
 # packages/office-ui-fabric-react-tslint/
-packages/styling/  @dzearing
+packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
