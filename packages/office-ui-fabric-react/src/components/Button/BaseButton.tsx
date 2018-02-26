@@ -420,6 +420,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       checked,
       getSplitButtonClassNames,
+      onClick,
       primaryDisabled
     } = this.props;
 
@@ -445,7 +446,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }
         data-is-focusable={ true }
-        onClick={ !disabled && !primaryDisabled ? buttonProps.onClick : undefined }
+        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
       >
         <span
           style={ { 'display': 'flex' } }
