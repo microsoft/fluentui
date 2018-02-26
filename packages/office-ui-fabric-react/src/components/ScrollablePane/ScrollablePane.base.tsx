@@ -7,7 +7,9 @@ import {
   autobind,
   BaseComponent,
   classNamesFunction,
-  customizable
+  customizable,
+  divProperties,
+  getNativeProps
 } from '../../Utilities';
 import {
   IScrollablePane,
@@ -90,6 +92,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
     return (
       <div
+        { ...getNativeProps(this.props, divProperties) }
         ref={ this._resolveRef('root') }
         className={ classNames.root }
         data-is-scrollable={ true }
