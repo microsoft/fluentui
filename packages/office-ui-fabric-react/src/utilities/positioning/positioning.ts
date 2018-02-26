@@ -64,7 +64,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string; } = {
  * Do not call methods from this directly, use either positionCallout or positionElement or make another function that
  * utilizes them.
  */
-export module positioningFunctions {
+export namespace positioningFunctions {
 
   export interface IElementPosition {
     elementRectangle: Rectangle;

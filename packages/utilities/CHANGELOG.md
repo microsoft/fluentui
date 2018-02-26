@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 21 Feb 2018 11:12:11 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+
+## 5.13.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true
 
 ## 5.12.1
 Wed, 21 Feb 2018 11:12:11 GMT
