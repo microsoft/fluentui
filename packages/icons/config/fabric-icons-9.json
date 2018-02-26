@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "BranchMerge",
+			"unicode": "F295"
+		},
+		{
 			"name": "BranchPullRequest",
 			"unicode": "F296"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "FullWidth",
 			"unicode": "F2FE"
-		},
-		{
-			"name": "FullWidthEdit",
-			"unicode": "F2FF"
 		}
 	]
 }

@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,17 +22,9 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-14"`,
-      src: `url('${baseUrl}fabric-icons-14-95a97fbd.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-14-cf85ed5b.woff') format('woff')`,
     },
     icons: {
-      'VersionControlPush': '\uF664',
-      'ExternalGit': '\uF665',
-      'WhiteBoardApp16': '\uF673',
-      'WhiteBoardApp32': '\uF674',
-      'InsertSignatureLine': '\uF677',
-      'ArrangeByFrom': '\uF678',
-      'Phishing': '\uF679',
-      'CreateMailRule': '\uF67A',
       'PublishCourse': '\uF699',
       'DictionaryRemove': '\uF69A',
       'UserRemove': '\uF69B',

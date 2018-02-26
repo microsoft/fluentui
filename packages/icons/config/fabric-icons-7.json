@@ -65,6 +65,10 @@
 			"unicode": "EF78"
 		},
 		{
+			"name": "ShareiOS",
+			"unicode": "EF79"
+		},
+		{
 			"name": "AirTickets",
 			"unicode": "EF7A"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "StatusCircleErrorX",
 			"unicode": "F13D"
-		},
-		{
-			"name": "StatusCircleInfo",
-			"unicode": "F13F"
 		}
 	]
 }

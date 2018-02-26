@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "ProjectLogo16",
+			"unicode": "F480"
+		},
+		{
 			"name": "ProjectLogoFill16",
 			"unicode": "F481"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "Padding",
 			"unicode": "F518"
-		},
-		{
-			"name": "PaddingTop",
-			"unicode": "F519"
 		}
 	]
 }

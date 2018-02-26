@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-8"`,
-      src: `url('${baseUrl}fabric-icons-8-b5ef381f.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-8-d0700068.woff') format('woff')`,
     },
     icons: {
+      'StatusCircleInfo': '\uF13F',
       'StatusCircleBlock2': '\uF141',
       'StatusCircleQuestionMark': '\uF142',
       'Toll': '\uF160',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'BranchFork2': '\uF291',
       'BranchLocked': '\uF292',
       'BranchCommit': '\uF293',
-      'BranchCompare': '\uF294',
-      'BranchMerge': '\uF295'
+      'BranchCompare': '\uF294'
     }
   };
 

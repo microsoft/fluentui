@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "PaddingTop",
+			"unicode": "F519"
+		},
+		{
 			"name": "PaddingBottom",
 			"unicode": "F51A"
 		},
@@ -265,22 +269,6 @@
 			"unicode": "F5D0"
 		},
 		{
-			"name": "ApacheIvyLogo32",
-			"unicode": "F5D1"
-		},
-		{
-			"name": "BitbucketLogo32",
-			"unicode": "F5D2"
-		},
-		{
-			"name": "LinuxLogo32",
-			"unicode": "F5D3"
-		},
-		{
-			"name": "GradleLogo32",
-			"unicode": "F5D4"
-		},
-		{
 			"name": "PasteAsText",
 			"unicode": "F5D5"
 		},
@@ -389,24 +377,36 @@
 			"unicode": "F651"
 		},
 		{
-			"name": "GitLogo",
-			"unicode": "F65D"
+			"name": "VersionControlPush",
+			"unicode": "F664"
 		},
 		{
-			"name": "GitHubLogo",
-			"unicode": "F65E"
+			"name": "ExternalGit",
+			"unicode": "F665"
 		},
 		{
-			"name": "ApacheMavenLogo",
-			"unicode": "F65F"
+			"name": "WhiteBoardApp16",
+			"unicode": "F673"
 		},
 		{
-			"name": "NPMLogo",
-			"unicode": "F660"
+			"name": "WhiteBoardApp32",
+			"unicode": "F674"
 		},
 		{
-			"name": "GitFork",
-			"unicode": "F661"
+			"name": "InsertSignatureLine",
+			"unicode": "F677"
+		},
+		{
+			"name": "ArrangeByFrom",
+			"unicode": "F678"
+		},
+		{
+			"name": "Phishing",
+			"unicode": "F679"
+		},
+		{
+			"name": "CreateMailRule",
+			"unicode": "F67A"
 		}
 	]
 }

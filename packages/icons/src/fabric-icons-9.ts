@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-a73eae40.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-9-938d7113.woff') format('woff')`,
     },
     icons: {
+      'BranchMerge': '\uF295',
       'BranchPullRequest': '\uF296',
       'BranchSearch': '\uF297',
       'BranchShelveset': '\uF298',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'PY': '\uF2F9',
       'CoffeeScript': '\uF2FA',
       'MarkDownLanguage': '\uF2FB',
-      'FullWidth': '\uF2FE',
-      'FullWidthEdit': '\uF2FF'
+      'FullWidth': '\uF2FE'
     }
   };
 

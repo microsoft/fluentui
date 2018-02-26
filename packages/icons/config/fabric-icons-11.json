@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "ChevronLeftEnd6",
+			"unicode": "F371"
+		},
+		{
 			"name": "ChevronRightEnd6",
 			"unicode": "F372"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "ProjectLogoFill32",
 			"unicode": "F47F"
-		},
-		{
-			"name": "ProjectLogo16",
-			"unicode": "F480"
 		}
 	]
 }

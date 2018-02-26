@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "StatusCircleInfo",
+			"unicode": "F13F"
+		},
+		{
 			"name": "StatusCircleBlock2",
 			"unicode": "F141"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "BranchCompare",
 			"unicode": "F294"
-		},
-		{
-			"name": "BranchMerge",
-			"unicode": "F295"
 		}
 	]
 }

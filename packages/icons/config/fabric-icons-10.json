@@ -9,6 +9,10 @@
 	},
 	"glyphs": [
 		{
+			"name": "FullWidthEdit",
+			"unicode": "F2FF"
+		},
+		{
 			"name": "Plug",
 			"unicode": "F300"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "ChevronUpEnd6",
 			"unicode": "F370"
-		},
-		{
-			"name": "ChevronLeftEnd6",
-			"unicode": "F371"
 		}
 	]
 }

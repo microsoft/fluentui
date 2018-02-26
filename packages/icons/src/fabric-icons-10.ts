@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-10"`,
-      src: `url('${baseUrl}fabric-icons-10-8a4520c5.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-10-380f2273.woff') format('woff')`,
     },
     icons: {
+      'FullWidthEdit': '\uF2FF',
       'Plug': '\uF300',
       'PlugSolid': '\uF301',
       'PlugConnected': '\uF302',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'DoubleChevronLeft8': '\uF36D',
       'DoubleChevronRight8': '\uF36E',
       'ChevronDownEnd6': '\uF36F',
-      'ChevronUpEnd6': '\uF370',
-      'ChevronLeftEnd6': '\uF371'
+      'ChevronUpEnd6': '\uF370'
     }
   };
 

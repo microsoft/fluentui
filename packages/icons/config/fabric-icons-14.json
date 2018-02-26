@@ -9,38 +9,6 @@
 	},
 	"glyphs": [
 		{
-			"name": "VersionControlPush",
-			"unicode": "F664"
-		},
-		{
-			"name": "ExternalGit",
-			"unicode": "F665"
-		},
-		{
-			"name": "WhiteBoardApp16",
-			"unicode": "F673"
-		},
-		{
-			"name": "WhiteBoardApp32",
-			"unicode": "F674"
-		},
-		{
-			"name": "InsertSignatureLine",
-			"unicode": "F677"
-		},
-		{
-			"name": "ArrangeByFrom",
-			"unicode": "F678"
-		},
-		{
-			"name": "Phishing",
-			"unicode": "F679"
-		},
-		{
-			"name": "CreateMailRule",
-			"unicode": "F67A"
-		},
-		{
 			"name": "PublishCourse",
 			"unicode": "F699"
 		},

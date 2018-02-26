@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-11"`,
-      src: `url('${baseUrl}fabric-icons-11-bb9c4989.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-11-2c5983e3.woff') format('woff')`,
     },
     icons: {
+      'ChevronLeftEnd6': '\uF371',
       'ChevronRightEnd6': '\uF372',
       'ContextMenu': '\uF37C',
       'AzureAPIManagement': '\uF37F',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'NugetLogo': '\uF44C',
       'TFVCLogo': '\uF44D',
       'ProjectLogo32': '\uF47E',
-      'ProjectLogoFill32': '\uF47F',
-      'ProjectLogo16': '\uF480'
+      'ProjectLogoFill32': '\uF47F'
     }
   };
 

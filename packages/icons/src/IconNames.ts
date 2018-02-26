@@ -763,6 +763,7 @@ export const enum IconNames {
   Sections = 'Sections',
   EditPhoto = 'EditPhoto',
   Starburst = 'Starburst',
+  ShareiOS = 'ShareiOS',
   AirTickets = 'AirTickets',
   PencilReply = 'PencilReply',
   Tiles2 = 'Tiles2',

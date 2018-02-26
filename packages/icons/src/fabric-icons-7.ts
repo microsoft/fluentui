@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-7"`,
-      src: `url('${baseUrl}fabric-icons-7-fe3a76c6.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-7-3ac670e6.woff') format('woff')`,
     },
     icons: {
       'LandscapeOrientation': '\uEF6B',
@@ -39,6 +39,7 @@ export function initializeIcons(
       'Sections': '\uEF76',
       'EditPhoto': '\uEF77',
       'Starburst': '\uEF78',
+      'ShareiOS': '\uEF79',
       'AirTickets': '\uEF7A',
       'PencilReply': '\uEF7B',
       'Tiles2': '\uEF7C',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'StatusTriangleInner': '\uF13A',
       'StatusTriangleExclamation': '\uF13B',
       'StatusCircleExclamation': '\uF13C',
-      'StatusCircleErrorX': '\uF13D',
-      'StatusCircleInfo': '\uF13F'
+      'StatusCircleErrorX': '\uF13D'
     }
   };
 
