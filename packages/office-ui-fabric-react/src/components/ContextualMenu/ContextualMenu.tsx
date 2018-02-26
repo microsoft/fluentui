@@ -745,14 +745,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     const targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
+      if (this._enterTimerId !== undefined) {
+        this._async.clearTimeout(this._enterTimerId);
+        this._enterTimerId = undefined;
+      }
+
       if (hasSubmenu(item)) {
         this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
       } else {
         this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
       }
+    } else {
+      targetElement.focus();
     }
-
-    targetElement.focus();
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
@@ -764,14 +769,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     if (item.key !== this.state.expandedMenuItemKey) {
+      if (this._enterTimerId !== undefined) {
+        this._async.clearTimeout(this._enterTimerId);
+        this._enterTimerId = undefined;
+      }
+
       if (hasSubmenu(item)) {
         this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
       } else {
         this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
       }
+    } else {
+      targetElement.focus();
     }
-
-    targetElement.focus();
   }
 
   @autobind
@@ -785,7 +795,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._enterTimerId = undefined;
     }
 
-    if (item.key === this.state.expandedMenuItemKey && hasSubmenu(item)) {
+    if (this.state.expandedMenuItemKey !== undefined) {
       return;
     }
 
