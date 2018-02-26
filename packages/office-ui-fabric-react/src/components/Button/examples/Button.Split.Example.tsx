@@ -8,9 +8,10 @@ import {
 import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  alert('Clicked: ');
 };
 
 export class ButtonSplitExample extends React.Component<IButtonProps> {
@@ -22,90 +23,94 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
     const classNames = getClassNames(getStyles);
 
     return (
-      <div className={ css(classNames.twoup) }>
-        <div>
-          <Label>Standard</Label>
-          <DefaultButton
-            data-automation-id='test'
-            disabled={ disabled }
-            checked={ checked }
-            text='Create account'
-            onClick={ alertClicked }
-            split={ true }
-            splitButtonAriaLabel={ 'See 2 sample options' }
-            style={ { height: '35px' } }
-            menuProps={ {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            } }
-          />
+      <FocusZone
+        direction={ FocusZoneDirection.horizontal } >
+        <div className={ css(classNames.twoup) }>
+          <div>
+            <Label>Standard</Label>
+            <DefaultButton
+              data-automation-id='test'
+              disabled={ disabled }
+              checked={ checked }
+              text='Create account'
+              onClick={ alertClicked }
+              // onMenuClick={ () => alert('OnMenuClick') }
+              split={ true }
+              splitButtonAriaLabel={ 'See 2 sample options' }
+              style={ { height: '35px' } }
+              menuProps={ {
+                items: [
+                  {
+                    key: 'emailMessage',
+                    name: 'Email message',
+                    icon: 'Mail'
+                  },
+                  {
+                    key: 'calendarEvent',
+                    name: 'Calendar event',
+                    icon: 'Calendar'
+                  }
+                ]
+              } }
+            />
+          </div>
+          <div>
+            <Label>Primary</Label>
+            <DefaultButton
+              primary
+              data-automation-id='test'
+              disabled={ disabled }
+              checked={ checked }
+              text='Create account'
+              onClick={ alertClicked }
+              split={ true }
+              style={ { height: '35px' } }
+              menuProps={ {
+                items: [
+                  {
+                    key: 'emailMessage',
+                    name: 'Email message',
+                    icon: 'Mail'
+                  },
+                  {
+                    key: 'calendarEvent',
+                    name: 'Calendar event',
+                    icon: 'Calendar'
+                  }
+                ]
+              } }
+            />
+          </div>
+          <div>
+            <Label>Primary Action Disabled</Label>
+            <DefaultButton
+              primary
+              data-automation-id='test'
+              disabled={ disabled }
+              primaryDisabled={ true }
+              checked={ checked }
+              text='Create account'
+              onClick={ alertClicked }
+              split={ true }
+              style={ { height: '35px' } }
+              menuProps={ {
+                items: [
+                  {
+                    key: 'emailMessage',
+                    name: 'Email message',
+                    icon: 'Mail'
+                  },
+                  {
+                    key: 'calendarEvent',
+                    name: 'Calendar event',
+                    icon: 'Calendar'
+                  }
+                ]
+              } }
+            />
+          </div>
         </div>
-        <div>
-          <Label>Primary</Label>
-          <DefaultButton
-            primary
-            data-automation-id='test'
-            disabled={ disabled }
-            checked={ checked }
-            text='Create account'
-            onClick={ alertClicked }
-            split={ true }
-            style={ { height: '35px' } }
-            menuProps={ {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            } }
-          />
-        </div>
-        <div>
-          <Label>Primary Action Disabled</Label>
-          <DefaultButton
-            primary
-            data-automation-id='test'
-            disabled={ disabled }
-            primaryDisabled={ true }
-            checked={ checked }
-            text='Create account'
-            onClick={ alertClicked }
-            split={ true }
-            style={ { height: '35px' } }
-            menuProps={ {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            } }
-          />
-        </div>
-      </div>
+      </FocusZone>
     );
   }
 }
