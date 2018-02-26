@@ -36,12 +36,16 @@ export const getArrowButtonStyles = memoizeFunction((
   customSpecificArrowStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
 
-  const { palette } = theme;
+  const {
+    semanticColors
+  } = theme;
 
-  const ArrowButtonTextColor = palette.neutralPrimary;
-  const ArrowButtonTextColorPressed = palette.white;
-  const ArrowButtonBackgroundHovered = palette.neutralLight;
-  const ArrowButtonBackgroundPressed = palette.themePrimary;
+  const ArrowButtonTextColor = semanticColors.buttonText;
+  const ArrowButtonTextColorHovered = semanticColors.buttonTextHovered;
+  const ArrowButtonTextColorPressed = semanticColors.buttonTextChecked;
+
+  const ArrowButtonBackgroundHovered = semanticColors.buttonBackgroundHovered;
+  const ArrowButtonBackgroundPressed = semanticColors.buttonBackgroundChecked;
 
   const defaultArrowButtonStyles: IButtonStyles = {
     root: {
@@ -59,7 +63,8 @@ export const getArrowButtonStyles = memoizeFunction((
       color: ArrowButtonTextColor
     },
     rootHovered: {
-      backgroundColor: ArrowButtonBackgroundHovered
+      backgroundColor: ArrowButtonBackgroundHovered,
+      color: ArrowButtonTextColorHovered
     },
     rootChecked: {
       backgroundColor: ArrowButtonBackgroundPressed,
@@ -121,12 +126,12 @@ export const getStyles = memoizeFunction((
 ): ISpinButtonStyles => {
   const { fonts, palette, semanticColors } = theme;
 
-  const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
-  const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
-  const SpinButtonRootBorderColorFocused = palette.themePrimary;
+  const SpinButtonRootBorderColor = semanticColors.inputBorder;
+  const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
+  const SpinButtonRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
 
-  const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
-  const SpinButtonInputTextColor = palette.neutralPrimary;
+  const SpinButtonTextColorDisabled = semanticColors.disabledText;
+  const SpinButtonInputTextColor = semanticColors.bodyText;
   const SpinButtonInputTextColorSelected = palette.white;
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
 
@@ -189,7 +194,8 @@ export const getStyles = memoizeFunction((
     },
     spinButtonWrapper: {
       display: 'flex',
-      height: '26px',
+      boxSizing: 'border-box',
+      height: '32px',
       minWidth: '86px',
       borderWidth: '1px',
       borderStyle: 'solid',
@@ -228,10 +234,10 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.medium,
       color: SpinButtonInputTextColor,
       height: '100%',
-      paddingTop: '3px',
-      paddingRight: '3px',
-      paddingBottom: '4px',
-      paddingLeft: '4px',
+      paddingTop: '0px',
+      paddingRight: '12px',
+      paddingBottom: '0px',
+      paddingLeft: '12px',
       outline: '0',
       textOverflow: 'ellipsis',
       display: 'block',
