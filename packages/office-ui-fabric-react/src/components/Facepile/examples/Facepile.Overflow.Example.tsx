@@ -49,8 +49,8 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
         <div className={ 'control' }>
           <Slider
             label='Number of Personas:'
-            min={ 0 }
-            max={ 6 }
+            min={ 1 }
+            max={ 5 }
             step={ 1 }
             showValue={ true }
             value={ this.state.displayedPersonas }
