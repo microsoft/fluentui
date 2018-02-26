@@ -214,11 +214,9 @@ export const getStyles = memoizeFunction((
     borderWidth: '2px',
     MsHighContrastAdjust: 'none',
     paddingLeft: '11px',
+    paddingTop: '0',
+    paddingBottom: '0',
     selectors: {
-      '.ms-ComboBox-Input': {
-        // ComboBoxHeight is 32, 28 accounts for the 2px borders
-        height: '28px'
-      },
       '.ms-ComboBox-CaretDown-button': {
         // Negative positioning to account for the 2px border
         right: '-2px',
@@ -237,9 +235,9 @@ export const getStyles = memoizeFunction((
         boxShadow: 'none',
         marginBottom: '10px',
         marginLeft: '0',
-        paddingTop: '0',
+        paddingTop: '1px', // The 1px padding centers the input field, avoiding overlap in the browser
+        paddingBottom: '1px',
         paddingRight: ComboxBoxCaretDownWidth,
-        paddingBottom: '0',
         paddingLeft: '12px',
         color: ComboBoxRootTextColor,
         position: 'relative',
@@ -316,7 +314,7 @@ export const getStyles = memoizeFunction((
     input: {
       boxSizing: 'border-box',
       width: '100%',
-      height: '30px',
+      height: '28px',
       borderStyle: 'none',
       outline: 'none',
       font: 'inherit',
