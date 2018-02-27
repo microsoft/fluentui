@@ -797,13 +797,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const menuExpanded = this.state.expandedMenuItemKey !== undefined;
 
-    //If the menu isn't expanded we can update focus without any delay
+    // If the menu is not expanded we can update focus without any delay
     if (!menuExpanded) {
       targetElement.focus();
     }
 
     // Delay updating expanding/dismissing the submenu
-    // and only set focus if we haven't already done so
+    // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
       this._enterTimerId = this._async.setTimeout(() => {
         menuExpanded && targetElement.focus();
