@@ -96,7 +96,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _classNames: IContextualMenuClassNames;
   private _isScrollIdle: boolean;
-  private readonly _scrollIdleDelay: number = 250 /* ms */;
+  private readonly _navigationIdleDelay: number = 250 /* ms */;
   private _scrollIdleTimeoutId: number | undefined;
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
@@ -734,7 +734,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._scrollIdleDelay);
+    this._scrollIdleTimeoutId = this._async.setTimeout(() => { this._isScrollIdle = true; }, this._navigationIdleDelay);
   }
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
@@ -742,17 +742,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    const targetElement = ev.currentTarget as HTMLElement;
-
-    if (item.key !== this.state.expandedMenuItemKey) {
-      if (hasSubmenu(item)) {
-        this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
-      } else {
-        this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
-      }
-    }
-
-    targetElement.focus();
+    this._updateFocusOnMouseEvent(item, ev);
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>) {
@@ -763,15 +753,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    if (item.key !== this.state.expandedMenuItemKey) {
-      if (hasSubmenu(item)) {
-        this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
-      } else {
-        this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
-      }
-    }
-
-    targetElement.focus();
+    this._updateFocusOnMouseEvent(item, ev);
   }
 
   @autobind
@@ -785,7 +767,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._enterTimerId = undefined;
     }
 
-    if (item.key === this.state.expandedMenuItemKey && hasSubmenu(item)) {
+    if (this.state.expandedMenuItemKey !== undefined) {
       return;
     }
 
@@ -798,6 +780,43 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       (this._host as any).setActive();
     } else {
       this._host.focus();
+    }
+  }
+
+  /**
+   * Handles updating focus when mouseEnter or mouseMove fire.
+   * As part of updating focus, This function will also update
+   * the expand/collapse state accordingly.
+   */
+  private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
+    const targetElement = ev.currentTarget as HTMLElement;
+
+    if (item.key === this.state.expandedMenuItemKey) {
+      return;
+    }
+
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+    }
+
+    // If the menu is not expanded we can update focus without any delay
+    if (this.state.expandedMenuItemKey === undefined) {
+      targetElement.focus();
+    }
+
+    // Delay updating expanding/dismissing the submenu
+    // and only set focus if we have not already done so
+    if (hasSubmenu(item)) {
+      this._enterTimerId = this._async.setTimeout(() => {
+        targetElement.focus();
+        this._onItemSubMenuExpand(item, targetElement);
+      }, this._navigationIdleDelay);
+    } else {
+      this._enterTimerId = this._async.setTimeout(() => {
+        this._onSubMenuDismiss(ev);
+        targetElement.focus();
+      }, this._navigationIdleDelay);
     }
   }
 
