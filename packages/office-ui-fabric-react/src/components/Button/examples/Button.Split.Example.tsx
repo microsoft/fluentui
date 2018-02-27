@@ -10,7 +10,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
 const alertClicked = (): void => {
-  alert('Clicked: ');
+  alert('Clicked');
 };
 
 export class ButtonSplitExample extends React.Component<IButtonProps> {
