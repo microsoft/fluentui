@@ -64,6 +64,25 @@ export class ContextualMenuSubmenuExample extends React.Component<any, any> {
                   ],
                 },
                 name: 'Share'
+              },
+              {
+                key: 'subMenuDismiss',
+                name: "Dismiss Sub Menu Example",
+                subMenuProps: {
+                  onAfterSubMenuDismiss: () => { alert("Sub Menu Dismissed!") },
+                  items: [
+                    {
+                      key: 'dismissSubMenuExample1',
+                      name: 'Dismiss Sub Menu Example Item 1',
+                      title: 'Dismiss Sub Menu Example Item 1'
+                    },
+                    {
+                      key: 'dismissSubMenuExample2',
+                      name: 'Dismiss Sub Menu Example Item 2',
+                      title: 'Dismiss Sub Menu Example Item 2',
+                    }
+                  ]
+                }
               }
             ]
           }
