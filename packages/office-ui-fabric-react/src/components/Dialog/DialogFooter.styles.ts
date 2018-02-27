@@ -15,8 +15,8 @@ export const getStyles = (
   const { palette, semanticColors } = theme;
 
   return ({
-    root: [
-      'ms-DialogFooter',
+    actions: [
+      'ms-Dialog-actions',
       {
         // Insert css properties
 

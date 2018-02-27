@@ -111,7 +111,7 @@ export interface IDialogContentStyles {
   /**
    * Style for the root element.
    */
-  root?: IStyle;
+  content?: IStyle;
 
   // Insert DialogContent classNames below
 }

@@ -15,7 +15,7 @@ export const getStyles = (
   const { palette, semanticColors } = theme;
 
   return ({
-    root: [
+    content: [
       'ms-DialogContent',
       {
         // Insert css properties

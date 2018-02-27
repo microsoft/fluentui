@@ -46,7 +46,7 @@ export interface IDialogFooterStyles {
   /**
    * Style for the root element.
    */
-  root?: IStyle;
+  actions?: IStyle;
 
   // Insert DialogFooter classNames below
 }
