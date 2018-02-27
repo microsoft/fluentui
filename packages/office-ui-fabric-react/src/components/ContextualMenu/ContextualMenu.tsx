@@ -786,25 +786,34 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
 
-    if (item.key !== this.state.expandedMenuItemKey) {
-      if (this._enterTimerId !== undefined) {
-        this._async.clearTimeout(this._enterTimerId);
-        this._enterTimerId = undefined;
-      }
+    if (item.key === this.state.expandedMenuItemKey) {
+      return;
+    }
 
-      if (hasSubmenu(item)) {
-        this._enterTimerId = this._async.setTimeout(() => {
-          this._onItemSubMenuExpand(item, targetElement);
-          targetElement.focus();
-        }, this._navigationIdleDelay);
-      } else {
-        this._enterTimerId = this._async.setTimeout(() => {
-          this._onSubMenuDismiss(ev);
-          targetElement.focus();
-        }, this._navigationIdleDelay);
-      }
-    } else {
+    if (this._enterTimerId !== undefined) {
+      this._async.clearTimeout(this._enterTimerId);
+      this._enterTimerId = undefined;
+    }
+
+    const menuExpanded = this.state.expandedMenuItemKey !== undefined;
+
+    //If the menu isn't expanded we can update focus without any delay
+    if (!menuExpanded) {
       targetElement.focus();
+    }
+
+    // Delay updating expanding/dismissing the submenu
+    // and only set focus if we haven't already done so
+    if (hasSubmenu(item)) {
+      this._enterTimerId = this._async.setTimeout(() => {
+        menuExpanded && targetElement.focus();
+        this._onItemSubMenuExpand(item, targetElement);
+      }, this._navigationIdleDelay);
+    } else {
+      this._enterTimerId = this._async.setTimeout(() => {
+        this._onSubMenuDismiss(ev);
+        menuExpanded && targetElement.focus();
+      }, this._navigationIdleDelay);
     }
   }
 
