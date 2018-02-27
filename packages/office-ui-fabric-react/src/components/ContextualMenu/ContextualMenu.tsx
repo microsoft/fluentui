@@ -800,10 +800,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this._enterTimerId = undefined;
     }
 
-    const menuExpanded = this.state.expandedMenuItemKey !== undefined;
-
     // If the menu is not expanded we can update focus without any delay
-    if (!menuExpanded) {
+    if (this.state.expandedMenuItemKey === undefined) {
       targetElement.focus();
     }
 
@@ -811,13 +809,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // and only set focus if we have not already done so
     if (hasSubmenu(item)) {
       this._enterTimerId = this._async.setTimeout(() => {
-        menuExpanded && targetElement.focus();
+        targetElement.focus();
         this._onItemSubMenuExpand(item, targetElement);
       }, this._navigationIdleDelay);
     } else {
       this._enterTimerId = this._async.setTimeout(() => {
         this._onSubMenuDismiss(ev);
-        menuExpanded && targetElement.focus();
+        targetElement.focus();
       }, this._navigationIdleDelay);
     }
   }
