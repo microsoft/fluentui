@@ -4,7 +4,7 @@ import {
   HighContrastSelector,
   IStyle,
   ITheme,
-} from '@uifabric/styling';
+} from '../..//Styling';
 import { memoizeFunction } from '@uifabric/utilities';
 
 export const getStyles = (
