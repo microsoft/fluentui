@@ -20,7 +20,8 @@ import {
 import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
-import * as RefCreator from '@uifabric/utilities/lib/RefCreator';
+import { createRef } from '../../Utilities';
+
 const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
@@ -47,12 +48,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     [key: string]: React.ReactInstance;
   };
 
-  private _searchSurface = RefCreator.createRef();
-  private _commandSurface = RefCreator.createRef();
-  private _commandBarRegion = RefCreator.createRef();
-  private _farCommandSurface = RefCreator.createRef();
-  private _focusZone = RefCreator.createRef<FocusZone>();
-  private _overflow = RefCreator.createRef();
+  private _searchSurface = createRef<HTMLDivElement>();
+  private _commandSurface = createRef<HTMLDivElement>();
+  private _commandBarRegion = createRef<HTMLDivElement>();
+  private _farCommandSurface = createRef<HTMLDivElement>();
+  private _focusZone = createRef<FocusZone>();
+  private _overflow = createRef<HTMLDivElement>();
 
   private _id: string;
   private _overflowWidth: number;
@@ -168,7 +169,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public focus() {
-    this._focusZone.value && this._focusZone.value.focus();
+    const { value: focusZone } = this._focusZone;
+    focusZone && focusZone.focus();
   }
 
   private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean) {
@@ -423,7 +425,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   @autobind
   private _onContextMenuDismiss(ev?: any) {
-    if (!ev || !ev.relatedTarget || this._commandSurface.value && !this._commandSurface.value.contains(ev.relatedTarget as HTMLElement)) {
+    const { value: commandSurface } = this._commandSurface;
+
+    if (!ev || !ev.relatedTarget || commandSurface && !commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       const { contextualMenuProps } = this.state;
 
       if (contextualMenuProps && contextualMenuProps.onDismiss) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createRef } from './RefCreator';
+import { createRef } from './createRef';
 
 describe('createRef', () => {
   it('to have a value prop that is null on creation', () => {
