@@ -14,7 +14,6 @@ import {
   IResizeGroupStyles,
   IResizeGroupStyleProps
 } from './ResizeGroup.types';
-import * as styles from './ResizeGroup.scss';
 
 const RESIZE_DELAY = 16;
 
