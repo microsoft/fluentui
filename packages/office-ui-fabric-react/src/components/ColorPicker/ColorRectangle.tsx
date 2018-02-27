@@ -35,7 +35,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     minSize: 220
   };
 
-  private root: HTMLDivElement;
+  private _root: HTMLDivElement;
 
   constructor(props: IColorRectangleProps) {
     super(props);
