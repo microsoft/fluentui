@@ -1,4 +1,5 @@
 import { ktpPrefix, ktpSeparator } from '../keytip/KeytipUtils';
+import { find } from '../../Utilities';
 
 export interface IKeySequence {
   keys: string[];
@@ -46,12 +47,9 @@ export function fullKeySequencesAreEqual(seq1: IKeySequence[], seq2: IKeySequenc
  * @returns {boolean} T/F if 'sequences' contains 'seq'
  */
 export function keySequencesContain(sequences: IKeySequence[], seq: IKeySequence): boolean {
-  for (let i = 0; i < sequences.length; i++) {
-    if (keySequencesAreEqual(sequences[i], seq)) {
-      return true;
-    }
-  }
-  return false;
+  return !!find(sequences, (sequence: IKeySequence) => {
+    return keySequencesAreEqual(sequence, seq);
+  });
 }
 
 /**
@@ -79,9 +77,7 @@ export function keySequenceStartsWith(seq1: IKeySequence, seq2: IKeySequence): b
  * @returns {string} String to use for the keytip ID
  */
 export function convertSequencesToKeytipID(keySequences: IKeySequence[]): string {
-  let conversion = ktpPrefix;
-  for (let keySequence of keySequences) {
-    conversion += ktpSeparator + keySequence.keys.join(ktpSeparator);
-  }
-  return conversion;
+  return keySequences.reduce((prevValue: string, keySequence: IKeySequence): string => {
+    return prevValue + ktpSeparator + keySequence.keys.join(ktpSeparator);
+  }, ktpPrefix);
 }

@@ -61,11 +61,9 @@ export class KeytipManager {
       return describedby;
     }
 
-    for (let i = 0; i < keySequences.length; i++) {
-      describedby += ' ' + convertSequencesToKeytipID(keySequences.slice(0, i + 1));
-    }
-
-    return describedby;
+    return keySequences.reduce((prevValue: string, keySequence: IKeySequence, currentIndex: number): string => {
+      return prevValue + ' ' + convertSequencesToKeytipID(keySequences.slice(0, currentIndex + 1));
+    }, describedby);
   }
 
   /**

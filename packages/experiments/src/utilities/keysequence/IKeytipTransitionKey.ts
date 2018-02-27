@@ -1,4 +1,5 @@
 import { KeytipTransitionModifier } from '../../Keytip';
+import { find } from '../../Utilities';
 
 export interface IKeytipTransitionKey {
   key: string;
@@ -30,18 +31,13 @@ export function transitionKeysAreEqual(key1: IKeytipTransitionKey, key2: IKeytip
       return false;
     }
 
-    // Check that all items in mod1 are in mod2
-    // Order doesn't matter
-    let mod2Copy = [...mod2];
+    // Sort both arrays
+    mod1 = mod1.sort();
+    mod2 = mod2.sort();
     for (let i = 0; i < mod1.length; i++) {
-      let index = mod2Copy.indexOf(mod1[i]);
-      if (index < 0) {
+      if (mod1[i] !== mod2[i]) {
         return false;
       }
-      mod2Copy.splice(index, 1);
-    }
-    if (mod2Copy.length !== 0) {
-      return false;
     }
   }
 
@@ -56,10 +52,7 @@ export function transitionKeysAreEqual(key1: IKeytipTransitionKey, key2: IKeytip
  * @returns {boolean} T/F if 'keys' contains 'key'
  */
 export function transitionKeysContain(keys: IKeytipTransitionKey[], key: IKeytipTransitionKey): boolean {
-  for (let i = 0; i < keys.length; i++) {
-    if (transitionKeysAreEqual(keys[i], key)) {
-      return true;
-    }
-  }
-  return false;
+  return !!find(keys, (transitionKey: IKeytipTransitionKey) => {
+    return transitionKeysAreEqual(transitionKey, key);
+  });
 }

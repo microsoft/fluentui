@@ -6,7 +6,7 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, findIndex } from '../../Utilities';
 import { convertSequencesToKeytipID, fullKeySequencesAreEqual } from '../../utilities/keysequence/IKeySequence';
 import { IKeytipTransitionKey } from '../../utilities/keysequence/IKeytipTransitionKey';
 import { KeytipManager } from '../../utilities/keytip/KeytipManager';
@@ -85,14 +85,12 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
   public addKeytip(keytipProps: IKeytipProps): {} {
     return (previousState: IKeytipLayerState) => {
       let previousKeytips: IKeytipProps[] = previousState.keytips;
+
       // Try to find keytipProps in previousKeytips to update
-      let keytipToUpdateIndex = -1;
-      for (let i = 0; i < previousKeytips.length; i++) {
-        if (fullKeySequencesAreEqual(keytipProps.keySequences, previousKeytips[i].keySequences)) {
-          keytipToUpdateIndex = i;
-          break;
-        }
-      }
+      let keytipToUpdateIndex = findIndex(previousKeytips, (previousKeytip: IKeytipProps) => {
+        return fullKeySequencesAreEqual(keytipProps.keySequences, previousKeytip.keySequences);
+      });
+
       let currentKeytips = [...previousState.keytips];
       if (keytipToUpdateIndex >= 0) {
         // Replace the keytip props

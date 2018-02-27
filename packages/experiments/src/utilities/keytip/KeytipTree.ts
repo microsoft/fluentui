@@ -5,6 +5,7 @@ import {
   convertSequencesToKeytipID
 } from '../../utilities/keysequence/IKeySequence';
 import { IKeytipProps } from 'src/Keytip';
+import { find } from '../../Utilities';
 
 export interface IKeytipTreeNode {
   /**
@@ -196,13 +197,10 @@ export class KeytipTree {
    */
   public getExactMatchedNode(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
     let possibleNodes = this._getNodes(currentKeytip.children);
-    for (let node of possibleNodes) {
-      // A node is matched if its sequence is the same and it is not disabled
-      if (keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled) {
-        return node;
-      }
-    }
-    return undefined;
+
+    return find(possibleNodes, (node: IKeytipTreeNode) => {
+      return keySequencesAreEqual(node.keytipSequence, keySequence) && !node.disabled;
+    });
   }
 
   /**
@@ -213,15 +211,11 @@ export class KeytipTree {
    * @returns {IKeytipTreeNode[]} List of tree nodes that partially match the given sequence
    */
   public getPartiallyMatchedNodes(keySequence: IKeySequence, currentKeytip: IKeytipTreeNode): IKeytipTreeNode[] {
-    let nodes: IKeytipTreeNode[] = [];
     let possibleNodes = this._getNodes(currentKeytip.children);
-    for (let node of possibleNodes) {
-      // A node is matched if its sequence is a subset and it is not disabled
-      if (keySequenceStartsWith(node.keytipSequence, keySequence) && !node.disabled) {
-        nodes.push(node);
-      }
-    }
-    return nodes;
+
+    return possibleNodes.filter((node: IKeytipTreeNode) => {
+      return keySequenceStartsWith(node.keytipSequence, keySequence) && !node.disabled;
+    });
   }
 
   /**
@@ -268,11 +262,9 @@ export class KeytipTree {
    * @returns {IKeytipTreeNode[]} Array of nodes that match the given IDs
    */
   private _getNodes(ids: string[]): IKeytipTreeNode[] {
-    let nodes: IKeytipTreeNode[] = [];
-    for (let id of ids) {
-      nodes.push(this.nodeMap[id]);
-    }
-    return nodes;
+    return ids.map((id: string): IKeytipTreeNode => {
+      return this.nodeMap[id];
+    });
   }
 
   /**
