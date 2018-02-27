@@ -783,6 +783,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  /**
+   * Hnadles updating focus when mouseEnter or mouseMove fire.
+   * As part of updating focus, This function will also update
+   * the expand/collapse state accordingly.
+   */
   private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
 
