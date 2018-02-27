@@ -157,6 +157,7 @@ export interface IDialogStyleProps {
    */
   className?: string;
   containerClassName?: string;
+  contentClassName?: string;
 
   /**
   * Whether the dialog is hidden.

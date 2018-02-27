@@ -3,7 +3,7 @@ import {
   IStyle,
   ITheme,
   FontWeights,
-  ScreenWidthMinMedium
+  ScreenWidthMinMedium,
 } from '../../Styling';
 
 export const getStyles = (
@@ -11,6 +11,8 @@ export const getStyles = (
 ): IDialogStyles => {
   const {
     className,
+    containerClassName,
+    contentClassName,
     theme,
     hidden,
     isLargeHeader,
@@ -26,11 +28,14 @@ export const getStyles = (
   return ({
     root: [
       'ms-Dialog',
+      className,
+    ],
+    main: [
       {
         width: dialogDefaultMinWidth,
 
         selectors: {
-          [`@media (min-width: ${ScreenWidthMinMedium})`]: {
+          [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {
             width: 'auto',
             maxWidth: dialogDefaultMaxWidth,
             minWidth: dialogDefaultMinWidth,
@@ -38,7 +43,7 @@ export const getStyles = (
         }
       },
       !hidden && { display: 'flex' },
-      className
+      containerClassName,
     ],
 
     button: [
