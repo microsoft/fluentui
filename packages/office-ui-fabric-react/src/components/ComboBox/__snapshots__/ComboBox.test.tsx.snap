@@ -28,10 +28,10 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           margin-left: 0;
           outline: 0;
           overflow: hidden;
-          padding-bottom: 0;
+          padding-bottom: 1px;
           padding-left: 12px;
           padding-right: 32px;
-          padding-top: 0;
+          padding-top: 1px;
           position: relative;
           text-overflow: ellipsis;
           user-select: none;
@@ -53,10 +53,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           border-color: Highlight;
           border-width: 2px;
           color: HighlightText;
+          padding-bottom: 0;
           padding-left: 11px;
-        }
-        @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-Input {
-          height: 28px;
+          padding-top: 0;
         }
         @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
           right: -2px;
@@ -80,10 +79,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           border-color: Highlight;
           border-width: 2px;
           color: HighlightText;
+          padding-bottom: 0;
           padding-left: 11px;
-        }
-        @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-Input {
-          height: 28px;
+          padding-top: 0;
         }
         @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
           right: -2px;
@@ -98,10 +96,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           border-color: Highlight;
           border-width: 2px;
           color: HighlightText;
+          padding-bottom: 0;
           padding-left: 11px;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
-          height: 28px;
+          padding-top: 0;
         }
         @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
           right: -2px;
@@ -127,7 +124,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             border-style: none;
             box-sizing: border-box;
             font: inherit;
-            height: 30px;
+            height: 28px;
             outline: none;
             padding-bottom: 0;
             padding-left: 0;

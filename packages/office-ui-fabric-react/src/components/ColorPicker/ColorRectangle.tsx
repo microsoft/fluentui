@@ -35,7 +35,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     minSize: 220
   };
 
-  private root: HTMLDivElement;
+  private _root: HTMLDivElement;
 
   constructor(props: IColorRectangleProps) {
     super(props);
@@ -87,7 +87,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
   @autobind
   private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
     const { color, onSVChanged } = this.props;
-    const rectSize = this.root.getBoundingClientRect();
+    const rectSize = this._root.getBoundingClientRect();
 
     const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;

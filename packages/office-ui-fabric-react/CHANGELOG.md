@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 24 Feb 2018 05:10:14 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Feb 2018 06:33:39 GMT and should not be manually modified.
+
+## 5.55.2
+Tue, 27 Feb 2018 06:33:39 GMT
+
+### Patches
+
+- DatePicker calls onDateSelected then AfterMenuDismissed to follow the same pattern as BaseButton
+- ColorPicker: internal ref issue was fixed, which lets colors be picked a little better.
 
 ## 5.55.1
 Sat, 24 Feb 2018 05:10:13 GMT
