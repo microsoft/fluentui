@@ -76,55 +76,61 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
           ) }
 
-          { options!.map((option: IChoiceGroupOption) => {
-            const {
-              onRenderField = this._onRenderField,
-              onRenderLabel = this._onRenderLabel
-            } = option;
+          <div
+            className={ css('ms-ChoiceFieldGroup-flexContainer', options!.some(
+              option => Boolean(option.iconProps || option.imageSrc)
+            ) && styles.optionsContainIconOrImage) }
+          >
+            { options!.map((option: IChoiceGroupOption) => {
+              const {
+                onRenderField = this._onRenderField,
+                onRenderLabel = this._onRenderLabel
+              } = option;
 
-            // Merge internal props into option
-            assign(option, {
-              checked: option.key === keyChecked,
-              disabled: option.disabled || this.props.disabled,
-              id: `${this._id}-${option.key}`,
-              labelId: `${this._labelId}-${option.key}`,
-              onRenderLabel
-            });
+              // Merge internal props into option
+              assign(option, {
+                checked: option.key === keyChecked,
+                disabled: option.disabled || this.props.disabled,
+                id: `${this._id}-${option.key}`,
+                labelId: `${this._labelId}-${option.key}`,
+                onRenderLabel
+              });
 
-            return (
-              <div
-                key={ option.key }
-                className={ css('ms-ChoiceField', styles.choiceField, {
-                  ['ms-ChoiceField--image ' + styles.choiceFieldIsImage]: !!option.imageSrc,
-                  ['ms-ChoiceField--icon ' + styles.choiceFieldIsIcon]: !!option.iconProps,
-                  ['is-inFocus ' + styles.choiceFieldIsInFocus]: option.key === keyFocused
-                })
-                }
-              >
-                <div className={ css('ms-ChoiceField-wrapper', styles.choiceFieldWrapper) }>
-                  <input
-                    ref={ this._resolveRef('_inputElement') }
-                    id={ option.id }
-                    className={ css('ms-ChoiceField-input', styles.input, {
-                      ['ms-ChoiceField--image ' + styles.inputHasImage]: !!option.imageSrc,
-                      ['ms-ChoiceField--icon ' + styles.inputHasIcon]: !!option.iconProps
-                    }) }
-                    type='radio'
-                    name={ this.props.name || this._id }
-                    disabled={ option.disabled || this.props.disabled }
-                    checked={ option.key === keyChecked }
-                    required={ required }
-                    onChange={ this._onChange.bind(this, option) }
-                    onFocus={ this._onFocus.bind(this, option) }
-                    onBlur={ this._onBlur.bind(this, option) }
-                    aria-labelledby={ option.id }
-                    { ...getNativeProps(option, inputProperties) }
-                  />
-                  { onRenderField(option, this._onRenderField) }
+              return (
+                <div
+                  key={ option.key }
+                  className={ css('ms-ChoiceField', styles.choiceField, {
+                    ['ms-ChoiceField--image ' + styles.choiceFieldIsImage]: !!option.imageSrc,
+                    ['ms-ChoiceField--icon ' + styles.choiceFieldIsIcon]: !!option.iconProps,
+                    ['is-inFocus ' + styles.choiceFieldIsInFocus]: option.key === keyFocused
+                  })
+                  }
+                >
+                  <div className={ css('ms-ChoiceField-wrapper', styles.choiceFieldWrapper) }>
+                    <input
+                      ref={ this._resolveRef('_inputElement') }
+                      id={ option.id }
+                      className={ css('ms-ChoiceField-input', styles.input, {
+                        ['ms-ChoiceField--image ' + styles.inputHasImage]: !!option.imageSrc,
+                        ['ms-ChoiceField--icon ' + styles.inputHasIcon]: !!option.iconProps
+                      }) }
+                      type='radio'
+                      name={ this.props.name || this._id }
+                      disabled={ option.disabled || this.props.disabled }
+                      checked={ option.key === keyChecked }
+                      required={ required }
+                      onChange={ this._onChange.bind(this, option) }
+                      onFocus={ this._onFocus.bind(this, option) }
+                      onBlur={ this._onBlur.bind(this, option) }
+                      aria-labelledby={ option.id }
+                      { ...getNativeProps(option, inputProperties) }
+                    />
+                    { onRenderField(option, this._onRenderField) }
+                  </div>
                 </div>
-              </div>
-            );
-          }) }
+              );
+            }) }
+          </div>
         </div>
       </div>
     );
