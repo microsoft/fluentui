@@ -173,18 +173,18 @@ export interface IDialogStyles {
   /**
    * Style for the root element.
    */
-  root?: IStyle;
-
-  button?: IStyle;
-  inner?: IStyle;
-  header?: IStyle;
-  title?: IStyle;
-  topButton?: IStyle;
-  content?: IStyle;
-  subText?: IStyle;
-  actions?: IStyle;
-  actionsRight?: IStyle;
-  action?: IStyle;
+  root: IStyle;
+  main: IStyle;
+  button: IStyle;
+  inner: IStyle;
+  header: IStyle;
+  title: IStyle;
+  topButton: IStyle;
+  content: IStyle;
+  subText: IStyle;
+  actions: IStyle;
+  actionsRight: IStyle;
+  action: IStyle;
   // isMultiline: IStyle;
   // isLargeHeader: IStyle;
 }
