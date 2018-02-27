@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[ColorRectangle, Sticky] Fixed null root refs",
+      "comment": "[ColorRectangle] Fixed null root ref",
       "type": "patch"
     }
   ],
