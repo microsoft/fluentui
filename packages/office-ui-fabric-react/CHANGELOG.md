@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Feb 2018 06:33:39 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Feb 2018 22:56:59 GMT and should not be manually modified.
+
+## 5.55.3
+Tue, 27 Feb 2018 22:56:59 GMT
+
+### Patches
+
+- ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions.
+- Toggle color fixes
+- Fixing direct references to @uifabric which breaks AMD
+- Fixing reference of 'utilities/contextualMenu' to point an actual file.
+- Allow ScrollablePane to accept native properties.
+- Make ScrollablePane._sortStickies change elements only when needed.
+- Fix this.root undefined issue in Sticky component.
 
 ## 5.55.2
 Tue, 27 Feb 2018 06:33:39 GMT
