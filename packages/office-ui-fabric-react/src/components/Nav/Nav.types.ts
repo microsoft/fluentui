@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { NavBase } from './Nav.base';
+import { IStyle, ITheme } from '../../Styling';
+import { IRenderFunction, IStyleFunction } from '../../Utilities';
 
 export interface INav {
   /**
@@ -19,14 +21,25 @@ export interface INavProps {
   componentRef?: (component: INav) => void;
 
   /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  getStyles?: IStyleFunction<INavStyleProps, INavStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Nav
+   * @defaultvalue undefined
+   */
+  className?: string;
+
+  /**
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[] | null;
-
-  /**
-   * Optional class name to allow styling.
-   */
-  className?: string;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -200,4 +213,132 @@ export interface INavLink {
    * (Optional) Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
+}
+
+export interface INavStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * is element on top boolean
+   */
+  isOnTop?: boolean;
+
+  /**
+   * is element a link boolean
+   */
+  isLink?: boolean;
+
+  /**
+   * is element a group boolean
+   */
+  isGroup?: boolean;
+
+  /**
+   * is element expanded boolean
+   */
+  isExpanded?: boolean;
+
+  /**
+   * is element selected boolean
+   */
+  isSelected?: boolean;
+
+  /**
+   * is button
+   */
+  isButtonEntry?: boolean;
+
+  /**
+   * Nav height value
+   */
+  navHeight?: number;
+
+  /**
+   * left padding value
+   */
+  leftPadding?: number;
+
+  /**
+   * left padding when expanded value
+   */
+  leftPaddingExpanded?: number;
+
+  /**
+   * right padding value
+   */
+  rightPadding?: number;
+
+  /**
+   * position value
+   */
+  position?: number;
+
+  /**
+   * Inherited from INavProps
+   * A collection of link groups to display in the navigation bar
+   */
+  groups: INavLinkGroup[] | null;
+}
+
+export interface INavStyles {
+  /**
+   * Style set for the root element.
+   */
+  root: IStyle;
+
+  /**
+   * Style set for the link text container div element.
+   */
+  linkText: IStyle;
+
+  /**
+  * Style set for the link element extending the
+  * root style set for ActionButton component.
+  */
+  link: IStyle;
+
+  /**
+   * Style set for the composite link container div element
+   */
+  compositeLink: IStyle;
+
+  /**
+   * Style set for the chevron button inside the composite
+   * link and group elements.
+   */
+  chevronButton: IStyle;
+
+  /**
+   * Style set for the chevron icon inside the composite
+   * link and group elements.
+   */
+  chevronIcon: IStyle;
+
+  /**
+   * Style set for the nav links ul element.
+   */
+  navItems: IStyle;
+
+  /**
+   * Style set for the nav links li element.
+   */
+  navItem: IStyle;
+
+  /**
+   * Style set for the group root div.
+   */
+  group: IStyle;
+
+  /**
+   * Style set for the group content div inside group.
+   */
+  groupContent: IStyle;
 }

@@ -5,7 +5,8 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 
 export interface IDatePicker {
-
+  /** Sets focus to the text field */
+  focus(): void;
 }
 
 export interface IDatePickerProps extends React.Props<DatePicker> {
@@ -169,6 +170,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * The initially highlighted date in the calendar picker
    */
   initialPickerDate?: Date;
+
+  /**
+ * Callback that runs after DatePicker's menu (Calendar) is closed
+ */
+  onAfterMenuDismiss?: () => void;
 }
 
 export interface IDatePickerStrings {

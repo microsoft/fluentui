@@ -34,10 +34,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     value: 0
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+  private _root: HTMLElement;
 
   constructor(props: IColorSliderProps) {
     super(props);
@@ -65,7 +62,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     return (
       <div
-        ref='root'
+        ref={ this._resolveRef('_root') }
         className={ css(
           'ms-ColorPicker-slider',
           styles.slider,
@@ -91,7 +88,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
   @autobind
   private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
     const { onChanged, minValue, maxValue } = this.props;
-    const rectSize = this.refs.root.getBoundingClientRect();
+    const rectSize = this._root.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
     const newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));

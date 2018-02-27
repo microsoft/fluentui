@@ -4,6 +4,8 @@ import { SwatchColorPicker } from 'office-ui-fabric-react/lib/SwatchColorPicker'
 export interface IBasicSwatchColorPickerExampleState {
   color: string | undefined;
   previewColor: string | undefined;
+  color2: string | undefined;
+  previewColor2: string | undefined;
 }
 
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
@@ -12,7 +14,9 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
 
     this.state = {
       color: undefined,
-      previewColor: undefined
+      previewColor: undefined,
+      color2: undefined,
+      previewColor2: undefined
     };
   }
   public render() {
@@ -90,6 +94,38 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
             ]
           }
         />
+        <div id='foo' tab-index='-1'>
+          <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
+          <div style={ { color: this.state.previewColor2 ? this.state.previewColor2 : this.state.color2 ? this.state.color2 : null, fontSize: '24px' } } >Sample Text</div>
+          <SwatchColorPicker
+            focusOnHover={ true }
+            mouseLeaveParentSelector={ '#foo' }
+            // tslint:disable:jsx-no-lambda
+            onCellHovered={ (id, color) => this.setState({ previewColor2: color! }) }
+            onCellFocused={ (id, color) => this.setState({ previewColor2: color! }) }
+            onColorChanged={ (id, newColor) => this.setState({ color2: newColor }) }
+            // tslint:enable:jsx-no-lambda
+            columnCount={ 4 }
+            cellShape={ 'circle' }
+            colorCells={
+              [
+                { id: 'a', label: 'green', color: '#00ff00' },
+                { id: 'b', label: 'orange', color: '#ffa500' },
+                { id: 'c', label: 'blue', color: '#0000ff' },
+                { id: 'd', label: 'red', color: '#ff0000' },
+                { id: 'g', label: 'green', color: 'green' },
+                { id: 'h', label: 'orange', color: 'orange' },
+                { id: 'i', label: 'blue', color: 'blue' },
+                { id: 'j', label: 'red', color: 'red' },
+                { id: 'k', label: 'black', color: 'black' },
+                { id: 'l', label: 'grey', color: 'grey' },
+                { id: 'm', label: 'purple', color: 'purple' },
+                { id: 'n', label: 'yellow', color: 'yellow' }
+
+              ]
+            }
+          />
+        </div>
       </div>
     );
   }
