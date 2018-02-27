@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Calendar: changing refs to componentRef.",
+      "comment": "Fix this.root undefined issue in Sticky component.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "s@warmsea.net"
 }

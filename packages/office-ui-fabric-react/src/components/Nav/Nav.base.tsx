@@ -21,10 +21,10 @@ import {
 } from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
-const _indentationSize: number = 14;
+const _indentationSize = 14;
 
 // The number of pixels of left margin
-const _baseIndent: number = 3;
+const _baseIndent = 3;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -171,6 +171,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
+    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
     const { getStyles, groups, theme } = this.props;
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -183,7 +184,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
     return (
       <div
-        { ...getNativeProps(link, divProperties) }
+        { ...divProps }
         key={ link.key || linkIndex }
         className={ classNames.compositeLink }
       >

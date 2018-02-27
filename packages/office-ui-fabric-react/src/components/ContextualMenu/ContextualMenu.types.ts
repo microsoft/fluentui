@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZoneDirection } from '../../FocusZone';
+import { FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -15,6 +15,8 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import { ContextualMenuItem } from './ContextualMenuItem';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -169,7 +171,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * Direction for arrow navigation of the ContextualMenu. Should only be specified if using custom-rendered menu items.
-   * @default FocusZoneDirection.vertical
+   * @deprecated Use focusZoneProps instead
    */
   arrowDirection?: FocusZoneDirection;
 
@@ -219,6 +221,22 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Method to override the render of the individual menu items
+   * @default ContextualMenuItem
+   */
+  contextualMenuItemAs?:
+    React.ComponentClass<IContextualMenuItemProps> |
+    React.StatelessComponent<IContextualMenuItemProps>;
+
+  /**
+   * Props to pass down to the FocusZone.
+   * NOTE: the default FocusZoneDirection will be used unless a direction
+   * is specified in the focusZoneProps (even if other focusZoneProps are defined)
+   * @default {direction: FocusZoneDirection.vertical}
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 export interface IContextualMenuItem {

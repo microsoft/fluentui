@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker-onAfterMenuDismiss callback created",
+      "comment": "Make ScrollablePane._sortStickies change elements only when needed.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "s@warmsea.net"
 }
