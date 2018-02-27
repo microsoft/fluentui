@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/example-app-base",
-      "comment": "Tweaking css for example pages.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/example-app-base",
-  "email": "dzearing@microsoft.com"
+  "email": "law@microsoft.com"
 }
