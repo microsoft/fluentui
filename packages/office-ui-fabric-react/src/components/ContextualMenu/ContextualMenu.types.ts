@@ -227,8 +227,8 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default ContextualMenuItem
    */
   contextualMenuItemAs?:
-  React.ComponentClass<IContextualMenuItemProps> |
-  React.StatelessComponent<IContextualMenuItemProps>;
+    React.ComponentClass<IContextualMenuItemProps> |
+    React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
