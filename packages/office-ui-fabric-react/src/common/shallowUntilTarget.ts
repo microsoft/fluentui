@@ -40,10 +40,11 @@ export function shallowUntilTarget<P, S>(
 
   let root = shallow<P, S>(componentInstance, shallowOptions);
 
-  if (typeof root.type() === 'string') {
+  if (typeof root.type() === 'string' || root.type().toString().includes(TargetComponent)) {
+    // Default shallow()
     // If type() is a string then it's a DOM Node.
     // If it were wrapped, it would be a React component.
-    throw new Error('Cannot unwrap this component because it is not wrapped');
+    return root;
   }
 
   for (let tries = 1; tries <= maxTries; tries++) {
