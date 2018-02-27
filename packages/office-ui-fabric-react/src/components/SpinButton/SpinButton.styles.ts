@@ -53,10 +53,7 @@ export const getArrowButtonStyles = memoizeFunction((
       display: 'block',
       height: '50%',
       width: '14px',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
+      padding: '0',
       backgroundColor: 'transparent',
       textAlign: 'center',
       cursor: 'default',
@@ -143,10 +140,7 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.medium,
       width: '100%',
       minWidth: '86px',
-      paddingTop: '2px',
-      paddingRight: '2px',
-      paddingBottom: '2px',
-      paddingLeft: '2px',
+      padding: '2px',
     },
     labelWrapper: {
       display: 'inline-flex'
@@ -166,11 +160,7 @@ export const getStyles = memoizeFunction((
       marginTop: '10px'
     },
     icon: {
-      paddingTop: '2px',
-      paddingRight: '5px',
-      paddingBottom: '2px',
-      paddingLeft: '5px',
-
+      padding: '2px 5px',
       fontSize: '20px'
     },
     iconDisabled: {
@@ -178,10 +168,7 @@ export const getStyles = memoizeFunction((
     },
     label: {
       pointerEvents: 'none',
-      paddingTop: '2px',
-      paddingRight: '0',
-      paddingBottom: '2px',
-      paddingLeft: '0',
+      padding: '2px 0',
     },
     labelDisabled: {
       cursor: 'default',
@@ -234,10 +221,7 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.medium,
       color: SpinButtonInputTextColor,
       height: '100%',
-      paddingTop: '0px',
-      paddingRight: '12px',
-      paddingBottom: '0px',
-      paddingLeft: '12px',
+      padding: '0 12px',
       outline: '0',
       textOverflow: 'ellipsis',
       display: 'block',
@@ -267,10 +251,7 @@ export const getStyles = memoizeFunction((
       float: 'left',
       height: '100%',
       cursor: 'default',
-      paddingTop: '0',
-      paddingRight: '0',
-      paddingBottom: '0',
-      paddingLeft: '0',
+      padding: '0',
       boxSizing: 'border-box'
     },
     arrowButtonsContainerDisabled: _getDisabledStyles(theme),
