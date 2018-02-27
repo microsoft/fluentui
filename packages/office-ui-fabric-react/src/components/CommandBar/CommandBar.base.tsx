@@ -163,7 +163,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
       styles: { root: { height: '100%' }, ...item.buttonStyles },
-      className: css('ms-CommandBarItem-overflowlink', item.className),
+      className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,
     };
