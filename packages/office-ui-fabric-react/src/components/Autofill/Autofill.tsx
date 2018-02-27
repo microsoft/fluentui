@@ -123,7 +123,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         autoComplete={ 'off' }
         onCompositionStart={ this._onCompositionStart }
         onCompositionEnd={ this._onCompositionEnd }
-        onChange={ this._onChange }
+        onInput={ this._onChange }
         onKeyDown={ this._onKeyDown }
         onClick={ this.props.onClick ? this.props.onClick : this._onClick }
         data-lpignore={ true }
