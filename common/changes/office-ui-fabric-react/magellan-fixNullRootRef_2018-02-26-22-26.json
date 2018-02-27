@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[ColorRectangle] Fixed null root ref",
+      "comment": "ColorPicker: internal ref issue was fixed, which lets colors be picked a little better.",
       "type": "patch"
     }
   ],
