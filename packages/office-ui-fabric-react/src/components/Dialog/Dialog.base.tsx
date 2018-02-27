@@ -1,15 +1,21 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css,
+  classNamesFunction,
+  customizable,
   getId
 } from '../../Utilities';
-import { IDialogProps } from './Dialog.types';
+import {
+  IDialogProps,
+  IDialogStyleProps,
+  IDialogStyles,
+} from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import * as stylesImport from './Dialog.scss';
-const styles: any = stylesImport;
+const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
+// import * as stylesImport from './Dialog.scss';
+// const styles: any = stylesImport;
 
 import { DialogContent } from './DialogContent';
 
@@ -26,6 +32,7 @@ const DefaultDialogContentProps: IDialogContentProps = {
   topButtonsProps: [],
 };
 
+@customizable('Dialog', ['theme'])
 @withResponsiveMode
 export class DialogBase extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
@@ -65,6 +72,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
+      getStyles,
       ignoreExternalFocusing,
       isBlocking,
       isClickableOutsideFocusTrap,
@@ -77,10 +85,11 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       responsiveMode,
       subText,
       title,
+      theme,
       type,
-      contentClassName,
+      contentClassName: contentClassNameProp,
       topButtonsProps,
-      containerClassName,
+      containerClassName: containerClassNameProp,
       hidden
     } = this.props;
 
@@ -89,10 +98,21 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       ...this.props.modalProps
     };
 
+    const containerClassName = containerClassNameProp ? containerClassNameProp : modalProps!.containerClassName;
+
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
       ...this.props.dialogContentProps
     };
+
+    const contentClassName = contentClassNameProp ? contentClassNameProp : dialogContentProps!.className;
+
+    const classNames = getClassNames(getStyles!, {
+      theme: theme!,
+      className,
+      containerClassName,
+      contentClassName,
+    });
 
     return (
       <Modal
@@ -108,8 +128,8 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
         isDarkOverlay={ isDarkOverlay !== undefined ? isDarkOverlay : modalProps!.isDarkOverlay }
         isBlocking={ isBlocking !== undefined ? isBlocking : modalProps!.isBlocking }
         isOpen={ isOpen !== undefined ? isOpen : !hidden }
-        className={ css('ms-Dialog', className ? className : modalProps!.className) }
-        containerClassName={ css(styles.main, containerClassName ? containerClassName : modalProps!.containerClassName) }
+        className={ classNames.root }
+        containerClassName={ classNames.main }
         onDismiss={ onDismiss ? onDismiss : modalProps!.onDismiss }
         subtitleAriaId={ this._getSubTextId() }
         titleAriaId={ this._getTitleTextId() }
@@ -123,7 +143,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps }
           type={ type !== undefined ? type : dialogContentProps!.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps!.onDismiss }
-          className={ css(contentClassName ? contentClassName : dialogContentProps!.className) }
+          className={ contentClassName }
           { ...dialogContentProps }
         >
           { this.props.children }
