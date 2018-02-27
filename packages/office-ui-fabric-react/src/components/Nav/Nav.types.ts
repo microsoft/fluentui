@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavBase } from './Nav.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
+import { IIconProps } from '../Icon/Icon.types';
 
 export interface INav {
   /**
@@ -158,6 +159,11 @@ export interface INavLink {
    * Classname to apply to the icon link.
    */
   iconClassName?: string;
+
+  /**
+   * button icon props if applied
+   */
+  iconProps?: IIconProps;
 
   /**
    * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
