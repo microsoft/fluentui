@@ -884,7 +884,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       };
 
       if (item.subMenuProps) {
-        assign(submenuProps, item.subMenuProps); // TODO get rid of onDismiss as this prevents us from closing our submenu
+        assign(submenuProps, item.subMenuProps, { onDismiss: (ev: any, dismissAll: boolean) => this._onSubMenuDismiss(ev, dismissAll, item) });
       }
     }
     return submenuProps;
@@ -914,12 +914,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   @autobind
-  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean) {
-    let item: IContextualMenuItem | undefined;
-    if (this.state.expandedMenuItemKey) {
-      item = this._findItemByKey(this.state.expandedMenuItemKey);
-    }
-
+  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean, item?: IContextualMenuItem) {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);
     } else {
@@ -930,8 +925,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       });
     }
 
-    if (item && item.subMenuProps && item.subMenuProps.onAfterSubMenuDismiss) {
-      item.subMenuProps.onAfterSubMenuDismiss();
+    if (item && item.subMenuProps && item.subMenuProps.onDismiss) {
+      item.subMenuProps.onDismiss();
     }
   }
 
