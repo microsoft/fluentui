@@ -117,11 +117,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
-    return (<FloatingPeoplePicker {...props} />);
+    return (<FloatingPeoplePicker { ...props } />);
   }
 
   private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
-    return (<SelectedPeopleList {...props} />);
+    return (<SelectedPeopleList { ...props } />);
   }
 
   private _getEditingItemText(item: IExtendedPersonaProps): string {
@@ -142,8 +142,9 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   @autobind
   private _onExpandItem(item: IExtendedPersonaProps): void {
-    // tslint:disable-next-line:no-any
-    (this._picker.selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item as any));
+    this._picker.selectedItemsList.value &&
+      // tslint:disable-next-line:no-any
+      this._picker.selectedItemsList.value.replaceItem(item, this._getExpandedGroupItems(item as any));
   }
 
   @autobind

@@ -1,13 +1,13 @@
-export type RefCreator<T> = {
+export type RefObject<T> = {
   (component: T): void;
   value: T | null;
 };
 
-export function createRef<T>(): RefCreator<T> {
-  const refCreator = ((element: T): void => {
-    refCreator.value = element;
-  }) as RefCreator<T>;
-  refCreator.value = null;
+export function createRef<T>(): RefObject<T> {
+  const refObject = ((element: T): void => {
+    refObject.value = element;
+  }) as RefObject<T>;
+  refObject.value = null;
 
-  return refCreator;
+  return refObject;
 }

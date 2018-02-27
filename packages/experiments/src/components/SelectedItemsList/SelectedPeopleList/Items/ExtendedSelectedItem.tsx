@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
+import { BaseComponent, autobind, css, getId, createRef, RefObject } from '../../../../Utilities';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
@@ -15,7 +15,7 @@ export interface IPeoplePickerItemState {
 }
 
 export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-  protected persona: HTMLElement;
+  protected persona: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
 
   constructor(props: ISelectedPeopleItemProps) {
     super(props);
@@ -34,7 +34,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
     const itemId = getId();
     return (
       <div
-        ref={ this._resolveRef('persona') }
+        ref={ this.persona }
         className={ css(
           'ms-PickerPersona-container',
           styles.personaContainer,
@@ -79,7 +79,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           <ContextualMenu
             items={ this.props.menuItems }
             shouldFocusOnMount={ true }
-            target={ this.persona }
+            target={ this.persona.value }
             onDismiss={ this._onCloseContextualMenu }
             directionalHint={ DirectionalHint.bottomAutoEdge }
           />)

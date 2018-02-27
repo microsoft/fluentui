@@ -8,19 +8,19 @@ describe('createRef', () => {
 
   it('when called with ReactElement it sets the value to the passed component', () => {
     const component = React.createElement('span');
-    const refCreator = createRef<React.ReactElement<{}>>();
+    const refObject = createRef<React.ReactElement<{}>>();
 
-    refCreator(component);
+    refObject(component);
 
-    expect(refCreator.value).toBe(component);
+    expect(refObject.value).toBe(component);
   });
 
   it('when called with HTMLElement it sets the value to the passed element', () => {
     const component = document.createElement('span');
-    const refCreator = createRef();
+    const refObject = createRef();
 
-    refCreator(component);
+    refObject(component);
 
-    expect(refCreator.value).toBe(component);
+    expect(refObject.value).toBe(component);
   });
 });
