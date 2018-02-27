@@ -192,13 +192,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       value,
       onMenuOpen,
-      onMenuDismissed
+      onMenuDismissed,
+      onPendingValueSet
     } = this.props;
     const {
       isOpen,
       focused,
+      currentOptions,
       selectedIndex,
-      currentPendingValueValidIndex
+      currentPendingValue,
+      currentPendingValueValidIndex,
+      currentPendingValueValidIndexOnHover
     } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
@@ -242,6 +246,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
       onMenuDismissed();
+    }
+
+    if (onPendingValueSet) {
+      if (currentPendingValue !== prevState.currentPendingValue) {
+        onPendingValueSet(undefined, undefined, currentPendingValue);
+      } else if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
+        onPendingValueSet(currentOptions[currentPendingValueValidIndexOnHover], currentPendingValueValidIndexOnHover, undefined);
+      } else if (currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
+        onPendingValueSet(currentOptions[currentPendingValueValidIndex], currentPendingValueValidIndex, undefined);
+      }
     }
   }
 
@@ -347,7 +361,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             styles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden={ isButtonAriaHidden }
-            data-is-focusable={false}
+            data-is-focusable={ false }
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
