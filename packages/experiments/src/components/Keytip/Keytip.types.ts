@@ -1,6 +1,6 @@
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction, IPoint } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 import { IKeySequence } from '../../utilities/keysequence/IKeySequence';
 
 export interface IKeytip {
@@ -87,11 +87,12 @@ export interface IKeytipProps {
   getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
 
   /**
-   * Offset from the top-left corner of the component for positioning this keytip
+   * Offset distance in px between the target element and the positioning of the keytip.this keytip
    *
-   * @type {IPoint}
+   * @type {number}
+   * @default 0
    */
-  offset?: IPoint;
+  offset?: number;
 
   /**
    * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have
