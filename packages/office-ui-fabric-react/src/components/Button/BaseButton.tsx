@@ -451,7 +451,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         <span
           style={ { 'display': 'flex' } }
         >
-          { this._onRenderContent(tag, { ...buttonProps, onClick: undefined, 'data-is-focusable': false } as any) }
+          { this._onRenderContent(tag, { ...buttonProps, onClick: undefined } as any) }
           { this._onRenderSplitButtonMenuButton(classNames) }
           { this._onRenderSplitButtonDivider(classNames) }
         </span>
@@ -490,8 +490,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'iconProps': menuIconProps,
       'ariaLabel': splitButtonAriaLabel,
       'aria-haspopup': true,
-      'aria-expanded': this._isExpanded,
-      'data-is-focusable': false
+      'aria-expanded': this._isExpanded
     };
 
     return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } />;
