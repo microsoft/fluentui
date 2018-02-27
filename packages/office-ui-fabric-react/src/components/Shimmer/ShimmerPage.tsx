@@ -6,7 +6,6 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
-import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ShimmerStatus } from './Shimmer.checklist';
 
