@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.55.3",
+      "tag": "office-ui-fabric-react_v5.55.3",
+      "date": "Tue, 27 Feb 2018 22:56:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "c468751e4eb75df1fab7e320a559f8a28953bc70",
+            "comment": "ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions."
+          },
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "ac43f523749423c2ee3cd9ad1f4ba868612c7241",
+            "comment": "Toggle color fixes"
+          },
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "f16ed136c3dd6a10421a4a80d2b789bbc4c3aacf",
+            "comment": "Fixing direct references to @uifabric which breaks AMD"
+          },
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "f16ed136c3dd6a10421a4a80d2b789bbc4c3aacf",
+            "comment": "Fixing reference of 'utilities/contextualMenu' to point an actual file."
+          },
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "25ac4a751a664c59c596a8bb31203c9d707828ec",
+            "comment": "Allow ScrollablePane to accept native properties."
+          },
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "835585d21bb8caa991e9c09ea38b10edcbd3fa75",
+            "comment": "Make ScrollablePane._sortStickies change elements only when needed."
+          },
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "70704cae89b7495d67cd5779a194f48db00c757c",
+            "comment": "Fix this.root undefined issue in Sticky component."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.55.2",
       "tag": "office-ui-fabric-react_v5.55.2",
       "date": "Tue, 27 Feb 2018 06:33:39 GMT",
