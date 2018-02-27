@@ -5,7 +5,7 @@ import {
   IStyle,
   ITheme,
 } from '../../Styling';
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = (
   props: ICheckStyleProps
