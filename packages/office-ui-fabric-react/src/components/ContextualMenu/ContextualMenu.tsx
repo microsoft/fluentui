@@ -884,7 +884,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       };
 
       if (item.subMenuProps) {
-        assign(submenuProps, item.subMenuProps);
+        assign(submenuProps, item.subMenuProps); // TODO get rid of, this prevents us from closing our submenu
       }
     }
     return submenuProps;
@@ -923,6 +923,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: undefined,
         submenuTarget: undefined
       });
+    }
+
+    let item: IContextualMenuItem | undefined;
+    if (this.state.expandedMenuItemKey) {
+      item = this._findItemByKey(this.state.expandedMenuItemKey);
+    }
+
+    if (item && item.subMenuProps && item.subMenuProps.onAfterSubMenuDismiss) {
+      item.subMenuProps.onAfterSubMenuDismiss();
     }
   }
 

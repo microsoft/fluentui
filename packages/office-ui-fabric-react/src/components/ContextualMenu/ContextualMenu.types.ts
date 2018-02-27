@@ -227,8 +227,8 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default ContextualMenuItem
    */
   contextualMenuItemAs?:
-    React.ComponentClass<IContextualMenuItemProps> |
-    React.StatelessComponent<IContextualMenuItemProps>;
+  React.ComponentClass<IContextualMenuItemProps> |
+  React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -237,6 +237,16 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default {direction: FocusZoneDirection.vertical}
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * Callback to run after a sub menu gets dismissed.
+   * Note: This is only used for when we rendered sub menu's from ContextualMenuItem
+   * that has a subMenuProp after we dismissed it.
+   * Note: if we were to define our own onMenuDismissed than this callback will never
+   * get called, because we only use the callback in _onSubMenuDismiss() which can get
+   * overrided with onMenuDissmissed.
+   */
+  onAfterSubMenuDismiss?: () => void;
 }
 
 export interface IContextualMenuItem {
