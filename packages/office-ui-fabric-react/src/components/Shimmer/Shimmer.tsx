@@ -25,7 +25,7 @@ export class Shimmer extends BaseComponent<IShimmerProps, IShimmerState> {
 
   public render() {
     return (
-      <h1>SHIMMER</h1>
+      <h1>{ this.state.isGeneric ? 'Generic Shimmer' : 'Custom Shimmer' }</h1>
     );
   }
 }
