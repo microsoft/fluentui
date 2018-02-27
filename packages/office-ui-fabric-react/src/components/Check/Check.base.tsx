@@ -3,7 +3,7 @@ import {
   BaseComponent,
   classNamesFunction,
   customizable,
-} from '@uifabric/utilities';
+} from '../../Utilities';
 import {
   ICheckProps,
   ICheckStyleProps,
