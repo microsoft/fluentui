@@ -433,6 +433,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         !!this.state.menuProps,
         !!checked);
 
+    buttonProps = { ...buttonProps, onClick: undefined };
+
     return (
       <div
         role={ 'button' }
@@ -451,7 +453,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         <span
           style={ { 'display': 'flex' } }
         >
-          { this._onRenderContent(tag, { ...buttonProps, onClick: undefined } as any) }
+          { this._onRenderContent(tag, buttonProps) }
           { this._onRenderSplitButtonMenuButton(classNames) }
           { this._onRenderSplitButtonDivider(classNames) }
         </span>
