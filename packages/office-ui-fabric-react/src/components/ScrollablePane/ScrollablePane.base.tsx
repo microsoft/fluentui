@@ -32,7 +32,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   };
 
   public root: HTMLElement;
-  public stickyContainer: HTMLElement;
   public stickyAbove: HTMLElement;
   public stickyBelow: HTMLElement;
   private _subscribers: Set<Function>;
@@ -85,8 +84,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
         ref={ this._resolveRef('root') }
         className={ classNames.root }
       >
-        <div ref={ this._resolveRef('stickyAbove') } className={ styles.stickyAbove } />
-        <div ref={ this._resolveRef('stickyBelow') } className={ styles.stickyBelow } />
+        <div ref={ this._resolveRef('stickyAbove') } className={ classNames.stickyAbove } />
+        <div ref={ this._resolveRef('stickyBelow') } className={ classNames.stickyBelow } />
         <div data-is-scrollable={ true }>
           { this.props.children }
         </div>
