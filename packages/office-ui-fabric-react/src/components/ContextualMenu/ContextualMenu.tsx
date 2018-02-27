@@ -784,7 +784,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   /**
-   * Hnadles updating focus when mouseEnter or mouseMove fire.
+   * Handles updating focus when mouseEnter or mouseMove fire.
    * As part of updating focus, This function will also update
    * the expand/collapse state accordingly.
    */
