@@ -220,12 +220,23 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
       const bOffset = this._calculateOffsetParent(b.root);
       return aOffset - bOffset;
     });
-    while (container.lastChild) {
-      container.removeChild(container.lastChild);
+    // Get number of elements that is already in order.
+    let elementsInOrder = 0;
+    while (elementsInOrder < container.children.length && elementsInOrder < stickyArr.length) {
+      if (container.children[elementsInOrder] === stickyArr[elementsInOrder].content) {
+        ++elementsInOrder;
+      } else {
+        break;
+      }
     }
-    stickyArr.forEach((sticky) => {
-      container.appendChild(sticky.content);
-    });
+    // Remove elements that is not in order if exist.
+    for (let i = container.children.length - 1; i >= elementsInOrder; --i) {
+      container.removeChild(container.children[i]);
+    }
+    // Append further elements if needed.
+    for (let i = elementsInOrder; i < stickyArr.length; ++i) {
+      container.appendChild(stickyArr[i].content);
+    }
   }
 
   private _calculateOffsetParent(ele: HTMLElement): number {
