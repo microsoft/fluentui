@@ -119,7 +119,7 @@ describe('ComboBox', () => {
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('change', { target: { value: 'f' } });
+    inputElement.simulate('input', { target: { value: 'f' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
     expect((comboBoxComponent as React.Component<any, any>).state.currentOptions.length).toEqual(DEFAULT_OPTIONS.length);
   });
@@ -141,7 +141,7 @@ describe('ComboBox', () => {
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('change', { target: { value: 'f' } });
+    inputElement.simulate('input', { target: { value: 'f' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
     const currentOptions = (comboBoxComponent as React.Component<any, any>).state.currentOptions;
     expect(currentOptions.length).toEqual(DEFAULT_OPTIONS.length + 1);
@@ -209,7 +209,7 @@ describe('ComboBox', () => {
         allowFreeform={ true }
       />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'f' } });
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
   });
@@ -224,7 +224,7 @@ describe('ComboBox', () => {
         allowFreeform={ false }
       />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'f' } });
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
   });
@@ -238,7 +238,7 @@ describe('ComboBox', () => {
         autoComplete='off'
         allowFreeform={ true }
       />);
-    wrapper.find('input').simulate('change', { target: { value: 'f' } });
+    wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('f');
   });
@@ -364,10 +364,10 @@ describe('ComboBox', () => {
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     inputElement = comboBoxRoot.find('input');
-    inputElement.simulate('change', { target: { value: 't' } });
-    inputElement.simulate('change', { target: { value: 'e' } });
-    inputElement.simulate('change', { target: { value: 'x' } });
-    inputElement.simulate('change', { target: { value: 't' } });
+    inputElement.simulate('input', { target: { value: 't' } });
+    inputElement.simulate('input', { target: { value: 'e' } });
+    inputElement.simulate('input', { target: { value: 'x' } });
+    inputElement.simulate('input', { target: { value: 't' } });
     inputElement.simulate('keydown', { which: KeyCodes.enter });
     expect(executionCount).toEqual(1);
     expect(updatedOption).toEqual(initialOption);
