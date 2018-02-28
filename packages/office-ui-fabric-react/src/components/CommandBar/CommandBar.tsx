@@ -12,7 +12,7 @@ import {
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.types';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
-import { hasSubmenu } from '../../utilities/contextualMenu';
+import { hasSubmenu } from '../../utilities/contextualMenu/index';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make ScrollablePane._sortStickies change elements only when needed.",
+      "comment": "CoachMarkStyles: Use ... instead of assign for IE compatibility",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "s@warmsea.net"
+  "email": "joschect@microsoft.com"
 }

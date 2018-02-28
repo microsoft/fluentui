@@ -142,6 +142,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
       onCompositionEnd={[Function]}
       onCompositionStart={[Function]}
       onFocus={[Function]}
+      onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       readOnly={true}
