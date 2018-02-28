@@ -123,7 +123,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         autoComplete={ 'off' }
         onCompositionStart={ this._onCompositionStart }
         onCompositionEnd={ this._onCompositionEnd }
-        onChange={ this._onChange }
+        onChange={ this._onChanged }
+        onInput={ this._onInputChanged }
         onKeyDown={ this._onKeyDown }
         onClick={ this.props.onClick ? this.props.onClick : this._onClick }
         data-lpignore={ true }
@@ -199,11 +200,19 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement>) {
+  private _onInputChanged(ev: React.FormEvent<HTMLElement>) {
     const value: string = this._getCurrentInputValue(ev);
+
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
     this._tryEnableAutofill(value, this._value, (ev.nativeEvent as any).isComposing);
     this._updateValue(value);
+  }
+
+  @autobind
+  private _onChanged(): void {
+    // Swallow this event, we don't care about it
+    // We must provide it because React PropTypes marks it as required, but onInput serves the correct purpose
+    return;
   }
 
   private _getCurrentInputValue(ev?: React.FormEvent<HTMLElement>): string {
