@@ -81,7 +81,8 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-          onPendingValueSet={ (option, pendingIndex, pendingValue) => console.log('Pending value was changed. Pending index: ' + pendingIndex + '. Pending value: ' + pendingValue) }
+          onPreviewExecute={ (option, pendingIndex) => console.log('Preview value was changed. Pending index: ' + pendingIndex) }
+          onRevertPreviewExecute={ () => console.log('Preview value was reverted') }
         // tslint:enable:jsx-no-lambda
         />
 

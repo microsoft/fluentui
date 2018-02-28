@@ -125,6 +125,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _isScrollIdle: boolean;
 
+  private _isInPreview: boolean;
+
   private readonly _scrollIdleDelay: number = 250 /* ms */;
 
   private _scrollIdleTimeoutId: number | undefined;
@@ -192,17 +194,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       allowFreeform,
       value,
       onMenuOpen,
-      onMenuDismissed,
-      onPendingValueSet
+      onMenuDismissed
     } = this.props;
     const {
       isOpen,
       focused,
       currentOptions,
       selectedIndex,
-      currentPendingValue,
-      currentPendingValueValidIndex,
-      currentPendingValueValidIndexOnHover
+      currentPendingValueValidIndex
     } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
@@ -240,22 +239,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._select();
     }
 
+    this._notifyPreviewChanged(prevState);
+
     if (isOpen && !prevState.isOpen && onMenuOpen) {
       onMenuOpen();
     }
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
       onMenuDismissed();
-    }
-
-    if (onPendingValueSet) {
-      if (currentPendingValue !== prevState.currentPendingValue) {
-        onPendingValueSet(undefined, undefined, currentPendingValue);
-      } else if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
-        onPendingValueSet(currentOptions[currentPendingValueValidIndexOnHover], currentPendingValueValidIndexOnHover, undefined);
-      } else if (currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
-        onPendingValueSet(currentOptions[currentPendingValueValidIndex], currentPendingValueValidIndex, undefined);
-      }
     }
   }
 
@@ -706,7 +697,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    const { onChanged } = this.props;
+    const { onChanged, onRevertPreviewExecute } = this.props;
     const { selectedIndex, currentOptions } = this.state;
 
     // Find the next selectable index, if searchDirection is none
@@ -726,6 +717,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.setState({
         selectedIndex: index
       });
+
+      // If ComboBox value is changed, revert preview first
+      if (this._isInPreview && onRevertPreviewExecute) {
+        onRevertPreviewExecute();
+        this._isInPreview = false;
+      }
 
       // Did the creator give us an onChanged callback?
       if (onChanged) {
@@ -1252,6 +1249,48 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     index = this._getNextSelectableIndex(index, searchDirection);
     if (this._indexWithinBounds(currentOptions, index)) {
       this._setPendingInfoFromIndex(index);
+    }
+  }
+
+  private _notifyPreviewChanged(prevState: IComboBoxState) {
+    const { onPreviewExecute, onRevertPreviewExecute } = this.props;
+    const {
+      currentOptions,
+      currentPendingValueValidIndex,
+      currentPendingValueValidIndexOnHover
+    } = this.state;
+
+    if (onPreviewExecute && onRevertPreviewExecute) {
+      let sendRevert = false;
+      let currentPendingIndex = -1;
+
+      if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
+
+        if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
+          currentPendingIndex = currentPendingValueValidIndexOnHover;
+        } else {
+          sendRevert = true;
+        }
+      }
+
+      if (currentPendingIndex < 0 && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
+
+        if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+          currentPendingIndex = currentPendingValueValidIndex;
+        } else {
+          sendRevert = true;
+        }
+      }
+
+      if (this._isInPreview && (sendRevert || currentPendingIndex >= 0)) {
+        onRevertPreviewExecute();
+        this._isInPreview = false;
+      }
+
+      if (!this._isInPreview && currentPendingIndex >= 0) {
+        onPreviewExecute(currentOptions[currentPendingIndex], currentPendingIndex);
+        this._isInPreview = true;
+      }
     }
   }
 
