@@ -11,12 +11,20 @@ export interface IAppState {
 }
 
 // Giving the loading component a height so that the left nav loads in full screen and there is less flashing as the component page loads.
+const loadingPageHeight: string = 'calc(100vh - 100px)';
 const LoadingComponent = (props: any): JSX.Element => {
   return (
-    <div style={ { height: '1500px' } }>
+    <div style={ { height: loadingPageHeight } }>
       <ComponentPage>
         <PageHeader pageTitle={ props.title } backgroundColor='#038387' />
       </ComponentPage>
+    </div>
+  );
+};
+const StylesLoadingComponent = (props: any): JSX.Element => {
+  return (
+    <div style={ { height: loadingPageHeight } }>
+      <PageHeader pageTitle={ props.title } backgroundColor='#006f94' />
     </div>
   );
 };
@@ -49,47 +57,56 @@ export const AppState: IAppState = {
         {
           title: 'Animations',
           url: '#/styles/animations',
+          component: () => <StylesLoadingComponent title='Animations' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/AnimationsPage/AnimationsPage').AnimationsPage))
         },
         {
           title: 'Brand icons',
           url: '#/styles/brand-icons',
+          component: () => <StylesLoadingComponent title='Brand icons' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/BrandIconsPage/BrandIconsPage').BrandIconsPage))
         },
         {
           title: 'Colors',
           url: '#/styles/colors',
+          component: () => <StylesLoadingComponent title='Colors' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ColorsPage/ColorsPage').ColorsPage))
         },
         {
           title: 'Icons',
           url: '#/styles/icons',
+          component: () => <StylesLoadingComponent title='Icons' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/IconsPage/IconsPage').IconsPage))
         },
         {
           title: 'Layout',
           url: '#/styles/layout',
+          component: () => <StylesLoadingComponent title='Layout' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/LayoutPage/LayoutPage').LayoutPage))
         },
         {
           title: 'Localization',
           url: '#/styles/localization',
+          component: () => <StylesLoadingComponent title='Localization' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
-          title: 'Beta Theme Generator',
+          title: 'Beta theme generator',
           url: '#/styles/themeGenerator',
           isHiddenFromMainNav: true,
+          component: () => <StylesLoadingComponent title='Beta theme generator' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage))
         },
         {
           title: 'Typography',
           url: '#/styles/typography',
+          component: () => <StylesLoadingComponent title='Typography' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/TypographyPage/TypographyPage').TypographyPage))
         },
         {
           title: 'Utilities',
           url: '#/styles/utilities',
+          component: () => <StylesLoadingComponent title='Utilities' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
       ]
