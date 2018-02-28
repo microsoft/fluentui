@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Feb 2018 22:56:59 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Feb 2018 11:15:45 GMT and should not be manually modified.
+
+## 5.56.0
+Wed, 28 Feb 2018 11:15:45 GMT
+
+### Minor changes
+
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Dialog: Converting to mergeStyles part 1.2 - sub component file structure. 
+- Prepare Persona for conversion to merge-styles
+
+### Patches
+
+- ContextualMenu: Update Hover/Focus Behavior around expanding/collapsing Submenus
+- SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton
 
 ## 5.55.3
 Tue, 27 Feb 2018 22:56:59 GMT
