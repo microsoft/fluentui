@@ -78,7 +78,7 @@ export class App extends React.Component<IAppProps, any> {
   @autobind
   private _handleNavPositioning() {
     let { isAttached, navHeight } = this.state;
-    this._appContentRect = this._appContent.getBoundingClientRect();
+    this._appContentRect = this._appContent && this._appContent.getBoundingClientRect();
     const viewPortHeight = window.innerHeight;
     isAttached = AttachedScrollUtility.shouldComponentAttach(isAttached, this._attachedScrollThreshold);
     navHeight = this._calculateNavHeight(viewPortHeight, this._appContentRect, navHeight);
