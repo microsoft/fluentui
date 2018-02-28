@@ -903,7 +903,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       };
 
       if (item.subMenuProps) {
-        assign(submenuProps, item.subMenuProps);
+        assign(submenuProps, item.subMenuProps, { onDismiss: this._getDismissSubmenu(item) });
       }
     }
     return submenuProps;
@@ -912,6 +912,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _findItemByKey(key: string): IContextualMenuItem | undefined {
     const { items } = this.props;
     return this._findItemByKeyFromItems(key, items);
+  }
+
+  /**
+   * Returns the callback that should be used when we dismiss a sub menu
+   * this way we can dismiss the submenu UI and call the onDismiss provided by the item
+   * @param item - the item that contains a onDismiss callback that we want to use
+   * @returns A callback that will remove the submenu UI and call the onDismiss callback of item
+   */
+  private _getDismissSubmenu(item?: IContextualMenuItem) {
+    return (ev: any, dismissAll: boolean) => this._onSubMenuDismiss(ev, dismissAll, item);
   }
 
   /**
@@ -933,7 +943,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   @autobind
-  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean) {
+  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean, item?: IContextualMenuItem) {
     if (dismissAll) {
       this.dismiss(ev, dismissAll);
     } else {
@@ -942,6 +952,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: undefined,
         submenuTarget: undefined
       });
+    }
+
+    if (item && item.subMenuProps && item.subMenuProps.onDismiss) {
+      item.subMenuProps.onDismiss();
     }
   }
 
