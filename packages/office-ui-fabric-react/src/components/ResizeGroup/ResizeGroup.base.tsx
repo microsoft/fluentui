@@ -315,7 +315,10 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     return (
       <div { ...divProps } className={ classNames.root } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
-          <div className={ classNames.measured } ref={ this._resolveRef('_measured') }>
+          <div
+            style={ { position: 'fixed', visibility: 'hidden' } }
+            ref={ this._resolveRef('_measured') }
+          >
             <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>
           </div>
         ) }

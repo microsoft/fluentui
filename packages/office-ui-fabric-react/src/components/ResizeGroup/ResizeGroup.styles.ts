@@ -22,13 +22,6 @@ export const getStyles = (
         position: 'relative'
       },
       className
-    ],
-    measured: [
-      'ms-ResizeGroup--measured',
-      {
-        position: 'fixed',
-        visibility: 'hidden'
-      }
     ]
   });
 };
