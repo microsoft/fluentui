@@ -10,12 +10,12 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
       }
 >
   <div
-    className=
-        ms-ResizeGroup--measured
-        {
-          position: fixed;
-          visibility: hidden;
-        }
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -164,12 +164,12 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
       }
 >
   <div
-    className=
-        ms-ResizeGroup--measured
-        {
-          position: fixed;
-          visibility: hidden;
-        }
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
