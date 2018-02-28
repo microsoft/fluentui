@@ -75,12 +75,12 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
           ) }
-
           <div
             className={ css('ms-ChoiceFieldGroup-flexContainer', options!.some(
               option => Boolean(option.iconProps || option.imageSrc)
             ) && styles.optionsContainIconOrImage) }
           >
+
             { options!.map((option: IChoiceGroupOption) => {
               const {
                 onRenderField = this._onRenderField,
