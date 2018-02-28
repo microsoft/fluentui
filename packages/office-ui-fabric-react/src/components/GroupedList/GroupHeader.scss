@@ -73,7 +73,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   color: $ms-color-neutralSecondary;
   padding-top: 4px;
 
-  :global(.ms-Icon) {
+  :global(i) {
     transform: rotate(-180deg);
     transform-origin: 50% 50%;
     transition: transform .1s linear;
