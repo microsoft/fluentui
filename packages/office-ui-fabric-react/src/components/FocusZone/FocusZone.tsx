@@ -310,10 +310,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
+    }
 
-      if (ev.isDefaultPrevented()) {
-        return;
-      }
+    // If the default has been prevented, do not process keyboard events.
+    if (ev.isDefaultPrevented()) {
+      return;
     }
 
     if (
