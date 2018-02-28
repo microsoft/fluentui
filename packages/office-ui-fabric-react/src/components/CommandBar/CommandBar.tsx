@@ -356,7 +356,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     if (!this._commandItemWidths) {
-      this._commandItemWidths = {};
+      this._asyncMeasure();
+      return;
     }
 
     for (let i = 0; i < renderedItems.length; i++) {
