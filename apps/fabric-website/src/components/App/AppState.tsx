@@ -11,7 +11,7 @@ export interface IAppState {
 }
 
 // Giving the loading component a height so that the left nav loads in full screen and there is less flashing as the component page loads.
-const loadingPageHeight: string = '1500px';
+const loadingPageHeight: string = 'calc(100vh - 100px)';
 const LoadingComponent = (props: any): JSX.Element => {
   return (
     <div style={ { height: loadingPageHeight } }>
