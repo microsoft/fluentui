@@ -49,7 +49,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
             </svg>
           </div>
         }
-        <h1>{ this.state.isGeneric ? 'Generic Shimmer' : 'Custom Shimmer' }</h1>
+        <div className={ this._classNames.line }></div>
       </div>
     );
   }

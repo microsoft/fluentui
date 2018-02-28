@@ -10,8 +10,10 @@ export const ShimmerBasicExample = () => (
     <Shimmer
       isGeneric={ true }
     />
+    <br />
     <Shimmer
       isGeneric={ false }
+      hasCircle={ true }
     />
   </div>
 );

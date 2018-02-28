@@ -12,7 +12,7 @@ export interface IShimmer {
 /**
  * Shimmer component props.
  */
-export interface IShimmerProps extends React.HtmlHTMLAttributes<ShimmerBase> {
+export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IShimmer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
