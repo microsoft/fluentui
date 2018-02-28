@@ -14,7 +14,7 @@
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
     overflow-y: auto;
     max-height: 100vh;
-    height: 100vh; // fallback height if not set in JS
+    height: 100vh; // fallback height if not set in JS style attribute
     width: $Nav-width;
     @include ms-float(left);
     z-index: 999; // This z-index needs to be high to prevent jittery scrolling in Edge.
@@ -27,6 +27,7 @@
     overflow: hidden;
     position: relative;
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
+    min-height: calc(100vh - $Header-height-full-uhf);
 
     @include high-contrast {
       border-right: 1px solid WindowText;
