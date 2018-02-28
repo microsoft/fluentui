@@ -1,6 +1,5 @@
 import {
   HighContrastSelector,
-  AnimationStyles,
   IRawStyle,
   focusClear
 } from '../../Styling';
@@ -12,12 +11,6 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.type
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 
-const ANIMATIONS: { [key: number]: IRawStyle; } = {
-  [RectangleEdge.top]: AnimationStyles.slideUpIn20,
-  [RectangleEdge.bottom]: AnimationStyles.slideDownIn20,
-  [RectangleEdge.left]: AnimationStyles.slideLeftIn20,
-  [RectangleEdge.right]: AnimationStyles.slideRightIn20,
-};
 
 function getBeakStyle(beakWidth?: number,
   beakStyle?: string): IRawStyle {
@@ -75,8 +68,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       },
       focusClear(),
       className,
-      positions && positions.targetEdge && ANIMATIONS[positions.targetEdge],
-      !!calloutWidth && { width: calloutWidth },
+      !!calloutWidth && { width: calloutWidth }
     ],
     beak: [
       'ms-Callout-beak',

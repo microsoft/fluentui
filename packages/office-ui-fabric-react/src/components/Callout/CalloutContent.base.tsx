@@ -29,6 +29,18 @@ import {
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
+import {
+  AnimationStyles,
+  IRawStyle
+} from '../../Styling';
+
+const ANIMATIONS: { [key: number]: IRawStyle; } = {
+  [RectangleEdge.top]: AnimationStyles.slideUpIn10,
+  [RectangleEdge.bottom]: AnimationStyles.slideDownIn10,
+  [RectangleEdge.left]: AnimationStyles.slideLeftIn10,
+  [RectangleEdge.right]: AnimationStyles.slideRightIn10,
+};
+
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
 const BORDER_WIDTH = 1;
@@ -163,6 +175,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     );
 
     const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
+    // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
+    const animationStyle: IRawStyle | undefined = positions && positions.targetEdge && ANIMATIONS[positions.targetEdge];
     const content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -170,7 +184,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       >
         <div
           className={ this._classNames.root }
-          style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
+          style={ positions ? { ...positions.elementPosition, ...(animationStyle as any) } : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
