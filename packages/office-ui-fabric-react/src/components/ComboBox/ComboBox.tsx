@@ -199,7 +199,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const {
       isOpen,
       focused,
-      currentOptions,
       selectedIndex,
       currentPendingValueValidIndex
     } = this.state;
@@ -1265,7 +1264,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       let currentPendingIndex = -1;
 
       if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
-
         if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
           currentPendingIndex = currentPendingValueValidIndexOnHover;
         } else {
@@ -1274,7 +1272,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
 
       if (currentPendingIndex < 0 && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
-
         if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
           currentPendingIndex = currentPendingValueValidIndex;
         } else {
