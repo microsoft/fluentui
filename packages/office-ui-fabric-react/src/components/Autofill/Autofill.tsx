@@ -210,7 +210,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   @autobind
   private _onChanged(): void {
-    // Swallow the onChange event, we don't care about it
+    // Swallow this event, we don't care about it
+    // We must provide it because React PropTypes marks it as required, but onInput serves the correct purpose
     return;
   }
 
