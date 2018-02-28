@@ -1,10 +1,20 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
+import { IStyle, IRawStyle, keyframes } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     isGeneric,
     hasCircle
   } = props;
+
+  const shimmerAnimation: string = keyframes({
+    '0%': {
+      backgroundPosition: '-900%'
+    },
+    '100%': {
+      backgroundPosition: '1000%'
+    }
+  });
 
   return {
     root: [
@@ -15,8 +25,16 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         alignItems: 'center',
         padding: '10px',
         width: '100%',
-        background: 'content-box linear-gradient(to right, white 0%, black 50%, white 100%)',
-        backgroundColor: 'red',
+        background: 'content-box',
+        backgroundImage: 'linear-gradient(to right, #f4f4f4 0%, #eaeaea 50%, #f4f4f4 100%)',
+        backgroundColor: '#f4f4f4',
+        backgroundSize: '90% 100%',
+        backgroundRepeat: 'no-repeat',
+        animationDuration: '2s',
+        animationTimingFunction: 'ease-in-out',
+        animationDirection: 'normal',
+        animationIterationCount: 'infinite',
+        animationName: shimmerAnimation
       }
     ],
     circle: [

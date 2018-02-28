@@ -44,12 +44,14 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
           <div className={ this._classNames.circle }>
             <svg viewBox='0 0 15 10' width='36' height='24'>
               <path
-                d='M0,0 L15,0 L15,10 L0,10 L0,0 Z M0,5 C0,7.76142375 2.23857625,10 5,10 C7.76142375,10 10,7.76142375 10,5 C10,2.23857625 7.76142375,2.22044605e-16 5,0 C2.23857625,-2.22044605e-16 0,2.23857625 0,5 L0,5 Z'>
-              </path>
+                d='M0,0 L15,0 L15,10 L0,10 L0,0 Z M0,5 C0,7.76142375 2.23857625,10 5,10 C7.76142375,10 10,7.76142375 10,5 C10,2.23857625 7.76142375,2.22044605e-16 5,0 C2.23857625,-2.22044605e-16 0,2.23857625 0,5 L0,5 Z'
+              />
             </svg>
           </div>
         }
-        <div className={ this._classNames.line }></div>
+        <div
+          className={ this._classNames.line }
+        />
       </div>
     );
   }
