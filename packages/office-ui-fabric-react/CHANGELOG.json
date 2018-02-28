@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.56.0",
+      "tag": "office-ui-fabric-react_v5.56.0",
+      "date": "Wed, 28 Feb 2018 11:15:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "216f8e4d021b235926cb81dcbdbf7b6b95e5c5ac",
+            "comment": "ContextualMenu: Update Hover/Focus Behavior around expanding/collapsing Submenus"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "9c45eeb414025b84b4cb91555e6d42a2a14110f0",
+            "comment": "SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "7bca7c0c026347a291702321fe1dba988e8f9806",
+            "comment": "Convert Dialog to mergeStyles, part 1 - file structure"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "7bca7c0c026347a291702321fe1dba988e8f9806",
+            "comment": "Dialog: Converting to mergeStyles part 1.2 - sub component file structure. "
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "d00d49f4b69e2ec7b3313997a4d45adb1f520b34",
+            "comment": "Prepare Persona for conversion to merge-styles"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.55.3",
       "tag": "office-ui-fabric-react_v5.55.3",
       "date": "Tue, 27 Feb 2018 22:56:59 GMT",
