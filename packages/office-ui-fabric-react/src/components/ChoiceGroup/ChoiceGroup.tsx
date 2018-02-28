@@ -80,7 +80,6 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               option => Boolean(option.iconProps || option.imageSrc)
             ) && styles.optionsContainIconOrImage) }
           >
-
             { options!.map((option: IChoiceGroupOption) => {
               const {
                 onRenderField = this._onRenderField,
