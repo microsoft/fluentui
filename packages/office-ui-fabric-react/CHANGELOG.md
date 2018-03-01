@@ -1,6 +1,43 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Feb 2018 06:33:39 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Mar 2018 00:05:10 GMT and should not be manually modified.
+
+## 5.56.1
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Fix an issue on IE11 where Autofill would swallow some keystrokes if typing quickly enough
+- CoachMarkStyles: Use ... instead of assign for IE compatibility
+- FocusZone: isDefaultPrevented is now respected.
+- GroupedList: Chevron css no longer uses ms-icon
+
+## 5.56.0
+Wed, 28 Feb 2018 11:15:45 GMT
+
+### Minor changes
+
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Dialog: Converting to mergeStyles part 1.2 - sub component file structure. 
+- Prepare Persona for conversion to merge-styles
+
+### Patches
+
+- ContextualMenu: Update Hover/Focus Behavior around expanding/collapsing Submenus
+- SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton
+
+## 5.55.3
+Tue, 27 Feb 2018 22:56:59 GMT
+
+### Patches
+
+- ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions.
+- Toggle color fixes
+- Fixing direct references to @uifabric which breaks AMD
+- Fixing reference of 'utilities/contextualMenu' to point an actual file.
+- Allow ScrollablePane to accept native properties.
+- Make ScrollablePane._sortStickies change elements only when needed.
+- Fix this.root undefined issue in Sticky component.
 
 ## 5.55.2
 Tue, 27 Feb 2018 06:33:39 GMT

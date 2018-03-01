@@ -88,7 +88,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       theme,
       getClassNames
-         } = this.props;
+    } = this.props;
 
     const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
@@ -223,7 +223,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = props;
 
     const Content = (
-      <Tag {...buttonProps }>
+      <Tag { ...buttonProps }>
         <div className={ this._classNames.flexContainer } >
           { onRenderIcon(props, this._onRenderIcon) }
           { this._onRenderTextContents() }
@@ -251,12 +251,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
     const {
       iconProps
-       } = this.props;
+    } = this.props;
 
     if (iconProps) {
       return (
         <Icon
-          {...iconProps}
+          { ...iconProps }
           className={ this._classNames.icon }
         />
       );
@@ -335,7 +335,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderDescription(props: IButtonProps) {
     const {
-    description
+      description
     } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -393,7 +393,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <ContextualMenu
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        {...menuProps}
+        { ...menuProps }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
         labelElementId={ this._labelId }
@@ -419,7 +419,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       styles = {},
       disabled,
       checked,
-      getSplitButtonClassNames
+      getSplitButtonClassNames,
+      onClick,
+      primaryDisabled
     } = this.props;
 
     const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
@@ -430,6 +432,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         !!disabled,
         !!this.state.menuProps,
         !!checked);
+
+    buttonProps = { ...buttonProps, onClick: undefined };
 
     return (
       <div
@@ -443,6 +447,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }
+        data-is-focusable={ true }
+        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
       >
         <span
           style={ { 'display': 'flex' } }
@@ -489,7 +495,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-expanded': this._isExpanded
     };
 
-    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } />;
+    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } />;
 
   }
 

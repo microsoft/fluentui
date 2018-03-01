@@ -18,11 +18,10 @@ export const getStyles = (
     root: [
       'ms-ResizeGroup',
       {
-        // Insert css properties
-
-      }
-    ],
-
-    // Insert className styles
+        display: 'block',
+        position: 'relative'
+      },
+      className
+    ]
   });
 };
