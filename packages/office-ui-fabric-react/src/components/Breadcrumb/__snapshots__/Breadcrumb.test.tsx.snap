@@ -2,10 +2,20 @@
 
 exports[`Breadcrumb renders breadcumb correctly 1`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -146,10 +156,20 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
 
 exports[`Breadcrumb renders breadcumb correctly 2`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}

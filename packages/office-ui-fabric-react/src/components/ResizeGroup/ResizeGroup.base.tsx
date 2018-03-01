@@ -2,13 +2,18 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
+  classNamesFunction,
   css,
+  customizable,
   divProperties,
   getNativeProps,
   provideContext
 } from '../../Utilities';
-import { IResizeGroupProps } from './ResizeGroup.types';
-import * as styles from './ResizeGroup.scss';
+import {
+  IResizeGroupProps,
+  IResizeGroupStyles,
+  IResizeGroupStyleProps
+} from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;
 
@@ -284,6 +289,9 @@ const MeasuredContext = provideContext({
   return { isMeasured: true };
 });
 
+const getClassNames = classNamesFunction<IResizeGroupStyleProps, IResizeGroupStyles>();
+
+@customizable('ResizeGroup', ['theme'])
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   private _root: HTMLElement;
@@ -299,14 +307,18 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public render() {
-    const { onRenderData, className } = this.props;
+    const { onRenderData, className, getStyles, theme } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
+    const classNames = getClassNames(getStyles!, { theme: theme!, className });
 
     return (
-      <div { ...divProps } className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
+      <div { ...divProps } className={ classNames.root } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
-          <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
+          <div
+            style={ { position: 'fixed', visibility: 'hidden' } }
+            ref={ this._resolveRef('_measured') }
+          >
             <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>
           </div>
         ) }
