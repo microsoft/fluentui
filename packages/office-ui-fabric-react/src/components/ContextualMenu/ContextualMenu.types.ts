@@ -38,10 +38,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
+   * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | IPoint | null;
+  target?: Element | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -227,8 +227,8 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * @default ContextualMenuItem
    */
   contextualMenuItemAs?:
-    React.ComponentClass<IContextualMenuItemProps> |
-    React.StatelessComponent<IContextualMenuItemProps>;
+  React.ComponentClass<IContextualMenuItemProps> |
+  React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
