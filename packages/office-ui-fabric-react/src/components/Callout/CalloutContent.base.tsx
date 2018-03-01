@@ -32,8 +32,7 @@ import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import {
   AnimationClassNames,
-  IRawStyle,
-  AnimationStyles
+  IRawStyle
 } from '../../Styling';
 
 const ANIMATIONS: { [key: number]: string | undefined; } = {
