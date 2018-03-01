@@ -71,8 +71,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
     if (disabled) {
       ev.preventDefault();
-    }
-    else if (onClick) {
+    } else if (onClick) {
       onClick(ev);
     }
   }
