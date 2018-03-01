@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox component : Replaced labelText by placeholder. Deprecated labelText. ",
+      "comment": "SearchBox: Deprecated `labelText` for `placeholder`.",
       "type": "patch"
     }
   ],
