@@ -42,7 +42,6 @@ const ANIMATIONS: { [key: number]: string | undefined; } = {
   [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
 };
 
-
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
 const BORDER_WIDTH = 1;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };

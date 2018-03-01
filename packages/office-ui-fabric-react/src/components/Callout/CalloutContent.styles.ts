@@ -11,7 +11,6 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.type
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 
-
 function getBeakStyle(beakWidth?: number,
   beakStyle?: string): IRawStyle {
   let beakStyleWidth = beakWidth;
