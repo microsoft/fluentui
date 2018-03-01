@@ -17,7 +17,6 @@ import {
   ImageFit,
   ImageLoadState
 } from './Image.types';
-import { AnimationClassNames } from '../../Styling';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
 

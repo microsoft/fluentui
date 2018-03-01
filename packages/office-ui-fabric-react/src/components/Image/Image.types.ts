@@ -145,13 +145,6 @@ export enum ImageLoadState {
   errorLoaded = 3
 }
 
-// export interface IImageFit {
-//   isCenter: boolean;
-//   isContain: boolean;
-//   isCover: boolean;
-//   isNone: boolean;
-// }
-
 export interface IImageStyleProps {
   /**
    * Accept theme prop.
@@ -194,7 +187,6 @@ export interface IImageStyleProps {
   /**
    * ImageFit booleans for center, cover, contain, none
    */
-  // imageFitStyle?: IImageFit;
   isCenter?: boolean;
   isContain?: boolean;
   isCover?: boolean;
