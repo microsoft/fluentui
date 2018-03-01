@@ -33,7 +33,7 @@ export const getStyles = (
     left: '50%',
     top: '50%',
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
-  }
+  };
 
   return ({
     root: [
