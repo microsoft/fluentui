@@ -44,6 +44,11 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Aria label to place on the navigation landmark for breadcrumb
    */
   ariaLabel?: string;
+
+  /**
+   * Optional name to use for aria label on overflow button.
+   */
+  overflowAriaLabel?: string;
 }
 
 export interface IBreadcrumbItem {
