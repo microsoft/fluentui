@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 28 Feb 2018 11:15:45 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Mar 2018 11:12:54 GMT and should not be manually modified.
+
+## 5.57.0
+Thu, 01 Mar 2018 11:12:54 GMT
+
+### Minor changes
+
+- Added index import for base files in Layer, Nav, Image, ScrollablePane, ResizeGroup, and Rating components so unstyled component can be used.
+- Converting ResizeGroup SCSS to MergeStyles step 2 - style converstion
+
+## 5.56.1
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Fix an issue on IE11 where Autofill would swallow some keystrokes if typing quickly enough
+- CoachMarkStyles: Use ... instead of assign for IE compatibility
+- FocusZone: isDefaultPrevented is now respected.
+- GroupedList: Chevron css no longer uses ms-icon
 
 ## 5.56.0
 Wed, 28 Feb 2018 11:15:45 GMT

@@ -9,6 +9,14 @@
 	},
 	"glyphs": [
 		{
+			"name": "YammerLogo",
+			"unicode": "ED19"
+		},
+		{
+			"name": "Hide",
+			"unicode": "ED1A"
+		},
+		{
 			"name": "Uneditable",
 			"unicode": "ED1D"
 		},
@@ -93,16 +101,8 @@
 			"unicode": "ED73"
 		},
 		{
-			"name": "BoxLogo",
-			"unicode": "ED75"
-		},
-		{
 			"name": "DelveLogoInverse",
 			"unicode": "ED76"
-		},
-		{
-			"name": "DropboxLogo",
-			"unicode": "ED77"
 		},
 		{
 			"name": "ExchangeLogoInverse",
@@ -115,10 +115,6 @@
 		{
 			"name": "OfficeVideoLogoInverse",
 			"unicode": "ED7A"
-		},
-		{
-			"name": "ParatureLogo",
-			"unicode": "ED7B"
 		},
 		{
 			"name": "SocialListeningLogo",
@@ -407,6 +403,10 @@
 		{
 			"name": "CaretDownSolid8",
 			"unicode": "EDDC"
+		},
+		{
+			"name": "ClearFormatting",
+			"unicode": "EDDD"
 		}
 	]
 }
