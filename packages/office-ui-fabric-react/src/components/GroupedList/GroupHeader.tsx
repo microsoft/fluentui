@@ -121,15 +121,9 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>
           </div>
 
-          <div
-            className={ css(
-              'ms-GroupHeader-loading',
-              styles.loading,
-              isLoadingVisible && ('is-loading ' + styles.loadingIsVisible)
-            ) }
-          >
+          { isLoadingVisible && (
             <Spinner label={ loadingText } />
-          </div>
+          ) }
 
         </FocusZone>
       </div>
