@@ -35,7 +35,6 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     overflowYHidden,
     calloutWidth,
     contentMaxHeight,
-    positions,
     beakWidth,
     backgroundColor,
     beakStyle
