@@ -1254,6 +1254,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _notifyPreviewChanged(prevState: IComboBoxState) {
     const { onPreviewExecute, onRevertPreviewExecute } = this.props;
     const {
+      currentPendingValue,
       currentOptions,
       currentPendingValueValidIndex,
       currentPendingValueValidIndexOnHover
@@ -1261,7 +1262,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (onPreviewExecute && onRevertPreviewExecute) {
       let sendRevert = false;
-      let currentPendingIndex = -1;
+      let currentPendingIndex: number | undefined = undefined;
+      let pendingValue: string | undefined = undefined;
 
       if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
         if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
@@ -1271,7 +1273,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      if (currentPendingIndex < 0 && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
+      if (!currentPendingIndex && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
         if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
           currentPendingIndex = currentPendingValueValidIndex;
         } else {
@@ -1279,13 +1281,21 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      if (this._isInPreview && (sendRevert || currentPendingIndex >= 0)) {
+      if (!currentPendingIndex && currentPendingValue !== prevState.currentPendingValue) {
+        if (currentPendingValue !== '') {
+          pendingValue = currentPendingValue;
+        } else {
+          sendRevert = true;
+        }
+      }
+
+      if (this._isInPreview && (sendRevert || currentPendingIndex || pendingValue)) {
         onRevertPreviewExecute();
         this._isInPreview = false;
       }
 
-      if (!this._isInPreview && currentPendingIndex >= 0) {
-        onPreviewExecute(currentOptions[currentPendingIndex], currentPendingIndex);
+      if (!this._isInPreview && (currentPendingIndex || pendingValue)) {
+        onPreviewExecute(currentPendingIndex ? currentOptions[currentPendingIndex] : undefined, currentPendingIndex, pendingValue);
         this._isInPreview = true;
       }
     }

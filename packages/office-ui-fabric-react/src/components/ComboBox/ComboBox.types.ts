@@ -52,7 +52,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * Callback issued when the user changes the pending value index in ComboBox
    * This includes hovering or keyboarding to a menu item
    */
-  onPreviewExecute?: (option?: IComboBoxOption, index?: number) => void;
+  onPreviewExecute?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
    * Callback issued when user leaves the menu item in the ComboBox menu
