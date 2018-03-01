@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "adding overflow:hidden to ProgressIndicator's .itemProgress class",
+      "comment": "ProgressIndicator: adjusting css so that the gleam doesn't go outside the indicator boundary.",
       "type": "patch"
     }
   ],
