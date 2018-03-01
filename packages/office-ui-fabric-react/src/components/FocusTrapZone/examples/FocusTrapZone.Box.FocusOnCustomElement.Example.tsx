@@ -26,7 +26,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
 
   public render() {
     const { isChecked } = this.state;
-    const className: string = 'shouldFocus input';
+    const className = 'shouldFocus input';
 
     return (
       <div>

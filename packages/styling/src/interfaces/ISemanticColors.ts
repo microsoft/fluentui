@@ -138,15 +138,21 @@ export interface ISemanticColors {
    * The border of a large input control in its resting, state; e.g. the box of dropdown.
    */
   inputBorder: string;
+
+  /** The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
+  *
+  */
+  smallInputBorder: string;
+
   /**
    * The border color of a large hovered input control, such as textbox.
    */
   inputBorderHovered: string;
 
   /**
-* The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
-*/
-  smallInputBorder: string;
+   * The background color of an input, e.g. textbox background.
+   */
+  inputBackground: string;
 
   /**
    * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.

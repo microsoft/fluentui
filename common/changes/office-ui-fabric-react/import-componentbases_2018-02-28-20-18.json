@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Converting ResizeGroup SCSS to MergeStyles step 1 - file structure",
+      "comment": "Added index import for base files in Layer, Nav, Image, ScrollablePane, ResizeGroup, and Rating components so unstyled component can be used.",
       "type": "minor"
     }
   ],
