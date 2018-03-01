@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Fixed case where commamdItemWidths would be null",
+      "comment": "CommandBar: Fixed case where commandItemWidths would be null",
       "type": "patch"
     }
   ],
