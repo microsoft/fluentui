@@ -67,9 +67,11 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    const { onClick } = this.props;
+    const { onClick, disabled } = this.props;
 
-    if (onClick) {
+    if (disabled) {
+      ev.preventDefault();
+    } else if (onClick) {
       onClick(ev);
     }
   }
