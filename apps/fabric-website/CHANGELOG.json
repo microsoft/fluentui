@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.3.2",
+      "tag": "@uifabric/fabric-website_v5.3.2",
+      "date": "Thu, 01 Mar 2018 00:05:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8370f6f5c822189fbd84e13fb285df83b102a308",
+            "comment": "Improved left nav scroll behavior and added fix to webpack so that we can load component pages from our local machines with the UHF."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.56.0 <6.0.0` to `>=5.56.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.1",
       "tag": "@uifabric/fabric-website_v5.3.1",
       "date": "Fri, 16 Feb 2018 11:23:29 GMT",
