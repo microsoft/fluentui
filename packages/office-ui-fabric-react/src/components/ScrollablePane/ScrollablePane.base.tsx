@@ -32,7 +32,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   };
 
   public root: HTMLElement;
-  public stickyContainer: HTMLElement;
   public stickyAbove: HTMLElement;
   public stickyBelow: HTMLElement;
   private _subscribers: Set<Function>;
@@ -63,22 +62,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
   public componentDidMount() {
     this._events.on(this.root, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
-    this._async.setTimeout(() => {
-      this._resizeContainer();
-      if (this.stickyContainer.parentElement && this.root.parentElement) {
-        this.stickyContainer.parentElement.removeChild(this.stickyContainer);
-        this.root.parentElement.insertBefore(this.stickyContainer, this.root.nextSibling);
-        this.notifySubscribers();
-      }
-    }, 500);
   }
 
   public componentWillUnmount() {
     this._events.off(this.root);
     this._events.off(window);
-    if (this.stickyContainer.parentElement) {
-      this.stickyContainer.parentElement.removeChild(this.stickyContainer);
-    }
   }
 
   public render() {
@@ -95,13 +83,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
         { ...getNativeProps(this.props, divProperties) }
         ref={ this._resolveRef('root') }
         className={ classNames.root }
-        data-is-scrollable={ true }
       >
-        <div ref={ this._resolveRef('stickyContainer') } className={ classNames.stickyContainer }>
-          <div ref={ this._resolveRef('stickyAbove') } className={ classNames.stickyAbove } />
-          <div ref={ this._resolveRef('stickyBelow') } className={ classNames.stickyBelow } />
+        <div ref={ this._resolveRef('stickyAbove') } className={ classNames.stickyAbove } />
+        <div ref={ this._resolveRef('stickyBelow') } className={ classNames.stickyBelow } />
+        <div data-is-scrollable={ true }>
+          { this.props.children }
         </div>
-        { this.props.children }
       </div>
     );
   }
@@ -171,7 +158,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
           }
         }, 1);
       }
-      this.notifySubscribers();
       this._setPlaceholderHeights(stickyList);
     }
   }
@@ -186,24 +172,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
 
   private _onWindowResize() {
     this._async.setTimeout(() => {
-      this._resizeContainer();
       this.notifySubscribers();
       this._setPlaceholderHeights(this._stickyAbove);
       this._setPlaceholderHeights(this._stickyBelow);
     }, 5);
-  }
-
-  private _resizeContainer() {
-    const { stickyContainer, root } = this;
-    const { borderTopWidth, borderLeftWidth } = getComputedStyle(root);
-    stickyContainer.style.height = root.clientHeight + 'px';
-    stickyContainer.style.width = root.clientWidth + 'px';
-    if (borderTopWidth) {
-      stickyContainer.style.top = root.offsetTop + parseInt(borderTopWidth, 10) + 'px';
-    }
-    if (borderLeftWidth) {
-      stickyContainer.style.left = root.offsetLeft + parseInt(borderLeftWidth, 10) + 'px';
-    }
   }
 
   @autobind
