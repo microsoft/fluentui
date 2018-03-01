@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "v-brgarl@microsoft.com"
+}
