@@ -104,14 +104,21 @@ export interface IDialogContentStyleProps {
    */
   className?: string;
 
-  // Insert DialogContent style props below
+  type?: DialogType;
+  hidden?: boolean;
+  isMultiline?: boolean;
 }
 
 export interface IDialogContentStyles {
   /**
-   * Style for the root element.
+   * Style for the content element.
    */
-  content?: IStyle;
-
-  // Insert DialogContent classNames below
+  content: IStyle;
+  subText: IStyle;
+  header: IStyle;
+  button: IStyle;
+  inner: IStyle;
+  innerContent: IStyle;
+  title: IStyle;
+  topButton: IStyle;
 }

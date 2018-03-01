@@ -164,7 +164,6 @@ export interface IDialogStyleProps {
   * @default false
   */
   hidden?: boolean;
-  isLargeHeader?: boolean;
   isMultiline?: boolean;
   isRight?: boolean;
 }
@@ -175,16 +174,7 @@ export interface IDialogStyles {
    */
   root: IStyle;
   main: IStyle;
-  button: IStyle;
-  inner: IStyle;
-  header: IStyle;
-  title: IStyle;
-  topButton: IStyle;
-  content: IStyle;
-  subText: IStyle;
   actions: IStyle;
   actionsRight: IStyle;
   action: IStyle;
-  // isMultiline: IStyle;
-  // isLargeHeader: IStyle;
 }

@@ -79,6 +79,8 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       isDarkOverlay,
       isOpen,
       className,
+      containerClassName: containerClassNameProp,
+      contentClassName: contentClassNameProp,
       onDismiss,
       onDismissed,
       onLayerDidMount,
@@ -87,9 +89,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       title,
       theme,
       type,
-      contentClassName: contentClassNameProp,
       topButtonsProps,
-      containerClassName: containerClassNameProp,
       hidden
     } = this.props;
 
@@ -112,6 +112,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       className,
       containerClassName,
       contentClassName,
+      hidden,
     });
 
     return (
