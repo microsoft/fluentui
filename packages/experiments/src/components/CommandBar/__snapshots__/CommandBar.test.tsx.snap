@@ -2,21 +2,10 @@
 
 exports[`CommandBar renders commands correctly 1`] = `
 <div
-  className=
-      ms-ResizeGroup
-      TestClassName
-      {
-        display: block;
-        position: relative;
-      }
+  className="ms-ResizeGroup TestClassName"
 >
   <div
-    style={
-      Object {
-        "position": "fixed",
-        "visibility": "hidden",
-      }
-    }
+    className=""
   >
     <div
       className=
