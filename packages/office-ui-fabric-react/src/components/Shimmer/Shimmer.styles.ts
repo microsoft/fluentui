@@ -1,11 +1,12 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
-import { IStyle, IRawStyle, keyframes } from '../../Styling';
+import {
+  IStyle,
+  IRawStyle,
+  keyframes,
+  DefaultPalette
+} from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const {
-    isGeneric,
-    hasCircle
-  } = props;
 
   const shimmerAnimation: string = keyframes({
     '0%': {
@@ -21,13 +22,14 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       'ms-Shimmer-container',
       {
         display: 'flex',
-        position: 'relative',
         alignItems: 'center',
         padding: '10px',
         width: '100%',
+        height: 'auto',
+        boxSizing: 'border-box',
         background: 'content-box',
-        backgroundImage: 'linear-gradient(to right, #f4f4f4 0%, #eaeaea 50%, #f4f4f4 100%)',
-        backgroundColor: '#f4f4f4',
+        backgroundImage: `linear-gradient(to right, ${DefaultPalette.neutralLighter} 0%, ${DefaultPalette.neutralLight} 50%, ${DefaultPalette.neutralLighter} 100%)`,
+        backgroundColor: `${DefaultPalette.neutralLighter}`,
         backgroundSize: '90% 100%',
         backgroundRepeat: 'no-repeat',
         animationDuration: '2s',
@@ -37,14 +39,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationName: shimmerAnimation
       }
     ],
-    circle: [
-      'ms-Shimmer-circle',
-      {
-        width: '36px',
-        height: '24px',
-        fill: 'white'
-      },
-    ],
     line: [
       'ms-Shimmer-line',
       {
@@ -52,18 +46,18 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         width: '100%',
         height: '16px',
         boxSizing: 'border-box'
-      },
-      hasCircle && {
-        height: '24px',
-        borderBottom: '4px solid white',
-        borderBottomWidth: '4px',
-        borderBottomStyle: 'style',
-        borderBottomColor: 'white',
-        borderTop: '4px solid white',
-        borderTopWidth: '4px',
-        borderTopStyle: 'style',
-        borderTopColor: 'white'
       }
+      // hasCircle && {
+      //   height: '24px',
+      //   borderBottom: `4px solid ${DefaultPalette.white}`,
+      //   borderBottomWidth: '4px',
+      //   borderBottomStyle: 'solid',
+      //   borderBottomColor: `${DefaultPalette.white}`,
+      //   borderTop: `4px solid ${DefaultPalette.white}`,
+      //   borderTopWidth: '4px',
+      //   borderTopStyle: 'solid',
+      //   borderTopColor: `${DefaultPalette.white}`
+      // }
     ]
   };
 }
