@@ -10,7 +10,7 @@ import {
 import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.styles';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
-
+// TODO needs to be thought about
 export interface IShimmerCircleState {
   hasCircle: boolean;
 }

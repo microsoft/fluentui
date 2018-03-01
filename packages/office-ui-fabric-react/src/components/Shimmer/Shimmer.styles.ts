@@ -38,26 +38,17 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationIterationCount: 'infinite',
         animationName: shimmerAnimation
       }
-    ],
-    line: [
-      'ms-Shimmer-line',
-      {
-        color: 'transparent',
-        width: '100%',
-        height: '16px',
-        boxSizing: 'border-box'
-      }
-      // hasCircle && {
-      //   height: '24px',
-      //   borderBottom: `4px solid ${DefaultPalette.white}`,
-      //   borderBottomWidth: '4px',
-      //   borderBottomStyle: 'solid',
-      //   borderBottomColor: `${DefaultPalette.white}`,
-      //   borderTop: `4px solid ${DefaultPalette.white}`,
-      //   borderTopWidth: '4px',
-      //   borderTopStyle: 'solid',
-      //   borderTopColor: `${DefaultPalette.white}`
-      // }
     ]
+    // hasCircle && {
+    //   height: '24px',
+    //   borderBottom: `4px solid ${DefaultPalette.white}`,
+    //   borderBottomWidth: '4px',
+    //   borderBottomStyle: 'solid',
+    //   borderBottomColor: `${DefaultPalette.white}`,
+    //   borderTop: `4px solid ${DefaultPalette.white}`,
+    //   borderTopWidth: '4px',
+    //   borderTopStyle: 'solid',
+    //   borderTopColor: `${DefaultPalette.white}`
+    // }
   };
 }

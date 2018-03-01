@@ -31,9 +31,6 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
     return (
       <div className={ this._classNames.root }>
         { children }
-        {/* <div
-          className={ this._classNames.line }
-        /> */}
       </div>
     );
   }
