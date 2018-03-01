@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Updating icons to FabMDL2v2.68 and adding 2 icons to the main partition.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "lynam.emily@gmail.com"
+}

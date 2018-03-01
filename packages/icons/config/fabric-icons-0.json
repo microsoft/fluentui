@@ -73,6 +73,10 @@
 			"unicode": "E71B"
 		},
 		{
+			"name": "AllApps",
+			"unicode": "E71D"
+		},
+		{
 			"name": "Zoom",
 			"unicode": "E71E"
 		},
@@ -119,10 +123,6 @@
 		{
 			"name": "Lock",
 			"unicode": "E72E"
-		},
-		{
-			"name": "BlockedSite",
-			"unicode": "E72F"
 		},
 		{
 			"name": "ReportHacked",

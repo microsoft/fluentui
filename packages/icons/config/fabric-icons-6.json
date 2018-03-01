@@ -9,10 +9,6 @@
 	},
 	"glyphs": [
 		{
-			"name": "ClearFormatting",
-			"unicode": "EDDD"
-		},
-		{
 			"name": "Superscript",
 			"unicode": "EDDE"
 		},
@@ -37,6 +33,10 @@
 			"unicode": "EDFF"
 		},
 		{
+			"name": "SingleBookmarkSolid",
+			"unicode": "EE00"
+		},
+		{
 			"name": "DoubleChevronDown",
 			"unicode": "EE04"
 		},
@@ -47,10 +47,6 @@
 		{
 			"name": "ReplyAll",
 			"unicode": "EE0A"
-		},
-		{
-			"name": "GoogleDriveLogo",
-			"unicode": "EE0B"
 		},
 		{
 			"name": "WorkforceManagement",
@@ -119,6 +115,10 @@
 		{
 			"name": "WifiEthernet",
 			"unicode": "EE77"
+		},
+		{
+			"name": "TrackersMirrored",
+			"unicode": "EE92"
 		},
 		{
 			"name": "DateTimeMirrored",

@@ -1,4 +1,4 @@
-  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,9 +22,15 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-12"`,
-      src: `url('${baseUrl}fabric-icons-12-6c96597e.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-12-e5eef780.woff') format('woff')`,
     },
     icons: {
+      'ProjectLogo16': '\uF480',
+      'ProjectLogoFill16': '\uF481',
+      'SwayLogo32': '\uF482',
+      'SwayLogoFill32': '\uF483',
+      'SwayLogo16': '\uF484',
+      'SwayLogoFill16': '\uF485',
       'ClassNotebookLogo32': '\uF486',
       'ClassNotebookLogoFill32': '\uF487',
       'ClassNotebookLogo16': '\uF488',
@@ -118,13 +124,7 @@ export function initializeIcons(
       'ChartYAngle': '\uF515',
       'Combobox': '\uF516',
       'LineSpacing': '\uF517',
-      'Padding': '\uF518',
-      'PaddingTop': '\uF519',
-      'PaddingBottom': '\uF51A',
-      'PaddingLeft': '\uF51B',
-      'PaddingRight': '\uF51C',
-      'NavigationFlipper': '\uF51D',
-      'AlignJustify': '\uF51E'
+      'Padding': '\uF518'
     }
   };
 

@@ -22,9 +22,19 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-8ab77260.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-9-938d7113.woff') format('woff')`,
     },
     icons: {
+      'BranchMerge': '\uF295',
+      'BranchPullRequest': '\uF296',
+      'BranchSearch': '\uF297',
+      'BranchShelveset': '\uF298',
+      'RawSource': '\uF299',
+      'MergeDuplicate': '\uF29A',
+      'RowsGroup': '\uF29B',
+      'RowsChild': '\uF29C',
+      'Deploy': '\uF29D',
+      'Redeploy': '\uF29E',
       'ServerEnviroment': '\uF29F',
       'VisioDiagram': '\uF2A0',
       'HighlightMappedShapes': '\uF2A1',
@@ -114,17 +124,7 @@ export function initializeIcons(
       'PY': '\uF2F9',
       'CoffeeScript': '\uF2FA',
       'MarkDownLanguage': '\uF2FB',
-      'FullWidth': '\uF2FE',
-      'FullWidthEdit': '\uF2FF',
-      'Plug': '\uF300',
-      'PlugSolid': '\uF301',
-      'PlugConnected': '\uF302',
-      'PlugDisconnected': '\uF303',
-      'UnlockSolid': '\uF304',
-      'Variable': '\uF305',
-      'Parameter': '\uF306',
-      'CommentUrgent': '\uF307',
-      'Storyboard': '\uF308'
+      'FullWidth': '\uF2FE'
     }
   };
 
