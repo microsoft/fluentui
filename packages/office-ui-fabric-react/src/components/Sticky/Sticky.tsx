@@ -145,8 +145,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const canStickyFooter = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Footer;
 
     this.setState({
-      isStickyTop: canStickyHeader && ((!isStickyTop && top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom)),
-      isStickyBottom: canStickyFooter && ((!isStickyBottom && bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top))
+      isStickyTop: canStickyHeader && ((top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom)),
+      isStickyBottom: canStickyFooter && ((bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top))
     });
   }
 
