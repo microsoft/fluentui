@@ -60,7 +60,7 @@ export class FloatingPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
       <div>
         <div className='ms-SearchBoxSmallExample' ref={ (ref: HTMLDivElement) => this._inputElement = ref }>
           <SearchBox
-            labelText={ 'Search a person' }
+            placeholder={ 'Search a person' }
             onChange={ this._onSearchChange }
             value={ this.state.searchValue }
           />
