@@ -48,7 +48,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   /**
    * Optional name to use for aria label on overflow button.
    */
-  overflowAriaLabel?: string
+  overflowAriaLabel?: string;
 }
 
 export interface IBreadcrumbItem {
