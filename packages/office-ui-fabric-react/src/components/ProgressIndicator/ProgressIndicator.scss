@@ -1,17 +1,12 @@
 @import '../../common/common';
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-
 //
 // Office UI Fabric
 // --------------------------------------------------
 // ProgressIndicator Styles
-
-
 $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
-
 .root {
   font-weight: $ms-font-weight-regular;
 }
@@ -34,6 +29,7 @@ $ProgressIndicatorTextHeight: 18px;
 
 .itemProgress {
   position: relative;
+  overflow: hidden;
   height: 2px;
   padding: $ProgressIndicatorMarginBetweenText 0;
 }
@@ -54,18 +50,15 @@ $ProgressIndicatorTextHeight: 18px;
   position: absolute;
   transition: width .3s ease;
   width: 0;
-
   &.indeterminate {
     position: absolute;
     min-width: 33%;
     background: linear-gradient(to right, transparent 0%, $ms-color-themePrimary 50%, transparent 100%);
     animation: indeterminateProgress 3s infinite;
   }
-
   @include high-contrast {
     background-color: WindowText;
   }
-
   @include RTL {
     &.indeterminate {
       animation: indeterminateProgressRTL 3s infinite;
