@@ -1,4 +1,4 @@
-import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction, IKeySequence } from '../../Utilities';
 

@@ -1,4 +1,4 @@
-import { IKeySequence, convertSequencesToKeytipID } from '../keysequence/IKeySequence';
+import { IKeySequence, convertSequencesToKeytipID, dataKtpId } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
 
@@ -21,7 +21,7 @@ export function addKeytipSequence(sequences: IKeySequence[], seq1: IKeySequence)
  */
 // tslint:disable-next-line:no-any
 export function registerKeytip(keytipProps: IKeytipProps): any {
-  let ktpMgr = KeytipManager.getInstance();
+  const ktpMgr = KeytipManager.getInstance();
   return ktpMgr.registerKeytip(keytipProps);
 }
 
@@ -31,7 +31,7 @@ export function registerKeytip(keytipProps: IKeytipProps): any {
  * @param keytipProps - Keytip to unregister
  */
 export function unregisterKeytip(keytipProps: IKeytipProps): void {
-  let ktpMgr = KeytipManager.getInstance();
+  const ktpMgr = KeytipManager.getInstance();
   ktpMgr.unregisterKeytip(keytipProps);
 }
 

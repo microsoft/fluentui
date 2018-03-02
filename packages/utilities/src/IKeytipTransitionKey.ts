@@ -1,5 +1,5 @@
 import { KeytipTransitionModifier } from './KeytipTransitionModifier';
-import { find } from '../../Utilities';
+import { find } from './array';
 
 export interface IKeytipTransitionKey {
   key: string;
