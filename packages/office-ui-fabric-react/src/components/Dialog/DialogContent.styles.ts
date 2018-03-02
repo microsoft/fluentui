@@ -15,7 +15,8 @@ export const getStyles = (
   const {
     className,
     theme,
-    type,
+    isLargeHeader,
+    isClose,
     hidden,
     isMultiline,
   } = props;
@@ -25,11 +26,11 @@ export const getStyles = (
 
   return ({
     content: [
-      type === DialogType.largeHeader && [
+      isLargeHeader && [
         'ms-Dialog-lgHeader',
         {}
       ],
-      type === DialogType.close && [
+      isClose && [
         'ms-Dialog--close',
         {}
       ],
@@ -46,7 +47,7 @@ export const getStyles = (
         wordWrap: 'break-word',
         fontWeight: FontWeights.semilight,
       },
-      type === DialogType.largeHeader ? fonts.medium : fonts.small,
+      isLargeHeader ? fonts.medium : fonts.small,
     ],
 
     header: [
@@ -56,13 +57,13 @@ export const getStyles = (
         width: '100%',
         boxSizing: 'border-box',
       },
-      type === DialogType.largeHeader && [
+      isLargeHeader && [
         'ms-Dialog--lgHeader',
         {
           backgroundColor: dialogLgHeaderBackgroundColor,
         }
       ],
-      type === DialogType.close && [
+      isClose && [
         'ms-Dialog--close',
       ]
     ],
@@ -116,7 +117,7 @@ export const getStyles = (
         padding: '20px 36px 20px 28px',
       },
       fonts.xLarge,
-      type === DialogType.largeHeader && [
+      isLargeHeader && [
         {
           color: palette.white,
           marginBottom: '8px',

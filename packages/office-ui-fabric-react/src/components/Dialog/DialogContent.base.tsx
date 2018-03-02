@@ -49,7 +49,8 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
       className,
-      type
+      isLargeHeader: type === DialogType.largeHeader,
+      isClose: type === DialogType.close,
     });
 
     const groupings = this._groupChildren();

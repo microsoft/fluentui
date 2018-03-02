@@ -109,7 +109,8 @@ export interface IDialogContentStyleProps {
    */
   className?: string;
 
-  type?: DialogType;
+  isLargeHeader?: boolean;
+  isClose?: boolean;
   hidden?: boolean;
 
   /**
