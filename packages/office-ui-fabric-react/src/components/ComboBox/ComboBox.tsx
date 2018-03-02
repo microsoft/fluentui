@@ -1269,6 +1269,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let currentPendingIndex: number | undefined = undefined;
     let pendingValue: string | undefined = undefined;
 
+    // Check first if hover index has changed
     if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
         currentPendingIndex = currentPendingValueValidIndexOnHover;
@@ -1277,6 +1278,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
     }
 
+    // In case there is no new hover index, check if pending value valid index has changed.
     if (!currentPendingIndex && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         currentPendingIndex = currentPendingValueValidIndex;
@@ -1285,6 +1287,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
     }
 
+    // In the case that no index hasn't changed. Check if pending value was edited.
     if (!currentPendingIndex && currentPendingValue !== prevState.currentPendingValue) {
       if (currentPendingValue !== '') {
         pendingValue = currentPendingValue;
@@ -1293,11 +1296,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
     }
 
+    // Call onPendingValueChanged to notify that pending value is now undefined.
     if (this._hasPendingValue && (sendRevert || currentPendingIndex || pendingValue)) {
       onPendingValueChanged();
       this._hasPendingValue = false;
     }
 
+    // Notify the new pending value if any of currentPendingIndex or pendingValue was changed.
     if (!this._hasPendingValue && (currentPendingIndex || pendingValue)) {
       onPendingValueChanged(currentPendingIndex ? currentOptions[currentPendingIndex] : undefined, currentPendingIndex, pendingValue);
       this._hasPendingValue = true;
