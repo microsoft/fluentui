@@ -441,6 +441,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
     this.setState({ isFocused: false });
+    if (this.props.inputProps && this.props.inputProps.onBlur) {
+      this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+    }
   }
 
   @autobind
@@ -457,7 +460,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (this.suggestionElement.hasSuggestedActionSelected()) {
+        if (this.suggestionElement && this.suggestionElement.hasSuggestedActionSelected()) {
           this.suggestionElement.executeSelectedAction();
         } else if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();

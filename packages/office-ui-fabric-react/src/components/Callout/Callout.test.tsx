@@ -84,7 +84,7 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  it('target HTMLElements does not throw exception', () => {
+  it('target Elements does not throw exception', () => {
     const targetElement = document.createElement('div');
     document.body.appendChild(targetElement);
     let threwException = false;
