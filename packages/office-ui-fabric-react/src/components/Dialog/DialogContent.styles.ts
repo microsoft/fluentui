@@ -33,6 +33,7 @@ export const getStyles = (
 
     subText: [
       'ms-Dialog-subText',
+      isLargeHeader ? fonts.medium : fonts.small,
       {
         margin: '0 0 20px 0',
         paddingTop: '8px',
@@ -41,7 +42,6 @@ export const getStyles = (
         wordWrap: 'break-word',
         fontWeight: FontWeights.semilight,
       },
-      isLargeHeader ? fonts.medium : fonts.small,
     ],
 
     header: [
