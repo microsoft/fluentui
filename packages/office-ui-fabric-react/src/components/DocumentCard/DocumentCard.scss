@@ -103,7 +103,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
   :global(.ms-Button:hover) {
     :global(.ms-Button-icon) {
-      color: $ms-color-neutralLight;
+      color: $buttonTextColor;
       cursor: pointer;
     }
   }
