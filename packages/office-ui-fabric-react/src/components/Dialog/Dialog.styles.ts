@@ -12,7 +12,6 @@ export const getStyles = (
   const {
     className,
     containerClassName,
-    contentClassName,
     dialogDefaultMinWidth = '288px',
     dialogDefaultMaxWidth = '340px',
     theme,

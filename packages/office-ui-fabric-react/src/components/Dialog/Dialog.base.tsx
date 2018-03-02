@@ -68,10 +68,9 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
 
   public render() {
     const {
-      // alias the className props for fallback checks.
-      className: classNameProp,
-      containerClassName: containerClassNameProp,
-      contentClassName: contentClassNameProp,
+      className,
+      containerClassName,
+      contentClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -103,16 +102,10 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       ...this.props.dialogContentProps,
     };
 
-    // className fallbacks
-    const className = classNameProp ? classNameProp : modalProps!.className;
-    const containerClassName = containerClassNameProp ? containerClassNameProp : modalProps!.containerClassName;
-    const contentClassName = contentClassNameProp ? contentClassNameProp : dialogContentProps!.className;
-
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
-      className,
-      containerClassName,
-      contentClassName,
+      className: className || modalProps!.className,
+      containerClassName: containerClassName || modalProps.containerClassName,
       hidden,
     });
 
@@ -145,7 +138,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps }
           type={ type !== undefined ? type : dialogContentProps!.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps!.onDismiss }
-          className={ contentClassName }
+          className={ contentClassName || dialogContentProps.className }
           { ...dialogContentProps }
         >
           { this.props.children }
