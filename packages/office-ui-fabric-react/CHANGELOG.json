@@ -2,6 +2,126 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.58.0",
+      "tag": "office-ui-fabric-react_v5.58.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "73809a7f38db63f24b8c44b7464e4578f1de4004",
+            "comment": "DetailsList: only adding `aria-selected` when `selectionMode` is set to `none`."
+          },
+          {
+            "author": "Rohit Jindal <rohit.jindal@flipkart.com>",
+            "commit": "9459022e4b48041b9e236b5f69a0fdf6f1cee505",
+            "comment": "Dropdown: Fixed custom render option in multi select."
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "2c32338a744d10802e4384424701a922850b7647",
+            "comment": "Callout: move animation inline to greatly improve perf"
+          },
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "18ca9bf274d7985b27197c0ea64fb695615f6d98",
+            "comment": "make sure disabled links are non-navigable"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "76e5ccc8a699c7bcf632a3dc9516621f42c9e157",
+            "comment": "DocumentCard: Change it to use set theme"
+          },
+          {
+            "author": "Daniel A. White <daniel@whitefamily.in>",
+            "commit": "b06da13ee4fc7b10baf57f21001c316aada8532a",
+            "comment": "ProgressIndicator: adjusting css so that the gleam doesn't go outside the indicator boundary."
+          },
+          {
+            "author": "Joshua Rush <jdrush89@gmail.com>",
+            "commit": "55231a8018313d0d46e2fb718fd4487d1d41eb5f",
+            "comment": "Allowing use of Elements as target prop for Callouts and ContextualMenus"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "d4f91e9dd14f11e9a98561d0090fa1d0853ecd20",
+            "comment": "CommandBar: Fixed case where commandItemWidths would be null"
+          },
+          {
+            "author": "Lambert Wang <lambert.ww@gmail.com>",
+            "commit": "897b00027fadae6dcceb3ecb1b324e70cb1202f6",
+            "comment": "SpinButton: Updated styling to be consistent with Button and TextField"
+          },
+          {
+            "author": "Charles Simard-Lecours <charles.lecours@gmail.com>",
+            "commit": "252980d10c741136a39f526949d9e5247e654c2d",
+            "comment": "SearchBox: Deprecated `labelText` for `placeholder`."
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "5c53827513582631bfd1660eecafdf45ca92b745",
+            "comment": "Fix infinite recursion in scrollable pane"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "eaeab40bb9326368c3c2a69d2430b69a27062962",
+            "comment": "Added is-selected and is-expanded semantic classes to compositelink style sets"
+          },
+          {
+            "author": "Charles Simard-Lecours <charles.lecours@gmail.com>",
+            "commit": "252980d10c741136a39f526949d9e5247e654c2d",
+            "comment": "Searchbox: Removed non-localized default placeholder string."
+          },
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "8efbccec0c8826aa19b59d683d0bf29bd628dbf2",
+            "comment": "BasePicker: check for null reference before checking value of `this.suggestionElement`."
+          },
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "fdab0a0fac6e4740b0943a507ad8e31e80f645fd",
+            "comment": "only mount spinner component when necessary"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "41e80543717c00b1f5ed95b289e4185ee0469c04",
+            "comment": "ChoiceGroup: Flex layout for icon and image fields.  Fixed some image field bugs."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          },
+          {
+            "author": "Joshua Rush <jdrush89@gmail.com>",
+            "commit": "175c8e4fed7be760c7866da14c17e27faa769a6e",
+            "comment": "Allowing Nav Links to specify iconProps"
+          },
+          {
+            "author": "natalieethell <yummyraspberries@gmail.com>",
+            "commit": "b345d5304dbafc8fa394f89e3633218226024a8a",
+            "comment": "added More items aria label"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.2 <6.0.0` to `>=5.13.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.13.0 <6.0.0` to `>=5.14.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.2 <6.0.0` to `>=5.3.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.57.0",
       "tag": "office-ui-fabric-react_v5.57.0",
       "date": "Thu, 01 Mar 2018 11:12:54 GMT",
