@@ -23,10 +23,10 @@ export interface ICalloutProps {
 
   /**
    * The target that the Callout should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
+   * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | IPoint | null;
+  target?: Element | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned

@@ -77,7 +77,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _bounds: IRectangle;
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
   constructor(props: ICalloutProps) {
@@ -384,17 +384,17 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return true;
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._target = currentDoc ? currentDoc.querySelector(target) as Element : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
-      } else if ((target as HTMLElement).getBoundingClientRect) {
-        const targetElement: HTMLElement = target as HTMLElement;
+      } else if ((target as Element).getBoundingClientRect) {
+        const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
         this._target = target;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
@@ -428,7 +428,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
     const { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }
