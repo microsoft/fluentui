@@ -26,14 +26,8 @@ export const getStyles = (
 
   return ({
     content: [
-      isLargeHeader && [
-        'ms-Dialog-lgHeader',
-        {}
-      ],
-      isClose && [
-        'ms-Dialog--close',
-        {}
-      ],
+      isLargeHeader && 'ms-Dialog-lgHeader',
+      isClose && 'ms-Dialog--close',
       className
     ],
 
@@ -63,9 +57,7 @@ export const getStyles = (
           backgroundColor: dialogLgHeaderBackgroundColor,
         }
       ],
-      isClose && [
-        'ms-Dialog--close',
-      ]
+      isClose && 'ms-Dialog--close',
     ],
 
     button: [
