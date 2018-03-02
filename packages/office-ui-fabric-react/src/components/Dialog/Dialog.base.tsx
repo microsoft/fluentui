@@ -105,7 +105,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
       className: className || modalProps!.className,
-      containerClassName: containerClassName || modalProps.containerClassName,
+      containerClassName: containerClassName || modalProps!.containerClassName,
       hidden,
     });
 
@@ -138,7 +138,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps }
           type={ type !== undefined ? type : dialogContentProps!.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps!.onDismiss }
-          className={ contentClassName || dialogContentProps.className }
+          className={ contentClassName || dialogContentProps!.className }
           { ...dialogContentProps }
         >
           { this.props.children }
