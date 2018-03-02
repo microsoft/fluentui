@@ -64,8 +64,8 @@ export interface IGridProps {
   theme?: ITheme;
 
   /**
- * Optional styles for the component.
- */
+   * Optional styles for the component.
+   */
   getStyles?: IStyleFunction<IGridStyleProps, IGridStyles>;
 }
 

@@ -28,7 +28,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               <div
                 className="ms-DatePicker-navContainer"
               >
-                <span
+                <button
                   aria-controls="DatePickerDay-dayPicker10"
                   aria-label={undefined}
                   className="ms-DatePicker-prevMonth js-prevMonth"
@@ -39,17 +39,16 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
                     data-icon-name="Up"
                     role="presentation"
                   />
-                </span>
-                <span
+                </button>
+                <button
                   aria-controls="DatePickerDay-dayPicker10"
                   aria-label={undefined}
                   className="ms-DatePicker-nextMonth js-nextMonth"
@@ -60,16 +59,15 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
                     data-icon-name="Down"
                     role="presentation"
                   />
-                </span>
+                </button>
               </div>
             </div>
             <div
@@ -906,7 +904,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               <div
                 className="ms-DatePicker-navContainer"
               >
-                <span
+                <button
                   aria-label={undefined}
                   className="ms-DatePicker-prevYear js-prevYear"
                   onClick={[Function]}
@@ -916,17 +914,16 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
                     data-icon-name="Up"
                     role="presentation"
                   />
-                </span>
-                <span
+                </button>
+                <button
                   aria-label={undefined}
                   className="ms-DatePicker-nextYear js-nextYear"
                   onClick={[Function]}
@@ -936,16 +933,15 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 >
                   <i
                     aria-hidden={true}
-                    aria-label={undefined}
                     className=
-                        ms-Icon
+
                         {
                           display: inline-block;
                         }
                     data-icon-name="Down"
                     role="presentation"
                   />
-                </span>
+                </button>
               </div>
             </div>
             <div
@@ -971,7 +967,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 className="ms-DatePicker-optionGrid"
                 role="grid"
               >
-                <span
+                <button
                   aria-label="January 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -980,8 +976,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Jan
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="February 2000"
                   aria-selected={true}
                   className="ms-DatePicker-monthOption"
@@ -990,8 +986,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Feb
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="March 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1000,8 +996,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Mar
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="April 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1010,8 +1006,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Apr
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="May 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1020,8 +1016,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   May
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="June 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1030,8 +1026,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Jun
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="July 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1040,8 +1036,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Jul
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="August 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1050,8 +1046,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Aug
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="September 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1060,8 +1056,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Sep
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="October 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1070,8 +1066,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Oct
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="November 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1080,8 +1076,8 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Nov
-                </span>
-                <span
+                </button>
+                <button
                   aria-label="December 2000"
                   aria-selected={false}
                   className="ms-DatePicker-monthOption"
@@ -1090,11 +1086,11 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   role="gridcell"
                 >
                   Dec
-                </span>
+                </button>
               </div>
             </div>
           </div>
-          <span
+          <button
             className="ms-DatePicker-goToday js-goToday"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -1102,7 +1098,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             tabIndex={0}
           >
             Go to today
-          </span>
+          </button>
         </div>
       </div>
     </div>

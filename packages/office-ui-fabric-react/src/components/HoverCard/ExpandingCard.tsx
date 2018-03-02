@@ -31,8 +31,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     gapSpace: 0
   };
 
-  private _expandingCard: HTMLElement;
-
   private _styles: IExpandingCardStyles;
   // tslint:disable-next-line:no-unused-variable
   private _callout: ICallout;
@@ -49,10 +47,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
   public componentDidMount() {
     this._checkNeedsScroll();
-
-    if (this.props.trapFocus) {
-      this._events.on(this._expandingCard, 'keydown', this._onDismiss);
-    }
   }
 
   public componentWillUnmount() {
@@ -73,9 +67,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
     const content = (
       <div
-        ref={ this._resolveRef('_expandingCard') }
         onMouseEnter={ this.props.onEnter }
         onMouseLeave={ this.props.onLeave }
+        onKeyDown={ this._onKeyDown }
       >
         { this._onRenderCompactCard() }
         { this._onRenderExpandedCard() }
@@ -110,12 +104,15 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   @autobind
-  private _onDismiss(ev: MouseEvent): void {
-    if (ev.type === 'keydown' && (ev.which !== KeyCodes.escape)) {
-      return;
-    } else {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+    if (ev.which === KeyCodes.escape) {
       this.props.onLeave && this.props.onLeave(ev);
     }
+  }
+
+  @autobind
+  private _onDismiss(ev: MouseEvent): void {
+    this.props.onLeave && this.props.onLeave(ev);
   }
 
   @autobind

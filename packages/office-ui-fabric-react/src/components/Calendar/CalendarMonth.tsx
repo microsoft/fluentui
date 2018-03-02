@@ -13,8 +13,12 @@ import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
+export interface ICalendarMonth {
+  focus(): void;
+}
+
 export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
-  componentRef?: () => void;
+  componentRef?: (c: ICalendarMonth) => void;
   navigatedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
@@ -51,9 +55,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
-    let leftNavigationIcon = navigationIcons.leftNavigation;
-    let rightNavigationIcon = navigationIcons.rightNavigation;
+    const { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter, minDate, maxDate } = this.props;
+    const leftNavigationIcon = navigationIcons.leftNavigation;
+    const rightNavigationIcon = navigationIcons.rightNavigation;
 
     // determine if previous/next years are in bounds
     const isPrevYearInBounds = minDate ? compareDatePart(minDate, getYearStart(navigatedDate)) < 0 : true;
@@ -63,7 +67,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
         <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-            <span
+            <button
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
                 ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
               }) }
@@ -74,8 +78,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span>
-            <span
+            </button>
+            <button
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
                 ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
               }) }
@@ -86,7 +90,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               tabIndex={ 0 }
             >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span>
+            </button>
           </div>
         </div>
         <div className={ css('ms-DatePicker-header', styles.header) }>
@@ -120,7 +124,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               const isInBounds = (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
                 (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
-              return <span
+              return <button
                 role={ 'gridcell' }
                 className={
                   css('ms-DatePicker-monthOption', styles.monthOption,
@@ -138,7 +142,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 ref={ isNavigatedMonth ? 'navigatedMonth' : undefined }
               >
                 { month }
-              </span>;
+              </button>;
             }
             ) }
           </div>
@@ -167,7 +171,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectNextYear() {
-    let { navigatedDate, onNavigateDate } = this.props;
+    const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
   }
 
@@ -178,7 +182,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectPrevYear() {
-    let { navigatedDate, onNavigateDate } = this.props;
+    const { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
   }
 
@@ -189,7 +193,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectMonth(newMonth: number) {
-    let { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
+    const { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
 
     // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
     if (onHeaderSelect) {
@@ -200,7 +204,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onHeaderSelect() {
-    let { onHeaderSelect } = this.props;
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
       onHeaderSelect(true);
     }
@@ -208,7 +212,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let { onHeaderSelect } = this.props;
+    const { onHeaderSelect } = this.props;
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }

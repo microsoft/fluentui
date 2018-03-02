@@ -2,10 +2,20 @@
 
 exports[`Breadcrumb renders breadcumb correctly 1`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -44,9 +54,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -74,9 +82,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -104,9 +110,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -134,9 +138,7 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -154,10 +156,20 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
 
 exports[`Breadcrumb renders breadcumb correctly 2`] = `
 <div
-  className="ms-ResizeGroup"
+  className=
+      ms-ResizeGroup
+      {
+        display: block;
+        position: relative;
+      }
 >
   <div
-    className=""
+    style={
+      Object {
+        "position": "fixed",
+        "visibility": "hidden",
+      }
+    }
   >
     <div
       aria-label={undefined}
@@ -190,8 +202,8 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-pressed={undefined}
               className=
                   ms-Button
-                  ms-Button--icon
                   ms-Breadcrumb-overflowButton
+                  ms-Button--icon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -257,9 +269,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               >
                 <i
                   aria-hidden={true}
-                  aria-label={undefined}
                   className=
-                      ms-Icon
                       ms-Button-icon
                       {
                         display: inline-block;
@@ -283,9 +293,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             </button>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -313,9 +321,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;
@@ -343,9 +349,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
             </span>
             <i
               aria-hidden={true}
-              aria-label={undefined}
               className=
-                  ms-Icon
                   ms-Breadcrumb-chevron
                   {
                     display: inline-block;

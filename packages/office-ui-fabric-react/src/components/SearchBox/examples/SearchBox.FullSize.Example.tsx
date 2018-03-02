@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 
+// tslint:disable:jsx-no-lambda
+
 export class SearchBoxFullSizeExample extends React.Component<any, any> {
   public render() {
     return (
       <SearchBox
-        // tslint:disable:jsx-no-lambda
+        placeholder='Search'
         onFocus={ () => console.log('onFocus called') }
         onBlur={ () => console.log('onBlur called') }
+        onChange={ () => console.log('onChange called') }
       />
     );
   }

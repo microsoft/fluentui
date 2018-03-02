@@ -183,6 +183,10 @@ export const getItemClassNames = memoizeFunction((
       knownIcon && 'ms-ContextualMenu-iconColor ' && styles.iconColor,
       styles.icon,
       iconClassName,
+      disabled && [
+        'is-disabled',
+        styles.iconDisabled
+      ]
     ],
     checkmarkIcon: [
       'ms-ContextualMenu-checkmarkIcon',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISuggestionModel, ValidationState, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionModel, IBasePickerSuggestionsProps, SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IBaseFloatingPicker {
@@ -44,8 +44,21 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
+   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+
+  /**
+   * A callback for when the input has been changed
+   */
+  onInputChanged?: (filter: string) => void;
+
+  /**
+   * The delay time in ms before resolving suggestions, which is kicked off when input has been cahnged.
+   * e.g. If a second input change happens within the resolveDelay time, the timer will start over.
+   * Only until after the timer completes will onResolveSuggestions be called.
+   */
+  resolveDelay?: number;
 
   /**
    * A callback for when a suggestion is clicked
@@ -71,7 +84,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * A function used to validate if raw text entered into the well can be added
    */
-  onValidateInput?: (input: string) => ValidationState;
+  onValidateInput?: (input: string) => boolean;
   /**
    * The text to display while searching for more results in a limited suggestions list
    */
@@ -82,8 +95,13 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    */
   createGenericItem?: (
     input: string,
-    ValidationState: ValidationState
+    isValid: boolean
   ) => ISuggestionModel<T>;
+
+  /**
+   * The callback that should be called to see if the force resolve command should be shown
+   */
+  showForceResolve?: () => boolean;
 
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled

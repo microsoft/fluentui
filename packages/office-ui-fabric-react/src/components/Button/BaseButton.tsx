@@ -88,11 +88,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       theme,
       getClassNames
-         } = this.props;
+    } = this.props;
 
-    let { menuProps } = this.state;
+    const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
-    let isPrimaryButtonDisabled = (disabled || primaryDisabled);
+    const isPrimaryButtonDisabled = (disabled || primaryDisabled);
 
     this._classNames = getClassNames ? getClassNames(
       theme!,
@@ -124,7 +124,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
-        'disabled' // Let disabled buttons be focused and styled as disabled.
+        'disabled' // let disabled buttons be focused and styled as disabled.
       ]);
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
@@ -210,9 +210,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    let props = this.props;
-    let Tag = tag;
-    let {
+    const props = this.props;
+    const Tag = tag;
+    const {
       menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
@@ -223,7 +223,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = props;
 
     const Content = (
-      <Tag {...buttonProps }>
+      <Tag { ...buttonProps }>
         <div className={ this._classNames.flexContainer } >
           { onRenderIcon(props, this._onRenderIcon) }
           { this._onRenderTextContents() }
@@ -249,22 +249,24 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
-    let {
+    const {
       iconProps
-       } = this.props;
+    } = this.props;
 
     if (iconProps) {
-      return Icon({
-        ...iconProps,
-        className: this._classNames.icon
-      });
+      return (
+        <Icon
+          { ...iconProps }
+          className={ this._classNames.icon }
+        />
+      );
     }
     return null;
   }
 
   @autobind
   private _onRenderTextContents(): JSX.Element | (JSX.Element | null)[] {
-    let {
+    const {
       text,
       children,
       description,
@@ -291,9 +293,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderText(): JSX.Element | null {
     let {
-      children,
       text
-            } = this.props;
+    } = this.props;
+    const {
+      children
+    } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -331,7 +335,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderDescription(props: IButtonProps) {
     const {
-    description
+      description
     } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -366,7 +370,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let {
+    const {
       menuIconProps
     } = this.props;
 
@@ -389,7 +393,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <ContextualMenu
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        {...menuProps}
+        { ...menuProps }
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
         labelElementId={ this._labelId }
@@ -406,7 +410,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
-    let currentMenuProps = this.state.menuProps;
+    const currentMenuProps = this.state.menuProps;
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
@@ -415,7 +419,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       styles = {},
       disabled,
       checked,
-      getSplitButtonClassNames
+      getSplitButtonClassNames,
+      onClick,
+      primaryDisabled
     } = this.props;
 
     const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
@@ -427,8 +433,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         !!this.state.menuProps,
         !!checked);
 
+    buttonProps = { ...buttonProps, onClick: undefined };
+
     return (
       <div
+        role={ 'button' }
         aria-labelledby={ buttonProps.ariaLabel }
         aria-disabled={ disabled }
         aria-haspopup={ true }
@@ -438,10 +447,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }
+        data-is-focusable={ true }
+        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
       >
         <span
-          aria-hidden={ true }
-          // TODO: THIS SHOULD BE REMOVED!
           style={ { 'display': 'flex' } }
         >
           { this._onRenderContent(tag, buttonProps) }
@@ -462,6 +471,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
     let {
       menuIconProps,
+    } = this.props;
+
+    const {
       splitButtonAriaLabel
     } = this.props;
 
@@ -471,25 +483,46 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    let splitButtonProps = {
+    const splitButtonProps = {
       'styles': classNames,
       'checked': this.props.checked,
       'disabled': this.props.disabled,
       'onClick': this._onMenuClick,
       'menuProps': undefined,
       'iconProps': menuIconProps,
-      'ariaLabel': splitButtonAriaLabel
+      'ariaLabel': splitButtonAriaLabel,
+      'aria-haspopup': true,
+      'aria-expanded': this._isExpanded
     };
 
-    return <BaseButton {...splitButtonProps} />;
+    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } />;
+
   }
 
   @autobind
-  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.down) {
-      let { onMenuClick } = this.props;
-      onMenuClick && onMenuClick(ev, this);
-      !ev.defaultPrevented && this._onToggleMenu();
+  private _onMouseDown(ev: React.MouseEvent<BaseButton>) {
+    if (this.props.onMouseDown) {
+      this.props.onMouseDown(ev);
+    }
+
+    ev.preventDefault();
+  }
+
+  @autobind
+  private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+    }
+
+    const { onMenuClick } = this.props;
+    if (onMenuClick) {
+      onMenuClick(ev, this);
+    }
+
+    if (!ev.defaultPrevented &&
+      this.props.menuTriggerKeyCode !== null &&
+      ev.which === (this.props.menuTriggerKeyCode === undefined ? KeyCodes.down : this.props.menuTriggerKeyCode)) {
+      this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -497,10 +530,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onMenuClick(ev: React.MouseEvent<HTMLAnchorElement>) {
-    let { onMenuClick } = this.props;
-    onMenuClick && onMenuClick(ev, this);
-    !ev.defaultPrevented && this._onToggleMenu();
-    ev.preventDefault();
-    ev.stopPropagation();
+    const { onMenuClick } = this.props;
+    if (onMenuClick) {
+      onMenuClick(ev, this);
+    }
+
+    if (!ev.defaultPrevented) {
+      this._onToggleMenu();
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }
 }

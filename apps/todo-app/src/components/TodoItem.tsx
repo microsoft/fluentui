@@ -20,8 +20,8 @@ import strings from './../strings';
 export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   private static ANIMATION_TIMEOUT = 200;
 
-  private _animationTimeoutId: number;
-  private _rowItem: HTMLDivElement;
+  private _animationTimeoutId!: number;
+  private _rowItem!: HTMLDivElement;
 
   constructor(props: ITodoItemProps) {
     super(props);
@@ -78,7 +78,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     return `${completeState} ${titleString}`;
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+  private _onCheckboxChange(ev?: React.FormEvent<HTMLElement>, isChecked?: boolean): void {
     this._handleWithAnimation(this.props.onToggleComplete, 'ms-slideUpOut20');
   }
 

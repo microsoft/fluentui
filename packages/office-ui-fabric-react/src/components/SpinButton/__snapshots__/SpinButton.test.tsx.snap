@@ -52,6 +52,8 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
   </div>
   <div
     aria-label={undefined}
+    aria-posinset={undefined}
+    aria-setsize={undefined}
     className=
 
         {
@@ -146,15 +148,14 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     >
       <button
         aria-describedby={null}
-        aria-hidden="true"
         aria-label={undefined}
         aria-labelledby={null}
         aria-pressed={false}
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-UpButton
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -228,9 +229,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
-                ms-Icon
                 ms-Button-icon
                 {
                   display: inline-block;
@@ -254,15 +253,14 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       </button>
       <button
         aria-describedby={null}
-        aria-hidden="true"
         aria-label={undefined}
         aria-labelledby={null}
         aria-pressed={false}
         checked={false}
         className=
             ms-Button
-            ms-Button--icon
             ms-DownButton
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -336,9 +334,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         >
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
-                ms-Icon
                 ms-Button-icon
                 {
                   display: inline-block;

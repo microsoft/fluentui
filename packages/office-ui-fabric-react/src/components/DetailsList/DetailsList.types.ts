@@ -27,6 +27,16 @@ export interface IDetailsList extends IList {
    * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
    */
   forceUpdate: () => void;
+
+  /**
+   * Scroll to and focus the item at the given index. focusIndex will call scrollToIndex on the specified index.
+   *
+   * @param index Index of item to scroll to
+   * @param forceIntoFirstElement If true, focus will be set to the first focusable child element of the item rather
+   *  than the item itself.
+   * @param measureItem Optional callback to measure the height of an individual item
+   */
+  focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number) => void;
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
@@ -62,7 +72,7 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
-  /** Controls how/if the details list manages selection. */
+  /** Controls how/if the details list manages selection. Options include none, single, multiple */
   selectionMode?: SelectionMode;
 
   /**
@@ -161,6 +171,9 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
 
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
+
+  /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
+  getRowAriaDescribedBy?: (item: any) => string;
 
   /** Optional callback to get the item key, to be used in the selection and on render. */
   getKey?: (item: any, index?: number) => string;

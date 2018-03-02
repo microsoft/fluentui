@@ -34,7 +34,7 @@ function _createPositionData(
 }
 
 // Currently the beakPercent is set to 50 for all positions meaning that it should tend to the center of the target
-let DirectionalDictionary: { [key: number]: IPositionDirectionalHintData } = {
+const DirectionalDictionary: { [key: number]: IPositionDirectionalHintData } = {
   [DirectionalHint.topLeftEdge]: _createPositionData(RectangleEdge.top, RectangleEdge.left),
   [DirectionalHint.topCenter]: _createPositionData(RectangleEdge.top),
   [DirectionalHint.topRightEdge]: _createPositionData(RectangleEdge.top, RectangleEdge.right),
@@ -64,7 +64,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string; } = {
  * Do not call methods from this directly, use either positionCallout or positionElement or make another function that
  * utilizes them.
  */
-export module positioningFunctions {
+export namespace positioningFunctions {
 
   export interface IElementPosition {
     elementRectangle: Rectangle;
@@ -104,7 +104,7 @@ export module positioningFunctions {
    * If there are no out of bounds edges it returns an empty array.
    */
   function _getOutOfBoundsEdges(rect: Rectangle, boundingRect: Rectangle): RectangleEdge[] {
-    let outOfBounds: RectangleEdge[] = new Array<RectangleEdge>();
+    const outOfBounds: RectangleEdge[] = new Array<RectangleEdge>();
 
     if (rect.top < boundingRect.top) {
       outOfBounds.push(RectangleEdge.top);
@@ -250,7 +250,7 @@ export module positioningFunctions {
     bounding: Rectangle,
     positionData: IPositionDirectionalHintData,
     gap: number = 0, ): IElementPosition {
-    let directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
+    const directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
     let currentEstimate = rect;
     let currentEdge = positionData.targetEdge;
     let currentAlignment = positionData.alignmentEdge;
@@ -302,7 +302,7 @@ export module positioningFunctions {
     directionalHintFixed?: boolean,
     coverTarget?: boolean): IElementPosition {
 
-    let {
+    const {
       alignmentEdge
     } = positionData;
     let elementEstimate: IElementPosition = {
@@ -315,7 +315,7 @@ export module positioningFunctions {
       elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
     }
 
-    let outOfBounds = _getOutOfBoundsEdges(element, bounding);
+    const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
     for (const direction of outOfBounds) {
       elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
@@ -360,7 +360,7 @@ export module positioningFunctions {
     coverTarget?: boolean
   ): Rectangle {
     let estimatedElementPosition: Rectangle;
-    let {
+    const {
       alignmentEdge,
       targetEdge
     } = positionData;
@@ -419,9 +419,9 @@ export module positioningFunctions {
     targetEdge: RectangleEdge,
     alignmentEdge?: RectangleEdge
   ): IPartialIRectangle {
-    let returnValue: IPartialIRectangle = {};
+    const returnValue: IPartialIRectangle = {};
 
-    const hostRect: Rectangle = _getRectangleFromHTMLElement(hostElement);
+    const hostRect: Rectangle = _getRectangleFromElement(hostElement);
     const elementEdge = targetEdge * -1;
     const elementEdgeString = RectangleEdge[elementEdge];
     const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
@@ -453,11 +453,14 @@ export module positioningFunctions {
     directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
     directionalHintForRTL?: DirectionalHint
   ): IPositionDirectionalHintData {
-    let positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
+    const positionInformation: IPositionDirectionalHintData = { ...DirectionalDictionary[directionalHint] };
     if (getRTL()) {
+
       // If alignment edge exists and that alignment edge is -2 or 2, right or left, then flip it.
-      positionInformation.alignmentEdge = positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0
-        ? positionInformation.alignmentEdge * -1 : undefined;
+      if (positionInformation.alignmentEdge && positionInformation.alignmentEdge % 2 === 0) {
+        positionInformation.alignmentEdge = positionInformation.alignmentEdge * -1;
+      }
+
       return directionalHintForRTL !== undefined ?
         DirectionalDictionary[directionalHintForRTL] :
         positionInformation;
@@ -503,7 +506,7 @@ export module positioningFunctions {
     gap: number,
     directionalHintFixed?: boolean,
     coverTarget?: boolean): IElementPosition {
-    let estimatedElementPosition: Rectangle = _estimatePosition(elementToPosition, target, positionData, gap, coverTarget);
+    const estimatedElementPosition: Rectangle = _estimatePosition(elementToPosition, target, positionData, gap, coverTarget);
     if (_isRectangleWithinBounds(estimatedElementPosition, bounding)) {
       return {
         elementRectangle: estimatedElementPosition,
@@ -521,7 +524,7 @@ export module positioningFunctions {
     // The "host" element that we will use to help position the beak.
     const actualElement = new Rectangle(0, elementPosition.elementRectangle.width, 0, elementPosition.elementRectangle.height);
     const returnEdge = elementPosition.alignmentEdge ? elementPosition.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
-    let returnValue: IPartialIRectangle = {};
+    const returnValue: IPartialIRectangle = {};
 
     returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
     returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualElement, returnEdge);
@@ -563,8 +566,8 @@ export module positioningFunctions {
     return beakPositon;
   }
 
-  export function _getRectangleFromHTMLElement(element: HTMLElement): Rectangle {
-    let clientRect: ClientRect = element.getBoundingClientRect();
+  export function _getRectangleFromElement(element: Element): Rectangle {
+    const clientRect: ClientRect = element.getBoundingClientRect();
 
     return new Rectangle(clientRect.left, clientRect.right, clientRect.top, clientRect.bottom);
   }
@@ -573,23 +576,24 @@ export module positioningFunctions {
     return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
   }
 
-  export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent | IPoint | undefined) {
+  export function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined) {
     let targetRectangle: Rectangle;
     if (target) {
       if ((target as MouseEvent).preventDefault) {
-        let ev: MouseEvent = target as MouseEvent;
+        const ev = target as MouseEvent;
         targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
-      } else if ((target as IPoint).x !== undefined) {
-        let point: IPoint = target as IPoint;
-        targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
+      } else if ((target as Element).getBoundingClientRect) {
+        targetRectangle = _getRectangleFromElement(target as Element);
+        // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
-        targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
+        const point: IPoint = target as IPoint;
+        targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
       }
 
       if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
-        let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
+        const outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
-        for (let direction of outOfBounds) {
+        for (const direction of outOfBounds) {
           (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
         }
       }
@@ -642,7 +646,7 @@ export module positioningFunctions {
       boundingRect,
       props.coverTarget);
     const positionedElement: IElementPosition = _positionElementWithinBounds(
-      _getRectangleFromHTMLElement(elementToPosition),
+      _getRectangleFromElement(elementToPosition),
       targetRect,
       boundingRect,
       positionData,
@@ -676,7 +680,7 @@ export module positioningFunctions {
     callout: HTMLElement): ICalloutPositionedInfo {
     const beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
     const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
-    let positionProps: IPositionProps = props;
+    const positionProps: IPositionProps = props;
     positionProps.gapSpace = gap;
     const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout);
     const beakPositioned: Rectangle = _positionBeak(
@@ -758,12 +762,12 @@ export function positionCallout(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: HTMLElement | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
-  let mouseTarget: MouseEvent = target as MouseEvent;
-  let elementTarget: HTMLElement = target as HTMLElement;
-  let pointTarget: IPoint = target as IPoint;
+export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+  const mouseTarget: MouseEvent = target as MouseEvent;
+  const elementTarget: Element = target as Element;
+  const pointTarget: IPoint = target as IPoint;
   let targetRect: Rectangle;
-  let boundingRectangle = bounds ?
+  const boundingRectangle = bounds ?
     positioningFunctions._getRectangleFromIRect(bounds) :
     new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
@@ -772,7 +776,7 @@ export function getMaxHeight(target: HTMLElement | MouseEvent | IPoint, targetEd
   } else if (pointTarget.x !== undefined && pointTarget.y !== undefined) {
     targetRect = new Rectangle(pointTarget.x, pointTarget.x, pointTarget.y, pointTarget.y);
   } else {
-    targetRect = positioningFunctions._getRectangleFromHTMLElement(elementTarget);
+    targetRect = positioningFunctions._getRectangleFromElement(elementTarget);
   }
 
   return positioningFunctions._getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle);

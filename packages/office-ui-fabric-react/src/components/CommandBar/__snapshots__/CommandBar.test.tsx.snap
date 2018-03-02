@@ -24,6 +24,8 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
           aria-expanded={false}
           aria-haspopup={true}
           aria-label={undefined}
+          aria-posinset={1}
+          aria-setsize={1}
           className="ms-CommandBarItem-link undefined"
           data-command-key="TestKey1"
           id="CommandBar0TestKey1"
@@ -38,9 +40,7 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
           </span>
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
-                ms-Icon
                 ms-CommandBarItem-chevronDown
                 {
                   display: inline-block;

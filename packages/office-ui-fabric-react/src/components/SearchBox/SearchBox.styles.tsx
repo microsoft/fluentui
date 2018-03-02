@@ -11,7 +11,7 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput } = props;
-  const { palette, fonts } = theme;
+  const { palette, fonts, semanticColors } = theme;
 
   return {
     root: [
@@ -33,12 +33,9 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           },
           ':hover': {
             borderColor: palette.neutralDark,
-            $label: {
-              color: palette.black,
-              $iconContainer: {
-                color: palette.themeDark
-              }
-            }
+          },
+          ':hover $iconContainer': {
+            color: palette.themeDark
           }
         }
       },
@@ -133,7 +130,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontSize: 'inherit',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',
-        flex: '1 1 0',
+        flex: '1 1 0px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         // This padding forces the text placement to round up.
@@ -142,6 +139,13 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         selectors: {
           '::-ms-clear': {
             display: 'none'
+          },
+          '::placeholder': {
+            color: semanticColors.inputPlaceholderText,
+            opacity: 1
+          },
+          ':-ms-input-placeholder': {
+            color: semanticColors.inputPlaceholderText
           }
         }
       },

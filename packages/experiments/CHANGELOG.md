@@ -1,6 +1,99 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 19 Dec 2017 11:22:47 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+
+## 5.21.0
+Fri, 16 Feb 2018 11:23:28 GMT
+
+### Minor changes
+
+- Removing Coachmark
+
+### Patches
+
+- Hook up onPaste for BaseExtendedPicker
+
+## 5.20.0
+Wed, 14 Feb 2018 22:10:49 GMT
+
+### Minor changes
+
+- Use new "use current input" command in Suggestions
+
+## 5.19.0
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Minor changes
+
+- Added a fillHorizontal mode to TilesList
+
+## 5.18.0
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Minor changes
+
+- change persona pill css
+
+### Patches
+
+- BasePicker: Use correct autofillnow
+
+## 5.17.0
+Fri, 02 Feb 2018 11:24:16 GMT
+
+### Minor changes
+
+- allow editing of selected items in selected people list
+
+### Patches
+
+- consume BlockedSite icon for malware detected signal
+
+## 5.16.1
+Wed, 31 Jan 2018 11:11:59 GMT
+
+### Patches
+
+- Make Selection optional (create default seleciton fallback), change render typedef to any, to allow use in lower versions of types/react"
+
+## 5.16.0
+Mon, 29 Jan 2018 11:23:40 GMT
+
+### Minor changes
+
+- Add overflowMenuProps to Experiments CommandBar
+
+## 5.15.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- add optional title element to extendedPicker, css changes to have selected items flow on the same row as input
+
+## 5.14.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Add callbacks for onDataReduced and onDataGrown
+
+### Patches
+
+- Minor visual alignment for FolderCover text
+
+## 5.13.0
+Fri, 12 Jan 2018 20:03:21 GMT
+
+### Minor changes
+
+- Add demo of size 64 file type icons
+
+## 5.12.0
+Wed, 10 Jan 2018 11:23:36 GMT
+
+### Minor changes
+
+- Add search throttle to floating picker
 
 ## 5.11.1
 Tue, 19 Dec 2017 11:22:47 GMT

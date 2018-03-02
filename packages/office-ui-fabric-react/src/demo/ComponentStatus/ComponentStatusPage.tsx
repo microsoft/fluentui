@@ -8,7 +8,7 @@ import './ComponentStatusPage.scss';
 
 export class ComponentStatusPage extends React.Component<{}, {}> {
   public render() {
-    let sections: [IComponentPageSection] = [{ title: 'Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
+    const sections: IComponentPageSection[] = [{ title: 'Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
 
     return (
       <ComponentPage
@@ -43,12 +43,12 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
   }
 
   private _renderComponent(componentName: string): JSX.Element {
-    let component = AllComponentsStatus[componentName];
+    const component = AllComponentsStatus[componentName];
     return (
       <tr key={ componentName + '-key' }>
         <th className='componentCells'><h3>{ componentName } </h3> </th>
         <td className='componentBadgeCell'><ComponentStatus
-          {...component}
+          { ...component }
         /></td>
       </tr >
     );

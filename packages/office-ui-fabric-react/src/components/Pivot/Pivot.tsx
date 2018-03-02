@@ -149,6 +149,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }
+        name={ link.linkText }
       >
         { linkContent }
       </CommandButton>
@@ -182,7 +183,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
 
     const itemKey: string = this.state.selectedKey;
     const index = this._keyToIndexMapping[itemKey];
-    let { selectedTabId } = this.state;
+    const { selectedTabId } = this.state;
 
     return (
       <div

@@ -30,8 +30,8 @@ export const getBaseButtonClassNames = memoizeFunction((
     root: [
       'ms-Button',
       styles.root,
-      variantClassName,
       className,
+      variantClassName,
       checked && [
         'is-checked',
         styles.rootChecked

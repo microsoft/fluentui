@@ -180,9 +180,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
   >
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
-          ms-Icon
           ms-Button-icon
           {
             display: inline-block;
@@ -228,9 +226,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
     </div>
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
-          ms-Icon
           ms-Button-menuIcon
           {
             display: inline-block;
@@ -555,9 +551,7 @@ exports[`Button renders IconButton correctly 1`] = `
   >
     <i
       aria-hidden={true}
-      aria-label={undefined}
       className=
-          ms-Icon
           ms-Button-icon
           {
             display: inline-block;

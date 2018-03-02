@@ -53,40 +53,13 @@ exports[`Persona renders Persona correctly with image 1`] = `
     </div>
     <div
       className="ms-Persona-secondaryText"
-    >
-      <div
-        aria-describedby={undefined}
-        className="ms-TooltipHost"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      />
-    </div>
+    />
     <div
       className="ms-Persona-tertiaryText"
-    >
-      <div
-        aria-describedby={undefined}
-        className="ms-TooltipHost"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      />
-    </div>
+    />
     <div
       className="ms-Persona-optionalText"
-    >
-      <div
-        aria-describedby={undefined}
-        className="ms-TooltipHost"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      />
-    </div>
+    />
   </div>
 </div>
 `;
@@ -157,40 +130,13 @@ exports[`Persona renders Persona correctly with initials 1`] = `
     </div>
     <div
       className="ms-Persona-secondaryText"
-    >
-      <div
-        aria-describedby={undefined}
-        className="ms-TooltipHost"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      />
-    </div>
+    />
     <div
       className="ms-Persona-tertiaryText"
-    >
-      <div
-        aria-describedby={undefined}
-        className="ms-TooltipHost"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      />
-    </div>
+    />
     <div
       className="ms-Persona-optionalText"
-    >
-      <div
-        aria-describedby={undefined}
-        className="ms-TooltipHost"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      />
-    </div>
+    />
   </div>
 </div>
 `;

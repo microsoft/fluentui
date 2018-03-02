@@ -3,7 +3,6 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   BaseComponent,
   autobind,
-  css,
   getId,
   KeyCodes,
   customizable,
@@ -25,10 +24,6 @@ export interface ISearchBoxState {
 
 @customizable('SearchBox', ['theme'])
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-  public static defaultProps: ISearchBoxProps = {
-    labelText: 'Search',
-  };
-
   private _rootElement: HTMLElement;
   private _inputElement: HTMLInputElement;
   private _latestValue: string;
@@ -36,8 +31,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   public constructor(props: ISearchBoxProps) {
     super(props);
 
+    this._warnDeprecations({
+      'labelText': 'placeholder'
+    });
+
+    this._latestValue = props.value || '';
+
     this.state = {
-      value: props.value || '',
+      value: this._latestValue,
       hasFocus: false,
       id: getId('SearchBox')
     };
@@ -53,8 +54,19 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   public render() {
-    let { labelText, className, disabled, underlined, getStyles, theme } = this.props;
-    let { value, hasFocus, id } = this.state;
+    const {
+      ariaLabel,
+      placeholder,
+      className,
+      disabled,
+      underlined,
+      getStyles,
+      labelText,
+      theme,
+      clearButtonProps
+    } = this.props;
+    const { value, hasFocus, id } = this.state;
+    const placeholderValue = labelText === undefined ? placeholder : labelText;
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
@@ -77,18 +89,23 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
         <input
           id={ id }
           className={ classNames.field }
-          placeholder={ labelText }
+          placeholder={ placeholderValue }
           onChange={ this._onInputChange }
           onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
           disabled={ this.props.disabled }
-          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
+          aria-label={ ariaLabel ? ariaLabel : placeholder }
           ref={ this._resolveRef('_inputElement') }
         />
         { value!.length > 0 &&
           <div className={ classNames.clearButton }>
-            <IconButton styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } } onClick={ this._onClearClick } iconProps={ { iconName: 'Clear' } } />
+            <IconButton
+              styles={ { root: { height: 'auto' }, icon: { fontSize: '12px' } } }
+              iconProps={ { iconName: 'Clear' } }
+              { ...clearButtonProps }
+              onClick={ this._onClearClick }
+            />
           </div>
         }
       </div>
@@ -134,7 +151,15 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onClearClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
-    this._onClear(ev);
+    const { clearButtonProps } = this.props;
+
+    if (clearButtonProps && clearButtonProps.onClick) {
+      clearButtonProps.onClick(ev);
+    }
+
+    if (!ev.defaultPrevented) {
+      this._onClear(ev);
+    }
   }
 
   @autobind
@@ -182,7 +207,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
 
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    const value = this._inputElement.value;
+    const value = ev.target.value;
+
     if (value === this._latestValue) {
       return;
     }
@@ -193,7 +219,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange, onChanged } = this.props;
+    const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
     if (onChanged) {

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 22 Dec 2017 11:10:56 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Mar 2018 00:05:10 GMT and should not be manually modified.
+
+## 5.3.2
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Improved left nav scroll behavior and added fix to webpack so that we can load component pages from our local machines with the UHF.
+
+## 5.3.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- Left nav: Less jittery and component pages load in full height.
+
+## 5.3.0
+Mon, 22 Jan 2018 11:14:27 GMT
+
+### Minor changes
+
+- Adding left nav scroll functionality, including fixing the left nav with the header. Other layout refactoring to accommodate.
 
 ## 5.2.1
 Fri, 22 Dec 2017 11:10:56 GMT
