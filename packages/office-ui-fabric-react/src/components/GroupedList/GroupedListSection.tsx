@@ -322,7 +322,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       <List
         items={ items }
         onRenderCell={ this._onRenderGroupCell(onRenderCell, groupNestingDepth) }
-        ref={ this._resolveRef('list') }
+        ref={ this._resolveRef('_list') }
         renderCount={ Math.min(count, renderCount) }
         startIndex={ startIndex }
         onShouldVirtualize={ onShouldVirtualize }
