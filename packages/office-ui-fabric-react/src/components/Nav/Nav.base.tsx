@@ -159,7 +159,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         styles={ buttonStyles }
         href={ link.url || (link.forceAnchor ? 'javascript:' : undefined) }
         iconProps={ link.iconProps || { iconName: link.icon || '' } }
-        description={ link.title || link.name }
+        ariaDescription={ link.title || link.name }
         onClick={ link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link) }
         title={ link.title || link.name }
         target={ link.target }
