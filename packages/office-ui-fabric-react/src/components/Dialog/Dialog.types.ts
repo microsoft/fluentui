@@ -174,6 +174,18 @@ export interface IDialogStyleProps {
   * @default false
   */
   hidden?: boolean;
+
+  /**
+   * Default min-width for the dialog box.
+   * @defaultvalue '288px'
+   */
+  dialogDefaultMinWidth?: string;
+
+  /**
+   * Default max-width for the dialog box.
+   * @defaultvalue '340px'
+   */
+  dialogDefaultMaxWidth?: string;
 }
 
 export interface IDialogStyles {

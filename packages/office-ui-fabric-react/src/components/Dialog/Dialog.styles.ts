@@ -13,12 +13,11 @@ export const getStyles = (
     className,
     containerClassName,
     contentClassName,
+    dialogDefaultMinWidth = '288px',
+    dialogDefaultMaxWidth = '340px',
     theme,
     hidden,
   } = props;
-
-  const dialogDefaultMinWidth = '288px';
-  const dialogDefaultMaxWidth = '340px';
 
   return ({
     root: [
