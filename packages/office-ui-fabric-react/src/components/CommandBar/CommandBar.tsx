@@ -355,9 +355,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       availableWidth -= this._overflowWidth;
     }
 
+    if (!this._commandItemWidths) {
+      this._asyncMeasure();
+      return;
+    }
+
     for (let i = 0; i < renderedItems.length; i++) {
       const item = renderedItems[i];
-      const itemWidth = this._commandItemWidths![item.key];
+      const itemWidth = this._commandItemWidths[item.key];
 
       if ((consumedWidth + itemWidth) >= availableWidth) {
         if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < OVERFLOW_WIDTH) {
