@@ -74,6 +74,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public componentDidMount() {
     this.selection.setItems(this.state.items);
+    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
   public componentWillReceiveProps(newProps: P) {
@@ -313,8 +314,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected updateValue(updatedValue: string) {
-    const suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
-    this.updateSuggestionsList(suggestions, updatedValue);
+    this._onResolveSuggestions(updatedValue);
   }
 
   protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
@@ -681,6 +681,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   private _onSelectedItemsUpdated(items?: T[], focusIndex?: number) {
     this.resetFocus(focusIndex);
     this.onChange(items);
+  }
+
+  private _onResolveSuggestions(updatedValue: string): void {
+    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
+
+    if (suggestions !== null) {
+      this.updateSuggestionsList(suggestions, updatedValue);
+    }
   }
 
   private _onValidateInput() {
