@@ -69,28 +69,28 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
 
   public render() {
     const {
+      className,
+      containerClassName: containerClassNameProp,
+      contentClassName: contentClassNameProp,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
       getStyles,
+      hidden,
       ignoreExternalFocusing,
       isBlocking,
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       isOpen,
-      className,
-      containerClassName: containerClassNameProp,
-      contentClassName: contentClassNameProp,
       onDismiss,
       onDismissed,
       onLayerDidMount,
       responsiveMode,
       subText,
-      title,
       theme,
-      type,
+      title,
       topButtonsProps,
-      hidden
+      type,
     } = this.props;
 
     const modalProps = {
@@ -102,7 +102,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
 
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
-      ...this.props.dialogContentProps
+      ...this.props.dialogContentProps,
     };
 
     const contentClassName = contentClassNameProp ? contentClassNameProp : dialogContentProps!.className;
