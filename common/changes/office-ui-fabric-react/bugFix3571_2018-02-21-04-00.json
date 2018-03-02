@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed custom render option in multi select dropdown",
+      "comment": "Dropdown: Fixed custom render option in multi select.",
       "type": "patch"
     }
   ],
