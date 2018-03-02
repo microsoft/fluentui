@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "check for null reference before checking value of this.suggestionElement in picker",
+      "comment": "BasePicker: check for null reference before checking value of `this.suggestionElement`.",
       "type": "patch"
     }
   ],
