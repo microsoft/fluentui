@@ -2,12 +2,6 @@ import { IKeySequence, convertSequencesToKeytipID } from '../keysequence/IKeySeq
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from './KeytipManager';
 
-// Constants
-export const ktpPrefix = 'ktp';
-export const ktpSeparator = '-';
-export const ktpFullPrefix = ktpPrefix + ktpSeparator;
-export const dataKtpId = 'data-ktp-id';
-
 /**
  * Adds an IKeySequence to a list of sequences
  * Returns a new array of IKeySequence

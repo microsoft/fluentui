@@ -1,7 +1,6 @@
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction } from '../../Utilities';
-import { IKeySequence } from '../../utilities/keysequence/IKeySequence';
+import { IStyleFunction, IKeySequence } from '../../Utilities';
 
 export interface IKeytip {
 }
@@ -145,12 +144,4 @@ export interface IKeytipStyles {
    * @type {IStyle}
    */
   root: IStyle;
-}
-
-export enum KeytipTransitionModifier {
-  shift = 16,
-  ctrl = 17,
-  alt = 18,
-  leftWindow = 91,
-  rightWindow = 92
 }

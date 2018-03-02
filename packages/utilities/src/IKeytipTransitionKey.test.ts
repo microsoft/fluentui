@@ -1,5 +1,5 @@
 import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain } from './IKeytipTransitionKey';
-import { KeytipTransitionModifier } from '../../Keytip';
+import { KeytipTransitionModifier } from './KeytipTransitionModifier';
 
 describe('IKeytipTransitionKey', () => {
 

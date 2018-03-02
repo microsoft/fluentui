@@ -1,5 +1,5 @@
-import { ktpPrefix, ktpSeparator } from '../keytip/KeytipUtils';
-import { find } from '../../Utilities';
+import { ktpPrefix, ktpSeparator } from './KeytipConstants';
+import { find } from './array';
 
 export interface IKeySequence {
   keys: string[];

@@ -6,7 +6,7 @@ import {
   convertSequencesToKeytipID,
   fullKeySequencesAreEqual
 } from './IKeySequence';
-import { ktpFullPrefix, ktpSeparator } from '../keytip/KeytipUtils';
+import { ktpFullPrefix, ktpSeparator } from './KeytipConstants';
 
 describe('IKeySequence', () => {
 

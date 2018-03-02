@@ -1,4 +1,4 @@
-import { KeytipTransitionModifier } from '../../Keytip';
+import { KeytipTransitionModifier } from './KeytipTransitionModifier';
 import { find } from '../../Utilities';
 
 export interface IKeytipTransitionKey {
