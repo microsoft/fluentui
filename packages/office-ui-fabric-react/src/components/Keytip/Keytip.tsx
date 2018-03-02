@@ -5,7 +5,7 @@ import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';
 import { KeytipContent } from './KeytipContent';
 import { getCalloutStyles } from './Keytip.styles';
-import { constructKeytipTargetFromSequences } from '../../KeytipLayer';
+import { constructKeytipTargetFromSequences } from '../../utilities/keytips';
 
 /**
  * A callout corresponding to another Fabric component to describe a key sequence that will activate that component

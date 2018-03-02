@@ -86,7 +86,7 @@ export interface IKeytipProps {
   getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
 
   /**
-   * Offset distance in px between the target element and the positioning of the keytip.this keytip
+   * Offset distance in px between the target element and the positioning of the keytip
    *
    * @type {number}
    * @default 0

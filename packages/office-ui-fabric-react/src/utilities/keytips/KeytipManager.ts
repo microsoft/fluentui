@@ -1,4 +1,4 @@
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
 import { IKeytipProps } from '../../Keytip';
 import {

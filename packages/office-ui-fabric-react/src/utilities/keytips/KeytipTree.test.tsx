@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { IKeytipProps, } from '../../Keytip';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { KeytipManager } from './KeytipManager';
 import {
   IKeySequence,
@@ -25,6 +25,7 @@ describe('KeytipTree', () => {
     ReactTestUtils.renderIntoDocument<KeytipLayer>(
       <KeytipLayer
         id={ layerID }
+        content='Alt Windows'
         keytipStartSequences={ keytipStartSequences }
         keytipReturnSequences={ keytipReturnSequences }
         keytipExitSequences={ keytipExitSequences }

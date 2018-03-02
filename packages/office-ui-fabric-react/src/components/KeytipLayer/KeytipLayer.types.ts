@@ -17,6 +17,14 @@ export interface IKeytipLayerProps extends React.Props<KeytipLayer> {
   id: string;
 
   /**
+   * String to put inside the layer to be used for the aria-describedby for the component with the keytip
+   * Should be one of the starting sequences
+   *
+   * @type {string}
+   */
+  content: string;
+
+  /**
   * List of key sequences that will start keytips mode
   *
   * @type {KeySequence}

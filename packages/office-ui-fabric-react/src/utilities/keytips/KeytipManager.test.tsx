@@ -10,7 +10,7 @@ import {
   ktpFullPrefix
 } from '../../Utilities';
 import { KeytipTree, IKeytipTreeNode } from './KeytipTree';
-import { KeytipLayer } from './KeytipLayer';
+import { KeytipLayer } from '../../KeytipLayer';
 import { IKeytipProps, } from '../../Keytip';
 import { mount, ReactWrapper } from 'enzyme';
 
@@ -36,6 +36,7 @@ describe('KeytipManager', () => {
     defaultKeytipLayer = mount(
       <KeytipLayer
         id={ layerID }
+        content='Alt Windows'
         keytipStartSequences={ keytipStartSequences }
         keytipReturnSequences={ keytipReturnSequences }
         keytipExitSequences={ keytipExitSequences }

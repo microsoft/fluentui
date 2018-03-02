@@ -5,7 +5,8 @@ import {
   KeytipTransitionModifier,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { KeytipLayer, registerKeytip, addKeytipSequence } from 'office-ui-fabric-react/lib/KeytipLayer';
+import { KeytipLayer, } from 'office-ui-fabric-react/lib/KeytipLayer';
+import { registerKeytip, addKeytipSequence } from '../../../utilities/keytips';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { DefaultButton, ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
@@ -105,33 +106,58 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
 
     return (
       <div>
+        <KeytipLayer
+          keytipStartSequences={ [this.startingKeySequence] }
+          keytipExitSequences={ [this.startingKeySequence] }
+          id={ 'test-id' }
+          content='Alt Windows'
+        />
         <p>Press Alt-Win to enable keytips, Esc to return up a level, and Alt-Win to exit keytip mode</p>
         <div>
           <div style={ divStyle }>
             <div>
               <ActionButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Pivot1Keytip.keySequences) }
+                keytipProps={ this.keytipMap.Pivot1Keytip }
                 text='Mock Pivot 1'
               />
             </div>
             <div>
               <DefaultButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button1Pivot1Keytip.keySequences) }
+                keytipProps={ this.keytipMap.Button1Pivot1Keytip }
                 text='Test Button 1'
                 onClick={ () => { alert('Button 1'); } }
               />
               <DefaultButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button2Pivot1Keytip.keySequences) }
+                keytipProps={ this.keytipMap.Button2Pivot1Keytip }
                 text='Test Button 2'
                 onClick={ () => { alert('Button 2'); } }
               />
               <DefaultButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Button3Pivot1Keytip.keySequences) }
+                keytipProps={ this.keytipMap.Button3Pivot1Keytip }
                 text='Test Button 3'
                 onClick={ () => { alert('Button 3'); } }
               />
             </div>
           </div>
+        </div>
+        { this.state.showMessageBar &&
+          <MessageBar messageBarType={ MessageBarType.success }>
+            Success Uploading
+          </MessageBar>
+        }
+        <Modal
+          isOpen={ this.state.showModal }
+          onDismiss={ this._hideModal }
+          isBlocking={ false }
+        >
+          <h2>Hello this is a Modal</h2>
+        </Modal>
+      </div>
+    );
+  }
+
+  /*
+
           <div style={ divStyle }>
             <div>
               <ActionButton
@@ -184,34 +210,16 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
               }
             />
           </div>
-        </div>
-        { this.state.showMessageBar &&
-          <MessageBar messageBarType={ MessageBarType.success }>
-            Success Uploading
-          </MessageBar>
-        }
-        <Modal
-          isOpen={ this.state.showModal }
-          onDismiss={ this._hideModal }
-          isBlocking={ false }
-        >
-          <h2>Hello this is a Modal</h2>
-        </Modal>
-        <KeytipLayer
-          keytipStartSequences={ [this.startingKeySequence] }
-          keytipExitSequences={ [this.startingKeySequence] }
-          id={ 'test-id' }
-        />
-      </div>
-    );
-  }
+          */
 
   public componentDidMount(): void {
     // Manually add keytips to the KeytipManager for now
     // This should really be done in each component
+    /*
     for (const component of Object.keys(this.keytipMap)) {
       registerKeytip(this.keytipMap[component]);
     }
+    */
   }
 
   @autobind

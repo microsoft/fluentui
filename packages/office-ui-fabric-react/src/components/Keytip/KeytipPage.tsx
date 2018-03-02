@@ -61,7 +61,7 @@ export class KeytipPage extends React.Component<IComponentDemoPageProps, {}> {
           }
           isHeaderVisible={ this.props.isHeaderVisible }
         />
-        <KeytipLayer id={ 'test-id' } />
+        <KeytipLayer id={ 'test-id' } content='Alt Windows' />
       </div>
     );
   }

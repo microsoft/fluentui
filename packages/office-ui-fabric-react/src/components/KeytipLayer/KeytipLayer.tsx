@@ -16,7 +16,7 @@ import {
   ktpFullPrefix,
   ktpSeparator
 } from '../../Utilities';
-import { KeytipManager } from './KeytipManager';
+import { KeytipManager } from '../../utilities/keytips';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -47,7 +47,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    id: ktpFullPrefix + 'Alt' + ktpSeparator + 'Meta'
+    id: ktpFullPrefix + 'Alt' + ktpSeparator + 'Meta',
+    content: 'Alt Windows'
   };
 
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
@@ -147,7 +148,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
 
   public render(): JSX.Element {
     const {
-      id
+      id,
+      content
     } = this.props;
 
     const {
@@ -155,7 +157,8 @@ export class KeytipLayer extends BaseComponent<IKeytipLayerProps, IKeytipLayerSt
     } = this.state;
 
     return (
-      <Layer id={ id }>
+      <Layer>
+        <span id={ id } style={ { visibility: 'hidden' } }>{ content }</span>
         { keytips && keytips.map((keytipProps: IKeytipProps, index: number) => {
           return <Keytip key={ index } { ...keytipProps } />;
         }) }
