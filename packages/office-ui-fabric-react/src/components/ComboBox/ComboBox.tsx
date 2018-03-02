@@ -125,7 +125,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _isScrollIdle: boolean;
 
-  private _isInPreview: boolean;
+  private _hasPendingValue: boolean;
 
   private readonly _scrollIdleDelay: number = 250 /* ms */;
 
@@ -696,7 +696,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    const { onChanged, onRevertPreviewExecute } = this.props;
+    const { onChanged, onPendingValueChanged } = this.props;
     const { selectedIndex, currentOptions } = this.state;
 
     // Find the next selectable index, if searchDirection is none
@@ -718,9 +718,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       });
 
       // If ComboBox value is changed, revert preview first
-      if (this._isInPreview && onRevertPreviewExecute) {
-        onRevertPreviewExecute();
-        this._isInPreview = false;
+      if (this._hasPendingValue && onPendingValueChanged) {
+        onPendingValueChanged();
+        this._hasPendingValue = false;
       }
 
       // Did the creator give us an onChanged callback?
@@ -1252,7 +1252,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   private _notifyPreviewChanged(prevState: IComboBoxState) {
-    const { onPreviewExecute, onRevertPreviewExecute } = this.props;
+    const { onPendingValueChanged } = this.props;
+
+    if (!onPendingValueChanged) {
+      return;
+    }
+
     const {
       currentPendingValue,
       currentOptions,
@@ -1260,44 +1265,42 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover
     } = this.state;
 
-    if (onPreviewExecute && onRevertPreviewExecute) {
-      let sendRevert = false;
-      let currentPendingIndex: number | undefined = undefined;
-      let pendingValue: string | undefined = undefined;
+    let sendRevert = false;
+    let currentPendingIndex: number | undefined = undefined;
+    let pendingValue: string | undefined = undefined;
 
-      if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
-        if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
-          currentPendingIndex = currentPendingValueValidIndexOnHover;
-        } else {
-          sendRevert = true;
-        }
+    if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
+      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
+        currentPendingIndex = currentPendingValueValidIndexOnHover;
+      } else {
+        sendRevert = true;
       }
+    }
 
-      if (!currentPendingIndex && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
-        if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
-          currentPendingIndex = currentPendingValueValidIndex;
-        } else {
-          sendRevert = true;
-        }
+    if (!currentPendingIndex && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
+      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+        currentPendingIndex = currentPendingValueValidIndex;
+      } else {
+        sendRevert = true;
       }
+    }
 
-      if (!currentPendingIndex && currentPendingValue !== prevState.currentPendingValue) {
-        if (currentPendingValue !== '') {
-          pendingValue = currentPendingValue;
-        } else {
-          sendRevert = true;
-        }
+    if (!currentPendingIndex && currentPendingValue !== prevState.currentPendingValue) {
+      if (currentPendingValue !== '') {
+        pendingValue = currentPendingValue;
+      } else {
+        sendRevert = true;
       }
+    }
 
-      if (this._isInPreview && (sendRevert || currentPendingIndex || pendingValue)) {
-        onRevertPreviewExecute();
-        this._isInPreview = false;
-      }
+    if (this._hasPendingValue && (sendRevert || currentPendingIndex || pendingValue)) {
+      onPendingValueChanged();
+      this._hasPendingValue = false;
+    }
 
-      if (!this._isInPreview && (currentPendingIndex || pendingValue)) {
-        onPreviewExecute(currentPendingIndex ? currentOptions[currentPendingIndex] : undefined, currentPendingIndex, pendingValue);
-        this._isInPreview = true;
-      }
+    if (!this._hasPendingValue && (currentPendingIndex || pendingValue)) {
+      onPendingValueChanged(currentPendingIndex ? currentOptions[currentPendingIndex] : undefined, currentPendingIndex, pendingValue);
+      this._hasPendingValue = true;
     }
   }
 
