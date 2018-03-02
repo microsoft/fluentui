@@ -7,7 +7,17 @@ import {
 import {
   IClassNames
 } from '@uifabric/utilities/lib/IClassNames';
-import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
+import {
+  IShimmerProps,
+  IShimmerStyleProps,
+  IShimmerStyles,
+  ShimmerElementType,
+  IShimmerCirc,
+  IShimmerRect,
+  IShimmerGap
+} from './Shimmer.types';
+import { ShimmerRectangle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerRectangle/ShimmerRectangle';
+import { ShimmerCircle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerCircle/ShimmerCircle';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
@@ -17,7 +27,7 @@ export interface IShimmerState {
 
 export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
-    // hasCircle: false
+    width: '100%'
   };
   private _classNames: {[key in keyof IShimmerStyles]: string};
   constructor(props: IShimmerProps) {
@@ -25,12 +35,29 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   }
 
   public render() {
-    const { getStyles, children } = this.props;
-    this._classNames = getClassNames(getStyles!, {});
+    const { getStyles, width, lineElements } = this.props;
+    this._classNames = getClassNames(getStyles!, { width });
+    // let highest:
+
+    const elements = lineElements ?
+      lineElements.map((elem: IShimmerCirc | IShimmerRect | IShimmerGap) => {
+        switch (elem.type) {
+          case ShimmerElementType.CIRCLE:
+            return (
+              <ShimmerCircle { ...elem } />
+            );
+          // case ShimmerElementType.GAP:
+          //   return (
+
+          // );
+        }
+      }) :
+      null;
 
     return (
       <div className={ this._classNames.root }>
-        { children }
+        <ShimmerCircle />
+        <ShimmerRectangle />
       </div>
     );
   }

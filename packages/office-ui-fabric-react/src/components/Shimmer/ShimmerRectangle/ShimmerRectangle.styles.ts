@@ -21,7 +21,7 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
   componentRef?: (component: IShimmerRectangle) => void;
 
   /**
-   * If true, the component will render a Rectangle as an icon placeholder
+   * Sets the height of the rectangle.
    * @default 16px
    */
   height?: string;
@@ -38,7 +38,6 @@ export interface IShimmerRectangleStyleProps {
 
 export interface IShimmerRectangleStyles {
   root?: IStyle;
-  svg?: IStyle;
 }
 
 export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangleStyles {
@@ -53,7 +52,7 @@ export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangle
         color: 'transparent',
         width: '100%',
         height: height,
-        boxSizing: 'content-box'
+        boxSizing: 'border-box'
       },
     ]
   };

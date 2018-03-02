@@ -7,6 +7,9 @@ import {
 } from '../../Styling';
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
+  const {
+    width
+  } = props;
 
   const shimmerAnimation: string = keyframes({
     '0%': {
@@ -23,8 +26,9 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       {
         display: 'flex',
         alignItems: 'center',
+        alignContent: 'space-between',
         padding: '10px',
-        width: '100%',
+        width: `${width}`,
         height: 'auto',
         boxSizing: 'border-box',
         background: 'content-box',
@@ -39,16 +43,5 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationName: shimmerAnimation
       }
     ]
-    // hasCircle && {
-    //   height: '24px',
-    //   borderBottom: `4px solid ${DefaultPalette.white}`,
-    //   borderBottomWidth: '4px',
-    //   borderBottomStyle: 'solid',
-    //   borderBottomColor: `${DefaultPalette.white}`,
-    //   borderTop: `4px solid ${DefaultPalette.white}`,
-    //   borderTopWidth: '4px',
-    //   borderTopStyle: 'solid',
-    //   borderTopColor: `${DefaultPalette.white}`
-    // }
   };
 }
