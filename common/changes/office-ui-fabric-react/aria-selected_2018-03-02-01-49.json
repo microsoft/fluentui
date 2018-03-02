@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "do not include aria-selected on DetailsRow if selectionMode is none",
+      "comment": "DetailsList: only adding `aria-selected` when `selectionMode` is set to `none`.",
       "type": "patch"
     }
   ],
