@@ -59,8 +59,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     // Sort the items.
     sortedItems = sortedItems!.concat([]).sort((a, b) => {
-      let firstValue = a[column.fieldName];
-      let secondValue = b[column.fieldName];
+      let firstValue = a[column.fieldName || ''];
+      let secondValue = b[column.fieldName || ''];
 
       if (isSortedDescending) {
         return firstValue > secondValue ? -1 : 1;
@@ -106,7 +106,7 @@ function _buildColumns() {
 }
 
 function _renderItemColumn(item: any, index: number, column: IColumn) {
-  let fieldContent = item[column.fieldName];
+  let fieldContent = item[column.fieldName || ''];
 
   switch (column.key) {
     case 'thumbnail':
