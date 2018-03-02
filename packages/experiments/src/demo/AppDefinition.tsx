@@ -35,6 +35,18 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/filetypeicon'
         },
         {
+          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
+          key: 'Keytip',
+          name: 'Keytip',
+          url: '#/examples/keytip'
+        },
+        {
+          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
+          key: 'KeytipLayer',
+          name: 'KeytipLayer',
+          url: '#/examples/keytipLayer'
+        },
+        {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
           key: 'LayoutGroup',
           name: 'LayoutGroup',
