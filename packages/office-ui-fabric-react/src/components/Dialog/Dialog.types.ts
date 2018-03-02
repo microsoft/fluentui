@@ -156,7 +156,17 @@ export interface IDialogStyleProps {
    * Accept custom classNames
    */
   className?: string;
+
+  /**
+  * Optional override for container class
+  * @deprecated Pass through via modalProps.className instead
+  */
   containerClassName?: string;
+
+  /**
+  * Optional override content class
+  * @deprecated Pass through via dialogContentProps instead as className
+  */
   contentClassName?: string;
 
   /**
