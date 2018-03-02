@@ -82,7 +82,12 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -92,7 +97,22 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -293,7 +313,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -303,7 +328,22 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -329,7 +369,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           style={undefined}
         >
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -339,7 +384,22 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -378,7 +438,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -388,7 +453,22 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -491,7 +571,12 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": 32,
@@ -501,7 +586,22 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -715,7 +815,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -725,7 +830,22 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -744,7 +864,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           style={undefined}
         >
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -754,7 +879,22 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -786,7 +926,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             </span>
           </div>
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -796,7 +941,22 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}
@@ -815,7 +975,12 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           style={undefined}
         >
           <div
-            className="ms-Image ms-Persona-image"
+            className=
+                ms-Image
+                ms-Persona-image
+                {
+                  overflow: hidden;
+                }
             style={
               Object {
                 "height": undefined,
@@ -825,7 +990,22 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           >
             <img
               alt=""
-              className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+              className=
+                  ms-Image-image
+                  ms-Image-image--cover
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: auto;
+                    left: 50%;
+                    opacity: 0;
+                    position: relative;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                  }
               onError={[Function]}
               onLoad={[Function]}
               role={undefined}

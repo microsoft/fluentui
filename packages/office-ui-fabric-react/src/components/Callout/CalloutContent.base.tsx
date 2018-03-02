@@ -17,7 +17,8 @@ import {
   focusFirstChild,
   getWindow,
   getDocument,
-  customizable
+  customizable,
+  css
 } from '../../Utilities';
 import {
   positionCallout,
@@ -29,6 +30,17 @@ import {
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
+import {
+  AnimationClassNames,
+  IRawStyle
+} from '../../Styling';
+
+const ANIMATIONS: { [key: number]: string | undefined; } = {
+  [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
+  [RectangleEdge.bottom]: AnimationClassNames.slideDownIn10,
+  [RectangleEdge.left]: AnimationClassNames.slideLeftIn10,
+  [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
+};
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
 const BORDER_WIDTH = 1;
@@ -65,7 +77,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _bounds: IRectangle;
   private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent | IPoint | null;
+  private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
 
   constructor(props: ICalloutProps) {
@@ -163,13 +175,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     );
 
     const overflowStyle: React.CSSProperties = overflowYHidden ? { overflowY: 'hidden' } : {};
+    // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
     const content = (
       <div
         ref={ this._resolveRef('_hostElement') }
         className={ this._classNames.container }
       >
         <div
-          className={ this._classNames.root }
+          className={ css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!]) }
           style={ positions ? positions.elementPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
@@ -371,17 +384,17 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return true;
   }
 
-  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
-        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._target = currentDoc ? currentDoc.querySelector(target) as Element : null;
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
         this._target = target;
-      } else if ((target as HTMLElement).getBoundingClientRect) {
-        const targetElement: HTMLElement = target as HTMLElement;
+      } else if ((target as Element).getBoundingClientRect) {
+        const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
         this._target = target;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
@@ -415,7 +428,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
     const { useTargetPoint, targetPoint, target } = props;
     return useTargetPoint ? targetPoint! : target!;
   }

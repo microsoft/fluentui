@@ -518,6 +518,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onMouseMove: this._onItemMouseMove.bind(this, item)
             } }
             label={ item.text }
+            onRenderLabel={ this._onRenderLabel.bind(this, item) }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
               styles.dropdownCheckbox,
@@ -536,8 +537,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               checkboxCheckedHovered: checkboxStyles.checkboxChecked,
               textHovered: checkboxStyles.text
             } }
-          >{ onRenderOption(item, this._onRenderOption) }
-          </Checkbox>
+          />
         )
     );
   }
@@ -546,6 +546,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
     return <span className={ css('ms-Dropdown-optionText', styles.optionText) }>{ item.text }</span>;
+  }
+
+  // Render custom label for drop down item
+  @autobind
+  private _onRenderLabel(item: IDropdownOption) {
+    const { onRenderOption = this._onRenderOption } = this.props;
+    return onRenderOption(item, this._onRenderOption);
   }
 
   @autobind

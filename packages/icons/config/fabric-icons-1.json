@@ -17,6 +17,10 @@
 			"unicode": "E7E6"
 		},
 		{
+			"name": "PowerButton",
+			"unicode": "E7E8"
+		},
+		{
 			"name": "Tab",
 			"unicode": "E7E9"
 		},
@@ -403,10 +407,6 @@
 		{
 			"name": "Group",
 			"unicode": "E902"
-		},
-		{
-			"name": "World",
-			"unicode": "E909"
 		}
 	]
 }

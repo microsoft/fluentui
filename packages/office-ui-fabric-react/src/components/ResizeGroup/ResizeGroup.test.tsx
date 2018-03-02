@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallowUntilTarget } from '../../common/shallowUntilTarget';
 
 import { ResizeGroup } from './ResizeGroup';
-import { ResizeGroupBase, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
+import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
@@ -45,13 +45,13 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
 
-    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
-      <ResizeGroupBase
+    const wrapper = shallowUntilTarget<IResizeGroupProps, IResizeGroupState>(
+      <ResizeGroup
         data={ initialData }
         onReduceData={ onReduceScalingData }
         onRenderData={ onRenderData }
       />
-    );
+      , 'ResizeGroupBase');
 
     expect(wrapper.containsMatchingElement(onRenderData(initialData))).toEqual(true);
   });

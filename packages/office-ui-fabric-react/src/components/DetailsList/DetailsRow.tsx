@@ -198,6 +198,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
+    const ariaSelected = (selectionMode === SelectionMode.none) ? undefined : isSelected;
 
     return (
       <FocusZone
@@ -229,7 +230,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
-        aria-selected={ isSelected }
+        aria-selected={ ariaSelected }
         allowFocusRoot={ true }
       >
         { showCheckbox && (
