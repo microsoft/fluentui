@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+
+## 5.22.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection
+
+### Patches
+
+- Add initial set of Keytip work
 
 ## 5.21.0
 Fri, 16 Feb 2018 11:23:28 GMT

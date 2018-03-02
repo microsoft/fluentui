@@ -2,6 +2,38 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.22.0",
+      "tag": "@uifabric/experiments_v5.22.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "1340339d7c62eeb1b526f08d9edbd7fe44b398f3",
+            "comment": "BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Add initial set of Keytip work"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.57.0 <6.0.0` to `>=5.58.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.2 <6.0.0` to `>=5.3.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.21.0",
       "tag": "@uifabric/experiments_v5.21.0",
       "date": "Fri, 16 Feb 2018 11:23:28 GMT",

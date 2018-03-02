@@ -1,6 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Thu, 01 Feb 2018 11:23:17 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+
+## 5.5.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Updating icons to FabMDL2v2.68 and adding 2 icons to the main partition.
 
 ## 5.4.2
 Thu, 01 Feb 2018 11:23:17 GMT
