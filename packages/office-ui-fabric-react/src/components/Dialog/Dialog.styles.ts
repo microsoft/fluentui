@@ -15,7 +15,6 @@ export const getStyles = (
     contentClassName,
     theme,
     hidden,
-    isRight,
   } = props;
 
   const dialogDefaultMinWidth = '288px';
@@ -41,36 +40,6 @@ export const getStyles = (
       },
       !hidden && { display: 'flex' },
       containerClassName,
-    ],
-
-    actions: [
-      {
-        position: 'relative',
-        width: '100%',
-        minHeight: '24px',
-        lineHeight: '24px',
-        margin: '20px 0 0',
-        fontSize: '0',
-
-        selectors: {
-          '.ms-Button': {
-            lineHeight: 'normal',
-          }
-        }
-      }
-    ],
-
-    actionsRight: [
-      {
-        textAlign: 'right',
-        marginRight: '-4px',
-      }
-    ],
-
-    action: [
-      isRight && {
-        margin: '0 4px',
-      }
     ]
   });
 };

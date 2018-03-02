@@ -18,14 +18,6 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
    * Theme provided by HOC.
    */
   theme?: ITheme;
-
-  /**
-   * Additional css class to apply to the DialogFooter
-   * @defaultvalue undefined
-   */
-  className?: string;
-
-  // Insert DialogFooter props below
 }
 
 export interface IDialogFooterStyleProps {
@@ -33,20 +25,14 @@ export interface IDialogFooterStyleProps {
    * Accept theme prop.
    */
   theme: ITheme;
-
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  // Insert DialogFooter style props below
 }
 
 export interface IDialogFooterStyles {
   /**
-   * Style for the root element.
+   * Style for the actions element.
    */
-  actions?: IStyle;
+  actions: IStyle;
 
-  // Insert DialogFooter classNames below
+  actionsRight: IStyle;
+  action: IStyle;
 }

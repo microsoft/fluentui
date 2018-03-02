@@ -164,8 +164,6 @@ export interface IDialogStyleProps {
   * @default false
   */
   hidden?: boolean;
-  isMultiline?: boolean;
-  isRight?: boolean;
 }
 
 export interface IDialogStyles {
@@ -174,7 +172,4 @@ export interface IDialogStyles {
    */
   root: IStyle;
   main: IStyle;
-  actions: IStyle;
-  actionsRight: IStyle;
-  action: IStyle;
 }
