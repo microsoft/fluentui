@@ -68,6 +68,7 @@ export const MessageBarBasicExample = () => (
     <Label>Warning MessageBar - defaults to multiline, with dismiss and action buttons</Label>
     <MessageBar
       onDismiss={ log('test') }
+      dismissButtonAriaLabel='Close'
       messageBarType={ MessageBarType.warning }
       ariaLabel='Aria help text here'
       actions={
