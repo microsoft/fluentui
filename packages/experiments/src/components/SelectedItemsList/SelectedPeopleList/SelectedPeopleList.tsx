@@ -5,6 +5,7 @@ import { BaseSelectedItemsList } from '../BaseSelectedItemsList';
 import { IBaseSelectedItemsListProps, ISelectedItemProps } from '../BaseSelectedItemsList.types';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ExtendedSelectedItem } from './Items/ExtendedSelectedItem';
+import { SelectedItemWithContextMenu } from './Items/SelectedItemWithContextMenu';
 import { autobind, IRenderFunction } from '../../../Utilities';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
@@ -20,7 +21,6 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 
 export interface ISelectedPeopleItemProps extends ISelectedItemProps<IExtendedPersonaProps> {
   onExpandItem?: () => void;
-  menuItems: IContextualMenuItem[];
   renderPersonaCoin?: IRenderFunction<IPersonaProps>;
   renderPrimaryText?: IRenderFunction<IPersonaProps>;
 }
@@ -93,8 +93,26 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       );
     } else {
       let onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
-      return onRenderItem({ ...props });
+      let renderedItem = onRenderItem(props);
+      return (
+        props.menuItems.length > 0 ?
+          (
+            <SelectedItemWithContextMenu
+              renderedItem={ renderedItem }
+              beginEditing={ this._beginEditing }
+              menuItems={ this._createMenuItems(props.item) }
+              item={ props.item }
+            />
+          )
+          : renderedItem
+      );
     }
+  }
+
+  @autobind
+  private _beginEditing(item: IExtendedPersonaProps): void {
+    item.isEditing = true;
+    this.forceUpdate();
   }
 
   @autobind
@@ -111,35 +129,38 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     if (this.props.editMenuItemText && this.props.getEditingItemText) {
       menuItems.push({
         key: 'Edit',
-        name: this.props.editMenuItemText ? this.props.editMenuItemText : 'Edit',
+        name: this.props.editMenuItemText,
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          (menuItem.data as IExtendedPersonaProps).isEditing = true;
-          this.forceUpdate();
+          this._beginEditing(menuItem.data);
         },
         data: item,
       });
     }
 
-    menuItems.push(
-      {
-        key: 'Remove',
-        name: this.props.removeMenuItemText ? this.props.removeMenuItemText : 'Remove',
-        onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
-        },
-        data: item,
-      },
-      {
+    if (this.props.removeMenuItemText) {
+      menuItems.push(
+        {
+          key: 'Remove',
+          name: this.props.removeMenuItemText,
+          onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
+            this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
+          },
+          data: item,
+        });
+    }
+
+    if (this.props.copyMenuItemText) {
+      menuItems.push({
         key: 'Copy',
-        name: this.props.copyMenuItemText ? this.props.copyMenuItemText : 'Copy',
+        name: this.props.copyMenuItemText,
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
           if (this.props.onCopyItems) {
             (this.copyItems as (items: IExtendedPersonaProps[]) => void)([menuItem.data] as IExtendedPersonaProps[]);
           }
         },
         data: item,
-      },
-    );
+      });
+    }
 
     return menuItems;
   }
