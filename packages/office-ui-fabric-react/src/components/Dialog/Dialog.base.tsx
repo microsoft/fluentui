@@ -13,9 +13,8 @@ import {
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
-// import * as stylesImport from './Dialog.scss';
-// const styles: any = stylesImport;
 
 import { DialogContent } from './DialogContent';
 
@@ -69,7 +68,8 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
 
   public render() {
     const {
-      className,
+      // alias the className props for fallback checks.
+      className: classNameProp,
       containerClassName: containerClassNameProp,
       contentClassName: contentClassNameProp,
       elementToFocusOnDismiss,
@@ -98,13 +98,14 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       ...this.props.modalProps
     };
 
-    const containerClassName = containerClassNameProp ? containerClassNameProp : modalProps!.containerClassName;
-
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
       ...this.props.dialogContentProps,
     };
 
+    // className fallbacks
+    const className = classNameProp ? classNameProp : modalProps!.className;
+    const containerClassName = containerClassNameProp ? containerClassNameProp : modalProps!.containerClassName;
     const contentClassName = contentClassNameProp ? contentClassNameProp : dialogContentProps!.className;
 
     const classNames = getClassNames(getStyles!, {
