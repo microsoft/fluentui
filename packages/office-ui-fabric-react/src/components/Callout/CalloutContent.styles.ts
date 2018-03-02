@@ -2,14 +2,13 @@ import {
   HighContrastSelector,
   AnimationStyles,
   IRawStyle,
-  focusClear,
+  focusClear
 } from '../../Styling';
 import {
   ICalloutPositionedInfo,
   RectangleEdge
 } from '../../utilities/positioning';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
-import { keyframes } from '@uifabric/merge-styles/lib/index';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 
