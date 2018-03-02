@@ -59,14 +59,11 @@ export const getStyles = (
       type === DialogType.largeHeader && [
         'ms-Dialog--lgHeader',
         {
-          backgroundColor: dialogLgHeaderBackgroundColor
+          backgroundColor: dialogLgHeaderBackgroundColor,
         }
       ],
       type === DialogType.close && [
         'ms-Dialog--close',
-        {
-          //
-        }
       ]
     ],
 

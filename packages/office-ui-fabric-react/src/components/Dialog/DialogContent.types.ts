@@ -27,6 +27,11 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   theme?: ITheme;
 
   /**
+   * Is inside a multiline wrapper
+   */
+  isMultiline?: boolean;
+
+  /**
   * Show an 'x' close button in the upper-right corner
   */
   showCloseButton?: boolean;
@@ -106,6 +111,10 @@ export interface IDialogContentStyleProps {
 
   type?: DialogType;
   hidden?: boolean;
+
+  /**
+   * Is inside a multiline wrapper
+   */
   isMultiline?: boolean;
 }
 
