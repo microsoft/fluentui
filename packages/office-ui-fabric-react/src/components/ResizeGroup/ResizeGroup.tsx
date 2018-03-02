@@ -1,7 +1,11 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import {
+  BaseComponent,
   css,
-  BaseComponent
+  divProperties,
+  getNativeProps,
+  provideContext
 } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.types';
 import * as styles from './ResizeGroup.scss';
@@ -272,6 +276,14 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   };
 };
 
+// Provides a context property that (if true) tells any child components that
+// they are only being used for measurement purposes and will not be visible.
+const MeasuredContext = provideContext({
+  isMeasured: PropTypes.bool
+}, () => {
+  return { isMeasured: true };
+});
+
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   private _root: HTMLElement;
@@ -293,12 +305,13 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       onRenderData
     } = this.props;
     const { dataToMeasure, renderedData } = this.state;
+    const divProps = getNativeProps(this.props, divProperties, ['data']);
 
     return (
-      <RootType className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
+      <RootType {...divProps} className={ css('ms-ResizeGroup', className) } ref={ this._resolveRef('_root') }>
         { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
-            { onRenderData(dataToMeasure) }
+            <MeasuredContext>{ onRenderData(dataToMeasure) }</MeasuredContext>
           </div>
         ) }
 

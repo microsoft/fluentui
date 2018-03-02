@@ -1,3 +1,5 @@
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+
 // tslint:disable:max-line-length
 
 import {
@@ -20,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-4ac62dd2.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-cf6d96bb.woff') format('woff')`,
     },
     icons: {
       'GlobalNavButton': '\uE700',
@@ -42,9 +44,11 @@ export function initializeIcons(
       'ChevronLeft': '\uE76B',
       'ChevronRight': '\uE76C',
       'Calendar': '\uE787',
+      'Megaphone': '\uE789',
       'Undo': '\uE7A7',
       'Flag': '\uE7C1',
       'Page': '\uE7C3',
+      'Pinned': '\uE840',
       'View': '\uE890',
       'Clear': '\uE894',
       'Download': '\uE896',
@@ -56,7 +60,6 @@ export function initializeIcons(
       'Tag': '\uE8EC',
       'AddFriend': '\uE8FA',
       'Info': '\uE946',
-      'Pinned': '\uE840',
       'SortLines': '\uE9D0',
       'List': '\uEA37',
       'CircleRing': '\uEA3A',

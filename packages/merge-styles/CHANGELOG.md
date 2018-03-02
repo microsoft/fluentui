@@ -1,6 +1,55 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Sat, 16 Dec 2017 05:07:22 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Feb 2018 11:23:29 GMT and should not be manually modified.
+
+## 5.12.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- mergeStyles: setting `fill-opacity` as unitless.
+
+## 5.12.0
+Wed, 14 Feb 2018 22:10:50 GMT
+
+### Minor changes
+
+- mergeStyles: Adding support to register selectors globally. Use `:global(rule)` as the selector to ensure that the unique className is not prepended in the output. See merge-styles README.md for more details.
+
+## 5.11.2
+Wed, 07 Feb 2018 11:23:59 GMT
+
+### Patches
+
+- Adjusting rtl flipping logic to be more resilient to invalid styling.
+
+## 5.11.1
+Tue, 06 Feb 2018 11:14:36 GMT
+
+### Patches
+
+- [provideUnits] Add line-height to ignore
+
+## 5.11.0
+Thu, 25 Jan 2018 11:23:06 GMT
+
+### Minor changes
+
+- Change maxHeight/maxFontSize to CSSPixelUnitRule (number and string)
+
+## 5.10.1
+Wed, 17 Jan 2018 11:11:25 GMT
+
+### Patches
+
+- Fix styles with undefined values being added to document (#3700)
+
+## 5.10.0
+Thu, 28 Dec 2017 11:23:50 GMT
+
+### Minor changes
+
+- Added a setting to Stylesheet which allows overriding the default prefix
 
 ## 5.9.0
 Sat, 16 Dec 2017 05:07:22 GMT

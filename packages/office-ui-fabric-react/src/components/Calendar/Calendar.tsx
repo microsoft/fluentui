@@ -19,6 +19,13 @@ let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
 };
+let defaultWorkWeekDays: DayOfWeek[] = [
+  DayOfWeek.Monday,
+  DayOfWeek.Tuesday,
+  DayOfWeek.Wednesday,
+  DayOfWeek.Thursday,
+  DayOfWeek.Friday,
+];
 
 let dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatMonthDayYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()),
@@ -61,6 +68,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     firstWeekOfYear: FirstWeekOfYear.FirstDay,
     dateTimeFormatter: dateTimeFormatterCallbacks,
     showSixWeeksByDefault: false,
+    workWeekDays: defaultWorkWeekDays
   };
 
   public refs: {
@@ -123,6 +131,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     let monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
+    let overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
@@ -138,7 +147,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
             showMonthPickerAsOverlay && ('ms-DatePicker-monthPickerAsOverlay ' + styles.monthPickerAsOverlay),
           ) }
         >
-          <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
+          <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder, overlayedWithButton && styles.holderWithButton) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
               <div className={ css('ms-DatePicker-wrap', styles.wrap, showGoToToday && styles.goTodaySpacing) }>
                 { isDayPickerVisible && <CalendarDay
@@ -160,6 +169,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   showSixWeeksByDefault={ this.props.showSixWeeksByDefault }
                   minDate={ minDate }
                   maxDate={ maxDate }
+                  workWeekDays={ this.props.workWeekDays }
                   ref='dayPicker'
                 />
                 }
@@ -179,7 +189,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                 /> }
 
                 { showGoToToday &&
-                  <span
+                  <button
                     role='button'
                     className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                     onClick={ this._onGotoToday }
@@ -187,7 +197,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     tabIndex={ 0 }
                   >
                     { strings!.goToToday }
-                  </span>
+                  </button>
                 }
               </div>
             </div>
@@ -250,9 +260,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   @autobind
   private _onGotoToday() {
 
-    let { dateRangeType, firstDayOfWeek, today } = this.props;
+    let { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
-    let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!);
+    let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
     this._onSelectDate(today!, dates);
 

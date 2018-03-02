@@ -25,6 +25,7 @@ import {
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
+import { getStyles as getCheckboxStyles } from '../Checkbox/Checkbox.styles';
 import { getTheme } from '../../Styling';
 
 // Internal only props interface to support mixing in responsive mode
@@ -49,8 +50,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _root: HTMLElement;
   private _host: HTMLDivElement;
   private _focusZone: FocusZone;
-  private _dropDown: HTMLDivElement;
-  // tslint:disable-next-line:no-unused-variable
+  private _dropDownDiv: HTMLDivElement;
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -111,7 +111,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === true && this.state.isOpen === false) {
-      this._dropDown.focus();
+      this._dropDownDiv.focus();
 
       if (this.props.onDismiss) {
         this.props.onDismiss();
@@ -148,11 +148,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref={ this._resolveRef('_root') } className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } required={ required }>{ label }</Label>
+          <Label
+            className={ css('ms-Dropdown-label') }
+            id={ id + '-label' }
+            htmlFor={ id }
+            required={ required }
+          >
+            { label }
+          </Label>
         ) }
         <div
           data-is-focusable={ !disabled }
-          ref={ this._resolveRef('_dropDown') }
+          ref={ this._resolveRef('_dropDownDiv') }
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
@@ -217,8 +224,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public focus(shouldOpenOnFocus?: boolean) {
-    if (this._dropDown && this._dropDown.tabIndex !== -1) {
-      this._dropDown.focus();
+    if (this._dropDownDiv && this._dropDownDiv.tabIndex !== -1) {
+      this._dropDownDiv.focus();
       if (shouldOpenOnFocus) {
         this.setState({
           isOpen: true
@@ -371,11 +378,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             directionalHint={ DirectionalHint.bottomLeftEdge }
             { ...calloutProps }
             className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-            target={ this._dropDown }
+            target={ this._dropDownDiv }
             onDismiss={ this._onDismiss }
             onScroll={ this._onScroll }
             onPositioned={ this._onPositioned }
-            calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
+            calloutWidth={ dropdownWidth || this._dropDownDiv.clientWidth }
           >
             { onRenderList(props, this._onRenderList) }
           </Callout>
@@ -409,7 +416,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         tabIndex={ 0 }
       >
         <FocusZone
-          ref={ this._resolveRef('_focusZone') }
+          componentRef={ this._resolveRef('_focusZone') }
           direction={ FocusZoneDirection.vertical }
           defaultActiveElement={ selectedIndices[0] !== undefined ? `#${id}-list${selectedIndices[0]}` : undefined }
           id={ id + '-list' }
@@ -476,17 +483,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         (
           <CommandButton
             id={ id + '-list' + item.index }
-            ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
-            data-is-focusable={ true }
+            data-is-focusable={ !item.disabled }
+            disabled={ item.disabled }
             className={ css(
               'ms-Dropdown-item', styles.item, {
                 ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-                ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+                ['is-disabled ' + styles.itemIsDisabled]: item.disabled === true
               }
             ) }
-            onClick={ this._onItemClick(item.index!) }
+            onClick={ this._onItemClick(item) }
             onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
             onMouseLeave={ this._onMouseItemLeave.bind(this, item) }
             onMouseMove={ this._onItemMouseMove.bind(this, item) }
@@ -500,11 +507,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
-            // ref={ Dropdown.Option + item.index }
             key={ item.key }
             data-index={ item.index }
-            data-is-focusable={ true }
-            onChange={ this._onItemClick(item.index!) }
+            data-is-focusable={ !item.disabled }
+            disabled={ item.disabled }
+            onChange={ this._onItemClick(item) }
             inputProps={ {
               onMouseEnter: this._onItemMouseEnter.bind(this, item),
               onMouseLeave: this._onMouseItemLeave.bind(this, item),
@@ -513,31 +520,20 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             label={ item.text }
             className={ css(
               'ms-ColumnManagementPanel-checkbox',
+              styles.dropdownCheckbox,
               'ms-Dropdown-item', styles.item, {
                 ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-                ['is-disabled ' + styles.itemIsDisabled]: isItemSelected
+                ['is-disabled ' + styles.itemIsDisabled]: item.disabled
               }
             ) }
             role='option'
             aria-selected={ isItemSelected ? 'true' : 'false' }
             checked={ isItemSelected }
-            // Hover is being handled by focus styles
-            // so clear out the explicit hover styles
-            // tslint:disable-next-line:jsx-no-lambda
-            getStyles={ (props) => {
-              return ({ root: { background: 'green' } });
-            } }
           >{ onRenderOption(item, this._onRenderOption) }
           </Checkbox>
         )
     );
   }
-
-  // {
-  //   checkboxHovered: checkboxStyles.checkbox,
-  //   checkboxCheckedHovered: checkboxStyles.checkboxChecked,
-  //   textHovered: checkboxStyles.text
-  // }
 
   // Render content of item (i.e. text/icon inside of button)
   @autobind
@@ -551,14 +547,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onItemClick(index: number): () => void {
+  private _onItemClick(item: IDropdownOption): () => void {
     return (): void => {
-      this.setSelectedIndex(index);
-      if (!this.props.multiSelect) {
-        // only close the callout when it's in single-select mode
-        this.setState({
-          isOpen: false
-        });
+      if (!item.disabled) {
+        this.setSelectedIndex(item.index!);
+        if (!this.props.multiSelect) {
+          // only close the callout when it's in single-select mode
+          this.setState({
+            isOpen: false
+          });
+        }
       }
     };
   }
@@ -619,7 +617,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onDismiss() {
     this.setState({ isOpen: false });
-    this._dropDown.focus();
+    this._dropDownDiv.focus();
   }
 
   // Get all selected indexes for multi-select mode
@@ -745,6 +743,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       default:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({
+            isOpen: false
+          });
+          ev.stopPropagation();
+          ev.preventDefault();
+        }
         return;
     }
 
@@ -812,6 +817,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
 
       default:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({
+            isOpen: false
+          });
+          break;
+        }
         return;
     }
 

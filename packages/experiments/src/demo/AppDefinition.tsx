@@ -11,16 +11,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
-          key: 'PositioningContainer',
-          name: 'PositioningContainer',
-          url: '#/examples/PositioningContainer'
-        },
-        {
-          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
-          key: 'Coachmark',
-          name: 'Coachmark',
-          url: '#/examples/coachmark'
+          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
+          key: 'CommandBar',
+          name: 'CommandBar',
+          url: '#/examples/commandbar'
         },
         {
           component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,

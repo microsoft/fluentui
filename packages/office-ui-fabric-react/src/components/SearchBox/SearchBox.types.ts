@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunction } from '../../Utilities';
+import { IButtonProps } from '../Button';
 
 export interface ISearchBox {
   /**
@@ -47,9 +50,14 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onChanged?: (newValue: any) => void;
 
   /**
-  * The value of the text in the SearchBox.
-  */
+   * The value of the text in the SearchBox.
+   */
   value?: string;
+
+  /**
+   * The default value of the text in the SearchBox, in the case of an uncontrolled component.
+   */
+  defaultValue?: string;
 
   /**
   * CSS class to apply to the SearchBox.
@@ -63,8 +71,40 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   ariaLabel?: string;
 
   /**
+   * The props for the clear button.
+   */
+  clearButtonProps?: IButtonProps;
+
+  /**
    * Whether or not the SearchBox is underlined.
    * @default false
    */
   underlined?: boolean;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  getStyles?: IStyleFunction<ISearchBoxStyleProps, ISearchBoxStyles>;
+}
+
+export interface ISearchBoxStyleProps {
+  theme: ITheme;
+  className?: string;
+  disabled?: boolean;
+  hasFocus?: boolean;
+  underlined?: boolean;
+  hasInput?: boolean;
+}
+
+export interface ISearchBoxStyles {
+  root?: IStyle;
+  iconContainer?: IStyle;
+  icon?: IStyle;
+  field?: IStyle;
+  clearButton?: IStyle;
 }

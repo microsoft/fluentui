@@ -201,7 +201,7 @@ export const MalwareDetectedSignal: Signal = (props: ISignalProps): JSX.Element 
     <Icon
       ariaLabel={ props.ariaLabel }
       className={ css(SignalStyles.signal, SignalsStyles.malwareDetected) }
-      iconName='ATPLogo'
+      iconName='BlockedSite'
     />
   );
 };

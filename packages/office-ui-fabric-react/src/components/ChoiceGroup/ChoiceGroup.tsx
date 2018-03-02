@@ -105,7 +105,10 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   <input
                     ref={ this._resolveRef('_inputElement') }
                     id={ option.id }
-                    className={ css('ms-ChoiceField-input', styles.input) }
+                    className={ css('ms-ChoiceField-input', styles.input, {
+                      ['ms-ChoiceField--image ' + styles.inputHasImage]: !!option.imageSrc,
+                      ['ms-ChoiceField--icon ' + styles.inputHasIcon]: !!option.iconProps
+                    }) }
                     type='radio'
                     name={ this.props.name || this._id }
                     disabled={ option.disabled || this.props.disabled }
@@ -150,6 +153,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   private _onRenderField(option: IChoiceGroupOption) {
 
     let { onRenderLabel } = option;
+    let imageSize = option.imageSize ? option.imageSize : { width: 32, height: 32 };
+    let imageIsLarge: boolean = imageSize.width > 71 || imageSize.height > 71;
 
     return (
       <label
@@ -158,12 +163,16 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           ['ms-ChoiceField-field--image ' + styles.fieldIsImage]: !!option.imageSrc,
           ['ms-ChoiceField--icon ' + styles.fieldIsIcon]: !!option.iconProps,
           ['is-checked ' + styles.fieldIsChecked]: option.checked,
-          ['is-disabled ' + styles.fieldIsDisabled]: option.disabled
+          ['is-disabled ' + styles.fieldIsDisabled]: option.disabled,
+          ['is-largeImage ' + styles.imageIsLarge]: !!option.imageSrc && imageIsLarge
         }) }
       >
         {
           option.imageSrc && (
-            <div className={ css('ms-ChoiceField-innerField', styles.innerField) }>
+            <div
+              className={ css('ms-ChoiceField-innerField', styles.innerField) }
+              style={ { height: imageSize.height, width: imageSize.width } }
+            >
               <div
                 className={ css(
                   'ms-ChoiceField-imageWrapper',
@@ -174,8 +183,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <Image
                   src={ option.imageSrc }
-                  width={ option.imageSize ? option.imageSize.width : undefined }
-                  height={ option.imageSize ? option.imageSize.height : undefined }
+                  alt={ option.imageAlt ? option.imageAlt : '' }
+                  width={ imageSize.width }
+                  height={ imageSize.height }
                 />
               </div>
               <div
@@ -188,8 +198,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <Image
                   src={ option.selectedImageSrc }
-                  width={ option.imageSize ? option.imageSize.width : undefined }
-                  height={ option.imageSize ? option.imageSize.height : undefined }
+                  alt={ option.imageAlt ? option.imageAlt : '' }
+                  width={ imageSize.width }
+                  height={ imageSize.height }
                 />
               </div>
             </div>
@@ -207,7 +218,10 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         {
           option.imageSrc || option.iconProps
             ? (
-              <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
+              <div
+                className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }
+                style={ { maxWidth: imageSize.width * 2 } }
+              >
                 { onRenderLabel!(option) }
               </div>
             ) : onRenderLabel!(option)

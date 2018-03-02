@@ -30,7 +30,10 @@ export const getClassNames = memoizeFunction((
         selectors: {
           '& button': inheritFont,
           '& input': inheritFont,
-          '& textarea': inheritFont
+          '& textarea': inheritFont,
+          ':global(button)': {
+            overflow: 'visible'
+          }
         }
       }
     ])

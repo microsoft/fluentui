@@ -114,7 +114,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Crumb-chevron
               {
                 color: #666666;
@@ -208,7 +207,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Crumb-chevron
               {
                 color: #666666;
@@ -302,7 +300,6 @@ exports[`Breadcrumb renders breadcumb correctly 1`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Crumb-chevron
               {
                 color: #666666;
@@ -544,7 +541,7 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
               aria-hidden={true}
               aria-label={undefined}
               className=
-                  ms-Icon
+
                   {
                     display: inline-block;
                     height: 40px;
@@ -560,7 +557,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Crumb-chevron
               {
                 color: #666666;
@@ -654,7 +650,6 @@ exports[`Breadcrumb renders breadcumb correctly 2`] = `
           aria-hidden={true}
           aria-label={undefined}
           className=
-              ms-Icon
               ms-Crumb-chevron
               {
                 color: #666666;

@@ -135,13 +135,18 @@ export interface ISemanticColors {
   //// Input controls slots (text fields, checkboxes, radios...)
 
   /**
-   * The border of an input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
+   * The border of a large input control in its resting, state; e.g. the box of dropdown.
    */
   inputBorder: string;
   /**
-   * The border color of a hovered input control.
+   * The border color of a large hovered input control, such as textbox.
    */
   inputBorderHovered: string;
+
+  /**
+* The border of a small input control in its resting unchecked state; e.g. the box of an unchecked checkbox.
+*/
+  smallInputBorder: string;
 
   /**
    * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.
@@ -163,6 +168,11 @@ export interface ISemanticColors {
    * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
    */
   inputFocusBorderAlt: string;
+
+  /**
+   * The color of placeholder text.
+   */
+  inputPlaceholderText: string;
 
   //// Buttons
 
@@ -238,7 +248,7 @@ export interface ISemanticColors {
   /**
    * The default text color for list item titles and text in column fields.
    */
-  listTextColor: string;
+  listText: string;
 
   /**
    * The background color of a hovered list item.
@@ -254,4 +264,20 @@ export interface ISemanticColors {
    * The background color of a checked and hovered list item.
    */
   listItemBackgroundCheckedHovered: string;
+
+  /**
+   * The color of a link.
+   */
+  link: string;
+
+  /**
+   * The color of a hovered link. Also used when the link is active.
+   */
+  linkHovered: string;
+
+  //// DEPRECATED SLOTS
+  // Do not use these slots, they are only maintained for backwards compatibility.
+
+  /** DEPRECATED use listText instead */
+  listTextColor: string;
 }

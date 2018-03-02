@@ -3,17 +3,16 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  css,
-  getRTL
+  css
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { SuggestionsController } from './Suggestions/SuggestionsController';
+import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
-import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+import { Autofill } from '../Autofill/Autofill';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
@@ -23,6 +22,7 @@ export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
+  isFocused?: boolean;
   isSearching?: boolean;
   isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
@@ -35,14 +35,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected selection: Selection;
 
   protected root: HTMLElement;
-  protected input: BaseAutoFill;
+  protected input: Autofill;
   protected focusZone: FocusZone;
   protected suggestionElement: Suggestions<T>;
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected loadingTimer: number | undefined;
-  protected currentPromise: PromiseLike<any>;
+  protected currentPromise: PromiseLike<any> | undefined;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -57,6 +57,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: '',
       isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
+      isFocused: false,
       isSearching: false
     };
   }
@@ -97,6 +98,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
+  public componentWillUnmount(): void {
+    super.componentWillUnmount();
+    if (this.loadingTimer) {
+      this._async.clearTimeout(this.loadingTimer);
+    }
+    if (this.currentPromise) {
+      this.currentPromise = undefined;
+    }
+  }
+
   public focus() {
     this.focusZone.focus();
   }
@@ -108,13 +119,23 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  public dismissSuggestions() {
-    // Select the first suggestion if one is available when user leaves.
+  public dismissSuggestions(ev?: any) {
     let selectItemFunction = () => {
-      if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
-        this.addItemByIndex(0);
+      if (this.props.onDismiss) {
+        this.props.onDismiss(
+          ev,
+          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined
+        );
+      }
+
+      if (!ev || (ev && !ev.defaultPrevented)) {
+        // Select the first suggestion if one is available when user leaves.
+        if (this.canAddItems() && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+          this.addItemByIndex(0);
+        }
       }
     };
+
     if (this.currentPromise) {
       this.currentPromise.then(() => selectItemFunction());
     } else {
@@ -134,10 +155,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   public refocusSuggestions(keyCode: KeyCodes) {
     this.resetFocus();
-    if (keyCode === KeyCodes.up) {
-      this.suggestionStore.setSelectedSuggestion(this.suggestionStore.suggestions.length - 1);
-    } else if (keyCode === KeyCodes.down) {
-      this.suggestionStore.setSelectedSuggestion(0);
+    if (this.suggestionStore.suggestions && this.suggestionStore.suggestions.length > 0) {
+      if (keyCode === KeyCodes.up) {
+        this.suggestionStore.setSelectedSuggestion(this.suggestionStore.suggestions.length - 1);
+      } else if (keyCode === KeyCodes.down) {
+        this.suggestionStore.setSelectedSuggestion(0);
+      }
     }
   }
 
@@ -168,18 +191,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         >
           <div className={ styles.screenReaderOnly } role='alert' id='selected-suggestion-alert' aria-live='assertive'>{ selectedSuggestionAlert } </div>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) } role={ 'list' }>
               { this.renderItems() }
-              { this.canAddItems() && (<BaseAutoFill
+              { this.canAddItems() && (<Autofill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
@@ -210,7 +234,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         gapSpace={ 5 }
         target={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        directionalHintForRTL={ DirectionalHint.bottomRightEdge }
       >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
@@ -306,9 +331,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => this.setState({
-          suggestionsLoading: true
-        }), 500);
+        this.loadingTimer = this._async.setTimeout(() => {
+          this.setState({
+            suggestionsLoading: true
+          });
+        }, 500);
       }
 
       // Clear suggestions
@@ -390,7 +417,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
+    this.setState({ isFocused: true });
     this.selection.setAllSelected(false);
     if (this.input && this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
@@ -411,8 +439,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
+    this.setState({ isFocused: false });
+  }
+
+  @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
+    let keyCode = ev.which;
+    switch (keyCode) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
           this.setState({ suggestionsVisible: false });
@@ -423,7 +457,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (this.suggestionElement.hasSuggestedActionSelected()) {
+          this.suggestionElement.executeSelectedAction();
+        } else if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -457,15 +493,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.up:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && this.suggestionStore.currentIndex === 0) {
-            this.suggestionElement.focusSearchForMoreButton();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
+          if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+            ev.preventDefault();
+            ev.stopPropagation();
           } else {
-            if (this.suggestionStore.previousSuggestion()) {
+            if (this.suggestionElement.hasSuggestedAction() && this.suggestionStore.currentIndex === 0) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.onSuggestionSelect();
+              this.suggestionElement.focusAboveSuggestions();
+              this.suggestionStore.deselectAllSuggestions();
+              this.forceUpdate();
+            } else {
+              if (this.suggestionStore.previousSuggestion()) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.onSuggestionSelect();
+              }
             }
           }
         }
@@ -473,18 +516,24 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.down:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
-            this.suggestionElement.focusSearchForMoreButton();
-            this.suggestionStore.deselectAllSuggestions();
-            this.forceUpdate();
+          if (this.suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+            ev.preventDefault();
+            ev.stopPropagation();
           } else {
-            if (this.suggestionStore.nextSuggestion()) {
+            if (this.suggestionElement.hasSuggestedAction() && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
               ev.preventDefault();
               ev.stopPropagation();
-              this.onSuggestionSelect();
+              this.suggestionElement.focusBelowSuggestions();
+              this.suggestionStore.deselectAllSuggestions();
+              this.forceUpdate();
+            } else {
+              if (this.suggestionStore.nextSuggestion()) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                this.onSuggestionSelect();
+              }
             }
           }
-
         }
         break;
     }
@@ -535,7 +584,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected addItemByIndex(index: number): void {
     this.addItem(this.suggestionStore.getSuggestionAtIndex(index).item);
-    this.input.clear();
+    if (this.input) {
+      this.input.clear();
+    }
     this.updateValue('');
   }
 
@@ -612,7 +663,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
-  */
+   */
   private _updateSelectedItems(items: T[], focusIndex?: number) {
     if (this.props.selectedItems) {
       // If the component is a controlled component then the controlling component will need
@@ -631,7 +682,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   private _onValidateInput() {
     if (this.props.onValidateInput && (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
-      let itemToConvert = (this.props.createGenericItem as any)(this.input.value, (this.props.onValidateInput as any)(this.input.value));
+      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
@@ -666,17 +717,18 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             selection={ this.selection }
             selectionMode={ SelectionMode.multiple }
           >
-            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
-              <BaseAutoFill
+            <div className={ css('ms-BasePicker-text', styles.pickerText, this.state.isFocused && styles.inputFocused) }>
+              <Autofill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
                 aria-owns='suggestion-list'
-                aria-expanded='true'
+                aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'

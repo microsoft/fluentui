@@ -46,10 +46,10 @@ describe('Persona', () => {
       expect(result.text()).toEqual('DZ');
       wrapper.unmount();
 
-      wrapper = mount(<Persona primaryText='4lex 4loo' />);
+      wrapper = mount(<Persona primaryText='4lex 5loo' />);
       result = wrapper.find(STYLES.initials);
       expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('44');
+      expect(result.text()).toEqual('45');
       wrapper.unmount();
 
       wrapper = mount(<Persona primaryText='David (The man) Goff' />);

@@ -58,7 +58,9 @@ function extractRules(
             if (selectors.hasOwnProperty(newSelector)) {
               const selectorValue = selectors[newSelector];
 
-              if (newSelector.indexOf('@media') === 0) {
+              if (newSelector.indexOf(':global(') === 0) {
+                newSelector = newSelector.replace(/:global\(|\)$/g, '');
+              } else if (newSelector.indexOf('@media') === 0) {
                 newSelector = newSelector + '{' + currentSelector;
               } else if (newSelector.indexOf(':') === 0) {
                 newSelector = currentSelector + newSelector;
@@ -108,7 +110,7 @@ function getKeyForRules(rules: IRuleSet): string | undefined {
     const rulesForSelector = rules[selector];
 
     for (const propName in rulesForSelector) {
-      if (rulesForSelector.hasOwnProperty(propName)) {
+      if (rulesForSelector.hasOwnProperty(propName) && rulesForSelector[propName] !== undefined) {
         hasProps = true;
         serialized.push(propName, rulesForSelector[propName]);
       }
@@ -126,7 +128,7 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
   const allEntries: (string | number)[] = [];
 
   for (const entry in ruleEntries) {
-    if (ruleEntries.hasOwnProperty(entry) && entry !== DISPLAY_NAME) {
+    if (ruleEntries.hasOwnProperty(entry) && entry !== DISPLAY_NAME && ruleEntries[entry] !== undefined) {
       allEntries.push(entry, ruleEntries[entry]);
     }
   }
