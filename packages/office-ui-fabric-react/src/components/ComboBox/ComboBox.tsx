@@ -1265,7 +1265,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover
     } = this.state;
 
-    let sendRevert = false;
+    let sendUndefinedPendingValue = false;
     let currentPendingIndex: number | undefined = undefined;
     let pendingValue: string | undefined = undefined;
 
@@ -1274,7 +1274,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
         currentPendingIndex = currentPendingValueValidIndexOnHover;
       } else {
-        sendRevert = true;
+        sendUndefinedPendingValue = true;
       }
     }
 
@@ -1283,7 +1283,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         currentPendingIndex = currentPendingValueValidIndex;
       } else {
-        sendRevert = true;
+        sendUndefinedPendingValue = true;
       }
     }
 
@@ -1292,12 +1292,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (currentPendingValue !== '') {
         pendingValue = currentPendingValue;
       } else {
-        sendRevert = true;
+        sendUndefinedPendingValue = true;
       }
     }
 
     // Call onPendingValueChanged to notify that pending value is now undefined.
-    if (this._hasPendingValue && (sendRevert || currentPendingIndex || pendingValue)) {
+    if (this._hasPendingValue && (sendUndefinedPendingValue || currentPendingIndex || pendingValue)) {
       onPendingValueChanged();
       this._hasPendingValue = false;
     }
