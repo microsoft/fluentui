@@ -1,4 +1,4 @@
-import { mergeStyleSets, IStyle } from '@uifabric/merge-styles/lib/index';
+import { mergeStyleSets } from '@uifabric/merge-styles/lib/index';
 import { IClassNames } from './IClassNames';
 import { IStyleFunction } from './IStyleFunction';
 
@@ -6,7 +6,7 @@ import { IStyleFunction } from './IStyleFunction';
  * Creates a getClassNames function which calls getStyles given the props, and injects them
  * into mergeStyleSets.
  */
-export function classNamesFunction<TStyleProps extends {}, TStyles extends {[P in keyof TStyles]: IStyle}>(): (
+export function classNamesFunction<TStyleProps extends {}, TStyles extends {}>(): (
   getStyles?: IStyleFunction<TStyleProps, TStyles>,
   styleProps?: TStyleProps
 ) => IClassNames<TStyles> {

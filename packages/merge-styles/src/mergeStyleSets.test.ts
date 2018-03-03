@@ -18,9 +18,8 @@ describe('mergeStyleSets', () => {
   });
 
   it('can merge style sets', () => {
-    const empty: { c?: string } = {};
     const result: { root: string, a: string, b: string } = mergeStyleSets(
-      empty,
+      {},
       {
         root: { background: 'red' },
         a: { background: 'green' }
