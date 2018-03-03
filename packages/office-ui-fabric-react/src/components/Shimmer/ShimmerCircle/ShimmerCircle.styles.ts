@@ -26,6 +26,8 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
    */
   height?: string;
 
+  maxHeight?: number | string;
+
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
@@ -50,8 +52,8 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
     root: [
       'ms-ShimmerCircle-wrapper',
       {
-        width: height,
-        height: height,
+        width: height + 'px',
+        height: height + 'px',
       },
     ],
     svg: [

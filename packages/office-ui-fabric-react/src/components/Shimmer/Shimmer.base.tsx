@@ -16,6 +16,9 @@ import {
   IShimmerRect,
   IShimmerGap
 } from './Shimmer.types';
+import {
+  DefaultPalette
+} from '../../Styling';
 import { ShimmerRectangle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerRectangle/ShimmerRectangle';
 import { ShimmerCircle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerCircle/ShimmerCircle';
 
@@ -37,28 +40,58 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public render() {
     const { getStyles, width, lineElements } = this.props;
     this._classNames = getClassNames(getStyles!, { width });
-    // let highest:
+    const maxHeight: string | undefined = lineElements ? this.findMaxHeight(lineElements) : undefined;
 
     const elements = lineElements ?
-      lineElements.map((elem: IShimmerCirc | IShimmerRect | IShimmerGap) => {
+      lineElements.map((elem: IShimmerCirc | IShimmerRect | IShimmerGap, index: number) => {
         switch (elem.type) {
           case ShimmerElementType.CIRCLE:
             return (
-              <ShimmerCircle { ...elem } />
+              <ShimmerCircle
+                key={ index }
+                maxHeight={ maxHeight }
+                { ...elem }
+              />
             );
-          // case ShimmerElementType.GAP:
-          //   return (
-
-          // );
+          case ShimmerElementType.GAP:
+            const gapWidth = elem.width ? elem.width + '%' : '0';
+            return (
+              <div
+                key={ index }
+                style={ {
+                  width: gapWidth,
+                  height: maxHeight + 'px',
+                  backgroundColor: `${DefaultPalette.white}`
+                } }>
+              </div>
+            );
+          case ShimmerElementType.RECTANGLE:
+            return (
+              <ShimmerRectangle
+                key={ index }
+                maxHeight={ maxHeight }
+                { ...elem }
+              />
+            );
         }
       }) :
       null;
 
     return (
       <div className={ this._classNames.root }>
-        <ShimmerCircle />
-        <ShimmerRectangle />
+        { lineElements ? elements : null }
       </div>
     );
+  }
+
+  private findMaxHeight(items: Array<IShimmerCirc | IShimmerGap | IShimmerRect>): string {
+    const maxHeight = items.filter((elem) => {
+      return elem.type !== ShimmerElementType.GAP;
+    }).reduce((acc, next) => {
+      return next.height ?
+        parseInt(next.height, 10) > acc ? next.height : acc
+        : acc;
+    }, 0);
+    return maxHeight.toString();
   }
 }

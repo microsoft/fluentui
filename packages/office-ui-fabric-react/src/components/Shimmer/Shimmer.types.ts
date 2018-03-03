@@ -36,52 +36,70 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   getStyles?: IStyleFunction<IShimmerStyleProps, IShimmerStyles>;
 }
 
+export interface IShimmerElement {
+  /**
+   * Required for every element you intend to use.
+   */
+  type: string;
+
+  /**
+   * The hight of the element (Circle, Rectangle, Gap).
+   * Think pixels.
+   * Example: height='16'
+   */
+  height?: string;
+
+  /**
+   * The width of the element (Circle, Rectangle, Gap)
+   * Think percentages.
+   * Example: width='20'
+   */
+  width?: string;
+
+  /**
+   * The vertical alignemt of the element (Circle, Rectangle, Gap)
+   * Options: center, top, bottom
+   * @default center
+   */
+  verticalAlign?: 'center' | 'top' | 'bottom';
+}
+
+export interface IShimmerRect extends IShimmerElement {
+  /**
+   * @default 16px
+   */
+  height?: string;
+  /**
+   * If not provided all rectangles will be the of the same size.
+   */
+  width?: string;
+}
+
+export interface IShimmerCirc extends IShimmerElement {
+  /**
+   * Width for circle element will be ignored. Do not provide!
+   */
+  width?: string;
+}
+
+export interface IShimmerGap extends IShimmerElement {
+  /**
+   * Height for gap element will be ignored and set to the maximum height of the line.
+   */
+  height?: string;
+  /**
+   * The width will be percentage based relatively to the whole Shimmer width for responsiveness reasons.
+   * Example: width='5'
+   */
+  width: string;
+}
+
 export interface IShimmerStyleProps {
   width?: string;
 }
 
 export interface IShimmerStyles {
   root?: IStyle;
-}
-
-export interface IShimmerElemType {
-  type: string;
-}
-
-export interface IShimmerRect extends IShimmerElemType {
-  /**
-   * Needs to be provided in pixels.
-   * Example: height='16px'
-   */
-  height?: string;
-
-  /**
-   * Vertical align of the element = ? center | top | bottom
-   * @default center
-   */
-  verticalAlign?: string;
-}
-
-export interface IShimmerCirc extends IShimmerElemType {
-  /**
-   * Needs to be provided in pixels.
-   * Example: diameter='24px'
-   */
-  diameter?: string;
-
-  /**
-   * Vertical align of the element = ? center | top | bottom
-   * @default center
-   */
-  verticalAlign?: string;
-}
-
-export interface IShimmerGap extends IShimmerElemType {
-  /**
-   * Needs to be provided in percentages relatively to the whole Shimmer width.
-   * Example: width='5%'
-   */
-  width?: string;
 }
 
 export const enum ShimmerElementType {

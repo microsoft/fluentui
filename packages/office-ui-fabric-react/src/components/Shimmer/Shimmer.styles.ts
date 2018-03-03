@@ -31,11 +31,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         width: `${width}`,
         height: 'auto',
         boxSizing: 'border-box',
-        background: 'content-box',
-        backgroundImage: `linear-gradient(to right, ${DefaultPalette.neutralLighter} 0%, ${DefaultPalette.neutralLight} 50%, ${DefaultPalette.neutralLighter} 100%)`,
-        backgroundColor: `${DefaultPalette.neutralLighter}`,
-        backgroundSize: '90% 100%',
-        backgroundRepeat: 'no-repeat',
+        background: `${DefaultPalette.neutralLighter}
+        linear-gradient(to right,
+          ${DefaultPalette.neutralLighter} 0%,
+          ${DefaultPalette.neutralLight} 50%,
+          ${DefaultPalette.neutralLighter} 100%)
+        0 0 / 90% 100% no-repeat content-box`,
         animationDuration: '2s',
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',

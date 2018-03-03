@@ -17,7 +17,7 @@ export interface IShimmerCircleState {
 
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, IShimmerCircleState> {
   public static defaultProps: IShimmerCircleProps = {
-    height: '24px'
+    height: '24'
   };
   private _classNames: {[key in keyof IShimmerCircleStyles]: string};
   constructor(props: IShimmerCircleProps) {
