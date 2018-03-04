@@ -14,13 +14,14 @@ import {
   ICircle,
   ILine,
   IGap,
+  ShimmerElementVerticalAlign,
 } from './Shimmer.types';
 import {
   DefaultPalette
 } from '../../Styling';
 import { ShimmerRectangle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerRectangle/ShimmerRectangle';
 import { ShimmerCircle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerCircle/ShimmerCircle';
-import { IStyle } from '@uifabric/styling';
+import { IStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
@@ -45,8 +46,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
             return (
               <ShimmerCircle
                 key={ index }
-                maxHeight={ maxHeight }
                 { ...elem }
+                borderAlignStyle={ this.getBorderAlignStyles(maxHeight, elem) }
               />
             );
           case ShimmerElementType.GAP:
@@ -65,8 +66,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
             return (
               <ShimmerRectangle
                 key={ index }
-                maxHeight={ maxHeight }
                 { ...elem }
+                borderAlignStyle={ this.getBorderAlignStyles(maxHeight, elem) }
               />
             );
         }
@@ -89,7 +90,34 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     return maxHeight;
   }
 
-  private getBorderAlignStyles(maxHeight: number, elem: ICircle | IGap | ILine) {
+  private getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
+    const dif: number | undefined = maxHeight && elem.height ?
+      maxHeight - elem.height > 0 ?
+        maxHeight - elem.height : undefined
+      : undefined;
 
+    let borderStyle: IStyleSet | undefined;
+    const hasVerticalAlign: boolean = elem.verticalAlign ? true : false;
+
+    if (elem.verticalAlign === ShimmerElementVerticalAlign.CENTER || !hasVerticalAlign) {
+      borderStyle = {
+        alignSelf: 'center',
+        borderBottom: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`,
+        borderTop: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`
+      };
+    } else if (elem.verticalAlign === ShimmerElementVerticalAlign.TOP && hasVerticalAlign) {
+      borderStyle = {
+        alignSelf: 'top',
+        borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
+        borderTop: `0px solid ${DefaultPalette.white}`
+      };
+    } else if (elem.verticalAlign === ShimmerElementVerticalAlign.BOTTOM && hasVerticalAlign) {
+      borderStyle = {
+        alignSelf: 'bottom',
+        borderBottom: `0px solid ${DefaultPalette.white}`,
+        borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
+      };
+    }
+    return borderStyle;
   }
 }

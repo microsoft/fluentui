@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   IStyle,
   IRawStyle,
-  DefaultPalette
+  DefaultPalette,
+  IStyleSet
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
@@ -29,7 +30,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   /**
    * Used to
    */
-  maxHeight?: number;
+  borderAlignStyle?: IStyleSet;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -39,6 +40,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
 export interface IShimmerCircleStyleProps {
   height?: number;
+  borderAlignStyle?: IStyleSet;
 }
 
 export interface IShimmerCircleStyles {
@@ -48,8 +50,11 @@ export interface IShimmerCircleStyles {
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
   const {
-    height
+    height,
+    borderAlignStyle
   } = props;
+
+  const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
 
   return {
     root: [
@@ -58,6 +63,7 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         width: `${height}px`,
         height: `${height}px`,
       },
+      styles
     ],
     svg: [
       'ms-ShimmerCircle-svg',

@@ -25,9 +25,9 @@ export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, 
   }
 
   public render() {
-    const { height, getStyles, verticalAlign, maxHeight, width } = this.props;
+    const { height, getStyles, verticalAlign, width, borderAlignStyle } = this.props;
 
-    this._classNames = getClassNames(getStyles!, { height, verticalAlign, maxHeight, width });
+    this._classNames = getClassNames(getStyles!, { height, verticalAlign, width, borderAlignStyle });
 
     return (
       <div className={ this._classNames.root } />

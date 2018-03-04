@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   IStyle,
   IRawStyle,
-  DefaultPalette
+  DefaultPalette,
+  IStyleSet
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 import { ShimmerElementVerticalAlign } from 'office-ui-fabric-react/lib/Shimmer';
@@ -39,9 +40,9 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
   verticalAlign?: string;
 
   /**
-   * Used to calculate the borders. No need to be provided.
+   * Sets custom styling of the rectangle.
    */
-  maxHeight?: number;
+  borderAlignStyle?: IStyleSet;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -52,8 +53,8 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
 export interface IShimmerRectangleStyleProps {
   height?: number;
   verticalAlign?: string;
-  maxHeight?: number;
   width?: number;
+  borderAlignStyle?: IStyleSet;
 }
 
 export interface IShimmerRectangleStyles {
@@ -64,37 +65,11 @@ export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangle
   const {
     height,
     verticalAlign,
-    maxHeight,
-    width
+    width,
+    borderAlignStyle
   } = props;
 
-  const dif: number | undefined = maxHeight && height ?
-    maxHeight - height > 0 ?
-      maxHeight - height : undefined
-    : undefined;
-
-  let borderStyle: any;
-  if (verticalAlign) {
-    if (verticalAlign === ShimmerElementVerticalAlign.CENTER) {
-      borderStyle = {
-        alignSelf: 'center',
-        borderBottom: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`,
-        borderTop: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`
-      }
-    } else if (verticalAlign === ShimmerElementVerticalAlign.TOP) {
-      borderStyle = {
-        alignSelf: 'top',
-        borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
-        borderTop: `0px solid ${DefaultPalette.white}`
-      }
-    } else if (verticalAlign === ShimmerElementVerticalAlign.BOTTOM) {
-      borderStyle = {
-        alignSelf: 'bottom',
-        borderBottom: `0px solid ${DefaultPalette.white}`,
-        borderTop: `${dif ? dif : 0}px solid ${DefaultPalette.white}`
-      }
-    }
-  }
+  const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
 
   return {
     root: [
@@ -105,7 +80,7 @@ export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangle
         height: `${height}px`,
         boxSizing: 'content-box',
       },
-      borderStyle
+      styles
     ]
   };
 }

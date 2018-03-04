@@ -28,8 +28,8 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, IShimm
   }
 
   public render() {
-    const { height, getStyles } = this.props;
-    this._classNames = getClassNames(getStyles!, { height });
+    const { height, getStyles, borderAlignStyle } = this.props;
+    this._classNames = getClassNames(getStyles!, { height, borderAlignStyle });
 
     return (
       <div className={ this._classNames.root }>
