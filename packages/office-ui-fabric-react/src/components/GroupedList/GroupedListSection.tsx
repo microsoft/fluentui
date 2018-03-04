@@ -36,7 +36,7 @@ import {
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import * as stylesImport from './GroupedList.scss';
-import { IList, IListProps } from '../List/index';
+import { IListProps } from '../List/index';
 
 const styles: any = stylesImport;
 
@@ -127,9 +127,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   private _root: HTMLElement;
   private _list: List;
 
-  private _subGroups: {
-    [key: string]: GroupedListSection;
-  };
   private _dragDropSubscription: IDisposable;
 
   constructor(props: IGroupedListSectionProps) {
@@ -137,7 +134,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     const { selection, group } = props;
 
-    this._subGroups = {};
     this.state = {
       isDropping: false,
       isSelected: (selection && group) ? selection.isRangeSelected(group.startIndex, group.count) : false

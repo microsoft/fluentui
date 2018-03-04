@@ -1,11 +1,8 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import {
-  getTheme,
   HighContrastSelector,
   IStyle,
-  ITheme,
 } from '../../Styling';
-import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = (
   props: ICheckStyleProps

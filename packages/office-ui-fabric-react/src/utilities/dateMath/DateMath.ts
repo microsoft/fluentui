@@ -314,13 +314,10 @@ function getDatePartHashValue(date: Date) {
 */
 function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFullDays: number) {
   const dayOfYear = getDayOfYear(date) - 1;
-  const dateWeekDay = date.getDay();
   let num = (date.getDay()) - (dayOfYear % TimeConstants.DaysInOneWeek);
 
   const lastDayOfPrevYear = new Date(date.getFullYear() - 1, MonthOfYear.December, 31);
   const daysInYear = getDayOfYear(lastDayOfPrevYear) - 1;
-
-  const adjustedWeekDay = adjustWeekDay(firstDayOfWeek, dateWeekDay);
 
   let num2 = ((firstDayOfWeek - num) + (2 * TimeConstants.DaysInOneWeek)) % TimeConstants.DaysInOneWeek;
   if ((num2 !== 0) && (num2 >= numberOfFullDays)) {

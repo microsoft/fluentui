@@ -121,7 +121,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<ISpinButtonStyles>
 ): ISpinButtonStyles => {
-  const { fonts, palette, semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   const SpinButtonRootBorderColor = semanticColors.inputBorder;
   const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
