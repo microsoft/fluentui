@@ -305,6 +305,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
     }
+    if (!link.url && link.links && link.links.length > 0) {
+      this._onLinkExpandClicked(link, ev);
+    }
 
     this.setState({ selectedKey: link.key });
   }
@@ -312,6 +315,9 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
   private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (link.onClick) {
       link.onClick(ev, link);
+    }
+    if (!link.url && link.links && link.links.length > 0) {
+      this._onLinkExpandClicked(link, ev);
     }
 
     this.setState({ selectedKey: link.key });
