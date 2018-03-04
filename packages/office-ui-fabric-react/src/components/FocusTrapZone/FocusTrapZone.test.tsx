@@ -137,8 +137,12 @@ describe('FocusTrapZone', () => {
       }
     });
 
-    // Focus the first button.
-    ReactTestUtils.Simulate.focus(buttonA);
+    // Focus the last element
+    ReactTestUtils.Simulate.focus(buttonD);
+    expect(lastFocusedElement).toBe(buttonD);
+
+    // Pressing tab should go to a.
+    ReactTestUtils.Simulate.keyDown(buttonD, { which: KeyCodes.tab });
     expect(lastFocusedElement).toBe(buttonA);
 
     // Pressing shift + tab should go to d.

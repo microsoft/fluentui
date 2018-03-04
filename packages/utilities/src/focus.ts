@@ -100,7 +100,7 @@ export function getPreviousElement(
       tabbable);
 
     if (childMatch) {
-      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
+      if ((tabbable && isElementTabbable(childMatch, true)) || !tabbable) {
         return childMatch;
       }
 
@@ -146,7 +146,7 @@ export function getPreviousElement(
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible && ((tabbable && isElementTabbable(currentElement, true)) || !tabbable)) {
     return currentElement;
   }
 
