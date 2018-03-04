@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  getNativeProps,
 } from '../../Utilities';
 import {
   IClassNames
@@ -12,25 +11,22 @@ import {
   IShimmerStyleProps,
   IShimmerStyles,
   ShimmerElementType,
-  IShimmerCirc,
-  IShimmerRect,
-  IShimmerGap
+  ICircle,
+  ILine,
+  IGap,
 } from './Shimmer.types';
 import {
   DefaultPalette
 } from '../../Styling';
 import { ShimmerRectangle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerRectangle/ShimmerRectangle';
 import { ShimmerCircle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerCircle/ShimmerCircle';
+import { IStyle } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
-export interface IShimmerState {
-  hasCircle: boolean;
-}
-
-export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
+export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   public static defaultProps: IShimmerProps = {
-    width: '100%'
+    width: 100
   };
   private _classNames: {[key in keyof IShimmerStyles]: string};
   constructor(props: IShimmerProps) {
@@ -40,10 +36,10 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public render() {
     const { getStyles, width, lineElements } = this.props;
     this._classNames = getClassNames(getStyles!, { width });
-    const maxHeight: string | undefined = lineElements ? this.findMaxHeight(lineElements) : undefined;
+    const maxHeight: number | undefined = lineElements ? this.findMaxHeight(lineElements) : undefined;
 
-    const elements = lineElements ?
-      lineElements.map((elem: IShimmerCirc | IShimmerRect | IShimmerGap, index: number) => {
+    const elements: JSX.Element[] | JSX.Element = lineElements ?
+      lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
         switch (elem.type) {
           case ShimmerElementType.CIRCLE:
             return (
@@ -54,7 +50,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
               />
             );
           case ShimmerElementType.GAP:
-            const gapWidth = elem.width ? elem.width + '%' : '0';
+            const gapWidth = elem.width ? elem.width + '%' : '1%';
             return (
               <div
                 key={ index }
@@ -75,23 +71,25 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
             );
         }
       }) :
-      null;
+      <ShimmerRectangle />;
 
     return (
       <div className={ this._classNames.root }>
-        { lineElements ? elements : null }
+        { elements }
       </div>
     );
   }
 
-  private findMaxHeight(items: Array<IShimmerCirc | IShimmerGap | IShimmerRect>): string {
-    const maxHeight = items.filter((elem) => {
-      return elem.type !== ShimmerElementType.GAP;
-    }).reduce((acc, next) => {
+  private findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
+    const maxHeight = items.reduce((acc: number, next: ICircle | IGap | ILine): number => {
       return next.height ?
-        parseInt(next.height, 10) > acc ? next.height : acc
+        next.height > acc ? next.height : acc
         : acc;
     }, 0);
-    return maxHeight.toString();
+    return maxHeight;
+  }
+
+  private getBorderAlignStyles(maxHeight: number, elem: ICircle | IGap | ILine) {
+
   }
 }

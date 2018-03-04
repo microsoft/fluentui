@@ -5,6 +5,7 @@ import {
   DefaultPalette
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
+import { ShimmerElementVerticalAlign } from 'office-ui-fabric-react/lib/Shimmer';
 
 export interface IShimmerRectangle {
 
@@ -24,13 +25,13 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
    * Sets the height of the rectangle.
    * @default 16px
    */
-  height?: string;
+  height?: number;
 
   /**
    * Sets width of the elemnts.
    * @default 100%
    */
-  width?: string;
+  width?: number;
 
   /**
    * @default center
@@ -40,7 +41,7 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
   /**
    * Used to calculate the borders. No need to be provided.
    */
-  maxHeight?: string;
+  maxHeight?: number;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -49,10 +50,10 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
 }
 
 export interface IShimmerRectangleStyleProps {
-  height?: string;
+  height?: number;
   verticalAlign?: string;
-  maxHeight?: string;
-  width?: string;
+  maxHeight?: number;
+  width?: number;
 }
 
 export interface IShimmerRectangleStyles {
@@ -67,27 +68,26 @@ export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangle
     width
   } = props;
 
-  const heightInt = height ? parseInt(height, 10) : undefined;
-  const maxHeightInt = maxHeight ? parseInt(maxHeight, 10) : undefined;
-  const dif = maxHeightInt && heightInt ?
-    maxHeightInt - heightInt > 0 ?
-      maxHeightInt - heightInt : undefined
+  const dif: number | undefined = maxHeight && height ?
+    maxHeight - height > 0 ?
+      maxHeight - height : undefined
     : undefined;
+
   let borderStyle: any;
   if (verticalAlign) {
-    if (verticalAlign === 'center') {
+    if (verticalAlign === ShimmerElementVerticalAlign.CENTER) {
       borderStyle = {
         alignSelf: 'center',
         borderBottom: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`,
         borderTop: `${dif ? dif / 2 : 0}px solid ${DefaultPalette.white}`
       }
-    } else if (verticalAlign === 'top') {
+    } else if (verticalAlign === ShimmerElementVerticalAlign.TOP) {
       borderStyle = {
         alignSelf: 'top',
         borderBottom: `${dif ? dif : 0}px solid ${DefaultPalette.white}`,
         borderTop: `0px solid ${DefaultPalette.white}`
       }
-    } else if (verticalAlign === 'bottom') {
+    } else if (verticalAlign === ShimmerElementVerticalAlign.BOTTOM) {
       borderStyle = {
         alignSelf: 'bottom',
         borderBottom: `0px solid ${DefaultPalette.white}`,

@@ -2,12 +2,15 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  getNativeProps,
 } from '../../../Utilities';
 import {
   IClassNames
 } from '@uifabric/utilities/lib/IClassNames';
-import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.styles';
+import {
+  IShimmerCircleProps,
+  IShimmerCircleStyleProps,
+  IShimmerCircleStyles
+} from './ShimmerCircle.styles';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 // TODO needs to be thought about
@@ -17,7 +20,7 @@ export interface IShimmerCircleState {
 
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, IShimmerCircleState> {
   public static defaultProps: IShimmerCircleProps = {
-    height: '24'
+    height: 24
   };
   private _classNames: {[key in keyof IShimmerCircleStyles]: string};
   constructor(props: IShimmerCircleProps) {

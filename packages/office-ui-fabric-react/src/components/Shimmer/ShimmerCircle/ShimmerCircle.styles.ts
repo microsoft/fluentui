@@ -21,12 +21,15 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
   componentRef?: (component: IShimmerCircle) => void;
 
   /**
-   * If true, the component will render a circle as an icon placeholder
+   * Sets the height of the circle.
    * @default 24px
    */
-  height?: string;
+  height?: number;
 
-  maxHeight?: number | string;
+  /**
+   * Used to
+   */
+  maxHeight?: number;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -35,7 +38,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 }
 
 export interface IShimmerCircleStyleProps {
-  height?: string;
+  height?: number;
 }
 
 export interface IShimmerCircleStyles {
@@ -52,8 +55,8 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
     root: [
       'ms-ShimmerCircle-wrapper',
       {
-        width: height + 'px',
-        height: height + 'px',
+        width: `${height}px`,
+        height: `${height}px`,
       },
     ],
     svg: [

@@ -8,14 +8,15 @@ import {
   IClassNames
 } from '@uifabric/utilities/lib/IClassNames';
 import { IShimmerRectangleProps, IShimmerRectangleStyleProps, IShimmerRectangleStyles } from './ShimmerRectangle.styles';
+import { ShimmerElementVerticalAlign } from 'office-ui-fabric-react/lib/Shimmer';
 
 const getClassNames = classNamesFunction<IShimmerRectangleStyleProps, IShimmerRectangleStyles>();
 
 export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, {}> {
   public static defaultProps: IShimmerRectangleProps = {
-    height: '16',
-    verticalAlign: 'center',
-    width: '100'
+    height: 16,
+    verticalAlign: ShimmerElementVerticalAlign.CENTER,
+    width: 100
   };
   private _classNames: {[key in keyof IShimmerRectangleStyles]: string};
 
