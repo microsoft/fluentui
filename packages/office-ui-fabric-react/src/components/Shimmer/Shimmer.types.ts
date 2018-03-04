@@ -107,10 +107,12 @@ export interface IGap extends IShimmerElement {
 
 export interface IShimmerStyleProps {
   width?: number;
+  maxHeight?: number;
 }
 
 export interface IShimmerStyles {
   root?: IStyle;
+  fadeOutWrapper?: IStyle;
 }
 
 export const enum ShimmerElementType {

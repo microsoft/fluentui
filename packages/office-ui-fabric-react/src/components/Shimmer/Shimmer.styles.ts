@@ -8,7 +8,8 @@ import {
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
-    width
+    width,
+    maxHeight
   } = props;
 
   const shimmerAnimation: string = keyframes({
@@ -24,10 +25,20 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     root: [
       'ms-Shimmer-container',
       {
+        position: 'relative',
+        margin: '10px',
+        boxSizing: 'content-box',
+        minHeight: maxHeight ? `${maxHeight}px` : '16px'
+      }
+    ],
+    fadeOutWrapper: [
+      'ms-Shimmer-fadeOutWrapper',
+      {
         display: 'flex',
+        position: 'absolute',
+        top: '0',
         alignItems: 'center',
         alignContent: 'space-between',
-        padding: '10px',
         width: `${width}%`,
         height: 'auto',
         boxSizing: 'border-box',

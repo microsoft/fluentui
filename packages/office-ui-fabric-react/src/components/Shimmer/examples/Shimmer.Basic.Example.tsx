@@ -17,6 +17,7 @@ export const ShimmerBasicExample = () => (
     <hr />
     <Shimmer
       lineElements={ [
+        { type: ElemType.CIRCLE, height: 20, verticalAlign: ElemVerticalAlign.TOP },
         { type: ElemType.CIRCLE, height: 39 },
         { type: ElemType.GAP, width: 5 },
         { type: ElemType.RECTANGLE, height: 20, verticalAlign: ElemVerticalAlign.CENTER, width: 30 },

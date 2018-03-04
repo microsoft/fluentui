@@ -36,8 +36,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
   public render() {
     const { getStyles, width, lineElements } = this.props;
-    this._classNames = getClassNames(getStyles!, { width });
     const maxHeight: number | undefined = lineElements ? this.findMaxHeight(lineElements) : undefined;
+    this._classNames = getClassNames(getStyles!, { width, maxHeight });
 
     const elements: JSX.Element[] | JSX.Element = lineElements ?
       lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
@@ -76,7 +76,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
     return (
       <div className={ this._classNames.root }>
-        { elements }
+        <div className={ this._classNames.fadeOutWrapper }>
+          { elements }
+        </div>
       </div>
     );
   }
