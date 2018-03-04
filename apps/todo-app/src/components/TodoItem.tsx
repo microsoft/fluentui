@@ -20,8 +20,8 @@ import strings from './../strings';
 export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   private static ANIMATION_TIMEOUT = 200;
 
-  private _animationTimeoutId: number;
-  private _rowItem: HTMLDivElement;
+  private _animationTimeoutId!: number;
+  private _rowItem!: HTMLDivElement;
 
   constructor(props: ITodoItemProps) {
     super(props);
