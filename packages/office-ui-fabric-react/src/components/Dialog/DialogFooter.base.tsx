@@ -14,14 +14,19 @@ import {
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 
 @customizable('DialogFooter', ['theme'])
-export class DialogFooterBase extends BaseComponent<any, any> {
+export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
   private _classNames: IClassNames<IDialogFooterStyles>;
 
   public render() {
-    const { getStyles, theme } = this.props;
+    const {
+      className,
+      getStyles,
+      theme
+    } = this.props;
 
     this._classNames = getClassNames(getStyles!, {
       theme: theme!,
+      className
     });
 
     return (

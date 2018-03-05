@@ -4,7 +4,7 @@ export const getStyles = (
   props: IDialogFooterStyleProps
 ): IDialogFooterStyles => {
   const {
-    theme,
+    className,
   } = props;
 
   return ({
@@ -23,7 +23,8 @@ export const getStyles = (
             lineHeight: 'normal',
           }
         }
-      }
+      },
+      className
     ],
 
     action: [

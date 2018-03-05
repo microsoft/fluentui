@@ -1,11 +1,8 @@
 import {
   IDialogContentStyleProps,
   IDialogContentStyles,
-  DialogType
 } from './DialogContent.types';
 import {
-  IStyle,
-  ITheme,
   FontWeights,
 } from '../../Styling';
 
@@ -22,7 +19,6 @@ export const getStyles = (
   } = props;
 
   const { palette, fonts } = theme;
-  const dialogLgHeaderBackgroundColor = palette.themePrimary;
 
   return ({
     content: [
@@ -54,7 +50,7 @@ export const getStyles = (
       isLargeHeader && [
         'ms-Dialog--lgHeader',
         {
-          backgroundColor: dialogLgHeaderBackgroundColor,
+          backgroundColor: palette.themePrimary,
         }
       ],
       isClose && 'ms-Dialog--close',

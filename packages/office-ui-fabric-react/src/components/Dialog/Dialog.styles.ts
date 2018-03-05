@@ -1,7 +1,5 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import {
-  IStyle,
-  ITheme,
   FontWeights,
   ScreenWidthMinMedium,
 } from '../../Styling';
@@ -14,7 +12,6 @@ export const getStyles = (
     containerClassName,
     dialogDefaultMinWidth = '288px',
     dialogDefaultMaxWidth = '340px',
-    theme,
     hidden,
   } = props;
 

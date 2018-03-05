@@ -18,6 +18,11 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+  * Optional override class name
+  */
+  className?: string;
 }
 
 export interface IDialogFooterStyleProps {
@@ -25,6 +30,11 @@ export interface IDialogFooterStyleProps {
    * Accept theme prop.
    */
   theme: ITheme;
+
+  /**
+  * Optional override class name
+  */
+  className?: string;
 }
 
 export interface IDialogFooterStyles {
