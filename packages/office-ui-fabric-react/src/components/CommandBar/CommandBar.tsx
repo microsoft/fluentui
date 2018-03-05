@@ -21,6 +21,7 @@ import {
 import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
+import { registerKeytip, unregisterKeytip } from '../../utilities/keytips';
 const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
@@ -57,6 +58,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _id: string;
   private _overflowWidth: number;
   private _commandItemWidths: { [key: string]: number } | null;
+  private _keytipPropsMap: { [key: string]: any };
 
   constructor(props: ICommandBarProps) {
     super(props);
@@ -64,6 +66,26 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this.state = this._getStateFromProps(props);
 
     this._id = getId('CommandBar');
+
+    this._keytipPropsMap = {};
+  }
+
+  public componentWillMount() {
+    if (this.state.renderedItems) {
+      this.state.renderedItems.forEach((item: IContextualMenuItem) => {
+        if (item.keytipProps) {
+          this._keytipPropsMap[item.key] = registerKeytip(item.keytipProps);
+        }
+      });
+    }
+
+    if (this.state.renderedFarItems) {
+      this.state.renderedFarItems.forEach((item: IContextualMenuItem) => {
+        if (item.keytipProps) {
+          this._keytipPropsMap[item.key] = registerKeytip(item.keytipProps);
+        }
+      });
+    }
   }
 
   public componentDidMount() {
@@ -81,6 +103,41 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     if (!this._commandItemWidths) {
       // Asynchronously update command bar layout to eliminate forced synchronous reflow
       this._asyncMeasure();
+    }
+
+    if (this.state.renderedItems) {
+      this.state.renderedItems.forEach((item: IContextualMenuItem) => {
+        if (item.keytipProps) {
+          registerKeytip(item.keytipProps);
+        }
+      });
+    }
+
+    if (this.state.renderedFarItems) {
+      this.state.renderedFarItems.forEach((item: IContextualMenuItem) => {
+        if (item.keytipProps) {
+          registerKeytip(item.keytipProps);
+        }
+      });
+    }
+
+  }
+
+  public componentWillUnmount() {
+    if (this.state.renderedItems) {
+      this.state.renderedItems.forEach((item: IContextualMenuItem) => {
+        if (item.keytipProps) {
+          unregisterKeytip(item.keytipProps);
+        }
+      });
+    }
+
+    if (this.state.renderedFarItems) {
+      this.state.renderedFarItems.forEach((item: IContextualMenuItem) => {
+        if (item.keytipProps) {
+          unregisterKeytip(item.keytipProps);
+        }
+      });
     }
   }
 
@@ -196,6 +253,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       command = (
         <button
           { ...getNativeProps(item, buttonProperties) }
+          { ...this._keytipPropsMap[item.key]}
           id={ this._id + item.key }
           className={ className }
           onClick={ this._onItemClick(item) }

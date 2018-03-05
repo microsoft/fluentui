@@ -5,6 +5,8 @@ import {
   KeytipTransitionModifier,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
+import { buildKeytipConfigMap, IKeytipConfigMap } from '../../../utilities/keytips';
+import { keytipConfig } from './KeytipSetup';
 import { KeytipLayer, } from 'office-ui-fabric-react/lib/KeytipLayer';
 import { registerKeytip, addKeytipSequence } from '../../../utilities/keytips';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
@@ -18,14 +20,10 @@ export interface IKeytipLayerBasicExampleState {
   showMessageBar: boolean;
 }
 
-export interface IKeytipMap {
-  [componentKeytipId: string]: IKeytipProps;
-}
-
 export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBasicExampleState> {
 
   private startingKeySequence: IKeytipTransitionKey = { key: 'Meta', modifierKeys: [KeytipTransitionModifier.alt] };
-  private keytipMap: IKeytipMap = {};
+  private keytipMap: IKeytipConfigMap = {};
 
   constructor(props: {}) {
     super(props);
@@ -36,64 +34,7 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
       showMessageBar: false
     };
 
-    // Setup keytips
-    this.keytipMap.Pivot1Keytip = {
-      content: 'A',
-      keySequences: [{ keys: ['a'] }]
-    } as IKeytipProps;
-
-    this.keytipMap.Pivot2Keytip = {
-      content: 'B',
-      keySequences: [{ keys: ['b'] }]
-    } as IKeytipProps;
-
-    this.keytipMap.Button1Pivot1Keytip = {
-      content: '1B',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'b'] }),
-      onExecute: (el: HTMLElement) => {
-        el.click();
-      }
-    } as IKeytipProps;
-
-    this.keytipMap.Button2Pivot1Keytip = {
-      content: '1A',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['1', 'a'] }),
-      onExecute: (el: HTMLElement) => {
-        el.click();
-      }
-    } as IKeytipProps;
-
-    this.keytipMap.Button3Pivot1Keytip = {
-      content: 'M',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot1Keytip.keySequences, { keys: ['m'] }),
-      onExecute: (el: HTMLElement) => {
-        el.click();
-      }
-    } as IKeytipProps;
-
-    this.keytipMap.CommandButton1Pivot2Keytip = {
-      content: '2',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['2'] }),
-      onExecute: (el: HTMLElement) => {
-        el.click();
-      }
-    } as IKeytipProps;
-
-    this.keytipMap.CommandButton2Pivot2Keytip = {
-      content: 'Y',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['y'] }),
-      onExecute: (el: HTMLElement) => {
-        el.click();
-      }
-    } as IKeytipProps;
-
-    this.keytipMap.CommandButton3Pivot2Keytip = {
-      content: 'LK',
-      keySequences: addKeytipSequence(this.keytipMap.Pivot2Keytip.keySequences, { keys: ['l', 'k'] }),
-      onExecute: (el: HTMLElement) => {
-        el.click();
-      }
-    } as IKeytipProps;
+    this.keytipMap = buildKeytipConfigMap(keytipConfig);
   }
 
   /* tslint:disable:jsx-ban-props jsx-no-lambda */
@@ -139,6 +80,78 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
               />
             </div>
           </div>
+          <div style={ divStyle }>
+            <div>
+              <ActionButton
+                keytipProps={ this.keytipMap.Pivot2Keytip }
+                text='Mock Pivot 2'
+              />
+            </div>
+            <CommandBar
+              items={
+                [
+                  {
+                    key: 'commandBarItem1',
+                    name: 'New',
+                    icon: 'Add',
+                    onClick: this._showModal,
+                    keytipProps: this.keytipMap.CommandButton1Pivot2Keytip
+                  },
+                  {
+                    key: 'commandBarItem2',
+                    name: 'Upload',
+                    icon: 'Upload',
+                    onClick: this._showMessageBar,
+                    keytipProps: this.keytipMap.CommandButton2Pivot2Keytip
+                  }
+                ]
+              }
+              farItems={
+                [
+                  {
+                    key: 'farItem1',
+                    name: 'SubMenu',
+                    icon: 'SortLines',
+                    keytipProps: this.keytipMap.CommandButton3Pivot2Keytip,
+                    subMenuProps: {
+                      items: [
+                        {
+                          key: 'emailMessage',
+                          name: 'Email message',
+                          icon: 'Mail',
+                          keytipProps: this.keytipMap.SubmenuKeytip1,
+                          onClick: () => { console.log('test1'); }
+                        },
+                        {
+                          key: 'calendarEvent',
+                          name: 'Calendar event',
+                          icon: 'Calendar',
+                          keytipProps: this.keytipMap.SubmenuKeytip2,
+                          onClick: () => { console.log('test2'); },
+                          subMenuProps: {
+                            items: [
+                              {
+                                key: 'testButton',
+                                name: 'Test Button',
+                                keytipProps: this.keytipMap.SubmenuKeytip3,
+                                onClick: () => { console.log('test3'); }
+                              },
+                              {
+                                key: 'testButton2',
+                                name: 'Test Button 2',
+                                keytipProps: this.keytipMap.SubmenuKeytip4,
+                                href: 'http://www.bing.com'
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                    },
+                  }
+                ]
+              }
+            />
+          </div>
         </div>
         { this.state.showMessageBar &&
           <MessageBar messageBarType={ MessageBarType.success }>
@@ -155,62 +168,6 @@ export class KeytipLayerBasicExample extends React.Component<{}, IKeytipLayerBas
       </div>
     );
   }
-
-  /*
-
-          <div style={ divStyle }>
-            <div>
-              <ActionButton
-                data-ktp-id={ convertSequencesToKeytipID(this.keytipMap.Pivot2Keytip.keySequences) }
-                text='Mock Pivot 2'
-              />
-            </div>
-            <CommandBar
-              items={
-                [
-                  {
-                    key: 'commandBarItem1',
-                    name: 'New',
-                    icon: 'Add',
-                    onClick: this._showModal,
-                    ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton1Pivot2Keytip.keySequences)
-                  },
-                  {
-                    key: 'commandBarItem2',
-                    name: 'Upload',
-                    icon: 'Upload',
-                    onClick: this._showMessageBar,
-                    ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton2Pivot2Keytip.keySequences)
-                  }
-                ]
-              }
-              farItems={
-                [
-                  {
-                    key: 'farItem1',
-                    name: 'SubMenu',
-                    icon: 'SortLines',
-                    ['data-ktp-id']: convertSequencesToKeytipID(this.keytipMap.CommandButton3Pivot2Keytip.keySequences),
-                    subMenuProps: {
-                      items: [
-                        {
-                          key: 'emailMessage',
-                          name: 'Email message',
-                          icon: 'Mail',
-                        },
-                        {
-                          key: 'calendarEvent',
-                          name: 'Calendar event',
-                          icon: 'Calendar'
-                        }
-                      ],
-                    },
-                  }
-                ]
-              }
-            />
-          </div>
-          */
 
   public componentDidMount(): void {
     // Manually add keytips to the KeytipManager for now
