@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Mar 2018 11:16:58 GMT and should not be manually modified.
+
+## 5.23.0
+Mon, 05 Mar 2018 11:16:58 GMT
+
+### Minor changes
+
+- Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)
 
 ## 5.22.0
 Fri, 02 Mar 2018 11:25:35 GMT

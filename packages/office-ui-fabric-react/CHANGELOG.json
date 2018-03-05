@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.59.0",
+      "tag": "office-ui-fabric-react_v5.59.0",
+      "date": "Mon, 05 Mar 2018 11:16:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "6060a321343aab06548b3c5441b9d9fe62507242",
+            "comment": "Fix issue 3608: DetailsList horizontal scroll due to cellSizer"
+          },
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "172b7c5c54a0f50b305d7eff4d77f62e861daae0",
+            "comment": "Nav: Wire nav link to expand/collapse behavior if it has no URL but has children."
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "132efd3b7ee5853a2c47d5ac7663853caedf28e1",
+            "comment": "Fixed aria-describedby bug causing it not to render properly"
+          },
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "28af7a3ed0e56fdddfb5b2ccb26c83543e6b049f",
+            "comment": "Removes unused variables"
+          },
+          {
+            "author": "Samuel Timbó <samuelmtimbo@gmail.com>",
+            "commit": "eb4764aa3943195315138df089e27e7e261c664b",
+            "comment": "GroupedListSection: Changed the list ref name from `list` to `_list`"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "5e24983e16790428d43d3c8252f361bc32c7f99f",
+            "comment": "Converting Image SCSS to MergeStyles step 2 - style conversion"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.58.0",
       "tag": "office-ui-fabric-react_v5.58.0",
       "date": "Fri, 02 Mar 2018 11:25:35 GMT",
