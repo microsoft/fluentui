@@ -4,7 +4,7 @@ export type RefObject<T> = {
 };
 
 export function createRef<T>(): RefObject<T> {
-  const refObject = ((element: T): void => {
+  const refObject = ((element: T | null): void => {
     refObject.value = element;
   }) as RefObject<T>;
   refObject.value = null;
