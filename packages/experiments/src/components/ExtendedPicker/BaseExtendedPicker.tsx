@@ -4,8 +4,6 @@ import {
   KeyCodes,
   autobind,
   css,
-  createRef,
-  RefObject
 } from '../../Utilities';
 import {
   FocusZone,
@@ -35,18 +33,12 @@ export interface IBaseExtendedPickerState {
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState>
   implements IBaseExtendedPicker<T> {
-  // tslint:disable-next-line:no-any
-  public floatingPicker: RefObject<BaseFloatingPicker<any, any>> =
-    // tslint:disable-next-line:no-any
-    createRef<BaseFloatingPicker<any, any>>();
-  // tslint:disable-next-line:no-any
-  public selectedItemsList: RefObject<BaseSelectedItemsList<any, any>> =
-    // tslint:disable-next-line:no-any
-    createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
+  public floatingPicker: BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>;
+  public selectedItemsList: BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>;
 
-  protected root: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
-  protected input: RefObject<Autofill> = createRef<Autofill>();
-  protected focusZone: RefObject<FocusZone> = createRef<FocusZone>();
+  protected root: HTMLElement;
+  protected input: Autofill;
+  protected focusZone: FocusZone;
   protected selection: Selection;
   protected floatingPickerProps: IBaseFloatingPickerProps<T>;
   protected selectedItemsListProps: IBaseSelectedItemsListProps<T>;
@@ -70,7 +62,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   // tslint:disable-next-line:no-any
   public get items(): any {
-    return this.selectedItemsList.value ? this.selectedItemsList.value.items : [];
+    return this.selectedItemsList ? this.selectedItemsList.items : [];
   }
 
   public componentDidMount(): void {
@@ -78,11 +70,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   public focus(): void {
-    this.focusZone.value && this.focusZone.value.focus();
+    this.focusZone.focus();
   }
 
-  public get inputElement(): HTMLInputElement | null {
-    return this.input.value && this.input.value.inputElement;
+  public get inputElement(): HTMLInputElement {
+    return this.input.inputElement;
   }
 
   public render(): JSX.Element {
@@ -95,13 +87,13 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     return (
       <div
-        ref={ this.root }
+        ref={ this._resolveRef('root') }
         className={ css(
           'ms-BasePicker',
           className ? className : '') }
       >
         <FocusZone
-          ref={ this.focusZone }
+          ref={ this._resolveRef('focusZone') }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
           onKeyDown={ this.onBackspace }
@@ -114,7 +106,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
               { this.canAddItems() && (<Autofill
                 { ...inputProps as IInputProps }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
-                ref={ this.input }
+                ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
@@ -151,49 +143,47 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   protected renderSuggestions(): JSX.Element {
     let onRenderFloatingPicker = this.props.onRenderFloatingPicker;
     return (onRenderFloatingPicker({
-      componentRef: this.floatingPicker,
+      componentRef: this._resolveRef('floatingPicker'),
       onChange: this._onSuggestionSelected,
-      inputElement: this.input.value ? this.input.value.inputElement : undefined,
-      selectedItems: this.selectedItemsList.value ? this.selectedItemsList.value.items : [],
+      inputElement: this.input ? this.input.inputElement : undefined,
+      selectedItems: this.selectedItemsList ? this.selectedItemsList.items : [],
       ...this.floatingPickerProps
     }));
   }
 
   protected renderSelectedItemsList(): JSX.Element {
-    const onRenderSelectedItems = this.props.onRenderSelectedItems;
+    let onRenderSelectedItems = this.props.onRenderSelectedItems;
     return (onRenderSelectedItems({
-      componentRef: this.selectedItemsList,
+      componentRef: this._resolveRef('selectedItemsList'),
       ...this.selectedItemsListProps
     }));
   }
 
   protected resetFocus(index?: number): void {
-    const { items } = this.state;
-    const { value: root } = this.root;
+    let { items } = this.state;
 
     if (items.length && index! >= 0) {
-      const newEl = root && root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
-      const { value: focusZone } = this.focusZone;
-      if (newEl && focusZone) {
-        focusZone.focusElement(newEl);
+      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
+      if (newEl) {
+        this.focusZone.focusElement(newEl);
       }
     } else if (!this.canAddItems()) {
       (items[items.length - 1] as IPickerItemProps<T>).selected = true;
       this.resetFocus(items.length - 1);
     } else {
-      this.input.value && this.input.value.focus();
+      this.input.focus();
     }
   }
 
   @autobind
   protected onInputChange(value: string): void {
-    this.floatingPicker.value && this.floatingPicker.value.onQueryStringChanged(value);
+    this.floatingPicker.onQueryStringChanged(value);
   }
 
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | Autofill>): void {
-    this.selectedItemsList.value && this.selectedItemsList.value.unselectAll();
-    this.floatingPicker.value && this.floatingPicker.value.showPicker();
+    this.selectedItemsList.unselectAll();
+    this.floatingPicker.showPicker();
 
     if (this.props.inputProps && this.props.inputProps.onFocus) {
       this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
@@ -207,18 +197,18 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     if (ev.which !== KeyCodes.backspace) {
       return;
     }
-
-    const { value: input } = this.input;
-    if (input && !input.isValueSelected && input.cursorLocation === 0) {
-      this.selectedItemsList.value && this.selectedItemsList.value.removeItemAt(this.items.length - 1);
-      this._onSelectedItemsChanged();
+    if (this.state.items.length && !this.input || !this.input.isValueSelected) {
+      if ((this.input as Autofill).cursorLocation === 0) {
+        this.selectedItemsList.removeItemAt(this.items.length - 1);
+        this._onSelectedItemsChanged();
+      }
     }
   }
 
   @autobind
   protected onCopy(ev: React.ClipboardEvent<HTMLElement>): void {
     // Pass it down into the selected items list
-    this.selectedItemsList.value && this.selectedItemsList.value.onCopy(ev);
+    this.selectedItemsList.onCopy(ev);
   }
 
   @autobind
@@ -233,7 +223,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   @autobind
   protected _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
     // If suggestions are shown let up/down keys control them, otherwise allow them through to control the focusZone.
-    if (this.floatingPicker.value && this.floatingPicker.value.isSuggestionsShown) {
+    if (this.floatingPicker.isSuggestionsShown) {
       switch (ev.which) {
         case KeyCodes.up:
         case KeyCodes.down:
@@ -251,13 +241,13 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   @autobind
   protected _onSuggestionSelected(item: T): void {
-    this.selectedItemsList.value && this.selectedItemsList.value.addItems([item]);
+    this.selectedItemsList.addItems([item]);
     if (this.props.onItemSelected) {
       this.props.onItemSelected(item);
     }
-    this.input.value && this.input.value.clear();
+    this.input.clear();
 
-    this.floatingPicker.value && this.floatingPicker.value.hidePicker();
+    this.floatingPicker.hidePicker();
     this.focus();
   }
 
