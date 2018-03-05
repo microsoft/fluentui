@@ -4,7 +4,6 @@ import {
 } from '../../Utilities';
 import {
   ITheme,
-  IStyle,
   mergeStyles
 } from '../../Styling';
 

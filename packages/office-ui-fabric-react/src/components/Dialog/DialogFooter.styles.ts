@@ -1,8 +1,4 @@
 import { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
-import {
-  IStyle,
-  ITheme,
-} from '../../Styling';
 
 export const getStyles = (
   props: IDialogFooterStyleProps

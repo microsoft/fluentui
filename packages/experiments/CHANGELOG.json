@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.23.0",
+      "tag": "@uifabric/experiments_v5.23.0",
+      "date": "Mon, 05 Mar 2018 11:16:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "5e24983e16790428d43d3c8252f361bc32c7f99f",
+            "comment": "Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.58.0 <6.0.0` to `>=5.59.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.22.0",
       "tag": "@uifabric/experiments_v5.22.0",
       "date": "Fri, 02 Mar 2018 11:25:35 GMT",

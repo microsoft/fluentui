@@ -1,6 +1,5 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
-import { IGridCellProps } from '../../utilities/grid/GridCell.types';
 
 export interface IColorPickerGridCellProps {
   /**

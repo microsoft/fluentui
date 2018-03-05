@@ -1,7 +1,5 @@
 import {
-  mergeStyles,
-  ITheme,
-  getTheme
+  mergeStyles
 } from '../../Styling';
 import {
   memoizeFunction

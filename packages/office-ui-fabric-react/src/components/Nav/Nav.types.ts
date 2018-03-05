@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { NavBase } from './Nav.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction, IStyleFunction } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
