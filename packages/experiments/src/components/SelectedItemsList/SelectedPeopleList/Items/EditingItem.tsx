@@ -1,7 +1,17 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, KeyCodes, autobind, getId, getNativeProps, inputProperties, css, createRef, RefObject } from '../../../../Utilities';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  getId,
+  getNativeProps,
+  inputProperties,
+  css,
+  createRef,
+  RefObject
+} from '../../../../Utilities';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
