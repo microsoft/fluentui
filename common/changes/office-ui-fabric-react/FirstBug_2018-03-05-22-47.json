@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Facepile: Conditionally apply `aria-describedby` only when `ariaDescription` is provided",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "adrum@microsoft.com"
+}
