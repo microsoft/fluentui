@@ -1,8 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
@@ -10,9 +9,8 @@ import {
   IOverflowSetItemProps,
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
-
+/* tslint:disable-next-line:no-unused-variable */
 import * as stylesImport from './OverflowSet.Example.scss';
-const styles: any = stylesImport;
 
 export class OverflowSetVerticalExample extends BaseComponent<any, any> {
 

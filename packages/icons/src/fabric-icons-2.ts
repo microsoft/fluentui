@@ -22,9 +22,10 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-e2ae1f0c.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-2-e49d4cfd.woff') format('woff')`,
     },
     icons: {
+      'World': '\uE909',
       'Comment': '\uE90A',
       'DockLeft': '\uE90C',
       'DockRight': '\uE90D',
@@ -123,8 +124,7 @@ export function initializeIcons(
       'HailDay': '\uEA00',
       'WorkFlow': '\uEA01',
       'HourGlass': '\uEA03',
-      'StoreLogoMed20': '\uEA04',
-      'TimeSheet': '\uEA05'
+      'StoreLogoMed20': '\uEA04'
     }
   };
 

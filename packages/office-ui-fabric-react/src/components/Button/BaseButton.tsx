@@ -11,7 +11,7 @@ import {
   KeyCodes,
   createRef
 } from '../../Utilities';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
@@ -103,14 +103,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps && menuIconProps.className,
       isPrimaryButtonDisabled!,
       checked!,
-      !!this.state.menuProps,
+      !!menuProps,
       this.props.split) : getBaseButtonClassNames(styles!, className!,
         variantClassName!,
         iconProps && iconProps.className,
         menuIconProps && menuIconProps.className,
         isPrimaryButtonDisabled!,
         checked!,
-        !!this.state.menuProps,
+        !!menuProps,
         this.props.split);
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -420,7 +420,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       styles = {},
       disabled,
       checked,
-      getSplitButtonClassNames
+      getSplitButtonClassNames,
+      onClick,
+      primaryDisabled
     } = this.props;
 
     const classNames = getSplitButtonClassNames ? getSplitButtonClassNames(
@@ -431,6 +433,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         !!disabled,
         !!this.state.menuProps,
         !!checked);
+
+    buttonProps = { ...buttonProps, onClick: undefined };
 
     return (
       <div
@@ -444,6 +448,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ classNames && classNames.splitButtonContainer }
         onKeyDown={ this._onMenuKeyDown }
         ref={ this._splitButtonContainer }
+        data-is-focusable={ true }
+        onClick={ !disabled && !primaryDisabled ? onClick : undefined }
       >
         <span
           style={ { 'display': 'flex' } }

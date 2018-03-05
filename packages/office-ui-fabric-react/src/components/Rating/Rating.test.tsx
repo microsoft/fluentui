@@ -18,7 +18,6 @@ describe('Rating', () => {
   });
 
   it('Can change rating.', () => {
-    let exception;
     let threwException = false;
     let rating;
     try {
@@ -29,7 +28,6 @@ describe('Rating', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -60,7 +58,6 @@ describe('Rating', () => {
   });
 
   it('Clamps input rating to allowed range.', () => {
-    let exception;
     let threwException = false;
     let rating;
     try {
@@ -71,7 +68,6 @@ describe('Rating', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -96,7 +92,6 @@ describe('Rating', () => {
   });
 
   it('Half star is displayed when 2.5 value is passed.', () => {
-    let exception;
     let threwException = false;
     let rating;
     try {
@@ -107,7 +102,6 @@ describe('Rating', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -130,7 +124,6 @@ describe('Rating', () => {
   });
 
   it('When rating is disabled cannot change rating', () => {
-    let exception;
     let threwException = false;
     let choiceGroup;
     try {
@@ -141,7 +134,6 @@ describe('Rating', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
     expect(threwException).toEqual(false);
@@ -157,7 +149,6 @@ describe('Rating', () => {
   });
 
   it('When rating is readonly cannot change rating', () => {
-    let exception;
     let threwException = false;
     let choiceGroup;
     try {
@@ -169,7 +160,6 @@ describe('Rating', () => {
         />
       );
     } catch (e) {
-      exception = e;
       threwException = true;
 
     }

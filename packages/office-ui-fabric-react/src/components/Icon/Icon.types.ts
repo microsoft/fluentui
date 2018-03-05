@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IImageProps } from '../Image/Image.types';
 import { IStyle } from '../../Styling';
-import { Icon } from './Icon';
 import { IBaseProps } from '../../Utilities';
 
 // Please keep alphabetized

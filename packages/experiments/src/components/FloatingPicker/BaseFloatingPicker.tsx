@@ -90,7 +90,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       } else {
         this.updateValue(queryString);
       }
-
     }
   }
 
@@ -105,10 +104,13 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       suggestionsVisible: true,
     });
 
-    if (this.state.queryString === '') {
-      this.updateSuggestionWithZeroState();
-    } else {
-      this.updateValue(this.state.queryString);
+    if (this.suggestionStore.suggestions.length === 0
+      || this.props.inputElement && this.props.inputElement.textContent !== this.state.queryString) {
+      if (this.state.queryString === '') {
+        this.updateSuggestionWithZeroState();
+      } else {
+        this.updateValue(this.state.queryString);
+      }
     }
   }
 
@@ -257,18 +259,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         this.suggestionStore.updateSuggestions(suggestionsArray, 0);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(
-          () =>
-            this.setState({
-              suggestionsLoading: true
-            }),
-          500
-        );
-      }
-
-      // Clear suggestions
-      this.suggestionStore.updateSuggestions([]);
+      this.setState({
+        suggestionsLoading: true
+      });
 
       if (updatedValue !== undefined) {
         this.setState({
@@ -291,6 +284,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           } else {
             this.suggestionStore.updateSuggestions(newSuggestions);
             this.setState({
+              suggestionsVisible: newSuggestions.length > 0,
               suggestionsLoading: false
             });
           }
@@ -487,9 +481,11 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
-    let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
+    let suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
 
-    this.updateSuggestionsList(suggestions, updatedValue);
+    if (suggestions !== null) {
+      this.updateSuggestionsList(suggestions, updatedValue);
+    }
   }
 
   @autobind

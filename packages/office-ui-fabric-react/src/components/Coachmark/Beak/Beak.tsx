@@ -6,7 +6,6 @@ import {
 } from '../../../Utilities';
 import { IBeakProps } from './Beak.types';
 import { getStyles, IBeakStyles } from './Beak.styles';
-import { getComboBoxOptionClassNames } from 'src/components/ComboBox/ComboBox.classNames';
 import { IBeakStylesProps } from './Beak.types';
 
 export interface IBeakState {
@@ -29,8 +28,8 @@ export class Beak extends BaseComponent<IBeakProps, IBeakState> {
 
     const getClassNames = classNamesFunction<IBeakStylesProps, IBeakStyles>();
     const classNames = getClassNames(getStyles, {
-      left: this.props.left,
-      top: this.props.top,
+      left,
+      top,
       height: height + 'px',
       width: width + 'px'
     });
