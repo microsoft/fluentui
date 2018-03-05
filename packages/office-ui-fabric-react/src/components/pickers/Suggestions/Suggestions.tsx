@@ -82,8 +82,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   public render() {
     const {
       forceResolveText,
-      createGenericItem,
-      showForceResolve,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -137,7 +135,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                this.state.selectedActionType === SuggestionActionType.forceResolve
+                  this.state.selectedActionType === SuggestionActionType.forceResolve
               }) }
             onClick={ this._forceResolve }
           >
@@ -160,7 +158,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
               styles.actionButton,
               {
                 ['is-selected ' + styles.buttonSelected]:
-                this.state.selectedActionType === SuggestionActionType.searchMore
+                  this.state.selectedActionType === SuggestionActionType.searchMore
               }) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults }
@@ -283,7 +281,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   }
 
   public focusAboveSuggestions(): void {
-    const newSelectedActionType = null;
     if (this._forceResolveButton) {
       this.setState({ selectedActionType: SuggestionActionType.forceResolve });
     } else if (this._searchForMoreButton) {

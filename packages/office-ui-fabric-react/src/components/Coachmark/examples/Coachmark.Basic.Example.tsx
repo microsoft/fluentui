@@ -3,11 +3,9 @@ import { Coachmark } from '../Coachmark';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IStyle, DefaultPalette } from '../../../Styling';
+import { IStyle } from '../../../Styling';
 import {
   BaseComponent,
-  assign,
-  autobind,
   classNamesFunction
 } from 'office-ui-fabric-react/lib/Utilities';
 

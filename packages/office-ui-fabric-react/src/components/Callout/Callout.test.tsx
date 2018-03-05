@@ -35,7 +35,6 @@ describe('Callout', () => {
   it('target id strings does not throw exception', () => {
 
     let threwException = false;
-    let exception;
     try {
       ReactTestUtils.renderIntoDocument<HTMLDivElement>(
         <div>
@@ -51,7 +50,6 @@ describe('Callout', () => {
         </div>
       );
     } catch (e) {
-      exception = e;
       threwException = true;
     }
 

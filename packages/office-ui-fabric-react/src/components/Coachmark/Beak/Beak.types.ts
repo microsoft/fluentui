@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Beak } from './Beak';
-import { IPositionInfo } from '../PositioningContainer/PositioningContainer.types';
 
 export interface IBeak { }
 

@@ -63,7 +63,6 @@ export const getOptionStyles = memoizeFunction((
   const ComboBoxOptionTextColorSelected = palette.black;
   const ComboBoxOptionTextColorDisabled = semanticColors.disabledText;
   const ComboBoxOptionBackgroundDisabled = semanticColors.bodyBackground;
-  const ComboBoxOptionBorderColorFocused = palette.neutralSecondary;
 
   const optionStyles: IComboBoxOptionStyles = {
     root: [

@@ -11,7 +11,6 @@ import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
-  let tabKeyHit: number;
   function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
   }
@@ -44,7 +43,6 @@ describe('FocusZone', () => {
 
   beforeEach(() => {
     lastFocusedElement = undefined;
-    tabKeyHit = 0;
   });
 
   it('can use arrows vertically', () => {
@@ -1091,7 +1089,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true }}>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.all, isCircularNavigation: true } }>
           <button className='a'>a</button>
           <button className='b'>b</button>
           <button className='c'>c</button>
@@ -1208,7 +1206,7 @@ describe('FocusZone', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener } }>
-        <FocusZone {...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false }}>
+        <FocusZone { ...{ handleTabKey: FocusZoneTabbableElements.inputOnly, isCircularNavigation: false } }>
           <input type='text' className='a' />
           <button className='b'>b</button>
         </FocusZone>

@@ -12,7 +12,6 @@ import { PersonaPresence } from './PersonaPresence';
 import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaInitialsColor,
   PersonaSize
 } from './Persona.types';
 import {
@@ -72,14 +71,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       coinProps,
       coinSize,
       imageUrl,
-      imageAlt,
-      initialsColor,
-      primaryText,
-      imageShouldFadeIn,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
-      imageShouldStartVisible
-     } = this.props;
+    } = this.props;
 
     const size = this.props.size as PersonaSize;
     const divProps = getNativeProps(this.props, divProperties);
@@ -146,7 +140,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
     const size = this.props.size as PersonaSize;
 
-    return(
+    return (
       <Image
         className={ css('ms-Persona-image', styles.image) }
         imageFit={ ImageFit.cover }
