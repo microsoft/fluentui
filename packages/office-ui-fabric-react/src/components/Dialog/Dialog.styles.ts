@@ -1,6 +1,5 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import {
-  FontWeights,
   ScreenWidthMinMedium,
 } from '../../Styling';
 
