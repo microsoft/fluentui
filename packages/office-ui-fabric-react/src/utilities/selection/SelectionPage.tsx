@@ -10,7 +10,7 @@ import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 const SelectionBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/utilities/selection/examples/Selection.Basic.Example.tsx') as string;
 
 export class SelectionPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Selection'

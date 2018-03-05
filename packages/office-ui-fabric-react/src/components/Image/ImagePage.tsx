@@ -23,7 +23,7 @@ const ImageNoneExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const ImageMaximizeFrameExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.MaximizeFrame.Example.tsx') as string;
 
 export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Image'

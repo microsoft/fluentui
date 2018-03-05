@@ -39,7 +39,7 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isPrimary } = this.state;
     const { disabled, checked } = this.props;
     const text = 'Swap';

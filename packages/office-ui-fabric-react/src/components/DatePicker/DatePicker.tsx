@@ -183,7 +183,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       firstDayOfWeek,
       strings,

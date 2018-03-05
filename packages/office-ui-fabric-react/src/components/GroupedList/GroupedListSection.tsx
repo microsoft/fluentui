@@ -140,7 +140,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { dragDropHelper, selection } = this.props;
 
     if (dragDropHelper && this._root.value) {
@@ -152,7 +152,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._dragDropSubscription) {
       this._dragDropSubscription.dispose();
     }
@@ -240,7 +240,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this.forceListUpdate();
   }

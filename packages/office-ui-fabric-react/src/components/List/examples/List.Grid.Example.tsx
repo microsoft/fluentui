@@ -23,7 +23,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
     this._getPageHeight = this._getPageHeight.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <FocusZone>
         <List

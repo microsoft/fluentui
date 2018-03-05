@@ -16,7 +16,7 @@ const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react
 const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
 
 export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='FocusZone'

@@ -42,7 +42,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { title, shouldTruncate, showAsSecondaryTitle } = this.props;
     const miniLength = showAsSecondaryTitle ? TRUNCATION_MINI_LENGTH_SECONDARY : TRUNCATION_MINIMUM_LENGTH;
     if (shouldTruncate && title && title.length > miniLength) {
@@ -64,14 +64,14 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     // If we're truncating, make sure the title fits
     if (this.props.shouldTruncate) {
       this._shrinkTitle();
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { title, shouldTruncate, showAsSecondaryTitle } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
 

@@ -14,7 +14,7 @@ const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/
 const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
 
 export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='GroupedList'

@@ -121,7 +121,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Primary Render
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     let {
       disabled

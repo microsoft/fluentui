@@ -17,7 +17,7 @@ const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fab
 const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Customization.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     const cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (

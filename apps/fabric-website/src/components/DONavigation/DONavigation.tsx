@@ -31,7 +31,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
   private headerel;
   private navcontainerel;
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     let currentButton;
     let submenu;
     let currentContainer;
@@ -76,7 +76,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
     this._processResize();
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='od-Navigation'>
         <div className='od-Navigation-searchContainer'>

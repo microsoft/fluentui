@@ -67,7 +67,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     const {
       src,

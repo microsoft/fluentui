@@ -75,7 +75,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     loadTheme({ palette: themeRules });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
     const fabricThemeSlots =

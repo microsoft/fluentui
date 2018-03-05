@@ -27,7 +27,7 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
     _cachedItems = _cachedItems || createListItems(5000);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='List'

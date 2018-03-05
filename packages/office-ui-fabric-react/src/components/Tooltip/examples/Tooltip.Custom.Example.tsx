@@ -11,7 +11,7 @@ import {
 
 export class TooltipCustomExample extends BaseComponent<any, any> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <TooltipHost
         calloutProps={ { gapSpace: 20 } }

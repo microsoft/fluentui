@@ -7,7 +7,7 @@ import {
 
 export class BreadcrumbStaticExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div style={ { display: 'inline-block' } }>
         <Breadcrumb

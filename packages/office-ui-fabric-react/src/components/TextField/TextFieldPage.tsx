@@ -34,7 +34,7 @@ const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-rea
 const TextFieldAutoCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.AutoComplete.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TextField'

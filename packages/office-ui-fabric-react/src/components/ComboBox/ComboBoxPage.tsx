@@ -14,7 +14,7 @@ const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 
 export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ComboBox'

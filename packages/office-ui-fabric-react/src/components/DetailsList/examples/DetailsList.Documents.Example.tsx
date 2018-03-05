@@ -203,7 +203,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { columns, isCompactMode, items, selectionDetails } = this.state;
 
     return (

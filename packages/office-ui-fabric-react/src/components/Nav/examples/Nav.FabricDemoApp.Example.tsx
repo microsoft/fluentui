@@ -4,7 +4,7 @@ import { AppDefinition } from '../../../demo/AppDefinition';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
 export class NavFabricDemoAppExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <Nav
         groups={ AppDefinition.examplePages }

@@ -99,7 +99,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     this._onToggleSelection = this._onToggleSelection.bind(this);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
@@ -149,7 +149,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     const { item, onWillUnmount } = this.props;
 
     // Only call the onWillUnmount callback if we have an item.
@@ -170,7 +170,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       columns,

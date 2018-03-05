@@ -96,7 +96,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     this._onSelectDate = this._onSelectDate.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn! }>

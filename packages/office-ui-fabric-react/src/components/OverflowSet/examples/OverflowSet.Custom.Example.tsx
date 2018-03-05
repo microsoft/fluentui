@@ -14,7 +14,7 @@ const styles: any = stylesImport;
 
 export class OverflowSetCustomExample extends BaseComponent<any, any> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <OverflowSet
         items={ [

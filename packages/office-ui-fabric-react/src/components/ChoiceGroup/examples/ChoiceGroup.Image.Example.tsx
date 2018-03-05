@@ -20,7 +20,7 @@ export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupIma
     this._onImageChoiceGroupChange = this._onImageChoiceGroupChange.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { selectedKey } = this.state;
 
     return (

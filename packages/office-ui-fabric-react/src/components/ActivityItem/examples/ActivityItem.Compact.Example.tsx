@@ -13,7 +13,7 @@ import { TestImages } from '../../../common/TestImages';
 import { Icon } from '../../../Icon';
 
 export class ActivityItemCompactExample extends React.Component<React.Props<ActivityItemCompactExample>, {}> {
-  public render() {
+  public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles);
 
@@ -74,7 +74,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
     ];
 
     const activityExampleList: Array<JSX.Element> = [];
-    activityItemExamples.forEach((item) => {
+    activityItemExamples.forEach((item: { key: string | number }) => {
       const props = item;
       activityExampleList.push(
         <ActivityItem { ...props as IActivityItemProps } key={ item.key } className={ css(classNames.exampleRoot) } />

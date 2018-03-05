@@ -52,7 +52,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const target = this._getTargetElement();
 
     this._events.on(target, 'mouseenter', this._cardOpen);
@@ -90,7 +90,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   // Render
-  public render() {
+  public render(): JSX.Element {
     const {
       expandingCardProps,
       children,

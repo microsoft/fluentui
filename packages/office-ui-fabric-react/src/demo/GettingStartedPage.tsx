@@ -6,7 +6,7 @@ import './GettingStartedPage.scss';
 import { Highlight } from '@uifabric/example-app-base';
 
 export class GettingStartedPage extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-GettingStartedPage'>
 

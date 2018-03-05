@@ -19,7 +19,7 @@ const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 
 export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='SearchBox'

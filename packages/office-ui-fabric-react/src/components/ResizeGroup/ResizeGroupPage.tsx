@@ -16,7 +16,7 @@ const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/
 const ResizeGroupFlexBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
 
 export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ResizeGroup'

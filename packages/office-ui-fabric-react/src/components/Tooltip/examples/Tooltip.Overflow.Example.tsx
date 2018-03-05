@@ -26,7 +26,7 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
   }
 
   // tslint:disable:jsx-no-lambda
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton onClick={ () => this.setState({ overflow: !this.state.overflow }) }>Toggle showing overflow</DefaultButton>

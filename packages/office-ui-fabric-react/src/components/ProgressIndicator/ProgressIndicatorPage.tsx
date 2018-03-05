@@ -14,7 +14,7 @@ const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-
 const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Indeterminate.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ProgressIndicator'
@@ -90,7 +90,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ProgressIndicatorStatus}
+            { ...ProgressIndicatorStatus }
           />
         }
       />

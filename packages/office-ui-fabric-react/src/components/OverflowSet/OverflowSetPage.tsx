@@ -17,7 +17,7 @@ const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/
 const OverflowSetVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
 
 export class OverflowSetPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='OverflowSet'

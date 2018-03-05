@@ -7,7 +7,7 @@ import { ComponentStatus } from './ComponentStatus';
 import './ComponentStatusPage.scss';
 
 export class ComponentStatusPage extends React.Component<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     const sections: IComponentPageSection[] = [{ title: 'Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
 
     return (

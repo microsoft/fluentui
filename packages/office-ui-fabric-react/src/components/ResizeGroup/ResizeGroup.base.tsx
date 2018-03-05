@@ -306,7 +306,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { onRenderData, className, getStyles, theme } = this.props;
     const { dataToMeasure, renderedData } = this.state;
     const divProps = getNativeProps(this.props, divProperties, ['data']);
@@ -328,7 +328,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     );
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._afterComponentRendered();
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }

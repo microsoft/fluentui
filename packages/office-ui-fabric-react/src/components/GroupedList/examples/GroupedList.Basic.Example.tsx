@@ -39,7 +39,7 @@ export class GroupedListBasicExample extends React.Component {
     this._selection.setItems(_items);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <FocusZone>
         <SelectionZone

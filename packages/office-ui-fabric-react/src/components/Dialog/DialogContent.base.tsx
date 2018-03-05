@@ -31,7 +31,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       showCloseButton,
       className,

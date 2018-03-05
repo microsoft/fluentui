@@ -61,7 +61,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { label, options, className, required } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
@@ -87,6 +87,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 onRenderLabel = this._onRenderLabel
               } = option;
 
+<<<<<<< HEAD
               // Merge internal props into option
               assign(option, {
                 checked: option.key === keyChecked,
@@ -96,6 +97,23 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 onRenderLabel
               });
 
+=======
+            { options!.map((option: IChoiceGroupOption) => {
+              const {
+                onRenderField = this._onRenderField,
+                onRenderLabel = this._onRenderLabel
+              } = option;
+
+              // Merge internal props into option
+              assign(option, {
+                checked: option.key === keyChecked,
+                disabled: option.disabled || this.props.disabled,
+                id: `${this._id}-${option.key}`,
+                labelId: `${this._labelId}-${option.key}`,
+                onRenderLabel
+              });
+
+>>>>>>> Add typedefs
               return (
                 <div
                   key={ option.key }
@@ -108,7 +126,11 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 >
                   <div className={ css('ms-ChoiceField-wrapper', styles.choiceFieldWrapper) }>
                     <input
+<<<<<<< HEAD
                       ref={ this._inputElement }
+=======
+                      ref={ this._resolveRef('_inputElement') }
+>>>>>>> Add typedefs
                       id={ option.id }
                       className={ css('ms-ChoiceField-input', styles.input, {
                         ['ms-ChoiceField--image ' + styles.inputHasImage]: !!option.imageSrc,
@@ -122,7 +144,11 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                       onChange={ this._onChange.bind(this, option) }
                       onFocus={ this._onFocus.bind(this, option) }
                       onBlur={ this._onBlur.bind(this, option) }
+<<<<<<< HEAD
                       aria-labelledby={ option.labelId }
+=======
+                      aria-labelledby={ option.id }
+>>>>>>> Add typedefs
                       { ...getNativeProps(option, inputProperties) }
                     />
                     { onRenderField(option, this._onRenderField) }

@@ -22,7 +22,7 @@ export interface ISuggestionsState {
 }
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  public render() {
+  public render(): JSX.Element {
     const {
       suggestionModel,
       RenderSuggestion,
@@ -75,7 +75,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       selectedActionType: SuggestionActionType.none,
     };
   }
-  public componentDidMount() {
+  public componentDidMount(): void {
     this.scrollSelected();
     this.activeSelectedElement = this._selectedElement ? this._selectedElement.value : null;
   }
@@ -89,7 +89,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,

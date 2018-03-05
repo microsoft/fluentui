@@ -99,7 +99,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return this.state.value;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._isMounted = true;
     this._adjustInputHeight();
 
@@ -129,11 +129,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._isMounted = false;
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       description,

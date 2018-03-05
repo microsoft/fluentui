@@ -40,7 +40,7 @@ import { DetailsListNavigatingFocusExample } from './examples/DetailsList.Naviga
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='DetailsList'

@@ -30,7 +30,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
 
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { title, description, className, ariaValueText } = this.props;
     let { label, percentComplete } = this.props;
 

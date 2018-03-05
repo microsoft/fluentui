@@ -116,7 +116,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdates();
   }

@@ -101,7 +101,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { activeDescendantId, weeks } = this.state;
     const { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, firstWeekOfYear, dateTimeFormatter, minDate, maxDate } = this.props;
     const dayPickerId = getId('DatePickerDay-dayPicker');

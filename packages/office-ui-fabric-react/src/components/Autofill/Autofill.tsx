@@ -80,7 +80,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     const value = this._value;
     const {
       suggestedDisplayValue,
@@ -108,7 +108,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       displayValue
     } = this.state;

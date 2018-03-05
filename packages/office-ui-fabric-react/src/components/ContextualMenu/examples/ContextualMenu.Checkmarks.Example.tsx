@@ -21,7 +21,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { selection } = this.state;
 
     return (

@@ -17,7 +17,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
     this.state = { isContextMenuShown: false };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <CommandBar

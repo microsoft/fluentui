@@ -129,7 +129,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       disabled,
       label,

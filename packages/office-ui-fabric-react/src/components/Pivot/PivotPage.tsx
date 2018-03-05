@@ -30,7 +30,7 @@ const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Pivot'

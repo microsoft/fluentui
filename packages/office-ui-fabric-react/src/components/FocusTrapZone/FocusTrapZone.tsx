@@ -23,7 +23,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _isInFocusStack = false;
   private _isInClickStack = false;
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
     if (forceFocusInsideTrap) {
       this._isInFocusStack = true;
@@ -35,7 +35,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
@@ -59,7 +59,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     const { ignoreExternalFocusing } = this.props;
 
     this._events.dispose();
@@ -80,7 +80,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { className, ariaLabelledBy } = this.props;
     const divProps = getNativeProps(this.props, divProperties);
 

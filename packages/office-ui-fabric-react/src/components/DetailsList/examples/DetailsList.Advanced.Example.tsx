@@ -79,7 +79,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       checkboxVisibility,
       columns,

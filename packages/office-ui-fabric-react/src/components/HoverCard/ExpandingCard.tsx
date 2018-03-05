@@ -45,15 +45,15 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._checkNeedsScroll();
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       targetElement,
       theme,

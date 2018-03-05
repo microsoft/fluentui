@@ -6,7 +6,7 @@ import './ScrollablePane.Example.scss';
 
 export class ScrollablePaneDefaultExample extends React.Component {
 
-  public render() {
+  public render(): JSX.Element {
     const contentAreas: JSX.Element[] = [];
     for (let i = 0; i < 4; i++) {
       contentAreas.push(this._createContentArea(i));

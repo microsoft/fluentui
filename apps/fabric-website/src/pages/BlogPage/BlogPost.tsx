@@ -11,7 +11,7 @@ export class BlogPost extends React.Component<{}, {}> {
     this._postId = this._getParameterByName('id');
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='BlogPost'>
         <div className='BlogPost-pageTitle'>

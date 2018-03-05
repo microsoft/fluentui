@@ -12,7 +12,7 @@ import { TestImages } from '../../../common/TestImages';
 import { Link } from '../../../Link';
 
 export class ActivityItemPersonaExample extends React.Component<React.Props<ActivityItemPersonaExample>, {}> {
-  public render() {
+  public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles);
 
@@ -110,10 +110,10 @@ export class ActivityItemPersonaExample extends React.Component<React.Props<Acti
     ];
 
     const activityExampleList: Array<JSX.Element> = [];
-    activityItemExamples.forEach((item) => {
+    activityItemExamples.forEach((item: { key: string | number }) => {
       const props = item;
       activityExampleList.push(
-        <ActivityItem {...props} key={ item.key } className={ css(classNames.exampleRoot) } />
+        <ActivityItem { ...props } key={ item.key } className={ css(classNames.exampleRoot) } />
       );
     });
 

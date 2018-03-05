@@ -33,7 +33,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     this.setState(this._getState(newProps));
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { columns, columnStartIndex, shimmer } = this.props;
     const { cellContent } = this.state;
 

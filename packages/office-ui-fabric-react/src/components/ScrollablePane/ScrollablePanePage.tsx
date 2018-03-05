@@ -15,7 +15,7 @@ const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-r
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
 
 export class ScrollablePanePage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='ScrollablePane'

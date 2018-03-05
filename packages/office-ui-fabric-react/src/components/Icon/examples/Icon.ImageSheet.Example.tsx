@@ -6,7 +6,7 @@ import './IconExample.scss';
 import { TestImages } from '../../../common/TestImages';
 
 export class IconImageSheetExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Icon

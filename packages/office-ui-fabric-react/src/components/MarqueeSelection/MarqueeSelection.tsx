@@ -82,7 +82,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       true);
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._autoScroll) {
       this._autoScroll.dispose();
     }

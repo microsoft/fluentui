@@ -20,7 +20,7 @@ const PersonaCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-rea
 const PersonaCustomCoinRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomCoinRender.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Persona'

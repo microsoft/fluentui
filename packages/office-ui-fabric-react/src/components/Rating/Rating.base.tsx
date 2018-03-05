@@ -75,7 +75,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     const stars = [];
     const starIds = [];

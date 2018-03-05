@@ -40,7 +40,7 @@ export class ThemePage extends React.Component<IComponentDemoPageProps, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { colors, colorPickerProps } = this.state;
 
     return (

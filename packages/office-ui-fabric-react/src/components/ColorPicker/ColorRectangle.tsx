@@ -50,7 +50,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     };
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._events.dispose();
   }
 
@@ -63,7 +63,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     });
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { minSize } = this.props;
     const { color, fullColorString } = this.state;
 

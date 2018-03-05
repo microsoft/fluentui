@@ -12,7 +12,13 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
     this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
+<<<<<<< HEAD
   public render() {
+=======
+  public render(): JSX.Element {
+    const { isChecked } = this.state;
+
+>>>>>>> Add typedefs
     return (
       <div>
         <Checkbox

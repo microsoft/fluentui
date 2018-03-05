@@ -17,6 +17,7 @@ const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterS
 export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
   private _classNames: IClassNames<IDialogFooterStyles>;
 
+<<<<<<< HEAD
   public render() {
     const {
       className,
@@ -29,6 +30,10 @@ export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
       className
     });
 
+=======
+export class DialogFooterBase extends BaseComponent<any, any> {
+  public render(): JSX.Element {
+>>>>>>> Add typedefs
     return (
       <div className={ this._classNames.actions }>
         <div className={ this._classNames.actionsRight }>

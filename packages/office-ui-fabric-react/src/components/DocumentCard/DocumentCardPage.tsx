@@ -16,7 +16,7 @@ const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-re
 const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
 
 export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='DocumentCard'

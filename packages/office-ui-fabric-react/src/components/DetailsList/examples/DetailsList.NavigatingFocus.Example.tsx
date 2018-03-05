@@ -35,7 +35,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     } as IColumn
   ];
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <DetailsList
         items={ this.state.items }

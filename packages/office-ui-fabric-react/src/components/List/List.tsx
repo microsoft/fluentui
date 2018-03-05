@@ -257,7 +257,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
 
     this._updatePages();
     this._measureVersion++;
@@ -318,7 +318,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     return shouldComponentUpdate;
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     this._invalidatePageCache();
     // Ensure that when the list is force updated we update the pages first before render.
     this._updateRenderRects(this.props, true);
@@ -328,7 +328,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     super.forceUpdate();
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       role

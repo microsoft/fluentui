@@ -26,7 +26,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { icons } = this.props;
     let { searchQuery } = this.state;
 

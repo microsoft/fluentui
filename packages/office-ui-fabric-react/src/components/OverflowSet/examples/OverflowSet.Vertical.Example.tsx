@@ -14,7 +14,7 @@ import * as stylesImport from './OverflowSet.Example.scss';
 
 export class OverflowSetVerticalExample extends BaseComponent<any, any> {
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <OverflowSet
         vertical

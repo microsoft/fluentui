@@ -100,7 +100,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._id = getId('header');
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { selection } = this.props;
     const focusZone = this._root.value;
     const rootElement = findDOMNode(focusZone as any);
@@ -121,7 +121,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 

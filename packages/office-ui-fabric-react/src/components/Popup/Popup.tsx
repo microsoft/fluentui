@@ -33,7 +33,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
@@ -71,7 +71,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { role, className, ariaLabel, ariaLabelledBy, ariaDescribedBy, style } = this.props;
 
     return (

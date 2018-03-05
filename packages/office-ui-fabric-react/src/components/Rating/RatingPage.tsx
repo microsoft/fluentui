@@ -12,7 +12,7 @@ import { RatingStatus } from './Rating.checklist';
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Rating'
@@ -56,7 +56,7 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...RatingStatus}
+            { ...RatingStatus }
           />
         }
       />

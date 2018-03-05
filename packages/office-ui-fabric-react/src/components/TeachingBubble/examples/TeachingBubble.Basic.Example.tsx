@@ -22,7 +22,7 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const examplePrimaryButton: IButtonProps = {
       children: 'Try it out'

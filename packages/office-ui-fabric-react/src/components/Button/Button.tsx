@@ -28,7 +28,7 @@ export class Button extends BaseComponent<IButtonProps, {}> {
     );
   }
 
-  public render() {
+  public render(): JSX.Element {
     const props = this.props;
 
     switch (props.buttonType) {

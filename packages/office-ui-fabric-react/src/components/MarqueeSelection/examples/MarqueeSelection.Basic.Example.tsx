@@ -55,11 +55,11 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     this._selection.setItems(PHOTOS);
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     this._isMounted = true;
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <MarqueeSelection selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
         <Checkbox

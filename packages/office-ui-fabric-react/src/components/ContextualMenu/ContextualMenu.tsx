@@ -141,7 +141,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
-  public componentWillMount() {
+  public componentWillMount(): void {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
     if (!this.props.hidden) {
@@ -150,14 +150,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (!this.props.hidden) {
       this._onMenuOpened();
     }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._isFocusingPreviousElement && this._previousActiveElement) {
 
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then

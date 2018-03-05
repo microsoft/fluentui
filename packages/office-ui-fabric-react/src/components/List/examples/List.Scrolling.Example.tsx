@@ -34,7 +34,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items } = this.props;
 
     return (

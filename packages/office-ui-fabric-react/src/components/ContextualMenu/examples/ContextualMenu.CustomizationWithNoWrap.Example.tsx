@@ -5,7 +5,7 @@ import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuCustomizationWithNoWrapExample extends React.Component<{}, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <DefaultButton
         className='ContextualMenuButton3'

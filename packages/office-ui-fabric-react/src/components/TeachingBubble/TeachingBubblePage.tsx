@@ -21,7 +21,7 @@ const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!office-ui
 const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
 
 export class TeachingBubblePage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TeachingBubble'
@@ -60,7 +60,7 @@ export class TeachingBubblePage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...TeachingBubbleStatus}
+            { ...TeachingBubbleStatus }
           />
         }
       />

@@ -67,7 +67,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title={ 'Button' }

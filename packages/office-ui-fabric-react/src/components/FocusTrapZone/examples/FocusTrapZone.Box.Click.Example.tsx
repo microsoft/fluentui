@@ -24,7 +24,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isToggled } = this.state;
 
     return (

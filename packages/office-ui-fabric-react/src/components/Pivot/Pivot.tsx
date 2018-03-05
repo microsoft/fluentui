@@ -100,7 +100,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         { this._renderPivotLinks() }

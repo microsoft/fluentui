@@ -96,7 +96,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     this._positionAttempts = 0;
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(): void {
     this._setInitialFocus();
     if (!this.props.hidden) {
       if (!this._hasListeners) {
@@ -110,7 +110,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  public componentWillMount() {
+  public componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -139,13 +139,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     if (!this.props.hidden) {
       this._onComponentDidMount();
     }
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!this._targetWindow) {
       return null;

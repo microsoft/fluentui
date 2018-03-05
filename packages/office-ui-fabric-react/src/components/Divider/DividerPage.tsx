@@ -15,7 +15,7 @@ const VerticalDividerBasicExampleCode = require('!raw-loader!office-ui-fabric-re
 const VerticalDividerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Custom.Example.tsx') as string;
 
 export class DividerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Divider'

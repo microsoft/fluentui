@@ -47,7 +47,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { onReduceData = this._onReduceData, maxDisplayedItems, items } = this.props;
     const breadCrumbData: IBreadCrumbData = {
       props: this.props,

@@ -21,7 +21,7 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
 
     return (

@@ -14,7 +14,7 @@ const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const CheckboxImplementationExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.ImplementationExamples.tsx') as string;
 
 export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title={ 'Checkbox' }
@@ -88,7 +88,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...CheckboxStatus}
+            { ...CheckboxStatus }
           />
         }
       />

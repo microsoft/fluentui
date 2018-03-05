@@ -17,7 +17,7 @@ const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 
 @customizable('Fabric', ['theme'])
 export class Fabric extends BaseComponent<IFabricProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     const classNames = getClassNames(getStyles, this.props as IFabricStyleProps);
     const divProps = getNativeProps(this.props, divProperties);
 

@@ -54,7 +54,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { color } = this.state;
 
     return (

@@ -67,7 +67,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     this._id = getId('CommandBar');
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // Asynchronously update command bar layout to eliminate forced synchronous reflow
     this._asyncMeasure();
     this._events.on(window, 'resize', this._updateRenderedItems);
@@ -85,7 +85,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
     const { renderedItems, contextualMenuProps, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;

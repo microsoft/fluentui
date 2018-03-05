@@ -40,7 +40,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       };
     }
 
-    public componentDidMount() {
+    public componentDidMount(): void {
       this._onAsyncResize = this._async.debounce(
         this._onAsyncResize,
         RESIZE_DELAY,
@@ -57,11 +57,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       }
     }
 
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
       this._events.dispose();
     }
 
-    public render() {
+    public render(): JSX.Element {
       const { viewport } = this.state;
       const {
         skipViewportMeasures
@@ -77,11 +77,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(Co
       );
     }
 
-    public forceUpdate() {
+    public forceUpdate(): void {
       this._updateViewport(true);
     }
 
-    private _onAsyncResize() {
+    private _onAsyncResize(): void {
       this._updateViewport();
     }
 

@@ -14,7 +14,7 @@ const OverlayLightExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 const OverlayDarkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Dark.Example.tsx') as string;
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Overlay'

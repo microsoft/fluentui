@@ -17,7 +17,7 @@ const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Overflow.Example.tsx') as string;
 
 export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Facepile'
@@ -101,7 +101,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...FacepileStatus}
+            { ...FacepileStatus }
           />
         }
       />

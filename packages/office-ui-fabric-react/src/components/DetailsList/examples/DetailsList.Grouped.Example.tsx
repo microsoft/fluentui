@@ -68,7 +68,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items } = this.state;
 
     return (

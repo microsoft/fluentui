@@ -33,7 +33,7 @@ export class DetailsListDragDropExample extends React.Component<{}, {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, selectionDetails } = this.state;
 
     return (

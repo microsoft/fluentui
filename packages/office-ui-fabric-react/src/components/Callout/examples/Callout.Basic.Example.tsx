@@ -60,7 +60,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isCalloutVisible } = this.state;
 
     return (

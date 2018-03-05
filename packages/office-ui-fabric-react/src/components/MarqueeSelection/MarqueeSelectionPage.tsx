@@ -10,7 +10,7 @@ import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.
 const MarqueeSelectionBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/examples/MarqueeSelection.Basic.Example.tsx') as string;
 
 export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='MarqueeSelection'

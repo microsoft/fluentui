@@ -152,7 +152,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
     }
@@ -250,7 +250,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       ariaLabelForListHeader,
       ariaLabelForSelectAllCheckbox,
@@ -424,7 +424,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     );
   }
 
-  public forceUpdate() {
+  public forceUpdate(): void {
     super.forceUpdate();
     this._forceListUpdates();
   }

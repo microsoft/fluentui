@@ -25,7 +25,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isChecked } = this.state;
 
     const styles: ICheckboxStyles = {

@@ -37,7 +37,7 @@ const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 
 export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Panel'
@@ -131,7 +131,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...PanelStatus}
+            { ...PanelStatus }
           />
         }
       />

@@ -8,7 +8,7 @@ export class NavBasicExample extends React.Component<any, any> {
     this._onClickHandler = this._onClickHandler.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className='ms-NavExample-LeftPane'>
         <Nav

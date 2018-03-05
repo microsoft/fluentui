@@ -98,7 +98,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this._goPrevious = this._goPrevious.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const divStyle: React.CSSProperties = {
       height: '340px'
     };

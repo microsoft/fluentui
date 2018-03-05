@@ -15,7 +15,7 @@ const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 const ToggleAriaLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.AriaLabel.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Toggle'

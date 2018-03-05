@@ -23,7 +23,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
     const examplePrimaryButton: IButtonProps = {

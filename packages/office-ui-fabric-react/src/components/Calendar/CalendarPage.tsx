@@ -16,7 +16,7 @@ const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     const today = new Date(Date.now());
     return (
       <ComponentPage
@@ -200,7 +200,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...CalendarStatus}
+            { ...CalendarStatus }
           />
         }
       />

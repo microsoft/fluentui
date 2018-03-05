@@ -13,7 +13,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const customDivider = () => <span>*</span>;
 
     return (

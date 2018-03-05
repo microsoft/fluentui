@@ -12,7 +12,7 @@ import { SpinnerStatus } from './Spinner.checklist';
 const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
 
 export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Spinner'
@@ -64,7 +64,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...SpinnerStatus}
+            { ...SpinnerStatus }
           />
         }
       />

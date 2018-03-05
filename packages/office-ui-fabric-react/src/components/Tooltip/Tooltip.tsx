@@ -30,7 +30,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
     }
   };
 
-  public render() {
+  public render(): JSX.Element {
     const {
       targetElement,
       calloutProps,

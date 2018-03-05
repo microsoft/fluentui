@@ -22,7 +22,7 @@ const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-reac
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Tooltip'

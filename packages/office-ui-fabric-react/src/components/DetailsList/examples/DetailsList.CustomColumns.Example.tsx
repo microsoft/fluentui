@@ -30,7 +30,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { sortedItems, columns } = this.state;
 
     return (

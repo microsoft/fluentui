@@ -187,7 +187,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     // hook up resolving the options if needed on focus
     this._events.on(this._comboBoxWrapper.value, 'focus', this._onResolveOptions, true);
   }
@@ -269,7 +269,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     super.componentWillUnmount();
 
     // remove the eventHanlder that was added in componentDidMount
@@ -277,7 +277,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   // Primary Render
-  public render() {
+  public render(): JSX.Element {
     const id = this._id;
     const {
       className,

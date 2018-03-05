@@ -71,7 +71,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let currentPicker: JSX.Element | undefined = undefined;
 
     switch (this.state.currentPicker) {
