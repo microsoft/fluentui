@@ -398,7 +398,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return renderedItems;
   }
 
-  private _renderSectionItem(item: IContextualMenuItem, menuClassNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+  private _renderSectionItem(item: IContextualMenuItem, menuClassNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
     const section = item.sectionProps;
     if (!section) {
       return;
@@ -435,7 +435,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderListItem(content: React.ReactNode, key: string | number, classNames: IMenuItemClassNames, title?: string) {
+  private _renderListItem(content: React.ReactNode, key: string | number, classNames: IMenuItemClassNames, title?: string): JSX.Element {
     return (
       <li
         role='presentation'
@@ -640,7 +640,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+  private _renderSplitPrimaryButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
@@ -667,7 +667,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
+  private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {
       this._executeItemClick(item, ev);
       ev.preventDefault();
@@ -677,7 +677,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
+  private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number): JSX.Element {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const itemProps = {
       onClick: this._onSplitItemClick.bind(this, item),
@@ -701,7 +701,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderSplitDivider(item: IContextualMenuItem) {
+  private _renderSplitDivider(item: IContextualMenuItem): JSX.Element {
     const getDividerClassnames = item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
     return <VerticalDivider getClassNames={ getDividerClassnames } />;
   }

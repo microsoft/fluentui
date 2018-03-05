@@ -329,7 +329,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     return Boolean(this._root.value && this._root.value.focus());
   }
 
-  private _renderColumnSizer(columnIndex: number) {
+  private _renderColumnSizer(columnIndex: number): JSX.Element {
     const { columns } = this.props;
     const column = this.props.columns[columnIndex];
     const { columnResizeDetails } = this.state;

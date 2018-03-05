@@ -22,7 +22,7 @@ export interface ISuggestionsState {
 }
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  public render(): JSX.Element {
+  public render() {
     const {
       suggestionModel,
       RenderSuggestion,

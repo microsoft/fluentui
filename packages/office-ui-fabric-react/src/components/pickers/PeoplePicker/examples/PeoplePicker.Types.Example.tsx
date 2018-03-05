@@ -133,7 +133,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.primaryText as string;
   }
-  private _renderListPicker() {
+  private _renderListPicker(): JSX.Element {
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -155,7 +155,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  private _renderNormalPicker() {
+  private _renderNormalPicker(): JSX.Element {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }

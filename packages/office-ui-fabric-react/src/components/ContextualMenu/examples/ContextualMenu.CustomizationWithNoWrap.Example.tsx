@@ -208,7 +208,7 @@ export class ContextualMenuCustomizationWithNoWrapExample extends React.Componen
     );
   }
 
-  private _renderCategoriesList(item: any) {
+  private _renderCategoriesList(item: any): JSX.Element {
     return (
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>

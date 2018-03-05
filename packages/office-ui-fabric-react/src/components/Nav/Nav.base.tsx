@@ -122,7 +122,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     return (<div className={ classNames.linkText }>{ link.name }</div>);
   }
 
-  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number) {
+  private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
     const {
       getStyles,
       groups,

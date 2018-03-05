@@ -99,7 +99,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this.setState({ isChecked: checked! });
   }
 
-  private _renderPersonaLabel(props: ICheckboxProps) {
+  private _renderPersonaLabel(props: ICheckboxProps): JSX.Element {
     const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
     return <Persona primaryText={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.size32 } />;
   }

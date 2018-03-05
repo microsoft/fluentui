@@ -21,7 +21,7 @@ export interface ITagPickerProps extends IBasePickerProps<ITag> {
 }
 
 export class TagPicker extends BasePicker<ITag, ITagPickerProps> {
-  protected static defaultProps = {
+  protected static defaultProps: Partial<ITagPickerProps> = {
     onRenderItem: (props: IPickerItemProps<ITag>) => { return <TagItem { ...props }>{ props.item.name }</TagItem>; },
     onRenderSuggestionsItem: (props: ITag) => <div className={ css('ms-TagItem-TextOverflow', styles.tagItemTextOverflow) }> { props.name } </div>
   };

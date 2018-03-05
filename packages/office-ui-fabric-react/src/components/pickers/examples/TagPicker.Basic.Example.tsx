@@ -36,7 +36,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <Checkbox

@@ -37,7 +37,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
     );
   }
 
-  private _renderAvatar(person: IDocumentCardActivityPerson) {
+  private _renderAvatar(person: IDocumentCardActivityPerson): JSX.Element {
 
     return (
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>

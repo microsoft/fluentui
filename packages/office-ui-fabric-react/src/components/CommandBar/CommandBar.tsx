@@ -173,7 +173,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     focusZone && focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+  private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean): JSX.Element {
     if (item.onRender) {
       return (
         <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
@@ -310,7 +310,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     );
   }
 
-  private _renderIcon(item: IContextualMenuItem) {
+  private _renderIcon(item: IContextualMenuItem): JSX.Element {
     // Only present to allow continued use of item.icon which is deprecated.
     const iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: item.icon
