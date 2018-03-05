@@ -1,15 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
-import { ImageFit, ImageLoadState } from './Image.types';
+import { ImageFit } from './Image.types';
 
 /* tslint:disable:no-unused-variable */
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

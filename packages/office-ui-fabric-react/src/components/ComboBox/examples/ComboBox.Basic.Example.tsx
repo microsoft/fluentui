@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxProps,
   IComboBoxOption,
   VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';

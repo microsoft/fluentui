@@ -164,15 +164,15 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   @autobind
-  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): IPersonaProps[] {
+  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number): Promise<IPersonaProps[]> | null {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-      return filteredPersonas;
+      return this._convertResultsToPromise(filteredPersonas);
     } else {
-      return [];
+      return this._convertResultsToPromise([]);
     }
   }
 
@@ -180,7 +180,7 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, this._picker.items);
-    return mostRecentlyUsed;
+    return this._convertResultsToPromise(mostRecentlyUsed);
   }
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
@@ -223,6 +223,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.primaryText as string;
+  }
+
+  private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
+    // tslint:disable-next-line:no-any
+    return new Promise<IPersonaProps[]>((resolve: any, reject: any) => setTimeout(() => resolve(results), 150));
   }
 
   @autobind

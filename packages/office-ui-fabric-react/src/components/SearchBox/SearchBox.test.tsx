@@ -1,7 +1,4 @@
-import { Promise } from 'es6-promise';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SearchBox } from './SearchBox';

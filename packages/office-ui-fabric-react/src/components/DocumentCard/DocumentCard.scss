@@ -103,7 +103,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
   :global(.ms-Button:hover) {
     :global(.ms-Button-icon) {
-      color: #1174c3;
+      color: $buttonTextColor;
       cursor: pointer;
     }
   }
@@ -162,7 +162,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
     top: -1px;
     right: -1px;
     bottom: -1px;
-    border: 2px solid #fafafa; // Match the background of the card
+    border: 2px solid $ms-color-white; // Match the background of the card
     border-radius: 50%;
   }
 }

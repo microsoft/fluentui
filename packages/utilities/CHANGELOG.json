@@ -2,6 +2,30 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.14.0",
+      "tag": "@uifabric/utilities_v5.14.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Update KeyCodes enum to include all key codes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.2 <6.0.0` to `>=5.13.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.13.0",
       "tag": "@uifabric/utilities_v5.13.0",
       "date": "Thu, 22 Feb 2018 11:15:23 GMT",

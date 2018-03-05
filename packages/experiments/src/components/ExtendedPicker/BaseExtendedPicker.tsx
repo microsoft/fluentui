@@ -248,10 +248,11 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.input.clear();
 
     this.floatingPicker.hidePicker();
+    this.focus();
   }
 
   @autobind
   protected _onSelectedItemsChanged(): void {
-    this.input.focus();
+    this.focus();
   }
 }

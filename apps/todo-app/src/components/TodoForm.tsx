@@ -42,7 +42,7 @@ export interface ITodoFormState {
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
-  private _textField: ITextField;
+  private _textField!: ITextField;
 
   constructor(props: ITodoFormProps) {
     super(props);
