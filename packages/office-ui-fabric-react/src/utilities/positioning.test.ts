@@ -13,10 +13,6 @@ interface ITestValues {
   beakWidth: number;
 }
 
-function stringifyResults(expected: any, actual: any) {
-  return 'expected was: ' + JSON.stringify(expected) + ' actual was: ' + JSON.stringify(actual);
-}
-
 function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   const { callout, target, bounds, beakWidth } = testValues;
   const gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;

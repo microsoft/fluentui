@@ -45,7 +45,6 @@ describe('ComboBox', () => {
         label='testgroup'
         options={ DEFAULT_OPTIONS }
       />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
 
     expectMissing(wrapper, '.ms-ComboBox.is-disabled');
     expectOne(wrapper, '[data-is-interactable=true]');

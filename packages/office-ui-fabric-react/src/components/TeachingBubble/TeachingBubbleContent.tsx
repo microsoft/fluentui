@@ -1,11 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  BaseComponent,
-  css,
-  getId
-} from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { ITeachingBubbleProps } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -25,14 +21,9 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     }
   };
 
-  // Specify any private variables
-  private _id: string;
-
-  // Constructor
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
-    this._id = getId('TeachingBubble');
     this.state = {
     };
   }

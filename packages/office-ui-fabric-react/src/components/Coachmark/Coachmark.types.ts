@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Coachmark } from './Coachmark';
 import { ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.styles';
 import { IPositioningContainerTypes } from './PositioningContainer/PositioningContainer.types';
-import { IPoint, IStyleFunction } from '../../Utilities';
+import { IStyleFunction } from '../../Utilities';
 
 export interface ICoachmark {
 }

@@ -10,7 +10,7 @@ import {
   getNativeProps,
   KeyCodes
 } from '../../Utilities';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
@@ -102,14 +102,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps && menuIconProps.className,
       isPrimaryButtonDisabled!,
       checked!,
-      !!this.state.menuProps,
+      !!menuProps,
       this.props.split) : getBaseButtonClassNames(styles!, className!,
         variantClassName!,
         iconProps && iconProps.className,
         menuIconProps && menuIconProps.className,
         isPrimaryButtonDisabled!,
         checked!,
-        !!this.state.menuProps,
+        !!menuProps,
         this.props.split);
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;

@@ -2,7 +2,6 @@ import { IImageStyleProps, IImageStyles } from './Image.types';
 import {
   AnimationClassNames,
   IStyle,
-  ITheme,
 } from '../../Styling';
 
 export const getStyles = (
@@ -10,7 +9,6 @@ export const getStyles = (
 ): IImageStyles => {
   const {
     className,
-    theme,
     width,
     height,
     maximizeFrame,
@@ -25,8 +23,6 @@ export const getStyles = (
     isError,
     isNotImageFit
   } = props;
-
-  const { palette, semanticColors } = theme;
 
   const ImageFitStyles: IStyle = {
     position: 'relative',

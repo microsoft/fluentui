@@ -6,10 +6,8 @@ import {
   classNamesFunction,
   customizable,
   findIndex,
-  htmlElementProperties,
   KeyCodes,
-  getId,
-  getNativeProps
+  getId
 } from '../../Utilities';
 import {
   ISwatchColorPicker,
@@ -20,7 +18,6 @@ import {
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
-import { mergeStyleSets } from '../../Styling';
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -95,7 +92,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
-      disabled,
       getStyles,
     } = this.props;
 
@@ -151,10 +147,6 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
     const selectedIndex = findIndex(items, (item => (item.id === selectedId)));
     return selectedIndex >= 0 ? selectedIndex : undefined;
-  }
-
-  private _isSelected(index: number): boolean {
-    return this.state.selectedIndex !== undefined && (this.state.selectedIndex === index);
   }
 
   /**

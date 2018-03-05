@@ -19,15 +19,12 @@ import {
   customizable,
   css
 } from '../../Utilities';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import {
   getStyles,
   getOptionStyles,
   getCaretDownButtonStyles
 } from './ComboBox.styles';
-import {
-  IComboBoxStyles,
-} from './ComboBox.types';
 import {
   IComboBoxClassNames,
   getClassNames,
@@ -267,14 +264,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderItem = this._onRenderItem,
       onRenderOption = this._onRenderOption,
       allowFreeform,
-      autoComplete,
       buttonIconProps,
       isButtonAriaHidden = true,
       styles: customStyles,
       theme,
       title
     } = this.props;
-    const { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
+    const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties);
@@ -347,7 +343,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             styles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden={ isButtonAriaHidden }
-            data-is-focusable={false}
+            data-is-focusable={ false }
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
@@ -1229,11 +1225,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search
    */
   private _setPendingInfoFromIndexAndDirection(index: number, searchDirection: SearchDirection) {
-    const {
-      isOpen,
-      selectedIndex,
-      currentOptions
-    } = this.state;
+    const { currentOptions } = this.state;
 
     index = this._getNextSelectableIndex(index, searchDirection);
     if (this._indexWithinBounds(currentOptions, index)) {
@@ -1264,7 +1256,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
     const {
       isOpen,
-      currentPendingValueValidIndex,
       currentOptions,
       currentPendingValueValidIndexOnHover
     } = this.state;

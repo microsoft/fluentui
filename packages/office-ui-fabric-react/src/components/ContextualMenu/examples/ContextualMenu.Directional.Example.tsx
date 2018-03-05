@@ -3,7 +3,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { autobind, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';

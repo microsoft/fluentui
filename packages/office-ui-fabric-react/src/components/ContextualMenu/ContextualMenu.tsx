@@ -31,15 +31,11 @@ import {
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
-import {
-  Icon,
-  IIconProps
-} from '../../Icon';
+import { IIconProps } from '../../Icon';
 import {
   VerticalDivider
 } from '../../Divider';
 import { ContextualMenuItem } from './ContextualMenuItem';
-import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -187,7 +183,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       coverTarget,
       ariaLabel,
       doNotLayer,
-      arrowDirection,
       target,
       bounds,
       useTargetWidth,
@@ -195,7 +190,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       directionalHintFixed,
       shouldFocusOnMount,
       title,
-      styles: customStyles,
       theme,
       calloutProps,
       onRenderSubMenu = this._onRenderSubMenu,

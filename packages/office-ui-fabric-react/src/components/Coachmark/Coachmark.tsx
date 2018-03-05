@@ -82,7 +82,6 @@ export class Coachmark extends BaseComponent<ICoachmarkTypes, ICoachmarkState> {
    */
   private _entityInnerHostElement: HTMLElement;
   private _translateAnimationContainer: HTMLElement;
-  private _entityHost: HTMLElement;
   private _positioningContainer: PositioningContainer;
 
   constructor(props: ICoachmarkTypes) {

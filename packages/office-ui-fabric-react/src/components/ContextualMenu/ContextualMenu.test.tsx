@@ -11,7 +11,6 @@ import { FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, canAnyMenuItemsCheck } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { LayerBase as Layer } from '../Layer/Layer.base';
-import { mount } from 'enzyme';
 
 describe('ContextualMenu', () => {
 
@@ -408,7 +407,7 @@ describe('ContextualMenu', () => {
       }
     ];
 
-    const foo = ReactTestUtils.renderIntoDocument<ContextualMenu>(
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
       />

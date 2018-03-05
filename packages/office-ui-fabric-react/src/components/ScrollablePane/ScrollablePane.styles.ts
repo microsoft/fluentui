@@ -1,19 +1,13 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 import {
   HighContrastSelector,
-  IStyle,
-  ITheme
+  IStyle
 } from '../../Styling';
 
 export const getStyles = (
   props: IScrollablePaneStyleProps
 ): IScrollablePaneStyles => {
-  const {
-    className,
-    theme,
-  } = props;
-
-  const { palette, semanticColors } = theme;
+  const { className } = props;
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',

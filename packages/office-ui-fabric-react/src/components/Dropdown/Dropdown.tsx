@@ -47,7 +47,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private static Option = 'option';
 
-  private _root: HTMLElement;
   private _host: HTMLDivElement;
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
@@ -150,7 +149,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
 
     return (
-      <div ref={ this._resolveRef('_root') } className={ css('ms-Dropdown-container') }>
+      <div className={ css('ms-Dropdown-container') }>
         { label && (
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }

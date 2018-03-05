@@ -103,7 +103,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   };
   private _focusedIndex: number;
   private _scrollElement: HTMLElement;
-  private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
@@ -174,7 +173,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
-    this._scrollingToIndex = -1;
     this._pageCache = {};
   }
 
@@ -643,10 +641,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _updatePageMeasurements(pages: IPage[]) {
-    const renderedIndexes: {
-      [index: number]: IPage;
-    } = {};
-
     let heightChanged = false;
 
     // when not in virtualize mode, we render all the items without page measurement

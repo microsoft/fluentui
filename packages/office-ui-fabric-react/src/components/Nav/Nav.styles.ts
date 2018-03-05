@@ -5,9 +5,7 @@ import {
   DefaultFontStyles,
   getFocusStyle,
   FontSizes,
-  FontWeights,
-  IStyle,
-  ITheme,
+  FontWeights
 } from '../../Styling';
 
 export const buttonStyles: IButtonStyles = {

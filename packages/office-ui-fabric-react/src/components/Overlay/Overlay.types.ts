@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { OverlayBase } from './Overlay.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunction } from '../../Utilities';
 

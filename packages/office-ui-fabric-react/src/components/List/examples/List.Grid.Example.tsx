@@ -13,7 +13,6 @@ const ROWS_PER_PAGE = 3;
 const MAX_ROW_HEIGHT = 250;
 
 export class ListGridExample extends React.Component<IListGridExampleProps> {
-  private _positions: any;
   private _columnCount: number;
   private _columnWidth: number;
   private _rowHeight: number;
@@ -21,7 +20,6 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
   constructor(props: IListGridExampleProps) {
     super(props);
 
-    this._positions = {};
     this._getItemCountForPage = this._getItemCountForPage.bind(this);
     this._getPageHeight = this._getPageHeight.bind(this);
   }

@@ -71,7 +71,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     workWeekDays: defaultWorkWeekDays
   };
 
-  private _root: HTMLElement;
   private _dayPicker: ICalendarDay;
   private _monthPicker: ICalendarMonth;
 
@@ -131,7 +130,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref={ this._resolveRef('_root') } role='application'>
+      <div className={ css(rootClass, styles.root) } role='application'>
         <div
           className={ css(
             'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',

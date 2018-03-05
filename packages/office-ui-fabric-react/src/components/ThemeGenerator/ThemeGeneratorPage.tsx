@@ -6,8 +6,7 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 
 import {
-  loadTheme,
-  createTheme
+  loadTheme
 } from 'office-ui-fabric-react/lib/Styling';
 import {
   IColor,
@@ -439,14 +438,6 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         }
       }
     }
-
-    const themeAsJson = ThemeGenerator.getThemeAsJson(abridgedTheme);
-
-    // todo: need to start outputting the real ITheme object:
-    /* createTheme({
-      palette: ThemeGenerator.getThemeAsJson(abridgedTheme),
-      semanticColors: ThemeGenerator.getThemeAsJson(abridgedTheme)
-    }) */
 
     return (
       <div>

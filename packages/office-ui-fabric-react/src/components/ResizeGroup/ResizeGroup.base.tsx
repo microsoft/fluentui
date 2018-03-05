@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types';
 import {
   BaseComponent,
   classNamesFunction,
-  css,
   customizable,
   divProperties,
   getNativeProps,

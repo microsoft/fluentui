@@ -21,7 +21,6 @@ import {
 } from '../../../Utilities';
 
 import {
-  getRelativePositions,
   IPositionProps,
   getMaxHeight,
   ICalloutPositon,
@@ -29,10 +28,6 @@ import {
   IPositionedData,
   RectangleEdge
 } from 'office-ui-fabric-react/lib/utilities/positioning';
-
-import {
-  IPositionInfo
-} from './PositioningContainer.types';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 

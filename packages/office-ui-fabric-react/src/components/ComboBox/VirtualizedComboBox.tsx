@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { autobind, BaseComponent, customizable } from '../../Utilities';
+import { autobind, BaseComponent } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import { IComboBoxProps, IComboBox } from './ComboBox.types';
 import { List } from '../../List';
-import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
   /** The combo box element */
@@ -29,7 +29,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
   public render(): JSX.Element {
     return (
       <ComboBox
-        {...this.props}
+        { ...this.props }
         componentRef={ this._resolveRef('_comboBox') }
         onRenderList={ this._onRenderList }
         onScrollToItem={ this._onScrollToItem }

@@ -1,19 +1,12 @@
 import { ILayerStyleProps, ILayerStyles } from './Layer.types';
-import {
-  IStyle,
-  ITheme,
-} from '../../Styling';
 
 export const getStyles = (
   props: ILayerStyleProps
 ): ILayerStyles => {
   const {
     className,
-    theme,
     isNotHost
   } = props;
-
-  // const { palette, semanticColors } = theme;
 
   return ({
     root: [

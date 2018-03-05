@@ -18,7 +18,6 @@ import { IHoverCardProps, IHoverCardStyles } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, OpenCardMode } from './ExpandingCard.types';
 import { getStyles } from './HoverCard.styles';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 export interface IHoverCardState {
   isHoverCardVisible: boolean;

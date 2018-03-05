@@ -111,11 +111,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   @autobind
-  private _onDismiss(ev: MouseEvent): void {
-    this.props.onLeave && this.props.onLeave(ev);
-  }
-
-  @autobind
   private _onRenderCompactCard(): JSX.Element {
     return (
       <div className={ mergeStyles(this._styles.compactCard, { height: this.props.compactCardHeight + 'px' }) as string }>

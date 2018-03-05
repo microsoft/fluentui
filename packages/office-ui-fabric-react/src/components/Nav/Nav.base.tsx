@@ -49,8 +49,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     groups: null
   };
 
-  private _hasExpandButton: boolean;
-
   constructor(props: INavProps) {
     super(props);
 
@@ -67,7 +65,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         }
       }
     }
-    this._hasExpandButton = false;
   }
 
   public componentWillReceiveProps(newProps: INavProps) {
@@ -98,14 +95,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     if (!groups) {
       return null;
     }
-
-    // When groups[x].name is specified or any of the links have children, the expand/collapse
-    // chevron button is shown and different padding is needed. _hasExpandButton marks this condition.
-    this._hasExpandButton = groups.some((group: INavLinkGroup) => {
-      return group ? !!group.name || (group.links && group.links.some((link: INavLink) => {
-        return !!(link && link.links && link.links.length);
-      })) : false;
-    });
 
     const groupElements: React.ReactElement<{}>[] = groups.map(this._renderGroup);
 

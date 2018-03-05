@@ -869,7 +869,6 @@ export function buildColumns(
 
   if (items && items.length) {
     const firstItem = items[0];
-    let isFirstColumn = true;
 
     for (const propName in firstItem) {
       if (firstItem.hasOwnProperty(propName)) {
@@ -889,8 +888,6 @@ export function buildColumns(
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName
         });
-
-        isFirstColumn = false;
       }
     }
   }

@@ -10,7 +10,7 @@ import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
+import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
 import { Autofill } from '../Autofill/Autofill';
 import { IPickerItemProps } from './PickerItem.types';

@@ -4,7 +4,6 @@ import * as React from 'react';
 
 import { autobind, BaseComponent } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.types';
-import { mergeStyles } from '../../Styling';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
 import { PersonaSize, PersonaCoin, IPersonaProps } from '../../Persona';
@@ -114,7 +113,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       activityPersonas.filter((person, index) => index < personaLimit).forEach((person, index) => {
         personaList.push(
           <PersonaCoin
-            {...person}
+            { ...person }
             // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
