@@ -9,7 +9,8 @@ import {
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
-    maxHeight
+    maxHeight,
+    isDataLoaded
   } = props;
 
   const shimmerAnimation: string = keyframes({
@@ -31,8 +32,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         minHeight: maxHeight ? `${maxHeight}px` : '16px'
       }
     ],
-    fadeOutWrapper: [
-      'ms-Shimmer-fadeOutWrapper',
+    shimmerWrapper: [
+      'ms-Shimmer-shimmerWrapper',
       {
         display: 'flex',
         position: 'absolute',
@@ -55,7 +56,25 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',
         animationIterationCount: 'infinite',
-        animationName: shimmerAnimation
+        animationName: shimmerAnimation,
+        transition: 'opacity 200ms, visibility 200ms'
+      },
+      isDataLoaded && {
+        opacity: '0',
+        visibility: 'hidden'
+      }
+    ],
+    dataWrapper: [
+      'ms-Shimmer-dataWrapper',
+      {
+        opacity: '0',
+        lineHeight: '1',
+        background: 'none',
+        border: 'none',
+        transition: 'opacity 200ms'
+      },
+      isDataLoaded && {
+        opacity: '1'
       }
     ]
   };

@@ -26,6 +26,12 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   width?: number;
 
   /**
+   * Controls when the shimmer is swapped with actual data through an animated transition.
+   * @default false
+   */
+  isDataLoaded?: boolean;
+
+  /**
    * Elements to render in one line of the Shimmer.
    */
   lineElements?: Array<ICircle | IGap | ILine>;
@@ -108,11 +114,13 @@ export interface IGap extends IShimmerElement {
 export interface IShimmerStyleProps {
   width?: number;
   maxHeight?: number;
+  isDataLoaded?: boolean;
 }
 
 export interface IShimmerStyles {
   root?: IStyle;
-  fadeOutWrapper?: IStyle;
+  shimmerWrapper?: IStyle;
+  dataWrapper?: IStyle;
 }
 
 export const enum ShimmerElementType {

@@ -19,15 +19,16 @@ import {
 import {
   DefaultPalette
 } from '../../Styling';
-import { ShimmerRectangle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerRectangle/ShimmerRectangle';
-import { ShimmerCircle } from 'office-ui-fabric-react/lib/components/Shimmer/ShimmerCircle/ShimmerCircle';
+import { ShimmerRectangle } from './ShimmerRectangle/ShimmerRectangle';
+import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 import { IStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
 export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   public static defaultProps: IShimmerProps = {
-    width: 100
+    width: 100,
+    isDataLoaded: false
   };
   private _classNames: {[key in keyof IShimmerStyles]: string};
   constructor(props: IShimmerProps) {
@@ -35,9 +36,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 
   public render() {
-    const { getStyles, width, lineElements } = this.props;
+    const { getStyles, width, lineElements, children, isDataLoaded } = this.props;
     const maxHeight: number | undefined = lineElements ? this.findMaxHeight(lineElements) : undefined;
-    this._classNames = getClassNames(getStyles!, { width, maxHeight });
+    this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded });
 
     const elements: JSX.Element[] | JSX.Element = lineElements ?
       lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
@@ -76,8 +77,13 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
     return (
       <div className={ this._classNames.root }>
-        <div className={ this._classNames.fadeOutWrapper }>
+        <div className={ this._classNames.shimmerWrapper }>
           { elements }
+        </div>
+        <div className={ this._classNames.dataWrapper }>
+          { !!isDataLoaded ?
+            !!children ? children : null
+            : null }
         </div>
       </div>
     );
