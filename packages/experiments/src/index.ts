@@ -7,3 +7,5 @@ export { CommandBar as ExperimentCommandBar } from './CommandBar';
 export { FloatingPeoplePicker } from './FloatingPicker';
 export { SelectedPeopleList } from './SelectedItemsList';
 export { ExtendedPeoplePicker } from './ExtendedPicker';
+export { Keytip } from './Keytip';
+export { KeytipLayer } from './KeytipLayer';
