@@ -174,10 +174,10 @@ public render() {
 
 Best, use createRef:
 ```typescript
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { createRef, RefObject } from 'office-ui-fabric-react/lib/Utilities';
 
 class Foo extends BaseComponent<...> {
-  private _root = createRef<HTMLElement>();
+  private _root: RefObject<HTMLElement> = createRef<HTMLElement>();
 
   public render() {
     return <div ref={ _root } />;
