@@ -7,11 +7,13 @@ import {
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
+import { ShimmerApplicationExample } from 'office-ui-fabric-react/lib/components/Shimmer/examples/Shimmer.Application.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ShimmerStatus } from './Shimmer.checklist';
 
 const ShimmerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
+const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -32,6 +34,12 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
               code={ ShimmerLoadDataExampleCode }
             >
               <ShimmerLoadDataExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Shimmer Application'
+              code={ ShimmerApplicationExampleCode }
+            >
+              <ShimmerApplicationExample />
             </ExampleCard>
           </div>
         }
