@@ -4,7 +4,7 @@ import {
   classNamesFunction,
 } from '../../../Utilities';
 import { IShimmerRectangleProps, IShimmerRectangleStyleProps, IShimmerRectangleStyles } from './ShimmerRectangle.styles';
-import { ShimmerElementVerticalAlign } from 'office-ui-fabric-react/lib/Shimmer';
+import { ShimmerElementVerticalAlign } from 'experiments/lib/Shimmer';
 
 const getClassNames = classNamesFunction<IShimmerRectangleStyleProps, IShimmerRectangleStyles>();
 
