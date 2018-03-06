@@ -2,11 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   classNamesFunction,
-  getNativeProps,
 } from '../../../Utilities';
-import {
-  IClassNames
-} from '@uifabric/utilities/lib/IClassNames';
 import { IShimmerRectangleProps, IShimmerRectangleStyleProps, IShimmerRectangleStyles } from './ShimmerRectangle.styles';
 import { ShimmerElementVerticalAlign } from 'office-ui-fabric-react/lib/Shimmer';
 
@@ -25,9 +21,9 @@ export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, 
   }
 
   public render() {
-    const { height, getStyles, verticalAlign, width, borderAlignStyle } = this.props;
+    const { height, getStyles, width, borderAlignStyle } = this.props;
 
-    this._classNames = getClassNames(getStyles!, { height, verticalAlign, width, borderAlignStyle });
+    this._classNames = getClassNames(getStyles!, { height, width, borderAlignStyle });
 
     return (
       <div className={ this._classNames.root } />

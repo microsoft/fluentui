@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  Shimmer,
-  ShimmerElementType as ElemType,
-  ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export class ShimmerLoadDataExample extends React.Component<any, any> {
@@ -30,6 +26,7 @@ export class ShimmerLoadDataExample extends React.Component<any, any> {
         <Toggle
           label='Load data switch'
           checked={ dataLoaded }
+          // tslint:disable-next-line:jsx-no-lambda
           onChanged={ isDataLoaded => this.setState({ isDataLoaded }) }
           onText='Loaded'
           offText='Loading...'

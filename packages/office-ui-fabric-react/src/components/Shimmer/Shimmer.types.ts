@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ShimmerBase } from './Shimmer.base';
 import {
   IStyle
 } from '../../Styling';

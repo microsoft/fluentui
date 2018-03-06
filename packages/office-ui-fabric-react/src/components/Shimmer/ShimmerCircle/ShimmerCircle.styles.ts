@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   IStyle,
-  IRawStyle,
   DefaultPalette,
   IStyleSet
 } from '../../../Styling';

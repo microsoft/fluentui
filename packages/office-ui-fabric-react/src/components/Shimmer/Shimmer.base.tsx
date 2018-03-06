@@ -37,7 +37,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
 
   public render() {
     const { getStyles, width, lineElements, children, isDataLoaded } = this.props;
-    const maxHeight: number | undefined = lineElements ? this.findMaxHeight(lineElements) : undefined;
+    const maxHeight: number | undefined = lineElements ? this._findMaxHeight(lineElements) : undefined;
     this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded });
 
     const elements: JSX.Element[] | JSX.Element = lineElements ?
@@ -48,7 +48,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               <ShimmerCircle
                 key={ index }
                 { ...elem }
-                borderAlignStyle={ this.getBorderAlignStyles(maxHeight, elem) }
+                borderAlignStyle={ this._getBorderAlignStyles(maxHeight, elem) }
               />
             );
           case ShimmerElementType.GAP:
@@ -60,15 +60,15 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
                   width: gapWidth,
                   height: maxHeight + 'px',
                   backgroundColor: `${DefaultPalette.white}`
-                } }>
-              </div>
+                } }
+              />
             );
           case ShimmerElementType.RECTANGLE:
             return (
               <ShimmerRectangle
                 key={ index }
                 { ...elem }
-                borderAlignStyle={ this.getBorderAlignStyles(maxHeight, elem) }
+                borderAlignStyle={ this._getBorderAlignStyles(maxHeight, elem) }
               />
             );
         }
@@ -89,7 +89,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     );
   }
 
-  private findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
+  private _findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
     const maxHeight = items.reduce((acc: number, next: ICircle | IGap | ILine): number => {
       return next.height ?
         next.height > acc ? next.height : acc
@@ -98,7 +98,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     return maxHeight;
   }
 
-  private getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
+  private _getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
     let height: number | undefined;
     switch (elem.type) {
       case ShimmerElementType.RECTANGLE:

@@ -1,7 +1,5 @@
 import { IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import {
-  IStyle,
-  IRawStyle,
   keyframes,
   DefaultPalette
 } from '../../Styling';

@@ -1,12 +1,9 @@
 import * as React from 'react';
 import {
   IStyle,
-  IRawStyle,
-  DefaultPalette,
   IStyleSet
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
-import { ShimmerElementVerticalAlign } from 'office-ui-fabric-react/lib/Shimmer';
 
 export interface IShimmerRectangle {
 
@@ -64,7 +61,6 @@ export interface IShimmerRectangleStyles {
 export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangleStyles {
   const {
     height,
-    verticalAlign,
     width,
     borderAlignStyle
   } = props;
