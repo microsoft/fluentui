@@ -11,18 +11,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/PositioningContainer/PositioningContainerPage').PositioningContainerPage,
-          key: 'PositioningContainer',
-          name: 'PositioningContainer',
-          url: '#/examples/PositioningContainer'
-        },
-        {
-          component: require<any>('../components/Coachmark/CoachmarkPage').CoachmarkPage,
-          key: 'Coachmark',
-          name: 'Coachmark',
-          url: '#/examples/coachmark'
-        },
-        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
@@ -45,6 +33,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'FileTypeIcon',
           name: 'FileTypeIcon',
           url: '#/examples/filetypeicon'
+        },
+        {
+          component: require<any>('../components/Keytip/KeytipPage').KeytipPage,
+          key: 'Keytip',
+          name: 'Keytip',
+          url: '#/examples/keytip'
+        },
+        {
+          component: require<any>('../components/KeytipLayer/KeytipLayerPage').KeytipLayerPage,
+          key: 'KeytipLayer',
+          name: 'KeytipLayer',
+          url: '#/examples/keytipLayer'
         },
         {
           component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,

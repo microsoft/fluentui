@@ -35,15 +35,12 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
     minSize: 220
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+  private _root: HTMLDivElement;
 
   constructor(props: IColorRectangleProps) {
     super(props);
 
-    let { color } = this.props;
+    const { color } = this.props;
 
     this.state = {
       isAdjusting: false,
@@ -58,7 +55,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
   }
 
   public componentWillReceiveProps(newProps: IColorRectangleProps) {
-    let { color } = newProps;
+    const { color } = newProps;
 
     this.setState({
       color: color,
@@ -67,11 +64,11 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
   }
 
   public render() {
-    let { minSize } = this.props;
-    let { color, fullColorString } = this.state;
+    const { minSize } = this.props;
+    const { color, fullColorString } = this.state;
 
     return (
-      <div ref='root' className={ css('ms-ColorPicker-colorRect', styles.colorRect) } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
+      <div ref={ this._resolveRef('_root') } className={ css('ms-ColorPicker-colorRect', styles.colorRect) } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
         <div className={ css('ms-ColorPicker-light', styles.light) } />
         <div className={ css('ms-ColorPicker-dark', styles.dark) } />
         <div className={ css('ms-ColorPicker-thumb', styles.thumb) } style={ { left: color!.s + '%', top: (MAX_COLOR_VALUE - color!.v) + '%', backgroundColor: color!.str } } />
@@ -89,13 +86,13 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
 
   @autobind
   private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
-    let { color, onSVChanged } = this.props;
-    let rectSize = this.refs.root.getBoundingClientRect();
+    const { color, onSVChanged } = this.props;
+    const rectSize = this._root.getBoundingClientRect();
 
-    let sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    let vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
+    const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
+    const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
 
-    let newColor = assign({}, color, {
+    const newColor = assign({}, color, {
       s: Math.min(MAX_COLOR_SATURATION, Math.max(0, sPercentage * MAX_COLOR_SATURATION)),
       v: Math.min(MAX_COLOR_VALUE, Math.max(0, MAX_COLOR_VALUE - (vPercentage * MAX_COLOR_VALUE))),
     });

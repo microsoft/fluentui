@@ -1,6 +1,6 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContains, getDocument } from './dom';
+import { elementContains, getDocument, elementContainsAttribute } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -99,8 +99,25 @@ export function getPreviousElement(
       allowFocusRoot,
       tabbable);
 
-    if (childMatch && ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable)) {
-      return childMatch;
+    if (childMatch) {
+      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
+        return childMatch;
+      } else {
+        // Check previous sibling of the child match.
+        const childMatchSiblingMatch = getPreviousElement(
+          rootElement,
+          childMatch.previousElementSibling as HTMLElement,
+          true,
+          true,
+          true,
+          includeElementsInFocusZones,
+          allowFocusRoot,
+          tabbable
+        );
+        if (childMatchSiblingMatch) {
+          return childMatchSiblingMatch;
+        }
+      }
     }
   }
 
@@ -298,4 +315,15 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
     return true;
   }
   return false;
+}
+
+/**
+ * Determines if an, or any of its ancestors, sepcificies that it doesn't want focus to wrap
+ * @param element - element to start searching from
+ * @param noWrapDataAttribute - the no wrap data attribute to match (either)
+ * @returns true if focus should wrap, false otherwise
+ */
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
+
+  return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }

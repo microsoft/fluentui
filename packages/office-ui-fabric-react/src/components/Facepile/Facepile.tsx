@@ -46,21 +46,20 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
   }
   public render(): JSX.Element {
-    let {
+    let { overflowButtonProps } = this.props;
+    const {
+      ariaDescription,
       chevronButtonProps,
       maxDisplayablePersonas,
-      overflowButtonProps,
-      overflowButtonType,
       className,
       personas,
       showAddButton
     } = this.props;
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
+    const numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
       overflowButtonProps = chevronButtonProps;
-      overflowButtonType = OverflowButtonType.downArrow;
     }
 
     return (
@@ -71,7 +70,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           { showAddButton ? this._getAddNewElement() : null }
           { this.onRenderAriaDescription() }
           <FocusZone
-            ariaDescribedBy={ this._ariaDescriptionId }
+            ariaDescribedBy={ ariaDescription && this._ariaDescriptionId }
             role='listbox'
             className={ css('ms-Facepile-members', styles.members) }
             direction={ FocusZoneDirection.horizontal }
@@ -102,7 +101,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
-    let { getPersonaProps, personaSize } = this.props;
+    const { getPersonaProps, personaSize } = this.props;
     return (
       <PersonaCoin
         imageInitials={ persona.imageInitials }
@@ -110,7 +109,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         initialsColor={ persona.initialsColor }
         primaryText={ persona.personaName }
         size={ personaSize }
-        {...(getPersonaProps ? getPersonaProps(persona) : null) }
+        { ...(getPersonaProps ? getPersonaProps(persona) : null) }
       />
     );
   }
@@ -164,16 +163,16 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element | null {
-    let { overflowButtonProps, personas, personaSize } = this.props;
-    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
+    const { overflowButtonProps, personas, personaSize } = this.props;
+    const numPersonasNotPictured: number = personas.length - numPersonasToShow;
 
     if (!overflowButtonProps || numPersonasNotPictured < 1) { return null; }
 
-    let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
+    const personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return (
       <FacepileButton
-        { ...overflowButtonProps}
+        { ...overflowButtonProps }
         ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       >
@@ -188,12 +187,12 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getIconElement(icon: string): JSX.Element {
-    let { overflowButtonProps, personaSize } = this.props;
-    let overflowInitialsIcon = true;
+    const { overflowButtonProps, personaSize } = this.props;
+    const overflowInitialsIcon = true;
 
     return (
       <FacepileButton
-        {...overflowButtonProps}
+        { ...overflowButtonProps }
         className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
       >
         <PersonaCoin
@@ -206,11 +205,11 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getAddNewElement(): JSX.Element {
-    let { addButtonProps, personaSize } = this.props;
+    const { addButtonProps, personaSize } = this.props;
 
     return (
       <FacepileButton
-        {...addButtonProps}
+        { ...addButtonProps }
         className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
       >
         <PersonaCoin

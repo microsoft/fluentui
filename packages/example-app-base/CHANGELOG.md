@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 22 Jan 2018 11:14:27 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+
+## 5.3.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+
+## 5.2.2
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- Tweaking css for example pages.
 
 ## 5.2.1
 Mon, 22 Jan 2018 11:14:27 GMT

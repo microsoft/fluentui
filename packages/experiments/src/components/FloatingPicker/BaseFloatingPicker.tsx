@@ -4,7 +4,9 @@ import {
   KeyCodes,
   autobind,
   css,
-  getRTL
+  getRTL,
+  createRef,
+  RefObject
 } from '../../Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
@@ -30,12 +32,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
-  protected root: HTMLElement;
-  protected suggestionElement: Suggestions<T>;
+  protected root: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
+  protected suggestionElement: RefObject<Suggestions<T>> = createRef<Suggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
-  Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+    Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected loadingTimer: number | undefined;
   // tslint:disable-next-line:no-any
   protected currentPromise: PromiseLike<any>;
@@ -52,6 +54,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       isSearching: false,
       didBind: false,
     };
+  }
+
+  public get inputText(): string {
+    return this.state.queryString;
+  }
+
+  // tslint:disable-next-line:no-any
+  public get suggestions(): any[] {
+    return this.suggestionStore.suggestions;
   }
 
   public forceResolveSuggestion(): void {
@@ -79,7 +90,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       } else {
         this.updateValue(queryString);
       }
-
     }
   }
 
@@ -87,7 +97,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this.setState({
       suggestionsVisible: false,
     });
-    console.log('hidepicker');
   }
 
   public showPicker(): void {
@@ -95,10 +104,13 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       suggestionsVisible: true,
     });
 
-    if (this.state.queryString === '') {
-      this.updateSuggestionWithZeroState();
-    } else {
-      this.updateValue(this.state.queryString);
+    if (this.suggestionStore.suggestions.length === 0
+      || this.props.inputElement && this.props.inputElement.textContent !== this.state.queryString) {
+      if (this.state.queryString === '') {
+        this.updateSuggestionWithZeroState();
+      } else {
+        this.updateValue(this.state.queryString);
+      }
     }
   }
 
@@ -129,12 +141,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   @autobind
   public refocusSuggestions(keyCode: KeyCodes): void {
-    if (keyCode === KeyCodes.up) {
-      this.suggestionStore.setSelectedSuggestion(
-        this.suggestionStore.suggestions.length - 1
-      );
-    } else if (keyCode === KeyCodes.down) {
-      this.suggestionStore.setSelectedSuggestion(0);
+    if (this.suggestionStore.suggestions && this.suggestionStore.suggestions.length > 0) {
+      if (keyCode === KeyCodes.up) {
+        this.suggestionStore.setSelectedSuggestion(
+          this.suggestionStore.suggestions.length - 1
+        );
+      } else if (keyCode === KeyCodes.down) {
+        this.suggestionStore.setSelectedSuggestion(0);
+      }
     }
   }
 
@@ -142,7 +156,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     let { className } = this.props;
     return (
       <div
-        ref={ this._resolveRef('root') }
+        ref={ this.root }
         className={ css('ms-BasePicker', className ? className : '') }
       >
         { this.renderSuggestions() }
@@ -169,11 +183,13 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         calloutWidth={ this.props.calloutWidth ? this.props.calloutWidth : 0 }
       >
         <TypedSuggestion
+          showForceResolve={ this._showForceResolve }
+          createGenericItem={ this._onValidateInput }
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
           onSuggestionRemove={ this.onSuggestionRemove }
           suggestions={ this.suggestionStore.getSuggestions() }
-          ref={ this._resolveRef('suggestionElement') }
+          ref={ this.suggestionElement }
           onGetMoreResults={ this.onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
@@ -181,7 +197,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
           refocusSuggestions={ this.refocusSuggestions }
-          {...this.props.pickerSuggestionsProps as IBasePickerSuggestionsProps}
+          { ...this.props.pickerSuggestionsProps as IBasePickerSuggestionsProps }
         />
       </Callout>
     ) : null;
@@ -243,18 +259,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         this.suggestionStore.updateSuggestions(suggestionsArray, 0);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(
-          () =>
-            this.setState({
-              suggestionsLoading: true
-            }),
-          500
-        );
-      }
-
-      // Clear suggestions
-      this.suggestionStore.updateSuggestions([]);
+      this.setState({
+        suggestionsLoading: true
+      });
 
       if (updatedValue !== undefined) {
         this.setState({
@@ -277,6 +284,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           } else {
             this.suggestionStore.updateSuggestions(newSuggestions);
             this.setState({
+              suggestionsVisible: newSuggestions.length > 0,
               suggestionsLoading: false
             });
           }
@@ -318,7 +326,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-    ): void {
+  ): void {
     this.onChange(item);
   }
 
@@ -327,7 +335,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     ev: React.MouseEvent<HTMLElement>,
     item: T,
     index: number
-    ): void {
+  ): void {
     if (this.props.onRemoveSuggestion) {
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
@@ -341,7 +349,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         !(this.props.inputElement as HTMLElement).contains(ev.target as HTMLElement))) {
       return;
     }
-    switch (ev.which) {
+    let keyCode = ev.which;
+    let { value: suggestionElement } = this.suggestionElement;
+    switch (keyCode) {
       case KeyCodes.escape:
         this.setState({ suggestionsVisible: false });
         ev.preventDefault();
@@ -350,8 +360,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (
-          !ev.shiftKey &&
+        if (suggestionElement && suggestionElement.hasSuggestedActionSelected()) {
+          suggestionElement.executeSelectedAction();
+        } else if (!ev.shiftKey &&
           !ev.ctrlKey &&
           this.suggestionStore.hasSelectedSuggestion()) {
           this.completeSuggestion();
@@ -378,38 +389,50 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         break;
 
       case KeyCodes.up:
-        if (
-          this.state.moreSuggestionsAvailable &&
-          this.suggestionElement.props.searchForMoreText &&
-          this.suggestionStore.currentIndex === 0
-        ) {
-          this.suggestionElement.focusSearchForMoreButton();
-          this.suggestionStore.deselectAllSuggestions();
-          this.forceUpdate();
+        if (suggestionElement && suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+          ev.preventDefault();
+          ev.stopPropagation();
         } else {
-          if (this.suggestionStore.previousSuggestion()) {
+          if (suggestionElement && suggestionElement.hasSuggestedAction() &&
+            this.suggestionStore.currentIndex === 0
+          ) {
             ev.preventDefault();
             ev.stopPropagation();
-            this.onSuggestionSelect();
+            suggestionElement.focusAboveSuggestions();
+            this.suggestionStore.deselectAllSuggestions();
+            this.forceUpdate();
+          } else {
+            if (this.suggestionStore.previousSuggestion()) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              this.onSuggestionSelect();
+            }
           }
         }
         break;
 
       case KeyCodes.down:
-        if (
-          this.state.moreSuggestionsAvailable &&
-          this.suggestionElement.props.searchForMoreText &&
-          this.suggestionStore.currentIndex + 1 ===
-          this.suggestionStore.suggestions.length
-        ) {
-          this.suggestionElement.focusSearchForMoreButton();
-          this.suggestionStore.deselectAllSuggestions();
-          this.forceUpdate();
+        if (suggestionElement && suggestionElement.tryHandleKeyDown(keyCode, this.suggestionStore.currentIndex)) {
+          ev.preventDefault();
+          ev.stopPropagation();
         } else {
-          if (this.suggestionStore.nextSuggestion()) {
+          if (
+            suggestionElement &&
+            suggestionElement.hasSuggestedAction() &&
+            this.suggestionStore.currentIndex + 1 ===
+            this.suggestionStore.suggestions.length
+          ) {
             ev.preventDefault();
             ev.stopPropagation();
-            this.onSuggestionSelect();
+            suggestionElement.focusBelowSuggestions();
+            this.suggestionStore.deselectAllSuggestions();
+            this.forceUpdate();
+          } else {
+            if (this.suggestionStore.nextSuggestion()) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              this.onSuggestionSelect();
+            }
           }
         }
         break;
@@ -458,15 +481,17 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
-    let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
+    let suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
 
-    this.updateSuggestionsList(suggestions, updatedValue);
+    if (suggestions !== null) {
+      this.updateSuggestionsList(suggestions, updatedValue);
+    }
   }
 
+  @autobind
   private _onValidateInput(): void {
     if (
       this.props.onValidateInput &&
-      (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString) !== true &&
       this.props.createGenericItem
     ) {
       let itemToConvert = (this.props.createGenericItem as ((
@@ -475,10 +500,15 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       ) => ISuggestionModel<T>))(
         this.state.queryString,
         (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
-        );
+      );
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
+  }
+
+  @autobind
+  private _showForceResolve(): boolean {
+    return this.props.showForceResolve ? this.props.showForceResolve() : false;
   }
 
   private _getTextFromItem(item: T, currentValue?: string): string {

@@ -204,7 +204,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   }
 
   public render() {
-    let { columns, isCompactMode, items, selectionDetails } = this.state;
+    const { columns, isCompactMode, items, selectionDetails } = this.state;
 
     return (
       <div>
@@ -297,7 +297,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   }
 
   private _getSelectionDetails(): string {
-    let selectionCount = this._selection.getSelectedCount();
+    const selectionCount = this._selection.getSelectedCount();
 
     switch (selectionCount) {
       case 0:
@@ -313,8 +313,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   private _onColumnClick(ev: React.MouseEvent<HTMLElement>, column: IColumn) {
     const { columns, items } = this.state;
     let newItems: IDocument[] = items.slice();
-    let newColumns: IColumn[] = columns.slice();
-    let currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
+    const newColumns: IColumn[] = columns.slice();
+    const currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
       return column.key === currCol.key;
     })[0];
     newColumns.forEach((newCol: IColumn) => {

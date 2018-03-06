@@ -9,12 +9,14 @@ export class SearchBoxDisabledExample extends React.Component<any, any> {
     return (
       <div className='ms-SearchBoxExample'>
         <SearchBox
+          placeholder='Search'
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           disabled
         />
 
         <SearchBox
+          placeholder='Search'
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           underlined={ true }

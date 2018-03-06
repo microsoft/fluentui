@@ -4,7 +4,6 @@ import {
 } from '../../Utilities';
 import {
   ITheme,
-  IStyle,
   mergeStyles
 } from '../../Styling';
 
@@ -30,7 +29,10 @@ export const getClassNames = memoizeFunction((
         selectors: {
           '& button': inheritFont,
           '& input': inheritFont,
-          '& textarea': inheritFont
+          '& textarea': inheritFont,
+          ':global(button)': {
+            overflow: 'visible'
+          }
         }
       }
     ])

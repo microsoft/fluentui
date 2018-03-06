@@ -2,6 +2,183 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.15.0",
+      "tag": "@uifabric/utilities_v5.15.0",
+      "date": "Tue, 06 Mar 2018 11:13:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25e736fb4506e1021274c420283338e499388477",
+            "comment": "Adds createRef polyfil to prepare for object refs."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.1",
+      "tag": "@uifabric/utilities_v5.14.1",
+      "date": "Tue, 06 Mar 2018 02:06:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8a4dc859a5f8016b630220775caa98691ddf5345",
+            "comment": "Replaced PureComponent with Component to appease website's UHF react version."
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.14.0",
+      "tag": "@uifabric/utilities_v5.14.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          },
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Update KeyCodes enum to include all key codes"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.2 <6.0.0` to `>=5.13.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.13.0",
+      "tag": "@uifabric/utilities_v5.13.0",
+      "date": "Thu, 22 Feb 2018 11:15:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "b0550145231d18adea954f56be47967ab04cb19d",
+            "comment": "Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.1",
+      "tag": "@uifabric/utilities_v5.12.1",
+      "date": "Wed, 21 Feb 2018 11:12:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "0661239920ded0ecfce53788322b4bc5b21860e1",
+            "comment": "fix bug in IE that IE does not support Number.IsInteger"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.1 <6.0.0` to `>=5.12.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.12.0",
+      "tag": "@uifabric/utilities_v5.12.0",
+      "date": "Fri, 16 Feb 2018 11:23:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "44b167af31b9b6dd079359209f101f1af10762a5",
+            "comment": "Added a triangle abstraction class"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "f0c4c5cfd1d20ea16af3378bf68e05269653d321",
+            "comment": "Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.12.0 <6.0.0` to `>=5.12.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.11.0",
+      "tag": "@uifabric/utilities_v5.11.0",
+      "date": "Wed, 14 Feb 2018 22:10:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "69854e90a1bc2eb447087df89f5276c166a9d766",
+            "comment": "BaseComponent.onError default implementation removed, exceptions now simply bubble out which lets partners use React 16 error handling."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.2 <6.0.0` to `>=5.12.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.3",
+      "tag": "@uifabric/utilities_v5.10.3",
+      "date": "Tue, 13 Feb 2018 11:24:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "938be5b0904db106f39b5afdc0bd6a79a78462cd",
+            "comment": "Export IClassNames fro Utilities for creating private getClassNames methods"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.2",
+      "tag": "@uifabric/utilities_v5.10.2",
+      "date": "Thu, 08 Feb 2018 11:13:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "77a0be82fb6c440fa7ec6f4e80efed7d67f007c1",
+            "comment": "Return empty initials for phone numbers"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.10.1",
+      "tag": "@uifabric/utilities_v5.10.1",
+      "date": "Wed, 07 Feb 2018 11:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "48700c65292e57126b95be80c3092a39c6e171d0",
+            "comment": "Fixing direct reference to @uifabric/utilities/lib from ResizeGroup"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=5.11.1 <6.0.0` to `>=5.11.2 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.10.0",
       "tag": "@uifabric/utilities_v5.10.0",
       "date": "Mon, 05 Feb 2018 11:24:23 GMT",

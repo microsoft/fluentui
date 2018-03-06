@@ -7,7 +7,6 @@ import {
 } from '@uifabric/example-app-base';
 import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
-import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonActionExample } from './examples/Button.Action.Example';
@@ -20,7 +19,6 @@ import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Link } from '../../Link';
-import './examples/Button.Basic.Example.scss';
 import * as exampleStylesImport from '../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
@@ -179,7 +177,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ButtonStatus}
+            { ...ButtonStatus }
           />
         }
       />
