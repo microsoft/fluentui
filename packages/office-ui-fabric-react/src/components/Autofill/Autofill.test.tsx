@@ -48,7 +48,7 @@ describe('Autofill', () => {
         onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
       />, baseNode);
-    expect(autoFill.inputElement.value).toBe('hello');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
 
   });
 
@@ -56,7 +56,7 @@ describe('Autofill', () => {
     const onInputValueChange = (text: string | undefined): void => {
       expect(text).toBe('hep');
       expect(autoFill.value).toBe('hep');
-      expect(autoFill.inputElement.value).toBe('hep');
+      expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hep');
       done();
     };
 
@@ -94,7 +94,7 @@ describe('Autofill', () => {
     ReactTestUtils.Simulate.input(autoFillInput);
 
     expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement.value).toBe('hel');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
   });
 
   it('will autofill if keyCode up or down is pressed', () => {
@@ -110,7 +110,7 @@ describe('Autofill', () => {
     );
 
     expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement.value).toBe('hel');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
 
     ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.left, which: KeyCodes.left });
 
@@ -129,6 +129,6 @@ describe('Autofill', () => {
     );
 
     expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement.value).toBe('hello');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
   });
 });
