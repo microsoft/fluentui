@@ -105,8 +105,6 @@ function _isPageActive(page: INavPage): boolean {
   path = getPathMinusLastHash(path);
   if (path === target) {
     // Match a url that has navigated to a location in page.
-
-
     return true;
   }
   return false;
