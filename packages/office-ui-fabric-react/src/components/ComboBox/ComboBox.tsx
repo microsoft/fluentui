@@ -1257,47 +1257,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover
     } = this.state;
 
-    let sendUndefinedPendingValue = false;
     let currentPendingIndex: number | undefined = undefined;
     let pendingValue: string | undefined = undefined;
 
-    // Check first if hover index has changed
-    if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover) {
-      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
-        currentPendingIndex = currentPendingValueValidIndexOnHover;
-      } else {
-        sendUndefinedPendingValue = true;
-      }
+    if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover && this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
+      // Set new pending index if hover index was changed
+      currentPendingIndex = currentPendingValueValidIndexOnHover;
+    } else if (currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+      // Set new pending index if currentPendingValueValidIndex was changed
+      currentPendingIndex = currentPendingValueValidIndex;
+    } else if (currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '') {
+      // Set pendingValue in the case it was changed and no index was changed
+      pendingValue = currentPendingValue;
     }
 
-    // In case there is no new hover index, check if pending value valid index has changed.
-    if (!currentPendingIndex && currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex) {
-      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
-        currentPendingIndex = currentPendingValueValidIndex;
-      } else {
-        sendUndefinedPendingValue = true;
-      }
-    }
-
-    // In the case that no index hasn't changed. Check if pending value was edited.
-    if (!currentPendingIndex && currentPendingValue !== prevState.currentPendingValue) {
-      if (currentPendingValue !== '') {
-        pendingValue = currentPendingValue;
-      } else {
-        sendUndefinedPendingValue = true;
-      }
-    }
-
-    // Call onPendingValueChanged to notify that pending value is now undefined.
-    if (this._hasPendingValue && (sendUndefinedPendingValue || currentPendingIndex || pendingValue)) {
-      onPendingValueChanged();
-      this._hasPendingValue = false;
-    }
-
-    // Notify the new pending value if any of currentPendingIndex or pendingValue was changed.
-    if (!this._hasPendingValue && (currentPendingIndex || pendingValue)) {
+    // Notify the new pending value only if there was a change in the new state
+    if ((this._hasPendingValue || currentPendingIndex || pendingValue) && (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover || currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex || currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '')) {
       onPendingValueChanged(currentPendingIndex ? currentOptions[currentPendingIndex] : undefined, currentPendingIndex, pendingValue);
-      this._hasPendingValue = true;
+      this._hasPendingValue = currentPendingIndex !== undefined || pendingValue !== undefined;
     }
   }
 
