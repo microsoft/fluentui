@@ -51,7 +51,6 @@ interface IRawStyle extends IRawFontStyle {
   backgroundOrigin?: ICSSRule | string;
   backgroundPosition?: ICSSRule | string;
   backgroundRepeat?: ICSSRule | string;
-  backgroundSize?: ICSSRule | string;
   border?: ICSSRule | 0 | string;
   borderBottom?: ICSSRule | ICSSPixelUnitRule;
   borderBottomColor?: ICSSRule | string;
