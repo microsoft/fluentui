@@ -39,9 +39,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return !!this.state.menuProps;
   }
 
-  public static defaultProps = {
+  public static defaultProps: Partial<IBaseButtonProps> = {
     baseClassName: 'ms-Button',
-    classNames: {},
     styles: {},
     split: false,
   };

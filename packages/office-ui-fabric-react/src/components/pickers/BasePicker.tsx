@@ -73,7 +73,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  public componentDidMount(): void {
+  public componentDidMount() {
     this.selection.setItems(this.state.items);
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
@@ -166,7 +166,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  public render(): JSX.Element {
+  public render() {
     const { suggestedDisplayValue } = this.state;
     const {
       className,
@@ -717,7 +717,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 }
 
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
-  public render(): JSX.Element {
+  public render() {
     const { suggestedDisplayValue } = this.state;
     const {
       className,

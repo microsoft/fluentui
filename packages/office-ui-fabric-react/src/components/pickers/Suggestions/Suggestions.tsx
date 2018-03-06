@@ -8,6 +8,7 @@ import {
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
+import { ISuggestionModel } from './SuggestionsController';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
 
@@ -343,7 +344,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
         role='list'
         aria-label={ suggestionsContainerAriaLabel }
       >
-        { suggestions.map((suggestion, index) =>
+        { suggestions.map((suggestion: ISuggestionModel<T>, index: number) =>
           <div
             ref={ suggestion.selected ? this._selectedElement : '' }
             // tslint:disable-next-line:no-string-literal

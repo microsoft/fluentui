@@ -13,7 +13,6 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 }
 
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
-  // tslint:disable-next-line:no-any
   public static defaultProps: any = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) => SuggestionItemNormal({ ...props },
       { ...itemProps }),

@@ -54,7 +54,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     }
   }
 
-  public render(): JSX.Element {
+  public render() {
     // This control is using an input element for more universal accessibility support.
     // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
     // However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.

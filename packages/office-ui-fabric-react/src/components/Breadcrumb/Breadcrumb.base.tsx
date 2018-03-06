@@ -128,7 +128,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               </li>
             ) }
             { renderedItems.map(
-              (item, index) => (
+              (item: IBreadcrumbItem, index: number) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) }>
                   { onRenderItem(item, this._onRenderItem) }
                   { index !== lastItemIndex && <Divider

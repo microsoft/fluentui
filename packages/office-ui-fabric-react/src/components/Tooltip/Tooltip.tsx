@@ -17,7 +17,7 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
   // Specify default props values
-  public static defaultProps = {
+  public static defaultProps: Partial<ITooltipProps> = {
     directionalHint: DirectionalHint.topCenter,
     delay: TooltipDelay.medium,
     maxWidth: '364px',

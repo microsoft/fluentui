@@ -44,7 +44,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   // Render
-  public render(): JSX.Element {
+  public render() {
     const {
       calloutProps,
       children,

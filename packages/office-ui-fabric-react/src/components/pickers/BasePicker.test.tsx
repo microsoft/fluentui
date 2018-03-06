@@ -27,7 +27,7 @@ function onResolveSuggestions(text: string): ITag[] {
     'violet',
     'white',
     'yellow'
-  ].filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map(item => ({ key: item, name: item }));
+  ].filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map((item: string) => ({ key: item, name: item }));
 }
 
 const basicRenderer = (props: IPickerItemProps<{ key: string, name: string }>) => {
@@ -241,7 +241,7 @@ describe('Pickers', () => {
       expect(picker.items[0].name).toEqual('testColor');
       ReactDOM.unmountComponentAtNode(root);
     });
-    it('fires change events correctly for controlled components', (done) => {
+    it('fires change events correctly for controlled components', (done: () => void) => {
       const root = document.createElement('div');
       document.body.appendChild(root);
       const onChange = (items: ITag[] | undefined): void => {

@@ -390,7 +390,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
       .filter((item: IFullDocumentCardProps) => item.documentTitleProps &&
         item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0
       )
-      .filter(item => !this._listContainsDocument(item, items));
+      .filter((item: IFullDocumentCardProps) => !this._listContainsDocument(item, items));
   }
 
   private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]): boolean {
