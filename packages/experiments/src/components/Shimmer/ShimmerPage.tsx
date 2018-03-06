@@ -7,11 +7,9 @@ import {
 } from '@uifabric/example-app-base';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
-import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ShimmerStatus } from './Shimmer.checklist';
 
-const ShimmerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
-const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
+const ShimmerBasicExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
+const ShimmerLoadDataExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -38,7 +36,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')
+              require<string>('!raw-loader!experiments/src/components/Shimmer/Shimmer.types.ts')
             ] }
           />
         }
@@ -74,11 +72,6 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-        componentStatus={
-          <ComponentStatus
-            { ...ShimmerStatus }
-          />
-        }
       />
     );
   }

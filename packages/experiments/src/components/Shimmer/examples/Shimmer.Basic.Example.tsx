@@ -3,7 +3,7 @@ import {
   Shimmer,
   ShimmerElementType as ElemType,
   ShimmerElementVerticalAlign as ElemVerticalAlign
-} from 'office-ui-fabric-react/lib/Shimmer';
+} from 'experiments/lib/Shimmer';
 
 export class ShimmerBasicExample extends React.Component<any, any> {
 
