@@ -21,6 +21,8 @@ import {
 import { FontClassNames } from '../../Styling';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
+import { createRef } from '../../Utilities';
+
 const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
@@ -47,12 +49,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     [key: string]: React.ReactInstance;
   };
 
-  private _searchSurface: HTMLElement;
-  private _commandSurface: HTMLElement;
-  private _commandBarRegion: HTMLElement;
-  private _farCommandSurface: HTMLElement;
-  private _focusZone: FocusZone;
-  private _overflow: HTMLElement;
+  private _searchSurface = createRef<HTMLDivElement>();
+  private _commandSurface = createRef<HTMLDivElement>();
+  private _commandBarRegion = createRef<HTMLDivElement>();
+  private _farCommandSurface = createRef<HTMLDivElement>();
+  private _focusZone = createRef<FocusZone>();
+  private _overflow = createRef<HTMLDivElement>();
 
   private _id: string;
   private _overflowWidth: number;
@@ -91,7 +93,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
     if (isSearchBoxVisible) {
       searchBox = (
-        <div className={ css('ms-CommandBarSearch', styles.search) } ref={ this._resolveRef('_searchSurface') }>
+        <div className={ css('ms-CommandBarSearch', styles.search) } ref={ this._searchSurface }>
           <input className={ css('ms-CommandBarSearch-input', styles.searchInput) } type='text' placeholder={ searchPlaceholderText } />
           <div
             className={ css(
@@ -118,14 +120,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let posInSet = 1;
 
     return (
-      <div className={ css('ms-CommandBar', styles.root, className) } ref={ this._resolveRef('_commandBarRegion') }>
+      <div className={ css('ms-CommandBar', styles.root, className) } ref={ this._commandBarRegion }>
         { searchBox }
-        <FocusZone ref={ this._resolveRef('_focusZone') } className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
-          <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref={ this._resolveRef('_commandSurface') }>
+        <FocusZone ref={ this._focusZone } className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
+          <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref={ this._commandSurface }>
             { renderedItems!.map(item => (
               this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
-              <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ this._resolveRef('_overflow') }>
+              <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ this._overflow }>
                 <button
                   type='button'
                   id={ this._id + OVERFLOW_KEY }
@@ -146,7 +148,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               </div>
             ] : []) }
           </div>
-          <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref={ this._resolveRef('_farCommandSurface') }>
+          <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref={ this._farCommandSurface }>
             { renderedFarItems!.map(item => (
               this._renderItemInCommandBar(item, posInSet++, setSize, expandedMenuItemKey!, true)
             )) }
@@ -168,7 +170,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public focus() {
-    this._focusZone.focus();
+    const { value: focusZone } = this._focusZone;
+    focusZone && focusZone.focus();
   }
 
   private _renderItemInCommandBar(item: ICommandBarItemProps, posInSet: number, setSize: number, expandedMenuItemKey: string, isFarItem?: boolean) {
@@ -308,7 +311,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _updateItemMeasurements() {
     // the generated width for overflow is 35 in chrome, 38 in IE, but the actual value is 41.5
-    if (this._overflow || (this.props.overflowItems && this.props.overflowItems.length)) {
+    if (this._overflow.value || (this.props.overflowItems && this.props.overflowItems.length)) {
       this._overflowWidth = OVERFLOW_WIDTH;
     } else {
       this._overflowWidth = 0;
@@ -333,14 +336,18 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _updateRenderedItems() {
     const { items, overflowItems } = this.props;
-    const commandSurface = this._commandSurface;
-    const farCommandSurface = this._farCommandSurface;
-    const commandBarRegion = this._commandBarRegion;
-    const searchSurface = this._searchSurface;
+    const commandSurface = this._commandSurface.value;
+    const farCommandSurface = this._farCommandSurface.value;
+    const commandBarRegion = this._commandBarRegion.value;
+    const searchSurface = this._searchSurface.value;
     const renderedItems = [...items];
     let renderedOverflowItems = overflowItems;
     let consumedWidth = 0;
     const isOverflowVisible = overflowItems && overflowItems.length;
+
+    if (!commandSurface || !commandBarRegion) {
+      return;
+    }
 
     const style = window.getComputedStyle(commandSurface);
     let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft!, 10) - parseInt(style.marginRight!, 10);
@@ -424,7 +431,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   @autobind
   private _onContextMenuDismiss(ev?: any) {
-    if (!ev || !ev.relatedTarget || !this._commandSurface.contains(ev.relatedTarget as HTMLElement)) {
+    const { value: commandSurface } = this._commandSurface;
+
+    if (!ev || !ev.relatedTarget || commandSurface && !commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       const { contextualMenuProps } = this.state;
 
       if (contextualMenuProps && contextualMenuProps.onDismiss) {

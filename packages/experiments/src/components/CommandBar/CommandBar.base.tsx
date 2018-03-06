@@ -17,7 +17,9 @@ import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSe
 import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import {
-  classNamesFunction
+  classNamesFunction,
+  createRef,
+  RefObject
 } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -54,8 +56,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     elipisisIconProps: { iconName: 'More' }
   };
 
-  private _overflowSet: IOverflowSet;
-  private _resizeGroup: IResizeGroup;
+  private _overflowSet: RefObject<IOverflowSet> = createRef<IOverflowSet>();
+  private _resizeGroup: RefObject<IResizeGroup> = createRef<IResizeGroup>();
   private _classNames: {[key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
@@ -88,7 +90,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     return (
       <ResizeGroup
-        componentRef={ this._resolveRef('_resizeGroup') }
+        componentRef={ this._resizeGroup }
         className={ className }
         data={ commandBardata }
         onReduceData={ onReduceData }
@@ -100,7 +102,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
               {/*Primary Items*/ }
               <OverflowSet
-                componentRef={ this._resolveRef('_overflowSet') }
+                componentRef={ this._overflowSet }
                 className={ css(this._classNames.primarySet) }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
@@ -134,11 +136,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   }
 
   public focus(): void {
-    this._overflowSet.focus();
+    const { value: overflowSet } = this._overflowSet;
+
+    overflowSet && overflowSet.focus();
   }
 
   public remeasure(): void {
-    this._resizeGroup.remeasure();
+    this._resizeGroup.value && this._resizeGroup.value.remeasure();
   }
 
   private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
@@ -235,6 +239,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   @autobind
   private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
     // tslint:disable-next-line:no-any
-    return <CommandBarButton {...props as any} />;
+    return <CommandBarButton { ...props as any } />;
   }
 }

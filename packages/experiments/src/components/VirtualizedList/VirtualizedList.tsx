@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { BaseComponent, getParent, css, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getParent, css, autobind, createRef, RefObject } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -26,7 +26,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
-  private _root: HTMLElement;
+  private _root: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
 
   private _spacerElements: { [key: string]: HTMLElement } = {};
 
@@ -80,7 +80,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     return (
       <div
         className={ css('ms-VirtualizedList', className) }
-        ref={ this._resolveRef('_root') }
+        ref={ this._root }
       >
         { items }
       </div>
@@ -213,7 +213,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   private _onFocus(ev: React.FocusEvent<HTMLDivElement>): void {
     let target = ev.target as HTMLElement;
 
-    while (target !== this._root) {
+    while (target !== this._root.value) {
       let indexString = target.getAttribute('data-selection-index');
 
       if (indexString) {

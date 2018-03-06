@@ -5,7 +5,8 @@ import {
   KeyCodes,
   autobind,
   getNativeProps,
-  inputProperties
+  inputProperties,
+  createRef
 } from '../../Utilities';
 
 export interface IAutofillState {
@@ -21,7 +22,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up]
   };
 
-  private _inputElement: HTMLInputElement;
+  private _inputElement = createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
   private _value: string;
 
@@ -34,8 +35,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public get cursorLocation(): number {
-    if (this._inputElement) {
-      const inputElement = this._inputElement;
+    if (this._inputElement.value) {
+      const inputElement = this._inputElement.value;
       if (inputElement.selectionDirection !== SELECTION_FORWARD) {
         return inputElement.selectionEnd;
       } else {
@@ -47,7 +48,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public get isValueSelected(): boolean {
-    return this.inputElement.selectionStart !== this.inputElement.selectionEnd;
+    return Boolean(this.inputElement && (this.inputElement.selectionStart !== this.inputElement.selectionEnd));
   }
 
   public get value(): string {
@@ -55,15 +56,15 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public get selectionStart(): number {
-    return this._inputElement ? this._inputElement.selectionStart : -1;
+    return this._inputElement.value ? this._inputElement.value.selectionStart : -1;
   }
 
   public get selectionEnd(): number {
-    return this._inputElement ? this._inputElement.selectionEnd : -1;
+    return this._inputElement.value ? this._inputElement.value.selectionEnd : -1;
   }
 
-  public get inputElement(): HTMLInputElement {
-    return this._inputElement;
+  public get inputElement(): HTMLInputElement | null {
+    return this._inputElement.value;
   }
 
   public componentWillReceiveProps(nextProps: IAutofillProps) {
@@ -95,14 +96,14 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
-      if (shouldSelectFullRange) {
-        this._inputElement.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      if (shouldSelectFullRange && this._inputElement.value) {
+        this._inputElement.value.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
           differenceIndex++;
         }
-        if (differenceIndex > 0) {
-          this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+        if (differenceIndex > 0 && this._inputElement.value) {
+          this._inputElement.value.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
         }
       }
     }
@@ -117,7 +118,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return (
       <input
         { ...nativeProps }
-        ref={ this._resolveRef('_inputElement') }
+        ref={ this._inputElement }
         value={ displayValue }
         autoCapitalize={ 'off' }
         autoComplete={ 'off' }
@@ -133,13 +134,13 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   }
 
   public focus() {
-    this._inputElement.focus();
+    this._inputElement.value && this._inputElement.value.focus();
   }
 
   public clear() {
     this._autoFillEnabled = true;
     this._updateValue('');
-    this._inputElement.setSelectionRange(0, 0);
+    this._inputElement.value && this._inputElement.value.setSelectionRange(0, 0);
   }
 
   // Composition events are used when the character/text requires several keystrokes to be completed.
@@ -218,8 +219,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _getCurrentInputValue(ev?: React.FormEvent<HTMLElement>): string {
     if (ev && ev.target && (ev.target as any).value) {
       return (ev.target as any).value;
+    } else if (this.inputElement && this.inputElement.value) {
+      return this.inputElement.value;
     } else {
-      return this._inputElement.value;
+      return '';
     }
   }
 
@@ -237,7 +240,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean) {
     if (!isComposing
       && newValue
-      && this._inputElement.selectionStart === newValue.length
+      && this._inputElement.value
+      && this._inputElement.value.selectionStart === newValue.length
       && !this._autoFillEnabled
       && (newValue.length > oldValue.length || isComposed)) {
       this._autoFillEnabled = true;
