@@ -11,10 +11,23 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
 
-let _items: any[];
+export interface IItem {
+  [index: string]: string | number;
+  thumbnail: string;
+  key: string;
+  name: string;
+  description: string;
+  color: string;
+  shape: string;
+  location: string;
+  width: number;
+  height: number;
+}
+
+let _items: IItem[];
 
 export interface IShimmerApplicationExampleState {
-  items?: any[];
+  items?: IItem[];
   columns?: IColumn[];
 }
 
@@ -31,7 +44,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { items, columns } = this.state;
 
     return (
@@ -48,7 +61,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   @autobind
-  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
+  private _onRenderItemColumn(item: IItem, index: number, column: IColumn): JSX.Element | string | number {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
@@ -69,7 +82,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   @autobind
-  private _onRenderCompactCard(item: any): JSX.Element {
+  private _onRenderCompactCard(item: IItem): JSX.Element {
     return (
       <div className='hoverCardExample-compactCard'>
         <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
@@ -80,7 +93,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   @autobind
-  private _onRenderExpandedCard(item: any): JSX.Element {
+  private _onRenderExpandedCard(item: IItem): JSX.Element {
     const { items, columns } = this.state;
     return (
       <div className='hoverCardExample-expandedCard'>
@@ -95,6 +108,6 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 }
 
-function _buildColumns() {
-  return buildColumns(_items).filter(column => column.name === 'location' || column.name === 'key');
+function _buildColumns(): IColumn[] {
+  return buildColumns(_items).filter((column: IColumn) => column.name === 'location' || column.name === 'key');
 }

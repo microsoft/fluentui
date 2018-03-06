@@ -24,7 +24,7 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, IShimm
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { height, getStyles, borderAlignStyle } = this.props;
     this._classNames = getClassNames(getStyles!, { height, borderAlignStyle });
 
@@ -37,6 +37,7 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, IShimm
           className={ this._classNames.svg }
         >
           <path
+            // tslint:disable-next-line:max-line-length
             d='M0,0 L10,0 L10,10 L0,10 L0,0 Z M0,5 C0,7.76142375 2.23857625,10 5,10 C7.76142375,10 10,7.76142375 10,5 C10,2.23857625 7.76142375,2.22044605e-16 5,0 C2.23857625,-2.22044605e-16 0,2.23857625 0,5 L0,5 Z'
           />
         </svg>

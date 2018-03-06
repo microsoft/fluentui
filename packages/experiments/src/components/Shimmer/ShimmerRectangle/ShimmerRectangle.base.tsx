@@ -20,7 +20,7 @@ export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, 
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { height, getStyles, width, borderAlignStyle } = this.props;
 
     this._classNames = getClassNames(getStyles!, { height, width, borderAlignStyle });

@@ -14,11 +14,11 @@ import {
   ShimmerElementVerticalAlign,
 } from './Shimmer.types';
 import {
-  DefaultPalette
+  DefaultPalette,
+  IStyleSet
 } from '../../Styling';
 import { ShimmerRectangle } from './ShimmerRectangle/ShimmerRectangle';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
-import { IStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
@@ -32,7 +32,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { getStyles, width, lineElements, children, isDataLoaded } = this.props;
     const maxHeight: number | undefined = lineElements ? this._findMaxHeight(lineElements) : undefined;
     this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded });
@@ -53,6 +53,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
             return (
               <div
                 key={ index }
+                // tslint:disable-next-line:jsx-ban-props
                 style={ {
                   width: gapWidth,
                   height: maxHeight + 'px',

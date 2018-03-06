@@ -15,12 +15,13 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       isDataLoaded: dataLoaded,
     } = this.state;
 
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '2px' } }>
         <Shimmer
           isDataLoaded={ dataLoaded }

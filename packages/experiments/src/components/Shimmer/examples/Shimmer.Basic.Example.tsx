@@ -11,9 +11,10 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
     super(props);
   }
 
-  public render() {
+  public render(): JSX.Element {
 
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '2px' } }>
         Generic Shimmer with no elements provided.
         <Shimmer />

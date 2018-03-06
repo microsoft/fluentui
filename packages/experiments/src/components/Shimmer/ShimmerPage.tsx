@@ -9,10 +9,11 @@ import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
 
 const ShimmerBasicExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
+// tslint:disable-next-line:max-line-length
 const ShimmerLoadDataExampleCode = require('!raw-loader!experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Shimmer'
@@ -54,10 +55,12 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ul>
               <li>
-                When construncting a shimmer line using different elements like Circle, Rectangle or Gap, best if providing widths for each of them to experience a better layout looking as close as possible to real data it is replacing.
+                When construncting a shimmer line using different elements like Circle, Rectangle or Gap, best if providing widths for each
+                of them to experience a better layout looking as close as possible to real data it is replacing.
               </li>
               <li>
-                Try avoiding multiple shimmer lines of different widths. Each shimmer line is it's own animation and it is dependent on the width you provide. So for a better visual animation keep the widths consistent.
+                Try avoiding multiple shimmer lines of different widths. Each shimmer line is it's own animation and it is dependent on the
+                width you provide. So for a better visual animation keep the widths consistent.
               </li>
             </ul>
           </div>
