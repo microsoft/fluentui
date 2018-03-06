@@ -35,12 +35,6 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
             >
               <ShimmerLoadDataExample />
             </ExampleCard>
-            <ExampleCard
-              title='Shimmer Application'
-              code={ ShimmerApplicationExampleCode }
-            >
-              <ShimmerApplicationExample />
-            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -53,14 +47,8 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         overview={
           <div>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga quisquam laudantium ratione tenetur beatae placeat maxime, unde suscipit est saepe! Sed animi adipisci deleniti. Praesentium dicta ad quam reiciendis quo!
+              Shimmer is a temporary animation placeholder for the upcoming data from an API call
             </p>
-
-            <ul>
-              <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis optio, corporis nam dicta officia laboriosam dolores. Fugiat, assumenda ratione laborum quaerat quam, inventore quasi recusandae cupiditate temporibus deserunt soluta. Dolores!</li>
-              <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem unde iste repellendus. Dignissimos, numquam! Expedita incidunt voluptatibus porro illo aperiam non, cum nesciunt praesentium blanditiis ipsum? Cum aliquid itaque asperiores.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est praesentium illo at non. Illo laboriosam tempore eligendi et inventore iusto facere sequi exercitationem magni ullam atque laborum, harum commodi iure.</li>
-            </ul>
           </div>
         }
         bestPractices={
@@ -70,13 +58,10 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ul>
               <li>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta accusantium aperiam sint exercitationem nam, tenetur voluptatum iste sapiente, quod aliquid voluptas ab qui minus officiis beatae repellat tempore laboriosam nostrum.
+                When construncting a shimmer line using different elements like Circle, Rectangle or Gap, best if providing widths for each of them to experience a better layout looking as close as possible to real data it is replacing.
               </li>
               <li>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta accusantium aperiam sint exercitationem nam, tenetur voluptatum iste sapiente, quod aliquid voluptas ab qui minus officiis beatae repellat tempore laboriosam nostrum.
-              </li>
-              <li>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta accusantium aperiam sint exercitationem nam, tenetur voluptatum iste sapiente, quod aliquid voluptas ab qui minus officiis beatae repellat tempore laboriosam nostrum.
+                Try avoiding multiple shimmer lines of different widths. Each shimmer line is it's own animation and it is dependent on the width you provide. So for a better visual animation keep the widths consistent.
               </li>
             </ul>
           </div>
@@ -84,7 +69,9 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div>
             <ul>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur rem alias placeat vero illo excepturi architecto, minima quo amet illum odit eligendi, praesentium quisquam aut? Quis consequatur illum iure sapiente.
+              <li>
+                Thinking... )
+              </li>
             </ul>
           </div>
         }

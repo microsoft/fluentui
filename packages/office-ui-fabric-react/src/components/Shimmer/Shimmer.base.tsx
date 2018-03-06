@@ -99,9 +99,19 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 
   private getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
-    const dif: number | undefined = maxHeight && elem.height ?
-      maxHeight - elem.height > 0 ?
-        maxHeight - elem.height : undefined
+    let height: number | undefined;
+    switch (elem.type) {
+      case ShimmerElementType.RECTANGLE:
+        height = !!elem.height ? elem.height : 16;
+        break;
+      case ShimmerElementType.CIRCLE:
+        height = !!elem.height ? elem.height : 24;
+        break;
+    }
+    console.log(height);
+    const dif: number | undefined = maxHeight && height ?
+      maxHeight - height > 0 ?
+        maxHeight - height : undefined
       : undefined;
 
     let borderStyle: IStyleSet | undefined;

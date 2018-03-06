@@ -59,6 +59,22 @@ export class ShimmerBasicExample extends React.Component<any, any> {
             { type: ElemType.RECTANGLE, height: 16 }
           ] }
         />
+        Variations of vertical alignment for Circles and Rectangles.
+        <Shimmer
+          lineElements={ [
+            { type: ElemType.CIRCLE, height: 24 },
+            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.CIRCLE, height: 15, verticalAlign: ElemVerticalAlign.TOP },
+            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.RECTANGLE, verticalAlign: ElemVerticalAlign.BOTTOM, width: 20 },
+            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.RECTANGLE, height: 5, verticalAlign: ElemVerticalAlign.TOP, width: 20 },
+            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.RECTANGLE, height: 16, width: 15 },
+            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.RECTANGLE, height: 10, verticalAlign: ElemVerticalAlign.BOTTOM }
+          ] }
+        />
       </div>
     );
   }
