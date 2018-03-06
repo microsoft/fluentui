@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
 
 ## 5.14.0
 Fri, 02 Mar 2018 11:25:35 GMT

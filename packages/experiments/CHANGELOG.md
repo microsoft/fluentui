@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 05 Mar 2018 11:16:58 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+
+## 5.23.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+- Replaced PureComponent with Component to appease website's UHF react version.
 
 ## 5.23.0
 Mon, 05 Mar 2018 11:16:58 GMT

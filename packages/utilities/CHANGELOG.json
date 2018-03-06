@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.14.1",
+      "tag": "@uifabric/utilities_v5.14.1",
+      "date": "Tue, 06 Mar 2018 02:06:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8a4dc859a5f8016b630220775caa98691ddf5345",
+            "comment": "Replaced PureComponent with Component to appease website's UHF react version."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.14.0",
       "tag": "@uifabric/utilities_v5.14.0",
       "date": "Fri, 02 Mar 2018 11:25:35 GMT",
