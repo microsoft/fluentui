@@ -102,7 +102,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
             <ul>
               { links.map((link, linkIndex) => (
                 <li key={ linkIndex }>
-                  <PageHeaderLink href={ baseRoute + '#' + link.location } text={ link.text } />
+                  <PageHeaderLink href={ this._getPagePath(link) } text={ link.text } />
                 </li>
               )) }
             </ul>
@@ -142,5 +142,16 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
       headerBottom: headerBottom,
       headerTop: headerTop
     });
+  }
+
+  private _getPagePath(link): string {
+    let path = location.hash;
+    const hashIndex = path.lastIndexOf('#')
+
+    if (hashIndex > 0) {
+      path = path.substr(0, hashIndex);
+    }
+
+    return path + '#' + link.location;
   }
 }
