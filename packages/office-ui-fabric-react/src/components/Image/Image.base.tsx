@@ -5,7 +5,7 @@ import {
   autobind,
   BaseComponent,
   classNamesFunction,
-  customizable,
+  // customizable,
   getNativeProps,
   imageProperties
 } from '../../Utilities';
@@ -26,7 +26,7 @@ export interface IImageState {
 
 const KEY_PREFIX = 'fabricImage';
 
-@customizable('Image', ['theme'])
+// @customizable('Image', ['theme'])
 export class ImageBase extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
