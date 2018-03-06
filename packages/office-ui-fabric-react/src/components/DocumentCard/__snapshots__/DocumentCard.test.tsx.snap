@@ -58,7 +58,12 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               />
             </div>
             <div
-              className="ms-Image ms-Persona-image"
+              className=
+                  ms-Image
+                  ms-Persona-image
+                  {
+                    overflow: hidden;
+                  }
               style={
                 Object {
                   "height": 32,
@@ -68,7 +73,22 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
             >
               <img
                 alt=""
-                className="ms-Image-image ms-Image-image--portrait undefined ms-Image-image--cover undefined is-notLoaded is-fadeIn"
+                className=
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
+                    {
+                      display: block;
+                      height: auto;
+                      left: 50%;
+                      opacity: 0;
+                      position: relative;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
+                    }
                 onError={[Function]}
                 onLoad={[Function]}
                 role={undefined}

@@ -42,6 +42,12 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   display: block;
 }
 
+.optionsContainIconOrImage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .choiceField {
   display: flex;
   align-items: center;
@@ -194,6 +200,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include ms-margin(0, 4px, 4px, 0);
   @include ms-padding-left(0px);
   @include ms-bgColor-neutralLighter;
+  height: 100%;
 
   $radioButtonSpacing: 3px;
   $radioButtonInnerSize: 5px;
@@ -201,7 +208,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   .fieldIsImage, .fieldIsIcon {
 
     display: inline-block;
-    box-sizing: border-box;
+    box-sizing: content-box;
     cursor: pointer;
     padding-top: 22px;
     margin: 0;

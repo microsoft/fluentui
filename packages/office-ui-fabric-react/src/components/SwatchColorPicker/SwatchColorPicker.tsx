@@ -1,9 +1,6 @@
-import * as React from 'react';
-import {
-  IStyleFunction,
-  styled
-} from '../../Utilities';
+import { styled } from '../../Utilities';
 import { SwatchColorPickerBase } from './SwatchColorPicker.base';
+// tslint:disable-next-line:no-unused-variable
 import { ISwatchColorPickerProps } from './SwatchColorPicker.types';
 import { getStyles } from './SwatchColorPicker.styles';
 

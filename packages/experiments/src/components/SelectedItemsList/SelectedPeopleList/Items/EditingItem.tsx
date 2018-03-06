@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, KeyCodes, autobind, getId, getNativeProps, inputProperties } from '../../../../Utilities';
+import { BaseComponent, KeyCodes, autobind, getId, getNativeProps, inputProperties, css } from '../../../../Utilities';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
@@ -49,7 +49,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
     const itemId = getId();
     const nativeProps = getNativeProps(this.props, inputProperties);
     return (
-      <div aria-labelledby={ 'editingItemPersona-' + itemId } className={ 'ms-EditingItem' }>
+      <div aria-labelledby={ 'editingItemPersona-' + itemId } className={ css('ms-EditingItem', styles.editingContainer) }>
         <input
           { ...nativeProps}
           ref={ this._resolveInputRef }

@@ -121,14 +121,6 @@
 			"unicode": "EF89"
 		},
 		{
-			"name": "iOSAppStoreLogo",
-			"unicode": "EF8A"
-		},
-		{
-			"name": "AndroidLogo",
-			"unicode": "EF8B"
-		},
-		{
 			"name": "Breadcrumb",
 			"unicode": "EF8C"
 		},
@@ -189,6 +181,10 @@
 			"unicode": "F029"
 		},
 		{
+			"name": "TextDocumentShared",
+			"unicode": "F02B"
+		},
+		{
 			"name": "PageCheckedOut",
 			"unicode": "F02C"
 		},
@@ -211,6 +207,10 @@
 		{
 			"name": "EventDate",
 			"unicode": "F059"
+		},
+		{
+			"name": "ArrowUpRight",
+			"unicode": "F069"
 		},
 		{
 			"name": "CaretRight",
@@ -353,6 +353,10 @@
 			"unicode": "F104"
 		},
 		{
+			"name": "ReadOutLoud",
+			"unicode": "F112"
+		},
+		{
 			"name": "CaretBottomLeftSolid8",
 			"unicode": "F121"
 		},
@@ -381,32 +385,28 @@
 			"unicode": "F137"
 		},
 		{
-			"name": "Toll",
-			"unicode": "F160"
+			"name": "StatusCircleRing",
+			"unicode": "F138"
 		},
 		{
-			"name": "ExploreContentSingle",
-			"unicode": "F164"
+			"name": "StatusTriangleOuter",
+			"unicode": "F139"
 		},
 		{
-			"name": "CollapseContent",
-			"unicode": "F165"
+			"name": "StatusTriangleInner",
+			"unicode": "F13A"
 		},
 		{
-			"name": "CollapseContentSingle",
-			"unicode": "F166"
+			"name": "StatusTriangleExclamation",
+			"unicode": "F13B"
 		},
 		{
-			"name": "InfoSolid",
-			"unicode": "F167"
+			"name": "StatusCircleExclamation",
+			"unicode": "F13C"
 		},
 		{
-			"name": "ProgressRingDots",
-			"unicode": "F16A"
-		},
-		{
-			"name": "CaloriesAdd",
-			"unicode": "F172"
+			"name": "StatusCircleErrorX",
+			"unicode": "F13D"
 		}
 	]
 }

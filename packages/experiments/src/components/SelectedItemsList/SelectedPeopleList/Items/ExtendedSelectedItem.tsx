@@ -1,11 +1,10 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind, css, getId } from '../../../../Utilities';
+import { BaseComponent, css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import * as stylesImport from './ExtendedSelectedItem.scss';
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
@@ -46,7 +45,6 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
         data-selection-index={ index }
         role={ 'listitem' }
         aria-labelledby={ 'selectedItemPersona-' + itemId }
-        onContextMenu={ this._onClick }
       >
         <div hidden={ !item.canExpand || onExpandItem === undefined }>
           <IconButton
@@ -75,16 +73,6 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
             ariaLabel={ removeButtonAriaLabel }
           />
         </div >
-        { this.state.contextualMenuVisible ? (
-          <ContextualMenu
-            items={ this.props.menuItems }
-            shouldFocusOnMount={ true }
-            target={ this.persona }
-            onDismiss={ this._onCloseContextualMenu }
-            directionalHint={ DirectionalHint.bottomAutoEdge }
-          />)
-          : null
-        }
       </div >);
   }
 
@@ -96,16 +84,5 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
         action();
       }
     };
-  }
-
-  @autobind
-  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
-    ev.preventDefault();
-    this.setState({ contextualMenuVisible: true });
-  }
-
-  @autobind
-  private _onCloseContextualMenu(ev: Event): void {
-    this.setState({ contextualMenuVisible: false });
   }
 }

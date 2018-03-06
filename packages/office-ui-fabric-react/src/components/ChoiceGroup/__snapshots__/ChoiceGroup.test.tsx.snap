@@ -11,100 +11,104 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
     role="radiogroup"
   >
     <div
-      className="ms-ChoiceField"
+      className="ms-ChoiceFieldGroup-flexContainer"
     >
       <div
-        className="ms-ChoiceField-wrapper"
+        className="ms-ChoiceField"
       >
-        <input
-          aria-labelledby="ChoiceGroup0-1"
-          checked={false}
-          className="ms-ChoiceField-input"
-          data-automation-id="auto1"
-          disabled={undefined}
-          id="ChoiceGroup0-1"
-          name="ChoiceGroup0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          type="radio"
-        />
-        <label
-          className="ms-ChoiceField-field"
-          htmlFor="ChoiceGroup0-1"
+        <div
+          className="ms-ChoiceField-wrapper"
         >
-          <span
-            className="ms-Label"
-            id="ChoiceGroupLabel1-1"
+          <input
+            aria-labelledby="ChoiceGroup0-1"
+            checked={false}
+            className="ms-ChoiceField-input"
+            data-automation-id="auto1"
+            disabled={undefined}
+            id="ChoiceGroup0-1"
+            name="ChoiceGroup0"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="radio"
+          />
+          <label
+            className="ms-ChoiceField-field"
+            htmlFor="ChoiceGroup0-1"
           >
-            1
-          </span>
-        </label>
+            <span
+              className="ms-Label"
+              id="ChoiceGroupLabel1-1"
+            >
+              1
+            </span>
+          </label>
+        </div>
       </div>
-    </div>
-    <div
-      className="ms-ChoiceField"
-    >
       <div
-        className="ms-ChoiceField-wrapper"
+        className="ms-ChoiceField"
       >
-        <input
-          aria-labelledby="ChoiceGroup0-2"
-          checked={false}
-          className="ms-ChoiceField-input"
-          disabled={undefined}
-          id="ChoiceGroup0-2"
-          name="ChoiceGroup0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          type="radio"
-        />
-        <label
-          className="ms-ChoiceField-field"
-          htmlFor="ChoiceGroup0-2"
+        <div
+          className="ms-ChoiceField-wrapper"
         >
-          <span
-            className="ms-Label"
-            id="ChoiceGroupLabel1-2"
+          <input
+            aria-labelledby="ChoiceGroup0-2"
+            checked={false}
+            className="ms-ChoiceField-input"
+            disabled={undefined}
+            id="ChoiceGroup0-2"
+            name="ChoiceGroup0"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="radio"
+          />
+          <label
+            className="ms-ChoiceField-field"
+            htmlFor="ChoiceGroup0-2"
           >
-            2
-          </span>
-        </label>
+            <span
+              className="ms-Label"
+              id="ChoiceGroupLabel1-2"
+            >
+              2
+            </span>
+          </label>
+        </div>
       </div>
-    </div>
-    <div
-      className="ms-ChoiceField"
-    >
       <div
-        className="ms-ChoiceField-wrapper"
+        className="ms-ChoiceField"
       >
-        <input
-          aria-labelledby="ChoiceGroup0-3"
-          checked={false}
-          className="ms-ChoiceField-input"
-          disabled={undefined}
-          id="ChoiceGroup0-3"
-          name="ChoiceGroup0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          required={true}
-          type="radio"
-        />
-        <label
-          className="ms-ChoiceField-field"
-          htmlFor="ChoiceGroup0-3"
+        <div
+          className="ms-ChoiceField-wrapper"
         >
-          <span
-            className="ms-Label"
-            id="ChoiceGroupLabel1-3"
+          <input
+            aria-labelledby="ChoiceGroup0-3"
+            checked={false}
+            className="ms-ChoiceField-input"
+            disabled={undefined}
+            id="ChoiceGroup0-3"
+            name="ChoiceGroup0"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={true}
+            type="radio"
+          />
+          <label
+            className="ms-ChoiceField-field"
+            htmlFor="ChoiceGroup0-3"
           >
-            3
-          </span>
-        </label>
+            <span
+              className="ms-Label"
+              id="ChoiceGroupLabel1-3"
+            >
+              3
+            </span>
+          </label>
+        </div>
       </div>
     </div>
   </div>

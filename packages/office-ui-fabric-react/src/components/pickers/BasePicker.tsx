@@ -10,7 +10,7 @@ import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { SuggestionsController, ISuggestionModel } from './Suggestions/SuggestionsController';
+import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.types';
 import { Autofill } from '../Autofill/Autofill';
 import { IPickerItemProps } from './PickerItem.types';
@@ -441,6 +441,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | Autofill>) {
     this.setState({ isFocused: false });
+    if (this.props.inputProps && this.props.inputProps.onBlur) {
+      this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+    }
   }
 
   @autobind
@@ -457,7 +460,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (this.suggestionElement.hasSuggestedActionSelected()) {
+        if (this.suggestionElement && this.suggestionElement.hasSuggestedActionSelected()) {
           this.suggestionElement.executeSelectedAction();
         } else if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
