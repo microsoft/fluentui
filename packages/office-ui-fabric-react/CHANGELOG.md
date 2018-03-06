@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 05 Mar 2018 11:16:58 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+
+## 5.59.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Temporarily commented out @customizable decorator in Image component to restore usage of static functions and variables.
 
 ## 5.59.0
 Mon, 05 Mar 2018 11:16:58 GMT
