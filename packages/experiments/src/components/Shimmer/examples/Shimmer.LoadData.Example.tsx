@@ -2,9 +2,13 @@ import * as React from 'react';
 import { Shimmer } from 'experiments/lib/Shimmer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-export class ShimmerLoadDataExample extends React.Component<any, any> {
+export interface IShimmerLoadDataExample {
+  isDataLoaded?: boolean;
+}
 
-  constructor(props: any) {
+export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadDataExample> {
+
+  constructor(props: {}) {
     super(props);
     this.state = {
       isDataLoaded: false
@@ -27,7 +31,7 @@ export class ShimmerLoadDataExample extends React.Component<any, any> {
           label='Load data switch'
           checked={ dataLoaded }
           // tslint:disable-next-line:jsx-no-lambda
-          onChanged={ isDataLoaded => this.setState({ isDataLoaded }) }
+          onChanged={ (isDataLoaded: boolean) => this.setState({ isDataLoaded }) }
           onText='Loaded'
           offText='Loading...'
         />

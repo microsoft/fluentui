@@ -5,9 +5,9 @@ import {
   ShimmerElementVerticalAlign as ElemVerticalAlign
 } from 'experiments/lib/Shimmer';
 
-export class ShimmerBasicExample extends React.Component<any, any> {
+export class ShimmerBasicExample extends React.Component<{}, {}> {
 
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
   }
 
