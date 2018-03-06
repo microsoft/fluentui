@@ -10,12 +10,8 @@ import {
 } from './ShimmerCircle.styles';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
-// TODO needs to be thought about
-export interface IShimmerCircleState {
-  hasCircle: boolean;
-}
 
-export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, IShimmerCircleState> {
+export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
   public static defaultProps: IShimmerCircleProps = {
     height: 24
   };
