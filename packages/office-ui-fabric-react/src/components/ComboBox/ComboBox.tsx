@@ -1257,24 +1257,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndexOnHover
     } = this.state;
 
-    let currentPendingIndex: number | undefined = undefined;
-    let pendingValue: string | undefined = undefined;
+    let newPendingIndex: number | undefined = undefined;
+    let newPendingValue: string | undefined = undefined;
 
     if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover && this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
       // Set new pending index if hover index was changed
-      currentPendingIndex = currentPendingValueValidIndexOnHover;
+      newPendingIndex = currentPendingValueValidIndexOnHover;
     } else if (currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
       // Set new pending index if currentPendingValueValidIndex was changed
-      currentPendingIndex = currentPendingValueValidIndex;
+      newPendingIndex = currentPendingValueValidIndex;
     } else if (currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '') {
       // Set pendingValue in the case it was changed and no index was changed
-      pendingValue = currentPendingValue;
+      newPendingValue = currentPendingValue;
     }
 
-    // Notify the new pending value only if there was a change in the new state
-    if ((this._hasPendingValue || currentPendingIndex || pendingValue) && (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover || currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex || currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '')) {
-      onPendingValueChanged(currentPendingIndex ? currentOptions[currentPendingIndex] : undefined, currentPendingIndex, pendingValue);
-      this._hasPendingValue = currentPendingIndex !== undefined || pendingValue !== undefined;
+    // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
+    if (newPendingIndex || newPendingValue || this._hasPendingValue) {
+      onPendingValueChanged(newPendingIndex ? currentOptions[newPendingIndex] : undefined, newPendingIndex, newPendingValue);
+      this._hasPendingValue = newPendingIndex !== undefined || newPendingValue !== undefined;
     }
   }
 
