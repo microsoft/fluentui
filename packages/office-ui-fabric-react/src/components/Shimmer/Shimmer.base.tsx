@@ -4,9 +4,6 @@ import {
   classNamesFunction,
 } from '../../Utilities';
 import {
-  IClassNames
-} from '@uifabric/utilities/lib/IClassNames';
-import {
   IShimmerProps,
   IShimmerStyleProps,
   IShimmerStyles,
