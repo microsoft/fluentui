@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.15.0",
+      "tag": "@uifabric/utilities_v5.15.0",
+      "date": "Tue, 06 Mar 2018 11:13:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25e736fb4506e1021274c420283338e499388477",
+            "comment": "Adds createRef polyfil to prepare for object refs."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.14.1",
       "tag": "@uifabric/utilities_v5.14.1",
       "date": "Tue, 06 Mar 2018 02:06:59 GMT",

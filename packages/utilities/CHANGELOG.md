@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 11:13:36 GMT and should not be manually modified.
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
 
 ## 5.14.1
 Tue, 06 Mar 2018 02:06:59 GMT

@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 11:13:36 GMT and should not be manually modified.
+
+## 5.60.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Add async debounce option to BasePicker
+
+### Patches
+
+- Facepile: Conditionally apply `aria-describedby` only when `ariaDescription` is provided
 
 ## 5.59.1
 Tue, 06 Mar 2018 02:06:59 GMT
