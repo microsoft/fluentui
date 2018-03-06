@@ -73,6 +73,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.focusZone.focus();
   }
 
+  public clearInput(): void {
+    this.input.clear();
+  }
+
   public get inputElement(): HTMLInputElement | null {
     return this.input.inputElement;
   }
