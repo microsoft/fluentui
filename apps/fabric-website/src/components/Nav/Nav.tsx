@@ -92,33 +92,22 @@ function _isPageActive(page: INavPage): boolean {
   }
   _urlResolver.href = page.url || '';
   const target: string = _urlResolver.href;
+  let path = location.href;
 
   if (location.protocol + '//' + location.host + location.pathname === target) {
     return true;
   }
 
-  if (location.href === target) {
+  if (path === target) {
     return true;
   }
 
-  if (location.hash) {
-    // Match the hash to the url.
-    if (location.hash === page.url) {
-      return true;
-    }
-
-    // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-    _urlResolver.href = location.hash.substring(1);
-
-    return _urlResolver.href === target;
-  }
-
-  if (location.href) {
+  path = getPathMinusLastHash(path);
+  if (path === target) {
     // Match a url that has navigated to a location in page.
-    let path = location.href;
-    path = getPathMinusLastHash(path);
 
-    return path === target;
+
+    return true;
   }
   return false;
 }
