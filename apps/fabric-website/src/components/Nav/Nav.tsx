@@ -69,7 +69,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     const links: React.ReactElement<{}>[] = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
       .map(
-      (page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex)
+        (page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex)
       );
 
     return (
@@ -112,6 +112,16 @@ function _isPageActive(page: INavPage): boolean {
     return _urlResolver.href === target;
   }
 
+  if (location.href) {
+    // Match a url that has navigated to a location in page.
+    let path = location.href;
+    const hashIndex = path.lastIndexOf('#');
+
+    if (hashIndex > 0) {
+      path = path.substr(0, hashIndex);
+    }
+    return path === target;
+  }
   return false;
 }
 
