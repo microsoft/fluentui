@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxProps,
   IComboBoxOption,
   VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
@@ -81,7 +80,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-          // tslint:enable:jsx-no-lambda
+        // tslint:enable:jsx-no-lambda
         />
 
         <PrimaryButton

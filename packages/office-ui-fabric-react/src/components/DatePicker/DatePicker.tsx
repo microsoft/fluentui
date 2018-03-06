@@ -121,12 +121,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     dateTimeFormatter: undefined
   };
 
-  private _root: HTMLElement;
   private _calendar: ICalendar;
   private _datePickerDiv: HTMLDivElement;
   private _textField: ITextField;
   private _preventFocusOpeningPicker: boolean;
-  private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
     super(props);
@@ -207,7 +205,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root, className) } ref={ this._resolveRef('_root') }>
+      <div className={ css('ms-DatePicker', styles.root, className) }>
         { label && (
           <Label required={ isRequired }>{ label }</Label>
         ) }
@@ -397,7 +395,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _showDatePickerPopup() {
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
-      this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
         errorMessage: ''
