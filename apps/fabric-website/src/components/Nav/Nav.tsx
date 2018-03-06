@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { getPathMinusLastHash } from '../../utilities/pageroute';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import {
@@ -115,11 +116,8 @@ function _isPageActive(page: INavPage): boolean {
   if (location.href) {
     // Match a url that has navigated to a location in page.
     let path = location.href;
-    const hashIndex = path.lastIndexOf('#');
+    path = getPathMinusLastHash(path);
 
-    if (hashIndex > 0) {
-      path = path.substr(0, hashIndex);
-    }
     return path === target;
   }
   return false;

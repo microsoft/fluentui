@@ -3,6 +3,7 @@ import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utili
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
+import { getPathMinusLastHash } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
@@ -142,12 +143,8 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
 
   private _getPagePath(link): string {
     let path = location.hash;
-    const hashIndex = path.lastIndexOf('#')
-
-    if (hashIndex > 0) {
-      // This makes sure that location hash changes don't append
-      path = path.substr(0, hashIndex);
-    }
+    // This makes sure that location hash changes don't append
+    path = getPathMinusLastHash(path);
 
     return path + '#' + link.location;
   }
