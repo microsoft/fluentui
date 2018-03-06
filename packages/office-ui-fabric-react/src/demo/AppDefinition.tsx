@@ -239,12 +239,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
-          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
-          key: 'Shimmer',
-          name: 'Shimmer',
-          url: '#/examples/shimmer'
-        },
-        {
           component: require<any>('../components/SpinButton/SpinButtonPage').SpinButtonPage,
           key: 'SpinButton',
           name: 'SpinButton',
