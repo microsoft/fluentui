@@ -48,6 +48,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
     const {
+      ariaDescription,
       chevronButtonProps,
       maxDisplayablePersonas,
       className,
@@ -69,7 +70,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           { showAddButton ? this._getAddNewElement() : null }
           { this.onRenderAriaDescription() }
           <FocusZone
-            ariaDescribedBy={ this._ariaDescriptionId }
+            ariaDescribedBy={ ariaDescription && this._ariaDescriptionId }
             role='listbox'
             className={ css('ms-Facepile-members', styles.members) }
             direction={ FocusZoneDirection.horizontal }
