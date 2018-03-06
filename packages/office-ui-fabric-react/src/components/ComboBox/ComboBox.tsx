@@ -726,7 +726,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   @autobind
   private _select() {
-    this._comboBox.inputElement.select();
+    if (this._comboBox.inputElement) {
+      this._comboBox.inputElement.select();
+    }
 
     if (!this.state.focused) {
       this.setState({ focused: true });
@@ -823,7 +825,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           (autoComplete && pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
             (this._comboBox.isValueSelected &&
               currentPendingValue.length + (this._comboBox.selectionEnd - this._comboBox.selectionStart) === pendingOptionText.length) ||
-            (this._comboBox.inputElement.value.toLocaleLowerCase() === pendingOptionText)
+            (this._comboBox.inputElement && this._comboBox.inputElement.value.toLocaleLowerCase() === pendingOptionText)
           )) {
           this._setSelectedIndex(currentPendingValueValidIndex);
           this._clearPendingInfo();
