@@ -2,7 +2,6 @@ import * as React from 'react';
 import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './PageHeader.module.scss';
 const styles: any = stylesImport;
-import { getPageRouteFromState } from '../../utilities/pageroute';
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
@@ -84,9 +83,6 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
   public render() {
     let { pageTitle, links, backgroundColor, backgroundImage } = this.props;
     let { isAttached } = this.state;
-    let baseRoute: string = getPageRouteFromState(
-      this.props.pageTitle
-    );
     let inPageNav;
     let backgroundStyle = {
       bottom: this.state.headerBottom,
@@ -149,6 +145,7 @@ export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState
     const hashIndex = path.lastIndexOf('#')
 
     if (hashIndex > 0) {
+      // This makes sure that location hash changes don't append
       path = path.substr(0, hashIndex);
     }
 
