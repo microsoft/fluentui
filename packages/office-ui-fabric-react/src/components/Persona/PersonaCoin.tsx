@@ -14,9 +14,6 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
 } from './Persona.types';
-// import {
-//   PERSONA_SIZE
-// } from './PersonaConsts';
 import {
   Icon
 } from '../../Icon';
