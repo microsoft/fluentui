@@ -114,7 +114,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
             className={ css('ms-MessageBar-expand', styles.expand) }
             onClick={ this._onClick }
             iconProps={ { iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' } }
-            ariaLabel={ this.props.dismissButtonAriaLabel }
+            ariaLabel={ this.props.overflowButtonAriaLabel }
           />
         </div>
       );
