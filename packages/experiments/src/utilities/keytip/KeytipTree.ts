@@ -4,7 +4,7 @@ import {
   keySequenceStartsWith,
   convertSequencesToKeytipID
 } from '../../utilities/keysequence/IKeySequence';
-import { IKeytipProps } from 'src/Keytip';
+import { IKeytipProps } from '../../Keytip';
 import { find } from '../../Utilities';
 
 export interface IKeytipTreeNode {
