@@ -10,6 +10,11 @@ import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/D
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
+import { Shimmer } from 'experiments/lib/Shimmer';
+
+const PAGING_DELAY = 5000;
+const ITEMS_COUNT = 1000;
+const PAGING_SIZE = 10;
 
 export interface IItem {
   [index: string]: string | number;
@@ -24,7 +29,8 @@ export interface IItem {
   height: number;
 }
 
-let _items: IItem[];
+// tslint:disable-next-line:no-any
+let _items: any[];
 
 export interface IShimmerApplicationExampleState {
   items?: IItem[];
@@ -32,14 +38,17 @@ export interface IShimmerApplicationExampleState {
 }
 
 export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
+  private _isFetchingItems: boolean;
 
   constructor(props: {}) {
     super(props);
 
-    _items = _items || createListItems(10);
+    if (!_items) {
+      _items = createListItems(ITEMS_COUNT);
+    }
 
     this.state = {
-      items: _items,
+      items: _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)),
       columns: _buildColumns()
     };
   }
@@ -51,13 +60,43 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       <div>
         <p> Hover over location of a row item to see the card </p>
         <DetailsList
-          setKey='hoverSet'
+          setKey='items'
           items={ items! }
           columns={ columns }
           onRenderItemColumn={ this._onRenderItemColumn }
+          onRenderMissingItem={ this._onRenderMissingItem }
         />
       </div>
     );
+  }
+
+  @autobind
+  private _onRenderMissingItem(index: number): JSX.Element {
+    this._onDataMiss(index as number);
+    return (
+      <Shimmer />
+    );
+  }
+
+  private _onDataMiss(index: number): void {
+    index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
+
+    if (!this._isFetchingItems) {
+
+      this._isFetchingItems = true;
+
+      setTimeout(() => {
+        this._isFetchingItems = false;
+        // tslint:disable-next-line:no-any
+        const itemsCopy = ([] as any[]).concat(this.state.items);
+
+        itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
+
+        this.setState({
+          items: itemsCopy
+        });
+      }, PAGING_DELAY);
+    }
   }
 
   @autobind
@@ -109,5 +148,6 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 }
 
 function _buildColumns(): IColumn[] {
-  return buildColumns(_items).filter((column: IColumn) => column.name === 'location' || column.name === 'key');
+  return buildColumns(_items)
+    .filter((column: IColumn) => column.name === 'location' || column.name === 'key' || column.name === 'description');
 }
