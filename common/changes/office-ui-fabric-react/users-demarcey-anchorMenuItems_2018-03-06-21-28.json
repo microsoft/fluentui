@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Allow anchor menu items to have sub menus. Added prop for sub menu hover delay.",
+      "comment": "ContextualMenu: Allow anchor menu items to have sub menus. Added prop for sub menu hover delay.",
       "type": "patch"
     }
   ],
