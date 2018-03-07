@@ -20,7 +20,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           color: #333333;
           cursor: text;
           display: block;
-          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           height: 32px;
@@ -173,7 +173,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #666666;
             cursor: default;
             display: inline-block;
-            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
             height: 32px;
