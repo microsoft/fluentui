@@ -57,7 +57,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType,
     } = this.props;
     const {
-      ariaDescription,
       chevronButtonProps,
       maxDisplayablePersonas,
       className,
