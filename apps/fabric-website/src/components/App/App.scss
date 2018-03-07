@@ -4,18 +4,17 @@
 :global {
   // Element that wraps everything except for the header
   .App-wrapper {
-    display: flex;
-    flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
+    position: relative;
   }
 
   // Nav is hidden off screen by default
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
     overflow-y: auto;
-    position: fixed;
-    top: $Header-height;
+    max-height: 100vh;
+    height: 100vh; // fallback height if not set in JS style attribute
     width: $Nav-width;
     @include ms-float(left);
     z-index: 999; // This z-index needs to be high to prevent jittery scrolling in Edge.
@@ -24,11 +23,11 @@
   .App-content {
     @include contentPadding();
     background-color: $ms-color-neutralLighter;
-    flex-grow: 1;
     left: 0;
     overflow: hidden;
     position: relative;
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
+    min-height: calc(100vh - #{$Header-height-full-uhf});
 
     @include high-contrast {
       border-right: 1px solid WindowText;
@@ -46,19 +45,14 @@
       @include ms-padding-left($App-padding-left-lg);
     }
 
-    .App-wrapper {
-      flex-direction: row;
-    }
-
     .App-nav {
-      top: $Header-height*2;
+      top: 0;
       bottom: 0;
       overflow-y: auto;
       overflow-x: hidden;
     }
 
     .App-content {
-      flex-grow: unset;
       max-width: calc(100% - #{$Nav-width}); // IE needs max-width, it was ignoring width
       width: calc(100% - #{$Nav-width});
       @include ms-left($Nav-width);

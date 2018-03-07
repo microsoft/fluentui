@@ -1,9 +1,5 @@
 import { IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
-import {
-  IStyle,
-  ITheme,
-  HighContrastSelector,
-} from '../../Styling';
+import { HighContrastSelector } from '../../Styling';
 
 export const getStyles = (
   props: IOverlayStyleProps
@@ -15,7 +11,7 @@ export const getStyles = (
     isDark,
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette } = theme;
 
   return ({
     root: [

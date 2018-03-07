@@ -10,6 +10,7 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
     return (
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox
+          placeholder='Search'
           onEscape={ (ev) => {
             console.log('Custom onEscape Called');
           } }

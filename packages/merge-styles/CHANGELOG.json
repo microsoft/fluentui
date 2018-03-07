@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "5.13.0",
+      "tag": "@uifabric/merge-styles_v5.13.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "77c1e54e140be51f9c7f252748bb5f868f957919",
+            "comment": "Upgrade to TypeScript 2.7.2"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.12.2",
       "tag": "@uifabric/merge-styles_v5.12.2",
       "date": "Wed, 21 Feb 2018 11:12:11 GMT",

@@ -27,15 +27,15 @@ export const getClassNames = memoizeFunction((
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
   const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
-  const pillCheckedDisabledBackground = semanticColors.disabledText;
+  const pillCheckedDisabledBackground = semanticColors.disabledBodyText;
   const thumbBackground = semanticColors.inputBorderHovered;
   const thumbCheckedBackground = semanticColors.inputForegroundChecked;
-  const thumbDisabledBackground = semanticColors.disabledText;
+  const thumbDisabledBackground = semanticColors.disabledBodyText;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
   const pillBorderColor = semanticColors.smallInputBorder;
   const pillBorderHoveredColor = semanticColors.inputBorderHovered;
-  const pillBorderDisabledColor = semanticColors.disabledText;
-  const textDisabledColor = semanticColors.disabledBodyText;
+  const pillBorderDisabledColor = semanticColors.disabledBodyText;
+  const textDisabledColor = semanticColors.disabledText;
 
   styles = styles || {};
 

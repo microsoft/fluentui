@@ -110,7 +110,7 @@ export default class DataProvider implements IDataProvider {
    */
   public toggleComplete(item: ITodoItem): Promise<ITodoItem[]> {
     // Create a new Item in which the PercentComplete value has been changed.
-    const newItem: ITodoItem = update(item, {
+    const newItem: ITodoItem = (update as any)(item, {
       isComplete: { $set: item.isComplete === true ? false : true }
     });
 

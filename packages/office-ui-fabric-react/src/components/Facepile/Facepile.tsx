@@ -52,10 +52,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   }
 
   public render(): JSX.Element {
-    let {
-      overflowButtonProps,
-      overflowButtonType,
-    } = this.props;
+    let { overflowButtonProps } = this.props;
     const {
       ariaDescription,
       chevronButtonProps,
@@ -71,7 +68,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
       overflowButtonProps = chevronButtonProps;
-      overflowButtonType = OverflowButtonType.downArrow;
     }
 
     const hasOverflowPersonas = overflowPersonas && overflowPersonas.length > 0;
@@ -84,7 +80,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         <div className={ css('ms-Facepile-itemContainer', styles.itemContainer) } >
           { showAddButton ? this._getAddNewElement() : null }
           <FocusZone
-            ariaDescribedBy={ this._ariaDescriptionId }
+            ariaDescribedBy={ ariaDescription && this._ariaDescriptionId }
             role='listbox'
             className={ css('ms-Facepile-members', styles.members) }
             direction={ FocusZoneDirection.horizontal }
@@ -139,7 +135,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         initialsColor={ persona.initialsColor }
         primaryText={ persona.personaName }
         size={ personaSize }
-        {...(getPersonaProps ? getPersonaProps(persona) : null) }
+        { ...(getPersonaProps ? getPersonaProps(persona) : null) }
       />
     );
   }
@@ -202,7 +198,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
     return (
       <FacepileButton
-        { ...overflowButtonProps}
+        { ...overflowButtonProps }
         ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       >
@@ -222,7 +218,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
     return (
       <FacepileButton
-        {...overflowButtonProps}
+        { ...overflowButtonProps }
         className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
       >
         <PersonaCoin
@@ -239,7 +235,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
 
     return (
       <FacepileButton
-        {...addButtonProps}
+        { ...addButtonProps }
         className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
       >
         <PersonaCoin

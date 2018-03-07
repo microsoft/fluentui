@@ -12,7 +12,6 @@ import {
 } from '../../Utilities';
 import {
   ISelection,
-  SelectionDirection,
   SelectionMode
 } from './interfaces';
 

@@ -22,11 +22,14 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-14"`,
-      src: `url('${baseUrl}fabric-icons-14-36569c01.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-14-cf85ed5b.woff') format('woff')`,
     },
     icons: {
-      'Phishing': '\uF679',
-      'CreateMailRule': '\uF67A'
+      'PublishCourse': '\uF699',
+      'DictionaryRemove': '\uF69A',
+      'UserRemove': '\uF69B',
+      'UserEvent': '\uF69C',
+      'Encryption': '\uF69D'
     }
   };
 
