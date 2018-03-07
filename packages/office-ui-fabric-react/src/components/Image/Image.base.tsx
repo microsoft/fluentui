@@ -202,6 +202,3 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
     });
   }
 }
-
-const foo = ImageBase;
-console.log(foo.defaultProps);
