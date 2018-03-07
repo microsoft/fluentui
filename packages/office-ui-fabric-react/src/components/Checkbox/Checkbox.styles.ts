@@ -46,17 +46,12 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
-            ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor }
+            '&:hover $checkbox, &:focus $checkbox': { borderColor: checkboxBorderHoveredColor }
           }
         },
         checked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': {
-              background: checkboxBackgroundCheckedHovered,
-              borderColor: checkboxBorderColorCheckedHovered
-            },
-            ':focus .ms-Checkbox-checkbox': {
+            '&:hover $checkbox, &:focus $checkbox': {
               background: checkboxBackgroundCheckedHovered,
               borderColor: checkboxBorderColorCheckedHovered
             }
@@ -64,8 +59,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         },
         {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: palette.black },
-            ':focus .ms-Checkbox-text': { color: palette.black }
+            '&:hover $text, &:focus $text': { color: palette.black }
           }
         }
       ],
