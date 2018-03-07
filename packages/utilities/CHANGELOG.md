@@ -1,6 +1,53 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 11:13:36 GMT and should not be manually modified.
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.14.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+- Update KeyCodes enum to include all key codes
+
+## 5.13.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Focus/DOM: add the ability to find if an element (or any ancestor) contains a given attribute. Also, add a shouldrWapFocus function to the focus utility (which leverages the fild element attribute just described) which returns true if the given no wrap data attribute (data-no-vertical-wrap OR data-no-horizontal-wrap) exists and is set to true
+
+## 5.12.1
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- fix bug in IE that IE does not support Number.IsInteger
+
+## 5.12.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added a triangle abstraction class
+
+### Patches
+
+- Focus: Fix getPreviousElement to correctly walk across previous siblings if a potential child match was found
 
 ## 5.11.0
 Wed, 14 Feb 2018 22:10:50 GMT

@@ -1,6 +1,222 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 11:13:36 GMT and should not be manually modified.
+
+## 5.60.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Add async debounce option to BasePicker
+
+### Patches
+
+- Facepile: Conditionally apply `aria-describedby` only when `ariaDescription` is provided
+
+## 5.59.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Temporarily commented out @customizable decorator in Image component to restore usage of static functions and variables.
+
+## 5.59.0
+Mon, 05 Mar 2018 11:16:58 GMT
+
+### Minor changes
+
+- Converting Image SCSS to MergeStyles step 2 - style conversion
+
+### Patches
+
+- Fix issue 3608: DetailsList horizontal scroll due to cellSizer
+- Nav: Wire nav link to expand/collapse behavior if it has no URL but has children.
+- Fixed aria-describedby bug causing it not to render properly
+- Removes unused variables
+- GroupedListSection: Changed the list ref name from `list` to `_list`
+
+## 5.58.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- ChoiceGroup: Flex layout for icon and image fields.  Fixed some image field bugs.
+- Upgrade to TypeScript 2.7.2
+- Allowing Nav Links to specify iconProps
+- added More items aria label
+
+### Patches
+
+- DetailsList: only adding `aria-selected` when `selectionMode` is set to `none`.
+- Dropdown: Fixed custom render option in multi select.
+- Callout: move animation inline to greatly improve perf
+- make sure disabled links are non-navigable
+- DocumentCard: Change it to use set theme
+- ProgressIndicator: adjusting css so that the gleam doesn't go outside the indicator boundary.
+- Allowing use of Elements as target prop for Callouts and ContextualMenus
+- CommandBar: Fixed case where commandItemWidths would be null
+- SpinButton: Updated styling to be consistent with Button and TextField
+- SearchBox: Deprecated `labelText` for `placeholder`.
+- Fix infinite recursion in scrollable pane
+- Added is-selected and is-expanded semantic classes to compositelink style sets
+- Searchbox: Removed non-localized default placeholder string.
+- BasePicker: check for null reference before checking value of `this.suggestionElement`.
+- only mount spinner component when necessary
+
+## 5.57.0
+Thu, 01 Mar 2018 11:12:54 GMT
+
+### Minor changes
+
+- Added index import for base files in Layer, Nav, Image, ScrollablePane, ResizeGroup, and Rating components so unstyled component can be used.
+- Converting ResizeGroup SCSS to MergeStyles step 2 - style converstion
+
+## 5.56.1
+Thu, 01 Mar 2018 00:05:10 GMT
+
+### Patches
+
+- Fix an issue on IE11 where Autofill would swallow some keystrokes if typing quickly enough
+- CoachMarkStyles: Use ... instead of assign for IE compatibility
+- FocusZone: isDefaultPrevented is now respected.
+- GroupedList: Chevron css no longer uses ms-icon
+
+## 5.56.0
+Wed, 28 Feb 2018 11:15:45 GMT
+
+### Minor changes
+
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Dialog: Converting to mergeStyles part 1.2 - sub component file structure. 
+- Prepare Persona for conversion to merge-styles
+
+### Patches
+
+- ContextualMenu: Update Hover/Focus Behavior around expanding/collapsing Submenus
+- SplitButton: ENTER/SPACE should execute the primary button when focus is on the whole splitButton
+
+## 5.55.3
+Tue, 27 Feb 2018 22:56:59 GMT
+
+### Patches
+
+- ComboBox: Shortened and centered the input field to account for overlap that appears at some resolutions.
+- Toggle color fixes
+- Fixing direct references to @uifabric which breaks AMD
+- Fixing reference of 'utilities/contextualMenu' to point an actual file.
+- Allow ScrollablePane to accept native properties.
+- Make ScrollablePane._sortStickies change elements only when needed.
+- Fix this.root undefined issue in Sticky component.
+
+## 5.55.2
+Tue, 27 Feb 2018 06:33:39 GMT
+
+### Patches
+
+- DatePicker calls onDateSelected then AfterMenuDismissed to follow the same pattern as BaseButton
+- ColorPicker: internal ref issue was fixed, which lets colors be picked a little better.
+
+## 5.55.1
+Sat, 24 Feb 2018 05:10:13 GMT
+
+### Patches
+
+- Fix SplitButton rendering issue in ContextualMenu
+- ComboBox: Added property to set ComboBox's button's data-is-focusable attribute.
+- ContextualMenu: Import ContextualMenuUtility/index directly instead of folder. 
+- [Focus] Enable focus forceIntoFirstElement parameter
+- [DetailsList] Fixed test by mocking visiblity
+- [ContextualMenu] Disabled buttons are focusable
+- Convert Check to mergeStyles
+- Button: reverting previous tweak to fix ComboBox dropdown selection styling.
+
+## 5.55.0
+Fri, 23 Feb 2018 03:05:53 GMT
+
+### Minor changes
+
+- add optional custom rendering of items for ContextualMenu
+- Focus Zone: Add support for tab to skip selection elements
+- SelectionZone: deprecating `layout` as it is no longer in use. Removing `SelectionLayout` as it is not required.
+
+### Patches
+
+- Nav: fix multiple invocations of onClick
+- minor fixes to theming
+
+## 5.54.0
+Thu, 22 Feb 2018 11:15:23 GMT
+
+### Minor changes
+
+- Fix Scrollable-Pane getComputedStyle error - changing timeouts to use this._async.setTimeout to ensure this.refs isn't used after componentWillUnmount
+- FocusZone: Add the ability turn off directional wrapping on sections of a FocusZone
+- Convert Layer component to mergeStyles
+- Converting SCSS to MergeStyles step 2 - style conversion
+- Add imageErrorAs to IIconProps
+
+### Patches
+
+- Enable variable-name and jsx-boolean-value tslint rules
+- Calendar: changing refs to componentRef.
+- DatePicker-onAfterMenuDismiss callback created
+- DatePicker - Adding public focus method
+- [TextField] Set input size to 1
+- [TooltipHost] Inline display for when overflow mode is on"
+- Updated contextual menu to pass the correct number
+- Contextual Menu - Added aria-posinset and aria-setsize to split buttons
+
+## 5.53.0
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Minor changes
+
+- added support for aria-posinset and aria-setsize
+- Converting Image SCSS to MergeStyles step 1 - file structure
+- SwatchColorPicker: Improve keyboard/mouse behavior
+- Convert Dialog to mergeStyles, part 1 - file structure
+- Converting Nav SCSS to MergeStyles step 1 - file structure
+- Converting ResizeGroup SCSS to MergeStyles step 1 - file structure
+- Converting SCSS to MergeStyles step 2 - style conversion
+- make onShouldVirtualize work for grouped list
+
+### Patches
+
+- Enable jsx-key tslint rule
+- Only apply 'pointer-events: none' to disabled Link components if there is an href 
+- Dialog: default modal props now respective (Modal rendered with light background.)
+- Buttons: moving className lower in the merge list so that it has more precedence than default rules.
+- Rating: Adding `type=button` to Rating buttons.
+
+## 5.52.0
+Sat, 17 Feb 2018 21:29:00 GMT
+
+### Minor changes
+
+- Converting SCSS to MergeStyles step 1 - file structure
+
+### Patches
+
+- Add notifyPageChange function to List
+- Cleaning up a console.log in CommandBar.test.tsx that I noticed while updating snapshots
+- Fixes useTargetWidth prop for ContextualMenu
+- Convert overlay and examples to mergeStyles
+- DetailsList: Groups are now considered for aria-rowcount.
+
+## 5.51.0
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Minor changes
+
+- Added enum for triggering menu with arrow keys and bool to allow it or not
+- Migrating Coachmark to main office-ui-fabrc-react package and adding a beak compoentn as well as updating  the experimental component PositioningContainer to reflect some of the latest bits in  Callout
+- FocusZone.Focus now respects forceIntoFirstChild parameter and  IFocusZone.ts has been updated to reflect this
+- Link: Update to use merge-styles
+
+### Patches
+
+- Fix bug: '#3942 Fixed controlled TextField with multiline and autoAdjustHeight does not adjust when setting value via state'
+- SearchBox: adding unit test and tweaking how the value is read from ev rather than the element itself.
 
 ## 5.50.0
 Wed, 14 Feb 2018 22:10:50 GMT

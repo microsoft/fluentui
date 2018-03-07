@@ -33,7 +33,7 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     ...buttonProps
   } = props;
 
-  let isPressed = props.isSelected || props.selected;
+  const isPressed = props.isSelected || props.selected;
 
   return (
     <div

@@ -40,7 +40,6 @@ exports[`CommandBar renders CommandBar correctly 1`] = `
           </span>
           <i
             aria-hidden={true}
-            aria-label={undefined}
             className=
                 ms-CommandBarItem-chevronDown
                 {

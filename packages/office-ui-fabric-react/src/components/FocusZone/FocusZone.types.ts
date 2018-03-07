@@ -7,9 +7,10 @@ import { FocusZone } from './FocusZone';
 export interface IFocusZone {
   /**
    * Sets focus to the first tabbable item in the zone.
+   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focus(): boolean;
+  focus(forceIntoFirstElement?: boolean): boolean;
 
   /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
@@ -107,8 +108,36 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Allows tab key to be handled to tab through a list of items in the focus zone,
    * an unfortunate side effect is that users will not be able to tab out of the focus zone
    * and have to hit escape or some other key.
+   * @deprecated Use 'handleTabKey' instead.
+   *
    */
   allowTabKey?: boolean;
+
+  /**
+   * Allows tab key to be handled to tab through a list of items in the focus zone,
+   * an unfortunate side effect is that users will not be able to tab out of the focus zone
+   * and have to hit escape or some other key.
+   */
+  handleTabKey?: FocusZoneTabbableElements;
+
+  /**
+   * Whether the to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * when determining how to move focus
+   * @default false
+   */
+  checkForNoWrap?: boolean;
+}
+
+export const enum FocusZoneTabbableElements {
+
+  /** Tabbing is not allowed */
+  none = 0,
+
+  /** All tabbing action is allowed */
+  all = 1,
+
+  /** Tabbing is allowed only on input elements */
+  inputOnly = 2
 }
 
 export enum FocusZoneDirection {

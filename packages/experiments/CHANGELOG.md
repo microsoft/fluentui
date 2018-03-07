@@ -1,6 +1,43 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+
+## 5.23.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Add Keytip and KeytipLayer to experiments export
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.23.0
+Mon, 05 Mar 2018 11:16:58 GMT
+
+### Minor changes
+
+- Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)
+
+## 5.22.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection
+
+### Patches
+
+- Add initial set of Keytip work
+
+## 5.21.0
+Fri, 16 Feb 2018 11:23:28 GMT
+
+### Minor changes
+
+- Removing Coachmark
+
+### Patches
+
+- Hook up onPaste for BaseExtendedPicker
 
 ## 5.20.0
 Wed, 14 Feb 2018 22:10:49 GMT

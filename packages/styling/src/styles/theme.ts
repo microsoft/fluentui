@@ -142,6 +142,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralDark,
+    inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
@@ -169,6 +170,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISema
     listItemBackgroundHovered: p.neutralLighter,
     listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt,
+
+    link: p.themePrimary,
+    linkHovered: p.themeDarker,
 
     // Deprecated slots, fixed by _fixDeprecatedSlots()
     listTextColor: ''

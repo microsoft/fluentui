@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRenderFunction } from '../../Utilities';
+import { IRenderFunction, KeyCodes } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -223,6 +223,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   getSplitButtonClassNames?: (disabled: boolean,
     expanded: boolean,
     checked: boolean) => ISplitButtonClassNames;
+
+  /**
+  * Provides a custom KeyCode that can be used to open the button menu.
+  * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
+  */
+  menuTriggerKeyCode?: KeyCodes | null;
 }
 
 export enum ElementType {

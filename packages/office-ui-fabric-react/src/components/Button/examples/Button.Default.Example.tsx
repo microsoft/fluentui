@@ -10,7 +10,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
   public render() {
-    let { disabled, checked } = this.props;
+    const { disabled, checked } = this.props;
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles);
@@ -23,7 +23,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            text='Butjon'
+            text='Button'
           />
         </div>
         <div>
@@ -33,7 +33,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }
-            text='Butjon'
+            text='Button'
             onClick={ this._alertClicked }
           />
         </div>

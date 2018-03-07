@@ -11,7 +11,7 @@ describe('Pivot', () => {
         <PivotItem linkText='' />
         <PivotItem linkText='' />
       </Pivot>);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

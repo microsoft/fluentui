@@ -34,14 +34,23 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   private _classNames: {[key in keyof IColorPickerGridCellStyles]: string };
 
   public render() {
-    let {
+    const {
       item,
       id,
       selected,
       disabled,
       getStyles,
       theme,
-      circle
+      circle,
+      color,
+      onClick,
+      onHover,
+      onFocus,
+      onMouseEnter,
+      onMouseMove,
+      onMouseLeave,
+      onWheel,
+      onKeyDown
     } = this.props;
 
     this._classNames = getClassNames(
@@ -51,25 +60,31 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         disabled,
         selected,
         circle,
-        isWhite: this._isWhiteCell(this.props.color)
+        isWhite: this._isWhiteCell(color)
       }
     );
 
     return (
       <ColorCell
         item={ item }
-        id={ id }
+        id={ `${id}-${item.id}-${item.index}` }
         key={ item.id }
         disabled={ disabled }
         role={ 'gridcell' }
         onRenderItem={ this._onRenderColorOption }
         selected={ selected }
-        onClick={ this.props.onClick }
-        onHover={ this.props.onHover }
-        onFocus={ this.props.onFocus }
+        onClick={ onClick }
+        onHover={ onHover }
+        onFocus={ onFocus }
         label={ item.label }
         className={ this._classNames.colorCell }
         getClassNames={ this._getClassNames }
+        index={ item.index }
+        onMouseEnter={ onMouseEnter }
+        onMouseMove={ onMouseMove }
+        onMouseLeave={ onMouseLeave }
+        onWheel={ onWheel }
+        onKeyDown={ onKeyDown }
       />
     );
   }
@@ -92,11 +107,11 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     );
   }
 
-  /**
-* Validate if the cell's color is white or not to apply whiteCell style
-* @param inputColor - The color of the current cell
-* @returns - Whether the cell's color is white or not.
-*/
+ /**
+  * Validate if the cell's color is white or not to apply whiteCell style
+  * @param inputColor - The color of the current cell
+  * @returns - Whether the cell's color is white or not.
+  */
   private _isWhiteCell(inputColor: string | undefined): boolean {
     return inputColor!.toLocaleLowerCase() === '#ffffff';
   }
@@ -115,7 +130,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined): IButtonClassNames {
-    let styles = getActionButtonStyles(theme);
+    const styles = getActionButtonStyles(theme);
     return mergeStyleSets(this._classNames as {}, {
       root: [
         'ms-Button',

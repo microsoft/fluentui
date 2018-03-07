@@ -18,8 +18,13 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   componentRef?: (component: ISearchBox) => void;
 
   /**
-  * Label text for the SearchBox.
-  * @default "Search"
+   * Placeholder for the search box.
+   */
+  placeholder?: string;
+
+  /**
+  * Deprecated. Use placeholder instead.
+  * @deprecated
   */
   labelText?: string;
 
@@ -66,7 +71,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The aria label of the SearchBox for the benefit of screen readers.
-   * @defaultvalue labelText
+   * @defaultvalue placeholder
    */
   ariaLabel?: string;
 

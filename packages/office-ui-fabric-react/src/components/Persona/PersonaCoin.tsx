@@ -12,7 +12,6 @@ import { PersonaPresence } from './PersonaPresence';
 import {
   IPersonaProps,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaInitialsColor,
   PersonaSize
 } from './Persona.types';
 import {
@@ -68,22 +67,17 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   }
 
   public render(): JSX.Element | null {
-    let {
+    const {
       coinProps,
       coinSize,
       imageUrl,
-      imageAlt,
-      initialsColor,
-      primaryText,
-      imageShouldFadeIn,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
-      imageShouldStartVisible
-     } = this.props;
+    } = this.props;
 
-    let size = this.props.size as PersonaSize;
-    let divProps = getNativeProps(this.props, divProperties);
-    let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
+    const size = this.props.size as PersonaSize;
+    const divProps = getNativeProps(this.props, divProperties);
+    const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
     return (
       <div
@@ -136,7 +130,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   @autobind
   private _onRenderCoin(props: IPersonaProps): JSX.Element | null {
-    let {
+    const {
       coinSize,
       imageUrl,
       imageAlt,
@@ -144,9 +138,9 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       imageShouldStartVisible
     } = this.props;
 
-    let size = this.props.size as PersonaSize;
+    const size = this.props.size as PersonaSize;
 
-    return(
+    return (
       <Image
         className={ css('ms-Persona-image', styles.image) }
         imageFit={ ImageFit.cover }
@@ -163,12 +157,10 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   @autobind
   private _onRenderInitials(props: IPersonaProps): JSX.Element {
-    let {
-      imageInitials,
-      primaryText
-    } = props;
+    let { imageInitials } = props;
+    const { primaryText } = props;
 
-    let isRTL = getRTL();
+    const isRTL = getRTL();
 
     imageInitials = imageInitials || getInitials(primaryText, isRTL);
 

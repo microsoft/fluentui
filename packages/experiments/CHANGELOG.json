@@ -2,6 +2,107 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.23.1",
+      "tag": "@uifabric/experiments_v5.23.1",
+      "date": "Tue, 06 Mar 2018 02:06:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "caad61fa2976154001c279b61ea0f597752f1115",
+            "comment": "Add Keytip and KeytipLayer to experiments export"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "8a4dc859a5f8016b630220775caa98691ddf5345",
+            "comment": "Replaced PureComponent with Component to appease website's UHF react version."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.59.0 <6.0.0` to `>=5.59.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.23.0",
+      "tag": "@uifabric/experiments_v5.23.0",
+      "date": "Mon, 05 Mar 2018 11:16:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "5e24983e16790428d43d3c8252f361bc32c7f99f",
+            "comment": "Converting Image SCSS to MergeStyles step 2 - style conversion (snapshots updated)"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.58.0 <6.0.0` to `>=5.59.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.22.0",
+      "tag": "@uifabric/experiments_v5.22.0",
+      "date": "Fri, 02 Mar 2018 11:25:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "1340339d7c62eeb1b526f08d9edbd7fe44b398f3",
+            "comment": "BaseExtendedPicker: Create component to wrap the rendered item, so users get contextual menu if certain props are present, get rid of loading state, fix autofocus on input after suggestion selection"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "44ca7b84a94649581e68a693971891fb1a834720",
+            "comment": "Add initial set of Keytip work"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.57.0 <6.0.0` to `>=5.58.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=5.4.2 <6.0.0` to `>=5.5.0 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.2.2 <6.0.0` to `>=5.3.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "5.21.0",
+      "tag": "@uifabric/experiments_v5.21.0",
+      "date": "Fri, 16 Feb 2018 11:23:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "amyngu <31973030+amyngu@users.noreply.github.com>",
+            "commit": "01b3c8a05ea5c33bd1a12bda479f7587f02eb8eb",
+            "comment": "Hook up onPaste for BaseExtendedPicker"
+          }
+        ],
+        "minor": [
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "44b167af31b9b6dd079359209f101f1af10762a5",
+            "comment": "Removing Coachmark"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.50.0 <6.0.0` to `>=5.51.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.20.0",
       "tag": "@uifabric/experiments_v5.20.0",
       "date": "Wed, 14 Feb 2018 22:10:49 GMT",

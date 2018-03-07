@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   ComboBox,
-  IComboBoxProps,
   IComboBoxOption,
   VirtualizedComboBox
 } from 'office-ui-fabric-react/lib/ComboBox';
@@ -62,7 +61,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
   }
 
   public render() {
-    let { options, selectedOptionKey, value } = this.state;
+    const { options, selectedOptionKey, value } = this.state;
 
     return (
       <div className='ms-ComboBoxBasicExample'>
@@ -81,7 +80,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           onMenuOpen={ () => console.log('ComboBox menu opened') }
-          // tslint:enable:jsx-no-lambda
+        // tslint:enable:jsx-no-lambda
         />
 
         <PrimaryButton
@@ -264,7 +263,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
       return this.state.options;
     }
 
-    let newOptions =
+    const newOptions =
       [
         { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
         { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
@@ -303,7 +302,7 @@ export class ComboBoxBasicExample extends React.Component<{}, {
         value: undefined
       });
     } else if (value !== undefined) {
-      let newOption: IComboBoxOption = { key: value, text: value };
+      const newOption: IComboBoxOption = { key: value, text: value };
 
       this.setState({
         options: [...this.state.options, newOption],

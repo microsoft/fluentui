@@ -9,6 +9,30 @@
 	},
 	"glyphs": [
 		{
+			"name": "ProjectLogo16",
+			"unicode": "F480"
+		},
+		{
+			"name": "ProjectLogoFill16",
+			"unicode": "F481"
+		},
+		{
+			"name": "SwayLogo32",
+			"unicode": "F482"
+		},
+		{
+			"name": "SwayLogoFill32",
+			"unicode": "F483"
+		},
+		{
+			"name": "SwayLogo16",
+			"unicode": "F484"
+		},
+		{
+			"name": "SwayLogoFill16",
+			"unicode": "F485"
+		},
+		{
 			"name": "ClassNotebookLogo32",
 			"unicode": "F486"
 		},
@@ -383,30 +407,6 @@
 		{
 			"name": "Padding",
 			"unicode": "F518"
-		},
-		{
-			"name": "PaddingTop",
-			"unicode": "F519"
-		},
-		{
-			"name": "PaddingBottom",
-			"unicode": "F51A"
-		},
-		{
-			"name": "PaddingLeft",
-			"unicode": "F51B"
-		},
-		{
-			"name": "PaddingRight",
-			"unicode": "F51C"
-		},
-		{
-			"name": "NavigationFlipper",
-			"unicode": "F51D"
-		},
-		{
-			"name": "AlignJustify",
-			"unicode": "F51E"
 		}
 	]
 }

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 14 Feb 2018 22:10:50 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Mar 2018 11:25:35 GMT and should not be manually modified.
+
+## 5.13.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+
+## 5.12.2
+Wed, 21 Feb 2018 11:12:11 GMT
+
+### Patches
+
+- Adding test coverage for media queries.
+
+## 5.12.1
+Fri, 16 Feb 2018 11:23:29 GMT
+
+### Patches
+
+- mergeStyles: setting `fill-opacity` as unitless.
 
 ## 5.12.0
 Wed, 14 Feb 2018 22:10:50 GMT

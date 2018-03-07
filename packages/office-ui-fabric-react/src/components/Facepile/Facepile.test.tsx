@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
-import { mount, shallow, ReactWrapper } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
@@ -39,7 +39,7 @@ describe('Facepile', () => {
 
   it('renders Facepile correctly', () => {
     const component = renderer.create(<Facepile personas={ facepilePersonas } />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
