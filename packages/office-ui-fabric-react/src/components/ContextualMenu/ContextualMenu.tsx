@@ -805,7 +805,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
    */
   private _updateFocusOnMouseEvent(item: any, ev: React.MouseEvent<HTMLElement>) {
     const targetElement = ev.currentTarget as HTMLElement;
-    const timeoutDuration = this.props.subMenuHoverDelay !== undefined ? this.props.subMenuHoverDelay : this._navigationIdleDelay;
+    const { subMenuHoverDelay: timeoutDuration = this._navigationIdleDelay } = this.props;
 
     if (item.key === this.state.expandedMenuItemKey) {
       return;
