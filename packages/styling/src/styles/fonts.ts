@@ -37,7 +37,7 @@ export namespace LocalizedFontFamilies {
   export const Selawik = `'${LocalizedFontNames.Selawik}'`;
   export const Thai = `'Leelawadee UI Web', 'Kmer UI'`;
   export const Vietnamese = `'${LocalizedFontNames.Vietnamese}'`;
-  export const WestEuropean = `'${LocalizedFontNames.WestEuropean}'`;
+  export const WestEuropean = `'Segoe UI', '${LocalizedFontNames.WestEuropean}'`;
 }
 
 // Mapping of language prefix to to font family.
@@ -118,7 +118,7 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
 }
 
 function _getFontFamily(language: string | null): string {
-  let fontFamily = `'Segoe UI', ${LocalizedFontFamilies.WestEuropean}`;
+  let fontFamily = LocalizedFontFamilies.WestEuropean;
 
   for (let lang in LanguageToFontMap) {
     if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
