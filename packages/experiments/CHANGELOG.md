@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 06 Mar 2018 02:06:59 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Mar 2018 11:16:50 GMT and should not be manually modified.
+
+## 5.24.0
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Minor changes
+
+- add clearInput on BaseExtendedPicker
 
 ## 5.23.1
 Tue, 06 Mar 2018 02:06:59 GMT

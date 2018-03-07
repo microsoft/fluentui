@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Mar 2018 11:13:36 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Mar 2018 11:16:50 GMT and should not be manually modified.
+
+## 5.60.1
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Patches
+
+- Fix ContextualMenu customization sample
+- TeachingBubble: New animation for bounce with fade in.
 
 ## 5.60.0
 Tue, 06 Mar 2018 11:13:36 GMT
