@@ -52,6 +52,6 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
     );
   }) as IWrappedComponent<TComponentProps>;
 
-  Wrapped.displayName = `Styled${Component.displayName}`;
+  Wrapped.displayName = `Styled${Component.displayName || Component.name}`;
   return Wrapped;
 }
