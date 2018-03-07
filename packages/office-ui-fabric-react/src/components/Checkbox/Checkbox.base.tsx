@@ -113,7 +113,7 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
       >
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>
-            <Icon iconName='CheckMark' {...checkmarkIconProps} className={ this._classNames.checkmark } />
+            <Icon iconName='CheckMark' { ...checkmarkIconProps } className={ this._classNames.checkmark } />
           </div>
           { onRenderLabel(this.props, this._onRenderLabel) }
         </label>

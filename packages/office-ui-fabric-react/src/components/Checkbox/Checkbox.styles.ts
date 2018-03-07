@@ -3,7 +3,8 @@ import {
   ITheme,
   concatStyleSets,
   getFocusStyle,
-  FontSizes
+  FontSizes,
+  HighContrastSelector
 } from '../../Styling';
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
@@ -104,7 +105,13 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       },
       !disabled && checked && {
         background: checkboxBackgroundChecked,
-        borderColor: checkboxBorderColorChecked
+        borderColor: checkboxBorderColorChecked,
+
+        selectors: {
+          [HighContrastSelector]: {
+            background: 'windowtext'
+          }
+        }
       },
       disabled && {
         background: checkboxBackgroundDisabled,
@@ -117,7 +124,13 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
     ],
     checkmark: {
       opacity: checked ? '1' : '0',
-      color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor
+      color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'window'
+        }
+      }
     },
     text: [
       'ms-Checkbox-text',
