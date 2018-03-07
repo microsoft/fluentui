@@ -5,6 +5,7 @@ import {
   ComponentPage
 } from '@uifabric/example-app-base';
 import { KeytipBasicExample } from './examples/Keytip.Basic.Example';
+import { KeytipOffsetExample } from './examples/Keytip.Offset.Example';
 import { KeytipDisabledExample } from './examples/Keytip.Disabled.Example';
 import { KeytipLanguageExample } from './examples/Keytip.Language.Example';
 import { KeytipLayer } from '../../KeytipLayer';
@@ -20,6 +21,9 @@ export class KeytipPage extends React.Component<IComponentDemoPageProps, {}> {
             <div>
               <ExampleCard title='Basic Keytip'>
                 <KeytipBasicExample />
+              </ExampleCard>
+              <ExampleCard title='Offset Keytip'>
+                <KeytipOffsetExample />
               </ExampleCard>
               <ExampleCard title='Disabled Keytip'>
                 <KeytipDisabledExample />

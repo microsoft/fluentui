@@ -48,7 +48,6 @@ export class KeytipBasicExample extends React.Component<{}, IKeytipExampleState>
         />
         <Keytip
           content={ this.keytipMap.Keytip1.content }
-          offset={ -8 }
           keySequences={ this.keytipMap.Keytip1.keySequences }
           visible={ this.state.keytipVisible }
         />

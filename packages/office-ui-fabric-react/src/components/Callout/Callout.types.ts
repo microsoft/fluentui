@@ -29,6 +29,12 @@ export interface ICalloutProps {
   target?: Element | string | MouseEvent | IPoint | null;
 
   /**
+   * Function that should return a valid 'target' to be used
+   * If this is defined, will override 'target' if also defined
+   */
+  getTarget?: () => Element | string | MouseEvent | IPoint | null;
+
+  /**
    * How the element should be positioned
    * @default DirectionalHint.BottomAutoEdge
    */

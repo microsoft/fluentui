@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
+import { BaseComponent, IPoint, getDocument } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../ContextualMenu';
 import { IKeytip, IKeytipProps } from './Keytip.types';
@@ -23,19 +23,47 @@ export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
 
   public render(): JSX.Element {
     const {
-      calloutProps,
       keySequences,
-      offset = 0 // Default value for gap is 0
+      offset
     } = this.props;
+    let {
+      calloutProps
+    } = this.props;
+
+    const keytipTarget = constructKeytipTargetFromSequences(keySequences);
+    if (offset) {
+      calloutProps = {
+        ...calloutProps,
+        getTarget: (): Element | string | MouseEvent | IPoint | null => {
+          const currentDoc: Document = getDocument()!;
+          const targetEl = currentDoc ? currentDoc.querySelector(keytipTarget) as Element : undefined;
+          if (targetEl) {
+            const targetRect = targetEl.getBoundingClientRect();
+            // Add keytip offset to the top-left of the target
+            return { x: targetRect.left + offset.x, y: targetRect.top + offset.y };
+          }
+          return null;
+        }
+      };
+    } else {
+      calloutProps = {
+        ...calloutProps,
+        target: keytipTarget
+      };
+    }
+
+    if (!calloutProps.directionalHint) {
+      calloutProps = {
+        ...calloutProps,
+        directionalHint: DirectionalHint.bottomCenter
+      }
+    }
 
     return (
       <Callout
         { ...calloutProps }
-        gapSpace={ offset }
         isBeakVisible={ false }
         doNotLayer={ true }
-        directionalHint={ DirectionalHint.bottomCenter }
-        target={ constructKeytipTargetFromSequences(keySequences) }
         getStyles={ getCalloutStyles }
         preventDismissOnScroll={ true }
       >

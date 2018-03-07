@@ -1,6 +1,6 @@
 import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunction, IKeySequence } from '../../Utilities';
+import { IStyleFunction, IKeySequence, IPoint } from '../../Utilities';
 
 export interface IKeytip {
 }
@@ -86,12 +86,11 @@ export interface IKeytipProps {
   getStyles?: IStyleFunction<IKeytipStyleProps, IKeytipStyles>;
 
   /**
-   * Offset distance in px between the target element and the positioning of the keytip
+   * Offset x and y for the keytip, added from the top-left corner
    *
-   * @type {number}
-   * @default 0
+   * @type {IPoint}
    */
-  offset?: number;
+  offset?: IPoint;
 
   /**
    * Whether or not this node has children nodes or not. Should be used for menus/overflow components, that have

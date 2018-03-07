@@ -385,6 +385,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
+    // Override target with getTarget function provided
+    if (this.props.getTarget) {
+      target = this.props.getTarget();
+    }
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
@@ -429,7 +433,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
-    const { useTargetPoint, targetPoint, target } = props;
-    return useTargetPoint ? targetPoint! : target!;
+    const { useTargetPoint, targetPoint, target, getTarget } = props;
+    if (useTargetPoint) {
+      return targetPoint!;
+    }
+    if (getTarget) {
+      return getTarget();
+    }
+    return target!;
   }
 }
