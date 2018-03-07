@@ -98,7 +98,7 @@ function _isPageActive(page: INavPage): boolean {
     return true;
   }
 
-  const hashCount = path.split('#').length - 1
+  const hashCount = path.split('#').length - 1;
   if (hashCount > 1) {
     path = getPathMinusLastHash(path);
   }
