@@ -118,7 +118,7 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
 }
 
 function _getFontFamily(language: string | null): string {
-  let fontFamily = LocalizedFontFamilies.WestEuropean;
+  let fontFamily = `'Segoe UI', ${LocalizedFontFamilies.WestEuropean}`;
 
   for (let lang in LanguageToFontMap) {
     if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
