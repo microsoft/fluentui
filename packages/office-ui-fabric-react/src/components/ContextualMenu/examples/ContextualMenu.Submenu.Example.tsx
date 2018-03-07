@@ -3,11 +3,11 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './ContextualMenuExample.scss';
 
-export interface ContextualMenuSubmenuExampleState {
+export interface IContextualMenuSubmenuExampleState {
   hoverDelay: number;
 }
 
-export class ContextualMenuSubmenuExample extends React.Component<any, ContextualMenuSubmenuExampleState> {
+export class ContextualMenuSubmenuExample extends React.Component<any, IContextualMenuSubmenuExampleState> {
 
   constructor(props: any) {
     super(props);
