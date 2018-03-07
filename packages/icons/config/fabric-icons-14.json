@@ -9,12 +9,24 @@
 	},
 	"glyphs": [
 		{
-			"name": "Phishing",
-			"unicode": "F679"
+			"name": "PublishCourse",
+			"unicode": "F699"
 		},
 		{
-			"name": "CreateMailRule",
-			"unicode": "F67A"
+			"name": "DictionaryRemove",
+			"unicode": "F69A"
+		},
+		{
+			"name": "UserRemove",
+			"unicode": "F69B"
+		},
+		{
+			"name": "UserEvent",
+			"unicode": "F69C"
+		},
+		{
+			"name": "Encryption",
+			"unicode": "F69D"
 		}
 	]
 }

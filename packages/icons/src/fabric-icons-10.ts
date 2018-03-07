@@ -1,4 +1,4 @@
-// Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+  // Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
 
 // tslint:disable:max-line-length
 
@@ -22,9 +22,19 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-10"`,
-      src: `url('${baseUrl}fabric-icons-10-90d2dc10.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-10-380f2273.woff') format('woff')`,
     },
     icons: {
+      'FullWidthEdit': '\uF2FF',
+      'Plug': '\uF300',
+      'PlugSolid': '\uF301',
+      'PlugConnected': '\uF302',
+      'PlugDisconnected': '\uF303',
+      'UnlockSolid': '\uF304',
+      'Variable': '\uF305',
+      'Parameter': '\uF306',
+      'CommentUrgent': '\uF307',
+      'Storyboard': '\uF308',
       'DiffInline': '\uF309',
       'DiffSideBySide': '\uF30A',
       'ImageDiff': '\uF30B',
@@ -114,13 +124,7 @@ export function initializeIcons(
       'DoubleChevronLeft8': '\uF36D',
       'DoubleChevronRight8': '\uF36E',
       'ChevronDownEnd6': '\uF36F',
-      'ChevronUpEnd6': '\uF370',
-      'ChevronLeftEnd6': '\uF371',
-      'ChevronRightEnd6': '\uF372',
-      'ContextMenu': '\uF37C',
-      'AzureAPIManagement': '\uF37F',
-      'AzureServiceEndpoint': '\uF380',
-      'VSTSLogo': '\uF381'
+      'ChevronUpEnd6': '\uF370'
     }
   };
 

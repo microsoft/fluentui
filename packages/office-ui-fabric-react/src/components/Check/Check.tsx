@@ -1,4 +1,4 @@
-import { styled } from '@uifabric/utilities';
+import { styled } from '../../Utilities';
 import {
   ICheckProps,
   ICheckStyleProps,

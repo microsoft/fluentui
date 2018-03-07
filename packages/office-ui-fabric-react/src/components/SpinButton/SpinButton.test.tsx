@@ -630,8 +630,6 @@ describe('SpinButton', () => {
       />
     );
 
-    // Assert on the input element.
-    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
 
     ReactTestUtils.Simulate.mouseDown(buttonDOM,

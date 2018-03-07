@@ -57,15 +57,16 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     className=
 
         {
-          border-color: #c8c8c8;
+          border-color: #a6a6a6;
           border-style: solid;
           border-width: 1px;
+          box-sizing: border-box;
           display: flex;
-          height: 26px;
+          height: 32px;
           min-width: 86px;
         }
         &:hover {
-          border-color: #666666;
+          border-color: #212121;
           outline: 2px dashed transparent;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
@@ -98,10 +99,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             min-width: 72px;
             outline: 0;
             overflow: hidden;
-            padding-bottom: 4px;
-            padding-left: 4px;
-            padding-right: 3px;
-            padding-top: 3px;
+            padding-bottom: 0;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 0;
             text-overflow: ellipsis;
             user-select: text;
             width: calc(100% - 14px);
@@ -198,11 +199,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             }
             &:hover {
               background-color: #eaeaea;
-              color: #004578;
+              color: #000000;
             }
             &:active {
-              background-color: #0078d7;
-              color: #ffffff;
+              background-color: #c8c8c8;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
@@ -303,11 +304,11 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             }
             &:hover {
               background-color: #eaeaea;
-              color: #004578;
+              color: #000000;
             }
             &:active {
-              background-color: #0078d7;
-              color: #ffffff;
+              background-color: #c8c8c8;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;

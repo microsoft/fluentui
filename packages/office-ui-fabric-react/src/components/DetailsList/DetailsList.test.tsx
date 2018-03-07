@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
 import {
@@ -49,7 +48,7 @@ describe('DetailsList', () => {
     jest.useFakeTimers();
 
     let component: any;
-    const wrapper = mount(
+    mount(
       <DetailsList
         items={ mockItems(5) }
         // tslint:disable-next-line:jsx-no-lambda
@@ -84,7 +83,7 @@ describe('DetailsList', () => {
     jest.useFakeTimers();
 
     let component: any;
-    const wrapper = mount(
+    mount(
       <DetailsList
         items={ mockItems(5) }
         // tslint:disable-next-line:jsx-no-lambda

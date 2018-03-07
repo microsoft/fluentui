@@ -82,7 +82,7 @@ describe('Pickers', () => {
       input.focus();
       input.value = 'bl';
 
-      ReactTestUtils.Simulate.change(input);
+      ReactTestUtils.Simulate.input(input);
 
       const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
@@ -114,7 +114,7 @@ describe('Pickers', () => {
       let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
       input.focus();
       input.value = 'bl';
-      ReactTestUtils.Simulate.change(input);
+      ReactTestUtils.Simulate.input(input);
 
       const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
@@ -191,7 +191,7 @@ describe('Pickers', () => {
       input.focus();
       input.value = 'bl';
 
-      ReactTestUtils.Simulate.change(input);
+      ReactTestUtils.Simulate.input(input);
 
       const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
@@ -221,7 +221,7 @@ describe('Pickers', () => {
 
       input.focus();
       input.value = 'bl';
-      ReactTestUtils.Simulate.change(input);
+      ReactTestUtils.Simulate.input(input);
 
       const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
@@ -262,7 +262,7 @@ describe('Pickers', () => {
 
       input.focus();
       input.value = 'bl';
-      ReactTestUtils.Simulate.change(input);
+      ReactTestUtils.Simulate.input(input);
 
       const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
