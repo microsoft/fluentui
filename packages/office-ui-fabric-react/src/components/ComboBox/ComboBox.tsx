@@ -235,7 +235,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this._select();
     }
 
-    this._notifyPreviewChanged(prevState);
+    this._notifyPendingValueChanged(prevState);
 
     if (isOpen && !prevState.isOpen && onMenuOpen) {
       onMenuOpen();
@@ -1243,7 +1243,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  private _notifyPreviewChanged(prevState: IComboBoxState) {
+  private _notifyPendingValueChanged(prevState: IComboBoxState) {
     const { onPendingValueChanged } = this.props;
 
     if (!onPendingValueChanged) {
@@ -1272,7 +1272,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
-    if (newPendingIndex || newPendingValue || this._hasPendingValue) {
+    if (newPendingIndex !== undefined || newPendingValue || this._hasPendingValue) {
       onPendingValueChanged(newPendingIndex ? currentOptions[newPendingIndex] : undefined, newPendingIndex, newPendingValue);
       this._hasPendingValue = newPendingIndex !== undefined || newPendingValue !== undefined;
     }
