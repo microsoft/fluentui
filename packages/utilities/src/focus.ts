@@ -104,7 +104,6 @@ export function getPreviousElement(
         return childMatch;
       }
 
-      // Check previous sibling of the child match.
       const childMatchSiblingMatch = getPreviousElement(
         rootElement,
         childMatch.previousElementSibling as HTMLElement,
@@ -119,13 +118,13 @@ export function getPreviousElement(
         return childMatchSiblingMatch;
       }
 
-      const childMatchParent = childMatch.parentElement;
+      let childMatchParent = childMatch.parentElement;
 
-      // If we didn't find a match from the previous siblings
-      // of the child element, move to the parent's previous sibling
-      // as long as the parent element exists and
-      // it is also not the currentElement (which will be handled later)
-      if (childMatchParent && childMatchParent !== currentElement) {
+      // At this point if we have not found any potential matches
+      // start looking at the rest of the subtree under the currentParent.
+      // NOTE: We do not want to recurse here because doing so could
+      // cause elements to get skipped.
+      while (childMatchParent && childMatchParent !== currentElement) {
         const childMatchParentMatch = getPreviousElement(
           rootElement,
           childMatchParent.previousElementSibling as HTMLElement,
@@ -140,6 +139,8 @@ export function getPreviousElement(
         if (childMatchParentMatch) {
           return childMatchParentMatch;
         }
+
+        childMatchParent = childMatchParent.parentElement;
       }
     }
   }

@@ -164,6 +164,8 @@ describe('FocusTrapZone', () => {
             <div data-is-visible={ true }>
               <div data-is-visible={ true }>
                 <button className='b'>b</button>
+                <button className='c'>c</button>
+                <button className='d'>d</button>
               </div>
             </div>
           </FocusZone>
@@ -176,6 +178,8 @@ describe('FocusTrapZone', () => {
     const buttonX = focusTrapZone.querySelector('.x') as HTMLElement;
     const buttonA = focusTrapZone.querySelector('.a') as HTMLElement;
     const buttonB = focusTrapZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusTrapZone.querySelector('.c') as HTMLElement;
+    const buttonD = focusTrapZone.querySelector('.d') as HTMLElement;
 
     // Assign bounding locations to buttons.
     setupElement(buttonX, {
@@ -186,6 +190,7 @@ describe('FocusTrapZone', () => {
         right: 30
       }
     });
+
     setupElement(buttonA, {
       clientRect: {
         top: 0,
@@ -201,6 +206,24 @@ describe('FocusTrapZone', () => {
         bottom: 30,
         left: 30,
         right: 60
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 0,
+        bottom: 30,
+        left: 60,
+        right: 90
+      }
+    });
+
+    setupElement(buttonD, {
+      clientRect: {
+        top: 30,
+        bottom: 60,
+        left: 0,
+        right: 30
       }
     });
 
