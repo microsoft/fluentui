@@ -5,7 +5,8 @@ import {
   IRawStyle,
   getFocusStyle,
   FontSizes,
-  hiddenContentStyle
+  hiddenContentStyle,
+  HighContrastSelector
 } from '../../Styling';
 
 const noOutline: IRawStyle = {
@@ -35,6 +36,8 @@ export const getStyles = memoizeFunction((
   const border = semanticColors.buttonBorder;
   const disabledBackground = semanticColors.disabledBackground;
   const disabledText = semanticColors.disabledText;
+  let buttonHighContrastFocus = getFocusStyle(theme, -2);
+  buttonHighContrastFocus.border = 'none';
 
   return {
     root: [
@@ -50,7 +53,10 @@ export const getStyles = memoizeFunction((
         cursor: 'pointer',
         verticalAlign: 'top',
         padding: '0 16px',
-        borderRadius: 0
+        borderRadius: 0,
+        selectors: {
+          [HighContrastSelector]: buttonHighContrastFocus
+        }
       }
     ],
 
