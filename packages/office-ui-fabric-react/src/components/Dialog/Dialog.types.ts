@@ -157,7 +157,35 @@ export interface IDialogStyleProps {
    */
   className?: string;
 
-  // Insert Dialog style props below
+  /**
+  * Optional override for container class
+  * @deprecated Pass through via modalProps.className instead
+  */
+  containerClassName?: string;
+
+  /**
+  * Optional override content class
+  * @deprecated Pass through via dialogContentProps instead as className
+  */
+  contentClassName?: string;
+
+  /**
+  * Whether the dialog is hidden.
+  * @default false
+  */
+  hidden?: boolean;
+
+  /**
+   * Default min-width for the dialog box.
+   * @defaultvalue '288px'
+   */
+  dialogDefaultMinWidth?: string;
+
+  /**
+   * Default max-width for the dialog box.
+   * @defaultvalue '340px'
+   */
+  dialogDefaultMaxWidth?: string;
 }
 
 export interface IDialogStyles {
@@ -165,6 +193,5 @@ export interface IDialogStyles {
    * Style for the root element.
    */
   root: IStyle;
-
-  // Insert Dialog classNames below
+  main: IStyle;
 }
