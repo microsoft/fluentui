@@ -52,7 +52,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   getRowAriaDescribedBy?: (item: any) => string;
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
-  customRowRenderer?: (props: IDetailsRowFieldsProps) => JSX.Element;
+  rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
 }
 
@@ -185,7 +185,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
-      customRowRenderer,
+      /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
+      rowFieldsAs: RowFields = DetailsRowFields,
       selection,
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
@@ -250,8 +251,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
         { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
-        { item && (!customRowRenderer) && (
-          <DetailsRowFields
+        { item && (
+          <RowFields
             columns={ columns }
             item={ item }
             itemIndex={ itemIndex }
@@ -259,22 +260,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             onRenderItemColumn={ onRenderItemColumn }
           />
         ) }
-
-        { item && customRowRenderer && customRowRenderer({
-          columns: columns,
-          item: item,
-          itemIndex: itemIndex,
-          columnStartIndex: 0
-        }
-        ) }
-
         { columnMeasureInfo && (
           <span
             role='presentation'
             className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
             ref={ this._resolveRef('_cellMeasurer') }
           >
-            <DetailsRowFields
+            <RowFields
               columns={ [columnMeasureInfo.column] }
               item={ item }
               itemIndex={ itemIndex }
