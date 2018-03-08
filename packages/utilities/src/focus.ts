@@ -102,11 +102,33 @@ export function getPreviousElement(
     if (childMatch) {
       if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
         return childMatch;
-      } else {
-        // Check previous sibling of the child match.
-        const childMatchSiblingMatch = getPreviousElement(
+      }
+
+      // Check previous sibling of the child match.
+      const childMatchSiblingMatch = getPreviousElement(
+        rootElement,
+        childMatch.previousElementSibling as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        tabbable
+      );
+      if (childMatchSiblingMatch) {
+        return childMatchSiblingMatch;
+      }
+
+      const childMatchParent = childMatch.parentElement;
+
+      // If we didn't find a match from the previous siblings
+      // of the child element, move to the parent's previous sibling
+      // as long as the parent element exists and
+      // it is also not the currentElement (which will be handled later)
+      if (childMatchParent && childMatchParent !== currentElement) {
+        const childMatchParentMatch = getPreviousElement(
           rootElement,
-          childMatch.previousElementSibling as HTMLElement,
+          childMatchParent.previousElementSibling as HTMLElement,
           true,
           true,
           true,
@@ -114,8 +136,9 @@ export function getPreviousElement(
           allowFocusRoot,
           tabbable
         );
-        if (childMatchSiblingMatch) {
-          return childMatchSiblingMatch;
+
+        if (childMatchParentMatch) {
+          return childMatchParentMatch;
         }
       }
     }
