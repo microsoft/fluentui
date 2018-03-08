@@ -13,7 +13,7 @@ import {
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { DetailsRowFields } from './DetailsRowFields';
+import { DetailsRowFields, IDetailsRowFieldsProps } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { CollapseAllVisibility } from '../../GroupedList';
@@ -52,6 +52,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   getRowAriaDescribedBy?: (item: any) => string;
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
+  rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   className?: string;
 }
 
@@ -184,6 +185,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
+      /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
+      rowFieldsAs: RowFields = DetailsRowFields,
       selection,
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
@@ -249,7 +252,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
         { item && (
-          <DetailsRowFields
+          <RowFields
             columns={ columns }
             item={ item }
             itemIndex={ itemIndex }
@@ -257,14 +260,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             onRenderItemColumn={ onRenderItemColumn }
           />
         ) }
-
         { columnMeasureInfo && (
           <span
             role='presentation'
             className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
             ref={ this._resolveRef('_cellMeasurer') }
           >
-            <DetailsRowFields
+            <RowFields
               columns={ [columnMeasureInfo.column] }
               item={ item }
               itemIndex={ itemIndex }
