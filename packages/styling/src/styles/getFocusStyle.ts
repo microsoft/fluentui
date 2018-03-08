@@ -1,6 +1,5 @@
 import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 import { ITheme } from '../interfaces/index';
-import { HighContrastSelector } from './CommonStyles';
 
 /**
  * Generates a focus style which can be used to define an :after focus border.
@@ -15,7 +14,8 @@ import { HighContrastSelector } from './CommonStyles';
 export function getFocusStyle(
   theme: ITheme,
   inset: number = 0,
-  position: 'relative' | 'absolute' = 'relative'
+  position: 'relative' | 'absolute' = 'relative',
+  color: string | undefined = undefined
 ): IRawStyle {
   return {
     outline: 'transparent',
@@ -34,7 +34,7 @@ export function getFocusStyle(
         top: inset + 1,
         bottom: inset + 1,
         right: inset + 1,
-        border: '1px solid ' + theme.palette.white,
+        border: '1px solid ' + color ? color : theme.palette.white,
         outline: '1px solid ' + theme.palette.neutralSecondary,
         zIndex: 1
       }
