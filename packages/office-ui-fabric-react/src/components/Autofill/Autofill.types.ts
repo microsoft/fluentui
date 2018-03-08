@@ -29,7 +29,7 @@ export interface IAutofill {
   /**
    * The current input element.
    */
-  inputElement: HTMLInputElement;
+  inputElement: HTMLInputElement | null;
   /**
    * Focus the input element.
    */

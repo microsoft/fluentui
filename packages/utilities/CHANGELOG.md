@@ -1,6 +1,35 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 22 Feb 2018 11:15:23 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Mar 2018 11:27:24 GMT and should not be manually modified.
+
+## 5.16.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added hoistStatics function to @customizable decorator so static methods work properly
+
+## 5.15.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Adds createRef polyfil to prepare for object refs.
+
+## 5.14.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Replaced PureComponent with Component to appease website's UHF react version.
+
+## 5.14.0
+Fri, 02 Mar 2018 11:25:35 GMT
+
+### Minor changes
+
+- Upgrade to TypeScript 2.7.2
+- Update KeyCodes enum to include all key codes
 
 ## 5.13.0
 Thu, 22 Feb 2018 11:15:23 GMT

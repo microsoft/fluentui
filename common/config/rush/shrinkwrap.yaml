@@ -1,7 +1,7 @@
 dependencies:
   '@microsoft/api-extractor': 4.3.7
-  '@microsoft/load-themed-styles': 1.7.36
-  '@microsoft/loader-load-themed-styles': 1.7.17
+  '@microsoft/load-themed-styles': 1.7.37
+  '@microsoft/loader-load-themed-styles': 1.7.18
   '@rush-temp/build': 'file:projects/build.tgz'
   '@rush-temp/example-app-base': 'file:projects/example-app-base.tgz'
   '@rush-temp/experiments': 'file:projects/experiments.tgz'
@@ -17,14 +17,14 @@ dependencies:
   '@rush-temp/test-bundle-button': 'file:projects/test-bundle-button.tgz'
   '@rush-temp/todo-app': 'file:projects/todo-app.tgz'
   '@rush-temp/utilities': 'file:projects/utilities.tgz'
+  '@rush-temp/variants': 'file:projects/variants.tgz'
   '@rush-temp/vr-tests': 'file:projects/vr-tests.tgz'
   '@storybook/addon-options': 3.2.3
-  '@storybook/react': 3.3.14
+  '@storybook/react': 3.3.15
   '@types/enzyme': 3.1.5
   '@types/enzyme-adapter-react-16': 1.0.1
   '@types/es6-promise': 0.0.32
   '@types/highlight.js': 9.12.2
-  '@types/jest': 22.2.0
   '@types/mocha': 2.2.39
   '@types/node': 8.0.26
   '@types/prop-types': 15.5.2
@@ -63,7 +63,7 @@ dependencies:
   mustache: 2.3.0
   node-sass: 4.7.2
   office-ui-fabric-core: 9.4.0
-  office-ui-fabric-react: 5.59.1
+  office-ui-fabric-react: 5.61.0
   open: 0.0.5
   performance-now: 2.1.0
   postcss: 6.0.19
@@ -88,12 +88,12 @@ dependencies:
   tslint: 5.9.1
   tslint-microsoft-contrib: 5.0.3
   tslint-react: 3.5.1
-  typescript: 2.6.2
+  typescript: 2.7.2
   uglifyjs-webpack-plugin: 0.4.6
   webpack: 3.11.0
   webpack-bundle-analyzer: 2.11.1
   webpack-dev-server: 2.11.2
-  webpack-notifier: 1.5.1
+  webpack-notifier: 1.6.0
   write-file-webpack-plugin: 4.2.0
   yargs: 6.6.0
 packages:
@@ -127,17 +127,17 @@ packages:
     dev: false
     resolution:
       integrity: sha1-lwkA2yt7qjbQxTzmS6eZfMAri3o=
-  /@microsoft/load-themed-styles/1.7.36:
+  /@microsoft/load-themed-styles/1.7.37:
     dev: false
     resolution:
-      integrity: sha1-zgSo25lN0zksUK4U3xWIjociuVk=
-  /@microsoft/loader-load-themed-styles/1.7.17:
+      integrity: sha1-jWAJh7HTbuZtFZLYilg1IdrgYyc=
+  /@microsoft/loader-load-themed-styles/1.7.18:
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       loader-utils: 1.1.0
     dev: false
     resolution:
-      integrity: sha1-n0KTh+nbBfmAjQ/V5NBPB9MgvA8=
+      integrity: sha1-l4lNYNRo7w7DaY9LZrHqxdwQs04=
   /@microsoft/node-core-library/0.3.24:
     dependencies:
       '@types/fs-extra': 0.0.37
@@ -164,9 +164,9 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ls6CAMA6/5gG+O/IdsBcblvnd8qcO/l1TYoNeAzp3wcISOxlPXQEus0mLcdwazEkWjaBdaJ3TaxmNgCLWwvWzg==
-  /@storybook/addon-actions/3.3.14/5b9c32959a3bcfa89ca18afcac39981e:
+  /@storybook/addon-actions/3.3.15/8354a8e82d272778804b3598904ef203:
     dependencies:
-      '@storybook/addons': 3.3.14
+      '@storybook/addons': 3.3.15
       deep-equal: 1.0.1
       global: 4.3.2
       make-error: 1.3.4
@@ -176,16 +176,16 @@ packages:
       react-inspector: /react-inspector/2.2.2/react@16.2.0
       uuid: 3.2.1
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/addon-actions/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/addon-actions/3.3.15
     peerDependencies: &ref_19
       '@storybook/addons': ^3.3.0
       react: '*'
       react-dom: '*'
     resolution:
-      integrity: sha512-MU+Sz80hlC3+VJW15yoa9y7mzsNechtd9X7WvugIB1Pg6AwY2IYNZoagy2dXwdBD6+sUTj1zWt0c7P7y5A/EAg==
-  /@storybook/addon-actions/3.3.14/@storybook!addons@3.3.14:
+      integrity: sha512-oo2ShFrBihswIEdVlt3Sl/b9Cxp5mYN8XhNni9NZC1vgPFwKeOm790zc3+N8cPDoiV++OVb699ujmG1sVNGkhA==
+  /@storybook/addon-actions/3.3.15/@storybook!addons@3.3.15:
     dependencies:
-      '@storybook/addons': 3.3.14
+      '@storybook/addons': 3.3.15
       deep-equal: 1.0.1
       global: 4.3.2
       make-error: 1.3.4
@@ -193,40 +193,40 @@ packages:
       react-inspector: 2.2.2
       uuid: 3.2.1
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/addon-actions/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/addon-actions/3.3.15
     peerDependencies: *ref_19
     resolution:
-      integrity: sha512-MU+Sz80hlC3+VJW15yoa9y7mzsNechtd9X7WvugIB1Pg6AwY2IYNZoagy2dXwdBD6+sUTj1zWt0c7P7y5A/EAg==
-  /@storybook/addon-links/3.3.14/5b9c32959a3bcfa89ca18afcac39981e:
+      integrity: sha512-oo2ShFrBihswIEdVlt3Sl/b9Cxp5mYN8XhNni9NZC1vgPFwKeOm790zc3+N8cPDoiV++OVb699ujmG1sVNGkhA==
+  /@storybook/addon-links/3.3.15/8354a8e82d272778804b3598904ef203:
     dependencies:
-      '@storybook/addons': 3.3.14
-      '@storybook/components': /@storybook/components/3.3.14/react-dom@16.2.0+react@16.2.0
+      '@storybook/addons': 3.3.15
+      '@storybook/components': /@storybook/components/3.3.15/react-dom@16.2.0+react@16.2.0
       global: 4.3.2
       prop-types: 15.6.1
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/addon-links/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/addon-links/3.3.15
     peerDependencies: &ref_21
       '@storybook/addons': ^3.3.0
       react: '*'
       react-dom: '*'
     resolution:
-      integrity: sha512-pD+/aOpGPcDQ/4h7UHA+nu3ye0w1KJ8GFz4MCX7a+38rYDUe1ePD5xmLT56zHCKqyKZgrrIoGZg/yEQjpQCJug==
-  /@storybook/addon-links/3.3.14/@storybook!addons@3.3.14:
+      integrity: sha512-driTEMoB2UV+1p1/NsHlT3Lcuk9ZHkKHcsUeduVSgEZ0mMJJqvYrTHoA5hN+9DTuhwiP26B8AEUPe2fzCiMrLw==
+  /@storybook/addon-links/3.3.15/@storybook!addons@3.3.15:
     dependencies:
-      '@storybook/addons': 3.3.14
-      '@storybook/components': 3.3.14
+      '@storybook/addons': 3.3.15
+      '@storybook/components': 3.3.15
       global: 4.3.2
       prop-types: 15.6.1
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/addon-links/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/addon-links/3.3.15
     peerDependencies: *ref_21
     resolution:
-      integrity: sha512-pD+/aOpGPcDQ/4h7UHA+nu3ye0w1KJ8GFz4MCX7a+38rYDUe1ePD5xmLT56zHCKqyKZgrrIoGZg/yEQjpQCJug==
+      integrity: sha512-driTEMoB2UV+1p1/NsHlT3Lcuk9ZHkKHcsUeduVSgEZ0mMJJqvYrTHoA5hN+9DTuhwiP26B8AEUPe2fzCiMrLw==
   /@storybook/addon-options/3.2.3:
     dependencies:
-      '@storybook/addons': 3.3.14
+      '@storybook/addons': 3.3.15
     dev: false
     peerDependencies: &ref_17
       react: '*'
@@ -235,7 +235,7 @@ packages:
       integrity: sha1-6jdA0onUKc52fpaZvzpkfddBWS0=
   /@storybook/addon-options/3.2.3/react-dom@16.2.0+react@16.2.0:
     dependencies:
-      '@storybook/addons': 3.3.14
+      '@storybook/addons': 3.3.15
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
@@ -243,27 +243,27 @@ packages:
     peerDependencies: *ref_17
     resolution:
       integrity: sha1-6jdA0onUKc52fpaZvzpkfddBWS0=
-  /@storybook/addons/3.3.14:
+  /@storybook/addons/3.3.15:
     dev: false
     resolution:
-      integrity: sha512-cVSowQdWOr/XxWk60ykr4a+0gnpVnfWkJ0pIbGQUBcq6tvGrAoZ76Cq18lYS7NHNL2lwoEQT3wBs7w0UaJtOTA==
-  /@storybook/channel-postmessage/3.3.14:
+      integrity: sha512-zObDm/l45Ay/XnLzQ0UDkRVVL4RBve3y6I9eB8mxItTusSHFb0KlbF9Xz4amZ1Eef7cBsOpXBoEyvyKFUck5SQ==
+  /@storybook/channel-postmessage/3.3.15:
     dependencies:
-      '@storybook/channels': 3.3.14
+      '@storybook/channels': 3.3.15
       global: 4.3.2
       json-stringify-safe: 5.0.1
     dev: false
     resolution:
-      integrity: sha512-xFmc2F/OKqrrdMjrvJTfADOl3+fKxKCs4vNr8w26k8gBLDp/JuoSomnar7kR7PfX9mAAfVgVle8erUMkHc0Tsg==
-  /@storybook/channels/3.3.14:
+      integrity: sha512-nQKO6gJzHbYyZDaUjMlIfPZNsZlgBoGnZCpn6idi/JWWe417mOxT0Cv6FUJQ0zWHz/E6Wjrn7/ms3MLV7aOpDA==
+  /@storybook/channels/3.3.15:
     dev: false
     resolution:
-      integrity: sha512-qrd7WnQDmdX0uMGbTmRKlLL9R8mrVClsT2Idb1YsL7gbTE2X4QyOTt4ANFeCmvZ8LxqOmEv5glcBmfBRNjBPgQ==
-  /@storybook/client-logger/3.3.14:
+      integrity: sha512-iIkmkNAILaGie1zGBLFQlv+1PM1SRSaqM+IEgCpq3JHd4ACWSw9k3kGQsxeahcyM0c8+gONHjOK88Hp6qoZr4Q==
+  /@storybook/client-logger/3.3.15:
     dev: false
     resolution:
-      integrity: sha512-dKuASmwvZqriu63CsNlvvUWyQ9EuYqS6sXmdy5yhusycFl+LfhvMMNKzENxb91ZSAcE75wH39VZVdLZTxsH9Fw==
-  /@storybook/components/3.3.14:
+      integrity: sha512-+UWvVSr3KrnDUa1JXv8cdirzcM9jrjcthgWajmvU6TlBnzvSqF6oHLeDTGOcNPp4zGg12kSCAjB3dnNdVEkZOw==
+  /@storybook/components/3.3.15:
     dependencies:
       glamor: 2.20.40
       glamorous: /glamorous/4.12.0/glamor@2.20.40
@@ -273,8 +273,8 @@ packages:
       react: '*'
       react-dom: '*'
     resolution:
-      integrity: sha512-MCUx0JWk21jspFUb/dqaqBB1ZCBHhSIHlkBt438+oub4CRlTHl5q3tDffyDUzgdzMULi1xubtEH8f9pet87A8w==
-  /@storybook/components/3.3.14/react-dom@16.2.0+react@16.2.0:
+      integrity: sha512-WgDh/gUPo18Buaf3JguXQx97tBehZzaXLcav3TBA37n20mOhprgADqpIu1tgmMKx3RVqMk57TtD0pNQuISqt0Q==
+  /@storybook/components/3.3.15/react-dom@16.2.0+react@16.2.0:
     dependencies:
       glamor: 2.20.40
       glamorous: /glamorous/4.12.0/glamor@2.20.40
@@ -282,10 +282,10 @@ packages:
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/components/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/components/3.3.15
     peerDependencies: *ref_22
     resolution:
-      integrity: sha512-MCUx0JWk21jspFUb/dqaqBB1ZCBHhSIHlkBt438+oub4CRlTHl5q3tDffyDUzgdzMULi1xubtEH8f9pet87A8w==
+      integrity: sha512-WgDh/gUPo18Buaf3JguXQx97tBehZzaXLcav3TBA37n20mOhprgADqpIu1tgmMKx3RVqMk57TtD0pNQuISqt0Q==
   /@storybook/mantra-core/1.7.2:
     dependencies:
       '@storybook/react-komposer': 2.0.3
@@ -294,13 +294,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GD4OYJ8GsayVhIg306sfgcKDk9j8YfuSKIAWvdB/g7IDlw0pDgueONALVEEE2XWJtCwcsUyDtCYzXFgCBWLEjA==
-  /@storybook/node-logger/3.3.14:
+  /@storybook/node-logger/3.3.15:
     dependencies:
       chalk: 2.3.2
       npmlog: 4.1.2
     dev: false
     resolution:
-      integrity: sha512-MBVr0J//5ENuDqNT5LWKTbLF7rmUJk0BpBnuJJrIif1Z+AfNs1gJz7MeL5V/3GNnUx8jc6NzNWCvNFJUIvf0uw==
+      integrity: sha512-7d9lQptj2N7WIR4FXUWXRmSIjDS05xXFhvjoC4wMHnTxNQUOnJsVbiInj2E1qinYU3YWZIU/mD0Y5n5vyEq7QA==
   /@storybook/podda/1.2.3:
     dependencies:
       babel-runtime: 6.26.0
@@ -371,18 +371,18 @@ packages:
     peerDependencies: *ref_25
     resolution:
       integrity: sha512-k+CHH+vA8bQfCmzBTtJsPkITFgD+C/w19KuByZ9WeEvNUFtnDaCqfP+Vp3/OR+3IAfAXYYOWolqPLxNPcEqEjw==
-  /@storybook/react/3.3.14:
+  /@storybook/react/3.3.15:
     dependencies:
-      '@storybook/addon-actions': /@storybook/addon-actions/3.3.14/@storybook!addons@3.3.14
-      '@storybook/addon-links': /@storybook/addon-links/3.3.14/@storybook!addons@3.3.14
-      '@storybook/addons': 3.3.14
-      '@storybook/channel-postmessage': 3.3.14
-      '@storybook/client-logger': 3.3.14
-      '@storybook/node-logger': 3.3.14
-      '@storybook/ui': 3.3.14
+      '@storybook/addon-actions': /@storybook/addon-actions/3.3.15/@storybook!addons@3.3.15
+      '@storybook/addon-links': /@storybook/addon-links/3.3.15/@storybook!addons@3.3.15
+      '@storybook/addons': 3.3.15
+      '@storybook/channel-postmessage': 3.3.15
+      '@storybook/client-logger': 3.3.15
+      '@storybook/node-logger': 3.3.15
+      '@storybook/ui': 3.3.15
       airbnb-js-shims: 1.4.1
       autoprefixer: 7.2.6
-      babel-loader: /babel-loader/7.1.3/webpack@3.11.0
+      babel-loader: /babel-loader/7.1.4/webpack@3.11.0
       babel-plugin-react-docgen: 1.8.3
       babel-plugin-transform-regenerator: 6.26.0
       babel-plugin-transform-runtime: 6.23.0
@@ -392,9 +392,9 @@ packages:
       babel-preset-react-app: /babel-preset-react-app/3.1.1/babel-runtime@6.26.0
       babel-preset-stage-0: 6.24.1
       babel-runtime: 6.26.0
-      case-sensitive-paths-webpack-plugin: 2.1.1
+      case-sensitive-paths-webpack-plugin: 2.1.2
       chalk: 2.3.2
-      commander: 2.14.1
+      commander: 2.15.0
       common-tags: 1.7.2
       configstore: 3.1.1
       core-js: 2.5.3
@@ -436,19 +436,19 @@ packages:
       react: '>=15.0.0 || ^16.0.0'
       react-dom: '>=15.0.0 || ^16.0.0'
     resolution:
-      integrity: sha512-qeeEhP5JyqmZKKbNdkSIj2SqWN1Q4bqy8ed+b+CS3gPoSGPy7DscbSwykllXvaTO9NASYGjFHG9b6hohQSQurw==
-  /@storybook/react/3.3.14/react-dom@16.2.0+react@16.2.0:
+      integrity: sha512-9ZNOU8eNeBiIaDEng5nSE1udvYRNmLmv+xVtaCTslDfRxtGxm3UufyFg3nMjLbiiSTUHLAURiu5CKS/NJOc8pw==
+  /@storybook/react/3.3.15/react-dom@16.2.0+react@16.2.0:
     dependencies:
-      '@storybook/addon-actions': /@storybook/addon-actions/3.3.14/5b9c32959a3bcfa89ca18afcac39981e
-      '@storybook/addon-links': /@storybook/addon-links/3.3.14/5b9c32959a3bcfa89ca18afcac39981e
-      '@storybook/addons': 3.3.14
-      '@storybook/channel-postmessage': 3.3.14
-      '@storybook/client-logger': 3.3.14
-      '@storybook/node-logger': 3.3.14
-      '@storybook/ui': /@storybook/ui/3.3.14/react-dom@16.2.0+react@16.2.0
+      '@storybook/addon-actions': /@storybook/addon-actions/3.3.15/8354a8e82d272778804b3598904ef203
+      '@storybook/addon-links': /@storybook/addon-links/3.3.15/8354a8e82d272778804b3598904ef203
+      '@storybook/addons': 3.3.15
+      '@storybook/channel-postmessage': 3.3.15
+      '@storybook/client-logger': 3.3.15
+      '@storybook/node-logger': 3.3.15
+      '@storybook/ui': /@storybook/ui/3.3.15/react-dom@16.2.0+react@16.2.0
       airbnb-js-shims: 1.4.1
       autoprefixer: 7.2.6
-      babel-loader: /babel-loader/7.1.3/webpack@3.11.0
+      babel-loader: /babel-loader/7.1.4/webpack@3.11.0
       babel-plugin-react-docgen: 1.8.3
       babel-plugin-transform-regenerator: 6.26.0
       babel-plugin-transform-runtime: 6.23.0
@@ -458,9 +458,9 @@ packages:
       babel-preset-react-app: /babel-preset-react-app/3.1.1/babel-runtime@6.26.0
       babel-preset-stage-0: 6.24.1
       babel-runtime: 6.26.0
-      case-sensitive-paths-webpack-plugin: 2.1.1
+      case-sensitive-paths-webpack-plugin: 2.1.2
       chalk: 2.3.2
-      commander: 2.14.1
+      commander: 2.15.0
       common-tags: 1.7.2
       configstore: 3.1.1
       core-js: 2.5.3
@@ -499,13 +499,13 @@ packages:
       webpack-dev-middleware: /webpack-dev-middleware/1.12.2/webpack@3.11.0
       webpack-hot-middleware: 2.21.2
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/react/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/react/3.3.15
     peerDependencies: *ref_18
     resolution:
-      integrity: sha512-qeeEhP5JyqmZKKbNdkSIj2SqWN1Q4bqy8ed+b+CS3gPoSGPy7DscbSwykllXvaTO9NASYGjFHG9b6hohQSQurw==
-  /@storybook/ui/3.3.14:
+      integrity: sha512-9ZNOU8eNeBiIaDEng5nSE1udvYRNmLmv+xVtaCTslDfRxtGxm3UufyFg3nMjLbiiSTUHLAURiu5CKS/NJOc8pw==
+  /@storybook/ui/3.3.15:
     dependencies:
-      '@storybook/components': 3.3.14
+      '@storybook/components': 3.3.15
       '@storybook/mantra-core': 1.7.2
       '@storybook/podda': 1.2.3
       '@storybook/react-komposer': 2.0.3
@@ -533,10 +533,10 @@ packages:
       react: '*'
       react-dom: '*'
     resolution:
-      integrity: sha512-aL5mqZ8WNW+bRGVaLuvCfxiLtKvorL9poXosgyc1jZurwi3Z05k7injkg16LuA1dE0wSib/mgHXjgzKXHN+Fhg==
-  /@storybook/ui/3.3.14/react-dom@16.2.0+react@16.2.0:
+      integrity: sha512-p9r7BzmHg9Rmy6zXAsHiUXFYiLot+3MblTfcuU1F7Rc7l3zoZmA6RjIH2TO8DpqYLZiMB+hSFBcLSXfSYKjpdg==
+  /@storybook/ui/3.3.15/react-dom@16.2.0+react@16.2.0:
     dependencies:
-      '@storybook/components': /@storybook/components/3.3.14/react-dom@16.2.0+react@16.2.0
+      '@storybook/components': /@storybook/components/3.3.15/react-dom@16.2.0+react@16.2.0
       '@storybook/mantra-core': 1.7.2
       '@storybook/podda': 1.2.3
       '@storybook/react-komposer': /@storybook/react-komposer/2.0.3/react@16.2.0
@@ -562,10 +562,10 @@ packages:
       react-treebeard: /react-treebeard/2.1.0/react-dom@16.2.0+react@16.2.0
       redux: 3.7.2
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@storybook/ui/3.3.14
+    id: onedrive.pkgs.visualstudio.com/@storybook/ui/3.3.15
     peerDependencies: *ref_23
     resolution:
-      integrity: sha512-aL5mqZ8WNW+bRGVaLuvCfxiLtKvorL9poXosgyc1jZurwi3Z05k7injkg16LuA1dE0wSib/mgHXjgzKXHN+Fhg==
+      integrity: sha512-p9r7BzmHg9Rmy6zXAsHiUXFYiLot+3MblTfcuU1F7Rc7l3zoZmA6RjIH2TO8DpqYLZiMB+hSFBcLSXfSYKjpdg==
   /@types/argparse/1.0.33:
     dev: false
     resolution:
@@ -601,6 +601,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-y5x0XD/WXDaGSyiTaTcKS4FurULJtSiYbGTeQd0m2LYZGBcZZ/7fM6t5H/DzeUF+kv8y6UfmF6yJABQsHcp9VQ==
+  /@types/jest/21.1.8:
+    dev: false
+    resolution:
+      integrity: sha512-hQbL8aBM/g5S++sM1gb4yC73Dg+FK3uYE+Ioht1RPy629+LV/RmH6q+e+jbQEwKJdWAP/YE4s67CPO+ElkMivg==
   /@types/jest/22.2.0:
     dev: false
     resolution:
@@ -682,16 +686,16 @@ packages:
       integrity: sha512-F45U4pVJbXYmP4pSXdSGa7uq9JhsaYovuA1COb7wXCgv4NWIRqdofTLGFF6rvVddK4hXxWN55ANo2DZUCU+CgA==
   /@uifabric/styling/5.19.0:
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@uifabric/merge-styles': 5.13.0
-      '@uifabric/utilities': 5.14.1
+      '@uifabric/utilities': 5.16.0
       tslib: 1.9.0
     dev: false
     resolution:
       integrity: sha512-XZw+RFaw6RscwAvAO7+w4MXbLI0/lVqBcriU65EKYLvBXvMbYry3cY4AxobQ/5e0LdjXs8YPOFHOJHfTvw18Gg==
-  /@uifabric/utilities/5.14.1:
+  /@uifabric/utilities/5.16.0:
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@uifabric/merge-styles': 5.13.0
       prop-types: 15.6.1
       tslib: 1.9.0
@@ -700,20 +704,20 @@ packages:
       react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
     resolution:
-      integrity: sha512-OM9DeAau0QgXD26GzmRUkyK3tPclPk2Rk5nc3XgCSlK0POXvlFqCqsPsJE+jZRTght+I2TqoTzqXlLc8CaUmRg==
-  /@uifabric/utilities/5.14.1/react-dom@16.2.0+react@16.2.0:
+      integrity: sha512-cPmAyGbi5hnNr4F6odQc5CHx1uJnxf6Kcea2Df7aLZgQ8hn9WIsrPRlI42T95xXwGAMr6HuCiLufnE3/IA9hEw==
+  /@uifabric/utilities/5.16.0/react-dom@16.2.0+react@16.2.0:
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@uifabric/merge-styles': 5.13.0
       prop-types: 15.6.1
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
       tslib: 1.9.0
     dev: false
-    id: onedrive.pkgs.visualstudio.com/@uifabric/utilities/5.14.1
+    id: onedrive.pkgs.visualstudio.com/@uifabric/utilities/5.16.0
     peerDependencies: *ref_12
     resolution:
-      integrity: sha512-OM9DeAau0QgXD26GzmRUkyK3tPclPk2Rk5nc3XgCSlK0POXvlFqCqsPsJE+jZRTght+I2TqoTzqXlLc8CaUmRg==
+      integrity: sha512-cPmAyGbi5hnNr4F6odQc5CHx1uJnxf6Kcea2Df7aLZgQ8hn9WIsrPRlI42T95xXwGAMr6HuCiLufnE3/IA9hEw==
   /abab/1.0.4:
     dev: false
     resolution:
@@ -745,7 +749,7 @@ packages:
       integrity: sha1-VbtemGkVB7dFedBRNBMhfDgMVM8=
   /acorn-globals/4.1.0:
     dependencies:
-      acorn: 5.5.0
+      acorn: 5.5.3
     dev: false
     resolution:
       integrity: sha512-KjZwU26uG3u6eZcfGbTULzFcsoz6pegNKtHPksZPOUsiKo5bUmiBPa38FuHZ/Eun+XYh/JCCkS9AS3Lu4McQOQ==
@@ -761,12 +765,12 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha1-EFSVrlNh1pe9GVyCUZLhrX8lN4c=
-  /acorn/5.5.0:
+  /acorn/5.5.3:
     dev: false
     engines:
       node: '>=0.4.0'
     resolution:
-      integrity: sha512-arn53F07VXmls4o4pUhSzBa4fvaagPRe7AVZ8l7NHxFWUie2DsuFSBMMNAkgzRlOhEhzAnxeKyaWVzOH4xqp/g==
+      integrity: sha512-jd5MkIUlbbmb07nXH0DT3y7rDVtkzDi4XZOUVWAer8ajmF/DTSSbl5oNFyDOl/OXA33Bl79+ypHhl2pN20VeOQ==
   /agent-base/2.1.1:
     dependencies:
       extend: 3.0.1
@@ -1168,7 +1172,7 @@ packages:
   /autoprefixer/6.7.7:
     dependencies:
       browserslist: 1.7.7
-      caniuse-db: 1.0.30000812
+      caniuse-db: 1.0.30000813
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       postcss: 5.2.18
@@ -1179,7 +1183,7 @@ packages:
   /autoprefixer/7.2.6:
     dependencies:
       browserslist: 2.11.3
-      caniuse-lite: 1.0.30000812
+      caniuse-lite: 1.0.30000813
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       postcss: 6.0.19
@@ -1201,7 +1205,7 @@ packages:
       typescript: ^2
     resolution:
       integrity: sha512-qzgm9SEvodVkSi9QY7Me1/rujg+YBNMjayNSAyzNghwTEez++gXoPCwMvpbHRG7wrOkDCiF6dquvv9ESmUBAuw==
-  /awesome-typescript-loader/3.5.0/typescript@2.6.2:
+  /awesome-typescript-loader/3.5.0/typescript@2.7.2:
     dependencies:
       chalk: 2.3.2
       enhanced-resolve: 3.3.0
@@ -1210,7 +1214,7 @@ packages:
       micromatch: 3.1.9
       mkdirp: 0.5.1
       source-map-support: 0.5.3
-      typescript: 2.6.2
+      typescript: 2.7.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/awesome-typescript-loader/3.5.0
     peerDependencies: *ref_3
@@ -1451,7 +1455,7 @@ packages:
       babel-core: ^6.0.0 || ^7.0.0-0
     resolution:
       integrity: sha512-rEdN/jevSuX0IQKcUqwqOGa0gDNis4jGY52Rq53aizfDGPwQYNJq+f9NCMT1HUhtUZhYSjvfGUfHQWBRT1/icA==
-  /babel-loader/7.1.3/webpack@3.11.0:
+  /babel-loader/7.1.4/webpack@3.11.0:
     dependencies:
       find-cache-dir: 1.0.0
       loader-utils: 1.1.0
@@ -1460,12 +1464,12 @@ packages:
     dev: false
     engines:
       node: '>=4'
-    id: onedrive.pkgs.visualstudio.com/babel-loader/7.1.3
+    id: onedrive.pkgs.visualstudio.com/babel-loader/7.1.4
     peerDependencies:
       babel-core: '6'
       webpack: 2 || 3 || 4
     resolution:
-      integrity: sha512-PeN29YvOynPMvNk7QCzsHqxpmfXwKAC+uxkiSNFQsmXBBVltzEkVWmv/Ip3tx7yk149dQUwk497bTXNu+DZjLA==
+      integrity: sha512-/hbyEvPzBJuGpk9o80R0ZyTej6heEOr59GoEUtn8qFKbnx4cJm9FWES6J/iv644sYgrtVw9JJQkjaLW/bqb5gw==
   /babel-messages/6.23.0:
     dependencies:
       babel-runtime: 6.26.0
@@ -2450,15 +2454,15 @@ packages:
       integrity: sha512-Z942RysHXmJrhqk88FmKBVq/v5tqmSkDz7p54G/MGyjMnCFFnC79XWNbg+Vta8W6Wb2qtSZTSxIGkJrRpCFEiA==
   /browserslist/1.7.7:
     dependencies:
-      caniuse-db: 1.0.30000812
-      electron-to-chromium: 1.3.35
+      caniuse-db: 1.0.30000813
+      electron-to-chromium: 1.3.36
     dev: false
     resolution:
       integrity: sha1-C9dnBCWL6CmyOYu1Dkti0aFmsLk=
   /browserslist/2.11.3:
     dependencies:
-      caniuse-lite: 1.0.30000812
-      electron-to-chromium: 1.3.35
+      caniuse-lite: 1.0.30000813
+      electron-to-chromium: 1.3.36
     dev: false
     resolution:
       integrity: sha512-yWu5cXT7Av6mVwzWc8lMsJMHWn4xyjSuGYi4IozbVTLUOEYPSagUB8kiMDUHA1fS3zjr8nkxkn9jdvug4BBRmA==
@@ -2505,7 +2509,7 @@ packages:
       axios: 0.16.2
       bytes: 3.0.0
       ci-env: 1.5.2
-      commander: 2.14.1
+      commander: 2.15.0
       github-build: 1.2.0
       glob: 7.1.2
       gzip-size: 4.1.0
@@ -2533,7 +2537,7 @@ packages:
       chownr: 1.0.1
       glob: 7.1.2
       graceful-fs: 4.1.11
-      lru-cache: 4.1.1
+      lru-cache: 4.1.2
       mississippi: 2.0.0
       mkdirp: 0.5.1
       move-concurrently: 1.0.1
@@ -2610,26 +2614,26 @@ packages:
   /caniuse-api/1.6.1:
     dependencies:
       browserslist: 1.7.7
-      caniuse-db: 1.0.30000812
+      caniuse-db: 1.0.30000813
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
     resolution:
       integrity: sha1-tTTnxzTE+B7F++isoq0kNUuWLGw=
-  /caniuse-db/1.0.30000812:
+  /caniuse-db/1.0.30000813:
     dev: false
     resolution:
-      integrity: sha1-KcKN1pJ+5D6MKrZI5SNqyRbJfWk=
-  /caniuse-lite/1.0.30000812:
+      integrity: sha1-4KHGA/iICteHsqNWUrJzPzKl4po=
+  /caniuse-lite/1.0.30000813:
     dev: false
     resolution:
-      integrity: sha512-j+l55ayQ9BO4Sy9iVfbf99+G+4ddAmkXoiEt73WCW4vJ83usrlHzDkFEnNXe5/swkVqE7YBm5i8M2uRXlx9vWg==
-  /case-sensitive-paths-webpack-plugin/2.1.1:
+      integrity: sha512-A8ITSmH5SFdMFdC704ggjg+x2z5PzQmVlG8tavwnfvbC33Q1UYrj0+G+Xm0SNAnd4He36fwUE/KEWytOEchw+A==
+  /case-sensitive-paths-webpack-plugin/2.1.2:
     dev: false
     engines:
-      node: '>4.0'
+      node: '>=4'
     resolution:
-      integrity: sha1-PSnO2MHxJL9vU4Rvs/WJRzH9yQk=
+      integrity: sha512-oEZgAFfEvKtjSRCu6VgYkuGxwrWXMnQzyBmlLPP7r6PWQVtHxP5Z5N6XsuJvtoVax78am/r7lr46bwo3IVEBOg==
   /caseless/0.11.0:
     dev: false
     resolution:
@@ -2785,14 +2789,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-+zgB1FNGdknvNgPH1hoCvRKb3m0=
-  /clean-css/4.1.10:
+  /clean-css/4.1.11:
     dependencies:
       source-map: 0.5.7
     dev: false
     engines:
       node: '>= 4.0'
     resolution:
-      integrity: sha1-PfwsJWnV8DwUtB2HWtm8yuCcuJ4=
+      integrity: sha1-Ls3xRaujj1R0DybO/Q/z4D4SXWo=
   /cli-cursor/2.1.0:
     dependencies:
       restore-cursor: 2.0.0
@@ -2948,6 +2952,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-+YR16o3rK53SmWHU3rEM3tPAh2rwb1yPcQX5irVn7mb0gXbwuCCrnkbV5+PBfETdfg1vui07nM6PCG1zndcjQw==
+  /commander/2.15.0:
+    dev: false
+    resolution:
+      integrity: sha512-7B1ilBwtYSbetCgTY1NJFg+gVpestg0fdA1MhC1Vs4ssyfSXnCAjFr+QcQM9/RedXC0EaUx1sG8Smgw2VfgKEg==
   /commander/2.9.0:
     dependencies:
       graceful-readlink: 1.0.1
@@ -3191,14 +3199,14 @@ packages:
       integrity: sha512-M+/3Q6E6DLO6Yx3OwrWjwHBnvfXXYA7W+dFjt/ZDBemHO1DDZhsalX/NUtnTYclN6GfnBDRh4qRHjcDHmlJBJg==
   /cross-spawn/3.0.1:
     dependencies:
-      lru-cache: 4.1.1
+      lru-cache: 4.1.2
       which: 1.3.0
     dev: false
     resolution:
       integrity: sha1-ElYDfsufDF9549bvE14wdwGEuYI=
   /cross-spawn/5.1.0:
     dependencies:
-      lru-cache: 4.1.1
+      lru-cache: 4.1.2
       shebang-command: 1.2.0
       which: 1.3.0
     dev: false
@@ -3740,10 +3748,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-zIcsFoiArjxxiXYv1f/ACJbJUYo=
-  /electron-to-chromium/1.3.35:
+  /electron-to-chromium/1.3.36:
     dev: false
     resolution:
-      integrity: sha1-aTwXz7k4QdOMtZuN8BnRfjVphfA=
+      integrity: sha1-Dqv3Gp6+qQE/scw1o5DgaGJPJ+g=
   /elliptic/6.4.0:
     dependencies:
       bn.js: 4.11.8
@@ -4925,7 +4933,7 @@ packages:
   /har-validator/2.0.6:
     dependencies:
       chalk: 1.1.3
-      commander: 2.14.1
+      commander: 2.15.0
       is-my-json-valid: 2.17.2
       pinkie-promise: 2.0.1
     dev: false
@@ -5115,10 +5123,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-42w/LSyufXRqhX440Y1fMqeILbg=
-  /hosted-git-info/2.5.0:
+  /hosted-git-info/2.6.0:
     dev: false
+    engines:
+      node: '>=4'
     resolution:
-      integrity: sha512-pNgbURSuab90KbTqvRPsseaTxOJCZBD0a7t+haSN33piP9cCM4l0CqdzAif2hUqm716UovKB2ROmiabGAKVXyg==
+      integrity: sha512-lIbgIIQA3lz5XaB6vxakj6sDHADJiZadYEJB+FgA+C4nubM1NwcuvUr9EJPmnH1skZqpqUzWborWo8EIUi0Sdw==
   /hpack.js/2.1.6:
     dependencies:
       inherits: 2.0.3
@@ -5161,7 +5171,7 @@ packages:
   /html-minifier/3.5.10:
     dependencies:
       camel-case: 3.0.0
-      clean-css: 4.1.10
+      clean-css: 4.1.11
       commander: 2.14.1
       he: 1.1.1
       ncname: 1.0.0
@@ -5227,10 +5237,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha1-CgAsyFcHGSp+eUbO7cERVfYOxzY=
-  /http-parser-js/0.4.10:
+  /http-parser-js/0.4.11:
     dev: false
     resolution:
-      integrity: sha1-ksnBN0w1CF912zWexWzCV8u5P6Q=
+      integrity: sha512-QCR5O2AjjMW8Mo4HyI1ctFcv+O99j/0g367V3YoVnrNw5hkDvAWZD0lWGcc+F4yN3V55USPCVix4efb75HxFfA==
   /http-proxy-middleware/0.17.4:
     dependencies:
       http-proxy: 1.16.2
@@ -6255,7 +6265,7 @@ packages:
   /jsdom/11.6.2:
     dependencies:
       abab: 1.0.4
-      acorn: 5.5.0
+      acorn: 5.5.3
       acorn-globals: 4.1.0
       array-equal: 1.0.0
       browser-process-hrtime: 0.1.2
@@ -6527,10 +6537,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-/sfervF+fDoKVeHaBCgD4l2RdF0=
-  /lodash-es/4.17.5:
+  /lodash-es/4.17.7:
     dev: false
     resolution:
-      integrity: sha512-Ez3ONp3TK9gX1HYKp6IhetcVybD+2F+Yp6GS9dfH8ue6EOCEzQtQEh4K0FYWBP9qLv+lzeQAYXw+3ySfxyZqkw==
+      integrity: sha512-jzqTi3vk4J5Dxq43cNjB0ekfCjPLHixoY2Sc0WHTo+0r928taLqe/VCt02vY5uQBvg0rdXgL3xWkK4X0MCmZcw==
   /lodash._baseassign/3.2.0:
     dependencies:
       lodash._basecopy: 3.0.1
@@ -6689,13 +6699,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-miyr0bno4K6ZOkv31YdcOcQujqw=
-  /lru-cache/4.1.1:
+  /lru-cache/4.1.2:
     dependencies:
       pseudomap: 1.0.2
       yallist: 2.1.2
     dev: false
     resolution:
-      integrity: sha512-q4spe4KTfsAS1SUHLO0wz8Qiyf1+vMIAgpRYioFYDMNqKfHQbg+AVDH3i4fvpl71/P1L0dBl+fQi+P37UYf0ew==
+      integrity: sha512-wgeVXhrDwAWnIF/yZARsFnMBtdFXOg1b8RIrhilp+0iDYN4mdQcNZElDZ0e4B64BhaxeQ5zN7PMyvu7we1kPeQ==
   /macaddress/0.2.8:
     dev: false
     resolution:
@@ -6998,10 +7008,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-TCZ36BjURTeFTM/CwRcViQlfkMvL1/vFISuNLO5GkcVm1+QHfbSiNqZuWeMFjj1/3+uAjXswgRk30j1kkLYJBQ==
-  /moo/0.4.3:
-    dev: false
-    resolution:
-      integrity: sha512-gFD2xGCl8YFgGHsqJ9NKRVdwlioeW3mI1iqfLNYQOv0+6JRwG58Zk9DIGQgyIaffSYaO1xsKnMaYzzNr1KyIAw==
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -7077,16 +7083,15 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-W1etGLHKCShk72Kwse2BlPODtxw=
-  /nearley/2.12.1:
+  /nearley/2.13.0:
     dependencies:
-      moo: 0.4.3
       nomnom: 1.6.2
       railroad-diagrams: 1.0.0
       randexp: 0.4.6
       semver: 5.5.0
     dev: false
     resolution:
-      integrity: sha512-FQyYKOKm5DgqzJkR6C9GhlRoYdrcRKXJF2qi9Y/4K4Cd2BN4Sglven0LO3dR8w1BQ72Ty5s+/XzA/FtN9Gx50w==
+      integrity: sha512-ioYYogSaZhFlCpRizQgY3UT3G1qFXmHGY/5ozoFE3dMfiCRAeJfh+IPE3/eh9gCZvqLhPCWb4bLt7Bqzo+1mLQ==
   /negotiator/0.6.1:
     dev: false
     engines:
@@ -7197,7 +7202,7 @@ packages:
       readable-stream: 2.3.5
       stream-browserify: 2.0.1
       stream-http: 2.8.0
-      string_decoder: 1.0.3
+      string_decoder: 1.1.0
       timers-browserify: 2.0.6
       tty-browserify: 0.0.0
       url: 0.11.0
@@ -7268,7 +7273,7 @@ packages:
       integrity: sha1-xkZdvwirzU2zWTF/eaxopkayj/k=
   /normalize-package-data/2.4.0:
     dependencies:
-      hosted-git-info: 2.5.0
+      hosted-git-info: 2.6.0
       is-builtin-module: 1.0.0
       semver: 5.5.0
       validate-npm-package-license: 3.0.3
@@ -7448,13 +7453,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-z1dU/7D63H0ewKVoxnNxxw8ranE=
-  /office-ui-fabric-react/5.59.1:
+  /office-ui-fabric-react/5.61.0:
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@uifabric/icons': 5.5.0
       '@uifabric/merge-styles': 5.13.0
       '@uifabric/styling': 5.19.0
-      '@uifabric/utilities': 5.14.1
+      '@uifabric/utilities': 5.16.0
       prop-types: 15.6.1
       tslib: 1.9.0
     dev: false
@@ -7462,23 +7467,23 @@ packages:
       react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
     resolution:
-      integrity: sha512-ZiwHZstuKzo8P3Q4jwWYWVwQPZZVTYYUVZs994Le7mtdxpO0uMKR7wAwd0ewp4TCEScfYH5NpynY83r+PQSW4w==
-  /office-ui-fabric-react/5.59.1/react-dom@16.2.0+react@16.2.0:
+      integrity: sha512-nwQ+FV9sqXB32RX6QwMqJXPngEUwkjb7nrqu/vKsr/6nuyPxKiu3x3HiJvzh59dOB758UB6DgkxqvjyZmluuSA==
+  /office-ui-fabric-react/5.61.0/react-dom@16.2.0+react@16.2.0:
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@uifabric/icons': 5.5.0
       '@uifabric/merge-styles': 5.13.0
       '@uifabric/styling': 5.19.0
-      '@uifabric/utilities': /@uifabric/utilities/5.14.1/react-dom@16.2.0+react@16.2.0
+      '@uifabric/utilities': /@uifabric/utilities/5.16.0/react-dom@16.2.0+react@16.2.0
       prop-types: 15.6.1
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
       tslib: 1.9.0
     dev: false
-    id: onedrive.pkgs.visualstudio.com/office-ui-fabric-react/5.59.1
+    id: onedrive.pkgs.visualstudio.com/office-ui-fabric-react/5.61.0
     peerDependencies: *ref_11
     resolution:
-      integrity: sha512-ZiwHZstuKzo8P3Q4jwWYWVwQPZZVTYYUVZs994Le7mtdxpO0uMKR7wAwd0ewp4TCEScfYH5NpynY83r+PQSW4w==
+      integrity: sha512-nwQ+FV9sqXB32RX6QwMqJXPngEUwkjb7nrqu/vKsr/6nuyPxKiu3x3HiJvzh59dOB758UB6DgkxqvjyZmluuSA==
   /on-finished/2.3.0:
     dependencies:
       ee-first: 1.1.1
@@ -8484,7 +8489,7 @@ packages:
       async: 2.6.0
       babel-runtime: 6.26.0
       babylon: 5.8.38
-      commander: 2.14.1
+      commander: 2.15.0
       doctrine: 2.1.0
       node-dir: 0.1.17
       recast: 0.12.9
@@ -8686,16 +8691,16 @@ packages:
     dependencies:
       inline-style-prefixer: 3.0.8
       prop-types: 15.6.1
-      react-style-proptype: 3.2.0
+      react-style-proptype: 3.2.1
     dev: false
     resolution:
       integrity: sha512-xq0PPsbkNI9xEd6yTrGPr7hzf6XfIgnsxuUEdRJELq+kLPHMsO3ymFCjhiYP35wlDPn9W46+rHDsJd7LFYteMw==
-  /react-style-proptype/3.2.0:
+  /react-style-proptype/3.2.1:
     dependencies:
       prop-types: 15.6.1
     dev: false
     resolution:
-      integrity: sha512-Mafmkzj3oNmLSJNOlH+WWWyGIdzVLhPj+d12fDxQMQdwDQ5sMX7vQKOLpry4U+zRWieTCx448AyRKK0NLWuXmg==
+      integrity: sha512-Z02QsgmdZ4wYNxJsHhNGGZsIF8+MO93fYmdPaC+ljdqX3rq8tl/fSMXOGBbofGJNzq5W/2LFcONllmV6vzyYHA==
   /react-test-renderer/16.2.0:
     dependencies:
       fbjs: 0.8.16
@@ -8940,7 +8945,7 @@ packages:
   /redux/3.7.2:
     dependencies:
       lodash: 4.17.5
-      lodash-es: 4.17.5
+      lodash-es: 4.17.7
       loose-envify: 1.3.1
       symbol-observable: 1.2.0
     dev: false
@@ -9323,7 +9328,7 @@ packages:
   /rst-selector-parser/2.2.3:
     dependencies:
       lodash.flattendeep: 4.4.0
-      nearley: 2.12.1
+      nearley: 2.13.0
     dev: false
     resolution:
       integrity: sha1-gbIw6i/MYGbInjRy3nlChdmwPZE=
@@ -10113,6 +10118,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-4AH6Z5fzNNBcH+6XDMfA/BTt87skxqJlO0lAh3Dker5zThcAxG6mKz+iGu308UKoPPQ8Dcqx/4JhujzltRa+hQ==
+  /string_decoder/1.1.0:
+    dependencies:
+      safe-buffer: 5.1.1
+    dev: false
+    resolution:
+      integrity: sha512-8zQpRF6juocE69ae7CSPmYEGJe4VCXwP6S6dxUWI7i53Gwv54/ec41fiUA+X7BPGGv7fRSQJjBQVa0gomGaOgg==
   /stringstream/0.0.5:
     dev: false
     resolution:
@@ -10443,7 +10454,7 @@ packages:
       typescript: 2.x
     resolution:
       integrity: sha512-6D3rWDiIuuRmtnoxDK0s69VK8Zw+JTdOkG9KeqQJF1U4ODlvAXg7ZLHfjZTmRFEshitFFeSmJ/reKzufYeibWA==
-  /ts-jest/22.4.1/jest@22.4.2+typescript@2.6.2:
+  /ts-jest/22.4.1/jest@22.4.2+typescript@2.7.2:
     dependencies:
       babel-core: 6.26.0
       babel-plugin-istanbul: 4.1.5
@@ -10454,7 +10465,7 @@ packages:
       jest: 22.4.2
       jest-config: 22.4.2
       pkg-dir: 2.0.0
-      typescript: 2.6.2
+      typescript: 2.7.2
       yargs: 11.0.0
     dev: false
     id: onedrive.pkgs.visualstudio.com/ts-jest/22.4.1
@@ -10474,11 +10485,11 @@ packages:
       typescript: ^2.1.0
     resolution:
       integrity: sha512-5AnfTGlfpUzpRHLmoojPBKFTTmbjnwgdaTHMdllausa4GBPya5u36i9ddrTX4PhetGZvd4JUYIpAmgHqVnsctg==
-  /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.6.2:
+  /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.7.2:
     dependencies:
-      tslint: /tslint/5.9.1/typescript@2.6.2
-      tsutils: /tsutils/2.22.2/typescript@2.6.2
-      typescript: 2.6.2
+      tslint: /tslint/5.9.1/typescript@2.7.2
+      tsutils: /tsutils/2.22.2/typescript@2.7.2
+      typescript: 2.7.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/tslint-microsoft-contrib/5.0.3
     peerDependencies: *ref_8
@@ -10498,7 +10509,7 @@ packages:
       babel-code-frame: 6.26.0
       builtin-modules: 1.1.1
       chalk: 2.3.2
-      commander: 2.14.1
+      commander: 2.15.0
       diff: 3.5.0
       glob: 7.1.2
       js-yaml: 3.11.0
@@ -10514,12 +10525,12 @@ packages:
       typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev'
     resolution:
       integrity: sha1-ElX4ej/1frCw4fDmEKi0dIBGya4=
-  /tslint/5.9.1/typescript@2.6.2:
+  /tslint/5.9.1/typescript@2.7.2:
     dependencies:
       babel-code-frame: 6.26.0
       builtin-modules: 1.1.1
       chalk: 2.3.2
-      commander: 2.14.1
+      commander: 2.15.0
       diff: 3.5.0
       glob: 7.1.2
       js-yaml: 3.11.0
@@ -10527,8 +10538,8 @@ packages:
       resolve: 1.5.0
       semver: 5.5.0
       tslib: 1.9.0
-      tsutils: /tsutils/2.22.2/typescript@2.6.2
-      typescript: 2.6.2
+      tsutils: /tsutils/2.22.2/typescript@2.7.2
+      typescript: 2.7.2
     dev: false
     engines:
       node: '>=4.8.0'
@@ -10544,10 +10555,10 @@ packages:
       typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev'
     resolution:
       integrity: sha512-u06FUSulCJ+Y8a2ftuqZN6kIGqdP2yJjUPEngXqmdPND4UQfb04igcotH+dw+IFr417yP6muCLE8/5/Qlfnx0w==
-  /tsutils/2.22.2/typescript@2.6.2:
+  /tsutils/2.22.2/typescript@2.7.2:
     dependencies:
       tslib: 1.9.0
-      typescript: 2.6.2
+      typescript: 2.7.2
     dev: false
     id: onedrive.pkgs.visualstudio.com/tsutils/2.22.2
     peerDependencies: *ref_7
@@ -10605,12 +10616,12 @@ packages:
       node: '>=4.2.0'
     resolution:
       integrity: sha1-+DlfhdRZJ2BnyYiqQYN6j4KHCEQ=
-  /typescript/2.6.2:
+  /typescript/2.7.2:
     dev: false
     engines:
       node: '>=4.2.0'
     resolution:
-      integrity: sha1-PFtv1/beCRQmkCfwPAlGdY92c6Q=
+      integrity: sha512-p5TCYZDAO0m4G344hD+wx/LATebLWZNkkh2asWUFqSsD2OrDNhbAHuSjobrmsUmdzjJjEeZVU9g1h3O6vpstnw==
   /typical/2.6.1:
     dev: false
     resolution:
@@ -10992,10 +11003,10 @@ packages:
       integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
   /webpack-bundle-analyzer/2.11.1:
     dependencies:
-      acorn: 5.5.0
+      acorn: 5.5.3
       bfj-node4: 5.2.1
       chalk: 2.3.2
-      commander: 2.14.1
+      commander: 2.15.0
       ejs: 2.5.7
       express: 4.16.2
       filesize: 3.6.0
@@ -11120,14 +11131,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-N5c80o31E0COFJV8HRjiX3hJetDOwQ2Ajt5TTORKA9diOimhFtmaZKSfO3pQKMeQngb7I4TUnNDroJiUzPFhKQ==
-  /webpack-notifier/1.5.1:
+  /webpack-notifier/1.6.0:
     dependencies:
       node-notifier: 5.2.1
       object-assign: 4.1.1
       strip-ansi: 3.0.1
     dev: false
     resolution:
-      integrity: sha1-z19rmhcR+Alpu8T3vRXUDqexh2E=
+      integrity: sha1-/6yOVf+MRpdSuMG7sBGhbxCYbgI=
   /webpack-sources/1.1.0:
     dependencies:
       source-list-map: 2.0.0
@@ -11137,7 +11148,7 @@ packages:
       integrity: sha512-aqYp18kPphgoO5c/+NaUvEeACtZjMESmDChuD3NBciVpah3XpMEU9VAAtIaB1BsfJWWTSdv8Vv1m3T0aRk2dUw==
   /webpack/3.11.0:
     dependencies:
-      acorn: 5.5.0
+      acorn: 5.5.3
       acorn-dynamic-import: 2.0.2
       ajv: 6.2.1
       ajv-keywords: /ajv-keywords/3.1.0/ajv@6.2.1
@@ -11166,7 +11177,7 @@ packages:
       integrity: sha512-3kOFejWqj5ISpJk4Qj/V7w98h9Vl52wak3CLiw/cDOfbVTq7FeoZ0SdoHHY9PYlHr50ZS42OfvzE2vB4nncKQg==
   /websocket-driver/0.7.0:
     dependencies:
-      http-parser-js: 0.4.10
+      http-parser-js: 0.4.11
       websocket-extensions: 0.1.3
     dev: false
     engines:
@@ -11476,16 +11487,16 @@ packages:
       validator: 8.2.0
     dev: false
     optionalDependencies:
-      commander: 2.14.1
+      commander: 2.15.0
     resolution:
       integrity: sha512-DUOKC/IhbkdLKKiV89gw9DUauTV8U/8yJl1sjf6MtDmzevLKOF2duNJ495S3MFVjqZarr+qNGCPbkg4mu4PpLw==
   'file:projects/build.tgz':
     dependencies:
       '@microsoft/api-extractor': 4.3.7
-      '@microsoft/load-themed-styles': 1.7.36
-      '@microsoft/loader-load-themed-styles': 1.7.17
+      '@microsoft/load-themed-styles': 1.7.37
+      '@microsoft/loader-load-themed-styles': 1.7.18
       autoprefixer: 7.2.6
-      awesome-typescript-loader: /awesome-typescript-loader/3.5.0/typescript@2.6.2
+      awesome-typescript-loader: /awesome-typescript-loader/3.5.0/typescript@2.7.2
       bundlesize: 0.15.3
       chalk: 2.3.2
       command-line-args: 4.0.7
@@ -11511,25 +11522,25 @@ packages:
       source-map-loader: 0.2.3
       source-map-support: 0.5.3
       style-loader: 0.19.1
-      ts-jest: /ts-jest/22.4.1/jest@22.4.2+typescript@2.6.2
-      tslint: /tslint/5.9.1/typescript@2.6.2
-      tslint-microsoft-contrib: /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.6.2
-      typescript: 2.6.2
+      ts-jest: /ts-jest/22.4.1/jest@22.4.2+typescript@2.7.2
+      tslint: /tslint/5.9.1/typescript@2.7.2
+      tslint-microsoft-contrib: /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.7.2
+      typescript: 2.7.2
       uglifyjs-webpack-plugin: /uglifyjs-webpack-plugin/0.4.6/webpack@3.11.0
       webpack: 3.11.0
       webpack-bundle-analyzer: 2.11.1
       webpack-dev-server: /webpack-dev-server/2.11.2/webpack@3.11.0
-      webpack-notifier: 1.5.1
+      webpack-notifier: 1.6.0
       yargs: 6.6.0
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-aXcY+wFdTyDHWHKIw16/JsI2uChDZGHlr7BPoda3lt6UC6tlIecvO5F/mesvPj8oQwaDdlSE+xAXSBrMSN7rPQ==
+      integrity: sha512-CAGzvkrNr1xCFnQ9d95h3bLTFM3wPUoRFleeXtf58pqUlPGJUqFhjbhPAEeQ7wFfd9QTHokuXklad7XZhC1n7w==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/es6-promise': 0.0.32
       '@types/highlight.js': 9.12.2
       '@types/react': 16.0.25
@@ -11539,19 +11550,19 @@ packages:
       es6-promise: 4.2.4
       es6-weak-map: 2.0.2
       highlight.js: 9.12.0
-      office-ui-fabric-react: /office-ui-fabric-react/5.59.1/react-dom@16.2.0+react@16.2.0
+      office-ui-fabric-react: /office-ui-fabric-react/5.61.0/react-dom@16.2.0+react@16.2.0
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
       tslib: 1.9.0
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-57E4jsCKKEWt9WE/DCZnYtpU+HvBzIAn/ZDVyMwQ/DpOYMs9FqK/3gSsLs8nOTo9B130wKGhupD73Yi76O0XIA==
+      integrity: sha512-P/TxLQRE3Ud6uQlyGtIxwS+x9nyocqnIE73urlgJ2ELVLj6qTa1Q0DtKQFU5BroAqfin4V6tLBfpFC6R4gIjRA==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/enzyme': 3.1.5
       '@types/enzyme-adapter-react-16': 1.0.1
       '@types/es6-promise': 0.0.32
@@ -11577,12 +11588,12 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-EUFTxyDQ7c2VjgFB+JqGcepejh+AqVR6nez9U2jcu/JncxrAEKZFjojMdESQiKhdcMbyRtM2rZJz03ZfZlcswQ==
+      integrity: sha512-ZOSRKzCGeFhAQg4rhtzFKQN8CIdjoXF4qJ8MXFlWfPwzNnbvSf1CxyHvFB4W9ojlXLhP9ztEYZ4aGC7MVCIv3w==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/es6-promise': 0.0.32
       '@types/node': 8.0.26
       '@types/prop-types': 15.5.2
@@ -11604,7 +11615,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-EpQSiF1Qfl/yBoVDUTFIk6Bt/E1K8XBwUbycfky3WMuKhtv8WT0AV/HuLuyVLNI9EGVmWp/kP3X9xdkuIEICTg==
+      integrity: sha512-CI2r/lEIXoNsAYq+NN5bpHieagllMmQkz8qlQuobj7XQ6ByGiw/h7rrx3VrmjC7ANlaYpk8/v8Vnpl8aCgTVIA==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -11617,7 +11628,7 @@ packages:
     dev: false
     name: '@rush-temp/file-type-icons'
     resolution:
-      integrity: sha512-DZi4GtBmGmyR6QCreacT8z/deF118j+XC02nWHPlDCYJxPRwKnExeV05A0GVzA6Sw5TfgBSCwqgPrgIgTrt+TA==
+      integrity: sha512-Umv2bQm/dSTCDPgYOAWPOJneE99IVphY4I4QFFtN8FTSTGUBvpXj8TMgxbhV0GYdm+Z8QOcAqdmXB+JVgVVdeA==
       tarball: 'file:projects/file-type-icons.tgz'
     version: 0.0.0
   'file:projects/icons.tgz':
@@ -11626,7 +11637,7 @@ packages:
     dev: false
     name: '@rush-temp/icons'
     resolution:
-      integrity: sha512-ux8pGHtgl4Q9447lwk6uyQ8fIEn8/VnzvN0twONUNuPGvCT+HDxmdgJaOEir4Rk6QvL+Rn0lm2MmZYb/waHr3g==
+      integrity: sha512-+zJEgXWwRazmyNhUYzXqDFRI8UWz86n+2jC9TRPbm8W/DUEr/D6tL9ZdZlFC47rWITbXjxvEQZVh2WEoMJJ0+Q==
       tarball: 'file:projects/icons.tgz'
     version: 0.0.0
   'file:projects/jest-serializer-merge-styles.tgz':
@@ -11635,7 +11646,7 @@ packages:
     dev: false
     name: '@rush-temp/jest-serializer-merge-styles'
     resolution:
-      integrity: sha512-DDYnRDD8lm0syrnEHcDAcZYQQkPU1sWAeAhst1Nc+GemMfn2s3wZ9ZdAajSZMzhuc/pSmfQ0Dqyw3dphw/OvaA==
+      integrity: sha512-3HOYm1sq7vxcxhvqAG+4kIuPaqgwm/2riAUSlzClmHZq4+0+wENRcJLzWpnk2own3atVgu5AD2bcjDTrSH13Dw==
       tarball: 'file:projects/jest-serializer-merge-styles.tgz'
     version: 0.0.0
   'file:projects/merge-styles.tgz':
@@ -11645,7 +11656,7 @@ packages:
     dev: false
     name: '@rush-temp/merge-styles'
     resolution:
-      integrity: sha512-Ip88BJkHvul9loQwpyRK/1kl6MNHEVOMuFUl5G7DbukJ6zKTPZmc+5+rGsHVjTzLcCmSoGn0HdFj7pYt0YM3BQ==
+      integrity: sha512-QQAVbizhB/g85iXMvp7UHW3EfsEfe800tlJSWj5IgXDT3KkRppfYuvW4LrlgJZOlVJD6slyMwVo0e7EcPIwX1A==
       tarball: 'file:projects/merge-styles.tgz'
     version: 0.0.0
   'file:projects/office-ui-fabric-react-tslint.tgz':
@@ -11654,12 +11665,12 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react-tslint'
     resolution:
-      integrity: sha512-XQmVi+V9erb5ZJ+eiRjZGBW59LKz8qaOs4rPE80yYnl/8Tn6Bn+XHmgEhiMj8wgN4UaRulDA6fl98iDFkLGSSA==
+      integrity: sha512-epCT6jzgDec8L9ysLYgraQPIkfKId4IrbAmg7Ke0ql7+sjm8MTo69OHBZYV8/IEw9sQSaC5SPX2UHYWi66BSMQ==
       tarball: 'file:projects/office-ui-fabric-react-tslint.tgz'
     version: 0.0.0
   'file:projects/office-ui-fabric-react.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/enzyme': 3.1.5
       '@types/enzyme-adapter-react-16': 1.0.1
       '@types/es6-promise': 0.0.32
@@ -11689,12 +11700,12 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-6Rw3Ye6U+Jbv+TSiqDQuT2kuTVHn4my5H7dOCLAUVSjlBQ9tUO/U2j/A7WYpcTEzQ1j68ubu8b57T/2RD4lLxg==
+      integrity: sha512-rn2YcWc3jp2HaczZg+WtGLwL1ysx1wLs673ixyFrHYLigPWXJkN2dfMg7/Bo88IaRY8lLUYYBbeb8YI0UgKVJQ==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/ssr-tests.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/es6-promise': 0.0.32
       '@types/mocha': 2.2.39
       '@types/webpack-env': 1.13.0
@@ -11708,12 +11719,12 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-tphRAh78yQS+kvoaAxB1NsJY8epVqIYQax+VvZJ2hTjO4SPnWdsLFrkoCGM+9tMYhnfMuiDspIO+kdBrokbFaA==
+      integrity: sha512-ymeupYmRBfQNFs+jZd2nKYkSRRTuPyv7Xl13GAuVB0ff2sVurPGbH3xcmIrsJ853forC7TFPKi3lgTtOia92Ug==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/jest': 22.2.0
       '@types/react': 16.0.25
       '@types/webpack-env': 1.13.0
@@ -11725,7 +11736,7 @@ packages:
     dev: false
     name: '@rush-temp/styling'
     resolution:
-      integrity: sha512-mIVHIhFbCfmacwv4/cV7PeYgrF8lc/blahYapW+15PSr2bHsSOFYSMKxyN0t9W4NKOoxA5nkLdFwvR5WOsXRDw==
+      integrity: sha512-ieK20HsGhn69p7+HwZGt5+Qfi9vCV/WQGuIsU7uWogJ6jWfIQTXzG8XbSdrPckZblZV7/JqA0u4tdzWntVts+A==
       tarball: 'file:projects/styling.tgz'
     version: 0.0.0
   'file:projects/test-bundle-button.tgz':
@@ -11740,12 +11751,12 @@ packages:
     dev: false
     name: '@rush-temp/test-bundle-button'
     resolution:
-      integrity: sha512-H6146CwBhUSBqSJItxgg8SHhA2V8uYBJwVGqd6jMpHhmOsK/+KHLJ/hLEh5P/M8YC1I1ZOhidkpkZOSAUXn4Uw==
+      integrity: sha512-YFBhKnPlyP3j0sNkC20q+eClsOMU3x++bo83hRPAsjb4NPeAfltaCnqQJXt6bX+BYZIl+LP/spG6HsSBYvoBOQ==
       tarball: 'file:projects/test-bundle-button.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/es6-promise': 0.0.32
       '@types/react': 16.0.25
       '@types/react-dom': 16.0.3
@@ -11755,16 +11766,16 @@ packages:
       react: 16.2.0
       react-dom: /react-dom/16.2.0/react@16.2.0
       tslib: 1.9.0
-      typescript: 2.6.2
+      typescript: 2.7.2
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-eE5PY8QNV4V+84ccb+/qh/eRjqYrQFv8AjeUM91MbuH1bzfjaADxmcczWgHiEV8CPBXPU/iMjQwz/psXe8EBiQ==
+      integrity: sha512-6XFuSfJYXiE37FJ5O7GpM4TvKGLTAhC7kH3zTUQN4BZ6WPGMlj1b1yLB1TWp2MnLtNNglB5uZpqx12xnNY63VA==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/utilities.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.7.36
+      '@microsoft/load-themed-styles': 1.7.37
       '@types/enzyme': 3.1.5
       '@types/enzyme-adapter-react-16': 1.0.1
       '@types/jest': 22.2.0
@@ -11782,17 +11793,27 @@ packages:
     dev: false
     name: '@rush-temp/utilities'
     resolution:
-      integrity: sha512-UehI09EPnOu0zn6ScRV/8H8drUTr5/jTK/fzfOX6i3UQR5rudn7yIGexAJfYqb6Yi0YxI3FeyP4hTU4ZTIlN2g==
+      integrity: sha512-qW3OoOxxiOTHaM55TOPgHB8sA8P9CSpf7ijAxeIqrxcTEpacKbtpOow0lseH3IR1r3Fem9evyLXbetJPwDg1rA==
       tarball: 'file:projects/utilities.tgz'
+    version: 0.0.0
+  'file:projects/variants.tgz':
+    dependencies:
+      '@types/jest': 21.1.8
+      tslib: 1.9.0
+    dev: false
+    name: '@rush-temp/variants'
+    resolution:
+      integrity: sha512-7vhU+9YArMgw9pGuSTZaPU8sF4R359qDu3BjDtp3y51V1entwQX1/DRu6uv/3XrO4B9jrak/3845q7BFC/Cvdg==
+      tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
     dependencies:
       '@storybook/addon-options': /@storybook/addon-options/3.2.3/react-dom@16.2.0+react@16.2.0
-      '@storybook/react': /@storybook/react/3.3.14/react-dom@16.2.0+react@16.2.0
+      '@storybook/react': /@storybook/react/3.3.15/react-dom@16.2.0+react@16.2.0
       '@types/react': 16.0.25
       '@types/react-dom': 16.0.3
       '@types/storybook__react': 3.0.5
-      awesome-typescript-loader: /awesome-typescript-loader/3.5.0/typescript@2.6.2
+      awesome-typescript-loader: /awesome-typescript-loader/3.5.0/typescript@2.7.2
       css-loader: 0.28.10
       file-loader: 0.11.2
       postcss-loader: 2.1.1
@@ -11804,11 +11825,11 @@ packages:
       storybook-readme: /storybook-readme/3.0.6/react-dom@16.2.0+react@16.2.0
       style-loader: 0.19.1
       tslib: 1.9.0
-      typescript: 2.6.2
+      typescript: 2.7.2
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-Kl3Owqk+glyrKc/DIw42PK+FDiYTwmtw/ygn4Da8kIJtLxOrwb91gXtL7oPAUURsZ5N+V0wZC1G+qwZf4b3w4g==
+      integrity: sha512-GdRZDj09LzYsGBrXDwOqiLmW9iJRgcvoHbwWD/NEOYfCFXWS6NYx5oDhTrihn/g6EnZa3VAHVlDaMJvysU88hQ==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   github.com/screener-io/ngrok/ca2e459b401722ae8c033491aaacaf87125cd238:
@@ -11846,6 +11867,7 @@ specifiers:
   '@rush-temp/test-bundle-button': 'file:./projects/test-bundle-button.tgz'
   '@rush-temp/todo-app': 'file:./projects/todo-app.tgz'
   '@rush-temp/utilities': 'file:./projects/utilities.tgz'
+  '@rush-temp/variants': 'file:./projects/variants.tgz'
   '@rush-temp/vr-tests': 'file:./projects/vr-tests.tgz'
   '@storybook/addon-options': =3.2.3
   '@storybook/react': ^3.2.3
@@ -11853,7 +11875,6 @@ specifiers:
   '@types/enzyme-adapter-react-16': 1.0.1
   '@types/es6-promise': 0.0.32
   '@types/highlight.js': 9.12.2
-  '@types/jest': 22.2.0
   '@types/mocha': 2.2.39
   '@types/node': 8.0.26
   '@types/prop-types': 15.5.2
@@ -11917,7 +11938,7 @@ specifiers:
   tslint: ^5.7.0
   tslint-microsoft-contrib: ^5.0.1
   tslint-react: ^3.2.0
-  typescript: 2.6.2
+  typescript: 2.7.2
   uglifyjs-webpack-plugin: ^0.4.6
   webpack: ^3.7.1
   webpack-bundle-analyzer: ^2.9.0

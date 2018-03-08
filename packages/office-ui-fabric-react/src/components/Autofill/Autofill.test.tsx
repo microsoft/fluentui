@@ -41,14 +41,14 @@ describe('Autofill', () => {
       baseNode
     );
     autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
     ReactDOM.render(
       <Autofill
         ref={ (c) => autoFill = c! }
         onInputValueChange={ onInputValueChange }
         suggestedDisplayValue='hello'
       />, baseNode);
-    expect(autoFill.inputElement.value).toBe('hello');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
 
   });
 
@@ -56,12 +56,12 @@ describe('Autofill', () => {
     const onInputValueChange = (text: string | undefined): void => {
       expect(text).toBe('hep');
       expect(autoFill.value).toBe('hep');
-      expect(autoFill.inputElement.value).toBe('hep');
+      expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hep');
       done();
     };
 
     autoFillInput.value = 'hep';
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
     ReactDOM.render(
       <Autofill
         ref={ (c) => autoFill = c! }
@@ -70,12 +70,12 @@ describe('Autofill', () => {
       />,
       baseNode
     );
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
   });
 
   it('does not autofill if left or right arrow has been pressed', () => {
     autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
 
     ReactDOM.render(
       <Autofill
@@ -91,15 +91,15 @@ describe('Autofill', () => {
     // If we don't the change event will cause the current input value, 'hello', to be set.
     autoFillInput.value = 'hel';
 
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
 
     expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement.value).toBe('hel');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
   });
 
   it('will autofill if keyCode up or down is pressed', () => {
     autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
 
     ReactDOM.render(
       <Autofill
@@ -110,7 +110,7 @@ describe('Autofill', () => {
     );
 
     expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement.value).toBe('hel');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hel');
 
     ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.left, which: KeyCodes.left });
 
@@ -118,7 +118,7 @@ describe('Autofill', () => {
 
     ReactTestUtils.Simulate.keyDown(autoFillInput, { keyCode: KeyCodes.up, which: KeyCodes.up });
     autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.change(autoFillInput);
+    ReactTestUtils.Simulate.input(autoFillInput);
 
     ReactDOM.render(
       <Autofill
@@ -129,6 +129,6 @@ describe('Autofill', () => {
     );
 
     expect(autoFill.value).toBe('hel');
-    expect(autoFill.inputElement.value).toBe('hello');
+    expect(autoFill.inputElement && autoFill.inputElement.value).toBe('hello');
   });
 });

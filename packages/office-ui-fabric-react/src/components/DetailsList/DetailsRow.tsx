@@ -77,7 +77,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   private _root: HTMLElement | undefined;
   private _cellMeasurer: HTMLElement;
   private _focusZone: IFocusZone;
-  private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
@@ -91,8 +90,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       isDropping: false,
       groupNestingDepth: props.groupNestingDepth
     };
-
-    this._hasSetFocus = false;
 
     this._droppingClassNames = '';
 
@@ -198,6 +195,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
+    const ariaSelected = (selectionMode === SelectionMode.none) ? undefined : isSelected;
 
     return (
       <FocusZone
@@ -229,7 +227,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
-        aria-selected={ isSelected }
+        aria-selected={ ariaSelected }
         allowFocusRoot={ true }
       >
         { showCheckbox && (
@@ -309,8 +307,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     });
   }
 
-  public focus(): boolean {
-    return !!this._focusZone && this._focusZone.focus();
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    return !!this._focusZone && this._focusZone.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {

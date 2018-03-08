@@ -28,7 +28,7 @@ export interface IComponentPageProps {
   areBadgesVisible?: boolean;
   className?: string;
   componentStatus?: JSX.Element;
-  otherSections?: [IComponentPageSection];
+  otherSections?: IComponentPageSection[];
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {

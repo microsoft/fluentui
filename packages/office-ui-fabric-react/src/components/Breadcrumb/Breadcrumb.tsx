@@ -68,7 +68,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    const { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
+    const { className, ariaLabel, onRenderItem = this._onRenderItem, overflowAriaLabel } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
     const contextualItems = renderedOverflowItems.map(
@@ -95,6 +95,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
+                  ariaLabel={ overflowAriaLabel }
                   onRenderMenuIcon={ nullFunction }
                   menuProps={ {
                     items: contextualItems,

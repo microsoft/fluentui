@@ -15,6 +15,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
 export enum ContextualMenuItemType {
   Normal = 0,
@@ -36,10 +37,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
-   * It can be either an HTMLElement a querySelector string of a valid HTMLElement
+   * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: HTMLElement | string | MouseEvent | IPoint | null;
+  target?: Element | string | MouseEvent | IPoint | null;
 
   /**
    * How the element should be positioned
@@ -219,6 +220,14 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
 
   /** Method to call when trying to render a submenu. */
   onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
+   * Method to override the render of the individual menu items
+   * @default ContextualMenuItem
+   */
+  contextualMenuItemAs?:
+  React.ComponentClass<IContextualMenuItemProps> |
+  React.StatelessComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
