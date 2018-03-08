@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Fixed in page nav so that the left nav links will display properly.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "lynam.emily@gmail.com"
+}

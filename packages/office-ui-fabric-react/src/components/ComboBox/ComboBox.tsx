@@ -122,6 +122,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _isScrollIdle: boolean;
 
+  private _hasPendingValue: boolean;
+
   private readonly _scrollIdleDelay: number = 250 /* ms */;
 
   private _scrollIdleTimeoutId: number | undefined;
@@ -232,6 +234,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ))) {
       this._select();
     }
+
+    this._notifyPendingValueChanged(prevState);
 
     if (isOpen && !prevState.isOpen && onMenuOpen) {
       onMenuOpen();
@@ -688,7 +692,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param searchDirection - the direction to search along the options from the given index
    */
   private _setSelectedIndex(index: number, searchDirection: SearchDirection = SearchDirection.none) {
-    const { onChanged } = this.props;
+    const { onChanged, onPendingValueChanged } = this.props;
     const { selectedIndex, currentOptions } = this.state;
 
     // Find the next selectable index, if searchDirection is none
@@ -708,6 +712,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.setState({
         selectedIndex: index
       });
+
+      // If ComboBox value is changed, revert preview first
+      if (this._hasPendingValue && onPendingValueChanged) {
+        onPendingValueChanged();
+        this._hasPendingValue = false;
+      }
 
       // Did the creator give us an onChanged callback?
       if (onChanged) {
@@ -1232,6 +1242,41 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     index = this._getNextSelectableIndex(index, searchDirection);
     if (this._indexWithinBounds(currentOptions, index)) {
       this._setPendingInfoFromIndex(index);
+    }
+  }
+
+  private _notifyPendingValueChanged(prevState: IComboBoxState) {
+    const { onPendingValueChanged } = this.props;
+
+    if (!onPendingValueChanged) {
+      return;
+    }
+
+    const {
+      currentPendingValue,
+      currentOptions,
+      currentPendingValueValidIndex,
+      currentPendingValueValidIndexOnHover
+    } = this.state;
+
+    let newPendingIndex: number | undefined = undefined;
+    let newPendingValue: string | undefined = undefined;
+
+    if (currentPendingValueValidIndexOnHover !== prevState.currentPendingValueValidIndexOnHover && this._indexWithinBounds(currentOptions, currentPendingValueValidIndexOnHover)) {
+      // Set new pending index if hover index was changed
+      newPendingIndex = currentPendingValueValidIndexOnHover;
+    } else if (currentPendingValueValidIndex !== prevState.currentPendingValueValidIndex && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+      // Set new pending index if currentPendingValueValidIndex was changed
+      newPendingIndex = currentPendingValueValidIndex;
+    } else if (currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '') {
+      // Set pendingValue in the case it was changed and no index was changed
+      newPendingValue = currentPendingValue;
+    }
+
+    // Notify when there is a new pending index/value. Also, if there is a pending value, it needs to send undefined.
+    if (newPendingIndex !== undefined || newPendingValue || this._hasPendingValue) {
+      onPendingValueChanged(newPendingIndex ? currentOptions[newPendingIndex] : undefined, newPendingIndex, newPendingValue);
+      this._hasPendingValue = newPendingIndex !== undefined || newPendingValue !== undefined;
     }
   }
 

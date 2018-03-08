@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.16.0",
+      "tag": "@uifabric/utilities_v5.16.0",
+      "date": "Thu, 08 Mar 2018 11:27:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "61c7a055825c41f828c416e5370212804f71d05c",
+            "comment": "Added hoistStatics function to @customizable decorator so static methods work properly"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.15.0",
       "tag": "@uifabric/utilities_v5.15.0",
       "date": "Tue, 06 Mar 2018 11:13:36 GMT",
