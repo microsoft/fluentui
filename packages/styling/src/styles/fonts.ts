@@ -102,18 +102,20 @@ export namespace IconFontSizes {
 }
 
 export function createFontStyles(localeCode: string | null): IFontStyles {
+  const fontFamily = _getFontFamily(localeCode);
+
   return {
-    tiny: _createFont(FontSizes.mini, FontWeights.semibold, localeCode),
-    xSmall: _createFont(FontSizes.xSmall, FontWeights.regular, localeCode),
-    small: _createFont(FontSizes.small, FontWeights.regular, localeCode),
-    smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, localeCode),
-    medium: _createFont(FontSizes.medium, FontWeights.regular, localeCode),
-    mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, localeCode),
-    large: _createFont(FontSizes.large, FontWeights.semilight, localeCode),
-    xLarge: _createFont(FontSizes.xLarge, FontWeights.light, localeCode),
-    xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, localeCode),
-    superLarge: _createFont(FontSizes.superLarge, FontWeights.light, localeCode),
-    mega: _createFont(FontSizes.mega, FontWeights.light, localeCode)
+    tiny: _createFont(FontSizes.mini, FontWeights.semibold, fontFamily),
+    xSmall: _createFont(FontSizes.xSmall, FontWeights.regular, fontFamily),
+    small: _createFont(FontSizes.small, FontWeights.regular, fontFamily),
+    smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, fontFamily),
+    medium: _createFont(FontSizes.medium, FontWeights.regular, fontFamily),
+    mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamily),
+    large: _createFont(FontSizes.large, FontWeights.semilight, fontFamily),
+    xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamily),
+    xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamily),
+    superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamily),
+    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamily)
   };
 }
 
@@ -131,9 +133,9 @@ function _getFontFamily(language: string | null): string {
   return `${fontFamily}, ${FontFamilyFallbacks}`;
 }
 
-function _createFont(size: string, weight: IFontWeight, localeCode: string | null): IRawStyle {
+function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRawStyle {
   return {
-    fontFamily: _getFontFamily(localeCode),
+    fontFamily: fontFamily,
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
