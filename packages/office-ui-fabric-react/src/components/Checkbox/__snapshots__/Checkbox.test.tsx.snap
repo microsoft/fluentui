@@ -40,16 +40,26 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         top: -2px;
         z-index: 1;
       }
-      &:hover .ms-Checkbox-checkbox {
+      &:hover $checkbox, &:focus $checkbox {
         border-color: #212121;
       }
+<<<<<<< Updated upstream
       &:focus .ms-Checkbox-checkbox {
         border-color: #212121;
       }
+      &:hover .ms-Checkbox-checkmark {
+        color: #a6a6a6;
+        opacity: 1;
+      }
       &:hover .ms-Checkbox-text {
         color: #000000;
+=======
+      &:hover $checkmark {
+        color: #a6a6a6;
+        opacity: 1;
+>>>>>>> Stashed changes
       }
-      &:focus .ms-Checkbox-text {
+      &:hover $text, &:focus $text {
         color: #000000;
       }
   disabled={undefined}
@@ -107,10 +117,14 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
         aria-label={undefined}
         className=
             ms-Icon
+            ms-Checkbox-checkmark
             {
               color: #ffffff;
               display: inline-block;
               opacity: 0;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: window;
             }
         data-icon-name="CheckMark"
         role="presentation"
