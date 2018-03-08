@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.61.0",
+      "tag": "office-ui-fabric-react_v5.61.0",
+      "date": "Thu, 08 Mar 2018 11:27:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "48ad19d4b13e248d91a70fd59960e85a00753d96",
+            "comment": "ComboBox adding onPendingValueChanged callback prop to run when pending value is changed"
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "dfe67eaf43e3d135075cfd9feea5acd40466c88e",
+            "comment": "Seperated the SCSS for Persona and Persona Coin components due to bloat when imported twice."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "61c7a055825c41f828c416e5370212804f71d05c",
+            "comment": "Added the @customizable decorator to Image and Layer to enable theme functionality"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2cf6fefa3c6aa497e2e6e1e748b4bf57abc1b480",
+            "comment": "MessageBar: Aria label for truncated text overflow button and added aria labels for buttons in examples."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.15.0 <6.0.0` to `>=5.16.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.60.1",
       "tag": "office-ui-fabric-react_v5.60.1",
       "date": "Wed, 07 Mar 2018 11:16:50 GMT",

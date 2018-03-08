@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "5.24.1",
+      "tag": "@uifabric/experiments_v5.24.1",
+      "date": "Thu, 08 Mar 2018 11:27:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "ddc5731a85effd6082a93fe3458528224674a70c",
+            "comment": "Add Keytip and KeytipLayer to experiments export"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.60.1 <6.0.0` to `>=5.61.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.24.0",
       "tag": "@uifabric/experiments_v5.24.0",
       "date": "Wed, 07 Mar 2018 11:16:50 GMT",
