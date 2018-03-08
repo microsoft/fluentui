@@ -10,6 +10,7 @@ import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { HoverCardStatus } from './HoverCard.checklist';
+import { MessageBar } from '../../MessageBar';
 
 import './HoverCardPage.scss';
 
@@ -33,12 +34,17 @@ export class HoverCardPage extends React.Component<IComponentDemoPageProps, any>
           </LayerHost>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -47,7 +53,7 @@ export class HoverCardPage extends React.Component<IComponentDemoPageProps, any>
         }
         componentStatus={
           <ComponentStatus
-            {...HoverCardStatus}
+            { ...HoverCardStatus }
           />
         }
         isHeaderVisible={ this.props.isHeaderVisible }

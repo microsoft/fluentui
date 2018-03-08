@@ -11,6 +11,7 @@ import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { IconStatus } from './Icon.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
 const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Svg.Example.tsx') as string;
@@ -40,11 +41,16 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -75,7 +81,7 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...IconStatus}
+            { ...IconStatus }
           />
         }
       />

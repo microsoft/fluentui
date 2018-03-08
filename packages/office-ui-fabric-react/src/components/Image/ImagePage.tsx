@@ -14,6 +14,7 @@ import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ImageStatus } from './Image.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Default.Example.tsx') as string;
 const ImageCenterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Center.Example.tsx') as string;
@@ -51,11 +52,16 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;img&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -89,7 +95,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ImageStatus}
+            { ...ImageStatus }
           />
         }
       />
