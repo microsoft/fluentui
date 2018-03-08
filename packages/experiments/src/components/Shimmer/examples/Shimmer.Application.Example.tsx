@@ -75,7 +75,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 
   @autobind
   private _onRenderMissingItem(index: number): JSX.Element {
-    // this._onDataMiss(index as number);
+    this._onDataMiss(index as number);
     const { columns } = this.state;
     console.log(columns);
     return (
