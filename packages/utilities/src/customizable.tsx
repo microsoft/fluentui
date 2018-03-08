@@ -14,14 +14,14 @@ export function customizable(
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
     // tslint:disable-next-line:no-any
   ): any {
-    return class ComponentWithInjectedProps extends React.Component<P, {}> {
+    const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
 
       public static contextTypes: {
         customizations: PropTypes.Requireable<{}>;
       } = {
-        customizations: PropTypes.object
-      };
+          customizations: PropTypes.object
+        };
 
       // tslint:disable-next-line:no-any
       constructor(props: P, context: any) {
@@ -52,5 +52,18 @@ export function customizable(
       }
 
     };
+
+    return hoistStatics(ComposedComponent, resultClass);
   };
+}
+
+function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest {
+  for (const name in source) {
+    if (source.hasOwnProperty(name)) {
+      // tslint:disable-next-line:no-any
+      (dest as any)[name] = source[name];
+    }
+  }
+
+  return dest;
 }
