@@ -164,7 +164,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
+        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled || this._isSplitButton) ? false : true,
         'aria-pressed': checked
       }
     );
@@ -201,7 +201,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public focus(): void {
-    if (this._buttonElement.value) {
+    if (this._isSplitButton && this._splitButtonContainer.value) {
+      this._splitButtonContainer.value.focus();
+    } else if (this._buttonElement.value) {
       this._buttonElement.value.focus();
     }
   }
@@ -436,6 +438,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     buttonProps = { ...buttonProps, onClick: undefined };
 
+    assign(
+      buttonProps,
+      {
+        tabIndex: -1
+      }
+    );
+
     return (
       <div
         role={ 'button' }
@@ -450,6 +459,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
         onClick={ !disabled && !primaryDisabled ? onClick : undefined }
+        tabIndex={ 0 }
       >
         <span
           style={ { 'display': 'flex' } }
@@ -460,6 +470,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         </span>
       </div>
     );
+  }
+
+  private _focusSplitButton() {
+    if (this._splitButtonContainer.value) {
+      this._splitButtonContainer.value.focus();
+    }
   }
 
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
@@ -493,11 +509,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'iconProps': menuIconProps,
       'ariaLabel': splitButtonAriaLabel,
       'aria-haspopup': true,
-      'aria-expanded': this._isExpanded
+      'aria-expanded': this._isExpanded,
+      'data-is-focusable': false
     };
 
-    return <BaseButton { ...splitButtonProps } onMouseDown={ this._onMouseDown } />;
-
+    return <BaseButton {...splitButtonProps} onMouseDown={ this._onMouseDown } tabIndex={ -1 } />;
   }
 
   @autobind
