@@ -13,7 +13,7 @@ import {
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { DetailsRowFields } from './DetailsRowFields';
+import { DetailsRowFields, IDetailsRowFieldsProps } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { CollapseAllVisibility } from '../../GroupedList';
@@ -52,6 +52,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   getRowAriaDescribedBy?: (item: any) => string;
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
+  customRowRenderer?: (props: IDetailsRowFieldsProps) => JSX.Element;
   className?: string;
 }
 
@@ -184,6 +185,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       getRowAriaDescribedBy,
       checkButtonAriaLabel,
       checkboxCellClassName,
+      customRowRenderer,
       selection,
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
@@ -248,7 +250,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
         { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
-        { item && (
+        { item && (!customRowRenderer) && (
           <DetailsRowFields
             columns={ columns }
             item={ item }
@@ -256,6 +258,14 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             columnStartIndex={ showCheckbox ? 1 : 0 }
             onRenderItemColumn={ onRenderItemColumn }
           />
+        ) }
+
+        { item && customRowRenderer && customRowRenderer({
+          columns: columns,
+          item: item,
+          itemIndex: itemIndex,
+          columnStartIndex: 0
+        }
         ) }
 
         { columnMeasureInfo && (
