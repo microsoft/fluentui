@@ -43,7 +43,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
 
     return (
       <div className={ 'ms-FacepileExample' }>
-        <Facepile {...facepileProps} />
+        <Facepile { ...facepileProps } />
         <div className={ 'control' }>
           <Slider
             label='Number of Personas:'

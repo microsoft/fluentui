@@ -172,13 +172,15 @@ public render() {
 }
 ```
 
-Best, use _resolveRef in BaseComponent:
+Best, use createRef:
 ```typescript
+import { createRef, RefObject } from 'office-ui-fabric-react/lib/Utilities';
+
 class Foo extends BaseComponent<...> {
-  private _root: HTMLElement;
+  private _root: RefObject<HTMLElement> = createRef<HTMLElement>();
 
   public render() {
-    return <div ref={ this._resolveRef('_root') } />;
+    return <div ref={ _root } />;
   }
 }
 ```
