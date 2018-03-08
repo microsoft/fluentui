@@ -19,6 +19,7 @@ import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Link } from '../../Link';
+import { MessageBar } from '../../MessageBar';
 import * as exampleStylesImport from '../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
@@ -127,12 +128,14 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         }
         propertiesTables={
           <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;button&gt;</code> and <code>&lt;a&gt;</code> tags, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
             <PropertiesTableSet
               sources={ [
                 require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')
               ] }
             />
-            <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
           </div>
         }
         overview={
