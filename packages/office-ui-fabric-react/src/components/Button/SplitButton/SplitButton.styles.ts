@@ -2,7 +2,8 @@ import { IButtonStyles } from '../Button.types';
 import {
   ITheme,
   concatStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  HighContrastSelector
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
@@ -10,6 +11,8 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
+  const buttonHighContrastFocus = getFocusStyle(theme, -3, 'relative', 'Window');
+
   const splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
@@ -36,7 +39,10 @@ export const getStyles = memoizeFunction((
         cursor: 'pointer',
         verticalAlign: 'top',
         width: 32,
-        marginLeft: -1
+        marginLeft: -1,
+        selectors: {
+          [HighContrastSelector]: buttonHighContrastFocus
+        }
       }
     ],
 
