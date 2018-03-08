@@ -22,8 +22,8 @@ export const getStyles = memoizeFunction((
 ): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let commandButtonFocusStyle: IRawStyle = getFocusStyle(theme, 6);
-  commandButtonFocusStyle.border = 'none'
+  const commandButtonFocusStyle: IRawStyle = getFocusStyle(theme, 6);
+  commandButtonFocusStyle.border = 'none';
 
   const commandButtonStyles: IButtonStyles = {
     root:

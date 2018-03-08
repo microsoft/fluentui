@@ -36,7 +36,7 @@ export const getStyles = memoizeFunction((
   const border = semanticColors.buttonBorder;
   const disabledBackground = semanticColors.disabledBackground;
   const disabledText = semanticColors.disabledText;
-  let buttonHighContrastFocus = getFocusStyle(theme, -2);
+  const buttonHighContrastFocus = getFocusStyle(theme, -2);
   buttonHighContrastFocus.border = 'none';
 
   return {
