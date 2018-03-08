@@ -87,7 +87,7 @@ Object {
   "large": Object {
     "MozOsxFontSmoothing": "grayscale",
     "WebkitFontSmoothing": "antialiased",
-    "fontFamily": "'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
+    "fontFamily": "'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif",
     "fontSize": "17px",
     "fontWeight": 300,
   },

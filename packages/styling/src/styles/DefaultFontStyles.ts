@@ -47,7 +47,7 @@ function _registerFontFaceSet(
 
   _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light, localFontName && localFontName + ' Light');
   _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight, localFontName && localFontName + ' SemiLight');
-  _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular, localFontName && localFontName);
+  _registerFontFace(fontFamily, urlBase + '-regular', FontWeights.regular, localFontName);
   _registerFontFace(fontFamily, urlBase + '-semibold', FontWeights.semibold, localFontName && localFontName + ' SemiBold');
 }
 

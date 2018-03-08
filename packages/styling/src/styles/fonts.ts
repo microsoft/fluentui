@@ -37,8 +37,10 @@ export namespace LocalizedFontFamilies {
   export const Selawik = `'${LocalizedFontNames.Selawik}'`;
   export const Thai = `'Leelawadee UI Web', 'Kmer UI'`;
   export const Vietnamese = `'${LocalizedFontNames.Vietnamese}'`;
-  export const WestEuropean = `'Segoe UI', '${LocalizedFontNames.WestEuropean}'`;
+  export const WestEuropean = `'${LocalizedFontNames.WestEuropean}'`;
 }
+
+const defaultFontFamily = `'Segoe UI', '${LocalizedFontNames.WestEuropean}'`;
 
 // Mapping of language prefix to to font family.
 const LanguageToFontMap = {
@@ -101,36 +103,51 @@ export namespace IconFontSizes {
   export const large = '20px';
 }
 
-export function createFontStyles(localeCode: string | null): IFontStyles {
-  const fontFamily = _getFontFamily(localeCode);
+function _fontFamilyWithFallbacks(fontFamily: string): string {
+  return `${fontFamily}, ${FontFamilyFallbacks}`;
+}
 
-  return {
+export function createFontStyles(localeCode: string | null): IFontStyles {
+  const localizedFont = _getLocalizedFont(localeCode);
+  let fontFamily: string | undefined;
+  let semilightFontFamily: string | undefined;
+
+  if (localizedFont) {
+    fontFamily = semilightFontFamily = _fontFamilyWithFallbacks(localizedFont);
+  } else {
+    fontFamily = _fontFamilyWithFallbacks(defaultFontFamily);
+    semilightFontFamily = _fontFamilyWithFallbacks(LocalizedFontFamilies.WestEuropean);
+  }
+
+  const fontStyles = {
     tiny: _createFont(FontSizes.mini, FontWeights.semibold, fontFamily),
     xSmall: _createFont(FontSizes.xSmall, FontWeights.regular, fontFamily),
     small: _createFont(FontSizes.small, FontWeights.regular, fontFamily),
     smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, fontFamily),
     medium: _createFont(FontSizes.medium, FontWeights.regular, fontFamily),
     mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamily),
-    large: _createFont(FontSizes.large, FontWeights.semilight, fontFamily),
+    large: _createFont(FontSizes.large, FontWeights.semilight, semilightFontFamily),
     xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamily),
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamily),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamily),
     mega: _createFont(FontSizes.mega, FontWeights.light, fontFamily)
   };
+
+  return fontStyles;
 }
 
-function _getFontFamily(language: string | null): string {
-  let fontFamily = LocalizedFontFamilies.WestEuropean;
-
+/**
+ * If there is a localized font for this language, return that. Returns undefined if there is no localized font for that language.
+ */
+function _getLocalizedFont(language: string | null): string | undefined {
   for (let lang in LanguageToFontMap) {
     if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
       // tslint:disable-next-line:no-any
-      fontFamily = (LanguageToFontMap as any)[lang];
-      break;
+      return (LanguageToFontMap as any)[lang];
     }
   }
 
-  return `${fontFamily}, ${FontFamilyFallbacks}`;
+  return undefined;
 }
 
 function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRawStyle {
