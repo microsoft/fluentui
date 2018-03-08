@@ -9,6 +9,7 @@ import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ScrollablePaneStatus } from './ScrollablePane.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 
@@ -31,12 +32,17 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -67,7 +73,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ScrollablePaneStatus}
+            { ...ScrollablePaneStatus }
           />
         }
       />

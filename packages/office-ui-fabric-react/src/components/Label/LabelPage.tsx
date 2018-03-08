@@ -8,6 +8,7 @@ import {
 import { LabelBasicExample } from './examples/Label.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { LabelStatus } from './Label.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string;
 
@@ -23,11 +24,16 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -59,7 +65,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...LabelStatus}
+            { ...LabelStatus }
           />
         }
       />

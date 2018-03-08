@@ -9,6 +9,7 @@ import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { OverlayStatus } from './Overlay.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const OverlayLightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Light.Example.tsx') as string;
 const OverlayDarkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Dark.Example.tsx') as string;
@@ -30,11 +31,16 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/Overlay.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -64,7 +70,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...OverlayStatus}
+            { ...OverlayStatus }
           />
         }
       />

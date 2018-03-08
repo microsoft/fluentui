@@ -8,6 +8,7 @@ import {
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { LinkStatus } from './Link.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
@@ -23,11 +24,16 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -65,7 +71,7 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...LinkStatus}
+            { ...LinkStatus }
           />
         }
       />

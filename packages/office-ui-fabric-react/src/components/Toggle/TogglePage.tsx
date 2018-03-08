@@ -10,6 +10,7 @@ import { ToggleAriaLabelExample } from './examples/Toggle.AriaLabel.Example';
 import { FontClassNames } from '../../Styling';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ToggleStatus } from './Toggle.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 const ToggleAriaLabelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.AriaLabel.Example.tsx') as string;
@@ -37,11 +38,16 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;input&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -84,7 +90,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ToggleStatus}
+            { ...ToggleStatus }
           />
         }
       />

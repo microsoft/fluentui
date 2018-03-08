@@ -10,6 +10,7 @@ import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSe
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ResizeGroupStatus } from './ResizeGroup.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
@@ -32,11 +33,16 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
           </LayerHost>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')
-            ] }
-          />
+          <div>
+            <MessageBar>
+              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
+            </MessageBar>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -103,7 +109,7 @@ export class ResizeGroupPage extends React.Component<IComponentDemoPageProps, an
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ResizeGroupStatus}
+            { ...ResizeGroupStatus }
           />
         }
       />
