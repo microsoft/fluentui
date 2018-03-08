@@ -26,6 +26,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       {
         position: 'relative',
         margin: '10px',
+        width: 'auto',
         boxSizing: 'content-box',
         minHeight: maxHeight ? `${maxHeight}px` : '16px'
       }

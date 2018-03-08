@@ -49,7 +49,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               />
             );
           case ShimmerElementType.GAP:
-            const gapWidth = elem.width ? elem.width + '%' : '1%';
+            const gapWidth = elem.widthInPercentage || elem.widthInPixel ?
+              elem.widthInPercentage ? elem.widthInPercentage + '%' : elem.widthInPixel + 'px'
+              : '5px';
             return (
               <div
                 key={ index }
@@ -106,7 +108,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
         height = !!elem.height ? elem.height : 24;
         break;
     }
-    console.log(height);
+
     const dif: number | undefined = maxHeight && height ?
       maxHeight - height > 0 ?
         maxHeight - height : undefined

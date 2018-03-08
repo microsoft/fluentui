@@ -26,10 +26,16 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
   height?: number;
 
   /**
-   * Sets width of the elemnts.
+   * Sets width of the element in percentages.
    * @default 100%
    */
-  width?: number;
+  widthInPercentage?: number;
+
+  /**
+   * Sets width of the element in pixels.
+   * @default 50px
+   */
+  widthInPixel?: number;
 
   /**
    * @default center
@@ -50,7 +56,8 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
 export interface IShimmerRectangleStyleProps {
   height?: number;
   verticalAlign?: string;
-  width?: number;
+  widthInPercentage?: number;
+  widthInPixel?: number;
   borderAlignStyle?: IStyleSet;
 }
 
@@ -61,18 +68,20 @@ export interface IShimmerRectangleStyles {
 export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangleStyles {
   const {
     height,
-    width,
+    widthInPercentage,
+    widthInPixel,
     borderAlignStyle
   } = props;
 
   const styles: IStyleSet = !!borderAlignStyle ? borderAlignStyle : {};
+  const ACTUAL_WIDTH = widthInPercentage ? widthInPercentage + '%' : widthInPixel ? widthInPixel + 'px' : '100%';
 
   return {
     root: [
       'ms-ShimmerRectangle-line',
       {
         color: 'transparent',
-        width: `${width}%`,
+        width: ACTUAL_WIDTH,
         height: `${height}px`,
         boxSizing: 'content-box',
       },

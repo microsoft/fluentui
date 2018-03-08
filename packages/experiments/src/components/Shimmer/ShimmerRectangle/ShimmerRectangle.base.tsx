@@ -12,7 +12,6 @@ export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, 
   public static defaultProps: IShimmerRectangleProps = {
     height: 16,
     verticalAlign: ShimmerElementVerticalAlign.CENTER,
-    width: 100
   };
   private _classNames: {[key in keyof IShimmerRectangleStyles]: string};
 
@@ -21,9 +20,9 @@ export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, 
   }
 
   public render(): JSX.Element {
-    const { height, getStyles, width, borderAlignStyle } = this.props;
+    const { height, getStyles, widthInPercentage, widthInPixel, borderAlignStyle } = this.props;
 
-    this._classNames = getClassNames(getStyles!, { height, width, borderAlignStyle });
+    this._classNames = getClassNames(getStyles!, { height, widthInPixel, widthInPercentage, borderAlignStyle });
 
     return (
       <div className={ this._classNames.root } />

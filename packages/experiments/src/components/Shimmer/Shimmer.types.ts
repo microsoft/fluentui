@@ -57,7 +57,13 @@ export interface IShimmerElement {
    * The width of the element (ICircle, ILine, IGap).
    * Read more details for each specific element.
    */
-  width?: number;
+  widthInPixel?: number;
+
+  /**
+   * The width of the element (ICircle, ILine, IGap).
+   * Read more details for each specific element.
+   */
+  widthInPercentage?: number;
 
   /**
    * The vertical alignemt of the element (ICircle, ILine, IGap).
@@ -78,7 +84,13 @@ export interface ILine extends IShimmerElement {
    * If not provided the line will the take the remaining space to fill the shimmer container.
    * The value provided will represent the width as '%' relative to the shimmer container.
    */
-  width?: number;
+  widthInPercentage?: number;
+
+  /**
+   * Sets the width of the Rectangle to an exact value or can take the value of a variable.
+   * @default 50px
+   */
+  widthInPixel?: number;
 }
 
 export interface ICircle extends IShimmerElement {
@@ -93,7 +105,13 @@ export interface ICircle extends IShimmerElement {
    * Width of the circle element if provided will be ignored.
    * The value will be set equal to the height of the circle for scale ratio reasons.
    */
-  width?: number;
+  widthInPercentage?: number;
+
+  /**
+   * Width of the circle element if provided will be ignored.
+   * The value will be set equal to the height of the circle for scale ratio reasons.
+   */
+  widthInPixel?: number;
 }
 
 export interface IGap extends IShimmerElement {
@@ -105,9 +123,14 @@ export interface IGap extends IShimmerElement {
   /**
    * Sets the width relative to the shimmer container width for responsiveness reasons.
    * The value will be calculated as '%' relative the to shimmer container.
-   * @default 1%
    */
-  width?: number;
+  widthInPercentage?: number;
+
+  /**
+   * Sets the width of the Gap to an exact value or can take the value of a variable.
+   * @default 5px
+   */
+  widthInPixel?: number;
 }
 
 export interface IShimmerStyleProps {

@@ -28,7 +28,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer
           lineElements={ [
             { type: ElemType.CIRCLE, height: 24 },
-            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.RECTANGLE, height: 16 },
           ] }
         />
@@ -36,13 +36,13 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer
           lineElements={ [
             { type: ElemType.CIRCLE, height: 24 },
-            { type: ElemType.GAP, width: 2 },
-            { type: ElemType.RECTANGLE, height: 16, width: 20 },
-            { type: ElemType.GAP, width: 5 },
-            { type: ElemType.RECTANGLE, height: 16, width: 20 },
-            { type: ElemType.GAP, width: 10 },
-            { type: ElemType.RECTANGLE, height: 16, width: 15 },
-            { type: ElemType.GAP, width: 10 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
+            { type: ElemType.GAP, widthInPercentage: 5 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
+            { type: ElemType.GAP, widthInPercentage: 10 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 15 },
+            { type: ElemType.GAP, widthInPercentage: 10 },
             { type: ElemType.RECTANGLE, height: 16 }
           ] }
         />
@@ -50,13 +50,13 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
           width={ 70 }
           lineElements={ [
             { type: ElemType.CIRCLE, height: 24 },
-            { type: ElemType.GAP, width: 2 },
-            { type: ElemType.RECTANGLE, height: 16, width: 20 },
-            { type: ElemType.GAP, width: 5 },
-            { type: ElemType.RECTANGLE, height: 16, width: 20 },
-            { type: ElemType.GAP, width: 10 },
-            { type: ElemType.RECTANGLE, height: 16, width: 15 },
-            { type: ElemType.GAP, width: 10 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
+            { type: ElemType.GAP, widthInPercentage: 5 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
+            { type: ElemType.GAP, widthInPercentage: 10 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 15 },
+            { type: ElemType.GAP, widthInPercentage: 10 },
             { type: ElemType.RECTANGLE, height: 16 }
           ] }
         />
@@ -64,15 +64,15 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         <Shimmer
           lineElements={ [
             { type: ElemType.CIRCLE, height: 24 },
-            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.CIRCLE, height: 15, verticalAlign: ElemVerticalAlign.TOP },
-            { type: ElemType.GAP, width: 2 },
-            { type: ElemType.RECTANGLE, verticalAlign: ElemVerticalAlign.BOTTOM, width: 20 },
-            { type: ElemType.GAP, width: 2 },
-            { type: ElemType.RECTANGLE, height: 5, verticalAlign: ElemVerticalAlign.TOP, width: 20 },
-            { type: ElemType.GAP, width: 2 },
-            { type: ElemType.RECTANGLE, height: 16, width: 15 },
-            { type: ElemType.GAP, width: 2 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
+            { type: ElemType.RECTANGLE, verticalAlign: ElemVerticalAlign.BOTTOM, widthInPercentage: 20 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
+            { type: ElemType.RECTANGLE, height: 5, verticalAlign: ElemVerticalAlign.TOP, widthInPercentage: 20 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
+            { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 15 },
+            { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.RECTANGLE, height: 10, verticalAlign: ElemVerticalAlign.BOTTOM }
           ] }
         />

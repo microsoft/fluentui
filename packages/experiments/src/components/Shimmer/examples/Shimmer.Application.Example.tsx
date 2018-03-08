@@ -10,9 +10,12 @@ import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/D
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
-import { Shimmer } from 'experiments/lib/Shimmer';
+import {
+  Shimmer,
+  ShimmerElementType as ElemType,
+} from 'experiments/lib/Shimmer';
 
-const PAGING_DELAY = 5000;
+const PAGING_DELAY = 3000;
 const ITEMS_COUNT = 1000;
 const PAGING_SIZE = 10;
 
@@ -72,9 +75,21 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 
   @autobind
   private _onRenderMissingItem(index: number): JSX.Element {
-    this._onDataMiss(index as number);
+    // this._onDataMiss(index as number);
+    const { columns } = this.state;
+    console.log(columns);
     return (
-      <Shimmer />
+      <Shimmer
+        lineElements={ [
+          { type: ElemType.GAP, widthInPixel: 40 },
+          { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 30 },
+          { type: ElemType.GAP, widthInPixel: 16 },
+          { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
+          { type: ElemType.GAP, widthInPixel: 16 },
+          { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
+          { type: ElemType.GAP, widthInPixel: 16 },
+        ] }
+      />
     );
   }
 
@@ -89,7 +104,6 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         this._isFetchingItems = false;
         // tslint:disable-next-line:no-any
         const itemsCopy = ([] as any[]).concat(this.state.items);
-
         itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
 
         this.setState({
