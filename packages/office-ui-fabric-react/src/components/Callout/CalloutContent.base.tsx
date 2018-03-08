@@ -4,7 +4,9 @@ import * as React from 'react';
 import {
   ICalloutProps,
   ICalloutContentStyleProps,
-  ICalloutContentStyles
+  ICalloutContentStyles,
+  CalloutTarget,
+  CalloutTargetFunction
 } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
@@ -384,12 +386,12 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     return true;
   }
 
-  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
-    // Override target with getTarget function provided
-    if (this.props.getTarget) {
-      target = this.props.getTarget();
-    }
+  private _setTargetWindowAndElement(target: CalloutTarget | CalloutTargetFunction): void {
     if (target) {
+      if (typeof target === 'function') {
+        // Set target from CalloutTargetFunction
+        target = target();
+      }
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as Element : null;
@@ -432,13 +434,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
-    const { useTargetPoint, targetPoint, target, getTarget } = props;
+  private _getTarget(props: ICalloutProps = this.props): CalloutTarget {
+    const { useTargetPoint, targetPoint, target } = props;
     if (useTargetPoint) {
       return targetPoint!;
     }
-    if (getTarget) {
-      return getTarget();
+    if (typeof target === 'function') {
+      return target();
     }
     return target!;
   }

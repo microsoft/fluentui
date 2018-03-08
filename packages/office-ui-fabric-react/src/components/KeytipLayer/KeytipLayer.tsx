@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { IKeytipLayerProps } from './KeytipLayer.types';
 import { Keytip, IKeytipProps } from '../../Keytip';
-import {
-  autobind,
-  BaseComponent
-} from '../../Utilities';
 import { Layer } from '../../Layer';
 import {
+  autobind,
+  BaseComponent,
   KeyCodes,
   findIndex,
   KeytipTransitionModifier,

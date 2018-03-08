@@ -14,6 +14,9 @@ export interface ICallout {
 
 }
 
+export type CalloutTarget = Element | string | MouseEvent | IPoint | null;
+export type CalloutTargetFunction = () => CalloutTarget;
+
 export interface ICalloutProps {
   /**
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
@@ -25,14 +28,9 @@ export interface ICalloutProps {
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
+   * It can also be a function which returns a CalloutTarget
    */
-  target?: Element | string | MouseEvent | IPoint | null;
-
-  /**
-   * Function that should return a valid 'target' to be used
-   * If this is defined, will override 'target' if also defined
-   */
-  getTarget?: () => Element | string | MouseEvent | IPoint | null;
+  target?: CalloutTarget | CalloutTargetFunction;
 
   /**
    * How the element should be positioned
