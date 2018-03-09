@@ -578,22 +578,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <div
+        role={ 'button' }
         aria-labelledby={ item.ariaLabel }
+        className={ classNames.splitContainer }
         aria-disabled={ this._isItemDisabled(item) }
         aria-haspopup={ true }
         aria-describedby={ item.ariaDescription }
         aria-checked={ item.isChecked || item.checked }
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
+        onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
+        tabIndex={ 0 }
+        aria-hidden={ true }
       >
-        <span
-          aria-hidden={ true }
-          className={ classNames.splitContainer }
-        >
-          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-          { this._renderSplitDivider(item) }
-          { this._renderSplitIconButton(item, classNames, index) }
-        </span>
+        { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+        { this._renderSplitDivider(item) }
+        { this._renderSplitIconButton(item, classNames, index) }
       </div>
     );
   }
@@ -616,12 +616,28 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       isChecked: item.isChecked,
       checked: item.checked,
       icon: item.icon,
-      iconProps: item.iconProps
+      iconProps: item.iconProps,
+      'data-is-focusable': false
     } as IContextualMenuItem;
     return React.createElement('button',
       getNativeProps(itemProps, buttonProperties),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } onCheckmarkClick={ hasCheckmarks ? this._onItemClick : undefined } hasIcons={ hasIcons } />,
     );
+  }
+
+  private _onSplitContainerItemKeyDown(item: any, ev: KeyboardEvent) {
+    if (ev.which === KeyCodes.enter) {
+      if (item.disabled || item.isDisabled) {
+        return;
+      }
+      if (item.onClick) {
+        item.onClick(ev, item);
+      }
+
+      !ev.defaultPrevented && this.dismiss(ev, true);
+    } else {
+      this._onItemKeyDown(item, ev);
+    }
   }
 
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number) {
@@ -637,11 +653,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return React.createElement('button',
       assign({}, getNativeProps(itemProps, buttonProperties), {
-        onKeyDown: this._onItemKeyDown.bind(this, item),
         onMouseEnter: this._onItemMouseEnter.bind(this, item),
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
-        onMouseMove: this._onItemMouseMove.bind(this, item)
+        onMouseMove: this._onItemMouseMove.bind(this, item),
+        tabIndex: -1,
+        'data-is-focusable': false
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
     );
