@@ -64,6 +64,11 @@ export const getStyles = memoizeFunction((
       justifyContent: 'center',
       alignItems: 'center'
     },
+
+    splitButtonContainerDisabled: {
+      outline: 'none',
+      border: 'none'
+    }
   };
 
   return concatStyleSets(splitButtonStyles, customStyles)!;
