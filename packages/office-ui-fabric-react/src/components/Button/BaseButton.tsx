@@ -441,7 +441,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     assign(
       buttonProps,
       {
-        tabIndex: -1
+        tabIndex: -1,
+        'data-is-focusable': false
       }
     );
 
