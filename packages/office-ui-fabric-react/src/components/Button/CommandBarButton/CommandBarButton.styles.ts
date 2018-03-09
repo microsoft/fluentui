@@ -22,20 +22,29 @@ export const getStyles = memoizeFunction((
 ): IButtonStyles => {
   const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  const commandButtonFocusStyle: IRawStyle = getFocusStyle(theme, 6);
-  commandButtonFocusStyle.border = 'none';
+  const commandButtonHighContrastFocus = {
+    left: 4,
+    top: 4,
+    bottom: 4,
+    right: 4,
+    border: 'none'
+  }
 
   const commandButtonStyles: IButtonStyles = {
-    root:
+    root: [
+      getFocusStyle(theme, -1, 'relative', commandButtonHighContrastFocus),
       {
         minWidth: '40px',
         backgroundColor: theme.palette.neutralLighter,
         color: theme.palette.neutralPrimary,
         padding: '0 4px',
         selectors: {
-          [HighContrastSelector]: commandButtonFocusStyle
+          [HighContrastSelector]: {
+            border: 'none'
+          }
         }
-      },
+      }
+    ],
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
