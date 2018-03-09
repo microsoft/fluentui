@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.62.0",
+      "tag": "office-ui-fabric-react_v5.62.0",
+      "date": "Fri, 09 Mar 2018 11:13:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Cyrus Balsara <cyrusb@microsoft.com>",
+            "commit": "6d2d87f10bdd69a46a879d2ce6fb09f983d309bd",
+            "comment": "Allow DetailsRow to have a custom renderer"
+          },
+          {
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b410f6b9a328dd4ad24cbaa739156c23880e44e4",
+            "comment": "Dialog: convert to mergeStyles part 2."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "a4a17ef0a30d1c37629b9200236dfd82bd80ce54",
+            "comment": "Fixes #3985 by removing HC style override on ms-Link buttons."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.16.0 <6.0.0` to `>=5.17.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.61.0",
       "tag": "office-ui-fabric-react_v5.61.0",
       "date": "Thu, 08 Mar 2018 11:27:24 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 01 Mar 2018 00:05:10 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Mar 2018 11:13:58 GMT and should not be manually modified.
+
+## 5.3.3
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Patches
+
+- Fixed in page nav so that the left nav links will display properly.
 
 ## 5.3.2
 Thu, 01 Mar 2018 00:05:10 GMT

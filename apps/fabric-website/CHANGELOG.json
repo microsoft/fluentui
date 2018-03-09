@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.3.3",
+      "tag": "@uifabric/fabric-website_v5.3.3",
+      "date": "Fri, 09 Mar 2018 11:13:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "e67bcbe68c55f057a10c3c51d923554bae81524d",
+            "comment": "Fixed in page nav so that the left nav links will display properly."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.61.0 <6.0.0` to `>=5.62.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.2",
       "tag": "@uifabric/fabric-website_v5.3.2",
       "date": "Thu, 01 Mar 2018 00:05:10 GMT",
