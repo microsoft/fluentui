@@ -32,6 +32,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         minHeight: maxHeight ? `${maxHeight}px` : '16px'
       },
       isDetailsList && {
+        margin: '0',
         marginLeft: '40px',
         minHeight: '42px',
         display: 'flex',

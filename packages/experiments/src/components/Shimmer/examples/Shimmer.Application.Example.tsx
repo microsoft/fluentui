@@ -6,14 +6,14 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, buildColumns, IColumn } from '../../../../../office-ui-fabric-react/src/components/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
 import {
   Shimmer,
-  ShimmerElementType as ElemType,
 } from 'experiments/lib/Shimmer';
+import { DetailsRow, IDetailsRowProps } from '../../../../../office-ui-fabric-react/src/components/DetailsList';
 
 const PAGING_DELAY = 3000;
 const ITEMS_COUNT = 1000;
@@ -32,8 +32,38 @@ export interface IItem {
   height: number;
 }
 
+export interface IShimmerElem {
+  [index: string]: HTMLElement;
+}
+
 // tslint:disable-next-line:no-any
 let _items: any[];
+
+const fileIcons: { name: string; }[] = [
+  { 'name': 'accdb' },
+  { 'name': 'csv' },
+  { 'name': 'docx' },
+  { 'name': 'dotx' },
+  { 'name': 'mpp' },
+  { 'name': 'mpt' },
+  { 'name': 'odp' },
+  { 'name': 'ods' },
+  { 'name': 'odt' },
+  { 'name': 'one' },
+  { 'name': 'onepkg' },
+  { 'name': 'onetoc' },
+  { 'name': 'potx' },
+  { 'name': 'ppsx' },
+  { 'name': 'pptx' },
+  { 'name': 'pub' },
+  { 'name': 'vsdx' },
+  { 'name': 'vssx' },
+  { 'name': 'vstx' },
+  { 'name': 'xls' },
+  { 'name': 'xlsx' },
+  { 'name': 'xltx' },
+  { 'name': 'xsn' }
+];
 
 export interface IShimmerApplicationExampleState {
   items?: IItem[];
@@ -48,6 +78,10 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
 
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);
+      _items.map((item: IItem) => {
+        const randomFileType = this._randomFileIcon();
+        item.thumbnail = randomFileType.url;
+      });
     }
 
     this.state = {
@@ -74,22 +108,25 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   @autobind
-  private _onRenderMissingItem(index: number): JSX.Element {
+  private _onRenderMissingItem(index: number, rowProps: IDetailsRowProps): JSX.Element {
+    // tslint:disable-next-line:no-any
+    const shimmerItem: any = {};
+    const { columns } = rowProps;
+    columns.forEach((column: IColumn) => {
+      column.onRender = undefined;
+      if (column.fieldName) {
+        shimmerItem[column.fieldName] = '';
+      }
+    });
+    rowProps.item = shimmerItem;
+    rowProps.isShimmer = true;
     this._onDataMiss(index as number);
-    const { columns } = this.state;
-    console.log(columns);
     return (
       <Shimmer
-        lineElements={ [
-          { type: ElemType.GAP, widthInPixel: 40 },
-          { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 30 },
-          { type: ElemType.GAP, widthInPixel: 16 },
-          { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
-          { type: ElemType.GAP, widthInPixel: 16 },
-          { type: ElemType.RECTANGLE, height: 16, widthInPercentage: 20 },
-          { type: ElemType.GAP, widthInPixel: 16 },
-        ] }
-      />
+        isDetailsList={ true }
+      >
+        <DetailsRow { ...rowProps } />
+      </Shimmer>
     );
   }
 
@@ -131,6 +168,14 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       );
     }
 
+    if (column.key === 'thumbnail') {
+      return (
+        <img
+          src={ item.thumbnail }
+        />
+      );
+    }
+
     return item[column.key];
   }
 
@@ -159,9 +204,29 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       </div>
     );
   }
+
+  private _randomFileIcon(): { docType: string; url: string; } {
+    const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+    return {
+      docType,
+      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+    };
+  }
 }
 
 function _buildColumns(): IColumn[] {
-  return buildColumns(_items)
-    .filter((column: IColumn) => column.name === 'location' || column.name === 'key' || column.name === 'description');
+  const columns: IColumn[] = buildColumns(_items);
+
+  columns.forEach((column: IColumn) => {
+    if (column.key === 'thumbnail') {
+      console.log(column);
+      column.name = 'FileType';
+      column.minWidth = 20;
+      column.maxWidth = 20;
+      column.isIconOnly = true;
+      column.iconName = 'Page';
+    }
+  });
+  return columns;
+  // .filter((column: IColumn) => column.name === 'location' || column.name === 'key' || column.name === 'description');
 }

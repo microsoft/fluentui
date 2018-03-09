@@ -6,6 +6,8 @@ $rowVerticalPadding: 11px;
 $rowHorizontalPadding: 8px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
+$rowShimmerVerticalBorder: 8px;
+$rowShimmerHorizontalBorder: 10px;
 
 
 /* DetailsList Colors */
@@ -210,6 +212,20 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   [data-is-focusable=true] {
     @include focus-border(0, $ms-color-neutralSecondary);
   }
+
+  &.isShimmer {
+    min-height: $compactRowHeight;
+    padding: 0 0;
+    border-left: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
+    border-right: $rowShimmerVerticalBorder solid $detailsList-item-default-background-color;
+    border-top: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+    border-bottom: $rowShimmerHorizontalBorder solid $detailsList-item-default-background-color;
+
+    &:first-of-type {
+      border-bottom: 0;
+      border-top: 0;
+    }
+  }
 }
 
 
@@ -230,13 +246,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 .fields {
   display: flex;
   align-items: stretch;
-}
-
-.shimmer {
-  min-height: $compactRowHeight;
-  padding: 0 0;
-  border-left: $rowHorizontalPadding solid $detailsList-item-default-background-color;
-  border-right: $rowHorizontalPadding solid $detailsList-item-default-background-color;
 }
 
 .cellMeasurer .cell {

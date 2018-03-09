@@ -53,7 +53,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               column.isRowHeader && styles.isRowHeader,
               column.isPadded && styles.isPadded,
               column.isMultiline && styles.isMultiline,
-              isShimmer && styles.shimmer
+              isShimmer && styles.isShimmer
             ) }
             style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
