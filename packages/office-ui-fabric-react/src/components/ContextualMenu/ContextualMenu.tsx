@@ -874,7 +874,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-    if (ev.which === openKey) {
+    if (ev.which === openKey && !item.disabled) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       ev.preventDefault();
     }
