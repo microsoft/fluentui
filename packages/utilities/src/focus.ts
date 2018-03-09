@@ -102,11 +102,32 @@ export function getPreviousElement(
     if (childMatch) {
       if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
         return childMatch;
-      } else {
-        // Check previous sibling of the child match.
-        const childMatchSiblingMatch = getPreviousElement(
+      }
+
+      const childMatchSiblingMatch = getPreviousElement(
+        rootElement,
+        childMatch.previousElementSibling as HTMLElement,
+        true,
+        true,
+        true,
+        includeElementsInFocusZones,
+        allowFocusRoot,
+        tabbable
+      );
+      if (childMatchSiblingMatch) {
+        return childMatchSiblingMatch;
+      }
+
+      let childMatchParent = childMatch.parentElement;
+
+      // At this point if we have not found any potential matches
+      // start looking at the rest of the subtree under the currentParent.
+      // NOTE: We do not want to recurse here because doing so could
+      // cause elements to get skipped.
+      while (childMatchParent && childMatchParent !== currentElement) {
+        const childMatchParentMatch = getPreviousElement(
           rootElement,
-          childMatch.previousElementSibling as HTMLElement,
+          childMatchParent.previousElementSibling as HTMLElement,
           true,
           true,
           true,
@@ -114,9 +135,12 @@ export function getPreviousElement(
           allowFocusRoot,
           tabbable
         );
-        if (childMatchSiblingMatch) {
-          return childMatchSiblingMatch;
+
+        if (childMatchParentMatch) {
+          return childMatchParentMatch;
         }
+
+        childMatchParent = childMatchParent.parentElement;
       }
     }
   }

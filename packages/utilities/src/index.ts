@@ -39,3 +39,4 @@ export * from './scroll';
 export * from './string';
 export * from './styled';
 export * from './warn';
+export * from './createRef';
