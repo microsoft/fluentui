@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Mar 2018 11:27:24 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Mar 2018 11:13:58 GMT and should not be manually modified.
+
+## 5.62.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Allow DetailsRow to have a custom renderer
+- Dialog: convert to mergeStyles part 2.
+
+### Patches
+
+- Fixes #3985 by removing HC style override on ms-Link buttons.
 
 ## 5.61.0
 Thu, 08 Mar 2018 11:27:24 GMT
