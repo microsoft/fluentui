@@ -28,7 +28,7 @@ export const getStyles = memoizeFunction((
     bottom: 4,
     right: 4,
     border: 'none'
-  }
+  };
 
   const commandButtonStyles: IButtonStyles = {
     root: [

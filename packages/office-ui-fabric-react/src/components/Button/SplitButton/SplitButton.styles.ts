@@ -17,7 +17,7 @@ export const getStyles = memoizeFunction((
     bottom: -2,
     right: -2,
     border: 'none'
-  }
+  };
 
   const splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
