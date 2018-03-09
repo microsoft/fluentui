@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/utilities",
-      "type": "none"
+      "comment": "Add hoistStatics function to withResponsiveMode decorator.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/utilities",

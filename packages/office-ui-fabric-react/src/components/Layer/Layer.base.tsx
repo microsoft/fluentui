@@ -12,6 +12,7 @@ import {
 import {
   BaseComponent,
   classNamesFunction,
+  customizable,
   getDocument,
   setVirtualParent
 } from '../../Utilities';
@@ -21,6 +22,7 @@ let _defaultHostSelector: string | undefined;
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
+@customizable('Layer', ['theme'])
 export class LayerBase extends BaseComponent<ILayerProps, {}> {
 
   public static defaultProps: ILayerProps = {

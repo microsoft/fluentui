@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 06 Mar 2018 11:13:36 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Mar 2018 11:27:24 GMT and should not be manually modified.
+
+## 5.16.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added hoistStatics function to @customizable decorator so static methods work properly
 
 ## 5.15.0
 Tue, 06 Mar 2018 11:13:36 GMT
