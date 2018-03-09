@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Mar 2018 11:13:58 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Mar 2018 15:07:28 GMT and should not be manually modified.
+
+## 5.62.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Add unit test to catch focus regression being fixed by this PR
 
 ## 5.62.0
 Fri, 09 Mar 2018 11:13:58 GMT

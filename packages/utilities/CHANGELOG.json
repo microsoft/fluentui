@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.17.1",
+      "tag": "@uifabric/utilities_v5.17.1",
+      "date": "Fri, 09 Mar 2018 15:07:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "4fc956a30e82d90fe405def0f9434ffdb0d407ab",
+            "comment": "Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.0",
       "tag": "@uifabric/utilities_v5.17.0",
       "date": "Fri, 09 Mar 2018 11:13:58 GMT",

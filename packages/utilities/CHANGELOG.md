@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 09 Mar 2018 11:13:58 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Mar 2018 15:07:28 GMT and should not be manually modified.
+
+## 5.17.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Focus: Update getPreviousElement to traverse a potential childMatch's parent siblings  (which was previously being skipped)
 
 ## 5.17.0
 Fri, 09 Mar 2018 11:13:58 GMT
