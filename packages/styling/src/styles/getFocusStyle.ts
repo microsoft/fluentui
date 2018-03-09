@@ -10,14 +10,14 @@ import { HighContrastSelector } from './CommonStyles';
  * @param color - The color for the border.
  * @param position - The positioning applied to the container. Must
  * be 'relative' or 'absolute' so that the focus border can live around it.
- * @param highContrast - Style for high contrast mode.
+ * @param highContrastStyle - Style for high contrast mode.
  * @returns The style object.
  */
 export function getFocusStyle(
   theme: ITheme,
   inset: number = 0,
   position: 'relative' | 'absolute' = 'relative',
-  highContrast: IRawStyle | undefined = undefined
+  highContrastStyle: IRawStyle | undefined = undefined
 ): IRawStyle {
   return {
     outline: 'transparent',
@@ -40,7 +40,7 @@ export function getFocusStyle(
         outline: '1px solid ' + theme.palette.neutralSecondary,
         zIndex: 1,
         selectors: {
-          [HighContrastSelector]: highContrast
+          [HighContrastSelector]: highContrastStyle
         }
       }
 
