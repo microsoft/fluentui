@@ -5,7 +5,6 @@ import {
 import {
   IFontStyles
 } from '../interfaces/index';
-import { DefaultFontStyles } from '.';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
 const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
