@@ -534,14 +534,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) {
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(ev);
+    if (this.props.disabled) {
+      return;
     }
 
-    if (ev.which == KeyCodes.enter) {
-      if (this._buttonElement.value) {
-        this._buttonElement.value.click();
-      }
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
     }
 
     const { onMenuClick } = this.props;
@@ -551,10 +549,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (!ev.defaultPrevented &&
       this.props.menuTriggerKeyCode !== null &&
-      ev.which === (this.props.menuTriggerKeyCode === undefined ? KeyCodes.down : this.props.menuTriggerKeyCode)) {
+      this._validMenuKey(ev)) {
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
+    }
+  }
+
+  private _validMenuKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
+    if (this.props.menuTriggerKeyCode) {
+      return ev.which === this.props.menuTriggerKeyCode
+    } else {
+      return ev.which === KeyCodes.down && ev.altKey
     }
   }
 
