@@ -472,12 +472,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   }
 
-  private _focusSplitButton() {
-    if (this._splitButtonContainer.value) {
-      this._splitButtonContainer.value.focus();
-    }
-  }
-
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
     if (classNames && classNames.divider) {
       return <span className={ classNames.divider } />;

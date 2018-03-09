@@ -657,7 +657,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onMouseLeave: this._onMouseItemLeave.bind(this, item),
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         onMouseMove: this._onItemMouseMove.bind(this, item),
-        tabIndex: -1,
         'data-is-focusable': false
       }),
       <ChildrenRenderer item={ itemProps } classNames={ classNames } index={ index } hasIcons={ false } />
