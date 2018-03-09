@@ -19,11 +19,14 @@ import {
   IGroup,
   Selection,
   SelectionMode,
-  buildColumns
+  buildColumns,
+  IDetailsRowProps,
+  DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, isGroupable } from '@uifabric/example-app-base';
 import './DetailsList.Advanced.Example.scss';
-
+import { Shimmer, ShimmerElementType } from '../../../../../experiments/src/components/Shimmer';
+import { ShimmerRectangle } from '../../../../../experiments/src/components/Shimmer/ShimmerRectangle/ShimmerRectangle';
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
 const PAGING_DELAY = 5000;
@@ -165,9 +168,25 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   }
 
   @autobind
-  private _onRenderMissingItem(index: number): null {
-    this._onDataMiss(index as number);
-    return null;
+  private _onRenderMissingItem(index: number, rowProps: IDetailsRowProps): JSX.Element {
+    const shimmerItem: any = {};
+    const { columns } = rowProps;
+    columns.forEach((column) => {
+      column.onRender = undefined;
+      if (column.fieldName) {
+        shimmerItem[column.fieldName] = <div />;
+      }
+    });
+    rowProps.item = shimmerItem;
+    rowProps.isShimmer = true;
+    // this._onDataMiss(index as number);
+    return (
+      <Shimmer
+        isDetailsList={ true }
+      >
+        <DetailsRow { ...rowProps } />
+      </Shimmer>
+    );
   }
 
   @autobind

@@ -33,9 +33,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { getStyles, width, lineElements, children, isDataLoaded } = this.props;
+    const { getStyles, width, lineElements, children, isDataLoaded, isDetailsList } = this.props;
     const maxHeight: number | undefined = lineElements ? this._findMaxHeight(lineElements) : undefined;
-    this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded });
+    this._classNames = getClassNames(getStyles!, { width, maxHeight, isDataLoaded, isDetailsList });
 
     const elements: JSX.Element[] | JSX.Element = lineElements ?
       lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
@@ -78,13 +78,14 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
     return (
       <div className={ this._classNames.root }>
         <div className={ this._classNames.shimmerWrapper }>
-          { elements }
+          { !!isDetailsList ? children : elements }
         </div>
-        <div className={ this._classNames.dataWrapper }>
-          { !!isDataLoaded ?
-            !!children ? children : null
-            : null }
-        </div>
+
+        { !!isDataLoaded &&
+          <div className={ this._classNames.dataWrapper }>
+            { !!children ? children : null }
+          </div>
+        }
       </div>
     );
   }

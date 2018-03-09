@@ -53,6 +53,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   checkButtonAriaLabel?: string;
   checkboxCellClassName?: string;
   className?: string;
+  isShimmer?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -185,6 +186,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       checkButtonAriaLabel,
       checkboxCellClassName,
       selection,
+      isShimmer
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -196,6 +198,19 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = (selectionMode === SelectionMode.none) ? undefined : isSelected;
+
+    if (isShimmer) {
+      return (
+        <DetailsRowFields
+          columns={ columns }
+          item={ item }
+          itemIndex={ itemIndex }
+          columnStartIndex={ showCheckbox ? 1 : 0 }
+          onRenderItemColumn={ onRenderItemColumn }
+          isShimmer={ isShimmer }
+        />
+      );
+    }
 
     return (
       <FocusZone

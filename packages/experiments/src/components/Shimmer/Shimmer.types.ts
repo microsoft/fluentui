@@ -30,6 +30,8 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    */
   isDataLoaded?: boolean;
 
+  isDetailsList?: boolean;
+
   /**
    * Elements to render in one line of the Shimmer.
    */
@@ -137,6 +139,7 @@ export interface IShimmerStyleProps {
   width?: number;
   maxHeight?: number;
   isDataLoaded?: boolean;
+  isDetailsList?: boolean;
 }
 
 export interface IShimmerStyles {

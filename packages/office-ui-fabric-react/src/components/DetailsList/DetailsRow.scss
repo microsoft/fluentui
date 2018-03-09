@@ -232,6 +232,13 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   align-items: stretch;
 }
 
+.shimmer {
+  min-height: $compactRowHeight;
+  padding: 0 0;
+  border-left: $rowHorizontalPadding solid $detailsList-item-default-background-color;
+  border-right: $rowHorizontalPadding solid $detailsList-item-default-background-color;
+}
+
 .cellMeasurer .cell {
   overflow: visible;
   white-space: nowrap;
