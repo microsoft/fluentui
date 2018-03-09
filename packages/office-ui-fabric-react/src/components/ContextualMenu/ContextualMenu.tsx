@@ -474,7 +474,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     let anchorRel = item.rel;
     if (item.target && item.target.toLowerCase() === '_blank') {
-      anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';
+      anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
     }
 
     return (
