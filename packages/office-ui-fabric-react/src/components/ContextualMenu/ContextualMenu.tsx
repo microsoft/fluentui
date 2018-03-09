@@ -588,6 +588,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         aria-posinset={ focusableElementIndex + 1 }
         aria-setsize={ totalItemCount }
         onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
+        onClick={ this._executeItemClick.bind(this, item) }
         tabIndex={ 0 }
         aria-hidden={ true }
       >
@@ -607,7 +608,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const itemProps = {
       key: item.key,
-      onClick: this._executeItemClick.bind(this, item),
       disabled: this._isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
       className: classNames.splitPrimary,
@@ -625,7 +625,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _onSplitContainerItemKeyDown(item: any, ev: KeyboardEvent) {
+  private _onSplitContainerItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter) {
       if (item.disabled || item.isDisabled) {
         return;
@@ -871,7 +871,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     !ev.defaultPrevented && this.dismiss(ev, true);
   }
 
-  private _onItemKeyDown(item: any, ev: KeyboardEvent) {
+  private _onItemKeyDown(item: any, ev: React.KeyboardEvent<HTMLElement>) {
     const openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
     if (ev.which === openKey) {

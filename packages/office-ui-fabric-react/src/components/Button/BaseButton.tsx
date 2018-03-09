@@ -436,11 +436,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         !!this.state.menuProps,
         !!checked);
 
-    buttonProps = { ...buttonProps, onClick: undefined };
-
     assign(
       buttonProps,
       {
+        onClick: undefined,
         tabIndex: -1,
         'data-is-focusable': false
       }
@@ -456,7 +455,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
         className={ classNames && classNames.splitButtonContainer }
-        onKeyDown={ this._onMenuKeyDown }
+        onKeyDown={ this._onSplitButtonContainerKeyDown }
         ref={ this._splitButtonContainer }
         data-is-focusable={ true }
         onClick={ !disabled && !primaryDisabled ? onClick : undefined }
@@ -521,9 +520,28 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
+  private _onSplitButtonContainerKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
+    if (ev.which === KeyCodes.enter) {
+      if (this._buttonElement.value) {
+        this._buttonElement.value.click();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    } else {
+      this._onMenuKeyDown(ev);
+    }
+  }
+
+  @autobind
   private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
+    }
+
+    if (ev.which == KeyCodes.enter) {
+      if (this._buttonElement.value) {
+        this._buttonElement.value.click();
+      }
     }
 
     const { onMenuClick } = this.props;
