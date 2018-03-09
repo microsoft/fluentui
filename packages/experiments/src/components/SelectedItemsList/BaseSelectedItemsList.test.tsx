@@ -4,91 +4,68 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
-import { IBaseSelectedItemsListProps } from './BaseSelectedItemsList.types';
+import { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
-import { SuggestionsController } from 'office-ui-fabric-react/lib/Pickers';
-
-function onResolveSuggestions(text: string): ISimple[] {
-  return [
-    'black',
-    'blue',
-    'brown',
-    'cyan',
-    'green',
-    'magenta',
-    'mauve',
-    'orange',
-    'pink',
-    'purple',
-    'red',
-    'rose',
-    'violet',
-    'white',
-    'yellow'
-  ].filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map(item => ({ key: item, name: item }));
-}
-
-function onZeroQuerySuggestion(): ISimple[] {
-  return [
-    'black',
-    'blue',
-    'brown',
-    'cyan'].map(item => ({ key: item, name: item }));
-}
-
-const basicSuggestionRenderer = (props: ISimple) => {
-  return <div> { props.name } </div>;
-};
 
 export interface ISimple {
   key: string;
   name: string;
 }
 
-export type TypedBasePicker = BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
+const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
+  return <div key={ props.key }> { props.name } </div>;
+};
 
-describe('Pickers', () => {
-  describe('BasePicker', () => {
-    const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (props: IBaseSelectedItemsListProps<ISimple>) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
+export type TypedBaseSelectedItemsList = BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
-    it('renders BaseFloatingPicker correctly', () => {
+describe('SelectedItemsList', () => {
+  describe('BaseSelectedItemsList', () => {
+    const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (props: IBaseSelectedItemsListProps<ISimple>)
+      => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
+
+    it('renders BaseSelectedItemsList correctly', () => {
       const component = renderer.create(
-        <BasePickerWithType
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
+        <BaseSelectedItemsListWithType
         />
       );
       let tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
-    it('shows zero query options on empty input', () => {
-      let root = document.createElement('div');
-      let input = document.createElement('input');
-      document.body.appendChild(input);
-      document.body.appendChild(root);
+    it('can remove items', () => {
+      const root = document.createElement('div');
 
-      let picker: TypedBasePicker = ReactDOM.render(
-        <BasePickerWithType
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderSuggestionsItem={ basicSuggestionRenderer }
-          suggestionsController={ new SuggestionsController() }
-          onZeroQuerySuggestion={ onZeroQuerySuggestion }
-          inputElement={ input }
+      const onChange = (items: ISimple[] | undefined): void => {
+        expect(items!.length).toBe(1);
+        expect(items![0].name).toBe('b');
+      };
+
+      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
+        <BaseSelectedItemsListWithType
+          onRenderItem={ basicItemRenderer }
+          selectedItems={ [{ key: '1', name: 'a' }, { key: '2', name: 'b' }] }
+          onChange={ onChange }
         />,
         root
-      ) as TypedBasePicker;
+      ) as TypedBaseSelectedItemsList;
 
-      picker.onQueryStringChanged('a');
-
-      // Change input to be empty string
-      picker.onQueryStringChanged('');
-      debugger
-
-      expect(picker.suggestions.length).toEqual(4);
-
-      ReactDOM.unmountComponentAtNode(root);
+      expect(itemsList.items.length).toEqual(2);
+      itemsList.removeItemAt(0);
     });
-  })
+
+    it('can add items', () => {
+      const root = document.createElement('div');
+      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
+        <BaseSelectedItemsListWithType
+          onRenderItem={ basicItemRenderer }
+        />,
+        root
+      ) as TypedBaseSelectedItemsList;
+
+      let items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
+      itemsList.addItems(items);
+
+      expect(itemsList.items.length).toEqual(2);
+    });
+  });
 });
