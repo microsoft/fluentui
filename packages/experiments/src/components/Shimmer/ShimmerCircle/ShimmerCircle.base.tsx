@@ -7,7 +7,7 @@ import {
   IShimmerCircleProps,
   IShimmerCircleStyleProps,
   IShimmerCircleStyles
-} from './ShimmerCircle.styles';
+} from './ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
