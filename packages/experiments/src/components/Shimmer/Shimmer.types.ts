@@ -80,7 +80,7 @@ export interface IShimmerElement {
 
 export interface ILine extends IShimmerElement {
   /**
-   * Sets the height of the rectangle in pixels.
+   * Sets the height of the shimmer line in pixels.
    * @default 16px
    */
   height?: number;
@@ -91,7 +91,7 @@ export interface ILine extends IShimmerElement {
   widthInPercentage?: number;
 
   /**
-   * Sets the width of the Rectangle to an exact value in pixels.
+   * Sets the width of the Line to an exact value in pixels.
    * @default 50px
    */
   widthInPixel?: number;
@@ -99,7 +99,7 @@ export interface ILine extends IShimmerElement {
 
 export interface ICircle extends IShimmerElement {
   /**
-   * Sets the height of the circle in pixels.
+   * Sets the height of the shimmer circle in pixels.
    * @default 24px
    */
   height?: number;
@@ -132,7 +132,7 @@ export interface IShimmerStyles {
 }
 
 export const enum ShimmerElementType {
-  RECTANGLE = 'line',
+  LINE = 'line',
   CIRCLE = 'circle',
   GAP = 'gap'
 }

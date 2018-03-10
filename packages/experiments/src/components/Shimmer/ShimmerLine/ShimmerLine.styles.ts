@@ -1,10 +1,10 @@
 import {
-  IShimmerRectangleStyleProps,
-  IShimmerRectangleStyles
-} from './ShimmerRectangle.types';
+  IShimmerLineStyleProps,
+  IShimmerLineStyles
+} from './ShimmerLine.types';
 import { IStyleSet } from 'office-ui-fabric-react';
 
-export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangleStyles {
+export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   const {
     height,
     widthInPercentage,
@@ -17,7 +17,7 @@ export function getStyles(props: IShimmerRectangleStyleProps): IShimmerRectangle
 
   return {
     root: [
-      'ms-ShimmerRectangle-line',
+      'ms-ShimmerLine-line',
       {
         color: 'transparent',
         width: ACTUAL_WIDTH,

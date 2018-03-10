@@ -64,7 +64,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ul>
               <li>
-                When construncting a shimmer line using different elements like Circle, Rectangle or Gap, best if providing widths for each
+                When construncting a shimmer line using different elements like Circle, Line or Gap, best if providing widths for each
                 of them to experience a better layout looking as close as possible to real data it is replacing.
               </li>
               <li>

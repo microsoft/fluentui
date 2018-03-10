@@ -5,19 +5,19 @@ import {
 } from '../../../Styling';
 import { IStyleFunction } from '../../../Utilities';
 
-export interface IShimmerRectangle {
+export interface IShimmerLine {
 
 }
 
 /**
- * ShimmerRectangle component props.
+ * ShimmerLine component props.
  */
-export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElement> {
+export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Optional callback to access the IShimmerRectangle interface. Use this instead of ref for accessing
+   * Optional callback to access the IShimmerLine interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IShimmerRectangle) => void;
+  componentRef?: (component: IShimmerLine) => void;
 
   /**
    * Sets the height of the rectangle.
@@ -50,10 +50,10 @@ export interface IShimmerRectangleProps extends React.AllHTMLAttributes<HTMLElem
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  getStyles?: IStyleFunction<IShimmerRectangleStyleProps, IShimmerRectangleStyles>;
+  getStyles?: IStyleFunction<IShimmerLineStyleProps, IShimmerLineStyles>;
 }
 
-export interface IShimmerRectangleStyleProps {
+export interface IShimmerLineStyleProps {
   height?: number;
   verticalAlign?: string;
   widthInPercentage?: number;
@@ -61,6 +61,6 @@ export interface IShimmerRectangleStyleProps {
   borderAlignStyle?: IStyleSet;
 }
 
-export interface IShimmerRectangleStyles {
+export interface IShimmerLineStyles {
   root?: IStyle;
 }

@@ -4,22 +4,22 @@ import {
   classNamesFunction,
 } from '../../../Utilities';
 import {
-  IShimmerRectangleProps,
-  IShimmerRectangleStyleProps,
-  IShimmerRectangleStyles
-} from './ShimmerRectangle.types';
+  IShimmerLineProps,
+  IShimmerLineStyleProps,
+  IShimmerLineStyles
+} from './ShimmerLine.types';
 import { ShimmerElementVerticalAlign } from 'experiments/lib/Shimmer';
 
-const getClassNames = classNamesFunction<IShimmerRectangleStyleProps, IShimmerRectangleStyles>();
+const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
-export class ShimmerRectangleBase extends BaseComponent<IShimmerRectangleProps, {}> {
-  public static defaultProps: IShimmerRectangleProps = {
+export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
+  public static defaultProps: IShimmerLineProps = {
     height: 16,
     verticalAlign: ShimmerElementVerticalAlign.CENTER,
   };
-  private _classNames: {[key in keyof IShimmerRectangleStyles]: string};
+  private _classNames: {[key in keyof IShimmerLineStyles]: string};
 
-  constructor(props: IShimmerRectangleProps) {
+  constructor(props: IShimmerLineProps) {
     super(props);
   }
 

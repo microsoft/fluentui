@@ -17,7 +17,7 @@ import {
   DefaultPalette,
   IStyleSet
 } from '../../Styling';
-import { ShimmerRectangle } from './ShimmerRectangle/ShimmerRectangle';
+import { ShimmerLine } from './ShimmerLine/ShimmerLine';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
@@ -64,9 +64,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
                 } }
               />
             );
-          case ShimmerElementType.RECTANGLE:
+          case ShimmerElementType.LINE:
             return (
-              <ShimmerRectangle
+              <ShimmerLine
                 key={ index }
                 { ...elem }
                 borderAlignStyle={ this._getBorderAlignStyles(maxHeight, elem) }
@@ -74,7 +74,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
             );
         }
       }) :
-      <ShimmerRectangle />;
+      <ShimmerLine />;
 
     return (
       <div className={ this._classNames.root }>
@@ -103,7 +103,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   private _getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
     let height: number | undefined;
     switch (elem.type) {
-      case ShimmerElementType.RECTANGLE:
+      case ShimmerElementType.LINE:
         height = !!elem.height ? elem.height : 16;
         break;
       case ShimmerElementType.CIRCLE:
