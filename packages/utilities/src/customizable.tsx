@@ -1,7 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { Customizations } from './Customizations';
-import { hoistStatics } from './hoistStatics';
+import {
+  Customizations,
+  hoistStatics
+} from './';
 
 export function customizable(
   scope: string,
