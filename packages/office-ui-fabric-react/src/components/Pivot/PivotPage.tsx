@@ -17,7 +17,6 @@ import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { PivotStatus } from './Pivot.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
@@ -70,18 +69,14 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ 'PivitItem' }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed <code>[PivotItem]</code></strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on <code>PivotItem</code>.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

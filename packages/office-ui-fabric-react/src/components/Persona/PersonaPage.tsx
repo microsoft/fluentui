@@ -12,7 +12,6 @@ import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Exam
 import { PersonaCustomCoinRenderExample } from './examples/Persona.CustomCoinRender.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { PersonaStatus } from './Persona.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
@@ -45,17 +44,13 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

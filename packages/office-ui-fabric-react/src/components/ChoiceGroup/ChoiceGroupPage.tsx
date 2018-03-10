@@ -11,7 +11,6 @@ import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ChoiceGroupStatus } from './ChoiceGroup.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
@@ -40,17 +39,14 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ 'input' }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;input&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

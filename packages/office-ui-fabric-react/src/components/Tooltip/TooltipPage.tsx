@@ -12,7 +12,6 @@ import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { TooltipStatus } from './Tooltip.checklist';
-import { MessageBar } from '../../MessageBar';
 
 import './TooltipPage.scss';
 
@@ -41,17 +40,13 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
             </ExampleCard>
           </LayerHost>
         }
+        allowNativeProps={ true }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

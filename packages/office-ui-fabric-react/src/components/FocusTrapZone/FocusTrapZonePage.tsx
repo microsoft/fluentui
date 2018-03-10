@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Link
 } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar } from '../../MessageBar';
 import {
   ExampleCard,
   IComponentDemoPageProps,
@@ -43,17 +42,13 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

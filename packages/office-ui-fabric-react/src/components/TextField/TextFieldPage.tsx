@@ -19,7 +19,6 @@ import { TextFieldStatus } from './TextField.checklist';
 import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
 import { TextFieldAutoCompleteExample } from './examples/TextField.AutoComplete.Example';
-import { MessageBar } from '../../MessageBar';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
@@ -120,17 +119,14 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['input', 'textarea'] }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> tags, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

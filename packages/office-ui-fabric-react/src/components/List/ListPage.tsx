@@ -12,7 +12,6 @@ import { ListGhostingExample } from './examples/List.Ghosting.Example';
 import { createListItems } from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ListStatus } from './List.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
@@ -49,17 +48,13 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

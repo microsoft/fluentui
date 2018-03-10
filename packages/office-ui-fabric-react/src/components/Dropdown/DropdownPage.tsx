@@ -10,7 +10,6 @@ import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DropdownStatus } from './Dropdown.checklist';
-import { MessageBar } from '../../MessageBar';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
@@ -46,18 +45,14 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
 
         }
+        allowNativeProps={ true }
         propertiesTables={
-          <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
-            <PropertiesTableSet
-              sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
-                require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
-              ] }
-            />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
+            ] }
+          />
         }
         overview={
           <div>

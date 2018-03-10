@@ -31,11 +31,10 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['a', 'button'] }
         propertiesTables={
           <div>
-            <MessageBar>
-              <strong>Native Props Allowed</strong> - all html attributes native to the <code>&lt;div&gt;</code> tag, including all data and aria attributes, can be applied as native props on this component.
-            </MessageBar>
             <PropertiesTableSet
               sources={ [
                 require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
