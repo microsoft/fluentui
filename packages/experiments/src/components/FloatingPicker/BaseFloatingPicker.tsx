@@ -5,8 +5,7 @@ import {
   autobind,
   css,
   getRTL,
-  createRef,
-  RefObject
+  createRef
 } from '../../Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Suggestions, ISuggestionsProps, SuggestionsController, IBasePickerSuggestionsProps, ISuggestionModel }
@@ -32,8 +31,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
-  protected root: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
-  protected suggestionElement: RefObject<Suggestions<T>> = createRef<Suggestions<T>>();
+  protected root = createRef<HTMLDivElement>();
+  protected suggestionElement = createRef<Suggestions<T>>();
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T> =
