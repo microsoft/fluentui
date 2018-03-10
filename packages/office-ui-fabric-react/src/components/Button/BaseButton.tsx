@@ -549,18 +549,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (!ev.defaultPrevented &&
       this.props.menuTriggerKeyCode !== null &&
-      this._validMenuKey(ev)) {
+      this._isValidMenuOpenKey(ev)) {
       this._onToggleMenu();
       ev.preventDefault();
       ev.stopPropagation();
     }
   }
 
-  private _validMenuKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
+  /**
+   * Returns if the user hits a valid keyboard key to open the menu
+   * @param ev - the keyboard event
+   * @returns True if user clicks on custom trigger key if enabled or alt + down arrow if not. False otherwise.
+   */
+  private _isValidMenuOpenKey(ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>): boolean {
     if (this.props.menuTriggerKeyCode) {
-      return ev.which === this.props.menuTriggerKeyCode
+      return ev.which === this.props.menuTriggerKeyCode;
     } else {
-      return ev.which === KeyCodes.down && ev.altKey
+      return ev.which === KeyCodes.down && ev.altKey;
     }
   }
 

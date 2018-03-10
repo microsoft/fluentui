@@ -491,7 +491,7 @@ describe('Button', () => {
         expect(didClick).toEqual(true);
       });
 
-      it('Pressing down on SplitButton triggers menu', () => {
+      it('Pressing alt + down on SplitButton triggers menu', () => {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id='test'
@@ -519,7 +519,8 @@ describe('Button', () => {
 
         ReactTestUtils.Simulate.keyDown(menuButtonElement,
           {
-            which: KeyCodes.down
+            which: KeyCodes.down,
+            altKey: true
           });
         expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
       });
