@@ -36,6 +36,7 @@
 }
 
 .tagItemText {
+  color: $ms-color-infoText;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -56,8 +57,13 @@
 }
 
 .tagItemButton {
-  width: 100%;
-  height: 100%;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+
+  &:focus{
+    outline: 1px solid $ms-color-black;
+  }
 }
 
 .tagItemTextOverflow {
