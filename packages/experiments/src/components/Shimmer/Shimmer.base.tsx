@@ -25,7 +25,8 @@ const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   public static defaultProps: IShimmerProps = {
     width: 100,
-    isDataLoaded: false
+    isDataLoaded: false,
+    isDetailsList: false
   };
   private _classNames: {[key in keyof IShimmerStyles]: string};
   constructor(props: IShimmerProps) {

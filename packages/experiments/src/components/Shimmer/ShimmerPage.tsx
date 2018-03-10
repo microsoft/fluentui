@@ -78,7 +78,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ul>
               <li>
-                Thinking... )
+                Do not try using on the same element both types of widths. It will always default to just one of them.
               </li>
             </ul>
           </div>
