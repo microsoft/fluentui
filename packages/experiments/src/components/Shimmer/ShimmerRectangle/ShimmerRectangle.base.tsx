@@ -3,8 +3,12 @@ import {
   BaseComponent,
   classNamesFunction,
 } from '../../../Utilities';
-import { IShimmerRectangleProps, IShimmerRectangleStyleProps, IShimmerRectangleStyles } from './ShimmerRectangle.styles';
-import { ShimmerElementVerticalAlign } from '../Shimmer.types';
+import {
+  IShimmerRectangleProps,
+  IShimmerRectangleStyleProps,
+  IShimmerRectangleStyles
+} from './ShimmerRectangle.types';
+import { ShimmerElementVerticalAlign } from 'experiments/lib/Shimmer';
 
 const getClassNames = classNamesFunction<IShimmerRectangleStyleProps, IShimmerRectangleStyles>();
 

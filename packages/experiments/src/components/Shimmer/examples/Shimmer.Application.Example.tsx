@@ -6,14 +6,13 @@ import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { DetailsList, buildColumns, IColumn } from '../../../../../office-ui-fabric-react/src/components/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './Shimmer.Example.scss';
 import {
   Shimmer,
 } from 'experiments/lib/Shimmer';
-import { DetailsRow, IDetailsRowProps } from '../../../../../office-ui-fabric-react/src/components/DetailsList';
+import { IColumn, DetailsList, buildColumns } from 'office-ui-fabric-react';
 
 const PAGING_DELAY = 3000;
 const ITEMS_COUNT = 1000;
@@ -108,25 +107,10 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
   }
 
   @autobind
-  private _onRenderMissingItem(index: number, rowProps: IDetailsRowProps): JSX.Element {
-    // tslint:disable-next-line:no-any
-    const shimmerItem: any = {};
-    const { columns } = rowProps;
-    columns.forEach((column: IColumn) => {
-      column.onRender = undefined;
-      if (column.fieldName) {
-        shimmerItem[column.fieldName] = '';
-      }
-    });
-    rowProps.item = shimmerItem;
-    rowProps.isShimmer = true;
+  private _onRenderMissingItem(index: number): JSX.Element {
     this._onDataMiss(index as number);
     return (
-      <Shimmer
-        isDetailsList={ true }
-      >
-        <DetailsRow { ...rowProps } />
-      </Shimmer>
+      <Shimmer />
     );
   }
 
@@ -228,5 +212,4 @@ function _buildColumns(): IColumn[] {
     }
   });
   return columns;
-  // .filter((column: IColumn) => column.name === 'location' || column.name === 'key' || column.name === 'description');
 }
