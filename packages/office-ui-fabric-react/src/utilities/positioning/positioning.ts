@@ -64,7 +64,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string; } = {
  * Do not call methods from this directly, use either positionCallout or positionElement or make another function that
  * utilizes them.
  */
-export module positioningFunctions {
+export namespace positioningFunctions {
 
   export interface IElementPosition {
     elementRectangle: Rectangle;
@@ -421,7 +421,7 @@ export module positioningFunctions {
   ): IPartialIRectangle {
     const returnValue: IPartialIRectangle = {};
 
-    const hostRect: Rectangle = _getRectangleFromHTMLElement(hostElement);
+    const hostRect: Rectangle = _getRectangleFromElement(hostElement);
     const elementEdge = targetEdge * -1;
     const elementEdgeString = RectangleEdge[elementEdge];
     const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
@@ -566,7 +566,7 @@ export module positioningFunctions {
     return beakPositon;
   }
 
-  export function _getRectangleFromHTMLElement(element: HTMLElement): Rectangle {
+  export function _getRectangleFromElement(element: Element): Rectangle {
     const clientRect: ClientRect = element.getBoundingClientRect();
 
     return new Rectangle(clientRect.left, clientRect.right, clientRect.top, clientRect.bottom);
@@ -576,14 +576,14 @@ export module positioningFunctions {
     return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
   }
 
-  export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent | IPoint | undefined) {
+  export function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined) {
     let targetRectangle: Rectangle;
     if (target) {
       if ((target as MouseEvent).preventDefault) {
         const ev = target as MouseEvent;
         targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
-      } else if ((target as HTMLElement).getBoundingClientRect) {
-        targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
+      } else if ((target as Element).getBoundingClientRect) {
+        targetRectangle = _getRectangleFromElement(target as Element);
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
         const point: IPoint = target as IPoint;
@@ -646,7 +646,7 @@ export module positioningFunctions {
       boundingRect,
       props.coverTarget);
     const positionedElement: IElementPosition = _positionElementWithinBounds(
-      _getRectangleFromHTMLElement(elementToPosition),
+      _getRectangleFromElement(elementToPosition),
       targetRect,
       boundingRect,
       positionData,
@@ -762,9 +762,9 @@ export function positionCallout(props: IPositionProps,
  * of the target given.
  * If no bounds are provided then the window is treated as the bounds.
  */
-export function getMaxHeight(target: HTMLElement | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+export function getMaxHeight(target: Element | MouseEvent | IPoint, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
   const mouseTarget: MouseEvent = target as MouseEvent;
-  const elementTarget: HTMLElement = target as HTMLElement;
+  const elementTarget: Element = target as Element;
   const pointTarget: IPoint = target as IPoint;
   let targetRect: Rectangle;
   const boundingRectangle = bounds ?
@@ -776,7 +776,7 @@ export function getMaxHeight(target: HTMLElement | MouseEvent | IPoint, targetEd
   } else if (pointTarget.x !== undefined && pointTarget.y !== undefined) {
     targetRect = new Rectangle(pointTarget.x, pointTarget.x, pointTarget.y, pointTarget.y);
   } else {
-    targetRect = positioningFunctions._getRectangleFromHTMLElement(elementTarget);
+    targetRect = positioningFunctions._getRectangleFromElement(elementTarget);
   }
 
   return positioningFunctions._getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle);

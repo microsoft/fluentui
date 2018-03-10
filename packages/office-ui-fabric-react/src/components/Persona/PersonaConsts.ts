@@ -1,5 +1,4 @@
 import {
-  PersonaInitialsColor,
   PersonaPresence,
   PersonaSize
 } from './Persona.types';

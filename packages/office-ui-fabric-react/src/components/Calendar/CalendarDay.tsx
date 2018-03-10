@@ -9,7 +9,7 @@ import {
   getRTLSafeKeyCode
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
-import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import {
@@ -25,7 +25,6 @@ import {
   getMonthStart,
   getMonthEnd
 } from '../../utilities/dateMath/DateMath';
-import TimeConstants from '../../utilities/dateValues/TimeConstants';
 
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
@@ -43,8 +42,12 @@ export interface IDayInfo {
   onSelected: () => void;
 }
 
+export interface ICalendarDay {
+  focus(): void;
+}
+
 export interface ICalendarDayProps extends React.Props<CalendarDay> {
-  componentRef?: () => void;
+  componentRef?: (c: ICalendarDay) => void;
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;

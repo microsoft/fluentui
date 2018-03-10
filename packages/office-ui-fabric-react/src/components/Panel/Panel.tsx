@@ -15,7 +15,7 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import { AnimationClassNames, getTheme, FontSizes, IconFontSizes } from '../../Styling';
+import { AnimationClassNames, getTheme, IconFontSizes } from '../../Styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
 const theme = getTheme();

@@ -172,13 +172,15 @@ public render() {
 }
 ```
 
-Best, use _resolveRef in BaseComponent:
+Best, use createRef:
 ```typescript
+import { createRef, RefObject } from 'office-ui-fabric-react/lib/Utilities';
+
 class Foo extends BaseComponent<...> {
-  private _root: HTMLElement;
+  private _root: RefObject<HTMLElement> = createRef<HTMLElement>();
 
   public render() {
-    return <div ref={ this._resolveRef('_root') } />;
+    return <div ref={ _root } />;
   }
 }
 ```
@@ -186,10 +188,6 @@ class Foo extends BaseComponent<...> {
 Note that it's very critical you do NOT inline the functions in render! This causes weird side effects, because the function
 is recreated. If you do this, react will call your function with null to clear it, and then render, and then once complete, will
 call it again with the element. This creates timing issues where your ref may be null when you didn't expect.
-
-See example here that illustates refs being re-evaluated:
-
-http://codepen.io/dzearing/pen/WGZOaR
 
 ## Use unique keys for items in a mapped array, avoid indexes for keys
 

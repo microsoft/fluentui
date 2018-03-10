@@ -1,0 +1,17 @@
+{
+  "name": "@uifabric/variants",
+  "entries": [
+    {
+      "version": "5.11.2",
+      "tag": "@uifabric/variants_v5.11.2",
+      "date": "Fri, 23 Feb 2018 03:05:53 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.17.0 <6.0.0` to `>=5.19.0 <6.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -22,7 +22,7 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-2e092c7d.woff') format('woff')`,
+      src: `url('${baseUrl}fabric-icons-0-6a62cc1b.woff') format('woff')`,
     },
     icons: {
       'DecreaseIndentLegacy': '\uE290',
@@ -41,6 +41,7 @@ export function initializeIcons(
       'Shop': '\uE719',
       'Stop': '\uE71A',
       'Link': '\uE71B',
+      'AllApps': '\uE71D',
       'Zoom': '\uE71E',
       'ZoomOut': '\uE71F',
       'Microphone': '\uE720',
@@ -53,7 +54,6 @@ export function initializeIcons(
       'Back': '\uE72B',
       'Refresh': '\uE72C',
       'Lock': '\uE72E',
-      'BlockedSite': '\uE72F',
       'ReportHacked': '\uE730',
       'EMI': '\uE731',
       'MiniLink': '\uE732',

@@ -88,9 +88,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   public refs: {
     [key: string]: React.ReactInstance,
-    root: HTMLElement,
-    surface: HTMLElement
   };
+
+  private _root: HTMLElement;
+  private _surface: HTMLElement;
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -102,7 +103,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   };
   private _focusedIndex: number;
   private _scrollElement: HTMLElement;
-  private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
@@ -173,7 +173,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
-    this._scrollingToIndex = -1;
     this._pageCache = {};
   }
 
@@ -262,10 +261,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     this._updatePages();
     this._measureVersion++;
-    this._scrollElement = findScrollableParent(this.refs.root) as HTMLElement;
+    this._scrollElement = findScrollableParent(this._root) as HTMLElement;
 
     this._events.on(window, 'resize', this._onAsyncResize);
-    this._events.on(this.refs.root, 'focus', this._onFocus, true);
+    if (this._root) {
+      this._events.on(this._root, 'focus', this._onFocus, true);
+    }
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
       this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
@@ -342,16 +343,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       pageElements.push(this._renderPage(page));
     }
 
-    // console.log(`Page elements ${pageElements.length}`);
-
     return (
       <div
-        ref='root'
+        ref={ this._resolveRef('_root') }
         { ...divProps }
         role={ (role === undefined) ? 'list' : role }
         className={ css('ms-List', className) }
       >
-        <div ref='surface' className={ css('ms-List-surface') } role='presentation'>
+        <div ref={ this._resolveRef('_surface') } className={ css('ms-List-surface') } role='presentation'>
           { pageElements }
         </div>
       </div>
@@ -478,7 +477,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _onFocus(ev: any) {
     let target = ev.target as HTMLElement;
 
-    while (target !== this.refs.surface) {
+    while (target !== this._surface) {
       const indexString = target.getAttribute('data-list-index');
 
       if (indexString) {
@@ -642,10 +641,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _updatePageMeasurements(pages: IPage[]) {
-    const renderedIndexes: {
-      [index: number]: IPage;
-    } = {};
-
     let heightChanged = false;
 
     // when not in virtualize mode, we render all the items without page measurement
@@ -939,7 +934,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       !scrollHeight ||
       scrollHeight !== this._scrollHeight ||
       Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3) {
-      surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface);
       this._scrollTop = scrollTop;
     }
 

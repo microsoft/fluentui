@@ -5,7 +5,9 @@ import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 
-import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
+import {
+  loadTheme
+} from 'office-ui-fabric-react/lib/Styling';
 import {
   IColor,
   getContrastRatio,
@@ -93,6 +95,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       [this._fabricSlotWidget(FabricSlots.black),
       this._fabricSlotWidget(FabricSlots.neutralDark),
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
+      this._fabricSlotWidget(FabricSlots.neutralPrimaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
       this._fabricSlotWidget(FabricSlots.neutralTertiary)
       ];
@@ -474,14 +477,20 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
 
+    const finalTheme = loadTheme({
+      ...{ palette: themeAsJson },
+      isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+    });
+
     const root = document.querySelector('.App-content') as HTMLElement;
     if (root) {
-      root.style.backgroundColor = themeAsJson.backgroundColor;
-      root.style.color = themeAsJson.bodyText;
+      root.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
+      root.style.color = finalTheme.semanticColors.bodyText;
     }
-    document.body.style.backgroundColor = themeAsJson.backgroundColor;
-    document.body.style.color = themeAsJson.bodyText;
-    console.log('Full theme... ', loadTheme({ palette: themeAsJson }));
+
+    document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
+    document.body.style.color = finalTheme.semanticColors.bodyText;
+    console.log('New theme:', finalTheme);
   }
 
   @autobind
