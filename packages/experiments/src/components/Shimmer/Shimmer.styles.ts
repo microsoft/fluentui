@@ -8,7 +8,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   const {
     width,
     maxHeight,
-    isDataLoaded
+    isDataLoaded,
+    isDetailsList
   } = props;
 
   const shimmerAnimation: string = keyframes({
@@ -29,6 +30,13 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         width: 'auto',
         boxSizing: 'content-box',
         minHeight: maxHeight ? `${maxHeight}px` : '16px'
+      },
+      isDetailsList && {
+        margin: '0',
+        marginLeft: '40px',
+        minHeight: '42px',
+        display: 'flex',
+        alignItems: 'center'
       }
     ],
     shimmerWrapper: [
@@ -61,6 +69,10 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       isDataLoaded && {
         opacity: '0',
         visibility: 'hidden'
+      },
+      isDetailsList && {
+        height: '20px',
+        position: 'static',
       }
     ],
     dataWrapper: [
