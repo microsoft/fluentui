@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "- Added overflow personas to better control what personas go into the overflow personas vs show up as a persona coin.  - Changed Facepile back to showing a Persona control if there is only one persona to be shown with no overflow.",
+      "comment": "Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow.",
       "type": "minor"
     }
   ],
