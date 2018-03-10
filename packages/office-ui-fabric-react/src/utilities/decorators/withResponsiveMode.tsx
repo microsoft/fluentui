@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow } from '../../Utilities';
+import { getWindow, hoistStatics } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -99,15 +99,4 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
   };
   return hoistStatics(ComposedComponent, resultClass);
-}
-
-function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest {
-  for (const name in source) {
-    if (source.hasOwnProperty(name)) {
-      // tslint:disable-next-line:no-any
-      (dest as any)[name] = source[name];
-    }
-  }
-
-  return dest;
 }
