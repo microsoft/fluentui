@@ -1,6 +1,64 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 05 Mar 2018 11:16:58 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Mar 2018 15:07:28 GMT and should not be manually modified.
+
+## 5.62.1
+Fri, 09 Mar 2018 15:07:28 GMT
+
+### Patches
+
+- Add unit test to catch focus regression being fixed by this PR
+
+## 5.62.0
+Fri, 09 Mar 2018 11:13:58 GMT
+
+### Minor changes
+
+- Allow DetailsRow to have a custom renderer
+- Dialog: convert to mergeStyles part 2.
+
+### Patches
+
+- Fixes #3985 by removing HC style override on ms-Link buttons.
+
+## 5.61.0
+Thu, 08 Mar 2018 11:27:24 GMT
+
+### Minor changes
+
+- Added the @customizable decorator to Image and Layer to enable theme functionality
+- MessageBar: Aria label for truncated text overflow button and added aria labels for buttons in examples.
+
+### Patches
+
+- ComboBox adding onPendingValueChanged callback prop to run when pending value is changed
+- Seperated the SCSS for Persona and Persona Coin components due to bloat when imported twice.
+
+## 5.60.1
+Wed, 07 Mar 2018 11:16:50 GMT
+
+### Patches
+
+- Fix ContextualMenu customization sample
+- TeachingBubble: New animation for bounce with fade in.
+
+## 5.60.0
+Tue, 06 Mar 2018 11:13:36 GMT
+
+### Minor changes
+
+- Add async debounce option to BasePicker
+
+### Patches
+
+- Facepile: Conditionally apply `aria-describedby` only when `ariaDescription` is provided
+
+## 5.59.1
+Tue, 06 Mar 2018 02:06:59 GMT
+
+### Patches
+
+- Temporarily commented out @customizable decorator in Image component to restore usage of static functions and variables.
 
 ## 5.59.0
 Mon, 05 Mar 2018 11:16:58 GMT

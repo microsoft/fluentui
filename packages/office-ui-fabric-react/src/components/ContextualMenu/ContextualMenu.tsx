@@ -471,12 +471,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
+
+    let anchorRel = item.rel;
+    if (item.target && item.target.toLowerCase() === '_blank') {
+      anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer';  // Safe default to prevent tabjacking
+    }
+
     return (
       <div>
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
           target={ item.target }
+          rel={ anchorRel }
           className={ classNames.root }
           role='menuitem'
           aria-posinset={ focusableElementIndex + 1 }
