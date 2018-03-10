@@ -6,6 +6,7 @@ import {
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { IOverflowSet, IOverflowSetProps, IOverflowSetItemProps } from './OverflowSet.types';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 import * as stylesImport from './OverflowSet.scss';
@@ -64,7 +65,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   @autobind
-  private _onRenderOverflowButtonWrapper(items: any[]): JSX.Element {
+  private _onRenderOverflowButtonWrapper(items: IContextualMenuItem[]): JSX.Element {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     return (
       <div { ...wrapperDivProps }>
