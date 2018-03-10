@@ -192,7 +192,7 @@ describe('Facepile', () => {
     });
   });
 
-  it('renders Persona control if exactly on persona is sent in props', () => {
+  it('renders Persona control if exactly one persona is sent in props', () => {
     let wrapper = shallow(
       <Facepile
         personas={ facepilePersonas.slice(0, 1) }
@@ -211,7 +211,7 @@ describe('Facepile', () => {
     expect(wrapper.find(Persona).length).toEqual(1);
   });
 
-  it('renders Persona control if exactly on persona is sent in props', () => {
+  it('renders Persona control if exactly one persona is sent in props', () => {
     let wrapper = shallow(
       <Facepile
         personas={ facepilePersonas.slice(0, 1) }
