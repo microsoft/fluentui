@@ -11,6 +11,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../a11y/A11yPage').A11yPage,
+          key: 'a11y',
+          name: 'a11y',
+          url: '#/examples/a11y'
+        },
+        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
