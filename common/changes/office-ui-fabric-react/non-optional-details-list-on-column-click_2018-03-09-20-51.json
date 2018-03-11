@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Made DetailsList's onColumnClick's args non-optional",
+      "comment": "DetailsList: IColumn `onColumnClick` callback args marked non-optional.",
       "type": "minor"
     }
   ],
