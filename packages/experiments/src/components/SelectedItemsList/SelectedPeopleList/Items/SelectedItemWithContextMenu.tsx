@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, autobind } from '../../../../Utilities';
+import { BaseComponent, autobind, createRef, RefObject } from '../../../../Utilities';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
@@ -19,7 +19,7 @@ export interface ISelectedItemWithContextMenuProps extends IBaseProps {
 }
 
 export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWithContextMenuProps, IPeoplePickerItemState> {
-  protected itemElement: HTMLElement;
+  protected itemElement: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
 
   constructor(props: ISelectedItemWithContextMenuProps) {
     super(props);
@@ -29,7 +29,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
   public render(): JSX.Element {
     return (
       <div
-        ref={ this._resolveRef('itemElement') }
+        ref={ this.itemElement }
         onContextMenu={ this._onClick }
       >
         { this.props.renderedItem }
@@ -37,7 +37,7 @@ export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWith
           <ContextualMenu
             items={ this.props.menuItems }
             shouldFocusOnMount={ true }
-            target={ this.itemElement }
+            target={ this.itemElement.value }
             onDismiss={ this._onCloseContextualMenu }
             directionalHint={ DirectionalHint.bottomLeftEdge }
           />)
