@@ -18,7 +18,7 @@ export interface ICoachmarkTypes extends React.Props<Coachmark> {
   /**
    * The target that the TeachingBubble should try to position itself based on.
    */
-  target: HTMLElement;
+  target: HTMLElement | null;
 
   positioningContainerProps?: IPositioningContainerTypes;
 
