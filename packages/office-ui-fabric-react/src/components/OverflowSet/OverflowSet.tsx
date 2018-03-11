@@ -65,7 +65,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
   }
 
   @autobind
-  private _onRenderOverflowButtonWrapper(items: IContextualMenuItem[]): JSX.Element {
+  private _onRenderOverflowButtonWrapper(items: {}[]): JSX.Element {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-overflowButton', styles.item) };
     return (
       <div { ...wrapperDivProps }>
