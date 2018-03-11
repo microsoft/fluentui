@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com"
+}
