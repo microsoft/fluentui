@@ -117,11 +117,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
   }
 
   private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
-    return (<FloatingPeoplePicker {...props} />);
+    return (<FloatingPeoplePicker { ...props } />);
   }
 
   private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
-    return (<SelectedPeopleList {...props} />);
+    return (<SelectedPeopleList { ...props } />);
   }
 
   private _getEditingItemText(item: IExtendedPersonaProps): string {
@@ -198,8 +198,11 @@ export class ExtendedPeoplePickerTypesExample extends BaseComponent<{}, IPeopleP
 
   @autobind
   private _shouldShowForceResolve(): boolean {
-    return this._validateInput(this._picker.floatingPicker.inputText)
-      && this._picker.floatingPicker.suggestions.length === 0;
+    return Boolean(
+      this._picker.floatingPicker &&
+      this._validateInput(this._picker.floatingPicker.inputText) &&
+      this._picker.floatingPicker.suggestions.length === 0
+    );
   }
 
   private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]): boolean {

@@ -17,7 +17,8 @@ import {
   autobind,
   BaseComponent,
   KeyCodes,
-  css
+  css,
+  createRef
 } from '../../Utilities';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import * as stylesImport from './DatePicker.scss';
@@ -121,9 +122,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     dateTimeFormatter: undefined
   };
 
-  private _calendar: ICalendar;
-  private _datePickerDiv: HTMLDivElement;
-  private _textField: ITextField;
+  private _calendar = createRef<ICalendar>();
+  private _datePickerDiv = createRef<HTMLDivElement>();
+  private _textField = createRef<ITextField>();
   private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerProps) {
@@ -209,7 +210,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         { label && (
           <Label required={ isRequired }>{ label }</Label>
         ) }
-        <div ref={ this._resolveRef('_datePickerDiv') }>
+        <div ref={ this._datePickerDiv }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
@@ -236,7 +237,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            componentRef={ this._resolveRef('_textField') }
+            componentRef={ this._textField }
             role={ allowTextInput ? 'combobox' : 'menu' }
           />
         </div>
@@ -248,7 +249,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
-            target={ this._datePickerDiv }
+            target={ this._datePickerDiv.value }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
@@ -270,7 +271,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               dateTimeFormatter={ this.props.dateTimeFormatter }
               minDate={ minDate }
               maxDate={ maxDate }
-              componentRef={ this._resolveRef('_calendar') }
+              componentRef={ this._calendar }
             />
           </Callout>
         ) }
@@ -279,8 +280,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public focus(): void {
-    if (this._textField) {
-      this._textField.focus();
+    if (this._textField.value) {
+      this._textField.value.focus();
     }
   }
 
@@ -308,7 +309,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onCalloutPositioned() {
-    this._calendar.focus();
+    if (this._calendar.value) {
+      this._calendar.value.focus();
+    }
   }
 
   @autobind
@@ -421,8 +424,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
 
-    if (this._textField) {
-      this._textField.focus();
+    if (this._textField.value) {
+      this._textField.value.focus();
     }
   }
 

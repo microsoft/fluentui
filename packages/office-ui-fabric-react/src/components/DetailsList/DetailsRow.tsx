@@ -8,7 +8,8 @@ import {
   css,
   shallowCompare,
   getNativeProps,
-  divProperties
+  divProperties,
+  createRef
 } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
@@ -77,7 +78,7 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   private _root: HTMLElement | undefined;
   private _cellMeasurer: HTMLElement;
-  private _focusZone: IFocusZone;
+  private _focusZone = createRef<IFocusZone>();
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
@@ -205,7 +206,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         { ...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
         ref={ this._onRootRef }
-        componentRef={ this._resolveRef('_focusZone') }
+        componentRef={ this._focusZone }
         role='row'
         aria-label={ ariaLabel }
         ariaDescribedBy={ ariaDescribedBy }
@@ -310,7 +311,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(forceIntoFirstElement: boolean = false): boolean {
-    return !!this._focusZone && this._focusZone.focus(forceIntoFirstElement);
+    return !!this._focusZone.value && this._focusZone.value.focus(forceIntoFirstElement);
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {

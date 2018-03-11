@@ -47,7 +47,7 @@ const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
 };
 
 const basicRenderFloatingPicker = (props: IBaseFloatingPickerProps<ISimple>) => {
-  return <BasePickerWithType {...props} />;
+  return <BasePickerWithType { ...props } />;
 };
 
 const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple>) => {
