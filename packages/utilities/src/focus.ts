@@ -77,7 +77,7 @@ export function getPreviousElement(
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
-  tabbable?: boolean): HTMLElement | null {
+  elementShouldBeTabbable?: boolean): HTMLElement | null {
 
   if (!currentElement ||
     (!allowFocusRoot && currentElement === rootElement)) {
@@ -97,10 +97,10 @@ export function getPreviousElement(
       true,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable);
+      elementShouldBeTabbable);
 
     if (childMatch) {
-      if ((tabbable && (isElementTabbable(childMatch, true))) || !tabbable) {
+      if ((elementShouldBeTabbable && isElementTabbable(childMatch, true)) || !elementShouldBeTabbable) {
         return childMatch;
       }
 
@@ -112,7 +112,7 @@ export function getPreviousElement(
         true,
         includeElementsInFocusZones,
         allowFocusRoot,
-        tabbable
+        elementShouldBeTabbable
       );
       if (childMatchSiblingMatch) {
         return childMatchSiblingMatch;
@@ -133,7 +133,7 @@ export function getPreviousElement(
           true,
           includeElementsInFocusZones,
           allowFocusRoot,
-          tabbable
+          elementShouldBeTabbable
         );
 
         if (childMatchParentMatch) {
@@ -146,7 +146,8 @@ export function getPreviousElement(
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible &&
+    ((elementShouldBeTabbable && isElementTabbable(currentElement, true)) || !elementShouldBeTabbable)) {
     return currentElement;
   }
 
@@ -159,7 +160,7 @@ export function getPreviousElement(
     true,
     includeElementsInFocusZones,
     allowFocusRoot,
-    tabbable);
+    elementShouldBeTabbable);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -168,7 +169,7 @@ export function getPreviousElement(
   // Check its parent.
   if (!suppressParentTraversal) {
     return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
-      allowFocusRoot, tabbable);
+      allowFocusRoot, elementShouldBeTabbable);
   }
 
   return null;
