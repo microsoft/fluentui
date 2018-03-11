@@ -8,10 +8,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         font-size: 14px;
         min-width: 86px;
         outline: none;
-        padding-bottom: 2px;
-        padding-left: 2px;
-        padding-right: 2px;
-        padding-top: 2px;
         width: 100%;
       }
 >
