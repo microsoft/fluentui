@@ -34,7 +34,7 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * Provide when Shimmer is intended to be used when using 'onRenderMissingItem' optional callback of the DetailsList Fabric Component.
    * @default false
    */
-  isDetailsList?: boolean;
+  isListMissingItem?: boolean;
 
   /**
    * Elements to render in one line of the Shimmer.
@@ -122,7 +122,7 @@ export interface IShimmerStyleProps {
   width?: number;
   maxHeight?: number;
   isDataLoaded?: boolean;
-  isDetailsList?: boolean;
+  isListMissingItem?: boolean;
 }
 
 export interface IShimmerStyles {
