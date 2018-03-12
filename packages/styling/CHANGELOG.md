@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 23 Feb 2018 03:05:53 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+
+## 5.19.1
+Mon, 12 Mar 2018 06:29:20 GMT
+
+### Patches
+
+- By default, try to use the system font before downloading a web font
 
 ## 5.19.0
 Fri, 23 Feb 2018 03:05:53 GMT

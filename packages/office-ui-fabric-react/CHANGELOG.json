@@ -2,6 +2,70 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.63.0",
+      "tag": "office-ui-fabric-react_v5.63.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Alex Henry <adhe223@g.uky.edu>",
+            "commit": "2480bbe4e1f498a7ebd086c0b406eb7706bc3c20",
+            "comment": "Add rel option for Contextual Menu Items"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7251c2dc69071e97fccbeb18971736f4e65cf301",
+            "comment": "ComoboBox and SpinButton: Removing excess margins and padding to make them consistent with TextField."
+          },
+          {
+            "author": "Matt Lind <matthewtlind@hotmail.com>",
+            "commit": "327e1e350ab4bb9909d449e66b7ec9ef8ca879e4",
+            "comment": "Facepile: Added `overflowPersonas` option to better control what personas go into the overflow personas vs show up as a persona coin. Also adjusted Facepile back to showing a Persona control if there is only one persona to be shown with no overflow."
+          },
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
+            "comment": "importing hoistStatics from Utilities for withResponsiveMode decorator"
+          },
+          {
+            "author": "MaxLustig <maxslustig@gmail.com>",
+            "commit": "aa9c51c996715398e2b8a722db66b00806743e45",
+            "comment": "Add ability to get and set scroll position on ScrollablePane"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fa97fa979c83ce8b9c67ca0dbb51ffe49e20b1b4",
+            "comment": "DetailsList: IColumn `onColumnClick` callback args marked non-optional."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
+            "comment": "Updating a test to ensure that focus is trapped in a FocusTrapZone when it has a FocusZone as the last element"
+          },
+          {
+            "author": "Hlynur Tryggvason <hlynur.tryggvason@officeatwork.com>",
+            "commit": "76a874fe31f68d88b31b738a4d600df0129924d8",
+            "comment": "[TextField] onChange fix for IE when using multiline with placeholder"
+          },
+          {
+            "author": "manueldosal <manuel_dosal32@hotmail.com>",
+            "commit": "374759cd95dc57a079b7a76120b008bcd791b173",
+            "comment": "Run onCellFocused before unmount and before select color"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=5.19.0 <6.0.0` to `>=5.19.1 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.17.1 <6.0.0` to `>=5.18.0 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.62.1",
       "tag": "office-ui-fabric-react_v5.62.1",
       "date": "Fri, 09 Mar 2018 15:07:28 GMT",
