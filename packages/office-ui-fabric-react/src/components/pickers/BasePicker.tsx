@@ -176,6 +176,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const currentIndex = this.suggestionStore.currentIndex;
     const selectedSuggestion = currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
     const selectedSuggestionAlert = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
+    const activeDescendant = currentIndex > -1 ? 'sug-' + currentIndex : undefined;
 
     return (
       <div
@@ -202,7 +203,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+                aria-activedescendant={ activeDescendant }
                 aria-owns='suggestion-list'
                 aria-expanded={ !!this.state.suggestionsVisible }
                 aria-haspopup='true'
