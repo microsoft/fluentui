@@ -12,12 +12,14 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     isDetailsList
   } = props;
 
+  const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
+
   const shimmerAnimation: string = keyframes({
     '0%': {
-      backgroundPosition: '-900%'
+      backgroundPosition: `-${BACKGROUND_OFF_SCREEN_POSITION}`
     },
     '100%': {
-      backgroundPosition: '1000%'
+      backgroundPosition: BACKGROUND_OFF_SCREEN_POSITION
     }
   });
 
