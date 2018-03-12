@@ -206,7 +206,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root, className) }>
+      <div className={ css('ms-DatePicker', styles.root, isDatePickerShown && 'is-open', className) }>
         { label && (
           <Label required={ isRequired }>{ label }</Label>
         ) }
