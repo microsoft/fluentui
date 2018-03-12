@@ -27,9 +27,9 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Custom Shimmer with elements provided.
         <Shimmer
           lineElements={ [
-            { type: ElemType.CIRCLE, height: 24 },
+            { type: ElemType.CIRCLE },
             { type: ElemType.GAP, widthInPercentage: 2 },
-            { type: ElemType.LINE, height: 16 },
+            { type: ElemType.LINE },
           ] }
         />
         Notice how the same elements change relative to the shimmer width provided.
@@ -63,7 +63,7 @@ export class ShimmerBasicExample extends React.Component<{}, {}> {
         Variations of vertical alignment for Circles and Lines.
         <Shimmer
           lineElements={ [
-            { type: ElemType.CIRCLE, height: 24 },
+            { type: ElemType.CIRCLE },
             { type: ElemType.GAP, widthInPercentage: 2 },
             { type: ElemType.CIRCLE, height: 15, verticalAlign: ElemVerticalAlign.TOP },
             { type: ElemType.GAP, widthInPercentage: 2 },

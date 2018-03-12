@@ -20,6 +20,9 @@ import {
 import { ShimmerLine } from './ShimmerLine/ShimmerLine';
 import { ShimmerCircle } from './ShimmerCircle/ShimmerCircle';
 
+const LINE_DEFAULT_HEIGHT = 16;
+const CIRCLE_DEFAULT_HEIGHT = 24;
+
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
 export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
@@ -42,6 +45,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
       lineElements.map((elem: ICircle | ILine | IGap, index: number): JSX.Element => {
         switch (elem.type) {
           case ShimmerElementType.CIRCLE:
+            if (!elem.height) {
+              elem.height = CIRCLE_DEFAULT_HEIGHT;
+            }
             return (
               <ShimmerCircle
                 key={ index }
@@ -65,6 +71,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               />
             );
           case ShimmerElementType.LINE:
+            if (!elem.height) {
+              elem.height = LINE_DEFAULT_HEIGHT;
+            }
             return (
               <ShimmerLine
                 key={ index }
@@ -73,8 +82,11 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
               />
             );
         }
-      }) :
-      <ShimmerLine />;
+      }) : (
+        <ShimmerLine
+          height={ LINE_DEFAULT_HEIGHT }
+        />
+      );
 
     return (
       <div className={ this._classNames.root }>
@@ -92,7 +104,21 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 
   private _findMaxHeight(items: Array<ICircle | IGap | ILine>): number {
-    const maxHeight = items.reduce((acc: number, next: ICircle | IGap | ILine): number => {
+    const itemsDefaulted: Array<ICircle | IGap | ILine> = items.map((item: ICircle | IGap | ILine): ICircle | IGap | ILine => {
+      switch (item.type) {
+        case ShimmerElementType.CIRCLE:
+          if (!item.height) {
+            item.height = CIRCLE_DEFAULT_HEIGHT;
+          }
+        case ShimmerElementType.LINE:
+          if (!item.height) {
+            item.height = LINE_DEFAULT_HEIGHT;
+          }
+      }
+      return item;
+    });
+
+    const maxHeight = itemsDefaulted.reduce((acc: number, next: ICircle | IGap | ILine): number => {
       return next.height ?
         next.height > acc ? next.height : acc
         : acc;
@@ -101,18 +127,11 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
   }
 
   private _getBorderAlignStyles(maxHeight: number | undefined, elem: ICircle | IGap | ILine): IStyleSet | undefined {
-    let height: number | undefined;
-    switch (elem.type) {
-      case ShimmerElementType.LINE:
-        height = !!elem.height ? elem.height : 16;
-        break;
-      case ShimmerElementType.CIRCLE:
-        height = !!elem.height ? elem.height : 24;
-        break;
-    }
-    const dif: number | undefined = maxHeight && height ?
-      maxHeight - height > 0 ?
-        maxHeight - height : undefined
+    const elemHeight: number | undefined = elem.height;
+
+    const dif: number | undefined = maxHeight && elemHeight ?
+      maxHeight - elemHeight > 0 ?
+        maxHeight - elemHeight : undefined
       : undefined;
 
     let borderStyle: IStyleSet | undefined;

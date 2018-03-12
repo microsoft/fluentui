@@ -14,7 +14,6 @@ const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineSty
 
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   public static defaultProps: IShimmerLineProps = {
-    height: 16,
     verticalAlign: ShimmerElementVerticalAlign.CENTER,
   };
   private _classNames: {[key in keyof IShimmerLineStyles]: string};
