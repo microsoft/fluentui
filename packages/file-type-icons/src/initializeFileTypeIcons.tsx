@@ -10,7 +10,7 @@ const ICON_SIZES: number[] = [16, 20, 32, 40, 48, 64, 96];
 
 // Due to CDN cache, images updated in place may take up to a year to appear for some users
 // (though most users will see them within a week). To force immediate refresh, append a
-// unique string to the end of the URL. The CDN uses the URL as the cache key, so passing a 
+// unique string to the end of the URL. The CDN uses the URL as the cache key, so passing a
 // new URL will cause the CDN to create a new cache key.
 const REFRESH_STRING = '?refresh1';
 

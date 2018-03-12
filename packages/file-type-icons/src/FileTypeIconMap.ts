@@ -81,7 +81,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   'txt': { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
-  'vector': { extensions: ['ai', 'dgn', 'gdraw', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch'] },
+  'vector': {
+    extensions: [
+      'ai', 'dgn', 'gdraw', 'pd', 'emf', 'eps', 'indd', 'indt', 'ps', 'svg', 'svgz', 'wmf', 'oxps', 'xps', 'xd', 'sketch'
+    ]
+  },
   'video': {
     extensions: ['3gp', 'asf', 'avi', 'dvr-ms', 'flv', 'm1v', 'm4v', 'mkv', 'mod', 'mov',
       'mm4p', 'mp2', 'mp2v', 'mp4', ' mpa', 'mpe', 'mpeg', 'mpg', 'mpv', 'mpv2', 'mts', 'ogg', 'qt',
