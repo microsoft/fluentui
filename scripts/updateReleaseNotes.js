@@ -68,13 +68,13 @@ function forEachFileRecursive(folder, fileName, cb) {
 /**
  * Build up the markdown from the entry description.
  */
-function getMarkdownForEntry(entry) {
+async function getMarkdownForEntry(entry) {
   let markdown = '';
   let comments = '';
 
-  comments += getChangeComments('Breaking changes', entry.comments.major);
-  comments += getChangeComments('Minor changes', entry.comments.minor);
-  comments += getChangeComments('Patches', entry.comments.patch);
+  comments += await getChangeComments('Breaking changes', entry.comments.major);
+  comments += await getChangeComments('Minor changes', entry.comments.minor);
+  comments += await getChangeComments('Patches', entry.comments.patch);
 
   if (!comments) {
     markdown += '*Changes not tracked*' +
@@ -90,11 +90,13 @@ function getMarkdownForEntry(entry) {
 /**
  * From a comment array, conditionally returns a section of markdown.
  */
-function getChangeComments(title, commentsArray) {
+async function getChangeComments(title, commentsArray) {
   var comments = '';
   if (commentsArray) {
     comments = "# " + title + (EOL + EOL);
-    commentsArray.forEach(async (comment) => {
+
+    for (let i = 0; i < commentsArray.length; i++) {
+      var comment = commentsArray[i];
       var searchResult;
 
       comments += `- ${comment.comment}`;
@@ -109,7 +111,7 @@ function getChangeComments(title, commentsArray) {
         comments += `)`;
       }
       comments += EOL;
-    });
+    }
     comments += EOL;
   }
   return comments;
@@ -219,7 +221,7 @@ function updateReleaseNotes(shouldPatchChangelog) {
   getReleases((releases) => {
     let count = 0;
 
-    publishedTags.forEach(tag => {
+    publishedTags.forEach(async tag => {
       let entry = changelogEntries.get(tag);
       let hasBeenReleased = releases.has(tag);
 
@@ -236,7 +238,7 @@ function updateReleaseNotes(shouldPatchChangelog) {
           console.log(`Creating release notes for ${entry.name} ${entry.version}`);
           count++;
 
-          releaseDetails.body = getMarkdownForEntry(entry);
+          releaseDetails.body = await getMarkdownForEntry(entry);
 
           if (SHOULD_APPLY) {
             github.repos.createRelease(releaseDetails, (err, cb) => {
@@ -253,7 +255,7 @@ function updateReleaseNotes(shouldPatchChangelog) {
 
           if (SHOULD_APPLY) {
             releaseDetails.id = releases.get(tag).id;
-            releaseDetails.body = getMarkdownForEntry(entry);
+            releaseDetails.body = await getMarkdownForEntry(entry);
 
             github.repos.editRelease(releaseDetails, (err, cb) => {
               if (err) {
