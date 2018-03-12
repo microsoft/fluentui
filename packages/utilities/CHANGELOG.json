@@ -2,6 +2,32 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.18.0",
+      "tag": "@uifabric/utilities_v5.18.0",
+      "date": "Mon, 12 Mar 2018 06:29:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Spencer Lynn <sllynn8907@gmail.com>",
+            "commit": "699fa697ae829e756108ce2b6725084d27e93f7e",
+            "comment": "Focus utility getPreviousElement did not correctly consider the tabbable argument when considering the current node. This can affect how FocusZones are processed, since only one element in a zone will have tab index set. This, in turn, affects how FocusTrapZone traps focus, since getPreviousElement is used during trapping focus."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "feb4db4410cdd49d5df8a50fcef138fbcd324dc2",
+            "comment": "Styled: Add display name to styled wrapper"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Brian Garland <brian@efelle.com>",
+            "commit": "494d1258ce23505c8e5a4d1565ff5a2451048162",
+            "comment": "added hoistStatics function for use with decorators to fix broken statics issue, and added the fuction to the customizable decorator"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.17.1",
       "tag": "@uifabric/utilities_v5.17.1",
       "date": "Fri, 09 Mar 2018 15:07:28 GMT",

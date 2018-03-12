@@ -110,7 +110,6 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, {}> {
         height = !!elem.height ? elem.height : 24;
         break;
     }
-
     const dif: number | undefined = maxHeight && height ?
       maxHeight - height > 0 ?
         maxHeight - height : undefined

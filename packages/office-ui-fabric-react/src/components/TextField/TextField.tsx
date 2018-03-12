@@ -73,8 +73,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._id = getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 
+    this._latestValue = props.value || props.defaultValue || '';
+
     this.state = {
-      value: props.value || props.defaultValue || '',
+      value: this._latestValue,
       isFocused: false,
       errorMessage: ''
     };
