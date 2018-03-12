@@ -155,7 +155,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.allowNativeProps) {
       let elementString: string | string[] | JSX.Element = this.props.nativePropsElement || 'div',
         componentString: JSX.Element | undefined;
-      // componentString: JSX.Element = <> this component</>;
       if (typeof elementString === 'object' && elementString.length > 1) {
         const elementArr = elementString.slice();
         for (let _i = 0; _i < elementArr.length; _i++) {
@@ -171,7 +170,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       }
 
       if (typeof this.props.allowNativeProps === 'string') {
-        // titleString = <> <code>{ this.props.allowNativeProps }</code></>;
         componentString = <> <code>{ this.props.allowNativeProps }</code></>;
       }
 

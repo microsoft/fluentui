@@ -69,7 +69,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
-        allowNativeProps={ 'PivitItem' }
+        allowNativeProps={ 'PivotItem' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
