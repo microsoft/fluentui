@@ -9,6 +9,7 @@ import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ScrollablePaneStatus } from './ScrollablePane.checklist';
+import { MessageBar } from '../../MessageBar';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 
@@ -30,13 +31,17 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['a', 'button'] }
         propertiesTables={
-          <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
-            ] }
-          />
+          <div>
+            <PropertiesTableSet
+              sources={ [
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
+              ] }
+            />
+          </div>
         }
         overview={
           <div>
@@ -67,7 +72,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ScrollablePaneStatus}
+            { ...ScrollablePaneStatus }
           />
         }
       />

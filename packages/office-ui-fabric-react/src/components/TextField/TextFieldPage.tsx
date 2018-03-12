@@ -119,6 +119,8 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ ['input', 'textarea'] }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -168,7 +170,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...TextFieldStatus}
+            { ...TextFieldStatus }
           />
         }
       />
