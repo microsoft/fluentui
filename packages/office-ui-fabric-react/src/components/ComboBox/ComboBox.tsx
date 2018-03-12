@@ -126,6 +126,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _scrollIdleTimeoutId: number | undefined;
 
+  private _processingTouch: boolean;
+
   // Determines if we should be setting
   // focus back to the input when the menu closes.
   // The general rule of thumb is if the menu was launched
@@ -148,6 +150,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
     this._isScrollIdle = true;
+    this._processingTouch = false;
 
     const index: number = this._getSelectedIndex(props.options, selectedKey);
 
@@ -319,6 +322,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onKeyDown={ this._onInputKeyDown }
             onKeyUp={ this._onInputKeyUp }
             onClick={ this._onAutofillClick }
+            onTouchStart={ this._onTouchStart }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
             aria-autocomplete={ this._getAriaAutoCompleteValue() }
@@ -1519,11 +1523,20 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   @autobind
   private _onAutofillClick() {
-    if (this.props.allowFreeform) {
+    if (this.props.allowFreeform && !this._processingTouch) {
       this.focus(this.state.isOpen);
     } else {
       this._onComboBoxClick();
     }
+
+    this._processingTouch = false;
+  }
+
+  @autobind
+  private _onTouchStart(ev: React.TouchEvent<HTMLInputElement>) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    this._processingTouch = true;
   }
 
   /**
