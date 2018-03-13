@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Mar 2018 10:17:37 GMT and should not be manually modified.
+
+## 5.64.0
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Minor changes
+
+- Added an is-open class to the DatePicker root element to indicate when the datepicker is being shown based on the IDatePickerState.isDatePickerShown state property.
+- Added documentation for components that allow native props
+
+### Patches
+
+- Pickers: Fix aria bug where activedescendant would be sug--1
 
 ## 5.63.0
 Mon, 12 Mar 2018 06:29:20 GMT
