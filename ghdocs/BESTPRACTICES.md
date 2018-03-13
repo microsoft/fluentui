@@ -174,7 +174,7 @@ public render() {
 
 Best, use createRef:
 
-The `createRef` function in `@uifabric/utilities` is a polyfill for [React.createRef](https://github.com/facebook/react/pull/11555). (When Fabric switches over to React 16, we'll use React.createRef instead)
+The `createRef` function in `lib/Utilities` is a polyfill for [React.createRef](https://github.com/facebook/react/pull/11555). (When Fabric switches over to React 16, we'll use React.createRef instead)
 
 `createRef` creates a reference object that has the following type `{ value: T | null }`, where T is the element to reference (either a dom node or a react component). You set the reference by passing the reference object as the `ref` prop. You can then subsequently access the reference through the `.value` property on the reference object elsewhere in your code.
 
