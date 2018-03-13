@@ -40,6 +40,7 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
             </ExampleCard>
           </LayerHost>
         }
+        allowNativeProps={ true }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -56,7 +57,7 @@ export class TooltipPage extends React.Component<IComponentDemoPageProps, any> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...TooltipStatus}
+            { ...TooltipStatus }
           />
         }
       />

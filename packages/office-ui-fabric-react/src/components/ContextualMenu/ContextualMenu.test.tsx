@@ -418,6 +418,97 @@ describe('ContextualMenu', () => {
 
   });
 
+  describe('with links', () => {
+    const testUrl = 'http://test.com';
+    let items: IContextualMenuItem[];
+    let menuItems: NodeListOf<Element>;
+    let linkNoTarget: Element;
+    let linkBlankTarget: Element;
+    let linkBlankTargetAndRel: Element;
+    let linkSelfTarget: Element;
+    let linkNoTargetAndRel: Element;
+
+    beforeEach(() => {
+      items = [
+        {
+          name: 'TestText 1',
+          key: 'TestKey1',
+          href: testUrl
+        },
+        {
+          name: 'TestText 2',
+          key: 'TestKey2',
+          href: testUrl,
+          target: '_blank'
+        },
+        {
+          name: 'TestText 3',
+          key: 'TestKey3',
+          href: testUrl,
+          target: '_blank',
+          rel: 'test'
+        },
+        {
+          name: 'TestText 4',
+          key: 'TestKey4',
+          href: testUrl,
+          target: '_self',
+        },
+        {
+          name: 'TestText 5',
+          key: 'TestKey5',
+          href: testUrl,
+          rel: 'test'
+        },
+      ];
+
+      ReactTestUtils.renderIntoDocument<ContextualMenu>(
+        <ContextualMenu
+          items={ items }
+        />
+      );
+
+      menuItems = document.querySelectorAll('li a');
+      linkNoTarget = menuItems[0];
+      linkBlankTarget = menuItems[1];
+      linkBlankTargetAndRel = menuItems[2];
+      linkSelfTarget = menuItems[3];
+      linkNoTargetAndRel = menuItems[4];
+    });
+
+    it('should render an anchor with the passed href', () => {
+      expect(linkNoTarget.getAttribute('href')).toEqual(testUrl);
+    });
+
+    describe('with target passed', () => {
+      it('should render with the specified target', () => {
+        expect(linkSelfTarget.getAttribute('target')).toEqual('_self');
+      });
+
+      it('should not default the rel if the target is not _blank', () => {
+        expect(linkSelfTarget.getAttribute('rel')).toBeNull();
+      });
+
+      describe('when the target is _blank and there is no rel specified', () => {
+        it('should default a rel to prevent clickjacking', () => {
+          expect(linkBlankTarget.getAttribute('rel')).toEqual('nofollow noopener noreferrer');
+        });
+      });
+
+      describe('when the target is _blank and there is a rel specified', () => {
+        it('should use the specified rel', () => {
+          expect(linkBlankTargetAndRel.getAttribute('rel')).toEqual('test');
+        });
+      });
+    });
+
+    describe('with rel passed', () => {
+      it('should add the specified rel', () => {
+        expect(linkNoTargetAndRel.getAttribute('rel')).toEqual('test');
+      });
+    });
+  });
+
   it('does not return a value if no items are given', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu

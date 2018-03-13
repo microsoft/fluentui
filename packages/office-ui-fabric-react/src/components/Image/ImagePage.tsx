@@ -50,6 +50,8 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ 'img' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -89,7 +91,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ImageStatus}
+            { ...ImageStatus }
           />
         }
       />

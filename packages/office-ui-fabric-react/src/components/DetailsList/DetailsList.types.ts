@@ -329,7 +329,7 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.

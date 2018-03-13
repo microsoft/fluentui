@@ -46,6 +46,17 @@ export class ContextualMenuBasicExample extends React.Component {
                 onClick: () => console.log('Properties clicked')
               },
               {
+                key: 'linkNoTarget',
+                name: 'Link same window',
+                href: 'http://bing.com'
+              },
+              {
+                key: 'linkWithTarget',
+                name: 'Link new window',
+                href: 'http://bing.com',
+                target: '_blank'
+              },
+              {
                 key: 'disabled',
                 name: 'Disabled item',
                 disabled: true,

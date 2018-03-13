@@ -69,6 +69,13 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     this._events.off(window);
   }
 
+  public componentDidUpdate(prevProps: IScrollablePaneProps) {
+    const initialScrollPosition = this.props.initialScrollPosition;
+    if (initialScrollPosition && prevProps.initialScrollPosition !== initialScrollPosition) {
+      this.root.scrollTop = initialScrollPosition;
+    }
+  }
+
   public render() {
     const { className, theme, getStyles } = this.props;
     const classNames = getClassNames(getStyles!,
@@ -142,6 +149,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, {}> 
     if (this._stickyBelow.size > 1) {
       this._sortStickies(this._stickyBelow, this.stickyBelow);
     }
+  }
+
+  @autobind
+  public getScrollPosition(): number {
+    return this.root.scrollTop;
   }
 
   private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement, addStickyToContainer: () => void) {

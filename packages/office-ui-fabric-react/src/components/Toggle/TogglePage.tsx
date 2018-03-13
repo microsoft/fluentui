@@ -36,6 +36,8 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
           </div>
         }
+        allowNativeProps={ true }
+        nativePropsElement={ 'input' }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
@@ -84,7 +86,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ToggleStatus}
+            { ...ToggleStatus }
           />
         }
       />

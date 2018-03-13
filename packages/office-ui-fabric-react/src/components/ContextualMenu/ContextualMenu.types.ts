@@ -335,6 +335,11 @@ export interface IContextualMenuItem {
   target?: string;
 
   /**
+   * An optional rel when using href. If target is _blank rel is defaulted to a value to prevent clickjacking.
+   */
+  rel?: string;
+
+  /**
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
    * @deprecated
    */
