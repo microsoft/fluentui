@@ -662,7 +662,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.escape ||
-      ev.altKey ||
+      (ev.which === KeyCodes.up && ev.altKey) ||
       ev.metaKey ||
       this._shouldCloseSubMenu(ev)) {
       // When a user presses escape, we will try to refocus the previous focused element.
@@ -690,11 +690,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   @autobind
   private _onMenuKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.escape || ev.altKey || ev.metaKey) {
+    if (ev.which === KeyCodes.escape ||
+      (ev.which === KeyCodes.up && ev.altKey) ||
+      ev.metaKey) {
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
       ev.stopPropagation();
       this.dismiss(ev);
+      return;
+    } else if (ev.altKey) {
+      ev.preventDefault();
+      ev.stopPropagation;
       return;
     }
 
