@@ -27,7 +27,7 @@ scripts/ @dzearing
 
 #### Packages
 # packages/example-app-base/
-packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp
+packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
