@@ -93,7 +93,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     const { items, columns } = this.state;
 
     return (
-      <div>
+      <div className='shimmerExample-application'>
         <p> Hover over location of a row item to see the card </p>
         <DetailsList
           setKey='items'
