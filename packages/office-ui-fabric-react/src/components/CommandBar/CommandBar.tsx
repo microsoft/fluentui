@@ -424,7 +424,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         return;
       }
 
-      if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
+      if (item.key === this.state.expandedMenuItemKey || !hasSubmenu(item)) {
         this._onContextMenuDismiss();
       } else {
         this.setState({
