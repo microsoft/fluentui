@@ -597,11 +597,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         onKeyDown={ this._onSplitContainerItemKeyDown.bind(this, item) }
         onClick={ this._executeItemClick.bind(this, item) }
         tabIndex={ 0 }
-        aria-hidden={ true }
+        data-is-focusable={ true }
       >
-        { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
-        { this._renderSplitDivider(item) }
-        { this._renderSplitIconButton(item, classNames, index) }
+        <span aria-hidden={ true }>
+          { this._renderSplitPrimaryButton(item, classNames, index, hasCheckmarks!, hasIcons!) }
+          { this._renderSplitDivider(item) }
+          { this._renderSplitIconButton(item, classNames, index) }
+        </span>
       </div>
     );
   }
