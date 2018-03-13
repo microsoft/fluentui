@@ -2,8 +2,7 @@ import * as React from 'react';
 import './ThemeGeneratorPage.scss';
 import {
   BaseComponent,
-  autobind,
-  css
+  autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 
 import {
@@ -34,7 +33,6 @@ import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/exam
 import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
-const pageStyles: any = require('../../../../../apps/fabric-website/src/pages/PageStyles.module.scss');
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
@@ -112,7 +110,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     return (
       <div className='ms-themer'>
-        <div className={ css(pageStyles.u_maxTextWidth, 'overview') }>
+        <div className='overview'>
           <h2 id='Overview'>Overview</h2>
           <p>This tool helps you easily create all the shades and slots for a custom theme.
           The theme can be used by Fabric React's styling package, see the <a className={ 'themeGeneratorPageLink' } href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
