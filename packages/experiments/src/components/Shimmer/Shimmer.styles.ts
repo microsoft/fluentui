@@ -9,7 +9,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     width,
     maxHeight,
     isDataLoaded,
-    isListMissingItem
+    isBaseStyle
   } = props;
 
   const BACKGROUND_OFF_SCREEN_POSITION = '1000%';
@@ -33,7 +33,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         boxSizing: 'content-box',
         minHeight: maxHeight ? `${maxHeight}px` : '16px'
       },
-      isListMissingItem && {
+      isBaseStyle && {
         margin: '0',
         display: 'flex',
         alignItems: 'center'
@@ -70,7 +70,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         opacity: '0',
         visibility: 'hidden'
       },
-      isListMissingItem && {
+      isBaseStyle && {
         height: '20px',
         position: 'static',
       }
