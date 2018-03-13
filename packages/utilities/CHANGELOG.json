@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "5.18.1",
+      "tag": "@uifabric/utilities_v5.18.1",
+      "date": "Tue, 13 Mar 2018 10:17:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "298ac062041a2323afb25027867b70f12870aa8f",
+            "comment": "Customizable: Fix hoist/customizations import so it doesn't break amd"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.18.0",
       "tag": "@uifabric/utilities_v5.18.0",
       "date": "Mon, 12 Mar 2018 06:29:20 GMT",

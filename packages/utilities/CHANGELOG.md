@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 12 Mar 2018 06:29:20 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Mar 2018 10:17:37 GMT and should not be manually modified.
+
+## 5.18.1
+Tue, 13 Mar 2018 10:17:37 GMT
+
+### Patches
+
+- Customizable: Fix hoist/customizations import so it doesn't break amd
 
 ## 5.18.0
 Mon, 12 Mar 2018 06:29:20 GMT
