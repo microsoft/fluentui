@@ -229,10 +229,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             return button;
 
           } else if (item.href) {
-            return <a
+            var link = <a
               { ...getNativeProps(item, anchorProperties) }
               id={ this._id + item.key }
               className={ className }
+              title={""}
               href={ item.href }
               data-command-key={ itemKey }
               aria-haspopup={ hasSubmenuItems(item) }
@@ -248,10 +249,19 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 </span>
               ) }
             </a>;
+
+            if (tooltipContent) {
+                return  <TooltipHost content={ tooltipContent } id={tooltipId} >
+                    { link }
+                </TooltipHost>;
+            }
+
+            return link;
           } else {
-            return <div
+            var itemToReturn = <div
               { ...getNativeProps(item, divProperties) }
               id={ this._id + item.key }
+              title={""}
               className={ className }
               data-command-key={ itemKey }
               aria-haspopup={ hasSubmenuItems(item) }
@@ -267,6 +277,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 </span>
               ) }
             </div>;
+
+               if (tooltipContent) {
+                return  <TooltipHost content={ tooltipContent } id={tooltipId} >
+                    { itemToReturn }
+                </TooltipHost>;
+            }
+
+            return itemToReturn;
           }
         })() }
       </div>
