@@ -62,7 +62,7 @@ export const AppState: IAppState = {
         },
         {
           title: 'Brand icons',
-          url: '#/styles/brandicons',
+          url: '#/styles/brand-icons',
           component: () => <StylesLoadingComponent title='Brand icons' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/BrandIconsPage/BrandIconsPage').BrandIconsPage))
         },
