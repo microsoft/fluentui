@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 09 Mar 2018 11:13:58 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Mar 2018 20:00:06 GMT and should not be manually modified.
+
+## 5.3.4
+Tue, 13 Mar 2018 20:00:06 GMT
+
+### Patches
+
+- Hide left nav on mobile.
 
 ## 5.3.3
 Fri, 09 Mar 2018 11:13:58 GMT

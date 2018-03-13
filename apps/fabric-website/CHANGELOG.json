@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.3.4",
+      "tag": "@uifabric/fabric-website_v5.3.4",
+      "date": "Tue, 13 Mar 2018 20:00:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "0904a98019ac935ed975f6188624cc68df477a25",
+            "comment": "Hide left nav on mobile."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.3.3",
       "tag": "@uifabric/fabric-website_v5.3.3",
       "date": "Fri, 09 Mar 2018 11:13:58 GMT",
